@@ -1,0 +1,10 @@
+
+backend/data/corpus/*.json text eol=lf
+
+# Shell scripts y crontabs se ejecutan en Linux (cron/POSIX): LF obligatorio.
+*.sh   text eol=lf
+*.cron text eol=lf
+# FIX-FLUTTER-09: el artefacto del contrato OpenAPI se compara byte a byte
+# con el regenerado (compuerta de deriva). Forzar LF evita falsos rojos
+# por core.autocrlf=true en Windows.
+backend/openapi/*.json text eol=lf
