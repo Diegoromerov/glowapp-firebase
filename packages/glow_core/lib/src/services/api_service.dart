@@ -46,6 +46,10 @@ class ApiService {
   static String get _baseUrl => baseUrl;
   static String get _apiPath => '/api';
 
+  /// Audiencia de la app: 'client' (glow_client) o 'provider' (glow_provider).
+  /// Se configura al inicio en main.dart de cada app.
+  static String appAudience = 'client';
+
   static final List<String> _candidateHosts = [
     '10.88.245.166',
     '127.0.0.1',
@@ -162,6 +166,11 @@ class ApiService {
   static Future<Map<String, String>> _getAuthHeaders() async {
     await ensureBaseUrl();
     final headers = {'Content-Type': 'application/json'};
+    
+    // Header X-App-Audience para audience scoping en backend (Fase 4)
+    // Valor: 'client' (glow_client) o 'provider' (glow_provider)
+    headers['X-App-Audience'] = appAudience;
+    
     final token = await _getToken();
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
@@ -846,6 +855,7 @@ class ApiService {
     if (token != null && token.isNotEmpty) {
       request.headers['Authorization'] = 'Bearer $token';
     }
+    request.headers['X-App-Audience'] = appAudience;
 
     // Detectar el MIME type basado en la extensión del archivo
     // Sin esto, Flutter Web envía 'application/octet-stream' y el backend lo rechaza
@@ -1378,7 +1388,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/glowup-card/generate');
     
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1421,6 +1431,7 @@ class ApiService {
     if (token != null && token.isNotEmpty) {
       request.headers['Authorization'] = 'Bearer $token';
     }
+    request.headers['X-App-Audience'] = appAudience;
     
     request.files.add(
       http.MultipartFile.fromBytes(
@@ -1472,7 +1483,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/wardrobe/outfit/generate');
     
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1511,6 +1522,7 @@ class ApiService {
     if (token != null && token.isNotEmpty) {
       request.headers['Authorization'] = 'Bearer $token';
     }
+    request.headers['X-App-Audience'] = appAudience;
     
     request.files.add(
       http.MultipartFile.fromBytes(
@@ -1541,6 +1553,7 @@ class ApiService {
     if (token != null && token.isNotEmpty) {
       request.headers['Authorization'] = 'Bearer $token';
     }
+    request.headers['X-App-Audience'] = appAudience;
     
     request.fields['type'] = type;
     if (concern != null) {
@@ -1576,7 +1589,7 @@ class ApiService {
       url += '?tool_type=$toolType';
     }
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1610,6 +1623,7 @@ class ApiService {
     if (token != null && token.isNotEmpty) {
       request.headers['Authorization'] = 'Bearer $token';
     }
+    request.headers['X-App-Audience'] = appAudience;
     
     if (diagnosticId != null) {
       request.fields['diagnostic_id'] = diagnosticId;
@@ -1646,7 +1660,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/profile');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1670,7 +1684,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/payments/glowai-premium');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1693,7 +1707,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/streak/check-in');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1716,7 +1730,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/share/code');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1739,7 +1753,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/profesionales/recommend');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1764,7 +1778,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/evolution/$track');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1782,7 +1796,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/evolution/$track/insight');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1800,7 +1814,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/evolution/$track/attribution');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1819,7 +1833,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/validation/request');
     
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1842,7 +1856,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/validation/pay');
     
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1865,7 +1879,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/validation/user/history');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1883,7 +1897,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/designs/validation/$id');
     
-    final headers = <String, String>{};
+    final headers = <String, String>{'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1902,7 +1916,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/glow-cycle/active');
 
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1923,7 +1937,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/glow-cycle/$cycleId/checkin');
 
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1949,7 +1963,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/glow-cycle/$cycleId/re-scan');
 
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -1975,7 +1989,7 @@ class ApiService {
     final token = await _getToken();
     final uri = Uri.parse('$_baseUrl$_apiPath/glow-cycle/$cycleId/graduate');
 
-    final headers = <String, String>{'Content-Type': 'application/json'};
+    final headers = <String, String>{'Content-Type': 'application/json', 'X-App-Audience': appAudience};
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }

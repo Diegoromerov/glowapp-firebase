@@ -137,7 +137,7 @@ class DefaultFirebaseOptions {
           messagingSenderId: FirebaseConfig.messagingSenderId,
           projectId: FirebaseConfig.projectId,
           storageBucket: _storageBucket,
-          iosBundleId: 'com.example.beauty_app',
+          iosBundleId: 'com.glowapp.glow_client',
         );
       case TargetPlatform.macOS:
         return FirebaseOptions(
@@ -146,7 +146,7 @@ class DefaultFirebaseOptions {
           messagingSenderId: FirebaseConfig.messagingSenderId,
           projectId: FirebaseConfig.projectId,
           storageBucket: _storageBucket,
-          iosBundleId: 'com.example.beauty_app',
+          iosBundleId: 'com.glowapp.glow_client',
         );
       case TargetPlatform.windows:
         return FirebaseOptions(

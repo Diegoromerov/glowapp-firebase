@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glow_core/glow_core.dart' hide ProviderServicesScreen;
+import 'package:glow_core/services/api_service.dart';
 import 'firebase_options.dart';
 
 // Auth
@@ -100,6 +101,9 @@ void main() async {
 
   // Inicializar servicios core
   await AudienceService.init();
+  
+  // Configurar audiencia de la app para backend (Fase 4)
+  ApiService.appAudience = 'provider';
 
   runApp(const ProviderScope(child: GlowProviderApp()));
 }

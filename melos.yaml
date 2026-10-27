@@ -6,5 +6,11 @@ scripts:
   bootstrap: melos bootstrap && cd apps/glow_client && flutter pub get && cd ../glow_provider && flutter pub get
   analyze: melos exec -- flutter analyze --no-fatal-infos --no-fatal-warnings
   test: melos exec -- flutter test
-  build:client: cd apps/glow_client && flutter build web --release --dart-define=APP_AUDIENCE=client
-  build:provider: cd apps/glow_provider && flutter build web --release --dart-define=APP_AUDIENCE=provider
+  # Client builds
+  build:client:web: cd apps/glow_client && flutter build web --release --dart-define=APP_AUDIENCE=client
+  build:client:android: cd apps/glow_client && flutter build apk --release --dart-define=APP_AUDIENCE=client
+  build:client:ios: cd apps/glow_client && flutter build ios --release --no-codesign --dart-define=APP_AUDIENCE=client
+  # Provider builds
+  build:provider:web: cd apps/glow_provider && flutter build web --release --dart-define=APP_AUDIENCE=provider
+  build:provider:android: cd apps/glow_provider && flutter build apk --release --dart-define=APP_AUDIENCE=provider
+  build:provider:ios: cd apps/glow_provider && flutter build ios --release --no-codesign --dart-define=APP_AUDIENCE=provider
