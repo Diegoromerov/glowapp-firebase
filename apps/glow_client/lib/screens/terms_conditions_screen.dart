@@ -82,7 +82,7 @@ class TermsConditionsScreen extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                      color: const Color(0xFFC5A052).withOpacity(0.35),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),

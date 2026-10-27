@@ -143,7 +143,7 @@ class _GlowstoreRecipeScreenState extends State<GlowstoreRecipeScreen> {
                           Container(
                             height: 110,
                             decoration: BoxDecoration(
-                              color: product.accentColor.withValues(alpha: 0.25),
+                              color: product.accentColor.withOpacity(0.25),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Center(
@@ -255,7 +255,7 @@ class _GlowstoreRecipeScreenState extends State<GlowstoreRecipeScreen> {
                   boxShadow: _cartProductIds.isNotEmpty
                       ? [
                           BoxShadow(
-                            color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                            color: const Color(0xFFC5A052).withOpacity(0.35),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),

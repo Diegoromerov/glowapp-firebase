@@ -65,7 +65,7 @@ class LuxeListTile extends StatelessWidget {
         color: LuxeColors.nude100,
         borderRadius: BorderRadius.circular(LuxeSpacing.md),
         border: Border.all(
-          color: isCompleted ? LuxeColors.gold871.withValues(alpha: 0.5) : LuxeColors.nude200,
+          color: isCompleted ? LuxeColors.gold871.withOpacity(0.5) : LuxeColors.nude200,
           width: 1.0,
         ),
       ),

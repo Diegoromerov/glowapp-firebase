@@ -140,8 +140,8 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withValues(alpha: 0.2),
-                    Colors.black.withValues(alpha: 0.7),
+                    Colors.black.withOpacity(0.2),
+                    Colors.black.withOpacity(0.7),
                   ],
                 ),
               ),
@@ -159,9 +159,9 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.85),
+                    color: Colors.black.withOpacity(0.85),
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-                    border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.3)),
+                    border: Border.all(color: const Color(0xFFC5A052).withOpacity(0.3)),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -199,7 +199,7 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                               border: Border.all(color: Colors.white, width: 2),
                               boxShadow: [
                                 BoxShadow(
-                                  color: _selectedColor.withValues(alpha: 0.5),
+                                  color: _selectedColor.withOpacity(0.5),
                                   blurRadius: 8,
                                   spreadRadius: 2,
                                 ),
@@ -256,7 +256,7 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                                 duration: const Duration(milliseconds: 200),
                                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                                 decoration: BoxDecoration(
-                                  color: isSelected ? Colors.white.withValues(alpha: 0.15) : Colors.transparent,
+                                  color: isSelected ? Colors.white.withOpacity(0.15) : Colors.transparent,
                                   borderRadius: BorderRadius.circular(12),
                                   border: Border.all(
                                     color: isSelected ? const Color(0xFFC5A052) : Colors.transparent,

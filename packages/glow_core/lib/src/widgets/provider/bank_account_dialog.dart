@@ -297,9 +297,9 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF10B981).withValues(alpha: 0.08),
+                    color: const Color(0xFF10B981).withOpacity(0.08),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.2)),
+                    border: Border.all(color: const Color(0xFF10B981).withOpacity(0.2)),
                   ),
                   child: const Row(
                     children: [

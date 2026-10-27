@@ -275,7 +275,7 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
         border: Border.all(color: AppTheme.nude200),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: Colors.black.withOpacity(0.04),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -299,7 +299,7 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: statusColor.withValues(alpha: 0.15),
+                  color: statusColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(

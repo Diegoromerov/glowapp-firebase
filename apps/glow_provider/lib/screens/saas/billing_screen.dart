@@ -166,9 +166,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.red.withValues(alpha: 0.06),
+        color: Colors.red.withOpacity(0.06),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
+        border: Border.all(color: Colors.red.withOpacity(0.3)),
       ),
       child: Row(
         children: [
@@ -198,10 +198,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
     return Card(
       elevation: 0,
-      color: tier.color.withValues(alpha: 0.08),
+      color: tier.color.withOpacity(0.08),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: tier.color.withValues(alpha: 0.3)),
+        side: BorderSide(color: tier.color.withOpacity(0.3)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -232,7 +232,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: statusColor.withValues(alpha: 0.12),
+                    color: statusColor.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: statusColor),
                   ),
@@ -310,9 +310,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: plan.tier.color.withValues(alpha: 0.04),
+        color: plan.tier.color.withOpacity(0.04),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: plan.tier.color.withValues(alpha: 0.25)),
+        border: Border.all(color: plan.tier.color.withOpacity(0.25)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -332,7 +332,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
-                              color: _gold.withValues(alpha: 0.15),
+                              color: _gold.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: const Text('Recomendado',
@@ -367,7 +367,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                 .map((f) => Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
-                        color: plan.tier.color.withValues(alpha: 0.08),
+                        color: plan.tier.color.withOpacity(0.08),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(f, style: TextStyle(fontSize: 10, color: plan.tier.color)),

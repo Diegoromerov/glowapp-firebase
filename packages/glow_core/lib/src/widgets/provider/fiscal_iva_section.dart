@@ -193,7 +193,7 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFC5A052).withValues(alpha: 0.06),
+            color: const Color(0xFFC5A052).withOpacity(0.06),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),

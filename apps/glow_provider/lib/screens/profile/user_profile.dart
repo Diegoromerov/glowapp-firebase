@@ -81,7 +81,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
+                      color: Colors.black.withOpacity(0.04),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -123,7 +123,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
+                      color: Colors.black.withOpacity(0.04),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -166,7 +166,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       border: Border.all(color: const Color(0xFFEFE8DE), width: 1),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.025),
+                          color: Colors.black.withOpacity(0.025),
                           blurRadius: 14,
                           offset: const Offset(0, 4),
                         ),
@@ -240,7 +240,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       border: Border.all(color: const Color(0xFFEFE8DE), width: 1),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.025),
+                          color: Colors.black.withOpacity(0.025),
                           blurRadius: 14,
                           offset: const Offset(0, 4),
                         ),
@@ -397,7 +397,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Container(width: 24, height: 1, color: Color(0xFFD4AF37).withValues(alpha: 0.5)),
+                            Container(width: 24, height: 1, color: Color(0xFFD4AF37).withOpacity(0.5)),
                             const SizedBox(width: 8),
                             const Text(
                               'GLOWAPP HAUTE BEAUTÉ',
@@ -410,7 +410,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               ),
                             ),
                             const SizedBox(width: 8),
-                            Container(width: 24, height: 1, color: Color(0xFFD4AF37).withValues(alpha: 0.5)),
+                            Container(width: 24, height: 1, color: Color(0xFFD4AF37).withOpacity(0.5)),
                           ],
                         ),
                         const SizedBox(height: 4),

@@ -27,8 +27,8 @@ class LuxeColors {
   static const Color goldLight = Color(0xFFE8D49E);
 
   // Sombras y Transparencias
-  static final Color shadowGold = gold871.withValues(alpha: 0.25);
-  static final Color overlayDark = nude900.withValues(alpha: 0.65);
+  static final Color shadowGold = gold871.withOpacity(0.25);
+  static final Color overlayDark = nude900.withOpacity(0.65);
 }
 
 /// Tipografía Editorial Belleza Luxe

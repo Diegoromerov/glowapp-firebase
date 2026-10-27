@@ -23,14 +23,14 @@ class AudienceToggleWidget extends StatelessWidget {
             border: Border.all(
               color: isMen
                   ? MensTheme.champagneGold
-                  : AppTheme.primary.withValues(alpha: 0.5),
+                  : AppTheme.primary.withOpacity(0.5),
               width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
                 color: isMen
-                    ? MensTheme.champagneGold.withValues(alpha: 0.3)
-                    : Colors.black.withValues(alpha: 0.08),
+                    ? MensTheme.champagneGold.withOpacity(0.3)
+                    : Colors.black.withOpacity(0.08),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -112,8 +112,8 @@ class AudienceToggleWidget extends StatelessWidget {
           border: isSelected
               ? Border.all(
                   color: isMenMode
-                      ? Color(0xFFFFF9E6).withValues(alpha: 0.8)
-                      : Color(0xFFD4AF37).withValues(alpha: 0.4),
+                      ? Color(0xFFFFF9E6).withOpacity(0.8)
+                      : Color(0xFFD4AF37).withOpacity(0.4),
                   width: 1.0,
                 )
               : null,
@@ -121,8 +121,8 @@ class AudienceToggleWidget extends StatelessWidget {
               ? [
                   BoxShadow(
                     color: isMenMode
-                        ? Color(0xFFD4AF37).withValues(alpha: 0.35)
-                        : AppTheme.primary.withValues(alpha: 0.3),
+                        ? Color(0xFFD4AF37).withOpacity(0.35)
+                        : AppTheme.primary.withOpacity(0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),

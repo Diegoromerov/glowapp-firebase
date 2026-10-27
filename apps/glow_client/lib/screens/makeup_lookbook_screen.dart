@@ -299,7 +299,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.08),
+                    color: Colors.black.withOpacity(0.08),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -324,7 +324,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFC5A052).withValues(alpha: 0.3),
+                          color: const Color(0xFFC5A052).withOpacity(0.3),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: const Text(
@@ -348,9 +348,9 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                           style: const TextStyle(color: Colors.white, fontSize: 13),
                           decoration: InputDecoration(
                             hintText: 'Ej: Gala dorada veneciana con labios ciruela...',
-                            hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 12),
+                            hintStyle: TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 12),
                             filled: true,
-                            fillColor: Colors.white.withValues(alpha: 0.08),
+                            fillColor: Colors.white.withOpacity(0.08),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -389,7 +389,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                     child: ChoiceChip(
                       label: Text(cat),
                       selected: isSelected,
-                      selectedColor: const Color(0xFFF3D59B).withValues(alpha: 0.4),
+                      selectedColor: const Color(0xFFF3D59B).withOpacity(0.4),
                       backgroundColor: Colors.white,
                       labelStyle: TextStyle(
                         fontSize: 12,
@@ -429,7 +429,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
         border: Border.all(color: const Color(0xFFEADBCE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.03),
+            color: Colors.black.withOpacity(0.03),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -476,7 +476,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF3D59B).withValues(alpha: 0.3),
+                              color: const Color(0xFFF3D59B).withOpacity(0.3),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -574,7 +574,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
             decoration: BoxDecoration(
               color: const Color(0xFFFAF8F5),
               borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
-              border: Border(top: BorderSide(color: Colors.grey.withValues(alpha: 0.15))),
+              border: Border(top: BorderSide(color: Colors.grey.withOpacity(0.15))),
             ),
             child: Column(
               children: [

@@ -138,7 +138,7 @@ class _ProcessingScreenState extends State<ProcessingScreen> {
                   height: 80,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: const Color(0xFFF3D59B).withValues(alpha: 0.25),
+                    color: const Color(0xFFF3D59B).withOpacity(0.25),
                     border: Border.all(color: const Color(0xFFC5A052), width: 1.5),
                   ),
                   child: _errorDetail != null
@@ -224,7 +224,7 @@ class _ProcessingScreenState extends State<ProcessingScreen> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                          color: const Color(0xFFC5A052).withOpacity(0.35),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),

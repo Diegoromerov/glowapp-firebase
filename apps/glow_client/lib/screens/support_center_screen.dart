@@ -271,7 +271,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+              color: const Color(0xFFC5A052).withOpacity(0.35),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -307,7 +307,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.headset_mic_outlined, size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.headset_mic_outlined, size: 64, color: AppTheme.primary.withOpacity(0.5)),
             const SizedBox(height: 16),
             const Text(
               '¿Tienes dudas, quejas o reclamos?',

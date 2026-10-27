@@ -62,7 +62,7 @@ class LockedFeatureCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(Spacing.md),
                 decoration: BoxDecoration(
-                  color: t.brandPrimary.withValues(alpha: 0.10),
+                  color: t.brandPrimary.withOpacity(0.10),
                   borderRadius: BorderRadius.circular(Radii.round),
                 ),
                 child: Icon(Icons.lock_outline, size: 26, color: t.brandPrimary),

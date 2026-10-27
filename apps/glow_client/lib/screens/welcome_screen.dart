@@ -56,7 +56,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
           color: isMen ? MensTheme.obsidianCard : GlowTokens.creamSilk,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           border: Border.all(
-            color: isMen ? MensTheme.champagneGold.withValues(alpha: 0.3) : GlowTokens.terracota.withValues(alpha: 0.3),
+            color: isMen ? MensTheme.champagneGold.withOpacity(0.3) : GlowTokens.terracota.withOpacity(0.3),
           ),
         ),
         padding: const EdgeInsets.all(24.0),
@@ -68,7 +68,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                 width: 45,
                 height: 5,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withValues(alpha: 0.4),
+                  color: Colors.grey.withOpacity(0.4),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -112,7 +112,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                   style: TextStyle(
                     fontSize: 13,
                     height: 1.6,
-                    color: isMen ? MensTheme.textSecondary : GlowTokens.nightAndean.withValues(alpha: 0.85),
+                    color: isMen ? MensTheme.textSecondary : GlowTokens.nightAndean.withOpacity(0.85),
                   ),
                 ),
               ),
@@ -226,7 +226,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                             child: Navigator.canPop(context)
                                 ? Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withValues(alpha: 0.35),
+                                      color: Colors.black.withOpacity(0.35),
                                       shape: BoxShape.circle,
                                     ),
                                     child: IconButton(
@@ -247,10 +247,10 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                               width: double.infinity,
                               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFD4AF37).withValues(alpha: 0.14),
+                                color: const Color(0xFFD4AF37).withOpacity(0.14),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFFD4AF37).withValues(alpha: 0.55),
+                                  color: const Color(0xFFD4AF37).withOpacity(0.55),
                                 ),
                               ),
                               child: const Row(
@@ -271,15 +271,15 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1F1A15).withValues(alpha: 0.76),
+                              color: const Color(0xFF1F1A15).withOpacity(0.76),
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: const Color(0xFFD4AF37).withValues(alpha: 0.5),
+                                color: const Color(0xFFD4AF37).withOpacity(0.5),
                                 width: 1.0,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.3),
+                                  color: Colors.black.withOpacity(0.3),
                                   blurRadius: 14,
                                   offset: const Offset(0, 4),
                                 ),
@@ -338,7 +338,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: _consentAccepted
                                     ? const Color(0xFFC5A052)
-                                    : const Color(0xFF7A6B5A).withValues(alpha: 0.55),
+                                    : const Color(0xFF7A6B5A).withOpacity(0.55),
                                 foregroundColor: _consentAccepted
                                     ? const Color(0xFF14100C)
                                     : Colors.white70,
@@ -393,7 +393,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                               style: OutlinedButton.styleFrom(
                                 side: const BorderSide(color: Color(0xFFD4AF37), width: 1.2),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                                backgroundColor: const Color(0xFF1F1A15).withValues(alpha: 0.65),
+                                backgroundColor: const Color(0xFF1F1A15).withOpacity(0.65),
                               ),
                             ),
                           ),

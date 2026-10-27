@@ -21,8 +21,8 @@ class AuraWelcomeScreen extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 GlowTokens.creamSilk,
-                GlowTokens.amber.withValues(alpha: 0.25),
-                GlowTokens.terracota.withValues(alpha: 0.4),
+                GlowTokens.amber.withOpacity(0.25),
+                GlowTokens.terracota.withOpacity(0.4),
                 GlowTokens.nightAndean,
               ],
               stops: const [0.0, 0.35, 0.7, 1.0],
@@ -84,7 +84,7 @@ class AuraWelcomeScreen extends StatelessWidget {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                                color: const Color(0xFFC5A052).withOpacity(0.35),
                                 blurRadius: 14,
                                 offset: const Offset(0, 4),
                               ),

@@ -181,7 +181,7 @@ class TeamManagementScreen extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: CircleAvatar(backgroundColor: member.role.color.withValues(alpha: 0.1), child: Icon(Icons.person, color: member.role.color)),
+        leading: CircleAvatar(backgroundColor: member.role.color.withOpacity(0.1), child: Icon(Icons.person, color: member.role.color)),
         title: Text(member.fullName.isNotEmpty ? member.fullName : member.email, style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text(member.email, style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74))),
         trailing: PopupMenuButton<String>(
@@ -230,7 +230,7 @@ class TeamManagementScreen extends ConsumerWidget {
       color: const Color(0xFFFFF8E1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: CircleAvatar(backgroundColor: Colors.amber.withValues(alpha: 0.2), child: Icon(Icons.pending, color: Colors.amber, size: 20)),
+        leading: CircleAvatar(backgroundColor: Colors.amber.withOpacity(0.2), child: Icon(Icons.pending, color: Colors.amber, size: 20)),
         title: Text(invitation.email, style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text('Rol: ${invitation.role.label} · ${invitation.status.label}', style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74))),
         trailing: Row(

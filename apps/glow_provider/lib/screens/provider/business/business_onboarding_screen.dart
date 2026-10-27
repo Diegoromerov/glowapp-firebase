@@ -203,9 +203,9 @@ class _BusinessOnboardingScreenState extends State<BusinessOnboardingScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppTheme.warning.withValues(alpha: 0.05),
+                color: AppTheme.warning.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppTheme.warning.withValues(alpha: 0.2)),
+                border: Border.all(color: AppTheme.warning.withOpacity(0.2)),
               ),
               child: Row(
                 children: [
@@ -274,7 +274,7 @@ class _BusinessOnboardingScreenState extends State<BusinessOnboardingScreen> {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isSelected ? AppTheme.primary.withValues(alpha: 0.1) : AppTheme.surface,
+          color: isSelected ? AppTheme.primary.withOpacity(0.1) : AppTheme.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? AppTheme.primary : AppTheme.divider,
@@ -288,7 +288,7 @@ class _BusinessOnboardingScreenState extends State<BusinessOnboardingScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: isSelected ? AppTheme.primary.withValues(alpha: 0.2) : AppTheme.primary.withValues(alpha: 0.1),
+                color: isSelected ? AppTheme.primary.withOpacity(0.2) : AppTheme.primary.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, color: isSelected ? AppTheme.primary : AppTheme.textSecondary, size: 28),

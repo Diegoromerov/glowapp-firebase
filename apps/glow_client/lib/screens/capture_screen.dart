@@ -816,7 +816,7 @@ class _CaptureScreenState extends State<CaptureScreen>
         leading: Container(
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: AppTheme.text.withValues(alpha: 0.5),
+            color: AppTheme.text.withOpacity(0.5),
             shape: BoxShape.circle,
           ),
           child: IconButton(
@@ -827,7 +827,7 @@ class _CaptureScreenState extends State<CaptureScreen>
         title: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
-            color: AppTheme.text.withValues(alpha: 0.65),
+            color: AppTheme.text.withOpacity(0.65),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Text(
@@ -841,7 +841,7 @@ class _CaptureScreenState extends State<CaptureScreen>
           Container(
             margin: const EdgeInsets.only(right: 6),
             decoration: BoxDecoration(
-              color: AppTheme.text.withValues(alpha: 0.5),
+              color: AppTheme.text.withOpacity(0.5),
               shape: BoxShape.circle,
             ),
             child: IconButton(
@@ -854,7 +854,7 @@ class _CaptureScreenState extends State<CaptureScreen>
           Container(
             margin: const EdgeInsets.only(right: 6),
             decoration: BoxDecoration(
-              color: AppTheme.text.withValues(alpha: 0.5),
+              color: AppTheme.text.withOpacity(0.5),
               shape: BoxShape.circle,
             ),
             child: IconButton(
@@ -866,7 +866,7 @@ class _CaptureScreenState extends State<CaptureScreen>
           Container(
             margin: const EdgeInsets.only(right: 6),
             decoration: BoxDecoration(
-              color: AppTheme.text.withValues(alpha: 0.5),
+              color: AppTheme.text.withOpacity(0.5),
               shape: BoxShape.circle,
             ),
             child: IconButton(
@@ -886,7 +886,7 @@ class _CaptureScreenState extends State<CaptureScreen>
               icon: const Icon(Icons.auto_fix_high, size: 13, color: Color(0xFFF3D59B)),
               label: const Text('Demo', style: TextStyle(color: Color(0xFFF3D59B), fontWeight: FontWeight.bold, fontSize: 11)),
               style: TextButton.styleFrom(
-                backgroundColor: Colors.black.withValues(alpha: 0.65),
+                backgroundColor: Colors.black.withOpacity(0.65),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               ),
@@ -989,10 +989,10 @@ class _CaptureScreenState extends State<CaptureScreen>
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1F1A15).withValues(alpha: 0.85),
+                    color: const Color(0xFF1F1A15).withOpacity(0.85),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: const Color(0xFFC5A052).withValues(alpha: 0.6),
+                      color: const Color(0xFFC5A052).withOpacity(0.6),
                       width: 1.2,
                     ),
                   ),

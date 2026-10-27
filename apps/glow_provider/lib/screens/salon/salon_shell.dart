@@ -317,7 +317,7 @@ class _AgendaTabState extends State<_AgendaTab> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: 2),
                   decoration: BoxDecoration(
-                    color: t.brandPrimary.withValues(alpha: 0.10),
+                    color: t.brandPrimary.withOpacity(0.10),
                     borderRadius: BorderRadius.circular(Radii.sm),
                   ),
                   child: Text(
@@ -441,7 +441,7 @@ class _EquipoTabState extends State<_EquipoTab> {
             children: [
               CircleAvatar(
                 radius: 18,
-                backgroundColor: t.brandPrimary.withValues(alpha: 0.12),
+                backgroundColor: t.brandPrimary.withOpacity(0.12),
                 child: Text(
                   nombre.trim().isEmpty ? '?' : nombre.trim()[0].toUpperCase(),
                   style: TextStyle(color: t.brandPrimary, fontWeight: FontWeight.w700),

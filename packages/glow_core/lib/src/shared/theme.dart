@@ -105,7 +105,7 @@ class AppTheme {
       suffixIcon: suffixIcon,
       floatingLabelBehavior: FloatingLabelBehavior.auto,
       filled: true,
-      fillColor: Colors.white.withValues(alpha: 0.8),
+      fillColor: Colors.white.withOpacity(0.8),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: const BorderSide(color: Color(0xFFEADCD6), width: 1),

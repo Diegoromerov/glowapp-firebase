@@ -45,7 +45,7 @@ class VtoPainter extends CustomPainter {
 
   void _drawFaceMesh(Canvas canvas, double scaleX, double scaleY) {
     final paint = Paint()
-      ..color = AppTheme.primary.withValues(alpha: 0.6)
+      ..color = AppTheme.primary.withOpacity(0.6)
       ..strokeWidth = 1.5
       ..style = PaintingStyle.stroke;
 
@@ -61,7 +61,7 @@ class VtoPainter extends CustomPainter {
 
   void _drawHandMesh(Canvas canvas, double scaleX, double scaleY) {
     final paint = Paint()
-      ..color = AppTheme.accent.withValues(alpha: 0.6)
+      ..color = AppTheme.accent.withOpacity(0.6)
       ..strokeWidth = 1.5
       ..style = PaintingStyle.stroke;
 

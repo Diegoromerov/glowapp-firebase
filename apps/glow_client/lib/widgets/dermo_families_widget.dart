@@ -29,7 +29,7 @@ class DermoFamiliesWidget extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: (family['color'] as Color? ?? AppTheme.primary).withValues(alpha: 0.1),
+                      color: (family['color'] as Color? ?? AppTheme.primary).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Icon(

@@ -29,13 +29,13 @@ class ProfileHeader extends StatelessWidget {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFC5A052).withValues(alpha: 0.08),
+            color: const Color(0xFFC5A052).withOpacity(0.08),
             blurRadius: 24,
             offset: const Offset(0, 8),
             spreadRadius: 2,
           ),
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.03),
+            color: Colors.black.withOpacity(0.03),
             blurRadius: 12,
             offset: const Offset(0, 2),
           ),
@@ -60,7 +60,7 @@ class ProfileHeader extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                      color: const Color(0xFFC5A052).withOpacity(0.35),
                       blurRadius: 18,
                       offset: const Offset(0, 6),
                     ),
@@ -101,7 +101,7 @@ class ProfileHeader extends StatelessWidget {
                         border: Border.all(color: Colors.white, width: 2),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.15),
+                            color: Colors.black.withOpacity(0.15),
                             blurRadius: 6,
                           ),
                         ],
@@ -159,10 +159,10 @@ class ProfileHeader extends StatelessWidget {
                 colors: [Color(0xFFFFF7E6), Color(0xFFF6E7C8)],
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: const Color(0xFFD4AF37).withValues(alpha: 0.6), width: 1.2),
+              border: Border.all(color: const Color(0xFFD4AF37).withOpacity(0.6), width: 1.2),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFD4AF37).withValues(alpha: 0.12),
+                  color: const Color(0xFFD4AF37).withOpacity(0.12),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),

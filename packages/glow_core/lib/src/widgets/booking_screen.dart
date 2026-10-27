@@ -23,7 +23,7 @@ class BookingScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.calendar_today, size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.calendar_today, size: 64, color: AppTheme.primary.withOpacity(0.5)),
             const SizedBox(height: 16),
             Text('Pantalla de Reservas', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),

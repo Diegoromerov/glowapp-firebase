@@ -657,7 +657,7 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.4)),
+                border: Border.all(color: const Color(0xFFC5A052).withOpacity(0.4)),
                 boxShadow: const [
                   BoxShadow(
                     color: Color(0x08000000),

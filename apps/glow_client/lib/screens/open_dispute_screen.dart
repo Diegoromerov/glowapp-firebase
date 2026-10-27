@@ -325,7 +325,7 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                            color: const Color(0xFFC5A052).withOpacity(0.35),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),

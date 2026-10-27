@@ -129,10 +129,10 @@ class S4TextField extends StatelessWidget {
     if (decoration == null) {
       if (!enabled) {
         effectiveDecoration = effectiveDecoration.copyWith(
-          fillColor: token.surfaceLevel0.withValues(alpha: 0.08),
+          fillColor: token.surfaceLevel0.withOpacity(0.08),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(Radii.radiusControl),
-            borderSide: BorderSide(color: token.borderSubtle.withValues(alpha: 0.2)),
+            borderSide: BorderSide(color: token.borderSubtle.withOpacity(0.2)),
           ),
         );
       } else if (showError) {

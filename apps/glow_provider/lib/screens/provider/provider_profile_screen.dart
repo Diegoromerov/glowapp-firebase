@@ -262,7 +262,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.08),
+            color: Color(0xFFC5A052).withOpacity(0.08),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -295,7 +295,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                 decoration: BoxDecoration(
                   color: const Color(0xFFFAF6EE),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.3), width: 0.8),
+                  border: Border.all(color: Color(0xFFC5A052).withOpacity(0.3), width: 0.8),
                 ),
                 child: Text(
                   '$displayPercent%',
@@ -361,7 +361,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         border: Border.all(color: borderColor, width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: textColor.withValues(alpha: 0.08),
+            color: textColor.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -417,7 +417,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.06),
+            color: Color(0xFFC5A052).withOpacity(0.06),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -693,7 +693,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                         border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.04),
+                            color: Colors.black.withOpacity(0.04),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -762,7 +762,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFFC5A052).withValues(alpha: 0.35),
+                                    color: Color(0xFFC5A052).withOpacity(0.35),
                                     blurRadius: 20,
                                     offset: const Offset(0, 6),
                                   ),
@@ -800,7 +800,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                                     border: Border.all(color: Colors.white, width: 2.5),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0xFFC5A052).withValues(alpha: 0.4),
+                                        color: Color(0xFFC5A052).withOpacity(0.4),
                                         blurRadius: 8,
                                         offset: const Offset(0, 3),
                                       ),
@@ -826,7 +826,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                           decoration: BoxDecoration(
                             color: const Color(0xFFFAF6EE),
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.3), width: 0.8),
+                            border: Border.all(color: Color(0xFFC5A052).withOpacity(0.3), width: 0.8),
                           ),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
@@ -959,7 +959,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xFFC5A052).withValues(alpha: 0.35),
+                      color: Color(0xFFC5A052).withOpacity(0.35),
                       blurRadius: 14,
                       offset: const Offset(0, 4),
                     ),
@@ -1092,7 +1092,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
           color: const Color(0xFFFAF6EE),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: Color(0xFFC5A052).withValues(alpha: 0.25),
+            color: Color(0xFFC5A052).withOpacity(0.25),
             width: 0.8,
           ),
         ),
@@ -1115,7 +1115,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
           color: const Color(0xFFFAF6EE),
           shape: BoxShape.circle,
           border: Border.all(
-            color: Color(0xFFC5A052).withValues(alpha: 0.2),
+            color: Color(0xFFC5A052).withOpacity(0.2),
             width: 0.8,
           ),
         ),

@@ -377,7 +377,7 @@ class _MovimientoTile extends StatelessWidget {
             padding: const EdgeInsets.all(7),
             decoration: BoxDecoration(
               color: (esIngreso ? const Color(0xFF2E7D32) : const Color(0xFFC62828))
-                  .withValues(alpha: 0.10),
+                  .withOpacity(0.10),
               borderRadius: BorderRadius.circular(Radii.round),
             ),
             child: Icon(

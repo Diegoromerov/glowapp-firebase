@@ -141,10 +141,10 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
                     child: Container(
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF141210).withValues(alpha: 0.85),
+                        color: const Color(0xFF141210).withOpacity(0.85),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: const Color(0xFFC5A052).withValues(alpha: 0.8),
+                          color: const Color(0xFFC5A052).withOpacity(0.8),
                           width: 1.2,
                         ),
                       ),
@@ -353,7 +353,7 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFC5A052).withValues(alpha: 0.4),
+                color: const Color(0xFFC5A052).withOpacity(0.4),
                 blurRadius: 20,
                 spreadRadius: 2,
                 offset: const Offset(0, 4),
@@ -372,7 +372,7 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
                 AspectRatio(
                   aspectRatio: 1.0,
                   child: Container(
-                    color: const Color(0xFF141210).withValues(alpha: 0.2),
+                    color: const Color(0xFF141210).withOpacity(0.2),
                   ),
                 ),
 
@@ -384,12 +384,12 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
                   padding: const EdgeInsets.all(12),
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFC5A052).withValues(alpha: 0.92),
+                      backgroundColor: const Color(0xFFC5A052).withOpacity(0.92),
                       foregroundColor: const Color(0xFF141210),
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                       elevation: 8,
-                      shadowColor: const Color(0xFFC5A052).withValues(alpha: 0.5),
+                      shadowColor: const Color(0xFFC5A052).withOpacity(0.5),
                     ),
                     onPressed: _startPlayback,
                     icon: const Icon(Icons.play_arrow_rounded, size: 22, color: Color(0xFF141210)),
@@ -412,7 +412,7 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.7),
+                      color: Colors.black.withOpacity(0.7),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: const Color(0xFFC5A052), width: 1),
                     ),
@@ -439,4 +439,4 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
 }
 
 
-
+

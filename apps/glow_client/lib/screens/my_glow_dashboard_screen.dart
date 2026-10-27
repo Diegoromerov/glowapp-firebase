@@ -49,7 +49,7 @@ class MyGlowDashboardScreen extends StatelessWidget {
                       border: Border.all(color: const Color(0xFFD4AF37), width: 1),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.15),
+                          color: Colors.black.withOpacity(0.15),
                           blurRadius: 18,
                           offset: const Offset(0, 8),
                         ),
@@ -64,7 +64,7 @@ class MyGlowDashboardScreen extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFC5A052).withValues(alpha: 0.2),
+                                color: const Color(0xFFC5A052).withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: const Color(0xFFC5A052), width: 0.8),
                               ),

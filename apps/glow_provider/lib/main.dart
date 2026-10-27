@@ -323,7 +323,7 @@ ThemeData _buildMensTheme() {
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: MensTheme.champagneGold.withValues(alpha: 0.3)),
+        side: BorderSide(color: MensTheme.champagneGold.withOpacity(0.3)),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -358,11 +358,11 @@ ThemeData _buildMensTheme() {
       fillColor: MensTheme.obsidianCard,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: MensTheme.champagneGold.withValues(alpha: 0.5)),
+        borderSide: BorderSide(color: MensTheme.champagneGold.withOpacity(0.5)),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: MensTheme.champagneGold.withValues(alpha: 0.5)),
+        borderSide: BorderSide(color: MensTheme.champagneGold.withOpacity(0.5)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -477,7 +477,7 @@ ThemeData _buildMensTheme() {
       color: MensTheme.textSecondary,
       size: 24,
     ),
-    dividerColor: MensTheme.champagneGold.withValues(alpha: 0.2),
+    dividerColor: MensTheme.champagneGold.withOpacity(0.2),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: MensTheme.champagneGold,
     ),

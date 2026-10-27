@@ -140,7 +140,7 @@ class _GlowNBackScreenState extends State<GlowNBackScreen>
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                           decoration: BoxDecoration(
-                            color: AppTheme.primary.withValues(alpha: 0.1),
+                            color: AppTheme.primary.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
@@ -159,7 +159,7 @@ class _GlowNBackScreenState extends State<GlowNBackScreen>
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                           decoration: BoxDecoration(
-                            color: AppTheme.success.withValues(alpha: 0.1),
+                            color: AppTheme.success.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
@@ -196,7 +196,7 @@ class _GlowNBackScreenState extends State<GlowNBackScreen>
                             width: 130,
                             height: 130,
                             decoration: BoxDecoration(
-                              color: stimulusColor.withValues(alpha: 0.15),
+                              color: stimulusColor.withOpacity(0.15),
                               shape: BoxShape.circle,
                               border: Border.all(
                                   color: stimulusColor, width: 3),

@@ -24,7 +24,7 @@ class VerificationPendingScreen extends StatelessWidget {
                     height: 90,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFFF3D59B).withValues(alpha: 0.2),
+                      color: Color(0xFFF3D59B).withOpacity(0.2),
                       border: Border.all(color: const Color(0xFFC5A052), width: 2),
                     ),
                     child: const Icon(

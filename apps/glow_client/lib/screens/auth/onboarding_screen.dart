@@ -310,7 +310,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isSelected ? plan.color.withValues(alpha: 0.1) : Colors.transparent,
+              color: isSelected ? plan.color.withOpacity(0.1) : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: isSelected ? plan.color : const Color(0xFFEFE8DE),
@@ -373,9 +373,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: invite.role.color.withValues(alpha: 0.1),
+        color: invite.role.color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: invite.role.color.withValues(alpha: 0.3)),
+        border: Border.all(color: invite.role.color.withOpacity(0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -664,7 +664,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.redAccent.withValues(alpha: 0.5)),
+                              border: Border.all(color: Colors.redAccent.withOpacity(0.5)),
                             ),
                             child: Text(
                               _error!,
@@ -730,12 +730,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       margin: const EdgeInsets.only(top: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF8F5).withValues(alpha: 0.96),
+        color: const Color(0xFFFAF8F5).withOpacity(0.96),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFC5A052), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withOpacity(0.25),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -824,7 +824,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                  color: const Color(0xFFC5A052).withOpacity(0.35),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -867,12 +867,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       margin: const EdgeInsets.only(top: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF8F5).withValues(alpha: 0.96),
+        color: const Color(0xFFFAF8F5).withOpacity(0.96),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFC5A052), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withOpacity(0.25),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -1025,7 +1025,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               border: Border.all(color: const Color(0xFFEFE8DE)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.03),
+                  color: Colors.black.withOpacity(0.03),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -1071,7 +1071,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               border: Border.all(color: const Color(0xFFEFE8DE)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.03),
+                  color: Colors.black.withOpacity(0.03),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -1116,7 +1116,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: const Color(0xFFEFE8DE).withValues(alpha: 0.5)),
+                      border: Border.all(color: const Color(0xFFEFE8DE).withOpacity(0.5)),
                     ),
                     child: const Row(
                       children: [
@@ -1151,7 +1151,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               border: Border.all(color: const Color(0xFFEFE8DE)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.03),
+                  color: Colors.black.withOpacity(0.03),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -1322,7 +1322,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.4)),
+                      border: Border.all(color: const Color(0xFFC5A052).withOpacity(0.4)),
                     ),
                     child: Row(
                       children: [
@@ -1435,7 +1435,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.04),
+                  color: Colors.black.withOpacity(0.04),
                   blurRadius: 10,
                   offset: const Offset(0, 3),
                 ),
@@ -1550,7 +1550,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       border: Border.all(color: Colors.white, width: 2.5),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withValues(alpha: 0.35),
+                                          color: Colors.black.withOpacity(0.35),
                                           blurRadius: 8,
                                           offset: const Offset(0, 3),
                                         ),
@@ -1574,7 +1574,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
-                              color: Colors.black.withValues(alpha: 0.75),
+                              color: Colors.black.withOpacity(0.75),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Row(
@@ -1683,7 +1683,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                  color: const Color(0xFFC5A052).withOpacity(0.35),
                   blurRadius: 14,
                   offset: const Offset(0, 4),
                 ),
@@ -1746,12 +1746,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       margin: const EdgeInsets.only(top: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF8F5).withValues(alpha: 0.96),
+        color: const Color(0xFFFAF8F5).withOpacity(0.96),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFC5A052), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withOpacity(0.25),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -1936,7 +1936,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               boxShadow: isSubmitEnabled
                   ? [
                       BoxShadow(
-                        color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                        color: const Color(0xFFC5A052).withOpacity(0.35),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
@@ -2106,7 +2106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             border: Border.all(color: const Color(0xFFEFE8DE)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.04),
+                color: Colors.black.withOpacity(0.04),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -2233,7 +2233,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.03),
+              color: Colors.black.withOpacity(0.03),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -2322,7 +2322,7 @@ class _RoleCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? const Color(0xFFFAF6EE)
-              : Colors.white.withValues(alpha: 0.94),
+              : Colors.white.withOpacity(0.94),
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
             color: isSelected ? const Color(0xFFC5A052) : const Color(0xFFEFE8DE),
@@ -2331,8 +2331,8 @@ class _RoleCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: isSelected
-                  ? const Color(0xFFC5A052).withValues(alpha: 0.22)
-                  : Colors.black.withValues(alpha: 0.05),
+                  ? const Color(0xFFC5A052).withOpacity(0.22)
+                  : Colors.black.withOpacity(0.05),
               blurRadius: isSelected ? 12 : 6,
               offset: const Offset(0, 3),
             ),

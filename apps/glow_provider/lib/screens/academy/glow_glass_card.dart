@@ -16,9 +16,9 @@ class GlowGlassCard extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.08),
+            color: Colors.white.withOpacity(0.08),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.12), width: 1),
+            border: Border.all(color: Colors.white.withOpacity(0.12), width: 1),
           ),
           padding: const EdgeInsets.all(16),
           child: child,

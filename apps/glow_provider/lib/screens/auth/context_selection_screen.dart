@@ -138,7 +138,7 @@ class _ContextSelectionScreenState extends State<ContextSelectionScreen> {
                                       width: 52,
                                       height: 52,
                                       decoration: BoxDecoration(
-                                        color: roleColor.withValues(alpha: 0.12),
+                                        color: roleColor.withOpacity(0.12),
                                         borderRadius: BorderRadius.circular(14),
                                       ),
                                       child: Icon(

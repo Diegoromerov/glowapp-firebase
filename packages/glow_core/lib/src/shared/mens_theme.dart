@@ -51,7 +51,7 @@ class MensTheme {
   // Sombras y Resplandores
   static List<BoxShadow> get goldGlow => [
         BoxShadow(
-          color: champagneGold.withValues(alpha: 0.3),
+          color: champagneGold.withOpacity(0.3),
           blurRadius: 16,
           offset: const Offset(0, 4),
         ),
@@ -59,7 +59,7 @@ class MensTheme {
 
   static List<BoxShadow> get cyanScannerGlow => [
         BoxShadow(
-          color: cyberCyan.withValues(alpha: 0.4),
+          color: cyberCyan.withOpacity(0.4),
           blurRadius: 20,
           spreadRadius: 2,
         ),

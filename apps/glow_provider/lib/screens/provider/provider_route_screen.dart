@@ -164,7 +164,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                   border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
+                      color: Colors.black.withOpacity(0.04),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -239,7 +239,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color:
-                                        AppTheme.primary.withValues(alpha: 0.6),
+                                        AppTheme.primary.withOpacity(0.6),
                                     width: 2,
                                   ),
                                 ),
@@ -261,7 +261,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color:
-                                        AppTheme.primary.withValues(alpha: 0.4),
+                                        AppTheme.primary.withOpacity(0.4),
                                     width: 2,
                                   ),
                                 ),
@@ -303,10 +303,10 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppTheme.surface.withValues(alpha: 0.7),
+                    color: AppTheme.surface.withOpacity(0.7),
                     borderRadius: BorderRadius.circular(24),
                     border: Border.all(
-                        color: AppTheme.surface.withValues(alpha: 0.5),
+                        color: AppTheme.surface.withOpacity(0.5),
                         width: 1.5),
                     boxShadow: AppTheme.cardShadow,
                   ),
@@ -338,7 +338,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                         SizedBox(height: 10),
                         Divider(
                             height: 1,
-                            color: AppTheme.primary.withValues(alpha: 0.2)),
+                            color: AppTheme.primary.withOpacity(0.2)),
                         SizedBox(height: 10),
                         Text(
                           'Servicio: $serviceName',
@@ -399,10 +399,10 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppTheme.surface.withValues(alpha: 0.7),
+                    color: AppTheme.surface.withOpacity(0.7),
                     borderRadius: BorderRadius.circular(28),
                     border: Border.all(
-                        color: AppTheme.surface.withValues(alpha: 0.5),
+                        color: AppTheme.surface.withOpacity(0.5),
                         width: 1.5),
                     boxShadow: AppTheme.cardShadow,
                   ),
@@ -480,7 +480,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                         ),
                         Divider(
                             height: 24,
-                            color: AppTheme.primary.withValues(alpha: 0.2)),
+                            color: AppTheme.primary.withOpacity(0.2)),
                         Row(
                           children: [
                             GestureDetector(
@@ -545,7 +545,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                                             ),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Color(0xFFC5A052).withValues(alpha: 0.35),
+                                                color: Color(0xFFC5A052).withOpacity(0.35),
                                                 blurRadius: 10,
                                                 offset: const Offset(0, 4),
                                               ),

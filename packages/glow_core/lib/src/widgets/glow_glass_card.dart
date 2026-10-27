@@ -33,15 +33,15 @@ class GlowGlassCard extends StatelessWidget {
           child: Container(
             padding: padding,
             decoration: BoxDecoration(
-              color: GlowTokens.creamSilk.withValues(alpha: 0.6),
+              color: GlowTokens.creamSilk.withOpacity(0.6),
               borderRadius: BorderRadius.circular(borderRadius),
               border: Border.all(
-                color: GlowTokens.roseGold.withValues(alpha: 0.3),
+                color: GlowTokens.roseGold.withOpacity(0.3),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: GlowTokens.nightAndean.withValues(alpha: 0.05),
+                  color: GlowTokens.nightAndean.withOpacity(0.05),
                   blurRadius: 16,
                   offset: const Offset(0, 8),
                 ),

@@ -49,7 +49,7 @@ class BiometricHistoryScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
+                      color: Colors.black.withOpacity(0.15),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -63,7 +63,7 @@ class BiometricHistoryScreen extends StatelessWidget {
                       margin: const EdgeInsets.only(bottom: 12),
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF059669).withValues(alpha: 0.2),
+                        color: const Color(0xFF059669).withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(color: const Color(0xFF059669), width: 0.8),
                       ),
@@ -101,7 +101,7 @@ class BiometricHistoryScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFC5A052).withValues(alpha: 0.2),
+                            color: const Color(0xFFC5A052).withOpacity(0.2),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(color: const Color(0xFFC5A052), width: 0.8),
                           ),

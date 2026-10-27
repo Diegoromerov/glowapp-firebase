@@ -205,7 +205,7 @@ class _DeliveryAddressesSectionState extends State<DeliveryAddressesSection> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.02),
+            color: Colors.black.withOpacity(0.02),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -297,7 +297,7 @@ class _DeliveryAddressesSectionState extends State<DeliveryAddressesSection> {
                   icon: const Icon(Icons.edit_outlined, size: 20, color: LuxeColors.nude500),
                   tooltip: 'Editar dirección',
                   style: IconButton.styleFrom(
-                    backgroundColor: LuxeColors.nude200.withValues(alpha: 0.5),
+                    backgroundColor: LuxeColors.nude200.withOpacity(0.5),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                 ),
@@ -346,7 +346,7 @@ class _DeliveryAddressesSectionState extends State<DeliveryAddressesSection> {
                   icon: const Icon(Icons.delete_outline, size: 18, color: LuxeColors.nude500),
                   tooltip: 'Eliminar',
                   style: IconButton.styleFrom(
-                    backgroundColor: LuxeColors.nude200.withValues(alpha: 0.5),
+                    backgroundColor: LuxeColors.nude200.withOpacity(0.5),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                 ),
@@ -376,9 +376,9 @@ class _DeliveryAddressesSectionState extends State<DeliveryAddressesSection> {
           return Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFFB00020).withValues(alpha: 0.1),
+              color: const Color(0xFFB00020).withOpacity(0.1),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: const Color(0xFFB00020).withValues(alpha: 0.3)),
+              border: Border.all(color: const Color(0xFFB00020).withOpacity(0.3)),
             ),
             child: Row(
               children: [

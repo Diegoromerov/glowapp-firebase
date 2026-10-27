@@ -144,7 +144,7 @@ class _BusinessTaskDetailScreenState extends State<BusinessTaskDetailScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.inbox_outlined, size: 56, color: AppTheme.primary.withValues(alpha: 0.3)),
+            Icon(Icons.inbox_outlined, size: 56, color: AppTheme.primary.withOpacity(0.3)),
             const SizedBox(height: 16),
             Text(
               'No se recibió ninguna tarea que mostrar.',
@@ -177,8 +177,8 @@ class _BusinessTaskDetailScreenState extends State<BusinessTaskDetailScreen> {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: tarea.status.color.withValues(alpha: 0.10),
-              border: Border.all(color: tarea.status.color.withValues(alpha: 0.4)),
+              color: tarea.status.color.withOpacity(0.10),
+              border: Border.all(color: tarea.status.color.withOpacity(0.4)),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -240,9 +240,9 @@ class _BusinessTaskDetailScreenState extends State<BusinessTaskDetailScreen> {
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               decoration: BoxDecoration(
-                color: esActual ? AppTheme.primary.withValues(alpha: 0.08) : Colors.white,
+                color: esActual ? AppTheme.primary.withOpacity(0.08) : Colors.white,
                 border: Border.all(
-                  color: esActual ? AppTheme.primary.withValues(alpha: 0.5) : Colors.grey.shade300,
+                  color: esActual ? AppTheme.primary.withOpacity(0.5) : Colors.grey.shade300,
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),

@@ -128,10 +128,10 @@ class BackgroundVideoPlayerState extends State<BackgroundVideoPlayer> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.55),
+                        color: Colors.black.withOpacity(0.55),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: const Color(0xFFC5A052).withValues(alpha: 0.6),
+                          color: const Color(0xFFC5A052).withOpacity(0.6),
                           width: 1,
                         ),
                       ),

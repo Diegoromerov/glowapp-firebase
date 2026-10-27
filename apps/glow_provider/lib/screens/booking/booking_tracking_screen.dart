@@ -193,7 +193,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                   border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
+                      color: Colors.black.withOpacity(0.04),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -268,7 +268,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                 height: 35 + (_pulseController.value * 55),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: AppTheme.primary.withValues(alpha: 0.4),
+                                  color: AppTheme.primary.withOpacity(0.4),
                                 ),
                               ),
                             ),
@@ -286,7 +286,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                         55),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: AppTheme.primary.withValues(alpha: 0.25),
+                                  color: AppTheme.primary.withOpacity(0.25),
                                 ),
                               ),
                             ),
@@ -305,7 +305,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                             label: providerAvatar.isNotEmpty ? 'Avatar del profesional' : 'Icono de profesional',
                             child: CircleAvatar(
                               radius: 18,
-                              backgroundColor: AppTheme.accent.withValues(alpha: 0.2),
+                              backgroundColor: AppTheme.accent.withOpacity(0.2),
                               backgroundImage: providerAvatar.isNotEmpty
                                   ? NetworkImage(providerAvatar)
                                   : null,
@@ -382,10 +382,10 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                 filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.85),
+                    color: Colors.white.withOpacity(0.85),
                     borderRadius: BorderRadius.circular(28),
                     border: Border.all(
-                        color: AppTheme.primary.withValues(alpha: 0.2), width: 1.5),
+                        color: AppTheme.primary.withOpacity(0.2), width: 1.5),
                     boxShadow: AppTheme.cardShadow,
                   ),
                   child: Padding(
@@ -398,7 +398,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                           children: [
                             CircleAvatar(
                               radius: 26,
-                              backgroundColor: AppTheme.accent.withValues(alpha: 0.2),
+                              backgroundColor: AppTheme.accent.withOpacity(0.2),
                               backgroundImage: providerAvatar.isNotEmpty
                                   ? NetworkImage(providerAvatar)
                                   : null,
@@ -509,10 +509,10 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                           padding: const EdgeInsets.symmetric(
                               horizontal: 14, vertical: 10),
                           decoration: BoxDecoration(
-                            color: AppTheme.accent.withValues(alpha: 0.15),
+                            color: AppTheme.accent.withOpacity(0.15),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                                color: AppTheme.primary.withValues(alpha: 0.15)),
+                                color: AppTheme.primary.withOpacity(0.15)),
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

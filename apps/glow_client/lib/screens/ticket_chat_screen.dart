@@ -33,7 +33,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
 
   // Colors cached from AppTheme
   late final Color _textColor = AppTheme.text;
-  late final Color _mutedText = AppTheme.text.withValues(alpha: 0.6);
+  late final Color _mutedText = AppTheme.text.withOpacity(0.6);
   late final Color _surfaceColor = AppTheme.surface;
   late final Color _backgroundColor = AppTheme.background;
   late final Color _primaryColor = AppTheme.primary;
@@ -227,7 +227,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.chat_bubble_outline, size: 48, color: _primaryColor.withValues(alpha: 0.5)),
+            Icon(Icons.chat_bubble_outline, size: 48, color: _primaryColor.withOpacity(0.5)),
             const SizedBox(height: 12),
             Text(
               'Chat de Soporte Tecnico!',
@@ -252,7 +252,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
     required String name,
   }) {
     final bubbleColor = isMe
-        ? _primaryColor.withValues(alpha: 0.9)
+        ? _primaryColor.withOpacity(0.9)
         : (isAdmin ? const Color(0xFFF1E4E2) : Colors.grey[100]!);
     final bubbleTextColor = isMe ? Colors.white : Colors.black87;
     final align = isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;

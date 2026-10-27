@@ -115,7 +115,7 @@ class _Guia extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+        color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.5),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Column(
@@ -256,7 +256,7 @@ class _FichaEscaneo extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
-                        color: _colorVeredicto(veredicto, scheme).withValues(alpha: 0.12),
+                        color: _colorVeredicto(veredicto, scheme).withOpacity(0.12),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(

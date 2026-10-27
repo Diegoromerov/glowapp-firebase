@@ -63,7 +63,7 @@ class LuxeProfileTile extends StatelessWidget {
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: const Color(0xFFC5A052).withValues(alpha: 0.25),
+                        color: const Color(0xFFC5A052).withOpacity(0.25),
                         width: 1,
                       ),
                     ),
@@ -109,7 +109,7 @@ class LuxeProfileTile extends StatelessWidget {
                           color: const Color(0xFFFAF6EE),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(0xFFC5A052).withValues(alpha: 0.2),
+                            color: const Color(0xFFC5A052).withOpacity(0.2),
                             width: 0.8,
                           ),
                         ),

@@ -137,9 +137,9 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.red.withValues(alpha: 0.06),
+        color: Colors.red.withOpacity(0.06),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
+        border: Border.all(color: Colors.red.withOpacity(0.3)),
       ),
       child: Text('No se pudieron cargar las API Keys: $error',
           style: const TextStyle(fontSize: 12, color: Colors.red)),
@@ -218,7 +218,7 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
+                  color: color.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: color),
                 ),
@@ -237,7 +237,7 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                 .map((s) => Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
-                        color: _gold.withValues(alpha: 0.1),
+                        color: _gold.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(s.code,

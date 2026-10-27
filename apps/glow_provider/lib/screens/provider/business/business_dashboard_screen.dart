@@ -165,7 +165,7 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
           Icon(
             Icons.business_center_outlined,
             size: 56,
-            color: AppTheme.background.withValues(alpha: 0.35),
+            color: AppTheme.background.withOpacity(0.35),
           ),
           const SizedBox(height: 16),
           Text(
@@ -261,7 +261,7 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.background.withValues(alpha: 0.12)),
+        border: Border.all(color: AppTheme.background.withOpacity(0.12)),
       ),
       child: Text(
         mensaje,
@@ -289,7 +289,7 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.12),
+            color: Colors.black.withOpacity(0.12),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -378,7 +378,7 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
             if (mounted) _cargar();
           },
           leading: CircleAvatar(
-            backgroundColor: AppTheme.primary.withValues(alpha: 0.12),
+            backgroundColor: AppTheme.primary.withOpacity(0.12),
             child: Icon(task.stage.icon, color: AppTheme.primary, size: 20),
           ),
           title: Text(task.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
@@ -389,7 +389,7 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
           trailing: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: task.status.color.withValues(alpha: 0.15),
+              color: task.status.color.withOpacity(0.15),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
@@ -410,8 +410,8 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: risk.color.withValues(alpha: 0.08),
-        border: Border.all(color: risk.color.withValues(alpha: 0.4)),
+        color: risk.color.withOpacity(0.08),
+        border: Border.all(color: risk.color.withOpacity(0.4)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(

@@ -878,7 +878,7 @@ class AppShadow {
 
   static List<BoxShadow> glow(Token t, {Color? color}) => [
     BoxShadow(
-      color: (color ?? t.brandPrimary).withValues(alpha: 0.35),
+      color: (color ?? t.brandPrimary).withOpacity(0.35),
       blurRadius: 16,
       offset: const Offset(0, 6),
     ),

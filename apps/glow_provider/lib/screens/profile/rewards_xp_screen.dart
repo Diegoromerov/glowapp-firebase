@@ -50,7 +50,7 @@ class RewardsXpScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xFFAA7C11).withValues(alpha: 0.3),
+                      color: Color(0xFFAA7C11).withOpacity(0.3),
                       blurRadius: 16,
                       offset: const Offset(0, 6),
                     ),
@@ -185,7 +185,7 @@ class RewardsXpScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Color(0xFFC5A052).withValues(alpha: 0.12),
+              color: Color(0xFFC5A052).withOpacity(0.12),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: const Color(0xFFC5A052), size: 22),

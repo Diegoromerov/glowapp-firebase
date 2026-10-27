@@ -80,9 +80,9 @@ class GlowStoreTokens {
 
   /// Nivel 2 — Superficie Premium Glass / Frosted (Nude100 85% / Obsidian Glass 85%)
   static Color surfaceLevel2({required bool isMen, bool isDark = false}) {
-    if (isMen) return MensTheme.obsidianCard.withValues(alpha: 0.85);
-    if (isDark) return const Color(0xFF24232B).withValues(alpha: 0.85);
-    return nude100.withValues(alpha: 0.85);
+    if (isMen) return MensTheme.obsidianCard.withOpacity(0.85);
+    if (isDark) return const Color(0xFF24232B).withOpacity(0.85);
+    return nude100.withOpacity(0.85);
   }
 
   /// Nivel 3 — Superficie de Selección / CTA (Gold871 / Champagne Gold)
@@ -112,7 +112,7 @@ class GlowStoreTokens {
 
   /// Glass — Premium glass morphism
   static Color surfaceGlass({required bool isMen}) {
-    return isMen ? MensTheme.obsidianCard.withValues(alpha: 0.85) : Colors.white.withValues(alpha: 0.8);
+    return isMen ? MensTheme.obsidianCard.withOpacity(0.85) : Colors.white.withOpacity(0.8);
   }
 
   /// Input — Text field background
@@ -124,7 +124,7 @@ class GlowStoreTokens {
 
   /// Selected — Selected chips, items
   static Color surfaceSelected({required bool isMen}) {
-    return isMen ? champagneMen.withValues(alpha: 0.12) : gold871.withValues(alpha: 0.12);
+    return isMen ? champagneMen.withOpacity(0.12) : gold871.withOpacity(0.12);
   }
 
   // ===========================================================================
@@ -153,7 +153,7 @@ class GlowStoreTokens {
   /// Sombra ambiental suave
   static final List<BoxShadow> shadowAmbient = [
     BoxShadow(
-      color: Colors.black.withValues(alpha: 0.04),
+      color: Colors.black.withOpacity(0.04),
       blurRadius: 8,
       offset: const Offset(0, 2),
     ),
@@ -162,7 +162,7 @@ class GlowStoreTokens {
   /// Sombra de carta estándar
   static final List<BoxShadow> shadowCard = [
     BoxShadow(
-      color: Colors.black.withValues(alpha: 0.04),
+      color: Colors.black.withOpacity(0.04),
       blurRadius: 24,
       offset: const Offset(0, 8),
       spreadRadius: -4,
@@ -172,7 +172,7 @@ class GlowStoreTokens {
   /// Sombra de brillo dorado para elementos destacados (Women)
   static final List<BoxShadow> shadowGoldGlow = [
     BoxShadow(
-      color: gold871.withValues(alpha: 0.18),
+      color: gold871.withOpacity(0.18),
       blurRadius: 16,
       offset: const Offset(0, 6),
     ),
@@ -181,7 +181,7 @@ class GlowStoreTokens {
   /// Sombra de brillo champán para elementos destacados (Men)
   static final List<BoxShadow> shadowChampagneGlow = [
     BoxShadow(
-      color: champagneMen.withValues(alpha: 0.3),
+      color: champagneMen.withOpacity(0.3),
       blurRadius: 16,
       offset: const Offset(0, 4),
     ),
@@ -190,7 +190,7 @@ class GlowStoreTokens {
   /// Sombra AURA para features de inteligencia
   static final List<BoxShadow> shadowAura = [
     BoxShadow(
-      color: auraTeal.withValues(alpha: 0.2),
+      color: auraTeal.withOpacity(0.2),
       blurRadius: 20,
       offset: const Offset(0, 0),
       spreadRadius: 2,
@@ -200,7 +200,7 @@ class GlowStoreTokens {
   /// Sombra de profundidad para paneles flotantes y Cart Drawer
   static final List<BoxShadow> shadowDrawer = [
     BoxShadow(
-      color: Colors.black.withValues(alpha: 0.08),
+      color: Colors.black.withOpacity(0.08),
       blurRadius: 24,
       offset: const Offset(-6, 0),
     ),
@@ -293,7 +293,7 @@ class GlowStoreTokens {
   // 6. ESTADOS VISUALES INTERACTIVOS (S1 Interaction System)
   // ===========================================================================
   static Color stateNormalBorder({required bool isMen}) {
-    return isMen ? bronzeAccent.withValues(alpha: 0.2) : nude200;
+    return isMen ? bronzeAccent.withOpacity(0.2) : nude200;
   }
 
   static Color stateHoverBorder({required bool isMen}) {
@@ -335,7 +335,7 @@ class GlowStoreTokens {
   }
 
   static Color borderColor({required bool isMen, bool isDark = false}) {
-    if (isMen) return bronzeAccent.withValues(alpha: 0.35);
+    if (isMen) return bronzeAccent.withOpacity(0.35);
     if (isDark) return const Color(0xFF33313D);
     return nude200;
   }

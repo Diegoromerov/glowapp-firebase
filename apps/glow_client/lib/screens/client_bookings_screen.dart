@@ -274,7 +274,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   decoration: BoxDecoration(
                     color: isSelected
                         ? AppTheme.primary
-                        : AppTheme.accent.withValues(alpha: 0.15),
+                        : AppTheme.accent.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
                       color: isSelected ? AppTheme.primary : Colors.transparent,
@@ -382,7 +382,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                                                       color: AppTheme.primary, width: 1.5),
                                                 ),
                         filled: true,
-                        fillColor: AppTheme.accent.withValues(alpha: 0.15),
+                        fillColor: AppTheme.accent.withOpacity(0.15),
                         contentPadding: const EdgeInsets.all(16),
                       ),
                       onChanged: (v) => reviewComment = v,
@@ -701,7 +701,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
       decoration: BoxDecoration(
         color: cardBg,
         borderRadius: BorderRadius.circular(24),
-        border: isMen ? Border.all(color: MensTheme.champagneGold.withValues(alpha: 0.2)) : null,
+        border: isMen ? Border.all(color: MensTheme.champagneGold.withOpacity(0.2)) : null,
         boxShadow: AppTheme.softShadow,
       ),
       child: Padding(
@@ -713,7 +713,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
               children: [
                 CircleAvatar(
                   radius: 24,
-                  backgroundColor: AppTheme.accent.withValues(alpha: 0.2),
+                  backgroundColor: AppTheme.accent.withOpacity(0.2),
                   backgroundImage:
                       avatarUrl.isNotEmpty ? NetworkImage(avatarUrl) : null,
                   child: avatarUrl.isEmpty
@@ -832,7 +832,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.accent.withValues(alpha: 0.15),
+                  color: AppTheme.accent.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
@@ -860,7 +860,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF6B21A8).withValues(alpha: 0.3),
+                      color: const Color(0xFF6B21A8).withOpacity(0.3),
                       blurRadius: 16,
                       offset: const Offset(0, 6),
                     ),
@@ -959,7 +959,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 decoration: BoxDecoration(
                   color: AppTheme.warningBg,
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppTheme.warning.withValues(alpha: 0.2)),
+                  border: Border.all(color: AppTheme.warning.withOpacity(0.2)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

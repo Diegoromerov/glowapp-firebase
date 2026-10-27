@@ -128,9 +128,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.red.withValues(alpha: 0.06),
+        color: Colors.red.withOpacity(0.06),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
+        border: Border.all(color: Colors.red.withOpacity(0.3)),
       ),
       child: Text('No se pudo cargar el uso: $error',
           style: const TextStyle(fontSize: 12, color: Colors.red)),
@@ -147,9 +147,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
-            color: tier.color.withValues(alpha: 0.12),
+            color: tier.color.withOpacity(0.12),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: tier.color.withValues(alpha: 0.4)),
+            border: Border.all(color: tier.color.withOpacity(0.4)),
           ),
           child: Text('Plan ${tier.label}',
               style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: tier.color)),
@@ -245,7 +245,7 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
               child: LinearProgressIndicator(
                 value: unlimited ? 0.08 : progress,
                 minHeight: 5,
-                backgroundColor: color.withValues(alpha: 0.12),
+                backgroundColor: color.withOpacity(0.12),
                 valueColor: AlwaysStoppedAnimation<Color>(capColor),
               ),
             ),
@@ -314,9 +314,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.06),
+                color: color.withOpacity(0.06),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: color.withValues(alpha: 0.3)),
+                border: Border.all(color: color.withOpacity(0.3)),
               ),
               child: Row(
                 children: [

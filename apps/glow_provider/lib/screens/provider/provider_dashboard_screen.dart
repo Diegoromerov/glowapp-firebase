@@ -444,7 +444,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22),
             side: BorderSide(
-              color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+              color: Color(0xFFD4AF37).withOpacity(0.4),
               width: 1.5,
             ),
           ),
@@ -456,7 +456,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 decoration: BoxDecoration(
                   color: const Color(0xFFFAF4EB),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.3)),
+                  border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.3)),
                 ),
                 child: Icon(
                   immediate ? Icons.stars_rounded : Icons.receipt_long_outlined,
@@ -525,10 +525,10 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.25), width: 1.2),
+                      border: Border.all(color: Color(0xFFC5A052).withOpacity(0.25), width: 1.2),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFFC5A052).withValues(alpha: 0.05),
+                          color: Color(0xFFC5A052).withOpacity(0.05),
                           blurRadius: 10,
                           offset: const Offset(0, 3),
                         ),
@@ -591,7 +591,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                       border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.03),
+                          color: Colors.black.withOpacity(0.03),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -639,7 +639,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                           decoration: BoxDecoration(
                             color: const Color(0xFFFAF6EE),
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.3), width: 0.8),
+                            border: Border.all(color: Color(0xFFC5A052).withOpacity(0.3), width: 0.8),
                           ),
                           child: _breakdownRow('Dispersión Nequi (Neto 80%)',
                               '\$${netPayout.toStringAsFixed(0)} COP',
@@ -679,10 +679,10 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.25), width: 1.2),
+                      border: Border.all(color: Color(0xFFC5A052).withOpacity(0.25), width: 1.2),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFFC5A052).withValues(alpha: 0.04),
+                          color: Color(0xFFC5A052).withOpacity(0.04),
                           blurRadius: 10,
                           offset: const Offset(0, 3),
                         ),
@@ -1019,7 +1019,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 backgroundColor: const Color(0xFF1F1A15),
                 foregroundColor: const Color(0xFFFFFDF8),
                 elevation: 2,
-                shadowColor: Color(0xFFC5A052).withValues(alpha: 0.2),
+                shadowColor: Color(0xFFC5A052).withOpacity(0.2),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 padding: const EdgeInsets.symmetric(vertical: 10),
@@ -1108,7 +1108,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 backgroundColor: const Color(0xFF1F1A15),
                 foregroundColor: const Color(0xFFFFFDF8),
                 elevation: 2,
-                shadowColor: Color(0xFFC5A052).withValues(alpha: 0.2),
+                shadowColor: Color(0xFFC5A052).withOpacity(0.2),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -1124,7 +1124,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         decoration: BoxDecoration(
           color: const Color(0xFFECFEFF),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Color(0xFF06B6D4).withValues(alpha: 0.4)),
+          border: Border.all(color: Color(0xFF06B6D4).withOpacity(0.4)),
         ),
         child: Column(
           children: [
@@ -1136,7 +1136,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border:
-                    Border.all(color: Color(0xFF06B6D4).withValues(alpha: 0.2)),
+                    Border.all(color: Color(0xFF06B6D4).withOpacity(0.2)),
               ),
               child: Row(
                 children: [
@@ -1239,7 +1239,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 backgroundColor: const Color(0xFF1F1A15),
                 foregroundColor: const Color(0xFFFFFDF8),
                 elevation: 2,
-                shadowColor: Color(0xFFC5A052).withValues(alpha: 0.2),
+                shadowColor: Color(0xFFC5A052).withOpacity(0.2),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 padding: const EdgeInsets.symmetric(vertical: 10),
@@ -1295,7 +1295,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(
-              color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+              color: Color(0xFFD4AF37).withOpacity(0.4),
               width: 1.5,
             ),
           ),
@@ -1377,7 +1377,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
           side: BorderSide(
-            color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+            color: Color(0xFFD4AF37).withOpacity(0.4),
             width: 1.5,
           ),
         ),
@@ -1501,7 +1501,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(
-              color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+              color: Color(0xFFD4AF37).withOpacity(0.4),
               width: 1.5,
             ),
           ),
@@ -1626,7 +1626,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(
-              color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+              color: Color(0xFFD4AF37).withOpacity(0.4),
               width: 1.5,
             ),
           ),
@@ -1907,7 +1907,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28),
             side: BorderSide(
-              color: Color(0xFFD4AF37).withValues(alpha: 0.5),
+              color: Color(0xFFD4AF37).withOpacity(0.5),
               width: 1.5,
             ),
           ),
@@ -2066,7 +2066,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               topLeft: Radius.circular(28),
               topRight: Radius.circular(28),
             ),
-            border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.5), width: 1.5),
+            border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.5), width: 1.5),
           ),
           padding: EdgeInsets.only(
             left: 24,
@@ -2245,7 +2245,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 backgroundColor: const Color(0xFF1F1A15),
                 foregroundColor: const Color(0xFFFFFDF8),
                 elevation: 2,
-                shadowColor: Color(0xFFC5A052).withValues(alpha: 0.3),
+                shadowColor: Color(0xFFC5A052).withOpacity(0.3),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -2268,7 +2268,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             backgroundColor: const Color(0xFF1F1A15),
             foregroundColor: const Color(0xFFFFFDF8),
             elevation: 2,
-            shadowColor: Color(0xFFC5A052).withValues(alpha: 0.3),
+            shadowColor: Color(0xFFC5A052).withOpacity(0.3),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             padding: const EdgeInsets.symmetric(vertical: 14),
@@ -2285,7 +2285,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               color: const Color(0xFFFAF4EB),
               borderRadius: BorderRadius.circular(20),
               border:
-                  Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.4)),
+                  Border.all(color: Color(0xFFC5A052).withOpacity(0.4)),
             ),
             child: const Row(
               children: [
@@ -2382,7 +2382,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.08),
+            color: Color(0xFFC5A052).withOpacity(0.08),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -2533,7 +2533,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                         decoration: BoxDecoration(
                           color: const Color(0xFFFAF4EB),
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.3)),
+                          border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.3)),
                         ),
                         child: const Row(
                           mainAxisSize: MainAxisSize.min,
@@ -2558,7 +2558,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                         decoration: BoxDecoration(
                           color: const Color(0xFFFAF4EB),
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.3)),
+                          border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.3)),
                         ),
                         child: const Row(
                           mainAxisSize: MainAxisSize.min,
@@ -2583,7 +2583,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     color: const Color(0xFFFAF6EE),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Color(0xFFD4AF37).withValues(alpha: 0.3),
+                      color: Color(0xFFD4AF37).withOpacity(0.3),
                       width: 1,
                     ),
                   ),
@@ -2720,7 +2720,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFFC5A052).withValues(alpha: 0.06),
+                  color: Color(0xFFC5A052).withOpacity(0.06),
                   blurRadius: 18,
                   offset: const Offset(0, 6),
                 ),
@@ -2914,12 +2914,12 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 ),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+                  color: Color(0xFFD4AF37).withOpacity(0.4),
                   width: 1.2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xFFC5A052).withValues(alpha: 0.15),
+                    color: Color(0xFFC5A052).withOpacity(0.15),
                     blurRadius: 16,
                     offset: const Offset(0, 6),
                   ),
@@ -2931,10 +2931,10 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: Color(0xFFC5A052).withValues(alpha: 0.15),
+                      color: Color(0xFFC5A052).withOpacity(0.15),
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
-                        color: Color(0xFFD4AF37).withValues(alpha: 0.3),
+                        color: Color(0xFFD4AF37).withOpacity(0.3),
                         width: 1,
                       ),
                     ),
@@ -3006,7 +3006,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.06),
+            color: Color(0xFFC5A052).withOpacity(0.06),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -3020,7 +3020,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             decoration: BoxDecoration(
               color: const Color(0xFFFAF6EE),
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.3)),
+              border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.3)),
             ),
             child: const Icon(Icons.calendar_month_rounded, color: Color(0xFFC5A052), size: 22),
           ),
@@ -3063,7 +3063,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.05),
+            color: Color(0xFFC5A052).withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -3139,7 +3139,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: Color(0xFFC5A052).withValues(alpha: 0.2),
+                            color: Color(0xFFC5A052).withOpacity(0.2),
                             blurRadius: 8,
                             offset: const Offset(0, 3),
                           )
@@ -3221,12 +3221,12 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           color: const Color(0xFFFFFDF8),
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: Color(0xFFD4AF37).withValues(alpha: 0.3),
+            color: Color(0xFFD4AF37).withOpacity(0.3),
             width: 1.2,
           ),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFC5A052).withValues(alpha: 0.06),
+              color: Color(0xFFC5A052).withOpacity(0.06),
               blurRadius: 14,
               offset: const Offset(0, 4),
             ),
@@ -3241,7 +3241,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 color: const Color(0xFFFAF4EB),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+                  color: Color(0xFFD4AF37).withOpacity(0.4),
                   width: 1,
                 ),
               ),
@@ -3288,7 +3288,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   border: Border.all(color: const Color(0xFFEFE8DE), width: 1.2),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xFFC5A052).withValues(alpha: 0.06),
+                      color: Color(0xFFC5A052).withOpacity(0.06),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -3481,7 +3481,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                               decoration: BoxDecoration(
                                 color: const Color(0xFFFAF4EB),
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.3)),
+                                border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.3)),
                               ),
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -3506,7 +3506,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                               decoration: BoxDecoration(
                                 color: const Color(0xFFFAF4EB),
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Color(0xFFD4AF37).withValues(alpha: 0.3)),
+                                border: Border.all(color: Color(0xFFD4AF37).withOpacity(0.3)),
                               ),
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -3533,7 +3533,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 16),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.85),
+                    color: Colors.white.withOpacity(0.85),
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: Center(
@@ -3910,7 +3910,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                           border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.04),
+                              color: Colors.black.withOpacity(0.04),
                               blurRadius: 6,
                               offset: const Offset(0, 2),
                             ),
@@ -3953,7 +3953,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
                 color: isMen
-                    ? Color(0xFF141210).withValues(alpha: 0.95)
+                    ? Color(0xFF141210).withOpacity(0.95)
                     : const Color(0xFFFDFBF7),
                 borderRadius: BorderRadius.circular(36),
                 border: Border.all(
@@ -4052,7 +4052,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               elevation: 6,
               shape: CircleBorder(
                 side: BorderSide(
-                  color: Color(0xFFC5A052).withValues(alpha: 0.8),
+                  color: Color(0xFFC5A052).withOpacity(0.8),
                   width: 1.8,
                 ),
               ),
@@ -4067,7 +4067,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               elevation: 6,
               shape: CircleBorder(
                 side: BorderSide(
-                  color: Color(0xFFD4AF37).withValues(alpha: 0.8),
+                  color: Color(0xFFD4AF37).withOpacity(0.8),
                   width: 1.8,
                 ),
               ),
@@ -4096,7 +4096,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.05),
+            color: Color(0xFFC5A052).withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -4111,7 +4111,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               color: const Color(0xFFFAF6EE),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                color: Color(0xFFC5A052).withValues(alpha: 0.25),
+                color: Color(0xFFC5A052).withOpacity(0.25),
                 width: 0.8,
               ),
             ),
@@ -4170,7 +4170,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         border: Border.all(color: const Color(0xFFEFE8DE), width: 1),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC5A052).withValues(alpha: 0.05),
+            color: Color(0xFFC5A052).withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -4185,7 +4185,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               color: const Color(0xFFFAF6EE),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                color: Color(0xFFC5A052).withValues(alpha: 0.25),
+                color: Color(0xFFC5A052).withOpacity(0.25),
                 width: 0.8,
               ),
             ),
@@ -4384,7 +4384,7 @@ class _PulsingStatusChipState extends State<PulsingStatusChip>
           ),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFC5A052).withValues(alpha: 0.08),
+              color: Color(0xFFC5A052).withOpacity(0.08),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -4606,7 +4606,7 @@ class _SegmentedPinDialogState extends State<SegmentedPinDialog> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
         side: BorderSide(
-          color: Color(0xFFD4AF37).withValues(alpha: 0.4),
+          color: Color(0xFFD4AF37).withOpacity(0.4),
           width: 1.5,
         ),
       ),

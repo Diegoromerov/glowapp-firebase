@@ -452,7 +452,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 child: CircularProgressIndicator(
                   value: hydrationFraction,
                   strokeWidth: 6,
-                  backgroundColor: _PassportColors.primaryLight.withValues(alpha: 0.3),
+                  backgroundColor: _PassportColors.primaryLight.withOpacity(0.3),
                   color: _PassportColors.primary,
                 ),
               ),
@@ -543,7 +543,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
           decoration: BoxDecoration(
-            color: selected ? _PassportColors.primaryLight.withValues(alpha: 0.35) : Colors.transparent,
+            color: selected ? _PassportColors.primaryLight.withOpacity(0.35) : Colors.transparent,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: selected ? Colors.transparent : Colors.black12,
@@ -751,7 +751,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
         color: _PassportColors.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, -4),
           ),

@@ -36,7 +36,7 @@ class AcademyScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.3),
+                            color: Colors.white.withOpacity(0.3),
                             shape: BoxShape.circle,
                           ),
                           child: const Icon(Icons.auto_stories,
@@ -146,7 +146,7 @@ class AcademyScreen extends StatelessWidget {
                     child: Text(
                       'GlowAcademy • Formación profesional',
                       style: TextStyle(
-                          color: AppTheme.primary.withValues(alpha: 0.5),
+                          color: AppTheme.primary.withOpacity(0.5),
                           fontSize: 11),
                     ),
                   ),
@@ -194,7 +194,7 @@ class _ModuleCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: gradient.colors.first.withValues(alpha: 0.3),
+                color: gradient.colors.first.withOpacity(0.3),
                 blurRadius: 16,
                 offset: const Offset(0, 6),
               ),
@@ -205,7 +205,7 @@ class _ModuleCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.25),
+                  color: Colors.white.withOpacity(0.25),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Icon(icon, color: Colors.white, size: 28),
@@ -219,7 +219,7 @@ class _ModuleCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.2),
+                        color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(

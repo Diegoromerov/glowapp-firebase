@@ -154,8 +154,8 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: product.compatible
-                          ? Colors.green.withValues(alpha: 0.1)
-                          : Colors.orange.withValues(alpha: 0.1),
+                          ? Colors.green.withOpacity(0.1)
+                          : Colors.orange.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
@@ -198,7 +198,7 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                   },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppTheme.text,
-                    side: BorderSide(color: AppTheme.primary.withValues(alpha: 0.3)),
+                    side: BorderSide(color: AppTheme.primary.withOpacity(0.3)),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -220,7 +220,7 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                        color: const Color(0xFFC5A052).withOpacity(0.35),
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),

@@ -343,7 +343,7 @@ class _ProviderAiCopilotScreenState extends State<ProviderAiCopilotScreen> {
                       ),
                     ),
                     backgroundColor: Colors.white,
-                    side: BorderSide(color: Color(0xFFC5A052).withValues(alpha: 0.3)),
+                    side: BorderSide(color: Color(0xFFC5A052).withOpacity(0.3)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                     onPressed: () => _sendMessage(promptItem['prompt'] as String),
                   );

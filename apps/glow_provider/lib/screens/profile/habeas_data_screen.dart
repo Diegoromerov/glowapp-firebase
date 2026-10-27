@@ -106,9 +106,9 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(AppTheme.spacingXL),
                     decoration: BoxDecoration(
-                      color: AppTheme.primary.withValues(alpha: 0.05),
+                      color: AppTheme.primary.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppTheme.primary.withValues(alpha: 0.2)),
+                      border: Border.all(color: AppTheme.primary.withOpacity(0.2)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +118,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                             Container(
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                color: AppTheme.primary.withValues(alpha: 0.1),
+                                color: AppTheme.primary.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Icon(Icons.gavel, color: AppTheme.primary, size: 24),
@@ -198,7 +198,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                           value: _biometricConsent,
                           onChanged: _isBusy ? null : _setConsent,
                           activeColor: AppTheme.primary,
-                          activeTrackColor: AppTheme.primary.withValues(alpha: 0.3),
+                          activeTrackColor: AppTheme.primary.withOpacity(0.3),
                         ),
                       ],
                     ),
@@ -210,9 +210,9 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                   Container(
                     padding: const EdgeInsets.all(AppTheme.spacingL),
                     decoration: BoxDecoration(
-                      color: AppTheme.warning.withValues(alpha: 0.05),
+                      color: AppTheme.warning.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppTheme.warning.withValues(alpha: 0.2)),
+                      border: Border.all(color: AppTheme.warning.withOpacity(0.2)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

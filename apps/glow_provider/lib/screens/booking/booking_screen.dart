@@ -437,7 +437,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
+                      color: Colors.black.withOpacity(0.04),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -600,9 +600,9 @@ class _BookingScreenState extends State<BookingScreen> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Color(0xFFC5A052).withValues(alpha: 0.12),
+                      color: Color(0xFFC5A052).withOpacity(0.12),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.3)),
+                      border: Border.all(color: Color(0xFFC5A052).withOpacity(0.3)),
                     ),
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
@@ -864,21 +864,21 @@ class _BookingScreenState extends State<BookingScreen> {
           color: isSelected
               ? AppTheme.primary
               : isAvailable
-                  ? Color(0xFFF5EBE6).withValues(alpha: 0.4)
+                  ? Color(0xFFF5EBE6).withOpacity(0.4)
                   : const Color(0xFFF3F4F6),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected
                 ? AppTheme.primary
                 : isAvailable
-                    ? AppTheme.primary.withValues(alpha: 0.3)
+                    ? AppTheme.primary.withOpacity(0.3)
                     : const Color(0xFFE5E7EB),
             width: isSelected ? 2 : 1,
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: AppTheme.primary.withValues(alpha: 0.2),
+                    color: AppTheme.primary.withOpacity(0.2),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   )
@@ -971,10 +971,10 @@ class _BookingScreenState extends State<BookingScreen> {
               end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: Color(0xFFC5A052).withValues(alpha: 0.5)),
+            border: Border.all(color: Color(0xFFC5A052).withOpacity(0.5)),
             boxShadow: [
               BoxShadow(
-                color: Color(0xFFC5A052).withValues(alpha: 0.15),
+                color: Color(0xFFC5A052).withOpacity(0.15),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -1109,7 +1109,7 @@ class _BookingScreenState extends State<BookingScreen> {
               duration: const Duration(milliseconds: 200),
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
-                color: isSelected ? Color(0xFFF5EBE6).withValues(alpha: 0.3) : Colors.white,
+                color: isSelected ? Color(0xFFF5EBE6).withOpacity(0.3) : Colors.white,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                   color: isSelected ? AppTheme.primary : Color(0xFFF3EAE8),
@@ -1117,7 +1117,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.02),
+                    color: Colors.black.withOpacity(0.02),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   )
@@ -1223,7 +1223,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                     child: Container(
                                                                           padding: const EdgeInsets.all(4),
                                                                           decoration: BoxDecoration(
-                                                                            color: AppTheme.primary.withValues(alpha: 0.1),
+                                                                            color: AppTheme.primary.withOpacity(0.1),
                                                                             shape: BoxShape.circle,
                                                                           ),
                                                                           child: Icon(Icons.add, size: 12, color: AppTheme.primary),
@@ -1474,7 +1474,7 @@ class _BookingScreenState extends State<BookingScreen> {
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: AppTheme.primary.withValues(alpha: 0.15),
+                        color: AppTheme.primary.withOpacity(0.15),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       )
@@ -1554,7 +1554,7 @@ class _BookingScreenState extends State<BookingScreen> {
         border: const Border(top: BorderSide(color: Color(0xFFF3EAE8))),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.02),
+            color: Colors.black.withOpacity(0.02),
             blurRadius: 8,
             offset: const Offset(0, -4),
           ),
@@ -1706,7 +1706,7 @@ class _BookingScreenState extends State<BookingScreen> {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
+              color: Colors.black.withOpacity(0.04),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),

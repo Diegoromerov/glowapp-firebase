@@ -80,9 +80,9 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
     final textColor = AppTheme.text;
     final surfaceColor = AppTheme.surface;
     final primaryColor = AppTheme.primary;
-    final borderColor = AppTheme.primary.withValues(alpha: 0.3);
-    final mutedText = AppTheme.text.withValues(alpha: 0.6);
-    final subText = AppTheme.text.withValues(alpha: 0.7);
+    final borderColor = AppTheme.primary.withOpacity(0.3);
+    final mutedText = AppTheme.text.withOpacity(0.6);
+    final subText = AppTheme.text.withOpacity(0.7);
 
     return Scaffold(
       backgroundColor: AppTheme.background,

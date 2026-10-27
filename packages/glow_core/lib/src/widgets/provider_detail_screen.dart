@@ -14,7 +14,7 @@ class ProviderDetailScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.store, size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.store, size: 64, color: AppTheme.primary.withOpacity(0.5)),
             const SizedBox(height: 16),
             Text('Detalle del Proveedor', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),

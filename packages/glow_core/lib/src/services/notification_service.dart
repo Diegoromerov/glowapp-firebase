@@ -67,10 +67,10 @@ class NotificationService {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.background.withValues(alpha: 0.95),
+                  color: AppTheme.background.withOpacity(0.95),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: AppTheme.primary.withValues(alpha: 0.3),
+                    color: AppTheme.primary.withOpacity(0.3),
                     width: 1.5,
                   ),
                   boxShadow: AppTheme.cardShadow,
