@@ -462,27 +462,27 @@ class _ProviderServicesScreenState extends State<ProviderServicesScreen>
                       ),
                       const SizedBox(height: 14),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFAF6EE),
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
-                        ),
-                        SwitchListTile(
-                                                  title: const Text(
-                                                    'Servicio activo',
-                                                    style: TextStyle(fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1F1A15)),
-                                                  ),
-                                                  subtitle: Text(
-                                                    isActive ? 'Visible en el catálogo público' : 'Oculto en el catálogo público',
-                                                    style: const TextStyle(fontFamily: 'Inter', fontSize: 12, color: Color(0xFF8C7E74)),
-                                                  ),
-                                                  value: isActive,
-                                                  activeColor: const Color(0xFFC5A052),
-                                                  onChanged: (v) => setModalState(() => isActive = v),
-                                                  contentPadding: EdgeInsets.zero,
+                                              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFFFAF6EE),
+                                                borderRadius: BorderRadius.circular(16),
+                                                border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
+                                              ),
+                                              child: SwitchListTile(
+                                                title: const Text(
+                                                  'Servicio activo',
+                                                  style: TextStyle(fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1F1A15)),
                                                 ),
-                      ),
+                                                subtitle: Text(
+                                                  isActive ? 'Visible en el catálogo público' : 'Oculto en el catálogo público',
+                                                  style: const TextStyle(fontFamily: 'Inter', fontSize: 12, color: Color(0xFF8C7E74)),
+                                                ),
+                                                value: isActive,
+                                                activeColor: const Color(0xFFC5A052),
+                                                onChanged: (v) => setModalState(() => isActive = v),
+                                                contentPadding: EdgeInsets.zero,
+                                              ),
+                                            ),
                       const SizedBox(height: 24),
                       Container(
                         height: 52,
