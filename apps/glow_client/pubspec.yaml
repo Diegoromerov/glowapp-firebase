@@ -53,10 +53,6 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   build_runner: ^2.4.13
 
-dependency_overrides:
-  geolocator_android: ^6.0.0
-  flutter_plugin_android_lifecycle: ^2.0.0
-
 flutter:
   generate: true
   uses-material-design: true
