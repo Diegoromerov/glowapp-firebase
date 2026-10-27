@@ -61,7 +61,6 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/images/
     - assets/fonts/
     - assets/videos/onboarding_provider.mp4
   fonts:
