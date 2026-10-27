@@ -836,9 +836,9 @@ class AppTheme {
             ),
 
             sliderTheme: SliderThemeData(
-              activeTrackColor: t.brandPrimary,
-              inactiveColor: t.n700,
-              thumbColor: t.brandPrimary,
+                          activeTrackColor: t.brandPrimary,
+                          inactiveTrackColor: t.n700,
+                          thumbColor: t.brandPrimary,
               overlayColor: t.brandPrimary.withOpacity(0.15),
               valueIndicatorColor: t.brandPrimary,
               valueIndicatorTextStyle: AppTypography.labelSmall(t).copyWith(color: t.brandPrimaryOn),
@@ -1330,9 +1330,9 @@ class AppTheme {
             ),
 
             sliderTheme: SliderThemeData(
-              activeTrackColor: t.brandPrimary,
-              inactiveColor: isDark ? t.n700 : t.n200,
-              thumbColor: t.brandPrimary,
+                          activeTrackColor: t.brandPrimary,
+                          inactiveTrackColor: isDark ? t.n700 : t.n200,
+                          thumbColor: t.brandPrimary,
               overlayColor: t.brandPrimary.withOpacity(0.15),
               valueIndicatorColor: t.brandPrimary,
               valueIndicatorTextStyle: AppTypography.labelSmall(t).copyWith(color: t.brandPrimaryOn),
