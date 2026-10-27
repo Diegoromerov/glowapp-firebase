@@ -1,11 +1,9 @@
 // frontend/lib/screens/support/create_ticket_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../services/support_service.dart';
-import 'package:glow_core/shared/theme.dart';
-
 class CreateTicketScreen extends StatefulWidget {
   final String? preselectedBookingId;
   const CreateTicketScreen({super.key, this.preselectedBookingId});
@@ -95,12 +93,12 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
 
       if (res != null && res['success'] == true) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('✓ Tu ticket / PQRSF ha sido radicado exitosamente.'),
-              backgroundColor: AppTheme.success,
-            ),
-          );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('✓ Tu ticket / PQRSF ha sido radicado exitosamente.'),
+                      backgroundColor: AppTheme.success,
+                    ),
+                  );
           Navigator.pop(context, true);
         }
       } else {

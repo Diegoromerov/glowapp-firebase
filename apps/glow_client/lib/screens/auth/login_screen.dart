@@ -1,13 +1,8 @@
 // frontend/lib/screens/auth/login_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
-import 'package:glow_core/services/api_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:glow_core/design/components/s4_text_field.dart';
-import 'package:glow_core/core/theme/tokens.dart';
-import 'package:glow_core/widgets/invitation_code_entry.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

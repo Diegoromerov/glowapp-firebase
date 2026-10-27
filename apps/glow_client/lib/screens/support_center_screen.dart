@@ -1,7 +1,6 @@
 // frontend/lib/screens/support/support_center_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import '../../services/support_service.dart';
-import 'package:glow_core/shared/theme.dart';
 import 'create_ticket_screen.dart';
 import 'ticket_chat_screen.dart';
 
@@ -128,7 +127,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
             onRefresh: _loadTickets,
             color: const Color(0xFFC5A052),
             child: _isLoading
-            ? const Center(child: CircularProgressIndicator(color: AppTheme.primary))
+                        ? Center(child: CircularProgressIndicator(color: AppTheme.primary))
             : _error != null
                 ? Center(
                     child: Padding(

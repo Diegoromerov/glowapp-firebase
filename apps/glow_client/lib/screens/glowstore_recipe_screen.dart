@@ -1,7 +1,5 @@
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/shared/glow_tokens.dart';
-import 'package:glow_core/widgets/glow_glass_card.dart';
-
 /// Modelo local para los productos recomendados en la receta de GlowStore.
 class RecipeProduct {
   final String id;

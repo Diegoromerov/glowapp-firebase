@@ -1,9 +1,8 @@
-﻿// frontend/lib/screens/support/ticket_chat_screen.dart
+import 'package:glow_core/glow_core.dart';
+// frontend/lib/screens/support/ticket_chat_screen.dart
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../services/support_service.dart';
-import 'package:glow_core/shared/theme.dart';
 
 class TicketChatScreen extends StatefulWidget {
   final String ticketId;
@@ -24,7 +23,7 @@ class TicketChatScreen extends StatefulWidget {
 class _TicketChatScreenState extends State<TicketChatScreen> {
   final _msgCtrl = TextEditingController();
   final ScrollController _scrollCtrl = ScrollController();
-  
+
   bool _isLoading = true;
   List<Map<String, dynamic>> _messages = [];
   String? _error;
@@ -32,12 +31,18 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
   Timer? _refreshTimer;
   bool _isSending = false;
 
+  // Colors cached from AppTheme
+  late final Color _textColor = AppTheme.text;
+  late final Color _mutedText = AppTheme.text.withValues(alpha: 0.6);
+  late final Color _surfaceColor = AppTheme.surface;
+  late final Color _backgroundColor = AppTheme.background;
+  late final Color _primaryColor = AppTheme.primary;
+
   @override
   void initState() {
     super.initState();
     _loadMyUserId();
     _loadMessages();
-    // Poll for new messages every 6 seconds to keep it dynamic and fast
     _refreshTimer = Timer.periodic(const Duration(seconds: 6), (_) => _loadMessages(silent: true));
   }
 
@@ -84,7 +89,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
     } catch (e) {
       if (!silent) {
         setState(() {
-          _error = 'Error de conexiÃ³n: $e';
+          _error = 'Error de conexion: $e';
         });
       }
     } finally {
@@ -124,12 +129,12 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
         _scrollToBottom();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Error al enviar el mensaje.'), backgroundColor: Colors.redAccent),
+          SnackBar(content: Text('Error al enviar el mensaje.'), backgroundColor: AppTheme.error),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de red: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('Error de red: $e'), backgroundColor: AppTheme.error),
       );
     } finally {
       setState(() {
@@ -141,18 +146,18 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF8F5),
+      backgroundColor: _backgroundColor,
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               widget.ticketSubject,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'CormorantGaramond',
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Color(0xFF1F1A15),
+                color: _textColor,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -160,59 +165,59 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
             const SizedBox(height: 2),
             Text(
               'Estado: ${widget.ticketStatus}',
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Inter',
-                color: Color(0xFF8C7E74),
+                color: _mutedText,
                 fontSize: 11,
               ),
             ),
           ],
         ),
-        backgroundColor: const Color(0xFFFAF8F5),
-        foregroundColor: const Color(0xFF1F1A15),
+        backgroundColor: _surfaceColor,
+        foregroundColor: _textColor,
         elevation: 0.5,
       ),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 720),
           child: Column(
-        children: [
-          Expanded(
-            child: _isLoading
-                ? const Center(child: CircularProgressIndicator(color: AppTheme.primary))
-                : _error != null
-                    ? Center(child: Text(_error!, style: const TextStyle(color: Colors.redAccent)))
-                    : _messages.isEmpty
-                        ? _buildChatIntro()
-                        : ListView.builder(
-                            controller: _scrollCtrl,
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-                            itemCount: _messages.length,
-                            itemBuilder: (context, index) {
-                              final msg = _messages[index];
-                              final senderId = msg['remitente_id']?.toString() ?? '';
-                              final messageText = msg['mensaje']?.toString() ?? '';
-                              final name = msg['remitente_nombre']?.toString() ?? 'Usuario';
-                              final rol = msg['remitente_rol']?.toString() ?? 'CLIENTE';
+            children: [
+              Expanded(
+                child: _isLoading
+                    ? Center(child: CircularProgressIndicator(color: _primaryColor))
+                    : _error != null
+                        ? Center(child: Text(_error!, style: TextStyle(color: AppTheme.error)))
+                        : _messages.isEmpty
+                            ? _buildChatIntro()
+                            : ListView.builder(
+                                controller: _scrollCtrl,
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                                itemCount: _messages.length,
+                                itemBuilder: (context, index) {
+                                  final msg = _messages[index];
+                                  final senderId = msg['remitente_id']?.toString() ?? '';
+                                  final messageText = msg['mensaje']?.toString() ?? '';
+                                  final name = msg['remitente_nombre']?.toString() ?? 'Usuario';
+                                  final rol = msg['remitente_rol']?.toString() ?? 'CLIENTE';
 
-                              final isMe = _myUserId == senderId;
-                              final isAdmin = rol == 'ADMIN';
+                                  final isMe = _myUserId == senderId;
+                                  final isAdmin = rol == 'ADMIN';
 
-                              return _buildMessageBubble(
-                                text: messageText,
-                                isMe: isMe,
-                                isAdmin: isAdmin,
-                                name: name,
-                              );
-                            },
-                          ),
+                                  return _buildMessageBubble(
+                                    text: messageText,
+                                    isMe: isMe,
+                                    isAdmin: isAdmin,
+                                    name: name,
+                                  );
+                                },
+                              ),
+              ),
+              _buildInputBar(),
+            ],
           ),
-          _buildInputBar(),
-        ],
+        ),
       ),
-    ),
-  ),
-);
+    );
   }
 
   Widget _buildChatIntro() {
@@ -222,15 +227,15 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.chat_bubble_outline, size: 48, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.chat_bubble_outline, size: 48, color: _primaryColor.withValues(alpha: 0.5)),
             const SizedBox(height: 12),
-            const Text(
-              'Â¡Chat de Soporte TÃ©cnico!',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black87),
+            Text(
+              'Chat de Soporte Tecnico!',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: _textColor),
             ),
             const SizedBox(height: 6),
-            const Text(
-              'Escribe tu inquietud abajo. Un agente de soporte revisarÃ¡ el caso y responderÃ¡ en este hilo.',
+            Text(
+              'Escribe tu inquietud abajo. Un agente de soporte revisara el caso y respondera en este hilo.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12, color: Colors.grey),
             ),
@@ -247,9 +252,9 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
     required String name,
   }) {
     final bubbleColor = isMe
-        ? AppTheme.primary.withValues(alpha: 0.9)
+        ? _primaryColor.withValues(alpha: 0.9)
         : (isAdmin ? const Color(0xFFF1E4E2) : Colors.grey[100]!);
-    final textColor = isMe ? Colors.white : Colors.black87;
+    final bubbleTextColor = isMe ? Colors.white : Colors.black87;
     final align = isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     final margin = isMe
         ? const EdgeInsets.only(left: 48.0, bottom: 8.0, top: 4.0)
@@ -263,7 +268,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
             padding: const EdgeInsets.only(left: 8.0, bottom: 2.0),
             child: Text(
               isAdmin ? 'Soporte Belleza App' : name,
-              style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.bold, color: isAdmin ? AppTheme.primary : Colors.grey),
+              style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.bold, color: isAdmin ? _primaryColor : Colors.grey),
             ),
           ),
         Container(
@@ -280,7 +285,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
           ),
           child: Text(
             text,
-            style: TextStyle(color: textColor, fontSize: 13.5, height: 1.3),
+            style: TextStyle(color: bubbleTextColor, fontSize: 13.5, height: 1.3),
           ),
         ),
       ],
@@ -301,10 +306,10 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
               child: TextField(
                 controller: _msgCtrl,
                 maxLines: null,
-                style: const TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14),
                 decoration: InputDecoration(
                   hintText: 'Escribe un mensaje...',
-                  hintStyle: const TextStyle(color: Colors.grey),
+                  hintStyle: TextStyle(color: Colors.grey),
                   filled: true,
                   fillColor: Colors.grey[50],
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -320,17 +325,17 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
               onTap: _isSending ? null : _sendMessage,
               child: Container(
                 padding: const EdgeInsets.all(10),
-                decoration: const BoxDecoration(
-                  color: AppTheme.primary,
+                decoration: BoxDecoration(
+                  color: _primaryColor,
                   shape: BoxShape.circle,
                 ),
                 child: _isSending
-                    ? const SizedBox(
+                    ? SizedBox(
                         width: 20,
                         height: 20,
                         child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
                       )
-                    : const Icon(Icons.send, color: Colors.white, size: 20),
+                    : Icon(Icons.send, color: Colors.white, size: 20),
               ),
             ),
           ],

@@ -1,7 +1,6 @@
 // frontend/lib/screens/auth/verification_pending_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/auth_service.dart';
-
 class VerificationPendingScreen extends StatelessWidget {
   const VerificationPendingScreen({super.key});
 

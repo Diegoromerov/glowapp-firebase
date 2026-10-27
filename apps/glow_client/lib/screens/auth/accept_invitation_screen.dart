@@ -1,6 +1,5 @@
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/auth_service.dart';
-
 class AcceptInvitationScreen extends StatefulWidget {
   final String? token;
   const AcceptInvitationScreen({super.key, this.token});

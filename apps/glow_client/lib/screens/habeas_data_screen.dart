@@ -1,7 +1,5 @@
-﻿// lib/screens/profile/habeas_data_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/core/theme/belleza_luxe_gradients.dart';
-import 'package:glow_core/services/biometric_service.dart';
 
 class HabeasDataScreen extends StatefulWidget {
   const HabeasDataScreen({super.key});
@@ -41,7 +39,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Revocar y eliminar datos'),
-            content: const Text('Se revocarÃ¡ el consentimiento y se solicitarÃ¡ borrar los datos biomÃ©tricos guardados. Esta acciÃ³n no se puede deshacer.'),
+            content: const Text('Se revocará el consentimiento y se solicitará borrar los datos biométricos guardados. Esta acción no se puede deshacer.'),
             actions: [
               TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancelar')),
               FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Revocar y eliminar')),
@@ -56,7 +54,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
       }
       if (mounted) {
         setState(() => _biometricConsent = value);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value ? 'Consentimiento biomÃ©trico otorgado.' : 'Consentimiento biomÃ©trico revocado.')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value ? 'Consentimiento biométrico otorgado.' : 'Consentimiento biométrico revocado.')));
       }
     } catch (error) {
       if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString().replaceFirst('Exception: ', ''))));
@@ -79,22 +77,29 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = AppTheme.text;
+    final surfaceColor = AppTheme.surface;
+    final primaryColor = AppTheme.primary;
+    final borderColor = AppTheme.primary.withValues(alpha: 0.3);
+    final mutedText = AppTheme.text.withValues(alpha: 0.6);
+    final subText = AppTheme.text.withValues(alpha: 0.7);
+
     return Scaffold(
-      backgroundColor: LuxeColors.nude50,
+      backgroundColor: AppTheme.background,
       appBar: AppBar(
-        backgroundColor: LuxeColors.nude50,
+        backgroundColor: AppTheme.background,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: LuxeColors.nude900, size: 20),
+          icon: Icon(Icons.arrow_back_ios_new, color: textColor, size: 20),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'HABEAS DATA & PRIVACIDAD',
           style: TextStyle(
             fontFamily: 'Didot',
             fontSize: 15,
             fontWeight: FontWeight.bold,
-            color: LuxeColors.nude900,
+            color: textColor,
             letterSpacing: 1.2,
           ),
         ),
@@ -105,141 +110,141 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 680),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(LuxeSpacing.xl),
+              padding: const EdgeInsets.all(24),
               child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // ENCABEZADO LEGAL LEY 1581
-              Container(
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: LuxeColors.nude200),
-                ),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ENCABEZADO LEGAL LEY 1581
+                  Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: surfaceColor,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: borderColor),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.gavel_outlined, color: LuxeColors.nude900, size: 22),
-                        SizedBox(width: 10),
+                        Row(
+                          children: [
+                            Icon(Icons.gavel_outlined, color: textColor, size: 22),
+                            const SizedBox(width: 10),
+                            Text(
+                              'PROTECCION DE DATOS SENSIBLES',
+                              style: TextStyle(
+                                fontFamily: 'Didot',
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: textColor,
+                                letterSpacing: 1.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
                         Text(
-                          'PROTECCIÃ“N DE DATOS SENSIBLES',
+                          'Tus analisis y perfiles biométricos se guardan en GlowApp mientras mantengas el consentimiento. Puedes revocarlo y solicitar la eliminacion de estos datos desde esta pantalla.',
                           style: TextStyle(
-                            fontFamily: 'Didot',
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                            color: LuxeColors.nude900,
-                            letterSpacing: 1.0,
+                            fontFamily: 'CormorantGaramond',
+                            fontSize: 14,
+                            color: subText,
+                            height: 1.4,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 12),
-                    Text(
-                      'Tus anÃ¡lisis y perfiles biomÃ©tricos se guardan en GlowApp mientras mantengas el consentimiento. Puedes revocarlo y solicitar la eliminaciÃ³n de estos datos desde esta pantalla.',
-                      style: TextStyle(
-                        fontFamily: 'CormorantGaramond',
-                        fontSize: 14,
-                        color: LuxeColors.nude700,
-                        height: 1.4,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
 
-              const SizedBox(height: LuxeSpacing.xxl),
+                  const SizedBox(height: 32),
 
-              const Text(
-                'GESTIÃ“N DE CONSENTIMIENTOS',
-                style: TextStyle(
-                  fontFamily: 'JetBrainsMono',
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color: LuxeColors.nude500,
-                  letterSpacing: 1.2,
-                ),
-              ),
-              const SizedBox(height: 12),
-
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: LuxeColors.nude200),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Procesamiento BiomÃ©trico Facial',
-                            style: TextStyle(
-                              fontFamily: 'Didot',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: LuxeColors.nude900,
-                            ),
-                          ),
-                          SizedBox(height: 2),
-                          Text(
-                            'Permite el anÃ¡lisis facial y las recomendaciones de cuidado de piel',
-                            style: TextStyle(
-                              fontFamily: 'CormorantGaramond',
-                              fontSize: 13,
-                              color: LuxeColors.nude600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    _isLoading
-                        ? const SizedBox(width: 48, height: 32, child: Center(child: CircularProgressIndicator(strokeWidth: 2)))
-                        : Switch.adaptive(
-                      value: _biometricConsent,
-                      activeColor: const Color(0xFFC5A052),
-                      onChanged: _isBusy ? null : _setConsent,
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: LuxeSpacing.xxl),
-
-              // DERECHOS ARCO & DESCARGA
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton.icon(
-                  onPressed: _isBusy ? null : _exportData,
-                  icon: const Icon(Icons.download_outlined, color: LuxeColors.nude900, size: 18),
-                  label: const Text(
-                    'Descargar Mi Expediente BiomÃ©trico (JSON)',
+                  Text(
+                    'GESTION DE CONSENTIMIENTOS',
                     style: TextStyle(
-                      fontFamily: 'CormorantGaramond',
-                      fontSize: 15,
+                      fontFamily: 'JetBrainsMono',
+                      fontSize: 11,
                       fontWeight: FontWeight.bold,
-                      color: LuxeColors.nude900,
+                      color: textColor,
+                      letterSpacing: 1.2,
                     ),
                   ),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    side: const BorderSide(color: LuxeColors.nude300),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  const SizedBox(height: 12),
+
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: surfaceColor,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: borderColor),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Procesamiento Biometrico Facial',
+                                style: TextStyle(
+                                  fontFamily: 'Didot',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                'Permite el analisis facial y las recomendaciones de cuidado de piel',
+                                style: TextStyle(
+                                  fontFamily: 'CormorantGaramond',
+                                  fontSize: 13,
+                                  color: mutedText,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        _isLoading
+                            ? const SizedBox(width: 48, height: 32, child: Center(child: CircularProgressIndicator(strokeWidth: 2)))
+                            : Switch.adaptive(
+                          value: _biometricConsent,
+                          activeColor: primaryColor,
+                          onChanged: _isBusy ? null : _setConsent,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+
+                  const SizedBox(height: 32),
+
+                  // DERECHOS ARCO & DESCARGA
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: _isBusy ? null : _exportData,
+                      icon: Icon(Icons.download_outlined, color: textColor, size: 18),
+                      label: Text(
+                        'Descargar Mi Expediente Biometrico (JSON)',
+                        style: TextStyle(
+                          fontFamily: 'CormorantGaramond',
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: textColor,
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        side: BorderSide(color: borderColor),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
-    ),
-  ),
-);
+    );
   }
 }

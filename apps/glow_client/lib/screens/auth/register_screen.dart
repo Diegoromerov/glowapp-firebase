@@ -1,9 +1,7 @@
 // frontend/lib/screens/auth/register_screen.dart
+import 'package:glow_core/glow_core.dart' hide AppLocalizations;
+import 'package:glow_core/src/l10n/app_localizations.dart' as glow_l10n;
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/auth_service.dart';
-import 'package:glow_core/design/components/s4_text_field.dart';
-import 'package:glow_core/core/theme/tokens.dart';
-import 'package:beauty_app/l10n/app_localizations.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -287,8 +285,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _buildFormCard(BuildContext context) {
-    final t = context.glowTokens;
-    final l10n = AppLocalizations.of(context)!;
+      final t = context.glowTokens;
+      final l10n = glow_l10n.AppLocalizations.of(context)!;
 
     return Container(
       width: double.infinity,

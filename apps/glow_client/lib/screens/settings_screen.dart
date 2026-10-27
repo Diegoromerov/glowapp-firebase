@@ -1,13 +1,8 @@
 // lib/screens/profile/settings_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:glow_core/core/theme/belleza_luxe_gradients.dart';
-import '../../widgets/profile/luxe_list_tile.dart';
-import '../../widgets/profile/delivery_addresses_section.dart';
-import 'package:glow_core/services/api_service.dart';
-import '../../services/analytics_service.dart';
-
 class SettingsScreen extends StatefulWidget {
   final String userEmail;
   final VoidCallback? onLogout;

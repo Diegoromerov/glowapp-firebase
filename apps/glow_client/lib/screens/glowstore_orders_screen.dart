@@ -1,8 +1,6 @@
 // lib/screens/profile/glowstore_orders_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/core/theme/belleza_luxe_gradients.dart';
-import 'package:glow_core/services/api_service.dart';
-
 class GlowStoreOrdersScreen extends StatefulWidget {
   const GlowStoreOrdersScreen({super.key});
 

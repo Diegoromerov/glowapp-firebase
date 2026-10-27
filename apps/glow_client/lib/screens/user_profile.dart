@@ -1,19 +1,14 @@
 // lib/screens/profile/user_profile.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../widgets/profile/profile_header.dart';
-import '../../widgets/profile/luxe_list_tile.dart';
-import '../../widgets/profile/delivery_addresses_section.dart';
-import 'package:glow_core/services/auth_service.dart';
 import 'settings_screen.dart';
 import 'biometric_history_screen.dart';
 import 'glowstore_orders_screen.dart';
 import 'rewards_xp_screen.dart';
 import 'habeas_data_screen.dart';
 import 'faq_screen.dart';
-import 'package:glow_core/widgets/invitation_code_entry.dart';
-
 class UserProfileScreen extends StatefulWidget {
   final String userName;
   final String userEmail;

@@ -1,8 +1,5 @@
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/audience_service.dart';
-import 'package:glow_core/shared/mens_theme.dart';
-import 'package:glow_core/shared/theme.dart'
-
 class AudienceToggleWidget extends StatelessWidget {
   final bool compact;
 

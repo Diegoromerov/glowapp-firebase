@@ -1,19 +1,10 @@
 // frontend/lib/screens/store_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:glow_core/shared/theme.dart';
-import 'package:glow_core/services/api_service.dart';
-import '../services/analytics_service.dart';
 import 'package:shimmer/shimmer.dart';
-import '../widgets/store_product_card.dart';
-import '../widgets/product_quick_view_dialog.dart';
-import '../widgets/wompi_payment_sheet.dart';
-import '../utils/json_num.dart';
-import 'package:glow_core/services/audience_service.dart';
-import 'package:glow_core/shared/mens_theme.dart';
-import '../widgets/profile/colombian_address_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StoreScreen extends StatefulWidget {
@@ -325,25 +316,25 @@ class _StoreScreenState extends State<StoreScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.location_on_outlined, color: AppTheme.primary, size: 24),
-                        const SizedBox(width: 12),
-                        const Text(
-                          'Seleccionar dirección de entrega',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.text,
-                          ),
-                        ),
-                        const Spacer(),
-                        IconButton(
-                          onPressed: () => Navigator.pop(ctx),
-                          icon: const Icon(Icons.close),
-                        ),
-                      ],
+                                      padding: const EdgeInsets.all(20),
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.location_on_outlined, color: AppTheme.primary, size: 24),
+                                          const SizedBox(width: 12),
+                                          Text(
+                                            'Seleccionar dirección de entrega',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppTheme.text,
+                                            ),
+                                          ),
+                                          const Spacer(),
+                                          IconButton(
+                                            onPressed: () => Navigator.pop(ctx),
+                                            icon: const Icon(Icons.close),
+                                          ),
+                                        ],
                     ),
                   ),
                   const Divider(height: 1),
@@ -363,7 +354,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                 color: AppTheme.primary.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: const Icon(Icons.add_location_alt_outlined, color: AppTheme.primary),
+                              child: Icon(Icons.add_location_alt_outlined, color: AppTheme.primary),
                             ),
                             title: const Text('Agregar nueva dirección', style: TextStyle(fontWeight: FontWeight.w600)),
                             subtitle: const Text('Crear una dirección diferente para este envío'),
@@ -424,7 +415,7 @@ class _StoreScreenState extends State<StoreScreen> {
                             ),
                             subtitle: Text(formatted, maxLines: 2, overflow: TextOverflow.ellipsis),
                             secondary: isDefault
-                                ? const Icon(Icons.check_circle, color: AppTheme.primary)
+                                ? Icon(Icons.check_circle, color: AppTheme.primary)
                                 : null,
                             activeColor: AppTheme.primary,
                           ),
@@ -485,9 +476,9 @@ class _StoreScreenState extends State<StoreScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const CircularProgressIndicator(color: AppTheme.primary),
-                      const SizedBox(height: 24),
-                      const Text(
+                                          CircularProgressIndicator(color: AppTheme.primary),
+                                          const SizedBox(height: 24),
+                      Text(
                         'Procesando tu pago seguro...',
                         style: TextStyle(
                           fontSize: 16,
@@ -521,7 +512,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.security, color: AppTheme.primary, size: 20),
+                        Icon(Icons.security, color: AppTheme.primary, size: 20),
                         const SizedBox(width: 8),
                         Text(
                           'GlowPay - Pago Seguro',
@@ -534,7 +525,7 @@ class _StoreScreenState extends State<StoreScreen> {
                       ],
                     ),
                     const SizedBox(height: 12),
-                    const Text(
+                    Text(
                       'Información de Envío',
                       style: TextStyle(
                         fontSize: 18,
@@ -599,7 +590,7 @@ class _StoreScreenState extends State<StoreScreen> {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.verified_user_rounded, color: AppTheme.primary, size: 20),
+                          Icon(Icons.verified_user_rounded, color: AppTheme.primary, size: 20),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
@@ -794,7 +785,7 @@ class _StoreScreenState extends State<StoreScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Resumen del Pedido',
                     style: TextStyle(
                       fontSize: 16,
@@ -888,7 +879,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         'Total',
                         style: TextStyle(
                           fontSize: 15,
@@ -898,7 +889,7 @@ class _StoreScreenState extends State<StoreScreen> {
                       ),
                       Text(
                         _formatCOP(total),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
                           color: AppTheme.primary,
@@ -963,7 +954,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   size: 80,
                 ),
                 const SizedBox(height: 16),
-                const Text(
+                Text(
                   '¡Pedido Realizado con Éxito!',
                   style: TextStyle(
                     fontSize: 22,
@@ -1018,7 +1009,7 @@ class _StoreScreenState extends State<StoreScreen> {
         ),
         Text(
           value,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
             color: AppTheme.text,
@@ -1330,9 +1321,9 @@ class _StoreScreenState extends State<StoreScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
-                  children: [
-                    Icon(Icons.shopping_bag_outlined, color: AppTheme.text),
+                              Row(
+                                children: [
+                                  Icon(Icons.shopping_bag_outlined, color: AppTheme.text),
                     SizedBox(width: 8),
                     Text(
                       'Tu Carrito',
@@ -1345,7 +1336,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   ],
                 ),
                 IconButton(
-                  icon: const Icon(Icons.close, color: AppTheme.text),
+                  icon: Icon(Icons.close, color: AppTheme.text),
                   onPressed: () {
                     setState(() {
                       _isCartOpen = false;
@@ -1399,7 +1390,7 @@ class _StoreScreenState extends State<StoreScreen> {
                               children: [
                                 Text(
                                   prod['nombre']?.toString() ?? 'Producto',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                     color: AppTheme.text,
@@ -1434,7 +1425,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                           border: Border.all(color: Colors.grey.shade300),
                                           borderRadius: BorderRadius.circular(8),
                                         ),
-                                        child: const Icon(Icons.remove, size: 16, color: AppTheme.text),
+                                        child: Icon(Icons.remove, size: 16, color: AppTheme.text),
                                       ),
                                     ),
                                     Padding(
@@ -1479,7 +1470,7 @@ class _StoreScreenState extends State<StoreScreen> {
                             children: [
                               Text(
                                 _formatCOP(pPrice * qty),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
                                   color: AppTheme.primary,
@@ -1511,7 +1502,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         'Subtotal',
                         style: TextStyle(
                           fontSize: 14,
@@ -1521,7 +1512,7 @@ class _StoreScreenState extends State<StoreScreen> {
                       ),
                       Text(
                         _formatCOP(subtotal),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
                           color: AppTheme.primary,

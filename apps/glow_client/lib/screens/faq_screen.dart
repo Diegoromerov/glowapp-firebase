@@ -1,7 +1,5 @@
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/core/theme/belleza_luxe_gradients.dart';
-import 'package:glow_core/shared/theme.dart';
-
 class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});
 

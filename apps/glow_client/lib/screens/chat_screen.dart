@@ -1,16 +1,9 @@
 // frontend/lib/screens/chat_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/reply_reconcile.dart';
-import 'package:glow_core/widgets/voice_input.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:glow_core/services/api_service.dart';
-import 'package:glow_core/services/auth_service.dart';
-import 'package:glow_core/shared/theme.dart';
-import 'package:glow_core/widgets/booking_screen.dart';
-import 'package:glow_core/widgets/provider_detail_screen.dart';
-
 class ChatScreen extends StatefulWidget {
   final String partnerId;
   final String partnerName;
@@ -865,35 +858,35 @@ class _ChatScreenState extends State<ChatScreen> {
                                                       ),
                                                     ),
                                                   ),
-                                                  const SizedBox(height: 8),
-                                                  const Text(
-                                                    'Asesoría de Belleza IA',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 14,
-                                                        color:
-                                                            AppTheme.primary),
-                                                  ),
-                                                  const SizedBox(height: 4),
-                                                ],
-                                                Text(
-                                                  cleanText,
-                                                  style: const TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize: 14.5,
-                                                    height: 1.35,
-                                                  ),
-                                                ),
-                                                if (redirectToolId != null) ...[
-                                                                                                  const SizedBox(height: 10),
-                                                                                                  SizedBox(
-                                                                                                    width: double.infinity,
-                                                                                                    child: OutlinedButton.icon(
-                                                                                                      style: OutlinedButton.styleFrom(
-                                                                                                        side: const BorderSide(color: AppTheme.primary, width: 1.5),
-                                                                                                        foregroundColor: AppTheme.primary,
-                                                                                                        shape: RoundedRectangleBorder(
+                                                                                                    const SizedBox(height: 8),
+                                                                                                    Text(
+                                                                                                      'Asesoría de Belleza IA',
+                                                                                                      style: TextStyle(
+                                                                                                          fontWeight:
+                                                                                                              FontWeight.bold,
+                                                                                                          fontSize: 14,
+                                                                                                          color:
+                                                                                                              AppTheme.primary),
+                                                                                                    ),
+                                                                                                    const SizedBox(height: 4),
+                                                                                                  ],
+                                                                                                  Text(
+                                                                                                    cleanText,
+                                                                                                    style: const TextStyle(
+                                                                                                      color: Colors.black87,
+                                                                                                      fontSize: 14.5,
+                                                                                                      height: 1.35,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  if (redirectToolId != null) ...[
+                                                                                                                                                    const SizedBox(height: 10),
+                                                                                                                                                    SizedBox(
+                                                                                                                                                      width: double.infinity,
+                                                                                                                                                      child: OutlinedButton.icon(
+                                                                                                                                                        style: OutlinedButton.styleFrom(
+                                                                                                                                                          side: BorderSide(color: AppTheme.primary, width: 1.5),
+                                                                                                                                                          foregroundColor: AppTheme.primary,
+                                                                                                                                                          shape: RoundedRectangleBorder(
                                                                                                           borderRadius: BorderRadius.circular(20),
                                                                                                         ),
                                                                                                         padding: const EdgeInsets.symmetric(vertical: 8),
@@ -967,36 +960,24 @@ class _ChatScreenState extends State<ChatScreen> {
                                                               'duration_minutes':
                                                                   60,
                                                             };
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                builder: (_) =>
-                                                                    BookingScreen(
-                                                                  providerId:
-                                                                      providerId,
-                                                                  providerName:
-                                                                      meta['providerName'] ??
-                                                                          'Prestador',
-                                                                  services: [
-                                                                    serviceItem
-                                                                  ],
-                                                                  initialNotes:
-                                                                      'Recomendado por el Asesor de Belleza IA.',
-                                                                ),
-                                                              ),
-                                                            );
-                                                          } else {
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                builder: (_) =>
-                                                                    ProviderDetailScreen(
-                                                                        providerId:
-                                                                            providerId),
-                                                              ),
-                                                            );
-                                                          }
-                                                        } else {
+                                                                                                                        Navigator.pushNamed(
+                                                                                                                          context,
+                                                                                                                          '/booking',
+                                                                                                                          arguments: {
+                                                                                                                            'providerId': providerId,
+                                                                                                                            'providerName': meta['providerName'] ?? 'Prestador',
+                                                                                                                            'services': [serviceItem],
+                                                                                                                            'initialNotes': 'Recomendado por el Asesor de Belleza IA.',
+                                                                                                                          },
+                                                                                                                        );
+                                                                                                                      } else {
+                                                                                                                        Navigator.pushNamed(
+                                                                                                                          context,
+                                                                                                                          '/provider-detail',
+                                                                                                                          arguments: {'providerId': providerId},
+                                                                                                                        );
+                                                                                                                      }
+                                                                                                                    } else {
                                                           showDialog(
                                                             context: context,
                                                             builder:
@@ -1234,30 +1215,30 @@ class _ChatScreenState extends State<ChatScreen> {
                 bottomRight: Radius.circular(18),
               ),
               border: Border.fromBorderSide(BorderSide(color: Color(0xFFE5DDD5))),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Aura está redactando su consejo',
-                  style: TextStyle(
-                    color: Color(0xFF6E5D53),
-                    fontSize: 13.5,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                SizedBox(width: 8),
-                SizedBox(
-                  width: 14,
-                  height: 14,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.primary,
-                  ),
-                ),
-              ],
-            ),
-          ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Aura está redactando su consejo',
+                                style: TextStyle(
+                                  color: Color(0xFF6E5D53),
+                                  fontSize: 13.5,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              SizedBox(
+                                width: 14,
+                                height: 14,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: AppTheme.primary,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
         ],
       ),
     );

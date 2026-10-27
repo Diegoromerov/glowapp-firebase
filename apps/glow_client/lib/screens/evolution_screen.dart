@@ -6,9 +6,8 @@
 // pantalla no calcula nada: pinta lo que el backend guardó, y cuando un escaneo
 // viejo no tiene puntaje lo dice en vez de rellenarlo.
 
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-
-import 'package:glow_core/services/biometric_service.dart';
 
 class EvolutionScreen extends StatefulWidget {
   const EvolutionScreen({super.key});

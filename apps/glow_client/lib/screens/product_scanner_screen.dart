@@ -1,9 +1,8 @@
-﻿// frontend/lib/screens/ideas/product_scanner_screen.dart
+// frontend/lib/screens/ideas/product_scanner_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:glow_core/services/biometric_service.dart';
-import '../../models/biometric_result.dart';
 
 class ProductScannerScreen extends StatefulWidget {
   const ProductScannerScreen({super.key});
@@ -20,28 +19,28 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF8F5),
+      backgroundColor: AppTheme.background,
       appBar: AppBar(
-        title: const Text(
-          'Escanear Producto',
-          style: TextStyle(
-            fontFamily: 'CormorantGaramond',
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-            color: Color(0xFF1F1A15),
-          ),
-        ),
-        backgroundColor: const Color(0xFFFAF8F5),
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Color(0xFF1F1A15)),
-      ),
+        title: Text(
+                  'Escanear Producto',
+                  style: TextStyle(
+                    fontFamily: 'CormorantGaramond',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    color: AppTheme.text,
+                  ),
+                ),
+                backgroundColor: AppTheme.background,
+                elevation: 0,
+                iconTheme: IconThemeData(color: AppTheme.text),
+              ),
       body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 580),
-          child: _isProcessing
-              ? const Center(child: CircularProgressIndicator(color: Color(0xFFC5A052)))
-              : _scannedProduct != null
-                  ? _buildResultView()
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 580),
+                child: _isProcessing
+                    ? Center(child: CircularProgressIndicator(color: AppTheme.primary))
+                    : _scannedProduct != null
+                        ? _buildResultView()
                   : MobileScanner(
                       onDetect: (capture) async {
                         if (_isScanning) {
@@ -93,7 +92,7 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'ðŸ“¦ Resultado del producto',
+            'Resultado del producto',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
@@ -172,7 +171,7 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                                 ? product.compatibilityReason
                                 : (product.compatible
                                     ? 'Este producto es compatible con tu perfil.'
-                                    : 'Este producto podrÃ­a no ser el mÃ¡s adecuado para ti.'),
+                                    : 'Este producto podria no ser el mas adecuado para ti.'),
                             style: TextStyle(
                               fontSize: 14,
                               color: product.compatible ? Colors.green[800] : Colors.orange[800],
@@ -198,8 +197,8 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                     });
                   },
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: const Color(0xFF1F1A15),
-                    side: const BorderSide(color: Color(0xFFE8DFD8)),
+                    foregroundColor: AppTheme.text,
+                    side: BorderSide(color: AppTheme.primary.withValues(alpha: 0.3)),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -232,7 +231,7 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent,
-                      foregroundColor: const Color(0xFF1F1A15),
+                      foregroundColor: AppTheme.text,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),

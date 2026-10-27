@@ -1,11 +1,9 @@
 // frontend/lib/screens/disputes/open_dispute_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../services/dispute_service.dart';
-import 'package:glow_core/shared/theme.dart';
-
 class OpenDisputeScreen extends StatefulWidget {
   final String? preselectedBookingId;
   const OpenDisputeScreen({super.key, this.preselectedBookingId});
@@ -92,13 +90,13 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
 
       if (res != null && res['success'] == true) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('✓ Disputa iniciada. El dinero ha sido temporalmente retenido para revisión.'),
-              backgroundColor: AppTheme.success,
-              duration: Duration(seconds: 4),
-            ),
-          );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('✓ Disputa iniciada. El dinero ha sido temporalmente retenido para revisión.'),
+                      backgroundColor: AppTheme.success,
+                      duration: Duration(seconds: 4),
+                    ),
+                  );
           Navigator.pop(context, true);
         }
       } else {

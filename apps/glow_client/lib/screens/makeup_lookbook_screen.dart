@@ -1,7 +1,6 @@
 // frontend/lib/screens/ideas/makeup_lookbook_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import '../../services/social_share_service.dart';
-import '../../models/biometric_result.dart';
 import 'vto_live_screen.dart';
 
 class MakeupLook {

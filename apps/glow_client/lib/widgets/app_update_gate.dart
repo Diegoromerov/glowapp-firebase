@@ -6,11 +6,8 @@
 // soportado, muestra el diálogo bloqueante. Es fail-open: si el chequeo falla o
 // lanza, la app se usa con normalidad (nunca se deja al usuario sin app).
 
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-
-import 'package:glow_core/services/api_service.dart';
-import 'package:glow_core/services/app_update_service.dart';
-import 'package:glow_core/widgets/forced_update_dialog.dart';
 
 class AppUpdateGate extends StatefulWidget {
   /// El árbol real de la app.

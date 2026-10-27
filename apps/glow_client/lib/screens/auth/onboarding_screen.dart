@@ -1,6 +1,5 @@
 // frontend/lib/screens/auth/onboarding_screen.dart
-import 'package:glow_core/models/saas/saas_models.dart';
-import 'package:glow_core/services/saas_api_service.dart';
+import 'package:glow_core/glow_core.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -11,13 +10,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:glow_core/services/auth_service.dart';
-import 'package:glow_core/services/permission_rationale_service.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:glow_core/shared/theme.dart';
-import 'package:glow_core/shared/background_video_player.dart';
-import 'package:glow_core/data/colombia_municipalities.dart';
-
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -605,13 +598,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         aceptarHabeasData: _habeasDataAccepted,
         aceptarTerminos: _terminosAccepted,
       );
-      if (result != null && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('✓ Borrador guardado. Puedes completar tu perfil más tarde.'),
-            backgroundColor: AppTheme.primary,
-          ),
-        );
+            if (result != null && mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('✓ Borrador guardado. Puedes completar tu perfil más tarde.'),
+                  backgroundColor: AppTheme.primary,
+                ),
+              );
         Navigator.pushReplacementNamed(context, '/verification-pending');
       } else {
         setState(() => _error = 'Error al guardar el borrador');

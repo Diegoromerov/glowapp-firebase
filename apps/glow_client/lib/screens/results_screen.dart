@@ -1,18 +1,18 @@
 // frontend/lib/screens/ideas/results_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import '../../models/biometric_result.dart';
-import 'package:glow_core/services/biometric_service.dart';
 import 'glowstore_recipe_screen.dart';
 import 'product_scanner_screen.dart';
 import 'vto_live_screen.dart';
 import 'nail_vto_screen.dart';
 import 'makeup_lookbook_screen.dart';
-import 'widgets/score_card.dart';
-import 'widgets/recommendation_card.dart';
-import 'widgets/product_card.dart';
-import 'widgets/color_palette.dart';
-import '../../services/social_share_service.dart';
 import 'evolution_screen.dart';
+import '../widgets/score_card.dart';
+import '../widgets/recommendation_card.dart';
+import '../widgets/product_card.dart';
+import '../widgets/color_palette.dart';
+import '../widgets/glow_score_gauge_widget.dart';
+import '../widgets/dermo_families_widget.dart';
 
 // ---------------------------------------------------------------------------
 // Tokens de marca para esta pantalla estilo Pasaporte Editorial

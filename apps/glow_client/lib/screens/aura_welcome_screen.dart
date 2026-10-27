@@ -1,8 +1,5 @@
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import '../../../shared/glow_tokens.dart';
-import '../../../widgets/aura_3d_emblem.dart';
-import 'package:glow_core/widgets/glow_glass_card.dart';
-
 /// Pantalla de Bienvenida de "Aura" (IA Asesora de Belleza de GlowApp).
 /// Cuenta con el nuevo Emblema Metálico 3D "GA" en Oro Rosa con animación interactiva.
 class AuraWelcomeScreen extends StatelessWidget {

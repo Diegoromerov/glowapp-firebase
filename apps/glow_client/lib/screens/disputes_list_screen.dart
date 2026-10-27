@@ -1,10 +1,7 @@
 // frontend/lib/screens/disputes/disputes_list_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import '../../services/dispute_service.dart';
-import 'package:glow_core/shared/theme.dart';
 import 'open_dispute_screen.dart';
-import '../../utils/json_num.dart';
-
 class DisputesListScreen extends StatefulWidget {
   const DisputesListScreen({super.key});
 
@@ -109,12 +106,12 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 680),
           child: RefreshIndicator(
-            onRefresh: _loadDisputes,
-            color: const Color(0xFFC5A052),
-            child: _isLoading
-            ? const Center(child: CircularProgressIndicator(color: AppTheme.primary))
-            : _error != null
-                ? Center(
+                      onRefresh: _loadDisputes,
+                      color: const Color(0xFFC5A052),
+                      child: _isLoading
+                      ? Center(child: CircularProgressIndicator(color: AppTheme.primary))
+                      : _error != null
+                          ? Center(
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Column(
@@ -219,11 +216,11 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                     ),
                                     Text(
                                       '\$${monto.toStringAsFixed(0)} COP',
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppTheme.primary,
-                                      ),
+                                                                            style: TextStyle(
+                                                                              fontSize: 13,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              color: AppTheme.primary,
+                                                                            ),
                                     ),
                                   ],
                                 ),
@@ -243,10 +240,10 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                           'Resolución Administrativa:',
                                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: Colors.black87),
                                         ),
-                                        const SizedBox(height: 4),
-                                        Text(
-                                          _formatResolucionText(resolucion),
-                                          style: const TextStyle(fontSize: 12, color: AppTheme.success, fontWeight: FontWeight.w600),
+                                                                                const SizedBox(height: 4),
+                                                                                Text(
+                                                                                  _formatResolucionText(resolucion),
+                                                                                  style: TextStyle(fontSize: 12, color: AppTheme.success, fontWeight: FontWeight.w600),
                                         ),
                                         if (notaRes.isNotEmpty) ...[
                                           const SizedBox(height: 6),

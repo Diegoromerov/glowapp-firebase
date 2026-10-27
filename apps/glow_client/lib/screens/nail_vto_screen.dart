@@ -1,9 +1,8 @@
 // frontend/lib/screens/ideas/nail_vto_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import '../../models/biometric_result.dart';
-import 'package:glow_core/shared/theme.dart';
-import 'widgets/nail_vto_painter.dart';
+import '../widgets/nail_vto_painter.dart';
 
 class NailVtoScreen extends StatefulWidget {
   final BiometricResult biometricResult;
@@ -169,13 +168,13 @@ class _NailVtoScreenState extends State<NailVtoScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text(
-                            'Estilo $_selectedStyle • Acabado $_selectedFinish',
-                            style: const TextStyle(
-                              color: AppTheme.primary,
-                              fontSize: 12,
-                            ),
-                          ),
+                                                    Text(
+                                                      'Estilo $_selectedStyle • Acabado $_selectedFinish',
+                                                      style: TextStyle(
+                                                        color: AppTheme.primary,
+                                                        fontSize: 12,
+                                                      ),
+                                                    ),
                         ],
                       ),
                       Container(

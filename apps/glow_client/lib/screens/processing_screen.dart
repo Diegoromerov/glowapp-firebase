@@ -1,9 +1,7 @@
+import 'package:glow_core/glow_core.dart';
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/biometric_service.dart';
-import '../../services/location_service.dart';
-import '../../models/biometric_result.dart';
 import 'results_screen.dart';
 
 class ProcessingScreen extends StatefulWidget {

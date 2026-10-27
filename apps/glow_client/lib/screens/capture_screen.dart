@@ -1,16 +1,15 @@
 // frontend/lib/screens/ideas/capture_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:glow_core/shared/theme.dart';
-import 'package:glow_core/services/biometric_service.dart';
 import 'processing_screen.dart';
-import 'widgets/face_overlay_painter.dart';
-import 'widgets/hand_overlay_painter.dart';
-import 'widgets/quality_indicator.dart';
+import '../widgets/face_overlay_painter.dart';
+import '../widgets/hand_overlay_painter.dart';
+import '../widgets/quality_indicator.dart';
 
 enum CaptureStep { face, faceConfirm, hands, handsConfirm, done }
 
@@ -771,18 +770,18 @@ class _CaptureScreenState extends State<CaptureScreen>
     final isHandsConfirm = _step == CaptureStep.handsConfirm;
 
     if (_cameraController == null || !_cameraController!.value.isInitialized || !_isCameraReady) {
-      return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CircularProgressIndicator(color: AppTheme.primary),
-              const SizedBox(height: 16),
-              Text(
-                _errorMessage ?? 'Inicializando cámara...',
-                style: const TextStyle(color: AppTheme.text),
-                textAlign: TextAlign.center,
-              ),
+          return Scaffold(
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(color: AppTheme.primary),
+                  const SizedBox(height: 16),
+                  Text(
+                    _errorMessage ?? 'Inicializando cámara...',
+                    style: TextStyle(color: AppTheme.text),
+                    textAlign: TextAlign.center,
+                  ),
               const SizedBox(height: 24),
               ElevatedButton.icon(
                 onPressed: () {
@@ -919,24 +918,24 @@ class _CaptureScreenState extends State<CaptureScreen>
 
           // OVERLAY DE CARGA FLUIDO AL CAMBIAR LENTE
           if (_isSwitchingCamera)
-            Positioned.fill(
-              child: Container(
-                color: Colors.black87,
-                child: const Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircularProgressIndicator(color: AppTheme.primary),
-                      SizedBox(height: 16),
-                      Text(
-                        'Girando lente de la cámara...',
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      Positioned.fill(
+                        child: Container(
+                          color: Colors.black87,
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CircularProgressIndicator(color: AppTheme.primary),
+                                const SizedBox(height: 16),
+                                const Text(
+                                  'Girando lente de la cámara...',
+                                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
 
           // OVERLAY VIRTUAL LÁSER CON PALETA GLOWAPP (solo activo durante la cámara)
           if ((isFaceStep || isHandsStep) && !_isSwitchingCamera)
@@ -1011,13 +1010,13 @@ class _CaptureScreenState extends State<CaptureScreen>
                         textAlign: TextAlign.center,
                       ),
                       if (_errorMessage != null) ...[
-                        const SizedBox(height: 4),
-                        Text(
-                          _errorMessage!,
-                          style: const TextStyle(color: AppTheme.errorBg, fontSize: 13),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                                              const SizedBox(height: 4),
+                                              Text(
+                                                _errorMessage!,
+                                                style: TextStyle(color: AppTheme.errorBg, fontSize: 13),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
                     ],
                   ),
                 ),

@@ -10,45 +10,106 @@ class AppTheme {
   AppTheme._();
 
   // ============================================================================
-  // COMPATIBILITY GETTERS — Para migración gradual desde legacy AppTheme
-  // ============================================================================
-  // DEPRECATED: Use Token or GlowTokenContext instead
-  @Deprecated('Use Token.light.brandPrimary or context.glowPrimary instead')
-  static Color get primary => Token.light.brandPrimary;
+    // COMPATIBILITY GETTERS — Para migración gradual desde legacy AppTheme
+    // ============================================================================
+    // DEPRECATED: Use Token or GlowTokenContext instead
+    @Deprecated('Use Token.light.brandPrimary or context.glowPrimary instead')
+    static Color get primary => Token.light.brandPrimary;
 
-  @Deprecated('Use Token.light.brandSecondary or context.glowSecondary instead')
-  static Color get accent => Token.light.brandSecondary;
+    @Deprecated('Use Token.light.brandSecondary or context.glowSecondary instead')
+    static Color get accent => Token.light.brandSecondary;
 
-  @Deprecated('Use Token.light.n50 or context.glowSurfaceL0 instead')
-  static Color get background => Token.light.n50;
+    @Deprecated('Use Token.light.n50 or context.glowSurfaceL0 instead')
+    static Color get background => Token.light.n50;
 
-  @Deprecated('Use Token.light.surfaceLevel1 or context.glowSurfaceL1 instead')
-  static Color get surface => Token.light.surfaceLevel1;
+    @Deprecated('Use Token.light.surfaceLevel1 or context.glowSurfaceL1 instead')
+    static Color get surface => Token.light.surfaceLevel1;
 
-  @Deprecated('Use Token.light.textPrimary or context.glowTextPrimary instead')
-  static Color get text => Token.light.textPrimary;
+    @Deprecated('Use Token.light.textPrimary or context.glowTextPrimary instead')
+    static Color get text => Token.light.textPrimary;
 
-  @Deprecated('Use Token.light.brandPrimaryOn instead')
-  static Color get primaryOn => Token.light.brandPrimaryOn;
+    @Deprecated('Use Token.light.brandPrimaryOn instead')
+    static Color get primaryOn => Token.light.brandPrimaryOn;
 
-  @Deprecated('Use Token.light.brandSecondaryOn instead')
-  static Color get secondaryOn => Token.light.brandSecondaryOn;
+    @Deprecated('Use Token.light.brandSecondaryOn instead')
+    static Color get secondaryOn => Token.light.brandSecondaryOn;
 
-  @Deprecated('Use AppShadow.card(Token.light) instead')
-  static List<BoxShadow> get cardShadow => AppShadow.card(Token.light);
+    @Deprecated('Use AppShadow.card(Token.light) instead')
+    static List<BoxShadow> get cardShadow => AppShadow.card(Token.light);
 
-  @Deprecated('Use AppShadow.soft(Token.light) instead')
-  static List<BoxShadow> get softShadow => AppShadow.soft(Token.light);
+    @Deprecated('Use AppShadow.soft(Token.light) instead')
+    static List<BoxShadow> get softShadow => AppShadow.soft(Token.light);
 
-  @Deprecated('Use AppShadow.elevated(Token.light) instead')
-  static List<BoxShadow> get glassShadow => AppShadow.elevated(Token.light);
+    @Deprecated('Use AppShadow.elevated(Token.light) instead')
+    static List<BoxShadow> get glassShadow => AppShadow.elevated(Token.light);
 
-  static final ValueNotifier<bool> isModernTheme = ValueNotifier<bool>(true);
+    // State colors — compatibility with legacy AppTheme
+    @Deprecated('Use Token.light.error or context.glowError instead')
+    static Color get error => Token.light.error;
 
-  static Future<void> loadThemePreference() async {}
-  static Future<void> toggleTheme() async {}
+    @Deprecated('Use Token.light.errorBg or Theme.of(context).colorScheme.errorContainer instead')
+    static Color get errorBg => Token.light.errorBg;
 
-  /// Light Theme — Women Expression (default)
+    @Deprecated('Use Token.light.success or Theme.of(context).colorScheme.secondary instead')
+    static Color get success => Token.light.success;
+
+    @Deprecated('Use Token.light.successBg instead')
+    static Color get successBg => Token.light.successBg;
+
+    @Deprecated('Use Token.light.warning or Theme.of(context).colorScheme.tertiary instead')
+    static Color get warning => Token.light.warning;
+
+    @Deprecated('Use Token.light.warningBg instead')
+    static Color get warningBg => Token.light.warningBg;
+
+    @Deprecated('Use Token.light.info instead')
+    static Color get info => Token.light.info;
+
+    @Deprecated('Use Token.light.infoBg instead')
+    static Color get infoBg => Token.light.infoBg;
+
+    static final ValueNotifier<bool> isModernTheme = ValueNotifier<bool>(true);
+
+      static Future<void> loadThemePreference() async {}
+      static Future<void> toggleTheme() async {}
+
+      // ============================================================================
+      // COMPATIBILITY METHODS — Para migración gradual desde legacy AppTheme
+      // ============================================================================
+      @Deprecated('Use custom InputDecoration with Token colors instead')
+      static InputDecoration inputDecoration({
+        required String hintText,
+        required IconData prefixIcon,
+        String? labelText,
+        Widget? suffixIcon,
+      }) {
+        return InputDecoration(
+          hintText: hintText,
+          labelText: labelText,
+          hintStyle: TextStyle(color: Token.light.textMuted, fontSize: 14),
+          labelStyle: TextStyle(color: Token.light.textSecondary, fontSize: 14),
+          prefixIcon: Icon(prefixIcon, color: Token.light.brandPrimary, size: 22),
+          suffixIcon: suffixIcon,
+          floatingLabelBehavior: FloatingLabelBehavior.auto,
+          filled: true,
+          fillColor: Token.light.surfaceLevel1.withValues(alpha: 0.8),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: Token.light.borderDefault, width: 1),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: Token.light.borderDefault, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: Token.light.brandPrimary, width: 1.8),
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+        );
+      }
+
+      /// Light Theme — Women Expression (default)
   static ThemeData light() {
     const t = Token.light;
 

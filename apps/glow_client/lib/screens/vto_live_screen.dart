@@ -1,9 +1,9 @@
 // frontend/lib/screens/ideas/vto_live_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
-import '../../models/biometric_result.dart';
-import 'widgets/vto_painter.dart';
+import '../widgets/vto_painter.dart';
 
 class VtoLiveScreen extends StatefulWidget {
   final BiometricResult biometricResult;

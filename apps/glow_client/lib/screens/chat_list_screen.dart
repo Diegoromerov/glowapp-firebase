@@ -1,10 +1,8 @@
 // frontend/lib/screens/chat_list_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/api_service.dart';
-import 'package:glow_core/services/auth_service.dart';
-import 'package:glow_core/shared/theme.dart';
 import 'chat_screen.dart';
 
 class ChatListScreen extends StatefulWidget {
@@ -175,12 +173,12 @@ class _ChatListScreenState extends State<ChatListScreen> {
       ),
       body: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 680),
-          child: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(color: AppTheme.primary))
-          : _error != null
-              ? Center(
+                  constraints: const BoxConstraints(maxWidth: 680),
+                  child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(color: AppTheme.primary))
+                  : _error != null
+                      ? Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -210,21 +208,21 @@ class _ChatListScreenState extends State<ChatListScreen> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 8),
                           child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(24),
-                              gradient: const LinearGradient(
-                                colors: [AppTheme.primary, Color(0xFFE5CECA)],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Color(0x0A000000),
-                                  blurRadius: 12,
-                                  offset: Offset(0, 4),
-                                )
-                              ],
-                            ),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(24),
+                                                        gradient: LinearGradient(
+                                                          colors: [AppTheme.primary, Color(0xFFE5CECA)],
+                                                          begin: Alignment.topLeft,
+                                                          end: Alignment.bottomRight,
+                                                        ),
+                                                        boxShadow: const [
+                                                          BoxShadow(
+                                                            color: Color(0x0A000000),
+                                                            blurRadius: 12,
+                                                            offset: Offset(0, 4),
+                                                          )
+                                                        ],
+                                                      ),
                             child: ListTile(
                               contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 12),
@@ -387,13 +385,13 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                                 partnerName.isNotEmpty
                                                     ? partnerName[0]
                                                         .toUpperCase()
-                                                    : 'U',
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: AppTheme.primary,
-                                                  fontSize: 18,
-                                                ),
-                                              )
+                                                                                                            : 'U',
+                                                                                                        style: TextStyle(
+                                                                                                          fontWeight: FontWeight.bold,
+                                                                                                          color: AppTheme.primary,
+                                                                                                          fontSize: 18,
+                                                                                                        ),
+                                                                                                      )
                                             : null,
                                       ),
                                       title: Row(

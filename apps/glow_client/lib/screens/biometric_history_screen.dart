@@ -1,7 +1,6 @@
 // lib/screens/profile/biometric_history_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/core/theme/belleza_luxe_gradients.dart';
-
 class BiometricHistoryScreen extends StatelessWidget {
   const BiometricHistoryScreen({super.key});
 

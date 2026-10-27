@@ -1,9 +1,6 @@
 // frontend/lib/screens/auth/forgot_password_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/auth_service.dart';
-import 'package:glow_core/design/components/s4_text_field.dart';
-import 'package:glow_core/core/theme/tokens.dart';
-
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
 

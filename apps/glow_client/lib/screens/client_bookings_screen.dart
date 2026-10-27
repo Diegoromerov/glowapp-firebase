@@ -1,12 +1,7 @@
 // frontend/lib/screens/client_bookings_screen.dart
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-import 'package:glow_core/services/api_service.dart';
 import 'otp_confirm_screen.dart';
-import 'package:glow_core/shared/theme.dart';
-import 'package:glow_core/services/audience_service.dart';
-import 'package:glow_core/shared/mens_theme.dart';
-import '../utils/json_num.dart';
-
 class ClientBookingsScreen extends StatefulWidget {
   const ClientBookingsScreen({super.key});
 
@@ -63,22 +58,22 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        title: const Row(
-          children: [
-            Icon(Icons.warning_amber_rounded, color: AppTheme.error, size: 28),
-            SizedBox(width: 8),
-            Text('¿Cancelar cita?',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-          ],
-        ),
-        content: const Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text('¿Estás seguro de que deseas cancelar tu cita? Esta acción no se puede deshacer.'),
-            SizedBox(height: 12),
-            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+              title: Row(
+                children: [
+                  Icon(Icons.warning_amber_rounded, color: AppTheme.error, size: 28),
+                  SizedBox(width: 8),
+                  Text('¿Cancelar cita?',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                ],
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text('¿Estás seguro de que deseas cancelar tu cita? Esta acción no se puede deshacer.'),
+                  SizedBox(height: 12),
+                  Card(
               color: Color(0xFFFEF2F2),
               elevation: 0,
               shape: RoundedRectangleBorder(
@@ -382,10 +377,10 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                           borderSide: BorderSide.none,
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24),
-                          borderSide: const BorderSide(
-                              color: AppTheme.primary, width: 1.5),
-                        ),
+                                                  borderRadius: BorderRadius.circular(24),
+                                                  borderSide: BorderSide(
+                                                      color: AppTheme.primary, width: 1.5),
+                                                ),
                         filled: true,
                         fillColor: AppTheme.accent.withValues(alpha: 0.15),
                         contentPadding: const EdgeInsets.all(16),
@@ -436,10 +431,10 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16)),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(
-                                color: AppTheme.primary, width: 1.5),
-                          ),
+                                                      borderRadius: BorderRadius.circular(16),
+                                                      borderSide: BorderSide(
+                                                          color: AppTheme.primary, width: 1.5),
+                                                    ),
                         ),
                         onChanged: (val) {
                           final parsed = double.tryParse(val) ?? 0.0;
@@ -481,32 +476,32 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                                   style: TextStyle(
                                       fontSize: 12, color: Colors.black54)),
                               Text('\$${tipAmount.toStringAsFixed(0)}',
-                                  style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppTheme.success)),
-                            ],
-                          ),
-                          const Divider(height: 16),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text('Total a pagar:',
-                                  style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold)),
-                              Text(
-                                  '\$${(totalAmount + tipAmount).toStringAsFixed(0)}',
-                                  style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppTheme.primary)),
-                            ],
-                          ),
+                                                                style: TextStyle(
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.bold,
+                                                                    color: AppTheme.success)),
+                                                          ],
+                                                        ),
+                                                        const Divider(height: 16),
+                                                        Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            const Text('Total a pagar:',
+                                                                style: TextStyle(
+                                                                    fontSize: 13,
+                                                                    fontWeight: FontWeight.bold)),
+                                                            Text(
+                                                                '\$${(totalAmount + tipAmount).toStringAsFixed(0)}',
+                                                                style: TextStyle(
+                                                                    fontSize: 15,
+                                                                    fontWeight: FontWeight.bold,
+                                                                    color: AppTheme.primary)),
+                                                          ],
+                                                        ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -650,7 +645,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.calendar_today_outlined,
+            Icon(Icons.calendar_today_outlined,
                 size: 64, color: AppTheme.primary),
             const SizedBox(height: 16),
             Text(
@@ -724,13 +719,13 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   child: avatarUrl.isEmpty
                       ? Text(
                           providerName.isNotEmpty
-                              ? providerName[0].toUpperCase()
-                              : 'P',
-                          style: const TextStyle(
-                              color: AppTheme.primary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        )
+                                                        ? providerName[0].toUpperCase()
+                                                        : 'P',
+                                                    style: TextStyle(
+                                                        color: AppTheme.primary,
+                                                        fontWeight: FontWeight.bold,
+                                                        fontSize: 18),
+                                                  )
                       : null,
                 ),
                 const SizedBox(width: 12),
@@ -781,7 +776,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 ),
               ],
             ),
-            const Divider(height: 24, color: Color(0xFFF3F4F6)),
+            Divider(height: 24, color: Color(0xFFF3F4F6)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -806,11 +801,11 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 ),
                 Text(
                   '\$${totalAmount.toStringAsFixed(0)}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: AppTheme.primary,
-                  ),
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppTheme.primary,
+                                    ),
                 ),
               ],
             ),
@@ -1047,9 +1042,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       icon: const Icon(Icons.cancel_outlined, size: 16),
                       label: const Text('Cancelar', style: TextStyle(fontSize: 12)),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.error,
-                        side: const BorderSide(color: AppTheme.errorBg),
-                        shape: RoundedRectangleBorder(
+                                              foregroundColor: AppTheme.error,
+                                              side: BorderSide(color: AppTheme.errorBg),
+                                              shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
@@ -1118,12 +1113,12 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   TextStyle(fontWeight: FontWeight.bold, letterSpacing: -0.5)),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
-          elevation: 0,
-        ),
-        body: const Center(
-            child: CircularProgressIndicator(color: AppTheme.primary)),
-      );
-    }
+                    elevation: 0,
+                  ),
+                  body: Center(
+                      child: CircularProgressIndicator(color: AppTheme.primary)),
+                );
+              }
 
     if (_error != null && _bookings.isEmpty) {
       return Scaffold(
@@ -1139,7 +1134,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.wifi_off_rounded,
+              Icon(Icons.wifi_off_rounded,
                   color: AppTheme.error, size: 48),
               const SizedBox(height: 16),
               Text('Error de conexión:\n$_error',
@@ -1261,11 +1256,11 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
             ),
           ),
           if (_isLoading)
-            Container(
-              color: const Color(0x1E000000),
-              child: const Center(
-                child: CircularProgressIndicator(color: AppTheme.primary),
-              ),
+                      Container(
+                        color: const Color(0x1E000000),
+                        child: Center(
+                          child: CircularProgressIndicator(color: AppTheme.primary),
+                        ),
             ),
           // Pantalla de Éxito Overlay interactiva con colores de AppTheme
           if (_showSuccessOverlay)
@@ -1284,13 +1279,13 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                           scale: val,
                           child: child,
                         );
-                      },
-                      child: const CircleAvatar(
-                        radius: 54,
-                        backgroundColor: AppTheme.successBg,
-                        child: Icon(Icons.check_circle,
-                            size: 84, color: AppTheme.success),
-                      ),
+                                              },
+                                              child: CircleAvatar(
+                                                radius: 54,
+                                                backgroundColor: AppTheme.successBg,
+                                                child: Icon(Icons.check_circle,
+                                                    size: 84, color: AppTheme.success),
+                                              ),
                     ),
                     const SizedBox(height: 24),
                     const Text(

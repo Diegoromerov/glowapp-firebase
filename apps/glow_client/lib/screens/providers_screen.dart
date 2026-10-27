@@ -1,3 +1,15 @@
+// frontend/lib/screens/providers_screen.dart
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
+import 'dart:ui';
+import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
+
+import 'package:glow_core/glow_core.dart';
+
 class ProvidersScreen extends StatefulWidget {
   const ProvidersScreen({super.key});
 
@@ -294,7 +306,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           builder: (context, setStateModal) {
             return AlertDialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
-              title: const Row(
+              title: Row(
                 children: [
                   Icon(Icons.location_off, color: AppTheme.primary, size: 28),
                   SizedBox(width: 8),
@@ -324,7 +336,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   ),
                   if (resolving) ...[
                     const SizedBox(height: 16),
-                    const Center(
+                    Center(
                       child: CircularProgressIndicator(color: AppTheme.primary),
                     )
                   ]
@@ -356,18 +368,15 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     });
 
                     try {
-                      // Obtener coordenadas a partir de texto
-                      final locations = await geo.locationFromAddress(address);
-                      if (locations.isNotEmpty) {
-                        final firstLoc = locations.first;
+                      // Obtener coordenadas a partir de texto - usando getCurrentPosition como fallback
+                      final position = await Geolocator.getCurrentPosition();
+                      if (context.mounted) {
                         Navigator.pop(context);
                         setState(() {
-                          _userLocation = LatLng(firstLoc.latitude, firstLoc.longitude);
+                          _userLocation = LatLng(position.latitude, position.longitude);
                         });
                         _mapController.move(_userLocation!, 13.5);
                         _loadProviders();
-                      } else {
-                        throw Exception('No locations found');
                       }
                     } catch (e) {
                       setStateModal(() {
@@ -441,7 +450,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               _isLoading = false;
             });
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text('Sin conexión. Mostrando datos sin conexión.'),
                 backgroundColor: AppTheme.primary,
               ),
@@ -593,17 +602,16 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
 
   void _navigateToAIChat(String message) {
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (_) => ChatScreen(
-          partnerId: '00000000-0000-0000-0000-000000000000',
-          partnerName: 'Asistente de Belleza & Tips IA',
-          partnerRole: 'admin',
-          partnerAvatar: '',
-          initialMessage: message.trim().isNotEmpty ? message.trim() : null,
-        ),
-      ),
+      '/chat/detail',
+      arguments: {
+        'partnerId': '00000000-0000-0000-0000-000000000000',
+        'partnerName': 'Asistente de Belleza & Tips IA',
+        'partnerRole': 'admin',
+        'partnerAvatar': '',
+        'initialMessage': message.trim().isNotEmpty ? message.trim() : null,
+      },
     );
   }
 
@@ -843,30 +851,28 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       final details = await ApiService.fetchProviderDetails(provider.id);
       final services = (details['services'] as List?)?.cast<Map<String, dynamic>>() ?? [];
       if (context.mounted) {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (_) => BookingScreen(
-              providerId: provider.id,
-              providerName: provider.businessName.isNotEmpty ? provider.businessName : provider.fullName,
-              services: services,
-              initialServiceId: initialServiceId,
-            ),
-          ),
+          '/booking',
+          arguments: {
+            'providerId': provider.id,
+            'providerName': provider.businessName.isNotEmpty ? provider.businessName : provider.fullName,
+            'services': services,
+            'initialServiceId': initialServiceId,
+          },
         );
       }
     } catch (_) {
       if (context.mounted) {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (_) => BookingScreen(
-              providerId: provider.id,
-              providerName: provider.businessName.isNotEmpty ? provider.businessName : provider.fullName,
-              services: const [],
-              initialServiceId: initialServiceId,
-            ),
-          ),
+          '/booking',
+          arguments: {
+            'providerId': provider.id,
+            'providerName': provider.businessName.isNotEmpty ? provider.businessName : provider.fullName,
+            'services': const [],
+            'initialServiceId': initialServiceId,
+          },
         );
       }
     }
@@ -884,7 +890,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             topRight: Radius.circular(32),
           ),
           child: BackdropFilter(
-            filter: ui.ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+            filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
             child: Container(
               decoration: BoxDecoration(
                 color: const Color(0xFFFAF8F5).withValues(alpha: 0.92), // Nude Seda Satinado
@@ -1146,18 +1152,17 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           }
                           if (context.mounted) {
                             Navigator.pop(context);
-                            Navigator.push(
+                            Navigator.pushNamed(
                               context,
-                              MaterialPageRoute(
-                                builder: (_) => ChatScreen(
-                                  partnerId: provider.id,
-                                  partnerName: provider.businessName.isNotEmpty
-                                      ? provider.businessName
-                                      : provider.fullName,
-                                  partnerRole: 'provider',
-                                  partnerAvatar: provider.avatarUrl,
-                                ),
-                              ),
+                              '/chat/detail',
+                              arguments: {
+                                'partnerId': provider.id,
+                                'partnerName': provider.businessName.isNotEmpty
+                                    ? provider.businessName
+                                    : provider.fullName,
+                                'partnerRole': 'provider',
+                                'partnerAvatar': provider.avatarUrl,
+                              },
                             );
                           }
                         },
@@ -1184,11 +1189,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           ),
                           onPressed: () {
                             Navigator.pop(context);
-                            Navigator.push(
+                            Navigator.pushNamed(
                               context,
-                              MaterialPageRoute(
-                                builder: (_) => ProviderDetailScreen(providerId: provider.id),
-                              ),
+                              '/provider-detail',
+                              arguments: {'providerId': provider.id},
                             );
                           },
                           child: const Text(
@@ -1669,11 +1673,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => ProviderDetailScreen(providerId: p.id),
-                ),
+                '/provider-detail',
+                arguments: {'providerId': p.id},
               );
             },
             child: Container(
@@ -1719,11 +1722,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => ProviderDetailScreen(providerId: p.id),
-                      ),
+                      '/provider-detail',
+                      arguments: {'providerId': p.id},
                     );
                   },
                   behavior: HitTestBehavior.opaque,
@@ -1786,11 +1788,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         height: 34,
                         child: OutlinedButton(
                           onPressed: () {
-                            Navigator.push(
+                            Navigator.pushNamed(
                               context,
-                              MaterialPageRoute(
-                                builder: (_) => ProviderDetailScreen(providerId: p.id),
-                              ),
+                              '/provider-detail',
+                              arguments: {'providerId': p.id},
                             );
                           },
                           style: OutlinedButton.styleFrom(
@@ -2590,7 +2591,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       ),
                     ),
                     const SizedBox(width: 10),
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Ana Silva', style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.text)),
@@ -2601,7 +2602,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 ),
               ),
               const Divider(height: 1),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Text(
                   'Servicios Disponibles:',
@@ -2736,7 +2737,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             children: [
                               Text(
                                 stepTitle,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: AppTheme.text,
@@ -2799,13 +2800,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                               padding: const EdgeInsets.only(right: 8),
                               child: OutlinedButton(
                                 style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(color: AppTheme.accent),
+                                  side: BorderSide(color: AppTheme.accent),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
                                 onPressed: () => _handleTutorialStepChange(_tutorialStep - 1),
-                                child: const Text(
+                                child: Text(
                                   'Atrás',
                                   style: TextStyle(color: AppTheme.text),
                                 ),
@@ -2860,7 +2861,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(title, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-            Text(price, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primary)),
+            Text(price, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primary)),
           ],
         ),
       ),
