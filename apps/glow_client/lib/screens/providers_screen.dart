@@ -1590,7 +1590,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.45 : 0.35),
+                              color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.45 : 0.35),
                               blurRadius: 16,
                               spreadRadius: 2,
                               offset: const Offset(0, 6),
@@ -1653,17 +1653,17 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             : const Color(0xFFFAF8F5).withOpacity(0.95),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.45),
+          color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.6 : 0.45),
           width: 1.2,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: isMen ? 0.45 : 0.15),
+            color: Colors.black.withOpacity(isMen ? 0.45 : 0.15),
             blurRadius: 20,
             offset: const Offset(0, 6),
           ),
           BoxShadow(
-            color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.2 : 0.1),
+            color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.2 : 0.1),
             blurRadius: 12,
             offset: const Offset(0, 2),
           ),
@@ -1959,7 +1959,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFD4AF37).withValues(alpha: isSelected ? 0.6 : 0.35),
+                                    color: const Color(0xFFD4AF37).withOpacity(isSelected ? 0.6 : 0.35),
                                     blurRadius: isSelected ? 14 : 8,
                                     spreadRadius: isSelected ? 2 : 0,
                                     offset: const Offset(0, 3),
@@ -2055,12 +2055,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         : const Color(0xFFFAF8F5).withOpacity(0.95),
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
-                      color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.45),
+                      color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.6 : 0.45),
                       width: 1.5,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: isMen ? 0.4 : 0.08),
+                        color: Colors.black.withOpacity(isMen ? 0.4 : 0.08),
                         blurRadius: 16,
                         offset: const Offset(0, 4),
                       ),
@@ -2150,16 +2150,16 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     : const Color(0xFFFDFBF7),
                 borderRadius: BorderRadius.circular(36),
                 border: Border.all(
-                    color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.5),
+                    color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.6 : 0.5),
                     width: 1.5),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: isMen ? 0.45 : 0.08),
+                    color: Colors.black.withOpacity(isMen ? 0.45 : 0.08),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
                   BoxShadow(
-                    color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.25 : 0.15),
+                    color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.25 : 0.15),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),

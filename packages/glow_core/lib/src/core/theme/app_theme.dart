@@ -494,15 +494,15 @@ class AppTheme {
             ),
 
             // Slider
-            sliderTheme: SliderThemeData(
-              activeColor: t.brandPrimary,
-              inactiveColor: t.n200,
-              thumbColor: t.brandPrimary,
-              overlayColor: t.brandPrimary.withOpacity(0.15),
-              valueIndicatorColor: t.brandPrimary,
-              valueIndicatorTextStyle: AppTypography.labelSmall(t).copyWith(color: t.brandPrimaryOn),
-              trackHeight: 4,
-            ),
+                        sliderTheme: SliderThemeData(
+                          activeTrackColor: t.brandPrimary,
+                          inactiveTrackColor: t.n700,
+                          thumbColor: t.brandPrimary,
+                          overlayColor: t.brandPrimary.withOpacity(0.15),
+                          valueIndicatorColor: t.brandPrimary,
+                          valueIndicatorTextStyle: AppTypography.labelSmall(t).copyWith(color: t.brandPrimaryOn),
+                          trackHeight: 4,
+                        ),
 
             // Switch
             switchTheme: SwitchThemeData(

@@ -111,7 +111,7 @@ class BackgroundVideoPlayerState extends State<BackgroundVideoPlayer> {
 
           // Capa de oscurecimiento suave para legibilidad de textos y botones
           Container(
-            color: Colors.black.withValues(alpha: widget.overlayOpacity),
+            color: Colors.black.withOpacity(widget.overlayOpacity),
           ),
 
           // Botón elegante flotante de control de audio (Mute / Unmute)

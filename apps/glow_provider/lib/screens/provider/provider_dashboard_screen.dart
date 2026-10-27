@@ -3687,7 +3687,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   color: isMen ? const Color(0xFF2A241E) : const Color(0xFFF5EFE6), // Quiet Luxury Beige background
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xFFD4AF37).withValues(alpha: isMen ? 0.5 : 0.3),
+                      color: Color(0xFFD4AF37).withOpacity(isMen ? 0.5 : 0.3),
                       blurRadius: 12,
                       spreadRadius: 1,
                       offset: const Offset(0, 4),
@@ -3957,16 +3957,16 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     : const Color(0xFFFDFBF7),
                 borderRadius: BorderRadius.circular(36),
                 border: Border.all(
-                    color: Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.5),
+                    color: Color(0xFFD4AF37).withOpacity(isMen ? 0.6 : 0.5),
                     width: 1.5),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: isMen ? 0.45 : 0.08),
+                    color: Colors.black.withOpacity(isMen ? 0.45 : 0.08),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
                   BoxShadow(
-                    color: Color(0xFFD4AF37).withValues(alpha: isMen ? 0.25 : 0.15),
+                    color: Color(0xFFD4AF37).withOpacity(isMen ? 0.25 : 0.15),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),

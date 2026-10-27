@@ -92,7 +92,7 @@ class _Aura3DEmblemWidgetState extends State<Aura3DEmblemWidget>
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: GlowTokens.roseGold.withValues(alpha: 0.45 + (0.25 * _pulseAnimation.value)),
+                    color: GlowTokens.roseGold.withOpacity(0.45 + (0.25 * _pulseAnimation.value)),
                     blurRadius: 32.0,
                     spreadRadius: 4.0,
                     offset: const Offset(0, 10),
@@ -123,7 +123,7 @@ class _Aura3DEmblemWidgetState extends State<Aura3DEmblemWidget>
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
-                              Colors.white.withValues(alpha: 0.25 * (1 - _pulseAnimation.value)),
+                              Colors.white.withOpacity(0.25 * (1 - _pulseAnimation.value)),
                               Colors.transparent,
                               GlowTokens.nightAndean.withOpacity(0.15),
                             ],

@@ -1660,8 +1660,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                                               child: Container(
                                                                 color: Colors
                                                                     .black
-                                                                    .withValues(
-                                                                        alpha: 0.85),
+                                                                    .withOpacity(0.85),
                                                                 width: double
                                                                     .infinity,
                                                                 height: double
