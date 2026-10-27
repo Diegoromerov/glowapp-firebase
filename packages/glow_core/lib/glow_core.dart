@@ -37,6 +37,7 @@ export 'src/models/provider_model.dart';
 export 'src/models/service_model.dart';
 export 'src/models/saas/saas_models.dart';
 export 'src/models/superadmin/superadmin_models.dart';
+export 'src/providers/saas_providers.dart';
 
 // Design / Theme
 export 'src/design/components/academy_luxe_components.dart';
@@ -83,6 +84,8 @@ export 'src/widgets/profile/profile_header.dart';
 export 'src/widgets/product_quick_view_dialog.dart';
 export 'src/widgets/store_product_card.dart';
 export 'src/widgets/voice_input.dart';
+export 'src/widgets/provider/bank_account_dialog.dart';
+export 'src/widgets/provider_services_screen.dart';
 export 'src/widgets/wompi_payment_sheet.dart';
 
 // Utils

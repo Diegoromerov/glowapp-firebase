@@ -66,9 +66,95 @@ class AppTheme {
     static Color get info => Token.light.info;
 
     @Deprecated('Use Token.light.infoBg instead')
-    static Color get infoBg => Token.light.infoBg;
+        static Color get infoBg => Token.light.infoBg;
 
-    static final ValueNotifier<bool> isModernTheme = ValueNotifier<bool>(true);
+        // Nude/Neutral scale compatibility (from legacy LuxeColors.nude50-900)
+        // Maps to Token.neutralLight[50-900]
+        @Deprecated('Use Token.neutralLight[50] instead')
+        static Color get nude50 => Token.neutralLight[50]!;
+        @Deprecated('Use Token.neutralLight[100] instead')
+        static Color get nude100 => Token.neutralLight[100]!;
+        @Deprecated('Use Token.neutralLight[200] instead')
+        static Color get nude200 => Token.neutralLight[200]!;
+        @Deprecated('Use Token.neutralLight[300] instead')
+        static Color get nude300 => Token.neutralLight[300]!;
+        @Deprecated('Use Token.neutralLight[400] instead')
+        static Color get nude400 => Token.neutralLight[400]!;
+        @Deprecated('Use Token.neutralLight[500] instead')
+        static Color get nude500 => Token.neutralLight[500]!;
+        @Deprecated('Use Token.neutralLight[600] instead')
+        static Color get nude600 => Token.neutralLight[600]!;
+        @Deprecated('Use Token.neutralLight[700] instead')
+        static Color get nude700 => Token.neutralLight[700]!;
+        @Deprecated('Use Token.neutralLight[800] instead')
+        static Color get nude800 => Token.neutralLight[800]!;
+        @Deprecated('Use Token.neutralLight[900] instead')
+                static Color get nude900 => Token.neutralLight[900]!;
+
+
+    // Spacing compatibility (from legacy LuxeSpacing)
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingXS = 4.0;
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingSM = 8.0;
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingMD = 16.0;
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingLG = 24.0;
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingXL = 32.0;
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingL = 24.0;
+    @Deprecated('Use Radii or hardcoded values instead')
+    static const double spacingXXL = 48.0;
+
+    // Text color compatibility (from legacy LuxeColors)
+    @Deprecated('Use Token.light.textSecondary instead')
+    static Color get textSecondary => Token.light.textSecondary;
+    @Deprecated('Use Token.light.textMuted instead')
+    static Color get textTertiary => Token.light.textMuted;
+    @Deprecated('Use Token.light.borderSubtle instead')
+    static Color get divider => Token.light.borderSubtle;
+    @Deprecated('Use Token.light.textMuted instead')
+    static Color get textHint => Token.light.textMuted;
+    @Deprecated('Use Token.light.textDisabled instead')
+    static Color get textDisabled => Token.light.textDisabled;
+
+
+                // Legacy gradients compatibility (from legacy AppTheme.shared/theme.dart)
+                @Deprecated('Use AppGradients.premium instead')
+                static const LinearGradient premiumGradient = LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFFCFBEB5),
+                    Color(0xFFCFBEB5),
+                    Color(0xFFFFF8F0),
+                  ],
+                  stops: [0.0, 0.45, 1.0],
+                );
+
+                @Deprecated('Use AppGradients.roseGoldSatin instead')
+                static const LinearGradient roseGoldSatinGradient = LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFFE8B6AD),
+                    Color(0xFFB57E74),
+                  ],
+                );
+
+                @Deprecated('Use AppGradients.terracottaMatte instead')
+                static const LinearGradient terracottaMatteGradient = LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFFC5A052), // primary
+                    Color(0xFF8C6F65),
+                  ],
+                );
+
+                static final ValueNotifier<bool> isModernTheme = ValueNotifier<bool>(true);
 
       static Future<void> loadThemePreference() async {}
       static Future<void> toggleTheme() async {}

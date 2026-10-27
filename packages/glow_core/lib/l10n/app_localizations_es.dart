@@ -1,0 +1,1 @@
+export '../../src/l10n/app_localizations_es.dart';

@@ -1,0 +1,83 @@
+name: glow_provider
+description: GlowApp - Proveedor (App Salón/Proveedor)
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  glow_core:
+    path: ../../packages/glow_core
+  http: ^1.1.0
+  shared_preferences: ^2.2.2
+  google_sign_in: ^6.2.1
+  flutter_secure_storage: ^9.0.0
+  geocoding: ^3.0.0
+  flutter_map: ^8.3.0
+  latlong2: ^0.9.1
+  image_picker: ^1.0.7
+  web_socket_channel: ^3.0.1
+  geolocator: ^10.1.0
+  shimmer: ^3.0.0
+  camera: ^0.10.5
+  google_mlkit_face_detection: ^0.10.0
+  image: ^4.1.3
+  flutter_svg: ^2.0.9
+  flutter_markdown_plus: ^1.0.0
+  cached_network_image: ^3.4.1
+  intl: ^0.20.2
+  speech_to_text: ^7.5.0
+  permission_handler: ^13.0.2
+  mobile_scanner: ^7.4.0
+  video_player: ^2.9.2
+  just_audio: ^0.9.36
+  firebase_core: ^3.6.0
+  firebase_messaging: ^15.1.0
+  flutter_local_notifications: ^18.0.1
+  flutter_riverpod: ^2.4.0
+  url_launcher: ^6.2.0
+  share_plus: ^12.0.2
+  fl_chart: ^0.68.0
+  table_calendar: ^3.0.9
+  pdf: ^3.10.0
+  printing: ^5.12.0
+  syncfusion_flutter_calendar: ^32.1.23
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.15.1
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - assets/videos/onboarding_provider.mp4
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope-Regular.ttf
+        - asset: assets/fonts/Manrope-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Manrope-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Manrope-Bold.ttf
+          weight: 700
+    - family: CormorantGaramond
+      fonts:
+        - asset: assets/fonts/CormorantGaramond-Regular.ttf
+        - asset: assets/fonts/CormorantGaramond-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/CormorantGaramond-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/CormorantGaramond-Bold.ttf
+          weight: 700

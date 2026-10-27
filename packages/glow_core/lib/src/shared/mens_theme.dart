@@ -15,11 +15,21 @@ class MensTheme {
   static const Color cyberCyanGlow = Color(0x5900E5FF);
 
   // Textos
-  static const Color textPrimary = Color(0xFFF5F6F8);
-  static const Color textSecondary = Color(0xFF949AA8);
-  static const Color textMuted = Color(0xFF5F6575);
+    static const Color textPrimary = Color(0xFFF5F6F8);
+    static const Color textSecondary = Color(0xFF949AA8);
+    static const Color textMuted = Color(0xFF5F6575);
 
-  // Gradientes
+    // Semantic colors (compatibilidad con AppTheme)
+    static const Color error = Color(0xFFEF4444);
+    static const Color errorBg = Color(0xFF7F1D1D);
+    static const Color success = Color(0xFF10B981);
+    static const Color successBg = Color(0xFF064E3B);
+    static const Color warning = Color(0xFFF59E0B);
+    static const Color warningBg = Color(0xFF78350F);
+    static const Color info = Color(0xFF3B82F6);
+    static const Color infoBg = Color(0xFF1E3A5F);
+
+    // Gradientes
   static const LinearGradient goldGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
