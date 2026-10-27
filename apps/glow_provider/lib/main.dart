@@ -318,14 +318,14 @@ ThemeData _buildMensTheme() {
       ),
       iconTheme: IconThemeData(color: MensTheme.textPrimary),
     ),
-    cardTheme: CardThemeData(
-      color: MensTheme.obsidianCard,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: MensTheme.champagneGold.withOpacity(0.3)),
-      ),
-    ),
+    cardTheme: CardTheme(
+          color: MensTheme.obsidianCard,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: BorderSide(color: MensTheme.champagneGold.withOpacity(0.3)),
+          ),
+        ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: MensTheme.champagneGold,

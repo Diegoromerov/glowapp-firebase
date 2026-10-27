@@ -70,26 +70,26 @@ class AppTheme {
 
         // Nude/Neutral scale compatibility (from legacy LuxeColors.nude50-900)
         // Maps to Token.neutralLight[50-900]
-        @Deprecated('Use Token.neutralLight[50] instead')
-        static Color get nude50 => Token.neutralLight[50]!;
-        @Deprecated('Use Token.neutralLight[100] instead')
-        static Color get nude100 => Token.neutralLight[100]!;
-        @Deprecated('Use Token.neutralLight[200] instead')
-        static Color get nude200 => Token.neutralLight[200]!;
-        @Deprecated('Use Token.neutralLight[300] instead')
-        static Color get nude300 => Token.neutralLight[300]!;
-        @Deprecated('Use Token.neutralLight[400] instead')
-        static Color get nude400 => Token.neutralLight[400]!;
-        @Deprecated('Use Token.neutralLight[500] instead')
-        static Color get nude500 => Token.neutralLight[500]!;
-        @Deprecated('Use Token.neutralLight[600] instead')
-        static Color get nude600 => Token.neutralLight[600]!;
-        @Deprecated('Use Token.neutralLight[700] instead')
-        static Color get nude700 => Token.neutralLight[700]!;
-        @Deprecated('Use Token.neutralLight[800] instead')
-        static Color get nude800 => Token.neutralLight[800]!;
-        @Deprecated('Use Token.neutralLight[900] instead')
-                static Color get nude900 => Token.neutralLight[900]!;
+        @Deprecated('Use Token.neutralLightMap[50] instead')
+        static Color get nude50 => Token.neutralLightMap[50]!;
+        @Deprecated('Use Token.neutralLightMap[100] instead')
+        static Color get nude100 => Token.neutralLightMap[100]!;
+        @Deprecated('Use Token.neutralLightMap[200] instead')
+        static Color get nude200 => Token.neutralLightMap[200]!;
+        @Deprecated('Use Token.neutralLightMap[300] instead')
+        static Color get nude300 => Token.neutralLightMap[300]!;
+        @Deprecated('Use Token.neutralLightMap[400] instead')
+        static Color get nude400 => Token.neutralLightMap[400]!;
+        @Deprecated('Use Token.neutralLightMap[500] instead')
+        static Color get nude500 => Token.neutralLightMap[500]!;
+        @Deprecated('Use Token.neutralLightMap[600] instead')
+        static Color get nude600 => Token.neutralLightMap[600]!;
+        @Deprecated('Use Token.neutralLightMap[700] instead')
+        static Color get nude700 => Token.neutralLightMap[700]!;
+        @Deprecated('Use Token.neutralLightMap[800] instead')
+        static Color get nude800 => Token.neutralLightMap[800]!;
+        @Deprecated('Use Token.neutralLightMap[900] instead')
+                static Color get nude900 => Token.neutralLightMap[900]!;
 
 
     // Spacing compatibility (from legacy LuxeSpacing)
@@ -836,7 +836,7 @@ class AppTheme {
             ),
 
             sliderTheme: SliderThemeData(
-              activeColor: t.brandPrimary,
+              activeTrackColor: t.brandPrimary,
               inactiveColor: t.n700,
               thumbColor: t.brandPrimary,
               overlayColor: t.brandPrimary.withOpacity(0.15),
@@ -1330,7 +1330,7 @@ class AppTheme {
             ),
 
             sliderTheme: SliderThemeData(
-              activeColor: t.brandPrimary,
+              activeTrackColor: t.brandPrimary,
               inactiveColor: isDark ? t.n700 : t.n200,
               thumbColor: t.brandPrimary,
               overlayColor: t.brandPrimary.withOpacity(0.15),

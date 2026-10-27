@@ -16,11 +16,11 @@ class LuxeToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoSwitch(
-      value: value,
-      onChanged: onChanged,
-      activeColor: LuxeColors.gold871,
-      inactiveColor: LuxeColors.nude200,
-    );
+          value: value,
+          onChanged: onChanged,
+          activeColor: LuxeColors.gold871,
+          trackColor: LuxeColors.nude200,
+        );
   }
 }
 

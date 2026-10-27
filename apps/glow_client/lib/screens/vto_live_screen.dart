@@ -216,11 +216,11 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                           const Text('Intensidad:', style: TextStyle(color: Colors.white70, fontSize: 12)),
                           Expanded(
                             child: SliderTheme(
-                              data: SliderTheme.of(context).copyWith(
-                                activeColor: const Color(0xFFC5A052),
-                                thumbColor: const Color(0xFFF3D59B),
-                                inactiveColor: Colors.white24,
-                              ),
+                                                          data: SliderTheme.of(context).copyWith(
+                                                            activeTrackColor: const Color(0xFFC5A052),
+                                                            thumbColor: const Color(0xFFF3D59B),
+                                                            inactiveTrackColor: Colors.white24,
+                                                          ),
                               child: Slider(
                                 value: _opacity,
                                 min: 0.1,
