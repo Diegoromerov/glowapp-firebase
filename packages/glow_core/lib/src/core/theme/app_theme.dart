@@ -178,7 +178,7 @@ class AppTheme {
           suffixIcon: suffixIcon,
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           filled: true,
-          fillColor: Token.light.surfaceLevel1.withValues(alpha: 0.8),
+          fillColor: Token.light.surfaceLevel1.withOpacity(0.8),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(color: Token.light.borderDefault, width: 1),
@@ -1119,282 +1119,282 @@ class AppTheme {
         hoverElevation: 1,
       ),
 
-      cardTheme: CardThemeData(
-        color: t.surfaceLevel1,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        shadowColor: t.shadowSoft,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusCard),
-          side: BorderSide(color: t.borderSubtle, width: 1),
-        ),
-        margin: EdgeInsets.zero,
-      ),
+      cardTheme: CardTheme(
+              color: t.surfaceLevel1,
+              surfaceTintColor: Colors.transparent,
+              elevation: 0,
+              shadowColor: t.shadowSoft,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusCard),
+                side: BorderSide(color: t.borderSubtle, width: 1),
+              ),
+              margin: EdgeInsets.zero,
+            ),
 
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: t.brandPrimary,
-          foregroundColor: t.brandPrimaryOn,
-          elevation: 0,
-          shadowColor: isDark ? t.shadowChampagneGlow : t.shadowGoldGlow,
-          padding: const EdgeInsets.symmetric(
-            horizontal: Spacing.xl,
-            vertical: Spacing.md,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Radii.round),
-          ),
-          textStyle: AppTypography.labelLarge(t),
-          minimumSize: const Size(48, 48),
-        ).copyWith(
-          overlayColor: WidgetStateProperty.resolveWith<Color?>((states) {
-            if (states.contains(WidgetState.pressed)) {
-              return t.brandPrimaryOn.withValues(alpha: 0.1);
-            }
-            if (states.contains(WidgetState.hovered)) {
-              return t.brandPrimaryOn.withValues(alpha: 0.05);
-            }
-            return null;
-          }),
-        ),
-      ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: t.brandPrimary,
+                foregroundColor: t.brandPrimaryOn,
+                elevation: 0,
+                shadowColor: isDark ? t.shadowChampagneGlow : t.shadowGoldGlow,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: Spacing.xl,
+                  vertical: Spacing.md,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Radii.round),
+                ),
+                textStyle: AppTypography.labelLarge(t),
+                minimumSize: const Size(48, 48),
+              ).copyWith(
+                overlayColor: WidgetStateProperty.resolveWith<Color?>((states) {
+                  if (states.contains(WidgetState.pressed)) {
+                    return t.brandPrimaryOn.withOpacity(0.1);
+                  }
+                  if (states.contains(WidgetState.hovered)) {
+                    return t.brandPrimaryOn.withOpacity(0.05);
+                  }
+                  return null;
+                }),
+              ),
+            ),
 
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: t.brandPrimary,
-          side: BorderSide(color: t.brandPrimary, width: 1.5),
-          padding: const EdgeInsets.symmetric(
-            horizontal: Spacing.xl,
-            vertical: Spacing.md,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Radii.round),
-          ),
-          textStyle: AppTypography.labelLarge(t).copyWith(color: t.brandPrimary),
-          minimumSize: const Size(48, 48),
-        ).copyWith(
-          backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-            if (states.contains(WidgetState.pressed)) {
-              return t.brandPrimary.withValues(alpha: 0.1);
-            }
-            if (states.contains(WidgetState.hovered)) {
-              return t.brandPrimary.withValues(alpha: 0.05);
-            }
-            return null;
-          }),
-        ),
-      ),
+            outlinedButtonTheme: OutlinedButtonThemeData(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: t.brandPrimary,
+                side: BorderSide(color: t.brandPrimary, width: 1.5),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: Spacing.xl,
+                  vertical: Spacing.md,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Radii.round),
+                ),
+                textStyle: AppTypography.labelLarge(t).copyWith(color: t.brandPrimary),
+                minimumSize: const Size(48, 48),
+              ).copyWith(
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+                  if (states.contains(WidgetState.pressed)) {
+                    return t.brandPrimary.withOpacity(0.1);
+                  }
+                  if (states.contains(WidgetState.hovered)) {
+                    return t.brandPrimary.withOpacity(0.05);
+                  }
+                  return null;
+                }),
+              ),
+            ),
 
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: t.brandSecondary,
-          padding: const EdgeInsets.symmetric(
-            horizontal: Spacing.lg,
-            vertical: Spacing.sm,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Radii.round),
-          ),
-          textStyle: AppTypography.labelLarge(t).copyWith(color: t.brandSecondary),
-          minimumSize: const Size(48, 48),
-        ),
-      ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: t.brandSecondary,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: Spacing.lg,
+                  vertical: Spacing.sm,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Radii.round),
+                ),
+                textStyle: AppTypography.labelLarge(t).copyWith(color: t.brandSecondary),
+                minimumSize: const Size(48, 48),
+              ),
+            ),
 
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: t.surfaceVariant,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: Spacing.xl,
-          vertical: Spacing.md,
-        ),
-        labelStyle: AppTypography.bodyMedium(t).copyWith(color: t.textSecondary),
-        hintStyle: AppTypography.bodyMedium(t).copyWith(color: t.textMuted),
-        floatingLabelStyle: AppTypography.bodyMedium(t).copyWith(color: t.brandPrimary),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusControl),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusControl),
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusControl),
-          borderSide: BorderSide(color: t.borderFocus, width: 1.8),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusControl),
-          borderSide: BorderSide(color: t.error, width: 1.5),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusControl),
-          borderSide: BorderSide(color: t.error, width: 2),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Radii.radiusControl),
-          borderSide: BorderSide(color: t.borderSubtle, width: 1),
-        ),
-      ),
+            inputDecorationTheme: InputDecorationTheme(
+              filled: true,
+              fillColor: t.surfaceVariant,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: Spacing.xl,
+                vertical: Spacing.md,
+              ),
+              labelStyle: AppTypography.bodyMedium(t).copyWith(color: t.textSecondary),
+              hintStyle: AppTypography.bodyMedium(t).copyWith(color: t.textMuted),
+              floatingLabelStyle: AppTypography.bodyMedium(t).copyWith(color: t.brandPrimary),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusControl),
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusControl),
+                borderSide: BorderSide.none,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusControl),
+                borderSide: BorderSide(color: t.borderFocus, width: 1.8),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusControl),
+                borderSide: BorderSide(color: t.error, width: 1.5),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusControl),
+                borderSide: BorderSide(color: t.error, width: 2),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.radiusControl),
+                borderSide: BorderSide(color: t.borderSubtle, width: 1),
+              ),
+            ),
 
-      chipTheme: ChipThemeData(
-        backgroundColor: t.surfaceVariant,
-        selectedColor: t.brandPrimary.withValues(alpha: 0.15),
-        disabledColor: isDark ? t.n800 : t.n100,
-        padding: const EdgeInsets.symmetric(
-          horizontal: Spacing.md,
-          vertical: Spacing.xs,
-        ),
-        labelStyle: AppTypography.bodySmall(t),
-        secondaryLabelStyle: AppTypography.bodySmall(t).copyWith(color: t.brandPrimary),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Radii.pill),
-          side: BorderSide(color: t.borderSubtle),
-        ),
-        side: BorderSide(color: t.borderSubtle),
-        labelPadding: EdgeInsets.zero,
-      ),
+            chipTheme: ChipThemeData(
+              backgroundColor: t.surfaceVariant,
+              selectedColor: t.brandPrimary.withOpacity(0.15),
+              disabledColor: isDark ? t.n800 : t.n100,
+              padding: const EdgeInsets.symmetric(
+                horizontal: Spacing.md,
+                vertical: Spacing.xs,
+              ),
+              labelStyle: AppTypography.bodySmall(t),
+              secondaryLabelStyle: AppTypography.bodySmall(t).copyWith(color: t.brandPrimary),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.pill),
+                side: BorderSide(color: t.borderSubtle),
+              ),
+              side: BorderSide(color: t.borderSubtle),
+              labelPadding: EdgeInsets.zero,
+            ),
 
-      dividerTheme: DividerThemeData(
-        color: t.borderSubtle,
-        thickness: 1,
-        space: 1,
-      ),
+            dividerTheme: DividerThemeData(
+              color: t.borderSubtle,
+              thickness: 1,
+              space: 1,
+            ),
 
-      listTileTheme: ListTileThemeData(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: Spacing.lg,
-          vertical: Spacing.xs,
-        ),
-        titleTextStyle: AppTypography.titleMedium(t),
-        subtitleTextStyle: AppTypography.bodySmall(t),
-        leadingAndTrailingTextStyle: AppTypography.bodyMedium(t),
-        iconColor: t.textSecondary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Radii.lg),
-        ),
-        tileColor: Colors.transparent,
-        selectedTileColor: t.brandPrimary.withValues(alpha: isDark ? 0.12 : 0.08),
-        selectedColor: t.brandPrimary,
-      ),
+            listTileTheme: ListTileThemeData(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: Spacing.lg,
+                vertical: Spacing.xs,
+              ),
+              titleTextStyle: AppTypography.titleMedium(t),
+              subtitleTextStyle: AppTypography.bodySmall(t),
+              leadingAndTrailingTextStyle: AppTypography.bodyMedium(t),
+              iconColor: t.textSecondary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.lg),
+              ),
+              tileColor: Colors.transparent,
+              selectedTileColor: t.brandPrimary.withOpacity(isDark ? 0.12 : 0.08),
+              selectedColor: t.brandPrimary,
+            ),
 
-      dialogTheme: DialogThemeData(
-        backgroundColor: t.surfaceLevel1,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        shadowColor: t.shadowStrong,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Radii.xxxl),
-        ),
-        titleTextStyle: AppTypography.headlineSmall(t),
-        contentTextStyle: AppTypography.bodyMedium(t),
-        alignment: Alignment.center,
-      ),
+            dialogTheme: DialogTheme(
+              backgroundColor: t.surfaceLevel1,
+              surfaceTintColor: Colors.transparent,
+              elevation: 0,
+              shadowColor: t.shadowStrong,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.xxxl),
+              ),
+              titleTextStyle: AppTypography.headlineSmall(t),
+              contentTextStyle: AppTypography.bodyMedium(t),
+              alignment: Alignment.center,
+            ),
 
-      bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: t.surfaceLevel1,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        shadowColor: t.shadowStrong,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(Radii.xxxl)),
-        ),
-        modalBackgroundColor: t.surfaceOverlay,
-      ),
+            bottomSheetTheme: BottomSheetThemeData(
+              backgroundColor: t.surfaceLevel1,
+              surfaceTintColor: Colors.transparent,
+              elevation: 0,
+              shadowColor: t.shadowStrong,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(Radii.xxxl)),
+              ),
+              modalBackgroundColor: t.surfaceOverlay,
+            ),
 
-      snackBarTheme: SnackBarThemeData(
-        backgroundColor: isDark ? t.n100 : t.textPrimary,
-        contentTextStyle: AppTypography.bodyMedium(t).copyWith(
-          color: isDark ? t.textPrimary : t.textInverse),
-        actionTextColor: t.brandPrimary,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Radii.xl),
-        ),
-        elevation: 0,
-      ),
+            snackBarTheme: SnackBarThemeData(
+              backgroundColor: isDark ? t.n100 : t.textPrimary,
+              contentTextStyle: AppTypography.bodyMedium(t).copyWith(
+                color: isDark ? t.textPrimary : t.textInverse),
+              actionTextColor: t.brandPrimary,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.xl),
+              ),
+              elevation: 0,
+            ),
 
-      tabBarTheme: TabBarThemeData(
-        labelColor: t.brandPrimary,
-        unselectedLabelColor: t.textMuted,
-        indicatorColor: t.brandPrimary,
-        indicatorSize: TabBarIndicatorSize.label,
-        labelStyle: AppTypography.labelMedium(t),
-        unselectedLabelStyle: AppTypography.labelMedium(t),
-        dividerColor: Colors.transparent,
-      ),
+            tabBarTheme: TabBarTheme(
+              labelColor: t.brandPrimary,
+              unselectedLabelColor: t.textMuted,
+              indicatorColor: t.brandPrimary,
+              indicatorSize: TabBarIndicatorSize.label,
+              labelStyle: AppTypography.labelMedium(t),
+              unselectedLabelStyle: AppTypography.labelMedium(t),
+              dividerColor: Colors.transparent,
+            ),
 
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: t.brandPrimary,
-        linearTrackColor: isDark ? t.n800 : t.n200,
-        circularTrackColor: isDark ? t.n800 : t.n200,
-      ),
+            progressIndicatorTheme: ProgressIndicatorThemeData(
+              color: t.brandPrimary,
+              linearTrackColor: isDark ? t.n800 : t.n200,
+              circularTrackColor: isDark ? t.n800 : t.n200,
+            ),
 
-      sliderTheme: SliderThemeData(
-        activeTrackColor: t.brandPrimary,
-        inactiveTrackColor: isDark ? t.n700 : t.n200,
-        thumbColor: t.brandPrimary,
-        overlayColor: t.brandPrimary.withValues(alpha: 0.15),
-        valueIndicatorColor: t.brandPrimary,
-        valueIndicatorTextStyle: AppTypography.labelSmall(t).copyWith(color: t.brandPrimaryOn),
-        trackHeight: 4,
-      ),
+            sliderTheme: SliderThemeData(
+              activeTrackColor: t.brandPrimary,
+              inactiveTrackColor: isDark ? t.n700 : t.n200,
+              thumbColor: t.brandPrimary,
+              overlayColor: t.brandPrimary.withOpacity(0.15),
+              valueIndicatorColor: t.brandPrimary,
+              valueIndicatorTextStyle: AppTypography.labelSmall(t).copyWith(color: t.brandPrimaryOn),
+              trackHeight: 4,
+            ),
 
-      switchTheme: SwitchThemeData(
-        thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
-          if (states.contains(WidgetState.selected)) return t.brandPrimary;
-          return isDark ? t.n500 : t.n400;
-        }),
-        trackColor: WidgetStateProperty.resolveWith<Color>((states) {
-          if (states.contains(WidgetState.selected)) {
-            return t.brandPrimary.withValues(alpha: 0.5);
-          }
-          return isDark ? t.n700 : t.n300;
-        }),
-        trackOutlineColor: WidgetStateProperty.resolveWith<Color?>((states) {
-          return null;
-        }),
-      ),
+            switchTheme: SwitchThemeData(
+              thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+                if (states.contains(WidgetState.selected)) return t.brandPrimary;
+                return isDark ? t.n500 : t.n400;
+              }),
+              trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+                if (states.contains(WidgetState.selected)) {
+                  return t.brandPrimary.withOpacity(0.5);
+                }
+                return isDark ? t.n700 : t.n300;
+              }),
+              trackOutlineColor: WidgetStateProperty.resolveWith<Color?>((states) {
+                return null;
+              }),
+            ),
 
-      checkboxTheme: CheckboxThemeData(
-        fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-          if (states.contains(WidgetState.selected)) return t.brandPrimary;
-          return Colors.transparent;
-        }),
-        checkColor: WidgetStateProperty.all(t.brandPrimaryOn),
-        side: BorderSide(color: t.borderDefault, width: 1.5),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Radii.sm),
-        ),
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        visualDensity: VisualDensity.compact,
-      ),
+            checkboxTheme: CheckboxThemeData(
+              fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+                if (states.contains(WidgetState.selected)) return t.brandPrimary;
+                return Colors.transparent;
+              }),
+              checkColor: WidgetStateProperty.all(t.brandPrimaryOn),
+              side: BorderSide(color: t.borderDefault, width: 1.5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.sm),
+              ),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              visualDensity: VisualDensity.compact,
+            ),
 
-      radioTheme: RadioThemeData(
-        fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-          if (states.contains(WidgetState.selected)) return t.brandPrimary;
-          return isDark ? t.n500 : t.n400;
-        }),
-      ),
+            radioTheme: RadioThemeData(
+              fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+                if (states.contains(WidgetState.selected)) return t.brandPrimary;
+                return isDark ? t.n500 : t.n400;
+              }),
+            ),
 
-      tooltipTheme: TooltipThemeData(
-        decoration: BoxDecoration(
-          color: t.textPrimary,
-          borderRadius: BorderRadius.circular(Radii.md),
-          boxShadow: AppShadow.card(t),
-        ),
-        textStyle: AppTypography.bodySmall(t).copyWith(color: t.textInverse),
-        padding: const EdgeInsets.symmetric(
-          horizontal: Spacing.md,
-          vertical: Spacing.sm,
-        ),
-        preferBelow: true,
-        verticalOffset: 8,
-      ),
+            tooltipTheme: TooltipThemeData(
+              decoration: BoxDecoration(
+                color: t.textPrimary,
+                borderRadius: BorderRadius.circular(Radii.md),
+                boxShadow: AppShadow.card(t),
+              ),
+              textStyle: AppTypography.bodySmall(t).copyWith(color: t.textInverse),
+              padding: const EdgeInsets.symmetric(
+                horizontal: Spacing.md,
+                vertical: Spacing.sm,
+              ),
+              preferBelow: true,
+              verticalOffset: 8,
+            ),
 
-      extensions: <ThemeExtension<dynamic>>[
-        GlowTokensExtension(token: t),
-        GlowIconThemeExtension(isMenMode: isMenMode),
-      ],
-    );
-  }
-}
+            extensions: <ThemeExtension<dynamic>>[
+              GlowTokensExtension(token: t),
+              GlowIconThemeExtension(isMenMode: isMenMode),
+            ],
+          );
+        }
+      }
