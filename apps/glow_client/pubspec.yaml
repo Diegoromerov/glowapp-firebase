@@ -57,7 +57,7 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/images/auth/auth_login_hero.webp
     - assets/fonts/
     - assets/videos/onboarding_intro.mp4
   fonts:
