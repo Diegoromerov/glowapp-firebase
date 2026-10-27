@@ -430,7 +430,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<MembershipRole>(
-              initialValue: selectedRole,
+              value: selectedRole,
               decoration: const InputDecoration(
                 labelText: 'Rol',
                 prefixIcon: Icon(Icons.badge_outlined),
@@ -1201,7 +1201,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Expanded(
                         flex: 4,
                         child: DropdownButtonFormField<String>(
-                          initialValue: _viaType,
+                          value: _viaType,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: const Color(0xFFFAF6EE),
@@ -1608,7 +1608,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   onChanged: (val) {
                     setState(() => _salonLocationPublic = val);
                   },
-                  activeTrackColor: const Color(0xFFC5A052),
+                  activeColor: const Color(0xFFC5A052),
                   contentPadding: EdgeInsets.zero,
                   title: const Text(
                     'Publicar ubicación en el Mapa de GlowApp',

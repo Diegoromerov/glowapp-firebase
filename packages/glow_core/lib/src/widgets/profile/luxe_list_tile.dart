@@ -18,8 +18,8 @@ class LuxeToggle extends StatelessWidget {
     return CupertinoSwitch(
       value: value,
       onChanged: onChanged,
-      activeTrackColor: LuxeColors.gold871,
-      inactiveTrackColor: LuxeColors.nude200,
+      activeColor: LuxeColors.gold871,
+      inactiveColor: LuxeColors.nude200,
     );
   }
 }

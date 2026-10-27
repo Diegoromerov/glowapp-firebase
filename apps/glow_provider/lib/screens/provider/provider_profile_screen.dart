@@ -514,7 +514,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                             children: [
                               Expanded(
                                 child: DropdownButtonFormField<int>(
-                                  initialValue: start,
+                                  value: start,
                                   decoration: const InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 4),
@@ -545,7 +545,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                               const SizedBox(width: 8),
                               Expanded(
                                 child: DropdownButtonFormField<int>(
-                                  initialValue: end,
+                                  value: end,
                                   decoration: const InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 4),

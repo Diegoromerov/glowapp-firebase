@@ -152,7 +152,7 @@ class _ProviderPortfolioScreenState extends State<ProviderPortfolioScreen> {
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField<String>(
-                      initialValue: category,
+                      value: category,
                       style: const TextStyle(
                           color: Colors.black87,
                           fontSize: 14,
@@ -347,7 +347,7 @@ class _ProviderPortfolioScreenState extends State<ProviderPortfolioScreen> {
                   ),
                   const SizedBox(height: 16),
                   DropdownButtonFormField<String>(
-                    initialValue: category,
+                    value: category,
                     style: const TextStyle(
                         color: Colors.black87,
                         fontSize: 14,

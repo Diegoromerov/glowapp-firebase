@@ -177,7 +177,7 @@ class _ProviderScheduleDialogState extends State<ProviderScheduleDialog> {
                         ),
                         Switch(
                           value: isActive,
-                          activeTrackColor: LuxeColors.gold871,
+                          activeColor: LuxeColors.gold871,
                           onChanged: (val) {
                             setState(() {
                               _daysSchedule[dayKey]!['activo'] = val;

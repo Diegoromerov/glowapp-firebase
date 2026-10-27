@@ -185,7 +185,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   children: [
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        initialValue: _tipoCuenta,
+                        value: _tipoCuenta,
                         decoration: const InputDecoration(
                           labelText: 'Tipo de Cuenta',
                           labelStyle: TextStyle(fontSize: 12),
@@ -207,7 +207,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        initialValue: _bancos.contains(_banco) ? _banco : _bancos.first,
+                        value: _bancos.contains(_banco) ? _banco : _bancos.first,
                         decoration: const InputDecoration(
                           labelText: 'Entidad Financiera',
                           labelStyle: TextStyle(fontSize: 12),
@@ -263,7 +263,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     SizedBox(
                       width: 90,
                       child: DropdownButtonFormField<String>(
-                        initialValue: _titularDocumentoTipo,
+                        value: _titularDocumentoTipo,
                         decoration: const InputDecoration(labelText: 'Doc'),
                         items: _tiposDoc
                             .map((d) => DropdownMenuItem(value: d, child: Text(d, style: const TextStyle(fontSize: 12))))

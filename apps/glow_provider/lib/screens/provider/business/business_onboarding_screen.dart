@@ -143,7 +143,7 @@ class _BusinessOnboardingScreenState extends State<BusinessOnboardingScreen> {
             Text('Tipo de Negocio (Vertical)', style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.text)),
             const SizedBox(height: 8),
             DropdownButtonFormField<String>(
-              initialValue: _selectedVertical,
+              value: _selectedVertical,
               decoration: InputDecoration(
                 fillColor: AppTheme.surface,
                 filled: true,

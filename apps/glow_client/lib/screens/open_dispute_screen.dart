@@ -180,7 +180,7 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
 
                     // Motivo de Disputa
                     DropdownButtonFormField<String>(
-                      initialValue: _selectedTipo,
+                      value: _selectedTipo,
                       decoration: AppTheme.inputDecoration(
                         hintText: 'Motivo',
                         labelText: 'Motivo de la disputa',

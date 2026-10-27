@@ -264,7 +264,7 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
           ),
           const SizedBox(height: 8),
           DropdownButtonFormField<int>(
-            initialValue: _codigo,
+            value: _codigo,
             decoration: _inputDecoration('Selecciona el código de tu RUT', Icons.checklist_rounded),
             items: const [
               DropdownMenuItem(

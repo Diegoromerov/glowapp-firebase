@@ -198,7 +198,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                           value: _biometricConsent,
                           onChanged: _isBusy ? null : _setConsent,
                           activeColor: AppTheme.primary,
-                          activeTrackColor: AppTheme.primary.withOpacity(0.3),
+                          activeColor: AppTheme.primary.withOpacity(0.3),
                         ),
                       ],
                     ),

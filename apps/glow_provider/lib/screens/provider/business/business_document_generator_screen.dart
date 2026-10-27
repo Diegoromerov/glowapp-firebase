@@ -135,7 +135,7 @@ class _BusinessDocumentGeneratorScreenState extends State<BusinessDocumentGenera
             Text('Selecciona una Plantilla Preforma', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppTheme.background)),
             const SizedBox(height: 8),
             DropdownButtonFormField<String>(
-              initialValue: _selectedTemplate,
+              value: _selectedTemplate,
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 filled: true,
