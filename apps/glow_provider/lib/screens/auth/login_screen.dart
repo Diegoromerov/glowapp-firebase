@@ -280,11 +280,11 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           // Background Image
           Positioned.fill(
-            child: Image.asset(
-              'images/auth/auth_login_hero.webp',
-              fit: BoxFit.cover,
-            ),
-          ),
+                      child: Image.asset(
+                        'assets/images/auth/auth_login_hero.webp',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
           // Foreground content
           SafeArea(
             child: Center(
