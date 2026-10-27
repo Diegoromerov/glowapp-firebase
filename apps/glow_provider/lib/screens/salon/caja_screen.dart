@@ -535,8 +535,8 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
             ),
             const SizedBox(height: Spacing.md),
             DropdownButtonFormField<String>(
-              initialValue: _concepto,
-              decoration: const InputDecoration(labelText: 'Concepto'),
+                          value: _concepto,
+                          decoration: const InputDecoration(labelText: 'Concepto'),
               items: _conceptos
                   .map((c) => DropdownMenuItem(value: c, child: Text(c)))
                   .toList(),
@@ -544,8 +544,8 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
             ),
             const SizedBox(height: Spacing.md),
             DropdownButtonFormField<String>(
-              initialValue: _metodo,
-              decoration: const InputDecoration(labelText: 'Método de pago'),
+                          value: _metodo,
+                          decoration: const InputDecoration(labelText: 'Método de pago'),
               items: _metodos
                   .map((c) => DropdownMenuItem(value: c, child: Text(c)))
                   .toList(),

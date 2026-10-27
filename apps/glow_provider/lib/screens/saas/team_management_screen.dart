@@ -276,8 +276,8 @@ class TeamManagementScreen extends ConsumerWidget {
             TextField(controller: emailCtrl, keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Email', hintText: 'colaborador@email.com', prefixIcon: Icon(Icons.email_outlined))),
             const SizedBox(height: 16),
             DropdownButtonFormField<MembershipRole>(
-              initialValue: selectedRole,
-              decoration: const InputDecoration(labelText: 'Rol', prefixIcon: Icon(Icons.badge_outlined)),
+                          value: selectedRole,
+                          decoration: const InputDecoration(labelText: 'Rol', prefixIcon: Icon(Icons.badge_outlined)),
               items: [MembershipRole.admin, MembershipRole.manager, MembershipRole.staff].map((r) => DropdownMenuItem(value: r, child: Text(r.label))).toList(),
               onChanged: (v) => selectedRole = v ?? MembershipRole.staff,
             ),
@@ -313,8 +313,8 @@ class TeamManagementScreen extends ConsumerWidget {
       builder: (ctx) => AlertDialog(
         title: Text('Cambiar rol de ${member.fullName.isNotEmpty ? member.fullName : member.email}'),
         content: DropdownButtonFormField<MembershipRole>(
-          initialValue: selectedRole,
-          decoration: const InputDecoration(labelText: 'Nuevo rol', prefixIcon: Icon(Icons.badge_outlined)),
+                  value: selectedRole,
+                  decoration: const InputDecoration(labelText: 'Nuevo rol', prefixIcon: Icon(Icons.badge_outlined)),
           items: [MembershipRole.admin, MembershipRole.manager, MembershipRole.staff].map((r) => DropdownMenuItem(value: r, child: Text(r.label))).toList(),
           onChanged: (v) => selectedRole = v ?? MembershipRole.staff,
         ),

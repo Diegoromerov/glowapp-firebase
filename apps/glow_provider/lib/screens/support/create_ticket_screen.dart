@@ -164,8 +164,8 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
 
                     // Tipo de PQRSF
                     DropdownButtonFormField<String>(
-                      initialValue: _selectedTipo,
-                      decoration: AppTheme.inputDecoration(
+                                          value: _selectedTipo,
+                                          decoration: AppTheme.inputDecoration(
                         hintText: 'Tipo',
                         labelText: 'Tipo de PQRSF',
                         prefixIcon: Icons.help_outline,
@@ -185,8 +185,8 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
 
                     // Categoría
                     DropdownButtonFormField<String>(
-                      initialValue: _selectedCategoria,
-                      decoration: AppTheme.inputDecoration(
+                                          value: _selectedCategoria,
+                                          decoration: AppTheme.inputDecoration(
                         hintText: 'Categoría',
                         labelText: 'Categoría',
                         prefixIcon: Icons.category_outlined,

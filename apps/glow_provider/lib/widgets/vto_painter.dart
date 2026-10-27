@@ -76,9 +76,9 @@ class VtoPainter extends CustomPainter {
   }
 
   void _drawLipstick(Canvas canvas, double scaleX, double scaleY) {
-    final paint = Paint()
-      ..color = lipstickColor!.withValues(alpha: lipstickOpacity)
-      ..style = PaintingStyle.fill;
+      final paint = Paint()
+        ..color = lipstickColor!.withOpacity(lipstickOpacity)
+        ..style = PaintingStyle.fill;
 
     // Simplified lipstick drawing - in production this would use actual lip landmarks
     final points = faceLandmarks!['points'] as List<dynamic>?;
