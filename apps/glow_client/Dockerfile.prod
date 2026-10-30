@@ -1,0 +1,57 @@
+# Etapa de construcción (Builder) - Flutter Web
+FROM public.ecr.aws/docker/library/flutter:3.29.2 AS builder
+
+WORKDIR /app
+
+# Copiar archivos de dependencias primero para cache
+COPY packages/glow_core/pubspec.yaml ./packages/glow_core/pubspec.yaml
+COPY apps/glow_client/pubspec.yaml ./apps/glow_client/pubspec.yaml
+COPY melos.yaml ./melos.yaml
+COPY pnpm-workspace.yaml ./pnpm-workspace.yaml
+
+# Instalar melos y bootstrap
+RUN dart pub global activate melos 6.2.0
+ENV PATH="$PATH:/root/.pub-cache/bin"
+RUN melos bootstrap
+
+# Copiar código fuente
+COPY packages/glow_core ./packages/glow_core
+COPY apps/glow_client ./apps/glow_client
+
+# Build Flutter Web con variables de entorno
+ARG FIREBASE_API_KEY
+ARG FIREBASE_PROJECT_ID
+ARG FIREBASE_MESSAGING_SENDER_ID
+ARG FIREBASE_STORAGE_BUCKET
+ARG FIREBASE_WEB_APP_ID
+ARG FIREBASE_ANDROID_APP_ID
+ARG FIREBASE_IOS_APP_ID
+ARG APP_AUDIENCE=client
+
+RUN cd apps/glow_client && flutter build web --release \
+    --dart-define=FIREBASE_API_KEY=${FIREBASE_API_KEY} \
+    --dart-define=FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID} \
+    --dart-define=FIREBASE_MESSAGING_SENDER_ID=${FIREBASE_MESSAGING_SENDER_ID} \
+    --dart-define=FIREBASE_STORAGE_BUCKET=${FIREBASE_STORAGE_BUCKET} \
+    --dart-define=FIREBASE_WEB_APP_ID=${FIREBASE_WEB_APP_ID} \
+    --dart-define=FIREBASE_ANDROID_APP_ID=${FIREBASE_ANDROID_APP_ID} \
+    --dart-define=FIREBASE_IOS_APP_ID=${FIREBASE_IOS_APP_ID} \
+    --dart-define=APP_AUDIENCE=${APP_AUDIENCE}
+
+# Etapa de producción - Nginx
+FROM public.ecr.aws/docker/library/nginx:alpine AS production
+
+# Copiar configuración nginx
+COPY apps/glow_client/nginx.conf /etc/nginx/nginx.conf
+
+# Copiar build de Flutter desde builder
+COPY --from=builder /app/apps/glow_client/build/web /usr/share/nginx/html
+
+# Exponer puerto 8080 (Railway default)
+EXPOSE 8080
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+
+CMD ["nginx", "-g", "daemon off;"]
