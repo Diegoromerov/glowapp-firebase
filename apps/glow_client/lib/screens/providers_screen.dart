@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:glow_core/glow_core.dart';
+import 'package:glow_core/glowguide/config/client_guide.dart';
 
 class ProvidersScreen extends StatefulWidget {
   const ProvidersScreen({super.key});
@@ -39,14 +40,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   bool _isMapMenuOpen = false;
 
   // GlowGuide Integration (I1)
-  // ignore: unused_field
-  late final GlowGuideEngine _glowGuideEngine;
-  // ignore: unused_field
-  late final ScreenVisibilityObserver _screenVisibilityObserver;
-  // ignore: unused_field
-  late final AudioEngine _audioEngine;
-  // ignore: unused_field
-  late final PersistenceEngine _persistenceEngine;
+    // ignore: unused_field
+    late final GlowGuideEngine _glowGuideEngine;
+    // ignore: unused_field
+    late final AudioEngine _audioEngine;
+    // ignore: unused_field
+    late final PersistenceEngine _persistenceEngine;
 
   // Legacy Mutex state
   // ignore: unused_field
@@ -63,43 +62,51 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   LatLng? _userLocation;
 
   @override
-  void initState() {
-    super.initState();
-    _mapController = MapController();
-    _loadProviders();
-    _loadUserRole();
-    _determineUserLocation();
-    _resolveGuideMutex();
-    AudienceService.currentAudience.addListener(_onAudienceChanged);
+    void initState() {
+      super.initState();
+      _mapController = MapController();
+      _loadProviders();
+      _loadUserRole();
+      _determineUserLocation();
+      _resolveGuideMutex();
+      AudienceService.currentAudience.addListener(_onAudienceChanged);
 
-    // Obtener motor global de GlowGuideService
-    GlowGuideService.instance.initialize();
-    _glowGuideEngine = GlowGuideService.instance.engine!;
-    _glowGuideEngine.addListener(_onGlowGuideStateChanged);
-  }
-
-  void _onGlowGuideStateChanged(GlowGuideState state) {
-    if (!mounted) return;
-    final isStep08 = state.currentStepId == 'step_08_despedida';
-    if (_isMapMenuOpen != isStep08) {
-      setState(() {
-        _isMapMenuOpen = isStep08;
-      });
+      // Crear motor local de GlowGuide para Cliente
+      _audioEngine = AudioEngine();
+      _persistenceEngine = PersistenceEngine();
+      _glowGuideEngine = GlowGuideEngine(
+        steps: ClientGuide.steps,
+        guideId: ClientGuide.guideId,
+        navigationDelegate: this,
+        audioController: _audioEngine,
+        persistenceAdapter: _persistenceEngine,
+        screenVisibilityObserver: ScreenVisibilityObserverSingleton.instance,
+      );
+      _glowGuideEngine.addListener(_onGlowGuideStateChanged);
     }
-  }
 
-  @override
-  void dispose() {
-    _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
-    AudienceService.currentAudience.removeListener(_onAudienceChanged);
-    _searchController.dispose();
-    _glowGuideEngine.dispose();
-    super.dispose();
-  }
+    void _onGlowGuideStateChanged(GlowGuideState state) {
+      if (!mounted) return;
+      final isStep08 = state.currentStepId == 'step_08_despedida';
+      if (_isMapMenuOpen != isStep08) {
+        setState(() {
+          _isMapMenuOpen = isStep08;
+        });
+      }
+    }
 
-  // ===== NavigationDelegate implementation (I1) =====
+    @override
+    void dispose() {
+      _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
+      AudienceService.currentAudience.removeListener(_onAudienceChanged);
+      _searchController.dispose();
+      _glowGuideEngine.dispose();
+      super.dispose();
+    }
 
-  @override
+    // ===== NavigationDelegate implementation (I1) =====
+
+    @override
   Future<NavigationResult> navigate({
     required String routeName,
     Map<String, dynamic>? arguments,
