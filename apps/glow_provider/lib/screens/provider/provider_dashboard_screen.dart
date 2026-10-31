@@ -3938,10 +3938,11 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           ),
           
           GlowGuidePresenter(
-            engine: _providerGuideEngine,
-            onAction: _handleProviderGuideAction,
-            allowVideoTapToAdvance: false,
-          ),
+                      engine: _providerGuideEngine,
+                      onAction: _handleProviderGuideAction,
+                      allowVideoTapToAdvance: false,
+                      isProvider: true,
+                    ),
 
           // Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
           Positioned(
