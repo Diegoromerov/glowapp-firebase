@@ -1,12 +1,17 @@
 // lib/glowguide/presenter/glowguide_presenter.dart
 // Presentador visual para GlowGuide
-// Reproduce la secuencia automática de videos con audio en cada pantalla sin botones de siguiente.
+// Reproduce videos desde Firebase Storage (MP4 para iOS/Safari, WebM para Chrome/Android)
+// Cloudflare Stream iframe se usará cuando se desbloquee pago.
 
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:web/web.dart' as web;
 import '../engine/glowguide_engine.dart';
 import '../state/glowguide_state.dart';
 import '../model/glowguide_step.dart';
+import '../config/video_mapping.dart';
 
 /// Callback para cuando el usuario interactúa con el presenter
 typedef GlowGuidePresenterCallback = void Function(GlowGuidePresenterAction action);
@@ -27,6 +32,7 @@ class GlowGuidePresenter extends StatefulWidget {
   final GlowGuidePresenterCallback? onAction;
   final Widget? child;
   final bool allowVideoTapToAdvance;
+  final bool isProvider;
 
   const GlowGuidePresenter({
     super.key,
@@ -34,6 +40,7 @@ class GlowGuidePresenter extends StatefulWidget {
     this.onAction,
     this.child,
     this.allowVideoTapToAdvance = true,
+    this.isProvider = false,
   });
 
   @override
@@ -87,7 +94,7 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
     final position = auraContent.position;
     final alignment = _calculateAlignment(position);
     final disableAnimations = MediaQuery.of(context).disableAnimations;
-    final videoPath = _currentStep!.videoAssetId ?? 'assets/glowguide/videos/aura_pilot.webm';
+    final stepId = _currentStep!.id;
 
     final screenSize = MediaQuery.of(context).size;
     final isCenter = position == AuraPosition.center;
@@ -118,12 +125,12 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
               SizedBox(
                 width: videoWidth,
                 child: GlowStepVideoPlayer(
-                  key: ValueKey<String>(videoPath),
-                  videoAssetPath: videoPath,
+                  key: ValueKey<String>(stepId),
+                  stepId: stepId,
+                  isProvider: widget.isProvider,
                   isFirstStep: _currentStep!.order == 0,
                   allowTapToAdvance: widget.allowVideoTapToAdvance,
                   onVideoEnded: () {
-                    // Avance automático al terminar el video
                     widget.onAction?.call(GlowGuidePresenterAction.next);
                   },
                 ),
@@ -176,15 +183,20 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
 }
 
 /// Reproductor de Video para los Pasos de GlowGuide
+/// Usa Firebase Storage URLs con detección automática de formato:
+/// - iOS/Safari → MP4 (H.264)
+/// - Chrome/Android/Web → WebM (VP8/VP9)
 class GlowStepVideoPlayer extends StatefulWidget {
-  final String videoAssetPath;
+  final String stepId;
+  final bool isProvider;
   final bool isFirstStep;
   final bool allowTapToAdvance;
   final VoidCallback? onVideoEnded;
 
   const GlowStepVideoPlayer({
     super.key,
-    required this.videoAssetPath,
+    required this.stepId,
+    required this.isProvider,
     this.isFirstStep = false,
     this.allowTapToAdvance = true,
     this.onVideoEnded,
@@ -202,6 +214,7 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   bool _isMuted = false;
   bool _hasUserStarted = false;
   double _opacity = 1.0;
+  String _currentFormat = 'mp4'; // 'mp4' o 'webm'
 
   @override
   void initState() {
@@ -212,12 +225,23 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   @override
   void didUpdateWidget(GlowStepVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.videoAssetPath != widget.videoAssetPath) {
+    if (oldWidget.stepId != widget.stepId || oldWidget.isProvider != widget.isProvider) {
       _controller.removeListener(_onVideoStateChanged);
       _controller.dispose();
       _initVideo();
     }
   }
+
+  /// Detecta si debe usar MP4 (iOS/Safari) o WebM (resto)
+    bool _shouldUseMp4() {
+      if (kIsWeb) {
+        // En web, detectar Safari por user-agent usando package:web
+        final ua = web.window.navigator.userAgent.toLowerCase();
+        return ua.contains('safari') && !ua.contains('chrome');
+      }
+      // En mobile/desktop nativo
+      return Platform.isIOS || Platform.isMacOS;
+    }
 
   void _initVideo() {
     _isInitialized = false;
@@ -225,51 +249,65 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
     _hasEnded = false;
     _isMuted = false;
     _opacity = 1.0;
+    _currentFormat = _shouldUseMp4() ? 'mp4' : 'webm';
 
-    _tryLoadVideoAsset(widget.videoAssetPath);
+    final url = _getVideoUrl(_currentFormat);
+    if (url.isEmpty) {
+      // Fallback al otro formato
+      _currentFormat = _currentFormat == 'mp4' ? 'webm' : 'mp4';
+      final fallbackUrl = _getVideoUrl(_currentFormat);
+      if (fallbackUrl.isEmpty) {
+        if (mounted) setState(() => _hasError = true);
+        return;
+      }
+      _loadVideo(fallbackUrl);
+    } else {
+      _loadVideo(url);
+    }
   }
 
-  void _tryLoadVideoAsset(String path) {
-    _controller = VideoPlayerController.asset(
-      path,
+  String _getVideoUrl(String format) {
+    return format == 'mp4'
+        ? GlowGuideVideoMap.getMp4Url(widget.stepId, widget.isProvider)
+        : GlowGuideVideoMap.getWebmUrl(widget.stepId, widget.isProvider);
+  }
+
+  void _loadVideo(String url) {
+    _controller = VideoPlayerController.networkUrl(
+      Uri.parse(url),
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
 
     _controller.initialize().then((_) {
       if (mounted) {
-        _controller.setLooping(false); // Reproducción única por paso
-        _controller.setVolume(1.0);     // SONIDO ACTIVO POR DEFECTO
+        _controller.setLooping(false);
+        _controller.setVolume(1.0);
         _controller.addListener(_onVideoStateChanged);
 
-        // Si no es el primer paso, iniciar reproducción inmediatamente
         if (!widget.isFirstStep || _hasUserStarted) {
           _controller.play().catchError((err) {
             debugPrint('⚠️ Web autoplay con sonido restringido por navegador: $err');
             if (mounted) {
-              setState(() {
-                _isMuted = true;
-              });
+              setState(() => _isMuted = true);
               _controller.setVolume(0.0);
               _controller.play();
             }
           });
         }
 
-        setState(() {
-          _isInitialized = true;
-        });
+        setState(() => _isInitialized = true);
       }
     }).catchError((err) {
-      debugPrint('⚠️ Error al inicializar video ($path): $err');
-      if (path.endsWith('.webm')) {
-        final fallbackMp4 = path.replaceAll('.webm', '.mp4');
-        debugPrint('🔄 Intentando fallback a .mp4: $fallbackMp4');
-        _controller.dispose();
-        _tryLoadVideoAsset(fallbackMp4);
+      debugPrint('⚠️ Error al inicializar video ($url): $err');
+      // Intentar fallback al otro formato si no lo hemos hecho
+      if (_currentFormat == 'mp4') {
+        _currentFormat = 'webm';
+        _loadVideo(_getVideoUrl('webm'));
+      } else if (_currentFormat == 'webm') {
+        _currentFormat = 'mp4';
+        _loadVideo(_getVideoUrl('mp4'));
       } else if (mounted) {
-        setState(() {
-          _hasError = true;
-        });
+        setState(() => _hasError = true);
       }
     });
   }
@@ -292,13 +330,10 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
         !_hasEnded &&
         (!widget.isFirstStep || _hasUserStarted)) {
       _hasEnded = true;
-      debugPrint('🎬 Video completado: ${widget.videoAssetPath}. Avanzando automáticamente...');
+      debugPrint('🎬 Video completado: ${widget.stepId} ($_currentFormat). Avanzando automáticamente...');
 
-      // Desvanecer suavemente el reproductor al finalizar el último video (Despedida)
-      if (widget.videoAssetPath.contains('step_08_despedida') && mounted) {
-        setState(() {
-          _opacity = 0.0;
-        });
+      if (widget.stepId.contains('step_08_despedida') && mounted) {
+        setState(() => _opacity = 0.0);
         await Future.delayed(const Duration(milliseconds: 850));
       }
 
@@ -313,13 +348,9 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
     }
 
     if (_isMuted && _isInitialized) {
-      setState(() {
-        _isMuted = false;
-      });
+      setState(() => _isMuted = false);
       _controller.setVolume(1.0);
-      if (!_controller.value.isPlaying) {
-        _controller.play();
-      }
+      if (!_controller.value.isPlaying) _controller.play();
     } else if (widget.allowTapToAdvance) {
       widget.onVideoEnded?.call();
     }
@@ -342,100 +373,95 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
       curve: Curves.easeOutCubic,
       child: GestureDetector(
         onTap: _handleTap,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(24),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(
-              color: const Color(0xFFC5A052),
-              width: 2.0,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFFC5A052).withOpacity(0.4),
-                blurRadius: 20,
-                spreadRadius: 2,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              if (_isInitialized && !_hasError && _controller.value.isInitialized)
-                AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio > 0 ? _controller.value.aspectRatio : 1.0,
-                  child: VideoPlayer(_controller),
-                )
-              else
-                AspectRatio(
-                  aspectRatio: 1.0,
-                  child: Container(
-                    color: const Color(0xFF141210).withOpacity(0.2),
-                  ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(24),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: const Color(0xFFC5A052), width: 2.0),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFFC5A052).withOpacity(0.4),
+                  blurRadius: 20,
+                  spreadRadius: 2,
+                  offset: const Offset(0, 4),
                 ),
+              ],
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                if (_isInitialized && !_hasError && _controller.value.isInitialized)
+                  AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio > 0 ? _controller.value.aspectRatio : 1.0,
+                    child: VideoPlayer(_controller),
+                  )
+                else
+                  AspectRatio(
+                    aspectRatio: 1.0,
+                    child: Container(color: const Color(0xFF141210).withOpacity(0.2)),
+                  ),
 
-              // Botón "PRESIONE PARA INICIAR" en el primer paso (Home) sobre contenedor traslúcido
-              if (showStartButton)
-                Container(
-                  color: Colors.transparent, // Caja 100% Traslúcida
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(12),
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFC5A052).withOpacity(0.92),
-                      foregroundColor: const Color(0xFF141210),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                      elevation: 8,
-                      shadowColor: const Color(0xFFC5A052).withOpacity(0.5),
-                    ),
-                    onPressed: _startPlayback,
-                    icon: const Icon(Icons.play_arrow_rounded, size: 22, color: Color(0xFF141210)),
-                    label: const Text(
-                      'PRESIONE PARA INICIAR',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMono',
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.8,
-                        color: Color(0xFF141210),
+                // Botón "PRESIONE PARA INICIAR" en el primer paso
+                if (showStartButton)
+                  Container(
+                    color: Colors.transparent,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(12),
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFC5A052).withOpacity(0.92),
+                        foregroundColor: const Color(0xFF141210),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                        elevation: 8,
+                        shadowColor: const Color(0xFFC5A052).withOpacity(0.5),
+                      ),
+                      onPressed: _startPlayback,
+                      icon: const Icon(Icons.play_arrow_rounded, size: 22, color: Color(0xFF141210)),
+                      label: const Text(
+                        'PRESIONE PARA INICIAR',
+                        style: TextStyle(
+                          fontFamily: 'JetBrainsMono',
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.8,
+                          color: Color(0xFF141210),
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-              if (_isMuted && !showStartButton)
-                Positioned(
-                  bottom: 12,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: const Color(0xFFC5A052), width: 1),
-                    ),
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.volume_off_rounded, color: Color(0xFFC5A052), size: 12),
-                        SizedBox(width: 4),
-                        Text(
-                          'Toca para sonido',
-                          style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                if (_isMuted && !showStartButton)
+                  Positioned(
+                    bottom: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: const Color(0xFFC5A052), width: 1),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.volume_off_rounded, color: Color(0xFFC5A052), size: 12),
+                          SizedBox(width: 4),
+                          Text(
+                            'Toca para sonido',
+                            style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 }
 
 
