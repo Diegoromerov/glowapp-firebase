@@ -630,14 +630,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           children: [
             // Video de Fondo HD sin loop con fallback automático
             Positioned.fill(
-              child: BackgroundVideoPlayer(
-                key: _videoPlayerKey,
-                assetPath: 'assets/videos/onboarding_intro.mp4',
-                fallbackImagePath: 'images/auth/onboarding_bg.webp',
-                overlayOpacity: 0.18,
-                loop: false,
-                initialMuted: true,
-                unmuteOnFirstInteraction: true,
+              // El video local `assets/videos/onboarding_intro.mp4` se elimino en
+              // el commit 82ef245f (los videos pasaron a Firebase Storage). Pero
+              // esos objetos no son publicos: la URL de descarga responde 400 y la
+              // forma /v0/b/.../o/...?alt=media responde 403. Se usa la imagen de
+              // marca, que si esta en el bundle, en lugar de un video que no existe.
+              child: Image.asset(
+                'assets/images/auth/auth_login_hero.webp',
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
               ),
             ),
           SafeArea(

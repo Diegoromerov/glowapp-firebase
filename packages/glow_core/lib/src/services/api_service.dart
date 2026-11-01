@@ -426,8 +426,9 @@ class ApiService {
     if (latitude != null && longitude != null) {
       url += '?lat=$latitude&lon=$longitude';
     }
+    final headers = await _getAuthHeaders();
     final response =
-        await http.get(Uri.parse(url)).timeout(requestTimeout);
+        await http.get(Uri.parse(url), headers: headers).timeout(requestTimeout);
     if (response.statusCode == 200) {
       final decoded = safeJsonDecode(response.body);
       final data = _normalizeDynamicUrls(decoded);
