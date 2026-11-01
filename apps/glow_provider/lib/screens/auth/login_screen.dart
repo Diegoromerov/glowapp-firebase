@@ -4,6 +4,9 @@ import 'package:glow_core/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'dart:async';
+import 'google_signin_button.dart'
+    if (dart.library.js) 'google_signin_button_web.dart' as gis_button;
 import 'package:glow_core/design/components/s4_text_field.dart';
 import 'package:glow_core/core/theme/tokens.dart';
 import 'package:glow_core/widgets/invitation_code_entry.dart';
@@ -45,8 +48,23 @@ class _LoginScreenState extends State<LoginScreen> {
             serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
           );
 
+  StreamSubscription<GoogleSignInAccount?>? _googleUserSub;
+
+  @override
+  void initState() {
+    super.initState();
+    // En web el unico flujo soportado es el boton de GIS: la cuenta llega por
+    // onCurrentUserChanged. `signIn()` ya no entrega credenciales (0.12+).
+    if (kIsWeb) {
+      _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
+        if (user != null && mounted) _finishGoogleLogin(user);
+      });
+    }
+  }
+
   @override
   void dispose() {
+    _googleUserSub?.cancel();
     _emailCtrl.dispose();
     _passCtrl.dispose();
     super.dispose();
@@ -97,29 +115,57 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleGoogleSignIn() async {
+    // En web el unico flujo soportado por GIS es el boton: `signIn()` ya no
+    // entrega credenciales (google_sign_in_web 0.12), solo abre un popup que el
+    // COOP bloquea. La cuenta llega por onCurrentUserChanged -> _finishGoogleLogin.
+    if (kIsWeb) {
+      setState(() => _error = 'Usa el botón de Google para continuar.');
+      return;
+    }
     setState(() {
       _isLoading = true;
       _error = null;
     });
+    GoogleSignInAccount? googleUser;
     try {
-      // Timeout ampliado a 60s: el popup de Google en web puede tardar si el usuario
-      // está eligiendo cuenta o tiene mala conexión.
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn().timeout(
+      googleUser = await _googleSignIn.signIn().timeout(
         const Duration(seconds: 60),
         onTimeout: () => null,
       );
-
-      // googleUser == null: el usuario canceló o el popup falló silenciosamente
-      if (googleUser == null) {
-        if (mounted) {
-          setState(() {
-            _isLoading = false;
-            _error = 'Inicio de sesión cancelado o no completado. Intenta de nuevo.';
-          });
-        }
-        return;
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _error = 'Error al conectar con Google: $e';
+        });
       }
+      return;
+    }
 
+    // googleUser == null: el usuario canceló o el flujo falló silenciosamente
+    if (googleUser == null) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _error = 'Inicio de sesión cancelado o no completado. Intenta de nuevo.';
+        });
+      }
+      return;
+    }
+
+    await _finishGoogleLogin(googleUser);
+  }
+
+  /// Completa el login con la cuenta de Google ya obtenida.
+  /// Camino nativo: después de signIn(). Camino web: desde onCurrentUserChanged.
+  Future<void> _finishGoogleLogin(GoogleSignInAccount googleUser) async {
+    if (mounted) {
+      setState(() {
+        _isLoading = true;
+        _error = null;
+      });
+    }
+    try {
       // Obtener tokens de la autenticación Google
       String? idToken;
       String? accessToken;
@@ -502,15 +548,18 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                _buildSocialButton(
-                                  icon: const Icon(Icons.g_mobiledata,
-                                      color: Color(0xFFC5A052), size: 32),
-                                  onTap: _isLoading
-                                      ? null
-                                      : () => _handleOAuth('GOOGLE'),
-                                  label: 'Google',
-                                  t: t,
-                                ),
+                                // En web: boton oficial de GIS (unico flujo soportado).
+                                // Fuera de web: boton propio que dispara signIn().
+                                gis_button.googleSignInButton() ??
+                                    _buildSocialButton(
+                                      icon: const Icon(Icons.g_mobiledata,
+                                          color: Color(0xFFC5A052), size: 32),
+                                      onTap: _isLoading
+                                          ? null
+                                          : () => _handleOAuth('GOOGLE'),
+                                      label: 'Google',
+                                      t: t,
+                                    ),
                                 _buildSocialButton(
                                   icon: const Icon(Icons.mail_outline,
                                       color: Color(0xFFC5A052), size: 22),

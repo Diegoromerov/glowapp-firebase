@@ -17,6 +17,8 @@ dependencies:
   http: ^1.1.0
   shared_preferences: ^2.2.2
   google_sign_in: ^6.2.1
+  # Web: se importa web_only.dart (renderButton). Dependencia directa.
+  google_sign_in_web: ^0.12.4
   flutter_secure_storage: ^9.0.0
   geocoding: ^3.0.0
   flutter_map: ^7.0.2
