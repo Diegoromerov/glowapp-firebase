@@ -188,7 +188,6 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.CLIENT_FIREBASE_SERVICE_ACCOUNT }}
           projectId: glowapp-client
-          target: client
           entryPoint: apps/glow_client
           channelId: ${{ github.ref == 'refs/heads/main' && 'live' || 'staging' }}
           expires: 7d
@@ -215,6 +214,5 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.PROVIDER_FIREBASE_SERVICE_ACCOUNT }}
           projectId: glowapp-provider
-          target: provider
           entryPoint: apps/glow_provider
           channelId: ${{ github.ref == 'refs/heads/main' && 'live' || 'staging' }}
