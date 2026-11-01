@@ -1,0 +1,218 @@
+name: GlowApp Firebase Deploy
+
+on:
+  push:
+    branches: [ staging, main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  FLUTTER_CHANNEL: stable
+  FLUTTER_VERSION: '3.29.2'
+
+jobs:
+
+  monorepo-setup:
+    name: Monorepo Setup & Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Setup Dart/Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+          cache-key: flutter-${{ runner.os }}-${{ env.FLUTTER_VERSION }}-${{ hashFiles('**/pubspec.yaml', '**/pubspec.lock') }}
+
+      - name: Install Melos
+        run: dart pub global activate melos 6.2.0
+
+      - name: Add Melos to PATH
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
+      - name: Melos Bootstrap
+        run: melos bootstrap
+        working-directory: ${{ github.workspace }}
+
+      - name: Melos Analyze (all packages)
+        run: |
+          echo "Analyzing glow_core..."
+          cd ${{ github.workspace }}/packages/glow_core && flutter analyze --no-fatal-infos --no-fatal-warnings
+          echo "Analyzing glow_client..."
+          cd ${{ github.workspace }}/apps/glow_client && flutter analyze --no-fatal-infos --no-fatal-warnings
+          echo "Analyzing glow_provider..."
+          cd ${{ github.workspace }}/apps/glow_provider && flutter analyze --no-fatal-infos --no-fatal-warnings
+        working-directory: ${{ github.workspace }}
+
+  # ─────────────────────────────────────────────────────────────────
+  # GLOW_CLIENT - Test & Build
+  # ─────────────────────────────────────────────────────────────────
+  glow-client-verify:
+    name: Glow Client - Test & Build
+    needs: monorepo-setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Setup Dart/Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Restore Melos Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ github.workspace }}/.dart_tool
+            ${{ github.workspace }}/packages/glow_core/.dart_tool
+            ${{ github.workspace }}/apps/glow_client/.dart_tool
+            ${{ github.workspace }}/apps/glow_provider/.dart_tool
+          key: melos-${{ runner.os }}-${{ hashFiles('**/pubspec.yaml', '**/pubspec.lock', 'melos.yaml') }}
+
+      - name: Melos Bootstrap
+        run: melos bootstrap
+        working-directory: ${{ github.workspace }}
+
+      - name: Run Glow Client Tests
+        run: cd apps/glow_client && flutter test
+        working-directory: ${{ github.workspace }}
+
+      - name: Build Glow Client Web
+        run: |
+          cd apps/glow_client
+          flutter build web --release \
+            --dart-define=FIREBASE_API_KEY=${{ secrets.CLIENT_FIREBASE_API_KEY }} \
+            --dart-define=FIREBASE_PROJECT_ID=${{ secrets.CLIENT_FIREBASE_PROJECT_ID }} \
+            --dart-define=FIREBASE_MESSAGING_SENDER_ID=${{ secrets.CLIENT_FIREBASE_MESSAGING_SENDER_ID }} \
+            --dart-define=FIREBASE_STORAGE_BUCKET=${{ secrets.CLIENT_FIREBASE_STORAGE_BUCKET }} \
+            --dart-define=FIREBASE_WEB_APP_ID=${{ secrets.CLIENT_FIREBASE_WEB_APP_ID }} \
+            --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.CLIENT_FIREBASE_ANDROID_APP_ID }} \
+            --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.CLIENT_FIREBASE_IOS_APP_ID }} \
+            --dart-define=APP_AUDIENCE=client
+        working-directory: ${{ github.workspace }}
+
+      - name: Upload Client Web Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: glow-client-web
+          path: apps/glow_client/build/web/
+          retention-days: 1
+
+  # ─────────────────────────────────────────────────────────────────
+  # GLOW_PROVIDER - Test & Build
+  # ─────────────────────────────────────────────────────────────────
+  glow-provider-verify:
+    name: Glow Provider - Test & Build
+    needs: monorepo-setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Setup Dart/Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Restore Melos Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ github.workspace }}/.dart_tool
+            ${{ github.workspace }}/packages/glow_core/.dart_tool
+            ${{ github.workspace }}/apps/glow_client/.dart_tool
+            ${{ github.workspace }}/apps/glow_provider/.dart_tool
+          key: melos-${{ runner.os }}-${{ hashFiles('**/pubspec.yaml', '**/pubspec.lock', 'melos.yaml') }}
+
+      - name: Melos Bootstrap
+        run: melos bootstrap
+        working-directory: ${{ github.workspace }}
+
+      - name: Run Glow Provider Tests
+        run: cd apps/glow_provider && flutter test
+        working-directory: ${{ github.workspace }}
+
+      - name: Build Glow Provider Web
+        run: |
+          cd apps/glow_provider
+          flutter build web --release \
+            --dart-define=FIREBASE_API_KEY=${{ secrets.PROVIDER_FIREBASE_API_KEY }} \
+            --dart-define=FIREBASE_PROJECT_ID=${{ secrets.PROVIDER_FIREBASE_PROJECT_ID }} \
+            --dart-define=FIREBASE_MESSAGING_SENDER_ID=${{ secrets.PROVIDER_FIREBASE_MESSAGING_SENDER_ID }} \
+            --dart-define=FIREBASE_STORAGE_BUCKET=${{ secrets.PROVIDER_FIREBASE_STORAGE_BUCKET }} \
+            --dart-define=FIREBASE_WEB_APP_ID=${{ secrets.PROVIDER_FIREBASE_WEB_APP_ID }} \
+            --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.PROVIDER_FIREBASE_ANDROID_APP_ID }} \
+            --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.PROVIDER_FIREBASE_IOS_APP_ID }} \
+            --dart-define=APP_AUDIENCE=provider
+        working-directory: ${{ github.workspace }}
+
+      - name: Upload Provider Web Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: glow-provider-web
+          path: apps/glow_provider/build/web/
+          retention-days: 1
+
+  # ─────────────────────────────────────────────────────────────────
+  # DEPLOY FRONTENDS TO FIREBASE HOSTING
+  # ─────────────────────────────────────────────────────────────────
+  deploy-client-firebase:
+    name: Deploy Client to Firebase Hosting
+    needs: [glow-client-verify]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Download Client Web Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: glow-client-web
+          path: apps/glow_client/build/web
+
+      - name: Deploy to Firebase Hosting (Client)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.CLIENT_FIREBASE_SERVICE_ACCOUNT }}
+          projectId: glowapp-client
+          target: client
+          entryPoint: apps/glow_client
+          channelId: ${{ github.ref == 'refs/heads/main' && 'live' || 'staging' }}
+          expires: 7d
+
+  deploy-provider-firebase:
+    name: Deploy Provider to Firebase Hosting
+    needs: [glow-provider-verify]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Download Provider Web Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: glow-provider-web
+          path: apps/glow_provider/build/web
+
+      - name: Deploy to Firebase Hosting (Provider)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.PROVIDER_FIREBASE_SERVICE_ACCOUNT }}
+          projectId: glowapp-provider
+          target: provider
+          entryPoint: apps/glow_provider
+          channelId: ${{ github.ref == 'refs/heads/main' && 'live' || 'staging' }}

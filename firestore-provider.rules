@@ -1,0 +1,205 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ==========================================
+    // PROVIDER APP - glowapp-provider
+    // ==========================================
+    
+    // Users can read/write their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']);
+    }
+    
+    // Business Profiles - owner + team members
+    match /business_profiles/{businessId} {
+      allow read: if request.auth != null && (
+        resource.data.ownerId == request.auth.uid ||
+        request.auth.uid in resource.data.teamMemberIds ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin'])
+      );
+      allow create: if request.auth != null && 
+        request.resource.data.ownerId == request.auth.uid &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+      allow update: if request.auth != null && (
+        resource.data.ownerId == request.auth.uid ||
+        (request.auth.uid in resource.data.teamMemberIds && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.providerRole in ['owner', 'admin'])
+      );
+    }
+    
+    // Salon/Business locations
+    match /salons/{salonId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin'])
+      );
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Services - business profile scoped
+    match /services/{serviceId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds
+      );
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Bookings - salon staff + client
+    match /bookings/{bookingId} {
+      allow read: if request.auth != null && (
+        resource.data.clientId == request.auth.uid ||
+        resource.data.salonId in get(/databases/$(database)/documents/users/$(request.auth.uid)).data.managedSalons ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin'])
+      );
+      allow create: if request.auth != null; // Clients book
+      allow update: if request.auth != null && (
+        resource.data.clientId == request.auth.uid ||
+        resource.data.salonId in get(/databases/$(database)/documents/users/$(request.auth.uid)).data.managedSalons
+      );
+    }
+    
+    // Team Members - owner/admin only
+    match /team_members/{memberId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid == resource.data.userId
+      );
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Inventory - business profile scoped
+    match /inventory/{itemId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds
+      );
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Rentals/Alquileres
+    match /rentals/{rentalId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds
+      );
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Caja (Cash register) - business profile scoped
+    match /caja_movimientos/{movimientoId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds
+      );
+      allow create: if request.auth != null && 
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds &&
+        request.resource.data.businessProfileId == resource.data.businessProfileId;
+    }
+    
+    // Wallet - business profile scoped
+    match /wallets/{walletId} {
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // SaaS - Billing, Usage, API Keys - owner only
+    match /saas_billing/{billingId} {
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    match /saas_usage/{usageId} {
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    match /saas_api_keys/{keyId} {
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Products - business profile scoped
+    match /products/{productId} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid ||
+        request.auth.uid in get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.teamMemberIds
+      );
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/business_profiles/$(resource.data.businessProfileId))
+          .data.ownerId == request.auth.uid;
+    }
+    
+    // Academy (provider side - content management)
+    match /academy_courses/{courseId} {
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+    }
+    
+    match /academy_videos/{videoId} {
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+    }
+    
+    // Notifications - user owns
+    match /notifications/{notificationId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Support tickets
+    match /support_tickets/{ticketId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['support', 'admin', 'superadmin']);
+    }
+    
+    // Analytics events - write only
+    match /analytics_events/{eventId} {
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']);
+    }
+    
+    // ==========================================
+    // SHARED - Deny all by default
+    // ==========================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

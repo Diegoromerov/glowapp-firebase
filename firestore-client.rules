@@ -1,0 +1,149 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ==========================================
+    // CLIENT APP - glowapp-client
+    // ==========================================
+    
+    // Users can read/write their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']);
+    }
+    
+    // Bookings - users see their own, providers see theirs
+    match /bookings/{bookingId} {
+      allow read: if request.auth != null && (
+        resource.data.clientId == request.auth.uid ||
+        resource.data.providerId == request.auth.uid ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin'])
+      );
+      allow create: if request.auth != null && request.resource.data.clientId == request.auth.uid;
+      allow update: if request.auth != null && (
+        resource.data.clientId == request.auth.uid ||
+        resource.data.providerId == request.auth.uid
+      );
+      allow delete: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']);
+    }
+    
+    // Services - public read, provider write own
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        (resource == null || resource.data.providerId == request.auth.uid) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+    }
+    
+    // Providers/Business profiles - public read, owner write
+    match /providers/{providerId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        (resource == null || resource.data.ownerId == request.auth.uid) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+    }
+    
+    // Products - public read, provider write own
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        (resource == null || resource.data.providerId == request.auth.uid) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['provider', 'admin', 'superadmin']);
+    }
+    
+    // Reviews - public read, client write own
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.clientId == request.auth.uid;
+      allow update, delete: if request.auth != null && 
+        (resource.data.clientId == request.auth.uid ||
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']));
+    }
+    
+    // Chat/Conversations - participants only
+    match /conversations/{conversationId} {
+      allow read: if request.auth != null && 
+        request.auth.uid in resource.data.participants;
+      allow write: if request.auth != null && 
+        request.auth.uid in resource.data.participants;
+    }
+    
+    match /conversations/{conversationId}/messages/{messageId} {
+      allow read: if request.auth != null && 
+        request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
+      allow create: if request.auth != null && 
+        request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants &&
+        request.resource.data.senderId == request.auth.uid;
+    }
+    
+    // Notifications - user owns
+    match /notifications/{notificationId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Glow IA+ / AI features - user owns their data
+    match /ai_sessions/{sessionId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    match /ai_diagnostics/{diagnosticId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Academy content - public read for published, enrolled users read all
+    match /academy_courses/{courseId} {
+      allow read: if resource.data.published == true || 
+        (request.auth != null && request.auth.uid in resource.data.enrolledUsers);
+      allow write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']);
+    }
+    
+    // Wallet - user owns
+    match /wallets/{walletId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Transactions - user owns
+    match /transactions/{transactionId} {
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Disputes - parties + admins
+    match /disputes/{disputeId} {
+      allow read: if request.auth != null && (
+        resource.data.clientId == request.auth.uid ||
+        resource.data.providerId == request.auth.uid ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin'])
+      );
+      allow create: if request.auth != null && request.resource.data.clientId == request.auth.uid;
+      allow update: if request.auth != null && (
+        resource.data.clientId == request.auth.uid ||
+        resource.data.providerId == request.auth.uid ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin'])
+      );
+    }
+    
+    // Support tickets - user owns
+    match /support_tickets/{ticketId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['support', 'admin', 'superadmin']);
+    }
+    
+    // Analytics events - write only (append-only)
+    match /analytics_events/{eventId} {
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow read: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.hasAny(['admin', 'superadmin']);
+    }
+    
+    // ==========================================
+    // SHARED - Deny all by default
+    // ==========================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
