@@ -3,11 +3,12 @@
 // Reproduce videos desde Firebase Storage (MP4 para iOS/Safari, WebM para Chrome/Android)
 // Cloudflare Stream iframe se usará cuando se desbloquee pago.
 
-import 'dart:io' show Platform;
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart'
+    show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:web/web.dart' as web;
+import 'user_agent_stub.dart'
+    if (dart.library.js) 'user_agent_web.dart' as ua_probe;
 import '../engine/glowguide_engine.dart';
 import '../state/glowguide_state.dart';
 import '../model/glowguide_step.dart';
@@ -235,12 +236,13 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   /// Detecta si debe usar MP4 (iOS/Safari) o WebM (resto)
     bool _shouldUseMp4() {
       if (kIsWeb) {
-        // En web, detectar Safari por user-agent usando package:web
-        final ua = web.window.navigator.userAgent.toLowerCase();
+        // En web, detectar Safari por user-agent (implementacion condicional)
+        final ua = ua_probe.userAgent().toLowerCase();
         return ua.contains('safari') && !ua.contains('chrome');
       }
       // En mobile/desktop nativo
-      return Platform.isIOS || Platform.isMacOS;
+      return defaultTargetPlatform == TargetPlatform.iOS ||
+          defaultTargetPlatform == TargetPlatform.macOS;
     }
 
   void _initVideo() {
