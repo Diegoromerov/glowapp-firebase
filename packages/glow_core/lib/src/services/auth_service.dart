@@ -6,6 +6,17 @@ import 'secure_storage_service.dart';
 import 'fcm_service.dart';
 
 class AuthService {
+  /// Cabeceras JSON del backend.
+  ///
+  /// Incluye `X-App-Audience` porque el backend la exige globalmente en /api
+  /// (app.use('/api', validateAppAudience({required:true})) en index.js:252,
+  /// registrado ANTES de app.use('/api/auth', authRoutes)). Sin la cabecera,
+  /// /api/auth/google responde 400 y el login muere antes de validar el token.
+  static Map<String, String> get _jsonHeaders => {
+        'Content-Type': 'application/json',
+        'X-App-Audience': ApiService.appAudience,
+      };
+
   static Future<String> getBaseUrl() async {
     await ApiService.ensureBaseUrl();
     return ApiService.baseUrl;
@@ -16,7 +27,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/register'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({
         'full_name': fullName,
         'email': email,
@@ -33,7 +44,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/login'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({'email': email, 'password': password}),
     );
     if (response.statusCode == 200) {
@@ -69,7 +80,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/oauth'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({
         'email': email,
         'nombre': nombre,
@@ -113,7 +124,7 @@ class AuthService {
     final response = await http.patch(
       Uri.parse('$baseUrl/api/auth/onboarding'),
       headers: {
-        'Content-Type': 'application/json',
+        ..._jsonHeaders,
         'Authorization': 'Bearer $token',
       },
       body: json.encode({
@@ -158,7 +169,7 @@ class AuthService {
         await http.post(
           Uri.parse('$baseUrl/api/auth/logout'),
           headers: {
-            'Content-Type': 'application/json',
+            ..._jsonHeaders,
             'Authorization': 'Bearer $token',
           },
         ).timeout(const Duration(seconds: 5));
@@ -179,7 +190,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/forgot-password'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({'email': email}),
     );
     return json.decode(response.body);
@@ -193,7 +204,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/reset-password'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({
         'email': email,
         'otp': otp,
@@ -207,7 +218,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/google'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({
         'idToken': idToken,
         if (roleIntent != null) 'role_intent': roleIntent,
@@ -244,7 +255,7 @@ class AuthService {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/google'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _jsonHeaders,
       body: json.encode({'accessToken': accessToken}),
     );
     try {
@@ -279,7 +290,7 @@ class AuthService {
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/select-role'),
       headers: {
-        'Content-Type': 'application/json',
+        ..._jsonHeaders,
         'Authorization': 'Bearer $token',
       },
       body: json.encode({'role': role}),
@@ -311,7 +322,7 @@ class AuthService {
     final response = await http.post(
       Uri.parse('$baseUrl/api/salon/create'),
       headers: {
-        'Content-Type': 'application/json',
+        ..._jsonHeaders,
         'Authorization': 'Bearer $token',
       },
       body: json.encode({
@@ -342,7 +353,7 @@ class AuthService {
     final response = await http.post(
       Uri.parse('$baseUrl/api/salon/invite'),
       headers: {
-        'Content-Type': 'application/json',
+        ..._jsonHeaders,
         'Authorization': 'Bearer $token',
       },
       body: json.encode({
@@ -364,7 +375,7 @@ class AuthService {
     final response = await http.post(
       Uri.parse('$baseUrl/api/salon/accept-invitation'),
       headers: {
-        'Content-Type': 'application/json',
+        ..._jsonHeaders,
         'Authorization': 'Bearer $token',
       },
       body: json.encode({'token': tokenParam}),
@@ -391,7 +402,7 @@ class AuthService {
     final response = await http.get(
       Uri.parse('$baseUrl/api/salon/my-salon'),
       headers: {
-        'Content-Type': 'application/json',
+        ..._jsonHeaders,
         'Authorization': 'Bearer $token',
       },
     );

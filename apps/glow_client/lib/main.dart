@@ -62,7 +62,13 @@ void main() async {
   
   // Inicializar servicios core
   await AudienceService.init();
-  
+
+  // Configurar audiencia de la app para backend (Fase 4).
+  // Explicito: el backend exige X-App-Audience en todo /api y AuthService
+  // toma el valor de aqui. Antes dependia del default 'client' de ApiService.
+  ApiService.appAudience =
+      const String.fromEnvironment('APP_AUDIENCE', defaultValue: 'client');
+
   runApp(const ProviderScope(child: GlowClientApp()));
 }
 
