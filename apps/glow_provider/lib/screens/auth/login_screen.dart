@@ -222,20 +222,22 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _navigateAfterLogin(Map<String, dynamic> result) {
     if (!mounted) return;
-    String? role = result['user']['role'];
-    final bool onboardingCompleto = result['user']['onboarding_completo'] ?? false;
-    final String rLower = (role ?? '').toString().toLowerCase();
-    if (onboardingCompleto) {
-      if (rLower == 'provider') {
-        Navigator.pushReplacementNamed(context, '/provider');
-      } else if (rLower == 'salon') {
-        Navigator.pushReplacementNamed(context, '/salon');
-      } else {
-        Navigator.pushReplacementNamed(context, '/home');
-      }
-    } else {
-      Navigator.pushReplacementNamed(context, '/onboarding');
+    // El backend devuelve {token, user:{role, onboarding_completo}}.
+    // Solo se navega a rutas declaradas en main.dart: '/home', '/salon' y
+    // '/auth/onboarding'. Antes se empujaba a '/provider' y '/onboarding',
+    // que no existen: el login exitoso terminaba en excepcion al navegar.
+    final dynamic user = result['user'];
+    final String role =
+        (user is Map && user['role'] != null ? user['role'] : '').toString().toLowerCase();
+    final bool onboardingCompleto =
+        user is Map && (user['onboarding_completo'] ?? false) == true;
+
+    if (!onboardingCompleto) {
+      Navigator.pushReplacementNamed(context, '/auth/onboarding');
+      return;
     }
+    // En la app provider el salón aterriza en su shell; el resto en /home.
+    Navigator.pushReplacementNamed(context, role == 'salon' ? '/salon' : '/home');
   }
 
 

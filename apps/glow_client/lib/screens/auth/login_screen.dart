@@ -217,20 +217,22 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _navigateAfterLogin(Map<String, dynamic> result) {
     if (!mounted) return;
-    String? role = result['user']['role'];
-    final bool onboardingCompleto = result['user']['onboarding_completo'] ?? false;
-    final String rLower = (role ?? '').toString().toLowerCase();
-    if (onboardingCompleto) {
-      if (rLower == 'provider') {
-        Navigator.pushReplacementNamed(context, '/provider');
-      } else if (rLower == 'salon') {
-        Navigator.pushReplacementNamed(context, '/salon');
-      } else {
-        Navigator.pushReplacementNamed(context, '/home');
-      }
-    } else {
-      Navigator.pushReplacementNamed(context, '/onboarding');
+    // El backend devuelve {token, user:{role, onboarding_completo}}.
+    // Se navega solo a rutas que existen en el routes de main.dart:
+    // '/home' (ProvidersScreen) y '/auth/onboarding'. Antes se empujaba a
+    // '/onboarding', '/provider' y '/salon', que no estan declaradas: el login
+    // exitoso terminaba en excepcion al navegar.
+    final dynamic user = result['user'];
+    final bool onboardingCompleto =
+        user is Map && (user['onboarding_completo'] ?? false) == true;
+
+    if (!onboardingCompleto) {
+      Navigator.pushReplacementNamed(context, '/auth/onboarding');
+      return;
     }
+    // En la app cliente todas las cuentas aterrizan en /home; las pantallas de
+    // proveedor/salon viven en la app provider.
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
 
