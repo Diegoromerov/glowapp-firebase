@@ -94,6 +94,7 @@ jobs:
             --dart-define=FIREBASE_WEB_APP_ID=${{ secrets.CLIENT_FIREBASE_WEB_APP_ID }} \
             --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.CLIENT_FIREBASE_ANDROID_APP_ID }} \
             --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.CLIENT_FIREBASE_IOS_APP_ID }} \
+            --dart-define=GOOGLE_WEB_CLIENT_ID=${{ secrets.GOOGLE_WEB_CLIENT_ID }} \
             --dart-define=APP_AUDIENCE=client
         working-directory: ${{ github.workspace }}
 
@@ -151,6 +152,7 @@ jobs:
             --dart-define=FIREBASE_WEB_APP_ID=${{ secrets.PROVIDER_FIREBASE_WEB_APP_ID }} \
             --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.PROVIDER_FIREBASE_ANDROID_APP_ID }} \
             --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.PROVIDER_FIREBASE_IOS_APP_ID }} \
+            --dart-define=GOOGLE_WEB_CLIENT_ID=${{ secrets.PROVIDER_GOOGLE_WEB_CLIENT_ID }} \
             --dart-define=APP_AUDIENCE=provider
         working-directory: ${{ github.workspace }}
 
