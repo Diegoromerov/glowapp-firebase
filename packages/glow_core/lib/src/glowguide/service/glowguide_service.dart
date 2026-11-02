@@ -67,7 +67,19 @@ class GlowGuideService implements NavigationDelegate {
       return NavigationResult.failure(routeName, 'NavigatorState no disponible');
     }
     try {
-      navState.pushNamed(routeName, arguments: arguments);
+      if (routeName == '/home') {
+        // Volver a Home no debe apilar una copia: el guide pasa por /home tres
+        // veces (bienvenida, mapa, despedida) y cada push dejaria un Home extra
+        // en la pila del navegador.
+        navState.popUntil((route) => route.settings.name == '/home');
+      } else {
+        // Las secciones se abren SOBRE Home y se descartan al volver, para que
+        // el recorrido no convierta el boton atras en un laberinto.
+        navState.pushNamedAndRemoveUntil(
+          routeName,
+          ModalRoute.withName('/home'),
+        );
+      }
       return NavigationResult.success(routeName);
     } catch (e) {
       return NavigationResult.failure(routeName, e.toString());

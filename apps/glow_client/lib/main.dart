@@ -46,6 +46,8 @@ import 'screens/results_screen.dart';
 import 'screens/vto_live_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'widgets/audience_toggle.dart';
+import 'glowguide/glow_guide_host.dart';
+import 'package:glow_core/glowguide/config/client_guide.dart';
 import 'widgets/app_update_gate.dart';
 
 void main() async {
@@ -69,6 +71,16 @@ void main() async {
   ApiService.appAudience =
       const String.fromEnvironment('APP_AUDIENCE', defaultValue: 'client');
 
+  // GlowGuide: un solo engine para toda la app, con su propio navigatorKey.
+  // Los pasos ejecutan `navigate(route:)` y el presenter se pinta encima del
+  // Navigator (ver GlowGuideHost), asi el video sigue visible mientras el guide
+  // recorre las secciones.
+  GlowGuideService.instance.initialize();
+  GlowGuideService.instance.createEngine(
+    steps: ClientGuide.steps,
+    guideId: ClientGuide.guideId,
+  );
+
   runApp(const ProviderScope(child: GlowClientApp()));
 }
 
@@ -83,6 +95,11 @@ class GlowClientApp extends ConsumerWidget {
     return MaterialApp(
       title: 'GlowApp',
       debugShowCheckedModeBanner: false,
+      navigatorKey: GlowGuideService.instance.navigatorKey,
+      // El guide se monta encima del Navigator: es lo que le permite navegar la
+      // app sin desaparecer. Dentro de una pantalla, la ruta nueva lo tapaba.
+      builder: (context, child) =>
+          GlowGuideHost(child: child ?? const SizedBox.shrink()),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

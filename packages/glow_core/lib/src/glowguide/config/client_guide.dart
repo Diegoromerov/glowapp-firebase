@@ -19,6 +19,22 @@ class ClientGuide {
     'Despedida',
   ];
 
+  /// Ruta a la que lleva cada paso, en el mismo orden que [_sections].
+  /// El guide no es un paginador: navega la app por sus secciones mientras el
+  /// video explica cada una (asi funciona la version de referencia en
+  /// glowapp-frontend-production). Los pasos 6..8 vuelven a Home porque
+  /// AuraChat y Mapa viven en el mismo shell.
+  static const List<String> _routes = [
+    '/home',
+    '/my-bookings',
+    '/store',
+    '/ideas/aura-welcome',
+    '/profile',
+    '/chat',
+    '/home',
+    '/home',
+  ];
+
   static final List<GlowGuideStep> steps = List<GlowGuideStep>.generate(
     _sections.length,
     (index) {
@@ -37,16 +53,20 @@ class ClientGuide {
         ),
         videoAssetId:
             'assets/glowguide/videos/client/step_${order.toString().padLeft(2, '0')}_${section.toLowerCase()}.webm',
-        action: GlowGuideAction.custom(
-          actionId: 'client_tab',
-          parameters: {'index': index},
-          estimatedDurationMs: 0,
+        // Antes era `custom('client_tab')`, que el engine ignora
+        // (`case GlowGuideActionType.custom: break;`): el video se veia pero la
+        // app nunca cambiaba de seccion. `navigate` si la ejecuta mediante
+        // GlowGuideService.navigatorKey.
+        action: GlowGuideAction.navigate(
+          route: _routes[index],
+          estimatedDurationMs: 900,
           blocking: true,
         ),
+        uiTargetKey: 'client_tab_$index',
         nextStepId: index < _sections.length - 1
             ? 'step_${(order + 1).toString().padLeft(2, '0')}_${_sections[index + 1].toLowerCase()}'
             : null,
-        metadata: {'section': section, 'tabIndex': index},
+        metadata: {'section': section, 'tabIndex': index, 'route': _routes[index]},
       );
     },
   );

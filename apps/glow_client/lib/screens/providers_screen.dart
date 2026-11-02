@@ -40,12 +40,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   bool _isMapMenuOpen = false;
 
   // GlowGuide Integration (I1)
-    // ignore: unused_field
+    // El engine y sus dependencias son unicos: viven en GlowGuideService
+    // (inicializado en main.dart) para sobrevivir a la navegacion que el propio
+    // guide dispara al ejecutar `navigate(route:)`.
     late final GlowGuideEngine _glowGuideEngine;
-    // ignore: unused_field
-    late final AudioEngine _audioEngine;
-    // ignore: unused_field
-    late final PersistenceEngine _persistenceEngine;
 
   // Legacy Mutex state
   // ignore: unused_field
@@ -71,17 +69,17 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       _resolveGuideMutex();
       AudienceService.currentAudience.addListener(_onAudienceChanged);
 
-      // Crear motor local de GlowGuide para Cliente
-      _audioEngine = AudioEngine();
-      _persistenceEngine = PersistenceEngine();
-      _glowGuideEngine = GlowGuideEngine(
-        steps: ClientGuide.steps,
-        guideId: ClientGuide.guideId,
-        navigationDelegate: this,
-        audioController: _audioEngine,
-        persistenceAdapter: _persistenceEngine,
-        screenVisibilityObserver: ScreenVisibilityObserverSingleton.instance,
-      );
+      // Motor compartido de la app (creado en main.dart). Si esta pantalla se
+      // monta sin pasar por main() —por ejemplo en un test de widget— se crea
+      // aqui; createEngine es idempotente por el guard de abajo.
+      if (GlowGuideService.instance.engine == null) {
+        GlowGuideService.instance.initialize();
+        GlowGuideService.instance.createEngine(
+          steps: ClientGuide.steps,
+          guideId: ClientGuide.guideId,
+        );
+      }
+      _glowGuideEngine = GlowGuideService.instance.engine!;
       _glowGuideEngine.addListener(_onGlowGuideStateChanged);
     }
 
@@ -93,42 +91,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           _isMapMenuOpen = isStep08;
         });
       }
-    }
-
-    /// P-028: el guide del cliente no tenia presenter montado, asi que los 8
-    /// videos de Storage nunca se renderizaban. Mismo patron que el provider,
-    /// pero sin sincronizar `_currentIndex`: aquí la guía es espacial sobre el
-    /// mapa y el paso se refleja via [_onGlowGuideStateChanged].
-    void _handleGlowGuideAction(GlowGuidePresenterAction action) {
-      switch (action) {
-        case GlowGuidePresenterAction.next:
-          _glowGuideEngine.next();
-          break;
-        case GlowGuidePresenterAction.previous:
-          _glowGuideEngine.previous();
-          break;
-        case GlowGuidePresenterAction.dismiss:
-          _glowGuideEngine.dismiss();
-          break;
-        case GlowGuidePresenterAction.replay:
-          _glowGuideEngine.replay();
-          break;
-        case GlowGuidePresenterAction.pause:
-          _glowGuideEngine.pause();
-          break;
-        case GlowGuidePresenterAction.resume:
-          _glowGuideEngine.resume();
-          break;
-      }
-    }
-
-    @override
-    void dispose() {
-      _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
-      AudienceService.currentAudience.removeListener(_onAudienceChanged);
-      _searchController.dispose();
-      _glowGuideEngine.dispose();
-      super.dispose();
     }
 
     // ===== NavigationDelegate implementation (I1) =====
@@ -2534,15 +2496,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           if (_enableLegacy && _showTutorial)
             _buildTutorialOverlay(),
 
-          // Capa: GlowGuide con video (P-028). Va al final del Stack para quedar
-          // sobre el mapa. El presenter se auto-oculta si el engine no esta
-          // activo, asi que no interfiere cuando el mutex lo deja apagado.
-          GlowGuidePresenter(
-            engine: _glowGuideEngine,
-            onAction: _handleGlowGuideAction,
-            allowVideoTapToAdvance: false,
-            isProvider: false,
-          ),
+          // El presenter de GlowGuide NO se monta aqui: vive en GlowGuideHost
+          // (MaterialApp.builder), encima del Navigator, para que el video siga
+          // visible mientras el guide navega a Citas, GlowShop, GlowIA, etc.
         ],
       ),
     );
