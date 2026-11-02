@@ -1,5 +1,7 @@
-// GlowApp Provider - App Proveedor/Sal\u00f3n (app.glowapp.com/provider)
-// Entry point para la aplicaci\u00f3n del proveedor/sal\u00f3n
+// GlowApp Provider - App Proveedor/Salón (app.glowapp.com/provider)
+// Entry point para la aplicación del proveedor/salón
+
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glow_core/glow_core.dart' hide ProviderServicesScreen;
 import 'package:glow_core/services/api_service.dart';
+import 'package:glow_core/services/crash_reporting_service.dart';
 import 'firebase_options.dart';
 
 // Auth
@@ -93,7 +96,19 @@ import 'package:glow_core/glowguide/config/provider_guide.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Inicializar Firebase (solo si est\u00e1 configurado)
+  // Red de errores: sin esto, un build que revienta deja una caja gris y nadie
+  // se entera. El codigo que se muestra es el correlation id que viaja al
+  // backend como X-Trace-Id.
+  await CrashReportingService.instance.init();
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details); // sigue saliendo en la consola
+    unawaited(CrashReportingService.instance.reportFlutterError(details));
+  };
+  ErrorWidget.builder = (details) => ErrorFallback(
+        codigo: details.exception.toString().hashCode.toRadixString(16).toUpperCase(),
+      );
+
+  // Inicializar Firebase (solo si está configurado)
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -104,7 +119,7 @@ void main() async {
 
   // Inicializar servicios core
   await AudienceService.init();
-  
+
   // Configurar audiencia de la app para backend (Fase 4)
   ApiService.appAudience = 'provider';
 
@@ -118,7 +133,12 @@ void main() async {
     guideId: ProviderGuide.guideId,
   );
 
-  runApp(const ProviderScope(child: GlowProviderApp()));
+  runZonedGuarded(
+    () => runApp(const ProviderScope(child: GlowProviderApp())),
+    (error, stack) {
+      unawaited(CrashReportingService.instance.reportAsyncError(error, stack));
+    },
+  );
 }
 
 class GlowProviderApp extends ConsumerWidget {
@@ -339,7 +359,7 @@ ThemeData _buildMensTheme() {
       ),
       iconTheme: IconThemeData(color: MensTheme.textPrimary),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
           color: MensTheme.obsidianCard,
           elevation: 2,
           shape: RoundedRectangleBorder(
