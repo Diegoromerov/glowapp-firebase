@@ -2171,7 +2171,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   // Botón 1: Citas
                   _buildFlatNavItem(
                     iconWidget: Image.asset(
-                      'assets/icons/glow/nav_citas.webp',
+                      'assets/icons/glow/nav_citas_dock.webp',
                       width: 28,
                       height: 28,
                       fit: BoxFit.contain,
@@ -2184,7 +2184,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   // Botón 2: GlowShop
                   _buildFlatNavItem(
                     iconWidget: Image.asset(
-                      'assets/icons/glow/nav_glowshop.webp',
+                      'assets/icons/glow/nav_glowshop_dock.webp',
                       width: 28,
                       height: 28,
                       fit: BoxFit.contain,
@@ -2197,7 +2197,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   // Botón 3: Glow IA+ (Medallón Central Elevado)
                   _buildLuxuryCenterMedallion(
                     iconWidget: Image.asset(
-                      'assets/icons/glow/nav_glow_ia.webp',
+                      'assets/icons/glow/nav_glow_ia_dock.webp',
                       width: 32,
                       height: 32,
                       fit: BoxFit.contain,
@@ -2210,7 +2210,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   // Botón 4: Perfil
                   _buildFlatNavItem(
                     iconWidget: Image.asset(
-                      'assets/icons/glow/nav_perfil.webp',
+                      'assets/icons/glow/nav_perfil_dock.webp',
                       width: 28,
                       height: 28,
                       fit: BoxFit.contain,
