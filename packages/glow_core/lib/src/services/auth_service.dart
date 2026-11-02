@@ -249,6 +249,47 @@ class AuthService {
     return null;
   }
 
+  /// Login con Facebook.
+  ///
+  /// El cliente entrega el `accessToken` que emite el SDK de Facebook; el backend
+  /// lo verifica contra la Graph API y emite el JWT de GlowApp. Mismo contrato de
+  /// respuesta que [loginWithGoogle], así que el llamador reutiliza el guardado de
+  /// token y el registro de FCM.
+  ///
+  /// Requiere: app de Facebook creada (App ID) y el endpoint
+  /// `POST /api/auth/facebook` en el backend.
+  static Future<Map<String, dynamic>?> loginWithFacebook(String accessToken, {String? roleIntent}) async {
+    final baseUrl = await getBaseUrl();
+    final response = await http.post(
+      Uri.parse('$baseUrl/api/auth/facebook'),
+      headers: _jsonHeaders,
+      body: json.encode({
+        'accessToken': accessToken,
+        if (roleIntent != null) 'role_intent': roleIntent,
+      }),
+    );
+    try {
+      final data = json.decode(response.body);
+      if (response.statusCode == 200 && data is Map<String, dynamic>) {
+        final prefs = await SharedPreferences.getInstance();
+        if (data['token'] != null) {
+          await SecureStorageService().write('token', data['token']);
+        }
+        if (data['user'] != null) {
+          await prefs.setString('userId', data['user']['id'].toString());
+          await prefs.setString('userName', data['user']['full_name']);
+          if (data['user']['role'] != null) {
+            await prefs.setString('userRole', data['user']['role']);
+          }
+        }
+        await FcmService.instance.registerToken();
+        return data;
+      }
+      if (data is Map<String, dynamic>) return data;
+    } catch (_) {}
+    return null;
+  }
+
   /// Fallback para cuando google_sign_in_web devuelve accessToken pero no idToken
   /// (comportamiento de GIS en google_sign_in 6.x con popup flow)
   static Future<Map<String, dynamic>?> loginWithGoogleAccessToken(String accessToken) async {
