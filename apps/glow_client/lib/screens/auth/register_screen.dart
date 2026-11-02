@@ -17,7 +17,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _passCtrl = TextEditingController();
   final _phoneCtrl = TextEditingController();
 
-  String _selectedRole = 'CLIENTE';
   bool _isLoading = false;
   bool _obscurePassword = true;
   String? _error;
@@ -50,7 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         email,
         password,
         phone.isNotEmpty ? phone : null,
-        _selectedRole,
+        'CLIENTE',
       );
 
       if (success && mounted) {
@@ -68,8 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           scaffoldMessenger.showSnackBar(
             SnackBar(
               content: Text(
-                '✅ Registro exitoso como '
-                '${_selectedRole == 'SALON' ? 'Salón de Belleza' : _selectedRole == 'PRESTADOR' ? 'Prestador' : 'Cliente'}.',
+                '✅ Registro exitoso como Cliente.',
               ),
               backgroundColor: const Color(0xFF10B981),
               behavior: SnackBarBehavior.floating,
@@ -183,106 +181,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Widget _buildRoleSelector(BuildContext context) {
-    final t = context.glowTokens;
-
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: t.surfaceLevel2,
-        borderRadius: BorderRadius.circular(Radii.round),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: () => setState(() => _selectedRole = 'CLIENTE'),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: _selectedRole == 'CLIENTE'
-                      ? t.surfaceLevel1
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(Radii.sm),
-                ),
-                child: Center(
-                  child: Text(
-                    'Cliente',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: _selectedRole == 'CLIENTE'
-                          ? t.n800
-                          : t.n400,
-                      fontSize: 13,
-                      fontFamily: 'CormorantGaramond',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              onTap: () => setState(() => _selectedRole = 'PRESTADOR'),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: _selectedRole == 'PRESTADOR'
-                      ? t.surfaceLevel1
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(Radii.sm),
-                ),
-                child: Center(
-                  child: Text(
-                    'Prestador',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: _selectedRole == 'PRESTADOR'
-                          ? t.n800
-                          : t.n400,
-                      fontSize: 12,
-                      fontFamily: 'CormorantGaramond',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              onTap: () => setState(() => _selectedRole = 'SALON'),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: _selectedRole == 'SALON'
-                      ? t.surfaceLevel1
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(Radii.sm),
-                ),
-                child: Center(
-                  child: Text(
-                    'Salón / SaaS',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: _selectedRole == 'SALON'
-                          ? t.n800
-                          : t.n400,
-                      fontSize: 11,
-                      fontFamily: 'CormorantGaramond',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildFormCard(BuildContext context) {
       final t = context.glowTokens;
       final l10n = glow_l10n.AppLocalizations.of(context)!;
@@ -310,14 +208,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              l10n.registerUserType,
-              style: context.labelLargeContext,
-            ),
-            const SizedBox(height: 10),
-
-            _buildRoleSelector(context),
-            const SizedBox(height: 10),
+            // En la app cliente solo se registran clientes: el selector de rol
+            // (CLIENTE / PRESTADOR / SAAS) se retiro. Proveedores y salones se
+            // registran en la app provider.
 
             Container(
               padding: const EdgeInsets.all(11),
@@ -330,11 +223,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               child: Text(
-                _selectedRole == 'CLIENTE'
-                    ? '✨ Acceso a diagnósticos de IA Aura, GlowStore y reserva de servicios concierge.'
-                    : _selectedRole == 'PRESTADOR'
-                        ? '💼 Ofrece tus servicios independientes, gestiona tu agenda y recibe pagos directos.'
-                        : '🏢 Administra tu salón de belleza, tu equipo de trabajo y licencias SaaS integradas.',
+                '✨ Acceso a diagnósticos de IA Aura, GlowStore y reserva de servicios concierge.',
                 style: TextStyle(
                   fontSize: 12,
                   color: t.n700,
