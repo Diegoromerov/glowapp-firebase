@@ -60,13 +60,21 @@ class _StoreScreenState extends State<StoreScreen> {
   }
 
   Future<void> _fetchProducts() async {
+    if (!mounted) return;
     try {
       setState(() {
         _isLoading = true;
         _errorMessage = '';
       });
-      
+
       final response = await ApiService.get('/api/products');
+
+      // El guide navega con `pushNamedAndRemoveUntil`, así que esta pantalla
+      // puede quedar desechada mientras la petición está en vuelo. Sin este
+      // guard, el `setState` de abajo llamaba a markNeedsBuild sobre un elemento
+      // defunct y el error se relanzaba en cada frame (el bucle del log).
+      if (!mounted) return;
+
       if (response != null && response['success'] == true) {
         final List<dynamic> productsData = response['data'] ?? [];
         setState(() {
@@ -78,6 +86,7 @@ class _StoreScreenState extends State<StoreScreen> {
         throw Exception('Respuesta no válida del servidor');
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
         _errorMessage = 'No se pudieron cargar los productos: $e';
         _isLoading = false;
