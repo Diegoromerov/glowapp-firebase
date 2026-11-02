@@ -591,7 +591,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                               ),
                             );
                           } else {
-                            Navigator.pushNamed(context, '/ideas');
+                            Navigator.pushNamed(context, '/ideas/welcome');
                           }
                         },
                         icon: const Icon(Icons.camera_alt_outlined, size: 16, color: Color(0xFFC5A052)),
