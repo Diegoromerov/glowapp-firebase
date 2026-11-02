@@ -77,26 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
       final result =
           await AuthService.login(_emailCtrl.text.trim(), _passCtrl.text);
       if (result != null && mounted) {
-        if (result['requires_context_selection'] == true && result['available_contexts'] != null) {
-          Navigator.pushReplacementNamed(context, '/auth/context-selection',
-            arguments: result['available_contexts'],
-          );
-          return;
-        }
-        final bool onboardingCompleto =
-            result['user']['onboarding_completo'] ?? false;
-        final String rLower = (result['user']['role'] ?? '').toString().toLowerCase();
-        if (onboardingCompleto) {
-          if (rLower == 'salon') {
-            Navigator.pushReplacementNamed(context, '/salon');
-          } else if (rLower == 'provider') {
-            Navigator.pushReplacementNamed(context, '/provider');
-          } else {
-            Navigator.pushReplacementNamed(context, '/home');
-          }
-        } else {
-          Navigator.pushReplacementNamed(context, '/auth/onboarding');
-        }
+        // Un solo camino de navegacion para todos los metodos de login.
+        // Antes esta rama podia desviar a la pantalla de seleccion de rol, que
+        // ya no existe: en la app cliente el rol es siempre cliente.
+        _navigateAfterLogin(result);
       } else {
         setState(() => _error = 'Credenciales incorrectas');
       }
@@ -215,11 +199,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _navigateAfterLogin(Map<String, dynamic> result) {
     if (!mounted) return;
-    // El backend devuelve {token, user:{role, onboarding_completo}}.
-    // Se navega solo a rutas que existen en el routes de main.dart:
-    // '/home' (ProvidersScreen) y '/auth/onboarding'. Antes se empujaba a
-    // '/onboarding', '/provider' y '/salon', que no estan declaradas: el login
-    // exitoso terminaba en excepcion al navegar.
+    // Unico punto de decision despues de cualquier login (email, Google,
+    // Facebook, Apple). El backend devuelve {token, user:{role,
+    // onboarding_completo}} pero el rol no desvia: en la app cliente la unica
+    // ruta valida es '/home' (o el onboarding si falta). Las pantallas de
+    // salon/proveedor viven en la app provider.
     final dynamic user = result['user'];
     final bool onboardingCompleto =
         user is Map && (user['onboarding_completo'] ?? false) == true;
@@ -266,19 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       if (result != null && mounted) {
-        final bool onboardingCompleto = result['user']['onboarding_completo'] ?? false;
-        final String rLower = (result['user']['role'] ?? '').toString().toLowerCase();
-        if (onboardingCompleto) {
-          if (rLower == 'salon') {
-            Navigator.pushReplacementNamed(context, '/salon');
-          } else if (rLower == 'provider') {
-            Navigator.pushReplacementNamed(context, '/provider');
-          } else {
-            Navigator.pushReplacementNamed(context, '/home');
-          }
-        } else {
-          Navigator.pushReplacementNamed(context, '/auth/onboarding');
-        }
+        _navigateAfterLogin(result);
       } else {
         setState(() => _error = 'Error al autenticar con $provider');
       }
@@ -321,19 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         return;
       }
-      final bool onboardingCompleto = result['user']['onboarding_completo'] ?? false;
-      final String rLower = (result['user']['role'] ?? '').toString().toLowerCase();
-      if (onboardingCompleto) {
-        if (rLower == 'salon') {
-          Navigator.pushReplacementNamed(context, '/salon');
-        } else if (rLower == 'provider') {
-          Navigator.pushReplacementNamed(context, '/provider');
-        } else {
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-      } else {
-        Navigator.pushReplacementNamed(context, '/auth/onboarding');
-      }
+      _navigateAfterLogin(result);
     } catch (e) {
       if (mounted) setState(() => _error = 'Facebook: $e');
     } finally {

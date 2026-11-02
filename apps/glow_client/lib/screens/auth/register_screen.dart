@@ -62,7 +62,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         if (loginResult != null) {
           final bool onboardingCompleto =
               loginResult['user']['onboarding_completo'] ?? false;
-          final String? role = loginResult['user']['role'];
 
           scaffoldMessenger.showSnackBar(
             SnackBar(
@@ -77,23 +76,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           );
 
+          // En la app cliente el rol siempre es cliente: no hay desvio a
+          // pantallas de salon/proveedor, que no existen en este router.
           if (onboardingCompleto) {
-            if (role == 'salon') {
-              navigator.pushNamedAndRemoveUntil(
-                '/salon',
-                (route) => false,
-              );
-            } else if (role == 'provider') {
-              navigator.pushNamedAndRemoveUntil(
-                '/provider',
-                (route) => false,
-              );
-            } else {
-              navigator.pushNamedAndRemoveUntil(
-                '/home',
-                (route) => false,
-              );
-            }
+            navigator.pushNamedAndRemoveUntil(
+              '/home',
+              (route) => false,
+            );
           } else {
             navigator.pushNamedAndRemoveUntil('/auth/onboarding',
               (route) => false,

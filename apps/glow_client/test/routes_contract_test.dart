@@ -9,7 +9,9 @@ import 'package:flutter_test/flutter_test.dart';
 /// Rutas conocidas sin destino, pendientes de decisión de producto (P-037).
 /// Se listan aquí a propósito para que el resto del test siga protegiendo y
 /// para que no se olvide que existen. Si se resuelven, borrar la entrada.
-const pendientesP037 = {'/provider', '/salon'};
+// P-037 cerrado: las redirecciones por rol a /salon y /provider se
+// eliminaron, asi que no queda ninguna ruta muerta que excusar.
+const pendientesP037 = <String>{};
 
 void main() {
   test('toda ruta referenciada tiene destino registrado', () {
