@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'api_error.dart';
+import 'payload.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 // ignore: depend_on_referenced_packages
@@ -452,7 +453,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception('Error al obtener productos');
   }
@@ -515,7 +516,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -644,7 +645,7 @@ class ApiService {
           .timeout(requestTimeout);
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        return (data['data'] as List<dynamic>).cast<Map<String, dynamic>>();
+        return asMapList(data['data']);
       }
       throw Exception(
           extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -915,7 +916,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = _normalizeDynamicUrls(json.decode(response.body));
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -1148,7 +1149,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -1165,7 +1166,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -1285,7 +1286,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -1349,7 +1350,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
@@ -1365,7 +1366,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1380,7 +1381,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1418,7 +1419,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1462,7 +1463,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1509,7 +1510,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1605,7 +1606,7 @@ class ApiService {
         
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1769,7 +1770,7 @@ class ApiService {
         
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
@@ -1788,7 +1789,7 @@ class ApiService {
     final response = await http.get(uri, headers: headers).timeout(requestTimeout);
     final data = json.decode(response.body);
     if (response.statusCode == 200) {
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(data['error'] ?? 'Error ${response.statusCode}');
   }
@@ -1889,7 +1890,7 @@ class ApiService {
     final response = await http.get(uri, headers: headers).timeout(requestTimeout);
     final data = json.decode(response.body);
     if (response.statusCode == 200) {
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(data['error'] ?? 'Error ${response.statusCode}');
   }
