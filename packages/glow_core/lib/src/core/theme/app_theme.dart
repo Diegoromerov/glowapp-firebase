@@ -259,7 +259,7 @@ class AppTheme {
       ),
 
       // Card
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
               color: t.surfaceLevel1,
               surfaceTintColor: Colors.transparent,
               elevation: 0,
@@ -427,7 +427,7 @@ class AppTheme {
             ),
 
             // Dialog
-            dialogTheme: DialogTheme(
+            dialogTheme: DialogThemeData(
               backgroundColor: t.surfaceLevel1,
               surfaceTintColor: Colors.transparent,
               elevation: 0,
@@ -470,7 +470,7 @@ class AppTheme {
             ),
 
             // Tab Bar
-            tabBarTheme: TabBarTheme(
+            tabBarTheme: TabBarThemeData(
               labelColor: t.brandPrimary,
               unselectedLabelColor: t.textMuted,
               indicatorColor: t.brandPrimary,
@@ -627,7 +627,7 @@ class AppTheme {
               hoverElevation: 1,
             ),
 
-            cardTheme: CardTheme(
+            cardTheme: CardThemeData(
               color: t.surfaceLevel1,
               surfaceTintColor: Colors.transparent,
               elevation: 0,
@@ -784,7 +784,7 @@ class AppTheme {
               selectedColor: t.brandPrimary,
             ),
 
-            dialogTheme: DialogTheme(
+            dialogTheme: DialogThemeData(
               backgroundColor: t.surfaceLevel1,
               surfaceTintColor: Colors.transparent,
               elevation: 0,
@@ -819,7 +819,7 @@ class AppTheme {
               elevation: 0,
             ),
 
-            tabBarTheme: TabBarTheme(
+            tabBarTheme: TabBarThemeData(
               labelColor: t.brandPrimary,
               unselectedLabelColor: t.textMuted,
               indicatorColor: t.brandPrimary,
@@ -1119,7 +1119,7 @@ class AppTheme {
         hoverElevation: 1,
       ),
 
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
               color: t.surfaceLevel1,
               surfaceTintColor: Colors.transparent,
               elevation: 0,
@@ -1277,7 +1277,7 @@ class AppTheme {
               selectedColor: t.brandPrimary,
             ),
 
-            dialogTheme: DialogTheme(
+            dialogTheme: DialogThemeData(
               backgroundColor: t.surfaceLevel1,
               surfaceTintColor: Colors.transparent,
               elevation: 0,
@@ -1313,7 +1313,7 @@ class AppTheme {
               elevation: 0,
             ),
 
-            tabBarTheme: TabBarTheme(
+            tabBarTheme: TabBarThemeData(
               labelColor: t.brandPrimary,
               unselectedLabelColor: t.textMuted,
               indicatorColor: t.brandPrimary,
