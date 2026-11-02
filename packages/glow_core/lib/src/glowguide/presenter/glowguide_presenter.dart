@@ -209,6 +209,9 @@ class GlowStepVideoPlayer extends StatefulWidget {
 
 class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   late VideoPlayerController _controller;
+  /// False cuando el paso no tiene URL y nunca se creo el controller: evita
+  /// `LateInitializationError` en `dispose`/`didUpdateWidget`.
+  bool _controllerReady = false;
   bool _isInitialized = false;
   bool _hasError = false;
   bool _hasEnded = false;
@@ -227,8 +230,14 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   void didUpdateWidget(GlowStepVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.stepId != widget.stepId || oldWidget.isProvider != widget.isProvider) {
-      _controller.removeListener(_onVideoStateChanged);
-      _controller.dispose();
+      if (_controllerReady) {
+        _controller.removeListener(_onVideoStateChanged);
+        _controller.dispose();
+        _controllerReady = false;
+      }
+      _isInitialized = false;
+      _hasError = false;
+      _hasUserStarted = false;
       _initVideo();
     }
   }
@@ -275,10 +284,26 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   }
 
   void _loadVideo(String url) {
+    // Sin URL no se puede inicializar nada: antes se intentaba con cadena vacia,
+    // `initialize()` fallaba y la pantalla quedaba en un boton que no respondia
+    // (`_startPlayback` sale si `_isInitialized` es falso). Fallar visible.
+    if (url.isEmpty) {
+      debugPrint(
+        '⚠️ GlowGuide: el paso "${widget.stepId}" no tiene URL de video '
+        '(isProvider: ${widget.isProvider}). Revisa video_mapping.dart: la clave '
+        'debe ser el id del paso, no el nombre del archivo.',
+      );
+      if (mounted) {
+        setState(() => _hasError = true);
+      }
+      return;
+    }
+
     _controller = VideoPlayerController.networkUrl(
       Uri.parse(url),
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
+    _controllerReady = true;
 
     _controller.initialize().then((_) {
       if (mounted) {
@@ -360,8 +385,10 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
 
   @override
   void dispose() {
-    _controller.removeListener(_onVideoStateChanged);
-    _controller.dispose();
+    if (_controllerReady) {
+      _controller.removeListener(_onVideoStateChanged);
+      _controller.dispose();
+    }
     super.dispose();
   }
 

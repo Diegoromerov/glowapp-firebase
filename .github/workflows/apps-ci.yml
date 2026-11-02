@@ -47,6 +47,13 @@ jobs:
           cd ${{ github.workspace }}/apps/glow_provider && flutter analyze --no-fatal-infos --no-fatal-warnings
         working-directory: ${{ github.workspace }}
 
+      # Invariante de GlowGuide: cada paso de ClientGuide/ProviderGuide debe tener
+      # su video en video_mapping.dart. Sin esto, un cambio de id en un guide deja
+      # el reproductor visible pero sin video y nadie se entera hasta produccion.
+      - name: GlowGuide Video Mapping Tests (glow_core)
+        run: flutter test test/glowguide/video_mapping_test.dart
+        working-directory: ${{ github.workspace }}/packages/glow_core
+
   # ─────────────────────────────────────────────────────────────────
   # GLOW_CLIENT - Test & Build
   # ─────────────────────────────────────────────────────────────────
