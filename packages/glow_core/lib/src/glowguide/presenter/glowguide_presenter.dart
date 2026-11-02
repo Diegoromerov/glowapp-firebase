@@ -122,19 +122,40 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              // Reproductor de Video de Aura
-              SizedBox(
-                width: videoWidth,
-                child: GlowStepVideoPlayer(
-                  key: ValueKey<String>(stepId),
-                  stepId: stepId,
-                  isProvider: widget.isProvider,
-                  isFirstStep: _currentStep!.order == 0,
-                  allowTapToAdvance: widget.allowVideoTapToAdvance,
-                  onVideoEnded: () {
-                    widget.onAction?.call(GlowGuidePresenterAction.next);
-                  },
-                ),
+              // Reproductor de Video de Aura + navegacion del guide
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: videoWidth,
+                    child: GlowStepVideoPlayer(
+                      key: ValueKey<String>(stepId),
+                      stepId: stepId,
+                      isProvider: widget.isProvider,
+                      isFirstStep: _currentStep!.order == 0,
+                      allowTapToAdvance: widget.allowVideoTapToAdvance,
+                      onVideoEnded: () {
+                        widget.onAction?.call(GlowGuidePresenterAction.next);
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // Sin estos controles el unico avance era que el video
+                  // terminara: si se pausaba o el navegador lo bloqueaba, el
+                  // usuario quedaba atrapado con solo la X.
+                  _GlowGuideNavigation(
+                    currentIndex: widget.engine.state.currentStepIndex,
+                    totalSteps: widget.engine.totalSteps,
+                    canGoPrevious: widget.engine.hasPrevious,
+                    canGoNext: widget.engine.hasNext,
+                    onPrevious: () =>
+                        widget.onAction?.call(GlowGuidePresenterAction.previous),
+                    onNext: () =>
+                        widget.onAction?.call(GlowGuidePresenterAction.next),
+                    onFinish: () =>
+                        widget.onAction?.call(GlowGuidePresenterAction.dismiss),
+                  ),
+                ],
               ),
 
               // Botón Discreto de Cerrar
@@ -180,6 +201,126 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
     return status == GlowGuideStatus.playing ||
            status == GlowGuideStatus.executingAction ||
            status == GlowGuideStatus.paused;
+  }
+}
+
+/// Barra de navegacion del GlowGuide: anterior / contador / siguiente.
+///
+/// El presenter no traia controles: el unico avance era que el video terminara
+/// (`onVideoEnded` -> `next`) y la X para cerrar. Si el video no arrancaba, se
+/// pausaba o el navegador lo bloqueaba, el usuario quedaba atrapado sin salida
+/// visible.
+class _GlowGuideNavigation extends StatelessWidget {
+  final int currentIndex;
+  final int totalSteps;
+  final bool canGoPrevious;
+  final bool canGoNext;
+  final VoidCallback onPrevious;
+  final VoidCallback onNext;
+  final VoidCallback onFinish;
+
+  const _GlowGuideNavigation({
+    required this.currentIndex,
+    required this.totalSteps,
+    required this.canGoPrevious,
+    required this.canGoNext,
+    required this.onPrevious,
+    required this.onNext,
+    required this.onFinish,
+  });
+
+  static const Color _dorado = Color(0xFFC5A052);
+  static const Color _carbon = Color(0xFF141210);
+  static const Color _marfil = Color(0xFFF5F1E8);
+
+  @override
+  Widget build(BuildContext context) {
+    final isLast = !canGoNext;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+      decoration: BoxDecoration(
+        color: _carbon.withOpacity(0.88),
+        borderRadius: BorderRadius.circular(28),
+        border: Border.all(color: _dorado.withOpacity(0.8), width: 1.2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _boton(
+            icon: Icons.arrow_back_rounded,
+            label: 'Anterior',
+            enabled: canGoPrevious,
+            onTap: onPrevious,
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: _dorado.withOpacity(0.18),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              '${currentIndex + 1} / $totalSteps',
+              style: const TextStyle(
+                fontFamily: 'JetBrainsMono',
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: _dorado,
+                letterSpacing: 0.6,
+              ),
+            ),
+          ),
+          _boton(
+            icon: isLast ? Icons.check_rounded : Icons.arrow_forward_rounded,
+            label: isLast ? 'Listo' : 'Siguiente',
+            enabled: true,
+            onTap: isLast ? onFinish : onNext,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _boton({
+    required IconData icon,
+    required String label,
+    required bool enabled,
+    required VoidCallback onTap,
+  }) {
+    final color = enabled ? _marfil : _marfil.withOpacity(0.32);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: enabled ? onTap : null,
+        borderRadius: BorderRadius.circular(20),
+        child: Semantics(
+          button: true,
+          enabled: enabled,
+          label: label,
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 36, minWidth: 44),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 18, color: color),
+                const SizedBox(width: 6),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontFamily: 'JetBrainsMono',
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: color,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
