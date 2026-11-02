@@ -7,6 +7,17 @@ import '../services/api_service.dart';
 import '../services/analytics_service.dart';
 import '../services/booking_recovery_service.dart';
 
+/// Host de Wompi segun la llave publica del comercio.
+///
+/// La tokenizacion de tarjeta corre contra sandbox o produccion segun el prefijo
+/// de la llave (`pub_test_*` / `pub_prod_*`). Antes estaba fijo en sandbox: con
+/// llaves de produccion el token se emitia en sandbox y la transaccion, creada
+/// en `production.wompi.co` por el backend, lo rechazaba.
+String _wompiBaseUrl(String publicKey) =>
+    publicKey.trim().startsWith('pub_prod')
+        ? 'https://production.wompi.co/v1'
+        : 'https://sandbox.wompi.co/v1';
+
 Future<bool?> showWompiCheckoutSheet({
   required BuildContext context,
   required String bookingId,
@@ -215,7 +226,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
           
           // Tokenizar con Wompi (POST /tokens/cards con llave pÃºblica)
           final tokenResponse = await http.post(
-            Uri.parse('https://sandbox.wompi.co/v1/tokens/cards'),
+            Uri.parse('${_wompiBaseUrl(publicKey)}/tokens/cards'),
             headers: {
               'Authorization': 'Bearer $publicKey',
               'Content-Type': 'application/json',
@@ -251,7 +262,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
           }
           
           final tokenResponse = await http.post(
-            Uri.parse('https://sandbox.wompi.co/v1/tokens/cards'),
+            Uri.parse('${_wompiBaseUrl(publicKey)}/tokens/cards'),
             headers: {
               'Authorization': 'Bearer $publicKey',
               'Content-Type': 'application/json',
