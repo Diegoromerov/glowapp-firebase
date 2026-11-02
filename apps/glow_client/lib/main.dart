@@ -1,12 +1,15 @@
 // GlowApp Client - App Usuario (app.glowapp.com)
 // Entry point para la aplicación del cliente final
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glow_core/glow_core.dart';
 import 'package:glow_core/services/api_service.dart';
+import 'package:glow_core/services/crash_reporting_service.dart';
 import 'firebase_options.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
@@ -14,7 +17,6 @@ import 'screens/auth/onboarding_screen.dart';
 import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/accept_invitation_screen.dart';
 import 'screens/auth/verification_pending_screen.dart';
-import 'screens/auth/context_selection_screen.dart';
 import 'screens/auth/role_selection_modal.dart';
 import 'screens/providers_screen.dart';
 import 'screens/client_bookings_screen.dart';
@@ -52,7 +54,19 @@ import 'widgets/app_update_gate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
+  // Red de errores: sin esto, un build que revienta deja una caja gris y nadie
+  // se entera. El codigo que se muestra es el correlation id que viaja al
+  // backend como X-Trace-Id.
+  await CrashReportingService.instance.init();
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details); // sigue saliendo en la consola
+    unawaited(CrashReportingService.instance.reportFlutterError(details));
+  };
+  ErrorWidget.builder = (details) => ErrorFallback(
+        codigo: details.exception.toString().hashCode.toRadixString(16).toUpperCase(),
+      );
+
   // Inicializar Firebase (solo si está configurado)
   try {
     await Firebase.initializeApp(
@@ -61,7 +75,7 @@ void main() async {
   } catch (_) {
     // Firebase no configurado en este build
   }
-  
+
   // Inicializar servicios core
   await AudienceService.init();
 
@@ -81,7 +95,12 @@ void main() async {
     guideId: ClientGuide.guideId,
   );
 
-  runApp(const ProviderScope(child: GlowClientApp()));
+  runZonedGuarded(
+    () => runApp(const ProviderScope(child: GlowClientApp())),
+    (error, stack) {
+      unawaited(CrashReportingService.instance.reportAsyncError(error, stack));
+    },
+  );
 }
 
 class GlowClientApp extends ConsumerWidget {
@@ -166,13 +185,6 @@ class GlowClientApp extends ConsumerWidget {
             },
             onGenerateRoute: (settings) {
               switch (settings.name) {
-                case '/auth/context-selection':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => ContextSelectionScreen(
-                      availableContexts: args?['availableContexts'] ?? [],
-                    ),
-                  );
                 case '/chat/detail':
                   final args = settings.arguments as Map<String, dynamic>?;
                   return MaterialPageRoute(
