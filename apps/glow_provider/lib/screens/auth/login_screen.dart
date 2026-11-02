@@ -292,13 +292,17 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  /// Con `proximamente: true` el botón se ve atenuado, con la leyenda
+  /// «Próximamente» y sin ejecutar el flujo (estado de Apple mientras no exista
+  /// Sign in with Apple configurado, P-053).
   Widget _buildSocialButton({
     required Token t,
     required Widget icon,
     required VoidCallback? onTap,
     required String label,
+    bool proximamente = false,
   }) {
-    return Material(
+    final boton = Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
@@ -312,9 +316,36 @@ class _LoginScreenState extends State<LoginScreen> {
             border: Border.all(color: t.borderDefault, width: 1.0),
           ),
           child: Center(
-            child: icon,
+            child: Opacity(
+              opacity: proximamente ? 0.45 : 1.0,
+              child: icon,
+            ),
           ),
         ),
+      ),
+    );
+
+    if (!proximamente) return boton;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        boton,
+        const SizedBox(height: 4),
+        Text(
+          'Próximamente',
+          style: TextStyle(fontSize: 9, letterSpacing: 0.3, color: t.n500),
+        ),
+      ],
+    );
+  }
+
+  void _avisarProximamente(String proveedor) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$proveedor: disponible próximamente'),
+        backgroundColor: const Color(0xFF1F1A15),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -574,11 +605,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _buildSocialButton(
                                   icon: const Icon(Icons.apple,
                                       color: Color(0xFF1F1A15), size: 24),
-                                  onTap: _isLoading
-                                      ? null
-                                      : () => _handleOAuth('APPLE'),
+                                  onTap: () => _avisarProximamente('Apple'),
                                   label: 'Apple',
                                   t: t,
+                                  proximamente: true,
                                 ),
                               ],
                             ),

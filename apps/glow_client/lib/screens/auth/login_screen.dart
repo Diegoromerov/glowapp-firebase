@@ -245,8 +245,9 @@ class _LoginScreenState extends State<LoginScreen> {
       await _handleFacebookSignIn();
       return;
     }
-    // Apple: sigue siendo el flujo de demostración que ya existía (no hay
-    // Sign in with Apple configurado). Outlook se retiró.
+    // Residuo: el flujo de demostración de Apple. Ya no se invoca desde la UI
+    // (el botón está en «Próximamente»), pero se conserva para no perder la
+    // referencia de lo que había. Outlook se retiró.
     setState(() {
       _isLoading = true;
       _error = null;
@@ -349,13 +350,18 @@ class _LoginScreenState extends State<LoginScreen> {
   /// es justo el defecto que tenían los botones de Outlook y Apple.
   Future<String?> _obtainFacebookAccessToken() async => null;
 
+  /// Botón social. Con `proximamente: true` se muestra atenuado, con la leyenda
+  /// «Próximamente» debajo y sin ejecutar el flujo: es el estado de Apple y
+  /// Facebook mientras no estén configurados (P-052, P-053). Un botón que solo
+  /// devuelve un error técnico es peor que uno que dice que aún no está.
   Widget _buildSocialButton({
     required Token t,
     required Widget icon,
     required VoidCallback? onTap,
     required String label,
+    bool proximamente = false,
   }) {
-    return Material(
+    final boton = Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
@@ -369,9 +375,40 @@ class _LoginScreenState extends State<LoginScreen> {
             border: Border.all(color: t.borderDefault, width: 1.0),
           ),
           child: Center(
-            child: icon,
+            child: Opacity(
+              opacity: proximamente ? 0.45 : 1.0,
+              child: icon,
+            ),
           ),
         ),
+      ),
+    );
+
+    if (!proximamente) return boton;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        boton,
+        const SizedBox(height: 4),
+        Text(
+          'Próximamente',
+          style: TextStyle(
+            fontSize: 9,
+            letterSpacing: 0.3,
+            color: t.n500,
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _avisarProximamente(String proveedor) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$proveedor: disponible próximamente'),
+        backgroundColor: const Color(0xFF1F1A15),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -641,20 +678,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _buildSocialButton(
                                   icon: const Icon(Icons.facebook,
                                       color: Color(0xFF1877F2), size: 26),
-                                  onTap: _isLoading
-                                      ? null
-                                      : () => _handleOAuth('FACEBOOK'),
+                                  onTap: () => _avisarProximamente('Facebook'),
                                   label: 'Facebook',
                                   t: t,
+                                  proximamente: true,
                                 ),
                                 _buildSocialButton(
                                   icon: const Icon(Icons.apple,
                                       color: Color(0xFF1F1A15), size: 24),
-                                  onTap: _isLoading
-                                      ? null
-                                      : () => _handleOAuth('APPLE'),
+                                  onTap: () => _avisarProximamente('Apple'),
                                   label: 'Apple',
                                   t: t,
+                                  proximamente: true,
                                 ),
                               ],
                             ),
