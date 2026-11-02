@@ -1,6 +1,8 @@
 // lib/services/api_service.dart
 import 'dart:async';
 import 'dart:convert';
+import 'api_error.dart';
+import 'payload.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 // ignore: depend_on_referenced_packages
@@ -451,7 +453,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception('Error al obtener productos');
   }
@@ -501,7 +503,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchClientBookings() async {
@@ -514,10 +516,10 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> cancelBooking(String bookingId) async {
@@ -530,7 +532,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> submitReview(
@@ -550,7 +552,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   /// Token de aceptación de Wompi (Habeas Data), obligatorio al crear una
@@ -566,7 +568,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   /// Llave pública de Wompi (pub_test_* / pub_prod_*) para tokenizar tarjeta
@@ -585,7 +587,7 @@ class ApiService {
       return data['public_key'] as String;
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   /// Inicia el cobro de un pedido de tienda (GlowStore).
@@ -629,7 +631,7 @@ class ApiService {
         return json.decode(response.body);
       }
       throw Exception(
-          json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+          extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
     }
 
     /// Obtiene la lista de pedidos del usuario (GlowStore).
@@ -643,10 +645,10 @@ class ApiService {
           .timeout(requestTimeout);
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        return (data['data'] as List<dynamic>).cast<Map<String, dynamic>>();
+        return asMapList(data['data']);
       }
       throw Exception(
-          json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+          extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
     }
 
     /// Obtiene el detalle de un pedido específico (GlowStore).
@@ -662,7 +664,7 @@ class ApiService {
         return json.decode(response.body);
       }
       throw Exception(
-          json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+          extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
     }
 
     /// El instrumento NO es simétrico entre métodos (contrato Wompi):
@@ -690,7 +692,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> payBooking(
@@ -729,7 +731,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -752,7 +754,7 @@ class ApiService {
           .toList();
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<ServiceModel> createService({
@@ -789,7 +791,7 @@ class ApiService {
       }
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<ServiceModel> updateService({
@@ -827,7 +829,7 @@ class ApiService {
       }
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> deleteService(String id) async {
@@ -840,7 +842,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -887,7 +889,7 @@ class ApiService {
       return data['url'] as String;
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> updateAvatar(String imageUrl) async {
@@ -901,7 +903,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchProviderPortfolio() async {
@@ -914,10 +916,10 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = _normalizeDynamicUrls(json.decode(response.body));
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> addPortfolioItem({
@@ -941,7 +943,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> deletePortfolioItem(String id) async {
@@ -954,7 +956,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> updatePortfolioItem({
@@ -975,7 +977,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> fetchUserProfile() async {
@@ -991,7 +993,7 @@ class ApiService {
       return data['user'] as Map<String, dynamic>;
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> updateUserProfile({
@@ -1019,7 +1021,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> fetchProviderSchedule() async {
@@ -1130,7 +1132,7 @@ class ApiService {
       return List<Map<String, dynamic>>.from(data['slots']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -1147,10 +1149,10 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchChatMessages(
@@ -1164,10 +1166,10 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> sendChatMessage(
@@ -1189,7 +1191,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> markMessagesAsRead(
@@ -1205,7 +1207,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<bool> updateProviderStatus(bool isActive,
@@ -1227,7 +1229,7 @@ class ApiService {
       return data['is_active'] as bool;
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> startBooking(String bookingId) async {
@@ -1242,7 +1244,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> completeBooking(
@@ -1271,7 +1273,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchProviderBookings() async {
@@ -1284,10 +1286,10 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> updateBookingStatus(
@@ -1302,7 +1304,7 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) return json.decode(response.body);
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // 🔹 NUEVO: Enviar señal de pánico SOS
@@ -1327,7 +1329,7 @@ class ApiService {
       return json.decode(response.body);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // 🔹 NUEVO: Buscar ideas de diseños de manicura (Pinterest / Google CSE)
@@ -1348,10 +1350,10 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(
-        json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+        extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchCuratedCollections(String category) async {
@@ -1364,9 +1366,9 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchExclusiveCollections() async {
@@ -1379,9 +1381,9 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> generateGlowUpCard(String favoriteUrl, String track) async {
@@ -1417,9 +1419,9 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // 🔹 NUEVO: Clóset e Imagen Digital (GlowStyle)
@@ -1461,9 +1463,9 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<void> deleteGarment(String id) async {
@@ -1475,7 +1477,7 @@ class ApiService {
         )
         .timeout(const Duration(seconds: 20));
     if (response.statusCode != 200) {
-      throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+      throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
     }
   }
 
@@ -1508,9 +1510,9 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // 🔹 NUEVO: Analizar forma del rostro por IA
@@ -1604,9 +1606,9 @@ class ApiService {
         
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> compareDiagnostics({
@@ -1677,7 +1679,7 @@ class ApiService {
       final data = json.decode(response.body);
       return data['data'] != null ? Map<String, dynamic>.from(data['data']) : null;
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> subscribePremium() async {
@@ -1700,7 +1702,7 @@ class ApiService {
     if (response.statusCode == 200 || response.statusCode == 201) {
       return Map<String, dynamic>.from(json.decode(response.body));
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> checkInStreak() async {
@@ -1723,7 +1725,7 @@ class ApiService {
     if (response.statusCode == 200 || response.statusCode == 201) {
       return Map<String, dynamic>.from(json.decode(response.body));
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<Map<String, dynamic>> fetchShareCode() async {
@@ -1746,7 +1748,7 @@ class ApiService {
     if (response.statusCode == 200 || response.statusCode == 201) {
       return Map<String, dynamic>.from(json.decode(response.body));
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   static Future<List<Map<String, dynamic>>> fetchRecommendedDoctors() async {
@@ -1768,9 +1770,9 @@ class ApiService {
         
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
-    throw Exception(json.decode(response.body)['error'] ?? 'Error ${response.statusCode}');
+    throw Exception(extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
   // 🔹 NUEVO: Evolución Premium
@@ -1787,7 +1789,7 @@ class ApiService {
     final response = await http.get(uri, headers: headers).timeout(requestTimeout);
     final data = json.decode(response.body);
     if (response.statusCode == 200) {
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(data['error'] ?? 'Error ${response.statusCode}');
   }
@@ -1888,7 +1890,7 @@ class ApiService {
     final response = await http.get(uri, headers: headers).timeout(requestTimeout);
     final data = json.decode(response.body);
     if (response.statusCode == 200) {
-      return List<Map<String, dynamic>>.from(data['data']);
+      return asMapList(data['data']);
     }
     throw Exception(data['error'] ?? 'Error ${response.statusCode}');
   }
