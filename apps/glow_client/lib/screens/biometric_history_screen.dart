@@ -126,7 +126,7 @@ class BiometricHistoryScreen extends StatelessWidget {
                             shape: BoxShape.circle,
                             border: Border.all(color: const Color(0xFFC5A052), width: 2),
                             image: const DecorationImage(
-                              image: AssetImage('images/glow_ia_mesh_avatar.webp'),
+                              image: AssetImage('assets/images/glow_ia_mesh_avatar.webp'),
                               fit: BoxFit.cover,
                             ),
                           ),

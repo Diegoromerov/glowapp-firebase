@@ -760,7 +760,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     shape: BoxShape.circle,
                     border: Border.all(color: const Color(0xFFC5A052), width: 2.5),
                     image: const DecorationImage(
-                      image: AssetImage('images/avatar_aura.webp'),
+                      image: AssetImage('assets/images/avatar_aura.webp'),
                       fit: BoxFit.cover,
                     ),
                   ),

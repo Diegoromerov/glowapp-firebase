@@ -236,7 +236,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                   shape: BoxShape.circle,
                                   border: Border.all(color: const Color(0xFFD4AF37), width: 2.5),
                                   image: const DecorationImage(
-                                    image: AssetImage('images/avatar_aura.webp'),
+                                    image: AssetImage('assets/images/avatar_aura.webp'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -271,7 +271,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                       partnerId: '0',
                                       partnerName: 'Aura - Asistente de IA',
                                       partnerRole: 'admin',
-                                      partnerAvatar: 'images/avatar_aura.webp',
+                                      partnerAvatar: 'assets/images/avatar_aura.webp',
                                     ),
                                   ),
                                 );

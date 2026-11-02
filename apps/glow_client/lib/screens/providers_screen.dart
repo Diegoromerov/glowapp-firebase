@@ -2485,7 +2485,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           shape: BoxShape.circle,
           border: Border.all(color: const Color(0xFFD4AF37), width: 3.5),
           image: const DecorationImage(
-            image: AssetImage('images/avatar_aura.webp'),
+            image: AssetImage('assets/images/avatar_aura.webp'),
             fit: BoxFit.cover,
           ),
         ),
@@ -2534,7 +2534,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 height: 90,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/logo_maestro_v5.webp'),
+                    image: AssetImage('assets/images/logo_maestro_v5.webp'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -2549,7 +2549,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage('images/logo_maestro_v3.webp'),
+                          image: AssetImage('assets/images/logo_maestro_v3.webp'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -2688,7 +2688,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                               shape: BoxShape.circle,
                               border: Border.all(color: const Color(0xFFD4AF37), width: 2.0),
                               image: const DecorationImage(
-                                image: AssetImage('images/avatar_aura.webp'),
+                                image: AssetImage('assets/images/avatar_aura.webp'),
                                 fit: BoxFit.cover,
                               ),
                             ),

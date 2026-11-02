@@ -817,7 +817,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                           shape: BoxShape.circle,
                                           border: Border.all(color: const Color(0xFFD4AF37), width: 1.5),
                                           image: const DecorationImage(
-                                            image: AssetImage('images/avatar_aura.webp'),
+                                            image: AssetImage('assets/images/avatar_aura.webp'),
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1219,7 +1219,7 @@ class _ChatScreenState extends State<ChatScreen> {
               shape: BoxShape.circle,
               border: Border.all(color: const Color(0xFFD4AF37), width: 1.5),
               image: const DecorationImage(
-                image: AssetImage('images/avatar_aura.webp'),
+                image: AssetImage('assets/images/avatar_aura.webp'),
                 fit: BoxFit.cover,
               ),
             ),
