@@ -174,7 +174,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: t.n800,
                       size: 20,
                     ),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      // Si se entró por URL directa (#/auth/register) no hay nada
+                      // debajo: pop no hace nada y el botón queda muerto.
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacementNamed(context, '/auth/login');
+                      }
+                    },
                   ),
                 ),
               ),

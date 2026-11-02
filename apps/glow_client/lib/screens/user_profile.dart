@@ -65,7 +65,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             child: InkWell(
               onTap: () {
                 HapticFeedback.lightImpact();
-                Navigator.maybePop(context);
+                // `/profile` es alcanzable por URL directa (#/profile). Sin ruta
+                // debajo, maybePop no hace nada y el botón queda muerto.
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                } else {
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
               },
               borderRadius: BorderRadius.circular(20),
               child: Container(

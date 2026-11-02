@@ -129,7 +129,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: InkWell(
-                          onTap: () => Navigator.pop(context),
+                          onTap: () {
+                          if (Navigator.canPop(context)) {
+                            Navigator.pop(context);
+                          } else {
+                            Navigator.pushReplacementNamed(context, '/auth/login');
+                          }
+                        },
                           borderRadius: BorderRadius.circular(20),
                           child: Container(
                             width: 36,
