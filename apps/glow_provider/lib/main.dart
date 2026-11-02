@@ -139,6 +139,10 @@ class GlowProviderApp extends ConsumerWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        // Sin este delegate, `AppLocalizations.of(context)` devuelve null y las
+        // pantallas que lo usan con `!` (register) revientan en build: en web
+        // release eso se ve como una pantalla gris.
+        AppLocalizations.delegate,
       ],
       supportedLocales: const [
         Locale('es'),
