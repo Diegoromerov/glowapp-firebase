@@ -575,7 +575,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     final token = await AuthService.getToken();
     if (token == null) {
       if (mounted) {
-        Navigator.pushNamed(context, '/login');
+        Navigator.pushNamed(context, '/auth/login');
       }
     } else {
       if (mounted) {
@@ -1148,7 +1148,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           final token = await AuthService.getToken();
                           if (token == null) {
                             Navigator.pop(context);
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushNamed(context, '/auth/login');
                             return;
                           }
                           if (context.mounted) {
@@ -2177,7 +2177,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       fit: BoxFit.contain,
                     ),
                     label: 'Citas',
-                    onTap: () => _checkAuthAndNavigate('/client-bookings'),
+                    onTap: () => _checkAuthAndNavigate('/my-bookings'),
                     isMen: isMen,
                   ),
 
@@ -2203,7 +2203,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       fit: BoxFit.contain,
                     ),
                     label: 'Glow IA+',
-                    onTap: () => _checkAuthAndNavigate('/ideas'),
+                    onTap: () => _checkAuthAndNavigate('/ideas/welcome'),
                     isMen: isMen,
                   ),
 
