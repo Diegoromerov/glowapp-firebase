@@ -10,6 +10,18 @@ class PersistenceEngine implements PersistenceAdapter {
   static const String _completedPrefix = 'glowguide_completed_';
   static const String _legacyKey = 'seen_aura_tutorial';
 
+  /// Clave con la que [isGuideCompleted] y [markGuideCompleted] leen y escriben.
+  ///
+  /// Existe para que ningun screen escriba el literal: `providers_screen.dart` y
+  /// los `user_profile.dart` usaban 'glowguide_completed_glow_welcome_v1', que no
+  /// coincide con el guideId ('client_welcome_v1' / 'provider_welcome_v1'). El
+  /// engine nunca escribia esa clave, asi que el boton de "reiniciar guia" no
+  /// tenia efecto.
+  static String completionKeyFor(String guideId) => '$_completedPrefix$guideId';
+
+  /// Clave legada del tutorial previo a GlowGuide.
+  static String get legacyKey => _legacyKey;
+
   SharedPreferences? _prefs;
 
   Future<SharedPreferences> _getPrefs() async {

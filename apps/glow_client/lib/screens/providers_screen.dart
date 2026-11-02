@@ -182,8 +182,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     final prefs = await SharedPreferences.getInstance();
 
     // 1. New completion key = true → no guide
-    final glowguideCompleted =
-        prefs.getBool('glowguide_completed_glow_welcome_v1') ?? false;
+    final glowguideCompleted = prefs.getBool(
+      PersistenceEngine.completionKeyFor(ClientGuide.guideId),
+    ) ??
+        false;
     if (glowguideCompleted) {
       if (mounted) {
         setState(() {
@@ -195,9 +197,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     }
 
     // 2. Legacy seen = true → migrate new completion → no guide
-    final legacySeen = prefs.getBool('seen_aura_tutorial') ?? false;
+    final legacySeen = prefs.getBool(PersistenceEngine.legacyKey) ?? false;
     if (legacySeen) {
-      await prefs.setBool('glowguide_completed_glow_welcome_v1', true);
+      await prefs.setBool(
+        PersistenceEngine.completionKeyFor(ClientGuide.guideId),
+        true,
+      );
       if (mounted) {
         setState(() {
           _enableGlowGuide = false;

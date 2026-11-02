@@ -6,6 +6,8 @@ import 'package:glow_core/widgets/profile/profile_header.dart';
 import 'package:glow_core/widgets/profile/luxe_list_tile.dart';
 import 'package:glow_core/widgets/profile/delivery_addresses_section.dart';
 import 'package:glow_core/services/auth_service.dart';
+import 'package:glow_core/glowguide/config/provider_guide.dart';
+import 'package:glow_core/glowguide/persistence/persistence_engine.dart';
 import 'settings_screen.dart';
 import 'biometric_history_screen.dart';
 import 'glowstore_orders_screen.dart';
@@ -323,8 +325,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           onTap: () async {
                             HapticFeedback.lightImpact();
                             final prefs = await SharedPreferences.getInstance();
-                            await prefs.remove('glowguide_completed_glow_welcome_v1');
-                            await prefs.remove('seen_aura_tutorial');
+                            await prefs.remove(
+                                PersistenceEngine.completionKeyFor(ProviderGuide.guideId));
+                            await prefs.remove(PersistenceEngine.legacyKey);
                             if (context.mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

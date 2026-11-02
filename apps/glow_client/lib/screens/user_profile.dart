@@ -1,5 +1,6 @@
 // lib/screens/profile/user_profile.dart
 import 'package:glow_core/glow_core.dart';
+import 'package:glow_core/glowguide/config/client_guide.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -318,8 +319,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           onTap: () async {
                             HapticFeedback.lightImpact();
                             final prefs = await SharedPreferences.getInstance();
-                            await prefs.remove('glowguide_completed_glow_welcome_v1');
-                            await prefs.remove('seen_aura_tutorial');
+                            await prefs.remove(
+                                PersistenceEngine.completionKeyFor(ClientGuide.guideId));
+                            await prefs.remove(PersistenceEngine.legacyKey);
                             if (context.mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
