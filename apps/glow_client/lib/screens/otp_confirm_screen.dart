@@ -1,7 +1,14 @@
-// Stub for OtpConfirmScreen - originally in monolito, not copied to glow_client
-// Y-F2: será implementada completamente en Fase posterior
+// Confirmación del servicio con código de 6 dígitos.
+//
+// Antes era un stub que aceptaba CUALQUIER código y devolvía `true` sin consultar
+// al backend. La validación real vive en `POST /api/bookings/:id/confirm-otp`,
+// que comprueba el código contra `otp_validaciones` y libera el pago: decidirlo
+// en el cliente dejaba ese control de seguridad en manos de nadie.
 import 'package:flutter/material.dart';
-import 'package:glow_core/glow_core.dart';
+// `glow_core/services.dart` es la biblioteca pública de servicios: evita importar
+// lib/src (implementation_imports) y no arrastra el tema, así la pantalla se
+// puede probar sin compilar el barrel completo.
+import 'package:glow_core/services.dart';
 
 class OtpConfirmScreen extends StatefulWidget {
   final String bookingId;
@@ -9,12 +16,16 @@ class OtpConfirmScreen extends StatefulWidget {
   final String servicioNombre;
   final double valorBruto;
 
+  /// Costura de prueba: por defecto consulta al backend.
+  final Future<bool> Function(String codigo)? verificar;
+
   const OtpConfirmScreen({
     super.key,
     required this.bookingId,
     required this.prestadorNombre,
     required this.servicioNombre,
     required this.valorBruto,
+    this.verificar,
   });
 
   @override
@@ -37,17 +48,32 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
     super.dispose();
   }
 
-  void _verifyOtp() async {
+  Future<void> _verifyOtp() async {
     final otp = _controllers.map((c) => c.text).join();
     if (otp.length != 6) return;
+    if (_isLoading) return;
 
     setState(() => _isLoading = true);
-    // TODO: Implementar verificación real con AuthService
-    await Future.delayed(const Duration(seconds: 1));
-    if (mounted) {
+    try {
+      final verificar = widget.verificar ??
+          (String codigo) => ApiService.confirmBookingOtp(widget.bookingId, codigo);
+      final ok = await verificar(otp);
+      if (!mounted) return;
       setState(() => _isLoading = false);
-      Navigator.pop(context, true);
+      if (ok) {
+        Navigator.pop(context, true);
+      } else {
+        _aviso('Código incorrecto o vencido.');
+      }
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _isLoading = false);
+      _aviso('No se pudo verificar el código: $e');
     }
+  }
+
+  void _aviso(String mensaje) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(mensaje)));
   }
 
   @override

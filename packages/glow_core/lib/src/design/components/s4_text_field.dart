@@ -96,7 +96,9 @@ class S4TextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Determine colors based on state and enabled
-      const Token token = Token.light; // TODO: make this responsive to brightness
+      // `Token.of` resuelve por tema/brillo del contexto; antes estaba fijo en
+      // la paleta clara y el campo se veía mal en modo oscuro.
+      final Token token = Token.of(context);
 
     // If we have a validator and there's an error, we need to override the decoration to show error state.
     bool showError = false;

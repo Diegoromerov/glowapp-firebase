@@ -583,7 +583,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
         GlowScoreGaugeWidget(
           glowScore: computedGlowScore,
           onCompareTap: () {
-            Navigator.pushNamed(context, '/evolution');
+            // La ruta registrada en main.dart es /ideas/evolution; '/evolution' no existe.
+            Navigator.pushNamed(context, '/ideas/evolution');
           },
         ),
         const SizedBox(height: 12),

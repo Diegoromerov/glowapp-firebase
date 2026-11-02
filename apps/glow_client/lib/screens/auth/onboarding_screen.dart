@@ -223,7 +223,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('userRole', 'salon');
         if (mounted) {
-          Navigator.pushReplacementNamed(context, '/salon-hub');
+          // '/salon-hub' no existe en el cliente: el salón se gestiona en la app provider.
+          Navigator.pushReplacementNamed(context, '/home');
         }
         return;
       }
@@ -269,7 +270,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             SnackBar(content: Text(warning), duration: const Duration(seconds: 6)),
           );
         }
-        Navigator.pushReplacementNamed(context, '/salon-hub');
+        // '/salon-hub' no existe en el cliente: el salón se gestiona en la app provider.
+          Navigator.pushReplacementNamed(context, '/home');
       }
     } catch (e) {
       setState(() => _error = 'Error de conexión: $e');

@@ -897,12 +897,11 @@ class _ChatScreenState extends State<ChatScreen> {
                                                                                                         style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
                                                                                                       ),
                                                                                                       onPressed: () {
-                                                        // Navigate to /ideas using arguments to pre-load a tool
-                                                        Navigator.pushNamed(
-                                                          context,
-                                                          '/ideas',
-                                                          arguments: {'toolId': redirectToolId},
-                                                        );
+                                                        // '/ideas' no existe: el hub de Ideas es
+                                                        // /ideas/welcome. El deep-link por `toolId`
+                                                        // nunca estuvo implementado (ninguna ruta lo
+                                                        // leía), así que se entra por la portada.
+                                                        Navigator.pushNamed(context, '/ideas/welcome');
                                                       },
                                                     ),
                                                   ),
