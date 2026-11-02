@@ -636,7 +636,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               // forma /v0/b/.../o/...?alt=media responde 403. Se usa la imagen de
               // marca, que si esta en el bundle, en lugar de un video que no existe.
               child: Image.asset(
-                'assets/images/auth/auth_login_hero.webp',
+                'assets/images/auth/auth_login_hero_v2.webp',
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
               ),

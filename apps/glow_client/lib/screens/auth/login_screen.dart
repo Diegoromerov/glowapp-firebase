@@ -324,7 +324,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // Background Image
           Positioned.fill(
                       child: Image.asset(
-                        'assets/images/auth/auth_login_hero.webp',
+                        'assets/images/auth/auth_login_hero_v2.webp',
                         fit: BoxFit.cover,
                       ),
                     ),
