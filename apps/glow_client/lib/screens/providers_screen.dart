@@ -95,6 +95,33 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       }
     }
 
+    /// P-028: el guide del cliente no tenia presenter montado, asi que los 8
+    /// videos de Storage nunca se renderizaban. Mismo patron que el provider,
+    /// pero sin sincronizar `_currentIndex`: aquí la guía es espacial sobre el
+    /// mapa y el paso se refleja via [_onGlowGuideStateChanged].
+    void _handleGlowGuideAction(GlowGuidePresenterAction action) {
+      switch (action) {
+        case GlowGuidePresenterAction.next:
+          _glowGuideEngine.next();
+          break;
+        case GlowGuidePresenterAction.previous:
+          _glowGuideEngine.previous();
+          break;
+        case GlowGuidePresenterAction.dismiss:
+          _glowGuideEngine.dismiss();
+          break;
+        case GlowGuidePresenterAction.replay:
+          _glowGuideEngine.replay();
+          break;
+        case GlowGuidePresenterAction.pause:
+          _glowGuideEngine.pause();
+          break;
+        case GlowGuidePresenterAction.resume:
+          _glowGuideEngine.resume();
+          break;
+      }
+    }
+
     @override
     void dispose() {
       _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
@@ -2501,6 +2528,16 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           // Legacy Mutex: solo se renderiza cuando _enableLegacy es true.
           if (_enableLegacy && _showTutorial)
             _buildTutorialOverlay(),
+
+          // Capa: GlowGuide con video (P-028). Va al final del Stack para quedar
+          // sobre el mapa. El presenter se auto-oculta si el engine no esta
+          // activo, asi que no interfiere cuando el mutex lo deja apagado.
+          GlowGuidePresenter(
+            engine: _glowGuideEngine,
+            onAction: _handleGlowGuideAction,
+            allowVideoTapToAdvance: false,
+            isProvider: false,
+          ),
         ],
       ),
     );
