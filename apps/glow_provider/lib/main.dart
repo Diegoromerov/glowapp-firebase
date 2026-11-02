@@ -86,6 +86,8 @@ import 'screens/services/provider_services_screen.dart' hide ProviderServicesScr
 // Widgets
 import 'widgets/audience_toggle.dart';
 import 'widgets/app_update_gate.dart';
+import 'glowguide/glow_guide_host.dart';
+import 'package:glow_core/glowguide/config/provider_guide.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -105,6 +107,16 @@ void main() async {
   // Configurar audiencia de la app para backend (Fase 4)
   ApiService.appAudience = 'provider';
 
+  // GlowGuide: un solo engine para toda la app. Los pasos del provider no son
+  // rutas (el dashboard pinta sus secciones con `switch (_currentIndex)`), pero
+  // el presenter si debe vivir encima del Navigator para no desaparecer cuando
+  // se abre una cita, un curso o un detalle de servicio.
+  GlowGuideService.instance.initialize();
+  GlowGuideService.instance.createEngine(
+    steps: ProviderGuide.steps,
+    guideId: ProviderGuide.guideId,
+  );
+
   runApp(const ProviderScope(child: GlowProviderApp()));
 }
 
@@ -119,6 +131,9 @@ class GlowProviderApp extends ConsumerWidget {
     return MaterialApp(
       title: 'GlowApp Proveedor',
       debugShowCheckedModeBanner: false,
+      navigatorKey: GlowGuideService.instance.navigatorKey,
+      builder: (context, child) =>
+          GlowGuideProviderHost(child: child ?? const SizedBox.shrink()),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

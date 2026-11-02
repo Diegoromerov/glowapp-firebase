@@ -33,12 +33,19 @@ class ProviderGuide {
         ),
         videoAssetId:
             'assets/glowguide/videos/provider/step_${order.toString().padLeft(2, '0')}_${section.toLowerCase()}.webm',
+        // En el provider las secciones NO son rutas: el dashboard las pinta con
+        // un `switch (_currentIndex)` (Inicio/Agenda/Wallet/GlowShop/Academia/
+        // Chat/Perfil). El equivalente a `navigate` es que el dashboard mueva la
+        // pestaña siguiendo el estado del engine, cosa que hace en
+        // `_onProviderGuideStateChanged`. El engine ignora `custom`
+        // explicitamente, asi que la accion solo documenta la intencion.
         action: GlowGuideAction.custom(
           actionId: 'provider_tab',
           parameters: {'index': index},
           estimatedDurationMs: 0,
           blocking: true,
         ),
+        uiTargetKey: 'provider_tab_$index',
         nextStepId: index < _sections.length - 1
             ? 'provider_step_${(order + 1).toString().padLeft(2, '0')}'
             : null,

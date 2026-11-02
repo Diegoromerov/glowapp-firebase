@@ -636,16 +636,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         backgroundColor: const Color(0xFF15100C),
         body: Stack(
           children: [
-            // Video de Fondo HD sin loop con fallback automático
+            // P-034: mismo defecto que en el cliente (P-027). El video
+            // 'assets/videos/onboarding_intro.mp4' no existe en el bundle y el
+            // fallback 'images/auth/onboarding_bg.webp' tampoco (ademas sin el
+            // prefijo assets/). Producia MEDIA_ERR_SRC_NOT_SUPPORTED en consola.
+            // Se usa la imagen de marca, que si esta en el bundle.
             Positioned.fill(
-              child: BackgroundVideoPlayer(
-                key: _videoPlayerKey,
-                assetPath: 'assets/videos/onboarding_intro.mp4',
-                fallbackImagePath: 'images/auth/onboarding_bg.webp',
-                overlayOpacity: 0.18,
-                loop: false,
-                initialMuted: true,
-                unmuteOnFirstInteraction: true,
+              child: Image.asset(
+                'assets/images/auth/auth_login_hero.webp',
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
               ),
             ),
           SafeArea(

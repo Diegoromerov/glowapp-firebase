@@ -48,9 +48,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
 
   // Sprint 2 Navigation & Innovation State
   int _currentIndex = 0;
+  // Engine unico de la app (GlowGuideService, creado en main.dart).
   late final GlowGuideEngine _providerGuideEngine;
-  late final AudioEngine _providerGuideAudioEngine;
-  late final PersistenceEngine _providerGuidePersistence;
   bool _providerGuideStartScheduled = false;
   String _selectedAgendaFilter = 'TODAS';
   String _agendaSearchQuery = '';
@@ -76,22 +75,38 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   }
 
   void _initializeProviderGuide() {
-    _providerGuideAudioEngine = AudioEngine();
-    _providerGuidePersistence = PersistenceEngine();
-    _providerGuideEngine = GlowGuideEngine(
-      steps: ProviderGuide.steps,
-      guideId: ProviderGuide.guideId,
-      navigationDelegate: ProviderGuideNavigationDelegate(),
-      audioController: _providerGuideAudioEngine,
-      persistenceAdapter: _providerGuidePersistence,
-      screenVisibilityObserver: ScreenVisibilityObserverSingleton.instance,
-    );
+    // Si esta pantalla se monta sin pasar por main() (tests), se crea aqui.
+    if (GlowGuideService.instance.engine == null) {
+      GlowGuideService.instance.initialize();
+      GlowGuideService.instance.createEngine(
+        steps: ProviderGuide.steps,
+        guideId: ProviderGuide.guideId,
+      );
+    }
+    _providerGuideEngine = GlowGuideService.instance.engine!;
+    _providerGuideEngine.addListener(_onProviderGuideStateChanged);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || _providerGuideStartScheduled) return;
       _providerGuideStartScheduled = true;
       _startProviderGuideIfEligible();
     });
+  }
+
+  /// El guide "navega" cambiando la pestaña del dock.
+  ///
+  /// En el provider las secciones (Inicio/Agenda/Wallet/GlowShop/Academia/Chat/
+  /// Perfil) no son rutas: son un `switch (_currentIndex)` en este mismo widget.
+  /// Antes el cambio de pestaña dependia de las acciones del presenter; ahora se
+  /// sigue el estado del engine, asi que tambien avanza cuando el paso cambia por
+  /// el fin del video o por `previous`.
+  void _onProviderGuideStateChanged(GlowGuideState state) {
+    if (!mounted) return;
+    final idx = state.currentStepIndex;
+    if (idx < 0 || idx >= ProviderGuide.steps.length) return;
+    if (idx != _currentIndex) {
+      setState(() => _currentIndex = idx);
+    }
   }
 
   Future<void> _startProviderGuideIfEligible() async {
@@ -113,40 +128,11 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   @override
   void dispose() {
     _webSocketChannel?.sink.close();
-    _providerGuideEngine.dispose();
+    _providerGuideEngine.removeListener(_onProviderGuideStateChanged);
+    // El engine es compartido: lo dispone la app, no esta pantalla.
     super.dispose();
   }
 
-  void _handleProviderGuideAction(GlowGuidePresenterAction action) {
-    switch (action) {
-      case GlowGuidePresenterAction.next:
-        final nextIndex = _providerGuideEngine.state.currentStepIndex + 1;
-        if (nextIndex < ProviderGuide.steps.length && mounted) {
-          setState(() => _currentIndex = nextIndex);
-        }
-        _providerGuideEngine.next();
-        break;
-      case GlowGuidePresenterAction.previous:
-        final previousIndex = _providerGuideEngine.state.currentStepIndex - 1;
-        if (previousIndex >= 0 && mounted) {
-          setState(() => _currentIndex = previousIndex);
-        }
-        _providerGuideEngine.previous();
-        break;
-      case GlowGuidePresenterAction.dismiss:
-        _providerGuideEngine.dismiss();
-        break;
-      case GlowGuidePresenterAction.replay:
-        _providerGuideEngine.replay();
-        break;
-      case GlowGuidePresenterAction.pause:
-        _providerGuideEngine.pause();
-        break;
-      case GlowGuidePresenterAction.resume:
-        _providerGuideEngine.resume();
-        break;
-    }
-  }
 
   void _initWebSocket() async {
     try {
@@ -3937,12 +3923,9 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             ),
           ),
           
-          GlowGuidePresenter(
-                      engine: _providerGuideEngine,
-                      onAction: _handleProviderGuideAction,
-                      allowVideoTapToAdvance: false,
-                      isProvider: true,
-                    ),
+          // El presenter de GlowGuide NO se monta aqui: vive en
+          // GlowGuideProviderHost (MaterialApp.builder), encima del Navigator,
+          // para que el video siga visible si se abre una ruta por encima.
 
           // Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
           Positioned(
@@ -4316,21 +4299,6 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
 }
 
 /// Provider's tour changes tabs inside the existing dashboard rather than routes.
-class ProviderGuideNavigationDelegate implements NavigationDelegate {
-  @override
-  Future<NavigationResult> navigate({
-    required String routeName,
-    Map<String, dynamic>? arguments,
-    required Duration timeout,
-  }) async => NavigationResult.failure(routeName, 'No route navigation required');
-
-  @override
-  Future<NavigationResult> returnToHome({required Duration timeout}) async =>
-      NavigationResult.success('/provider');
-
-  @override
-  void cancelPending() {}
-}
 
 // Pulsing chip state widget
 class PulsingStatusChip extends StatefulWidget {
