@@ -195,29 +195,32 @@ class _ColombianAddressBuilderState extends State<ColombianAddressBuilder> {
 
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) return;
-    
+
+    // Se capturan ANTES de cualquier await: después de cerrar la pantalla el
+    // `context` de este widget ya no sirve para navegar ni para avisar.
+    final navigator = Navigator.of(context);
+    final messenger = ScaffoldMessenger.of(context);
+
     setState(() => _isLoading = true);
-    
+
     try {
-      widget.onSave(_buildAddressData());
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(widget.initialAddress != null 
-              ? 'Dirección actualizada' 
-              : 'Dirección guardada'),
-            backgroundColor: Colors.green,
-          ),
-        );
-      }
+      // `onSave` es asíncrono en los llamadores reales (hace el POST/PATCH). Sin
+      // `await` el guardado se disparaba y se olvidaba: la pantalla no se cerraba,
+      // el mensaje decía "guardada" antes de saberlo y un fallo de red no se veía.
+      await Future.sync(() => widget.onSave(_buildAddressData()));
+      if (!mounted) return;
+      // El mensaje de confirmación lo muestra quien abrió el formulario, que es
+      // quien sabe si se creó o se editó (y no desaparece con esta pantalla).
+      navigator.pop(true);
     } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
-        );
-      }
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
+      if (!mounted) return;
+      setState(() => _isLoading = false);
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text('No se pudo guardar la dirección: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
@@ -260,18 +263,21 @@ class _ColombianAddressBuilderState extends State<ColombianAddressBuilder> {
               children: [
                 const Icon(Icons.location_on_outlined, color: AppTheme.primary, size: 24),
                 const SizedBox(width: 12),
-                Text(
-                  widget.initialAddress != null 
-                    ? 'Editar dirección de entrega' 
-                    : 'Nueva dirección de entrega',
-                  style: const TextStyle(
-                    fontFamily: 'CormorantGaramond',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppTheme.text,
+                // Expanded en vez de Spacer: el título no tenía límite de ancho y
+                // en pantallas estrechas (o con texto grande) desbordaba la fila.
+                Expanded(
+                  child: Text(
+                    widget.initialAddress != null
+                      ? 'Editar dirección de entrega'
+                      : 'Nueva dirección de entrega',
+                    style: const TextStyle(
+                      fontFamily: 'CormorantGaramond',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppTheme.text,
+                    ),
                   ),
                 ),
-                const Spacer(),
                 if (widget.onCancel != null)
                   IconButton(
                     icon: const Icon(Icons.close, color: AppTheme.text),
@@ -665,14 +671,19 @@ class _ColombianAddressBuilderState extends State<ColombianAddressBuilder> {
 }
 
 // Función helper para mostrar el builder en un dialog/bottom sheet
-Future<void> showColombianAddressBuilder({
+/// Abre el formulario de dirección y devuelve `true` si se guardó.
+///
+/// El cierre lo hace el propio formulario (`_save`), en un solo sitio: antes el
+/// diálogo de escritorio cerraba por su cuenta y el bottom sheet no cerraba nunca,
+/// así que la pantalla quedaba estática después de guardar.
+Future<bool?> showColombianAddressBuilder({
   required BuildContext context,
   Map<String, dynamic>? initialAddress,
   required Function(Map<String, dynamic>) onSave,
 }) async {
   if (MediaQuery.of(context).size.width < 600) {
     // Móvil: bottom sheet
-    await showModalBottomSheet(
+    return await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -696,17 +707,14 @@ Future<void> showColombianAddressBuilder({
     );
   } else {
     // Desktop: dialog
-    await showDialog(
+    return await showDialog<bool>(
       context: context,
       builder: (context) => Dialog(
         backgroundColor: Colors.transparent,
         insetPadding: const EdgeInsets.all(24),
         child: ColombianAddressBuilder(
           initialAddress: initialAddress,
-          onSave: (data) {
-            onSave(data);
-            Navigator.pop(context);
-          },
+          onSave: onSave,
           onCancel: () => Navigator.pop(context),
         ),
       ),
