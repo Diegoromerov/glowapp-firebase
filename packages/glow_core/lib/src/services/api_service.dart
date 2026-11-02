@@ -522,6 +522,26 @@ class ApiService {
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
+  /// Verifica el código de 6 dígitos que confirma el servicio.
+  ///
+  /// El backend valida contra `otp_validaciones` y comprueba que la reserva sea
+  /// del usuario. Devolver `true` sin llamarlo dejaba la confirmación en manos
+  /// del cliente, y en el backend ese mismo paso libera el pago al prestador.
+  static Future<bool> confirmBookingOtp(String bookingId, String codigo) async {
+    await ensureBaseUrl();
+    final headers = await _getAuthHeaders();
+    final response = await http
+        .post(
+          Uri.parse('$_baseUrl$_apiPath/bookings/$bookingId/confirm-otp'),
+          headers: headers,
+          body: jsonEncode({'codigo': codigo}),
+        )
+        .timeout(requestTimeout);
+    if (response.statusCode == 200) return true;
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'No se pudo verificar el código'));
+  }
+
   static Future<Map<String, dynamic>> cancelBooking(String bookingId) async {
     final headers = await _getAuthHeaders();
     final response = await http
