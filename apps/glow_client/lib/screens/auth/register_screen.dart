@@ -136,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'images/auth/auth_register_concierge_hero.webp',
+            'assets/images/auth/auth_register_concierge_hero.webp',
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
           ),

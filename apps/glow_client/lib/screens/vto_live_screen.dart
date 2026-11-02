@@ -106,7 +106,7 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                     children: [
                       Positioned.fill(
                         child: Image.asset(
-                          'images/aura_welcome_poster.webp',
+                          'assets/images/aura_welcome_poster.webp',
                           fit: BoxFit.cover,
                           alignment: Alignment.topCenter,
                           errorBuilder: (_, __, ___) => Container(

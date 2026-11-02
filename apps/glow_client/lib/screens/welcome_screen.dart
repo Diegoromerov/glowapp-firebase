@@ -205,7 +205,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                         ),
                       )
                     : Image.asset(
-                        'images/aura_welcome_poster.webp',
+                        'assets/images/aura_welcome_poster.webp',
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
                       ),

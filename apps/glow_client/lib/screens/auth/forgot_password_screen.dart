@@ -111,7 +111,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              'images/auth/auth_forgot_password.webp',
+              'assets/images/auth/auth_forgot_password.webp',
               fit: BoxFit.cover,
             ),
           ),
