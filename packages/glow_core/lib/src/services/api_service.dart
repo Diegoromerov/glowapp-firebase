@@ -77,6 +77,18 @@ class ApiService {
     }
     if (_cachedBaseUrl != null) return;
 
+    // El sondeo de hosts y el fallback a `stagingUrl` son de desarrollo. En una
+    // build de release sin `--dart-define=API_URL` esto terminaría hablando HTTP
+    // plano contra una IP de LAN y, si nada responde, cayendo en silencio a un
+    // backend de demostración. Mejor romper en voz alta que apuntar al sitio
+    // equivocado.
+    if (!kDebugMode) {
+      throw StateError(
+        'Falta --dart-define=API_URL en una build de release: no se sondean '
+        'hosts de LAN ni se cae a un backend de demo.',
+      );
+    }
+
     for (final host in _candidateHosts) {
       for (final port in _ports) {
         final url = 'http://$host:$port';
