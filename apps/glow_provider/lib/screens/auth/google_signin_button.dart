@@ -7,3 +7,7 @@ import 'package:flutter/widgets.dart';
 /// import condicional (`if (dart.library.js)`), igual que hace glow_core con
 /// connectivity_probe.
 Widget? googleSignInButton() => null;
+
+/// En movil/desktop no hay iframe de GIS: el control propio llama a
+/// `GoogleSignIn.signIn()` directamente.
+Widget? googleSignInOverlay() => null;

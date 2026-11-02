@@ -21,3 +21,21 @@ Widget? googleSignInButton() => web_only.renderButton(
         locale: 'es',
       ),
     );
+
+/// Variante "invisible" del botón de GIS, para conservar el diseño propio.
+///
+/// En web GIS solo entrega credenciales a través de SU botón. Este se apila
+/// encima del control propio con opacidad 0.01 y `ClipOval`: el usuario ve el
+/// círculo de GlowApp y el clic cae en el iframe real de Google.
+Widget? googleSignInOverlay() => web_only.renderButton(
+      configuration: web_only.GSIButtonConfiguration(
+        type: web_only.GSIButtonType.icon,
+        theme: web_only.GSIButtonTheme.outline,
+        size: web_only.GSIButtonSize.large,
+        // El enum de esta version solo tiene rectangular y pill; el ClipOval
+        // del login es quien le da la forma circular.
+        shape: web_only.GSIButtonShape.pill,
+        minimumWidth: 52,
+        locale: 'es',
+      ),
+    );
