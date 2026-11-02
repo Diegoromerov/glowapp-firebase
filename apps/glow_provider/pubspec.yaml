@@ -63,10 +63,12 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    # Declarar la CARPETA, no el archivo: Flutter solo empaqueta lo declarado y
-    # `Image.asset` falla en silencio (boton sin icono) si la ruta no esta.
-    # `assets/icons/glow/` tiene 84 archivos y el dock + el resto del UI los usan.
+    # Declarar CARPETAS y una por una: en Flutter el registro de assets NO es
+    # recursivo, `assets/images/` no incluye `assets/images/auth/`.
+    # `Image.asset` falla en silencio si la ruta no esta declarada, y en web el
+    # catch-all de Hosting devuelve index.html con 200 y lo cachea.
     - assets/images/
+    - assets/images/auth/
     - assets/icons/glow/
     - assets/fonts/
   fonts:
