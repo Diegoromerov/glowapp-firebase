@@ -2382,21 +2382,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     child: const Icon(Icons.my_location, size: 20),
                   ),
                   const SizedBox(height: 10),
-                  // Botón 4: Tablero Salón (SaaS)
-                  FloatingActionButton.small(
-                    heroTag: 'salon_dashboard_fab',
-                    tooltip: 'Tablero Salón (SaaS)',
-                    onPressed: () {
-                      HapticFeedback.selectionClick();
-                      Navigator.pushNamed(context, '/salon');
-                    },
-                    backgroundColor: const Color(0xFFC5A052),
-                    foregroundColor: const Color(0xFF1F1A15),
-                    elevation: 4,
-                    shape: const CircleBorder(),
-                    child: const Icon(Icons.storefront_rounded, size: 20),
-                  ),
-                  const SizedBox(height: 10),
                 ],
                 // Botón principal de menú expandible (Capas)
                 FloatingActionButton(
