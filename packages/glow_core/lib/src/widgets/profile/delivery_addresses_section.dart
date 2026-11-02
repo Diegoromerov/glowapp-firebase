@@ -37,49 +37,48 @@ class _DeliveryAddressesSectionState extends State<DeliveryAddressesSection> {
   }
 
   Future<void> _showAddressBuilder({Map<String, dynamic>? addressToEdit}) async {
-    await showColombianAddressBuilder(
+    // El guardado real ocurre aquí; el formulario espera a que termine y se cierra
+    // solo. Los errores se propagan (throw) para que el formulario los muestre y
+    // no cierre: antes se los tragaba un try/catch local y la pantalla quedaba
+    // estática sin decir nada.
+    final guardado = await showColombianAddressBuilder(
       context: context,
       initialAddress: addressToEdit,
       onSave: (addressData) async {
-        try {
-          final headers = await ApiService.getAuthHeaders();
-          final uri = addressToEdit != null
-              ? Uri.parse(
-                  '${ApiService.baseUrl}/api/users/delivery-addresses/${addressToEdit['id']}')
-              : Uri.parse('${ApiService.baseUrl}/api/users/delivery-addresses');
+        final headers = await ApiService.getAuthHeaders();
+        final uri = addressToEdit != null
+            ? Uri.parse(
+                '${ApiService.baseUrl}/api/users/delivery-addresses/${addressToEdit['id']}')
+            : Uri.parse('${ApiService.baseUrl}/api/users/delivery-addresses');
 
-          final request = addressToEdit != null
-              ? await http.patch(uri, headers: headers, body: json.encode(addressData))
-              : await http.post(uri, headers: headers, body: json.encode(addressData));
+        final request = addressToEdit != null
+            ? await http.patch(uri, headers: headers, body: json.encode(addressData))
+            : await http.post(uri, headers: headers, body: json.encode(addressData));
 
-          if (request.statusCode == 200 || request.statusCode == 201) {
-            if (mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(addressToEdit != null
-                      ? 'Dirección actualizada correctamente'
-                      : 'Dirección guardada correctamente'),
-                  backgroundColor: LuxeColors.nude900,
-                ),
-              );
-              setState(() {});
-            }
-          } else {
+        if (request.statusCode != 200 && request.statusCode != 201) {
+          String detalle = 'Error al guardar';
+          try {
             final errorData = json.decode(request.body);
-            throw Exception(errorData['error'] ?? 'Error al guardar');
+            detalle = (errorData['error'] ?? detalle).toString();
+          } catch (_) {
+            // Cuerpo no JSON: se queda el mensaje genérico.
           }
-        } catch (e) {
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Error: $e'),
-                backgroundColor: const Color(0xFFB00020),
-              ),
-            );
-          }
+          throw Exception(detalle);
         }
       },
     );
+
+    if (!mounted || guardado != true) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(addressToEdit != null
+            ? 'Dirección actualizada'
+            : 'Dirección guardada'),
+        backgroundColor: LuxeColors.nude900,
+      ),
+    );
+    setState(() {});
   }
 
   String _buildFormattedAddress(Map<String, dynamic> addr) {
