@@ -68,7 +68,7 @@ class _ContextSelectionScreenState extends State<ContextSelectionScreen> {
     await prefs.clear();
 
     if (mounted) {
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/auth/login');
     }
   }
 

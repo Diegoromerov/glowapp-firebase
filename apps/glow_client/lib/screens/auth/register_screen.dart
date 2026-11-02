@@ -97,8 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               );
             }
           } else {
-            navigator.pushNamedAndRemoveUntil(
-              '/onboarding',
+            navigator.pushNamedAndRemoveUntil('/auth/onboarding',
               (route) => false,
             );
           }

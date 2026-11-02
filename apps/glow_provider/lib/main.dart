@@ -82,6 +82,7 @@ import 'screens/wallet/wallet_screen.dart';
 
 // Services (hide ProviderServicesScreen to avoid ambiguous import)
 import 'screens/services/provider_services_screen.dart' hide ProviderServicesScreen;
+import 'screens/terms_conditions_screen.dart';
 
 // Widgets
 import 'widgets/audience_toggle.dart';
@@ -196,6 +197,7 @@ class GlowProviderApp extends ConsumerWidget {
                 '/chat': (_) => const ChatListScreen(),
 
                 // Profile
+                '/terms': (_) => const TermsConditionsScreen(),
                 '/profile': (_) => const UserProfileScreen(),
                 '/my-glow': (_) => const MyGlowDashboardScreen(),
                 '/rewards': (_) => const RewardsXpScreen(),

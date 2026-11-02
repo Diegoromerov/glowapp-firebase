@@ -83,9 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
           await AuthService.login(_emailCtrl.text.trim(), _passCtrl.text);
       if (result != null && mounted) {
         if (result['requires_context_selection'] == true && result['available_contexts'] != null) {
-          Navigator.pushReplacementNamed(
-            context,
-            '/context-selection',
+          Navigator.pushReplacementNamed(context, '/auth/context-selection',
             arguments: result['available_contexts'],
           );
           return;
@@ -102,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushReplacementNamed(context, '/home');
           }
         } else {
-          Navigator.pushReplacementNamed(context, '/onboarding');
+          Navigator.pushReplacementNamed(context, '/auth/onboarding');
         }
       } else {
         setState(() => _error = 'Credenciales incorrectas');
@@ -283,7 +281,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushReplacementNamed(context, '/home');
           }
         } else {
-          Navigator.pushReplacementNamed(context, '/onboarding');
+          Navigator.pushReplacementNamed(context, '/auth/onboarding');
         }
       } else {
         setState(() => _error = 'Error al autenticar con $provider');
@@ -335,7 +333,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushReplacementNamed(context, '/home');
         }
       } else {
-        Navigator.pushReplacementNamed(context, '/onboarding');
+        Navigator.pushReplacementNamed(context, '/auth/onboarding');
       }
     } catch (e) {
       if (mounted) setState(() => _error = 'Facebook: $e');
@@ -503,7 +501,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Align(
                               alignment: Alignment.centerRight,
                               child: TextButton(
-                                onPressed: () => Navigator.pushNamed(context, '/forgot-password'),
+                                onPressed: () => Navigator.pushNamed(context, '/auth/forgot-password'),
                                 style: TextButton.styleFrom(
                                   padding: EdgeInsets.zero,
                                   minimumSize: const Size(50, 30),
@@ -690,7 +688,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // Link de Registro
                     TextButton(
-                      onPressed: () => Navigator.pushNamed(context, '/register'),
+                      onPressed: () => Navigator.pushNamed(context, '/auth/register'),
                       style: TextButton.styleFrom(
                         foregroundColor: t.brandPrimary,
                       ),

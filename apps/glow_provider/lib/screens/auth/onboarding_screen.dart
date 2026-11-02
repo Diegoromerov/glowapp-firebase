@@ -559,7 +559,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         );
 
         if (result != null && mounted) {
-          Navigator.pushReplacementNamed(context, '/verification-pending');
+          Navigator.pushReplacementNamed(context, '/auth/verification-pending');
         } else {
           setState(() => _error = 'Error al guardar el perfil en el servidor');
         }
@@ -613,7 +613,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             backgroundColor: AppTheme.primary,
           ),
         );
-        Navigator.pushReplacementNamed(context, '/verification-pending');
+        Navigator.pushReplacementNamed(context, '/auth/verification-pending');
       } else {
         setState(() => _error = 'Error al guardar el borrador');
       }

@@ -361,7 +361,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         } else {
                           await AuthService.logout();
                           if (context.mounted) {
-                            Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
+                            Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
                           }
                         }
                       },

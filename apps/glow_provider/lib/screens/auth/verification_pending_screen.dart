@@ -79,7 +79,7 @@ class VerificationPendingScreen extends StatelessWidget {
                       onPressed: () async {
                         await AuthService.logout();
                         if (context.mounted) {
-                          Navigator.pushReplacementNamed(context, '/login');
+                          Navigator.pushReplacementNamed(context, '/auth/login');
                         }
                       },
                       icon: const Icon(Icons.logout, color: Color(0xFFC5A052)),
