@@ -1,0 +1,230 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-interaccion-celulas-madre-001",
+    "title": "Nicho de Células Madre del Bulge: Dinámica de Reposo y Activación",
+    "content": "El nicho del 'bulge' en el folículo piloso es el reservorio crítico de células madre epiteliales (HFSCs) responsables de la regeneración cíclica del pelo. La transición del estado de reposo (telógeno) a la fase de crecimiento (anágeno) depende de un complejo equilibrio de señales moleculares. La activación de estas células está mediada por la vía Wnt/β-catenina, que debe ser desbloqueada mediante la inhibición de proteínas como BMP4 (Bone Morphogenetic Protein 4). En condiciones de estrés crónico o inflamación, este nicho puede sufrir una depleción prematura o una incapacidad de activación, un fenómeno observado en alopecias cicatriciales y formas avanzadas de alopecia androgenética. La comprensión de la arquitectura de este nicho es fundamental para el diagnóstico de alopecias no cicatriciales que presentan una latencia prolongada en el ciclo capilar. Investigaciones recientes sugieren que la señalización de células T reguladoras en el entorno del bulge no solo controla la inflamación, sino que promueve directamente la activación de las células madre, vinculando la inmunología cutánea con la regeneración folicular. La evaluación tricoscópica de la densidad de folículos en fase telógena frente a anágena proporciona una ventana clínica al estado funcional de este reservorio, permitiendo diferenciar entre un efluvio telógeno clásico y una disfunción primaria del ciclo folicular por agotamiento del nicho.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32454641/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:45:51.777Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-metabolismo-lipidos-002",
+    "title": "Lipidómica del Cuero Cabelludo y su Rol en la Barrera Folicular",
+    "content": "La composición lipídica del sebo y su interacción con los lípidos epidérmicos del cuero cabelludo son determinantes para la integridad de la barrera de permeabilidad. El sebo humano, rico en triglicéridos, ésteres de cera y escualeno, experimenta modificaciones por parte de la microbiota local, principalmente especies de Malassezia. Cuando la composición lipídica se altera, se genera una acumulación de ácidos grasos libres que pueden inducir inflamación perifolicular. Este fenómeno es particularmente relevante en el diagnóstico de la dermatitis seborreica asociada a alopecias, donde la barrera lipídica comprometida facilita la penetración de alérgenos y contaminantes urbanos. La disfunción en la síntesis de ceramidas en el cuero cabelludo se correlaciona con una mayor susceptibilidad a la descamación y al prurito, síntomas que preceden a menudo a la caída capilar. Clínicamente, el análisis del perfil lipídico superficial puede predecir la respuesta a tratamientos tópicos, ya que una barrera lipídica deficiente altera la farmacocinética de activos como el minoxidil. La lipidómica aplicada al diagnóstico permite identificar patrones de 'cuero cabelludo graso versus deshidratado' que no siempre corresponden a la percepción subjetiva del paciente, siendo un factor crítico para ajustar la formulación de los productos de cuidado capilar recomendados en GlowApp.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00456-1/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:45:51.777Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-estres-mecano-003",
+    "title": "Mecanotransducción: El Estrés Físico como Señal de Crecimiento",
+    "content": "La mecanotransducción es el proceso mediante el cual las células foliculares convierten estímulos físicos (tracción, presión, fricción) en respuestas bioquímicas. En el cuero cabelludo, el músculo erector del pelo y la matriz extracelular (MEC) actúan como sensores de tensión. Un estrés mecánico crónico, como el derivado de peinados tirantes o tracción constante, activa vías de señalización proinflamatorias que pueden conducir a la fibrosis perifolicular, un sello distintivo de la alopecia por tracción. Sin embargo, estudios recientes exploran cómo fuerzas mecánicas de baja intensidad podrían estimular potencialmente la proliferación de la papila dérmica. La clave diagnóstica reside en distinguir entre el estrés mecánico fisiológico y el patológico. El análisis de la rigidez de la vaina radicular externa mediante técnicas de elasto-imágenes permite evaluar si el folículo está bajo una carga mecánica que compromete su capacidad de regeneración. La pérdida de viscoelasticidad en el tejido conectivo que rodea al folículo es un marcador temprano de envejecimiento capilar. Al diagnosticar pacientes en Bogotá, es vital considerar que el uso de accesorios capilares y la manipulación diaria del cabello bajo condiciones de humedad variable alteran la respuesta mecánica del tallo, influyendo en la integridad estructural a largo plazo y predisponiendo a la rotura o al desprendimiento prematuro.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/traction-alopecia",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:45:51.777Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-sasp-004",
+    "title": "Fenotipo Secretor Asociado a la Senescencia (SASP) en el Folículo",
+    "content": "La senescencia celular no es solo una parada en el ciclo de división; es un estado metabólicamente activo donde las células secretan factores proinflamatorios, proteasas y citoquinas conocidos colectivamente como SASP (Senescence-Associated Secretory Phenotype). En el nicho folicular, la acumulación de células senescentes en la papila dérmica o en la vaina radicular puede inducir un ambiente hostil que inhibe la regeneración del pelo y promueve la miniaturización. Este proceso es un motor silencioso en la alopecia androgenética y el envejecimiento capilar. El SASP crea un bucle de retroalimentación positiva donde la inflamación crónica derivada de estas células acelera la senescencia de las células vecinas, diseminando el daño por todo el cuero cabelludo. Identificar marcadores de senescencia en el diagnóstico tricoscópico permite diferenciar entre una alopecia por causas externas y un proceso degenerativo intrínseco. Estrategias terapéuticas emergentes, conocidas como senolíticos, buscan eliminar selectivamente estas células, pero la práctica actual se centra en la modulación del entorno para minimizar el impacto del SASP. La evaluación clínica debe considerar la edad biológica del folículo, más allá de la edad cronológica del paciente, analizando la calidad de la cutícula y la tasa de renovación como indicadores indirectos de la carga de senescencia en el cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/articles/s41584-023-00987-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:45:51.777Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-espectroscopia-cuticula-006",
+    "title": "Biofotofísica: Espectroscopía de Reflectancia en el Daño Cuticular",
+    "content": "La integridad de la cutícula capilar es el primer nivel de defensa del tallo frente a las agresiones externas, incluyendo la radiación UV y la contaminación urbana. La espectroscopía de reflectancia permite analizar el estado de las proteínas de la cutícula y la pérdida de lípidos de superficie sin necesidad de biopsias o pruebas destructivas. Este método es una herramienta diagnóstica no invasiva que mide la capacidad del tallo para dispersar la luz, lo cual se correlaciona directamente con la suavidad, la porosidad y la resistencia a la tracción. En el contexto de GlowApp, este análisis ayuda a distinguir entre una caída por daño estructural del tallo (debido a tratamientos químicos o térmicos) y una caída de origen folicular (como el efluvio telógeno). Un tallo capilar degradado presenta una reflectancia alterada, lo cual puede confundir el diagnóstico clínico al simular una densidad reducida. Al comprender la biofotofísica del cabello, los expertos pueden recomendar protocolos de restauración de la barrera cuticular que mejoren la salud visual y mecánica del cabello, reduciendo la fricción y evitando que el daño se propague hacia la raíz. La monitorización periódica de estos parámetros permite evaluar la eficacia de los tratamientos de reparación en tiempo real, proporcionando una métrica objetiva para el paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/pdf/cc2024/v75n02/p000-000.pdf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:45:51.777Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-inmune-007",
+    "title": "Inflamación Neurogénica: El Rol de la Sustancia P en el Folículo",
+    "content": "El folículo piloso no es una estructura aislada; está ricamente inervado y responde directamente a señales del sistema nervioso periférico. La inflamación neurogénica, mediada por la liberación de neuropéptidos como la Sustancia P, es un mecanismo clave en la patogénesis de la alopecia areata y otras formas de pérdida de cabello inducidas por estrés. La Sustancia P activa los mastocitos perifoliculares, desencadenando la degranulación y la liberación de citoquinas proinflamatorias como el TNF-alfa, que inhibe la fase anágena y promueve la regresión prematura del folículo. El diagnóstico clínico de este componente neurogénico es complejo, pero a menudo se manifiesta como tricodinia (dolor o sensibilidad en el cuero cabelludo) y eritema sutil en la zona afectada. La evaluación de estos síntomas, combinada con la tricoscopia, permite identificar pacientes cuyo manejo requiere no solo tratamientos tópicos, sino también intervenciones de psicodermatología o técnicas de modulación del estrés. Entender el eje neuro-inmune es crucial para el diagnóstico en entornos urbanos de alta presión, donde el estrés crónico es un factor exacerbante reconocido por la comunidad dermatológica internacional. La detección de sensibilidad al tacto en el cuero cabelludo debe ser un ítem obligatorio en el historial clínico de GlowApp para pacientes con sospecha de alopecias inflamatorias.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2024;volume=16;issue=1;spage=1;epage=10",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:45:51.777Z"
+  }
+]

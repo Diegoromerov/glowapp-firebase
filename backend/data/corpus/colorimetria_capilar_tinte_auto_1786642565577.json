@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "colorimetria-interaccion-microbiota-001",
+    "title": "Impacto de la disbiosis inducida por alcalinizantes en la microbiota del cuero cabelludo",
+    "content": "La aplicación de tintes permanentes requiere agentes alcalinizantes como el amoniaco o la etanolamina para elevar el pH de la fibra capilar, permitiendo la apertura de la cutícula. Sin embargo, este proceso altera drásticamente el pH del cuero cabelludo, que fisiológicamente oscila entre 4.5 y 5.5. Esta elevación sostenida del pH crea un microambiente alcalino que favorece la proliferación de microorganismos oportunistas como Staphylococcus aureus, desplazando a la flora comensal protectora como Cutibacterium acnes. La ruptura de este equilibrio (disbiosis) no solo genera irritación local, sino que puede comprometer la integridad de la barrera cutánea, aumentando el riesgo de dermatitis de contacto alérgica. Estudios en dermatología sugieren que un cuero cabelludo con un microbioma alterado presenta una mayor permeabilidad cutánea, facilitando la absorción sistémica de precursores de color. Es imperativo que el profesional considere la restauración del pH post-servicio no solo para sellar la cutícula, sino para favorecer la recolonización de la microbiota saprofita, minimizando así las respuestas inflamatorias inespecíficas que a menudo se confunden con reacciones de sensibilidad al tinte.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31339893/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco",
+        "etanolamina"
+      ],
+      "contraindications": [
+        "dermatitis_seborreica",
+        "psoriasis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_scalp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:35:48.582Z"
+  }
+]

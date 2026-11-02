@@ -1,0 +1,169 @@
+[
+  {
+    "chunk_id": "poros-glicacion-metabolismo-001",
+    "title": "El papel de la fructosa en la glicación cutánea y el soporte del ostium folicular",
+    "content": "La ingesta excesiva de fructosa, más allá de la glucosa, acelera la formación de Productos Finales de Glicación Avanzada (AGEs) a través de la vía de los carbonilos. En el contexto del poro, los AGEs se acumulan en la matriz extracelular peripolicular, específicamente en el colágeno tipo I y la elastina, provocando una pérdida de la elasticidad pasiva del ostium. A diferencia de la glucosa, la fructosa no requiere insulina para su metabolismo inicial, lo que permite una glicación no enzimática más rápida en el tejido conectivo dérmico. Esta rigidez estructural impide que el poro recupere su forma original tras la expulsión de sebo, contribuyendo a la apariencia de dilatación permanente. Estudios publicados en 'Journal of Dermatological Science' sugieren que la restricción de azúcares refinados no solo mejora la inflamación sistémica, sino que protege la integridad biomecánica del canal folicular frente a la degradación proteica inducida por la dieta. Es fundamental entender que el poro no es una estructura estática, sino un componente dinámico que responde a la calidad de la matriz dérmica circundante.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(17)30310-7/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:28.878Z"
+  },
+  {
+    "chunk_id": "poros-microbioma-quorumsensing-002",
+    "title": "Quorum Sensing bacteriano y la formación de tapones queratinosos en el ostium",
+    "content": "El fenómeno del 'Quorum Sensing' (QS) permite que las poblaciones de Cutibacterium acnes coordinen su comportamiento en función de la densidad celular dentro del canal folicular. Cuando la densidad alcanza un umbral crítico, las bacterias activan genes que promueven la formación de biofilms. Estos biofilms no solo actúan como una barrera física que atrapa sebo y detritos, sino que alteran la diferenciación de los queratinocitos del conducto folicular, induciendo una hiperqueratosis ductal. La evidencia actual en 'Nature Reviews Microbiology' indica que la obstrucción del ostium no es solo un evento físico pasivo, sino una respuesta biológica orquestada por la comunicación interbacteriana. Romper esta comunicación mediante la modulación de las condiciones del microambiente (como el pH local y la disponibilidad de ciertos lípidos) es una estrategia emergente para evitar que el poro luzca obstruido y dilatado. La gestión de la textura rugosa, por tanto, requiere un enfoque que considere el ecosistema bacteriano como un actor activo en la arquitectura del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/nrmicro.2017.156",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:28.878Z"
+  },
+  {
+    "chunk_id": "poros-mecanotransduccion-003",
+    "title": "Mecanotransducción y la respuesta de los fibroblastos periporo a la tensión facial",
+    "content": "La piel facial está sujeta a fuerzas mecánicas constantes debido a la mímica y la gravedad. Los fibroblastos situados en la dermis peripolicular son mecanosensibles; detectan estas tensiones a través de integrinas y canales iónicos como Piezo1. Cuando la tensión es crónica o desequilibrada, los fibroblastos alteran su fenotipo, pasando de una producción normal de colágeno a una remodelación fibrótica o una degradación acelerada de la matriz extracelular. Este proceso de mecanotransducción afecta directamente la estabilidad de las paredes del poro. En condiciones de alta tensión mecánica, el poro tiende a estirarse, perdiendo su soporte circular y adquiriendo una apariencia elíptica o lineal. Investigaciones en 'Journal of Investigative Dermatology' subrayan que la tensión mecánica no solo afecta la estructura de la piel a nivel macro, sino que modula la expresión génica a nivel folicular. La aplicación de masajes faciales inadecuados o una postura facial constante podría, teóricamente, exacerbar la dilatación del poro en áreas con menor densidad de fibras elásticas, exigiendo una técnica de cuidado más consciente.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)31940-1/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "factores_crecimiento"
+      ],
+      "contraindications": [
+        "masaje_agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:28.878Z"
+  },
+  {
+    "chunk_id": "poros-hidratacion-acuaporinas-004",
+    "title": "Dinámica de las acuaporinas y la turgencia hídrica del ostium folicular",
+    "content": "Las acuaporinas, específicamente la AQP3, son proteínas de canal que facilitan el flujo de agua y glicerol a través de las membranas de los queratinocitos en el ostium folicular. Una hidratación adecuada del canal no solo es vital para la descamación normal (evitando tapones), sino que mantiene la turgencia del tejido periporo. Cuando el nivel de acuaporinas disminuye —debido al envejecimiento intrínseco o exposición UV—, el ostium pierde su capacidad de mantenerse 'inflado' y elástico, lo que resulta en un poro que parece más grande debido a la falta de soporte volumétrico. El uso de ingredientes que estimulan la expresión de acuaporinas, como ciertos extractos de glicerol y ácido hialurónico de bajo peso molecular, puede mejorar la turgencia del ostium, minimizando visualmente su tamaño. La evidencia en 'PubMed Central' sobre la función de las acuaporinas en la homeostasis epidérmica es clara: la hidratación profunda es un pilar no negociable para la gestión de la textura de la piel grasa, desmintiendo el mito de que la hidratación dilata el poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central / NIH",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8909187/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_hialuronico",
+        "glicerol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:28.878Z"
+  }
+]

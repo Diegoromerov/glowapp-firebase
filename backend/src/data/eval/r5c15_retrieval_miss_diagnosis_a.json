@@ -1,0 +1,844 @@
+{
+  "cycle": "27",
+  "experiment": "R5-C15",
+  "run": "A",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "config": {
+    "topK": 10,
+    "threshold": "0.45 (no aplicado en topK directo)",
+    "motor": "PRODUCTIVO sin modificar"
+  },
+  "hnsw_index": "idx_beauty_knowledge_embedding_hnsw",
+  "baseline_r5c": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "NO MODIFICADO"
+  },
+  "results": [
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "gold_chunks": [
+        "colorimetria-capilar-ph-001",
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+        "colorimetria-capilar-metales-003"
+      ],
+      "gold_ranks": {
+        "colorimetria-capilar-ph-001": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.501
+        },
+        "colorimetria-capilar-ph-pos-tinte-009": {
+          "hnsw_rank": 1,
+          "exact_rank": 1,
+          "sim": 0.5552
+        },
+        "colorimetria-capilar-viscoelasticidad-009": {
+          "hnsw_rank": 2,
+          "exact_rank": 2,
+          "sim": 0.5429
+        },
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4255
+        },
+        "colorimetria-capilar-metales-003": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4917
+        }
+      },
+      "top1_sim": 0.5552,
+      "top5_sim": 0.5297,
+      "best_gold_sim": 0.5552,
+      "gold_in_top5": true,
+      "gold_in_top10": true,
+      "hnsw_miss_vs_exact": 0,
+      "both_miss": 3,
+      "hnsw_top10": [
+        {
+          "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+          "sim": 0.5552
+        },
+        {
+          "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+          "sim": 0.5429
+        },
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-003",
+          "sim": 0.5407
+        },
+        {
+          "chunk_id": "colorimetria-ph-balance-006",
+          "sim": 0.5338
+        },
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-009",
+          "sim": 0.5297
+        },
+        {
+          "chunk_id": "colorimetria-quelacion-metales-005",
+          "sim": 0.5247
+        },
+        {
+          "chunk_id": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.5238
+        },
+        {
+          "chunk_id": "estabilidad-ph-003",
+          "sim": 0.5217
+        },
+        {
+          "chunk_id": "colorimetria-capilar-interaccion-cobre-002",
+          "sim": 0.5202
+        },
+        {
+          "chunk_id": "colorimetria-capilar-quelacion-003",
+          "sim": 0.5201
+        }
+      ],
+      "exact_top10": [
+        {
+          "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+          "sim": 0.5552
+        },
+        {
+          "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+          "sim": 0.5429
+        },
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-003",
+          "sim": 0.5407
+        },
+        {
+          "chunk_id": "colorimetria-ph-balance-006",
+          "sim": 0.5338
+        },
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-009",
+          "sim": 0.5297
+        },
+        {
+          "chunk_id": "colorimetria-quelacion-metales-005",
+          "sim": 0.5247
+        },
+        {
+          "chunk_id": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.5238
+        },
+        {
+          "chunk_id": "estabilidad-ph-003",
+          "sim": 0.5217
+        },
+        {
+          "chunk_id": "colorimetria-capilar-interaccion-cobre-002",
+          "sim": 0.5202
+        },
+        {
+          "chunk_id": "colorimetria-capilar-quelacion-003",
+          "sim": 0.5201
+        }
+      ],
+      "exact_vs_hnsw_differ": false,
+      "competitors_top5": [
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-003",
+          "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+          "sim": 0.5407
+        },
+        {
+          "chunk_id": "colorimetria-ph-balance-006",
+          "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+          "sim": 0.5338
+        },
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-009",
+          "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+          "sim": 0.5297
+        },
+        {
+          "chunk_id": "colorimetria-quelacion-metales-005",
+          "title": "El rol de los quelantes en la prevención de reacciones exotérmicas",
+          "sim": 0.5247
+        },
+        {
+          "chunk_id": "colorimetria-degradacion-lipidos-006",
+          "title": "Protección de la barrera lipídica durante la decoloración",
+          "sim": 0.5238
+        }
+      ],
+      "reformulations": [
+        {
+          "text": "Tratamiento para cabello dañado por decoloración",
+          "is_original": true,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5552,
+          "ranks": {
+            "colorimetria-capilar-ph-001": -1,
+            "colorimetria-capilar-ph-pos-tinte-009": 1,
+            "colorimetria-capilar-viscoelasticidad-009": 2,
+            "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": -1,
+            "colorimetria-capilar-metales-003": -1
+          }
+        },
+        {
+          "text": "¿Cómo reparar el cabello que se dañó por la decoloración?",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 4,
+          "top1_sim": 0.5165,
+          "ranks": {
+            "colorimetria-capilar-ph-001": -1,
+            "colorimetria-capilar-ph-pos-tinte-009": 6,
+            "colorimetria-capilar-viscoelasticidad-009": 4,
+            "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": -1,
+            "colorimetria-capilar-metales-003": -1
+          }
+        },
+        {
+          "text": "Restauración de la fibra capilar tras procesos de decoloración",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5653,
+          "ranks": {
+            "colorimetria-capilar-ph-001": -1,
+            "colorimetria-capilar-ph-pos-tinte-009": 8,
+            "colorimetria-capilar-viscoelasticidad-009": 1,
+            "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": -1,
+            "colorimetria-capilar-metales-003": -1
+          }
+        },
+        {
+          "text": "Qué productos y cuidados ayudan al cabello decolorado y dañado",
+          "is_original": false,
+          "gold_in_top5": false,
+          "gold_in_top10": false,
+          "best_gold_rank": -1,
+          "top1_sim": 0.5181,
+          "ranks": {
+            "colorimetria-capilar-ph-001": -1,
+            "colorimetria-capilar-ph-pos-tinte-009": -1,
+            "colorimetria-capilar-viscoelasticidad-009": -1,
+            "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": -1,
+            "colorimetria-capilar-metales-003": -1
+          }
+        },
+        {
+          "text": "Reparación capilar post-decoloración: tratamientos efectivos",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5243,
+          "ranks": {
+            "colorimetria-capilar-ph-001": -1,
+            "colorimetria-capilar-ph-pos-tinte-009": -1,
+            "colorimetria-capilar-viscoelasticidad-009": 2,
+            "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": -1,
+            "colorimetria-capilar-metales-003": -1
+          }
+        }
+      ],
+      "doc_centric": {
+        "text": "El pH juega un papel crítico en la integridad de la cutícula capilar durante procesos de coloración y decoloración. La restauración del pH ácido después de un proceso alcalino es esencial para el sellado de la cutícula y la reparación del cabello dañado.",
+        "gold_in_top5": true,
+        "gold_in_top10": true,
+        "best_gold_rank": 1,
+        "top1": "colorimetria-capilar-ph-pos-tinte-009",
+        "top1_sim": 0.6999
+      },
+      "ef_search": {
+        "ef_40": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5552
+        },
+        "ef_100": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5552
+        },
+        "ef_200": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5552
+        },
+        "ef_400": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5552
+        }
+      },
+      "causes": [
+        "E_CHUNK_REPRESENTATION"
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "gold_chunks": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-envejecimiento-009",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "microblading-psicologia-007",
+        "visajismo-cejas-microblading-metamerismo-003"
+      ],
+      "gold_ranks": {
+        "visajismo-cejas-microblading-musculatura-orbicular-009": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.343
+        },
+        "visajismo-microblading-arquitectura-muscular-008": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4126
+        },
+        "microblading-envejecimiento-009": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.5194
+        },
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": {
+          "hnsw_rank": 2,
+          "exact_rank": 2,
+          "sim": 0.5238
+        },
+        "microblading-psicologia-007": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4434
+        },
+        "visajismo-cejas-microblading-metamerismo-003": {
+          "hnsw_rank": 3,
+          "exact_rank": 3,
+          "sim": 0.5224
+        }
+      },
+      "top1_sim": 0.5264,
+      "top5_sim": 0.5192,
+      "best_gold_sim": 0.5238,
+      "gold_in_top5": true,
+      "gold_in_top10": true,
+      "hnsw_miss_vs_exact": 0,
+      "both_miss": 4,
+      "hnsw_top10": [
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.5264
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "sim": 0.5238
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-003",
+          "sim": 0.5224
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.5218
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.5192
+        },
+        {
+          "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.5154
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.515
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786383991455-2-35ef3e53-analisis-de-sub-superficie-mediante-luz-polarizada-cruzada-p",
+          "sim": 0.5143
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+          "sim": 0.5107
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+          "sim": 0.5105
+        }
+      ],
+      "exact_top10": [
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.5264
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "sim": 0.5238
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-003",
+          "sim": 0.5224
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.5218
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.5192
+        },
+        {
+          "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.5154
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.515
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786383991455-2-35ef3e53-analisis-de-sub-superficie-mediante-luz-polarizada-cruzada-p",
+          "sim": 0.5143
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+          "sim": 0.5107
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+          "sim": 0.5105
+        }
+      ],
+      "exact_vs_hnsw_differ": false,
+      "competitors_top5": [
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "title": "Fotobiología aplicada: Interacción luz-pigmento y el fenómeno de dispersión de Tyndall",
+          "sim": 0.5264
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "title": "Interferencia electromagnética y estabilidad de pigmentos con óxidos metálicos",
+          "sim": 0.5218
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "title": "Fenómeno de metamerismo y selección de pigmentos bajo luz artificial",
+          "sim": 0.5192
+        },
+        {
+          "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+          "title": "Sesgos de percepción: el impacto de la temperatura de color en el visajismo",
+          "sim": 0.5154
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "title": "Interferencia del micro-edema intersticial en la cromaticidad y el brillo cutáneo",
+          "sim": 0.515
+        }
+      ],
+      "reformulations": [
+        {
+          "text": "Corrección de cejas asimétricas con micropigmentación",
+          "is_original": true,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5264,
+          "ranks": {
+            "visajismo-cejas-microblading-musculatura-orbicular-009": -1,
+            "visajismo-microblading-arquitectura-muscular-008": -1,
+            "microblading-envejecimiento-009": -1,
+            "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": 2,
+            "microblading-psicologia-007": -1,
+            "visajismo-cejas-microblading-metamerismo-003": 3
+          }
+        },
+        {
+          "text": "¿Cómo corregir cejas asimétricas con micropigmentación?",
+          "is_original": false,
+          "gold_in_top5": false,
+          "gold_in_top10": true,
+          "best_gold_rank": 8,
+          "top1_sim": 0.5324,
+          "ranks": {
+            "visajismo-cejas-microblading-musculatura-orbicular-009": -1,
+            "visajismo-microblading-arquitectura-muscular-008": -1,
+            "microblading-envejecimiento-009": -1,
+            "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": -1,
+            "microblading-psicologia-007": -1,
+            "visajismo-cejas-microblading-metamerismo-003": 8
+          }
+        },
+        {
+          "text": "Manejo de la asimetría ciliar en el diseño de micropigmentación",
+          "is_original": false,
+          "gold_in_top5": false,
+          "gold_in_top10": false,
+          "best_gold_rank": -1,
+          "top1_sim": 0.6021,
+          "ranks": {
+            "visajismo-cejas-microblading-musculatura-orbicular-009": -1,
+            "visajismo-microblading-arquitectura-muscular-008": -1,
+            "microblading-envejecimiento-009": -1,
+            "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": -1,
+            "microblading-psicologia-007": -1,
+            "visajismo-cejas-microblading-metamerismo-003": -1
+          }
+        },
+        {
+          "text": "Técnicas para igualar cejas desiguales en el procedimiento de micropigmentación",
+          "is_original": false,
+          "gold_in_top5": false,
+          "gold_in_top10": false,
+          "best_gold_rank": -1,
+          "top1_sim": 0.5935,
+          "ranks": {
+            "visajismo-cejas-microblading-musculatura-orbicular-009": -1,
+            "visajismo-microblading-arquitectura-muscular-008": -1,
+            "microblading-envejecimiento-009": -1,
+            "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": -1,
+            "microblading-psicologia-007": -1,
+            "visajismo-cejas-microblading-metamerismo-003": -1
+          }
+        },
+        {
+          "text": "Diseño de cejas para rostros con asimetría: micropigmentación",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5733,
+          "ranks": {
+            "visajismo-cejas-microblading-musculatura-orbicular-009": -1,
+            "visajismo-microblading-arquitectura-muscular-008": -1,
+            "microblading-envejecimiento-009": 1,
+            "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": -1,
+            "microblading-psicologia-007": -1,
+            "visajismo-cejas-microblading-metamerismo-003": -1
+          }
+        }
+      ],
+      "doc_centric": {
+        "text": "La dinámica del músculo orbicular y la arquitectura muscular facial influyen directamente en la simetría del diseño de cejas. Evaluar la musculatura permite adaptar el diseño de micropigmentación para corregir asimetrías.",
+        "gold_in_top5": true,
+        "gold_in_top10": true,
+        "best_gold_rank": 3,
+        "top1": "microblading-anatomia-005",
+        "top1_sim": 0.6267
+      },
+      "ef_search": {
+        "ef_40": {
+          "gold_in_top5": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5264
+        },
+        "ef_100": {
+          "gold_in_top5": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5264
+        },
+        "ef_200": {
+          "gold_in_top5": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5264
+        },
+        "ef_400": {
+          "gold_in_top5": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5264
+        }
+      },
+      "causes": [
+        "E_CHUNK_REPRESENTATION"
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "gold_chunks": [
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-efecto-tyndall-003",
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "gold_ranks": {
+        "visajismo-cejas-microblading-interaccion-laser-001": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.5359
+        },
+        "guias_unas-electrolisis-y-matriz-001": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4486
+        },
+        "terapia-laser-erbio-glass-002": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4105
+        },
+        "visajismo-cejas-microblading-piel-grasa-005": {
+          "hnsw_rank": 1,
+          "exact_rank": 1,
+          "sim": 0.5916
+        },
+        "visajismo-cejas-microblading-efecto-tyndall-003": {
+          "hnsw_rank": -1,
+          "exact_rank": -1,
+          "sim": 0.4984
+        },
+        "visajismo-cejas-enfermedades-autoinmunes-007": {
+          "hnsw_rank": 2,
+          "exact_rank": 2,
+          "sim": 0.5876
+        }
+      },
+      "top1_sim": 0.5916,
+      "top5_sim": 0.5786,
+      "best_gold_sim": 0.5916,
+      "gold_in_top5": true,
+      "gold_in_top10": true,
+      "hnsw_miss_vs_exact": 0,
+      "both_miss": 4,
+      "hnsw_top10": [
+        {
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "sim": 0.5916
+        },
+        {
+          "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "sim": 0.5876
+        },
+        {
+          "chunk_id": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.584
+        },
+        {
+          "chunk_id": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.5824
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5786
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5717
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.5708
+        },
+        {
+          "chunk_id": "microblading-manejo-piel-atrofica-corticoides-005",
+          "sim": 0.57
+        },
+        {
+          "chunk_id": "visajismo-cejas-cuidado-post-inmediato-009",
+          "sim": 0.5693
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-corticoides-005",
+          "sim": 0.5687
+        }
+      ],
+      "exact_top10": [
+        {
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "sim": 0.5916
+        },
+        {
+          "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "sim": 0.5876
+        },
+        {
+          "chunk_id": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.584
+        },
+        {
+          "chunk_id": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.5824
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5786
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5717
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.5708
+        },
+        {
+          "chunk_id": "microblading-manejo-piel-atrofica-corticoides-005",
+          "sim": 0.57
+        },
+        {
+          "chunk_id": "visajismo-cejas-cuidado-post-inmediato-009",
+          "sim": 0.5693
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-corticoides-005",
+          "sim": 0.5687
+        }
+      ],
+      "exact_vs_hnsw_differ": false,
+      "competitors_top5": [
+        {
+          "chunk_id": "visajismo-microblading-psicodermatologia-009",
+          "title": "Enfoque psicodermatológico en la consulta de microblading",
+          "sim": 0.584
+        },
+        {
+          "chunk_id": "microblading-psicodermatologia-expectativas-009",
+          "title": "El rol de la psicodermatología en el diseño de cejas",
+          "sim": 0.5824
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "title": "Propiocepción táctil y control de la presión manual",
+          "sim": 0.5786
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+          "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+          "sim": 0.5717
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "title": "Neuroergonomía del trazado: optimización de la cinemática manual y reducción de la fatiga cognitiva",
+          "sim": 0.5708
+        }
+      ],
+      "reformulations": [
+        {
+          "text": "Remoción de microblading mal hecho: opciones y riesgos",
+          "is_original": true,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5916,
+          "ranks": {
+            "visajismo-cejas-microblading-interaccion-laser-001": -1,
+            "guias_unas-electrolisis-y-matriz-001": -1,
+            "terapia-laser-erbio-glass-002": -1,
+            "visajismo-cejas-microblading-piel-grasa-005": 1,
+            "visajismo-cejas-microblading-efecto-tyndall-003": -1,
+            "visajismo-cejas-enfermedades-autoinmunes-007": 2
+          }
+        },
+        {
+          "text": "¿Cómo quitar un microblading mal hecho y qué riesgos tiene?",
+          "is_original": false,
+          "gold_in_top5": false,
+          "gold_in_top10": true,
+          "best_gold_rank": 7,
+          "top1_sim": 0.5472,
+          "ranks": {
+            "visajismo-cejas-microblading-interaccion-laser-001": 7,
+            "guias_unas-electrolisis-y-matriz-001": -1,
+            "terapia-laser-erbio-glass-002": -1,
+            "visajismo-cejas-microblading-piel-grasa-005": -1,
+            "visajismo-cejas-microblading-efecto-tyndall-003": -1,
+            "visajismo-cejas-enfermedades-autoinmunes-007": -1
+          }
+        },
+        {
+          "text": "Procedimientos de eliminación de pigmento tras microblading fallido",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.6319,
+          "ranks": {
+            "visajismo-cejas-microblading-interaccion-laser-001": 1,
+            "guias_unas-electrolisis-y-matriz-001": -1,
+            "terapia-laser-erbio-glass-002": -1,
+            "visajismo-cejas-microblading-piel-grasa-005": -1,
+            "visajismo-cejas-microblading-efecto-tyndall-003": -1,
+            "visajismo-cejas-enfermedades-autoinmunes-007": -1
+          }
+        },
+        {
+          "text": "Opciones para borrar microblading con resultados insatisfactorios",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 2,
+          "top1_sim": 0.5883,
+          "ranks": {
+            "visajismo-cejas-microblading-interaccion-laser-001": -1,
+            "guias_unas-electrolisis-y-matriz-001": -1,
+            "terapia-laser-erbio-glass-002": -1,
+            "visajismo-cejas-microblading-piel-grasa-005": -1,
+            "visajismo-cejas-microblading-efecto-tyndall-003": -1,
+            "visajismo-cejas-enfermedades-autoinmunes-007": 2
+          }
+        },
+        {
+          "text": "Eliminación de microblading defectuoso: láser, electrólisis y riesgos",
+          "is_original": false,
+          "gold_in_top5": true,
+          "gold_in_top10": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.6299,
+          "ranks": {
+            "visajismo-cejas-microblading-interaccion-laser-001": 1,
+            "guias_unas-electrolisis-y-matriz-001": -1,
+            "terapia-laser-erbio-glass-002": -1,
+            "visajismo-cejas-microblading-piel-grasa-005": -1,
+            "visajismo-cejas-microblading-efecto-tyndall-003": -1,
+            "visajismo-cejas-enfermedades-autoinmunes-007": -1
+          }
+        }
+      ],
+      "doc_centric": {
+        "text": "La eliminación de microblading mal ejecutado puede realizarse mediante interacción con láser de eliminación de tatuajes, electrólisis que daña la matriz folicular, o láser de erbio-glass 1550nm con fototermólisis fraccionada no ablativa.",
+        "gold_in_top5": true,
+        "gold_in_top10": true,
+        "best_gold_rank": 1,
+        "top1": "visajismo-cejas-microblading-interaccion-laser-001",
+        "top1_sim": 0.6523
+      },
+      "ef_search": {
+        "ef_40": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5916
+        },
+        "ef_100": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5916
+        },
+        "ef_200": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5916
+        },
+        "ef_400": {
+          "gold_in_top5": true,
+          "best_gold_rank": 1,
+          "top1_sim": 0.5916
+        }
+      },
+      "causes": [
+        "E_CHUNK_REPRESENTATION"
+      ]
+    }
+  ]
+}

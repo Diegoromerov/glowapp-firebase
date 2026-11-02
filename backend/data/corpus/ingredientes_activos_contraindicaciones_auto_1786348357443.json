@@ -1,0 +1,219 @@
+[
+  {
+    "chunk_id": "bio-retinoides-plant-derived-001",
+    "title": "Bio-retinoides botánicos: ¿Alternativa real o marketing?",
+    "content": "Los llamados 'bio-retinoides' son extractos botánicos que, a menudo, se comercializan como alternativas naturales a los retinoides. Es crucial diferenciar entre el Bakuchiol, que cuenta con estudios que demuestran una regulación genética similar a los retinoides, y otros extractos como el extracto de Bidens pilosa o el extracto de Vigna aconitifolia. Si bien estos últimos muestran cierta actividad en la diferenciación epidérmica, la evidencia clínica es limitada en comparación con la tretinoína o el retinol. El riesgo reside en la percepción del paciente de que, por ser 'naturales', carecen de contraindicaciones. Algunos de estos extractos, especialmente aquellos sin una estandarización rigurosa, pueden presentar riesgos de sensibilización cruzada o fototoxicidad si no se procesan adecuadamente. La AAD destaca que la falta de estandarización en la concentración de activos en extractos botánicos complejos hace que la predictibilidad de los resultados sea baja. Es fundamental que el usuario entienda que no todos los ingredientes que 'activan' la piel tienen la misma evidencia de seguridad a largo plazo que el estándar de oro dermatológico. La supervisión es clave para evitar falsas expectativas o reacciones adversas inesperadas debido a la presencia de impurezas botánicas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Bidens pilosa",
+        "Vigna aconitifolia"
+      ],
+      "contraindications": [
+        "pieles extremadamente sensibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:52:18.768Z"
+  },
+  {
+    "chunk_id": "niacinamida-hidrolisis-002",
+    "title": "El riesgo de hidrólisis de la Niacinamida en formulaciones de bajo pH",
+    "content": "La niacinamida es uno de los activos más versátiles en cosmética, pero su estabilidad es altamente dependiente del pH del vehículo. En entornos con un pH inferior a 5.0, especialmente si se combina con temperaturas elevadas, la niacinamida puede hidrolizarse y convertirse en ácido nicotínico. Este subproducto es el responsable del conocido 'flushing' o eritema vasomotor, una reacción inflamatoria que causa enrojecimiento súbito y ardor en la piel, frecuentemente confundida con una alergia. Este fenómeno es particularmente relevante en productos que combinan niacinamida con ácidos exfoliantes (como el glicólico o salicílico) en el mismo envase. La recomendación clínica es evitar la aplicación simultánea de niacinamida con productos de pH muy ácido o esperar al menos 15-20 minutos para permitir que el pH de la piel se estabilice. La evidencia en PubMed subraya que la formulación debe mantenerse en un rango de pH cercano a 6.0 para preservar la integridad de la molécula y evitar la irritación. Para pacientes con rosácea o pieles reactivas, este riesgo es significativo, ya que el eritema inducido puede exacerbar el cuadro inflamatorio basal.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31339673/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Niacinamida",
+        "Ácido nicotínico"
+      ],
+      "contraindications": [
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "combinacion_activos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:52:18.768Z"
+  },
+  {
+    "chunk_id": "peptidos-cobre-quelacion-003",
+    "title": "Interacción entre Péptidos de Cobre y Vitamina C: El riesgo de quelación",
+    "content": "La combinación de péptidos de cobre (GHK-Cu) con ácido L-ascórbico (Vitamina C pura) es un tema de debate intenso en la formulación cosmética debido al fenómeno de quelación. El ácido ascórbico es un agente reductor potente que puede oxidar los péptidos de cobre, alterando su estructura molecular y, por ende, su eficacia biológica en la síntesis de colágeno y elastina. Al reaccionar, los péptidos pueden perder su capacidad de penetración y función regenerativa, convirtiéndose simplemente en residuos sin valor clínico. Además, esta interacción química puede generar subproductos que, aunque no siempre tóxicos, pueden inducir irritación en pieles sensibles. La literatura dermatológica sugiere que, para maximizar la eficacia de ambos activos, deben aplicarse en momentos diferentes del día o con un intervalo suficiente para evitar el contacto directo en la superficie cutánea. El uso de derivados de la Vitamina C más estables, como el ascorbil glucósido o el tetrahexildecil ascorbato, minimiza este riesgo de interacción, pero el uso de la forma pura L-ascórbica sigue siendo contraproducente en la misma rutina. Esta precaución es vital para pacientes que buscan protocolos anti-aging intensivos y que suelen sobrecargar su piel con múltiples sueros activos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Péptidos de Cobre",
+        "Ácido L-Ascórbico"
+      ],
+      "contraindications": [
+        "rutinas incompatibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "combinacion_activos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:52:18.768Z"
+  },
+  {
+    "chunk_id": "tensioactivos-anionicos-ph-004",
+    "title": "Tensioactivos aniónicos y la desnaturalización proteica por pH alcalino",
+    "content": "Los tensioactivos aniónicos, como el lauril sulfato de sodio (SLS) y el laureth sulfato de sodio (SLES), son los agentes de limpieza más comunes, pero su seguridad depende drásticamente del pH del producto final. A un pH alcalino, estos tensioactivos tienen una mayor capacidad de penetrar en el estrato córneo y desnaturalizar las proteínas de la barrera cutánea, específicamente la queratina. Este proceso no solo elimina el sebo protector, sino que altera la estructura del NMF (Factor Natural de Hidratación), provocando una pérdida de agua transepidérmica (TEWL) significativa. La irritación resultante no es inmediata, sino acumulativa, manifestándose como sequedad, tirantez y un aumento de la reactividad a otros productos. La evidencia clínica indica que el uso prolongado de limpiadores con tensioactivos aniónicos en rangos alcalinos es un factor predisponente para la dermatitis de contacto irritativa. En pieles con barrera comprometida o condiciones como dermatitis atópica, el uso de estos tensioactivos debe ser estrictamente evitado en favor de tensioactivos no iónicos o anfóteros con pH fisiológico (5.5). La formulación técnica debe asegurar una compensación del pH para minimizar la agresividad proteica de estos agentes.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "SLS",
+        "SLES"
+      ],
+      "contraindications": [
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:52:18.768Z"
+  },
+  {
+    "chunk_id": "resinas-acrilatos-sensibilizacion-005",
+    "title": "La epidemia de sensibilización cruzada por resinas de acrilatos",
+    "content": "Las resinas de acrilatos y metacrilatos se han convertido en una causa principal de dermatitis de contacto alérgica, no solo en entornos profesionales (como salones de uñas), sino también en el cuidado de la piel doméstico, especialmente en adhesivos para pestañas, esmaltes de larga duración y algunos productos de 'maquillaje tecnológico'. El riesgo clínico radica en la sensibilización cruzada: una vez que el sistema inmunológico reconoce un tipo de acrilato como alérgeno, existe una alta probabilidad de que reaccione ante otros acrilatos estructuralmente relacionados presentes en cremas o parches. Los síntomas incluyen eritema, edema, vesiculación y prurito intenso en las zonas de contacto, y a menudo se desplazan a zonas periorbitarias o periorales. La literatura médica advierte que la sensibilización a los acrilatos es persistente y puede limitar las opciones de tratamiento médico (como el uso de ciertos adhesivos quirúrgicos o dispositivos médicos). Es imperativo que los usuarios con historial de alergias a esmaltes o procedimientos de uñas realicen pruebas de parche (patch test) antes de usar productos que contengan copolímeros de acrilatos, ya que la reacción puede ser severa y dificultar la reparación de la barrera cutánea durante semanas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "historia de alergia a esmaltes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:52:18.768Z"
+  }
+]

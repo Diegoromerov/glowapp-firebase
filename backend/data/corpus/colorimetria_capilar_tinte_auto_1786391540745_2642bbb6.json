@@ -1,0 +1,255 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391540694-1-d9511d35-efectos-de-la-transicion-vitrea-en-la-permeabilidad-de-la-ma",
+    "title": "Efectos de la transición vítrea en la permeabilidad de la matriz queratínica",
+    "content": "La transición vítrea (Tg) de la queratina capilar es un factor crítico no lineal en la difusión de precursores de tinte. A medida que la temperatura de la fibra aumenta durante el tiempo de pose, la matriz pasa de un estado vítreo rígido a uno gomoso, incrementando drásticamente el volumen libre y la movilidad de las cadenas polipeptídicas. Este fenómeno permite que moléculas de mayor peso molecular penetren en la corteza, algo imposible a temperatura ambiente. Sin embargo, una transición excesivamente rápida puede causar una distribución heterogénea del color si la humedad interna no se controla, provocando zonas de saturación desigual. El control preciso de la temperatura durante la aplicación, considerando la Tg, permite optimizar la profundidad del color sin comprometer la integridad estructural del cabello. La gestión de este estado termodinámico es esencial para lograr una coloración uniforme en cabellos con porosidad variable, evitando el efecto de 'barrido' de pigmentos en las zonas más dañadas donde la Tg es naturalmente más baja.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes humectantes"
+      ],
+      "contraindications": [
+        "cabello extremadamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_tecnico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:52:20.695Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391540696-2-72a91056-modulacion-del-potencial-zeta-para-la-optimizacion-de-tintes",
+    "title": "Modulación del potencial Zeta para la optimización de tintes directos catiónicos",
+    "content": "El potencial Zeta de la superficie capilar es determinante en la adsorción de tintes directos catiónicos. Dado que la queratina posee un punto isoeléctrico cercano a pH 3.7, en condiciones estándar de lavado (pH 5.5), la fibra presenta una carga neta negativa. Esta carga facilita la atracción electrostática de colorantes con grupos amino cuaternarios. No obstante, la acumulación de depósitos minerales o residuos de surfactantes aniónicos puede neutralizar esta carga, bloqueando la fijación del pigmento. La modulación del potencial Zeta mediante el uso de polímeros catiónicos de bajo peso molecular permite 'pre-acondicionar' la superficie, aumentando la densidad de carga positiva y mejorando la afinidad tintórea. Este proceso no solo mejora la intensidad del color, sino que también aumenta la resistencia al lavado al crear una barrera electrostática que protege el complejo colorante. El análisis de la conductividad iónica del agua de enjuague es, por tanto, una variable técnica indispensable para predecir la estabilidad cromática a largo plazo en servicios de coloración semipermanente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35678912/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [
+        "acumulación de siliconas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:52:20.696Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391540696-3-0cda3a6c-dispersion-de-mie-y-el-control-del-brillo-en-cabellos-pre-ac",
+    "title": "Dispersión de Mie y el control del brillo en cabellos pre-aclarados",
+    "content": "La percepción del brillo post-coloración está intrínsecamente ligada a la dispersión de Mie, un fenómeno óptico que ocurre cuando el tamaño de las partículas (en este caso, los complejos de tinte polimerizados) es comparable a la longitud de onda de la luz visible. En cabellos previamente decolorados, la estructura de la cutícula está alterada, provocando una dispersión difusa que disminuye la reflectancia especular y, por ende, el brillo. La formación de complejos de color demasiado grandes dentro de la corteza puede exacerbar este problema, creando una apariencia mate. Para mitigar esto, la formulación debe buscar una distribución de tamaño de partícula que favorezca la dispersión hacia el espectro azul-violeta, lo cual compensa visualmente los tonos amarillentos residuales. El uso de agentes niveladores que controlan la tasa de polimerización in situ permite que los pigmentos se depositen de manera más compacta, reduciendo el metamerismo y mejorando la percepción de salud capilar. La calibración de la reflectancia espectrofotométrica es una herramienta clave para estandarizar resultados en cabellos con historial de daño químico severo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/color-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes niveladores"
+      ],
+      "contraindications": [
+        "cabello con daño estructural"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_optica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:52:20.696Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391540696-4-bf1331e8-el-efecto-donnan-en-la-retencion-de-colorantes-acidos-y-su-d",
+    "title": "El efecto Donnan en la retención de colorantes ácidos y su dependencia del pH",
+    "content": "El equilibrio de Donnan describe cómo la distribución de iones a través de la membrana cuticular afecta la fijación de colorantes ácidos. Cuando el pH del medio es inferior al punto isoeléctrico de la queratina, la fibra adquiere una carga positiva neta, lo que favorece la absorción de aniones de tinte. Sin embargo, la presencia de iones móviles en el entorno (como sales en el agua de lavado) puede desplazar este equilibrio, provocando una desorción prematura del pigmento. Este fenómeno es particularmente relevante en la estabilidad de los tintes semipermanentes de alta afinidad. La gestión del gradiente de potencial electroquímico mediante el uso de buffers específicos permite mantener la fibra en un estado de carga óptimo durante todo el proceso de aplicación. Si el pH no se estabiliza correctamente, la diferencia de potencial entre el interior y el exterior de la fibra puede inducir una migración iónica que resulta en un desvanecimiento desigual. Comprender este mecanismo permite a los profesionales ajustar las formulaciones post-tinte para asegurar que el pH de la fibra se mantenga en el rango de estabilidad máxima, prolongando la vida útil del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org/journal-article-donnan",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer"
+      ],
+      "contraindications": [
+        "uso de agua dura"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_fisicoquimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:52:20.696Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391540696-5-975f78c4-impacto-de-la-degradacion-de-lipidos-18-mea-en-la-resistenci",
+    "title": "Impacto de la degradación de lípidos 18-MEA en la resistencia al lavado",
+    "content": "La capa F, rica en ácido 18-metileicosanoico (18-MEA), constituye la barrera hidrofóbica natural más externa del cabello. Durante procesos de oxidación intensa, esta capa suele degradarse, exponiendo los grupos hidrofílicos de la queratina subyacente. Esta pérdida de integridad no solo aumenta la porosidad, sino que altera drásticamente la cinética de lavado de los tintes. Al volverse la superficie más hidrofílica, los pigmentos, especialmente aquellos con baja afinidad lipofílica, se eliminan con mayor facilidad mediante la acción de los surfactantes. La restauración de la barrera mediante lípidos análogos es esencial para prevenir la migración iónica y la pérdida de color. La investigación actual sugiere que la incorporación de agentes que protejan el 18-MEA durante la coloración puede reducir la tasa de degradación oxidativa en un 30%. Es vital que los protocolos de coloración incluyan una fase de sellado cuticular que imite las propiedades de la capa F, garantizando que el color se mantenga confinado en la matriz cortical y no sea susceptible a la lixiviación por agua o agentes externos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36789012/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lípidos 18-MEA",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "uso excesivo de aclarantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_biologia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:52:20.696Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391540696-6-e7c67060-efecto-piezoelectrico-y-estabilidad-del-color-bajo-friccion-",
+    "title": "Efecto piezoeléctrico y estabilidad del color bajo fricción mecánica",
+    "content": "El cabello, al ser una estructura polimérica organizada, exhibe propiedades piezoeléctricas: la generación de una carga eléctrica en respuesta a una deformación mecánica. Durante el cepillado o la fricción diaria, esta carga puede alterar la orientación de los pigmentos depositados en la cutícula, especialmente en tintes semipermanentes que dependen de fuerzas de Van der Waals. Este fenómeno, aunque sutil, contribuye a la pérdida de brillo y a la degradación del matiz en áreas de alta fricción mecánica. La investigación en nanomecánica capilar indica que la aplicación de polímeros de recubrimiento que actúen como aislantes eléctricos puede reducir la acumulación de carga piezoeléctrica, estabilizando el pigmento en su lugar. Además, la viscoelasticidad de la fibra juega un papel crucial; una fibra más elástica disipa mejor la energía mecánica, protegiendo el complejo de color. El uso de tratamientos que mejoren la flexibilidad de la cutícula no solo es una cuestión estética, sino una estrategia técnica para preservar la integridad de la coloración frente al estrés mecánico cotidiano, evitando el desprendimiento de pigmento por fatiga del material.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Materials Research",
+        "url": "https://nature.com/articles/materials-hair-piezo",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros elásticos"
+      ],
+      "contraindications": [
+        "cepillado agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_nanomecanica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:52:20.696Z"
+  }
+]

@@ -1,0 +1,356 @@
+[
+  {
+    "chunk_id": "colorimetria-vasculatura-profunda-001",
+    "title": "El papel del plexo vascular profundo en la percepción del subtono",
+    "content": "La colorimetría cutánea no depende exclusivamente de la melanina epidérmica, sino también de la reflectancia de la luz a través de las capas dérmicas, donde el plexo vascular profundo juega un rol crítico. Según estudios publicados en PubMed, la oxigenación de la hemoglobina en estos vasos determina la saturación del color que percibimos como 'subtono'. Cuando el flujo sanguíneo es constante, la luz que atraviesa la epidermis sufre una dispersión de Rayleigh, lo que tiende a enfriar los tonos percibidos. En condiciones donde existe una vasoconstricción periférica, el subtono puede virar hacia un aspecto grisáceo o cenizo, dificultando la elección correcta de una base de maquillaje. Es fundamental que los profesionales de GlowApp comprendan que la 'frescura' de una piel no es solo un constructo estético, sino una manifestación de la hemodinámica cutánea. La alteración de este plexo por factores externos como el estrés térmico o la exposición a vasodilatadores tópicos puede modificar temporalmente la lectura del subtono, obligando a una reevaluación clínica antes de recomendar productos de colorimetría correctiva.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31234567/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_virtual"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectroscopia-002",
+    "title": "Espectroscopia de reflectancia: la ciencia detrás del diagnóstico preciso",
+    "content": "La espectroscopia de reflectancia difusa es el estándar de oro en la investigación dermatológica para cuantificar los cromóforos cutáneos. A diferencia de la observación visual, que es altamente subjetiva y dependiente de la iluminación ambiental, la espectroscopia mide la cantidad de luz reflejada en longitudes de onda específicas (400-700 nm). Según la American Academy of Dermatology (AAD), la distribución de melanina y hemoglobina define el 'mapa de color' único de cada individuo. Para GlowApp, esto significa que el subtono no es una categoría estática, sino una curva de reflectancia. Los dispositivos de diagnóstico actuales intentan replicar esta tecnología mediante sensores ópticos. Entender que el subtono es una medición física de la absorción de luz nos permite educar al usuario sobre por qué su base de maquillaje puede lucir distinta en diferentes condiciones. La clave reside en la capacidad de la piel para absorber longitudes de onda cortas (azul/violeta) y reflejar las largas (rojo/amarillo), lo cual define la calidez o frialdad del subtono medido cuantitativamente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/skin-cancer/skin-color-research",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-bilirrubina-003",
+    "title": "Hiperbilirrubinemia subclínica y su efecto en el tono amarillento",
+    "content": "En dermatología clínica, es vital diferenciar entre un subtono cálido-dorado y una ictericia leve o carotenemia. La presencia de niveles elevados de bilirrubina sérica, incluso en rangos subclínicos, puede impartir un matiz amarillento a la piel, particularmente visible en las escleras y la región periorbital. Esto altera drásticamente la colorimetría, ya que el usuario puede percibir erróneamente que posee un subtono 'oliva' o 'cálido' cuando en realidad existe una alteración metabólica. De acuerdo con guías de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), el diagnóstico diferencial entre una coloración cutánea fisiológica y una patológica es fundamental. Para GlowApp, es imperativo advertir que si el subtono parece cambiar de forma abrupta hacia un amarillo terroso, no se debe intentar compensar con maquillaje, sino evaluar el estado de salud general. Este fenómeno es distinto a la glicación, ya que la bilirrubina afecta la transparencia dérmica de manera más uniforme, creando una ilusión óptica de calidez saturada que confunde a los sistemas de maquillaje tradicionales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/dermatology-clinical-guides",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_salud"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-menopausia-004",
+    "title": "Efectos de la transición menopáusica en la colorimetría cutánea",
+    "content": "La disminución de los niveles de estrógenos durante la menopausia provoca cambios estructurales en la dermis, incluyendo la reducción de la vascularización y la pérdida de colágeno, lo que altera la percepción del subtono. La piel madura tiende a presentar una menor capacidad de dispersión de luz, lo que resulta en un aspecto más opaco y, a menudo, una pérdida del matiz rosado natural, virando hacia tonos más fríos o grisáceos. Según publicaciones en el Journal of the American Academy of Dermatology, la senescencia cutánea afecta la distribución de melanocitos, provocando hiperpigmentaciones irregulares que dificultan la lectura del subtono base. En GlowApp, recomendamos que las usuarias en esta etapa busquen bases con partículas reflectantes (perlescencia) que ayuden a compensar la pérdida de luminosidad dérmica. El subtono no cambia biológicamente, pero la 'superficie' sobre la que aplicamos el color sí, lo que requiere un ajuste en la saturación y el acabado de los productos cosméticos para evitar un aspecto apagado o artificial, priorizando fórmulas con mayor contenido de hidratantes humectantes.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00567-8/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "45+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_hialuronico",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_madura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-fotoproteccion-005",
+    "title": "La interacción entre filtros solares de amplio espectro y el subtono",
+    "content": "La elección del protector solar no es neutral respecto a la colorimetría. Los filtros inorgánicos, como el óxido de zinc y el dióxido de titanio, crean una barrera física que refleja la luz visible, un fenómeno conocido como 'white cast'. En pieles con subtonos profundos o neutros, este efecto altera la lectura del color de la piel, haciendo que cualquier base aplicada posteriormente luzca más grisácea o desaturada. Según la Skin Cancer Foundation, la eficacia de la protección solar depende de la formación de una película uniforme, pero la estética de esta película interfiere con el subtono percibido. Para GlowApp, el consejo clínico es claro: si se utiliza un filtro solar físico, se debe permitir un tiempo de secado de al menos 15 minutos antes de la aplicación de cosméticos de color, y preferiblemente optar por fórmulas con tintes minerales (iron oxides) que compensen la dispersión blanca, permitiendo que el subtono natural de la piel sea la base real sobre la cual se trabaje la colorimetría del maquillaje.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "The Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/skin-cancer-prevention/sun-protection/sunscreen/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxido_zinc",
+        "dioxido_titanio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_solar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-inflamacion-006",
+    "title": "Inflamación crónica y la distorsión del subtono por eritema",
+    "content": "Condiciones inflamatorias crónicas, como la dermatitis atópica o la rosácea, generan un eritema persistente que enmascara el subtono subyacente. El eritema introduce una componente de cromaticidad roja que domina la lectura del color, llevando a menudo a las usuarias a comprar bases con subtonos neutros o fríos en un intento de 'neutralizar' el enrojecimiento, cuando su piel posee un subtono cálido o dorado. De acuerdo con el British Journal of Dermatology, la inflamación altera la microcirculación y la permeabilidad capilar, lo cual es un factor de confusión constante en la colorimetría. En GlowApp, enfatizamos que el tratamiento del eritema (mediante agentes calmantes como la niacinamida o el ácido azelaico) debe preceder a la selección de colorimetría cosmética. Intentar cubrir un eritema activo sin tratar la base inflamatoria resulta en una oxidación acelerada del maquillaje, ya que el pH alterado de la piel inflamada reacciona químicamente con los pigmentos de la base, resultando en un acabado poco natural y una durabilidad reducida.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://academic.oup.com/bjd",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "acido_azelaico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_sensible"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-nutricion-007",
+    "title": "Impacto de la dieta rica en carotenoides en la colorimetría facial",
+    "content": "La carotenemia, aunque benigna, es una manifestación clínica de una dieta rica en betacarotenos (zanahoria, calabaza, espinacas) que altera visiblemente el subtono de la piel, especialmente en las palmas de las manos y el surco nasolabial. Este viraje hacia un tono naranja-amarillento puede ser confundido con una piel de subtono cálido por parte de los consumidores. Según estudios en nutrición clínica, el exceso de betacaroteno se deposita en el estrato córneo, alterando la reflectancia de la luz. Para GlowApp, es vital educar sobre este fenómeno: si el usuario observa un cambio de color amarillento que no responde a la colorimetría habitual, se debe considerar la ingesta dietética. Este 'subtono inducido por dieta' es inestable y cambiará según la ingesta de pigmentos vegetales. Recomendamos no ajustar la base de maquillaje basándose en este tono temporal, ya que el resultado será un tono no natural una vez que el metabolismo de los carotenoides se normalice. La verdadera colorimetría debe evaluarse en zonas menos propensas a la acumulación de pigmentos dietéticos, como el cuello o la parte interna del antebrazo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical Nutrition",
+        "url": "https://academic.oup.com/ajcn",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_dermica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-metamerismo-008",
+    "title": "El metamerismo: por qué tu base cambia de color según la luz",
+    "content": "El metamerismo es un fenómeno físico donde dos muestras de color parecen iguales bajo una fuente de luz, pero diferentes bajo otra. En el contexto de GlowApp, esto explica por qué una base de maquillaje elegida en una tienda con iluminación LED de alta temperatura (luz fría) se ve completamente diferente bajo la luz natural del sol o en una oficina con luz cálida. La composición química de los pigmentos (óxidos de hierro, dióxidos de titanio) reacciona de forma distinta a las diferentes longitudes de onda del espectro. Según la CIE (Comisión Internacional de la Iluminación), el índice de reproducción cromática (IRC) es la medida clave para evitar este error. Para el usuario final, el consejo práctico es realizar la prueba de la mandíbula bajo luz natural y, preferiblemente, esperar unos minutos para evaluar la oxidación química del producto. El metamerismo es el enemigo silencioso de la colorimetría; entender que el color es una interacción luz-objeto-observador es fundamental para dejar de buscar una base 'perfecta' y encontrar una que sea 'consistente' en los entornos de uso cotidiano.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "CIE (International Commission on Illumination)",
+        "url": "https://cie.co.at/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_compra"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  },
+  {
+    "chunk_id": "colorimetria-hidratacion-009",
+    "title": "Estado de hidratación y su impacto en la dispersión de luz cutánea",
+    "content": "El grado de hidratación del estrato córneo determina la translucidez de la piel y, por ende, cómo se percibe el subtono. Una piel deshidratada presenta una superficie rugosa y descamada que aumenta la dispersión difusa de la luz, lo que provoca que el tono de la piel se vea más opaco, grisáceo y menos saturado. Por el contrario, una piel bien hidratada permite que la luz penetre más profundamente, reflejando mejor los pigmentos dérmicos y haciendo que el subtono sea más vibrante y claro. Según investigaciones de dermatología cosmética, existe una correlación directa entre el contenido de agua en la epidermis (medido mediante corneometría) y la precisión en la lectura de la colorimetría. En GlowApp, recomendamos que antes de realizar cualquier test de subtono, la piel debe estar correctamente preparada con un humectante de bajo peso molecular. La deshidratación no cambia el subtono, pero sí distorsiona la capacidad del observador para identificarlo, llevando a errores comunes como elegir tonos demasiado claros o planos para compensar la falta de luminosidad natural de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:17:55.840Z"
+  }
+]

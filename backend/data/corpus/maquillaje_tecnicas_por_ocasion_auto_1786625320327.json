@@ -1,0 +1,218 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-magneticos-001",
+    "title": "Maquillaje en entornos de resonancia magnética: Riesgo de artefactos",
+    "content": "La aplicación de maquillaje en entornos clínicos que requieren resonancia magnética (RM) presenta riesgos específicos derivados de la presencia de pigmentos metálicos, como óxidos de hierro, titanio o partículas de mica. Estudios publicados en el 'Journal of Magnetic Resonance Imaging' han documentado que ciertos cosméticos, especialmente sombras de ojos con alta carga de pigmentos iridiscentes o metálicos, pueden causar artefactos en las imágenes debido a la interacción con el campo magnético. Más allá de la distorsión diagnóstica, existe el riesgo de quemaduras térmicas por inducción de corrientes de Foucault si la concentración de metal es suficiente. En el contexto de GlowApp, es crucial educar a los usuarios sobre la necesidad de retirar completamente cualquier maquillaje antes de procedimientos de imagenología. La recomendación clínica es evitar cosméticos con partículas metálicas visibles en los días previos a una cita de RM, priorizando fórmulas minerales puras o libres de óxidos metálicos, las cuales son inertes ante el campo magnético. La integridad de la barrera cutánea durante este proceso debe mantenerse con limpiadores suaves que no requieran fricción excesiva para evitar la irritación previa al examen médico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6389793/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mica",
+        "iron oxides"
+      ],
+      "contraindications": [
+        "resonancia magnetica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-clinicos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:20.302Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-espacios-confinados-002",
+    "title": "Maquillaje en entornos de baja oxigenación: Gestión de la desgasificación",
+    "content": "En eventos desarrollados en espacios confinados con baja ventilación y alta densidad de personas, la calidad del aire disminuye, aumentando la concentración de CO2 y compuestos orgánicos volátiles (COVs). Esto afecta la estabilidad de los cosméticos, especialmente aquellos con solventes volátiles que pueden sufrir una desgasificación acelerada. La literatura dermatológica sugiere que el maquillaje debe ser altamente oclusivo para evitar la absorción transdérmica de contaminantes ambientales, pero debe permitir la transpiración necesaria para evitar la oclusión folicular. Para eventos en estas condiciones, se recomienda el uso de primers a base de siliconas volátiles que crean una barrera física sin obstruir los poros, minimizando el riesgo de dermatitis por contacto inducida por la acumulación de partículas en el aire. La hidratación debe ser intensiva antes de la aplicación para mitigar la xerosis ambiental. Es fundamental que los productos no contengan fragancias sintéticas, ya que en ambientes cerrados, el efecto de los COVs se potencia, pudiendo desencadenar dermatitis irritativa o reacciones alérgicas en pieles reactivas, un fenómeno documentado en estudios sobre calidad del aire interior y salud dermatológica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/dermatitis-contact",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "glicerina"
+      ],
+      "contraindications": [
+        "fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:20.302Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-criogenia-005",
+    "title": "Prevención de la fragilización de películas cosméticas en frío extremo",
+    "content": "La exposición a ambientes de frío extremo o criogenia industrial, aunque poco frecuente en eventos sociales, requiere una estrategia cosmética específica. El frío altera las propiedades reológicas de los productos de maquillaje; las ceras y aceites pueden solidificarse, provocando que la película de maquillaje se vuelva quebradiza y se fracture con el movimiento facial. Este fenómeno, conocido como fisuración de la película, no solo afecta la estética, sino que expone la piel a la deshidratación rápida y al daño por viento. Para estos eventos, la formulación debe basarse en emolientes con bajo punto de fusión y plastificantes, como el escualano o esteres de bajo peso molecular, que mantienen la flexibilidad de la película a bajas temperaturas. Es fundamental evitar el uso de polvos sueltos, ya que su capacidad de absorción exacerbará la xerosis inducida por el frío. La aplicación de una capa base oclusiva y rica en lípidos es necesaria para proteger la barrera cutánea de la pérdida de agua transepidérmica (TEWL). La investigación clínica indica que el mantenimiento de la elasticidad de la película cosmética es directamente proporcional a la hidratación cutánea subyacente, por lo que el cuidado previo con oclusivos fuertes es mandatorio.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "escualano",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "polvos-sueltos"
+      ],
+      "season": [
+        "winter"
+      ],
+      "applicable_modules": [
+        "gestion-barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:20.302Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-luz-coherente-006",
+    "title": "Estabilidad del maquillaje ante exposición a luz coherente (Láser)",
+    "content": "El uso de efectos láser en eventos, como conciertos o espectáculos de alta tecnología, plantea desafíos para la estabilidad del maquillaje. La exposición directa a luz coherente de alta intensidad puede inducir la degradación fotoquímica de ciertos pigmentos orgánicos, provocando cambios en la saturación del color o la aparición de manchas no deseadas. Además, la dispersión de la luz sobre las partículas de maquillaje puede crear reflejos incontrolados, afectando la percepción visual del rostro bajo iluminación dinámica. Para mitigar estos efectos, se recomienda el uso de pigmentos inorgánicos estables, como los óxidos de hierro tratados o pigmentos minerales, que presentan una mayor resistencia a la degradación por fotones. Es vital que el maquillaje no contenga agentes fotosensibilizantes, como ciertos derivados de fragancias o conservantes, que podrían reaccionar ante la alta densidad de energía lumínica. La aplicación de un sellador con filtros de luz visible de alta energía (HEV) puede proporcionar una capa adicional de protección, no solo para el pigmento sino para la integridad de la piel frente a la radiación dispersa. La correcta gestión de la reflectancia, evitando acabados altamente satinados o con partículas de purpurina metálica, es fundamental para evitar el deslumbramiento y asegurar un aspecto profesional en entornos de alta tecnología.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-minerales",
+        "filtros-hev"
+      ],
+      "contraindications": [
+        "purpurina",
+        "fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:20.302Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-presion-sonora-008",
+    "title": "Estabilidad del maquillaje ante vibraciones acústicas de alta frecuencia",
+    "content": "Los eventos con alta presión sonora, como festivales de música o entornos industriales, generan vibraciones mecánicas que pueden afectar la estabilidad de las emulsiones cosméticas sobre la piel. La vibración constante puede inducir un fenómeno de 'licuefacción' o separación de fases en productos que no están diseñados para resistir fuerzas dinámicas. Esto es particularmente notable en bases de maquillaje fluidas que, tras varias horas de exposición a ondas sonoras de alta intensidad, pueden migrar hacia las líneas de expresión debido a la pérdida de tensión superficial. Para prevenir esto, se recomienda el uso de productos con estructuras de red polimérica (como los elastómeros de silicona) que actúan como una matriz flexible, absorbiendo parte de la energía mecánica y manteniendo el pigmento en su lugar. La evidencia en reología cosmética sugiere que la incorporación de agentes espesantes como el sílice pirogénico permite una mayor resistencia a la cizalladura dinámica. Además, la preparación de la piel con un primer de alta adherencia es fundamental para asegurar que la película cosmética no se despegue ante el estrés mecánico. Este enfoque no solo mejora la durabilidad, sino que protege la piel del contacto directo con partículas contaminantes que se adhieren más fácilmente cuando la película cosmética pierde su cohesión estructural.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "elastómeros-silicona",
+        "sílice"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:20.302Z"
+  }
+]

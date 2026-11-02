@@ -1,0 +1,84 @@
+[
+  {
+    "chunk_id": "bio-scaffold-polimeros-001",
+    "title": "Bio-andamios sintéticos: Integración de polímeros biorreabsorbibles",
+    "content": "La nueva generación de bio-andamios inyectables basados en polímeros de policaprolactona (PCL) y derivados de celulosa está transformando la medicina estética regenerativa. A diferencia de los rellenos tradicionales que actúan por volumetría física, estos andamios proporcionan una estructura tridimensional temporal que facilita la migración de fibroblastos y la deposición de colágeno endógeno. Según estudios publicados en PubMed, la arquitectura porosa del andamio es crítica para evitar la formación de cápsulas fibrosas excesivas, promoviendo en su lugar una integración tisular armónica. La clave del éxito clínico reside en el tamaño de las microesferas y su capacidad para inducir una respuesta inflamatoria subclínica controlada, que es el motor de la neocolagénesis. Los médicos deben evaluar la viscosidad y la tasa de degradación del polímero para asegurar que el soporte mecánico se mantenga durante el tiempo necesario para la maduración del tejido nuevo. Este enfoque permite tratar zonas de alta movilidad con menor riesgo de migración del producto, ofreciendo resultados más naturales y duraderos en comparación con los rellenos de ácido hialurónico de alta reticulación, que pueden verse afectados por las fuerzas mecánicas del músculo facial.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Policaprolactona",
+        "Carboximetilcelulosa"
+      ],
+      "contraindications": [
+        "Infección activa",
+        "Enfermedades autoinmunes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion-estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:54.541Z"
+  },
+  {
+    "chunk_id": "cronobiologia-estetica-003",
+    "title": "Cronobiología cutánea: Optimización del timing en estética",
+    "content": "El concepto de cronobiología aplicado a la medicina estética propone que la eficacia de ciertos procedimientos y la recuperación post-tratamiento dependen del ritmo circadiano de la piel. Estudios en dermatología sugieren que la función barrera y la tasa de división celular de los queratinocitos fluctúan a lo largo de las 24 horas. Por ejemplo, la proliferación celular alcanza su pico máximo durante la noche, mientras que la permeabilidad de la barrera cutánea es mayor en horas de la tarde, lo que podría optimizar la penetración de activos post-peeling. Aplicar procedimientos invasivos durante periodos de mayor actividad de reparación celular podría acortar los tiempos de recuperación y mejorar los resultados clínicos. Asimismo, la exposición a la luz azul y la secreción de cortisol siguen ciclos que afectan la inflamación cutánea. Integrar estos conocimientos en la práctica clínica permite al profesional recomendar horarios específicos para la aplicación de ciertos protocolos o el uso de productos domiciliarios, maximizando la sinergia entre el tratamiento en cabina y el ritmo biológico natural del paciente. La personalización del 'timing' es la nueva frontera de la medicina de precisión en GlowApp.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-personalizados"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:54.541Z"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-002",
+    "title": "Gestión del edema facial y maquillaje en eventos de baja presión",
+    "content": "La exposición a ambientes de baja presión atmosférica, como cabinas presurizadas o eventos en gran altitud, suele desencadenar un edema facial por vasodilatación capilar compensatoria. El maquillaje técnico para estas ocasiones debe priorizar técnicas de contorno que no aporten peso sobre las zonas edematosas. Se desaconsejan los productos en crema pesados o ceras sólidas, ya que su peso molecular y densidad térmica pueden acentuar la retención de líquidos y la sensación de pesadez facial. Estudios en PubMed indican que la microcirculación cutánea se ve alterada por la hipoxia, provocando una respuesta inflamatoria subclínica. Es fundamental emplear técnicas de aplicación con brocha de fibra sintética de baja fricción para evitar el estrés mecánico adicional. Los productos deben ser formulados sin oclusivos derivados del petróleo (petrolatum) para permitir que la piel responda adecuadamente a los cambios de presión. La fijación debe ser mínima, utilizando brumas fijadoras con base acuosa en lugar de polvos sueltos que puedan acumularse en los surcos nasogenianos, acentuando visualmente la hinchazón por la falta de oxigenación tisular.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "agua_termal"
+      ],
+      "contraindications": [
+        "petrolatum",
+        "ceras_pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:31:41.618Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-003",
+    "title": "Maquillaje en ambientes de baja presión: Dinámica de la desgasificación",
+    "content": "En entornos de baja presión, la desgasificación de ciertos compuestos volátiles presentes en cosméticos de baja calidad puede alterar la estabilidad de la emulsión sobre la piel. Los maquillajes que contienen solventes de alta volatilidad pueden presentar una evaporación acelerada, lo que resulta en la fisura prematura de la película cosmética. Investigaciones sobre formulación cosmética sugieren que la estabilidad de las emulsiones aceite-en-agua se ve comprometida si los tensioactivos no están correctamente balanceados para compensar la presión atmosférica reducida. Para eventos en estas condiciones, es imperativo utilizar fórmulas de fase continua estable, libres de alcoholes de cadena corta que se volatilizan rápidamente. La IADVL enfatiza la importancia de evitar ingredientes irritantes cuando la barrera cutánea está bajo estrés físico, ya que la penetración percutánea de sustancias puede aumentar en condiciones de hipoxia. Se recomienda el uso de pigmentos encapsulados en redes poliméricas dieléctricas que mantengan su integridad estructural a pesar de la expansión de los gases internos de la piel, asegurando que el acabado no se vea afectado por la micro-desgasificación cutánea durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/index.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros_dielectricos",
+        "pigmentos_encapsulados"
+      ],
+      "contraindications": [
+        "alcohol_denat",
+        "solventes_volatiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:31:41.618Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-007",
+    "title": "Tendencias en formulación: Cosméticos de alta adherencia para entornos ionizados",
+    "content": "La tendencia actual en la formulación de cosméticos para eventos en entornos de alta tecnología (como ferias de robótica o centros de datos) se centra en el desarrollo de películas cosméticas con alta capacidad dieléctrica. Estos productos están diseñados para evitar que los campos electromagnéticos interfieran con la estabilidad del maquillaje en la piel. Se utilizan polímeros que forman una malla protectora capaz de repeler partículas cargadas y prevenir la adhesión de contaminantes ambientales. Estudios en dermatología cosmética demuestran que la incorporación de agentes que estabilizan el potencial zeta de la emulsión mejora significativamente la durabilidad del maquillaje en entornos de alta ionización ambiental. Estos cosméticos de 'nueva generación' no solo ofrecen cobertura, sino que actúan como una barrera física contra la deposición de partículas nocivas. La clave es la selección de ingredientes que no sean conductores, evitando pigmentos basados en óxidos metálicos puros que podrían interactuar con radiofrecuencias. Esta tecnología representa un avance significativo para profesionales que trabajan en ambientes donde la estabilidad del maquillaje es desafiada por factores físicos externos, permitiendo un resultado impecable y seguro para la integridad cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros_dielectricos"
+      ],
+      "contraindications": [
+        "oxidos_metalicos_conductores"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tendencias-cosmeticas"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:31:41.618Z"
+  }
+]

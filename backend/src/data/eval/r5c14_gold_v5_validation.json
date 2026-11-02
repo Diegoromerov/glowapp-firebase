@@ -1,0 +1,35 @@
+{
+  "cycle": "26",
+  "experiment": "R5-C14",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "gold_v5_physical": {
+    "total_expected_ids": 55,
+    "found": 55,
+    "missing": [],
+    "without_hash": [],
+    "verdict": "INTEGRIDAD OK"
+  },
+  "unsupported_justifications": {
+    "cabello_004": {
+      "query": "Caída de cabello post-parto y estrés",
+      "reason": "Búsqueda exhaustiva en corpus: ningún chunk trata efluvio telógeno post-parto ni por estrés. Anotación ciega: 0 candidatos RELEVANT.",
+      "search": "términos: caída, post-parto, estrés, alopecia, efluvio, telógeno"
+    },
+    "cejas_002": {
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "reason": "Ningún chunk compara las 3 técnicas. Anotación ciega: 0 RELEVANT.",
+      "search": "términos: microblading, microshading, nanoblading, comparativa, diferencia"
+    },
+    "cejas_003": {
+      "query": "Forma de cejas ideal para cara redonda",
+      "reason": "Sin visajismo por forma de rostro; solo proporción áurea genérica (PARTIAL).",
+      "search": "términos: cara redonda, forma, visajismo, rostro"
+    }
+  },
+  "unsupported_count": 3,
+  "supported_count": 13,
+  "partially_supported_count": 2,
+  "gold_construction_independent_from_retrieval": true,
+  "note_independence": "El gold V5 se construyó desde anotación ciega (contenido) + V4 + V3. El retrieval NO participó en la selección."
+}

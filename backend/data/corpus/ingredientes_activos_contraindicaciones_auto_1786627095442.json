@@ -1,0 +1,400 @@
+[
+  {
+    "chunk_id": "activos-acne-fungico-001",
+    "title": "Acné fúngico (Malassezia folliculitis) y la contraindicación de ciertos emolientes",
+    "content": "El acné fúngico, técnicamente conocido como foliculitis por Malassezia, a menudo se confunde con el acné vulgar, pero su fisiopatología difiere radicalmente. Mientras que el acné vulgar responde a la obstrucción folicular por sebo y proliferación de C. acnes, la foliculitis por Malassezia es una proliferación de levaduras lipofílicas. Clínicamente, el uso de aceites ricos en ácidos grasos de cadena larga, como el ácido oleico o aceites vegetales no refinados, actúa como sustrato metabólico que exacerba la inflamación. Es fundamental evitar ingredientes como el aceite de coco, aceite de oliva o el miristato de isopropilo en pacientes con pápulas monomórficas pruriginosas. La AAD destaca que el tratamiento requiere agentes antifúngicos tópicos (como ketoconazol) y la eliminación estricta de lípidos que alimenten la levadura. La barrera cutánea en estos pacientes suele estar alterada, por lo que la elección de humectantes debe excluir triglicéridos y centrarse en ingredientes 'malassezia-safe' como el escualano puro o la glicerina, evitando la oclusión innecesaria que promueve el ambiente anaeróbico y cálido que favorece la colonización fúngica en el folículo pilosebáceo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/folliculitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "adolescent",
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites vegetales",
+        "triglicéridos"
+      ],
+      "contraindications": [
+        "foliculitis por Malassezia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-fotosensibilidad-002",
+    "title": "El riesgo de fototoxicidad inducida por aceites esenciales cítricos",
+    "content": "La fototoxicidad es una reacción adversa cutánea inducida por la interacción de una sustancia química, luz ultravioleta y la piel. Los aceites esenciales de cítricos, particularmente la bergamota (Citrus bergamia), el limón y la lima, contienen furocumarinas como el bergapteno. Estos compuestos son potentes agentes fotosensibilizantes que, al exponerse a la radiación UVA, forman aductos de ADN, induciendo una respuesta inflamatoria severa similar a una quemadura química. A diferencia de la dermatitis alérgica de contacto, la fototoxicidad puede ocurrir en cualquier individuo expuesto a una concentración suficiente de furocumarinas y luz solar. La literatura científica disponible en PubMed advierte sobre el uso de cosméticos 'naturales' que contienen extractos botánicos no destilados al vacío para eliminar estas moléculas. El daño, que se manifiesta como eritema intenso, ampollas e hiperpigmentación post-inflamatoria persistente, es una contraindicación clara para productos de cuidado diurno. Es imperativo que el profesional de GlowApp verifique la presencia de aceites esenciales en formulaciones de uso diario, especialmente en pacientes con fototipos altos donde la hiperpigmentación es de difícil resolución clínica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32344799/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de bergamota",
+        "limoneno",
+        "furocumarinas"
+      ],
+      "contraindications": [
+        "exposicion solar",
+        "piel reactiva"
+      ],
+      "season": [
+        "summer",
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-quelacion-003",
+    "title": "Interacción química: Quelantes y la estabilidad de la Vitamina C pura",
+    "content": "La Vitamina C (ácido L-ascórbico) es extremadamente inestable y dependiente del pH para su eficacia. Un error común en la formulación o combinación de productos es la interacción entre el ácido ascórbico y agentes quelantes como el EDTA o el ácido fítico. Los quelantes son moléculas diseñadas para secuestrar iones metálicos (hierro, cobre) que catalizan la oxidación de la vitamina. Sin embargo, en concentraciones inadecuadas o bajo pH extremadamente bajo, estos quelantes pueden formar complejos con la vitamina C, disminuyendo su biodisponibilidad y potencial de penetración. Estudios de estabilidad química indican que, si bien los quelantes protegen la fórmula contra la oxidación inducida por trazas metálicas en el envase, un exceso puede alterar la cinética de liberación del activo. Para el usuario final, combinar un suero de Vitamina C con un producto que contenga altas concentraciones de EDTA puede resultar en una pérdida de eficacia antioxidante antes de la absorción. La recomendación clínica es separar la aplicación de antioxidantes puros de productos que contengan quelantes fuertes, permitiendo un tiempo de absorción de 15 a 20 minutos para asegurar que el ácido L-ascórbico haya penetrado el estrato córneo sin interferencias químicas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido L-ascorbico",
+        "EDTA",
+        "acido fitico"
+      ],
+      "contraindications": [
+        "uso conjunto inmediato"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-optimizada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-perioral-004",
+    "title": "Dermatitis perioral y el riesgo de los fluoruros y lauril sulfatos",
+    "content": "La dermatitis perioral es una erupción inflamatoria crónica que afecta predominantemente la zona alrededor de la boca, caracterizada por pápulas eritematosas y pústulas sobre una base rosada. Aunque su etiología es multifactorial, existe evidencia creciente sobre el papel de los agentes irritantes presentes en productos de higiene personal. El lauril sulfato de sodio (SLS), un tensioactivo aniónico común en pastas dentales y limpiadores faciales, puede desestabilizar la barrera lipídica, facilitando la penetración de otros irritantes. Asimismo, el flúor, componente estándar en pastas dentales, ha sido vinculado en múltiples reportes dermatológicos con la exacerbación de la dermatitis perioral en pacientes susceptibles. La recomendación clínica para pacientes recurrentes es el cambio a pastas dentales libres de flúor y SLS durante las fases de brote. La barrera cutánea perioral es significativamente más delgada y permeable que la del resto del rostro, lo que la hace altamente vulnerable a la disrupción por detergentes fuertes. Es vital que el diagnóstico de GlowApp incluya una revisión de los hábitos de higiene oral, ya que a menudo los pacientes tratan la zona con corticoides tópicos, lo cual es contraindicado y suele provocar un efecto rebote severo al suspender el tratamiento.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30504-6/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fluoruro",
+        "SLS"
+      ],
+      "contraindications": [
+        "dermatitis perioral",
+        "uso de corticoides"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-isoflavonas-005",
+    "title": "Isoflavonas de soja: El debate sobre el impacto endocrino en la piel",
+    "content": "Las isoflavonas de soja, como la genisteína y la daidzeína, son fitoestrógenos que han ganado popularidad en el cuidado de la piel anti-aging debido a su capacidad para estimular la síntesis de colágeno y actuar como potentes antioxidantes. Sin embargo, su capacidad para interactuar con los receptores de estrógeno (ER-alfa y ER-beta) en la piel ha generado un debate sobre su seguridad en pacientes con antecedentes de patologías sensibles a hormonas, como el cáncer de mama. Aunque la absorción sistémica de los productos cosméticos tópicos es generalmente baja, la aplicación de altas concentraciones en áreas extensas del cuerpo podría teóricamente influir en el equilibrio hormonal. La AAD sugiere precaución en la recomendación de estos activos para pacientes con un historial clínico de neoplasias estrógeno-dependientes. Si bien la evidencia clínica actual no confirma un riesgo sistémico directo por uso tópico, el principio de precaución es fundamental en la curaduría clínica. Se debe evaluar el perfil de riesgo del paciente antes de integrar sueros concentrados de isoflavonas, prefiriendo alternativas que no tengan actividad estrogénica demostrada para lograr los beneficios antioxidantes deseados sin la preocupación por la disrupción endocrina potencial.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/23/19/11797",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mature"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "isoflavonas de soja",
+        "genisteina"
+      ],
+      "contraindications": [
+        "neoplasias estrogeno-dependientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "historia-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-glicerina-006",
+    "title": "La paradoja de la glicerina: Riesgos de deshidratación en climas extremos",
+    "content": "La glicerina es uno de los humectantes más eficaces y seguros en la cosmética, funcionando mediante la absorción de agua del entorno hacia el estrato córneo. No obstante, existe un fenómeno clínico poco comprendido por los usuarios: en condiciones de humedad relativa extremadamente baja (inferior al 20-30%), la glicerina puede invertir su mecanismo de acción. Si la concentración de glicerina en el producto es elevada y el aire es demasiado seco, existe el riesgo teórico de que la molécula extraiga agua de las capas más profundas de la epidermis (dermis) hacia la superficie cutánea, donde se evapora, provocando una deshidratación transepidérmica paradójica. Este riesgo es mayor en pacientes con barreras cutáneas ya comprometidas. En Bogotá, con variaciones constantes de humedad, este riesgo es moderado, pero debe considerarse al recomendar humectantes tipo 'puro' en climas más áridos durante los viajes. La clave para evitar este efecto es la oclusión: siempre se debe sellar la glicerina con ingredientes oclusivos (ceras, mantecas, siliconas) que impidan la evaporación del agua atraída, garantizando que el gradiente de hidratación se mantenga dentro de la piel y no hacia el exterior.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "dehydrated"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [
+        "baja humedad relativa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-optimizada"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-nitrosaminas-007",
+    "title": "El riesgo latente de nitrosaminas en ajustadores de pH (TEA, DIPA, TEA)",
+    "content": "Las aminas como la trietanolamina (TEA) y la diisopropanolamina (DIPA) son ampliamente utilizadas en cosmética para ajustar el pH de las emulsiones. El riesgo clínico asociado a estos ingredientes no es la toxicidad per se, sino la posibilidad de formación de nitrosaminas. Las nitrosaminas son compuestos cancerígenos que se forman cuando las aminas reaccionan con agentes nitrosantes (como ciertos conservantes que liberan formaldehído o contaminantes en las materias primas) bajo condiciones específicas de almacenamiento o formulación. Aunque las regulaciones cosméticas exigen límites estrictos y la adición de inhibidores para prevenir esta reacción, el riesgo aumenta en productos que han superado su fecha de caducidad o que han sido expuestos a altas temperaturas de forma prolongada. La recomendación experta es evitar productos con aminas en pacientes que presenten una alta sensibilidad química o un historial de cáncer, prefiriendo ajustadores de pH más inertes como el ácido cítrico o el hidróxido de sodio. La vigilancia del estado del producto (color, olor, fecha de vencimiento) es crítica en estos casos, ya que la degradación de la fórmula puede potenciar la formación de subproductos indeseados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/nitrosamines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trietanolamina",
+        "DIPA",
+        "aminas"
+      ],
+      "contraindications": [
+        "productos caducados",
+        "sensibilidad quimica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-acrilatos-008",
+    "title": "La epidemia de sensibilización cruzada por resinas de acrilatos en cosmética técnica",
+    "content": "Las resinas de acrilatos (metacrilatos) son polímeros utilizados extensamente en esmaltes de uñas semipermanentes, extensiones de pestañas y ciertos productos de fijación capilar. Existe una epidemia global de dermatitis de contacto alérgica derivada del uso de estos monómeros, especialmente cuando no se polimerizan completamente bajo lámparas UV. Una vez que un paciente desarrolla una alergia a un acrilato específico, existe un riesgo significativo de sensibilización cruzada a otros acrilatos utilizados en dispositivos médicos (como adhesivos de sensores de glucosa o parches médicos). La manifestación no se limita al sitio de aplicación; puede presentarse como dermatitis facial (por transferencia de manos a rostro) o incluso edema palpebral severo. Para el usuario de GlowApp, es vital reconocer que los productos etiquetados como 'hipoalergénicos' pueden contener derivados de acrilatos. La recomendación clínica es evitar el uso de cualquier producto con acrilatos en pacientes con antecedentes de dermatitis de contacto por esmaltes de uñas, y advertir sobre el riesgo de utilizar adhesivos técnicos sin la adecuada capacitación. La sensibilización a los acrilatos es, a menudo, permanente y limita severamente las opciones del paciente para futuros procedimientos estéticos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/content.php?page=dermatitis-guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "historial de alergias a esmaltes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  },
+  {
+    "chunk_id": "activos-cloruro-benzalconio-009",
+    "title": "Cloruro de benzalconio: Riesgos de disrupción severa del microbioma cutáneo",
+    "content": "El cloruro de benzalconio es un compuesto de amonio cuaternario utilizado como conservante y agente antimicrobiano en una variedad de productos cosméticos, desde limpiadores faciales hasta desinfectantes de manos. Aunque es eficaz para controlar la carga bacteriana, estudios recientes sobre el microbioma cutáneo indican que su uso crónico puede resultar en una disrupción significativa de la diversidad microbiana residente. La microbiota de la piel, compuesta por bacterias comensales como Staphylococcus epidermidis, es esencial para la integridad de la barrera cutánea y la defensa contra patógenos. El benzalconio, al ser un agente no selectivo, no distingue entre bacterias patógenas y beneficiosas, promoviendo un desequilibrio que puede exacerbar condiciones como el acné, la dermatitis atópica y la rosácea. Además, se ha reportado una creciente incidencia de dermatitis de contacto irritativa asociada a su uso en productos 'leave-on'. La recomendación clínica es limitar la exposición a este conservante, especialmente en pacientes con pieles reactivas o con barrera cutánea alterada, prefiriendo sistemas de conservación más modernos y menos agresivos con el microbioma, como los ácidos orgánicos o sistemas de envasado airless que minimizan la necesidad de conservantes potentes.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(22)00654-2/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "compromised"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio"
+      ],
+      "contraindications": [
+        "dermatitis atopica",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:17:56.187Z"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microbioma-quorum-sensing-001",
+    "title": "Maquillaje y el fenómeno del Quorum Sensing bacteriano en eventos de larga duración",
+    "content": "La estabilidad del microbioma cutáneo es fundamental durante eventos de larga duración donde el uso de maquillaje puede actuar como un sustrato para la proliferación bacteriana. El fenómeno de Quorum Sensing (QS) es un mecanismo de comunicación intercelular que permite a las bacterias coordinar comportamientos colectivos, como la formación de biopelículas, una vez que alcanzan una densidad crítica. El maquillaje, especialmente las bases oclusivas, puede crear microambientes con niveles de humedad y temperatura elevados que favorecen este proceso. Según estudios publicados en el Journal of Dermatological Science, el QS bacteriano en la superficie cutánea puede exacerbar condiciones inflamatorias como el acné o la dermatitis. Es crucial seleccionar productos con propiedades no comedogénicas y agentes antimicrobianos naturales que no alteren la diversidad del microbioma. La aplicación de capas finas y el uso de polvos matificantes con minerales inertes ayudan a minimizar el espacio intersticial donde las bacterias podrían proliferar. Durante eventos, la higiene previa con limpiadores de pH balanceado es indispensable para romper las biopelículas incipientes antes de la reaplicación.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(23)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc-oxide",
+        "silica"
+      ],
+      "contraindications": [
+        "dermatitis-activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:56.597Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-oxidativo-hev-002",
+    "title": "Maquillaje y protección contra el estrés oxidativo inducido por luz visible de alta energía (HEV)",
+    "content": "La luz visible de alta energía (HEV), emitida tanto por dispositivos digitales como por sistemas de iluminación avanzada en eventos, penetra más profundamente en la dermis que la radiación UV, generando especies reactivas de oxígeno (ERO) que contribuyen al fotoenvejecimiento prematuro. A diferencia de los protectores solares convencionales, muchos maquillajes requieren la incorporación de pigmentos específicos, como los óxidos de hierro tratados, para ofrecer una barrera física contra la luz azul. Investigaciones en PubMed subrayan que la exposición constante a HEV puede inducir hiperpigmentación post-inflamatoria, especialmente en fototipos altos. La técnica de aplicación debe priorizar la capa uniforme; el 'efecto parche' en la cobertura permite que la radiación alcance áreas vulnerables. Se recomienda el uso de primers con antioxidantes como vitamina C o E y polifenoles, que neutralizan los radicales libres generados por la luz artificial. GlowApp sugiere aplicar una capa de producto con protección HEV verificada, asegurando que la densidad del pigmento sea suficiente para bloquear la longitud de onda de 400-500 nm, previniendo así la degradación del colágeno cutáneo durante eventos sociales prolongados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "III",
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "iron-oxides",
+        "tocopherol",
+        "ascorbic-acid"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:56.597Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-realidad-extendida-007",
+    "title": "Maquillaje en entornos de realidad extendida (XR): Prevención de la dermatitis por oclusión térmica",
+    "content": "El uso prolongado de visores de realidad extendida (XR) en eventos tecnológicos genera un entorno de oclusión térmica y fricción mecánica que puede desencadenar dermatitis de contacto o foliculitis. El calor acumulado bajo el dispositivo aumenta la tasa de sudoración local, lo que altera la adherencia del maquillaje y puede favorecer la proliferación bacteriana. La oclusión persistente crea un ambiente hiperhídrico que debilita la función barrera de la piel. Para minimizar estos riesgos, es fundamental utilizar maquillajes de base mineral, ligeros y no oclusivos, que permitan la transpiración cutánea. Los productos con texturas en polvo o con alta concentración de pigmentos micronizados son preferibles a las bases líquidas pesadas. Según estudios sobre ergonomía cutánea en entornos de realidad virtual, la aplicación de polvos absorbentes de sudor antes de usar el visor ayuda a reducir la fricción. Es vital retirar el maquillaje inmediatamente después de la exposición al dispositivo para restaurar el equilibrio térmico. El uso de ingredientes con propiedades calmantes, como el bisabolol o la alantoína, en la rutina post-evento ayuda a mitigar la irritación inducida por la oclusión térmica prolongada y el estrés mecánico del dispositivo XR.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/dermatology-virtual-reality-exposure/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "allantoin"
+      ],
+      "contraindications": [
+        "acne-activo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-post-evento"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:56.597Z"
+  }
+]

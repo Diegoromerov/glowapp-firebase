@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "bio-sensores-impedancia-rf-002",
+    "title": "Análisis de Impedancia en Tiempo Real para la Optimización de Energía en Radiofrecuencia",
+    "content": "La variabilidad en la hidratación y composición iónica del tejido cutáneo representa el mayor desafío para la eficacia de la radiofrecuencia monopolar. La implementación de bio-sensores de impedancia en tiempo real permite ajustar la potencia de salida del dispositivo para mantener una temperatura subdérmica terapéutica sin riesgo de quemaduras. Estudios recientes en dermatología estética demuestran que la conductividad eléctrica de la piel cambia dinámicamente durante el procedimiento debido a la liberación de fluidos intersticiales y la alteración de la permeabilidad de la membrana lipídica. Al monitorear la impedancia, el especialista puede compensar estas variaciones, evitando zonas de 'hot spots' que comprometen la integridad de la grasa facial y el tejido conectivo. Este enfoque basado en datos no solo mejora la seguridad del paciente, sino que garantiza que la energía entregada sea constante a través de diferentes áreas faciales con distinta profundidad adiposa, optimizando así la retracción del septum y la uniformidad del tensado en todo el tercio inferior facial, minimizando el riesgo de edemas persistentes o necrosis grasa por sobrecalentamiento.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "implantes-metalicos-adyacentes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "radiofrecuencia-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:27:35.572Z"
+  },
+  {
+    "chunk_id": "electrolipolisis-focal-007",
+    "title": "Electrolipólisis Focal: Mecanismos y Seguridad en el Tejido Adiposo",
+    "content": "La electrolipólisis facial consiste en la aplicación de corrientes galvánicas de baja intensidad a través de microagujas para inducir la lipólisis en áreas de acúmulo graso, como el submentón o las bolsas malares. Este mecanismo actúa mediante la estimulación de los receptores beta-adrenérgicos y la activación de la lipasa sensible a hormonas, lo que resulta en la hidrólisis de los triglicéridos almacenados en los adipocitos. A diferencia de la liposucción, la electrolipólisis es mínimamente invasiva y permite un remodelado de precisión sin los riesgos asociados a la anestesia general o el trauma quirúrgico. La seguridad clínica depende estrictamente del control de la impedancia del tejido, para evitar el daño térmico de los septos fibrosos y asegurar que la corriente sea selectiva para el tejido adiposo. Los estudios sugieren que la combinación de esta técnica con drenaje linfático manual post-procedimiento es crucial para facilitar la eliminación de los ácidos grasos liberados a través del sistema linfático, previniendo la inflamación persistente y optimizando la definición del contorno mandibular de manera natural y progresiva.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology",
+        "url": "https://www.e-ijd.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "infecciones-cutaneas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "contorno-facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:27:35.572Z"
+  }
+]

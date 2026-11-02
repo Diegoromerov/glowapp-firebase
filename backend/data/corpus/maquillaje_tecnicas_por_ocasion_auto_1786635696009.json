@@ -1,0 +1,218 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entorno-anoxico-001",
+    "title": "Maquillaje en entornos de hipoxia hipobárica: Estabilidad y oclusión",
+    "content": "El maquillaje en entornos de baja presión, como cabinas de aeronaves o localizaciones de gran altitud, presenta desafíos únicos para la integridad de la barrera cutánea. La hipoxia hipobárica reduce la presión parcial de oxígeno en los tejidos, lo que puede alterar la microcirculación y favorecer el edema facial. Desde una perspectiva clínica, la desgasificación de ciertos componentes volátiles en emulsiones cosméticas puede generar micro-burbujas en la película de maquillaje, debilitando su estructura y favoreciendo la migración de pigmentos. Es imperativo utilizar bases con alta carga de polímeros filmógenos no oclusivos que permitan una respiración cutánea mínima pero constante. Estudios en PubMed sugieren que la pérdida de agua transepidérmica (TEWL) aumenta significativamente en estas condiciones, por lo que el uso de humectantes de bajo peso molecular es crítico antes de la aplicación del maquillaje. La falta de oxígeno acelera la fatiga cutánea, por lo que se recomienda evitar productos con alta concentración de aceites minerales que puedan exacerbar la oclusión folicular bajo presión reducida.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31823145/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros filmógenos",
+        "humectantes"
+      ],
+      "contraindications": [
+        "aceites minerales pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:41:17.989Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-fotodinamica-002",
+    "title": "Maquillaje y estabilidad frente a la luz de espectro variable",
+    "content": "La exposición a iluminación técnica con espectros variables, incluyendo luz azul de alta energía (HEV) y fuentes de luz artificial intensa en escenarios, induce la peroxidación lipídica en la superficie cutánea. Esta oxidación no solo altera el microbioma, sino que degrada prematuramente los pigmentos orgánicos presentes en el maquillaje, causando un viraje de color (metamerismo). La AAD (American Academy of Dermatology) ha subrayado la importancia de los antioxidantes tópicos como barrera física contra la radiación no ionizante. Para eventos de larga duración bajo este tipo de iluminación, se recomienda el uso de primers enriquecidos con óxido de hierro y dióxido de titanio de grado cosmético, que actúan como reflectores de espectro. La gestión del metamerismo requiere una selección de tonos bajo condiciones de luz controlada similares a las del evento, evitando la dependencia exclusiva de la luz diurna para el testeo de color, minimizando así el riesgo de una apariencia no deseada durante la exposición a fuentes de luz artificial intensa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/sun/blue-light",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxido de hierro",
+        "dióxido de titanio",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_solar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:41:17.989Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-neuroestres-003",
+    "title": "Neurocosmética: Gestión de la respuesta sensorial al maquillaje",
+    "content": "La neurocosmética aplicada al maquillaje para eventos de alta carga emocional busca mitigar la respuesta de estrés sensorial, que puede manifestarse como eritema reactivo o prurito. En situaciones de estrés, la liberación de neuropéptidos como la sustancia P puede aumentar la sensibilidad cutánea y reducir la adherencia de productos cosméticos debido a la alteración del pH y la sudoración inducida por cortisol. El uso de ingredientes con propiedades calmantes, como el bisabolol o extractos de avena coloidal, es fundamental para estabilizar la barrera cutánea antes de la aplicación. La técnica de 'maquillaje de bajo impacto sensorial' implica el uso de texturas ligeras y transpirables, evitando agentes oclusivos que intensifiquen la sensación de calor local, lo cual es un disparador frecuente de dermatitis de contacto por fricción. La literatura en dermatología experimental destaca que la reducción de la estimulación táctil innecesaria durante la aplicación ayuda a mantener la homeostasis de la barrera frente a los cambios metabólicos generados por la alta carga emocional del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "avena coloidal"
+      ],
+      "contraindications": [
+        "fragancias irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "neurocosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:41:17.989Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-biomarcadores-004",
+    "title": "Interacción de pigmentos ferromagnéticos y diagnóstico médico",
+    "content": "El uso de maquillaje con partículas metálicas, como óxidos de hierro de alta pureza o pigmentos perlados, plantea desafíos en entornos médicos como el acceso a resonancias magnéticas (MRI). Aunque la mayoría de los cosméticos modernos son seguros, los pigmentos ferromagnéticos pueden causar artefactos en la imagen o, en casos extremos, calentamiento local por inducción. En eventos donde se requiera contacto con equipos médicos de alta tecnología, es fundamental optar por fórmulas libres de pigmentos metálicos conductores. La AAD señala que la integridad de la piel debe ser evaluada antes de cualquier procedimiento que involucre campos electromagnéticos, especialmente si el maquillaje ha sido aplicado sobre áreas de piel con compromiso previo o cicatrices recientes. La curaduría clínica debe priorizar la verificación de la composición mineral del producto. Los pigmentos de origen mineral natural, si no están debidamente encapsulados, pueden presentar impurezas que incrementan la conductividad, siendo un factor de riesgo en entornos de alta radiación electromagnética o diagnóstico por imagen avanzado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales",
+        "óxidos de hierro"
+      ],
+      "contraindications": [
+        "pigmentos metálicos ferromagnéticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:41:17.989Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-deshidratacion-005",
+    "title": "Estrategias de retención hídrica en entornos de deshidratación osmótica",
+    "content": "En entornos de deshidratación osmótica, como ferias industriales o ambientes con alta concentración de contaminantes, la piel pierde humedad de manera acelerada. El maquillaje, si no está formulado correctamente, puede actuar como un factor que facilita la pérdida de agua al no sellar adecuadamente la barrera. La técnica recomendada implica el uso de selladores basados en ácido hialurónico de alto peso molecular que formen una película oclusiva pero no comedogénica. Investigaciones en PubMed sobre la integridad de la barrera cutánea demuestran que la aplicación de oclusivos antes del maquillaje reduce la TEWL en un 15-20% durante las primeras 4 horas. Es vital evitar el uso de polvos matificantes en exceso, ya que estos pueden absorber la humedad residual de la epidermis, intensificando el efecto de tirantez y facilitando la formación de micro-fisuras en la capa de maquillaje, lo cual compromete la protección contra agentes externos. La selección de un vehículo de base tipo emulsión agua-en-aceite es preferible en estas condiciones para mantener la flexibilidad de la película cosmética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28362617/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "deshidratada",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "emulsiones agua-en-aceite"
+      ],
+      "contraindications": [
+        "polvos matificantes en exceso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:41:17.989Z"
+  }
+]

@@ -1,0 +1,314 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Glucocorticoides tópicos de alta potencia: riesgos de atrofia cutánea",
+    "content": "El uso prolongado de corticosteroides tópicos de alta potencia, como el propionato de clobetasol, sin supervisión médica, representa un riesgo crítico de atrofia cutánea iatrogénica. Este fenómeno ocurre debido a la inhibición de la síntesis de colágeno y la proliferación de fibroblastos en la dermis, lo que adelgaza el estrato córneo y debilita la integridad estructural de la piel. Clínicamente, esto se manifiesta como telangiectasias permanentes, estrías atróficas y una mayor susceptibilidad a infecciones oportunistas. La Academia Americana de Dermatología (AAD) enfatiza que los pacientes deben ser educados sobre la regla de la 'punta del dedo' y la limitación estricta de los días de aplicación. La interrupción abrupta tras un uso crónico puede desencadenar un efecto rebote severo, caracterizado por eritema, ardor y pústulas, conocido como dermatitis inducida por esteroides. Es imperativo que en la rutina de cuidado de la piel, cualquier indicio de inflamación persistente sea evaluado por un dermatólogo antes de recurrir a estos compuestos, evitando la automedicación que perpetúa el daño de la barrera cutánea a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/topical-corticosteroids",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticosteroides"
+      ],
+      "contraindications": [
+        "uso prolongado sin supervisión",
+        "atrofia cutánea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Ácido Salicílico y el riesgo de salicilismo por absorción sistémica",
+    "content": "Aunque el ácido salicílico (BHA) es un estándar de oro para el control del acné y la queratosis pilar, su uso extensivo en áreas corporales amplias conlleva el riesgo de toxicidad sistémica, conocida como salicilismo. Este riesgo es particularmente relevante cuando se aplica en concentraciones elevadas (superiores al 10%) en pacientes con insuficiencia renal o hepática, o en casos de aplicación sobre piel erosionada o inflamada. La absorción percutánea puede elevar los niveles plasmáticos de salicilato, provocando síntomas como acúfenos, náuseas, confusión y, en casos extremos, acidosis metabólica. Según la literatura indexada en PubMed, el riesgo aumenta exponencialmente si se utiliza bajo oclusión. Los usuarios deben ser advertidos de no combinar múltiples productos que contengan BHA en toda la superficie corporal simultáneamente. Para el manejo de acné corporal, se recomienda limitar el área de aplicación y monitorear signos de toxicidad sistémica, especialmente en adolescentes y pacientes con barrera cutánea comprometida. La seguridad del ingrediente depende estrictamente de la superficie de aplicación y la integridad del estrato córneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31535780/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adolescentes",
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico"
+      ],
+      "contraindications": [
+        "insuficiencia renal",
+        "aplicación en grandes áreas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Hidroquinona y el riesgo de ocronosis exógena por uso crónico",
+    "content": "La hidroquinona sigue siendo el tratamiento tópico más potente para la hiperpigmentación, pero su perfil de seguridad está estrictamente ligado al tiempo de uso. El uso prolongado, más allá de los 3 a 6 meses recomendados, puede inducir ocronosis exógena, una condición dermatológica caracterizada por una pigmentación azul-grisácea paradójica y a menudo irreversible, causada por la acumulación de polímeros de ácido homogentísico en la dermis. La IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) advierte que este efecto no solo es cosméticamente devastador, sino también histológicamente complejo de tratar. La contraindicación radica no solo en la concentración, sino en la falta de ciclos de descanso. Los pacientes que inician terapias con hidroquinona deben estar bajo supervisión dermatológica para implementar periodos de 'descanso' de al menos 8 semanas. La automedicación con formulaciones magistrales no controladas es la principal causa de esta complicación en Colombia, donde la regulación sobre la venta libre de estos compuestos es a menudo insuficiente. La educación al usuario sobre la duración finita del tratamiento es la estrategia de prevención primaria más efectiva.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/articles/123",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hidroquinona"
+      ],
+      "contraindications": [
+        "uso prolongado",
+        "falta de supervisión médica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hiperpigmentacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "Psoralenos en botánica: El riesgo de fototoxicidad severa",
+    "content": "El auge de la cosmética 'natural' ha introducido ingredientes derivados de plantas que, aunque se perciben como inofensivos, pueden contener psoralenos. Estos compuestos son potentes agentes fotosensibilizantes que, al entrar en contacto con la piel y exponerse a la radiación UVA, desencadenan una reacción fototóxica grave denominada fitofotodermatitis. Ingredientes como el aceite de bergamota, el zumo de lima, el apio o ciertas hierbas de la familia Apiaceae y Rutaceae contienen furanocumarinas que se activan con el sol, provocando eritema intenso, ampollas y una hiperpigmentación post-inflamatoria que puede durar meses. La Organización Mundial de la Salud (OMS) ha documentado casos donde el uso de aceites esenciales cítricos antes de la exposición solar resultó en quemaduras químicas severas. Es vital que los usuarios de GlowApp entiendan que 'natural' no es sinónimo de 'seguro' en términos de fotobiología. Recomendamos encarecidamente evitar la aplicación de cualquier producto que contenga extractos botánicos de cítricos o plantas fotosensibilizantes en áreas que estarán expuestas al sol sin una protección solar de amplio espectro rigurosa y reaplicación frecuente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ultraviolet-radiation",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "psoralenos",
+        "aceite de bergamota",
+        "limoneno"
+      ],
+      "contraindications": [
+        "exposición solar",
+        "piel reactiva"
+      ],
+      "season": [
+        "verano",
+        "todo el año"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Tensioactivos Aniónicos (SLS/SLES) y la desnaturalización proteica",
+    "content": "Los tensioactivos aniónicos como el Lauril Sulfato de Sodio (SLS) y el Laureth Sulfato de Sodio (SLES) son agentes de limpieza extremadamente eficaces, pero su capacidad para desnaturalizar las proteínas del estrato córneo es una preocupación clínica constante. El SLS, en particular, tiene un potencial irritativo elevado debido a su capacidad para penetrar en las capas superficiales de la epidermis y alterar la barrera lipídica, aumentando la pérdida de agua transepidérmica (TEWL). Estudios publicados en revistas dermatológicas demuestran que el uso crónico de limpiadores con pH alcalino y alta concentración de SLS puede inducir una dermatitis irritativa de contacto y exacerbar condiciones como el eccema o la rosácea. La clave para una limpieza segura no es la eliminación total de los sulfatos, sino el equilibrio en la formulación: la presencia de surfactantes anfóteros o no iónicos puede mitigar la irritación del SLS. En GlowApp, promovemos la transición hacia limpiadores con pH fisiológico (5.5) y tensioactivos suaves (como los glucósidos o sarcosinatos) para preservar el microbioma cutáneo y la integridad de la función barrera a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(22)00001-X",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "SLS",
+        "SLES"
+      ],
+      "contraindications": [
+        "eccema",
+        "rosacea",
+        "barrera cutanea dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Niacinamida: El riesgo de conversión a ácido nicotínico y eritema",
+    "content": "La niacinamida es un activo versátil, pero su estabilidad es altamente dependiente del pH de la formulación. En condiciones de pH ácido (especialmente por debajo de 5.0), la niacinamida puede hidrolizarse y convertirse en ácido nicotínico. El ácido nicotínico es un vasodilatador potente que, al ser aplicado tópicamente, provoca un eritema inmediato, ardor y sensación de calor, conocido como 'flush' o enrojecimiento. Este fenómeno es particularmente frecuente cuando los usuarios combinan sueros de niacinamida de alta concentración con productos ácidos como el ácido ascórbico (Vitamina C pura) o peelings químicos sin respetar el tiempo de espera necesario. Aunque no es una toxicidad sistémica, el malestar resultante puede ser severo para pieles reactivas o con rosácea. Para evitar este efecto, se recomienda buscar formulaciones con una tecnología de estabilidad adecuada o esperar al menos 15-20 minutos entre la aplicación de productos con pH significativamente diferentes. La recomendación de 'más es mejor' en niacinamida (concentraciones >10%) no ofrece beneficios adicionales probados y, por el contrario, incrementa el riesgo de esta reacción por inestabilidad del pH.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6487501/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida"
+      ],
+      "contraindications": [
+        "rosacea",
+        "combinacion con acidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-diaria"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "Resinas de Acrilatos en cosmética técnica: Riesgo de sensibilización cruzada",
+    "content": "Las resinas de acrilatos y metacrilatos son componentes fundamentales en esmaltes de uñas semipermanentes, extensiones de pestañas y ciertos adhesivos cosméticos. Su uso ha crecido exponencialmente, pero también lo ha hecho la incidencia de dermatitis de contacto alérgica, no solo en los dedos, sino en el rostro y párpados debido a la transferencia accidental (toque-mano-cara). La sensibilización a los acrilatos es un problema de salud ocupacional y cosmética, ya que una vez que el sistema inmunológico reconoce estos compuestos como alérgenos, el individuo puede desarrollar reacciones cruzadas a otros productos médicos, como adhesivos quirúrgicos o materiales dentales. Los síntomas incluyen edema palpebral severo, descamación y prurito intenso. Es crucial que los usuarios entiendan que el curado incompleto bajo lámparas UV aumenta drásticamente el riesgo de liberación de monómeros sensibilizantes. Se recomienda evitar el uso prolongado de productos que requieran polimerización UV en casa y, ante cualquier signo de reacción, suspender el uso inmediatamente y consultar un alergólogo para determinar la extensión de la sensibilización cruzada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "DermNet NZ",
+        "url": "https://dermnetnz.org/topics/acrylates",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "sensibilizacion previa",
+        "dermatitis palpebral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:37.317Z"
+  }
+]

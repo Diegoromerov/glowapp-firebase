@@ -1,0 +1,218 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001-hidradenitis-nutricion",
+    "title": "Eje intestino-piel: Impacto de la carga glucémica en la Hidradenitis Supurativa",
+    "content": "La Hidradenitis Supurativa (HS) se asocia frecuentemente con desórdenes metabólicos, incluyendo resistencia a la insulina y obesidad. Investigaciones publicadas en el Journal of the American Academy of Dermatology sugieren que la hiperinsulinemia puede estimular la hiperqueratosis folicular y la inflamación mediada por citoquinas proinflamatorias como TNF-alfa. La reducción de la carga glucémica en la dieta no solo mejora la sensibilidad a la insulina, sino que puede disminuir la severidad de los brotes al modular la respuesta inflamatoria sistémica. Clínicamente, se recomienda una dieta con bajo índice glucémico para pacientes con fenotipos axilares e inguinales recurrentes. La evidencia indica que la restricción de lácteos y azúcares refinados puede reducir la frecuencia de las lesiones en un subgrupo significativo de pacientes, posiblemente debido a la reducción del factor de crecimiento insulínico tipo 1 (IGF-1), que promueve la proliferación de queratinocitos en el infundíbulo folicular.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/hidradenitis-suppurativa-self-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dietas restrictivas sin supervisión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-integral-hs"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:09:24.989Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002-microbioma-sudoracion",
+    "title": "Disbiosis por oclusión: El rol del sudor en el microbioma corporal",
+    "content": "El sudor eccrino, aunque estéril inicialmente, se convierte en un sustrato rico para el crecimiento bacteriano cuando queda atrapado bajo condiciones de oclusión, como en pliegues cutáneos o mediante ropa sintética. La alteración del pH cutáneo, que tiende a la alcalinización debido a la presencia de lactato y urea en el sudor, favorece la proliferación de especies como Corynebacterium y Staphylococcus aureus, desplazando a la microbiota comensal protectora. Este fenómeno es un precursor crítico para el desarrollo de intertrigo y dermatitis de contacto irritativa. La gestión clínica debe enfocarse en mantener la transpirabilidad y el uso de agentes limpiadores con pH fisiológico (5.5) para preservar la función barrera. La literatura actual enfatiza que el uso excesivo de antisépticos puede ser contraproducente, ya que elimina no solo los patógenos sino también las bacterias que producen péptidos antimicrobianos endógenos, debilitando aún más la resiliencia cutánea local ante agentes externos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32549321/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "humectantes"
+      ],
+      "contraindications": [
+        "antisépticos agresivos"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "higiene-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:09:24.989Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003-fotoproteccion-cicatrices",
+    "title": "Fotoprotección en cicatrices corporales: El riesgo de hiperpigmentación actínica",
+    "content": "Las cicatrices corporales, especialmente aquellas en fase de remodelación (hasta 18 meses post-lesión), presentan una arquitectura de colágeno desorganizada y una melanogénesis disfuncional. La exposición a la radiación ultravioleta (UVA/UVB) sin protección adecuada en tejido cicatricial induce una hiperpigmentación postinflamatoria permanente debido a la falta de melanocitos funcionales que regulen la distribución de melanina. Además, la radiación infrarroja (IR) y la luz visible de alta energía (HEV) contribuyen al estrés oxidativo que retrasa la maduración de la cicatriz. Se recomienda el uso de filtros solares físicos (óxido de zinc o dióxido de titanio) en cicatrices, ya que ofrecen una barrera física estable sin riesgo de absorción sistémica de químicos potencialmente irritantes. Es fundamental aplicar fotoprotección incluso a través de tejidos ligeros, ya que la mayoría de las prendas comunes tienen un factor de protección ultravioleta (UPF) insuficiente, permitiendo que la radiación afecte la coloración final de la cicatriz.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32485-6/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "oxido_de_zinc",
+        "dioxido_de_titanio"
+      ],
+      "contraindications": [
+        "filtros solares químicos irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:09:24.989Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-004-disrupcion-lipidica",
+    "title": "Disrupción de la barrera lipídica por tensoactivos aniónicos",
+    "content": "La integridad de la barrera cutánea corporal depende críticamente de la organización de los lípidos intercelulares (ceramidas, colesterol y ácidos grasos libres). El uso recurrente de tensoactivos aniónicos, como el lauril sulfato de sodio, comúnmente presentes en jabones en barra tradicionales, provoca la desnaturalización de las proteínas del estrato córneo y la solubilización de los lípidos cutáneos. Este proceso de 'lavado' excesivo no solo reduce la capacidad de retención de agua, sino que incrementa la pérdida de agua transepidérmica (TEWL), facilitando la entrada de alérgenos y microorganismos. Para pacientes con piel sensible o xerosis, la recomendación clínica es la transición hacia limpiadores sintéticos (syndets) con pH ajustado entre 5.0 y 5.5. Estos limpiadores minimizan el hinchamiento de los corneocitos y preservan la estructura del manto ácido. La evidencia muestra que la restauración de la barrera lipídica puede tardar hasta 6 horas después de un lavado agresivo, tiempo durante el cual la piel es altamente vulnerable a la irritación.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "jabones alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:09:24.989Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-005-elastosis-perifolicular",
+    "title": "Fisiopatología de la elastosis perifolicular en glúteos",
+    "content": "La elastosis perifolicular en la región glútea es una manifestación del daño actínico crónico y la fricción mecánica repetida sobre las fibras de elastina alrededor de los folículos pilosos. A diferencia de la queratosis pilaris, esta condición se caracteriza por una degeneración basofílica del tejido conectivo peri-folicular visible como pápulas amarillentas o blanquecinas. El mecanismo principal es la degradación de la matriz extracelular por metaloproteinasas inducidas por el estrés mecánico y la exposición solar. El tratamiento clínico requiere un enfoque dual: la protección solar de la zona (frecuentemente olvidada) y la aplicación de agentes queratolíticos suaves como el ácido láctico o la urea en concentraciones del 10-20% para mejorar la textura, seguidos de hidratantes reparadores con ceramidas para restaurar la cohesión del estrato córneo. Es imperativo evitar la exfoliación mecánica intensa (scrubs) en estas zonas, ya que el trauma adicional exacerba la inflamación y la degeneración elástica, empeorando el aspecto clínico de la piel a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "acido_lactico",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "exfoliacion mecanica agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:09:24.989Z"
+  }
+]

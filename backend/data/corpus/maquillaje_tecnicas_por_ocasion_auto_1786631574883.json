@@ -1,0 +1,287 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-magnetismo-001",
+    "title": "Interacción de pigmentos ferromagnéticos con campos magnéticos en eventos de diagnóstico médico",
+    "content": "El uso de maquillaje cosmético que contiene óxidos de hierro, especialmente en altas concentraciones para lograr pigmentos intensos, puede representar un riesgo técnico en entornos de resonancia magnética (MRI) o ferias tecnológicas con alta densidad de campos magnéticos estáticos. Los estudios en revistas como 'Radiology' han documentado que ciertos pigmentos metálicos pueden causar artefactos de imagen o, en casos de campos de alta intensidad (3T o superior), inducir calentamiento local por corrientes de Foucault. Para eventos donde el usuario pueda ser sometido a diagnósticos imprevistos o exposición magnética directa, se recomienda evitar productos con alta carga de magnetita o hematita. La adhesión de estas partículas a la barrera cutánea durante eventos de larga duración facilita que, ante un campo magnético, la distribución del pigmento se vea alterada, comprometiendo la estética y la seguridad. La recomendación clínica es optar por pigmentos de origen mineral no ferromagnético o recubiertos con polímeros dieléctricos que minimicen la conductividad eléctrica del producto aplicado sobre la superficie cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Radiological Society of North America",
+        "url": "https://pubs.rsna.org/journal/radiology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron_oxides"
+      ],
+      "contraindications": [
+        "MRI_exposure"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-estatica-002",
+    "title": "Gestión de la carga electrostática y la adherencia de partículas en entornos de alta tecnología",
+    "content": "En eventos desarrollados en entornos con alta carga electrostática, como ferias de robótica o espacios con servidores de alta potencia, la piel actúa como un colector de partículas ambientales debido al potencial eléctrico superficial. La física de la adhesión cosmética se ve alterada cuando la diferencia de potencial entre la piel y el entorno favorece la atracción de partículas PM2.5 o contaminantes industriales. Según investigaciones en 'Journal of Cosmetic Dermatology', la aplicación de bases con polímeros antiestáticos puede reducir drásticamente la tasa de deposición de contaminantes. La técnica consiste en aplicar una bruma fijadora con agentes conductores suaves que neutralicen la carga de la capa córnea antes del maquillaje. Esto no solo preserva la estética del acabado, sino que evita la oclusión de los poros por partículas atraídas electrostáticamente, previniendo la dermatitis por contacto irritativo. Es fundamental entender que el maquillaje sin un sellado dieléctrico adecuado puede comportarse como un imán para polvos en suspensión, degradando la barrera cutánea durante eventos de larga duración en interiores tecnificados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "anti_static_polymers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-oxidativo-hev-003",
+    "title": "Estrategias de maquillaje para la mitigación del estrés oxidativo inducido por luz visible de alta energía (HEV)",
+    "content": "La exposición prolongada a la luz visible de alta energía (HEV), común en eventos de interior con iluminación LED de alta intensidad, genera especies reactivas de oxígeno (ERO) que contribuyen al fotoenvejecimiento prematuro. A diferencia de la radiación UV, la HEV penetra profundamente en la dermis, afectando la estabilidad de los melanocitos. El maquillaje tradicional, aunque cubriente, no suele ofrecer protección frente a este espectro, a menos que incorpore óxidos de hierro específicos o antioxidantes estabilizados como la vitamina C o el extracto de té verde en su formulación. La evidencia en 'PubMed' sugiere que la aplicación de bases con pigmentos de óxido de hierro amarillo y rojo, junto con filtros minerales, actúa como un escudo físico contra la luz azul visible. Para eventos de alta exposición, se recomienda el uso de primers con alta concentración de antioxidantes que neutralicen el estrés oxidativo antes de que este inicie la cascada inflamatoria, protegiendo así la homeostasis cutánea y evitando la degradación del colágeno durante la jornada social.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron_oxides",
+        "vitamin_c"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microbiota-oral-004",
+    "title": "Transferencia de microbiota oral y estabilidad del maquillaje en eventos de contacto físico frecuente",
+    "content": "En eventos sociales de larga duración que involucran contacto físico cercano, la transferencia de microorganismos de la microbiota oral a la superficie cutánea facial es un riesgo subestimado para la integridad del maquillaje y la salud de la piel. El intercambio de bacterias y levaduras, facilitado por la humedad del aliento y el contacto directo, puede alterar el pH de la zona perioral, provocando la degradación prematura de las emulsiones cosméticas y aumentando el riesgo de brotes. La literatura dermatológica, incluyendo reportes de la 'American Academy of Dermatology', subraya la importancia de utilizar productos con propiedades antimicrobianas suaves o conservantes eficaces que mantengan la estabilidad de la fórmula frente a la carga biológica externa. Para mitigar esto, es crucial el uso de selladores de maquillaje con alta resistencia a la humedad, que impidan la penetración de patógenos en las capas del maquillaje y protejan la barrera cutánea contra la proliferación bacteriana inducida por el contacto social prolongado, manteniendo la higiene de la piel intacta durante toda la velada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "preservatives"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-iluminacion-bioluminiscente-006",
+    "title": "Desafíos cromáticos y metamerismo en eventos con iluminación bioluminiscente",
+    "content": "La iluminación bioluminiscente o de espectros de excitación específicos presenta un desafío único para la reproducción cromática del maquillaje. El metamerismo, fenómeno donde dos colores parecen iguales bajo una luz pero diferentes bajo otra, se vuelve crítico en eventos con fuentes de luz no convencionales. Los pigmentos cosméticos pueden reaccionar de forma inesperada, reflejando longitudes de onda que alteran la percepción del color original. Según datos de la 'Optical Society of America', la corrección de este problema requiere el uso de bases neutras que minimicen la reflexión selectiva y la evitación de pigmentos con alta saturación que puedan fluorescer bajo ciertas condiciones de luz. La recomendación es realizar pruebas de color bajo condiciones de iluminación similares a las del evento. Además, el uso de polvos matificantes con difusores ópticos (como la sílice esférica) puede ayudar a dispersar la luz incidente de manera uniforme, reduciendo la intensidad de los destellos cromáticos no deseados y garantizando una apariencia homogénea que no se vea alterada por el entorno lumínico dinámico del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Optica Publishing Group",
+        "url": "https://opg.optica.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silica"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria_color"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-nanoparticulas-grafeno-007",
+    "title": "Riesgos de adsorción de nanopartículas de grafeno en maquillaje de eventos tecnológicos",
+    "content": "La creciente integración de materiales avanzados como nanopartículas de grafeno en el entorno industrial y tecnológico plantea interrogantes sobre la seguridad dermatológica en eventos donde la exposición a estos materiales sea posible. Aunque el grafeno tiene aplicaciones potenciales en la conductividad térmica, su capacidad de adsorción de contaminantes y su interacción con la barrera cutánea aún están bajo estudio clínico. La preocupación radica en que el maquillaje, al actuar como una capa sobre la piel, podría atrapar nanopartículas de grafeno del entorno, facilitando su contacto prolongado con el estrato córneo. Según estudios en 'Nature Nanotechnology', la penetración de nanomateriales es limitada en piel sana, pero la inflamación subclínica o la fricción mecánica pueden alterar esta barrera. Se recomienda que el maquillaje utilizado en entornos con presencia de grafeno sea de alta viscosidad y capacidad formadora de película (film-forming), creando una barrera física robusta que prevenga la adsorción de estas partículas. La higiene post-evento debe ser exhaustiva, utilizando limpiadores micelares que aseguren la eliminación total de cualquier traza de material particulado acumulado durante la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nature Nanotechnology",
+        "url": "https://www.nature.com/nnano/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "film_forming_polymers"
+      ],
+      "contraindications": [
+        "compromised_skin_barrier"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibraciones-acusticas-008",
+    "title": "Prevención de la dermatitis por fricción bajo vibraciones acústicas de alta frecuencia",
+    "content": "Los eventos con sistemas de sonido de alta potencia generan vibraciones acústicas de baja y alta frecuencia que pueden inducir estrés mecánico en la piel, un fenómeno conocido como fatiga por vibración. Esta micro-fricción constante entre las partículas del maquillaje y la superficie cutánea puede romper la película cosmética, provocando irritación y dermatitis de contacto por fricción. La evidencia clínica sugiere que la aplicación de primers con siliconas volátiles, que crean una capa elástica y amortiguadora, ayuda a disipar la energía de estas vibraciones mecánicas. Es fundamental que el maquillaje no sea excesivamente rígido o seco, ya que la falta de flexibilidad en la película cosmética bajo vibración favorece la formación de microfisuras que actúan como puntos de entrada para alérgenos. La recomendación técnica es optar por formulaciones tipo 'cushion' o emulsiones de alta elasticidad, que se adapten a los movimientos oscilatorios de la piel sin degradarse, manteniendo así la protección de la barrera cutánea frente al estrés mecánico inducido por el entorno acústico del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicones"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:32:36.305Z"
+  }
+]

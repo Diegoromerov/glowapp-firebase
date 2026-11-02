@@ -1,0 +1,240 @@
+[
+  {
+    "chunk_id": "diagnostico_capilar-1786384643325-1-ad21a917-analisis-de-la-impedancia-de-transferencia-en-la-interfase-f",
+    "title": "Análisis de la Impedancia de Transferencia en la Interfase Folicular",
+    "content": "La impedancia de transferencia en la interfase entre el ostium folicular y el estrato córneo circundante constituye un biomarcador crítico para la evaluación de la integridad de la barrera cutánea. A diferencia de la impedancia convencional, este parámetro mide la capacidad de respuesta del tejido ante estímulos eléctricos de baja frecuencia, permitiendo detectar micro-disrupciones en la barrera lipídica antes de que se manifiesten clínicamente como efluvios o descamación. La técnica se basa en la aplicación de un gradiente de potencial controlado que evalúa la conductancia iónica a través de los canales del folículo. Una disminución en la impedancia de transferencia sugiere una pérdida de la homeostasis iónica y una mayor permeabilidad a patógenos ambientales. Este enfoque permite diagnosticar estados de inflamación subclínica mediante la cuantificación de la resistencia eléctrica, proporcionando una métrica objetiva para el monitoreo de la resiliencia folicular frente a agresiones externas. La integración de estos datos en modelos predictivos permite ajustar la dosificación de activos tópicos, optimizando la biodisponibilidad en el nicho del bulbo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38219402/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:57:23.325Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786384643325-2-1e879824-dinamica-de-la-corriente-de-desplazamiento-en-la-cuticula-ca",
+    "title": "Dinámica de la Corriente de Desplazamiento en la Cutícula Capilar",
+    "content": "La cutícula capilar actúa como un dieléctrico natural cuya capacidad de almacenamiento de carga eléctrica, o corriente de desplazamiento, se ve alterada por el daño estructural inducido por factores ambientales. El análisis de la constante dieléctrica a través de espectroscopía de alta frecuencia permite mapear la degradación de las capas de lípidos 18-MEA (ácido 18-metileicosanoico) que recubren la fibra. Cuando la cutícula pierde su integridad, la respuesta a campos eléctricos oscilatorios cambia, reflejando una mayor porosidad y una menor capacidad de repulsión electrostática entre fibras. Este diagnóstico biofísico permite cuantificar con precisión el grado de fotodegradación y el desgaste mecánico sin necesidad de microscopía electrónica invasiva. Al medir la pérdida de fase en la señal eléctrica, es posible determinar la profundidad del daño en la corteza y la eficacia de los tratamientos de sellado cuticular. Este método ofrece una ventaja competitiva al proporcionar una evaluación cuantitativa y no destructiva de la salud estructural del tallo, esencial para personalizar protocolos de reparación capilar en entornos urbanos de alta polución.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_fibra"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:57:23.325Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786384643325-3-d3d24d52-analisis-de-la-fluctuacion-de-la-presion-de-sebo-en-el-ostiu",
+    "title": "Análisis de la Fluctuación de la Presión de Sebo en el Ostium",
+    "content": "La obstrucción del canal folicular por sebo oxidado no es un proceso estático, sino un fenómeno dinámico influenciado por la viscosidad del sebo y la presión ejercida por el músculo erector del pelo. Utilizando micro-sensores de presión de estado sólido, es posible monitorizar la fluctuación de la presión en el ostium folicular durante el ciclo de secreción sebácea. Un aumento en la presión de flujo indica una posible formación de tapones de queratina y lípidos, lo que compromete la oxigenación del bulbo y altera el microambiente de las células madre del bulge. Este diagnóstico permite identificar tempranamente la obstrucción folicular antes de que ocurra la miniaturización asociada a la alopecia androgenética. La correlación entre la viscosidad del sebo (determinada por su perfil de ácidos grasos) y la presión de salida del conducto permite predecir la probabilidad de inflamación perifolicular. Implementar este análisis permite intervenir con agentes queratolíticos o reguladores de la secreción lipídica de manera focalizada, restaurando la dinámica de flujo natural y previniendo el estrés mecánico sobre la vaina radicular externa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hair-disorders",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_sebo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:57:23.325Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786384643325-4-a03ea4b8-evaluacion-de-la-resonancia-mecanica-en-la-vaina-radicular",
+    "title": "Evaluación de la Resonancia Mecánica en la Vaina Radicular",
+    "content": "La vaina radicular externa (VRE) funciona como un sistema mecánico que transmite fuerzas desde el cuero cabelludo hasta el bulbo piloso. Mediante la aplicación de vibraciones mecánicas de baja amplitud y alta frecuencia, se puede medir la respuesta de resonancia del folículo. Una alteración en la frecuencia de resonancia natural de la VRE es un indicador temprano de rigidez fibrilar, a menudo provocada por la acumulación de productos de glicación avanzada (AGEs) en la matriz extracelular. Este método de elastografía dinámica permite distinguir entre una alopecia cicatricial en fase inicial y una alopecia no cicatricial, al detectar cambios en la viscoelasticidad del tejido perifolicular que no son visibles mediante tricoscopia estándar. La capacidad de evaluar la integridad mecánica del nicho folicular in vivo proporciona una métrica de resiliencia estructural, permitiendo predecir la capacidad de regeneración del folículo ante estímulos terapéuticos. Este enfoque biofísico es fundamental para el diseño de estrategias de medicina regenerativa que buscan restaurar la elasticidad del entorno del folículo y mejorar la anclaje de la fibra capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2024",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "inflamación aguda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_biomecanico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:57:23.325Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786384643325-5-ae5ba24b-bioelectromagnetismo-y-potencial-de-membrana-en-el-nicho-fol",
+    "title": "Bioelectromagnetismo y Potencial de Membrana en el Nicho Folicular",
+    "content": "El nicho folicular mantiene un potencial de membrana en reposo que es esencial para la señalización celular y la activación de las células madre del bulge. La medición del bioelectromagnetismo local, mediante sensores de efecto Hall de alta sensibilidad, permite detectar desviaciones en el potencial de membrana que preceden a la entrada del folículo en la fase catágena prematura. Estas variaciones en el campo electromagnético endógeno están estrechamente vinculadas a la actividad de los canales iónicos y a la eficiencia de la bomba sodio-potasio en los queratinocitos de la matriz. Un potencial de membrana despolarizado crónicamente es un marcador de agotamiento energético y disfunción mitocondrial en el bulbo piloso. La monitorización no invasiva de estas señales permite identificar folículos con baja capacidad de respuesta a factores de crecimiento, facilitando la selección de candidatos para terapias de fotobiomodulación. Al normalizar el entorno bioeléctrico, es posible restaurar la señalización necesaria para la transición de la fase telógena a la anágena, optimizando el ciclo capilar mediante la modulación de la actividad eléctrica celular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/articles/s41467-024-45678-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_bioelectrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:57:23.325Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786384643325-6-c520370a-espectroscopia-de-reflectancia-difusa-para-el-mapeo-de-la-hi",
+    "title": "Espectroscopía de Reflectancia Difusa para el Mapeo de la Hipoxia Folicular",
+    "content": "La hipoxia fisiológica en la papila dérmica es un regulador clave del crecimiento capilar, pero su desregulación conduce a la senescencia folicular. La espectroscopía de reflectancia difusa, ajustada a las longitudes de onda de la hemoglobina oxigenada y desoxigenada, permite realizar un mapeo in vivo del estado de oxigenación del nicho folicular. Este diagnóstico permite identificar zonas de hipoxia patológica que limitan la proliferación de la matriz y aceleran la miniaturización en pacientes con alopecia androgenética. Al cuantificar la saturación de oxígeno en la microvasculatura perifolicular, es posible determinar la viabilidad del folículo y su capacidad para responder a tratamientos vasodilatadores o inductores de angiogénesis. La técnica ofrece una visualización clara de la densidad capilar sanguínea y su eficiencia en el suministro de nutrientes, proporcionando una base empírica para ajustar la terapia. La detección temprana de la isquemia perifolicular mediante este método permite intervenir antes de que se produzca la atrofia irreversible del bulbo, siendo una herramienta fundamental para el seguimiento longitudinal de la respuesta clínica en tratamientos de regeneración capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "péptidos de cobre"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_vascular"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:57:23.325Z"
+  }
+]

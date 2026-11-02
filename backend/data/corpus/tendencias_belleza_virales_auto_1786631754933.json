@@ -1,0 +1,42 @@
+[
+  {
+    "chunk_id": "skincare-telemetrico-monitoreo-001",
+    "title": "Skincare Telemétrico: La monitorización de la barrera cutánea en tiempo real",
+    "content": "La tendencia de los 'Skin Scanners' y parches telemétricos promete transformar el cuidado de la piel de una rutina reactiva a una proactiva basada en datos. Estos dispositivos, equipados con sensores de impedancia eléctrica, miden el NMF (Factor de Hidratación Natural) y la pérdida de agua transepidérmica (TEWL) mediante biosensores integrados. Clínicamente, el monitoreo continuo de la función barrera permite ajustar la oclusión y los activos exfoliantes según la hidratación basal del estrato córneo. Sin embargo, la precisión depende de la calibración constante frente a variables ambientales como la humedad de Bogotá. La literatura actual en dermatología digital sugiere que, aunque prometedores para pacientes con dermatitis atópica, el riesgo reside en la interpretación errónea de los datos por parte del usuario, lo que puede derivar en una sobre-rutina innecesaria. Es vital entender que los datos de sensores de consumo no sustituyen la evaluación mediante dermatoscopia o mediciones clínicas de laboratorio (corneometría).",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "diagnostico_autonomo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_digital"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:35:38.155Z"
+  }
+]

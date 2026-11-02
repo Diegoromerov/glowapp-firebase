@@ -1,0 +1,337 @@
+[
+  {
+    "chunk_id": "manejo-clínico-dermatitis-contacto-sistémica-001",
+    "title": "Dermatitis de contacto sistémica: Manifestaciones cutáneas por alérgenos ingeridos",
+    "content": "La dermatitis de contacto sistémica (DCS) ocurre cuando un individuo sensibilizado a un alérgeno cutáneo (como el níquel, el cobalto o el bálsamo del Perú) reacciona tras la ingesta oral del mismo. A diferencia de la dermatitis de contacto alérgica clásica, la DCS presenta una distribución corporal más difusa, afectando frecuentemente áreas flexurales, glúteos y zonas de roce. Clínicamente, el paciente puede presentar erupciones maculopapulares, dishidrosis o un exantema generalizado. Es crucial que el clínico considere la dieta del paciente, especialmente en casos de dermatitis recalcitrante que no responde a los corticoides tópicos convencionales. La evaluación debe incluir una dieta de eliminación de metales pesados o alérgenos específicos si se sospecha una sensibilización previa. Según la AAD, el reconocimiento de esta entidad es vital para evitar el uso innecesario de inmunosupresores sistémicos cuando la causa es la exposición dietética oculta. En Bogotá, la alta prevalencia de productos procesados y el uso de utensilios metálicos de baja calidad pueden exacerbar esta condición.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dieta-alta-en-niquel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "fisiopatología-elastosis-perifolicular-002",
+    "title": "Mecanismos de la elastosis perifolicular en la piel corporal",
+    "content": "La elastosis perifolicular representa un cambio degenerativo en el tejido conectivo que rodea los folículos pilosos corporales, frecuentemente observado en áreas expuestas crónicamente a la radiación ultravioleta, como hombros y espalda. A diferencia de la elastosis solar difusa, este proceso se caracteriza por la acumulación de material elastótico denso que comprime la unidad pilosebácea, alterando la calidad del vello y la textura cutánea. Los estudios histopatológicos indican una disrupción en la síntesis de colágeno tipo I y una degradación acelerada por metaloproteinasas de la matriz activadas por luz UV. Clínicamente, se manifiesta como una piel 'empedrada' o con poros dilatados que no responden a exfoliaciones superficiales. La intervención debe enfocarse en la estimulación de la síntesis de colágeno mediante retinoides corporales y la protección solar estricta. La evidencia sugiere que la modulación de estas metaloproteinasas es el eje central para revertir la apariencia de la piel en áreas con elastosis perifolicular establecida. Es esencial diferenciar esta condición de la queratosis pilaris para evitar tratamientos erróneos basados únicamente en la queratolisis.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32412854/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "mature"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "abordaje-clínico-dermatosis-neglecta-003",
+    "title": "Dermatosis Neglecta: Abordaje clínico y diagnóstico diferencial",
+    "content": "La dermatosis neglecta es una condición cutánea caracterizada por la acumulación de sebo, sudor, queratina y suciedad, formando placas hiperpigmentadas, verrugosas y adherentes. A menudo se confunde con la acantosis nigricans, pero su patogenia es puramente externa y derivada de una higiene insuficiente o una fricción mecánica reducida en áreas específicas (como el cuello, los pliegues o zonas post-quirúrgicas). La clave diagnóstica es la prueba de limpieza: la aplicación de alcohol isopropílico al 70% o una fricción mecánica controlada elimina la placa, revelando piel sana subyacente. En contextos de spa, es fundamental un abordaje empático y no estigmatizante, educando al paciente sobre los mecanismos de descamación natural y la importancia de la limpieza física. La persistencia de esta condición puede llevar a una dermatitis de contacto irritativa secundaria debido a la proliferación bacteriana bajo la costra. El tratamiento es simple pero requiere supervisión para evitar una agresión excesiva a la barrera cutánea durante la limpieza. Se recomienda el uso de queratolíticos suaves antes de la remoción física para minimizar el trauma en la epidermis.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(19)32675-9/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-salicilico",
+        "urea"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "impacto-limpiadores-alcalinos-004",
+    "title": "Efectos de los limpiadores alcalinos en la homeostasis corporal",
+    "content": "El uso prolongado de limpiadores corporales con pH alcalino (jabones en barra tradicionales) altera significativamente el manto ácido de la piel. La piel humana mantiene un pH fisiológico entre 4.5 y 5.5, el cual es crítico para la función de las ceramidas y la actividad de las enzimas encargadas de la descamación. Los limpiadores con pH elevado causan una desnaturalización de las proteínas epidérmicas y un aumento en la permeabilidad, lo que facilita la colonización por patógenos como Staphylococcus aureus. En pacientes con piel corporal seca o eccematosa, el uso de estos agentes alcalinos perpetúa un ciclo de inflamación de bajo grado y xerosis. La evidencia clínica respalda el cambio hacia syndets (detergentes sintéticos) con pH fisiológico para preservar la integridad de la barrera y el microbioma cutáneo. En Bogotá, debido a la dureza del agua en ciertas zonas, el impacto de los limpiadores alcalinos se ve exacerbado, dificultando el aclarado y dejando residuos que irritan la piel. Una transición a limpiadores suaves es la primera línea de tratamiento para cualquier condición de dermatitis corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndets",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "jabones-alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "fotobiomodulacion-led-corporal-005",
+    "title": "Fotobiomodulación (LED) para la reparación tisular corporal",
+    "content": "La fotobiomodulación (PBM), comúnmente conocida como terapia LED, utiliza longitudes de onda específicas (típicamente 630-660 nm para rojo y 830-850 nm para infrarrojo cercano) para estimular la actividad mitocondrial a través de la absorción de fotones por la citocromo c oxidasa. Este proceso aumenta la producción de ATP, reduce el estrés oxidativo y modula la respuesta inflamatoria en tejidos corporales. En el contexto de spa clínico, la PBM es una herramienta valiosa para la recuperación post-procedimiento (como láser o radiofrecuencia) y para acelerar la cicatrización de lesiones menores o estrías. La evidencia sugiere que la PBM promueve la proliferación de fibroblastos y la síntesis de colágeno, mejorando la elasticidad cutánea. A diferencia de los láseres ablativos, la PBM es un tratamiento no térmico y seguro para todos los fototipos de Fitzpatrick, incluyendo los fototipos IV-VI comunes en la población de Bogotá. Se requiere consistencia en las sesiones para observar resultados significativos en la remodelación tisular, siendo un complemento ideal para protocolos de rejuvenecimiento corporal no invasivo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Photomedicine and Laser Surgery",
+        "url": "https://www.liebertpub.com/loi/pho",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fotosensibilidad-activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-corporal"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "psoriasis-invertida-pliegues-006",
+    "title": "Manejo clínico de la psoriasis invertida en pliegues corporales",
+    "content": "La psoriasis invertida, o psoriasis flexural, se presenta en áreas de pliegues como axilas, región inframamaria e inguinal. A diferencia de la psoriasis en placas clásica, las lesiones son eritematosas, lisas, brillantes y a menudo carecen de la escama característica debido a la maceración por el sudor y la fricción. El diagnóstico diferencial es amplio e incluye candidiasis, eritrasma y dermatitis de contacto. El manejo clínico requiere extrema cautela: el uso de corticoides de alta potencia puede causar atrofia cutánea rápida en zonas de piel delgada, exacerbando la condición. Se prefieren los inhibidores de la calcineurina (tacrolimus, pimecrolimus) o análogos de la vitamina D, aunque estos últimos pueden ser irritantes. Es fundamental mantener el área seca y reducir la fricción. La evaluación clínica debe descartar sobreinfecciones fúngicas o bacterianas, que son complicaciones comunes. La educación del paciente sobre el manejo de la humedad y la elección de textiles es tan importante como la farmacoterapia tópica para lograr la remisión de los síntomas y mejorar la calidad de vida.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Psoriasis Foundation",
+        "url": "https://www.psoriasis.org/inverse/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tacrolimus",
+        "pimecrolimus"
+      ],
+      "contraindications": [
+        "corticoides-alta-potencia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-patologias-pliegues"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "microcirculacion-efecto-bohr-008",
+    "title": "Efecto Bohr y la microcirculación en el rejuvenecimiento corporal",
+    "content": "El efecto Bohr describe cómo el aumento de la concentración de dióxido de carbono (y la disminución del pH) reduce la afinidad de la hemoglobina por el oxígeno, facilitando su liberación en los tejidos. Este principio fisiológico es la base de la carboxiterapia, donde la infusión controlada de CO2 induce una respuesta vasodilatadora intensa, aumentando la perfusión sanguínea y la oxigenación tisular local. En el contexto corporal, esta oxigenación mejorada favorece la síntesis de colágeno y la remodelación de la matriz extracelular, siendo útil en el tratamiento de estrías y la mejora de la textura cutánea en zonas con microcirculación comprometida. Sin embargo, su aplicación requiere un conocimiento profundo de la anatomía vascular para evitar complicaciones. La evidencia sobre la carboxiterapia es prometedora en la mejora de la elasticidad, aunque sus efectos sobre la adiposidad localizada son limitados en comparación con otras modalidades. Es una técnica que debe ser ejecutada por profesionales capacitados para garantizar la seguridad y la eficacia, evitando la sobreestimulación de tejidos ya inflamados.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "insuficiencia-cardiaca",
+        "embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  },
+  {
+    "chunk_id": "dermografia-corporal-diagnostico-009",
+    "title": "Dermografía y pruebas de parche: Seguridad en productos corporales",
+    "content": "La realización de pruebas de parche (patch test) es el estándar de oro para diagnosticar la dermatitis alérgica de contacto, pero su aplicación en el cuidado corporal diario a menudo se subestima. Los productos corporales, debido a su gran área de aplicación y uso frecuente, tienen una mayor probabilidad de inducir sensibilización si contienen fragancias, conservantes como la metilisotiazolinona o filtros solares químicos específicos. La dermografía o prueba de uso abierto (Open Application Test) es un método práctico que los pacientes pueden realizar en casa: aplicar el producto en la cara interna del antebrazo dos veces al día durante 7 a 10 días. Si no hay reacción (eritema, prurito o vesículas), es probable que el producto sea bien tolerado. Esta práctica es especialmente importante para pacientes con antecedentes de dermatitis atópica o piel sensible. La educación del usuario sobre cómo identificar ingredientes potencialmente irritantes o sensibilizantes en las etiquetas de los productos es una herramienta de empoderamiento clínico que reduce drásticamente los casos de dermatitis de contacto en la práctica de spa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fragancias",
+        "conservantes"
+      ],
+      "contraindications": [
+        "alergias-conocidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:17:05.044Z"
+  }
+]

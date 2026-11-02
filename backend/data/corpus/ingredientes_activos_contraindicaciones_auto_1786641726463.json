@@ -1,0 +1,308 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Polisacáridos sulfatados de algas: Riesgo de oclusión en acné papulopustuloso",
+    "content": "Los polisacáridos sulfatados derivados de algas marinas, como la carragenina, son valorados en cosmética por sus propiedades gelificantes y humectantes. Sin embargo, su estructura molecular compleja y su capacidad para formar películas oclusivas pueden representar un riesgo significativo para pacientes con acné papulopustuloso. La evidencia clínica sugiere que ciertos polímeros de alto peso molecular pueden atrapar restos celulares y sebo dentro del infundíbulo pilosebáceo, exacerbando la proliferación de Cutibacterium acnes. A diferencia de otros humectantes, su capacidad de retención de agua es tan elevada que, en ambientes de alta humedad, pueden inducir una hiperhidratación del estrato córneo que altera la función de barrera y favorece la formación de comedones cerrados. Es fundamental que los pacientes con pieles seborreicas o con tendencia acneica identifiquen estos componentes en las etiquetas como 'carragenina' o 'extracto de alga', y prioricen formulaciones no comedogénicas. La AAD destaca que la oclusión innecesaria es un factor desencadenante de brotes en pacientes predispuestos, sugiriendo el uso de vehículos más ligeros basados en humectantes de bajo peso molecular o agentes seborreguladores.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acne-prone",
+        "oily"
+      ],
+      "age_ranges": [
+        "adolescent",
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carragenina",
+        "extracto de alga"
+      ],
+      "contraindications": [
+        "acne-activo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Ácido ferúlico y riesgo de eritema por degradación fotolítica",
+    "content": "El ácido ferúlico es un antioxidante potente utilizado para estabilizar formulaciones de vitamina C (ácido L-ascórbico). No obstante, su estabilidad química es altamente dependiente de la formulación y el pH. Estudios recientes en PubMed indican que cuando el ácido ferúlico se degrada debido a una exposición prolongada a la luz o a un almacenamiento inadecuado, puede generar subproductos de oxidación que actúan como sensibilizantes cutáneos. Este fenómeno es particularmente peligroso en pieles reactivas o con rosácea, donde la aplicación de un suero 'oxidado' puede desencadenar un eritema inmediato y una sensación de quemazón. La inestabilidad fotolítica del ingrediente no solo disminuye su eficacia antioxidante, sino que puede alterar el perfil de seguridad del producto final. Se recomienda a los usuarios verificar el color del producto: un tono ámbar oscuro intenso es a menudo indicativo de degradación avanzada. La IADVL enfatiza la importancia de utilizar envases opacos y herméticos para mitigar estos riesgos de irritación post-aplicación en pacientes con barrera cutánea comprometida.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32483164/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "reactive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ferúlico"
+      ],
+      "contraindications": [
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-antioxidante"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Poliaminas cosméticas: Riesgo de disrupción en la autofagia cutánea",
+    "content": "Las poliaminas (como la espermidina o putrescina) han ganado popularidad en formulaciones antienvejecimiento por su rol en la modulación de la autofagia celular. Sin embargo, su uso tópico está bajo escrutinio clínico. La autofagia es un proceso finamente regulado por la homeostasis celular; la inducción externa mediante la aplicación de poliaminas a concentraciones no estandarizadas podría, paradójicamente, interferir con los mecanismos naturales de renovación epidérmica si se abusa de ellas. Investigaciones en revistas de dermatología experimental sugieren que una sobreestimulación de estas vías en pieles ya inflamadas o con procesos proliferativos podría favorecer una respuesta celular descontrolada. El riesgo de uso crónico sin supervisión incluye la alteración del ciclo de vida de los queratinocitos. Aunque los datos in vitro son prometedores, la extrapolación a la piel humana requiere cautela, especialmente en pacientes con antecedentes de lesiones preneoplásicas o dermatitis inflamatoria crónica, donde cualquier agente que module la señalización celular debe ser evaluado con rigor clínico. Se requiere mayor evidencia a largo plazo para establecer umbrales de seguridad en el uso de estos compuestos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mature",
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "espermidina",
+        "poliaminas"
+      ],
+      "contraindications": [
+        "dermatitis-cronica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-avanzados"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Benzofenona-4: El riesgo latente de fotodermatitis de contacto",
+    "content": "La Benzofenona-4 es un filtro solar orgánico soluble en agua, frecuentemente utilizado en productos de cuidado personal para proteger la estabilidad de la formulación contra la luz UV. A diferencia de los filtros destinados específicamente a la protección solar, su presencia en hidratantes o sérums es a menudo subestimada por el consumidor. La literatura dermatológica ha documentado que la Benzofenona-4 posee un potencial considerable para inducir fotodermatitis de contacto en individuos sensibilizados. Este tipo de reacción ocurre cuando la sustancia, tras ser aplicada sobre la piel, reacciona con la radiación solar incidente, generando metabolitos que desencadenan una respuesta inmunológica de tipo retardado (hipersensibilidad tipo IV). Los síntomas incluyen eritema, prurito intenso y, en casos severos, vesiculación en las áreas expuestas al sol. Es crucial que pacientes con antecedentes de alergias cutáneas o pieles extremadamente reactivas revisen la lista INCI de sus productos. La AAD recomienda evitar el uso de cosméticos que contengan benzofenonas si se ha diagnosticado previamente sensibilidad a este grupo químico, optando por alternativas minerales o fórmulas 'fragrance-free' y sin filtros orgánicos complejos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/media/stats-sunscreen",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "reactive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzofenona-4"
+      ],
+      "contraindications": [
+        "dermatitis-contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "Sulfato de cobre tópico: Riesgo de citotoxicidad y desequilibrio iónico",
+    "content": "El sulfato de cobre se promociona en cosmética por sus propiedades antimicrobianas y su rol en la síntesis de colágeno. Sin embargo, su aplicación tópica requiere una precisión técnica extrema debido a su potencial de citotoxicidad. A concentraciones elevadas, el cobre puede inducir estrés oxidativo en los queratinocitos, alterando la barrera cutánea mediante la formación de radicales libres si no existe una quelación adecuada. La evidencia clínica indica que el desequilibrio iónico inducido por la acumulación de cobre en la superficie cutánea puede interferir con la función de las metaloproteinasas, exacerbando la inflamación en pieles con rosácea o dermatitis atópica. Además, el cobre es un metal traza que, en presencia de otros ingredientes como la vitamina C pura, puede catalizar la degradación de esta última, inactivando el producto y generando subproductos irritantes. Los expertos en formulación advierten que el uso de sulfato de cobre debe limitarse a productos con sistemas de entrega estables y concentraciones estrictamente controladas. La monitorización de la tolerancia cutánea es esencial; cualquier signo de irritación persistente debe llevar a la suspensión inmediata del activo, ya que el daño a largo plazo por sobreexposición iónica es difícil de revertir.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato de cobre"
+      ],
+      "contraindications": [
+        "rosacea",
+        "dermatitis-atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-antioxidante"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Alantoína: El mito de la curación y riesgo de 'pseudo-curación'",
+    "content": "La alantoína es un ingrediente ampliamente reconocido por su capacidad queratolítica suave y su efecto calmante. No obstante, existe un riesgo clínico subestimado: la 'pseudo-curación'. En pieles con lesiones abiertas, quemaduras o dermatitis severa, la alantoína puede acelerar la formación de una capa epitelial superficial que, aunque visualmente parece regenerada, oculta un proceso inflamatorio subyacente que no ha concluido. Esto puede llevar a una falsa sensación de seguridad, provocando que el paciente interrumpa tratamientos médicos necesarios o continúe exponiendo la piel a factores irritantes. La literatura dermatológica sugiere que, si bien la alantoína es excelente para el mantenimiento de la barrera cutánea sana, su uso en pieles con integridad comprometida debe ser supervisado. La IADVL ha advertido sobre el uso indiscriminado de agentes epitelizantes en heridas crónicas, donde la prioridad debe ser el manejo de la inflamación y la prevención de infecciones, no simplemente la aceleración de la queratinización. La alantoína debe ser vista como un coadyuvante, nunca como un sustituto de la terapia dermatológica dirigida ante patologías cutáneas activas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alantoína"
+      ],
+      "contraindications": [
+        "heridas-abiertas",
+        "dermatitis-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-post-procedimiento"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Aceite de Nigella sativa (Comino Negro): Riesgo de dermatitis por timoquinona",
+    "content": "El aceite de Nigella sativa, o comino negro, es un ingrediente botánico con potentes propiedades antiinflamatorias y antioxidantes atribuidas principalmente a la timoquinona. Sin embargo, su uso tópico no está exento de riesgos. La timoquinona, aunque terapéuticamente activa, es un compuesto que puede actuar como un alérgeno de contacto en individuos susceptibles. Estudios dermatológicos han reportado casos de dermatitis alérgica de contacto tras la aplicación de productos cosméticos que contienen altas concentraciones de este aceite. El riesgo se incrementa significativamente cuando el aceite no ha sido correctamente destilado o cuando contiene impurezas de otros componentes botánicos. Además, el aceite de Nigella sativa posee una naturaleza oclusiva que, en pacientes con acné, puede exacerbar el cuadro clínico al interferir con la desincrustación natural de los poros. Se recomienda realizar una prueba de parche (patch test) antes de incorporar este activo en la rutina, especialmente en pacientes con antecedentes de atopia o sensibilidad a fragancias naturales. La pureza de la extracción es un factor crítico para minimizar el perfil de riesgo de este ingrediente botánico en el cuidado facial diario.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28362579/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de nigella sativa",
+        "timoquinona"
+      ],
+      "contraindications": [
+        "acne-activo",
+        "dermatitis-atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:21:48.477Z"
+  }
+]

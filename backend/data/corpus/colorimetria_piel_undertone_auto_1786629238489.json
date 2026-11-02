@@ -1,0 +1,241 @@
+[
+  {
+    "chunk_id": "colorimetria-neuro-estetica-001",
+    "title": "La neuroestética del subtono: Por qué el cerebro percibe colores distintos",
+    "content": "La percepción del subtono cutáneo no es un proceso puramente óptico, sino un fenómeno neuroestético altamente influenciado por el contexto. Según estudios en la revista 'Frontiers in Human Neuroscience', el cerebro humano no registra el color de forma aislada, sino mediante mecanismos de constancia de color que interpretan la piel basándose en las sombras, la iluminación circundante y las expectativas previas. En la consulta dermatológica, esto explica el 'sesgo de confirmación cromática': el profesional puede tender a ver un subtono determinado si el paciente llega con una base de maquillaje ya aplicada o si el entorno del punto de venta utiliza luminarias con un Índice de Reproducción Cromática (IRC) inferior a 90. La corteza visual procesa la reflectancia de la piel integrando la información de los fotorreceptores con la memoria semántica del color. Esto implica que la evaluación del subtono debe realizarse bajo luz natural estandarizada (D65) y con el rostro desprovisto de cualquier producto, minimizando la carga cognitiva que distorsiona la interpretación clínica. Entender que el cerebro 'completa' la información visual basándose en el contraste permite a los profesionales de GlowApp reducir errores de diagnóstico al neutralizar influencias externas como colores de paredes o vestimenta del paciente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Frontiers in Human Neuroscience",
+        "url": "https://www.frontiersin.org/articles/10.3389/fnhum.2014.00845",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:40.232Z"
+  },
+  {
+    "chunk_id": "colorimetria-metabolismo-lipidos-002",
+    "title": "El perfil de ácidos grasos del sebo y la estabilidad de pigmentos",
+    "content": "La estabilidad de los pigmentos en una base de maquillaje está intrínsecamente ligada a la composición lipídica del sebo cutáneo. Investigaciones publicadas en el 'Journal of Investigative Dermatology' indican que individuos con una mayor proporción de escualeno oxidado y ácidos grasos libres presentan una mayor tendencia a la oxidación química de los pigmentos de hierro (óxidos de hierro) presentes en el maquillaje. Este proceso, conocido como viraje cromático, ocurre cuando el sebo reacciona con los pigmentos, alterando su reflectancia y desplazando el tono hacia matices más anaranjados o cenizos. En pieles con seborrea o desequilibrios en el microbioma, la secreción sebácea puede actuar como un catalizador de degradación para las fórmulas de larga duración. Para mitigar este efecto, es fundamental integrar una fase de preparación que incluya agentes absorbentes o reguladores de la peroxidación lipídica antes de la aplicación del cosmético. La evaluación del subtono debe considerar si la piel presenta un estado de alta peroxidación lipídica, ya que esto invalidará cualquier prueba de color realizada sobre la piel desnuda si el producto final no es compatible con la química de la barrera cutánea del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30676-5/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oleosa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "absorbentes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:40.232Z"
+  },
+  {
+    "chunk_id": "colorimetria-acuarporinas-reflectancia-003",
+    "title": "Densidad de acuaporinas y su efecto en la reflectancia cutánea",
+    "content": "La hidratación profunda, mediada por las acuaporinas (AQP3), desempeña un papel crítico en la dispersión de la luz a través de las capas epidérmicas. Según estudios en 'Experimental Dermatology', la falta de hidratación en las células del estrato córneo no solo reduce la luminosidad, sino que modifica el índice de refracción de la piel, alterando la percepción del subtono. Una piel con baja expresión de acuaporinas presenta una dispersión de luz más difusa y menos especular, lo que suele interpretarse erróneamente como un subtono más frío o apagado. El agua en la dermis y epidermis actúa como un medio de transmisión que suaviza las transiciones entre los pigmentos naturales (melanina, hemoglobina). Al aplicar bases de maquillaje, la deshidratación del estrato córneo provoca que el producto se asiente de manera desigual, creando micro-sombras que distorsionan la lectura del subtono. La optimización de la hidratación mediante humectantes que estimulan la síntesis de AQP3 es, por tanto, un paso esencial en la colorimetría clínica antes de cualquier diagnóstico, asegurando que la lectura del color sea representativa de la estructura dérmica real y no un artefacto de la deshidratación superficial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Experimental Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/16000625",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "acido_hialuronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:40.232Z"
+  },
+  {
+    "chunk_id": "colorimetria-estres-neurocutaneo-004",
+    "title": "El eje neuro-cutáneo: Modulación del subtono por estrés crónico",
+    "content": "La cromaticidad facial no es estática; está sujeta a la modulación del eje neuro-cutáneo. El estrés crónico induce la liberación de neuropéptidos como la Sustancia P y el Factor Liberador de Corticotropina (CRF), que alteran la microcirculación cutánea. Como se detalla en literatura de la 'American Academy of Dermatology', estas moléculas promueven la vasodilatación persistente, lo que incrementa la presencia de hemoglobina oxigenada en la dermis papilar, virando el subtono percibido hacia matices rosados o eritematosos, incluso en pieles con base cálida. Además, el cortisol crónico afecta la síntesis de melanina, pudiendo causar cambios en la reflectancia que dificultan la elección de correctores. En un entorno urbano como Bogotá, donde los niveles de estrés y la altitud influyen en la hemodinámica, es vital reconocer que un paciente puede presentar variaciones en el subtono según su estado neuro-psicológico. Este fenómeno de 'rubor neurogénico' puede llevar a diagnósticos erróneos de subtono frío. La recomendación clínica es evaluar el subtono en momentos de reposo y evitar el diagnóstico inmediatamente después de situaciones de alta demanda emocional o física, garantizando una lectura más precisa y estable del tono basal.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/stress-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:40.232Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-textura-008",
+    "title": "Anisotropía óptica: La textura como determinante del subtono",
+    "content": "La anisotropía óptica es el fenómeno por el cual la reflectancia de una superficie varía según la dirección de la luz y la orientación de la textura. En la piel, la rugosidad del estrato córneo, las cicatrices post-acné y las arrugas finas crean una superficie anisotrópica que dispersa la luz de forma no uniforme. Esto altera la percepción del subtono: las zonas con mayor textura suelen absorber más luz, viéndose más oscuras o 'apagadas', mientras que las zonas lisas reflejan más luz. La colorimetría clínica debe tener en cuenta que la textura puede hacer que una misma base de maquillaje parezca tener diferentes tonos según la zona del rostro. Para obtener un diagnóstico preciso, es necesario evaluar la piel con luz difusa que minimice las sombras proyectadas por las irregularidades. La corrección mediante pre-bases (primers) de efecto óptico que suavizan la anisotropía es fundamental antes de aplicar la base, ya que esto uniformiza la superficie y permite que el color del producto se perciba de manera constante y fiel al subtono real del usuario, evitando el efecto de 'parches' cromáticos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "polimeros_difusores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:40.232Z"
+  },
+  {
+    "chunk_id": "colorimetria-hipoxia-bogota-009",
+    "title": "Impacto de la hipoxia hipobárica y la altitud en la colorimetría en Bogotá",
+    "content": "Para los usuarios en Bogotá (2.640 m.s.n.m.), el fenómeno de hipoxia hipobárica leve y constante influye en la hemodinámica capilar. La menor presión parcial de oxígeno provoca una respuesta adaptativa del sistema circulatorio que puede resultar en una vasodilatación periférica sutil. Esto aumenta el componente de hemoglobina reducida en la sangre venosa, lo que puede otorgar a la piel un matiz ligeramente más azulado o cianótico en comparación con poblaciones a nivel del mar. En la colorimetría de GlowApp, es vital entender que el subtono en Bogotá puede ser percibido como 'más frío' de lo que realmente es debido a este factor ambiental. La lectura del color debe realizarse con cautela, reconociendo que los niveles de oxígeno tisular afectan la lectura espectral. Los expertos deben considerar esta variable al recomendar bases, priorizando fórmulas que no añadan un matiz grisáceo extra, el cual es un error común al intentar neutralizar el supuesto subtono cianótico. La adaptación a la altitud es un factor clínico relevante para la precisión del diagnóstico cromático, asegurando que la elección del producto sea óptima para las condiciones fisiológicas del usuario en esta ubicación geográfica específica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO - Altitude and Physiology",
+        "url": "https://www.who.int/publications/i/item/9789241549721",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:40.232Z"
+  }
+]

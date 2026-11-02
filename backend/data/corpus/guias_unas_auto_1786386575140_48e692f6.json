@@ -1,0 +1,252 @@
+[
+  {
+    "chunk_id": "guias_unas-1786386575138-1-5dd8d605-efecto-triboelectrico-en-el-limado-generacion-de-cargas-y-ad",
+    "title": "Efecto triboeléctrico en el limado: generación de cargas y adhesión",
+    "content": "El proceso de limado mecánico sobre la lámina ungueal genera un fenómeno triboeléctrico, donde la fricción entre el abrasivo y la queratina produce una acumulación de cargas electrostáticas. Esta polarización superficial altera la energía libre de la lámina, afectando directamente la humectabilidad y la capacidad de anclaje de los monómeros de adhesión. Cuando la superficie ungueal presenta un exceso de carga negativa debido a un limado excesivamente vigoroso, la interfase adhesiva puede experimentar una repulsión molecular sutil, reduciendo la eficacia del enlace covalente. Es imperativo neutralizar estas cargas mediante una limpieza técnica adecuada antes de la aplicación del primer. La gestión de la energía superficial es un pilar olvidado en la prevención de desprendimientos prematuros, superando en importancia a la simple rugosidad física del limado. La optimización de este paso garantiza un sustrato eléctricamente neutro, permitiendo que las fuerzas de Van der Waals y los enlaces químicos del sistema fotopolimerizable se establezcan sin interferencias electrostáticas, maximizando la longevidad del servicio técnico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros"
+      ],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:35.138Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786386575138-2-d6718795-anisotropia-de-la-lamina-ungueal-y-su-respuesta-al-estres-me",
+    "title": "Anisotropía de la lámina ungueal y su respuesta al estrés mecánico",
+    "content": "La lámina ungueal no es un material isotrópico; su estructura laminar de queratina presenta una resistencia mecánica variable según la dirección de las fuerzas aplicadas. La anisotropía de la uña implica que el estrés soportado en el eje longitudinal es significativamente distinto al estrés en el eje transversal. Durante el esculpido, ignorar esta propiedad física puede derivar en microfisuras estructurales que comprometen la salud de la matriz. Al aplicar productos de alta rigidez, como acrílicos de alta densidad, sobre una lámina con alta flexibilidad, se crea una zona de concentración de tensiones en el punto de transición entre el producto y la uña natural. Esta disparidad en el módulo de Young (elasticidad) provoca que, ante impactos cotidianos, la uña natural se fracture por debajo del recubrimiento. Comprender la orientación de las fibras de queratina y adaptar la arquitectura del ápice es fundamental para distribuir las fuerzas de carga de manera uniforme, evitando la fatiga del material ungueal y previniendo la onicoclasia traumática inducida por el propio diseño del esculpido.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210492/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "diseño inadecuado de ápice"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "arquitectura_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:35.138Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786386575139-3-da0f497c-cinetica-de-absorcion-de-agua-en-geles-de-baja-reticulacion",
+    "title": "Cinética de absorción de agua en geles de baja reticulación",
+    "content": "Los sistemas de geles de baja reticulación presentan una mayor permeabilidad al vapor de agua, lo que induce un fenómeno de hinchamiento higroscópico. Este proceso altera el volumen del recubrimiento, generando tensiones internas en la interfase entre el gel y la lámina ungueal. A diferencia de los sistemas de alta densidad, los geles flexibles son más susceptibles a la absorción de humedad ambiental, lo cual puede degradar la estabilidad dimensional del producto tras varios días de uso. La acumulación de agua en esta interfase no solo debilita la adhesión química, sino que crea un microambiente propicio para la proliferación de microorganismos oportunistas si el sellado del borde libre es deficiente. Es crucial seleccionar sistemas de polimerización con una densidad de reticulación adecuada para el estilo de vida del cliente. La gestión de la higroscopía es vital para evitar el levantamiento prematuro y mantener la integridad del sistema frente a la exposición constante a solventes y agua, factores que aceleran la degradación de la red polimérica y reducen la vida útil del servicio estético.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposición prolongada a humedad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_productos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:35.139Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786386575139-4-27757e3b-fotopolimerizacion-en-condiciones-de-baja-irradiancia-riesgo",
+    "title": "Fotopolimerización en condiciones de baja irradiancia: riesgos de sub-curado",
+    "content": "La fotopolimerización requiere una irradiancia específica para activar los fotoiniciadores de manera eficiente. Cuando la lámpara utilizada presenta una degradación en sus diodos LED o una longitud de onda desalineada, se produce un fenómeno de sub-curado. En este estado, el grado de conversión de monómero a polímero es insuficiente, dejando moléculas de monómero libres en la matriz del gel. Estos monómeros residuales son altamente alergénicos y pueden migrar a través de la lámina ungueal hacia el lecho, aumentando drásticamente el riesgo de dermatitis de contacto alérgica y sensibilización sistémica. Además, un sistema sub-curado presenta una estructura molecular débil, lo que resulta en una menor resistencia a la abrasión y una mayor susceptibilidad a la degradación química. El monitoreo periódico de la irradiancia mediante radiómetros calibrados es una práctica de seguridad obligatoria en cabina. Garantizar una polimerización completa no es solo un requisito estético para la durabilidad del color, sino una medida de seguridad clínica indispensable para proteger la salud inmunológica del cliente y del profesional ante la exposición crónica a acrilatos no reaccionados.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)02781-5/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos"
+      ],
+      "contraindications": [
+        "lámparas descalibradas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_fotopolimerizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:35.139Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786386575139-5-ea4bd0cb-interaccion-de-los-primers-acidos-con-la-matriz-lipidica-ung",
+    "title": "Interacción de los primers ácidos con la matriz lipídica ungueal",
+    "content": "Los primers ácidos, comúnmente basados en ácido metacrílico, actúan mediante la desmineralización parcial y la eliminación de la capa lipídica superficial de la lámina ungueal. Esta acción incrementa la energía superficial, permitiendo una mayor penetración del adhesivo en los poros de la queratina. Sin embargo, un uso indiscriminado de estos agentes puede deshidratar excesivamente la lámina, alterando su flexibilidad natural y volviéndola quebradiza. La interacción química es un equilibrio delicado: mientras que el ácido mejora la adhesión mecánica, su capacidad para disolver lípidos intercelulares puede comprometer la barrera protectora natural de la uña. Si el primer entra en contacto con el tejido periungueal, puede causar irritación química y daño al eponiquio, facilitando la entrada de patógenos. Es fundamental aplicar el primer exclusivamente sobre la lámina ungueal, evitando cualquier contacto con la piel circundante. La monitorización de la salud del lecho ungueal tras aplicaciones recurrentes es esencial para detectar signos de deshidratación crónica o irritación, ajustando la concentración del ácido según el estado de la lámina del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico"
+      ],
+      "contraindications": [
+        "contacto con piel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:35.139Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786386575139-6-769c7f8a-dinamica-de-la-presion-de-contacto-en-fresas-de-carburo-de-t",
+    "title": "Dinámica de la presión de contacto en fresas de carburo de tungsteno",
+    "content": "El uso de fresas de carburo de tungsteno para el retiro de producto requiere un control preciso de la presión de contacto y la velocidad de rotación. Una presión excesiva genera calor friccional que se transfiere directamente a la matriz ungueal, pudiendo causar onicólisis térmica o daños permanentes en el lecho. La física del fresado implica que la energía cinética se convierte en calor, y si la velocidad de rotación es demasiado alta sin una disipación adecuada, la temperatura local puede exceder el umbral de tolerancia de los tejidos vivos. Además, la geometría de las cuchillas de la fresa determina la profundidad del corte; el uso de fresas desgastadas aumenta la fricción y reduce la eficiencia del corte, obligando al profesional a aplicar más presión. Es vital mantener las herramientas en condiciones óptimas y utilizar una técnica de 'barrido' constante para evitar la acumulación de calor en un solo punto. La educación en la dinámica de la presión de contacto es crucial para prevenir el daño iatrogénico y asegurar que el proceso de remoción sea seguro, minimizando el estrés térmico sobre la estructura ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "presión excesiva",
+        "fresas desgastadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remocion_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:35.139Z"
+  }
+]

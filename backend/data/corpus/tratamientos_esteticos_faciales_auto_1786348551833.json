@@ -1,0 +1,209 @@
+[
+  {
+    "chunk_id": "terapia-vibracional-mecanotransduccion-001",
+    "title": "Mecanotransducción y estimulación vibracional en la matriz extracelular",
+    "content": "La mecanotransducción es el proceso mediante el cual las células convierten estímulos mecánicos en respuestas bioquímicas. En dermatología estética, la aplicación de dispositivos de vibración de alta frecuencia tras procedimientos de bioestimulación busca potenciar la respuesta de los fibroblastos. Estudios publicados en PubMed sugieren que la estimulación mecánica controlada puede activar los canales iónicos mecanosensibles, favoreciendo una mayor síntesis de colágeno y elastina. A diferencia de las terapias térmicas, la vibración actúa sobre el citoesqueleto celular sin generar daño térmico colateral. La evidencia indica que el uso de estas frecuencias durante la fase de recuperación temprana ayuda a la reorganización de las fibras de colágeno recién depositadas, mejorando la homogeneidad del resultado final. Este enfoque representa una frontera en la optimización de los resultados de los bioestimuladores inyectables, al modular el entorno mecano-químico donde residen las células reparadoras.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32154877/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procesos inflamatorios agudos",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-post-procedimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:55:34.567Z"
+  },
+  {
+    "chunk_id": "fotobiomodulacion-longitud-onda-especifica-002",
+    "title": "Optimización de longitudes de onda en fotobiomodulación (PBM)",
+    "content": "La fotobiomodulación (PBM) utiliza espectros específicos de luz, principalmente en el rango del rojo (630-660 nm) y el infrarrojo cercano (810-850 nm), para modular la actividad mitocondrial. En el contexto de la regeneración dérmica, la absorción de fotones por la citocromo c oxidasa incrementa la producción de ATP, lo cual es crítico para la reparación tisular. La literatura científica actual enfatiza que la fluencia (energía por unidad de área) y la irradiancia deben estar cuidadosamente calibradas para evitar el efecto bifásico, donde dosis excesivas inhiben la proliferación celular en lugar de estimularla. El uso de protocolos personalizados basados en el fototipo y el estado de la barrera cutánea permite maximizar la viabilidad celular tras peelings químicos o láseres ablativos. La correcta dosimetría es fundamental para asegurar que la señalización celular se traduzca en una mejora clínica real y no solo en un efecto placebo térmico.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "epilepsia fotosensible",
+        "historial de cáncer cutáneo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotobiomodulacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:55:34.567Z"
+  },
+  {
+    "chunk_id": "microbioma-barrera-cutanea-pre-peeling-003",
+    "title": "El papel del microbioma en la resiliencia pre-peeling",
+    "content": "El microbioma cutáneo actúa como la primera línea de defensa inmunológica antes de cualquier intervención estética agresiva. Alteraciones en la diversidad bacteriana, como una disbiosis inducida por el uso crónico de productos antisépticos o cosméticos inadecuados, pueden comprometer la integridad de la barrera y aumentar la susceptibilidad a complicaciones post-peeling. La evidencia actual sugiere que un pre-acondicionamiento del microbioma mediante prebióticos y postbióticos puede reducir la incidencia de dermatitis por contacto y acelerar la recuperación de la función barrera. Integrar el análisis del estado del microbioma en la consulta permite estratificar el riesgo del paciente y ajustar la profundidad del peeling. La preservación de la homeostasis microbiana no solo previene infecciones oportunistas, sino que también modula la respuesta inflamatoria sistémica, facilitando un proceso de reepitelización más eficiente y con menor riesgo de hiperpigmentación post-inflamatoria.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [
+        "dermatitis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pre-acondicionamiento-cutaneo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:55:34.567Z"
+  },
+  {
+    "chunk_id": "bioimpedancia-personalizacion-energia-005",
+    "title": "Análisis de bioimpedancia para la personalización de energía en RF",
+    "content": "La eficacia de la radiofrecuencia (RF) depende críticamente de la impedancia del tejido, la cual varía según el contenido de agua, la vascularización y el espesor dérmico de cada paciente. La medición de la bioimpedancia cutánea antes de iniciar el tratamiento permite ajustar los parámetros de energía (potencia y profundidad) de manera precisa, evitando el sobrecalentamiento o la falta de respuesta terapéutica. En dispositivos de RF con microagujas, la impedancia es un factor determinante para la transferencia de calor en la dermis profunda. Un análisis en tiempo real de esta variable garantiza que el tejido alcance la temperatura necesaria para la desnaturalización del colágeno sin comprometer la integridad epidérmica. Este enfoque de personalización tecnológica es esencial para la estandarización de resultados en clínicas de medicina estética, minimizando el riesgo de quemaduras o atrofia grasa por exceso de energía.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Laser Surgery and Medicine Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/10969101",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "implantes metálicos",
+        "marcapasos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "radiofrecuencia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:55:34.567Z"
+  },
+  {
+    "chunk_id": "resolvinas-recuperacion-post-laser-006",
+    "title": "El papel de las resolvinas en la recuperación post-procedimiento",
+    "content": "La resolución de la inflamación es un proceso activo mediado por mediadores lipídicos especializados conocidos como resolvinas. Tras procedimientos invasivos como el láser CO2 o peelings profundos, la transición de una fase pro-inflamatoria a una fase de resolución es crítica para evitar la formación de tejido cicatricial fibrótico o hiperpigmentación. Las resolvinas ayudan a la eliminación de detritos celulares, la terminación del reclutamiento de neutrófilos y el inicio de la reparación tisular. La suplementación tópica o sistémica con precursores de ácidos grasos omega-3 y la modulación de las vías de las resolvinas representan una estrategia innovadora para reducir el tiempo de inactividad (downtime) y mejorar la calidad de la piel cicatrizada. Este mecanismo bioquímico es fundamental para entender por qué algunos pacientes presentan una recuperación más rápida que otros ante el mismo nivel de agresión terapéutica.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Immunology",
+        "url": "https://www.nature.com/nri/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resolvinas",
+        "omega-3"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "recuperacion-post-procedimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:55:34.567Z"
+  }
+]

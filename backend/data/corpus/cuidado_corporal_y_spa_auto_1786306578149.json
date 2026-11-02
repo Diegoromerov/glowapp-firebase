@@ -1,0 +1,398 @@
+[
+  {
+    "chunk_id": "disrupcion-barrera-cutanea-agentes-tensoactivos-001",
+    "title": "Mecanismos de disrupción de la barrera cutánea por tensoactivos aniónicos",
+    "content": "La integridad del estrato córneo depende del equilibrio lipídico y la estabilidad de las proteínas de la membrana. El uso frecuente de tensoactivos aniónicos agresivos, como el lauril sulfato de sodio (SLS), provoca una desnaturalización de las proteínas queratinocíticas y la solubilización de los lípidos intercelulares esenciales como ceramidas y colesterol. Este proceso aumenta la permeabilidad transepidérmica y facilita la entrada de irritantes exógenos. En el contexto clínico de Bogotá, el clima de alta montaña y baja humedad ambiental exacerba esta pérdida de agua transepidérmica (TEWL), llevando a un estado de xerosis reactiva. La literatura dermatológica, incluyendo estudios publicados en el Journal of the American Academy of Dermatology, sugiere que la sustitución de jabones alcalinos por 'syndets' con pH fisiológico (5.5) es fundamental para preservar el manto ácido y reducir la inflamación subclínica. Es imperativo evaluar la formulación de los limpiadores corporales no solo por su capacidad detergente, sino por su potencial de irritación acumulativa, especialmente en pacientes con predisposición a dermatitis atópica o pieles sensibles. La educación al paciente sobre la técnica de lavado —evitando fricción excesiva y agua a altas temperaturas— es tan crucial como la selección del vehículo de limpieza.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/skincare-routine",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes_anionicos",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "uso_de_jabones_en_barra_alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "fotobiologia-luz-visible-hiperpigmentacion-002",
+    "title": "Impacto de la luz visible en la hiperpigmentación corporal",
+    "content": "Tradicionalmente, la fotoprotección se ha centrado en los rayos UVA y UVB. Sin embargo, evidencia reciente recogida en PubMed destaca el papel crítico de la luz visible de alta energía (HEV) en la inducción de hiperpigmentación, particularmente en fototipos altos (IV-VI). A diferencia de los rayos UV, la luz visible induce una pigmentación más intensa y persistente a través de la activación de los receptores de opsina en los melanocitos. En el cuidado corporal, áreas como el cuello, escote y espalda baja son susceptibles a este fenómeno, agravado por la exposición ambiental sin protección adecuada. Los filtros solares químicos convencionales ofrecen una protección limitada contra la luz HEV. La estrategia terapéutica actual recomienda el uso de filtros físicos con pigmentos (óxidos de hierro, dióxido de titanio) que actúan dispersando la radiación visible. La integración de antioxidantes tópicos, como la vitamina C estabilizada o la niacinamida, actúa como un escudo complementario frente al estrés oxidativo inducido por la luz azul, reduciendo la cascada inflamatoria que precede a la melanogénesis patológica en zonas corporales expuestas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "oxidos_de_hierro",
+        "niacinamida",
+        "vitamina_c"
+      ],
+      "contraindications": [
+        "proteccion_solar_exclusiva_UV"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "manejo-clinico-dermatosis-neglecta-003",
+    "title": "Abordaje clínico de la dermatosis neglecta",
+    "content": "La dermatosis neglecta es una condición cutánea caracterizada por la acumulación de sebo, sudor, queratina y suciedad, formando placas hiperpigmentadas y verrugosas, a menudo confundidas erróneamente con acantosis nigricans. Es fundamental realizar un diagnóstico diferencial preciso, ya que la etiología es puramente mecánica por falta de higiene o fricción insuficiente, y no metabólica. Clínicamente, el manejo no requiere tratamientos farmacológicos complejos ni aclarantes potentes. La clave terapéutica reside en la queratolisis mecánica suave y la hidratación. El uso de agentes queratolíticos tópicos como ácido salicílico al 2-5% o urea al 10-20% ayuda a reblandecer la placa, permitiendo su eliminación sin trauma cutáneo. La remoción de estas placas mediante fricción controlada con una gasa empapada en alcohol o solución salina suele ser diagnóstica y curativa. Es imperativo que el profesional de salud identifique si existe una limitación física o psicológica que impida al paciente realizar su higiene corporal de forma autónoma. La educación sobre la técnica de limpieza es fundamental para prevenir la recurrencia, evitando el uso de exfoliantes físicos abrasivos que puedan inducir un fenómeno de Koebner o dermatitis irritativa secundaria.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/dermatosis-neglecta-clinical-review/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_salicilico",
+        "urea"
+      ],
+      "contraindications": [
+        "exfoliantes_mecanicos_agresivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "uso-retinoides-cuerpo-tolerancia-004",
+    "title": "Optimización de la tolerancia a retinoides en piel corporal",
+    "content": "La aplicación de retinoides tópicos (tretinoína, retinaldehído, retinol) en el cuerpo ofrece beneficios significativos en el tratamiento de la elastosis, fotoenvejecimiento y queratosis pilaris. Sin embargo, la piel corporal posee un estrato córneo más grueso pero una densidad de unidades pilosebáceas diferente a la facial, lo que altera la absorción y el potencial de irritación. Para maximizar la eficacia y minimizar la dermatitis por retinoides, se recomienda la técnica de 'short contact therapy' o aplicación sobre piel húmeda para disminuir la penetración sistémica y la irritación local. Estudios clínicos indican que la combinación de retinoides con emolientes ricos en lípidos fisiológicos (ceramidas, ácidos grasos) es esencial para mitigar la sequedad inducida. La titulación gradual de la frecuencia de aplicación, iniciando dos veces por semana, es una regla de oro. Los pacientes deben ser advertidos sobre la fotosensibilidad aumentada, haciendo imperativo el uso de fotoprotección corporal diaria. En el contexto de GlowApp, el seguimiento de la tolerancia es vital, ya que la falta de adherencia es la causa principal de falla terapéutica en protocolos de rejuvenecimiento corporal con retinoides.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/retinoids-body-skin-tolerance/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "retinaldehido",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "embarazo",
+        "piel_inflamada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_antiedad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "fisiopatologia-prurito-acuagenico-005",
+    "title": "Fisiopatología y manejo del prurito acuagénico",
+    "content": "El prurito acuagénico es una entidad clínica caracterizada por una sensación de picor intenso, quemazón o pinchazos tras el contacto con el agua, sin evidencia de lesiones cutáneas visibles. Aunque su fisiopatología exacta sigue bajo investigación, se postula la liberación de acetilcolina y la participación de mastocitos en la epidermis tras el contacto hídrico. En un entorno urbano como Bogotá, el uso de aguas con alta dureza (alto contenido de minerales) puede exacerbar esta sintomatología. El manejo clínico se centra en la reducción de la temperatura del agua durante el baño y la aplicación de emolientes oclusivos inmediatamente después del secado para restaurar la película hidrolipídica. En casos refractarios, el uso de antihistamínicos orales no sedantes o terapias con luz UV (fototerapia) ha demostrado eficacia. Es crucial diferenciar el prurito acuagénico de otras condiciones como la policitemia vera, que puede presentarse con síntomas similares. La asesoría cosmética debe enfocarse en evitar jabones con fragancias sintéticas que puedan actuar como disparadores adicionales. El uso de productos syndet con pH balanceado es la primera línea de intervención no farmacológica en estos pacientes.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "emolientes",
+        "syndet"
+      ],
+      "contraindications": [
+        "agua_caliente",
+        "jabones_fuertes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "microbioma-pliegues-cutaneos-006",
+    "title": "El microbioma en pliegues cutáneos: Equilibrio y riesgo",
+    "content": "Los pliegues cutáneos (intertriginosos) presentan un microambiente único caracterizado por alta humedad, temperatura elevada y oclusión relativa, factores que favorecen la proliferación de microorganismos comensales como *Staphylococcus epidermidis* y *Corynebacterium* spp. La alteración de este ecosistema, ya sea por uso de productos antibacterianos excesivos o por condiciones de salud sistémica (como la diabetes), puede derivar en intertrigo candidiásico o bacteriano. La evidencia reciente sugiere que el uso de probióticos tópicos y prebióticos puede ayudar a mantener la estabilidad del microbioma, previniendo el sobrecrecimiento de patógenos. Es vital educar al paciente sobre la importancia de mantener los pliegues secos mediante técnicas adecuadas de secado, sin realizar fricción excesiva que comprometa la barrera cutánea. El uso de polvos o cremas con barrera física (óxido de zinc) puede ser útil en áreas de fricción constante para prevenir la dermatitis intertriginosa. La evaluación clínica debe considerar siempre la presencia de eritema, maceración o mal olor, signos que indican una disbiosis que requiere intervención médica dirigida, superando el alcance del cuidado meramente cosmético.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-021-00648-y",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos",
+        "oxido_de_zinc"
+      ],
+      "contraindications": [
+        "uso_excesivo_antibacterianos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_de_la_piel"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "fototoxicidad-agentes-botanicos-007",
+    "title": "Riesgos de fototoxicidad por agentes botánicos en cosmética corporal",
+    "content": "El auge de la cosmética 'natural' ha incrementado el uso de extractos botánicos en productos corporales. Sin embargo, ciertos compuestos, notablemente las furocumarinas presentes en aceites esenciales de cítricos (bergamota, lima, limón) y plantas como la ruda o el apio, poseen propiedades fotosensibilizantes. La exposición solar posterior a la aplicación tópica de estos agentes puede desencadenar una reacción de fototoxicidad, manifestándose como eritema intenso, edema y, posteriormente, hiperpigmentación postinflamatoria severa. Este fenómeno, conocido como fitofotodermatitis, es un riesgo clínico subestimado en rutinas de cuidado corporal. Es imperativo que el usuario de GlowApp verifique que los productos formulados con aceites esenciales indiquen explícitamente que son 'libres de furocumarinas' o que se utilicen exclusivamente en productos de enjuague (como jabones) en lugar de cremas de aplicación prolongada. La educación del paciente sobre la lectura de etiquetas y la precaución de no exponerse al sol tras el uso de productos botánicos desconocidos es una medida de seguridad dermatológica fundamental para prevenir lesiones pigmentarias de difícil tratamiento.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis - Journal of the American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "furocumarinas",
+        "aceites_esenciales"
+      ],
+      "contraindications": [
+        "exposicion_solar_post_aplicacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "manejo-cicatrices-corporales-008",
+    "title": "Manejo clínico de cicatrices corporales: Expectativas y evidencia",
+    "content": "El manejo de cicatrices corporales, ya sean atróficas o hipertróficas, requiere un enfoque multidisciplinario. En la fase inicial, la oclusión con láminas de gel de silicona es el estándar de oro respaldado por guías internacionales (International Advisory Panel on Scar Management). La silicona actúa mediante dos mecanismos: hidratación del estrato córneo y modulación de la síntesis de colágeno mediante la presión ejercida sobre los fibroblastos. En cuanto a las cicatrices atróficas corporales, el uso de microneedling o láseres fraccionados ha ganado terreno, siempre bajo supervisión médica. Es vital gestionar las expectativas del paciente: ninguna cicatriz desaparece por completo, pero su apariencia puede mejorar significativamente en textura y color. La fotoprotección estricta de la cicatriz es mandatoria durante al menos 6 a 12 meses para prevenir la hiperpigmentación postinflamatoria, que puede hacer que la cicatriz sea mucho más visible. El uso de cremas con extracto de cebolla o vitamina E, aunque populares, tienen una evidencia clínica limitada comparada con la silicona de grado médico. En GlowApp, recomendamos la evaluación profesional antes de iniciar cualquier protocolo de tratamiento en cicatrices recientes o inflamadas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Advisory Panel on Scar Management",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12470195/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicona",
+        "vitamina_e"
+      ],
+      "contraindications": [
+        "exposicion_solar_sin_proteccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos_esteticos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  },
+  {
+    "chunk_id": "hidratacion-oclusivos-humectantes-009",
+    "title": "Mecanismos de hidratación: Diferenciación entre oclusivos y humectantes",
+    "content": "La hidratación corporal eficaz se basa en el equilibrio entre dos tipos de ingredientes: humectantes y oclusivos. Los humectantes (glicerina, ácido hialurónico, urea) atraen agua hacia el estrato córneo desde las capas profundas de la piel o desde la humedad ambiental. Sin embargo, en climas secos, pueden extraer agua de la piel hacia el exterior si no están sellados correctamente. Los oclusivos (petrolato, manteca de karité, aceites minerales) crean una barrera física sobre la superficie cutánea, impidiendo la evaporación del agua (TEWL). La estrategia clínica ideal consiste en aplicar humectantes sobre la piel ligeramente húmeda tras el baño, seguidos inmediatamente por una capa de oclusivo para 'bloquear' la hidratación. Esta combinación es la piedra angular del manejo de la xerosis corporal, particularmente en pacientes con piel atópica o senil. La elección del vehículo (loción, crema o ungüento) debe ajustarse según la severidad de la sequedad: los ungüentos, al tener mayor capacidad oclusiva, son preferibles para áreas muy secas, mientras que las lociones son más adecuadas para áreas extensas de fácil aplicación. El uso de ingredientes reparadores, como ceramidas y ácidos grasos, completa el espectro de una hidratación de nivel clínico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(14)01053-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "muy_seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "acido_hialuronico",
+        "petrolato",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "omision_de_oclusion_en_climas_secos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:15:59.768Z"
+  }
+]

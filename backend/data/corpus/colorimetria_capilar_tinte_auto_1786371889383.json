@@ -1,0 +1,287 @@
+[
+  {
+    "chunk_id": "colorimetria-electroquimica-superficial-001",
+    "title": "Modulación de la carga electrostática de la queratina durante el depósito de pigmentos",
+    "content": "La superficie de la fibra capilar, protegida naturalmente por la capa F (ácido 18-metileicosanoico), presenta una carga eléctrica negativa inherente bajo condiciones de pH fisiológico. Durante los procesos de coloración, la alteración del pH mediante agentes alcalinizantes como la etanolamina o el amoniaco modifica el punto isoeléctrico de las proteínas capilares, alterando esta carga superficial. La comprensión de la electrostática es crucial para el colorista, ya que el uso de polímeros catiónicos en los tintes no solo actúa como acondicionador, sino que neutraliza las zonas de carga negativa excesiva, facilitando una deposición de pigmento más uniforme. Si no se gestiona esta polaridad, se produce una adsorción heterogénea del color, especialmente en cabellos con alta porosidad donde la cutícula está permanentemente levantada. La evidencia sugiere que el control del potencial de superficie es determinante para evitar el 'efecto parche' en cabellos procesados. El uso de tensoactivos aniónicos antes de la coloración puede ser contraproducente si no se equilibra con una fase de acondicionamiento catiónico posterior. Este fenómeno es fundamental para la estabilidad del color a largo plazo, ya que una correcta afinidad electrostática asegura que las moléculas de colorante se anclen firmemente dentro de la corteza, minimizando la migración prematura del pigmento hacia el exterior de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25562637/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos",
+        "etanolamina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectroscopia-infrarroja-002",
+    "title": "Espectroscopía NIR para la evaluación de la integridad proteica post-tinte",
+    "content": "La espectroscopía de infrarrojo cercano (NIR) se ha consolidado como una herramienta no invasiva de alta precisión para evaluar el daño estructural en la queratina tras procesos de coloración oxidativa. A diferencia de los métodos visuales, la técnica NIR permite cuantificar la degradación de los enlaces disulfuro y la pérdida de lípidos estructurales dentro de la corteza. En la práctica clínica y cosmética, el uso de esta tecnología permite determinar si la cutícula ha recuperado su integridad funcional tras el sellado post-coloración. La degradación de los aminoácidos, específicamente la cistina, es un predictor crítico de la futura retención de pigmentos. Un cabello con una firma espectral alterada en la banda de absorción de la amida I y II mostrará una porosidad aumentada que, inevitablemente, conducirá a una degradación acelerada del color aplicado. Los profesionales deben entender que la estabilidad del tono no depende solo de la calidad del pigmento, sino del estado de la matriz proteica subyacente. La implementación de protocolos basados en la medición de reflectancia infrarroja en salones de alta gama permite personalizar el tratamiento de post-coloración, ajustando la carga de proteínas hidrolizadas según el daño detectado, optimizando así la durabilidad del servicio de colorimetría.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteínas hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-piezoelectrico-003",
+    "title": "Influencia del efecto piezoeléctrico en la fibra capilar durante el servicio",
+    "content": "El efecto piezoeléctrico en la fibra capilar, aunque a menudo ignorado en la colorimetría convencional, juega un rol significativo durante las fases de fricción mecánica, como el cepillado o la aplicación intensiva del tinte. La queratina, al ser una proteína fibrilar con propiedades dieléctricas, puede generar cargas eléctricas bajo deformación mecánica. Este fenómeno puede interferir en la distribución de los pigmentos pre-polimerizados, causando una migración desigual hacia áreas de mayor tensión electrostática. En cabellos largos o con alta densidad, la acumulación de estas cargas puede repeler ciertas moléculas de tinte, resultando en áreas de coloración deficiente. Clínicamente, es fundamental minimizar la manipulación mecánica agresiva durante la fase de pose del tinte para evitar que el estrés piezoeléctrico altere la cinética de penetración. La utilización de peines de materiales conductores o antiestáticos es una recomendación práctica para mitigar este efecto. Además, el uso de agentes acondicionadores que modulen la conductividad superficial puede estabilizar la fibra y asegurar que el depósito de pigmento sea homogéneo. La comprensión de este fenómeno permite a los expertos en coloración de GlowApp elevar la precisión de sus resultados, logrando una saturación cromática uniforme incluso en fibras con alta tendencia a la acumulación de carga estática.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  },
+  {
+    "chunk_id": "colorimetria-solubilidad-cmc-004",
+    "title": "Partición y solubilidad de pigmentos en el complejo de membrana celular (CMC)",
+    "content": "El complejo de membrana celular (CMC) actúa como la principal vía de difusión para los precursores de color antes de su acoplamiento oxidativo en la corteza. La solubilidad y el coeficiente de partición de las moléculas de tinte dentro de esta matriz lipídica son determinantes para la profundidad de penetración. Si el tinte posee una hidrofobicidad excesiva, puede quedar atrapado en las capas externas del CMC, resultando en un color superficial que se desvanece rápidamente con el lavado. Por el contrario, una molécula demasiado hidrofílica puede no penetrar eficazmente la barrera lipídica del CMC. Los tintes modernos utilizan agentes solubilizantes para optimizar este balance y asegurar que el pigmento alcance la corteza media. El reto clínico surge en cabellos con CMC dañado, donde la falta de lípidos intercelulares permite una entrada demasiado rápida y descontrolada, provocando una saturación excesiva o un tono no deseado. Es imperativo evaluar la integridad del CMC mediante pruebas de porosidad previas. La aplicación de tratamientos de reposición lipídica antes del tinte puede modular la permeabilidad del CMC, permitiendo una entrada más controlada de los pigmentos y garantizando una mayor longevidad cromática, esencial para el mantenimiento del tono en servicios de alta complejidad técnica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lípidos",
+        "agentes solubilizantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-isótopico-005",
+    "title": "Efectos isotópicos y estabilidad del enlace químico en la coloración",
+    "content": "Aunque a menudo se pasa por alto en la cosmética capilar, el efecto isotópico cinético influye en la estabilidad de los enlaces formados durante la oxidación de los precursores de color. La sustitución o presencia de ciertos isótopos en el agua utilizada para mezclar el tinte o en los componentes de la fórmula puede alterar ligeramente la tasa de reacción de acoplamiento oxidativo. En regiones con alta variabilidad en la composición mineral del agua, como Bogotá, las impurezas pueden actuar como catalizadores que aceleran o inhiben la formación de los pigmentos de alto peso molecular. Este fenómeno explica por qué el mismo tinte puede presentar ligeras variaciones de tono según la fuente de agua utilizada. Para mitigar estas variaciones, la recomendación clínica es utilizar agua purificada o desionizada en la mezcla de coloración profesional. Este control de variables permite una cinética de reacción predecible, evitando la formación de subproductos de oxidación inestables que contribuyen a un cambio de tono indeseado (viraje) en las semanas posteriores a la aplicación. La estandarización de la mezcla es, por tanto, un pilar fundamental para la consistencia del color en la práctica profesional, asegurando que la reacción química ocurra en las condiciones óptimas de estabilidad molecular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31589315/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agua desionizada"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  },
+  {
+    "chunk_id": "colorimetria-biocompatibilidad-polimeros-006",
+    "title": "Biocompatibilidad y función de los polímeros catiónicos en la retención cromática",
+    "content": "Los polímeros catiónicos, como el policuaternio-10 o el cloruro de guar hidroxipropiltrimonio, son componentes esenciales en las fórmulas de tintes modernos. Su función trasciende el simple acondicionamiento: actúan como agentes de anclaje que mejoran la afinidad de los pigmentos directos y oxidativos hacia la fibra capilar dañada. Al poseer una carga positiva, estos polímeros se adsorben electrostáticamente sobre las zonas de la cutícula cargadas negativamente, creando una película protectora que minimiza la porosidad diferencial. Clínicamente, la biocompatibilidad de estos polímeros es vital para evitar reacciones de contacto en cueros cabelludos sensibles. Sin embargo, una sobre-acumulación de polímeros (build-up) puede impedir la penetración de tintes en aplicaciones subsiguientes, creando un bloqueo físico. Por ello, el uso de agentes quelantes es necesario para eliminar residuos de polímeros antes de un nuevo proceso de coloración. La selección adecuada de polímeros según el fototipo y el estado de la fibra es un ejercicio de precisión clínica. En GlowApp, priorizamos fórmulas donde el peso molecular del polímero permita la adhesión sin comprometer la oxigenación del cuero cabelludo, garantizando una fijación duradera del color sin sacrificar la salud folicular a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "policuaternio-10",
+        "guar hidroxipropiltrimonio"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cliente"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbiota-scalp-007",
+    "title": "Impacto de la microbiota del folículo en la oxidación interna del tinte",
+    "content": "La microbiota del cuero cabelludo, compuesta principalmente por especies de Staphylococcus y Cutibacterium acnes, desempeña un rol inesperado en el éxito de la coloración permanente. Estudios recientes sugieren que la actividad enzimática de estos microorganismos, especialmente la secreción de peroxidasa bacteriana, puede interactuar con el peróxido de hidrógeno aplicado durante el proceso de coloración. Esta interferencia biológica puede catalizar una oxidación incontrolada o prematura de los precursores de color antes de que alcancen la corteza capilar, resultando en un tono final que difiere de la expectativa cromática. Además, la alteración del pH del cuero cabelludo tras el uso de tintes de alta alcalinidad puede causar una disbiosis transitoria, favoreciendo el crecimiento de microorganismos oportunistas. En pacientes con condiciones preexistentes como dermatitis seborreica, este impacto es más pronunciado. Es fundamental implementar protocolos de higiene química que respeten la ecología cutánea, utilizando agentes buffer que estabilicen el pH sin eliminar la barrera protectora. La gestión del microbioma no es solo una cuestión de salud cutánea, sino una herramienta de precisión para asegurar la predictibilidad del resultado cromático en el salón.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer"
+      ],
+      "contraindications": [
+        "dermatitis seborreica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:24:30.803Z"
+  }
+]

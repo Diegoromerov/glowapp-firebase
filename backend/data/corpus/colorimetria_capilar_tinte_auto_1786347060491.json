@@ -1,0 +1,329 @@
+[
+  {
+    "chunk_id": "electroquimica-pigmentos-001",
+    "title": "Electroquímica de la superficie capilar y su influencia en la afinidad tintórea",
+    "content": "La interacción entre el cabello y los precursores de tinte no es un proceso meramente mecánico, sino una compleja reacción electroquímica. La superficie del cabello posee una carga negativa neta (potencial zeta) debido a la presencia de grupos carboxilo en los aminoácidos de la queratina. Cuando el pH del medio aumenta mediante el uso de amoniaco o etanolamina, la carga negativa se intensifica, lo que puede repeler ciertos pigmentos aniónicos o facilitar la adsorción de polímeros catiónicos. Comprender el potencial zeta es fundamental para el colorista, ya que determina la eficacia con la que los precursores de color penetran la corteza. Estudios en la Journal of Cosmetic Science han demostrado que la modificación de este potencial mediante agentes acondicionadores previos puede mejorar significativamente la uniformidad del depósito de color, evitando zonas de saturación excesiva en cabellos dañados donde la integridad de la cutícula está comprometida. La manipulación consciente de este entorno electrostático permite un control más preciso sobre la profundidad del color, especialmente en cabellos con porosidad heterogénea, optimizando la afinidad tintórea y reduciendo el riesgo de tonos no deseados por una absorción desigual de los pigmentos en la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acondicionadores",
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "interaccion-quelantes-metalicos-002",
+    "title": "Mecanismo de acción de agentes quelantes en la prevención de la degradación catalítica",
+    "content": "Los metales de transición, como el cobre y el hierro, presentes en el suministro de agua o acumulados en la fibra capilar, actúan como catalizadores en la descomposición del peróxido de hidrógeno. Esta reacción, conocida como reacción de Fenton, genera radicales libres altamente reactivos (OH•) que degradan no solo la melanina, sino también los aminoácidos estructurales de la corteza, provocando una pérdida de integridad estructural y una fijación de color deficiente. El uso de agentes quelantes (como el EDTA o el fitato de sodio) antes del proceso de coloración es una medida crítica de higiene química. Estos compuestos secuestran los iones metálicos, impidiendo que participen en la reacción exotérmica incontrolada con el peróxido. Según publicaciones en el International Journal of Trichology, la quelación efectiva no solo prolonga la estabilidad del color, sino que también preserva la elasticidad del cabello, evitando la rotura prematura durante el proceso de aclarado. Un protocolo riguroso de quelación es esencial en entornos urbanos donde la calidad del agua puede variar drásticamente, alterando los resultados cromáticos esperados por el profesional.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "fitato de sodio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "dinamica-capa-f-003",
+    "title": "Preservación del ácido 18-metileicosanoico durante la coloración permanente",
+    "content": "La capa F, una monocapa lipídica externa compuesta principalmente por ácido 18-metileicosanoico (18-MEA), es la responsable de la hidrofobicidad natural del cabello. Durante los procesos de coloración alcalina, esta capa es frecuentemente degradada por el pH elevado y la acción oxidativa, lo que resulta en un cabello poroso, opaco y propenso al encrespamiento. La pérdida de esta capa altera la dinámica de absorción del tinte, haciendo que el color se degrade de forma acelerada tras los primeros lavados. Investigaciones dermatológicas sugieren que la incorporación de lípidos de reemplazo o el uso de sistemas de coloración con sistemas de amortiguación (buffer) que limiten la erosión de la cutícula son cruciales para mantener la salud capilar. La preservación de la capa F es, por tanto, un indicador de calidad en el servicio de coloración. Los profesionales deben priorizar productos que minimicen la hinchazón excesiva de la fibra durante el tiempo de pose, asegurando que la arquitectura cuticular se mantenga lo más intacta posible para proteger el pigmento recién depositado contra la lixiviación prematura por agentes externos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido 18-metileicosanoico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-post-coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "metamerismo-clinico-004",
+    "title": "Gestión del metamerismo: La trampa de la percepción cromática en la consulta",
+    "content": "El metamerismo ocurre cuando dos colores parecen coincidir bajo una fuente de luz específica, pero difieren bajo otra. En la colorimetría capilar, este fenómeno es un desafío constante en la consulta profesional, especialmente al intentar igualar tonos en condiciones de luz artificial de baja calidad (luz cálida vs. luz natural). La percepción del color está influenciada por la distribución espectral de la fuente de luz y la capacidad del cabello para absorber y reflejar distintas longitudes de onda. Para evitar errores de diagnóstico, es imperativo realizar la evaluación cromática bajo una luz con un índice de reproducción cromática (IRC) superior a 90, similar a la luz del día. La falta de control sobre este factor es una de las causas principales de insatisfacción post-servicio, donde el cliente percibe variaciones cromáticas indeseadas al salir del salón. La educación sobre el impacto de la luz ambiente es un pilar fundamental en la gestión de expectativas, reduciendo la incidencia de reclamos basados en percepciones subjetivas que no corresponden a la realidad técnica del pigmento depositado en la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institute of Standards and Technology",
+        "url": "https://www.nist.gov/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "estres-oxidativo-matriz-005",
+    "title": "Impacto sistémico del estrés oxidativo en la reserva de melanocitos",
+    "content": "El estrés oxidativo acumulado en la matriz folicular no solo afecta la estructura del tallo, sino que tiene un impacto directo en la viabilidad de los melanocitos, las células encargadas de producir melanina. Cuando se realizan servicios frecuentes de decoloración agresiva, el estrés oxidativo inducido puede acelerar la apoptosis de los melanocitos en el bulbo, lo que se traduce clínicamente en una canicie prematura o una pérdida de pigmentación natural en los nuevos crecimientos. La evidencia científica, recogida en diversas publicaciones de dermatología, sugiere que el uso de antioxidantes tópicos y una gestión cuidadosa de los volúmenes de peróxido son esenciales para mitigar este daño. El profesional debe comprender que el servicio de coloración no es un evento aislado en la fibra, sino que interactúa con la biología del folículo piloso. Proteger el cuero cabelludo mediante el uso de barreras protectoras y el control estricto de la alcalinidad es fundamental para preservar la salud a largo plazo de la matriz capilar y evitar efectos secundarios adversos en la producción de melanina natural.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "cuero cabelludo inflamado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cliente"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "higroscopia-climas-tropicales-006",
+    "title": "Higroscopía y estabilidad cromática en ambientes tropicales como Bogotá",
+    "content": "La higroscopía es la capacidad de la fibra capilar para absorber y liberar humedad del entorno. En climas con variaciones de humedad relativa, como en Bogotá, este fenómeno afecta directamente la estabilidad del color y la percepción de brillo. Un cabello altamente poroso debido a procesos químicos previos absorberá humedad ambiental excesiva, lo que provoca la expansión de la cutícula y la lixiviación acelerada de moléculas de color, especialmente en tintes semipermanentes de molécula grande. La falta de sellado cuticular post-proceso permite que el ciclo de higroscopía sea más violento, comprometiendo la longevidad del tono. Es vital implementar técnicas de sellado de cutícula con pH ácido después de la coloración para normalizar el punto isoeléctrico del cabello. Además, el uso de productos que contengan polímeros formadores de película puede ayudar a reducir la permeabilidad de la fibra al vapor de agua, garantizando que el color se mantenga estable ante los cambios de humedad ambiental, evitando el efecto de 'lavado' o desvanecimiento prematuro que afecta la estética del resultado final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros selladores"
+      ],
+      "contraindications": [],
+      "season": [
+        "invierno/lluvia"
+      ],
+      "applicable_modules": [
+        "cuidado-post-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "reactividad-cruzada-007",
+    "title": "Reactividad cruzada: El riesgo latente entre pigmentos textiles y tintes capilares",
+    "content": "La reactividad cruzada es un fenómeno inmunológico crítico en la colorimetría capilar que ocurre cuando el sistema inmunitario, sensibilizado previamente a compuestos químicos similares (como colorantes textiles o conservantes), reacciona ante la presencia de precursores de color en el tinte, como la parafenilendiamina (PPD) o la paratoluendiamina (PTD). Esto explica por qué un paciente puede desarrollar una dermatitis de contacto severa incluso en su primera aplicación de tinte capilar. La estructura química de estos colorantes comparte similitudes con diversos tintes utilizados en la industria textil, lo que aumenta la probabilidad de sensibilización cruzada. Es imperativo que el profesional realice un interrogatorio clínico detallado sobre antecedentes de alergias a ropa, tatuajes de henna negra o cosméticos. El test de parche (patch test) debe realizarse estrictamente 48 horas antes, incluso si el cliente refiere haber usado tintes anteriormente sin problemas. La seguridad del paciente depende de reconocer que cualquier tinte es un potencial alérgeno y que la sensibilización es un proceso acumulativo que no discrimina historial previo de tolerancia.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://eadv.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "PTD"
+      ],
+      "contraindications": [
+        "historial de dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cliente"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  },
+  {
+    "chunk_id": "microbiota-scalp-008",
+    "title": "Impacto de la alcalinidad residual en la diversidad del microbioma del cuero cabelludo",
+    "content": "El cuero cabelludo alberga una microbiota compleja, compuesta principalmente por bacterias y hongos (como Malassezia) que mantienen la barrera cutánea en equilibrio. Los servicios de coloración, especialmente aquellos que utilizan altas concentraciones de amoniaco y peróxido, alteran significativamente el pH del cuero cabelludo. Si no se neutraliza correctamente la alcalinidad residual, se crea un entorno propicio para la proliferación de microorganismos oportunistas, lo que puede derivar en dermatitis, caspa o inflamación folicular crónica. Estudios recientes publicados en revistas de dermatología clínica han demostrado que la recuperación del pH ácido (entre 4.5 y 5.5) tras el servicio de coloración es fundamental para restaurar la homeostasis del microbioma. El profesional debe asegurar el uso de champús post-coloración con agentes acidificantes y humectantes que no solo cierren la cutícula, sino que también protejan la barrera lipídica y promuevan un ambiente hostil para el crecimiento de patógenos, garantizando así la salud del cuero cabelludo a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acidificantes"
+      ],
+      "contraindications": [
+        "dermatitis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-post-coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:30:42.308Z"
+  }
+]

@@ -1,0 +1,331 @@
+[
+  {
+    "chunk_id": "guias_unas-osteoma-cutis-subungueal-001",
+    "title": "Osteoma cutis subungueal: calcificaciones ectópicas que confunden al especialista",
+    "content": "El osteoma cutis subungueal es una condición rara pero clínicamente significativa donde se produce formación de tejido óseo maduro en la dermis del lecho ungueal. A menudo es mal diagnosticado como una exostosis subungueal, pero su origen es distinto, derivando frecuentemente de traumatismos repetidos o procesos inflamatorios crónicos. Clínicamente, el paciente presenta una masa firme, a menudo dolorosa, que puede elevar la lámina ungueal o causar onicólisis secundaria. Es fundamental diferenciarlo mediante imagenología (radiografía o ecografía de alta resolución), ya que la manipulación mecánica en cabina puede desencadenar una respuesta inflamatoria exacerbada o incluso una paroniquia traumática. La literatura dermatológica, incluyendo reportes en el Journal of the American Academy of Dermatology (JAAD), enfatiza que la remoción quirúrgica es el estándar de oro, y cualquier intento de limado o presión externa por estética es contraproducente y doloroso para el paciente. El reconocimiento temprano es vital para evitar el desgaste innecesario de la matriz y permitir una derivación oportuna al dermatólogo o cirujano de mano.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/publications/dermatology-world",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_mecanico",
+        "presion_sobre_lecho"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_traumas_ungueales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperhidrosis-periungueal-falla-adhesion-002",
+    "title": "Impacto de la hiperhidrosis periungueal en la estabilidad de los polímeros",
+    "content": "La hiperhidrosis, definida como la sudoración excesiva, no solo afecta la palma de la mano, sino que altera drásticamente el microambiente periungueal. Desde una perspectiva fisicoquímica, la humedad persistente en los pliegues ungueales reduce la energía superficial de la lámina, dificultando la adhesión de las bases fotopolimerizables. El agua atrapada en la interfaz lámina-producto actúa como un agente plastificante, debilitando los enlaces de hidrógeno y facilitando el levantamiento prematuro, lo cual es erróneamente atribuido a la calidad del producto. Además, la presencia constante de humedad favorece la maceración del eponiquio, aumentando el riesgo de dermatitis por contacto debido a la migración de monómeros no polimerizados hacia la piel dañada. Según estudios en PubMed sobre la integridad de las barreras cutáneas, el control de la humedad mediante agentes secantes controlados y el uso de primers específicos para lechos húmedos es crítico. Se debe evitar la oclusión total con productos de alta densidad si no se ha gestionado previamente el exceso de humedad, dado que el ambiente anaeróbico resultante puede promover el crecimiento de flora oportunista.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers_deshidratantes"
+      ],
+      "contraindications": [
+        "oclusion_en_hiperhidrosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-eritroniquia-longitudinal-focal-003",
+    "title": "Eritroniquia longitudinal focal: diagnóstico diferencial y manejo",
+    "content": "La eritroniquia longitudinal focal se manifiesta como una banda roja persistente en la lámina ungueal, extendiéndose desde la lúnula hasta el borde libre. Clínicamente, es un signo que requiere una evaluación meticulosa, ya que puede ser indicativo de procesos benignos como el onicopapiloma o, en casos más preocupantes, representar una manifestación de patologías inflamatorias como el liquen plano ungueal o incluso neoplasias. A diferencia de la melanoniquia, la eritroniquia es frecuentemente ignorada en el entorno estético, donde se intenta cubrir con esmaltes o sistemas de larga duración. Sin embargo, el limado sobre una zona con eritroniquia puede exacerbar la fragilidad de la lámina y ocultar cambios en la morfología de la banda. Según directrices publicadas en revistas de la IADVL, cualquier banda ungueal solitaria que persista por más de tres meses debe ser sometida a un examen dermatoscópico (onicoscopia). La presencia de hemorragias en astilla, adelgazamiento de la lámina o dolor asociado son 'red flags' que excluyen cualquier tratamiento cosmético hasta obtener un diagnóstico clínico claro, evitando así el retraso en la detección de patologías ungueales subyacentes.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/clinical-guidelines/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_excesivo",
+        "ocultamiento_con_color"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicomatricosis-oculta-004",
+    "title": "Onicomatricosis: la infección que habita en la matriz",
+    "content": "La onicomatricosis es una variante poco común pero crítica de la onicomicosis, donde el hongo coloniza el epitelio de la matriz ungueal, no solo la lámina. Este fenómeno explica por qué muchos tratamientos tópicos y el limado superficial fallan: el patógeno está protegido por la estructura de la matriz, generando una lámina distrófica desde su nacimiento. En cabina, la sospecha debe surgir ante una distrofia ungueal que no responde a la higiene ni a la eliminación de capas dañadas, presentando a menudo una coloración blanquecina o amarillenta profunda. La manipulación mecánica en estas uñas es contraindicada, ya que el torno puede aerosolizar esporas fúngicas, aumentando el riesgo de contaminación cruzada y autoinoculación en otros dedos. La evidencia clínica, documentada en publicaciones de la Sociedad Española de Dermatología y Venereología (AEDV), subraya que este cuadro requiere confirmación mediante cultivo o PCR y tratamiento sistémico prescrito por un facultativo. El papel del profesional de uñas es el reconocimiento temprano y la derivación, evitando el uso de herramientas eléctricas que puedan dispersar el inóculo fúngico en el espacio de trabajo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AEDV",
+        "url": "https://aedv.es/guias-clinicas/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso_de_tornos",
+        "limado_mecanico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_bioseguridad"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotobiologia-luz-azul-005",
+    "title": "Fotobiología de la luz azul y su impacto en la matriz",
+    "content": "La fotopolimerización de geles UV/LED utiliza longitudes de onda específicas para activar los fotoiniciadores. Sin embargo, la exposición repetida y prolongada a la luz azul (rango de 400-450 nm) ha sido objeto de estudio reciente por su potencial de generar estrés oxidativo en los queratinocitos de la matriz y el lecho ungueal. A diferencia de la radiación UVA, que penetra más profundamente, la luz azul de alta energía puede inducir la producción de especies reactivas de oxígeno (ROS), comprometiendo la viabilidad celular de la unidad ungueal a largo plazo. Según investigaciones publicadas en JAMA Dermatology, el uso de lámparas de alta intensidad sin un protocolo de protección adecuado puede acelerar el envejecimiento prematuro de la piel periungueal y, potencialmente, alterar la homeostasis de la matriz. Para mitigar este riesgo, es recomendable el uso de guantes con protección UV o protectores solares de amplio espectro aplicados 20 minutos antes de la exposición. Es imperativo que el profesional entienda que la eficiencia de la polimerización no debe comprometer la salud biológica del tejido circundante, limitando el tiempo de exposición al estrictamente necesario para la cura completa del producto.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "JAMA Dermatology",
+        "url": "https://jamanetwork.com/journals/jamadermatology",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "protectores_solares"
+      ],
+      "contraindications": [
+        "sobreexposicion_luz_uv"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_cabina"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-galvanica-007",
+    "title": "Corrosión galvánica: el riesgo invisible en herramientas de acero",
+    "content": "La corrosión galvánica ocurre cuando dos metales diferentes están en contacto en presencia de un electrolito, como el sudor o los residuos de productos químicos en cabina. En el caso de los instrumentos de acero inoxidable, la esterilización repetida y el contacto con soluciones desinfectantes pueden alterar la pasivación del metal, creando microfisuras donde se acumulan biopelículas (biofilms) resistentes a los métodos de asepsia estándar. Estas fisuras no solo comprometen la integridad de la herramienta, sino que pueden liberar iones metálicos como níquel o cromo, que son potentes sensibilizantes cutáneos. Clínicamente, esto puede derivar en dermatitis alérgica de contacto periungueal, a menudo confundida con una reacción a los acrilatos. Los estándares de la OMS sobre bioseguridad sugieren que la inspección visual de las herramientas bajo magnificación es fundamental. Si una herramienta muestra signos de corrosión o pérdida de brillo, debe ser retirada del servicio. El mantenimiento preventivo, que incluye el uso de lubricantes grado médico y procesos de secado rigurosos post-autoclave, es la única forma de garantizar que el acero no se convierta en un vehículo de patógenos o alérgenos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240003927",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso_de_herramientas_corroidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-degradacion-oxidativa-keratina-008",
+    "title": "Degradación oxidativa de la queratina: el efecto de los solventes",
+    "content": "La queratina de la lámina ungueal es una proteína compleja cuya estabilidad depende del mantenimiento de sus puentes disulfuro y su matriz lipídica. Los solventes orgánicos utilizados para la remoción de sistemas de uñas, como la acetona pura, actúan eliminando no solo el producto, sino también los lípidos intercelulares esenciales para la flexibilidad ungueal. Esta deshidratación forzada provoca una degradación oxidativa que vuelve a la uña quebradiza y susceptible a la onicosquizia lamelar. Estudios dermatológicos indican que la exposición repetida a estos solventes sin una fase de rehidratación activa altera la estructura de la placa, facilitando la penetración de agentes químicos externos hacia el lecho. La práctica de envolver los dedos en acetona durante periodos prolongados debe ser limitada a lo estrictamente necesario. Es preferible el uso de métodos de remoción mecánica controlada (limado manual suave) combinados con solventes de menor volatilidad o envolturas con sellado térmico que minimicen la evaporación y el tiempo de contacto. La recuperación de la barrera lipídica post-remoción, mediante aceites de cutícula ricos en ceramidas, es un paso clínico fundamental para restaurar la homeostasis de la placa ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_ceramidas"
+      ],
+      "contraindications": [
+        "exposicion_prolongada_acetona"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_remocion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  },
+  {
+    "chunk_id": "guias_unas-neurobiologia-tic-ungueal-009",
+    "title": "Onicotilomanía y el componente neurobiológico del trauma",
+    "content": "La onicotilomanía es un trastorno del espectro obsesivo-compulsivo que se manifiesta como el impulso recurrente de arrancar, morder o manipular las uñas y los tejidos periungueales. A diferencia de la onicofagia simple, este comportamiento conlleva un trauma mecánico severo que puede resultar en onicodistrofia permanente, pérdida de la lámina o infecciones recurrentes por la disrupción de la barrera cutánea. Clínicamente, el profesional en cabina suele observar uñas con surcos, hemorragias subungueales y un eponiquio inflamado crónicamente. El abordaje cosmético es insuficiente y, en ocasiones, contraproducente al intentar 'camuflar' el daño con uñas esculpidas que, al ser arrancadas por el paciente, causan un trauma aún mayor. Según la literatura psiquiátrica y dermatológica, el tratamiento debe ser multidisciplinario, involucrando terapia cognitivo-conductual (TCC) y, en casos necesarios, soporte farmacológico. El rol del especialista en GlowApp es identificar los patrones de comportamiento, evitar procedimientos que aumenten la frustración del paciente y realizar una derivación a psicología o dermatología, reconociendo que el daño ungueal es, en este contexto, un síntoma de un proceso subyacente que excede el ámbito de la estética.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "tratamientos_esteticos_invasivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_psicodermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:23:51.636Z"
+  }
+]

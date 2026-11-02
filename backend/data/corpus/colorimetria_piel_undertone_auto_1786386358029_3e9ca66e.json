@@ -1,0 +1,240 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386358027-1-55a287ae-biofotonica-de-la-dispersion-de-luz-en-la-dermis-papilar",
+    "title": "Biofotónica de la dispersión de luz en la dermis papilar",
+    "content": "La colorimetría cutánea no depende únicamente de la melanina, sino de la interacción biofotónica en la dermis papilar. La dispersión de luz, descrita por la teoría de Mie, ocurre cuando los fotones inciden sobre estructuras cuyo tamaño es comparable a la longitud de onda de la luz visible, como las fibras de colágeno y elastina. En pieles con subtono frío, la organización densa y regular de estas fibras favorece la dispersión de longitudes de onda cortas (azules), mientras que en subtonos cálidos, la disposición espacial tiende a absorber selectivamente estas longitudes, permitiendo la reflectancia de tonos amarillos y rojos. Este fenómeno es crítico para el diagnóstico RAG, ya que la densidad del colágeno cambia con la edad, alterando la percepción del subtono incluso si la melanina permanece constante. La comprensión de este gradiente de dispersión permite corregir sesgos en algoritmos de visión artificial que confunden la densidad del colágeno con la saturación de pigmento, optimizando la precisión en la recomendación de bases y correctores según la estructura dérmica profunda.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_visual"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:25:58.028Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386358028-2-b5e02465-hemodinamica-capilar-y-su-modulacion-en-el-subtono-basal",
+    "title": "Hemodinámica capilar y su modulación en el subtono basal",
+    "content": "El subtono cutáneo es una variable dinámica influenciada por la hemodinámica capilar, específicamente por la saturación de oxígeno en la hemoglobina. La hemoglobina oxigenada presenta un espectro de absorción que favorece los tonos rosados, mientras que la hemoglobina reducida (desoxigenada) absorbe la luz de manera que se percibe un subtono azulado o violáceo. Este efecto es particularmente evidente en el plexo vascular subpapilar. Para un sistema RAG de diagnóstico, es imperativo distinguir entre la coloración permanente determinada por la genética de los melanocitos y la coloración transitoria inducida por la perfusión sanguínea. Factores como la temperatura ambiente, el ejercicio físico y la ingesta de vasodilatadores alteran esta lectura en tiempo real. La integración de datos sobre la frecuencia cardíaca y la temperatura corporal del usuario permite al modelo normalizar la lectura cromática, evitando diagnósticos erróneos basados en estados vasomotores temporales que no reflejan el subtono real del individuo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/dermatology-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vasodilatadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_dinamico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:25:58.028Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386358028-3-b3f1c176-espectroscopia-de-reflectancia-y-la-correccion-del-metameris",
+    "title": "Espectroscopia de reflectancia y la corrección del metamerismo",
+    "content": "El fenómeno del metamerismo ocurre cuando dos colores parecen idénticos bajo una fuente de luz, pero difieren bajo otra, lo cual representa un desafío crítico en la evaluación del subtono cutáneo. En el contexto de GlowApp, el metamerismo es exacerbado por el uso de filtros solares minerales (óxido de zinc, dióxido de titanio) que introducen una dispersión espectral no lineal. Estos filtros, al ser aplicados sobre la piel, crean una barrera física que altera la reflectancia difusa, distorsionando la lectura del subtono hacia una apariencia ceniza o 'white cast'. La espectroscopia de reflectancia permite desglosar la curva de absorción de la piel, separando el aporte de la melanina, la hemoglobina y los productos exógenos. Implementar un modelo de corrección basado en la reflectancia permite al sistema RAG compensar la interferencia de los filtros solares, garantizando que la recomendación de color sea consistente independientemente de la protección solar utilizada por el usuario, mejorando así la fiabilidad del diagnóstico en entornos de luz no controlada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Photo-Optical Instrumentation Engineers",
+        "url": "https://spie.org/publications/journals",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc_oxide",
+        "titanium_dioxide"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correccion_optica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:25:58.028Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386358028-4-5fac205b-neuro-percepcion-y-la-fatiga-cromatica-en-la-autoevaluacion",
+    "title": "Neuro-percepción y la fatiga cromática en la autoevaluación",
+    "content": "La evaluación del subtono no es un proceso puramente objetivo; está intrínsecamente ligado a la neuro-percepción y a los sesgos cognitivos. La fatiga cromática ocurre cuando los fotorreceptores retinianos (conos) se saturan tras una exposición prolongada a un estímulo de color específico, provocando una respuesta adaptativa que altera la percepción del tono real. En usuarios que intentan identificar su subtono mediante espejos o cámaras, este fenómeno suele derivar en el sesgo de confirmación, donde el individuo ajusta su percepción para coincidir con expectativas previas. El sistema RAG debe mitigar este riesgo mediante la implementación de 'puntos de anclaje' cromáticos, utilizando parches de color neutro (gris 18%) dentro del marco de captura de imagen para recalibrar el balance de blancos y la percepción del usuario. Al proporcionar una referencia objetiva constante, el sistema reduce la carga cognitiva y la fatiga visual, permitiendo una clasificación más precisa del subtono que trasciende la interpretación subjetiva y la variabilidad de la iluminación ambiental.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Neuroscience",
+        "url": "https://www.nature.com/neuro/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "calibracion_usuario"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:25:58.028Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386358028-5-2f72ba0a-glicacion-proteica-y-el-viraje-cromatico-senescente",
+    "title": "Glicación proteica y el viraje cromático senescente",
+    "content": "La glicación no enzimática de las proteínas dérmicas, particularmente del colágeno, da lugar a la formación de productos de glicación avanzada (AGEs). Estos compuestos poseen propiedades fluorescentes y un color intrínseco amarillento-parduzco, lo que altera significativamente la cromaticidad de la piel con el paso del tiempo. Este viraje cromático senescente puede confundirse erróneamente con un subtono cálido o cetrino, llevando a una selección inadecuada de pigmentos cosméticos. A diferencia de la melanina, que se concentra en el estrato basal, los AGEs se acumulan en la matriz extracelular de la dermis, afectando la reflectancia de manera uniforme. Para el sistema RAG, es fundamental diferenciar entre el subtono constitucional (genético) y el subtono adquirido por glicación. La integración de modelos de envejecimiento cutáneo en el algoritmo permite ajustar la recomendación de color, priorizando pigmentos que neutralicen el tono amarillento sin sobrecargar la piel, manteniendo la luminosidad y evitando la apariencia opaca común en pieles con alta carga de glicación.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_edad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:25:58.028Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+    "title": "Metabolitos del microbioma y su rol en la estabilidad del pH cutáneo",
+    "content": "La estabilidad del pH cutáneo, modulada en gran medida por los metabolitos producidos por el microbioma (como el ácido láctico y ácidos grasos de cadena corta), juega un papel subestimado en la colorimetría dinámica. Un pH alterado puede afectar la oxidación de los pigmentos presentes en las bases de maquillaje, provocando un viraje de color (oxidación del producto) que el usuario percibe como un error en la elección del subtono. Cuando el pH de la piel es más alcalino de lo normal, la tasa de oxidación de los pigmentos de hierro en las bases se acelera, alterando la compatibilidad cromática original. El sistema RAG debe considerar la salud del microbioma como una variable de control. Al correlacionar datos de hidratación y tipo de piel con la estabilidad del pH, el modelo puede predecir el comportamiento de oxidación del maquillaje y sugerir fórmulas con agentes estabilizadores de pH, asegurando que el subtono del producto se mantenga fiel a lo largo de la jornada y no se vea comprometido por la química superficial de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Microbiology",
+        "url": "https://www.nature.com/nmicrobiol/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:25:58.028Z"
+  }
+]

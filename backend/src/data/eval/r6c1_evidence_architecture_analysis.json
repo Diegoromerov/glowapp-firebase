@@ -1,0 +1,74 @@
+{
+  "experiment": "R6-C1",
+  "cycle": 43,
+  "phase": "TRANSICIÓN R5→R6 — Evidence Layer Architecture & Contract (DISEÑO, sin implementación productiva)",
+  "timestamp": "2026-08-15",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435)",
+  "production_guard": "active — Railway NO contactada; producción INTACTA; 0 archivos productivos modificados",
+  "database_state": { "total": 5663, "null_embeddings": 0, "distinct_chunk_id": 5658, "duplicados_chunk_id": 5, "note": "Hallazgo de integridad: 5 filas comparten chunk_id (5,663 - 5,658). La Evidence Layer debe decidir el manejo de duplicados (dedupe por chunk_id en Candidate Builder)." },
+  "baseline": { "r5": 0.7885, "mrr": 0.7179, "note": "INMUTABLE — regression asset" },
+  "r5_veredicto_cerrado": { "primary": "CORPUS-FIRST", "secondary": "RETRIEVAL-RESEARCH-CLOSED" },
+  "architecture_map_real": {
+    "retrieval": { "file": "src/services/ragService.js", "function": "searchBeautyKnowledge(query, {topK=5, threshold=0.45, filters})", "returns": ["id", "title", "content", "category", "similarity"], "missing": ["chunk_id", "document_id", "metadata", "fuente", "seccion", "rank"], "fallback": "full-text similarity=0.5 fijo" },
+    "formatter": { "file": "src/services/ragService.js", "function": "formatKnowledgeContext(chunks)", "provenance_parcial": "sources/metadata.sources; sin chunk_id ni rank" },
+    "llm_interface": { "file": "src/services/auraToolExecutor.js", "line": 221, "behavior": "devuelve chunks crudos al LLM sin states/sufficiency/unsupported" },
+    "logging": { "file": "src/services/ragLogger.js", "features": ["traceId", "sanitización PII", "breaker states"] },
+    "metrics": { "file": "src/services/ragMetrics.js", "features": ["avg_top_score", "error_rate", "fallback_rate", "latencia", "anomalías"] },
+    "evaluation": { "file": "ragEvaluator.js + r5c* + GOLD-V5", "baseline": { "r5": 0.7885, "mrr": 0.7179 } },
+    "chunk_metadata_disponible": ["category", "skin_type", "season_station", "age_range", "ingredients", "contraindications", "document_id", "chunk_id", "fuente", "seccion", "risk_level", "phase", "clinical_review_status"],
+    "no_existe": ["Evidence Layer", "states", "sufficiency gate", "unsupported policy", "provenance estructurada", "claim grounding", "detección de contradicción", "grouping/deduplication"]
+  },
+  "contracts": {
+    "Evidence": { "purpose": "unidad mínima de evidencia", "fields": 11, "obligatorios": ["evidence_id", "chunk_id", "source_id", "category", "title", "content", "retrieval_score", "rank", "provenance"], "opcionales": ["metadata", "relevance"] },
+    "EvidenceGroup": { "purpose": "evidencia compuesta multi-chunk con roles", "roles": ["primary", "complementary", "redundant", "contradictory"], "rule": "más chunks ≠ mejor evidencia; grupo solo si cobertura de claims aumenta" },
+    "EvidencePacket": { "purpose": "contrato Evidence Layer → Answer Generator", "fields": ["evidence", "state", "confidence", "provenance", "constraints", "unsupported_reason"] }
+  },
+  "evidence_states": {
+    "SUPPORTED": "evidencia suficiente y consistente; condiciones: cobertura≥umbral, gate score≥0.55, sin contradicción",
+    "PARTIAL": "evidencia relevante pero faltan componentes críticos",
+    "UNSUPPORTED": "corpus sin evidencia suficiente (corpus gap o insuficiente)",
+    "RETRIEVAL_UNCERTAIN": "no determinable si la evidencia existe (fallback o señal débil)"
+  },
+  "sufficiency_model": {
+    "principle": "NO score>threshold; modelo interpretable de cobertura de la pregunta",
+    "dimensions": ["cobertura", "relevancia", "complementariedad", "consistencia", "redundancia", "gate_fuerte (≥0.55)"],
+    "decision": "SUPPORTED si cobertura≥0.5 Y gate Y consistencia; PARTIAL 0.2-0.5; UNSUPPORTED <0.2 o gap; RETRIEVAL_UNCERTAIN señal débil"
+  },
+  "unsupported_policy": {
+    "diferenciación": { "CORPUS_GAP": "inventario de corpus confirma ausencia (C27)", "EVIDENCE_INSUFFICIENT": "evidencia existe pero insuficiente (cejas_004)", "RETRIEVAL_UNCERTAIN": "señal débil/fallback" },
+    "generator": "NO completa con conocimiento externo en modo corpus-grounded; respuesta honesta de insuficiencia + motivo trazable"
+  },
+  "provenance": { "objetivo": "QUERY→RETRIEVAL→EVIDENCE→CLAIM→ANSWER", "campos": ["chunk_id", "source_id", "category", "title", "evidence_group", "retrieval_rank", "retrieval_score", "claims_supported"] },
+  "anti_hallucination_rules": ["no afirmar sin evidencia", "no completar gaps con conocimiento general", "no usar hard negatives", "no mezclar categorías", "no ocultar insuficiencia", "no convertir parcial en certeza", "gate fuerte 0.55 para SUPPORTED"],
+  "observability": { "log_fields": ["query", "retrieval", "evidence candidates/groups", "state", "sufficiency", "unsupported reason", "claims", "provenance", "answer", "traceId"], "privacy": ["sanitización PII existente", "sin contenido completo en logs", "minimización"] },
+  "multi_chunk_strategy": { "pipeline": ["retrieved chunks", "candidate evidence", "grouping", "deduplication", "complementarity", "sufficiency", "evidence packet"], "rule_conservadora": "agregación NO aumenta confianza por nº de chunks; máx 4 chunks; solo SUPPORTED con gate fuerte" },
+  "architecture_future": [
+    { "component": "Query", "exists": true, "build": "NO" },
+    { "component": "Retrieval", "exists": true, "build": "NO" },
+    { "component": "Evidence Candidate Builder", "exists": false, "build": "ADAPT (SELECT chunk_id)" },
+    { "component": "Evidence Grouper", "exists": false, "build": "NEW (conservador)" },
+    { "component": "Evidence Validator", "exists": false, "build": "NEW" },
+    { "component": "Sufficiency Gate", "exists": false, "build": "NEW" },
+    { "component": "Evidence Packet", "exists": false, "build": "NEW" },
+    { "component": "Answer Generator", "exists": "PARCIAL", "build": "ADAPT" },
+    { "component": "Claim/Evidence Trace", "exists": false, "build": "NEW (preparado)" },
+    { "component": "Aura", "exists": true, "build": "NO" }
+  ],
+  "decisions": {
+    "REUSE": ["ragService.searchBeautyKnowledge", "embeddingService", "ragLogger", "ragMetrics", "ragEvaluator+GOLD-V5+baseline", "formatKnowledgeContext", "contextCompressor", "BD metadata rica"],
+    "ADAPT": ["ragService SELECT (añadir chunk_id, document_id, metadata, fuente, seccion)", "auraToolExecutor (envolver en EvidencePacket)", "formatKnowledgeContext (rank+chunk_id)", "ragLogger (state/sufficiency/unsupported)", "ragMetrics (evidence metrics)"],
+    "NEW": ["Evidence Candidate Builder", "Evidence Grouper", "Evidence Validator", "Sufficiency Gate", "Evidence Packet", "Unsupported Policy", "Provenance/Claim Trace", "Métricas de evidence"],
+    "DO_NOT_TOUCH": ["motor productivo (embeddingService, HNSW, threshold)", "GOLD-V5, baseline R5-C", "Railway/producción/BD productiva", "8 tests históricos", "líneas R5 cerradas"]
+  },
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — análisis estático determinista: mapa, contratos, estados, sufficiency, unsupported y decisiones idénticos" },
+  "verdict": "R6-C1-ARCHITECTURE-DEFINED",
+  "recommendation_r6c2": {
+    "1": "Implementar Evidence Candidate Builder (ADAPT ragService SELECT con chunk_id/document_id/metadata/fuente/seccion + dedupe por chunk_id — 5 duplicados detectados)",
+    "2": "Implementar Evidence states + Sufficiency Gate v1 conservador (cobertura + gate fuerte 0.55 + consistencia)",
+    "3": "Implementar Unsupported Policy (diferenciación CORPUS_GAP/EVIDENCE_INSUFFICIENT/RETRIEVAL_UNCERTAIN)",
+    "4": "Envolver search_beauty_knowledge_rag en EvidencePacket (auraToolExecutor:221) — mínimo cambio seguro",
+    "5": "Extender ragLogger/ragMetrics con campos de evidence (observabilidad)",
+    "6": "Todo en trabajo aislado con tests; validación contra GOLD-V5 como regression assets; NO tocar motor productivo hasta autorización del Director"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway", "8 tests históricos"]
+}

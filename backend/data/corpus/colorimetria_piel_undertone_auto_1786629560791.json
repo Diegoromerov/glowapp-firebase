@@ -1,0 +1,121 @@
+[
+  {
+    "chunk_id": "colorimetria-interaccion-farmacos-psicoactivos-001",
+    "title": "Impacto de la medicación psicotrópica en la perfusión cutánea y el subtono",
+    "content": "La medicación psicotrópica, particularmente los inhibidores selectivos de la recaptación de serotonina (ISRS) y los antipsicóticos atípicos, puede inducir cambios significativos en la termorregulación y la microcirculación cutánea. Estos fármacos afectan el sistema nervioso autónomo, alterando el tono vasomotor periférico. Un efecto secundario común es la diaforesis o la alteración del flujo sanguíneo capilar, lo cual modifica la reflectancia de la piel. En el contexto de la colorimetría, esto se traduce en un eritema persistente o en una palidez inducida por vasoconstricción, dificultando la lectura del subtono. Según estudios publicados en PubMed, la modulación de los receptores de serotonina en la periferia puede alterar la respuesta al estrés térmico de la piel, provocando que el subtono aparente sea más frío o rojizo de lo que es estructuralmente. Es crucial que los especialistas en GlowApp consideren el historial farmacológico del usuario, ya que la base de maquillaje elegida podría verse alterada en su cromaticidad por la interacción entre el sebo, el pH cutáneo y la respuesta vasomotora mediada por estos fármacos. No es un fallo del producto, sino una respuesta fisiológica sistémica que requiere ajustes en la neutralización del color.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "No aplicar bases pesadas en pieles con alta reactividad vascular"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base_maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:00.804Z"
+  },
+  {
+    "chunk_id": "colorimetria-interaccion-insuficiencia-venosa-002",
+    "title": "Insuficiencia venosa crónica y distorsión cromática periorbital",
+    "content": "La insuficiencia venosa crónica (IVC) no se limita a las extremidades inferiores; su manifestación en la microcirculación facial, especialmente en la región periorbital, es un reto clínico para la colorimetría. La estasis venosa local provoca una acumulación de hemoglobina desoxigenada en los plexos vasculares superficiales. Este fenómeno, conocido como el 'efecto cianótico local', genera un matiz azulado o violáceo que suele confundirse erróneamente con un subtono frío. La literatura dermatológica, incluyendo reportes de la American Academy of Dermatology (AAD), indica que el aumento de la presión hidrostática en los capilares periorbitales favorece la extravasación de eritrocitos y el depósito de hemosiderina. Esto crea una mancha persistente que no responde a los tests de venas tradicionales. Para una colorimetría precisa en estos pacientes, es necesario emplear correctores con base salmón o naranja que neutralicen el espectro azul-violeta, en lugar de intentar igualar el subtono de la piel circundante. Ignorar este factor lleva a una selección de correctores demasiado grisáceos, que acentúan la apariencia de cansancio en lugar de corregirla. La gestión de esta cromaticidad requiere entender la patofisiología del retorno venoso facial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/venous-disease-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correctores_ojeras"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:00.804Z"
+  },
+  {
+    "chunk_id": "colorimetria-metabolitos-microbioma-008",
+    "title": "Metabolitos del microbioma y su rol en la estabilidad del pH cutáneo y la cromaticidad",
+    "content": "La composición del microbioma cutáneo, específicamente la presencia de bacterias como *Cutibacterium acnes* y *Staphylococcus epidermidis*, tiene un impacto directo en el pH de la superficie cutánea. Estos microorganismos producen ácidos grasos libres y otros metabolitos que mantienen el manto ácido de la piel. Una disbiosis (desequilibrio) puede elevar el pH hacia niveles más alcalinos, lo cual es crítico para la colorimetría: muchos pigmentos de maquillaje, especialmente los óxidos de hierro, son sensibles al pH y pueden oxidarse o virar de tono cuando entran en contacto con una piel con un pH inestable. Un pH alcalino acelera la oxidación del sebo, lo que genera un tono amarillento o anaranjado en la base de maquillaje tras pocas horas de uso. En GlowApp, es vital entender que el 'cambio de color' de la base no siempre es culpa de la fórmula, sino del microbioma del usuario. Recomendar limpiadores que respeten el pH y el uso de tónicos equilibrantes antes del maquillaje es una estrategia clínica para asegurar que el subtono elegido se mantenga fiel durante toda la jornada, evitando la alteración cromática por interacción biológica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Society for Microbiology",
+        "url": "https://journals.asm.org/doi/10.1128/msystems.00001-24",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acne-prone",
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Prebióticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:00.804Z"
+  }
+]

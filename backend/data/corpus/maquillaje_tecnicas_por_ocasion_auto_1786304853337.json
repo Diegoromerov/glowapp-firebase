@@ -1,0 +1,392 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-nocturnos-oxidacion-001",
+    "title": "Maquillaje para eventos nocturnos: El riesgo de la oxidación del sebo",
+    "content": "En eventos nocturnos, la duración del maquillaje suele prolongarse más allá de las 8 horas, lo que expone la piel a un fenómeno crítico: la oxidación del sebo. Cuando el sebo cutáneo entra en contacto con los pigmentos de bases de alta cobertura y los filtros solares, puede ocurrir una reacción química que altera el tono del maquillaje, volviéndolo grisáceo o anaranjado. Según estudios publicados en el Journal of Cosmetic Dermatology, la presencia de escualeno oxidado no solo afecta la estética, sino que promueve la inflamación folicular. Para contrarrestar esto, es imperativo utilizar pre-bases con antioxidantes estables como la vitamina E o derivados de té verde antes de la aplicación de color. Estas sustancias actúan como una barrera sacrificable que se oxida en lugar del sebo natural, manteniendo la integridad del pigmento y evitando la formación de comedones inducidos por la degradación del maquillaje durante largas jornadas nocturnas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina E",
+        "té verde",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-ceremonias-estres-cortisol-002",
+    "title": "Maquillaje en eventos de alto estrés: El impacto del cortisol en la adherencia",
+    "content": "Los eventos sociales de alto impacto, como bodas o galas, generan picos de cortisol en los usuarios, lo que induce una respuesta de sudoración eccrina y aumento de la temperatura cutánea. Esta respuesta fisiológica altera el pH de la superficie de la piel, debilitando la adherencia de productos cosméticos de base acuosa. La evidencia recogida por la American Academy of Dermatology sugiere que el estrés psicológico altera la función de barrera, permitiendo una mayor penetración de ingredientes potencialmente irritantes presentes en cosméticos de larga duración. Para técnicos de maquillaje, esto significa que el uso de polvos fijadores debe ser estratégico y no excesivo, para no exacerbar la deshidratación transepidérmica. Se recomienda el uso de selladores con polímeros filmógenos que resistan la variación del pH cutáneo provocada por el estrés, garantizando que el maquillaje no se desplace ni se acumule en las líneas de expresión durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/stress-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros filmógenos"
+      ],
+      "contraindications": [
+        "exceso de polvos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-clima-seco-003",
+    "title": "Maquillaje en ambientes de baja humedad: Prevención de la fisura de pigmentos",
+    "content": "En eventos realizados en climas con humedad relativa inferior al 30%, la piel sufre una deshidratación acelerada que altera la flexibilidad del estrato córneo. Cuando se aplica maquillaje con alta carga de pigmentos minerales o arcillas, estos tienden a absorber la humedad residual de la piel, provocando la 'fisura' o craquelado del maquillaje. Según la IADVL, la xerosis inducida por factores ambientales debe ser prevenida mediante el uso de humectantes oclusivos y humectantes higroscópicos (como el ácido hialurónico) aplicados en capas previas. Es fundamental evitar bases de maquillaje con alto contenido de alcohol denat o polvos matificantes muy absorbentes en estas condiciones. La técnica correcta implica el uso de brumas fijadoras con componentes hidratantes que mantengan la plasticidad del film cosmético, evitando que la contracción del maquillaje durante el secado cause micro-lesiones o descamación visible en la superficie cutánea durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "glicerina"
+      ],
+      "contraindications": [
+        "alcohol denat",
+        "polvos arcillosos"
+      ],
+      "season": [
+        "invierno",
+        "clima seco"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-uso-prolongado-microbioma-004",
+    "title": "Maquillaje para eventos de larga duración: El impacto en el microbioma cutáneo",
+    "content": "El uso de maquillaje por periodos superiores a 12 horas, frecuente en eventos sociales extensos, crea una micro-atmósfera oclusiva que favorece la proliferación de bacterias anaerobias. Investigaciones en el campo de la dermatología publicadas en PubMed indican que la oclusión prolongada puede alterar el equilibrio del microbioma cutáneo, disminuyendo la diversidad de microorganismos benéficos como el Staphylococcus epidermidis. Para mitigar este riesgo, es crucial que los productos seleccionados para estas ocasiones sean no comedogénicos y, preferiblemente, formulados con ingredientes prebióticos que soporten la salud de la barrera cutánea. La técnica de aplicación debe priorizar capas delgadas en lugar de una cobertura única densa, permitiendo una mayor transpirabilidad. Además, es un requisito clínico innegociable realizar una doble limpieza profunda post-evento, utilizando limpiadores con pH balanceado que eliminen los residuos lipofílicos del maquillaje sin comprometer el manto ácido natural de la piel.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos"
+      ],
+      "contraindications": [
+        "productos altamente oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-temperaturas-altas-005",
+    "title": "Maquillaje para eventos con altas temperaturas: Estabilidad de las emulsiones",
+    "content": "La exposición a temperaturas ambientales elevadas durante eventos al aire libre pone a prueba la estabilidad termodinámica de las emulsiones cosméticas. Muchas bases de maquillaje, especialmente aquellas con altas concentraciones de ceras y aceites, pueden sufrir una separación de fases o una migración excesiva hacia los poros debido a la fusión de sus componentes lipídicos. Estudios sobre formulación cosmética sugieren que, para estos casos, deben preferirse bases formuladas con sílices volátiles o polímeros de silicona termorresistentes que mantengan la estructura del producto incluso ante la sudoración intensa. La aplicación debe realizarse mediante técnicas de 'stippling' o presión con esponjas de celdas cerradas, que minimizan la incorporación de aire y mejoran la adherencia mecánica. Evitar el uso de aceites faciales en la rutina de preparación es fundamental, ya que actúan como solventes que degradan la estructura de la base de maquillaje cuando la temperatura de la piel aumenta.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "sílice"
+      ],
+      "contraindications": [
+        "aceites faciales"
+      ],
+      "season": [
+        "verano",
+        "clima cálido"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-luz-natural-intensa-006",
+    "title": "Maquillaje para eventos bajo luz solar intensa: El desafío de la reflexión espectral",
+    "content": "El maquillaje para eventos realizados bajo luz solar directa requiere una consideración especial sobre la reflexión espectral de los pigmentos. Algunos polvos con alto contenido de dióxido de titanio o sílice pueden crear una apariencia 'lavada' o fantasmal debido a la dispersión de la luz, un fenómeno distinto al efecto flashback de los flashes de cámara. Para eventos diurnos al aire libre, se recomienda el uso de pigmentos recubiertos con aminoácidos o lecitina, que ofrecen una mayor afinidad con la piel y una dispersión de luz más natural. La American Academy of Dermatology enfatiza que el maquillaje no reemplaza el protector solar; por lo tanto, la capa de fotoprotección debe aplicarse debajo del maquillaje y permitir su secado completo. Se debe evitar la superposición de productos con diferentes bases (aceite vs. agua) para prevenir la formación de 'pilling' o descamación, que bajo luz solar intensa se vuelve altamente visible y altera la uniformidad del acabado cosmético.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dióxido de titanio",
+        "lecitina"
+      ],
+      "contraindications": [
+        "superposición incompatible de bases"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-espectaculo-iluminacion-007",
+    "title": "Maquillaje para escenarios y alta iluminación: Gestión de la saturación de color",
+    "content": "Los eventos con iluminación escénica o de estudio alteran la percepción cromática del maquillaje. La luz halógena o LED de alta intensidad tiende a 'aplanar' los volúmenes del rostro, lo que requiere una técnica de contorneo y resaltado más marcada que en entornos cotidianos. Desde una perspectiva de curaduría clínica, es vital asegurar que los productos utilizados sean hipoalergénicos, ya que la exposición prolongada a focos de calor intenso puede inducir dermatitis de contacto irritativa en pieles sensibles. Los pigmentos de alta saturación deben ser fijados adecuadamente para evitar la migración hacia las zonas perioculares, donde la piel es más delgada y susceptible a la absorción sistémica de colorantes. Se recomienda el uso de selladores de grado profesional que contengan agentes calmantes como bisabolol o extracto de manzanilla, ayudando a mantener la homeostasis de la piel bajo condiciones de estrés térmico y luminoso extremo durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "extracto de manzanilla"
+      ],
+      "contraindications": [
+        "pigmentos de baja calidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-aire-acondicionado-008",
+    "title": "Maquillaje en ambientes de aire acondicionado: Gestión de la deshidratación ambiental",
+    "content": "Los eventos prolongados en salones con sistemas de aire acondicionado centralizado presentan un entorno de baja humedad artificialmente controlada, lo cual resulta en una pérdida de agua transepidérmica (TEWL) acelerada. Para el maquillaje, esto implica que las bases de larga duración, que suelen contener altos niveles de polímeros de secado rápido, pueden volverse rígidas y tensar la piel. La recomendación experta es implementar una técnica de 'sandwiching' de hidratación: aplicar una esencia hidratante, seguida de un suero de ácido hialurónico y una crema emoliente ligera antes de la base. Esto crea un reservorio de humedad. Además, se debe evitar el uso excesivo de polvos sueltos en las zonas de mayor movimiento facial (como el surco nasolabial) para prevenir que la deshidratación ambiental cause el quiebre del producto en las líneas de expresión, manteniendo una apariencia fresca y flexible durante toda la duración del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "madura"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "exceso de polvos matificantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-viajes-aereos-009",
+    "title": "Maquillaje para eventos tras viajes aéreos: El impacto de la presurización",
+    "content": "Asistir a un evento inmediatamente después de un vuelo de larga distancia presenta desafíos únicos para la piel debido a la combinación de baja humedad en cabina y presurización. El estrato córneo se encuentra a menudo edematizado o, por el contrario, extremadamente seco. Clínicamente, se observa una alteración en la microcirculación cutánea que puede hacer que la piel parezca cetrina o con signos de fatiga evidente. Para el maquillaje, es crucial realizar una preparación que incluya un masaje linfático ligero para reducir el edema facial y el uso de productos con pigmentos correctores (como tonos durazno o verdes, según la necesidad) para neutralizar las variaciones de color causadas por la hipoxia leve durante el vuelo. Se debe evitar la aplicación de productos pesados o aceitosos que puedan obstruir los poros dilatados por el cambio de presión, optando por texturas ligeras, sérums con color o tintes de piel que permitan que la piel 'respire' mientras se recupera de la deshidratación del viaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (Travel Health)",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/travel-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos correctores"
+      ],
+      "contraindications": [
+        "productos de alta oclusión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:47:17.403Z"
+  }
+]

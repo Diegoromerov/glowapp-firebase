@@ -1,0 +1,84 @@
+{
+  "cycle": "27",
+  "experiment": "R5-C15",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "baseline_r5c_unchanged": true,
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "reproducibility": "A ≡ B — gold ranks, top10, reformulaciones, doc-centric y ef_search idénticos en ambas corridas",
+  "hnsw_index": "beauty_knowledge_embeddings_embedding_idx (m=16, ef_construction=64)",
+  "verdict": "RETRIEVAL-MISS-MIXED",
+  "summary": {
+    "hnsw": "DESCARTADO — hnswMiss=0 en las 3 queries; HNSW ≡ exact scan; ef_search (40/100/200/400) no cambia ningún rank",
+    "dominant": "SEMANTIC COMPETITION — los gold no recuperados tienen similarity (0.34-0.54) por debajo de los competidores top-5 (0.51-0.58); el problema ocurre ANTES del ANN (en la representación embedding)",
+    "contributing": "QUERY EMBEDDING — reformulaciones semánticamente equivalentes cambian drásticamente los ranks (cejas_004: 'diseño para rostros con asimetría' → rank 1; cejas_008: 'eliminación con láser/electrólisis' → rank 1 con sim 0.63 vs original 0.59)",
+    "document_embedding": "FUNCIONA cuando la query apunta bien — doc-centric recupera el gold en rank 1 (cabello_002, cejas_008) y rank 3 (cejas_004)"
+  },
+  "per_query": {
+    "cabello_002": {
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "gold_in_top5": true,
+      "gold_misses": [
+        { "chunk": "colorimetria-capilar-ph-001", "sim": 0.501, "note": "Adición independiente del anotador ciego; no recuperada ni en HNSW ni exact" },
+        { "chunk": "diagnostico_capilar-...-sers", "sim": 0.4255, "note": "Supporting; sim demasiado baja" },
+        { "chunk": "colorimetria-capilar-metales-003", "sim": 0.4917, "note": "Supporting; sim baja" }
+      ],
+      "competitors_range": "0.5238 - 0.5407",
+      "reformulations": "4/5 reformulaciones recuperan gold en top-5; 'productos y cuidados' falla → la formulación importa pero el core (ph-pos-tinte rank 1, viscoelasticidad rank 2) ya está recuperado",
+      "doc_centric": "rank 1 (ph-pos-tinte, sim 0.70) — el contenido del gold se auto-recupera bien",
+      "ef_search": "sin efecto",
+      "causes": ["C_SEMANTIC_COMPETITION (ph-001 sim 0.50 < top5 0.53)", "A_QUERY_EMBEDDING parcial (1/5 reformulaciones falla)", "D_HNSW DESCARTADO"],
+      "dominant_cause": "C_SEMANTIC_COMPETITION — el miss parcial de cabello_002 (ph-001) es por sim 0.501 por debajo del corte de competencia",
+      "confidence": "alta"
+    },
+    "cejas_004": {
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "gold_in_top5": true,
+      "gold_misses": [
+        { "chunk": "musculatura-orbicular-009", "sim": 0.343, "note": "Adición independiente; sim MUY baja (0.34) — el embedding de la query no se acerca" },
+        { "chunk": "arquitectura-muscular-008", "sim": 0.4126, "note": "Adición independiente; sim baja" },
+        { "chunk": "microblading-envejecimiento-009", "sim": 0.5194, "note": "Sim por encima de top5 (0.5192) pero fuera por margen mínimo" },
+        { "chunk": "microblading-psicologia-007", "sim": 0.4434, "note": "Supporting; sim baja" }
+      ],
+      "competitors_range": "0.515 - 0.5264",
+      "reformulations": "2/5 fallan totalmente (bestRank=-1); 'diseño para rostros con asimetría' → rank 1 → la formulación técnica ayuda; pero el chunk de musculatura (sim 0.34) NO se recupera ni con la mejor reformulación",
+      "doc_centric": "rank 3 (anatomía, sim 0.63) — la representación del contenido de simetría recupera anatómicos pero NO los chunks de musculatura exactos",
+      "ef_search": "sin efecto",
+      "causes": ["C_SEMANTIC_COMPETITION (competidores 0.52-0.53)", "A_QUERY_EMBEDDING (reformulaciones cambian ranks)", "F_QUERY-CHUNK SEMANTIC MISMATCH (musculatura sim 0.34 — distancia conceptual real entre 'corrección con micropigmentación' y 'dinámica del músculo orbicular')"],
+      "dominant_cause": "C_SEMANTIC_COMPETITION + F_SEMANTIC_MISMATCH — el chunk de musculatura (evidencia independiente) está a sim 0.34 de la query; la competencia lo desplaza sin margen",
+      "confidence": "alta"
+    },
+    "cejas_008": {
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "gold_in_top5": true,
+      "gold_misses": [
+        { "chunk": "interaccion-laser-001", "sim": 0.5359, "note": "Adición independiente; sim justo bajo el corte de competidores (0.57)" },
+        { "chunk": "electrolisis-y-matriz-001", "sim": 0.4486, "note": "Adición independiente; sim baja" },
+        { "chunk": "terapia-laser-erbio-glass-002", "sim": 0.4105, "note": "Adición independiente; sim baja" },
+        { "chunk": "efecto-tyndall-003", "sim": 0.4984, "note": "Supporting; sim baja" }
+      ],
+      "competitors_range": "0.5708 - 0.584",
+      "reformulations": "'Procedimientos de eliminación de pigmento' → rank 1 con sim 0.63; 'Eliminación... láser, electrólisis' → rank 1 con sim 0.63 → la formulación con términos técnicos de eliminación SÍ recupera el gold",
+      "doc_centric": "rank 1 (interaccion-laser, sim 0.65) — el contenido del gold se auto-recupera perfectamente",
+      "ef_search": "sin efecto",
+      "causes": ["C_SEMANTIC_COMPETITION (competidores 0.57-0.58 > gold 0.41-0.54)", "A_QUERY_EMBEDDING (la query original 'remoción de microblading mal hecho' no apunta a 'eliminación de pigmento'; la reformulación técnica sí)"],
+      "dominant_cause": "A_QUERY_EMBEDDING + C_SEMANTIC_COMPETITION — la query usa 'remoción/mal hecho' que el embedding no asocia con 'eliminación de pigmento/láser'; el doc-centric demuestra que el document embedding funciona",
+      "confidence": "alta"
+    }
+  },
+  "causal_matrix": {
+    "cabello_002": { "HNSW": "DESCARTADA", "Exact": "equivale a HNSW", "Embedding query": "PROBABLE (parcial)", "Competencia": "DEMOSTRADA", "Chunk": "no", "Causa dominante": "SEMANTIC COMPETITION", "Confianza": "alta" },
+    "cejas_004": { "HNSW": "DESCARTADA", "Exact": "equivale a HNSW", "Embedding query": "PROBABLE", "Competencia": "DEMOSTRADA", "Chunk": "POSIBLE (musculatura sim 0.34)", "Causa dominante": "SEMANTIC COMPETITION + MISMATCH", "Confianza": "alta" },
+    "cejas_008": { "HNSW": "DESCARTADA", "Exact": "equivale a HNSW", "Embedding query": "DEMOSTRADA (reformulación técnica recupera)", "Competencia": "DEMOSTRADA", "Chunk": "no", "Causa dominante": "QUERY EMBEDDING + COMPETITION", "Confianza": "alta" }
+  },
+  "bottleneck": "La competencia semántica en la banda 0.50-0.58 (scores comprimidos, discriminación débil del embedding — consistente con R5-C5 gap −0.0116) hace que evidencia relevante con sim 0.34-0.54 quede fuera del top-5. La reformulación técnica recupera en 2/3 casos → el query embedding es un componente corregible.",
+  "recommendation_r5c16": {
+    "1": "NO tocar HNSW (descartado con evidencia: exact ≡ HNSW, ef_search sin efecto)",
+    "2": "Evaluar QUERY REFORMULATION/EXPANSION conservadora en producción (evidencia: cejas_008 y cejas_004 mejoran con formulación técnica)",
+    "3": "Evaluar A/B controlado de embeddings SOLO después de R5-C16 query experiments (discriminación débil confirmada en la banda de competencia)",
+    "4": "Los 3 misses se mantienen como casos de evaluación (no se eliminan del benchmark)"
+  },
+  "not_to_touch": ["HNSW (descartado)", "threshold", "chunking", "corpus", "gold V5", "baseline R5-C", "Railway", "código productivo"]
+}

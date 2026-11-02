@@ -1,0 +1,385 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-radiofrecuencia-001",
+    "title": "Mecanismos de termólisis en el rejuvenecimiento corporal",
+    "content": "La radiofrecuencia (RF) corporal opera mediante la transferencia de energía electromagnética que genera un calentamiento volumétrico del tejido profundo. A diferencia de las terapias superficiales, la RF alcanza la dermis reticular y el tejido adiposo subcutáneo. Este incremento térmico induce una desnaturalización controlada de las fibras de colágeno, desencadenando una respuesta inflamatoria reparadora mediada por fibroblastos que resulta en una neocolagénesis y elastogénesis a mediano plazo. Es crucial distinguir entre sistemas monopolares, que alcanzan mayores profundidades, y bipolares, más adecuados para áreas de tejido más fino. La evidencia clínica indica que el éxito del procedimiento depende estrictamente de alcanzar un umbral de temperatura interna entre 40-42°C, evitando temperaturas superiores que podrían provocar daño adipocitario irreversible o fibrosis. En el contexto de GlowApp, es vital educar al paciente sobre las expectativas: la RF es una herramienta de tensado y modelado, no una solución para la obesidad, requiriendo un enfoque multimodal para optimizar resultados.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/radiofrequency-for-body-contouring-a-review",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "embarazo",
+        "implantes metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-criolipolisis-002",
+    "title": "Fisiopatología de la apoptosis inducida por frío",
+    "content": "La criolipólisis se basa en el principio de que los adipocitos son significativamente más sensibles al daño por frío que los tejidos circundantes ricos en agua. Al aplicar temperaturas controladas (típicamente entre -5°C y -10°C), se induce una cristalización de los lípidos intracelulares, lo que desencadena una apoptosis (muerte celular programada) de los adipocitos. A diferencia de la necrosis, este proceso es gradual; los macrófagos y otras células fagocíticas eliminan los restos celulares en un periodo de 2 a 3 meses. Es fundamental que los profesionales identifiquen el 'tejido adiposo blando' como el candidato ideal, diferenciándolo de la grasa visceral, la cual no responde a este tratamiento. La seguridad del procedimiento está respaldada por estudios que muestran una mínima alteración en los niveles lipídicos séricos, siempre que se sigan los protocolos de succión y enfriamiento estandarizados. La hiperplasia adiposa paradójica, aunque poco frecuente, debe ser discutida como un riesgo clínico informado en el consentimiento del paciente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/fat-removal/cryolipolysis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "crioglobulinemia",
+        "enfermedad de Raynaud"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-mesoterapia-003",
+    "title": "Farmacocinética de la mesoterapia corporal",
+    "content": "La mesoterapia corporal consiste en la administración intradérmica o subcutánea superficial de sustancias activas (lipolíticos, reafirmantes o estimuladores circulatorios) mediante microinyecciones. La eficacia de este método radica en el depósito directo del fármaco en el compartimento diana, permitiendo concentraciones locales elevadas con una absorción sistémica mínima. Es imperativo utilizar principios activos con evidencia clínica sólida, como el desoxicolato de sodio o la fosfatidilcolina, bajo estrictas condiciones de asepsia. Un error frecuente en spa es la sobreestimulación con mezclas no estandarizadas que pueden provocar nódulos, inflamación persistente o reacciones de hipersensibilidad. La técnica debe ser personalizada según la topografía corporal y la profundidad del panículo adiposo. En el contexto de GlowApp, se recomienda priorizar el uso de sustancias con registro sanitario vigente y evitar el 'cóctel' de ingredientes desconocidos que comprometen la barrera cutánea y aumentan el riesgo de dermatitis de contacto o infecciones locales.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central / NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-55"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "desoxicolato",
+        "l-carnitina"
+      ],
+      "contraindications": [
+        "trastornos de coagulacion",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-presoterapia-004",
+    "title": "Evidencia sobre la terapia de compresión neumática",
+    "content": "La presoterapia o compresión neumática intermitente es una técnica de drenaje mecánico que busca mejorar el retorno venoso y linfático. Al aplicar presión externa secuencial, se favorece el desplazamiento del líquido intersticial hacia los ganglios linfáticos, reduciendo el edema periférico y mejorando la sensación de pesadez en extremidades. Aunque es una herramienta valiosa en el manejo del linfedema post-quirúrgico o la insuficiencia venosa leve, su efectividad para la pérdida de peso o la eliminación de celulitis es limitada si no se acompaña de cambios en el estilo de vida. Clínicamente, el uso de presoterapia es contraindicado en casos de trombosis venosa profunda (TVP) o sospecha de la misma, debido al riesgo de embolización. Para el paciente de spa, esta terapia debe verse como un complemento al bienestar cardiovascular y no como un método de reducción de grasa focalizada. La presión aplicada debe ser siempre ajustada a la tolerancia del paciente y a su perfil clínico individual.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/topics/lymphatic-filariasis/en/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "trombosis venosa profunda",
+        "insuficiencia cardiaca"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bienestar-general"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-carboxiterapia-005",
+    "title": "Efecto Bohr en la microcirculación cutánea",
+    "content": "La carboxiterapia consiste en la inyección subcutánea de dióxido de carbono (CO2) medicinal. El mecanismo de acción principal es la inducción del efecto Bohr: al aumentar la concentración local de CO2, se reduce el pH tisular, lo que provoca que la hemoglobina libere oxígeno de manera más eficiente a los tejidos circundantes. Esto resulta en una vasodilatación local y una mejora en la perfusión sanguínea. Clínicamente, se utiliza para tratar cicatrices, estrías y mejorar la laxitud cutánea al estimular la síntesis de colágeno. Sin embargo, el procedimiento es doloroso y requiere una técnica precisa para evitar el enfisema subcutáneo o la formación de hematomas significativos. En el contexto colombiano, la regulación de la pureza del gas es fundamental para evitar complicaciones. Los pacientes deben ser informados de que, aunque la mejora en la microcirculación es real, los resultados estéticos son graduales y requieren múltiples sesiones para ser apreciables.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "CO2 medicinal"
+      ],
+      "contraindications": [
+        "insuficiencia renal",
+        "insuficiencia respiratoria"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-ultrasonido-006",
+    "title": "Cavitación ultrasónica: Precauciones clínicas",
+    "content": "La cavitación ultrasónica utiliza ondas de ultrasonido de baja frecuencia para generar microburbujas en el fluido intersticial del tejido adiposo. Estas burbujas colapsan violentamente (fenómeno de cavitación estable o inestable), lo que provoca la ruptura de las membranas de los adipocitos y la liberación de triglicéridos al espacio extracelular. Es vital que el paciente mantenga una hidratación óptima antes y después del tratamiento para facilitar el drenaje linfático de los subproductos lipídicos. Un riesgo clínico subestimado es la sobrecarga metabólica hepática si el tratamiento se realiza en áreas demasiado extensas en una sola sesión. La literatura médica advierte sobre la necesidad de evitar la aplicación sobre órganos internos, prominencias óseas o áreas con procesos inflamatorios agudos. La eficacia real del ultrasonido focalizado depende de la correcta selección de la frecuencia y el tiempo de exposición, factores que deben ser monitoreados constantemente por el terapeuta para garantizar la seguridad del usuario.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic and Laser Therapy",
+        "url": "https://www.tandfonline.com/toc/ijcl20/current",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "hipertrigliceridemia",
+        "enfermedad hepatica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-vendajes-007",
+    "title": "Vendajes fríos y calientes: ¿Más allá del placebo?",
+    "content": "Los vendajes corporales, comúnmente utilizados en spas, emplean agentes osmóticos o térmicos para inducir una respuesta fisiológica en la piel. Los vendajes fríos (crioterapia tópica) buscan producir vasoconstricción y un efecto analgésico, mientras que los calientes (termoterapia) promueven la vasodilatación y la sudoración. Si bien el efecto en la reducción de medidas es mayoritariamente transitorio (debido a la pérdida de agua intersticial o deshidratación cutánea), existen beneficios reales en la mejora de la textura y la sensación de ligereza. Es fundamental desmitificar que estos vendajes 'queman grasa' directamente. Su valor clínico reside en la mejora de la circulación periférica y el alivio de la fatiga muscular. Se debe tener precaución con pacientes que presentan hipertensión arterial no controlada, donde los cambios bruscos de temperatura pueden desencadenar eventos cardiovasculares, y evitar el uso de sustancias sensibilizantes que puedan provocar dermatitis de contacto en pieles atópicas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Association for Dermatologic Research",
+        "url": "https://www.iadr.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mentol",
+        "alcanfor",
+        "nicotinato de metilo"
+      ],
+      "contraindications": [
+        "hipertension descontrolada",
+        "dermatitis atopica severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bienestar-general"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-exfoliacion-quimica-008",
+    "title": "Peelings corporales: Ácidos vs. Exfoliación mecánica",
+    "content": "A diferencia de la exfoliación facial, la piel corporal tiene un estrato córneo más grueso y una menor densidad de glándulas sebáceas, lo que permite el uso de concentraciones más altas de agentes queratolíticos. Los alfa-hidroxiácidos (AHA) como el ácido glicólico o láctico, y los beta-hidroxiácidos (BHA) como el ácido salicílico, son el estándar de oro para tratar la queratosis pilaris, las cicatrices de acné corporal y la textura rugosa. La clave del éxito clínico es la neutralización adecuada y la posterior restauración de la barrera con lípidos fisiológicos. Un error común es la exfoliación excesiva que compromete la barrera epidérmica, facilitando la entrada de alérgenos y provocando dermatitis irritativa. En GlowApp, recomendamos protocolos de exfoliación gradual, iniciando con concentraciones bajas y ajustando según la respuesta inflamatoria del paciente. La protección solar en áreas expuestas es obligatoria tras cualquier peeling químico corporal para prevenir la hiperpigmentación postinflamatoria.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/dry/exfoliating",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido glicolico",
+        "acido salicilico",
+        "urea"
+      ],
+      "contraindications": [
+        "piel irritada",
+        "quemaduras solares"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-diario"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-fotobiomodulacion-009",
+    "title": "Fotobiomodulación (LED) en la reparación tisular corporal",
+    "content": "La fotobiomodulación, o terapia con luz de baja intensidad (LLLT), utiliza longitudes de onda específicas (típicamente rojo y cercano al infrarrojo) para influir en los procesos celulares. A nivel mitocondrial, la luz es absorbida por los citocromos, lo que aumenta la producción de ATP, acelera la reparación tisular, reduce la inflamación y estimula la síntesis de colágeno. En el contexto corporal, su aplicación es altamente eficaz para la cicatrización de heridas quirúrgicas, el manejo de estrías en fase inflamatoria (striae rubra) y la reducción del dolor post-procedimiento. Es una terapia no invasiva, indolora y sin tiempo de inactividad, lo que la convierte en el complemento ideal para post-operatorios de cirugía plástica o tratamientos de medicina estética. La evidencia clínica subraya la importancia de la fluencia (energía por unidad de área) y la coherencia de la fuente de luz para obtener resultados reproducibles. En GlowApp, la fotobiomodulación se posiciona como una herramienta clave para mejorar la tolerancia de la piel a otros procedimientos más agresivos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Photomedicine and Laser Surgery",
+        "url": "https://www.liebertpub.com/loi/pho",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fotosensibilidad",
+        "antecedentes de melanoma"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:36:24.623Z"
+  }
+]

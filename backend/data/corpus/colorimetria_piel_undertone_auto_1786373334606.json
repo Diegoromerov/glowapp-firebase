@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "colorimetria-espectro-electromagnetico-002",
+    "title": "Interferencia de la luz HEV y la fatiga cromática del diagnóstico",
+    "content": "La luz de alta energía visible (HEV), emitida predominantemente por dispositivos móviles y pantallas, altera significativamente la percepción del subtono cutáneo durante el proceso de selección de color. Investigaciones en 'Photodermatology, Photoimmunology & Photomedicine' indican que la exposición prolongada a este espectro induce una fatiga en los conos fotorreceptores del ojo humano, sesgando la discriminación de matices amarillos y verdes. En la práctica clínica en GlowApp, este fenómeno se traduce en una incorrecta evaluación del subtono, donde el profesional puede percibir una piel como 'más fría' de lo que es debido a la inhibición visual de las longitudes de onda largas. Además, la luz HEV penetra hasta la dermis reticular, estimulando la producción de radicales libres y alterando potencialmente la microcirculación, lo que complica aún más la lectura cromática. Se recomienda realizar las pruebas de subtono bajo luz natural controlada o luminarias con un Índice de Reproducción Cromática (IRC) superior a 95, evitando el uso de dispositivos digitales durante el diagnóstico. La fatiga cromática es un sesgo cognitivo que debe mitigarse con descansos visuales breves entre pruebas para evitar errores en la elección de bases de maquillaje con subtonos cálidos o neutros.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Wiley Online Library",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:48:37.091Z"
+  }
+]

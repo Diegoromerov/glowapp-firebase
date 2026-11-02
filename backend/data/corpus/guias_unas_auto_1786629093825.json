@@ -1,0 +1,126 @@
+[
+  {
+    "chunk_id": "guias-unas-osteoniquia-001",
+    "title": "Osteoniquia: la manifestación ungueal de desórdenes óseos subyacentes",
+    "content": "La osteoniquia es una condición poco explorada donde la lámina ungueal presenta una apariencia de 'hueso' o extrema opacidad y fragilidad, a menudo confundida con distrofias comunes. Clínicamente, se asocia con procesos de calcificación ectópica o alteraciones en el metabolismo del calcio que impactan directamente la matriz ungueal. A diferencia de la leuconiquia, la osteoniquia implica una alteración estructural profunda en la queratinización. La literatura dermatológica sugiere que puede ser un marcador temprano de displasias óseas o trastornos paratiroideos. En el entorno de cabina, cualquier cambio súbito en la opacidad y dureza de la uña que no responda a la hidratación debe ser derivado a un especialista para descartar osteoma cutis subungueal o patologías sistémicas. No se debe intentar limar o pulir estas uñas, ya que la fricción puede exacerbar el daño en una matriz ya comprometida por la inflamación ósea subyacente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-health-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_mecanico",
+        "procedimientos_invasivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:51:14.800Z"
+  },
+  {
+    "chunk_id": "guias-unas-biofilms-007",
+    "title": "Biofilms en microfisuras: el desafío de la esterilización",
+    "content": "La formación de biofilms en las microfisuras de las herramientas de acero inoxidable es uno de los riesgos biológicos más subestimados en la cabina. Incluso herramientas que parecen limpias pueden albergar colonias de bacterias protegidas por una matriz polimérica extracelular resistente a los desinfectantes de bajo nivel. Los protocolos de esterilización deben incluir no solo la inmersión química, sino procesos de limpieza ultrasónica seguidos de calor seco o autoclave para asegurar la eliminación de estas biopelículas. Cuando se utilizan instrumentos con biofilms en un cliente, el riesgo de introducir patógenos en el pliegue ungueal, especialmente si la cutícula ha sido dañada, es elevado. La paroniquia crónica es frecuentemente el resultado de una contaminación cruzada por estos biofilms persistentes. Se recomienda la inspección bajo lupa de las herramientas: cualquier rastro de corrosión o desgaste en el metal debe ser motivo de descarte inmediato, ya que estas superficies irregulares son el hábitat ideal para la persistencia bacteriana.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/publications/i/item/9789241598163",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "esterilizacion_deficiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:51:14.800Z"
+  },
+  {
+    "chunk_id": "guias-unas-degradacion-008",
+    "title": "Degradación oxidativa de la queratina por solventes",
+    "content": "La remoción frecuente de productos de larga duración mediante acetona pura induce una degradación oxidativa de la queratina ungueal. La acetona no solo disuelve el polímero, sino que extrae los lípidos intercelulares (ceramidas y colesterol) que mantienen la cohesión y flexibilidad de los corneocitos ungueales. Este proceso de 'desengrasado' forzado deja la uña extremadamente porosa y susceptible a la entrada de agentes químicos irritantes. Clínicamente, esto se manifiesta como fragilidad, descamación (onicosquizia) y pérdida de la transparencia natural. Para mitigar este daño, se recomienda el uso de aceites de cutícula ricos en ácidos grasos esenciales inmediatamente después de la remoción, facilitando la reposición de la barrera lipídica. Es fundamental educar al cliente sobre el hecho de que la uña no 'respira' en el sentido biológico, pero sí requiere de una integridad lipídica óptima para proteger el lecho ungueal de infecciones y agresiones externas durante los periodos de transición entre servicios.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2015;volume=7;issue=2;spage=47;epage=53;aulast=Baran",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "lipidos"
+      ],
+      "contraindications": [
+        "exposicion_prolongada_solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_servicio"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:51:14.800Z"
+  }
+]

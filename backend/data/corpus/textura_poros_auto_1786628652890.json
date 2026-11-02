@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "textura-poros-mitocondria-001",
+    "title": "Disfunción mitocondrial en el sebocito y su impacto en la textura",
+    "content": "La unidad pilosebácea es metabólicamente demandante, especialmente el sebocito, cuya función principal es la síntesis lipídica. Investigaciones recientes en dermatología celular sugieren que la disfunción mitocondrial en los sebocitos altera la composición del sebo, resultando en lípidos con mayor punto de fusión. Esta alteración, descrita en estudios publicados en 'Journal of Investigative Dermatology', provoca una viscosidad incrementada del sebo que dificulta su paso a través del ostium folicular. Cuando las mitocondrias no producen suficiente ATP para los procesos de transporte activo de lípidos, el sebo se acumula, induciendo una distensión mecánica de las paredes del poro. Además, el estrés oxidativo derivado de fugas de especies reactivas de oxígeno (ROS) mitocondriales en el sebocito promueve una queratinización anómala en el canal folicular, exacerbando la rugosidad superficial. Entender la bioenergética del sebocito es fundamental para abordar la textura de la piel no solo como un problema de superficie, sino como un fallo en la maquinaria energética celular que requiere antioxidantes específicos y moduladores del metabolismo lipídico para restaurar la fluidez y el tamaño folicular adecuado.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima Q10",
+        "resveratrol",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:43:54.849Z"
+  }
+]

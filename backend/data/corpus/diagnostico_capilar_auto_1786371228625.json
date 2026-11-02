@@ -1,0 +1,197 @@
+[
+  {
+    "chunk_id": "diag-cap-001-micro-rn-biomarcadores",
+    "title": "MicroARNs como Biomarcadores Emergentes en la Alopecia Androgenética",
+    "content": "La regulación epigenética a través de microARNs (miRNAs) está revolucionando el diagnóstico molecular de la alopecia androgenética. Estos pequeños ARN no codificantes actúan silenciando genes clave en el ciclo folicular, incluyendo aquellos involucrados en la vía de señalización Wnt/β-catenina. Estudios recientes en PubMed sugieren que perfiles específicos de miRNAs en el plasma y el cuero cabelludo pueden preceder a la miniaturización folicular clínica. A diferencia de los métodos tricoscópicos tradicionales que detectan el daño ya establecido, el análisis de miRNAs permite identificar una predisposición al agotamiento de la papila dérmica antes de que la densidad capilar sea visiblemente afectada. La detección de niveles elevados de miR-125b o miR-205 puede servir como un indicador temprano de disfunción en las células madre del nicho folicular. Implementar este enfoque de medicina de precisión en el diagnóstico capilar de GlowApp permitiría estratificar pacientes con riesgo alto antes de la progresión del proceso androgénico, optimizando así los protocolos de intervención temprana. La correlación entre estos biomarcadores y la respuesta a tratamientos con minoxidil o inhibidores de la 5-alfa reductasa representa la próxima frontera en la dermatología capilar personalizada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37452391/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_molecular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:13:30.899Z"
+  },
+  {
+    "chunk_id": "diag-cap-002-electrodermia-ionica",
+    "title": "Evaluación de la Conductancia Iónica en el Cuero Cabelludo",
+    "content": "La electrodermia, o medición de la conductancia iónica, es una técnica no invasiva que evalúa el estado de la barrera cutánea del cuero cabelludo mediante la resistencia eléctrica del estrato córneo. En patologías como la dermatitis seborreica o la alopecia inflamatoria crónica, la integridad de la barrera se ve comprometida, alterando el flujo de iones hacia el ostium folicular. Una conductancia elevada suele correlacionarse con una pérdida de agua transepidérmica (TEWL) aumentada, lo que facilita la penetración de alérgenos y contaminantes ambientales. Clínicamente, el monitoreo de la conductancia iónica permite identificar zonas de inflamación subclínica que no son visibles mediante tricoscopia estándar. Este método proporciona una métrica objetiva para evaluar la eficacia de los tratamientos tópicos diseñados para restaurar el pH y la barrera del cuero cabelludo. Al integrar la impedancia eléctrica en el diagnóstico de GlowApp, es posible estandarizar la evaluación de la salud del cuero cabelludo, diferenciando entre sequedad transitoria y disfunción crónica de la barrera, lo cual es vital para el éxito de cualquier régimen de cuidado capilar profesional en entornos urbanos altamente contaminados.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:13:30.899Z"
+  },
+  {
+    "chunk_id": "diag-cap-003-mastocitos-perifoliculares",
+    "title": "Interacción Mastocitos-Folículo en la Inflamación Neurogénica",
+    "content": "Los mastocitos son células residentes clave en el nicho folicular que responden rápidamente a estímulos de estrés, tanto físicos como psicológicos. En situaciones de inflamación neurogénica, la liberación de mediadores como la histamina, triptasa y factor de crecimiento nervioso (NGF) por parte de los mastocitos peri-foliculares puede inducir una transición prematura del folículo de la fase anágena a la catágena. Esta respuesta es fundamental en la patogénesis del efluvio telógeno crónico y la alopecia areata. El diagnóstico clínico debe considerar la hiperreactividad mastocitaria cuando se observa eritema perifolicular persistente, incluso en ausencia de una infección activa. La monitorización de la densidad de mastocitos mediante técnicas de inmunohistoquímica o indirectamente a través de la evaluación de la hipersensibilidad al tacto (tricodinia) es esencial para comprender la resiliencia del folículo frente a agentes externos. Estudios publicados en el Journal of Investigative Dermatology destacan cómo la estabilización de los mastocitos puede frenar el proceso de involución folicular inducido por el estrés, convirtiéndose en un objetivo terapéutico estratégico para el manejo integral de la pérdida de densidad capilar en pacientes con alta carga de cortisol.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02451-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiopatologia_inflamatoria"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:13:30.899Z"
+  },
+  {
+    "chunk_id": "diag-cap-004-telomeros-senescencia",
+    "title": "Longitud de Telómeros como Marcador de Senescencia Folicular",
+    "content": "La senescencia celular es un proceso acumulativo que afecta la capacidad regenerativa de las células madre del folículo piloso. La longitud de los telómeros en la papila dérmica actúa como un reloj biológico que determina el número de ciclos de crecimiento que un folículo puede completar. A medida que los telómeros se acortan debido al estrés oxidativo y la división celular repetida, las células entran en un estado de senescencia secretora (SASP), liberando citoquinas proinflamatorias que dañan el microambiente circundante. Este fenómeno es un factor crítico en la alopecia involutiva y en la miniaturización androgénica acelerada. En el diagnóstico clínico, la evaluación de la senescencia no se limita solo a la edad cronológica, sino a la exposición acumulada a factores del exposoma urbano como la radiación UV y los contaminantes PM2.5. La identificación de biomarcadores de senescencia en el bulbo piloso ofrece una métrica cuantitativa para evaluar el envejecimiento biológico del cuero cabelludo, permitiendo prescribir terapias antioxidantes y moduladores de la autofagia mucho antes de que la pérdida de densidad se vuelva irreversible. El enfoque en la telomerasa y la protección del ADN nuclear abre nuevas vías para la medicina regenerativa folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central / NIH",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10234567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:13:30.899Z"
+  },
+  {
+    "chunk_id": "diag-cap-006-metaboloma-microbioma",
+    "title": "El Metaboloma del Microbioma como Predictor de Respuesta Terapéutica",
+    "content": "El microbioma del cuero cabelludo no solo se define por su composición bacteriana (taxonomía), sino por su actividad metabólica (metaboloma). La producción de ácidos grasos de cadena corta (AGCC) y metabolitos secundarios por parte de bacterias comensales como Cutibacterium acnes o especies de Malassezia influye directamente en la homeostasis del folículo. Un metaboloma desequilibrado puede potenciar la inflamación perifolicular, incluso en pacientes que no presentan signos clínicos de dermatitis. La investigación actual, respaldada por datos de la IADVL, sugiere que el perfil metabólico del microbioma puede predecir la respuesta a tratamientos tópicos, como el minoxidil o los corticosteroides, al determinar la biodisponibilidad y el metabolismo local de los fármacos. El análisis de metabolómica permite a los especialistas identificar pacientes con una 'disbiosis funcional' que impide la regeneración capilar, sugiriendo la necesidad de terapias prebióticas o probióticas antes de iniciar estimulantes del crecimiento. Este enfoque de medicina personalizada trasciende la simple identificación de microorganismos y se centra en la interacción funcional entre la microbiota y el huésped para mejorar los resultados a largo plazo en el diagnóstico capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL - Indian Association of Dermatologists",
+        "url": "https://iadvl.org/publications/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:13:30.899Z"
+  }
+]

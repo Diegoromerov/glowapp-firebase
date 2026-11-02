@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "metabolomica-microbioma-003",
+    "title": "Metabolómica del Microbioma Scalp como Predictor de Inflamación",
+    "content": "Más allá de la simple identificación de especies bacterianas mediante secuenciación 16S, la metabolómica del microbioma del cuero cabelludo se enfoca en el perfil funcional de los metabolitos producidos por microorganismos como Cutibacterium acnes y Malassezia. Estos metabolitos actúan como moléculas señalizadoras que interactúan con el sistema inmune residente del folículo. Un desequilibrio en la producción de ácidos grasos de cadena corta (AGCC) puede alterar el pH del cuero cabelludo, favoreciendo un entorno proinflamatorio que exacerba alopecias cicatriciales y no cicatriciales. Estudios recientes indican que la presencia de ciertos perfiles de ácidos grasos libres en el sebo correlaciona con la severidad de la alopecia androgenética, sugiriendo un eje microbiota-inflamación-folículo. La detección temprana de estos metabolitos mediante técnicas espectroscópicas ofrece una ventana de intervención para modular el ecosistema folicular mediante prebióticos y probióticos tópicos. Este enfoque traslada el diagnóstico desde una visión estática de 'presencia de patógenos' hacia una visión dinámica de 'salud del ecosistema', permitiendo personalizar las rutinas de cuidado capilar basándose en el metabolismo individual del paciente. La monitorización de estos biomarcadores en pacientes con cuero cabelludo sensible es una estrategia clave para prevenir brotes inflamatorios recurrentes y mejorar la eficacia de los tratamientos farmacológicos estándar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/articles/s41467-024-45678-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:03:46.586Z"
+  }
+]

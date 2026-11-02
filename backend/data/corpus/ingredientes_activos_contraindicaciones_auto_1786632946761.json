@@ -1,0 +1,140 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-quelación-metales-001",
+    "title": "Quelación inespecífica por agentes cosméticos: desequilibrio iónico cutáneo",
+    "content": "Los agentes quelantes como el EDTA disódico o el ácido fítico son aditivos comunes destinados a estabilizar formulaciones secuestrando iones metálicos. Sin embargo, su uso en concentraciones no controladas puede inducir una quelación inespecífica sobre la superficie cutánea. La piel mantiene un gradiente iónico crítico, especialmente de calcio, magnesio y zinc, fundamental para la diferenciación de los queratinocitos y la integridad de las uniones estrechas (tight junctions). La eliminación excesiva de estos iones por agentes quelantes tópicos puede comprometer la función barrera, aumentando la pérdida de agua transepidérmica (TEWL) y alterando la homeostasis del microbioma. Estudios en dermatología sugieren que la aplicación prolongada de productos con alta capacidad quelante en pieles con barrera comprometida, como en la dermatitis atópica, puede exacerbar la inflamación al privar al estrato córneo de los cationes necesarios para la activación de enzimas reparadoras. La evidencia clínica indica que la estabilidad de la formulación no debe priorizarse sobre la integridad biofísica de la epidermis.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30062-X/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "Phytic Acid"
+      ],
+      "contraindications": [
+        "atopic dermatitis",
+        "compromised barrier"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:55:28.664Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-siliconas-volatiles-002",
+    "title": "Ciclosiloxanos (D4, D5, D6): el debate sobre la bioacumulación y oclusión",
+    "content": "Los ciclosiloxanos, específicamente el ciclotetrasiloxano (D4), ciclopentasiloxano (D5) y ciclohexasiloxano (D6), han sido objeto de escrutinio regulatorio debido a su perfil de bioacumulación y posible impacto ambiental. En el contexto dermatológico, su uso es valorado por su capacidad de proporcionar un acabado sedoso y una oclusión temporal que mejora la penetración de otros activos. No obstante, existe evidencia creciente sobre su potencial para inducir una oclusión folicular desproporcionada en pacientes con predisposición a foliculitis o acné comedogénico persistente. Aunque no son estrictamente comedogénicos en todos los tipos de piel, en entornos de alta humedad o en pieles seborreicas, estos compuestos pueden atrapar sebo y detritos celulares dentro del folículo pilosebáceo. La regulación europea (REACH) ha restringido las concentraciones de D4 y D5 en productos 'leave-on' por preocupaciones de seguridad sistémica. Es fundamental que el profesional clínico evalúe la carga lipídica total de la rutina antes de recomendar formulaciones ricas en siliconas volátiles en pacientes con foliculitis activa o cuero cabelludo sensible, evitando así la exacerbación de cuadros inflamatorios por oclusión innecesaria.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "European Chemicals Agency (ECHA)",
+        "url": "https://echa.europa.eu/substances-restricted-under-reach",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Cyclopentasiloxane",
+        "Cyclohexasiloxane"
+      ],
+      "contraindications": [
+        "acne",
+        "folliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "acne-y-sebo"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:55:28.664Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-tirosinasa-inhibidores-009",
+    "title": "Inhibidores de la tirosinasa: el riesgo de hiperpigmentación reactiva",
+    "content": "Los inhibidores de la tirosinasa, como el ácido kójico, la hidroquinona o el arbutin, son pilares en el tratamiento del melasma y las hiperpigmentaciones. No obstante, existe un riesgo clínico subestimado: la hiperpigmentación reactiva inducida por irritación. Muchos de estos activos, si se aplican en concentraciones inadecuadas o sin protección solar estricta, pueden causar un eritema inflamatorio. La inflamación cutánea es un potente estímulo para los melanocitos, que responden aumentando la producción de melanina (hiperpigmentación post-inflamatoria), lo cual puede empeorar la mancha original que se pretendía tratar. Especialmente en fototipos altos (Fitzpatrick IV-VI), el margen terapéutico entre la inhibición de la tirosinasa y la irritación es estrecho. El uso de inhibidores de la tirosinasa debe acompañarse siempre de agentes calmantes y una protección solar de amplio espectro con filtros físicos (óxido de zinc o dióxido de titanio), que ofrecen una protección superior contra la radiación visible y UVA. El profesional debe educar al paciente sobre la 'regla del eritema': cualquier enrojecimiento persistente tras la aplicación de un despigmentante debe ser motivo de interrupción inmediata para evitar el efecto rebote melánico.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/post-inflammatory-hyperpigmentation-a-review/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "Kojic Acid",
+        "Hydroquinone",
+        "Alpha-Arbutin"
+      ],
+      "contraindications": [
+        "melasma",
+        "PIH"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "despigmentacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:55:28.664Z"
+  }
+]

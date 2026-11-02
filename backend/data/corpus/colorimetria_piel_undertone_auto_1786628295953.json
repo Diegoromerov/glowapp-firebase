@@ -1,0 +1,282 @@
+[
+  {
+    "chunk_id": "colorimetria-neuro-estetica-001",
+    "title": "La influencia de la percepción neuro-estética en la evaluación subjetiva del subtono",
+    "content": "La evaluación del subtono cutáneo no es un proceso puramente óptico, sino un fenómeno neuro-cognitivo complejo. Según estudios publicados en 'Journal of Vision' y analizados en contextos dermatológicos, el cerebro humano procesa el color mediante la constancia cromática, un mecanismo que ajusta la percepción para compensar cambios en la iluminación. En la práctica clínica y cosmética, esto explica por qué el mismo individuo puede identificarse con subtonos distintos bajo diferentes estados emocionales o entornos. La corteza visual primaria y las áreas de asociación procesan no solo la reflectancia física, sino también las señales contextuales, como el contraste con el entorno o el estado de ánimo percibido. Este sesgo cognitivo, a menudo denominado 'memoria cromática', puede distorsionar la elección de una base de maquillaje. La neurociencia sugiere que la fatiga visual, tras periodos prolongados de observación ante espejos, reduce la precisión en la detección de matices sutiles (como el oliva o el melocotón). Para mitigar este error, se recomienda realizar la evaluación del subtono bajo luz natural controlada y tras periodos de descanso visual, evitando la exposición previa a estímulos visuales saturados que puedan generar una adaptación cromática temporal en la retina.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Vision",
+        "url": "https://jov.arvojournals.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  },
+  {
+    "chunk_id": "colorimetria-crono-biologia-002",
+    "title": "Impacto de los ritmos circadianos en la microcirculación y la lectura del subtono",
+    "content": "La cromaticidad cutánea presenta fluctuaciones significativas a lo largo de las 24 horas debido a la regulación de la microcirculación cutánea por parte de los ritmos circadianos. Investigaciones indexadas en PubMed sobre cronobiología dermatológica indican que la perfusión sanguínea en la dermis papilar no es constante; esta aumenta durante las horas de vigilia y disminuye durante el sueño profundo. Dado que la hemoglobina es uno de los principales cromóforos que definen el subtono (junto con la melanina y los carotenoides), estas variaciones provocan que la piel presente un matiz más rosado o 'cálido' en momentos de mayor vasodilatación. En Bogotá, factores como la altitud y la presión barométrica pueden exacerbar estas respuestas vasculares. Un error común en el diagnóstico de subtono es intentar determinar la tonalidad exacta por la noche, bajo iluminación artificial, cuando la microcirculación ha cambiado respecto a la mañana. La recomendación clínica es realizar la colorimetría en un punto estable del ciclo circadiano, idealmente a media mañana, cuando la piel ha alcanzado una homeostasis térmica y vasomotora, evitando sesgos provocados por el cansancio físico o la exposición al estrés térmico ambiental.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  },
+  {
+    "chunk_id": "colorimetria-estres-oxidativo-003",
+    "title": "Efectos del estrés oxidativo en la degradación de lípidos y el viraje cromático",
+    "content": "La estabilidad de una base de maquillaje sobre la piel no depende solo de la formulación del producto, sino de la interacción química con el sebo cutáneo. El estrés oxidativo, derivado de la exposición a radiación UV y polución, provoca la peroxidación lipídica del sebo. Los lípidos oxidados, específicamente los ácidos grasos libres degradados, alteran el pH de la superficie cutánea y pueden reaccionar con los pigmentos (óxidos de hierro) presentes en las bases de maquillaje, provocando un viraje cromático hacia tonos más oscuros o anaranjados. Este fenómeno es particularmente crítico en pieles con alta actividad sebácea. Estudios en dermatología cosmética, referenciados en plataformas como 'International Journal of Cosmetic Science', demuestran que el uso de antioxidantes tópicos no solo protege la barrera cutánea, sino que actúa como un estabilizador del color al prevenir la oxidación del sebo. Identificar el subtono requiere considerar la 'oxidación' del producto como una variable activa. Si la piel presenta una carga alta de radicales libres, la elección de una base debe incluir polímeros encapsulados que minimicen la interacción directa entre los pigmentos y la fase lipídica de la superficie cutánea, manteniendo la fidelidad del color original a lo largo de la jornada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "vitamina-e",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seleccion-producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  },
+  {
+    "chunk_id": "colorimetria-fotoproteccion-hibrida-004",
+    "title": "Interferencia óptica de los filtros solares modernos en la lectura del subtono",
+    "content": "La integración de filtros solares de amplio espectro es esencial, pero su naturaleza física crea desafíos para la colorimetría. Los filtros minerales (Dióxido de Titanio, Óxido de Zinc) operan mediante dispersión de luz, lo que a menudo genera un 'white cast' o velo blanquecino, especialmente en fototipos V y VI. Este velo no solo altera la luminosidad, sino que modifica la saturación percibida del subtono, tendiendo a 'enfriar' artificialmente el tono de piel debido a la dispersión de Rayleigh. Además, los filtros químicos modernos, como la Avobenzona, pueden degradarse bajo ciertas condiciones de pH o exposición solar, provocando un viraje cromático amarillo. Para un diagnóstico preciso, es fundamental realizar la prueba de color sobre piel limpia y sin residuos de filtros solares, o bien, utilizar bases de maquillaje que incorporen pigmentos tratados específicamente para neutralizar la dispersión de los filtros minerales. La Academia Americana de Dermatología (AAD) subraya la importancia de la fotoprotección, pero en GlowApp enfatizamos que el diagnóstico del subtono debe ser un proceso independiente de la aplicación de productos de barrera, permitiendo así una selección de color que no se vea distorsionada por la interferencia óptica de los filtros solares.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "avobenzona",
+        "dioxido-de-titanio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-hev-006",
+    "title": "El impacto de la luz HEV en la fatiga cromática durante el diagnóstico",
+    "content": "La exposición constante a la luz de alta energía visible (HEV), emitida por dispositivos digitales, no solo impacta la salud cutánea a nivel de pigmentación, sino que genera fatiga cromática en el evaluador y el usuario. La luz HEV tiene un pico de emisión que puede alterar el equilibrio de los fotorreceptores en la retina. Cuando intentamos determinar el subtono bajo condiciones de iluminación donde predomina este espectro (azul-violeta), el ojo tiende a compensar, lo que resulta en una percepción sesgada hacia tonos más cálidos para equilibrar la frialdad de la luz ambiental. Este 'error de balance de blancos' humano es una causa frecuente de una mala elección de base de maquillaje. En el entorno de GlowApp, recomendamos evitar el uso de pantallas o iluminación LED de alta temperatura (K) durante la prueba de color. La luz solar directa, pero filtrada (luz de día, no sol directo), proporciona el índice de reproducción cromática (IRC) más alto, permitiendo que la piel revele su subtono real sin la interferencia de la luz azul. La fatiga cromática es acumulativa; por ello, las sesiones de diagnóstico deben ser breves y realizadas con descansos visuales constantes para mantener la integridad de la evaluación.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  },
+  {
+    "chunk_id": "colorimetria-glicacion-avanzada-008",
+    "title": "Glicación avanzada (AGEs) y el viraje cromático senescente",
+    "content": "A medida que la piel envejece, la acumulación de Productos de Glicación Avanzada (AGEs) en las proteínas dérmicas, como el colágeno y la elastina, altera la reflectancia de la piel. Este proceso, conocido como glicación no enzimática, produce un viraje cromático hacia tonalidades amarillentas o 'cetrinas', lo que a menudo se confunde con un subtono cálido o oliva. A diferencia del subtono natural, el tono inducido por AGEs es una manifestación de la senescencia cutánea y la degradación de la matriz extracelular. Identificar esta diferencia es crucial: intentar neutralizar este tono amarillento con correctores violetas puede resultar en un aspecto grisáceo o 'sucio' si no se maneja correctamente. La recomendación clínica es optar por bases que contengan pigmentos con subtonos luminosos y ligeramente melocotón, que contrarresten la opacidad de los AGEs sin intentar 'borrar' el tono de la piel, sino integrándolo. La hidratación profunda y el uso de ingredientes antiglicación, como la carnosina o ciertos polifenoles, pueden mejorar la claridad y la luminosidad de la piel, permitiendo que el subtono natural vuelva a ser el factor predominante en la elección del maquillaje.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40-70+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-estabilidad-009",
+    "title": "Influencia del microbioma cutáneo en la estabilidad del pH y la cromaticidad",
+    "content": "El microbioma cutáneo, compuesto por una compleja red de bacterias, hongos y virus, desempeña un papel subestimado en la cromaticidad superficial de la piel. La actividad metabólica de estos microorganismos regula el pH del manto ácido; un pH alterado (disbiosis) afecta la estabilidad de los pigmentos en las bases de maquillaje. Por ejemplo, ciertas cepas de Cutibacterium acnes producen ácidos grasos que, al interactuar con los pigmentos de la base, pueden acelerar la oxidación y el cambio de color a lo largo del día. Además, la presencia de un microbioma equilibrado mantiene la luminosidad natural de la piel al regular la descamación del estrato córneo. Cuando existe una disbiosis, la piel puede presentar áreas opacas que alteran la dispersión de la luz y el subtono percibido. En GlowApp, entendemos que la salud del microbioma es un requisito previo para un acabado cosmético óptimo. El uso de prebióticos y probióticos tópicos puede ayudar a estabilizar el pH, asegurando que la piel mantenga su color real y que la base de maquillaje seleccionada no sufra virajes cromáticos inesperados por causa de una flora bacteriana desequilibrada. La evaluación del subtono debe considerar la salud del microbioma como un factor determinante de la longevidad y fidelidad del color del maquillaje.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Trends in Microbiology",
+        "url": "https://www.cell.com/trends/microbiology/home",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:57.309Z"
+  }
+]

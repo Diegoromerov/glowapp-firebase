@@ -1,0 +1,1219 @@
+{
+  "experiment": "R5-C28",
+  "cycle": 40,
+  "hypothesis": "H28: un mecanismo SELECTIVO de activación de multi-chunk evidence (solo con señales objetivas) recupera los casos multi-chunk sin degradar el retrieval normal ni producir falsos SUFFICIENT.",
+  "timestamp": "2026-08-15T21:00:59.286Z",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435)",
+  "production_guard": "active — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (15 queries no-UNSUPPORTED evaluadas; 55 chunk IDs)",
+  "baseline": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "NO MODIFICADO"
+  },
+  "router_configuration": {
+    "coverage_activation": 0.6,
+    "min_complement": 2,
+    "min_top1_score": 0.45,
+    "strong_score": 0.55,
+    "suff_coverage": 0.5,
+    "max_evidence": 8
+  },
+  "router_signals_description": {
+    "top1_score": "similitud máxima del mejor candidato",
+    "margin12": "diferencia top1 - top2",
+    "query_coverage_top5": "términos de query cubiertos por la unión de top-5",
+    "complement_count": "chunks top-20 con score≥0.45 que aportan términos de query NO cubiertos por el mejor chunk",
+    "score_concentration": "desviación estándar de scores top-10",
+    "domain_diversity": "dominios distintos en top-10"
+  },
+  "controls": {
+    "A": "baseline top-5 sin agregación",
+    "B": "aggregation indiscriminada (equivalente R5-C25, con gate strong_score)",
+    "C": "selective routing (router pre-registrado; NORMAL_PATH si no activa)"
+  },
+  "metrics": {
+    "activation_rate": 0.2667,
+    "activated_queries": [
+      "skincare_009",
+      "cejas_004",
+      "cejas_005",
+      "cejas_007"
+    ],
+    "query_success": {
+      "A": 1,
+      "B": 0.4667,
+      "C": 0.8
+    },
+    "evidence_precision": {
+      "B": 0.3611,
+      "C": 0.3633
+    },
+    "false_sufficient": {
+      "B": 3,
+      "C": 2
+    },
+    "regressions_C_vs_A": [
+      "skincare_009",
+      "cejas_004",
+      "cejas_007"
+    ],
+    "class_C_summary": {
+      "NORMAL_PATH": 11,
+      "SUFFICIENT": 3,
+      "PARTIAL": 1
+    }
+  },
+  "activation_decisions": [
+    {
+      "query_id": "skincare_003",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5807,
+        "margin12": 0.0086,
+        "query_coverage_top5": 0.8333,
+        "complement_count": 1,
+        "score_concentration": 0.0282,
+        "domain_diversity": 5
+      }
+    },
+    {
+      "query_id": "skincare_005",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.563,
+        "margin12": 0.0056,
+        "query_coverage_top5": 1,
+        "complement_count": 4,
+        "score_concentration": 0.0122,
+        "domain_diversity": 7
+      }
+    },
+    {
+      "query_id": "skincare_006",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5938,
+        "margin12": 0.018,
+        "query_coverage_top5": 0.5,
+        "complement_count": 0,
+        "score_concentration": 0.022,
+        "domain_diversity": 4
+      }
+    },
+    {
+      "query_id": "skincare_007",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.4274,
+        "margin12": 0.0027,
+        "query_coverage_top5": 0.5,
+        "complement_count": 0,
+        "score_concentration": 0.009,
+        "domain_diversity": 3
+      }
+    },
+    {
+      "query_id": "skincare_008",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.6373,
+        "margin12": 0.0068,
+        "query_coverage_top5": 0.8,
+        "complement_count": 7,
+        "score_concentration": 0.0107,
+        "domain_diversity": 3
+      }
+    },
+    {
+      "query_id": "skincare_009",
+      "decision": "COMPOSE",
+      "signals": {
+        "top1_score": 0.5635,
+        "margin12": 0.0074,
+        "query_coverage_top5": 0.5,
+        "complement_count": 7,
+        "score_concentration": 0.0175,
+        "domain_diversity": 3
+      }
+    },
+    {
+      "query_id": "skincare_010",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5729,
+        "margin12": 0.0467,
+        "query_coverage_top5": 0.8,
+        "complement_count": 9,
+        "score_concentration": 0.0172,
+        "domain_diversity": 4
+      }
+    },
+    {
+      "query_id": "cabello_002",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5552,
+        "margin12": 0.0123,
+        "query_coverage_top5": 0.5,
+        "complement_count": 1,
+        "score_concentration": 0.0112,
+        "domain_diversity": 1
+      }
+    },
+    {
+      "query_id": "cabello_006",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.4769,
+        "margin12": 0.0007,
+        "query_coverage_top5": 0.4286,
+        "complement_count": 0,
+        "score_concentration": 0.0229,
+        "domain_diversity": 2
+      }
+    },
+    {
+      "query_id": "cabello_008",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5325,
+        "margin12": 0.0165,
+        "query_coverage_top5": 0.8,
+        "complement_count": 9,
+        "score_concentration": 0.0116,
+        "domain_diversity": 4
+      }
+    },
+    {
+      "query_id": "cejas_001",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5554,
+        "margin12": 0.0012,
+        "query_coverage_top5": 0.6667,
+        "complement_count": 1,
+        "score_concentration": 0.0157,
+        "domain_diversity": 1
+      }
+    },
+    {
+      "query_id": "cejas_004",
+      "decision": "COMPOSE",
+      "signals": {
+        "top1_score": 0.5264,
+        "margin12": 0.0026,
+        "query_coverage_top5": 0.25,
+        "complement_count": 7,
+        "score_concentration": 0.0053,
+        "domain_diversity": 2
+      }
+    },
+    {
+      "query_id": "cejas_005",
+      "decision": "COMPOSE",
+      "signals": {
+        "top1_score": 0.5927,
+        "margin12": 0.0043,
+        "query_coverage_top5": 0.25,
+        "complement_count": 8,
+        "score_concentration": 0.0112,
+        "domain_diversity": 1
+      }
+    },
+    {
+      "query_id": "cejas_007",
+      "decision": "COMPOSE",
+      "signals": {
+        "top1_score": 0.5922,
+        "margin12": 0.0017,
+        "query_coverage_top5": 0.25,
+        "complement_count": 2,
+        "score_concentration": 0.0065,
+        "domain_diversity": 1
+      }
+    },
+    {
+      "query_id": "cejas_008",
+      "decision": "NORMAL",
+      "signals": {
+        "top1_score": 0.5916,
+        "margin12": 0.004,
+        "query_coverage_top5": 0.1667,
+        "complement_count": 1,
+        "score_concentration": 0.008,
+        "domain_diversity": 1
+      }
+    }
+  ],
+  "evidence_sets": [
+    {
+      "query_id": "skincare_003",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "poros-clima-bogota-009",
+        "poros-humedad-bogota-008",
+        "maquillaje-eventos-presión-atmosférica-005",
+        "skincare-rutinas-008-osmolaridad-estrato-corneo",
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006"
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+        "proteccion-solar-filtros-quimicos-006",
+        "trend-sunscreen-mixing-004",
+        "skincare-rutinas-007-fotoproteccion-he-luz-visible",
+        "foto-envejecimiento-manos-007"
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+        "reologia-acido-hialuronico-005",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "reologia-ah-006",
+        "reologia-rellenos-008"
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "skincare-rutinas-por-tipo-piel-002",
+        "skincare-ritmos-circadianos-001",
+        "tendencias-belleza-virales-skincare-cicadiano-002",
+        "skincare-bio-ritmo-001",
+        "skincare-rutinas-por-tipo-piel-ritmos-circadianos-003"
+      ]
+    },
+    {
+      "query_id": "skincare_008",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "cuidado_corporal_y_spa-1786383716346-5-3380c079-manejo-de-la-hiperpigmentacion-por-friccion-en-zonas-de-flex",
+        "skincare_rutinas_por_tipo_piel-1786385298854-5-7aa0fd96-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion"
+      ]
+    },
+    {
+      "query_id": "skincare_009",
+      "control_C_class": "SUFFICIENT",
+      "selected": [
+        "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+        "skincare-niacinamida-inflamacion-007",
+        "activos-quelacion-vitamina-c-004"
+      ]
+    },
+    {
+      "query_id": "skincare_010",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "skincare-microbioma-limpiadores-004",
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+        "trend-limpieza-doble-006",
+        "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+        "skincare-limpieza-acustica-004"
+      ]
+    },
+    {
+      "query_id": "cabello_002",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "colorimetria-capilar-microbiota-003",
+        "colorimetria-ph-balance-006",
+        "colorimetria-capilar-microbiota-009"
+      ]
+    },
+    {
+      "query_id": "cabello_006",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "microbiota-scalp-008",
+        "colorimetria-capilar-microbiota-003",
+        "colorimetria-capilar-microbiota-009",
+        "colorimetria-ph-balance-006",
+        "colorimetria-interaccion-metales-005"
+      ]
+    },
+    {
+      "query_id": "cabello_008",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "hidratacion-oclusiva-corporal-008",
+        "hidrofaciales-tecnologia-006",
+        "parches-hidrogel-ojos-003",
+        "beautification-inyecciones-vitaminas-006",
+        "hidratacion-oclusivos-humectantes-009"
+      ]
+    },
+    {
+      "query_id": "cejas_001",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-envejecimiento-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema"
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "control_C_class": "PARTIAL",
+      "selected": [
+        "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+        "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+        "micropigmentacion-y-viraje-002"
+      ]
+    },
+    {
+      "query_id": "cejas_005",
+      "control_C_class": "SUFFICIENT",
+      "selected": [
+        "visajismo-cejas-microblading-microbiota-006",
+        "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-cejas-microblading-impacto-disbiosis-microbiota-periocular"
+      ]
+    },
+    {
+      "query_id": "cejas_007",
+      "control_C_class": "SUFFICIENT",
+      "selected": [
+        "microblading-psicodermatologia-expectativas-009",
+        "terapia-electrolipolisis-contraindicacion-004"
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "control_C_class": "NORMAL_PATH",
+      "selected": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-microblading-psicodermatologia-009",
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003"
+      ]
+    }
+  ],
+  "per_query_results": [
+    {
+      "query_id": "skincare_003",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5807,
+        "margin12": 0.0086,
+        "query_coverage_top5": 0.8333,
+        "complement_count": 1,
+        "score_concentration": 0.0282,
+        "domain_diversity": 5
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.75,
+          "r10": 0.75,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0.5,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.6,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "poros-clima-bogota-009",
+          "poros-humedad-bogota-008",
+          "maquillaje-eventos-presión-atmosférica-005",
+          "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "skincare-rutinas-por-tipo-piel-osmolaridad-006"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_005",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.563,
+        "margin12": 0.0056,
+        "query_coverage_top5": 1,
+        "complement_count": 4,
+        "score_concentration": 0.0122,
+        "domain_diversity": 7
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0.5,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "proteccion-solar-filtros-quimicos-006",
+          "trend-sunscreen-mixing-004",
+          "skincare-rutinas-007-fotoproteccion-he-luz-visible",
+          "foto-envejecimiento-manos-007"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_006",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5938,
+        "margin12": 0.018,
+        "query_coverage_top5": 0.5,
+        "complement_count": 0,
+        "score_concentration": 0.022,
+        "domain_diversity": 4
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.75,
+          "r10": 0.75,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": true
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.6,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+          "reologia-acido-hialuronico-005",
+          "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+          "reologia-ah-006",
+          "reologia-rellenos-008"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_007",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.4274,
+        "margin12": 0.0027,
+        "query_coverage_top5": 0.5,
+        "complement_count": 0,
+        "score_concentration": 0.009,
+        "domain_diversity": 3
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "VECTOR_MISS",
+        "group_size": 0,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "skincare-rutinas-por-tipo-piel-002",
+          "skincare-ritmos-circadianos-001",
+          "tendencias-belleza-virales-skincare-cicadiano-002",
+          "skincare-bio-ritmo-001",
+          "skincare-rutinas-por-tipo-piel-ritmos-circadianos-003"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_008",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.6373,
+        "margin12": 0.0068,
+        "query_coverage_top5": 0.8,
+        "complement_count": 7,
+        "score_concentration": 0.0107,
+        "domain_diversity": 3
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 1,
+          "p5": 0.6,
+          "r5": 0.75,
+          "r10": 0.75,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 1,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.6,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+          "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+          "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+          "cuidado_corporal_y_spa-1786383716346-5-3380c079-manejo-de-la-hiperpigmentacion-por-friccion-en-zonas-de-flex",
+          "skincare_rutinas_por_tipo_piel-1786385298854-5-7aa0fd96-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_009",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5635,
+        "margin12": 0.0074,
+        "query_coverage_top5": 0.5,
+        "complement_count": 7,
+        "score_concentration": 0.0175,
+        "domain_diversity": 3
+      },
+      "router_decision": "COMPOSE",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 3,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": true
+      },
+      "control_C": {
+        "class": "SUFFICIENT",
+        "group_size": 3,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": true,
+        "selected": [
+          "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+          "skincare-niacinamida-inflamacion-007",
+          "activos-quelacion-vitamina-c-004"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_010",
+      "domain": "skincare",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5729,
+        "margin12": 0.0467,
+        "query_coverage_top5": 0.8,
+        "complement_count": 9,
+        "score_concentration": 0.0172,
+        "domain_diversity": 4
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 3,
+        "precision": 0.3333,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "skincare-microbioma-limpiadores-004",
+          "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "trend-limpieza-doble-006",
+          "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "skincare-limpieza-acustica-004"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_002",
+      "domain": "cabello",
+      "was_miss": true,
+      "router_signals": {
+        "top1_score": 0.5552,
+        "margin12": 0.0123,
+        "query_coverage_top5": 0.5,
+        "complement_count": 1,
+        "score_concentration": 0.0112,
+        "domain_diversity": 1
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "r10": 0.4,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0.5,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "colorimetria-capilar-ph-pos-tinte-009",
+          "colorimetria-capilar-viscoelasticidad-009",
+          "colorimetria-capilar-microbiota-003",
+          "colorimetria-ph-balance-006",
+          "colorimetria-capilar-microbiota-009"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_006",
+      "domain": "cabello",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.4769,
+        "margin12": 0.0007,
+        "query_coverage_top5": 0.4286,
+        "complement_count": 0,
+        "score_concentration": 0.0229,
+        "domain_diversity": 2
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "PARTIAL",
+        "group_size": 1,
+        "precision": 1,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "microbiota-scalp-008",
+          "colorimetria-capilar-microbiota-003",
+          "colorimetria-capilar-microbiota-009",
+          "colorimetria-ph-balance-006",
+          "colorimetria-interaccion-metales-005"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_008",
+      "domain": "cabello",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5325,
+        "margin12": 0.0165,
+        "query_coverage_top5": 0.8,
+        "complement_count": 9,
+        "score_concentration": 0.0116,
+        "domain_diversity": 4
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.75,
+          "r10": 0.75,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "PARTIAL",
+        "group_size": 4,
+        "precision": 0.5,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.6,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "hidratacion-oclusiva-corporal-008",
+          "hidrofaciales-tecnologia-006",
+          "parches-hidrogel-ojos-003",
+          "beautification-inyecciones-vitaminas-006",
+          "hidratacion-oclusivos-humectantes-009"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_001",
+      "domain": "cejas",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5554,
+        "margin12": 0.0012,
+        "query_coverage_top5": 0.6667,
+        "complement_count": 1,
+        "score_concentration": 0.0157,
+        "domain_diversity": 1
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 3,
+        "precision": 0.3333,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_004",
+      "domain": "cejas",
+      "was_miss": true,
+      "router_signals": {
+        "top1_score": 0.5264,
+        "margin12": 0.0026,
+        "query_coverage_top5": 0.25,
+        "complement_count": 7,
+        "score_concentration": 0.0053,
+        "domain_diversity": 2
+      },
+      "router_decision": "COMPOSE",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.3333,
+          "r10": 0.3333,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "PARTIAL",
+        "group_size": 3,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "PARTIAL",
+        "group_size": 3,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": false,
+        "selected": [
+          "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+          "micropigmentacion-y-viraje-002"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_005",
+      "domain": "cejas",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5927,
+        "margin12": 0.0043,
+        "query_coverage_top5": 0.25,
+        "complement_count": 8,
+        "score_concentration": 0.0112,
+        "domain_diversity": 1
+      },
+      "router_decision": "COMPOSE",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.5,
+          "r10": 0.5,
+          "mrr": 0.5
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 4,
+        "precision": 0.25,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "SUFFICIENT",
+        "group_size": 4,
+        "precision": 0.25,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "visajismo-cejas-microblading-microbiota-006",
+          "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-impacto-disbiosis-microbiota-periocular"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_007",
+      "domain": "cejas",
+      "was_miss": false,
+      "router_signals": {
+        "top1_score": 0.5922,
+        "margin12": 0.0017,
+        "query_coverage_top5": 0.25,
+        "complement_count": 2,
+        "score_concentration": 0.0065,
+        "domain_diversity": 1
+      },
+      "router_decision": "COMPOSE",
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "r10": 0.6667,
+          "mrr": 0.3333
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": true
+      },
+      "control_C": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": true,
+        "selected": [
+          "microblading-psicodermatologia-expectativas-009",
+          "terapia-electrolipolisis-contraindicacion-004"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_008",
+      "domain": "cejas",
+      "was_miss": true,
+      "router_signals": {
+        "top1_score": 0.5916,
+        "margin12": 0.004,
+        "query_coverage_top5": 0.1667,
+        "complement_count": 1,
+        "score_concentration": 0.008,
+        "domain_diversity": 1
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.3333,
+          "r10": 0.3333,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "PARTIAL",
+        "group_size": 2,
+        "precision": 0.5,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "visajismo-microblading-psicodermatologia-009",
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003"
+        ]
+      }
+    }
+  ],
+  "regressions": [
+    "skincare_009",
+    "cejas_004",
+    "cejas_007"
+  ],
+  "false_sufficient_cases": {
+    "B": [
+      "skincare_006",
+      "skincare_009",
+      "cejas_007"
+    ],
+    "C": [
+      "skincare_009",
+      "cejas_007"
+    ]
+  },
+  "unsupported_cases": [],
+  "miss_analysis": {
+    "cabello_002": {
+      "query_id": "cabello_002",
+      "domain": "cabello",
+      "was_miss": true,
+      "router_signals": {
+        "top1_score": 0.5552,
+        "margin12": 0.0123,
+        "query_coverage_top5": 0.5,
+        "complement_count": 1,
+        "score_concentration": 0.0112,
+        "domain_diversity": 1
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "r10": 0.4,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "SUFFICIENT",
+        "group_size": 2,
+        "precision": 0.5,
+        "query_success": true,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "colorimetria-capilar-ph-pos-tinte-009",
+          "colorimetria-capilar-viscoelasticidad-009",
+          "colorimetria-capilar-microbiota-003",
+          "colorimetria-ph-balance-006",
+          "colorimetria-capilar-microbiota-009"
+        ]
+      }
+    },
+    "cejas_008": {
+      "query_id": "cejas_008",
+      "domain": "cejas",
+      "was_miss": true,
+      "router_signals": {
+        "top1_score": 0.5916,
+        "margin12": 0.004,
+        "query_coverage_top5": 0.1667,
+        "complement_count": 1,
+        "score_concentration": 0.008,
+        "domain_diversity": 1
+      },
+      "router_decision": "NORMAL",
+      "control_A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.3333,
+          "r10": 0.3333,
+          "mrr": 1
+        }
+      },
+      "control_B": {
+        "class": "PARTIAL",
+        "group_size": 2,
+        "precision": 0.5,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "control_C": {
+        "class": "NORMAL_PATH",
+        "group_size": 5,
+        "precision": 0.4,
+        "query_success": true,
+        "false_sufficient": false,
+        "selected": [
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "visajismo-microblading-psicodermatologia-009",
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003"
+        ]
+      }
+    },
+    "cejas_004": {
+      "signals": {
+        "top1_score": 0.5264,
+        "margin12": 0.0026,
+        "query_coverage_top5": 0.25,
+        "complement_count": 7,
+        "score_concentration": 0.0053,
+        "domain_diversity": 2
+      },
+      "decision": "COMPOSE",
+      "B": {
+        "class": "PARTIAL",
+        "group_size": 3,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": false
+      },
+      "C": {
+        "class": "PARTIAL",
+        "group_size": 3,
+        "precision": 0,
+        "query_success": false,
+        "false_sufficient": false,
+        "selected": [
+          "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+          "micropigmentacion-y-viraje-002"
+        ]
+      },
+      "gate_check": "GATE OK — no falso SUFFICIENT"
+    }
+  },
+  "reproducibility": "RUN A ≡ RUN B (verificar en segunda corrida)",
+  "verdict": null
+}

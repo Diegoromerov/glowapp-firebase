@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786377235448-4-5d54b090-gluconolactona-la-alternativa-segura-a-los-ahas-o-un-riesgo-",
+    "title": "Gluconolactona: ¿La alternativa segura a los AHAs o un riesgo de sensibilización?",
+    "content": "La gluconolactona, un polihidroxiácido (PHA), se promociona por su gran tamaño molecular y su supuesta capacidad para hidratar mientras exfolia. Sin embargo, su eficacia depende estrictamente de la temperatura y el pH de la formulación. En entornos de alta temperatura, la gluconolactona puede hidrolizarse parcialmente a ácido glucónico, aumentando la acidez de la fórmula y reduciendo su tolerancia en pieles sensibles. Además, su capacidad quelante, aunque menor que la del EDTA, puede interferir con la estabilidad de ciertos conservantes metálicos en la fórmula, aumentando el riesgo de contaminación microbiana si el sistema de preservación no está optimizado. Es un error común asumir que, por ser un PHA, es imposible que cause irritación; el uso prolongado sin descanso puede alterar el pH del manto ácido, favoreciendo la proliferación de microorganismos oportunistas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12999",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "gluconolactona"
+      ],
+      "contraindications": [
+        "uso excesivo sin descanso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exfoliacion_suave"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:53:55.448Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786377235448-6-2b2a0c0c-sulfato-de-zinc-el-riesgo-de-irritacion-por-acumulacion-en-p",
+    "title": "Sulfato de Zinc: El riesgo de irritación por acumulación en pieles seborreicas",
+    "content": "El sulfato de zinc se utiliza frecuentemente en tónicos y sueros para pieles grasas por sus propiedades seborreguladoras y antibacterianas. Sin embargo, su uso prolongado puede llevar a la acumulación de sales de zinc en los folículos pilosebáceos, lo que provoca una obstrucción mecánica y una irritación folicular. Esta 'foliculitis química' es a menudo mal diagnosticada como un empeoramiento del acné. Además, el zinc en altas concentraciones puede interferir con la absorción de otros minerales esenciales en la piel si se aplica de forma oclusiva. Se recomienda su uso en concentraciones inferiores al 1% y siempre en formulaciones que aseguren una correcta solubilidad, evitando la cristalización del compuesto sobre la superficie cutánea, lo cual actúa como un agente irritante mecánico que compromete la barrera lipídica y aumenta la pérdida de agua transepidérmica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.15678",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato de zinc"
+      ],
+      "contraindications": [
+        "uso oclusivo prolongado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "control_sebo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:53:55.448Z"
+  }
+]

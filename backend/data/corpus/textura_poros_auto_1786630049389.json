@@ -1,0 +1,210 @@
+[
+  {
+    "chunk_id": "textura_poros-microbiota-lipolisis-001",
+    "title": "Impacto de la actividad lipolítica bacteriana en la arquitectura del ostium",
+    "content": "La microbiota folicular, particularmente especies de Cutibacterium acnes y Staphylococcus epidermidis, secreta lipasas que hidrolizan los triglicéridos del sebo en ácidos grasos libres (FFA). Estos FFA, especialmente el ácido oleico, poseen propiedades pro-inflamatorias y comedogénicas que alteran la cohesión de los queratinocitos en el infundíbulo. Cuando la concentración de estos ácidos grasos excede el umbral fisiológico, se induce una hiperqueratosis ductal que obstruye el ostium, resultando en una apariencia de poro dilatado y una textura superficial rugosa. La modulación de esta actividad enzimática bacteriana es fundamental para prevenir la formación de microcomedones y mejorar la textura cutánea. Estudios recientes sugieren que el equilibrio en la composición lipídica del sebo, influenciado por la microbiota, determina no solo la inflamación, sino la elasticidad mecánica del canal folicular, evitando el estiramiento crónico de la apertura del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31198642/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "adolescent",
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamide",
+        "zinc_pca"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbiota"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:07:12.563Z"
+  },
+  {
+    "chunk_id": "textura_poros-ion-potasio-002",
+    "title": "Gradientes de potasio y la dinámica contráctil del músculo erector del pelo",
+    "content": "El músculo erector del pelo no solo responde a estímulos térmicos o emocionales, sino que su tono basal está regulado por gradientes iónicos, con el potasio jugando un rol crítico en la repolarización de las fibras musculares lisas asociadas al folículo pilosebáceo. Una alteración en la homeostasis del potasio a nivel perifolicular puede resultar en una relajación o contracción anómala, afectando directamente la apertura del ostium folicular. La tensión constante o la falta de tonicidad en este músculo contribuyen a la deformación estructural del poro a largo plazo. Mantener una adecuada señalización iónica es crucial para que el folículo mantenga su configuración anatómica natural. Investigaciones sugieren que el estrés crónico y el desequilibrio electrolítico local pueden exacerbar la dilatación visible, subrayando la importancia de la salud de la matriz extracelular y el entorno iónico para una textura de poro optimizada.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00245-1/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "magnesium_topical"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tonificacion-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:07:12.563Z"
+  },
+  {
+    "chunk_id": "textura_poros-glicoproteinas-003",
+    "title": "Glicoproteínas de anclaje y la integridad estructural del ostium",
+    "content": "Las glicoproteínas de la matriz extracelular, como la fibronectina y la laminina, actúan como el andamiaje que sostiene la arquitectura del ostium folicular. Con el envejecimiento y el daño actínico, la degradación de estas proteínas compromete la estabilidad de la unión dermo-epidérmica, provocando que el poro pierda su soporte y se colapse hacia afuera, aumentando su diámetro aparente. La pérdida de estas proteínas de anclaje es un factor subestimado en la textura rugosa de la piel madura. A diferencia de la pérdida de colágeno fibrilar, la disrupción de las glicoproteínas de anclaje requiere estrategias de reparación específicas que estimulen la síntesis de componentes de la membrana basal. El uso de activos que promuevan la integridad de la matriz, junto con una protección solar rigurosa, es esencial para prevenir la expansión irreversible del poro debida a la pérdida de tensión estructural en la dermis papilar.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/skin-cancer/prevent/sunscreen",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptides",
+        "retinol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento-cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:07:12.563Z"
+  },
+  {
+    "chunk_id": "textura_poros-mecanobiologia-004",
+    "title": "Mecanobiología: el impacto de la tensión facial en la dilatación folicular",
+    "content": "La piel es un órgano mecanosensible. La tensión mecánica facial constante, ya sea por expresiones repetitivas o por la pérdida de soporte de los compartimentos grasos profundos, ejerce fuerzas de cizallamiento sobre el ostium folicular. Este fenómeno de mecanotransducción activa a los fibroblastos periporo, que responden remodelando la matriz extracelular de forma desorganizada, lo que conduce a una dilatación mecánica del poro. En la práctica clínica, esto explica por qué los poros en áreas de alta movilidad, como el surco nasogeniano o el entrecejo, tienden a verse más prominentes. Entender la mecanobiología del poro permite diseñar enfoques que no solo se centren en limpiar el canal, sino en mejorar la resiliencia mecánica del tejido circundante. La estimulación de la producción de colágeno mediante técnicas de regeneración controlada puede ayudar a contrarrestar esta deformación estructural, restaurando la firmeza periporo necesaria para una textura más uniforme.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Molecular Cell Biology",
+        "url": "https://www.nature.com/articles/s41580-023-00624-5",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "growth_factors"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:07:12.563Z"
+  },
+  {
+    "chunk_id": "textura_poros-calicreinas-005",
+    "title": "El rol de las calicreínas en la descamación controlada del ostium",
+    "content": "Las calicreínas son serina-proteasas esenciales para el proceso de descamación natural en el ostium folicular. Un desequilibrio en su actividad, a menudo causado por variaciones en el pH cutáneo o inflamación subclínica, resulta en una queratinización anómala donde las células muertas no se desprenden adecuadamente, acumulándose en el canal. Esta acumulación de detritos no solo contribuye a la formación de microcomedones, sino que ensancha físicamente la apertura del poro, alterando la textura superficial. La regulación de estas enzimas es un pilar fundamental en las rutinas de cuidado de piel grasa. El uso de alfahidroxiácidos (AHAs) en concentraciones controladas puede modular la actividad de las calicreínas, facilitando una descamación ordenada y previniendo la obstrucción folicular. Una descamación eficiente es, por tanto, una estrategia directa para refinar la apariencia del poro y mejorar la luminosidad cutánea general, evitando el aspecto rugoso asociado a la retención de queratina.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.16852",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne_prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lactic_acid",
+        "glycolic_acid"
+      ],
+      "contraindications": [
+        "sensitive_skin"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exfoliacion-quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:07:12.563Z"
+  }
+]

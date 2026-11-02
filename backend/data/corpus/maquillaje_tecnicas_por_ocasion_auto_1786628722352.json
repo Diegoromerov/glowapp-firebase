@@ -1,0 +1,389 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-001",
+    "title": "Maquillaje en entornos de microgravedad: Dinámica de emulsiones y seguridad cutánea",
+    "content": "La aplicación de maquillaje en entornos de baja gravedad o microgravedad, como en turismo espacial, presenta desafíos únicos para la estabilidad de las emulsiones cosméticas. En ausencia de gravedad, la sedimentación de partículas (Ley de Stokes) se ve alterada, provocando que las fases de una emulsión se separen de manera distinta a como ocurriría en la Tierra. El riesgo principal es la formación de gotas de producto que pueden flotar y ser inhaladas, causando irritación ocular o respiratoria. Se recomienda el uso de cosméticos en formato sólido (barras o polvos compactados con aglutinantes de alta cohesión) para evitar la dispersión. Además, la falta de convección natural reduce la evaporación del sudor, lo que aumenta el riesgo de oclusión folicular si se utilizan bases de alto peso molecular. La evidencia en dermatología espacial sugiere que la barrera cutánea sufre una deshidratación acelerada debido a los sistemas de soporte vital, por lo que el maquillaje debe ser altamente oclusivo en términos de agentes hidratantes, pero no comedogénico. La selección de pigmentos debe evitar metales pesados que puedan interferir con los sistemas de filtración de aire de la cabina.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp/skincare-in-space",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas volátiles",
+        "ceras de alto punto de fusión"
+      ],
+      "contraindications": [
+        "productos líquidos",
+        "aerosoles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-002",
+    "title": "Estabilidad de emulsiones cosméticas ante cambios de presión en cabinas espaciales",
+    "content": "El maquillaje para eventos que implican cambios rápidos de presión atmosférica, como en vuelos parabólicos o cabinas presurizadas, requiere una formulación diseñada para resistir la desgasificación. Cuando la presión externa disminuye, el aire atrapado en las emulsiones puede expandirse, alterando la textura del producto y provocando que este se separe o incluso que el empaque presente fugas. Los estudios sobre la estabilidad de los cosméticos en condiciones hipobáricas indican que las emulsiones aceite-en-agua (O/W) son más susceptibles a la inestabilidad que las fórmulas anhidras. Para garantizar la adherencia del pigmento, es fundamental emplear polímeros formadores de película que mantengan su flexibilidad a pesar de la expansión del sustrato cutáneo. La falta de presión atmosférica constante también afecta la microcirculación cutánea, pudiendo inducir un edema facial leve que altera la apariencia del maquillaje a lo largo del tiempo. Se recomienda aplicar productos con alta carga de humectantes de bajo peso molecular que penetren en el estrato córneo, evitando que el maquillaje se quiebre por la pérdida de agua transepidérmica inducida por la descompresión ambiental. La evaluación de la seguridad debe considerar la biocompatibilidad de estos ingredientes en un sistema cerrado donde la calidad del aire es crítica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "polímeros acrílicos"
+      ],
+      "contraindications": [
+        "emulsiones inestables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-003",
+    "title": "Dinámica de fluidos y adhesión en entornos de baja gravedad",
+    "content": "En entornos de baja gravedad, la adhesión de las partículas de maquillaje a la piel se ve comprometida no solo por la ausencia de fuerza gravitacional que las mantenga en su sitio, sino por la alteración de la tensión superficial del sudor y el sebo cutáneo. La piel humana bajo estas condiciones desarrolla una capa de película lipídica más viscosa debido a la falta de drenaje natural de los poros. Esto puede causar que los pigmentos se aglomeren de forma irregular. Para mitigar este efecto, se deben utilizar pre-bases (primers) con carga electrostática controlada que faciliten la anclaje de las partículas a la epidermis. La investigación sobre la física de los cosméticos en entornos controlados sugiere que el uso de perlas de sílice tratadas puede mejorar la dispersión del pigmento, evitando que se formen acúmulos que podrían desprenderse y contaminar el ambiente. Es vital que el maquillaje para estos escenarios sea sometido a pruebas de desprendimiento de partículas para asegurar que no se conviertan en material particulado flotante (FPM). El uso de selladores de maquillaje basados en resinas de poliuretano es preferible a los sprays tradicionales, ya que estos últimos generan microgotas que pueden ser peligrosas en una atmósfera con circulación de aire restringida.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice tratada",
+        "resinas de poliuretano"
+      ],
+      "contraindications": [
+        "sprays de alcohol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-004",
+    "title": "Mitigación de la desgasificación cosmética en cabinas presurizadas",
+    "content": "La desgasificación de productos cosméticos en cabinas presurizadas es un fenómeno físico donde los gases disueltos en la fórmula intentan escapar ante cambios de presión ambiental. Esto ocurre frecuentemente en eventos que requieren transporte aéreo o estancias en cámaras hiperbáricas. La presión de vapor de los solventes volátiles, como el etanol o las siliconas de cadena corta, puede causar la ruptura de envases o la alteración de la consistencia del producto. Clínicamente, esto es relevante porque una fórmula que ha sufrido desgasificación puede perder sus propiedades oclusivas o volverse irritante si los conservantes se concentran en la superficie del producto. Para prevenir este problema, se recomienda el uso de envases tipo 'airless' con sistemas de barrera mecánica que impidan la expansión del producto. Además, la selección de ingredientes debe priorizar aquellos con una presión de vapor baja, como los ésteres de ácidos grasos complejos. La aplicación debe ser mínima para evitar que el exceso de producto, al expandirse durante los cambios de presión, se desplace hacia las zonas perioculares, aumentando el riesgo de conjuntivitis química. El entrenamiento del personal en la aplicación de capas finas es la estrategia más efectiva para mantener la integridad del maquillaje en condiciones de presurización variable.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/products",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ésteres de ácidos grasos"
+      ],
+      "contraindications": [
+        "solventes de alta volatilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-005",
+    "title": "Seguridad respiratoria y ocular en entornos de baja gravedad",
+    "content": "La interacción entre el maquillaje y el sistema respiratorio es una preocupación crítica en eventos de larga duración en ambientes cerrados o de baja gravedad. El uso de polvos sueltos (loose powders) representa un riesgo inaceptable, ya que las partículas pueden quedar suspendidas en el aire, siendo inhaladas por el usuario o los asistentes. La literatura dermatológica y de salud ocupacional advierte que la inhalación de pigmentos, especialmente aquellos que contienen óxidos metálicos o talco, puede inducir inflamación de las vías respiratorias superiores. En entornos de baja gravedad, la ausencia de sedimentación natural hace que estas partículas permanezcan en el ambiente mucho más tiempo que en la Tierra. Por lo tanto, el uso de maquillaje en estos contextos debe restringirse a formulaciones compactas, cremas anhidras o geles que no liberen micropartículas. Además, es fundamental realizar pruebas de irritación ocular, ya que la migración del producto hacia los ojos es más probable al no existir la fuerza de gravedad que mantenga los pigmentos adheridos únicamente a la piel. Se recomienda el uso de selladores de base acuosa que no contengan solventes irritantes, asegurando que la formulación sea hipoalergénica y libre de fragancias que puedan exacerbar el estrés respiratorio en ambientes con filtración de aire limitada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/indoor-air-quality",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "geles anhidros"
+      ],
+      "contraindications": [
+        "polvos sueltos",
+        "fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-006",
+    "title": "Adaptación de la barrera cutánea a la deshidratación en microgravedad",
+    "content": "La deshidratación transepidérmica (TEWL) se acelera en entornos de baja gravedad debido a la modificación de los flujos de aire y la gestión de la humedad en los sistemas de soporte vital. Esto afecta directamente la adherencia del maquillaje, ya que la piel tiende a volverse más seca y descamada, lo que provoca que los pigmentos se agrieten o migren hacia las líneas de expresión. Para contrarrestar esto, el maquillaje debe actuar como una barrera física, similar a los productos utilizados en el camuflaje médico. Se recomienda el uso de ingredientes como ceramidas, ácidos grasos esenciales y colesterol para reforzar la función barrera antes de la aplicación del pigmento. Clínicamente, el objetivo es mantener una hidratación de larga duración que evite la contracción del estrato córneo. La aplicación de maquillaje en capas finas y con alto contenido de lípidos biomiméticos permite que el producto se mueva con la piel sin romperse. Es vital evitar productos que contengan alcoholes desnaturalizados, ya que su rápida evaporación en ambientes de baja humedad exacerbará la deshidratación cutánea. El uso de selladores que incorporen polímeros de red, los cuales crean una película transpirable pero oclusiva, es la mejor estrategia para asegurar la durabilidad en estas condiciones extremas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol"
+      ],
+      "contraindications": [
+        "alcoholes desnaturalizados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamento_fisiologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-007",
+    "title": "Mito vs Realidad: La estabilidad de los cosméticos en cámaras hiperbáricas",
+    "content": "Existe la creencia popular de que cualquier maquillaje puede usarse en cámaras hiperbáricas sin riesgo, pero esto es un error clínico. En condiciones hiperbáricas, donde la presión parcial de oxígeno es elevada, los ingredientes cosméticos pueden experimentar reacciones de oxidación acelerada. Los pigmentos orgánicos y los lípidos insaturados pueden degradarse, alterando el color y la estabilidad de la fórmula. Además, los envases sellados bajo presión normal pueden sufrir deformaciones mecánicas. La realidad es que solo se deben usar productos testeados para condiciones de alta presión, libres de aceites altamente reactivos o fragancias volátiles que podrían inflamarse o liberar compuestos gaseosos. La seguridad cutánea es primordial: el maquillaje debe ser no comedogénico y fácil de retirar, ya que la piel bajo presión hiperbárica tiene una capacidad de absorción diferente. La aplicación de maquillaje en eventos médicos o de investigación debe seguir protocolos estrictos que prohíban el uso de productos que no hayan sido validados por estabilidad química bajo presión elevada. El riesgo de dermatitis por contacto se incrementa debido a la mayor penetración de los componentes de la fórmula en el estrato córneo bajo estas condiciones, por lo que se prefieren formulaciones minerales simples y estables.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/safety-guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales"
+      ],
+      "contraindications": [
+        "aceites insaturados",
+        "fragancias volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-008",
+    "title": "Tendencias en formulación: Cosméticos de alta adherencia para entornos de alta ionización",
+    "content": "Los entornos con alta ionización ambiental, ya sea por equipamiento electrónico de alta potencia o condiciones atmosféricas específicas, generan una carga electrostática que atrae partículas de polvo y contaminantes hacia la piel. El maquillaje tradicional, debido a su composición química, puede actuar como un imán para estas partículas, exacerbando la formación de comedones y el estrés oxidativo cutáneo. La tendencia actual en la industria de la cosmética técnica es la creación de productos con carga neutra o ligeramente repelente a partículas, utilizando polímeros dieléctricos. Estos ingredientes forman una barrera que no solo protege la piel del contacto directo con contaminantes, sino que también mantiene la estabilidad del maquillaje a pesar de la carga electrostática. Clínicamente, el uso de estas fórmulas es esencial para personas que trabajan en ferias tecnológicas o entornos industriales, donde la exposición a campos eléctricos es constante. Al reducir la adhesión de partículas PM2.5 y metales pesados, se minimiza la probabilidad de desarrollar dermatitis irritativa de contacto. La recomendación es aplicar una base de sellado dieléctrico antes del maquillaje, asegurando que la superficie cutánea se mantenga protegida contra las fluctuaciones ambientales y la atracción de contaminantes urbanos o industriales.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Cosmetics & Toiletries",
+        "url": "https://www.cosmeticsandtoiletries.com/research",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "productos con carga estática alta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-009",
+    "title": "Prevención de la dermatitis por oclusión en entornos de realidad extendida (XR)",
+    "content": "El uso prolongado de visores de Realidad Extendida (XR) en eventos tecnológicos presenta un riesgo significativo de dermatitis de contacto por oclusión y fricción. La zona de contacto entre el dispositivo y el rostro se convierte en un microambiente de alta temperatura y humedad, donde el sudor y el sebo quedan atrapados bajo el maquillaje, favoreciendo la proliferación de microorganismos como Malassezia o Staphylococcus epidermidis. Clínicamente, esto se traduce en brotes de acné cosmético o dermatitis irritativa. Para prevenir esto, es fundamental aplicar un maquillaje que sea altamente transpirable y que no contenga aceites oclusivos en las áreas donde el visor hace contacto con la piel. Se recomienda utilizar productos en polvo mineral de grado médico o selladores de base acuosa que permitan la evaporación del sudor. Además, es esencial realizar una limpieza profunda de la piel inmediatamente después de finalizar el uso del dispositivo para eliminar cualquier residuo de maquillaje y sudor atrapado. La aplicación de agentes calmantes como el pantenol o el bisabolol puede ayudar a mitigar la inflamación inducida por la fricción mecánica del visor. El diseño de protocolos de maquillaje para usuarios de XR debe priorizar la integridad de la barrera cutánea sobre la opacidad del color, asegurando que el maquillaje sea una barrera protectora y no un factor agravante.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/dermatology-research",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pantenol",
+        "bisabolol"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "productos altamente oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:45:03.142Z"
+  }
+]

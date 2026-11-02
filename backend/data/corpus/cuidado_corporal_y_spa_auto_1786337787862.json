@@ -1,0 +1,312 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001-anomalías-vascularización",
+    "title": "Fisiopatología de la telangiectasia esencial generalizada",
+    "content": "La telangiectasia esencial generalizada (TEG) es un trastorno cutáneo caracterizado por la dilatación progresiva de los vasos sanguíneos capilares, manifestándose como redes vasculares finas en tronco y extremidades. A diferencia de las telangiectasias secundarias a rosácea o daño actínico, la TEG es predominantemente idiopática. Desde una perspectiva fisiológica, se ha observado una alteración en la estructura de la membrana basal capilar y una posible disfunción en los receptores adrenérgicos vasculares, lo que impide la vasoconstricción adecuada ante estímulos térmicos. En la práctica clínica, es fundamental diferenciar la TEG de condiciones sistémicas como la esclerodermia o el lupus eritematoso, donde la capilaroscopia es una herramienta de diagnóstico diferencial indispensable. El manejo se centra principalmente en la fotoprotección estricta y el uso de láseres vasculares (como el KTP o el láser de colorante pulsado), que actúan mediante fototermólisis selectiva de la hemoglobina. La evaluación clínica debe descartar factores exacerbantes como el consumo crónico de vasodilatadores o la exposición a radiación ionizante, que pueden mimetizar esta presentación clínica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/dw/clinical-alerts",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "I",
+        "II",
+        "III"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "extractos-vasoprotectores"
+      ],
+      "contraindications": [
+        "exposicion-solar-intensa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002-estrategias-laser",
+    "title": "Protocolos de seguridad en láser vascular para telangiectasias corporales",
+    "content": "El tratamiento de telangiectasias corporales mediante tecnología láser requiere una comprensión profunda de la fluencia y el tamaño del spot. El láser de colorante pulsado (PDL) sigue siendo el estándar de oro debido a su longitud de onda de 595 nm, que presenta una alta absorción por la oxihemoglobina. Para evitar efectos adversos como la púrpura post-láser innecesaria o la atrofia dérmica, se recomienda realizar pruebas de parche (test patch) en áreas discretas, especialmente en fototipos altos. La literatura actual sugiere que la refrigeración epidérmica dinámica es crucial no solo para la analgesia, sino para proteger la epidermis de quemaduras térmicas durante la entrega de pulsos de alta energía. Es vital monitorizar la respuesta del tejido; la aparición de un cambio sutil en el color del vaso (blanqueamiento o oscurecimiento inmediato) es el endpoint deseado. Se debe advertir al paciente sobre la necesidad de evitar la exposición solar post-procedimiento durante al menos 4 semanas para prevenir la hiperpigmentación postinflamatoria, una complicación frecuente en pieles mestizas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35000000/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "protector-solar-fisico"
+      ],
+      "contraindications": [
+        "uso-de-retinoides-topicos-recientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-laser"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003-elastosis-perifolicular",
+    "title": "Manejo de la piel de naranja: Abordaje de la elastosis perifolicular",
+    "content": "La elastosis perifolicular, a menudo confundida con celulitis grado I, es una condición degenerativa de las fibras elásticas que rodea los folículos pilosos, principalmente en glúteos y muslos. La fisiopatología implica la acumulación de material elastótico (elastina degenerada) que reemplaza el colágeno sano, resultando en una superficie cutánea con aspecto rugoso y pérdida de elasticidad mecánica. A diferencia de la celulitis, esta condición no depende exclusivamente de la estructura del septo fibroso adiposo, sino de la integridad de la matriz extracelular dérmica. El abordaje cosmético efectivo se basa en la combinación de agentes queratolíticos suaves (ácido láctico al 10-12%) para mejorar la textura superficial y la estimulación de fibroblastos mediante radiofrecuencia no ablativa. La hidratación profunda con ingredientes que promueven la síntesis de ácido hialurónico endógeno es fundamental para restaurar la turgencia. Es vital educar al paciente sobre la cronicidad de esta condición; la mejora es gradual y depende de la constancia en el uso de principios activos que favorezcan el recambio celular dérmico sin comprometer la barrera epidérmica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "mixta"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-lactico",
+        "urea",
+        "retinol-corporal"
+      ],
+      "contraindications": [
+        "exfoliacion-fisica-agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-corporales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-004-dermatitis-textil",
+    "title": "Dermatitis por contacto con fibras textiles: Diagnóstico y prevención",
+    "content": "La dermatitis por contacto con textiles es una causa subestimada de prurito corporal recurrente. No siempre es el tejido en sí (algodón, poliéster, lana), sino los aditivos químicos utilizados en el acabado: formaldehído, tintes dispersos, resinas de planchado permanente y suavizantes textiles. El cuadro clínico se presenta con eritema, descamación y prurito localizado en áreas de mayor fricción (cintura, axilas, fosa poplítea). El diagnóstico se confirma mediante pruebas de parche (patch testing) que incluyan la serie de alérgenos textiles estándar. Desde la perspectiva de cuidado corporal, es imperativo recomendar el lavado de prendas nuevas antes del uso, el uso de detergentes hipoalergénicos sin fragancias ni blanqueadores ópticos, y el uso de emolientes que contengan ceramidas para restaurar la barrera cutánea alterada por el roce constante. En pacientes con antecedentes de dermatitis atópica, la susceptibilidad aumenta significativamente debido a la disfunción de la barrera filagrina, lo que facilita la penetración de estos haptenos químicos a través del estrato córneo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "avena-coloidal",
+        "glicerina"
+      ],
+      "contraindications": [
+        "detergentes-con-fragancia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-de-irritaciones"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-005-microbioma-sudor",
+    "title": "El microbioma de las zonas de pliegues: Riesgos de la alteración del pH",
+    "content": "Las áreas intertriginosas (axilas, ingles, pliegue submamario) poseen un microbioma único, rico en bacterias grampositivas como Staphylococcus epidermidis y Corynebacterium, que interactúan constantemente con el sebo y el sudor apocrino. La alteración del pH local, a menudo causada por el uso de jabones alcalinos (pH > 8.0) o desodorantes con alcohol, puede desplazar esta microbiota comensal hacia microorganismos patógenos como Candida albicans o Staphylococcus aureus. Esta disbiosis es el precursor directo de condiciones como el intertrigo candidiásico y el eritrasma. La evidencia actual sugiere que el mantenimiento de un pH ligeramente ácido (alrededor de 5.5) es fundamental para la estabilidad de la barrera antimicrobiana natural de la piel. Se recomienda el uso de limpiadores syndet (detergentes sintéticos) que no contengan jabón tradicional y que incluyan prebióticos que favorezcan el crecimiento de la flora comensal. La oclusión excesiva por ropa ajustada de fibras sintéticas exacerba este riesgo al aumentar la temperatura y la humedad local, creando un ambiente ideal para la proliferación fúngica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "syndet",
+        "zinc-pca"
+      ],
+      "contraindications": [
+        "jabones-alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-006-hiperpigmentacion-friccion",
+    "title": "Mecanismos de hiperpigmentación post-fricción en áreas de pliegues",
+    "content": "La hiperpigmentación intertriginosa, a menudo diagnosticada erróneamente como acantosis nigricans, tiene una etiología distinta centrada en la fricción mecánica crónica (fricción dérmica). La estimulación repetida de los queratinocitos induce una respuesta inflamatoria de bajo grado que activa los melanocitos basales, resultando en una hiperpigmentación reactiva. A diferencia de la acantosis nigricans, que se asocia con resistencia a la insulina y presenta hiperqueratosis marcada, la hiperpigmentación por fricción muestra un engrosamiento epidérmico leve con predominio de depósito de melanina en la capa basal. El manejo clínico debe ser multifactorial: reducción de la fricción mediante el uso de bálsamos protectores (con dimeticona), control de peso si existe pliegue cutáneo excesivo y el uso cauteloso de agentes despigmentantes no irritantes como el ácido azelaico o el ácido kójico, evitando retinoides fuertes que podrían aumentar la inflamación y empeorar la mancha. La fotoprotección en estas áreas suele ser difícil, por lo que se prefieren texturas en gel no comedogénicas que no se acumulen en el pliegue.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "III",
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "acido-azelaico",
+        "dimeticona"
+      ],
+      "contraindications": [
+        "retinoides-alta-potencia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-pigmentacion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-007-fotoproteccion-cicatrices",
+    "title": "Protocolo clínico de fotoprotección en cicatrices corporales",
+    "content": "La piel cicatrizal posee una estructura de colágeno desorganizada y una densidad de melanocitos alterada, lo que la hace extremadamente susceptible a cambios de pigmentación inducidos por la radiación UV. Las cicatrices inmaduras (eritematosas) son particularmente propensas a la hiperpigmentación postinflamatoria (HPI), mientras que las cicatrices maduras pueden presentar hipopigmentación. El protocolo de fotoprotección debe ser estricto durante al menos 12 meses tras la formación de la cicatriz. Se recomienda el uso de filtros solares físicos (óxido de zinc o dióxido de titanio) debido a su perfil de seguridad y menor potencial de irritación en comparación con los filtros químicos. Además, la aplicación de láminas de silicona o geles de silicona no solo proporciona una barrera física contra los rayos UV, sino que también mantiene la hidratación del estrato córneo, optimizando el proceso de remodelación del colágeno. En cicatrices quirúrgicas corporales, se debe evitar la exposición directa al sol incluso si están cubiertas por ropa ligera, ya que la radiación UV de onda larga (UVA) puede penetrar tejidos textiles claros y seguir estimulando la melanogénesis en el tejido cicatrizal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxido-de-zinc",
+        "silicona"
+      ],
+      "contraindications": [
+        "exposicion-solar-sin-proteccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cicatrizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:56:03.838Z"
+  }
+]

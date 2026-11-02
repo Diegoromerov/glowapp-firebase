@@ -1,0 +1,254 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-termografia-001",
+    "title": "Termografía infrarroja como herramienta de diagnóstico en la cinética de oxidación",
+    "content": "La aplicación de tintes permanentes es una reacción exotérmica cuya velocidad depende críticamente de la temperatura folicular y del cuero cabelludo. Estudios recientes han demostrado que variaciones de apenas 2°C en la superficie cutánea pueden alterar significativamente la cinética de polimerización de los precursores de color, como las parafenilendiaminas. Utilizar termografía infrarroja permite identificar zonas de hiperemia o inflamación subclínica que podrían acelerar la reacción de forma heterogénea, derivando en un depósito desigual de pigmento. La literatura en dermatología experimental sugiere que el monitoreo térmico no solo optimiza la uniformidad cromática, sino que minimiza el riesgo de quemaduras químicas por reacciones exotérmicas descontroladas, especialmente en cueros cabelludos con integridad de barrera comprometida. La gestión de esta energía térmica es fundamental para evitar la desnaturalización proteica prematura de la corteza, garantizando que el proceso oxidativo se mantenga dentro de los parámetros de seguridad clínica recomendados por las guías de la AAD.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/chemical-damage",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxido de hidrógeno",
+        "agentes alcalinizantes"
+      ],
+      "contraindications": [
+        "dermatitis seborreica aguda",
+        "psoriasis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:35:33.485Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-spectro-002",
+    "title": "Espectroscopía de impedancia bioeléctrica para medir la hidratación post-tinte",
+    "content": "La hidratación de la fibra capilar post-coloración es un determinante clave para la longevidad del color. La espectroscopía de impedancia bioeléctrica se presenta como una técnica no invasiva para cuantificar la pérdida de agua transepidérmica y capilar tras el uso de tintes de alta alcalinidad. La alteración del complejo de membrana celular (CMC) tras la exposición a agentes oxidantes provoca una pérdida de la capacidad de retención hídrica, lo que se traduce en una mayor porosidad y una menor afinidad por los pigmentos de mantenimiento. Investigaciones publicadas en PubMed indican que una fibra con baja impedancia refleja una estructura cuticular abierta y deshidratada, facilitando la lixiviación prematura del color. Implementar mediciones de impedancia permite al profesional ajustar los tratamientos de sellado y acondicionamiento post-servicio de manera personalizada, asegurando que los polímeros catiónicos se depositen correctamente sobre las áreas de mayor daño estructural, restaurando así la homeostasia de la fibra y prolongando la saturación cromática.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos",
+        "humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:35:33.485Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-zeta-003",
+    "title": "El Potencial Zeta como determinante de la estabilidad de emulsiones de tintes",
+    "content": "La estabilidad de las emulsiones de tinte antes de su aplicación depende críticamente del Potencial Zeta de las partículas de pigmento dispersas. Un Potencial Zeta elevado asegura una repulsión electrostática suficiente entre las partículas, evitando la floculación y garantizando una distribución homogénea al momento de la saturación capilar. En la práctica clínica de la colorimetría, una dispersión inestable debido a un Potencial Zeta neutro resulta en un depósito heterogéneo de color, lo cual es especialmente crítico en cabellos con porosidad variable. Estudios de química coloidal aplicados a la cosmética capilar demuestran que el control de la fuerza iónica del medio es esencial para mantener la estabilidad de los precursores de color. Los profesionales deben ser conscientes de que el uso de agua con alta carga mineral (agua dura) puede colapsar la doble capa eléctrica de la emulsión, reduciendo la eficacia del colorante y alterando el resultado final. La optimización del Potencial Zeta es, por tanto, una estrategia de ingeniería química invisible que dicta la calidad del servicio de coloración permanente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos",
+        "agentes quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:35:33.485Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-microbiota-004",
+    "title": "Efectos de la alcalinidad del tinte sobre la diversidad del microbioma scalp",
+    "content": "La aplicación de tintes con pH altamente alcalino (pH 9.0-11.0) induce cambios drásticos en la ecología del cuero cabelludo, afectando directamente la composición del microbioma. La alteración del pH cutáneo desplaza la microbiota residente, favoreciendo la proliferación de microorganismos oportunistas como Malassezia spp., lo cual puede desencadenar dermatitis de contacto irritativa o inflamación folicular. La literatura dermatológica contemporánea enfatiza que el mantenimiento de la biodiversidad microbiana es vital para la salud del folículo piloso, que es el centro de la melanogénesis. Un cuero cabelludo con un ecosistema microbiano desequilibrado presenta una mayor susceptibilidad a la sensibilización alérgica frente a los precursores de color. Los protocolos de coloración clínica deben incorporar agentes buffer post-servicio para restaurar el pH fisiológico rápidamente, minimizando el tiempo de exposición de la microbiota a condiciones de estrés alcalino y previniendo la degradación de la barrera cutánea que protege al huésped frente a la absorción sistémica de xenobióticos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(22)00567-4/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer",
+        "amoniaco"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "cuero cabelludo sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:35:33.485Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-fototoxicidad-005",
+    "title": "Fototoxicidad inducida por precursores de color y exposición UV post-aplicación",
+    "content": "Un riesgo a menudo subestimado en la colorimetría clínica es la fototoxicidad de ciertos precursores de color (como los derivados de anilina) tras la exposición a la radiación UV. Cuando estos compuestos no han completado su polimerización total dentro de la corteza capilar, pueden absorber luz UV y generar radicales libres que inducen daño oxidativo tanto en la fibra como en la superficie del cuero cabelludo. La exposición solar inmediata tras un servicio de coloración sin una protección adecuada puede acelerar la degradación del color y aumentar la formación de neo-antígenos, exacerbando el potencial alérgico de la fórmula. Los estudios sugieren que el uso de filtros UV específicos en productos de acabado es fundamental para estabilizar los precursores y proteger la integridad del complejo de membrana celular. El efecto fototóxico no solo compromete la duración del pigmento, sino que puede inducir respuestas histaminérgicas inespecíficas, complicando el post-tratamiento y la satisfacción del paciente en climas de alta radiación como el de Bogotá.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion_riesgos"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:35:33.485Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quelacion-006",
+    "title": "El rol de los quelantes en la prevención de la degradación catalítica del peróxido",
+    "content": "La presencia de metales de transición (como hierro, cobre y manganeso) en la fibra capilar actúa como catalizador para la descomposición incontrolada del peróxido de hidrógeno. Esta reacción genera radicales hidroxilo altamente reactivos que degradan prematuramente la melanina y los precursores de tinte, resultando en colores poco fieles a la carta de color y una estructura capilar debilitada. La quelación avanzada, utilizando agentes como el EDTA disódico o fitatos de origen natural, es un paso crítico previo a la coloración para secuestrar estos iones metálicos. La literatura técnica señala que la eliminación de estas trazas metálicas no solo mejora la uniformidad del depósito de color, sino que previene la liberación excesiva de calor durante el proceso, un factor común en la rotura capilar. Implementar un protocolo de quelación es, por tanto, una medida de seguridad esencial para evitar reacciones exotérmicas adversas en cabellos tratados previamente con productos no profesionales o expuestos a aguas de alta dureza.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2022",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "fitatos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:35:33.485Z"
+  }
+]

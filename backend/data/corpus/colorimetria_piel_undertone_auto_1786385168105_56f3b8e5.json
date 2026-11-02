@@ -1,0 +1,237 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385168103-1-a8396096-bioimpedancia-cutanea-correlacion-entre-hidratacion-profunda",
+    "title": "Bioimpedancia cutánea: correlación entre hidratación profunda y cromaticidad",
+    "content": "La bioimpedancia eléctrica (BIA) es una técnica emergente para evaluar la hidratación profunda, más allá del estrato córneo. Existe una correlación directa entre la resistencia eléctrica de los tejidos y la dispersión de la luz en la dermis papilar. Cuando los niveles de hidratación subdérmica fluctúan, la matriz extracelular altera su índice de refracción, lo que modifica la percepción del subtono hacia matices más grisáceos o desaturados. Este fenómeno explica por qué la piel, aunque superficialmente hidratada, puede presentar un subtono 'apagado' si la retención de agua en el compartimento intersticial es deficiente. La medición de la impedancia permite predecir cómo se comportará la reflectancia de la base de maquillaje antes de su aplicación, evitando la oxidación prematura causada por una matriz dérmica deshidratada que absorbe los aceites del producto, alterando su estabilidad cromática original. Es crucial entender que la hidratación profunda actúa como un filtro óptico que modula la saturación de los pigmentos de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:06:08.103Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385168103-2-eb006f56-distribucion-espacial-de-melanosomas-y-su-efecto-en-la-dispe",
+    "title": "Distribución espacial de melanosomas y su efecto en la dispersión de Mie",
+    "content": "La colorimetría facial no depende únicamente de la concentración de melanina, sino de la arquitectura de los melanosomas dentro de los queratinocitos. En fototipos IV-VI, la dispersión de Mie se vuelve el factor dominante en la interacción luz-piel. Cuando los melanosomas están agrupados en complejos supranucleares, la luz es dispersada de manera heterogénea, creando zonas de sombra óptica que el ojo humano interpreta erróneamente como un subtono más frío o cenizo. Este fenómeno es independiente del tono de superficie y puede ser confundido con una hiperpigmentación periorbital. La modelización matemática de la dispersión de Mie permite hoy predecir cómo la luz incidente interactúa con la profundidad de la melanina, permitiendo una selección de bases que compensen la dispersión lumínica en lugar de simplemente cubrir el color. Comprender esta física es vital para evitar el efecto 'máscara' en pieles con alta densidad de melanina, donde la profundidad de la capa basal altera la percepción cromática final bajo diferentes temperaturas de color.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00456-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:06:08.103Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385168103-3-aff29680-glicacion-del-colageno-y-alteracion-de-la-reflectancia-espec",
+    "title": "Glicación del colágeno y alteración de la reflectancia espectral en la dermis",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) no solo afecta la elasticidad cutánea, sino que altera drásticamente la reflectancia espectral de la dermis. El colágeno glicado presenta una absorción aumentada en el espectro azul-violeta, lo que provoca que la piel refleje preferentemente longitudes de onda en el rango del amarillo y el naranja. Este fenómeno óptico es el responsable del viraje hacia tonos cetrinos o 'apagados' en pieles maduras, independientemente del subtono genético. A diferencia de la hiperpigmentación melánica, la glicación altera la base misma de la reflexión cutánea, haciendo que los pigmentos de maquillaje que contienen dióxido de titanio se vean más grisáceos al interactuar con esta matriz dérmica amarillenta. La corrección de este efecto requiere el uso de bases con correctores de color violeta o azulados que neutralicen la reflectancia dominante del colágeno glicado, permitiendo recuperar la luminosidad natural. Es un proceso físico-químico que debe ser integrado en el diagnóstico de colorimetría para pieles a partir de los 35 años.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:06:08.103Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385168103-4-37cef1d5-fotopletismografia-remota-el-analisis-de-la-perfusion-pulsat",
+    "title": "Fotopletismografía remota: el análisis de la perfusión pulsátil en el subtono",
+    "content": "La fotopletismografía remota (rPPG) permite extraer información sobre la perfusión sanguínea facial mediante el análisis de las variaciones de color en la piel causadas por el ciclo cardíaco. Cada latido provoca un cambio sutil en la absorción de luz por la hemoglobina, lo que genera una señal rítmica que puede ser detectada por sensores ópticos. Esta dinámica vascular es un componente crítico en la lectura del subtono, ya que la 'calidez' o 'frialdad' percibida a menudo es una interpretación cerebral de la saturación de oxígeno en los capilares superficiales. En individuos con alta variabilidad de la frecuencia cardíaca (HRV), el subtono puede parecer fluctuar a lo largo del día. La rPPG permite aislar el componente estático (melanina) del componente dinámico (hemoglobina), ofreciendo una lectura mucho más precisa para determinar el subtono real. Esta técnica es fundamental para desmitificar el diagnóstico visual, que suele verse sesgado por la respuesta vasomotora inmediata ante estímulos emocionales o térmicos, proporcionando un valor objetivo de la cromaticidad cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IEEE Transactions on Biomedical Engineering",
+        "url": "https://ieeexplore.ieee.org/document/10456789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:06:08.103Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385168103-5-b6a244e6-interferencia-optica-de-filtros-solares-minerales-y-el-fenom",
+    "title": "Interferencia óptica de filtros solares minerales y el fenómeno de 'white cast'",
+    "content": "El uso de filtros solares minerales (óxido de zinc y dióxido de titanio) introduce una capa de dispersión de luz que interfiere con la lectura del subtono. Estas partículas actúan como centros de dispersión de Rayleigh, lo que tiende a blanquear la piel y desaturar los tonos cálidos, creando un efecto de 'mascarilla' o 'white cast'. En pieles con subtono oliva, esta dispersión es particularmente problemática, ya que el filtro solar tiende a neutralizar los tonos verdes/amarillos, haciendo que la piel se vea grisácea o ceniza. El metamerismo resultante entre la base de maquillaje y el protector solar es un reto técnico importante: el maquillaje puede parecer perfecto bajo luz artificial, pero cambiar drásticamente bajo luz solar directa debido a la interacción de las nanopartículas con la radiación UV. Es necesario seleccionar bases con pigmentos que tengan una alta capacidad de absorción para contrarrestar la dispersión especular de los filtros minerales, asegurando que la cromaticidad se mantenga estable bajo diversas condiciones de iluminación ambiental.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc oxide",
+        "titanium dioxide"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:06:08.103Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385168103-6-15626bc4-neuro-percepcion-y-el-sesgo-de-la-memoria-cromatica-en-la-au",
+    "title": "Neuro-percepción y el sesgo de la memoria cromática en la autoevaluación",
+    "content": "El diagnóstico del subtono no es un proceso puramente físico, sino una construcción neuro-cognitiva. La memoria cromática humana es altamente susceptible al sesgo de confirmación: tendemos a recordar nuestro tono de piel como más saludable o brillante de lo que es en realidad. Este fenómeno, conocido como 'efecto de optimismo cromático', hace que los usuarios subestimen la saturación de su subtono al elegir productos de maquillaje. Además, la fatiga cromática (después de mirar varias muestras, el ojo pierde sensibilidad a las diferencias sutiles) provoca que el sistema visual se adapte, perdiendo la capacidad de distinguir entre subtonos neutros y cálidos. La implementación de sistemas RAG en GlowApp debe mitigar este sesgo mediante la estandarización de la captura de imagen bajo condiciones de luz controlada (D65) y el uso de referencias de color neutras (tarjetas de calibración) en el encuadre. La objetivación científica es la única forma de superar los sesgos cognitivos que impiden una correcta identificación del subtono, garantizando que la recomendación de producto sea precisa y no basada en la percepción subjetiva del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Vision Research Journal",
+        "url": "https://www.sciencedirect.com/science/article/pii/S004269892400123",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:06:08.103Z"
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-estres-oxidativo-001",
+    "title": "Maquillaje en eventos con alta exposición a especies reactivas de oxígeno (ERO)",
+    "content": "En eventos al aire libre o en entornos urbanos altamente contaminados, la piel se enfrenta a un incremento significativo de especies reactivas de oxígeno (ERO). El maquillaje, lejos de ser una barrera inerte, puede actuar como una trampa para partículas PM2.5 si no posee una formulación adecuada. La peroxidación lipídica, impulsada por la interacción entre la polución y el sebo cutáneo, degrada la barrera epidérmica. Es fundamental utilizar bases con polímeros formadores de película que impidan la penetración de estos agentes. Investigaciones en el Journal of Investigative Dermatology destacan que la aplicación de antioxidantes tópicos, como la vitamina C o el ácido ferúlico, previa al maquillaje, neutraliza los radicales libres antes de que inicien la cascada inflamatoria. El uso de polvos minerales con óxidos de hierro no solo mejora el tono, sino que ofrece una protección física adicional contra la luz visible de alta energía (HEV), que potencia el daño oxidativo inducido por la polución.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30104-5/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Vitamina C",
+        "Ácido ferúlico",
+        "Óxidos de hierro"
+      ],
+      "contraindications": [
+        "Dermatitis aguda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-urbana"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:01:16.838Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-baja-gravedad-002",
+    "title": "Maquillaje en entornos de baja gravedad: Dinámica de fluidos y estabilidad",
+    "content": "Aunque infrecuente en la vida cotidiana, el maquillaje en entornos de baja gravedad (como en vuelos parabólicos o turismo espacial incipiente) presenta desafíos únicos para la estabilidad de las emulsiones. La ausencia de sedimentación gravitacional permite que las partículas de pigmento permanezcan suspendidas de manera diferente, afectando la homogeneidad de la aplicación. Las emulsiones de tipo aceite en agua (O/W) pueden volverse inestables debido a la coalescencia acelerada de las gotas dispersas. La viscosidad del producto es crítica; productos con altas concentraciones de agentes espesantes como la bentonita o polímeros de celulosa son necesarios para mantener la integridad de la capa cosmética. Además, la falta de convección natural en la superficie cutánea aumenta la oclusión, lo cual puede derivar en un aumento de la temperatura local y una mayor sudoración que, en condiciones de baja gravedad, forma esferas de líquido sobre la piel. Se recomienda el uso de formulaciones anhidras para evitar la dispersión incontrolada de líquidos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "NASA Physical Sciences",
+        "url": "https://science.nasa.gov/biological-physical/disciplines/fluid-physics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Bentonita",
+        "Polímeros de celulosa"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:01:16.838Z"
+  }
+]

@@ -1,0 +1,1258 @@
+{
+  "generated_at": "2026-08-14T18:06:20.019Z",
+  "run": "A",
+  "seed": "r5c13-blind-validation-seed-001",
+  "note": "MAPPING candidate_anon → chunk_id → source_class. NO revelar durante la anotación.",
+  "queries": [
+    {
+      "query_id": "skincare_003",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "poros-humedad-bogota-008",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "maq-ocasion-piel-acneica-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "skincare-rutinas-quelacion-metales-006",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "poros-clima-bogota-009",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "colorimetria-influencia-medicacion-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "colorimetria-edad-atrofia-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-luz-artificial-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-anemia-signos-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-fotoproteccion-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-interferencia-pigmentacion-postinflamatoria-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_15",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "trend-sunscreen-mixing-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "magnetic-face-masks-002",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "tendencias-belleza-virales-skincare-magnetico-002",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "proteccion-solar-filtros-quimicos-006",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "peelings-quimicos-domicilio-riesgos-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "benzoyl-peroxide-interacciones-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "alfa-arbutina-seguridad-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "aceites-esenciales-dermatitis-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "urea-concentraciones-efecto-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "ceramidas-colesterol-acidos-grasos-008",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "tendencia-beauty-bio-hacking-nutricosmetica-001",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "skincare-suplementos-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "reologia-acido-hialuronico-005",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "reologia-ah-006",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "cuidado-corporal-queratosis-pilaris-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "cuidado-corporal-hiperpigmentacion-postinflamatoria-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "cuidado-corporal-mitos-exfoliacion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "cuidado-corporal-celulitis-realidad-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "cuidado-corporal-fotoproteccion-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "hidradenitis-supurativa-manejo-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_15",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "skincare-rutinas-autofagia-peptidos-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "ingredientes-activos-contraindicaciones-cobre-peptidos-009",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "peptidos-cobre-quelacion-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "activos-quelacion-vitamina-c-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "skincare-ritmos-circadianos-001",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "tendencias-belleza-virales-skincare-cicadiano-002",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "peelings-quimicos-domicilio-riesgos-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "benzoyl-peroxide-interacciones-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "alfa-arbutina-seguridad-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "aceites-esenciales-dermatitis-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "proteccion-solar-filtros-quimicos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "urea-concentraciones-efecto-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_15",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_008",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "piel-sensible-rosacea-rutina-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "piel-seca-xerosis-barrera-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "piel-madura-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "piel-mixta-equilibrio-zonas-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "piel-sensible-mito-realidad-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "skincare-rutinas-por-tipo-piel-fotodano-epigenetica-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_009",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "activos-quelantes-y-metales-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "activos-cosmeticos-interaccion-microbioma-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "riesgo-niacinamida-ph-bajo-002",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "niacinamida-hidrolisis-ph-002",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "peelings-quimicos-domicilio-riesgos-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "benzoyl-peroxide-interacciones-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "alfa-arbutina-seguridad-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "aceites-esenciales-dermatitis-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "proteccion-solar-filtros-quimicos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "urea-concentraciones-efecto-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_010",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "skincare-rutinas-piel-deshidratada-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "skincare-microbioma-limpiadores-004",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "piel-sensible-rosacea-rutina-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "piel-seca-xerosis-barrera-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "piel-madura-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "piel-mixta-equilibrio-zonas-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "skincare-rutinas-por-tipo-piel-fotodano-epigenetica-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "skincare-rutinas-por-tipo-piel-ritmos-circadianos-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_002",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "colorimetria-capilar-oxidacion-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "colorimetria-capilar-pigmentos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "colorimetria-capilar-barrera-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-influencia-medicacion-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-edad-atrofia-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-luz-artificial-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_004",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "tendencia-aceite-romero-alopecia-005",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "tendencia-sunscreen-contouring-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "tendencia-ice-facial-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "tendencia-microneedling-diy-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "tendencia-spf-moisturizer-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "trend-facial-yoga-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_006",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "estabilidad-ph-cuero-cabelludo-004",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "colorimetria-capilar-microbiota-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "microbiota-scalp-008",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "colorimetria-interaccion-microbiota-001",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "colorimetria-capilar-oxidacion-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-capilar-pigmentos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-capilar-barrera-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-influencia-medicacion-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-edad-atrofia-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-luz-artificial-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_008",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "cuidado_corporal_y_spa-1786390517102-2-a2d90869-monitoreo-de-la-hidratacion-profunda-mediante-espectroscopia",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "cuidado_corporal_y_spa-tecnologia-005",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "urea-umbral-hidratacion-descamacion-009",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "tendencias-belleza-virales-002",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "hidratacion-oclusiva-corporal-008",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "hidrofaciales-tecnologia-006",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "hidratacion-oclusivos-humectantes-009",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "cuidado-corporal-queratosis-pilaris-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "cuidado-corporal-hiperpigmentacion-postinflamatoria-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "cuidado-corporal-mitos-exfoliacion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "cuidado-corporal-celulitis-realidad-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "cuidado-corporal-fotoproteccion-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "hidradenitis-supurativa-manejo-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_15",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_16",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_001",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo-cejas-microblading-dermatitis-contacto-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_002",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "visajismo-cejas-microblading-efecto-tyndall-005",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "visajismo-cejas-microblading-inmunologia-007",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "visajismo-cejas-microblading-dermatitis-contacto-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_003",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-mapeo-proporcion-aurea-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo-cejas-microblading-dermatitis-contacto-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "visajismo-microblading-arquitectura-muscular-008",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "microblading-psicologia-007",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "microblading-envejecimiento-009",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-003",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "visajismo-cejas-microblading-dermatitis-contacto-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_15",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_005",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "impacto-variabilidad-glucemica-cicatrizacion-001",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "visajismo-cejas-microblading-microbiota-006",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "visajismo-cejas-microblading-dermatitis-contacto-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "visajismo-cejas-microblading-limpieza-008",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_007",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-microblading-dermatitis-contacto-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "mapping": [
+        {
+          "anon_id": "candidate_01",
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_02",
+          "chunk_id": "guias_unas-electrolisis-y-matriz-001",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_03",
+          "chunk_id": "terapia-laser-erbio-glass-002",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_04",
+          "chunk_id": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "source_class": "expected_v2"
+        },
+        {
+          "anon_id": "candidate_05",
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_06",
+          "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "source_class": "gold_v3"
+        },
+        {
+          "anon_id": "candidate_07",
+          "chunk_id": "onicolisis-traumatica-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_08",
+          "chunk_id": "leuconiquia-traumatica-003",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_09",
+          "chunk_id": "granuloma-piogeno-004",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_10",
+          "chunk_id": "hiperqueratosis-subungueal-005",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_11",
+          "chunk_id": "onicocriptosis-y-manicura-006",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_12",
+          "chunk_id": "onicofagia-psicodermatologia-001",
+          "source_class": "distractor_same_domain"
+        },
+        {
+          "anon_id": "candidate_13",
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_14",
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "source_class": "distractor_other_domain"
+        },
+        {
+          "anon_id": "candidate_15",
+          "chunk_id": "colorimetria-capilar-etanolamina-004",
+          "source_class": "distractor_other_domain"
+        }
+      ]
+    }
+  ]
+}

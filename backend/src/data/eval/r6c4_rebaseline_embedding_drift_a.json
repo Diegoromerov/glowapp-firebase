@@ -1,0 +1,5147 @@
+{
+  "cycle": "R6-C4",
+  "run": "A",
+  "timestamp": "2026-08-17T01:46:52.151Z",
+  "bd_integridad": {
+    "total": 5663,
+    "nulls": 0,
+    "nonnulls": 5663,
+    "hnsw_exists": true,
+    "hnsw_def": "CREATE INDEX idx_beauty_knowledge_embedding_hnsw ON public.beauty_knowledge_embeddings USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')",
+    "sample_dims": true,
+    "all_1024d": [
+      1024,
+      1024,
+      1024,
+      1024,
+      1024
+    ]
+  },
+  "gold_v5_version": "5.0-candidate",
+  "metrics": {
+    "queries_evaluated": 15,
+    "r_at_5": 0,
+    "r_at_10": 0,
+    "r_at_20": 0.0667,
+    "r_at_50": 0.2,
+    "mrr": 0.0097,
+    "query_success_rate": 0.2,
+    "historical_baseline": {
+      "r_at_5": 0.7885,
+      "mrr": 0.7179
+    },
+    "delta": {
+      "r_at_5": -0.7885,
+      "mrr": -0.7082
+    },
+    "classifications": {
+      "HIT-AT-20": 1,
+      "VECTOR-DRIFT": 12,
+      "HIT-AT-50": 2
+    },
+    "queries_changed": [
+      "skincare_003",
+      "skincare_005",
+      "skincare_006",
+      "skincare_007",
+      "skincare_008",
+      "skincare_009",
+      "skincare_010",
+      "cabello_002",
+      "cabello_006",
+      "cabello_008",
+      "cejas_001",
+      "cejas_004",
+      "cejas_005",
+      "cejas_007",
+      "cejas_008"
+    ]
+  },
+  "query_results": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 4,
+      "expected_ids": [
+        "poros-humedad-bogota-008",
+        "poros-clima-bogota-009",
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006"
+      ],
+      "expected_ranks": {
+        "poros-humedad-bogota-008": 21,
+        "poros-clima-bogota-009": 16,
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-": ">100",
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006": ">100"
+      },
+      "first_hit_rank": 16,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": true,
+      "hit_at_50": true,
+      "query_success": true,
+      "classification": "HIT-AT-20",
+      "top1": {
+        "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+        "similarity": "0.7112"
+      },
+      "top5": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7112"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7033"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6966"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6806"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6657"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7112"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7033"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6966"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6806"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6657"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6638"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6486"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6397"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6147"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5983"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7112"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7033"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6966"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6806"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6657"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6638"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6486"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6397"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6147"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5983"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5860"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5838"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5758"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5622"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5349"
+        },
+        {
+          "chunk_id": "poros-clima-bogota-009",
+          "similarity": "0.5218"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5073"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5017"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.4936"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.4927"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7112"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7033"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6966"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6806"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6657"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6638"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6486"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6397"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6147"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5983"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5860"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5838"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5758"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5622"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5349"
+        },
+        {
+          "chunk_id": "poros-clima-bogota-009",
+          "similarity": "0.5218"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5073"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5017"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.4936"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.4927"
+        },
+        {
+          "chunk_id": "poros-humedad-bogota-008",
+          "similarity": "0.4862"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.4836"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.4800"
+        },
+        {
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786404321697-2-19e9caf1-arquitectura-de-esfingolipidos-en-pieles-xeroticas-estrategi",
+          "similarity": "0.4788"
+        },
+        {
+          "chunk_id": "peroxidasa-endogena-006",
+          "similarity": "0.4757"
+        },
+        {
+          "chunk_id": "skincare-rutinas-hipoxia-007",
+          "similarity": "0.4750"
+        },
+        {
+          "chunk_id": "maquillaje-y-friccion-por-tejidos-tecnicos-006",
+          "similarity": "0.4706"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.4700"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-2-60319c84-termodinamica-de-la-interfaz-aguja-pigmento-control-de-la-vi",
+          "similarity": "0.4692"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.4685"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.4677"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.4664"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.4651"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966568-5-7010e82e-efectos-de-la-presion-de-vapor-en-la-estabilidad-de-tintes-v",
+          "similarity": "0.4647"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390863965-5-4fa786ea-hidratacion-del-estrato-corneo-y-su-efecto-en-la-dispersion-",
+          "similarity": "0.4645"
+        },
+        {
+          "chunk_id": "silicatos-aluminio-microabrasion-002",
+          "similarity": "0.4637"
+        },
+        {
+          "chunk_id": "hidratacion-estrato-corneo-009",
+          "similarity": "0.4633"
+        },
+        {
+          "chunk_id": "maq-ocasion-clima-frio-003",
+          "similarity": "0.4614"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.4613"
+        },
+        {
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786384294114-5-aae4597c-glicobiologia-y-remodelacion-de-la-matriz-extracelular-en-pi",
+          "similarity": "0.4608"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "proteccion-solar-filtros-quimicos-006",
+        "trend-sunscreen-mixing-004",
+        "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se"
+      ],
+      "expected_ranks": {
+        "proteccion-solar-filtros-quimicos-006": ">100",
+        "trend-sunscreen-mixing-004": ">100",
+        "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.7437"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7437"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7310"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7250"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7173"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7167"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7437"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7310"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7250"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7173"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7005"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6913"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6699"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6034"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7437"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7310"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7250"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7173"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7005"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6913"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6699"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6034"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5992"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5833"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5828"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5756"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5736"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5727"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5725"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5666"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5572"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5522"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7437"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7310"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7250"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7173"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7005"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6913"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6699"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6034"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5992"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5833"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5828"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5756"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5736"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5727"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5725"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5666"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5572"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5522"
+        },
+        {
+          "chunk_id": "silicatos-aluminio-microabrasion-002",
+          "similarity": "0.5488"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5481"
+        },
+        {
+          "chunk_id": "maquillaje-y-friccion-por-tejidos-tecnicos-006",
+          "similarity": "0.5464"
+        },
+        {
+          "chunk_id": "maquillaje-en-ambientes-con-ionizacion-negativa-004",
+          "similarity": "0.5387"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+          "similarity": "0.5385"
+        },
+        {
+          "chunk_id": "39602cb122ee5889827824c674396662",
+          "similarity": "0.5351"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-008",
+          "similarity": "0.5324"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-campos-magneticos-003",
+          "similarity": "0.5310"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5232"
+        },
+        {
+          "chunk_id": "poros-humectacion-005",
+          "similarity": "0.5207"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5188"
+        },
+        {
+          "chunk_id": "tendencia-spf-moisturizer-006",
+          "similarity": "0.5181"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5162"
+        },
+        {
+          "chunk_id": "3acaf6e599eaf35442ffcbd297504e9d",
+          "similarity": "0.5115"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5097"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5085"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5082"
+        },
+        {
+          "chunk_id": "95f5e6a88512d24666ef63adaf70980c",
+          "similarity": "0.5056"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390991580-3-c01f57c9-efecto-de-la-acumulacion-de-metales-pesados-en-la-dermis-y-s",
+          "similarity": "0.5053"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.5039"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 4,
+      "expected_ids": [
+        "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "reologia-acido-hialuronico-005",
+        "reologia-ah-006"
+      ],
+      "expected_ranks": {
+        "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata": ">100",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec": ">100",
+        "reologia-acido-hialuronico-005": ">100",
+        "reologia-ah-006": 25
+      },
+      "first_hit_rank": 25,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": true,
+      "query_success": true,
+      "classification": "HIT-AT-50",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.7901"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7874"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7751"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7670"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7874"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7751"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7607"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7580"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7368"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.7163"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6858"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7874"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7751"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7607"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7580"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7368"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.7163"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6858"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6820"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6704"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6570"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.6541"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.6052"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5971"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5659"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5636"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5624"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.5565"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7874"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7751"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7670"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7607"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7580"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7368"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.7163"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6858"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6820"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6704"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6570"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.6541"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.6052"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5971"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5659"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5636"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5624"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.5565"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5561"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5479"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5425"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5389"
+        },
+        {
+          "chunk_id": "reologia-ah-006",
+          "similarity": "0.5380"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5332"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5303"
+        },
+        {
+          "chunk_id": "d7f9b22ad205d481b736652a925912f3",
+          "similarity": "0.5280"
+        },
+        {
+          "chunk_id": "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+          "similarity": "0.5278"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.5256"
+        },
+        {
+          "chunk_id": "6226b596fb400cc85a669dd87bc2c209dfe344732c275b2405b4c08b21a65f82",
+          "similarity": "0.5232"
+        },
+        {
+          "chunk_id": "tratamientos_esteticos_faciales-1786385587076-4-fc7dfa2e-cinetica-de-degradacion-enzimatica-de-fillers-y-el-rol-de-la",
+          "similarity": "0.5225"
+        },
+        {
+          "chunk_id": "tratamientos_esteticos_faciales-1786385218117-4-0318a563-cinetica-de-la-degradacion-enzimatica-de-acido-hialuronico-p",
+          "similarity": "0.5212"
+        },
+        {
+          "chunk_id": "63a7f529f28e76b0301153e3610c6872e0a883882633d9044045289a775ebd24",
+          "similarity": "0.5201"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5134"
+        },
+        {
+          "chunk_id": "f0d88c563bfffa3c0beb650ccf48ca22",
+          "similarity": "0.5092"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5056"
+        },
+        {
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786384294114-5-aae4597c-glicobiologia-y-remodelacion-de-la-matriz-extracelular-en-pi",
+          "similarity": "0.5034"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-bioquimica-005",
+          "similarity": "0.5033"
+        },
+        {
+          "chunk_id": "skincare-rutinas-glicobiologia-proteoglicanos-004",
+          "similarity": "0.5026"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "skincare-ritmos-circadianos-001",
+        "tendencias-belleza-virales-skincare-cicadiano-002",
+        "skincare-rutinas-autofagia-peptidos-003"
+      ],
+      "expected_ranks": {
+        "skincare-ritmos-circadianos-001": ">100",
+        "tendencias-belleza-virales-skincare-cicadiano-002": ">100",
+        "skincare-rutinas-autofagia-peptidos-003": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.7243"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7243"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6952"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6727"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7243"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6952"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6727"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6669"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6476"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6446"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6018"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5857"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7243"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6952"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6727"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6669"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6476"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6446"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6018"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5857"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5684"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5655"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5511"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5479"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5220"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5066"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5055"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5050"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.4829"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.4789"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7243"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7167"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6952"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6727"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6669"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6476"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6446"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6018"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5857"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5684"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5655"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5511"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5479"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5220"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5066"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5055"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5050"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.4829"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.4789"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.4748"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.4644"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.4537"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.4517"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.4515"
+        },
+        {
+          "chunk_id": "6226b596fb400cc85a669dd87bc2c209dfe344732c275b2405b4c08b21a65f82",
+          "similarity": "0.4515"
+        },
+        {
+          "chunk_id": "d7c8ba5614c007d075f3f9135ef63d89",
+          "similarity": "0.4500"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.4468"
+        },
+        {
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786384294114-1-3423e8a2-modulacion-epigenetica-de-la-respuesta-al-estres-en-pieles-c",
+          "similarity": "0.4442"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.4439"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.4425"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786392024701-3-b37e48d9-efecto-piezoelectrico-y-su-impacto-en-la-estabilidad-del-col",
+          "similarity": "0.4423"
+        },
+        {
+          "chunk_id": "skincare_rutinas_por_tipo_piel-1786385298854-4-a8135e7a-optimizacion-del-recambio-celular-en-pieles-maduras-el-papel",
+          "similarity": "0.4419"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.4419"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786386927899-3-1bdf6b0b-efecto-piezoelectrico-y-su-influencia-en-la-estabilidad-del-",
+          "similarity": "0.4415"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384414126-4-b736d9df-respuesta-vasomotora-inducida-por-el-ejercicio-y-su-impacto-",
+          "similarity": "0.4405"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390991580-3-c01f57c9-efecto-de-la-acumulacion-de-metales-pesados-en-la-dermis-y-s",
+          "similarity": "0.4401"
+        },
+        {
+          "chunk_id": "3acaf6e599eaf35442ffcbd297504e9d",
+          "similarity": "0.4390"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.4373"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786388010593-6-5b8604b9-difraccion-de-fraunhofer-y-la-queratina-del-estrato-corneo",
+          "similarity": "0.4369"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 4,
+      "expected_ids": [
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i"
+      ],
+      "expected_ranks": {
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion": ">100",
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci": ">100",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf": ">100",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+        "similarity": "0.7302"
+      },
+      "top5": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7302"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7259"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7170"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6982"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7302"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7259"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7170"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6982"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6947"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6865"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6587"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6224"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6150"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7302"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7259"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7170"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6982"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6947"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6865"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6587"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6224"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6150"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5982"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5977"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5879"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5722"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5711"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5645"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5542"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5485"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5438"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5437"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7302"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7259"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7170"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7096"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6982"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6947"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6865"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6587"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6224"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6150"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5982"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5977"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5879"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5722"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5711"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5645"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5542"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5485"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5438"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5437"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5375"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-2-60319c84-termodinamica-de-la-interfaz-aguja-pigmento-control-de-la-vi",
+          "similarity": "0.5372"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5357"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786391632501-3-5922fc9a-impacto-de-la-actividad-de-las-oxidasas-exogenas-en-la-estab",
+          "similarity": "0.5325"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5319"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786386927899-3-1bdf6b0b-efecto-piezoelectrico-y-su-influencia-en-la-estabilidad-del-",
+          "similarity": "0.5299"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.5223"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390991580-3-c01f57c9-efecto-de-la-acumulacion-de-metales-pesados-en-la-dermis-y-s",
+          "similarity": "0.5216"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5214"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5160"
+        },
+        {
+          "chunk_id": "silicatos-aluminio-microabrasion-002",
+          "similarity": "0.5147"
+        },
+        {
+          "chunk_id": "maquillaje-y-friccion-por-tejidos-tecnicos-006",
+          "similarity": "0.5135"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+          "similarity": "0.5134"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5128"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-bioquimica-005",
+          "similarity": "0.5111"
+        },
+        {
+          "chunk_id": "peroxidasa-endogena-006",
+          "similarity": "0.5100"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-2-295ba2df-influencia-de-la-topografia-de-la-cuticula-en-la-reflexion-e",
+          "similarity": "0.5096"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786383397143-6-d327b161-peroxidasa-endogena-y-su-impacto-en-la-oxidacion-incontrolad",
+          "similarity": "0.5077"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5065"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391222163-2-9cd27ad2-efecto-piezoelectrico-del-colageno-y-su-papel-en-la-cicatriz",
+          "similarity": "0.5053"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "riesgo-niacinamida-ph-bajo-002",
+        "niacinamida-hidrolisis-ph-002",
+        "activos-quelantes-y-metales-003"
+      ],
+      "expected_ranks": {
+        "riesgo-niacinamida-ph-bajo-002": 23,
+        "niacinamida-hidrolisis-ph-002": 40,
+        "activos-quelantes-y-metales-003": ">100"
+      },
+      "first_hit_rank": 23,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": true,
+      "query_success": true,
+      "classification": "HIT-AT-50",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.7013"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6738"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6715"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6707"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6738"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6715"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6707"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6633"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6608"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6336"
+        },
+        {
+          "chunk_id": "6ffee3b830ae5df97b4b8d0767b580ff",
+          "similarity": "0.6151"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6142"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6738"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6715"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6707"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6633"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6608"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6336"
+        },
+        {
+          "chunk_id": "6ffee3b830ae5df97b4b8d0767b580ff",
+          "similarity": "0.6151"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6142"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6005"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.5974"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5929"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5872"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5645"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5517"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5451"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5409"
+        },
+        {
+          "chunk_id": "6226b596fb400cc85a669dd87bc2c209dfe344732c275b2405b4c08b21a65f82",
+          "similarity": "0.5326"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5290"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6901"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6738"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6715"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6707"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6633"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6608"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6336"
+        },
+        {
+          "chunk_id": "6ffee3b830ae5df97b4b8d0767b580ff",
+          "similarity": "0.6151"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6142"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6005"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.5974"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5929"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5872"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5645"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5517"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5451"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5409"
+        },
+        {
+          "chunk_id": "6226b596fb400cc85a669dd87bc2c209dfe344732c275b2405b4c08b21a65f82",
+          "similarity": "0.5326"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5290"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5233"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5217"
+        },
+        {
+          "chunk_id": "riesgo-niacinamida-ph-bajo-002",
+          "similarity": "0.5202"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5136"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5109"
+        },
+        {
+          "chunk_id": "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+          "similarity": "0.5103"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5074"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5043"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5028"
+        },
+        {
+          "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "similarity": "0.5026"
+        },
+        {
+          "chunk_id": "95f5e6a88512d24666ef63adaf70980c",
+          "similarity": "0.5012"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.4971"
+        },
+        {
+          "chunk_id": "d7f9b22ad205d481b736652a925912f3",
+          "similarity": "0.4961"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.4929"
+        },
+        {
+          "chunk_id": "3acaf6e599eaf35442ffcbd297504e9d",
+          "similarity": "0.4918"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.4900"
+        },
+        {
+          "chunk_id": "skincare-niacinamida-inflamacion-007",
+          "similarity": "0.4897"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.4889"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-campos-magneticos-003",
+          "similarity": "0.4887"
+        },
+        {
+          "chunk_id": "niacinamida-hidrolisis-ph-002",
+          "similarity": "0.4855"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "domain": "skincare",
+      "support_status": "SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "skincare-microbioma-limpiadores-004",
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+        "skincare-rutinas-piel-deshidratada-004"
+      ],
+      "expected_ranks": {
+        "skincare-microbioma-limpiadores-004": ">100",
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002": ">100",
+        "skincare-rutinas-piel-deshidratada-004": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.7779"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7779"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7446"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7443"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7426"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7255"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7779"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7446"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7443"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7426"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7255"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7073"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7063"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7006"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6808"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6294"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7779"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7446"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7443"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7426"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7255"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7073"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7063"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7006"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6808"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6294"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6200"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.6131"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6124"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6022"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5885"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5634"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5613"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5546"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5445"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5435"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7779"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7446"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7443"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7426"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7255"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7073"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7063"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7006"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6808"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6294"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6200"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.6131"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6124"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6022"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5885"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5634"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5613"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5546"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5445"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5435"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5268"
+        },
+        {
+          "chunk_id": "maquillaje-y-friccion-por-tejidos-tecnicos-006",
+          "similarity": "0.5251"
+        },
+        {
+          "chunk_id": "maquillaje_tecnicas_por_ocasion-1786384047800-2-b35611e2-maquillaje-en-entornos-de-alta-concentracion-de-nanoparticul",
+          "similarity": "0.5235"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5210"
+        },
+        {
+          "chunk_id": "poros-humectacion-005",
+          "similarity": "0.5144"
+        },
+        {
+          "chunk_id": "silicatos-aluminio-microabrasion-002",
+          "similarity": "0.5109"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.5094"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5052"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5046"
+        },
+        {
+          "chunk_id": "39602cb122ee5889827824c674396662",
+          "similarity": "0.5042"
+        },
+        {
+          "chunk_id": "maquillaje-en-ambientes-con-ionizacion-negativa-004",
+          "similarity": "0.4998"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.4954"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.4946"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-008",
+          "similarity": "0.4932"
+        },
+        {
+          "chunk_id": "guia-unas-onico-reologia-001",
+          "similarity": "0.4918"
+        },
+        {
+          "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "similarity": "0.4906"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.4899"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.4888"
+        },
+        {
+          "chunk_id": "d7f9b22ad205d481b736652a925912f3",
+          "similarity": "0.4876"
+        },
+        {
+          "chunk_id": "d7c8ba5614c007d075f3f9135ef63d89",
+          "similarity": "0.4875"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "domain": "cabello",
+      "support_status": "SUPPORTED",
+      "expected_count": 5,
+      "expected_ids": [
+        "colorimetria-capilar-ph-001",
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+        "colorimetria-capilar-metales-003"
+      ],
+      "expected_ranks": {
+        "colorimetria-capilar-ph-001": ">100",
+        "colorimetria-capilar-ph-pos-tinte-009": ">100",
+        "colorimetria-capilar-viscoelasticidad-009": ">100",
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": ">100",
+        "colorimetria-capilar-metales-003": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7427"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6886"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6666"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6503"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6242"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5909"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6886"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6666"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6503"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6242"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5909"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5906"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5882"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5710"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5704"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5675"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-tinte-005",
+          "similarity": "0.5600"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5593"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5558"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-bioquimica-005",
+          "similarity": "0.5547"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6886"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6666"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6503"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6242"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5909"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5906"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5882"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5710"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5704"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5675"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-tinte-005",
+          "similarity": "0.5600"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5593"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5558"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-bioquimica-005",
+          "similarity": "0.5547"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786386927899-3-1bdf6b0b-efecto-piezoelectrico-y-su-influencia-en-la-estabilidad-del-",
+          "similarity": "0.5525"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5521"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5483"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5390"
+        },
+        {
+          "chunk_id": "peroxidasa-endogena-006",
+          "similarity": "0.5337"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5321"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-2-295ba2df-influencia-de-la-topografia-de-la-cuticula-en-la-reflexion-e",
+          "similarity": "0.5286"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786385348304-6-1d0f0031-dinamica-de-la-peroxidasa-endogena-en-la-degradacion-del-col",
+          "similarity": "0.5259"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-formaldehido-005",
+          "similarity": "0.5229"
+        },
+        {
+          "chunk_id": "colorimetria-influencia-tiroidea-001",
+          "similarity": "0.5223"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786391632501-3-5922fc9a-impacto-de-la-actividad-de-las-oxidasas-exogenas-en-la-estab",
+          "similarity": "0.5197"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786383397143-6-d327b161-peroxidasa-endogena-y-su-impacto-en-la-oxidacion-incontrolad",
+          "similarity": "0.5189"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-3-2d1257bd-dinamica-de-la-adsorcion-de-precursores-en-presencia-de-lipi",
+          "similarity": "0.5175"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-estabilidad-electroquimica-004",
+          "similarity": "0.5161"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-quelacion-006",
+          "similarity": "0.5146"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786391540696-3-0cda3a6c-dispersion-de-mie-y-el-control-del-brillo-en-cabellos-pre-ac",
+          "similarity": "0.5141"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.5130"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786392297954-4-6289d662-dinamica-de-la-difusion-de-pigmentos-mediante-gradientes-de-",
+          "similarity": "0.5129"
+        },
+        {
+          "chunk_id": "colorimetria-interaccion-metales-005",
+          "similarity": "0.5127"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786393016716-1-f363d1ba-cinetica-de-la-oxidacion-mediada-por-catalizadores-metalicos",
+          "similarity": "0.5123"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "domain": "cabello",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "microbiota-scalp-008",
+        "estabilidad-ph-cuero-cabelludo-004",
+        "colorimetria-capilar-microbiota-003"
+      ],
+      "expected_ranks": {
+        "microbiota-scalp-008": ">100",
+        "estabilidad-ph-cuero-cabelludo-004": ">100",
+        "colorimetria-capilar-microbiota-003": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.6826"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.6826"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6616"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6598"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6597"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6437"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.6826"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6616"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6598"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6597"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6437"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6342"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6240"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6050"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6022"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5711"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.6826"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6616"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6598"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6597"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6437"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6342"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6240"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6050"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6022"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5711"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5709"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5704"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5657"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5580"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5432"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.4970"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.4920"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.4654"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.4638"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.4633"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.6826"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.6616"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6598"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.6597"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6437"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6342"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6240"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6050"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6022"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5711"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5709"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5704"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5657"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5580"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5432"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.4970"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.4920"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.4654"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.4638"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.4633"
+        },
+        {
+          "chunk_id": "d7f9b22ad205d481b736652a925912f3",
+          "similarity": "0.4603"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.4597"
+        },
+        {
+          "chunk_id": "colorimetria-interaccion-metales-005",
+          "similarity": "0.4573"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.4549"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-tinte-005",
+          "similarity": "0.4510"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.4490"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.4459"
+        },
+        {
+          "chunk_id": "d7c8ba5614c007d075f3f9135ef63d89",
+          "similarity": "0.4420"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.4395"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.4394"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.4388"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.4364"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.4347"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.4338"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-2-60319c84-termodinamica-de-la-interfaz-aguja-pigmento-control-de-la-vi",
+          "similarity": "0.4316"
+        },
+        {
+          "chunk_id": "diagnostico-capilar-glymphatic-001",
+          "similarity": "0.4304"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966568-5-7010e82e-efectos-de-la-presion-de-vapor-en-la-estabilidad-de-tintes-v",
+          "similarity": "0.4303"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.4300"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-3-2d1257bd-dinamica-de-la-adsorcion-de-precursores-en-presencia-de-lipi",
+          "similarity": "0.4287"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786392297954-3-610fdf06-interferencia-de-las-sales-de-calcio-en-la-polimerizacion-ox",
+          "similarity": "0.4286"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "domain": "cabello",
+      "support_status": "SUPPORTED",
+      "expected_count": 4,
+      "expected_ids": [
+        "hidratacion-oclusiva-corporal-008",
+        "hidratacion-oclusivos-humectantes-009",
+        "urea-umbral-hidratacion-descamacion-009",
+        "hidrofaciales-tecnologia-006"
+      ],
+      "expected_ranks": {
+        "hidratacion-oclusiva-corporal-008": ">100",
+        "hidratacion-oclusivos-humectantes-009": ">100",
+        "urea-umbral-hidratacion-descamacion-009": ">100",
+        "hidrofaciales-tecnologia-006": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7329"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7329"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7240"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7166"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7061"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6994"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7329"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7240"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7166"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7061"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6994"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6904"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6876"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6676"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6261"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5822"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7329"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7240"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7166"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7061"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6994"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6904"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6876"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6676"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6261"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5822"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5720"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5664"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5634"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5622"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5549"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5531"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5520"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5493"
+        },
+        {
+          "chunk_id": "d7f9b22ad205d481b736652a925912f3",
+          "similarity": "0.5466"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.5436"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7329"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7240"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7166"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7061"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.6994"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6904"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.6876"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6676"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6261"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5822"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5720"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5664"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5634"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5622"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5549"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5531"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5520"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5493"
+        },
+        {
+          "chunk_id": "d7f9b22ad205d481b736652a925912f3",
+          "similarity": "0.5466"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.5436"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5389"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5374"
+        },
+        {
+          "chunk_id": "maquillaje-y-friccion-por-tejidos-tecnicos-006",
+          "similarity": "0.5364"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5338"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5329"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5294"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5293"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5280"
+        },
+        {
+          "chunk_id": "poros-humectacion-005",
+          "similarity": "0.5218"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-008",
+          "similarity": "0.5200"
+        },
+        {
+          "chunk_id": "silicatos-aluminio-microabrasion-002",
+          "similarity": "0.5140"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5139"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.5127"
+        },
+        {
+          "chunk_id": "skincare-fotobiomodulacion-biohacking-001",
+          "similarity": "0.5088"
+        },
+        {
+          "chunk_id": "f0d88c563bfffa3c0beb650ccf48ca22",
+          "similarity": "0.5085"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+          "similarity": "0.5085"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.5060"
+        },
+        {
+          "chunk_id": "63a7f529f28e76b0301153e3610c6872e0a883882633d9044045289a775ebd24",
+          "similarity": "0.5052"
+        },
+        {
+          "chunk_id": "hidratacion-estrato-corneo-009",
+          "similarity": "0.5050"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5048"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "domain": "cejas",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "visajismo-cejas-microblading-envejecimiento-009",
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-microblading-envejecimiento-009": ">100",
+        "visajismo-cejas-microblading-cicatrizacion-003": ">100",
+        "visajismo-cejas-microblading-piel-grasa-005": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7715"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7715"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7636"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7628"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7577"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7428"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7715"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7636"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7628"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7577"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7428"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7325"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7249"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6871"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6434"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6121"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7715"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7636"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7628"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7577"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7428"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7325"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7249"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6871"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6434"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6121"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6121"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6049"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5957"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5891"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5876"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5839"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5826"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5809"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5751"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5651"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7715"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7636"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7628"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7577"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7428"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7325"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7249"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6871"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6434"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6121"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6121"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6049"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5957"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5891"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5876"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5839"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5826"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5809"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5751"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5577"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "similarity": "0.5551"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5536"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "similarity": "0.5527"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5493"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5490"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+          "similarity": "0.5478"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391222163-2-9cd27ad2-efecto-piezoelectrico-del-colageno-y-su-papel-en-la-cicatriz",
+          "similarity": "0.5428"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5404"
+        },
+        {
+          "chunk_id": "97f33f0be31e9fdd73d62c69a418c54b204184dbb8dca08afe5d0731988baa16",
+          "similarity": "0.5369"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5365"
+        },
+        {
+          "chunk_id": "63a7f529f28e76b0301153e3610c6872e0a883882633d9044045289a775ebd24",
+          "similarity": "0.5349"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "similarity": "0.5331"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392954890-5-5056a8d6-optimizacion-de-la-cinematica-manual-para-la-reduccion-de-la",
+          "similarity": "0.5327"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-5-38932cfa-dinamica-del-drenaje-linfatico-y-el-riesgo-de-migracion-de-p",
+          "similarity": "0.5303"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5291"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.5272"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5237"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5221"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-6-6610a117-efecto-piezoelectrico-en-el-colageno-dermico-durante-la-inci",
+          "similarity": "0.5200"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "domain": "cejas",
+      "support_status": "SUPPORTED",
+      "expected_count": 6,
+      "expected_ids": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-envejecimiento-009",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "microblading-psicologia-007",
+        "visajismo-cejas-microblading-metamerismo-003"
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-microblading-musculatura-orbicular-009": ">100",
+        "visajismo-microblading-arquitectura-muscular-008": ">100",
+        "microblading-envejecimiento-009": ">100",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": ">100",
+        "microblading-psicologia-007": ">100",
+        "visajismo-cejas-microblading-metamerismo-003": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7542"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7102"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6976"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6779"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6546"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6129"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7102"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6976"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6779"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6546"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6129"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5962"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5874"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5647"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5627"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5601"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5569"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5557"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5556"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5551"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7102"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6976"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6779"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6546"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6129"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5962"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5874"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5647"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5627"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5601"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5569"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5557"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5556"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5551"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5493"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390991580-3-c01f57c9-efecto-de-la-acumulacion-de-metales-pesados-en-la-dermis-y-s",
+          "similarity": "0.5462"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.5410"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+          "similarity": "0.5331"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5272"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786388010593-6-5b8604b9-difraccion-de-fraunhofer-y-la-queratina-del-estrato-corneo",
+          "similarity": "0.5257"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-campos-magneticos-003",
+          "similarity": "0.5235"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390430780-5-ab0b0712-estructura-de-la-queratina-y-su-influencia-en-la-dispersion-",
+          "similarity": "0.5221"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5204"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-2-295ba2df-influencia-de-la-topografia-de-la-cuticula-en-la-reflexion-e",
+          "similarity": "0.5179"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5139"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390863965-5-4fa786ea-hidratacion-del-estrato-corneo-y-su-efecto-en-la-dispersion-",
+          "similarity": "0.5125"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-2-60319c84-termodinamica-de-la-interfaz-aguja-pigmento-control-de-la-vi",
+          "similarity": "0.5098"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5089"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5050"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952969-1-28fd82e2-analisis-de-la-anisotropia-dermica-en-la-retencion-del-pigme",
+          "similarity": "0.5019"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "similarity": "0.5011"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-iluminacion-sodio-004",
+          "similarity": "0.5011"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5010"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-1-9981c05b-efecto-de-la-glicacion-no-enzimatica-en-la-matriz-extracelul",
+          "similarity": "0.4930"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "domain": "cejas",
+      "support_status": "SUPPORTED",
+      "expected_count": 4,
+      "expected_ids": [
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+        "visajismo-cejas-microblading-microbiota-006",
+        "impacto-variabilidad-glucemica-cicatrizacion-001"
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-microblading-cicatrizacion-003": ">100",
+        "visajismo-cejas-microblading-fotoproteccion-avanzada-007": ">100",
+        "visajismo-cejas-microblading-microbiota-006": ">100",
+        "impacto-variabilidad-glucemica-cicatrizacion-001": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.7489"
+      },
+      "top5": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7489"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7474"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7451"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7338"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7311"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7489"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7474"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7451"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7338"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7311"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7210"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7055"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6872"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6456"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6120"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7489"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7474"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7451"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7338"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7311"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7210"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7055"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6872"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6456"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6120"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6117"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.6037"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6015"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5984"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5883"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5817"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5775"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5664"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5609"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5566"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7489"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7474"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7451"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7338"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7311"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7210"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7055"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6872"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6456"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6120"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6117"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.6037"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6015"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5984"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5883"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5817"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5775"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5664"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5609"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5566"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5562"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5526"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5455"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "similarity": "0.5431"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "similarity": "0.5423"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391222163-2-9cd27ad2-efecto-piezoelectrico-del-colageno-y-su-papel-en-la-cicatriz",
+          "similarity": "0.5423"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "similarity": "0.5417"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+          "similarity": "0.5406"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5345"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392954890-5-5056a8d6-optimizacion-de-la-cinematica-manual-para-la-reduccion-de-la",
+          "similarity": "0.5304"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5303"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5269"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5252"
+        },
+        {
+          "chunk_id": "6226b596fb400cc85a669dd87bc2c209dfe344732c275b2405b4c08b21a65f82",
+          "similarity": "0.5210"
+        },
+        {
+          "chunk_id": "4a3806464051f85ca076c0746ad7845669b2f732a781d8043f0691a2cbfcbc53",
+          "similarity": "0.5188"
+        },
+        {
+          "chunk_id": "63a7f529f28e76b0301153e3610c6872e0a883882633d9044045289a775ebd24",
+          "similarity": "0.5186"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-6-6610a117-efecto-piezoelectrico-en-el-colageno-dermico-durante-la-inci",
+          "similarity": "0.5161"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5138"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5138"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5137"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "domain": "cejas",
+      "support_status": "SUPPORTED",
+      "expected_count": 3,
+      "expected_ids": [
+        "visajismo-cejas-diabetis-cicatrizacion-004",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-diabetis-cicatrizacion-004": ">100",
+        "visajismo-cejas-enfermedades-autoinmunes-007": ">100",
+        "visajismo-cejas-microblading-piel-grasa-005": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7678"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7678"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7600"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7593"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7515"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7394"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7678"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7600"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7593"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7515"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7394"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7324"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7283"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7027"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6680"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6301"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7678"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7600"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7593"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7515"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7394"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7324"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7283"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7027"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6680"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6301"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6259"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6202"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6032"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5958"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5943"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5941"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5814"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5786"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5762"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5707"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7678"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7600"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7593"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7515"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7394"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7324"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7283"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7027"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6680"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6301"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6259"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6202"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6032"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5958"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5943"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5941"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5814"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5786"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5762"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5707"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "similarity": "0.5672"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5645"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "similarity": "0.5638"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "similarity": "0.5631"
+        },
+        {
+          "chunk_id": "maquillaje-y-friccion-por-tejidos-tecnicos-006",
+          "similarity": "0.5630"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5619"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391222163-2-9cd27ad2-efecto-piezoelectrico-del-colageno-y-su-papel-en-la-cicatriz",
+          "similarity": "0.5607"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5603"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+          "similarity": "0.5551"
+        },
+        {
+          "chunk_id": "silicatos-aluminio-microabrasion-002",
+          "similarity": "0.5550"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5518"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5514"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5513"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "similarity": "0.5464"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5450"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392954890-5-5056a8d6-optimizacion-de-la-cinematica-manual-para-la-reduccion-de-la",
+          "similarity": "0.5395"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5376"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-1-1076be9e-dinamica-de-la-matriz-extracelular-y-el-fenomeno-de-histeres",
+          "similarity": "0.5374"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-6-6610a117-efecto-piezoelectrico-en-el-colageno-dermico-durante-la-inci",
+          "similarity": "0.5370"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786383609454-2-54015725-cinetica-de-fluidos-no-newtonianos-en-la-estabilidad-del-pig",
+          "similarity": "0.5366"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "domain": "cejas",
+      "support_status": "SUPPORTED",
+      "expected_count": 6,
+      "expected_ids": [
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-efecto-tyndall-003",
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-microblading-interaccion-laser-001": ">100",
+        "guias_unas-electrolisis-y-matriz-001": ">100",
+        "terapia-laser-erbio-glass-002": ">100",
+        "visajismo-cejas-microblading-piel-grasa-005": ">100",
+        "visajismo-cejas-microblading-efecto-tyndall-003": ">100",
+        "visajismo-cejas-enfermedades-autoinmunes-007": ">100"
+      },
+      "first_hit_rank": null,
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "hit_at_20": false,
+      "hit_at_50": false,
+      "query_success": false,
+      "classification": "VECTOR-DRIFT",
+      "top1": {
+        "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+        "similarity": "0.7635"
+      },
+      "top5": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7336"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7316"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6590"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6299"
+        }
+      ],
+      "top20": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7336"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7316"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6590"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6299"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6289"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6152"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6090"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5990"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5972"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5843"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5754"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5727"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "similarity": "0.5616"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5600"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7336"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7316"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6590"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6299"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6289"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6152"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6090"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5990"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5972"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5843"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5754"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5727"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "similarity": "0.5616"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5600"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391222163-2-9cd27ad2-efecto-piezoelectrico-del-colageno-y-su-papel-en-la-cicatriz",
+          "similarity": "0.5568"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5567"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5550"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5531"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5506"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5476"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-1-1076be9e-dinamica-de-la-matriz-extracelular-y-el-fenomeno-de-histeres",
+          "similarity": "0.5471"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "similarity": "0.5455"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+          "similarity": "0.5448"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5424"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "similarity": "0.5399"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5387"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5381"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5347"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-6-6610a117-efecto-piezoelectrico-en-el-colageno-dermico-durante-la-inci",
+          "similarity": "0.5316"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392954890-5-5056a8d6-optimizacion-de-la-cinematica-manual-para-la-reduccion-de-la",
+          "similarity": "0.5315"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5313"
+        },
+        {
+          "chunk_id": "63a7f529f28e76b0301153e3610c6872e0a883882633d9044045289a775ebd24",
+          "similarity": "0.5273"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5259"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786383609454-2-54015725-cinetica-de-fluidos-no-newtonianos-en-la-estabilidad-del-pig",
+          "similarity": "0.5221"
+        }
+      ]
+    }
+  ],
+  "production_guard": {
+    "status": "PASS",
+    "note": "Local BD only, read-only, no modifications"
+  }
+}

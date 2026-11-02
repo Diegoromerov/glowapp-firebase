@@ -1,0 +1,214 @@
+[
+  {
+    "chunk_id": "skincare-hiper-localizado-001",
+    "title": "La tendencia del 'Skin Mapping' con IA: ¿Precisión clínica o sesgo algorítmico?",
+    "content": "El 'Skin Mapping' mediante aplicaciones móviles promete diagnosticar condiciones cutáneas utilizando únicamente la cámara del smartphone. Si bien los algoritmos de aprendizaje profundo han mostrado avances significativos en la detección de lesiones pigmentadas, existe un riesgo intrínseco de sesgo algorítmico derivado de la calidad de la imagen, la iluminación ambiental y la calibración de la cámara. La American Academy of Dermatology advierte que estas herramientas no sustituyen el examen dermatoscópico clínico. La variabilidad en la representación de fototipos en los datasets de entrenamiento puede llevar a falsos negativos en pieles oscuras. Es fundamental entender que estas herramientas deben ser vistas como complementos de triaje y no como herramientas de diagnóstico definitivo. La falta de estandarización en la captura de imagen genera una brecha entre la interpretación digital y la realidad histopatológica de la lesión.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/skin-cancer/find/check-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "lesiones sospechosas sin evaluación médica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-digital"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:37:22.020Z"
+  },
+  {
+    "chunk_id": "skincare-hiper-localizado-002",
+    "title": "Cosmética de polímeros 'bio-miméticos': ¿Segunda piel o barrera oclusiva?",
+    "content": "La nueva tendencia de cosméticos que prometen crear una 'segunda piel' mediante polímeros sintéticos busca mejorar la retención de hidratación y la protección contra contaminantes externos. Clínicamente, estos polímeros actúan como películas oclusivas que limitan la pérdida de agua transepidérmica (TEWL). Sin embargo, en pacientes con piel propensa al acné o dermatitis seborreica, una oclusión prolongada puede alterar la microflora cutánea al crear un ambiente hipóxico y húmedo, favoreciendo la proliferación de Cutibacterium acnes o Malassezia. PubMed destaca que, si bien la tecnología de film-forming es excelente para la protección física, debe ser evaluada por su potencial comedogénico. No todos los polímeros son transpirables; es vital verificar la permeabilidad al vapor de agua del producto final para evitar la maceración del estrato córneo y la inflamación folicular resultante de la oclusión prolongada.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros sintéticos"
+      ],
+      "contraindications": [
+        "acné activo",
+        "dermatitis seborreica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:37:22.020Z"
+  },
+  {
+    "chunk_id": "skincare-hiper-localizado-003",
+    "title": "El uso de 'Skin-Glazing' con bálsamos de silicona: ¿Efecto espejo o riesgo de comedogenicidad?",
+    "content": "El 'Skin-Glazing' es una técnica viral que busca lograr un acabado altamente reflectante mediante la aplicación de capas densas de bálsamos a base de siliconas volátiles y no volátiles. Aunque visualmente atractivo, el uso excesivo de siliconas de alto peso molecular puede generar una película que, si no es removida mediante una doble limpieza efectiva, puede atrapar sebo, células muertas y residuos de polución dentro del folículo pilosebáceo. Investigaciones en dermatología cosmética indican que, aunque las siliconas son generalmente seguras y no sensibilizantes, su naturaleza oclusiva es contraproducente en pieles con disfunción de barrera o tendencia acneica. La acumulación de estos ingredientes puede exacerbar el 'acné cosmético' al impedir la exfoliación natural y la oxigenación folicular. Se recomienda priorizar fórmulas con siliconas de baja viscosidad o alternativas de origen vegetal si se busca un efecto de brillo sin comprometer la salud del poro.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimethicone",
+        "siliconas"
+      ],
+      "contraindications": [
+        "acné comedogénico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-profunda"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:37:22.020Z"
+  },
+  {
+    "chunk_id": "skincare-hiper-localizado-005",
+    "title": "Skincare 'Anti-Cortisol': ¿Es el estrés emocional el nuevo objetivo del cuidado facial?",
+    "content": "La neurocosmética ha popularizado el concepto de 'Anti-Cortisol Skincare', argumentando que el estrés crónico eleva los niveles de cortisol, lo cual degrada el colágeno y debilita la barrera cutánea. Fisiológicamente, existe una conexión bien documentada a través del eje cerebro-piel, donde las fibras nerviosas en la dermis liberan neuropéptidos bajo estrés, exacerbando condiciones como la psoriasis, el acné y la dermatitis atópica. Los productos dirigidos a esta tendencia suelen incluir ingredientes que modulan la respuesta inflamatoria o inducen una sensación de bienestar sensorial. Sin embargo, no existe un ingrediente tópico que 'bloquee' el cortisol sistémico; el beneficio real proviene de la reducción de la inflamación local y la mejora de la hidratación mediante activos calmantes. Es crucial manejar las expectativas del usuario: el cuidado facial puede mitigar los síntomas cutáneos del estrés, pero no es una solución para el impacto sistémico del mismo.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermato-Endocrinology",
+        "url": "https://www.tandfonline.com/journals/kder20",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "extractos calmantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-inflamacion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:37:22.020Z"
+  },
+  {
+    "chunk_id": "skincare-hiper-localizado-006",
+    "title": "La falacia de la protección solar 'en capas': ¿Realmente estamos protegidos?",
+    "content": "La tendencia de aplicar múltiples capas de productos con SPF (hidratante, maquillaje, protector solar) para 'sumar' el factor de protección es un error conceptual común. La eficacia del protector solar se determina por la cantidad aplicada (2 mg/cm²) y la formación de una película uniforme. Superponer productos no aumenta el SPF de manera aditiva; de hecho, la interacción química entre filtros físicos y químicos de diferentes productos puede desestabilizar la formulación, reduciendo su eficacia protectora. La FDA y la AAD enfatizan que la protección debe basarse en una aplicación generosa y uniforme de un único producto de amplio espectro. El layering excesivo suele resultar en una cobertura desigual, dejando áreas vulnerables a la radiación UV. Es preferible aplicar una cantidad adecuada de un solo protector solar eficaz en lugar de confiar en la suma de varios productos con SPF bajo.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "FDA",
+        "url": "https://www.fda.gov/drugs/understanding-over-counter-medicines/sunscreen-how-help-protect-your-skin-sun",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares"
+      ],
+      "contraindications": [
+        "aplicación insuficiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:37:22.020Z"
+  }
+]

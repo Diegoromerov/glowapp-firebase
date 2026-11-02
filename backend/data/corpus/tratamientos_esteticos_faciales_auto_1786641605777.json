@@ -1,0 +1,168 @@
+[
+  {
+    "chunk_id": "bio-frecuencia-celular-001",
+    "title": "Modulación de la impedancia celular mediante campos eléctricos pulsados",
+    "content": "La modulación de la impedancia en el tejido facial representa una frontera crítica en la optimización de dispositivos estéticos. La impedancia cutánea, determinada por la hidratación, la densidad de la matriz extracelular y el estado de los electrolitos intersticiales, dicta la penetración y eficacia de energías como la radiofrecuencia y las corrientes galvánicas. Estudios recientes publicados en PubMed sugieren que la manipulación dinámica de esta impedancia mediante protocolos de preparación pre-procedimiento —como la hidratación profunda con soluciones salinas balanceadas— permite una distribución de energía más homogénea, reduciendo el riesgo de puntos calientes ('hot spots') y aumentando la eficiencia en la termocontracción del colágeno. Al monitorizar la impedancia en tiempo real, el profesional puede ajustar los parámetros del equipo para compensar la variabilidad anatómica entre pacientes, garantizando una entrega de energía constante en las capas profundas de la dermis sin comprometer la integridad epidérmica, un avance fundamental para la seguridad en fototipos altos.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "soluciones salinas"
+      ],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dispositivos-energia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:49.667Z"
+  },
+  {
+    "chunk_id": "terapia-exosomas-002",
+    "title": "Mecanismo de acción de los exosomas en la reparación del daño actínico",
+    "content": "Los exosomas, vesículas extracelulares de tamaño nanométrico, actúan como potentes mediadores de la comunicación intercelular. En el contexto del daño actínico y el fotoenvejecimiento, los exosomas derivados de células madre mesenquimales (MSC-EVs) han demostrado capacidad para modular la respuesta inflamatoria y estimular la regeneración de la matriz extracelular. A diferencia de los factores de crecimiento aislados, los exosomas transportan un 'cargo' complejo que incluye microARNs y proteínas especializadas que reprograman los fibroblastos senescentes hacia un fenotipo juvenil. La evidencia clínica indica que su aplicación tras procedimientos de resurfacing, como láseres ablativos o microneedling, acelera la reepitelización y reduce significativamente el tiempo de eritema post-procedimiento. Este enfoque terapéutico no se limita a la hidratación superficial, sino que interviene en la regulación epigenética de la dermis, mejorando la síntesis de colágeno tipo I y elastina de manera sostenida, consolidándose como una herramienta indispensable en la medicina regenerativa facial contemporánea.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "historia de neoplasias cutáneas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina-regenerativa"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:49.667Z"
+  },
+  {
+    "chunk_id": "glicacion-matriz-004",
+    "title": "Manejo clínico de la glicación de la matriz extracelular (AGEs)",
+    "content": "La glicación no enzimática de las proteínas, que resulta en la formación de Productos Finales de Glicación Avanzada (AGEs), es un determinante clave del envejecimiento cutáneo. Estos compuestos se acumulan en el colágeno y la elastina, provocando su rigidez y degradación. Clínicamente, el manejo de la glicación requiere una estrategia dual: prevención sistémica mediante el control de la ingesta de azúcares y uso de antioxidantes específicos (como la aminoguanidina o derivados de la carnosina), y corrección local mediante técnicas que estimulen el recambio de la matriz. La degradación de la matriz glicada es un proceso lento que requiere terapias combinadas; el uso de láseres fraccionados y bioestimuladores inyectables permite romper la estructura dañada y favorecer la síntesis de novo de fibras de colágeno funcional. El monitoreo de los niveles de AGEs a través de técnicas de autofluorescencia cutánea comienza a ser una métrica relevante para personalizar los protocolos de rejuvenecimiento, permitiendo predecir la respuesta a tratamientos de tensado.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37829102/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:49.667Z"
+  },
+  {
+    "chunk_id": "bio-sensores-rf-006",
+    "title": "Bio-sensores de impedancia para la optimización de energía en RF",
+    "content": "El control preciso de la energía en la radiofrecuencia (RF) fraccionada es el factor determinante entre el éxito clínico y la aparición de cicatrices. La implementación de bio-sensores de impedancia en tiempo real permite adaptar la potencia emitida a las variaciones locales de conductividad del tejido, las cuales cambian drásticamente según la profundidad de la aguja y el contenido hídrico del área tratada. Esta tecnología de 'bucle cerrado' (closed-loop) asegura que la temperatura en la zona de coagulación se mantenga dentro del margen terapéutico, evitando la desnaturalización incontrolada de proteínas. Para el equipo médico de GlowApp, esta integración técnica supone un cambio de paradigma: la estandarización del resultado ya no depende exclusivamente de la técnica manual, sino de una arquitectura de hardware capaz de leer la respuesta biológica del tejido en microsegundos, elevando los protocolos de tensado subdérmico a niveles de precisión quirúrgica.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "implantes electrónicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dispositivos-energia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:49.667Z"
+  }
+]

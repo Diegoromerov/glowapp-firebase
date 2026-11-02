@@ -1,0 +1,154 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-bio-sensores-001",
+    "title": "Biosensores de Hidrógeno Molecular en el Folículo Piloso",
+    "content": "El uso de biosensores basados en hidrógeno molecular (H2) en el diagnóstico capilar representa una frontera emergente en la evaluación del estrés oxidativo local. El hidrógeno, al actuar como un antioxidante selectivo, puede neutralizar radicales libres como el hidroxilo sin afectar las especies reactivas de oxígeno necesarias para la señalización celular. En el cuero cabelludo, la acumulación de peroxidación lipídica en el ostium folicular altera la homeostasia del microambiente. La medición de los niveles de H2 tisular mediante sensores electroquímicos permite cuantificar la capacidad de respuesta antioxidante de la papila dérmica. Estudios publicados en revistas de bioingeniería médica sugieren que una disminución en la capacidad de difusión de hidrógeno en la vaina radicular externa está correlacionada con una progresión más acelerada de la miniaturización en alopecias androgenéticas. Este enfoque permite una intervención terapéutica personalizada, ajustando regímenes antioxidantes tópicos según la saturación medida en el nicho folicular, optimizando así la supervivencia de las células madre del bulge. La implementación de esta tecnología en dispositivos de teledermatoscopia avanzada promete una precisión diagnóstica sin precedentes en la evaluación del daño oxidativo crónico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38204912/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:24.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezo-002",
+    "title": "Respuesta Piezoeléctrica de la Queratina en el Tallo Capilar",
+    "content": "La queratina del tallo capilar posee propiedades piezoeléctricas intrínsecas que permiten la conversión de fuerzas mecánicas en señales eléctricas, influyendo en el comportamiento estructural de la fibra ante el estrés externo. En el diagnóstico capilar, la medición de esta respuesta mediante espectroscopía de fuerza atómica revela la integridad estructural de la cutícula y el córtex. Cuando la fibra capilar sufre daño por tratamientos químicos o exposición UV, la red de puentes disulfuro se desorganiza, reduciendo la eficiencia de la transducción electromecánica. Este fenómeno no solo afecta la resistencia a la fractura, sino que altera la interacción electrostática con el sebo circundante. La evaluación de la respuesta piezoeléctrica mediante sensores de micro-fuerza permite identificar el 'punto de fatiga' del cabello antes de que ocurra la rotura visible. Este biomarcador es fundamental para diagnosticar el desgaste estructural en cabellos con alta porosidad y determinar la necesidad de tratamientos de reconstrucción molecular que restauren la conductividad eléctrica y la elasticidad de la fibra, mejorando la resistencia mecánica a la fricción diaria.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-fibra"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:24.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-redox-003",
+    "title": "Potencial Redox de la Interfase Folicular y Estrés Oxidativo",
+    "content": "El potencial redox de la interfase entre el folículo piloso y el entorno cutáneo es un determinante crítico de la salud folicular. Un entorno con un potencial de oxidación elevado, derivado de la acumulación de especies reactivas de oxígeno (ROS), compromete la viabilidad de las células de la papila dérmica. El uso de microelectrodos para mapear el potencial de reducción-oxidación (ORP) en el cuero cabelludo ha permitido identificar zonas de 'hipoxia silenciosa' en pacientes con alopecia androgenética. Estos datos son vitales para diagnosticar la inflamación subclínica que precede a la miniaturización. La literatura científica actual subraya que la restauración del equilibrio redox mediante moduladores de la vía Nrf2 puede mitigar la progresión del daño folicular. Al monitorizar el ORP, podemos predecir qué pacientes responderán mejor a terapias antioxidantes tópicas, permitiendo un enfoque de medicina de precisión. Este parámetro, aunque complejo de medir en entornos clínicos convencionales, marca la pauta hacia una era de diagnóstico molecular donde la salud del folículo se define por su capacidad de mantener un ambiente reductor protector frente a los agentes estresores del exposoma urbano.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00567-8",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:24.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-007",
+    "title": "Bioimpedancia de Alta Frecuencia en la Barrera Folicular",
+    "content": "La integridad de la barrera cutánea en el ostium folicular es esencial para prevenir la entrada de contaminantes y patógenos que inducen inflamación crónica. La espectroscopía de impedancia bioeléctrica (EIS) de alta frecuencia permite evaluar la permeabilidad y la hidratación de esta barrera con una precisión micrométrica. Un aumento en la conductancia eléctrica del ostium suele ser indicativo de una disfunción en las uniones estrechas de los queratinocitos, lo que facilita la penetración de partículas PM2.5 del exposoma urbano. Este daño en la barrera no solo irrita el folículo, sino que altera el pH local, favoreciendo el sobrecrecimiento de microbiota disbiótica. El diagnóstico mediante EIS es un procedimiento rápido, no invasivo y altamente reproducible que puede integrarse en la consulta dermatológica para monitorizar la eficacia de tratamientos restauradores de la barrera cutánea. Al cuantificar la capacitancia y resistencia del cuero cabelludo, podemos objetivar la mejoría clínica antes de observar cambios en la densidad capilar, proporcionando un marcador temprano de éxito terapéutico en el manejo de diversas alopecias.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.16789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:24.590Z"
+  }
+]

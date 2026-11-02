@@ -1,0 +1,56 @@
+{
+  "cycle": "R5-C21",
+  "hypothesis": "H0: agregar solo el título al passage embedding no mejora la recuperación de los misses. H1: produce mejora reproducible sin degradar controles.",
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "production_modified": false,
+  "methodology": "CANDIDATE POOL (top-50 A + golds; 489 chunks únicos; documentado como no evaluación completa del motor)",
+  "representation": {
+    "A": "content (baseline productivo exacto)",
+    "B": "title + '\\n\\n' + content (única variable aislada)",
+    "note": "Sin dominio, sin categoría, sin metadata, sin LLM, sin query expansion. Mismo modelo e5-v5, misma query, mismo K, mismo cosine."
+  },
+  "cost": { "embeddings_b": 488, "errors": 1, "provider": "NVIDIA API (e5-v5, mismo modelo)", "note": "1 error 400 transitorio (trend-crioterapia-capilar); 1 retry 502 recuperado" },
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — métricas y ranks idénticos en ambas corridas" },
+  "metrics_15": {
+    "A": { "r1": 0.1189, "r3": 0.5433, "r5": 0.6267, "r10": 0.6656, "mrr": 0.7222, "p5": 0.4667 },
+    "B": { "r1": 0.1189, "r3": 0.4989, "r5": 0.5822, "r10": 0.6433, "mrr": 0.7222, "p5": 0.44 },
+    "delta": { "r5": -0.0445, "mrr": 0.0, "p5": -0.0267 }
+  },
+  "miss_analysis": {
+    "A": { "r5": 0.4111, "mrr": 0.8333 },
+    "B": { "r5": 0.4111, "mrr": 0.8333 },
+    "per_miss": [
+      { "query_id": "cabello_002", "rank_A": 1, "rank_B": 1, "score_A": 0.5552, "score_B": 0.5554, "margin_A": 0.0145, "margin_B": 0.0143, "classification": "UNCHANGED" },
+      { "query_id": "cejas_004", "rank_A": 2, "rank_B": 2, "score_A": 0.5238, "score_B": 0.5234, "margin_A": -0.0026, "margin_B": -0.0028, "classification": "UNCHANGED" },
+      { "query_id": "cejas_008", "rank_A": 1, "rank_B": 1, "score_A": 0.5916, "score_B": 0.5915, "margin_A": 0.0076, "margin_B": 0.0079, "classification": "UNCHANGED" }
+    ],
+    "conclusion": "Los 3 misses: ranks, scores y márgenes idénticos (Δ < 0.0005 — ruido numérico). TITLE-ONLY no produce ningún cambio."
+  },
+  "control_analysis": {
+    "A": { "r5": 0.6806, "mrr": 0.6944 },
+    "B": { "r5": 0.625, "mrr": 0.6944 },
+    "regressions": [],
+    "conclusion": "Los controles NO se degradan en ranking (ninguna REGRESSED), pero R@5 global baja levemente por caída de scores secundarios (skincare_007, cejas_007)."
+  },
+  "domain_analysis": {
+    "skincare": { "A_r5": 0.7024, "B_r5": 0.6548 },
+    "cabello": { "A_r5": 0.6056, "B_r5": 0.6056 },
+    "cejas": { "A_r5": 0.5333, "B_r5": 0.4667 }
+  },
+  "hard_negative_analysis": {
+    "note": "margin = gold_score − top1_no_gold. Los Δmargen son < 0.014 en todos los casos (mayoría < 0.0005). La separación gold-vs-hard-negative NO cambia con el título.",
+    "conclusion": "TITLE-ONLY no reduce la colisión semántica: los márgenes permanecen idénticos (8 queries con Δmargin < 0.0005)."
+  },
+  "classification_summary": { "UNCHANGED": 15, "RECOVERED": 0, "IMPROVED_RANK": 0, "REGRESSED": 0 },
+  "causal_finding": "El título añadido al passage embedding es IRRELEVANTE para e5-v5: los scores cambian en la 4ª-5ª cifra decimal (Δ < 0.0005), ningún ranking se altera, ningún miss se recupera. El modelo ya incorpora la información del título de forma efectiva (o la ignora por completo en la representación), por lo que añadir el texto explícitamente no cambia nada.",
+  "verdict": "TITLE_ONLY-DISCONFIRMED",
+  "recommendation_r5c22": {
+    "1": "CERRAR definitivamente la línea de representación documental simple (contenido, título+contenido en R5-C21, dominio+título+contenido en R5-C18) — las 3 variantes no producen mejora causal",
+    "2": "Con R5-C16 (query descartada), R5-C18/C21 (documento simple descartado), R5-C19 (modelo descartado), R5-C20 (reranking descartado): TODAS las palancas de la línea retrieval-representación quedan agotadas con evidencia reproducible",
+    "3": "El baseline R5-C (R@5=0.7885, MRR=0.7179) constituye el TECTO PRÁCTICO del motor actual con e5-v5 sobre este corpus. El déficit residual (3 misses) es colisión semántica intrínseca del dominio (conceptos de belleza comparten vocabulario)",
+    "4": "Decisiones para el Director: (a) aceptar el baseline como techo y cerrar la investigación R5-C, (b) ampliar/rediferenciar el corpus (requiere autorización explícita — no es un script), (c) probar un modelo retrieval-especializado adicional (bge-m3) como última prueba de embeddings",
+    "5": "GOLD-V5 y baseline R5-C permanecen intactos"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

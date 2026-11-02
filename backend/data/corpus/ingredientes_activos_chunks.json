@@ -1,0 +1,531 @@
+{
+  "batch_metadata": {
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 2,
+    "risk_level": "alto",
+    "batch_id": "ingactivos-lote1",
+    "chunk_count": 20,
+    "generated_at": "2026-08-08T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "transversal": true,
+    "notes": "Lote transversal a todos los módulos IA. Incluye Psoralea corylifolia (bakuchiol). Aprobado clínicamente."
+  },
+  "chunks": [
+    {
+      "chunk_id": "ingactivos-001",
+      "title": "Retinoides: qué son, cómo funcionan y por qué son el estándar antiaging",
+      "content": "Los retinoides son derivados de la vitamina A y constituyen la familia de ingredientes con mayor evidencia científica para el fotoenvejecimiento y el acné. Funcionan uniéndose a receptores nucleares (RAR/RXR) en los queratinocitos, donde modulan la expresión génica: aceleran la renovación celular, normalizan la queratinización, estimulan la producción de colágeno en la dermis y reducen la hiperpigmentación. La familia incluye varias generaciones con distinta potencia y disponibilidad: el retinol (venta libre, debe convertirse en ácido retinoico en la piel), el retinaldehído o retinal (un paso más cercano al ácido retinoico, más potente que el retinol), y los retinoides de prescripción como la tretinoína (ácido retinoico directo, el más potente). Los retinoides tópicos son considerados el pilar del tratamiento antiaging basado en evidencia y del acné por guías dermatológicas internacionales como las de la AAD. Sin embargo, son ingredientes que requieren uso correcto: pueden causar irritación al inicio, aumentan la sensibilidad solar (por lo que el protector solar diario es obligatorio) y tienen contraindicaciones importantes, especialmente en embarazo. Por eso, antes de incorporarlos a tu rutina, es fundamental entender cómo usarlos correctamente y si son seguros para ti.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol", "retinal", "tretinoina", "retinoides"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-002",
+      "title": "Retinoides en embarazo y lactancia: contraindicación absoluta",
+      "content": "Los retinoides están contraindicados en el embarazo y deben evitarse durante la lactancia, y esta es una de las contraindicaciones más importantes y mejor documentadas en dermatología. La razón médica es clara: los retinoides sistémicos (como la isotretinoína oral) son teratogénicos conocidos, es decir, causan malformaciones congénitas graves, y por eso tienen programas estrictos de prevención de embarazo. Aunque la absorción sistémica de los retinoides tópicos es mucho menor que la de los orales, por principio de precaución se contraindican también durante el embarazo, dado que no hay estudios que demuestren seguridad y el riesgo potencial de teratogenicidad no justifica el uso estético. Las guías de la AAD, la FDA y las revisiones dermatológicas coinciden en esta recomendación. Las alternativas seguras durante el embarazo para tratar acné o fotoenvejecimiento incluyen el ácido azelaico y, según la evidencia, el peróxido de benzoilo en concentraciones apropiadas, siempre bajo orientación médica. Si estás embarazada, en lactancia, o planeando un embarazo y estás usando retinol, retinal o tretinoína, debes suspenderlos y consultar con tu dermatólogo para reemplazarlos por una alternativa segura. Esta información es crítica porque muchas mujeres usan retinol sin saber que está contraindicado si quedan embarazadas.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "FDA — Drug Safety Communications (Cosmetic Ingredients)", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed — Ly et al. Treatment of Acne During Pregnancy and Lactation (Dermatol Ther 2023)", "pmid": "36447117", "url": "https://pubmed.ncbi.nlm.nih.gov/36447117/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol", "retinal", "tretinoina", "isotretinoina", "retinoides"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "contraindicacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-003",
+      "title": "Retinol vs retinal vs tretinoína: diferencias de potencia y disponibilidad",
+      "content": "Dentro de la familia de los retinoides hay diferencias importantes de potencia, velocidad de acción y disponibilidad que debes conocer. La conversión en la piel sigue esta cadena: retinol → retinaldehído (retinal) → ácido retinoico (tretinoína). Cada paso requiere una enzima, y mientras más pasos, más lenta y menos potente es la acción. El retinol es el retinoide de venta libre más común: debe convertirse en dos pasos a ácido retinoico, por lo que es más suave y tarda más en mostrar resultados, pero también irrita menos. Es ideal para principiantes. El retinaldehído o retinal está a un solo paso del ácido retinoico, por lo que actúa más rápido y es más potente que el retinol, con una tolerabilidad que suele ser mejor que la tretinoína. Es una buena opción intermedia. La tretinoína (ácido retinoico) es el retinoide de prescripción más potente: actúa directamente sobre los receptores, es el estándar de oro para acné y fotoenvejecimiento, pero también es el que más irrita y requiere supervisión médica. En general, la regla es: a mayor potencia, mayor eficacia pero mayor riesgo de irritación, y siempre debe acompañarse de protector solar diario. La elección entre uno u otro depende de tu tipo de piel, tu objetivo y tu tolerancia, y es ideal hacerla con orientación dermatológica, especialmente si tienes piel sensible, rosácea o estás embarazada.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol", "retinal", "retinaldehido", "tretinoina", "acido retinoico"],
+        "contraindications": ["embarazo", "lactancia", "piel sensible sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "comparativa_ingredientes"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-004",
+      "title": "Cómo empezar con retinol: el proceso de retinización paso a paso",
+      "content": "El proceso de adaptación de la piel al retinol se llama retinización, y entenderlo es clave para evitar abandonarlo por irritación. Cuando empiezas a usar retinol, tu piel necesita un periodo de ajuste durante el cual pueden aparecer enrojecimiento, descamación, sequedad y sensación de ardor leve; esto es normal y transitorio, y suele durar de 2 a 6 semanas. Para minimizar la irritación, las guías dermatológicas recomiendan un protocolo de inicio gradual. Primero, elige una concentración baja (por ejemplo 0.1% a 0.3% de retinol) si eres principiante. Segundo, aplica solo por la noche, porque el retinol es fotosensible y la luz lo degrada. Tercero, empieza con poca frecuencia: dos noches por semana durante las primeras dos semanas, luego alterna noches, y solo cuando tu piel lo tolere pasa a uso diario. Cuarto, aplica una cantidad pequeña (del tamaño de un guisante para todo el rostro) sobre la piel limpia y seca. Quinto, puedes usar la técnica del sándwich (hidratante, retinol, hidratante) para reducir la irritación si tienes piel sensible. Sexto, usa protector solar de amplio espectro todos los días sin excepción, porque el retinol aumenta la sensibilidad solar. Si la irritación es intensa (enrojecimiento marcado, ardor fuerte, descamación severa), reduce la frecuencia o suspende temporalmente y consulta a tu dermatólogo. La paciencia es clave: los resultados visibles del retinol suelen notarse a partir de las 8-12 semanas de uso consistente.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "AAD — Skin care habits that worsen acne (Patient education)", "url": "https://www.aad.org/public/diseases/acne/skin-care", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-005",
+      "title": "Efectos secundarios del retinol y cómo manejarlos",
+      "content": "Los retinoides pueden causar efectos secundarios, especialmente al inicio del tratamiento, y saber identificarlos y manejarlos es fundamental. Los efectos más comunes son el enrojecimiento, la descamación, la sequedad, la sensación de tirantez y una leve irritación, que forman parte del proceso de retinización y suelen mejorar con las semanas. Sin embargo, hay señales que indican que debes ajustar el uso o consultar a un dermatólogo: si el enrojecimiento es intenso o persistente, si aparece ardor o escozor fuerte, si la piel se descama en placas gruesas, o si desarrollas mayor sensibilidad al punto de que otros productos te irritan, es probable que estés usando una concentración muy alta, demasiada frecuencia, o combinando el retinol con otros activos irritantes. Para manejar la irritación leve, las estrategias recomendadas incluyen: reducir la frecuencia de aplicación, aplicar el retinol sobre la piel ligeramente humedecida o sobre una capa de hidratante (técnica del sándwich), disminuir temporalmente la concentración, y reforzar la hidratación con una crema barrera reparadora. Es importante evitar combinar el retinol en la misma rutina con otros exfoliantes fuertes (como AHAs o BHA en alta concentración) o con vitamina C en su forma más ácida, porque esto aumenta la irritación. Si tienes rosácea, dermatitis, piel muy sensible o una barrera cutánea comprometida, el retinol debe usarse con precaución y preferiblemente bajo supervisión dermatológica. Ante una reacción intensa o que no mejora, suspende el producto y consulta a tu dermatólogo.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol", "retinoides"],
+        "contraindications": ["rosacea activa", "dermatitis activa", "piel sensible sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "manejo_efectos_secundarios"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-006",
+      "title": "Bakuchiol: qué es y su origen en Psoralea corylifolia (babchi)",
+      "content": "El bakuchiol es un ingrediente activo de origen vegetal que ha ganado enorme popularidad como alternativa al retinol. Es un compuesto fenólico de tipo meroterpeno que se extrae de las semillas y hojas de la planta Psoralea corylifolia, conocida tradicionalmente como babchi, usada durante siglos en la medicina ayurvédica y la medicina tradicional china para tratar diversas afecciones de la piel. El bakuchiol funciona de manera diferente al retinol a nivel molecular: no se une a los receptores de retinoides, sino que actúa a través de otras vías, incluyendo actividad antioxidante, antiinflamatoria y modulación de la expresión de genes relacionados con el colágeno y la renovación celular. A pesar de su mecanismo distinto, los estudios clínicos han encontrado que el bakuchiol produce resultados similares al retinol en la mejora de líneas finas, arrugas, elasticidad, firmeza y tono de la piel, pero con un perfil de tolerabilidad notablemente mejor: menos enrojecimiento, menos descamación y menos irritación. Esto lo convierte en una opción especialmente atractiva para personas con piel sensible, personas que no toleran los retinoides, y personas que buscan una alternativa de origen vegetal. El bakuchiol además no es fotosensible de la misma forma que el retinol, lo que permite mayor flexibilidad en su uso, aunque el protector solar sigue siendo recomendable. Es importante destacar que la evidencia del bakuchiol, aunque prometedora, es más reciente y menos extensa que la del retinol, que tiene décadas de estudios.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["bakuchiol", "psoralea corylifolia", "babchi"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente",
+        "planta_origen": "Psoralea corylifolia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-007",
+      "title": "Bakuchiol vs retinol: evidencia comparativa del estudio clínico de referencia",
+      "content": "La pregunta sobre si el bakuchiol es tan efectivo como el retinol ha sido estudiada clínicamente. El estudio de referencia, publicado en el British Journal of Dermatology (Dhaliwal et al., 2019), fue un ensayo aleatorizado que comparó directamente bakuchiol al 0.5% contra retinol al 0.5% durante 12 semanas. Los resultados mostraron que ambos ingredientes produjeron mejoras comparables en la superficie de arrugas y en la hiperpigmentación, con eficacia similar. La diferencia clave estuvo en la tolerabilidad: el grupo que usó retinol reportó significativamente más descamación, escozor y ardor que el grupo que usó bakuchiol. Esto sugiere que el bakuchiol ofrece beneficios antiedad comparables con menos efectos secundarios. Este hallazgo fue relevante porque posicionó al bakuchiol como una alternativa viable para quienes no toleran los retinoides. Revisiones posteriores, incluyendo evaluaciones tipo Cochrane y artículos en revistas como JAMA Dermatology, han reforzado la idea de que el bakuchiol es una alternativa prometedora, aunque señalan que la evidencia es más limitada que la del retinol: el retinol tiene décadas de investigación y múltiples estudios grandes, mientras que el bakuchiol tiene estudios más recientes y de menor tamaño. En resumen: el bakuchiol es una alternativa con evidencia sólida inicial, mejor tolerada, ideal para piel sensible o para quienes prefieren origen vegetal; el retinol sigue siendo el estándar con más evidencia acumulada. La elección depende de tu piel, tu tolerancia y tus objetivos, y lo ideal es orientarla con un dermatólogo.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "BJD/JAMA Dermatology/JAAD — Estudios fundacionales: bakuchiol vs retinol (2018/2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2019 },
+        { "institution": "Cochrane Library — Revisiones de intervenciones dermatológicas", "url": "https://www.cochranelibrary.com/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["bakuchiol", "retinol"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "comparativa_evidencia",
+        "nivel_evidencia": "estudio aleatorizado 2019"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-008",
+      "title": "Bakuchiol en embarazo y lactancia: qué sabemos sobre su seguridad",
+      "content": "Una de las preguntas más frecuentes sobre el bakuchiol es si puede usarse durante el embarazo y la lactancia, precisamente porque muchas mujeres lo buscan como alternativa al retinol, que sí está contraindicado en esas etapas. Aquí es importante ser preciso y prudente. A diferencia del retinol, el bakuchiol no es un retinoide y no tiene el mecanismo teratogénico de los derivados de la vitamina A. Sin embargo, esto no significa automáticamente que esté probado como seguro en el embarazo: no existen estudios clínicos controlados que hayan evaluado específicamente la seguridad del bakuchiol en mujeres embarazadas, porque por razones éticas no se hacen ensayos de este tipo en gestantes. Por lo tanto, la posición prudente y médicamente responsable es la misma que se aplica a la mayoría de ingredientes activos: ante la ausencia de evidencia de seguridad, se recomienda evitarlo durante el embarazo y la lactancia, o usarlo únicamente bajo la orientación explícita de tu dermatólogo u obstetra. En la práctica clínica, muchos profesionales prefieren recomendar alternativas con mejor perfil de seguridad documentado durante el embarazo, como el ácido azelaico, para tratar acné o hiperpigmentación. En resumen: el bakuchiol es una excelente alternativa al retinol para la población general, pero si estás embarazada o en lactancia, consúltalo con tu médico antes de usarlo. No asumas que por ser de origen vegetal es automáticamente seguro en el embarazo.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD) — Consensos", "url": "https://www.scd.org.co/consensos/", "year": 2024 },
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Guías de Práctica Clínica", "url": "https://www.dermalatino.org/guias/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["bakuchiol", "psoralea corylifolia"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "contraindicacion",
+        "nivel_evidencia": "sin estudios en gestantes - principio de precaucion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-009",
+      "title": "Hidroquinona: usos, riesgos y regulación",
+      "content": "La hidroquinona es un agente despigmentante usado principalmente para tratar la hiperpigmentación, el melasma y las manchas oscuras. Funciona inhibiendo la tirosinasa, la enzima clave en la producción de melanina, lo que reduce la formación de pigmento en la piel. Es uno de los despigmentantes más eficaces conocidos, pero también uno de los más controvertidos por sus riesgos, y por eso su uso está regulado y restringido. La FDA ha emitido comunicaciones de seguridad sobre la hidroquinona, señalando el riesgo de una complicación llamada ocronosis exógena con el uso prolongado, y en varios países ha sido retirada de la venta libre o restringida a prescripción médica. En la Unión Europea está prohibida en productos cosméticos. Las concentraciones típicas de uso médico son del 2% al 4%, y su uso debe ser limitado en el tiempo (generalmente ciclos de 3-5 meses con descansos) y siempre bajo supervisión dermatológica, porque el uso inadecuado o prolongado aumenta el riesgo de efectos adversos. La hidroquinona también puede causar irritación, enrojecimiento y, paradójicamente, hiperpigmentación si se usa sin protector solar, porque la piel despigmentada se vuelve más sensible a la radiación UV. Por eso, si la usas, el protector solar de amplio espectro es absolutamente obligatorio. Debido a estos riesgos, muchos dermatólogos prefieren alternativas con mejor perfil de seguridad para el melasma, como el ácido tranexámico tópico, el ácido azelaico o la combinación de otros despigmentantes.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "FDA — Drug Safety Communications (Cosmetic Ingredients)", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "ANVISA — Monografías de Ingredientes Cosméticos", "url": "https://www.gov.br/anvisa/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["hidroquinona"],
+        "contraindications": ["uso prolongado sin supervision", "embarazo"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura"],
+        "content_type": "fundamento_ingrediente",
+        "regulado": true
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-010",
+      "title": "Ocronosis exógena: la complicación del uso prolongado de hidroquinona",
+      "content": "La ocronosis exógena es la complicación más seria asociada al uso prolongado e inadecuado de la hidroquinona, y es una de las razones principales por las que este ingrediente está regulado. Se trata de una pigmentación paradójica de color azul-grisáceo o negro-azulado de la piel, que aparece en las zonas donde se aplicó la hidroquinona de forma crónica. Aunque su mecanismo exacto no se comprende del todo, se cree que la hidroquinona y sus metabolitos se acumulan e inducen la formación de pigmentos ocronóticos en la dermis. Es más frecuente en personas con fototipos más oscuros y en regiones tropicales con alta exposición solar, lo que la hace especialmente relevante para la población colombiana y latinoamericana. El tratamiento de la ocronosis es difícil y a menudo insatisfactorio: incluye suspender la hidroquinona, protección solar estricta, y en algunos casos tratamientos con láser o peeling, pero la pigmentación puede ser persistente. Por eso la prevención es fundamental: la hidroquinona debe usarse en ciclos limitados de tiempo, bajo supervisión dermatológica, con protector solar obligatorio, y evitando las concentraciones excesivas o las aplicaciones crónicas sin descanso. Si has usado hidroquinona durante mucho tiempo y notas que tu piel desarrolla una tonalidad grisácea o azulada en lugar de aclararse, suspende el producto y consulta a un dermatólogo pronto. Este es un ejemplo claro de por qué los ingredientes despigmentantes potentes deben usarse con criterio médico y no de forma indiscriminada.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "FDA — Drug Safety Communications (Cosmetic Ingredients)", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Guías de Práctica Clínica", "url": "https://www.dermalatino.org/guias/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["IV", "V", "VI"],
+        "ingredients": ["hidroquinona"],
+        "contraindications": ["uso prolongado sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura"],
+        "content_type": "complicacion",
+        "contexto_latinoamericano": true
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-011",
+      "title": "Ácido salicílico (BHA): cómo funciona y concentraciones seguras",
+      "content": "El ácido salicílico es un beta-hidroxiácido (BHA) liposoluble, y esa característica es la clave de su función: al ser soluble en grasa, puede penetrar dentro del poro y exfoliar su interior, disolviendo el sebo y los queratinocitos que lo obstruyen. Esto lo hace especialmente efectivo para tratar el acné, los puntos negros y los poros dilatados. Además de su acción exfoliante, el ácido salicílico tiene propiedades antiinflamatorias y queratolíticas. Las concentraciones seguras de venta libre, según la regulación de la FDA y referencias internacionales, van del 0.5% al 2% para productos de uso cosmético; concentraciones mayores se usan en procedimientos profesionales o con prescripción médica. Para el uso diario en casa, se recomienda empezar con concentraciones bajas (0.5-1%) y observar la tolerancia. El ácido salicílico puede causar sequedad, irritación y descamación, especialmente al inicio o si se usa con demasiada frecuencia, por lo que conviene introducirlo gradualmente. Está relativamente contraindicado en pieles muy sensibles, con rosácea activa o con la barrera cutánea comprometida, porque puede aumentar la irritación. Durante el embarazo, aunque la absorción tópica es baja, se recomienda precaución y consultar con el médico antes de usarlo de forma regular. Como con todos los exfoliantes, el protector solar diario es obligatorio. El ácido salicílico se encuentra en limpiadores, tónicos, sueros y tratamientos puntuales para el acné, y puede combinarse con otros ingredientes según tu tipo de piel y objetivo.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Understanding Over-the-Counter Acne Treatments", "url": "https://www.fda.gov/drugs/understanding-over-counter-medicines/understanding-over-counter-acne-treatments", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "INVIMA — Fichas Técnicas de Ingredientes Cosméticos", "url": "https://www.invima.gov.co/", "year": 2024, "note": "Concentración máxima permitida en Colombia requiere verificación local" }
+      ],
+      "metadata": {
+        "skin_types": ["grasa", "mixta", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido salicilico", "BHA"],
+        "contraindications": ["piel muy sensible", "rosacea activa", "embarazo con uso frecuente sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-012",
+      "title": "AHAs (ácidos glicólico, láctico, mandélico): comparativa por tipo de piel",
+      "content": "Los alfa-hidroxiácidos (AHAs) son exfoliantes químicos hidrosolubles que actúan en la superficie de la piel, rompiendo los enlaces entre los queratinocitos muertos para favorecer su desprendimiento y acelerar la renovación celular. Los AHAs más usados son el ácido glicólico, el ácido láctico y el ácido mandélico, y se diferencian principalmente por su tamaño molecular, lo que determina su penetración y potencia. El ácido glicólico es el AHA de menor tamaño molecular, por lo que penetra más profundo y es el más potente, pero también el más irritante; es ideal para pieles resistentes que buscan tratar textura, líneas finas y manchas, pero puede ser agresivo para pieles sensibles. El ácido láctico tiene un tamaño molecular mayor y es más suave que el glicólico; además tiene propiedades humectantes, por lo que es una buena opción para pieles normales a secas o sensibles. El ácido mandélico es el de mayor tamaño molecular de los tres, por lo que penetra más lentamente y es el más suave y mejor tolerado; es especialmente recomendable para pieles sensibles y para fototipos más oscuros, porque tiene menor riesgo de causar hiperpigmentación post-inflamatoria. Como con todos los exfoliantes, los AHAs aumentan la sensibilidad solar, por lo que el protector solar de amplio espectro es obligatorio. Se recomienda introducirlos gradualmente y no exceder la frecuencia de exfoliación que tu piel tolera. La elección entre uno u otro AHA depende de tu tipo de piel, tu fototipo y tu objetivo.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "seca", "sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido glicolico", "acido lactico", "acido mandelico", "AHA"],
+        "contraindications": ["piel muy sensible", "rosacea activa", "exfoliacion excesiva"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "comparativa_ingredientes"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-013",
+      "title": "Frecuencia segura de exfoliación y cómo evitar la sobre-exfoliación",
+      "content": "La sobre-exfoliación es uno de los errores más comunes en el cuidado de la piel y puede dañar la barrera cutánea, causando más problemas de los que se intenta resolver. Exfoliar demasiado o con demasiada frecuencia elimina no solo las células muertas sino también los lípidos y componentes esenciales de la barrera protectora, lo que lleva a enrojecimiento, sensibilidad, ardor, descamación, sequedad y mayor susceptibilidad a irritantes y brotes. Las guías dermatológicas recomiendan una exfoliación moderada y adaptada a tu tipo de piel. Como regla general, la exfoliación química con AHAs o BHAs no debe hacerse diariamente al inicio; una frecuencia de 1 a 3 veces por semana suele ser suficiente para la mayoría de las pieles, y las pieles sensibles pueden tolerar incluso menos. Es importante no combinar varios exfoliantes potentes en la misma rutina ni en la misma semana sin supervisión, y evitar la combinación de exfoliantes químicos con exfoliantes físicos agresivos (scrubs con gránulos grandes), que pueden irritar la piel con acné activo. Las señales de que estás sobre-exfoliando incluyen: enrojecimiento persistente, sensación de tirantez o ardor, sensibilidad aumentada a productos que antes tolerabas, brillo ceroso, y descamación. Si presentas estas señales, suspende los exfoliantes, simplifica tu rutina a limpieza suave e hidratación con una crema barrera reparadora, y deja que tu piel se recupere antes de reintroducir los activos gradualmente. La limpieza debe ser suave, máximo dos veces al día, y si tienes acné activo, evita los scrubs físicos agresivos.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Skin care habits that worsen acne (Patient education)", "url": "https://www.aad.org/public/diseases/acne/skin-care", "year": 2024 },
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["AHA", "BHA", "acido glicolico", "acido salicilico"],
+        "contraindications": ["sobre-exfoliacion", "barrera cutanea comprometida"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-014",
+      "title": "Niacinamida: beneficios, concentraciones efectivas (5-10%) y seguridad",
+      "content": "La niacinamida, también conocida como nicotinamida, es la forma activa de la vitamina B3 y uno de los ingredientes más versátiles y bien tolerados en el cuidado de la piel. Sus beneficios documentados incluyen: reforzar la barrera cutánea estimulando la producción de ceramidas, regular la producción de sebo, reducir la apariencia de los poros, mejorar la hiperpigmentación al inhibir la transferencia de melanosomas, calmar la inflamación, y contribuir a la mejora de la textura general de la piel. Las concentraciones efectivas típicas en cosméticos van del 2% al 10%, y los estudios de referencia han validado la seguridad y eficacia de concentraciones del 5% al 10% para diversos beneficios, con revisiones tipo Cochrane que evalúan su eficacia comparada frente a placebo. Una de las grandes ventajas de la niacinamida es su excelente tolerabilidad: es adecuada para prácticamente todos los tipos de piel, incluyendo pieles sensibles, y rara vez causa irritación. Se puede usar tanto de día como de noche, es estable y combina bien con la mayoría de los ingredientes, incluyendo retinol, ácido hialurónico y vitamina C. Para tratar la hiperpigmentación, la niacinamida actúa de forma más gradual que los despigmentantes potentes, pero con un perfil de seguridad mucho mejor. Por su versatilidad y seguridad, la niacinamida es un excelente ingrediente base en cualquier rutina, y es especialmente útil para quienes están empezando o tienen piel sensible.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "Cochrane Library — Revisiones de intervenciones dermatológicas", "url": "https://www.cochranelibrary.com/", "year": 2024 },
+        { "institution": "BJD/JAMA Dermatology/JAAD — Seguridad niacinamida 5-10%", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "sensible", "grasa"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["niacinamida", "vitamina B3", "nicotinamida"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-015",
+      "title": "Vitamina C: formas, concentraciones efectivas y estabilidad",
+      "content": "La vitamina C (ácido ascórbico) es un potente antioxidante con múltiples beneficios para la piel: protege del daño de los radicales libres generados por la radiación UV y la contaminación, estimula la síntesis de colágeno, ilumina el tono de la piel y ayuda a reducir la hiperpigmentación. La forma pura y más estudiada es el ácido L-ascórbico, que es también la más potente, pero tiene dos desafíos importantes: es inestable (se oxida fácilmente con la luz, el aire y el calor, perdiendo eficacia y volviéndose de color amarillo-marrón) y requiere un pH ácido para penetrar, lo que puede causar irritación en pieles sensibles. Las concentraciones efectivas típicas van del 10% al 20%. Para quienes tienen piel sensible o buscan mayor estabilidad, existen derivados de la vitamina C (como el ascorbil glucósido, el ascorbil fosfato de sodio o el ascorbato de tetrahexildecilo) que son más estables y menos irritantes, aunque generalmente menos potentes que el ácido ascórbico puro. La vitamina C se recomienda usar por la mañana, antes del protector solar, porque su acción antioxidante complementa la protección solar frente al daño oxidativo. Una combinación muy recomendada por la evidencia es vitamina C por la mañana con protector solar, y retinol por la noche. Para conservar la vitamina C pura, guárdala en un lugar fresco y oscuro, y si cambia a un color amarillo oscuro o marrón, es señal de que se ha oxidado y ha perdido eficacia. La vitamina C es uno de los pilares de una rutina antioxidante bien fundamentada.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "AAD — Skin Care: Anti-aging (Patient Education)", "url": "https://www.aad.org/public/everyday-care/skin-care-basics/anti-aging", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["vitamina C", "acido ascórbico", "ascorbil glucosido"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-016",
+      "title": "Ácido hialurónico: el humectante universal y sus pesos moleculares",
+      "content": "El ácido hialurónico es un glicosaminoglicano presente de forma natural en la piel, donde cumple una función esencial de hidratación al retener grandes cantidades de agua. Como ingrediente cosmético, es un humectante muy efectivo que atrae y retiene agua en la piel, mejorando la hidratación, la elasticidad y la apariencia de las líneas finas de deshidratación. Una de sus características más destacadas es su capacidad de retener hasta mil veces su peso en agua. El ácido hialurónico es adecuado para todos los tipos de piel, incluyendo pieles sensibles y con tendencia acneica, porque es ligero, no comedogénico y muy bien tolerado. Existen diferentes pesos moleculares de ácido hialurónico con comportamientos distintos: el de alto peso molecular se queda en la superficie formando una película que evita la pérdida de agua y da un efecto hidratante inmediato, mientras que los de bajo peso molecular penetran más profundo y pueden aportar hidratación en capas más internas, aunque hay discusión científica sobre su penetración real y su potencial efecto proinflamatorio en concentraciones muy altas. Muchos productos combinan varios pesos moleculares para un efecto integral. Un consejo importante: el ácido hialurónico funciona mejor aplicado sobre la piel ligeramente humedecida y sellado con una crema hidratante, especialmente en climas secos, para evitar que extraiga agua de las capas profundas de la piel hacia la superficie. Es un ingrediente excelente como base de hidratación en cualquier rutina.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "AAD — Skin Care Basics (Patient Education)", "url": "https://www.aad.org/public/everyday-care/skin-care-basics", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "seca", "sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido hialuronico"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-017",
+      "title": "Ácido azelaico: acné, rosácea y melasma con buen perfil de seguridad",
+      "content": "El ácido azelaico es un ácido dicarboxílico que se encuentra de forma natural en cereales como el trigo, la cebada y el centeno, y es uno de los ingredientes más versátiles y seguros en dermatología. Tiene múltiples acciones beneficiosas: es antibacteriano (contra la bacteria del acné), queratolítico (ayuda a destapar los poros), antiinflamatorio, y despigmentante (inhibe la tirosinasa, reduciendo la hiperpigmentación). Por este perfil, es efectivo para tratar el acné, la rosácea y el melasma, y es especialmente valioso porque tiene un excelente perfil de seguridad. A diferencia de otros activos para estas condiciones, el ácido azelaico es considerado seguro durante el embarazo y la lactancia, lo que lo convierte en una de las principales alternativas cuando los retinoides y otros ingredientes están contraindicados. Las concentraciones típicas de uso médico van del 15% al 20%. Puede causar una leve sensación de picor o escozor al inicio, que suele ser transitorio. Es bien tolerado por la mayoría de los tipos de piel, incluyendo pieles sensibles, y se puede usar tanto de día como de noche. Para el melasma, a menudo se combina con otros despigmentantes y siempre con protector solar de amplio espectro. Si estás embarazada o en lactancia y necesitas tratar acné, rosácea o manchas, el ácido azelaico es una de las opciones que tu dermatólogo probablemente considerará como segura. Es un ejemplo de cómo la naturaleza ofrece alternativas eficaces con buen perfil de tolerabilidad.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed — Ly et al. Treatment of Acne During Pregnancy and Lactation (Dermatol Ther 2023)", "pmid": "36447117", "url": "https://pubmed.ncbi.nlm.nih.gov/36447117/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "sensible", "grasa"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido azelaico"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente",
+        "seguro_en_embarazo": true
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-018",
+      "title": "Ácido tranexámico tópico: una alternativa para el melasma",
+      "content": "El ácido tranexámico es un ingrediente que ha ganado relevancia en el tratamiento del melasma, una condición de hiperpigmentación que afecta especialmente a mujeres y es común en fototipos medios a oscuros, como los prevalentes en Colombia. Originalmente usado como antifibrinolítico en medicina (para reducir el sangrado), se descubrió que también tiene un efecto despigmentante al inhibir la interacción entre los queratinocitos y los melanocitos, reduciendo la producción de melanina inducida por factores como la radiación UV y los procesos inflamatorios. El ácido tranexámico puede usarse de forma tópica (en cremas o sueros) y, en casos seleccionados y bajo supervisión médica estricta, de forma oral. La vía tópica tiene un mejor perfil de seguridad para el uso cosmético y es la más recomendada para la mayoría de los casos. Las revisiones de evidencia, incluyendo comparativas tipo Cochrane, han evaluado su eficacia frente a otros despigmentantes como la hidroquinona, encontrando que puede ser una alternativa con menos efectos adversos, lo cual es especialmente relevante dado que la hidroquinona tiene riesgos como la ocronosis con uso prolongado. El ácido tranexámico tópico se puede combinar con otros despigmentantes y siempre debe acompañarse de protector solar de amplio espectro, porque la exposición solar es el principal factor que empeora el melasma. Si tienes melasma, es fundamental que un dermatólogo evalúe tu caso, determine la profundidad del pigmento y diseñe un plan de tratamiento integral, porque el melasma es una condición crónica que requiere manejo continuo.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "Cochrane Library — Revisiones de intervenciones dermatológicas (hidroquinona vs ácido tranexámico)", "url": "https://www.cochranelibrary.com/", "year": 2024 },
+        { "institution": "BJD/JAMA Dermatology/JAAD — Ácido tranexámico tópico en melasma", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["III", "IV", "V", "VI"],
+        "ingredients": ["acido tranexamico"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "escaner_textura_poros", "aura"],
+        "content_type": "fundamento_ingrediente",
+        "contexto_latinoamericano": true
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-019",
+      "title": "Lista consolidada: ingredientes contraindicados en embarazo y lactancia",
+      "content": "Esta es una lista consolidada de los ingredientes activos cuya seguridad en el embarazo y la lactancia está comprometida o no está demostrada, y que por lo tanto deben evitarse o usarse solo bajo orientación médica durante estas etapas. Los retinoides (retinol, retinal, tretinoína, retinaldehído y cualquier derivado de la vitamina A) están contraindicados por riesgo de teratogenicidad, siendo esta la contraindicación más importante. La hidroquinona debe evitarse por falta de evidencia de seguridad y sus riesgos asociados. El ácido salicílico en altas concentraciones o de uso frecuente debe usarse con precaución y bajo orientación médica, aunque en concentraciones bajas y uso puntual el riesgo es menor. Los antibióticos orales para el acné tienen restricciones específicas según el tipo. Respecto al bakuchiol, aunque no es un retinoide, no hay estudios de seguridad en gestantes, por lo que se recomienda evitarlo o consultarlo con el médico. Las alternativas generalmente consideradas seguras durante el embarazo incluyen el ácido azelaico y, según la evidencia, el peróxido de benzoilo en concentraciones apropiadas, siempre bajo orientación médica. Es fundamental destacar que esta información es orientativa y no sustituye la consulta médica: cada embarazo es único y la decisión sobre qué ingredientes usar debe tomarse en conjunto con tu dermatólogo y tu obstetra. Si estás embarazada, en lactancia o planeando un embarazo, revisa los ingredientes de tus productos de cuidado de la piel y consulta con tu médico cuáles puedes continuar usando.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "FDA — Drug Safety Communications (Cosmetic Ingredients)", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed — Ly et al. Treatment of Acne During Pregnancy and Lactation (Dermatol Ther 2023)", "pmid": "36447117", "url": "https://pubmed.ncbi.nlm.nih.gov/36447117/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol", "retinal", "tretinoina", "hidroquinona", "acido salicilico", "bakuchiol", "acido azelaico", "peroxido de benzoilo"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "lista_consolidada_contraindicaciones"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "ingactivos-020",
+      "title": "Cómo combinar ingredientes activos: qué mezclar y qué evitar",
+      "content": "Combinar correctamente los ingredientes activos es clave para maximizar beneficios y minimizar la irritación. Algunas combinaciones son sinérgicas y recomendadas por la evidencia, mientras que otras deben evitarse o usarse con precaución. Combinaciones recomendadas: vitamina C por la mañana con protector solar (la vitamina C potencia la protección antioxidante frente al daño UV), retinol por la noche con una crema hidratante (la hidratante reduce la irritación del retinol), niacinamida con casi cualquier ingrediente (es muy versátil y bien tolerada), y ácido hialurónico con cualquier rutina (aporta hidratación sin conflicto). Combinaciones que requieren precaución o deben evitarse en la misma aplicación: retinol con AHAs o BHA en alta concentración (ambos pueden irritar, y juntos aumentan el riesgo de sensibilización), retinol con peróxido de benzoilo en la misma rutina (pueden inactivarse mutuamente en algunas formulaciones), y vitamina C en su forma ácida con retinol al mismo tiempo (pueden irritar y tener pH óptimos distintos). Como regla general práctica, si estás introduciendo varios activos nuevos, hazlo uno a la vez con algunos días de diferencia, para que puedas identificar cuál causa una reacción si aparece. También es útil separar los activos irritantes: por ejemplo, retinol por la noche y vitamina C por la mañana. Si tienes piel sensible, rosácea o una barrera cutánea comprometida, simplifica tu rutina y consulta con un dermatólogo antes de combinar varios activos potentes. La clave es la paciencia y la observación de cómo responde tu piel.",
+      "category": "ingredientes_activos_contraindicaciones",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["retinol", "vitamina C", "niacinamida", "acido hialuronico", "AHA", "BHA", "peroxido de benzoilo"],
+        "contraindications": ["piel sensible sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "guia_combinaciones"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunosenescencia-002",
+    "title": "Inmunosenescencia: El Rol de las Células T Reguladoras en el Nicho Folicular",
+    "content": "La inmunosenescencia del nicho folicular se caracteriza por una disregulación progresiva de las células T reguladoras (Tregs). A diferencia de otras regiones cutáneas, el folículo piloso requiere un ambiente inmunoprivilegiado para permitir el ciclo de regeneración. Investigaciones en PubMed indican que con el envejecimiento, la densidad de Tregs en el área perifolicular disminuye, lo que reduce la capacidad del folículo para suprimir la inflamación sistémica o local. Esta pérdida de control inmunológico contribuye a la miniaturización del folículo mediante la liberación constante de citoquinas proinflamatorias. La detección temprana de este agotamiento inmunitario es un área de diagnóstico emergente; el estudio del perfil de expresión de marcadores como Foxp3 en biopsias o muestras no invasivas podría predecir la resistencia a tratamientos convencionales. En GlowApp, este enfoque permite identificar pacientes cuya alopecia no es meramente androgénica, sino mediada por un proceso de inflamación crónica de bajo grado derivado de la senescencia inmune. La restauración del equilibrio de Tregs surge como una diana terapéutica prometedora para frenar el declive folicular en estadios tempranos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central / NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:09:23.058Z"
+  }
+]

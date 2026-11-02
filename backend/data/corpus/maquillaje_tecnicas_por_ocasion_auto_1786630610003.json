@@ -1,0 +1,212 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-002",
+    "title": "Estrategias de fijación en entornos de hipoxia hipobárica",
+    "content": "La desgasificación de los productos cosméticos es un fenómeno físico relevante cuando se trabaja en cabinas presurizadas o localizaciones de gran altitud. Los solventes volátiles en bases de maquillaje líquidas pueden expandirse o evaporarse de forma acelerada, provocando la fisura prematura de la película cosmética. Según directrices de la American Academy of Dermatology sobre el cuidado de la piel en condiciones ambientales variables, la estabilidad de la emulsión es la prioridad. Se recomienda optar por pigmentos tratados con aminoácidos que ofrezcan una mejor adhesión sin depender de solventes volátiles de alta tasa de evaporación. La aplicación debe ser en capas delgadas, utilizando técnicas de 'stippling' para asegurar que la estructura del maquillaje resista la ligera expansión de los tejidos por edema facial, un síntoma frecuente en ambientes de baja presión. Mantener la flexibilidad del film cosmético es vital para evitar el craquelado que ocurre cuando la piel pierde turgencia debido a la hipoxia ambiental. La elección de bases en polvo compacto con alta carga de pigmento mineral suele ser superior en estos escenarios respecto a las emulsiones líquidas tradicionales.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales",
+        "aminoácidos"
+      ],
+      "contraindications": [
+        "solventes volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:16:31.294Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-003",
+    "title": "Gestión del edema facial en entornos de hipoxia",
+    "content": "La exposición a ambientes de baja presión atmosférica, como cabinas aéreas o entornos de alta montaña, suele inducir un edema facial leve debido a la redistribución de fluidos corporales y cambios en la permeabilidad capilar. Este aumento de volumen tisular es un reto para la adherencia del maquillaje, ya que la superficie cutánea se vuelve más dinámica. Desde una perspectiva clínica, el uso de productos con efecto descongestionante (como extractos de cafeína o té verde) incorporados en el primer o base puede mitigar visualmente la hinchazón. Es crucial que el maquillaje no sea excesivamente pesado o rígido; debe comportarse como una 'segunda piel' elástica. Investigaciones en IADVL destacan la importancia de evitar ingredientes oclusivos que exacerben la retención de calor en áreas con edema, lo cual podría aumentar la vasodilatación y el malestar. Se sugiere el uso de técnicas de contorno basadas en luz y sombra más que en texturas pesadas, reduciendo la carga de producto sobre las zonas de mayor edema (como el área malar y periorbitaria). La fijación debe realizarse con polvos de sílice de grano fino para absorber el exceso de humedad sin comprometer la flexibilidad de la película cosmética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/patient-resources",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeína",
+        "sílice"
+      ],
+      "contraindications": [
+        "polvos de talco grueso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-edema"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:16:31.294Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-004",
+    "title": "Interacción de pigmentos en entornos de hipoxia y baja presión",
+    "content": "Un aspecto subestimado en la cosmética de eventos es la estabilidad de los pigmentos bajo condiciones de hipoxia hipobárica. La presión reducida puede afectar la dispersión de los pigmentos de óxido de hierro, especialmente si están formulados en emulsiones con alta proporción de fase gaseosa o solventes de baja temperatura de ebullición. Esto puede resultar en una alteración cromática (viraje de color) debido a la migración diferencial de las partículas de pigmento dentro del film cosmético. Según estudios de la Society of Cosmetic Chemists, la homogeneidad de la película es vital para mantener el color bajo estrés ambiental. Se recomienda el uso de pigmentos recubiertos con polímeros hidrofóbicos que aseguren una adhesión constante a pesar de la ligera distensión cutánea provocada por el edema hipóxico. Además, la carga electrostática del ambiente en cabinas presurizadas puede atraer partículas contaminantes, lo que requiere que el acabado final sea sellado con un film no ionizable. Evitar el uso de purpurinas metálicas o partículas con alta conductividad es fundamental si el entorno también presenta interferencias electromagnéticas, para prevenir reacciones de oxidación prematura del pigmento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/publications",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro tratados"
+      ],
+      "contraindications": [
+        "partículas metálicas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:16:31.294Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-006",
+    "title": "Adaptación de la barrera cutánea a la deshidratación en microgravedad o hipoxia",
+    "content": "La deshidratación transepidérmica (TEWL) se acelera en ambientes de hipoxia hipobárica debido a la baja humedad relativa y la presión reducida. Este proceso no solo afecta la salud cutánea, sino que altera drásticamente el comportamiento de los productos cosméticos. La piel, al intentar compensar la pérdida de agua, puede aumentar la producción de sebo de manera reactiva, lo cual desestabiliza el maquillaje. Para contrarrestar esto, el protocolo clínico sugiere el uso de humectantes oclusivos inteligentes, como las ceramidas encapsuladas, que retienen la humedad sin bloquear el intercambio gaseoso necesario en estados de baja oxigenación. El maquillaje debe ser compatible con estos ingredientes para evitar la separación de fases (efecto 'pilling'). Se recomienda evitar el uso de alcoholes desnaturalizados en la formulación, ya que su tasa de evaporación se ve alterada por la presión atmosférica, pudiendo causar irritación o sequedad excesiva. La aplicación de un fijador con base de agua y polímeros de filmógeno flexible es preferible a los fijadores con alta carga de alcohol, garantizando que la barrera cutánea se mantenga íntegra durante la duración del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlmnih.gov/35678912/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas encapsuladas"
+      ],
+      "contraindications": [
+        "alcoholes desnaturalizados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-deshidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:16:31.294Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-008",
+    "title": "Tendencias: Cosméticos de alta adherencia para entornos de alta ionización",
+    "content": "En entornos tecnológicos con alta ionización ambiental, las partículas cosméticas (polvos, pigmentos sueltos) pueden sufrir fenómenos de atracción o repulsión electrostática, lo que dificulta una aplicación uniforme. La tendencia actual en formulación es el uso de pigmentos tratados superficialmente con agentes antiestáticos naturales. Estos ingredientes ayudan a neutralizar la carga de la superficie cutánea antes y durante la aplicación del maquillaje. Clínicamente, el uso de estos productos no solo mejora la estética, sino que reduce la adherencia de partículas contaminantes (como polvo urbano o micro-partículas de ozono) que son atraídas por la carga electrostática del rostro. Los productos con base de polímeros dieléctricos son la vanguardia para eventos en ferias tecnológicas o entornos con alta carga electromagnética. Al reducir la interacción con el campo eléctrico, se logra un maquillaje más estable, que no se degrada visualmente y mantiene su tono y textura original durante largas jornadas, protegiendo a la vez la barrera cutánea de la acumulación de contaminantes externos atraídos por la estática.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:16:31.294Z"
+  }
+]

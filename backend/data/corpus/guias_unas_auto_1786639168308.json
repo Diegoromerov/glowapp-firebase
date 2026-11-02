@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "guias-unas-onico-friccion-001",
+    "title": "Onicólisis por fricción lateral: la biomecánica del calzado estrecho",
+    "content": "La onicólisis por fricción lateral es una condición a menudo mal diagnosticada en cabina como una infección por hongos. Se produce cuando el calzado de punta estrecha o rígida ejerce una presión mecánica constante sobre los bordes laterales de la lámina ungueal, desplazándola de su lecho. A diferencia de la onicomicosis, esta condición presenta una separación distal o lateral sin cambios en la textura o coloración inicial de la placa. La AAD destaca que el microtrauma repetitivo altera la adhesión del hiponiquio, creando un espacio susceptible a la colonización oportunista. Es fundamental que los profesionales de GlowApp identifiquen que no es un problema estético o infeccioso primario, sino una respuesta biomecánica al calzado. El tratamiento requiere la eliminación de la presión mecánica, no el uso de antifúngicos tópicos. La persistencia de este trauma puede derivar en una hiperqueratosis subungueal compensatoria, intentando proteger el lecho expuesto. La educación al usuario sobre la horma del zapato y el uso de separadores de dedos anatómicos es la intervención primaria más efectiva, evitando limados innecesarios sobre una uña que ya está sufriendo una separación por fuerzas tangenciales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-diferencial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:39:09.959Z"
+  },
+  {
+    "chunk_id": "guias-unas-queratina-002",
+    "title": "Degradación de puentes disulfuro por deshidratantes excesivos",
+    "content": "La integridad de la lámina ungueal depende de la disposición ordenada de los corneocitos y los puentes disulfuro dentro de la queratina. El uso indiscriminado de deshidratantes (preps) con altos niveles de acetona o solventes agresivos altera la homeostasis lipídica intercelular. PubMed recalca que una deshidratación excesiva no solo compromete la adhesión del producto, sino que reduce la elasticidad de la lámina, haciéndola quebradiza. Este proceso es irreversible en la zona tratada. La clave técnica es entender que la deshidratación debe ser superficial y controlada; el exceso de solvente penetra los espacios intercelulares, extrayendo lípidos que actúan como cemento natural. Cuando la queratina pierde su capacidad de retención hídrica natural debido a la eliminación de estos lípidos, se produce una onicosquizia lamelar secundaria al tratamiento. Es vital ajustar el protocolo de GlowApp para utilizar deshidratantes solo en la zona de la cutícula y evitar el contacto con el borde libre, donde la queratina es más vulnerable a la fisuración. La salud a largo plazo de la uña depende de mantener este equilibrio hídrico sin comprometer la estructura proteica básica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32483864/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "solventes"
+      ],
+      "contraindications": [
+        "deshidratacion-excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-preparacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:39:09.959Z"
+  },
+  {
+    "chunk_id": "guias-unas-microbioma-004",
+    "title": "Oclusión prolongada y disrupción del microbioma subungueal",
+    "content": "La oclusión prolongada de la lámina ungueal con sistemas de larga duración altera el entorno microambiental natural, favoreciendo el sobrecrecimiento de microorganismos anaerobios facultativos. El microbioma subungueal es esencial para mantener el pH ácido que protege contra patógenos. Cuando se sella la uña durante periodos extensos sin el mantenimiento adecuado, la humedad atrapada y la falta de oxigenación crean un nicho para el desarrollo de biopelículas (biofilms) invisibles al ojo humano. Estos biofilms son extremadamente resistentes a la desinfección superficial. La literatura en microbiología dermatológica advierte que la disrupción de este equilibrio aumenta el riesgo de paroniquias crónicas y onicólisis inducida por pseudomonas. En GlowApp, recomendamos un periodo de 'descanso' o, idealmente, una limpieza profunda y re-evaluación del lecho cada 3-4 semanas. No se debe ignorar cualquier cambio de opacidad en la placa bajo el producto, ya que puede ser el primer signo de un desequilibrio microbiano. El mantenimiento de la asepsia no termina en el instrumento, sino en la salud del ecosistema que vive bajo la lámina ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "oclusion-prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-y-seguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:39:09.959Z"
+  },
+  {
+    "chunk_id": "guias-unas-limado-005",
+    "title": "Termodinámica del limado y daño a la matriz ungueal",
+    "content": "El limado excesivo, especialmente con tornos eléctricos de alta frecuencia, genera un calor friccional que se transfiere directamente a la matriz ungueal. La matriz es un tejido altamente vascularizado y metabólicamente activo; un aumento de temperatura por encima de los 42°C puede causar daño celular irreversible. Este daño térmico es el origen silencioso de muchas distrofias ungueales que aparecen semanas después del servicio. El calor no solo afecta la matriz, sino que puede causar micro-quemaduras en el lecho, provocando onicólisis dolorosa. Es crucial utilizar fresas de carburo de tungsteno bien calibradas y mantener una velocidad de rotación baja, evitando la presión excesiva. Además, el profesional debe trabajar con movimientos constantes para disipar el calor generado. La termodinámica aplicada a la manicura sugiere que el contacto intermitente con la lámina es preferible al limado continuo. En GlowApp, la seguridad del tejido vivo debe prevalecer sobre la velocidad del proceso. Un limado térmicamente controlado es el estándar de oro para prevenir distrofias matriciales que pueden tardar meses en manifestarse visualmente como estrías o engrosamientos irregulares.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado-alta-velocidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-limado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:39:09.959Z"
+  },
+  {
+    "chunk_id": "guias-unas-psoriasis-006",
+    "title": "Psoriasis ungueal: la trampa del diagnóstico diferencial",
+    "content": "La psoriasis ungueal es frecuentemente confundida con la onicomicosis, llevando a tratamientos ineficaces con antifúngicos. Los signos clínicos clave, como el 'pitting' (depresiones puntiformes), las manchas de aceite (manchas amarillentas subungueales) y la onicólisis con borde eritematoso, son indicadores de una patología autoinmune subyacente. La AAD enfatiza que el diagnóstico debe ser confirmado por un dermatólogo, ya que el tratamiento de la psoriasis ungueal requiere terapias sistémicas o intralesionales, no cosméticas. En cabina, la manipulación de una uña psoriásica es de alto riesgo; el fenómeno de Koebner puede provocar que el trauma mecánico del limado desencadene lesiones psoriásicas más severas en el área periungueal. Si un profesional de GlowApp observa estas características, el protocolo debe ser la derivación médica inmediata y la abstención de cualquier servicio de esmaltado, ya que los productos químicos pueden exacerbar la inflamación. El diagnóstico diferencial es una responsabilidad ética del especialista en uñas; reconocer que no todo cambio en la lámina es un hongo protege tanto al usuario como la reputación profesional del servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/psoriasis/treatment/nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion-psoriasis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-diferencial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:39:09.959Z"
+  },
+  {
+    "chunk_id": "guias-unas-hiperhidrosis-008",
+    "title": "Hiperhidrosis periungueal y el fallo de adhesión",
+    "content": "La hiperhidrosis periungueal es un factor crítico en el fallo prematuro de los sistemas fotopolimerizables. El exceso de humedad en el lecho ungueal y los pliegues laterales reduce la energía superficial de la uña, impidiendo que los primers y bases creen enlaces moleculares estables. PubMed indica que la presencia de sudor actúa como una barrera física y química. Muchos profesionales intentan compensar esto usando primers ácidos más fuertes, lo cual es contraproducente, ya que el ácido puede irritar el lecho ya sensibilizado por la humedad. En GlowApp, el abordaje clínico debe ser la gestión de la humedad mediante agentes secantes suaves y una preparación meticulosa de la superficie, sin recurrir a la abrasión excesiva. La hiperhidrosis también altera el pH del lecho, lo que puede inhibir la polimerización completa del gel, aumentando el riesgo de dermatitis por contacto. Es necesario identificar a los usuarios con esta condición para ajustar el protocolo de aplicación, priorizando bases diseñadas para alta adhesión en condiciones de humedad y evitando el exceso de producto que pueda atrapar el sudor bajo la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24796332/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primer-acido"
+      ],
+      "contraindications": [
+        "uso-excesivo-primers"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-preparacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:39:09.959Z"
+  }
+]

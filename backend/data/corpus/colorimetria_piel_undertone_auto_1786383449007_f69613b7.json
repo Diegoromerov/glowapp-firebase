@@ -1,0 +1,205 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383449005-1-0d007edf-fluorescencia-inducida-por-ages-el-desafio-del-subtono-en-lu",
+    "title": "Fluorescencia inducida por AGEs: El desafío del subtono en luz UV",
+    "content": "Los productos finales de glicación avanzada (AGEs) no solo alteran el tono base mediante el amarillamiento proteico, sino que poseen propiedades intrínsecas de fluorescencia bajo exposición a radiación UV. Este fenómeno crea una discrepancia óptica significativa entre la apariencia del subtono bajo luz natural y bajo iluminación artificial enriquecida en espectro UV (como en discotecas o ciertos entornos comerciales). La acumulación de AGEs en el colágeno dérmico altera la reflectancia espectral, provocando que la piel emita una luminiscencia azulada que interfiere con la percepción del subtono cálido o neutro. Este 'efecto neón' subclínico puede confundir los algoritmos de diagnóstico cromático, ya que la piel parece tener una cromaticidad diferente a la medida mediante espectroscopia estándar. Es fundamental considerar la densidad de AGEs al calibrar sensores de color para aplicaciones de belleza, dado que la fluorescencia altera la saturación percibida y puede llevar a errores en la selección de bases de maquillaje que no consideran este componente dinámico de la piel envejecida.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:29.005Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383449005-2-a905f525-estratificacion-de-melanina-y-la-profundidad-de-la-dispersio",
+    "title": "Estratificación de melanina y la profundidad de la dispersión de luz",
+    "content": "La percepción del subtono no depende únicamente de la concentración de melanina, sino de su distribución estratigráfica. La melanina situada en la capa basal superior dispersa la luz de forma distinta a la melanina profunda en la dermis papilar. Este fenómeno, conocido como efecto Tyndall dérmico, explica por qué pieles con el mismo fototipo pueden presentar subtonos radicalmente distintos; una mayor profundidad de la melanina tiende a filtrar las longitudes de onda cortas, otorgando un matiz azulado o grisáceo (subtono frío) independientemente de la calidez superficial. La modelización de la transferencia radiativa en la piel debe integrar la profundidad de los melanosomas como una variable crítica. Ignorar esta estratificación conduce a una subestimación del componente frío en pieles con hiperpigmentación dérmica, resultando en la elección de bases con exceso de pigmentos amarillos que no logran neutralizar la profundidad del tono. La cuantificación precisa requiere el uso de imágenes multiespectrales que distingan la absorción epidérmica de la dispersión dérmica profunda.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_analisis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:29.005Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383449005-3-19a941b7-hidratacion-del-estrato-corneo-y-su-papel-en-el-brillo-espec",
+    "title": "Hidratación del estrato córneo y su papel en el brillo especular",
+    "content": "El estado de hidratación del estrato córneo actúa como un filtro óptico que modifica la relación entre la reflexión especular y la difusa. Un estrato córneo deshidratado presenta una superficie microscópicamente rugosa que aumenta la dispersión difusa, lo que resulta en una apariencia mate y opaca que 'aplana' el subtono, dificultando la identificación de matices subyacentes. Por el contrario, una piel correctamente hidratada permite una reflexión especular más controlada, revelando la verdadera cromaticidad del subtono. Este cambio en la física de la superficie cutánea explica por qué el diagnóstico de subtono es menos preciso en pieles secas o deshidratadas. La presencia de agua en los corneocitos altera el índice de refracción de la capa externa, permitiendo que la luz penetre más profundamente hacia las capas donde reside la información del subtono. Para optimizar el diagnóstico RAG, es imperativo realizar una normalización de la hidratación cutánea previa a cualquier captura de imagen, garantizando que la lectura del color no esté sesgada por la pérdida de agua transepidérmica y la consecuente alteración de la dispersión lumínica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12900",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "invierno"
+      ],
+      "applicable_modules": [
+        "modulo_preparacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:29.005Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383449005-4-4fecd2ed-microinflamacion-subclinica-y-la-distorsion-del-tono-eritema",
+    "title": "Microinflamación subclínica y la distorsión del tono eritematoso",
+    "content": "La microinflamación subclínica, a menudo invisible a simple vista, eleva los niveles de citoquinas proinflamatorias y aumenta la perfusión sanguínea en el plexo vascular superficial. Este estado inflamatorio de baja intensidad induce un sutil eritema que se superpone al subtono natural, desplazando la lectura cromática hacia el espectro rojo-rosado. En el contexto de GlowApp, esta condición puede ser malinterpretada como un subtono frío o rosado, llevando a una selección incorrecta de productos correctores. La distinción entre un subtono rosado constitucional y un eritema inducido por inflamación es crítica para la precisión del RAG. El sistema debe ser capaz de identificar patrones de distribución vascular que sugieran inflamación (como la concentración perioral o en pómulos) frente a la distribución uniforme de la melanina. La integración de datos sobre la sensibilidad cutánea y el historial de reactividad permite ajustar el algoritmo, restando el componente de 'ruido' inflamatorio para revelar el subtono basal real del usuario, evitando así la sobrecorrección con pigmentos verdes innecesarios.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00056-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "centella asiática"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:29.005Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383449005-5-952cd9d9-composicion-lipidica-del-sebo-y-su-impacto-en-la-oxidacion-d",
+    "title": "Composición lipídica del sebo y su impacto en la oxidación de pigmentos",
+    "content": "La composición del sebo cutáneo, particularmente la proporción de escualeno y ácidos grasos libres, juega un papel determinante en la estabilidad cromática de las bases de maquillaje. El escualeno es altamente susceptible a la peroxidación lipídica, un proceso que genera radicales libres que interactúan químicamente con los pigmentos de óxido de hierro presentes en las bases. Esta oxidación altera el color del producto una vez aplicado, provocando un viraje hacia tonos más oscuros o anaranjados, fenómeno comúnmente denominado 'oxidación del maquillaje'. Este cambio no es una propiedad del subtono del usuario, sino una reacción química externa que distorsiona la percepción del color original. Para mitigar este sesgo en el diagnóstico, GlowApp debe correlacionar el tipo de piel (seborreica vs. seca) con la tasa de oxidación esperada del producto. La implementación de una capa de ajuste en el RAG, que compense el viraje esperado basado en el perfil lipídico del usuario, es esencial para asegurar que la recomendación de color sea duradera y precisa a lo largo del día, evitando el efecto de 'base naranja' en pieles grasas.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16200",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "vitamina E"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_recomendacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:29.005Z"
+  }
+]

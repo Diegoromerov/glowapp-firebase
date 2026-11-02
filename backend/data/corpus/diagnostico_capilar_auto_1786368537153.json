@@ -1,0 +1,250 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-telomerasa-001",
+    "title": "La Longitud de los Telómeros como Marcador de Senescencia Folicular",
+    "content": "La longitud de los telómeros en las células madre del folículo piloso se ha convertido en un indicador crítico para evaluar la capacidad regenerativa del ciclo capilar. Investigaciones publicadas en revistas de dermatología molecular sugieren que el acortamiento progresivo de estas secuencias repetitivas en el ADN, derivado del estrés oxidativo y la división celular repetida, predice la transición hacia la miniaturización folicular irreversible. A diferencia de las células epidérmicas comunes, las células madre del bulge folicular poseen una capacidad de reparación finamente ajustada por la enzima telomerasa. Cuando este mecanismo falla, el folículo entra en un estado de quiescencia prolongada, alargando la fase telógena y reduciendo la capacidad de anagén. Este fenómeno, descrito en estudios de PubMed, permite diferenciar entre un efluvio telógeno reversible y una alopecia androgenética incipiente donde la senescencia es el factor limitante. La evaluación de este marcador, aunque compleja, abre puertas a terapias regenerativas que buscan no solo estimular el crecimiento, sino preservar el potencial biológico del nicho folicular, evitando el agotamiento prematuro de las células progenitoras en pacientes con predisposición genética a la calvicie.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "factores de crecimiento"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:38.230Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-002",
+    "title": "Regulación de la Autofagia en el Ciclo del Folículo Piloso",
+    "content": "La autofagia actúa como un mecanismo de control de calidad esencial para la supervivencia de las células del bulbo piloso, especialmente durante la transición de la fase catágena. Estudios recientes en la literatura dermatológica indican que la inhibición de la autofagia acelera la apoptosis prematura de las células de la matriz, lo que resulta en una caída capilar acelerada. Este proceso de 'autolisis' controlada permite a las células eliminar orgánulos dañados y proteínas mal plegadas, optimizando el consumo energético durante las fases de alta demanda metabólica. En el contexto clínico, una deficiencia en la vía de la autofagia se ha correlacionado con una menor resistencia al estrés externo, como la polución y la radiación UV. La modulación de este proceso a través de compuestos nutricionales específicos o agentes tópicos está siendo investigada para restaurar la homeostasis del folículo. Entender la tasa de autofagia basal en el cuero cabelludo permite al especialista predecir la resiliencia del paciente frente a factores estresores, facilitando un diagnóstico más preciso en alopecias de origen multifactorial donde la inflamación crónica ha degradado la integridad celular interna.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "spermidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:38.230Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-epigenetica-003",
+    "title": "Modificaciones Epigenéticas en el Receptor de Andrógenos",
+    "content": "La expresión del receptor de andrógenos (AR) en la papila dérmica no solo depende de la herencia genética, sino también de modificaciones epigenéticas como la metilación del ADN. Este fenómeno explica por qué pacientes con cargas genéticas similares presentan fenotipos de alopecia androgenética radicalmente distintos. La hipermetilación del promotor del gen AR puede silenciar o sobreexpresar la respuesta folicular a la dihidrotestosterona (DHT). En el diagnóstico clínico moderno, la identificación de estos patrones epigenéticos, facilitada por avances en la teledermatoscopia y el análisis de biomarcadores, permite personalizar el tratamiento farmacológico. Si el paciente presenta una sensibilidad elevada debido a una desmetilación aberrante, las terapias convencionales de bloqueo de 5-alfa reductasa podrían resultar insuficientes sin un acompañamiento de moduladores epigenéticos tópicos. Este enfoque traslada la dermatología capilar desde un diagnóstico basado en la observación pura hacia una medicina de precisión, donde se evalúa el entorno regulador del gen y no únicamente la presencia de la hormona circulante, optimizando así los resultados terapéuticos a largo plazo y mejorando la adherencia al tratamiento.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "finasteride"
+      ],
+      "contraindications": [
+        "embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_precision"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:38.230Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-004",
+    "title": "El Papel de la Sustancia P en la Inflamación Neurogénica",
+    "content": "La inflamación neurogénica es un componente subestimado pero crítico en el diagnóstico de las alopecias. La liberación de neuropéptidos, específicamente la Sustancia P, desde las terminaciones nerviosas periféricas que rodean el folículo, induce una vasodilatación persistente y una activación de los mastocitos perivasculares. Este estado inflamatorio subclínico, a menudo desencadenado por estrés emocional o irritantes ambientales, acelera la entrada del folículo en fase catágena. Clínicamente, el paciente puede presentar tricodinia (dolor o sensibilidad en el cuero cabelludo) como marcador cardinal de esta inflamación. El diagnóstico debe incluir una evaluación de la reactividad del cuero cabelludo a estímulos externos, diferenciando la inflamación neurogénica de las dermatitis clásicas. El manejo requiere no solo agentes antiinflamatorios tópicos, sino también estrategias de modulación neuro-cutánea. La literatura actual en PubMed destaca que la persistencia de esta señalización neurogénica es una causa principal de la falta de respuesta a los tratamientos estándar para la alopecia androgenética, lo que subraya la importancia de integrar el eje neuro-inmune en el protocolo de curaduría de GlowApp.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niamicida",
+        "agentes calmantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:38.230Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-005",
+    "title": "Impacto de los AGEs en la Rigidez de la Matriz Folicular",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) en la dermis peri-folicular provoca una rigidez estructural que compromete la capacidad del folículo para expandirse durante el ciclo de crecimiento. Este proceso, similar a la fibrosis, es exacerbado por dietas ricas en azúcares refinados y exposición crónica al estrés oxidativo. La glicación de las fibras de colágeno y elastina en la vaina radicular externa dificulta la vascularización del bulbo, creando un entorno hipóxico. En la práctica clínica, este hallazgo se traduce en un adelgazamiento del tallo capilar y una dificultad para recuperar la densidad original. El diagnóstico mediante la evaluación de la elasticidad del cuero cabelludo es fundamental para identificar la 'sarcopenia capilar' o el endurecimiento del tejido circundante. La intervención debe enfocarse en agentes antiglicantes y en la optimización metabólica sistémica, ya que la aplicación tópica por sí sola es insuficiente para revertir el daño estructural acumulado en la matriz extracelular. Es vital educar al paciente sobre la relación directa entre el consumo de carbohidratos de alto índice glucémico y la salud mecánica de sus folículos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Nutrición y Piel",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:38.230Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-008",
+    "title": "Bioimpedancia del Cuero Cabelludo para Evaluar la Hidratación Estrato-Folicular",
+    "content": "La medición de la hidratación del estrato córneo del cuero cabelludo mediante bioimpedancia eléctrica ofrece una métrica objetiva para evaluar la integridad de la barrera cutánea. Una barrera comprometida, caracterizada por una baja conductancia, facilita la penetración de irritantes y alérgenos, exacerbando la inflamación folicular. En pacientes con caída capilar, la deshidratación del cuero cabelludo suele preceder a la aparición de brotes de dermatitis seborreica o al aumento de la fragilidad del tallo. Este método de diagnóstico permite cuantificar la eficacia de los productos de cuidado diario y ajustar el régimen de lavado. La bioimpedancia revela que el pH y la hidratación no son uniformes en todo el cuero cabelludo, siendo las zonas con mayor densidad folicular las más propensas a la pérdida de agua transepidérmica. Al integrar este análisis en la consulta de GlowApp, es posible prescribir formulaciones humectantes personalizadas que no obstruyan el ostium folicular, garantizando un equilibrio entre la salud de la barrera y la oxigenación necesaria para el folículo piloso durante las fases de crecimiento activo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:38.230Z"
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "chunk_id": "colorimetria-efecto-altitud-bogota-001",
+    "title": "Impacto de la hipoxia hipobárica y la altitud en la colorimetría facial en Bogotá",
+    "content": "La altitud de Bogotá (2.640 msnm) induce una respuesta fisiológica de adaptación caracterizada por una leve hipoxia hipobárica, la cual altera la microcirculación facial. Estudios sugieren que la vasoconstricción periférica adaptativa y la posible poliglobulia compensatoria modifican la saturación de oxígeno en la hemoglobina capilar. Este cambio en la oxigenación altera la reflectancia de la piel, desplazando el subtono percibido hacia tonalidades más frías o azuladas, particularmente en el área malar y periorbital. Para el diagnóstico de subtono en esta región, es crucial considerar que la palidez o el eritema no siempre son indicadores de subtono frío/cálido, sino respuestas hemodinámicas a la presión atmosférica. La colorimetría debe realizarse tras un periodo de aclimatación térmica para evitar falsos positivos en la lectura del subtono, evitando confundir la cianosis subclínica de altitud con un subtono frío natural. La evaluación debe priorizar áreas menos vascularizadas, como la zona mandibular, para obtener una lectura más fiel a la melanina profunda y no a la hemodinámica sistémica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31534436/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_virtual"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:27:58.668Z"
+  },
+  {
+    "chunk_id": "colorimetria-interferencia-betabloqueadores-002",
+    "title": "Interferencia de fármacos betabloqueadores en la cromaticidad cutánea",
+    "content": "El uso sistémico de betabloqueadores, comunes en el tratamiento de la hipertensión arterial, ejerce una influencia directa en el tono cutáneo a través de la modulación del flujo sanguíneo cutáneo y la respuesta vasomotora. Estos fármacos reducen la reactividad vascular, disminuyendo la capacidad de la piel para manifestar rubor ante estímulos térmicos o emocionales, lo que puede homogeneizar el tono facial de manera artificial. Clínicamente, esto representa un desafío para la colorimetría, ya que el paciente puede parecer tener un subtono más neutro o apagado debido a la reducción de la perfusión sanguínea superficial. La falta de variabilidad hemodinámica impide observar el 'rubor natural' que suele guiar a los expertos en la identificación de subtonos. Se recomienda que, ante pacientes medicados con estos compuestos, la evaluación del subtono se base en la observación de la pigmentación basal en áreas protegidas de la radiación UV y no en la respuesta vascular dinámica, evitando así errores en la selección de bases con subtonos demasiado cálidos que intentan compensar una palidez inducida farmacológicamente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "betabloqueadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:27:58.668Z"
+  },
+  {
+    "chunk_id": "colorimetria-memoria-cromatica-003",
+    "title": "El sesgo de memoria cromática en la autoevaluación del subtono",
+    "content": "La percepción humana del color no es un registro objetivo, sino un proceso mediado por la memoria cromática y sesgos cognitivos. En el contexto de la colorimetría, el 'sesgo de confirmación' ocurre cuando el usuario, influenciado por estándares de belleza o tendencias de marketing, busca activamente características en su piel que confirmen un subtono deseado (por ejemplo, el deseo de ser 'cálida' por tendencia). Estudios en neurociencia cognitiva sugieren que nuestra memoria falla al recordar el tono exacto de nuestra piel bajo luz neutra, tendiendo a idealizar el matiz hacia colores más saturados o dorados. Este fenómeno explica por qué los usuarios suelen elegir bases que no coinciden con su espectro real. Para mitigar este sesgo, es indispensable el uso de herramientas de referencia (color checkers) y la comparación simultánea bajo condiciones de iluminación controlada (D65). La educación del usuario debe centrarse en la neutralidad, alejándose de la carga emocional que implica clasificar la piel como 'fría' o 'cálida', enfocándose en la física de la reflectancia y la absorción de luz en la epidermis.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion_usuario"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:27:58.668Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-hev-fatiga-004",
+    "title": "Interferencia de la luz HEV en la fatiga cromática del diagnóstico",
+    "content": "La exposición prolongada a la luz de alta energía visible (HEV o 'luz azul') emitida por pantallas digitales no solo afecta la salud cutánea, sino que altera la percepción visual durante el diagnóstico de subtono. La luz HEV genera un fenómeno de fatiga cromática en los fotorreceptores de la retina, reduciendo temporalmente la sensibilidad a los tonos cálidos y amarillentos. Cuando un usuario intenta determinar su subtono frente a una pantalla de dispositivo móvil, el espectro de emisión del dispositivo distorsiona la reflectancia de la piel, haciendo que esta parezca más grisácea o desaturada de lo que es en realidad. Este desajuste lumínico induce a errores sistemáticos en la elección de bases de maquillaje, donde el usuario compensa la 'desaturación' digital con pigmentos excesivamente naranjas. Para una correcta evaluación, se debe implementar una pausa de al menos 15 minutos sin exposición a pantallas antes de realizar cualquier test de colorimetría, asegurando que la adaptación cromática del ojo sea óptima y la fuente de luz sea preferiblemente luz natural difusa o fuentes LED con un IRC (Índice de Reproducción Cromática) superior a 95.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:27:58.668Z"
+  }
+]

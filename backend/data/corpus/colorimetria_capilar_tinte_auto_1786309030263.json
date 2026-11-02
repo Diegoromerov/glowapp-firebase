@@ -1,0 +1,375 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-oxidacion-lipidos-001",
+    "title": "Impacto de la peroxidación lipídica en la integridad del complejo de membrana celular (CMC)",
+    "content": "La coloración permanente implica la aplicación de agentes oxidantes que no solo afectan la melanina, sino que también desencadenan una peroxidación lipídica significativa en el complejo de membrana celular (CMC). El CMC es el 'cemento' que mantiene unidas las células de la cutícula y la corteza. La degradación oxidativa de los lípidos (especialmente el ácido 18-metileicosanoico) compromete la hidrofobicidad natural del cabello, volviéndolo poroso y propenso a la pérdida de color. Estudios en el Journal of Cosmetic Science subrayan que la pérdida de estos lípidos es irreversible y reduce la cohesión estructural de la fibra, lo que explica por qué el cabello teñido repetidamente pierde su brillo y suavidad natural. La protección de estos lípidos mediante agentes quelantes y acondicionadores ricos en ceramidas es fundamental para mitigar el daño estructural durante el proceso de deposición del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/pdf/cc2001/cc052n06/p00399-p00412.pdf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "18-MEA",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "cabello excesivamente procesado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-interaccion-cobre-002",
+    "title": "Quelación de metales de transición: Prevención de la degradación catalítica del peróxido",
+    "content": "El cabello suele acumular metales de transición como el cobre o el hierro provenientes del agua de lavado. Estos metales actúan como catalizadores en la reacción de Fenton durante la coloración, provocando una descomposición incontrolada e hiperactiva del peróxido de hidrógeno. Esto no solo genera una oxidación excesiva de los aminoácidos del cabello (especialmente la cisteína), sino que también puede resultar en virajes de color no deseados, como tonos verdosos o cobrizos incontrolables. La implementación de un protocolo de quelación (uso de agentes como el EDTA o ácido etidrónico) antes de la aplicación del tinte es un paso clínico crítico para garantizar la uniformidad del color y proteger la fibra contra la ruptura por radicales libres. En GlowApp, recomendamos evaluar la calidad del agua local del usuario antes de diseñar la fórmula de coloración personalizada para evitar estos efectos secundarios químicos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22967160/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido etidrónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-pre-servicio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-corteza-003",
+    "title": "Efectos de la alcalinidad residual en la corteza tras la coloración",
+    "content": "Tras un proceso de coloración permanente, es común encontrar una alcalinidad residual en la corteza capilar debido a la persistencia de amoniaco o etanolamina. Este pH elevado altera la estabilidad de los puentes disulfuro y los enlaces iónicos de la queratina, lo que se traduce en una pérdida prematura de los pigmentos recién depositados. La literatura dermatológica sugiere que el sellado de la cutícula mediante agentes acidificantes post-servicio es vital para restaurar el pH fisiológico del cabello (cercano a 4.5 - 5.5). Si el pH no se neutraliza correctamente, la carga eléctrica de la fibra permanece alterada, lo que resulta en una mayor porosidad y una menor capacidad de retención de agua. El uso de buffers específicos tras el enjuague es la estrategia clínica más efectiva para detener la oxidación secundaria y prolongar la durabilidad del color aplicado, evitando el aspecto opaco y la fragilidad mecánica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4158629/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido cítrico",
+        "buffers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post-cuidado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-histamina-004",
+    "title": "Respuesta histaminérgica inespecífica frente a tintes capilares",
+    "content": "A diferencia de la dermatitis alérgica de contacto mediada por IgE o células T, algunos usuarios experimentan una respuesta histaminérgica inespecífica durante la aplicación de tintes. Esto no es una alergia real, sino una irritación neurogénica causada por la liberación de mediadores inflamatorios ante el contacto con agentes químicos agresivos. Los síntomas incluyen picazón intensa sin eritema persistente o edema significativo. Es fundamental distinguir esta reacción de una verdadera sensibilización al PPD para evitar la suspensión innecesaria de servicios futuros. La aplicación de agentes calmantes con bisabolol o extractos de avena coloidal puede ayudar a manejar esta sensibilidad cutánea durante el tiempo de pose. Si la picazón persiste o se acompaña de signos clínicos cutáneos visibles, se debe retirar el producto inmediatamente y derivar a una evaluación dermatológica para descartar una sensibilización de contacto verdadera.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/hair/hair-dye-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "avena coloidal"
+      ],
+      "contraindications": [
+        "dermatitis seborreica activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cutanea"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-polimeros-005",
+    "title": "Interacción de polímeros catiónicos y pigmentos: ¿Amigos o enemigos?",
+    "content": "Los polímeros catiónicos (como el Polyquaternium-10) se incorporan frecuentemente en formulaciones de tintes para mejorar el desenredo y la suavidad. Sin embargo, su alta afinidad por la superficie cargada negativamente del cabello dañado puede crear una barrera que dificulta la penetración uniforme de los precursores de color. Si el cabello posee una porosidad heterogénea, estos polímeros se depositarán más en las zonas dañadas, creando una 'película' que bloquea la absorción del tinte, resultando en un color desigual. En servicios de coloración profesional, es vital considerar la carga iónica del cabello antes de aplicar productos con alta concentración de polímeros, ya que pueden interferir con la saturación del pigmento. Un diagnóstico de porosidad previo permite decidir si es necesario un tratamiento de limpieza profunda para eliminar residuos poliméricos antes de proceder con el servicio de coloración técnica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polyquaternium-10"
+      ],
+      "contraindications": [
+        "cabello muy poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-tecnica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-humedad-006",
+    "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+    "content": "La humedad ambiental juega un rol subestimado en la estabilidad del color. El cabello es una estructura higroscópica; al absorber humedad del ambiente, la fibra se expande y la cutícula se separa ligeramente, facilitando la salida de las moléculas de pigmento oxidativo que aún no han alcanzado su tamaño final (polimerización completa). En climas como el de Bogotá, donde las variaciones de humedad son constantes, el cabello teñido puede sufrir una degradación cromática acelerada si no se aplican selladores hidrofóbicos tras el proceso. La recomendación técnica es utilizar productos de acabado con polímeros formadores de película que limiten el intercambio de vapor de agua con el entorno. Esto no solo mantiene el color vibrante por más tiempo, sino que también protege la corteza capilar contra la hinchazón mecánica que debilita el cabello con el paso de los días post-coloración.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30141-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas volátiles",
+        "polímeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-luz-007",
+    "title": "Evaluación cromática bajo diferentes espectros de luz: Evitando el metamerismo",
+    "content": "El metamerismo es un fenómeno donde dos colores parecen iguales bajo una fuente de luz pero diferentes bajo otra. En colorimetría capilar, esto es un error común al evaluar resultados en el salón bajo luces LED frías que no representan la luz solar natural. Para un diagnóstico preciso y una evaluación post-tinte correcta, es esencial contar con iluminación de índice de reproducción cromática (CRI) superior a 90. Muchos clientes se sienten insatisfechos con su color porque el salón utiliza una iluminación que enmascara los subtonos cálidos o fríos. Educar al cliente sobre cómo cambia el color de su cabello según la luz ambiental (luz de día, luz fluorescente de oficina, luz cálida de hogar) es fundamental para gestionar expectativas y evitar reclamos basados en percepciones erróneas de la realidad cromática del resultado final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asesoria-cliente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-degradacion-008",
+    "title": "Degradación oxidativa de aminoácidos: Más allá de la melanina",
+    "content": "Durante la coloración permanente, el peróxido de hidrógeno no solo oxida los precursores de color, sino que también ataca los aminoácidos de la queratina, principalmente la cisteína, convirtiéndola en ácido cisteico. Este proceso debilita la estructura interna del cabello, reduciendo su resistencia a la tracción y su elasticidad. La acumulación de ácido cisteico es una marca clínica de daño químico irreversible. Para minimizar esta degradación, la tecnología actual se enfoca en el uso de aditivos de enlace (bond builders) que contienen agentes como el ácido maleico o complejos de aminoácidos que protegen los enlaces peptídicos durante la reacción de oxidación. En GlowApp, enfatizamos que la prevención del daño debe ser parte integral del servicio de color, no un tratamiento posterior, ya que una vez que la cisteína se degrada, la integridad estructural de la fibra se ve comprometida de forma permanente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido maleico",
+        "aminoácidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-microbiota-009",
+    "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+    "content": "El cuero cabelludo alberga una microbiota compleja (bacterias y hongos como Malassezia) que mantiene la homeostasis de la piel. Los agentes alcalinizantes y los oxidantes utilizados en la coloración pueden alterar drásticamente el pH del cuero cabelludo, creando un entorno hostil para las bacterias beneficiosas y favoreciendo la proliferación de microorganismos patógenos. Esto puede desencadenar brotes de dermatitis seborreica o foliculitis tras un proceso de coloración. La recomendación clínica es realizar una limpieza del cuero cabelludo tras el enjuague del tinte, utilizando champús con pH equilibrado que contengan prebióticos para ayudar a restaurar la microbiota natural. Es crucial evitar el contacto directo del tinte con el cuero cabelludo siempre que sea posible, especialmente en clientes con antecedentes de sensibilidad cutánea, para preservar la salud a largo plazo del ecosistema microbiano de la piel.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6369643/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos"
+      ],
+      "contraindications": [
+        "dermatitis seborreica",
+        "psoriasis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:53:19.377Z"
+  }
+]

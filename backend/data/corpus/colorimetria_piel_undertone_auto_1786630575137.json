@@ -1,0 +1,159 @@
+[
+  {
+    "chunk_id": "colorimetria-cronobiologia-melatonina-001",
+    "title": "Impacto de los ritmos circadianos de la melatonina en el tono cutáneo",
+    "content": "La melatonina, además de su función sistémica, se sintetiza localmente en la piel. Estudios recientes en la revista 'Dermato-Endocrinology' sugieren que las fluctuaciones en los niveles de melatonina cutánea y su interacción con los receptores MT1/MT2 modulan la expresión de la tirosinasa. Este fenómeno provoca una variación sutil pero perceptible en la saturación del subtono a lo largo de las 24 horas. Durante las horas de mayor actividad metabólica nocturna, la microcirculación cutánea experimenta cambios en la perfusión, lo que altera la reflectancia espectral. Para el diagnóstico de subtono, esto implica que las pruebas realizadas al final del día pueden arrojar resultados sesgados por la fatiga vascular y la actividad antioxidante de la melatonina. Es vital comprender que el subtono no es una constante estática, sino una variable dinámica dependiente del reloj biológico celular, lo que obliga a realizar evaluaciones estandarizadas preferiblemente en la mañana tras un periodo de reposo nocturno.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (Dermato-Endocrinology)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4052369/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "melatonina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:15:56.756Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-ph-002",
+    "title": "Influencia de la diversidad del microbioma en el pH cutáneo y la estabilidad del color",
+    "content": "El microbioma cutáneo, específicamente la abundancia de especies como Cutibacterium acnes y Staphylococcus epidermidis, ejerce un control directo sobre el pH del manto ácido. Un pH elevado, derivado de una disbiosis bacteriana, altera la solubilidad de los pigmentos de óxidos de hierro presentes en las bases de maquillaje. Investigaciones en 'Journal of Investigative Dermatology' indican que un pH superior a 5.5 acelera la oxidación prematura del producto, haciendo que el subtono tienda hacia un matiz anaranjado o rojizo no deseado. Esta alteración no es culpa del producto cosmético, sino del entorno bioquímico de la piel. Para una colorimetría precisa, es necesario evaluar si la piel presenta signos de disbiosis, ya que una barrera cutánea comprometida con un pH alcalino invalidará cualquier prueba de color. La restauración del microbioma mediante prebióticos tópicos no solo mejora la salud dérmica, sino que estabiliza la cromaticidad de los productos aplicados sobre ella, permitiendo una lectura más fiel del subtono natural durante el transcurso del día.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30062-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:15:56.756Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-textura-003",
+    "title": "Anisotropía óptica: cómo la rugosidad cutánea altera la reflexión del subtono",
+    "content": "La anisotropía óptica en dermatología se refiere a cómo la textura de la piel —microrrelieve, profundidad de arrugas y folículos— dirige la luz en direcciones preferenciales, alterando la percepción cromática. Una piel con alta rugosidad (fototipo envejecido o daño actínico) dispersa la luz de manera no uniforme, lo que a menudo se confunde con un subtono más frío o grisáceo debido a la sombra proyectada por las irregularidades superficiales. La literatura sobre biofotónica aplicada a la piel subraya que la reflexión especular es dominante en pieles lisas, mientras que la reflexión difusa predomina en pieles con textura irregular. Al evaluar el subtono, es imperativo corregir visualmente estas sombras. El uso de técnicas de luz polarizada cruzada permite eliminar los brillos especulares y observar el subtono real subyacente. Ignorar la anisotropía óptica lleva a errores comunes, como seleccionar bases demasiado opacas que, al depositarse en las irregularidades, acentúan la textura y crean un efecto de 'máscara' que desvirtúa el subtono natural del paciente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura",
+        "texturizada"
+      ],
+      "age_ranges": [
+        "35-80"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:15:56.756Z"
+  },
+  {
+    "chunk_id": "colorimetria-hipoxia-bogota-008",
+    "title": "Impacto de la hipoxia hipobárica en la colorimetría facial en Bogotá",
+    "content": "La altitud de Bogotá (2,640 msnm) genera una hipoxia hipobárica leve pero constante, que influye en la hemodinámica capilar y la saturación de oxígeno de la hemoglobina. Este entorno condiciona una respuesta fisiológica de vasoconstricción periférica adaptativa en individuos no aclimatados o con sensibilidad vascular. En términos de colorimetría, esto puede inducir una percepción de subtono ligeramente más azulado o cianótico en las zonas periorbitales y labios. Es un error común confundir esta respuesta ambiental con un subtono frío. Los profesionales en Bogotá deben considerar que la perfusión sanguínea regional puede estar influenciada por la presión atmosférica, lo que altera la lectura del subtono basal. Se recomienda evaluar el subtono en áreas menos afectadas por la microcirculación superficial, como la zona mandibular o el cuello, donde la influencia de la hipoxia ambiental es menos pronunciada y el tono de la piel refleja con mayor precisión la melanina y los carotenoides cutáneos, evitando así diagnósticos erróneos basados en la vasoconstricción temporal.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization - Altitude Physiology)",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:15:56.756Z"
+  }
+]

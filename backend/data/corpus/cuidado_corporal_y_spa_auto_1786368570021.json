@@ -1,0 +1,393 @@
+[
+  {
+    "chunk_id": "biofilm-cutaneo-corporal-001",
+    "title": "Dinámica del biofilm en procesos de cicatrización corporal",
+    "content": "El biofilm cutáneo representa una comunidad organizada de microorganismos que colonizan la superficie de heridas crónicas o zonas de alta fricción, protegidos por una matriz extracelular polimérica (EPS). En dermatología corporal, la presencia de este biofilm es un factor crítico que impide la reepitelización y perpetúa el estado inflamatorio. A diferencia de las bacterias planctónicas, las bacterias en biofilm muestran una resistencia aumentada hasta 1000 veces a los antibióticos tópicos y sistémicos. La gestión clínica debe enfocarse en el desbridamiento mecánico y el uso de agentes quelantes que desestabilicen la matriz de EPS antes de la aplicación de terapias regenerativas. La evidencia sugiere que el manejo de la carga microbiana debe ser una prioridad en pacientes con úlceras por presión o cicatrices atróficas post-quirúrgicas, donde la persistencia del biofilm mantiene el tejido en una fase inflamatoria constante. La evaluación mediante técnicas de fluorescencia permite identificar áreas de alta carga bacteriana, facilitando una intervención dirigida y minimizando el uso innecesario de antibióticos de amplio espectro, promoviendo así un microbioma cutáneo más resiliente y equilibrado tras el tratamiento.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33458762/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes",
+        "soluciones de ácido hipocloroso"
+      ],
+      "contraindications": [
+        "uso prolongado de antibióticos tópicos sin guía"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-heridas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "neurofisiologia-prurito-corporal-002",
+    "title": "Mecanismos neuroinmunológicos del prurito corporal crónico",
+    "content": "El prurito crónico corporal, fuera de procesos inflamatorios evidentes, involucra una compleja interacción entre las fibras nerviosas aferentes primarias y las células inmunes residentes en la piel. La activación de los receptores PAR-2 (Protease-Activated Receptor 2) por proteasas liberadas por queratinocitos o mastocitos desencadena una cascada de señales que se transmiten a través de las fibras C no mielinizadas. Estudios recientes han demostrado que el estrés oxidativo y la disfunción de la barrera cutánea inducen una sensibilización periférica, donde el umbral de activación de los nociceptores disminuye significativamente. Esta hipersensibilidad no solo altera la calidad de vida, sino que promueve el ciclo rascado-lesión, exacerbando la inflamación neurogénica. El abordaje terapéutico debe considerar moduladores de los receptores de histamina y, más importante aún, agentes que actúen sobre la modulación de las vías de las citoquinas como la IL-31, reconocida como una diana terapéutica clave en el prurito neuropático y sistémico. La aplicación de emolientes con lípidos fisiológicos que restauren la barrera es fundamental para reducir la permeabilidad de irritantes y calmar la señalización nerviosa hiperactiva, logrando una homeostasis cutánea a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/itch",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polidocanol",
+        "mentol",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "uso de antihistamínicos tópicos sensibilizantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-prurito"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "fotoproteccion-luz-visible-003",
+    "title": "Impacto clínico de la luz visible en la pigmentación corporal",
+    "content": "Mientras que la radiación ultravioleta (UVA/UVB) ha sido el foco tradicional de la fotoprotección, la luz visible (HEV o luz azul) desempeña un papel crucial en la hiperpigmentación corporal, especialmente en fototipos altos (IV-VI). A diferencia de los rayos UV, la luz visible induce una pigmentación inmediata y persistente a través de la activación de los opsinas presentes en los melanocitos, que disparan la melanogénesis incluso en ausencia de daño por ADN. En el cuerpo, esto es particularmente relevante en áreas expuestas a fricción o inflamación previa, donde la barrera cutánea está comprometida. La protección física mediante óxidos de hierro es la única estrategia eficaz para bloquear el espectro de luz visible, ya que los filtros químicos convencionales son insuficientes. La integración de antioxidantes sistémicos y tópicos, como la vitamina C estabilizada y los polifenoles, ayuda a mitigar la cascada de radicales libres inducida por la luz visible. Para pacientes en zonas urbanas como Bogotá, la exposición acumulativa a pantallas y luz ambiental debe ser considerada en protocolos de manejo de hiperpigmentación intertriginosa o post-inflamatoria, garantizando que el paciente utilice fotoprotectores con pigmentos minerales que brinden una cobertura de amplio espectro real.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/visible-light-and-pigmentation",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "protectores solares químicos sin filtros físicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "estres-mecanico-dermis-004",
+    "title": "Mecanotransducción y remodelación de la matriz extracelular",
+    "content": "La mecanotransducción es el proceso mediante el cual las células cutáneas, especialmente los fibroblastos, convierten estímulos mecánicos (fricción, estiramiento, compresión) en respuestas bioquímicas. En el contexto corporal, este proceso es determinante en la formación de estrías y cicatrices hipertróficas. Cuando la piel es sometida a una tensión mecánica constante, los fibroblastos activan la vía de señalización de la quinasa asociada a Rho (ROCK), lo que conduce a una síntesis desregulada de colágeno y una degradación acelerada de la elastina. Entender esta fisiología es vital para el éxito de tratamientos como la radiofrecuencia o el microneedling, donde el objetivo es inducir una respuesta de reparación controlada. Sin embargo, si el estímulo mecánico excede la capacidad de adaptación, se genera una respuesta de fibrosis. Por tanto, el manejo de la piel corporal debe incluir no solo agentes químicos, sino también una evaluación de la carga mecánica sobre el tejido. La aplicación de vendajes de soporte o el control del peso corporal en áreas de riesgo puede prevenir la sobreactivación de los fibroblastos, favoreciendo un proceso de remodelación tisular armónico en lugar de una respuesta cicatricial patológica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Molecular Cell Biology",
+        "url": "https://www.nature.com/articles/s41580-020-0255-z",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos biomiméticos",
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "tensión mecánica excesiva en heridas recientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelacion-tisular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "microbioma-sudor-005",
+    "title": "Dinámica del microbioma en ambientes de alta sudoración",
+    "content": "El sudor corporal, compuesto principalmente por agua, electrolitos, lactato y urea, actúa como un sustrato fundamental para el microbioma axilar e inguinal. La alteración del pH cutáneo hacia la alcalinidad, a menudo causada por productos de limpieza inadecuados, permite la proliferación de especies bacterianas productoras de compuestos volátiles responsables del mal olor (bromhidrosis). Estudios recientes han demostrado que el microbioma en áreas de pliegues no es solo un comensal, sino un modulador activo de la respuesta inmune local. La presencia de *Corynebacterium* y *Staphylococcus* en equilibrio es esencial para prevenir la colonización por patógenos oportunistas como *Candida* o *S. aureus*. La recomendación clínica es evitar el uso de desodorantes con alta concentración de alcohol o fragancias sensibilizantes, prefiriendo formulaciones con prebióticos y agentes que mantengan un pH ácido (entre 4.5 y 5.5). La optimización del microbioma mediante la aplicación de agentes que favorezcan la microbiota beneficiosa es una tendencia emergente en la dermatología cosmética para el manejo de la dermatitis de contacto irritativa y la prevención de infecciones recurrentes en áreas de pliegues corporales.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos",
+        "ácido láctico",
+        "zinc"
+      ],
+      "contraindications": [
+        "productos de limpieza con pH alcalino"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "barrera-cutanea-tensoactivos-006",
+    "title": "Disrupción lipídica por tensoactivos aniónicos",
+    "content": "La integridad de la barrera cutánea en el cuerpo depende críticamente del mantenimiento de los lípidos intercelulares (ceramidas, colesterol y ácidos grasos libres). El uso frecuente de limpiadores corporales con tensoactivos aniónicos fuertes, como el lauril sulfato de sodio (SLS), provoca la desnaturalización de las proteínas del estrato córneo y la lixiviación de los lípidos naturales. Este proceso no solo aumenta la pérdida de agua transepidérmica (TEWL), sino que altera el pH fisiológico, facilitando la penetración de alérgenos y agentes irritantes. En la práctica clínica, la transición hacia limpiadores tipo 'syndet' (detergentes sintéticos) es fundamental para pacientes con xerosis o dermatitis atópica. Estos limpiadores presentan una estructura molecular que minimiza la interacción con los lípidos de la piel, manteniendo la estructura de la bicapa lipídica intacta. La educación del paciente sobre el uso de agua tibia y la técnica de aplicación (evitando el frotamiento excesivo con esponjas) es un pilar básico en la dermatología preventiva. La recuperación de la barrera requiere una combinación de agentes oclusivos, que sellan la superficie, y humectantes que atraen agua al estrato córneo, restaurando la función protectora de la piel corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00654-4/abstract",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "sensible",
+        "atópico"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndets",
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [
+        "jabones en barra alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "efecto-bohr-microcirculacion-007",
+    "title": "Efecto Bohr en la oxigenación tisular corporal",
+    "content": "El efecto Bohr describe la capacidad de la hemoglobina para liberar oxígeno en tejidos con alta concentración de dióxido de carbono y pH bajo. En medicina estética y dermatología corporal, este principio fisiológico es la base de terapias como la carboxiterapia, que busca mejorar la microcirculación local mediante la inyección controlada de CO2. Al aumentar la presión parcial de CO2, se induce una vasodilatación local y una mayor perfusión de oxígeno hacia los tejidos hipóxicos, lo que puede mejorar la apariencia de la piel con celulitis o áreas con mala circulación. Sin embargo, es imperativo entender que el efecto es transitorio y depende de la capacidad homeostática del paciente. La evidencia sobre su eficacia en la reducción de adiposidad localizada es limitada, siendo más prometedora en la mejora de la textura cutánea y el tono vascular. La aplicación debe realizarse bajo estrictos protocolos de seguridad para evitar complicaciones como el enfisema subcutáneo o infecciones. Es crucial diferenciar entre el uso clínico para mejorar la microcirculación y las expectativas estéticas irreales, asegurando que el paciente comprenda los límites del tratamiento en la remodelación corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "CO2 medicinal"
+      ],
+      "contraindications": [
+        "insuficiencia cardíaca",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "dermatitis-artefacta-008",
+    "title": "El reto diagnóstico de la dermatitis artefacta corporal",
+    "content": "La dermatitis artefacta representa un desafío diagnóstico significativo en dermatología, siendo una afección cutánea autoinfligida por pacientes con problemas psicológicos subyacentes. Las lesiones suelen presentarse en áreas accesibles (como brazos, piernas o tronco), mostrando formas geométricas o bordes definidos que no corresponden a ninguna patología dermatológica clásica. El diagnóstico diferencial incluye la dermatitis de contacto, infecciones bacterianas y trastornos autoinmunes. La clave clínica para identificarla reside en la falta de respuesta a tratamientos convencionales y la presencia de lesiones en áreas de fácil alcance, con una apariencia 'artificial' o inusual. El manejo requiere un enfoque multidisciplinario que involucre a psiquiatría y dermatología, tratando al paciente con empatía y evitando confrontaciones directas sobre la naturaleza autoinfligida de las lesiones. La protección física de la zona mediante vendajes o parches puede ayudar a confirmar el diagnóstico si las lesiones comienzan a sanar bajo oclusión. Es fundamental que el personal de GlowApp mantenga un registro clínico exhaustivo y documente la evolución de las lesiones, derivando oportunamente a servicios de salud mental para un abordaje integral del paciente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/index.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "tratamientos dermatológicos agresivos innecesarios"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  },
+  {
+    "chunk_id": "fototoxicidad-botanica-009",
+    "title": "Riesgos de fototoxicidad por aceites esenciales y extractos botánicos",
+    "content": "La tendencia hacia productos cosméticos 'naturales' ha incrementado la incidencia de fitofotodermatitis, una reacción cutánea inflamatoria causada por la exposición a compuestos fotosensibilizantes (furocumarinas) presentes en ciertos aceites esenciales y extractos botánicos. Los cítricos, el apio, la bergamota y la ruda son los culpables más comunes. Al aplicarse tópicamente en el cuerpo y exponerse a la radiación UVA, estos compuestos se activan, dañando el ADN de los queratinocitos y provocando una hiperpigmentación post-inflamatoria intensa y persistente. La reacción puede manifestarse desde eritema leve hasta vesículas y ampollas. Es esencial que los pacientes sean educados sobre la lectura de etiquetas, identificando ingredientes como 'Citrus aurantium' o 'Bergamot oil'. La prevención se basa en la evitación de estos productos antes de la exposición solar y el uso riguroso de fotoprotección. Clínicamente, el manejo implica el retiro inmediato del agente causal, la aplicación de corticoides tópicos de potencia media y, en casos severos, manejo de la hiperpigmentación residual mediante agentes despigmentantes una vez que la inflamación aguda haya cedido. La seguridad en la formulación cosmética debe priorizar la ausencia de estos agentes en productos de uso diario corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/publications/i/item/9789240032545",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "furocumarinas",
+        "aceites cítricos"
+      ],
+      "contraindications": [
+        "exposición solar tras uso de aceites esenciales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:29:10.315Z"
+  }
+]

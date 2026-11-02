@@ -1,0 +1,172 @@
+[
+  {
+    "chunk_id": "guias_unas-onicodistrofia-iatrogenica-001",
+    "title": "Onicodistrofia por uso de primers ácidos: el daño invisible al lecho",
+    "content": "El uso indiscriminado de primers ácidos (ácido metacrílico) en salones de belleza representa un riesgo significativo para la homeostasis del lecho ungueal. A diferencia de los primers libres de ácido, estos compuestos actúan mediante un mecanismo de corrosión controlada que crea porosidades en la lámina para mejorar la adhesión. Sin embargo, una aplicación excesiva que contacte con el tejido periungueal provoca quemaduras químicas y una inflamación crónica del lecho, lo que desencadena onicólisis distal y atrofia de la matriz. Estudios dermatológicos indican que el contacto reiterado reduce el pH local, alterando la barrera cutánea y facilitando la entrada de patógenos. La evidencia sugiere que la onicodistrofia iatrogénica por agentes químicos es frecuentemente confundida con infecciones micóticas, retrasando el diagnóstico correcto. Es imperativo que el profesional comprenda que la adhesión no debe basarse en la agresión química de la lámina, sino en una preparación mecánica mínima y el uso de sistemas de polimerización compatibles. La persistencia de dolor o sensibilidad tras la aplicación es una señal clínica de daño tisular que no debe ignorarse bajo el pretexto de que el producto 'está haciendo efecto'.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-nail-care",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico"
+      ],
+      "contraindications": [
+        "piel sensible",
+        "historial de dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-preparacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:06.665Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotobiologia-uñas-002",
+    "title": "Fotobiología del espectro UV en la matriz: riesgos a largo plazo",
+    "content": "La exposición recurrente a lámparas de polimerización UV/LED en servicios de manicura plantea interrogantes sobre la fototoxicidad acumulativa en la piel periungueal y la matriz. Aunque la potencia de las lámparas de cabina es menor que la de las camas solares, la frecuencia de uso (cada 2-3 semanas) genera una dosis de radiación acumulativa no despreciable. La radiación UVA, principal componente de estas lámparas, penetra profundamente en la dermis, induciendo estrés oxidativo y daño en el ADN de los queratinocitos. Investigaciones en PubMed han documentado casos aislados de carcinomas escamocelulares en el dorso de la mano asociados al uso crónico de fotopolimerizadores. Para el profesional de GlowApp, la recomendación clínica es integrar protocolos de fotoprotección estricta, aplicando protectores solares de amplio espectro en las manos 20 minutos antes de iniciar el servicio y, preferiblemente, utilizar guantes con protección UV que expongan únicamente la lámina ungueal. Este enfoque de reducción de riesgos es fundamental para prevenir el fotoenvejecimiento prematuro y reducir la probabilidad de mutaciones genéticas en tejidos periungueales altamente vascularizados.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31336140/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares"
+      ],
+      "contraindications": [
+        "fotodermatosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:06.665Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-003",
+    "title": "Control del pico exotérmico: prevención de quemaduras térmicas",
+    "content": "La polimerización de geles constructores es una reacción química exotérmica por naturaleza, donde la energía se libera en forma de calor al pasar de monómero a polímero. En capas gruesas de gel, la velocidad de reacción puede superar la capacidad de disipación térmica de la uña, alcanzando temperaturas que exceden el umbral del dolor (45°C - 50°C), lo que resulta en una quemadura térmica en el lecho ungueal. Este daño puede derivar en onicólisis inducida por calor, donde el lecho se desprende de la lámina debido a la inflamación del tejido subyacente. La estrategia clínica para mitigar este efecto incluye el uso de lámparas con modo 'low heat', que incrementan la potencia de forma gradual (soft start), permitiendo que la red polimérica se estabilice sin liberar energía de forma explosiva. Es vital educar al usuario: si siente una sensación de ardor intenso, debe retirar la mano inmediatamente. Ignorar esta señal bajo la premisa de 'aguantar el dolor por el acabado' es el camino directo hacia la distrofia ungueal permanente y el daño severo del lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "hipersensibilidad térmica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:06.665Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperhidrosis-adhesion-005",
+    "title": "Hiperhidrosis periungueal: el factor silencioso en el fracaso de adhesión",
+    "content": "La hiperhidrosis, tanto palmar como plantar, altera profundamente la homeostasis del lecho ungueal, creando un microambiente de humedad constante que es incompatible con la mayoría de los sistemas fotopolimerizables. Los polímeros de adhesión (bases rubber o geles constructores) requieren una superficie con un pH y nivel de hidratación específicos para lograr una unión molecular óptima a través de enlaces de hidrógeno. En presencia de una sudoración excesiva, la presión osmótica aumenta, forzando la entrada de agua a través de la lámina y debilitando la interfase adhesiva. Esto se traduce clínicamente en desprendimientos prematuros (lifting) y, lo que es más preocupante, en la creación de espacios subungueales donde la humedad queda atrapada, facilitando la proliferación de hongos (onicomicosis) y bacterias (pseudomonas). El manejo de estas usuarias debe ser diferenciado: se requiere una deshidratación mecánica y química más exhaustiva, junto con el uso de bases especiales con mayor afinidad por superficies húmedas, siempre bajo la premisa de no sobre-limar la lámina para compensar la falta de adhesión.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "deshidratadores",
+        "primers"
+      ],
+      "contraindications": [
+        "hiperhidrosis severa sin control"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-pre-servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:06.665Z"
+  }
+]

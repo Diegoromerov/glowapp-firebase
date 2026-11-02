@@ -1,0 +1,756 @@
+{
+  "cycle": "R6-C10",
+  "run": "A",
+  "timestamp": "2026-08-17T18:44:57.118Z",
+  "name": "CAUSAL_DECISION",
+  "causal_matrix": {
+    "skincare_003": {
+      "query_id": "skincare_003",
+      "gold_total": 4,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 1,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 1,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 1,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 1,
+      "r50_delta": 0,
+      "mrr_delta": 0,
+      "classification": "EMBEDDING_LIMITATION"
+    },
+    "skincare_005": {
+      "query_id": "skincare_005",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 2,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 1,
+      "r50_delta": 0,
+      "mrr_delta": 0.5,
+      "classification": "OK"
+    },
+    "skincare_006": {
+      "query_id": "skincare_006",
+      "gold_total": 4,
+      "corpus_present_and_retrievable": 4,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 1,
+      "r50_delta": 0,
+      "mrr_delta": 0.5,
+      "classification": "OK"
+    },
+    "skincare_007": {
+      "query_id": "skincare_007",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 2,
+      "corpus_present_vector_miss": 1,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 1,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 1,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 0.16666666666666666,
+      "r50_delta": 0,
+      "mrr_delta": -0.3333,
+      "classification": "EMBEDDING_LIMITATION"
+    },
+    "skincare_008": {
+      "query_id": "skincare_008",
+      "gold_total": 4,
+      "corpus_present_and_retrievable": 4,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 0.3333333333333333,
+      "r50_delta": 0,
+      "mrr_delta": -0.6667,
+      "classification": "OK"
+    },
+    "skincare_009": {
+      "query_id": "skincare_009",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 1,
+      "r50_delta": 0,
+      "mrr_delta": 0.5,
+      "classification": "OK"
+    },
+    "skincare_010": {
+      "query_id": "skincare_010",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 0.037037037037037035,
+      "r50_delta": 0,
+      "mrr_delta": -0.963,
+      "classification": "OK"
+    },
+    "cabello_002": {
+      "query_id": "cabello_002",
+      "gold_total": 5,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 1,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 1,
+      "corpus_absent": 0,
+      "vector_miss_count": 2,
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 1,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 0.2,
+      "r50_delta": 0,
+      "mrr_delta": -0.8,
+      "classification": "EMBEDDING_LIMITATION"
+    },
+    "cabello_006": {
+      "query_id": "cabello_006",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 2,
+      "corpus_present_vector_miss": 1,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 1,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 1,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 0.3333333333333333,
+      "r50_delta": 0,
+      "mrr_delta": -0.6667,
+      "classification": "EMBEDDING_LIMITATION"
+    },
+    "cabello_008": {
+      "query_id": "cabello_008",
+      "gold_total": 4,
+      "corpus_present_and_retrievable": 4,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 0.5,
+      "r50_delta": 0,
+      "mrr_delta": -0.5,
+      "classification": "OK"
+    },
+    "cejas_001": {
+      "query_id": "cejas_001",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 1,
+      "r50_delta": 0,
+      "mrr_delta": 0.5,
+      "classification": "OK"
+    },
+    "cejas_004": {
+      "query_id": "cejas_004",
+      "gold_total": 6,
+      "corpus_present_and_retrievable": 2,
+      "corpus_present_vector_miss": 4,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 4,
+      "fts_miss_count": 6,
+      "hybrid_miss_count": 4,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 0.1111111111111111,
+      "r50_delta": 0,
+      "mrr_delta": -0.3889,
+      "classification": "EMBEDDING_LIMITATION"
+    },
+    "cejas_005": {
+      "query_id": "cejas_005",
+      "gold_total": 4,
+      "corpus_present_and_retrievable": 2,
+      "corpus_present_vector_miss": 2,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 2,
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 2,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.5,
+      "mxbai_mrr": 0.16666666666666666,
+      "r50_delta": 0,
+      "mrr_delta": -0.3333,
+      "classification": "EMBEDDING_LIMITATION"
+    },
+    "cejas_007": {
+      "query_id": "cejas_007",
+      "gold_total": 3,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 0,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 0,
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 0.3333333333333333,
+      "mxbai_mrr": 0.16666666666666666,
+      "r50_delta": 0,
+      "mrr_delta": -0.1667,
+      "classification": "OK"
+    },
+    "cejas_008": {
+      "query_id": "cejas_008",
+      "gold_total": 6,
+      "corpus_present_and_retrievable": 3,
+      "corpus_present_vector_miss": 3,
+      "corpus_present_vector_miss_top50": 0,
+      "corpus_present_lexical_miss": 0,
+      "corpus_absent": 0,
+      "vector_miss_count": 3,
+      "fts_miss_count": 6,
+      "hybrid_miss_count": 3,
+      "nvidia_r50": 1,
+      "mxbai_r50": 1,
+      "nvidia_mrr": 1,
+      "mxbai_mrr": 1,
+      "r50_delta": 0,
+      "mrr_delta": 0,
+      "classification": "EMBEDDING_LIMITATION"
+    }
+  },
+  "vector_miss_map": {
+    "skincare_003": {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "gold_total": 4,
+      "gold_in_vector": 3,
+      "gold_in_fts": 1,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 1,
+      "vector_miss_ids": [
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "title": "Ácido Capriloil Salicílico (LHA) y la descamación acumulativa en pieles reactivas",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 1
+    },
+    "skincare_005": {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "gold_total": 3,
+      "gold_in_vector": 3,
+      "gold_in_fts": 1,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 2,
+      "hybrid_miss_count": 0
+    },
+    "skincare_006": {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "gold_total": 4,
+      "gold_in_vector": 4,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 4,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 0
+    },
+    "skincare_007": {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "gold_total": 3,
+      "gold_in_vector": 2,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 2,
+      "vector_miss_count": 1,
+      "vector_miss_ids": [
+        "skincare-rutinas-autofagia-peptidos-003"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "skincare-rutinas-autofagia-peptidos-003",
+          "title": "Modulación de la autofagia celular mediante péptidos señalizadores",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 1
+    },
+    "skincare_008": {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "gold_total": 4,
+      "gold_in_vector": 4,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 4,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 0
+    },
+    "skincare_009": {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "gold_total": 3,
+      "gold_in_vector": 3,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0
+    },
+    "skincare_010": {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "gold_total": 3,
+      "gold_in_vector": 3,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0
+    },
+    "cabello_002": {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "gold_total": 5,
+      "gold_in_vector": 3,
+      "gold_in_fts": 1,
+      "gold_in_hybrid": 4,
+      "vector_miss_count": 2,
+      "vector_miss_ids": [
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+        "colorimetria-capilar-metales-003"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "title": "Espectroscopía de Raman de Superficie (SERS) para la Detección de Proteínas de Estrés en el Tallo",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "status": "CORPUS_PRESENT_LEXICAL_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 1
+    },
+    "cabello_006": {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "gold_total": 3,
+      "gold_in_vector": 2,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 2,
+      "vector_miss_count": 1,
+      "vector_miss_ids": [
+        "estabilidad-ph-cuero-cabelludo-004"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "estabilidad-ph-cuero-cabelludo-004",
+          "title": "Homeostasis del cuero cabelludo post-coloración",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 1
+    },
+    "cabello_008": {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "gold_total": 4,
+      "gold_in_vector": 4,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 4,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 0
+    },
+    "cejas_001": {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "gold_total": 3,
+      "gold_in_vector": 3,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0
+    },
+    "cejas_004": {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "gold_total": 6,
+      "gold_in_vector": 2,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 2,
+      "vector_miss_count": 4,
+      "vector_miss_ids": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-envejecimiento-009",
+        "microblading-psicologia-007"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "title": "Influencia de la dinámica muscular orbicular en la simetría del diseño de cejas",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "visajismo-microblading-arquitectura-muscular-008",
+          "title": "Dinámica muscular facial y su efecto en la simetría del diseño",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "microblading-envejecimiento-009",
+          "title": "Adaptación del diseño en cejas con ptosis palpebral",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "microblading-psicologia-007",
+          "title": "Sesgos cognitivos en la evaluación del diseño de cejas",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 6,
+      "hybrid_miss_count": 4
+    },
+    "cejas_005": {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "gold_total": 4,
+      "gold_in_vector": 2,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 2,
+      "vector_miss_count": 2,
+      "vector_miss_ids": [
+        "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+        "impacto-variabilidad-glucemica-cicatrizacion-001"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+          "title": "Fotoprotección estratégica: más allá del FPS en el post-microblading",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "impacto-variabilidad-glucemica-cicatrizacion-001",
+          "title": "Variabilidad glucémica y su efecto en la cascada de cicatrización post-microblading",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 4,
+      "hybrid_miss_count": 2
+    },
+    "cejas_007": {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "gold_total": 3,
+      "gold_in_vector": 3,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 0,
+      "vector_miss_ids": [],
+      "vector_miss_details": [],
+      "fts_miss_count": 3,
+      "hybrid_miss_count": 0
+    },
+    "cejas_008": {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "gold_total": 6,
+      "gold_in_vector": 3,
+      "gold_in_fts": 0,
+      "gold_in_hybrid": 3,
+      "vector_miss_count": 3,
+      "vector_miss_ids": [
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-efecto-tyndall-003"
+      ],
+      "vector_miss_details": [
+        {
+          "chunk_id": "guias_unas-electrolisis-y-matriz-001",
+          "title": "Electrólisis y daño matricial: riesgos de la remoción de cutícula con herramientas eléctricas",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "terapia-laser-erbio-glass-002",
+          "title": "Láser Erbio-Glass 1550nm: Fototermólisis Fraccionada No Ablativa",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "title": "Mecanismos físico-químicos del efecto Tyndall en microblading mal ejecutado",
+          "status": "CORPUS_PRESENT_VECTOR_MISS",
+          "has_embedding": true
+        }
+      ],
+      "fts_miss_count": 6,
+      "hybrid_miss_count": 3
+    }
+  },
+  "virtual_corpus": {
+    "skincare_003": {
+      "query_id": "skincare_003",
+      "absent_count": 0,
+      "vector_miss_count": 1,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    },
+    "skincare_005": {
+      "query_id": "skincare_005",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "OK"
+    },
+    "skincare_006": {
+      "query_id": "skincare_006",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 4,
+      "recommendation": "OK"
+    },
+    "skincare_007": {
+      "query_id": "skincare_007",
+      "absent_count": 0,
+      "vector_miss_count": 1,
+      "lexical_miss_count": 0,
+      "retrievable_count": 2,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    },
+    "skincare_008": {
+      "query_id": "skincare_008",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 4,
+      "recommendation": "OK"
+    },
+    "skincare_009": {
+      "query_id": "skincare_009",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "OK"
+    },
+    "skincare_010": {
+      "query_id": "skincare_010",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "OK"
+    },
+    "cabello_002": {
+      "query_id": "cabello_002",
+      "absent_count": 0,
+      "vector_miss_count": 1,
+      "lexical_miss_count": 1,
+      "retrievable_count": 3,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    },
+    "cabello_006": {
+      "query_id": "cabello_006",
+      "absent_count": 0,
+      "vector_miss_count": 1,
+      "lexical_miss_count": 0,
+      "retrievable_count": 2,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    },
+    "cabello_008": {
+      "query_id": "cabello_008",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 4,
+      "recommendation": "OK"
+    },
+    "cejas_001": {
+      "query_id": "cejas_001",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "OK"
+    },
+    "cejas_004": {
+      "query_id": "cejas_004",
+      "absent_count": 0,
+      "vector_miss_count": 4,
+      "lexical_miss_count": 0,
+      "retrievable_count": 2,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    },
+    "cejas_005": {
+      "query_id": "cejas_005",
+      "absent_count": 0,
+      "vector_miss_count": 2,
+      "lexical_miss_count": 0,
+      "retrievable_count": 2,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    },
+    "cejas_007": {
+      "query_id": "cejas_007",
+      "absent_count": 0,
+      "vector_miss_count": 0,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "OK"
+    },
+    "cejas_008": {
+      "query_id": "cejas_008",
+      "absent_count": 0,
+      "vector_miss_count": 3,
+      "lexical_miss_count": 0,
+      "retrievable_count": 3,
+      "recommendation": "EMBEDDING_IMPROVEMENT_NEEDED"
+    }
+  },
+  "decision": {
+    "r6c10_verdict": "EMBEDDING_LIMITATION_NO_BETTER_MODEL",
+    "corpus_gap_confirmed": false,
+    "embedding_limitation_confirmed": true,
+    "mxbai_improves_over_nvidia": false,
+    "mxbai_improvement_significant": false,
+    "recommendations": [
+      "EMBEDDING_INVESTIGATION: mxbai does not improve; need better model or fine-tuning"
+    ],
+    "next_cycle": "R6-C11: Alternative Strategy"
+  },
+  "production_guards": {
+    "env_guard": "PASS",
+    "read_only": true,
+    "no_railway": true,
+    "no_production_modification": true
+  }
+}

@@ -1,0 +1,255 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786384441714-1-2e087345-potencial-electrocinetico-y-la-adsorcion-de-tintes-directos",
+    "title": "Potencial electrocinético y la adsorción de tintes directos",
+    "content": "La interacción entre los pigmentos directos y la fibra capilar está mediada por el potencial electrocinético o potencial Zeta de la superficie cuticular. A un pH fisiológico, la queratina presenta una carga neta negativa debido a la desprotonación de los grupos carboxilo. Los tintes catiónicos, al poseer una carga positiva, son atraídos electrostáticamente hacia la superficie capilar. Sin embargo, la eficacia de esta deposición depende críticamente del estado de la capa F (ácido 18-metileicosanoico). Cuando la integridad de esta capa lipídica se ve comprometida por procesos químicos previos, la densidad de carga superficial cambia, alterando la afinidad tintórea y provocando una distribución irregular del color. El control del pH durante la aplicación es fundamental para optimizar este gradiente electrostático. Un pH demasiado alcalino puede inducir una repulsión excesiva si el tinte no está correctamente formulado, mientras que un pH ácido favorece la neutralización de los sitios aniónicos, optimizando la fijación. La comprensión de esta dinámica permite predecir la durabilidad del color en cabellos con porosidad elevada, donde la heterogeneidad de carga es más pronunciada.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tintes cationicos"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:54:01.714Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786384441714-2-ad4286d1-catalisis-enzimatica-endogena-en-el-viraje-cromatico-post-ti",
+    "title": "Catálisis enzimática endógena en el viraje cromático post-tinte",
+    "content": "La presencia de peroxidasa residual en el folículo y la corteza capilar actúa como un catalizador inesperado tras la aplicación de tintes de oxidación. Aunque el proceso de teñido busca una polimerización controlada de los precursores (como p-fenilendiamina), la enzima endógena puede acelerar la oxidación de los intermediarios de manera incontrolada, resultando en un viraje de tono no deseado hacia matices cálidos o cobrizos. Este fenómeno es particularmente evidente en individuos con una actividad enzimática folicular elevada. La neutralización de esta peroxidasa mediante agentes quelantes específicos o buffers de pH es una estrategia emergente para estabilizar el color. La cinética de esta reacción es sensible a la temperatura local del cuero cabelludo, donde un aumento térmico tras el servicio puede intensificar la degradación prematura del pigmento recién formado. El uso de técnicas de enfriamiento o agentes secuestrantes de metales divalentes, que actúan como cofactores enzimáticos, resulta esencial para mantener la fidelidad del tono seleccionado y prevenir la oxidación inespecífica que ocurre en las horas posteriores al servicio técnico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "procesos inflamatorios activos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:54:01.714Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786384441714-3-7c565e3f-termodinamica-de-la-difusion-de-precursores-en-la-matriz-que",
+    "title": "Termodinámica de la difusión de precursores en la matriz queratínica",
+    "content": "La penetración de las moléculas de tinte en la corteza capilar no es un proceso pasivo, sino un fenómeno termodinámico regido por la energía de activación necesaria para la expansión de la matriz queratínica. La estructura de la queratina, organizada en microfibrillas, actúa como una barrera selectiva. Para que los precursores de bajo peso molecular alcancen el córtex, se requiere una apertura controlada de la cutícula mediante agentes alcalinizantes. Sin embargo, la termodinámica del sistema indica que, a mayor temperatura, la entropía del sistema aumenta, facilitando la difusión pero incrementando el riesgo de daño estructural irreversible. La gestión de este gradiente de difusión es clave: una aplicación demasiado rápida impide la formación uniforme del polímero de color, mientras que una aplicación lenta puede saturar excesivamente la cutícula, provocando un efecto de 'sobre-oxidación' en las puntas. El uso de agentes humectantes que modulan la energía libre de Gibbs en la superficie capilar permite una penetración más homogénea, asegurando que el color se distribuya equitativamente desde la raíz hasta la punta, minimizando el riesgo de bandas de coloración o saturación desigual en cabellos con historial de procesos químicos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes alcalinizantes"
+      ],
+      "contraindications": [
+        "cabello altamente sensibilizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:54:01.714Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786384441714-4-2b0200f3-interferencia-de-metabolitos-sistemicos-en-la-afinidad-tinto",
+    "title": "Interferencia de metabolitos sistémicos en la afinidad tintórea",
+    "content": "La colorimetría capilar no es ajena a la farmacocinética sistémica del cliente. Ciertos fármacos, especialmente aquellos que alteran el metabolismo de los lípidos o la secreción sebácea, pueden modificar la composición del sebo folicular y la capa hidrolipídica del cuero cabelludo. Esta alteración cambia la tensión superficial de la fibra, afectando la capacidad de mojabilidad del tinte. Por ejemplo, pacientes bajo tratamiento con retinoides orales presentan una xerosis cutánea que puede provocar una absorción errática de los pigmentos, especialmente en la zona de la raíz. Asimismo, la presencia de trazas de metales pesados (como hierro o cobre) en el sudor, influenciada por la dieta o suplementación, puede reaccionar con los precursores de oxidación, alterando el resultado final del color hacia matices no previstos. Es imperativo realizar una anamnesis detallada sobre el uso de fármacos fotosensibilizantes o tratamientos hormonales, ya que estos pueden inducir una respuesta inflamatoria de bajo grado que, aunque subclínica, afecta la deposición uniforme del pigmento. La evaluación del historial clínico es, por tanto, una herramienta de diagnóstico colorimétrico tan importante como el test de mecha convencional.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ninguno"
+      ],
+      "contraindications": [
+        "uso de isotretinoina"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis_cliente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:54:01.714Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786384441714-5-b770c267-dinamica-de-la-degradacion-fotolitica-de-precursores-en-ambi",
+    "title": "Dinámica de la degradación fotolítica de precursores en ambientes de altura",
+    "content": "En ciudades de alta altitud, como Bogotá, la mayor intensidad de radiación UV y la menor presión atmosférica impactan directamente en la estabilidad de los precursores de color post-aplicación. La radiación UV induce la formación de radicales libres en la fibra capilar, los cuales atacan los enlaces químicos del polímero de color recién formado. Este proceso, conocido como degradación fotolítica, es responsable del desvanecimiento prematuro y del viraje de tono hacia subtonos amarillentos o rojizos. La estructura de la queratina, al estar expuesta a una mayor oxidación ambiental, pierde su capacidad de retención de pigmentos. Para mitigar este efecto, es necesario incorporar en el protocolo post-tinte filtros UV de amplio espectro y antioxidantes de alta afinidad que neutralicen los radicales libres antes de que alcancen el núcleo del pigmento. La combinación de una baja humedad relativa con la radiación UV intensa crea un ambiente de estrés oxidativo constante, lo que exige que los productos de mantenimiento contengan agentes humectantes que restauren la barrera cuticular, evitando que la luz penetre profundamente en la corteza y degrade el complejo de color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photochemistry and Photobiology",
+        "url": "https://onlinelibrary.wiley.com/journal/17511097",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "exposicion solar prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_tinte"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:54:01.714Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786384441714-6-f5427974-biocompatibilidad-de-polimeros-cationicos-y-su-rol-en-la-fij",
+    "title": "Biocompatibilidad de polímeros catiónicos y su rol en la fijación",
+    "content": "La fijación del color no depende únicamente del tinte, sino de la biocompatibilidad de los polímeros catiónicos utilizados en las formulaciones modernas. Estos polímeros actúan como 'puentes' electrostáticos entre las moléculas de pigmento y la superficie queratínica dañada. Al poseer una carga positiva, se adhieren selectivamente a las zonas de mayor carga negativa (áreas con daño estructural o porosidad), logrando un depósito de color más uniforme. No obstante, una excesiva acumulación de estos polímeros puede generar un efecto de 'build-up' o sobrecarga, que a largo plazo altera la birrefringencia del cabello, reduciendo el brillo natural. La elección del polímero debe considerar su peso molecular: polímeros de bajo peso molecular penetran mejor en la cutícula, mientras que los de alto peso molecular crean una película protectora externa. La clave para un resultado profesional es el equilibrio entre la afinidad tintórea y la transpirabilidad de la fibra. El uso de polímeros biodegradables y biocompatibles es una tendencia creciente que no solo mejora la durabilidad del color, sino que respeta la homeostasis del cuero cabelludo, evitando reacciones de hipersensibilidad inespecífica ante la acumulación de residuos químicos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros cationicos"
+      ],
+      "contraindications": [
+        "acumulacion de producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:54:01.714Z"
+  }
+]

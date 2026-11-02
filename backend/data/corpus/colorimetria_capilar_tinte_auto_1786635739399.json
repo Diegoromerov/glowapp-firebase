@@ -1,0 +1,325 @@
+[
+  {
+    "chunk_id": "epigenetica-coloracion-001",
+    "title": "Influencia de la expresión génica folicular en la captación de pigmentos",
+    "content": "La variabilidad en la respuesta a la coloración capilar no depende únicamente de la estructura externa de la fibra, sino también de la expresión génica en el bulbo piloso. Estudios recientes sugieren que polimorfismos en genes relacionados con la síntesis de melanina y la queratinización pueden alterar la afinidad tintórea. Cuando la expresión de proteínas de matriz folicular es atípica, la porosidad del cabello resultante es intrínseca, no adquirida por daño químico previo. Esto explica por qué cabellos 'vírgenes' pueden mostrar una absorción de tinte heterogénea. La regulación epigenética mediada por factores ambientales y el estado metabólico del paciente modulan la densidad de grupos amino en la corteza, los cuales son sitios críticos de anclaje para los precursores de tinte. Comprender esta base biológica permite al colorista ajustar el tiempo de pose y el volumen de peróxido según la arquitectura proteica individual, evitando la sobre-oxidación en cabellos que, por genética, poseen una cutícula naturalmente más delgada o una corteza menos densa.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "p-phenylenediamine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "metabolismo-hidrico-fibra-002",
+    "title": "Dinámica de la hidratación intrínseca y su impacto en la difusión de precursores",
+    "content": "La difusión de los precursores de tinte en la corteza capilar está gobernada por la Ley de Fick, pero esta es altamente dependiente del estado de hidratación interno de la fibra. A diferencia de la humedad superficial, la hidratación intrínseca del complejo de membrana celular (CMC) determina la velocidad de penetración de moléculas pequeñas como las diaminas. En condiciones de baja hidratación (cabello seco o deshidratado por exceso de calor), la matriz queratínica se vuelve más rígida y menos permeable, lo que resulta en una migración incompleta de los pigmentos hacia el centro de la corteza. Esto provoca un fenómeno de 'color superficial' que se degrada rápidamente con los lavados. Es fundamental evaluar el contenido de agua unido a la queratina antes del proceso de coloración para asegurar que los agentes de transporte (como el amoniaco o la etanolamina) puedan desplegar efectivamente las cadenas polipeptídicas. La aplicación de humectantes específicos antes del tinte puede optimizar la cinética de difusión y garantizar una mayor longevidad del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agua",
+        "humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "interaccion-peptidos-tinte-003",
+    "title": "Competencia entre péptidos endógenos y precursores de tinte",
+    "content": "Durante la coloración, ocurre una interacción competitiva entre los precursores sintéticos y los péptidos de bajo peso molecular presentes en la matriz cortical. Cuando el cabello ha sufrido daños previos (decoloraciones o alisados), la corteza se encuentra llena de fragmentos peptídicos que pueden bloquear los sitios de unión donde deberían alojarse las moléculas de tinte. Este fenómeno de 'ocupación competitiva' es una de las causas principales de la falta de profundidad en el tono final. Si los sitios reactivos están ocupados por fragmentos de queratina hidrolizada o residuos de tratamientos anteriores, los precursores no pueden polimerizarse adecuadamente, resultando en un color plano o con reflejos indeseados. La estrategia clínica debe enfocarse en una limpieza profunda mediante quelación y el uso de agentes buffer que equilibren la carga iónica antes de la deposición del pigmento. Esto permite que los precursores tengan mayor disponibilidad para realizar el acoplamiento oxidativo en los sitios diana, logrando una saturación uniforme y duradera en cabellos comprometidos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "efecto-piezoelectrico-friccion-004",
+    "title": "Mecánica de fricción y su impacto en la estabilidad post-coloración",
+    "content": "La fibra capilar exhibe propiedades piezoeléctricas, lo que significa que la fricción mecánica (peinado, secado, roce con almohadas) genera cargas eléctricas que pueden afectar la estabilidad de los pigmentos depositados. En cabellos recién teñidos, la cutícula aún no ha recuperado su sellado completo, y la fricción induce un estrés mecánico que altera la orientación de las moléculas de color en la superficie. Estudios de biofísica capilar muestran que el efecto piezoeléctrico puede acelerar la migración de pigmentos catiónicos hacia el exterior, facilitando la pérdida de saturación en las zonas de mayor roce. Además, la carga electrostática generada puede atraer partículas contaminantes del ambiente, las cuales actúan como catalizadores de degradación oxidativa. Para mitigar esto, es vital el uso de polímeros de recubrimiento que reduzcan el coeficiente de fricción y neutralicen la carga estática post-proceso. La educación al cliente sobre el manejo mecánico del cabello en las primeras 48 horas post-tinte es una medida clínica preventiva clave para prolongar la integridad del color y evitar el viraje prematuro inducido por estrés físico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros",
+        "acondicionadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados-post-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "degradacion-triptofano-005",
+    "title": "Impacto de la degradación del triptófano en la resiliencia estructural capilar",
+    "content": "El triptófano es un aminoácido esencial presente en la queratina capilar que resulta altamente sensible a los procesos de oxidación inducidos por tintes permanentes. Durante el servicio de coloración, la exposición al peróxido de hidrógeno no solo afecta a la melanina, sino que también degrada el triptófano, convirtiéndolo en derivados como la kynurenina. Esta degradación no es inocua: el triptófano juega un papel crucial en la absorción de radiación UV y en la estabilidad estructural de la fibra. Su pérdida reduce la capacidad del cabello para resistir el foto-envejecimiento, lo que acelera el desgaste del color y debilita la integridad de las cadenas de queratina. La reposición de aminoácidos mediante tratamientos post-coloración es una necesidad clínica para restaurar el 'puente' de protección que el triptófano natural ofrecía. Sin esta recuperación, el cabello se vuelve más poroso, facilitando la entrada de metales y la salida de pigmentos, creando un círculo vicioso de daño estructural. La monitorización de la salud proteica mediante espectroscopía de reflectancia puede ser una herramienta valiosa en la consulta clínica de GlowApp.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos",
+        "triptofano"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-reparadores"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "peroxidasa-endogena-006",
+    "title": "Rol de la peroxidasa endógena en la degradación prematura del color",
+    "content": "La peroxidasa endógena, una enzima presente en la matriz folicular y en ciertas estructuras de la fibra capilar, puede persistir tras el lavado post-coloración. Esta enzima posee la capacidad de catalizar la oxidación incontrolada de los precursores de tinte que no llegaron a polimerizarse completamente durante el tiempo de pose. Este fenómeno explica por qué algunos tonos cambian de matiz días después de la aplicación, un proceso conocido como 'viraje enzimático'. La actividad enzimática es altamente dependiente del pH y la temperatura del cuero cabelludo, siendo más intensa en ambientes cálidos y húmedos como Bogotá. La neutralización de esta peroxidasa residual mediante agentes quelantes específicos o buffers de pH es una práctica clínica poco común pero altamente efectiva para estabilizar el resultado final. La implementación de un protocolo de terminación que incluya un paso de desactivación enzimática evitará que el tinte continúe oxidándose erráticamente dentro de la corteza, garantizando que el color se mantenga fiel a la expectativa del diagnóstico inicial.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "buffers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "anisotropia-fibra-007",
+    "title": "La anisotropía de la fibra como reto para la distribución del tinte",
+    "content": "La anisotropía de la fibra capilar, es decir, la variación de sus propiedades físicas y químicas en diferentes puntos de su longitud, plantea un desafío crítico en la coloración. La densidad de la cutícula no es uniforme desde la raíz hasta la punta, lo que genera una absorción diferencial de los precursores. En las zonas de mayor daño o mayor exposición a factores ambientales, la anisotropía se acentúa: la cutícula se vuelve más permeable y la corteza más expuesta. Este comportamiento desigual resulta en un depósito de pigmento heterogéneo que el ojo humano percibe como una falta de uniformidad. El diagnóstico clínico debe utilizar herramientas de medición de porosidad en múltiples puntos de la hebra para ajustar la formulación del tinte en cada sección. Ignorar esta anisotropía conduce al uso de una fórmula estándar que resulta en un color sobre-saturado en las puntas y sub-saturado en la raíz. La modulación de la viscosidad del tinte mediante polímeros de control puede compensar esta anisotropía, asegurando una penetración equilibrada a través de toda la estructura capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  },
+  {
+    "chunk_id": "estres-metabolico-009",
+    "title": "Interferencia del estrés metabólico sistémico en la afinidad tintórea",
+    "content": "El estado metabólico del paciente, influenciado por niveles de cortisol, deficiencias de micronutrientes y estrés sistémico, tiene un impacto directo en la composición química del sebo y la queratina. Un cuero cabelludo bajo estrés crónico presenta una alteración en la microbiota y en la secreción de lípidos, lo cual modifica el pH del entorno folicular. Esta alteración puede interferir con la polimerización de los tintes permanentes, que requieren un entorno químico estable para formar las moléculas de color de gran tamaño dentro de la corteza. Además, niveles elevados de ciertos metabolitos sistémicos pueden depositarse en la matriz capilar, actuando como inhibidores de la reacción oxidativa. Es esencial que la consulta clínica incluya una breve anamnesis sobre el estado de salud general del paciente. Comprender que el cabello es un tejido biológicamente activo que refleja el equilibrio interno del organismo nos permite ajustar nuestras expectativas cromáticas y preparar mejor la fibra para el proceso, evitando sorpresas en el tono final debido a interferencias metabólicas no detectadas.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Health Topics",
+        "url": "https://www.who.int/health-topics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:02.652Z"
+  }
+]

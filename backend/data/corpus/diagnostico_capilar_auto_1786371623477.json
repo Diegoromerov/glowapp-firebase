@@ -1,0 +1,120 @@
+[
+  {
+    "chunk_id": "diagnostico_capilar-exosomas-001",
+    "title": "Exosomas Derivados de Células Madre: Potencial en la Regeneración Folicular",
+    "content": "Los exosomas, vesículas extracelulares de 30-150 nm, están emergiendo como mediadores clave en la comunicación intercelular dentro del nicho del folículo piloso. A diferencia de las terapias celulares tradicionales, los exosomas contienen una carga biológica compleja de microARNs, proteínas y factores de crecimiento que pueden reprogramar las células de la papila dérmica senescentes hacia un estado de mayor actividad proliferativa. Estudios en modelos preclínicos indican que la aplicación de exosomas derivados de células madre mesenquimales (MSC-EXOs) puede mitigar la miniaturización folicular al activar las vías Wnt/beta-catenina, fundamentales para la transición de la fase telógena a la anágena. Clínicamente, el desafío actual radica en la estandarización de los protocolos de aislamiento y la determinación de la dosis terapéutica óptima para diversas alopecias, como la androgenética y la areata. La investigación actual, respaldada por publicaciones en PubMed, sugiere que los exosomas poseen un perfil de seguridad superior debido a su naturaleza acelular, reduciendo el riesgo de respuestas inmunogénicas. En el contexto de GlowApp, es imperativo monitorear el desarrollo de formulaciones tópicas estables que preserven la integridad de estas vesículas, evitando la degradación enzimática al contacto con el estrato córneo del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "neoplasias activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tricoscopia-avanzada"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:20:04.298Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-biofotofisica-002",
+    "title": "Biofotofísica: Espectroscopía de Reflectancia para el Daño de la Cutícula",
+    "content": "La evaluación del daño estructural en la cutícula capilar ha evolucionado más allá de la inspección visual, integrando técnicas de espectroscopía de reflectancia difusa. Este método permite cuantificar la integridad de las capas de la cutícula y la pérdida de proteínas estructurales (queratinas de alto contenido en azufre) mediante la medición de la dispersión de luz a longitudes de onda específicas. En dermatología capilar, este enfoque permite identificar el 'punto de quiebre' donde la estructura de la fibra deja de ser reversible. La exposición a radiación UV y contaminantes urbanos altera la disposición de las células de la cutícula (imbricadas), lo que se traduce en una mayor fricción y una menor reflectividad lumínica, clínicamente observada como pérdida de brillo y fragilidad. El uso de sensores portátiles basados en esta tecnología facilita un diagnóstico preciso del estado de salud del tallo en entornos clínicos sin necesidad de microscopía electrónica. La correlación entre los datos espectroscópicos y la resistencia mecánica del cabello es un área de investigación activa que permite personalizar los regímenes de cuidado capilar basándose en la resiliencia real de la fibra, evitando tratamientos innecesarios en cabellos estructuralmente íntegros.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:20:04.298Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-termografia-009",
+    "title": "Termografía Infrarroja en la Detección de Inflamación Subclínica",
+    "content": "La termografía infrarroja de alta resolución permite la detección temprana de zonas con hiperemia o inflamación subclínica en el cuero cabelludo, áreas que a menudo preceden a la pérdida visible de densidad capilar. Esta tecnología detecta variaciones térmicas sutiles (menores a 0.1°C) que reflejan cambios en la perfusión microvascular perifolicular. En condiciones como la alopecia areata en fase inicial o la alopecia frontal fibrosante, la termografía puede identificar patrones de 'calor focal' que se correlacionan con la infiltración linfocitaria detectada posteriormente por histopatología. Este método es no invasivo, rápido y permite el seguimiento longitudinal de la respuesta a terapias antiinflamatorias. A diferencia de la tricoscopia, que analiza la morfología, la termografía aporta una dimensión funcional del estado inflamatorio del tejido. La integración de la termografía en el diagnóstico capilar digital permite una estratificación de riesgo más precisa para pacientes con sospecha de alopecias cicatriciales incipientes, donde la intervención temprana es el factor determinante para evitar la fibrosis permanente del folículo. Es una herramienta complementaria indispensable para el dermatólogo moderno que busca objetivar la respuesta inflamatoria en tiempo real.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:20:04.298Z"
+  }
+]

@@ -1,0 +1,366 @@
+[
+  {
+    "chunk_id": "diag-capilar-exposoma-epigenetica-001",
+    "title": "Impacto de la Polución Atmosférica en la Expresión Epigenética del Folículo",
+    "content": "La exposición crónica a partículas PM2.5 y compuestos orgánicos volátiles induce modificaciones epigenéticas significativas en las células de la papila dérmica. Estudios recientes publicados en PubMed demuestran que la contaminación ambiental activa la vía del receptor de hidrocarburos de arilo (AhR), lo que resulta en una regulación a la baja de los genes responsables del ciclo de crecimiento capilar. Este proceso no solo acelera la miniaturización en pacientes predispuestos a la alopecia androgenética, sino que también altera la capacidad de reparación del ADN en los queratinocitos de la matriz. La evidencia sugiere que el exposoma urbano actúa como un disruptor del reloj molecular folicular, promoviendo una transición prematura a la fase telógena. Es fundamental integrar el historial de exposición ambiental en el diagnóstico clínico, ya que el estrés oxidativo persistente puede mimetizar cuadros de efluvio telógeno crónico, requiriendo un enfoque terapéutico que combine agentes antioxidantes tópicos con protocolos de limpieza profunda del cuero cabelludo para mitigar la carga de contaminantes acumulados.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33458921/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-glicacion-metabolica-002",
+    "title": "Glicación No Enzimática y Rigidez de la Vaina Radicular",
+    "content": "La formación de productos finales de glicación avanzada (AGEs) en el colágeno peri-folicular es un factor subestimado en la rigidez estructural del cuero cabelludo. La glicación altera la red de colágeno tipo IV y elastina, creando un entorno hipóxico que dificulta el anclaje del folículo. En pacientes con resistencia a la insulina o niveles elevados de glucosa sérica, el depósito de AGEs en la matriz extracelular del folículo se asocia con un afinamiento progresivo del tallo. Clínicamente, esto se observa mediante una reducción en la elasticidad del cuero cabelludo durante la tricoscopia y una mayor dificultad para la regeneración folicular. La evidencia indica que el control glucémico y el uso de inhibidores tópicos de la glicación pueden mejorar significativamente la calidad del anclaje capilar. Es vital evaluar el perfil metabólico en pacientes con pérdida de densidad difusa, ya que el daño estructural inducido por la glicación es acumulativo y requiere un abordaje multifactorial que trascienda los tratamientos tópicos convencionales para estimular la microcirculación.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina",
+        "agentes antiglicantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-microbioma-metabolomica-003",
+    "title": "Metabolómica del Microbioma y su Rol en la Inflamación Folicular",
+    "content": "El microbioma del cuero cabelludo no solo se define por la abundancia de especies como Malassezia, sino por su perfil metabólico. La producción de ácidos grasos de cadena corta (SCFA) por parte de bacterias comensales juega un rol protector en la barrera cutánea. Cuando ocurre una disbiosis, la alteración en el metabolismo lipídico genera subproductos que inducen una respuesta inflamatoria de bajo grado en el infundíbulo folicular. Esta inflamación subclínica es una causa frecuente de prurito y descamación persistente que el paciente suele confundir con sequedad. El diagnóstico mediante técnicas de espectroscopía permite identificar cambios en el pH y en la composición del sebo. Es imperativo que el profesional considere la modulación del microbioma mediante prebióticos tópicos, más allá del uso exclusivo de antifúngicos, para restaurar la homeostasis. La evidencia recolectada en revistas dermatológicas destaca que un microbioma equilibrado es esencial para la integridad del ciclo capilar y la protección contra patógenos oportunistas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos",
+        "postbióticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-neuro-inmune-004",
+    "title": "Eje Neuro-Inmune y el Rol de la Sustancia P en la Alopecia",
+    "content": "La piel y el folículo piloso poseen una red densa de terminaciones nerviosas que liberan neuropéptidos como la Sustancia P en respuesta al estrés psicológico. Este fenómeno desencadena la desgranulación de los mastocitos perifoliculares, liberando histamina y citoquinas proinflamatorias. La inflamación resultante es un potente inhibidor del crecimiento capilar y un mediador en la transición a la fase catágena. Clínicamente, el paciente refiere a menudo una sensación de 'ardor' o 'tensión' en el cuero cabelludo, conocida como tricodinia. El diagnóstico debe considerar esta mediación neurogénica, especialmente en casos de alopecia areata o efluvio telógeno persistente exacerbado por estados de ansiedad. La intervención debe enfocarse en la modulación de este eje, utilizando enfoques que combinen terapias de manejo del estrés con agentes tópicos calmantes de la inervación cutánea. La evidencia clínica subraya que ignorar el componente neurogénico resulta en una respuesta subóptima a los tratamientos farmacológicos estándar para la alopecia.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes neuro-calmantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-mitocondrial-005",
+    "title": "Disfunción Mitocondrial y el Agotamiento Energético del Bulbo",
+    "content": "La fase anágena es uno de los procesos biológicos de mayor demanda metabólica en el cuerpo humano. Las células de la matriz capilar requieren una síntesis constante de ATP para la proliferación acelerada. La disfunción mitocondrial, ya sea por causas genéticas, envejecimiento o deficiencias de micronutrientes, limita la capacidad del folículo para sostener la producción de queratina. Este 'agotamiento energético' se manifiesta como una disminución en el diámetro del tallo y una mayor fragilidad capilar. Estudios en modelos in vitro demuestran que la suplementación con precursores de NAD+ y coenzima Q10 puede mejorar la tasa de proliferación celular en el bulbo piloso. En el diagnóstico clínico, la presencia de tallos finos y quebradizos en pacientes sin una causa hormonal evidente debe orientar la sospecha hacia un déficit metabólico energético. Evaluar la salud mitocondrial es una frontera emergente en la tricología, ofreciendo nuevas dianas terapéuticas para la recuperación de la densidad capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrdp/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima Q10",
+        "NAD+"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-barrera-006",
+    "title": "Disrupción de la Barrera Cutánea del Cuero Cabelludo",
+    "content": "El estrato córneo del cuero cabelludo es una barrera compleja que, a menudo, se ve comprometida por el uso excesivo de productos tensioactivos agresivos. La pérdida de integridad de la barrera cutánea aumenta la permeabilidad a irritantes externos y alérgenos, lo cual desencadena una respuesta inflamatoria crónica. Esta dermatitis irritativa de contacto puede exacerbar cualquier patología subyacente, como la alopecia androgenética o el efluvio telógeno. El diagnóstico clínico debe incluir una evaluación de la función de barrera mediante la medición de la pérdida de agua transepidérmica (TEWL). La restauración del manto hidrolipídico con lípidos fisiológicos (ceramidas, colesterol, ácidos grasos) es fundamental antes de iniciar tratamientos tópicos de alta potencia. La evidencia clínica indica que una barrera cutánea dañada reduce la eficacia de los fármacos tópicos y aumenta el riesgo de efectos adversos, haciendo de la reparación de la barrera el primer paso crítico en cualquier protocolo de tratamiento capilar en entornos urbanos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-autofagia-007",
+    "title": "Mecanismos de Autofagia en la Homeostasis del Bulbo",
+    "content": "La autofagia es un proceso celular esencial de 'autolimpieza' que permite al folículo reciclar componentes dañados y eliminar proteínas mal plegadas. En el bulbo piloso, una autofagia eficiente es necesaria para mantener la reserva de células madre foliculogénicas. Con el envejecimiento y la exposición a estresores, la eficiencia de la autofagia disminuye, lo que lleva a la acumulación de detritos celulares y senescencia. Este proceso está estrechamente ligado a la miniaturización folicular. La activación farmacológica de la autofagia es actualmente un área de investigación intensa, con el objetivo de rejuvenecer el nicho de células madre. En el diagnóstico, la detección de marcadores de senescencia en biopsias o muestras tricoscópicas podría predecir la respuesta a largo plazo de los pacientes a los tratamientos de estimulación capilar. Comprender la regulación de la autofagia permite al clínico explicar por qué ciertos pacientes presentan una resistencia intrínseca a terapias regenerativas y cómo el estilo de vida influye en esta capacidad de renovación celular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Cell Death & Disease (Nature)",
+        "url": "https://www.nature.com/cddis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "investigacion-avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-inmunometabolismo-008",
+    "title": "Inmunometabolismo: Linfocitos T y Resiliencia Folicular",
+    "content": "Los linfocitos T residentes en la piel desempeñan un papel dual en el folículo piloso: pueden promover la regeneración tisular tras una lesión o mediar la destrucción folicular en procesos autoinmunes como la alopecia areata. El inmunometabolismo estudia cómo las células inmunes adaptan su metabolismo energético para responder a las señales del entorno folicular. En estados de estrés metabólico, los linfocitos T pueden cambiar hacia un perfil proinflamatorio que daña el nicho de las células madre. El diagnóstico clínico debe considerar este balance inmunometabólico, especialmente en pacientes con enfermedades autoinmunes o inflamatorias sistémicas. La modulación de este entorno, mediante dietas antiinflamatorias o agentes que regulen el metabolismo de los linfocitos T, constituye una estrategia prometedora. Es fundamental que el dermatólogo reconozca que la salud capilar es un reflejo del estado inmunológico sistémico, requiriendo un abordaje que integre la inmunología básica con la práctica clínica diaria en el manejo de alopecias complejas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Allergy and Clinical Immunology",
+        "url": "https://www.jacionline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes inmunomoduladores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-inmunologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  },
+  {
+    "chunk_id": "diag-capilar-proteostasis-009",
+    "title": "Proteostasis y Control de Calidad en la Matriz Folicular",
+    "content": "La proteostasis es el conjunto de procesos que aseguran que las proteínas sean correctamente sintetizadas, plegadas y degradadas. En la matriz folicular, la alta tasa de producción de queratina requiere una maquinaria de proteostasis extremadamente eficiente. Cuando esta maquinaria falla (debido a factores genéticos o ambientales), se acumulan proteínas mal plegadas que generan estrés reticular endoplásmico, lo cual es tóxico para la célula y puede desencadenar la apoptosis del bulbo. Este fenómeno de 'estrés de proteostasis' es una causa emergente de fragilidad capilar y pérdida de volumen. El diagnóstico clínico mediante análisis de la estructura del tallo puede revelar signos tempranos de este fallo. Los tratamientos actuales se centran en chaperonas químicas y moduladores de la vía de respuesta a proteínas desplegadas. Es vital que el profesional clínico incorpore este concepto para entender por qué algunos cabellos pierden su integridad estructural a pesar de una nutrición adecuada, señalando un problema de control de calidad interno en la maquinaria celular del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "The Journal of Clinical Investigation",
+        "url": "https://www.jci.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "chaperonas químicas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:05:27.929Z"
+  }
+]

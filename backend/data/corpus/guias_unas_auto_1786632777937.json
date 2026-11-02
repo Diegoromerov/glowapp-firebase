@@ -1,0 +1,168 @@
+[
+  {
+    "chunk_id": "guias_unas-fototoxicidad-acrilatos-001",
+    "title": "Fototoxicidad inducida por fotoiniciadores residuales",
+    "content": "La fototoxicidad en el lecho ungueal tras la aplicación de sistemas curados con luz UV/LED no se limita solo a la reacción exotérmica; existe un riesgo significativo derivado de la presencia de fotoiniciadores residuales no polimerizados. Según estudios publicados en 'Dermatitis' (Journal of the American Contact Dermatitis Society), la exposición a radiación UV de alta intensidad puede degradar fotoiniciadores como el TPO (trifenilfosfina óxido) en la superficie, liberando radicales libres que penetran la lámina ungueal. Esta penetración altera la homeostasis de la matriz y puede inducir una dermatitis de contacto foto-alérgica. Es crucial comprender que la polimerización incompleta, a menudo causada por una irradiancia insuficiente o un tiempo de exposición menor al recomendado por el fabricante, deja monómeros y fotoiniciadores en un estado reactivo. Este 'sub-curado' es el principal responsable de la sensibilización a largo plazo a los metacrilatos. El profesional debe verificar la compatibilidad espectral entre la lámpara utilizada y el gel aplicado, asegurando que la longitud de onda de emisión (frecuencia) coincida con el pico de absorción del fotoiniciador presente en el producto, evitando así la formación de subproductos tóxicos que pueden migrar hacia el tejido periungueal y causar inflamación crónica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "TPO",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "polimerización_incompleta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_seguridad_uv"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:52:39.559Z"
+  },
+  {
+    "chunk_id": "guias_unas-permeabilidad-solvente-002",
+    "title": "Permeabilidad de la lámina ante solventes de remoción",
+    "content": "La lámina ungueal, lejos de ser una barrera inerte, funciona como una estructura porosa con una capacidad de absorción superior a la de la piel. Investigaciones en 'PubMed' sobre farmacocinética ungueal demuestran que los solventes utilizados para la remoción de esmaltes semipermanentes y estructuras artificiales, principalmente la acetona y el acetato de etilo, alteran drásticamente el contenido de lípidos intercelulares. Esta deslipidización forzada aumenta la permeabilidad de la lámina, permitiendo que agentes químicos externos penetren hasta el lecho ungueal, donde pueden desencadenar una respuesta inflamatoria. El uso prolongado y la oclusión con aluminio durante la remoción aceleran la difusión de estos solventes, lo que resulta en una onicodistrofia por deshidratación crónica. Clínicamente, esto se manifiesta como una pérdida de flexibilidad, fragilidad extrema y descamación laminar. Para mitigar este daño, se recomienda limitar el tiempo de contacto directo con solventes y priorizar métodos de remoción mecánica controlada que preserven la capa dorsal de la uña, evitando el daño a la barrera lipídica protectora que mantiene la integridad estructural de los corneocitos ungueales frente a agresiones externas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34215174/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "acetato de etilo"
+      ],
+      "contraindications": [
+        "oclusion_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_remocion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:52:39.559Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomecanica-tension-003",
+    "title": "Arquitectura del arco de tensión en uñas esculpidas",
+    "content": "La biomecánica de la uña artificial depende fundamentalmente de la distribución de las fuerzas de cizallamiento a lo largo de la lámina. Un error común en cabina es el diseño de un arco de tensión (o ápex) inadecuado, lo que desplaza el punto de mayor estrés hacia el borde libre o hacia la zona proximal. Según principios de ingeniería de materiales aplicados a la dermatología estética, cuando la estructura no presenta una curvatura en 'C' correcta, la uña queda sujeta a tensiones tangenciales que pueden causar el levantamiento prematuro de la base (onicólisis por tracción). Además, una uña con un arco de tensión mal posicionado transfiere el impacto mecánico directamente a la matriz ungueal, lo que puede derivar en microtraumas crónicos responsables de la aparición de líneas de Beau o hemorragias subungueales focales. La correcta modelación del ápex no es solo un requerimiento estético, sino un imperativo de seguridad para prevenir la onicodistrofia inducida por palanca. Un diseño equilibrado permite que el impacto mecánico se disipe a través del cuerpo de la uña, protegiendo tanto la unión lecho-lámina como el eponiquio de una tensión mecánica excesiva que comprometa la salud de la unidad ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "apex_inadecuado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_esculpido"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:52:39.559Z"
+  },
+  {
+    "chunk_id": "guias_unas-friccion-termica-006",
+    "title": "Termodinámica del fresado y daño matricial",
+    "content": "El uso de tornos (fresas eléctricas) en cabina genera calor friccional que, si no se controla, puede exceder los umbrales de tolerancia térmica de la matriz ungueal. La transferencia térmica a través de la lámina ungueal es eficiente debido a la naturaleza densa de la queratina; por lo tanto, el calor generado en la superficie se transmite rápidamente hacia los tejidos vivos subyacentes. La exposición prolongada a temperaturas superiores a 42-45°C puede causar una desnaturalización proteica focal, manifestándose clínicamente como onicólisis o distrofia ungueal permanente. La técnica de fresado debe ser intermitente, utilizando velocidades de giro adecuadas y presión mínima, permitiendo la disipación de calor entre pasadas. Además, la elección del material de la fresa (carburo de tungsteno vs. diamante) influye en la eficiencia del corte y la generación de calor. Las fresas de diamante de grano grueso tienden a generar más fricción y calor que las de carburo. La capacitación en el control del torque y la presión es fundamental para evitar el daño matricial iatrogénico, un problema que a menudo se diagnostica erróneamente como una patología sistémica o fúngica cuando la causa es puramente física.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cutaneous and Aesthetic Surgery",
+        "url": "https://www.jcasonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado_alta_velocidad_continuo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso_tornos_seguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:52:39.559Z"
+  }
+]

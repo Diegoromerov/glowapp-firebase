@@ -1,0 +1,90 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-radiacion-ionizante-002",
+    "title": "Maquillaje en eventos con exposición a radiación ionizante de baja dosis",
+    "content": "En entornos donde existe exposición a radiación ionizante de baja dosis, como ciertos laboratorios de investigación o entornos médicos, la integridad de la barrera cutánea es crítica. La radiación induce la producción de especies reactivas de oxígeno (ROS) que pueden potenciar la peroxidación lipídica de los aceites presentes en las formulaciones cosméticas. El maquillaje aplicado debe actuar como un escudo antioxidante secundario. Se recomienda el uso de bases formuladas con antioxidantes estables como tocoferol y ácido ascórbico, que neutralizan los radicales libres generados por la interacción radiación-piel. Es fundamental evitar productos con fragancias o ingredientes fotosensibilizantes, ya que la sinergia entre radiación y ciertos compuestos químicos puede aumentar la incidencia de eritema inducido. La capa de maquillaje debe ser mínima pero uniforme, evitando oclusiones innecesarias que puedan atrapar partículas ionizadas sobre la superficie cutánea. La remoción posterior debe ser rigurosa para eliminar cualquier residuo que haya podido reaccionar con el ambiente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "acido-ascorbico"
+      ],
+      "contraindications": [
+        "fragancias-sinteticas",
+        "fotosensibilizantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-preventiva"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:35:36.651Z"
+  },
+  {
+    "chunk_id": "maquillaje-exposicion-radiofrecuencia-009",
+    "title": "Maquillaje y exposición a radiofrecuencia (RF): Prevención de interacciones",
+    "content": "La exposición a niveles significativos de radiofrecuencia (RF), comunes en ferias tecnológicas o entornos con múltiples dispositivos de comunicación, puede generar un fenómeno de calentamiento dieléctrico en partículas metálicas presentes en el maquillaje. Los pigmentos de óxidos metálicos, como el dióxido de titanio o los óxidos de hierro, pueden actuar como receptores de energía de RF. Aunque a niveles ambientales el efecto es despreciable, en entornos de alta exposición, esto podría causar una sensación de calor localizado o irritación térmica. La recomendación clínica es optar por maquillaje mineral que utilice pigmentos recubiertos con polímeros aislantes, los cuales reducen la conductividad eléctrica de las partículas. Adicionalmente, el uso de bases con alto contenido de agua actúa como un disipador térmico natural, ayudando a distribuir el calor uniformemente y evitando puntos calientes en la piel. Es fundamental realizar una prueba de parche si el usuario sabe que estará expuesto a fuentes de alta RF, asegurando que la formulación no cause una respuesta eritematosa. La hidratación previa de la piel es clave, ya que una barrera cutánea íntegra y bien hidratada es menos susceptible a las variaciones de temperatura inducidas por campos electromagnéticos externos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Commission on Non-Ionizing Radiation Protection",
+        "url": "https://www.icnirp.org/en/activities/rf-guidelines.html",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-recubiertos",
+        "agua-termal"
+      ],
+      "contraindications": [
+        "pigmentos-metalicos-puros",
+        "productos-con-alta-conductividad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-tecnologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:35:36.651Z"
+  }
+]

@@ -1,0 +1,192 @@
+[
+  {
+    "chunk_id": "epigenetica-metilacion-promotor-androgenos-001",
+    "title": "Impacto de la Metilación del Promotor del Receptor de Andrógenos en la Alopecia",
+    "content": "La regulación epigenética, específicamente la metilación del ADN en la región promotora del gen del receptor de andrógenos (AR), emerge como un factor determinante en la susceptibilidad a la alopecia androgenética. Investigaciones recientes indican que los patrones de metilación diferencial en los folículos pilosos del cuero cabelludo occipital frente al frontal explican por qué ciertas áreas permanecen resistentes a la miniaturización. La hipometilación observada en receptores de andrógenos específicos aumenta la sensibilidad del folículo a la dihidrotestosterona (DHT), incluso en presencia de niveles séricos normales de andrógenos. Este fenómeno sugiere que el diagnóstico capilar debe trascender los niveles hormonales en sangre y considerar la carga epigenética del tejido folicular. La modulación de estas marcas epigenéticas mediante terapias tópicas que influyen en las metiltransferasas de ADN representa una frontera diagnóstica y terapéutica de alto valor para el seguimiento de la progresión de la calvicie.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_genetico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:41.915Z"
+  },
+  {
+    "chunk_id": "citometria-flujo-nicho-folicular-002",
+    "title": "Citometría de Flujo para la Evaluación del Nicho de Células Madre",
+    "content": "La cuantificación precisa de las poblaciones de células madre en el 'bulge' folicular mediante citometría de flujo representa una técnica avanzada para evaluar el potencial regenerativo del cuero cabelludo. En pacientes con alopecias cicatriciales o efluvios crónicos, se observa una depleción significativa del pool de células madre CD200+ y CD34+. Este análisis permite diferenciar entre una fase de reposo prolongado (telógeno) y una verdadera insuficiencia de células madre, lo cual es crítico para determinar el pronóstico de recuperación. Al integrar marcadores de superficie específicos, los especialistas pueden identificar el agotamiento celular antes de que la miniaturización sea clínicamente evidente en la tricoscopia. Este enfoque cuantitativo proporciona una medida objetiva de la reserva folicular, permitiendo una intervención temprana con terapias regenerativas basadas en exosomas o plasma rico en plaquetas, maximizando así la tasa de éxito clínico en pacientes con pérdida capilar progresiva.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00001-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:41.915Z"
+  },
+  {
+    "chunk_id": "estres-oxidativo-lipidos-sebo-003",
+    "title": "Lipidómica del Sebo: Biomarcadores de Estrés Oxidativo",
+    "content": "La composición lipídica del sebo en el cuero cabelludo no es solo un subproducto de las glándulas sebáceas, sino un reflejo metabólico del entorno folicular. La peroxidación de escualeno y ácidos grasos libres dentro del canal folicular, catalizada por contaminantes ambientales y radiación UV, genera subproductos tóxicos que inducen inflamación perifolicular. El análisis mediante cromatografía de gases y espectrometría de masas permite detectar niveles elevados de malondialdehído y 4-hidroxinonenal en el sebo, los cuales actúan como biomarcadores de un estrés oxidativo sistémico y local. Estos perfiles lipídicos alterados se correlacionan directamente con la severidad de la dermatitis seborreica y la progresión de la alopecia androgenética. Un diagnóstico capilar integral debe evaluar la calidad de estos lípidos para determinar si la barrera folicular está comprometida, guiando el uso de antioxidantes tópicos específicos que neutralicen estos radicales libres en el ostium.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:41.915Z"
+  },
+  {
+    "chunk_id": "interaccion-mastocitos-perivasculares-005",
+    "title": "El Rol de los Mastocitos Perivasculares en el Ciclo Capilar",
+    "content": "Los mastocitos residentes en la dermis perivascular del folículo piloso actúan como sensores críticos de estrés y mediadores de la inflamación neurogénica. Tras la activación por neuropeptidos como la Sustancia P, los mastocitos liberan triptasa y quimasa, enzimas que inducen la degradación prematura de la matriz extracelular y fuerzan al folículo a entrar en fase catágena de forma acelerada. Este mecanismo es fundamental para entender la alopecia areata y las exacerbaciones de efluvios telógenos vinculadas al estrés psicológico. El diagnóstico clínico debe considerar la densidad de mastocitos perivasculares como un indicador de 'hiperreactividad folicular'. Las estrategias terapéuticas que estabilizan la membrana de los mastocitos o bloquean la liberación de mediadores inflamatorios ofrecen una vía prometedora para prolongar la fase anágena, particularmente en pacientes donde los factores neuroendocrinos predominan sobre la influencia androgénica clásica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38234567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:41.915Z"
+  },
+  {
+    "chunk_id": "inmunosenescencia-tregs-nicho-008",
+    "title": "Inmunosenescencia del Nicho Folicular: Disregulación de Células T Reguladoras",
+    "content": "La inmunosenescencia, o el envejecimiento del sistema inmunitario en el nicho folicular, desempeña un papel clave en la miniaturización folicular asociada a la edad. Se ha observado que la población de células T reguladoras (Tregs), encargadas de mantener la homeostasis y prevenir la inflamación crónica, disminuye en densidad y funcionalidad en los folículos envejecidos. Esta pérdida de control inmunológico permite una inflamación persistente de bajo grado que agota las células madre del folículo. El diagnóstico clínico mediante la cuantificación de citoquinas proinflamatorias y el recuento de Tregs en biopsias punch o muestras de aspirado folicular permite identificar este estado de senescencia. La intervención con terapias que estimulen la proliferación de Tregs o el uso de péptidos miméticos de la juventud folicular representa el futuro del manejo de las alopecias seniles, buscando restaurar el equilibrio inmune necesario para el ciclo de crecimiento.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Dermatological reports",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inmunologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:41.915Z"
+  }
+]

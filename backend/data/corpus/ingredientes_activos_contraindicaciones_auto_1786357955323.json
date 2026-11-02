@@ -1,0 +1,133 @@
+[
+  {
+    "chunk_id": "cisteamina-pigmentacion-001",
+    "title": "Cisteamina tópica: mecanismos y el reto de la irritación",
+    "content": "La cisteamina es un potente agente despigmentante que ha ganado relevancia clínica como alternativa a la hidroquinona. Su mecanismo de acción principal es la inhibición de la tirosinasa y la peroxidasa, además de elevar los niveles intracelulares de glutatión. A diferencia de otros activos, su uso requiere una aplicación de contacto corto, generalmente de 15 a 30 minutos, seguida de una limpieza profunda. La literatura dermatológica, incluyendo estudios publicados en el Journal of the American Academy of Dermatology (JAAD), destaca su eficacia en el tratamiento del melasma resistente. Sin embargo, su perfil de seguridad está marcado por una alta tasa de dermatitis de contacto irritativa. El eritema y la descamación son efectos adversos comunes que, si no se controlan con una adecuada pauta de adaptación, pueden exacerbar la hiperpigmentación post-inflamatoria. Es imperativo que el paciente comprenda que la eficacia no depende de la permanencia del producto en la piel, sino de la tolerancia cutánea y la constancia en el protocolo de lavado.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32975-2/fulltext",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cisteamina"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "hipersensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_despigmentantes"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:32:17.373Z"
+  },
+  {
+    "chunk_id": "cloruro-benzalconio-microbioma-002",
+    "title": "Cloruro de benzalconio: riesgos de disrupción del microbioma",
+    "content": "El cloruro de benzalconio es un compuesto de amonio cuaternario frecuentemente utilizado como conservante y antiséptico en productos cosméticos. Aunque es eficaz para prevenir la contaminación microbiana en formulaciones acuosas, su uso en productos 'leave-on' (que no se enjuagan) presenta riesgos significativos. La evidencia científica sugiere que este compuesto posee propiedades citotóxicas que pueden alterar la composición del microbioma cutáneo, afectando la diversidad de bacterias comensales necesarias para la salud de la barrera cutánea. Además, el cloruro de benzalconio está clasificado como un alérgeno de contacto emergente. Según reportes del PubMed, la exposición crónica puede inducir dermatitis de contacto alérgica, especialmente en pieles con la barrera comprometida, como en pacientes con dermatitis atópica. La tendencia actual en dermocosmética busca reemplazar este conservante por opciones con perfiles de seguridad más robustos y menor potencial de irritación sistémica o local, dada su capacidad de penetración en capas profundas del estrato córneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28362453/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:32:17.373Z"
+  },
+  {
+    "chunk_id": "resinas-acrilatos-sensibilizacion-003",
+    "title": "Resinas de acrilatos: epidemia de sensibilización cruzada",
+    "content": "Las resinas de acrilatos y metacrilatos son componentes fundamentales en la cosmética técnica, particularmente en esmaltes semipermanentes y adhesivos para pestañas postizas. La sensibilización a estos compuestos ha sido catalogada como una epidemia en la dermatología moderna. El riesgo principal radica en la sensibilización cruzada: una vez que un paciente desarrolla alergia a un tipo de acrilato, es altamente probable que reaccione a otros monómeros estructuralmente similares. Este fenómeno no solo afecta a las uñas, sino que puede manifestarse como dermatitis de contacto en los párpados o áreas de contacto habitual. Según estudios de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), el contacto prolongado con productos mal polimerizados aumenta exponencialmente el riesgo. Es vital que los usuarios identifiquen los signos tempranos de sensibilización, como prurito intenso, eritema periungueal o edema palpebral. La recomendación clínica es evitar la exposición innecesaria a estos agentes técnicos en pacientes con antecedentes de dermatitis de contacto o piel atópica, ya que el riesgo de sensibilización es irreversible.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology",
+        "url": "https://www.ijdvl.com/article.asp?issn=0378-6323;year=2021",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "antecedentes de alergias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:32:17.373Z"
+  }
+]

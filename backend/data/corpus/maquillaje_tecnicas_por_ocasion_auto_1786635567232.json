@@ -1,0 +1,43 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-inteligencia-artificial-001",
+    "title": "Maquillaje para eventos con sistemas de visión artificial y reconocimiento de patrones",
+    "content": "La proliferación de sistemas de visión artificial, cámaras 4K y algoritmos de reconocimiento facial en eventos masivos plantea desafíos únicos para la estabilidad cromática del maquillaje. A diferencia de la fotografía convencional, los sensores de IA analizan la reflectancia espectral de la piel. El uso de polvos con alto contenido de sílice o dióxido de titanio mal micronizado puede provocar un 'ghosting' digital, donde el software interpreta la reflexión como una anomalía en la textura cutánea. Según estudios publicados en PubMed sobre visión computacional aplicada a la dermatología, la interferencia de partículas cosméticas puede alterar la precisión de los algoritmos de detección de puntos de referencia faciales (landmarks). Para mitigar esto, se recomienda el uso de productos con pigmentos tratados con aminoácidos, que minimizan la dispersión de luz en el espectro infrarrojo cercano, evitando que el software de reconocimiento malinterprete la saturación del color. La clave es la neutralidad espectral, evitando bases que contengan agentes blanqueadores ópticos que reactiven bajo las fuentes de luz de los sistemas de escaneo, garantizando que la biometría funcione sin fricción técnica ni errores de lectura.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37215432/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "dióxido de titanio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje_digital"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:39:06.602Z"
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "chunk_id": "colorimetria-electroquimica-potencial-zeta-001",
+    "title": "Influencia del Potencial Zeta en la estabilidad de los pigmentos capilares",
+    "content": "El potencial Zeta es un indicador crítico de la estabilidad coloidal de las dispersiones de pigmentos en las fórmulas de tintura. En la colorimetría capilar, la superficie de la queratina posee una carga neta negativa en condiciones fisiológicas. Cuando los pigmentos sintéticos o precursores tienen un potencial Zeta mal optimizado, la repulsión electrostática impide la penetración profunda en la corteza, resultando en un color superficial que se degrada prematuramente con el lavado. Estudios de ciencia de materiales aplicados a la cosmética indican que la adición de polímeros catiónicos ajusta el potencial de la superficie capilar, facilitando la adsorción de colorantes aniónicos. Comprender esta interacción es vital para los profesionales de GlowApp al tratar cabellos con alta porosidad, donde la pérdida de cutícula altera la densidad de carga superficial. Un control inadecuado del potencial Zeta no solo compromete la saturación del color, sino que también puede generar una distribución heterogénea del pigmento a lo largo de la fibra, exacerbando el efecto de bandas no deseadas durante la aplicación de tintes permanentes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/pdf/cc2019/cc070n01/p001-p014.pdf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos",
+        "pigmentos aniónicos"
+      ],
+      "contraindications": [
+        "cabello extremadamente dañado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:27.441Z"
+  },
+  {
+    "chunk_id": "termo-dinamica-reaccion-oxidativa-002",
+    "title": "Termodinámica de la reacción oxidativa en el cuero cabelludo",
+    "content": "La reacción de acoplamiento oxidativo entre las para-fenilendiaminas y los acopladores es un proceso exotérmico que puede verse afectado por la temperatura basal del cuero cabelludo. En entornos tropicales como Bogotá, la temperatura ambiente y la humedad influyen en la cinética de polimerización dentro del bulbo capilar y la corteza. Un aumento en la temperatura folicular acelera la tasa de reacción, lo que puede llevar a una formación prematura de polímeros de gran tamaño antes de que alcancen las capas profundas de la corteza, resultando en una fijación deficiente. Además, la transferencia de calor durante la aplicación puede inducir una dilatación cuticular incontrolada, aumentando la permeabilidad del cuero cabelludo a los precursores de tinte. Es fundamental que los profesionales de GlowApp monitoricen la temperatura de la mezcla y el tiempo de exposición, evitando fuentes de calor externo innecesarias que puedan catalizar reacciones secundarias indeseadas o aumentar el riesgo de sensibilización cutánea por una mayor penetración de intermediarios químicos en la dermis.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31154777/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "para-fenilendiamina",
+        "acopladores"
+      ],
+      "contraindications": [
+        "cuero cabelludo inflamado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:27.441Z"
+  },
+  {
+    "chunk_id": "anisotropia-distribucion-pigmento-003",
+    "title": "Anisotropía de la fibra capilar y su impacto en la distribución del pigmento",
+    "content": "La fibra capilar no es un cilindro uniforme; presenta una estructura anisotrópica donde la densidad de la queratina y la orientación de las células de la cutícula varían desde la raíz hasta la punta. Esta heterogeneidad estructural afecta directamente la difusividad de los colorantes. En cabellos largos, la anisotropía provoca que las zonas distales, que han estado expuestas a mayor estrés ambiental y fotodegradación, absorban pigmentos de manera diferente a las zonas proximales. La falta de consideración de esta anisotropía durante la aplicación del tinte resulta en el fenómeno de 'bandas de color' o un resultado desigual entre raíz y puntas. Los expertos en colorimetría deben aplicar técnicas de igualación que compensen esta diferencia en la tasa de absorción, utilizando agentes que modulen la permeabilidad cuticular de manera selectiva. La comprensión de la arquitectura física del cabello es, por tanto, tan vital como la química del tinte mismo para lograr una uniformidad cromática profesional y duradera en los servicios de coloración.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4387693/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:27.441Z"
+  },
+  {
+    "chunk_id": "biocompatibilidad-polimeros-cationicos-007",
+    "title": "Biocompatibilidad de polímeros catiónicos en la fijación del color",
+    "content": "Los polímeros catiónicos, como el Polyquaternium-10 o el cloruro de guar hidroxipropiltrimonio, son componentes esenciales en las formulaciones de tintes modernos. Su función principal es mejorar la sustantividad del color al adherirse a las zonas dañadas de la fibra capilar, que poseen una carga negativa. Sin embargo, una acumulación excesiva de estos polímeros en el cuero cabelludo puede inducir dermatitis de contacto o irritación inespecífica. La biocompatibilidad de estos ingredientes es fundamental para garantizar que el servicio de coloración sea seguro. En GlowApp, evaluamos la interacción de estos polímeros con el microbioma del cuero cabelludo, ya que algunos agentes de acondicionamiento pueden alterar el equilibrio de la flora cutánea, favoreciendo la proliferación de microorganismos oportunistas. Una selección cuidadosa de polímeros de bajo peso molecular permite una fijación óptima del pigmento sin comprometer la salud del cuero cabelludo ni la transpirabilidad de los folículos pilosos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polyquaternium-10",
+        "guar"
+      ],
+      "contraindications": [
+        "hipersensibilidad a polímeros"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:27.441Z"
+  },
+  {
+    "chunk_id": "estres-oxidativo-matriz-folicular-008",
+    "title": "Estrés oxidativo inducido y la reserva de melanocitos",
+    "content": "La aplicación frecuente de tintes permanentes y decoloraciones somete al cuero cabelludo a un estrés oxidativo continuo. La liberación de radicales libres durante el proceso de oxidación puede afectar no solo la fibra capilar, sino también la reserva de melanocitos en el bulbo piloso. Existe una creciente evidencia clínica que sugiere que la exposición repetida a agentes oxidantes potentes puede acelerar la aparición de canicie prematura al dañar el microambiente del folículo. La gestión de este riesgo en GlowApp implica el uso de agentes quelantes avanzados que neutralicen los metales de transición presentes en el agua y en la fibra, los cuales potencian la formación de radicales libres durante el teñido. Al mitigar el estrés oxidativo mediante protocolos de quelación y el uso de antioxidantes tópicos post-proceso, es posible proteger la integridad funcional del folículo y prolongar la salud de la matriz capilar a pesar de los servicios de coloración regulares.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NIH (National Institutes of Health)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900656/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "alopecia areata"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-capilar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:27.441Z"
+  },
+  {
+    "chunk_id": "viscoelasticidad-retencion-pigmentos-009",
+    "title": "Viscoelasticidad capilar y retención de pigmentos",
+    "content": "La viscoelasticidad de la fibra capilar determina cómo reacciona el cabello ante los procesos químicos de expansión y contracción durante el teñido. Un cabello con una viscoelasticidad óptima mantiene la integridad de sus enlaces disulfuro y sus proteínas estructurales, permitiendo una retención de color más prolongada. Sin embargo, las aplicaciones químicas excesivas degradan estas propiedades mecánicas, haciendo que la corteza sea incapaz de 'cerrarse' correctamente tras el proceso de coloración. Esto resulta en una pérdida rápida de pigmentos, un fenómeno conocido como 'sangrado del color'. En GlowApp, evaluamos la elasticidad antes de cualquier procedimiento; si el cabello muestra una recuperación pobre tras la elongación, el protocolo de coloración debe ajustarse con agentes selladores de cutícula y tratamientos de reconstrucción proteica previos. La gestión de la viscoelasticidad es, por tanto, una herramienta preventiva fundamental para asegurar que el resultado cromático no solo sea estéticamente satisfactorio, sino también estructuralmente estable a través de los lavados sucesivos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteínas hidrolizadas"
+      ],
+      "contraindications": [
+        "cabello altamente elástico (dañado)"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:27.441Z"
+  }
+]

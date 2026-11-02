@@ -1,0 +1,378 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-oxidacion-metales-001",
+    "title": "Interacción entre metales de transición y peróxido de hidrógeno",
+    "content": "La presencia de metales de transición como el cobre, hierro o manganeso, depositados en la fibra capilar tras lavados con agua no tratada o el uso de herramientas térmicas, actúa como catalizador en la descomposición del peróxido de hidrógeno (H2O2). Este fenómeno, conocido como reacción de Fenton, acelera la degradación oxidativa de la melanina de manera incontrolada. En un entorno de colorimetría profesional, esta reacción exotérmica no solo pone en riesgo la integridad estructural de la queratina al generar radicales libres hidroxilo en exceso, sino que también altera la cromaticidad final, provocando virajes de color indeseados hacia tonos verdosos o cobrizos. Es fundamental realizar un quelado previo mediante agentes específicos como el EDTA (ácido etilendiaminotetraacético) en cabellos con sospecha de alta carga mineral antes de cualquier procedimiento de aclaración o teñido permanente para asegurar la predictibilidad del resultado clínico y cosmético.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "peróxido de hidrógeno"
+      ],
+      "contraindications": [
+        "cabello con alta porosidad por metales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-pigmentos-naturales-002",
+    "title": "Dinámica de la eumelanina y feomelanina en la neutralización",
+    "content": "La comprensión de la colorimetría capilar comienza con el balance entre la eumelanina (pigmento oscuro, granular) y la feomelanina (pigmento claro, difuso). Durante el proceso de aclaración, la eumelanina se degrada más rápidamente, exponiendo los subtonos subyacentes que van desde el rojo intenso en niveles oscuros hasta el amarillo pálido en niveles rubios. El error clínico más frecuente es subestimar la persistencia de la feomelanina, que es altamente resistente a la oxidación. La neutralización debe basarse estrictamente en la rueda cromática: para cancelar tonos amarillos se requieren pigmentos violetas, mientras que para los naranjas se requieren azules. El uso de tablas de altura de tono (HT) es insuficiente si no se considera la densidad de pigmento residual; una evaluación precisa requiere luz blanca neutra (5000K) para evitar el metamerismo, donde el color percibido cambia drásticamente bajo diferentes fuentes de luz, afectando la satisfacción del paciente en el entorno clínico de GlowApp.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/hair-color-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos oxidativos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-colorimetria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-microbiota-003",
+    "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+    "content": "El uso recurrente de tintes oxidativos, particularmente aquellos con pH altamente alcalino (pH 9-11), no solo afecta la fibra capilar, sino que altera drásticamente el microbioma del cuero cabelludo. La disbiosis inducida por la eliminación de lípidos protectores y la modificación del pH cutáneo puede favorecer la proliferación de Malassezia spp. y otras bacterias oportunistas. Estudios dermatológicos indican que una piel cabelluda comprometida reduce la tolerancia a los agentes químicos del tinte, aumentando el riesgo de dermatitis de contacto irritativa. En pacientes con antecedentes de dermatitis seborreica o psoriasis, el servicio de coloración debe ser pospuesto hasta que la barrera cutánea esté íntegra. La recomendación clínica es integrar protocolos de equilibrio del pH post-coloración y, si es necesario, utilizar champús con pH fisiológico (5.5) para restaurar la homeostasis microbiana, evitando así el prurito y la descamación post-servicio que a menudo se confunden erróneamente con reacciones alérgicas al tinte.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes alcalinizantes"
+      ],
+      "contraindications": [
+        "dermatitis activa",
+        "psoriasis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-compatibilidad-quimica-004",
+    "title": "Incompatibilidad entre tintes metálicos y decolorantes",
+    "content": "Es imperativo realizar una anamnesis detallada sobre el historial de uso de 'tintes progresivos' o 'baños de color' de origen dudoso. Estos productos a menudo contienen sales metálicas como acetato de plomo o nitrato de plata, las cuales se depositan profundamente en la corteza capilar. Si un estilista aplica peróxido de hidrógeno o persulfatos (decolorantes) sobre cabello tratado con sales metálicas, se desencadena una reacción redox violenta. Esto produce calor extremo, vaporización de la humedad interna del cabello y, en casos severos, la desintegración total de la fibra (ruptura química). Clínicamente, no existe un antídoto una vez iniciada la reacción; la única prevención efectiva es la prueba de mecha con una mezcla de peróxido y polvo decolorante en una sección pequeña, observando si ocurre un aumento de temperatura o efervescencia. El cabello con sales metálicas debe considerarse no apto para procesos de aclaración química hasta que la sección afectada sea removida mecánicamente mediante corte.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00567-X/fulltext",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetato de plomo",
+        "nitrato de plata"
+      ],
+      "contraindications": [
+        "cabello con tintes progresivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-formaldehido-005",
+    "title": "El riesgo oculto de los alisados y la coloración posterior",
+    "content": "Existe una peligrosa tendencia de combinar tratamientos de alisado (a menudo enriquecidos con formaldehído o derivados como el glioxal) con servicios de coloración. Estos alisados crean una película hidrofóbica y oclusiva alrededor de la cutícula, lo que impide la penetración uniforme de las moléculas de tinte oxidativo. El resultado es un color irregular, parches de pigmento y una sobreexposición a los agentes oxidantes al intentar compensar la falta de absorción. Además, el calor necesario para sellar estos alisados degrada la estructura proteica, dejando el cabello con una porosidad extrema que facilita la fuga de pigmento en cuestión de lavados. Clínicamente, el cabello tratado con alisados químicos es un terreno inestable. Se recomienda un periodo de espera de al menos 4 a 6 semanas entre un tratamiento de alisado y una coloración, siempre realizando pruebas de porosidad previas, ya que la integridad del complejo de membrana celular (CMC) se ve seriamente comprometida en estos casos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "FDA - U.S. Food and Drug Administration",
+        "url": "https://www.fda.gov/cosmetics/cosmetic-products/hair-smoothing-products-and-formaldehyde",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "formaldehído",
+        "glioxal"
+      ],
+      "contraindications": [
+        "cabello alisado recientemente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-seguridad"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-envejecimiento-fibra-006",
+    "title": "Cambios estructurales en el cabello canoso y su afinidad tintórea",
+    "content": "El cabello canoso (acromotriquia) no solo carece de melanina, sino que presenta cambios estructurales significativos en la cutícula y la corteza. La cutícula del cabello canoso es más gruesa y menos permeable, lo que dificulta la penetración de las moléculas de color. Además, el aumento de la proporción de lípidos en el folículo de la cana puede crear una superficie hidrofóbica que repele los tintes tradicionales. Clínicamente, esto explica por qué las canas suelen quedar 'translúcidas' o con un tono más claro que el resto del cabello. Para lograr una cobertura óptima del 100%, es necesario utilizar técnicas de 'pre-suavizado' (mordentado) o seleccionar tonos con una base más profunda y mayor concentración de pigmentos directos. Ignorar la fisiología del cabello canoso conduce a resultados poco profesionales y a la insatisfacción del usuario, al no entender que la cana requiere un protocolo de colorimetría diferenciado respecto al cabello pigmentado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2021;volume=13;issue=4;spage=123;epage=128;aulast=Kumar",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos base"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-colorimetria"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-alergia-cruzada-007",
+    "title": "Reactividad cruzada: PPD, PTD y colorantes textiles",
+    "content": "La sensibilización a la parafenilendiamina (PPD) es el alérgeno principal en los tintes permanentes, pero la seguridad clínica va más allá de evitar este compuesto. Muchos pacientes sensibilizados al PPD presentan reactividad cruzada con otras aminas aromáticas como la paratoluendiamina (PTD), colorantes dispersos utilizados en textiles sintéticos, y ciertos anestésicos locales (benzocaína). Esto significa que un paciente que reacciona a un tinte puede tener una historia clínica de dermatitis por contacto tras usar ropa de color oscuro o calzado sintético. En el entorno de GlowApp, es vital preguntar sobre reacciones previas no solo a tintes, sino también a ropa que cause picazón. La sustitución de PPD por PTD no garantiza la ausencia de reacción, ya que el sistema inmunitario reconoce estructuras químicas similares. El protocolo de seguridad debe ser estricto: cualquier antecedente de sensibilización a químicos textiles debe ser una señal de alerta roja para realizar pruebas epicutáneas (patch test) extendidas por un dermatólogo antes de aplicar cualquier coloración permanente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis - Journal of the American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "PTD"
+      ],
+      "contraindications": [
+        "alergia a aminas aromáticas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-luz-tecnologia-008",
+    "title": "El papel de la luz ambiente en la evaluación cromática",
+    "content": "La evaluación del color capilar es un proceso subjetivo que depende enteramente de la fuente de luz. El fenómeno del metamerismo ocurre cuando dos colores parecen iguales bajo una fuente de luz (por ejemplo, luz artificial de salón) pero difieren bajo otra (luz solar natural). En Bogotá, la variación en la intensidad lumínica y la temperatura de color a lo largo del día puede alterar drásticamente la percepción del estilista. Para un diagnóstico clínico preciso, GlowApp recomienda el uso de lámparas de espectro completo (CRI > 95) que simulen la luz solar natural (6500K). Esto permite una lectura real de la altura de tono y la presencia de reflejos no deseados. La falta de estandarización lumínica es una de las causas principales de insatisfacción post-servicio, donde el cliente percibe un tono diferente al salir del salón. La implementación de una 'estación de color' con iluminación controlada es un imperativo técnico para cualquier profesional que busque resultados de alta precisión en colorimetría.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+    "title": "Restauración del pH y sellado cuticular post-proceso",
+    "content": "Al finalizar una coloración permanente, el pH del cabello se encuentra en un estado alcalino (típicamente entre 8 y 9), lo que mantiene la cutícula abierta y vulnerable. Si el cabello no es tratado inmediatamente con un agente acidificante (pH 3.5-4.5), la pérdida de pigmento será acelerada y la fibra quedará expuesta a daños ambientales. La ciencia detrás del sellado cuticular radica en la neutralización de los residuos alcalinos y la re-compactación de las escamas de la cutícula mediante el uso de polímeros catiónicos y agentes acidificantes. Este paso no es opcional; es parte integral de la estabilidad del color. Los productos de sellado profesional actúan mediante la atracción electrostática entre los grupos amino cargados positivamente del tratamiento y las zonas dañadas cargadas negativamente de la queratina. Un correcto sellado del pH no solo extiende la durabilidad del color, sino que mejora la reflectancia de la luz en la superficie del cabello, otorgando un aspecto de salud capilar superior tras el servicio técnico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acidificantes",
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:18:25.101Z"
+  }
+]

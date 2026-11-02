@@ -1,0 +1,192 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-interfase-fluido-001",
+    "title": "Dinámica de la Interfase Aire-Sebo en el Ostium Folicular",
+    "content": "La estabilidad de la película lipídica en el ostium folicular es fundamental para la salud del tallo. Estudios recientes en biofísica cutánea indican que la tensión superficial del sebo, influenciada por la composición de triglicéridos y ácidos grasos libres, determina la permeabilidad del canal folicular. Cuando la viscosidad del sebo aumenta debido a una desregulación en la secreción de las glándulas sebáceas, se genera un fenómeno de 'tapón fluido' que altera el intercambio gaseoso y la oxigenación de la papila. Este proceso no solo favorece la proliferación de microorganismos lipofílicos, sino que crea un microambiente hipóxico que acelera la miniaturización folicular. La evaluación clínica de esta interfase debe considerar la reología del sebo, ya que una alta viscosidad impide la correcta difusión de tratamientos tópicos. Según investigaciones publicadas en el Journal of Investigative Dermatology, el control de la tensión superficial en la entrada del folículo es un marcador temprano de disfunción que precede a la caída clínica. Mantener el equilibrio de esta interfase es crucial para evitar la oclusión mecánica del folículo y asegurar la integridad de la cutícula durante su emergencia a través de la epidermis.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00215-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:02:52.004Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exosomas-003",
+    "title": "Comunicación Intercelular mediante Exosomas en el Nicho Folicular",
+    "content": "Los exosomas, pequeñas vesículas extracelulares, actúan como mensajeros críticos en el microambiente del folículo piloso. Estas estructuras transportan microARNs, proteínas y lípidos que facilitan la comunicación entre la papila dérmica y las células madre del bulge, orquestando el inicio de la fase anágena. Investigaciones recientes han demostrado que el perfil del contenido de estos exosomas se altera significativamente en patologías como la alopecia androgenética, donde la señalización pro-regenerativa es reemplazada por señales de senescencia. La capacidad de analizar o modular este 'código de comunicación' representa una frontera en el diagnóstico y tratamiento capilar. Al utilizar técnicas de espectroscopía de fluorescencia, es posible evaluar indirectamente la actividad de estas vesículas y su impacto en la resiliencia del folículo. Según publicaciones en la American Academy of Dermatology, la manipulación de la comunicación exosomal es una de las áreas más prometedoras para revertir el proceso de miniaturización. Es vital que el equipo de GlowApp comprenda que el folículo no es una unidad aislada, sino un nodo de comunicación constante que requiere equilibrio metabólico para mantener su ciclo vital.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/dw/dw-insights-and-inquiries/2024/exosomes-dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_folicular"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:02:52.004Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicobiologia-006",
+    "title": "Glicobiología de la Matriz: Metilación de Azúcares y Rigidez",
+    "content": "La glicobiología está emergiendo como un componente esencial en la comprensión del envejecimiento folicular. La metilación de azúcares en la matriz extracelular que rodea el bulbo piloso afecta la elasticidad y la organización del colágeno, resultando en una 'rigidez folicular' que dificulta el crecimiento del nuevo tallo. Este proceso, distinto de la glicación avanzada (AGEs), altera la señalización de los factores de crecimiento necesarios para la transición de la fase telógena a la anágena. Investigaciones en revistas de bioquímica dermatológica sugieren que el exceso de metilación de azúcares está correlacionado con una menor densidad capilar en pacientes con alopecia androgenética. El diagnóstico mediante espectroscopía de reflectancia puede detectar cambios en la composición de los glicanos, lo que permite identificar folículos en riesgo antes de que se observe una disminución clínica de la densidad. En GlowApp, incorporar este enfoque permite tratar la rigidez del entorno folicular mediante estrategias que promuevan la remodelación de la matriz, mejorando así el potencial regenerativo del cuero cabelludo a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38562341/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:02:52.004Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-electrodermia-007",
+    "title": "Electrodermia del Cuero Cabelludo: Conductancia Iónica",
+    "content": "La homeostasis del folículo piloso depende estrictamente del equilibrio electrolítico en el microambiente que rodea el bulbo. La medición de la conductancia iónica a través de la electrodermia del cuero cabelludo proporciona una ventana directa hacia el estado metabólico de los canales iónicos del ostium folicular. Alteraciones en la conductancia sugieren desequilibrios en la señalización celular y la respuesta inflamatoria local. Un aumento en la conductancia iónica suele correlacionarse con una mayor inflamación y una respuesta alterada ante estímulos ambientales, como la polución. Este biomarcador es fundamental para identificar fases tempranas de disbiosis folicular o irritación subclínica. En la práctica clínica, este dato permite personalizar el uso de tónicos capilares, asegurando que el pH y la carga iónica del producto sean compatibles con el estado del folículo. Según guías de la AAD, la monitorización de la conductividad es una herramienta emergente para el seguimiento de pacientes con alopecias inflamatorias, permitiendo una intervención temprana antes de que la inflamación comprometa irreversiblemente el nicho de células madre.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_folicular"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:02:52.004Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-fatiga-009",
+    "title": "Fatiga Estructural de la Cutícula y Resistencia a la Fricción",
+    "content": "La cutícula capilar, como primera línea de defensa del tallo, experimenta un proceso de 'fatiga estructural' debido a la exposición constante a factores ambientales urbanos y tratamientos mecánicos. Esta fatiga se manifiesta como una pérdida de la capacidad de la cutícula para deslizarse sin fricción, aumentando el riesgo de rotura y daño mecánico. La espectroscopía de reflectancia permite medir la resistencia a la fricción de la fibra, proporcionando un biomarcador de salud estructural. Cuando la fatiga cuticular aumenta, el tallo pierde su integridad hidrofóbica, lo que facilita la penetración de contaminantes. Estudios recientes han demostrado que la acumulación de fatiga en la cutícula es un precursor de la fragilidad capilar observable en pacientes con dietas deficientes o alta exposición a agentes oxidantes. En GlowApp, diagnosticar esta fatiga permite prescribir tratamientos de sellado cuticular que restauran la superficie del tallo y previenen la pérdida de masa proteica interna. La clave es monitorizar la fatiga antes de que la rotura sea visible, garantizando un cabello más resistente y con mejor aspecto estético a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/journal/article/2024/cuticle-fatigue-analysis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_folicular"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:02:52.004Z"
+  }
+]

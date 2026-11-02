@@ -1,0 +1,78 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-sincronia-circadiana-001",
+    "title": "Sincronía Circadiana y Expresión de Genes del Ciclo Capilar",
+    "content": "La regulación del ciclo del folículo piloso no es un proceso estático, sino que está intrínsecamente ligado a los ritmos circadianos locales presentes en el queratinocito y las células de la papila dérmica. Investigaciones recientes publicadas en PubMed indican que los genes reloj (como BMAL1 y CLOCK) modulan directamente la expresión de factores de crecimiento como el IGF-1 y el VEGF, los cuales son críticos para la transición de la fase telógena a la anágena. Un desajuste en este reloj molecular, inducido por la exposición a luz azul nocturna o la irregularidad en los ciclos de sueño, puede resultar en un acortamiento prematuro de la fase anágena. Clínicamente, esto se traduce en una miniaturización progresiva que a menudo se confunde con alopecia androgenética temprana. El diagnóstico debe considerar no solo la historia clínica de estrés, sino también la higiene del sueño del paciente, ya que la desincronización periférica del folículo puede ser un marcador subclínico de disfunción metabólica subyacente. La evaluación de la expresión de estos genes mediante biopsias por punch o análisis transcriptómicos es una frontera diagnóstica emergente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34215802/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inteligente"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:25.960Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-002",
+    "title": "Inmunometabolismo: El Rol de las Células T en el Nicho Folicular",
+    "content": "El nicho de las células madre foliculares (HFSC) no solo está protegido por un privilegio inmunológico, sino que depende de una interacción dinámica con linfocitos T reguladores (Tregs) residentes. Según hallazgos de la American Academy of Dermatology, la población de Tregs en el área del bulge del folículo piloso no solo previene la autoinmunidad, sino que promueve activamente la regeneración mediante la señalización de Notch. Cuando el perfil inmunometabólico del cuero cabelludo se desplaza hacia un estado proinflamatorio crónico, las Tregs disminuyen, lo que resulta en una falla de las células madre para iniciar el ciclo anágeno. Este fenómeno explica por qué el manejo de patologías inflamatorias subclínicas es fundamental incluso antes de iniciar terapias de estimulación como el minoxidil. El diagnóstico clínico debe buscar marcadores de esta 'fatiga inmunológica' mediante tricoscopia, observando la presencia de eritema perifolicular sutil y descamación peripilar, que suelen ser los precursores de una pérdida de densidad capilar persistente en pacientes con comorbilidades autoinmunes.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inteligente"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:25.960Z"
+  }
+]

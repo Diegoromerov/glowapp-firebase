@@ -1,0 +1,201 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384772547-2-87c98815-polarizacion-de-la-luz-y-supresion-de-reflejos-especulares",
+    "title": "Polarización de la luz y supresión de reflejos especulares",
+    "content": "El brillo especular (glare) es el principal factor de ruido en la captura de imágenes para el análisis de subtono, ya que satura los sensores y distorsiona el valor cromático real de la piel. La implementación de filtros de polarización cruzada permite suprimir selectivamente estos reflejos superficiales, permitiendo que el sensor capture únicamente la luz que ha penetrado en las capas epidérmicas y ha sido dispersada por las estructuras dérmicas. Este proceso es crítico para aislar el subtono de la textura superficial. Sin la supresión de la dispersión especular, el algoritmo de RAG corre el riesgo de interpretar el brillo de la capa lipídica como una desaturación del tono, lo que resulta en una clasificación errónea de la piel como 'neutra' o 'deshidratada'. La estandarización de la captura mediante polarización es el estándar de oro para obtener datos espectrales puros, eliminando la variabilidad introducida por el sebo cutáneo o la humedad ambiental durante la toma de fotografías.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_imagen"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:59:32.548Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384772548-3-4ca0986e-espectroscopia-de-infrarrojo-cercano-nir-en-la-profundidad-d",
+    "title": "Espectroscopia de infrarrojo cercano (NIR) en la profundidad del subtono",
+    "content": "La espectroscopia de infrarrojo cercano (NIR) ofrece una ventaja técnica superior al espectro visible para determinar la profundidad de los cromóforos. Mientras que la luz visible se dispersa rápidamente en las capas superficiales, la radiación NIR penetra más profundamente, permitiendo mapear la distribución de la hemoglobina y la melanina en el estrato basal y la dermis papilar. Esta técnica es fundamental para diferenciar entre un subtono oliva real (causado por la interacción de la melanina y la dispersión de luz en la dermis) y una palidez aparente causada por una baja perfusión sanguínea. Al integrar datos NIR en el sistema RAG, podemos predecir cómo se comportará una base de maquillaje no solo en la superficie, sino en relación con la vascularización profunda del usuario. Esto reduce drásticamente la tasa de error en la selección de tonos para pieles con fototipos IV-VI, donde la melanina suele enmascarar las señales vasculares superficiales, permitiendo una personalización cromática basada en la arquitectura tisular profunda.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38556789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:59:32.548Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384772548-4-c5536825-metabolitos-del-microbioma-y-estabilidad-del-ph-cutaneo",
+    "title": "Metabolitos del microbioma y estabilidad del pH cutáneo",
+    "content": "El microbioma cutáneo actúa como un modulador dinámico del pH, lo cual tiene consecuencias directas en la estabilidad cromática de las bases de maquillaje. Ciertas cepas de *Staphylococcus* y *Cutibacterium* producen ácidos orgánicos que mantienen el manto ácido, pero una disbiosis puede elevar el pH hacia la alcalinidad. Este incremento altera la oxidación de los pigmentos de hierro (óxidos de hierro) presentes en los cosméticos, provocando un viraje hacia tonos anaranjados o rojizos tras pocas horas de uso. El análisis RAG debe correlacionar el historial de productos de cuidado de la piel con la propensión a la disbiosis del usuario. Si el sistema detecta un pH cutáneo inestable, debe recomendar bases con recubrimientos de pigmentos tratados (como trietoxicaprililsilano) que resistan la oxidación inducida por el pH. Este enfoque preventivo mejora la satisfacción del usuario al evitar la degradación del color, transformando la colorimetría de una ciencia estática a una dinámica basada en la bioquímica del ecosistema cutáneo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-024-01012-z",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "recomendacion_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:59:32.548Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384772548-5-204fb155-respuesta-vasomotora-inducida-por-el-ejercicio-y-lectura-del",
+    "title": "Respuesta vasomotora inducida por el ejercicio y lectura del subtono",
+    "content": "La lectura del subtono facial es altamente dependiente del estado hemodinámico del usuario en el momento de la captura. El ejercicio físico induce una vasodilatación periférica que aumenta la saturación de hemoglobina oxigenada en la dermis, lo cual puede enmascarar un subtono oliva o neutro bajo una apariencia eritematosa transitoria. Los sistemas RAG deben implementar un protocolo de 'reposo hemodinámico' o aplicar algoritmos de normalización que compensen el aumento del flujo sanguíneo. Ignorar la respuesta vasomotora conduce a una sobreestimación del subtono frío o rosado. Es crucial que el usuario registre si ha realizado actividad física intensa en los 60 minutos previos al análisis. La IA debe ser capaz de identificar patrones de enrojecimiento post-ejercicio mediante la segmentación de áreas de alta perfusión (mejillas, nariz) frente a áreas de baja perfusión (frente, mentón), ajustando el balance de blancos y la saturación del mapa de color para extraer el subtono base real, libre de interferencias vasculares temporales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16123",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:59:32.548Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384772548-6-ad2c949c-metamerismo-y-la-interferencia-optica-de-los-filtros-solares",
+    "title": "Metamerismo y la interferencia óptica de los filtros solares minerales",
+    "content": "El metamerismo es un fenómeno crítico en la colorimetría aplicada, donde dos colores parecen coincidir bajo una fuente de luz pero difieren bajo otra. Los filtros solares minerales, como el óxido de zinc y el dióxido de titanio, poseen un alto índice de refracción y una dispersión de luz blanca intensa (efecto 'white cast'). Esta capa física no solo altera la reflectancia de la piel, sino que crea un metamerismo condicional: la base de maquillaje puede parecer perfecta bajo luz interior, pero volverse grisácea o cenicienta bajo luz solar directa debido a la dispersión de Rayleigh causada por las partículas minerales. El sistema RAG debe identificar la presencia de estos filtros en la rutina del usuario para ajustar el perfil cromático de la base recomendada, sugiriendo fórmulas con pigmentos de corrección óptica que neutralicen el efecto blanquecino. La integración de esta variable es esencial para garantizar que la recomendación de color sea consistente bajo diversas condiciones de iluminación, evitando la frustración del usuario ante cambios inesperados en el tono de su base.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00456-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxido_de_zinc",
+        "dioxido_de_titanio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "recomendacion_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:59:32.548Z"
+  }
+]

@@ -1,0 +1,262 @@
+{
+  "cycle": "R6-C9",
+  "verdict": "DISCONFIRMED",
+  "baseline": {
+    "dataset": "GOLD-V5 15 SUPPORTED queries",
+    "vector_only": {
+      "r_at_50": 1.0,
+      "mrr": 0.7222,
+      "query_success": 1.0,
+      "avg_gold_in_pool": 2.93
+    },
+    "hybrid_always": {
+      "r_at_50": 1.0,
+      "mrr": 0.7556,
+      "query_success": 1.0,
+      "avg_gold_in_pool": 3.0,
+      "delta_vs_vector": {
+        "mrr_delta": 0.0334,
+        "new_gold": 1
+      }
+    }
+  },
+  "adaptive_hybrid": {
+    "gates_tested": 5,
+    "gate_definitions": [
+      {"id": "A", "condition": "top1_score < 0.55", "activation_rate": 0.2667, "fts_reduction": 0.7333},
+      {"id": "B", "condition": "top1_score < 0.60", "activation_rate": 0.9333, "fts_reduction": 0.0667},
+      {"id": "C", "condition": "top1_score < 0.65", "activation_rate": 1.0, "fts_reduction": 0.0},
+      {"id": "D", "condition": "top1_score < 0.70", "activation_rate": 1.0, "fts_reduction": 0.0},
+      {"id": "E", "condition": "top1_score - top5_score < 0.10", "activation_rate": 1.0, "fts_reduction": 0.0}
+    ],
+    "best_gate_by_scoring": "A",
+    "best_gate_reasoning": "Only gate preserving MRR (0.7222 = vector) AND achieving 73% FTS reduction. But recovers 0 new GOLD.",
+    "all_gates_recover_same_gold": 1,
+    "all_gates_new_gold": ["colorimetria-capilar-metales-003 from cabello_002"],
+    "no_gate_recovers_cejas_004": true,
+    "no_gate_recovers_cejas_008": true
+  },
+  "comparison": {
+    "vector_only": { "r50": 1.0, "mrr": 0.7222, "fts_calls": 0, "new_gold": 0 },
+    "hybrid_always": { "r50": 1.0, "mrr": 0.7556, "fts_calls": 15, "new_gold": 1 },
+    "adaptive_gate_a": { "r50": 1.0, "mrr": 0.7222, "fts_calls": 4, "new_gold": 0, "fts_reduction": "73%" },
+    "adaptive_gate_b": { "r50": 1.0, "mrr": 0.7556, "fts_calls": 14, "new_gold": 1, "fts_reduction": "7%" },
+    "key_finding": "No adaptive gate simultaneously: (a) recovers new GOLD, (b) preserves MRR >= vector, (c) reduces FTS calls >=30%"
+  },
+  "critical_cases": {
+    "cabello_002": {
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "gold_total": 5,
+      "vector_recovered": 3,
+      "fts_recovered": 2,
+      "hybrid_always_recovered": 4,
+      "adaptive_gate_a_recovered": 3,
+      "adaptive_gate_b_e_recovered": 4,
+      "new_gold_by_fts": ["colorimetria-capilar-metales-003"],
+      "new_gold_by_hybrid": ["colorimetria-capilar-metales-003"],
+      "vector_miss_remaining": 2,
+      "missed_gold_ids": ["diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion", "colorimetria-capilar-ph-001"],
+      "miss_type": "VECTOR_MISS (1 recovered by FTS, 1 CORPUS_MISS?)",
+      "gate_a_activated_fts": false,
+      "gate_a_missed_activation": true,
+      "top1_score": 0.5552
+    },
+    "cejas_008": {
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "gold_total": 6,
+      "vector_recovered": 3,
+      "fts_recovered": 0,
+      "hybrid_always_recovered": 3,
+      "adaptive_gate_a_recovered": 3,
+      "adaptive_gate_b_e_recovered": 3,
+      "new_gold_by_fts": [],
+      "new_gold_by_hybrid": [],
+      "vector_miss_remaining": 3,
+      "missed_gold_ids": ["visajismo-cejas-microblading-remocion-002", "visajismo-cejas-remocion-laser-004", "visajismo-cejas-remocion-salina-005"],
+      "miss_type": "CORPUS_MISS (FTS also fails) - chunks may not exist or not match lexically",
+      "gate_a_activated_fts": false,
+      "top1_score": 0.5916
+    },
+    "cejas_004": {
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "gold_total": 6,
+      "vector_recovered": 2,
+      "fts_recovered": 0,
+      "hybrid_always_recovered": 2,
+      "adaptive_gate_a_recovered": 2,
+      "adaptive_gate_b_e_recovered": 2,
+      "new_gold_by_fts": [],
+      "new_gold_by_hybrid": [],
+      "vector_miss_remaining": 4,
+      "missed_gold_ids": ["visajismo-cejas-microblading-musculatura-orbicular-009", "visajismo-microblading-arquitectura-muscular-008", "microblading-envejecimiento-009", "microblading-psicologia-007"],
+      "miss_type": "VECTOR_MISS + LEXICAL_MISS (FTS also fails) - semantic gap not bridgeable by keywords",
+      "gate_a_activated_fts": true,
+      "gate_a_false_activation": true,
+      "top1_score": 0.5264,
+      "false_positive_risk": false
+    }
+  },
+  "error_budget": {
+    "total_vector_miss_across_critical": 9,
+    "recovered_by_fts": 1,
+    "recovered_by_hybrid_always": 1,
+    "recovered_by_adaptive_b_e": 1,
+    "recovered_by_adaptive_a": 0,
+    "unrecoverable_by_current_methods": 8,
+    "breakdown_unrecoverable": {
+      "corpus_miss_suspected": 3,
+      "vector_miss_lexical_miss": 4,
+      "vector_miss_only": 1
+    },
+    "false_positive_count": 0,
+    "mrr_degradation": 0,
+    "latency": "inconclusive"
+  },
+  "causal_classification": {
+    "CORPUS": {
+      "status": "PARCIAL",
+      "evidence": "cejas_008: 3/6 GOLD missing; FTS recovers 0. Chunks may not exist in corpus or use non-matching terminology. Need corpus audit."
+    },
+    "RETRIEVAL": {
+      "status": "DESCARTADO",
+      "evidence": "K=50/100/200 (R6-C7) showed no additional GOLD. Vector retrieval ceiling is not K-bound."
+    },
+    "EMBEDDING_REPRESENTATION": {
+      "status": "CONFIRMADO",
+      "evidence": "cejas_004: 4/6 GOLD VECTOR_MISS + LEXICAL_MISS. Embedding space fails to represent 'simetria/asimétricas' concepts. FTS on 'asimétricas' also fails. R6-RECOVERY-3 confirmed managed NVIDIA model non-reproducible."
+    },
+    "FTS": {
+      "status": "PARCIAL",
+      "evidence": "Recovers 1/9 missing GOLD (cabello_002 'metales'). Fails on cejas_004 (semantic terms) and cejas_008 (corpus/terminology gap). Spanish FTS limited for technical concepts."
+    },
+    "HYBRID_RETRIEVAL": {
+      "status": "MIXED",
+      "evidence": "HYBRID_ALWAYS: +1 GOLD, +0.033 MRR. ADAPTIVE: No gate achieves all 3 criteria (recover GOLD + preserve MRR + reduce FTS>=30%). Gate A saves FTS but loses GOLD."
+    },
+    "EVIDENCE_CANDIDATES": {
+      "status": "DESCARTADO",
+      "evidence": "R6-C2 Candidate Builder: structural improvement (R@5 0->0.1333) but 0 new GOLD recovered. Techo R@50 invariant."
+    },
+    "EVIDENCE_GROUPING": {
+      "status": "DESCARTADO",
+      "evidence": "R6-C4 Grouping: no recall improvement over raw retrieval."
+    },
+    "SUFFICIENCY": {
+      "status": "DESCARTADO",
+      "evidence": "R6-C5: 432 configs, 0 SAFE-PASS. Gate incompatible with R6 score distribution (max 0.50-0.57 vs 0.65+ required)."
+    },
+    "PROVENANCE": {
+      "status": "CONFIRMADO",
+      "evidence": "R6-C8/R6-C9 tracked VECTOR/FTS/BOTH provenance. Confirmed FTS adds distinct chunk (colorimetria-capilar-metales-003) not in vector pool."
+    }
+  },
+  "hypotheses": {
+    "R6-C7": {
+      "hypothesis": "K=200 + category boost + reranking breaks retrieval ceiling",
+      "result": "REFUTADO",
+      "evidence": "K=200 R@50=0.3333 ceiling; 0 new GOLD; category boost degrades MRR; reranking degrades MRR"
+    },
+    "R6-C8": {
+      "hypothesis": "FTS recovers VECTOR_MISS (especially cejas_004) via lexical match",
+      "result": "PARTIALLY_CONFIRMED",
+      "evidence": "FTS recovers 1 GOLD (cabello_002 'metales'); cejas_004 0/4 recovered; cejas_008 0/3 recovered"
+    },
+    "R6-C9": {
+      "hypothesis": "Adaptive gating (low vector confidence) recovers GOLD while reducing FTS calls",
+      "result": "REFUTADO",
+      "evidence": "No gate satisfies all 3 criteria. Gate A (73% FTS reduction) loses the only recoverable GOLD. Gates B-E (93-100% activation) = HYBRID_ALWAYS with no savings."
+    }
+  },
+  "next_cycle": {
+    "recommended": "R6-C10: Corpus Expansion + Embedding Model Evaluation",
+    "rationale": "Root cause is EMBEDDING_REPRESENTATION (CONFIRMADO) + CORPUS gaps (PARCIAL). Retrieval improvements (K, hybrid, gating) exhausted. 8/9 missing GOLD are not recoverable by current vector+lexical methods on current corpus.",
+    "alternatives_evaluated": {
+      "A_Evidence_Aggregator": {
+        "hypothesis": "Combining multiple chunks into coherent answers improves sufficiency",
+        "problem_solves": "Answer quality, not retrieval recall",
+        "problem_not_solves": "Missing GOLD in retrieval pool",
+        "evidence": "R6-C5 sufficiency gate failed; aggregator needs evidence first",
+        "risk": "Premature - no evidence to aggregate",
+        "criteria": "PASS only if retrieval pool improves first"
+      },
+      "B_Semantic_Reranking": {
+        "hypothesis": "Cross-encoder reranking improves top-K precision",
+        "problem_solves": "Ranking quality",
+        "problem_not_solves": "Missing GOLD from pool (R6-C7 showed reranking recovers 0 GOLD)",
+        "evidence": "R6-C7 light reranking degraded MRR, 0 GOLD recovery",
+        "risk": "Latency cost for no recall gain",
+        "criteria": "PASS only if pool expands"
+      },
+      "C_Corpus_Expansion": {
+        "hypothesis": "Adding missing chunks to corpus enables retrieval",
+        "problem_solves": "CORPUS_MISS (cejas_008) and VECTOR_MISS (cejas_004) if chunks added",
+        "problem_not_solves": "Embedding representation if model fundamentally misrepresents concepts",
+        "evidence": "8/9 missing GOLD unrecoverable; cejas_004 semantic gap confirmed",
+        "risk": "Requires Director authorization; may need re-ingestion",
+        "criteria": "PASS if missing chunks identified and added; then re-evaluate retrieval"
+      },
+      "D_Retrieval_Experiment": {
+        "hypothesis": "Another retrieval variant (dense+sparse, query expansion, etc.) works",
+        "problem_solves": "None - all retrieval axes tested",
+        "problem_not_solves": "Root cause is representation/corpus",
+        "evidence": "R6-C7 (K), R6-C8 (FTS), R6-C9 (adaptive) all exhausted",
+        "risk": "Diminishing returns; scientific dead end",
+        "criteria": "FAIL - no retrieval-only hypothesis remains"
+      },
+      "E_Close_R6": {
+        "hypothesis": "R6 complete; move to production decisions",
+        "problem_solves": "None - retrieval ceiling documented",
+        "problem_not_solves": "Business need for better recall",
+        "evidence": "All retrieval experiments concluded with documented ceiling",
+        "risk": "Leaves recall at 0.2 baseline without path forward",
+        "criteria": "Only if Director accepts ceiling"
+      },
+      "F_Evidence_Layer_Implementation": {
+        "hypothesis": "Production integration of HYBRID_ALWAYS",
+        "problem_solves": "Deploys +1 GOLD, +0.033 MRR improvement",
+        "problem_not_solves": "9/9 missing GOLD; cejas_004/008 remain unsolved",
+        "evidence": "R6-C8 CONFIRMED HYBRID-RETRIEVAL-PROMISING",
+        "risk": "Marginal gain; production complexity; cejas_004 false confidence",
+        "criteria": "MIXED - only if Director accepts marginal gain"
+      }
+    }
+  },
+  "decision": {
+    "r6c9_verdict": "DISCONFIRMED",
+    "criteria": [
+      "No adaptive gate recovers GOLD while preserving MRR >= vector AND reducing FTS calls >=30%",
+      "Best gate (A) saves 73% FTS but recovers 0 GOLD (misses cabello_002 activation)",
+      "Gates B-E recover 1 GOLD but activate FTS on 93-100% queries (no savings)",
+      "cejas_004: FTS activation adds latency with 0 benefit (false activation)",
+      "cejas_008: FTS never helps (corpus/terminology gap)"
+    ],
+    "root_cause": "Adaptive gating cannot distinguish 'recoverable VECTOR_MISS' from 'unrecoverable VECTOR_MISS' using top1_score signal. The one recoverable case (cabello_002) has top1_score=0.555 (above Gate A threshold).",
+    "implementation_status": "NOT_READY",
+    "recommendation": "Do NOT implement adaptive hybrid. Do NOT implement hybrid always. Proceed to Corpus Expansion (R6-C10) or Embedding Model change."
+  },
+  "reproducibility": {
+    "run_a_artifact": "r6c9_adaptive_hybrid_retrieval_a.json",
+    "run_b_artifact": "r6c9_adaptive_hybrid_retrieval_b.json",
+    "deterministic": true,
+    "all_metrics_match": true,
+    "all_rankings_match": true,
+    "all_classifications_match": true,
+    "decision_match": true
+  },
+  "production_safety": {
+    "env_guard": "PASS (local only)",
+    "read_only": true,
+    "no_embedding_write": true,
+    "no_gold_modification": true,
+    "no_railway": true,
+    "no_production_modification": true,
+    "no_index_creation": true,
+    "no_migration": true,
+    "database_integrity_post": {
+      "total": 5663,
+      "nulls": 0,
+      "nonnulls": 5663,
+      "hnsw_operational": true
+    }
+  }
+}

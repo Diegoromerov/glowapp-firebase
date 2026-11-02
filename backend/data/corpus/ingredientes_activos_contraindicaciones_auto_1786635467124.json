@@ -1,0 +1,397 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Alcoholes de cadena corta en pieles con rosácea: el riesgo de la deslipidización",
+    "content": "Los alcoholes de cadena corta, como el Alcohol Denat o Isopropílico, son frecuentemente utilizados en formulaciones cosméticas como solventes y potenciadores de penetración debido a su rápida evaporación y acabado mate. Sin embargo, en pacientes con rosácea o dermatitis atópica, su uso crónico es contraproducente. Estos alcoholes actúan eliminando los lípidos esenciales del estrato córneo, lo que debilita la función barrera de la piel. Según estudios publicados en el Journal of the American Academy of Dermatology, la pérdida de agua transepidérmica (TEWL) aumenta significativamente tras la aplicación de soluciones alcohólicas, exacerbando la inflamación neurogénica característica de la rosácea. En GlowApp, desaconsejamos su uso en productos 'leave-on' para pieles reactivas, ya que el daño a la barrera lipídica facilita la entrada de irritantes y alérgenos, perpetuando el eritema y la sensación de ardor. Es crucial distinguir estos alcoholes volátiles de los alcoholes grasos (como el alcohol cetearílico), los cuales son emolientes y seguros para la mayoría de los tipos de piel.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/rosacea",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Alcohol Denat",
+        "Alcohol Isopropílico"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-barrera"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "El riesgo de la hidrólisis de urea en formulaciones con pH inestable",
+    "content": "La urea es un ingrediente versátil que, dependiendo de su concentración, funciona como humectante (hasta 10%) o como queratolítico (superior al 20%). Un problema clínico a menudo ignorado es la estabilidad química de la urea en soluciones acuosas. La urea es susceptible a la hidrólisis, especialmente en formulaciones con pH alcalino o alta temperatura, descomponiéndose en amoníaco y dióxido de carbono. Este proceso no solo inactiva el principio activo, sino que eleva el pH de la fórmula, volviéndola irritante y disruptiva para el manto ácido de la piel. Investigaciones en PubMed indican que la liberación de amoníaco puede causar dermatitis de contacto irritativa, particularmente en pieles con barrera comprometida. Para garantizar la seguridad del usuario, los productos con urea deben formularse con agentes tamponadores (buffers) estables y almacenarse lejos de fuentes de calor. En GlowApp, recomendamos verificar la integridad del empaque y evitar productos de urea que presenten un olor amoniacal, signo inequívoco de degradación química y pérdida de eficacia terapéutica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30554617/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "xerotica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Urea"
+      ],
+      "contraindications": [
+        "barrera cutánea alterada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion-avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Interacción entre filtros solares orgánicos y la permeabilidad cutánea",
+    "content": "La combinación de filtros solares orgánicos (químicos) con otros activos que alteran la permeabilidad, como el dimetil isosorbida o ciertos ácidos, puede modificar la absorción sistémica de los filtros. Aunque los filtros solares aprobados por la FDA y la EMA son seguros, estudios recientes han planteado interrogantes sobre la biodisponibilidad de compuestos como la oxibenzona en condiciones de uso extremo o formulaciones que incluyen potenciadores de penetración. La IADVL subraya que, en pacientes con antecedentes de dermatitis de contacto fotoalérgica, la aplicación simultánea de filtros químicos con activos exfoliantes puede aumentar el riesgo de reacciones adversas al exponer los componentes a capas más profundas de la epidermis. En GlowApp, sugerimos una separación temporal entre la aplicación de activos de alta penetración (como retinoides o ácidos fuertes) y el protector solar, o preferir el uso de filtros físicos (óxido de zinc o dióxido de titanio) en pieles altamente reactivas o con condiciones inflamatorias crónicas, para minimizar el riesgo de absorción sistémica innecesaria.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.ijpd.in/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "reactiva",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares químicos",
+        "dimetil isosorbida"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "El riesgo de los conservantes liberadores de formaldehído",
+    "content": "Los conservantes liberadores de formaldehído, tales como la Diazolidinyl Urea, Imidazolidinyl Urea y Quaternium-15, son alérgenos de contacto comunes. A pesar de que su uso está regulado en concentraciones seguras, su capacidad para liberar formaldehído de forma lenta y continua puede inducir sensibilización en individuos predispuestos, incluso sin una reacción inmediata. Según la American Contact Dermatitis Society, el contacto recurrente con estos compuestos en productos de cuidado diario, como limpiadores y cremas, es una causa frecuente de dermatitis alérgica de contacto no diagnosticada. El riesgo es mayor en pacientes con barrera cutánea debilitada, donde la exposición constante permite que el formaldehído penetre más allá de la capa córnea. En GlowApp, enfatizamos la importancia de revisar el INCI de los productos para identificar estos conservantes, especialmente en usuarios que presentan eritema perioral o dermatitis persistente sin causa aparente, aconsejando la transición a formulaciones con sistemas de conservación más modernos y con menor potencial alergénico, como el fenoxietanol o los ácidos orgánicos (benzoico, sórbico).",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Diazolidinyl Urea",
+        "Imidazolidinyl Urea"
+      ],
+      "contraindications": [
+        "dermatitis alérgica de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "La paradoja de los polímeros catiónicos y la oclusión folicular",
+    "content": "Los polímeros catiónicos (como Polyquaternium-7, -10 o -11) se utilizan ampliamente en cosmética capilar y facial por sus propiedades acondicionadoras y su capacidad para adherirse a superficies cargadas negativamente, como la queratina de la piel y el cabello. Sin embargo, su naturaleza adhesiva presenta un riesgo latente de oclusión folicular en pieles con tendencia seborreica o acneica. Al formar una película persistente, estos polímeros pueden atrapar el sebo y las células muertas dentro del folículo, favoreciendo la formación de microcomedones. Aunque no son ingredientes comedogénicos per se, su acumulación en el cuero cabelludo o en la línea del cabello (especialmente en productos 'leave-on' o acondicionadores que no se aclaran bien) puede exacerbar foliculitis y acné cosmético. En GlowApp, recomendamos un aclarado exhaustivo tras el uso de productos que contengan estos polímeros y evaluar la posible relación entre el uso de acondicionadores capilares y la aparición de brotes en la zona de la frente y sienes, un fenómeno clínico a menudo ignorado en el diagnóstico del acné.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polyquaternium-10",
+        "Polyquaternium-7"
+      ],
+      "contraindications": [
+        "acné",
+        "foliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-capilar",
+        "acne-cosmetico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "El riesgo de fototoxicidad por furocumarinas en aceites botánicos",
+    "content": "La tendencia hacia la cosmética 'natural' ha reintroducido el uso de aceites esenciales cítricos, como el de bergamota, lima o limón, que contienen furocumarinas (como el bergapteno). Estos compuestos son potentes agentes fototóxicos que, al absorber radiación UVA, desencadenan una reacción química que daña el ADN celular y provoca una pigmentación post-inflamatoria severa y persistente, conocida como fitofotodermatitis. A diferencia de las alergias convencionales, la fototoxicidad depende de la dosis y de la exposición solar inmediata tras la aplicación. La Organización Mundial de la Salud (OMS) ha advertido sobre los riesgos de incluir extractos botánicos no desterpenados en productos de cuidado diario. En GlowApp, es imperativo advertir a los usuarios que la etiqueta 'natural' no es sinónimo de inocuidad. Desaconsejamos el uso de aceites esenciales cítricos en productos de aplicación diurna sin un control estricto de pureza y ausencia de furocumarinas, dada la alta incidencia de hiperpigmentación en fototipos latinos, que suelen ser más reactivos a este tipo de estímulos fotoquímicos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "todos",
+        "especialmente III-VI"
+      ],
+      "ingredients": [
+        "Aceite de Bergamota",
+        "furocumarinas"
+      ],
+      "contraindications": [
+        "exposición solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-botanicos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Interferencia del Zinc PCA con agentes quelantes en formulaciones",
+    "content": "El Zinc PCA es un activo valorado por sus propiedades seborreguladoras y antimicrobianas. Sin embargo, su eficacia depende críticamente de la estabilidad de la formulación. La presencia de agentes quelantes fuertes, como el EDTA (Ácido Etilendiaminotetraacético), puede interactuar con los iones de zinc, formando complejos que inactivan la molécula y alteran el equilibrio iónico de la fórmula. Esta interacción no solo reduce la eficacia del Zinc PCA, sino que puede generar subproductos desconocidos que afecten la estabilidad del pH cutáneo. Estudios en revistas de formulación cosmética sugieren que la elección de quelantes más suaves, como el ácido fítico, es preferible para mantener la biodisponibilidad del zinc. En GlowApp, al analizar rutinas, observamos que la combinación de productos con alto contenido en EDTA junto a sueros de Zinc PCA puede anular los beneficios esperados, resultando en un gasto innecesario para el usuario. Es fundamental que los formuladores consideren la compatibilidad química completa para asegurar que los activos cumplan su función terapéutica sin interferencias negativas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Zinc PCA",
+        "EDTA"
+      ],
+      "contraindications": [
+        "incompatibilidad química"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-rutina"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "El riesgo de hidrólisis de la Niacinamida a pH bajo",
+    "content": "La niacinamida (vitamina B3) es un ingrediente estrella por sus beneficios antiinflamatorios y de mejora de la barrera cutánea. No obstante, existe un mito de que puede combinarse libremente con cualquier activo. A pH ácido (inferior a 5.0), la niacinamida puede hidrolizarse y convertirse en ácido nicotínico. Esta conversión, aunque no es tóxica, es altamente irritante y provoca un eritema transitorio, conocido como 'flushing' o enrojecimiento, que suele confundirse con una reacción alérgica. La severidad del enrojecimiento es mayor en personas con piel sensible o rosácea. En GlowApp, recomendamos evitar la aplicación simultánea de niacinamida con ácidos exfoliantes fuertes (como el glicólico o salicílico) a menos que la fórmula esté específicamente estabilizada. La separación temporal de al menos 15-20 minutos es una práctica clínica segura para prevenir este fenómeno. La comprensión de esta inestabilidad química es vital para evitar el abandono de tratamientos eficaces por parte de los usuarios debido a efectos secundarios evitables mediante una correcta secuenciación de la rutina.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Niacinamida",
+        "ácido glicólico"
+      ],
+      "contraindications": [
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "combinacion-activos"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-009",
+    "title": "Dermatitis perioral inducida por fluoruros en higiene oral",
+    "content": "La dermatitis perioral es una condición inflamatoria crónica que a menudo se confunde con el acné o la rosácea. Un factor etiológico frecuentemente pasado por alto es el uso de pastas dentales con alto contenido de fluoruros y lauril sulfato de sodio (SLS). El contacto constante de estos agentes con la piel perioral, especialmente durante el cepillado, puede alterar el microbioma y la barrera lipídica de esta zona tan delicada. Estudios clínicos han demostrado que la sustitución por pastas dentales libres de SLS y con niveles controlados de flúor puede conducir a una remisión significativa de los síntomas en pacientes con dermatitis perioral recalcitrante. En GlowApp, instamos a los usuarios a evaluar su rutina de higiene bucal como parte integral del cuidado de la piel facial. La irritación mecánica y química causada por el derrame de espuma durante el cepillado es un riesgo infravalorado que requiere una revisión exhaustiva para descartar factores ambientales antes de iniciar tratamientos tópicos agresivos que podrían empeorar la condición cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13652133",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fluoruros",
+        "lauril sulfato de sodio"
+      ],
+      "contraindications": [
+        "dermatitis perioral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:37:29.823Z"
+  }
+]

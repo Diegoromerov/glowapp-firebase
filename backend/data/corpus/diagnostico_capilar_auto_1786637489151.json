@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-vibracion-001",
+    "title": "Análisis de la Resonancia Mecánica en la Vaina Radicular",
+    "content": "La evaluación de la resonancia mecánica en la vaina radicular externa (VRE) surge como una herramienta no invasiva para determinar la integridad estructural del folículo. A diferencia de la tricoscopía convencional, que evalúa morfología superficial, la resonancia mecánica analiza cómo la estructura fibrosa del folículo responde a estímulos oscilatorios de baja frecuencia. Estudios en biofísica dermatológica sugieren que una alteración en la rigidez de la VRE, a menudo secundaria a procesos inflamatorios crónicos o glicación, modifica la frecuencia de resonancia natural del complejo folicular. Esta técnica permite detectar cambios en la matriz extracelular antes de que se manifiesten síntomas clínicos como la miniaturización o el desprendimiento prematuro. La correlación entre la atenuación de la señal de resonancia y el grado de fibrosis perifolicular proporciona un biomarcador objetivo para predecir la respuesta a tratamientos regenerativos. La implementación de sensores piezoeléctricos en dispositivos de diagnóstico remoto permite medir esta respuesta en tiempo real, ofreciendo un perfil de 'fatiga folicular' que es invisible al ojo clínico. La literatura en PubMed subraya que la integridad de la vaina es fundamental para la transmisión de señales de crecimiento desde la papila dérmica al tallo, y su compromiso mecánico es un precursor crítico en la alopecia androgenética y cicatricial.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-biometrico-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:11:08.059Z"
+  }
+]

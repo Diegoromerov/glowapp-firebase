@@ -1,0 +1,383 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microbiota-oral-001",
+    "title": "Maquillaje y transferencia de patógenos: La microbiota oral en eventos sociales",
+    "content": "Durante eventos sociales de larga duración, la proximidad física y el uso compartido de espacios facilitan la transferencia de microorganismos. El maquillaje, especialmente en la zona perioral, puede actuar como una matriz que retiene patógenos provenientes de la cavidad oral a través de micro-gotículas. Investigaciones publicadas en 'Journal of Applied Microbiology' sugieren que la acumulación de sebo y productos cosméticos en la piel puede alterar el pH local, creando un microambiente propicio para la colonización bacteriana transitoria. Es vital entender que los labiales y bases de larga duración, al ser oclusivos, pueden sellar estos microorganismos contra la barrera cutánea. Se recomienda el uso de aplicadores desechables y evitar la reaplicación de productos en condiciones de higiene subóptima para prevenir la formación de biopelículas indeseadas. La integridad del estrato córneo es la primera línea de defensa, y cualquier alteración por oclusión cosmética facilita la penetración de patógenos oportunistas, elevando el riesgo de dermatitis perioral reactiva tras el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society for Applied Microbiology",
+        "url": "https://sfamjournals.onlinelibrary.wiley.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicones",
+        "waxes"
+      ],
+      "contraindications": [
+        "dermatitis perioral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-002",
+    "title": "Impacto de la carga electrostática ambiental en la adherencia de partículas cosméticas",
+    "content": "En entornos cerrados con alta carga electrostática, como eventos con gran cantidad de equipos electrónicos, la física de partículas juega un rol crucial en la estabilidad del maquillaje. La atracción electrostática puede incrementar la deposición de partículas de polución (PM2.5) sobre la película de maquillaje, acelerando la oxidación de los pigmentos. Estudios en 'Environmental Health Perspectives' indican que esta carga superficial altera la distribución de las emulsiones cosméticas, provocando una migración irregular del producto hacia los surcos de expresión. Para mitigar este efecto, es necesario utilizar fijadores con propiedades antiestáticas que neutralicen la carga superficial de la piel. La gestión de esta interacción es fundamental no solo por estética, sino porque la acumulación de partículas metálicas y contaminantes sobre la piel puede inducir estrés oxidativo y activar receptores de hidrocarburos arilo (AhR), desencadenando respuestas inflamatorias subclínicas que comprometen la salud cutánea a largo plazo durante eventos de alta exposición urbana.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institute of Environmental Health Sciences",
+        "url": "https://ehp.niehs.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polymers",
+        "antistatic agents"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibracion-003",
+    "title": "Efecto de las vibraciones mecánicas de alta frecuencia en la estabilidad del maquillaje",
+    "content": "La exposición a vibraciones mecánicas de alta frecuencia, comunes en eventos con sistemas de sonido de gran potencia o entornos industriales, afecta la reología de las emulsiones cosméticas aplicadas sobre el rostro. La energía vibratoria puede inducir la coalescencia de las gotas de aceite en emulsiones inestables, provocando una separación de fases visible como 'aceitosidad' o 'parcheado' del maquillaje. Según la 'International Journal of Cosmetic Science', la estabilidad de una formulación cosmética depende de su capacidad para resistir tensiones mecánicas externas. En pieles con alta actividad sebácea, esta vibración acelera la migración del sebo a través de la capa de maquillaje, aumentando la probabilidad de oclusión folicular. Se recomienda el uso de polvos fijadores de base mineral con alta capacidad de absorción que actúen como un 'andamio' físico, minimizando el movimiento de la fase lipídica bajo estrés mecánico. Este enfoque no solo mejora la apariencia estética, sino que previene el contacto prolongado de los pigmentos con los folículos pilosebáceos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silica",
+        "kaolin"
+      ],
+      "contraindications": [
+        "acne severo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-formulacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-hipoxia-004",
+    "title": "Maquillaje en ambientes de baja presión (altitud): Gestión de la hipoxia cutánea",
+    "content": "En eventos realizados a gran altitud, la presión parcial de oxígeno disminuye, afectando la microcirculación cutánea y el metabolismo celular. La piel, al entrar en un estado de hipoxia relativa, reduce su capacidad de renovación y aumenta su sensibilidad. El maquillaje aplicado en estas condiciones debe ser altamente transpirable; el uso de bases de alta cobertura oclusiva puede exacerbar el estrés metabólico al limitar el intercambio gaseoso. Estudios en 'High Altitude Medicine & Biology' demuestran que la deshidratación transepidérmica es mayor en estas condiciones, lo que provoca una contracción de la piel que fisura los pigmentos cosméticos de estructura rígida. Se deben preferir formulaciones ricas en humectantes higroscópicos (como ácido hialurónico de bajo peso molecular) y evitar siliconas volátiles que sellen la superficie. El objetivo es mantener la homeostasis hídrica sin comprometer la respiración cutánea, permitiendo que la piel mantenga su función de barrera a pesar del déficit de oxígeno ambiental, previniendo así la irritación inducida por el entorno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "High Altitude Medicine & Biology",
+        "url": "https://www.liebertpub.com/journal/hamb",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hyaluronic acid",
+        "glycerin"
+      ],
+      "contraindications": [
+        "oclusivos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-rf-005",
+    "title": "Maquillaje y exposición a radiofrecuencia (RF): Prevención de la interacción con pigmentos metálicos",
+    "content": "La creciente exposición a radiofrecuencia (RF) en eventos con alta densidad de telecomunicaciones plantea preguntas sobre la seguridad de los pigmentos cosméticos con base metálica (como óxidos de hierro, mica o titanio). Aunque la literatura en 'Bioelectromagnetics' sugiere que los niveles de RF ambiental son generalmente seguros, existe una preocupación teórica sobre el calentamiento localizado o la inducción de corrientes en partículas metálicas presentes en el maquillaje de alta carga pigmentaria. Para eventos de larga exposición, se recomienda priorizar productos que utilicen pigmentos tratados o recubiertos con polímeros inertes, reduciendo la conductividad superficial. La curaduría clínica sugiere evitar cosméticos con alto contenido de partículas metálicas sueltas que puedan actuar como antenas microscópicas bajo campos electromagnéticos intensos. Además, la limpieza post-evento debe ser exhaustiva para asegurar la eliminación completa de estos pigmentos, evitando que el calor residual o la fricción generen una dermatitis por contacto fototóxica o irritativa. La prevención mediante la selección de ingredientes inertes es la estrategia más robusta ante este fenómeno emergente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Bioelectromagnetics Society",
+        "url": "https://onlinelibrary.wiley.com/journal/1521186x",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coated iron oxides"
+      ],
+      "contraindications": [
+        "dermatitis por contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-ph-006",
+    "title": "Variación del pH cutáneo por estrés y su impacto en la adherencia del maquillaje",
+    "content": "El estrés psicológico agudo durante eventos de alta presión altera la homeostasis del pH cutáneo mediante la liberación de cortisol y catecolaminas, que afectan la composición del sudor y el sebo. Un aumento en el pH hacia la alcalinidad debilita la función de barrera lipídica y altera la adherencia de productos formulados a un pH específico (generalmente entre 4.5 y 5.5). Según estudios en 'Archives of Dermatological Research', esta fluctuación puede causar que el maquillaje se desplace o se oxide prematuramente, ya que la estabilidad de muchos polímeros fijadores es dependiente del pH. Para gestionar esto, se recomienda preparar la piel con tónicos equilibrantes antes de la aplicación del maquillaje para 'bufferizar' la superficie. Evitar productos con alta concentración de tensioactivos durante la limpieza previa al evento también es crucial. Al estabilizar el pH, se mejora la longevidad del maquillaje y se reduce el riesgo de irritación inducida por la respuesta fisiológica al estrés, manteniendo la integridad del microbioma cutáneo y evitando la deshidratación reactiva.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Springer Nature - Archives of Dermatological Research",
+        "url": "https://link.springer.com/journal/403",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pH buffers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-estres"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-baja-iluminacion-007",
+    "title": "Desafíos cromáticos en eventos con iluminación cálida de espectro limitado",
+    "content": "La iluminación cálida (baja temperatura Kelvin), común en eventos nocturnos de alta exclusividad, altera la percepción del color al carecer de espectro azul. Esto genera un fenómeno de 'desplazamiento cromático' donde los tonos fríos del maquillaje pueden verse grises o apagados, y los tonos cálidos pueden saturarse en exceso. La 'Color Research and Application' destaca que la reproducción cromática es un proceso psicofísico dependiente de la fuente de luz. En estos entornos, el maquillaje debe ser aplicado bajo una iluminación de espectro completo para asegurar una base neutral. Clínicamente, el riesgo radica en la sobre-aplicación de producto al intentar compensar la falta de saturación percibida. Esta acumulación innecesaria aumenta la oclusión folicular y el peso sobre la dermis, favoreciendo la inflamación subclínica. Se sugiere realizar el 'color matching' bajo condiciones de luz neutra y utilizar texturas ligeras que no requieran capas pesadas para lograr la cobertura deseada, preservando la salud de la barrera cutánea sin sacrificar el impacto estético bajo luz cálida.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigments"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estetica-visual"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-privacion-sueno-008",
+    "title": "Maquillaje tras privación de sueño: Impacto en la permeabilidad cutánea",
+    "content": "La privación de sueño aumenta la permeabilidad de la barrera cutánea debido a una reducción en la síntesis de ceramidas y una mayor pérdida de agua transepidérmica (TEWL). En eventos que ocurren tras periodos de descanso insuficiente, el maquillaje actúa como una barrera adicional que, si no es biocompatible, puede intensificar la irritación. Según el 'Journal of Investigative Dermatology', la piel bajo privación de sueño presenta una mayor respuesta inflamatoria a los irritantes externos. Es imperativo utilizar productos con ingredientes que fortalezcan la barrera (como niacinamida o ceramidas) y evitar aquellos con fragancias o conservantes sensibilizantes. El maquillaje debe ser visto no solo como un elemento estético, sino como una extensión del cuidado de la piel. Se recomienda aplicar una base con propiedades filmógenas protectoras pero no oclusivas, permitiendo la transpiración mientras se minimiza el contacto directo de partículas ambientales con la piel comprometida. La hidratación previa es obligatoria para evitar la absorción indeseada de pigmentos hacia las capas profundas de la epidermis debilitada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamide",
+        "ceramides"
+      ],
+      "contraindications": [
+        "fragancias",
+        "alcohol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-termoregulacion-009",
+    "title": "Maquillaje en pieles con inflamación subclínica: Gestión de la termorregulación",
+    "content": "En pieles con inflamación subclínica (como rosácea incipiente o dermatitis atópica controlada), los eventos sociales que implican cambios de temperatura representan un desafío termorregulatorio. El maquillaje puede bloquear los poros y limitar la evaporación del sudor, elevando la temperatura de la superficie cutánea y desencadenando una respuesta de vasodilatación excesiva. La 'American Academy of Dermatology' enfatiza la importancia de evitar productos oclusivos en este perfil de pacientes para prevenir brotes. Se recomienda el uso de maquillaje en formato polvo mineral o emulsiones de fase externa acuosa (O/W) que permitan la termorregulación eficiente. Es crucial evitar el uso de primers a base de siliconas pesadas que creen una película impermeable. La aplicación debe ser minimalista, priorizando ingredientes calmantes como el bisabolol o pantenol que ayuden a mitigar la respuesta inflamatoria ante el aumento de temperatura ambiental. La gestión térmica es, por tanto, una estrategia de prevención clínica esencial para mantener la estabilidad del maquillaje en pieles reactivas durante eventos de larga duración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "reactive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "panthenol"
+      ],
+      "contraindications": [
+        "siliconas pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:18:44.358Z"
+  }
+]

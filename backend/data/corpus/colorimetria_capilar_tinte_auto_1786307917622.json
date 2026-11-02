@@ -1,0 +1,380 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-oxidacion-lipidos-001",
+    "title": "Degradación oxidativa de lípidos cuticulares durante el teñido",
+    "content": "El proceso de coloración permanente implica la apertura de la cutícula mediante agentes alcalinos, lo cual no solo afecta la queratina, sino también la capa lipídica protectora del cabello, específicamente el ácido 18-metileicosanoico (18-MEA). Este lípido es esencial para la hidrofobicidad del cabello y su suavidad. Durante el uso de peróxido de hidrógeno, se genera un estrés oxidativo que degrada estos lípidos, resultando en una porosidad elevada y pérdida de integridad estructural. Estudios publicados en el Journal of Cosmetic Science subrayan que la pérdida de 18-MEA es irreversible mediante procesos químicos convencionales, dejando al cabello vulnerable a la absorción errática de pigmentos. Para profesionales en GlowApp, es vital comprender que un cabello con daño lipídico previo no absorberá el tinte de manera uniforme, provocando resultados con parches o una saturación excesiva en puntas. La reposición de lípidos mediante tratamientos post-coloración es una estrategia clínica indispensable para restaurar la función barrera del tallo capilar y prevenir la rotura prematura tras el servicio técnico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido 18-metileicosanoico"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quelacion-minerales-002",
+    "title": "Importancia de la quelación previa al proceso de coloración",
+    "content": "La acumulación de minerales como cobre, hierro y calcio en la cutícula capilar, provenientes del agua de red en Bogotá, actúa como un catalizador incontrolado durante la coloración. Estos metales de transición reaccionan con el peróxido de hidrógeno, acelerando la liberación de radicales libres de forma desproporcionada, lo que resulta en un daño térmico y estructural severo, además de un viraje indeseado del color. La quelación es el proceso de retirar estos depósitos minerales antes de aplicar cualquier fórmula tintórea. Utilizar agentes quelantes (como EDTA disódico) permite asegurar que la reacción química de oxidación sea predecible y uniforme. Sin una fase de quelación, el profesional corre el riesgo de que el tinte se oxide prematuramente dentro del recipiente o que el cabello sufra una degradación proteica acelerada. En la práctica clínica de GlowApp, la estandarización de un champú quelante como paso previo es la diferencia entre un color vibrante, duradero y un cabello que se siente quebradizo y opaco al finalizar el servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA"
+      ],
+      "contraindications": [
+        "ninguna"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-cromoforos-003",
+    "title": "El papel de los precursores de color y el acoplamiento oxidativo",
+    "content": "El color permanente capilar no contiene color en sí mismo; contiene precursores incoloros llamados bases primarias (como PPD o PTD) y acopladores. Estos componentes deben penetrar la corteza capilar antes de que ocurra la reacción de oxidación mediada por el peróxido. El éxito del color depende de la cinética de penetración y el tamaño molecular de estos compuestos. Si el pH del producto no es el adecuado, las moléculas no se expandirán correctamente dentro de la corteza, resultando en una duración pobre del color y un desvanecimiento rápido. La investigación dermatológica señala que el control de la temperatura ambiente y el tiempo de pose son críticos para el acoplamiento oxidativo. Un error común es retirar el tinte antes de que las moléculas de color hayan alcanzado su tamaño final mediante la polimerización, dejando el cabello con tonos cobrizos o falsos reflejos. Es fundamental entender que el proceso de coloración es una síntesis química in situ, y cualquier interrupción en el protocolo de mezcla o tiempo altera la estabilidad molecular del pigmento final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "PTD"
+      ],
+      "contraindications": [
+        "ninguna"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-efecto-humedad-004",
+    "title": "Influencia de la humedad ambiental en la estabilidad del color",
+    "content": "La humedad relativa del ambiente en Bogotá afecta directamente la higroscopicidad del cabello durante el proceso de coloración. Un cabello altamente poroso absorbe la humedad del aire, lo que puede diluir la mezcla de tinte si esta se aplica sobre cabello excesivamente húmedo o si el ambiente está muy saturado. Además, la transpiración del cuero cabelludo puede alterar el pH local, afectando la activación de los precursores de color. Los estudios clínicos sugieren que mantener una humedad controlada y asegurar que el cabello esté en un nivel de hidratación óptimo antes de la aplicación es vital para la precisión cromática. La variabilidad en la absorción del tinte según la humedad ambiental es un factor a menudo ignorado por los coloristas, pero que explica por qué un mismo tono puede variar en resultados finales bajo diferentes condiciones climáticas. Se recomienda realizar una evaluación de la porosidad y un secado parcial controlado antes de aplicar la fórmula para garantizar que la penetración de los pigmentos sea uniforme y no se vea comprometida por factores ambientales externos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "ninguna"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-biocompatibilidad-005",
+    "title": "Biocompatibilidad de los polímeros acondicionadores en tintes",
+    "content": "La incorporación de polímeros catiónicos y agentes acondicionadores en las fórmulas de los tintes modernos tiene como objetivo mitigar el daño estructural. Estos ingredientes se depositan sobre la cutícula cargada negativamente, neutralizando la carga y reduciendo la fricción. Sin embargo, una sobrecarga de estos polímeros puede crear una película hidrofóbica tan densa que impida la penetración profunda del tinte en aplicaciones futuras o genere una acumulación (build-up) que apague el brillo natural. Es un equilibrio delicado entre protección y permeabilidad. Para el equipo de GlowApp, es esencial identificar si el cabello del cliente presenta residuos de polímeros previos, lo cual puede detectarse mediante la prueba de tacto y la observación de la reflectancia del cabello bajo luz directa. El uso excesivo de productos con siliconas no volátiles antes de un proceso de coloración puede comprometer la homogeneidad del tono. La recomendación clínica es realizar una limpieza profunda con surfactantes quelantes o clarificantes antes de proceder con una coloración de retoque para asegurar que la fibra capilar esté receptiva y libre de barreras químicas artificiales.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros cationicos",
+        "siliconas"
+      ],
+      "contraindications": [
+        "acumulacion de producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "productos-y-herramientas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-cortex-poroso-006",
+    "title": "Manejo de la corteza hiperporosa: El reto de la retención del color",
+    "content": "Cuando la corteza capilar presenta una porosidad extrema, el cabello pierde su capacidad de retener las moléculas de pigmento, resultando en un desvanecimiento prematuro, incluso con tintes de alta calidad. La estructura de la queratina está tan degradada que los enlaces disulfuro no pueden mantener la estabilidad del color. En este escenario, la aplicación de tratamientos reconstructores con aminoácidos de bajo peso molecular es necesaria antes y después de la coloración. Estos aminoácidos rellenan los huecos estructurales, permitiendo una base más uniforme para el depósito del pigmento. Los expertos en dermatología cosmética recomiendan que, ante una porosidad severa, se opte por tonos de menor profundidad o técnicas de pigmentación directa que no requieran una oxidación agresiva. Ignorar el nivel de porosidad de la corteza al aplicar un tinte permanente es una de las causas principales de insatisfacción del cliente y de daño capilar irreversible. GlowApp debe priorizar siempre el 'filler' capilar y el sellado de cutícula post-coloración como parte integral del servicio técnico para asegurar la longevidad del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/hair-damage",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos"
+      ],
+      "contraindications": [
+        "decoloracion extrema"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-oxidacion-selectiva-007",
+    "title": "Oxidación selectiva: El uso de bajos volúmenes de peróxido",
+    "content": "Existe la falsa creencia de que a mayor volumen de peróxido de hidrógeno, mejor será la cobertura de canas o la intensidad del color. Clínicamente, el uso de volúmenes innecesariamente altos (30 o 40 volúmenes) no solo acelera la degradación de la melanina natural de forma innecesaria, sino que aumenta la sensibilización del cuero cabelludo y el daño por radicales libres. La tendencia actual en colorimetría profesional, respaldada por estudios de seguridad, es utilizar el volumen más bajo posible que permita la deposición del color. Para una cobertura de canas óptima, el tiempo de exposición y la formulación alcalina son más determinantes que la agresividad del oxidante. Al utilizar volúmenes bajos (10-20 volúmenes), se minimiza la formación de subproductos de oxidación dañinos y se preserva la integridad de la estructura lipídica del cabello. GlowApp promueve esta práctica como una estrategia de 'coloración consciente', donde se prioriza la salud de la fibra capilar a largo plazo, reduciendo el riesgo de dermatitis de contacto por sensibilización química excesiva.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido de hidrogeno"
+      ],
+      "contraindications": [
+        "cuero cabelludo irritado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-ph-estabilidad-008",
+    "title": "El equilibrio del pH en la post-coloración",
+    "content": "La finalización del proceso de coloración es tan crítica como la aplicación. Tras el uso de tintes alcalinos, la cutícula permanece dilatada, dejando la corteza expuesta a la oxidación ambiental y al lavado de pigmentos. Es imperativo utilizar productos de post-tratamiento con un pH ácido (entre 3.5 y 4.5) para neutralizar los residuos alcalinos y cerrar las escamas de la cutícula. Este paso, a menudo omitido, es vital para estabilizar el color y devolver al cabello su brillo natural mediante la reflexión de la luz sobre una superficie lisa. Estudios dermatológicos indican que el uso de un sellador ácido post-servicio reduce significativamente la rotura del cabello y mejora la retención del pigmento hasta en un 30% en los siguientes lavados. En GlowApp, estandarizamos el uso de soluciones de pH balanceado como el paso final obligatorio. Un cabello con el pH debidamente restaurado es menos propenso a sufrir enredos, sequedad y pérdida de color, garantizando un servicio de alta calidad y profesionalismo que se traduce en mayor retención de clientes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24779119/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acidificantes"
+      ],
+      "contraindications": [
+        "ninguna"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-dermatitis-contacto-009",
+    "title": "Dermatitis de contacto alérgica vs. irritativa en coloración",
+    "content": "Es imperativo que los coloristas de GlowApp sepan distinguir entre la irritación cutánea (causada por el pH elevado y la fricción) y la dermatitis alérgica de contacto (causada por una respuesta inmunológica a sustancias como la parafenilendiamina). La irritación suele ser transitoria y dosis-dependiente, manifestándose con ardor leve. En cambio, la dermatitis alérgica es una respuesta retardada mediada por células T que puede escalar a edema severo, eritema y vesículas. Ante cualquier signo de reacción que no ceda con el lavado inmediato, se debe suspender el servicio y derivar al cliente a una evaluación dermatológica. La sensibilización no es estática; un cliente puede haber usado tintes durante años sin problemas y desarrollar una alergia repentina. Por ello, el protocolo de 'test de parche' no es una sugerencia, sino una medida de seguridad clínica innegociable. La educación al cliente sobre estos riesgos es una muestra de profesionalismo y responsabilidad, reforzando la confianza en la marca GlowApp como un espacio seguro para servicios químicos capilares.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD"
+      ],
+      "contraindications": [
+        "alergia conocida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:38:19.349Z"
+  }
+]

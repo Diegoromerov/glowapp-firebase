@@ -1,0 +1,69 @@
+{
+  "cycle": "16",
+  "experiment": "R5-C4",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "runs": {
+    "A": "r5c4_reranking_experiment_a.json (vector orig MRR 0.2222 → rerank 0.2889 | cand 0.3718 → 0.2692)",
+    "B": "r5c4_reranking_experiment_b.json (IDÉNTICO a A — 18/18)"
+  },
+  "configs": {
+    "vector_only": { "topK": 20, "metric_topk": 5, "model": "nvidia/nv-embedqa-e5-v5", "bd": "LOCAL" },
+    "reranking": { "topK": 20, "metric_topk": 5, "alpha": 0.7, "beta": 0.3, "algorithm": "HEURISTIC_RERANKER: 0.7*similarity + 0.3*lexical_overlap(query_terms, title+content)", "llm_used": false }
+  },
+  "metrics": {
+    "original_ground_truth": {
+      "vector_only": { "p1": 0.1111, "p3": 0.2037, "p5": 0.1222, "r5": 0.1667, "mrr": 0.2222 },
+      "reranked": { "p1": 0.2222, "p3": 0.2037, "p5": 0.1556, "r5": 0.2056, "mrr": 0.2889 },
+      "delta": { "p1": 0.1111, "p3": 0.0, "p5": 0.0334, "r5": 0.0389, "mrr": 0.0667 }
+    },
+    "candidate_ground_truth": {
+      "vector_only": { "p1": 0.2308, "p3": 0.1795, "p5": 0.1077, "r5": 0.5, "mrr": 0.3718 },
+      "reranked": { "p1": 0.0769, "p3": 0.1795, "p5": 0.1077, "r5": 0.5, "mrr": 0.2692 },
+      "delta": { "p1": -0.1539, "p3": 0.0, "p5": 0.0, "r5": 0.0, "mrr": -0.1026 }
+    }
+  },
+  "per_query_classification": {
+    "RERANKING_WIN": ["cejas_002 (0→1 MRR orig, pero candidate=[] CORPUS_GAP)", "cejas_005 (0.5→1 orig, pero candidate 0→0)"],
+    "RERANKING_LOSS": ["skincare_003 (0.5→0.33)", "skincare_005 (0.33→0.2)"],
+    "RERANKING_NEUTRAL": 7,
+    "CANDIDATE_DEPTH": ["skincare_007", "skincare_010", "cabello_002"],
+    "RETRIEVAL_MISS": ["cabello_004", "cejas_003", "cejas_004", "cejas_008"]
+  },
+  "latency": {
+    "vector_only_ms": { "avg": 631.2, "p50": 565, "p95": 2491, "max": 2491 },
+    "vector_plus_rerank_ms": { "avg": 631.7, "p50": 566, "p95": 2491, "max": 2491 },
+    "delta_avg_ms": 0.5,
+    "note": "Reranker heurístico sin LLM — coste de latencia despreciable (0.5ms)"
+  },
+  "leakage_check": {
+    "reranker_inputs": ["query", "candidate.chunk_id", "candidate.title", "candidate.content", "candidate.similarity"],
+    "ground_truth_used_in_scoring": false,
+    "expected_used_only_in_evaluation": true,
+    "set_invariant_all_queries": true,
+    "llm_used": false,
+    "verdict": "NO_LEAKAGE — experimento válido"
+  },
+  "reproducibility": { "A_equals_B": true, "identical_queries": "18/18", "note": "top5 y métricas idénticos en ambas corridas" },
+  "quality_gates": {
+    "thresholds": { "p5_gate": 0.7, "r5_gate": 0.6, "mrr_gate": 0.65 },
+    "original_gt_vector": { "p5": "FAIL", "r5": "FAIL", "mrr": "FAIL" },
+    "original_gt_reranked": { "p5": "FAIL", "r5": "FAIL", "mrr": "FAIL" },
+    "candidate_gt_vector": { "p5": "FAIL", "r5": "FAIL (0.5 < 0.6)", "mrr": "FAIL" },
+    "candidate_gt_reranked": { "p5": "FAIL", "r5": "FAIL (0.5 < 0.6)", "mrr": "FAIL" },
+    "verdict": "TODAS las configuraciones FAIL — ninguna supera gates"
+  },
+  "causal_classification": "RERANKING DESCARTADO — la mejora aparente del reranker (ΔMRR +0.0667 contra benchmark ORIGINAL) es un artefacto del ground truth desalineado: desaparece e INVIERTE contra el candidate ground truth (ΔMRR −0.1026, ΔP@1 −0.1539). Los 2 RERANKING_WIN (cejas_002, cejas_005) suben chunks que el benchmark original marcaba como expected pero que R5-C2 demostró mal alineados (cejas_002: corpus gap; cejas_005: candidate 0→0). El déficit residual real es RETRIEVAL (4 RETRIEVAL_MISS sin evidencia ni en top-20) + discriminación del embedding (gap 0.042), no ordenamiento.",
+  "key_evidence": [
+    "Reproducibilidad: A ≡ B (18/18, determinista, sin LLM)",
+    "Contra benchmark ORIGINAL: reranking mejora MRR 0.2222→0.2889 (+0.0667) — pero este benchmark está desalineado (R5-C2)",
+    "Contra candidate GT (corregido): reranking EMPEORA MRR 0.3718→0.2692 (−0.1026) y P@1 0.2308→0.0769 (−0.1539)",
+    "2 wins aparentes son artefactos: cejas_002 candidate=[] (CORPUS_GAP), cejas_005 candidate 0→0",
+    "4 RETRIEVAL_MISS (cabello_004, cejas_003, cejas_004, cejas_008): evidencia NI en top-20 → reranking no puede ayudar",
+    "3 CANDIDATE_DEPTH (skincare_007, skincare_010, cabello_002): evidencia en top-10/20 pero no top-5",
+    "Latencia reranking: +0.5ms (heurística pura, sin coste)",
+    "Ninguna configuración supera quality gates"
+  ]
+}

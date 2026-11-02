@@ -1,0 +1,329 @@
+[
+  {
+    "chunk_id": "guias_unas-quiro-onico-001",
+    "title": "Onicodistrofia por quiroplastia: el daño por manipulación de cutícula",
+    "content": "La quiroplastia, entendida como la manipulación excesiva del eponiquio y la cutícula, representa un riesgo significativo para la unidad ungueal. El eponiquio no es tejido muerto, sino una barrera inmunológica esencial que protege la matriz ungueal contra patógenos y agentes químicos externos. La remoción mecánica agresiva, especialmente mediante corte con tijeras o alicates, induce microtraumas que favorecen la entrada de bacterias y hongos, facilitando el desarrollo de paroniquia crónica. Además, la disrupción de esta barrera altera la homeostasis del lecho ungueal, permitiendo la penetración de monómeros y solventes que pueden alcanzar la matriz. Estudios dermatológicos subrayan que la inflamación recurrente de la matriz por trauma mecánico puede derivar en onicodistrofias permanentes, como surcos transversales o pérdida de la convexidad natural. La recomendación clínica es sustituir el corte por el empuje suave con herramientas de silicona o madera, manteniendo la integridad del sello biológico para prevenir la sensibilización a componentes acrílicos. La educación del profesional es fundamental para entender que la estética no debe comprometer la función protectora de los tejidos periungueales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "corte_cuticula_agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manicura_segura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-polim-incompleta-002",
+    "title": "Polimerización incompleta: el riesgo de dermatitis por metacrilatos",
+    "content": "La polimerización insuficiente de los sistemas de geles UV/LED es una causa creciente de dermatitis alérgica de contacto en el sector de la estética. Cuando la irradiancia de la lámpara no coincide con el fotoiniciador del producto, o cuando la capa de gel es demasiado gruesa para permitir el paso de la luz, quedan monómeros sin reaccionar en la superficie. Estos monómeros residuales, especialmente el Hidroxipropil Metacrilato (HPMA), tienen un bajo peso molecular y alta permeabilidad cutánea, pudiendo atravesar la barrera cutánea y desencadenar una respuesta inmune mediada por células T. La sensibilización a acrilatos es irreversible y puede manifestarse no solo en las manos, sino también en zonas distantes como párpados o cuello debido a la transferencia accidental durante el contacto. Es crítico realizar pruebas de curado completo, verificar la compatibilidad entre lámpara y gel, y evitar el contacto de producto no polimerizado con la piel periungueal. La literatura médica enfatiza que una vez sensibilizado, el paciente puede presentar reacciones cruzadas a dispositivos médicos como pegamentos dentales o prótesis ortopédicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34528765/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "contacto_piel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-biofilm-instrumental-003",
+    "title": "Biofilms en instrumentos: el reto de la asepsia en cabina",
+    "content": "Los instrumentos de acero inoxidable, a pesar de su apariencia limpia, pueden albergar biofilms bacterianos en sus microfisuras, especialmente tras el uso repetido y la esterilización deficiente. Un biofilm es una comunidad organizada de microorganismos incrustados en una matriz de sustancias poliméricas extracelulares (EPS) que los protege contra desinfectantes químicos y agentes físicos. En el entorno de cabina, las fresas de diamante o carburo son particularmente difíciles de limpiar debido a su porosidad y geometría compleja. La presencia de biofilms no solo eleva el riesgo de infecciones cruzadas (como Pseudomonas aeruginosa o Staphylococcus aureus), sino que puede contaminar la lámina ungueal durante el fresado, introduciendo patógenos en el lecho. La esterilización por autoclave es el único estándar aceptable en entornos clínicos; la inmersión en alcohol o desinfectantes de bajo nivel es insuficiente para erradicar el biofilm. El uso de limpiadores ultrasónicos antes de la esterilización es obligatorio para asegurar la eliminación de residuos biológicos y permitir que el vapor penetre efectivamente en todas las superficies del instrumento.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240003927",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "reutilizacion_sin_autoclave"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-vibracion-004",
+    "title": "Onicodistrofia por vibración mecánica: el impacto de los tornos",
+    "content": "El uso prolongado de tornos (fresas eléctricas) de baja calidad o con desequilibrio rotacional genera vibraciones de alta frecuencia que se transmiten directamente a la matriz ungueal. Este fenómeno de micro-impactos repetitivos puede causar una disrupción en la formación de la placa ungueal, resultando en onicodistrofias como surcos, estrías o incluso onicólisis mecánica por fatiga del tejido. La matriz es un tejido altamente sensible y su exposición a vibraciones excesivas puede inhibir la proliferación de queratinocitos sanos. Además, la generación de calor friccional durante el fresado, sumada a la vibración, potencia el daño estructural. Los profesionales deben priorizar equipos con bajo nivel de vibración y alta estabilidad, evitando presiones laterales excesivas sobre la lámina. Estudios ergonómicos indican que el control de la presión de contacto es vital: un fresado demasiado rápido o con brocas mal centradas provoca microfisuras en la lámina que, aunque invisibles a simple vista, debilitan la estructura y facilitan la entrada de humedad y patógenos. La técnica debe ser siempre suave, intermitente y perpendicular a la superficie ungueal para minimizar el estrés matricial.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists)",
+        "url": "https://ijdvl.com/nail-cosmetics-a-review/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso_fresas_descentradas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_fresado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperhidrosis-adhesion-005",
+    "title": "Hiperhidrosis periungueal: el reto silencioso de la adhesión",
+    "content": "La hiperhidrosis, tanto palmar como plantar, altera drásticamente la química de la superficie ungueal, dificultando la adhesión de los sistemas fotopolimerizables. El exceso de humedad residual y la presencia de solutos (electrólitos) en el sudor interfieren con la capacidad de los primers ácidos o deshidratadores para crear una superficie receptiva. El agua y los lípidos naturales de la piel, al ser expulsados constantemente por los poros periungueales, crean una película hidrofílica que impide que el adhesivo (generalmente hidrofóbico) se ancle correctamente a la queratina. Este desprendimiento prematuro, a menudo atribuido erróneamente a la mala calidad del producto, tiene un origen fisiológico. La gestión clínica requiere un desengrasado profundo y el uso de agentes deshidratadores específicos, pero el profesional debe ser cauto: una deshidratación excesiva puede dañar la placa ungueal. Es fundamental reconocer que el sistema de adhesión es un equilibrio delicado entre la porosidad de la queratina y la tensión superficial del producto. En casos de hiperhidrosis severa, la durabilidad del servicio está intrínsecamente limitada por la biología del cliente, requiriendo protocolos de preparación más frecuentes o el uso de bases especiales de alta afinidad polar.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32448-X/fulltext",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers_acidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_placa"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-006",
+    "title": "Gestión del pico exotérmico: prevención de quemaduras",
+    "content": "La reacción de fotopolimerización es, por naturaleza, exotérmica; durante la transformación de monómero a polímero, se libera energía en forma de calor. En geles de alta densidad o con altas concentraciones de fotoiniciadores, esta liberación puede ser tan rápida que supera el umbral de tolerancia térmica del lecho ungueal, causando una sensación de quemazón intensa. Si el calor es excesivo (superando los 45-50°C), puede producirse una quemadura térmica o una onicólisis traumática inducida por el desprendimiento del lecho ungueal debido a la contracción volumétrica. Para prevenir esto, es crucial aplicar capas delgadas, utilizar lámparas con modo de 'baja potencia' o 'curado gradual' (soft start), y educar al cliente para retirar la mano ante la primera señal de calor. La anatomía del lecho ungueal es rica en terminaciones nerviosas y vasos sanguíneos, lo que lo hace muy sensible al estrés térmico. El uso de productos con una cinética de polimerización controlada es la mejor estrategia para evitar el trauma térmico, garantizando un servicio seguro sin comprometer la integridad de la matriz ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery (Wolters Kluwer)",
+        "url": "https://journals.lww.com/dermatologicsurgery/Abstract/2019/08000/Exothermic_Reaction_of_Nail_Gels.14.aspx",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "capas_gruesas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_curado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-galvanica-007",
+    "title": "Corrosión galvánica: el peligro invisible en herramientas",
+    "content": "La corrosión galvánica ocurre cuando dos metales con diferentes potenciales electroquímicos entran en contacto en presencia de un electrolito (como la humedad o soluciones desinfectantes). En el entorno de una cabina, las herramientas de acero inoxidable de baja calidad o con aleaciones mixtas pueden sufrir este proceso. La corrosión no solo debilita la estructura del instrumento, sino que libera iones metálicos (como cromo, níquel o cobalto) que pueden ser depositados en los tejidos periungueales, desencadenando dermatitis alérgicas de contacto. Además, las picaduras microscópicas causadas por la corrosión crean nichos ideales para la acumulación de biofilms, imposibilitando la esterilización efectiva. Es imperativo utilizar herramientas de acero quirúrgico de grado médico (AISI 316 o superior), que poseen una capa pasivante de óxido de cromo más resistente. El mantenimiento de estas herramientas debe incluir el secado inmediato tras la desinfección y evitar la inmersión prolongada en líquidos corrosivos. Un instrumento con signos de oxidación superficial debe ser retirado inmediatamente de circulación, ya que su integridad biológica está comprometida, representando un riesgo tanto para el profesional como para el cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "ISO (International Organization for Standardization)",
+        "url": "https://www.iso.org/standard/74737.html",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas_oxidadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  },
+  {
+    "chunk_id": "guias_unas-queratina-solvente-009",
+    "title": "Degradación de la queratina por solventes de remoción",
+    "content": "Los solventes utilizados para la remoción de sistemas de gel o acrílico, principalmente la acetona pura, actúan disolviendo no solo el producto, sino también los lípidos intercelulares de la placa ungueal. La queratina, que es una proteína estructural, depende de estos lípidos para mantener su flexibilidad y cohesión. La exposición recurrente a la acetona provoca una deshidratación extrema, lo que resulta en onicosquizia lamelar (descamación de la lámina) y fragilidad aumentada. Estudios han demostrado que la inmersión prolongada en solventes altera la estructura de la lámina dorsal, volviéndola más porosa y susceptible a la absorción de sustancias externas. Para mitigar este daño, se recomienda utilizar métodos de remoción que minimicen el tiempo de contacto, como el uso de limado controlado para reducir el espesor antes de la envoltura, y la aplicación posterior de aceites reparadores ricos en lípidos (como el aceite de jojoba o escualano) para restaurar la barrera protectora. La educación del cliente sobre la importancia de no forzar el desprendimiento del producto es vital, ya que el desprendimiento mecánico 'en seco' es la causa principal de la pérdida de capas de la placa dorsal, debilitando la uña a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists)",
+        "url": "https://ijdvl.com/nail-cosmetics-a-review/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona"
+      ],
+      "contraindications": [
+        "remocion_forzada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_remocion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:05:19.178Z"
+  }
+]

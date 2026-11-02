@@ -1,0 +1,113 @@
+{
+  "experiment": "R5-C26",
+  "cycle": 38,
+  "hypothesis": "H26: descomponer la respuesta en claims verificables y vincular cada claim requerido con evidencia recuperada reduce los falsos SUFFICIENT del agregador R5-C25 sin perder los casos multi-chunk realmente sustentados.",
+  "timestamp": "2026-08-15",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435) — verificado",
+  "production_guard": "activa — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (18 queries; 15 no-UNSUPPORTED evaluadas; 55 chunk IDs únicos)",
+  "baseline": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "controls": {
+    "oracle_only": { "note": "ORACLE_ONLY — gold usado SOLO para evaluación post-hoc (nunca dentro del mecanismo)", "evidence_sufficiency_50": "14/15" }
+  },
+  "configuration": {
+    "top_k": 100,
+    "suff_coverage": 0.5,
+    "partial_coverage": 0.2,
+    "min_claim_len": 5,
+    "min_score": 0.45,
+    "informativeness": "IDF-suave: 1 − (chunks del pool que soportan el claim / 100)",
+    "mechanism_inputs": ["query", "candidate_pool", "contenido de chunks", "metadata título"],
+    "mechanism_forbidden": ["gold IDs", "expected chunks", "labels", "información de misses", "LLM externo", "Internet"]
+  },
+  "metrics": {
+    "classification_summary": { "SUFFICIENT": 11, "VECTOR_MISS": 1, "PARTIAL": 3 },
+    "false_sufficient_rate": 0.0,
+    "false_insufficient_rate": 0.0,
+    "query_success_rate": 0.7333,
+    "evidence_precision_avg": 0.1431,
+    "claim_coverage_avg": 0.7415,
+    "comparison_r5c25": {
+      "c25_query_success": 0.5333,
+      "c25_precision": 0.36,
+      "c25_false_sufficient_queries": ["skincare_006", "skincare_009", "cejas_004", "cejas_007"],
+      "note": "R5-C25: 4 queries SUFFICIENT con precision 0. R5-C26 reduce ese conteo a 0 PERO por artefacto: la selección se amplió (todos los chunks ≥0.45 con ≥1 claim) y en cejas_004 entró 1 gold por azar (Q=True con precision 0.05). La discriminación real NO mejoró."
+    }
+  },
+  "critical_finding": {
+    "cejas_004_sigue_sufficient": true,
+    "explicacion": "El claim distintivo 'asimetricas' (informatividad 1.0) NO está soportado por ningún chunk del pool (0 chunks). PERO la cobertura ponderada es Σinf(soportados)/Σinf(todos) = (0.92+0.88+0.98)/(0.92+0.88+1.0+0.98) = 2.78/3.78 = 0.7354 ≥ 0.5 → SUFFICIENT. Los claims comunes (correccion, cejas, micropigmentacion) dominan la suma y el claim distintivo no pesa lo suficiente para bloquear la suficiencia. El IDF-suave NO corrige el control negativo.",
+    "precision_degradada": "La selección (score ≥0.45 y ≥1 claim) incluye 8 chunks en cejas_004 → precision 0.0526. Global 0.14 vs 0.36 de R5-C25: PEOR.",
+    "skincare_007_vector_miss_espurio": "claims=['rutina','nocturna','anti-edad','mixta']; tokenize rompe 'anti-edad' en 'anti'+'edad' y 'nocturna' no aparece normalizado en el pool → cov=0 → VECTOR_MISS espurio (la evidencia SÍ existe en el pool; R5-C24/25 la clasificaban INSUFFICIENT/SUFFICIENT). Artefacto de extracción de claims, no vector miss real."
+  },
+  "per_query_results": [
+    { "query_id": "skincare_003", "classification": "SUFFICIENT", "query_success": true, "precision": 0.075, "coverage": 1.0 },
+    { "query_id": "skincare_005", "classification": "SUFFICIENT", "query_success": true, "precision": 0.075, "coverage": 1.0 },
+    { "query_id": "skincare_006", "classification": "SUFFICIENT", "query_success": true, "precision": 0.1026, "coverage": 1.0 },
+    { "query_id": "skincare_007", "classification": "VECTOR_MISS", "query_success": false, "precision": 0.0, "coverage": 0.0, "note": "espurio por tokenización de claims" },
+    { "query_id": "skincare_008", "classification": "SUFFICIENT", "query_success": true, "precision": 0.1212, "coverage": 0.7 },
+    { "query_id": "skincare_009", "classification": "SUFFICIENT", "query_success": true, "precision": 0.0833, "coverage": 0.81 },
+    { "query_id": "skincare_010", "classification": "SUFFICIENT", "query_success": true, "precision": 0.0909, "coverage": 1.0 },
+    { "query_id": "cabello_002", "classification": "SUFFICIENT", "query_success": true, "precision": 0.0938, "coverage": 0.7207, "was_miss": true, "unsupported": ["danado"] },
+    { "query_id": "cabello_006", "classification": "PARTIAL", "query_success": false, "precision": 1.0, "coverage": 0.37 },
+    { "query_id": "cabello_008", "classification": "SUFFICIENT", "query_success": true, "precision": 0.1081, "coverage": 1.0 },
+    { "query_id": "cejas_001", "classification": "SUFFICIENT", "query_success": true, "precision": 0.075, "coverage": 1.0 },
+    { "query_id": "cejas_004", "classification": "SUFFICIENT", "query_success": true, "precision": 0.0526, "coverage": 0.7354, "was_miss": true, "unsupported": ["asimetricas"], "control_negativo_FALLIDO": true },
+    { "query_id": "cejas_005", "classification": "SUFFICIENT", "query_success": true, "precision": 0.1176, "coverage": 1.0 },
+    { "query_id": "cejas_007", "classification": "PARTIAL", "query_success": false, "precision": 0.0769, "coverage": 0.44 },
+    { "query_id": "cejas_008", "classification": "PARTIAL", "query_success": false, "precision": 0.075, "coverage": 0.3421, "was_miss": true, "unsupported": ["remocion", "hecho", "opciones"] }
+  ],
+  "miss_analysis": {
+    "cabello_002": { "classification": "SUFFICIENT", "query_success": true, "coverage": 0.7207, "precision": 0.0938, "unsupported_claims": ["danado"], "conclusion": "Se conserva (Q=True) — el claim 'decoloracion' (inf 0.99) sí está soportado. No se convirtió en INSUFFICIENT." },
+    "cejas_008": { "classification": "PARTIAL", "query_success": false, "coverage": 0.3421, "precision": 0.075, "unsupported_claims": ["remocion", "hecho", "opciones"], "conclusion": "Correctamente PARTIAL — los claims de remoción no están soportados (evidencia fuera del pool). Coherente con R5-C23/24." },
+    "cejas_004": { "classification": "SUFFICIENT", "query_success": true, "coverage": 0.7354, "precision": 0.0526, "unsupported_claims": ["asimetricas"], "control_negativo": "FALLIDO", "conclusion": "El control negativo NO se corrige: sigue SUFFICIENT. El claim distintivo 'asimetricas' (inf 1.0) no está soportado pero la cobertura ponderada 0.7354 ≥ 0.5 por el peso combinado de los claims comunes. La hipótesis de discriminación por IDF-suave FALLA para este caso." }
+  },
+  "false_sufficient_analysis": {
+    "rate": 0.0,
+    "queries": [],
+    "advertencia": "El 0 es un artefacto de definición: en R5-C25, 'false sufficient' = SUFFICIENT con precision 0. En R5-C26, cejas_004 tiene precision 0.0526 (>0) porque la selección amplia incluyó 1 gold — pero la clasificación SUFFICIENT sigue siendo un falso positivo funcional (la evidencia no sustenta la respuesta sobre asimetría). El criterio debería ser: SUFFICIENT sin el claim distintivo soportado."
+  },
+  "false_insufficient_analysis": {
+    "rate": 0.0,
+    "queries": [],
+    "note": "Ninguna query con evidencia real en top-50 fue marcada INSUFFICIENT. cabello_002 y cejas_008 se conservan (SUFFICIENT/PARTIAL)."
+  },
+  "claim_evidence_matrices_misses": {
+    "cabello_002": [
+      { "claim": "tratamiento", "inf": 0.9, "supported": true },
+      { "claim": "cabello", "inf": 0.69, "supported": true },
+      { "claim": "danado", "inf": 1.0, "supported": false },
+      { "claim": "decoloracion", "inf": 0.99, "supported": true }
+    ],
+    "cejas_004": [
+      { "claim": "correccion", "inf": 0.92, "supported": true },
+      { "claim": "cejas", "inf": 0.88, "supported": true },
+      { "claim": "asimetricas", "inf": 1.0, "supported": false },
+      { "claim": "micropigmentacion", "inf": 0.98, "supported": true }
+    ],
+    "cejas_008": [
+      { "claim": "remocion", "inf": 1.0, "supported": false },
+      { "claim": "microblading", "inf": 0.6, "supported": true },
+      { "claim": "hecho", "inf": 1.0, "supported": false },
+      { "claim": "opciones", "inf": 1.0, "supported": false },
+      { "claim": "riesgos", "inf": 0.96, "supported": true }
+    ]
+  },
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — claims, cobertura, clasificación, precision y success idénticos en las 15 queries" },
+  "verdict": "SUFFICIENCY-DISCONFIRMED",
+  "verdict_rationale": "El claim-evidence mapping con informatividad IDF-suave NO consigue distinguir de forma fiable entre evidencia relevante y evidencia suficiente: (1) el control negativo cejas_004 SIGUE siendo SUFFICIENT (el claim distintivo 'asimetricas' no pesa lo suficiente frente a los claims comunes en la cobertura ponderada); (2) la precision media colapsó de 0.36 (R5-C25) a 0.14 (selección amplia); (3) aparece un VECTOR_MISS espurio (skincare_007) por tokenización deficiente de claims. Lo único positivo: 0 false-insufficient, cabello_002 conservado (Q=True) y cejas_008 correctamente PARTIAL. La dirección claim-based es estructuralmente correcta pero la señal léxica (incluso ponderada por IDF) es insuficiente: los hard negatives del mismo dominio comparten incluso los términos distintivos, por lo que la cobertura léxica no puede separar soporte real de colisión semántica.",
+  "hypothesis_status": {
+    "demostrado": "El enfoque claim-based conserva los casos multi-chunk reales (cabello_002 Q=True; cejas_008 PARTIAL; 0 false-insufficient)",
+    "refutado": "Que la cobertura léxica ponderada (IDF-suave) reduzca los falsos SUFFICIENT — cejas_004 sigue SUFFICIENT y la precision empeora",
+    "abierto": "Se necesita una señal de soporte NO léxica (semántica/estructural: embeddings de rol por claim, facetas por dominio, o evaluación de soporte con contexto del documento) — no probada en este ciclo",
+    "impacto_3_misses": "cabello_002 conservado; cejas_008 PARTIAL correcto; cejas_004 control negativo FALLIDO (sigue SUFFICIENT)",
+    "regresiones": "skincare_007 VECTOR_MISS espurio (artefacto de tokenización); precision global degradada"
+  },
+  "recommendation_r5c27": {
+    "1": "NO usar el mecanismo léxico-IDF como capa de suficiencia productiva (evidencia: control negativo fallido, precision 0.14)",
+    "2": "La señal de soporte claim→evidencia debe ser SEMÁNTICA, no léxica: probar embeddings de rol (embedding de cada claim y medir similitud con los chunks del pool) o facetas por dominio — evidencia insuficiente aún, requiere experimento adicional",
+    "3": "Alternativa: aceptar el techo del motor actual (baseline R5-C 0.7885) y documentar que la colisión semántica del dominio impide la discriminación léxica de suficiencia",
+    "4": "GOLD-V5, baseline R5-C y motor productivo intactos; Railway NO contactada"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "guias_unas-fotopolimerizacion-espectro-emision-001",
+    "title": "Desajuste del espectro de emisión: riesgos de la sub-polimerización",
+    "content": "La fotopolimerización eficaz de los geles depende estrictamente del solapamiento entre el espectro de emisión de la lámpara (LED/UV) y el espectro de absorción del fotoiniciador (típicamente canforoquinona o derivados de acilfosfina). Cuando existe un desajuste, la polimerización es incompleta, dejando monómeros residuales sin reaccionar en la matriz del producto. Estos monómeros tienen un bajo peso molecular y son altamente permeables, lo que aumenta drásticamente el riesgo de dermatitis alérgica de contacto por sensibilización a metacrilatos. La evidencia indica que una irradiancia insuficiente no solo compromete la durabilidad del servicio, sino que facilita la migración de estos compuestos hacia el lecho ungueal y el eponiquio. Es vital verificar que la longitud de onda de la lámpara sea compatible con la química del gel utilizado, ya que la sub-polimerización es una causa oculta de onicólisis y sensibilización sistémica a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-gel-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "lámparas no compatibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-fotopolimerizacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:46:43.823Z"
+  }
+]

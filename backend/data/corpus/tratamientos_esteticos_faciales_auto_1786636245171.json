@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "terapia-exosomas-senoliticos-001",
+    "title": "Mecanismos de Acción de los Exosomas Senolíticos en la Senescencia Cutánea",
+    "content": "Los exosomas senolíticos representan una vanguardia en la medicina regenerativa facial. A diferencia de los exosomas convencionales, estos vesículos extracelulares son diseñados o seleccionados por su capacidad para modular la vía SASP (Senescence-Associated Secretory Phenotype). La senescencia del fibroblasto, caracterizada por una secreción proinflamatoria crónica, es un motor principal del envejecimiento cutáneo. La aplicación tópica o intradérmica de exosomas derivados de células madre mesenquimales (MSCs) permite la transferencia de microARNs específicos, como el miR-34a o miR-146a, que suprimen la señalización de NF-κB en fibroblastos adyacentes, reduciendo el estado de inflamación latente. Estudios publicados en PubMed sugieren que este enfoque no solo promueve la reparación tisular, sino que revierte el fenotipo de envejecimiento celular al restaurar el equilibrio entre la síntesis y degradación de la matriz extracelular (ECM). La clave reside en la capacidad de estos exosomas para actuar como mensajeros intercelulares, reprogramando el microambiente dérmico sin la necesidad de una intervención quirúrgica invasiva, siendo un pilar prometedor para el rejuvenecimiento biológico avanzado en pacientes con signos de fotoenvejecimiento severo.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37452101/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas",
+        "factores de crecimiento"
+      ],
+      "contraindications": [
+        "cáncer cutáneo activo",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion-regenerativa"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:50:26.449Z"
+  }
+]

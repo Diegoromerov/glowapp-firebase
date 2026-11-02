@@ -1,0 +1,284 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-electrodinamica-001",
+    "title": "Electroestática capilar: El papel del potencial Zeta en la deposición de pigmentos",
+    "content": "El potencial Zeta es una medida fundamental de la estabilidad de las dispersiones coloidales, incluyendo las formulaciones de tintes capilares. En la fibra capilar, que posee una carga negativa neta en condiciones normales debido a los grupos carboxilo de los aminoácidos, la interacción con las moléculas de tinte depende críticamente de la carga superficial. Cuando el potencial Zeta del tinte es óptimamente negativo, se minimiza la agregación prematura de pigmentos, permitiendo una penetración más uniforme en la corteza. Sin embargo, en cabellos tratados químicamente donde la cutícula está dañada, el punto isoeléctrico de la queratina se desplaza, alterando la afinidad electrostática. Un conocimiento profundo de esta dinámica permite a los coloristas ajustar el uso de agentes acondicionadores catiónicos, que al neutralizar las zonas de carga negativa excesiva, actúan como puentes de anclaje para los pigmentos, garantizando una saturación cromática más duradera y evitando la 'mancha' o absorción desigual en áreas altamente porosas. Este principio físico es la base para entender por qué ciertos productos de igualación fallan si no se considera la electroquímica de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-fototoxicidad-002",
+    "title": "Fototoxicidad inducida y degradación de precursores post-coloración",
+    "content": "La exposición a la radiación ultravioleta (UV) inmediatamente después de un proceso de coloración permanente acelera la degradación fotolítica de los precursores de color recién formados. La luz UV induce la formación de radicales libres dentro de la corteza, los cuales reaccionan con los polímeros de tinte (especialmente las bases de oxidación) rompiendo los enlaces conjugados responsables del color. Este fenómeno es particularmente crítico en tonos cobrizos y rojos, cuyas moléculas tienen una mayor sección transversal de absorción fotónica. Clínicamente, esto no solo altera el matiz, sino que genera subproductos oxidativos que pueden incrementar la fragilidad de la fibra. Es imperativo integrar filtros UV capilares en la rutina post-servicio, ya que la exposición solar sin protección en las primeras 48 horas tras el tinte puede reducir la longevidad del color hasta en un 30%. La investigación sugiere que el uso de antioxidantes tópicos post-aplicación ayuda a neutralizar los radicales libres generados por la fotólisis, preservando la integridad del pigmento y la estructura de las proteínas queratínicas.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31567215/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados-post-tinte"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-viscoelasticidad-003",
+    "title": "Viscoelasticidad y su rol en la retención de pigmentos",
+    "content": "La viscoelasticidad del cabello, definida por su capacidad de deformación elástica y flujo viscoso, cambia drásticamente tras los procesos de alcalinización intensa. Durante el teñido, el hinchamiento de la fibra modifica la arquitectura interna de la corteza, afectando la forma en que los pigmentos se alojan en el espacio intercelular. Un cabello con baja viscoelasticidad (altamente rígido o sobre-procesado) presenta una red de queratina menos capaz de 'retener' físicamente las moléculas de tinte, lo que resulta en una lixiviación acelerada con los lavados. Comprender la relación entre la integridad de los enlaces disulfuro y la capacidad viscoelástica es vital para el colorista profesional. El uso de agentes reconstructores que restauran la elasticidad durante el proceso de coloración no es solo un tema de 'brillo', sino de ingeniería estructural: al mejorar la viscoelasticidad, se reduce la permeabilidad excesiva que permite la salida de las moléculas de color de gran tamaño. Este enfoque clínico permite realizar servicios de coloración duraderos incluso en cabellos con historial de daño severo, optimizando la retención desde la matriz capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes reconstructores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-profesional"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-anisotropia-004",
+    "title": "Anisotropía de la fibra: El reto de la distribución heterogénea",
+    "content": "La anisotropía de la fibra capilar, o la variación en las propiedades físicas y químicas a lo largo y ancho del eje del cabello, es el principal factor de error en la igualación de color. Debido a la exposición ambiental, el roce mecánico y la historia de tratamientos químicos, la raíz y las puntas presentan un estado de cutícula y corteza radicalmente distinto. Esta diferencia implica que la cinética de penetración del tinte no es constante; las puntas, al ser más porosas y tener una capa de lípidos (capa F) degradada, absorben el tinte con una velocidad significativamente mayor, lo que suele derivar en oscurecimientos indeseados. Clínicamente, el profesional debe aplicar estrategias de 'gradiente de aplicación' donde se modifiquen los volúmenes de peróxido o el tiempo de exposición según la zona. El uso de agentes reguladores de porosidad que compensan esta anisotropía es esencial para lograr un resultado cromático uniforme. Ignorar la naturaleza anisotrópica del cabello conduce a resultados inconsistentes, donde la saturación de color es excesiva en puntas y deficiente en áreas menos dañadas, comprometiendo la estética final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-profesional"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-birrefringencia-005",
+    "title": "Birrefringencia y la percepción del brillo cromático",
+    "content": "La birrefringencia, o doble refracción, es una propiedad óptica de la fibra capilar saludable que contribuye directamente a la percepción visual del color y el brillo. La estructura altamente organizada de las células de la cutícula y la corteza permite que la luz se descomponga y refleje de manera que el color parezca profundo y tridimensional. Cuando un proceso de coloración degrada esta estructura (especialmente durante la decoloración agresiva), la fibra pierde su capacidad de birrefringencia, resultando en un color que parece 'plano', opaco o sin vida, incluso si el pigmento está presente. Este fenómeno explica por qué algunos cabellos, aunque estén teñidos del tono correcto, no lucen vibrantes. La clave clínica para mantener la birrefringencia es proteger el Complejo de Membrana Celular (CMC) y la capa de 18-metileicosanoico. Los tratamientos que restauran la alineación de las escamas de la cutícula no solo mejoran la salud táctil, sino que optimizan las propiedades ópticas de la fibra, permitiendo que la luz interactúe correctamente con el pigmento depositado, maximizando la saturación y la riqueza cromática percibida por el ojo humano.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lípidos protectores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-VOC-006",
+    "title": "Evaluación de Compuestos Orgánicos Volátiles (VOC) y seguridad en el salón",
+    "content": "La aplicación de tintes permanentes libera Compuestos Orgánicos Volátiles (VOC) como amoniaco, etanol y diversos solventes aromáticos. La exposición prolongada a estos vapores en ambientes poco ventilados no solo es un riesgo para la salud respiratoria del profesional, sino que puede inducir reacciones de sensibilización cutánea por inhalación o contacto indirecto. Estudios recientes indican que la concentración de VOC en salones de belleza puede exceder los límites recomendados si no se aplican protocolos de ventilación adecuados. Además, la inhalación crónica de estos vapores se ha relacionado con síntomas de irritación de las mucosas y, en casos de alta exposición, con respuestas asmáticas. Desde una perspectiva de curaduría clínica, es fundamental que el profesional utilice sistemas de extracción local y prefiera formulaciones con bajos niveles de emisiones. La seguridad en el salón de belleza es un componente integral de la colorimetría: un entorno libre de contaminantes volátiles asegura que el profesional trabaje con precisión y que el cliente no experimente efectos adversos no deseados durante el tiempo de pose, mejorando la experiencia global del servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco",
+        "solventes"
+      ],
+      "contraindications": [
+        "asma",
+        "sensibilidad química"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-salud"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-microbioma-007",
+    "title": "Impacto de la alcalinidad residual en la diversidad del microbioma scalp",
+    "content": "El pH natural del cuero cabelludo oscila entre 4.5 y 5.5, un ambiente ácido necesario para mantener la microbiota comensal, como *Malassezia* y *Staphylococcus epidermidis*. Los servicios de coloración, especialmente aquellos que utilizan altas concentraciones de amoniaco o decolorantes, elevan el pH del cuero cabelludo por encima de 8.0, alterando drásticamente el equilibrio microbiano. Esta alcalinidad residual puede persistir durante horas o incluso días si no se realiza un proceso de neutralización adecuado. La disbiosis resultante favorece la proliferación de microorganismos patógenos y puede desencadenar episodios de dermatitis seborreica reactiva o prurito intenso. Clínicamente, es fundamental finalizar cualquier servicio de coloración con agentes acidificantes que devuelvan el manto ácido a su rango fisiológico. La preservación del microbioma no solo es una cuestión de salud cutánea, sino que influye en la calidad del crecimiento capilar a largo plazo. Un cuero cabelludo sano proporciona una base más estable para el proceso de coloración, reduciendo las probabilidades de irritación o sensibilidad excesiva durante futuras aplicaciones.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acidificantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:09.268Z"
+  }
+]

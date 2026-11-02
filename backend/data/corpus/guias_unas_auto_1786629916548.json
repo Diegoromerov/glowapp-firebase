@@ -1,0 +1,291 @@
+[
+  {
+    "chunk_id": "guias_unas-disrupcion-queratina-001",
+    "title": "Degradación de la red de queratina por agentes quelantes en removedores",
+    "content": "La integridad de la lámina ungueal depende de la disposición de los corneocitos y la matriz lipídica intercelular. Recientemente, se ha observado que el uso indiscriminado de agentes quelantes en removedores de esmalte de alta potencia, diseñados para disolver geles, induce una desnaturalización de las proteínas de queratina a nivel de la lámina dorsal. A diferencia de la acetona pura, estos compuestos complejos pueden penetrar en los puentes de hidrógeno de la estructura ungueal, debilitando la cohesión celular. La investigación sugiere que el uso prolongado de estos agentes reduce la elasticidad de la uña, volviéndola propensa a la onicosquizia y a la pérdida de su capacidad de retención de agua natural. Es fundamental que los profesionales comprendan que la 'limpieza' química no es inerte; el daño es acumulativo y afecta la arquitectura de la lámina a largo plazo, limitando la capacidad de adhesión para futuros servicios debido a la micro-porosidad inducida en la superficie queratinizada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "uñas debilitadas",
+        "onicodistrofia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  },
+  {
+    "chunk_id": "guias_unas-microbiota-subungueal-002",
+    "title": "Ecología del microbioma subungueal y el riesgo de la oclusión",
+    "content": "La región subungueal bajo el borde libre alberga un ecosistema bacteriano y fúngico equilibrado. La aplicación de sistemas de uñas esculpidas o recubrimientos de larga duración genera un microambiente de oclusión que altera drásticamente los niveles de humedad y oxígeno. Estudios microbiológicos han demostrado que este sellado artificial puede favorecer la proliferación de especies comensales que, en condiciones de humedad elevada, se tornan oportunistas. La falla en la adhesión del producto en el hiponiquio no es solo un problema técnico, sino una puerta de entrada para microorganismos que pueden colonizar el lecho. La recomendación clínica actual es evitar la oclusión total si se detectan signos de maceración, ya que el microbioma subungueal es altamente sensible a los cambios de pH provocados por la degradación de los monómeros residuales, los cuales pueden actuar como sustrato metabólico para bacterias gramnegativas, elevando el riesgo de infecciones subclínicas persistentes.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "hiperhidrosis",
+        "onicolisis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbiologia_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  },
+  {
+    "chunk_id": "guias_unas-friccion-termica-003",
+    "title": "Termodinámica del fresado y daño matricial inducido",
+    "content": "El uso de tornos (fresas) de alta frecuencia en cabina implica una transferencia de energía térmica que a menudo se subestima. La fricción generada entre la fresa y la lámina ungueal puede elevar la temperatura local por encima de los 45°C, umbral crítico en el cual se inicia la desnaturalización proteica y el daño a las células de la matriz ungueal. Aunque la lámina es un tejido muerto, su proximidad con la matriz viva permite que el calor sea conducido directamente hacia los queratinocitos en formación. Un fresado prolongado sin pausas no solo genera incomodidad (efecto quemazón), sino que puede interrumpir el ciclo de división celular, provocando la aparición posterior de líneas de Beau o alteraciones en la placa ungueal. Es imperativo utilizar herramientas con el grano adecuado y aplicar una técnica de 'barrido' constante, evitando la presión excesiva que favorece la acumulación de calor. El monitoreo de la temperatura mediante la respuesta sensorial del cliente es una práctica de seguridad obligatoria en cualquier procedimiento de remoción mecánica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00567-X/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de tornos en matriz"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_instrumental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidrodinamica-004",
+    "title": "La paradoja de la hidratación y el balance hídrico ungueal",
+    "content": "La lámina ungueal posee una estructura hidrofóbica natural, sin embargo, sufre variaciones significativas en su contenido de agua (entre 10% y 30%). La inmersión prolongada en agua o el uso de productos que alteran la barrera lipídica aumentan la permeabilidad de la lámina, permitiendo una hidratación excesiva que resulta en la pérdida de la rigidez estructural. Este estado, conocido como 'uña blanda', facilita la onicosquizia lamelar, donde las capas dorsales se separan debido a la presión osmótica interna. En cabina, la aplicación de selladores sobre una uña saturada de humedad es una causa frecuente de desprendimiento prematuro (lifting). Es vital comprender que el sellado no debe ser una barrera hidrofílica, sino una protección que mantenga la homeostasis del balance hídrico. La educación al cliente sobre el uso de guantes en tareas domésticas y el uso de aceites de cutícula ricos en lípidos es fundamental para restaurar la integridad de la barrera cuticular y prevenir la fragilidad inducida por la absorción cíclica de agua.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Clinics",
+        "url": "https://www.dermatologic.theclinics.com/article/S0733-8635(21)00056-X/fulltext",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites de cutícula"
+      ],
+      "contraindications": [
+        "inmersión prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_unial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  },
+  {
+    "chunk_id": "guias_unas-piezoelectrico-005",
+    "title": "Efecto piezoeléctrico en la lámina bajo tensión mecánica",
+    "content": "La lámina ungueal, al ser un material compuesto de queratina densamente empaquetada, exhibe propiedades piezoeléctricas. Cuando la uña es sometida a tensiones mecánicas repetitivas, como ocurre en el caso de uñas esculpidas excesivamente largas con arcos de tensión mal diseñados, se generan potenciales eléctricos internos que pueden influir en la adhesión de los polímeros. Este fenómeno, aunque poco explorado en estética, explica por qué ciertas uñas presentan fallos de adhesión en zonas específicas de mayor estrés tangencial. La acumulación de cargas eléctricas en la interfase lecho-producto, agravada por el limado agresivo, puede alterar la estabilidad del monómero antes de su polimerización completa. El diseño correcto del ápex no es solo una cuestión estética o de durabilidad estructural; es una necesidad física para distribuir las fuerzas y evitar que el efecto piezoeléctrico degrade prematuramente la unión química entre la lámina y el gel. La comprensión de la biomecánica del borde libre es esencial para prevenir micro-fracturas que actúan como nichos para patógenos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "diseño inadecuado de arco"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_unial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-007",
+    "title": "Corrosión galvánica: El riesgo invisible del acero inoxidable",
+    "content": "El uso de herramientas de acero inoxidable en entornos de alta humedad, como es el caso de la manicura combinada, puede desencadenar procesos de corrosión galvánica si existe una diferencia de potencial entre el metal y los residuos químicos de los productos de uñas. La liberación de iones metálicos, como cromo o níquel, durante el proceso de limado o limpieza de cutícula, puede inducir una dermatitis por contacto alérgica en individuos sensibilizados. Además, la corrosión microscópica en la superficie de las herramientas crea microfisuras que actúan como refugio para biopelículas (biofilms) resistentes a los métodos convencionales de esterilización. Es fundamental implementar protocolos de desinfección basados en inmersión en soluciones enzimáticas y, posteriormente, el uso de autoclave, asegurando que las herramientas sean inspeccionadas periódicamente bajo magnificación. La presencia de manchas oscuras o corrosión en el instrumental no es solo un problema estético, sino un riesgo sanitario directo que compromete la asepsia del servicio y puede causar una inflamación periungueal crónica de difícil diagnóstico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789241549851",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "instrumental oxidado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_asepsia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperhidrosis-009",
+    "title": "Impacto de la hiperhidrosis periungueal en la adhesión molecular",
+    "content": "La hiperhidrosis, tanto palmar como plantar, representa uno de los desafíos más complejos para la adhesión de sistemas fotopolimerizables. El exceso de humedad en el lecho ungueal y los pliegues periungueales impide que los primers y bases de gel establezcan puentes de hidrógeno efectivos con la superficie queratinizada. La presencia constante de agua en la interfase lecho-producto actúa como un agente de desprendimiento mecánico, ya que la presión osmótica busca equilibrar los niveles de hidratación, levantando el producto desde la base. Clínicamente, el profesional debe identificar la hiperhidrosis mediante la inspección de la piel circundante; si esta se observa macerada, la aplicación de sistemas de larga duración está contraindicada hasta que se logre un control médico del exceso de sudoración. El uso de deshidratadores de alta potencia puede ser una medida paliativa temporal, pero no soluciona el problema de fondo. La falta de adhesión en estos pacientes no es un error de técnica, sino una limitación fisiológica que debe ser comunicada con claridad para evitar el desarrollo de dermatitis por contacto debido a la exposición prolongada a los componentes químicos del gel.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Society of Dermatology",
+        "url": "https://www.isdermatology.org/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "deshidratadores"
+      ],
+      "contraindications": [
+        "hiperhidrosis severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_unial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:04:58.095Z"
+  }
+]

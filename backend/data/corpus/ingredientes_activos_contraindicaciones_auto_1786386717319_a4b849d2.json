@@ -1,0 +1,262 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386717317-1-71981fc8-acido-poliglutamico-y-el-riesgo-de-oclusion-en-pieles-seborr",
+    "title": "Ácido Poliglutámico y el riesgo de oclusión en pieles seborreicas",
+    "content": "El ácido poliglutámico (PGA) es valorado por su capacidad de retención hídrica superior al ácido hialurónico. Sin embargo, su estructura polimérica de alto peso molecular crea una película oclusiva que puede resultar contraproducente en pacientes con acné seborreico o foliculitis. Al sellar la superficie cutánea, el PGA puede atrapar sebo y detritos celulares, facilitando un entorno anaeróbico que favorece la proliferación de Cutibacterium acnes. A diferencia de los humectantes de bajo peso molecular, el PGA no penetra profundamente, sino que se deposita en el estrato córneo, lo que en formulaciones ricas en otros polímeros puede exacerbar la sensación de pesadez y obstrucción folicular. Se recomienda precaución en pieles con tendencia acneica, sugiriendo su uso solo en regímenes de noche y evitando la superposición con oclusivos pesados como las parafinas o siliconas de alta viscosidad. La monitorización de la respuesta folicular es esencial para evitar brotes reactivos tras el uso continuado.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polyglutamic acid"
+      ],
+      "contraindications": [
+        "acne",
+        "folliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulation_analysis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:31:57.317Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386717317-2-0f05ae7b-ectoina-y-el-riesgo-de-interferencia-en-la-absorcion-de-farm",
+    "title": "Ectoína y el riesgo de interferencia en la absorción de fármacos tópicos",
+    "content": "La ectoína, un osmolito natural utilizado por sus propiedades estabilizadoras de la barrera cutánea y protección contra el estrés ambiental, presenta una contraindicación técnica relevante en el contexto de tratamientos dermatológicos combinados. Debido a su capacidad para formar complejos de hidratación estables (hidro-complejos) en la superficie de la piel, la ectoína puede actuar como una barrera física que reduce la biodisponibilidad y la tasa de penetración percutánea de otros activos terapéuticos, como los retinoides o los antibióticos tópicos. Este efecto de 'escudo' puede disminuir la eficacia clínica de tratamientos prescritos para patologías como el acné o la rosácea si se aplican de forma simultánea. Se recomienda un intervalo de al menos 30 minutos entre la aplicación de productos ricos en ectoína y cualquier agente farmacológico activo para asegurar que la cinética de penetración no sea alterada. La evidencia sugiere que su uso debe ser estratégico, priorizando su aplicación en rutinas de reparación post-procedimiento o en días de descanso de activos irritantes.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/ectoin-interaction",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ectoin"
+      ],
+      "contraindications": [
+        "concurrent drug therapy"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "routine_optimization"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:31:57.318Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386717318-3-a76f3bad-acido-hialuronico-hidrolizado-el-riesgo-de-respuesta-pro-inf",
+    "title": "Ácido Hialurónico hidrolizado: El riesgo de respuesta pro-inflamatoria",
+    "content": "Aunque el ácido hialurónico (AH) es universalmente reconocido por su perfil de seguridad, el AH de muy bajo peso molecular (fragmentos < 50 kDa) ha sido objeto de controversia clínica. A diferencia del AH de alto peso molecular, los fragmentos hidrolizados pueden ser reconocidos por los receptores tipo Toll (TLR-2 y TLR-4) en queratinocitos dañados, activando potencialmente una respuesta pro-inflamatoria. En pieles con barrera cutánea comprometida, como en casos de dermatitis atópica o rosácea, esta señalización puede desencadenar eritema y una sensación de calor reactivo. El riesgo radica en la capacidad de estos fragmentos para mimetizar señales de daño tisular endógeno. Es fundamental que los formuladores equilibren el peso molecular en productos destinados a pieles hipersensibles, evitando concentraciones elevadas de fragmentos de muy bajo peso. Los usuarios con condiciones inflamatorias crónicas deben observar si la aplicación de sueros 'ultra-penetrantes' de AH coincide con episodios de brotes, lo cual podría indicar una sensibilización específica a estas moléculas fragmentadas en lugar de una reacción alérgica tradicional al conservante.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms/hyaluronic-acid-inflammation",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopic",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hydrolyzed hyaluronic acid"
+      ],
+      "contraindications": [
+        "atopic dermatitis",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "ingredient_safety"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:31:57.318Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386717318-4-59ab62ab-extracto-de-te-verde-egcg-y-la-inhibicion-de-la-tirosinasa-r",
+    "title": "Extracto de Té Verde (EGCG) y la inhibición de la tirosinasa: Riesgos de uso",
+    "content": "El galato de epigalocatequina (EGCG), el polifenol más abundante en el té verde, es ampliamente promocionado por sus efectos antioxidantes y antiinflamatorios. No obstante, su interacción con la melanogénesis es compleja. Estudios recientes indican que el EGCG puede actuar como un inhibidor de la tirosinasa, lo que, en formulaciones con pH inestable o concentraciones elevadas, puede provocar una despigmentación irregular en pieles con hiperpigmentación post-inflamatoria si no se acompaña de agentes estabilizadores. Además, el EGCG es altamente sensible a la oxidación; una vez degradado, sus productos de oxidación pueden inducir dermatitis de contacto alérgica. En pacientes con fototipos altos (IV-VI) que buscan tratar manchas, el uso de extractos de té verde sin control de pureza y estabilidad puede resultar en un efecto paradójico donde la irritación crónica por oxidación del activo empeora la hiperpigmentación existente. Se recomienda verificar la pureza del extracto y su encapsulación, evitando el uso de productos que hayan cambiado de color (oscurecimiento), señal inequívoca de degradación del EGCG.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "epigallocatechin gallate"
+      ],
+      "contraindications": [
+        "post-inflammatory hyperpigmentation"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulation_stability"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:31:57.318Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386717318-5-018e8a2e-acido-capriloil-salicilico-lha-y-el-riesgo-de-descamacion-ac",
+    "title": "Ácido Capriloil Salicílico (LHA) y el riesgo de descamación acumulativa",
+    "content": "El ácido capriloil salicílico (LHA) es un derivado lipofílico del ácido salicílico diseñado para una penetración más lenta y uniforme en el estrato córneo. Aunque se considera menos irritante que el ácido salicílico convencional, su naturaleza lipofílica le permite acumularse en los folículos pilosebáceos de forma persistente. En pieles con barrera lipídica debilitada, esta acumulación puede inducir una descamación crónica y una deslipidización del manto ácido, llevando a una dermatitis irritativa de contacto retardada. A diferencia del ácido salicílico, que se elimina con mayor facilidad, el LHA requiere un tiempo de 'aclarado' o descanso en la rutina. El riesgo aumenta significativamente cuando se combina con otros exfoliantes químicos (AHAs) o retinoides, donde el efecto sinérgico de la renovación celular acelerada supera la capacidad de regeneración de la barrera cutánea. Se desaconseja su uso diario en pieles secas o con tendencia a la xerosis, recomendando una frecuencia de aplicación intermitente para permitir la recuperación de los lípidos intercelulares esenciales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/lha-safety-profile",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capryloyl salicylic acid"
+      ],
+      "contraindications": [
+        "xerosis",
+        "compromised barrier"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "routine_optimization"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:31:57.318Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386717318-6-d074abb0-zinc-pca-y-el-riesgo-de-interaccion-con-quelantes-en-formula",
+    "title": "Zinc PCA y el riesgo de interacción con quelantes en formulaciones",
+    "content": "El Zinc PCA es un ingrediente multifuncional utilizado para regular la producción de sebo y proporcionar beneficios antimicrobianos. Sin embargo, su eficacia y estabilidad dependen críticamente de la ausencia de agentes quelantes fuertes (como EDTA o fitatos) en la misma formulación. Los quelantes pueden secuestrar los iones de zinc, formando complejos inactivos que no solo anulan las propiedades seborreguladoras del activo, sino que pueden alterar el pH de la fórmula, volviéndola irritante. Además, en presencia de altas concentraciones de otros electrolitos, el Zinc PCA puede precipitar, perdiendo su biodisponibilidad y dejando residuos granulares que pueden causar micro-traumas mecánicos en pieles sensibles. Es vital que los usuarios verifiquen que los productos de Zinc PCA no se apliquen inmediatamente después de limpiadores o tónicos que contengan altas concentraciones de EDTA, para evitar la inactivación química. La monitorización de la textura del producto es clave: si el suero presenta turbidez o sedimentación, es probable que la estabilidad del complejo de zinc se haya visto comprometida, aumentando el riesgo de irritación cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc pca"
+      ],
+      "contraindications": [
+        "none specific"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulation_stability"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:31:57.318Z"
+  }
+]

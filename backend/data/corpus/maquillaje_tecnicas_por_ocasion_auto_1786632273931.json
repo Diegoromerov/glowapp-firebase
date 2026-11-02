@@ -1,0 +1,172 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-magnetismo-001",
+    "title": "Interacción de pigmentos ferromagnéticos y campos magnéticos intensos en eventos médicos",
+    "content": "La presencia de pigmentos con base de óxidos de hierro en formulaciones de maquillaje de larga duración presenta riesgos técnicos en entornos clínicos o de diagnóstico, como las salas de Resonancia Magnética (MRI). Los pigmentos ferromagnéticos pueden experimentar fuerzas de tracción o generar artefactos de susceptibilidad magnética que comprometen la calidad de la imagen diagnóstica. Estudios en Journal of Magnetic Resonance Imaging han documentado cómo el calentamiento por inducción de partículas metálicas en cosméticos puede causar irritación térmica en la piel bajo exposición a campos magnéticos estáticos intensos. Es fundamental que los maquilladores profesionales, al trabajar en entornos hospitalarios o de investigación, opten por productos libres de óxidos de hierro o metales pesados. La selección de pigmentos de origen orgánico sintético o recubiertos con polímeros inactivos es la estrategia de mitigación más efectiva. Además, la limpieza exhaustiva de la zona facial antes de cualquier procedimiento de imagen es un protocolo de seguridad indispensable para prevenir quemaduras de primer grado y distorsiones en los resultados clínicos. La evaluación de la conductividad de los ingredientes es una práctica de curaduría esencial en la cosmética de alta especialidad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Society for Magnetic Resonance in Medicine",
+        "url": "https://www.ismrm.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron_oxides"
+      ],
+      "contraindications": [
+        "MRI_scans"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:44:14.468Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-bioimpresion-002",
+    "title": "Maquillaje tras procedimientos de bioimpresión cutánea: Integridad de la barrera",
+    "content": "La bioimpresión de tejidos cutáneos representa un avance significativo en la reconstrucción dermatológica, pero plantea desafíos únicos para el maquillaje cosmético post-procedimiento. La piel bioimpresa, al carecer inicialmente de una estratificación completa del estrato córneo y de un microbioma equilibrado, presenta una permeabilidad transepidérmica alterada. La aplicación de productos convencionales puede inducir una respuesta inflamatoria mediada por citocinas, afectando la viabilidad de las células impresas. Investigaciones en PubMed sobre ingeniería de tejidos sugieren que el uso de oclusivos, como vaselinas o siliconas pesadas, debe evitarse en los primeros 14 días post-intervención para permitir la oxigenación y la migración epitelial. Se recomienda el uso de cosméticos de base acuosa, libres de fragancias y conservantes irritantes, diseñados específicamente para pieles con compromiso de integridad. La técnica de aplicación debe ser mediante presión mínima, evitando el arrastre mecánico que podría desestabilizar la matriz extracelular en formación. El monitoreo de la temperatura local es crítico, ya que la vasodilatación inducida por el maquillaje puede favorecer el edema peri-injerto, complicando la integración del tejido bioimpreso con la piel circundante del paciente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "compromised"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fragrance_free",
+        "silicone_free"
+      ],
+      "contraindications": [
+        "bioprinted_skin"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "reconstruccion_estetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:44:14.468Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microgravedad-004",
+    "title": "Dinámica de fluidos cosméticos y estabilidad en entornos de microgravedad",
+    "content": "La aplicación de maquillaje en entornos de microgravedad, como en estaciones espaciales o vuelos parabólicos, presenta desafíos únicos derivados de la ausencia de gravedad terrestre. Los fluidos cosméticos, incluyendo emulsiones y suspensiones, no se comportan bajo las leyes estándar de sedimentación; la falta de peso altera la distribución de las partículas de pigmento dentro del producto, favoreciendo la separación de fases y la formación de burbujas en el interior del envase. Esto no solo compromete la uniformidad del color, sino que también aumenta el riesgo de inhalación de partículas suspendidas durante la aplicación. La investigación de la NASA sobre higiene personal en el espacio subraya la necesidad de utilizar formulaciones altamente viscosas o sólidas que minimicen la dispersión de aerosoles. Asimismo, la dinámica de la barrera cutánea se ve afectada por la redistribución de fluidos corporales hacia la parte superior del cuerpo, lo que incrementa el riesgo de edema facial y sudoración excesiva. Los maquillajes de alta adherencia, con polímeros de red abierta, son esenciales para evitar la migración del producto hacia las mucosas oculares y respiratorias, garantizando la seguridad del individuo en un entorno de soporte vital controlado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polymers"
+      ],
+      "contraindications": [
+        "loose_powders"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_espacial"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:44:14.468Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibracion-acustica-006",
+    "title": "Maquillaje bajo vibraciones acústicas: Prevención de dermatitis por fricción",
+    "content": "En entornos de eventos con alta presión sonora, como conciertos de gran escala o instalaciones industriales con maquinaria pesada, la piel se somete a vibraciones acústicas de alta frecuencia. Estas vibraciones pueden causar la desestabilización de la película cosmética aplicada, provocando un micro-desplazamiento continuo de las partículas de maquillaje sobre la superficie cutánea. Este fenómeno mecánico induce una fricción constante que, sumada a la sudoración inducida por el estrés ambiental, resulta en una dermatitis por fricción o irritación mecánica. La estrategia para mitigar este riesgo implica el uso de selladores cosméticos basados en polímeros de red abierta que ofrecen una alta adherencia elástica, permitiendo que el maquillaje se mueva con los tejidos sin romperse. Es fundamental evitar los maquillajes minerales de textura granulosa, ya que las vibraciones pueden actuar como un agente exfoliante abrasivo sobre la piel. La aplicación de un primer de silicona volátil puede crear una interfaz de amortiguación que reduzca la transmisión de energía mecánica desde el exterior hacia la dermis, protegiendo así la integridad de la barrera cutánea frente a la fatiga mecánica provocada por el entorno acústico extremo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.journals.elsevier.com/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicones",
+        "polymers"
+      ],
+      "contraindications": [
+        "mineral_powders"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_fisica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:44:14.468Z"
+  }
+]

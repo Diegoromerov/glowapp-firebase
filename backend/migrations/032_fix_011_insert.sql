@@ -1,0 +1,14 @@
+-- Migration 032_fix_011_insert.sql
+-- Re‑inserta los productos masculinos asegurando que la lista VALUES tenga la misma longitud (11 columnas)
+
+-- Opcional: eliminar inserciones previas que puedan estar incompletas
+DELETE FROM productos WHERE tag_especialidad = 'Barba & Bigote' OR tag_especialidad = 'Corte & Capilar' OR tag_especialidad = 'Skincare Masculino' OR tag_especialidad = 'Grooming';
+
+INSERT INTO productos (nombre, descripcion, precio, precio_al_publico, precio_con_reserva, precio_prestador, comision_prestador, stock, imagen_url, tag_especialidad, tipo_visibilidad) VALUES
+('Bálsamo Hidratante de Barba (Cedro & Sándalo)', 'Bálsamo acondicionador premium formulado con aceite de jojoba y manteca de karité. Nutre la barba, alivia la picazón de crecimiento y moldea con fijación natural.', 42000.00, 42000.00, 35700.00, 27300.00, 4200.00, 45, 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=400&auto=format&fit=crop', 'Barba & Bigote', 'PUBLICO'),
+('Cera de Peinado Matte Pomade (Fijación Fuerte)', 'Cera a base de agua con acabado mate natural. Aporta volumen y textura a cortes tipo Crop, Pompadour o Fade sin dejar residuos grasos.', 39000.00, 39000.00, 33150.00, 25350.00, 3900.00, 60, 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=400&auto=format&fit=crop', 'Corte & Capilar', 'PUBLICO'),
+('Aceite de Crecimiento & Brillo para Barba (50ml)', 'Serum concentrado de aceites botánicos orgánicos (Argán, Ricino y Almendras). Estimula el folículo piloso y alarga el vello facial rígido.', 48000.00, 48000.00, 40800.00, 31200.00, 4800.00, 35, 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=400&auto=format&fit=crop', 'Barba & Bigote', 'PUBLICO'),
+('Shampoo Anticaída & Estimulante Capilar Hombres', 'Fórmula vigorizante con cafeína, mentol y biotina. Fortalece el cuero cabelludo masculino, limpia en profundidad y previene la caída del cabello.', 52000.00, 52000.00, 44200.00, 33800.00, 5200.00, 50, 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?q=80&w=400&auto=format&fit=crop', 'Corte & Capilar', 'PUBLICO'),
+('Gel Limpiador Facial Detox Masculino (Carbón Activado)', 'Limpiador diario para hombres que elimina el exceso de grasa e impurezas de los poros sin resecar la piel. Ideal para el cuidado post-afeitado.', 46000.00, 46000.00, 39100.00, 29900.00, 4600.00, 40, 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=400&auto=format&fit=crop', 'Skincare Masculino', 'PUBLICO'),
+('Loción Aftershave Hidratante Anti-Irritación', 'Bálsamo refrescante libre de alcohol con extracto de Aloe Vera y Caléndula. Calma instantáneamente la piel irritada por la navaja o cuchilla.', 38000.00, 38000.00, 32300.00, 24700.00, 3800.00, 55, 'https://images.unsplash.com/photo-1593702295094-aec22597af65?q=80&w=400&auto=format&fit=crop', 'Grooming', 'PUBLICO')
+ON CONFLICT DO NOTHING;

@@ -1,0 +1,192 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunosenescencia-003",
+    "title": "Inmunosenescencia del Nicho Folicular: Células T Reguladoras",
+    "content": "La inmunosenescencia del nicho folicular se caracteriza por una disregulación progresiva de las células T reguladoras (Tregs), las cuales son esenciales para mantener la tolerancia inmunológica y promover la regeneración del folículo piloso. Con el avance de la edad, la disminución en la población y función de estas células permite que la inflamación de bajo grado, o 'inflammaging', comprometa las células madre del bulbo. Este fenómeno no solo acelera la miniaturización, sino que reduce la capacidad intrínseca de reparación tisular del cuero cabelludo. Estudios clínicos han demostrado que el equilibrio entre las células T efectoras y las Tregs es un determinante clave en la cronicidad de las alopecias. El diagnóstico clínico, por tanto, debe empezar a considerar marcadores de inmunosenescencia, como la relación CD4/CD8 en el microambiente cutáneo. Para el ecosistema de GlowApp, este enfoque permite clasificar el envejecimiento capilar no solo por la densidad del tallo, sino por la resiliencia inmunológica del folículo, permitiendo intervenciones preventivas que busquen restaurar el equilibrio de las células T para prolongar la vida útil de los folículos antes de que la atrofia sea irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:34:48.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-fatiga-cuticular-004",
+    "title": "Biomecánica de la Fibra: Análisis de la Fatiga Estructural",
+    "content": "El análisis de la fatiga estructural en la cutícula capilar es una herramienta diagnóstica que va más allá de la observación visual del daño. La cutícula, como primera línea de defensa, experimenta microfracturas debido a tensiones mecánicas repetitivas y estrés ambiental. La fatiga estructural se manifiesta como una pérdida de la capacidad de la fibra para recuperar su forma original tras un esfuerzo, lo que se traduce en un aumento de la porosidad y una disminución de la integridad del tallo. Utilizando técnicas de microscopía electrónica de barrido y análisis de tracción, es posible cuantificar el grado de fatiga, lo que permite diferenciar entre daño cosmético superficial y daño estructural profundo. Este diagnóstico es crítico en pacientes con alopecias secundarias a manipulación, donde el debilitamiento del tallo precede a la rotura masiva. Al integrar este análisis en el protocolo de GlowApp, podemos asesorar sobre la necesidad de tratamientos de reconstrucción proteica o la modificación de hábitos de peinado, evitando que el daño estructural se convierta en un factor perpetuador de la pérdida capilar por rotura, protegiendo así la longitud y la salud del cabello a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:34:48.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmisores-005",
+    "title": "Neurotransmisión Cutánea: El Eje de la Sustancia P",
+    "content": "La modulación neuroendocrina del folículo piloso es una pieza clave en la psicodermatología capilar. La Sustancia P, un neuropéptido liberado por las terminaciones nerviosas sensoriales en respuesta al estrés, actúa como un potente mediador de la inflamación folicular. Su interacción con los receptores NK-1 en los fibroblastos de la papila dérmica y en los mastocitos perifoliculares desencadena una cascada que inhibe la proliferación de queratinocitos y promueve la apoptosis. Este eje neuro-inmune explica por qué el estrés agudo o crónico puede exacerbar alopecias preexistentes o incluso desencadenar efluvios telógenos. El diagnóstico moderno debe considerar la carga de estrés como un factor biológico medible a través de biomarcadores cutáneos. En GlowApp, la evaluación de la sintomatología neurogénica, como la tricodinia (dolor capilar), sirve como indicador clínico de la actividad de la Sustancia P. Identificar esta vía permite implementar abordajes terapéuticos que incluyan no solo el tratamiento tópico, sino también técnicas de regulación neuro-cutánea, mitigando el impacto del eje estrés-folículo y mejorando la respuesta global al tratamiento del paciente en un entorno urbano como Bogotá.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://eadv.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:34:48.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-bulbo-007",
+    "title": "Autofagia en el Bulbo Piloso: Mecanismos de Supervivencia",
+    "content": "La autofagia es un mecanismo de limpieza y supervivencia celular esencial para la homeostasis del bulbo piloso. En condiciones de estrés, como la exposición a contaminantes ambientales o la carencia de nutrientes, las células del folículo activan la autofagia para degradar componentes dañados y reciclar energía, evitando la apoptosis prematura. Sin embargo, una sobreactivación o un bloqueo de este proceso puede ser deletéreo para el ciclo capilar. La investigación sugiere que la eficiencia de la autofagia disminuye con la senescencia folicular, contribuyendo al agotamiento del reservorio de células madre. En el diagnóstico clínico, medir la expresión de marcadores de autofagia (como LC3-II) en biopsias o muestras capilares podría revelar la capacidad de regeneración del folículo de un paciente. Para los usuarios de GlowApp, entender el estado de la autofagia folicular permitiría recomendar estrategias de 'ayuno metabólico' o suplementación dirigida que apoyen este proceso de limpieza celular, optimizando la salud del folículo desde su arquitectura interna. Este es un campo emergente que promete transformar la prevención de la alopecia, enfocándose en la vitalidad celular y no solo en la estimulación del crecimiento.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Cell Death & Disease",
+        "url": "https://www.nature.com/cddis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:34:48.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-ages-matriz-008",
+    "title": "Impacto de los AGEs en la Matriz: Rigidez y Envejecimiento",
+    "content": "Los productos de glicación avanzada (AGEs) son moléculas formadas por la unión no enzimática de azúcares a proteínas, lípidos o ácidos nucleicos. En el folículo piloso, la acumulación de AGEs en la matriz extracelular aumenta la rigidez de la vaina radicular y compromete la elasticidad del tejido, dificultando la progresión del ciclo capilar. Este proceso de 'glicación' es acelerado por factores como la dieta alta en azúcares refinados, el estrés oxidativo y la exposición a radiación UV. Clínicamente, la presencia de AGEs en el cuero cabelludo se correlaciona con una pérdida de la flexibilidad del tallo y una mayor predisposición a la miniaturización. Para GlowApp, el diagnóstico de la carga de AGEs mediante técnicas de autofluorescencia cutánea representa una herramienta poderosa de estratificación de riesgo. Pacientes con altos niveles de glicación requieren abordajes que incluyan no solo el cuidado tópico, sino también intervenciones sistémicas para mejorar el control glucémico y reducir el estrés oxidativo, protegiendo así la arquitectura del folículo contra el envejecimiento prematuro inducido por el estilo de vida urbano moderno.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:34:48.523Z"
+  }
+]

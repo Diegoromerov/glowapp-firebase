@@ -1,0 +1,241 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-tricoscopia-001",
+    "title": "Fundamentos de la Tricoscopia en el Diagnóstico Clínico",
+    "content": "La tricoscopia es una herramienta diagnóstica no invasiva esencial en la dermatología moderna, que permite la visualización del cuero cabelludo y el tallo piloso mediante dermatoscopia de alta resolución. A diferencia del examen macroscópico, la tricoscopia permite identificar patrones específicos como los tallos en 'signo de exclamación', puntos amarillos (yellow dots), puntos negros y la presencia de vellus en estados de miniaturización. En el contexto de GlowApp, la correcta interpretación de estos hallazgos es crucial para diferenciar entre alopecias no cicatriciales, como la alopecia androgenética, y procesos inflamatorios como el liquen plano pilar. El uso de luz polarizada y no polarizada optimiza la visualización de estructuras vasculares y la morfología del orificio folicular. Esta técnica reduce la necesidad de biopsias cutáneas en estadios tempranos y permite un seguimiento preciso de la respuesta al tratamiento médico, proporcionando una base cuantitativa para la toma de decisiones clínicas en pacientes con efluvio telógeno o alopecia areata.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3500078/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_digital_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:16:11.303Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-efluvio-002",
+    "title": "Diferenciación Clínica: Efluvio Telógeno vs. Alopecia Androgenética",
+    "content": "La distinción entre el efluvio telógeno (ET) y la alopecia androgenética (AGA) es fundamental para establecer un plan de tratamiento efectivo en GlowApp. El ET se caracteriza por una caída difusa y aguda, generalmente desencadenada por estresores sistémicos, carencias nutricionales o cambios hormonales, donde el ciclo folicular se desplaza sincrónicamente hacia la fase telógena. Por el contrario, la AGA es un proceso de miniaturización folicular mediado por andrógenos, con un patrón clínico progresivo y lento, típicamente centrado en la zona frontoparietal en hombres o con ensanchamiento de la raya central en mujeres (escala de Ludwig). La tricoscopia revela en el ET una densidad capilar conservada con ausencia de miniaturización significativa, mientras que en la AGA se observa una variabilidad marcada en el diámetro de los tallos (anisotricosis) superior al 20%. Identificar correctamente la etiología evita el uso innecesario de terapias de rescate agresivas en casos autolimitados y asegura el abordaje metabólico adecuado en casos crónicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/causes",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:16:11.303Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-seborrea-003",
+    "title": "Impacto de la Dermatitis Seborreica en la Salud Folicular",
+    "content": "La dermatitis seborreica (DS) es una condición inflamatoria crónica que afecta las áreas ricas en glándulas sebáceas, incluyendo el cuero cabelludo, y que a menudo se confunde con la descamación simple. Clínicamente, se manifiesta con eritema y escamas amarillentas y grasosas. Desde una perspectiva de diagnóstico capilar, la DS puede exacerbar la caída del cabello al generar un microambiente inflamatorio que altera el ciclo de crecimiento natural y debilita el anclaje del folículo. La acumulación de sebo y los metabolitos de Malassezia spp. pueden provocar prurito intenso, lo que a su vez induce traumatismos mecánicos por rascado, resultando en tricorrexis nodosa o rotura traumática del tallo. Es vital tratar la DS como un factor coadyuvante en pacientes que presentan otras formas de alopecia, ya que el control del sebo y la inflamación es un paso previo necesario para la eficacia de tratamientos tópicos como el minoxidil o péptidos estimulantes. Un cuero cabelludo inflamado no puede sostener un crecimiento capilar óptimo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central - NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33970876/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oleosa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "piritionato de zinc",
+        "ketoconazol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_cuero_cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:16:11.303Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mitos-004",
+    "title": "Mitos sobre la Frecuencia de Lavado y la Caída Capilar",
+    "content": "Existe una creencia extendida de que el lavado diario del cuero cabelludo acelera la caída del cabello, llevando a muchos pacientes a espaciar excesivamente los lavados. Desde un punto de vista dermatológico, esta práctica es contraproducente, especialmente en personas con cuero cabelludo graso o condiciones como la dermatitis seborreica. El lavado regular no desprende folículos que no estuvieran ya en fase telógena (caída inminente). Por el contrario, el acúmulo de detritos, sebo, células muertas y residuos de productos de styling crea una película oclusiva que puede obstruir el ostium folicular y favorecer la proliferación de microorganismos, contribuyendo a la inflamación perifolicular. La evidencia sugiere que mantener una higiene adecuada es fundamental para la salud del cuero cabelludo. Los productos de limpieza deben seleccionarse según el perfil del cuero cabelludo (pH balanceado, agentes tensioactivos suaves) para evitar la deshidratación del tallo capilar mientras se asegura la limpieza profunda del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/hair/how-to-wash-hair",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_capilar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:16:11.303Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-nutricion-005",
+    "title": "Deficiencias Nutricionales y su Manifestación en el Tallo",
+    "content": "La salud capilar es un reflejo directo del estado metabólico y nutricional del individuo. Diversas investigaciones han vinculado deficiencias específicas con la pérdida de cabello y la fragilidad del tallo. Los niveles bajos de ferritina sérica, incluso sin llegar a una anemia clínica manifiesta, son una causa frecuente de efluvio telógeno crónico, especialmente en mujeres en edad fértil. Asimismo, el déficit de vitamina D, biotina, zinc y aminoácidos esenciales como la L-cistina, puede comprometer la síntesis de queratina, resultando en un cabello más fino, quebradizo y con una tasa de crecimiento reducida. En GlowApp, es imperativo realizar una anamnesis sobre hábitos alimenticios antes de prescribir tratamientos tópicos. La suplementación debe ser siempre guiada por analíticas sanguíneas, ya que el exceso de ciertos micronutrientes, como la vitamina A o el selenio, puede paradójicamente inducir la caída del cabello. Un enfoque integral que combine la suplementación estratégica con el cuidado tópico es clave para restaurar la densidad y calidad capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatology and Therapy Journal",
+        "url": "https://link.springer.com/article/10.1007/s13555-017-0171-6",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hierro",
+        "vitamina d",
+        "zinc",
+        "biotina"
+      ],
+      "contraindications": [
+        "hipervitaminosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis_nutricional"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:16:11.303Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-estres-006",
+    "title": "El Eje Estrés-Cortisol en la Alopecia Psicógena",
+    "content": "El estrés psicológico crónico desencadena una cascada neuroendocrina que tiene repercusiones directas en el folículo piloso, un fenómeno conocido como alopecia psicógena. El aumento sostenido de los niveles de cortisol y otras hormonas del estrés puede provocar la liberación de neuropéptidos en el microambiente folicular, induciendo una inflamación subclínica y acortando prematuramente la fase anágena (fase de crecimiento). Este proceso suele manifestarse como un efluvio telógeno que puede cronificarse si el factor estresor persiste. La tricoscopia en estos casos puede mostrar una mayor proporción de pelos telógenos y, en casos de larga evolución, una leve miniaturización secundaria. La intervención en GlowApp debe incluir no solo el manejo tópico, sino también recomendaciones de higiene de vida, técnicas de gestión del estrés y, si fuera necesario, la derivación a especialistas en salud mental. Comprender la conexión mente-piel es vital para ofrecer un diagnóstico holístico y empático que aborde las causas raíz de la caída capilar en el contexto del estilo de vida actual.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.16035",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estilo_de_vida"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:16:11.303Z"
+  }
+]

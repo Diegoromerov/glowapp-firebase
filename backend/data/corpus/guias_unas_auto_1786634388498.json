@@ -1,0 +1,375 @@
+[
+  {
+    "chunk_id": "guias_unas-espectroscopia-vibracional-001",
+    "title": "Espectroscopía infrarroja (FTIR) en la evaluación de la polimerización de geles",
+    "content": "La espectroscopía infrarroja por transformada de Fourier (FTIR) es el estándar de oro en el laboratorio para evaluar el grado de conversión (DC) de los monómeros en resinas fotopolimerizables. En el contexto de las uñas, la polimerización incompleta no solo debilita la estructura mecánica del gel, sino que aumenta la liberación de monómeros residuales, como el metacrilato de 2-hidroxietilo (HEMA), que son potentes sensibilizantes cutáneos. Estudios publicados en revistas de ciencia de materiales dentales y dermatológicos demuestran que el grosor de la capa, la intensidad de la lámpara y el tiempo de exposición afectan directamente la cinética de polimerización. Cuando el DC es insuficiente, la red polimérica no alcanza su estabilidad térmica ni química, facilitando la lixiviación de monómeros hacia el lecho ungueal a través de la queratina. La práctica clínica debe considerar que un gel que parece 'seco' al tacto puede tener una capa de inhibición por oxígeno mal polimerizada en su interfaz con la uña, actuando como un reservorio de alérgenos. La monitorización de la irradiancia es, por tanto, una medida de seguridad dermatológica y no solo un requerimiento estético.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "Di-HEMA"
+      ],
+      "contraindications": [
+        "dermatitis_alergica_contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-permeabilidad-queratina-002",
+    "title": "Permeabilidad de la lámina ungueal a compuestos de bajo peso molecular",
+    "content": "La lámina ungueal, aunque a menudo se percibe como una barrera impermeable, es significativamente más permeable que el estrato córneo de la piel. Su estructura porosa, compuesta por corneocitos densamente empaquetados y lípidos intercelulares, permite la difusión de sustancias de bajo peso molecular, especialmente solventes orgánicos y monómeros. La absorción de estas sustancias se ve potenciada por la hidratación de la lámina; una uña hidratada (tras un baño prolongado o exposición a vapor) aumenta su volumen y los espacios intercelulares, facilitando la penetración de agentes químicos. Investigaciones en dermatología ocupacional han documentado cómo el contacto repetido con solventes en el entorno de la cabina puede alterar la composición lipídica de la uña, resultando en una pérdida de flexibilidad y una mayor susceptibilidad a la onicosquizia lamelar. Es crucial entender que los productos de curado UV no son estáticos; la migración de monómeros a través de la lámina hacia el lecho es un proceso físico-químico continuo que depende de la integridad de la barrera queratínica y el tiempo de oclusión. La protección del eponiquio no es solo estética, es una medida preventiva contra la exposición sistémica prolongada a sustancias potencialmente tóxicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "solventes_organicos"
+      ],
+      "contraindications": [
+        "uña_fragil"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotopolimerizacion-seguridad-003",
+    "title": "Fotopolimerización: riesgos de la irradiancia espectral desajustada",
+    "content": "El mercado de lámparas para uñas presenta una variabilidad técnica alarmante en cuanto a su espectro de emisión. La mayoría de los geles actuales requieren una longitud de onda específica (típicamente 365-405 nm) para activar los fotoiniciadores. Cuando la lámpara no coincide con el rango de absorción del fotoiniciador, el proceso de polimerización es incompleto, dejando monómeros sin reaccionar en la superficie y en la profundidad de la capa aplicada. Este fenómeno, además de comprometer la durabilidad, es la causa principal de las dermatitis alérgicas de contacto. Las guías de seguridad actuales subrayan que la potencia (Watts) no es el único factor relevante; la irradiancia espectral y la distribución uniforme de la luz son críticas. Un 'sub-curado' (under-curing) crónico es un factor de riesgo mayor para sensibilizar al cliente a largo plazo, ya que las moléculas de metacrilato residuales pueden migrar a través de la lámina ungueal hacia la dermis del lecho. Los profesionales deben validar la compatibilidad entre la lámpara y el sistema de gel, evitando el uso de fuentes de luz no certificadas que no garantizan la polimerización total dentro de los tiempos de exposición recomendados por el fabricante.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00569-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "alergia_acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomarcadores-tiroides-004",
+    "title": "Manifestaciones ungueales en disfunciones tiroideas: más allá de la fragilidad",
+    "content": "Las alteraciones ungueales a menudo sirven como espejos de patologías sistémicas subyacentes, y la glándula tiroides no es la excepción. En el hipertiroidismo, es frecuente observar la onicólisis de Plummer, caracterizada por la separación de la lámina ungueal del lecho distal, que suele comenzar en el cuarto o quinto dedo. Este fenómeno ocurre por una aceleración del crecimiento ungueal y una queratinización anómala, que debilita la adhesión del hiponiquio. Por otro lado, en el hipotiroidismo, las uñas suelen presentarse frágiles, de crecimiento lento y con una superficie estriada longitudinalmente. A diferencia de la onicomicosis, estas distrofias suelen ser bilaterales y simétricas, lo que permite al profesional de cabina sospechar de un origen sistémico. Es imperativo que el técnico en uñas sepa distinguir entre un daño mecánico por limado excesivo y una condición sistémica. La identificación temprana de estos signos puede derivar al cliente con un endocrinólogo o dermatólogo, mejorando significativamente su calidad de vida. No se debe intentar camuflar estas condiciones con productos de recubrimiento, ya que la oclusión puede empeorar la salud del lecho ungueal ya comprometido por la alteración endocrina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "British Association of Dermatologists",
+        "url": "https://www.bad.org.uk/patient-information-leaflets/nail-problems/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procedimientos_esculpidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-microbioma-periungueal-005",
+    "title": "Impacto de la desinfección química en la homeostasis del microbioma periungueal",
+    "content": "El microbioma residente en los pliegues ungueales cumple una función protectora crítica, actuando como la primera barrera contra la colonización de patógenos oportunistas como Pseudomonas aeruginosa y Staphylococcus aureus. El uso excesivo de antisépticos de amplio espectro o la eliminación agresiva de la cutícula altera esta microbiota, eliminando bacterias comensales que mantienen el pH ligeramente ácido del lecho. Estudios recientes en microbiología cutánea sugieren que la interrupción constante de esta barrera crea nichos ecológicos para la proliferación de microorganismos patógenos, especialmente en condiciones de oclusión bajo sistemas de gel. Cuando el equilibrio se pierde, la uña se vuelve vulnerable a infecciones crónicas que a menudo se confunden con onicomicosis. La recomendación actual es minimizar la manipulación traumática de la cutícula y evitar el uso rutinario de desinfectantes excesivamente fuertes que inhiben la capacidad de regeneración natural del epitelio periungueal. La integridad del eponiquio debe preservarse como un sello biológico natural, ya que su remoción mecánica es un factor de riesgo reconocido para el desarrollo de paroniquia aguda y crónica, independientemente de la calidad de los productos aplicados.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antisepticos"
+      ],
+      "contraindications": [
+        "corte_cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-estres-exotermico-006",
+    "title": "Manejo del pico exotérmico: prevención de quemaduras térmicas en el lecho",
+    "content": "La reacción exotérmica durante la fotopolimerización es un proceso químico inevitable donde la energía liberada en la formación de enlaces poliméricos se disipa en forma de calor. En geles de alta densidad o constructores de rápida polimerización, este pico exotérmico puede superar los 50°C, superando el umbral de dolor y causando microquemaduras en el lecho ungueal o incluso onicólisis térmica. El daño es a menudo invisible inicialmente, pero puede manifestarse semanas después como una separación de la lámina ungueal. Los profesionales deben gestionar este riesgo mediante el uso de lámparas con modo 'baja temperatura' (low heat mode) o aplicando capas finas que permitan una disipación de calor más gradual. Es un mito que el dolor es necesario para asegurar una 'buena adhesión'; por el contrario, el dolor durante el curado es una señal de estrés térmico matricial. La educación al cliente sobre este punto es fundamental para evitar el trauma inducido durante el servicio. La termodinámica del proceso debe ser una prioridad en el diseño de protocolos de aplicación, ajustando el tiempo y la potencia según el grosor del producto aplicado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "geles_uv"
+      ],
+      "contraindications": [
+        "hipersensibilidad_termica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-galvanica-007",
+    "title": "Corrosión galvánica en herramientas: el riesgo invisible de la asepsia",
+    "content": "El uso de herramientas de acero inoxidable de distintas calidades, combinado con procesos de desinfección química y esterilización en autoclave, puede generar corrosión galvánica. Este fenómeno ocurre cuando dos metales con diferentes potenciales eléctricos entran en contacto en un medio electrolítico (como los desinfectantes líquidos). La corrosión galvánica no solo degrada la superficie de la herramienta, creando microfisuras que actúan como reservorios para biofilms bacterianos, sino que puede liberar iones metálicos que, en contacto con la piel periungueal inflamada, pueden desencadenar dermatitis de contacto irritativa. Es fundamental estandarizar el uso de acero de grado quirúrgico (AISI 316L) y evitar la inmersión prolongada en soluciones químicas agresivas que no tengan agentes anticorrosivos. La inspección bajo lupa de las herramientas es una práctica de higiene clínica necesaria; cualquier herramienta que presente picaduras o signos de oxidación debe ser retirada del servicio, ya que no puede ser esterilizada de manera efectiva. La asepsia de cabina depende no solo del protocolo, sino de la calidad de los materiales utilizados en la manipulación diaria.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Society for Microbiology",
+        "url": "https://asm.org/Articles/2024/February/Biofilms-in-Clinical-Settings",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas_corroídas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_y_seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicoclasia-mecanica-008",
+    "title": "Onicoclasia por estrés mecánico: la física del punto de fractura",
+    "content": "La lámina ungueal posee una estructura anisotrópica: tiene una resistencia diferente según la dirección de la carga aplicada. La onicoclasia, o fractura ungueal, suele ocurrir cuando el estrés mecánico (por ejemplo, el impacto contra una superficie dura o el uso de una uña larga como palanca) excede el punto de fluencia de la queratina. La arquitectura del borde libre es vital: las uñas cortas y redondeadas distribuyen las fuerzas de manera más uniforme, mientras que las formas largas o con ángulos pronunciados concentran la tensión en puntos específicos (puntos de estrés), aumentando drásticamente el riesgo de fractura. Además, la deshidratación de la lámina reduce su viscoelasticidad, haciéndola más frágil y menos capaz de absorber energía mediante deformación elástica. En el diseño de uñas esculpidas, la creación de un 'arco de tensión' adecuado, con el grosor distribuido correctamente en los puntos de apoyo, es la mejor estrategia para prevenir fracturas traumáticas. El limado excesivo de la superficie dorsal (capa dorsal de la lámina) debilita esta estructura, reduciendo su capacidad para resistir fuerzas de cizallamiento y flexión lateral.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02456-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  },
+  {
+    "chunk_id": "guias_unas-homeostasis-lipidos-009",
+    "title": "Homeostasis lipídica y su rol en la flexibilidad de la lámina ungueal",
+    "content": "A diferencia de la piel, la lámina ungueal contiene una cantidad muy limitada de lípidos (alrededor del 5%), pero estos son fundamentales para mantener la cohesión entre los corneocitos y proporcionar flexibilidad. Estos lípidos, derivados de las secreciones de la matriz y el lecho, actúan como un 'cemento' intercelular. La exposición constante a solventes de remoción (acetona, alcoholes) no solo elimina el producto cosmético, sino que extrae estos lípidos esenciales, provocando una deshidratación severa y fragilidad. Cuando la lámina pierde su balance lipídico, se vuelve rígida y quebradiza, facilitando la aparición de onicosquizia lamelar (descamación de las capas superficiales). Los profesionales deben integrar el uso de aceites nutritivos (ricos en ácidos grasos esenciales y ceramidas) después de cada servicio para ayudar a restablecer la barrera lipídica superficial. La aplicación de estos aceites no es un simple paso estético; es una medida de soporte fisiológico que compensa el estrés químico inducido por los procesos de remoción. La salud de la uña depende de este equilibrio entre la dureza de la queratina y la flexibilidad proporcionada por los lípidos, un aspecto a menudo ignorado en los salones de belleza.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://ijdvl.com/nail-care-a-dermatologists-perspective/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_naturales",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:19:30.330Z"
+  }
+]

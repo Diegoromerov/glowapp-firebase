@@ -1,0 +1,395 @@
+[
+  {
+    "chunk_id": "activos-liposomados-permeabilidad-001",
+    "title": "Activos encapsulados en liposomas: el riesgo de la penetración profunda incontrolada",
+    "content": "La nanotecnología cosmética ha popularizado el uso de liposomas y niosomas para estabilizar activos como la vitamina C o el retinol. Si bien mejoran la estabilidad y reducen la irritación superficial, su capacidad para atravesar el estrato córneo plantea riesgos en pieles con barrera cutánea comprometida o dermatitis atópica. La literatura en el Journal of Controlled Release sugiere que, al favorecer una entrega profunda, estos vehículos pueden alterar la homeostasis de los queratinocitos basales si la concentración del activo es elevada. En pacientes con rosácea, la penetración facilitada de activos como el ácido salicílico o el retinol liposomado puede desencadenar brotes inflamatorios profundos que no se observan con formulaciones convencionales. Es fundamental considerar que la encapsulación no es solo un método de entrega, sino un potenciador de la absorción sistémica que debe ser evaluado en casos de hipersensibilidad cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / Journal of Controlled Release",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32156543/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopia"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "liposomas",
+        "retinol",
+        "vitamina c"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulaciones"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "agentes-quelantes-inestabilidad-002",
+    "title": "Agentes quelantes (EDTA, Fítico) y la inactivación de activos metálicos",
+    "content": "Los agentes quelantes como el EDTA disódico o el ácido fítico son esenciales para la estabilidad de las emulsiones, ya que secuestran metales pesados traza que catalizan la oxidación. Sin embargo, su uso indiscriminado en fórmulas que contienen activos dependientes de metales, como el gluconato de zinc o péptidos de cobre, puede comprometer la eficacia terapéutica del producto final. El riesgo clínico radica en la desnaturalización de la función biológica del activo principal mediante la quelación de sus centros metálicos activos. Estudios en dermatología cosmética indican que, cuando un producto combina un quelante fuerte con un activo mineral de concentración terapéutica, el resultado puede ser la inactividad total del ingrediente principal. GlowApp recomienda especial cautela al evaluar productos que prometen 'estabilidad total' mediante altos niveles de EDTA frente a formulaciones que dependen de la actividad de iones metálicos para su acción antinflamatoria o regenerativa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido fítico",
+        "péptidos de cobre",
+        "zinc"
+      ],
+      "contraindications": [
+        "incompatibilidad química"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "polimeros-acrilicos-microoclusion-003",
+    "title": "Carbómeros y polímeros acrílicos: el riesgo de micro-oclusión folicular",
+    "content": "Los polímeros de ácido acrílico, conocidos como carbómeros, son agentes gelificantes ubicuos en el mercado cosmético debido a su excelente textura. No obstante, en pieles con tendencia al acné o con foliculitis, estos polímeros pueden generar una película de micro-oclusión que atrapa el sebo y las células muertas en el infundíbulo folicular. A diferencia de las siliconas, cuya oclusión es superficial, los carbómeros pueden crear una red que, al secarse, restringe el drenaje natural del poro. La evidencia clínica sugiere que el uso prolongado de geles hidratantes basados únicamente en carbómeros puede exacerbar el acné comedogénico en pacientes con piel grasa. Es fundamental distinguir entre la hidratación por humectantes y la oclusión física por polímeros sintéticos en pacientes que buscan evitar la formación de comedones. En GlowApp, priorizamos formulaciones que aseguren la permeabilidad del poro mediante agentes gelificantes alternativos como el ácido hialurónico de alto peso molecular o gomas naturales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carbomer",
+        "polímeros acrílicos"
+      ],
+      "contraindications": [
+        "acné comedogénico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulaciones"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "estabilizadores-multifuncionales-004",
+    "title": "Hidroxiacetofenona: ¿seguridad absoluta o riesgo de dermatitis de contacto?",
+    "content": "La hidroxiacetofenona se ha posicionado como un estabilizador multifuncional y antioxidante 'limpio' en reemplazo de conservantes tradicionales. Aunque posee un perfil de irritación significativamente menor que los parabenos o la metilisotiazolinona, su uso en fórmulas complejas puede inducir dermatitis de contacto en individuos altamente sensibilizados. La literatura reciente advierte que, al ser un compuesto aromático, su capacidad de penetración cutánea aumenta en presencia de potenciadores como el propilenglicol. Aunque la FDA y el SCCS consideran su perfil de seguridad aceptable, la práctica clínica muestra que pacientes con antecedentes de alergias a fragancias pueden presentar reactividad cruzada. Es vital que los usuarios con pieles reactivas monitoreen la aparición de eritema perioral tras la introducción de productos que utilizan este estabilizador como componente principal. En GlowApp, clasificamos este ingrediente como de bajo riesgo, pero con vigilancia necesaria en pieles con dermatitis atópica preexistente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "SCCS (Scientific Committee on Consumer Safety)",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hidroxiacetofenona"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-clinica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "poliaminas-autofagia-005",
+    "title": "Poliaminas en cosmética: el riesgo de la disrupción del ciclo celular",
+    "content": "Las poliaminas (como la espermidina o putrescina) están ganando terreno en la cosmética antienvejecimiento por su rol en la inducción de la autofagia celular. Sin embargo, su aplicación tópica en concentraciones no reguladas es un área de preocupación científica. La autofagia es un proceso finamente regulado; una estimulación externa excesiva en células cutáneas dañadas o con mutaciones latentes podría, teóricamente, interferir con la apoptosis natural, un mecanismo de defensa contra la carcinogénesis. Aunque no hay evidencia de toxicidad sistémica, el uso de poliaminas en pieles con antecedentes de queratosis actínicas o daño solar severo debe ser supervisado. La IADVL sugiere que cualquier activo que module procesos metabólicos profundos debe tratarse con la misma precaución que un fármaco dermatológico. En el contexto de GlowApp, recomendamos evitar el uso de 'boosters' de autofagia en pieles que presenten lesiones precancerosas o en protocolos de tratamiento intensivo de reparación celular sin guía profesional.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto-mayor"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "poliaminas",
+        "espermidina"
+      ],
+      "contraindications": [
+        "queratosis actínica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulaciones"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "exosomas-biotecnologia-006",
+    "title": "Exosomas cosméticos: riesgos de pureza y origen biológico",
+    "content": "La irrupción de los exosomas derivados de células madre en el mercado estético plantea un desafío regulatorio y clínico significativo. A diferencia de los activos sintéticos, los exosomas contienen carga genética (miRNA) y proteínas que, si no son purificadas bajo estándares de grado farmacéutico, pueden provocar respuestas inmunológicas inesperadas. El riesgo de contaminación por restos celulares o mediadores inflamatorios en productos cosméticos no controlados es una realidad. La AAD ha advertido sobre la proliferación de productos 'exosomales' sin respaldo de ensayos clínicos de seguridad a largo plazo. En pieles con rosácea o dermatitis, la aplicación de estos extractos puede desencadenar una respuesta inflamatoria mediada por citoquinas, agravando la condición en lugar de repararla. GlowApp mantiene una postura de extrema precaución: los exosomas deben considerarse un activo experimental hasta que las normativas cosméticas garanticen la estandarización, pureza y ausencia de carga inmunogénica en toda su cadena de producción.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-clinica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "aceite-nigella-timoquinona-007",
+    "title": "Aceite de Nigella sativa: el riesgo de dermatitis por timoquinona",
+    "content": "El aceite de comino negro (Nigella sativa) es valorado por sus propiedades antiinflamatorias y antimicrobianas, gracias a su componente principal, la timoquinona. Sin embargo, este mismo compuesto es un potente sensibilizante cutáneo. La literatura dermatológica documenta casos de dermatitis alérgica de contacto por el uso tópico de concentraciones puras o mal formuladas de este aceite. El riesgo aumenta significativamente cuando el aceite se utiliza en pieles con la barrera lipídica dañada, permitiendo que la timoquinona penetre a capas más profundas de la dermis. A pesar de su popularidad en el cuidado natural del acné, su potencial para causar erupciones cutáneas persistentes es subestimado. GlowApp aconseja realizar siempre una prueba de parche antes de integrar aceites botánicos ricos en timoquinona en rutinas diarias, especialmente en pacientes con historial de atopia o sensibilidad a fragancias naturales. Su uso debe ser siempre diluido y nunca aplicado sobre pieles con erosiones o heridas abiertas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / Contact Dermatitis Journal",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28556396/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de comino negro",
+        "timoquinona"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulaciones"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "sulfato-cobre-toxicidad-008",
+    "title": "Sulfato de cobre tópico: el riesgo de desequilibrio iónico y citotoxicidad",
+    "content": "El sulfato de cobre se utiliza ocasionalmente en productos para pieles seborreicas por su efecto astringente y antibacteriano. No obstante, el cobre es un metal de transición altamente reactivo. En concentraciones elevadas o en formulaciones con pH ácido, puede generar especies reactivas de oxígeno (ROS) que dañan las estructuras lipídicas del estrato córneo. La citotoxicidad inducida por cobre es una preocupación en la literatura de toxicología cutánea; el exceso de iones puede interferir con la actividad enzimática natural de la piel, bloqueando la regeneración celular. En pacientes con pieles reactivas o con barrera cutánea debilitada, el uso de productos basados en sulfato de cobre puede derivar en dermatitis irritativa crónica. GlowApp enfatiza que la seguridad del cobre tópico depende estrictamente de su estabilidad y concentración; las formulaciones que carecen de agentes estabilizadores adecuados deben ser evitadas, especialmente en el rostro y zonas de piel fina.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Toxicology",
+        "url": "https://journals.sagepub.com/home/ijt",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seborreica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato de cobre"
+      ],
+      "contraindications": [
+        "dermatitis irritativa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  },
+  {
+    "chunk_id": "alantoina-pseudocuracion-009",
+    "title": "Alantoína: el mito de la curación y el riesgo de 'pseudo-curación'",
+    "content": "La alantoína es un ingrediente clásico en productos post-procedimiento y cremas reparadoras debido a su capacidad para calmar y promover la epitelización. Sin embargo, existe el fenómeno de la 'pseudo-curación' en pieles inflamadas. La alantoína puede enmascarar los síntomas de una dermatitis subyacente (eritema, ardor) gracias a su efecto refrescante y calmante, permitiendo que el usuario continúe aplicando un producto irritante que en realidad está perpetuando el daño. Esto retrasa el diagnóstico clínico correcto y puede empeorar condiciones como la rosácea o la dermatitis perioral. Clínicamente, el uso de alantoína no debe reemplazar el tratamiento de la causa raíz de la inflamación. GlowApp recomienda que, si tras 48 horas de uso de un producto calmante con alantoína no hay una mejora real en la integridad de la barrera cutánea, se debe suspender su uso y buscar una evaluación dermatológica para descartar una condición subyacente que está siendo enmascarada por el efecto calmante del activo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/public/diseases",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alantoína"
+      ],
+      "contraindications": [
+        "dermatitis perioral",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-uso-productos"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:54:48.710Z"
+  }
+]

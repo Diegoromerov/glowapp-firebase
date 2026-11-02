@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-glicerina-clima-seco-006",
+    "title": "La paradoja de la glicerina: Riesgos en entornos de baja humedad",
+    "content": "La glicerina (glicerol) es uno de los humectantes más eficaces y seguros, capaz de atraer agua del medio ambiente hacia el estrato córneo. No obstante, existe una paradoja fisiológica en entornos de muy baja humedad relativa (inferior al 20-30%). En estas condiciones extremas, la glicerina puede invertir su gradiente de hidratación: en lugar de captar agua del aire, puede extraer agua de las capas más profundas de la epidermis hacia la superficie, donde esta se evapora más fácilmente debido al aire seco. Este efecto, aunque poco frecuente en climas tropicales como Bogotá, es relevante para pacientes que viajan a climas áridos o utilizan calefacción intensa en interiores. La consecuencia es una deshidratación transepidérmica paradójica que deja la piel con sensación de tirantez y sequedad a pesar del uso de productos altamente humectantes. Para mitigar este riesgo, los dermatólogos recomiendan sellar los humectantes con una capa de oclusivos, como ceramidas, escualano o mantecas vegetales, que formen una barrera física contra la pérdida de agua. La clave está en la combinación: la glicerina debe ir acompañada de agentes oclusivos en condiciones de sequedad ambiental para garantizar su función de hidratación y evitar la desecación inducida por el gradiente osmótico.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "dehydrated"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [
+        "ambientes de baja humedad sin oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:02:40.971Z"
+  }
+]

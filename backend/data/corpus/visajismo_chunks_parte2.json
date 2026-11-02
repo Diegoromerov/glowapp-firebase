@@ -1,0 +1,181 @@
+{
+  "batch_metadata": {
+    "category": "visajismo_cejas_microblading",
+    "phase": 2,
+    "risk_level": "alto",
+    "batch_id": "visajismo-mb-lote1-parte2",
+    "chunk_count": 6,
+    "generated_at": "2026-08-08T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Sub-chunks divididos de chunks 15, 16, 18 del lote original. Cada chunk fue dividido en 2 partes para cumplir con el límite de 512 tokens del modelo NVIDIA."
+  },
+  "chunks": [
+    {
+      "chunk_id": "visajismo-mb-015a",
+      "title": "Prueba de parche para microblading: protocolo y beneficios (parte 1 de 2)",
+      "content": "La prueba de parche es el procedimiento preventivo más importante antes de cualquier micropigmentación de cejas, y tanto la literatura dermatológica como la regulación FDA la recomiendan. El protocolo estándar consiste en aplicar una pequeña cantidad del pigmento que se va a usar en la zona del antebrazo o detrás de la oreja, 24 a 48 horas antes del procedimiento, y observar si aparece alguna reacción. Si en ese periodo aparece enrojecimiento, picazón, hinchazón o cualquier reacción en la zona de prueba, el procedimiento NO debe realizarse con ese pigmento. La prueba de parche detecta sensibilidades conocidas al pigmento o a sus componentes, pero tiene limitaciones importantes que debes entender. Puede dar falsos negativos, porque algunas reacciones alérgicas de tipo IV solo se desencadenan tras la sensibilización que ocurre durante el primer contacto real, la concentración de pigmento en la prueba puede ser menor que la que se deposita en el procedimiento, y algunas reacciones pueden aparecer días o semanas después.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 },
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "bioseguridad",
+        "parte": "1 de 2"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-015b",
+      "title": "Prueba de parche para microblading: limitaciones y consideraciones (parte 2 de 2)",
+      "content": "Por eso, incluso con una prueba de parche negativa, es posible desarrollar una reacción posterior. La prueba de parche no sustituye la evaluación médica completa ni el consentimiento informado, pero es una herramienta preventiva valiosa que reduce significativamente el riesgo de reacciones alérgicas severas. Exige siempre la prueba de parche antes de tu microblading, y un establecimiento serio te la ofrecerá sin que tengas que pedirla. Si el establecimiento no ofrece prueba de parche o minimiza su importancia, es una señal de alerta sobre la calidad del servicio. Recuerda que la prueba de parche es especialmente importante si tienes historia de alergias a tintes, metales, o si tienes piel sensible.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 },
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "bioseguridad",
+        "parte": "2 de 2"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-016a",
+      "title": "Checklist de evaluación médica previa al microblading: preguntas críticas (parte 1 de 2)",
+      "content": "Antes de realizarte un microblading, un profesional responsable debe evaluar tu historial médico completo. Este checklist integra las contraindicaciones documentadas en la literatura dermatológica y los criterios de seguridad de la FDA. Verifica que te pregunten o pregúntate tú misma: ¿Estás embarazada, en lactancia o planeas un embarazo pronto? (contraindicado). ¿Tienes diabetes? ¿Está controlada? (descompensada es contraindicación). ¿Tomas anticoagulantes o tienes trastornos de coagulación? (riesgo de sangrado). ¿Tienes alguna condición autoinmune activa o tomas inmunosupresores? (riesgo de infección y cicatrización). ¿Tienes historia de queloides o cicatrización anormal? (riesgo de cicatriz patológica).",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Argobi et al. (Dermatol Reports 2024)", "pmid": "39669887", "url": "https://pubmed.ncbi.nlm.nih.gov/39669887/", "year": 2024 },
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 },
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [
+          "embarazo", "lactancia", "diabetes descompensada", "anticoagulantes",
+          "trastorno coagulacion", "autoinmune activa", "queloides"
+        ],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "checklist_evaluacion",
+        "parte": "1 de 2"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-016b",
+      "title": "Checklist de evaluación médica previa al microblading: condiciones adicionales (parte 2 de 2)",
+      "content": "Continúa el checklist: ¿Tienes alergias conocidas a pigmentos, tintes, anestésicos tópicos o látex? (riesgo de reacción alérgica). ¿Tienes alguna infección, herida o condición dermatológica activa en la zona de la ceja? (contraindicado). ¿Tienes rosácea activa, dermatitis o eczema en la zona? (contraindicado). ¿Tomas isotretinoína oral o la tomaste en los últimos meses? (afecta cicatrización). ¿Tienes VIH u otra condición que afecte tu sistema inmunológico? (evaluar riesgo). Un estudio transversal encontró que una proporción significativa de pacientes no recibe esta evaluación médica previa, lo que es una señal de alerta sobre la calidad del establecimiento. Si un profesional no te pregunta sobre tu historial médico antes del microblading, es una razón para reconsiderar ese establecimiento.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Argobi et al. (Dermatol Reports 2024)", "pmid": "39669887", "url": "https://pubmed.ncbi.nlm.nih.gov/39669887/", "year": 2024 },
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 },
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [
+          "alergia a pigmentos", "infeccion activa", "rosacea activa",
+          "isotretinoina reciente", "inmunosupresion"
+        ],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "checklist_evaluacion",
+        "parte": "2 de 2"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-018a",
+      "title": "Cuándo consultar al dermatólogo por complicaciones del microblading: señales de alarma (parte 1 de 2)",
+      "content": "Muchas complicaciones del microblading requieren evaluación por un dermatólogo, y saber cuándo consultar te ayuda a actuar a tiempo. Debes consultar a un dermatólogo si presentas: infección que no mejora con los cuidados iniciales (enrojecimiento persistente, secreción, dolor), reacción alérgica en la zona del pigmento (picazón, hinchazón, pápulas), aparición de nódulos o granulomas semanas o meses después del procedimiento, cicatriz que crece, se endurece o pica (posible queloide), cambio de color inesperado del pigmento (a azul, verde o gris), migración del pigmento fuera de la zona de la ceja, o cualquier lesión en la zona de la ceja que no sana después de 2-3 semanas.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 },
+        { "institution": "PubMed — Campos et al. (Int J Trichology 2025)", "pmid": "41306839", "url": "https://pubmed.ncbi.nlm.nih.gov/41306839/", "year": 2025 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD)", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "manejo_complicaciones",
+        "parte": "1 de 2"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-018b",
+      "title": "Cuándo consultar al dermatólogo por complicaciones del microblading: diagnóstico y tratamiento (parte 2 de 2)",
+      "content": "El dermatólogo puede realizar una biopsia con estudio histopatológico para determinar si una reacción es alérgica, granulomatosa, infecciosa o si corresponde a otra condición, y este diagnóstico preciso es esencial para el tratamiento correcto. En casos de reacción alérgica o granulomatosa confirmada, las opciones terapéuticas incluyen corticoides tópicos o intralesionales y, en algunos casos, tratamiento sistémico. La remoción del pigmento puede hacerse con láser Q-switched o picosegundos en casos seleccionados, pero debe ser evaluada por un especialista porque en reacciones alérgicas el láser puede empeorar la respuesta inflamatoria. Ante la duda, siempre consulta a un dermatólogo certificado antes de intentar cualquier tratamiento casero o de dejar pasar los síntomas.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 },
+        { "institution": "PubMed — Campos et al. (Int J Trichology 2025)", "pmid": "41306839", "url": "https://pubmed.ncbi.nlm.nih.gov/41306839/", "year": 2025 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD)", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "manejo_complicaciones",
+        "parte": "2 de 2"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    }
+  ]
+}

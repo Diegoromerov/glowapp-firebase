@@ -1,0 +1,44 @@
+[
+  {
+    "chunk_id": "colorimetria-subtono-efectos-corticoides-001",
+    "title": "Atrofia cutánea inducida por corticoides tópicos y su impacto en la lectura del subtono",
+    "content": "El uso prolongado de corticosteroides tópicos de alta potencia induce una atrofia dérmica y epidérmica significativa, caracterizada por el adelgazamiento del estrato córneo y la degradación de la matriz extracelular. Este fenómeno altera directamente la dispersión de la luz en la piel, ya que al disminuir el espesor del tejido, aumenta la visibilidad de la red vascular subyacente. Clínicamente, esto provoca que la piel adquiera una apariencia traslúcida y eritematosa, lo que puede inducir a un error diagnóstico: el profesional podría identificar erróneamente un subtono frío o rosado cuando, en realidad, es una manifestación iatrogénica de la transparencia dérmica. Según estudios publicados en el Journal of the American Academy of Dermatology (JAAD), la atrofia cutánea altera la reflectancia espectral, dificultando la selección de una base de maquillaje con el balance de color adecuado. Es imperativo que el profesional considere el historial de uso de fármacos tópicos antes de realizar un diagnóstico de colorimetría para evitar compensar con correctores verdes un eritema que es, en esencia, una alteración estructural de la barrera cutánea. La corrección debe enfocarse en productos con alta opacidad sin sobrecargar la piel debilitada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/topical-corticosteroids",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticosteroides"
+      ],
+      "contraindications": [
+        "maquillaje de alta cobertura en piel atrófica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:17:37.312Z"
+  }
+]

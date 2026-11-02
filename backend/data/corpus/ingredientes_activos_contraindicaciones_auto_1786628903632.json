@@ -1,0 +1,304 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Glucocorticoides tópicos: Riesgo de taquifilaxia y el fenómeno de rebote",
+    "content": "La taquifilaxia es un fenómeno clínico crítico en dermatología donde la eficacia de los corticoides tópicos disminuye tras el uso continuado, requiriendo dosis mayores o potencias más altas para obtener el mismo efecto antiinflamatorio. Este proceso, documentado ampliamente en la literatura dermatológica, no solo reduce el beneficio terapéutico sino que aumenta exponencialmente el riesgo de efectos adversos locales, incluyendo atrofia cutánea, telangiectasias y estrías irreversibles. El uso prolongado, incluso de potencias bajas, puede alterar la síntesis de colágeno por parte de los fibroblastos, debilitando la integridad estructural de la dermis. Es imperativo que el paciente comprenda que los corticoides no son agentes de mantenimiento a largo plazo, sino herramientas de rescate para brotes agudos. La suspensión abrupta después de un uso prolongado puede desencadenar una dermatitis de rebote, donde la inflamación original regresa con mayor severidad. En GlowApp, enfatizamos la necesidad de protocolos de desescalada y el uso de alternativas no esteroideas como los inhibidores de la calcineurina bajo supervisión médica para evitar estas complicaciones crónicas en pacientes con dermatitis atópica o de contacto.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/childhood/itch-relief/steroid-side-effects",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides_topicos"
+      ],
+      "contraindications": [
+        "uso_prolongado",
+        "auto-medicacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_inflamacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Benzocaína: Riesgo de metahemoglobinemia inducida",
+    "content": "La benzocaína, un anestésico tópico frecuentemente hallado en geles para aliviar la dentición o irritaciones menores, presenta un riesgo clínico severo pero a menudo subestimado: la metahemoglobinemia. Este trastorno reduce drásticamente la capacidad de la hemoglobina para transportar oxígeno a los tejidos, provocando cianosis, fatiga, disnea y taquicardia. La FDA ha emitido advertencias específicas sobre el uso de este ingrediente, indicando que la absorción sistémica puede ocurrir incluso con aplicaciones pequeñas en mucosas. En el contexto de la cosmética y el cuidado personal, la presencia de benzocaína en productos de venta libre debe ser monitoreada, especialmente en pacientes pediátricos o personas con condiciones genéticas preexistentes. A diferencia de otros sensibilizantes que causan dermatitis de contacto, la toxicidad de la benzocaína es de naturaleza metabólica y puede ser potencialmente mortal si no se reconoce rápidamente. Recomendamos encarecidamente evitar productos que contengan este activo para el manejo de irritaciones cutáneas comunes, optando por alternativas calmantes como el polidocanol o extractos botánicos seguros que no comprometan la oxigenación sistémica. La seguridad del paciente siempre debe prevalecer sobre el alivio sintomático inmediato en áreas mucocutáneas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "U.S. Food and Drug Administration",
+        "url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-risk-serious-and-potentially-fatal-blood-disorder-uses-benzocaine",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzocaina"
+      ],
+      "contraindications": [
+        "uso_en_mucosas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Resorcinol: Riesgos de hipopigmentación y sensibilización",
+    "content": "El resorcinol, utilizado históricamente en peelings químicos y tratamientos para el acné por sus propiedades queratolíticas y antisépticas, es una sustancia que requiere extrema cautela. A pesar de su eficacia en la renovación celular, posee un potencial significativo para causar dermatitis de contacto alérgica y, en casos de uso crónico o concentraciones elevadas, riesgo de hipopigmentación post-inflamatoria o incluso ocronosis localizada. El resorcinol es un fenol que se absorbe sistémicamente y, en dosis elevadas, puede interferir con la función tiroidea, un efecto sistémico que raramente es considerado en la rutina de cuidado de la piel. Debido a su perfil de seguridad, muchos dermatólogos han desplazado su uso hacia alternativas más seguras y estables, como los ácidos mandélico o azelaico. En GlowApp, desaconsejamos la automedicación con productos que contengan resorcinol sin la supervisión directa de un especialista, dada la dificultad de predecir la respuesta individual en pieles con fototipos altos (Fitzpatrick IV-VI), donde la alteración del pigmento puede ser difícil de revertir. La integridad de la barrera cutánea es fundamental y el resorcinol puede comprometerla severamente si se utiliza de manera inadecuada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "resorcinol"
+      ],
+      "contraindications": [
+        "uso_cronico",
+        "fototipos_altos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "peelings_domiciliarios"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "Ácido bórico: Toxicidad sistémica y riesgos dermatológicos",
+    "content": "El ácido bórico ha sido utilizado en cosmética y productos de cuidado personal como un agente antiséptico y regulador de pH. Sin embargo, su perfil de seguridad es controvertido debido a su potencial toxicidad sistémica tras la absorción cutánea, particularmente si la piel presenta fisuras, abrasiones o si el producto se aplica en áreas extensas bajo oclusión. La exposición crónica puede derivar en efectos reproductivos y de desarrollo, según estudios toxicológicos. Aunque su uso está restringido en muchas jurisdicciones bajo regulaciones cosméticas estrictas, todavía aparece en formulaciones de venta libre en algunos mercados. Los síntomas de toxicidad por ácido bórico incluyen irritación gastrointestinal intensa, erupciones cutáneas eritematosas, descamación y, en casos graves, disfunción renal. La comunidad científica dermatológica desaconseja su uso en productos 'leave-on' (que no se enjuagan), prefiriendo conservantes y ajustadores de pH con perfiles de seguridad mucho más robustos y menos impacto sistémico. En GlowApp, priorizamos la seguridad del microbioma y la salud sistémica, por lo cual instamos a los usuarios a evitar productos que incluyan este compuesto, especialmente en pieles con barrera comprometida o en rutinas dirigidas a áreas sensibles.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789241549462",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_borico"
+      ],
+      "contraindications": [
+        "barrera_comprometida",
+        "uso_cronico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Fluoruros en higiene oral y dermatitis perioral",
+    "content": "La dermatitis perioral es una erupción inflamatoria crónica que se manifiesta con pápulas y pústulas alrededor de la boca, a menudo confundida con acné. Un factor desencadenante frecuentemente ignorado en la consulta clínica es el uso de pastas dentales con alto contenido de fluoruros y lauril sulfato de sodio (SLS). La irritación constante de la piel perioral por el contacto con residuos de pasta dental, combinada con la oclusión causada por bálsamos labiales pesados, puede exacerbar significativamente esta condición. Estudios dermatológicos sugieren que los pacientes con dermatitis perioral refractaria pueden experimentar una mejoría notable al cambiar a pastas dentales libres de fluoruros y SLS, y al adoptar una técnica de higiene que minimice el contacto del producto con la piel perioral. El fluoruro, aunque esencial para la salud dental, puede actuar como un irritante en pieles predispuestas a la dermatitis. En GlowApp, recomendamos revisar los ingredientes de los productos de higiene oral si se presentan brotes persistentes en el área perioral, y siempre realizar el enjuague de la piel después del cepillado para eliminar residuos que puedan estar alterando la barrera cutánea local.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/perioral-dermatitis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fluoruros",
+        "lauril_sulfato_de_sodio"
+      ],
+      "contraindications": [
+        "dermatitis_perioral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_irritacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Ácido tranexámico tópico: Riesgo de hiperpigmentación paradójica",
+    "content": "El ácido tranexámico (TXA) se ha posicionado como un agente despigmentante innovador con un excelente perfil de seguridad en comparación con la hidroquinona. Sin embargo, su uso tópico no está exento de riesgos. El fenómeno de la hiperpigmentación paradójica, aunque poco común, puede ocurrir si la aplicación se realiza de forma incorrecta, especialmente en combinación con exfoliantes fuertes o irritantes que comprometen la barrera cutánea. El mecanismo de acción del TXA es a través de la inhibición de la vía del plasminógeno, reduciendo la melanogénesis inducida por UV. Si la piel se encuentra en un estado inflamatorio crónico debido a una sobre-exfoliación, la respuesta de reparación puede activar melanocitos de manera compensatoria, resultando en un oscurecimiento de las manchas en lugar de su aclaramiento. Además, la estabilidad del TXA en formulaciones cosméticas es variable; si el pH no es el adecuado, su eficacia disminuye drásticamente. En GlowApp, enfatizamos que el TXA debe integrarse en rutinas que prioricen la calma y la reparación de la barrera cutánea. Nunca debe considerarse una solución de 'aclarado rápido', sino un tratamiento de mantenimiento a largo plazo que requiere paciencia y una piel hidratada para funcionar correctamente sin efectos adversos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/topical-tranexamic-acid-for-melasma/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_tranexamico"
+      ],
+      "contraindications": [
+        "sobre_exfoliacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_manchas"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "Alcoholes grasos de cadena larga: Comedogenicidad oculta",
+    "content": "Los alcoholes grasos, como el alcohol cetearílico, el alcohol estearílico y el alcohol cetílico, son ingredientes fundamentales en las cremas hidratantes por sus propiedades emolientes y estabilizadoras de emulsiones. A diferencia de los alcoholes de cadena corta (como el alcohol denat), estos no son irritantes ni deslipidizantes. No obstante, existe un mito de que son 'seguros para todas las pieles' sin excepción. En pacientes con acné comedogénico o rosácea papulopustulosa severa, ciertos alcoholes grasos pueden actuar como agentes oclusivos que favorecen la formación de microcomedones si la formulación no es equilibrada. La comedogenicidad de estos ingredientes no es absoluta, sino que depende de la concentración y del vehículo en el que se encuentran. Si un paciente nota un empeoramiento de su acné tras introducir una crema hidratante rica en alcoholes grasos, es posible que el producto sea demasiado 'pesado' para su tipo de piel específico. En GlowApp, evaluamos el perfil comedogénico de los productos mediante la revisión de su lista completa de ingredientes, sugiriendo alternativas más ligeras basadas en humectantes de base acuosa o siliconas volátiles si se identifica una sensibilidad a estos emolientes grasos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol_cetearilico",
+        "alcohol_cetilico"
+      ],
+      "contraindications": [
+        "acne_comedogenico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seleccion_hidratante"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:48:05.328Z"
+  }
+]

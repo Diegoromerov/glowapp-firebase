@@ -1,0 +1,313 @@
+[
+  {
+    "chunk_id": "colorimetria-hipotiroidismo-001",
+    "title": "Impacto del hipotiroidismo subclínico en la colorimetría: el fenómeno de la palidez amarillenta",
+    "content": "El hipotiroidismo, incluso en estados subclínicos, altera significativamente la colorimetría cutánea a través de dos mecanismos principales: la reducción de la tasa de recambio epidérmico y la acumulación de carotenos. La disminución de la función tiroidea reduce la conversión de betacaroteno en vitamina A, lo que provoca una acumulación de pigmentos carotenoides en el estrato córneo, otorgando a la piel un matiz amarillento-anaranjado, especialmente marcado en palmas y plantas. Este tono puede inducir a un error diagnóstico, haciendo que el profesional clasifique erróneamente a un paciente como 'cálido' o 'oliva', cuando el factor determinante es metabólico. Además, la dermis en estados hipotiroideos presenta una menor perfusión sanguínea por vasoconstricción periférica, exacerbando la palidez y restando viveza al subtono real. Es crucial que el especialista en colorimetría detecte este tono 'cerúleo-amarillento' antes de seleccionar bases de maquillaje, ya que el uso de pigmentos correctores con base demasiado cálida puede intensificar el aspecto cetrino no deseado. La evaluación clínica debe considerar la textura seca y la falta de luminosidad intrínseca como señales de que la base elegida requiere neutralizadores de tono opuesto al naranja para equilibrar la reflectancia cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30671676/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-anemia-ferropenica-002",
+    "title": "Anemia ferropénica y la alteración de la saturación del rojo cutáneo",
+    "content": "La anemia ferropénica es una de las causas más frecuentes de distorsión en la lectura del subtono debido a la disminución de los niveles de hemoglobina, el cromóforo principal responsable del tono rosado o 'vivo' de la piel. En estados anémicos, la piel pierde su componente rojizo natural, lo que desplaza la percepción hacia un subtono frío, azulado o grisáceo (cianosis pálida). Para el colorista, esto representa un reto: la base de maquillaje seleccionada bajo estas condiciones puede resultar demasiado saturada o anaranjada una vez que los niveles de ferritina del paciente se normalizan. La literatura dermatológica sugiere que la palidez anémica no es una neutralidad real, sino una ausencia de rojo, lo que obliga a reconsiderar el uso de correctores de color salmón o melocotón para devolver la calidez perdida antes de aplicar la base. Ignorar este factor lleva a una selección de bases demasiado cenizas que, en lugar de corregir, acentúan la apariencia de enfermedad. Es vital realizar una prueba de colorimetría en la zona del antebrazo interno y comparar con el rostro, buscando la presencia de un trasfondo vascular saludable que pueda estar ausente en el rostro debido a la hipoperfusión tisular característica de la deficiencia de hierro.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/anemia-skin-signs",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-farmacos-psicotropicos-003",
+    "title": "Efectos de la medicación psicotrópica en la vasodilatación y el subtono facial",
+    "content": "Ciertos fármacos psicotrópicos, incluidos algunos antidepresivos tricíclicos y antipsicóticos, tienen efectos anticolinérgicos y vasomotores que alteran la cromaticidad facial. Estos medicamentos pueden inducir una vasodilatación periférica persistente o, por el contrario, una sequedad cutánea extrema que afecta la reflectancia de la luz. La vasodilatación inducida por fármacos puede confundirse con un subtono rosado o incluso con rosácea leve, llevando a errores en la selección de bases con subtonos fríos para neutralizar un enrojecimiento que, en realidad, es farmacológico y no pigmentario. Además, la alteración en la sudoración puede modificar el pH cutáneo, acelerando la oxidación de las bases de maquillaje que contienen ácidos grasos libres. Para una curaduría clínica efectiva, es necesario indagar sobre el historial farmacológico del paciente. Si la piel presenta un eritema farmacológico inducido, el uso de bases con alta cobertura y pigmentos verdes (complementarios del rojo) es más eficaz que intentar ajustar el subtono basándose en la piel enrojecida, ya que la base se oxidará rápidamente sobre una piel con pH alterado por la medicación sistémica. La evaluación debe hacerse tras periodos de estabilidad fisiológica para evitar sesgos cromáticos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/category/dermatology-psychiatry/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-hiperbilirrubinemia-004",
+    "title": "Hiperbilirrubinemia subclínica y la confusión con el subtono oliva",
+    "content": "La hiperbilirrubinemia, caracterizada por niveles elevados de bilirrubina en sangre, puede manifestarse de forma sutil en la piel a través de un tono amarillento-verdoso, a menudo confundido erróneamente con un subtono oliva natural. Mientras que el subtono oliva es una combinación genética de pigmentos cutáneos (melanina y hemoglobina con una reflectancia específica), la ictericia subclínica implica un depósito de pigmentos biliares en la dermis y esclerótica. La distinción es crítica: el subtono oliva es estable y no patológico, mientras que la ictericia es un indicador de disfunción hepática. Clínicamente, el subtono oliva suele presentarse con una piel que absorbe bien los colores cálidos y fríos según la profundidad, mientras que la piel con hiperbilirrubinemia presenta una opacidad amarillenta que hace que cualquier base de maquillaje se vea 'sucia' o 'grisácea'. La aplicación de bases con alta carga de pigmento amarillo solo exacerba la ictericia. Se recomienda realizar una inspección de la esclerótica del paciente; si presenta una coloración amarillenta, la colorimetría de base debe posponerse hasta una evaluación clínica sistémica, priorizando cosméticos que aporten luminosidad y neutralicen el tono verdoso sin añadir más saturación amarillenta.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Mayo Clinic",
+        "url": "https://www.mayoclinic.org/diseases-conditions/jaundice/symptoms-causes/syc-20369877",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-005",
+    "title": "Anisotropía óptica: la textura cutánea como determinante del subtono percibido",
+    "content": "La anisotropía óptica se refiere a cómo la rugosidad y la textura de la piel influyen en la dirección en la que se refleja la luz. Una piel con alta rugosidad (por ejemplo, debido a cicatrices post-acné o fotoenvejecimiento) dispersa la luz de forma difusa, lo que reduce la saturación del color percibido y puede hacer que un subtono frío parezca más neutro o grisáceo de lo que realmente es. A diferencia de una piel lisa, donde la reflexión especular es alta y el subtono es más fácil de identificar, la piel texturizada 'engaña' al ojo humano al fragmentar la luz incidente. Para diagnosticar el subtono en pieles texturizadas, es vital utilizar técnicas de iluminación tangencial que minimicen las sombras proyectadas por los relieves cutáneos. Los profesionales deben evitar evaluar el subtono en áreas con poros dilatados o cicatrices atróficas, prefiriendo zonas con una superficie más uniforme como el cuello o la zona periauricular. La selección de bases para estas pieles debe priorizar fórmulas con partículas esféricas de sílice que ayuden a difuminar la luz (efecto soft-focus), evitando pigmentos densos que se acumulen en los relieves y alteren aún más la percepción cromática.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silica",
+        "dimethicone"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-eje-neuro-cutaneo-007",
+    "title": "Eje neuro-cutáneo: cómo el estrés crónico altera la cromaticidad facial",
+    "content": "La conexión entre el sistema nervioso y la piel, conocida como el eje neuro-cutáneo, tiene un impacto directo en la colorimetría mediante la liberación de neuropéptidos como la Sustancia P, que inducen vasodilatación neurogénica. Los pacientes bajo estrés crónico presentan una respuesta vasomotora alterada, caracterizada por un enrojecimiento difuso o una palidez reactiva. Este estado dinámico dificulta la lectura del subtono real, ya que la piel no muestra su coloración basal. La literatura actual sugiere que el estrés crónico también eleva los niveles de cortisol, que a largo plazo puede afectar la barrera cutánea y aumentar la pérdida de agua transepidérmica, alterando la reflectancia especular. Para el diagnóstico, es imperativo que el paciente se encuentre en un estado de calma. El uso de técnicas de relajación antes de la prueba de colorimetría es una práctica recomendada en centros clínicos avanzados. Si el paciente presenta un eritema reactivo, es preferible evaluar el subtono en la cara interna del antebrazo, una zona menos sensible a la vasodilatación neurogénica, y utilizar bases con pigmentos correctores que neutralicen el eritema sin alterar la profundidad del tono base.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermato-Endocrinology Journal",
+        "url": "https://www.tandfonline.com/journals/kdee20",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-sebo-oxidado-008",
+    "title": "El papel del sebo oxidado en el viraje cromático de las bases de maquillaje",
+    "content": "La composición lipídica del sebo cutáneo, particularmente la presencia de escualeno y ácidos grasos libres, juega un rol determinante en la estabilidad del color de las bases de maquillaje una vez aplicadas. El fenómeno de 'oxidación' de la base no siempre es culpa del producto, sino una reacción química entre el sebo del paciente y los pigmentos (especialmente los óxidos de hierro). En pieles con seborrea o disbiosis del microbioma, la oxidación del escualeno genera peróxidos que alteran el pH de la superficie cutánea, provocando un viraje hacia tonos más oscuros o anaranjados. Este proceso es más evidente en bases con alta concentración de pigmentos minerales. Para mitigar este efecto, es fundamental realizar una preparación de la piel con antioxidantes tópicos (como Vitamina E o derivados de té verde) que estabilicen el sebo antes de la aplicación. Además, la selección de bases debe basarse en pruebas de 4 a 6 horas, observando el comportamiento del color sobre la piel del paciente en condiciones reales, en lugar de una evaluación inmediata tras la aplicación. La gestión del sebo mediante productos no comedogénicos es el primer paso para una colorimetría duradera.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocopherol",
+        "camellia_sinensis"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-hipoxia-bogota-009",
+    "title": "Impacto de la hipoxia hipobárica y la altitud en la colorimetría facial",
+    "content": "En ciudades de alta altitud como Bogotá (2,640 msnm), la hipoxia hipobárica leve induce una respuesta fisiológica de compensación: el aumento de la densidad capilar y la saturación de hemoglobina desoxigenada. Este fenómeno puede generar una coloración ligeramente azulada o violeta en zonas de piel fina, como los párpados y las mejillas, que a menudo se confunde con subtonos fríos profundos. Sin embargo, esta es una característica adaptativa y no siempre refleja el subtono real de la piel. Para los especialistas en colorimetría en Bogotá, es vital diferenciar entre el 'subtono frío por altitud' y el subtono cutáneo real. El uso de bases demasiado frías o grisáceas para compensar este tono inducido por la altitud suele resultar en una apariencia apagada. La recomendación clínica es realizar la evaluación del subtono en áreas con mayor grosor dérmico, como la línea de la mandíbula, y considerar el uso de pre-bases con pigmentos iluminadores que contrarresten la falta de oxigenación aparente, permitiendo que el subtono real del paciente se manifieste sin la interferencia del entorno hipobárico. La aclimatación y la salud vascular del paciente son variables que deben ser documentadas en la ficha clínica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "High Altitude Medicine & Biology",
+        "url": "https://home.liebertpub.com/publications/high-altitude-medicine-biology/42",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:12.247Z"
+  }
+]

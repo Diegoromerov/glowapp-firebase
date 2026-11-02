@@ -1,0 +1,248 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-001",
+    "title": "Inmunometabolismo de las Células T Residentes en la Alopecia Areata",
+    "content": "El estudio del inmunometabolismo en el folículo piloso ha revelado que las células T residentes de memoria (TRM) no son meros agentes efectores, sino que dependen de vías metabólicas específicas para mantener su persistencia en el nicho folicular durante la Alopecia Areata. La reprogramación metabólica hacia la glucólisis aeróbica, mediada por la señalización de mTOR, permite que estas células mantengan un estado de activación crónica que perpetúa el ataque autoinmune contra el bulbo piloso. Investigaciones recientes publicadas en Nature Immunology sugieren que la inhibición selectiva de vías metabólicas en estas células, sin comprometer la inmunidad sistémica, representa una frontera terapéutica prometedora. Comprender este 'switch' metabólico es fundamental para el diagnóstico diferencial de alopecias no cicatriciales que muestran una resistencia atípica a los corticoides tópicos, sugiriendo un perfil de infiltrado linfocitario con alta carga metabólica que requiere un abordaje terapéutico basado en inmunomoduladores específicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38216843/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "JAK-inhibitors"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:56.264Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-epigenetica-002",
+    "title": "Metilación del ADN y Sensibilidad al Receptor de Andrógenos",
+    "content": "La regulación epigenética, específicamente los patrones de metilación del ADN en el promotor del gen del receptor de andrógenos (AR), desempeña un papel determinante en la heterogeneidad clínica de la Alopecia Androgenética (AGA). Estudios de mapeo epigenómico han demostrado que la hipometilación en regiones reguladoras específicas aumenta la densidad de receptores en la papila dérmica, exacerbando la sensibilidad a la dihidrotestosterona (DHT) incluso en niveles séricos normales. Este fenómeno explica por qué pacientes con perfiles hormonales idénticos presentan grados de miniaturización folicular radicalmente distintos. La integración de biomarcadores epigenéticos en la evaluación clínica permite predecir la respuesta a terapias antiandrogénicas convencionales. En GlowApp, la identificación de estos patrones sugiere una necesidad de medicina personalizada, donde la modulación de la expresión génica mediante péptidos específicos podría mitigar la sobreexpresión de AR, ofreciendo una alternativa a la dependencia exclusiva de inhibidores de la 5-alfa-reductasa, los cuales a menudo presentan limitaciones por efectos adversos sistémicos en pacientes jóvenes.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00451-X/abstract",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos_biomimeticos"
+      ],
+      "contraindications": [
+        "finasteride_oral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_genomico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:56.264Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-003",
+    "title": "Fatiga Estructural de la Cutícula: Análisis de la Resistencia a la Fricción",
+    "content": "La integridad de la cutícula capilar no es una propiedad estática, sino un sistema dinámico sujeto a fatiga estructural por fricción mecánica diaria. La microscopía electrónica de barrido (SEM) ha permitido cuantificar cómo la pérdida de las capas lipídicas externas (como el ácido 18-metileicosanoico) reduce la capacidad de deslizamiento de las fibras, aumentando el coeficiente de fricción y facilitando la fractura prematura del tallo. Este proceso, definido como 'fatiga estructural', es particularmente crítico en pacientes con prácticas de peinado agresivo o exposición prolongada a radiación UV. La evaluación clínica mediante pruebas de tracción controlada y análisis de tensión de superficie permite identificar el punto de falla del tallo antes de que la tricorrexis nodosa sea visible a simple vista. En el contexto de GlowApp, el diagnóstico de esta fatiga cuticular es imperativo para establecer protocolos de reparación lipídica que restauren la barrera hidrofóbica del cabello, previniendo el daño irreversible que suele confundirse con caídas de origen folicular, cuando en realidad se trata de un problema de integridad física de la fibra.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos_grasos_omega"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_fibra"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:56.264Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-004",
+    "title": "Eje Neuro-Inmune y Sustancia P en la Inflamación Folicular",
+    "content": "La inflamación neurogénica representa un componente subestimado en el diagnóstico de alopecias crónicas, donde la Sustancia P (SP), un neuropéptido liberado por las terminaciones nerviosas sensoriales, actúa como mediador clave. La SP se une a sus receptores (NK-1R) en los mastocitos perifoliculares, induciendo su degranulación y liberando mediadores proinflamatorios como histamina y citoquinas que inhiben la fase anágena del ciclo folicular. Este mecanismo explica la correlación clínica entre periodos de estrés psicológico intenso y la exacerbación de la pérdida de cabello, incluso en ausencia de un componente autoinmune claro. El diagnóstico mediante la observación de áreas de eritema sutil peri-ostium y la anamnesis de prurito o dolor (tricodinia) es esencial. La intervención con antagonistas de los receptores NK-1 o moduladores de la inervación cutánea se perfila como una estrategia terapéutica novedosa para romper el ciclo de inflamación neurogénica que perpetúa la miniaturización folicular. La detección temprana de este eje permite un manejo integral que va más allá de los tratamientos tópicos convencionales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capsaicina_baja_dosis",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:56.264Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-005",
+    "title": "Metabolómica del Microbioma y Salud Folicular",
+    "content": "El microbioma del cuero cabelludo no solo se define por la abundancia relativa de especies como Malassezia, sino por su perfil metabólico activo que interactúa directamente con la barrera cutánea. La metabolómica moderna permite identificar subproductos microbianos que, al penetrar en el ostium folicular, pueden alterar el pH local y activar vías de señalización inflamatoria. Estudios recientes han demostrado que un desequilibrio en la producción de ácidos grasos de cadena corta por parte de bacterias comensales puede comprometer la homeostasis del bulbo piloso. En el diagnóstico capilar avanzado, el análisis del metaboloma cutáneo ofrece una ventana hacia la susceptibilidad del folículo a patologías inflamatorias. En GlowApp, la interpretación de estos datos permite diferenciar entre una disbiosis transitoria, causada por el uso de productos de cuidado capilar inadecuados, y una alteración crónica del nicho folicular que requiere una intervención dirigida para restaurar la ecología microbiana. La clave reside en identificar el umbral donde el microbioma deja de ser protector para convertirse en un factor de estrés folicular persistente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:56.264Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-007",
+    "title": "Impacto de los AGEs en la Rigidez de la Vaina Radicular",
+    "content": "Los productos de glicación avanzada (AGEs) son moléculas resultantes de la unión no enzimática de azúcares con proteínas, lípidos o ácidos nucleicos. En el cuero cabelludo, la acumulación de AGEs en la vaina radicular externa provoca una rigidez fibrilar que compromete la elasticidad necesaria para el ciclo folicular normal. Esta glicación no solo degrada la calidad del tallo, sino que altera las propiedades mecánicas del nicho folicular, dificultando el proceso de regeneración y transición entre fases. Clínicamente, el cuero cabelludo presenta una pérdida de turgencia y una mayor fragilidad capilar. La detección de AGEs mediante autofluorescencia cutánea se está explorando como un método diagnóstico no invasivo para evaluar el nivel de glicación tisular. La reducción de la ingesta de azúcares refinados y el uso de agentes antiglicantes tópicos, como la aminoguanidina o extractos botánicos específicos, son pilares en el manejo de esta forma de envejecimiento capilar, que a menudo pasa desapercibida en los exámenes tricoscópicos estándar pero que es determinante en la calidad del cabello a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.16012",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "extractos_de_te_verde"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:52:56.264Z"
+  }
+]

@@ -1,0 +1,380 @@
+[
+  {
+    "chunk_id": "diag-capilar-microbiota-001",
+    "title": "El Ecosistema del Microbioma Scalp: Más allá del Malassezia",
+    "content": "La homeostasis del cuero cabelludo depende de un equilibrio complejo entre bacterias (principalmente Cutibacterium acnes y Staphylococcus epidermidis) y hongos del género Malassezia. Investigaciones recientes publicadas en PubMed sugieren que la disbiosis de este microbioma no solo exacerba la dermatitis seborreica, sino que influye directamente en la inflamación peribulbar y la progresión de alopecias cicatriciales. A diferencia de la visión tradicional que aislaba al Malassezia como único patógeno, la evidencia actual indica que la reducción de la diversidad bacteriana altera la barrera cutánea, facilitando la penetración de agentes irritantes y promoviendo un microambiente proinflamatorio. Para el clínico en GlowApp, evaluar la salud del microbioma es esencial antes de iniciar tratamientos tópicos agresivos, ya que el uso indiscriminado de antifúngicos puede exacerbar la disbiosis. La integración de análisis de pH y la historia de uso de productos con tensioactivos fuertes es fundamental para diagnosticar el origen de la irritación crónica y su impacto en la caída capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33621458/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc-pyrithione",
+        "piroctone-olamine"
+      ],
+      "contraindications": [
+        "corticoides-topicos-sin-diagnostico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-senescencia-002",
+    "title": "Senescencia Celular y Agotamiento de Células Madre Foliculares",
+    "content": "La senescencia del folículo piloso es un proceso multifactorial que involucra el agotamiento gradual de las células madre en el 'bulge'. Estudios en la Journal of Investigative Dermatology demuestran que el estrés oxidativo acumulado y la señalización aberrante de la vía Wnt/β-catenina conducen a una miniaturización irreversible, distinta de la alopecia androgenética clásica. A medida que el individuo envejece, la capacidad regenerativa del folículo disminuye debido a la acumulación de células senescentes que secretan factores proinflamatorios (SASP - Senescence-Associated Secretory Phenotype). Este fenómeno explica por qué algunos pacientes presentan una rarefacción capilar generalizada sin un patrón androgénico claro. El diagnóstico clínico debe diferenciar entre el adelgazamiento por factores hormonales y el envejecimiento intrínseco del folículo. En GlowApp, debemos considerar estrategias de soporte antioxidante y estimulación metabólica del microambiente folicular como medida preventiva para preservar la densidad capilar en pacientes de mediana edad, enfocándose en la protección de la unidad pilosebácea frente a agresores externos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "peptidos-cobre"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-envejecimiento-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-inflamacion-003",
+    "title": "Inflamación Subclínica: El 'Silent Killer' del Folículo",
+    "content": "La inflamación perfolicular subclínica es un factor crítico en el diagnóstico de alopecias crónicas que a menudo pasa desapercibido en el examen físico convencional. A diferencia de las formas agudas con eritema visible, la inflamación crónica de bajo grado ocurre en la profundidad de la dermis, afectando la fase anágena y promoviendo la fibrosis perifolicular. La evidencia clínica publicada por la American Academy of Dermatology destaca que esta inflamación persistente es un precursor en la transición de alopecias no cicatriciales hacia formas cicatriciales incipientes. Los signos clínicos, aunque sutiles, incluyen una ligera sensibilidad al tacto o prurito intermitente sin descamación evidente. Es vital que el sistema de diagnóstico de GlowApp incorpore preguntas sobre la percepción de sensibilidad en el cuero cabelludo, ya que la detección temprana de este estado proinflamatorio permite intervenciones con agentes antiinflamatorios tópicos que pueden frenar la progresión del daño folicular antes de que la miniaturización sea irreversible o el tejido se fibrose de forma permanente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides-baja-potencia",
+        "aloe-vera"
+      ],
+      "contraindications": [
+        "exfoliantes-mecanicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-sensibilidad-scalp"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-metabolismo-004",
+    "title": "Resistencia a la Insulina y su Vínculo con la Alopecia Androgenética",
+    "content": "Existe una correlación clínica bien documentada entre la resistencia a la insulina, el síndrome metabólico y la severidad de la alopecia androgenética (AGA), particularmente en pacientes jóvenes. Los niveles elevados de insulina circulante pueden inducir una hiperandrogenemia funcional a través de la estimulación de la biosíntesis de andrógenos en las glándulas suprarrenales y los ovarios, además de reducir la proteína transportadora de hormonas sexuales (SHBG). Datos provenientes de la IADVL subrayan que el diagnóstico de AGA debe trascender el examen tricoscópico y considerar un tamizaje metabólico si existen signos asociados como acantosis nigricans o cambios en el peso corporal. La hiperinsulinemia no solo exacerba la sensibilidad a los andrógenos en el folículo piloso, sino que también altera la dinámica de los factores de crecimiento locales como el IGF-1, crucial para el mantenimiento de la fase anágena. Detectar este perfil metabólico permite a GlowApp ofrecer una recomendación integral, sugiriendo la consulta con endocrinología para optimizar el tratamiento dermatológico y mejorar el pronóstico a largo plazo del paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-45"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-riesgo-metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-oxidacion-005",
+    "title": "Fotodaño y Estrés Oxidativo en el Tallo Capilar",
+    "content": "La radiación ultravioleta (UV) no solo afecta la piel del cuero cabelludo, sino que degrada directamente la queratina y los lípidos del tallo capilar, alterando su integridad estructural. La foto-oxidación del cabello resulta en la ruptura de los enlaces disulfuro, lo que se traduce en porosidad, pérdida de brillo y fragilidad mecánica. Es un error común atribuir la rotura únicamente al uso de herramientas térmicas o químicos, ignorando el daño actínico acumulado. Según literatura dermatológica, la exposición prolongada al sol también induce cambios en el color natural debido a la degradación de la melanina. Un diagnóstico capilar completo debe evaluar la exposición solar del paciente y el uso de fotoprotección capilar, especialmente en ciudades con alta radiación UV como Bogotá. La prevención implica el uso de productos con filtros UV y antioxidantes que neutralicen los radicales libres generados por la exposición solar. Identificar este factor ayuda a diferenciar entre una caída de origen folicular y una fragilidad extrema del tallo por factores ambientales, permitiendo ajustar la rutina de cuidado hacia la reparación estructural y protección externa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros-uv",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "summer",
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dano-tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-suplementacion-006",
+    "title": "Mitos y Evidencia sobre la Suplementación Capilar",
+    "content": "La suplementación con biotina y queratina es una de las prácticas más comunes en la consulta dermatológica, pero su eficacia está supeditada a la existencia de una deficiencia clínica real. Según revisiones de la Cochrane Library y guías clínicas, la suplementación indiscriminada en individuos sin carencias nutricionales no ha demostrado un beneficio significativo en la densidad capilar o la tasa de crecimiento. El exceso de biotina, además, puede interferir con ensayos de laboratorio críticos, como los niveles de troponina y hormonas tiroideas, generando diagnósticos erróneos. El diagnóstico clínico debe priorizar la evaluación de ferritina, vitamina D, B12 y niveles de zinc antes de prescribir polivitamínicos. Para el usuario de GlowApp, es vital educar sobre la diferencia entre un suplemento cosmético y un tratamiento médico. La estrategia debe basarse en el equilibrio nutricional sistémico en lugar de la búsqueda de 'balas mágicas' en forma de cápsulas, enfocando el presupuesto del paciente hacia diagnósticos de laboratorio que realmente impacten la salud folicular y el bienestar general.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Cochrane Library",
+        "url": "https://www.cochranelibrary.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "biotina",
+        "ferritina",
+        "vitamina-d"
+      ],
+      "contraindications": [
+        "suplementacion-sin-analisis-previo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-nutricional"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-lavado-007",
+    "title": "Fisiología del Sebo: ¿Protección o Agente de Obstrucción?",
+    "content": "El sebo humano, compuesto por triglicéridos, ácidos grasos libres y escualeno, tiene funciones protectoras vitales para la barrera cutánea. Sin embargo, su exceso o alteración cualitativa puede obstruir el ostium folicular, creando un entorno hipóxico que favorece el crecimiento de bacterias anaerobias y la inflamación. El diagnóstico debe distinguir entre un cuero cabelludo graso fisiológico y una seborrea patológica asociada a hiperandrogenismo o estrés. Contrario a la creencia popular de que lavar el cabello frecuentemente estimula la producción de sebo, la evidencia sugiere que la remoción regular es necesaria para evitar la peroxidación lipídica, la cual es altamente irritante para el folículo. GlowApp debe orientar a los usuarios hacia el uso de limpiadores con un pH equilibrado (cercano a 5.5) que eliminen el exceso de lípidos oxidados sin comprometer la barrera ácida natural. La clave del diagnóstico no es la frecuencia del lavado, sino la calidad del producto y la capacidad del usuario para limpiar efectivamente el cuero cabelludo sin deshidratar el tallo piloso.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-salicilico",
+        "tensioactivos-suaves"
+      ],
+      "contraindications": [
+        "lavado-con-agua-muy-caliente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-limpieza"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-estilo-008",
+    "title": "Dermatitis por Contacto y Alérgenos en Productos Capilares",
+    "content": "La dermatitis alérgica de contacto (DAC) en el cuero cabelludo es un diagnóstico diferencial frecuentemente ignorado en pacientes con caída capilar persistente y prurito. Los conservantes comunes, como la metilisotiazolinona, y ciertos tintes (parafenilendiamina), son alérgenos potentes que pueden inducir una respuesta inflamatoria crónica. Esta inflamación, si se mantiene en el tiempo, puede derivar en una alopecia cicatricial secundaria. En la consulta, es fundamental realizar una anamnesis exhaustiva sobre el uso de tintes, fragancias y productos de styling. El sistema de GlowApp debe ser capaz de identificar ingredientes potencialmente sensibilizantes en el inventario del usuario. Ante una sospecha de DAC, la estrategia de oro es la eliminación del agente causal y la aplicación de terapias antiinflamatorias temporales. El diagnóstico se confirma mediante pruebas de parche (patch testing) realizadas por un dermatólogo, pero la sospecha clínica es el primer paso esencial para detener el daño folicular inducido por químicos. La educación al paciente sobre la lectura de etiquetas es una herramienta preventiva de alto valor.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilisotiazolinona",
+        "parafenilendiamina"
+      ],
+      "contraindications": [
+        "tintes-permanentes-en-scalp-sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes-productos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  },
+  {
+    "chunk_id": "diag-capilar-psicosomatica-009",
+    "title": "Psicodermatología: El impacto del Trico-TOC en el Diagnóstico",
+    "content": "La tricotilomanía y otros trastornos del espectro obsesivo-compulsivo que afectan el cabello (tricotemnomanía) representan un desafío diagnóstico significativo, ya que a menudo los pacientes ocultan estos comportamientos por vergüenza. Clínicamente, se presentan como áreas de pérdida de cabello con pelos de diferentes longitudes y fracturas en diversas etapas de crecimiento, sin las características de la alopecia areata o la alopecia androgenética. La relación entre el estrés psicológico, la ansiedad y estos comportamientos es bidireccional: el estrés puede desencadenar el comportamiento, y la pérdida de cabello resultante incrementa el nivel de ansiedad. Como ingenieros y clínicos en GlowApp, debemos integrar un enfoque empático en el cuestionario de diagnóstico, utilizando lenguaje no punitivo que permita al usuario reportar comportamientos de manipulación capilar. El manejo de estos casos no es dermatológico puramente, sino multidisciplinario, involucrando salud mental. Reconocer estos patrones previene el inicio innecesario de tratamientos farmacológicos para alopecias que, en realidad, tienen una base conductual y requieren terapia cognitivo-conductual (TCC).",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - ICD-11",
+        "url": "https://icd.who.int/en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "farmacos-para-alopecia-androgenetica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-conductual"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:46:09.584Z"
+  }
+]

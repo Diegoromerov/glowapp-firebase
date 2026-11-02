@@ -1,0 +1,86 @@
+[
+  {
+    "chunk_id": "fotobiomodulacion-pbm-mitocondrial-001",
+    "title": "Fotobiomodulación (PBM) y la Dinámica del Citocromo C Oxidasa",
+    "content": "La fotobiomodulación, específicamente en longitudes de onda entre 600 y 900 nm, actúa como un potente modulador de la actividad mitocondrial. El cromóforo principal en este proceso es el Citocromo C Oxidasa (CCO) dentro de la cadena de transporte de electrones. Al absorber fotones, el CCO incrementa su actividad enzimática, lo que conlleva a un aumento en la producción de ATP y una modulación positiva de las especies reactivas de oxígeno (ROS) en niveles bajos. Este fenómeno, conocido como hormesis, estimula la proliferación de fibroblastos y la síntesis de colágeno, siendo una herramienta fundamental en la recuperación post-procedimiento estético. La evidencia sugiere que la modulación mitocondrial no solo acelera la cicatrización, sino que también reduce la inflamación persistente al activar vías de señalización antiinflamatorias. Es crucial ajustar la fluencia (J/cm²) y la irradiancia (W/cm²) para evitar el efecto inhibitorio que ocurre cuando se sobrepasa el umbral de energía, fenómeno ampliamente documentado en la literatura de fotobiología.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33333333/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "luz-led"
+      ],
+      "contraindications": [
+        "epilepsia-fotosensible",
+        "neoplasias-activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion-celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:52:27.988Z"
+  },
+  {
+    "chunk_id": "bio-electrodinamica-009",
+    "title": "Bioelectrodinámica: El Potencial de Reposo Celular",
+    "content": "La bioelectrodinámica estudia cómo el potencial de membrana de las células cutáneas influye en su estado funcional y regenerativo. En la piel envejecida o dañada, el potencial de reposo de los fibroblastos y queratinocitos suele verse alterado, lo que reduce su capacidad de respuesta a estímulos regenerativos. El uso de microcorrientes y campos electromagnéticos específicos busca restaurar este potencial, 'recargando' la célula y facilitando los procesos de reparación tisular. Este fenómeno es la base de la eficacia de muchas tecnologías de radiofrecuencia y dispositivos de estimulación eléctrica en estética. La modulación de los canales iónicos mediante estos campos permite una mejor comunicación intercelular y una mayor eficiencia en la síntesis de proteínas de la matriz extracelular. Es fundamental comprender que la integridad de la señal eléctrica celular es tan importante como la nutrición bioquímica de la piel. Los protocolos de GlowApp deben considerar la bioelectrodinámica como un pilar en la optimización de los tratamientos de rejuvenecimiento, especialmente cuando se busca una respuesta regenerativa más profunda en pacientes con una capacidad de recuperación reducida. La monitorización de la impedancia permite ajustar la entrega de energía para maximizar este beneficio bioeléctrico sin comprometer la seguridad del tejido.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Bioelectromagnetics Society",
+        "url": "https://www.bioelectromagnetics.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "epilepsia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:52:27.988Z"
+  }
+]

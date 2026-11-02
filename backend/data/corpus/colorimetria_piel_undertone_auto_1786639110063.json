@@ -1,0 +1,165 @@
+[
+  {
+    "chunk_id": "colorimetria-neuropeptidos-estres-001",
+    "title": "Eje Neuro-Cutáneo: La influencia de los neuropéptidos en la colorimetría facial",
+    "content": "El eje neuro-cutáneo desempeña un papel fundamental en la cromaticidad facial que a menudo se ignora en el diagnóstico de subtono. Bajo condiciones de estrés crónico, la activación de las fibras nerviosas sensoriales libera neuropéptidos como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP). Estos mediadores inducen vasodilatación neurogénica y extravasación plasmática, alterando la reflectancia espectral de la piel. En términos prácticos, un paciente puede presentar un eritema transitorio o permanente que enmascara su subtono real, induciendo a error al seleccionar bases de maquillaje con correctores verdes. La investigación publicada en 'Journal of Investigative Dermatology' destaca cómo la desregulación de este eje no solo afecta la barrera cutánea, sino que modifica la respuesta vascular basal, haciendo que el tono de la piel fluctúe a lo largo del día según los niveles de cortisol y catecolaminas. Es imperativo evaluar al paciente en un estado de reposo hemodinámico para evitar sesgos diagnósticos causados por la reactividad vascular neurogénica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30147-X/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:38:11.519Z"
+  },
+  {
+    "chunk_id": "colorimetria-metabolismo-lactato-002",
+    "title": "El papel del lactato cutáneo en la estabilidad del pH y la colorimetría",
+    "content": "La concentración de lactato en el estrato córneo es un factor determinante en el mantenimiento del manto ácido (pH 4.5-5.5). Recientes estudios en dermatología clínica sugieren que variaciones en el metabolismo del lactato, influenciadas por el microbioma y la tasa de sudoración, afectan la estabilidad química de los pigmentos de óxido de hierro presentes en las bases de maquillaje. Un pH cutáneo elevado (cercano a 6.0) favorece la oxidación prematura de los pigmentos, lo que provoca que una base, inicialmente coincidente con el subtono del usuario, vire hacia tonos anaranjados o cenizos tras pocas horas de aplicación. Este fenómeno no debe confundirse con la oxidación por exposición al aire, sino como una interacción química directa entre la superficie cutánea y el producto. El control del pH mediante productos tópicos adecuados antes de la aplicación de maquillaje es una estrategia infravalorada para preservar la fidelidad cromática durante la jornada, evitando la distorsión del subtono que ocurre por la degradación lipídica y el desequilibrio iónico superficial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32483864/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lactato",
+        "acido_lactico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:38:11.519Z"
+  },
+  {
+    "chunk_id": "colorimetria-estres-oxidativo-004",
+    "title": "Impacto del estrés oxidativo en la degradación de lípidos y el viraje cromático",
+    "content": "El estrés oxidativo cutáneo inducido por factores ambientales (polución, radiación UV) provoca la peroxidación de los lípidos del sebo, generando subproductos que alteran la estabilidad cromática de los cosméticos. Los ácidos grasos insaturados del sebo, al oxidarse, se transforman en aldehídos y cetonas que reaccionan con los pigmentos de la base de maquillaje, degradando su tono original. Este fenómeno es particularmente evidente en personas con piel grasa o mixta, donde el exceso de sebo actúa como un reactor químico sobre el maquillaje. Clínicamente, esto se manifiesta como un 'oscurecimiento' o 'amarillamiento' de la base hacia el final del día, fenómeno a menudo confundido con una mala elección de tono. La AAD (American Academy of Dermatology) recalca la importancia de los antioxidantes tópicos (como Vitamina C o E) no solo para la salud celular, sino como estabilizadores del pH y del entorno químico que soporta el maquillaje, evitando que la interacción entre el sebo oxidado y los pigmentos de la base altere la armonía cromática del subtono original de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/skin-care/skin-care-basics",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_c",
+        "vitamina_e",
+        "ferulico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_diario"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:38:11.519Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-ph-009",
+    "title": "Influencia del microbioma cutáneo en la cromaticidad superficial",
+    "content": "El microbioma cutáneo, compuesto por una vasta diversidad de microorganismos, modula indirectamente la cromaticidad de la piel a través de la producción de metabolitos. La presencia de cepas específicas de *Staphylococcus epidermidis* y *Cutibacterium acnes* regula la secreción de ácidos grasos y la producción de compuestos volátiles que influyen en el pH superficial. Un microbioma disbiótico puede alterar el manto ácido, favoreciendo la aparición de eritema subclínico o una opacidad generalizada. Este cambio en el microambiente cutáneo afecta la forma en que los filtros solares y los pigmentos de maquillaje interactúan con la piel. Estudios recientes en 'Nature Reviews Microbiology' subrayan que la estabilidad del microbioma es clave para mantener la 'claridad' del subtono. En GlowApp, debemos considerar que protocolos agresivos de limpieza que alteran el microbioma pueden, a mediano plazo, distorsionar la lectura del subtono del paciente, haciendo que la piel se vea más apagada o propensa a oxidar los pigmentos cosméticos debido a la pérdida de su equilibrio biológico natural.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-021-00628-9",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_diario"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:38:11.519Z"
+  }
+]

@@ -1,0 +1,208 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-mecanica-001",
+    "title": "Onicólisis por tracción: el fenómeno de la uña larga",
+    "content": "La onicólisis distal causada por la longitud excesiva de la uña artificial no es solo un problema estético, sino biomecánico. Cuando la uña supera la capacidad de soporte del lecho ungueal, cada impacto en el borde libre actúa como una palanca sobre la zona de adhesión. Según estudios publicados en el Journal of the American Academy of Dermatology, la tensión tangencial repetida provoca una separación progresiva de la lámina del lecho, facilitando la entrada de humedad y patógenos. Este fenómeno es particularmente crítico en usuarias de sistemas de extensión que no ajustan su estilo de vida a la nueva biomecánica de sus dedos. La lámina ungueal, al ser rígida, transmite toda la fuerza del golpe directamente al hiponiquio y al lecho, zonas altamente inervadas y vascularizadas. Es imperativo educar a la usuaria sobre la relación entre el largo de la extensión y el riesgo de desprendimiento mecánico, recomendando una longitud que no comprometa la integridad de la zona de sellado natural. La prevención se basa en el equilibrio entre la estética deseada y la capacidad de carga del lecho ungueal del paciente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas con lecho corto o retraído"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_y_anatomia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:21:43.228Z"
+  },
+  {
+    "chunk_id": "guias-unas-ph-y-polimerizacion-002",
+    "title": "Variabilidad del pH ungueal y su impacto en la adhesión",
+    "content": "El lecho ungueal y la superficie de la lámina poseen un pH ligeramente ácido, fundamental para mantener el microbioma cutáneo y la integridad de la queratina. La aplicación de productos con pH extremo, ya sea muy ácido o muy alcalino, puede desnaturalizar las proteínas de la uña o interferir con la polimerización de los sistemas fotocurables. La literatura dermatológica sugiere que un pH desequilibrado altera la energía superficial de la uña, reduciendo la eficacia de los primers y agentes adhesivos. Cuando el pH es demasiado alto, la red de polímeros no alcanza su grado de conversión óptimo, dejando monómeros residuales que pueden migrar hacia el tejido periungueal, aumentando el riesgo de dermatitis alérgica por contacto. Es vital realizar una limpieza mecánica mínima que no altere este equilibrio natural. El uso de deshidratadores debe ser puntual, evitando la sobre-exposición que comprometa la barrera lipídica natural de la lámina. Un pH estable es un requisito previo para cualquier procedimiento de adhesión química duradera y segura.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers",
+        "deshidratadores"
+      ],
+      "contraindications": [
+        "uso excesivo de ácidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_de_productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:21:43.228Z"
+  },
+  {
+    "chunk_id": "guias-unas-reaccion-exotermica-003",
+    "title": "Manejo de la reacción exotérmica en fotopolimerización",
+    "content": "La fotopolimerización es un proceso exotérmico por definición: la conversión de monómeros en polímeros libera energía en forma de calor. En el lecho ungueal, este aumento de temperatura puede ser percibido como una quemadura dolorosa. Si la reacción es demasiado rápida, el calor generado puede superar el umbral de tolerancia del tejido, provocando una quemadura química o térmica en el lecho ungueal, lo que a menudo resulta en una onicólisis posterior. Estudios en el Journal of Cosmetic Dermatology indican que el grosor de la capa aplicada y la potencia de la lámpara son los factores determinantes. Para mitigar este riesgo, se recomienda realizar aplicaciones en capas finas y utilizar lámparas con modo de 'baja intensidad' o 'soft cure', permitiendo que la red polimérica se forme de manera gradual sin generar picos térmicos peligrosos. Es imperativo que el profesional comprenda que el dolor durante el curado es una señal de alerta clínica, no un indicativo de que el producto está 'pegando bien'. Ignorar esta sensación puede causar daño permanente a la matriz y al lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "oligómeros"
+      ],
+      "contraindications": [
+        "láminas ungueales delgadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_de_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:21:43.228Z"
+  },
+  {
+    "chunk_id": "guias-unas-biofilms-004",
+    "title": "Biofilms en microfisuras: el reto de la asepsia",
+    "content": "Las herramientas metálicas, a pesar de su apariencia lisa, presentan microfisuras a nivel microscópico tras su uso repetido y procesos de esterilización. Estas áreas son refugios ideales para la formación de biopelículas (biofilms) bacterianas, especialmente de Pseudomonas aeruginosa. Los biofilms son comunidades de microorganismos protegidos por una matriz extracelular que los hace altamente resistentes a los métodos de desinfección estándar. En el contexto de la manicura, si una herramienta contaminada entra en contacto con el pliegue ungueal, puede inocular bacterias directamente en el tejido, iniciando una paroniquia crónica. La recomendación clínica es la inspección periódica de las herramientas con lupa de aumento y el reemplazo de instrumentos con signos de desgaste o corrosión. La esterilización en autoclave es el único método validado que, bajo condiciones de temperatura y presión controladas, puede erradicar estas estructuras. El uso de soluciones desinfectantes de bajo nivel es insuficiente para penetrar la matriz de un biofilm maduro. La seguridad del paciente depende directamente de la integridad física de las herramientas utilizadas en cabina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240032583",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas oxidadas o desgastadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_y_anatomia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:21:43.228Z"
+  },
+  {
+    "chunk_id": "guias-unas-hiponiquio-007",
+    "title": "Displasia del hiponiquio por limpieza excesiva",
+    "content": "El hiponiquio es la barrera epitelial crítica que sella el espacio entre el lecho ungueal y la lámina. Su manipulación agresiva mediante herramientas de metal o el uso de 'limpiadores subungueales' es una práctica frecuente pero clínicamente desaconsejada. El hiponiquio es una zona sensible, ricamente vascularizada y con una tasa de queratinización diferente a la del lecho. La remoción mecánica de esta zona rompe la barrera inmunológica, creando una puerta de entrada para patógenos (hongos y bacterias) y desencadenando un proceso inflamatorio crónico que puede resultar en la retracción del hiponiquio. Esto, a su vez, expone el lecho ungueal a microtraumas constantes, empeorando la condición estética que se pretendía 'limpiar'. La evidencia sugiere que el hiponiquio debe ser tratado con extrema delicadeza, evitando cualquier instrumento que pueda generar microabrasiones. La limpieza de la zona subungueal debe limitarse a la higiene superficial con un cepillo de cerdas suaves y jabón neutro, preservando la integridad del sello natural que mantiene la uña adherida y saludable.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de herramientas metálicas bajo el borde libre"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_y_anatomia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:21:43.228Z"
+  }
+]

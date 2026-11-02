@@ -1,0 +1,342 @@
+[
+  {
+    "chunk_id": "makeup-tecnicas-crio-001",
+    "title": "Maquillaje en ambientes de crioterapia o exposición a nitrógeno líquido",
+    "content": "La exposición a temperaturas extremadamente bajas, como en cabinas de crioterapia o entornos de criogenia, altera la homeostasis cutánea mediante una vasoconstricción periférica intensa. El maquillaje aplicado en estos contextos debe evitar texturas acuosas de alta viscosidad, ya que el congelamiento del agua residual en la emulsión puede causar micro-fisuras en la barrera epidérmica. Estudios en Journal of Dermatological Science sugieren que el choque térmico reduce la elasticidad de los lípidos del estrato córneo. Se recomienda el uso de bálsamos anhidros ricos en escualano o ceramidas que actúen como aislantes térmicos, evitando pigmentos con alto contenido metálico que podrían conducir el frío hacia la dermis. La técnica requiere una aplicación por capas finas (layering) para permitir que el producto se adapte a la contracción del tejido sin fracturarse. La oclusión excesiva debe evitarse para permitir la oxigenación cutánea tras la salida del ambiente criogénico, previniendo la dermatitis por congelación inducida por productos cosméticos inadecuados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "escualano",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "productos base agua",
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-hiperbarica-002",
+    "title": "Maquillaje en cámaras hiperbáricas: Estabilidad bajo presión",
+    "content": "El uso de cámaras hiperbáricas introduce desafíos específicos para el maquillaje debido al aumento de la presión parcial de oxígeno y los cambios en la presión barométrica. Las emulsiones inestables pueden experimentar desgasificación o separación de fases bajo presión, comprometiendo la integridad de la barrera cutánea. Es imperativo evitar productos con fragancias volátiles o alcoholes de cadena corta, ya que el entorno hiperbárico aumenta la permeabilidad cutánea y la absorción sistémica de xenobióticos. Según protocolos de la Undersea and Hyperbaric Medical Society, cualquier sustancia aplicada debe ser inerte para evitar reacciones de combustión o irritación dérmica ante la atmósfera enriquecida con O2. Se recomienda el uso de pigmentos minerales puros sin agentes de carga sintéticos que puedan alterar la presión de vapor sobre la piel. La técnica debe priorizar el sellado mediante polvos minerales inertes, evitando el uso de aerosoles o propelentes que son estrictamente contraindicados por riesgo de ignición en el interior de la cámara.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales"
+      ],
+      "contraindications": [
+        "fragancias",
+        "alcoholes",
+        "aerosoles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-luz-polarizada-003",
+    "title": "Maquillaje bajo fuentes de luz polarizada y realidad aumentada",
+    "content": "La creciente exposición a entornos de Realidad Aumentada (AR) y pantallas con luz polarizada altera la percepción visual del maquillaje debido a la birrefringencia de ciertos componentes cosméticos. Partículas como el dióxido de titanio o ciertas micas pueden crear destellos indeseados o 'ghosting' bajo lentes de AR. Investigaciones en el International Journal of Cosmetic Science subrayan que la dispersión de luz por partículas de tamaño nanométrico es más pronunciada bajo luz polarizada. Para eventos de este tipo, se debe optar por pigmentos de morfología esférica que minimicen la difracción y maximicen la absorción. La técnica de aplicación debe evitar el uso de iluminadores con partículas reflectantes de alto índice de refracción, prefiriendo acabados mate neutros. Además, el ajuste de color debe realizarse bajo un espectro de luz similar al del dispositivo de AR, ya que la temperatura de color del hardware puede alterar la cromaticidad del maquillaje aplicado, provocando un desajuste tonal percibido por el usuario o las cámaras de captura.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos esfericos"
+      ],
+      "contraindications": [
+        "micas",
+        "particulas reflectantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-y-piel"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-campos-magneticos-004",
+    "title": "Maquillaje ante exposición a campos magnéticos estáticos (MRI)",
+    "content": "La exposición a campos magnéticos intensos, comunes en entornos de resonancia magnética o investigación física, impone restricciones estrictas sobre los cosméticos. Muchos pigmentos tradicionales contienen óxidos de hierro (magnetita, hematita) que pueden calentarse por inducción o causar artefactos en imágenes médicas. La AAD (American Academy of Dermatology) advierte que la interacción de partículas metálicas con campos magnéticos de alta intensidad (3T o más) puede generar micro-quemaduras o migración de partículas. Para profesionales que trabajan en estas áreas, el maquillaje debe ser estrictamente libre de metales pesados y óxidos ferrosos. Se recomienda el uso de pigmentos basados en lacas orgánicas certificadas o tintes vegetales. La técnica debe enfocarse en productos de alta adherencia sin base metálica, priorizando formulaciones poliméricas que no contengan aditivos conductores. Es vital verificar las hojas de seguridad (MSDS) de cada producto para descartar la presencia de componentes ferromagnéticos que puedan comprometer la seguridad del usuario durante la exposición a estos campos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lacas organicas"
+      ],
+      "contraindications": [
+        "oxidos de hierro",
+        "pigmentos metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-microbiota-005",
+    "title": "Maquillaje en ambientes de esterilidad controlada (Quirófanos)",
+    "content": "El uso de maquillaje en entornos quirúrgicos o áreas de ambiente controlado presenta un riesgo de contaminación cruzada y alteración del microbioma cutáneo. Las partículas de maquillaje pueden actuar como vectores de microorganismos, especialmente si los productos no contienen sistemas de preservación robustos. Según estudios de la IADVL, la aplicación de cosméticos en la zona periocular en áreas estériles incrementa la tasa de colonización bacteriana. La técnica recomendada implica el uso de productos de un solo uso (monodosis) para evitar la proliferación de patógenos en envases compartidos. Se deben evitar texturas en crema o gel que retengan humedad, prefiriendo polvos compactos esterilizados o fórmulas con conservantes de amplio espectro aprobados para entornos médicos. Además, la aplicación debe realizarse fuera del entorno estéril y debe garantizarse que el producto no migre hacia la zona de contacto quirúrgico, minimizando el riesgo de dermatitis por contacto inducida por la interacción entre el maquillaje y los agentes antisépticos utilizados en la preparación preoperatoria.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "conservantes de amplio espectro"
+      ],
+      "contraindications": [
+        "envases compartidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ionizacion-006",
+    "title": "Maquillaje en ambientes de alta ionización y calidad del aire",
+    "content": "Ambientes con alta ionización, como cerca de grandes cascadas, sistemas de purificación de aire industrial o tormentas eléctricas, pueden influir en la carga electrostática de la piel y el maquillaje. Una piel con carga negativa puede atraer partículas de polución cargadas positivamente, aumentando la adherencia de contaminantes sobre el maquillaje. Esto acelera la oxidación del sebo y la degradación del pigmento. La técnica de maquillaje en estas condiciones debe incluir una base con propiedades antiestáticas, utilizando polímeros que neutralicen la carga superficial. Se recomienda el uso de fijadores con bases iónicas equilibradas que prevengan la deposición de partículas PM2.5. La investigación sugiere que el mantenimiento del pH cutáneo en 5.5 es crucial para mitigar la afinidad de la piel por estas partículas. Además, el uso de antioxidantes tópicos potentes (como vitamina E o derivados de ferúlico) ayuda a neutralizar los radicales libres generados por la ionización ambiental, protegiendo la estabilidad del color y la salud de la barrera lipídica durante la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina e",
+        "acido ferulico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-estres-mec-007",
+    "title": "Maquillaje bajo estrés mecánico por vibración de baja frecuencia",
+    "content": "La exposición prolongada a vibraciones mecánicas de baja frecuencia, como en viajes en vehículos pesados o maquinaria industrial, puede inducir la migración de las partículas de maquillaje hacia los surcos cutáneos, un fenómeno conocido como 'settling'. La vibración constante altera la viscosidad de las emulsiones, causando que los pigmentos se acumulen en los pliegues dérmicos (dinámica de surcos). Para mitigar este efecto, se deben emplear técnicas de 'film-forming' mediante polímeros de alta elasticidad que mantengan una red cohesiva sobre la piel. Es fundamental evitar el uso de bases de maquillaje con alto contenido de aceite mineral, que actúan como lubricantes facilitando la migración bajo estrés mecánico. La aplicación debe ser fina y sellada con polvos de sílice de alta superficie específica, que absorben el exceso de sebo sin añadir peso. Estudios en dermatología mecánica sugieren que la aplicación de una película delgada de polímero acrílico biocompatible puede estabilizar el pigmento frente a la fatiga mecánica, manteniendo el aspecto uniforme incluso en condiciones de vibración constante.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silica",
+        "polimeros acrilicos"
+      ],
+      "contraindications": [
+        "aceite mineral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-luz-calida-008",
+    "title": "Maquillaje para eventos bajo iluminación de sodio (espectro amarillo)",
+    "content": "La iluminación de sodio, común en túneles, estadios antiguos y zonas industriales, emite un espectro estrecho centrado en el amarillo (589 nm), lo que causa una distorsión cromática severa en el maquillaje. Bajo esta luz, los colores fríos (azules, verdes) parecen negros o grisáceos, y los tonos piel pueden verse excesivamente cetrinos o verdosos. El desafío clínico y estético radica en equilibrar la saturación para contrarrestar el efecto de la luz monocromática. Se recomienda el uso de correctores de tono con base rosada o lila para neutralizar el exceso de amarillo ambiental. La técnica debe evitar colores tierra o cálidos, ya que se intensifican excesivamente, creando un efecto de 'máscara'. Es preferible utilizar productos con alta reflectancia espectral en el rango de los rojos para mantener la vitalidad de la piel. La evaluación del maquillaje debe hacerse bajo condiciones de luz similares a las del evento, o utilizando filtros de color para previsualizar el resultado final, evitando errores de saturación que alteren la percepción de la salud cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "tonos tierra"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-y-piel"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:38:42.093Z"
+  }
+]

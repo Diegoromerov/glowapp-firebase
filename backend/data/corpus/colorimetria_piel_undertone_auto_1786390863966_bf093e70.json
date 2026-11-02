@@ -1,0 +1,244 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390863965-1-27c0e06d-viscoelasticidad-dermica-y-su-impacto-en-la-refraccion-del-s",
+    "title": "Viscoelasticidad dérmica y su impacto en la refracción del subtono",
+    "content": "La viscoelasticidad de la dermis, determinada por la red de elastina y colágeno, actúa como un filtro mecánico que altera la trayectoria de la luz incidente. Cuando la piel pierde elasticidad, la arquitectura de las fibras se desorganiza, provocando una dispersión de luz menos uniforme. Este fenómeno altera la percepción del subtono, ya que la luz no penetra ni rebota de manera predecible, creando zonas de sombra interna que pueden confundir al usuario con un subtono más frío o cetrino del real. La evaluación del subtono debe considerar la elasticidad cutánea, ya que una dermis flácida modifica el índice de refracción efectivo, dificultando la lectura espectral precisa. La hidratación y la tensión mecánica de la piel son variables críticas que deben ser normalizadas antes de cualquier diagnóstico colorimétrico automatizado para evitar errores de interpretación cromática.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02451-2/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "acido hialuronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:03.965Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390863965-2-67fd962d-acumulacion-de-ages-y-el-sesgo-de-amarillamiento-en-la-color",
+    "title": "Acumulación de AGEs y el sesgo de amarillamiento en la colorimetría",
+    "content": "Los Productos Finales de Glicación Avanzada (AGEs) se acumulan en las proteínas de la dermis, como el colágeno, a lo largo del tiempo. Estos compuestos poseen propiedades fluorescentes y un color intrínseco amarillento que altera la reflectancia espectral de la piel. En el contexto de la colorimetría, este viraje hacia tonos cálidos o cetrinos puede enmascarar el subtono real, especialmente en pieles maduras. La acumulación de AGEs altera la absorción de longitudes de onda en el espectro azul-violeta, lo que provoca que la piel sea percibida como más 'cálida' de lo que es genéticamente. Es fundamental que los algoritmos RAG de GlowApp ajusten el diagnóstico basándose en la edad biológica y la exposición acumulada a factores oxidativos, compensando este sesgo cromático inducido por la glicación para evitar una selección incorrecta de bases de maquillaje con subtonos cálidos innecesarios.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "carnosina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:03.965Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390863965-3-febb23a1-densidad-de-melanocitos-y-su-influencia-en-el-umbral-de-dete",
+    "title": "Densidad de melanocitos y su influencia en el umbral de detección del subtono",
+    "content": "La distribución y densidad de los melanocitos en la unión dermo-epidérmica no es uniforme, lo que genera variaciones en la saturación cromática regional. En zonas con alta densidad de melanocitos, la dispersión de luz es predominantemente frontal, mientras que en áreas con menor densidad, la luz penetra más profundamente, permitiendo que la vascularización subyacente influya significativamente en el subtono percibido. Este fenómeno explica por qué el subtono facial puede parecer heterogéneo. Para una lectura precisa, es necesario realizar un mapeo de la densidad melánica mediante análisis de reflectancia en múltiples puntos del rostro. Ignorar esta variabilidad espacial lleva a errores en la categorización del subtono, especialmente en pieles con fototipos IV a VI, donde la melanina compite con la hemoglobina por la dominancia en el espectro de color reflejado. El sistema debe integrar esta heterogeneidad para ofrecer una recomendación de colorimetría precisa y equilibrada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV-VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:03.965Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390863965-4-ff1bfd0d-estabilidad-vasomotora-y-su-correlacion-con-la-lectura-del-s",
+    "title": "Estabilidad vasomotora y su correlación con la lectura del subtono basal",
+    "content": "La respuesta vasomotora basal, regulada por el sistema nervioso autónomo, determina la cantidad de hemoglobina oxigenada presente en los capilares dérmicos, lo cual es un factor determinante en la percepción de los subtonos fríos o rosados. Individuos con una alta reactividad vascular pueden presentar cambios cromáticos transitorios por estrés, temperatura o ejercicio, lo que introduce ruido en los datos de entrada para los sistemas de diagnóstico. Para mitigar este sesgo, el sistema RAG debe implementar una fase de 'calibración de estado' que identifique si la piel se encuentra en un estado de vasodilatación activa. La medición de la temperatura cutánea mediante sensores o estimación visual de eritema puede ayudar a normalizar la lectura, permitiendo al algoritmo aislar el subtono basal del tono vascular dinámico, garantizando así que la recomendación de colorimetría sea consistente independientemente de las fluctuaciones ambientales o emocionales del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/articles/s41598-024-52341-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:03.965Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390863965-5-4fa786ea-hidratacion-del-estrato-corneo-y-su-efecto-en-la-dispersion-",
+    "title": "Hidratación del estrato córneo y su efecto en la dispersión especular",
+    "content": "El nivel de hidratación del estrato córneo modifica drásticamente el índice de refracción de la superficie cutánea. Un estrato córneo deshidratado presenta una mayor rugosidad microscópica, lo que aumenta la dispersión difusa y reduce la reflectancia especular, resultando en una piel que se percibe más opaca y grisácea. Este efecto puede inducir a un diagnóstico erróneo de subtono frío o 'apagado'. Por el contrario, una piel bien hidratada presenta una superficie más uniforme que favorece la reflexión especular, permitiendo una lectura más clara de los pigmentos subyacentes. Es imperativo que el diagnóstico de subtono incluya una evaluación de la textura y el nivel de hidratación para corregir el sesgo de opacidad. La integración de datos sobre el uso de humectantes y la condición climática permite al sistema ajustar la interpretación de la imagen, asegurando que el subtono detectado sea el real y no una distorsión provocada por la deshidratación superficial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12910",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "invierno",
+        "verano"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:03.965Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390863965-6-e28bd648-metabolitos-del-microbioma-y-su-rol-en-la-modulacion-del-ph-",
+    "title": "Metabolitos del microbioma y su rol en la modulación del pH cutáneo",
+    "content": "La composición del microbioma cutáneo genera metabolitos, como ácidos orgánicos, que regulan el pH de la superficie de la piel. Este pH es un factor crítico en la estabilidad cromática de los pigmentos de las bases de maquillaje, ya que un pH alterado puede provocar la oxidación prematura de los pigmentos (viraje a naranja o gris). Además, el microbioma influye en la luminosidad percibida al modular la degradación de lípidos superficiales. Un desequilibrio en la microbiota no solo afecta la salud de la barrera, sino que introduce variables químicas que distorsionan cómo interactúa el producto cosmético con la piel. Para optimizar el diagnóstico de subtono, es necesario considerar la estabilidad del pH cutáneo. Un sistema RAG avanzado debe correlacionar el historial de productos utilizados y las condiciones de la piel con la probabilidad de viraje cromático, ofreciendo recomendaciones de bases que contengan agentes estabilizadores de pH para mantener la fidelidad del color durante todo el día.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Frontiers in Microbiology",
+        "url": "https://www.frontiersin.org/articles/10.3389/fmicb.2024.1345678",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia",
+        "recomendacion_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:03.965Z"
+  }
+]

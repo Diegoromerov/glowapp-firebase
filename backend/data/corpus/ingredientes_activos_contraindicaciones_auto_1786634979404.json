@@ -1,0 +1,267 @@
+[
+  {
+    "chunk_id": "activos-liposolubles-permeacion-001",
+    "title": "El riesgo de la oclusión excesiva en activos liposolubles",
+    "content": "La oclusión cutánea mediante el uso de oclusivos pesados (como vaselina o ciertas ceras) sobre activos liposolubles de alta potencia, como el retinol o derivados de vitamina D, puede alterar drásticamente la cinética de penetración. Según estudios publicados en el Journal of Controlled Release, la oclusión prolongada aumenta la permeabilidad del estrato córneo de forma no lineal, facilitando la absorción sistémica de compuestos que deberían actuar de forma local. En pacientes con barrera cutánea comprometida, esta oclusión puede inducir una dermatitis por contacto irritativa severa debido a la sobreexposición en el compartimento epidérmico profundo. Es fundamental entender que el uso de oclusivos sobre retinoides no es una práctica universalmente segura; en pieles con tendencia a la foliculitis, esta técnica puede exacerbar la inflamación por obstrucción de los conductos pilosebáceos. La curaduría clínica sugiere priorizar vehículos de liberación controlada sobre la oclusión mecánica manual para evitar efectos adversos sistémicos o inflamación local aguda.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Controlled Release",
+        "url": "https://www.sciencedirect.com/journal/journal-of-controlled-release",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "vaselina",
+        "parafina"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "foliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-vehiculizacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:20.790Z"
+  },
+  {
+    "chunk_id": "metales-traza-agua-grifo-002",
+    "title": "Metales traza en el agua y la estabilidad de activos quelables",
+    "content": "La calidad del agua utilizada para la limpieza facial o la formulación de productos DIY (hechos en casa) en ciudades con infraestructura hídrica antigua puede representar un riesgo clínico. Metales traza como el cobre y el hierro, presentes en tuberías, actúan como catalizadores en reacciones de oxidación-reducción (Fenton) que degradan activos sensibles como el Ácido L-Ascórbico. Investigaciones en el International Journal of Cosmetic Science indican que incluso concentraciones traza de estos iones pueden inducir la formación de radicales libres en la superficie cutánea si el agua no ha sido adecuadamente tratada. Para usuarios que aplican activos despigmentantes o antioxidantes, el uso de agua del grifo sin filtrar puede comprometer la eficacia del tratamiento y, en casos de pieles hipersensibles, favorecer la inflamación subclínica. Se recomienda el uso de agua desionizada o filtrada para la aplicación de activos de alta pureza, especialmente en rutinas de tratamiento para melasma o rosácea, donde la estabilidad redox es crítica para el éxito del resultado terapéutico a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ascórbico",
+        "hierro",
+        "cobre"
+      ],
+      "contraindications": [
+        "rosácea",
+        "melasma"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-rutina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:20.790Z"
+  },
+  {
+    "chunk_id": "efecto-rebote-despigmentantes-003",
+    "title": "Hiperpigmentación post-inflamatoria inducida por activos despigmentantes",
+    "content": "El uso inadecuado de inhibidores de la tirosinasa, particularmente en concentraciones fuera de rango, puede paradójicamente inducir hiperpigmentación post-inflamatoria (HPI). En fototipos IV a VI, la inflamación subclínica causada por la irritación de activos como el ácido kójico o la hidroquinona estimula la actividad de los melanocitos basales, resultando en un oscurecimiento de las manchas tratadas. La literatura dermatológica en PubMed subraya que la barrera cutánea dañada por sobre-exfoliación es más susceptible a la melanogénesis reactiva. Este fenómeno ocurre cuando el mecanismo de control de la inflamación es superado por la agresión química. Los clínicos deben advertir que un eritema persistente tras la aplicación de un despigmentante no es un signo de eficacia, sino una señal de alerta de posible HPI. La pausa terapéutica y el uso de agentes antiinflamatorios, como la niacinamida en concentraciones seguras o ceramidas, son esenciales para recuperar la homeostasis cutánea antes de retomar el tratamiento despigmentante principal.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "hidroquinona",
+        "ácido kójico"
+      ],
+      "contraindications": [
+        "hiperpigmentación post-inflamatoria"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-pigmentacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:20.790Z"
+  },
+  {
+    "chunk_id": "polimeros-cationicos-microbioma-004",
+    "title": "Polímeros catiónicos y el riesgo de acumulación folicular",
+    "content": "Los polímeros catiónicos, frecuentemente utilizados en acondicionadores y productos 'leave-on' para mejorar la textura de la piel, poseen una carga positiva que les permite adherirse fuertemente a la queratina cargada negativamente. Sin embargo, esta propiedad de sustantividad puede llevar a la acumulación en el ostium folicular, especialmente en pieles con tendencia seborreica. Estudios en microbiología cutánea sugieren que esta oclusión física, aunque menor que la de las siliconas pesadas, puede alterar el microambiente del folículo, favoreciendo la proliferación de microorganismos como Cutibacterium acnes o Malassezia. La acumulación crónica provoca micro-comedones que, al inflamarse, desencadenan brotes acneicos de difícil diagnóstico. Es vital revisar la formulación de los productos capilares que entran en contacto con la piel del rostro y cuello, ya que la dermatitis perioral o el acné cosmético suelen ser, en realidad, una reacción por contacto a estos polímeros de carga. La eliminación adecuada mediante tensioactivos suaves es necesaria para mantener la integridad del microbioma folicular.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polyquaternium-10",
+        "polyquaternium-7"
+      ],
+      "contraindications": [
+        "acné",
+        "foliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes-capilares"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:20.790Z"
+  },
+  {
+    "chunk_id": "interferencia-filtros-organicos-005",
+    "title": "Interferencia de filtros solares orgánicos en la penetración de activos",
+    "content": "Los filtros solares orgánicos (químicos) actúan mediante la absorción de radiación UV, pero su formulación requiere a menudo solventes y potenciadores de penetración para asegurar su eficacia y estabilidad. Estos mismos vehículos pueden alterar la barrera lipídica de forma transitoria, facilitando la absorción sistémica de otros activos aplicados simultáneamente en la rutina. Según investigaciones dermatológicas, la aplicación de retinoides o AHAs inmediatamente después de protectores solares con alta carga de solventes puede aumentar el riesgo de eritema inducido por la sobre-penetración. Además, existe un fenómeno de 'sinergia de irritación' donde la combinación de filtros químicos y activos exfoliantes bajo calor intenso (exposición solar) puede degradar la estabilidad de ambos. Se recomienda un tiempo de espera de al menos 15-20 minutos entre la aplicación de activos de tratamiento y el protector solar para permitir la estabilización de los componentes y reducir la interferencia en la permeabilidad cutánea, protegiendo así la barrera contra la irritación innecesaria.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "avobenzona",
+        "octocrylene"
+      ],
+      "contraindications": [
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-rutina-diurna"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:20.790Z"
+  },
+  {
+    "chunk_id": "benzofenona-fotodermatitis-007",
+    "title": "Benzofenona-4 y el riesgo de fotodermatitis de contacto",
+    "content": "La Benzofenona-4 es un filtro solar orgánico soluble en agua, comúnmente utilizado no solo en protectores solares, sino también como estabilizador de color en productos de cuidado personal. A diferencia de otros filtros, presenta un perfil de sensibilización mayor, siendo una causa conocida de fotodermatitis de contacto. Este tipo de reacción ocurre cuando el compuesto, al absorber radiación UV, sufre una modificación estructural que lo convierte en un hapteno, desencadenando una respuesta inmune mediada por células T. Los pacientes que presentan eritema persistente tras la exposición solar a pesar del uso de protector deben ser evaluados para una posible alergia a las benzofenonas. La literatura en dermatología clínica destaca que la sensibilización a este activo puede ser cruzada con otras sustancias químicas de la misma familia, complicando el manejo del paciente. Es fundamental realizar una prueba de parche (patch test) si se sospecha de dermatitis fotoalérgica, especialmente en individuos con antecedentes de eczema o reactividad cutánea a fragancias.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzofenona-4"
+      ],
+      "contraindications": [
+        "dermatitis fotoalérgica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "alergias-cosmeticas"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:20.790Z"
+  }
+]

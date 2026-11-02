@@ -1,0 +1,365 @@
+[
+  {
+    "chunk_id": "colorimetria-glicacion-001",
+    "title": "Glicación y alteración del tono: el subtono amarillento en pieles maduras",
+    "content": "La glicación avanzada de las proteínas cutáneas, un proceso no enzimático donde los azúcares se unen a fibras de colágeno y elastina, no solo afecta la elasticidad, sino también la colorimetría de la piel. La formación de Productos Finales de Glicación Avanzada (AGEs) confiere una tonalidad amarillenta o 'sallow' a la dermis que altera la percepción del subtono original. Este fenómeno es frecuentemente confundido con un subtono cálido, provocando que los usuarios elijan bases con pigmentos dorados que, en lugar de corregir, acentúan la opacidad. Clínicamente, el tono amarillento por glicación es distinto al subtono cálido natural, ya que carece de la luminosidad propia de la melanina eumelanina. Estudios en el Journal of Dermatological Science sugieren que la acumulación de AGEs modifica la reflectancia de la luz en la superficie cutánea. Para compensar, se recomienda el uso de pre-bases (primers) con subtonos lavanda o rosados fríos para neutralizar la tonalidad cetrina, evitando el uso de correctores amarillos que saturarían el rostro de forma inadecuada. La evaluación debe realizarse en áreas menos expuestas a la glicación, como la zona retroauricular, para determinar el subtono base antes de aplicar productos correctores.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "carnosina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-cianosis-002",
+    "title": "Cianosis oculta y su impacto en la elección de bases de maquillaje",
+    "content": "La cianosis oculta representa un desafío diagnóstico complejo en la colorimetría de pieles con fototipos altos (IV-VI). La presencia de hemoglobina desoxigenada en los lechos capilares puede alterar la lectura del subtono, desplazándolo hacia una apariencia grisácea o ceniza que los algoritmos de colorimetría estándar a menudo malinterpretan. Según la American Academy of Dermatology, la evaluación del subtono debe ser consciente de las condiciones sistémicas que afectan la oxigenación periférica. Si un usuario presenta un subtono que parece 'gris' o 'ashen', es imperativo descartar condiciones subyacentes antes de intentar compensar con maquillaje. El uso de bases con alta carga de pigmentos cálidos (naranjas/rojos) para 'calentar' una piel cianótica suele resultar en un acabado artificial y poco estético. En su lugar, la técnica de corrección profesional sugiere emplear bases con un balance neutro-oliva que permitan que la piel respire sin sobrecargar el espectro cromático. Es fundamental educar al usuario sobre la diferencia entre un subtono natural frío y una alteración transitoria del color por factores hemodinámicos, evitando diagnósticos erróneos basados exclusivamente en la superficie cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "sospecha-de-patologia-vascular"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-carotenemia-003",
+    "title": "Carotenemia: cuando la dieta altera la lectura del subtono",
+    "content": "La carotenemia es una condición benigna caracterizada por la coloración amarillenta-naranja de la piel debido a niveles elevados de betacaroteno en sangre, comúnmente asociada a un consumo excesivo de vegetales como zanahorias, calabazas o suplementos nutricionales. Este cambio pigmentario se manifiesta predominantemente en palmas, plantas y pliegues nasolabiales, pero puede afectar la percepción global del subtono. Para un profesional de la belleza, este fenómeno representa un error de diagnóstico común: el profesional podría clasificar erróneamente a un individuo como 'cálido' cuando su subtono real es neutro o frío. La diferencia clínica radica en que la carotenemia no colorea la esclera del ojo, a diferencia de la ictericia. Según investigaciones publicadas en la National Library of Medicine, la resolución de la carotenemia ocurre tras la reducción del consumo de carotenoides. En términos de maquillaje, intentar igualar el tono de una piel con carotenemia mediante bases doradas resultará en un efecto de 'piel naranja'. Se recomienda realizar la prueba de color en áreas no expuestas a la acumulación de carotenos y priorizar bases neutras que no exacerben la saturación de pigmentos amarillos ya presentes en la epidermis.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-vitiligo-004",
+    "title": "Desafíos de la colorimetría en pieles con vitiligo: el dilema del contraste",
+    "content": "El manejo de la colorimetría en pacientes con vitiligo requiere un enfoque dual, ya que la ausencia de melanocitos en las áreas despigmentadas elimina el subtono natural en esas zonas, creando un contraste extremo con la piel circundante. La teoría del color aplicada aquí no busca un subtono único, sino la armonización de múltiples zonas con diferentes reflectancias. La piel afectada por vitiligo carece de la protección natural contra la radiación UV, lo que altera aún más su comportamiento ante la luz ambiental y los filtros fotográficos. Según guías de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), el uso de cosméticos correctores debe centrarse en la neutralización del contraste mediante pigmentos de alta opacidad y larga duración. Es vital seleccionar un tono que se acerque al color de la piel no afectada para evitar el efecto 'parche' tras la oxidación del producto. En este contexto, el subtono deja de ser una guía única y se convierte en un mapa de zonas. La recomendación experta es utilizar técnicas de camuflaje médico (medical camouflage) que permitan igualar la textura y el color, priorizando productos hipoalergénicos que no irriten la piel sensibilizada por la falta de pigmentación protectora.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-minerales"
+      ],
+      "contraindications": [
+        "productos-irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-correctivo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-anemia-005",
+    "title": "La palidez anémica y la falsa percepción de un subtono frío",
+    "content": "La anemia ferropénica es una condición sistémica que tiene implicaciones directas en la apariencia estética. La disminución de la concentración de hemoglobina en la sangre reduce la tonalidad rosada o cálida natural de la piel, resultando en una palidez que puede ser interpretada erróneamente como un subtono frío o 'invierno'. Sin embargo, este es un síntoma clínico y no una característica cromática constitutiva del individuo. Cuando un profesional de la belleza intenta corregir esta palidez con bases de subtono frío, puede acentuar la apariencia de fatiga y falta de vitalidad. Según la Organización Mundial de la Salud (OMS), la anemia afecta significativamente la microcirculación cutánea. Para el diagnóstico correcto, es necesario observar la coloración de las mucosas y el lecho ungueal, que ofrecen una lectura más fiable del estado circulatorio que la piel facial. En el contexto de GlowApp, es crucial que los asesores identifiquen que, si la palidez es repentina o persistente, el problema trasciende la elección de la base de maquillaje y requiere una evaluación médica. El maquillaje, en este caso, debe buscar aportar luminosidad mediante tonos neutros cálidos en lugar de intentar 'enfriar' un rostro que ya carece de pigmentación sanguínea visible.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization)",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-polucion-006",
+    "title": "Impacto de la polución atmosférica en la opacidad cutánea y el tono",
+    "content": "La exposición crónica a partículas en suspensión (PM2.5) y contaminantes urbanos en ciudades como Bogotá genera una capa de oxidación en la superficie cutánea que altera la reflectancia de la luz. Esta capa de polución suele depositarse en los poros y sobre la película hidrolipídica, creando una pátina grisácea que distorsiona la lectura del subtono. La piel urbana tiende a verse más opaca y con un subtono 'sucio' o apagado, lo cual lleva a los usuarios a seleccionar bases más claras o con una saturación de color incorrecta para intentar 'iluminar' el rostro. La evidencia dermatológica sugiere que la polución induce estrés oxidativo que degrada la barrera cutánea, alterando su pH. Un pH alterado, a su vez, afecta la forma en que el maquillaje se oxida sobre la piel. Para contrarrestar esto, el protocolo debe incluir una limpieza profunda pre-maquillaje para restaurar el tono natural antes de cualquier evaluación colorimétrica. El uso de antioxidantes tópicos (vitamina C, ácido ferúlico) es esencial no solo para la salud cutánea, sino para mantener la fidelidad del color de la base durante el día, evitando que la interacción entre contaminantes y pigmentos del maquillaje altere el resultado final.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina-c",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-pre-maquillaje"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-psoriasis-007",
+    "title": "Psoriasis y la alteración de la textura: el reto de la cobertura",
+    "content": "La psoriasis, caracterizada por la hiperproliferación de queratinocitos y la formación de placas eritemato-escamosas, presenta un desafío único en la colorimetría: la alteración de la textura y la inflamación crónica. El eritema (enrojecimiento) asociado a la psoriasis no es un subtono, sino una respuesta inflamatoria. Intentar cubrir estas lesiones con bases de subtono frío para neutralizar el rojo puede resultar en un acabado grisáceo si la base no tiene la pigmentación adecuada para cubrir la textura elevada. Según la National Psoriasis Foundation, es crítico evitar productos comedogénicos o con fragancias que puedan exacerbar la inflamación. El subtono en pieles con psoriasis debe evaluarse en las zonas no afectadas (piel sana adyacente) para asegurar una transición natural. La elección del producto debe priorizar fórmulas de alta cobertura pero textura ligera, preferiblemente con pigmentos minerales que minimicen la irritación. Es fundamental educar al usuario sobre el hecho de que la base de maquillaje no es un tratamiento, y que la colorimetría debe ser secundaria a la salud de la barrera cutánea. La corrección del color debe ser puntual y técnica, evitando aplicar capas gruesas sobre las placas que podrían enfatizar la descamación natural de la patología.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Psoriasis Foundation",
+        "url": "https://www.psoriasis.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "psoriasica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-minerales",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "fragancias",
+        "alcohol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-correctivo"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-hormonas-008",
+    "title": "Fluctuaciones hormonales y cambios en el subtono: el ciclo menstrual",
+    "content": "Las variaciones hormonales durante el ciclo menstrual, particularmente los picos de estrógeno y progesterona, tienen un impacto medible en la microcirculación y la producción de sebo, factores que alteran la percepción del subtono cutáneo. Durante la fase lútea, el aumento de la progesterona puede inducir una ligera vasodilatación y un incremento en la actividad de las glándulas sebáceas, lo que puede hacer que la piel luzca más 'cálida' o incluso ligeramente congestionada. Este cambio puede hacer que una base de maquillaje que funcionaba perfectamente durante la fase folicular parezca 'oxidar' o volverse demasiado naranja. Según estudios en endocrinología dermatológica, la retención de líquidos y los cambios en la temperatura corporal basal también afectan cómo se refleja la luz en la dermis. Para el usuario de GlowApp, esto significa que la colorimetría no es estática. Se recomienda tener dos tonos de base o ajustar la cantidad de producto según la fase del ciclo. La clave está en observar si el cambio es una alteración permanente del subtono o una respuesta fisiológica temporal, evitando así compras innecesarias de productos que no se ajustan al subtono basal real del individuo durante la mayor parte del mes.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "The Journal of Clinical Endocrinology & Metabolism",
+        "url": "https://academic.oup.com/jcem",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "15-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-artificial-009",
+    "title": "El efecto Metamerismo: cuando el color cambia bajo diferentes luces",
+    "content": "El fenómeno del metamerismo ocurre cuando dos colores que parecen iguales bajo una fuente de luz (por ejemplo, la luz fluorescente de una tienda) se ven completamente diferentes bajo otra (como la luz solar natural). En la colorimetría de piel, esto es una causa común de frustración al elegir bases de maquillaje. Las tiendas de cosmética suelen utilizar iluminación con un Índice de Reproducción Cromática (IRC) que favorece ciertos tonos, ocultando las subtonalidades verdaderas de la piel. Según estándares de la CIE (Comisión Internacional de la Iluminación), una iluminación adecuada para la evaluación del color debe tener un IRC superior a 90 para garantizar la precisión. El usuario puede creer que ha encontrado su 'match' perfecto, pero al salir a la calle, la base puede verse demasiado amarilla o grisácea. Para mitigar esto, GlowApp recomienda realizar la prueba de color siempre bajo luz natural del día y en diferentes ángulos. Es fundamental entender que el metamerismo no es un error del producto, sino una propiedad física de la interacción entre la luz, el pigmento y la superficie cutánea. La educación sobre este fenómeno permite al usuario ser más crítico con las pruebas de color en entornos de venta controlados y buscar siempre una segunda opinión bajo luz solar directa.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "CIE (International Commission on Illumination)",
+        "url": "https://cie.co.at/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:55:33.492Z"
+  }
+]

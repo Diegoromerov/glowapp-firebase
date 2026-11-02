@@ -1,0 +1,209 @@
+[
+  {
+    "chunk_id": "guias_unas-biomarcadores-nutricionales-001",
+    "title": "Onicodistrofia por deficiencias de micronutrientes: Evaluación clínica",
+    "content": "La lámina ungueal es un tejido de crecimiento lento que refleja el estado metabólico sistémico. A diferencia de la creencia popular, la fragilidad ungueal no siempre es sinónimo de falta de calcio. Según la American Academy of Dermatology (AAD), la onicodistrofia suele estar vinculada a deficiencias de biotina (B7), hierro y zinc. La coiloniquia, o uñas en cuchara, es un marcador clínico clásico de anemia ferropénica, donde la hipoxia tisular altera la arquitectura de la matriz. Por otro lado, la deficiencia de zinc puede manifestarse como paroniquia recurrente y surcos transversales. Es fundamental que los profesionales de GlowApp no sugieran suplementación sin un diagnóstico bioquímico previo, ya que el exceso de ciertos minerales puede ser tóxico. El abordaje debe centrarse en la anamnesis para identificar patrones dietéticos o malabsorción intestinal subyacente. La evidencia en PubMed sugiere que la suplementación solo es eficaz si existe una deficiencia documentada, y que el cuidado tópico debe ser complementario y no sustitutivo de un manejo médico integral.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-care-secrets/basics/health-nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "biotina",
+        "hierro",
+        "zinc"
+      ],
+      "contraindications": [
+        "suplementacion_sin_diagnostico_medico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:32:07.582Z"
+  },
+  {
+    "chunk_id": "guias_unas-microbioma-oclusion-002",
+    "title": "Impacto de la oclusión prolongada en el microbioma periungueal",
+    "content": "El uso prolongado de recubrimientos artificiales, como geles constructores o sistemas press-on, altera el microambiente del lecho ungueal. La oclusión prolongada crea un ambiente hipóxico y húmedo que favorece la proliferación de microorganismos oportunistas. Estudios publicados en revistas indexadas como el Journal of the American Academy of Dermatology han demostrado que la microbiota natural de la unidad ungueal, compuesta principalmente por estafilococos y corinebacterias, puede verse desplazada por agentes patógenos si la barrera epitelial se rompe. La falta de transpirabilidad no solo afecta la adhesión del producto, sino que puede inducir una dermatitis irritativa o facilitar la colonización por Candida spp. Es imperativo que en GlowApp se promuevan periodos de descanso para permitir la re-oxigenación del lecho y el restablecimiento del pH natural. La higiene de los pliegues ungueales tras el retiro del producto es crítica para reducir la carga bacteriana antes de una nueva aplicación, evitando así el ciclo vicioso de inflamación crónica y debilidad de la lámina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "oclusion_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asepsia_bioseguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:32:07.582Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-003",
+    "title": "Cinética de la reacción exotérmica: Prevención de daño térmico",
+    "content": "Durante la fotopolimerización de resinas acrílicas, se libera energía en forma de calor, un fenómeno conocido como reacción exotérmica. La magnitud de este pico térmico depende del grosor del producto aplicado, la intensidad de la lámpara UV/LED y la concentración de fotoiniciadores. Si el calor supera el umbral de tolerancia del lecho ungueal (aproximadamente 42-44°C), se puede producir una quemadura térmica o una separación súbita del lecho (onicólisis traumática). La literatura dermatológica, incluyendo guías de la IADVL, subraya que la sensación de ardor intenso no debe ignorarse ni normalizarse como 'parte del proceso'. Para mitigar este riesgo, es recomendable aplicar capas delgadas, utilizar lámparas con modo de 'baja intensidad' (soft cure) y asegurar que el tiempo de exposición sea estrictamente el recomendado por el fabricante. La sobre-exposición no mejora la adhesión, sino que aumenta la liberación de monómeros residuales, los cuales son potentes sensibilizantes cutáneos que pueden desencadenar dermatitis alérgica de contacto a largo plazo en la usuaria y en la profesional.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/guidelines/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "sobre_polimerizacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:32:07.582Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-galvanica-004",
+    "title": "Corrosión galvánica en herramientas: Un riesgo invisible",
+    "content": "La corrosión galvánica ocurre cuando dos metales con diferentes potenciales electroquímicos entran en contacto en presencia de un electrolito (como soluciones desinfectantes o residuos de sudor). En la cabina de GlowApp, el uso de herramientas de acero inoxidable de baja calidad o la inmersión prolongada en desinfectantes corrosivos puede degradar la superficie del instrumento, creando micro-fisuras donde se alojan biofilms bacterianos imposibles de eliminar con métodos estándar. Estos biofilms actúan como reservorios de patógenos que pueden causar infecciones en el pliegue ungueal tras un corte mínimo o abrasión. La recomendación de la OMS y las guías de esterilización hospitalaria indican que el instrumental debe ser de acero quirúrgico grado 304 o superior, y debe secarse minuciosamente tras cada ciclo de desinfección. Un instrumento con signos de corrosión (puntos de óxido, rugosidad) debe ser descartado inmediatamente, ya que pierde su capacidad de ser esterilizado correctamente, comprometiendo la seguridad del cliente y aumentando la responsabilidad legal del establecimiento.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789241598217",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "instrumental_corroido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:32:07.582Z"
+  },
+  {
+    "chunk_id": "guias_unas-pterigium-inversum-006",
+    "title": "Pterigium inversum unguis: Manejo y precauciones",
+    "content": "El pterigium inversum unguis es una condición donde el hiponiquio se adhiere a la superficie ventral de la lámina ungueal, avanzando hacia el borde libre. Esta condición, frecuentemente confundida con una simple acumulación de detritos, es en realidad una extensión de tejido vivo y altamente vascularizado. La manipulación mecánica brusca, como el uso de empujadores metálicos o fresas para 'limpiar' profundamente bajo la uña, es contraproducente y dolorosa. Según estudios dermatológicos, esta condición puede ser idiopática o estar asociada a enfermedades autoinmunes como la esclerosis sistémica. En un entorno de cabina, cualquier intento de remover este tejido mediante limpieza profunda no solo causará dolor y sangrado, sino que romperá la barrera de defensa natural, exponiendo el lecho a infecciones. El manejo debe ser exclusivamente conservador: limpieza superficial con métodos suaves, hidratación de la zona y derivación al dermatólogo si el avance es sintomático o causa deformidad. La profesional de GlowApp debe reconocer esta condición para evitar daños iatrogénicos graves.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza_subungueal_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ungueal"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:32:07.582Z"
+  }
+]

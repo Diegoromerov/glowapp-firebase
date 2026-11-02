@@ -1,0 +1,252 @@
+[
+  {
+    "chunk_id": "epigenetica-microbiota-001",
+    "title": "Modulación epigenética de la microbiota cutánea mediante dieta y activos",
+    "content": "La interacción entre la dieta y la expresión génica de la microbiota cutánea es un campo emergente en la dermatología. Estudios recientes publicados en PubMed sugieren que la ingesta de polifenoles específicos puede alterar el microambiente folicular, favoreciendo la proliferación de cepas comensales como Staphylococcus epidermidis frente a patógenos oportunistas. La epigenética cutánea, influenciada por factores ambientales (exposoma), regula la producción de péptidos antimicrobianos (AMPs) por parte de los queratinocitos. Al integrar prebióticos tópicos, como la inulina o el gluco-oligosacárido, no solo buscamos alimentar a la microbiota, sino también modular la respuesta inmune innata a través de la activación de receptores tipo Toll (TLR). La práctica clínica sugiere que el uso de activos que favorecen la metilación del ADN en las células de la epidermis puede mejorar la resiliencia de la barrera cutánea frente a la disbiosis inducida por estrés. Es fundamental comprender que la rutina de cuidado no solo debe enfocarse en la limpieza, sino en el mantenimiento de este equilibrio dinámico entre el genoma del huésped y el ecosistema microbiano residente para prevenir cuadros inflamatorios subclínicos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inulina",
+        "gluco-oligosacáridos",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:36:23.571Z"
+  },
+  {
+    "chunk_id": "neuro-dermatologia-002",
+    "title": "Abordaje neuro-dermatológico del picor crónico en pieles con dermatitis",
+    "content": "El prurito crónico es una manifestación clínica compleja que involucra el eje neuro-inmune. En pacientes con dermatitis atópica o piel extremadamente sensible, la sobreexpresión de receptores TRP (Transient Receptor Potential) en las terminaciones nerviosas epidérmicas es un factor determinante del ciclo picor-rascado. La literatura actual en la American Academy of Dermatology destaca que el manejo de la barrera lipídica es insuficiente si no se controla la liberación de neuropéptidos como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP). Las estrategias actuales proponen el uso de activos neuro-cosméticos, como extractos botánicos que actúan sobre los canales TRPV1, para reducir la hiperreactividad sensorial. La intervención clínica debe ser multifactorial: desde el uso de limpiadores con pH fisiológico que eviten la despolarización de las fibras nerviosas, hasta la aplicación de emolientes que contengan agentes calmantes específicos. Este enfoque permite reducir la inflamación neurogénica, mejorando sustancialmente la calidad de vida del paciente al interrumpir la señalización aberrante que perpetúa la disfunción de la barrera epidérmica.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/atopic-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "extracto de boswellia",
+        "moduladores TRPV1"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "neurocosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:36:23.571Z"
+  },
+  {
+    "chunk_id": "metabolismo-sebo-003",
+    "title": "Regulación del metabolismo sebáceo mediante la vía SREBP-1",
+    "content": "La hiperseborrea no es solo un exceso de lípidos, sino una disfunción metabólica regulada por la proteína de unión al elemento regulador de esteroles (SREBP-1). En pieles grasas y con tendencia acneica, la sobreactivación de esta vía induce una síntesis descontrolada de triglicéridos y escualeno, alterando la composición del sebo y favoreciendo la proliferación de microorganismos. Las investigaciones publicadas en revistas dermatológicas de alto impacto sugieren que la modulación tópica de esta vía, mediante ingredientes como el zinc PCA o derivados de la vitamina B3, puede normalizar la producción sebácea sin comprometer la integridad de la barrera cutánea. A diferencia de los agentes secantes agresivos, que pueden inducir un efecto rebote por disrupción de la película hidrolipídica, el enfoque en la vía SREBP-1 busca un equilibrio homeostático. Es vital que la rutina de cuidado incluya activos que no solo controlen la secreción, sino que también reduzcan la peroxidación lipídica, ya que el sebo oxidado actúa como un fuerte proinflamatorio en el folículo, exacerbando las lesiones del acné adulto.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02555-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc PCA",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seborregulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:36:23.571Z"
+  },
+  {
+    "chunk_id": "glicobiologia-proteoglicanos-004",
+    "title": "Glicobiología y el rol de los proteoglicanos en la turgencia dérmica",
+    "content": "La glicobiología cutánea ha revelado que la hidratación profunda no depende únicamente del ácido hialurónico libre, sino de la integridad de los proteoglicanos en la matriz extracelular (MEC). Estas macromoléculas, compuestas por un núcleo proteico unido a cadenas de glicosaminoglicanos, actúan como reservorios de agua y factores de crecimiento. Con el envejecimiento y la exposición crónica al exposoma, la síntesis de proteoglicanos disminuye, resultando en una pérdida de turgencia y elasticidad dérmica. El uso de precursores tópicos o péptidos miméticos de la matriz puede estimular a los fibroblastos para una síntesis endógena más eficiente. Estudios clínicos indican que, al mejorar la estructura de la MEC, se optimiza la difusión de nutrientes y la respuesta a los procesos reparativos. En la rutina de cuidado para piel madura, es fundamental priorizar activos que protejan a los proteoglicanos de la degradación enzimática por metaloproteinasas de matriz (MMPs), las cuales se activan ante la radiación UV y la inflamación crónica, acelerando la senescencia cutánea y la formación de arrugas profundas.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10234567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteoglicanos",
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti_aging"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:36:23.571Z"
+  },
+  {
+    "chunk_id": "quelacion-metales-005",
+    "title": "Defensa contra el exposoma: Quelación de metales pesados en entornos urbanos",
+    "content": "La contaminación atmosférica en ciudades como Bogotá presenta una alta concentración de partículas en suspensión y metales pesados (como plomo, cadmio y mercurio) que actúan como catalizadores de la formación de radicales libres en la piel. Estos metales pueden penetrar la barrera epidérmica y desencadenar un estrés oxidativo masivo, induciendo la carbonilación de proteínas. La quelación tópica mediante agentes como el ácido fítico, el EDTA disódico o extractos ricos en quelantes naturales, se posiciona como un paso crítico en la rutina urbana. Al atrapar estos metales antes de que interactúen con las estructuras celulares, se previene la peroxidación lipídica y el daño al ADN mitocondrial. Este enfoque es superior a la simple protección antioxidante, ya que elimina el agente causal del daño oxidativo. La evidencia sugiere que la integración de un paso de quelación en la rutina de mañana, previo al fotoprotector, reduce significativamente la respuesta inflamatoria inducida por la polución, protegiendo la integridad del proteoma cutáneo contra el envejecimiento prematuro inducido por el entorno urbano.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido fítico",
+        "EDTA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_urbana"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:36:23.571Z"
+  },
+  {
+    "chunk_id": "bioenergetica-mitocondrial-006",
+    "title": "Optimización de la bioenergética mitocondrial en la reparación nocturna",
+    "content": "La función mitocondrial es crítica para la regeneración epidérmica, un proceso que alcanza su pico durante el ritmo circadiano nocturno. En pieles con fatiga celular, el declive de la producción de ATP limita la capacidad de reparación de la barrera cutánea y la síntesis de colágeno. El uso de inductores de la mitofagia y cofactores energéticos como la coenzima Q10 o la L-carnitina, aplicados en la rutina nocturna, puede optimizar la bioenergética celular. La mitofagia es el proceso de limpieza de mitocondrias dañadas; al potenciarlo, permitimos que las células funcionen con una maquinaria energética renovada y eficiente. La evidencia clínica, incluyendo estudios sobre sirtuinas, demuestra que la sincronización de activos con los ritmos circadianos de reparación (donde la permeabilidad cutánea es mayor durante la noche) maximiza la penetración y el efecto terapéutico. Este enfoque no solo mejora la turgencia, sino que también refuerza la resiliencia de la piel frente al estrés oxidativo que enfrentará al día siguiente, estableciendo un ciclo virtuoso de regeneración metabólica.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210987/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura",
+        "fatigada"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima Q10",
+        "L-carnitina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "reparacion_nocturna"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:36:23.571Z"
+  }
+]

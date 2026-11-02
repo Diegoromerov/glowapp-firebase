@@ -1,0 +1,88 @@
+{
+  "cycle": "25",
+  "experiment": "R5-C13",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "methodology": {
+    "phase1_candidate_pool": "Pool compuesto: expected V2 + gold V3/V4 + distractores mismo dominio + distractores otros dominios. IDs anonimizados (candidate_NN). Seed fija determinista.",
+    "phase2_blind_annotation": "Anotación por CONTENIDO (título + contenido). Escala: 3 RELEVANT / 2 PARTIALLY / 1 RELATED / 0 NOT / U / A. Sin acceso a chunk_ids ni rankings.",
+    "phase3_reveal": "Mapping revelado después de la anotación.",
+    "phase4_evaluation": "Retrieval productivo (R5-C7, invariante) contra gold independiente."
+  },
+  "annotation_distribution": {
+    "RELEVANT": 28,
+    "PARTIALLY_RELEVANT": 21,
+    "RELATED_BUT_NOT_ANSWERING": 17,
+    "NOT_RELEVANT": 166,
+    "total_candidates_annotated": 232
+  },
+  "independent_gold": {
+    "classification": {
+      "SUPPORTED_core": 13,
+      "PARTIAL_ONLY": 3,
+      "UNSUPPORTED": 2
+    },
+    "notes": {
+      "cabello_004": "UNSUPPORTED confirmado — ningún candidato responde caída post-parto/estrés",
+      "cejas_002": "UNSUPPORTED confirmado — ningún candidato compara las 3 técnicas",
+      "cabello_006": "PARTIAL_ONLY — solo evidencia parcial de microbiota, no de champú",
+      "cejas_001": "PARTIAL_ONLY — envejecimiento pero no duración",
+      "cejas_003": "PARTIAL_ONLY — solo visajismo proporción áurea, no forma de cara"
+    }
+  },
+  "independence_analysis": {
+    "exact_overlap_ratio": 0.5714,
+    "exact_overlap": "16/28 chunks RELEVANT independientes también en gold constructor V4",
+    "independent_additions": {
+      "cejas_004": "3 chunks de simetría muscular (dinámica orbicular, facial, ptosis) que el constructor no incluía",
+      "cejas_008": "3 chunks de remoción (láser eliminación, electrólisis, erbio-glass) que el constructor no incluía",
+      "cabello_002": "pH de cutícula como evidencia relevante (el constructor elegía pH pos-tinte)"
+    },
+    "constructor_only": "Chunks en V4 que el anotador no marcó RELEVANT (p.ej. algunos supporting)",
+    "verdict_independence": "PARTIALLY_INDEPENDENT — el anotador ciego llega a conclusiones propias (57% overlap, adiciones significativas en cejas_004/008 y cabello_002), pero existe coincidencia considerable con el constructor",
+    "anti_gaming_test": "NO (por diseño de proceso: pool compuesto ciego + anotación por contenido + mapping revelado después)"
+  },
+  "cases_constructor_wrong": [
+    "cabello_002: el constructor (V4) marcaba pH-pos-tinte como core; el anotador independiente eligió pH de cutícula durante tinte (chunk distinto) — desacuerdo en la evidencia óptima",
+    "cejas_004: el constructor marcaba solo 1 chunk (dispersión luz); el anotador encontró 3 chunks de simetría muscular más directamente relevantes",
+    "cejas_008: el constructor marcaba piel-grasa (tangencial); el anotador encontró 3 chunks de remoción (láser/electrólisis/erbio) directamente relevantes"
+  ],
+  "cases_independent_disagrees": [
+    "skincare_003: anotador marcó 2 core (clima Bogotá + altitud poros); constructor tenía 2 (poros-humedad + poros-clima) — alto acuerdo",
+    "skincare_005: anotador marcó 1 core (filtros solares); constructor 2 — el anotador excluyó sunscreen-mixing como core",
+    "skincare_006: anotador marcó 3 core (reología + AH alto peso + skin flooding); constructor 2 — anotador más inclusivo"
+  ],
+  "motor_vs_independent_gold": {
+    "core_gold_13_supported": { "p1": 0.3077, "p3": 0.4103, "p5": 0.2769, "r5": 0.6987, "mrr": 0.5192 },
+    "extended_gold_16": { "p1": 0.25, "p3": 0.4167, "p5": 0.3, "r5": 0.4479, "mrr": 0.4427 },
+    "retrieval_misses_vs_independent_gold": [
+      { "query": "cabello_002", "r5": 0, "evidence": "pH cutícula durante tinte (anotado RELEVANT) no recuperado en top-5 — el motor recupera pH pos-tinte pero NO el chunk de pH de cutícula" },
+      { "query": "cejas_004", "r5": 0, "evidence": "simetría muscular (3 chunks anotados RELEVANT) no recuperados — el motor recupera fotobiología/metamerismo, no simetría" },
+      { "query": "cejas_008", "r5": 0, "evidence": "remoción láser/electrólisis/erbio (3 chunks RELEVANT) no recuperados — el motor recupera piel seborreica/autoinmunes" }
+    ],
+    "conclusion": "El motor recupera la evidencia independiente en 10/13 SUPPORTED core (R@5=0.70) PERO falla en 3 queries (cabello_002, cejas_004, cejas_008) donde la evidencia semánticamente relevante (según anotación ciega) NO entra en top-5 — déficit REAL de retrieval en esos casos, independiente del benchmark"
+  },
+  "cejas_analysis": {
+    "cejas_001": "PARTIAL_ONLY — evidencia parcial (envejecimiento); query no cubierta completamente",
+    "cejas_002": "UNSUPPORTED — sin evidencia comparativa",
+    "cejas_003": "PARTIAL_ONLY — sin visajismo por forma de cara",
+    "cejas_004": "SUPPORTED core 3 — el anotador ciego encontró evidencia de simetría que el motor NO recupera → RETRIEVAL",
+    "cejas_005": "SUPPORTED core 3 — cicatrización + fotoprotección + microbiota recuperados (R@5=0.67)",
+    "cejas_007": "SUPPORTED core 1 — autoinmunes/diabéticos (R@5=1.0)",
+    "cejas_008": "SUPPORTED core 3 — remoción existe en corpus pero el motor NO la recupera → RETRIEVAL",
+    "conclusion": "Cejas NO es homogéneamente malo: 3 queries tienen evidencia real y recuperable (005, 007, 001-parcial), 2 son corpus gap genuino (002, 003), y 2 (004, 008) tienen evidencia que el motor falla en recuperar"
+  },
+  "reproducibility": "RUN A ≡ RUN B — pool determinista (seed fija), anotación por contenido reproducible, retrieval invariante",
+  "verdict": "GOLD-ACCEPTED-WITH-REVISION",
+  "decision_rationale": "La anotación ciega demuestra independencia parcial: 57% overlap con el constructor (NO 100%), adiciones independientes significativas (cejas_004 simetría, cejas_008 remoción, cabello_002 pH cutícula) que el constructor ignoraba, y desacuerdos legítimos. El gold independiente es semánticamente defendible (28 RELEVANT con reasons por contenido). REVISION necesaria: integrar las adiciones del anotador al gold V4 y revisar los 3 casos de desacuerdo (cabello_002, cejas_004, cejas_008).",
+  "recommendation_r5c14": {
+    "1": "Fusionar gold V4 con adiciones independientes (cejas_004 +3 simetría, cejas_008 +3 remoción, cabello_002 revisar evidencia óptima)",
+    "2": "Establecer baseline R5-C DEFINITIVO con el gold fusionado (esperado R@5≈0.70 core / MRR≈0.52 [EXPERIMENTAL])",
+    "3": "Atacar los 3 retrieval misses reales (cabello_002, cejas_004, cejas_008) — evidencia existe en corpus y el motor no la recupera en top-5",
+    "4": "Mantener 2 UNSUPPORTED (cabello_004, cejas_002) y 3 PARTIAL (cabello_006, cejas_001, cejas_003) con política explícita"
+  }
+}

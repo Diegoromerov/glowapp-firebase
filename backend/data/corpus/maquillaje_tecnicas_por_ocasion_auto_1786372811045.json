@@ -1,0 +1,174 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entorno-anoxico-001",
+    "title": "Maquillaje en eventos con alta altitud: Gestión de la hipoxia hipobárica y oclusión",
+    "content": "En eventos desarrollados en zonas de gran altitud, la presión parcial de oxígeno disminuye, afectando la oxigenación tisular y la tasa metabólica cutánea. La hipoxia hipobárica induce un estrés oxidativo que altera la función de barrera epidérmica, aumentando la pérdida de agua transepidérmica (TEWL). El maquillaje en estas condiciones debe evitar fórmulas oclusivas que compliquen la respiración celular ya comprometida. Se recomienda el uso de bases de maquillaje con alta permeabilidad al vapor de agua, evitando siliconas de alto peso molecular que puedan generar un efecto de 'máscara' térmica. La literatura dermatológica sugiere que, en altitud, la piel presenta una mayor sensibilidad a la radiación UV debido a la menor densidad atmosférica, haciendo imperativo que el maquillaje contenga filtros minerales no comedogénicos. La gestión de la hidratación es crítica; el uso de fijadores con ácido hialurónico de bajo peso molecular ayuda a mantener la turgencia sin comprometer la oxigenación. Evite polvos compactos que puedan desecar la superficie cutánea al absorber la humedad residual en un ambiente ya hipóxico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31535492/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "filtros minerales"
+      ],
+      "contraindications": [
+        "siliconas de alto peso molecular"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestión_ambiental_cutánea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:52.389Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-ozono-002",
+    "title": "Maquillaje como escudo pasivo ante la exposición a ozono troposférico",
+    "content": "El ozono troposférico (O3) es un contaminante oxidante potente que induce la peroxidación lipídica en el estrato córneo, degradando la vitamina E y provocando una cascada inflamatoria. En eventos urbanos con alta densidad de tráfico, el maquillaje puede actuar como una barrera física pasiva si se formulan correctamente. La aplicación de primers que contengan polímeros formadores de película (film-formers) no oclusivos permite crear una interfaz que impide la penetración de radicales libres derivados del ozono. Es fundamental evitar productos que contengan escualeno no estabilizado, ya que este es altamente susceptible a la oxidación por ozono, lo que podría convertir el maquillaje en una fuente de irritación cutánea. Se recomienda la incorporación de antioxidantes como la vitamina C estabilizada o ferúlico en el maquillaje de base para neutralizar los radicales libres antes de que alcancen el epitelio. El uso de polvos con partículas de sílice tratada puede ayudar a absorber contaminantes gaseosos, minimizando el impacto del ozono en la homeostasis de la piel durante eventos de larga duración al aire libre.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/skin-cancer/prevent/environment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "ácido ferúlico",
+        "sílice"
+      ],
+      "contraindications": [
+        "escualeno sin estabilizar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protección_urbana"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:52.389Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-006",
+    "title": "Adherencia de partículas cosméticas en ambientes de alta ionización ambiental",
+    "content": "En entornos con alta ionización ambiental, ya sea por maquinaria electrónica o condiciones atmosféricas, se genera una carga electrostática sobre la superficie cutánea. Esta carga puede atraer partículas de polvo, polución y microorganismos, los cuales se adhieren con mayor facilidad a las bases de maquillaje que contienen polímeros cargados positivamente o pigmentos metálicos. La acumulación de estas partículas no solo altera la estética del maquillaje, sino que también puede inducir una dermatitis por irritación mecánica o por contacto con metales pesados. La estrategia técnica consiste en aplicar un spray fijador con propiedades antiestáticas que neutralice la carga superficial de la piel. Los ingredientes como los polímeros de silicona modificada con grupos hidrofílicos pueden ayudar a reducir la atracción electrostática de partículas. Además, el uso de polvos minerales con tratamiento de superficie (como la sílice recubierta) reduce la capacidad de adhesión de contaminantes. Es vital, al finalizar el evento, realizar una doble limpieza profunda para eliminar cualquier rastro de partículas que hayan logrado penetrar el estrato córneo debido a la atracción electrostática, evitando así la oclusión folicular.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros antiestáticos",
+        "sílice tratada"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protección_urbana"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:52.389Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-luz-sodio-007",
+    "title": "Desafíos cromáticos y metamerismo en eventos bajo iluminación de sodio de alta presión",
+    "content": "La iluminación de sodio de alta presión, común en túneles, estadios nocturnos y entornos industriales, emite un espectro luminoso limitado que se concentra en las longitudes de onda del amarillo y naranja. Este tipo de luz provoca un fenómeno de metamerismo severo, donde los colores del maquillaje cambian drásticamente su percepción respecto a la luz natural o de espectro completo. Clínicamente, el desafío reside en que el usuario intenta compensar esta falta de color aplicando capas excesivas de corrector o base, lo que aumenta el riesgo de oclusión y dermatitis. Para eventos bajo esta iluminación, es preferible utilizar pigmentos con alta reflectancia en el espectro rojo y azul para intentar equilibrar la respuesta cromática. El uso de polvos matificantes con pigmentos correctores (tipo violeta o verde) puede ayudar a neutralizar la distorsión cromática sin necesidad de sobrecargar la piel. Es fundamental educar al usuario sobre la distorsión lumínica para evitar la sobre-aplicación, recomendando pruebas de color bajo condiciones de luz similares a las del evento para asegurar una armonía visual que no comprometa la salud de la barrera cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8546377/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos correctores"
+      ],
+      "contraindications": [
+        "exceso de capas de maquillaje"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestión_cromática"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:52.389Z"
+  }
+]

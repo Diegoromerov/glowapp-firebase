@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "skincare-bio-ritmo-001",
+    "title": "La moda del Skin-Syncing circadiano: ¿Sincronización real o marketing?",
+    "content": "La tendencia del Skin-Syncing propone ajustar la rutina cosmética al ritmo circadiano de la piel, que presenta variaciones en la pérdida de agua transepidérmica (TEWL) y el pH según el momento del día. Clínicamente, es cierto que la piel tiene un ritmo de reparación nocturna mediado por la melatonina y una mayor actividad de defensa antioxidante diurna. Sin embargo, muchas marcas utilizan este fundamento biológico para vender productos duplicados innecesarios. La evidencia sugiere que, más allá de la segmentación comercial, el eje principal debe ser proteger la barrera de día y potenciar la renovación de noche, sin necesidad de 'cronocosméticos' específicos. La AAD destaca que la consistencia en el uso de ingredientes clave, independientemente de la hora exacta, es lo que determina la eficacia a largo plazo en la salud cutánea.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "retinoides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cronobiologia_cutanea"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:19:37.069Z"
+  },
+  {
+    "chunk_id": "acid-layering-riesgos-003",
+    "title": "La fiebre del Acid Layering: Riesgos de la exfoliación química múltiple",
+    "content": "El 'Acid Layering' o la superposición de múltiples ácidos (AHA, BHA, PHA) en una misma rutina es una de las prácticas más deletéreas para la integridad del estrato córneo. La exfoliación química es un proceso que debe ser controlado y, idealmente, intermitente. La combinación de potentes queratolíticos como el ácido glicólico con salicílico y láctico puede inducir una disrupción severa de la barrera cutánea, resultando en una pérdida de agua transepidérmica (TEWL) incontrolada y una inflamación subclínica crónica. Estudios publicados en el Journal of Clinical and Aesthetic Dermatology advierten que la sobre-exfoliación es un factor desencadenante frecuente de dermatitis irritativa de contacto y sensibilización a la radiación UV. La clave no es la cantidad de ácidos aplicados, sino la capacidad de regeneración de la piel. Se recomienda priorizar un solo exfoliante químico a una concentración adecuada y observar la respuesta cutánea antes de considerar cualquier aumento en la frecuencia o intensidad de uso.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/chemical-peeling-guidelines/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "AHA",
+        "BHA",
+        "PHA"
+      ],
+      "contraindications": [
+        "piel_sensible",
+        "barrera_danada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:19:37.069Z"
+  }
+]

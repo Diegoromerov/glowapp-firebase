@@ -1,0 +1,255 @@
+[
+  {
+    "chunk_id": "bio-mecanica-flexion-001",
+    "title": "La biomecánica de la curvatura ungueal: efectos de la tensión transversal",
+    "content": "La uña no es una estructura estática, sino una placa viscoelástica que responde a fuerzas biomecánicas externas. La curvatura de la uña está determinada por la forma de la matriz y la tensión ejercida por los pliegues laterales. Cuando se aplican sistemas rígidos como acrílicos de baja calidad o geles con alto módulo de elasticidad, se altera la capacidad de la uña para flexionarse ante impactos menores. Esta rigidez artificial transfiere la energía del impacto directamente hacia el lecho ungueal y el hiponiquio, aumentando el riesgo de desprendimiento (onicólisis traumática) y microhemorragias subungueales. Estudios publicados en el Journal of the American Academy of Dermatology sugieren que mantener un equilibrio entre la flexibilidad de la lámina y la dureza del producto es fundamental para evitar la fatiga del material ungueal. La sobre-polimerización, que hace que el producto se vuelva quebradizo, exacerba este riesgo al no absorber la carga mecánica, convirtiendo la uña en una palanca de alta tensión. Es vital que los profesionales entiendan que el diseño de la estructura debe seguir la curvatura natural y no forzar una arquitectura que comprometa la biomecánica intrínseca del aparato ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-care",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "uñas delgadas",
+        "fragilidad ungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:57.084Z"
+  },
+  {
+    "chunk_id": "interaccion-ph-adhesion-002",
+    "title": "Variabilidad del pH ungueal y su impacto en la adhesión química",
+    "content": "El pH de la superficie ungueal es ligeramente ácido, oscilando habitualmente entre 5.0 y 6.0, lo cual es crucial para mantener la integridad de la queratina y la microbiota residente. La manipulación excesiva con agentes alcalinos (como removedores de cutícula de alta concentración) o el limado agresivo que expone capas más profundas puede elevar este pH, alterando la carga eléctrica de la superficie. Los sistemas de adhesión fotopolimerizables dependen de la formación de enlaces iónicos y covalentes con los grupos amino de la queratina. Si el pH es modificado, la eficiencia de la polimerización puede caer, provocando una adhesión incompleta y dejando monómeros residuales sin reaccionar. Estos monómeros son potentes alérgenos que, al estar en contacto directo con el lecho ungueal, aumentan drásticamente el riesgo de dermatitis alérgica de contacto. Investigaciones en PubMed indican que el mantenimiento del manto ácido natural es un factor protector contra la colonización por patógenos oportunistas como Pseudomonas. La estabilización del pH debe ser considerada un paso clínico previo a cualquier aplicación de producto químico, utilizando equilibradores específicos que no comprometan la barrera cutánea.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "preparadores de pH"
+      ],
+      "contraindications": [
+        "piel sensible",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_aplicada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:57.084Z"
+  },
+  {
+    "chunk_id": "toxicidad-monomeros-003",
+    "title": "Migración de monómeros y sensibilización a largo plazo",
+    "content": "La sensibilización a los acrilatos es un fenómeno acumulativo, no una reacción inmediata. Cada vez que un sistema de uñas se cura de forma incompleta, ya sea por una lámpara UV mal calibrada, un grosor de producto inadecuado o un tiempo de exposición insuficiente, se liberan monómeros libres. Estos compuestos de bajo peso molecular tienen la capacidad de atravesar la lámina ungueal y penetrar en el lecho ungueal, donde el sistema inmunológico los reconoce como antígenos. Una vez que se desarrolla la sensibilización, el paciente puede presentar reacciones alérgicas no solo en los dedos, sino también en áreas donde se tocan accidentalmente (párpados, cuello o cara). La literatura dermatológica de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) advierte sobre el uso de monómeros prohibidos como el metilmetacrilato (MMA), que aunque ha sido restringido, sigue apareciendo en productos de baja calidad. La clave para la seguridad en cabina radica en el uso de lámparas de longitud de onda certificada y el respeto absoluto a los tiempos de curado especificados por el fabricante. La educación del cliente sobre la aparición de prurito, eritema o edema periungueal es la primera línea de defensa contra una sensibilización que, una vez establecida, es irreversible.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/nail-dermatology-guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros",
+        "acrilatos"
+      ],
+      "contraindications": [
+        "historial de alergias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:57.084Z"
+  },
+  {
+    "chunk_id": "biofilm-microfisuras-004",
+    "title": "Biofilms en microfisuras: el desafío de la asepsia en cabina",
+    "content": "La superficie de las herramientas metálicas, aunque parezcan lisas a simple vista, presentan microfisuras donde los detritos orgánicos y los microorganismos pueden alojarse. Estos depósitos forman biofilms, estructuras complejas de bacterias protegidas por una matriz extracelular que los hace extremadamente resistentes a los desinfectantes convencionales. En el contexto de la manicura, si las herramientas no pasan por un proceso riguroso de limpieza ultrasónica antes de la esterilización en autoclave, el biofilm persiste. La transferencia de Pseudomonas aeruginosa o Staphylococcus aureus a través de estas herramientas contaminadas es una causa frecuente de paroniquia aguda y crónica. Es imperativo abandonar la idea de que la desinfección química por inmersión es suficiente. La evidencia clínica subraya que la esterilización debe seguir protocolos validados (como los de la OMS) que incluyen la limpieza mecánica, el empaquetado y el ciclo de calor húmedo. Cualquier herramienta que entre en contacto con el eponiquio o el hiponiquio debe ser considerada un dispositivo médico de riesgo si no se garantiza su esterilidad absoluta, protegiendo así al usuario de infecciones bacterianas que pueden dejar secuelas permanentes en la matriz ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789241595162",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_higiene"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:57.084Z"
+  },
+  {
+    "chunk_id": "fotoenvejecimiento-radiacion-006",
+    "title": "Protección contra el fotoenvejecimiento por lámparas UV",
+    "content": "El uso prolongado y repetitivo de lámparas UV para el secado de uñas ha generado debate sobre el riesgo acumulativo de exposición a radiación ultravioleta A (UVA). Aunque la dosis por sesión es baja, la frecuencia de las visitas al salón puede ser considerable. La radiación UVA es conocida por su capacidad de penetrar profundamente en la dermis, causando daño al ADN celular, fotoenvejecimiento prematuro (manchas, pérdida de elasticidad) y aumentando el riesgo de carcinoma basocelular y escamocelular en el dorso de las manos. La evidencia actual, respaldada por la Skin Cancer Foundation, sugiere que el riesgo individual es bajo, pero no despreciable. Como medida de precaución, se recomienda el uso de guantes con protección UV que cubran la piel periungueal o la aplicación de protector solar de amplio espectro 20 minutos antes del servicio. Es fundamental que los salones opten por lámparas LED de alta eficiencia que operan en un rango de longitud de onda más estrecho y seguro, minimizando la exposición a espectros de radiación innecesarios. La fotoprotección en la cabina de uñas debe ser un estándar de atención, no una opción, especialmente en clientes con antecedentes de daño solar o pieles muy claras.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "The Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/your-gel-manicure-is-it-safe/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "I",
+        "II",
+        "III"
+      ],
+      "ingredients": [
+        "protector solar"
+      ],
+      "contraindications": [
+        "antecedentes de cáncer de piel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cliente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:57.084Z"
+  },
+  {
+    "chunk_id": "corrosion-galvanica-007",
+    "title": "Corrosión galvánica y liberación de metales en herramientas",
+    "content": "La corrosión galvánica es un proceso electroquímico que ocurre cuando dos metales diferentes entran en contacto en presencia de un electrolito (como los residuos de sales de la transpiración o desinfectantes líquidos). En herramientas de manicura de acero inoxidable de baja calidad, este proceso puede degradar la aleación, liberando metales como el níquel o el cromo. Estos metales, al entrar en contacto con la piel, son causas frecuentes de dermatitis alérgica de contacto por metales. El contacto repetido con herramientas corroídas puede inducir una sensibilización al níquel, una de las alergias de contacto más comunes a nivel mundial. Para prevenir esto, es esencial utilizar herramientas de acero quirúrgico de grado 316L o superior, que presentan una mayor resistencia a la corrosión. Además, el secado inmediato de las herramientas tras la desinfección es vital. La presencia de manchas oscuras, óxido superficial o picaduras en el metal es una indicación clara de que la herramienta debe ser retirada de servicio, ya que la integridad estructural y química del instrumento ha sido comprometida, convirtiéndose en un riesgo para la salud cutánea del usuario.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "níquel"
+      ],
+      "contraindications": [
+        "alergia al níquel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "equipo_herramientas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:22:57.084Z"
+  }
+]

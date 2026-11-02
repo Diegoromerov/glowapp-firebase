@@ -1,0 +1,394 @@
+{
+  "version": "1.0.0",
+  "assets": [
+    {
+      "id": "aura_welcome_background",
+      "path": "assets/images/aura_welcome_background.jpg",
+      "expression": [
+        "aura"
+      ],
+      "category": "background",
+      "subject": "human experiencing transformation",
+      "muse": "female",
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [
+        "top",
+        "left"
+      ],
+      "cta_safe_zone": "bottom",
+      "version": "v001",
+      "retouching_level": "light",
+      "approval_status": "approved",
+      "width": 941,
+      "height": 1672,
+      "notes": "Used in AuraWelcomeScreen. Requires Men-adaptive variant or abstract alternative (gap)."
+    },
+    {
+      "id": "login_background",
+      "path": "assets/images/auth/login_background.jpg",
+      "expression": [
+        "women"
+      ],
+      "category": "background",
+      "subject": "login background",
+      "muse": "female",
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [
+        "top",
+        "left"
+      ],
+      "cta_safe_zone": "bottom",
+      "version": "v001",
+      "retouching_level": "light",
+      "approval_status": "approved",
+      "width": 736,
+      "height": 1368,
+      "notes": "Used in LoginScreen. Generic, needs to be replaced with official female muse."
+    },
+    {
+      "id": "register_background",
+      "path": "assets/images/auth/register_background.jpg",
+      "expression": [
+        "women"
+      ],
+      "category": "background",
+      "subject": "register background",
+      "muse": "female",
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [
+        "top",
+        "left"
+      ],
+      "cta_safe_zone": "bottom",
+      "version": "v001",
+      "retouching_level": "light",
+      "approval_status": "approved",
+      "width": 736,
+      "height": 1312,
+      "notes": "Used in RegisterScreen. Generic, needs to be replaced with official female muse."
+    },
+    {
+      "id": "register_concierge_background",
+      "path": "assets/images/auth/register_concierge_background.jpg",
+      "expression": [
+        "concierge"
+      ],
+      "category": "background",
+      "subject": "register background (concierge option)",
+      "muse": "female",
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [
+        "top",
+        "left"
+      ],
+      "cta_safe_zone": "bottom",
+      "version": "v001",
+      "retouching_level": "light",
+      "approval_status": "approved",
+      "width": 941,
+      "height": 1672,
+      "notes": "Used in RegisterScreen background. Candidate for official female muse, not yet systematized."
+    },
+    {
+      "id": "avatar_aura",
+      "path": "assets/images/avatar_aura.png",
+      "expression": [
+        "aura"
+      ],
+      "category": "avatar",
+      "subject": "abstract aura avatar",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 256,
+      "height": 256,
+      "notes": "Used as aura avatar in multiple places. Abstract, so no muse."
+    },
+    {
+      "id": "glow_ia_mesh_avatar",
+      "path": "assets/images/glow_ia_mesh_avatar.jpg",
+      "expression": [
+        "aura"
+      ],
+      "category": "avatar",
+      "subject": "abstract aura mesh avatar",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 571,
+      "notes": "Used as aura avatar in biometric history and main. Abstract."
+    },
+    {
+      "id": "logo_maestro_v5",
+      "path": "assets/images/logo_maestro_v5.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "logo",
+      "subject": "GlowApp logo",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 682,
+      "notes": "Used as logo in outfit and wardrobe screens."
+    },
+    {
+      "id": "nav_citas_icon",
+      "path": "assets/images/nav_citas_icon.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "icon",
+      "subject": "appointments",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 571,
+      "notes": "Used as bottom navigation icon. Raster, need to migrate to SVG."
+    },
+    {
+      "id": "nav_glowshop_icon",
+      "path": "assets/images/nav_glowshop_icon.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "icon",
+      "subject": "glowshop",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 571,
+      "notes": "Used as bottom navigation icon. Raster, need to migrate to SVG."
+    },
+    {
+      "id": "nav_perfil_icon",
+      "path": "assets/images/nav_perfil_icon.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "icon",
+      "subject": "profile",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 571,
+      "notes": "Used as bottom navigation icon. Raster, need to migrate to SVG."
+    },
+    {
+      "id": "design_ideas_eyebrow_visagism_1781572947958",
+      "path": "assets/images/design_ideas_eyebrow_visagism_1781572947958.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "illustration",
+      "subject": "eyebrow visagism",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 1024,
+      "notes": "3D illustration, needs to be replaced with photography per S3."
+    },
+    {
+      "id": "design_ideas_hair_diagnostic_1781572914936",
+      "path": "assets/images/design_ideas_hair_diagnostic_1781572914936.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "illustration",
+      "subject": "hair diagnostic",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 1024,
+      "notes": "3D illustration, needs to be replaced with photography per S3."
+    },
+    {
+      "id": "design_ideas_nails_classic_1781572880027",
+      "path": "assets/images/design_ideas_nails_classic_1781572880027.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "illustration",
+      "subject": "nails classic",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 1024,
+      "notes": "3D illustration, needs to be replaced with photography per S3."
+    },
+    {
+      "id": "design_ideas_nails_style_1781572969602",
+      "path": "assets/images/design_ideas_nails_style_1781572969602.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "illustration",
+      "subject": "nails style",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 1024,
+      "notes": "3D illustration, needs to be replaced with photography per S3."
+    },
+    {
+      "id": "design_ideas_skin_texture_1781572933469",
+      "path": "assets/images/design_ideas_skin_texture_1781572933469.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "illustration",
+      "subject": "skin texture",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 1024,
+      "notes": "3D illustration, needs to be replaced with photography per S3."
+    },
+    {
+      "id": "design_ideas_skin_tone_1781572896303",
+      "path": "assets/images/design_ideas_skin_tone_1781572896303.png",
+      "expression": [
+        "brand"
+      ],
+      "category": "illustration",
+      "subject": "skin tone",
+      "muse": null,
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [],
+      "cta_safe_zone": null,
+      "version": "v001",
+      "retouching_level": null,
+      "approval_status": "approved",
+      "width": 1024,
+      "height": 1024,
+      "notes": "3D illustration, needs to be replaced with photography per S3."
+    },
+    {
+      "id": "onboarding_01",
+      "path": "assets/images/onboarding/onboarding_01.jpg",
+      "expression": [
+        "women"
+      ],
+      "category": "background",
+      "subject": "onboarding step 1",
+      "muse": "female",
+      "focal_point": {
+        "x": 50,
+        "y": 50
+      },
+      "text_safe_zones": [
+        "top",
+        "left"
+      ],
+      "cta_safe_zone": "bottom",
+      "version": "v001",
+      "retouching_level": "light",
+      "approval_status": "approved",
+      "width": 469,
+      "height": 905,
+      "notes": "Used in Onboarding screen step 1. Generic female, no men variant."
+    }
+  ]
+}

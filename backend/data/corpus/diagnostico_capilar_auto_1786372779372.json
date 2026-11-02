@@ -1,0 +1,289 @@
+[
+  {
+    "chunk_id": "diag-cap-001-glicobiologia-matriz",
+    "title": "Glicobiología de la Matriz Folicular: El impacto de la metilación de azúcares",
+    "content": "La glicobiología del folículo piloso es un campo emergente que analiza cómo la modificación post-traduccional de proteínas mediante la adición de azúcares influye en la integridad del tallo. En la alopecia androgenética, se observa una alteración en la glicosilación de las proteínas de la matriz, lo que compromete la estabilidad estructural. Investigaciones recientes en PubMed sugieren que la acumulación de precursores de glicación altera la señalización de los factores de crecimiento en la papila dérmica. Esta alteración no solo afecta la queratinización, sino que modifica la interacción entre las células madre del bulbo y su nicho. El diagnóstico clínico debe considerar la evaluación de la rigidez de la cutícula mediante microscopía de fuerza atómica, un método que permite identificar cambios estructurales mucho antes de la manifestación de la miniaturización macroscópica visible. La comprensión de este proceso permite diseñar estrategias que modulen la glicosilación mediante el uso de precursores específicos y antioxidantes de nueva generación, mejorando la resiliencia del folículo ante el estrés mecánico y bioquímico del entorno urbano.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "precursores-glicosilación"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estructural-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  },
+  {
+    "chunk_id": "diag-cap-002-electrophysiology-follicle",
+    "title": "Electrofisiología Folicular: Potenciales de membrana y regeneración",
+    "content": "La electrofisiología del folículo piloso se centra en cómo los gradientes iónicos y los potenciales de membrana regulan la proliferación de las células de la matriz pilosa. El folículo funciona como un bio-oscilador eléctrico; alteraciones en la conductancia de los canales de potasio y calcio pueden inducir la entrada prematura en la fase catágena. Estudios publicados en revistas de dermatología experimental indican que la aplicación de microcorrientes específicas puede restaurar el potencial de reposo de las células de la papila dérmica, promoviendo la síntesis de mediadores angiogénicos. En el diagnóstico, la medición de la impedancia bioeléctrica del cuero cabelludo ofrece una ventana hacia la vitalidad folicular, permitiendo detectar áreas con hipoxia funcional antes de que ocurra la pérdida de densidad. Esta técnica no invasiva es fundamental para personalizar tratamientos que requieran estimulación física, asegurando que la energía aplicada sea óptima para la reactivación del ciclo folicular sin generar daño térmico o inflamación reactiva en el estrato córneo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "implantes-metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bio-analisis-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  },
+  {
+    "chunk_id": "diag-cap-003-mechanotransduction-follicle",
+    "title": "Mecanotransducción: La respuesta del folículo al estrés físico",
+    "content": "La mecanotransducción es el proceso mediante el cual las células del folículo piloso traducen estímulos mecánicos en señales biológicas. El músculo erector del pelo y la vaina radicular externa actúan como sensores de tensión. Un exceso de tensión mecánica, ya sea por peinados apretados o por la rigidez del cuero cabelludo debido a la fibrosis perifolicular, activa vías de señalización pro-inflamatorias como la vía YAP/TAZ. Esto conduce a una miniaturización acelerada y a la apoptosis de los melanocitos en el bulbo. La evaluación clínica debe incluir pruebas de viscoelasticidad del cuero cabelludo, comparando la movilidad de las capas dérmicas en diferentes regiones. El uso de técnicas de masaje terapéutico o terapias de liberación miofascial puede reducir esta tensión mecánica, restaurando la homeostasis y permitiendo que los tratamientos farmacológicos tópicos penetren de manera más eficiente al mejorar la microcirculación y reducir la compresión del ostium folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-biomecanica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  },
+  {
+    "chunk_id": "diag-cap-004-exosomas-regeneracion",
+    "title": "Exosomas y comunicación intercelular en el nicho folicular",
+    "content": "Los exosomas, pequeñas vesículas extracelulares, se han posicionado como mediadores críticos en la comunicación entre las células madre del folículo y los fibroblastos de la papila dérmica. Estas partículas transportan microARNs y proteínas que pueden reprogramar el estado metabólico de los folículos en fase telógena hacia una fase anágena activa. En el diagnóstico actual, el análisis del perfil de exosomas en el sebo puede servir como un biomarcador no invasivo para evaluar el potencial regenerativo del cuero cabelludo. A diferencia de las terapias con células madre completas, los exosomas presentan un perfil de seguridad superior al evitar la proliferación celular incontrolada. El reto clínico reside en la estandarización de su aplicación, asegurando que la carga terapéutica alcance el bulbo piloso. La investigación actual indica que la combinación de exosomas con protocolos de microneedling aumenta significativamente la penetración y la eficacia clínica en pacientes con alopecia androgenética resistente a minoxidil.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "procesos-oncologicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina-regenerativa"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  },
+  {
+    "chunk_id": "diag-cap-006-barrera-cutanea-ostium",
+    "title": "Disrupción de la barrera cutánea en el ostium folicular",
+    "content": "El ostium folicular no es solo una salida para el tallo, sino una zona de alta permeabilidad donde la barrera cutánea es más delgada y vulnerable. La alteración de los lípidos de barrera, como las ceramidas y el colesterol en el canal folicular, facilita la entrada de irritantes y alérgenos, desencadenando una inflamación subclínica constante. Este fenómeno es un factor clave en la dermatitis seborreica y las alopecias inflamatorias crónicas. La evaluación de la pérdida de agua transepidérmica (TEWL) específicamente en la zona del ostium, mediante sensores de alta precisión, permite identificar pacientes con mayor riesgo de desarrollar patologías foliculares. El manejo clínico debe priorizar la restauración de la barrera lipídica mediante el uso de lípidos fisiológicos que no obstruyan el canal, evitando el uso de oclusivos pesados que puedan exacerbar la disbiosis del microbioma local al atrapar microorganismos bajo una capa de sebo alterado.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00888-0",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol",
+        "acidos-grasos"
+      ],
+      "contraindications": [
+        "oclusivos-pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  },
+  {
+    "chunk_id": "diag-cap-007-neurotransmisores-inflamacion",
+    "title": "Inflamación neurogénica: El rol de la Sustancia P",
+    "content": "La inflamación neurogénica es un proceso mediado por la liberación de neuropéptidos como la Sustancia P a partir de las terminaciones nerviosas sensoriales que rodean el folículo piloso. Este proceso se activa ante situaciones de estrés crónico, polución o daño físico, y tiene como efecto directo la inducción de la fase catágena. Clínicamente, el paciente refiere a menudo 'tricodinia' o sensibilidad al tacto en el cuero cabelludo. La inhibición de los receptores de neuroquinina-1 (NK1) representa una vía terapéutica prometedora para frenar este proceso. El diagnóstico debe considerar la correlación entre los niveles de cortisol salival y la intensidad de la respuesta inflamatoria perifolicular. La modulación de este eje neuro-inmune mediante técnicas de relajación, suplementación con adaptógenos y el uso de tópicos específicos que reduzcan la reactividad nerviosa es fundamental para estabilizar el ciclo folicular en pacientes con efluvio crónico y alopecia areata.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Dermatological reports",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "adaptogenos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  },
+  {
+    "chunk_id": "diag-cap-008-microbioma-metabolomica",
+    "title": "Metabolómica del microbioma como predictor de respuesta",
+    "content": "Más allá de la identificación taxonómica del microbioma (como Malassezia o Cutibacterium), la metabolómica ofrece una visión funcional de la salud del cuero cabelludo. Los metabolitos producidos por el microbioma, como los ácidos grasos de cadena corta, juegan un papel crucial en la regulación del pH y la inflamación folicular. Un perfil metabólico desequilibrado puede impedir la absorción efectiva de tratamientos tópicos como el minoxidil, al modificar el microambiente del ostium. Estudios recientes indican que el análisis del metaboloma puede predecir la respuesta terapéutica de un paciente antes de iniciar el tratamiento. Esta personalización permite ajustar las formulaciones galénicas, optimizando el pH del vehículo para favorecer la biodisponibilidad del fármaco. La integración de estos datos en el expediente clínico digital de GlowApp permitirá un enfoque de precisión, reduciendo el tiempo necesario para observar resultados clínicos visibles y mejorando la adherencia al tratamiento a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/research-updates",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbiota"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:39:22.246Z"
+  }
+]

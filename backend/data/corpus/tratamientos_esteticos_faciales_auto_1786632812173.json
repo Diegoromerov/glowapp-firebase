@@ -1,0 +1,215 @@
+[
+  {
+    "chunk_id": "fotobiomodulacion-infrarroja-001",
+    "title": "Fotobiomodulación Infrarroja Cercana (NIR) y Reparación del Colágeno",
+    "content": "La fotobiomodulación con longitudes de onda en el espectro del infrarrojo cercano (810-850 nm) ha demostrado efectos terapéuticos significativos en la estimulación de fibroblastos dérmicos. A diferencia de las luces visibles, el NIR penetra profundamente en el tejido celular, interactuando directamente con la citocromo c oxidasa mitocondrial. Esta interacción aumenta la producción de ATP y reduce el estrés oxidativo, facilitando una síntesis de colágeno tipo I más eficiente y una mejor organización de las fibras elásticas. Estudios recientes publicados en 'Lasers in Surgery and Medicine' enfatizan que esta modulación energética no genera daño térmico, permitiendo su uso en pieles con inflamación crónica o tras procedimientos ablativos. La clave del éxito clínico radica en la fluencia (energía por unidad de área) y el tiempo de exposición, evitando la sobreestimulación que podría conducir a una respuesta inhibitoria por parte de la célula. Este enfoque es un pilar en la medicina regenerativa moderna para acelerar la curación de heridas y mejorar la textura cutánea sin los riesgos asociados a las terapias invasivas.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Society for Laser Medicine and Surgery",
+        "url": "https://www.aslms.org/for-the-public/laser-procedures/low-level-laser-therapy",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "epilepsia_fotosensible",
+        "neoplasias_activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion_tisular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:53:13.456Z"
+  },
+  {
+    "chunk_id": "radiofrecuencia-impedancia-002",
+    "title": "Control dinámico de la impedancia en Radiofrecuencia Monopolar",
+    "content": "La eficacia de la radiofrecuencia (RF) monopolar depende críticamente de la gestión de la impedancia eléctrica del tejido. A medida que el tejido se calienta, su resistencia eléctrica disminuye, lo que altera la distribución de la corriente y la profundidad de penetración. Los sistemas de RF de última generación incorporan sensores de impedancia en tiempo real que ajustan automáticamente la salida de potencia cada milisegundo para mantener una temperatura terapéutica constante en la dermis profunda sin comprometer la epidermis. Este control dinámico es fundamental para evitar quemaduras por puntos calientes, especialmente en zonas con variaciones de grosor subcutáneo. La literatura en 'Journal of Cosmetic Dermatology' subraya que la calibración precisa de la impedancia no solo mejora la seguridad, sino que garantiza una contracción volumétrica uniforme del colágeno. Es vital que el operador entienda que la hidratación previa del paciente afecta directamente la impedancia base, por lo que una piel bien hidratada permite una transmisión de energía más predecible y resultados más estables a largo plazo.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32452109/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "implantes_metalicos_en_zona"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tensado_estructural"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:53:13.456Z"
+  },
+  {
+    "chunk_id": "peelings-pKa-seguridad-003",
+    "title": "La relación pKa y pH: Determinantes de la seguridad en Peelings",
+    "content": "En la formulación de peelings químicos, el pKa del ácido es el factor más relevante para determinar su capacidad de penetración y potencial irritativo. El pKa es el pH al cual el 50% de las moléculas de ácido están disociadas. Cuando el pH de una solución de peeling es igual al pKa del ácido, la penetración es máxima. Si el pH es inferior al pKa, el ácido se encuentra predominantemente en su forma no disociada (lipofílica), facilitando una penetración profunda y rápida, lo que incrementa el riesgo de quemaduras. Por el contrario, un pH superior al pKa favorece la forma ionizada, que es menos permeable. La curaduría clínica en Bogotá exige considerar que, en fototipos latinos (III-V), un control estricto del pH evita la inflamación post-inflamatoria (PIH). Los profesionales deben verificar el pKa específico de cada agente (p. ej., Ácido Glicólico 3.8, Ácido Salicílico 3.0) antes de cualquier aplicación. Ignorar esta relación física es una de las causas principales de complicaciones en peelings de profundidad media.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(19)32675-9/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "III-VI"
+      ],
+      "ingredients": [
+        "acido_glicolico",
+        "acido_salicilico"
+      ],
+      "contraindications": [
+        "dermatitis_activa",
+        "uso_reciente_isotretinoina"
+      ],
+      "season": [
+        "invierno",
+        "otoño"
+      ],
+      "applicable_modules": [
+        "resurfacing"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:53:13.456Z"
+  },
+  {
+    "chunk_id": "bioestimuladores-pLLA-005",
+    "title": "Ácido Poli-L-Láctico: Integración en la Matriz Extracelular",
+    "content": "El ácido poli-L-láctico (PLLA) es un bioestimulador inyectable que actúa mediante un proceso de respuesta inflamatoria subclínica controlada. Al ser inyectado, las micropartículas de PLLA desencadenan la activación de macrófagos, que a su vez estimulan a los fibroblastos para que sinteticen nuevo colágeno tipo I. Este proceso de neocolagénesis es gradual y puede tardar varias semanas en manifestarse clínicamente, proporcionando resultados que pueden durar hasta 24 meses. A diferencia de los rellenos de ácido hialurónico que actúan por efecto físico de volumen, el PLLA mejora la arquitectura dérmica y la densidad de la piel. Es fundamental realizar una dilución correcta y una técnica de inyección precisa en el plano subdérmico para evitar la formación de nódulos o granulomas. La práctica clínica actual recomienda combinar el PLLA con protocolos de hidratación profunda para optimizar la calidad del colágeno recién formado. La educación del paciente sobre la naturaleza gradual del resultado es esencial para la satisfacción a largo plazo.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Plastic and Reconstructive Surgery Journal",
+        "url": "https://journals.lww.com/plasreconsurg/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_poli_l_lactico"
+      ],
+      "contraindications": [
+        "historial_de_queloides",
+        "enfermedades_autoinmunes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:53:13.456Z"
+  },
+  {
+    "chunk_id": "microneedling-sinergia-009",
+    "title": "Microneedling: Sinergia Regenerativa con Factores de Crecimiento",
+    "content": "El microneedling (terapia de inducción de colágeno) es un procedimiento mínimamente invasivo que induce microlesiones controladas en la epidermis y dermis, activando la cascada de curación de heridas del cuerpo. El valor clínico se multiplica exponencialmente cuando se combina con la aplicación tópica de factores de crecimiento autólogos o sintéticos, permitiendo la entrega transdérmica de moléculas que de otro modo tendrían una baja biodisponibilidad debido a la barrera epidérmica. El proceso de punción crea canales físicos que permiten una penetración profunda de los ingredientes activos, optimizando la remodelación de la matriz extracelular. Es fundamental mantener una técnica aséptica rigurosa para evitar infecciones, dado que se rompe la barrera cutánea. La profundidad de las agujas debe ajustarse según la zona facial y el objetivo clínico: desde 0.5 mm para mejorar la textura superficial hasta 2.0 mm para el tratamiento de cicatrices atróficas. La literatura sugiere que la frecuencia óptima de tratamiento es mensual, permitiendo el tiempo suficiente para que la síntesis de colágeno se complete entre sesiones y evitando la fatiga de la piel.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cutaneous and Aesthetic Surgery",
+        "url": "https://www.jcasonline.com/article.asp?issn=0974-2077;year=2024;volume=17;issue=1;spage=1;epage=10;aulast=Singh",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores_de_crecimiento"
+      ],
+      "contraindications": [
+        "acne_inflamatorio_severo",
+        "rosacea_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion_tisular"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:53:13.456Z"
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "chunk_id": "guias_unas-dispositivos-opticos-001",
+    "title": "Ergonomía visual y fatiga ocular en el diagnóstico ungueal de cabina",
+    "content": "La evaluación clínica de patologías ungueales requiere una precisión visual superior, a menudo comprometida por la iluminación inadecuada de las cabinas de estética. La fatiga ocular no solo reduce la capacidad de detectar cambios sutiles en la coloración o textura de la lámina, sino que incrementa el riesgo de errores diagnósticos. El uso de lupas con luz polarizada es esencial para neutralizar los reflejos especulares de la queratina, permitiendo visualizar estructuras subungueales como hemorragias en astilla o melanomas iniciales con mayor claridad. Según recomendaciones de la American Academy of Dermatology, la iluminación debe tener un índice de reproducción cromática (CRI) superior a 90 para garantizar la fidelidad de los colores observados. La falta de este estándar técnico en los entornos de trabajo habituales en Bogotá conlleva una pérdida de información diagnóstica crítica. Es imperativo que el profesional de GlowApp integre el uso de dispositivos de magnifcación con iluminación controlada para realizar un triaje inicial responsable, evitando confundir hallazgos benignos con patologías severas que requieren derivación médica inmediata.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-visual"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  },
+  {
+    "chunk_id": "guias_unas-limpieza-ultrasonica-002",
+    "title": "Limitaciones de los limpiadores ultrasónicos en la eliminación de biofilms",
+    "content": "El uso de limpiadores ultrasónicos es una práctica estándar para la desinfección de herramientas metálicas, pero su eficacia es limitada ante la presencia de biofilms maduros. Estos biofilms, compuestos por matriz extracelular polimérica, protegen a los microorganismos de la cavitación acústica generada por el ultrasonido. Estudios en PubMed indican que si el pre-lavado manual no elimina mecánicamente los residuos proteicos y restos de queratina, el ultrasonido puede resultar insuficiente, dejando focos de contaminación persistente. En la práctica clínica de GlowApp, la esterilización debe seguir un protocolo estricto: limpieza manual con detergentes enzimáticos, seguida de inmersión ultrasónica y, finalmente, ciclo de autoclave. Confiar exclusivamente en el ultrasonido sin un control de pH del agua o sin el tiempo de exposición adecuado es un error común que compromete la seguridad del paciente. La formación de biofilms en microfisuras de acero inoxidable de baja calidad es un factor de riesgo para la transmisión de patógenos como Pseudomonas aeruginosa. La validación del proceso de limpieza es la única garantía de asepsia real en el servicio de manicura.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-asepsia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  },
+  {
+    "chunk_id": "guias_unas-quimica-adhesivos-003",
+    "title": "Interacción entre primers ácidos y matriz lipídica ungueal",
+    "content": "La aplicación de primers ácidos (generalmente basados en ácido metacrílico) tiene como objetivo la desmineralización superficial de la lámina para mejorar la retención mecánica. Sin embargo, su uso indiscriminado altera la homeostasis lipídica de la placa ungueal. La lámina no es una estructura inerte; sus lípidos intercelulares son fundamentales para mantener la flexibilidad y la barrera contra la deshidratación. El exceso de ácido penetra más allá de la capa dorsal, desnaturalizando proteínas queratínicas y provocando una fragilidad secundaria que a menudo se confunde con mala calidad del producto aplicado. En entornos de alta humedad como Bogotá, la fragilidad inducida por químicos se ve exacerbada por el ciclo constante de hidratación-deshidratación. La literatura dermatológica sugiere que el uso de primers debe ser selectivo, limitado exclusivamente a las áreas de contacto con el adhesivo y nunca en toda la extensión de la uña. El daño a la matriz lipídica es acumulativo y difícil de revertir, lo que puede llevar a una onicodistrofia crónica. La tendencia actual es el uso de primers no ácidos que respetan la integridad de la estructura queratínica sin comprometer la adhesión.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00543-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico"
+      ],
+      "contraindications": [
+        "uso-excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotobiologia-004",
+    "title": "Fotobiología del espectro UV: riesgos de daño al ADN en tejidos periungueales",
+    "content": "La exposición recurrente a lámparas UV de alta intensidad en salones de estética plantea preocupaciones sobre la salud cutánea a largo plazo. Aunque los niveles de radiación son inferiores a los de una cámara de bronceado, la frecuencia de las exposiciones en usuarios habituales de servicios de uñas no es despreciable. La radiación UVA emitida por estas lámparas puede inducir mutaciones en el ADN de los queratinocitos periungueales, contribuyendo al fotoenvejecimiento y, en casos de susceptibilidad genética, aumentando el riesgo de carcinoma epidermoide cutáneo. Es fundamental que las cabinas implementen medidas de fotoprotección, como el uso de guantes con protección UV o la aplicación de protectores solares de amplio espectro antes del servicio. La evidencia en revistas dermatológicas confirma que la protección física es el método más efectivo para mitigar los riesgos. Además, la cronicidad de esta exposición requiere una vigilancia activa de cambios pigmentarios en la piel de las manos de los clientes. El profesional debe educar al usuario sobre el balance entre estética y salud, promoviendo el uso de protectores solares como parte del protocolo estándar de GlowApp.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/ultraviolet-radiation-and-the-skin",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "exposicion-prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "mitos_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  },
+  {
+    "chunk_id": "guias_unas-microbioma-005",
+    "title": "Impacto de la desinfección química agresiva en el microbioma periungueal",
+    "content": "La piel periungueal posee un microbioma residente que actúa como barrera biológica contra patógenos oportunistas. La desinfección excesiva con agentes antisépticos de amplio espectro, como el alcohol isopropílico al 70% o soluciones cloradas, no solo elimina bacterias transitorias, sino que altera drásticamente la microbiota comensal. Este desequilibrio (disbiosis) favorece la colonización por especies fúngicas o bacterias resistentes. En el contexto de GlowApp, es vital comprender que la asepsia no equivale a la esterilización total de la piel viva. La recomendación actual es utilizar limpiadores suaves que respeten el pH ácido del manto hidrolipídico. La alteración de esta barrera aumenta la permeabilidad cutánea, facilitando la penetración de alérgenos como los acrilatos, lo que a su vez eleva el riesgo de dermatitis alérgica de contacto. El mantenimiento de la integridad del microbioma periungueal es, por tanto, una estrategia de prevención de complicaciones estéticas y médicas. El uso de productos con prebióticos o agentes hidratantes después de la limpieza puede ayudar a restaurar la homeostasis cutánea tras el servicio técnico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/nail-disorders-guidelines/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol-isopropilico"
+      ],
+      "contraindications": [
+        "uso-excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-asepsia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomecanica-006",
+    "title": "Arquitectura del arco de tensión: prevención de fracturas en uñas largas",
+    "content": "La biomecánica de la uña esculpida depende de la correcta distribución de la carga sobre la lámina. Un error común en el diseño de uñas largas es la falta de un arco de tensión (apex) compensatorio, lo que genera puntos de estrés tangencial en la zona de transición entre el lecho y el borde libre. Cuando la uña es excesivamente larga, el brazo de palanca aumenta, transfiriendo una fuerza desproporcionada hacia la matriz ungueal. Este trauma mecánico crónico puede derivar en onicólisis traumática o incluso en microfracturas matriciales que alteran el crecimiento futuro de la lámina. Para prevenir este daño, el profesional debe aplicar las leyes de la física estructural: fortalecer el punto de mayor estrés (apex) y asegurar que el borde libre tenga una curvatura en 'C' que aumente la rigidez mecánica. La falta de este diseño no solo compromete la durabilidad del producto, sino que pone en riesgo la salud integral de la unidad ungueal. La educación al cliente sobre los límites físicos de la longitud según su morfología ungueal es parte fundamental de una asesoría profesional experta.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/nail-biomechanics/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud-excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-sculpting"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  },
+  {
+    "chunk_id": "guias_unas-termodinamica-007",
+    "title": "Termodinámica del fresado: el peligro del calor friccional",
+    "content": "El uso de tornos (fresas) de alta frecuencia genera una transferencia térmica significativa por fricción sobre la lámina ungueal. Este calor, si no es gestionado mediante una técnica de barrido constante y presión mínima, puede alcanzar temperaturas críticas que dañan el lecho ungueal y, en casos de limado profundo, la matriz misma. El tejido ungueal es un mal conductor térmico, lo que significa que el calor se acumula rápidamente en el punto de contacto, pudiendo causar quemaduras de grado variable en el lecho vascularizado. La termodinámica aplicada sugiere que la velocidad de rotación debe ser inversamente proporcional al tiempo de contacto por zona. Es vital que el profesional de GlowApp utilice fresas con una geometría de corte eficiente que minimice la generación de calor. La aparición de dolor o sensación de ardor durante el fresado es una señal clínica de peligro que debe detener el proceso inmediatamente. La formación de tejido cicatricial en la matriz debido al daño térmico puede generar onicodistrofias permanentes, como surcos transversales o pérdida de la adhesión de la lámina a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/nail-disorders",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado-excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-fresado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:35.534Z"
+  }
+]

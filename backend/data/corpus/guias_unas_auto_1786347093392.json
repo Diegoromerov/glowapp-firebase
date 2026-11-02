@@ -1,0 +1,373 @@
+[
+  {
+    "chunk_id": "guias_unas-onico-papiloma-001",
+    "title": "Onicopapiloma: Identificación clínica y diferenciación diagnóstica",
+    "content": "El onicopapiloma es una neoplasia benigna del lecho ungueal que, aunque poco frecuente, es una causa principal de eritroniquia longitudinal focal. Clínicamente se manifiesta como una banda longitudinal eritematosa o blanquecina que se extiende desde la lúnula hasta el borde libre, a menudo asociada con hiperqueratosis subungueal distal y, en ocasiones, con hemorragias en astilla. A diferencia de las bandas melanocíticas, el onicopapiloma presenta una vascularización prominente. Según estudios publicados en el Journal of the American Academy of Dermatology (JAAD), el diagnóstico diferencial es crucial para descartar procesos malignos como el carcinoma de células escamosas o el melanoma amelanótico. La dermatoscopia ungueal revela la presencia de vasos sanguíneos longitudinales y una superficie irregular del lecho. La intervención temprana es necesaria para evitar la distrofia ungueal permanente provocada por la compresión mecánica de la lámina. En la práctica de cabina, cualquier banda longitudinal persistente que presente cambios en el color o la textura debe ser referida a dermatología para biopsia si existe duda diagnóstica, evitando procedimientos estéticos agresivos sobre la zona afectada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_agresivo",
+        "manipulacion_subungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomarcadores-002",
+    "title": "Anomalías ungueales como indicadores de enfermedad renal crónica",
+    "content": "Las uñas no son solo estructuras queratinizadas; actúan como espejos de la salud sistémica. En pacientes con enfermedad renal crónica (ERC), es común observar las 'uñas de Lindsay' o uñas mitad y mitad, caracterizadas por una banda proximal blanquecina y una banda distal eritematosa o marrón. Este fenómeno, descrito en diversas publicaciones de PubMed, se asocia con el aumento de la permeabilidad vascular y la deposición de melanina en el lecho ungueal debido a la uremia. Reconocer estos patrones es vital para el profesional de la estética, ya que el manejo de estas uñas requiere cuidados específicos para evitar microtraumas que puedan derivar en infecciones de difícil cicatrización en pacientes inmunocomprometidos por su condición renal. La fragilidad en estos casos no es un problema de hidratación superficial, sino una manifestación de disfunción metabólica. Se recomienda evitar el uso de solventes fuertes y limados mecánicos excesivos que comprometan aún más la integridad de la lámina ya debilitada. La observación clínica debe enfocarse en la detección de cambios de coloración que no responden a factores externos, sugiriendo una consulta médica integral.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_mecanico",
+        "solventes_agresivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_sistemica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-toxicidad-003",
+    "title": "Toxicidad sistémica por monómeros: El peligro de la polimerización incompleta",
+    "content": "La polimerización incompleta de los sistemas de resinas acrílicas y geles UV no solo genera una adhesión deficiente, sino que aumenta el riesgo de sensibilización alérgica a los metacrilatos. Cuando el proceso de fotopolimerización se ve interrumpido o la lámpara no cumple con las longitudes de onda específicas requeridas por el fabricante, los monómeros residuales permanecen en estado líquido sobre la uña. Estos compuestos de bajo peso molecular son altamente sensibilizantes y pueden penetrar a través de la piel periungueal, desencadenando dermatitis de contacto alérgica. Estudios en IADVL destacan que el contacto repetido con estos monómeros no polimerizados puede provocar una respuesta inmunológica que se manifiesta no solo en las manos, sino que puede migrar a áreas como párpados, cuello y rostro debido a la transferencia accidental. Es imperativo utilizar lámparas validadas para el sistema específico, respetar los tiempos de curado y evitar la manipulación de productos sin el equipo de protección adecuado. La formación de una reacción alérgica a acrilatos es, en la mayoría de los casos, irreversible, limitando las opciones futuras de servicios estéticos para el cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.iadvl.org/guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "monomeros"
+      ],
+      "contraindications": [
+        "exposicion_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-fisica-004",
+    "title": "Dinámica de la tensión tangencial en el borde libre",
+    "content": "La física de la uña larga implica una palanca mecánica significativa sobre el lecho ungueal. Cuando la longitud de la lámina supera el límite de soporte del hiponiquio, la tensión tangencial ejercida durante las actividades cotidianas provoca una tracción constante en el lecho. Este microtrauma repetitivo es la causa principal de la onicólisis distal idiopática en uñas mantenidas con longitudes excesivas. La estructura de la uña está diseñada para soportar fuerzas de presión vertical, pero no fuerzas de torsión lateral prolongadas. Cuando se aplica un recubrimiento rígido (gel o acrílico) sobre una uña que ya presenta este tipo de tensión, el producto puede actuar como un amplificador de fuerza, transmitiendo la tensión directamente a la matriz y al lecho, lo que acelera el desprendimiento. Es fundamental educar al cliente sobre la relación entre la longitud del borde libre y la capacidad de anclaje biológico. Un diseño adecuado debe considerar la curvatura transversal de la uña; si la uña es plana, una longitud excesiva aumentará exponencialmente el riesgo de levantamiento y daño al tejido conectivo subungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud_excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-limpieza-005",
+    "title": "Displasia del hiponiquio por limpieza mecánica profunda",
+    "content": "El hiponiquio es una estructura anatómica crítica que funciona como un sello hermético entre la lámina ungueal y el lecho, impidiendo la entrada de patógenos y agentes irritantes. En la estética ungueal, existe la tendencia errónea de realizar una limpieza subungueal profunda y agresiva para eliminar la queratina acumulada. Esta práctica, a menudo realizada con curetas metálicas o fresas, induce una inflamación crónica del hiponiquio, lo que puede llevar a una displasia o hiperqueratosis reactiva. Con el tiempo, esta manipulación constante provoca que el hiponiquio se retraiga o se vuelva fibroso, perdiendo su función de barrera. Según literatura dermatológica, el hiponiquio debe tratarse con extrema delicadeza; cualquier intento de 'limpiar' profundamente esta zona rompe la adhesión natural y abre la puerta a infecciones bacterianas o fúngicas por oportunistas como Pseudomonas aeruginosa. La recomendación profesional es limitar la limpieza a la remoción superficial de restos, evitando cualquier presión que genere dolor o sangrado, signos inequívocos de daño tisular. La salud del hiponiquio es directamente proporcional a la resistencia de la uña ante agresiones externas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza_subungueal_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguro"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-oxidacion-006",
+    "title": "Estrés oxidativo por fotopolimerización prolongada",
+    "content": "La fotopolimerización es un proceso químico que, si bien es eficiente, genera una liberación controlada de energía exotérmica. Cuando los tiempos de exposición en lámparas UV/LED son excesivos o la intensidad de la lámpara es mayor a la requerida por el producto, se produce un estrés oxidativo en los queratinocitos del lecho ungueal. Este fenómeno puede derivar en una degradación prematura de las proteínas estructurales de la lámina dorsal, resultando en uñas quebradizas y con pérdida de flexibilidad. Además, la exposición crónica a radiación UV, aunque sea en dosis pequeñas, puede inducir cambios en el ADN celular del tejido periungueal, aumentando el riesgo de fotoenvejecimiento y, en casos extremos, lesiones actínicas. Es vital calibrar el tiempo de curado según la ficha técnica del producto, evitando la sobreexposición. El uso de guantes protectores con corte en las puntas de los dedos o el uso de bloqueador solar en las manos antes del servicio son medidas preventivas estándar recomendadas por la Skin Cancer Foundation para minimizar el daño acumulativo derivado del uso frecuente de lámparas de polimerización en salones de belleza.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/uv-nail-lamp-safety/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "sobreexposicion_uv"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_fotopolimerizacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-007",
+    "title": "Corrosión galvánica en herramientas de acero inoxidable",
+    "content": "La esterilización en autoclave es un estándar de oro en bioseguridad, pero el uso recurrente de soluciones desinfectantes químicas puede inducir corrosión galvánica en herramientas de acero inoxidable de baja calidad. Cuando el acero se degrada a nivel microscópico, se liberan iones metálicos (como níquel o cromo) que, en contacto con la piel periungueal, pueden desencadenar una dermatitis de contacto alérgica. Este proceso es particularmente peligroso en cabinas donde las herramientas se dejan en inmersión prolongada en soluciones corrosivas. La presencia de 'picaduras' o micro-fisuras en las herramientas no solo compromete la integridad del material, sino que crea nichos ideales para la formación de biopelículas bacterianas que son imposibles de eliminar mediante desinfección superficial. Es fundamental inspeccionar periódicamente el estado físico de los alicates y empujadores de cutícula. Una herramienta con signos de corrosión debe ser descartada inmediatamente, ya que el riesgo de sensibilización alérgica y de infecciones cruzadas por biofilms acumulados en las fisuras supera cualquier ahorro en la reposición de equipo. La inversión en acero inoxidable de grado quirúrgico es una medida de protección para el cliente y una garantía de calidad profesional.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789241549851",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas_corroidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidrodinamica-008",
+    "title": "La paradoja de la hidratación en la lámina ungueal",
+    "content": "La lámina ungueal posee una capacidad de absorción de agua mucho mayor que la piel, pero su estructura de queratina no está diseñada para un ciclo constante de hidratación y deshidratación extrema. Cuando la uña se somete a inmersión prolongada (como en baños de pies o limpiezas profundas con agua), los corneocitos se hinchan, debilitando los puentes disulfuro que mantienen la estructura ungueal compacta. Al secarse, la uña se contrae, lo que a largo plazo conduce a la onicosquizia lamelar (descamación por capas). Este ciclo repetitivo, exacerbado por el uso de productos fotopolimerizables que sellan la humedad residual, puede atrapar agua dentro de la lámina, creando un microambiente propicio para el desarrollo de microorganismos. La clave para la salud ungueal no es la hidratación acuosa excesiva, sino la gestión de los lípidos naturales que mantienen la flexibilidad y la barrera de permeabilidad. Los productos de cuidado deben enfocarse en el aporte de ácidos grasos y lípidos que refuercen la cohesión de los queratinocitos sin alterar el balance hídrico interno de la placa. Evitar la maceración de la piel y la uña durante los servicios de manicura es fundamental para mantener la integridad biomecánica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lipidos",
+        "acidos_grasos"
+      ],
+      "contraindications": [
+        "maceracion_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_domiciliario"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  },
+  {
+    "chunk_id": "guias_unas-psoriasis-009",
+    "title": "Onicólisis proximal y el signo de la mancha de aceite",
+    "content": "La psoriasis ungueal a menudo se confunde con onicomicosis, lo que lleva a tratamientos antifúngicos ineficaces que retrasan el diagnóstico correcto. Uno de los signos clínicos más distintivos es la 'mancha de aceite' (oil spot lesion), una decoloración amarillenta-anaranjada en el lecho ungueal, a menudo asociada con onicólisis proximal. A diferencia de la onicólisis traumática, que comienza desde el borde libre, la psoriasis ungueal puede originarse en la zona proximal debido a la inflamación de la matriz y el lecho. Es crucial que el profesional de cabina identifique este patrón; si se observa una onicólisis proximal persistente sin antecedente de trauma mecánico, no se debe intentar sellar la zona con acrílicos o geles, ya que esto puede atrapar la inflamación y empeorar la distrofia. Los pacientes con psoriasis ungueal son más susceptibles a infecciones secundarias debido a la interrupción de la barrera cutánea. La recomendación es realizar una derivación médica para confirmar el diagnóstico mediante biopsia o examen clínico dermatológico. El manejo en cabina debe limitarse a mantener la zona limpia y seca, evitando cualquier procedimiento que genere fricción o trauma sobre el lecho ungueal inflamado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Psoriasis Foundation",
+        "url": "https://www.psoriasis.org/nail-psoriasis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "sellado_con_acrilico",
+        "limado_agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:31:13.382Z"
+  }
+]

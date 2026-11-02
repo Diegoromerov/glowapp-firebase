@@ -1,0 +1,209 @@
+[
+  {
+    "chunk_id": "guias_unas-anomalias-electrolitos-001",
+    "title": "Anomalías ungueales secundarias a desequilibrios electrolíticos",
+    "content": "Las uñas, como apéndices queratinizados, son altamente sensibles a las alteraciones en la homeostasis iónica sistémica. La hipocalcemia crónica, a menudo derivada de hipoparatiroidismo, puede manifestarse a través de la presencia de surcos transversales, fragilidad extrema y, en casos severos, una delaminación distal o coiloniquia. A diferencia de los traumas mecánicos, estas distrofias suelen ser bilaterales y simétricas. El mecanismo subyacente radica en la interrupción de la queratinización en la matriz ungueal, donde los gradientes de calcio son esenciales para la adhesión entre los corneocitos. Estudios publicados en revistas como el Journal of the American Academy of Dermatology sugieren que la evaluación de la matriz ungueal debe incluir una revisión de los niveles séricos de electrolitos ante la aparición de onicodistrofias inexplicables. Es fundamental que los profesionales de cabina no intenten corregir estas anomalías con limado o sellado, ya que el problema es sistémico y no estructural. La identificación temprana de estas bandas puede servir como un biomarcador clínico para derivar al paciente a una consulta de medicina interna, evitando procedimientos estéticos que solo enmascaran la patología subyacente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-health-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_mecanico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:21:33.280Z"
+  },
+  {
+    "chunk_id": "guias_unas-efecto-osmolaridad-002",
+    "title": "El papel de la presión osmótica en la integridad del lecho ungueal",
+    "content": "La placa ungueal posee una capacidad de absorción de agua superior a la de la piel, fenómeno que es regido por principios de presión osmótica. Cuando el lecho ungueal se somete a ambientes de humedad extrema o inmersión prolongada, la lámina se hidrata, aumentando su volumen y reduciendo su rigidez. Este proceso altera la adhesión de los sistemas fotopolimerizables, ya que las bases de gel requieren una superficie con un balance hídrico estable para garantizar la reticulación química. La evidencia en PubMed indica que una hidratación excesiva de los corneocitos ungueales debilita las fuerzas de Van der Waals entre el adhesivo y la placa, facilitando el desprendimiento prematuro. Además, la fluctuación osmótica constante debilita la estructura de la queratina, haciéndola más susceptible a la fragmentación. En cabina, es crucial evitar el uso de deshidratadores excesivos que rompan la barrera lipídica, ya que esto desencadena un efecto rebote donde la uña absorbe humedad de forma más agresiva. La gestión técnica debe enfocarse en mantener la integridad de la matriz lipídica, permitiendo que la uña mantenga su flexibilidad natural sin comprometer la adhesión química necesaria para los recubrimientos estéticos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32958210/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers_no_acidos"
+      ],
+      "contraindications": [
+        "deshidratacion_forzada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:21:33.280Z"
+  },
+  {
+    "chunk_id": "guias_unas-toxicidad-monomeros-003",
+    "title": "Toxicidad por monómeros residuales en polimerización incompleta",
+    "content": "La polimerización incompleta en sistemas de gel UV/LED es una causa subestimada de dermatitis alérgica de contacto. Cuando la intensidad de la lámpara o el tiempo de exposición son insuficientes, una fracción de monómeros (como el HEMA o HPMA) permanece en estado líquido dentro de la matriz polimérica. Estos monómeros tienen un bajo peso molecular y son capaces de penetrar la barrera cutánea periungueal, desencadenando una respuesta inmunológica de hipersensibilidad tipo IV. Una vez que el sistema inmunológico ha sido sensibilizado, cualquier exposición futura, incluso a concentraciones mínimas, puede provocar reacciones inflamatorias severas. La literatura dermatológica, incluyendo reportes de la IADVL, subraya que la migración de estos monómeros hacia el lecho ungueal puede causar cambios distróficos permanentes. Es vital que los profesionales utilicen lámparas con el espectro de emisión adecuado y verifiquen el tiempo de curado recomendado por el fabricante, evitando la 'falsa sensación' de dureza superficial. La presencia de una capa de inhibición por oxígeno no significa que el producto esté curado en profundidad, y el retiro mecánico de esta capa debe hacerse con precaución para evitar la dispersión de monómeros no polimerizados sobre la piel sana del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/articles/123",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hema",
+        "hpma"
+      ],
+      "contraindications": [
+        "curado_incompleto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_biologica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:21:33.280Z"
+  },
+  {
+    "chunk_id": "guias_unas-osteoma-subungueal-005",
+    "title": "Osteoma cutis subungueal: calcificaciones que confunden",
+    "content": "El osteoma cutis subungueal es una condición rara pero clínicamente significativa, caracterizada por la formación de depósitos de calcio en la dermis del lecho ungueal. A menudo, estos nódulos duros son confundidos por los técnicos de uñas con cuerpos extraños, verrugas o incluso onicomicosis, lo que lleva a intentos de manipulación o extracción traumática en cabina. La presencia de una masa firme bajo la lámina ungueal que causa deformidad o dolor focal debe alertar al profesional sobre la necesidad de una derivación médica inmediata. Instituciones dermatológicas han documentado que la manipulación mecánica de estas lesiones puede desencadenar una inflamación crónica del lecho, agravando la distrofia ungueal existente. El diagnóstico definitivo requiere habitualmente estudios de imagen (radiografía simple o ecografía de alta frecuencia) para confirmar la naturaleza ósea de la lesión. Es responsabilidad del profesional de GlowApp reconocer que cualquier crecimiento subungueal con consistencia pétrea no debe ser objeto de limado ni remoción mecánica. La correcta identificación de esta patología permite evitar procedimientos innecesarios y garantiza que el cliente reciba la atención médica adecuada para una posible escisión quirúrgica controlada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_mecanica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:21:33.280Z"
+  },
+  {
+    "chunk_id": "guias_unas-estres-oxidativo-009",
+    "title": "Estrés oxidativo y degradación proteica por solventes",
+    "content": "El uso frecuente de solventes orgánicos (como la acetona pura) para el retiro de recubrimientos estéticos es un factor determinante en la degradación de la estructura proteica de la uña. Estos solventes no solo eliminan los lípidos intercelulares que proporcionan flexibilidad, sino que inducen estrés oxidativo en los corneocitos, lo que resulta en una lámina quebradiza, opaca y propensa a la onicosquizia. La evidencia científica muestra que la exposición prolongada a solventes causa una desnaturalización parcial de la queratina, rompiendo los puentes disulfuro que mantienen la cohesión estructural. Este daño es acumulativo y, a menudo, irreversible hasta que la uña afectada crece completamente. En GlowApp, recomendamos implementar protocolos de retiro basados en el limado controlado de las capas superiores, dejando solo una película mínima de producto que requiera una exposición breve a solventes, minimizando el contacto directo con la placa ungueal. La aplicación de aceites nutritivos ricos en ácidos grasos esenciales después del retiro puede ayudar a restaurar parcialmente la barrera lipídica, pero no revierte el daño proteico severo inducido por la deshidratación forzada prolongada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-health-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_esenciales"
+      ],
+      "contraindications": [
+        "acetona_pura_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_manicura"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:21:33.280Z"
+  }
+]

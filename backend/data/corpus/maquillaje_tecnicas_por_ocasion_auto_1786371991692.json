@@ -1,0 +1,302 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entorno-anoxico-001",
+    "title": "Maquillaje en ambientes de hipoxia hipobárica: Dinámica de la oclusión",
+    "content": "La exposición a entornos de hipoxia hipobárica, comunes en eventos de gran altitud o cabinas presurizadas, altera la fisiología cutánea mediante la reducción de la presión parcial de oxígeno. Este estado induce una respuesta de estrés celular que activa el factor inducible por hipoxia-1 alfa (HIF-1α). En el contexto del maquillaje, la aplicación de productos oclusivos puede exacerbar la dificultad de la piel para realizar sus procesos metabólicos básicos, aumentando el riesgo de edema facial. La literatura dermatológica sugiere que, en estas condiciones, se debe priorizar el uso de fórmulas con alta permeabilidad al vapor de agua y gases, evitando ceras pesadas o siliconas de alto peso molecular que bloqueen la transpiración. La hidratación debe ser intensificada con ácido hialurónico de bajo peso molecular antes de la aplicación del pigmento, minimizando el riesgo de fisuras cosméticas inducidas por la xerosis ambiental. Es fundamental evitar el uso de primers a base de polímeros acrílicos densos que, ante la menor presión atmosférica, pueden generar una sensación de tirantez mecánica que el usuario percibe como una fatiga cutánea acelerada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31544648/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "polímeros acrílicos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea_extrema"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  },
+  {
+    "chunk_id": "maquillaje-exposicion-campos-estaticos-002",
+    "title": "Maquillaje y estabilidad frente a campos magnéticos estáticos intensos",
+    "content": "En entornos médicos o de investigación donde se utilizan equipos de resonancia magnética (MRI), el uso de maquillaje que contenga pigmentos con trazas de óxidos metálicos (como óxidos de hierro o mica tratada con titanio) presenta un riesgo técnico. Aunque la cantidad de metal en el maquillaje es pequeña, bajo campos magnéticos de alta intensidad (3T o más), las partículas pueden experimentar una fuerza de atracción que, aunque mínima a nivel macroscópico, puede alterar la distribución uniforme del pigmento sobre la superficie cutánea o causar una ligera irritación por micro-vibración en zonas de alta sensibilidad. Estudios sobre seguridad en radiología advierten que el maquillaje con acabados metálicos brillantes puede causar artefactos en imágenes de diagnóstico si hay contacto accidental con el sensor. Por tanto, para eventos en entornos de alta tecnología médica, se recomienda el uso de maquillaje mineral purificado sin pigmentos ferromagnéticos. Es crucial asegurar que la formulación sea inerte y libre de partículas metálicas para evitar cualquier interacción física, garantizando la integridad de la barrera cutánea durante la exposición a campos electromagnéticos estáticos prolongados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American College of Radiology",
+        "url": "https://www.acr.org/Clinical-Resources/Radiology-Safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minerales puros"
+      ],
+      "contraindications": [
+        "óxidos de hierro",
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica_tecnologica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-proximidad-calor-radiante-003",
+    "title": "Gestión del eritema inducido por calor radiante en eventos con iluminación de alta potencia",
+    "content": "La exposición prolongada a fuentes de calor radiante, como focos halógenos de alta intensidad o estufas de exterior en eventos, provoca vasodilatación periférica mediada por receptores térmicos (TRPV1). Este fenómeno aumenta la temperatura superficial cutánea, lo que puede degradar la estabilidad de las emulsiones cosméticas, provocando que los aceites del maquillaje se vuelvan más fluidos y migren hacia los surcos nasogenianos o perioculares. Clínicamente, el aumento del flujo sanguíneo puede exacerbar el eritema en personas con tendencia a la rosácea o cuperosis. La estrategia de maquillaje para estos eventos debe basarse en el uso de fijadores termorresistentes que contengan ingredientes con alto punto de fusión, como ceras sintéticas estables y polímeros filmógenos que no se licúen con el calor. Es imperativo evitar el uso de aceites comedogénicos de bajo peso molecular, ya que el aumento del calor favorece su penetración folicular. Se recomienda el uso de brumas fijadoras con ingredientes calmantes como el bisabolol o pantenol, que ayudan a mantener la homeostasis térmica y previenen la inflamación subclínica inducida por el calor radiante ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "pantenol"
+      ],
+      "contraindications": [
+        "aceites de bajo punto de fusión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_termica_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-realidad-virtual-005",
+    "title": "Maquillaje en entornos de realidad virtual: Gestión de oclusión y fatiga sensorial",
+    "content": "El uso prolongado de visores de realidad virtual (VR) en eventos o entornos profesionales somete a la piel periocular y a la zona del puente nasal a una oclusión mecánica y a un aumento de temperatura local. Este microclima cerrado genera un incremento en la producción de sebo y sudor, lo que puede provocar la migración del maquillaje hacia el interior del ojo, causando irritación conjuntival. Además, la presión del dispositivo sobre el rostro puede inducir dermatitis por fricción. Para este escenario, se recomienda la técnica de 'maquillaje técnico minimalista', evitando productos en la zona de contacto directo con el visor. El uso de polvos matificantes libres de talco es esencial para absorber el exceso de humedad sin obstruir los poros. Es vital aplicar un sellador de larga duración que sea resistente a la humedad constante. La fatiga sensorial derivada del uso del visor puede manifestarse como una percepción de pesadez facial, por lo que el maquillaje debe ser imperceptible y ligero, evitando texturas densas que aumenten la carga psicológica y física del usuario durante la inmersión virtual.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "almidones naturales"
+      ],
+      "contraindications": [
+        "talco"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_y_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  },
+  {
+    "chunk_id": "maquillaje-exposicion-hidrocarburos-006",
+    "title": "Protección contra hidrocarburos aromáticos policíclicos (HAP) en maquillaje urbano",
+    "content": "En entornos urbanos con alta densidad de tráfico, la piel está expuesta a hidrocarburos aromáticos policíclicos (HAP), contaminantes liposolubles capaces de penetrar la barrera cutánea y generar estrés oxidativo masivo. El maquillaje tradicional, por su naturaleza lipídica, puede actuar como un vehículo que facilita la absorción de estos compuestos si no se diseña con una barrera protectora. La estrategia clínica consiste en emplear bases cosméticas que contengan polímeros formadores de película no oclusiva, los cuales crean una interfase que impide la adhesión de los HAP. Además, la incorporación de antioxidantes tópicos (como vitamina E, niacinamida o extractos de polifenoles) en el producto de base ayuda a neutralizar los radicales libres generados por la exposición ambiental. Es imperativo evitar productos con aceites minerales que puedan disolver los contaminantes y favorecer su entrada en el folículo pilosebáceo. El sellado con polvos finos es indispensable para reducir la superficie pegajosa del maquillaje, minimizando así la retención de partículas nocivas durante la jornada laboral o el evento en exteriores urbanos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/pollution",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "vitamina E"
+      ],
+      "contraindications": [
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-emocional-007",
+    "title": "Dinámica del pH cutáneo y adherencia cosmética ante estrés emocional",
+    "content": "El estrés emocional agudo provoca la liberación de cortisol, que a su vez altera la secreción de las glándulas sudoríparas y sebáceas, modificando el pH de la superficie cutánea (manto ácido). Un pH elevado (hacia la alcalinidad) afecta la estabilidad de los pigmentos que dependen de una acidez específica para mantenerse estables. En eventos de alta carga emocional (exposiciones públicas, presentaciones, competiciones), es común observar cómo el maquillaje cambia de tono (oxidación) o pierde adherencia debido a este cambio bioquímico. Para mitigar este efecto, se deben utilizar primers que posean agentes buffer o tamponadores de pH, diseñados para mantener la estabilidad del producto independientemente de las fluctuaciones en la secreción sebácea. La hidratación debe ser equilibrada con humectantes que no alteren el pH natural (como la glicerina o el PCA sódico). La clave es la preparación de la piel con productos que fortalezcan el estrato córneo, permitiendo una mayor tolerancia a las variaciones metabólicas inducidas por la respuesta de lucha o huida del sistema nervioso autónomo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22425985/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PCA sódico",
+        "glicerina"
+      ],
+      "contraindications": [
+        "productos de pH alcalino"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  },
+  {
+    "chunk_id": "maquillaje-vibraciones-mecanicas-008",
+    "title": "Estabilidad del maquillaje bajo vibraciones mecánicas de alta frecuencia",
+    "content": "En eventos industriales o de transporte (como ferias tecnológicas con maquinaria pesada o viajes en vehículos de alta vibración), la piel es sometida a una estimulación mecánica constante. Estas vibraciones pueden afectar la estructura de las emulsiones cosméticas, provocando la separación de fases (aceite/agua) en productos mal formulados o de baja calidad. Además, la vibración mecánica facilita la migración de partículas cosméticas hacia el interior de los poros, aumentando el riesgo de oclusión folicular y dermatitis por fricción. La solución técnica es el uso de bases de maquillaje con tecnología de 'redes poliméricas' o elastómeros de silicona que proporcionan una estructura tridimensional estable, capaz de absorber y disipar la energía mecánica. Estos polímeros mantienen el pigmento en su lugar a pesar de la oscilación constante. Es fundamental evitar productos que se depositen únicamente por gravedad; se deben preferir fórmulas con alta adherencia (long-wear) que utilicen agentes fijadores de tipo resina, los cuales crean una película flexible que se mueve con la piel sin romperse ni migrar ante la vibración continua.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "elastómeros de silicona"
+      ],
+      "contraindications": [
+        "emulsiones inestables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:26:11.673Z"
+  }
+]

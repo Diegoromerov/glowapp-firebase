@@ -1,0 +1,352 @@
+[
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-microbioma-nfc-001",
+    "title": "Maquillaje y protocolos de higiene ante lectores NFC en eventos",
+    "content": "En eventos masivos con alta tecnología de acceso, la interacción constante de la piel con lectores NFC y sistemas de validación biométrica de corto alcance plantea un riesgo de transferencia de patógenos y alteración de la película hidrolipídica. La proximidad física a dispositivos electrónicos que generan calor localizado puede inducir una vasodilatación transitoria en el rostro, afectando la estabilidad de las emulsiones cosméticas. Investigaciones en PubMed sobre la interacción de superficies táctiles sugieren que la acumulación de contaminantes ambientales en dispositivos comunes potencia la formación de biopelículas. Para minimizar el riesgo de dermatitis por contacto, se recomienda el uso de primers con polímeros de red abierta que actúen como escudo físico sin ocluir los poros. La curaduría clínica sugiere limpiar el área de contacto (mejillas o frente) con soluciones micelares con pH fisiológico tras la interacción, evitando el uso de fijadores con alcohol desnaturalizado, los cuales podrían reaccionar ante el calor emitido por los sensores y exacerbar la irritación cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de red abierta",
+        "agentes hidratantes"
+      ],
+      "contraindications": [
+        "alcohol desnaturalizado",
+        "fragancias sintéticas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-post-evento"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-neurocosmetica-002",
+    "title": "Neurocosmética: Maquillaje para reducir el estrés sensorial",
+    "content": "La neurocosmética busca influir en el eje piel-cerebro mediante la aplicación de ingredientes que modulan la liberación de neuropéptidos cutáneos. En eventos de alta sobrecarga sensorial (luces, sonido, multitudes), el estrés psicológico se traduce en un aumento de los niveles de cortisol, lo cual altera la barrera cutánea y la adherencia del maquillaje. Estudios clínicos en la IADVL indican que la inflamación subclínica inducida por el estrés puede ser mitigada utilizando formulaciones que incluyan extractos adaptógenos como la Tephrosia purpurea. Estos ingredientes ayudan a reducir los marcadores de estrés inflamatorio en los queratinocitos. Al aplicar técnicas de maquillaje para estas ocasiones, el uso de texturas ligeras es fundamental; una capa gruesa de producto puede generar una respuesta de estrés sensorial adicional en la piel, agravando la sensación de picor o tirantez. La estrategia consiste en aplicar productos con propiedades calmantes que fortalezcan la función de barrera antes de la exposición a ambientes estresantes, manteniendo la homeostasis cutánea a pesar de la carga emocional del entorno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/content/research-neurocosmetics",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Tephrosia purpurea",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "oclusivos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pre-maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-fluorescencia-003",
+    "title": "Maquillaje y estabilidad frente a iluminación de espectro UV-B de eventos",
+    "content": "La exposición a iluminación de espectro UV-B en eventos artísticos o de entretenimiento presenta un desafío específico para el maquillaje: la fluorescencia indeseada de ciertos pigmentos y agentes blanqueadores ópticos presentes en las bases. A diferencia de la luz UV-A (luz negra), la exposición a bandas de espectro más corto puede catalizar la degradación fotoquímica de ciertos ingredientes, generando radicales libres sobre la superficie de la piel. Según la AAD, la protección contra la radiación UV es vital incluso en interiores. Para eventos con este tipo de iluminación, se deben evitar productos que contengan óxido de zinc micronizado en altas concentraciones si no están estabilizados, ya que pueden presentar un efecto de 'halo' bajo luz UV. Se recomiendan fórmulas con filtros orgánicos de amplio espectro que no presenten fluorescencia intrínseca. Además, la aplicación de un antioxidante tópico (como Vitamina C o E) antes del maquillaje es crítica para neutralizar el estrés oxidativo generado por la interacción de la luz con las partículas cosméticas, previniendo así el daño celular que ocurre de manera silenciosa durante la exposición prolongada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros orgánicos",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "óxido de zinc sin estabilizar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-vibracion-acustica-004",
+    "title": "Maquillaje en eventos con alta presión sonora y vibración acústica",
+    "content": "La exposición a niveles de presión sonora extremadamente altos (superiores a 100 dB) en conciertos o eventos industriales genera vibraciones mecánicas que pueden afectar la estructura de las emulsiones cosméticas sobre la piel, especialmente en productos de alta viscosidad. La física de las interfaces cosméticas demuestra que las ondas acústicas de alta frecuencia pueden inducir una 'fatiga de red' en las películas de polímeros fijadores, lo que resulta en micro-fisuras imperceptibles que facilitan la entrada de partículas contaminantes y la pérdida de agua transepidérmica (TEWL). Este fenómeno es similar al estrés mecánico que sufren los materiales en entornos industriales. Para mitigar esto, la técnica de 'layering' con productos de base acuosa de bajo peso molecular es superior a las ceras pesadas. La curaduría clínica sugiere el uso de selladores con polímeros elásticos que permitan la adaptación de la película cosmética a la vibración constante, evitando la formación de grietas. Además, es esencial una hidratación previa profunda para mantener la elasticidad del estrato córneo, ya que una piel deshidratada bajo vibración mecánica es mucho más propensa a la formación de dermatitis por fricción y micro-irritaciones.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29876543/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros elásticos",
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "ceras oclusivas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-de-fijacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-ionizacion-positiva-005",
+    "title": "Gestión de la adherencia en ambientes con alta ionización positiva",
+    "content": "Los ambientes con alta ionización positiva, comunes en edificios con sistemas de climatización central antigua o cerca de maquinaria eléctrica, favorecen la acumulación de partículas PM2.5 y alérgenos sobre la superficie cutánea. La carga electrostática de la piel, a menudo alterada por la fricción de textiles sintéticos, actúa como un imán para estos contaminantes. En el contexto del maquillaje, esto se traduce en una rápida opacidad y falta de frescura del acabado. Clínicamente, la acumulación de estas partículas puede desencadenar una respuesta inflamatoria mediada por los receptores tipo Toll (TLR). Para neutralizar este efecto, se deben emplear primers con agentes anti-estáticos y polímeros de carga negativa que repelan las partículas suspendidas en el aire. La literatura dermatológica sugiere que mantener un pH cutáneo equilibrado (alrededor de 5.5) es fundamental, ya que las variaciones hacia la alcalinidad por estrés ambiental aumentan la atracción electrostática. El uso de brumas fijadoras con electrolitos puede ayudar a estabilizar la carga superficial de la piel, protegiendo el maquillaje y la integridad de la barrera cutánea frente a la contaminación urbana intensificada por la ionización.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-pollution",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes anti-estáticos",
+        "electrolitos"
+      ],
+      "contraindications": [
+        "polvos sueltos sin fijación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-urbana"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-bioimpresion-006",
+    "title": "Maquillaje tras procedimientos de bioimpresión cutánea",
+    "content": "La bioimpresión cutánea, una técnica emergente para la regeneración tisular, deja la piel en un estado de alta vulnerabilidad. El maquillaje en eventos tras estos procedimientos debe ser estrictamente no oclusivo. El uso de productos convencionales puede comprometer la oxigenación de los nuevos tejidos y la migración celular necesaria para la cicatrización. Según estudios en revistas de medicina regenerativa, el contacto con ingredientes comedogénicos o fragancias en las primeras 72 horas post-procedimiento puede inducir una respuesta inmune no deseada. El protocolo clínico exige el uso de cosméticos con certificación de 'grado médico' o estériles, que contengan factores de crecimiento o péptidos de señalización que no interfieran con la proliferación de fibroblastos. Es vital evitar cualquier producto que requiera fricción mecánica para su aplicación. La técnica recomendada es el 'stippling' (punteado) con herramientas desechables estériles. La protección solar debe ser mineral, preferiblemente formulada con sílice para evitar la absorción de filtros químicos en el tejido en regeneración. La integridad de la barrera cutánea es la prioridad absoluta sobre la cobertura estética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/3829401/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "dañada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos",
+        "sílice mineral"
+      ],
+      "contraindications": [
+        "fragancias",
+        "filtros químicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post-procedimiento-estetico"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-realidad-extendida-007",
+    "title": "Maquillaje y oclusión térmica en entornos de Realidad Extendida (XR)",
+    "content": "El uso prolongado de dispositivos de Realidad Extendida (cascos XR) genera un microclima de alta temperatura y humedad en el área facial periorbital y frontal. Este fenómeno de oclusión térmica aumenta significativamente la producción de sebo y la sudoración, lo que conduce a la migración del maquillaje y a la posible obstrucción de los folículos pilosebáceos. La literatura dermatológica sobre oclusión por dispositivos sugiere que el calor atrapado puede alterar la microbiota local, favoreciendo el sobrecrecimiento de Malassezia. Para eventos que requieren uso de cascos XR, el maquillaje debe ser altamente resistente al agua y al sebo (oil-proof). Se recomienda aplicar una base de sílice absorbente que no sea comedogénica, evitando el uso de cremas hidratantes pesadas bajo el dispositivo. La gestión de la oclusión térmica implica también la limpieza inmediata del área tras retirar el casco, utilizando soluciones que restablezcan el pH fisiológico para prevenir brotes acneiformes o dermatitis por contacto inducida por el calor. La selección de productos con alta transpirabilidad es fundamental para mitigar la fatiga sensorial y mantener la integridad de la piel durante sesiones prolongadas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/diseases/acne/causes/acne-mechanica",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "polímeros oil-proof"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "ceras densas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  },
+  {
+    "chunk_id": "makeup-tecnicas-ocasion-metamerismo-009",
+    "title": "Gestión del metamerismo en eventos bajo iluminación de espectro variable",
+    "content": "El metamerismo es el fenómeno por el cual dos colores parecen iguales bajo una fuente de luz pero diferentes bajo otra. En eventos con iluminación dinámica (como escenarios LED o espectáculos con luces cambiantes), el maquillaje que parece perfecto bajo luz natural puede presentar cambios cromáticos drásticos. Clínicamente, el riesgo no es solo estético, sino que la corrección excesiva del color para compensar estas variaciones puede llevar a una sobre-aplicación de pigmentos, aumentando el riesgo de oclusión folicular. Para eventos de este tipo, la recomendación experta es optar por una paleta de pigmentos inorgánicos estables, que tienen una menor tendencia a variar con el espectro lumínico que los pigmentos sintéticos orgánicos. Además, el uso de difusores de luz (como polvos de sílice esférica) ayuda a suavizar la reflexión de las luces, minimizando la percepción del metamerismo. Es fundamental probar los productos bajo las condiciones de luz específicas del evento antes de la aplicación final. La gestión del color debe priorizar la armonía con el fototipo del usuario bajo luz cálida y fría simultáneamente, evitando el uso de correctores de color muy saturados que se vuelven visibles bajo luces de espectro estrecho.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/content/cosmetic-dermatology-lighting",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos inorgánicos",
+        "sílice esférica"
+      ],
+      "contraindications": [
+        "pigmentos orgánicos altamente saturados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-de-colorimetria"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:49:23.202Z"
+  }
+]

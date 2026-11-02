@@ -1,0 +1,358 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-proteomica-matriz-001",
+    "title": "Proteómica de la Matriz Folicular: Marcadores de Estrés Estructural",
+    "content": "La proteómica aplicada al análisis del tallo capilar permite identificar modificaciones post-traduccionales en las queratinas que sirven como biomarcadores tempranos de daño estructural. A diferencia de la tricoscopia convencional, que evalúa el diámetro y la densidad, el análisis proteómico detecta la degradación de proteínas asociadas a la membrana celular (CMC) antes de que la cutícula presente signos visibles de fractura. Estudios publicados en el Journal of Cosmetic Dermatology subrayan que la exposición a factores ambientales como la radiación UV y la contaminación atmosférica induce la formación de enlaces cruzados no enzimáticos que alteran la viscoelasticidad del cabello. La identificación de estos cambios permite al clínico predecir la susceptibilidad a la rotura mecánica, facilitando un enfoque preventivo en pacientes con cabello químicamente procesado o expuesto a condiciones de alta altitud, como es el caso de Bogotá. La comprensión de la arquitectura proteica es fundamental para diferenciar entre una fragilidad capilar de origen genético y una inducida por agentes externos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termografia-002",
+    "title": "Termografía Infrarroja en el Diagnóstico de la Inflamación Folicular",
+    "content": "La termografía infrarroja se ha consolidado como una herramienta no invasiva para la detección de focos de inflamación subclínica en el cuero cabelludo. En patologías como la alopecia cicatricial centrífuga central o la dermatitis seborreica severa, la detección de gradientes térmicos elevados sobre las áreas afectadas correlaciona con una mayor actividad inflamatoria perivascular. Este método permite monitorizar la respuesta a tratamientos antiinflamatorios tópicos o sistémicos de manera objetiva, superando las limitaciones de la inspección visual simple. La literatura actual, apoyada por publicaciones en PubMed, indica que el aumento de la temperatura cutánea local refleja una vasodilatación mediada por citoquinas proinflamatorias. Para el clínico en GlowApp, integrar esta técnica permite diferenciar zonas de 'actividad silenciosa' que podrían preceder a la caída capilar activa. Es un complemento valioso para el pull test y la tricoscopia, proporcionando una métrica cuantitativa de la homeostasis del microambiente folicular y permitiendo ajustes terapéuticos precisos en tiempo real antes de que el daño folicular sea irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-003",
+    "title": "Biomecánica de la Fibra: Evaluación de la Resistencia a la Tracción",
+    "content": "El estudio de la biomecánica del tallo capilar es crucial para comprender la fragilidad inducida por el estilo de vida. La resistencia a la tracción depende intrínsecamente de la integridad de la corteza y de los puentes disulfuro. Cuando los procedimientos cosméticos, como el alisado térmico o la decoloración, rompen estos enlaces de manera recurrente, la fibra pierde su capacidad elástica, resultando en una ruptura prematura. La evaluación clínica mediante la prueba de estiramiento controlado permite cuantificar el módulo de Young del cabello, un parámetro que revela el grado de daño estructural. Datos de la American Academy of Dermatology sugieren que la pérdida de integridad mecánica suele ser el primer signo de un cuidado capilar inadecuado, a menudo ignorado en favor de enfoques puramente estéticos. En el contexto de GlowApp, es vital educar a los usuarios sobre cómo la fatiga del material capilar, causada por el peinado mecánico excesivo, puede mimetizar cuadros de efluvio telógeno. La correcta diferenciación entre pérdida por rotura y caída desde la raíz es un pilar diagnóstico fundamental para evitar tratamientos farmacológicos innecesarios en casos de daño puramente mecánico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sebo-004",
+    "title": "Composición Lipídica del Sebo y su Influencia en la Barrera Folicular",
+    "content": "La composición química del sebo humano no es estática; su perfil lipídico varía significativamente según el estado hormonal y el nivel de estrés oxidativo. El sebo es una mezcla compleja de triglicéridos, ésteres de cera y escualeno. Cuando existe un desequilibrio en la proporción de estos componentes, se altera la permeabilidad de la barrera cutánea del cuero cabelludo, facilitando la penetración de alérgenos y contaminantes urbanos. Investigaciones recientes en dermatología clínica han demostrado que una alta concentración de ácidos grasos libres, producto de la degradación microbiana por Malassezia, puede desencadenar una respuesta inflamatoria persistente en el orificio folicular. Este fenómeno no solo contribuye a la dermatitis seborreica, sino que también crea un entorno hostil para el folículo piloso, comprometiendo su anclaje y ciclo de crecimiento. Para un diagnóstico preciso, es necesario considerar que el exceso de sebo no es solo una preocupación estética, sino un marcador de disfunción de la barrera. El manejo clínico debe enfocarse en restaurar el equilibrio lipídico mediante agentes seborreguladores y restauradores de la barrera cutánea, garantizando así la salud del entorno peri-folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc-pca",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-hidratacion-005",
+    "title": "Dinámica de la Hidratación en el Cuero Cabelludo y su Impacto en el Folículo",
+    "content": "La hidratación del estrato córneo del cuero cabelludo es un factor determinante para el mantenimiento de la homeostasis folicular. Un cuero cabelludo deshidratado o con una barrera cutánea comprometida presenta una mayor susceptibilidad a la irritación por productos tópicos y factores externos. El uso de técnicas de medición como la corneometría permite evaluar el contenido hídrico de la piel cabelluda, proporcionando datos críticos para el diagnóstico de condiciones como la dermatitis irritativa o la sequedad crónica. La literatura científica actual enfatiza que una barrera cutánea íntegra es necesaria para la correcta función de los canales iónicos que regulan el crecimiento folicular. Si el cuero cabelludo está deshidratado, se produce una cascada inflamatoria que puede exacerbar cualquier alopecia subyacente. Por ello, el diagnóstico clínico debe incluir siempre una evaluación de la hidratación cutánea. El uso de humectantes de bajo peso molecular y agentes oclusivos suaves puede ser una intervención clave para mejorar la salud folicular a largo plazo, reduciendo la incidencia de microinflamación inducida por la sequedad del entorno inmediato al folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-hialuronico",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-fotobiomodulacion-006",
+    "title": "Fotobiomodulación de Bajo Nivel: Mecanismos en la Papila Dérmica",
+    "content": "La fotobiomodulación (LLLT) ha ganado terreno como una terapia coadyuvante eficaz para estimular la actividad metabólica en la papila dérmica. El mecanismo central involucra la absorción de fotones por los citocromos mitocondriales, lo que resulta en un incremento en la producción de ATP y la modulación de las especies reactivas de oxígeno (ROS). Este proceso favorece la transición de la fase telógena a la fase anágena y prolonga la duración de esta última. Clínicamente, el éxito de la LLLT depende de la dosimetría precisa y de la selección adecuada de pacientes, siendo más efectiva en alopecias androgenéticas en etapas tempranas donde todavía existe viabilidad folicular. Es fundamental que los profesionales identifiquen correctamente los candidatos para esta terapia, ya que en casos de cicatrización avanzada o fibrosis total, la respuesta será nula. La evidencia recolectada en diversas revistas dermatológicas destaca que, al combinar la LLLT con tratamientos farmacológicos convencionales como el minoxidil, se observa una sinergia que mejora la densidad capilar de forma más rápida que con la monoterapia, subrayando la importancia de un enfoque multimodal en el diagnóstico y tratamiento.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Lasers in Surgery and Medicine",
+        "url": "https://onlinelibrary.wiley.com/journal/10969101",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "embarazo",
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-complementario"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-genetica-007",
+    "title": "Polimorfismos Genéticos y Respuesta a Tratamientos Foliculares",
+    "content": "La medicina personalizada está transformando el diagnóstico capilar al permitir la identificación de polimorfismos en el receptor de andrógenos (AR) y en genes relacionados con el metabolismo de fármacos como el minoxidil. La presencia de ciertos polimorfismos en el gen SULT1A1 determina la capacidad de conversión del minoxidil en su forma activa, el minoxidil sulfato. Pacientes con baja expresión de esta enzima pueden mostrar resultados subóptimos con la terapia tópica convencional, lo que explica la variabilidad en la respuesta clínica observada en la práctica diaria. El diagnóstico moderno debería integrar, cuando sea posible, una evaluación del perfil genético del paciente para personalizar la elección del tratamiento. Además, la predisposición genética a la inflamación sistémica puede influir en la severidad de la alopecia androgenética. Al comprender el trasfondo genético del usuario, el equipo de GlowApp puede ajustar las expectativas terapéuticas y proponer alternativas, como el uso de minoxidil oral o terapias combinadas, mejorando significativamente la adherencia y la satisfacción del usuario a largo plazo. La integración de estos datos genéticos representa la frontera actual del diagnóstico capilar de precisión.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-estres-008",
+    "title": "Impacto del Cortisol en la Vasculatura Folicular",
+    "content": "El estrés crónico ejerce un efecto deletéreo sobre el folículo piloso mediado por la liberación sostenida de cortisol. Este glucocorticoide tiene un efecto vasoconstrictor directo sobre los capilares que irrigan la papila dérmica, reduciendo el aporte de nutrientes y oxígeno esencial para la fase de crecimiento activo (anágena). La literatura científica, incluyendo estudios indexados en PubMed, ha documentado que niveles elevados de cortisol inducen la expresión de factores de crecimiento inhibidores en el folículo, acelerando la entrada prematura a la fase catágena. En pacientes con efluvio telógeno crónico, el componente de estrés no debe subestimarse; es un factor de perpetuación que puede complicar el diagnóstico diferencial. Para una evaluación integral, es necesario considerar el historial de estrés del paciente y, si es posible, correlacionarlo con biomarcadores de estrés sistémico. La estrategia de manejo debe ser holística, combinando tratamientos tópicos con técnicas de reducción de estrés para revertir el impacto fisiológico negativo. La identificación de este eje neuro-folicular permite al clínico abordar la raíz del problema en lugar de solo tratar los síntomas superficiales de la pérdida de densidad.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-contaminacion-009",
+    "title": "Partículas PM2.5 y su Rol en la Inflamación del Orificio Folicular",
+    "content": "La exposición a material particulado fino (PM2.5), predominante en entornos urbanos como Bogotá, representa una amenaza significativa para la salud del cuero cabelludo. Estas partículas, al depositarse en el orificio folicular, actúan como catalizadores de estrés oxidativo y activan receptores de hidrocarburos arílicos (AhR), desencadenando una respuesta inflamatoria crónica. Esta inflamación no solo altera la función de barrera, sino que también puede inducir cambios en la microbiota del cuero cabelludo, promoviendo la proliferación de microorganismos oportunistas. La literatura dermatológica contemporánea vincula esta exposición con un aumento en la incidencia de dermatitis de contacto y un agravamiento de las alopecias inflamatorias. Para el diagnóstico en GlowApp, es imperativo preguntar sobre el grado de exposición del usuario a entornos altamente contaminados y evaluar la presencia de depósitos de partículas mediante tricoscopia. El uso de productos de limpieza con activos quelantes y antioxidantes es una estrategia preventiva esencial para neutralizar el daño causado por estos contaminantes antes de que se establezca una patología folicular persistente. El enfoque debe ser proactivo, integrando la protección ambiental en la rutina de cuidado diario del usuario.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes-quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:16:56.518Z"
+  }
+]

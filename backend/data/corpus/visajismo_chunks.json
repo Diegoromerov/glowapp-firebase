@@ -1,0 +1,487 @@
+﻿{
+  "batch_metadata": {
+    "category": "visajismo_cejas_microblading",
+    "phase": 2,
+    "risk_level": "alto",
+    "batch_id": "visajismo-mb-lote1",
+    "chunk_count": 18,
+    "generated_at": "2026-08-08T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "pending_md_review",
+    "notes": "Lote piloto. Sintetiza 15 fuentes verificadas. Incluye GAP regulatorio Colombia como contenido diferenciador. Requiere revisión clínica MD antes de ingesta."
+  },
+  "chunks": [
+    {
+      "chunk_id": "visajismo-mb-001",
+      "title": "Qué es el microblading y cómo se diferencia de microshading, nanoblading y micropigmentación",
+      "content": "El microblading es una técnica de maquillaje semipermanente de cejas que deposita pigmento en la dermis papilar mediante una herramienta manual con microagujas dispuestas en línea, creando trazos individuales que simulan vellos naturales. A diferencia de la micropigmentación tradicional (que usa máquina eléctrica y deposita más profundo), el microblading produce un resultado más natural pero menos duradero. Variantes comunes: microblading (trazos finos tipo pelo-a-pelo), microshading o powder brows (efecto degradado con puntos de pigmento), nanoblading (agujas más finas para trazos ultra-delicados). La profundidad de depósito es crítica: si el pigmento queda muy superficial se desvanece rápido; si penetra a dermis reticular aumenta el riesgo de cicatriz, migración del pigmento y cambio de color con el tiempo. La duración típica es de 12 a 24 meses, según tipo de piel, exposición solar y técnica aplicada. Por ser un procedimiento que rompe la barrera cutánea, se considera invasivo y conlleva riesgos médicos reales, no solo estéticos. Antes de realizarte cualquier técnica de cejas semipermanente, es fundamental que un profesional evalúe tu historial médico y tipo de piel.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 },
+        { "institution": "PubMed — Hvas & Serup (Curr Probl Dermatol 2022)", "pmid": "37263228", "url": "https://pubmed.ncbi.nlm.nih.gov/37263228/", "year": 2022 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "fundamento_tecnico"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-002",
+      "title": "Anatomía de la ceja relevante para el microblading",
+      "content": "La ceja tiene una estructura anatómica que el profesional debe respetar durante el microblading. El vello de la ceja crece en direcciones específicas que varían según la zona (cabeza, cuerpo, arco, cola) y el profesional debe imitar esta dirección natural para un resultado realista. La piel de la zona de la ceja es relativamente delgada, con dermis papilar superficial; debajo se encuentran vasos sanguíneos y terminaciones nerviosas que explican la sensibilidad del procedimiento. En pieles más gruesas o seborreicas el pigmento tiende a retenerse de forma distinta que en pieles finas y secas. La vascularización abundante de la zona explica por qué el sangrado leve es normal pero un sangrado excesivo puede indicar alteraciones de coagulación que deben evaluarse antes del procedimiento. La región periocular también tiene riesgo aumentado de infección si no se cumple bioseguridad estricta, por la cercanía a estructuras sensibles. Un visajismo correcto —determinar la forma de ceja según proporciones faciales, simetría y morfología— es el paso previo indispensable antes de cualquier técnica de micropigmentación, porque un mal diseño es mucho más difícil de corregir que una mala técnica de depósito.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "analizador_colorimetria"],
+        "content_type": "fundamento_anatomico"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-003",
+      "title": "Indicaciones médicas del microblading: alopecia de cejas y cicatrices",
+      "content": "Además del uso puramente estético, el microblading y la micropigmentación de cejas tienen indicaciones médicas documentadas donde pueden mejorar significativamente la calidad de vida. Las principales indicaciones médicas incluyen: pérdida de vello en cejas por alopecia areata o alopecia frontal fibrosante, pérdida de cejas por tratamientos de quimioterapia, hipotiroidismo o trastornos autoinmunes, camuflaje de cicatrices en la zona de la ceja (post-quirúrgicas, post-traumáticas o por quemaduras), y reconstrucción de la apariencia de cejas en pacientes con condiciones dermatológicas que causan pérdida permanente del vello. En estos casos, el procedimiento debe ser evaluado y supervisado en coordinación con el dermatólogo tratante, porque la piel afectada por estas condiciones puede tener respuestas diferentes al pigmento y al trauma de las agujas. Por ejemplo, en pacientes con alopecia areata activa el procedimiento puede desencadenar fenómeno de Koebner (nuevas lesiones en la zona de trauma), y en piel con cicatriz queloide previa el riesgo de cicatrización patológica es mayor. Si estás considerando microblading por una razón médica, consúltalo primero con tu dermatólogo.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Hvas & Serup (Curr Probl Dermatol 2022)", "pmid": "37263228", "url": "https://pubmed.ncbi.nlm.nih.gov/37263228/", "year": 2022 },
+        { "institution": "PubMed — Motoki et al. (Adv Skin Wound Care 2020)", "pmid": "32694299", "url": "https://pubmed.ncbi.nlm.nih.gov/32694299/", "year": 2020 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": ["alopecia areata activa", "cicatriz queloide previa"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "indicacion_medica"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-004",
+      "title": "Contraindicaciones absolutas del microblading",
+      "content": "Existen condiciones médicas en las que el microblading NO debe realizarse bajo ninguna circunstancia, por riesgo elevado de complicaciones graves. Las contraindicaciones absolutas documentadas en la literatura dermatológica incluyen: embarazo y lactancia (por riesgo potencial del pigmento y de los anestésicos tópicos, sin estudios de seguridad), trastornos de coagulación no controlados o uso de anticoagulantes (riesgo de sangrado excesivo y hematomas), diabetes mellitus descompensada (por riesgo elevado de infección y cicatrización deficiente), inmunosupresión activa (VIH no controlado, quimioterapia reciente, uso de inmunosupresores), infecciones cutáneas activas o heridas abiertas en la zona de la ceja, historia de queloides o cicatrización hipertrófica (riesgo de cicatriz patológica documentado en revisiones sistemáticas), y alergia conocida a los pigmentos o a los componentes del tinte. Un estudio transversal de seguridad en microblading encontró que una proporción significativa de pacientes no recibe evaluación médica previa, lo que aumenta el riesgo de que estas contraindicaciones pasen inadvertidas. Siempre informa a tu profesional sobre TODAS tus condiciones médicas y medicamentos antes del procedimiento.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 },
+        { "institution": "PubMed — Argobi et al. (Dermatol Reports 2024)", "pmid": "39669887", "url": "https://pubmed.ncbi.nlm.nih.gov/39669887/", "year": 2024 },
+        { "institution": "PubMed — Motoki et al. (Adv Skin Wound Care 2020)", "pmid": "32694299", "url": "https://pubmed.ncbi.nlm.nih.gov/32694299/", "year": 2020 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente", "anestesicos topicos"],
+        "contraindications": [
+          "embarazo",
+          "lactancia",
+          "trastorno coagulacion",
+          "anticoagulantes",
+          "diabetes descompensada",
+          "inmunosupresion",
+          "infeccion cutanea activa",
+          "queloides",
+          "alergia a pigmentos"
+        ],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura", "planificador_skincare"],
+        "content_type": "contraindicacion"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-005",
+      "title": "Microblading en embarazo y lactancia: por qué está contraindicado",
+      "content": "El microblading y cualquier forma de micropigmentación están contraindicados durante el embarazo y la lactancia, y esta es una de las contraindicaciones más importantes que debes conocer. Las razones médicas documentadas son varias. Primero, los pigmentos contienen sustancias (incluyendo posibles trazas de metales y compuestos orgánicos) cuya seguridad en el feto y el lactante no ha sido estudiada: no existen ensayos clínicos que demuestren que el pigmento depositado en la dermis sea inocuo durante la gestación, y por principio de precaución se evita. Segundo, los anestésicos tópicos usados para reducir el dolor pueden absorberse sistémicamente y algunos tienen potencial riesgo en embarazo. Tercero, durante el embarazo la piel está más reactiva y susceptible a reacciones alérgicas e irritación, y el sistema inmunológico modulado aumenta el riesgo de infección. Cuarto, los cambios hormonales del embarazo afectan la cicatrización y la retención del pigmento, haciendo el resultado impredecible. La recomendación estándar es posponer el microblading hasta después de terminar la lactancia. Si estás embarazada, en lactancia, o planeando un embarazo cercano y estás considerando microblading, la respuesta médica segura es esperar. Ningún resultado estético justifica un riesgo potencial para tu bebé.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 },
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente", "anestesicos topicos"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "contraindicacion"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-006",
+      "title": "Riesgo de cicatrización patológica (queloides) tras micropigmentación de cejas",
+      "content": "Una de las complicaciones más serias del microblading es la cicatrización patológica, y la evidencia científica la documenta claramente. Una revisión sistemática con reporte de caso encontró cicatrización hipertrófica y queloide en la zona de la ceja tras micropigmentación, confirmando que el riesgo es real aunque infrecuente. Los queloides son cicatrices que crecen más allá de los bordes de la herida original, pueden ser dolorosas, causar picazón y resultar estéticamente más problemáticas que la condición que se intentaba corregir. Los factores de riesgo identificados incluyen: historia personal o familiar de queloides, fototipos más oscuros (Fitzpatrick IV-VI tienen mayor tendencia a cicatrización hipertrófica), depositar el pigmento demasiado profundo (en dermis reticular), y múltiples retoques en poco tiempo. Es fundamental que si tienes historia de queloides o cicatrización anormal en cualquier parte del cuerpo, lo informes al profesional y consideres seriamente no realizarte microblading. La revisión sistemática concluye que la evaluación del riesgo cicatricial debe ser parte del consentimiento informado obligatorio antes del procedimiento. Si después de un microblading notas que la zona de la ceja se endurece, crece, duele o pica semanas después, consulta a un dermatólogo pronto, porque el tratamiento temprano de un queloide es más efectivo.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Motoki et al. (Adv Skin Wound Care 2020)", "pmid": "32694299", "url": "https://pubmed.ncbi.nlm.nih.gov/32694299/", "year": 2020 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["IV", "V", "VI", "all"],
+        "ingredients": [],
+        "contraindications": ["queloides", "cicatrizacion patologica previa"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "complicacion"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-007",
+      "title": "Infecciones por micropigmentación de cejas: bioseguridad crítica y riesgo en Colombia",
+      "content": "La micropigmentación rompe la barrera cutánea y puede inocular microorganismos directamente en la dermis, por lo que la bioseguridad es crítica. Las infecciones documentadas tras microblading incluyen infecciones bacterianas comunes (Staphylococcus, Streptococcus), micobacterias atípicas de crecimiento lento que pueden aparecer semanas después del procedimiento, e infecciones virales transmitidas por instrumentos no esterilizados (hepatitis B, hepatitis C, VIH). Pero hay un riesgo especialmente relevante para Colombia: la paracoccidioidomicosis. Un caso clínico reportado documentó paracoccidioidomicosis (una micosis profunda endémica en zonas tropicales de Latinoamérica, incluida Colombia) asociada a micropigmentación de cejas, ya sea como reactivación o como nueva forma de transmisión por inoculación cutánea. La FDA ha emitido alertas de seguridad por contaminación bacteriana en tintas de maquillaje permanente, incluyendo retiros de mercado por productos contaminados. Para protegerte, verifica que el establecimiento cumpla bioseguridad estricta: agujas desechables y nuevas para cada cliente, pigmentos en envases sellados, esterilización adecuada, guantes nuevos, y licencia sanitaria vigente. Si tras un microblading presentas enrojecimiento que empeora, dolor creciente, secreción, fiebre o lesiones que no sanan en 2 semanas, consulta a un médico de inmediato.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — de Oliveira et al. (Med Mycol Case Rep 2024)", "pmid": "38516608", "url": "https://pubmed.ncbi.nlm.nih.gov/38516608/", "year": 2024 },
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 },
+        { "institution": "FDA — Tattoos and Permanent Makeup Safety Alerts", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento contaminado"],
+        "contraindications": ["inmunosupresion"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "complicacion_infecciosa",
+        "contexto_colombiano": true
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-008",
+      "title": "Reacciones alérgicas retardadas a pigmentos de cejas: hipersensibilidad tipo IV",
+      "content": "Las reacciones alérgicas a los pigmentos de microblading y micropigmentación son de tipo IV (hipersensibilidad retardada), lo que significa que pueden aparecer días, semanas o incluso meses después del procedimiento, no de forma inmediata. Un caso clínico documentó una reacción granulomatosa crónica a tinte semipermanente de cejas que requirió tratamiento prolongado. Las manifestaciones clínicas incluyen: enrojecimiento persistente, picazón, hinchazón, formación de pápulas o nódulos en la zona del pigmento, y descamación. Estas reacciones son mediadas por el sistema inmunológico y pueden ser difíciles de tratar porque el pigmento permanece en la dermis como estímulo continuo. La prueba de parche previa es la herramienta preventiva más importante: consiste en aplicar una pequeña cantidad del pigmento en el antebrazo 24-48 horas antes del procedimiento para detectar sensibilidad. Sin embargo, la prueba de parche tiene limitaciones: puede dar falsos negativos porque la sensibilización puede ocurrir durante el primer contacto, y una reacción alérgica real puede aparecer después. Si tuviste una reacción alérgica previa a cualquier tinte o pigmento, informa al profesional y considera seriamente evitar el microblading. Ante cualquier reacción persistente en la zona de las cejas tras el procedimiento, consulta a un dermatólogo para diagnóstico histopatológico y tratamiento adecuado.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Suleman et al. (Cureus 2023)", "pmid": "37638261", "url": "https://pubmed.ncbi.nlm.nih.gov/37638261/", "year": 2023 },
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": ["alergia a pigmentos", "dermatitis activa"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "complicacion_alergica"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-009",
+      "title": "Reacciones granulomatosas y sarcoideas tardías a pigmentos de micropigmentación",
+      "content": "Los pigmentos de micropigmentación pueden desencadenar reacciones granulomatosas, que son respuestas inflamatorias crónicas donde el sistema inmunológico forma granulomas alrededor de las partículas de pigmento que no puede eliminar. Una revisión de 2025 documentó la reacción sarcoidea de cejas tras micropigmentación, revisando los enfoques terapéuticos disponibles. Este tipo de reacción es particularmente importante porque puede ser la primera manifestación de una sarcoidosis sistémica (enfermedad que puede afectar pulmones, piel y otros órganos) o puede ser una reacción localizada al pigmento. Las manifestaciones incluyen nódulos firmes, placas elevadas o inflamación persistente en la zona de la ceja que aparecen meses o años después del procedimiento. El diagnóstico requiere biopsia con estudio histopatológico para distinguir entre una reacción localizada al pigmento y una sarcoidosis sistémica. Las opciones terapéuticas documentadas incluyen corticoides tópicos o intralesionales, y en casos de sarcoidosis confirmada, tratamiento sistémico coordinado con el dermatólogo. La remoción del pigmento con láser en estas reacciones granulomatosas puede empeorar la respuesta inflamatoria, por lo que debe ser evaluada por un especialista. Si presentas inflamación persistente, nódulos o cambios en la textura de la zona de tus cejas meses después de una micropigmentación, consulta a un dermatólogo para una evaluación completa.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Campos et al. (Int J Trichology 2025)", "pmid": "41306839", "url": "https://pubmed.ncbi.nlm.nih.gov/41306839/", "year": 2025 },
+        { "institution": "PubMed — Suleman et al. (Cureus 2023)", "pmid": "37638261", "url": "https://pubmed.ncbi.nlm.nih.gov/37638261/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": ["sarcoidosis"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "complicacion_inmunologica"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-010",
+      "title": "Metales pesados en pigmentos de tatuaje y maquillaje permanente: riesgos toxicológicos",
+      "content": "Los pigmentos usados en microblading y maquillaje permanente pueden contener metales pesados y sustancias tóxicas, y esto está documentado en la literatura científica. Un análisis de 2025 evaluó el contenido de metales pesados en tintas de tatuaje y maquillaje permanente frente a los estándares europeos REACH, encontrando presencia de plomo (Pb), cadmio (Cd), níquel (Ni), cromo (Cr), arsénico (As) y mercurio (Hg) en diversas muestras. Otro estudio validó metodologías analíticas (Sy-XRF, espectroscopía de absorción atómica AAS, y espectroscopía Raman) para detectar metales tóxicos en tintas, confirmando la variabilidad en la composición elemental de los pigmentos del mercado. El riesgo toxicológico de estos metales incluye sensibilización alérgica (especialmente níquel y cromo), toxicidad acumulativa (plomo, cadmio, mercurio), y efectos locales en la piel. Los estándares europeos REACH establecen límites máximos permitidos de estas sustancias, y sirven como referencia de calidad incluso fuera de Europa. Esto es importante para ti como consumidor: no todos los pigmentos tienen la misma calidad, y la procedencia del pigmento importa. Pregunta siempre a tu profesional qué pigmentos usa, si tienen registro sanitario y si cumplen estándares internacionales de calidad. Un pigmento de baja calidad o sin registro aumenta tu riesgo de reacciones adversas y complicaciones a largo plazo.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Ćwieląg-Drabek et al. (Toxics 2025)", "pmid": "41304486", "url": "https://pubmed.ncbi.nlm.nih.gov/41304486/", "year": 2025 },
+        { "institution": "PubMed — Manso et al. (Biol Trace Elem Res 2019)", "pmid": "29948912", "url": "https://pubmed.ncbi.nlm.nih.gov/29948912/", "year": 2019 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["plomo", "cadmio", "niquel", "cromo", "arsenico", "mercurio"],
+        "contraindications": ["alergia a niquel", "alergia a cromo"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "toxicologia"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-011",
+      "title": "Asociación entre tinta de tatuaje y riesgo de linfoma o cáncer cutáneo: evidencia emergente",
+      "content": "Una revisión narrativa reciente analiza la evidencia emergente sobre una posible asociación entre la exposición a tintas de tatuaje y el desarrollo de linfoma o cáncer cutáneo. Los mecanismos propuestos involucran componentes de las tintas como hidrocarburos aromáticos policíclicos (PAHs) y aminas aromáticas, que tienen potencial carcinogénico documentado en otros contextos. Es importante ser preciso y prudente con esta información: la evidencia actual es limitada y emergente, no hay aún estudios que demuestren una relación causal definitiva entre microblading facial y cáncer, y las concentraciones de pigmento en microblading son mucho menores que en un tatuaje corporal grande. Sin embargo, el principio de precaución aplica, especialmente para pigmentos de uso facial en una zona con alta vascularización. Las recomendaciones preventivas prácticas son: elegir pigmentos de calidad certificada y con registro sanitario, evitar pigmentos de procedencia desconocida o sin registro, y verificar que el establecimiento use productos de fabricantes reconocidos que cumplan estándares como el REACH europeo. Si tienes historia personal o familiar de linfoma, melanoma u otro cáncer de piel, o si tienes muchos tatuajes extensos, es razonable consultar con tu dermatólogo antes de realizarte procedimientos adicionales con pigmento. La decisión debe ser informada, basada en evidencia actual y sin alarmismo innecesario.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Suthar & Kaliberdenko (Cardiovasc Hematol Disord Drug Targets 2026)", "pmid": "41588965", "url": "https://pubmed.ncbi.nlm.nih.gov/41588965/", "year": 2026 },
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PAHs", "aminas aromaticas"],
+        "contraindications": ["historia de cancer cutaneo", "historia de linfoma"],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "toxicologia",
+        "nivel_evidencia": "emergente"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-012",
+      "title": "Regulación FDA del maquillaje permanente: seguridad del consumidor",
+      "content": "En Estados Unidos, la FDA regula el maquillaje permanente (incluido microblading) en el marco de los cosméticos y los colorantes. La FDA ha publicado una hoja informativa específica sobre tatuajes y maquillaje permanente, y emite alertas de seguridad cuando detecta riesgos. Los puntos clave de la regulación FDA relevantes para tu seguridad incluyen: las tintas de tatuaje y maquillaje permanente están sujetas a la regulación de colorantes aditivos (con excepción de la henna para cabello), la FDA ha emitido alertas por contaminación bacteriana en tintas y ha ordenado retiros de mercado de productos contaminados, se han reportado reacciones adversas a través del sistema MedWatch de la FDA, y la agencia advierte sobre ingredientes no aprobados en algunas tintas. La FDA también enfatiza la importancia de la prueba de parche previa y de verificar que el profesional cumpla normas de higiene y esterilización. Aunque la regulación FDA es de Estados Unidos y no es directamente vinculante en Colombia, sirve como una referencia internacional útil de estándares de seguridad. Cuando evalúes un establecimiento de microblading, puedes usar estos criterios FDA como checklist de calidad: pigmentos de fabricante reconocido, sin alertas de seguridad, con buenas prácticas de higiene documentadas.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet + Safety Alerts", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "regulacion",
+        "region": "internacional"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-013",
+      "title": "Regulación ANVISA de Brasil: referencia para Latinoamérica en pigmentos de micropigmentación",
+      "content": "En Brasil, la ANVISA (Agência Nacional de Vigilância Sanitária) regula las tintas para tatuaje y maquillaje definitivo mediante resoluciones específicas que establecen requisitos de registro sanitario, límites máximos de metales pesados, etiquetado obligatorio y buenas prácticas de fabricación. Esta regulación brasileña es especialmente relevante como referencia para Colombia y Latinoamérica por varias razones: Brasil es el mercado de estética más grande de la región, muchos de los pigmentos que circulan en Colombia provienen de o pasan por Brasil, los criterios técnicos de ANVISA sobre límites de metales pesados y registro sanitario son comparables a los que debería tener un marco colombiano robusto, y la regulación de ANVISA incluye requisitos de trazabilidad del pigmento desde el fabricante hasta el consumidor final. Los elementos clave de la regulación ANVISA que puedes usar como criterio de calidad incluyen: registro sanitario vigente del pigmento, concentración máxima permitida de sustancias restringidas, etiquetado con composición y fecha de vencimiento, y fabricación bajo buenas prácticas. Al elegir un pigmento o establecimiento en Colombia, verificar si el producto tiene estándares comparables a ANVISA (o al REACH europeo) es una señal de calidad y seguridad. Esta referencia regulatoria brasileña llena parcialmente el vacío normativo colombiano en esta área específica.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "ANVISA — Resolução RDC sobre tintas para tatuagem e maquiagem definitiva", "url": "https://www.gov.br/anvisa/pt-br/assuntos/cosmeticos", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "regulacion",
+        "region": "latam"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-014",
+      "title": "GAP regulatorio en Colombia: no existe norma específica para microblading",
+      "content": "Este es un punto crítico que debes conocer como consumidor en Colombia: NO existe actualmente una resolución específica del Ministerio de Salud que regule el microblading como procedimiento distinto del tatuaje general. La normativa vigente (Resolución 2003 de 2014 y Resolución 3100 de 2019) regula genéricamente los establecimientos que realizan tatuajes y perforaciones, estableciendo requisitos de habilitación, bioseguridad y manejo de residuos, pero NO hay una norma técnica específica para micropigmentación estética facial como el microblading, microshading o nanoblading. Esto significa que, en la práctica, el microblading se regula bajo las mismas normas genéricas de un tatuaje corporal, a pesar de ser un procedimiento en una zona facial más delicada, con pigmentos distintos, y con indicaciones estéticas diferentes. Este vacío normativo tiene implicaciones reales para tu seguridad: no hay un estándar obligatorio específico sobre la calidad de pigmentos para cejas, no hay requisitos diferenciados de capacitación para micropigmentación facial, y la vigilancia sanitaria específica es limitada. Por eso tu propia verificación como consumidor es aún más importante: elige profesionales certificados, verifica la calidad y procedencia de los pigmentos, exige bioseguridad estricta, y solicita consentimiento informado escrito. La Sociedad Colombiana de Dermatología ha emitido posiciones sobre procedimientos estéticos invasivos que pueden servirte como referencia de buenas prácticas mientras se desarrolla una regulación específica.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "Ministerio de Salud y Protección Social de Colombia — Normatividad establecimientos de salud / tatuaje", "url": "https://www.minsalud.gov.co/", "year": 2024, "note": "GAP CRÍTICO verificado: búsqueda de 'microblading' y 'micropigmentación' no retorna resolución dedicada" },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD) — Consensos", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "regulacion",
+        "region": "colombia",
+        "ventaja_competitiva": true,
+        "nota": "Contenido diferenciador: ningún competidor tiene documentado este GAP regulatorio colombiano"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-015",
+      "title": "Prueba de parche para microblading: protocolo y por qué es esencial",
+      "content": "La prueba de parche es el procedimiento preventivo más importante antes de cualquier micropigmentación de cejas, y tanto la literatura dermatológica como la regulación FDA la recomiendan. El protocolo estándar consiste en aplicar una pequeña cantidad del pigmento que se va a usar en la zona del antebrazo o detrás de la oreja, 24 a 48 horas antes del procedimiento, y observar si aparece alguna reacción. Si en ese periodo aparece enrojecimiento, picazón, hinchazón o cualquier reacción en la zona de prueba, el procedimiento NO debe realizarse con ese pigmento. La prueba de parche detecta sensibilidades conocidas al pigmento o a sus componentes, pero tiene limitaciones importantes que debes entender: puede dar falsos negativos, porque algunas reacciones alérgicas de tipo IV solo se desencadenan tras la sensibilización que ocurre durante el primer contacto real, la concentración de pigmento en la prueba puede ser menor que la que se deposita en el procedimiento, y algunas reacciones pueden aparecer días o semanas después. Por eso, incluso con una prueba de parche negativa, es posible desarrollar una reacción posterior. La prueba de parche no sustituye la evaluación médica completa ni el consentimiento informado, pero es una herramienta preventiva valiosa que reduce significativamente el riesgo de reacciones alérgicas severas. Exige siempre la prueba de parche antes de tu microblading, y un establecimiento serio te la ofrecerá sin que tengas que pedirla.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 },
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["pigmento semipermanente"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "bioseguridad"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-016",
+      "title": "Checklist de evaluación médica previa al microblading",
+      "content": "Antes de realizarte un microblading, un profesional responsable debe evaluar tu historial médico completo. Este checklist integra las contraindicaciones documentadas en la literatura dermatológica y los criterios de seguridad de la FDA. Verifica que te pregunten o pregúntate tú misma: ¿Estás embarazada, en lactancia o planeas un embarazo pronto? (contraindicado). ¿Tienes diabetes? ¿Está controlada? (descompensada es contraindicación). ¿Tomas anticoagulantes o tienes trastornos de coagulación? (riesgo de sangrado). ¿Tienes alguna condición autoinmune activa o tomas inmunosupresores? (riesgo de infección y cicatrización). ¿Tienes historia de queloides o cicatrización anormal? (riesgo de cicatriz patológica). ¿Tienes alergias conocidas a pigmentos, tintes, anestésicos tópicos o látex? (riesgo de reacción alérgica). ¿Tienes alguna infección, herida o condición dermatológica activa en la zona de la ceja? (contraindicado). ¿Tienes rosácea activa, dermatitis o eczema en la zona? (contraindicado). ¿Tomas isotretinoína oral o la tomaste en los últimos meses? (afecta cicatrización). ¿Tienes VIH u otra condición que afecte tu sistema inmunológico? (evaluar riesgo). Un estudio transversal encontró que una proporción significativa de pacientes no recibe esta evaluación médica previa, lo que es una señal de alerta sobre la calidad del establecimiento. Si un profesional no te pregunta sobre tu historial médico antes del microblading, es una razón para reconsiderar ese establecimiento.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Argobi et al. (Dermatol Reports 2024)", "pmid": "39669887", "url": "https://pubmed.ncbi.nlm.nih.gov/39669887/", "year": 2024 },
+        { "institution": "PubMed — Marwah et al. (Indian Dermatol Online J 2021)", "pmid": "33768017", "url": "https://pubmed.ncbi.nlm.nih.gov/33768017/", "year": 2021 },
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [
+          "embarazo", "lactancia", "diabetes descompensada", "anticoagulantes",
+          "trastorno coagulacion", "autoinmune activa", "queloides",
+          "alergia a pigmentos", "infeccion activa", "rosacea activa",
+          "isotretinoina reciente", "inmunosupresion"
+        ],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "checklist_evaluacion"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-017",
+      "title": "Cuidados post-procedimiento y señales de alarma tras el microblading",
+      "content": "Los cuidados posteriores al microblading son fundamentales para una cicatrización adecuada y un buen resultado del pigmento. Las recomendaciones generales basadas en la práctica dermatológica incluyen: mantener la zona limpia y seca durante los primeros días según las indicaciones del profesional, no tocar, rascar ni arrancar las costras que se forman durante la cicatrización, evitar la exposición solar directa y el uso de protector solar en la zona durante las primeras semanas (el protector va después de cicatrizado), evitar saunas, piscinas, sudoración excesiva y maquillajes en la zona durante el periodo de cicatrización, y aplicar los productos cicatrizantes específicos que el profesional indique. Es normal que durante la primera semana la ceja se vea más oscura de lo esperado, que haya leve enrojecimiento y que se formen costras finas. Sin embargo, hay señales de alarma que requieren atención médica: enrojecimiento que empeora en lugar de mejorar después de 3-4 días, dolor intenso o creciente, secreción purulenta (pus), fiebre, inflamación marcada, lesiones que no sanan después de 2 semanas, o aparición de nódulos o cambios de textura meses después. Si presentas alguna de estas señales, consulta a un médico o dermatólogo pronto, no esperes a que empeore. La infección temprana se trata mucho mejor que una infección establecida.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Tattoos and Permanent Makeup: Fact Sheet", "url": "https://www.fda.gov/cosmetics/cosmetic-products/tattoos-and-permanent-makeup", "year": 2024 },
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura", "planificador_skincare"],
+        "content_type": "cuidados_postprocedimiento"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "visajismo-mb-018",
+      "title": "Cuándo consultar al dermatólogo por complicaciones del microblading",
+      "content": "Muchas complicaciones del microblading requieren evaluación por un dermatólogo, y saber cuándo consultar te ayuda a actuar a tiempo. Debes consultar a un dermatólogo si presentas: infección que no mejora con los cuidados iniciales (enrojecimiento persistente, secreción, dolor), reacción alérgica en la zona del pigmento (picazón, hinchazón, pápulas), aparición de nódulos o granulomas semanas o meses después del procedimiento, cicatriz que crece, se endurece o pica (posible queloide), cambio de color inesperado del pigmento (a azul, verde o gris), migración del pigmento fuera de la zona de la ceja, o cualquier lesión en la zona de la ceja que no sana después de 2-3 semanas. El dermatólogo puede realizar una biopsia con estudio histopatológico para determinar si una reacción es alérgica, granulomatosa, infecciosa o si corresponde a otra condición, y este diagnóstico preciso es esencial para el tratamiento correcto. En casos de reacción alérgica o granulomatosa confirmada, las opciones terapéuticas incluyen corticoides tópicos o intralesionales y, en algunos casos, tratamiento sistémico. La remoción del pigmento puede hacerse con láser Q-switched o picosegundos en casos seleccionados, pero debe ser evaluada por un especialista porque en reacciones alérgicas el láser puede empeorar la respuesta inflamatoria. Ante la duda, siempre consulta a un dermatólogo certificado antes de intentar cualquier tratamiento casero o de dejar pasar los síntomas.",
+      "category": "visajismo_cejas_microblading",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Mohammodu et al. (Mo Med 2025)", "pmid": "41438931", "url": "https://pubmed.ncbi.nlm.nih.gov/41438931/", "year": 2025 },
+        { "institution": "PubMed — Campos et al. (Int J Trichology 2025)", "pmid": "41306839", "url": "https://pubmed.ncbi.nlm.nih.gov/41306839/", "year": 2025 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD)", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["simulador_visajismo_cejas", "aura"],
+        "content_type": "manejo_complicaciones"
+      },
+      "clinical_review_status": "pending_md_review",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    }
+  ]
+}

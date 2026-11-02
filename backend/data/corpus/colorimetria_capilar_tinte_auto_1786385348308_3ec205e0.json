@@ -1,0 +1,205 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786385348302-1-0569a224-cinetica-de-la-quelacion-de-metales-de-transicion-en-la-matr",
+    "title": "Cinética de la quelación de metales de transición en la matriz queratínica",
+    "content": "La presencia de iones metálicos, particularmente cobre y hierro, actúa como catalizador en la degradación oxidativa del peróxido de hidrógeno durante la coloración. Estos metales, acumulados en la fibra capilar por el uso de agua corriente o productos de styling, provocan una descomposición incontrolada del oxidante, resultando en una polimerización incompleta de los precursores de color y un daño estructural severo. La implementación de agentes quelantes específicos, como el EDTA tetrasódico o el ácido etidrónico, es fundamental para secuestrar estos iones antes de la reacción de acoplamiento oxidativo. Una gestión ineficiente de estos metales no solo altera la precisión cromática, sino que incrementa la porosidad de la cutícula al generar radicales libres que atacan los enlaces disulfuro de la queratina. El control de la cinética de quelación permite estandarizar el depósito de pigmentos, garantizando una mayor durabilidad del tono y una reducción significativa en la fragilidad capilar post-servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32154321/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido etidrónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:08.303Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786385348303-2-93429721-modulacion-del-potencial-de-membrana-en-la-deposicion-de-tin",
+    "title": "Modulación del potencial de membrana en la deposición de tintes catiónicos",
+    "content": "La interacción entre los tintes directos catiónicos y la superficie de la fibra capilar está gobernada por el potencial electrocinético o potencial Zeta. Dado que la queratina posee una carga neta negativa en pH fisiológico, la eficacia de la fijación cromática depende directamente de la densidad de carga de los polímeros catiónicos presentes en la fórmula. Un ajuste preciso del pH durante el proceso de aplicación es crucial para mantener la carga negativa de los grupos carboxilo de los aminoácidos, facilitando la adsorción electrostática del pigmento. Si el pH es demasiado bajo, la protonación excesiva de los grupos amino puede reducir la afinidad tintórea, mientras que un pH elevado puede comprometer la integridad del complejo de membrana celular (CMC). Optimizar este equilibrio permite una deposición uniforme, minimizando la migración del pigmento hacia las zonas de mayor porosidad y evitando el viraje cromático no deseado en cabellos con daño estructural previo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900123/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisicoquimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:08.303Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786385348303-3-d81ca660-efectos-de-la-radiacion-uv-en-la-fotolisis-de-precursores-de",
+    "title": "Efectos de la radiación UV en la fotólisis de precursores de color",
+    "content": "La estabilidad de los tintes de oxidación tras la aplicación no solo depende de la calidad de la fórmula, sino de la resistencia de los complejos cromóforos formados frente a la radiación ultravioleta. La exposición solar prolongada induce la degradación fotolítica de los dímeros y trímeros de color, un proceso que se acelera en cabellos con alta porosidad debido a la mayor penetración de la radiación en la corteza. Este fenómeno, conocido como fotodegradación, provoca una ruptura de los enlaces químicos del pigmento, resultando en un cambio de tono hacia matices cálidos no deseados. La incorporación de filtros UV de amplio espectro en los productos de mantenimiento post-coloración es esencial para proteger la integridad de los pigmentos formados. Además, la degradación del triptófano en la queratina bajo luz UV genera especies reactivas de oxígeno que contribuyen al desvanecimiento prematuro del color, subrayando la importancia de incluir antioxidantes en el régimen de cuidado capilar para preservar la vivacidad del tono.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/color-damage",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "applicable_modules": [
+        "proteccion_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:08.303Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786385348303-4-aeb4d31a-influencia-de-la-permeabilidad-del-cmc-en-la-migracion-de-pi",
+    "title": "Influencia de la permeabilidad del CMC en la migración de pigmentos",
+    "content": "El complejo de membrana celular (CMC) actúa como la principal barrera lipídica y estructural para la difusión de moléculas de tinte hacia la corteza. Durante procesos de coloración repetitivos, la integridad de la capa F (ácido 18-metileicosanoico) se ve comprometida, aumentando la permeabilidad del CMC y permitiendo una migración descontrolada de pigmentos. Esta pérdida de selectividad en la barrera lipídica facilita que las moléculas de tinte alcancen zonas profundas de la fibra de manera irregular, lo que resulta en una saturación desigual y un riesgo elevado de sensibilización cutánea por contacto con precursores no polimerizados. La restauración de la barrera lipídica mediante lípidos biomiméticos es una estrategia crítica para controlar la difusión. Al sellar la cutícula y reforzar el CMC, se logra una retención cromática superior y se minimiza la exposición del cuero cabelludo a agentes químicos irritantes, optimizando tanto la seguridad clínica como el resultado estético final del servicio de colorimetría.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lípidos biomiméticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:08.303Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786385348304-6-1d0f0031-dinamica-de-la-peroxidasa-endogena-en-la-degradacion-del-col",
+    "title": "Dinámica de la peroxidasa endógena en la degradación del color",
+    "content": "La peroxidasa endógena, una enzima presente en la cutícula y corteza capilar, puede desempeñar un papel inesperado en la estabilidad del tinte. Durante el proceso de coloración, si la peroxidasa no es adecuadamente neutralizada o inhibida por los componentes de la fórmula, puede catalizar una oxidación incontrolada de los precursores de tinte una vez finalizado el servicio. Este fenómeno provoca un viraje de tono prematuro, especialmente notable en colores fríos que tienden a volverse cálidos en los días posteriores a la aplicación. La eficacia de los agentes estabilizadores en el tinte es, por tanto, un factor determinante para bloquear la actividad enzimática residual. El control de esta cinética enzimática es vital para mantener la fidelidad del color y evitar que la degradación oxidativa comprometa la estructura proteica del cabello. La investigación actual sugiere que la modulación de esta actividad enzimática mediante quelantes específicos es una vía prometedora para mejorar la longevidad de los resultados en colorimetría profesional.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:08.304Z"
+  }
+]

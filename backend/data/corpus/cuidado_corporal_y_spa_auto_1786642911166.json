@@ -1,0 +1,169 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-tecnologia-textiles-inteligentes-001",
+    "title": "Interacción mecánica de los textiles inteligentes con la barrera cutánea",
+    "content": "Los textiles inteligentes o 'smart fabrics' con sensores integrados han comenzado a ser utilizados en dermatología corporal para monitorear parámetros como la pérdida transepidérmica de agua (TEWL) y el pH en tiempo real. Sin embargo, la fricción mecánica constante entre estos polímeros conductores y el estrato córneo puede inducir una alteración en la organización de las bicapas lipídicas. La literatura clínica sugiere que el uso prolongado de dispositivos wearables textiles puede generar micro-abrasiones que, aunque invisibles a simple vista, incrementan la susceptibilidad a la dermatitis de contacto irritativa. Es fundamental que el profesional de la piel evalúe la biocompatibilidad de las fibras, priorizando materiales con baja rugosidad superficial y alta capacidad de gestión de la humedad. La clave reside en la capacidad del tejido para disipar el calor y no interferir con la homeostasis del microbioma residente, evitando la oclusión excesiva que favorece la proliferación de Staphylococcus epidermidis y otros microorganismos oportunistas en condiciones de sudoración constante durante la actividad física.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35210450/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dermatitis_atopica_severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "monitoreo_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:41:33.702Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-metabolismo-lipidos-microbioma-002",
+    "title": "Metabolismo enzimático de lípidos cutáneos por el microbioma",
+    "content": "El microbioma cutáneo corporal no es un espectador pasivo; sus enzimas, especialmente las lipasas producidas por bacterias comensales, juegan un rol crítico en la degradación de los triglicéridos del sebo en ácidos grasos libres. Este proceso es vital para mantener el pH ácido del manto hidrolipídico, el cual oscila fisiológicamente entre 4.5 y 5.5. Un desequilibrio en esta actividad enzimática, a menudo exacerbado por el uso de limpiadores con pH alcalino (jabones en barra tradicionales), puede conducir a una disbiosis. La evidencia indica que una alteración en la composición de ácidos grasos libres afecta la integridad de la barrera física, aumentando la permeabilidad a alérgenos y patógenos. En el contexto de GlowApp, es imperativo recomendar sustitutos de jabón (syndets) que respeten esta dinámica enzimática, evitando la remoción excesiva de lípidos necesarios para la función de barrera. La modulación del microbioma mediante prebióticos tópicos que favorezcan la síntesis de ceramidas endógenas es una estrategia emergente en dermatología corporal para pacientes con xerosis crónica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00567-2/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:41:33.702Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-mecanobiologia-fibroblastos-003",
+    "title": "Mecanobiología: Respuesta de los fibroblastos al estrés por cizallamiento",
+    "content": "La mecanotransducción es el proceso mediante el cual los fibroblastos dérmicos convierten estímulos mecánicos en respuestas bioquímicas. En el tejido corporal, el estrés por cizallamiento (fricción crónica por ropa o hábitos posturales) activa vías de señalización que pueden conducir a la síntesis descontrolada de colágeno o, por el contrario, a la degradación de la matriz extracelular. Estudios recientes demuestran que el masaje de presión controlada y la estimulación mecánica suave pueden favorecer la organización de las fibras de colágeno, mejorando la firmeza cutánea. Sin embargo, cuando el estrés mecánico es excesivo o constante, se produce una activación de las metaloproteinasas de matriz (MMPs), lo que resulta en una degradación prematura de la dermis. Comprender este equilibrio es fundamental para diseñar protocolos de spa que realmente beneficien la estructura cutánea sin causar daño. El uso de activos como los retinoides o péptidos de señalización puede ayudar a mitigar los efectos negativos de este estrés mecánico, promoviendo una remodelación tisular más saludable y resistente frente a las demandas diarias.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9817658/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "peptidos"
+      ],
+      "contraindications": [
+        "procesos_inflamatorios_activos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:41:33.702Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-exosomas-regeneracion-004",
+    "title": "Comunicación celular mediante vesículas extracelulares (exosomas)",
+    "content": "Las vesículas extracelulares, particularmente los exosomas, representan una nueva frontera en la dermatología regenerativa corporal. Estas nanopartículas de señalización facilitan la comunicación intercelular, transportando proteínas, lípidos y microARN que modulan la respuesta inflamatoria y la síntesis de matriz extracelular en los fibroblastos. En tratamientos corporales, su aplicación tópica o mediante sistemas de entrega transdérmica está siendo investigada para acelerar la reparación de pieles atróficas o dañadas por factores externos como el exposoma. A diferencia de los activos cosméticos tradicionales, los exosomas actúan como mediadores directos que pueden reprogramar el comportamiento celular hacia un estado de mayor resiliencia. Es crucial destacar que la evidencia clínica aún se encuentra en etapas de consolidación, y la procedencia de dichos exosomas (vegetal vs. humano) debe ser estrictamente regulada para evitar respuestas inmunogénicas no deseadas. En GlowApp, la integración de esta tecnología requiere un análisis profundo de la estabilidad del producto y la eficacia comprobada en estudios de penetración transdérmica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/1/427",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "historial_neoplasias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion_tisular"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:41:33.702Z"
+  }
+]

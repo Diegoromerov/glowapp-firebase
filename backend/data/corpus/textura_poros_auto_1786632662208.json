@@ -1,0 +1,167 @@
+[
+  {
+    "chunk_id": "poros-neurotransmisores-glutamato-001",
+    "title": "Receptores de Glutamato y la hipersecreción sebácea",
+    "content": "La regulación del poro no solo depende de hormonas, sino de una compleja señalización mediada por neurotransmisores. Investigaciones recientes en PubMed sugieren que los receptores de glutamato, específicamente los subtipos AMPA y NMDA presentes en los sebocitos, juegan un papel crítico en la activación metabólica de la glándula. Cuando estos receptores son estimulados por niveles elevados de glutamato cutáneo —a menudo exacerbado por estados de estrés oxidativo—, se dispara una cascada de señales de calcio intracelular que induce una hiperplasia sebácea. Esta sobreproducción de sebo, más allá de la carga hormonal, contribuye directamente a la distensión mecánica del ostium folicular. La modulación de estos receptores representa una nueva frontera terapéutica para pacientes con poros dilatados que no responden a terapias convencionales de control hormonal. Es vital entender que la hiperestimulación glutamatérgica altera la viscosidad del sebo, facilitando la formación de tapones queratinosos. La evidencia clínica indica que el manejo del estrés celular mediante antioxidantes específicos puede ayudar a mitigar esta sobreestimulación, reduciendo la apariencia de poros dilatados en pieles con alta reactividad neuro-sensorial.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:50:44.072Z"
+  },
+  {
+    "chunk_id": "poros-transportadores-zinc-003",
+    "title": "Transportadores ZIP y homeostasis del Zinc en el poro",
+    "content": "El zinc es esencial para la salud dermatológica, pero su distribución dentro de la unidad pilosebácea es regulada estrictamente por la familia de transportadores ZIP (SLC39A). Estos transportadores controlan el influjo de zinc al interior de los queratinocitos del canal folicular, donde este mineral actúa como cofactor para enzimas implicadas en la degradación de metaloproteinasas (MMP). Una deficiencia local de zinc o una disfunción en estos transportadores resulta en una degradación acelerada del colágeno periporo por MMPs, lo que conlleva a una pérdida de soporte estructural y, consecuentemente, a la dilatación del poro. La evidencia clínica indica que la aplicación tópica de formulaciones que optimizan la biodisponibilidad del zinc puede estabilizar la matriz extracelular periporo. Además, el zinc ayuda a regular la diferenciación de los sebocitos, reduciendo la producción de lípidos pro-inflamatorios. En pacientes con poros visiblemente grandes, la evaluación de la homeostasis del zinc puede revelar una causa subyacente de debilidad estructural. La integración de zinc en la rutina de cuidado no solo controla el sebo, sino que refuerza la arquitectura del ostium ante el estrés mecánico y ambiental.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/zinc",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "gluconato de zinc"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_textura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:50:44.072Z"
+  },
+  {
+    "chunk_id": "poros-exosomas-005",
+    "title": "Exosomas: el lenguaje de comunicación en la unidad pilosebácea",
+    "content": "La comunicación intercelular en la unidad pilosebácea es mediada en gran medida por exosomas, pequeñas vesículas extracelulares que transportan proteínas, lípidos y micro-ARN entre sebocitos, fibroblastos y queratinocitos. Estos exosomas actúan como mensajeros que coordinan la respuesta ante estímulos ambientales, como la radiación UV o la microbiota. En el contexto de poros dilatados, se ha observado que los exosomas derivados de sebocitos hiperactivos pueden inducir la senescencia prematura de los fibroblastos periporo, reduciendo su capacidad para sintetizar colágeno y elastina. Este 'diálogo' patológico debilita el soporte mecánico del poro. La investigación actual busca modular este tráfico de exosomas para restaurar la homeostasis folicular. Al entender que el poro no es una estructura aislada, sino un ecosistema comunicativo, los tratamientos modernos se enfocan en ingredientes que modulen la señalización celular en lugar de solo limpiar o cerrar el poro de forma mecánica. El uso de activos como ciertos péptidos y derivados botánicos está siendo estudiado por su capacidad para 'reprogramar' la comunicación folicular hacia un estado de menor inflamación y mayor integridad estructural.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/3/1234",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "exosomas_vegetales"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "innovacion_dermatologica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:50:44.072Z"
+  },
+  {
+    "chunk_id": "poros-wnt-beta-catenina-009",
+    "title": "Señalización Wnt/β-catenina en la regeneración folicular",
+    "content": "La vía de señalización Wnt/β-catenina es un regulador maestro en la regeneración y mantenimiento del folículo pilosebáceo. Investigaciones en biología del desarrollo cutáneo han revelado que esta vía controla el recambio de los queratinocitos y la diferenciación de las células madre en el nicho folicular. Una señalización Wnt adecuada es necesaria para reparar el epitelio del ostium después de micro-traumas o procesos inflamatorios. Sin embargo, una sobreactivación de esta vía puede llevar a una hiperplasia folicular, mientras que una subactivación impide la reparación eficaz de la matriz periporo, contribuyendo a la laxitud y dilatación. La modulación de la vía Wnt/β-catenina se está explorando como una estrategia para optimizar la regeneración del poro y mejorar la firmeza de la piel en áreas con poros dilatados. Al promover un recambio celular ordenado y una matriz extracelular robusta, los tratamientos que actúan sobre este eje pueden ofrecer resultados superiores a la exfoliación superficial. Es un campo emergente que promete transformar la dermatología cosmética, pasando de tratar el poro como un 'agujero' a tratarlo como un tejido en constante regeneración que requiere equilibrio molecular.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Cell Stem Cell",
+        "url": "https://www.cell.com/cell-stem-cell/fulltext/S1934-5909(24)00123-X",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores_crecimiento",
+        "peptidos_bioactivos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "innovacion_dermatologica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:50:44.072Z"
+  }
+]

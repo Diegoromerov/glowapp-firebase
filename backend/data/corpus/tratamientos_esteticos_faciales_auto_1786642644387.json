@@ -1,0 +1,84 @@
+[
+  {
+    "chunk_id": "bio-modulacion-vias-mecanotransduccion-001",
+    "title": "Bio-modulación de vías de Mecanotransducción mediante Ultrasonido Focalizado",
+    "content": "La mecanotransducción es el proceso mediante el cual las células convierten estímulos mecánicos en respuestas bioquímicas. En el contexto del ultrasonido focalizado de alta intensidad (HIFU), la energía mecánica no solo genera calor para la termocontracción del SMAS, sino que activa receptores de membrana como las integrinas y canales iónicos mecanosensibles. Estudios recientes en PubMed indican que esta activación desencadena la vía de señalización YAP/TAZ, esencial para la remodelación de la matriz extracelular y la diferenciación de fibroblastos hacia un fenotipo secretor de colágeno. Al modular selectivamente estos sensores, es posible optimizar la respuesta regenerativa en pacientes con laxitud moderada, evitando el daño térmico excesivo. La clave reside en la densidad de energía aplicada, que debe ser suficiente para inducir la cascada de señalización sin activar la apoptosis celular no deseada. Este enfoque transforma el HIFU de un simple método de estiramiento mecánico a una herramienta de bio-modulación estructural de precisión, mejorando la calidad dérmica a largo plazo y reduciendo los tiempos de recuperación al favorecer la homeostasis tisular post-procedimiento.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34521092/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos activos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion-estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:37:04.780Z"
+  },
+  {
+    "chunk_id": "electrolipolisis-focal-seguridad-005",
+    "title": "Electrolipólisis Focal: Mecanismos y seguridad en tejido adiposo facial",
+    "content": "La electrolipólisis facial es una técnica que utiliza corrientes galvánicas de baja intensidad para inducir la lipólisis en áreas de acumulación adiposa, como la papada o las bolsas malares. A diferencia de la liposucción, este método es no invasivo y actúa mediante la modulación del potencial de membrana de los adipocitos, facilitando la liberación de ácidos grasos hacia el espacio intersticial para su posterior drenaje linfático. La seguridad de este procedimiento depende críticamente de la impedancia del tejido, la cual varía según la hidratación y la profundidad de la grasa subcutánea. Estudios clínicos subrayan la importancia de evitar la estimulación de estructuras nerviosas periféricas mediante la colocación precisa de los electrodos. Un protocolo de seguridad riguroso incluye la medición de la impedancia en tiempo real y el uso de corrientes pulsadas que minimizan la sensación de dolor. Además, el drenaje linfático post-procedimiento es obligatorio para evitar la reabsorción de lípidos y reducir el edema. La electrolipólisis se posiciona como una herramienta efectiva para la definición del contorno mandibular, siempre que se seleccionen adecuadamente los pacientes sin laxitud cutánea excesiva, ya que el procedimiento no tensa la piel por sí mismo, requiriendo a menudo una sinergia con radiofrecuencia.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-55"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "embarazo",
+        "marcapasos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelacion-facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:37:04.780Z"
+  }
+]

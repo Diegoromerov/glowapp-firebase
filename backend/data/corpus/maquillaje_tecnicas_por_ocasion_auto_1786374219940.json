@@ -1,0 +1,173 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-alta-humedad-fungica-001",
+    "title": "Maquillaje en ambientes de alta humedad: Riesgo de proliferación de Malassezia",
+    "content": "En eventos realizados en climas tropicales con humedad relativa superior al 80%, la integridad del maquillaje se ve comprometida no solo por la termorregulación, sino por el riesgo de proliferación de levaduras comensales como Malassezia spp. El sudor atrapado bajo capas de bases de alta cobertura crea un microambiente de oclusión que altera el pH cutáneo, favoreciendo la transición de estas levaduras hacia formas patógenas. La evidencia sugiere que la oclusión prolongada en estas condiciones puede exacerbar la dermatitis seborreica y la foliculitis por Malassezia. Para mitigar este riesgo, es imperativo utilizar fórmulas no comedogénicas que permitan la transpiración y evitar emolientes pesados. La técnica de aplicación debe priorizar capas delgadas y el uso de polvos matificantes con base de sílice o almidón de arroz que absorban el exceso de humedad sin sellar completamente el poro, permitiendo que la microbiota cutánea mantenga su equilibrio homeostático durante la duración del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/seborrheic-dermatitis-causes",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "almidón de arroz"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "parafina"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:21.583Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-luz-artificial-metamerismo-002",
+    "title": "El fenómeno del metamerismo en maquillaje para eventos bajo iluminación técnica",
+    "content": "El metamerismo es un fenómeno óptico donde dos colores parecen coincidir bajo una fuente de luz pero difieren bajo otra. En eventos corporativos o de moda, donde la iluminación puede variar drásticamente entre luz halógena, LED de espectro estrecho y luz de día, el maquillaje puede sufrir alteraciones cromáticas significativas. La composición química de los pigmentos (óxidos de hierro vs. pigmentos sintéticos orgánicos) reacciona de manera distinta al espectro de emisión de la fuente lumínica. La literatura en colorimetría aplicada a la piel recomienda realizar pruebas de color bajo la fuente de luz específica del evento (luz de espectro completo vs. luz cálida de sodio). Para evitar resultados indeseados, se sugiere la neutralización cromática mediante correctores de tono complementario antes de la aplicación de la base, asegurando que la reflectancia espectral del producto sea lo más cercana posible a la del tono de piel natural bajo condiciones de baja temperatura de color (luz cálida).",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456342/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:21.583Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-baja-gravedad-estabilidad-003",
+    "title": "Estabilidad de emulsiones cosméticas en entornos de baja presión y microgravedad",
+    "content": "Aunque los entornos de microgravedad son nichos específicos, la física de las emulsiones cosméticas bajo condiciones de baja presión (como en cabinas presurizadas de alta altitud o vuelos espaciales comerciales) presenta desafíos para la estabilidad del producto. La desgasificación de los componentes volátiles puede causar la separación de fases en emulsiones aceite-en-agua, alterando la textura y la capacidad de adherencia del maquillaje. Estudios sobre la dinámica de fluidos en condiciones de baja presión indican que la viscosidad del vehículo cosmético debe ser ajustada mediante el uso de polímeros tixotrópicos que mantengan la cohesión del pigmento a pesar de las variaciones barométricas. Además, la evaporación acelerada de la fase acuosa en estos entornos puede llevar a la fisura de la película cosmética, aumentando la permeabilidad transepidérmica. La recomendación clínica para eventos en estas condiciones extremas es el uso de formulaciones anhidras o con alto contenido de ceras volátiles que aseguren una película flexible y resistente a la desestabilización por cambios de presión ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Technical Reports Server",
+        "url": "https://ntrs.nasa.gov/citations/20210015432",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceras volátiles",
+        "polímeros tixotrópicos"
+      ],
+      "contraindications": [
+        "emulsiones inestables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:21.583Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-polvos-metalicos-004",
+    "title": "Maquillaje en entornos industriales: Prevención de la interacción con polvos metálicos",
+    "content": "En entornos industriales con alta presencia de partículas metálicas suspendidas, el maquillaje puede actuar como una superficie de adherencia inintencional para contaminantes atmosféricos. La carga electrostática generada por ciertos polímeros cosméticos y bases de maquillaje puede atraer partículas metálicas de hierro, cobre o níquel, aumentando el riesgo de dermatitis de contacto irritativa. Investigaciones dermatológicas sugieren que la aplicación de una 'barrera física' mediante un spray fijador con propiedades antiestáticas y formadoras de película (film-forming) puede reducir significativamente la deposición de estos contaminantes sobre la epidermis. Es vital que los productos utilizados en estas ocasiones posean un pH balanceado que no comprometa la función barrera, ya que la presencia de metales pesados en contacto directo con una barrera cutánea debilitada puede inducir reacciones de hipersensibilidad tipo IV. Se recomienda la limpieza profunda inmediata post-evento utilizando agentes quelantes suaves que aseguren la eliminación completa de partículas metálicas residuales.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://ijdvl.com/contact-dermatitis-to-metals/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes",
+        "polímeros antiestáticos"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:21.583Z"
+  }
+]

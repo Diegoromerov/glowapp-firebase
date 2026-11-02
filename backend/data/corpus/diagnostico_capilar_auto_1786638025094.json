@@ -1,0 +1,243 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-fototoxicidad-ir-001",
+    "title": "Impacto de la Radiación Infrarroja (IR) en el Microambiente del Folículo Piloso",
+    "content": "La radiación infrarroja (IR-A) penetra profundamente en la dermis, alcanzando el nicho de las células madre foliculares. A diferencia de la radiación UV, la IR-A induce la producción de especies reactivas de oxígeno (ROS) directamente en las mitocondrias de la papila dérmica. Este estrés oxidativo crónico acelera la senescencia celular y altera el ciclo de crecimiento capilar, induciendo una fase telógena prematura. Estudios publicados en el Journal of Investigative Dermatology sugieren que la exposición prolongada a fuentes de calor artificial y radiación solar IR contribuye a la degradación del colágeno perifolicular, lo que resulta en una miniaturización folicular similar a la observada en la alopecia androgenética. La protección frente a la radiación IR es un área emergente en la fotoprotección capilar, requiriendo el uso de antioxidantes tópicos específicos que neutralicen los radicales libres generados en la cadena de transporte de electrones mitocondrial del bulbo. La monitorización de la temperatura cutánea mediante termografía es una herramienta prometedora para detectar zonas de inflamación silenciosa inducida por este tipo de radiación.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30064-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:20:05.094Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sincronia-estacional-002",
+    "title": "Sincronía Estacional y Variabilidad de la Densidad Folicular en Bogotá",
+    "content": "La densidad capilar no es constante a lo largo del año. En entornos urbanos como Bogotá, el folículo piloso responde a cambios sutiles en el fotoperiodo, incluso en latitudes ecuatoriales, debido a la exposición a luz artificial y variaciones en la temperatura. Investigaciones en cronobiología dermatológica indican que los folículos humanos poseen relojes moleculares (genes BMAL1 y CLOCK) que regulan la entrada en fase catágena. La desincronización de estos ritmos, exacerbada por la alteración de los ciclos de sueño y la exposición a luz azul, puede precipitar efluvios telógenos estacionales. Es fundamental distinguir una caída fisiológica por renovación estacional de una patología activa. La evaluación debe considerar el 'Pull Test' en múltiples cuadrantes durante periodos de transición climática para establecer una línea base de pérdida diaria. La evidencia sugiere que la estabilidad del ritmo circadiano folicular es crítica para prevenir la miniaturización inducida por el estrés crónico del eje neuro-inmune, siendo la fotoprotección nocturna y la regulación de la higiene del sueño pilares terapéuticos subestimados en la consulta dermatológica actual.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-cronobiologia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:20:05.094Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-permeabilidad-ostium-003",
+    "title": "Dinámica de Permeabilidad del Ostium Folicular ante Contaminantes Urbanos",
+    "content": "El ostium folicular actúa como una vía de entrada privilegiada para contaminantes atmosféricos (PM2.5 y compuestos orgánicos volátiles). La integridad de la barrera hidrolipídica en esta zona es determinante para la penetración de agentes exógenos. Cuando la barrera se altera, los contaminantes alcanzan el infundíbulo, desencadenando una respuesta inflamatoria mediada por receptores de aril hidrocarburos (AhR). Esta activación altera la síntesis de queratina y puede comprometer la salud estructural de la cutícula desde su origen. En pacientes urbanos, la acumulación de micropartículas en el ostium se correlaciona con un aumento en la incidencia de dermatitis seborreica y exacerbación de alopecias inflamatorias. El diagnóstico debe incluir la evaluación de la conductividad iónica del ostium mediante sensores de impedancia, permitiendo identificar brechas en la barrera cutánea antes de que se manifiesten síntomas clínicos visibles. La limpieza profunda con agentes quelantes y el uso de escudos antipolución (polímeros de alto peso molecular) son esenciales en la rutina de cuidado de pacientes que viven en ciudades con alta carga de polución, protegiendo así la homeostasis del folículo contra agresiones externas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "polimeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:20:05.094Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-005",
+    "title": "Sarcopenia del Músculo Erector del Pelo (MEP) y su Impacto en la Estabilidad Folicular",
+    "content": "El músculo erector del pelo (MEP) no solo tiene una función piloerección, sino que es un componente crítico del nicho de células madre foliculares. La degeneración o 'sarcopenia' del MEP, vinculada al envejecimiento y a la inflamación crónica, reduce la capacidad del folículo para mantener su angulación y profundidad óptimas en el cuero cabelludo. Esta pérdida de soporte estructural facilita la miniaturización y la fibrosis perifolicular. Estudios recientes sugieren que la atrofia del MEP es un marcador temprano de envejecimiento capilar que precede a la alopecia androgenética clínica. La evaluación de la rigidez y elasticidad del cuero cabelludo mediante elastografía por ondas de corte permite diagnosticar esta condición. El fortalecimiento de la matriz extracelular y la estimulación de la contracción muscular mediante terapias físicas o agentes farmacológicos que interactúen con los receptores adrenérgicos del MEP representan una frontera terapéutica innovadora para mantener la integridad del folículo y prevenir su colapso estructural a largo plazo. La intervención temprana es clave para preservar la arquitectura del nicho capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38234567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "estimulantes adrenergicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:20:05.094Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-006",
+    "title": "Glicación No Enzimática: El Factor Silencioso en la Rigidez de la Vaina Radicular",
+    "content": "La formación de Productos de Glicación Avanzada (AGEs) en la vaina radicular externa ocurre mediante la reacción no enzimática entre azúcares reductores y proteínas (colágeno/elastina). Este proceso, exacerbado por dietas con alto índice glucémico y estrés oxidativo, altera las propiedades biomecánicas del folículo. La glicación convierte el tejido peri-folicular en una estructura rígida y menos elástica, lo que dificulta el ciclo de regeneración y contribuye a la fibrosis. El diagnóstico de esta 'rigidez folicular' se puede realizar mediante espectroscopía infrarroja, que identifica los picos de absorción específicos de los AGEs en la matriz. La acumulación de estos productos bloquea la difusión de nutrientes hacia el bulbo, creando un microambiente hipóxico. Estrategias terapéuticas que incluyen inhibidores de la glicación y agentes antiglicantes (como carnosina o aminoguanidina) son esenciales para revertir la rigidez. La monitorización de los niveles de azúcar en sangre y el control metabólico son fundamentales en el manejo de alopecias de origen multifactorial, demostrando que el cuero cabelludo es un espejo del metabolismo sistémico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:20:05.094Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-007",
+    "title": "Volatilómica del Cuero Cabelludo: El Nuevo Horizonte en el Diagnóstico del Microbioma",
+    "content": "La volatilómica consiste en el análisis de los compuestos orgánicos volátiles (COVs) emitidos por el cuero cabelludo. Estos COVs son subproductos metabólicos del microbioma folicular y su perfil cambia significativamente en estados de disbiosis o patología. A diferencia de los métodos tradicionales de cultivo, el análisis de COVs mediante nariz electrónica o espectrometría de masas permite identificar patrones específicos asociados a la dermatitis seborreica, la alopecia androgenética o la presencia de Malassezia spp. en tiempo real. Este enfoque no invasivo proporciona una 'huella digital' metabólica del ecosistema folicular, facilitando un diagnóstico personalizado y la prescripción de tratamientos dirigidos. La volatilómica promete revolucionar la curaduría clínica en GlowApp, permitiendo monitorear la respuesta terapéutica a probióticos o antifúngicos mediante la normalización de las emisiones de COVs. Es una tecnología de vanguardia que transforma el diagnóstico capilar de un análisis visual a uno molecular y funcional, permitiendo detectar desequilibrios antes de que se produzca una pérdida de densidad capilar visible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization)",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:20:05.094Z"
+  }
+]

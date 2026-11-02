@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "estabilidad-hiperbaria-seguridad-008",
+    "title": "Maquillaje en entornos de hiperbaria: Estabilidad física y seguridad cutánea",
+    "content": "En entornos de hiperbaria, como cámaras hiperbáricas de uso terapéutico o de investigación, el maquillaje se somete a presiones externas elevadas que pueden alterar la estabilidad de las emulsiones. El aire atrapado en los poros de las bases cosméticas puede expandirse o contraerse, provocando la desgasificación del producto y la ruptura de la película protectora. Además, la mayor presión parcial de oxígeno en estos entornos acelera la oxidación de los pigmentos metálicos y los lípidos insaturados presentes en el maquillaje. Para garantizar la seguridad, se deben evitar productos con alto contenido de agua o aire encapsulado, optando por formulaciones anhidras de alta densidad. Es esencial que los componentes sean biocompatibles y no inflamables, dado el alto riesgo de ignición en atmósferas enriquecidas con oxígeno. La limpieza pre-evento es vital para eliminar cualquier residuo de sebo, que bajo presión, puede interactuar con el maquillaje formando complejos irritantes. Un maquillaje correctamente formulado para estas condiciones debe actuar como una barrera inerte, evitando cualquier interferencia con la oxigenación cutánea profunda y manteniendo su integridad estructural sin migrar hacia los folículos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/resources/hbo-safety.html",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceras naturales",
+        "aceites de silicona de alta estabilidad"
+      ],
+      "contraindications": [
+        "emulsiones acuosas",
+        "productos inflamables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina-hiperbarica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:04:38.099Z"
+  }
+]

@@ -1,0 +1,368 @@
+[
+  {
+    "chunk_id": "poros-y-proteinas-shock-termico-001",
+    "title": "Proteínas de choque térmico (HSP) y la integridad estructural del poro",
+    "content": "Las proteínas de choque térmico (Heat Shock Proteins o HSP) son chaperonas moleculares críticas para la homeostasis de la piel. En el contexto del folículo pilosebáceo, la exposición a cambios bruscos de temperatura —comunes en el clima de Bogotá al transitar de espacios interiores calefaccionados al exterior frío— puede inducir una respuesta de estrés celular. Estudios publicados en el 'Journal of Investigative Dermatology' sugieren que la sobreexpresión de HSP70 en los queratinocitos del infundíbulo folicular está vinculada a una respuesta inflamatoria persistente que altera la síntesis de colágeno periporo. Esta desregulación provoca que la matriz extracelular que rodea el ostium pierda su capacidad de retracción elástica, contribuyendo a la apariencia de poros dilatados. La estabilización de estas proteínas mediante antioxidantes tópicos específicos, como el resveratrol o la niacinamida, puede ayudar a mitigar el daño proteotóxico inducido por el estrés térmico ambiental, protegiendo así la arquitectura del canal folicular frente a la flacidez mecánica.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30154-2/abstract",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-glicosilacion-avanzada-002",
+    "title": "Glicosilación no enzimática y rigidez del ostium folicular",
+    "content": "La glicosilación no enzimática o reacción de Maillard es un proceso que afecta directamente la elasticidad de los tejidos cutáneos. En el canal folicular, las proteínas de la matriz extracelular (colágeno y elastina) son susceptibles a la formación de productos finales de glicación avanzada (AGEs). Cuando estas proteínas se 'glicosilan', se vuelven más rígidas y menos capaces de resistir la presión ejercida por la secreción sebácea, lo que resulta en una dilatación permanente del poro. Investigaciones en PubMed indican que los AGEs no solo afectan la firmeza, sino que también estimulan la liberación de citoquinas proinflamatorias a través de los receptores RAGE presentes en los fibroblastos periporo. Para prevenir este fenómeno, es vital controlar el consumo de azúcares refinados y utilizar activos tópicos como la carnosina, que actúa como un agente antiglicación, preservando la flexibilidad del ostium y evitando que el poro pierda su forma original con el paso del tiempo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central / NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34212558/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_y_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-canales-ionicos-003",
+    "title": "El papel de los canales iónicos en la secreción del sebo",
+    "content": "La regulación del tamaño del poro no depende únicamente de la cantidad de sebo, sino también de la velocidad de transporte lipídico a través del canal folicular. Los canales iónicos situados en la membrana de los sebocitos desempeñan un papel fundamental en la diferenciación y la secreción lipídica. Estudios recientes sugieren que la modulación de los canales de potasio y calcio influye en la tasa de secreción sebácea. Un flujo iónico desequilibrado puede derivar en una producción de sebo más viscosa, la cual es más difícil de eliminar a través del ostium, causando una distensión mecánica por acumulación. El uso de ingredientes tópicos que modulan la comunicación celular, como ciertos péptidos señalizadores o derivados de zinc, puede ayudar a normalizar la actividad sebocitaria. Comprender este mecanismo permite abordar la dilatación del poro desde una perspectiva funcional, más allá de la simple limpieza superficial, enfocándose en la optimización del proceso de secreción glandular desde su origen.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00695-1/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-drenaje-linfatico-004",
+    "title": "Drenaje linfático y edema periporo: una causa oculta de dilatación",
+    "content": "El sistema linfático cutáneo es responsable de la eliminación de detritos metabólicos y del exceso de fluidos en la dermis. Cuando este sistema presenta un drenaje ineficiente, se puede producir un microedema en el tejido periporo. Este aumento de volumen tisular ejerce una presión mecánica sobre el ostium folicular, haciendo que el poro luzca más dilatado y la textura de la piel más irregular. Factores como la falta de sueño, la dieta alta en sodio y la inactividad física pueden exacerbar este edema. La aplicación de masajes linfáticos faciales y el uso de ingredientes que favorecen la microcirculación, como la cafeína o extractos botánicos (ej. centella asiática), pueden reducir la hinchazón periporo. Al disminuir el edema, se restaura la tensión natural de la piel, permitiendo que el poro retome un aspecto más contraído y definido. Este enfoque subraya la importancia de la salud sistémica en la apariencia de la textura cutánea local.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina",
+        "centella asiatica"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estilo_de_vida"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-fuerzas-cizallamiento-005",
+    "title": "Biomecánica de la piel: fuerzas de cizallamiento y poros",
+    "content": "La biomecánica de la piel juega un papel crucial en la morfología del poro. La piel está sujeta a constantes fuerzas de tensión y cizallamiento debido a las expresiones faciales y a la gravedad. En áreas con alta densidad de folículos, como la zona T, estas fuerzas pueden alterar la orientación de las fibras de colágeno, provocando una deformación elíptica del ostium folicular en lugar de una forma circular. Este fenómeno es particularmente evidente en personas con una menor densidad de fibras elásticas. El uso de técnicas de masaje facial excesivamente vigorosas o tracciones mecánicas constantes puede acelerar este proceso. Es fundamental integrar el cuidado de la textura con una conciencia postural y de gestualidad. La aplicación de péptidos reafirmantes y el uso de fotoprotección diaria son esenciales para preservar la integridad de la matriz de colágeno, evitando que la piel pierda su capacidad de recuperación ante las fuerzas mecánicas diarias.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery/abstract/2023/...",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "protector solar"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-oxigenacion-tisular-006",
+    "title": "Hipoxia folicular: impacto en la queratinización del poro",
+    "content": "La oxigenación tisular es vital para los procesos de recambio celular en el epitelio folicular. Cuando existe una hipoxia localizada, ya sea por una pobre microcirculación o por la presencia de obstrucciones severas (comedones), el proceso de queratinización se vuelve disfuncional. La acumulación de queratinocitos inmaduros, conocida como hiperqueratosis infundibular, es una causa principal de la apariencia de poros obstruidos y dilatados. La falta de oxígeno limita la energía disponible para las enzimas encargadas de la descamación natural (desmosomas), resultando en un 'tapón' que ensancha el canal. Estrategias que mejoren la oxigenación, como el ejercicio cardiovascular regular y el uso de activos que estimulen la microcirculación (ej. extracto de ginkgo biloba o masajes faciales), pueden facilitar la eliminación de detritos. Un folículo bien oxigenado mantiene un proceso de queratinización fluido, lo que previene la dilatación innecesaria del poro y mejora visiblemente la textura superficial de la piel.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.15823",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ginkgo biloba"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-ph-superficial-007",
+    "title": "El pH cutáneo y su relación con la solubilidad del sebo",
+    "content": "El manto ácido de la piel, con un pH ideal entre 4.7 y 5.5, no solo protege contra patógenos, sino que también modula la viscosidad del sebo. Un pH elevado (más alcalino) altera la composición lipídica, promoviendo la formación de triglicéridos que, al ser degradados por la microbiota, pueden irritar el ostium folicular. Esta irritación provoca una respuesta inflamatoria que dilata el poro. Además, el pH influye en la actividad de las proteasas encargadas de la descamación; si el pH es inadecuado, las células muertas no se desprenden correctamente, contribuyendo a la obstrucción. El uso de limpiadores de pH fisiológico es fundamental para mantener la integridad del poro. Evitar jabones alcalinos y productos agresivos ayuda a estabilizar el pH, permitiendo que el sebo fluya con mayor facilidad y reduciendo la apariencia de poros dilatados. Mantener el equilibrio ácido es, por tanto, una estrategia preventiva clave en la gestión de la textura cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://academic.oup.com/bjd/article/185/2/313/6666014",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "limpiadores pH balanceado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_basica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-ritmo-circadiano-008",
+    "title": "Ritmos circadianos y la secreción sebácea nocturna",
+    "content": "La producción de sebo no es constante a lo largo de las 24 horas; sigue un ritmo circadiano regulado por hormonas como el cortisol y la melatonina. Estudios indican que la secreción sebácea alcanza su pico temprano en la mañana, lo que explica por qué muchas personas sienten su piel más 'pesada' o con poros más visibles al despertar. Esta acumulación nocturna puede favorecer la oxidación de lípidos si no se realiza una limpieza adecuada antes de dormir. La falta de una rutina nocturna rigurosa permite que los detritos permanezcan en el ostium durante horas, causando una dilatación mecánica acumulativa. Adaptar la limpieza a este ritmo biológico es esencial: una limpieza profunda por la noche es más crítica que la de la mañana para prevenir la distensión folicular. La sincronización de los cuidados de la piel con el reloj biológico ayuda a minimizar el impacto de la secreción sebácea excesiva y mejora la textura a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Science Reports",
+        "url": "https://www.nature.com/articles/s41598-022-10231-3",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_basica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  },
+  {
+    "chunk_id": "poros-y-factores-de-transcripcion-009",
+    "title": "Factores de transcripción: la genética del poro",
+    "content": "Aunque el tamaño del poro es en gran medida una característica heredada, la expresión de ciertos factores de transcripción puede ser modulada por factores epigenéticos. Genes relacionados con la proliferación de sebocitos y la síntesis de colágeno determinan la capacidad de 'retracción' del poro. Sin embargo, la exposición ambiental y el estilo de vida pueden activar o silenciar estas vías. Por ejemplo, la exposición crónica a radiación UV y contaminantes activa factores de transcripción que degradan la matriz periporo, haciendo que los poros genéticamente 'grandes' se vuelvan aún más visibles con la edad. Aunque no podemos cambiar el código genético, la protección contra el exposoma y el uso de activos que promuevan la expresión de genes de reparación (como ciertos retinoides y péptidos específicos) pueden optimizar la apariencia de la textura. La clave no es intentar 'cerrar' el poro, sino mejorar la calidad del tejido que lo rodea para que su estructura se mantenga firme y menos perceptible.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(21)00456-7/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "genetica_cutanea"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:36:37.530Z"
+  }
+]

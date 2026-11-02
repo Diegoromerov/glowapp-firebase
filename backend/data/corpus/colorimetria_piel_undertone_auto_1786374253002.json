@@ -1,0 +1,157 @@
+[
+  {
+    "chunk_id": "colorimetria-neuropeptidos-estres-001",
+    "title": "Neuropeptidos y la alteración cromática por estrés crónico",
+    "content": "El eje neuro-cutáneo desempeña un papel crítico en la cromaticidad facial que a menudo se ignora en la colorimetría tradicional. Bajo estados de estrés crónico, el sistema nervioso libera neuropeptidos como la Sustancia P y el Péptido Relacionado con el Gen de la Calcitonina (CGRP) directamente en la dermis. Estos mediadores inducen vasodilatación neurogénica sostenida, lo que altera permanentemente el tono base de la piel al incrementar la reflectancia del componente hemoglobínico. A diferencia del rubor pasajero, esta microinflamación neurogénica puede modificar la lectura del subtono hacia un espectro más rosado o 'cálido-rojizo', distorsionando la elección de bases de maquillaje que, en condiciones basales, corresponderían a un subtono neutro. La literatura en neurodermatología subraya que esta respuesta no es uniforme y depende de la densidad de fibras nerviosas sensoriales en áreas como las mejillas y el mentón, creando una heterogeneidad cromática que complica el diagnóstico clínico preciso. Es fundamental que los profesionales de GlowApp consideren el estado de bienestar emocional del usuario durante la evaluación, ya que la perfusión sanguínea modulada por el estrés es una variable dinámica que puede invalidar una prueba de colorimetría realizada bajo alta tensión emocional o fatiga sistémica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31359664/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_cromatico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:53.946Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectro-absorcion-agua-002",
+    "title": "Absorción selectiva de agua en el estrato córneo y su impacto óptico",
+    "content": "La hidratación del estrato córneo no solo afecta la textura superficial de la piel, sino que actúa como un filtro óptico dinámico. El agua tiene picos de absorción específicos en el espectro infrarrojo cercano y visible que determinan cómo la luz penetra y se dispersa en las capas superiores de la epidermis. Cuando el estrato córneo presenta deshidratación, disminuye la dispersión hacia adelante (forward scattering) y aumenta la reflexión especular, lo que resulta en una apariencia 'opaca' o 'grisácea' que puede ser erróneamente interpretada como un subtono frío o desaturado. Estudios en biofísica cutánea sugieren que la piel deshidratada altera la reflectancia de los pigmentos de la base, haciendo que los tonos amarillos parezcan más terrosos y los tonos rosados más lavados. Para los expertos de GlowApp, esto implica que un diagnóstico de colorimetría debe realizarse siempre sobre una piel adecuadamente preparada (hidratada), de lo contrario, la lectura del subtono estará sesgada por la deficiencia hídrica. La relación entre el contenido de agua y la dispersión de Rayleigh en la epidermis es un determinante biofísico que debe corregirse antes de aplicar cualquier método de identificación de subtono.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/a-z/dry-skin-treatment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectantes",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:53.946Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-hev-fatiga-005",
+    "title": "Impacto de la luz HEV y la fatiga cromática del diagnóstico",
+    "content": "La luz de alta energía visible (HEV), emitida por dispositivos digitales y luminarias LED modernas, representa un factor disruptivo en la precisión del diagnóstico de colorimetría. A diferencia de la luz solar natural, el espectro HEV está enriquecido en longitudes de onda azules (400-500 nm), las cuales son absorbidas preferencialmente por la melanina y la hemoglobina. Esta exposición constante causa una 'fatiga cromática' en el ojo del evaluador y altera la reflectancia de la piel del usuario. La fatiga cromática ocurre cuando los fotorreceptores retinianos (conos) se saturan, reduciendo la capacidad de discriminar entre subtonos sutiles (como el matiz oliva frente al neutro). Además, la luz HEV puede inducir una respuesta de pigmentación inmediata en pieles fototipo IV-VI. Para mitigar este riesgo, los protocolos de GlowApp deben exigir un entorno de luz controlada con un índice de reproducción cromática (IRC) superior a 95 y una temperatura de color de 5000K (luz día estándar). El uso de dispositivos digitales para el diagnóstico debe realizarse bajo condiciones de calibración estricta, evitando la exposición previa a pantallas que alteren la percepción neuro-cognitiva del color tanto del cliente como del experto.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_cromatico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:53.946Z"
+  },
+  {
+    "chunk_id": "colorimetria-hipoxia-bogota-008",
+    "title": "Impacto de la hipoxia hipobárica en la colorimetría en Bogotá",
+    "content": "La altitud de Bogotá (aprox. 2.640 msnm) impone condiciones de hipoxia hipobárica leve que influyen en la dinámica microvascular facial. Esta reducción en la presión parcial de oxígeno arterial puede inducir una respuesta vasomotora compensatoria, aumentando la perfusión periférica en un intento por mantener la oxigenación tisular. Este estado fisiológico altera el equilibrio entre la hemoglobina oxigenada (roja brillante) y la desoxigenada (azulada/violácea), lo cual es el principal determinante del subtono en pieles claras y medias. En Bogotá, es común observar una cianosis subclínica periorbital y un eritema facial leve en individuos no aclimatados, lo que puede inducir al error de diagnosticar un subtono frío o rosado cuando la piel es, en realidad, neutra o cálida. Los profesionales de GlowApp deben ser conscientes de que la colorimetría realizada a esta altitud puede verse afectada por estas fluctuaciones vasculares. Se recomienda realizar las pruebas de colorimetría tras un periodo de reposo de al menos 15 minutos en un ambiente con temperatura controlada para permitir que la respuesta vasomotora se estabilice y la lectura sea representativa del estado basal del usuario, evitando el sesgo inducido por la altitud geográfica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "High Altitude Medicine & Biology",
+        "url": "https://www.liebertpub.com/loi/ham",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_cromatico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:03:53.946Z"
+  }
+]

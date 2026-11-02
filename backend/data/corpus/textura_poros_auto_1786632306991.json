@@ -1,0 +1,85 @@
+[
+  {
+    "chunk_id": "poros-neuro-endocrino-001",
+    "title": "El sistema endocannabinoide periférico y la regulación del tono folicular",
+    "content": "La piel posee un sistema endocannabinoide (SEC) completo, con receptores CB1 y CB2 expresados en sebocitos y queratinocitos del ostium folicular. Investigaciones recientes sugieren que la activación de estos receptores modula la lipogénesis y la proliferación celular. Cuando el SEC se desequilibra, especialmente bajo estrés oxidativo, puede inducir una hiperplasia sebácea que altera la arquitectura del poro, promoviendo una textura cutánea irregular. La modulación de este sistema mediante fitocannabinoides no psicotrópicos o agonistas selectivos está emergiendo como una estrategia terapéutica para normalizar la producción de sebo y reducir la dilatación folicular. La literatura en PubMed subraya que los receptores CB2, en particular, juegan un papel antiinflamatorio crucial en la unidad pilosebácea, lo que sugiere que mantener la homeostasis del SEC es fundamental para prevenir la dilatación mecánica del poro causada por la sobreproducción sebácea y la inflamación subclínica asociada.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30349479/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "25-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cannabidiol"
+      ],
+      "contraindications": [
+        "hypersensitivity"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "sebum-regulation"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:44:51.388Z"
+  },
+  {
+    "chunk_id": "poros-quimica-002",
+    "title": "La influencia de los niveles de magnesio en la cohesión celular folicular",
+    "content": "El magnesio es un cofactor esencial en más de 300 reacciones enzimáticas cutáneas, incluyendo aquellas que regulan la proliferación y diferenciación de los queratinocitos en el canal folicular. La deficiencia de magnesio se ha relacionado con una alteración en la formación de las uniones estrechas (tight junctions), lo que compromete la integridad estructural del ostium. Un ostium con baja cohesión celular es más susceptible a la distensión física por la acumulación de sebo y detritos. Además, el magnesio actúa como un antagonista natural de los canales de calcio; al regular el influjo de calcio en los queratinocitos, previene la queratinización anómala que suele obstruir el poro. Clínicamente, la aplicación tópica de sales de magnesio puede mejorar la función barrera y la elasticidad del tejido periporo, facilitando una textura más refinada. Es vital considerar el estatus mineral cutáneo como un factor determinante en la resiliencia del poro ante agresores ambientales.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "magnesium-aspartate"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "skin-barrier-repair"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:44:51.388Z"
+  }
+]

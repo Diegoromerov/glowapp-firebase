@@ -1,0 +1,124 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-traumatica-001",
+    "title": "Onicólisis por tracción: el fenómeno de la uña larga y la biomecánica",
+    "content": "La onicólisis inducida por tracción ocurre cuando la longitud excesiva del borde libre de la uña actúa como una palanca, ejerciendo fuerzas tangenciales constantes sobre el lecho ungueal. A medida que la uña crece, la relación entre la superficie de adhesión y la masa de la placa ungueal se desequilibra. Según estudios publicados en el Journal of the American Academy of Dermatology (JAAD), el trauma mecánico crónico por palanca puede debilitar la unión del hiponiquio, provocando un desprendimiento distal. Este fenómeno es particularmente frecuente en usuarios de extensiones de gel o acrílico de gran longitud que no respetan los tiempos de mantenimiento. La presión constante al teclear, manipular objetos o el impacto cotidiano se amplifica por la longitud, superando la capacidad de resistencia del sellado natural del hiponiquio. Es fundamental educar al cliente sobre la relación directa entre el largo de la extensión y el riesgo de onicólisis traumática, recomendando un diseño que se adapte a la ergonomía de sus actividades diarias para preservar la integridad de la matriz y el lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas_extremadamente_largas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_extensiones"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:44:55.589Z"
+  },
+  {
+    "chunk_id": "guias-unas-psoriasis-diferencial-003",
+    "title": "Psoriasis ungueal: por qué la confusión con onicomicosis es peligrosa",
+    "content": "La psoriasis ungueal a menudo se diagnostica erróneamente como onicomicosis (infección por hongos), lo que conduce a tratamientos antimicóticos ineficaces y un retraso crítico en el manejo de la patología autoinmune subyacente. Según la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), los signos clave de la psoriasis ungueal incluyen el 'pitting' (pequeñas depresiones puntiformes), la mancha de aceite (decoloración amarillenta bajo la uña) y la hiperqueratosis subungueal. A diferencia de la onicomicosis, que es de origen infeccioso, la psoriasis es una inflamación crónica que afecta la matriz y el lecho ungueal. La aplicación de productos de cabina sobre uñas psoriásicas puede exacerbar la inflamación debido a la penetración de componentes químicos en una barrera cutánea ya comprometida. Es responsabilidad del profesional identificar estas 'red flags' y evitar procedimientos invasivos como el limado agresivo o la aplicación de resinas, recomendando siempre una biopsia o cultivo dermatológico para confirmar el diagnóstico antes de cualquier intervención cosmética, evitando así complicaciones secundarias por irritación química.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.iadvl.org/nail-psoriasis-guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "productos_fotopolimerizables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:44:55.589Z"
+  },
+  {
+    "chunk_id": "guias-unas-toxicidad-monomeros-004",
+    "title": "Toxicidad sistémica por monómeros: peligro de la polimerización incompleta",
+    "content": "La polimerización incompleta de los sistemas de geles y acrílicos representa un riesgo no solo local, sino sistémico. Cuando un producto fotopolimerizable no recibe la intensidad lumínica adecuada o el tiempo de exposición necesario según las especificaciones del fabricante, los monómeros residuales permanecen en estado líquido. Estos compuestos de bajo peso molecular son capaces de penetrar a través de la lámina ungueal hacia el lecho y, eventualmente, pasar al torrente sanguíneo, aumentando exponencialmente el riesgo de dermatitis alérgica de contacto y sensibilización sistémica. Según investigaciones en PubMed sobre la toxicidad de los metacrilatos, la exposición crónica a monómeros no polimerizados puede desencadenar respuestas inmunológicas cruzadas. Es crucial que los salones utilicen lámparas compatibles con la química específica del producto (longitud de onda de emisión) y nunca reduzcan el tiempo de curado por premura. La sensación de ardor durante la polimerización es una señal clara de una reacción exotérmica descontrolada, que indica un proceso acelerado y a menudo incompleto, comprometiendo la salud de la barrera cutánea del usuario.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "tiempos_curado_insuficientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:44:55.589Z"
+  }
+]

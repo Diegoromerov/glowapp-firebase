@@ -1,0 +1,165 @@
+﻿{
+  "batch_metadata": {
+    "category": "guias_unas",
+    "phase": 5,
+    "risk_level": "alto",
+    "batch_id": "unas-lote2",
+    "chunk_count": 6,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Lote 2 uñas: lámparas UV, retiro seguro, descanso entre servicios, embarazo, onicofagia, mitos."
+  },
+  "chunks": [
+    {
+      "chunk_id": "unas-007",
+      "title": "Lámparas UV/LED de uñas: riesgo de fotoenvejecimiento en manos y cómo protegerse",
+      "content": "Las lámparas UV y LED usadas para curar esmaltes semipermanentes y geles emiten radiación ultravioleta A (UVA), que es la misma que causa fotoenvejecimiento y contribuye al riesgo de cáncer de piel. Las manos son una zona particularmente vulnerable porque reciben exposición directa y repetida durante cada servicio, acumulando daño con el tiempo. Los estudios han documentado que la dosis de UVA de una sesión de manicura en gel es baja pero no nula, y la exposición repetida (cada 2-3 semanas) suma. Las señales de fotoenvejecimiento en manos incluyen manchas oscuras, pérdida de elasticidad y arrugas finas prematuras. Las recomendaciones de protección incluyen: aplicar protector solar de amplio espectro en las manos 20-30 minutos antes del servicio, o usar guantes sin dedos que dejan solo las uñas expuestas (disponibles en el mercado y cada vez más recomendados por dermatólogos). Las lámparas LED emiten menos UVA que las UV tradicionales, pero no son libres de radiación. No hay evidencia de que las lámparas de uñas causen cáncer de piel en condiciones normales de uso, pero la precaución razonable es proteger la piel circundante. Este riesgo es acumulativo y prevenible, y forma parte del cuidado responsable de uñas.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — UV nail lamps and skin cancer risk", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "JAMA Dermatology — UV exposure from nail curing lamps", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "practicas_de_riesgo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-008",
+      "title": "Retiro seguro de uñas acrílicas y gel: sin arrancar, sin dañar la lámina",
+      "content": "El retiro de uñas acrílicas o esmaltado semipermanente es un momento crítico donde muchos daños ocurren por prisa o técnica incorrecta. Arrancar el producto con los dedos o con herramientas metálicas arrastra capas de la lámina ungueal, dejándola delgada, frágil y con surcos que tardan meses en crecer. El método correcto para gel semipermanente: limar suavemente la capa superior brillante para romper el sellado, envolver cada uña en algodón empapado en acetona pura y papel aluminio durante 10-15 minutos, y luego deslizar el producto reblandecido con un empujador de cutícula de madera o plástico, sin forzar. Para acrílico, el remojo en acetona pura toma más tiempo (20-30 minutos) porque el material es más denso. Si el producto no se despega fácilmente, necesita más tiempo de remojo, no más fuerza. Nunca uses taladro eléctrico (drill) sobre la lámina natural: es una herramienta para profesionales entrenados y solo debe usarse sobre el producto, no sobre la uña. El retiro en salón debe ser pausado y cuidadoso; si sientes que están forzando o doliendo, pide que paren. Un retiro correcto preserva la lámina y permite que la uña vuelva a su estado natural en semanas; un retiro agresivo deja daños que requieren meses de recuperación.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Safe removal of nail enhancements", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Daño ungueal por retiro incorrecto", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": ["acetona"],
+        "contraindications": ["arrancar producto", "taladro sobre lamina natural"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-009",
+      "title": "Descanso entre servicios de uñas: cuándo sí y cuándo no es necesario",
+      "content": "La idea de que las uñas necesitan descansar del esmalte es un mito parcialmente cierto. La uña no respira ni se asfixia con el esmalte, por lo que no necesita pausas para respirar. Sin embargo, sí hay razones válidas para descansar: cuando hay daño visible de la lámina (adelgazamiento, surcos, fragilidad tras retiros agresivos), cuando hay deshidratación excesiva por uso continuo de acetona, cuando hay signos de alergia o infección, o cuando el esmaltado semipermanente ha causado onicolisis (desprendimiento de la lámina del lecho). En estos casos, una pausa de 2-4 semanas permite que la uña crezca y se recupere. Durante el descanso, el cuidado incluye hidratación con aceites de cutícula, evitar exposición a químicos sin guantes, y nutrición adecuada. Si las uñas están sanas y el servicio se hace con técnica correcta (retiro suave, sin daño), no hay necesidad médica de descansar entre servicios. La frecuencia adecuada depende de tu crecimiento ungueal y del estado de tus uñas, no de una regla universal. Escucha tus uñas: si se ven delgadas, se quiebran fácil o duelen, es momento de pausar; si están fuertes y sanas, puedes continuar con servicios regulares.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Nail care myths vs facts", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Fisiología ungueal y cuidado cosmético", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-010",
+      "title": "Uñas en embarazo: qué servicios son seguros y cuáles evitar",
+      "content": "Durante el embarazo, las uñas pueden cambiar: algunas mujeres notan mayor crecimiento y fortaleza por los cambios hormonales, otras experimentan fragilidad. Los servicios de uñas son generalmente seguros con precauciones razonables. El esmaltado tradicional y semipermanente se consideran aceptables, preferiblemente en espacios ventilados para minimizar inhalación de vapores. Las uñas acrílicas también son aceptables si el salón tiene buena ventilación, porque los vapores de los monómeros pueden causar molestias respiratorias y náuseas, especialmente en el primer trimestre. La precaución principal es evitar el MMA (metil metacrilato), que tiene mayor toxicidad. La cutícula debe empujarse suavemente, no cortarse agresivamente, para prevenir infecciones que en el embarazo pueden complicarse. El retiro debe ser cuidadoso, con acetona en ambiente ventilado. Los masajes de manos son seguros y beneficiosos. La onicomicosis durante el embarazo debe ser evaluada por dermatología, porque los antifúngicos sistémicos están contraindicados y se prefieren opciones tópicas seguras. Como siempre, elige salones con buena higiene, ventilación y productos registrados. Si tienes dudas específicas sobre un producto o servicio, consulta con tu obstetra o dermatólogo.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Cosmetic procedures during pregnancy", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed — Ly et al. Cosmetic safety in pregnancy (Dermatol Ther 2023)", "pmid": "36447117", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["MMA"],
+        "contraindications": ["MMA en embarazo", "salones sin ventilacion"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "contexto_embarazo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-011",
+      "title": "Onicofagia (morderse las uñas): un hábito con impacto estético y de salud",
+      "content": "La onicofagia es el hábito compulsivo de morderse las uñas, y aunque muchos la ven como un problema estético menor, tiene implicaciones de salud y calidad de vida. Desde el punto de vista médico, morderse las uñas puede causar: paroniquia (infección del pliegue ungueal) por introducción de bacterias de la boca, deformidades permanentes de la uña si se daña la matriz de forma repetida, problemas dentales (desgaste, fracturas, desalineación), y transmisión de infecciones (herpes labial, verrugas periungueales). El impacto psicológico también es relevante: la onicofagia suele asociarse a ansiedad, estrés o aburrimiento, y puede generar vergüenza social. El manejo es multifacético: identificar los detonantes (estrés, situaciones específicas), usar barreras físicas como esmaltes de sabor amargo diseñados para este propósito, mantener las uñas cortas y limadas para reducir la tentación, y en casos severos o resistentes, terapia cognitivo-conductual que ha demostrado eficacia. Los tratamientos cosméticos como el esmaltado semipermanente o las uñas acrílicas pueden funcionar como barrera temporal si la persona no las muerde, pero no resuelven el hábito de raíz. En niños, la onicofagia es frecuente y muchas veces se resuelve con el tiempo; en adultos persistentes, vale la pena abordarlo con apoyo profesional. Dejar de morderse las uñas toma tiempo y paciencia, pero los beneficios estéticos y de salud lo justifican.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Nail biting (onychophagia)", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Cochrane Library — Intervenciones para onicofagia", "url": "https://www.cochranelibrary.com/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "habitos_y_salud"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-012",
+      "title": "Mitos del cuidado de uñas vs evidencia: calcio, gelatina y fortalecedores",
+      "content": "El cuidado de uñas está lleno de mitos que conviene aclarar con evidencia. El calcio no fortalece las uñas por aplicación tópica: la lámina ungueal es queratina muerta y el calcio no penetra ni se incorpora; la fortaleza depende de la matriz y la nutrición sistémica. Comer gelatina no hace crecer las uñas más rápido ni más fuertes: aunque contiene proteínas, no tiene evidencia de beneficio específico ungueal superior a una dieta balanceada con proteína adecuada. Los esmaltes fortalecedores con formaldehído pueden endurecer temporalmente la lámina, pero el formaldehído es un sensibilizante y su uso prolongado puede paradójicamente hacer las uñas más quebradizas; muchos países han restringido su concentración. Las uñas no respiran ni necesitan descansar del esmalte por esa razón (aunque sí pueden necesitar pausa por daño o deshidratación). Las manchas blancas en las uñas (leuconiquia) casi nunca son por falta de calcio; suelen ser microtraumas de la matriz que crecen con la uña y desaparecen. Cortar las cutículas no es necesario y aumenta riesgo de infección. Los productos milagro que prometen crecimiento acelerado carecen de evidencia; el crecimiento ungueal es de aproximadamente 3 mm por mes en manos y depende de edad, nutrición y salud general. La regla de oro: desconfía de promesas rápidas y universales, y ante cambios persistentes en las uñas, consulta al dermatólogo en lugar de probar más productos.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Nail care myths vs facts", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Evidencia de suplementos y cuidados ungueales", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": ["calcio", "gelatina", "formaldehido"],
+        "contraindications": ["formaldehido en fortalecedores"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

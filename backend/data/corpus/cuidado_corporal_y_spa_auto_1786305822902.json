@@ -1,0 +1,391 @@
+[
+  {
+    "chunk_id": "manejo-clínico-anhidrosis-001",
+    "title": "Fisiopatología y manejo de la anhidrosis focal inducida",
+    "content": "La anhidrosis focal, a diferencia de la hiperhidrosis, representa una ausencia de sudoración en áreas específicas del cuerpo, lo cual compromete la termorregulación y la hidratación cutánea. Clínicamente, puede ser consecuencia de daño en las glándulas ecrinas por condiciones inflamatorias crónicas o por el uso prolongado de agentes antitranspirantes potentes con cloruro de aluminio en concentraciones no controladas. Según estudios publicados en el Journal of the American Academy of Dermatology, la falta de sudoración altera el manto hidrolipídico, predisponiendo a la piel a una xerosis severa y a la formación de fisuras. El manejo se centra en la restauración de la barrera mediante emolientes con urea al 5-10% y el uso de oclusivos suaves que no bloqueen los conductos sudoríparos de forma permanente. Es fundamental realizar un diagnóstico diferencial con neuropatías periféricas o enfermedades sistémicas como la diabetes. La hidratación debe ser constante y el monitoreo de la integridad epidérmica es crucial para prevenir complicaciones infecciosas secundarias en zonas con anhidrosis prolongada.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/anhidrosis-overview",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "oclusivos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "elastosis-perifolicular-002",
+    "title": "Abordaje de la elastosis perifolicular en glúteos",
+    "content": "La elastosis perifolicular en la región glútea, a menudo confundida con la queratosis pilaris, se caracteriza por cambios degenerativos en las fibras elásticas alrededor del folículo piloso. Este fenómeno es exacerbado por la presión constante y la fricción mecánica, común en estilos de vida sedentarios. La literatura en PubMed indica que la degradación de la matriz extracelular en esta zona es un proceso crónico que requiere un enfoque multifacético. El tratamiento clínico efectivo incluye el uso de retinoides tópicos (como el adapaleno al 0.1%) para promover el recambio celular, combinado con agentes queratolíticos suaves como el ácido salicílico. Es vital evitar el uso de exfoliantes físicos abrasivos que aumentan la inflamación perifolicular. La evidencia sugiere que la aplicación de niacinamida al 5% puede mejorar la función barrera y reducir el eritema asociado. El pronóstico mejora significativamente cuando se integra una rutina de hidratación profunda con ácido hialurónico de bajo peso molecular, asegurando que la piel mantenga su elasticidad frente al estrés mecánico diario.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "adapaleno",
+        "niacinamida",
+        "acido_salicilico"
+      ],
+      "contraindications": [
+        "exfoliantes fisicos fuertes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "dermatitis-contacto-textiles-003",
+    "title": "Dermatitis de contacto por fibras textiles sintéticas",
+    "content": "La dermatitis de contacto textil es una entidad clínica frecuente en ambientes urbanos, donde el uso de fibras sintéticas (poliéster, nylon) en ropa ajustada favorece la oclusión y la acumulación de sudor. Según la American Contact Dermatitis Society, los aditivos químicos utilizados en la fabricación de telas, como los tintes dispersos o formaldehídos, actúan como alérgenos de contacto. Los síntomas incluyen prurito intenso, eritema y, en casos crónicos, liquenificación en áreas de mayor fricción (tronco y muslos). El abordaje clínico implica la identificación del agente causal mediante pruebas de parche si es necesario, y la transición hacia fibras naturales como el algodón orgánico o el lino. El tratamiento tópico durante la fase aguda se beneficia del uso de corticoides de potencia baja a media bajo supervisión médica, junto con cremas reparadoras ricas en lípidos para restaurar la barrera cutánea dañada. Es imperativo instruir al paciente sobre el lavado previo de prendas nuevas para eliminar residuos químicos de fabricación, reduciendo así la carga antigénica que exacerba la respuesta inflamatoria cutánea.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/i4a/pages/index.cfm?pageid=3305",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides_topicos",
+        "emolientes"
+      ],
+      "contraindications": [
+        "ropa_sintetica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion-dermatitis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "fototoxicidad-topica-004",
+    "title": "Fototoxicidad por agentes botánicos en productos corporales",
+    "content": "La fototoxicidad es una reacción cutánea inducida por la interacción entre sustancias químicas tópicas y la radiación ultravioleta. En el ámbito de la cosmética natural, el uso de aceites esenciales cítricos (bergamota, limón, lima) en lociones corporales representa un riesgo clínico subestimado. Estas sustancias contienen furocumarinas, compuestos que, al ser expuestos al sol, desencadenan una reacción fototóxica caracterizada por eritema intenso, edema y, posteriormente, una hiperpigmentación postinflamatoria persistente. La literatura dermatológica subraya que estas lesiones pueden simular una quemadura solar severa. El abordaje preventivo es fundamental: evitar la aplicación de productos con extractos cítricos antes de la exposición solar y optar por formulaciones libres de estos fotosensibilizadores en áreas expuestas. En caso de reacción, el manejo incluye el retiro inmediato del agente, el uso de compresas frías y la aplicación de corticoides tópicos bajo indicación profesional. La educación del paciente sobre el etiquetado de los productos es la herramienta más efectiva para prevenir estas fitofotodermatitis, que pueden dejar secuelas pigmentarias difíciles de tratar en pieles de fototipos altos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/dermatology/S1545961623P0001X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bergamota",
+        "limoneno"
+      ],
+      "contraindications": [
+        "exposicion_solar"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "cicatrizacion-queloides-corporales-005",
+    "title": "Manejo clínico de cicatrices queloides y atróficas corporales",
+    "content": "El tratamiento de cicatrices corporales, ya sean queloides o atróficas, requiere una evaluación precisa de la fase de remodelación del colágeno. Las cicatrices queloides, resultantes de una proliferación fibroblástica excesiva, se benefician significativamente de las inyecciones intralesionales de corticosteroides (triamcinolona) y la crioterapia, según los protocolos de la IADVL. Por otro lado, las cicatrices atróficas post-acné corporal o traumáticas responden mejor a terapias de inducción de colágeno, como el microneedling, siempre realizado en un entorno clínico controlado para evitar el riesgo de infección. Es crucial gestionar las expectativas del paciente, aclarando que ninguna cicatriz desaparece por completo, pero su apariencia puede mejorar sustancialmente en textura y color. El uso de geles de silicona médica de grado clínico es el estándar de oro para la prevención de cicatrices hipertróficas, actuando mediante la hidratación y oclusión de la zona. La protección solar estricta de la cicatriz es mandatoria para evitar la hiperpigmentación residual, que puede ser más visible que la cicatriz misma. Un seguimiento longitudinal es esencial para ajustar el tratamiento según la respuesta individual del tejido.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://ijdvl.com/guidelines-for-management-of-scars/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicona",
+        "triamcinolona"
+      ],
+      "contraindications": [
+        "microneedling_sin_asepsia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "prurito-senil-006",
+    "title": "Abordaje del prurito senil y la piel atrófica",
+    "content": "El prurito senil es una queja común en la práctica dermatológica, derivado de la disminución en la producción de sebo, la reducción de la función barrera y la alteración de la respuesta inmunológica cutánea. A medida que la piel envejece, la pérdida de filagrina y ceramidas naturales conduce a una xerosis crónica que, si no se trata, evoluciona hacia un prurito intenso con riesgo de excoriaciones e infecciones bacterianas. La estrategia terapéutica debe ser conservadora y altamente hidratante. Se recomienda el uso de limpiadores corporales sin jabón (syndets) con pH ácido, evitando el agua muy caliente que deslipidiza la epidermis. La aplicación de cremas ricas en lípidos, ceramidas y urea al 5% debe ser ritualizada, especialmente tras el baño. En casos donde el prurito interfiere con el sueño, se pueden considerar antihistamínicos orales no sedantes, bajo supervisión médica. Es fundamental descartar causas sistémicas como insuficiencia renal o hepática antes de concluir que el prurito es puramente dermatológico. El mantenimiento de la hidratación es la piedra angular para mejorar la calidad de vida de los pacientes geriátricos y prevenir el ciclo prurito-rascado.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institute on Aging",
+        "url": "https://www.nia.nih.gov/health/skin-care/skin-care-and-aging",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco"
+      ],
+      "age_ranges": [
+        "adulto_mayor"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "urea",
+        "glicerina"
+      ],
+      "contraindications": [
+        "jabones_alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-geriatrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "uso-retinoides-corporales-007",
+    "title": "Tolerancia y eficacia de los retinoides en piel corporal",
+    "content": "El uso de retinoides tópicos en el cuerpo ha ganado popularidad para tratar condiciones como el fotoenvejecimiento corporal, la queratosis pilaris y la hiperpigmentación. Sin embargo, la piel del tronco y extremidades tiene una densidad folicular y una capacidad de absorción diferente a la piel facial, lo que aumenta el riesgo de irritación. Según estudios en revistas dermatológicas indexadas, la clave para una transición exitosa a retinoides corporales es la dosificación gradual y la combinación con vehículos hidratantes. Se recomienda iniciar con concentraciones bajas, como retinol al 0.05% o retinaldehído, aplicándolos inicialmente dos veces por semana. La irritación por retinoide corporal suele manifestarse como eritema y descamación fina. Es obligatorio el uso de fotoprotección diaria en las áreas tratadas, ya que los retinoides aumentan la sensibilidad a la radiación UV. Los pacientes deben ser educados sobre la importancia de no aplicar estos activos inmediatamente después de la depilación para evitar una dermatitis irritativa severa. Con un uso constante, los retinoides mejoran significativamente la textura y el tono cutáneo, siendo una herramienta potente dentro de los protocolos de medicina estética corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/retinoids-body-skin-care/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "retinaldehido"
+      ],
+      "contraindications": [
+        "depilacion_reciente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-clinico"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "hidratacion-oclusiva-corporal-008",
+    "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+    "content": "En la curaduría de productos para el cuerpo, es vital comprender la diferencia fisiológica entre humectantes y oclusivos para tratar la xerosis de manera efectiva. Los humectantes (glicerina, ácido hialurónico, urea) atraen agua hacia el estrato córneo desde las capas profundas o del ambiente. Por otro lado, los oclusivos (petrolato, aceites minerales, lanolina) forman una película hidrofóbica que previene la pérdida de agua transepidérmica (TEWL). La evidencia clínica demuestra que la combinación de ambos es superior para el manejo de pieles con barrera comprometida. Para pacientes en climas como el de Bogotá, donde la humedad relativa varía, es crucial recomendar formulaciones que contengan una base oclusiva ligera para sellar la hidratación, especialmente después del baño. El uso exclusivo de humectantes en ambientes muy secos puede, paradójicamente, deshidratar la piel al atraer agua hacia afuera. Por tanto, el consejo profesional debe orientarse hacia la aplicación de capas (layering): primero una loción humectante y luego un bálsamo oclusivo en áreas de mayor sequedad. Este enfoque optimiza la función barrera y asegura una hidratación duradera durante todo el día.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/dry/dermatologists-tips-relieve-dry-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "normal"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "petrolato",
+        "acido_hialuronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-diaria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  },
+  {
+    "chunk_id": "ph-fisiologico-y-microbioma-009",
+    "title": "El pH fisiológico y su impacto en el microbioma corporal",
+    "content": "El pH de la superficie cutánea, típicamente ácido (alrededor de 4.7-5.5), es fundamental para mantener la integridad de la barrera y un microbioma saludable. Muchos jabones corporales tradicionales son altamente alcalinos, lo que eleva el pH de la piel y altera la composición de la microbiota residente. Esta alcalinización favorece el crecimiento de bacterias patógenas como el Staphylococcus aureus y debilita la actividad de las enzimas epidérmicas necesarias para la maduración de los lípidos de barrera. Según investigaciones en el campo de la dermatología clínica, el uso crónico de productos con pH elevado contribuye significativamente a la dermatitis irritativa y al prurito. La recomendación experta para GlowApp es priorizar el uso de limpiadores tipo 'syndet' (detergentes sintéticos) que respetan el manto ácido de la piel. Estos productos no solo previenen la irritación, sino que promueven un entorno favorable para la proliferación de bacterias beneficiosas (como S. epidermidis), que juegan un papel crucial en la defensa inmunológica de la piel. Ajustar la rutina de limpieza al pH fisiológico es el primer paso para cualquier tratamiento dermatológico corporal exitoso.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.15000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "acido_lactico"
+      ],
+      "contraindications": [
+        "jabones_en_barra_alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:03:24.217Z"
+  }
+]

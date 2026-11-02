@@ -1,0 +1,28 @@
+# backend/Dockerfile.postgres
+# PostgreSQL 16 with pgvector pre-installed for Railway
+# Uses official pgvector/pgvector:pg16 image which includes vector extension
+# This avoids the "could not access file $libdir/vector" error on Railway managed PG
+
+FROM pgvector/pgvector:pg16
+RUN apt-get update && apt-get install -y postgresql-16-postgis-3
+
+# Set default environment variables (overridden by Railway)
+ENV POSTGRES_DB=railway
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+
+# Configure PostgreSQL for pgvector HNSW index performance
+# These settings optimize for vector similarity search workloads
+RUN echo "shared_preload_libraries = 'vector'" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "max_parallel_workers_per_gather = 4" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "work_mem = 256MB" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "maintenance_work_mem = 1GB" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "max_connections = 200" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "shared_buffers = 256MB" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "effective_cache_size = 1GB" >> /usr/share/postgresql/postgresql.conf.sample
+
+# Health check for Railway
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD pg_isready -U postgres || exit 1
+
+EXPOSE 5432

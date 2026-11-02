@@ -1,0 +1,344 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-001",
+    "title": "Inmunometabolismo del Folículo: El rol de los linfocitos T residentes",
+    "content": "El estudio del inmunometabolismo folicular ha revelado que los linfocitos T de memoria residentes en el nicho del bulto (bulge) no son meros espectadores, sino reguladores activos del ciclo capilar. Investigaciones recientes publicadas en Nature Immunology demuestran que estas células, bajo condiciones de estrés metabólico, pueden alterar la señalización de las células madre foliculares. En condiciones de homeostasis, el metabolismo oxidativo es predominante, pero ante la presencia de citocinas inflamatorias, el folículo tiende a una reprogramación hacia la glucólisis aeróbica. Este cambio metabólico impacta directamente en la capacidad de regeneración del folículo, siendo un marcador crítico en la transición de la fase anágena a la catágena. Comprender este 'diálogo' entre el sistema inmune y el metabolismo celular es fundamental para diagnosticar patologías inflamatorias crónicas que no responden a los esquemas terapéuticos convencionales, permitiendo una estratificación de pacientes basada en su perfil inmunometabólico específico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Immunology",
+        "url": "https://www.nature.com/ni/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-proteostasis-002",
+    "title": "Proteostasis y Control de Calidad de Proteínas en la Matriz Piloso",
+    "content": "La proteostasis, o el mantenimiento de la homeostasis del proteoma, es vital para la integridad del tallo capilar. El folículo piloso es una de las estructuras con mayor tasa de síntesis proteica en el cuerpo humano, lo que lo hace extremadamente vulnerable a fallos en la maquinaria de plegamiento de proteínas. Cuando el sistema de proteostasis se ve comprometido por factores exógenos (exposoma) o endógenos (envejecimiento), se produce la acumulación de proteínas mal plegadas, activando la respuesta de proteínas desplegadas (UPR) en el retículo endoplásmico. Estudios en el Journal of Investigative Dermatology indican que esta disfunción es un precursor temprano de la fragilidad del tallo y de la miniaturización folicular. Identificar marcadores de estrés de la UPR en el cuero cabelludo permite diagnosticar la 'fatiga folicular' antes de que la pérdida de densidad sea clínicamente evidente, ofreciendo una ventana de intervención preventiva mediante antioxidantes y chaperonas moleculares.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmisores-003",
+    "title": "Neurotransmisión Periférica y su Influencia en la Ciclicidad",
+    "content": "El folículo piloso está densamente inervado por fibras nerviosas que liberan neurotransmisores como la sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP). Estos mensajeros químicos no solo modulan la percepción del dolor (tricodinia), sino que actúan directamente sobre la papila dérmica para regular el crecimiento. La literatura actual en PubMed sugiere que el exceso de inervación o la hipersensibilidad de los receptores en el folículo puede inducir una fase catágena prematura. Este fenómeno, a menudo ignorado en el diagnóstico clínico estándar, es clave en alopecias inducidas por estrés crónico. La evaluación de la densidad de terminaciones nerviosas mediante técnicas de inmunofluorescencia o el análisis de biomarcadores de estrés neurogénico en el sebo cutáneo representan la próxima frontera en la dermatología capilar, permitiendo un abordaje que integra la salud mental con el tratamiento dermatológico directo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-004",
+    "title": "Autofagia y Renovación Celular en el Bulbo Piloso",
+    "content": "La autofagia es un mecanismo de limpieza celular esencial para la supervivencia de las células madre del folículo piloso durante la fase telógena. La evidencia clínica indica que la inhibición de la autofagia acelera el envejecimiento folicular y disminuye la capacidad de iniciar una nueva fase anágena. En el contexto de la medicina regenerativa capilar, el diagnóstico de la eficiencia autofágica podría predecir la respuesta a tratamientos con plasma rico en plaquetas o láser de baja potencia. La falta de este proceso de 'reciclaje' celular contribuye al acúmulo de orgánulos dañados, lo que se traduce en una menor calidad de la fibra capilar producida. Investigaciones en bases de datos dermatológicas líderes confirman que la activación de vías autofágicas mediante agentes tópicos específicos representa una estrategia emergente para combatir la miniaturización, subrayando la importancia de evaluar este proceso en el diagnóstico integral de la alopecia.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina_regenerativa"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microvasculatura-005",
+    "title": "Disfunción de la Microvasculatura y el 'Efecto Isquémico' Folicular",
+    "content": "La papila dérmica depende de una red vascular altamente organizada para recibir nutrientes y oxígeno. La evidencia científica reciente, recogida en estudios de microcirculación cutánea, demuestra que la reducción de la densidad capilar sanguínea perifolicular es un evento temprano en la alopecia androgenética, incluso antes de que la miniaturización sea visible en la tricoscopia convencional. Este fenómeno, denominado 'efecto isquémico', limita la síntesis de queratina y favorece la apoptosis de los queratinocitos de la matriz. El diagnóstico moderno debe incluir la evaluación de la perfusión sanguínea mediante técnicas no invasivas o el uso de biomarcadores de hipoxia tisular. Identificar la hipoxia como factor etiológico permite implementar terapias vasodilatadoras y pro-angiogénicas dirigidas que superan el enfoque tradicional de solo bloquear receptores androgénicos, ofreciendo un pronóstico más favorable en estadios iniciales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-006",
+    "title": "El Exposoma Urbano y su Impacto en el Estrés Oxidativo del Tallo",
+    "content": "La exposición prolongada a contaminantes urbanos, como el material particulado (PM2.5) y los hidrocarburos aromáticos policíclicos, genera un ambiente de estrés oxidativo severo en la superficie del cuero cabelludo. Estos contaminantes actúan como ligandos de los receptores de hidrocarburos arílicos (AhR), los cuales, al activarse, inducen la producción de especies reactivas de oxígeno y la degradación de proteínas estructurales como la queratina. La acumulación de estos agentes no solo daña la cutícula, sino que penetra hasta el orificio folicular, provocando una inflamación subclínica constante. El diagnóstico clínico debe considerar la ubicación geográfica y los hábitos del paciente como variables de riesgo fundamentales. La protección contra el exposoma no es solo una medida cosmética, sino una necesidad terapéutica para prevenir la aceleración de la caída en pacientes predispuestos genéticamente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization)",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-ritmos-007",
+    "title": "Cronobiología: El Reloj Molecular del Folículo Piloso",
+    "content": "El ciclo de crecimiento del cabello está regido por relojes moleculares internos, principalmente el sistema de genes CLOCK/BMAL1, que sincronizan la proliferación celular con los ritmos circadianos. La alteración de estos ritmos, debida a trastornos del sueño o trabajo por turnos, puede desincronizar la fase anágena, provocando una progresión irregular del ciclo capilar. Estudios en cronobiología dermatológica han demostrado que la expresión de ciertos factores de crecimiento folicular presenta picos de actividad según la hora del día. Este conocimiento permite optimizar el momento de aplicación de tratamientos tópicos para maximizar su eficacia, aprovechando las ventanas de mayor permeabilidad cutánea y actividad metabólica. El diagnóstico clínico de la alopecia debe, por tanto, integrar una anamnesis sobre la higiene del sueño del paciente, reconociendo que la desregulación circadiana es un factor contribuyente subestimado en la patogenia de las alopecias difusas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-008",
+    "title": "Glicación Avanzada y el Envejecimiento del Entorno Folicular",
+    "content": "Los productos de glicación avanzada (AGEs) son proteínas o lípidos que se han glicosilado como resultado de la exposición a azúcares, un proceso exacerbado por dietas altas en índice glucémico y estrés oxidativo. En el cuero cabelludo, los AGEs se acumulan en el colágeno del tejido perivascular y en la matriz extracelular que rodea el bulbo, reduciendo su flexibilidad y capacidad de regeneración. Este proceso de 'rígidez' del nicho folicular dificulta el anclaje del pelo y la adecuada nutrición de la papila. El diagnóstico clínico mediante la evaluación de biomarcadores séricos de glicación y la tricoscopia de alta resolución, que puede revelar cambios en la textura y coloración del cuero cabelludo, es esencial para pacientes con resistencia a la insulina. El manejo clínico debe incluir cambios dietéticos y el uso de agentes antiglicantes para revertir o frenar este proceso de envejecimiento acelerado del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-009",
+    "title": "Disbiosis Folicular: El Eje Microbiota-Inflamación",
+    "content": "La microbiota del cuero cabelludo es un ecosistema complejo donde el equilibrio entre Malassezia, Cutibacterium y Staphylococcus es crítico para la salud folicular. La disbiosis, o alteración de esta comunidad, no solo causa caspa o dermatitis seborreica, sino que desencadena respuestas inflamatorias que erosionan la integridad de la barrera cutánea folicular. Estudios recientes indican que ciertos metabolitos producidos por bacterias disbióticas pueden penetrar en el canal folicular, provocando una respuesta inmune innata que acelera la miniaturización. El diagnóstico clínico debe ir más allá de la inspección visual, sugiriendo el análisis de la composición microbiana en casos recurrentes de inflamación. La restauración de este ecosistema mediante prebióticos y probióticos tópicos específicos es una estrategia terapéutica emergente. La clave reside en entender que la salud capilar es inseparable de la ecología microbiana que habita en el cuero cabelludo, siendo un pilar fundamental en el diagnóstico de las alopecias inflamatorias.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T03:21:41.755Z"
+  }
+]

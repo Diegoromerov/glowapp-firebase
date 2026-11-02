@@ -1,0 +1,381 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-telangiectasias-001",
+    "title": "Fisiopatología de la fragilidad capilar en miembros inferiores",
+    "content": "La fragilidad capilar en los miembros inferiores es una condición multifactorial donde la debilidad de la pared venosa y el aumento de la presión hidrostática provocan la dilatación permanente de vénulas superficiales. A diferencia de las varices tronculares, las telangiectasias y las venas reticulares representan una disfunción en la microcirculación cutánea que se ve exacerbada por la bipedestación prolongada y factores hormonales. Histológicamente, se observa una atrofia de la capa muscular lisa del vaso, lo que compromete su capacidad contráctil. La literatura dermatológica sugiere que el manejo no debe limitarse a la estética, sino a la evaluación de la insuficiencia venosa crónica subyacente. El uso de medias de compresión graduada es el estándar de oro para prevenir la progresión de esta fragilidad, al reducir la tensión parietal y mejorar el retorno venoso. Es imperativo diferenciar estas lesiones de la púrpura pigmentaria progresiva, ya que el manejo terapéutico difiere sustancialmente en cuanto a la intervención con láser o escleroterapia.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/veins/spider-veins",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_k",
+        "extracto_castano_indias"
+      ],
+      "contraindications": [
+        "trombosis_venosa_profunda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-escleroterapia-002",
+    "title": "Protocolos de seguridad en escleroterapia química",
+    "content": "La escleroterapia química sigue siendo el tratamiento de elección para telangiectasias y venas reticulares. El procedimiento consiste en la inyección de un agente esclerosante que induce una reacción inflamatoria endotelial, provocando fibrosis y la posterior oclusión del vaso. La elección del agente (detergentes como polidocanol o agentes osmóticos como la solución salina hipertónica) depende del calibre del vaso y la tolerancia del paciente. Un riesgo clínico crítico es la extravasación del producto, que puede derivar en necrosis tisular o hiperpigmentación post-escleroterapia por depósito de hemosiderina. La técnica requiere una precisión milimétrica y una evaluación previa de la competencia valvular mediante ecografía Doppler. Es vital evitar el tratamiento en pacientes con trombofilia diagnosticada o aquellos con infecciones cutáneas activas en la zona de punción, ya que la respuesta inflamatoria exacerbada podría complicar el cuadro clínico. El monitoreo post-procedimiento es esencial para identificar reacciones alérgicas tempranas o complicaciones isquémicas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polidocanol"
+      ],
+      "contraindications": [
+        "embarazo",
+        "trombosis_activa"
+      ],
+      "season": [
+        "invierno",
+        "otono"
+      ],
+      "applicable_modules": [
+        "procedimientos_clinicos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-hemosiderina-003",
+    "title": "Manejo de la hiperpigmentación por depósito de hemosiderina",
+    "content": "La hiperpigmentación post-escleroterapia es una complicación frecuente resultante de la extravasación de eritrocitos y el posterior depósito de hemosiderina en la dermis. Este pigmento férrico es altamente estable y puede persistir por meses o años si no se aborda adecuadamente. A diferencia de la hiperpigmentación post-inflamatoria (HPI) por melanina, la pigmentación por hemosiderina no responde a inhibidores de la tirosinasa como el ácido kójico o la hidroquinona. El manejo clínico se centra en agentes quelantes de hierro, como el ácido tioglicólico o cremas con lactoferrina, que ayudan a movilizar el exceso de hierro férrico. La prevención es la estrategia más eficaz, limitando la concentración del esclerosante y asegurando una técnica de inyección precisa. En casos refractarios, la terapia con láser Q-switched puede ser considerada, aunque conlleva un riesgo de inducir una reacción inflamatoria adicional. La educación al paciente sobre el tiempo de resolución es fundamental para gestionar expectativas, ya que la reabsorción natural del pigmento es un proceso biológico extremadamente lento.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cutaneous and Aesthetic Surgery",
+        "url": "https://www.jcasonline.com/article.asp?issn=0974-2077;year=2022",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_tioglicolico",
+        "lactoferrina"
+      ],
+      "contraindications": [
+        "exposicion_solar_intensa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_complicaciones"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-lipodistrofia-004",
+    "title": "Diferenciación: Celulitis vs. Lipodistrofia localizada",
+    "content": "La confusión terminológica entre la paniculopatía edemato-fibroesclerótica (celulitis) y la lipodistrofia localizada es un reto común en la consulta. Mientras que la celulitis es una alteración del tejido conectivo y la microcirculación que afecta la estructura de la dermis y el tejido adiposo superficial, la lipodistrofia localizada se refiere a depósitos de tejido adiposo que no responden a la dieta o al ejercicio. La celulitis implica una acumulación de líquido intersticial, hipertrofia de los adipocitos y una fibrosis del septo conectivo que tracciona la superficie cutánea hacia adentro. Por otro lado, la lipodistrofia es puramente volumétrica. El abordaje clínico debe ser distinto: la celulitis requiere mejorar el drenaje linfático y la calidad de la matriz extracelular, mientras que la lipodistrofia puede requerir procedimientos de reducción de volumen como la criolipólisis o el uso de agentes lipolíticos. La evaluación mediante plicometría y ecografía permite realizar un diagnóstico diferencial preciso y evitar tratamientos ineficaces.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-linfedema-005",
+    "title": "Detección temprana de linfedema en extremidades",
+    "content": "El linfedema subclínico es una condición frecuentemente ignorada en el ámbito cosmético, especialmente tras procedimientos quirúrgicos o lesiones traumáticas menores. Se caracteriza por una acumulación de líquido rico en proteínas en el espacio intersticial debido a una insuficiencia en la capacidad de transporte del sistema linfático. Clínicamente, el paciente puede presentar una sensación de pesadez, edema con fóvea (signo de Godet positivo) y una alteración sutil en la textura cutánea. Es fundamental realizar una medición perimetral comparativa para detectar cambios tempranos. La intervención temprana con terapia linfática manual (TLM) y presoterapia controlada es esencial para evitar la progresión hacia un linfedema crónico con cambios fibróticos irreversibles en la piel. El uso de productos con propiedades venotónicas y el control de la ingesta de sodio pueden complementar el manejo. Cualquier signo de linfangitis, como eritema lineal o fiebre, requiere una derivación médica urgente para descartar procesos infecciosos bacterianos que pueden ser severos en extremidades con drenaje linfático comprometido.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/lymphatic-filariasis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "centella_asiatica"
+      ],
+      "contraindications": [
+        "infeccion_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_post_quirurgico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-dermatitis-textil-006",
+    "title": "Dermatitis de contacto por acabados en fibras textiles",
+    "content": "La dermatitis de contacto por ropa no siempre es debida a la fibra en sí (como el poliéster), sino a los agentes químicos aplicados para conferir propiedades como la resistencia a las arrugas, la repelencia al agua o el colorante. Resinas de formaldehído, colorantes dispersos y agentes suavizantes son los alérgenos más comunes identificados en pruebas de parche. En pacientes con xerosis o barrera cutánea debilitada, la fricción mecánica de estas fibras sintéticas exacerba la penetración de dichos químicos. El cuadro clínico se presenta típicamente en áreas de mayor fricción, como la cintura, axilas e ingles, manifestándose con prurito intenso y eritema papular. El tratamiento incluye la interrupción del uso de la prenda, el lavado de ropa nueva antes del primer uso para eliminar excesos de químicos y el uso de emolientes que contengan ceramidas para restaurar la función barrera. En casos crónicos, el uso de corticosteroides tópicos de baja potencia es necesario para controlar la inflamación secundaria a la respuesta alérgica retardada.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/i4a/pages/index.cfm?pageid=3328",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "avena_coloidal"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-bromhidrosis-007",
+    "title": "Manejo clínico de la bromhidrosis apocrina",
+    "content": "La bromhidrosis es el resultado de la degradación bacteriana (principalmente por especies de Corynebacterium y Staphylococcus) del sudor apocrino, rico en ácidos grasos, proteínas y lípidos. A diferencia de la sudoración ecrina, el sudor apocrino es inodoro cuando se secreta, pero su descomposición genera compuestos volátiles como ácidos grasos de cadena corta y amoníaco. El manejo clínico se basa en la reducción de la carga bacteriana local mediante el uso de limpiadores con pH ácido y agentes antibacterianos como el peróxido de benzoilo o el gluconato de clorhexidina. En casos severos, la toxina botulínica tipo A es una opción terapéutica eficaz para reducir la secreción de sudor apocrino al inhibir la liberación de acetilcolina. Adicionalmente, el uso de desodorantes que contengan sales de aluminio puede ayudar a reducir la humedad en el área, disminuyendo el sustrato para la proliferación bacteriana. La educación sobre la higiene diaria y el cambio frecuente de ropa, especialmente de fibras naturales, es fundamental para el control a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "DermNet NZ",
+        "url": "https://dermnetnz.org/topics/bromhidrosis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro_aluminio",
+        "clorhexidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_y_cuidado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-exposicion-frio-008",
+    "title": "Efectos fisiológicos del frío extremo en la microcirculación",
+    "content": "La exposición al frío extremo, ya sea por uso terapéutico (criolipólisis) o ambiental, induce una vasoconstricción cutánea mediada por el sistema nervioso simpático. Este mecanismo, si bien busca conservar el calor corporal, puede comprometer la oxigenación tisular si es prolongado. En el contexto de procedimientos de congelación controlada, el objetivo es inducir una paniculitis fría, donde los adipocitos, al ser más sensibles al frío que los queratinocitos, sufren un proceso de apoptosis. Es crítico vigilar la integridad del estrato córneo durante estas exposiciones, ya que el frío reduce la síntesis de lípidos epidérmicos y puede inducir una dermatitis por frío o eritema pernio. Tras la aplicación de frío, la fase de recalentamiento debe ser gradual para evitar una respuesta inflamatoria excesiva mediada por la liberación repentina de mediadores proinflamatorios. El monitoreo de la perfusión capilar post-procedimiento es vital para asegurar que no ocurran efectos adversos como quemaduras por frío o daño nervioso periférico transitorio.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/cryolipolysis-safety/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_hialuronico"
+      ],
+      "contraindications": [
+        "crioglobulinemia",
+        "fenomeno_raynaud"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos_clinicos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-psoriasis-invertida-009",
+    "title": "Diferencial de la psoriasis invertida en pliegues",
+    "content": "La psoriasis invertida, a diferencia de la forma clásica en placas, se manifiesta en áreas intertriginosas (axilas, ingles, pliegue submamario) como placas eritematosas, brillantes y a menudo sin la descamación característica debido al ambiente húmedo y oclusivo del pliegue. El diagnóstico diferencial es complejo, debiendo descartarse candidiasis intertriginosa, eritrasma y dermatitis de contacto. La presencia de placas en otras localizaciones típicas (cuero cabelludo, uñas) es una pista clave para el diagnóstico de psoriasis. El manejo es delicado: el uso de corticosteroides potentes está contraindicado o debe ser muy limitado por el riesgo de atrofia cutánea en áreas de piel fina, así como por la facilitación de infecciones fúngicas. Se prefieren inhibidores de la calcineurina tópicos (tacrolimus, pimecrolimus) o análogos de la vitamina D, bajo estricta supervisión médica. Es vital mantener el área seca y evitar el uso de productos irritantes o fragancias que puedan exacerbar el prurito. La educación al paciente sobre la naturaleza crónica de la condición y la necesidad de evitar la oclusión innecesaria es fundamental.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Psoriasis Foundation",
+        "url": "https://www.psoriasis.org/inverse-psoriasis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tacrolimus",
+        "pimecrolimus"
+      ],
+      "contraindications": [
+        "corticosteroides_potentes_prolongados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "patologias_cutaneas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:34:29.671Z"
+  }
+]

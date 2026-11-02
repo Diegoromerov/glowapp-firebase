@@ -1,0 +1,318 @@
+[
+  {
+    "chunk_id": "colorimetria-efecto-progesterona-001",
+    "title": "Fluctuaciones de la progesterona y su impacto en la vasorreactividad y subtono",
+    "content": "Durante la fase lútea del ciclo menstrual, el aumento en los niveles de progesterona induce cambios significativos en la microcirculación facial. Estudios publicados en el Journal of the American Academy of Dermatology sugieren que esta hormona puede aumentar la temperatura cutánea local y promover una vasodilatación leve, lo que altera la percepción del subtono hacia matices más rosados o eritematosos. Este fenómeno es frecuentemente malinterpretado como un subtono frío, cuando en realidad es una respuesta vascular temporal. En el entorno de GlowApp, es fundamental que el usuario comprenda que la elección de una base durante la fase folicular (estrogénica) puede diferir de la fase lútea debido a esta fluctuación en la perfusión sanguínea. La gestión de esta variabilidad cromática requiere ajustar la saturación del pigmento de la base, optando por correctores con subtonos neutros que compensen el eritema transitorio sin comprometer la armonía natural de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_subtono_dinamico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-hemoglobina-reducida-002",
+    "title": "Hemoglobina reducida y la falsa percepción de cianosis en pieles fototipo V-VI",
+    "content": "La saturación de oxígeno en la hemoglobina es un determinante crítico en la colorimetría cutánea, especialmente en pieles con alta concentración de melanina. Cuando la hemoglobina reducida (desoxigenada) predomina en el plexo vascular superficial, la piel puede adquirir un matiz azulado o grisáceo, a menudo confundido erróneamente con un subtono frío. Según investigaciones en PubMed sobre espectroscopia de reflectancia, este 'subtono' es en realidad una manifestación de hipoxia tisular localizada o baja perfusión. Para los usuarios de piel oscura en Bogotá, la altitud (2640 msnm) puede exacerbar esta apariencia debido a la menor presión parcial de oxígeno. Es vital diferenciar entre el subtono intrínseco (determinado por la melanina y el caroteno) y esta cromaticidad vascular transitoria para evitar el uso de bases con subtonos fríos que pueden dejar un aspecto cenizo o grisáceo poco saludable en la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectro-led-003",
+    "title": "El impacto del índice de reproducción cromática (IRC) de las luminarias en el diagnóstico",
+    "content": "El diagnóstico del subtono en el hogar suele fallar debido a la baja calidad de las fuentes de iluminación artificial. Un IRC inferior a 90, común en bombillas LED estándar, no reproduce el espectro completo de la luz solar, lo que resulta en una interpretación errónea del subtono cutáneo. La luz con un pico predominante en el espectro azul puede enmascarar los subtonos cálidos, haciendo que la piel parezca más fría de lo que realmente es. Según normas técnicas de la CIE (Comisión Internacional de la Iluminación), para realizar una evaluación precisa de la colorimetría facial, se recomienda utilizar fuentes de luz con una temperatura de color cercana a los 5000K-5500K y un IRC mayor a 95. En GlowApp, educamos al usuario para que realice su test de subtono bajo luz natural directa o fuentes de iluminación certificadas, evitando la distorsión cromática producida por la tecnología de iluminación deficiente en baños y tocadores.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Commission on Illumination",
+        "url": "https://cie.co.at/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_iluminacion_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-glicacion-avanzada-004",
+    "title": "Productos de Glicación Avanzada (AGEs) y el viraje hacia el subtono cetrino",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) en las proteínas de la dermis, como el colágeno y la elastina, produce una alteración cromática conocida como 'amarilleo senescente'. Este proceso, estudiado ampliamente en revistas dermatológicas, no es una simple pérdida de brillo, sino una modificación física de la reflectancia de la piel. A medida que los AGEs se acumulan, el subtono se desplaza hacia matices cetrinos o pajizos, lo cual altera la eficacia de las bases de maquillaje que, originalmente, estaban diseñadas para un subtono neutro o rosado. Es crucial que los usuarios con piel madura comprendan que su subtono no ha cambiado biológicamente, pero que la interacción de la luz con su dermis ha sido alterada. La solución no es cambiar radicalmente de subtono, sino incorporar bases con propiedades reflectantes y correctores que neutralicen el amarillo mediante pigmentos violetas o rosados tenues para restaurar la luminosidad perdida.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "45+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes_antiglicantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria_piel_madura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-005",
+    "title": "Anisotropía óptica: la textura cutánea como modulador del color",
+    "content": "La textura de la superficie cutánea (microrrelieve) juega un papel fundamental en cómo percibimos el subtono. La anisotropía óptica se refiere a la variación en la reflexión de la luz dependiendo de la dirección de la textura de la piel. En zonas con mayor rugosidad, como cicatrices post-acné o áreas con poros dilatados, la luz se dispersa de manera difusa, lo que reduce la saturación del color percibido y crea sombras que pueden confundirse con un subtono más oscuro o frío. Este fenómeno es un desafío técnico en la colorimetría de precisión. El uso de primers con propiedades de difuminado óptico (blurring) es esencial antes de aplicar la base, ya que al alisar la superficie, se normaliza la reflectancia y se permite que el subtono real del pigmento se aprecie de forma uniforme. Entender la anisotropía permite a los usuarios de GlowApp aplicar técnicas de corrección más precisas que no dependan solo del tono de la base, sino de la gestión de la textura.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica",
+        "madura"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "polimeros_difuminadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "textura_y_color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-ph-oxidacion-007",
+    "title": "Influencia del pH cutáneo en la oxidación química de las bases de maquillaje",
+    "content": "La estabilidad de los pigmentos en una base de maquillaje depende críticamente del pH de la superficie cutánea. Un pH cutáneo más ácido (cercano a 4.5-5.0) puede acelerar la oxidación de ciertos óxidos de hierro y pigmentos orgánicos presentes en las bases, provocando que el color vire hacia tonos naranja o rojizos apenas minutos después de la aplicación. Este fenómeno es frecuentemente confundido con una mala elección de subtono. La investigación en dermatología cosmética indica que los ácidos grasos libres en el sebo también interactúan con los filtros solares (como la avobenzona) y los pigmentos, catalizando esta degradación cromática. En GlowApp, recomendamos a los usuarios con piel grasa o con desequilibrios en el manto hidrolipídico el uso de primers equilibradores de pH o bases de larga duración formuladas con pigmentos tratados (coating) que resistan la oxidación, garantizando que el subtono se mantenga fiel al aplicado durante todo el día.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos_tratados"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_maquillaje"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-ferritina-008",
+    "title": "Ferritina sérica y la transparencia dérmica: el reto de la anemia subclínica",
+    "content": "La anemia ferropénica, incluso en niveles subclínicos, altera la transparencia dérmica y la cromaticidad facial. Una baja concentración de hemoglobina reduce la capacidad de la sangre para reflejar los matices rosados saludables, lo que resulta en una piel con apariencia 'lavada' o con un subtono grisáceo-amarillento. En la colorimetría clínica, esto se conoce como una pérdida de la calidez vascular. Para los pacientes que presentan estos signos, elegir una base con un subtono frío (rosa) puede acentuar la palidez anémica, mientras que una base con un subtono cálido (amarillo/oliva) puede parecer desconectada del cuello. La recomendación experta es buscar productos con un acabado luminoso y una cobertura modulable que permita que la piel respire, evitando fórmulas densas que aumentan la opacidad. La corrección del subtono en este caso es un ejercicio de devolver la luminosidad mediante pigmentos que imiten la microcirculación saludable, no mediante la cobertura total del tono.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_salud_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  },
+  {
+    "chunk_id": "colorimetria-psicologia-009",
+    "title": "El sesgo de la memoria cromática en la autoevaluación del subtono",
+    "content": "La psicología de la percepción revela que el ser humano tiene una memoria cromática limitada y altamente influenciable por el sesgo de confirmación. Cuando un usuario de GlowApp intenta identificar su subtono, su cerebro tiende a recordar el color de su piel bajo condiciones de luz ideales (por ejemplo, durante un viaje de vacaciones o bajo el sol del mediodía), lo que distorsiona la realidad actual de su cromaticidad facial. Este sesgo de memoria cromática conduce a la compra de bases de maquillaje que no coinciden con el subtono real del cuello o el escote. Para mitigar este error cognitivo, es indispensable realizar el test de subtono utilizando un 'testigo' neutro (una tarjeta de gris neutro 18%) colocado junto al rostro, lo cual obliga al sistema visual a recalibrar la percepción del color. La objetivación mediante herramientas digitales es la única forma de eliminar este sesgo, permitiendo una selección de maquillaje basada en datos y no en la memoria emocional del tono de piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Psychology of Aesthetics, Creativity, and the Arts",
+        "url": "https://www.apa.org/pubs/journals/aca/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicologia_del_color"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:15.967Z"
+  }
+]

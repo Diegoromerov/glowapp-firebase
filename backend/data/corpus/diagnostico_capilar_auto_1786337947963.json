@@ -1,0 +1,372 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunosenescencia-001",
+    "title": "Inmunosenescencia y el Microambiente del Nicho Folicular",
+    "content": "La inmunosenescencia folicular describe el declive progresivo en la capacidad del sistema inmune local para mantener la homeostasis del folículo piloso, un fenómeno crítico en la alopecia de patrón involutivo. A medida que las células madre del bulge envejecen, la comunicación con las células T residentes se altera, reduciendo la capacidad de respuesta ante estresores externos. Estudios en Journal of Investigative Dermatology sugieren que este agotamiento inmunológico no solo promueve la miniaturización, sino que altera la señalización de citoquinas necesarias para la fase anágena. Este proceso, distinto a la inflamación subclínica, se caracteriza por una reducción en la diversidad de células inmunes adaptativas, lo que permite la acumulación de daño celular no reparado. Identificar biomarcadores de este declive es fundamental para diferenciar el envejecimiento folicular fisiológico de patologías inflamatorias activas. En GlowApp, este enfoque permite personalizar terapias regenerativas que no solo buscan estimular el crecimiento, sino restaurar el equilibrio del microambiente inmunológico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores-crecimiento",
+        "exosomas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-envejecimiento-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-hidrodinamica-002",
+    "title": "Hidrodinámica del Cuero Cabelludo y Gradiente de Presión Osmótica",
+    "content": "La regulación osmótica del cuero cabelludo es un factor determinante en la salud del folículo que a menudo se pasa por alto. La homeostasis hídrica del estrato córneo capilar influye directamente en la permeabilidad de la barrera y en la penetración de activos tópicos. Una desregulación en la presión osmótica intersticial puede inducir edema perifolicular, comprimiendo mecánicamente el bulbo piloso y dificultando la perfusión sanguínea. La literatura publicada en PubMed destaca cómo el desequilibrio en los solutos del sudor y el sebo altera la hidratación de la matriz, afectando la síntesis de queratina. En Bogotá, la altitud y las variaciones de humedad ambiental exacerban estas fluctuaciones osmóticas. El diagnóstico capilar debe evaluar no solo la densidad, sino la capacidad de retención hídrica del cuero cabelludo como predictor de la calidad de la fibra. Comprender esta hidrodinámica es esencial para mejorar la eficacia de los tratamientos de soporte, optimizando el entorno para que el folículo mantenga su actividad proliferativa sin restricciones por presión mecánica externa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "graso",
+        "mixto"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectantes",
+        "electrolitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmisores-003",
+    "title": "Neurotransmisores Periféricos y la Modulación del Ciclo",
+    "content": "La inervación cutánea del cuero cabelludo no solo cumple funciones sensitivas, sino que actúa como un regulador clave del ciclo piloso a través de la liberación de neuropéptidos. La presencia de receptores para sustancias como el péptido relacionado con el gen de la calcitonina (CGRP) y la Sustancia P en la papila dérmica sugiere un eje neuro-folicular activo. Investigaciones en la American Academy of Dermatology indican que el estrés crónico induce una liberación sostenida de estos neurotransmisores, lo que puede provocar una transición prematura a la fase catágena o una inflamación neurogénica que debilita el anclaje del pelo. Este fenómeno es particularmente relevante en pacientes con quejas de dolor capilar (tricodinia) sin signos inflamatorios evidentes. El diagnóstico debe considerar este componente neurogénico para diferenciarlo de las alopecias hormonales puras. La modulación de este eje mediante técnicas no farmacológicas o tópicos específicos que calmen la hiperactividad nerviosa periférica es una frontera emergente en la dermatología cosmética, permitiendo un abordaje integral del paciente con alopecia inducida por estrés.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "neurocosmetica"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-oxigenacion-004",
+    "title": "Dinámica de Oxigenación Tisular y el 'Efecto Hipóxico'",
+    "content": "La oxigenación del folículo piloso es un proceso dinámico que depende de una red microvascular altamente eficiente. En condiciones de estrés o patologías como la alopecia androgenética, la miniaturización se asocia frecuentemente con una disminución en la densidad de capilares peribulbares. Este 'efecto hipóxico' induce la activación de factores inducibles por hipoxia (HIF-1alpha), que a su vez alteran la expresión génica del folículo, favoreciendo la fibrosis y la atrofia de la papila dérmica. Estudios clínicos indican que el mantenimiento de una microcirculación robusta es crítico para soportar la alta demanda metabólica de la fase anágena. El diagnóstico capilar moderno, mediante técnicas de tricoscopia avanzada, permite observar la arquitectura vascular del cuero cabelludo. Identificar una reducción en la red capilar es un marcador temprano de riesgo de progresión hacia la miniaturización. En GlowApp, este conocimiento se traduce en la recomendación de estrategias que promuevan la vasodilatación periférica y la optimización del metabolismo energético de las células foliculares, contrarrestando el déficit crónico de oxígeno.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vasodilatadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microcirculatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-proteostasis-005",
+    "title": "Proteostasis: El Control de Calidad en la Matriz Piloso",
+    "content": "La proteostasis, o el mantenimiento de la homeostasis proteica, es vital para la síntesis de queratinas de alta calidad en el folículo piloso. El folículo es una de las fábricas de proteínas más activas del cuerpo humano, y cualquier fallo en el plegamiento de proteínas o en la degradación de proteínas dañadas (a través del sistema ubiquitina-proteasoma) resulta en un tallo capilar frágil, opaco y propenso a la fractura. El envejecimiento y el estrés oxidativo son los principales disruptores de esta maquinaria. Publicaciones científicas en revistas de dermatología subrayan que las chaperonas moleculares juegan un papel protector fundamental al prevenir la agregación de proteínas mal plegadas. Un diagnóstico capilar exhaustivo debe evaluar no solo la cantidad de pelo, sino la integridad estructural del tallo, buscando signos de proteostasis deficiente. Este enfoque permite identificar si la fragilidad capilar es un problema sistémico de síntesis o un daño externo acumulado, guiando la selección de tratamientos que apoyen la estructura interna de la fibra mediante péptidos y aminoácidos esenciales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estructural-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-006",
+    "title": "Autofagia: El Mecanismo de Limpieza en el Bulbo Piloso",
+    "content": "La autofagia es un proceso catabólico celular esencial para la supervivencia del folículo piloso durante sus ciclos de degeneración y regeneración. Este mecanismo permite al folículo reciclar componentes celulares dañados, especialmente las mitocondrias, asegurando que la papila dérmica mantenga su capacidad proliferativa. La disfunción autofágica se ha correlacionado con una senescencia acelerada del nicho folicular, lo que contribuye significativamente a la pérdida de densidad capilar con la edad. En condiciones de estrés, como la exposición a contaminantes ambientales, el sistema de autofagia puede verse sobrepasado, acumulando desechos que impiden la transición suave hacia la fase anágena. El diagnóstico clínico debe considerar la capacidad de renovación celular como un indicador de la 'edad biológica' del cuero cabelludo. Fomentar la autofagia mediante moduladores metabólicos o cambios en el estilo de vida es una estrategia emergente para rejuvenecer el folículo. La evaluación de este proceso, aunque compleja, ofrece una visión profunda sobre la capacidad de respuesta del folículo ante tratamientos regenerativos y su resiliencia a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrd/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes-celulares"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-resiliencia-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-007",
+    "title": "El Impacto de los AGEs en la Matriz Folicular",
+    "content": "Los productos de glicación avanzada (AGEs) son moléculas formadas por la reacción no enzimática de azúcares con proteínas, lípidos o ácidos nucleicos. En el cuero cabelludo, la acumulación de AGEs en el colágeno peribulbar y en la propia fibra capilar conduce a la rigidez del tejido, dificultando el crecimiento del pelo y reduciendo la flexibilidad de la cutícula. La glicación avanzada es un subproducto del estrés oxidativo y la dieta, y su impacto es acumulativo. Estudios clínicos publicados por la WHO y otras entidades de salud pública vinculan la dieta rica en azúcares refinados con una progresión más rápida de la alopecia androgenética. El diagnóstico capilar debe integrar la evaluación de hábitos alimenticios y signos de glicación en la piel del cuero cabelludo, como la pérdida de elasticidad y la opacidad. Mitigar el impacto de los AGEs requiere un enfoque multifacético que incluya antioxidantes específicos y una regulación metabólica, protegiendo así el entorno donde nace y crece la fibra capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization - Health Topics",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "anti-glicantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estilo-vida"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-barrera-008",
+    "title": "Disrupción de la Barrera Cutánea: El Factor Silencioso",
+    "content": "La integridad de la barrera cutánea del cuero cabelludo es la primera línea de defensa contra patógenos y agentes irritantes. La disfunción de esta barrera, caracterizada por una pérdida de agua transepidérmica (TEWL) elevada, crea un entorno inflamatorio persistente que puede desencadenar o agravar patologías como la alopecia areata o el efluvio telógeno. La literatura dermatológica actual enfatiza que un cuero cabelludo con la barrera comprometida tiene una mayor susceptibilidad a la absorción de alérgenos y contaminantes, lo que induce una respuesta inmune crónica. En el diagnóstico de GlowApp, medir la salud de la barrera no es solo una cuestión de hidratación, sino de prevenir la inflamación perifolicular. El uso de productos con pH fisiológico y lípidos restauradores es fundamental para mantener la homeóstasis. Identificar tempranamente signos de irritación o sensibilidad es clave para evitar que el cuero cabelludo se convierta en un entorno hostil para el crecimiento del folículo piloso, garantizando un terreno óptimo para cualquier tratamiento capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "graso",
+        "seco"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "lipidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-009",
+    "title": "Disbiosis Folicular: Más allá de Malassezia",
+    "content": "La composición del microbioma del cuero cabelludo es extremadamente diversa y su equilibrio es fundamental para la salud capilar. Si bien Malassezia es un residente común, su sobrecrecimiento es solo una parte de la historia. La disbiosis, definida como una alteración en la proporción de bacterias como Cutibacterium acnes y Staphylococci, puede inducir inflamación crónica en el orificio folicular. Esta inflamación, a menudo subclínica, altera la queratinización y puede obstruir el conducto pilosebáceo, frenando el crecimiento del pelo. Investigaciones recientes sugieren que el microbioma del cuero cabelludo está íntimamente ligado al sistema inmune local, influyendo en la expresión de péptidos antimicrobianos. El diagnóstico capilar avanzado debe considerar el perfil del microbioma para personalizar la higiene y los tratamientos tópicos. En GlowApp, promovemos un enfoque que busque el equilibrio microbiano mediante prebióticos y agentes balanceadores, evitando la esterilización agresiva del cuero cabelludo que podría debilitar las defensas naturales y empeorar la salud folicular a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / Microbiome Research",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "graso",
+        "mixto"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:58:50.125Z"
+  }
+]

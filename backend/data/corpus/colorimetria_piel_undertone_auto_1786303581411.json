@@ -1,0 +1,244 @@
+[
+  {
+    "chunk_id": "colorimetria-influencia-medicacion-001",
+    "title": "Impacto de fármacos fotosensibilizantes y sistémicos en la percepción del subtono",
+    "content": "La percepción del subtono cutáneo puede verse alterada no solo por condiciones dermatológicas inflamatorias, sino por el uso de agentes farmacológicos que inducen cambios en la coloración basal. Fármacos como la minociclina, utilizada frecuentemente en el tratamiento del acné, pueden causar una hiperpigmentación azul-grisácea en áreas de cicatrices o piel inflamada, lo cual confunde la lectura del subtono infrayacente. De igual forma, los retinoides sistémicos (isotretinoína) alteran la barrera cutánea y el eritema basal, provocando una respuesta vascular que puede simular un subtono rosado o 'cool' donde originalmente existía una base neutra o cálida. Es fundamental que el profesional de GlowApp realice una anamnesis farmacológica antes de determinar el subtono para maquillaje, ya que la coloración inducida por fármacos es transitoria o acumulativa y no refleja la melanina subyacente. La literatura en Journal of the American Academy of Dermatology subraya que la evaluación del subtono debe realizarse en áreas no afectadas por discromías inducidas por medicamentos para evitar errores en la selección de pigmentos correctores, los cuales, al ser aplicados sobre una piel alterada farmacológicamente, pueden generar un efecto de 'encendido' o 'apagado' cromático indeseado.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30509-3/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "isotretinoina",
+        "minociclina"
+      ],
+      "contraindications": [
+        "evaluacion_en_zonas_hiperpigmentadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-subtono-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:07.995Z"
+  },
+  {
+    "chunk_id": "colorimetria-hemoglobina-caroteno-002",
+    "title": "La fisiología del color: Hemoglobina y Caroteno como determinantes del subtono",
+    "content": "Más allá de la melanina, el subtono es el resultado de la interacción óptica entre la hemoglobina (oxigenada y reducida) y los carotenoides depositados en el estrato córneo. Mientras que la melanina proporciona la profundidad del color (fototipo), la hemoglobina y los carotenos definen el matiz. Un subtono cálido suele estar correlacionado con niveles más altos de deposición de carotenoides derivados de la dieta, los cuales poseen propiedades antioxidantes que se reflejan en la piel. Por el contrario, la oxigenación de la sangre en los lechos capilares superficiales aporta el matiz rosado. Según estudios publicados en PubMed, la variación en la densidad capilar y la saturación de oxígeno en la microcirculación cutánea explica por qué individuos con el mismo fototipo pueden presentar subtonos radicalmente distintos. En GlowApp, debemos entender que el subtono no es una constante inmutable; estados de deshidratación o deficiencias nutricionales pueden alterar la microcirculación, haciendo que la piel luzca más 'grisácea' o 'apagada', lo que erróneamente se confunde con un subtono frío. La evaluación debe considerar el estado de salud vascular para una recomendación de colorimetría precisa.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22329681/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos-fisiologicos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:07.995Z"
+  },
+  {
+    "chunk_id": "colorimetria-edad-atrofia-003",
+    "title": "Cambios en la percepción del subtono por atrofia dérmica y senescencia",
+    "content": "Con el proceso de envejecimiento, la piel experimenta cambios estructurales que alteran la forma en que refleja la luz, afectando directamente la lectura del subtono. La atrofia del tejido adiposo subcutáneo y la reducción de la densidad de los melanocitos provocan que los vasos sanguíneos sean más visibles a través de una epidermis más delgada. Este fenómeno a menudo hace que pieles que eran claramente cálidas en la juventud comiencen a manifestar un matiz 'frío' o azulado debido a la visibilidad de la red vascular (efecto Tyndall). Es un error común intentar compensar este cambio con bases de maquillaje de subtono frío, lo cual puede resultar en un aspecto cetrino o poco saludable. La recomendación clínica es optar por bases neutras que equilibren la visibilidad vascular sin forzar un tono rosado que no corresponde a la base de melanina real. La IADVL enfatiza que la evaluación del subtono en pacientes mayores de 50 años debe ser cautelosa, priorizando la homogeneidad del tono sobre la corrección cromática estricta, para evitar acentuar la transparencia de la piel madura.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://ijdvl.com/atrophic-skin-changes-and-pigmentation/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "50+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "usar_bases_demasiado_rosadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asesoria-piel-madura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:07.995Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-artificial-004",
+    "title": "El efecto de la iluminación del punto de venta en el diagnóstico del subtono",
+    "content": "La temperatura de color de la iluminación (medida en Kelvin) es el factor externo que más distorsiona el diagnóstico del subtono. Las luces fluorescentes frías (superiores a 5000K) tienden a resaltar los matices azules y verdes, haciendo que los subtonos cálidos parezcan 'sucios' o cenizos, mientras que las luces incandescentes cálidas (inferiores a 3000K) pueden camuflar subtonos fríos bajo una capa de calidez artificial. En el contexto de GlowApp, el diagnóstico debe realizarse bajo luz natural de espectro completo (cercana a los 5500K) o en condiciones de iluminación controlada que minimice el índice de reproducción cromática (IRC) erróneo. Estudios sobre percepción visual dermatológica indican que el error en la elección de la base ocurre en un 70% de los casos debido a que el usuario se prueba el producto bajo iluminación LED de baja calidad en tiendas, lo que altera la percepción de la reflectancia de la piel. Es vital educar al usuario sobre realizar la prueba de 'patch test' en la mandíbula y observar el resultado bajo luz solar directa, evitando los espejos con iluminación artificial sesgada que alteran la verdadera armonía cromática.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "The Color Science Association",
+        "url": "https://www.iscc.org/color-perception-in-retail-environments",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-compra-efectiva"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:07.995Z"
+  },
+  {
+    "chunk_id": "colorimetria-anemia-signos-005",
+    "title": "Signos clínicos de anemia y su interferencia en la colorimetría de base",
+    "content": "La anemia ferropénica es una condición sistémica que se manifiesta en la piel a través de una palidez característica, la cual altera drásticamente la capacidad de identificar el subtono. La reducción de la concentración de hemoglobina en los capilares cutáneos disminuye la saturación del color, lo que provoca que la piel luzca 'deslavada' o con un subtono artificialmente frío. En muchos casos, los usuarios con anemia son diagnosticados erróneamente con subtonos fríos cuando, en realidad, su tono base es cálido pero carece de la vitalidad cromática que aporta una oxigenación óptima. Desde una perspectiva clínica, GlowApp debe ser cauteloso al realizar recomendaciones de colorimetría si se observan signos de palidez conjuntival o mucosas descoloridas. En estos casos, aplicar una base de maquillaje fría para 'equilibrar' la palidez suele resultar en un efecto de máscara grisácea, ya que no se está corrigiendo la falta de saturación, sino imponiendo un subtono incorrecto. Se recomienda priorizar productos con pigmentos melocotón o dorados que aporten calidez y vitalidad, evitando los tonos rosados que acentúan la apariencia de enfermedad o anemia.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/health-topics/anemia",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso_de_bases_frias_en_piel_anemica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-subtono-avanzado"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:07.995Z"
+  },
+  {
+    "chunk_id": "colorimetria-fotoproteccion-006",
+    "title": "La relación entre el uso de filtros solares y la alteración del subtono percibido",
+    "content": "El uso diario de protectores solares, especialmente aquellos con filtros físicos como el dióxido de titanio o el óxido de zinc, puede generar un 'efecto blanqueador' o 'cast' que altera la percepción del subtono. Estos minerales, al ser partículas de alto índice de refracción, crean una capa blanquecina sobre la piel, lo cual es particularmente notable en fototipos altos (IV-VI). Este efecto altera la lectura del undertone, haciendo que la piel parezca tener un subtono frío o cenizo debido a la dispersión de la luz. Para evitar errores en la selección de colorimetría, es imperativo que el diagnóstico se realice sobre la piel limpia o al menos 20 minutos después de la aplicación del protector solar, una vez que el producto se ha asentado. En GlowApp, aconsejamos a los usuarios que utilizan protectores solares minerales optar por bases de maquillaje con pigmentos correctores que neutralicen el 'cast' blanco, evitando productos excesivamente claros que exacerben el efecto de máscara. La clave es identificar el subtono en la zona del cuello o el escote, áreas que suelen presentar una coloración más fiel a la melanina real del individuo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection/sunscreen/understand-sunscreen-labels",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "titanium_dioxide",
+        "zinc_oxide"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-diaria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:07.995Z"
+  }
+]

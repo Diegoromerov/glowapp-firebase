@@ -1,0 +1,80 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-biofotometria-001",
+    "title": "Biofotometría de Reflectancia: Cuantificación del Brillo y Salud Cuticular",
+    "content": "La biofotometría de reflectancia representa una frontera diagnóstica en el estudio del tallo piloso. A diferencia de la tricoscopia convencional que evalúa la morfología del folículo, esta técnica mide la distribución angular de la luz reflejada por la cutícula capilar. Un tallo sano exhibe una reflexión especular definida, mientras que el daño estructural, ya sea por degradación química, térmica o mecánica, provoca una dispersión difusa de los fotones. Este análisis permite cuantificar la integridad de las capas de células epiteliales que recubren la corteza. Según estudios publicados en el Journal of Cosmetic Dermatology, la alteración en el índice de refracción de la cutícula es un biomarcador precoz de deshidratación y pérdida de integridad lipídica antes de que el daño sea visible al ojo clínico. La implementación de sensores de reflectancia en la consulta permite objetivar la eficacia de tratamientos reconstructores, pasando de una evaluación subjetiva a una métrica de alta precisión. La degradación de la cutícula no solo afecta la estética, sino que compromete la protección de la corteza frente a agresores ambientales, exacerbando la porosidad y la susceptibilidad a la rotura transversal.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo-piloso"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:22:38.717Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-iontoforesis-002",
+    "title": "Iontoforesis como Herramienta de Diagnóstico de Permeabilidad Folicular",
+    "content": "La iontoforesis, tradicionalmente utilizada para la administración transdérmica de fármacos, se está consolidando como una herramienta de diagnóstico funcional para evaluar la barrera del ostium folicular. Al aplicar una corriente eléctrica de baja intensidad, es posible medir la conductividad iónica del folículo, lo cual refleja el estado de la barrera cutánea en el canal pilosebáceo. Una barrera íntegra ofrece una resistencia eléctrica elevada, mientras que procesos inflamatorios subclínicos, dermatitis seborreica o la acumulación de detritos lipídicos alteran esta conductancia. Este método permite identificar zonas de hiperpermeabilidad que podrían favorecer la absorción sistémica no deseada de compuestos o, inversamente, predecir la eficacia de un tratamiento tópico. Investigaciones en el International Journal of Trichology han demostrado que la monitorización de la impedancia eléctrica durante la iontoforesis permite mapear la profundidad de la obstrucción folicular, ofreciendo una visión in vivo de la dinámica de los canales. Este enfoque es crucial para pacientes con alopecias inflamatorias donde la integridad de la barrera cutánea es el factor determinante para la respuesta terapéutica y el control de la disbiosis local.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dispositivos-cardiacos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:22:38.717Z"
+  }
+]

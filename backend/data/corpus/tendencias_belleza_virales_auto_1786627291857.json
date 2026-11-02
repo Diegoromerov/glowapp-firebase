@@ -1,0 +1,174 @@
+[
+  {
+    "chunk_id": "trend-vacunacion-piel-002",
+    "title": "Respuesta inflamatoria cutánea tras vacunación: ¿Mito o realidad?",
+    "content": "Tras la introducción masiva de vacunas de ARNm, se han documentado casos aislados de reacciones cutáneas retardadas en el sitio de inyección y, en casos específicos, exacerbaciones en pacientes con rellenos dérmicos previos. Esta respuesta se clasifica como una hipersensibilidad retardada o una reacción de cuerpo extraño mediada por el sistema inmunitario. Es fundamental que los pacientes entiendan que esto no invalida la seguridad de los procedimientos estéticos, pero sí requiere una anamnesis detallada. Según la Academia Americana de Dermatología (AAD), estas reacciones son generalmente autolimitadas y responden bien a corticosteroides tópicos o antihistamínicos. No existe evidencia de que la vacunación contraindique de forma permanente el uso de rellenos de ácido hialurónico, pero se recomienda un margen de seguridad de al menos dos semanas entre la administración de la vacuna y procedimientos estéticos invasivos para evitar una sobreestimulación del sistema inmune. La vigilancia clínica es necesaria, pero el miedo infundado a la vacunación por riesgos dermatológicos carece de peso epidemiológico en comparación con los beneficios de la inmunización.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/vaccine-skin-reactions",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticosteroides"
+      ],
+      "contraindications": [
+        "procedimientos-recientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:21:14.457Z"
+  },
+  {
+    "chunk_id": "trend-almohadillas-exfoliacion-003",
+    "title": "Almohadillas de exfoliación pre-empapadas: ¿Conveniencia o riesgo?",
+    "content": "Las almohadillas de exfoliación pre-empapadas (exfoliating pads) han ganado popularidad por su facilidad de uso, pero presentan riesgos significativos de sobreexfoliación. A diferencia de un tónico aplicado con las manos o una gasa reutilizable, estas almohadillas suelen estar saturadas con concentraciones elevadas de AHA (ácido glicólico, láctico) o BHA (ácido salicílico) que se aplican mediante fricción mecánica. La combinación de abrasión física y exfoliación química puede comprometer la integridad del estrato córneo, provocando dermatitis por contacto irritativa. Estudios en PubMed sugieren que el uso diario de estos dispositivos puede alterar el pH natural de la piel y debilitar la función barrera, favoreciendo la pérdida de agua transepidérmica (TEWL). Es imperativo que el usuario limite su uso a 2-3 veces por semana y siempre bajo una rutina que priorice la reparación lipídica posterior. La conveniencia de estas almohadillas no debe sustituir la evaluación clínica de la tolerancia cutánea, especialmente en pieles sensibles o con rosácea, donde la irritación mecánica puede exacerbar el eritema de forma inmediata.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "AHA",
+        "BHA"
+      ],
+      "contraindications": [
+        "rosacea",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-diaria"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:21:14.457Z"
+  },
+  {
+    "chunk_id": "trend-thermal-shock-005",
+    "title": "La moda del 'Thermal Shock Masking': ¿Efecto tensor o riesgo vascular?",
+    "content": "El 'Thermal Shock Masking' propone alternar aplicaciones de mascarillas de calor extremo con frío intenso para 'tonificar' los tejidos. Desde un punto de vista fisiológico, este choque térmico es contraproducente para pieles con fragilidad capilar o rosácea. La vasoconstricción y vasodilatación extremas y rápidas pueden debilitar las paredes de los capilares, facilitando el desarrollo de telangiectasias permanentes (arañas vasculares). Aunque el frío puede reducir temporalmente la inflamación, el calor excesivo induce una respuesta inflamatoria mediada por citoquinas que no beneficia la elasticidad cutánea. Instituciones dermatológicas advierten que la elasticidad de la piel es una propiedad intrínseca de las fibras de elastina y colágeno en la dermis, no una respuesta muscular que pueda ser entrenada mediante cambios de temperatura. El riesgo de eritema ab igne o quemaduras térmicas es real cuando se utilizan dispositivos caseros sin control de temperatura. Se recomienda evitar estas prácticas, especialmente si se presentan antecedentes de rosácea o cuperosis, y optar por métodos de masaje linfático suaves que no comprometan la integridad vascular.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/thermal-effects-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "rosacea",
+        "telangiectasias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:21:14.457Z"
+  },
+  {
+    "chunk_id": "trend-menopause-skincare-007",
+    "title": "Skincare para la menopausia: ¿Necesidad o segmentación comercial?",
+    "content": "La tendencia del 'Menopause-Friendly Skincare' responde a un cambio fisiológico real: la caída drástica de estrógenos que afecta la producción de colágeno, la hidratación y la regeneración celular. Durante la perimenopausia y menopausia, la piel experimenta una disminución en el contenido de lípidos, lo que resulta en sequedad extrema y pérdida de densidad dérmica. Aunque la segmentación de mercado puede parecer oportunista, la ciencia detrás de los ingredientes clave (como fitoestrógenos tópicos, péptidos estimulantes y ceramidas) es relevante. Instituciones como la Sociedad Norteamericana de Menopausia confirman que la piel necesita activos que compensen la falta de estrógenos naturales. Sin embargo, no es estrictamente necesario comprar productos etiquetados como 'menopausia'; lo vital es la concentración de activos como el retinol, la vitamina C y los ácidos grasos. El enfoque debe ser la reposición de barrera y la estimulación de la síntesis de colágeno, elementos que cualquier rutina dermatológica de alta calidad puede cubrir sin necesidad de etiquetas de marketing específicas.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "The Menopause Society",
+        "url": "https://www.menopause.org/for-women/expert-answers-to-frequently-asked-questions-about-menopause-skin-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "maduro"
+      ],
+      "age_ranges": [
+        "45+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "ceramidas",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-especifica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:21:14.457Z"
+  }
+]

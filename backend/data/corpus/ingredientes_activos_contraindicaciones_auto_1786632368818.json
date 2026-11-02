@@ -1,0 +1,349 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Interferencia de las siliconas cíclicas (D4, D5) en la permeabilidad de fármacos tópicos",
+    "content": "Las siliconas cíclicas como el decametilciclopentasiloxano (D5) son ampliamente utilizadas como vehículos por su tacto sedoso y volatilidad. Sin embargo, en dermatología clínica, su alta capacidad de oclusión y su naturaleza lipofílica pueden alterar la farmacocinética de otros activos aplicados simultáneamente. Estudios sugieren que la presencia de estas moléculas en la capa superior del estrato córneo puede crear una barrera física que, si bien previene la pérdida de agua transepidérmica (TEWL), puede reducir la biodisponibilidad de ingredientes hidrofílicos que requieren una interacción directa con la interfaz lipídica. En pacientes bajo tratamiento con medicamentos prescritos para la rosácea o el acné, la aplicación de bases cosméticas ricas en D5 puede retrasar la absorción del fármaco, disminuyendo su eficacia terapéutica. Es imperativo que la rutina de cuidado de la piel contenga los activos de tratamiento directamente sobre la piel limpia, permitiendo su penetración antes de sellar con productos que contengan altas concentraciones de estos polímeros de silicona. La evaluación del vehículo es tan crítica como la del principio activo mismo, especialmente en regímenes de polifarmacia tópica donde la competencia por el sitio de absorción puede comprometer el éxito del tratamiento clínico.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30685640/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "decametilciclopentasiloxano"
+      ],
+      "contraindications": [
+        "acne-treatment-interference"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-personalizada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "El riesgo de la aplicación de extractos de Cítricos en fototipos altos: hiperpigmentación post-inflamatoria",
+    "content": "El uso de aceites esenciales de bergamota, limón o lima en productos de 'glow' natural es una tendencia creciente que ignora los riesgos fototóxicos asociados a las furocumarinas. En fototipos IV a VI, la respuesta a la fototoxicidad no siempre se manifiesta como un eritema agudo, sino como una hiperpigmentación post-inflamatoria (HPI) severa y persistente. Las furocumarinas, al absorber radiación UVA, inducen la formación de radicales libres que dañan la membrana de los melanocitos y estimulan la melanogénesis de forma descontrolada. En Bogotá, debido a la alta radiación UV por la altitud, este riesgo se multiplica. La literatura dermatológica advierte que, incluso en concentraciones bajas, la exposición solar continua tras la aplicación de estos aceites puede resultar en manchas de difícil tratamiento que no responden adecuadamente a los despigmentantes estándar. Es fundamental educar al usuario sobre la diferencia entre aceites cítricos prensados en frío (altamente fototóxicos) y extractos destilados al vapor, aunque la recomendación clínica más segura para pieles con tendencia a la hiperpigmentación es la exclusión total de cualquier derivado cítrico en la rutina diurna. La prevención de la HPI es considerablemente más costo-efectiva que el manejo clínico posterior de las manchas inducidas por sensibilización solar.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/routine/phototoxicity",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "citrus-limon-peel-oil",
+        "bergamot-oil"
+      ],
+      "contraindications": [
+        "hiperpigmentacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Interacción entre el Zinc PCA y agentes quelantes: impacto en la estabilidad de la fórmula",
+    "content": "El Zinc PCA es un activo valorado por sus propiedades seborreguladoras y su perfil de tolerancia. Sin embargo, su eficacia depende críticamente de la estabilidad del complejo zinc-pirrolidona carboxilato. Cuando se formulan productos que contienen simultáneamente Zinc PCA y agentes quelantes potentes como el EDTA (Ácido Etilendiaminotetraacético), puede ocurrir una competencia por la unión al ión zinc. Los quelantes tienen una afinidad mucho mayor por los metales divalentes que el PCA, lo que puede resultar en la liberación del ión zinc y la formación de complejos inactivos o menos biodisponibles. Clínicamente, esto no solo reduce el beneficio seborregulador del producto, sino que puede alterar el pH de la formulación, volviéndola irritante para pieles con barrera comprometida. En el contexto de un sistema RAG para GlowApp, es esencial analizar si los productos recomendados en una rutina combinan estos ingredientes. La presencia de quelantes en limpiadores de uso diario puede 'barrer' el zinc aplicado en un serum previo, anulando el efecto terapéutico. Se recomienda separar su uso en la rutina o verificar que la formulación utilice quelantes de baja afinidad o estabilizadores específicos que protejan la integridad del complejo Zinc PCA para asegurar que el paciente obtenga los beneficios anti-inflamatorios esperados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc-pca",
+        "edta"
+      ],
+      "contraindications": [
+        "inestabilidad-quimica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-personalizada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "El riesgo de los conservantes liberadores de formaldehído en pieles con dermatitis de contacto",
+    "content": "Los conservantes liberadores de formaldehído, tales como la Diazolidinyl Urea, Imidazolidinyl Urea y el Quaternium-15, son alérgenos de contacto comunes que a menudo pasan desapercibidos en el etiquetado. Estos compuestos actúan liberando pequeñas cantidades de formaldehído a lo largo del tiempo para prevenir el crecimiento bacteriano. En pacientes con dermatitis atópica o cutis reactivo, esta exposición crónica de bajo nivel es suficiente para desencadenar una dermatitis de contacto alérgica (DCA) que es difícil de diagnosticar, ya que el paciente puede tolerar el producto durante semanas antes de desarrollar una erupción eccematosa. La literatura clínica indica que la sensibilización al formaldehído es persistente y puede llevar a una reactividad cruzada con otros conservantes. Para los usuarios de GlowApp, es vital identificar estos componentes, especialmente en productos de cuidado capilar y corporal. La recomendación experta ante una piel inflamada es optar por conservantes de nueva generación (como el caprilil glicol o el etilhexilglicerina) que no tengan la capacidad de liberar formaldehído. La detección temprana de estos ingredientes en la rutina del paciente es un pilar fundamental para resolver cuadros de irritación facial recurrente que no responden a los tratamientos convencionales para piel sensible.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis - American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "diazolidinyl-urea",
+        "imidazolidinyl-urea"
+      ],
+      "contraindications": [
+        "dermatitis-contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "La inestabilidad del Ácido L-Ascórbico en presencia de metales traza en el agua local",
+    "content": "El ácido L-ascórbico (Vitamina C pura) es una molécula extremadamente inestable que requiere un pH inferior a 3.5 para su penetración. Sin embargo, su oxidación se ve acelerada exponencialmente por la presencia de metales traza (como hierro o cobre) que pueden estar presentes en el suministro de agua o en los envases de baja calidad. En Bogotá, la calidad del agua varía por zona, y la presencia de metales puede catalizar la oxidación de la vitamina C al contacto con la piel, transformándola en productos de degradación que no solo carecen de beneficio antioxidante, sino que pueden ser pro-oxidantes y altamente irritantes. Este es un punto ciego común en la rutina de cuidado facial: el usuario aplica el serum sobre piel húmeda tras lavar el rostro, introduciendo metales que desestabilizan el activo inmediatamente. La evidencia clínica sugiere que el uso de un tónico quelante suave o asegurarse de que la piel esté completamente seca antes de la aplicación puede mitigar este riesgo. Además, la elección de formulaciones que incluyan ácido ferúlico y vitamina E no solo potencia la actividad antioxidante, sino que ayuda a estabilizar la vitamina C contra este tipo de degradación mediada por metales, mejorando la tolerancia y el perfil de seguridad para el paciente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ascorbic-acid",
+        "ferulic-acid"
+      ],
+      "contraindications": [
+        "inestabilidad-quimica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-personalizada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Ácido Tioglicólico y el riesgo de sensibilización en productos de alisado y cuidado capilar",
+    "content": "El ácido tioglicólico y sus sales son agentes reductores potentes utilizados en cosmética técnica para el alisado permanente y ondulación. Su mecanismo de acción implica la ruptura de los puentes disulfuro de la queratina, un proceso que requiere un pH alcalino elevado. El riesgo clínico principal es la dermatitis de contacto alérgica, la cual puede ser severa y presentar una sensibilización cruzada con otros compuestos azufrados. En el contexto de GlowApp, es vital advertir que la aplicación de estos productos en cueros cabelludos con barrera alterada (por ejemplo, personas con dermatitis seborreica o psoriasis) puede provocar una absorción sistémica accidental y una irritación química grave. Además, la inhalación de los vapores liberados durante el proceso de aplicación representa un riesgo ocupacional y personal de sensibilización respiratoria. Los datos de la IADVL subrayan que el uso prolongado o frecuente de estos productos sin equipo de protección adecuado puede llevar a una dermatitis crónica de las manos en quienes los aplican. Se debe recomendar una prueba de parche previa a cualquier tratamiento que contenga tioglicolatos, especialmente en usuarios con historial de alergias dermatológicas, y evitar su uso en pieles que presenten erosiones o fisuras, ya que la permeabilidad cutánea en estas zonas es significativamente mayor.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "thioglycolic-acid"
+      ],
+      "contraindications": [
+        "dermatitis-contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "El riesgo de los 'Bio-fermentos' y la proliferación microbiana en formulaciones de baja conservación",
+    "content": "La tendencia hacia la cosmética 'clean' o artesanal ha popularizado los bio-fermentos (como el fermento de lactobacillus o bifida). Si bien estos ingredientes pueden mejorar la función barrera, su producción implica un riesgo latente de contaminación cruzada o proliferación de microorganismos no deseados si el sistema de conservación de la fórmula final no es robusto. A diferencia de los ingredientes sintéticos, los fermentos contienen una carga orgánica rica que puede servir como sustrato para bacterias u hongos si el pH del producto no se mantiene estrictamente en el rango de seguridad o si el envase permite la entrada de aire y humedad. Clínicamente, el uso de un producto contaminado en una piel con acné o rosácea puede exacerbar la inflamación y convertir una rutina de reparación en una fuente de infección secundaria. En GlowApp, es fundamental que el sistema de curaduría priorice productos de marcas con estándares de calidad farmacéutica que realicen pruebas de desafío conservante (challenge tests) específicas para formulaciones fermentadas. No todo 'fermento' es seguro; la trazabilidad del proceso de fermentación y la estabilidad del conservante son tan cruciales como la pureza del activo en sí mismo. Se debe desconfiar de productos artesanales sin conservantes probados que contengan estos ingredientes orgánicos complejos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lactobacillus-ferment",
+        "bifida-ferment-lysate"
+      ],
+      "contraindications": [
+        "contaminacion-microbiana"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "La paradoja de la glicerina: riesgos en climas de baja humedad relativa",
+    "content": "La glicerina es el humectante por excelencia debido a su capacidad para atraer agua del entorno hacia el estrato córneo. Sin embargo, existe una paradoja clínica en entornos de baja humedad relativa (como los meses de verano seco o en ciudades de alta montaña donde el aire es extremadamente árido). En condiciones donde la humedad ambiental es inferior al 30-40%, la glicerina puede invertir su gradiente de hidratación: en lugar de captar agua de la atmósfera, puede extraer agua de las capas más profundas de la epidermis (dermis) hacia la superficie, donde esta se evapora rápidamente debido a la aridez. Este efecto puede resultar en una deshidratación paradójica de la piel, dejando al usuario con una sensación de tirantez a pesar de usar productos hidratantes 'intensos'. Para los usuarios de GlowApp en Bogotá, donde los cambios de humedad pueden ser bruscos, la recomendación experta es aplicar la glicerina siempre sobre la piel ligeramente húmeda y sellarla inmediatamente con una capa de lípidos oclusivos (como ceramidas o escualano). Este 'sellado' es lo que evita que la glicerina extraiga humedad de la piel, transformando un riesgo potencial en una estrategia de hidratación efectiva y segura para pieles deshidratadas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "dehydrated"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glycerin"
+      ],
+      "contraindications": [
+        "deshidratacion-paradoxica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-personalizada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:45:48.820Z"
+  }
+]

@@ -1,0 +1,243 @@
+{
+  "batch_metadata": {
+    "category": "colorimetria_capilar_tinte",
+    "phase": 4,
+    "risk_level": "alto",
+    "batch_id": "tinte-lote1-parte1",
+    "chunk_count": 9,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Parte 1 de 2: fundamentos, PPD, test de sensibilidad, henna negra, emergencias, decoloración, embarazo, prueba de mecha, fototipos."
+  },
+  "chunks": [
+    {
+      "chunk_id": "tinte-001",
+      "title": "Tipos de tinte capilar: temporal, semipermanente, permanente y decoloración",
+      "content": "Los tintes capilares se clasifican según su duración y mecanismo de acción, y entender esta diferencia es clave para evaluar riesgos y resultados. Los tintes temporales (como sprays o mascarillas de color) depositan pigmento en la superficie del tallo sin penetrar la cutícula, se eliminan con el primer lavado y tienen el menor potencial alérgico. Los semipermanentes (demipermanentes) penetran ligeramente la cutícula y duran entre 6 y 12 lavados; no suelen contener amoniaco ni altos niveles de peróxido, por lo que son menos agresivos. Los permanentes (oxidativos) son los más usados y los de mayor riesgo: abren la cutícula con amoniaco o etanolaminas, usan peróxido para decolorar el pigmento natural y permiten que precursores como el PPD (parafenilendiamina) penetren y polimericen dentro del tallo, dando color permanente. La decoloración (bleach) es el proceso químico más agresivo: usa persulfatos y peróxido de alta concentración para destruir la melanina natural, aclarando hasta 7 tonos, pero con alto riesgo de quiebre, quemaduras químicas del cuero cabelludo y daño irreversible de la fibra. Cada tipo tiene indicaciones y riesgos distintos, y la elección debe considerar el estado actual del cabello, el objetivo de color y el historial de sensibilidad.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Hair dyes (Patient education)", "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/hair-coloring", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones de química cosmética capilar", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD", "amoniaco", "peroxido"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["hair-diagnostic", "analizador_colorimetria", "aura"],
+        "content_type": "fundamento_cosmetico"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-002",
+      "title": "PPD (parafenilendiamina): el alérgeno más importante de los tintes permanentes",
+      "content": "El PPD o parafenilendiamina es un precursor de color presente en la gran mayoría de los tintes capilares permanentes oscuros, y es también el alérgeno de contacto más relevante en tintes. La alergia al PPD es una dermatitis de contacto alérgica de tipo IV (retardada), mediada por linfocitos T, que puede aparecer desde horas hasta 48-72 horas después de la aplicación. Las manifestaciones van desde dermatitis local del cuero cabelludo con enrojecimiento, picazón intensa, edema y vesículas, hasta reacciones más extensas que afectan cara, párpados y cuello; en casos severos puede producir edema facial marcado (facies leonina) e incluso reacciones sistémicas. Una vez sensibilizada al PPD, la persona debe evitar de por vida los tintes que lo contengan, porque cada nueva exposición puede producir una reacción más severa. El PPD también presenta sensibilización cruzada con otros compuestos: la henna negra (henna con PPD añadido, muy común en turismo), algunos tintes textiles, la benzocaína (anestésico tópico), el PABA (antiguo filtro solar) y medicamentos como la sulfasalazina. Por eso, una reacción previa a un tatuaje de henna negra o a un anestésico dental puede ser señal de sensibilidad al PPD y contraindica el uso de tintes permanentes oscuros sin evaluación médica.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Hair dye allergy (Patient education)", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "EADV — Contact dermatitis guidelines", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed — Reacciones alérgicas a tintes capilares (BJD/JAAD)", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD", "parafenilendiamina"],
+        "contraindications": ["alergia previa a PPD", "sensibilizacion cruzada"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "fundamento_alergeno"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-003",
+      "title": "Test de sensibilidad obligatorio: protocolo 48 horas antes de cada tinte",
+      "content": "Antes de aplicar cualquier tinte permanente o semipermanente, el test de sensibilidad es una medida de seguridad que debería ser obligatoria y que muchos salones y consumidores omiten. El protocolo estándar consiste en aplicar una pequeña cantidad del producto (mezcla del tinte con el desarrollador) en la piel del antebrazo interno o detrás de la oreja, cubrir y observar durante 48 horas sin lavar la zona. Si aparece enrojecimiento, picazón, hinchazón, vesículas o cualquier reacción, el producto NO debe aplicarse en el cuero cabelludo. Este test es importante incluso si has usado el mismo tinte antes sin problemas: la sensibilización al PPD puede desarrollarse en cualquier momento de la vida, y una reacción previa silenciosa puede desencadenar una reacción severa en la siguiente aplicación. Las guías dermatológicas y la regulación europea recomiendan el test en cada aplicación, no solo la primera vez. En Colombia, el INVIMA incluye esta recomendación en las fichas técnicas de productos colorantes. Los establecimientos serios ofrecen el test sin que tengas que pedirlo; si te lo niegan o minimizan, es una señal de alerta sobre la calidad del servicio. El test toma 5 minutos de aplicación y 48 horas de observación; la reacción alérgica severa puede requerir tratamiento médico y dejar secuelas.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Hair dye allergy (Patient education)", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "INVIMA — Fichas técnicas de productos colorantes capilares", "url": "https://www.invima.gov.co/", "year": 2024 },
+        { "institution": "Unión Europea — Cosmetic Regulation (Anexo III)", "url": "https://ec.europa.eu/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD"],
+        "contraindications": ["tinte sin test previo"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "protocolo_seguridad"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-004",
+      "title": "Henna negra temporal: por qué es uno de los riesgos más subestimados",
+      "content": "Los tatuajes temporales de henna negra, muy populares en zonas turísticas de Colombia (Cartagena, San Andrés, Santa Marta), en playas, ferias y fiestas, son una de las principales fuentes de sensibilización al PPD en la población joven. La henna natural es un polvo de la planta Lawsonia inermis que tiñe de naranja-rojizo y es generalmente segura; pero para obtener el color negro intenso que imita un tatuaje permanente y para que dure más, con frecuencia se le añade PPD en concentraciones altas, a veces muy superiores a las permitidas en tintes capilares. El resultado es que un tatuaje temporal puede sensibilizar a una persona al PPD de forma definitiva, y cuando esa misma persona años después quiera teñirse el cabello con un tinte permanente oscuro, puede sufrir una reacción alérgica severa. Las señales de alerta en un tatuaje de henna negra: el color es muy negro intenso (la henna natural es rojiza), se aplica rápido sin olor fuerte característico de la henna, o produce picazón o ampollas en los días siguientes. Las guías dermatológicas recomiendan evitar los tatuajes de henna negra, especialmente en niños, porque la sensibilización temprana condiciona alergias futuras a tintes capilares, tatuajes permanentes y otros productos con PPD o compuestos cruzados. Esta información es particularmente relevante para madres que llevan a sus hijos a este tipo de prácticas sin conocer el riesgo.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Henna tattoos and PPD allergy", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "FDA — Temporary tattoos and henna", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Alertas sobre henna negra", "url": "https://www.scd.org.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD", "henna negra"],
+        "contraindications": ["tatuajes de henna negra", "ninos"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "contexto_latinoamericano"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-005",
+      "title": "Reacción alérgica al tinte: cuándo es emergencia y cómo actuar",
+      "content": "Si después de aplicar un tinte aparecen síntomas, es fundamental distinguir entre irritación leve y una reacción alérgica que requiere atención médica. Las señales de reacción alérgica moderada a severa incluyen: picazón intensa y ardor en cuero cabelludo, cara o cuello; enrojecimiento extenso y edema (hinchazón) especialmente de párpados, labios o cara; ampollas, supuración o costras en la zona de aplicación; urticaria generalizada; dificultad para respirar, opresión en el pecho, mareo o sensación de desmayo. Los dos últimos son signos de anafilaxia y requieren atención de urgencias inmediata. El manejo inicial mientras se busca atención médica incluye lavar abundantemente con agua tibia para retirar el producto, no aplicar remedios caseros ni más productos sobre la zona, y tomar un antihistamínico oral si hay uno disponible y la persona no tiene contraindicación conocida. Las reacciones leves localizadas pueden manejarse con corticoides tópicos bajo orientación médica. En cualquier reacción significativa, debe evitarse volver a usar ese producto o cualquier tinte con PPD hasta evaluación dermatológica con pruebas de parche. Documentar la reacción, el producto y el lote es útil para el reporte al INVIMA en Colombia. Nunca debe ignorarse una reacción por vergüenza o por no querer perder el dinero del servicio: la salud del cuero cabelludo y el riesgo de reacciones futuras más graves lo justifican.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Hair dye allergy (Patient education)", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "INVIMA — Sistema de farmacovigilancia y cosméticos", "url": "https://www.invima.gov.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "manejo_emergencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-006",
+      "title": "Decoloración: el proceso químico más agresivo y sus riesgos reales",
+      "content": "La decoloración (bleaching) es el proceso químico más agresivo que se aplica al cabello, y sus riesgos deben entenderse antes de decidirse por cambios drásticos de color. Funciona oxidando y destruyendo la melanina natural del cabello mediante persulfatos y peróxido de hidrógeno a concentraciones altas, lo que permite aclarar hasta 7 tonos pero también rompe enlaces estructurales de la queratina. Los riesgos clínicos incluyen: quiebre inmediato o diferido del tallo, especialmente en cabellos previamente teñidos, alisados o con daño previo; quemaduras químicas del cuero cabelludo si el producto contacta la piel por tiempo prolongado o en concentraciones altas; reacciones alérgicas a los persulfatos, que pueden causar urticaria, rinitis e incluso asma en estilistas expuestos crónicamente; textura gomosa irreversible si se sobrepasa el punto de decoloración; y pérdida de densidad si el daño llega al folículo en casos extremos. La regla de oro: entre más oscuro el punto de partida y más claro el objetivo, mayor el daño potencial y más sesiones espaciadas se necesitan. Un cabello sano y virgen resiste mejor que uno con historial químico. Las recomendaciones responsables incluyen: hacer prueba de mechón antes del procedimiento completo, espaciar sesiones de decoloración al menos 4-6 semanas, usar bond builders que protegen enlaces de queratina, y aceptar que algunos resultados no son alcanzables en un cabello específico sin comprometer su integridad. Ningún color justifica perder el cabello.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Hair bleaching risks", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Daño químico del cabello", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["persulfatos", "peroxido de hidrogeno"],
+        "contraindications": ["cabello muy danado previo", "cuero cabelludo irritado"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "practicas_de_riesgo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-007",
+      "title": "Tinte en embarazo y lactancia: qué dice la evidencia sobre seguridad",
+      "content": "La pregunta sobre la seguridad del tinte capilar durante el embarazo y la lactancia es una de las más frecuentes, y la evidencia disponible es tranquilizadora con matices. Los estudios epidemiológicos no han encontrado asociación entre el uso de tintes capilares durante el embarazo y efectos adversos fetales, probablemente porque la absorción sistémica a través del cuero cabelludo sano es mínima. Por esta razón, la mayoría de las guías dermatológicas consideran el tinte capilar aceptable en el embarazo, preferiblemente a partir del segundo trimestre cuando la organogénesis ya se completó, y evitando el contacto prolongado con el cuero cabelludo. Recomendaciones prudentes: aplicar el tinte en un espacio ventilado para minimizar inhalación de vapores de amoniaco, usar guantes, no dejar el producto más tiempo del indicado, considerar alternativas como mechas o reflejos que no tocan el cuero cabelludo, o tintes semipermanentes sin PPD ni amoniaco. En la lactancia, no hay evidencia de paso significativo a la leche materna. La henna natural (sin PPD añadido) es una alternativa considerada segura en ambas etapas. Como siempre, la decisión debe ser informada y conversada con el médico tratante, especialmente si hay antecedentes de alergia o si el cuero cabelludo está irritado. La precaución razonable no implica prohibición absoluta, pero sí elegir productos y técnicas con menor perfil de riesgo.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Hair care during pregnancy", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed — Ly et al. Cosmetic procedures in pregnancy and lactation (Dermatol Ther 2023)", "pmid": "36447117", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD", "amoniaco"],
+        "contraindications": ["primer trimestre preferiblemente evitar", "cuero cabelludo irritado"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "contexto_embarazo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-008",
+      "title": "Prueba de mecha (strand test): por qué es tan importante como el test de alergia",
+      "content": "La prueba de mecha o strand test consiste en aplicar el producto de decoloración o tinte en un mechón pequeño y discreto de cabello antes del procedimiento completo. Aunque es distinta del test de sensibilidad cutánea (que evalúa alergia), la prueba de mecha es igualmente importante porque evalúa la tolerancia del cabello al proceso químico y el resultado de color esperado. En la prueba se observa: si el cabello resiste la decoloración sin volverse gomoso o quebrarse, cuánto tarda en llegar al tono objetivo, qué tono final se obtiene considerando el color de partida (los resultados varían mucho según el historial químico y la porosidad), y si aparecen tonalidades no deseadas como naranjas o verdes que requieran corrección. Esta prueba es especialmente crítica cuando el cabello tiene historial complejo: teñidos previos, alisados, decoloraciones, o cuando se busca un cambio drástico (por ejemplo, de negro a rubio). Los estilistas profesionales deberían ofrecerla como parte del servicio; si te la niegan argumentando que no es necesaria, es una señal de alerta. La prueba de mecha toma unos minutos y puede prevenir un daño irreparable, una corrección costosa o un resultado estéticamente insatisfactorio. Combinada con el test de sensibilidad cutánea, forma la dupla mínima de seguridad antes de cualquier coloración química.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Hair coloring best practices", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Ciencia cosmética capilar", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["tinte sin prueba de mecha"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "protocolo_seguridad"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-009",
+      "title": "Fototipos y expectativas de color: por qué el punto de partida determina el resultado",
+      "content": "El resultado final de una coloración capilar depende críticamente del punto de partida, y esto tiene implicaciones tanto estéticas como de salud del cabello. Los fototipos más oscuros (IV-VI, prevalentes en la población colombiana y latinoamericana) tienen mayor concentración de eumelanina, por lo que alcanzar tonos muy claros requiere procesos de decoloración más agresivos, con mayor riesgo de daño. Las expectativas realistas son parte de una coloración responsable: pasar de un nivel 1-2 (negro oscuro) a rubios muy claros en una sola sesión es un escenario de alto riesgo y generalmente no recomendable; lo correcto es planificar varias sesiones espaciadas con tratamientos intermedios. Los tonos intermedios (castaños, chocolates, cobrizos) suelen ser más alcanzables con menor agresión química en cabellos oscuros. La colorimetría profesional también considera el subtono natural del cabello y de la piel para elegir tonos favorecedores, no solo el tono objetivo. Las tendencias de redes sociales muestran cambios drásticos que en muchos casos son resultado de ediciones, pelucas o procesos no replicables en cabello real con historial. Un colorista profesional honesto evalúa el punto de partida, el historial químico y la salud del cabello antes de comprometer un resultado, y te dirá cuando algo no es viable sin daño, en lugar de aceptar cualquier pedido. Esa honestidad es la marca del buen profesional.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Hair coloring for different hair types", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Cabello en fototipos oscuros", "url": "https://www.dermalatino.org/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["IV", "V", "VI"],
+        "ingredients": [],
+        "contraindications": ["cambios drásticos en una sesión"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "contexto_latinoamericano"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-magneticos-001",
+    "title": "Maquillaje en entornos de resonancia magnética: Riesgo de artefactos por pigmentos metálicos",
+    "content": "El uso de maquillaje en entornos clínicos donde se realizan estudios de resonancia magnética (RM) presenta desafíos técnicos significativos debido a la presencia de pigmentos metálicos como óxidos de hierro, mica recubierta de titanio o partículas de aluminio en sombras, delineadores y labiales. Estos componentes pueden actuar como cuerpos extraños conductores, generando artefactos de susceptibilidad magnética que distorsionan las imágenes diagnósticas. Según estudios publicados en la revista 'Radiology', la interacción entre campos magnéticos intensos y partículas metálicas en la piel puede causar desde una leve degradación de la calidad de imagen hasta efectos térmicos locales debido a corrientes de Foucault inducidas. Es imperativo que en eventos médicos o sesiones de fotografía clínica en entornos de RM, se utilicen formulaciones 'MRI-safe' que excluyan pigmentos ferromagnéticos. La recomendación clínica es la eliminación completa de todo maquillaje antes de ingresar a la sala de resonancia para prevenir el efecto de 'heating' (calentamiento) y el artefacto de 'blooming' que altera la interpretación radiológica. La evaluación de la composición INCI es fundamental para garantizar la seguridad del paciente y la integridad del estudio diagnóstico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Radiological Society of North America (RSNA)",
+        "url": "https://pubs.rsna.org/journal/radiology",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron_oxides",
+        "mica",
+        "titanium_dioxide"
+      ],
+      "contraindications": [
+        "resonancia_magnetica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:31:15.665Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-criogenia-009",
+    "title": "Prevención de la fragilización de películas cosméticas en criogenia industrial",
+    "content": "El trabajo o participación en eventos que involucran entornos de criogenia industrial, donde las temperaturas descienden drásticamente, impone un estrés térmico extremo a los productos cosméticos. A temperaturas bajo cero, las películas formadas por la mayoría de las bases de maquillaje sufren un proceso de fragilización, perdiendo su flexibilidad y provocando grietas (fisuras) al mínimo movimiento facial. Esto no solo arruina el acabado estético, sino que también deja áreas de la piel expuestas directamente al frío extremo, aumentando el riesgo de eritema por congelación superficial. Según el 'International Journal of Dermatology', la formulación de cosméticos para estos entornos requiere el uso de plastificantes de cadena larga y aceites vegetales con bajo punto de congelación (como el aceite de jojoba o escualano). Es vital evitar bases de larga duración que dependan de polímeros acrílicos rígidos, los cuales se vuelven quebradizos en frío. La técnica recomendada es la aplicación de un bálsamo protector oclusivo bajo el maquillaje para proporcionar una capa de aislamiento térmico, asegurando que la película cosmética mantenga su elasticidad y capacidad de protección frente a la deshidratación inducida por la temperatura ambiente extrema.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "jojoba_oil",
+        "squalane",
+        "plastificantes"
+      ],
+      "contraindications": [
+        "frio_extremo"
+      ],
+      "season": [
+        "winter"
+      ],
+      "applicable_modules": [
+        "tecnicas_climas_extremos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:31:15.665Z"
+  }
+]

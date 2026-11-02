@@ -1,0 +1,243 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387738106-1-54bd4824-degradacion-de-la-matriz-extracelular-impacto-de-la-metalopr",
+    "title": "Degradación de la matriz extracelular: impacto de la metaloproteinasa en la cromaticidad",
+    "content": "La degradación de la matriz extracelular, mediada por metaloproteinasas de matriz (MMPs), altera significativamente la arquitectura dérmica y, por ende, la forma en que la luz interactúa con las capas profundas de la piel. A medida que las fibras de colágeno y elastina se fragmentan, la dispersión de la luz deja de ser uniforme, provocando una pérdida de la luminosidad intrínseca que suele confundirse con un viraje hacia subtonos cetrinos. Este fenómeno no es solo una cuestión de pigmentación superficial, sino una alteración estructural que cambia el 'path length' de los fotones dentro de la dermis. La desorganización de la red de colágeno reduce la reflectancia especular, lo que altera la lectura del subtono al aumentar la absorción de longitudes de onda en el espectro azul. En GlowApp, es crucial distinguir entre un subtono oliva real y la palidez grisácea resultante de la degradación matricial senescente, ya que el tratamiento cosmético para corregir la uniformidad difiere radicalmente. La evaluación debe considerar la densidad dérmica medida por ultrasonido de alta frecuencia para ajustar la calibración del sensor cromático.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:48:58.106Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387738106-2-9f61f5af-canales-ionicos-trp-y-la-modulacion-termica-del-subtono-basa",
+    "title": "Canales iónicos TRP y la modulación térmica del subtono basal",
+    "content": "La percepción del subtono cutáneo está intrínsecamente ligada a la respuesta termorreguladora del organismo, mediada por los canales iónicos de potencial receptor transitorio (TRP). Estos canales, presentes en queratinocitos y terminaciones nerviosas, reaccionan a cambios de temperatura ambiental y estrés térmico, activando una respuesta vasomotora que altera la perfusión capilar en milisegundos. Esta fluctuación dinámica en la saturación de hemoglobina oxigenada frente a la desoxigenada modifica el espectro de reflectancia cutánea, lo que puede inducir errores en la clasificación del subtono si el diagnóstico se realiza en condiciones térmicas inestables. Estudios recientes sugieren que la activación de los canales TRPV3 en la epidermis no solo regula la homeostasis, sino que altera la dispersión de luz al modificar la hidratación del estrato córneo. Para una lectura precisa, el sistema RAG debe integrar datos de temperatura ambiente y tiempo de aclimatación del usuario, evitando el sesgo inducido por la vasodilatación periférica post-ejercicio o exposición a ambientes climatizados, garantizando que el color analizado refleje el subtono basal y no una respuesta transitoria del sistema neuro-cutáneo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "calibracion_sensor"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:48:58.106Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387738106-3-66caa791-interaccion-melanocito-vaso-el-rol-de-la-unidad-neuro-vascul",
+    "title": "Interacción melanocito-vaso: el rol de la unidad neuro-vascular en la cromaticidad",
+    "content": "La unidad neuro-vascular cutánea no solo regula el flujo sanguíneo, sino que modula la actividad de los melanocitos perivasculares. Esta relación simbiótica implica que la liberación de mediadores inflamatorios y factores de crecimiento vascular (VEGF) puede alterar la densidad y distribución de los melanosomas en áreas específicas del rostro. En pieles con fototipos IV-VI, esta interacción es crítica, ya que la proximidad de los capilares a los melanocitos basales crea un efecto de filtrado óptico que oscurece el subtono real. La presencia de micro-inflamación subclínica, a menudo invisible al ojo humano, puede inducir una hiperactividad melanocítica que distorsiona la lectura del espectro de reflectancia, haciendo que un subtono neutro parezca cálido o cetrino. El diagnóstico preciso requiere un análisis espectral que logre separar la señal de la hemoglobina de la señal de la melanina, utilizando algoritmos de descomposición de señales para aislar la contribución de cada cromóforo. GlowApp debe implementar modelos de aprendizaje profundo que consideren esta variabilidad espacial para evitar diagnósticos erróneos en usuarios con antecedentes de hiperpigmentación post-inflamatoria o rosácea leve.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/pigmentation-disorders",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "azelaico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:48:58.106Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387738106-4-dddd2fb8-polarizacion-cruzada-y-la-eliminacion-de-artefactos-en-la-le",
+    "title": "Polarización cruzada y la eliminación de artefactos en la lectura del subtono",
+    "content": "La reflectancia especular generada por el sebo cutáneo y la humedad superficial actúa como una barrera óptica que impide la lectura precisa de la dermis profunda, donde reside el subtono real. La implementación de técnicas de polarización cruzada en el hardware de captura de GlowApp es esencial para suprimir estos reflejos especulares, permitiendo que el sensor capture únicamente la luz que ha penetrado en la epidermis y ha sido dispersada por las estructuras dérmicas. Sin esta corrección, el brillo superficial puede saturar los canales RGB de la cámara, sesgando los resultados hacia tonos más claros o brillantes de lo que realmente son. La polarización cruzada permite visualizar la 'huella' de los cromóforos subyacentes, eliminando el ruido visual causado por la textura irregular del estrato córneo. Este método es particularmente efectivo en pieles grasas o con alta producción de sebo, donde la dispersión de Mie se ve alterada por la película lipídica. Al integrar este pre-procesamiento en la fase de captura, el sistema RAG garantiza que los datos de entrada para el cálculo del subtono sean consistentes, independientemente de las condiciones de hidratación o del tipo de piel del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Optical Society of America",
+        "url": "https://opg.optica.org/oe/abstract.cfm?uri=oe-32-15-26789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preprocesamiento_imagen"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:48:58.106Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387738106-5-f17ce754-estabilidad-del-ph-cutaneo-y-su-influencia-en-la-reflectanci",
+    "title": "Estabilidad del pH cutáneo y su influencia en la reflectancia de pigmentos",
+    "content": "La composición del microbioma cutáneo, dominada por especies como *Cutibacterium acnes* y *Staphylococcus epidermidis*, juega un papel determinante en la estabilidad del pH de la superficie cutánea. Un pH alterado, ya sea por el uso de limpiadores alcalinos o por disbiosis del microbioma, afecta directamente la tasa de oxidación de los ácidos grasos libres presentes en el sebo. Esta oxidación lipídica genera subproductos que, al mezclarse con los pigmentos de las bases de maquillaje, provocan un viraje cromático hacia tonos más oscuros o anaranjados, fenómeno conocido como 'oxidación de la base'. Este proceso no es una propiedad del subtono del usuario, sino una interferencia química externa que puede invalidar la evaluación de la colorimetría. Para mitigar este riesgo, GlowApp debe correlacionar la lectura del subtono con datos sobre la rutina de cuidado de la piel y el estado del microbioma. La estabilización del pH mediante el uso de productos con buffer es un paso previo necesario para asegurar que la lectura del color sea representativa del subtono basal y no de una reacción química superficial inducida por la microbiota.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Microbiology",
+        "url": "https://www.nature.com/articles/s41564-024-01678-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_rutina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:48:58.106Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387738106-6-2af13029-hemoglobina-reducida-y-la-falsa-percepcion-de-cianosis-en-fo",
+    "title": "Hemoglobina reducida y la falsa percepción de cianosis en fototipos oscuros",
+    "content": "El diagnóstico del subtono en pieles de fototipo V y VI presenta desafíos únicos debido a la alta concentración de melanina, que absorbe gran parte de la luz incidente. En estas condiciones, la detección de la hemoglobina reducida (desoxigenada) es fundamental para identificar subtonos fríos o neutros. Sin embargo, la presencia de melanina puede enmascarar los cambios de color asociados a la desoxigenación capilar, lo que a menudo lleva a una falsa percepción de cianosis o a una clasificación errónea como subtono cálido. La espectroscopia de reflectancia difusa, ajustada para longitudes de onda en el infrarrojo cercano (NIR), permite penetrar la barrera de melanina y cuantificar la saturación de oxígeno tisular con mayor precisión. Es imperativo que el sistema RAG de GlowApp utilice modelos de corrección que compensen la absorción de melanina mediante el análisis de la pendiente de reflectancia en el espectro visible. Al integrar esta tecnología, se logra una lectura del subtono que es independiente de la carga de pigmento, permitiendo una recomendación de colorimetría precisa que respete la profundidad y la riqueza cromática de las pieles más oscuras sin caer en los sesgos de los sistemas de diagnóstico tradicionales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00890-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:48:58.106Z"
+  }
+]

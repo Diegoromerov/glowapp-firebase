@@ -1,0 +1,167 @@
+[
+  {
+    "chunk_id": "colorimetria-ritmos-circadianos-001",
+    "title": "Variabilidad Circadiana de la Hemodinámica Cutánea y su Impacto en el Subtono",
+    "content": "La colorimetría facial no es un parámetro estático; está sujeta a oscilaciones fisiológicas dictadas por el ritmo circadiano. Estudios publicados en el Journal of Investigative Dermatology indican que la perfusión sanguínea cutánea alcanza su punto máximo durante las últimas horas de la tarde, lo cual incrementa la saturación de hemoglobina en la microcirculación superficial. Este fenómeno induce un cambio sutil en la reflectancia cutánea, desplazando la lectura del subtono hacia matices más rosados o eritematosos. Para un diagnóstico preciso, es fundamental considerar la hora del día en la que se realiza la evaluación. La vasodilatación inducida por la temperatura corporal basal, que fluctúa a lo largo de las 24 horas, altera la dispersión de luz en la dermis papilar. Ignorar esta variabilidad puede llevar a la selección de bases con correctores de tono inadecuados, resultando en un desajuste cromático visible al final de la jornada. La recomendación clínica es realizar las pruebas de colorimetría en condiciones estandarizadas, preferiblemente durante la mañana, cuando la microcirculación es más estable y el efecto de la respuesta vasomotora inducida por la actividad diaria es mínimo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:24:44.914Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-acidos-grasos-002",
+    "title": "Composición de Ácidos Grasos del Sebo y la Degradación de Pigmentos en Bases",
+    "content": "La estabilidad de una base de maquillaje sobre la piel no depende únicamente de la formulación del producto, sino de la interacción química con el sebo cutáneo. Investigaciones en el International Journal of Cosmetic Science han demostrado que el perfil de ácidos grasos libres presentes en la superficie cutánea, particularmente el escualeno y el ácido oleico, puede actuar como agente oxidante. Cuando estos lípidos entran en contacto con los pigmentos de óxido de hierro presentes en el maquillaje, se produce un viraje cromático hacia tonalidades más oscuras o anaranjadas, fenómeno conocido como oxidación. Este proceso es significativamente más pronunciado en pieles con seborrea, donde la tasa de recambio lipídico es elevada. El control de la estabilidad cromática requiere el uso de pre-bases con propiedades absorbentes o la aplicación de polvos matificantes que actúen como una barrera física entre el sebo oxidativo y los pigmentos de la base. Comprender esta bioquímica es vital para evitar que una base que parece perfecta al momento de la aplicación termine alterando su tono tras pocas horas de uso, afectando la armonía cromática del rostro.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "caolín"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:24:44.914Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-textura-003",
+    "title": "Anisotropía Óptica: Cómo la Rugosidad Cutánea Modifica la Reflexión del Color",
+    "content": "La percepción del subtono está intrínsecamente ligada a la topografía de la superficie cutánea. La anisotropía óptica, descrita en estudios de biofotónica cutánea en PubMed, se refiere a cómo la textura de la piel —microrrelieve, poros dilatados y líneas de expresión— altera la dispersión de la luz. En una piel con alta rugosidad, la luz no se refleja de forma especular, sino que se dispersa en múltiples ángulos, lo que a menudo resulta en una percepción visual de un tono más grisáceo o 'apagado', independientemente del subtono real (frío, cálido o neutro). Este fenómeno es crítico al elegir correctores, ya que una textura irregular puede hacer que el producto se deposite en los valles del relieve, creando una acumulación de pigmento que distorsiona el color percibido. El uso de primers con efecto 'blurring' o difusores ópticos es una estrategia clínica para normalizar la reflectancia y permitir una lectura más fiel del subtono. Al diagnosticar a pacientes con pieles con textura irregular, es necesario evaluar el color en zonas de piel más lisa, como la zona periauricular, para minimizar el sesgo introducido por la anisotropía óptica y asegurar que la base seleccionada cumpla con su función correctiva sin alterar el matiz natural del rostro.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura",
+        "texturizada"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "sílice"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:24:44.914Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-ph-005",
+    "title": "Metabolitos del Microbioma y su Rol en la Estabilidad del pH y la Cromaticidad",
+    "content": "El microbioma cutáneo no solo protege la barrera, sino que modula activamente el pH superficial a través de la producción de metabolitos como ácidos orgánicos y péptidos antimicrobianos. El pH cutáneo es un determinante crítico para la estabilidad de los pigmentos minerales en las bases de maquillaje; un pH alterado (disbiosis) puede acelerar la oxidación de los óxidos de hierro, provocando un viraje cromático hacia el naranja o el gris. Investigaciones en dermatología molecular sugieren que la diversidad microbiana contribuye a la luminosidad natural de la piel al influir en la dispersión de luz en el estrato córneo. Cuando el microbioma se desequilibra debido al uso de productos agresivos o factores ambientales, la piel pierde su capacidad de mantener un pH óptimo, afectando la lectura del subtono. Para mantener la integridad del color del maquillaje, es imperativo priorizar productos con un pH balanceado y formulaciones que respeten el ecosistema microbiano. Al realizar un diagnóstico de subtono, debemos considerar que una piel con disbiosis puede presentar una cromaticidad variable, lo que complica la selección de productos. La restauración de la barrera cutánea y el equilibrio del pH son, por tanto, pasos previos esenciales antes de cualquier evaluación colorimétrica definitiva.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:24:44.914Z"
+  }
+]

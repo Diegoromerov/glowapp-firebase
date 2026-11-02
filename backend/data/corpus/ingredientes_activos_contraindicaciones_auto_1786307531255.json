@@ -1,0 +1,397 @@
+[
+  {
+    "chunk_id": "activos-quelantes-toxicidad-001",
+    "title": "EDTA en cosmética: Seguridad y riesgos de permeabilidad cutánea",
+    "content": "El ácido etilendiaminotetraacético (EDTA) y sus sales, como el disodium EDTA, son agentes quelantes ampliamente utilizados en formulaciones cosméticas para estabilizar productos secuestrando iones metálicos que pueden degradar la fórmula. Aunque su perfil de seguridad es generalmente reconocido (GRAS), existe un debate clínico sobre su papel como potenciador de la permeabilidad cutánea. Al quelar iones de calcio en las uniones estrechas (tight junctions) de los queratinocitos, el EDTA puede aumentar temporalmente la permeabilidad de la barrera cutánea. Esto es particularmente relevante en pieles con dermatitis atópica o barrera comprometida, donde la penetración de otros ingredientes potencialmente irritantes podría verse exacerbada por el uso concomitante de EDTA en concentraciones elevadas. Aunque la absorción sistémica es mínima, su uso en productos 'leave-on' (sin aclarado) debe ser monitoreado en pacientes con hipersensibilidad extrema. La literatura sugiere que, si bien es seguro en las concentraciones habituales (<0.2%), la acumulación en el uso diario requiere precaución en pieles con patologías de barrera, ya que su acción sobre el microbioma y la integridad de la unión celular podría no ser neutra a largo plazo. Se recomienda priorizar fórmulas con niveles de EDTA ajustados y evitar su uso excesivo en pieles reactivas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Toxicology",
+        "url": "https://journals.sagepub.com/doi/10.1177/109158180202100302",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA"
+      ],
+      "contraindications": [
+        "dermatitis_atopica_severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_inci"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "isoflavonas-soja-riesgos-002",
+    "title": "Isoflavonas de soja: El impacto endocrino en el cuidado de la piel",
+    "content": "Las isoflavonas de soja, como la genisteína y la daidzeína, se promocionan por sus propiedades antioxidantes y su capacidad de mimetizar el estrógeno, promoviendo la síntesis de colágeno. Sin embargo, su actividad como fitoestrógenos plantea interrogantes en pacientes con condiciones dependientes de hormonas o antecedentes de patología mamaria. Aunque la absorción percutánea es significativamente menor que la sistémica, el principio de precaución indica que el uso crónico de concentraciones elevadas debe ser discutido con el médico tratante en pacientes con hiperestrogenismo o antecedentes personales de cáncer estrógeno-dependiente. La evidencia actual, aunque limitada en cuanto a toxicidad cutánea, subraya que la aplicación tópica de disruptores endocrinos potenciales debe ser evaluada dentro del contexto de la carga total de exposición. En GlowApp, recomendamos que estos activos se utilicen bajo supervisión si el historial clínico del usuario presenta sensibilidades hormonales, ya que la piel no es un compartimento aislado y la absorción, aunque baja, no es nula. La regulación de la FDA y la EMA continúa monitoreando la seguridad de los fitoestrógenos en productos de venta libre, sugiriendo cautela en el uso prolongado sin supervisión dermatológica especializada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34208453/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "genisteina",
+        "soja"
+      ],
+      "contraindications": [
+        "historial_cancer_hormonodependiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "historial_clinico"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "aceites-comedogenicos-riesgos-003",
+    "title": "Aceites botánicos y el riesgo de exacerbación de acné comedogénico",
+    "content": "La tendencia de 'skincare natural' ha popularizado el uso de aceites puros (coco, trigo, almendras) para la hidratación facial. Sin embargo, el perfil comedogénico de estos aceites es una contraindicación clínica para pacientes con acné vulgar o piel grasa. El aceite de coco, por ejemplo, tiene un alto contenido de ácido láurico y mirístico, que aunque poseen propiedades antimicrobianas, son altamente comedogénicos en pieles propensas a la obstrucción folicular. La aplicación de estos lípidos altera el equilibrio del sebo natural, creando un microambiente anóxico que favorece la proliferación de Cutibacterium acnes. Es crucial educar al usuario sobre la diferencia entre 'natural' y 'no comedogénico'. En dermatología, el uso de aceites vegetales sin procesar en pieles seborreicas es una causa frecuente de acné cosmético (acne cosmetica). Se deben preferir aceites con alto contenido de ácido linoleico, como el de rosa mosqueta o jojoba, que tienen un perfil de comedogenicidad cercano a cero, en lugar de aceites con alto contenido en ácido oleico. La curaduría de GlowApp desaconseja el uso de aceites no comedogénicos probados en pacientes bajo tratamiento activo para acné, priorizando formulaciones sintéticas o botánicas verificadas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite_coco",
+        "aceite_almendras"
+      ],
+      "contraindications": [
+        "acne_vulgar",
+        "piel_grasa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_acne"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "urea-concentracion-dilema-004",
+    "title": "Urea: El umbral de seguridad entre hidratación y descamación",
+    "content": "La urea es un ingrediente versátil cuya acción depende estrictamente de su concentración. A concentraciones bajas (5-10%), actúa como un humectante eficaz, mejorando la función barrera y la hidratación del estrato córneo mediante la retención de agua. Sin embargo, a concentraciones superiores (20-40%), la urea se convierte en un agente queratolítico potente que disuelve la matriz intercelular, facilitando la descamación. El riesgo clínico surge cuando el usuario aplica productos de alta concentración en zonas de piel fina o con barrera comprometida, provocando irritación, ardor y eritema por sobre-exfoliación. En condiciones como la psoriasis o la ictiosis, es necesaria la supervisión para evitar el daño del tejido sano adyacente. Además, la urea puede aumentar la penetración de otros activos aplicados simultáneamente, lo que puede resultar en una irritación no deseada si se combina con retinoides o ácidos. Es vital que los usuarios entiendan que 'más concentración' no significa 'mejor hidratación'. Para GlowApp, la recomendación es iniciar con 5% para mantenimiento y escalar a 20% solo bajo indicación médica para zonas de hiperqueratosis (talones, codos), evitando siempre el uso en rostro en concentraciones superiores al 10% salvo prescripción específica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(19)32675-9/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "hiperqueratosica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea"
+      ],
+      "contraindications": [
+        "piel_sensible",
+        "heridas_abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "filtro-solar-quimico-sensibilidad-005",
+    "title": "Filtros químicos y dermatitis de contacto fotoalérgica",
+    "content": "Los filtros solares químicos, como la oxibenzona (benzofenona-3) y la avobenzona, son efectivos para absorber radiación UV, pero están asociados con un riesgo no despreciable de dermatitis de contacto fotoalérgica. La fotoalergia ocurre cuando un ingrediente se vuelve alergénico tras la exposición a la luz solar, desencadenando una respuesta inmunitaria. A diferencia de la irritación simple, la fotoalergia puede manifestarse horas después de la exposición, causando eritema persistente, prurito intenso y, en casos graves, vesículas. La oxibenzona ha sido objeto de escrutinio no solo por su potencial alérgeno, sino también por su absorción sistémica documentada. En pacientes con antecedentes de rosácea o dermatitis atópica, el uso de filtros químicos puede exacerbar el cuadro clínico. Recomendamos a los usuarios con pieles reactivas optar por filtros físicos (óxido de zinc o dióxido de titanio), que ofrecen una protección inerte sin riesgo de sensibilización fotoquímica. Si se utiliza un filtro químico, es imperativo realizar una prueba de parche en el antebrazo. La seguridad del microbioma y la integridad de la barrera cutánea deben prevalecer sobre la estética del producto; los filtros minerales modernos han superado el problema del residuo blanco, eliminando la barrera cultural para su uso.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/i4a/pages/index.cfm?pageid=3285",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxibenzona",
+        "avobenzona"
+      ],
+      "contraindications": [
+        "dermatitis_fotoalergica",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_solar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "acidos-frutales-ph-riesgo-006",
+    "title": "El peligro de la desregulación del pH en peelings de AHAs",
+    "content": "La eficacia y seguridad de los ácidos alfa-hidroxílicos (AHAs) como el glicólico dependen críticamente del pH de la formulación. Un AHA es activo solo cuando se encuentra en su forma no disociada (ácido libre), lo cual ocurre generalmente a un pH inferior a 4.0. El problema surge cuando los productos de venta libre no declaran el pH o cuando los usuarios combinan múltiples productos ácidos, alterando el pH del manto ácido natural de la piel (aproximadamente 5.5). Esta alteración puede debilitar la función barrera, facilitar la entrada de patógenos y causar quemaduras químicas de bajo grado. El uso de AHAs en un pH demasiado bajo (inferior a 3.0) fuera de un entorno clínico es una contraindicación de seguridad mayor. La irritación resultante no siempre es inmediata; puede manifestarse como una sensibilización crónica que el usuario confunde con 'purga'. Es vital que los productos seleccionados por GlowApp mantengan un pH tamponado (buffer) que garantice la eficacia sin comprometer la integridad del estrato córneo. Ante cualquier signo de quemazón o eritema persistente, el uso debe suspenderse inmediatamente para permitir la recuperación lipídica. La educación sobre el 'pH de la piel' es la primera línea de defensa contra el daño por exfoliación química excesiva.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/20695943/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_glicolico",
+        "acido_lactico"
+      ],
+      "contraindications": [
+        "piel_irritada",
+        "barrera_comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exfoliacion_segura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "conservantes-microbioma-007",
+    "title": "Conservantes y su impacto en el microbioma cutáneo",
+    "content": "Los conservantes cosméticos son necesarios para evitar la contaminación microbiana de los productos, pero ingredientes como los parabenos, el fenoxietanol y la metilisotiazolinona tienen efectos diversos sobre el microbioma de la piel. El microbioma cutáneo es una barrera biológica fundamental para la salud de la piel. El uso continuo de conservantes potentes puede alterar la diversidad bacteriana, favoreciendo el crecimiento de especies oportunistas que pueden desencadenar inflamación. La metilisotiazolinona, en particular, es un alérgeno conocido y su uso en productos que permanecen en la piel ha sido restringido en muchas jurisdicciones debido a la alta incidencia de dermatitis de contacto. Para usuarios con condiciones como dermatitis atópica o eccema, donde el microbioma ya está desequilibrado (frecuentemente dominado por S. aureus), la elección de productos con conservantes suaves o sistemas de envasado airless (que reducen la necesidad de conservantes) es una estrategia de manejo clínico. La tendencia hacia el 'microbiome-friendly skincare' no es marketing, sino una necesidad dermatológica para mantener la homeostasis cutánea. Recomendamos revisar el INCI buscando alternativas más seguras y evitando conservantes de alta sensibilización en rutinas diarias prolongadas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/microbiome-skincare/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilisotiazolinona",
+        "fenoxietanol"
+      ],
+      "contraindications": [
+        "dermatitis_contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "siliconas-mito-obstruccion-008",
+    "title": "Siliconas: Diferenciación entre oclusión y comedogenicidad",
+    "content": "Existe un mito persistente en la dermatología cosmética que clasifica a todas las siliconas (como la dimeticona) como comedogénicas. Desde una perspectiva clínica, esto es incorrecto. La mayoría de las siliconas son moléculas grandes y volátiles que forman una película permeable a los gases, lo que significa que permiten la respiración de la piel mientras evitan la pérdida de agua transepidérmica (TEWL). A diferencia de los aceites oclusivos pesados, las siliconas no penetran en el folículo pilosebáceo, por lo que su potencial para causar acné es extremadamente bajo. En pacientes con piel sensible o rosácea, las siliconas son valiosas por su capacidad para suavizar la textura y reducir la fricción, protegiendo la barrera física. La contraindicación real no es la obstrucción, sino la posible acumulación de otros ingredientes atrapados bajo la capa de silicona si no se realiza una limpieza doble adecuada al final del día. En GlowApp, defendemos el uso de dimeticona en pieles reactivas para mejorar la función barrera, siempre y cuando se asegure una higiene facial completa para eliminar cualquier residuo de contaminantes ambientales atrapados en la película protectora durante el día.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.15392",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona"
+      ],
+      "contraindications": [
+        "ninguna"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos_skincare"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  },
+  {
+    "chunk_id": "tensioactivos-ph-irritacion-009",
+    "title": "Tensioactivos: El impacto del pH alcalino en la barrera cutánea",
+    "content": "La elección del limpiador facial es, a menudo, el factor más subestimado en la salud de la piel. Muchos limpiadores tradicionales, especialmente los jabones en barra, tienen un pH alcalino (9.0-10.0), lo cual es drásticamente diferente al pH fisiológico de la piel (4.5-5.5). Esta alcalinización, incluso si es breve, tiene un efecto profundo sobre la barrera lipídica: altera la actividad de las enzimas encargadas de la síntesis de ceramidas y aumenta la actividad de las proteasas, lo que lleva a la degradación de las proteínas del estrato córneo. El resultado es un aumento en la TEWL y una mayor susceptibilidad a la irritación por ingredientes activos posteriores (como retinoides). Los tensioactivos más agresivos, como el lauril sulfato de sodio (SLS), pueden desnaturalizar las proteínas de la piel, causando una respuesta inflamatoria subclínica. En GlowApp, la recomendación clínica es utilizar limpiadores con tensioactivos sintéticos (syndets) de pH balanceado, que preservan la integridad de la barrera y el microbioma. El uso de limpiadores alcalinos es una contraindicación para cualquier paciente que esté iniciando un tratamiento con activos potentes, ya que la piel no podrá tolerar la irritación derivada de la desestabilización de su pH natural.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3088928/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lauril_sulfato_de_sodio"
+      ],
+      "contraindications": [
+        "dermatitis_atopica",
+        "barrera_comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:31:50.666Z"
+  }
+]

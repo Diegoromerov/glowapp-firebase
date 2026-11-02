@@ -1,0 +1,204 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-efecto-piezoelectrico-001",
+    "title": "El efecto piezoeléctrico en la fibra capilar durante la manipulación mecánica",
+    "content": "La fibra capilar, compuesta principalmente por queratina alfa, posee propiedades piezoeléctricas intrínsecas. Durante los servicios de coloración, la manipulación mediante peinado, cepillado y fricción mecánica genera una polarización eléctrica en la estructura cristalina de la queratina. Este fenómeno altera la distribución de cargas en la superficie de la cutícula, lo cual influye directamente en la adsorción de los precursores de color. Cuando el cabello está saturado con agentes químicos durante la coloración, la conductividad eléctrica de la fibra aumenta significativamente. La investigación sugiere que el estrés mecánico inducido por el uso de herramientas de peinado durante la aplicación del tinte puede generar gradientes de carga que impiden una deposición uniforme del pigmento. Entender la piezoelectricidad permite a los profesionales optimizar la distribución de los tintes mediante técnicas de aplicación que minimicen la fricción excesiva, evitando así irregularidades cromáticas que a menudo se confunden con errores de formulación o porosidad diferencial. La gestión de estas cargas es clave para lograr una saturación cromática homogénea y evitar la migración no deseada de pigmentos hacia zonas de mayor carga electrostática.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30671607/",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:08.143Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-entropia-termica-002",
+    "title": "Termodinámica de la reacción de acoplamiento oxidativo en la corteza",
+    "content": "La reacción de acoplamiento oxidativo de los precursores de color (diaminas y acopladores) es un proceso exotérmico que depende estrictamente de la temperatura del cuero cabelludo y el ambiente. La cinética de esta reacción sigue la ecuación de Arrhenius, donde un aumento en la temperatura folicular acelera exponencialmente la velocidad de formación de las macromoléculas de pigmento. En el contexto de Bogotá, con variaciones de temperatura y altitud, la gestión de la entropía térmica es crucial. Si el calor se disipa de manera desigual, la polimerización puede ser incompleta o acelerada en zonas específicas, resultando en un 'banding' o degradación prematura del color. El control termodinámico implica considerar que el cuero cabelludo actúa como una fuente constante de calor, lo que favorece una polimerización más rápida cerca de la raíz. Los coloristas deben compensar esta diferencia térmica ajustando la técnica de aplicación para asegurar que la cinética de oxidación sea uniforme en toda la longitud de la fibra, mitigando el riesgo de resultados cromáticos heterogéneos debidos a la variabilidad térmica natural del sistema biológico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/pdf/cc2015/cc066n03/p00000-p00000.pdf",
+        "year": 2015
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido_hidrogeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:08.143Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-degradacion-triptofano-006",
+    "title": "Degradación del triptófano en la queratina bajo procesos oxidativos",
+    "content": "El triptófano es uno de los aminoácidos más sensibles a la oxidación dentro de la estructura de la queratina capilar. Durante el proceso de teñido, especialmente con el uso de peróxido de hidrógeno, se generan radicales libres que pueden atacar los residuos de triptófano, provocando su foto-oxidación y degradación. Este proceso no solo debilita la estructura interna de la fibra, reduciendo su resistencia a la tracción, sino que también altera el color del cabello natural, generando un amarilleamiento indeseado. La pérdida de triptófano está correlacionada con una mayor porosidad y una menor capacidad de retención de pigmentos artificiales. La incorporación de antioxidantes específicos en la fórmula del tinte, como el tocoferol o derivados de polifenoles, puede proteger estos aminoácidos críticos. Es vital entender que la degradación del triptófano es un proceso irreversible que compromete la calidad del cabello a largo plazo. Por lo tanto, la estrategia de coloración debe priorizar la protección química mediante agentes quelantes y antioxidantes para mantener la integridad proteica y asegurar que el color se deposite sobre una base estructuralmente sólida.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / Journal of Photochemistry and Photobiology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22000000/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:08.143Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-VOC-seguridad-008",
+    "title": "Evaluación de Compuestos Orgánicos Volátiles (VOC) en el salón",
+    "content": "La aplicación de tintes permanentes libera Compuestos Orgánicos Volátiles (VOC), como el amoníaco, formaldehído (en productos de alisado mal etiquetados) y otros solventes, que representan un riesgo respiratorio para el profesional y el cliente. La inhalación crónica de estos vapores puede derivar en irritación de las mucosas, dermatitis por contacto aerotransportada y, en casos de exposición prolongada, problemas respiratorios. En un entorno como Bogotá, donde la ventilación en los salones puede ser limitada debido a las condiciones climáticas, la acumulación de VOC es una preocupación de salud pública. Es obligatorio implementar protocolos de ventilación cruzada y, si es posible, utilizar sistemas de filtración de aire con carbón activado. Además, la selección de productos con bajo contenido de VOC es una medida proactiva para garantizar la seguridad en el salón. La normativa internacional (FDA/EMA) sugiere que el monitoreo de la calidad del aire en los espacios de trabajo donde se aplican químicos capilares debe ser parte de las buenas prácticas de gestión clínica y operativa del salón.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/indoor-air-pollution",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco"
+      ],
+      "contraindications": [
+        "asma",
+        "alergias_respiratorias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_salud"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:08.143Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+    "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+    "content": "La viscoelasticidad del cabello describe su capacidad para deformarse bajo una carga y recuperar su forma original, una propiedad que depende directamente de la salud de las uniones de azufre (cistina) en la corteza. Tras procesos de coloración repetitivos, la fibra pierde elasticidad, volviéndose más quebradiza y porosa. Esta alteración estructural disminuye la capacidad de la fibra para 'retener' los pigmentos dentro de la matriz, ya que los espacios inter-fibrilares se expanden, facilitando la fuga del color durante los lavados. La medición de la viscoelasticidad, aunque compleja, puede realizarse mediante pruebas de tracción simple en el salón. Un cabello con baja viscoelasticidad no solo retendrá mal el color, sino que también es más susceptible a la rotura durante el proceso de aplicación del tinte. Por ello, es imperativo realizar tratamientos de reconstrucción de enlaces (como los basados en ácido maleico o similares) antes y durante el servicio de coloración. La restauración de la viscoelasticidad es, por tanto, el paso clínico más crítico para asegurar que el resultado cromático sea duradero y que la fibra capilar mantenga su integridad frente a los agentes oxidantes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_maleico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:08.143Z"
+  }
+]

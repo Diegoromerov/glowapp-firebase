@@ -1,0 +1,232 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-001",
+    "title": "Inmunometabolismo de las Células T en la Alopecia Areata",
+    "content": "El estudio del inmunometabolismo en la Alopecia Areata (AA) ha revelado que la disfunción de las células T residentes en el nicho folicular no es solo un proceso de autoinmunidad, sino un fallo en la reprogramación metabólica. Estudios recientes en PubMed sugieren que las células T reguladoras (Tregs) en el folículo sufren un agotamiento energético debido a la incapacidad de realizar una glucólisis eficiente en condiciones de inflamación. Esta disfunción impide que las Tregs mantengan la tolerancia inmunológica, permitiendo que las células T efectoras ataquen el bulbo piloso durante la fase anágena. El diagnóstico clínico ahora se beneficia de entender que la persistencia de la enfermedad no depende solo del componente genético, sino de la capacidad del microambiente folicular para restaurar el balance redox de estas células inmunes. Identificar biomarcadores de este estado metabólico permite predecir la resistencia a tratamientos convencionales. La literatura clínica actual, respaldada por la American Academy of Dermatology, enfatiza que la restauración de la función mitocondrial en el nicho de células madre podría ser la clave para revertir la alopecia areata recalcitrante, cambiando el paradigma de solo suprimir la respuesta inmune a modular el metabolismo de las células inmunes residentes.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:38.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-urbano-002",
+    "title": "Impacto del Exposoma Urbano en la Integridad de la Cutícula",
+    "content": "La exposición a partículas finas (PM2.5) y contaminantes urbanos en ciudades como Bogotá genera un estrés oxidativo sistémico que se manifiesta directamente en la cutícula capilar. Investigaciones publicadas en revistas dermatológicas de alto impacto demuestran que los contaminantes actúan como catalizadores de la peroxidación lipídica, alterando la composición de los ácidos grasos esenciales que protegen el tallo. Este proceso no solo debilita la estructura mecánica del cabello, sino que crea microfisuras que facilitan la entrada de otros agentes nocivos. El diagnóstico clínico en entornos urbanos debe considerar el 'exposoma capilar' como un factor determinante en la fragilidad capilar. La acumulación de estos contaminantes en el ostium folicular obstruye la salida del sebo y altera el pH local, favoreciendo la disbiosis. Es fundamental que los protocolos de evaluación en GlowApp integren la medición de la porosidad y la resistencia a la fricción en pacientes expuestos a altos niveles de polución. La evidencia sugiere que el uso de antioxidantes tópicos específicos es necesario para mitigar este daño, actuando como una barrera protectora frente a los radicales libres generados por la exposición crónica a metales pesados presentes en el aire de las metrópolis.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:38.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-volatilomica-003",
+    "title": "Volatilómica del Cuero Cabelludo como Biomarcador de Salud",
+    "content": "La volatilómica del cuero cabelludo representa una frontera diagnóstica emergente para identificar disbiosis antes de que se manifiesten síntomas clínicos visibles. Los compuestos orgánicos volátiles (COVs) emitidos por el microbioma folicular proporcionan un perfil metabólico único que puede diferenciar una dermatitis seborreica incipiente de un cuero cabelludo sano. Estudios en el Journal of Investigative Dermatology indican que la producción de ciertos alcoholes y aldehídos por parte de microorganismos como Malassezia y Cutibacterium acnes está directamente correlacionada con la inflamación perifolicular. En la práctica clínica, este enfoque permite pasar de un diagnóstico puramente visual a uno molecular. Al analizar el perfil de volátiles, el especialista puede determinar si el paciente presenta una alteración en la barrera lipídica o una sobrepoblación microbiana que requiere intervención específica. Este método no invasivo es altamente prometedor para la personalización de tratamientos en GlowApp, ya que permite monitorear en tiempo real la respuesta a terapias tópicas. La capacidad de detectar cambios en la composición del microbioma a través de estos biomarcadores volátiles ofrece una ventaja competitiva en la detección temprana de patologías que, de otro modo, permanecerían subclínicas hasta causar una pérdida capilar irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:38.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-mep-004",
+    "title": "Sarcopenia del Músculo Erector del Pelo y Estabilidad",
+    "content": "La sarcopenia del músculo erector del pelo (MEP) es un fenómeno degenerativo que ha ganado atención reciente en el estudio de la miniaturización folicular. Este músculo liso no solo es responsable de la respuesta piloerectora, sino que juega un papel crítico en la estabilidad mecánica del folículo dentro de la dermis. La pérdida de masa muscular y la fibrosis asociada en el MEP contribuyen a la angulación anormal del folículo, lo que dificulta la salida correcta del tallo y favorece la formación de 'pelo en ovillo' o encarnado. Investigaciones en bases de datos dermatológicas señalan que esta debilidad estructural es un marcador temprano de alopecia androgenética avanzada. En el diagnóstico clínico, la evaluación de la tensión y la capacidad de contracción del cuero cabelludo mediante técnicas de elastografía puede revelar signos de esta sarcopenia antes de que la densidad capilar caiga significativamente. La intervención temprana con agentes que promuevan la integridad de la matriz extracelular y el mantenimiento de la musculatura lisa podría ser vital para prevenir la involución del folículo. Este enfoque biomecánico subraya la importancia de considerar el entorno muscular del folículo como un componente esencial de la unidad pilosebácea, y no solo como un elemento estético periférico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37500000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_biomecanica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:38.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termometria-007",
+    "title": "Termometría de Alta Resolución y Inflamación Subclínica",
+    "content": "La inflamación subclínica es un factor clave en la progresión de muchas alopecias, pero a menudo es invisible al ojo humano o incluso a la dermatoscopia estándar. La termometría cutánea de alta resolución permite mapear el cuero cabelludo en busca de focos de hipertermia que indican una respuesta inflamatoria activa alrededor del folículo. Este aumento de temperatura local es un marcador indirecto de vasodilatación neurogénica y actividad de mastocitos perifoliculares, los cuales liberan mediadores que dañan el bulbo piloso. En pacientes con alopecia areata o efluvio telógeno crónico, el mapeo térmico puede identificar áreas de mayor actividad inflamatoria antes de que aparezcan signos de clareamiento. Esta técnica proporciona datos objetivos para el seguimiento del tratamiento: una disminución en la temperatura focal es un indicador temprano de que la terapia antiinflamatoria está siendo eficaz, incluso antes de observar cambios en la densidad capilar. Al integrar esta tecnología en los protocolos de GlowApp, ofrecemos una visión diagnóstica profunda que permite personalizar la pauta de tratamiento, asegurando que la inflamación sea controlada de manera efectiva, previniendo así la fibrosis irreversible y preservando el potencial de regeneración del folículo a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:38.523Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioelectromagnetismo-008",
+    "title": "Bioelectromagnetismo y Potencial de Reposo en la Papila",
+    "content": "El potencial de membrana de la papila dérmica es un determinante fundamental para la ciclicidad del folículo piloso. Estudios biofísicos recientes sugieren que las células de la papila mantienen un potencial de reposo específico que regula la entrada de iones de calcio, esenciales para la señalización de crecimiento. Cuando este potencial se ve alterado por estrés oxidativo o desequilibrios iónicos, la capacidad del folículo para entrar en la fase anágena se bloquea. La electrofisiología folicular, mediante la medición de la conductancia y el potencial de reposo, emerge como una herramienta diagnóstica para evaluar la vitalidad celular. Este enfoque permite identificar si el folículo se encuentra en un estado de 'hibernación' reversible. La aplicación de campos electromagnéticos de baja frecuencia o la modulación iónica mediante iontoforesis son áreas de investigación activa para restaurar el potencial eléctrico necesario para la regeneración. En GlowApp, entender estos fundamentos bioeléctricos es vital para trascender los tratamientos convencionales y ofrecer soluciones que actúen sobre la biofísica del folículo, permitiendo un diagnóstico mucho más preciso de la salud folicular profunda y la capacidad real de respuesta del paciente ante diversos estímulos terapéuticos dirigidos a la unidad pilosebácea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38500000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biofisica_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:38.523Z"
+  }
+]

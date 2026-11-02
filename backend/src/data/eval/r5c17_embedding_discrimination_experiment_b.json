@@ -1,0 +1,2045 @@
+{
+  "cycle": "29",
+  "experiment": "R5-C17",
+  "run": "B",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "config": {
+    "topK": 10,
+    "motor": "PRODUCTIVO sin modificar"
+  },
+  "baseline_r5c": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "NO MODIFICADO"
+  },
+  "cases": {
+    "misses": [
+      "cabello_002",
+      "cejas_004",
+      "cejas_008"
+    ],
+    "controls": [
+      "skincare_003",
+      "skincare_010",
+      "cabello_008",
+      "cejas_007"
+    ],
+    "rationale": "Misses = los 3 reales de GOLD-V5; controles = queries con R@5=1 en baseline R5-C14"
+  },
+  "expD_aggregate": {
+    "misses": {
+      "mean": 0.0065,
+      "median": 0.0076,
+      "min": -0.0026,
+      "max": 0.0145,
+      "n": 3
+    },
+    "controls": {
+      "mean": 0.0282,
+      "median": 0.0418,
+      "min": -0.0027,
+      "max": 0.0476,
+      "n": 4
+    }
+  },
+  "expF_doc_representation_effect": [
+    {
+      "query": "cabello_002",
+      "chunk": "colorimetria-capilar-metales-003",
+      "sim_query_gold_orig": 0.4917,
+      "sim_query_gold_docrep": 0.5262
+    },
+    {
+      "query": "cabello_002",
+      "chunk": "colorimetria-capilar-ph-001",
+      "sim_query_gold_orig": 0.501,
+      "sim_query_gold_docrep": 0.5877
+    },
+    {
+      "query": "cabello_002",
+      "chunk": "colorimetria-capilar-ph-pos-tinte-009",
+      "sim_query_gold_orig": 0.5552,
+      "sim_query_gold_docrep": 0.6476
+    },
+    {
+      "query": "cabello_002",
+      "chunk": "colorimetria-capilar-viscoelasticidad-009",
+      "sim_query_gold_orig": 0.5429,
+      "sim_query_gold_docrep": 0.612
+    },
+    {
+      "query": "cabello_002",
+      "chunk": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+      "sim_query_gold_orig": 0.4255,
+      "sim_query_gold_docrep": 0.65
+    },
+    {
+      "query": "cejas_004",
+      "chunk": "microblading-envejecimiento-009",
+      "sim_query_gold_orig": 0.5194,
+      "sim_query_gold_docrep": 0.5222
+    },
+    {
+      "query": "cejas_004",
+      "chunk": "microblading-psicologia-007",
+      "sim_query_gold_orig": 0.4434,
+      "sim_query_gold_docrep": 0.4725
+    },
+    {
+      "query": "cejas_004",
+      "chunk": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+      "sim_query_gold_orig": 0.5238,
+      "sim_query_gold_docrep": 0.5734
+    },
+    {
+      "query": "cejas_004",
+      "chunk": "visajismo-cejas-microblading-metamerismo-003",
+      "sim_query_gold_orig": 0.5224,
+      "sim_query_gold_docrep": 0.5029
+    },
+    {
+      "query": "cejas_004",
+      "chunk": "visajismo-cejas-microblading-musculatura-orbicular-009",
+      "sim_query_gold_orig": 0.343,
+      "sim_query_gold_docrep": 0.5847
+    },
+    {
+      "query": "cejas_004",
+      "chunk": "visajismo-microblading-arquitectura-muscular-008",
+      "sim_query_gold_orig": 0.4126,
+      "sim_query_gold_docrep": 0.5308
+    },
+    {
+      "query": "cejas_008",
+      "chunk": "guias_unas-electrolisis-y-matriz-001",
+      "sim_query_gold_orig": 0.4486,
+      "sim_query_gold_docrep": 0.5345
+    },
+    {
+      "query": "cejas_008",
+      "chunk": "terapia-laser-erbio-glass-002",
+      "sim_query_gold_orig": 0.4105,
+      "sim_query_gold_docrep": 0.5458
+    },
+    {
+      "query": "cejas_008",
+      "chunk": "visajismo-cejas-enfermedades-autoinmunes-007",
+      "sim_query_gold_orig": 0.5876,
+      "sim_query_gold_docrep": 0.5673
+    },
+    {
+      "query": "cejas_008",
+      "chunk": "visajismo-cejas-microblading-efecto-tyndall-003",
+      "sim_query_gold_orig": 0.4984,
+      "sim_query_gold_docrep": 0.604
+    },
+    {
+      "query": "cejas_008",
+      "chunk": "visajismo-cejas-microblading-interaccion-laser-001",
+      "sim_query_gold_orig": 0.5359,
+      "sim_query_gold_docrep": 0.5472
+    },
+    {
+      "query": "cejas_008",
+      "chunk": "visajismo-cejas-microblading-piel-grasa-005",
+      "sim_query_gold_orig": 0.5916,
+      "sim_query_gold_docrep": 0.5336
+    },
+    {
+      "query": "skincare_003",
+      "chunk": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+      "sim_query_gold_orig": 0.3505,
+      "sim_query_gold_docrep": 0.6403
+    },
+    {
+      "query": "skincare_003",
+      "chunk": "poros-clima-bogota-009",
+      "sim_query_gold_orig": 0.5807,
+      "sim_query_gold_docrep": 0.6335
+    },
+    {
+      "query": "skincare_003",
+      "chunk": "poros-humedad-bogota-008",
+      "sim_query_gold_orig": 0.5721,
+      "sim_query_gold_docrep": 0.6454
+    },
+    {
+      "query": "skincare_003",
+      "chunk": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+      "sim_query_gold_orig": 0.515,
+      "sim_query_gold_docrep": 0.5814
+    },
+    {
+      "query": "skincare_010",
+      "chunk": "skincare-microbioma-limpiadores-004",
+      "sim_query_gold_orig": 0.5729,
+      "sim_query_gold_docrep": 0.5865
+    },
+    {
+      "query": "skincare_010",
+      "chunk": "skincare-rutinas-piel-deshidratada-004",
+      "sim_query_gold_orig": 0.4811,
+      "sim_query_gold_docrep": 0.5897
+    },
+    {
+      "query": "skincare_010",
+      "chunk": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+      "sim_query_gold_orig": 0.5262,
+      "sim_query_gold_docrep": 0.556
+    },
+    {
+      "query": "cabello_008",
+      "chunk": "hidratacion-oclusiva-corporal-008",
+      "sim_query_gold_orig": 0.5325,
+      "sim_query_gold_docrep": 0.5523
+    },
+    {
+      "query": "cabello_008",
+      "chunk": "hidratacion-oclusivos-humectantes-009",
+      "sim_query_gold_orig": 0.5014,
+      "sim_query_gold_docrep": 0.5426
+    },
+    {
+      "query": "cabello_008",
+      "chunk": "hidrofaciales-tecnologia-006",
+      "sim_query_gold_orig": 0.516,
+      "sim_query_gold_docrep": 0.4742
+    },
+    {
+      "query": "cabello_008",
+      "chunk": "urea-umbral-hidratacion-descamacion-009",
+      "sim_query_gold_orig": 0.4714,
+      "sim_query_gold_docrep": 0.4928
+    },
+    {
+      "query": "cejas_007",
+      "chunk": "visajismo-cejas-diabetis-cicatrizacion-004",
+      "sim_query_gold_orig": 0.5827,
+      "sim_query_gold_docrep": 0.5733
+    },
+    {
+      "query": "cejas_007",
+      "chunk": "visajismo-cejas-enfermedades-autoinmunes-007",
+      "sim_query_gold_orig": 0.5895,
+      "sim_query_gold_docrep": 0.5673
+    },
+    {
+      "query": "cejas_007",
+      "chunk": "visajismo-cejas-microblading-piel-grasa-005",
+      "sim_query_gold_orig": 0.5628,
+      "sim_query_gold_docrep": 0.5336
+    }
+  ],
+  "per_case": [
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "case_type": "MISS",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "colorimetria-capilar-metales-003",
+        "colorimetria-capilar-ph-001",
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.4917,
+          0.501,
+          0.5552,
+          0.5429,
+          0.4255
+        ],
+        "best_gold_score": 0.5552,
+        "competitors": [
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-003",
+            "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+            "sim": 0.5407
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cu",
+            "sim": 0.5338
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-009",
+            "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+            "sim": 0.5297
+          },
+          {
+            "chunk_id": "colorimetria-quelacion-metales-005",
+            "title": "El rol de los quelantes en la prevención de reacciones exotérmicas",
+            "sim": 0.5247
+          },
+          {
+            "chunk_id": "colorimetria-degradacion-lipidos-006",
+            "title": "Protección de la barrera lipídica durante la decoloración",
+            "sim": 0.5238
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": 0.014500000000000068,
+          "gold_vs_mean_neg": 0.024660000000000015,
+          "gold_vs_max_neg": 0.014500000000000068
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "colorimetria-capilar-metales-003",
+          "competitor": "colorimetria-capilar-microbiota-003",
+          "sim": 0.5116
+        },
+        {
+          "gold": "colorimetria-capilar-metales-003",
+          "competitor": "colorimetria-capilar-microbiota-009",
+          "sim": 0.5262
+        },
+        {
+          "gold": "colorimetria-capilar-metales-003",
+          "competitor": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.5198
+        },
+        {
+          "gold": "colorimetria-capilar-metales-003",
+          "competitor": "colorimetria-ph-balance-006",
+          "sim": 0.5646
+        },
+        {
+          "gold": "colorimetria-capilar-metales-003",
+          "competitor": "colorimetria-quelacion-metales-005",
+          "sim": 0.7104
+        },
+        {
+          "gold": "colorimetria-capilar-ph-001",
+          "competitor": "colorimetria-capilar-microbiota-003",
+          "sim": 0.6525
+        },
+        {
+          "gold": "colorimetria-capilar-ph-001",
+          "competitor": "colorimetria-capilar-microbiota-009",
+          "sim": 0.6175
+        },
+        {
+          "gold": "colorimetria-capilar-ph-001",
+          "competitor": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.5832
+        },
+        {
+          "gold": "colorimetria-capilar-ph-001",
+          "competitor": "colorimetria-ph-balance-006",
+          "sim": 0.7754
+        },
+        {
+          "gold": "colorimetria-capilar-ph-001",
+          "competitor": "colorimetria-quelacion-metales-005",
+          "sim": 0.5489
+        },
+        {
+          "gold": "colorimetria-capilar-ph-pos-tinte-009",
+          "competitor": "colorimetria-capilar-microbiota-003",
+          "sim": 0.6238
+        },
+        {
+          "gold": "colorimetria-capilar-ph-pos-tinte-009",
+          "competitor": "colorimetria-capilar-microbiota-009",
+          "sim": 0.6241
+        },
+        {
+          "gold": "colorimetria-capilar-ph-pos-tinte-009",
+          "competitor": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.6268
+        },
+        {
+          "gold": "colorimetria-capilar-ph-pos-tinte-009",
+          "competitor": "colorimetria-ph-balance-006",
+          "sim": 0.7678
+        },
+        {
+          "gold": "colorimetria-capilar-ph-pos-tinte-009",
+          "competitor": "colorimetria-quelacion-metales-005",
+          "sim": 0.5724
+        },
+        {
+          "gold": "colorimetria-capilar-viscoelasticidad-009",
+          "competitor": "colorimetria-capilar-microbiota-003",
+          "sim": 0.5673
+        },
+        {
+          "gold": "colorimetria-capilar-viscoelasticidad-009",
+          "competitor": "colorimetria-capilar-microbiota-009",
+          "sim": 0.5828
+        },
+        {
+          "gold": "colorimetria-capilar-viscoelasticidad-009",
+          "competitor": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.5946
+        },
+        {
+          "gold": "colorimetria-capilar-viscoelasticidad-009",
+          "competitor": "colorimetria-ph-balance-006",
+          "sim": 0.6012
+        },
+        {
+          "gold": "colorimetria-capilar-viscoelasticidad-009",
+          "competitor": "colorimetria-quelacion-metales-005",
+          "sim": 0.5927
+        },
+        {
+          "gold": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "competitor": "colorimetria-capilar-microbiota-003",
+          "sim": 0.4597
+        },
+        {
+          "gold": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "competitor": "colorimetria-capilar-microbiota-009",
+          "sim": 0.475
+        },
+        {
+          "gold": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "competitor": "colorimetria-degradacion-lipidos-006",
+          "sim": 0.47
+        },
+        {
+          "gold": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "competitor": "colorimetria-ph-balance-006",
+          "sim": 0.4819
+        },
+        {
+          "gold": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "competitor": "colorimetria-quelacion-metales-005",
+          "sim": 0.4941
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-003",
+          "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+          "sim_query": 0.5407,
+          "delta_vs_best_gold": 0.0145,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "colorimetria-ph-balance-006",
+          "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+          "sim_query": 0.5338,
+          "delta_vs_best_gold": 0.0214,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-microbiota-009",
+          "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+          "sim_query": 0.5297,
+          "delta_vs_best_gold": 0.0255,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "colorimetria-quelacion-metales-005",
+          "title": "El rol de los quelantes en la prevención de reacciones exotérmicas",
+          "sim_query": 0.5247,
+          "delta_vs_best_gold": 0.0305,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "colorimetria-degradacion-lipidos-006",
+          "title": "Protección de la barrera lipídica durante la decoloración",
+          "sim_query": 0.5238,
+          "delta_vs_best_gold": 0.0314,
+          "classification": "COMPETENCIA_ESTRECHA"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "document_id": "colorimetria_capilar_tinte",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "len": 1089
+        },
+        {
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "document_id": "colorimetria_capilar_tinte",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "len": 1059
+        },
+        {
+          "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+          "document_id": "colorimetria_capilar_tinte",
+          "title": "Restauración del pH y sellado cuticular post-proceso",
+          "len": 1041
+        },
+        {
+          "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+          "document_id": "colorimetria_capilar_tinte",
+          "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+          "len": 1196
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "document_id": "diagnostico_capilar",
+          "title": "Espectroscopía de Raman de Superficie (SERS) para la Detección de Prot",
+          "len": 1092
+        }
+      ],
+      "expF_doc_representation": {
+        "colorimetria-capilar-metales-003": {
+          "text_prefix": "Colorimetría capilar — ",
+          "sim_query_to_docrep": 0.5262,
+          "sim_gold_vs_competitors": {}
+        },
+        "colorimetria-capilar-ph-001": {
+          "text_prefix": "Colorimetría capilar — ",
+          "sim_query_to_docrep": 0.5877,
+          "sim_gold_vs_competitors": {}
+        },
+        "colorimetria-capilar-ph-pos-tinte-009": {
+          "text_prefix": "Colorimetría capilar — ",
+          "sim_query_to_docrep": 0.6476,
+          "sim_gold_vs_competitors": {}
+        },
+        "colorimetria-capilar-viscoelasticidad-009": {
+          "text_prefix": "Colorimetría capilar — ",
+          "sim_query_to_docrep": 0.612,
+          "sim_gold_vs_competitors": {}
+        },
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": {
+          "text_prefix": "Colorimetría capilar — ",
+          "sim_query_to_docrep": 0.65,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 1,
+      "gold_in_top5": true
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "case_type": "MISS",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "microblading-envejecimiento-009",
+        "microblading-psicologia-007",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "visajismo-cejas-microblading-metamerismo-003",
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-microblading-arquitectura-muscular-008"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.5194,
+          0.4434,
+          0.5238,
+          0.5224,
+          0.343,
+          0.4126
+        ],
+        "best_gold_score": 0.5238,
+        "competitors": [
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+            "title": "Fotobiología aplicada: Interacción luz-pigmento y el fenómeno de dispe",
+            "sim": 0.5264
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+            "title": "Interferencia electromagnética y estabilidad de pigmentos con óxidos m",
+            "sim": 0.5218
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+            "title": "Fenómeno de metamerismo y selección de pigmentos bajo luz artificial",
+            "sim": 0.5192
+          },
+          {
+            "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+            "title": "Sesgos de percepción: el impacto de la temperatura de color en el visa",
+            "sim": 0.5154
+          },
+          {
+            "chunk_id": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+            "title": "Interferencia del micro-edema intersticial en la cromaticidad y el bri",
+            "sim": 0.515
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": -0.0025999999999999357,
+          "gold_vs_mean_neg": 0.0042400000000000215,
+          "gold_vs_max_neg": -0.0025999999999999357
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "microblading-envejecimiento-009",
+          "competitor": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.5356
+        },
+        {
+          "gold": "microblading-envejecimiento-009",
+          "competitor": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.5373
+        },
+        {
+          "gold": "microblading-envejecimiento-009",
+          "competitor": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.5533
+        },
+        {
+          "gold": "microblading-envejecimiento-009",
+          "competitor": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.624
+        },
+        {
+          "gold": "microblading-envejecimiento-009",
+          "competitor": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.5907
+        },
+        {
+          "gold": "microblading-psicologia-007",
+          "competitor": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.4505
+        },
+        {
+          "gold": "microblading-psicologia-007",
+          "competitor": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.547
+        },
+        {
+          "gold": "microblading-psicologia-007",
+          "competitor": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.4816
+        },
+        {
+          "gold": "microblading-psicologia-007",
+          "competitor": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.4821
+        },
+        {
+          "gold": "microblading-psicologia-007",
+          "competitor": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.528
+        },
+        {
+          "gold": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "competitor": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.6294
+        },
+        {
+          "gold": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "competitor": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.6338
+        },
+        {
+          "gold": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "competitor": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.6427
+        },
+        {
+          "gold": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "competitor": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.7707
+        },
+        {
+          "gold": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "competitor": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.6903
+        },
+        {
+          "gold": "visajismo-cejas-microblading-metamerismo-003",
+          "competitor": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.558
+        },
+        {
+          "gold": "visajismo-cejas-microblading-metamerismo-003",
+          "competitor": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.7549
+        },
+        {
+          "gold": "visajismo-cejas-microblading-metamerismo-003",
+          "competitor": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.6056
+        },
+        {
+          "gold": "visajismo-cejas-microblading-metamerismo-003",
+          "competitor": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.6947
+        },
+        {
+          "gold": "visajismo-cejas-microblading-metamerismo-003",
+          "competitor": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.8428
+        },
+        {
+          "gold": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "competitor": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.4231
+        },
+        {
+          "gold": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "competitor": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.4248
+        },
+        {
+          "gold": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "competitor": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.4951
+        },
+        {
+          "gold": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "competitor": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.4871
+        },
+        {
+          "gold": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "competitor": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.4647
+        },
+        {
+          "gold": "visajismo-microblading-arquitectura-muscular-008",
+          "competitor": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "sim": 0.4558
+        },
+        {
+          "gold": "visajismo-microblading-arquitectura-muscular-008",
+          "competitor": "efectos-temperatura-luz-percepcion-diseño-007",
+          "sim": 0.4953
+        },
+        {
+          "gold": "visajismo-microblading-arquitectura-muscular-008",
+          "competitor": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "sim": 0.5085
+        },
+        {
+          "gold": "visajismo-microblading-arquitectura-muscular-008",
+          "competitor": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "sim": 0.5235
+        },
+        {
+          "gold": "visajismo-microblading-arquitectura-muscular-008",
+          "competitor": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "sim": 0.5395
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "title": "Fotobiología aplicada: Interacción luz-pigmento y el fenómeno de dispersión de T",
+          "sim_query": 0.5264,
+          "delta_vs_best_gold": -0.0026,
+          "classification": "NEGATIVO_SUPERA_GOLD"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "title": "Interferencia electromagnética y estabilidad de pigmentos con óxidos metálicos",
+          "sim_query": 0.5218,
+          "delta_vs_best_gold": 0.002,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "title": "Fenómeno de metamerismo y selección de pigmentos bajo luz artificial",
+          "sim_query": 0.5192,
+          "delta_vs_best_gold": 0.0046,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+          "title": "Sesgos de percepción: el impacto de la temperatura de color en el visajismo",
+          "sim_query": 0.5154,
+          "delta_vs_best_gold": 0.0084,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "title": "Interferencia del micro-edema intersticial en la cromaticidad y el brillo cutáne",
+          "sim_query": 0.515,
+          "delta_vs_best_gold": 0.0088,
+          "classification": "EMPATE_PRACTICO"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "microblading-envejecimiento-009",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Adaptación del diseño en cejas con ptosis palpebral",
+          "len": 1113
+        },
+        {
+          "chunk_id": "microblading-psicologia-007",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Sesgos cognitivos en la evaluación del diseño de cejas",
+          "len": 1138
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Evaluación de la dispersión de luz en el tejido dérmico para la selecc",
+          "len": 1172
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-003",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "El fenómeno de metamerismo en la selección de pigmentos bajo iluminaci",
+          "len": 1039
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Influencia de la dinámica muscular orbicular en la simetría del diseño",
+          "len": 1269
+        },
+        {
+          "chunk_id": "visajismo-microblading-arquitectura-muscular-008",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Dinámica muscular facial y su efecto en la simetría del diseño",
+          "len": 1217
+        }
+      ],
+      "expF_doc_representation": {
+        "microblading-envejecimiento-009": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5222,
+          "sim_gold_vs_competitors": {}
+        },
+        "microblading-psicologia-007": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.4725,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5734,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-microblading-metamerismo-003": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5029,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-microblading-musculatura-orbicular-009": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5847,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-microblading-arquitectura-muscular-008": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5308,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 2,
+      "gold_in_top5": true
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "case_type": "MISS",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-cejas-microblading-efecto-tyndall-003",
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.4486,
+          0.4105,
+          0.5876,
+          0.4984,
+          0.5359,
+          0.5916
+        ],
+        "best_gold_score": 0.5916,
+        "competitors": [
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.584
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5824
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5786
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microbladi",
+            "sim": 0.5717
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+            "title": "Neuroergonomía del trazado: optimización de la cinemática manual y red",
+            "sim": 0.5708
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": 0.007600000000000051,
+          "gold_vs_mean_neg": 0.014100000000000001,
+          "gold_vs_max_neg": 0.007600000000000051
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "guias_unas-electrolisis-y-matriz-001",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.419
+        },
+        {
+          "gold": "guias_unas-electrolisis-y-matriz-001",
+          "competitor": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.4365
+        },
+        {
+          "gold": "guias_unas-electrolisis-y-matriz-001",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.4595
+        },
+        {
+          "gold": "guias_unas-electrolisis-y-matriz-001",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.4946
+        },
+        {
+          "gold": "guias_unas-electrolisis-y-matriz-001",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.4322
+        },
+        {
+          "gold": "terapia-laser-erbio-glass-002",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.4216
+        },
+        {
+          "gold": "terapia-laser-erbio-glass-002",
+          "competitor": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.4339
+        },
+        {
+          "gold": "terapia-laser-erbio-glass-002",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.4444
+        },
+        {
+          "gold": "terapia-laser-erbio-glass-002",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5128
+        },
+        {
+          "gold": "terapia-laser-erbio-glass-002",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.4122
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.6046
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.5477
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5095
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5737
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5798
+        },
+        {
+          "gold": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.5546
+        },
+        {
+          "gold": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "competitor": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.5707
+        },
+        {
+          "gold": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5829
+        },
+        {
+          "gold": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.6317
+        },
+        {
+          "gold": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5391
+        },
+        {
+          "gold": "visajismo-cejas-microblading-interaccion-laser-001",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.5316
+        },
+        {
+          "gold": "visajismo-cejas-microblading-interaccion-laser-001",
+          "competitor": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.4983
+        },
+        {
+          "gold": "visajismo-cejas-microblading-interaccion-laser-001",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5318
+        },
+        {
+          "gold": "visajismo-cejas-microblading-interaccion-laser-001",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5543
+        },
+        {
+          "gold": "visajismo-cejas-microblading-interaccion-laser-001",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5068
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.594
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "sim": 0.5333
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5395
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5873
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5664
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "visajismo-microblading-psicodermatologia-009",
+          "title": "Enfoque psicodermatológico en la consulta de microblading",
+          "sim_query": 0.584,
+          "delta_vs_best_gold": 0.0076,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "microblading-psicodermatologia-expectativas-009",
+          "title": "El rol de la psicodermatología en el diseño de cejas",
+          "sim_query": 0.5824,
+          "delta_vs_best_gold": 0.0092,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "title": "Propiocepción táctil y control de la presión manual",
+          "sim_query": 0.5786,
+          "delta_vs_best_gold": 0.013,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+          "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+          "sim_query": 0.5717,
+          "delta_vs_best_gold": 0.0199,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "title": "Neuroergonomía del trazado: optimización de la cinemática manual y reducción de ",
+          "sim_query": 0.5708,
+          "delta_vs_best_gold": 0.0208,
+          "classification": "EMPATE_PRACTICO"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "guias_unas-electrolisis-y-matriz-001",
+          "document_id": "guias_unas",
+          "title": "Electrólisis y daño matricial: riesgos de la remoción de cutícula con ",
+          "len": 1164
+        },
+        {
+          "chunk_id": "terapia-laser-erbio-glass-002",
+          "document_id": "tratamientos_esteticos_faciales",
+          "title": "Láser Erbio-Glass 1550nm: Fototermólisis Fraccionada No Ablativa",
+          "len": 1185
+        },
+        {
+          "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+          "len": 1274
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Mecanismos físico-químicos del efecto Tyndall en microblading mal ejec",
+          "len": 1259
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: rie",
+          "len": 1248
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "El reto de la piel seborreica: por qué el microblading no es la técnic",
+          "len": 1142
+        }
+      ],
+      "expF_doc_representation": {
+        "guias_unas-electrolisis-y-matriz-001": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5345,
+          "sim_gold_vs_competitors": {}
+        },
+        "terapia-laser-erbio-glass-002": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5458,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-enfermedades-autoinmunes-007": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5673,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-microblading-efecto-tyndall-003": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.604,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-microblading-interaccion-laser-001": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5472,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-microblading-piel-grasa-005": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5336,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 1,
+      "gold_in_top5": true
+    },
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "case_type": "CONTROL_POSITIVO",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+        "poros-clima-bogota-009",
+        "poros-humedad-bogota-008",
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.3505,
+          0.5807,
+          0.5721,
+          0.515
+        ],
+        "best_gold_score": 0.5807,
+        "competitors": [
+          {
+            "chunk_id": "maquillaje-eventos-presión-atmosférica-005",
+            "title": "Maquillaje para eventos en localizaciones de gran altitud: Gestión de ",
+            "sim": 0.5389
+          },
+          {
+            "chunk_id": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+            "title": "Gestión de la osmolaridad del estrato córneo ante el estrés ambiental",
+            "sim": 0.5157
+          },
+          {
+            "chunk_id": "colorimetria-capilar-humedad-006",
+            "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+            "sim": 0.5134
+          },
+          {
+            "chunk_id": "skincare-rutinas-quelacion-metales-006",
+            "title": "Quelación de metales pesados en la rutina urbana",
+            "sim": 0.5069
+          },
+          {
+            "chunk_id": "colorimetria-ambiental-005",
+            "title": "Hipoxia hipobárica en Bogotá y su efecto en la cromaticidad cutánea",
+            "sim": 0.5033
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": 0.04179999999999995,
+          "gold_vs_mean_neg": 0.06506,
+          "gold_vs_max_neg": 0.04179999999999995
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "competitor": "colorimetria-ambiental-005",
+          "sim": 0.3944
+        },
+        {
+          "gold": "poros-clima-bogota-009",
+          "competitor": "colorimetria-ambiental-005",
+          "sim": 0.6887
+        },
+        {
+          "gold": "poros-humedad-bogota-008",
+          "competitor": "colorimetria-ambiental-005",
+          "sim": 0.662
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "competitor": "colorimetria-ambiental-005",
+          "sim": 0.5055
+        },
+        {
+          "gold": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "competitor": "colorimetria-capilar-humedad-006",
+          "sim": 0.3846
+        },
+        {
+          "gold": "poros-clima-bogota-009",
+          "competitor": "colorimetria-capilar-humedad-006",
+          "sim": 0.5602
+        },
+        {
+          "gold": "poros-humedad-bogota-008",
+          "competitor": "colorimetria-capilar-humedad-006",
+          "sim": 0.5638
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "competitor": "colorimetria-capilar-humedad-006",
+          "sim": 0.5669
+        },
+        {
+          "gold": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "competitor": "maquillaje-eventos-presión-atmosférica-005",
+          "sim": 0.4823
+        },
+        {
+          "gold": "poros-clima-bogota-009",
+          "competitor": "maquillaje-eventos-presión-atmosférica-005",
+          "sim": 0.6754
+        },
+        {
+          "gold": "poros-humedad-bogota-008",
+          "competitor": "maquillaje-eventos-presión-atmosférica-005",
+          "sim": 0.6083
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "competitor": "maquillaje-eventos-presión-atmosférica-005",
+          "sim": 0.6106
+        },
+        {
+          "gold": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "competitor": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "sim": 0.5315
+        },
+        {
+          "gold": "poros-clima-bogota-009",
+          "competitor": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "sim": 0.6638
+        },
+        {
+          "gold": "poros-humedad-bogota-008",
+          "competitor": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "sim": 0.5868
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "competitor": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "sim": 0.7875
+        },
+        {
+          "gold": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "competitor": "skincare-rutinas-quelacion-metales-006",
+          "sim": 0.4337
+        },
+        {
+          "gold": "poros-clima-bogota-009",
+          "competitor": "skincare-rutinas-quelacion-metales-006",
+          "sim": 0.5551
+        },
+        {
+          "gold": "poros-humedad-bogota-008",
+          "competitor": "skincare-rutinas-quelacion-metales-006",
+          "sim": 0.5738
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "competitor": "skincare-rutinas-quelacion-metales-006",
+          "sim": 0.5305
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "maquillaje-eventos-presión-atmosférica-005",
+          "title": "Maquillaje para eventos en localizaciones de gran altitud: Gestión de la deshidr",
+          "sim_query": 0.5389,
+          "delta_vs_best_gold": 0.0418,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "title": "Gestión de la osmolaridad del estrato córneo ante el estrés ambiental",
+          "sim_query": 0.5157,
+          "delta_vs_best_gold": 0.065,
+          "classification": "SEPARACION_CLARA"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-humedad-006",
+          "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+          "sim_query": 0.5134,
+          "delta_vs_best_gold": 0.0673,
+          "classification": "SEPARACION_CLARA"
+        },
+        {
+          "chunk_id": "skincare-rutinas-quelacion-metales-006",
+          "title": "Quelación de metales pesados en la rutina urbana",
+          "sim_query": 0.5069,
+          "delta_vs_best_gold": 0.0738,
+          "classification": "SEPARACION_CLARA"
+        },
+        {
+          "chunk_id": "colorimetria-ambiental-005",
+          "title": "Hipoxia hipobárica en Bogotá y su efecto en la cromaticidad cutánea",
+          "sim_query": 0.5033,
+          "delta_vs_best_gold": 0.0774,
+          "classification": "SEPARACION_CLARA"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+          "document_id": "ingredientes_activos_contraindicaciones",
+          "title": "Ácido Capriloil Salicílico (LHA) y la descamación acumulativa en piele",
+          "len": 1132
+        },
+        {
+          "chunk_id": "poros-clima-bogota-009",
+          "document_id": "textura_poros",
+          "title": "Altitud y poros: adaptación cutánea en Bogotá y su impacto en la textu",
+          "len": 1106
+        },
+        {
+          "chunk_id": "poros-humedad-bogota-008",
+          "document_id": "textura_poros",
+          "title": "Efecto del clima de Bogotá en la textura de la piel",
+          "len": 923
+        },
+        {
+          "chunk_id": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "document_id": "skincare_rutinas_por_tipo_piel",
+          "title": "Gestión de la osmolaridad del estrato córneo en condiciones de baja hu",
+          "len": 1058
+        }
+      ],
+      "expF_doc_representation": {
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.6403,
+          "sim_gold_vs_competitors": {}
+        },
+        "poros-clima-bogota-009": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.6335,
+          "sim_gold_vs_competitors": {}
+        },
+        "poros-humedad-bogota-008": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.6454,
+          "sim_gold_vs_competitors": {}
+        },
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.5814,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 1,
+      "gold_in_top5": true
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "case_type": "CONTROL_POSITIVO",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "skincare-microbioma-limpiadores-004",
+        "skincare-rutinas-piel-deshidratada-004",
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.5729,
+          0.4811,
+          0.5262
+        ],
+        "best_gold_score": 0.5729,
+        "competitors": [
+          {
+            "chunk_id": "trend-limpieza-doble-006",
+            "title": "Doble limpieza: ¿Necesidad real o sobre-lavado?",
+            "sim": 0.5253
+          },
+          {
+            "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+            "title": "Maquillaje en ambientes de alta carga electrostática y adherencia de c",
+            "sim": 0.5232
+          },
+          {
+            "chunk_id": "skincare-limpieza-acustica-004",
+            "title": "Dispositivos de limpieza sónica: ¿Higiene profunda o erosión del manto",
+            "sim": 0.521
+          },
+          {
+            "chunk_id": "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+            "title": "Estrategias de higiene post-evento para pieles expuestas a ionización",
+            "sim": 0.5193
+          },
+          {
+            "chunk_id": "poros-doble-limpieza-004",
+            "title": "La doble limpieza como estrategia para la gestión de poros",
+            "sim": 0.5161
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": 0.047599999999999976,
+          "gold_vs_mean_neg": 0.051919999999999966,
+          "gold_vs_max_neg": 0.047599999999999976
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "skincare-microbioma-limpiadores-004",
+          "competitor": "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+          "sim": 0.6194
+        },
+        {
+          "gold": "skincare-rutinas-piel-deshidratada-004",
+          "competitor": "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+          "sim": 0.5326
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "competitor": "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+          "sim": 0.6592
+        },
+        {
+          "gold": "skincare-microbioma-limpiadores-004",
+          "competitor": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "sim": 0.5738
+        },
+        {
+          "gold": "skincare-rutinas-piel-deshidratada-004",
+          "competitor": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "sim": 0.5134
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "competitor": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "sim": 0.6006
+        },
+        {
+          "gold": "skincare-microbioma-limpiadores-004",
+          "competitor": "poros-doble-limpieza-004",
+          "sim": 0.5182
+        },
+        {
+          "gold": "skincare-rutinas-piel-deshidratada-004",
+          "competitor": "poros-doble-limpieza-004",
+          "sim": 0.5059
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "competitor": "poros-doble-limpieza-004",
+          "sim": 0.5693
+        },
+        {
+          "gold": "skincare-microbioma-limpiadores-004",
+          "competitor": "skincare-limpieza-acustica-004",
+          "sim": 0.6169
+        },
+        {
+          "gold": "skincare-rutinas-piel-deshidratada-004",
+          "competitor": "skincare-limpieza-acustica-004",
+          "sim": 0.5797
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "competitor": "skincare-limpieza-acustica-004",
+          "sim": 0.6204
+        },
+        {
+          "gold": "skincare-microbioma-limpiadores-004",
+          "competitor": "trend-limpieza-doble-006",
+          "sim": 0.6389
+        },
+        {
+          "gold": "skincare-rutinas-piel-deshidratada-004",
+          "competitor": "trend-limpieza-doble-006",
+          "sim": 0.5541
+        },
+        {
+          "gold": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "competitor": "trend-limpieza-doble-006",
+          "sim": 0.6263
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "trend-limpieza-doble-006",
+          "title": "Doble limpieza: ¿Necesidad real o sobre-lavado?",
+          "sim_query": 0.5253,
+          "delta_vs_best_gold": 0.0476,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "title": "Maquillaje en ambientes de alta carga electrostática y adherencia de contaminant",
+          "sim_query": 0.5232,
+          "delta_vs_best_gold": 0.0497,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "skincare-limpieza-acustica-004",
+          "title": "Dispositivos de limpieza sónica: ¿Higiene profunda o erosión del manto lipídico?",
+          "sim_query": 0.521,
+          "delta_vs_best_gold": 0.0519,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+          "title": "Estrategias de higiene post-evento para pieles expuestas a ionización",
+          "sim_query": 0.5193,
+          "delta_vs_best_gold": 0.0536,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "poros-doble-limpieza-004",
+          "title": "La doble limpieza como estrategia para la gestión de poros",
+          "sim_query": 0.5161,
+          "delta_vs_best_gold": 0.0568,
+          "classification": "COMPETENCIA_ESTRECHA"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "skincare-microbioma-limpiadores-004",
+          "document_id": "skincare_rutinas_por_tipo_piel",
+          "title": "El pH de los limpiadores como determinante del microbioma",
+          "len": 1065
+        },
+        {
+          "chunk_id": "skincare-rutinas-piel-deshidratada-004",
+          "document_id": "skincare_rutinas_por_tipo_piel",
+          "title": "Diferenciación clínica entre piel seca y piel deshidratada",
+          "len": 1231
+        },
+        {
+          "chunk_id": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "document_id": "skincare_rutinas_por_tipo_piel",
+          "title": "Estrategias de preservación del microbioma cutáneo en pieles reactivas",
+          "len": 1079
+        }
+      ],
+      "expF_doc_representation": {
+        "skincare-microbioma-limpiadores-004": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.5865,
+          "sim_gold_vs_competitors": {}
+        },
+        "skincare-rutinas-piel-deshidratada-004": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.5897,
+          "sim_gold_vs_competitors": {}
+        },
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002": {
+          "text_prefix": "Rutinas de skincare por tipo de piel — ",
+          "sim_query_to_docrep": 0.556,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 1,
+      "gold_in_top5": true
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "case_type": "CONTROL_POSITIVO",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "hidratacion-oclusiva-corporal-008",
+        "hidratacion-oclusivos-humectantes-009",
+        "hidrofaciales-tecnologia-006",
+        "urea-umbral-hidratacion-descamacion-009"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.5325,
+          0.5014,
+          0.516,
+          0.4714
+        ],
+        "best_gold_score": 0.5325,
+        "competitors": [
+          {
+            "chunk_id": "parches-hidrogel-ojos-003",
+            "title": "Parches de hidrogel para ojos: ¿Hidratación real o efecto oclusivo tem",
+            "sim": 0.5063
+          },
+          {
+            "chunk_id": "beautification-inyecciones-vitaminas-006",
+            "title": "Mesoterapia sin agujas (nanopore/infusión): ¿Eficacia real o hidrataci",
+            "sim": 0.5063
+          },
+          {
+            "chunk_id": "cuidado-corporal-mitos-exfoliacion-004",
+            "title": "Mito vs Realidad: La exfoliación corporal excesiva",
+            "sim": 0.4984
+          },
+          {
+            "chunk_id": "hidrodinamica-lamina-005",
+            "title": "La paradoja de la hidratación: balance hídrico y flexibilidad ungueal",
+            "sim": 0.4955
+          },
+          {
+            "chunk_id": "electrolitos-topicos-001",
+            "title": "Electrolitos en el Skincare: ¿Hidratación osmótica o placebo?",
+            "sim": 0.495
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": 0.0262,
+          "gold_vs_mean_neg": 0.032200000000000006,
+          "gold_vs_max_neg": 0.0262
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "hidratacion-oclusiva-corporal-008",
+          "competitor": "beautification-inyecciones-vitaminas-006",
+          "sim": 0.5329
+        },
+        {
+          "gold": "hidratacion-oclusivos-humectantes-009",
+          "competitor": "beautification-inyecciones-vitaminas-006",
+          "sim": 0.5257
+        },
+        {
+          "gold": "hidrofaciales-tecnologia-006",
+          "competitor": "beautification-inyecciones-vitaminas-006",
+          "sim": 0.5703
+        },
+        {
+          "gold": "urea-umbral-hidratacion-descamacion-009",
+          "competitor": "beautification-inyecciones-vitaminas-006",
+          "sim": 0.5278
+        },
+        {
+          "gold": "hidratacion-oclusiva-corporal-008",
+          "competitor": "cuidado-corporal-mitos-exfoliacion-004",
+          "sim": 0.5223
+        },
+        {
+          "gold": "hidratacion-oclusivos-humectantes-009",
+          "competitor": "cuidado-corporal-mitos-exfoliacion-004",
+          "sim": 0.5665
+        },
+        {
+          "gold": "hidrofaciales-tecnologia-006",
+          "competitor": "cuidado-corporal-mitos-exfoliacion-004",
+          "sim": 0.5197
+        },
+        {
+          "gold": "urea-umbral-hidratacion-descamacion-009",
+          "competitor": "cuidado-corporal-mitos-exfoliacion-004",
+          "sim": 0.5176
+        },
+        {
+          "gold": "hidratacion-oclusiva-corporal-008",
+          "competitor": "electrolitos-topicos-001",
+          "sim": 0.5351
+        },
+        {
+          "gold": "hidratacion-oclusivos-humectantes-009",
+          "competitor": "electrolitos-topicos-001",
+          "sim": 0.5781
+        },
+        {
+          "gold": "hidrofaciales-tecnologia-006",
+          "competitor": "electrolitos-topicos-001",
+          "sim": 0.4862
+        },
+        {
+          "gold": "urea-umbral-hidratacion-descamacion-009",
+          "competitor": "electrolitos-topicos-001",
+          "sim": 0.5552
+        },
+        {
+          "gold": "hidratacion-oclusiva-corporal-008",
+          "competitor": "hidrodinamica-lamina-005",
+          "sim": 0.5877
+        },
+        {
+          "gold": "hidratacion-oclusivos-humectantes-009",
+          "competitor": "hidrodinamica-lamina-005",
+          "sim": 0.6076
+        },
+        {
+          "gold": "hidrofaciales-tecnologia-006",
+          "competitor": "hidrodinamica-lamina-005",
+          "sim": 0.6076
+        },
+        {
+          "gold": "urea-umbral-hidratacion-descamacion-009",
+          "competitor": "hidrodinamica-lamina-005",
+          "sim": 0.538
+        },
+        {
+          "gold": "hidratacion-oclusiva-corporal-008",
+          "competitor": "parches-hidrogel-ojos-003",
+          "sim": 0.5825
+        },
+        {
+          "gold": "hidratacion-oclusivos-humectantes-009",
+          "competitor": "parches-hidrogel-ojos-003",
+          "sim": 0.5563
+        },
+        {
+          "gold": "hidrofaciales-tecnologia-006",
+          "competitor": "parches-hidrogel-ojos-003",
+          "sim": 0.4933
+        },
+        {
+          "gold": "urea-umbral-hidratacion-descamacion-009",
+          "competitor": "parches-hidrogel-ojos-003",
+          "sim": 0.496
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "parches-hidrogel-ojos-003",
+          "title": "Parches de hidrogel para ojos: ¿Hidratación real o efecto oclusivo temporal?",
+          "sim_query": 0.5063,
+          "delta_vs_best_gold": 0.0262,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "beautification-inyecciones-vitaminas-006",
+          "title": "Mesoterapia sin agujas (nanopore/infusión): ¿Eficacia real o hidratación superfi",
+          "sim_query": 0.5063,
+          "delta_vs_best_gold": 0.0262,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "cuidado-corporal-mitos-exfoliacion-004",
+          "title": "Mito vs Realidad: La exfoliación corporal excesiva",
+          "sim_query": 0.4984,
+          "delta_vs_best_gold": 0.0341,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "hidrodinamica-lamina-005",
+          "title": "La paradoja de la hidratación: balance hídrico y flexibilidad ungueal",
+          "sim_query": 0.4955,
+          "delta_vs_best_gold": 0.037,
+          "classification": "COMPETENCIA_ESTRECHA"
+        },
+        {
+          "chunk_id": "electrolitos-topicos-001",
+          "title": "Electrolitos en el Skincare: ¿Hidratación osmótica o placebo?",
+          "sim_query": 0.495,
+          "delta_vs_best_gold": 0.0375,
+          "classification": "COMPETENCIA_ESTRECHA"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "hidratacion-oclusiva-corporal-008",
+          "document_id": "cuidado_corporal_y_spa",
+          "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+          "len": 1188
+        },
+        {
+          "chunk_id": "hidratacion-oclusivos-humectantes-009",
+          "document_id": "cuidado_corporal_y_spa",
+          "title": "Mecanismos de hidratación: Diferenciación entre oclusivos y humectante",
+          "len": 1262
+        },
+        {
+          "chunk_id": "hidrofaciales-tecnologia-006",
+          "document_id": "tratamientos_esteticos_faciales",
+          "title": "Hidrofaciales: Más allá de la Limpieza Convencional",
+          "len": 1081
+        },
+        {
+          "chunk_id": "urea-umbral-hidratacion-descamacion-009",
+          "document_id": "ingredientes_activos_contraindicaciones",
+          "title": "Urea: El umbral de seguridad entre hidratación y queratolisis",
+          "len": 1156
+        }
+      ],
+      "expF_doc_representation": {
+        "hidratacion-oclusiva-corporal-008": {
+          "text_prefix": "Cuidado corporal y cabello — ",
+          "sim_query_to_docrep": 0.5523,
+          "sim_gold_vs_competitors": {}
+        },
+        "hidratacion-oclusivos-humectantes-009": {
+          "text_prefix": "Cuidado corporal y cabello — ",
+          "sim_query_to_docrep": 0.5426,
+          "sim_gold_vs_competitors": {}
+        },
+        "hidrofaciales-tecnologia-006": {
+          "text_prefix": "Cuidado corporal y cabello — ",
+          "sim_query_to_docrep": 0.4742,
+          "sim_gold_vs_competitors": {}
+        },
+        "urea-umbral-hidratacion-descamacion-009": {
+          "text_prefix": "Cuidado corporal y cabello — ",
+          "sim_query_to_docrep": 0.4928,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 1,
+      "gold_in_top5": true
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "case_type": "CONTROL_POSITIVO",
+      "support_status": "SUPPORTED",
+      "gold_chunks": [
+        "visajismo-cejas-diabetis-cicatrizacion-004",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "expA_query_document": {
+        "gold_scores": [
+          0.5827,
+          0.5895,
+          0.5628
+        ],
+        "best_gold_score": 0.5895,
+        "competitors": [
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5922
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5905
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5808
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microbladi",
+            "sim": 0.5784
+          },
+          {
+            "chunk_id": "visajismo-microblading-interaccion-medicamentosa-007",
+            "title": "Influencia de los retinoides tópicos en la integridad de la piel pre-p",
+            "sim": 0.5775
+          }
+        ],
+        "margins": {
+          "gold_vs_top1": -0.0026999999999999247,
+          "gold_vs_mean_neg": 0.005620000000000069,
+          "gold_vs_max_neg": -0.0026999999999999247
+        }
+      },
+      "expB_gold_competitor_sim": [
+        {
+          "gold": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.545
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.6046
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "microblading-psicodermatologia-expectativas-009",
+          "sim": 0.594
+        },
+        {
+          "gold": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5457
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5095
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-008",
+          "sim": 0.5395
+        },
+        {
+          "gold": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.592
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5737
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "sim": 0.5873
+        },
+        {
+          "gold": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "competitor": "visajismo-microblading-interaccion-medicamentosa-007",
+          "sim": 0.5922
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-microblading-interaccion-medicamentosa-007",
+          "sim": 0.5976
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-microblading-interaccion-medicamentosa-007",
+          "sim": 0.6036
+        },
+        {
+          "gold": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5646
+        },
+        {
+          "gold": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5798
+        },
+        {
+          "gold": "visajismo-cejas-microblading-piel-grasa-005",
+          "competitor": "visajismo-microblading-psicodermatologia-009",
+          "sim": 0.5664
+        }
+      ],
+      "expC_hard_negatives": [
+        {
+          "chunk_id": "microblading-psicodermatologia-expectativas-009",
+          "title": "El rol de la psicodermatología en el diseño de cejas",
+          "sim_query": 0.5922,
+          "delta_vs_best_gold": -0.0027,
+          "classification": "NEGATIVO_SUPERA_GOLD"
+        },
+        {
+          "chunk_id": "visajismo-microblading-psicodermatologia-009",
+          "title": "Enfoque psicodermatológico en la consulta de microblading",
+          "sim_query": 0.5905,
+          "delta_vs_best_gold": -0.001,
+          "classification": "NEGATIVO_SUPERA_GOLD"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "title": "Propiocepción táctil y control de la presión manual",
+          "sim_query": 0.5808,
+          "delta_vs_best_gold": 0.0087,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+          "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+          "sim_query": 0.5784,
+          "delta_vs_best_gold": 0.0111,
+          "classification": "EMPATE_PRACTICO"
+        },
+        {
+          "chunk_id": "visajismo-microblading-interaccion-medicamentosa-007",
+          "title": "Influencia de los retinoides tópicos en la integridad de la piel pre-procedimien",
+          "sim_query": 0.5775,
+          "delta_vs_best_gold": 0.012,
+          "classification": "EMPATE_PRACTICO"
+        }
+      ],
+      "expE_chunk_chars": [
+        {
+          "chunk_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Microblading en pacientes diabéticos: riesgos metabólicos y dermatológ",
+          "len": 1374
+        },
+        {
+          "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+          "len": 1274
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "document_id": "visajismo_cejas_microblading",
+          "title": "El reto de la piel seborreica: por qué el microblading no es la técnic",
+          "len": 1142
+        }
+      ],
+      "expF_doc_representation": {
+        "visajismo-cejas-diabetis-cicatrizacion-004": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5733,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-enfermedades-autoinmunes-007": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5673,
+          "sim_gold_vs_competitors": {}
+        },
+        "visajismo-cejas-microblading-piel-grasa-005": {
+          "text_prefix": "Visajismo y diseño de cejas — ",
+          "sim_query_to_docrep": 0.5336,
+          "sim_gold_vs_competitors": {}
+        }
+      },
+      "rank_of_best_gold": 3,
+      "gold_in_top5": true
+    }
+  ]
+}

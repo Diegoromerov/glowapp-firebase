@@ -1,0 +1,85 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786390912402-1-5c9a040b-impacto-de-la-quelacion-selectiva-en-la-prevencion-del-viraj",
+    "title": "Impacto de la quelación selectiva en la prevención del viraje cromático por metales pesados",
+    "content": "La presencia de metales de transición, como cobre, hierro y calcio, en la fibra capilar actúa como catalizador en la degradación oxidativa del peróxido de hidrógeno, provocando una polimerización incontrolada de los precursores de color. Este fenómeno, conocido como 'oxidación catalítica', es responsable de la pérdida prematura de la fidelidad del tono y del viraje hacia matices indeseados, especialmente en cabellos porosos. La implementación de agentes quelantes específicos, como el EDTA o el ácido etidrónico, durante el proceso de pre-tratamiento, permite secuestrar estos iones metálicos antes de la aplicación del tinte. Al neutralizar la actividad catalítica de los metales en la matriz queratínica, se estabiliza la cinética de formación del complejo de color, asegurando una mayor durabilidad y uniformidad cromática. La gestión de la calidad del agua de lavado y la aplicación de quelantes quelantes de alta afinidad representan una estrategia técnica avanzada para mitigar el estrés oxidativo innecesario y preservar la integridad de la cutícula durante el servicio de coloración permanente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "Acido etidronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:52.402Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786390912402-2-430942ae-efectos-de-la-presion-osmotica-en-la-penetracion-de-tintes-d",
+    "title": "Efectos de la presión osmótica en la penetración de tintes de baja masa molar",
+    "content": "La eficiencia en la penetración de los precursores de tinte en la corteza capilar está intrínsecamente ligada a la presión osmótica generada por la solución tintórea. Cuando la concentración de agentes alcalinizantes y precursores crea un gradiente osmótico, se facilita el movimiento de moléculas de baja masa molar a través de los canales de difusión de la matriz queratínica. Sin embargo, una presión osmótica mal regulada puede causar una hinchazón excesiva de la fibra, comprometiendo la integridad del complejo de membrana celular (CMC). El control preciso de la tonicidad de la emulsión permite optimizar la saturación del color sin recurrir a niveles de pH agresivos que desnaturalizan la queratina. Este enfoque termodinámico sugiere que la optimización de la difusión no solo depende de la apertura cuticular, sino del equilibrio de fuerzas electroquímicas y osmóticas que dirigen los pigmentos hacia el córtex. La manipulación de estos gradientes es fundamental para lograr resultados de coloración de alta definición en cabellos con daño estructural previo, minimizando la pérdida de hidratación y manteniendo la elasticidad natural de la hebra tras el proceso químico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12903",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes alcalinizantes"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisicoquimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:41:52.402Z"
+  }
+]

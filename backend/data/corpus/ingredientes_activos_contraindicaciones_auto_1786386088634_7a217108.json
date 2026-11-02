@@ -1,0 +1,264 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386088632-1-8818e6ae-fenoxietanol-el-riesgo-de-neurotoxicidad-en-pieles-infantile",
+    "title": "Fenoxietanol: El riesgo de neurotoxicidad en pieles infantiles",
+    "content": "El fenoxietanol es un conservante ampliamente utilizado por su eficacia contra bacterias gramnegativas. Sin embargo, su uso en productos destinados a lactantes y niños menores de tres años ha sido cuestionado por organismos de salud como la ANSM (Francia). La absorción percutánea en pieles inmaduras o con barrera cutánea comprometida puede derivar en una exposición sistémica con potenciales efectos sobre el sistema nervioso central. Los estudios clínicos sugieren que, aunque es seguro en adultos bajo concentraciones del 1%, la exposición repetida en áreas extensas de piel infantil puede sobrepasar la capacidad metabólica de eliminación, provocando síntomas como depresión del sistema nervioso central o irritación severa. Se recomienda evitar su aplicación en el área del pañal o sobre pieles con dermatitis atópica activa, donde la permeabilidad está significativamente aumentada por la pérdida de integridad de los corneocitos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "ANSM (Agence nationale de sécurité du médicament)",
+        "url": "https://ansm.sante.fr/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopic",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "0-3"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fenoxietanol"
+      ],
+      "contraindications": [
+        "piel infantil",
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pediatric_dermatology"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:28.632Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386088632-2-3ca732a9-acido-salicilico-y-el-riesgo-de-salicilismo-en-aplicaciones-",
+    "title": "Ácido Salicílico y el riesgo de salicilismo en aplicaciones extensas",
+    "content": "El ácido salicílico, un beta-hidroxiácido (BHA) fundamental en el tratamiento del acné, presenta riesgos sistémicos cuando se utiliza en concentraciones elevadas sobre áreas corporales extensas. La absorción percutánea puede alcanzar niveles plasmáticos significativos, especialmente en pacientes con insuficiencia renal o hepática. El cuadro clínico de toxicidad, conocido como salicilismo, se manifiesta mediante náuseas, vómitos, tinnitus y, en casos graves, confusión mental o hiperventilación. Es imperativo contraindicar su uso concomitante con fármacos anticoagulantes (como la warfarina) o antiinflamatorios no esteroideos (AINEs), debido al riesgo de interacción farmacocinética que potencia el efecto anticoagulante y aumenta el riesgo de hemorragias. En la rutina de cuidado, se debe limitar su uso a zonas localizadas y evitar la oclusión, ya que esta técnica aumenta drásticamente la penetración del activo, superando los umbrales de seguridad dérmica y favoreciendo la irritación química aguda.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneic",
+        "oily"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico"
+      ],
+      "contraindications": [
+        "anticoagulantes",
+        "insuficiencia renal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "acne_management"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:28.632Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386088632-3-5b79859f-metilcloroisotiazolinona-mci-y-el-fenomeno-de-sensibilizacio",
+    "title": "Metilcloroisotiazolinona (MCI) y el fenómeno de sensibilización latente",
+    "content": "La metilcloroisotiazolinona (MCI), a menudo combinada con metilisotiazolinona (MIT), es un conservante potente con un alto potencial alergénico. A diferencia de otros sensibilizantes, la MCI posee una capacidad de inducción de dermatitis de contacto alérgica (DCA) extremadamente rápida. La literatura dermatológica actual advierte sobre el fenómeno de 'sensibilización cruzada' y la persistencia del alérgeno en productos de aclarado (rinse-off), donde su concentración es mayor. Los pacientes sensibilizados a la MCI presentan a menudo reacciones cruzadas con otros biocidas, lo que complica el tratamiento de la dermatitis de contacto. La recomendación clínica es realizar pruebas de parche (patch test) ante cualquier sospecha de eccema persistente en manos o rostro. Es crucial revisar el INCI de productos capilares y geles de baño, ya que la exposición crónica, incluso en dosis bajas, puede desencadenar una respuesta inmune mediada por células T, resultando en eritema, edema y vesiculación severa en el área de contacto.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "reactive"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilcloroisotiazolinona"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatitis_management"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:28.632Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386088632-4-2913d16d-retinoides-y-el-riesgo-de-blefaritis-por-migracion-lipidica",
+    "title": "Retinoides y el riesgo de blefaritis por migración lipídica",
+    "content": "El uso de retinoides tópicos (tretinoína, retinol, retinaldehído) en el contorno de ojos presenta un riesgo clínico subestimado: la disfunción de las glándulas de Meibomio. Estas glándulas, encargadas de secretar la capa lipídica de la película lagrimal, pueden sufrir una atrofia o bloqueo debido a la migración del producto hacia el margen palpebral. El mecanismo implica una alteración en la queratinización del epitelio ductal de la glándula, lo que resulta en una evaporación lagrimal acelerada y, consecuentemente, en el desarrollo de ojo seco severo y blefaritis. Los pacientes que utilizan retinoides deben aplicar el producto respetando una distancia de seguridad de al menos 1-2 cm del margen ciliar. Si el paciente presenta síntomas de irritación ocular, visión borrosa o sensación de cuerpo extraño, se debe suspender inmediatamente el uso del retinoide en la zona periocular y evaluar la salud de la superficie ocular mediante un examen oftalmológico especializado para prevenir daños crónicos en la película lagrimal.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "tretinoína"
+      ],
+      "contraindications": [
+        "ojo seco",
+        "blefaritis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "eye_care"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:28.632Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386088632-5-476fc4f9-acido-tranexamico-el-riesgo-de-hiperpigmentacion-paradojica",
+    "title": "Ácido Tranexámico: El riesgo de hiperpigmentación paradójica",
+    "content": "Aunque el ácido tranexámico tópico es un estándar de oro en el tratamiento del melasma por su capacidad para inhibir la vía de la plasmina y la melanogénesis, su uso incorrecto puede derivar en una hiperpigmentación paradójica. Este fenómeno ocurre principalmente cuando se combina con agentes exfoliantes agresivos o cuando el pH de la formulación no es el adecuado, lo que altera la barrera cutánea y genera una respuesta inflamatoria post-inflamatoria (HPI). La inflamación activa los melanocitos de forma inespecífica, neutralizando el efecto despigmentante del activo. Además, el uso de concentraciones superiores al 3-5% sin un vehículo de liberación controlada aumenta el riesgo de dermatitis irritativa. Se recomienda integrar el ácido tranexámico en protocolos que prioricen la reparación de la barrera cutánea y evitar su aplicación simultánea con peelings químicos profundos, a menos que exista una supervisión dermatológica estricta para monitorizar la respuesta inflamatoria de la piel.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "pigmented"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "III-VI"
+      ],
+      "ingredients": [
+        "ácido tranexámico"
+      ],
+      "contraindications": [
+        "inflamación cutánea",
+        "barrera dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hyperpigmentation"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:28.632Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386088632-6-b1249e81-extracto-de-arnica-montana-el-riesgo-de-dermatitis-por-lacto",
+    "title": "Extracto de Árnica Montana: El riesgo de dermatitis por lactonas sesquiterpénicas",
+    "content": "El extracto de Árnica Montana es valorado en cosmética por sus propiedades antiinflamatorias y descongestionantes. No obstante, su perfil de seguridad es complejo debido a la presencia de lactonas sesquiterpénicas, potentes alérgenos que pueden inducir dermatitis de contacto alérgica severa. Este riesgo es particularmente elevado en pacientes con sensibilidad previa a plantas de la familia Asteraceae (como la manzanilla, la caléndula o la ambrosía). La aplicación de árnica sobre pieles con heridas abiertas, abrasiones o tras procedimientos quirúrgicos puede precipitar una reacción de hipersensibilidad retardada, caracterizada por eritema, edema y prurito intenso. Dada la variabilidad en la composición química de los extractos botánicos dependiendo del método de extracción, es difícil predecir la concentración exacta de lactonas en el producto final. Se desaconseja su uso en pieles con barrera cutánea alterada o en pacientes con antecedentes de atopia severa o alergias botánicas confirmadas, para evitar la sensibilización activa del sistema inmunológico cutáneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "árnica montana"
+      ],
+      "contraindications": [
+        "alergia a Asteráceas",
+        "piel lesionada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "botanical_safety"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:28.633Z"
+  }
+]

@@ -1,0 +1,311 @@
+{
+  "version": "1.0",
+  "description": "Dataset de evaluación para RAG GlowApp - 30 queries (10 skincare, 10 cabello, 10 cejas)",
+  "categories": {
+    "skincare": 10,
+    "cabello": 10,
+    "cejas": 10
+  },
+  "queries": [
+    {
+      "id": "skincare_001",
+      "category": "skincare",
+      "difficulty": "easy",
+      "query": "¿Qué es el bakuchiol y para qué sirve?",
+      "expected_answer_keywords": ["bakuchiol", "retinol", "alternativa", "natural", "anti-envejecimiento", "colágeno"],
+      "expected_chunks": ["chunk_skincare_bakuchiol_01", "chunk_skincare_retinol_alternatives_02"],
+      "expected_category": "ingredientes",
+      "metadata_filters": {}
+    },
+    {
+      "id": "skincare_002",
+      "category": "skincare",
+      "difficulty": "medium",
+      "query": "¿Puedo usar retinol si estoy embarazada?",
+      "expected_answer_keywords": ["embarazada", "contraindicado", "retinol", "vitamina A", "riesgo", "teratogénico"],
+      "expected_chunks": ["chunk_skincare_retinol_pregnancy_03", "chunk_skincare_pregnancy_safe_04"],
+      "expected_category": "contraindicaciones",
+      "metadata_filters": {}
+    },
+    {
+      "id": "skincare_003",
+      "category": "skincare",
+      "difficulty": "medium",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "expected_answer_keywords": ["piel grasa", "Bogotá", "húmedo", "limpiador", "sebo", "niacinamida", "ácido salicílico"],
+      "expected_chunks": ["chunk_skincare_routine_oily_05", "chunk_skincare_niacinamide_06", "chunk_skincare_climate_bogota_07"],
+      "expected_category": "rutinas",
+      "metadata_filters": { "skin_type": "grasa", "climate": "húmedo" }
+    },
+    {
+      "id": "skincare_004",
+      "category": "skincare",
+      "difficulty": "hard",
+      "query": "¿Qué me pongo en la cara si tengo acné y rosácea?",
+      "expected_answer_keywords": ["acné", "rosácea", "compatibilidad", "azelaico", "metronidazol", "suave", "calmante"],
+      "expected_chunks": ["chunk_skincare_acne_rosacea_08", "chunk_skincare_azelaic_acid_09", "chunk_skincare_calming_10"],
+      "expected_category": "condiciones",
+      "metadata_filters": {}
+    },
+    {
+      "id": "skincare_005",
+      "category": "skincare",
+      "difficulty": "medium",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "expected_answer_keywords": ["protector solar", "melasma", "sensible", "FPS 50", "físico", "óxido de zinc", "no comedogénico"],
+      "expected_chunks": ["chunk_skincare_sunscreen_melasma_11", "chunk_skincare_physical_sunscreen_12", "chunk_skincare_sensitive_skin_13"],
+      "expected_category": "protección solar",
+      "metadata_filters": { "skin_type": "sensible", "condition": "melasma" }
+    },
+    {
+      "id": "skincare_006",
+      "category": "skincare",
+      "difficulty": "easy",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "expected_answer_keywords": ["ácido hialurónico", "hidratación", "aplicar", "húmedo", "suero", "sellado"],
+      "expected_chunks": ["chunk_skincare_hyaluronic_14", "chunk_skincare_application_order_15"],
+      "expected_category": "ingredientes",
+      "metadata_filters": {}
+    },
+    {
+      "id": "skincare_007",
+      "category": "skincare",
+      "difficulty": "medium",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "expected_answer_keywords": ["nocturna", "anti-edad", "piel mixta", "35 años", "retinol", "péptidos", "cerámidas"],
+      "expected_chunks": ["chunk_skincare_routine_night_16", "chunk_skincare_retinol_start_17", "chunk_skincare_peptides_18"],
+      "expected_category": "rutinas",
+      "metadata_filters": { "skin_type": "mixta", "age_range": "30-40" }
+    },
+    {
+      "id": "skincare_008",
+      "category": "skincare",
+      "difficulty": "hard",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "expected_answer_keywords": ["hiperpigmentación", "post-inflamatoria", "piel morena", "tono", "vitamina C", "tranexámico", "paciencia"],
+      "expected_chunks": ["chunk_skincare_pih_dark_skin_19", "chunk_skincare_vitamin_c_20", "chunk_skincare_tranexamic_21"],
+      "expected_category": "condiciones",
+      "metadata_filters": { "skin_tone": "morena", "condition": "hiperpigmentación" }
+    },
+    {
+      "id": "skincare_009",
+      "category": "skincare",
+      "difficulty": "medium",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "expected_answer_keywords": ["niacinamida", "vitamina C", "combinar", "compatibles", "orden", "mañana", "noche"],
+      "expected_chunks": ["chunk_skincare_niacinamide_vitamin_c_22", "chunk_skincare_layering_23"],
+      "expected_category": "ingredientes",
+      "metadata_filters": {}
+    },
+    {
+      "id": "skincare_010",
+      "category": "skincare",
+      "difficulty": "easy",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "expected_answer_keywords": ["limpiador", "piel seca", "sensible", "suave", "cerámidas", "glicerina", "pH balanceado"],
+      "expected_chunks": ["chunk_skincare_cleanser_dry_24", "chunk_skincare_ceramides_25", "chunk_skincare_ph_balance_26"],
+      "expected_category": "limpieza",
+      "metadata_filters": { "skin_type": "seca", "skin_type": "sensible" }
+    },
+    {
+      "id": "cabello_001",
+      "category": "cabello",
+      "difficulty": "easy",
+      "query": "¿Qué es el low poo y no poo?",
+      "expected_answer_keywords": ["low poo", "no poo", "sulfatos", "lavado", "curly girl", "suave"],
+      "expected_chunks": ["chunk_hair_low_poo_01", "chunk_hair_curly_girl_02"],
+      "expected_category": "técnicas",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_002",
+      "category": "cabello",
+      "difficulty": "medium",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "expected_answer_keywords": ["decoloración", "dañado", "proteínas", "queratina", "bonding", "olaplex", "reparación"],
+      "expected_chunks": ["chunk_hair_bleach_damage_03", "chunk_hair_protein_treatment_04", "chunk_hair_bonding_05"],
+      "expected_category": "reparación",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_003",
+      "category": "cabello",
+      "difficulty": "medium",
+      "query": "Rutina para cabello rizado tipo 3B en Bogotá",
+      "expected_answer_keywords": ["rizado", "3B", "Bogotá", "humedad", "definición", "gel", "leave-in", "plopping"],
+      "expected_chunks": ["chunk_hair_curly_3b_06", "chunk_hair_humidity_bogota_07", "chunk_hair_plopping_08"],
+      "expected_category": "rutinas",
+      "metadata_filters": { "hair_type": "3B", "climate": "húmedo" }
+    },
+    {
+      "id": "cabello_004",
+      "category": "cabello",
+      "difficulty": "hard",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "expected_answer_keywords": ["caída", "post-parto", "estrés", "minoxidil", "biótina", "dermaroller", "paciencia"],
+      "expected_chunks": ["chunk_hair_postpartum_09", "chunk_hair_minoxidil_10", "chunk_hair_stress_loss_11"],
+      "expected_category": "caída",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_005",
+      "category": "cabello",
+      "difficulty": "easy",
+      "query": "¿Cómo evitar el frizz en cabello rizado?",
+      "expected_answer_keywords": ["frizz", "rizado", "hidratación", "seda", "microfibra", "difusor", "aceites"],
+      "expected_chunks": ["chunk_hair_frizz_control_12", "chunk_hair_diffuser_13", "chunk_hair_silk_pillowcase_14"],
+      "expected_category": "frizz",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_006",
+      "category": "cabello",
+      "difficulty": "medium",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "expected_answer_keywords": ["champú", "graso", "cuero cabelludo", "puntas secas", "equilibrio", "sulfatos suaves"],
+      "expected_chunks": ["chunk_hair_shampoo_oily_scalp_15", "chunk_hair_dry_ends_16", "chunk_hair_balanced_17"],
+      "expected_category": "champú",
+      "metadata_filters": { "scalp_type": "graso", "ends_type": "secas" }
+    },
+    {
+      "id": "cabello_007",
+      "category": "cabello",
+      "difficulty": "medium",
+      "query": "Protección térmica para plancha y secador uso diario",
+      "expected_answer_keywords": ["protección térmica", "plancha", "secador", "diario", "spray", "180°C", "siliconas"],
+      "expected_chunks": ["chunk_hair_heat_protectant_18", "chunk_hair_daily_styling_19"],
+      "expected_category": "protección térmica",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_008",
+      "category": "cabello",
+      "difficulty": "hard",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "expected_answer_keywords": ["casero", "profesional", "hidratación", "profunda", "mascarilla", "queratina", "frecuencia"],
+      "expected_chunks": ["chunk_hair_diy_vs_pro_20", "chunk_hair_deep_conditioning_21", "chunk_hair_keratin_22"],
+      "expected_category": "hidratación",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_009",
+      "category": "cabello",
+      "difficulty": "medium",
+      "query": "Cómo crecer el cabello más rápido y fuerte",
+      "expected_answer_keywords": ["crecer", "rápido", "fuerte", "masaje", "circulación", "nutrientes", "recorte", "paciencia"],
+      "expected_chunks": ["chunk_hair_growth_23", "chunk_hair_scalp_massage_24", "chunk_hair_trim_25"],
+      "expected_category": "crecimiento",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cabello_010",
+      "category": "cabello",
+      "difficulty": "easy",
+      "query": "Mejor aceite para puntas abiertas",
+      "expected_answer_keywords": ["aceite", "puntas abiertas", "argán", "coco", "jojoba", "sellar", "reparar"],
+      "expected_chunks": ["chunk_hair_oils_split_ends_26", "chunk_hair_argan_27", "chunk_hair_sealing_28"],
+      "expected_category": "aceites",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_001",
+      "category": "cejas",
+      "difficulty": "easy",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "expected_answer_keywords": ["microblading", "semipermanente", "1-2 años", "pelo a pelo", "retoque", "cicatrización"],
+      "expected_chunks": ["chunk_brows_microblading_01", "chunk_brows_duration_02"],
+      "expected_category": "microblading",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_002",
+      "category": "cejas",
+      "difficulty": "medium",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "expected_answer_keywords": ["microblading", "microshading", "nanoblading", "diferencia", "técnica", "agujas", "efecto"],
+      "expected_chunks": ["chunk_brows_techniques_03", "chunk_brows_comparison_04"],
+      "expected_category": "técnicas",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_003",
+      "category": "cejas",
+      "difficulty": "medium",
+      "query": "Forma de cejas ideal para cara redonda",
+      "expected_answer_keywords": ["cara redonda", "cejas", "arco", "angular", "estructura", "alargada", "evitar redondeadas"],
+      "expected_chunks": ["chunk_brows_face_round_05", "chunk_brows_arch_06", "chunk_brows_shape_guide_07"],
+      "expected_category": "visajismo",
+      "metadata_filters": { "face_shape": "redonda" }
+    },
+    {
+      "id": "cejas_004",
+      "category": "cejas",
+      "difficulty": "hard",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "expected_answer_keywords": ["asimétricas", "corrección", "micropigmentación", "diseño", "medidas", "punto de oro", "simetría"],
+      "expected_chunks": ["chunk_brows_asymmetry_08", "chunk_brows_golden_ratio_09", "chunk_brows_correction_10"],
+      "expected_category": "corrección",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_005",
+      "category": "cejas",
+      "difficulty": "medium",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "expected_answer_keywords": ["post-microblading", "cuidados", "evitar", "agua", "sol", "sudar", "crema cicatrizante", "costras"],
+      "expected_chunks": ["chunk_brows_aftercare_11", "chunk_brows_healing_12", "chunk_brows_touchup_13"],
+      "expected_category": "cuidados",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_006",
+      "category": "cejas",
+      "difficulty": "easy",
+      "query": "Mejor lápiz de cejas para look natural",
+      "expected_answer_keywords": ["lápiz", "cejas", "natural", "pelo a pelo", "tono", "ceja", "espooly", "difuminar"],
+      "expected_chunks": ["chunk_brows_pencil_natural_14", "chunk_brows_spoolie_15"],
+      "expected_category": "maquillaje",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_007",
+      "category": "cejas",
+      "difficulty": "medium",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "expected_answer_keywords": ["contraindicaciones", "embarazo", "lactancia", "queloides", "diabetes", "anticoagulantes", "piel grasa"],
+      "expected_chunks": ["chunk_brows_contraindications_16", "chunk_brows_skin_types_17"],
+      "expected_category": "contraindicaciones",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_008",
+      "category": "cejas",
+      "difficulty": "hard",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "expected_answer_keywords": ["remoción", "mal hecho", "láser", "salina", "riesgos", "cicatrices", "sesiones", "dermógrafo"],
+      "expected_chunks": ["chunk_brows_removal_18", "chunk_brows_laser_removal_19", "chunk_brows_saline_20"],
+      "expected_category": "remoción",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_009",
+      "category": "cejas",
+      "difficulty": "medium",
+      "query": "Henna brows vs tinte tradicional: diferencias y duración",
+      "expected_answer_keywords": ["henna brows", "tinte", "tradicional", "duración", "natural", "cobertura", "canas"],
+      "expected_chunks": ["chunk_brows_henna_21", "chunk_brows_tint_22", "chunk_brows_gray_coverage_23"],
+      "expected_category": "tinte",
+      "metadata_filters": {}
+    },
+    {
+      "id": "cejas_010",
+      "category": "cejas",
+      "difficulty": "easy",
+      "query": "Cómo cepillar y fijar cejas con gel transparente",
+      "expected_answer_keywords": ["cepillar", "fijar", "gel", "transparente", "hacia arriba", "laminado", "efecto"],
+      "expected_chunks": ["chunk_brows_gel_24", "chunk_brows_lamination_25", "chunk_brows_brushing_26"],
+      "expected_category": "maquillaje",
+      "metadata_filters": {}
+    }
+  ]
+}

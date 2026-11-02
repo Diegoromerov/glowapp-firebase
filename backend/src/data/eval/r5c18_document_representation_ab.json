@@ -1,0 +1,54 @@
+{
+  "cycle": "30",
+  "experiment": "R5-C18",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "baseline_r5c_unchanged": true,
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO — referencia oficial" },
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "reproducibility": "A ≡ B — métricas idénticas en ambas corridas (A R@5=0.6267 MRR=0.7222; B R@5=0.4656 MRR=0.6356)",
+  "design": {
+    "arm_a": "passage embedding = content (pipeline actual exacto) — embeddings BD existentes, 0 llamadas nuevas",
+    "arm_b": "passage embedding = category + seccion + title + content (separador ' | ') — EN MEMORIA, sin reingesta",
+    "constant": "query idéntica, modelo idéntico, GOLD-V5 idéntico, K=10, cosine",
+    "variable_unicamente": "representación documental",
+    "pool": "top-50 de A + golds por query (cobertura acotada documentada)",
+    "cost": { "embeddings_b_generated": 487, "errors": 2, "note": "1 error por texto >512 tokens (skincare-rutinas-glicobiologia), 1 adicional; delay 120ms" }
+  },
+  "metrics_15_queries": {
+    "A_control": { "p1": 0.4667, "p3": 0.6667, "p5": 0.4667, "r5": 0.6267, "mrr": 0.7222 },
+    "B_experimental": { "p1": 0.4667, "p3": 0.4222, "p5": 0.3467, "r5": 0.4656, "mrr": 0.6356 },
+    "delta": { "r5": -0.1611, "mrr": -0.0866, "p5": -0.12, "p3": -0.2445 }
+  },
+  "groups": {
+    "misses_3": { "A": { "r5": 0.4111, "mrr": 0.8333 }, "B": { "r5": 0.3555, "mrr": 0.8333 }, "delta_r5": -0.0556 },
+    "resto_12": { "A": { "r5": 0.6806, "mrr": 0.6944 }, "B": { "r5": 0.4931, "mrr": 0.5861 }, "delta_r5": -0.1875 }
+  },
+  "classification": { "improved": 2, "regressed": 5, "unchanged": 8, "total": 15 },
+  "the_3_misses": {
+    "cabello_002": { "A_goldRank": 1, "B_goldRank": 1, "A_goldScore": 0.5552, "B_goldScore": 0.5591, "delta_score": 0.0039, "verdict": "UNCHANGED — gold score sube marginalmente, ranking no cambia" },
+    "cejas_004": { "A_goldRank": 2, "B_goldRank": 2, "A_goldScore": 0.5238, "B_goldScore": 0.5397, "delta_score": 0.0159, "verdict": "UNCHANGED pero R@5 empeora (0.5→0.33) — el prefijo infla competidores más que el gold" },
+    "cejas_008": { "A_goldRank": 1, "B_goldRank": 1, "A_goldScore": 0.5916, "B_goldScore": 0.6186, "delta_score": 0.027, "verdict": "UNCHANGED — gold score sube, ranking no mejora" }
+  },
+  "key_finding": "El prefijo dominio+título+título ELEVA la similitud absoluta del gold (confirmando R5-C17 EXP F: +0.004..+0.027 aquí, +0.04..+0.24 en R5-C17 con medida directa) PERO TAMBIÉN eleva la similitud de los competidores del mismo dominio, que suben MÁS → el ranking relativo empeora (R@5 −0.16). La medida directa de similitud (R5-C17) era engañosa: medía solo el gold, no la separación relativa.",
+  "hard_negative_analysis": "B no separa mejor gold vs competidores: aumenta todas las similitudes del pool de forma no discriminativa. La banda de colisión 0.50-0.59 se desplaza pero no se abre.",
+  "verdict": "HYPOTHESIS-DISCONFIRMED",
+  "verdict_rationale": "La hipótesis EMBEDDING-DOCUMENT (dominio+título+contenido mejora retrieval) NO se reproduce en el A/B completo: B empeora R@5 (−0.1611), MRR (−0.0866), P@5 (−0.12) y P@3 (−0.2445), con 5 regresiones y solo 2 mejoras. Los 3 misses NO se recuperan (todos UNCHANGED). El mecanismo: el prefijo de dominio infla la similitud de todos los chunks del mismo dominio (competidores incluidos), no solo del gold — aumenta similitudes absolutas, no discriminación relativa.",
+  "answers": {
+    "b_mejora_global": "NO — empeora (ΔR@5 −0.16, ΔMRR −0.09)",
+    "misses_recuperados": "0/3 (los 3 permanecen UNCHANGED)",
+    "controles_preservados": "NO — 5 regresiones incluyendo skincare_003, skincare_007, cejas_005 (controles que funcionaban)",
+    "separacion_mejorada": "NO — la banda de colisión se desplaza pero no se abre; el prefijo infla todo el pool",
+    "reproducible": "SÍ — A≡B idéntico en ambas corridas",
+    "por_que_r5c17_mostro_mejora": "R5-C17 EXP F medía sim(query,gold) DIRECTA (solo el gold), no el ranking relativo frente a competidores. La similitud absoluta sube, pero la separación relativa empeora — la medida era incompleta"
+  },
+  "recommendation_r5c19": {
+    "1": "DESCARTAR la variante dominio+título+contenido como representación documental — evidencia negativa reproducible (ΔR@5 −0.16, 5 regresiones, 0 misses recuperados)",
+    "2": "El cuello de botella real se mantiene en la DISCRIMINACIÓN del embedding en la banda 0.50-0.59 (colisión semántica), NO en la representación textual del documento",
+    "3": "El siguiente experimento causal: A/B controlado de MODELO de embeddings (misma BD, mismo gold, mismas queries) — la hipótesis de colisión semántica sugiere que un modelo con mayor discriminación (otro embedding 1024d o 768d) puede abrir la banda",
+    "4": "Alternativa sin cambiar modelo: probar representaciones documentales más sutiles (título SOLO añadido al contenido, sin dominio repetido) — pero con la advertencia de que el A/B debe medir RANKING completo, no similitud directa",
+    "5": "GOLD-V5 y baseline R5-C intactos; los 3 misses permanecen como casos de evaluación"
+  },
+  "not_to_touch": ["motor productivo", "modelo de embeddings (hasta A/B)", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

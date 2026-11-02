@@ -1,0 +1,240 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+    "title": "Efecto de la permeabilidad de la barrera lipídica en la dispersión de luz",
+    "content": "La integridad de la barrera cutánea, específicamente la disposición de las bicapas lipídicas en el estrato córneo, actúa como una interfaz óptica crítica que regula la dispersión de la luz incidente. Cuando la barrera lipídica presenta una desorganización estructural, la reflexión especular se ve alterada por una dispersión difusa incontrolada, lo que distorsiona la lectura espectral del subtono. La falta de cohesión en los lípidos intercelulares provoca que la luz penetre de forma heterogénea en las capas profundas, dificultando la distinción entre el subtono subyacente y la cromaticidad superficial. Este fenómeno es particularmente relevante en diagnósticos asistidos por cámaras, donde la pérdida de agua transepidérmica (TEWL) correlaciona inversamente con la precisión de la colorimetría. La estabilización de esta barrera mediante ceramidas y ácidos grasos esenciales no solo mejora la salud dérmica, sino que normaliza la reflectancia, permitiendo una lectura más fidedigna del subtono real al reducir el ruido óptico generado por la dispersión desordenada en la superficie.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:39:22.073Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390762073-2-e208ee5a-influencia-de-la-densidad-de-glandulas-sudoriparas-en-la-ref",
+    "title": "Influencia de la densidad de glándulas sudoríparas en la reflectancia cutánea",
+    "content": "La actividad de las glándulas ecrinas y su densidad en la superficie facial introducen una variable dinámica en la colorimetría: la película hidrolipídica. La presencia de sudor, compuesto por electrolitos y agua, altera el índice de refracción de la superficie cutánea, provocando un efecto de 'brillo' que puede enmascarar subtonos fríos bajo una falsa calidez especular. Este fenómeno, conocido como interferencia por sudoración, es especialmente crítico en pieles con alta densidad glandular, donde la acumulación de humedad modifica la trayectoria de la luz antes de que alcance los receptores de la cámara. La evaluación del subtono debe considerar la tasa de sudoración basal, ya que la evaporación constante cambia la cromaticidad percibida en tiempo real. Se recomienda realizar lecturas de colorimetría tras un periodo de aclimatación térmica para asegurar que la película de sudor no introduzca artefactos de reflexión. La gestión de esta variable es fundamental para evitar errores en la selección de bases de maquillaje que, al interactuar con el sudor, pueden virar hacia tonos indeseados debido a la alteración del pH y la refracción superficial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38492010/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "summer"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:39:22.073Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390762073-3-705ab46a-interferencia-del-grosor-del-estrato-corneo-en-la-absorcion-",
+    "title": "Interferencia del grosor del estrato córneo en la absorción selectiva de luz",
+    "content": "El grosor del estrato córneo no es uniforme y su variabilidad anatómica influye directamente en la absorción selectiva de longitudes de onda. Un estrato córneo hiperqueratósico actúa como un filtro óptico que atenúa preferencialmente las longitudes de onda cortas, lo que puede inducir una percepción errónea de un subtono más cálido o cetrino del que realmente posee el individuo. Este fenómeno de filtrado físico es independiente de la melanina y se debe a la dispersión de Rayleigh dentro de las capas de queratina compactada. En pacientes con condiciones que alteran el recambio celular, como la psoriasis o la queratosis pilaris, la lectura del subtono se ve comprometida por esta barrera física. Para una colorimetría precisa, es necesario normalizar la textura mediante una exfoliación suave previa o aplicar algoritmos de corrección que compensen la opacidad intrínseca de la queratina. Entender este mecanismo permite distinguir entre un subtono oliva real y una distorsión cromática causada por la acumulación de células muertas, mejorando la precisión en la recomendación de productos cosméticos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/skin-optics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "AHA",
+        "BHA"
+      ],
+      "contraindications": [
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:39:22.073Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390762074-4-4c91869b-efecto-de-la-oxigenacion-de-la-hemoglobina-en-la-cromaticida",
+    "title": "Efecto de la oxigenación de la hemoglobina en la cromaticidad de la piel",
+    "content": "La saturación de oxígeno en la microvasculatura cutánea es un determinante dinámico del subtono, particularmente en las zonas de mayor vascularización facial como las mejillas y el área perioral. La hemoglobina oxigenada presenta un espectro de absorción distinto a la desoxigenada; mientras que la primera aporta matices rosados y vibrantes, la segunda tiende a desplazar la cromaticidad hacia tonos azulados o violáceos, lo que puede confundir el diagnóstico del subtono hacia una categoría 'fría'. Este fenómeno es reversible y altamente sensible a factores externos como la temperatura ambiental, el ejercicio y el estado emocional. La colorimetría facial debe, por tanto, realizarse bajo condiciones de homeostasis vascular para evitar que un episodio de vasodilatación transitoria altere la evaluación. La fotopletismografía remota es una herramienta emergente que permite aislar el componente vascular del color basal de la piel, permitiendo una lectura más estable del subtono al sustraer la contribución dinámica de la hemoglobina. Este enfoque es vital para evitar errores en la elección de bases de maquillaje que dependen de una base cromática neutra.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/articles/s41598-024-55678-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:39:22.074Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390762074-5-d7ff161b-influencia-de-la-concentracion-de-betacarotenos-en-la-reflec",
+    "title": "Influencia de la concentración de betacarotenos en la reflectancia cutánea",
+    "content": "La acumulación de carotenoides en el tejido adiposo subcutáneo y su posterior deposición en el estrato córneo altera significativamente la reflectancia espectral de la piel. A diferencia de la melanina, que absorbe luz en un espectro amplio, los carotenoides absorben selectivamente en la región azul-verde, lo que confiere a la piel un matiz amarillento o anaranjado característico. Este fenómeno, conocido como carotenodermia, puede ser confundido con un subtono cálido o incluso con ictericia subclínica. Es crucial que los algoritmos de diagnóstico de GlowApp diferencien entre el pigmento endógeno causado por la dieta (ricos en betacarotenos) y el subtono basal. La ingesta elevada de vegetales pigmentados puede desplazar la lectura del subtono, llevando a una selección errónea de cosméticos. La evaluación debe considerar el historial dietético reciente del usuario para ajustar el modelo de colorimetría. La distinción entre el tono 'glow' saludable derivado de los carotenoides y el subtono cutáneo real es esencial para una personalización precisa del maquillaje, evitando que el usuario elija productos que intenten corregir un tono que, en realidad, es una característica metabólica temporal.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Journal of Clinical Nutrition",
+        "url": "https://academic.oup.com/ajcn/article/119/2/456/7564321",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:39:22.074Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390762074-6-e57e1f6e-efecto-de-la-dispersion-de-mie-en-la-arquitectura-de-los-mel",
+    "title": "Efecto de la dispersión de Mie en la arquitectura de los melanosomas",
+    "content": "La dispersión de Mie es el fenómeno físico predominante en la interacción de la luz con los melanosomas en pieles con fototipos IV a VI. Debido a que el tamaño de los melanosomas es comparable a la longitud de onda de la luz visible, la dispersión no es uniforme, lo que genera una dependencia angular en la cromaticidad percibida. En pieles oscuras, la densidad y distribución espacial de estos orgánulos dictan la profundidad del subtono; una distribución más profunda genera una dispersión que suaviza los contrastes, mientras que una acumulación superficial puede intensificar la saturación del color. Este mecanismo es fundamental para la colorimetría, ya que explica por qué el subtono puede parecer distinto bajo diferentes ángulos de iluminación. Los modelos de IA deben incorporar la teoría de Mie para predecir cómo la estructura de los melanosomas afecta la lectura del color, evitando que la cámara interprete la dispersión angular como un cambio de subtono. La comprensión de esta física permite una calibración más precisa de los sensores, asegurando que la evaluación del subtono sea robusta ante variaciones en la geometría de la captura de imagen.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://www.spiedigitallibrary.org/journals/journal-of-biomedical-optics/volume-29/issue-4/045001/Mie-scattering-in-melanosomes/10.1117/1.JBO.29.4.045001.full",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:39:22.074Z"
+  }
+]

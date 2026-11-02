@@ -1,0 +1,194 @@
+[
+  {
+    "chunk_id": "colorimetria-neuro-cognitiva-001",
+    "title": "El papel de la percepción neuro-cognitiva en la evaluación del subtono",
+    "content": "La evaluación del subtono cutáneo no es un proceso puramente físico, sino un fenómeno neuro-cognitivo complejo. Según estudios publicados en el Journal of Vision, el cerebro humano emplea mecanismos de constancia de color para interpretar la reflectancia cutánea, lo que a menudo induce errores sistemáticos al juzgar el subtono bajo condiciones de iluminación variable. La corteza visual primaria y las áreas de asociación procesan la luz reflejada no solo basándose en la longitud de onda, sino en el contexto circundante de los objetos. En la práctica clínica, esto explica por qué el 'sesgo de confirmación' afecta la elección de maquillaje: si un profesional espera un subtono cálido debido a la presencia de eritema, su cerebro tiende a ignorar las señales de cianosis sutil o frialdad subyacente. La neurociencia cognitiva sugiere que la fatiga cromática —la saturación de los fotorreceptores tras una exposición prolongada a un solo espectro de color— reduce la capacidad de discriminar entre subtonos neutros y oliva. Es crucial implementar pausas visuales o utilizar cartas de color normalizadas (como las escalas Munsell) para resetear la percepción. La estandarización del entorno de diagnóstico no es solo una recomendación técnica, sino una necesidad biológica para mitigar estos sesgos inherentes al sistema visual humano que pueden llevar a diagnósticos erróneos en la colorimetría facial y la selección de productos dermocosméticos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Vision",
+        "url": "https://jov.arvojournals.org/article.aspx?articleid=2764835",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:22:24.232Z"
+  },
+  {
+    "chunk_id": "fotobiologia-espectro-visible-002",
+    "title": "Interferencia de la luz HEV en la lectura del subtono",
+    "content": "La luz de alta energía visible (HEV), comúnmente conocida como luz azul, tiene una longitud de onda corta (400-500 nm) que penetra más profundamente en la dermis que la luz UV. Estudios en la American Academy of Dermatology sugieren que la exposición crónica a la luz HEV no solo induce la hiperpigmentación, sino que altera la reflectancia espectral cutánea en tiempo real. Al realizar un diagnóstico de subtono, la presencia de luz HEV artificial (pantallas, iluminación LED fría) puede inducir una dispersión selectiva que enmascara los matices subyacentes de la hemoglobina y la melanina. Esto genera una lectura distorsionada donde pieles con subtonos cálidos pueden aparecer erróneamente frías debido al realce de las longitudes de onda azules por parte del estrato córneo. Para una colorimetría precisa, es imperativo realizar las pruebas bajo una fuente de luz con un Índice de Reproducción Cromática (IRC) superior a 95 y una temperatura de color de 5000K-5500K (luz día neutral). La falta de control sobre este espectro es una de las causas principales de la 'oxidación aparente' de las bases de maquillaje, donde el producto parece cambiar de color simplemente porque la interacción luz-piel ha sido alterada por fuentes lumínicas con picos de emisión en el azul.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/blue-light-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:22:24.232Z"
+  },
+  {
+    "chunk_id": "biofisica-anisotropia-003",
+    "title": "Anisotropía óptica: el efecto de la textura en la reflexión del subtono",
+    "content": "La piel humana no es una superficie plana y uniforme; presenta una microtopografía compleja que se denomina anisotropía óptica. Según investigaciones en dermatología física, la rugosidad del estrato córneo provoca que la luz se disperse de manera no uniforme, lo que influye directamente en la percepción del subtono. En pieles con textura irregular, ya sea por cicatrices atróficas, poros dilatados o rítides, la reflexión especular es menor y la dispersión difusa es mayor. Esto genera una percepción de 'opacidad' que puede confundirse con un subtono grisáceo o cenizo. Clínicamente, el desafío radica en que la textura altera la profundidad de penetración de la luz, afectando cómo se perciben los cromóforos profundos (hemoglobina, melanina). Al aplicar bases de maquillaje, el producto rellena los valles de esta microtopografía, cambiando drásticamente la reflectancia de la zona. Es fundamental entender que la colorimetría no debe evaluarse solo sobre una superficie lisa; el diagnóstico debe considerar la textura basal, ya que una piel con alta anisotropía requerirá bases con mayor capacidad de difusión de luz (light-diffusing pigments) para no acentuar el aspecto cenizo o desvitalizado que suele interpretarse erróneamente como un subtono frío o desaturado.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456382/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:22:24.232Z"
+  },
+  {
+    "chunk_id": "biofisica-fotona-rayleigh-007",
+    "title": "Fotónica de la piel: Dispersión de Rayleigh y subtono",
+    "content": "La física de la luz aplicada a la dermatología explica fenómenos que a menudo atribuimos erróneamente al subtono. La dispersión de Rayleigh ocurre cuando la luz interactúa con partículas pequeñas (como proteínas estructurales en la dermis) cuya dimensión es menor a la longitud de onda de la luz incidente. Esto favorece la dispersión de longitudes de onda cortas (azul/violeta) frente a las largas (rojo/amarillo). En áreas con una dermis menos densa o con pérdida de colágeno, esta dispersión de Rayleigh es más evidente, confiriendo a la piel un aspecto azulado o frío. Es un fenómeno físico, no una propiedad del pigmento melánico. Este es un punto crítico en la colorimetría de pieles maduras: la pérdida de densidad dérmica aumenta la dispersión de Rayleigh, lo que hace que la piel parezca más 'fría' de lo que realmente es según su síntesis de melanina. Los profesionales deben evitar diagnosticar subtonos fríos basados únicamente en la apariencia de las zonas con mayor transparencia dérmica. El uso de bases con partículas reflectantes que compensen esta pérdida de densidad ayuda a restaurar la armonía cromática, evitando que el rostro luzca desvitalizado por este efecto de dispersión física.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Photonics",
+        "url": "https://www.nature.com/nphoton/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos-opticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:22:24.232Z"
+  },
+  {
+    "chunk_id": "nutricion-carotenoides-008",
+    "title": "Saturación de carotenoides dietéticos y su impacto cromático",
+    "content": "La ingesta dietética de carotenoides (beta-caroteno, licopeno, luteína) puede alterar la cromaticidad cutánea de forma medible. A diferencia de la melanina, que se produce endógenamente, los carotenoides se depositan en el tejido adiposo subcutáneo y en el estrato córneo. Estudios publicados en el American Journal of Clinical Nutrition han demostrado que una dieta rica en estos pigmentos aumenta la reflectancia en las longitudes de onda amarillas y rojas, lo que puede inducir un 'brillo saludable' que se interpreta como un subtono cálido. Sin embargo, en niveles altos, esto puede llevar a la carotenemia, donde la piel adquiere una coloración naranja-amarillenta que puede ser confundida con ictericia o con un subtono oliva muy saturado. Es vital que el profesional de colorimetría pregunte sobre cambios drásticos en la dieta o suplementación, ya que este viraje no es permanente ni fisiológico en el sentido de la melanogénesis, sino un efecto de depósito pigmentario exógeno. La colorimetría realizada bajo estas condiciones dará un resultado sesgado hacia la calidez, lo que puede llevar a elegir bases con subtonos excesivamente amarillos que, al disminuir la ingesta de estos nutrientes, se verán desajustados y artificiales en el rostro del paciente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Journal of Clinical Nutrition",
+        "url": "https://academic.oup.com/ajcn",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carotenoides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:22:24.232Z"
+  }
+]

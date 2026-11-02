@@ -1,0 +1,89 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-001-autofagia-ritmo-circadiano",
+    "title": "Modulación de la autofagia circadiana mediante péptidos tópicos en pieles con fatiga metabólica",
+    "content": "La regulación del ciclo circadiano en los queratinocitos es fundamental para la homeostasis cutánea. La autofagia, proceso de degradación y reciclaje de orgánulos dañados, alcanza su pico durante la noche. En pacientes con pieles fatigadas o expuestas a luz azul constante, este proceso se ve interrumpido, acumulando desechos celulares que aceleran el envejecimiento prematuro. El uso de péptidos biomiméticos que activan la vía AMPK (proteína quinasa activada por AMP) permite 'resetear' este reloj molecular. La literatura científica, respaldada por estudios en Journal of Investigative Dermatology, sugiere que la aplicación tópica de péptidos señalizadores antes del descanso nocturno favorece la eliminación de proteínas carboniladas, mejorando la turgencia y la resiliencia mecánica de la dermis al día siguiente. No se trata solo de hidratación, sino de optimizar el metabolismo bioenergético celular que, bajo el estrés urbano de Bogotá, se ve severamente comprometido por la falta de sincronización del ciclo vigilia-sueño.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00001-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "madura"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos biomiméticos",
+        "activadores de AMPK"
+      ],
+      "contraindications": [
+        "rosácea activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "reparacion-nocturna"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:27.474Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-002-microbioma-postbioticos",
+    "title": "Estabilización del ecosistema cutáneo mediante postbióticos en pieles con disbiosis",
+    "content": "La microbiota residente no es solo un espectador; es una barrera activa contra patógenos. En entornos urbanos, la contaminación y el uso excesivo de limpiadores con pH alcalino destruyen la diversidad bacteriana, favoreciendo la proliferación de cepas proinflamatorias. La tendencia clínica actual se desplaza de los probióticos (difíciles de estabilizar en fórmulas cosméticas) hacia los postbióticos: metabolitos producidos por bacterias beneficiosas como el Lactobacillus plantarum. Estos compuestos, al ser aplicados tópicamente, reducen la expresión de mediadores inflamatorios y fortalecen la unión estrecha (tight junctions) entre corneocitos. Según publicaciones en PubMed, los postbióticos ofrecen una estabilidad superior y una acción inmediata sobre la modulación de la respuesta inmune cutánea sin riesgo de sobrecrecimiento microbiano no deseado. Es una estrategia de mantenimiento crucial para pieles que presentan brotes intermitentes de sensibilidad sin causa alérgica aparente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central / NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "postbióticos",
+        "lisados bacterianos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma-cutaneo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:27.474Z"
+  }
+]

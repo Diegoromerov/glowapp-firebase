@@ -1,0 +1,84 @@
+[
+  {
+    "chunk_id": "textura_poros-senescencia-proteica-001",
+    "title": "La degradación de las chaperonas moleculares y la pérdida de integridad del poro",
+    "content": "La integridad estructural del ostium folicular no depende únicamente de la matriz extracelular, sino también de la proteostasis intracelular mantenida por chaperonas moleculares como las proteínas de choque térmico (HSP70/HSP90). Con la edad, la eficiencia de estas chaperonas disminuye, lo que resulta en un plegamiento proteico defectuoso en los queratinocitos del canal folicular. Este fenómeno de senescencia molecular debilita la cohesión mecánica del ostium, permitiendo una dilatación pasiva que no responde a tratamientos tópicos superficiales. Investigaciones publicadas en 'Journal of Investigative Dermatology' sugieren que la restauración de la red de chaperonas es fundamental para prevenir la laxitud folicular asociada al envejecimiento. El estrés crónico y la radiación UV aceleran este agotamiento proteostático, comprometiendo la capacidad de reparación del epitelio folicular. Es vital entender que, a nivel subcelular, el poro no solo se estira por sebo, sino que colapsa estructuralmente por la imposibilidad de mantener proteínas funcionales en su citoesqueleto. Los tratamientos que estimulan la autofagia proteica y la expresión de chaperonas están emergiendo como la nueva frontera en la gestión de la textura folicular, moviéndose más allá de la simple exfoliación queratolítica tradicional.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02145-2/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "ectoin"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:36:54.631Z"
+  },
+  {
+    "chunk_id": "textura_poros-microambiente-gaseoso-002",
+    "title": "Hipoxia folicular y su impacto en la queratinización anómala",
+    "content": "El microambiente dentro del canal folicular es intrínsecamente pobre en oxígeno, pero fluctuaciones en la vascularización perifolicular pueden alterar este estado, induciendo una respuesta de hipoxia celular mediada por el factor inducible por hipoxia (HIF-1alpha). Cuando el folículo experimenta un estrés hipóxico, los queratinocitos alteran su programa de diferenciación, favoreciendo una queratinización acelerada y disfuncional que contribuye a la obstrucción del ostium. Este proceso no solo genera una textura rugosa, sino que también crea un entorno anaeróbico que favorece la proliferación de bacterias como Cutibacterium acnes, exacerbando la inflamación subclínica. Estudios en PubMed indican que el suministro de oxígeno local es crítico para mantener la homeostasis de la queratinización. La mejora de la microcirculación mediante agentes vasoactivos tópicos o masaje facial especializado podría, teóricamente, estabilizar este microambiente. La hipoxia folicular es un factor a menudo ignorado en la dermatología cosmética, siendo una causa raíz de la textura irregular en pacientes con piel grasa que no responden a los tratamientos convencionales de ácido salicílico. La comprensión de este gradiente de oxígeno es esencial para diseñar estrategias de cuidado que aborden la salud del poro desde su raíz metabólica y no solo desde su superficie.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38215647/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:36:54.631Z"
+  }
+]

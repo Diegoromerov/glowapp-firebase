@@ -1,0 +1,58 @@
+# Reglas de alerta Prometheus · GlowApp backend
+# P0 infra/observabilidad #4 (t_fix_infra_04)
+#
+# Cubren las señales P0 mínimas que antes no existían: caída del proceso, tasa de
+# error HTTP y degradación de la capa de datos. Las métricas que consumen provienen
+# de backend/src/metrics/prometheus.js (prefijo `glowapp_`) y sin este plano de
+# exposición ninguna de estas reglas habría tenido datos con los que dispararse.
+
+groups:
+  - name: glowapp-backend-p0
+    rules:
+      - alert: GlowAppBackendDown
+        expr: glowapp_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backend GlowApp caído"
+          description: "glowapp_up es 0: el proceso no responde al scrapeo de Prometheus."
+
+      - alert: GlowAppHighHttpErrorRate
+        expr: |
+          sum(rate(glowapp_http_requests_total{status_code=~"5.."}[5m]))
+          /
+          sum(rate(glowapp_http_requests_total[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Tasa de error HTTP 5xx > 5%"
+          description: "Más del 5% de las peticiones responden 5xx durante 5 minutos."
+
+      - alert: GlowAppDataLayerUnavailable
+        expr: glowapp_db_available == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Capa de datos no disponible"
+          description: "glowapp_db_available es 0: PostgreSQL no está disponible."
+
+      - alert: GlowAppDataLayerDegraded
+        expr: glowapp_db_degraded == 1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Capa de datos degradada (fallback en memoria)"
+          description: "glowapp_db_degraded es 1: el backend sirve con la capa de datos degradada."
+
+      - alert: GlowAppHighLatencyP95
+        expr: histogram_quantile(0.95, sum(rate(glowapp_http_request_duration_seconds_bucket[5m])) by (le)) > 2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latencia p95 > 2s"
+          description: "El percentil 95 de la duración de peticiones supera 2 segundos."

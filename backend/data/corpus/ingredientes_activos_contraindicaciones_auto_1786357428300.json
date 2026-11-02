@@ -1,0 +1,178 @@
+[
+  {
+    "chunk_id": "bio-fermentos-microbioma-001",
+    "title": "Bio-fermentos en cosmética: Riesgos de proliferación microbiana",
+    "content": "La tendencia de los ingredientes fermentados (Galactomyces, Bifida, Lactobacillus ferment) ha crecido exponencialmente en el mercado de skincare. Aunque ofrecen beneficios como la mejora en la absorción y la producción de postbióticos, presentan riesgos significativos en términos de estabilidad microbiológica. Al ser sustratos orgánicos, los fermentos son altamente susceptibles a la contaminación bacteriana si el sistema conservante no es robusto. La literatura advierte que la presencia de péptidos y azúcares residuales en estos extractos puede actuar como medio de cultivo para patógenos oportunistas si el pH del producto final se desvía de su rango de diseño. Es crucial diferenciar entre un filtrado de fermento (estéril) y un extracto de fermento crudo. El uso de productos con fermentos que han perdido su hermeticidad o que carecen de conservantes de amplio espectro (como los 'clean beauty' sin preservantes) es una contraindicación clínica en pacientes con pieles comprometidas, dermatitis atópica o inmunocompromiso, debido al riesgo de sobreinfección por microorganismos gramnegativos o levaduras, alterando el equilibrio del microbioma cutáneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed (National Center for Biotechnology Information)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33621453/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Galactomyces ferment filtrate",
+        "Bifida ferment lysate"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "piel inmunocomprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_microbiologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:23:30.511Z"
+  },
+  {
+    "chunk_id": "niacinamida-hidrolisis-ph-002",
+    "title": "Niacinamida: El riesgo de hidrólisis y formación de ácido nicotínico",
+    "content": "La niacinamida (Vitamina B3) es un estándar en el manejo de la barrera cutánea y el control de sebo. Sin embargo, su estabilidad química es estrictamente dependiente del pH de la fórmula. A niveles de pH inferiores a 5.0, especialmente en presencia de calor, la niacinamida puede sufrir una hidrólisis química convirtiéndose en ácido nicotínico. Este metabolito es un potente vasodilatador que, al contacto tópico, provoca un eritema cutáneo intenso, sensación de ardor y 'flushing' (enrojecimiento súbito), lo cual es frecuentemente confundido por el usuario con una reacción alérgica o una respuesta de 'desintoxicación'. Este fenómeno es particularmente crítico en rutinas que combinan productos con AHAs de bajo pH o Vitamina C pura (ácido L-ascórbico) con niacinamida sin un tiempo de espera adecuado. La evidencia clínica sugiere que el eritema inducido por ácido nicotínico es una respuesta farmacológica directa y no una sensibilización inmunológica, pero debe evitarse para no comprometer la adherencia del paciente al tratamiento dermatológico debido a la incomodidad subjetiva que genera.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/niacinamide-safety-ph/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida"
+      ],
+      "contraindications": [
+        "rosácea",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "interacciones_quimicas"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:23:30.511Z"
+  },
+  {
+    "chunk_id": "quelacion-peptidos-cobre-003",
+    "title": "Péptidos de Cobre y Vitamina C: El riesgo de inestabilidad por quelación",
+    "content": "La interacción entre los péptidos de cobre (GHK-Cu) y el ácido L-ascórbico (Vitamina C) representa un desafío técnico en la formulación y uso de activos. Los péptidos de cobre son moléculas complejas donde el ion metálico está coordinado con un péptido. Al aplicar un agente reductor fuerte y ácido como la Vitamina C, se puede inducir una reacción de quelación o de oxidación-reducción que desestabiliza la estructura del péptido, haciendo que pierda su eficacia biológica y, potencialmente, liberando iones de cobre libres. Estos iones libres pueden actuar como pro-oxidantes en la superficie cutánea, generando radicales libres en lugar de neutralizarlos. Aunque no existe un riesgo de toxicidad sistémica grave, la combinación resulta en una pérdida total de la inversión económica del paciente y una posible irritación cutánea innecesaria. Se recomienda enfáticamente separar su uso en el tiempo (AM/PM) o mediante el uso de vehículos que garanticen la encapsulación. La literatura dermatológica subraya que los péptidos de cobre requieren un ambiente de pH cercano al fisiológico (5.5-6.0) para mantener su integridad, siendo incompatibles con la mayoría de sueros antioxidantes de alta acidez.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/1/200",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos de cobre",
+        "ácido L-ascórbico"
+      ],
+      "contraindications": [
+        "uso simultáneo sin separación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_inteligente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:23:30.511Z"
+  },
+  {
+    "chunk_id": "cloruro-benzalconio-microbioma-008",
+    "title": "Cloruro de benzalconio: Riesgos de sensibilización y disrupción",
+    "content": "El cloruro de benzalconio es un compuesto de amonio cuaternario utilizado como conservante y agente antiséptico en diversos productos de higiene facial y tónicos. A pesar de su eficacia contra una amplia gama de microorganismos, su perfil de seguridad en productos de aplicación permanente (leave-on) es controvertido. La evidencia clínica indica que el cloruro de benzalconio puede causar dermatitis de contacto irritativa y alérgica, incluso en concentraciones bajas, debido a su capacidad para desnaturalizar proteínas de la superficie cutánea. Más preocupante es su impacto en el microbioma cutáneo: al ser un antiséptico potente, su uso crónico tiende a eliminar indiscriminadamente bacterias comensales protectoras, lo que puede abrir la puerta a la colonización por microorganismos resistentes o patógenos oportunistas. En GlowApp, desaconsejamos el uso de productos que contengan cloruro de benzalconio en rutinas diarias para pieles con tendencia a la rosácea o dermatitis, ya que la disrupción de la ecología microbiana cutánea suele exacerbar la inflamación crónica y la reactividad de la barrera cutánea a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "rosacea",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_conservantes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:23:30.511Z"
+  }
+]

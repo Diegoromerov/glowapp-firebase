@@ -1,0 +1,345 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-001",
+    "title": "Maquillaje en entornos de alta exposición a gases de combustión y calidad del aire",
+    "content": "La exposición a gases de combustión en eventos urbanos o industriales altera la homeostasis cutánea. Estudios en PubMed indican que los hidrocarburos aromáticos policíclicos (HAP) inducen estrés oxidativo mediante la activación del receptor de hidrocarburos de arilo (AhR), exacerbando la inflamación subyacente. Al aplicar maquillaje en estos entornos, es vital utilizar bases con polímeros formadores de película que actúen como barrera física, evitando que las partículas PM2.5 penetren en los poros, lo cual podría desencadenar comedogénesis reactiva. La recomendación clínica es optar por formulaciones con agentes quelantes y antioxidantes tópicos (vitamina C, E, niacinamida) que neutralicen los radicales libres antes de que interactúen con la epidermis. Es crucial evitar texturas demasiado oclusivas que, al mezclarse con la polución ambiental, puedan favorecer la proliferación bacteriana del microbioma cutáneo. Un sellado adecuado con polvos traslúcidos minerales ayuda a mantener la integridad de la emulsión durante la jornada, minimizando el contacto directo de los contaminantes con la barrera lipídica, especialmente en pieles con patologías preexistentes como dermatitis atópica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30671607/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "vitamina C",
+        "vitamina E"
+      ],
+      "contraindications": [
+        "productos altamente comedogénicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-002",
+    "title": "Maquillaje en eventos con alta exposición a ozono troposférico (O3)",
+    "content": "El ozono troposférico, un contaminante gaseoso potente, es un oxidante agresivo que compromete la función barrera de la piel al agotar los lípidos del estrato córneo y las vitaminas antioxidantes. En eventos al aire libre con alta radiación solar, el O3 se potencia, acelerando la peroxidación lipídica. Para el maquillaje en estas condiciones, la estrategia clínica consiste en aplicar una base con antioxidantes de amplio espectro debajo del pigmento para prevenir el daño oxidativo inducido por el ozono. La American Academy of Dermatology sugiere que las barreras físicas, como las películas de sílice o polímeros de silicona volátil, reducen la reactividad cutánea ante este gas. Se debe evitar el uso de productos que contengan aceites altamente insaturados, ya que estos son más susceptibles a la oxidación acelerada por el O3, pudiendo generar subproductos irritantes que causan eritema o prurito. La técnica de aplicación debe ser ligera pero uniforme, utilizando esponjas de baja porosidad para asegurar una barrera continua y prevenir la penetración del ozono en los surcos cutáneos, manteniendo la estabilidad del maquillaje durante eventos prolongados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/pollution",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas volátiles",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "aceites insaturados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-003",
+    "title": "Desafíos de la estabilidad cosmética en entornos de alta ionización positiva",
+    "content": "La ionización positiva del aire, frecuentemente observada en oficinas con sistemas de climatización centralizados o cerca de maquinaria eléctrica, puede influir en la adherencia electrostática de las partículas de maquillaje. Cuando la carga del aire es positiva, las partículas de pigmento y polvos sueltos tienden a repelerse de la superficie cutánea o, por el contrario, a atraer partículas de polvo ambiental hacia la piel, causando una oclusión folicular indirecta. Clínicamente, esto aumenta el riesgo de dermatitis por contacto irritativa. Para mitigar este fenómeno, es recomendable utilizar fijadores con carga neutra o agentes antiestáticos que estabilicen la capa superficial del maquillaje. La literatura técnica sugiere que los polímeros dieléctricos ayudan a neutralizar este efecto, manteniendo el pigmento en su lugar sin interferir con la respiración cutánea. Es vital realizar una limpieza profunda post-evento para eliminar los residuos de partículas adheridas, ya que el estrés electrostático puede alterar el pH de la piel, debilitando la barrera ácida natural. La hidratación previa con sueros de bajo peso molecular es fundamental para compensar la deshidratación inducida por estos entornos de alta carga iónica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "polvos sueltos sin fijación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-004",
+    "title": "Maquillaje bajo iluminación de espectro variable y metamerismo cutáneo",
+    "content": "El metamerismo es un fenómeno óptico donde dos colores parecen coincidir bajo una fuente de luz pero difieren bajo otra. En eventos con iluminación de espectro variable (como LEDs RGB o luces de escenario), el maquillaje puede presentar variaciones cromáticas inesperadas. Clínicamente, el desafío no es solo estético, sino de percepción de la salud cutánea. Un maquillaje que parece uniforme bajo luz natural puede resaltar imperfecciones o eritemas bajo luces de espectro estrecho debido a la falta de longitudes de onda que reflejen el tono real de la piel. Es fundamental realizar pruebas de color bajo condiciones de iluminación similares a las del evento. Para pieles con eritema o rosácea, el uso de correctores con pigmentos de contraste (verde para neutralizar el rojo) debe ser calculado con precisión, ya que bajo luces de espectro cálido estos pueden acentuar la palidez. La recomendación es priorizar bases con alta carga de pigmentos minerales de alta pureza que ofrezcan una reflectancia espectral estable, evitando el uso de polvos con excesivo dióxido de titanio que generen efectos de 'flashback' o un aspecto cenizo bajo iluminación artificial intensa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales"
+      ],
+      "contraindications": [
+        "exceso de dióxido de titanio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estetica-tecnica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-005",
+    "title": "Gestión del pH cutáneo ante el estrés emocional en eventos sociales",
+    "content": "El estrés emocional desencadena la liberación de cortisol, el cual tiene un impacto directo en la homeostasis cutánea, incluyendo la alteración de la producción de sebo y la variación del pH de la superficie. Un pH alcalinizado por estrés puede comprometer la adherencia de las bases de maquillaje, provocando oxidación prematura del pigmento y migración. Clínicamente, es esencial preparar la piel con tónicos equilibrantes antes de la aplicación del maquillaje para restablecer el manto ácido. Además, el uso de bases de larga duración con polímeros que resistan la variación del pH es crucial para mantener la estabilidad del producto. La recomendación experta es optar por productos 'long-wear' formulados para ser compatibles con las fluctuaciones del pH, evitando aquellos que contengan ingredientes con alto potencial de irritación en pieles estresadas. La gestión del estrés cutáneo también implica hidratación profunda, ya que la deshidratación transepidérmica aumenta durante episodios de estrés, lo que altera la textura final del maquillaje. Mantener la barrera cutánea reforzada con ceramidas y ácido hialurónico ayuda a mitigar los efectos del cortisol en la adherencia cosmética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30149-1/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "productos con pH alcalino"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-006",
+    "title": "Maquillaje en ambientes de baja presión atmosférica (Cabinas presurizadas)",
+    "content": "La presurización de cabinas en viajes aéreos o cámaras de baja presión genera un ambiente de baja humedad relativa y menor presión parcial de oxígeno, lo que impacta la microcirculación cutánea y la estabilidad de las emulsiones cosméticas. En estas condiciones, las emulsiones agua-en-aceite tienden a ser más estables que las formulaciones altamente acuosas, las cuales pueden sufrir desgasificación o evaporación acelerada. Clínicamente, la piel experimenta una pérdida de hidratación transepidérmica (TEWL) significativa. Para el maquillaje en estos entornos, se recomienda el uso de báls uso de bálsamos o bases con alto contenido de oclusivos (como escualano o mantecas vegetales) que mantengan la hidratación sin ocluir los poros. La técnica de aplicación debe evitar el uso de productos en aerosol, ya que la presión interna del envase puede verse alterada, comprometiendo la distribución del producto. Es vital asegurar una limpieza exhaustiva post-evento para eliminar cualquier residuo que, debido a la baja presión, haya podido penetrar más profundamente en los folículos pilosebáceos, evitando así la formación de microcomedones.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "escualano",
+        "mantecas vegetales"
+      ],
+      "contraindications": [
+        "productos en aerosol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-007",
+    "title": "Maquillaje y protección ante campos electromagnéticos (CEM) en eventos tecnológicos",
+    "content": "La exposición prolongada a campos electromagnéticos (CEM) en entornos con alta densidad tecnológica ha despertado interés sobre su posible interacción con pigmentos metálicos presentes en ciertos maquillajes, como los óxidos de hierro o pigmentos nacarados. Aunque la evidencia clínica sobre la toxicidad cutánea directa es limitada, existe una preocupación teórica sobre la inducción de corrientes de Foucault en partículas metálicas que podrían calentar la superficie cutánea o alterar la estabilidad de las emulsiones. Para prevenir cualquier interacción, se recomienda el uso de productos cosméticos certificados como libres de partículas metálicas ferromagnéticas de gran tamaño y priorizar bases con polímeros que creen una barrera dieléctrica. La limpieza post-evento es esencial para eliminar cualquier partícula residual, ya que la acumulación de metales en la piel, combinada con la exposición a CEM, podría fomentar la formación de radicales libres mediante reacciones de Fenton. Se recomienda optar por productos con alta pureza mineral y evitar el uso de cosméticos con acabados metálicos intensos en ferias tecnológicas o entornos con alta radiación electromagnética para minimizar riesgos potenciales de reactividad cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/electromagnetic-fields",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "pigmentos minerales"
+      ],
+      "contraindications": [
+        "acabados metálicos de baja pureza"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microclima-esfuerzo-008",
+    "title": "Maquillaje en eventos con alta concentración de CO2 e impacto metabólico cutáneo",
+    "content": "En entornos cerrados con alta concentración de CO2, la piel puede experimentar una ligera acidificación del pH superficial debido a la acumulación de ácido carbónico en el sudor y la humedad ambiente. Esta variación del pH puede afectar la estabilidad de las emulsiones cosméticas, provocando que los pigmentos se separen o que la base pierda adherencia. Clínicamente, el metabolismo cutáneo se ve alterado, lo que puede aumentar la producción de sebo como respuesta compensatoria. Para el maquillaje, se recomienda utilizar bases con agentes amortiguadores de pH (buffers) que mantengan la integridad del color y la textura durante el evento. Es fundamental evitar productos altamente oclusivos que, al combinarse con el exceso de CO2 y el aumento de temperatura local, favorezcan la oclusión folicular. La recomendación es usar texturas ligeras y transpirables, preferiblemente con activos seborreguladores como el zinc, que ayuden a mantener el equilibrio de la piel. Una limpieza post-evento es obligatoria para eliminar residuos que, bajo estas condiciones, pueden volverse más irritantes para la barrera cutánea, previniendo dermatitis de contacto irritativa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "agentes buffer"
+      ],
+      "contraindications": [
+        "productos altamente oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:33:20.552Z"
+  }
+]

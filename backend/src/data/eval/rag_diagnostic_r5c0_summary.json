@@ -1,0 +1,40 @@
+{
+  "queries_clasificacion": {
+    "skincare_003": "B-PARTIAL",
+    "skincare_005": "B-PARTIAL",
+    "skincare_006": "B-PARTIAL",
+    "skincare_007": "C-MISS",
+    "skincare_008": "B-PARTIAL",
+    "skincare_009": "E-RANKING-MISS",
+    "skincare_010": "C-MISS",
+    "cabello_002": "C-MISS",
+    "cabello_004": "C-MISS",
+    "cabello_006": "B-PARTIAL",
+    "cabello_008": "C-MISS",
+    "cejas_001": "A-SUCCESS",
+    "cejas_002": "E-RANKING-MISS",
+    "cejas_003": "C-MISS",
+    "cejas_004": "C-MISS",
+    "cejas_005": "B-PARTIAL",
+    "cejas_007": "C-MISS",
+    "cejas_008": "C-MISS"
+  },
+  "counts": {
+    "B-PARTIAL": 6,
+    "C-MISS": 9,
+    "E-RANKING-MISS": 2,
+    "A-SUCCESS": 1
+  },
+  "n_expected_unicos": 63,
+  "n_expected_recuperados_top10": 17,
+  "threshold_analysis": {
+    "expected_con_score_ge_045": 17,
+    "total_expected_score_pairs": 17,
+    "min_score": 0.4762
+  },
+  "separacion_semantica": {
+    "relevant_media": 0.5624,
+    "nonrelevant_media": 0.5169,
+    "gap": 0.0455
+  }
+}

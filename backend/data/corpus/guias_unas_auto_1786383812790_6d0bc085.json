@@ -1,0 +1,252 @@
+[
+  {
+    "chunk_id": "guias_unas-1786383812786-1-3c3f40a2-efecto-de-la-presion-osmotica-en-el-desprendimiento-de-bases",
+    "title": "Efecto de la presión osmótica en el desprendimiento de bases rubber",
+    "content": "El desprendimiento prematuro de las bases rubber no siempre responde a una mala preparación mecánica, sino a menudo a un desequilibrio en la presión osmótica de la lámina ungueal. La lámina ungueal es una estructura porosa que intercambia humedad con el entorno; cuando se aplican productos de alta viscosidad y baja permeabilidad al vapor de agua, se genera una acumulación de humedad en la interfaz uña-producto. Este gradiente osmótico crea una presión hidrostática que debilita las fuerzas de Van der Waals y los enlaces covalentes del adhesivo. Para mitigar este fenómeno, es imperativo asegurar una deshidratación controlada y evitar la oclusión total en uñas con tendencia a la hiperhidrosis. La gestión de este equilibrio hídrico es fundamental para prolongar la retención sin comprometer la integridad estructural de la queratina, evitando el efecto de 'burbuja' que facilita la proliferación de microorganismos oportunistas bajo la capa de gel.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32452109/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "acrilatos"
+      ],
+      "contraindications": [
+        "hiperhidrosis severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_base"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:43:32.786Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383812786-2-92378b18-fotopolimerizacion-y-el-fenomeno-de-inhibicion-por-oxigeno",
+    "title": "Fotopolimerización y el fenómeno de inhibición por oxígeno",
+    "content": "La capa pegajosa que permanece tras el curado de geles UV es el resultado directo de la inhibición por oxígeno, un proceso donde las moléculas de oxígeno atmosférico reaccionan con los radicales libres antes de que estos puedan propagar la cadena de polimerización. Aunque esta capa es útil para la adhesión entre capas, su presencia excesiva indica una polimerización incompleta en la superficie, lo que aumenta drásticamente el riesgo de dermatitis por contacto debido a la migración de monómeros no reaccionados. La clave técnica radica en el uso de lámparas con la longitud de onda precisa (365-405 nm) y una intensidad constante. La subexposición, incluso si el producto parece sólido, deja monómeros libres que pueden penetrar la barrera cutánea. Es vital educar al profesional sobre la importancia de no limpiar esta capa con solventes antes de que el proceso de curado haya alcanzado su conversión máxima, garantizando así la seguridad biológica del servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/nails/gel-manicures",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "acrilatos"
+      ],
+      "contraindications": [
+        "alergia a acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curado_led"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:43:32.786Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383812786-3-c47600b5-dinamica-de-la-queratina-ante-el-uso-de-fresas-de-carburo",
+    "title": "Dinámica de la queratina ante el uso de fresas de carburo",
+    "content": "El uso de fresas de carburo de tungsteno en la remoción de productos requiere una comprensión profunda de la termodinámica aplicada a la lámina ungueal. La fricción generada por altas revoluciones (RPM) no solo produce calor, sino que induce una desnaturalización térmica de las proteínas de la queratina. Este daño es acumulativo y se manifiesta como una pérdida de flexibilidad y una mayor susceptibilidad a la onicoclasia. La técnica correcta implica el uso de movimientos constantes, sin ejercer presión apical, para permitir que el calor se disipe. Además, la vibración mecánica resultante de fresas con desgaste puede causar microfracturas en la matriz ungueal, alterando el crecimiento futuro de la uña. Es fundamental implementar protocolos de 'remoción fría' y verificar el estado de las herramientas, ya que el desgaste del filo aumenta la fricción y, por ende, el riesgo de daño iatrogénico en la placa ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas delgadas",
+        "onicodistrofia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remocion_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:43:32.786Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383812786-4-ba2c8c91-el-papel-de-los-lipidos-intercelulares-en-la-salud-ungueal",
+    "title": "El papel de los lípidos intercelulares en la salud ungueal",
+    "content": "A diferencia de la piel, la lámina ungueal contiene una cantidad significativamente menor de lípidos, los cuales son críticos para mantener la cohesión entre los corneocitos y la flexibilidad de la uña. Los solventes de remoción, como la acetona pura, actúan eliminando estos lípidos esenciales, lo que resulta en una uña deshidratada, quebradiza y con mayor propensión a la delaminación. Para contrarrestar este efecto, es necesario integrar protocolos de rehidratación post-servicio mediante aceites de cutícula con ácidos grasos esenciales y ceramidas. La reposición de estos lípidos no solo mejora la estética, sino que restaura la función de barrera de la uña, protegiéndola contra la penetración de patógenos externos y químicos agresivos. Un enfoque basado en la ciencia debe priorizar la salud de la matriz lipídica tanto como la adhesión del producto, entendiendo que una uña sana es la base fundamental para cualquier aplicación de larga duración.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00000-0",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "aceites esenciales"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_servicio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:43:32.786Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383812786-5-63ce6804-impacto-de-la-radiacion-uv-en-el-microbioma-periungueal",
+    "title": "Impacto de la radiación UV en el microbioma periungueal",
+    "content": "La exposición recurrente a lámparas UV en cabinas de manicura no solo plantea riesgos de fotoenvejecimiento cutáneo, sino que también altera el microbioma periungueal. La radiación UV, al incidir sobre la piel circundante, puede modificar el pH local y reducir la diversidad de bacterias comensales que protegen contra infecciones fúngicas y bacterianas. Esta disbiosis crea un entorno propicio para la colonización por microorganismos oportunistas, como las especies de Pseudomonas o Candida. Para mitigar este impacto, se recomienda la aplicación de protectores solares de amplio espectro en las manos antes del servicio y la limitación del tiempo de exposición mediante lámparas de alta eficiencia que requieran menos segundos de curado. La protección del microbioma es una faceta a menudo ignorada de la seguridad en el salón, pero es esencial para mantener la salud inmunológica de la unidad ungueal a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/articles/s41598-024-00000-0",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares"
+      ],
+      "contraindications": [
+        "fotodermatosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:43:32.786Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383812788-6-2a14cae8-onicoclasia-por-estres-mecanico-y-la-fisica-del-borde-libre",
+    "title": "Onicoclasia por estrés mecánico y la física del borde libre",
+    "content": "La onicoclasia, o fractura de la lámina ungueal, ocurre frecuentemente debido a una mala gestión de la longitud y la estructura en uñas esculpidas. Cuando el borde libre excede la capacidad de soporte del lecho ungueal, se genera una tensión tangencial que se concentra en la zona de estrés, provocando microfisuras que pueden llegar hasta la matriz. La física del 'palanqueo' es el principal factor de riesgo: cualquier impacto en la punta de la uña se transfiere directamente a la zona de adhesión, pudiendo causar onicólisis mecánica. Para prevenir esto, es crucial diseñar una estructura con el ápice correctamente posicionado, que redistribuya las fuerzas de carga hacia el centro de la lámina y no hacia el borde libre. La educación sobre la longitud funcional y el refuerzo estructural es vital para evitar que el diseño estético comprometa la salud biomecánica de la uña natural del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00000-0",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas quebradizas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "construccion_estructura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:43:32.788Z"
+  }
+]

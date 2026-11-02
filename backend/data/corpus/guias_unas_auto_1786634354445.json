@@ -1,0 +1,84 @@
+[
+  {
+    "chunk_id": "guias-unas-termodinamica-fresado-001",
+    "title": "Termodinámica del fresado de alta velocidad: el daño matricial invisible",
+    "content": "El uso de tornos de alta frecuencia en cabina, aunque eficiente para la remoción de producto, genera una transferencia térmica crítica hacia la matriz ungueal. La matriz, al ser un tejido altamente vascularizado y proliferativo, es extremadamente sensible al incremento de temperatura. Cuando la fricción supera el umbral de los 45-50°C, se desencadena una respuesta inflamatoria silenciosa que puede derivar en onicodistrofia focal. La literatura dermatológica, incluyendo estudios publicados en PubMed, advierte que el calor prolongado induce la desnaturalización de proteínas en la zona matricial, afectando la formación de la placa ungueal futura. Es fundamental comprender que la sensación de quemazón del cliente es un indicador tardío; el daño celular puede ocurrir antes de que el usuario reporte dolor agudo. La técnica de pulido debe incorporar pausas intermitentes y el uso de fresas de grano fino con baja presión lateral para disipar el calor. La monitorización de la temperatura de la fresa y la velocidad de rotación son parámetros críticos para prevenir la onicólisis inducida por trauma térmico, una condición a menudo mal diagnosticada como infección fúngica primaria.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "calor-excesivo",
+        "fresado-continuo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad-cabina"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:18:56.299Z"
+  },
+  {
+    "chunk_id": "guias-unas-efecto-piezoelectrico-002",
+    "title": "Efecto piezoeléctrico en la queratina: estrés mecánico y fracturas",
+    "content": "La queratina ungueal posee propiedades mecánicas únicas, incluyendo una respuesta piezoeléctrica ante la tensión. Cuando una uña esculpida o recubierta de alta densidad es sometida a impactos repetitivos o fuerzas de cizallamiento, la estructura de la lámina genera cargas eléctricas internas que alteran la cohesión de los puentes de hidrógeno entre los corneocitos. Este fenómeno, frecuentemente ignorado en el diseño de estructuras ungueales, explica por qué uñas excesivamente largas o con arcos de tensión mal equilibrados presentan fracturas lamelar en la lámina dorsal. La investigación en biomecánica cutánea sugiere que la rigidez excesiva del producto aplicado (como bases rubber muy rígidas) impide la flexión natural de la uña, trasladando todo el estrés mecánico a la unión lecho-lámina. Esto no solo genera onicosquizia, sino que puede causar micro-desprendimientos (onicólisis traumática) en el borde libre. El experto en cabina debe priorizar la flexibilidad del sistema de recubrimiento, asegurando que el módulo de elasticidad del producto sea compatible con la placa ungueal natural para minimizar estos efectos piezoeléctricos y reducir la incidencia de fisuras estructurales inducidas por el uso de extensiones rígidas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud-excesiva",
+        "materiales-rigidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica-ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:18:56.299Z"
+  }
+]

@@ -1,0 +1,250 @@
+[
+  {
+    "chunk_id": "guias_unas-onicoclasia-mecanica-001",
+    "title": "Onicoclasia por estrés mecánico: el punto de fractura de la lámina",
+    "content": "La onicoclasia, o fractura transversal de la lámina ungueal, es un fenómeno frecuente en usuarios de sistemas de extensión que ignoran la biomecánica de la uña natural. A diferencia de la onicosquizia (descamación), la onicoclasia ocurre cuando la rigidez del producto aplicado excede la capacidad de flexión de la uña, creando un punto de tensión crítica. Según estudios biomecánicos publicados en el Journal of Cosmetic Dermatology, la lámina ungueal posee una elasticidad intrínseca que disminuye drásticamente ante la deshidratación por solventes. Cuando aplicamos un sistema rígido sobre una lámina debilitada, cualquier golpe tangencial transfiere la energía directamente al lecho ungueal, provocando una fractura que a menudo compromete la matriz distal. Es vital entender que la uña no es una superficie inerte; su curvatura transversal es lo que le otorga resistencia estructural. Al alterar esta curvatura mediante limado excesivo de los laterales o aplicación incorrecta de 'c-curve', estamos induciendo un fallo estructural latente que se manifiesta como una ruptura dolorosa. La prevención requiere evaluar la flexibilidad natural de la uña antes de elegir la densidad del material polimérico a utilizar.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:29:37.828Z"
+  },
+  {
+    "chunk_id": "guias_unas-queratina-y-solventes-002",
+    "title": "Degradación de la matriz queratínica por solventes de remoción",
+    "content": "El uso recurrente de acetona pura para la remoción de sistemas fotopolimerizados es un factor determinante en la desnaturalización de la queratina. La acetona actúa extrayendo no solo el polímero, sino también los lípidos intercelulares que mantienen la cohesión de los corneocitos en la lámina dorsal. Investigaciones en el International Journal of Trichology han demostrado que la exposición prolongada a solventes orgánicos altera el punto isoeléctrico de las proteínas ungueales, reduciendo su capacidad de retención hídrica. Este proceso no es reversible inmediatamente; el daño se acumula, dejando la lámina porosa y susceptible a la penetración de microorganismos. Cuando la barrera de lípidos se pierde, la uña se vuelve hipersensible a la humedad ambiental, lo que irónicamente facilita la onicólisis por expansión hídrica. Para mitigar este daño, es imperativo limitar el tiempo de contacto del solvente y aplicar agentes oclusivos o aceites ricos en ácidos grasos inmediatamente tras la remoción. La salud de la uña post-servicio depende más de la integridad de estos lípidos que de la aplicación de endurecedores tópicos que, en muchos casos, solo añaden rigidez innecesaria.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "lipidos"
+      ],
+      "contraindications": [
+        "remocion_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:29:37.828Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomarcadores-nutricionales-003",
+    "title": "La uña como biomarcador: deficiencias subclínicas visibles",
+    "content": "Más allá de las condiciones traumáticas, la lámina ungueal refleja estados nutricionales internos a través de cambios morfológicos sutiles. La American Academy of Dermatology (AAD) señala que ciertas alteraciones en la tasa de crecimiento y la textura pueden ser indicadores tempranos de deficiencias subclínicas. Por ejemplo, la presencia de surcos transversales (líneas de Beau) no siempre indica una enfermedad sistémica aguda; a veces, son el resultado de fluctuaciones en la disponibilidad de oligoelementos esenciales como el zinc o el hierro. Es fundamental que el profesional de GlowApp aprenda a distinguir entre una alteración por trauma externo y una sistémica. Si las diez uñas presentan la misma anomalía, la causa suele ser interna. Las deficiencias de biotina, aunque popularizadas por el marketing, tienen evidencia mixta, pero la deficiencia severa de vitamina B12 puede manifestarse con hiperpigmentación longitudinal. En estos casos, el rol del profesional es clínico-preventivo: no intentar ocultar el signo con producto, sino realizar una anamnesis adecuada y, de ser necesario, derivar a un especialista médico. La uña es un tejido de crecimiento lento que 'almacena' información metabólica de hasta 6 meses atrás.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:29:37.828Z"
+  },
+  {
+    "chunk_id": "guias_unas-fototoxicidad-laminas-004",
+    "title": "Fototoxicidad y degradación proteica por fuentes UV/LED",
+    "content": "La fotopolimerización es un proceso exotérmico que, si no se controla, puede inducir estrés oxidativo en el lecho ungueal. Estudios recientes en PubMed indican que la exposición acumulativa a longitudes de onda en el espectro UVA (340-380 nm) puede degradar las fibras de queratina si la uña está previamente sensibilizada o deshidratada. El riesgo no es solo la radiación, sino la temperatura alcanzada durante la reacción de polimerización, que puede superar los 45°C, provocando micro-quemaduras en el hiponiquio y el lecho. Estas quemaduras son a menudo asintomáticas en el momento, pero pueden derivar en una onicólisis distal retardada. La recomendación clínica es utilizar lámparas con modo 'low heat' o de baja potencia para permitir que la cadena polimérica se reorganice sin liberar calor excesivo. Además, es crucial evitar la sobre-exposición de la piel periungueal al espectro UVA, ya que la sensibilización a los monómeros es mayor en presencia de radiación UV, lo que aumenta la probabilidad de desarrollar dermatitis de contacto alérgica. La educación del cliente sobre la seguridad en cabina es un pilar de la cosmética responsable.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35914620/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros"
+      ],
+      "contraindications": [
+        "sobreexposicion_uv"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_en_cabina"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:29:37.828Z"
+  },
+  {
+    "chunk_id": "guias_unas-sensibilizacion-cruzada-006",
+    "title": "Alergia cruzada a acrilatos: el riesgo de la sensibilización acumulativa",
+    "content": "La sensibilización a los metacrilatos es una respuesta inmunológica que, una vez instaurada, es permanente. El riesgo principal radica en la reacción cruzada: si un paciente se sensibiliza a un monómero específico (como el HEMA o HPMA) presente en un sistema de uñas, es probable que desarrolle alergia a otros compuestos químicamente relacionados utilizados en odontología, ortopedia o incluso en adhesivos médicos. Esta dermatitis de contacto no siempre se manifiesta en los dedos; con frecuencia, se presenta como eritema y descamación en párpados, cuello y cara debido a la transferencia manual. La literatura dermatológica subraya que los monómeros residuales, resultado de una polimerización incompleta, son los principales culpables. En GlowApp, debemos priorizar el uso de productos con moléculas de mayor peso molecular, que tienen menos capacidad de penetrar la barrera cutánea. Si un cliente presenta prurito periungueal o inflamación tras el servicio, la recomendación debe ser la remoción inmediata del material y la derivación a un alergólogo. La exposición continua a un alérgeno conocido solo intensificará la respuesta del sistema inmune, llevando a una dermatitis crónica de difícil manejo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "HPMA"
+      ],
+      "contraindications": [
+        "sensibilizacion_previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_en_cabina"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:29:37.828Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidrodinamica-009",
+    "title": "La paradoja de la hidratación: balance hídrico y flexibilidad",
+    "content": "La lámina ungueal es un tejido hidrofílico que absorbe agua con mucha mayor facilidad que la piel. Esta capacidad de absorción es la causa subyacente de la onicosquizia lamelar: el ciclo constante de hidratación (lavado frecuente) y deshidratación (evaporación) causa una expansión y contracción mecánica de las capas de queratina. Este estrés repetitivo debilita las uniones celulares, provocando que la uña se deshoje. Contrario a la creencia popular, el uso de aceites minerales o parafinas no hidrata la uña, ya que estas son sustancias oclusivas que solo sellan la humedad existente. Para mejorar la flexibilidad, es necesario el uso de aceites que contengan ácidos grasos esenciales capaces de penetrar parcialmente la lámina, como el aceite de jojoba, cuya estructura es similar al sebo humano. La clave para una uña sana no es la saturación de agua, sino la estabilidad del balance hídrico. En GlowApp, educamos al cliente para que entienda que el exceso de agua es tan perjudicial como la falta de ella, recomendando el uso de guantes durante actividades domésticas para preservar la integridad de la matriz queratínica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22151608/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite_de_jojoba"
+      ],
+      "contraindications": [
+        "exposicion_prolongada_agua"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos_fisiologia"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:29:37.828Z"
+  }
+]

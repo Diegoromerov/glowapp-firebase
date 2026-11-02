@@ -1,0 +1,126 @@
+[
+  {
+    "chunk_id": "skincare-proteoma-cutaneo-001",
+    "title": "Protección del proteoma cutáneo: Prevención de la carbonilación de proteínas",
+    "content": "El proteoma cutáneo, compuesto por el conjunto de proteínas estructurales y funcionales de la piel, es el blanco principal del daño oxidativo crónico. A diferencia de la oxidación lipídica, la carbonilación proteica es un proceso irreversible donde las especies reactivas de oxígeno (ROS) modifican los residuos de aminoácidos, alterando la conformación y función de proteínas clave como el colágeno y la elastina. En entornos urbanos, la exposición a partículas PM2.5 y radiación UV acelera este fenómeno, resultando en una pérdida de elasticidad y una acumulación de proteínas dañadas que el sistema de autofagia ya no puede procesar. La estrategia de protección debe enfocarse en el uso de quelantes de metales pesados y antioxidantes de bajo peso molecular capaces de penetrar hasta la dermis papilar. El uso de activos como el ácido ferúlico y la ergotioneína ha demostrado en estudios in vitro reducir los niveles de grupos carbonilo en queratinocitos humanos expuestos a contaminantes. Es vital integrar estos activos en la rutina matutina para neutralizar el estrés oxidativo antes de que se establezca el daño estructural permanente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31849045/",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ferúlico",
+        "ergotioneína"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:47:03.235Z"
+  },
+  {
+    "chunk_id": "skincare-gradiente-calcio-002",
+    "title": "El gradiente de calcio epidérmico: Regulador clave de la diferenciación",
+    "content": "La homeostasis del calcio en la epidermis es fundamental para la correcta diferenciación de los queratinocitos y la formación de la barrera cutánea. Existe un gradiente natural de calcio donde la concentración aumenta desde la capa basal hasta la capa granulosa. La disrupción de este gradiente, inducida por limpiadores con pH alcalino o por el uso excesivo de agentes quelantes, puede desencadenar una diferenciación prematura o incompleta, resultando en una función de barrera debilitada y una mayor pérdida de agua transepidérmica (TEWL). Clínicamente, esto se observa en pieles con tendencia a la descamación y reactividad. La estrategia para restaurar este gradiente implica el uso de limpiadores con pH fisiológico (cercano a 5.0) y la incorporación de activos que favorezcan la cohesión intercelular, como los ácidos grasos esenciales. Estudios dermatológicos indican que la estabilización de los niveles de calcio extracelular es un paso crítico para pacientes con dermatitis atópica o pieles sensibilizadas, permitiendo que las uniones estrechas (tight junctions) se mantengan íntegras frente a agresores ambientales.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/skin-care",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "reparacion_barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:47:03.235Z"
+  },
+  {
+    "chunk_id": "skincare-bioenergetica-mitocondrial-003",
+    "title": "Bioenergética mitocondrial y regeneración cutánea nocturna",
+    "content": "La regeneración dérmica durante el ciclo circadiano depende estrechamente de la eficiencia mitocondrial. Las mitocondrias en los fibroblastos proporcionan el ATP necesario para la síntesis de novo de colágeno y componentes de la matriz extracelular. Durante la noche, se activa la autofagia celular, un proceso que requiere una gestión energética precisa para eliminar mitocondrias dañadas (mitofagia) y evitar la fuga de especies reactivas de oxígeno. La disfunción en este proceso, a menudo vinculada al envejecimiento o al estrés crónico, limita la capacidad de recuperación de la piel. El uso de ingredientes que apoyan la cadena de transporte de electrones o que actúan como cofactores enzimáticos, como la coenzima Q10 o ciertos péptidos señalizadores, puede optimizar la bioenergética cutánea. Investigaciones recientes sugieren que la suplementación tópica con moléculas que modulan la biogénesis mitocondrial mejora significativamente la respuesta de la piel frente al daño inducido por la radiación solar diurna, preparando a los fibroblastos para una síntesis proteica más robusta durante el descanso nocturno.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima Q10",
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_noche"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:47:03.235Z"
+  }
+]

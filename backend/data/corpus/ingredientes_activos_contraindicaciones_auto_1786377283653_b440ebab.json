@@ -1,0 +1,137 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786377283650-1-93fc73bd-alcohol-denat-el-dilema-de-la-evaporacion-y-la-deshidratacio",
+    "title": "Alcohol Denat: El dilema de la evaporación y la deshidratación transepidérmica",
+    "content": "El alcohol desnaturalizado (Alcohol Denat) es ampliamente utilizado en formulaciones cosméticas por su capacidad de secado rápido y su efecto refrescante. Sin embargo, en concentraciones elevadas, actúa como un potente solvente que puede comprometer la integridad de la barrera lipídica cutánea. Al disolver los lípidos intercelulares, este ingrediente facilita la pérdida de agua transepidérmica (TEWL), dejando la piel vulnerable a irritantes externos y alérgenos. En pacientes con pieles atópicas o con rosácea, el uso crónico de productos con alto contenido en alcohol puede exacerbar la inflamación subyacente y alterar la homeostasis del microbioma cutáneo. A pesar de su capacidad para mejorar la penetración de otros activos, su perfil de seguridad se vuelve crítico en climas secos, donde la evaporación acelerada priva a la dermis de su hidratación natural, provocando un efecto rebote de sequedad y tirantez. Es fundamental evaluar la formulación completa, ya que la presencia de agentes oclusivos o humectantes puede mitigar parcialmente estos efectos adversos, pero no elimina el riesgo de sensibilización a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Alcohol Denat"
+      ],
+      "contraindications": [
+        "piel atópica",
+        "rosácea",
+        "barrera cutánea comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_formulacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:54:43.650Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786377283650-2-716e8165-resorcinol-en-tratamientos-despigmentantes-riesgos-de-hipopi",
+    "title": "Resorcinol en tratamientos despigmentantes: Riesgos de hipopigmentación y sensibilización",
+    "content": "El resorcinol y sus derivados (como el 4-n-butilresorcinol) son agentes potentes en la inhibición de la tirosinasa, utilizados frecuentemente para tratar hiperpigmentaciones. No obstante, su eficacia conlleva un riesgo clínico significativo: la posibilidad de inducir hipopigmentación post-inflamatoria o manchas blancas permanentes si no se controla estrictamente la concentración y el tiempo de exposición. El resorcinol es un compuesto fenólico con un perfil de irritabilidad considerable, capaz de provocar dermatitis de contacto alérgica y eritema severo, especialmente en fototipos altos donde la respuesta inflamatoria es más pronunciada. La literatura científica advierte sobre su potencial de absorción sistémica en aplicaciones de gran superficie, lo que exige precaución en su uso prolongado. Además, la interacción con otros agentes queratolíticos puede potenciar la penetración del resorcinol más allá de los niveles de seguridad, aumentando la probabilidad de efectos adversos locales. Se recomienda siempre una prueba de parche (patch test) antes de su aplicación facial completa para evaluar la tolerancia individual y prevenir reacciones adversas severas que comprometan la estética cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "IV-VI"
+      ],
+      "ingredients": [
+        "Resorcinol",
+        "4-n-butilresorcinol"
+      ],
+      "contraindications": [
+        "piel sensible",
+        "uso crónico sin supervisión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_activos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:54:43.650Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786377283650-3-ac528864-acido-borico-y-su-impacto-en-la-barrera-cutanea-y-toxicidad-",
+    "title": "Ácido Bórico y su impacto en la barrera cutánea y toxicidad sistémica",
+    "content": "El ácido bórico ha sido utilizado históricamente como conservante y agente antiséptico, pero su perfil de seguridad actual es objeto de debate estricto. La principal preocupación radica en su capacidad de absorción a través de pieles dañadas, erosionadas o inflamadas, lo que puede derivar en una toxicidad sistémica. Aunque su uso en cosmética está regulado y limitado, la exposición acumulativa en productos de uso diario puede comprometer la barrera cutánea, alterando el pH natural y favoreciendo el crecimiento de microorganismos oportunistas. En pieles pediátricas o con dermatitis atópica, la aplicación de productos que contienen derivados del boro está contraindicada debido al riesgo de absorción percutánea excesiva. Además, su presencia en formulaciones de higiene íntima o facial puede inducir irritación de mucosas y dermatitis de contacto. La evidencia sugiere que, ante la disponibilidad de alternativas más seguras y menos tóxicas, el uso de ácido bórico en cosmética debe ser evitado, especialmente en formulaciones diseñadas para ser aplicadas sobre áreas extensas o pieles con integridad alterada, minimizando así cualquier riesgo de efectos adversos sistémicos o locales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "compromised"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ácido Bórico"
+      ],
+      "contraindications": [
+        "piel dañada",
+        "mucosas",
+        "uso pediátrico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_activos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:54:43.650Z"
+  }
+]

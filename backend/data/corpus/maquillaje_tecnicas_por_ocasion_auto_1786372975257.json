@@ -1,0 +1,131 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microclima-textil-001",
+    "title": "Maquillaje en eventos con alta fricción textil: Prevención de la dermatitis por oclusión",
+    "content": "El uso de accesorios textiles como velos, bufandas de seda o cuellos altos durante eventos sociales crea un microclima de alta fricción y humedad sobre la piel facial. Según la American Academy of Dermatology (AAD), la fricción mecánica constante combinada con la oclusión del maquillaje puede desencadenar dermatitis por fricción o exacerbación de acné mecánico. En estos entornos, el maquillaje no solo debe ser de larga duración, sino que debe poseer una estructura polimérica que resista el roce sin transferirse a las fibras textiles. Es fundamental evitar bases con alto contenido en ceras pesadas que, al calentarse por el roce, se vuelven comedogénicas. La estrategia clínica recomendada consiste en aplicar un film de sellado a base de polímeros de silicona volátiles que creen una barrera hidrofóbica, minimizando la transferencia de pigmentos y evitando que la fricción dañe la integridad del estrato córneo. El control de la temperatura local es esencial para prevenir que el sudor atrapado bajo el textil degrade la emulsión del producto.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas volátiles",
+        "polímeros filmógenos"
+      ],
+      "contraindications": [
+        "productos altamente comedogénicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:38.408Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-positiva-002",
+    "title": "Maquillaje en ambientes de alta ionización positiva: Adherencia de partículas PM2.5",
+    "content": "Los espacios cerrados con alta concentración de dispositivos electrónicos generan una ionización positiva del aire que favorece la adherencia de partículas atmosféricas y contaminantes (PM2.5) sobre la superficie cutánea. La investigación publicada en PubMed sugiere que estas partículas pueden penetrar en los poros, induciendo estrés oxidativo y activando receptores de hidrocarburos arilo (AhR), lo que acelera el envejecimiento cutáneo. Para eventos en estos entornos, el maquillaje debe incluir una capa de imprimación con carga electrostática neutra o negativa que actúe como escudo repelente. El uso de polvos fijadores con propiedades anti-estáticas ayuda a reducir la atracción de estas partículas cargadas. Es crucial que los productos no contengan ingredientes que faciliten la captura de polvo, como aceites minerales pegajosos. Una estrategia efectiva es el uso de brumas fijadoras con activos antioxidantes que neutralicen los radicales libres generados por la interacción entre la polución y la luz artificial del entorno, manteniendo la homeostasis de la barrera cutánea durante toda la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31868356/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "polímeros antiestáticos"
+      ],
+      "contraindications": [
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:38.408Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-luz-polarizada-004",
+    "title": "Maquillaje bajo fuentes de luz polarizada y realidad aumentada: Gestión de la reflectancia",
+    "content": "La creciente adopción de tecnología de realidad aumentada (AR) y eventos bajo iluminación polarizada presenta desafíos de metamerismo y reflectancia no lineal para el maquillaje. La luz polarizada puede revelar texturas cutáneas y anomalías en la aplicación de pigmentos que son invisibles bajo luz natural. Según estudios de óptica dermatológica, la reflexión especular de los productos cosméticos que contienen micas o partículas nacaradas puede causar 'puntos calientes' (hotspots) que distorsionan la imagen captada por sensores AR. Para estos eventos, se recomienda el uso de productos con acabado mate absoluto, formulados con pigmentos de baja reflectancia y agentes difusores de luz. Es vital evitar el uso de polvos reflectantes o iluminadores con partículas de gran tamaño, ya que la polarización de la luz intensifica su brillo, pudiendo arruinar la calibración de los sistemas de visión artificial. La clave técnica es lograr una superficie uniforme y absorbente que mantenga la consistencia cromática bajo diferentes ángulos de incidencia lumínica, asegurando que el rostro sea interpretado correctamente por los algoritmos de detección facial.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://www.spiedigitallibrary.org/journals/journal-of-biomedical-optics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos mate",
+        "agentes difusores"
+      ],
+      "contraindications": [
+        "micas nacaradas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotometria-cosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:42:38.408Z"
+  }
+]

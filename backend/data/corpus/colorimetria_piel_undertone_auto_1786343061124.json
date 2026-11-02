@@ -1,0 +1,81 @@
+[
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-tejido-adiposo-001",
+    "title": "El Efecto Tyndall en la pérdida de panículo adiposo periorbital",
+    "content": "El fenómeno físico de Tyndall explica por qué ciertas áreas del rostro, especialmente la zona infraorbitaria, presentan un subtono azulado o violáceo. Cuando el panículo adiposo disminuye debido a la senescencia o pérdida de peso, la piel se vuelve más fina y translúcida. La luz blanca que incide sobre esta región penetra en la dermis, donde los fotones son dispersados preferencialmente por las fibras de colágeno y los vasos sanguíneos subyacentes. Dado que las longitudes de onda azules tienen mayor energía y son más fácilmente dispersadas que las rojas, el observador percibe un tono frío y azulado. Este fenómeno no es hiperpigmentación melánica, sino una distorsión cromática óptica. Clínicamente, el diagnóstico diferencial es crucial: si al estirar suavemente la piel el tono azulado desaparece, es un efecto Tyndall por delgadez dérmica y no una ojera vascular o pigmentaria. El uso de correctores con pigmentos cálidos (salmón o durazno) es la estrategia estándar para neutralizar esta dispersión espectral, compensando la falta de calidez en la reflexión cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "c-vitamina",
+        "retinoides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:24:01.924Z"
+  },
+  {
+    "chunk_id": "colorimetria-ritmos-circadianos-005",
+    "title": "Impacto de los ritmos circadianos en la microcirculación y el subtono",
+    "content": "La cromaticidad cutánea no es estática; fluctúa significativamente a lo largo del día debido a los ritmos circadianos que regulan la microcirculación facial. Durante la fase matutina, el tono vascular es más bajo debido a la inactividad prolongada y la reabsorción de fluidos, lo que puede dar a la piel un subtono más pálido o incluso ligeramente azulado en áreas finas. A medida que avanza el día, la vasodilatación periférica aumenta, intensificando el eritema basal y alterando la lectura del subtono hacia matices más cálidos o rosados. Este fenómeno, documentado en estudios de cronobiología dermatológica, explica por qué una base de maquillaje que parece perfecta a las 8:00 AM puede percibirse desajustada a las 4:00 PM. La piel presenta una mayor 'fluidez cromática' en pacientes con rosácea o hiperreactividad vascular. Para un diagnóstico preciso, el profesional debe considerar el momento del día en que se realiza la prueba de color, sugiriendo al paciente que evalúe su base en condiciones de luz natural durante diferentes horas para asegurar una armonía cromática coherente con su fisiología dinámica.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:24:01.924Z"
+  }
+]

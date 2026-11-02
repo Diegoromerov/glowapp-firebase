@@ -1,0 +1,230 @@
+[
+  {
+    "chunk_id": "diag-cap-proteomica-estructural-001",
+    "title": "Proteómica de la cutícula y biomarcadores de daño estructural",
+    "content": "La proteómica del tallo capilar ha emergido como una herramienta diagnóstica de precisión para evaluar la integridad estructural más allá de la observación tricoscópica. El análisis de las queratinas asociadas a la matriz (KAPs) permite identificar la degradación proteica específica provocada por factores ambientales y químicos. Investigaciones publicadas en Journal of Investigative Dermatology sugieren que la pérdida de proteínas estructurales en la cutícula precede a la fractura del tallo, un fenómeno que puede cuantificarse mediante espectrometría de masas. En el contexto clínico de GlowApp, el análisis de la estabilidad de estas proteínas es fundamental para diferenciar el daño por fotoperoxidación del daño por tracción mecánica. La desnaturalización de las KAPs altera la hidrofobicidad natural del tallo, facilitando la penetración de contaminantes. La evaluación de estos biomarcadores permite una intervención personalizada, priorizando tratamientos reparadores que no solo actúen sobre la superficie, sino que fortalezcan el puente disulfuro y la arquitectura proteica interna del folículo. Este enfoque traslada el diagnóstico capilar de lo puramente visual a un nivel molecular, permitiendo predecir la resistencia a futuros tratamientos cosméticos y minimizando el riesgo de rotura estructural en pacientes con cuero cabelludo hipersensible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:21.484Z"
+  },
+  {
+    "chunk_id": "diag-cap-quimiocinas-perifoliculares-002",
+    "title": "El rol de las quimiocinas en la inflamación perifolicular",
+    "content": "La inflamación perifolicular silenciosa es un factor determinante en la progresión de la alopecia cicatricial y no cicatricial. Recientes estudios en PubMed demuestran que las quimiocinas, especialmente CXCL10, actúan como mediadores críticos en el reclutamiento de linfocitos T hacia el nicho folicular. Este proceso, a menudo imperceptible en la tricoscopia convencional, genera una micro-fibrosis que asfixia gradualmente la papila dérmica. En la práctica clínica, identificar la sobreexpresión de estas proteínas inflamatorias permite detectar estados de actividad en patologías como la alopecia frontal fibrosante antes de que aparezcan signos clínicos evidentes como el eritema o la descamación. El control de esta respuesta inmune mediada por quimiocinas es esencial para preservar la viabilidad de las células madre en el 'bulge'. La intervención temprana con agentes antiinflamatorios específicos puede detener el ciclo de destrucción tisular. Para el equipo de GlowApp, comprender la dinámica de estas quimiocinas es vital al realizar diagnósticos diferenciales, pues su presencia eleva el riesgo de daño permanente. La monitorización de estos marcadores mediante pruebas de laboratorio complementarias a la evaluación física proporciona una ventana terapéutica única para pacientes en estadios iniciales de inflamación folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:21.484Z"
+  },
+  {
+    "chunk_id": "diag-cap-osmolaridad-ostium-003",
+    "title": "Gradientes de osmolaridad en el ostium y estabilidad sebácea",
+    "content": "La estabilidad del microambiente en el ostium folicular depende estrechamente del equilibrio osmótico entre la secreción sebácea y el estrato córneo circundante. Alteraciones en la composición del sebo, inducidas por factores externos, modifican la presión osmótica local, lo que puede provocar la deshidratación del folículo o, por el contrario, una saturación lipídica que obstruye el canal. Investigaciones de la American Academy of Dermatology destacan cómo un gradiente osmótico desequilibrado altera la barrera cutánea, favoreciendo la proliferación de microorganismos oportunistas. En el diagnóstico capilar moderno, medir la capacidad de retención hídrica en el ostium es un indicador clave de la salud folicular a largo plazo. Un ostium con alta carga osmótica suele presentar una queratinización acelerada, lo que se traduce clínicamente en tapones foliculares. Para optimizar el diagnóstico en GlowApp, es fundamental evaluar este parámetro al tratar casos de dermatitis seborreica o cuero cabelludo graso, ya que la corrección del gradiente osmótico es más efectiva que el uso indiscriminado de agentes queratolíticos. La restauración del equilibrio hídrico del ostium mejora la permeabilidad de los tratamientos tópicos y previene la inflamación secundaria por acumulación de ácidos grasos libres.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_ostium"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:21.484Z"
+  },
+  {
+    "chunk_id": "diag-cap-biofotofisica-cuticula-004",
+    "title": "Biofotofísica: Espectroscopía de reflectancia para el daño cuticular",
+    "content": "La biofotofísica aplicada al diagnóstico capilar permite evaluar el daño de la cutícula mediante técnicas de espectroscopía de reflectancia, superando la subjetividad del examen visual. Al incidir luz sobre el tallo capilar, la respuesta espectral varía según el estado de las escamas de la cutícula y la integridad de la capa lipídica superficial (18-MEA). Estudios en revistas de dermatología biofísica indican que un patrón de reflectancia alterado es un biomarcador temprano de fatiga estructural antes de que ocurra la pérdida de masa capilar. En GlowApp, este análisis nos permite clasificar el daño del tallo en escalas precisas, diferenciando entre daño por calor, exposición UV o procesos químicos. La espectroscopía de reflectancia es una técnica no invasiva que proporciona datos objetivos sobre la porosidad y la integridad de la cutícula, facilitando la recomendación de tratamientos de reconstrucción capilar altamente específicos. Al integrar esta tecnología en nuestro protocolo de diagnóstico, podemos monitorear la eficacia real de los productos cosméticos utilizados por el paciente, garantizando que el tratamiento esté restaurando la capacidad reflectante natural del cabello y, por ende, su salud estructural. Es un avance clave para la dermatología basada en evidencia en Bogotá, donde los factores ambientales urbanos aceleran la degradación cuticular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:21.484Z"
+  },
+  {
+    "chunk_id": "diag-cap-inmunometabolismo-tregs-005",
+    "title": "Inmunometabolismo: Disregulación de células T reguladoras en el nicho",
+    "content": "El nicho folicular es un entorno inmunológicamente privilegiado cuya estabilidad depende del equilibrio entre las células T reguladoras (Tregs) y las células proinflamatorias. El inmunometabolismo del folículo piloso ha revelado que las Tregs no solo suprimen la inflamación, sino que promueven activamente la regeneración de las células madre mediante la secreción de factores de crecimiento específicos. Cuando este metabolismo se ve alterado, como ocurre en la alopecia areata o en estados de estrés crónico, el agotamiento de las Tregs conduce a una pérdida de la resiliencia folicular. Investigaciones en PubMed subrayan que la restauración de la función metabólica de estas células es una diana terapéutica emergente. En GlowApp, evaluamos la inflamación perifolicular considerando este eje inmunometabólico, reconociendo que la respuesta al tratamiento es mayor cuando se logra modular el entorno metabólico que sustenta a las Tregs. Identificar los factores que inducen la fatiga de estas células es crucial para el pronóstico de recuperación. Este enfoque permite una comprensión profunda de por qué ciertos folículos entran en fase de reposo prematuro, proporcionando una base científica para tratamientos que buscan reactivar el ciclo de crecimiento mediante la optimización de la inmunidad local del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:21.484Z"
+  },
+  {
+    "chunk_id": "diag-cap-osteopontina-fibrosis-008",
+    "title": "La osteopontina como biomarcador de fibrosis en alopecias",
+    "content": "La fibrosis perifolicular es un proceso patológico irreversible en las alopecias cicatriciales, caracterizado por la acumulación excesiva de matriz extracelular. La osteopontina, una glicoproteína de la matriz, ha sido identificada como un marcador clave en la regulación de la fibrosis en el nicho folicular. Niveles elevados de osteopontina en el entorno perifolicular promueven la activación de fibroblastos que reemplazan el tejido funcional por colágeno cicatricial, lo que resulta en la pérdida definitiva del folículo. La detección temprana de la sobreexpresión de osteopontina mediante técnicas de diagnóstico molecular permite identificar a pacientes en riesgo de progresión hacia una alopecia cicatricial antes de que la tricoscopia muestre signos de fibrosis establecida. En GlowApp, este biomarcador es fundamental para el manejo de casos complejos, permitiendo ajustar los protocolos de tratamiento para inhibir la vía de señalización que induce la fibrosis. La intervención terapéutica dirigida a reducir la actividad de la osteopontina puede ser la clave para detener la progresión de la enfermedad y conservar el mayor número posible de unidades foliculares funcionales, mejorando significativamente el pronóstico a largo plazo de los pacientes afectados.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:21.484Z"
+  }
+]

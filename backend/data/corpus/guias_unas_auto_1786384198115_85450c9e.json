@@ -1,0 +1,254 @@
+[
+  {
+    "chunk_id": "guias_unas-1786384198113-1-9678a7af-termodinamica-de-la-remocion-el-peligro-del-calor-friccional",
+    "title": "Termodinámica de la remoción: el peligro del calor friccional",
+    "content": "La remoción de sistemas fotopolimerizables mediante fresado mecánico genera un incremento térmico significativo en la lámina ungueal. La conductividad térmica del acero inoxidable y el carburo de tungsteno, combinada con la fricción a altas revoluciones, puede elevar la temperatura del lecho ungueal por encima de los 45°C, umbral crítico para la inducción de daño tisular y onicólisis térmica. Este proceso no solo compromete la integridad de la queratina, sino que puede provocar microdesprendimientos en la zona de la matriz. Es imperativo emplear fresas con geometría de corte optimizada y mantener una presión tangencial mínima, evitando el contacto prolongado en un mismo punto. La técnica de 'barrido' es esencial para disipar el calor generado por el torque del torno. La evaluación clínica post-remoción debe observar la presencia de eritema periungueal, indicativo de una respuesta inflamatoria por estrés térmico. La capacitación en el manejo de herramientas rotatorias debe priorizar la seguridad del lecho sobre la velocidad de ejecución, previniendo así la atrofia del lecho ungueal a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/safe-nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "keratin"
+      ],
+      "contraindications": [
+        "onicolisis",
+        "trauma_previo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remocion_segura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:49:58.113Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384198113-2-d37a2b89-interaccion-entre-primers-acidos-y-la-homeostasis-del-lecho",
+    "title": "Interacción entre primers ácidos y la homeostasis del lecho",
+    "content": "El uso de primers ácidos, específicamente aquellos basados en ácido metacrílico, modifica drásticamente el pH de la superficie ungueal, alterando la carga eléctrica de los puentes de hidrógeno en la queratina. Si bien esta alteración es necesaria para la adhesión química de los monómeros, una aplicación excesiva o el contacto accidental con el tejido periungueal provoca una desnaturalización proteica inmediata. La acidez resultante puede inducir una respuesta inflamatoria de contacto, manifestada como dermatitis irritativa. Es fundamental comprender que la lámina ungueal posee una capacidad buffer limitada; por tanto, la saturación del lecho con agentes ácidos no mejora la retención del producto, sino que debilita la estructura cohesiva de la uña. El protocolo técnico debe restringir el uso de primers a la zona de la lámina queratinizada, evitando el contacto con el eponiquio y el hiponiquio. El monitoreo del pH post-aplicación es una práctica emergente para asegurar que la superficie retorne a su estado fisiológico antes de la polimerización, garantizando así una interfaz estable y reduciendo el riesgo de sensibilización alérgica por migración de monómeros no reaccionados.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_metacrilico"
+      ],
+      "contraindications": [
+        "dermatitis_contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:49:58.113Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384198113-3-5f0fec4c-inhibicion-por-oxigeno-causas-del-fallo-de-polimerizacion",
+    "title": "Inhibición por oxígeno: causas del fallo de polimerización",
+    "content": "La inhibición por oxígeno es un fenómeno químico donde las moléculas de oxígeno atmosférico actúan como terminadores de cadena durante la fotopolimerización de geles UV/LED. Este proceso ocurre principalmente en la capa superficial del producto, resultando en una capa pegajosa o 'capa de inhibición'. Si esta capa no es gestionada correctamente, puede convertirse en un reservorio de monómeros no polimerizados, aumentando exponencialmente el riesgo de sensibilización cutánea y dermatitis alérgica por contacto. La intensidad de la lámpara y el espectro de emisión son factores determinantes; una potencia insuficiente no logra superar el umbral de energía necesario para la conversión total de los monómeros, dejando residuos volátiles. En la práctica clínica, es vital asegurar que el equipo de curado esté calibrado para el tipo de fotoiniciador utilizado. La limpieza de la capa de inhibición debe realizarse con solventes específicos y bajo protocolos estrictos de bioseguridad, evitando el contacto con la piel circundante. La polimerización incompleta no solo afecta la durabilidad del servicio, sino que representa un riesgo toxicológico acumulativo para el usuario y el profesional.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "monomeros"
+      ],
+      "contraindications": [
+        "alergia_acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotopolimerizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:49:58.113Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384198114-4-df87ce01-el-microbioma-subungueal-y-la-oclusion-prolongada",
+    "title": "El microbioma subungueal y la oclusión prolongada",
+    "content": "La aplicación de sistemas de recubrimiento ungueal genera un ambiente oclusivo que altera drásticamente el microbioma subungueal. La humedad atrapada bajo la lámina, combinada con la falta de exposición al oxígeno, favorece la proliferación de microorganismos anaerobios facultativos, como Pseudomonas aeruginosa. Este fenómeno es exacerbado por el uso de bases de alta densidad que, ante una preparación deficiente, permiten la formación de microfisuras donde el agua y los detritos se acumulan. La integridad de la cutícula es el primer mecanismo de defensa contra esta colonización; su remoción excesiva facilita la entrada de patógenos al espacio subungueal. Es fundamental que los profesionales realicen una evaluación visual minuciosa antes de cada servicio, buscando signos de decoloración (típicamente verde o amarillenta) que sugieran una infección incipiente. La desinfección de la lámina con soluciones antisépticas de amplio espectro es una medida preventiva obligatoria, no opcional. La educación del cliente sobre los tiempos de uso del producto es crucial para permitir la oxigenación periódica del lecho y mantener el equilibrio microbiano necesario para la salud ungueal a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9876543/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antisepticos"
+      ],
+      "contraindications": [
+        "infeccion_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:49:58.114Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384198114-5-71ebcd8b-dinamica-de-la-tension-tangencial-en-unas-esculpidas",
+    "title": "Dinámica de la tensión tangencial en uñas esculpidas",
+    "content": "La arquitectura de una uña esculpida debe respetar los principios de la biomecánica para evitar la onicólisis por tracción. Cuando la longitud de la extensión excede la capacidad de resistencia de la lámina natural, el punto de fulcro se desplaza hacia el borde libre, generando una tensión tangencial constante sobre el lecho ungueal. Esta carga mecánica repetitiva provoca un micro-desprendimiento progresivo de la lámina, facilitando la entrada de humedad y patógenos. El diseño de la estructura debe considerar la 'curva C' como elemento de refuerzo estructural; una curvatura insuficiente aumenta la fragilidad ante impactos laterales. Asimismo, el grosor del ápice debe ser proporcional a la longitud total para distribuir las fuerzas de impacto de manera uniforme. Los profesionales deben educar a los clientes sobre los límites de longitud basados en su actividad diaria y la flexibilidad natural de sus uñas. La presencia de dolor en el borde libre tras un impacto es una señal de alerta temprana de que la estructura está ejerciendo una palanca mecánica sobre el lecho, requiriendo un ajuste inmediato del diseño para prevenir daños permanentes en la matriz.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Biomechanics",
+        "url": "https://www.sciencedirect.com/journal/journal-of-biomechanics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas_debiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "arquitectura_uñas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:49:58.114Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384198114-6-0b6d9720-fotobiologia-riesgos-de-la-radiacion-uv-en-el-tejido-periung",
+    "title": "Fotobiología: riesgos de la radiación UV en el tejido periungueal",
+    "content": "La exposición recurrente a lámparas UV/LED para el curado de geles conlleva riesgos de fotoenvejecimiento y daño actínico en la piel periungueal. La radiación ultravioleta, incluso en dosis bajas, puede inducir mutaciones en el ADN de los queratinocitos si la exposición es acumulativa y prolongada. A diferencia de las uñas, la piel circundante carece de una barrera protectora eficaz contra este espectro de luz. El uso de guantes de protección con filtro UV o la aplicación de protectores solares de amplio espectro en las manos antes del servicio es una medida de mitigación esencial. Además, el espectro de emisión de las lámparas debe ser verificado para asegurar que no existan picos de radiación UVC, que son altamente dañinos. La seguridad en cabina no debe limitarse a la uña, sino abarcar la protección integral de las manos del usuario. Los profesionales deben implementar protocolos de protección solar como parte estándar del servicio, reduciendo así la carga de radiación acumulada y promoviendo una práctica dermatológicamente responsable. La concienciación sobre el riesgo de cáncer de piel no melanoma asociado a la exposición UV artificial es un pilar fundamental de la ética profesional actual.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/your-gel-manicure-is-safe/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "protector_solar"
+      ],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_uv"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:49:58.114Z"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-001",
+    "title": "Volatilómica del Cuero Cabelludo: El Perfil de Compuestos Orgánicos Volátiles",
+    "content": "La volatilómica del cuero cabelludo representa una frontera emergente en el diagnóstico capilar no invasivo. Esta disciplina estudia los compuestos orgánicos volátiles (COV) emitidos a través de los poros foliculares, los cuales actúan como biomarcadores químicos del estado metabólico y microbiológico del cuero cabelludo. Estudios recientes publicados en PubMed sugieren que el perfil de COV cambia drásticamente en condiciones como la alopecia androgenética o la dermatitis seborreica severa, antes de que los signos clínicos macroscópicos sean evidentes. El análisis de estos gases mediante espectrometría de movilidad iónica permite identificar la firma química de la inflamación subclínica. A diferencia de las biopsias, este método captura la actividad metabólica en tiempo real, ofreciendo una ventana al ecosistema del folículo sin alterar su integridad. La integración de sensores de gas en dispositivos portátiles podría revolucionar la detección temprana de patologías, permitiendo intervenciones personalizadas basadas en el 'aliento' del cuero cabelludo. La literatura científica actual enfatiza que estos metabolitos secundarios son producto de interacciones complejas entre el sebo, la microbiota local y el estrés oxidativo tisular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:16:10.026Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-acustica-002",
+    "title": "Análisis Acústico de la Fricción del Tallo: Diagnóstico de la Integridad Cuticular",
+    "content": "El análisis acústico del cabello, o tribología capilar avanzada, evalúa la rugosidad de la cutícula mediante la medición de las ondas sonoras emitidas durante el contacto mecánico. Cuando un peine o sensor especializado se desliza por la fibra, la frecuencia y amplitud del sonido generado proporcionan datos cuantitativos sobre la degradación de las escamas cuticulares. Este enfoque es superior a la observación visual, ya que puede detectar microfisuras causadas por el fotodaño o el uso excesivo de agentes químicos antes de que ocurra la rotura visible del tallo. Investigaciones en revistas de dermatología cosmética indican que la firma acústica cambia significativamente tras tratamientos de restauración de la barrera capilar. Este diagnóstico permite a los especialistas de GlowApp prescribir regímenes de cuidado basados en la resiliencia mecánica real de la fibra, más que en la percepción cosmética superficial. La correlación entre la emisión sonora y el coeficiente de fricción es un indicador crítico para evaluar la eficacia de los polímeros reparadores en pacientes con exposición urbana intensa y alta polución.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:16:10.026Z"
+  }
+]

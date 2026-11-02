@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "guias-unas-onico-reologia-001",
+    "title": "Reología de los geles constructores: viscosidad y nivelación",
+    "content": "La reología, el estudio del flujo de la materia, es fundamental en la aplicación de sistemas fotopolimerizables en GlowApp. Los geles constructores presentan un comportamiento pseudoplástico: su viscosidad disminuye bajo la fuerza de corte (tixotropía). Un gel con una reología adecuada debe permitir una nivelación autónoma sin desbordar hacia los pliegues periungueales. La gestión de la tensión superficial es crítica; si la tensión es demasiado baja, el producto migrará hacia la cutícula, aumentando el riesgo de dermatitis de contacto por acrilatos. Por el contrario, una alta viscosidad requiere una manipulación física que puede introducir microburbujas, alterando la integridad estructural de la polimerización. Es vital que el profesional comprenda que el calor ambiente en Bogotá, aunque moderado, puede reducir la viscosidad de los geles, alterando su comportamiento esperado y provocando un curado desigual. La elección de una resina con el índice de tixotropía correcto evita la necesidad de un limado excesivo posterior, preservando la lámina dorsal de la uña del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "piel sensibilizada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-productos-tecnicos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:41:34.806Z"
+  }
+]

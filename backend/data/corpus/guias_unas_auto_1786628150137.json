@@ -1,0 +1,249 @@
+[
+  {
+    "chunk_id": "guias_unas-onicocriptosis-biomecanica-001",
+    "title": "Biomecánica de la presión lateral en la onicocriptosis",
+    "content": "La onicocriptosis no es solo un problema de corte de uña, sino una alteración biomecánica donde la curvatura transversal de la lámina ungueal excede la capacidad de adaptación del lecho. Según estudios publicados en el Journal of the American Academy of Dermatology, la presión lateral ejercida por el calzado estrecho comprime los pliegues periungueales contra el borde libre de la uña. Este microtrauma constante provoca una respuesta inflamatoria crónica que puede derivar en tejido de granulación. Es fundamental entender que el 'corte en V' o el desbaste central para 'abrir' la uña es una práctica obsoleta y peligrosa que compromete la integridad estructural de la lámina sin corregir la causa mecánica. En GlowApp, promovemos la evaluación del arco de curvatura antes de cualquier intervención estética. La corrección real requiere aliviar la presión lateral y, en casos recurrentes, la derivación a podología para ortonixia, evitando siempre la manipulación agresiva en cabina que puede introducir patógenos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/ingrown-toenails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "corte_en_v",
+        "desbaste_central"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_pedicure_clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:35:29.008Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicolisis-fisiologica-002",
+    "title": "El límite de la zona de adhesión en la onicólisis fisiológica",
+    "content": "La onicólisis fisiológica ocurre cuando el hiponiquio, la barrera cutánea situada bajo el borde libre, se separa de la lámina ungueal debido a factores mecánicos o químicos. A diferencia de la onicólisis patológica (por hongos o psoriasis), esta variante es a menudo el resultado de una 'limpieza' subungueal mecánica demasiado agresiva con herramientas metálicas. Según investigaciones en PubMed, el hiponiquio es una zona de sellado crítico que impide la entrada de humedad y patógenos al lecho ungueal. Cuando se elimina el hiponiquio durante el servicio de manicura, se pierde la barrera biológica, aumentando exponencialmente el riesgo de infecciones oportunistas por Pseudomonas aeruginosa. El profesional debe identificar que el límite de la zona de adhesión es dinámico y nunca debe forzarse mediante el uso de curetas o fresas bajo el borde libre. La prevención implica mantener la integridad de la queratina del hiponiquio y evitar el uso de solventes deshidratantes que alteren la cohesión entre la lámina y el lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456334/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza_subungueal_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_cabina"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:35:29.008Z"
+  },
+  {
+    "chunk_id": "guias_unas-psoriasis-diferencial-003",
+    "title": "Psoriasis ungueal: La trampa del diagnóstico clínico",
+    "content": "La psoriasis ungueal se manifiesta a menudo con pitting (hoyuelos), manchas de aceite y onicólisis, signos que son frecuentemente confundidos con onicomicosis en salones de belleza. La distinción es crítica porque el tratamiento para hongos es antifúngico, mientras que la psoriasis requiere manejo dermatológico sistémico o tópico con corticoides. Según la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), el error más común en cabina es intentar 'limar' la superficie rugosa o tratar de sellar una onicólisis causada por psoriasis, lo cual empeora el cuadro inflamatorio. El signo de la 'mancha de aceite' es un marcador patognomónico de compromiso de la matriz y el lecho, no de una infección por dermatofitos. Ante la sospecha de psoriasis, el protocolo de GlowApp dicta suspender cualquier servicio de recubrimiento (gel/acrílico) para evitar la oclusión de un lecho inflamado, lo cual podría acelerar la distrofia ungueal. Es vital derivar al paciente con un dermatólogo para confirmar mediante biopsia o examen micológico si existe una coinfección.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/index.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "recubrimiento_gel",
+        "limado_superficial"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:35:29.008Z"
+  },
+  {
+    "chunk_id": "guias_unas-sensibilizacion-acrilatos-004",
+    "title": "Sensibilización a acrilatos: El efecto acumulativo invisible",
+    "content": "La dermatitis alérgica de contacto por acrilatos es una de las complicaciones más prevalentes en la industria estética, derivada principalmente de la exposición a monómeros sin polimerizar. Según la literatura dermatológica, la sensibilización a compuestos como el Hidroxipropil Metacrilato (HPMA) es irreversible. Una vez que el sistema inmunológico reconoce el acrilato como un alérgeno, el contacto futuro provocará reacciones inflamatorias no solo en la uña, sino potencialmente en párpados, cara y cuello a través de la transferencia manual. El riesgo aumenta drásticamente cuando se utilizan lámparas UV con espectro de emisión inadecuado o tiempos de curado insuficientes, dejando monómeros residuales en la capa de dispersión. En GlowApp, enfatizamos que la 'alergia' no aparece necesariamente en la primera aplicación, sino tras una exposición acumulativa. La prevención pasa por el uso estricto de guantes de nitrilo (no vinilo, que es permeable a monómeros), lámparas calibradas según la ficha técnica del gel y evitar el contacto del producto con la piel periungueal durante la aplicación.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal (American Contact Dermatitis Society)",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HPMA",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "contacto_piel_periungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_cabina"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:35:29.008Z"
+  },
+  {
+    "chunk_id": "guias_unas-biopeliculas-fresas-006",
+    "title": "Biofilms en microfisuras: Desafío de asepsia",
+    "content": "Las fresas de carburo de tungsteno y diamante utilizadas en tornos de alta frecuencia desarrollan microfisuras en su superficie tras usos repetidos. Estas fisuras son el nicho perfecto para la formación de biofilms bacterianos, que son comunidades de microorganismos protegidas por una matriz extracelular resistente a los desinfectantes comunes. Según directrices de la OMS sobre esterilización, el simple remojo en soluciones desinfectantes es insuficiente si no se precede de una limpieza ultrasónica que elimine los residuos biológicos (queratina, sangre, restos de gel). La presencia de estos biofilms representa un riesgo directo de transmisión de infecciones entre clientes, incluyendo Pseudomonas y estafilococos. La esterilización en autoclave es el único método validado para eliminar estas estructuras. En GlowApp, insistimos en que la 'desinfección superficial' es una práctica de riesgo. La inversión en herramientas de acero quirúrgico de alta calidad y su correcto procesamiento es la única forma de garantizar una práctica clínica responsable y segura en el entorno de la cosmetología.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/publications/i/item/9789241595162",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "desinfeccion_superficial"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:35:29.008Z"
+  },
+  {
+    "chunk_id": "guias_unas-cuticula-inmunologia-009",
+    "title": "La cutícula: Barrera inmunológica vs. mito estético",
+    "content": "La cutícula es la extensión del eponiquio y constituye la primera línea de defensa inmunológica frente al entorno externo. Su función biológica es sellar el espacio entre la piel y la lámina ungueal para prevenir la entrada de agua, bacterias y hongos en la matriz. La tendencia de 'limpieza profunda' que busca eliminar totalmente la cutícula es una práctica contraproducente que deja la matriz expuesta a microtraumas y al desarrollo de paroniquia. Estudios dermatológicos indican que la remoción excesiva de la cutícula mediante herramientas metálicas o cortacutículas rompe la barrera de queratinocitos, facilitando la inflamación crónica del eponiquio. En GlowApp, defendemos la hidratación y el cuidado de la cutícula mediante métodos no invasivos. Un eponiquio sano es flexible y no requiere corte. El profesional debe educar al cliente sobre el riesgo de la remoción agresiva, ya que una cutícula dañada es el portal de entrada para infecciones que pueden alterar permanentemente el crecimiento de la lámina ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/public/cosmetic/nails/cuticle-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_hidratantes"
+      ],
+      "contraindications": [
+        "corte_agresivo_cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_manicura_segura"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:35:29.008Z"
+  }
+]

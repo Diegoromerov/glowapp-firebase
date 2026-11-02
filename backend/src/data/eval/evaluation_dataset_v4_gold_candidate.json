@@ -1,0 +1,262 @@
+{
+  "schema_version": "4.0-gold-candidate",
+  "generated_at": "2026-08-14T17:24:28.227Z",
+  "status": "CANDIDATO — PHASE 1 (construcción independiente, sin retrieval)",
+  "database": "LOCAL_ONLY",
+  "note": "Gold construido por inspección de contenido del corpus canónico. Búsqueda auxiliar: términos de intención + lectura de chunks. NO se usó ranking/similarity del motor.",
+  "gold_ids_total": 25,
+  "gold_ids_found": 25,
+  "gold_ids_missing": [],
+  "gold_ids_without_hash": [],
+  "physical_validation": true,
+  "queries": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "difficulty": "medium",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "poros-humedad-bogota-008"
+      ],
+      "supporting_gold": [
+        "poros-clima-bogota-009"
+      ],
+      "rationale": "Contenido trata efecto del clima húmedo de Bogotá sobre piel grasa y rutina adaptada",
+      "missing_information": null
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "difficulty": "medium",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "proteccion-solar-filtros-quimicos-006"
+      ],
+      "supporting_gold": [
+        "trend-sunscreen-mixing-004"
+      ],
+      "rationale": "Contenido trata filtros solares químicos/físicos para piel reactiva (melasma/sensible)",
+      "missing_information": null
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "difficulty": "easy",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "reologia-acido-hialuronico-005"
+      ],
+      "supporting_gold": [
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec"
+      ],
+      "rationale": "Contenido describe selección y uso del ácido hialurónico (reología, peso molecular)",
+      "missing_information": null
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "difficulty": "medium",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "core_gold": [
+        "skincare-ritmos-circadianos-001"
+      ],
+      "supporting_gold": [],
+      "rationale": "Contenido sobre ritmos circadianos y rutina nocturna; NO hay rutina anti-edad completa para piel mixta 35",
+      "missing_information": "Rutina anti-edad específica para piel mixta a los 35 años"
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "difficulty": "hard",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci"
+      ],
+      "supporting_gold": [
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion"
+      ],
+      "rationale": "Contenido trata regulación/manejo de hiperpigmentación post-inflamatoria en pieles pigmentadas",
+      "missing_information": null
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "difficulty": "medium",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "riesgo-niacinamida-ph-bajo-002"
+      ],
+      "supporting_gold": [
+        "niacinamida-hidrolisis-ph-002"
+      ],
+      "rationale": "Contenido trata riesgo de combinar niacinamida con pH bajo (vitamina C)",
+      "missing_information": null
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "difficulty": "easy",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "skincare-microbioma-limpiadores-004"
+      ],
+      "supporting_gold": [
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002"
+      ],
+      "rationale": "Contenido trata pH de limpiadores y su efecto en piel (adecuado para piel seca/sensible)",
+      "missing_information": null
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "difficulty": "medium",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "colorimetria-capilar-ph-pos-tinte-009"
+      ],
+      "supporting_gold": [
+        "colorimetria-capilar-viscoelasticidad-009"
+      ],
+      "rationale": "Contenido trata restauración del pH y sellado cuticular tras procesos (decoloración)",
+      "missing_information": null
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "category": "cabello",
+      "difficulty": "hard",
+      "support_status": "UNSUPPORTED",
+      "core_gold": [],
+      "supporting_gold": [],
+      "rationale": "Búsqueda exhaustiva en corpus: ningún chunk trata caída post-parto ni alopecia por estrés",
+      "missing_information": "Evidencia sobre caída capilar post-parto y por estrés (efervio telógeno)"
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "difficulty": "medium",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "core_gold": [
+        "microbiota-scalp-008"
+      ],
+      "supporting_gold": [],
+      "rationale": "Contenido sobre homeostasis/microbiota del cuero cabelludo; no aborda champú específico para graso+puntas secas",
+      "missing_information": "Selección de champú para cuero graso con puntas secas"
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "difficulty": "hard",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "hidratacion-oclusiva-corporal-008"
+      ],
+      "supporting_gold": [
+        "hidratacion-oclusivos-humectantes-009"
+      ],
+      "rationale": "Contenido compara mecanismos de hidratación (oclusivos vs humectantes) — aplicable a casero vs profesional",
+      "missing_information": null
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "difficulty": "easy",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "core_gold": [
+        "visajismo-cejas-microblading-envejecimiento-009"
+      ],
+      "supporting_gold": [],
+      "rationale": "Contenido sobre microblading y envejecimiento cutáneo; no define explícitamente duración del procedimiento",
+      "missing_information": "Duración típica del resultado del microblading"
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "category": "cejas",
+      "difficulty": "medium",
+      "support_status": "UNSUPPORTED",
+      "core_gold": [],
+      "supporting_gold": [],
+      "rationale": "Búsqueda exhaustiva: ningún chunk compara microblading vs microshading vs nanoblading",
+      "missing_information": "Comparativa técnica de las tres modalidades"
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "category": "cejas",
+      "difficulty": "medium",
+      "support_status": "UNSUPPORTED",
+      "core_gold": [],
+      "supporting_gold": [],
+      "rationale": "Búsqueda exhaustiva: ningún chunk de visajismo por forma de rostro (cara redonda)",
+      "missing_information": "Diseño de cejas según forma de cara"
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "difficulty": "hard",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "core_gold": [
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para"
+      ],
+      "supporting_gold": [],
+      "rationale": "Contenido sobre evaluación de dispersión de luz en tejido dérmico (relacionado con micropigmentación); no aborda directamente corrección de asimetría",
+      "missing_information": "Técnicas específicas de corrección de asimetría ciliar"
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "difficulty": "medium",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "visajismo-cejas-microblading-cicatrizacion-003"
+      ],
+      "supporting_gold": [
+        "visajismo-cejas-microblading-microbiota-006"
+      ],
+      "rationale": "Contenido trata cuidados post-microblading: cicatrización y microbiota ciliar",
+      "missing_information": null
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "difficulty": "medium",
+      "support_status": "SUPPORTED",
+      "core_gold": [
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "supporting_gold": [
+        "visajismo-cejas-diabetis-cicatrizacion-004"
+      ],
+      "rationale": "Contenido trata contraindicaciones médicas del microblading (autoinmunes, diabetes)",
+      "missing_information": null
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "difficulty": "hard",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "core_gold": [
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "supporting_gold": [],
+      "rationale": "Contenido sobre piel seborreica y microblading; no detalla remoción de microblading mal hecho",
+      "missing_information": "Opciones y riesgos de remoción de microblading"
+    }
+  ]
+}

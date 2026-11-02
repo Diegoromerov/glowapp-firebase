@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391875715-1-8ea7c6b2-termodinamica-de-la-nucleacion-de-pigmentos-en-micro-cavidad",
+    "title": "Termodinámica de la nucleación de pigmentos en micro-cavidades corticales",
+    "content": "La formación del color permanente depende de la nucleación eficiente de precursores en el interior de la corteza. A diferencia de la difusión simple, este proceso está gobernado por la energía libre de Gibbs en micro-cavidades corticales. Cuando los precursores de oxidación penetran, la etapa limitante no es solo la penetración, sino la transición de fase donde las moléculas se ensamblan en polímeros de alto peso molecular. Este proceso es altamente sensible a la temperatura local y a la presencia de agentes humectantes que reducen la tensión interfacial. Un gradiente térmico inadecuado durante el tiempo de pose puede inducir una nucleación heterogénea, resultando en una distribución desigual del pigmento y una resistencia al lavado significativamente menor. La optimización termodinámica requiere un control preciso de la entalpía de mezcla y la viscosidad del vehículo, asegurando que la polimerización ocurra en el núcleo de la fibra y no en la superficie cuticular, donde la estabilidad es precaria. El uso de modelado predictivo permite ajustar la formulación para maximizar la afinidad tintórea en cabellos con porosidad heterogénea, evitando la formación de agregados de gran tamaño que comprometen la reflectancia especular y el brillo final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "precursores de oxidación",
+        "agentes humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:57:55.715Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391875715-2-d0ecff0f-modulacion-de-la-carga-superficial-mediante-polielectrolitos",
+    "title": "Modulación de la carga superficial mediante polielectrolitos anfóteros",
+    "content": "La retención de tintes directos catiónicos está intrínsecamente ligada al potencial Zeta de la fibra capilar. En cabellos dañados, la pérdida de 18-MEA expone grupos carboxilo que, al ionizarse, crean una carga negativa excesiva. La aplicación de polielectrolitos anfóteros permite modular esta carga, actuando como un puente electrostático entre la queratina y el pigmento. Este mecanismo no solo mejora la afinidad, sino que reduce la repulsión electrostática que suele ocurrir en las zonas más erosionadas de la cutícula. La eficiencia de este proceso depende del pH del medio, ya que la protonación de los grupos amino del polímero debe ser controlada para evitar la precipitación prematura del tinte. Estudios recientes sugieren que el uso de polímeros con arquitectura de bloque permite una deposición selectiva, protegiendo las áreas con mayor pérdida de integridad estructural. Al estabilizar el potencial electrocinético, se logra una uniformidad cromática superior y una mayor resistencia a la lixiviación por tensioactivos aniónicos presentes en los champús de mantenimiento. Este enfoque representa una evolución en la colorimetría, pasando de la simple adsorción a una ingeniería de superficies a nivel molecular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polielectrolitos anfóteros",
+        "18-MEA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:57:55.715Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391875715-3-f1e10a5e-efectos-de-la-dispersion-de-rayleigh-en-la-percepcion-del-ma",
+    "title": "Efectos de la dispersión de Rayleigh en la percepción del matiz en cabellos aclarados",
+    "content": "En cabellos con niveles altos de aclaración, la estructura interna de la fibra presenta vacíos que alteran la forma en que la luz interactúa con los pigmentos depositados. La dispersión de Rayleigh se vuelve predominante cuando el tamaño de los agregados de tinte es significativamente menor que la longitud de onda de la luz visible. Este fenómeno explica por qué ciertos tonos cenizos pueden virar hacia matices azulados o verdosos inesperados, debido a una mayor dispersión de las longitudes de onda cortas. Para mitigar este efecto, la formulación debe compensar la respuesta espectral mediante la incorporación de pigmentos con diferentes índices de refracción. La caracterización mediante espectrofotometría de reflectancia permite predecir este comportamiento y ajustar la mezcla tintórea para neutralizar los tonos no deseados. Además, la integridad de la capa F juega un rol crucial al actuar como una interfaz óptica que puede suavizar o intensificar estas dispersiones. Comprender la física de la luz en la fibra capilar es esencial para lograr una colorimetría precisa, especialmente en cabellos porosos donde la dispersión de la luz es menos predecible y más susceptible a interferencias externas que alteran la percepción del color final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos sintéticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:57:55.715Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391875715-4-f78bb12b-cinetica-de-la-degradacion-por-oxidasas-endogenas-post-color",
+    "title": "Cinética de la degradación por oxidasas endógenas post-coloración",
+    "content": "Tras el proceso de teñido, la fibra capilar puede retener trazas de enzimas endógenas, como las peroxidasas, que catalizan reacciones de degradación oxidativa sobre los pigmentos recién formados. Esta actividad enzimática es particularmente alta en cabellos con daño estructural, donde la barrera cuticular no logra aislar los componentes del tinte de los factores metabólicos residuales. La cinética de esta degradación sigue un modelo de Michaelis-Menten, donde la velocidad de decoloración es proporcional a la concentración de peróxido residual y la actividad de la enzima. Para contrarrestar este efecto, es necesario implementar un protocolo de desactivación enzimática post-tinte utilizando quelantes específicos que secuestren los cofactores metálicos necesarios para la catálisis. El impacto de esta degradación no solo afecta la intensidad del color, sino que también altera el tono, provocando un viraje hacia matices cálidos no deseados. La monitorización de la actividad peroxidasa mediante ensayos de quimioluminiscencia permite evaluar la eficacia de los tratamientos post-coloración y asegurar la estabilidad del matiz a largo plazo. Este enfoque preventivo es fundamental para mantener la fidelidad del color en servicios de alta exigencia técnica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "agentes buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:57:55.715Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391875715-5-66ee650e-influencia-de-la-histeresis-elastica-en-la-retencion-de-pigm",
+    "title": "Influencia de la histéresis elástica en la retención de pigmentos bajo fricción",
+    "content": "La estabilidad del color en el cabello no es un estado estático, sino un equilibrio dinámico influenciado por las propiedades mecánicas de la fibra. La histéresis elástica, definida como la disipación de energía durante los ciclos de deformación mecánica (como el peinado o el roce con textiles), afecta directamente la retención de pigmentos en la matriz queratínica. Cuando la fibra se somete a fricción, la estructura interna experimenta micro-deformaciones que pueden facilitar la migración de moléculas de tinte hacia la superficie, acelerando el proceso de lavado. Este efecto es más pronunciado en cabellos con baja viscoelasticidad, donde la recuperación de la forma original es lenta. La incorporación de agentes plastificantes en la formulación del tinte puede reducir la histéresis, mejorando la resiliencia de la fibra y, por ende, la retención del color. Analizar la respuesta viscoelástica del cabello antes de la aplicación permite personalizar el tratamiento, asegurando que la matriz sea capaz de retener los pigmentos bajo condiciones de estrés mecánico cotidiano. Este conocimiento es vital para el desarrollo de productos de coloración de larga duración que mantengan su integridad estructural y cromática ante el desgaste físico constante.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Materials Science",
+        "url": "https://springer.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "plastificantes",
+        "polímeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:57:55.715Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391875715-6-ccf02a77-el-efecto-donnan-y-su-dependencia-del-ph-en-la-deposicion-de",
+    "title": "El efecto Donnan y su dependencia del pH en la deposición de tintes ácidos",
+    "content": "El equilibrio de Donnan describe la distribución desigual de iones a través de la membrana cuticular, un proceso crítico en la coloración capilar. En presencia de tintes ácidos, la carga negativa de la queratina (que actúa como una membrana semipermeable) genera un gradiente de potencial electroquímico que puede inhibir la penetración del pigmento si el pH no está estrictamente controlado. A medida que el pH disminuye, la protonación de los grupos amino de la queratina reduce la carga negativa, permitiendo que los iones del tinte superen la barrera de potencial y se depositen eficazmente en la corteza. Sin embargo, un pH demasiado bajo puede comprometer la estabilidad de la cutícula, provocando una pérdida de lípidos esenciales. El control preciso del pH mediante sistemas buffer de alta capacidad es, por tanto, el factor determinante para maximizar la afinidad tintórea sin dañar la estructura de la fibra. Este fenómeno explica por qué la misma formulación puede ofrecer resultados drásticamente diferentes en cabellos con distintos niveles de daño estructural. La optimización del equilibrio de Donnan permite lograr una coloración profunda y uniforme, minimizando la necesidad de tiempos de exposición prolongados que dañan la integridad del cabello.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Colloid and Interface Science",
+        "url": "https://sciencedirect.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sistemas buffer",
+        "tintes ácidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:57:55.715Z"
+  }
+]

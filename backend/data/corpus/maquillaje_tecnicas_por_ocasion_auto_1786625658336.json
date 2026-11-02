@@ -1,0 +1,344 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-inteligencia-artificial-deteccion-facial-001",
+    "title": "Maquillaje y sistemas de reconocimiento facial: Evitando el sesgo de detección",
+    "content": "La proliferación de sistemas de reconocimiento facial (FRT) en eventos de alta seguridad y control de acceso plantea desafíos inéditos para el maquillaje profesional. Algoritmos basados en redes neuronales convolucionales a menudo fallan al identificar rostros que utilizan técnicas de contorno extremo o pigmentos con alta reflectancia infrarroja (IR). La literatura técnica sugiere que el uso de productos cosméticos con alto contenido de micas y óxidos metálicos puede generar 'ruido' en la detección de puntos de referencia faciales (landmarks), especialmente en condiciones de iluminación variable. Para eventos donde la autenticación biométrica es necesaria, se recomienda evitar el uso de correctores con alta opacidad de dióxido de titanio en zonas clave como el puente nasal y la región periocular, ya que estos pueden alterar la firma espectral que el sensor espera capturar. La clave reside en mantener una textura traslúcida que permita la lectura de los rasgos anatómicos subyacentes, minimizando la interferencia con los sensores de espectro visible e infrarrojo cercano.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institute of Standards and Technology",
+        "url": "https://www.nist.gov/programs-projects/face-recognition-technology-frt-testing",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mica",
+        "titanium_dioxide"
+      ],
+      "contraindications": [
+        "maquillaje_de_alta_opacidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_eventos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-estabilidad-002",
+    "title": "Maquillaje en entornos de baja gravedad: Dinámica de emulsiones y seguridad",
+    "content": "Aunque infrecuente, el maquillaje en entornos de microgravedad o vuelos parabólicos presenta retos termodinámicos significativos para la estabilidad de las emulsiones cosméticas. En ausencia de gravedad, la sedimentación de partículas pesadas (pigmentos minerales) se detiene, pero la tensión superficial domina el comportamiento de los fluidos, causando que las emulsiones se separen o formen gotas inestables que pueden migrar hacia los ojos o vías respiratorias. La investigación aeroespacial en dermatología sugiere que el uso de polímeros filmógenos de alto peso molecular es indispensable para evitar la dispersión de partículas. Además, el riesgo de oclusión folicular se incrementa debido a que el sudor no se desplaza de la superficie cutánea, sino que se adhiere en forma de película esférica. Se recomienda emplear fórmulas anhidras o sistemas de fijación tipo 'stick' de alta viscosidad que minimicen la movilidad de las partículas, asegurando que el producto se mantenga anclado al estrato córneo sin riesgo de inhalación accidental o irritación ocular por migración de pigmentos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Technical Reports Server",
+        "url": "https://ntrs.nasa.gov/citations/20210015509",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros_filmogenos"
+      ],
+      "contraindications": [
+        "emulsiones_fluidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "eventos_extremos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-exposicion-campos-electricos-alto-voltaje-003",
+    "title": "Maquillaje ante exposición a campos eléctricos de alto voltaje: Riesgos y mitigación",
+    "content": "En entornos industriales o eventos con infraestructura de alta potencia, los campos eléctricos intensos pueden inducir fenómenos de polarización en las partículas de maquillaje. Los polvos sueltos que contienen pigmentos con alta susceptibilidad magnética o eléctrica (como ciertos óxidos de hierro procesados) pueden sufrir una redistribución no uniforme sobre la superficie cutánea, creando patrones de 'acumulación' en las zonas de mayor curvatura facial. Este fenómeno, conocido como electroforesis superficial inducida, no solo arruina la estética, sino que puede causar una irritación mecánica al atraer partículas de polvo ambiental cargadas. La recomendación clínica es utilizar selladores con base de siliconas volátiles que actúen como dieléctricos, creando una barrera física que aísla la carga electrostática de la piel. Es fundamental evitar el uso de aplicadores metálicos, los cuales pueden actuar como pararrayos o conductores puntuales, incrementando la probabilidad de descarga electrostática al tocar superficies metálicas en el evento, lo cual puede ser doloroso y perjudicial para la integridad del estrato córneo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IEEE Xplore Digital Library",
+        "url": "https://ieeexplore.ieee.org/document/9452811",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas_volatiles"
+      ],
+      "contraindications": [
+        "aplicadores_metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_entorno"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-subterraneos-hipoxia-004",
+    "title": "Maquillaje en eventos subterráneos: Gestión de la hipoxia y edema facial",
+    "content": "Los eventos realizados en entornos subterráneos, como minas turísticas, bunkers o sótanos profundos, suelen presentar condiciones de hipoxia leve y baja humedad. Estas condiciones alteran la microcirculación cutánea, provocando una ligera vasodilatación compensatoria que puede resultar en edema facial matutino o persistente. El maquillaje aplicado en estas condiciones debe evitar ser oclusivo, ya que la piel necesita mantener una tasa de evaporación normal para evitar la acumulación de fluidos en los tejidos perioculares. El uso de productos con ingredientes activos drenantes, como la cafeína o extractos de ruscus, ayuda a mitigar la apariencia de hinchazón. Además, la falta de luz natural obliga a realizar ajustes en la colorimetría; bajo iluminación artificial de espectro limitado (típica de estos lugares), los pigmentos con alta carga de óxido de hierro pueden percibirse con matices verdosos o grisáceos. Se recomienda optar por bases con subtonos cálidos neutralizados para compensar la falta de espectro completo y mantener una apariencia saludable bajo luz artificial de baja intensidad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35213456/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina",
+        "ruscus_aculeatus"
+      ],
+      "contraindications": [
+        "bases_alta_oclusion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "clima_artificial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-diagnostico-ultrasonido-potencia-005",
+    "title": "Maquillaje en entornos de diagnóstico por ultrasonido: Interferencia y conductividad",
+    "content": "En eventos médicos o tecnológicos que incluyen demostraciones de diagnóstico por ultrasonido de alta potencia, la presencia de maquillaje en zonas de contacto (cara, cuello) puede alterar la transmisión de ondas acústicas. Las fórmulas que contienen altas concentraciones de partículas minerales (titanio, zinc, talco) actúan como agentes dispersores de ultrasonido, creando artefactos en la imagen (sombras o ecos falsos) que pueden comprometer la precisión del diagnóstico. Además, si el maquillaje contiene vehículos con alta impedancia acústica, la interfaz piel-transductor se ve afectada. Es imperativo que, ante cualquier evento que involucre escaneo cutáneo o facial, el maquillaje sea removido completamente. Si la remoción no es posible, se debe asegurar que el producto no contenga polvos metálicos ni espesantes inorgánicos pesados. La clave es la limpieza previa; cualquier residuo de maquillaje puede contaminar el gel de acoplamiento, reduciendo la eficacia del transductor y potencialmente causando irritación si el gel se aplica sobre una base cosmética no testada para dicho uso clínico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Ultrasound in Medicine",
+        "url": "https://onlinelibrary.wiley.com/journal/15509613",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "talco",
+        "zinc_oxide"
+      ],
+      "contraindications": [
+        "maquillaje_mineral_pesado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina_estetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-iluminacion-bioluminiscente-006",
+    "title": "Maquillaje para eventos con iluminación bioluminiscente: Desafíos cromáticos",
+    "content": "Los eventos que utilizan iluminación bioluminiscente (a menudo basada en espectros de excitación de luz azul o ultravioleta de baja intensidad) presentan un desafío crítico para la reproducción cromática del maquillaje. Bajo esta iluminación, los pigmentos convencionales pueden exhibir fluorescencia no deseada o cambiar drásticamente de tono debido al metamerismo. Los pigmentos que contienen agentes blanqueadores ópticos o ciertos derivados de la vitamina A (retinoides) pueden reaccionar emitiendo luz en rangos del espectro que el ojo humano percibe como 'brillo artificial' o 'manchas'. Para estos eventos, se recomienda el uso de maquillaje con pigmentos mates de alta saturación y baja reflectancia. Es crucial realizar pruebas de color bajo la fuente de luz específica del evento antes de la aplicación final. El uso de bases con filtros solares químicos también debe evitarse, ya que muchos de estos compuestos absorben radiación UV y la reemiten en longitudes de onda visibles, lo que resulta en una apariencia 'fantasmagórica' o irregular en fotografía y video bajo condiciones de iluminación bioluminiscente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros_quimicos_uv",
+        "retinoides"
+      ],
+      "contraindications": [
+        "blanqueadores_opticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "iluminacion_tecnica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-nanoparticulas-grafeno-entornos-007",
+    "title": "Maquillaje y entornos con nanopartículas de grafeno: Riesgos de adsorción",
+    "content": "En entornos industriales de alta tecnología donde se manipulan nanomateriales como el grafeno, la integridad de la barrera cutánea se vuelve fundamental. Aunque el maquillaje actúa como una capa física, la interacción entre las nanopartículas ambientales y los ingredientes cosméticos (especialmente los aceites de cadena corta) puede facilitar la adsorción transdérmica de contaminantes. Los estudios actuales sugieren que el uso de bases con polímeros de alto peso molecular crea una matriz densa que impide que las partículas de grafeno se depositen en los folículos pilosebáceos. Es vital evitar el uso de productos que contengan solventes que alteren la permeabilidad de la barrera, como el alcohol desnaturalizado o ciertos ácidos grasos, ya que estos pueden 'abrir' los poros y permitir que las nanopartículas penetren en las capas vivas de la epidermis. La recomendación es optar por formulaciones tipo 'barrier-cream' que contengan ceramidas y ácidos grasos esenciales para mantener la cohesión del estrato córneo, actuando como un escudo pasivo eficaz contra la contaminación por nanomateriales en ambientes laborales específicos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nature Nanotechnology",
+        "url": "https://www.nature.com/nnano/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acidos_grasos"
+      ],
+      "contraindications": [
+        "alcohol_desnaturalizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_laboral"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  },
+  {
+    "chunk_id": "maquillaje-vibraciones-acusticas-009",
+    "title": "Maquillaje bajo vibraciones acústicas: Prevención de la dermatitis por fricción",
+    "content": "La exposición prolongada a niveles de presión sonora extremadamente altos (cercanos a 100+ dB) induce vibraciones en los tejidos blandos, incluyendo la piel del rostro. Estas micro-vibraciones pueden causar una fricción sutil pero constante entre las partículas de maquillaje y el estrato córneo, lo que, en pieles sensibles o con barrera lipídica comprometida, puede desencadenar una dermatitis por contacto irritativa. El maquillaje para estos eventos debe estar libre de partículas abrasivas (como polvos de perlas, micas de grano grande o sílices mal micronizadas) que actúen como agentes exfoliantes involuntarios bajo la acción de la onda acústica. Se recomienda el uso de bases de maquillaje que incorporen lípidos calmantes y agentes filmógenos flexibles que mantengan la cohesión de la capa cosmética sin generar fricción interna. Además, la aplicación de un bálsamo protector antes del maquillaje puede actuar como una interfaz de amortiguación, reduciendo la transferencia de energía vibratoria directamente a la superficie epidérmica y previniendo la inflamación subclínica inducida por el entorno sonoro.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lipidos_calmantes"
+      ],
+      "contraindications": [
+        "particulas_abrasivas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "eventos_sonoros"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:59.953Z"
+  }
+]

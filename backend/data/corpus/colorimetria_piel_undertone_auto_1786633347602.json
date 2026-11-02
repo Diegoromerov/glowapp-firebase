@@ -1,0 +1,160 @@
+[
+  {
+    "chunk_id": "colorimetria-neuropeptidos-001",
+    "title": "Neuropeptidos y la respuesta al estrés agudo en la colorimetría facial",
+    "content": "La liberación de neuropeptidos como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP) tras eventos de estrés agudo provoca una vasodilatación mediada por el sistema neuro-cutáneo. Este fenómeno altera instantáneamente la reflectancia espectral de la piel, aumentando la saturación del rojo y oscureciendo el subtono base, lo que puede inducir errores en la selección de bases de maquillaje. Según estudios publicados en el Journal of Investigative Dermatology, esta respuesta vasomotora es independiente de la melanogénesis, lo que significa que el subtono percibido durante un estado de ansiedad o fatiga no refleja la cromaticidad basal estable. Es imperativo que el diagnóstico de colorimetría se realice bajo condiciones de homeostasis, evitando la evaluación inmediatamente posterior a episodios de estrés emocional o esfuerzo físico, ya que la perfusión capilar alterada distorsiona la lectura real de la dermis.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30064-9/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_colorimetria"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:02:11.059Z"
+  },
+  {
+    "chunk_id": "colorimetria-hiperinsulinemia-003",
+    "title": "Hiperinsulinemia y su impacto en la reflectancia cutánea: el tono cetrino",
+    "content": "La hiperinsulinemia crónica, a menudo vinculada con el síndrome de ovario poliquístico (SOP) o resistencia a la insulina, induce cambios metabólicos que afectan la cromaticidad de la piel. El aumento de niveles de insulina circulante puede estimular la síntesis de melanina y alterar la composición de los lípidos cutáneos, resultando en una piel con mayor opacidad y un subtono cetrino o amarillento-grisáceo, particularmente visible en áreas de pliegues y centro facial. Estudios dermatológicos indican que este estado metabólico modifica la reflectancia espectral, haciendo que las bases de maquillaje con subtonos neutros o fríos se vean desalineadas o 'sucias' al interactuar con el sebo alterado. Es crucial reconocer estos signos clínicos, ya que la colorimetría no es solo un proceso cosmético, sino un indicador de la salud metabólica. El manejo de la colorimetría en estos casos requiere el uso de bases con correctores de tono melocotón o salmón que contrarresten la opacidad, proporcionando una corrección visual que no dependa únicamente de la cobertura del producto.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:02:11.059Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-ph-004",
+    "title": "Influencia del microbioma en el pH cutáneo y la estabilidad cromática",
+    "content": "La estabilidad del pH cutáneo, regulada en gran medida por la composición del microbioma (especialmente especies como Cutibacterium acnes y Staphylococcus epidermidis), es determinante para la oxidación de los pigmentos de las bases de maquillaje. Un pH elevado, común en condiciones de disbiosis, acelera la oxidación lipídica y el viraje cromático de los pigmentos de hierro contenidos en los cosméticos, provocando que la base se torne naranja o rojiza a lo largo del día. Según investigaciones en revistas de microbiología cutánea, la producción de ácidos grasos libres por el microbioma altera la polaridad de la superficie cutánea, cambiando cómo se refleja la luz y, por ende, cómo percibimos el subtono. Mantener un microbioma equilibrado mediante prebióticos tópicos no solo es beneficioso para la barrera cutánea, sino que garantiza una mayor fidelidad cromática de los productos aplicados, permitiendo que el subtono seleccionado al momento de la compra se mantenga estable durante la jornada laboral.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_base"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:02:11.059Z"
+  },
+  {
+    "chunk_id": "colorimetria-glicacion-009",
+    "title": "Glicación proteica y el viraje cromático senescente hacia el amarillo",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular, como el colágeno y la elastina, resulta en la formación de Productos de Glicación Avanzada (AGEs). Estos compuestos poseen un color amarillento-marrón intrínseco que se acumula en la dermis con la edad, alterando la reflectancia espectral de la piel. Este fenómeno, conocido como amarillamiento senescente, altera la lectura del subtono, haciendo que pieles que eran naturalmente neutras o frías adquieran un matiz cálido artificial. Los AGEs no solo afectan el tono, sino que también reducen la luminosidad cutánea al absorber la luz azul, lo que hace que la piel luzca opaca. El uso de bases con subtonos amarillos intensos en pieles con alta carga de AGEs puede resultar en un aspecto cetrino y poco saludable. La estrategia clínica debe enfocarse en la neutralización cromática mediante bases que contengan pigmentos violetas o lavanda en pequeñas concentraciones, los cuales contrarrestan el amarilleamiento y restauran la vitalidad del subtono original bajo la luz ambiental.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes_antiglicacion"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:02:11.059Z"
+  }
+]

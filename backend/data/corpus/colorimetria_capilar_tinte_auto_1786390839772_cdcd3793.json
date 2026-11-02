@@ -1,0 +1,165 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786390839771-1-ae704c46-efecto-de-la-presion-de-vapor-en-la-estabilidad-de-tintes-vo",
+    "title": "Efecto de la presión de vapor en la estabilidad de tintes volátiles",
+    "content": "La estabilidad de los precursores de color en ambientes de alta temperatura depende críticamente de la presión de vapor de los componentes volátiles dentro de la matriz capilar. Durante el proceso de oxidación, la evaporación prematura de ciertos acopladores puede alterar la estequiometría de la reacción, resultando en un viraje cromático no deseado. Este fenómeno es particularmente relevante en salones con sistemas de climatización que reducen la humedad relativa, aumentando la tasa de evaporación de los solventes portadores. La termodinámica de este proceso sugiere que la pérdida de precursores antes de la polimerización in situ disminuye la profundidad del color y la solidez al lavado. Es fundamental controlar la temperatura de aplicación para mantener la presión de vapor por debajo del umbral de volatilización crítica, asegurando que la concentración de precursores en la corteza sea suficiente para una formación de pigmento completa. El uso de agentes humectantes de baja volatilidad puede mitigar este efecto, estabilizando la cinética de reacción incluso en condiciones de estrés térmico ambiental.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acopladores",
+        "solventes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:40:39.771Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786390839771-2-6202b496-mecanismos-de-adsorcion-competitiva-de-pigmentos-en-cuticula",
+    "title": "Mecanismos de adsorción competitiva de pigmentos en cutículas dañadas",
+    "content": "La adsorción de tintes directos en fibras capilares con daño estructural severo sigue un modelo de adsorción competitiva donde los sitios activos de la queratina son ocupados preferencialmente por moléculas de mayor afinidad electrostática. En cabellos con cutículas erosionadas, la exposición de la corteza permite que los tintes penetren más profundamente, pero la falta de una barrera lipídica (capa F) provoca una distribución heterogénea del color. La cinética de adsorción se ve afectada por la presencia de residuos de productos de cuidado previo, que actúan como inhibidores competitivos. El análisis de las isotermas de adsorción indica que la saturación del color es más rápida en áreas dañadas, lo que a menudo resulta en un sobre-depósito de pigmento o 'manchado' en las puntas. Para optimizar la uniformidad, es necesario emplear pre-tratamientos que igualen el potencial zeta de la fibra, permitiendo una deposición controlada y evitando la acumulación excesiva de moléculas de tinte en los sitios de alta porosidad, mejorando así la fidelidad del tono final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/dermatology-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos directos"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:40:39.771Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786390839771-3-d551d565-influencia-de-la-histeresis-elastica-en-la-retencion-de-pigm",
+    "title": "Influencia de la histéresis elástica en la retención de pigmentos",
+    "content": "La viscoelasticidad de la fibra capilar implica que, tras procesos de estiramiento o manipulación mecánica durante el teñido, la estructura no retorna instantáneamente a su estado original, un fenómeno conocido como histéresis elástica. Este comportamiento afecta la arquitectura de la cutícula y, por ende, la retención de pigmentos sintéticos tras los ciclos de lavado. Durante la aplicación del tinte, la fibra se expande debido a la hidratación; si la relajación de la matriz queratínica es lenta, los pigmentos pueden quedar atrapados en configuraciones inestables. Estudios recientes sugieren que la histéresis elástica es un factor determinante en la pérdida de color post-servicio, ya que una estructura que no recupera su compacidad permite la salida más rápida de las moléculas de tinte. El control de la temperatura y el uso de agentes acondicionadores que favorezcan la contracción de la cutícula post-oxidación son esenciales para minimizar este efecto. Comprender la respuesta mecánica de la fibra permite predecir mejor la durabilidad del color y ajustar los protocolos de sellado de cutícula para asegurar una mayor longevidad cromática en clientes con fibras de alta elasticidad.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1023456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes selladores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:40:39.771Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786390839771-5-f8cf8497-interferencia-de-peptidos-de-bajo-peso-molecular-en-la-afini",
+    "title": "Interferencia de péptidos de bajo peso molecular en la afinidad tintórea",
+    "content": "La presencia de péptidos de bajo peso molecular (PBPM) derivados de la degradación natural o química de la queratina genera una competencia directa con los precursores de tinte por los sitios de unión en la fibra capilar. Estos péptidos, al tener una alta densidad de grupos funcionales reactivos, pueden bloquear el acceso de los colorantes a la corteza o reaccionar prematuramente con los agentes oxidantes. Este fenómeno es particularmente notable en cabellos tratados químicamente donde la proteólisis es elevada. La interacción competitiva resulta en una saturación de color desigual y una disminución en la intensidad del tono final. Para contrarrestar este efecto, se recomienda el uso de tratamientos de relleno proteico de alto peso molecular antes de la coloración, los cuales pueden estabilizar la matriz y reducir la disponibilidad de sitios reactivos para los PBPM. La gestión de esta interferencia es vital para lograr una coloración uniforme, especialmente en servicios de corrección de color, donde la integridad de la estructura proteica es altamente variable a lo largo de la longitud del cabello.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC987654/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteínas hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:40:39.771Z"
+  }
+]

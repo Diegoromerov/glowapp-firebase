@@ -1,0 +1,44 @@
+[
+  {
+    "chunk_id": "trietanolamina-nitrosaminas-005",
+    "title": "Trietanolamina (TEA): Ajuste de pH y riesgo de nitrosaminas",
+    "content": "La Trietanolamina (TEA) es un agente alcalinizante comúnmente utilizado para ajustar el pH de productos cosméticos, especialmente en geles y emulsiones que contienen carbómeros. A pesar de su eficacia técnica, existe una preocupación clínica latente respecto a la formación de nitrosaminas. Las nitrosaminas son compuestos químicos que pueden formarse cuando la TEA reacciona con agentes nitrosantes (presentes en ciertas materias primas o conservantes) en el producto terminado. Las nitrosaminas son conocidas por ser carcinogénicas en modelos animales, aunque el riesgo dermatológico tópico es bajo debido a las estrictas regulaciones de pureza en cosmética. No obstante, en GlowApp priorizamos la seguridad a largo plazo. Recomendamos verificar que los productos que contienen TEA no incluyan simultáneamente donantes de formaldehído o bronopol, que aumentan drásticamente el riesgo de nitrosación. Para pieles con antecedentes de dermatitis de contacto, la TEA puede actuar como un alérgeno, por lo que su presencia en productos de uso diario debe ser monitoreada. Siempre es preferible buscar formulaciones que utilicen agentes neutralizantes alternativos como la arginina o el aminometil propanol si existe una sensibilidad extrema a las aminas, garantizando así una estabilidad del pH sin comprometer la seguridad toxicológica del consumidor.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "SCCS (Scientific Committee on Consumer Safety)",
+        "url": "https://ec.europa.eu/health/scientific_committees/sccs_en",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trietanolamina"
+      ],
+      "contraindications": [
+        "hipersensibilidad a aminas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:08.197Z"
+  }
+]

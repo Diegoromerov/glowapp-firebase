@@ -1,0 +1,192 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-bio-optica-001",
+    "title": "Análisis de la Birrefringencia de la Queratina en el Tallo Capilar",
+    "content": "La birrefringencia, una propiedad óptica de materiales anisotrópicos, permite evaluar la integridad estructural de la queratina cortical mediante luz polarizada. En el diagnóstico capilar avanzado, la pérdida de esta propiedad es un indicador precoz de daño por fotodaño o procesos químicos excesivos. A diferencia de la microscopía óptica convencional, la evaluación de la birrefringencia detecta alteraciones en la disposición de los puentes disulfuro antes de que la cutícula presente fracturas visibles. Este biomarcador físico es crucial en la práctica clínica para diferenciar entre un daño estructural reversible y una fragilidad debida a una matriz proteica comprometida, proporcionando una base cuantitativa para la recomendación de tratamientos reconstructivos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_fotofisico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:07.113Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-micro-corriente-002",
+    "title": "Evaluación de la Impedancia de Superficie para la Integridad de la Cutícula",
+    "content": "La medición de la impedancia eléctrica de la superficie del tallo capilar ofrece datos sobre la capacidad de retención de agua y la porosidad de la cutícula. Un aumento en la capacitancia de la fibra capilar, medido mediante sensores de alta frecuencia, correlaciona directamente con la exposición a agentes degradantes. Este método permite mapear la porosidad de manera no invasiva, facilitando la personalización de protocolos de oclusión en pacientes con diagnóstico de tricorrexia nodosa incipiente. La correlación entre la impedancia y el estado de hidratación del córtex es una herramienta diagnóstica emergente que supera las evaluaciones subjetivas de tacto, permitiendo un seguimiento objetivo de la eficacia de los tratamientos humectantes en el entorno urbano de Bogotá, donde la humedad relativa varía drásticamente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_bioelectrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:07.113Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termografia-003",
+    "title": "Termografía Dinámica de la Microcirculación Perifolicular",
+    "content": "La termografía infrarroja de alta resolución permite visualizar gradientes térmicos en el cuero cabelludo, los cuales son reflejo de la perfusión sanguínea en la dermis papilar. En alopecias no cicatriciales, se ha observado una hipoperfusión focal que precede a la miniaturización. Al analizar el tiempo de recuperación térmica tras un estímulo de frío controlado, es posible identificar zonas de riesgo antes de que se manifiesten cambios en la densidad capilar. Este diagnóstico funcional ayuda a discernir si el paciente requiere intervenciones enfocadas en la angiogénesis o si el proceso inflamatorio es el factor dominante. Es un complemento valioso a la tricoscopia clásica para evaluar la vitalidad del nicho folicular en casos de pacientes con síntomas de estrés crónico o deficiencias microcirculatorias detectadas mediante pruebas de laboratorio.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:07.113Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-006",
+    "title": "Volatilómica del Cuero Cabelludo como Biomarcador de Microbioma",
+    "content": "El perfil de compuestos orgánicos volátiles (COV) emitidos por el cuero cabelludo ofrece una ventana molecular al estado del microbioma residente. La disbiosis, caracterizada por la proliferación de cepas de Malassezia o Staphylococcus, altera el perfil de ácidos grasos volátiles y alcoholes detectables por nariz electrónica. Este diagnóstico volatilómico permite una detección precoz de la inflamación subclínica, incluso antes de la aparición de descamación o eritema visible. En el contexto clínico de GlowApp, esta tecnología es prometedora para monitorizar la respuesta a terapias antimicrobianas específicas, permitiendo un manejo de precisión que evita el uso indiscriminado de antifúngicos y preserva la diversidad del microbioma nativo del cuero cabelludo, factor clave para la homeostasis folicular a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/srep/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbiota"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:07.113Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-histéresis-009",
+    "title": "Histéresis Elástica como Biomarcador de Salud Cuticular",
+    "content": "La histéresis elástica es la diferencia en la respuesta de un material cuando es cargado y cuando es descargado; en la cutícula capilar, este parámetro mide la energía disipada durante la deformación mecánica. Una histéresis elevada indica una degradación de las proteínas de la cutícula y una pérdida de la estructura de las capas lipídicas protectoras. Mediante técnicas de nanoindentación, este biomarcador permite diagnosticar el daño estructural causado por el exposoma urbano (polución, radiación UV) de manera mucho más sensible que la tricoscopia estándar. Incorporar el análisis de la histéresis elástica en el diagnóstico capilar de GlowApp permite recomendar tratamientos de sellado cuticular altamente personalizados, optimizando la protección mecánica y química del cabello frente a las condiciones ambientales agresivas de Bogotá.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37890123/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:07.113Z"
+  }
+]

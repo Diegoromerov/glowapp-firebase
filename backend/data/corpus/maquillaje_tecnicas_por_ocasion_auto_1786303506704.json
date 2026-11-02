@@ -1,0 +1,276 @@
+[
+  {
+    "chunk_id": "maq-ocasion-luz-artificial-001",
+    "title": "Maquillaje para entornos de alta exposición a luz azul y artificial",
+    "content": "La exposición prolongada a la luz visible de alta energía (HEV) o luz azul, común en estudios de grabación, oficinas con iluminación LED intensa y entornos de grabación digital, puede inducir estrés oxidativo y hiperpigmentación posinflamatoria en fototipos altos (Fitzpatrick III-VI). A diferencia de la radiación UV, la luz azul penetra más profundamente en la dermis, afectando la producción de melanina. Para eventos que requieren maquillaje bajo este tipo de iluminación, es imperativo integrar antioxidantes tópicos (como Vitamina C al 10-15% o Niacinamida) debajo de la base. El uso de polvos minerales que contengan óxidos de hierro es fundamental, ya que son los únicos pigmentos cosméticos con evidencia robusta en la literatura dermatológica para bloquear la transmisión de luz visible hacia la piel. La técnica debe priorizar capas delgadas para evitar la oclusión excesiva, permitiendo que la piel mantenga su termorregulación natural bajo focos de calor artificial.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)32034-2/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "III",
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "niacinamida",
+        "vitamina c"
+      ],
+      "contraindications": [
+        "comedogénicos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-profesional"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:24:54.219Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-post-procedimiento-002",
+    "title": "Maquillaje correctivo post-procedimientos estéticos (Camuflaje médico)",
+    "content": "El maquillaje post-procedimiento (láser, peelings químicos o microneedling) debe tratarse bajo estrictos protocolos de bioseguridad. La barrera cutánea se encuentra comprometida y la permeabilidad transepidérmica está aumentada, lo que eleva el riesgo de dermatitis de contacto irritativa. Es crucial utilizar productos con certificación 'post-procedimiento' (estériles y libres de fragancias, alcoholes y conservantes sensibilizantes). La técnica de aplicación debe ser mediante presión suave (stippling) en lugar de arrastre para evitar el cizallamiento de la epidermis en regeneración. Los pigmentos minerales de alta pureza son preferibles debido a su baja capacidad alergénica. El objetivo clínico es el camuflaje eritematoso sin obstruir el proceso de reepitelización. Se recomienda evitar el uso de brochas no desinfectadas, prefiriendo esponjas desechables de un solo uso para prevenir la colonización bacteriana en zonas con integridad de barrera reducida.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/scars-stretch-marks/camouflage-makeup",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales",
+        "siliconas grado médico"
+      ],
+      "contraindications": [
+        "fragancias",
+        "conservantes sintéticos",
+        "alcohol desnaturalizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:24:54.219Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-clima-frio-003",
+    "title": "Maquillaje en climas extremos: Prevención de la xerosis inducida",
+    "content": "En eventos realizados en climas de baja temperatura y alta velocidad de viento, la piel experimenta una pérdida de agua transepidérmica (TEWL) acelerada. El maquillaje tradicional, especialmente las bases de alta cobertura con alto contenido de alcohol o polvos matificantes, puede exacerbar la xerosis estacional. La técnica recomendada es el 'layering' de oclusivos, utilizando bálsamos reparadores ricos en ceramidas y ácidos grasos esenciales como base de preparación. Se deben evitar productos con acabado mate absoluto, optando por texturas cremosas o emulsiones agua-en-aceite (W/O) que actúen como escudo físico contra las bajas temperaturas. La aplicación debe ser mínima en áreas periorales y nasolabiales, donde la piel es más delgada y propensa a la descamación por frío. El sellado debe hacerse con brumas fijadoras hidratantes en lugar de polvos sueltos secantes, preservando así la integridad de la película hidrolipídica durante toda la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central / NCBI",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6613394/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "escualano",
+        "glicerina"
+      ],
+      "contraindications": [
+        "polvos matificantes",
+        "alcoholes secantes"
+      ],
+      "season": [
+        "invierno"
+      ],
+      "applicable_modules": [
+        "cuidado-piel-estacional"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:24:54.219Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-piel-acneica-004",
+    "title": "Maquillaje para eventos en piel con brotes activos: Estrategias de no-comedogenicidad",
+    "content": "Para pacientes con acné inflamatorio (grado I-II) que requieren maquillaje para eventos sociales, el desafío es equilibrar la cobertura estética con la no-obstrucción del folículo pilosebáceo. La literatura dermatológica sugiere priorizar formulaciones 'oil-free' y 'non-comedogenic' con base de siliconas volátiles, las cuales son inertes y no fomentan la proliferación de C. acnes. Es imperativo evitar ingredientes como el miristato de isopropilo o la lanolina, altamente comedogénicos. La técnica de aplicación debe ser higiénica, utilizando herramientas desinfectadas o desechables para evitar la contaminación cruzada entre lesiones. La aplicación de un gel de ácido salicílico al 2% como 'primer' localizado puede ayudar a reducir la inflamación y controlar el exceso de sebo durante el evento. El desmaquillado posterior es la fase más crítica; se recomienda la doble limpieza (aceite limpiador seguido de un limpiador base agua) para asegurar la eliminación total de residuos de maquillaje que, de permanecer, exacerbarían la patología basal.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/cosmetics-for-acne-prone-skin/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico",
+        "siliconas volátiles"
+      ],
+      "contraindications": [
+        "miristato de isopropilo",
+        "lanolina",
+        "manteca de cacao"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:24:54.219Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-ejercicio-005",
+    "title": "Maquillaje para actividad física: Riesgo de oclusión folicular",
+    "content": "El uso de maquillaje durante la actividad física intensa representa un riesgo significativo de dermatitis por fricción y oclusión folicular. El sudor, compuesto por agua, sales y lípidos, se mezcla con los pigmentos y polímeros del maquillaje, creando una película que puede obstruir los conductos sudoríparos, derivando en miliaria (sudamina) o exacerbación de acné mecánico. Si es indispensable el uso de maquillaje, se deben elegir productos 'breathable' o formulaciones basadas en agua que no bloqueen la evaporación. La clave está en la ligereza: tintes de labios, máscaras de pestañas resistentes al agua (sin necesidad de base) y geles para cejas. Es fundamental la limpieza inmediata post-ejercicio, ya que la combinación de sebo, sudor y residuos cosméticos crea un caldo de cultivo bacteriano en un ambiente de pH cutáneo elevado temporalmente por el ejercicio. Se recomienda evitar bases de cobertura total que contengan parafinas o aceites minerales pesados durante el esfuerzo físico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/routine/workout-skin-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros base agua"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "parafinas",
+        "bases de alta cobertura"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estilo-vida-saludable"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:24:54.219Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-senectud-006",
+    "title": "Maquillaje en pieles con senescencia cutánea: Dinámica de los surcos",
+    "content": "La piel en proceso de senescencia presenta una reducción en la producción de colágeno y elastina, resultando en una mayor profundidad de los surcos nasogenianos y perioculares. El maquillaje en estas ocasiones debe evitar la acumulación de pigmento en los pliegues (migración). El uso de primers a base de siliconas elastoméricas ayuda a 'rellenar' ópticamente las líneas finas, creando una superficie lisa para la base. Se deben evitar texturas en polvo pesado, que tienden a deshidratar y acentuar la textura cutánea. Los productos en crema o líquidos con acabados satinados son preferibles, ya que reflejan la luz y restan importancia a la profundidad de las arrugas. El uso de correctores de color para neutralizar discromías (manchas seniles) debe ser preciso y localizado, aplicando capas mínimas. La clave es la hidratación profunda previa, utilizando ácido hialurónico de bajo peso molecular para asegurar una turgencia temporal que facilite la aplicación uniforme del maquillaje sin efecto acartonado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "madura"
+      ],
+      "age_ranges": [
+        "50+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "siliconas elastoméricas"
+      ],
+      "contraindications": [
+        "polvos compactos mate",
+        "bases de alta densidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-maduro"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:24:54.219Z"
+  }
+]

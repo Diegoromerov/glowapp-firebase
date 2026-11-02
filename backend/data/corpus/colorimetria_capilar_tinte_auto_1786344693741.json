@@ -1,0 +1,292 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-termorregulacion-001",
+    "title": "Efecto de la temperatura folicular en la velocidad de reacción oxidativa",
+    "content": "La temperatura del cuero cabelludo juega un papel crítico en la cinética de oxidación de los tintes permanentes. Según estudios publicados en el International Journal of Trichology, un aumento de apenas 2-3 grados Celsius en la temperatura basal del cuero cabelludo puede acelerar significativamente la tasa de polimerización de los precursores de color (como las para-fenilendiaminas). Este fenómeno explica por qué el crecimiento radicular, al estar más cerca de la fuente de calor corporal, tiende a procesarse con mayor rapidez que los medios y puntas, fenómeno conocido como 'efecto calor'. La falta de control en esta variable térmica puede llevar a un sobre-procesamiento en la raíz, resultando en una saturación de pigmento no deseada o una apertura excesiva de la cutícula que compromete la integridad estructural. Los expertos recomiendan aplicar el producto primero en medios y puntas, dejando la raíz para el final, para compensar esta diferencia térmica y asegurar una homogeneidad cromática que respete la salud del complejo de membrana celular (CMC).",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2938586/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "p-phenylenediamine",
+        "hydrogen peroxide"
+      ],
+      "contraindications": [
+        "cuero cabelludo inflamado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-viscoelasticidad-002",
+    "title": "Viscoelasticidad capilar y su influencia en la retención de pigmentos",
+    "content": "La viscoelasticidad de la fibra capilar, entendida como su capacidad para deformarse y recuperar su forma bajo estrés mecánico o químico, es un factor determinante en la longevidad del color. Investigaciones en dermatología cosmética indican que un cabello con baja viscoelasticidad, producto de una degradación proteica previa, presenta una arquitectura cuticular desorganizada que facilita la fuga de moléculas de colorante oxidado. Cuando el complejo de membrana celular (CMC) ha perdido su capacidad de sellado tras múltiples procesos químicos, la retención de los pigmentos de alto peso molecular se ve comprometida. Es fundamental realizar pruebas de elasticidad antes de cualquier procedimiento de coloración. Si la fibra se estira y no retorna a su longitud original, la estructura interna es incapaz de retener pigmentos artificiales de manera estable. En estos casos, la aplicación de tratamientos reconstructores con aminoácidos y polímeros de peso molecular específico es necesaria para restaurar la capacidad de anclaje antes de proceder con el depósito de color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31829524/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos",
+        "polimeros"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-fibra"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-fototoxicidad-003",
+    "title": "Fototoxicidad inducida por tintes y exposición UV post-aplicación",
+    "content": "La interacción entre los componentes químicos de los tintes permanentes y la radiación ultravioleta (UV) puede desencadenar reacciones de fototoxicidad capilar. Los precursores de color, una vez oxidados, pueden volverse fotosensibles si no se completa correctamente el proceso de aclarado y sellado. La exposición solar inmediata tras la coloración puede catalizar la formación de radicales libres adicionales, lo que resulta en una degradación acelerada del pigmento y, en casos extremos, una irritación cutánea secundaria por fotoactivación de residuos químicos. Según la American Academy of Dermatology, el daño oxidativo inducido por luz UV afecta directamente la degradación de los lípidos cuticulares, exacerbando la pérdida de brillo y color. Se recomienda encarecidamente el uso de protectores solares capilares con filtros UV específicos durante los primeros siete días tras la coloración. La educación del usuario sobre el uso de gorros o productos con protección UV es vital para mantener la estabilidad cromática y prevenir la dermatitis de contacto fotoinducida.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/hair/hair-care-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV"
+      ],
+      "contraindications": [
+        "exposicion solar prolongada"
+      ],
+      "season": [
+        "verano",
+        "todo el año"
+      ],
+      "applicable_modules": [
+        "cuidado-post-tinte"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-microfluorescencia-004",
+    "title": "Microfluorescencia: El desafío de la percepción del color en cabellos aclarados",
+    "content": "La fluorescencia capilar es un fenómeno físico donde las proteínas estructurales de la queratina, especialmente tras procesos de decoloración, absorben radiación UV y la reemiten en el espectro visible, típicamente en tonos azulados o verdosos. Este fenómeno, frecuentemente ignorado en colorimetría clínica, altera la lectura final del tono aplicado. Cuando un colorista aplica un tinte frío sobre una base previamente decolorada que exhibe alta fluorescencia, el resultado puede virar hacia matices indeseados debido a la interferencia lumínica. Estudios en ciencia de los materiales capilares sugieren que el uso de agentes neutralizantes con pigmentos complementarios debe ajustarse considerando la 'firma lumínica' de la fibra. La espectroscopía de reflectancia es la herramienta estándar para diagnosticar este fenómeno, pero a nivel práctico, los coloristas deben identificar la presencia de fluorescencia observando el cabello bajo diferentes fuentes de luz, incluyendo luz negra (Wood's lamp), para ajustar la fórmula de color y lograr una neutralización cromática precisa.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22467554/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos complementarios"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-colorimetria"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-permeabilidad-005",
+    "title": "Modulación de la permeabilidad cuticular mediante surfactantes anfóteros",
+    "content": "La penetración de los precursores de color depende estrictamente de la permeabilidad cuticular, la cual puede ser modulada mediante el uso de surfactantes anfóteros en la formulación del tinte. Estos agentes actúan reduciendo la tensión superficial sin causar la desnaturalización proteica agresiva asociada a los surfactantes aniónicos fuertes. La literatura científica sugiere que la introducción controlada de estos compuestos permite una apertura 'inteligente' de las escamas de la cutícula, facilitando la entrada de moléculas de color de mayor tamaño sin comprometer el complejo de membrana celular. Este enfoque es particularmente beneficioso en cabellos de alta porosidad, donde la estructura cuticular está comprometida. Al optimizar la permeabilidad, se logra una distribución más uniforme de los pigmentos desde la corteza externa hasta la interna, reduciendo el riesgo de parches de color o una fijación heterogénea. Esta técnica es un pilar fundamental en la coloración de última generación, priorizando la integridad estructural sobre la fuerza bruta de la alcalinización.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes anfoteros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-anisotropia-007",
+    "title": "Anisotropía de la fibra y su impacto en la distribución del pigmento",
+    "content": "La anisotropía capilar se refiere a las variaciones en las propiedades físicas y químicas a lo largo de la longitud de una sola fibra. Un cabello largo no es homogéneo; la sección proximal (raíz) posee una integridad cuticular superior y una carga lipídica natural diferente a la sección distal (puntas), que ha estado expuesta a factores ambientales y mecánicos durante años. Esta diferencia estructural significa que la afinidad tintórea no es constante. Si se aplica la misma fórmula en todo el cabello, el resultado será una gradación de color indeseada. La técnica de 'coloración segmentada' o 'ajuste de volumen de peróxido' es la respuesta clínica a esta realidad física. Al utilizar volúmenes más bajos en la raíz (donde el calor acelera la reacción) y ajustar el pH en las puntas (más porosas), se logra una uniformidad cromática superior. Entender la anisotropía es esencial para cualquier colorista que aspire a resultados profesionales y predecibles en cabellos de longitud media a larga.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido de hidrogeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-colorimetria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-biocompatibilidad-008",
+    "title": "Biocompatibilidad de polímeros catiónicos y su rol en la fijación del color",
+    "content": "Los polímeros catiónicos se han convertido en elementos esenciales en las formulaciones de tintes modernos debido a su capacidad para interactuar electrostáticamente con la superficie cargada negativamente del cabello dañado. Esta interacción crea una película protectora que no solo suaviza la cutícula, sino que también ayuda a 'atrapar' las moléculas de pigmento durante el proceso de oxidación. Sin embargo, no todos los polímeros son iguales. La selección de polímeros con alta biocompatibilidad es crucial para evitar la acumulación excesiva (buildup) que puede opacar el color y dificultar futuras aplicaciones. La investigación actual apunta al uso de polímeros derivados de proteínas hidrolizadas, que presentan una afinidad superior con la queratina capilar y una biodegradabilidad mejorada. La correcta integración de estos activos en el servicio de coloración asegura una mayor durabilidad del tono y una mejora inmediata en la textura táctil del cabello, alineando la estética con la salud dermatológica del cuero cabelludo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2938586/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros cationicos",
+        "proteinas hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:16.171Z"
+  }
+]

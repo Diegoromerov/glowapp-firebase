@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-baja-presion-atmosferica-001",
+    "title": "Maquillaje en entornos de baja presión atmosférica: Dinámica de emulsiones",
+    "content": "La exposición a entornos de baja presión atmosférica, como cabinas presurizadas o localizaciones de gran altitud, altera la estabilidad física de las formulaciones cosméticas. El diferencial de presión facilita la desgasificación de los componentes volátiles en emulsiones aceite-en-agua (O/W), provocando una separación de fases prematura y la migración de pigmentos hacia los poros. Estudios publicados en el Journal of Cosmetic Science subrayan que la reducción de la presión barométrica disminuye la viscosidad efectiva de las cremas, facilitando la oclusión folicular si se utilizan productos con ceras de alto punto de fusión. Para eventos en estas condiciones, es fundamental optar por fórmulas anhidras o con sistemas de estabilización polimérica avanzada que resistan la expansión de microburbujas internas. La deshidratación transepidérmica (TEWL) también se ve exacerbada por la baja humedad relativa asociada a estos entornos, por lo que se recomienda aplicar una base de hidratación con humectantes oclusivos no comedogénicos antes de cualquier pigmento. La gestión de la estabilidad mecánica del maquillaje bajo estas condiciones es crucial para mantener la integridad estética y evitar la dermatitis irritativa por migración de pigmentos hacia el canal pilosebáceo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "copolímeros acrílicos",
+        "glicerina"
+      ],
+      "contraindications": [
+        "productos con alto contenido de alcohol",
+        "emulsiones inestables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:21:55.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-003",
+    "title": "Maquillaje en entornos de baja gravedad: Estabilidad de emulsiones",
+    "content": "Aunque los entornos de baja gravedad son una situación extrema, la física de las emulsiones cosméticas ofrece lecciones valiosas para productos de alta adherencia. En condiciones de baja gravedad, la sedimentación de partículas pesadas (pigmentos minerales como óxidos de hierro o dióxido de titanio) se ve alterada, afectando la homogeneidad del tono. Los principios de la reología cosmética sugieren que, ante cambios en la aceleración, la viscosidad de cizallamiento se vuelve el factor determinante para mantener el pigmento suspendido. Para eventos terrestres que implican movimiento extremo o alta inercia (deportes de alto impacto), la formulación debe basarse en sistemas de gelificación con polímeros que mantengan la estructura incluso bajo fuerzas G variables. La adhesión electrostática también juega un papel, donde la carga superficial del pigmento debe ser controlada para evitar la migración o aglomeración. La investigación en la estabilidad de fluidos no newtonianos en cosmética ayuda a desarrollar fijadores que no se desplacen ante la sudoración intensa o el movimiento mecánico, garantizando que el maquillaje mantenga su distribución uniforme incluso cuando las fuerzas externas intentan desestabilizar la película cosmética sobre la piel.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "polímeros reticulados"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:21:55.250Z"
+  }
+]

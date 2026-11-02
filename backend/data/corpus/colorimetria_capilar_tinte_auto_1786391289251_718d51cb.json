@@ -1,0 +1,165 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391289249-1-1ab0cfb6-influencia-de-la-reologia-no-newtoniana-en-la-uniformidad-de",
+    "title": "Influencia de la reología no newtoniana en la uniformidad del depósito de pigmento",
+    "content": "La reología de las formulaciones tintóreas modernas no es meramente una cuestión de textura, sino un factor crítico en la cinética de deposición. Las emulsiones de tinte actúan como fluidos pseudoplásticos donde la viscosidad disminuye bajo cizallamiento durante la aplicación manual. Este comportamiento es fundamental para asegurar que los precursores de tinte alcancen la corteza de manera uniforme, evitando zonas de saturación diferencial. Cuando la viscosidad es inadecuada, se producen gradientes de concentración que derivan en un acabado irregular, especialmente en cabellos con porosidad heterogénea. La optimización de la tensión superficial mediante surfactantes específicos permite que la mezcla penetre en las microfisuras de la cutícula sin colapsar la estructura de la fibra. Un control preciso de la velocidad de flujo durante la aplicación garantiza que el tiempo de pose sea efectivo en todo el eje capilar, minimizando el riesgo de sobre-procesamiento en las puntas y sub-procesamiento en la raíz, donde la temperatura folicular aumenta la velocidad de reacción oxidativa.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38219402/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes",
+        "polímeros espesantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:48:09.249Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391289249-2-b34c3e21-estrategias-de-mitigacion-de-radicales-libres-mediante-quela",
+    "title": "Estrategias de mitigación de radicales libres mediante quelantes de nueva generación",
+    "content": "La presencia de metales de transición como hierro y cobre en la fibra capilar actúa como catalizador en la degradación oxidativa incontrolada durante el proceso de teñido. Estos metales reaccionan con el peróxido de hidrógeno, generando radicales hidroxilo que no solo degradan el pigmento, sino que dañan severamente la estructura proteica de la queratina. El uso de agentes quelantes avanzados, como el EDDS (etilendiamina disuccinato), permite secuestrar estos iones antes de que participen en la reacción de Fenton. A diferencia de los quelantes tradicionales, los de nueva generación presentan una mayor afinidad por los metales de transición sin interferir con la polimerización de los precursores de tinte. La implementación de estos compuestos en el protocolo de coloración reduce drásticamente el viraje de tono y mejora la longevidad del color. Es imperativo evaluar la calidad del agua de lavado del salón, ya que el contenido mineral residual puede neutralizar parcialmente los quelantes, comprometiendo la integridad del resultado final y aumentando la fragilidad mecánica del cabello tras el aclarado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDDS",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:48:09.249Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391289249-3-eed263eb-modulacion-de-la-carga-electrostatica-de-la-fibra-para-la-op",
+    "title": "Modulación de la carga electrostática de la fibra para la optimización de tintes directos",
+    "content": "La eficacia de los tintes directos, que no requieren oxidación, depende estrictamente de la afinidad electrostática entre el pigmento y la superficie capilar. La queratina, bajo condiciones de pH fisiológico, posee una carga neta negativa debido a la desprotonación de los grupos carboxilo. Al aplicar tintes catiónicos, se produce una adsorción por atracción electrostática que permite una fijación rápida. Sin embargo, la exposición previa a agentes tensioactivos aniónicos puede alterar este potencial, reduciendo la capacidad de retención. La modulación de la polaridad de la queratina mediante pre-tratamientos con polímeros catiónicos de bajo peso molecular permite crear un puente de unión, mejorando la saturación y la uniformidad del color. Este enfoque es particularmente útil en cabellos altamente porosos donde la cutícula ha perdido su integridad y la capacidad de retención de pigmentos es mínima. Entender la electrocinética de la fibra permite al profesional personalizar el servicio de color, ajustando el pH de la mezcla para maximizar la interacción entre los colorantes y los sitios activos de la matriz queratínica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38552011/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:48:09.249Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391289249-4-a9dbacb5-mecanismos-de-fotodegradacion-de-pigmentos-sinteticos-bajo-e",
+    "title": "Mecanismos de fotodegradación de pigmentos sintéticos bajo exposición a luz visible",
+    "content": "La estabilidad del color tras el servicio técnico no solo depende de la calidad de la aplicación, sino de la resistencia intrínseca de la molécula de tinte a la fotólisis. Los pigmentos azoicos, ampliamente utilizados en coloración permanente, son susceptibles a la degradación inducida por la absorción de fotones en el espectro visible y UV. Este proceso genera estados excitados que facilitan la ruptura de los enlaces azo, resultando en un viraje de tono hacia matices indeseados. La incorporación de filtros UV de amplio espectro en los productos de cuidado post-tinte es esencial para mitigar este fenómeno. Además, la dispersión de luz en cabellos aclarados (efecto Tyndall) puede exacerbar la percepción de pérdida de color, ya que la luz dispersada interactúa con las moléculas de tinte degradadas. La protección eficaz requiere una combinación de absorbentes de UV y antioxidantes que estabilicen el complejo cromático dentro de la matriz queratínica, evitando la formación de radicales libres que perpetúan el ciclo de degradación fotolítica incluso en interiores.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Photochemistry and Photobiology",
+        "url": "https://www.sciencedirect.com/science/article/pii/S101113442400012X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:48:09.249Z"
+  }
+]

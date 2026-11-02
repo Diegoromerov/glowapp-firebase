@@ -1,0 +1,13 @@
+-- Migration 033: Create legal_holds table for D-004
+CREATE TABLE IF NOT EXISTS legal_holds (
+    id SERIAL PRIMARY KEY,
+    knowledge_id INTEGER NOT NULL REFERENCES beauty_knowledge_embeddings(id) ON DELETE CASCADE,
+    tenant_id INTEGER REFERENCES tenants(id),
+    reason TEXT NOT NULL,
+    created_by VARCHAR(100) NOT NULL,
+    start_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    end_date TIMESTAMP WITH TIME ZONE,
+    status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE', -- 'ACTIVE', 'EXPIRED', 'RELEASED'
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);

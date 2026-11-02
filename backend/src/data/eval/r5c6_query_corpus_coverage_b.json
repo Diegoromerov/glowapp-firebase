@@ -1,0 +1,4075 @@
+{
+  "cycle": "18",
+  "experiment": "R5-C6",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "generated_at": "2026-08-14T15:02:23.642Z",
+  "run": "B",
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "config": {
+    "topK": 10,
+    "threshold": "N/A (topK directo)",
+    "variants": "Q0 original / Q1 paráfrasis / Q2 clarificación de intención"
+  },
+  "metrics": {
+    "q0": {
+      "p1": 0.1111,
+      "p3": 0.2037,
+      "p5": 0.1222,
+      "r5": 0.1667,
+      "mrr": 0.2222
+    },
+    "q1": {
+      "p1": 0.1667,
+      "p3": 0.0926,
+      "p5": 0.0667,
+      "r5": 0.1139,
+      "mrr": 0.1991
+    },
+    "q2": {
+      "p1": 0.1667,
+      "p3": 0.1111,
+      "p5": 0.0778,
+      "r5": 0.1694,
+      "mrr": 0.2176
+    }
+  },
+  "per_query": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "expected_chunks": [
+        "poros-humedad-bogota-008",
+        "colorimetria-oxidacion-sebo-004",
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+        "maq-ocasion-piel-acneica-004",
+        "skincare-rutinas-quelacion-metales-006"
+      ],
+      "rationale": "Q1: misma intención en forma interrogativa. Q2: hace explícito \"productos y pasos de rutina diaria\" — implícito en \"rutina\". No agrega keywords de corpus.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 0.5
+        },
+        "top10": [
+          {
+            "chunk_id": "poros-clima-bogota-009",
+            "title": "Altitud y poros: adaptación cutánea en Bogotá y su impacto en la textura",
+            "sim": 0.5807
+          },
+          {
+            "chunk_id": "poros-humedad-bogota-008",
+            "title": "Efecto del clima de Bogotá en la textura de la piel",
+            "sim": 0.5721
+          },
+          {
+            "chunk_id": "maquillaje-eventos-presión-atmosférica-005",
+            "title": "Maquillaje para eventos en localizaciones de gran altitud: Gestión de la deshidratación",
+            "sim": 0.5389
+          },
+          {
+            "chunk_id": "skincare-rutinas-008-osmolaridad-estrato-corneo",
+            "title": "Gestión de la osmolaridad del estrato córneo ante el estrés ambiental",
+            "sim": 0.5157
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+            "title": "Gestión de la osmolaridad del estrato córneo en condiciones de baja humedad",
+            "sim": 0.515
+          },
+          {
+            "chunk_id": "colorimetria-capilar-humedad-006",
+            "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+            "sim": 0.5134
+          },
+          {
+            "chunk_id": "skincare-rutinas-quelacion-metales-006",
+            "title": "Quelación de metales pesados en la rutina urbana",
+            "sim": 0.5069
+          },
+          {
+            "chunk_id": "colorimetria-ambiental-005",
+            "title": "Hipoxia hipobárica en Bogotá y su efecto en la cromaticidad cutánea",
+            "sim": 0.5033
+          },
+          {
+            "chunk_id": "colorimetria-capilar-agua-008",
+            "title": "El impacto del agua dura y el pH en la estabilidad del color",
+            "sim": 0.4996
+          },
+          {
+            "chunk_id": "rutina-quelacion-metales-urbanos-004",
+            "title": "Quelación de metales pesados en la rutina urbana como defensa ante el exposoma",
+            "sim": 0.4991
+          }
+        ],
+        "candidates_ge_045": [
+          "poros-clima-bogota-009",
+          "poros-humedad-bogota-008",
+          "maquillaje-eventos-presión-atmosférica-005",
+          "skincare-rutinas-008-osmolaridad-estrato-corneo",
+          "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+          "colorimetria-capilar-humedad-006",
+          "skincare-rutinas-quelacion-metales-006",
+          "colorimetria-ambiental-005",
+          "colorimetria-capilar-agua-008",
+          "rutina-quelacion-metales-urbanos-004"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-rutinas-piel-menopausica-007",
+            "title": "Manejo de la xerosis y laxitud en la piel perimenopáusica",
+            "sim": 0.5292
+          },
+          {
+            "chunk_id": "skincare-cronobiologia-002",
+            "title": "Cronocosmética: La importancia del ritmo circadiano en la reparación dérmica",
+            "sim": 0.5023
+          },
+          {
+            "chunk_id": "maq-tecn-ocasion-humedad-relativa-microbioma-005",
+            "title": "Maquillaje en climas de alta humedad: Riesgo de oclusión y Malassezia",
+            "sim": 0.502
+          },
+          {
+            "chunk_id": "poros-clima-bogota-009",
+            "title": "Altitud y poros: adaptación cutánea en Bogotá y su impacto en la textura",
+            "sim": 0.502
+          },
+          {
+            "chunk_id": "piel-madura-fotoproteccion-004",
+            "title": "Optimización del cuidado en piel madura: Prevención del fotoenvejecimiento",
+            "sim": 0.4966
+          },
+          {
+            "chunk_id": "maquillaje-deshidratacion-osmotica-008",
+            "title": "Maquillaje en entornos de deshidratación osmótica ambiental",
+            "sim": 0.4966
+          },
+          {
+            "chunk_id": "maquillaje-eventos-deshidratación-009",
+            "title": "Maquillaje para eventos en ambientes con deshidratación transepidérmica severa",
+            "sim": 0.4951
+          },
+          {
+            "chunk_id": "tendencia-ice-facial-004",
+            "title": "Ice Facials: ¿Desinflamación o riesgo de paniculitis por frío?",
+            "sim": 0.4928
+          },
+          {
+            "chunk_id": "trend-masaje-facial-gua-sha-acne-006",
+            "title": "Gua Sha en piel acneica: La dispersión de bacterias y la exacerbación del brote",
+            "sim": 0.4922
+          },
+          {
+            "chunk_id": "maquillaje-en-entornos-de-alta-humedad-y-microbiota-008",
+            "title": "Maquillaje en ambientes de alta humedad: Riesgo de proliferación microbiana",
+            "sim": 0.4911
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare-rutinas-piel-menopausica-007",
+          "skincare-cronobiologia-002",
+          "maq-tecn-ocasion-humedad-relativa-microbioma-005",
+          "poros-clima-bogota-009",
+          "piel-madura-fotoproteccion-004",
+          "maquillaje-deshidratacion-osmotica-008",
+          "maquillaje-eventos-deshidratación-009",
+          "tendencia-ice-facial-004",
+          "trend-masaje-facial-gua-sha-acne-006",
+          "maquillaje-en-entornos-de-alta-humedad-y-microbiota-008"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-telemetrico-001",
+            "title": "Skincare Telemetrico: La monitorización de la barrera en tiempo real",
+            "sim": 0.4857
+          },
+          {
+            "chunk_id": "trend-cuidado-microbioma-002",
+            "title": "La moda del 'Skincare Minimalista': ¿Por qué menos es más?",
+            "sim": 0.4378
+          },
+          {
+            "chunk_id": "hidratacion-oclusiva-corporal-008",
+            "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+            "sim": 0.4374
+          },
+          {
+            "chunk_id": "tendencia-skin-fasting-metabolico-001",
+            "title": "Skin Fasting Metabólico: ¿Reposo cutáneo o déficit de nutrientes?",
+            "sim": 0.4363
+          },
+          {
+            "chunk_id": "colorimetria-capilar-agua-008",
+            "title": "El impacto del agua dura y el pH en la estabilidad del color",
+            "sim": 0.4345
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-polucion-antiinflamatorio-004",
+            "title": "Estrategias anti-polución y respuesta inflamatoria en entornos urbanos",
+            "sim": 0.4308
+          },
+          {
+            "chunk_id": "maquillaje-eventos-altitud-008",
+            "title": "Maquillaje en eventos de gran altitud: Gestión de la hipoxia y la sequedad ambiental",
+            "sim": 0.4285
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-skincare-cicadiano-002",
+            "title": "Cronocosmética: ¿Sincronización real con el ritmo circadiano?",
+            "sim": 0.4267
+          },
+          {
+            "chunk_id": "quelacion-metales-urbanos-008",
+            "title": "Quelación de metales en la rutina urbana",
+            "sim": 0.4261
+          },
+          {
+            "chunk_id": "cuidado-corporal-exposoma-007",
+            "title": "El exposoma corporal: impacto de la contaminación urbana",
+            "sim": 0.4178
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare-telemetrico-001"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "expected_chunks": [
+        "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se",
+        "oxido-zinc-nanoparticulas-seguridad-006",
+        "trend-sunscreen-mixing-004",
+        "magnetic-face-masks-002",
+        "tendencias-belleza-virales-skincare-magnetico-002"
+      ],
+      "rationale": "Q1: manchas oscuras = melasma (descripción). Q2: pide características del producto — intención implícita de selección.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 0.3333
+        },
+        "top10": [
+          {
+            "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+            "title": "Sin título - Parte 4",
+            "sim": 0.563
+          },
+          {
+            "chunk_id": "proteccion-solar-filtros-quimicos-006",
+            "title": "Filtros solares: diferencia entre químicos y físicos en pieles reactivas",
+            "sim": 0.5574
+          },
+          {
+            "chunk_id": "trend-sunscreen-mixing-004",
+            "title": "Mezcla de protector solar con maquillaje: La dilución del factor de protección",
+            "sim": 0.5519
+          },
+          {
+            "chunk_id": "skincare-rutinas-007-fotoproteccion-he-luz-visible",
+            "title": "Mitigación del daño por luz visible en pieles con hiperpigmentación",
+            "sim": 0.5497
+          },
+          {
+            "chunk_id": "foto-envejecimiento-manos-007",
+            "title": "Protección contra el fotoenvejecimiento por lámparas UV de alta intensidad",
+            "sim": 0.5453
+          },
+          {
+            "chunk_id": "skincare-rutinas-fotoproteccion-006",
+            "title": "Fotoprotección adaptativa: El papel de los antioxidantes tópicos como 'segunda línea'",
+            "sim": 0.5443
+          },
+          {
+            "chunk_id": "skincare-cronobiologico-003",
+            "title": "Ritmo circadiano y fotoprotección: ¿Por qué la mañana no es negociable?",
+            "sim": 0.5434
+          },
+          {
+            "chunk_id": "fotoenvejecimiento-radiacion-006",
+            "title": "Protección contra el fotoenvejecimiento por lámparas UV",
+            "sim": 0.5315
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-fotoproteccion-004",
+            "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+            "sim": 0.5282
+          },
+          {
+            "chunk_id": "maq-ocasion-eventos-diurnos-001",
+            "title": "Maquillaje para eventos diurnos: Priorizando la fotoprotección",
+            "sim": 0.5231
+          }
+        ],
+        "candidates_ge_045": [
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "proteccion-solar-filtros-quimicos-006",
+          "trend-sunscreen-mixing-004",
+          "skincare-rutinas-007-fotoproteccion-he-luz-visible",
+          "foto-envejecimiento-manos-007",
+          "skincare-rutinas-fotoproteccion-006",
+          "skincare-cronobiologico-003",
+          "fotoenvejecimiento-radiacion-006",
+          "visajismo-cejas-microblading-fotoproteccion-004",
+          "maq-ocasion-eventos-diurnos-001"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-cronobiologico-003",
+            "title": "Ritmo circadiano y fotoprotección: ¿Por qué la mañana no es negociable?",
+            "sim": 0.5465
+          },
+          {
+            "chunk_id": "foto-envejecimiento-manos-007",
+            "title": "Protección contra el fotoenvejecimiento por lámparas UV de alta intensidad",
+            "sim": 0.5168
+          },
+          {
+            "chunk_id": "fotoenvejecimiento-radiacion-006",
+            "title": "Protección contra el fotoenvejecimiento por lámparas UV",
+            "sim": 0.5095
+          },
+          {
+            "chunk_id": "trend-maquillaje-con-spf-insuficiente-007",
+            "title": "Confiar en el SPF del maquillaje: La falacia de la protección solar 'todo en uno'",
+            "sim": 0.4947
+          },
+          {
+            "chunk_id": "tendencias_belleza_virales-1786387038355-5-198a77f7-skin-fasting-ayuno-cutaneo-o-abandono-de-la-fotoproteccion",
+            "title": "Skin Fasting: ¿Ayuno cutáneo o abandono de la fotoprotección?",
+            "sim": 0.4882
+          },
+          {
+            "chunk_id": "cuidado-corporal-006",
+            "title": "Dermatitis por contacto por aditivos en protectores solares corporales",
+            "sim": 0.482
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-025",
+            "title": "La moda del 'Skin Fasting' o ayuno de piel: ¿Necesidad o descuido?",
+            "sim": 0.481
+          },
+          {
+            "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+            "title": "Sin título - Parte 4",
+            "sim": 0.4796
+          },
+          {
+            "chunk_id": "cuidado-corporal-fotoproteccion-006",
+            "title": "Fotoprotección corporal: Más allá del rostro",
+            "sim": 0.4789
+          },
+          {
+            "chunk_id": "poros-humectacion-005",
+            "title": "Por qué la deshidratación hace que tus poros se vean más grandes",
+            "sim": 0.4743
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare-cronobiologico-003",
+          "foto-envejecimiento-manos-007",
+          "fotoenvejecimiento-radiacion-006",
+          "trend-maquillaje-con-spf-insuficiente-007",
+          "tendencias_belleza_virales-1786387038355-5-198a77f7-skin-fasting-ayuno-cutaneo-o-abandono-de-la-fotoproteccion",
+          "cuidado-corporal-006",
+          "tendencias-belleza-virales-025",
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "cuidado-corporal-fotoproteccion-006",
+          "poros-humectacion-005"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "foto-envejecimiento-manos-007",
+            "title": "Protección contra el fotoenvejecimiento por lámparas UV de alta intensidad",
+            "sim": 0.5397
+          },
+          {
+            "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+            "title": "Sin título - Parte 4",
+            "sim": 0.5329
+          },
+          {
+            "chunk_id": "fotoenvejecimiento-radiacion-006",
+            "title": "Protección contra el fotoenvejecimiento por lámparas UV",
+            "sim": 0.5298
+          },
+          {
+            "chunk_id": "skincare-cronobiologico-003",
+            "title": "Ritmo circadiano y fotoprotección: ¿Por qué la mañana no es negociable?",
+            "sim": 0.5237
+          },
+          {
+            "chunk_id": "trend-maquillaje-con-spf-insuficiente-007",
+            "title": "Confiar en el SPF del maquillaje: La falacia de la protección solar 'todo en uno'",
+            "sim": 0.5085
+          },
+          {
+            "chunk_id": "proteccion-solar-filtros-quimicos-006",
+            "title": "Filtros solares: diferencia entre químicos y físicos en pieles reactivas",
+            "sim": 0.5016
+          },
+          {
+            "chunk_id": "guias_unas-fotoproteccion-matriz-009",
+            "title": "Fotoprotección de la matriz y el lecho ungueal",
+            "sim": 0.5012
+          },
+          {
+            "chunk_id": "poros-maquillaje-006",
+            "title": "Maquillaje y poros: cómo evitar el efecto comedogénico",
+            "sim": 0.5001
+          },
+          {
+            "chunk_id": "poros-humectacion-005",
+            "title": "Por qué la deshidratación hace que tus poros se vean más grandes",
+            "sim": 0.4999
+          },
+          {
+            "chunk_id": "cuidado-corporal-fotoproteccion-006",
+            "title": "Fotoprotección corporal: Más allá del rostro",
+            "sim": 0.4985
+          }
+        ],
+        "candidates_ge_045": [
+          "foto-envejecimiento-manos-007",
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "fotoenvejecimiento-radiacion-006",
+          "skincare-cronobiologico-003",
+          "trend-maquillaje-con-spf-insuficiente-007",
+          "proteccion-solar-filtros-quimicos-006",
+          "guias_unas-fotoproteccion-matriz-009",
+          "poros-maquillaje-006",
+          "poros-humectacion-005",
+          "cuidado-corporal-fotoproteccion-006"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "expected_chunks": [
+        "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+        "hidratacion-oclusivos-humectantes-009",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "tendencia-beauty-bio-hacking-nutricosmetica-001",
+        "skincare-suplementos-004"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: hace explícito \"momento y orden de aplicación\" — implícito en \"usar correctamente\".",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 0.3333
+        },
+        "top10": [
+          {
+            "chunk_id": "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+            "title": "Sin título - Parte 3",
+            "sim": 0.5938
+          },
+          {
+            "chunk_id": "reologia-acido-hialuronico-005",
+            "title": "Reología del Ácido Hialurónico: Selección Estratégica",
+            "sim": 0.5758
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+            "title": "Ácido Hialurónico de alto peso molecular y el riesgo de 'efecto esponja'",
+            "sim": 0.5546
+          },
+          {
+            "chunk_id": "reologia-ah-006",
+            "title": "Reología del Ácido Hialurónico: Selección Estratégica por Indicación",
+            "sim": 0.5522
+          },
+          {
+            "chunk_id": "reologia-rellenos-008",
+            "title": "Reología del Ácido Hialurónico: Selección por Indicación",
+            "sim": 0.5489
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786377212497-6-dab75f7c-acido-hialuronico-de-bajo-peso-molecular-inflamacion-en-piel",
+            "title": "Ácido Hialurónico de bajo peso molecular: ¿Inflamación en pieles dañadas?",
+            "sim": 0.5407
+          },
+          {
+            "chunk_id": "tendencia-beauty-bio-hacking-nutricosmetica-001",
+            "title": "Suplementación con Ácido Hialurónico ingerible: ¿Hidratación sistémica o digestión?",
+            "sim": 0.5382
+          },
+          {
+            "chunk_id": "tendencias_belleza_virales-1786385270943-1-8555ce3b-suplementacion-con-acido-hialuronico-hidratacion-sistemica-o",
+            "title": "Suplementación con Ácido Hialurónico: ¿Hidratación sistémica o digestión enzimática?",
+            "sim": 0.5358
+          },
+          {
+            "chunk_id": "reologia-ah-interaccion-matriz-007",
+            "title": "Reología del Ácido Hialurónico: Interacción con la Matriz",
+            "sim": 0.5272
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786386717318-3-a76f3bad-acido-hialuronico-hidrolizado-el-riesgo-de-respuesta-pro-inf",
+            "title": "Ácido Hialurónico hidrolizado: El riesgo de respuesta pro-inflamatoria",
+            "sim": 0.5135
+          }
+        ],
+        "candidates_ge_045": [
+          "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+          "reologia-acido-hialuronico-005",
+          "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+          "reologia-ah-006",
+          "reologia-rellenos-008",
+          "ingredientes_activos_contraindicaciones-1786377212497-6-dab75f7c-acido-hialuronico-de-bajo-peso-molecular-inflamacion-en-piel",
+          "tendencia-beauty-bio-hacking-nutricosmetica-001",
+          "tendencias_belleza_virales-1786385270943-1-8555ce3b-suplementacion-con-acido-hialuronico-hidratacion-sistemica-o",
+          "reologia-ah-interaccion-matriz-007",
+          "ingredientes_activos_contraindicaciones-1786386717318-3-a76f3bad-acido-hialuronico-hidrolizado-el-riesgo-de-respuesta-pro-inf"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+            "title": "Sin título - Parte 3",
+            "sim": 0.5891
+          },
+          {
+            "chunk_id": "reologia-acido-hialuronico-005",
+            "title": "Reología del Ácido Hialurónico: Selección Estratégica",
+            "sim": 0.5794
+          },
+          {
+            "chunk_id": "reologia-rellenos-008",
+            "title": "Reología del Ácido Hialurónico: Selección por Indicación",
+            "sim": 0.5749
+          },
+          {
+            "chunk_id": "reologia-ah-interaccion-matriz-007",
+            "title": "Reología del Ácido Hialurónico: Interacción con la Matriz",
+            "sim": 0.5732
+          },
+          {
+            "chunk_id": "tratamientos_esteticos_faciales-1786385587076-4-fc7dfa2e-cinetica-de-degradacion-enzimatica-de-fillers-y-el-rol-de-la",
+            "title": "Cinética de Degradación Enzimática de Fillers y el Rol de la Hialuronidasa",
+            "sim": 0.5728
+          },
+          {
+            "chunk_id": "microblading-interaccion-rellenos-dermicos-001",
+            "title": "Interacción entre microblading y rellenos dérmicos de ácido hialurónico",
+            "sim": 0.5629
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+            "title": "Ácido Hialurónico de alto peso molecular y el riesgo de 'efecto esponja'",
+            "sim": 0.548
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786386717318-3-a76f3bad-acido-hialuronico-hidrolizado-el-riesgo-de-respuesta-pro-inf",
+            "title": "Ácido Hialurónico hidrolizado: El riesgo de respuesta pro-inflamatoria",
+            "sim": 0.5358
+          },
+          {
+            "chunk_id": "skincare-rutinas-glicobiologia-proteoglicanos-004",
+            "title": "Glicobiología y el rol de los proteoglicanos en la hidratación dérmica",
+            "sim": 0.5346
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786377212497-6-dab75f7c-acido-hialuronico-de-bajo-peso-molecular-inflamacion-en-piel",
+            "title": "Ácido Hialurónico de bajo peso molecular: ¿Inflamación en pieles dañadas?",
+            "sim": 0.5341
+          }
+        ],
+        "candidates_ge_045": [
+          "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+          "reologia-acido-hialuronico-005",
+          "reologia-rellenos-008",
+          "reologia-ah-interaccion-matriz-007",
+          "tratamientos_esteticos_faciales-1786385587076-4-fc7dfa2e-cinetica-de-degradacion-enzimatica-de-fillers-y-el-rol-de-la",
+          "microblading-interaccion-rellenos-dermicos-001",
+          "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+          "ingredientes_activos_contraindicaciones-1786386717318-3-a76f3bad-acido-hialuronico-hidrolizado-el-riesgo-de-respuesta-pro-inf",
+          "skincare-rutinas-glicobiologia-proteoglicanos-004",
+          "ingredientes_activos_contraindicaciones-1786377212497-6-dab75f7c-acido-hialuronico-de-bajo-peso-molecular-inflamacion-en-piel"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+            "title": "Sin título - Parte 3",
+            "sim": 0.5534
+          },
+          {
+            "chunk_id": "reologia-rellenos-008",
+            "title": "Reología del Ácido Hialurónico: Selección por Indicación",
+            "sim": 0.5484
+          },
+          {
+            "chunk_id": "reologia-acido-hialuronico-005",
+            "title": "Reología del Ácido Hialurónico: Selección Estratégica",
+            "sim": 0.519
+          },
+          {
+            "chunk_id": "reologia-ah-interaccion-matriz-007",
+            "title": "Reología del Ácido Hialurónico: Interacción con la Matriz",
+            "sim": 0.5052
+          },
+          {
+            "chunk_id": "reologia-ah-006",
+            "title": "Reología del Ácido Hialurónico: Selección Estratégica por Indicación",
+            "sim": 0.4977
+          },
+          {
+            "chunk_id": "manejo-edema-post-acido-hialuronico-008",
+            "title": "Manejo Estratégico del Edema Post-Inyectables de AH",
+            "sim": 0.4963
+          },
+          {
+            "chunk_id": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+            "title": "Ácido Hialurónico de alto peso molecular y el riesgo de 'efecto esponja'",
+            "sim": 0.4887
+          },
+          {
+            "chunk_id": "tratamientos_esteticos_faciales-1786385218117-4-0318a563-cinetica-de-la-degradacion-enzimatica-de-acido-hialuronico-p",
+            "title": "Cinética de la Degradación Enzimática de Ácido Hialurónico por Hialuronidasa",
+            "sim": 0.483
+          },
+          {
+            "chunk_id": "tendencia-beauty-bio-hacking-nutricosmetica-001",
+            "title": "Suplementación con Ácido Hialurónico ingerible: ¿Hidratación sistémica o digestión?",
+            "sim": 0.483
+          },
+          {
+            "chunk_id": "tratamientos_esteticos_faciales-1786386456362-5-ceb38d9b-cinetica-de-la-degradacion-enzimatica-por-hialuronidasa-impa",
+            "title": "Cinética de la Degradación Enzimática por Hialuronidasa: Impacto en la Estructura Tisular",
+            "sim": 0.4818
+          }
+        ],
+        "candidates_ge_045": [
+          "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+          "reologia-rellenos-008",
+          "reologia-acido-hialuronico-005",
+          "reologia-ah-interaccion-matriz-007",
+          "reologia-ah-006",
+          "manejo-edema-post-acido-hialuronico-008",
+          "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+          "tratamientos_esteticos_faciales-1786385218117-4-0318a563-cinetica-de-la-degradacion-enzimatica-de-acido-hialuronico-p",
+          "tendencia-beauty-bio-hacking-nutricosmetica-001",
+          "tratamientos_esteticos_faciales-1786386456362-5-ceb38d9b-cinetica-de-la-degradacion-enzimatica-por-hialuronidasa-impa"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "expected_chunks": [
+        "skincare-rutinas-autofagia-peptidos-003",
+        "skincare-rutinas-bioenergetica-mitocondrial-007",
+        "ingredientes-activos-contraindicaciones-cobre-peptidos-009",
+        "peptidos-cobre-quelacion-003",
+        "activos-quelacion-vitamina-c-004"
+      ],
+      "rationale": "Q1: 35≈madura, anti-edad≈prevenir envejecimiento. Q2: explícito \"productos por la noche en orden\" — implícito en rutina.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-002",
+            "title": "Gestión de la desincronización del reloj biológico cutáneo por luz azul",
+            "sim": 0.4274
+          },
+          {
+            "chunk_id": "skincare-ritmos-circadianos-001",
+            "title": "Impacto de la desincronización del reloj biológico cutáneo en la función barrera",
+            "sim": 0.4247
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-skincare-cicadiano-002",
+            "title": "Cronocosmética: ¿Sincronización real con el ritmo circadiano?",
+            "sim": 0.4199
+          },
+          {
+            "chunk_id": "skincare-bio-ritmo-001",
+            "title": "La moda del Skin-Syncing circadiano: ¿Sincronización real o marketing?",
+            "sim": 0.4185
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-ritmos-circadianos-003",
+            "title": "Cronobiología cutánea: Optimización de rutinas según ritmos circadianos",
+            "sim": 0.418
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786383230424-5-9706c4fa-manejo-de-la-desincronizacion-de-los-ritmos-circadianos-cuta",
+            "title": "Manejo de la desincronización de los ritmos circadianos cutáneos por luz azul",
+            "sim": 0.4138
+          },
+          {
+            "chunk_id": "skincare-003-ritmos-circadianos-reparacion",
+            "title": "Sincronización de la reparación cutánea nocturna mediante el reloj circadiano",
+            "sim": 0.4092
+          },
+          {
+            "chunk_id": "cuidado_corporal_y_spa-cronobiologia-006",
+            "title": "Cronobiología cutánea: Optimizando la reparación nocturna corporal",
+            "sim": 0.4057
+          },
+          {
+            "chunk_id": "subtema-skincare-hiper-personalizado-006",
+            "title": "La moda de la 'Cosmética de Ciclo Circadiano': ¿Realidad biológica?",
+            "sim": 0.4028
+          },
+          {
+            "chunk_id": "rutina-cronobiologia-melatonina-001",
+            "title": "Modulación tópica de la melatonina en la reparación de la barrera cutánea nocturna",
+            "sim": 0.399
+          }
+        ],
+        "candidates_ge_045": []
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "maq-ocasion-piel-madura-005",
+            "title": "Maquillaje para eventos en pieles maduras: Minimizar la migración",
+            "sim": 0.4866
+          },
+          {
+            "chunk_id": "skincare-rutinas-cronobiologia-mitocondrial-003",
+            "title": "Optimización del recambio mitocondrial mediante sincronización de activos con el ciclo de autofagia",
+            "sim": 0.4577
+          },
+          {
+            "chunk_id": "piel-madura-fotoproteccion-004",
+            "title": "Optimización del cuidado en piel madura: Prevención del fotoenvejecimiento",
+            "sim": 0.4491
+          },
+          {
+            "chunk_id": "colorimetria-ritmos-circadianos-007",
+            "title": "Variabilidad circadiana de la cromaticidad cutánea",
+            "sim": 0.4464
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786383230424-5-9706c4fa-manejo-de-la-desincronizacion-de-los-ritmos-circadianos-cuta",
+            "title": "Manejo de la desincronización de los ritmos circadianos cutáneos por luz azul",
+            "sim": 0.444
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-ritmos-circadianos-003",
+            "title": "Cronobiología cutánea: Optimización de rutinas según ritmos circadianos",
+            "sim": 0.4434
+          },
+          {
+            "chunk_id": "cuidado_corporal_y_spa-cronobiologia-006",
+            "title": "Cronobiología cutánea: Optimizando la reparación nocturna corporal",
+            "sim": 0.443
+          },
+          {
+            "chunk_id": "skincare-rutinas-ritmos-circadianos-005",
+            "title": "Cronobiología cutánea: Adaptación de activos según el ciclo de reparación nocturno",
+            "sim": 0.4423
+          },
+          {
+            "chunk_id": "cuidado-corporal-cronobiologia-003",
+            "title": "Cronobiología cutánea: Optimizando la reparación corporal nocturna",
+            "sim": 0.4417
+          },
+          {
+            "chunk_id": "rutina-cronobiologia-melatonina-001",
+            "title": "Modulación tópica de la melatonina en la reparación de la barrera cutánea nocturna",
+            "sim": 0.4377
+          }
+        ],
+        "candidates_ge_045": [
+          "maq-ocasion-piel-madura-005",
+          "skincare-rutinas-cronobiologia-mitocondrial-003"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "tendencias-belleza-virales-skincare-cicadiano-002",
+            "title": "Cronocosmética: ¿Sincronización real con el ritmo circadiano?",
+            "sim": 0.4903
+          },
+          {
+            "chunk_id": "tendencia-skincare-ciclo-circadiano-002",
+            "title": "Cosmética de Ciclo Circadiano: ¿Sincronización real con el ritmo biológico?",
+            "sim": 0.4862
+          },
+          {
+            "chunk_id": "bio-sincronizacion-circadiana-003",
+            "title": "Cronobiología Cutánea: Sincronización de Activos con Ritmos Circadianos",
+            "sim": 0.4771
+          },
+          {
+            "chunk_id": "textura-poros-ritmos-circadianos-008",
+            "title": "Ritmos circadianos y la actividad del poro",
+            "sim": 0.4763
+          },
+          {
+            "chunk_id": "skincare-ritmos-circadianos-reparacion-001",
+            "title": "Sincronización de la reparación celular con el ciclo circadiano cutáneo",
+            "sim": 0.4743
+          },
+          {
+            "chunk_id": "skincare-cronobiologico-001",
+            "title": "Cosmética de Ciclo Circadiano: ¿Sincronización real o marketing?",
+            "sim": 0.4691
+          },
+          {
+            "chunk_id": "maquillaje-eventos-y-ciclos-circadianos-001",
+            "title": "Maquillaje para eventos nocturnos: Impacto en la sincronización circadiana cutánea",
+            "sim": 0.467
+          },
+          {
+            "chunk_id": "skincare-cronobiologia-002",
+            "title": "Cronocosmética: La importancia del ritmo circadiano en la reparación dérmica",
+            "sim": 0.4646
+          },
+          {
+            "chunk_id": "colorimetria-ritmos-circadianos-007",
+            "title": "Variabilidad circadiana de la cromaticidad cutánea",
+            "sim": 0.4611
+          },
+          {
+            "chunk_id": "skincare-bio-ritmo-001",
+            "title": "La moda del Skin-Syncing circadiano: ¿Sincronización real o marketing?",
+            "sim": 0.4607
+          }
+        ],
+        "candidates_ge_045": [
+          "tendencias-belleza-virales-skincare-cicadiano-002",
+          "tendencia-skincare-ciclo-circadiano-002",
+          "bio-sincronizacion-circadiana-003",
+          "textura-poros-ritmos-circadianos-008",
+          "skincare-ritmos-circadianos-reparacion-001",
+          "skincare-cronobiologico-001",
+          "maquillaje-eventos-y-ciclos-circadianos-001",
+          "skincare-cronobiologia-002",
+          "colorimetria-ritmos-circadianos-007",
+          "skincare-bio-ritmo-001"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "expected_chunks": [
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare-rutinas-piel-fotodano-003",
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i"
+      ],
+      "rationale": "Q1: descripción coloquial. Q2: pide tratamientos explícitamente — intención implícita.",
+      "q0": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 1,
+          "p5": 0.6,
+          "r5": 0.6,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+            "title": "Regulación de la melanogénesis en pieles con hiperpigmentación post-inflamatoria",
+            "sim": 0.6373
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+            "title": "Gestión de la hiperpigmentación post-inflamatoria: Inhibición selectiva melanosómica",
+            "sim": 0.6305
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+            "title": "Regulación de la melanogénesis en hiperpigmentación post-inflamatoria",
+            "sim": 0.6194
+          },
+          {
+            "chunk_id": "cuidado_corporal_y_spa-1786383716346-5-3380c079-manejo-de-la-hiperpigmentacion-por-friccion-en-zonas-de-flex",
+            "title": "Manejo de la hiperpigmentación por fricción en zonas de flexión corporal",
+            "sim": 0.6182
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786385298854-5-7aa0fd96-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+            "title": "Gestión de la hiperpigmentación post-inflamatoria: Inhibición selectiva de la transferencia melanosómica",
+            "sim": 0.6155
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+            "title": "Gestión de la hiperpigmentación post-inflamatoria mediante inhibición de la transferencia melanosómica",
+            "sim": 0.6102
+          },
+          {
+            "chunk_id": "skincare-rutinas-piel-fotodano-003",
+            "title": "Manejo de la hiperpigmentación post-inflamatoria en pieles latinas",
+            "sim": 0.6102
+          },
+          {
+            "chunk_id": "efecto-rebote-despigmentantes-003",
+            "title": "Hiperpigmentación post-inflamatoria inducida por activos despigmentantes",
+            "sim": 0.6062
+          },
+          {
+            "chunk_id": "cuidado-corporal-hemosiderina-003",
+            "title": "Manejo de la hiperpigmentación por depósito de hemosiderina",
+            "sim": 0.6051
+          },
+          {
+            "chunk_id": "cuidado_corporal_y_spa-inflamacion-007",
+            "title": "Hiperpigmentación postinflamatoria (HPI): Mecanismos de la cascada inflamatoria",
+            "sim": 0.6027
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+          "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+          "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+          "cuidado_corporal_y_spa-1786383716346-5-3380c079-manejo-de-la-hiperpigmentacion-por-friccion-en-zonas-de-flex",
+          "skincare_rutinas_por_tipo_piel-1786385298854-5-7aa0fd96-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+          "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+          "skincare-rutinas-piel-fotodano-003",
+          "efecto-rebote-despigmentantes-003",
+          "cuidado-corporal-hemosiderina-003",
+          "cuidado_corporal_y_spa-inflamacion-007"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-rutinas-piel-fotodano-003",
+            "title": "Manejo de la hiperpigmentación post-inflamatoria en pieles latinas",
+            "sim": 0.4892
+          },
+          {
+            "chunk_id": "visajismo-cejas-fases-cicatrizacion-005",
+            "title": "Fisiología de la fijación del pigmento: de la fase inflamatoria a la maduración",
+            "sim": 0.4706
+          },
+          {
+            "chunk_id": "inflammaging-rutina-005",
+            "title": "Abordaje preventivo del 'inflammaging' mediante la modulación de citoquinas proinflamatorias",
+            "sim": 0.4692
+          },
+          {
+            "chunk_id": "visajismo-inmunomodulacion-peptidos-005",
+            "title": "Inmunomodulación local mediante péptidos para la estabilidad del microentorno",
+            "sim": 0.4641
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387761860-3-7fc3d62f-modulacion-de-la-respuesta-inflamatoria-mediante-crioterapia",
+            "title": "Modulación de la respuesta inflamatoria mediante crioterapia post-trauma",
+            "sim": 0.4621
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391094460-6-cf067d5d-inmunomodulacion-topica-optimizacion-del-microentorno-dermic",
+            "title": "Inmunomodulación tópica: optimización del microentorno dérmico post-trauma",
+            "sim": 0.4538
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392333326-2-b648a8e1-dinamica-de-la-respuesta-inflamatoria-y-su-modulacion-median",
+            "title": "Dinámica de la respuesta inflamatoria y su modulación mediante crioterapia controlada",
+            "sim": 0.4536
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392731705-5-f9d33670-inmunomodulacion-topica-para-la-optimizacion-del-microentorn",
+            "title": "Inmunomodulación tópica para la optimización del microentorno dérmico post-trauma",
+            "sim": 0.4469
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+            "title": "Gestión de la hiperpigmentación post-inflamatoria mediante inhibición de la transferencia melanosómica",
+            "sim": 0.4444
+          },
+          {
+            "chunk_id": "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+            "title": "Regulación de la melanogénesis en pieles con hiperpigmentación post-inflamatoria",
+            "sim": 0.4424
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare-rutinas-piel-fotodano-003",
+          "visajismo-cejas-fases-cicatrizacion-005",
+          "inflammaging-rutina-005",
+          "visajismo-inmunomodulacion-peptidos-005",
+          "visajismo_cejas_microblading-1786387761860-3-7fc3d62f-modulacion-de-la-respuesta-inflamatoria-mediante-crioterapia",
+          "visajismo_cejas_microblading-1786391094460-6-cf067d5d-inmunomodulacion-topica-optimizacion-del-microentorno-dermic",
+          "visajismo_cejas_microblading-1786392333326-2-b648a8e1-dinamica-de-la-respuesta-inflamatoria-y-su-modulacion-median"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-rutinas-estres-009",
+            "title": "Eje cerebro-piel: Modulación de la inflamación inducida por cortisol tópico",
+            "sim": 0.5326
+          },
+          {
+            "chunk_id": "cuidado-corporal-003",
+            "title": "Protocolo de manejo de la piel en pacientes con uso crónico de prendas de compresión",
+            "sim": 0.5227
+          },
+          {
+            "chunk_id": "inflammaging-rutina-005",
+            "title": "Abordaje preventivo del 'inflammaging' mediante la modulación de citoquinas proinflamatorias",
+            "sim": 0.522
+          },
+          {
+            "chunk_id": "ingredientes-activos-contraindicaciones-mentol-alcanfor-003",
+            "title": "Mentol y Alcanfor: El peligro de la 'frescura' en la piel inflamada",
+            "sim": 0.5182
+          },
+          {
+            "chunk_id": "neurocosmetica-eje-piel-cerebro-003",
+            "title": "Neurocosmética: Modulación del Eje Piel-Cerebro en el Estrés Cutáneo",
+            "sim": 0.5162
+          },
+          {
+            "chunk_id": "skincare-rutinas-piel-sensible-002",
+            "title": "Protocolo de desensibilización en pieles con reactividad vascular",
+            "sim": 0.5115
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-neurocosmetica-009",
+            "title": "Neurocosmética: Modulación de las fibras nerviosas sensoriales",
+            "sim": 0.5099
+          },
+          {
+            "chunk_id": "visajismo-inmunomodulacion-peptidos-005",
+            "title": "Inmunomodulación local mediante péptidos para la estabilidad del microentorno",
+            "sim": 0.5074
+          },
+          {
+            "chunk_id": "mentol-alcanfor-riesgos-004",
+            "title": "Mentol y Alcanfor: El peligro de la 'frescura' en la piel inflamada y atópica",
+            "sim": 0.4999
+          },
+          {
+            "chunk_id": "neuro-cosmetica-003",
+            "title": "Neurocosmética: El Eje Piel-Cerebro en la Recuperación",
+            "sim": 0.4979
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare-rutinas-estres-009",
+          "cuidado-corporal-003",
+          "inflammaging-rutina-005",
+          "ingredientes-activos-contraindicaciones-mentol-alcanfor-003",
+          "neurocosmetica-eje-piel-cerebro-003",
+          "skincare-rutinas-piel-sensible-002",
+          "skincare-rutinas-por-tipo-piel-neurocosmetica-009",
+          "visajismo-inmunomodulacion-peptidos-005",
+          "mentol-alcanfor-riesgos-004",
+          "neuro-cosmetica-003"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "expected_chunks": [
+        "activos-quelantes-y-metales-003",
+        "ingredientes-activos-contraindicaciones-peptidos-cobre-vitamina-c-001",
+        "activos-cosmeticos-interaccion-microbioma-004"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: hace explícita la pregunta de interacción/seguridad — intención implícita.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+            "title": "Sin título - Parte 1",
+            "sim": 0.5635
+          },
+          {
+            "chunk_id": "riesgo-niacinamida-ph-bajo-002",
+            "title": "Niacinamida y pH ácido: Riesgo de eritema inducido",
+            "sim": 0.5561
+          },
+          {
+            "chunk_id": "niacinamida-hidrolisis-ph-002",
+            "title": "Niacinamida: El riesgo de hidrólisis y formación de ácido nicotínico",
+            "sim": 0.5454
+          },
+          {
+            "chunk_id": "skincare-niacinamida-inflamacion-007",
+            "title": "Niacinamida: Mecanismos antiinflamatorios y regulación sebácea",
+            "sim": 0.5375
+          },
+          {
+            "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+            "title": "Sin título - Parte 4",
+            "sim": 0.5334
+          },
+          {
+            "chunk_id": "activos-ph-acido-nicotinico-003",
+            "title": "Niacinamida y pH: El riesgo de conversión a ácido nicotínico y eritema",
+            "sim": 0.5221
+          },
+          {
+            "chunk_id": "activos-quelacion-vitamina-c-004",
+            "title": "Incompatibilidad química: Péptidos de Cobre y Vitamina C pura",
+            "sim": 0.5166
+          },
+          {
+            "chunk_id": "activos-quelantes-y-metales-003",
+            "title": "Interacción entre Péptidos de Cobre y Vitamina C",
+            "sim": 0.516
+          },
+          {
+            "chunk_id": "niacina-hidrolisis-ph-005",
+            "title": "Niacinamida y pH: El riesgo de conversión a ácido nicotínico",
+            "sim": 0.5141
+          },
+          {
+            "chunk_id": "ingredientes-contraindicaciones-niacinamida-009",
+            "title": "Niacinamida al 10%+: el mito de la dosis alta y el eritema",
+            "sim": 0.5126
+          }
+        ],
+        "candidates_ge_045": [
+          "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+          "riesgo-niacinamida-ph-bajo-002",
+          "niacinamida-hidrolisis-ph-002",
+          "skincare-niacinamida-inflamacion-007",
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "activos-ph-acido-nicotinico-003",
+          "activos-quelacion-vitamina-c-004",
+          "activos-quelantes-y-metales-003",
+          "niacina-hidrolisis-ph-005",
+          "ingredientes-contraindicaciones-niacinamida-009"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "niacinamida-hidrolisis-ph-002",
+            "title": "Niacinamida: El riesgo de hidrólisis y formación de ácido nicotínico",
+            "sim": 0.6038
+          },
+          {
+            "chunk_id": "riesgo-niacinamida-ph-bajo-002",
+            "title": "Niacinamida y pH ácido: Riesgo de eritema inducido",
+            "sim": 0.598
+          },
+          {
+            "chunk_id": "skincare-niacinamida-inflamacion-007",
+            "title": "Niacinamida: Mecanismos antiinflamatorios y regulación sebácea",
+            "sim": 0.5944
+          },
+          {
+            "chunk_id": "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+            "title": "Sin título - Parte 1",
+            "sim": 0.5901
+          },
+          {
+            "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+            "title": "Sin título - Parte 4",
+            "sim": 0.5898
+          },
+          {
+            "chunk_id": "activos-ph-acido-nicotinico-003",
+            "title": "Niacinamida y pH: El riesgo de conversión a ácido nicotínico y eritema",
+            "sim": 0.572
+          },
+          {
+            "chunk_id": "niacinamida-concentraciones-007",
+            "title": "Niacinamida: el mito de la 'más es mejor' y la irritación por alta concentración",
+            "sim": 0.5681
+          },
+          {
+            "chunk_id": "ingredientes-activos-contraindicaciones-niacinamida-hidrolisis-004",
+            "title": "Hidrólisis de la Niacinamida: el riesgo del pH bajo",
+            "sim": 0.568
+          },
+          {
+            "chunk_id": "niacina-hidrolisis-ph-005",
+            "title": "Niacinamida y pH: El riesgo de conversión a ácido nicotínico",
+            "sim": 0.5627
+          },
+          {
+            "chunk_id": "tendencia-niacinamida-overdose-003",
+            "title": "La falacia de la Niacinamida al 20%: Riesgos de irritación y barrera cutánea",
+            "sim": 0.5568
+          }
+        ],
+        "candidates_ge_045": [
+          "niacinamida-hidrolisis-ph-002",
+          "riesgo-niacinamida-ph-bajo-002",
+          "skincare-niacinamida-inflamacion-007",
+          "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "activos-ph-acido-nicotinico-003",
+          "niacinamida-concentraciones-007",
+          "ingredientes-activos-contraindicaciones-niacinamida-hidrolisis-004",
+          "niacina-hidrolisis-ph-005",
+          "tendencia-niacinamida-overdose-003"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "niacinamida-hidrolisis-ph-002",
+            "title": "Niacinamida: El riesgo de hidrólisis y formación de ácido nicotínico",
+            "sim": 0.5943
+          },
+          {
+            "chunk_id": "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+            "title": "Sin título - Parte 1",
+            "sim": 0.5882
+          },
+          {
+            "chunk_id": "riesgo-niacinamida-ph-bajo-002",
+            "title": "Niacinamida y pH ácido: Riesgo de eritema inducido",
+            "sim": 0.5836
+          },
+          {
+            "chunk_id": "peptidos-cobre-quelacion-003",
+            "title": "Interacción entre Péptidos de Cobre y Vitamina C: El riesgo de quelación",
+            "sim": 0.5804
+          },
+          {
+            "chunk_id": "skincare-niacinamida-inflamacion-007",
+            "title": "Niacinamida: Mecanismos antiinflamatorios y regulación sebácea",
+            "sim": 0.5758
+          },
+          {
+            "chunk_id": "activos-quelantes-y-metales-003",
+            "title": "Interacción entre Péptidos de Cobre y Vitamina C",
+            "sim": 0.5739
+          },
+          {
+            "chunk_id": "niacinamida-concentraciones-007",
+            "title": "Niacinamida: el mito de la 'más es mejor' y la irritación por alta concentración",
+            "sim": 0.567
+          },
+          {
+            "chunk_id": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+            "title": "Sin título - Parte 4",
+            "sim": 0.5653
+          },
+          {
+            "chunk_id": "trend-niacinamide-high-conc-007",
+            "title": "La falacia de la Niacinamida al 20%: Menos es más",
+            "sim": 0.5603
+          },
+          {
+            "chunk_id": "trend-beauty-005-niacinamide-20-percent",
+            "title": "Niacinamida al 20%: ¿Por qué la concentración no siempre es mejor?",
+            "sim": 0.5601
+          }
+        ],
+        "candidates_ge_045": [
+          "niacinamida-hidrolisis-ph-002",
+          "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+          "riesgo-niacinamida-ph-bajo-002",
+          "peptidos-cobre-quelacion-003",
+          "skincare-niacinamida-inflamacion-007",
+          "activos-quelantes-y-metales-003",
+          "niacinamida-concentraciones-007",
+          "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+          "trend-niacinamide-high-conc-007",
+          "trend-beauty-005-niacinamide-20-percent"
+        ]
+      }
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "expected_chunks": [
+        "skincare-rutinas-piel-deshidratada-004",
+        "piel-sensible-mito-realidad-006"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"características e ingredientes\" — selección implícita en \"mejor\".",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "skincare-microbioma-limpiadores-004",
+            "title": "El pH de los limpiadores como determinante del microbioma",
+            "sim": 0.5729
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+            "title": "Estrategias de preservación del microbioma cutáneo en pieles reactivas",
+            "sim": 0.5262
+          },
+          {
+            "chunk_id": "trend-limpieza-doble-006",
+            "title": "Doble limpieza: ¿Necesidad real o sobre-lavado?",
+            "sim": 0.5253
+          },
+          {
+            "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+            "title": "Maquillaje en ambientes de alta carga electrostática y adherencia de contaminantes",
+            "sim": 0.5232
+          },
+          {
+            "chunk_id": "skincare-limpieza-acustica-004",
+            "title": "Dispositivos de limpieza sónica: ¿Higiene profunda o erosión del manto lipídico?",
+            "sim": 0.521
+          },
+          {
+            "chunk_id": "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+            "title": "Estrategias de higiene post-evento para pieles expuestas a ionización",
+            "sim": 0.5193
+          },
+          {
+            "chunk_id": "poros-doble-limpieza-004",
+            "title": "La doble limpieza como estrategia para la gestión de poros",
+            "sim": 0.5161
+          },
+          {
+            "chunk_id": "skincare-post-ejercicio-002",
+            "title": "El riesgo de la sobre-limpieza en el 'Post-Workout Skincare'",
+            "sim": 0.5127
+          },
+          {
+            "chunk_id": "poros-limpieza-doble-006",
+            "title": "El equilibrio lipídico: por qué la limpieza excesiva puede dilatar los poros",
+            "sim": 0.5115
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-exfoliacion-con-cepillos-007",
+            "title": "El renacimiento de los cepillos faciales eléctricos: ¿Limpieza o micro-abrasión?",
+            "sim": 0.51
+          }
+        ],
+        "candidates_ge_045": [
+          "skincare-microbioma-limpiadores-004",
+          "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "trend-limpieza-doble-006",
+          "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+          "skincare-limpieza-acustica-004",
+          "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+          "poros-doble-limpieza-004",
+          "skincare-post-ejercicio-002",
+          "poros-limpieza-doble-006",
+          "tendencias-belleza-virales-exfoliacion-con-cepillos-007"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "tendencia-cepillos-faciales-009",
+            "title": "Cepillos faciales eléctricos: ¿Limpieza o micro-abrasión?",
+            "sim": 0.5669
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-exfoliacion-con-cepillos-007",
+            "title": "El renacimiento de los cepillos faciales eléctricos: ¿Limpieza o micro-abrasión?",
+            "sim": 0.5581
+          },
+          {
+            "chunk_id": "limpieza-ultrasonica-espátulas-004",
+            "title": "Espátulas ultrasónicas faciales: ¿Limpieza profunda o riesgo de traumatismo cutáneo?",
+            "sim": 0.557
+          },
+          {
+            "chunk_id": "tendencia-limpieza-agua-destilada-006",
+            "title": "Lavado facial con agua destilada: ¿Es realmente beneficioso?",
+            "sim": 0.5502
+          },
+          {
+            "chunk_id": "skincare-post-ejercicio-002",
+            "title": "El riesgo de la sobre-limpieza en el 'Post-Workout Skincare'",
+            "sim": 0.5357
+          },
+          {
+            "chunk_id": "skincare-microbioma-limpiadores-004",
+            "title": "El pH de los limpiadores como determinante del microbioma",
+            "sim": 0.532
+          },
+          {
+            "chunk_id": "skincare-limpieza-acustica-004",
+            "title": "Dispositivos de limpieza sónica: ¿Higiene profunda o erosión del manto lipídico?",
+            "sim": 0.5279
+          },
+          {
+            "chunk_id": "trend-limpieza-doble-006",
+            "title": "Doble limpieza: ¿Necesidad real o sobre-lavado?",
+            "sim": 0.5243
+          },
+          {
+            "chunk_id": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+            "title": "Estrategias de preservación del microbioma cutáneo en pieles reactivas",
+            "sim": 0.5106
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-025",
+            "title": "La moda del 'Skin Fasting' o ayuno de piel: ¿Necesidad o descuido?",
+            "sim": 0.51
+          }
+        ],
+        "candidates_ge_045": [
+          "tendencia-cepillos-faciales-009",
+          "tendencias-belleza-virales-exfoliacion-con-cepillos-007",
+          "limpieza-ultrasonica-espátulas-004",
+          "tendencia-limpieza-agua-destilada-006",
+          "skincare-post-ejercicio-002",
+          "skincare-microbioma-limpiadores-004",
+          "skincare-limpieza-acustica-004",
+          "trend-limpieza-doble-006",
+          "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+          "tendencias-belleza-virales-025"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "tendencia-limpieza-agua-destilada-006",
+            "title": "Lavado facial con agua destilada: ¿Es realmente beneficioso?",
+            "sim": 0.5255
+          },
+          {
+            "chunk_id": "tendencias-belleza-virales-exfoliacion-con-cepillos-007",
+            "title": "El renacimiento de los cepillos faciales eléctricos: ¿Limpieza o micro-abrasión?",
+            "sim": 0.5204
+          },
+          {
+            "chunk_id": "tendencia-cepillos-faciales-009",
+            "title": "Cepillos faciales eléctricos: ¿Limpieza o micro-abrasión?",
+            "sim": 0.5179
+          },
+          {
+            "chunk_id": "tensioactivos-y-limpieza-006",
+            "title": "Tensioactivos en la limpieza facial: el impacto del pH y la irritación",
+            "sim": 0.5099
+          },
+          {
+            "chunk_id": "tendencia-beauty-diy-008",
+            "title": "El riesgo de los 'DIY Face Masks' con ingredientes de cocina: La falacia de lo natural",
+            "sim": 0.509
+          },
+          {
+            "chunk_id": "limpieza-ultrasonica-espátulas-004",
+            "title": "Espátulas ultrasónicas faciales: ¿Limpieza profunda o riesgo de traumatismo cutáneo?",
+            "sim": 0.5087
+          },
+          {
+            "chunk_id": "poros-limpieza-doble-detalle-009",
+            "title": "La ciencia de la doble limpieza: solubilidad del sebo",
+            "sim": 0.5086
+          },
+          {
+            "chunk_id": "skincare-post-ejercicio-002",
+            "title": "El riesgo de la sobre-limpieza en el 'Post-Workout Skincare'",
+            "sim": 0.5073
+          },
+          {
+            "chunk_id": "trend-limpieza-doble-006",
+            "title": "Doble limpieza: ¿Necesidad real o sobre-lavado?",
+            "sim": 0.5049
+          },
+          {
+            "chunk_id": "higiene-facial-ph-007",
+            "title": "El impacto del pH de los limpiadores en la integridad de la barrera cutánea",
+            "sim": 0.5048
+          }
+        ],
+        "candidates_ge_045": [
+          "tendencia-limpieza-agua-destilada-006",
+          "tendencias-belleza-virales-exfoliacion-con-cepillos-007",
+          "tendencia-cepillos-faciales-009",
+          "tensioactivos-y-limpieza-006",
+          "tendencia-beauty-diy-008",
+          "limpieza-ultrasonica-espátulas-004",
+          "poros-limpieza-doble-detalle-009",
+          "skincare-post-ejercicio-002",
+          "trend-limpieza-doble-006",
+          "higiene-facial-ph-007"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "expected_chunks": [
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"productos o procedimientos de restauración\" — intención de tratamiento.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+            "title": "Restauración del pH y sellado cuticular post-proceso",
+            "sim": 0.5552
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+            "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+            "sim": 0.5429
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-003",
+            "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+            "sim": 0.5407
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+            "sim": 0.5338
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-009",
+            "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+            "sim": 0.5297
+          },
+          {
+            "chunk_id": "colorimetria-quelacion-metales-005",
+            "title": "El rol de los quelantes en la prevención de reacciones exotérmicas",
+            "sim": 0.5247
+          },
+          {
+            "chunk_id": "colorimetria-degradacion-lipidos-006",
+            "title": "Protección de la barrera lipídica durante la decoloración",
+            "sim": 0.5238
+          },
+          {
+            "chunk_id": "estabilidad-ph-003",
+            "title": "Efectos de la alcalinidad residual en la integridad de la unión corteza-cutícula",
+            "sim": 0.5217
+          },
+          {
+            "chunk_id": "colorimetria-capilar-interaccion-cobre-002",
+            "title": "Quelación de metales de transición: Prevención de la degradación catalítica del peróxido",
+            "sim": 0.5202
+          },
+          {
+            "chunk_id": "colorimetria-capilar-quelacion-003",
+            "title": "Interferencia de iones calcio y magnesio en la polimerización del tinte",
+            "sim": 0.5201
+          }
+        ],
+        "candidates_ge_045": [
+          "colorimetria-capilar-ph-pos-tinte-009",
+          "colorimetria-capilar-viscoelasticidad-009",
+          "colorimetria-capilar-microbiota-003",
+          "colorimetria-ph-balance-006",
+          "colorimetria-capilar-microbiota-009",
+          "colorimetria-quelacion-metales-005",
+          "colorimetria-degradacion-lipidos-006",
+          "estabilidad-ph-003",
+          "colorimetria-capilar-interaccion-cobre-002",
+          "colorimetria-capilar-quelacion-003"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "colorimetria-degradacion-lipidos-006",
+            "title": "Protección de la barrera lipídica durante la decoloración",
+            "sim": 0.5331
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+            "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+            "sim": 0.5301
+          },
+          {
+            "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+            "title": "Restauración del pH y sellado cuticular post-proceso",
+            "sim": 0.5075
+          },
+          {
+            "chunk_id": "colorimetria_capilar_tinte-1786383766133-3-82968396-degradacion-selectiva-de-la-eumelanina-y-el-control-del-subt",
+            "title": "Degradación selectiva de la eumelanina y el control del subtono residual",
+            "sim": 0.5037
+          },
+          {
+            "chunk_id": "colorimetria-capilar-quimioluminiscencia-002",
+            "title": "Quimioluminiscencia residual: Marcador de daño oxidativo post-tinte",
+            "sim": 0.5013
+          },
+          {
+            "chunk_id": "colorimetria-capilar-estructura-008",
+            "title": "Preservación de la capa F y el punto isoeléctrico del cabello",
+            "sim": 0.4948
+          },
+          {
+            "chunk_id": "estabilidad-ph-003",
+            "title": "Efectos de la alcalinidad residual en la integridad de la unión corteza-cutícula",
+            "sim": 0.4941
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-003",
+            "title": "Viscoelasticidad y su rol en la retención de pigmentos",
+            "sim": 0.493
+          },
+          {
+            "chunk_id": "colorimetria-cromatografia-papel-002",
+            "title": "Cromatografía capilar: Diagnóstico de la integridad del pigmento residual",
+            "sim": 0.491
+          },
+          {
+            "chunk_id": "colorimetria-capilar-interaccion-cobre-002",
+            "title": "Quelación de metales de transición: Prevención de la degradación catalítica del peróxido",
+            "sim": 0.4904
+          }
+        ],
+        "candidates_ge_045": [
+          "colorimetria-degradacion-lipidos-006",
+          "colorimetria-capilar-viscoelasticidad-009",
+          "colorimetria-capilar-ph-pos-tinte-009",
+          "colorimetria_capilar_tinte-1786383766133-3-82968396-degradacion-selectiva-de-la-eumelanina-y-el-control-del-subt",
+          "colorimetria-capilar-quimioluminiscencia-002",
+          "colorimetria-capilar-estructura-008",
+          "estabilidad-ph-003",
+          "colorimetria-capilar-viscoelasticidad-003",
+          "colorimetria-cromatografia-papel-002",
+          "colorimetria-capilar-interaccion-cobre-002"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+            "title": "Restauración del pH y sellado cuticular post-proceso",
+            "sim": 0.536
+          },
+          {
+            "chunk_id": "colorimetria-degradacion-lipidos-006",
+            "title": "Protección de la barrera lipídica durante la decoloración",
+            "sim": 0.5324
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+            "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+            "sim": 0.5316
+          },
+          {
+            "chunk_id": "colorimetria-capilar-ph-estabilidad-008",
+            "title": "El equilibrio del pH en la post-coloración",
+            "sim": 0.5241
+          },
+          {
+            "chunk_id": "colorimetria-capilar-quelacion-minerales-002",
+            "title": "Importancia de la quelación previa al proceso de coloración",
+            "sim": 0.514
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+            "sim": 0.5071
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-003",
+            "title": "Viscoelasticidad y su rol en la retención de pigmentos",
+            "sim": 0.5054
+          },
+          {
+            "chunk_id": "estabilidad-ph-003",
+            "title": "Efectos de la alcalinidad residual en la integridad de la unión corteza-cutícula",
+            "sim": 0.5047
+          },
+          {
+            "chunk_id": "estabilidad-ph-cuero-cabelludo-004",
+            "title": "Homeostasis del cuero cabelludo post-coloración",
+            "sim": 0.5024
+          },
+          {
+            "chunk_id": "colorimetria-cromatografia-papel-002",
+            "title": "Cromatografía capilar: Diagnóstico de la integridad del pigmento residual",
+            "sim": 0.5014
+          }
+        ],
+        "candidates_ge_045": [
+          "colorimetria-capilar-ph-pos-tinte-009",
+          "colorimetria-degradacion-lipidos-006",
+          "colorimetria-capilar-viscoelasticidad-009",
+          "colorimetria-capilar-ph-estabilidad-008",
+          "colorimetria-capilar-quelacion-minerales-002",
+          "colorimetria-ph-balance-006",
+          "colorimetria-capilar-viscoelasticidad-003",
+          "estabilidad-ph-003",
+          "estabilidad-ph-cuero-cabelludo-004",
+          "colorimetria-cromatografia-papel-002"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "category": "cabello",
+      "expected_chunks": [
+        "tendencia-aceite-romero-alopecia-005"
+      ],
+      "rationale": "Q1: post-parto≈embarazo. Q2: explícito \"tratamiento para pérdida de cabello\" — intención de remedio.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "colorimetria-capilar-humedad-006",
+            "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+            "sim": 0.4509
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+            "sim": 0.4497
+          },
+          {
+            "chunk_id": "estabilidad-ph-003",
+            "title": "Efectos de la alcalinidad residual en la integridad de la unión corteza-cutícula",
+            "sim": 0.4444
+          },
+          {
+            "chunk_id": "colorimetria-capilar-quimioluminiscencia-002",
+            "title": "Quimioluminiscencia residual: Marcador de daño oxidativo post-tinte",
+            "sim": 0.4411
+          },
+          {
+            "chunk_id": "colorimetria-capilar-ph-estabilidad-008",
+            "title": "El equilibrio del pH en la post-coloración",
+            "sim": 0.4394
+          },
+          {
+            "chunk_id": "efecto-piezoelectrico-friccion-004",
+            "title": "Mecánica de fricción y su impacto en la estabilidad post-coloración",
+            "sim": 0.4381
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+            "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+            "sim": 0.4342
+          },
+          {
+            "chunk_id": "color-capilar-higroscopia-y-estabilidad-007",
+            "title": "Higroscopía y estabilidad cromática en climas tropicales",
+            "sim": 0.4318
+          },
+          {
+            "chunk_id": "trend-scalp-exfoliation-009",
+            "title": "Exfoliación química del cuero cabelludo: ¿Renovación o irritación?",
+            "sim": 0.4298
+          },
+          {
+            "chunk_id": "tendencias_belleza_virales-1786383551191-4-c6d09787-peelings-quimicos-capilares-renovacion-del-cuero-cabelludo-o",
+            "title": "Peelings químicos capilares: ¿Renovación del cuero cabelludo o irritación folicular?",
+            "sim": 0.4222
+          }
+        ],
+        "candidates_ge_045": [
+          "colorimetria-capilar-humedad-006"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "color-capilar-higroscopia-y-estabilidad-007",
+            "title": "Higroscopía y estabilidad cromática en climas tropicales",
+            "sim": 0.4608
+          },
+          {
+            "chunk_id": "trend-aceites-capilares-003",
+            "title": "Aceites capilares en el cuero cabelludo: ¿Estimulación folicular o dermatitis?",
+            "sim": 0.4608
+          },
+          {
+            "chunk_id": "colorimetria-capilar-humedad-006",
+            "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+            "sim": 0.4606
+          },
+          {
+            "chunk_id": "trend-scalp-exfoliation-009",
+            "title": "Exfoliación química del cuero cabelludo: ¿Renovación o irritación?",
+            "sim": 0.4475
+          },
+          {
+            "chunk_id": "tendencias_belleza_virales-1786383551191-4-c6d09787-peelings-quimicos-capilares-renovacion-del-cuero-cabelludo-o",
+            "title": "Peelings químicos capilares: ¿Renovación del cuero cabelludo o irritación folicular?",
+            "sim": 0.4266
+          },
+          {
+            "chunk_id": "diag-capilar-oxidacion-005",
+            "title": "Fotodaño y Estrés Oxidativo en el Tallo Capilar",
+            "sim": 0.4264
+          },
+          {
+            "chunk_id": "colorimetria-capilar-tinte-histeresis-005",
+            "title": "Histéresis elástica y retención de pigmentos",
+            "sim": 0.4262
+          },
+          {
+            "chunk_id": "trend-slugging-hair-003",
+            "title": "Hair Slugging: ¿Oclusividad beneficiosa o riesgo de dermatitis seborreica?",
+            "sim": 0.4248
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+            "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+            "sim": 0.4193
+          },
+          {
+            "chunk_id": "trend-crioterapia-capilar-001",
+            "title": "Crioterapia capilar casera: ¿Estimulación folicular o riesgo de quemadura criogénica?",
+            "sim": 0.418
+          }
+        ],
+        "candidates_ge_045": [
+          "color-capilar-higroscopia-y-estabilidad-007",
+          "trend-aceites-capilares-003",
+          "colorimetria-capilar-humedad-006"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "efecto-piezoelectrico-friccion-004",
+            "title": "Mecánica de fricción y su impacto en la estabilidad post-coloración",
+            "sim": 0.4856
+          },
+          {
+            "chunk_id": "colorimetria_capilar_tinte-1786391433805-4-957e4aec-cinetica-de-la-difusion-de-pigmentos-frente-a-la-porosidad-d",
+            "title": "Cinética de la difusión de pigmentos frente a la porosidad de gradiente",
+            "sim": 0.484
+          },
+          {
+            "chunk_id": "colorimetria_capilar_tinte-1786391540696-3-0cda3a6c-dispersion-de-mie-y-el-control-del-brillo-en-cabellos-pre-ac",
+            "title": "Dispersión de Mie y el control del brillo en cabellos pre-aclarados",
+            "sim": 0.4718
+          },
+          {
+            "chunk_id": "colorimetria-capilar-humedad-006",
+            "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+            "sim": 0.4652
+          },
+          {
+            "chunk_id": "estabilidad-ph-003",
+            "title": "Efectos de la alcalinidad residual en la integridad de la unión corteza-cutícula",
+            "sim": 0.4593
+          },
+          {
+            "chunk_id": "color-capilar-degradacion-aminoacidos-009",
+            "title": "Degradación oxidativa de aminoácidos más allá de la melanina",
+            "sim": 0.4587
+          },
+          {
+            "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+            "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+            "sim": 0.4574
+          },
+          {
+            "chunk_id": "colorimetria_capilar_tinte-1786387835871-4-f5a80045-mapeo-de-la-porosidad-diferencial-y-su-influencia-en-la-abso",
+            "title": "Mapeo de la porosidad diferencial y su influencia en la absorción de precursores",
+            "sim": 0.4565
+          },
+          {
+            "chunk_id": "colorimetria_capilar_tinte-1786389831471-3-8a8c6e8f-dinamica-de-la-relajacion-dielectrica-en-la-fibra-capilar-tr",
+            "title": "Dinámica de la relajación dieléctrica en la fibra capilar tras la coloración",
+            "sim": 0.4561
+          },
+          {
+            "chunk_id": "colorimetria-capilar-formaldehido-005",
+            "title": "El riesgo oculto de los alisados y la coloración posterior",
+            "sim": 0.4551
+          }
+        ],
+        "candidates_ge_045": [
+          "efecto-piezoelectrico-friccion-004",
+          "colorimetria_capilar_tinte-1786391433805-4-957e4aec-cinetica-de-la-difusion-de-pigmentos-frente-a-la-porosidad-d",
+          "colorimetria_capilar_tinte-1786391540696-3-0cda3a6c-dispersion-de-mie-y-el-control-del-brillo-en-cabellos-pre-ac",
+          "colorimetria-capilar-humedad-006",
+          "estabilidad-ph-003",
+          "color-capilar-degradacion-aminoacidos-009",
+          "colorimetria-capilar-viscoelasticidad-009",
+          "colorimetria_capilar_tinte-1786387835871-4-f5a80045-mapeo-de-la-porosidad-diferencial-y-su-influencia-en-la-abso",
+          "colorimetria_capilar_tinte-1786389831471-3-8a8c6e8f-dinamica-de-la-relajacion-dielectrica-en-la-fibra-capilar-tr",
+          "colorimetria-capilar-formaldehido-005"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "expected_chunks": [
+        "estabilidad-ph-cuero-cabelludo-004",
+        "diag-capilar-microbiota-005",
+        "colorimetria-capilar-microbiota-003",
+        "microbiota-scalp-008",
+        "colorimetria-interaccion-microbiota-001"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"tipo de champú y qué evitar\" — selección implícita.",
+      "q0": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "microbiota-scalp-008",
+            "title": "Impacto de la alcalinidad residual en la diversidad del microbioma del cuero cabelludo",
+            "sim": 0.4769
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-003",
+            "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+            "sim": 0.4762
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-009",
+            "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+            "sim": 0.4499
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+            "sim": 0.4275
+          },
+          {
+            "chunk_id": "colorimetria-interaccion-metales-005",
+            "title": "El papel de los agentes quelantes en la prevención de reacciones exotérmicas",
+            "sim": 0.4247
+          },
+          {
+            "chunk_id": "trend-aceites-capilares-003",
+            "title": "Aceites capilares en el cuero cabelludo: ¿Estimulación folicular o dermatitis?",
+            "sim": 0.4232
+          },
+          {
+            "chunk_id": "colorimetria-capilar-agua-008",
+            "title": "El impacto del agua dura y el pH en la estabilidad del color",
+            "sim": 0.4228
+          },
+          {
+            "chunk_id": "color-capilar-microbioma-y-tintes-004",
+            "title": "Impacto del tinte en el microbioma del cuero cabelludo",
+            "sim": 0.4215
+          },
+          {
+            "chunk_id": "colorimetria-ph-y-microbiota-003",
+            "title": "Modulación del pH del cuero cabelludo y el impacto en la microbiota",
+            "sim": 0.4137
+          },
+          {
+            "chunk_id": "colorimetria-capilar-barrera-007",
+            "title": "Protección de la barrera cutánea durante el servicio de coloración",
+            "sim": 0.4133
+          }
+        ],
+        "candidates_ge_045": [
+          "microbiota-scalp-008",
+          "colorimetria-capilar-microbiota-003"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "microbiota-scalp-008",
+            "title": "Impacto de la alcalinidad residual en la diversidad del microbioma del cuero cabelludo",
+            "sim": 0.441
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-003",
+            "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+            "sim": 0.4123
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-009",
+            "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+            "sim": 0.4107
+          },
+          {
+            "chunk_id": "trend-scalp-exfoliation-009",
+            "title": "Exfoliación química del cuero cabelludo: ¿Renovación o irritación?",
+            "sim": 0.3968
+          },
+          {
+            "chunk_id": "color-capilar-microbioma-y-tintes-004",
+            "title": "Impacto del tinte en el microbioma del cuero cabelludo",
+            "sim": 0.3965
+          },
+          {
+            "chunk_id": "colorimetria-capilar-anisotropia-007",
+            "title": "Anisotropía de la fibra y su impacto en la distribución del pigmento",
+            "sim": 0.3896
+          },
+          {
+            "chunk_id": "diagnostico-capilar-fotoproteccion-008",
+            "title": "Fotoprotección Capilar: Más allá de la Estética del Tallo",
+            "sim": 0.3853
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+            "sim": 0.385
+          },
+          {
+            "chunk_id": "colorimetria-interaccion-microbiota-001",
+            "title": "Impacto de la disbiosis inducida por alcalinizantes en la microbiota del cuero cabelludo",
+            "sim": 0.3837
+          },
+          {
+            "chunk_id": "colorimetria-microbiota-cuero-007",
+            "title": "Impacto de los tintes en el microbioma del cuero cabelludo",
+            "sim": 0.3836
+          }
+        ],
+        "candidates_ge_045": []
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "microbiota-scalp-008",
+            "title": "Impacto de la alcalinidad residual en la diversidad del microbioma del cuero cabelludo",
+            "sim": 0.4591
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-003",
+            "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+            "sim": 0.4467
+          },
+          {
+            "chunk_id": "colorimetria-capilar-microbiota-009",
+            "title": "Impacto de la coloración en la microbiota del cuero cabelludo",
+            "sim": 0.4152
+          },
+          {
+            "chunk_id": "colorimetria-capilar-anisotropia-007",
+            "title": "Anisotropía de la fibra y su impacto en la distribución del pigmento",
+            "sim": 0.4118
+          },
+          {
+            "chunk_id": "trend-scalp-exfoliation-009",
+            "title": "Exfoliación química del cuero cabelludo: ¿Renovación o irritación?",
+            "sim": 0.4079
+          },
+          {
+            "chunk_id": "color-capilar-microbioma-y-tintes-004",
+            "title": "Impacto del tinte en el microbioma del cuero cabelludo",
+            "sim": 0.4005
+          },
+          {
+            "chunk_id": "colorimetria-ph-balance-006",
+            "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+            "sim": 0.3995
+          },
+          {
+            "chunk_id": "diagnostico-capilar-ph-005",
+            "title": "El pH del Cuero Cabelludo como Regulador de la Barrera Microbiana",
+            "sim": 0.3993
+          },
+          {
+            "chunk_id": "colorimetria-capilar-estructura-008",
+            "title": "Preservación de la capa F y el punto isoeléctrico del cabello",
+            "sim": 0.3916
+          },
+          {
+            "chunk_id": "trend-aceites-capilares-003",
+            "title": "Aceites capilares en el cuero cabelludo: ¿Estimulación folicular o dermatitis?",
+            "sim": 0.3914
+          }
+        ],
+        "candidates_ge_045": [
+          "microbiota-scalp-008"
+        ]
+      }
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "expected_chunks": [
+        "cuidado_corporal_y_spa-1786390517102-2-a2d90869-monitoreo-de-la-hidratacion-profunda-mediante-espectroscopia",
+        "cuidado-corporal-bioimpedancia-008",
+        "cuidado_corporal_y_spa-tecnologia-005",
+        "urea-umbral-hidratacion-descamacion-009",
+        "tendencias-belleza-virales-002"
+      ],
+      "rationale": "Q1: paráfrasis comparativa. Q2: explícito \"efectividad\" — intención de comparación de resultados.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "hidratacion-oclusiva-corporal-008",
+            "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+            "sim": 0.5325
+          },
+          {
+            "chunk_id": "hidrofaciales-tecnologia-006",
+            "title": "Hidrofaciales: Más allá de la Limpieza Convencional",
+            "sim": 0.516
+          },
+          {
+            "chunk_id": "parches-hidrogel-ojos-003",
+            "title": "Parches de hidrogel para ojos: ¿Hidratación real o efecto oclusivo temporal?",
+            "sim": 0.5063
+          },
+          {
+            "chunk_id": "beautification-inyecciones-vitaminas-006",
+            "title": "Mesoterapia sin agujas (nanopore/infusión): ¿Eficacia real o hidratación superficial?",
+            "sim": 0.5063
+          },
+          {
+            "chunk_id": "hidratacion-oclusivos-humectantes-009",
+            "title": "Mecanismos de hidratación: Diferenciación entre oclusivos y humectantes",
+            "sim": 0.5014
+          },
+          {
+            "chunk_id": "cuidado-corporal-mitos-exfoliacion-004",
+            "title": "Mito vs Realidad: La exfoliación corporal excesiva",
+            "sim": 0.4984
+          },
+          {
+            "chunk_id": "hidrodinamica-lamina-005",
+            "title": "La paradoja de la hidratación: balance hídrico y flexibilidad ungueal",
+            "sim": 0.4955
+          },
+          {
+            "chunk_id": "electrolitos-topicos-001",
+            "title": "Electrolitos en el Skincare: ¿Hidratación osmótica o placebo?",
+            "sim": 0.495
+          },
+          {
+            "chunk_id": "subtema-hidratacion-osmotica-003",
+            "title": "Mitos sobre la hidratación: Oclusivos vs. Osmolitos",
+            "sim": 0.4947
+          },
+          {
+            "chunk_id": "fisiopatologia-prurito-acuagenico-005",
+            "title": "Fisiopatología y manejo del prurito acuagénico",
+            "sim": 0.4945
+          }
+        ],
+        "candidates_ge_045": [
+          "hidratacion-oclusiva-corporal-008",
+          "hidrofaciales-tecnologia-006",
+          "parches-hidrogel-ojos-003",
+          "beautification-inyecciones-vitaminas-006",
+          "hidratacion-oclusivos-humectantes-009",
+          "cuidado-corporal-mitos-exfoliacion-004",
+          "hidrodinamica-lamina-005",
+          "electrolitos-topicos-001",
+          "subtema-hidratacion-osmotica-003",
+          "fisiopatologia-prurito-acuagenico-005"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "diagnostico-capilar-bioimpedancia-006",
+            "title": "Bioimpedancia del Cuero Cabelludo: Evaluación de la Hidratación",
+            "sim": 0.4492
+          },
+          {
+            "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+            "title": "¿Por qué mi cabello absorbe el agua tan rápido y se siente áspero?",
+            "sim": 0.4463
+          },
+          {
+            "chunk_id": "diagnostico-capilar-hidrodinamica-002",
+            "title": "Hidrodinámica del Cuero Cabelludo y Gradiente de Presión Osmótica",
+            "sim": 0.4442
+          },
+          {
+            "chunk_id": "color-capilar-higroscopia-y-estabilidad-007",
+            "title": "Higroscopía y estabilidad cromática en climas tropicales",
+            "sim": 0.4407
+          },
+          {
+            "chunk_id": "colorimetria-capilar-humedad-006",
+            "title": "Higroscopía y estabilidad cromática: El reto en climas tropicales",
+            "sim": 0.4301
+          },
+          {
+            "chunk_id": "hidratacion-oclusiva-corporal-008",
+            "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+            "sim": 0.4254
+          },
+          {
+            "chunk_id": "estres-metabolico-009",
+            "title": "Interferencia del estrés metabólico sistémico en la afinidad tintórea",
+            "sim": 0.4234
+          },
+          {
+            "chunk_id": "hidratacion-oclusivos-humectantes-009",
+            "title": "Mecanismos de hidratación: Diferenciación entre oclusivos y humectantes",
+            "sim": 0.4221
+          },
+          {
+            "chunk_id": "skincare-hidratacion-oclusiva-008",
+            "title": "Diferencia entre humectantes, emolientes y oclusivos en la rutina",
+            "sim": 0.4162
+          },
+          {
+            "chunk_id": "colorimetria-porosidad-diferencial-004",
+            "title": "Estrategias de igualación en cabellos con porosidad diferencial",
+            "sim": 0.4153
+          }
+        ],
+        "candidates_ge_045": []
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "hidratacion-oclusiva-corporal-008",
+            "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+            "sim": 0.515
+          },
+          {
+            "chunk_id": "hidratacion-oclusivos-humectantes-009",
+            "title": "Mecanismos de hidratación: Diferenciación entre oclusivos y humectantes",
+            "sim": 0.501
+          },
+          {
+            "chunk_id": "diagnostico-capilar-bioimpedancia-006",
+            "title": "Bioimpedancia del Cuero Cabelludo: Evaluación de la Hidratación",
+            "sim": 0.4827
+          },
+          {
+            "chunk_id": "color-capilar-interaccion-farmacologica-001",
+            "title": "Interacción entre fármacos sistémicos y la respuesta al tinte capilar",
+            "sim": 0.4805
+          },
+          {
+            "chunk_id": "trend-crioterapia-capilar-001",
+            "title": "Crioterapia capilar casera: ¿Estimulación folicular o riesgo de quemadura criogénica?",
+            "sim": 0.4783
+          },
+          {
+            "chunk_id": "skincare-hidratacion-oclusion-007",
+            "title": "Diferenciación técnica: Humectantes vs. Oclusivos en la reparación",
+            "sim": 0.4761
+          },
+          {
+            "chunk_id": "skincare-hidratacion-oclusiva-008",
+            "title": "Diferencia entre humectantes, emolientes y oclusivos en la rutina",
+            "sim": 0.4744
+          },
+          {
+            "chunk_id": "trend-scalp-exfoliation-009",
+            "title": "Exfoliación química del cuero cabelludo: ¿Renovación o irritación?",
+            "sim": 0.4707
+          },
+          {
+            "chunk_id": "cuidado-corporal-tecnicas-de-limpieza-003",
+            "title": "La ciencia de la hidratación: Oclusivos vs. Humectantes en piel corporal",
+            "sim": 0.4702
+          },
+          {
+            "chunk_id": "diagnostico-capilar-hidratacion-005",
+            "title": "Dinámica de la Hidratación en el Cuero Cabelludo y su Impacto en el Folículo",
+            "sim": 0.4662
+          }
+        ],
+        "candidates_ge_045": [
+          "hidratacion-oclusiva-corporal-008",
+          "hidratacion-oclusivos-humectantes-009",
+          "diagnostico-capilar-bioimpedancia-006",
+          "color-capilar-interaccion-farmacologica-001",
+          "trend-crioterapia-capilar-001",
+          "skincare-hidratacion-oclusion-007",
+          "skincare-hidratacion-oclusiva-008",
+          "trend-scalp-exfoliation-009",
+          "cuidado-corporal-tecnicas-de-limpieza-003",
+          "diagnostico-capilar-hidratacion-005"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-microblading-envejecimiento-009"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"procedimiento sobre cejas\" — contexto implícito.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 1,
+          "mrr": 0.3333
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5554
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5542
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5527
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5419
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.5411
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5305
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+            "sim": 0.529
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+            "title": "Neuro-ergonomía del trazado: Optimización de la cinemática manual y fatiga cognitiva",
+            "sim": 0.5209
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-inmunologia-007",
+            "title": "Dinámica de la matriz extracelular y el efecto Tyndall en microblading",
+            "sim": 0.5126
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5124
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-microblading-propiocepcion-008",
+          "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+          "visajismo-cejas-microblading-inmunologia-007",
+          "microblading-psicodermatologia-expectativas-009"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "microblading-neuroergonomia-fatiga-009",
+            "title": "Neuro-ergonomía del trazado: mitigación de la fatiga cognitiva",
+            "sim": 0.5673
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+            "title": "Impacto de la cronobiología cutánea y el ritmo circadiano en la cicatrización post-microblading",
+            "sim": 0.564
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cronobiologia-009",
+            "title": "Cronobiología cutánea: impacto del ritmo circadiano en la cicatrización",
+            "sim": 0.5616
+          },
+          {
+            "chunk_id": "visajismo-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual",
+            "sim": 0.5587
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+            "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+            "sim": 0.5576
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+            "sim": 0.5526
+          },
+          {
+            "chunk_id": "visajismo-microblading-cronobiologia-004",
+            "title": "Cronobiología cutánea y su impacto en la cicatrización post-microblading",
+            "sim": 0.5501
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5472
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5462
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+            "title": "Neuro-ergonomía: optimización del ángulo de incidencia manual",
+            "sim": 0.5426
+          }
+        ],
+        "candidates_ge_045": [
+          "microblading-neuroergonomia-fatiga-009",
+          "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+          "visajismo-cejas-microblading-cronobiologia-009",
+          "visajismo-microblading-propiocepcion-008",
+          "visajismo-cejas-microblading-cicatrizacion-003",
+          "visajismo-cejas-microblading-propiocepcion-008",
+          "visajismo-microblading-cronobiologia-004",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 1,
+          "mrr": 0.3333
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+            "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+            "sim": 0.6216
+          },
+          {
+            "chunk_id": "visajismo-cejas-cuidado-post-inmediato-009",
+            "title": "Manejo del post-procedimiento inmediato: la importancia de la fase de cicatrización",
+            "sim": 0.6075
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5976
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+            "title": "Impacto de la cronobiología cutánea y el ritmo circadiano en la cicatrización post-microblading",
+            "sim": 0.5951
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5895
+          },
+          {
+            "chunk_id": "visajismo-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual",
+            "sim": 0.5892
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5859
+          },
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.5855
+          },
+          {
+            "chunk_id": "microblading-neuroergonomia-fatiga-009",
+            "title": "Neuro-ergonomía del trazado: mitigación de la fatiga cognitiva",
+            "sim": 0.5845
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5843
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-cicatrizacion-003",
+          "visajismo-cejas-cuidado-post-inmediato-009",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-microblading-propiocepcion-008",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "microblading-neuroergonomia-fatiga-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-biomecanica-presion-001",
+        "visajismo-cejas-microblading-efecto-tyndall-005",
+        "visajismo-cejas-microblading-inmunologia-007"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"diferencias técnicas\" — intención comparativa.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5744
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5525
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+            "title": "Neuro-ergonomía del trazado: Optimización de la cinemática manual y fatiga cognitiva",
+            "sim": 0.5507
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.5479
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+            "title": "Neuroergonomía del trazado: optimización de la cinemática manual y reducción de la fatiga cognitiva",
+            "sim": 0.5442
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.544
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5402
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+            "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+            "sim": 0.5375
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+            "title": "Neuro-ergonomía: optimización del ángulo de incidencia manual",
+            "sim": 0.536
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+            "sim": 0.5357
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+          "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-interaccion-laser-001",
+          "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "visajismo-cejas-microblading-propiocepcion-008"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0.2,
+          "r5": 0.25,
+          "mrr": 0.25
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5705
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+            "title": "Neuro-ergonomía del trazado: Optimización de la cinemática manual y fatiga cognitiva",
+            "sim": 0.5511
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+            "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+            "sim": 0.5485
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5483
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.5442
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+            "title": "Neuroergonomía del trazado: optimización de la cinemática manual y reducción de la fatiga cognitiva",
+            "sim": 0.5375
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5354
+          },
+          {
+            "chunk_id": "visajismo-neuroergonomia-biomecanica-001",
+            "title": "Neuroergonomía y control de la cinemática manual en la ejecución de trazos",
+            "sim": 0.5308
+          },
+          {
+            "chunk_id": "microblading-interaccion-rellenos-dermicos-001",
+            "title": "Interacción entre microblading y rellenos dérmicos de ácido hialurónico",
+            "sim": 0.5304
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391094460-1-54d422ec-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+            "title": "Neuro-ergonomía del trazado: optimización de la cinemática manual",
+            "sim": 0.53
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+          "visajismo-cejas-microblading-interaccion-laser-001",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+          "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-neuroergonomia-biomecanica-001",
+          "microblading-interaccion-rellenos-dermicos-001",
+          "visajismo_cejas_microblading-1786391094460-1-54d422ec-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0.2,
+          "r5": 0.25,
+          "mrr": 0.25
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5671
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-004",
+            "title": "Propiocepción táctil y control de la presión manual en el diseño de cejas",
+            "sim": 0.5632
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5588
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5557
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+            "title": "Neuro-ergonomía del trazado: Optimización de la cinemática manual y fatiga cognitiva",
+            "sim": 0.5539
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.549
+          },
+          {
+            "chunk_id": "microblading-diferenciacion-pigmentos-organicos-inorganicos-004",
+            "title": "Diferenciación técnica entre pigmentos orgánicos e inorgánicos",
+            "sim": 0.5479
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+            "title": "Neuro-ergonomía: optimización del ángulo de incidencia manual",
+            "sim": 0.5451
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.5449
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+            "title": "Neuroergonomía del trazado: optimización de la cinemática manual y reducción de la fatiga cognitiva",
+            "sim": 0.5434
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-propiocepcion-004",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "microblading-diferenciacion-pigmentos-organicos-inorganicos-004",
+          "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+          "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-mapeo-proporcion-aurea-003",
+        "visajismo_cejas_microblading-1786392808872-1-4498c4cd-topografia-corneal-y-su-influencia-en-la-proyeccion-del-arco"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"diseño para equilibrar\" — intención de recomendación de diseño.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-biometria-005",
+            "title": "Influencia de la variabilidad del espesor dérmico en la región ciliar",
+            "sim": 0.4617
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-005",
+            "title": "Variabilidad de la red microvascular y su efecto en la retención del pigmento",
+            "sim": 0.4479
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+            "title": "Análisis de la cinemática manual y su relación con la profundidad de incisión",
+            "sim": 0.4476
+          },
+          {
+            "chunk_id": "visajismo-sesgo-iluminacion-007",
+            "title": "Sesgos por iluminación en el diseño de cejas",
+            "sim": 0.4438
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786386877413-2-48af50f9-arquitectura-del-trazo-y-su-relacion-con-la-tension-mecanica",
+            "title": "Arquitectura del trazo y su relación con la tensión mecánica de los tejidos",
+            "sim": 0.4437
+          },
+          {
+            "chunk_id": "visajismo-geometria-proyectiva-002",
+            "title": "Geometría proyectiva en el diseño de cejas: compensación de la perspectiva del observador",
+            "sim": 0.4413
+          },
+          {
+            "chunk_id": "microblading-envejecimiento-009",
+            "title": "Adaptación del diseño en cejas con ptosis palpebral",
+            "sim": 0.4397
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681604-1-802703f0-analisis-de-impedancia-bioelectrica-para-la-estandarizacion-",
+            "title": "Análisis de impedancia bioeléctrica para la estandarización de la presión de incisión",
+            "sim": 0.4386
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-tecnicas-de-anclaje-002",
+            "title": "Técnicas de anclaje dérmico: optimización de la retención mediante la arquitectura del trazo",
+            "sim": 0.4352
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.4351
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-biometria-005"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-anatomia-vasos-005",
+            "title": "Variabilidad de la red microvascular y su efecto en la retención del pigmento",
+            "sim": 0.4228
+          },
+          {
+            "chunk_id": "visajismo-sesgo-iluminacion-007",
+            "title": "Sesgos por iluminación en el diseño de cejas",
+            "sim": 0.4194
+          },
+          {
+            "chunk_id": "visajismo-neuroestetica-001",
+            "title": "Neuroestética y la respuesta límbica al diseño de cejas",
+            "sim": 0.4186
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cicatrizacion-microvascular-003",
+            "title": "Dinámica microvascular y su impacto en la cicatrización del trazo",
+            "sim": 0.4027
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biomecanica-008",
+            "title": "Efectos piezoeléctricos en la matriz extracelular durante el diseño manual de cejas",
+            "sim": 0.3996
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.3981
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biometria-005",
+            "title": "Influencia de la variabilidad del espesor dérmico en la región ciliar",
+            "sim": 0.3936
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-004",
+            "title": "Propiocepción táctil y control de la presión manual en el diseño de cejas",
+            "sim": 0.3912
+          },
+          {
+            "chunk_id": "poros-microcirculacion-002",
+            "title": "Microcirculación cutánea y el soporte del poro",
+            "sim": 0.3909
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biomecanica-presion-001",
+            "title": "Biomecánica de la presión manual y su relación con la profundidad efectiva en microblading",
+            "sim": 0.389
+          }
+        ],
+        "candidates_ge_045": []
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-geometria-proyectiva-002",
+            "title": "Geometría proyectiva en el diseño de cejas: compensación de la perspectiva del observador",
+            "sim": 0.4637
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-004",
+            "title": "Propiocepción táctil y control de la presión manual en el diseño de cejas",
+            "sim": 0.444
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390596133-3-8a466466-aplicacion-de-la-geometria-fractal-en-el-diseno-de-trazos-na",
+            "title": "Aplicación de la geometría fractal en el diseño de trazos naturales",
+            "sim": 0.4421
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392542413-4-62a5362f-control-de-la-histeresis-elastica-en-el-diseno-de-cejas-sobr",
+            "title": "Control de la histéresis elástica en el diseño de cejas sobre pieles senescentes",
+            "sim": 0.4421
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biomecanica-008",
+            "title": "Efectos piezoeléctricos en la matriz extracelular durante el diseño manual de cejas",
+            "sim": 0.4417
+          },
+          {
+            "chunk_id": "microblading-envejecimiento-009",
+            "title": "Adaptación del diseño en cejas con ptosis palpebral",
+            "sim": 0.4393
+          },
+          {
+            "chunk_id": "visajismo-sesgo-iluminacion-007",
+            "title": "Sesgos por iluminación en el diseño de cejas",
+            "sim": 0.4391
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-tecnicas-de-anclaje-002",
+            "title": "Técnicas de anclaje dérmico: optimización de la retención mediante la arquitectura del trazo",
+            "sim": 0.4363
+          },
+          {
+            "chunk_id": "visajismo-arquitectura-osea-005",
+            "title": "Relación entre el reborde supraorbitario y la posición de la ceja",
+            "sim": 0.4358
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biomecanica-presion-001",
+            "title": "Biomecánica de la presión manual y su relación con la profundidad efectiva en microblading",
+            "sim": 0.4341
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-geometria-proyectiva-002"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-cejas-mapeo-proporcion-aurea-003",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-psicologia-007",
+        "microblading-envejecimiento-009"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"cómo corrige y técnicas de diseño\" — intención de método.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+            "title": "Fotobiología aplicada: Interacción luz-pigmento y el fenómeno de dispersión de Tyndall",
+            "sim": 0.5264
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+            "title": "Evaluación de la dispersión de luz en el tejido dérmico para la selección de pigmentos",
+            "sim": 0.5238
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-003",
+            "title": "El fenómeno de metamerismo en la selección de pigmentos bajo iluminación LED",
+            "sim": 0.5224
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+            "title": "Interferencia electromagnética y estabilidad de pigmentos con óxidos metálicos",
+            "sim": 0.5218
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+            "title": "Fenómeno de metamerismo y selección de pigmentos bajo luz artificial",
+            "sim": 0.5192
+          },
+          {
+            "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+            "title": "Sesgos de percepción: el impacto de la temperatura de color en el visajismo",
+            "sim": 0.5154
+          },
+          {
+            "chunk_id": "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+            "title": "Interferencia del micro-edema intersticial en la cromaticidad y el brillo cutáneo",
+            "sim": 0.515
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786383991455-2-35ef3e53-analisis-de-sub-superficie-mediante-luz-polarizada-cruzada-p",
+            "title": "Análisis de sub-superficie mediante luz polarizada cruzada para la selección de pigmentos",
+            "sim": 0.5143
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+            "title": "Interferencia cromática por vascularización profunda en el diseño de cejas",
+            "sim": 0.5107
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+            "title": "Espectroscopía de reflectancia para la predicción del viraje cromático",
+            "sim": 0.5105
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "visajismo-cejas-microblading-metamerismo-003",
+          "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "efectos-temperatura-luz-percepcion-diseño-007",
+          "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+          "visajismo_cejas_microblading-1786383991455-2-35ef3e53-analisis-de-sub-superficie-mediante-luz-polarizada-cruzada-p",
+          "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+          "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "microblading-envejecimiento-009",
+            "title": "Adaptación del diseño en cejas con ptosis palpebral",
+            "sim": 0.5446
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-006",
+            "title": "Neuroestética: El impacto del sesgo de confirmación en la evaluación de asimetrías",
+            "sim": 0.5321
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+            "title": "Interferencia electromagnética y estabilidad de pigmentos con óxidos metálicos",
+            "sim": 0.5312
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392333325-1-02dca652-arquitectura-de-la-ceja-y-el-papel-de-la-proporcion-aurea-en",
+            "title": "Arquitectura de la ceja y el papel de la proporción áurea en la percepción estética",
+            "sim": 0.531
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+            "title": "Fotobiología aplicada: Interacción luz-pigmento y el fenómeno de dispersión de Tyndall",
+            "sim": 0.5263
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-tecnologia-espectrofotometria-002",
+            "title": "Espectrofotometría de reflectancia para la selección precisa de pigmentos",
+            "sim": 0.5252
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+            "title": "Fenómeno de metamerismo y selección de pigmentos bajo luz artificial",
+            "sim": 0.5251
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392333326-6-7972cce1-neuro-ergonomia-del-trazado-mitigacion-de-la-fatiga-cognitiv",
+            "title": "Neuro-ergonomía del trazado: mitigación de la fatiga cognitiva en el diseño de simetría",
+            "sim": 0.5212
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+            "title": "Espectroscopía de reflectancia para la predicción del viraje cromático",
+            "sim": 0.5175
+          },
+          {
+            "chunk_id": "efectos-temperatura-luz-percepcion-diseño-007",
+            "title": "Sesgos de percepción: el impacto de la temperatura de color en el visajismo",
+            "sim": 0.5162
+          }
+        ],
+        "candidates_ge_045": [
+          "microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-006",
+          "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "visajismo_cejas_microblading-1786392333325-1-02dca652-arquitectura-de-la-ceja-y-el-papel-de-la-proporcion-aurea-en",
+          "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+          "visajismo-cejas-microblading-tecnologia-espectrofotometria-002",
+          "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "visajismo_cejas_microblading-1786392333326-6-7972cce1-neuro-ergonomia-del-trazado-mitigacion-de-la-fatiga-cognitiv",
+          "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+          "efectos-temperatura-luz-percepcion-diseño-007"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "microblading-envejecimiento-009",
+            "title": "Adaptación del diseño en cejas con ptosis palpebral",
+            "sim": 0.5799
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+            "title": "Interferencia electromagnética y estabilidad de pigmentos con óxidos metálicos",
+            "sim": 0.5475
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+            "title": "Fenómeno de metamerismo y selección de pigmentos bajo luz artificial",
+            "sim": 0.5467
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-efecto-tyndall-005",
+            "title": "Mecanismos físicos del efecto Tyndall en microblading",
+            "sim": 0.5426
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5398
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-007",
+            "title": "Fenómeno de metamerismo: el enemigo oculto en la selección de pigmentos",
+            "sim": 0.5374
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-6-4210c233-neuroplasticidad-del-diseno-adaptacion-tecnica-ante-la-asime",
+            "title": "Neuroplasticidad del diseño: adaptación técnica ante la asimetría dinámica facial",
+            "sim": 0.5353
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-004",
+            "title": "Propiocepción táctil y control de la presión manual en el diseño de cejas",
+            "sim": 0.5305
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuroestetica-009",
+            "title": "Neuroestética: el umbral de detección de asimetría",
+            "sim": 0.5296
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392333326-6-7972cce1-neuro-ergonomia-del-trazado-mitigacion-de-la-fatiga-cognitiv",
+            "title": "Neuro-ergonomía del trazado: mitigación de la fatiga cognitiva en el diseño de simetría",
+            "sim": 0.529
+          }
+        ],
+        "candidates_ge_045": [
+          "microblading-envejecimiento-009",
+          "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+          "visajismo-cejas-microblading-efecto-tyndall-005",
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-metamerismo-007",
+          "visajismo_cejas_microblading-1786387183421-6-4210c233-neuroplasticidad-del-diseno-adaptacion-tecnica-ante-la-asime",
+          "visajismo-cejas-microblading-propiocepcion-004",
+          "visajismo-cejas-microblading-neuroestetica-009",
+          "visajismo_cejas_microblading-1786392333326-6-7972cce1-neuro-ergonomia-del-trazado-mitigacion-de-la-fatiga-cognitiv"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+        "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+        "impacto-variabilidad-glucemica-cicatrizacion-001",
+        "visajismo-cejas-microblading-microbiota-006"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"durante la recuperación\" — contexto temporal implícito.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "mrr": 0.5
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5927
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+            "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+            "sim": 0.5884
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-microbiota-006",
+            "title": "Interacción entre la microbiota ciliar y el proceso de curación post-microblading",
+            "sim": 0.5752
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5713
+          },
+          {
+            "chunk_id": "visajismo-cejas-cuidado-post-inmediato-009",
+            "title": "Manejo del post-procedimiento inmediato: la importancia de la fase de cicatrización",
+            "sim": 0.5667
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+            "title": "Neuro-ergonomía: optimización del ángulo de incidencia manual",
+            "sim": 0.5652
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+            "title": "Inmunomodulación tópica con péptidos para la optimización de la cicatrización post-microblading",
+            "sim": 0.565
+          },
+          {
+            "chunk_id": "visajismo-efecto-nocebo-001",
+            "title": "El efecto nocebo en la consulta de microblading: impacto en la percepción de resultados",
+            "sim": 0.5605
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5593
+          },
+          {
+            "chunk_id": "visajismo-microblading-cronobiologia-004",
+            "title": "Cronobiología cutánea y su impacto en la cicatrización post-microblading",
+            "sim": 0.5591
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-microblading-cicatrizacion-003",
+          "visajismo-cejas-microblading-microbiota-006",
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-cejas-cuidado-post-inmediato-009",
+          "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+          "visajismo-efecto-nocebo-001",
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-microblading-cronobiologia-004"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5703
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5646
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+            "title": "Neuro-ergonomía: optimización del ángulo de incidencia manual",
+            "sim": 0.5563
+          },
+          {
+            "chunk_id": "visajismo-microblading-cronobiologia-004",
+            "title": "Cronobiología cutánea y su impacto en la cicatrización post-microblading",
+            "sim": 0.5494
+          },
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.5493
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5475
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-cicatrizacion-003",
+            "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+            "sim": 0.547
+          },
+          {
+            "chunk_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+            "title": "Microblading en pacientes diabéticos: riesgos metabólicos y dermatológicos",
+            "sim": 0.5441
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.5427
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5387
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "visajismo-microblading-cronobiologia-004",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-microblading-cicatrizacion-003",
+          "visajismo-cejas-diabetis-cicatrizacion-004",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+          "visajismo-cejas-microblading-piel-grasa-005"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5558
+          },
+          {
+            "chunk_id": "visajismo-cejas-cicatrizacion-isotretinoina-002",
+            "title": "Isotretinoína y microblading: el riesgo de la alteración de la reepitelización",
+            "sim": 0.5302
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5219
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+            "title": "Inmunomodulación tópica con péptidos para la optimización de la cicatrización post-microblading",
+            "sim": 0.5132
+          },
+          {
+            "chunk_id": "visajismo-microblading-cronobiologia-004",
+            "title": "Cronobiología cutánea y su impacto en la cicatrización post-microblading",
+            "sim": 0.5131
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5114
+          },
+          {
+            "chunk_id": "radiofrecuencia-microagujas-007",
+            "title": "Radiofrecuencia con Microagujas: Termocontracción y Remodelación Dérmica",
+            "sim": 0.5103
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-3-ffe1a9fd-degradacion-de-la-elastina-ciliar-y-su-impacto-en-la-memoria",
+            "title": "Degradación de la elastina ciliar y su impacto en la memoria del trazo",
+            "sim": 0.5098
+          },
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.5073
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+            "title": "Optimización del ángulo de incidencia manual mediante cinemática de la muñeca",
+            "sim": 0.5059
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-cicatrizacion-isotretinoina-002",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+          "visajismo-microblading-cronobiologia-004",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "radiofrecuencia-microagujas-007",
+          "visajismo_cejas_microblading-1786387183421-3-ffe1a9fd-degradacion-de-la-elastina-ciliar-y-su-impacto-en-la-memoria",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"condiciones de salud o características de la piel\" — intención de enumerar contraindicaciones.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5922
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5905
+          },
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.5895
+          },
+          {
+            "chunk_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+            "title": "Microblading en pacientes diabéticos: riesgos metabólicos y dermatológicos",
+            "sim": 0.5827
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5808
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+            "sim": 0.5784
+          },
+          {
+            "chunk_id": "visajismo-microblading-interaccion-medicamentosa-007",
+            "title": "Influencia de los retinoides tópicos en la integridad de la piel pre-procedimiento",
+            "sim": 0.5775
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-limpieza-008",
+            "title": "Protocolos de desinfección y bioseguridad en el consultorio",
+            "sim": 0.5766
+          },
+          {
+            "chunk_id": "microblading-manejo-piel-atrofica-corticoides-005",
+            "title": "Desafíos del microblading en pieles con atrofia por corticoides",
+            "sim": 0.5757
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5729
+          }
+        ],
+        "candidates_ge_045": [
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "visajismo-cejas-diabetis-cicatrizacion-004",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo-cejas-microblading-propiocepcion-008",
+          "visajismo-microblading-interaccion-medicamentosa-007",
+          "visajismo-cejas-microblading-limpieza-008",
+          "microblading-manejo-piel-atrofica-corticoides-005",
+          "visajismo-cejas-microblading-neuro-ergonomia-005"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 1,
+          "mrr": 0.3333
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+            "title": "Microblading en pacientes diabéticos: riesgos metabólicos y dermatológicos",
+            "sim": 0.5778
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5642
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5615
+          },
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.557
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.556
+          },
+          {
+            "chunk_id": "microblading-estudio-microbioma-008",
+            "title": "Impacto del microblading en el microbioma cutáneo ciliar",
+            "sim": 0.5478
+          },
+          {
+            "chunk_id": "validacion-escalas-expectativas-005",
+            "title": "Validación de escalas de expectativas en la consulta de visajismo",
+            "sim": 0.5475
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5448
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-psicologia-007",
+            "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+            "sim": 0.5444
+          },
+          {
+            "chunk_id": "tendencia-microneedling-diy-005",
+            "title": "Microneedling casero: El peligro de la autoinoculación y la infección",
+            "sim": 0.5381
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-diabetis-cicatrizacion-004",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "microblading-psicodermatologia-expectativas-009",
+          "microblading-estudio-microbioma-008",
+          "validacion-escalas-expectativas-005",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-cejas-microblading-psicologia-007",
+          "tendencia-microneedling-diy-005"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 1,
+          "mrr": 0.3333
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.5931
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5837
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5746
+          },
+          {
+            "chunk_id": "microblading-estudio-microbioma-008",
+            "title": "Impacto del microblading en el microbioma cutáneo ciliar",
+            "sim": 0.5735
+          },
+          {
+            "chunk_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+            "title": "Microblading en pacientes diabéticos: riesgos metabólicos y dermatológicos",
+            "sim": 0.567
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.5666
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5608
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biomecanica-009",
+            "title": "Biomecánica de la presión manual y profundidad efectiva",
+            "sim": 0.5601
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-envejecimiento-009",
+            "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+            "sim": 0.5522
+          },
+          {
+            "chunk_id": "visajismo-tejido-adiposo-004",
+            "title": "Influencia del panículo adiposo en la profundidad de inserción del pigmento",
+            "sim": 0.5497
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "microblading-estudio-microbioma-008",
+          "visajismo-cejas-diabetis-cicatrizacion-004",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo-cejas-microblading-biomecanica-009",
+          "visajismo-cejas-microblading-envejecimiento-009",
+          "visajismo-tejido-adiposo-004"
+        ]
+      }
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "expected_chunks": [
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "visajismo-cejas-microblading-interaccion-procedimientos-laser-co2-fraccionado",
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-efecto-tyndall-003"
+      ],
+      "rationale": "Q1: paráfrasis. Q2: explícito \"métodos, riesgos y elección\" — intención de decisión informada.",
+      "q0": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5916
+          },
+          {
+            "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+            "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+            "sim": 0.5876
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.584
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5824
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5786
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+            "sim": 0.5717
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+            "title": "Neuroergonomía del trazado: optimización de la cinemática manual y reducción de la fatiga cognitiva",
+            "sim": 0.5708
+          },
+          {
+            "chunk_id": "microblading-manejo-piel-atrofica-corticoides-005",
+            "title": "Desafíos del microblading en pieles con atrofia por corticoides",
+            "sim": 0.57
+          },
+          {
+            "chunk_id": "visajismo-cejas-cuidado-post-inmediato-009",
+            "title": "Manejo del post-procedimiento inmediato: la importancia de la fase de cicatrización",
+            "sim": 0.5693
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-corticoides-005",
+            "title": "Desafíos del microblading en pieles con atrofia por uso crónico de corticoides",
+            "sim": 0.5687
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-enfermedades-autoinmunes-007",
+          "visajismo-microblading-psicodermatologia-009",
+          "microblading-psicodermatologia-expectativas-009",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo-cejas-microblading-propiocepcion-008",
+          "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "microblading-manejo-piel-atrofica-corticoides-005",
+          "visajismo-cejas-cuidado-post-inmediato-009",
+          "visajismo-cejas-microblading-corticoides-005"
+        ]
+      },
+      "q1": {
+        "metrics_official": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+            "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+            "sim": 0.5632
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5479
+          },
+          {
+            "chunk_id": "microblading-psicodermatologia-expectativas-009",
+            "title": "El rol de la psicodermatología en el diseño de cejas",
+            "sim": 0.5357
+          },
+          {
+            "chunk_id": "microblading-manejo-piel-atrofica-corticoides-005",
+            "title": "Desafíos del microblading en pieles con atrofia por corticoides",
+            "sim": 0.5342
+          },
+          {
+            "chunk_id": "visajismo-cejas-interaccion-farmacos-001",
+            "title": "Impacto de los anticoagulantes y antiagregantes en el microblading",
+            "sim": 0.5318
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-corticoides-005",
+            "title": "Desafíos del microblading en pieles con atrofia por uso crónico de corticoides",
+            "sim": 0.529
+          },
+          {
+            "chunk_id": "visajismo-microblading-psicodermatologia-009",
+            "title": "Enfoque psicodermatológico en la consulta de microblading",
+            "sim": 0.527
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-008",
+            "title": "Propiocepción táctil: el control de la presión manual en el microblading",
+            "sim": 0.5265
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+            "title": "Propiocepción táctil y control de la presión manual",
+            "sim": 0.5259
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-007",
+            "title": "Fenómeno de metamerismo: el enemigo oculto en la selección de pigmentos",
+            "sim": 0.5256
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-piel-grasa-005",
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "microblading-psicodermatologia-expectativas-009",
+          "microblading-manejo-piel-atrofica-corticoides-005",
+          "visajismo-cejas-interaccion-farmacos-001",
+          "visajismo-cejas-microblading-corticoides-005",
+          "visajismo-microblading-psicodermatologia-009",
+          "visajismo-cejas-microblading-propiocepcion-008",
+          "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "visajismo-cejas-microblading-metamerismo-007"
+        ]
+      },
+      "q2": {
+        "metrics_official": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 1
+        },
+        "top10": [
+          {
+            "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+            "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+            "sim": 0.5594
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-neuro-ergonomia-005",
+            "title": "Neuro-ergonomía del trazado: fatiga cognitiva y precisión geométrica",
+            "sim": 0.5423
+          },
+          {
+            "chunk_id": "visajismo-cejas-cuidado-post-inmediato-009",
+            "title": "Manejo del post-procedimiento inmediato: la importancia de la fase de cicatrización",
+            "sim": 0.536
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+            "title": "Análisis de la cinemática manual y su relación con la profundidad de incisión",
+            "sim": 0.5354
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-metamerismo-007",
+            "title": "Fenómeno de metamerismo: el enemigo oculto en la selección de pigmentos",
+            "sim": 0.5339
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-limpieza-008",
+            "title": "Protocolos de desinfección y bioseguridad en el consultorio",
+            "sim": 0.5303
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786392671042-1-1076be9e-dinamica-de-la-matriz-extracelular-y-el-fenomeno-de-histeres",
+            "title": "Dinámica de la matriz extracelular y el fenómeno de histéresis en el diseño ciliar",
+            "sim": 0.5295
+          },
+          {
+            "chunk_id": "visajismo_cejas_microblading-1786387183421-5-38932cfa-dinamica-del-drenaje-linfatico-y-el-riesgo-de-migracion-de-p",
+            "title": "Dinámica del drenaje linfático y el riesgo de migración de pigmento",
+            "sim": 0.5293
+          },
+          {
+            "chunk_id": "visajismo-cejas-microblading-biomecanica-009",
+            "title": "Biomecánica de la presión manual y profundidad efectiva",
+            "sim": 0.5289
+          },
+          {
+            "chunk_id": "visajismo-cejas-interaccion-farmacos-001",
+            "title": "Impacto de los anticoagulantes y antiagregantes en el microblading",
+            "sim": 0.5289
+          }
+        ],
+        "candidates_ge_045": [
+          "visajismo-cejas-microblading-interaccion-laser-001",
+          "visajismo-cejas-microblading-neuro-ergonomia-005",
+          "visajismo-cejas-cuidado-post-inmediato-009",
+          "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+          "visajismo-cejas-microblading-metamerismo-007",
+          "visajismo-cejas-microblading-limpieza-008",
+          "visajismo_cejas_microblading-1786392671042-1-1076be9e-dinamica-de-la-matriz-extracelular-y-el-fenomeno-de-histeres",
+          "visajismo_cejas_microblading-1786387183421-5-38932cfa-dinamica-del-drenaje-linfatico-y-el-riesgo-de-migracion-de-p",
+          "visajismo-cejas-microblading-biomecanica-009",
+          "visajismo-cejas-interaccion-farmacos-001"
+        ]
+      }
+    }
+  ]
+}

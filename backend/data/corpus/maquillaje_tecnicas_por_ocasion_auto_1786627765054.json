@@ -1,0 +1,47 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entorno-anoxico-001",
+    "title": "Maquillaje en entornos de hipoxia hipobárica: Dinámica de la barrera cutánea",
+    "content": "En eventos realizados en locaciones de gran altitud, la baja presión barométrica y la hipoxia ambiental inducen cambios significativos en la fisiología cutánea, incluyendo una mayor pérdida de agua transepidérmica (TEWL). La aplicación de maquillaje en estas condiciones requiere una estrategia enfocada en la oclusión controlada para compensar la deshidratación ambiental. El uso de bases con alto contenido de lípidos polares ayuda a mantener la cohesión de la barrera frente a la reducción del gradiente de presión. Es fundamental evitar productos con solventes altamente volátiles, ya que la menor presión atmosférica acelera su evaporación, provocando la fisuración prematura de la película cosmética. La evidencia sugiere que el uso de polímeros filmógenos de bajo peso molecular es superior para mantener la flexibilidad del estrato córneo ante el estrés hipóxico, previniendo el micro-desprendimiento de pigmentos que suele ocurrir en condiciones de baja oxigenación ambiental. La selección de un primer de base siliconada permite una mejor adaptabilidad térmica y mecánica, reduciendo el impacto de la deshidratación osmótica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456382/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "mixto"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "ceramidas",
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "productos volátiles de secado rápido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestión_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:29:07.522Z"
+  }
+]

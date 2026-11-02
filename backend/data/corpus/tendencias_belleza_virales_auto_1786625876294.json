@@ -1,0 +1,174 @@
+[
+  {
+    "chunk_id": "bio-fermentacion-skincare-001",
+    "title": "Cosmética fermentada: ¿Mejor absorción o riesgo de sobrecrecimiento?",
+    "content": "La tendencia de los ingredientes fermentados, como el galactomyces o el lisado de bifida, promete una mayor biodisponibilidad de activos gracias a la degradación molecular. Según estudios en Journal of Cosmetic Dermatology, la fermentación puede reducir el tamaño de las partículas, facilitando la penetración epidérmica. Sin embargo, el riesgo clínico radica en la estabilidad del producto final. A diferencia de los cultivos controlados en laboratorio, las formulaciones caseras o 'naturales' que presumen de fermentación propia carecen de sistemas de preservación robustos, convirtiéndose en un caldo de cultivo ideal para bacterias oportunistas y hongos. La literatura científica advierte que el pH de estos productos, si no es estrictamente controlado, puede alterar el microbioma cutáneo y desencadenar dermatitis de contacto o foliculitis. Antes de adoptar esta tendencia, es vital verificar que el producto cuente con pruebas de estabilidad microbiológica y un sistema de preservación validado, evitando cualquier preparación artesanal que prometa 'probióticos vivos' sin los controles de calidad exigidos por la normativa cosmética vigente.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "galactomyces",
+        "bifida ferment lysate"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:57:37.155Z"
+  },
+  {
+    "chunk_id": "exosomas-vegetales-002",
+    "title": "Exosomas vegetales: ¿Innovación biotecnológica o confusión semántica?",
+    "content": "El auge de los exosomas de origen vegetal en el cuidado de la piel ha generado una intensa discusión científica. Mientras los exosomas de células madre humanas han demostrado potencial en procesos de regeneración tisular, los 'exosomas' de plantas (vesículas extracelulares vegetales) tienen mecanismos de acción distintos. Investigaciones publicadas en PubMed sugieren que estas vesículas actúan principalmente como vehículos de entrega de ARN mensajero y metabolitos secundarios, pero su eficacia en la comunicación intercelular humana aún es objeto de debate clínico. El peligro de esta tendencia es la falta de estandarización en los procesos de aislamiento y purificación. Muchas marcas utilizan extractos vegetales que no cumplen con la definición técnica de exosomas, lo que puede llevar a una falsa expectativa de rejuvenecimiento celular. Además, el potencial inmunogénico de estas proteínas heterólogas no ha sido descartado en pieles con barreras comprometidas. Es fundamental abordar estas formulaciones con escepticismo clínico, priorizando estudios in vivo que demuestren la penetración real y el efecto biológico específico sobre los fibroblastos humanos antes de incorporarlos en rutinas antiedad.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas vegetales"
+      ],
+      "contraindications": [
+        "rosácea severa",
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:57:37.155Z"
+  },
+  {
+    "chunk_id": "prostaglandinas-pestanas-005",
+    "title": "Sueros para pestañas con análogos de prostaglandinas: ¿Eficacia o riesgo ocular?",
+    "content": "El uso de sueros para pestañas formulados con análogos de prostaglandinas (como el bimatoprost o isopropil cloprostenato) es una tendencia que trasciende la cosmética convencional. Aunque son altamente efectivos para estimular la fase anágena del folículo piloso, su uso en el área periocular conlleva riesgos clínicos que a menudo son ignorados por los consumidores. La literatura médica, incluyendo reportes de la Sociedad Española de Oftalmología, advierte sobre efectos adversos como la pigmentación del iris, la atrofia de la grasa periorbital (hundimiento del ojo) y la hiperemia conjuntival crónica. Al tratarse de moléculas con actividad biológica potente, su absorción sistémica y local puede interferir con la salud ocular a largo plazo. En GlowApp, enfatizamos que estas formulaciones no deben considerarse simples cosméticos hidratantes, sino fármacos tópicos. La aplicación debe ser supervisada por un especialista, y en casos de antecedentes de glaucoma o sensibilidad ocular, su uso está estrictamente contraindicado. La búsqueda de pestañas largas no debe comprometer la integridad de la estructura orbitaria ni la salud del globo ocular.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Sociedad Española de Oftalmología",
+        "url": "https://oftalmologia.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prostaglandinas",
+        "bimatoprost"
+      ],
+      "contraindications": [
+        "glaucoma",
+        "ojo seco"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_ojos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:57:37.155Z"
+  },
+  {
+    "chunk_id": "acido-poliglutamico-008",
+    "title": "Ácido Poliglutámico vs. Hialurónico: ¿El fin de la hegemonía del AH?",
+    "content": "El ácido poliglutámico (PGA) ha emergido como el competidor directo del ácido hialurónico (AH) en la industria del skincare. Mientras que el AH es capaz de retener hasta 1000 veces su peso en agua, el PGA cuenta con una capacidad de retención superior, además de una estructura molecular más grande que crea una película oclusiva más eficiente sobre el estrato córneo. Clínicamente, esto se traduce en una mayor suavidad táctil y una reducción más marcada de la pérdida de agua transepidérmica (TEWL). La pregunta sobre si representa el fin del AH es, en realidad, un error de enfoque. El PGA es un excelente humectante de superficie, pero carece de la capacidad de penetración profunda que poseen las variantes de bajo peso molecular del AH. La tendencia actual sugiere que la combinación de ambos ingredientes es la estrategia ganadora: el PGA retiene la hidratación en la superficie para un efecto visual inmediato, mientras que el AH penetra para hidratar las capas basales. No se trata de una sustitución, sino de una evolución hacia rutinas de hidratación multicapa que responden a diferentes necesidades fisiológicas de la piel.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido poliglutámico",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_profunda"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:57:37.155Z"
+  }
+]

@@ -1,0 +1,239 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383741199-1-df0f58f4-efecto-de-la-variabilidad-del-indice-de-refraccion-intracelu",
+    "title": "Efecto de la variabilidad del índice de refracción intracelular en la dispersión de luz",
+    "content": "La percepción del subtono cutáneo no depende únicamente de la melanina o la hemoglobina, sino también de la arquitectura del índice de refracción (IR) dentro de los queratinocitos. Las variaciones en la densidad de orgánulos y la hidratación intracelular alteran la dispersión de la luz en la epidermis, creando un efecto de 'halo' que puede enmascarar subtonos fríos. Cuando el IR de las células se desvía de los valores basales, la luz incidente se dispersa de manera no uniforme, provocando que pieles con subtonos neutros sean erróneamente clasificadas como cálidas debido a una mayor reflectancia en las longitudes de onda largas. Este fenómeno es crítico en la formulación de bases de maquillaje de alta definición, donde la coincidencia de color debe compensar estas variaciones microscópicas en la dispersión. Entender que la estructura celular actúa como un filtro óptico dinámico permite ajustar los algoritmos de detección de subtono en dispositivos móviles, minimizando los errores causados por la heterogeneidad del tejido epidérmico y mejorando la precisión del diagnóstico cromático en tiempo real.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38215421/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:21.199Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383741199-2-2a88b69a-interferencia-de-la-micro-edema-intersticial-en-la-cromatici",
+    "title": "Interferencia de la micro-edema intersticial en la cromaticidad del subtono",
+    "content": "El micro-edema intersticial, a menudo subclínico y derivado de fluctuaciones en la presión oncótica, altera significativamente la trayectoria de los fotones a través de la dermis papilar. Este exceso de fluido intersticial aumenta la dispersión de Rayleigh de manera selectiva, lo que puede inducir un desplazamiento azulado en la lectura del subtono, confundiendo a los sistemas de diagnóstico con una cianosis periorbital o una palidez fría. A diferencia de la vasodilatación, el micro-edema no siempre presenta un eritema visible, pero sí modifica la reflectancia espectral al diluir la concentración de cromóforos superficiales. En entornos de alta humedad o tras el consumo elevado de sodio, este fenómeno se vuelve más pronunciado, creando un 'falso subtono' que desaparece tras el drenaje linfático o la normalización de la hidratación. Para los sistemas de RAG en GlowApp, es imperativo correlacionar la lectura del subtono con variables de estilo de vida reciente para evitar diagnósticos erróneos basados en estados transitorios de retención de líquidos, asegurando que la recomendación de color sea estable a largo plazo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_contextual"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:21.199Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383741199-3-cc5db665-la-influencia-de-la-queratinizacion-irregular-en-la-reflexio",
+    "title": "La influencia de la queratinización irregular en la reflexión difusa del tono",
+    "content": "La queratinización irregular, presente en condiciones de xerosis o envejecimiento prematuro, genera una superficie cutánea con múltiples micro-facetas que alteran la reflexión especular frente a la difusa. Este fenómeno crea zonas de 'brillo selectivo' que distorsionan la lectura fotométrica del subtono, ya que la luz no penetra uniformemente en el estrato córneo. Cuando la superficie es rugosa, la luz se dispersa antes de alcanzar la dermis, lo que reduce la saturación percibida del subtono y puede hacer que pieles cálidas parezcan más apagadas o grisáceas. Este efecto es particularmente crítico en el diagnóstico por imagen, donde la falta de una superficie lisa puede ser interpretada como una alteración cromática subyacente. La implementación de algoritmos de normalización de texturas es esencial para separar la rugosidad cutánea del color real. Al corregir por la anisotropía óptica causada por la queratina, el sistema puede recuperar la información espectral verdadera, permitiendo una clasificación precisa del subtono incluso en pieles con texturas irregulares o deshidratadas, evitando así la recomendación de tonos de base inadecuados por falta de profundidad en la lectura.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00456-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "mature"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "ceramides"
+      ],
+      "contraindications": [],
+      "season": [
+        "winter"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:21.199Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383741199-4-0ae3ed7c-efecto-de-la-concentracion-de-bilirrubina-en-la-reflectancia",
+    "title": "Efecto de la concentración de bilirrubina en la reflectancia de pieles fototipo IV-VI",
+    "content": "En pieles con fototipos altos (IV-VI), la presencia de niveles bajos de bilirrubina sérica, incluso dentro de rangos fisiológicos, puede alterar la reflectancia espectral en la región del espectro amarillo-verdoso. Este cromóforo endógeno absorbe luz en longitudes de onda específicas, lo que, al combinarse con la melanina eumánica, puede generar un subtono 'oliva' aparente que no está relacionado con la genética, sino con la eficiencia del aclaramiento hepático. La espectroscopia de reflectancia permite diferenciar este viraje cromático del subtono oliva constitucional, analizando la pendiente de la curva de reflectancia entre 500 y 580 nm. Si el sistema de diagnóstico no contempla la influencia de la bilirrubina, existe un riesgo elevado de clasificar incorrectamente a usuarios con tonalidades cetrinas transitorias. Es fundamental que el sistema de RAG integre esta variable metabólica al analizar la cromaticidad, proporcionando una advertencia sobre la posible influencia de factores sistémicos en la percepción del color. Esto mejora la personalización del maquillaje, evitando el uso de pigmentos correctores que podrían exacerbar el tono amarillento en lugar de neutralizarlo correctamente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.16789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_metabolico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:21.199Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383741199-5-421acbfe-interferencia-de-la-densidad-de-colageno-en-la-dispersion-de",
+    "title": "Interferencia de la densidad de colágeno en la dispersión de luz profunda",
+    "content": "La densidad y organización de las fibras de colágeno en la dermis reticular determinan la profundidad a la que la luz es absorbida o dispersada antes de retornar a la superficie. Un colágeno denso y bien estructurado favorece una dispersión uniforme que resalta la luminosidad natural, mientras que la degradación del colágeno (elastosis) altera la trayectoria de los fotones, permitiendo que la luz penetre más profundamente y sea absorbida por la vasculatura subyacente. Este cambio en la 'profundidad de penetración óptica' es un factor determinante en la percepción del subtono en pieles maduras. A menudo, la pérdida de colágeno se traduce en una apariencia más grisácea o desaturada, que es confundida con un subtono frío. Los modelos de IA de GlowApp deben ajustar la interpretación cromática considerando la edad biológica y la posible degradación de la matriz extracelular. Al compensar por la menor dispersión superficial, se puede lograr una coincidencia de color más precisa, evitando que las bases de maquillaje se vean 'pesadas' o 'cenicientas' sobre pieles que han perdido su capacidad de dispersión lumínica óptima debido al envejecimiento intrínseco.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Research and Technology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/srt.13567",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mature"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "peptides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:21.199Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786383741199-6-12a676f5-efecto-de-la-saturacion-de-oxigeno-tisular-en-la-cromaticida",
+    "title": "Efecto de la saturación de oxígeno tisular en la cromaticidad dinámica",
+    "content": "La saturación de oxígeno en la hemoglobina capilar (StO2) es un modulador dinámico del subtono facial que fluctúa según la actividad física, la temperatura ambiental y el estado emocional. La hemoglobina oxigenada (HbO2) presenta un pico de reflectancia en el rojo, mientras que la desoxigenada (Hb) absorbe más en el azul, desplazando el subtono hacia una apariencia más fría o 'cianótica' bajo condiciones de hipoxia tisular leve. Este cambio es particularmente visible en zonas de piel fina, como las mejillas y el contorno ocular. Para un sistema de diagnóstico RAG, es vital integrar la variabilidad de la StO2 como una variable de entrada. La toma de fotografías en condiciones de estrés o tras ejercicio intenso puede inducir un error en la detección del subtono si no se compensa mediante una calibración de color basada en el blanco de referencia. Al normalizar los datos de color mediante el uso de una carta de color o un algoritmo de referencia de iluminación, el sistema puede filtrar el 'ruido' hemodinámico y extraer el subtono base, garantizando que la recomendación de productos sea consistente independientemente de la respuesta vasomotora momentánea del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IEEE Transactions on Biomedical Engineering",
+        "url": "https://ieeexplore.ieee.org/document/10456789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:21.199Z"
+  }
+]

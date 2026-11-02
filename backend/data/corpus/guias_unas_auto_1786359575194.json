@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "guias_unas-onicolisis-mecanica-001",
+    "title": "Onicólisis por palanca mecánica: la física del levantamiento",
+    "content": "La onicólisis mecánica ocurre cuando la lámina ungueal se separa del lecho debido a fuerzas de cizallamiento o palanca. En el contexto de uñas artificiales largas, el borde libre actúa como un brazo de palanca: cualquier impacto en la punta se transfiere directamente a la zona de adhesión distal. Según la American Academy of Dermatology (AAD), el trauma repetido es una causa subestimada de desprendimiento distal. La separación crea un espacio subungueal que favorece la acumulación de detritos y humedad, facilitando la proliferación de microorganismos oportunistas. Es fundamental que el técnico comprenda que la longitud excesiva de la extensión, combinada con la rigidez del material (acrílico o gel), magnifica estas fuerzas físicas. La recomendación clínica es limitar la longitud de la uña artificial proporcionalmente a la longitud del lecho ungueal del paciente para minimizar el estrés tangencial sobre el hiponiquio, evitando así la pérdida progresiva de la adhesión natural y el desarrollo de distrofias crónicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas_muy_largas",
+        "lecho_ungueal_corto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-tecnico-de-extensiones"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:59:17.446Z"
+  },
+  {
+    "chunk_id": "guias_unas-biopeliculas-003",
+    "title": "Biofilms en microfisuras: el desafío de la asepsia",
+    "content": "La formación de biopelículas (biofilms) en las microfisuras de la lámina ungueal y en las herramientas metálicas es un desafío clínico crítico en la cabina de estética. Las biopelículas son comunidades de microorganismos protegidas por una matriz extracelular que las vuelve altamente resistentes a los desinfectantes estándar. Según la literatura en PubMed, estas estructuras permiten que patógenos como Pseudomonas aeruginosa sobrevivan incluso tras procesos de limpieza superficial. En el entorno de la manicura, las limas y los tornos pueden acumular restos de queratina y humedad, creando el nicho perfecto para la colonización bacteriana. La desinfección mediante inmersión en soluciones de alto nivel es insuficiente si no existe una limpieza mecánica previa rigurosa que elimine el biofilm. Los profesionales deben implementar protocolos de esterilización en autoclave para herramientas metálicas y optar por descartables de un solo uso para limas y pulidores, reduciendo así la carga bacteriana y previniendo infecciones periungueales recurrentes que a menudo se confunden con simples irritaciones por químicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1023456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "reuso_de_limas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-de-bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:59:17.446Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-008",
+    "title": "Manejo clínico de la reacción exotérmica",
+    "content": "La reacción exotérmica durante la fotopolimerización es un proceso físico necesario pero potencialmente peligroso. Cuando el gel se cura, los monómeros se organizan en polímeros mediante una reacción química que libera energía en forma de calor. Si la cantidad de producto aplicada es excesiva o si la intensidad de la lámpara es muy alta, este calor puede superar el umbral de dolor del paciente (típicamente por encima de los 42°C), causando una quemadura térmica o una onicólisis inducida por calor. Según guías técnicas de la industria, el control de esta reacción se logra mediante la aplicación de capas delgadas y el uso de modos de potencia reducida ('low heat mode') en lámparas modernas. Es un error común intentar compensar una baja pigmentación del gel con una capa gruesa, lo cual maximiza la energía liberada. La educación del cliente es vital: si siente ardor, debe retirar la mano inmediatamente. Ignorar esta sensación puede derivar en inflamación del lecho ungueal, lo cual altera la matriz y puede causar distrofias permanentes en el crecimiento futuro de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Occupational and Environmental Medicine",
+        "url": "https://journals.lww.com/joem/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "geles_uv"
+      ],
+      "contraindications": [
+        "capas_gruesas_producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-de-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:59:17.446Z"
+  }
+]

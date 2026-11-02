@@ -1,0 +1,289 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-interaccion-microbiota-001",
+    "title": "Impacto de la disbiosis del microbioma scalp en la fijación del color",
+    "content": "La microbiota del cuero cabelludo, compuesta principalmente por géneros como Staphylococcus, Cutibacterium y Malassezia, desempeña un rol crítico en la homeostasis de la barrera cutánea. Estudios recientes sugieren que una alteración en la diversidad microbiana, conocida como disbiosis, modifica el pH superficial y la producción de lípidos naturales. Este cambio altera la afinidad de la fibra capilar hacia los precursores de pigmentos sintéticos. Cuando el pH del cuero cabelludo se desplaza hacia la alcalinidad debido a una proliferación excesiva de Malassezia, la cutícula del cabello en la zona radicular presenta una mayor apertura, lo que provoca una absorción desigual de pigmentos frente a las zonas de medios y puntas. Esta variabilidad en la porosidad inducida por el microbioma puede derivar en un 'efecto raíz' no deseado o en una saturación cromática inconsistente. Comprender la ecología microbiana es fundamental para realizar un diagnóstico preciso antes de la coloración, sugiriendo que la restauración de la barrera cutánea mediante agentes prebióticos podría mejorar la uniformidad y longevidad del color. La literatura dermatológica subraya que los servicios de coloración agresivos pueden exacerbar la disbiosis, creando un ciclo de irritación y mala absorción de pigmento.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33565022/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos"
+      ],
+      "contraindications": [
+        "dermatitis seborreica activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-degradacion-enzimatica-002",
+    "title": "El rol de la peroxidasa endógena en la degradación prematura del tinte",
+    "content": "La fibra capilar humana posee actividad enzimática residual, principalmente peroxidasa, que puede influir negativamente en la estabilidad de los tintes permanentes una vez aplicados. Tras el proceso de oxidación, si quedan trazas de peróxido de hidrógeno no neutralizadas, la peroxidasa endógena puede catalizar una degradación oxidativa continua, provocando el viraje del color hacia tonos no deseados (generalmente cálidos o amarillentos) en las semanas posteriores a la aplicación. Este fenómeno es particularmente evidente en cabellos con daño estructural, donde la penetración de los agentes oxidantes es más profunda. La neutralización química mediante agentes reductores suaves o quelantes específicos es esencial para inactivar estas enzimas y detener la reacción en cadena. La literatura clínica indica que el uso de antioxidantes tópicos post-coloración puede mitigar este efecto, actuando como secuestradores de radicales libres que se generan tras la polimerización del color. Este control es vital para mantener la integridad cromática en cabellos tratados frecuentemente, evitando la sobre-oxidación de los precursores de color y protegiendo los enlaces peptídicos de la corteza capilar contra la degradación progresiva.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2015;volume=7;issue=1;spage=2;epage=15;aulast=Draelos",
+        "year": 2015
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_post_coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-interaccion-fisiologica-003",
+    "title": "Efecto de las fluctuaciones en la tasa de sudoración sobre la fijación cromática",
+    "content": "La sudoración profusa durante o inmediatamente después de un servicio de coloración permanente puede comprometer la estabilidad del pigmento. El sudor humano contiene electrolitos, urea, ácido láctico y una variedad de proteínas que pueden interactuar con los precursores de tinte en estado de polimerización. En ambientes de alta humedad y temperatura, como es frecuente en Bogotá, el aumento en la tasa de transpiración puede modificar localmente el pH del cuero cabelludo y de la fibra capilar, interfiriendo con el proceso de acoplamiento oxidativo. Esta interacción química puede causar una deposición heterogénea del color, especialmente en áreas de alta densidad folicular donde la evaporación es menor. Además, los componentes del sudor pueden actuar como agentes de arrastre que desplazan moléculas de tinte aún no fijadas completamente en la corteza, resultando en una pérdida prematura de saturación. Es recomendable instruir a los usuarios sobre la evitación de actividades físicas intensas o exposición al vapor durante las primeras 48 horas post-coloración, permitiendo que el proceso de fijación y sellado cuticular se complete sin interferencias externas de sustancias fisiológicas que alteren la estabilidad electroquímica del pigmento depositado en el complejo de membrana celular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/hair-care",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "ejercicio intenso post-tinte"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion_usuario"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-estabilidad-electroquimica-004",
+    "title": "Influencia de los niveles de hierro en la estructura queratínica sobre el viraje de tono",
+    "content": "La presencia de iones metálicos, particularmente hierro y cobre, en la fibra capilar es un factor determinante en la degradación del color y la alteración de la respuesta a los tintes. Estos metales pueden acumularse debido a la calidad del agua de suministro, facilitando la formación de radicales libres mediante la reacción de Fenton durante el uso de peróxido de hidrógeno. Esta oxidación incontrolada no solo debilita la estructura de queratina, sino que también altera la polimerización de los tintes permanentes, resultando en tonos inesperados y una pérdida de brillo. La quelación técnica previa es necesaria para eliminar estos residuos antes de la aplicación del tinte. En pacientes con deficiencias o excesos sistémicos de hierro, la estructura proteica del cabello puede mostrar una mayor porosidad o una afinidad alterada, complicando la igualación cromática. La espectroscopía de reflectancia ha demostrado que las fibras contaminadas con metales presentan una menor saturación cromática y un mayor desplazamiento hacia tonos verdosos o cobrizos. Es indispensable el uso de quelantes de grado profesional para asegurar que la reacción química ocurra exclusivamente entre los precursores de color y la estructura interna, minimizando la interferencia catalítica de los metales divalentes presentes en la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido etidrónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_cabello"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-biofisica-005",
+    "title": "La permeabilidad del complejo de membrana celular (CMC) ante agentes oxidantes",
+    "content": "El complejo de membrana celular (CMC) actúa como el cemento intercelular del cabello, siendo la barrera principal contra la pérdida de agua y la penetración de agentes externos. Durante los procesos de coloración, la integridad del CMC es sometida a una tensión crítica por los agentes alcalinizantes y oxidantes. La literatura biofísica indica que un daño excesivo en las capas de lípidos y proteínas del CMC provoca una permeabilidad incontrolada, permitiendo que el pigmento se deposite de forma irregular y se filtre con mayor rapidez durante los lavados. La preservación de la capa F, rica en ácido 18-metileicosanoico, es fundamental para mantener la hidrofobicidad del cabello, lo cual protege el color frente a la degradación por agua. Cuando el CMC se degrada, la fibra pierde su capacidad de retener pigmentos de alto peso molecular, lo que obliga a los coloristas a emplear técnicas de pre-pigmentación o re-llenado de porosidad. El uso de polímeros biomiméticos y lípidos sintéticos post-coloración es una estrategia clínica para restaurar la función barrera del CMC, optimizando la longevidad del color y mejorando la textura visual de la fibra capilar, previniendo así el aspecto opaco y quebradizo que suele seguir a los procesos químicos intensivos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://library.scconline.org/",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido 18-metileicosanoico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-interaccion-farma-006",
+    "title": "Interferencia de terapias hormonales y anti-estrés en la melanogénesis folicular",
+    "content": "El estado endocrino del paciente tiene una influencia documentada en la respuesta de la matriz folicular a los procesos de coloración. Terapias hormonales, incluyendo anticonceptivos orales o tratamientos de reemplazo, pueden alterar la tasa de crecimiento capilar y la calidad de la queratina, lo cual afecta indirectamente la afinidad tintórea. Más importante aún, el estrés sistémico crónico, que eleva los niveles de cortisol, induce un estado de estrés oxidativo en el bulbo piloso que puede acelerar la canicie prematura y alterar la estructura de la melanina residual. En cabellos canosos, la ausencia de melanina cambia drásticamente la reflectancia de la luz, lo que requiere un ajuste en la formulación del tinte para evitar resultados cromáticos artificiales. Los datos clínicos sugieren que pacientes bajo estrés metabólico significativo pueden presentar fibras capilares con una distribución de aminoácidos menos homogénea, dificultando la penetración uniforme del tinte. La consulta inicial debe incluir una anamnesis detallada sobre tratamientos sistémicos y niveles de estrés, permitiendo al profesional ajustar el tiempo de pose y la selección de agentes oxidantes para compensar las variaciones en la reactividad de la fibra capilar y asegurar un resultado estético predecible y saludable.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-seguridad-007",
+    "title": "Toxicología clínica de los vapores de tintes permanentes en espacios cerrados",
+    "content": "La exposición a Compuestos Orgánicos Volátiles (VOC) durante la aplicación de tintes permanentes representa un riesgo de salud ocupacional y para el usuario. Durante la mezcla y aplicación, agentes como el amoniaco y otros disolventes pueden ser inhalados, provocando irritación de las vías respiratorias superiores y, en individuos sensibilizados, cuadros de asma ocupacional o dermatitis por contacto aerotransportada. El monitoreo de la calidad del aire en salones de belleza es fundamental para cumplir con los estándares de seguridad industrial. Los estudios toxicológicos indican que el uso de sistemas de ventilación con filtración de carbón activo reduce significativamente la concentración de vapores tóxicos. Además, la transición hacia formulaciones con etanolamina, aunque más seguras en cuanto a toxicidad inhalatoria inmediata, presenta retos en la estabilidad del color y en la capacidad de aclaración en comparación con el amoniaco. La gestión clínica de este riesgo implica la realización de servicios en áreas con flujo de aire constante y el uso de equipos de protección personal cuando sea necesario. La educación sobre la toxicología de los ingredientes presentes en el tinte permite una práctica más segura, minimizando las reacciones adversas agudas y crónicas en el entorno clínico y profesional.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/publications/i/item/9789240050860",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco",
+        "etanolamina"
+      ],
+      "contraindications": [
+        "asma",
+        "EPOC"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_salud"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:50:45.343Z"
+  }
+]

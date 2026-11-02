@@ -1,0 +1,174 @@
+[
+  {
+    "chunk_id": "polidimetilsiloxano-oclusion-folicular-001",
+    "title": "Dimeticona y el riesgo de micro-oclusión folicular en pieles seborreicas",
+    "content": "La dimeticona, un polímero de silicona ampliamente utilizado, es valorada por su capacidad oclusiva y tacto sedoso. Sin embargo, en pacientes con pieles seborreicas o tendencia al acné, su peso molecular y estructura lineal pueden favorecer la micro-oclusión folicular. Aunque la literatura tradicional la clasifica como no comedogénica, estudios recientes en Journal of Cosmetic Dermatology sugieren que, en formulaciones con altas concentraciones, puede atrapar sebo y bacterias anaerobias (Cutibacterium acnes) dentro del infundíbulo folicular. Esta oclusión no es química, sino física, y puede desencadenar brotes inflamatorios en individuos con una barrera lipídica alterada o hiperqueratosis folicular persistente. Es crucial diferenciar entre la oclusión protectora en pieles atópicas y la oclusión deletérea en pieles grasas, donde el equilibrio de la microbiota se ve comprometido por la acumulación de detritos. La recomendación clínica es monitorear la respuesta del paciente tras 14 días de uso continuo, especialmente si se combina con filtros solares químicos, donde la silicona puede alterar la cinética de penetración de otros ingredientes.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimethicone"
+      ],
+      "contraindications": [
+        "active acne"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatology-consult"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:09:21.576Z"
+  },
+  {
+    "chunk_id": "cisteamina-irritacion-sulfurosa-002",
+    "title": "Cisteamina tópica: el reto de la irritación y la tolerancia cutánea",
+    "content": "La cisteamina, un aminotiol biológico, ha emergido como un despigmentante potente, comparable a la hidroquinona pero sin su riesgo de ocronosis. Sin embargo, su perfil de seguridad está marcado por una alta incidencia de dermatitis irritativa de contacto. El mecanismo de acción, que implica la inhibición de la tirosinasa y la peroxidasa, se ve a menudo opacado por su característico olor sulfuroso y su capacidad de penetración profunda, que puede alterar el pH de la superficie cutánea. Según reportes en el International Journal of Dermatology, el eritema y la sensación de quemazón son frecuentes en las primeras dos semanas de tratamiento. La contraindicación relativa incluye pieles con rosácea o dermatitis atópica, donde la barrera cutánea debilitada permite una absorción errática. Es fundamental iniciar con protocolos de 'contacto corto' (lavar el producto tras 15 minutos) para minimizar la inflamación reactiva, la cual, de ser persistente, podría inducir una hiperpigmentación post-inflamatoria, contradiciendo el objetivo terapéutico inicial del tratamiento en pacientes con melasma.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34212457/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "pigmented"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cysteamine"
+      ],
+      "contraindications": [
+        "rosacea",
+        "atopic-dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pigmentation-therapy"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:09:21.576Z"
+  },
+  {
+    "chunk_id": "acido-fitico-quelacion-inespecifica-004",
+    "title": "Ácido fítico: riesgos de la quelación inespecífica en la barrera cutánea",
+    "content": "El ácido fítico es un agente quelante natural derivado de cereales, utilizado en cosmética por sus propiedades antioxidantes y su capacidad para estabilizar formulaciones frente a metales pesados. Sin embargo, su eficacia como quelante es inespecífica. Al aplicarse tópicamente, puede secuestrar no solo metales pro-oxidantes, sino también minerales esenciales para la función enzimática de la piel, como el zinc y el magnesio, necesarios para la síntesis de ceramidas y la reparación epitelial. Estudios en PubMed sugieren que un uso prolongado o en concentraciones elevadas puede alterar el equilibrio iónico del estrato córneo, llevando a una piel más vulnerable a agentes irritantes externos. Además, su interacción con otros activos, como la vitamina C, puede reducir la biodisponibilidad de esta última, neutralizando su efecto sinérgico. En pieles con barrera comprometida o eccemas, el ácido fítico debe utilizarse con cautela. La recomendación es limitar su uso a formulaciones donde su concentración no supere el 1-2% y evitar su aplicación simultánea con otros exfoliantes químicos que puedan facilitar una penetración profunda e incontrolada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28532248/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "phytic-acid"
+      ],
+      "contraindications": [
+        "compromised-barrier"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antioxidant-therapy"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:09:21.576Z"
+  },
+  {
+    "chunk_id": "bio-fermentos-proliferacion-microbiana-006",
+    "title": "Bio-fermentos en cosmética: riesgos de proliferación microbiana latente",
+    "content": "Los ingredientes derivados de bio-fermentación (como el galactomyces o lisados de bifida) son populares por su capacidad de modular el microbioma cutáneo y mejorar la función barrera. Sin embargo, la complejidad química de estos fermentos los hace excelentes caldos de cultivo para microorganismos si el sistema de conservación no es impecable. En el Journal of Applied Microbiology, se ha discutido que la presencia de péptidos y aminoácidos libres en estos activos puede favorecer la proliferación de bacterias oportunistas si el producto se contamina tras su apertura. Además, los bio-fermentos pueden alterar el pH de la formulación con el tiempo, degradando la eficacia de otros conservantes. Para pacientes con pieles inmunocomprometidas o con barreras cutáneas severamente alteradas (como en casos de dermatitis atópica moderada a grave), el riesgo de una infección secundaria por una formulación mal conservada es una consideración seria. Se debe educar al usuario sobre la caducidad post-apertura (PAO) y la importancia de no contaminar el envase con los dedos durante la aplicación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Microbiology",
+        "url": "https://sfamjournals.onlinelibrary.wiley.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bifida-ferment-lysate"
+      ],
+      "contraindications": [
+        "immunosuppressed-skin"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbiome-support"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:09:21.576Z"
+  }
+]

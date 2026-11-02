@@ -1,0 +1,390 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-elastosis-solar-001",
+    "title": "Fisiopatología de la elastosis solar en áreas expuestas",
+    "content": "La elastosis solar es una manifestación clínica de daño actínico crónico, caracterizada por la acumulación de material elastótico amorfo en la dermis papilar y reticular. A diferencia del envejecimiento cronológico, la elastosis solar se presenta como una piel amarillenta, engrosada y con surcos profundos (cutis rhomboidalis nuchae). A nivel molecular, la radiación UVA induce la producción de metaloproteinasas de la matriz (MMP), que degradan las fibras de colágeno y elastina, reemplazándolas por tejido elástico funcionalmente incompetente. Es vital distinguir entre el daño dérmico profundo y la xerosis superficial, ya que el manejo de la elastosis requiere terapias que estimulen la neocolagénesis y protejan contra la radiación infrarroja y visible. Estudios publicados en el Journal of the American Academy of Dermatology subrayan que la fotoprotección de amplio espectro es la única medida preventiva eficaz para frenar la degradación de la matriz extracelular en zonas como el cuello y el escote, áreas frecuentemente olvidadas en la rutina clínica de los pacientes colombianos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/sun-damage",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-80"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "antioxidantes",
+        "filtros UV"
+      ],
+      "contraindications": [
+        "exposicion solar directa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-prurito-acuagenico-002",
+    "title": "Abordaje clínico del prurito acuagénico y xerosis inducida por el agua",
+    "content": "El prurito acuagénico es una condición dermatológica poco comprendida caracterizada por una sensación de picor, hormigueo o ardor intenso tras el contacto con el agua, sin evidencia de lesiones cutáneas visibles. En el contexto de GlowApp, es crucial diferenciarlo de la xerosis simple. El mecanismo propuesto involucra la activación de mastocitos y la liberación de acetilcolina tras el contacto osmótico. La gestión clínica requiere un enfoque en la integridad de la barrera epicutánea mediante el uso de emolientes oclusivos aplicados inmediatamente antes y después del contacto con el agua. Según la literatura en PubMed, el uso de agentes quelantes en aguas duras y el control de la temperatura del baño son estrategias fundamentales. Es imperativo descartar condiciones subyacentes como policitemia vera o trastornos linfoproliferativos en casos de prurito persistente. La educación al paciente sobre la temperatura del agua (idealmente tibia, no caliente) y la minimización del uso de surfactantes agresivos (SLS) es la primera línea de intervención no farmacológica para mejorar la calidad de vida y prevenir el daño del manto lipídico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "petrolato",
+        "urea"
+      ],
+      "contraindications": [
+        "jabones alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-dermatitis-contacto-003",
+    "title": "Dermatitis de contacto por fragancias en productos corporales",
+    "content": "La dermatitis alérgica de contacto (DAC) es una reacción de hipersensibilidad tipo IV mediada por células T, desencadenada frecuentemente por fragancias en cremas corporales, lociones y geles de baño. Los alérgenos más comunes incluyen el cinamaldehído, el isoeugenol y el geraniol. En el entorno clínico, la presentación suele ser un eccema localizado en áreas de aplicación frecuente. Es esencial realizar una anamnesis detallada sobre los productos utilizados, priorizando la transición hacia formulaciones 'fragrance-free' (libres de fragancia) frente a las 'unscented' (que pueden contener agentes enmascarantes). La IADVL sugiere realizar pruebas de parche para identificar alérgenos específicos cuando se sospecha de DAC persistente. La barrera cutánea comprometida facilita la penetración de estos haptenos, exacerbando la inflamación subyacente. La recomendación experta es optar por productos con certificación hipoalergénica y revisar la lista INCI exhaustivamente, evitando componentes botánicos con alta carga de terpenos en pacientes con historia clínica de atopia o sensibilidad cutánea previa. La educación del consumidor debe enfocarse en la diferencia entre una reacción de irritación y una sensibilización alérgica real.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://ijdvl.com/contact-dermatitis-fragrances/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sin fragancias",
+        "hipoalergenicos"
+      ],
+      "contraindications": [
+        "fragancias",
+        "aceites esenciales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_producto"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-ph-cutaneo-004",
+    "title": "Importancia del pH fisiológico en la limpieza corporal",
+    "content": "El manto ácido de la piel, con un pH entre 4.5 y 5.5, es crítico para el mantenimiento de la homeostasis y la función de barrera del estrato córneo. El uso de jabones en barra tradicionales, que suelen tener un pH alcalino (entre 9 y 10), altera la microbiota residente y aumenta la actividad de las proteasas endógenas, lo que conduce a una mayor pérdida de agua transepidérmica (TEWL). La investigación clínica indica que el uso prolongado de productos con pH elevado está correlacionado con una mayor incidencia de dermatitis y xerosis. Para pacientes en el contexto de GlowApp, se recomienda el uso de 'syndets' (detergentes sintéticos) que respetan el pH fisiológico y contienen lípidos de reposición. Mantener el pH óptimo es esencial para la actividad de enzimas como la ceramidasa, necesaria para la síntesis de lípidos epidérmicos. La recomendación es transicionar hacia limpiadores syndet en pacientes con piel reactiva o condiciones inflamatorias crónicas, garantizando que el proceso de limpieza no comprometa la integridad estructural de la barrera cutánea a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "acido lactico"
+      ],
+      "contraindications": [
+        "jabones alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-uñas-onicolisis-005",
+    "title": "Cuidado clínico de las uñas ante procedimientos cosméticos",
+    "content": "La onicólisis y otras distrofias ungueales son complicaciones frecuentes asociadas al uso prolongado de esmaltes semipermanentes y resinas acrílicas. El daño mecánico durante el retiro y la exposición a lámparas UV/LED pueden debilitar la placa ungueal y sensibilizar el lecho ungueal. Es fundamental que el paciente comprenda que la uña es una estructura viva que requiere periodos de descanso para la queratinización correcta. La evidencia sugiere que el uso de endurecedores con formaldehído debe evitarse, ya que causan una reticulación excesiva y fragilidad secundaria. En su lugar, el uso de aceites de cutícula ricos en vitamina E y ceramidas ayuda a mantener la flexibilidad de la placa. Ante la presencia de onicólisis, se debe suspender cualquier procedimiento cosmético y evaluar la posible sobreinfección por Candida o Pseudomonas, que requieren tratamiento antifúngico o antibiótico tópico bajo supervisión médica. GlowApp recomienda protocolos de 'descanso ungueal' y la aplicación de hidratantes específicos para la matriz ungueal para prevenir la fragilidad inducida por químicos en entornos de spa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/nails/nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina E",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "formaldehido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_uñas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-sudoracion-bromhidrosis-006",
+    "title": "Manejo médico de la bromhidrosis corporal",
+    "content": "La bromhidrosis, o mal olor corporal, es una condición que impacta significativamente la calidad de vida y es causada principalmente por la degradación bacteriana (Corynebacterium, Staphylococci) de las secreciones de las glándulas apocrinas. A diferencia de la hiperhidrosis, el foco del tratamiento debe estar en el control de la microbiota axilar. El uso de antitranspirantes basados en sales de aluminio es eficaz para reducir el flujo sudoral, pero en casos recalcitrantes, el uso de antibióticos tópicos (clindamicina o eritromicina) o agentes antisépticos (peróxido de benzoilo) bajo estricta supervisión médica es necesario. La literatura dermatológica sugiere que la reducción de la carga bacteriana mediante desinfectantes suaves y la higiene con pH controlado son pilares fundamentales. Es esencial diferenciar la bromhidrosis primaria de causas secundarias metabólicas o ingestión de ciertos alimentos (ajo, cebolla, alcohol). GlowApp promueve una estrategia de manejo integral que incluye la elección de fibras sintéticas transpirables y el uso de productos que no alteren el microbioma cutáneo a largo plazo, evitando la irritación por agentes activos demasiado agresivos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6374708/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "pubertad-adultez"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de aluminio",
+        "benzoilo"
+      ],
+      "contraindications": [
+        "uso prolongado de antibioticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-exposoma-007",
+    "title": "El exposoma corporal: impacto de la contaminación urbana",
+    "content": "El exposoma cutáneo abarca la totalidad de las exposiciones ambientales a las que una persona está sujeta, incluyendo la radiación UV, la contaminación atmosférica (partículas PM2.5), el tabaco y el estrés. Estudios recientes demuestran que las partículas en suspensión pueden penetrar el estrato córneo y activar el receptor de hidrocarburos arilo (AhR), desencadenando estrés oxidativo e inflamación crónica, lo que se traduce en envejecimiento prematuro y alteración de la barrera cutánea. En ciudades con alta polución como Bogotá, la protección corporal requiere algo más que filtros UV; se necesitan antioxidantes tópicos (vitamina C, niacinamida, polifenoles) capaces de neutralizar los radicales libres inducidos por el medio ambiente. La limpieza nocturna es el paso más crucial del protocolo de cuidado, ya que elimina las partículas adheridas durante el día. La evidencia clínica sugiere que el uso de cremas con efecto 'escudo' o 'anti-polución' refuerza la función de barrera y disminuye la reactividad cutánea. GlowApp integra esta visión para ofrecer recomendaciones de cuidado preventivo que trascienden la hidratación básica, enfocándose en la protección activa contra el entorno urbano.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-pollution",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "vitamina C",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-estres-oxidativo-008",
+    "title": "Mecanismos de defensa antioxidante en la piel corporal",
+    "content": "La piel posee sistemas de defensa antioxidante intrínsecos, como las enzimas superóxido dismutasa, catalasa y glutatión peroxidasa. Sin embargo, bajo estrés oxidativo constante, estas defensas se agotan rápidamente, llevando a la oxidación lipídica del sebo y la degradación del colágeno dérmico. La aplicación tópica de antioxidantes es una estrategia validada para suplementar estas defensas naturales. En el cuerpo, el uso de formulaciones con alta estabilidad es vital, dado que el área de superficie es mayor que en el rostro. La evidencia en revistas dermatológicas confirma que el uso combinado de antioxidantes (ej. vitamina C y E, ácido ferúlico) ofrece una fotoprotección superior frente a la radiación UV. Además, el consumo de polifenoles en la dieta y la aplicación tópica pueden actuar sinérgicamente. GlowApp enfatiza que la elección del producto debe basarse en la capacidad de penetración y la estabilidad del activo, priorizando texturas que permitan una absorción rápida en áreas extensas sin dejar residuos pegajosos, lo cual mejora la adherencia del paciente al tratamiento.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00123-X/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-80"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "vitamina E",
+        "acido ferulico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-masaje-linfatico-009",
+    "title": "Evidencia clínica sobre el drenaje linfático manual",
+    "content": "El drenaje linfático manual (DLM) es una técnica de terapia física que busca activar el funcionamiento del sistema linfático superficial para mejorar la eliminación de líquido intersticial y moléculas de gran tamaño. Aunque popular en el sector de spa, su indicación clínica debe ser precisa: es fundamental en el manejo de edemas post-quirúrgicos y linfedemas secundarios. Sin embargo, existe mucha desinformación sobre su capacidad para 'eliminar toxinas' o reducir la celulitis de forma permanente. La evidencia científica sugiere que, si bien el DLM mejora temporalmente el edema y la sensación de pesadez, no altera la fisiopatología de los adipocitos ni la fibrosis del tejido conectivo. Es imperativo que los profesionales de GlowApp comuniquen expectativas realistas a los pacientes, enfatizando que el DLM es un complemento terapéutico y no una solución única. Debe evitarse en pacientes con infecciones activas, trombosis venosa profunda (TVP) o insuficiencia cardíaca descompensada. La técnica debe ser realizada por personal certificado para evitar daños en los vasos linfáticos o exacerbación de condiciones inflamatorias latentes.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Lymphatic Education & Research Network",
+        "url": "https://lymphaticnetwork.org/living-with-lymphedema/manual-lymphatic-drainage",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "trombosis",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_spa"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:21.074Z"
+  }
+]

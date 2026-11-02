@@ -1,0 +1,92 @@
+[
+  {
+    "chunk_id": "bio-fermentacion-skincare-001",
+    "title": "Cosmética Fermentada: ¿Mejor absorción o riesgo de sobrecrecimiento bacteriano?",
+    "content": "La tendencia de los productos 'fermentados' en el cuidado de la piel sugiere que la descomposición de ingredientes por microorganismos (como levaduras o bacterias lácticas) reduce el tamaño molecular de los activos, facilitando su penetración. Si bien la fermentación puede aumentar la biodisponibilidad de compuestos como aminoácidos y vitaminas, existe una confusión en el mercado sobre la estabilidad de estos productos. La AAD advierte que, al carecer de un sistema de preservación robusto, muchos productos 'naturales' fermentados pueden convertirse en caldos de cultivo para patógenos oportunistas. Además, la fermentación incontrolada puede alterar el pH del producto, provocando dermatitis de contacto irritativa en pieles sensibles. La evidencia en PubMed indica que, aunque los extractos fermentados (como el galactomyces) muestran potencial antioxidante, la eficacia depende estrictamente de la estandarización del proceso industrial y no de la formulación casera o artesanal. Es fundamental distinguir entre ingredientes fermentados biotecnológicamente en laboratorio y productos de fermentación in situ que carecen de controles microbiológicos. La integridad de la barrera cutánea puede verse comprometida si el producto no garantiza un pH fisiológico estable y una carga microbiana segura tras su apertura, especialmente en climas húmedos como el de Bogotá.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33221990/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Galactomyces",
+        "Bifida Ferment Lysate"
+      ],
+      "contraindications": [
+        "Dermatitis seborreica",
+        "Rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:54:31.484Z"
+  },
+  {
+    "chunk_id": "prostaglandinas-pestanas-009",
+    "title": "Sérums para pestañas con análogos de prostaglandinas: ¿Eficacia real o riesgo ocular?",
+    "content": "El auge de los sérums para pestañas ha llevado a la popularización de ingredientes activos potentes como los análogos de prostaglandinas (ej. bimatoprost, isopropil cloprostenato). Originalmente utilizados en el tratamiento del glaucoma, estos compuestos inducen la fase anágena de los folículos pilosos, resultando en pestañas visiblemente más largas y densas. Sin embargo, su uso cosmético conlleva riesgos clínicos significativos. La literatura dermatológica y oftalmológica ha documentado efectos adversos como la pigmentación permanente del iris (en ojos claros), la atrofia de la grasa periocular (hundiéndolos), irritación conjuntival y crecimiento de vello en áreas no deseadas. Existe una falta de regulación estricta en el etiquetado de muchos productos virales, que a menudo esconden estos ingredientes bajo nombres botánicos engañosos. Es fundamental advertir a los pacientes que la belleza de las pestañas no debe comprometer la salud ocular. Se recomienda evitar productos que no declaren explícitamente sus ingredientes activos o que prometan resultados 'farmacológicos' sin supervisión médica. Para aquellos que buscan longitud, existen alternativas basadas en péptidos y pantenol que, aunque menos rápidas, presentan un perfil de seguridad superior y nulo riesgo de toxicidad ocular a largo plazo.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Ophthalmology",
+        "url": "https://www.aao.org/eye-health/tips-prevention/eyelash-growth-serum-side-effects",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Análogos de Prostaglandinas",
+        "Bimatoprost"
+      ],
+      "contraindications": [
+        "Glaucoma",
+        "Ojos sensibles",
+        "Embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:54:31.484Z"
+  }
+]

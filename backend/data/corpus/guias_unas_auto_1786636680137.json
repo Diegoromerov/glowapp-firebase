@@ -1,0 +1,209 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-electroquimica-001",
+    "title": "Onicólisis por potencial de transferencia iónica en sistemas de base rubber",
+    "content": "La onicólisis inducida por transferencia iónica ocurre cuando la diferencia de potencial electroquímico entre el lecho ungueal y las bases rubber de alta acidez provoca una desmineralización superficial. A diferencia del trauma mecánico, este fenómeno es una reacción de interfaz donde la migración de iones metálicos (provenientes de herramientas mal desinfectadas o primers de baja calidad) hacia la matriz polimérica altera la estructura de los corneocitos del lecho. Estudios publicados en el Journal of the American Academy of Dermatology sugieren que la acidez persistente (pH < 4.5) inhibe la capacidad de regeneración del hiponiquio. La manifestación clínica es un despegamiento distal indoloro que se confunde frecuentemente con onicomicosis, pero que carece de hiperqueratosis subungueal. Es fundamental que los profesionales de GlowApp evalúen la compatibilidad química de las bases utilizadas, evitando el uso de productos con alta carga de ácido metacrílico en lechos ungueales con antecedentes de hipersensibilidad. La estabilización del pH mediante el uso de bases neutras y la reducción de la exposición a solventes orgánicos durante la remoción son los pilares para detener la progresión de esta distrofia iatrogénica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico"
+      ],
+      "contraindications": [
+        "hipersensibilidad a acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:57:39.011Z"
+  },
+  {
+    "chunk_id": "guias-unas-hiperqueratosis-friccional-002",
+    "title": "Hiperqueratosis compensatoria: respuesta al rozamiento tangencial",
+    "content": "La hiperqueratosis compensatoria en el pliegue lateral ungueal es una respuesta fisiológica protectora ante el rozamiento tangencial constante, a menudo inducido por el uso de calzado estrecho o una técnica de manicura 'rusa' excesivamente profunda. Según investigaciones en el Indian Journal of Dermatology, Venereology and Leprology, este engrosamiento del estrato córneo no es meramente estético, sino una barrera que el organismo construye para evitar la exposición de la dermis subyacente. En cabina, el error común es eliminar esta callosidad con fresas de diamante de grano grueso, lo cual dispara una respuesta inflamatoria de retroalimentación que acelera la producción de queratina, empeorando el cuadro. El manejo debe ser conservador, centrado en la hidratación con urea al 10-20% y la modificación de los puntos de presión mecánica en la zona periungueal. Identificar si la hiperqueratosis es una respuesta a la presión lateral o si existe un componente de onicocriptosis incipiente es vital para evitar una intervención traumática que pueda derivar en una paroniquia crónica. La educación al cliente sobre el calzado y la frecuencia de servicios es el mejor tratamiento preventivo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea"
+      ],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:57:39.011Z"
+  },
+  {
+    "chunk_id": "guias-unas-onico-distrofia-termica-003",
+    "title": "Onicodistrofia térmica: daño matricial por gradientes de temperatura",
+    "content": "La onicodistrofia térmica se produce cuando el gradiente de temperatura durante el fresado de alta velocidad supera el umbral de tolerancia de la matriz ungueal (aproximadamente 42-45°C). El calor friccional acumulado altera la síntesis de proteínas en los queratinocitos de la matriz, lo que resulta en la aparición de surcos transversales o puntos de fragilidad semanas después del procedimiento. PubMed registra casos donde la exposición prolongada a fresas de carburo sin refrigeración adecuada causa una necrosis térmica microscópica en el lecho. En GlowApp, la recomendación técnica es el uso de fresas de cerámica con geometría de corte cruzado que disipan mejor el calor, además de realizar pasadas cortas y rítmicas. Es crucial entender que, si el cliente manifiesta sensación de quemazón durante el limado, el daño térmico ya ha comenzado a nivel celular, incluso si no hay evidencia visible en la superficie. La prevención del daño matricial es una responsabilidad ineludible del técnico, priorizando la ergonomía del torno y la presión controlada sobre la velocidad de rotación. La integridad de la lámina depende directamente de la salud de su matriz, que es altamente sensible a las fluctuaciones térmicas extremas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado prolongado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-limado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:57:39.011Z"
+  },
+  {
+    "chunk_id": "guias-unas-permeabilidad-solventes-005",
+    "title": "Permeabilidad de la lámina ungueal a solventes orgánicos",
+    "content": "La lámina ungueal no es una barrera impermeable; su estructura de queratina densa actúa como una membrana porosa que permite la absorción de solventes orgánicos como la acetona, el acetato de etilo y diversos monómeros. Un estudio en el Journal of Cosmetic Dermatology detalla que la inmersión prolongada en removedores altera la organización lipídica intercelular, facilitando la deshidratación profunda del lecho ungueal. Este proceso aumenta la porosidad, lo que a su vez eleva el riesgo de penetración de microorganismos y alérgenos. En GlowApp, la recomendación técnica es limitar el contacto con solventes mediante el uso de geles de fácil remoción (soak-off) de alta calidad y evitar el uso de limas para romper la estructura del gel si esto implica desgastar la lámina dorsal. La hidratación post-servicio con aceites ricos en ácidos grasos esenciales (como el aceite de jojoba o almendras) es fundamental para restaurar el balance lipídico y cerrar la brecha de permeabilidad inducida. Comprender la cinética de absorción química es esencial para prevenir la 'uña quebradiza por solventes', una condición crónica que afecta la adhesión de futuros sistemas fotopolimerizables.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "aceite de jojoba"
+      ],
+      "contraindications": [
+        "exposición prolongada a solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-remocion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:57:39.011Z"
+  },
+  {
+    "chunk_id": "guias-unas-onicoclasia-mecanica-007",
+    "title": "Onicoclasia por estrés mecánico: el punto de fractura",
+    "content": "La onicoclasia, o fractura ungueal, ocurre cuando la carga mecánica aplicada supera la resistencia a la tracción de la lámina ungueal. La arquitectura de la uña es una estructura anisotrópica: es más resistente a la compresión longitudinal que a la tensión tangencial. Cuando los clientes utilizan uñas esculpidas excesivamente largas, el borde libre actúa como una palanca que transfiere fuerzas de cizallamiento a la zona del hiponiquio y la matriz. Este estrés repetitivo puede provocar microfracturas en la lámina que, con el tiempo, se propagan hasta causar una onicólisis traumática o incluso una avulsión parcial. Es vital educar al cliente sobre la longitud funcional de sus uñas según su estilo de vida y ocupación. La física del limado también juega un rol: el limado excesivo de los laterales (puntos de tensión) debilita la estructura y aumenta la susceptibilidad a la rotura. Un diseño correcto del arco de tensión y la distribución uniforme del producto son estrategias fundamentales para minimizar este riesgo. La onicoclasia no solo es un problema estético, sino una señal de que la biomecánica de la uña ha sido comprometida por una sobrecarga estructural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-esculpido"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:57:39.011Z"
+  }
+]

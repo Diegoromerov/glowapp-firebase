@@ -1,0 +1,44 @@
+[
+  {
+    "chunk_id": "guias_unas-fotobio-luzazul-006",
+    "title": "Fotobiología de la luz azul y su impacto en la matriz ungueal",
+    "content": "La fotobiología de las lámparas LED utilizadas en cabina es un área de creciente interés clínico. Mientras que la radiación UV (específicamente UVA) es necesaria para la polimerización de los fotoiniciadores, el espectro de luz azul visible y su intensidad pueden tener efectos fototóxicos si la exposición es prolongada o si existen condiciones subyacentes como la fotosensibilidad. Estudios recientes han explorado cómo la luz azul puede inducir estrés oxidativo en los tejidos periungueales, contribuyendo al fotoenvejecimiento cutáneo y, potencialmente, a cambios en la pigmentación de la lámina (melanoniquia inducida por luz). Además, la polimerización rápida bajo alta irradiancia aumenta la reacción exotérmica, lo que puede causar dolor y micro-quemaduras en el lecho. La recomendación es utilizar lámparas con espectro de emisión optimizado (365nm + 405nm) y tiempos de curado validados por el fabricante del gel. La protección de las manos mediante guantes sin dedos con protección UV o cremas fotoprotectoras de amplio espectro es una medida preventiva esencial para mitigar los riesgos de daño actínico acumulativo en la piel periungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposicion_prolongada_uv"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_fotopolimerizacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:26:09.232Z"
+  }
+]

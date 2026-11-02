@@ -1,0 +1,252 @@
+[
+  {
+    "chunk_id": "guias_unas-oniquia-traumatica-estres-oxidativo-001",
+    "title": "Oniquia por estrés oxidativo: el impacto de la fotopolimerización prolongada",
+    "content": "La fotopolimerización de geles UV/LED genera una reacción exotérmica que, si se combina con una exposición excesiva, puede inducir estrés oxidativo en la matriz ungueal. Estudios publicados en el Journal of Cosmetic Dermatology sugieren que la acumulación de radicales libres durante ciclos repetidos de curado puede degradar la estructura de la queratina dorsal, debilitando la lámina ungueal a nivel molecular. A diferencia del daño mecánico por limado, este daño es invisible al inicio, manifestándose como una fragilidad exacerbada y pérdida de flexibilidad. Es fundamental limitar el tiempo de exposición según las especificaciones del fabricante del gel y el dispositivo, evitando la sobre-exposición que no mejora la adhesión, pero sí compromete la integridad del lecho ungueal. La protección mediante guantes con protección UV o cremas de amplio espectro antes del servicio es una medida preventiva esencial para mitigar los efectos de la radiación ionizante y no ionizante sobre el tejido periungueal sensible.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposicion_uv_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-fotopolimerizacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:22:37.337Z"
+  },
+  {
+    "chunk_id": "guias_unas-neurobiologia-tic-ungueal-002",
+    "title": "Neurobiología del tic ungueal: abordaje clínico vs. estético",
+    "content": "El tic ungueal o hábito de manipulación constante (diferente a la onicofagia clásica) responde a mecanismos de regulación dopaminérgica en el sistema nervioso central. Clínicamente, el trauma repetitivo sobre la matriz induce una distrofia ungueal característica, a menudo confundida con micosis. La literatura dermatológica, incluyendo reportes de la American Academy of Dermatology, enfatiza que la corrección estética (aplicación de recubrimientos) suele ser contraproducente, ya que proporciona una superficie lisa que el paciente vuelve a manipular compulsivamente. El manejo efectivo requiere un enfoque multidisciplinario: diagnóstico dermatológico para descartar patologías, seguido de terapia conductual. En cabina, el rol del profesional debe ser la educación sobre el daño mecánico y la derivación a especialistas en salud mental si se observa una conducta autolesiva persistente. La aplicación de productos sobre una matriz inflamada crónicamente por trauma solo enmascara el problema y retrasa el diagnóstico de posibles complicaciones como el granuloma piógeno o la paroniquia traumática secundaria.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_compulsiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia-ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:22:37.337Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidrodinamica-lamina-003",
+    "title": "Hidrodinámica de la lámina ungueal: la paradoja de la hidratación",
+    "content": "Existe un mito persistente sobre la necesidad de 'hidratar' la uña con aceites. Sin embargo, la permeabilidad de la lámina ungueal es limitada. La uña es una estructura mucho más porosa que la piel, lo que permite que el agua penetre más rápido que los lípidos, hinchando las células de queratinocitos y debilitando los enlaces de hidrógeno internos. La deshidratación cíclica (hinchazón por agua y contracción al secarse) es la causa principal de la onicosquizia lamelar. Los aceites (como el de jojoba) no hidratan en el sentido biológico, sino que actúan como selladores hidrofóbicos que evitan la absorción excesiva de agua. El enfoque correcto para la salud ungueal no es la saturación con productos, sino el control de la exposición acuosa y el uso de agentes oclusivos de bajo peso molecular que penetren los espacios intercelulares sin alterar el pH del lecho ungueal, manteniendo la flexibilidad natural de la placa bajo condiciones ambientales variables.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22153549/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite_jojoba",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-ungueal"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:22:37.337Z"
+  },
+  {
+    "chunk_id": "guias_unas-displasia-hiponiquio-004",
+    "title": "Displasia del hiponiquio: riesgos de la limpieza subungueal profunda",
+    "content": "El hiponiquio es la barrera cutánea crítica que sella la unión entre la lámina ungueal y el lecho distal. La práctica común de limpiar profundamente debajo de la uña con herramientas metálicas o instrumentos rígidos genera una micro-separación (oniquia traumática) que rompe el sello biológico. Esta disrupción permite la entrada de patógenos oportunistas como Pseudomonas aeruginosa, hongos dermatofitos o levaduras (Candida). La arquitectura del hiponiquio es altamente vascularizada y sensible; una vez que ocurre la displasia o retracción por trauma mecánico crónico, el sellado se vuelve deficiente, facilitando la colonización bacteriana. La recomendación profesional es la limpieza superficial con métodos suaves y evitar la presión lateral en la zona del surco, preservando la integridad del hiponiquio como defensa natural contra infecciones recurrentes que a menudo se confunden con onicomicosis cuando, en realidad, son procesos inflamatorios por mala praxis mecánica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza_subungueal_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-seguridad"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:22:37.337Z"
+  },
+  {
+    "chunk_id": "guias_unas-sensibilizacion-acrilatos-005",
+    "title": "Sensibilización a acrilatos: el efecto acumulativo y la reacción cruzada",
+    "content": "La sensibilización a los monómeros de metacrilato (como el HPMA - Hidroxipropil Metacrilato) es una condición irreversible. Una vez que el sistema inmunológico desarrolla una respuesta de hipersensibilidad tipo IV ante estos compuestos, el contacto, incluso en concentraciones mínimas, puede desencadenar dermatitis de contacto severa. Un aspecto crítico es la reacción cruzada: los pacientes sensibilizados a un tipo de acrilato en geles para uñas suelen presentar reacciones a otros productos, incluidos adhesivos médicos, selladores dentales o prótesis ortopédicas. El riesgo aumenta exponencialmente cuando existe una polimerización incompleta del gel, dejando monómeros libres que penetran la barrera cutánea. La educación al cliente debe enfocarse en reconocer los síntomas tempranos (eritema periungueal, prurito, edema) y la necesidad de retirar el producto ante la sospecha de sensibilización, evitando la exposición continuada que puede llevar a una dermatitis crónica de difícil resolución terapéutica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Society of Contact Dermatitis",
+        "url": "https://www.escd.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "HPMA"
+      ],
+      "contraindications": [
+        "sensibilizacion_previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:22:37.337Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicosquizia-lamelar-009",
+    "title": "Onicosquizia lamelar: el papel del balance hídrico",
+    "content": "La onicosquizia lamelar, caracterizada por la división de la lámina ungueal en capas horizontales, es una manifestación directa de la fatiga del material por ciclos de hidratación y deshidratación. La uña, al absorber agua, se expande; al secarse, se contrae. Esta constante fluctuación mecánica debilita la cohesión entre los corneocitos del plato ungueal, provocando la separación de las capas. El uso frecuente de solventes orgánicos para la remoción de productos, seguido de la exposición prolongada al agua en tareas domésticas, acelera este proceso. A diferencia de las deficiencias nutricionales (que son causas menos frecuentes de fragilidad ungueal), la onicosquizia es fundamentalmente un problema de gestión hídrica y trauma mecánico. El tratamiento efectivo requiere la protección de la lámina con agentes oclusivos y, sobre todo, la educación sobre el uso de guantes protectores en actividades que impliquen contacto prolongado con agua o detergentes, permitiendo que la uña recupere su elasticidad natural sin degradación estructural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22153549/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "queratina",
+        "agentes_oclusivos"
+      ],
+      "contraindications": [
+        "exposicion_acuosa_excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:22:37.337Z"
+  }
+]

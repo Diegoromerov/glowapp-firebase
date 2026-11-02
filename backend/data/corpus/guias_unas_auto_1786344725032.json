@@ -1,0 +1,293 @@
+[
+  {
+    "chunk_id": "electrolisis-y-corrosion-metales-001",
+    "title": "Corrosión galvánica y liberación de metales en herramientas de acero inoxidable",
+    "content": "La corrosión galvánica es un fenómeno electroquímico subestimado en el mantenimiento de herramientas clínicas. Cuando herramientas de aleaciones de acero inoxidable de distinta calidad entran en contacto en soluciones desinfectantes (como amonios cuaternarios), se genera una transferencia de electrones que degrada la capa pasivante del metal. Esto no solo reduce la vida útil de la herramienta, sino que libera iones metálicos (níquel, cromo) que, al entrar en contacto con la piel periungueal, pueden desencadenar dermatitis de contacto alérgica. Estudios en la revista 'Journal of Hospital Infection' advierten que la desinfección inadecuada con agentes corrosivos favorece la formación de micro-picaduras (pitting) donde se alojan biopelículas bacterianas imposibles de eliminar mediante autoclave convencional. Es imperativo utilizar soluciones con inhibidores de corrosión y verificar la compatibilidad química del detergente enzimático. La integridad de la superficie del instrumento es el primer paso para prevenir infecciones cruzadas y reacciones alérgicas por metales en la cabina de estética.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Hospital Infection",
+        "url": "https://www.journalofhospitalinfection.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amonios cuaternarios",
+        "detergentes enzimáticos"
+      ],
+      "contraindications": [
+        "uso de herramientas con signos de oxidación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-bioseguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  },
+  {
+    "chunk_id": "biofilm-micro-fisuras-002",
+    "title": "Biofilms en micro-fisuras: el desafío de la esterilización en cabina",
+    "content": "Las biopelículas (biofilms) son comunidades bacterianas organizadas que se adhieren a superficies sólidas mediante una matriz extracelular polimérica. En el contexto de la manicura, las herramientas de acero inoxidable con micro-fisuras, causadas por el limado accidental o la fatiga del metal, actúan como refugios para microorganismos como Staphylococcus aureus y Pseudomonas aeruginosa. Una vez que el biofilm se establece, la resistencia a los desinfectantes químicos aumenta hasta 1000 veces en comparación con las bacterias planctónicas. Según la American Academy of Dermatology, la simple inmersión en soluciones desinfectantes es insuficiente si no existe una limpieza mecánica previa rigurosa que rompa la matriz del biofilm. La esterilización en autoclave es el único método validado para eliminar estas comunidades. Si una herramienta presenta desgaste visible o pérdida del brillo original, debe ser retirada del servicio, ya que la superficie rugosa microscópica es un reservorio infeccioso que pone en riesgo la salud del lecho ungueal de cada cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "reutilización de herramientas dañadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  },
+  {
+    "chunk_id": "interaccion-ph-adhesivos-003",
+    "title": "Variabilidad del pH ungueal y su efecto en la polimerización de geles",
+    "content": "El lecho ungueal y la lámina poseen un pH ácido, generalmente entre 5.0 y 6.0, influenciado por la microbiota residente y el manto hidrolipídico. La fotopolimerización de sistemas acrílicos y geles UV es una reacción química sensible a este microambiente. Un pH alterado, ya sea por el uso de deshidratadores excesivamente alcalinos o por hiperhidrosis local, puede inhibir la conversión completa de los monómeros, dejando residuos de monómeros no reaccionados. Estos residuos son altamente sensibilizantes y pueden penetrar la barrera cutánea periungueal. La literatura en PubMed subraya que una polimerización incompleta no solo reduce la durabilidad del servicio, sino que es la causa principal de la dermatitis alérgica de contacto por metacrilatos. El uso de balanceadores de pH con la acidez fisiológica adecuada es fundamental para garantizar una red polimérica estable y minimizar el riesgo de sensibilización inmunológica a largo plazo en el usuario.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "balanceadores de pH"
+      ],
+      "contraindications": [
+        "hiperhidrosis no tratada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  },
+  {
+    "chunk_id": "reaccion-exotermica-006",
+    "title": "Cinética de la reacción exotérmica en fotopolimerización",
+    "content": "La fotopolimerización es una reacción exotérmica: la conversión de monómeros en polímeros libera energía en forma de calor. En sistemas de gel de alta densidad o capas muy gruesas, esta reacción puede superar el umbral de tolerancia térmica del lecho ungueal (aprox. 45-50°C), provocando dolor agudo o quemaduras microscópicas en la matriz. Este estrés térmico puede desencadenar onicólisis distal o inflamación del pliegue. La velocidad de la reacción depende del fotoiniciador utilizado y de la intensidad de la lámpara. Para mitigar este riesgo, es fundamental respetar el principio de 'capas delgadas' y utilizar lámparas con modo de 'baja intensidad' (low heat mode). La acumulación de calor no es solo una molestia para el cliente; es un factor de riesgo para la salud del tejido vivo subyacente. Los profesionales deben entender que el tiempo de curado no debe sacrificarse por la rapidez; una polimerización controlada es sinónimo de integridad estructural y seguridad biológica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "monómeros"
+      ],
+      "contraindications": [
+        "aplicación de capas gruesas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso-lámparas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  },
+  {
+    "chunk_id": "foto-envejecimiento-manos-007",
+    "title": "Protección contra el fotoenvejecimiento por lámparas UV de alta intensidad",
+    "content": "Aunque el riesgo de carcinogénesis por lámparas de uñas se considera bajo en usos esporádicos, la exposición repetida y acumulativa a la radiación UVA en cabina es un factor de riesgo para el fotoenvejecimiento cutáneo y la aparición de manchas actínicas en el dorso de las manos. La piel de las manos es particularmente fina y propensa al daño solar. La recomendación de la Skin Cancer Foundation es clara: el uso de guantes con protección UV o la aplicación de protector solar de amplio espectro 20 minutos antes de la exposición es una medida preventiva esencial. No todas las lámparas son iguales; las lámparas con picos de emisión en el rango de los 350-400 nm son más seguras y eficientes. Es responsabilidad del profesional informar sobre estos riesgos y promover el uso de protección física, transformando una experiencia puramente estética en un servicio consciente con la salud dermatológica a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "The Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "protector solar"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  },
+  {
+    "chunk_id": "estres-oxidativo-queratina-008",
+    "title": "Estrés oxidativo y degradación de la queratina por fotopolimerización prolongada",
+    "content": "La queratina ungueal es una proteína compleja que puede sufrir degradación oxidativa bajo condiciones de estrés, como la exposición prolongada a radicales libres generados durante una fotopolimerización mal ejecutada. El exceso de luz UV, más allá del necesario para la conversión del monómero, puede inducir la formación de especies reactivas de oxígeno (ROS) que dañan la estructura de los enlaces disulfuro de la queratina. Esto se traduce visualmente en una uña más quebradiza, amarillenta y con menor capacidad de retención de humedad. El daño no es inmediato, sino acumulativo. La clave para prevenir este estrés oxidativo es el uso de lámparas calibradas con la longitud de onda específica requerida por el producto utilizado, evitando la sobreexposición. Un servicio de calidad debe priorizar la salud de la lámina mediante la minimización de la exposición lumínica innecesaria, asegurando que el proceso sea eficiente y mínimamente invasivo para la integridad estructural de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "sobreexposición UV"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso-lámparas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  },
+  {
+    "chunk_id": "biologia-hiponiquio-009",
+    "title": "El hiponiquio como zona de sellado crítico y su vulnerabilidad",
+    "content": "El hiponiquio es la zona de piel situada bajo el borde libre de la uña y constituye la barrera biológica principal que impide la entrada de patógenos y humedad al lecho ungueal. Su estructura es delicada y está densamente inervada. La práctica de limpiar profundamente debajo de la uña con herramientas metálicas no solo es dolorosa, sino que rompe el sellado natural, facilitando la colonización por hongos y bacterias como Pseudomonas. La literatura dermatológica enfatiza que el hiponiquio debe ser respetado y nunca ser objeto de corte o raspado agresivo. Cualquier manipulación que comprometa esta zona aumenta el riesgo de onicólisis inducida por trauma mecánico. El cuidado del hiponiquio debe enfocarse en la hidratación externa con aceites naturales (como el de jojoba) para mantener su elasticidad y función de barrera. Educar al cliente sobre la importancia de no 'limpiar de más' es fundamental para prevenir complicaciones que a menudo se confunden con infecciones fúngicas, pero que son, en realidad, fallas de la barrera cutánea por manipulación.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de jojoba"
+      ],
+      "contraindications": [
+        "limpieza profunda subungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anatomia-ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:51:47.663Z"
+  }
+]

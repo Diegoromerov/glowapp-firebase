@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-elastosis-periumbilical-001",
+    "title": "Fisiopatología y manejo clínico de la elastosis actínica periumbilical",
+    "content": "La elastosis actínica periumbilical es una condición cutánea caracterizada por la presencia de pápulas amarillentas o blanquecinas, a menudo con una apariencia de piel de gallina, localizadas exclusivamente en la región periumbilical. Histológicamente, se observa una degeneración basofílica del colágeno en la dermis papilar y reticular, similar a la elastosis solar, pero con una distribución peculiar. Aunque su etiología exacta se debate, la evidencia sugiere una combinación de daño actínico crónico, trauma mecánico repetitivo por el uso de prendas de cintura alta y, potencialmente, la influencia de la tensión mecánica en esta zona anatómica específica. A diferencia de la pseudoxantoma elástico, esta condición no presenta compromiso sistémico. El manejo clínico se centra en la educación del paciente sobre la protección solar, el uso de retinoides tópicos para mejorar la textura cutánea mediante la estimulación de fibroblastos y, en casos refractarios, el uso de láseres fraccionados que inducen una remodelación dérmica profunda. Es fundamental diferenciar esta entidad de otras dermatosis papulares como la amiloidosis cutánea o la elastosis perforante serpiginosa, para evitar tratamientos innecesarios. La monitorización de la integridad de la barrera cutánea en esta área, a menudo olvidada en las rutinas de cuidado corporal, es esencial para prevenir la exacerbación de los síntomas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30873-4/abstract",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "humectantes"
+      ],
+      "contraindications": [
+        "exfoliación mecánica agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:20.992Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-dermatitis-sistemica-007",
+    "title": "Dermatitis de contacto sistémica: Manifestaciones por alérgenos ingeridos",
+    "content": "La dermatitis de contacto sistémica (DCS) es una variante de la dermatitis alérgica de contacto que ocurre tras la exposición sistémica a un alérgeno (generalmente oral o parenteral) en una persona previamente sensibilizada por contacto cutáneo. En el contexto corporal, puede manifestarse como erupciones eccematosas generalizadas, eritema intertriginoso o exacerbación de eczemas preexistentes en pliegues. El reto clínico reside en identificar el agente causal, que puede encontrarse en alimentos, suplementos nutricionales o fármacos. Los metales como el níquel, el cobalto y el cromo, así como ciertos conservantes o colorantes, son causas comunes. A diferencia de la dermatitis de contacto clásica, la DCS presenta un patrón de distribución más difuso y, a menudo, simétrico. El diagnóstico requiere una historia clínica exhaustiva y, en ocasiones, pruebas de parche para confirmar la sensibilización previa. El manejo implica la identificación y eliminación del alérgeno desencadenante y el tratamiento sintomático con corticoesteroides tópicos o sistémicos en casos severos. Es esencial que los profesionales de GlowApp consideren esta posibilidad ante dermatitis corporales persistentes que no responden a los tratamientos tópicos convencionales o que presentan patrones de distribución atípicos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:20.992Z"
+  }
+]

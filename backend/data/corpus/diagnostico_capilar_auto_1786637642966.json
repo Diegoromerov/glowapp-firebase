@@ -1,0 +1,199 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-interfase-quimica-001",
+    "title": "Impacto de la Tensión Superficial en la Adhesión de Partículas al Tallo",
+    "content": "La física de superficies juega un rol crítico en la acumulación de contaminantes ambientales sobre la cutícula capilar. La energía libre superficial del tallo, modulada por la integridad de la capa 18-metileicosanoica (18-MEA), determina la capacidad de adhesión de partículas PM2.5 y aerosoles urbanos. Cuando esta capa lipídica se degrada por procesos químicos o térmicos, la superficie del cabello incrementa su energía libre, convirtiéndose en un sustrato hidrofílico que favorece la captura de contaminantes. Estos agentes no solo obstruyen el ostium folicular, sino que catalizan reacciones de oxidación que comprometen la estructura proteica del tallo. El diagnóstico clínico debe integrar la evaluación de la textura capilar bajo microscopía electrónica de barrido para identificar zonas de alta energía superficial donde la fricción mecánica se ve exacerbada por la carga de partículas adheridas. La literatura sugiere que la restauración de la barrera lipídica es fundamental para reducir la adherencia y prevenir el daño estructural a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "18-MEA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_capilar_tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:45.569Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-estres-oxidativo-002",
+    "title": "El Eje Redox: Proteostasis y Degradación de la Queratina en el Tallo",
+    "content": "La proteostasis, entendida como el control de calidad y plegamiento de proteínas, es un proceso vital dentro de la matriz folicular que se extiende hasta el tallo piloso emergente. La acumulación de proteínas mal plegadas debido a estrés oxidativo crónico, derivado de radiación UV y agentes químicos, induce una degradación acelerada de la matriz de queratina. Clínicamente, esto se manifiesta como una pérdida de la elasticidad capilar y un aumento en la susceptibilidad a la rotura por fatiga mecánica. El análisis de la proteostasis permite entender cómo la exposición al exposoma urbano agota las chaperonas moleculares que protegen la estructura del cabello. Estudios recientes publicados en PubMed indican que la modulación de las vías de respuesta al estrés proteotóxico puede ser una estrategia preventiva para mantener la resiliencia estructural. El diagnóstico debe considerar biomarcadores de carbonilación de proteínas como indicadores tempranos de daño estructural antes de que la tricorrexis sea visible macroscópicamente en la exploración tricoscópica de rutina.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:45.569Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-003",
+    "title": "Análisis de la Histéresis Elástica como Biomarcador de Salud Cuticular",
+    "content": "La histéresis elástica en la fibra capilar se refiere a la diferencia en la respuesta mecánica del cabello durante los ciclos de carga y descarga de tensión. Este fenómeno biofísico es un indicador preciso de la integridad de las proteínas asociadas a la queratina (KAPs) y los enlaces disulfuro en la corteza. Un cabello con alta histéresis muestra una capacidad reducida para recuperar su forma original tras el estiramiento, lo que sugiere un daño estructural acumulado. En el contexto de GlowApp, el diagnóstico capilar puede beneficiarse de pruebas de tracción controladas para evaluar la histéresis como biomarcador de envejecimiento capilar. La literatura de la Sociedad Americana de Dermatología destaca que este parámetro es independiente de la densidad folicular y proporciona información valiosa sobre la calidad del tallo. La pérdida de histéresis se correlaciona directamente con el uso frecuente de tratamientos químicos, demostrando que la resiliencia mecánica es un factor clave en la prevención de la alopecia por tracción y la fragilidad capilar persistente en pacientes urbanos expuestos a alta contaminación.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_biomecanico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:45.569Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-inmune-004",
+    "title": "Hiperalgesia Folicular: La Respuesta Neuro-Inmune al Estrés Crónico",
+    "content": "La hiperalgesia folicular, frecuentemente reportada como tricodinia, no es solo un síntoma sensorial, sino una manifestación clínica de una inflamación neurogénica subyacente. La liberación local de neuropeptidos como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP) desde las terminaciones nerviosas periféricas activa a los mastocitos perifoliculares. Este eje neuro-inmune altera la homeostasis del nicho de células madre, induciendo un estado de microinflamación que precede a la caída del cabello. En el diagnóstico clínico de GlowApp, es imperativo interrogar sobre la calidad de la sensación cutánea para estratificar el riesgo de progresión de alopecias inflamatorias. La evidencia sugiere que la modulación de los receptores de potencial transitorio (TRPV1) en los folículos pilosos puede atenuar esta respuesta neurogénica. La evaluación clínica debe considerar la correlación entre los niveles de cortisol salival y la intensidad de la hiperalgesia, ya que esta última sirve como un marcador precoz de desregulación del ciclo capilar antes de la miniaturización observable mediante tricoscopia convencional.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02456-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capsaicina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:45.569Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-005",
+    "title": "Metabolómica del Microbioma Scalp como Predictor Terapéutico",
+    "content": "La caracterización del microbioma del cuero cabelludo ha evolucionado de la simple identificación de especies a la metabolómica funcional. Los subproductos metabólicos de las bacterias residentes y los hongos del género Malassezia actúan como moduladores de la respuesta inmunitaria del folículo. Un desequilibrio en la producción de ácidos grasos de cadena corta (AGCC) y ceramidas por parte de la microbiota puede debilitar la función barrera del ostium, permitiendo la penetración de alérgenos y contaminantes urbanos. El diagnóstico de precisión en GlowApp debe integrar el perfil del metaboloma como un predictor de respuesta a tratamientos tópicos. Por ejemplo, una alta concentración de metabolitos pro-inflamatorios en el sebo se correlaciona con una menor eficacia de los agentes farmacológicos, ya que la inflamación subyacente limita la biodisponibilidad y la penetración folicular. La identificación de estos perfiles permite personalizar la terapia, priorizando agentes antiinflamatorios y prebióticos antes de iniciar tratamientos estimulantes del crecimiento folicular, optimizando así los resultados clínicos en pacientes con condiciones crónicas del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-024-01023-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:45.569Z"
+  }
+]

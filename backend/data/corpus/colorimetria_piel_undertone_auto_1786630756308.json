@@ -1,0 +1,161 @@
+[
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-dermis-profunda-001",
+    "title": "Efecto Tyndall en la dermis profunda: la física detrás de los subtonos azulados",
+    "content": "El efecto Tyndall ocurre cuando la luz se dispersa al atravesar partículas pequeñas en un medio coloidal. En dermatología, este fenómeno es crucial para explicar por qué áreas con piel fina y escaso panículo adiposo, como el contorno periorbital, presentan un subtono azulado incluso en individuos con piel cálida. La luz de onda larga (roja) penetra más profundamente y es absorbida, mientras que la luz de onda corta (azul) se dispersa hacia atrás en la dermis papilar. Según estudios en Journal of Cosmetic Dermatology, la percepción del subtono no es solo melanina, sino la interacción óptica entre la hemoglobina desoxigenada en plexos venosos y la dispersión de Rayleigh. Entender este efecto permite al profesional de GlowApp recomendar correctores con base salmón o naranja, que neutralizan complementariamente el azul dispersado, en lugar de intentar cubrirlo con bases del mismo subtono de la piel, lo cual solo resultaría en un acabado grisáceo o cenizo. La profundidad de la dermis y la densidad del colágeno modifican drásticamente esta dispersión, siendo vital para un diagnóstico preciso en pieles maduras.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_subtono"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:18:56.541Z"
+  },
+  {
+    "chunk_id": "colorimetria-impacto-disbiosis-microbiota-002",
+    "title": "Disbiosis cutánea y la alteración de la luminosidad y el subtono",
+    "content": "La microbiota cutánea no solo mantiene la barrera física, sino que modula el pH y la reflectancia superficial. Una disbiosis, caracterizada por la proliferación de Cutibacterium acnes o Staphylococcus epidermidis en condiciones alteradas, puede inducir una microinflamación subclínica. Esta inflamación aumenta la perfusión vascular y altera la dispersión de luz, haciendo que la piel pierda su luminosidad natural y vira hacia tonos más opacos o eritematosos. Según investigaciones publicadas en PubMed, la degradación de lípidos por bacterias disbióticas genera subproductos que cambian la tasa de oxidación de los pigmentos de las bases de maquillaje aplicadas. Esto explica por qué pacientes con dermatitis seborreica o acné reportan que su base 'cambia de color' a las pocas horas. En GlowApp, este factor debe considerarse al diagnosticar: si el diagnóstico del subtono se realiza sobre una piel con disbiosis activa, los resultados pueden ser erróneos debido a la interferencia del eritema basal. Es fundamental estabilizar la barrera cutánea mediante prebióticos antes de realizar la prueba de colorimetría definitiva para asegurar la fidelidad cromática.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:18:56.541Z"
+  },
+  {
+    "chunk_id": "colorimetria-glicacion-proteica-003",
+    "title": "Glicación proteica: el viraje hacia el subtono amarillento senescente",
+    "content": "La glicación no enzimática de las proteínas dérmicas (reacción de Maillard) es un determinante mayor del subtono en pieles maduras. Con el tiempo, los azúcares en sangre reaccionan con el colágeno y la elastina, formando Productos Finales de Glicación Avanzada (AGEs). Estos compuestos presentan una coloración amarillenta intrínseca que se acumula en la dermis y el estrato córneo. A diferencia del subtono cálido natural, que es vibrante y saludable, el subtono derivado de los AGEs es opaco, cenizo y amarillento. Según literatura de la American Academy of Dermatology, este proceso es irreversible y altera la forma en que la piel absorbe y refleja la luz. En términos prácticos, las bases con subtonos amarillos intensos pueden exacerbar esta apariencia, haciendo que la piel luzca 'sucia' o enferma. Se recomienda el uso de bases con pigmentos correctores rosados o melocotón para neutralizar la cromaticidad amarillenta de la glicación y devolver una apariencia de frescura y vitalidad. El diagnóstico de subtono en pieles con alta carga de AGEs requiere evaluar el cuello y el escote, áreas que suelen ser menos afectadas por la glicación que el rostro.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "carnosina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_subtono"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:18:56.541Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-optica-004",
+    "title": "Anisotropía óptica: cómo la textura cutánea altera la reflexión del subtono",
+    "content": "La anisotropía óptica es la propiedad de un material de exhibir diferentes propiedades según la dirección de la luz incidente. En la piel, la rugosidad del estrato córneo, las cicatrices post-acné y los poros dilatados actúan como micro-facetas que alteran la reflexión especular frente a la difusa. Una piel con textura irregular dispersa la luz en múltiples ángulos, lo que reduce la saturación percibida del subtono y crea sombras que pueden confundirse con hiperpigmentación. Según estudios biofísicos, la textura cutánea puede hacer que un mismo tono de base luzca más oscuro o más claro dependiendo de la profundidad de los surcos cutáneos. En GlowApp, los algoritmos de diagnóstico deben considerar que la piel con textura irregular requiere bases con mayor capacidad de difusión de luz (light-diffusing particles) para uniformar la percepción cromática. Intentar corregir el subtono en pieles con alta anisotropía sin suavizar primero la textura resultará en un diagnóstico cromático inestable bajo condiciones de luz cambiante. La evaluación del subtono debe realizarse idealmente en zonas de piel lisa, como el área preauricular, para mitigar el sesgo introducido por la topografía irregular de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:18:56.541Z"
+  }
+]

@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-interaccion-matriz-extracelular-001",
+    "title": "Degradación de la Matriz Extracelular (MEC) en la Alopecia Androgenética",
+    "content": "La integridad del folículo piloso depende de una matriz extracelular (MEC) dinámica. En la alopecia androgenética (AGA), se observa una alteración en la homeostasis de los componentes de la MEC, específicamente en la relación entre colágeno tipo III y tipo I. Estudios publicados en el Journal of Investigative Dermatology indican que la miniaturización folicular no es solo un fenómeno celular, sino un proceso de remodelación fibrótica donde el aumento de metaloproteinasas de matriz (MMPs) degrada el soporte estructural necesario para la papila dérmica. Este proceso de degradación prematura limita la capacidad de anclaje del folículo y altera la señalización paracrina. La evaluación clínica mediante ecografía de alta frecuencia permite identificar este engrosamiento del tejido conectivo perifolicular, sugiriendo que la fibrosis subclínica precede a la pérdida de densidad visible. Es fundamental distinguir este proceso de la esclerosis perifolicular observada en alopecias cicatriciales, ya que en la AGA la fibrosis es reversible bajo modulación terapéutica adecuada que inhiba la actividad de las MMPs y promueva la síntesis de colágeno saludable.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30055-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "finasteride"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-densidad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:03.361Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-metabolitos-002",
+    "title": "Metabolitos del Microbioma y su Rol en la Inflamación del Ostium",
+    "content": "El microbioma del cuero cabelludo, más allá de la presencia de Malassezia, secreta metabolitos específicos que modulan la respuesta inmunitaria del ostium folicular. Investigaciones en PubMed demuestran que la producción de ácidos grasos de cadena corta (AGCC) por bacterias comensales mantiene el pH ácido del cuero cabelludo, protegiendo la barrera cutánea. Cuando ocurre una disbiosis, la disminución de estos metabolitos facilita la proliferación de microorganismos oportunistas y la activación de receptores tipo Toll (TLR), desencadenando una respuesta inflamatoria crónica de bajo grado. Este entorno altera la función de la glándula sebácea y puede exacerbar condiciones como la dermatitis seborreica y la caída capilar asociada. El diagnóstico moderno debe considerar el análisis de la composición lipídica del sebo como un proxy de la actividad metabólica bacteriana. Identificar estas alteraciones permite personalizar el uso de agentes antimicrobianos y prebióticos tópicos, optimizando la salud folicular antes de que el daño estructural sea irreversible. El enfoque clínico debe centrarse en restaurar la diversidad microbiana y la función de barrera del ostium.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214532/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc-pyrithione",
+        "piroctone-olamine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma-scalp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:03.361Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-estres-oxidativo-mitocondrial-003",
+    "title": "Disfunción Mitocondrial y Agotamiento Energético del Bulbo Piloso",
+    "content": "El crecimiento del cabello es un proceso metabólicamente exigente que depende de una producción eficiente de ATP en el bulbo piloso. La disfunción mitocondrial, exacerbada por el estrés oxidativo y la exposición a contaminantes urbanos, resulta en una disminución del potencial de membrana mitocondrial y un aumento de especies reactivas de oxígeno (ROS). Este 'agotamiento energético' afecta directamente a los queratinocitos de la matriz, reduciendo su tasa de división y acelerando la entrada en la fase catágena. Estudios recientes sugieren que la mitofagia, el proceso de eliminación selectiva de mitocondrias dañadas, es crucial para la longevidad de las células madre del folículo. Un fallo en este mecanismo de control de calidad conduce a la senescencia celular prematura. En la práctica clínica, la detección de marcadores de estrés oxidativo en el tallo y la evaluación de la vitalidad folicular mediante espectroscopía pueden predecir la respuesta a terapias que promueven la biogénesis mitocondrial. El soporte nutricional con antioxidantes sistémicos y tópicos es una estrategia complementaria clave para preservar la función folicular en ambientes altamente contaminados.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00456-7/abstract",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima-q10",
+        "vitamina-c"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-daño-oxidativo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:25:03.361Z"
+  }
+]

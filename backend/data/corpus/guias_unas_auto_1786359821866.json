@@ -1,0 +1,336 @@
+[
+  {
+    "chunk_id": "electromagnetismo-luz-led-001",
+    "title": "Espectro de emisión y fototoxicidad en lámparas LED de cabina",
+    "content": "La transición de lámparas UV de mercurio a diodos emisores de luz (LED) en el sector de la estética ha cambiado la dinámica de polimerización. A diferencia de las lámparas fluorescentes, los LEDs operan en un pico estrecho de longitud de onda, típicamente entre 365 y 405 nm. Aunque se promocionan como 'seguras', estudios en el Journal of Investigative Dermatology indican que la intensidad de irradiancia es significativamente mayor. Esta alta intensidad, necesaria para polimerizar geles modernos rápidamente, puede inducir estrés oxidativo en los queratinocitos de la matriz ungueal y del lecho. La exposición repetida a estas longitudes de onda, si no se mitiga con protección física, podría contribuir a mutaciones en el ADN de las células basales periungueales. Es fundamental que los profesionales comprendan que la 'velocidad' de curado es directamente proporcional a la intensidad energética, y esta, a su vez, aumenta el riesgo de daño fotoquímico si no se respetan los tiempos de exposición recomendados por el fabricante del producto químico utilizado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30153-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos"
+      ],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-fotopolimerizacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "interaccion-microbiota-periungueal-002",
+    "title": "El microbioma periungueal y el impacto de la desinfección química",
+    "content": "La piel periungueal alberga un ecosistema complejo de bacterias comensales, como Staphylococcus epidermidis, que actúan como barrera protectora contra patógenos oportunistas. La práctica común de aplicar antisépticos de amplio espectro o solventes desengrasantes de manera excesiva antes de cualquier servicio de manicura altera el pH cutáneo y elimina esta flora residente. Según investigaciones publicadas en Nature Reviews Microbiology, la disbiosis del microbioma cutáneo facilita la colonización por microorganismos como Candida albicans o Pseudomonas aeruginosa. Al comprometer la integridad de la microbiota, el profesional no solo reduce la capacidad autoinmune local de la piel, sino que crea un nicho ecológico favorable para infecciones secundarias. La curaduría clínica sugiere limitar el uso de desinfectantes agresivos a las áreas estrictamente necesarias y privilegiar técnicas que respeten la barrera lipídica, evitando así que el proceso de 'preparación' de la uña se convierta en una puerta de entrada para patógenos resistentes a los protocolos de higiene estándar.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/nrmicro.2017.157",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcoholes",
+        "solventes"
+      ],
+      "contraindications": [
+        "dermatitis-previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asepsia-y-bioseguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "permeabilidad-lamina-003",
+    "title": "Permeabilidad de la lámina ungueal ante solventes orgánicos",
+    "content": "La lámina ungueal, aunque compuesta de queratina endurecida, es significativamente más permeable que la piel del estrato córneo. Estudios de la American Academy of Dermatology (AAD) demuestran que la lámina puede absorber agua y solventes orgánicos, lo que altera su estructura molecular. Cuando un profesional utiliza removedores agresivos como la acetona pura o solventes desengrasantes de forma prolongada, se produce una deshidratación masiva de los corneocitos ungueales. Este proceso no solo debilita la flexibilidad de la uña, sino que crea microfracturas que permiten la penetración de monómeros no polimerizados hacia el lecho ungueal, aumentando exponencialmente el riesgo de sensibilización alérgica. La física de esta absorción es un fenómeno de difusión pasiva que se ve acelerado por el calor y la oclusión. Entender que la uña no es una barrera impermeable inerte es crucial para el técnico de uñas, quien debe modificar sus protocolos de retiro para minimizar el contacto prolongado con solventes, priorizando métodos de remoción que reduzcan la exposición química a la lámina y al lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/nail-care-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "solventes"
+      ],
+      "contraindications": [
+        "onicodistrofia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-retiro"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "biomecanica-tornos-004",
+    "title": "Vibración armónica y microfracturas en la matriz ungueal",
+    "content": "El uso de tornos (fresas eléctricas) en manicura profesional implica una transferencia de energía mecánica que, si no se controla, puede ser perjudicial. La vibración de alta frecuencia generada por piezas de mano descalibradas o el uso de fresas con excentricidad causa una micro-traumatización acumulativa en la matriz ungueal. La literatura clínica, incluyendo reportes de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), sugiere que esta energía mecánica constante puede desencadenar onicodistrofias traumáticas, como surcos transversales o hemorragias en astilla, al alterar el proceso de queratinización en la raíz. Además, la fricción genera calor, lo que puede causar quemaduras térmicas en el lecho ungueal, un tejido altamente inervado y sensible. Es imperativo que el profesional utilice herramientas con un nivel de vibración certificado y mantenga una presión tangencial mínima, evitando el contacto directo con la cutícula proximal, donde la matriz es más vulnerable a daños permanentes que pueden manifestarse meses después del servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/nail-disorders.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "onicodistrofia-previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-de-limado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "sensibilizacion-monomeros-005",
+    "title": "Migración de monómeros y sensibilización sistémica",
+    "content": "La sensibilización a los acrilatos es un problema de salud ocupacional y estética creciente. Cuando la fotopolimerización no es completa, debido a lámparas con baja irradiancia o tiempos insuficientes, los monómeros residuales (como el HEMA o HPMA) permanecen en la superficie del gel. Estos monómeros tienen un bajo peso molecular y son altamente capaces de penetrar la barrera cutánea a través de la piel periungueal. Una vez que el sistema inmunológico reconoce estas moléculas, se desencadena una respuesta de hipersensibilidad tipo IV. El riesgo no se limita a la zona de aplicación; la dermatitis alérgica de contacto puede manifestarse en áreas distantes como los párpados, el cuello o los labios por transferencia manual. Según estudios en PubMed, la exposición crónica a niveles sub-umbrales de monómeros puede inducir una sensibilización permanente, haciendo que el cliente sea incapaz de recibir servicios de uñas en el futuro sin presentar reacciones severas. La educación sobre el 'curado completo' es la única medida preventiva eficaz contra esta complicación.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32955148/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "HPMA",
+        "acrilatos"
+      ],
+      "contraindications": [
+        "historial-alergias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-de-productos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "termodinamica-exotermica-006",
+    "title": "Gestión de la reacción exotérmica en geles de alta densidad",
+    "content": "La polimerización de geles constructores es una reacción química exotérmica. A medida que las cadenas de polímero se forman, se libera energía en forma de calor. Si el volumen de producto aplicado es excesivo o si el gel tiene una alta densidad de reticulación (cross-linking), la temperatura en el lecho ungueal puede superar los 45°C, el umbral del dolor y el daño tisular. La termodinámica de este proceso es crítica: una aplicación gruesa en una sola capa maximiza la velocidad de la reacción y la liberación de calor. Clínicamente, esto puede causar la separación del lecho ungueal (onicólisis traumática) o quemaduras de primer grado. La recomendación experta es aplicar el producto en capas delgadas y utilizar el 'modo de baja temperatura' (low heat mode) de las lámparas, que reduce la potencia inicial para permitir que el proceso exotérmico sea gradual, evitando el choque térmico y protegiendo la integridad del lecho ungueal contra la inflamación post-procedimiento.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligomeros"
+      ],
+      "contraindications": [
+        "lecho-ungueal-sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-de-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "corrosion-galvanica-008",
+    "title": "Corrosión galvánica: el peligro invisible del acero inoxidable",
+    "content": "En entornos de cabina, la combinación de herramientas de acero inoxidable con soluciones desinfectantes (a menudo sales cuaternarias o compuestos clorados) puede iniciar un proceso de corrosión galvánica. Este fenómeno ocurre cuando se crean micro-corrientes eléctricas en la superficie del metal, liberando iones metálicos como níquel o cromo. Si estas herramientas, aunque parezcan limpias, entran en contacto con la piel periungueal durante la limpieza de cutícula, pueden causar dermatitis de contacto alérgica al metal. Los estudios dermatológicos advierten que los pacientes con sensibilización previa al níquel son particularmente vulnerables. Además, la corrosión altera la superficie microscópica de la herramienta, creando poros donde se alojan biopelículas (biofilms) que son imposibles de eliminar mediante la desinfección estándar. La curaduría clínica recomienda el uso de acero quirúrgico de alta calidad, evitar la inmersión prolongada en soluciones agresivas y realizar inspecciones visuales bajo lupa para detectar signos tempranos de oxidación o picaduras en las herramientas de corte.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/nail-disorders.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "alergia-al-niquel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asepsia-y-bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  },
+  {
+    "chunk_id": "displasia-hiponiquio-009",
+    "title": "Displasia del hiponiquio: riesgos de la limpieza mecánica profunda",
+    "content": "El hiponiquio es la zona de sellado crítico situada debajo del borde libre, cuya función principal es proteger el lecho ungueal de la entrada de bacterias, hongos y detritos. La tendencia estética de realizar una 'limpieza profunda' subungueal mediante herramientas metálicas o tornos es una práctica de alto riesgo. Al raspar esta zona, se provoca una displasia (alteración en la forma y función) del tejido, lo que debilita el sellado hermético natural. Según la literatura dermatológica, este trauma crónico facilita la onicólisis distal, ya que el hiponiquio, al intentar repararse, puede fibrosarse y perder su capacidad de adhesión a la lámina. Además, la exposición del lecho ungueal a contaminantes ambientales aumenta la incidencia de paroniquia y micosis. Un profesional experto debe reconocer que el hiponiquio es un tejido protector, no una zona de acumulación de suciedad que deba ser sometida a instrumentación mecánica agresiva; el mantenimiento debe ser superficial y basado en la higiene suave, no en la remoción traumática.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/nail-care-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "onicolisis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-de-limpieza"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:03:24.045Z"
+  }
+]

@@ -1,0 +1,380 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001",
+    "title": "Fisiopatología de la dermatitis de contacto por metales en dispositivos wearable",
+    "content": "El uso prolongado de dispositivos de seguimiento de salud o smartwatches ha incrementado la incidencia de dermatitis de contacto alérgica (DCA) a metales, principalmente níquel, cobalto y cromo. La fisiopatología se basa en una reacción de hipersensibilidad tipo IV mediada por células T. La fricción constante, sumada a la oclusión y la presencia de sudor, facilita la liberación de iones metálicos a través de la capa córnea. Estudios publicados en revistas como 'Dermatitis' indican que la sudoración altera el pH cutáneo, favoreciendo la corrosión del metal y su penetración en la epidermis. A diferencia de las joyas tradicionales, estos dispositivos mantienen un contacto continuo y una presión mecánica que exacerba la penetración del alérgeno. La evaluación clínica debe considerar la morfología de la lesión, que suele replicar la forma del sensor o la hebilla del dispositivo. Es fundamental educar al paciente sobre la importancia de la limpieza del dispositivo, el secado tras la actividad física y, en casos de sensibilización confirmada, el uso de barreras físicas o la sustitución por componentes hipoalergénicos como el acero quirúrgico de grado médico o titanio.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/content/dermatitis-journal",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides_topicos"
+      ],
+      "contraindications": [
+        "contacto_continuo_con_metales_sensibilizantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatitis_contacto"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002",
+    "title": "Impacto de la luz infrarroja (IR-A) en la arquitectura dérmica corporal",
+    "content": "La radiación infrarroja-A (IR-A), que constituye una fracción significativa del espectro solar, penetra profundamente en la dermis, alcanzando niveles más allá de la radiación UV. A diferencia de la radiación UV que causa daño primario en el ADN, el daño por IR-A está mediado por la producción excesiva de especies reactivas de oxígeno (ROS) en las mitocondrias de los fibroblastos. Este proceso desencadena la regulación al alza de las metaloproteinasas de matriz (MMP-1), responsables de la degradación del colágeno tipo I y III. En la piel corporal, esto contribuye a una elastosis profunda y a la pérdida de firmeza, un fenómeno a menudo subestimado frente a la protección UV convencional. La investigación clínica sugiere que el uso de antioxidantes tópicos (como niacinamida o polifenoles) puede mitigar parte del estrés oxidativo mitocondrial inducido por el IR-A. La fotoprotección moderna debe contemplar no solo filtros UV, sino también agentes que fortalezcan la resiliencia celular frente al calor y la radiación infrarroja, especialmente en pacientes con exposición solar prolongada en zonas urbanas de alta altitud como Bogotá.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003",
+    "title": "Protocolo de manejo de la piel en pacientes con uso crónico de prendas de compresión",
+    "content": "El uso de prendas de compresión (medias o fajas) es estándar en el postoperatorio de liposucción y en el manejo de insuficiencia venosa, pero conlleva riesgos dermatológicos por fricción, oclusión y acumulación de humedad. La oclusión prolongada altera la función barrera, aumentando la permeabilidad transepidérmica y favoreciendo la proliferación de microorganismos oportunistas. Un protocolo clínico efectivo debe incluir el uso de emolientes formulados con ceramidas y lípidos fisiológicos que no interfieran con la elasticidad de la prenda. Es crítico evitar la aplicación de productos con fragancias o conservantes sensibilizantes justo antes de la colocación de la prenda, ya que la presión mecánica aumenta la absorción percutánea. Se recomienda la limpieza diaria de la piel con syndets de pH ácido para restaurar el manto hidrolipídico. En caso de eritema o prurito, se debe evaluar la presencia de dermatitis de contacto por los materiales sintéticos (elastano, nylon) o por los residuos de detergentes utilizados en el lavado de las prendas. El seguimiento debe enfocarse en la detección temprana de signos de maceración o foliculitis por fricción.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00123-4",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "lipidos_fisiologicos"
+      ],
+      "contraindications": [
+        "productos_con_fragancia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_postquirurgico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-004",
+    "title": "Fisiología de la piel en áreas de alta fricción: El rol de la queratinización",
+    "content": "La piel sometida a fricción mecánica crónica, como las zonas intertriginosas o las áreas de contacto con el calzado, responde mediante un mecanismo adaptativo de hiperqueratosis. A nivel celular, la fricción estimula la proliferación de queratinocitos basales y una mayor producción de citoqueratinas. Si bien esto es una defensa, la acumulación excesiva de células muertas puede atrapar sudor y sebo, creando un ambiente anaerobio que promueve la disbiosis microbiana. La literatura dermatológica sugiere que la exfoliación química suave, utilizando alfa-hidroxiácidos (AHA) en concentraciones controladas, puede ayudar a normalizar el recambio celular sin comprometer la integridad de la barrera cutánea. Es fundamental diferenciar esta respuesta fisiológica de patologías como la acantosis nigricans o la dermatitis neglecta. La clave del manejo clínico reside en el equilibrio entre la reducción de la hiperqueratosis y la hidratación profunda con agentes humectantes que mantengan la elasticidad del estrato córneo. El uso de oclusivos en estas zonas debe evitarse si existe una alta tendencia a la foliculitis, prefiriendo formulaciones tipo emulsión ligera de rápida absorción.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_lactico",
+        "urea"
+      ],
+      "contraindications": [
+        "exfoliacion_mecanica_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-005",
+    "title": "Mitos sobre la eficacia de los péptidos en la firmeza corporal",
+    "content": "Existe una amplia comercialización de péptidos tópicos con promesas de 'remodelación corporal'. Es crucial distinguir entre péptidos de señalización (como el Palmitoyl Pentapeptide-4) y péptidos transportadores. La evidencia científica actual, respaldada por estudios en PubMed, indica que la penetración de los péptidos a través del estrato córneo es limitada debido a su peso molecular. Sin embargo, cuando se formulan adecuadamente con sistemas de entrega (delivery systems), pueden estimular la síntesis de colágeno en la dermis papilar. En el contexto corporal, su eficacia es menor que en el rostro debido al mayor grosor del estrato córneo y la menor densidad de receptores. No deben considerarse como sustitutos de tratamientos de medicina estética (como radiofrecuencia o microagujas), sino como coadyuvantes en la rutina de mantenimiento para preservar la matriz extracelular. La clave es la constancia y la combinación con ingredientes que optimicen la síntesis de colágeno, como la vitamina C estable o los retinoides, bajo una correcta supervisión dermatológica para asegurar que no se produzca irritación en zonas de piel más delgada.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "vitamina_c"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento_corporal"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-006",
+    "title": "Dermatitis por contacto por aditivos en protectores solares corporales",
+    "content": "La dermatitis de contacto por protectores solares es un fenómeno en aumento, a menudo confundido con reacciones de fotosensibilidad. Los culpables principales no siempre son los filtros UV, sino los aditivos como las fragancias, conservantes (metilisotiazolinona) y agentes solubilizantes. En la piel corporal, donde el área de aplicación es extensa, la carga de alérgenos es mayor. La AAD (American Academy of Dermatology) sugiere que, en pacientes con antecedentes de dermatitis atópica o cutis sensible, se debe priorizar el uso de filtros solares físicos (óxido de zinc o dióxido de titanio) con fórmulas minimalistas, libres de fragancias y parabenos. Es vital realizar una prueba de parche (patch test) si existe sospecha de alergia a componentes específicos. Además, la persistencia de estos productos en la piel debido a su alta resistencia al agua requiere un protocolo de limpieza doble o el uso de aceites limpiadores que disuelvan los filtros sin necesidad de fricción mecánica excesiva, protegiendo así la barrera cutánea de la irritación inducida por la limpieza.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection/sunscreen-faqs",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxido_de_zinc",
+        "dioxido_de_titanio"
+      ],
+      "contraindications": [
+        "fragancias",
+        "metilisotiazolinona"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-007",
+    "title": "Efectos del estrés oxidativo en la hiperpigmentación corporal",
+    "content": "La hiperpigmentación corporal, a diferencia de la facial, a menudo está vinculada a microinflamación crónica por factores ambientales y mecánicos. El estrés oxidativo inducido por la contaminación (partículas PM2.5) y la radiación UV activa los melanocitos a través de la vía de la hormona estimulante de melanocitos alfa (α-MSH). Estudios recientes han demostrado que el receptor de hidrocarburos arilo (AhR) en la piel actúa como un sensor de contaminantes, mediando la activación de la melanogénesis. En Bogotá, la exposición a altas concentraciones de partículas finas requiere un enfoque de 'limpieza anticontaminación' que elimine los residuos de la superficie sin alterar el microbioma. El uso de inhibidores de la tirosinasa tópicos (como ácido kójico, ácido azelaico o derivados de regaliz) es una estrategia eficaz, pero debe complementarse con una barrera antioxidante que neutralice los radicales libres antes de que alcancen el melanocito. La clave es la constancia en el uso de antioxidantes de amplio espectro para estabilizar la respuesta pigmentaria.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00456-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_azelaico",
+        "acido_kojico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hiperpigmentacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-008",
+    "title": "El papel de los emulgentes en la estabilidad de la barrera cutánea corporal",
+    "content": "Los emulgentes son componentes esenciales en las cremas corporales para mantener la estabilidad de la fase oleosa y acuosa. Sin embargo, algunos emulgentes convencionales pueden ser disruptivos para la barrera lipídica, especialmente en pieles con tendencia a la xerosis. A diferencia de las cremas faciales, las corporales suelen tener una mayor carga de estos agentes para proporcionar una textura 'rica'. La investigación en dermatología cosmética sugiere que el uso de emulgentes basados en cristales líquidos, que imitan la estructura lamelar del estrato córneo, es superior para la reparación de la barrera. Estos sistemas permiten una liberación prolongada de ingredientes activos y reducen la pérdida de agua transepidérmica (TEWL). Es fundamental que los pacientes con piel sensible verifiquen la lista de ingredientes (INCI) buscando sistemas emulsionantes biomiméticos. La elección de una crema corporal basada en esta tecnología puede marcar la diferencia en el manejo de condiciones como la piel atópica o la xerosis senil, evitando la irritación acumulativa que provocan los emulgentes tradicionales de baja calidad.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "emulgentes_lamelares"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-009",
+    "title": "Desafíos de la limpieza corporal en pacientes con dermatitis atópica",
+    "content": "La limpieza corporal en pacientes con dermatitis atópica debe ser un proceso de reconstrucción, no solo de higiene. La evidencia clínica subraya que el uso de jabones alcalinos (pH > 7) aumenta la actividad de proteasas cutáneas que degradan la filagrina, una proteína clave para la cohesión del estrato córneo. En Bogotá, la dureza del agua puede exacerbar este problema al depositar minerales que irritan la piel sensible. El protocolo recomendado incluye el uso de syndets (detergentes sintéticos) con pH fisiológico (5.5) y la incorporación de lípidos en la fase de lavado. Es crucial educar al paciente sobre el 'baño corto' (no mayor a 5-10 minutos) con agua templada, evitando el uso de esponjas o elementos de fricción mecánica. Tras el baño, la aplicación inmediata de emolientes (técnica de 'soak and seal') es obligatoria para atrapar la humedad. Esta práctica, respaldada por la AAD, previene la deshidratación y reduce significativamente la incidencia de brotes inflamatorios, mejorando la calidad de vida a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/childhood/skin-care-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "emolientes"
+      ],
+      "contraindications": [
+        "jabones_alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatitis_atopica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:41:02.222Z"
+  }
+]

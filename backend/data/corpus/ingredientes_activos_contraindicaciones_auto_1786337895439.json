@@ -1,0 +1,176 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-urea-concentracion-001",
+    "title": "Urea: El umbral crítico entre hidratación humectante y efecto queratolítico",
+    "content": "La urea es un componente esencial del Factor Natural de Hidratación (NMF) de la piel. Su comportamiento clínico es dosis-dependiente: en concentraciones bajas (del 2% al 10%), actúa como un humectante eficaz que atrae agua hacia el estrato córneo, mejorando la función barrera en pieles xeróticas o con dermatitis atópica. Sin embargo, al superar el 20%, la urea comienza a exhibir propiedades queratolíticas al romper los puentes de hidrógeno de la queratina, lo que facilita la descamación de células muertas. A concentraciones superiores al 40%, su uso es estrictamente terapéutico bajo supervisión médica para tratar hiperqueratosis severas o micosis ungueales. El riesgo principal radica en la aplicación de formulaciones de alta concentración en áreas de piel fina o con integridad barrera comprometida, donde puede inducir irritación, eritema y escozor. En GlowApp, es vital educar al usuario sobre la diferencia entre una crema de hidratación diaria y un tratamiento queratolítico, ya que el uso prolongado de concentraciones altas en zonas no hiperqueratósicas puede resultar en una exfoliación no deseada y sensibilidad cutánea exacerbada por la pérdida de cohesión celular.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/skincare/itchy-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "muy_seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea"
+      ],
+      "contraindications": [
+        "piel_sensible",
+        "dermatitis_aguda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:57:55.704Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-glicerina-humedad-002",
+    "title": "La paradoja de la glicerina: Riesgos en entornos de baja humedad relativa",
+    "content": "La glicerina (glicerol) es uno de los humectantes más seguros y eficaces en cosmética debido a su capacidad para higroscópicamente retener agua. No obstante, existe un fenómeno físico-químico mal comprendido en climas extremadamente secos o en entornos con calefacción intensa. La glicerina tiene la capacidad de extraer agua de su entorno inmediato; si la humedad ambiental es inferior al 30%, y no se combina con agentes oclusivos (como petrolato o ceramidas), existe el riesgo teórico de que la glicerina extraiga agua desde las capas profundas de la epidermis (estrato espinoso) hacia la superficie, donde el agua se evapora rápidamente. Este proceso puede, paradójicamente, deshidratar la piel en lugar de humectarla. Para usuarios en Bogotá, donde la humedad fluctúa, es fundamental recomendar el uso de glicerina en formulaciones que contengan oclusivos complementarios. La evidencia sugiere que en pieles con barrera lipídica dañada, la glicerina sola puede exacerbar la pérdida de agua transepidérmica (TEWL). La clave es la formulación: la glicerina debe estar acompañada de lípidos que sellen la hidratación, garantizando que el gradiente de agua se mantenga hacia el interior del estrato córneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31194380/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [
+        "humedad_ambiental_extrema"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:57:55.704Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-dimetil-isosorbida-003",
+    "title": "Dimetil Isosorbida (DMI): Potenciación de penetración y el riesgo de irritación",
+    "content": "La Dimetil Isosorbida (DMI) es un solvente de alta pureza utilizado en formulaciones cosméticas para mejorar la permeabilidad cutánea de ingredientes activos difíciles de formular, como la vitamina C (ácido L-ascórbico) o ciertos retinoides. Su mecanismo se basa en la alteración temporal y reversible de la organización lipídica del estrato córneo, facilitando el transporte de moléculas hacia las capas viables de la epidermis. Aunque esta propiedad es ventajosa para la eficacia del producto, representa un riesgo significativo en pieles reactivas o con barrera cutánea debilitada. Al aumentar la penetración, el DMI también puede facilitar la entrada de otros componentes de la fórmula que, en condiciones normales, no alcanzarían niveles de irritación clínica. El uso de DMI en productos para pieles con rosácea o dermatitis debe ser monitoreado, ya que puede disparar una respuesta inflamatoria al permitir que ingredientes irritantes alcancen terminaciones nerviosas dérmicas más rápidamente. La recomendación clínica es realizar siempre una prueba de parche (patch test) si el producto contiene DMI y activos de alta potencia, para asegurar que el aumento de la penetración no supere el umbral de tolerancia del usuario.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "reactiva",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimetil_isosorbida"
+      ],
+      "contraindications": [
+        "barrera_cutanea_comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:57:55.704Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-mentol-alcanfor-004",
+    "title": "Mentol y Alcanfor: El peligro de la 'frescura' en pieles inflamadas",
+    "content": "El mentol y el alcanfor son ingredientes frecuentemente incluidos en productos cosméticos por su sensación refrescante inmediata, mediada por la activación de los receptores TRPM8 (mentol) y TRPV3 (alcanfor). Aunque esta sensación es placentera para el consumidor, desde una perspectiva clínica, estos compuestos son conocidos como agentes de sensibilización cutánea. El mentol, en particular, puede inducir una respuesta de irritación química o dermatitis de contacto alérgica, especialmente en pieles que ya presentan procesos inflamatorios subyacentes como rosácea, eczema o dermatitis perioral. El problema radica en que la 'frescura' puede enmascarar una respuesta inflamatoria incipiente, retardando la detección de una reacción adversa. Además, el uso de mentol en pieles con barrera lipídica alterada facilita su penetración, exacerbando el potencial irritante. En GlowApp, desaconsejamos activamente el uso de productos que contengan altas concentraciones de mentol o alcanfor en rutinas diseñadas para pieles sensibles o con condiciones de barrera comprometida. La sensación de enfriamiento no equivale a una mejora clínica; por el contrario, suele ser un mecanismo que aumenta el estrés oxidativo y la irritación local, complicando el manejo de patologías inflamatorias crónicas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mentol",
+        "alcanfor"
+      ],
+      "contraindications": [
+        "dermatitis",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evitar_irritacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:57:55.704Z"
+  }
+]

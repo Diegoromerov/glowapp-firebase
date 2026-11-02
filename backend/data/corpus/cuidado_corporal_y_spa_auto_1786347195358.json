@@ -1,0 +1,172 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001-paniculitis-frio",
+    "title": "Fisiopatología de la paniculitis por frío: El impacto de la exposición térmica",
+    "content": "La paniculitis por frío, también conocida como paniculitis equina o por exposición a bajas temperaturas, ocurre cuando los adipocitos, ricos en ácidos grasos saturados, sufren una cristalización selectiva tras una exposición prolongada al frío. A diferencia de la criolipólisis controlada, este proceso patológico desencadena una respuesta inflamatoria mediada por infiltrados neutrofílicos y linfocíticos que pueden derivar en nódulos subcutáneos eritematosos. Clínicamente, es fundamental diferenciar esta condición de otras paniculitis nodulares. La evidencia sugiere que el daño ocurre porque los lípidos de los adipocitos en áreas con menor perfusión o mayor exposición directa al frío se solidifican, induciendo una necrosis grasa focal. Es vital que los pacientes con exposición ocupacional o recreativa al frío extremo en Bogotá sean instruidos sobre el uso de capas aislantes y la monitorización de cambios en la textura cutánea. El manejo inicial implica el recalentamiento gradual y el uso de antiinflamatorios tópicos bajo supervisión, evitando fricción excesiva que podría comprometer la integridad de la epidermis ya estresada por el gradiente térmico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/cold-panniculitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides_topicos"
+      ],
+      "contraindications": [
+        "calor_directo_intenso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:32:55.701Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002-calcifilaxis-estetica",
+    "title": "Calcifilaxis cutánea: Vigilancia en pacientes de medicina estética",
+    "content": "La calcifilaxis o arteriolopatía urémica calcificante es una condición grave caracterizada por la calcificación de los vasos sanguíneos del tejido adiposo y la dermis, que conlleva isquemia tisular y necrosis cutánea dolorosa. Aunque es más común en pacientes con enfermedad renal crónica en etapa terminal, su relevancia en dermatología estética radica en el diagnóstico diferencial de úlceras corporales de difícil cicatrización. Como profesionales en GlowApp, debemos mantener un alto índice de sospecha ante lesiones purpúricas que evolucionan rápidamente a escaras necróticas en áreas con tejido adiposo abundante (muslos, abdomen). La fisiopatología implica un desequilibrio en el metabolismo calcio-fósforo, elevando el producto fosfocálcico. La intervención estética con procedimientos invasivos en pacientes con factores de riesgo metabólico no diagnosticados puede exacerbar el daño tisular. La evaluación debe incluir una anamnesis detallada sobre función renal y medicación concomitante (como warfarina o corticoides sistémicos). Ante la sospecha, la derivación inmediata a nefrología es obligatoria para evitar desenlaces fatales. La prevención se centra en evitar procedimientos innecesarios en piel con compromiso vascular periférico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institutes of Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34559400/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procedimientos_invasivos_sin_estudio_previo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_paciente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:32:55.701Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003-solutos-osmolares",
+    "title": "Dinámica de la hidratación: El papel de los solutos osmolares",
+    "content": "La hidratación profunda de la piel corporal no depende únicamente de la aplicación de oclusivos, sino de la manipulación efectiva de los solutos osmolares en el estrato córneo. Los humectantes fisiológicos como el glicerol, la urea y el lactato de sodio actúan como agentes higroscópicos que atraen agua hacia los queratinocitos, manteniendo el gradiente de hidratación necesario para la función de barrera. En pieles xeróticas crónicas, se observa una disminución significativa de estos factores naturales de hidratación (NMF). La aplicación de formulaciones que combinan lípidos de barrera (ceramidas, colesterol) con solutos osmolares permite una reparación sinérgica. Es crucial entender que, en ambientes de baja humedad como Bogotá, el uso exclusivo de humectantes sin una capa oclusiva puede paradójicamente aumentar la pérdida de agua transepidérmica (TEWL) por efecto de gradiente osmótico invertido. Por ello, el protocolo de cuidado corporal debe integrar siempre un sellante posterior a la aplicación de activos humectantes. La evidencia clínica respalda que un pH fisiológico de 5.5 es esencial para optimizar la eficacia de estas moléculas, permitiendo la activación de enzimas involucradas en la maduración de la barrera lipídica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30142-6/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "muy_seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "urea",
+        "lactato_de_sodio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:32:55.701Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-007-eccema-dishidrotico",
+    "title": "Abordaje clínico del eccema dishidrótico corporal",
+    "content": "El eccema dishidrótico (o ponfólix) es una forma de dermatitis vesicular que afecta predominantemente palmas, plantas y bordes laterales de los dedos, aunque puede presentar manifestaciones dispersas en otras áreas corporales. Su etiología es multifactorial, involucrando predisposición atópica, estrés, exposición a metales (como níquel y cobalto) y factores ambientales. La presentación clínica con vesículas profundas y pruriginosas requiere un manejo cuidadoso para prevenir la infección secundaria. El tratamiento se basa en la aplicación de corticoides tópicos de alta potencia durante la fase aguda, seguidos de una transición a inhibidores de la calcineurina para el mantenimiento. La fototerapia (PUVA o UVB de banda estrecha) está indicada en casos recalcitrantes. Desde la perspectiva de la cosmetología, es vital evitar el contacto con irritantes conocidos y el uso de limpiadores syndet con pH fisiológico. La rehidratación debe ser selectiva, priorizando fórmulas sin fragancias ni conservantes sensibilizantes. Es crucial que el personal de GlowApp identifique los factores desencadenantes (triggers) en la rutina del paciente, como el uso de guantes de látex o detergentes fuertes, para romper el ciclo de recurrencia.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/dyshidrotic-eczema",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides",
+        "inhibidores_de_calcineurina"
+      ],
+      "contraindications": [
+        "irritantes_quimicos",
+        "guantes_latex"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_dermatitis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:32:55.701Z"
+  }
+]

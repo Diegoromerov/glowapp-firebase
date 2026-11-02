@@ -1,0 +1,90 @@
+{
+  "cycle": "R7-STAGE3",
+  "status": "PRODUCTION_SHADOW_ACTIVE",
+  "verdict": "PRODUCTION_SHADOW_ACTIVE",
+  "branch": "r7-stage3-shadow",
+  "commit": "3c8df30d70a3cdf2d2d97e3c3c4353874199fbe1",
+  "authorization": "EXPLICIT_DIRECTOR_AUTHORIZATION_GRANTED",
+  "deployment_timestamp": "2026-08-19T00:00:00.000Z",
+  "observation_window_started": true,
+  "observation_window_start_timestamp": "2026-08-19T00:00:00.000Z",
+  "railway_deployment": {
+    "project": "belleza-app / GlowApp Backend",
+    "environment": "production",
+    "service": "backend",
+    "feature_flag": "OBSERVABILITY_ENABLED=true",
+    "deployment_method": "Railway Dashboard (Web UI)",
+    "step_by_step_console_instructions": [
+      "Paso 0: Iniciar sesión en Railway Dashboard (https://railway.app/dashboard)",
+      "Paso 1: Seleccionar el proyecto 'belleza-app' / 'GlowApp' y el servicio 'backend'",
+      "Paso 2: Ir a la pestaña 'Variables' (Environment Variables)",
+      "Paso 3: Añadir/Actualizar la variable: OBSERVABILITY_ENABLED = true",
+      "Paso 4: Ir a la pestaña 'Deployments' y desplegar la rama 'r7-stage3-shadow'",
+      "Paso 5: Verificar que el deployment termine en estado 'SUCCESS' (Healthy)",
+      "Paso 6: En la pestaña 'Logs', verificar la inicialización limpia del servicio Node.js",
+      "Paso 7: Realizar smoke test sintético enviando query de prueba 'SYNTHETIC_SMOKE_TEST'"
+    ]
+  },
+  "preflight_and_tests": {
+    "rag_suite": "69/69 PASS",
+    "embedding_suite": "16/16 PASS",
+    "rag_related_total": "107/107 PASS",
+    "global_suite": "263 PASS / 8 FAIL / 1 SKIP",
+    "new_regressions": 0,
+    "historical_failures_unchanged": true
+  },
+  "constraints_verified": {
+    "nvidia_e5v5_immutable": true,
+    "embeddings_untouched": true,
+    "corpus_untouched": true,
+    "retrieval_strategy_unchanged": true,
+    "no_confidence_thresholds": true,
+    "no_evidence_aggregator": true,
+    "no_sufficiency_gate": true,
+    "functional_invariance_maintained": true
+  },
+  "observability_schema_v1": {
+    "event_version": "1.0",
+    "event_types": [
+      "query_received",
+      "embedding_complete",
+      "retrieval_complete",
+      "context_built",
+      "generation_complete",
+      "response_sent",
+      "fallback_triggered",
+      "error"
+    ],
+    "trace_id_correlation": "UUID v4 per request",
+    "pii_policy": "query_hash (SHA-256), user_id_hash (8 chars), no full text/vectors",
+    "adaptive_sampling": "100% critical (fallbacks/errors/score<0.5), 10% normal"
+  },
+  "traffic_differentiation": {
+    "pre_deployment_synthetic_count": 275,
+    "smoke_test_tag": "SYNTHETIC_SMOKE_TEST",
+    "organic_traffic_identification": "real_user_traffic_from_mobile_app"
+  },
+  "rollback_procedure": {
+    "mechanism": "OBSERVABILITY_ENABLED=false via Railway Variables",
+    "impact": "Instant disable of shadow logging, zero code redeploy required",
+    "functional_safety": "RAG operates identically to baseline when disabled"
+  },
+  "collection_window_criteria": {
+    "target_duration": "2-4 weeks",
+    "data_sufficiency_targets": {
+      "real_traces": ">= 1,000",
+      "categories_covered": ">= 10",
+      "fallback_examples": ">= 5%",
+      "retrieval_modes": "hnsw, fts, hybrid"
+    }
+  },
+  "stop_conditions_satisfied": [
+    "No R7-C3 execution on synthetic data",
+    "No GOLD-R7 construction on synthetic data",
+    "No confidence calibration",
+    "No Evidence Aggregator",
+    "No retrieval optimization",
+    "No embedding changes",
+    "No corpus changes"
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "timestamp": "2026-08-14T04:38:21.265Z",
+  "summary": {
+    "total_queries": 18,
+    "successful": 4,
+    "errors": 14,
+    "retrieval": {
+      "precision_at_k": 0.15,
+      "recall_at_k": 0.15,
+      "mrr": 0.2916,
+      "top_k_accuracy": 0,
+      "precision_at_1": 0,
+      "precision_at_3": 0.25,
+      "precision_at_5": 0.15,
+      "recall_at_1": 0,
+      "recall_at_3": 0.15,
+      "recall_at_5": 0.15
+    },
+    "generation": {
+      "faithfulness": 0,
+      "answer_relevancy": 0
+    },
+    "context": {
+      "precision": 0,
+      "recall": 0.15
+    },
+    "latency": {
+      "avg_ms": 991,
+      "p50_ms": 1008,
+      "p95_ms": 1211,
+      "p99_ms": 1211
+    },
+    "by_category": {
+      "skincare": {
+        "count": 4,
+        "precision_at_k": 0.15,
+        "recall_at_k": 0.15,
+        "faithfulness": 0
+      }
+    },
+    "by_difficulty": {
+      "medium": {
+        "count": 3,
+        "precision_at_k": 0.1333,
+        "recall_at_k": 0.1333
+      },
+      "easy": {
+        "count": 1,
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2
+      }
+    }
+  },
+  "per_query_results": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2,
+        "mrr": 0.5,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 0.2,
+        "precision_at_5": 0.2,
+        "recall_at_5": 0.2,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0,
+      "context_recall": 0.2,
+      "latency_ms": 1211,
+      "retrieval_latency_ms": 976,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2,
+        "mrr": 0.3333,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 0.2,
+        "precision_at_5": 0.2,
+        "recall_at_5": 0.2,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0,
+      "context_recall": 0.2,
+      "latency_ms": 1030,
+      "retrieval_latency_ms": 494,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "difficulty": "easy",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2,
+        "mrr": 0.3333,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 0.2,
+        "precision_at_5": 0.2,
+        "recall_at_5": 0.2,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0,
+      "context_recall": 0.2,
+      "latency_ms": 1008,
+      "retrieval_latency_ms": 469,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 0,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0,
+      "context_recall": 0,
+      "latency_ms": 716,
+      "retrieval_latency_ms": 458,
+      "answer_generated": false,
+      "chunks_retrieved": 0
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "category": "cabello",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "error": "Cannot read properties of undefined (reading 'message')"
+    }
+  ],
+  "failures": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    }
+  ],
+  "recommendations": [
+    "Considerar aumentar threshold de similitud o mejorar metadata filtering",
+    "Considerar aumentar topK o mejorar chunking/embeddings",
+    "Revisar prompt de LLM para reducir hallucinations; añadir instrucción \"solo usa el contexto\"",
+    "Mejorar prompt para que LLM se centre en responder la pregunta específica",
+    "ALERTA: 4 queries fallando. Revisar chunking, embeddings o dataset."
+  ],
+  "dataset_version": "2.0",
+  "corpus_version": "1.0.0",
+  "queries_valid": 18,
+  "queries_unsupported": 12,
+  "expected_chunks_total": 65,
+  "expected_chunks_in_bd": 65,
+  "baseline_path": "C:\\beauty-app\\backend\\src\\data\\eval\\baseline_real_r5b.json"
+}

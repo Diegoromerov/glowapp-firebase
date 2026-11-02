@@ -1,0 +1,96 @@
+{
+  "experiment": "R5-C28",
+  "cycle": 40,
+  "hypothesis": "H28: un mecanismo SELECTIVO de activación de multi-chunk evidence (solo con señales objetivas de insuficiencia/distribución) puede recuperar los casos multi-chunk sin degradar el retrieval normal ni producir falsos SUFFICIENT.",
+  "timestamp": "2026-08-15",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435) — verificado",
+  "production_guard": "activa — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (15 queries no-UNSUPPORTED; 55 chunk IDs)",
+  "baseline": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "router_configuration": {
+    "coverage_activation": 0.6,
+    "min_complement": 2,
+    "min_top1_score": 0.45,
+    "strong_score": 0.55,
+    "suff_coverage": 0.5,
+    "max_evidence": 8,
+    "note": "Parámetros PRE-REGISTRADOS antes de evaluar; sin tuning sobre Gold. strong_score=0.55 (límite superior de la banda de colisión 0.50-0.58, C15) como gate anti-falso-SUFFICIENT."
+  },
+  "router_signals": {
+    "top1_score": "similitud máxima del mejor candidato",
+    "margin12": "diferencia top1 - top2",
+    "query_coverage_top5": "términos de query cubiertos por la unión de top-5",
+    "complement_count": "chunks top-20 con score≥0.45 que aportan términos de query NO cubiertos por el mejor chunk",
+    "score_concentration": "desviación estándar de scores top-10",
+    "domain_diversity": "dominios distintos en top-10"
+  },
+  "controls": {
+    "A": "baseline top-5 sin agregación",
+    "B": "aggregation indiscriminada (equivalente R5-C25, con gate strong_score)",
+    "C": "selective routing (NORMAL_PATH si no activa)"
+  },
+  "metrics": {
+    "activation_rate": 0.2667,
+    "activated_queries": ["skincare_009", "cejas_004", "cejas_005", "cejas_007"],
+    "query_success": { "A": 1.0, "B": 0.4667, "C": 0.8 },
+    "evidence_precision": { "B": 0.3611, "C": 0.3633 },
+    "false_sufficient": { "B": 3, "C": 2 },
+    "regressions_C_vs_A": ["skincare_009", "cejas_004", "cejas_007"],
+    "class_C_summary": { "NORMAL_PATH": 11, "SUFFICIENT": 3, "PARTIAL": 1 }
+  },
+  "activation_decisions": {
+    "cabello_002": "NORMAL — NO activó (complement_count=1 < 2): cov5=0.5<0.6 ✓, top1=0.555≥0.45 ✓, pero la señal de complementarios falla",
+    "cejas_008": "NORMAL — NO activó (complement_count=1 < 2): cov5=0.17<0.6 ✓, top1=0.59≥0.45 ✓, misma señal falla",
+    "cejas_004": "COMPOSE — activó (cov5=0.25, comp=7, top1=0.526) pero resultado PARTIAL (gate strong_score no se cumple)",
+    "skincare_009": "COMPOSE — SUFFICIENT con prec=0 (FALSO SUFFICIENT — REGRESIÓN)",
+    "cejas_005": "COMPOSE — SUFFICIENT Q=True prec=0.25 (único caso activado con éxito)",
+    "cejas_007": "COMPOSE — SUFFICIENT con prec=0 (FALSO SUFFICIENT — REGRESIÓN)"
+  },
+  "miss_analysis": {
+    "cabello_002": {
+      "router_decision": "NORMAL", "route": "NORMAL_PATH",
+      "signals": { "cov5": 0.5, "comp": 1, "top1": 0.5552 },
+      "control_B": { "class": "SUFFICIENT", "precision": 0.5, "query_success": true },
+      "control_C": { "class": "NORMAL_PATH", "precision": 0.4, "query_success": true },
+      "conclusion": "NO recuperado por el router: la señal complement_count no detecta la evidencia distribuida porque el mejor chunk (rank 1) ya cubre los términos de la query; los chunks complementarios de ph/viscoelasticidad no aportan términos NUEVOS pero sí evidencia de piezas distintas. Falla de la señal, no del concepto."
+    },
+    "cejas_008": {
+      "router_decision": "NORMAL", "route": "NORMAL_PATH",
+      "signals": { "cov5": 0.1667, "comp": 1, "top1": 0.5916 },
+      "control_B": { "class": "PARTIAL", "precision": 0.5, "query_success": false },
+      "control_C": { "class": "NORMAL_PATH", "precision": 0.4, "query_success": true },
+      "conclusion": "NO recuperado por el router — misma falla de señal complement_count=1."
+    },
+    "cejas_004": {
+      "router_decision": "COMPOSE",
+      "control_B": { "class": "PARTIAL", "precision": 0, "query_success": false },
+      "control_C": { "class": "PARTIAL", "precision": 0, "query_success": false },
+      "gate_check": "GATE OK — no falso SUFFICIENT (en R5-C25 era SUFFICIENT falso; el gate strong_score≥0.55 lo corrige a PARTIAL)",
+      "conclusion": "Mejora parcial: el control negativo ya no produce falso SUFFICIENT (C25→C28: SUFFICIENT→PARTIAL). PERO sigue sin ser INSUFFICIENT/VECTOR_MISS como sería ideal."
+    }
+  },
+  "false_sufficient_cases": {
+    "B": ["skincare_009", "cejas_005", "cejas_007"],
+    "C": ["skincare_009", "cejas_007"],
+    "note": "El router reduce 3→2 falsos SUFFICIENT pero no los elimina; skincare_009 y cejas_007 (queries que YA funcionaban en A) son REGRESIONES."
+  },
+  "unsupported_cases": [{ "query_id": "cejas_004", "class": "PARTIAL" }],
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — decisiones, clases, precision y señales idénticos en las 15 queries" },
+  "verdict": "CONTROLLED-ROUTING-DISCONFIRMED",
+  "verdict_rationale": "El router selectivo NO cumple el criterio de éxito: (A) NO recuperó NINGUNO de los casos multi-chunk reales (cabello_002 y cejas_008 quedaron en NORMAL_PATH porque la señal complement_count=1 < 2 no detecta evidencia distribuida cuando el mejor chunk ya cubre los términos de la query); (B) cuando SÍ activó (4/15), produjo 3 regresiones (skincare_009, cejas_004, cejas_007) y 2 falsos SUFFICIENT (skincare_009, cejas_007); (C) la precision no mejoró (C=0.3633 ≈ B=0.3611 ≈ R5-C25). ÚNICO mérito: el gate strong_score≥0.55 corrigió el falso SUFFICIENT de cejas_004 (C25: SUFFICIENT → C28: PARTIAL). La lección: la señal complement_count basada en términos NUEVOS respecto al mejor chunk es estructuralmente incapaz de detectar evidencia multi-chunk donde el chunk principal cubre el vocabulario; y la activación en queries de dominio cejas/skincare genera contaminación. La arquitectura de routing selectivo requiere señales más informativas (no léxicas) o queda cerrada.",
+  "criterio_exito_evaluacion": {
+    "A_recupera_multi_chunk": "NO (0/2 casos reales)",
+    "B_no_degrada_success": "NO (3 regresiones)",
+    "C_sin_falsos_sufficient": "PARCIAL (2 en C vs 3 en B; cejas_004 corregido pero skincare_009/cejas_007 nuevos)",
+    "D_mantiene_precision": "SÍ (0.3633 ≈ 0.3611, sin degradación pero sin mejora)",
+    "E_reproducibilidad": "SÍ (A≡B)"
+  },
+  "recommendation_r5c29": {
+    "1": "CERRAR la línea de routing selectivo basado en señales léxicas de cobertura (evidencia negativa reproducible: no detecta los casos objetivo y contamina al activar)",
+    "2": "El gate strong_score≥0.55 es el ÚNICO hallazgo reutilizable: corrige el falso SUFFICIENT de cejas_004 de forma determinista — conservar como regla de seguridad en cualquier futura capa de suficiencia",
+    "3": "Con C25 (aggregator), C26 (claim-sufficiency) y C28 (routing selectivo) descartados, la evidencia acumulada (C15-C28) converge: el déficit multi-chunk de cabello_002/cejas_008 NO es explotable con señales léxicas deterministas — requiere señal semántica (embedding de rol por pieza, fuera del alcance actual) o aceptar el techo",
+    "4": "Decisión del Director: (a) aceptar baseline R5-C (R@5=0.7885) como techo documentado y cerrar la investigación R5-C con el mapa causal de C27; (b) autorizar experimento de señal semántica de composición (riesgo alto); (c) ampliar corpus para las 3 UNSUPPORTED (decisión de negocio)",
+    "5": "GOLD-V5, baseline R5-C y motor productivo intactos; Railway NO contactada"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

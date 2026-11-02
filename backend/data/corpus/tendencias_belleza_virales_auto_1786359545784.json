@@ -1,0 +1,48 @@
+[
+  {
+    "chunk_id": "tendencias-belleza-virales-dermo-cosmetica-peptidos-cobre-001",
+    "title": "Cosmética de péptidos de cobre: ¿Innovación o sobreexposición?",
+    "content": "Los péptidos de cobre (GHK-Cu) han ganado popularidad viral por su capacidad para estimular la síntesis de colágeno y elastina. A nivel fisiológico, el cobre es un cofactor esencial para la enzima lisil oxidasa, necesaria para la maduración de las fibras de colágeno. Sin embargo, la tendencia actual de combinar péptidos de cobre con otros activos potentes como la Vitamina C pura (ácido ascórbico) o ácidos exfoliantes fuertes es un error clínico común. La interacción química entre el cobre y ciertos antioxidantes puede provocar la degradación de los péptidos, anulando su eficacia, o generar radicales libres que inducen estrés oxidativo en lugar de reparación. La evidencia sugiere que el uso de GHK-Cu debe ser reservado para rutinas que no interfieran con su estabilidad molecular. La sobreexposición a estos péptidos sin una indicación clara de necesidad (como en pieles con daño actínico evidente) puede resultar en una sensibilización innecesaria, especialmente en individuos con predisposición a la rosácea o dermatitis de contacto, donde el cobre puede actuar como un irritante pro-inflamatorio si la barrera cutánea está comprometida.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25692646/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mature",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "GHK-Cu",
+        "peptides"
+      ],
+      "contraindications": [
+        "Vitamin C",
+        "AHA",
+        "BHA"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "skincare-science"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:58:45.253Z"
+  }
+]

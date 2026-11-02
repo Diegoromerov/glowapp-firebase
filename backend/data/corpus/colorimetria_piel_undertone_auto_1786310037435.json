@@ -1,0 +1,364 @@
+[
+  {
+    "chunk_id": "colorimetria-interaccion-sebo-oxidacion-001",
+    "title": "El papel del sebo oxidado en el viraje cromático de las bases",
+    "content": "La composición lipídica del sebo cutáneo, particularmente rica en escualeno, desempeña un rol crítico en la estabilidad cromática de las bases de maquillaje. Cuando el sebo interactúa con los pigmentos de hierro (óxidos de hierro rojo, amarillo y negro) presentes en el producto, se produce un fenómeno de oxidación lipídica. Este proceso altera la reflectancia de la base, provocando un viraje hacia tonos anaranjados o cobrizos tras pocas horas de uso, independientemente del subtono original de la piel. Investigaciones en dermatología cosmética indican que las pieles con una tasa de secreción sebácea elevada (seborrea) presentan una mayor incidencia de este fenómeno. La presencia de peróxidos lipídicos en el estrato córneo no solo degrada la base, sino que modifica la interacción de la luz con la superficie cutánea. Para mitigar este efecto, es fundamental el uso de primers con agentes absorbentes de sebo o polímeros que creen una barrera física entre el fluido sebáceo y los pigmentos de la base, preservando así la integridad del color seleccionado durante la jornada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "sílice",
+        "caolín"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-cicatrices-atroficas-002",
+    "title": "El desafío de la colorimetría en cicatrices atróficas y post-acné",
+    "content": "Las cicatrices atróficas post-acné presentan un comportamiento cromático distintivo debido a la pérdida de colágeno y la alteración de la arquitectura del tejido dérmico. Estas zonas suelen exhibir una reflectancia lumínica diferente al tejido circundante, creando sombras físicas que el ojo humano interpreta erróneamente como cambios en el subtono. La profundidad de la cicatriz genera una zona de penumbra que, al aplicar bases de cobertura media, puede resultar en un efecto de 'grisáceo' o 'cenizo' debido a la dispersión de luz difusa. Clínicamente, el tejido cicatricial posee una densidad vascular reducida en comparación con la piel sana, lo que altera la componente hemoglobínica del subtono. Para corregir este efecto, se requiere el uso de técnicas de 'color correcting' que compensen el déficit de saturación en la depresión de la cicatriz antes de aplicar la base. El uso de productos con propiedades difusoras ópticas (microesferas) es más efectivo que aumentar la opacidad del producto, la cual suele acentuar la textura irregular y el desajuste cromático bajo iluminación directa.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/scars",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adolescent",
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "sílice"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cobertura-y-correccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-vascular-003",
+    "title": "El efecto Tyndall en la zona periorbital: ¿subtono frío o vascularización?",
+    "content": "La percepción de un subtono azulado o violáceo en la región periorbital es frecuentemente malinterpretada como un indicador de subtono frío generalizado. Sin embargo, este fenómeno es, en gran medida, una manifestación del efecto Tyndall. La piel en esta zona es extremadamente delgada (0.5 mm), lo que permite que la luz penetre y se disperse al chocar con las estructuras vasculares subyacentes. La luz de longitud de onda más corta (azul) se dispersa más que la luz roja, creando esa apariencia azulada característica. Este fenómeno es independiente del subtono del rostro y es una propiedad física del tejido. Confundir esta zona con el subtono global del paciente lleva a errores en la selección de bases, resultando en productos demasiado fríos que no armonizan con el resto de la tez. Es crucial realizar el test de subtono en áreas de mayor espesor dérmico, como la mandíbula o el cuello, y tratar la zona periorbital como una condición localizada que requiere neutralización cromática mediante correctores salmón o melocotón, no como una guía para el tono base de todo el rostro.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32159876/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-subtono"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-interaccion-retinoides-004",
+    "title": "Retinoides tópicos y eritema: cómo afecta el diagnóstico del subtono",
+    "content": "El uso terapéutico de retinoides (tretinoína, adapaleno) induce una renovación celular acelerada que, a menudo, se acompaña de eritema inducido por la irritación del estrato córneo. Este estado inflamatorio subclínico altera la percepción del subtono, desplazándolo artificialmente hacia una tonalidad rosada o rojiza. Pacientes que poseen un subtono neutro o cálido pueden presentar una lectura errónea de 'subtono frío' debido al enrojecimiento persistente. Este sesgo es particularmente peligroso al elegir bases de maquillaje, ya que el paciente puede optar por productos con subtonos fríos que, al desvanecerse la inflamación, resultan en un contraste cromático poco natural. Es imperativo que el diagnóstico de subtono se realice en condiciones de calma cutánea, evitando áreas con eritema activo. Si el paciente utiliza retinoides, se recomienda realizar la prueba de color en el antebrazo interno, una zona protegida de la exposición solar y del efecto directo de los tratamientos tópicos faciales, asegurando así una lectura más precisa y estable de su subtono cromático real.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "tretinoína"
+      ],
+      "contraindications": [
+        "piel-sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-subtono"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-melasma-contraste-005",
+    "title": "Melasma y la trampa del subtono: gestionando la heterogeneidad",
+    "content": "El melasma es una hiperpigmentación adquirida que altera drásticamente la homogeneidad del tono cutáneo, complicando la colorimetría de base. A diferencia de otras manchas, el melasma no es un cambio de subtono, sino una acumulación de melanina en niveles epidérmicos o dérmicos que crea un 'mapa' de colores sobre la piel. La mayor dificultad reside en que el melasma suele tener un componente grisáceo o cenizo debido a la profundidad del pigmento, lo que induce a la búsqueda de correctores de alta cobertura que, a menudo, son demasiado claros o demasiado rosados. La estrategia correcta no es igualar el tono de la mancha con la base, sino unificar el tono de la piel sana y luego neutralizar las zonas hiperpigmentadas con correctores específicos (naranja/salmón para tonos oscuros). Intentar cubrir el melasma con una base de subtono frío resultará en un tono grisáceo inestético, mientras que una base muy cálida puede hacer que la mancha luzca más evidente. La clave es la superposición de capas finas y el uso de correctores de color que compensen la profundidad del pigmento.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cobertura-y-correccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-deshidratacion-dispersion-006",
+    "title": "Deshidratación del estrato córneo: el efecto 'opaco' en la piel",
+    "content": "La hidratación del estrato córneo no solo es vital para la salud cutánea, sino que es un determinante mayor de cómo la piel refleja la luz. Una piel deshidratada presenta un estrato córneo con células encogidas y una superficie irregular, lo que aumenta la dispersión difusa de la luz. Esto resulta en una apariencia opaca y una pérdida de la luminosidad natural, que suele ser confundida con un subtono apagado o 'sin vida'. Al aplicar una base de maquillaje sobre una piel deshidratada, el producto tiende a asentarse en las micro-fisuras, alterando el acabado y haciendo que el color se vea más oscuro o 'oxidado' de lo que es en realidad. La corrección de este problema debe ser prioritaria: el uso de humectantes (como ácido hialurónico o glicerina) antes del maquillaje permite que la piel recupere su capacidad de reflexión especular, haciendo que la base se vea más fiel al subtono. La hidratación previa es el paso más subestimado en la colorimetría; sin una superficie cutánea óptima, cualquier base, por muy precisa que sea cromáticamente, fallará en su apariencia final.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "dehydrated"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido-hialurónico",
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-iluminacion-artificial-007",
+    "title": "El dilema de la temperatura de color (K) en los espejos de maquillaje",
+    "content": "La elección de la iluminación en el espacio de maquillaje es el factor externo más determinante en el error de diagnóstico del subtono. La mayoría de los espejos comerciales utilizan luces LED de temperatura fría (6000K-6500K), que emiten un exceso de luz azul. Esta iluminación suprime los tonos cálidos naturales de la piel y resalta los matices fríos, llevando a una selección incorrecta de bases con subtonos demasiado cenizos. Por el contrario, una luz demasiado cálida (2700K) puede enmascarar subtonos fríos o neutros, haciendo que la piel se vea más dorada de lo que realmente es. Para un diagnóstico preciso, el estándar de oro es la luz natural de día (aprox. 5000K-5500K) o luces con un índice de reproducción cromática (IRC o CRI) superior a 95. El IRC mide la capacidad de una fuente de luz para revelar los colores reales de los objetos; un IRC bajo significa que los colores de la piel se verán distorsionados. Antes de realizar cualquier prueba de subtono, es fundamental verificar la calidad espectral de la luz ambiental para evitar diagnósticos erróneos basados en la calidad de la iluminación.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Illuminating Engineering Society",
+        "url": "https://www.ies.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-subtono"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-glicacion-proteica-008",
+    "title": "Glicación proteica y el viraje hacia el tono amarillento",
+    "content": "La glicación, un proceso metabólico donde los azúcares se unen a proteínas como el colágeno y la elastina, produce productos finales de glicación avanzada (AGEs). Con la edad, estos AGEs se acumulan en la dermis, otorgando a la piel un tinte amarillento o pajizo, característico de las pieles maduras. Este fenómeno altera la percepción del subtono, desplazándolo hacia una gama más cálida y saturada, incluso si el subtono original de la persona era frío o neutro. Este viraje es un proceso biológico irreversible que requiere ajustes en la colorimetría de las bases de maquillaje, migrando de tonos rosados o neutros hacia tonos con mayor componente dorado o melocotón para compensar la opacidad amarillenta. Ignorar este cambio biológico resulta en un maquillaje que se ve 'desconectado' del rostro, creando un efecto de máscara. La clave es identificar este tono amarillento no como una característica del subtono estacional, sino como una señal de senescencia cutánea que requiere bases con mayor luminosidad y pigmentos que neutralicen el exceso de amarillo sin perder la calidez natural de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "mature"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-subtono"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  },
+  {
+    "chunk_id": "colorimetria-ph-oxidacion-009",
+    "title": "El pH cutáneo y la oxidación química de las bases",
+    "content": "El pH de la superficie cutánea (mantos ácido) oscila normalmente entre 4.7 y 5.75, pero factores como el uso de limpiadores alcalinos, condiciones climáticas o el microbioma pueden alterarlo. La química de las bases de maquillaje, especialmente aquellas con altas concentraciones de pigmentos minerales, puede ser sensible a estas variaciones de pH. Cuando el pH de la piel es inusualmente alto (alcalino), la estabilidad de los pigmentos en la base puede verse comprometida, facilitando una rápida oxidación. Esto se traduce en un cambio de color visible, donde la base se vuelve más oscura o anaranjada tras el contacto prolongado con la piel. Este fenómeno es una interacción química real, no un mito. Para prevenir esta alteración, el uso de tónicos con pH balanceado antes de la aplicación de la base es una práctica clínica recomendada. Al estabilizar el pH cutáneo, no solo se protege la barrera de la piel, sino que se garantiza que la base mantenga su color original, evitando el efecto de 'oxidación' que frustra a tantos usuarios en la búsqueda del 'match' perfecto.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tónicos-ph-balanceado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:13:39.202Z"
+  }
+]

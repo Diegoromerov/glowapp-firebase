@@ -1,0 +1,254 @@
+[
+  {
+    "chunk_id": "guias_unas-1786383282860-1-ad406a6e-efecto-de-la-humedad-residual-en-la-polimerizacion-de-bases-",
+    "title": "Efecto de la humedad residual en la polimerización de bases rubber",
+    "content": "La aplicación de bases tipo 'rubber' requiere un control estricto de la humedad en la superficie de la lámina ungueal. A diferencia de los geles tradicionales, estas bases poseen una mayor flexibilidad molecular, lo que las hace susceptibles a la higroscopia. Si la lámina ungueal presenta una hidratación excesiva previa a la aplicación, el agua atrapada en los micro-poros de la queratina puede interferir con la formación de enlaces cruzados durante la fotopolimerización. Este fenómeno, conocido como inhibición por humedad, no solo reduce la vida útil del servicio, sino que aumenta la concentración de monómeros residuales no polimerizados en la interfaz uña-producto. La presencia de estos monómeros es el principal factor de riesgo para el desarrollo de dermatitis de contacto alérgica. Se recomienda realizar una deshidratación mecánica controlada y verificar la ausencia de humedad ambiental antes de la aplicación. El uso de primers con base de acetato de etilo puede ayudar a desplazar el agua residual, optimizando la adhesión química y minimizando el riesgo de sensibilización cutánea a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32452101/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "acetato de etilo"
+      ],
+      "contraindications": [
+        "hiperhidrosis severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_previa"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:34:42.860Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383282860-2-38c84477-cinetica-de-degradacion-de-los-fotoiniciadores-bajo-exposici",
+    "title": "Cinética de degradación de los fotoiniciadores bajo exposición solar",
+    "content": "Los productos fotopolimerizables contienen fotoiniciadores como el TPO (difenil(2,4,6-trimetilbenzoil)fosfina óxido) que son altamente sensibles a la radiación UV de amplio espectro, incluyendo la luz solar directa. Cuando un producto es expuesto accidentalmente a la luz natural durante el proceso de aplicación, se inicia una polimerización prematura que altera la viscosidad y la estructura reticular del gel. Esta degradación parcial no solo dificulta la nivelación del producto, sino que altera la cinética de la reacción exotérmica posterior en la lámpara. Un gel que ha sufrido una pre-exposición puede presentar una polimerización incompleta en las capas profundas, aumentando la migración de monómeros hacia el lecho ungueal. Es imperativo trabajar en entornos con iluminación controlada y proteger los envases de cualquier fuente de luz UV. La estabilidad del fotoiniciador es crítica para garantizar que la reacción ocurra de manera uniforme y segura, evitando la formación de zonas de baja densidad que son puntos vulnerables para la penetración de patógenos y la formación de biofilms.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-gel-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "TPO",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposicion_solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:34:42.860Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383282860-3-568f88b7-el-papel-de-la-queratina-intercelular-en-la-absorcion-de-sol",
+    "title": "El papel de la queratina intercelular en la absorción de solventes",
+    "content": "La lámina ungueal no es una estructura inerte; su composición proteica, predominantemente queratina, actúa como una esponja molecular ante solventes orgánicos como la acetona. Durante el proceso de remoción, el solvente no solo disuelve el polímero, sino que extrae los lípidos intercelulares que mantienen la cohesión de los corneocitos. Esta pérdida de lípidos naturales provoca una deshidratación profunda, dejando la lámina porosa y susceptible a la entrada de agentes externos. La repetición de ciclos de remoción agresivos sin periodos de recuperación lipídica conduce a una fragilidad estructural que se manifiesta como onicosquizia lamelar. Para mitigar este daño, es fundamental utilizar agentes oclusivos o aceites de cutícula ricos en ceramidas inmediatamente después de la remoción. La restauración del manto hidrolipídico es esencial para prevenir la entrada de microorganismos en las microfisuras generadas por la deshidratación, asegurando que la integridad de la barrera ungueal se mantenga intacta entre servicios profesionales de manicura.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "onicolisis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remocion_segura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:34:42.860Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383282860-4-e372e4db-dinamica-de-la-presion-de-contacto-en-el-uso-de-fresas-de-ca",
+    "title": "Dinámica de la presión de contacto en el uso de fresas de carburo",
+    "content": "El uso de fresas de carburo de tungsteno en la preparación de la lámina ungueal genera una transferencia de calor por fricción que puede superar los 50°C en milisegundos. Esta temperatura crítica es suficiente para inducir cambios térmicos en la matriz ungueal, provocando una respuesta inflamatoria que puede derivar en onicodistrofia temporal. La presión ejercida sobre la fresa debe ser mínima, permitiendo que la herramienta realice el trabajo de corte sin generar una acumulación de calor excesiva. Además, la vibración mecánica resultante de una presión inadecuada puede causar micro-fracturas en la queratina, las cuales actúan como puntos de entrada para la colonización bacteriana. Un profesional debe evaluar la velocidad de rotación (RPM) en relación con la presión de contacto: a mayor RPM, menor debe ser la presión ejercida. El uso de fresas con recubrimientos de baja fricción es recomendable para minimizar este impacto térmico y mecánico en la unidad ungueal, preservando la salud de la matriz y el lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "matriz_delicada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso_fresas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:34:42.860Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383282860-5-4fec7a49-interaccion-quimica-entre-el-ph-del-lecho-y-los-primers-acid",
+    "title": "Interacción química entre el pH del lecho y los primers ácidos",
+    "content": "El pH del lecho ungueal es un factor determinante en la eficacia de los primers ácidos (metacrilato de ácido). Estos productos funcionan mediante la creación de microporos en la superficie de la lámina, aumentando el área de contacto para el adhesivo. Sin embargo, si el pH natural de la uña es inusualmente bajo, la aplicación de un primer ácido puede causar una desmineralización excesiva de la queratina, debilitando la estructura de soporte. Por el contrario, un pH alcalino puede neutralizar prematuramente el ácido, impidiendo la formación de los microporos necesarios y resultando en un fallo de adhesión. La evaluación del pH ungueal antes de seleccionar el tipo de primer es una práctica avanzada que mejora significativamente la durabilidad del sistema. En casos de lechos ungueales con pH ácido, se recomienda el uso de primers sin ácido para evitar la irritación química del tejido periungueal y la posible sensibilización del cliente. El equilibrio químico es la clave para una adhesión duradera y segura.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilato de acido"
+      ],
+      "contraindications": [
+        "ph_acido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "adhesion_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:34:42.860Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383282860-6-8421e364-riesgos-de-la-oclusion-prolongada-en-la-microbiota-subunguea",
+    "title": "Riesgos de la oclusión prolongada en la microbiota subungueal",
+    "content": "La aplicación de sistemas de uñas artificiales crea un microambiente oclusivo que altera significativamente el microbioma periungueal. La falta de aireación y la retención de humedad favorecen la proliferación de bacterias anaerobias y levaduras como Candida albicans. Si el sellado del producto no es perfecto, la entrada de agua y residuos orgánicos bajo la uña esculpida crea un caldo de cultivo ideal para infecciones oportunistas. Es fundamental que el profesional realice una inspección visual detallada antes de cada servicio para descartar signos de onicólisis, donde el espacio entre la lámina y el lecho se convierte en un reservorio de patógenos. La educación al cliente sobre la importancia de reportar cualquier cambio de color o dolor es vital. Asimismo, el uso de agentes antimicrobianos tópicos durante la preparación, si el profesional está capacitado, puede reducir la carga bacteriana inicial, minimizando el riesgo de complicaciones infecciosas durante el tiempo que el cliente lleve el producto aplicado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "onicolisis",
+        "infecciones_activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_y_asepsia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:34:42.860Z"
+  }
+]

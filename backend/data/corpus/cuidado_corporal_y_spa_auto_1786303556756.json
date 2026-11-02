@@ -1,0 +1,270 @@
+[
+  {
+    "chunk_id": "hidradenitis-supurativa-manejo-001",
+    "title": "Abordaje clínico de la Hidradenitis Supurativa axilar e inguinal",
+    "content": "La hidradenitis supurativa (HS) es una enfermedad inflamatoria crónica, debilitante y recurrente de la unidad foliculopilosebácea, frecuentemente subdiagnosticada en entornos de spa. Clínicamente, se manifiesta mediante nódulos dolorosos, abscesos y tractos sinusales en áreas intertriginosas. Es imperativo que el personal de GlowApp identifique lesiones activas para evitar técnicas como la depilación láser o exfoliaciones mecánicas agresivas, las cuales pueden exacerbar la inflamación y provocar cicatrices hipertróficas. La fisiopatología implica una oclusión folicular seguida de ruptura y respuesta inmune mediada por TNF-alfa. La recomendación clínica es derivar al paciente a dermatología para estadificación según Hurley antes de realizar cualquier procedimiento estético. El manejo en casa debe centrarse en la higiene con limpiadores antisépticos sin fragancia y el uso de ropa holgada de algodón para minimizar la fricción. Evitar el uso de desodorantes con alcohol o fragancias irritantes es fundamental para mantener la estabilidad de la barrera cutánea en estas zonas sensibles.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/hidradenitis-suppurativa-overview",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "15-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido_benzoilo",
+        "clorhexidina"
+      ],
+      "contraindications": [
+        "depilacion_laser",
+        "exfoliacion_mecanica",
+        "ceras_calientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-pre-tratamiento"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:25:43.587Z"
+  },
+  {
+    "chunk_id": "xerosi-senil-manejo-002",
+    "title": "Estrategias para el manejo de la xerosis cutánea en pacientes geriátricos",
+    "content": "La xerosis senil es una condición prevalente causada por la disminución de la actividad de las glándulas sebáceas y sudoríparas, junto con una reducción en la síntesis de ceramidas y factores de hidratación natural (NMF). En la piel madura, la función de barrera se ve comprometida, lo que facilita la pérdida de agua transepidérmica (TEWL). Un enfoque experto para el cuidado corporal en este segmento requiere la sustitución de jabones alcalinos por syndets (detergentes sintéticos) con pH fisiológico (5.5). La aplicación de emolientes que contengan urea en concentraciones bajas (5-10%) es efectiva para la hidratación, mientras que concentraciones mayores (20%+) actúan como queratolíticos. Es crucial educar al paciente sobre la temperatura del agua (tibia, nunca caliente) y el tiempo de exposición, limitándolo a menos de 10 minutos. La hidratación debe aplicarse sobre la piel ligeramente húmeda para maximizar la oclusión. La falta de este cuidado puede derivar en prurito senil, una condición que afecta significativamente la calidad de vida y el sueño del paciente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central / National Institutes of Health",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6449195/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "muy_seca"
+      ],
+      "age_ranges": [
+        "60+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [
+        "jabones_en_barra_alcalinos",
+        "agua_muy_caliente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-hidratacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:25:43.587Z"
+  },
+  {
+    "chunk_id": "foliculitis-post-depilacion-003",
+    "title": "Prevención y manejo de la foliculitis post-depilatoria",
+    "content": "La foliculitis es la inflamación o infección del folículo piloso, frecuentemente precipitada por métodos de depilación (rasurado o cera). En el contexto de GlowApp, es vital diferenciar entre la foliculitis infecciosa (usualmente por Staphylococcus aureus) y la foliculitis irritativa o pseudofoliculitis barbae. La prevención se basa en una técnica aséptica, el uso de cuchillas nuevas y afiladas, y la exfoliación química suave pre-procedimiento, evitando el uso de exfoliantes físicos granulares que pueden causar micro-abrasiones. Tras la depilación, la aplicación de ingredientes calmantes como el aloe vera, niacinamida o pantenol ayuda a restaurar la homeostasis cutánea. Si se observan pústulas múltiples, se debe desaconsejar cualquier tratamiento adicional hasta la resolución del cuadro. El uso de ropa ajustada de fibras sintéticas inmediatamente después de la depilación es un factor de riesgo mayor, ya que favorece la oclusión folicular y el crecimiento bacteriano por fricción. La educación al usuario sobre el ciclo de crecimiento del vello y la importancia de la hidratación post-depilatoria previene la formación de vellos encarnados.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/folliculitis-management/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "pantenol",
+        "aloevera"
+      ],
+      "contraindications": [
+        "ropa_ajustada_sintetica",
+        "exfoliacion_fisica_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-post-depilacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:25:43.587Z"
+  },
+  {
+    "chunk_id": "estrias-fisiopatologia-004",
+    "title": "Estrias distensae: Fisiopatología y expectativas de tratamiento",
+    "content": "Las estrías (striae distensae) son lesiones cutáneas resultantes de la ruptura de las fibras de colágeno y elastina en la dermis, causadas por un estiramiento mecánico rápido o cambios hormonales (aumento de glucocorticoides). En su fase inicial (striae rubrae), presentan un componente inflamatorio y vascular, lo que las hace más receptivas a tratamientos con láser vascular o retinoides tópicos. En su fase crónica (striae albae), el tejido se vuelve atrófico y la vascularización disminuye, limitando la eficacia de las terapias tópicas. Es fundamental gestionar las expectativas del paciente: ninguna crema o procedimiento puede eliminar completamente las estrías, ya que representan una cicatriz dérmica. El enfoque clínico debe centrarse en la estimulación de la síntesis de colágeno mediante microagujamiento (microneedling) o láser fraccionado, siempre bajo supervisión médica. El uso de hidratantes con centella asiática o ácido hialurónico ayuda a mejorar la flexibilidad de la piel adyacente, reduciendo la apariencia visual de la lesión sin prometer la reversión total de la estructura dérmica dañada.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/abstract/2024/...",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "centella_asiatica",
+        "acido_hialuronico"
+      ],
+      "contraindications": [
+        "promesas_de_eliminacion_total"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-corporales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:25:43.587Z"
+  },
+  {
+    "chunk_id": "sudoracion-excesiva-manejo-005",
+    "title": "Manejo cosmético de la hiperhidrosis focal",
+    "content": "La hiperhidrosis es una condición caracterizada por una sudoración excesiva que supera las necesidades termorreguladoras del organismo. Mientras que la hiperhidrosis primaria es de origen idiopático, la secundaria requiere descarte de patologías subyacentes. Desde la perspectiva de cuidado corporal, el uso de antitranspirantes basados en sales de aluminio (cloruro de aluminio hexahidratado) es la primera línea de manejo tópico. A diferencia de los desodorantes, que solo enmascaran el olor, los antitranspirantes bloquean mecánicamente el conducto sudoríparo mediante la formación de complejos de aluminio-queratina. Es vital instruir al usuario sobre la aplicación nocturna sobre piel completamente seca, ya que la humedad residual puede reaccionar con el aluminio formando ácido clorhídrico, causando irritación severa. Para pacientes con piel sensible, se recomiendan fórmulas con menor concentración de aluminio o el uso de agentes calmantes como la niacinamida en la zona axilar. Si el paciente reporta sudoración compensatoria o sistémica, es mandatorio derivar a endocrinología para evaluación médica integral.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/home/treatments/topical-treatments.html",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro_aluminio",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "aplicacion_sobre_piel_humeda",
+        "uso_sobre_lesiones"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:25:43.587Z"
+  },
+  {
+    "chunk_id": "microbioma-cutaneo-spa-006",
+    "title": "El papel del microbioma en la salud de la piel corporal",
+    "content": "La piel no es una superficie estéril; alberga una compleja comunidad de microorganismos (microbioma) que actúan como una barrera inmunológica contra patógenos. El uso excesivo de antisépticos, jabones antibacterianos y exfoliaciones agresivas en los protocolos de spa puede alterar el equilibrio de este ecosistema, promoviendo el crecimiento de especies oportunistas como Staphylococcus aureus. Un enfoque moderno en el cuidado corporal prioriza el uso de productos con prebióticos (sustratos que favorecen el crecimiento de bacterias beneficiosas) y posbióticos (metabolitos bacterianos con efectos antiinflamatorios). La preservación del pH ácido de la piel (aproximadamente 4.7) es el factor más determinante para mantener un microbioma saludable. En GlowApp, recomendamos evitar procedimientos que alteren drásticamente el pH cutáneo o que eliminen la capa lipídica protectora de forma recurrente. La integridad del microbioma es esencial para prevenir condiciones como la dermatitis atópica de contacto y la foliculitis recurrente, asegurando que la piel mantenga su capacidad de autorregulación y defensa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-020-00465-9",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "posbioticos",
+        "lactobacillus_ferment"
+      ],
+      "contraindications": [
+        "jabones_antibacterianos_frecuentes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:25:43.587Z"
+  }
+]

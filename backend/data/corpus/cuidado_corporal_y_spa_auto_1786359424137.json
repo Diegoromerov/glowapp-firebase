@@ -1,0 +1,249 @@
+[
+  {
+    "chunk_id": "cuidado_corporal_y_spa-atrofia-adiposa-001",
+    "title": "Fisiopatología de la atrofia adiposa inducida por corticoides intralesionales",
+    "content": "La administración de corticoides intralesionales, como la triamcinolona, es el estándar de oro para el manejo de cicatrices hipertróficas y queloides. Sin embargo, una complicación frecuente y a menudo subestimada es la atrofia del tejido adiposo subcutáneo. Este fenómeno ocurre por una inhibición local de la síntesis de colágeno y una alteración en la diferenciación de los adipocitos. Clínicamente se manifiesta como una depresión cutánea hipopigmentada. La evidencia sugiere que la concentración del fármaco y la profundidad de la inyección son factores críticos. Para minimizar este riesgo, se recomienda utilizar diluciones adecuadas y evitar la inyección en el tejido adiposo profundo, limitando el fármaco a la dermis reticular. El manejo de esta atrofia suele ser expectante, ya que la recuperación espontánea puede tardar meses, aunque en algunos casos la regeneración del tejido graso es incompleta. Es fundamental educar al paciente sobre este riesgo antes de iniciar protocolos de remodelación de cicatrices corporales.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/keloids-and-hypertrophic-scars",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "triamcinolona"
+      ],
+      "contraindications": [
+        "inyección profunda en grasa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelacion-cicatrices"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:56:46.276Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-elastosis-periumbilical-002",
+    "title": "Etiología y manejo de la elastosis actínica periumbilical",
+    "content": "La elastosis actínica periumbilical es una condición cutánea caracterizada por una piel laxa, arrugada y a veces hiperpigmentada alrededor del ombligo. A diferencia de otras formas de elastosis, esta entidad se asocia no solo con la radiación ultravioleta, sino también con el trauma mecánico repetitivo, como el uso de cinturones o prendas ajustadas, y cambios bruscos en la tensión de la pared abdominal. Fisiopatológicamente, se observa una degeneración basofílica de las fibras elásticas en la dermis superior. El manejo clínico es complejo; los tratamientos tópicos con retinoides pueden mejorar la textura superficial al estimular el recambio epidérmico, pero tienen una eficacia limitada sobre el daño elástico profundo. Procedimientos como el láser fraccionado no ablativo o la radiofrecuencia microneedle ofrecen mejores resultados al inducir una remodelación colágena dirigida. Es vital realizar un diagnóstico diferencial con otras dermatosis, como la anetodermia o la piel laxa adquirida, mediante una evaluación clínica minuciosa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35214012/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:56:46.276Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-dermatitis-textil-003",
+    "title": "Dermatitis de contacto por colorantes dispersos en ropa deportiva",
+    "content": "La dermatitis de contacto alérgica inducida por textiles es una causa frecuente de erupciones corporales en pacientes activos. El componente más implicado son los colorantes dispersos, utilizados mayoritariamente en fibras sintéticas como el poliéster, el nailon y el elastano. Estos tintes tienen un bajo peso molecular y una alta capacidad de penetración en la piel, especialmente cuando existe sudoración, ya que la humedad facilita la liberación del alérgeno desde la fibra hacia el estrato córneo. Clínicamente se presenta como un eccema pruriginoso con distribución en las áreas de mayor fricción y contacto con la prenda. El diagnóstico se confirma mediante pruebas de parche específicas para series de textiles. El tratamiento requiere la eliminación de la prenda causante y el uso de emolientes reparadores de barrera. Como medida preventiva, se recomienda lavar las prendas nuevas antes de su uso y preferir tejidos de fibras naturales o sintéticas con certificaciones de baja toxicidad química para pacientes con antecedentes de atopia.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00678-4/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "applicable_modules": [
+        "dermatitis-contacto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:56:46.276Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-hiperhidrosis-secundaria-004",
+    "title": "Diferenciación clínica: Hiperhidrosis focal primaria vs. secundaria",
+    "content": "La hiperhidrosis focal, cuando afecta áreas corporales específicas, requiere una diferenciación clínica rigurosa para descartar causas sistémicas. Mientras que la forma primaria es idiopática y suele comenzar en la infancia o adolescencia, la hiperhidrosis secundaria puede ser un marcador de condiciones metabólicas, endocrinas (como hipertiroidismo o diabetes) o incluso procesos linfoproliferativos. La clave diagnóstica reside en la simetría y la distribución: la forma primaria tiende a ser bilateral y simétrica en palmas, plantas o axilas, exacerbada por estímulos emocionales. Por el contrario, la sudoración asimétrica, nocturna o generalizada debe activar alertas para una evaluación sistémica. En el contexto de GlowApp, es imperativo realizar una anamnesis detallada sobre síntomas sistémicos asociados antes de proceder con tratamientos tópicos (como cloruro de aluminio) o procedimientos de medicina estética como toxina botulínica. La falta de este tamizaje puede retrasar diagnósticos de patologías subyacentes críticas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/home/clinicians/clinical-guidelines.html",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de aluminio"
+      ],
+      "contraindications": [
+        "sudoración nocturna",
+        "pérdida de peso asociada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-hiperhidrosis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:56:46.276Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-dermatitis-sistemica-007",
+    "title": "Dermatitis de contacto sistémica por alérgenos ingeridos",
+    "content": "La dermatitis de contacto sistémica es una manifestación cutánea de una respuesta inmunológica de hipersensibilidad retardada ante la ingestión de alérgenos a los que el paciente ya estaba sensibilizado por contacto previo. En dermatología corporal, esto es crucial para entender 'brotes' que parecen no tener una causa externa obvia. Metales como el níquel o el cobalto, presentes en ciertos alimentos o suplementos, pueden desencadenar un eccema generalizado o exacerbaciones de dermatitis dishidrótica. El mecanismo fisiológico involucra la reactivación de linfocitos T memoria en la piel tras la absorción gastrointestinal del antígeno. El diagnóstico requiere una dieta de eliminación controlada y pruebas de parche positivas previas. Es un concepto fundamental para el manejo de pacientes con dermatosis crónicas que no responden a tratamientos tópicos convencionales, indicando la necesidad de una visión integrativa entre la nutrición y la salud dermatológica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/i4a/pages/index.cfm?pageid=3305",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dieta rica en níquel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatitis-contacto"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:56:46.276Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-estrias-distensae-009",
+    "title": "Remodelación de estrías distensae mediante láser fraccionado",
+    "content": "Las estrías distensae representan una ruptura de las fibras de colágeno y elastina en la dermis debido a un estiramiento mecánico rápido. La evidencia científica actual posiciona al láser fraccionado no ablativo como uno de los tratamientos más eficaces para inducir la síntesis de colágeno y mejorar la textura de la estría. El mecanismo de acción se basa en la fototermólisis fraccionada, que crea columnas de daño térmico microscópico, estimulando una respuesta de cicatrización organizada. Es fundamental gestionar las expectativas del paciente: si bien se logra una mejora significativa en la textura y una reducción en la atrofia, la restauración completa de la elasticidad original es fisiológicamente improbable. El éxito del tratamiento depende de la fase de la estría (rubra vs. alba), siendo las estrías más recientes (fase inflamatoria) más receptivas al tratamiento. La combinación con factores de crecimiento o terapias tópicas de soporte puede potenciar los resultados en el largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores de crecimiento"
+      ],
+      "contraindications": [
+        "fase aguda de inflamación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelacion-cicatrices"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:56:46.276Z"
+  }
+]

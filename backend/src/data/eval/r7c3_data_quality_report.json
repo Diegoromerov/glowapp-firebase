@@ -1,0 +1,144 @@
+{
+  "cycle": "R7-C3",
+  "status": "CALIBRATION_DATA_INSUFFICIENT",
+  "verdict": "CALIBRATION-DATA-INSUFFICIENT",
+  "branch": "r7-stage3-shadow",
+  "timestamp": "2026-08-19T00:00:00.000Z",
+  "observation_source": {
+    "table": "rag_query_logs",
+    "database": "beauty_db",
+    "port": 5435,
+    "migrations_applied": ["046", "047"],
+    "schema_verified": true
+  },
+  "data_audit": {
+    "total_events": 275,
+    "total_traces": 275,
+    "unique_traces": 275,
+    "unique_users": 1,
+    "unique_queries": 1,
+    "query_values": ["Test query"],
+    "date_range": {
+      "min": "2026-08-16T04:48:39.916Z",
+      "max": "2026-08-19T00:37:14.322Z",
+      "days": 3.5
+    },
+    "events_per_day": 78,
+    "llm_distribution": {
+      "gemini": 138,
+      "deepseek": 137
+    },
+    "retrieval_mode": {
+      "hnsw": 275
+    },
+    "fallback_distribution": {
+      "false": 275
+    },
+    "chunks_retrieved_distribution": {
+      "0": 275
+    },
+    "top_score_distribution": {
+      "null": 275
+    },
+    "all_scores": {
+      "null": 275
+    },
+    "category_distribution": {
+      "null": 275
+    },
+    "threshold_used": {
+      "null": 275
+    },
+    "filters_applied": {
+      "null": 275
+    },
+    "breaker_state_at_query": {
+      "null": 275
+    },
+    "error_distribution": {
+      "null": 275
+    }
+  },
+  "trace_integrity": {
+    "complete_traces": 0,
+    "partial_traces": 275,
+    "broken_traces": 0,
+    "unknown_traces": 0,
+    "complete_rate": 0.0,
+    "notes": "Each trace has exactly 1 row (generation log only). No multi-event correlation observed."
+  },
+  "provenance_coverage": {
+    "request_to_retrieval": 0.0,
+    "retrieval_to_chunk": 0.0,
+    "chunk_to_context": 0.0,
+    "context_to_generation": 0.0,
+    "request_to_evidence": 0.0,
+    "notes": "Retrieval never executed (chunks_retrieved=0 for all events)"
+  },
+  "sufficiency_assessment": {
+    "volume_sufficient": false,
+    "volume_actual": 0,
+    "volume_target": 1000,
+    "query_diversity": false,
+    "unique_queries_real": 0,
+    "user_diversity": false,
+    "unique_users_real": 0,
+    "category_diversity": false,
+    "categories_represented": 0,
+    "real_language": false,
+    "unsupported_queries": 0,
+    "ambiguous_queries": 0,
+    "fallback_examples": 0,
+    "error_examples": 0,
+    "low_evidence_examples": 0,
+    "high_evidence_examples": 0,
+    "score_distributions_available": false,
+    "trace_integrity_sufficient": false,
+    "provenance_sufficient": false,
+    "sampling_representative": false
+  },
+  "root_cause": {
+    "instrumentation_implemented": true,
+    "local_verification_passed": true,
+    "feature_flag_tested": true,
+    "deployed_to_railway": false,
+    "observability_enabled_in_production": false,
+    "real_user_traffic_observed": false,
+    "data_is_synthetic_test_only": true,
+    "explanation": "R7-STAGE3 instrumented and verified locally (69/69 RAG tests pass, rollback works, flag ON/OFF equivalence), but NEVER deployed to Railway with OBSERVABILITY_ENABLED=true. All 275 events are synthetic test data ('Test query', single user, 0 chunks, null scores)."
+  },
+  "tests": {
+    "rag_suite": "69/69 PASS",
+    "embedding_suite": "16/16 PASS",
+    "rag_related_total": "107/107 PASS",
+    "global_suite": "263 PASS / 8 FAIL / 1 SKIP",
+    "new_regressions": 0,
+    "historical_failures_unchanged": true
+  },
+  "recommendation": {
+    "required_action": "Deploy r7-stage3-shadow branch to Railway with OBSERVABILITY_ENABLED=true",
+    "minimum_observation_period": "2-4 weeks",
+    "target_metrics": {
+      "unique_traces": 1000,
+      "categories_represented": 10,
+      "fallback_rate_percent": 5,
+      "retrieval_modes_observed": 3,
+      "trace_complete_rate_percent": 80
+    },
+    "next_authorization": "Director must approve production shadow deployment"
+  },
+  "artifacts_created": [
+    "backend/src/data/eval/r7c3_data_quality_report.md",
+    "backend/src/data/eval/r7c3_data_quality_report.json"
+  ],
+  "stop_conditions_satisfied": [
+    "No R7-C4 execution",
+    "No confidence calibration",
+    "No GOLD-R7 construction",
+    "No Evidence Aggregator",
+    "No retrieval optimization",
+    "No embedding changes",
+    "No corpus changes",
+    "No production modification until Stage 3 deployed"
+  ]
+}

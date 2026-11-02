@@ -1,0 +1,252 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-autoinmune-001",
+    "title": "Onicólisis por enfermedades autoinmunes: más allá del trauma",
+    "content": "La onicólisis no siempre es consecuencia de un trauma mecánico o una infección fúngica. En la práctica clínica, es fundamental considerar condiciones autoinmunes subyacentes, especialmente cuando la separación de la lámina ocurre en múltiples dedos sin antecedente traumático claro. La psoriasis ungueal es la causa autoinmune más frecuente, presentándose a menudo como un 'manchón de aceite' (oil drop sign) que precede a la onicólisis distal. Sin embargo, otras patologías como el liquen plano ungueal o el lupus eritematoso sistémico pueden manifestar desprendimientos ungueales debido a la inflamación del lecho y del hiponiquio. Es vital que el profesional de cabina no intente tratamientos con antisépticos o limpiezas mecánicas agresivas, ya que la inflamación subyacente requiere una evaluación dermatológica para descartar una enfermedad sistémica. La distinción clave reside en la simetría y la presencia de cambios en la piel periungueal, como eritema o descamación. Referir al paciente a un dermatólogo es la acción correcta cuando los tratamientos estéticos estándar fracasan sistemáticamente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-psoriasis-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza mecanica agresiva",
+        "uso de quimicos irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:32:52.792Z"
+  },
+  {
+    "chunk_id": "guias-unas-hiperqueratosis-psoriasica-002",
+    "title": "Diferenciación de la hiperqueratosis subungueal psoriásica",
+    "content": "La hiperqueratosis subungueal es un signo clínico que suele confundirse con onicomicosis, llevando a tratamientos antifúngicos innecesarios y prolongados. En la psoriasis ungueal, el engrosamiento del lecho se produce por una hiperproliferación de queratinocitos mediada por citoquinas inflamatorias. A diferencia de la onicomicosis, donde el material subungueal suele ser friable y amarillento debido a la degradación fúngica, la hiperqueratosis psoriásica es más compacta, firme y a menudo se acompaña de pitting (hoyuelos) en la lámina dorsal. El uso de herramientas metálicas para remover este tejido en cabina es altamente contraproducente: al ser un tejido inflamado, cualquier trauma mecánico induce el fenómeno de Koebner, exacerbando la respuesta proliferativa y aumentando el dolor del paciente. La recomendación clínica es evitar la manipulación y realizar una prueba diagnóstica mediante examen micológico directo (KOH) para descartar hongos antes de cualquier intervención. La gestión de esta condición debe ser exclusiva de personal médico capacitado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32569389/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado subungueal",
+        "uso de curetas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:32:52.792Z"
+  },
+  {
+    "chunk_id": "guias-unas-microbioma-oclusion-004",
+    "title": "Impacto de la oclusión prolongada en el microbioma subungueal",
+    "content": "La aplicación de recubrimientos artificiales (gel, acrílico, press-on) durante periodos prolongados sin descanso crea un microambiente de oclusión que altera drásticamente el microbioma periungueal. Bajo condiciones de oclusión, la humedad aumenta y el pH del lecho ungueal tiende a elevarse, favoreciendo la proliferación de bacterias gramnegativas, especialmente Pseudomonas aeruginosa. Este microorganismo, conocido por producir piocianina, genera la clásica coloración verdosa bajo la uña. El riesgo principal en cabina no es solo la infección, sino la creación de biofilms que son extremadamente resistentes a los desinfectantes estándar. La oclusión constante impide que el lecho ungueal realice su función normal de intercambio gaseoso y evaporación de humedad, debilitando la queratina y promoviendo la fragilidad. Se recomienda evaluar la integridad de la adhesión en cada servicio; si se observa levantamiento (lifting), el producto debe ser retirado inmediatamente para evitar la colonización bacteriana en el espacio creado. El descanso ungueal periódico es esencial para restablecer el equilibrio microbiano.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32457-3/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "oclusión sin descanso",
+        "lifting de producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbiologia_basica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:32:52.792Z"
+  },
+  {
+    "chunk_id": "guias-unas-onicosquizia-lamelar-006",
+    "title": "Onicosquizia lamelar: el papel del agua como enemigo",
+    "content": "La onicosquizia lamelar, o descamación de las capas distales de la uña, es a menudo malinterpretada como una deficiencia nutricional de calcio o vitaminas. Sin embargo, la evidencia científica demuestra que el factor determinante es el balance hídrico de la placa ungueal. La queratina de la uña es una estructura altamente higroscópica; la exposición repetida a ciclos de hidratación (lavado de manos, inmersión en agua) y deshidratación (evaporación rápida) provoca que los corneocitos se expandan y contraigan, rompiendo los puentes de hidrógeno y lípidos intercelulares que mantienen la cohesión de las capas. Esto resulta en la separación lamelar del borde libre. El tratamiento no debe basarse en suplementos, sino en la protección de la barrera lipídica mediante aceites para cutícula ricos en ceramidas y ácidos grasos que sellen la humedad. El uso de guantes protectores durante tareas domésticas es la medida preventiva más efectiva. El limado excesivo de la lámina dorsal solo acelera el proceso al eliminar la capa protectora natural de lípidos, empeorando la fragilidad a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Journal of Clinical Dermatology",
+        "url": "https://link.springer.com/article/10.1007/s40257-013-0026-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "aceites naturales"
+      ],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_domiciliario"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:32:52.792Z"
+  },
+  {
+    "chunk_id": "guias-unas-termica-fresado-007",
+    "title": "Gradientes térmicos en el fresado: daño matricial invisible",
+    "content": "El uso de tornos eléctricos para la preparación de la uña conlleva un riesgo significativo de daño térmico a la matriz ungueal. La fricción generada por la fresa sobre la placa ungueal, especialmente si se aplica presión excesiva o alta velocidad (RPM), eleva la temperatura de la lámina de forma instantánea. Debido a que la uña es una estructura delgada situada sobre un lecho altamente vascularizado y próximo a la matriz (donde se producen las células ungueales), este calor puede causar una quemadura térmica interna. Las consecuencias no son siempre inmediatas: el daño matricial puede manifestarse semanas después como líneas de Beau (surcos transversales) o distrofia ungueal permanente. La técnica correcta implica trabajar con toques ligeros, movimiento constante para disipar el calor y el uso de fresas de carburo de tungsteno con cortes de precisión. Es fundamental que el profesional monitoree constantemente la temperatura mediante el contacto táctil o la reacción del cliente. Nunca debe sacrificarse la seguridad del tejido por la velocidad del servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cutaneous and Aesthetic Surgery",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3276882/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "alta velocidad sin descanso",
+        "presión excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_limado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:32:52.792Z"
+  },
+  {
+    "chunk_id": "guias-unas-hiperhidrosis-adhesion-009",
+    "title": "Hiperhidrosis y su impacto en la adhesión de polímeros",
+    "content": "La hiperhidrosis periungueal es un reto clínico subestimado que causa fallos prematuros en la adhesión de geles y sistemas acrílicos. El exceso de sudoración altera la tensión superficial necesaria para que los primers y las bases poliméricas se anclen adecuadamente a la placa ungueal. El agua residual en la superficie de la uña actúa como una barrera física que impide la formación de enlaces moleculares entre el adhesivo y la queratina. Además, el ambiente húmedo constante promueve el crecimiento bacteriano, aumentando el riesgo de infecciones. Para estos clientes, el uso de deshidratadores de alta potencia (a base de acetona o alcohol isopropílico) es necesario pero no suficiente. Se debe considerar el uso de primers sin ácido o con pH ajustado que mejoren la afinidad química, pero sobre todo, se debe gestionar la expectativa del cliente: en casos de hiperhidrosis severa, la durabilidad de cualquier sistema UV estará comprometida. Es fundamental educar sobre la importancia de mantener las manos secas y, en casos clínicos, derivar a tratamiento de la hiperhidrosis con dermatología (iontoforesis o toxina botulínica).",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.15045",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol isopropilico",
+        "acetona"
+      ],
+      "contraindications": [
+        "sistemas UV de baja calidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_productos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:32:52.792Z"
+  }
+]

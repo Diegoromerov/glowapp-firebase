@@ -1,0 +1,56 @@
+name: Backend CI
+
+# El backend vive aqui desde 2026-11-02: `glowapp-api` lo despliega desde este
+# repositorio (root `/backend`). `belleza-app` queda como archivo historico y no
+# deberia construir nada.
+on:
+  push:
+    branches: [main, staging]
+    paths:
+      - 'backend/**'
+      - 'tools/verificar_contrato_api.py'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'tools/verificar_contrato_api.py'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  backend:
+    name: Backend - Sintaxis, pruebas y contrato
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci --legacy-peer-deps
+
+      - name: Comprobar sintaxis de todo el codigo
+        run: |
+          fail=0
+          for f in $(find src scripts -name '*.js' -type f); do
+            node --check "$f" || { echo "SINTAXIS: $f"; fail=1; }
+          done
+          exit $fail
+
+      - name: Pruebas que no necesitan infraestructura
+        run: node --test src/tests/*.nodetest.js
+
+      - name: Contrato app <-> API
+        # Compara lo que llaman las dos apps Flutter contra lo que publica este
+        # backend. Falla si una pantalla pide una ruta que no existe: es lo que
+        # en `belleza-app` no se podia hacer porque los dos arboles vivian en
+        # repos distintos.
+        working-directory: .
+        run: python3 tools/verificar_contrato_api.py .

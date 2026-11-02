@@ -1,0 +1,264 @@
+[
+  {
+    "chunk_id": "fotodermatitis-por-psoralenos-001",
+    "title": "Psoralenos en cosmética botánica: El riesgo de fototoxicidad severa",
+    "content": "Los psoralenos son compuestos furanocumarínicos presentes en aceites esenciales cítricos (bergamota, lima, limón) y en ciertas plantas como la ruda o el apio. Su mecanismo de acción implica la absorción de radiación UVA, lo que induce una reacción fototóxica al formar aductos con el ADN de los queratinocitos. A diferencia de la fototolerancia, esta reacción ocurre en cualquier individuo expuesto, independientemente de su historial de alergias. Clínicamente, se manifiesta como eritema intenso, ampollas y una hiperpigmentación post-inflamatoria persistente (fitofotodermatitis). La regulación cosmética (IFRA) limita estrictamente la concentración de bergapteno en productos 'leave-on' para evitar este fenómeno. Es crucial que los pacientes eviten la aplicación de extractos botánicos no estandarizados antes de la exposición solar, ya que la combinación de estos compuestos con la radiación UV amplifica el daño celular de manera exponencial, pudiendo dejar manchas que requieren meses de tratamiento con despigmentantes.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/phytophotodermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "furocumarinas",
+        "aceites esenciales cítricos"
+      ],
+      "contraindications": [
+        "exposición solar directa"
+      ],
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:19:36.621Z"
+  },
+  {
+    "chunk_id": "sulfatos-y-barrera-cutanea-002",
+    "title": "Tensioactivos Aniónicos (SLS/SLES) y la desnaturalización de proteínas",
+    "content": "El Lauril Sulfato de Sodio (SLS) y el Laureth Sulfato de Sodio (SLES) son detergentes aniónicos ampliamente utilizados por su alta capacidad espumante y eficacia limpiadora. Sin embargo, su perfil de seguridad es cuestionado en pieles con barrera comprometida (dermatitis atópica, rosácea). El mecanismo de irritación radica en su capacidad de penetrar el estrato córneo y desnaturalizar las proteínas de la membrana celular de los queratinocitos, además de solubilizar los lípidos intercelulares esenciales como las ceramidas. Estudios de irritación acumulativa demuestran que el uso prolongado de limpiadores con alto contenido en SLS altera el pH cutáneo, favoreciendo la proliferación de Staphylococcus aureus y exacerbando la pérdida transepidérmica de agua (TEWL). La recomendación clínica es optar por tensioactivos no iónicos o anfóteros (decil glucósido, cocamidopropil betaína) en pacientes con piel sensible para preservar la integridad de la bicapa lipídica y prevenir el ciclo de irritación-inflamación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17020586/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "SLS",
+        "SLES"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:19:36.621Z"
+  },
+  {
+    "chunk_id": "niacina-hidrolisis-ph-005",
+    "title": "Niacinamida y pH: El riesgo de conversión a ácido nicotínico",
+    "content": "La niacinamida (Vitamina B3) es un activo estrella por su capacidad antiinflamatoria y reguladora de la barrera cutánea. Sin embargo, su estabilidad depende estrictamente del pH de la formulación. Si el pH cae por debajo de 5.0, la niacinamida puede hidrolizarse y convertirse en ácido nicotínico. A diferencia de la niacinamida, el ácido nicotínico es un potente vasodilatador que causa 'flushing' (eritema súbito, picor y ardor) en la piel, especialmente en individuos con rosácea o piel sensible. Este fenómeno es una causa común de intolerancia a productos de niacinamida de alta concentración. La recomendación técnica es evitar la aplicación simultánea (layering) de niacinamida con productos de pH bajo, como ácidos puros (L-ascórbico, glicólico) o peelings, a menos que la formulación del producto final esté diseñada para mantener la estabilidad del activo. Observar la aparición de enrojecimiento inmediato tras la aplicación es un indicador clínico claro de que se está produciendo esta conversión irritante.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/niacinamide-skin-health/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida"
+      ],
+      "contraindications": [
+        "rosácea",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:19:36.621Z"
+  },
+  {
+    "chunk_id": "resinas-acrilatos-sensibilizacion-006",
+    "title": "Resinas de Acrilatos: Riesgos de sensibilización cruzada en cosmética técnica",
+    "content": "Las resinas de acrilatos y metacrilatos son componentes fundamentales en esmaltes de uñas semipermanentes, adhesivos para pestañas postizas y ciertos productos de fijación capilar. Aunque su uso es mayoritariamente externo, el riesgo de desarrollar dermatitis de contacto alérgica es considerable. Una vez sensibilizado, el paciente puede experimentar reacciones cruzadas con otros acrilatos presentes en materiales dentales, adhesivos médicos o incluso prótesis. La sensibilización no solo ocurre en el sitio de aplicación, sino que puede manifestarse como dermatitis en áreas distantes (ej. párpados, cara) debido a la transferencia manual (tocarse la cara). Es fundamental que los profesionales de la belleza y los usuarios de cosmética técnica utilicen guantes adecuados (nitrilo, no látex) y minimicen el contacto con la piel periungueal. Ante la aparición de prurito o descamación persistente alrededor de las uñas o los ojos, se debe sospechar de una sensibilización a acrilatos y suspender el uso de dichos productos inmediatamente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "British Association of Dermatologists",
+        "url": "https://www.bad.org.uk/patient-information-leaflets/acrylates-in-nail-products/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:19:36.621Z"
+  },
+  {
+    "chunk_id": "cloruro-aluminio-dermatitis-007",
+    "title": "Cloruro de aluminio en antitranspirantes: Manejo de la irritación",
+    "content": "El cloruro de aluminio es el ingrediente activo estándar para el control de la hiperhidrosis. Su mecanismo consiste en la precipitación de complejos de aluminio-proteína que bloquean físicamente el conducto sudoríparo. Sin embargo, la reacción química con el agua de la piel genera ácido clorhídrico como subproducto, lo cual es la causa principal de la dermatitis irritativa de contacto asociada a estos productos. Para mitigar este efecto, es fundamental aplicar el producto exclusivamente sobre piel seca (no húmeda tras la ducha) y por la noche. La aplicación sobre piel húmeda aumenta drásticamente la formación de ácido y, por ende, el riesgo de ardor, prurito y eritema. En pacientes con piel sensible o atópica, se recomienda iniciar con formulaciones de menor concentración o alternar con hidratantes calmantes durante el día para restaurar la barrera cutánea. Si la irritación persiste, es indicativo de que el pH del producto es demasiado bajo para la tolerancia individual del paciente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/hyperhidrosis-treatments/antiperspirants.html",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de aluminio"
+      ],
+      "contraindications": [
+        "piel irritada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:19:36.621Z"
+  },
+  {
+    "chunk_id": "quats-dermatitis-contacto-008",
+    "title": "Compuestos de Amonio Cuaternario (Quats): Riesgos de dermatitis",
+    "content": "Los compuestos de amonio cuaternario (ej. cloruro de benzalconio, cetrimonio) son agentes conservantes y acondicionadores muy comunes en productos para el cabello y limpiadores. Aunque poseen propiedades antimicrobianas efectivas, son reconocidos como alérgenos de contacto emergentes. La dermatitis de contacto inducida por 'quats' puede ser difícil de diagnosticar, ya que a menudo se confunde con irritación inespecífica. Estos compuestos alteran la permeabilidad de la membrana lipídica, facilitando la penetración de otros alérgenos presentes en la misma fórmula. Los síntomas incluyen eritema, descamación y sensación de quemazón. En la práctica clínica, ante pacientes con dermatitis de cuero cabelludo o manos que no mejora, se debe considerar la eliminación de productos que contengan amonio cuaternario. La sustitución por acondicionadores basados en alcoholes grasos (cetílico, estearílico) sin agentes cuaternarios suele ser la estrategia terapéutica más efectiva para resolver el cuadro clínico y restaurar la salud de la piel.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed (National Center for Biotechnology Information)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30206969/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzalconio",
+        "cetrimonio"
+      ],
+      "contraindications": [
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:19:36.621Z"
+  }
+]

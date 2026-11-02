@@ -1,0 +1,317 @@
+{
+  "experiment": "R5-C25",
+  "cycle": 37,
+  "hypothesis": "Un mecanismo general de agrupación, complementariedad, deduplicación y scoring de evidencia puede transformar candidatos recuperados en evidencia suficiente para responder, sin contaminación significativa ni regresiones.",
+  "timestamp": "2026-08-15T18:25:19.238Z",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435)",
+  "production_guard": "active — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (18 queries; 15 no-UNSUPPORTED evaluadas; 55 chunk IDs únicos)",
+  "baseline": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "NO MODIFICADO"
+  },
+  "configuration": {
+    "top_k": 100,
+    "suff_coverage": 0.5,
+    "partial_coverage": 0.2,
+    "redundancy_overlap": 0.3,
+    "min_score": 0.45,
+    "max_evidence_per_query": 8,
+    "aggregator_inputs": [
+      "query",
+      "candidate_pool",
+      "metadata (title/content/document_id)",
+      "contenido de chunks"
+    ],
+    "aggregator_forbidden": [
+      "gold IDs",
+      "answer labels",
+      "información derivada de misses",
+      "LLM externo"
+    ]
+  },
+  "controls": {
+    "A_baseline": {
+      "note": "retrieval top-5 sin agregación",
+      "r5": 0.6156,
+      "mrr": 0.7222
+    },
+    "B_r5c24_reproduction": {
+      "note": "cobertura expected ≥50% en top-50",
+      "queries_sufficient": "14/15"
+    },
+    "C_oracle_only": {
+      "note": "techo con gold (NO cuenta como éxito del agregador)",
+      "queries_sufficient": "14/15"
+    }
+  },
+  "metrics": {
+    "aggregator_query_success_rate": 0.5333,
+    "aggregator_evidence_precision_avg": 0.3611,
+    "aggregator_contamination_rate_avg": 0,
+    "aggregator_class_summary": {
+      "SUFFICIENT": 12,
+      "INSUFFICIENT": 1,
+      "PARTIAL": 2
+    },
+    "aggregator_sufficient_or_partial": 14,
+    "controlB_sufficient_count": 14,
+    "oracle_sufficient_count": 14
+  },
+  "per_query_results": [
+    {
+      "query_id": "skincare_003",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 2,
+      "group_coverage": 1,
+      "evidence_precision": 0.5,
+      "query_success": true,
+      "A_r5": 0.75
+    },
+    {
+      "query_id": "skincare_005",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 2,
+      "group_coverage": 1,
+      "evidence_precision": 0.5,
+      "query_success": true,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "skincare_006",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 2,
+      "group_coverage": 0.75,
+      "evidence_precision": 0,
+      "query_success": false,
+      "A_r5": 0.75
+    },
+    {
+      "query_id": "skincare_007",
+      "aggregator_class": "INSUFFICIENT",
+      "group_size": 0,
+      "group_coverage": 0,
+      "evidence_precision": 0,
+      "query_success": false,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "skincare_008",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 2,
+      "group_coverage": 0.8,
+      "evidence_precision": 1,
+      "query_success": true,
+      "A_r5": 0.75
+    },
+    {
+      "query_id": "skincare_009",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 3,
+      "group_coverage": 0.8333,
+      "evidence_precision": 0,
+      "query_success": false,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "skincare_010",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 3,
+      "group_coverage": 1,
+      "evidence_precision": 0.3333,
+      "query_success": true,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "cabello_002",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 2,
+      "group_coverage": 0.75,
+      "evidence_precision": 0.5,
+      "query_success": true,
+      "A_r5": 0.4
+    },
+    {
+      "query_id": "cabello_006",
+      "aggregator_class": "PARTIAL",
+      "group_size": 1,
+      "group_coverage": 0.2857,
+      "evidence_precision": 1,
+      "query_success": false,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "cabello_008",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 4,
+      "group_coverage": 1,
+      "evidence_precision": 0.5,
+      "query_success": true,
+      "A_r5": 0.75
+    },
+    {
+      "query_id": "cejas_001",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 3,
+      "group_coverage": 1,
+      "evidence_precision": 0.3333,
+      "query_success": true,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "cejas_004",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 3,
+      "group_coverage": 0.75,
+      "evidence_precision": 0,
+      "query_success": false,
+      "A_r5": 0.3333
+    },
+    {
+      "query_id": "cejas_005",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 4,
+      "group_coverage": 1,
+      "evidence_precision": 0.25,
+      "query_success": true,
+      "A_r5": 0.5
+    },
+    {
+      "query_id": "cejas_007",
+      "aggregator_class": "SUFFICIENT",
+      "group_size": 2,
+      "group_coverage": 0.5,
+      "evidence_precision": 0,
+      "query_success": false,
+      "A_r5": 0.6667
+    },
+    {
+      "query_id": "cejas_008",
+      "aggregator_class": "PARTIAL",
+      "group_size": 2,
+      "group_coverage": 0.3333,
+      "evidence_precision": 0.5,
+      "query_success": false,
+      "A_r5": 0.3333
+    }
+  ],
+  "miss_analysis": [
+    {
+      "query_id": "cabello_002",
+      "aggregator_class": "SUFFICIENT",
+      "query_success": true,
+      "evidence_precision": 0.5,
+      "evidence_recall": 0.2,
+      "group_size": 2,
+      "selected": [
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-degradacion-lipidos-006"
+      ],
+      "contamination_rate": 0
+    },
+    {
+      "query_id": "cejas_004",
+      "aggregator_class": "SUFFICIENT",
+      "query_success": false,
+      "evidence_precision": 0,
+      "evidence_recall": 0,
+      "group_size": 3,
+      "selected": [
+        "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+        "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+        "micropigmentacion-y-viraje-002"
+      ],
+      "contamination_rate": 0
+    },
+    {
+      "query_id": "cejas_008",
+      "aggregator_class": "PARTIAL",
+      "query_success": false,
+      "evidence_precision": 0.5,
+      "evidence_recall": 0.1667,
+      "group_size": 2,
+      "selected": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-cuidado-post-inmediato-009"
+      ],
+      "contamination_rate": 0
+    }
+  ],
+  "contamination_analysis": {
+    "note": "contamination_rate = chunks seleccionados sin cobertura de query y no-gold / total seleccionados",
+    "avg_contamination": 0,
+    "most_contaminated": [
+      {
+        "query_id": "skincare_003",
+        "rate": 0
+      },
+      {
+        "query_id": "skincare_005",
+        "rate": 0
+      },
+      {
+        "query_id": "skincare_006",
+        "rate": 0
+      }
+    ]
+  },
+  "negative_control": {
+    "cejas_004": {
+      "query_id": "cejas_004",
+      "domain": "cejas",
+      "was_miss": true,
+      "candidate_pool_size": 40,
+      "control_A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.3333,
+          "r10": 0.3333,
+          "mrr": 0.5
+        },
+        "best_gold_rank": 2
+      },
+      "control_B": {
+        "evidence_recall_50": 0.3333,
+        "sufficient": false
+      },
+      "control_C": {
+        "oracle_only": true,
+        "evidence_recall_100": 0.3333,
+        "oracle_sufficient": false
+      },
+      "aggregator": {
+        "class": "SUFFICIENT",
+        "group_size": 3,
+        "group_coverage": 0.75,
+        "selected_evidence": [
+          "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+          "micropigmentacion-y-viraje-002"
+        ],
+        "evidence_precision": 0,
+        "evidence_recall": 0,
+        "contamination_rate": 0,
+        "redundant_selected": 3,
+        "query_success": false,
+        "contaminated_candidates": [
+          "efectos-temperatura-luz-percepcion-diseño-007",
+          "visajismo-cejas-microblading-007",
+          "visajismo-cejas-microblading-metamerismo-008",
+          "visajismo-cejas-microblading-efecto-tyndall-005",
+          "visajismo_cejas_microblading-1786392808872-3-47cffa79-modulacion-de-la-dispersion-de-tyndall-en-pigmentos-de-alta-"
+        ]
+      },
+      "gold_counts": {
+        "core": 4,
+        "supporting": 2,
+        "total": 6
+      }
+    },
+    "expected": "VECTOR_MISS — el agregador NO debe fabricar evidencia ausente del pool"
+  },
+  "reproducibility": "RUN A ≡ RUN B (verificar en segunda corrida)",
+  "verdict": null
+}

@@ -1,0 +1,366 @@
+[
+  {
+    "chunk_id": "colorimetria-hidratacion-estrato-corneo-001",
+    "title": "Hidratación cutánea y su efecto en la dispersión de la luz y el subtono",
+    "content": "La hidratación del estrato córneo es un factor crítico y frecuentemente ignorado en la lectura del subtono. La piel deshidratada altera la reflectancia especular y difusa de la luz, aumentando la dispersión en las capas superficiales y creando una apariencia de opacidad o 'grisáceo' que puede confundirse con un subtono frío o cetrino. Clínicamente, la hidratación adecuada incrementa la transparencia del estrato córneo, permitiendo que la luz penetre más profundamente y se refleje en los cromóforos dermales (hemoglobina y melanina), lo que facilita una lectura precisa del subtono real. Estudios en Journal of Investigative Dermatology indican que la pérdida de agua transepidérmica (TEWL) modifica la opacidad de la piel, dificultando la igualación de bases cosméticas. Una piel bien hidratada presenta un tono más vívido y fiel a su pigmentación base, mientras que la piel seca desvirtúa la colorimetría al dispersar la luz de forma errática. En GlowApp, recomendamos evaluar el subtono tras la aplicación de un humectante de bajo peso molecular para estandarizar las condiciones de lectura.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30600-X/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbiota-opacidad-002",
+    "title": "Disbiosis cutánea y su impacto en la luminosidad y el subtono",
+    "content": "La composición de la microbiota cutánea no solo influye en la salud de la barrera, sino también en la percepción visual del tono de piel. Una disbiosis, caracterizada por un crecimiento excesivo de microorganismos como Cutibacterium acnes o Malassezia, puede alterar el pH de la superficie cutánea y promover la formación de biopelículas que incrementan la opacidad y alteran la reflexión de la luz. Este fenómeno, descrito en publicaciones de la American Academy of Dermatology, puede generar una falsa percepción de un subtono más oscuro o terroso. La inflamación subclínica asociada a la disbiosis induce una vasodilatación persistente que añade componentes rojizos no deseados, complicando la neutralización cromática. Los usuarios con condiciones como dermatitis seborreica o acné a menudo reportan dificultades para encontrar una base que no se 'oxide' rápidamente, siendo esto en realidad una interacción entre el sebo alterado, el pH elevado y los pigmentos de la base. Es fundamental tratar la homeostasis bacteriana antes de establecer un diagnóstico de colorimetría definitivo para evitar errores en la selección de pigmentos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos",
+        "postbióticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectro-led-003",
+    "title": "La influencia de la temperatura de color (K) en la lectura del subtono",
+    "content": "La colorimetría es un proceso dependiente de la fuente de luz. La temperatura de color, medida en Kelvin (K), determina qué longitudes de onda son reflejadas por la piel. En entornos de consultorio o puntos de venta, el uso de iluminación LED con un Índice de Rendimiento Cromático (IRC o CRI) inferior a 90 resulta en una lectura distorsionada, donde los subtonos cálidos pueden verse desaturados y los fríos pueden tornarse azulados. La International Commission on Illumination (CIE) establece que para diagnósticos precisos de color, la iluminación debe acercarse a la luz natural del día (aprox. 5500K - 6500K). Un error común en la aplicación de maquillaje es realizar el 'match' bajo luces cálidas de interior (2700K), lo que induce a elegir bases con exceso de pigmento amarillo para compensar la supuesta palidez, resultando en un efecto 'naranja' bajo luz solar directa. Para GlowApp, el diagnóstico debe realizarse siempre bajo luz de espectro completo (Full Spectrum) o luz natural indirecta para asegurar la fidelidad cromática.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Commission on Illumination (CIE)",
+        "url": "https://cie.co.at/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-004",
+    "title": "El Efecto Tyndall y la percepción de subtonos fríos en áreas periorbitales",
+    "content": "El efecto Tyndall es un fenómeno óptico crucial para entender por qué ciertas áreas de la piel, como las ojeras o la piel muy fina, exhiben un subtono azulado o violáceo. Ocurre cuando la luz penetra en la piel y se dispersa al interactuar con partículas pequeñas (en este caso, la red vascular y los depósitos de melanina profunda). A mayor profundidad de los vasos sanguíneos, mayor dispersión de las longitudes de onda azules. Este efecto crea una ilusión de subtono frío que no necesariamente corresponde al subtono general del rostro. En dermatología cosmética, diferenciar entre una hiperpigmentación melánica (marrón) y una coloración por efecto Tyndall (azul/gris) es vital para elegir el corrector adecuado: los tonos melánicos requieren neutralizadores naranja/durazno, mientras que los tonos azulados requieren correctores salmón o melocotón. Entender que el subtono puede ser localmente heterogéneo permite aplicar una técnica de corrección cromática más precisa, tratando la piel como un lienzo con múltiples necesidades de balance tonal y no como una superficie uniforme.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6358301/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina K",
+        "cafeína"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correccion-color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-glicacion-005",
+    "title": "Glicación proteica y el viraje hacia el subtono amarillento",
+    "content": "La glicación, proceso mediante el cual los azúcares se unen a proteínas como el colágeno y la elastina sin intervención enzimática, produce Productos Finales de Glicación Avanzada (AGEs). Estos compuestos tienen una coloración intrínseca amarillenta o pardusca que se acumula en la dermis con el paso de los años. Este fenómeno altera significativamente la percepción del subtono, desplazándolo hacia una gama más cálida y opaca, independientemente del subtono genético original. En pieles maduras, el 'amarilleo' no debe confundirse con un subtono cálido natural; intentar compensar este tono con bases de subtono frío puede resultar en una apariencia ceniza, mientras que usar bases muy cálidas puede acentuar el aspecto cetrino. Es crucial identificar la presencia de AGEs para ajustar la saturación del pigmento de la base de maquillaje, optando por tonos neutros que equilibren la calidez artificial inducida por la glicación sin sobrecargar el rostro con pigmentos dorados innecesarios.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institute on Aging",
+        "url": "https://www.nia.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-piel-madura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-pH-oxidacion-006",
+    "title": "El pH cutáneo y la oxidación química de las bases de maquillaje",
+    "content": "La oxidación de la base de maquillaje no es solo un mito cosmético; tiene una base química real vinculada al pH cutáneo y la composición del sebo. Cuando el pH de la superficie de la piel es más ácido o más alcalino de lo normal, puede reaccionar con los pigmentos (especialmente óxidos de hierro) de la base, provocando un cambio de color hacia tonos más oscuros o anaranjados. Un pH cutáneo elevado, común en condiciones de piel grasa o uso de limpiadores inadecuados, acelera la degradación de los pigmentos. Además, la interacción con los ácidos grasos libres del sebo puede alterar la estabilidad de la emulsión de la base. Para mitigar este efecto, es vital preparar la piel con un tónico equilibrante de pH antes de la aplicación. En GlowApp, aconsejamos realizar una prueba de oxidación de 20 minutos en la mandíbula, permitiendo que la base se estabilice con el pH natural del usuario antes de confirmar el tono ideal para evitar la compra de productos que cambiarán de color tras pocas horas de uso.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tónicos equilibrantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-maquillaje"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-fotoproteccion-007",
+    "title": "El 'White Cast' de filtros inorgánicos y su interferencia cromática",
+    "content": "Los filtros solares físicos o inorgánicos, como el óxido de zinc y el dióxido de titanio, son excelentes para la protección de amplio espectro, pero su naturaleza particulada crea una reflexión de luz blanca conocida como 'white cast'. Este fenómeno es especialmente problemático en pieles de fototipos IV a VI, donde el filtro crea una capa grisácea o ceniza que altera completamente la lectura del subtono. Al aplicar una base de maquillaje sobre un protector con alto contenido de estos filtros, la colorimetría se ve afectada por la adición de este componente blanco, lo que hace que los tonos cálidos se vean apagados y los neutros se vean fríos. Es un reto clínico importante en la población latina, que presenta una gran diversidad de fototipos. La recomendación experta es utilizar filtros de partículas micronizadas o filtros químicos si se desea una fidelidad cromática absoluta, o bien, integrar correctores de color que compensen el tono grisáceo antes de aplicar la base de maquillaje definitiva.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "óxido de zinc",
+        "dióxido de titanio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-cianosis-oculta-008",
+    "title": "Cianosis oculta: El desafío de la palidez y el subtono azulado",
+    "content": "La cianosis oculta, a menudo asociada a condiciones cardiovasculares o respiratorias, puede manifestarse como un matiz azulado en mucosas y lechos ungueales, pero también puede alterar la colorimetría facial, induciendo una palidez con subtono frío que puede ser malinterpretada como una característica cromática natural. En dermatología, es fundamental descartar que el subtono 'frío' sea en realidad un signo clínico de hipoxia o anemia. La hemoglobina desoxigenada tiene una tonalidad más oscura y azulada, lo que cambia la lectura espectral de la piel. Cuando un paciente presenta una palidez persistente acompañada de un subtono azulado inusual, no se debe intentar 'corregir' con maquillaje sin antes realizar una evaluación clínica general. En el contexto de GlowApp, si la colorimetría detecta una cianosis sospechosa, el sistema debe priorizar la recomendación de una consulta médica sobre la selección de tonos de maquillaje, ya que la estética no debe enmascarar signos de salud subyacentes.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-cutaneo"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  },
+  {
+    "chunk_id": "colorimetria-carotenemia-009",
+    "title": "Carotenemia: La influencia dietética en la coloración cutánea",
+    "content": "La carotenemia es una condición benigna pero clínicamente relevante donde el exceso de ingesta de betacarotenos (presentes en zanahorias, calabazas, etc.) provoca una coloración amarillenta o anaranjada en la piel, especialmente en palmas, plantas y pliegues nasolabiales. Este tono no es un subtono de piel real, sino una acumulación de pigmento exógeno. Muchas personas con carotenemia creen erróneamente que tienen un subtono cálido o 'dorado' y eligen bases de maquillaje con exceso de pigmento amarillo, lo que resulta en una apariencia artificialmente saturada. La diferenciación se logra observando la coloración en la esclera (que permanece blanca en la carotenemia, a diferencia de la ictericia hepática). Es vital para el diagnóstico de colorimetría preguntar por los hábitos alimenticios si se detecta un tono amarillento inusual. En GlowApp, el algoritmo debe considerar la dieta como una variable de confusión en la lectura del subtono, sugiriendo neutralidad en los pigmentos de la base hasta que la piel recupere su tonalidad basal tras ajustar la ingesta de carotenoides.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK532924/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-cutaneo"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:05:41.139Z"
+  }
+]

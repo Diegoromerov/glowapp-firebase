@@ -1,0 +1,350 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-001",
+    "title": "Evaluación del Perfil del Metaboloma Cutáneo en Patologías Foliculares",
+    "content": "Más allá de la identificación de microorganismos, el diagnóstico moderno se desplaza hacia el análisis del metaboloma del cuero cabelludo. Los metabolitos producidos por la microbiota, como los ácidos grasos de cadena corta (AGCC), actúan como moléculas señalizadoras en el entorno del folículo piloso. Se ha demostrado que una alteración en la proporción de estos metabolitos influye directamente en la expresión génica de la papila dérmica, modulando la fase anágena. El estudio de la firma metabólica mediante espectrometría de masas permite identificar desequilibrios antes de que se manifiesten síntomas clínicos visibles como descamación o caída. Esta aproximación permite una medicina de precisión donde el diagnóstico no solo considera la presencia de Malassezia o Cutibacterium, sino la funcionalidad bioquímica de la comunidad microbiana. La literatura en PubMed subraya que el monitoreo de estos perfiles metabólicos ayuda a personalizar protocolos de tratamiento, evitando el uso innecesario de agentes antimicrobianos que podrían exacerbar la disbiosis. Es fundamental integrar este enfoque en la práctica clínica para entender por qué pacientes con cuadros similares responden de manera distinta a terapias tópicas convencionales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-002",
+    "title": "Evaluación de la Viscoelasticidad de la Vaina Radicular",
+    "content": "La integridad de la vaina radicular es un determinante crítico en la resistencia al desprendimiento folicular. Estudios recientes han empezado a correlacionar la pérdida de viscoelasticidad de esta estructura con cuadros de efluvio crónico no explicados por factores nutricionales o hormonales. La técnica de micro-indentación aplicada al cuero cabelludo permite evaluar la rigidez del tejido perifolicular, una medida que refleja el daño acumulado por estrés oxidativo y procesos de glicación. Cuando la vaina pierde su capacidad elástica, el anclaje del pelo se debilita, facilitando la tracción mecánica incluso en situaciones cotidianas. El diagnóstico clínico debe incorporar la evaluación de la tensión superficial del cuero cabelludo como un indicador de riesgo de desprendimiento prematuro. Esta métrica es especialmente relevante en pacientes con antecedentes de inflamación crónica, donde la remodelación de la matriz extracelular ha alterado la arquitectura del canal folicular. La aplicación de este conocimiento permite al clínico predecir la susceptibilidad a la caída y ajustar los tratamientos de fortalecimiento de barrera para mejorar el anclaje biológico del tallo piloso antes de que el proceso de miniaturización sea irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estructural"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuroinmunologia-003",
+    "title": "El Rol de las Células de Merkel en la Sensibilidad Folicular",
+    "content": "Las células de Merkel, tradicionalmente asociadas a la mecanorrecepción cutánea, desempeñan un papel subestimado en la regulación del ciclo capilar. Investigaciones emergentes indican que estas células, localizadas en el epitelio folicular, funcionan como sensores de estrés mecánico y químico que comunican señales directas a las terminaciones nerviosas periféricas. En patologías como la tricodinia o la inflamación folicular persistente, se ha observado una hiperactivación de estas células, resultando en la liberación local de neuropéptidos que perpetúan el estado inflamatorio. El diagnóstico de estas condiciones requiere una evaluación de la sensibilidad del cuero cabelludo, no como un síntoma aislado, sino como una manifestación de la desregulación del eje neuro-inmune. Comprender la densidad y actividad de las células de Merkel en el infundíbulo permite al clínico identificar pacientes que requieren terapias moduladoras de la inervación periférica. Este enfoque trasciende el diagnóstico tradicional, abordando la causa raíz de la percepción dolorosa y la respuesta inflamatoria exacerbada. La integración de la neurobiología cutánea es vital para el manejo integral de alopecias donde la inflamación no responde a los protocolos estándar, ofreciendo una nueva diana terapéutica para mejorar la resiliencia del folículo ante estímulos externos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-004",
+    "title": "Evaluación de la Rigidez Fibrilar por Productos de Glicación Avanzada",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) en la dermis capilar induce una rigidez estructural que afecta la dinámica de crecimiento folicular. La glicación no enzimática de las proteínas de la matriz, como el colágeno tipo IV y la elastina, altera la arquitectura del nicho folicular, provocando una compresión física que limita la proliferación celular en el bulbo. Clínicamente, esto se manifiesta como una pérdida de la flexibilidad del cuero cabelludo y una disminución en la capacidad de regeneración ante agresiones externas. El diagnóstico debe incluir la evaluación de biomarcadores de glicación en biopsias o mediante técnicas de autofluorescencia no invasiva. Identificar este proceso permite implementar estrategias de intervención temprana, como el uso de agentes antiglicantes tópicos y cambios en el perfil metabólico sistémico, para mitigar el endurecimiento de la matriz. La evidencia actual sugiere que la rigidez del entorno folicular es un factor silente que acelera la miniaturización en alopecias androgenéticas, haciendo que el diagnóstico de la salud de la matriz extracelular sea tan importante como el conteo de cabellos. El control de la glicación representa una frontera crucial en la dermatología cosmética preventiva.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mitocondria-005",
+    "title": "Disfunción Mitocondrial y el Agotamiento del Reservorio Energético Folicular",
+    "content": "La fase anágena del folículo piloso es uno de los procesos biológicos de mayor demanda energética en el cuerpo humano. La disfunción de las mitocondrias en las células de la papila dérmica y en las células madre del bulbo conduce a un agotamiento energético prematuro, resultando en ciclos de crecimiento más cortos y miniaturización. El diagnóstico de esta disfunción se está volviendo posible mediante el análisis de la expresión de enzimas del ciclo de Krebs en muestras obtenidas por tricograma. Un folículo con deficiencia mitocondrial muestra una incapacidad para mantener la tasa de división celular necesaria, lo que se traduce en un tallo capilar de menor diámetro y calidad. La evaluación clínica debe considerar factores que comprometen la salud mitocondrial, como la exposición crónica a contaminantes y deficiencias de cofactores metabólicos. Al identificar el 'agotamiento energético' como una causa subyacente, el clínico puede prescribir terapias de soporte metabólico que optimicen la función mitocondrial, restaurando la capacidad del folículo para completar su ciclo de vida. Este enfoque representa un cambio de paradigma: tratar la célula, no solo el síntoma de la caída, para mejorar la resiliencia a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology (EADV)",
+        "url": "https://eadv.org/publications/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termografia-006",
+    "title": "Termografía Infrarroja: Mapeo Clínico de la Inflamación Subclínica",
+    "content": "La termografía infrarroja de alta resolución ha emergido como una herramienta diagnóstica no invasiva para detectar la inflamación subclínica en el cuero cabelludo. A diferencia del examen visual, que solo identifica procesos inflamatorios avanzados (eritema, descamación), la termografía permite visualizar gradientes de temperatura que indican una vasodilatación localizada o un metabolismo folicular alterado. En condiciones como la alopecia areata en fase temprana o el efluvio telógeno crónico, el mapeo térmico revela patrones de 'hipertermia folicular' que preceden a la pérdida de densidad. Esta tecnología permite al dermatólogo monitorizar la eficacia de los tratamientos antiinflamatorios de forma objetiva, ajustando las dosis basándose en la normalización de la temperatura cutánea. La detección temprana mediante esta técnica es particularmente útil en pacientes asintomáticos donde el proceso patológico ya está comprometiendo la viabilidad de los folículos. Al integrar la termografía en la rutina clínica, se establece un estándar de diagnóstico preventivo, permitiendo intervenir mucho antes de que el daño estructural sea evidente en la tricoscopia convencional o el conteo de cabellos. La precisión de este método ayuda a reducir la incertidumbre diagnóstica en cuadros clínicos atípicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-barrera-007",
+    "title": "Disrupción de la Barrera Cutánea como Factor de Riesgo en Alopecias",
+    "content": "La integridad de la barrera cutánea del cuero cabelludo no es solo una cuestión cosmética; es la primera línea de defensa del folículo piloso contra agresores externos. La pérdida de función de barrera, medida a través de la pérdida de agua transepidérmica (TEWL), está intrínsecamente relacionada con la permeación de alérgenos y contaminantes que desencadenan procesos inflamatorios crónicos. En el diagnóstico de alopecias, evaluar la TEWL proporciona una medida cuantitativa de la vulnerabilidad del cuero cabelludo. Una barrera comprometida permite que sustancias irritantes alcancen el orificio folicular, induciendo estrés oxidativo y activando vías de señalización pro-inflamatorias que aceleran la miniaturización. Los estudios clínicos subrayan que la reparación de la barrera cutánea debe ser un componente esencial de cualquier protocolo de manejo de alopecia. Sin una barrera funcional, los tratamientos activos, como el minoxidil o los péptidos, pueden ser menos efectivos o causar irritación, exacerbando el problema inicial. Por lo tanto, el diagnóstico debe incluir una evaluación de la hidratación y la función de barrera, permitiendo el uso de emolientes específicos y restauradores de lípidos que preparen el terreno para la regeneración capilar exitosa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Dermatology/Health",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-estructural"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-epigenetica-008",
+    "title": "Modificaciones Epigenéticas y Respuesta a Tratamientos Foliculares",
+    "content": "La epigenética, específicamente los patrones de metilación del ADN, juega un papel crucial en la determinación de la respuesta individual a los tratamientos para la alopecia. Diferentes variantes en la expresión de los receptores de andrógenos, mediadas por cambios epigenéticos, explican por qué pacientes con perfiles hormonales similares presentan grados muy distintos de miniaturización. El diagnóstico moderno comienza a explorar el perfil de metilación en células de la vaina radicular externa, lo que permite predecir la probabilidad de éxito de terapias convencionales como los antiandrógenos o el minoxidil. Esta capacidad predictiva es invaluable para evitar tratamientos prolongados e ineficaces, ahorrando tiempo y recursos al paciente. La investigación en PubMed indica que factores ambientales y de estilo de vida pueden inducir cambios epigenéticos reversibles, lo que abre una ventana terapéutica para la 'reprogramación' del folículo. En el contexto de GlowApp, entender que la genética no es el destino único, sino que la epigenética ofrece un margen de maniobra, permite un enfoque mucho más empático y personalizado, donde la curaduría del tratamiento se ajusta al perfil molecular único de cada usuario, maximizando las probabilidades de resultados positivos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10500000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-009",
+    "title": "Mecanismos de Autofagia como Estrategia de Supervivencia Folicular",
+    "content": "La autofagia es un proceso celular esencial para la homeostasis del folículo piloso, actuando como un sistema de 'limpieza' que elimina orgánulos dañados y proteínas mal plegadas. Cuando este mecanismo falla, el bulbo piloso acumula desechos celulares que inducen senescencia, limitando su capacidad de regeneración. Investigaciones recientes han identificado que la inducción de la autofagia puede ser una estrategia clave para combatir la miniaturización folicular. En el diagnóstico clínico, se pueden detectar marcadores de estrés proteostático que sugieren una autofagia insuficiente. Esta perspectiva permite al clínico identificar folículos que, aunque vivos, están 'envejecidos' prematuramente por falta de mantenimiento celular. El uso de compuestos que modulan las vías de autofagia (como ciertos polifenoles o agentes miméticos de restricción calórica) representa una nueva frontera en el tratamiento dermatológico. Al integrar el análisis de la capacidad autofágica en el diagnóstico, no solo tratamos la caída, sino que promovemos la longevidad del nicho folicular. Este enfoque es fundamental para el envejecimiento capilar, donde el objetivo es mantener la viabilidad de las células madre del folículo por el mayor tiempo posible, asegurando un ciclo de crecimiento robusto y prolongado.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "spermidine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:51.445Z"
+  }
+]

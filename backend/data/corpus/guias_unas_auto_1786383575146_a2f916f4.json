@@ -1,0 +1,173 @@
+[
+  {
+    "chunk_id": "guias_unas-1786383575144-1-406ac856-efectos-de-la-radiacion-uv-en-la-matriz-fotobiologia-y-segur",
+    "title": "Efectos de la radiación UV en la matriz: fotobiología y seguridad",
+    "content": "La exposición recurrente a lámparas de polimerización UV/LED induce cambios fotobiológicos en la matriz ungueal. A diferencia de la piel, la lámina ungueal es una estructura densa de queratina que, aunque ofrece cierta protección, no filtra la radiación UVA de alta intensidad. La fotopolimerización prolongada puede generar estrés oxidativo en los melanocitos de la matriz, aumentando el riesgo de daño acumulativo en el ADN celular. Es imperativo integrar protocolos de fotoprotección con guantes de protección UV o protectores solares de amplio espectro aplicados 20 minutos antes del servicio. La intensidad de emisión de las lámparas debe ser calibrada periódicamente para evitar picos de irradiancia que superen los límites de seguridad dermatológica. La monitorización de la temperatura en el lecho ungueal durante la polimerización es esencial para prevenir la desnaturalización proteica y la inflamación subclínica de la matriz, factores que a largo plazo pueden derivar en onicodistrofias crónicas o cambios en la pigmentación ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/nails/gel-nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "UV filters"
+      ],
+      "contraindications": [
+        "historial de melanoma"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:39:35.144Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383575144-2-20712600-interaccion-de-solventes-organicos-y-la-integridad-de-la-mat",
+    "title": "Interacción de solventes orgánicos y la integridad de la matriz lipídica",
+    "content": "La remoción de productos fotopolimerizables mediante el uso de acetona y otros solventes orgánicos provoca una disrupción crítica en la barrera lipídica intercelular de la lámina ungueal. Estos solventes no solo disuelven el polímero, sino que extraen los lípidos naturales (ceramidas y colesterol) que mantienen la cohesión entre los corneocitos. Esta pérdida lipídica resulta en una deshidratación severa, aumentando la fragilidad y la permeabilidad de la uña ante agentes externos. La práctica de limar la superficie para acelerar la penetración del solvente exacerba este daño, reduciendo el espesor de la placa ungueal y exponiendo el lecho a posibles irritaciones químicas. Se recomienda el uso de aceites oclusivos post-remoción para restaurar el manto lipídico y minimizar la pérdida de agua transepidérmica. La técnica de 'soaking' debe limitarse estrictamente al tiempo necesario para evitar la exposición innecesaria del hiponiquio y la piel periungueal a los vapores y residuos del solvente, mitigando así el riesgo de dermatitis de contacto irritativa.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32458921/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "solventes"
+      ],
+      "contraindications": [
+        "onicorrexis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remocion_segura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:39:35.144Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383575144-5-db8de5e5-cinetica-de-degradacion-de-fotoiniciadores-y-estabilidad-del",
+    "title": "Cinética de degradación de fotoiniciadores y estabilidad del color",
+    "content": "La estabilidad química de los geles y esmaltes semipermanentes depende de la integridad de los fotoiniciadores. Estos compuestos son sensibles a la exposición solar y a la luz ambiental, lo que puede desencadenar una polimerización prematura o una degradación parcial dentro del envase. Cuando un producto ha sido expuesto a fuentes de luz inadecuadas, la cinética de la reacción exotérmica durante la aplicación en cabina se vuelve impredecible, pudiendo resultar en una polimerización incompleta. Esta falta de conversión total de monómeros a polímeros aumenta la biodisponibilidad de monómeros libres, los cuales son potentes sensibilizadores cutáneos. La gestión de inventario debe priorizar el almacenamiento en recipientes opacos y evitar la exposición directa a la luz UV durante el servicio. Un producto que presenta cambios en la viscosidad o separación de fases es un indicador claro de degradación química y debe ser descartado para evitar reacciones alérgicas por contacto, las cuales pueden manifestarse como dermatitis de contacto alérgica en áreas distantes a las manos, como párpados o cuello.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "monómeros"
+      ],
+      "contraindications": [
+        "alergia a acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:39:35.144Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786383575144-6-20e5d40f-interaccion-quimica-entre-el-ph-del-lecho-y-primers-acidos",
+    "title": "Interacción química entre el pH del lecho y primers ácidos",
+    "content": "El pH del lecho ungueal y la placa circundante es un factor determinante en la eficacia de los primers y agentes de adhesión. Los primers ácidos (basados en ácido metacrílico) funcionan mediante la desmineralización superficial y la creación de porosidad en la queratina para mejorar el anclaje mecánico. Sin embargo, un pH demasiado ácido puede irritar el tejido vivo del lecho ungueal, provocando inflamación y aumentando el riesgo de onicólisis inducida por contacto químico. Por otro lado, un pH alcalino puede comprometer la estabilidad del enlace químico entre el adhesivo y la superficie. La elección del sistema de adhesión debe considerar el estado fisiológico de la uña del cliente; en uñas con tendencia a la deshidratación o delgadas, se prefieren primers libres de ácido (acid-free) que utilizan mecanismos de adhesión basados en la afinidad molecular en lugar de la corrosión ácida. La aplicación debe ser precisa, evitando el contacto con la piel periungueal para prevenir sensibilizaciones. El monitoreo del pH post-servicio es una práctica avanzada que permite ajustar el protocolo de aplicación según la respuesta individual de cada cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico",
+        "primers"
+      ],
+      "contraindications": [
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_adhesión"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:39:35.144Z"
+  }
+]

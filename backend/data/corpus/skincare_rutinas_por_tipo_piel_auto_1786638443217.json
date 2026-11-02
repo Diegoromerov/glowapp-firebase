@@ -1,0 +1,171 @@
+[
+  {
+    "chunk_id": "skincare-ritmos-circadianos-001",
+    "title": "Impacto de la desincronización del reloj biológico cutáneo en la función barrera",
+    "content": "La piel posee relojes moleculares periféricos regulados por genes como CLOCK y BMAL1, los cuales controlan procesos clave como la proliferación de queratinocitos, la reparación del ADN y la síntesis de lípidos. La exposición a luz artificial, especialmente la luz azul de alta energía (HEV) durante la noche, induce una desincronización de estos ritmos circadianos, comprometiendo la función de barrera y acelerando la senescencia cutánea. Según estudios publicados en 'Journal of Investigative Dermatology', la piel exhibe una mayor permeabilidad y una menor capacidad de reparación tras la exposición nocturna a luz artificial. La optimización de la rutina requiere sincronizar la aplicación de activos reparadores con el pico de expresión génica nocturna. Se ha observado que la aplicación de activos que modulan la vía de las sirtuinas antes del descanso mejora la resiliencia dérmica. Es fundamental limitar el uso de dispositivos electrónicos antes de dormir para evitar la supresión de la melatonina tópica, la cual actúa como un potente antioxidante endógeno. La integración de esta cronobiología en la rutina clínica de GlowApp permite personalizar el uso de retinoides y antioxidantes, maximizando la eficacia terapéutica y minimizando la irritación al alinear el tratamiento con la fisiología natural del paciente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)32039-3/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "melatonina",
+        "sirtuinas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cronobiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:04.317Z"
+  },
+  {
+    "chunk_id": "skincare-microbioma-acne-002",
+    "title": "Interferencia en el Quorum Sensing como estrategia clínica en el acné del adulto",
+    "content": "El acné del adulto no solo depende de la proliferación de Cutibacterium acnes, sino de la formación de biopelículas (biofilms) mediante un proceso de comunicación bacteriana conocido como Quorum Sensing. Este mecanismo permite que las bacterias se vuelvan más resistentes a los antibióticos y agentes tópicos convencionales. Investigaciones en 'Frontiers in Cellular and Infection Microbiology' sugieren que la interrupción de las moléculas de señalización (como las N-acil homoserina lactonas) puede disminuir la virulencia bacteriana sin necesidad de recurrir a antibióticos sistémicos, reduciendo así la resistencia antimicrobiana. En el contexto clínico de Bogotá, donde el exposoma urbano favorece la inflamación, es crucial utilizar ingredientes que inhiban la formación de biofilms, como ciertos extractos botánicos y ácidos orgánicos de bajo peso molecular. La rutina para pieles con acné debe enfocarse no solo en la desinfección, sino en la modulación del microambiente folicular para evitar que el C. acnes active la respuesta inflamatoria mediada por receptores tipo Toll (TLR2). Este enfoque representa una evolución hacia terapias más inteligentes y menos agresivas para la barrera cutánea, permitiendo un manejo a largo plazo en pacientes con acné persistente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Frontiers in Cellular and Infection Microbiology",
+        "url": "https://www.frontiersin.org/articles/10.3389/fcimb.2023.1186717/full",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico",
+        "extractos botánicos"
+      ],
+      "contraindications": [
+        "rosácea severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-acne-adulto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:04.317Z"
+  },
+  {
+    "chunk_id": "skincare-exposoma-quelacion-003",
+    "title": "Quelación estratégica de metales pesados en la rutina urbana de Bogotá",
+    "content": "La polución atmosférica en entornos urbanos densos como Bogotá incluye partículas suspendidas (PM2.5) ricas en metales pesados como cadmio, plomo y mercurio. Estos metales actúan como catalizadores en la formación de especies reactivas de oxígeno (ROS), desencadenando el estrés oxidativo incluso en pieles jóvenes. La literatura dermatológica, incluyendo reportes de la American Academy of Dermatology (AAD), subraya que los antioxidantes convencionales como la vitamina C a menudo son insuficientes frente a la carga metálica del exposoma. La incorporación de agentes quelantes tópicos en la rutina matutina, como el EDTA disódico o ciertos polímeros de ácido fítico, es fundamental para secuestrar estos metales antes de que penetren en la epidermis o catalicen daños en el proteoma cutáneo. Esta estrategia de 'escudo protector' complementa la fotoprotección tradicional, creando una barrera química que neutraliza el daño ambiental. La correcta implementación de quelantes debe realizarse en limpiadores o serums de primera capa para garantizar su efectividad antes de la exposición diaria al aire urbano, previniendo la inflamación subclínica o 'inflammaging' que caracteriza el envejecimiento prematuro en ciudades con alta polución.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/pollution",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido fítico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "defensa-urbana"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:04.317Z"
+  },
+  {
+    "chunk_id": "skincare-neurocosmetica-008",
+    "title": "Neurocosmética: Modulación de la respuesta neurogénica en pieles hipersensibles",
+    "content": "La neurocosmética explora la estrecha relación entre el sistema nervioso y la piel. En pieles hipersensibles, los receptores sensoriales como los canales TRPV1 (receptores de potencial transitorio vaniloide 1) se encuentran sobreexpresados o hipersensibilizados. Esto causa una respuesta exagerada a estímulos térmicos, químicos o mecánicos, manifestándose como ardor, picor o eritema persistente. La modulación de estos receptores mediante activos neurocosméticos específicos puede 'calmar' la señalización nerviosa, reduciendo la reactividad cutánea. Esta práctica es fundamental en el manejo de condiciones como la rosácea o la dermatitis por contacto, donde la inflamación neurogénica es un componente central. En GlowApp, integramos esta visión para ofrecer rutinas que no solo buscan la restauración de la barrera física, sino también la modulación de los receptores sensoriales. Es esencial evitar limpiadores con pH alcalino que exacerben esta activación nerviosa, optando por formulaciones con pH fisiológico que respeten el microbioma y reduzcan la carga de estrés neurogénico. La neurocosmética representa un pilar clínico clave para mejorar la adherencia al tratamiento en pacientes cuya calidad de vida se ve afectada por la hipersensibilidad cutánea crónica.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/4/2100",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "moduladores TRPV1"
+      ],
+      "contraindications": [
+        "alergias a extractos botánicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "control-sensibilidad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:04.317Z"
+  }
+]

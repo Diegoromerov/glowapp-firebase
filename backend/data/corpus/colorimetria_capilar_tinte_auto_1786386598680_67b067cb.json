@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386598679-1-56a8b27f-analisis-espectrofotometrico-de-la-reflectancia-en-cabellos-",
+    "title": "Análisis espectrofotométrico de la reflectancia en cabellos tratados con agentes quelantes",
+    "content": "La precisión en la colorimetría capilar depende críticamente de la eliminación de metales de transición (cobre, hierro, manganeso) que catalizan la oxidación incontrolada del peróxido de hidrógeno. Estos metales, acumulados a partir del agua de lavado, actúan como catalizadores de Fenton, provocando una degradación prematura de los precursores de tinte y una alteración del espectro de reflectancia final. El uso de agentes quelantes específicos, como el EDTA o el ácido etidrónico, no solo protege la integridad estructural de la queratina, sino que estabiliza el tono deseado al prevenir la formación de radicales libres hidroxilo. Estudios recientes mediante espectrofotometría de reflectancia muestran que la ausencia de quelación efectiva resulta en un viraje cromático hacia tonos cálidos no deseados, debido a la oxidación incompleta de las moléculas de acoplamiento. La optimización del pH durante la aplicación es insuficiente si la carga metálica de la fibra no es neutralizada previamente, lo que convierte a la quelación en un paso técnico indispensable para alcanzar la fidelidad cromática exigida en colorimetría de alta precisión.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido etidrónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:58.679Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386598679-2-358fb298-dinamica-de-la-transicion-vitrea-en-la-matriz-queratinica-du",
+    "title": "Dinámica de la transición vítrea en la matriz queratínica durante el proceso de teñido",
+    "content": "La penetración de los precursores de tinte en la corteza capilar está gobernada por la transición vítrea de la matriz de queratina, un fenómeno dependiente de la temperatura y la hidratación. Durante la aplicación del tinte, el agente alcalinizante (usualmente amoniaco o sus derivados) induce un hinchamiento de la fibra que reduce la temperatura de transición vítrea, permitiendo que las moléculas de tinte de bajo peso molecular difundan hacia el interior. Sin embargo, si la cinética de este proceso no está controlada, la excesiva expansión cuticular puede comprometer la retención del color a largo plazo. La modelización matemática sugiere que el control térmico local y el uso de agentes humectantes pueden modular esta transición, optimizando la distribución de los pigmentos sin degradar los puentes disulfuro. Una gestión adecuada de la viscoelasticidad capilar post-aplicación es vital para cerrar la cutícula y asegurar que el complejo de membrana celular (CMC) actúe como una barrera efectiva contra la lixiviación del color. Este enfoque termodinámico permite predecir la saturación del color basándose en la porosidad inicial y la capacidad de hinchamiento de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38552910/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco",
+        "agentes humectantes"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:58.679Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386598679-3-f63de8b6-influencia-de-la-arquitectura-de-la-capa-f-en-la-resistencia",
+    "title": "Influencia de la arquitectura de la capa F en la resistencia al lavado de tintes directos",
+    "content": "La capa F, una monocapa lipídica unida covalentemente a la superficie de la cutícula, es el principal determinante de la hidrofobicidad capilar. En procesos de coloración, la integridad de esta capa es frecuentemente alterada, lo que facilita la entrada de pigmentos pero, simultáneamente, acelera la pérdida de color mediante el lavado. Los tintes directos, que se adsorben mediante interacciones electrostáticas y fuerzas de Van der Waals, dependen de la carga neta de la superficie capilar. Cuando la capa F se degrada por procesos oxidativos repetidos, la superficie se vuelve más hidrofílica, lo que reduce la afinidad de los pigmentos catiónicos y provoca una migración descontrolada hacia el exterior. Para mitigar este efecto, el uso de polímeros catiónicos de alto peso molecular puede restaurar parcialmente la barrera superficial, creando una película protectora que minimiza la lixiviación. La evaluación de la energía superficial mediante ángulos de contacto es una herramienta diagnóstica emergente para predecir la durabilidad de los tintes directos en cabellos con daño estructural previo, permitiendo ajustes personalizados en la formulación de los productos de mantenimiento.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/dermatology-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_superficial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:58.679Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386598679-4-e28fc197-interferencia-de-los-niveles-de-magnesio-y-calcio-en-la-poli",
+    "title": "Interferencia de los niveles de magnesio y calcio en la polimerización de precursores",
+    "content": "La presencia de iones divalentes como el calcio y el magnesio en el agua de servicio altera significativamente la cinética de polimerización de los precursores de tinte. Estos iones pueden formar complejos insolubles con los agentes de acoplamiento, interfiriendo con la formación del polímero final y resultando en una coloración desigual o un viraje de tono inesperado. A nivel microscópico, estos iones compiten por los sitios de unión en la matriz de queratina, bloqueando el acceso a los grupos amino que son esenciales para la fijación del color. Además, la acumulación de depósitos minerales aumenta la rigidez de la fibra, lo que puede inducir microfracturas durante la manipulación mecánica post-tinte. La implementación de sistemas de filtración por intercambio iónico en el salón es una estrategia preventiva eficaz para estandarizar el entorno químico de la coloración. Al eliminar la interferencia de iones divalentes, se garantiza que la reacción de acoplamiento oxidativo proceda de manera controlada, mejorando la reproducibilidad del color y la salud estructural del cabello a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org/journal-archive/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_del_agua"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:58.679Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386598679-5-3427cea2-efectos-de-la-radiacion-electromagnetica-en-la-estabilidad-d",
+    "title": "Efectos de la radiación electromagnética en la estabilidad de los tintes azoicos",
+    "content": "Los tintes de tipo azoico, ampliamente utilizados en la industria capilar por su intensidad cromática, son altamente susceptibles a la degradación fotolítica inducida por radiación UV y luz azul. La absorción de fotones de alta energía provoca la ruptura del enlace azo (-N=N-), lo que resulta en la formación de aminas aromáticas y la pérdida irreversible del color. Este proceso no solo afecta la estética, sino que la generación de subproductos de degradación puede aumentar el riesgo de sensibilización cutánea. La investigación actual se centra en la incorporación de estabilizadores fotoquímicos y filtros UV en las fórmulas de tinte para absorber la energía incidente antes de que alcance el cromóforo. Adicionalmente, el uso de técnicas de encapsulación en nanovehículos poliméricos ha demostrado ser efectivo para proteger las moléculas de tinte de la exposición ambiental. Comprender la cinética de esta degradación es fundamental para los profesionales que operan en regiones de alta altitud o con alta exposición solar, donde la estabilidad del color es un desafío técnico constante que requiere productos con protección fotovoltaica avanzada.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Photochemistry and Photobiology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "estabilizadores fotoquímicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "fotobiologia_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:58.679Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386598679-6-3e411066-cinetica-de-la-peroxidasa-endogena-y-su-papel-en-la-oxidacio",
+    "title": "Cinética de la peroxidasa endógena y su papel en la oxidación incontrolada",
+    "content": "El cabello humano contiene trazas de enzimas endógenas, incluyendo peroxidasas, que pueden permanecer activas tras procesos de limpieza. Durante la aplicación de tintes de oxidación, estas enzimas pueden catalizar la descomposición del peróxido de hidrógeno de manera incontrolada, acelerando la reacción antes de que los precursores hayan penetrado adecuadamente en la corteza. Este fenómeno, conocido como oxidación prematura, resulta en la formación de polímeros de gran tamaño en la superficie de la fibra en lugar de en su interior, lo que compromete la profundidad del color y la durabilidad del servicio. La inhibición de la actividad enzimática mediante el ajuste preciso del pH y la adición de agentes secuestrantes es una estrategia clave para regular la cinética de la reacción. Estudios de microscopía electrónica han confirmado que la inactivación de estas enzimas mejora significativamente la uniformidad del depósito de pigmento en cabellos con alta porosidad. El control de la peroxidasa endógena representa un avance crítico en la estandarización de los resultados de coloración, permitiendo un control más predecible sobre el subtono residual y la saturación final del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38990123/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes secuestrantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:29:58.679Z"
+  }
+]

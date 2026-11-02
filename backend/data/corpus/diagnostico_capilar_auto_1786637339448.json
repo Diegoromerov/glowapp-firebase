@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunosenescencia-001",
+    "title": "Inmunosenescencia y el Agotamiento de Células T Reguladoras en el Nicho Folicular",
+    "content": "La inmunosenescencia en el cuero cabelludo representa un cambio fundamental en la homeostasis del folículo piloso, caracterizado por la disminución funcional de las células T reguladoras (Tregs). Investigaciones recientes en PubMed indican que estas células no solo suprimen la autoinmunidad, sino que son esenciales para la regeneración de las células madre del folículo piloso (HFSC). A medida que el individuo envejece, el microambiente del nicho folicular sufre una alteración en la señalización citoquínica, provocando un estado proinflamatorio crónico de bajo grado que acelera la miniaturización. La pérdida de la capacidad supresora de las Tregs permite que factores inflamatorios locales detengan prematuramente la fase anágena, induciendo un paso acelerado hacia la catágena. Clínicamente, esto se manifiesta como una reducción progresiva en el diámetro del tallo y una menor densidad capilar, incluso en ausencia de una alopecia androgenética clásica. La comprensión de este mecanismo abre nuevas puertas para terapias inmunomoduladoras que busquen restaurar el equilibrio del nicho folicular mediante la preservación de la población de Tregs, actuando como un 'reloj biológico' para la longevidad del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40-60",
+        "60+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tacrolimus",
+        "pimecrolimus"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-densidad-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:08:39.908Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mecanobiologia-002",
+    "title": "Mecanotransducción: El Estrés Físico como Señal de Crecimiento Folicular",
+    "content": "La mecanotransducción es el proceso mediante el cual las células del folículo piloso convierten estímulos mecánicos en respuestas bioquímicas. En el cuero cabelludo, la tensión mecánica ejercida sobre la vaina radicular externa y la papila dérmica modula la expresión de vías de señalización cruciales como Wnt/beta-catenina y Sonic Hedgehog. Estudios publicados en revistas dermatológicas señalan que una tensión excesiva o crónica, como la observada en hábitos de peinado tensos o tracción, puede activar vías de estrés celular que desencadenan la apoptosis prematura. Por el contrario, estímulos mecánicos controlados y de baja magnitud, como los masajes capilares técnicos, pueden mejorar la perfusión sanguínea y estimular la expresión de factores de crecimiento como el VEGF. Este fenómeno subraya la importancia de evaluar la biomecánica del cuero cabelludo durante el diagnóstico: un tejido rígido o con baja distensibilidad limita la capacidad de expansión del folículo durante su fase de crecimiento, perpetuando estados de atrofia que no responden únicamente a tratamientos farmacológicos sistémicos. La integración de la mecanobiología permite un enfoque más holístico en la recuperación capilar, considerando la integridad estructural del tejido circundante.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "peinados-tension-extrema"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-biomecanica-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:08:39.908Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicobiologia-003",
+    "title": "Glicobiología de la Matriz: Metilación de Azúcares y Rigidez Folicular",
+    "content": "La glicobiología en el contexto capilar se refiere al estudio de la modificación enzimática de proteínas y lípidos en la matriz folicular. Un aspecto crítico recientemente identificado es la metilación de azúcares en la matriz extracelular (MEC) que rodea el bulbo piloso. La acumulación de productos de glicación avanzada (AGEs) no solo altera la flexibilidad de la vaina radicular, sino que también crea una barrera física que dificulta la difusión de nutrientes y factores de crecimiento hacia la papila dérmica. Este proceso se ve exacerbado por el estrés oxidativo y niveles elevados de glucosa sistémica, actuando como un factor de riesgo independiente para la miniaturización folicular. La rigidez de la matriz inducida por estos glicanos impide que las células madre foliculares migren y se diferencien correctamente durante el inicio de la anágena. El diagnóstico clínico mediante elastografía o análisis de la resistencia de la vaina permite identificar esta 'fibrosis silenciosa' antes de que la pérdida de densidad sea clínicamente evidente a simple vista. El tratamiento debe enfocarse no solo en la estimulación folicular, sino en la modulación del entorno bioquímico que favorece esta glicación excesiva.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes-antiglicacion"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-metabolico-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:08:39.908Z"
+  }
+]

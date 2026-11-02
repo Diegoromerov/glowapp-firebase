@@ -1,0 +1,363 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-ritmos-circadianos-001",
+    "title": "Cronobiología Folicular: El Ciclo de Crecimiento y los Ritmos Circadianos",
+    "content": "La regulación del ciclo del folículo piloso no es un proceso estático, sino que está intrínsecamente ligado a los ritmos circadianos del organismo. Investigaciones recientes publicadas en plataformas como PubMed sugieren que los genes reloj (Clock genes) como PER1 y PER2 desempeñan un papel crucial en la transición de la fase anágena a la catágena. En la práctica clínica, esto implica que las fluctuaciones hormonales diurnas, especialmente los picos de cortisol y melatonina, influyen en la tasa de división celular de la matriz pilosa. Un desajuste en el ritmo circadiano del paciente, derivado de trastornos del sueño o turnos laborales rotativos, puede manifestarse como un efluvio crónico o una desaceleración en la tasa de crecimiento longitudinal del tallo. Es vital integrar el historial de higiene del sueño del paciente en la anamnesis capilar para identificar si el origen de la pérdida de densidad tiene un componente cronobiológico. La sincronización celular es fundamental para mantener la homeostasia del folículo, y cualquier disrupción prolongada altera la expresión de factores de crecimiento como el IGF-1, afectando directamente la calidad de la fibra capilar resultante.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-002",
+    "title": "Disbiosis del Microbioma del Cuero Cabelludo y su Relación con la Inflamación",
+    "content": "La composición del microbioma del cuero cabelludo, dominada por especies de Cutibacterium y Malassezia, es un determinante crítico en la salud folicular. Estudios publicados en el Journal of Investigative Dermatology indican que una alteración en la proporción de estas comunidades microbianas, denominada disbiosis, puede desencadenar respuestas inflamatorias crónicas en el nicho de las células madre del folículo. A diferencia de la dermatitis seborreica clínica, esta inflamación suele ser subclínica y persistente, facilitando la miniaturización en pacientes con predisposición a la alopecia androgenética. La acumulación de subproductos metabólicos bacterianos, como las lipasas que liberan ácidos grasos libres de alto potencial irritante, compromete la barrera cutánea del cuero cabelludo. El diagnóstico debe incluir la evaluación de la oleosidad y la presencia de descamación imperceptible para determinar si la disbiosis está exacerbando un proceso alopécico preexistente. El manejo terapéutico no solo requiere antifúngicos, sino también el restablecimiento del pH ácido protector del cuero cabelludo mediante formulaciones tópicas específicas que favorezcan la microbiota comensal beneficiosa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-003",
+    "title": "Impacto del Exposoma Urbano en la Integridad de la Cutícula Capilar",
+    "content": "El exposoma, definido como el conjunto de factores ambientales y estilos de vida, ejerce un impacto directo sobre la estructura proteica del tallo capilar. En ciudades con alta contaminación atmosférica como Bogotá, la deposición de partículas de materia particulada (PM2.5 y PM10) sobre el cuero cabelludo y el tallo, combinada con la radiación UV, induce procesos de carbonilación y oxidación de las proteínas de la queratina. Este daño estructural no solo debilita la fibra, aumentando la susceptibilidad a la rotura mecánica, sino que también puede obstruir el ostium folicular, interfiriendo con la correcta salida del sebo y promoviendo la peroxidación lipídica. La literatura dermatológica sugiere que los pacientes expuestos a altos niveles de contaminantes presentan una mayor fragilidad capilar y una menor resistencia a los tratamientos químicos de coloración o alisado. El diagnóstico debe considerar la exposición diaria del paciente a factores ambientales y recomendar protocolos de limpieza profunda que incorporen agentes quelantes y antioxidantes tópicos para neutralizar los radicales libres derivados de la polución ambiental antes de que penetren en la corteza del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes_quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_exposoma"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-vitaminas-004",
+    "title": "El Rol de la Ferritina y la Vitamina D en el Diagnóstico Diferencial",
+    "content": "La deficiencia de micronutrientes es un factor exacerbativo común en diversas alopecias, pero su interpretación requiere cautela clínica. Niveles subóptimos de ferritina sérica (a menudo definidos bajo 30-40 ng/mL en contexto capilar, aunque el rango de laboratorio sea mayor) y niveles insuficientes de vitamina D (menores a 30 ng/mL) han sido vinculados con el efluvio telógeno crónico y la potenciación de la alopecia androgenética femenina. La vitamina D, en particular, actúa como un potente modulador del ciclo folicular a través del receptor de vitamina D (VDR), esencial para el inicio de la fase anágena. Es imperativo que el diagnóstico clínico no asuma causalidad directa sin antes descartar otras patologías subyacentes. La suplementación debe estar basada en analíticas sanguíneas previas y supervisión profesional, ya que la hipervitaminosis también puede tener efectos deletéreos. En la práctica de GlowApp, el análisis de estos biomarcadores permite estratificar el tratamiento hacia un enfoque sistémico que complemente la terapia tópica o farmacológica, optimizando así la recuperación de la densidad capilar mediante el soporte metabólico adecuado.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2023",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_d",
+        "hierro"
+      ],
+      "contraindications": [
+        "automedicacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_laboratorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-inflamacion-005",
+    "title": "Inflamación Perifolicular: Marcadores Clínicos y Tricoscópicos",
+    "content": "La inflamación perifolicular es un proceso dinámico que precede a la fibrosis en las alopecias cicatriciales, pero también está presente en formas no cicatriciales como la alopecia androgenética. Tricoscópicamente, la presencia de halos peripilares (blancos o eritematosos) y el eritema perifolicular son indicadores clave de un proceso inflamatorio activo. La detección temprana mediante dermatoscopia de alta resolución permite intervenir antes de que la inflamación comprometa irreversiblemente las células madre del bulge. La inflamación crónica activa la vía de señalización de citoquinas pro-inflamatorias como el TNF-alfa y la IL-6, que inducen la apoptosis prematura del folículo. Un error común es subestimar la importancia de estos signos en pacientes con pérdida de densidad difusa. La evaluación de estos marcadores debe ser sistemática, utilizando el dermoscopio para identificar la extensión del eritema alrededor de los tallos miniaturizados. Un enfoque terapéutico multimodal que combine antiinflamatorios tópicos suaves y, si es necesario, corticoides de baja potencia, es esencial para detener la progresión del daño mientras se instaura el tratamiento de base para la alopecia.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Clinics",
+        "url": "https://www.dermatologic.theclinics.com/article/S0733-8635(23)00045-2",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides_topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tricoscopia_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-trico-toc-006",
+    "title": "Tricotilomanía y Comportamientos de Manipulación: Abordaje Clínico",
+    "content": "La tricotilomanía, clasificada dentro de los trastornos obsesivo-compulsivos y relacionados, representa un desafío diagnóstico significativo debido a la negación frecuente del paciente sobre el arrancamiento del cabello. Desde una perspectiva dermatológica, el diagnóstico se basa en la identificación de patrones tricoscópicos característicos: pelos rotos a diferentes longitudes, pelos en 'coma', pelos en 'sacacorchos' y una distribución asimétrica en áreas de fácil alcance manual. A diferencia de la alopecia areata, no se observan pelos en 'signo de exclamación' de manera predominante, y la piel suele estar intacta, aunque pueden coexistir excoriaciones. Es fundamental que el profesional de GlowApp maneje la sospecha con empatía, evitando el juicio y derivando al paciente a una evaluación psicológica o psiquiátrica complementaria. El tratamiento dermatológico solo es efectivo si se aborda la raíz del comportamiento compulsivo. El uso de técnicas de modificación de conducta, junto con el soporte de grupos de apoyo, es la piedra angular del manejo exitoso. La intervención temprana previene el daño cicatricial irreversible derivado del trauma mecánico repetido sobre el folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institute of Mental Health (NIMH)",
+        "url": "https://www.nimh.nih.gov/health/topics/trichotillomania",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-post-covid-007",
+    "title": "Efluvio Telógeno Post-Infeccioso: Persistencia y Manejo",
+    "content": "El efluvio telógeno (ET) posterior a infecciones virales, como el COVID-19, ha demostrado ser un fenómeno complejo que a menudo se prolonga más allá del periodo clásico de 3 a 6 meses. La patogénesis involucra no solo el estrés sistémico de la fiebre alta, sino también una respuesta inflamatoria persistente y cambios en el metabolismo energético del folículo piloso. En el diagnóstico de GlowApp, es esencial diferenciar el ET post-infeccioso de un ET que desenmascara una alopecia androgenética preexistente. La tricoscopia puede revelar la presencia de pelos miniaturizados que antes no eran evidentes, lo cual sugiere un diagnóstico dual. La persistencia del efluvio más allá de los 6 meses debe alertar al clínico para descartar causas endocrinas o deficiencias nutricionales que se hayan visto exacerbadas por la infección. El enfoque terapéutico debe ser tranquilizador, informando al paciente sobre el carácter autolimitado del proceso, pero también activo, asegurando un entorno óptimo para la recuperación mediante suplementación proteica y control de factores de estrés oxidativo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos",
+        "biotina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_efluvios"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-fotoproteccion-008",
+    "title": "Fotoprotección Capilar: Más allá de la Estética del Tallo",
+    "content": "La radiación ultravioleta (UVA y UVB) no solo degrada la melanina y las proteínas estructurales del tallo capilar, sino que también puede inducir daño en el ADN de las células madre foliculares situadas en el bulge, especialmente en zonas de raya marcada o alopecias con baja densidad. La fotoprotección del cuero cabelludo es un área frecuentemente olvidada en la rutina de cuidado clínico. La exposición solar crónica en altitudes elevadas, como es el caso de Bogotá, aumenta significativamente el riesgo de queratosis actínicas y carcinoma espinocelular en el cuero cabelludo, especialmente en fototipos bajos. El diagnóstico debe incluir la evaluación de la exposición solar del paciente y la recomendación de fotoprotección física (sombreros, gorras) o química (sprays con filtros solares no comedogénicos) en áreas de mayor exposición. Es fundamental educar al paciente sobre el hecho de que el cabello no brinda una protección solar completa, y que el cuero cabelludo es una zona de alto riesgo para el desarrollo de neoplasias cutáneas, siendo la prevención la mejor estrategia de manejo dermatológico a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/scalp-skin-cancer/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "I",
+        "II",
+        "III"
+      ],
+      "ingredients": [
+        "filtros_uv"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-menopausia-009",
+    "title": "Transición Menopáusica y el Perfil Androgénico Folicular",
+    "content": "Durante la transición menopáusica, el cambio en el ratio estrógeno/andrógeno provoca una serie de modificaciones en la fisiología capilar que requieren un diagnóstico diferenciado. La disminución de los niveles de estrógenos, que actúan como factores protectores del ciclo anágeno, permite que la influencia androgénica se manifieste de forma más pronunciada, resultando en una miniaturización folicular difusa que suele afectar la zona central (patrón Ludwig). Este proceso no es idéntico a la alopecia androgenética masculina, ya que la presentación clínica es más insidiosa y a menudo se acompaña de una reducción en el diámetro de la fibra capilar generalizada. El diagnóstico debe considerar el perfil hormonal del paciente y la presencia de otros signos de hiperandrogenismo. La intervención temprana con agentes que modulen la respuesta folicular a los andrógenos, junto con el soporte del ginecólogo para el manejo de la terapia de reemplazo hormonal si está indicada, permite frenar la progresión. En GlowApp, la monitorización de la densidad capilar en esta etapa es crucial para ajustar las expectativas del paciente y ofrecer protocolos personalizados que mejoren la calidad cosmética del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "The Menopause Society",
+        "url": "https://www.menopause.org/for-women/expert-answers-to-frequently-asked-questions-about-menopause",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "terapia_hormonal_sin_supervision"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_endocrino"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:45.870Z"
+  }
+]

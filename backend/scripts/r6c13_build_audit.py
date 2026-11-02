@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+"""Build r6c13_corpus_expansion_audit.json + proposals (R6-C13 corpus expansion audit)."""
+import json, os
+
+BASE = r"C:\beauty-app\backend\src\data\eval"
+
+canonical_misses = [
+    {"query": "skincare_003", "query_text": "Rutina para piel grasa en clima húmedo de Bogotá", "chunk": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-", "title": "Ácido Capriloil Salicílico (LHA) y la descamación acumulativa en pieles reactivas", "category": "ingredientes_activos_contraindicaciones", "semantic_concept": "LHA como activo para piel grasa", "lexical_terms": ["LHA", "capriloil salicílico", "descamación"], "current_rank_approx": 1998, "current_sim": 0.3505, "rank_class": "DEEP_MISS"},
+    {"query": "skincare_007", "query_text": "Rutina nocturna anti-edad para piel mixta 35 años", "chunk": "skincare-rutinas-autofagia-peptidos-003", "title": "Modulación de la autofagia celular mediante péptidos señalizadores", "category": "skincare_rutinas_por_tipo_piel", "semantic_concept": "autofagia celular y péptidos en rutina anti-edad", "lexical_terms": ["autofagia", "péptidos", "anti-edad"], "current_rank_approx": 651, "current_sim": 0.3157, "rank_class": "DEEP_MISS"},
+    {"query": "cabello_002", "query_text": "Tratamiento para cabello dañado por decoloración", "chunk": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion", "title": "Espectroscopía de Raman de Superficie (SERS) para la Detección de Proteínas de Estrés en el Tallo", "category": "diagnostico_capilar", "semantic_concept": "detección de daño proteico capilar vía SERS", "lexical_terms": ["SERS", "Raman", "proteínas de estrés"], "current_rank_approx": 567, "current_sim": 0.4255, "rank_class": "DEEP_MISS"},
+    {"query": "cabello_006", "query_text": "Mejor champú para cuero cabelludo graso y puntas secas", "chunk": "estabilidad-ph-cuero-cabelludo-004", "title": "Homeostasis del cuero cabelludo post-coloración", "category": "colorimetria_capilar_tinte", "semantic_concept": "homeostasis del cuero cabelludo", "lexical_terms": ["homeostasis", "cuero cabelludo", "pH"], "current_rank_approx": 83, "current_sim": 0.3679, "rank_class": "BORDERLINE_MISS"},
+    {"query": "cejas_004", "chunk": "visajismo-cejas-microblading-musculatura-orbicular-009", "title": "Influencia de la dinámica muscular orbicular en la simetría del diseño de cejas", "category": "visajismo_cejas_microblading", "semantic_concept": "dinámica muscular orbicular y simetría", "lexical_terms": ["orbicular", "simetría", "musculatura"], "current_rank_approx": 3001, "current_sim": None, "rank_class": "DEEP_MISS"},
+    {"query": "cejas_004", "chunk": "visajismo-microblading-arquitectura-muscular-008", "title": "Dinámica muscular facial y su efecto en la simetría del diseño", "category": "visajismo_cejas_microblading", "semantic_concept": "arquitectura muscular facial y simetría", "lexical_terms": ["arquitectura muscular", "simetría", "diseño"], "current_rank_approx": 1033, "current_sim": 0.4126, "rank_class": "DEEP_MISS"},
+    {"query": "cejas_004", "chunk": "microblading-envejecimiento-009", "title": "Adaptación del diseño en cejas con ptosis palpebral", "category": "visajismo_cejas_microblading", "semantic_concept": "envejecimiento y ptosis en diseño de cejas", "lexical_terms": ["ptosis", "envejecimiento", "laxitud"], "current_rank_approx": 5, "current_sim": 0.5194, "rank_class": "BORDERLINE_MISS"},
+    {"query": "cejas_004", "chunk": "microblading-psicologia-007", "title": "Sesgos cognitivos en la evaluación del diseño de cejas", "category": "visajismo_cejas_microblading", "semantic_concept": "psicología de la percepción de simetría", "lexical_terms": ["sesgos cognitivos", "percepción", "simetría"], "current_rank_approx": 377, "current_sim": 0.4434, "rank_class": "DEEP_MISS"},
+    {"query": "cejas_005", "chunk": "visajismo-cejas-microblading-fotoproteccion-avanzada-007", "title": "Fotoprotección estratégica: más allá del FPS en el post-microblading", "category": "visajismo_cejas_microblading", "semantic_concept": "fotoprotección en cuidados post-microblading", "lexical_terms": ["fotoprotección", "FPS", "post-microblading"], "current_rank_approx": 152, "current_sim": 0.4965, "rank_class": "BORDERLINE_MISS"},
+    {"query": "cejas_005", "chunk": "impacto-variabilidad-glucemica-cicatrizacion-001", "title": "Variabilidad glucémica y su efecto en la cascada de cicatrización post-microblading", "category": "visajismo_cejas_microblading", "semantic_concept": "variabilidad glucémica en cicatrización", "lexical_terms": ["glucémica", "cicatrización", "post-microblading"], "current_rank_approx": 172, "current_sim": 0.4933, "rank_class": "BORDERLINE_MISS"},
+    {"query": "cejas_008", "chunk": "guias_unas-electrolisis-y-matriz-001", "title": "Electrólisis y daño matricial: riesgos de la remoción de cutícula con herramientas eléctricas", "category": "guias_unas", "semantic_concept": "electrólisis como mecanismo de daño/remoción (cross-domain)", "lexical_terms": ["electrólisis", "remoción", "daño"], "current_rank_approx": 606, "current_sim": 0.4486, "rank_class": "DEEP_MISS"},
+    {"query": "cejas_008", "chunk": "terapia-laser-erbio-glass-002", "title": "Láser Erbio-Glass 1550nm: Fototermólisis Fraccionada No Ablativa", "category": "tratamientos_esteticos_faciales", "semantic_concept": "láser erbio-glass para remoción de pigmento (cross-domain)", "lexical_terms": ["láser", "erbio", "fototermólisis"], "current_rank_approx": 1805, "current_sim": 0.4105, "rank_class": "DEEP_MISS"},
+    {"query": "cejas_008", "chunk": "visajismo-cejas-microblading-efecto-tyndall-003", "title": "Mecanismos físico-químicos del efecto Tyndall en microblading mal ejecutado", "category": "visajismo_cejas_microblading", "semantic_concept": "efecto Tyndall en pigmento mal ejecutado", "lexical_terms": ["Tyndall", "pigmento", "remoción"], "current_rank_approx": 177, "current_sim": 0.4984, "rank_class": "BORDERLINE_MISS"}
+]
+
+# Corpus coverage analysis (from canonical corpus keyword sweep)
+coverage = {
+    "simetria_asimetria": 147,
+    "musculatura_orbicular": 223,
+    "tyndall": 59,
+    "electrolisis": 2,
+    "laser_remocion": 183,
+    "sers_raman": 113,
+    "autofagia": 79,
+    "lha_salicilico": 66,
+    "homeostasis_scalp": 899,
+    "fotoproteccion": 200,
+    "glucemia_cicatrizacion": 366,
+    "envejecimiento_ptosis": 601,
+    "psicologia_sesgos": 525
+}
+
+audit = {
+    "cycle": "R6-C13",
+    "status": "CORPUS-EXPANSION-DISCONFIRMED",
+    "hypothesis": "Una expansión dirigida del corpus puede resolver una parte significativa de los 13 VECTOR_MISS sin cambiar NVIDIA e5-v5 ni degradar el baseline.",
+    "hypothesis_result": "RECHAZADA para los 13 casos: todos los chunks GOLD existen en BD y en el corpus canónico con embeddings válidos, y los conceptos que representan tienen cobertura abundante en el corpus (simetría 147 chunks, Tyndall 59, láser 183, SERS 113, autofagia 79, LHA 66). El problema es de representación semántica del espacio e5-v5, no de ausencia de contenido. La expansión de corpus NO puede recuperar chunks que ya existen pero cuyo embedding no los acerca al query.",
+    "baseline": {
+        "mrr": 0.7222,
+        "r5": 0.6156,
+        "r10": 0.6545,
+        "r50": 0.8011,
+        "vector_miss": 13,
+        "chunks": 5663,
+        "model": "nvidia/nv-embedqa-e5-v5 (oficial, intacto)"
+    },
+    "canonical_misses": canonical_misses,
+    "causal_classification": {
+        "criteria": {
+            "A_CORPUS_GAP": "La información requerida NO existe en el corpus (ni el chunk ni equivalentes)",
+            "B_PARTIAL_COVERAGE": "Existe contenido relacionado pero insuficiente o fragmentado",
+            "C_SEMANTIC_REPRESENTATION_GAP": "La información existe íntegra pero el espacio e5-v5 no la acerca al query coloquial",
+            "D_RETRIEVAL_GAP": "El chunk es recuperable por el modelo pero la política de retrieval (K/umbral) lo excluye",
+            "E_MIXED": "Combinación de gap de cobertura y de representación",
+            "F_UNKNOWN": "Evidencia insuficiente"
+        },
+        "classification": {
+            "skincare_003": {"chunk": "LHA descamación", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe en BD y canónico; concepto LHA tiene 66 chunks en corpus; rank actual ~1998"},
+            "skincare_007": {"chunk": "autofagia péptidos", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe; concepto autofagia tiene 79 chunks; rank ~651"},
+            "cabello_002": {"chunk": "SERS", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe; espectroscopía/Raman tiene 113 chunks; rank ~567; término científico ultraespecializado"},
+            "cabello_006": {"chunk": "homeostasis scalp", "class": "D_RETRIEVAL_GAP", "evidence": "rank actual ~83 (dentro de top-200 en este barrido); clasificado miss en R6-C11 por inestabilidad del query-embedding NVIDIA NIM"},
+            "cejas_004_musculatura": {"chunk": "musculatura orbicular", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe; musculatura/simetría tiene 147-223 chunks; rank >3000 — gap MÁS severo"},
+            "cejas_004_arquitectura": {"chunk": "arquitectura muscular", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe; 111 chunks equivalentes con overlap>=3; rank ~1033"},
+            "cejas_004_envejecimiento": {"chunk": "ptosis/envejecimiento", "class": "D_RETRIEVAL_GAP", "evidence": "rank actual ~5 (!) pero miss en R6-C11 — inestabilidad severa del query embedding"},
+            "cejas_004_psicologia": {"chunk": "sesgos cognitivos", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe; 55 chunks equivalentes; rank ~377; concepto psicológico"},
+            "cejas_005_fotoproteccion": {"chunk": "fotoprotección post", "class": "D_RETRIEVAL_GAP", "evidence": "rank actual ~152 (top-200) pero miss en R6-C11 — inestabilidad de frontera"},
+            "cejas_005_glucemia": {"chunk": "variabilidad glucémica", "class": "D_RETRIEVAL_GAP", "evidence": "rank actual ~172 (top-200) pero miss en R6-C11 — inestabilidad de frontera"},
+            "cejas_008_electrolisis": {"chunk": "electrólisis uñas", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe (categoría guias_unas); 2 chunks de electrólisis; rank ~606; cross-domain uñas->cejas"},
+            "cejas_008_laser": {"chunk": "láser erbio-glass", "class": "C_SEMANTIC_REPRESENTATION_GAP", "evidence": "chunk existe (tratamientos_esteticos); láser tiene 183 chunks; rank ~1805; cross-domain"},
+            "cejas_008_tyndall": {"chunk": "efecto Tyndall", "class": "D_RETRIEVAL_GAP", "evidence": "rank actual ~177 (top-200) pero miss en R6-C11 — inestabilidad de frontera"}
+        },
+        "summary": {"A": 0, "B": 0, "C": 8, "D": 5, "E": 0, "F": 0, "total": 13}
+    },
+    "corpus_gaps": [],
+    "partial_coverage": [],
+    "representation_gaps": [
+        "skincare_003 LHA", "skincare_007 autofagia", "cabello_002 SERS",
+        "cejas_004 musculatura", "cejas_004 arquitectura", "cejas_004 psicologia",
+        "cejas_008 electrólisis", "cejas_008 láser"
+    ],
+    "retrieval_gaps": [
+        "cabello_006 homeostasis", "cejas_004 envejecimiento", "cejas_005 fotoprotección",
+        "cejas_005 glucemia", "cejas_008 Tyndall"
+    ],
+    "coverage_evidence": coverage,
+    "critical_cases": {
+        "cabello_002": {
+            "query": "Tratamiento para cabello dañado por decoloración",
+            "gold_retrievable": ["colorimetria-capilar-ph-001 (rank 28)", "colorimetria-capilar-ph-pos-tinte-009 (rank 1)", "colorimetria-capilar-viscoelasticidad-009 (rank 2)"],
+            "gold_missing": ["SERS diagnostico_capilar (rank ~567)"],
+            "information_exists": True,
+            "exists_with_synonyms": True,
+            "note": "El chunk SERS existe en BD y canónico con contenido íntegro (firmas moleculares de daño proteico en cutícula capilar). La conexión 'decoloración -> daño proteico -> SERS' es semánticamente válida pero e5-v5 no la establece. Es un diagnóstico avanzado para un problema de tratamiento: conexión conceptual indirecta."
+        },
+        "cejas_008": {
+            "query": "Remoción de microblading mal hecho: opciones y riesgos",
+            "gold_retrievable": ["visajismo-cejas-microblading-interaccion-laser-001 (rank 38)", "visajismo-cejas-microblading-piel-grasa-005 (rank 1)", "visajismo-cejas-enfermedades-autoinmunes-007 (rank 2)"],
+            "gold_missing": ["electrólisis guias_unas (rank ~606)", "láser erbio-glass (rank ~1805)", "efecto Tyndall (rank ~177 borderline)"],
+            "information_exists": True,
+            "exists_with_synonyms": True,
+            "note": "electrólisis y láser son chunks cross-domain (guias_unas, tratamientos_esteticos) con contenido válido sobre mecanismos de remoción/daño. El concepto 'remoción de pigmento' no está lexicalmente conectado con 'electrólisis' ni 'erbio-glass' en el espacio e5-v5."
+        },
+        "cejas_004": {
+            "query": "Corrección de cejas asimétricas con micropigmentación",
+            "control_negative": True,
+            "chunks_analysed": [
+                {"chunk": "musculatura-orbicular-009", "concept": "dinámica muscular orbicular y simetría", "equivalent_chunks": 110, "verdict": "REPRESENTATION_GAP_SEVERE — rank >3000 pese a 147 chunks de simetría en corpus"},
+                {"chunk": "arquitectura-muscular-008", "concept": "arquitectura muscular facial y simetría", "equivalent_chunks": 111, "verdict": "REPRESENTATION_GAP — rank ~1033 con contenido equivalente abundante"},
+                {"chunk": "envejecimiento-009", "concept": "ptosis/envejecimiento en diseño", "equivalent_chunks": 8, "verdict": "RETRIEVAL_INSTABILITY — rank ~5 en barrido actual, miss en R6-C11"},
+                {"chunk": "psicologia-007", "concept": "sesgos cognitivos en percepción de simetría", "equivalent_chunks": 55, "verdict": "REPRESENTATION_GAP — rank ~377"}
+            ],
+            "conclusion": "El corpus NO carece de cobertura para 'corrección de cejas asimétricas': existen 147 chunks con el término simetría y 223 con musculatura, incluyendo chunks titulados literalmente 'Análisis de simetría facial dinámica' (sim=0.42, rank ~2857). Agregar nuevos chunks NO resuelve: el problema es que e5-v5 no ancla 'asimetría coloquial' con 'simetría muscular técnica'. cejas_004 es CONTROL NEGATIVO: corpus expansion NO lo resolverá."
+        }
+    },
+    "proposed_expansion": [],
+    "expected_recovery": {
+        "via_corpus_expansion": "0/13 — todos los chunks ya existen con contenido íntegro; expandir no añade información nueva al espacio semántico",
+        "via_stabilization": "5/13 potencialmente — los borderline (homeostasis, envejecimiento, fotoprotección, glucemia, Tyndall) fluctúan alrededor del corte top-200 por inestabilidad del query-embedding; una política de retrieval determinista (query embedding cacheado/semilla fija, o K mayor con rerank estable) podría recuperarlos SIN tocar corpus",
+        "via_hybrid": "1-3/13 marginal — R6-C8 mostró que FTS añade ~1 GOLD; electrólisis/láser tienen términos lexicales que FTS puede capturar parcialmente",
+        "note": "La recuperación de los 8 DEEP_MISS (LHA, autofagia, SERS, musculatura, arquitectura, psicología, electrólisis, láser) requiere cambio de representación semántica — bloqueado por la decisión de mantener NVIDIA."
+    },
+    "risks": [
+        "Agregar chunks duplicados o reformulados para conceptos ya cubiertos contamina el corpus (categorías solapadas, false positives) sin ganancia real.",
+        "Reformular chunks existentes con terminología coloquial degradaría el retrieval de queries técnicas que hoy funcionan.",
+        "La inestabilidad del query-embedding NVIDIA NIM (documentada en R6-RECOVERY y confirmada aquí: envejecimiento rank 5 vs miss) hace que cualquier medición de un solo run no sea fiable — se requiere RUN A/B y comparación de fronteras.",
+        "Cualquier expansión que no ataque la representación semántica consume esfuerzo y riesgo de regresión sin resolver los 8 DEEP_MISS.",
+        "La recuperación borderline por K mayor ya fue probada en R6-C7: K=200 no recuperó GOLD nuevos en aquel embedding."
+    ],
+    "recommendation": "NO proceder con corpus expansion como solución a los 13 VECTOR_MISS: está DESCONFIRMADA (0 corpus gaps reales, 8 representation gaps, 5 retrieval-instability). La vía de mayor valor experimental restante es: (1) cuantificar la inestabilidad del query-embedding con RUN A/B de fronteras (top-200 completo, congelado) para confirmar cuántos de los 13 son verdaderamente irrecoverables; (2) considerar K ampliado SOLO combinado con re-rank determinista para los 5 borderline; (3) aceptar que los 8 DEEP_MISS son un límite documentado de e5-v5 para conceptos especializados hasta que el Director autorice otra representación. Dense+Sparse (+0.033 MRR, R6-C11) sigue siendo la única mejora neta adoptable sin cambiar NVIDIA.",
+    "next_cycle": "R6-C14 (REDESIGNED): QUERY-EMBEDDING STABILITY AUDIT + FRONTIER ANALYSIS en lugar de corpus expansion — determinar cuántos de los 13 'misses' son artefactos de inestabilidad y cuántos son gaps semánticos reales",
+    "production_guards": {"read_only": True, "no_insert": True, "no_update": True, "no_delete": True, "no_alter": True, "no_reembedding": True, "no_railway": True, "no_production_change": True, "nvidia_unchanged": True}
+}
+
+proposals = {
+    "cycle": "R6-C13",
+    "status": "NO_PROPOSALS_JUSTIFIED",
+    "note": "La auditoría determinó que NO hay corpus gaps reales: los 13 chunks GOLD existen en BD y canónico con contenido íntegro y los conceptos tienen cobertura abundante. Proponer chunks nuevos sería duplicación de contenido ya presente, con riesgo de contaminación de categorías y sin efecto sobre el espacio semántico e5-v5.",
+    "proposed_chunks": [],
+    "justification_for_empty": [
+        "8/13 misses son C_SEMANTIC_REPRESENTATION_GAP: el contenido existe (simetría 147 chunks, láser 183, SERS 113, autofagia 79, LHA 66) — añadir más del mismo contenido no acerca el embedding al query.",
+        "5/13 misses son D_RETRIEVAL_GAP (inestabilidad de frontera): fluctuaron dentro/fuera del top-200 entre ejecuciones — se resuelven con estabilidad de retrieval, no con contenido.",
+        "El control negativo cejas_004 demostró que incluso un chunk titulado 'Análisis de simetría facial dinámica' obtiene sim=0.42 (rank ~2857): el gap es de anclaje semántico, no de cobertura.",
+        "Cualquier chunk nuevo que reformule contenido existente con lenguaje coloquial degradaría queries técnicas correctas (regresión no medida)."
+    ]
+}
+
+for fname, obj in [("r6c13_corpus_expansion_audit.json", audit), ("r6c13_corpus_expansion_proposals.json", proposals)]:
+    path = os.path.join(BASE, fname)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+    print("WROTE", path, os.path.getsize(path), "bytes")

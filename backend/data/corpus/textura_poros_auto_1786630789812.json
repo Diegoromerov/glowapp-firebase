@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "poros-metabolismo-triptofano-001",
+    "title": "El metabolismo del triptófano en la homeostasis del folículo pilosebáceo",
+    "content": "El metabolismo del triptófano a través de la vía de la quinurenina juega un papel crucial en la regulación inmunológica y la integridad estructural de la unidad pilosebácea. Investigaciones recientes publicadas en la literatura dermatológica indican que los metabolitos del triptófano actúan como ligandos de los receptores de hidrocarburos arílicos (AhR) en los queratinocitos del ostium. Cuando esta vía se desregula, se observa una alteración en la diferenciación terminal de los queratinocitos, lo que favorece la hiperqueratinización del canal folicular. Este proceso no solo contribuye a la obstrucción física del poro, sino que también modula la respuesta inflamatoria local. Mantener un equilibrio en esta vía metabólica es esencial para prevenir la dilatación mecánica secundaria al taponamiento queratósico. La modulación de la vía del AhR representa una frontera terapéutica emergente para pacientes con poros persistentes que no responden a los comedolíticos convencionales. La estabilidad de esta vía asegura una descamación fisiológica adecuada, evitando el estancamiento de detritos lipídicos y proteicos que expanden la luz folicular.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33568478/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "triptofano",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:19:33.298Z"
+  },
+  {
+    "chunk_id": "poros-calicreinas-003",
+    "title": "El rol de las calicreínas en la descamación del ostium",
+    "content": "Las calicreínas son serina proteasas cruciales para la degradación de los corneodesmosomas en el estrato córneo. En el contexto del poro, un desequilibrio en la actividad de las calicreínas, específicamente de la KLK5 y KLK7, puede provocar una descamación anómala dentro del canal folicular. Si la actividad de estas enzimas es insuficiente, los corneocitos no se desprenden correctamente, acumulándose y formando un 'tapón' que dilata mecánicamente el poro. Por el contrario, una sobreactivación puede comprometer la barrera cutánea folicular, permitiendo la entrada de patógenos y agentes irritantes. La literatura dermatológica subraya que el pH local es el regulador maestro de estas enzimas; por lo tanto, el uso de limpiadores con pH fisiológico es vital para mantener la homeostasis de la descamación. En pieles con poros visibles, el control del pH es una intervención de bajo riesgo y alta eficacia para prevenir la hiperqueratinización folicular. La regulación de estas proteasas permite que el canal se mantenga libre de detritos, optimizando la evacuación del sebo y reduciendo la apariencia de poros obstruidos.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30873-4/fulltext",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "limpiadores pH balanceado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-cuidado-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:19:33.298Z"
+  }
+]

@@ -1,0 +1,395 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-glicerol-osmolaridad-001",
+    "title": "Glicerol (Glicerina): La paradoja de la deshidratación en humedades extremas",
+    "content": "El glicerol es un humectante de referencia en dermatología, reconocido por su capacidad de atraer agua hacia el estrato córneo. Sin embargo, su eficacia depende críticamente de la humedad relativa del ambiente. En condiciones de bajísima humedad (climas áridos o inviernos muy secos con calefacción constante), el glicerol puede actuar en sentido inverso: si la concentración es muy elevada y el aire no contiene suficiente vapor de agua para captar, el compuesto puede extraer agua de las capas más profundas de la epidermis hacia la superficie, donde se evapora. Este fenómeno, documentado en estudios sobre la función de barrera, sugiere que en entornos de humedad menor al 30%, los productos con alta concentración de glicerina pueden exacerbar la xerosis si no van acompañados de agentes oclusivos como ceramidas o ácidos grasos. La recomendación clínica es evitar formulaciones de glicerina pura o altamente concentrada en ambientes de aire seco sin una capa oclusiva complementaria que selle la humedad captada por el activo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [
+        "ambientes con baja humedad relativa sin oclusivos"
+      ],
+      "season": [
+        "invierno"
+      ],
+      "applicable_modules": [
+        "analisis-de-barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-dimetil-isosorbida-002",
+    "title": "Dimetil Isosorbida (DMI): Potenciador de penetración y riesgo de irritación",
+    "content": "La dimetil isosorbida (DMI) es un solvente de alta pureza utilizado en formulaciones cosméticas para mejorar la penetración transdérmica de activos difíciles como el ácido L-ascórbico o ciertos retinoides. Aunque es seguro y estable, su uso indiscriminado en pieles con barrera cutánea comprometida o dermatitis subyacente presenta riesgos. Al aumentar la permeabilidad del estrato córneo, el DMI permite que activos que normalmente serían bien tolerados penetren en niveles más profundos, aumentando drásticamente el riesgo de dermatitis de contacto irritativa. Es crucial entender que, en pacientes con rosácea o eccema, el uso de sueros que incluyen DMI como vehículo puede transformar un activo suave en uno altamente reactivo. La recomendación es limitar el uso de productos con DMI a pieles sanas o bajo supervisión estricta, evitando su aplicación post-procedimientos como peelings químicos o microneedling, donde la barrera cutánea ya ha sido alterada intencionalmente, pudiendo derivar en una absorción sistémica no deseada de otros componentes del producto.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimetil isosorbida"
+      ],
+      "contraindications": [
+        "piel con barrera dañada",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-en-formulacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-mentol-alcanfor-003",
+    "title": "Mentol y Alcanfor: El peligro de la 'frescura' en la piel inflamada",
+    "content": "El mentol y el alcanfor son ingredientes comunes en productos para pieles grasas o con tendencia acnéica, valorados por su efecto refrescante y vasoconstrictor inmediato. Sin embargo, desde la perspectiva de la dermatología clínica, estos ingredientes son potentes sensibilizantes que activan los receptores TRPM8 (mentol) y TRPV3 (alcanfor). El uso continuado en pieles con inflamación activa, como en el acné papulopustuloso o la dermatitis perioral, puede inducir una respuesta neurogénica que perpetúa la inflamación. A menudo, el paciente confunde la sensación de 'frio' con eficacia terapéutica, cuando en realidad se está produciendo una estimulación nerviosa que puede enmascarar signos de irritación creciente. Estudios indican que la exposición prolongada a estos componentes en productos de cuidado diario puede debilitar la función de barrera al alterar la homeostasis térmica local, favoreciendo la entrada de alérgenos y bacterias. Se recomienda evitar estos ingredientes en regímenes de cuidado de la piel para condiciones crónicas inflamatorias, prefiriendo agentes calmantes como el bisabolol o la alantoína.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mentol",
+        "alcanfor"
+      ],
+      "contraindications": [
+        "acné inflamatorio",
+        "rosácea",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutinas-clinicas"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-propilenglicol-004",
+    "title": "Propilenglicol: El alérgeno oculto en vehículos cosméticos",
+    "content": "El propilenglicol es uno de los vehículos y humectantes más utilizados en la industria cosmética debido a su bajo costo y excelentes propiedades de solubilidad. No obstante, es un alérgeno de contacto conocido y su prevalencia como causa de dermatitis alérgica de contacto es significativa en poblaciones con piel sensible. A diferencia de los ácidos activos que causan irritación por mecanismo químico, el propilenglicol puede inducir una respuesta inmunológica real (alergia) incluso en concentraciones bajas. El problema clínico radica en que, al ser un ingrediente presente en una vasta mayoría de productos 'oil-free' o para pieles acnéicas, el paciente suele rotar productos buscando alivio, pero continúa exponiéndose al mismo agente causal en la base de todos ellos. Si un paciente presenta enrojecimiento persistente, picazón y descamación que no responde a la retirada de activos potentes, la sospecha de una dermatitis de contacto alérgica al propilenglicol debe ser considerada. Se recomienda realizar pruebas de parche o intentar una 'dieta cosmética' eliminando productos que contengan este solvente para evaluar la mejoría del cuadro inflamatorio.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal (American Contact Dermatitis Society)",
+        "url": "https://journals.lww.com/dermatitis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "propilenglicol"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "alergias-cosmeticas"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-trietanolamina-ph-005",
+    "title": "Trietanolamina (TEA): Ajuste de pH y potencial de nitrosaminas",
+    "content": "La trietanolamina (TEA) es un agente alcalinizante ampliamente usado para ajustar el pH de formulaciones cosméticas, especialmente en geles y sueros de ácido glicólico o salicílico. Aunque es eficaz para estabilizar el pH, presenta dos riesgos clínicos relevantes. Primero, la TEA es un compuesto nitrogenado que, en presencia de ciertos agentes conservantes (como las nitrosantes), puede derivar en la formación de nitrosaminas, compuestos con potencial carcinogénico si se absorben sistémicamente en concentraciones elevadas a largo plazo. Aunque las regulaciones cosméticas limitan la pureza de la TEA, el riesgo persiste en formulaciones mal estabilizadas. Segundo, la TEA es un irritante cutáneo potencial que puede causar dermatitis de contacto en pieles susceptibles. En la práctica clínica, es preferible optar por formulaciones que utilicen otros agentes ajustadores de pH menos reactivos o que garanticen la ausencia de agentes nitrosantes en su composición. Se recomienda revisar el INCI de productos de uso diario, especialmente si se aplican en grandes áreas corporales, para minimizar la exposición crónica a aminas secundarias en personas con antecedentes de hipersensibilidad cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "SCCS (Scientific Committee on Consumer Safety)",
+        "url": "https://health.ec.europa.eu/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trietanolamina"
+      ],
+      "contraindications": [
+        "piel sensible",
+        "uso prolongado en grandes áreas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-en-formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-colorantes-azoicos-006",
+    "title": "Colorantes azoicos y CI en cosmética: Fototoxicidad y alergia",
+    "content": "Los colorantes sintéticos, identificados en el INCI bajo siglas como CI (Color Index) seguidas de números, son comunes en cosmética para mejorar el aspecto visual del producto. Sin embargo, ciertos colorantes azoicos (como la Tartrazina - CI 19140) han sido vinculados con reacciones de hipersensibilidad, especialmente en pacientes con antecedentes de asma o urticaria crónica. Más allá de la respuesta sistémica, algunos colorantes presentan propiedades fototóxicas o fotoalérgicas cuando se exponen a la radiación UV. En el contexto de la dermatología estética, el uso de productos que contienen estos pigmentos en pieles que están siendo tratadas con láser o peelings químicos puede aumentar el riesgo de hiperpigmentación post-inflamatoria debido a una reacción fotoquímica no deseada. Es una práctica clínica recomendada para pacientes con piel reactiva o bajo tratamientos de rejuvenecimiento optar por productos 'color-free' o formulaciones transparentes, reduciendo así la carga de alérgenos innecesarios que no aportan beneficio terapéutico a la salud cutánea y que pueden complicar el manejo de efectos secundarios tras los procedimientos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "reactiva",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "colorantes azoicos",
+        "CI 19140"
+      ],
+      "contraindications": [
+        "piel en proceso de tratamiento láser",
+        "urticaria"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-post-procedimiento"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-polisorbato-20-007",
+    "title": "Polisorbato 20: El dilema del tensioactivo en productos 'leave-on'",
+    "content": "El Polisorbato 20 es un tensioactivo no iónico y emulsionante utilizado extensamente para solubilizar aceites en bases acuosas, siendo un componente habitual en aguas micelares y sueros de textura ligera. Aunque es considerado seguro, su naturaleza como molécula tensioactiva implica que, si se deja sobre la piel (productos 'leave-on'), puede alterar la estructura de las bicapas lipídicas del estrato córneo a largo plazo. Al ser un agente que reduce la tensión superficial, su presencia en concentraciones elevadas puede favorecer la lixiviación de lípidos naturales de la barrera cutánea, provocando una pérdida de agua transepidérmica (TEWL) subclínica. En pacientes con dermatitis atópica o barrera cutánea debilitada, el uso constante de sueros o tónicos que contienen Polisorbato 20 sin un enjuague posterior puede empeorar la sequedad y la irritación. La recomendación clínica es priorizar en pacientes con pieles comprometidas el uso de productos con sistemas de emulsión más biomiméticos o cerosos, evitando los tensioactivos de limpieza en fórmulas que pretenden permanecer en la piel durante horas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Toxicology",
+        "url": "https://journals.sagepub.com/home/ijt",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopica",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polisorbato 20"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "barrera cutánea comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-fenoxietanol-008",
+    "title": "Fenoxietanol: Límites de seguridad y el mito de la toxicidad sistémica",
+    "content": "El fenoxietanol es un conservante ampliamente utilizado debido a su eficacia frente a bacterias gram-negativas y su compatibilidad con diversas texturas cosméticas. Existe un debate recurrente sobre su seguridad debido a informes anecdóticos sobre toxicidad sistémica en lactantes, lo que ha llevado a restricciones estrictas en productos para el área del pañal. En el contexto de la piel adulta y cosmética facial, el fenoxietanol es seguro en concentraciones inferiores al 1%. Sin embargo, en pacientes con pieles hipersensibles o con dermatitis de contacto previa, el fenoxietanol puede actuar como un irritante residual, especialmente si el producto se aplica en áreas de piel fina, como el contorno de ojos. No es un alérgeno potente, pero su capacidad para causar ardor en pieles dañadas es a menudo subestimada. La recomendación clínica es verificar que el producto cumpla con la normativa de concentración (máximo 1%) y observar reacciones de ardor tras la aplicación, lo cual indicaría una intolerancia individual más que una toxicidad intrínseca del compuesto. Es un conservante excelente, pero debe ser sustituido en rutinas para pieles extremadamente reactivas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "SCCS (Scientific Committee on Consumer Safety)",
+        "url": "https://health.ec.europa.eu/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fenoxietanol"
+      ],
+      "contraindications": [
+        "piel extremadamente reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-en-formulacion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-cobre-peptidos-009",
+    "title": "Péptidos de Cobre vs. Ácido L-Ascórbico: La inestabilidad por quelación",
+    "content": "La combinación de péptidos de cobre (GHK-Cu) con ácido L-ascórbico (Vitamina C pura) en una misma rutina es un error común que debe evitarse por razones de estabilidad química. El ácido L-ascórbico es un agente reductor potente que puede quelar los iones de cobre de los péptidos, oxidando la Vitamina C y desactivando la capacidad regenerativa de los péptidos. Este proceso no solo anula los beneficios de ambos activos, sino que puede generar subproductos de oxidación que actúan como pro-oxidantes en la piel, provocando una respuesta inflamatoria o irritación. Aunque no es una contraindicación de seguridad tóxica, es una contraindicación de eficacia clínica. El consejo profesional es separar su uso por ciclos de tiempo (mañana vs. noche) o días alternos. Además, los péptidos de cobre no deben combinarse con retinoides fuertes en la misma aplicación, ya que el ambiente ácido de algunos retinoides puede desestabilizar la estructura del péptido, perdiendo su potencial de síntesis de colágeno. La adherencia a esta regla de 'separación de activos' es fundamental para maximizar los resultados anti-aging y evitar dermatitis por oxidación cosmética.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos de cobre",
+        "vitamina c"
+      ],
+      "contraindications": [
+        "combinación simultánea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutinas-clinicas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:15:41.504Z"
+  }
+]

@@ -1,0 +1,386 @@
+[
+  {
+    "chunk_id": "quats-dermatitis-contacto-001",
+    "title": "Cloruro de Cetrimonio y Cetrimida: El riesgo de dermatitis de contacto en acondicionadores",
+    "content": "Los compuestos de amonio cuaternario (quats), como el cloruro de cetrimonio y la cetrimida, son agentes tensioactivos catiónicos ampliamente utilizados en cosmética capilar y productos de limpieza por sus propiedades antiestáticas y conservantes. Sin embargo, su capacidad para desnaturalizar proteínas y alterar la integridad del estrato córneo es una preocupación clínica creciente. A diferencia de otros tensioactivos, los quats tienen una fuerte afinidad por la queratina, lo que puede llevar a una retención prolongada en la piel tras el enjuague. La evidencia clínica sugiere que estos agentes pueden inducir dermatitis de contacto alérgica y, en concentraciones elevadas, dermatitis irritativa primaria. En pacientes con piel atópica o barrera cutánea comprometida, el uso frecuente de productos 'leave-on' o incluso 'rinse-off' que contienen estos compuestos puede exacerbar la inflamación perioral o del cuero cabelludo. Es crucial que los usuarios con antecedentes de dermatitis de contacto identifiquen estos compuestos en el INCI, ya que su perfil de sensibilización es a menudo subestimado por el consumidor promedio en comparación con otros conservantes más conocidos como las isotiazolinonas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Cetrimonium Chloride",
+        "Cetrimide"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-capilar",
+        "limpieza-facial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "diisopropanolamina-ph-002",
+    "title": "Diisopropanolamina (DIPA): Ajustador de pH y riesgo de nitrosaminas",
+    "content": "La diisopropanolamina (DIPA) es una alcanoalamina utilizada frecuentemente en cosmética como ajustador de pH y agente emulsionante. Su relevancia clínica radica en su potencial de reacción con agentes nitrosantes presentes en formulaciones o derivados de la contaminación ambiental. Al igual que la trietanolamina, existe el riesgo latente de formación de nitrosaminas, compuestos conocidos por su potencial carcinogénico si se absorben sistémicamente. Aunque la regulación cosmética limita los niveles de aminas secundarias y terciarias, la estabilidad de la fórmula es crítica. El uso de DIPA en productos que contienen conservantes liberadores de formaldehído o ciertos ingredientes inestables aumenta el riesgo de esta conversión química. Para el usuario final, la recomendación es evitar la aplicación de productos que contengan DIPA sobre pieles lesionadas o inflamadas, donde la permeabilidad cutánea está significativamente aumentada, facilitando una absorción que, aunque mínima, podría representar un riesgo a largo plazo. La vigilancia sobre la pureza de las materias primas en la industria es la principal defensa contra la formación involuntaria de estos subproductos tóxicos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety (SCCS)",
+        "url": "https://ec.europa.eu/health/scientific_committees/sccs_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Diisopropanolamine"
+      ],
+      "contraindications": [
+        "piel lesionada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "metil-parabeno-microbioma-003",
+    "title": "Parabenos y el debate sobre la disrupción del microbioma cutáneo",
+    "content": "Tradicionalmente considerados como los conservantes más seguros y eficaces, los parabenos (metil, etil, propil, butilparabeno) han sido objeto de un intenso escrutinio. Más allá del debate sobre la disrupción endocrina, la evidencia científica emergente sugiere que su uso crónico podría alterar la diversidad del microbioma cutáneo. Como agentes antimicrobianos de amplio espectro, los parabenos no discriminan entre los microorganismos patógenos y las bacterias comensales beneficiosas (como Staphylococcus epidermidis) que mantienen la homeostasis de la barrera cutánea. La alteración de esta microbiota puede llevar a una mayor susceptibilidad a infecciones oportunistas o inflamación subclínica. Estudios en modelos in vitro y observaciones clínicas preliminares indican que una microbiota desequilibrada por el uso prolongado de conservantes potentes puede empeorar cuadros de acné o rosácea. Aunque no existe una prohibición total, la tendencia en dermatología moderna es hacia la utilización de sistemas de conservación más selectivos o el uso de envases 'airless' que permitan reducir la carga de conservantes, preservando así la salud del ecosistema microbiano de la piel del rostro.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34000000/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Methylparaben",
+        "Propylparaben"
+      ],
+      "contraindications": [
+        "disbiosis cutánea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma-cutaneo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "acetil-hexapeptido-8-004",
+    "title": "Acetil Hexapéptido-8 (Argireline): ¿Mecanismo de acción real o efecto placebo?",
+    "content": "El Acetil Hexapéptido-8, comercializado comúnmente como Argireline, se promociona como una alternativa tópica a la toxina botulínica. Su mecanismo propuesto es la inhibición del complejo SNARE, necesario para la liberación de neurotransmisores que causan la contracción muscular. Sin embargo, desde una perspectiva de ingeniería clínica, la penetración transdérmica de un péptido de este peso molecular y naturaleza hidrofílica es extremadamente limitada. La barrera cutánea está diseñada precisamente para impedir la entrada de moléculas de este tamaño. La literatura científica actual carece de estudios clínicos robustos, doble ciego y controlados con placebo que demuestren una reducción significativa de las arrugas dinámicas mediante la relajación muscular profunda. El beneficio observado por los usuarios suele atribuirse a un efecto de hidratación intensa y mejora temporal de la textura, más que a una actividad neuro-moduladora. Es fundamental gestionar las expectativas del paciente: los péptidos pueden mejorar la apariencia de las líneas finas por hidratación, pero no deben considerarse un sustituto de los procedimientos médicos de neuromodulación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Acetyl Hexapeptide-8"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antiaging"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "aceite-bergamota-fototox-005",
+    "title": "Aceite de Bergamota y furocumarinas: El riesgo de fototoxicidad severa",
+    "content": "El aceite esencial de bergamota (Citrus bergamia) es uno de los ingredientes botánicos más problemáticos en la formulación cosmética debido a su alto contenido en furocumarinas, específicamente el bergapteno. Estas moléculas son potentes agentes fotosensibilizantes que, al exponerse a la radiación UVA, generan especies reactivas de oxígeno que dañan el ADN de los queratinocitos. Clínicamente, esto se manifiesta como una fitofotodermatitis: una reacción inflamatoria seguida de una hiperpigmentación post-inflamatoria intensa y persistente que puede durar meses. A diferencia de una simple irritación, la fototoxicidad por bergamota puede ocurrir incluso con exposiciones solares breves. Aunque existen versiones del aceite 'libres de bergapteno' (FCF - Furocoumarin Free), el uso de extractos botánicos no estandarizados en productos de cuidado facial representa un riesgo inaceptable para el paciente. Es imperativo que cualquier producto que contenga aceites cítricos sea evaluado estrictamente por su origen y procesamiento. La educación del paciente sobre los riesgos de aplicar perfumes o aceites esenciales antes de la exposición solar es una medida preventiva básica en dermatología clínica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Bergamot Oil",
+        "Bergapten"
+      ],
+      "contraindications": [
+        "exposicion solar"
+      ],
+      "season": [
+        "verano",
+        "todo el año"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "metil-isopropil-ciclohexano-006",
+    "title": "Menthyl Lactate: La alternativa 'refrescante' y su potencial irritativo",
+    "content": "El Menthyl Lactate es un derivado del mentol utilizado para proporcionar una sensación refrescante sin el olor característico ni la alta irritabilidad del mentol puro. Aunque se considera más tolerable, el Menthyl Lactate activa los mismos receptores TRPM8 en las terminaciones nerviosas sensoriales de la piel. La falsa sensación de frescura puede enmascarar signos de irritación subyacente, llevando al usuario a continuar la aplicación de un producto que, en realidad, está dañando su barrera cutánea. En pacientes con rosácea, dermatitis seborreica o piel extremadamente reactiva, cualquier estimulación de los canales TRP puede desencadenar brotes vasomotores o inflamación neurogénica. Además, el uso crónico de agentes 'refrescantes' puede insensibilizar la piel, dificultando que el usuario detecte reacciones adversas tempranas a otros activos presentes en la misma formulación. Se recomienda precaución en el uso de productos que prometen un efecto 'cooling' inmediato, especialmente si el objetivo terapéutico es tratar condiciones inflamatorias crónicas, donde la prioridad debe ser la calma y la restauración de la barrera, no la estimulación sensorial.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis - Journal of the American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "reactiva",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Menthyl Lactate"
+      ],
+      "contraindications": [
+        "rosacea",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "piel-sensible"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "goma-xantana-ph-007",
+    "title": "Goma Xantana y su interacción con activos de bajo pH",
+    "content": "La goma xantana es un polisacárido ampliamente utilizado como agente espesante y estabilizador en formulaciones cosméticas. Aunque se considera un ingrediente inerte y seguro, su comportamiento físico-químico puede verse comprometido en formulaciones de bajo pH (como sérums de Vitamina C pura o peelings de AHAs). A pH inferior a 3.5, la estabilidad de la red polimérica de la goma xantana puede reducirse, provocando la separación de fases o la precipitación de otros activos. Más allá del problema estético, esta inestabilidad puede alterar la tasa de liberación de los principios activos, provocando una entrega errática o una concentración local excesiva que resulte en irritación. Además, aunque la goma xantana no es comedogénica, su capacidad para formar películas puede atrapar impurezas si no se sigue una rutina de limpieza adecuada. En la formulación de productos de alto rendimiento, es crucial que los ingenieros cosméticos utilicen estabilizadores compatibles con el pH del activo principal para garantizar que la eficacia clínica no se vea mermada por la inestabilidad del vehículo, lo cual es una causa frecuente de 'quejas' por irritación inesperada en productos bien formulados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Xanthan Gum"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "polietilenglicol-pureza-008",
+    "title": "Polietilenglicoles (PEGs): La importancia del grado de pureza",
+    "content": "Los polietilenglicoles (PEGs) son una familia de compuestos versátiles utilizados como humectantes, disolventes y potenciadores de penetración. La seguridad de los PEGs está intrínsecamente ligada a su pureza. Durante su proceso de fabricación, pueden quedar trazas de óxido de etileno y 1,4-dioxano, ambos clasificados como contaminantes potencialmente tóxicos. El 1,4-dioxano, en particular, es un subproducto que debe ser eliminado mediante procesos de destilación al vacío; sin embargo, no todos los fabricantes garantizan niveles de detección mínimos. En el contexto de la piel comprometida o con daño de barrera, la presencia de estas trazas puede inducir dermatitis de contacto. Además, los PEGs, debido a su capacidad para alterar la permeabilidad del estrato córneo, pueden facilitar la penetración sistémica de otros ingredientes potencialmente irritantes presentes en la misma fórmula. Es vital que los productos destinados a pieles sensibles utilicen PEGs con grado de pureza farmacéutica. La recomendación clínica es priorizar marcas que certifiquen la ausencia de dioxano residual, especialmente en productos 'leave-on' aplicados en grandes áreas corporales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Cosmetic Ingredient Review (CIR)",
+        "url": "https://www.cir-safety.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PEG-compounds"
+      ],
+      "contraindications": [
+        "piel lesionada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  },
+  {
+    "chunk_id": "cloruro-benzalconio-microbioma-009",
+    "title": "Cloruro de benzalconio: Riesgos de disrupción severa del microbioma",
+    "content": "El cloruro de benzalconio, aunque es un antiséptico eficaz en entornos hospitalarios, presenta riesgos significativos cuando se incluye en productos cosméticos de uso diario como limpiadores faciales o tónicos. Este compuesto es un desinfectante cuaternario potente que, al contacto con la piel, no distingue entre bacterias transitorias y la microbiota residente necesaria para la salud cutánea. Su uso prolongado puede provocar una disbiosis severa, eliminando las especies protectoras que mantienen el pH ácido de la piel y controlan el crecimiento de patógenos como C. acnes. La literatura dermatológica ha documentado casos de dermatitis de contacto irritativa y sensibilización retardada tras la exposición repetida. Además, al alterar la barrera lipídica, facilita la penetración de alérgenos ambientales. Para pacientes con acné o piel atópica, el uso de productos que contengan benzalconio es contraproducente, ya que lejos de 'limpiar', debilita la capacidad de defensa natural de la piel. Es imperativo que el consumidor revise el INCI buscando este ingrediente y opte por tensioactivos más suaves y compatibles con el microbioma, como los derivados de azúcares (alquil poliglucósidos).",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Benzalkonium Chloride"
+      ],
+      "contraindications": [
+        "acne",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-facial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:26:13.514Z"
+  }
+]

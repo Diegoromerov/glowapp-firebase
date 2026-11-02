@@ -1,0 +1,351 @@
+[
+  {
+    "chunk_id": "makeup-neuro-estetica-001",
+    "title": "Maquillaje en entornos de realidad virtual: Gestión de la fatiga visual y oclusión",
+    "content": "La inmersión prolongada en entornos de realidad virtual (RV) mediante visores genera una oclusión mecánica periorbital y una exposición constante a luz azul de alta intensidad. Clínicamente, el sellado hermético del dispositivo aumenta la temperatura local y la humedad (microclima), lo que incrementa el riesgo de dermatitis por contacto irritativa y la migración de pigmentos. Es imperativo utilizar prebases con base de silicona volátil que minimicen la transferencia térmica. Según estudios en Journal of Cosmetic Dermatology, la oclusión prolongada puede alterar el pH del estrato córneo. Para eventos en RV, se recomienda evitar productos con fragancias sensibilizantes y priorizar fórmulas no comedogénicas de alta resistencia al sudor, asegurando que la barrera cutánea no se comprometa por la fricción constante del visor sobre la zona periorbitaria.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "siliconas volatiles"
+      ],
+      "contraindications": [
+        "fragancias",
+        "aceites comedogenicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-exposoma-urbano-002",
+    "title": "Maquillaje y protección contra la exposición a hidrocarburos aromáticos policíclicos",
+    "content": "En entornos urbanos densamente poblados, la exposición a hidrocarburos aromáticos policíclicos (HAPs) provenientes de la combustión vehicular es una amenaza significativa para la integridad cutánea. Estos contaminantes actúan como potentes oxidantes que, al interactuar con el maquillaje, pueden catalizar la formación de radicales libres, acelerando el envejecimiento prematuro. La evidencia en PubMed subraya que las partículas PM2.5 pueden penetrar los poros y anclarse en la matriz del maquillaje. El uso de polímeros formadores de película con propiedades antioxidantes y agentes quelantes es fundamental. Estos componentes actúan como una barrera física que impide la absorción percutánea de contaminantes. Se recomienda realizar una doble limpieza post-evento para asegurar la eliminación total de residuos polucionantes atrapados en la capa cosmética, previniendo así el estrés oxidativo crónico y la inflamación subclínica asociada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32468751/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "productos sin accion protectora"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-microbioma-003",
+    "title": "Maquillaje en eventos de larga duración: El impacto en la homeostasis del microbioma",
+    "content": "La aplicación de maquillaje durante más de 12 horas crea un microambiente oclusivo que favorece la proliferación de microorganismos cutáneos, especialmente en zonas con mayor densidad de glándulas sebáceas. Estudios recientes en la American Academy of Dermatology (AAD) indican que la alteración del ecosistema bacteriano puede desencadenar brotes acneiformes y exacerbación de dermatitis seborreica. Es vital seleccionar productos con conservantes de espectro amplio que no alteren la microbiota comensal. El uso de formulaciones con prebióticos puede ayudar a mantener el equilibrio del pH cutáneo durante el uso prolongado. La técnica de sellado debe ser selectiva, evitando la oclusión total en zonas de alta actividad glandular para permitir la transpiración y prevenir la formación de biofilms bajo la capa de maquillaje, lo cual es crítico para pacientes con piel sensible o tendencia a la disrupción del microbioma.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/habits",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "conservantes suaves"
+      ],
+      "contraindications": [
+        "oclusion excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-estres-oxidativo-004",
+    "title": "Maquillaje y gestión de la peroxidación lipídica en ambientes de alta temperatura",
+    "content": "La exposición a temperaturas elevadas en eventos sociales provoca un aumento en la secreción sebácea y la temperatura superficial de la piel. Este fenómeno facilita la peroxidación de los lípidos cutáneos cuando entran en contacto con ciertos pigmentos metálicos presentes en productos de maquillaje. La oxidación del sebo no solo altera el tono del maquillaje, volviéndolo más oscuro o 'naranja', sino que también promueve la inflamación cutánea. Se recomienda el uso de primers con alta capacidad absorbente y antioxidantes liposolubles como la Vitamina E o el Resveratrol para neutralizar los radicales libres generados por la interacción calor-pigmento. Mantener la estabilidad de la emulsión mediante el uso de polímeros inteligentes que respondan al calor ayuda a minimizar la degradación del producto y protege la barrera lipídica contra la oxidación inducida por el entorno térmico, conforme a los estándares de formulación dermatológica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina E",
+        "resveratrol"
+      ],
+      "contraindications": [
+        "pigmentos metalicos inestables"
+      ],
+      "season": [
+        "verano",
+        "climas calidos"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-luz-azul-005",
+    "title": "Maquillaje con filtros de luz visible de alta energía (HEV) para eventos en interiores",
+    "content": "La exposición a la luz visible de alta energía (HEV), comúnmente emitida por pantallas y sistemas de iluminación LED, contribuye a la hiperpigmentación post-inflamatoria, especialmente en fototipos altos. A diferencia de la radiación UV, la luz azul penetra más profundamente en la dermis. La incorporación de óxidos de hierro en formulaciones cosméticas ha demostrado eficacia en la atenuación de la penetración de la luz visible. Para eventos en entornos de oficina o ferias tecnológicas, el maquillaje debe incluir pigmentos minerales de amplio espectro. Investigaciones dermatológicas sugieren que una capa uniforme de base de maquillaje con óxidos de hierro proporciona una protección superior frente a la luz azul en comparación con los filtros solares químicos tradicionales. Esto es crucial para la prevención de manchas melánicas y el mantenimiento de la homogeneidad del tono cutáneo durante jornadas de exposición prolongada a iluminación artificial intensa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32973-1/fulltext",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "oxidos de hierro",
+        "pigmentos minerales"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-dermatitis-contacto-006",
+    "title": "Prevención de dermatitis de contacto por metales pesados en maquillaje de eventos",
+    "content": "El uso de pigmentos de alta intensidad para eventos especiales a menudo implica el uso de metales como el níquel, cromo o cobalto, que son alérgenos de contacto comunes. La dermatitis alérgica por contacto es una preocupación creciente en la cosmetología clínica. Para eventos de alta duración, el riesgo aumenta debido a la fricción y la transpiración que facilitan la liberación de iones metálicos. La recomendación clínica es realizar pruebas de parche (patch testing) si existe antecedente de atopía y priorizar marcas que certifiquen procesos de purificación de pigmentos. Es fundamental evitar productos que contengan trazas de estos metales en pieles con barrera comprometida o antecedentes de eczema. La aplicación de una base protectora sin fragancias puede actuar como un buffer químico que reduce la penetración de alérgenos hacia la epidermis, garantizando la seguridad durante eventos de larga duración donde la remoción inmediata no es posible.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos purificados"
+      ],
+      "contraindications": [
+        "niquel",
+        "cobalto",
+        "cromo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cutanea"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-estres-cortisol-007",
+    "title": "Maquillaje en eventos de alto estrés: Gestión de la vasodilatación inducida por cortisol",
+    "content": "El estrés agudo durante eventos de gran relevancia (bodas, presentaciones, galas) activa el eje hipotalámico-pituitario-adrenal, elevando los niveles de cortisol y provocando vasodilatación periférica. Este fenómeno, descrito en literatura sobre psiconeuroinmunología cutánea, resulta en eritema facial y sudoración profusa, lo cual compromete la adherencia del maquillaje. Para manejar esta respuesta, es necesario utilizar técnicas de 'layering' con polvos fijadores de sílice que gestionen el exceso de humedad sin deshidratar. Es crucial evitar el uso de bases con alto contenido graso, ya que la vasodilatación eleva la temperatura cutánea, facilitando la migración del producto. El uso de brumas fijadoras con ingredientes calmantes (como alantoína o niacinamida) ayuda a estabilizar el pH y mitigar la respuesta inflamatoria local, asegurando que el maquillaje permanezca intacto a pesar de las fluctuaciones fisiológicas inducidas por el estrés emocional del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermato-Endocrinology Journal",
+        "url": "https://www.tandfonline.com/journals/kder20",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silice",
+        "alantoina",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "bases oclusivas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  },
+  {
+    "chunk_id": "makeup-higiene-patogenos-008",
+    "title": "Transferencia de microbiota oral y estabilidad del maquillaje en eventos de contacto físico",
+    "content": "En eventos sociales caracterizados por contacto físico cercano, la transferencia de microbiota oral a través de aerosoles o contacto directo representa un riesgo de alteración del equilibrio cutáneo. La saliva humana tiene un pH alcalino que puede desestabilizar las fórmulas cosméticas optimizadas para el pH ácido de la piel (aprox 5.5). Esta alteración no solo degrada la estabilidad del maquillaje, sino que introduce patógenos que pueden colonizar la superficie cutánea, especialmente en pieles con micro-lesiones. La recomendación es utilizar productos de larga duración con propiedades antimicrobianas suaves o películas protectoras que impidan la adhesión de partículas externas. La higiene post-evento es crítica; no retirar el maquillaje antes de dormir aumenta el tiempo de exposición a estos patógenos, incrementando el riesgo de foliculitis o infecciones bacterianas cutáneas menores, según protocolos de higiene dermatológica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Skin Health",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antimicrobianos"
+      ],
+      "contraindications": [
+        "mala higiene"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-post-evento"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:53:57.218Z"
+  }
+]

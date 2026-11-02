@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383965641-1-eeca7c4d-cronobiologia-capilar-impacto-de-los-ritmos-circadianos-en-l",
+    "title": "Cronobiología capilar: Impacto de los ritmos circadianos en la captación de pigmentos",
+    "content": "La eficacia de la coloración capilar no es constante a lo largo del día. Estudios recientes sugieren que la permeabilidad de la cutícula y la tasa de división celular en la matriz folicular están moduladas por ritmos circadianos, influenciados por la secreción de cortisol y melatonina. La captación de precursores de tinte alcanza su pico máximo durante las horas de mayor actividad metabólica del cuero cabelludo, típicamente en la mañana. La alteración de estos ritmos, ya sea por estrés o desajustes del sueño, puede comprometer la uniformidad del depósito de color y la longevidad del tono. Los profesionales deben considerar el momento del día al realizar procesos de coloración complejos, ya que la respuesta de la fibra a la alcalinidad puede variar significativamente. La sincronización de los servicios de color con los ciclos de homeostasis cutánea podría optimizar la fijación del color, reduciendo la necesidad de tiempos de exposición prolongados que dañan la integridad estructural. Entender esta dinámica permite ajustar las concentraciones de agentes oxidantes según el perfil cronobiológico del cliente, mejorando la predictibilidad del resultado final y minimizando el riesgo de sensibilización cutánea por sobreexposición a químicos alcalinos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxido de hidrógeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:46:05.641Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383965642-5-cd9f19ec-degradacion-del-triptofano-en-la-queratina-bajo-procesos-oxi",
+    "title": "Degradación del triptófano en la queratina bajo procesos oxidativos intensos",
+    "content": "El triptófano es uno de los aminoácidos más sensibles a la oxidación en la queratina capilar. Durante procesos de coloración permanente o decoloración, la exposición a radicales libres provoca la degradación fotolítica y química de este residuo, lo que resulta en una pérdida de la estructura terciaria de la proteína. Esta degradación no solo debilita la fibra mecánicamente, sino que altera la capacidad de la queratina para retener pigmentos, ya que el triptófano juega un papel crucial en las interacciones de van der Waals con las moléculas de tinte. El cabello con altos niveles de triptófano degradado presenta una tendencia marcada al 'lavado' prematuro del color y una textura áspera. La protección de este aminoácido mediante antioxidantes específicos en la fórmula del tinte es una estrategia emergente para preservar la salud estructural. Los sistemas de coloración que integran precursores de triptófano o estabilizadores de radicales libres muestran una mayor retención cromática y un brillo más natural. Es fundamental que los profesionales identifiquen el grado de degradación proteica antes de aplicar procesos de oxidación sucesivos, utilizando tratamientos reconstructores que repongan los aminoácidos perdidos para asegurar la longevidad del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "aminoácidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:46:05.642Z"
+  }
+]

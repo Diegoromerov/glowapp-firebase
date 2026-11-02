@@ -1,0 +1,326 @@
+[
+  {
+    "chunk_id": "textura_poros-microbiota-oral-001",
+    "title": "Eje oral-cutáneo: cómo la salud bucal impacta la textura de los poros",
+    "content": "La relación entre la microbiota oral y la homeostasis de la piel es un campo emergente en dermatología. Evidencia reciente publicada en PubMed sugiere que patógenos periodontales pueden inducir respuestas inflamatorias sistémicas que alteran la expresión de citoquinas proinflamatorias en el folículo pilosebáceo. La inflamación sistémica, derivada de una disbiosis oral, puede incrementar la secreción de mediadores que estimulan la hiperplasia sebácea y la dilatación del ostium folicular. Al igual que el microbioma intestinal, el microbioma oral regula la respuesta inmune innata; por lo tanto, una higiene oral deficiente podría exacerbar la inflamación subclínica periporo, afectando la textura de la piel en el tercio medio facial. El control de la carga bacteriana gingival se perfila como un factor preventivo no convencional para mejorar la estabilidad del canal folicular y reducir la rugosidad persistente vinculada a procesos inflamatorios crónicos de bajo grado.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34523192/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "habitos_saludables"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-insulina-nocturna-002",
+    "title": "Impacto de los picos insulínicos nocturnos en la secreción sebácea",
+    "content": "La secreción sebácea no es constante durante las 24 horas. Investigaciones en cronobiología dermatológica indican que los niveles de insulina y el Factor de Crecimiento Insulínico tipo 1 (IGF-1) presentan picos que, si se ven exacerbados por una ingesta alta en carbohidratos de carga glucémica elevada durante la cena, pueden alterar la actividad del sebocito durante la fase de reparación nocturna. Este fenómeno estimula la síntesis de lípidos sebáceos y puede llevar a una acumulación de sebo rancio en el canal folicular, lo que contribuye a la dilatación del poro al despertar. La modulación de la respuesta insulínica mediante la crononutrición es una estrategia clave para estabilizar la producción de sebo y mejorar la textura cutánea. Mantener una estabilidad glucémica nocturna ayuda a reducir la hiperproliferación de los sebocitos, permitiendo que el poro mantenga su diámetro funcional sin la distensión provocada por la sobreproducción lipídica nocturna inducida por hormonas.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/causes/diet",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-estres-mecano-003",
+    "title": "El papel de la fascia facial en la tensión periporo",
+    "content": "La arquitectura de la piel no depende únicamente de la dermis profunda, sino también de la conexión con el sistema fascial superficial. La tensión mecánica ejercida por la fascia facial sobre los folículos pilosebáceos puede alterar la forma y apertura de los poros. Cuando existe una hipertonía muscular o una pérdida de elasticidad en los septos fibrosos faciales, el poro puede experimentar un estiramiento pasivo, lo que visualmente se traduce en un tamaño dilatado. La evidencia dermatológica sugiere que técnicas de masaje miofascial bien ejecutadas pueden mejorar la microcirculación y reducir la tensión en estos septos, permitiendo que el ostium recupere una morfología más cerrada. Es fundamental entender que la textura de la piel es un reflejo de la integridad de este soporte estructural. La evaluación de la movilidad facial y el estado de la fascia es un componente crítico para comprender por qué algunos poros parecen dilatados a pesar de tener una producción de sebo controlada y un microbioma saludable.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "mature"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_muscular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-hidratacion-celular-004",
+    "title": "Gradientes osmóticos y la turgencia del ostium folicular",
+    "content": "La turgencia del tejido periporo está íntimamente ligada a la homeostasis hídrica del ostium. Los gradientes osmóticos regulados por acuaporinas y solutos endógenos determinan el volumen de los queratinocitos que recubren el poro. Si existe una disfunción en el gradiente de hidratación, el tejido puede presentar un edema subclínico que empuja las paredes del poro hacia afuera, aumentando su visibilidad. Mantener una osmolaridad epidérmica equilibrada es esencial para evitar esta dilatación inducida por la retención de agua en el epitelio folicular. El uso de osmoprotectores tópicos, como ciertos polioles y aminoácidos, ayuda a estabilizar la presión interna del ostium. La ciencia actual demuestra que la hidratación profunda no es solo superficial, sino que implica el mantenimiento del volumen celular en todas las capas del canal folicular, previniendo la apariencia de poros dilatados por deshidratación interna o edema inflamatorio persistente.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polioles",
+        "aminoacidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-metabolismo-cobre-005",
+    "title": "Transportadores de cobre (CTR1) y la arquitectura periporo",
+    "content": "El cobre es un cofactor esencial para la enzima lisil oxidasa, responsable de la reticulación del colágeno y la elastina en la dermis periporo. Investigaciones en bioquímica cutánea han demostrado que los transportadores CTR1 regulan la disponibilidad de cobre necesaria para mantener la integridad estructural del soporte folicular. Una deficiencia o una mala distribución de este mineral puede resultar en una matriz periporo debilitada, incapaz de resistir la presión del sebo, lo que lleva a la dilatación del poro. La suplementación tópica o sistémica controlada, bajo supervisión, puede fortalecer la arquitectura de la matriz extracelular, mejorando la firmeza alrededor del ostium. Es una consideración vital para la prevención del envejecimiento folicular, asegurando que la estructura que rodea el poro mantenga su capacidad elástica a largo plazo. La homeostasis de los metales traza es, por tanto, un pilar silencioso en la gestión clínica de la textura de la piel.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "mature"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cobre",
+        "péptidos"
+      ],
+      "contraindications": [
+        "rosacea_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_topica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-calcio-cohesion-006",
+    "title": "Gradientes de calcio y la cohesión de los queratinocitos",
+    "content": "El gradiente de calcio en la epidermis es el principal regulador de la diferenciación y cohesión de los queratinocitos en el ostium folicular. Un gradiente de calcio alterado, frecuentemente causado por un pH cutáneo elevado (alcalinización), provoca una descamación ineficiente y una desorganización de la barrera en el canal folicular. Esto resulta en la acumulación de detritos que dilatan mecánicamente el poro. Mantener el pH ácido natural de la piel es crítico para asegurar que el gradiente de calcio funcione correctamente, promoviendo una descamación saludable y evitando que el poro se vea rugoso o dilatado por la acumulación de células muertas. El control del pH mediante limpiadores de baja acidez es la primera línea de defensa para preservar la estructura física del ostium. La evidencia clínica respalda que la restauración del pH ácido mejora significativamente la textura al facilitar el desprendimiento natural de los corneocitos en la entrada del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13652133",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_lactico",
+        "gluconolactona"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_ph"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-exosomas-comunicacion-007",
+    "title": "Exosomas como mediadores de la comunicación sebocito-dermis",
+    "content": "La comunicación intercelular en la unidad pilosebácea es mediada en gran medida por exosomas, pequeñas vesículas extracelulares que transportan proteínas, lípidos y micro-ARN entre los sebocitos y los fibroblastos periporo. Esta diafonía es crucial para coordinar la respuesta ante el estrés ambiental y regular la remodelación de la matriz extracelular. Una señalización disfuncional, a menudo provocada por inflamación crónica, puede llevar a una sobreproducción de colagenasas que degradan el soporte del poro, aumentando su diámetro. La investigación actual busca utilizar la modulación de exosomas mediante ingredientes activos para enviar señales de 'reparación' a los fibroblastos, promoviendo una matriz más densa y resiliente alrededor del poro. Entender este lenguaje molecular es la nueva frontera para tratar la textura de los poros desde un enfoque de medicina regenerativa, moviéndose más allá de los tratamientos sintomáticos superficiales hacia la regulación de la homeostasis folicular.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "mature"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores_crecimiento",
+        "exosomas"
+      ],
+      "contraindications": [
+        "historial_cancer_piel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_avanzada"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  },
+  {
+    "chunk_id": "textura_poros-mitocondria-sebocito-008",
+    "title": "Disfunción mitocondrial en el sebocito y calidad del sebo",
+    "content": "La bioenergética de los sebocitos es fundamental para la composición química del sebo. Cuando las mitocondrias del sebocito experimentan disfunción, la oxidación de los ácidos grasos es ineficiente, lo que resulta en un sebo con mayor proporción de escualeno oxidado y peróxidos lipídicos. Este tipo de sebo, altamente comedogénico e inflamatorio, altera la queratinización del canal folicular, provocando que los poros se vean más grandes y obstruidos. Mejorar la salud mitocondrial mediante antioxidantes específicos, como la coenzima Q10 o el resveratrol, puede ayudar a optimizar la calidad del sebo segregado. Un sebo más fluido y menos oxidado es menos probable que cause distensión del ostium o taponamientos queratinosos. La salud mitocondrial en la unidad pilosebácea no solo impacta la textura, sino que es un marcador de la resiliencia cutánea frente al exposoma urbano en Bogotá, mitigando el daño oxidativo acumulado.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Experimental Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/16000625",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima_q10",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antioxidantes_avanzados"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:11:41.613Z"
+  }
+]

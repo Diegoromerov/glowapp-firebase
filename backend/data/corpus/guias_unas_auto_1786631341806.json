@@ -1,0 +1,332 @@
+[
+  {
+    "chunk_id": "electromagnetismo-y-polimerizacion-001",
+    "title": "Interferencia electromagnética en lámparas LED y calidad de polimerización",
+    "content": "La calidad de la polimerización en sistemas UV/LED no depende solo de la longitud de onda, sino de la estabilidad del flujo electromagnético emitido por la fuente de luz. Investigaciones recientes en fotobiología sugieren que las fluctuaciones en el voltaje de las lámparas de cabina pueden inducir una polimerización incompleta, dejando monómeros residuales libres en la superficie de la lámina ungueal. Estos monómeros, al no estar totalmente reticulados, aumentan exponencialmente el riesgo de dermatitis alérgica de contacto por sensibilización a metacrilatos. La inestabilidad en el espectro de emisión puede alterar la cinética de los fotoiniciadores, resultando en una red polimérica con menor densidad de entrecruzamiento. Es fundamental que las cabinas operen con fuentes de poder estabilizadas para garantizar que la dosis de energía (irradiancia x tiempo) sea constante. La exposición a una luz de baja calidad obliga a tiempos de curado prolongados, lo que paradójicamente aumenta la probabilidad de reacciones exotérmicas y daño térmico en el lecho ungueal, comprometiendo la homeostasis cutánea periungueal a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33458921/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "cabinas-sin-certificacion-ce"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad-quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "termocromismo-y-daño-matricial-002",
+    "title": "Termocromismo y cambios de fase: el riesgo de las resinas termosensibles",
+    "content": "Los esmaltes y geles con pigmentos termocromáticos, que cambian de color con la temperatura, presentan desafíos fisicoquímicos únicos para la integridad de la lámina. Estos pigmentos suelen estar encapsulados en microesferas de polímero que pueden alterar la viscosidad y el comportamiento de flujo del gel durante la aplicación. Clínicamente, el problema radica en la opacidad variable que presentan estos productos: al cambiar de color, pueden bloquear parcialmente la penetración de la luz UV/LED, provocando zonas de sub-curado (under-curing) debajo de las áreas más densas o pigmentadas del diseño. Si la polimerización no es uniforme, la capa inferior permanece en estado monomérico, lo que facilita su migración hacia el lecho ungueal a través de las microfisuras de la queratina. Además, la presencia de estos aditivos puede generar un mayor estrés de contracción durante el curado, lo cual es contraproducente para uñas con curvatura pronunciada, aumentando la tensión tangencial en el hiponiquio y favoreciendo la onicólisis traumática a mediano plazo. Se recomienda limitar su uso en pacientes con lechos ungueales sensibilizados o historia de dermatitis por contacto.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-health-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-termocromicos"
+      ],
+      "contraindications": [
+        "piel-sensibilizada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-aplicacion-gel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "nanoparticulas-y-permeabilidad-003",
+    "title": "Nanopartículas en recubrimientos: implicaciones en la permeabilidad ungueal",
+    "content": "La incorporación de nanopartículas de sílice o cerámica en geles constructores modernos busca mejorar la dureza y resistencia a la abrasión del producto final. Sin embargo, desde una perspectiva dermatológica, el tamaño de estas partículas es crítico. Si las nanopartículas no están perfectamente integradas en la matriz polimérica, pueden actuar como puntos de debilidad estructural o, por el contrario, facilitar la absorción de solventes orgánicos mediante capilaridad en las microfisuras de la lámina dorsal. La permeabilidad ungueal es un proceso complejo; la queratina es una barrera hidrofóbica, pero la presencia de partículas sólidas dispersas puede alterar la tensión superficial y la afinidad química del recubrimiento con la placa. El riesgo clínico es la acumulación de contaminantes ambientales o residuos químicos en los intersticios de la uña, lo cual puede derivar en inflamación crónica del eponiquio. Es vital que los profesionales de GlowApp entiendan que una mayor dureza del producto no siempre se traduce en salud ungueal, y que el uso excesivo de geles cargados con nanorrellenos debe ir acompañado de una técnica de aplicación que respete la flexibilidad natural de la lámina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "nanoparticulas-silice"
+      ],
+      "contraindications": [
+        "onicodistrofia-preexistente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-productos-ungueales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "friccion-y-gradientes-termicos-004",
+    "title": "Gradientes térmicos durante el fresado: el daño invisible a la matriz",
+    "content": "El uso de tornos eléctricos (micromotores) genera energía cinética que se transforma en calor friccional. La matriz ungueal, situada proximalmente bajo el pliegue ungueal, es altamente sensible a las variaciones de temperatura. Un fresado realizado a altas revoluciones sin una técnica de barrido constante puede elevar la temperatura local por encima de los 45°C, umbral crítico donde comienza la desnaturalización proteica y la posible muerte celular (apoptosis) de los queratinocitos de la matriz. Este daño térmico es acumulativo y a menudo no se manifiesta inmediatamente, sino semanas después, a través de la aparición de onicodistrofias como surcos transversales (líneas de Beau) o engrosamientos irregulares de la lámina. Además, el calor altera la cohesión de las capas de queratina, facilitando el desprendimiento de la uña natural. Es imperativo que el personal de cabina mantenga una presión mínima, utilice fresas de carburo de tungsteno con cortes de precisión y emplee técnicas de enfriamiento intermitente. La velocidad de rotación debe ajustarse siempre al diámetro de la fresa y al tipo de tejido tratado, priorizando siempre la integridad biológica sobre la rapidez del procedimiento.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso-excesivo-micromotor"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-fresado-seguro"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "homeostasis-y-pH-adhesivos-005",
+    "title": "Homeostasis del pH y su efecto en la estabilidad de primers",
+    "content": "El pH del lecho ungueal y de la placa ungueal juega un papel determinante en la eficacia de los agentes de adhesión química (primers). Los primers ácidos, frecuentemente utilizados para incrementar la retención de los geles, dependen de un pH específico para realizar el grabado (etching) superficial de los corneocitos. Si el pH de la uña es inusualmente alcalino —a menudo debido a la exposición prolongada a jabones agresivos o hiperhidrosis—, el ácido del primer se neutraliza prematuramente, perdiendo su capacidad de crear los micro-canales necesarios para la adhesión mecánica. Por el contrario, un pH demasiado ácido puede irritar crónicamente el lecho ungueal, provocando una respuesta inflamatoria que altera la producción de queratina. La estabilidad del enlace entre el polímero y la lámina depende de un equilibrio preciso. En GlowApp, debemos evaluar la condición de la placa antes de seleccionar el sistema de adhesión. Un diagnóstico de la superficie mediante tiras de pH puede ser un diferenciador clínico para evitar fallos de adhesión que no son causados por la calidad del producto, sino por la alteración de la fisiología local del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28555848/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers-acidos"
+      ],
+      "contraindications": [
+        "hiperhidrosis-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-pre-servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "efecto-piezoelectrico-queratina-006",
+    "title": "Efecto piezoeléctrico en la lámina ungueal bajo estrés",
+    "content": "La queratina, como proteína fibrosa altamente organizada, posee propiedades piezoeléctricas: es capaz de generar una pequeña diferencia de potencial eléctrico cuando es sometida a estrés mecánico. En uñas largas o con recubrimientos rígidos (como el acrílico), la lámina se flexiona constantemente bajo fuerzas de impacto. Este fenómeno piezoeléctrico puede, en teoría, influir en la distribución de cargas eléctricas en la superficie de la uña, afectando la estabilidad electrostática de los recubrimientos aplicados. Aunque este es un campo de estudio emergente en la cosmetología clínica, existe evidencia de que la acumulación de cargas puede alterar la orientación de las moléculas de los polímeros durante su etapa de curado. Un diseño de uñas que ignora la arquitectura biomecánica del arco de tensión no solo corre riesgo de fractura física, sino que puede presentar fallos de adhesión prematuros debido a este fenómeno de estrés eléctrico acumulativo. La clave para la durabilidad es la flexibilidad controlada del producto, que debe ser capaz de disipar estas fuerzas antes de que alcancen el umbral de desprendimiento del lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/articles/s41598-020-74567-z",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas-extremadamente-largas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica-ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "cavitacion-acustica-fresas-007",
+    "title": "Cavitación acústica y micro-fracturas por ultrasonido en fresas",
+    "content": "El uso de fresas de diamante de alta calidad, especialmente cuando se combinan con sistemas de aspiración o limpieza ultrasónica, puede generar fenómenos de cavitación acústica a nivel microscópico si la superficie no está perfectamente seca. La cavitación ocurre cuando las ondas de presión crean burbujas de vapor en el fluido intermedio (humedad residual o restos de cutícula), que al colapsar liberan energía destructiva. En la superficie de la lámina ungueal, este proceso puede causar micro-picaduras (pitting) que no son visibles a simple vista pero que comprometen la superficie lisa necesaria para una adhesión óptima. Estas micro-fisuras se convierten en reservorios para bacterias y hongos, facilitando la aparición de paroniquias crónicas. Para prevenir este daño, es esencial que la superficie sea tratada únicamente en condiciones de deshidratación controlada y que las herramientas de diamante sean limpiadas mediante esterilización en autoclave, evitando los baños ultrasónicos prolongados que desgastan la matriz de sujeción de la fresa, reduciendo su eficiencia y aumentando el trauma mecánico al usuario final.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/publications/i/item/9789241549851",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas-desgastadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-esterilizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  },
+  {
+    "chunk_id": "degradacion-fotoiniciadores-008",
+    "title": "Degradación oxidativa de fotoiniciadores por luz ambiental",
+    "content": "Los geles de alta gama utilizan fotoiniciadores sensibles a longitudes de onda específicas. Un error común en muchos salones es la exposición prolongada de los envases abiertos a la luz ambiental (luz solar o luz blanca de techo). Este fenómeno induce una degradación oxidativa prematura de los fotoiniciadores, lo que reduce la eficiencia del producto al momento de la aplicación. Un gel parcialmente degradado requerirá más tiempo de exposición en la lámpara para polimerizar, lo cual incrementa el riesgo de sensibilización cutánea por monómeros no reaccionados. Además, la degradación puede alterar el color y la estabilidad térmica del gel, provocando un amarilleamiento prematuro. En GlowApp, la gestión de inventario debe incluir el almacenamiento en contenedores opacos y el uso de dispensadores que minimicen el contacto con el aire y la luz. La educación sobre la 'vida útil' del producto una vez abierto es fundamental: un producto que ha perdido su cinética de polimerización óptima es, esencialmente, una fuente de riesgos químicos evitables para el lecho ungueal del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30521650/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "productos-expuestos-luz"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion-inventario-quimico"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:28:43.615Z"
+  }
+]

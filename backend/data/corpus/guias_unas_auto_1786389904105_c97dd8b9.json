@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "guias_unas-1786389904099-1-c5324939-cromatografia-de-gases-y-deteccion-de-monomeros-residuales-e",
+    "title": "Cromatografía de gases y detección de monómeros residuales en cabina",
+    "content": "La polimerización incompleta en sistemas de gel es un desafío técnico que trasciende la estética. Cuando la conversión de monómero a polímero no alcanza su punto crítico, los monómeros libres actúan como haptenos, penetrando la barrera cutánea y aumentando exponencialmente el riesgo de dermatitis de contacto alérgica. La detección de estos residuos requiere comprender la cinética de reacción bajo diferentes longitudes de onda. La falta de irradiancia adecuada en el espectro de 365-405 nm impide que los fotoiniciadores alcancen su estado excitado, dejando una capa de inhibición por oxígeno que, aunque parece superficial, es el vehículo principal para la sensibilización sistémica. Es imperativo que los profesionales utilicen lámparas validadas por el fabricante del gel, evitando el uso de dispositivos genéricos que no garantizan la densidad de potencia necesaria para una reticulación completa. La monitorización de la temperatura durante la polimerización es un indicador indirecto de la eficiencia de la reacción; un pico exotérmico excesivo indica una reacción acelerada que puede comprometer la integridad estructural del polímero resultante.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-gel-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_aplicada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:25:04.099Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786389904099-4-754cd4ae-efecto-piezorresistivo-y-estres-mecanico-en-la-lamina-unguea",
+    "title": "Efecto piezorresistivo y estrés mecánico en la lámina ungueal",
+    "content": "La uña humana posee propiedades viscoelásticas que le permiten absorber impactos, pero tiene un límite de deformación elástica. El efecto piezorresistivo se refiere a cómo el estrés mecánico altera la conductividad y la integridad de la estructura queratínica. En uñas esculpidas con longitudes excesivas, el punto de fractura se desplaza hacia la zona de tensión máxima, a menudo cerca del punto de estrés. Cuando el material aplicado es excesivamente rígido, la uña natural no puede acompañar la flexión del producto, lo que resulta en microfisuras en la lámina. Estas fisuras son invisibles al ojo humano pero actúan como canales de entrada para patógenos. La elección del material debe ser proporcional a la longitud de la uña: a mayor longitud, se requiere un material con mayor flexibilidad para disipar la energía del impacto. Ignorar la relación entre la rigidez del material y la biomecánica de la uña natural conduce a la onicoclasia traumática y al debilitamiento progresivo de la placa, un fenómeno que a menudo se confunde con una mala calidad del producto cuando en realidad es un error de selección de material.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros",
+        "resinas"
+      ],
+      "contraindications": [
+        "uñas quebradizas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:25:04.099Z"
+  }
+]

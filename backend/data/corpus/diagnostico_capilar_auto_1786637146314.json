@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "senescencia-sasp-002",
+    "title": "Fenotipo Secretor Asociado a la Senescencia (SASP) en el Nicho Folicular",
+    "content": "El envejecimiento folicular, o 'miniaturización por senescencia', está intrínsecamente ligado al Fenotipo Secretor Asociado a la Senescencia (SASP). Cuando las células madre del bulge folicular entran en senescencia, dejan de dividirse pero permanecen metabólicamente activas, secretando un coctel proinflamatorio de citoquinas, quimiocinas y metaloproteinasas de la matriz (MMPs). Este microambiente inflamatorio crónico altera la homeostasis del nicho, inhibiendo la capacidad regenerativa de las células progenitoras adyacentes. Investigaciones de la American Academy of Dermatology sugieren que la acumulación de estas células senescentes contribuye a la rarefacción capilar en pacientes de edad avanzada, incluso en ausencia de una carga androgénica significativa. El diagnóstico clínico debe considerar la detección de marcadores de senescencia para diferenciar una alopecia por envejecimiento biológico de una puramente hormonal, lo cual cambia radicalmente el enfoque terapéutico hacia estrategias de senolíticos o moduladores del microambiente celular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_envejecimiento_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:05:29.285Z"
+  }
+]

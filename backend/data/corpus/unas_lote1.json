@@ -1,0 +1,166 @@
+﻿{
+  "batch_metadata": {
+    "category": "guias_unas",
+    "phase": 5,
+    "risk_level": "alto",
+    "batch_id": "unas-lote1",
+    "chunk_count": 6,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Lote 1 uñas: fisiología, onicomicosis médica, alergia acrilatos, MMA prohibido, esterilización y red flags de melanoma subungueal."
+  },
+  "chunks": [
+    {
+      "chunk_id": "unas-001",
+      "title": "Anatomía de la uña y función de la cutícula: por qué no se debe cortar agresivamente",
+      "content": "La uña es una estructura de queratina producida por la matriz ungueal, y entender su anatomía evita prácticas de riesgo en manicura. La lámina ungueal crece desde la matriz (debajo de la cutícula) a un ritmo aproximado de 3 mm por mes en manos. La cutícula no es piel sobrante: es un sello biológico que protege el espacio entre la lámina y el pliegue proximal, impidiendo la entrada de bacterias y hongos a la matriz. Cortarla de forma agresiva o retirarla por completo rompe ese sello y abre la puerta a la paroniquia (infección del pliegue ungueal) y a deformidades permanentes de la uña si se daña la matriz. Lo recomendable es empujarla suavemente tras el remojo y retirar solo el tejido muerto, sin cortar en profundidad. Otro concepto clave: la uña no respira; recibe oxígeno y nutrientes por la sangre, no del aire, por lo que no necesita descansos para respirar, aunque sí es útil pausar esmaltados permanentes cuando hay daño o deshidratación de la lámina. El cuidado responsable de uñas respeta la anatomía: cutícula como sello, matriz como zona sagrada, y lámina como estructura cosmética que puede decorarse sin agredir.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Nail care basics (Patient education)", "url": "https://www.aad.org/public/everyday-care/nail-care", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones de anatomía y patología ungueal", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["corte agresivo de cuticula"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "fundamento_fisiologia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-002",
+      "title": "Onicomicosis: el hongo en las uñas es una enfermedad médica, no un problema estético",
+      "content": "La onicomicosis es la infección de la uña por hongos (principalmente dermatofitos), y es uno de los motivos de consulta más confundidos en salones de belleza. Se manifiesta con engrosamiento, decoloración amarillenta o blanquecina, fragilidad, desprendimiento y debris subungueal; es más frecuente en uñas de los pies, en personas con diabetes, circulación deficiente o inmunosupresión. El punto crítico: la onicomicosis NO se cura con esmaltes cosméticos, limas ni procedimientos de salón; requiere diagnóstico médico (a veces con confirmación por laboratorio) y tratamiento con antifúngicos tópicos para casos leves o sistémicos para casos extensos, bajo supervisión médica por los efectos secundarios potenciales. Un salón que promete curar hongos está ofreciendo algo que no puede cumplir y además puede diseminar la infección a otras clientas si las herramientas no se esterilizan correctamente. Las herramientas de pedicura que contactan uñas con hongos deben esterilizarse en autoclave o ser de un solo uso. Si sospechas onicomicosis, la vía correcta es la consulta dermatológica; tratarla temprano evita el daño permanente de la uña y el contagio a otras uñas o personas. El rol del salón en una clienta con onicomicosis es estético y de higiene, no terapéutico.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines (Onychomycosis)", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "Cochrane Library — Tratamientos de onicomicosis", "url": "https://www.cochranelibrary.com/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Consensos de micología", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["tratamiento en salon como cura"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "red_flags_derivacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-003",
+      "title": "Alergia a acrilatos en uñas gel y acrílicas: dermatitis que viaja a párpados y cara",
+      "content": "Los acrilatos (metacrilatos) son la base de las uñas acrílicas y del esmaltado semipermanente en gel, y son sensibilizantes reconocidos en dermatología. La alergia a acrilatos produce dermatitis de contacto alérgica: picazón, enrojecimiento, vesículas y descamación alrededor de las uñas, y de forma característica en párpados, cara y cuello, porque los acrilatos no curados se transfieren con las manos a esas zonas. El factor de riesgo principal es el producto no curado o mal curado: el gel que no polimeriza completamente en la lámpara libera monómeros libres que penetran la piel; también el limado de producto sin protección y el contacto directo del producto con la piel periungueal. Una vez sensibilizada, la persona reacciona a cualquier producto con acrilatos, incluyendo adhesivos, odontología y prótesis, por lo que el diagnóstico con pruebas de parche por dermatología es importante. Las señales de alarma: picazón persistente en dedos o párpados tras manicuras en gel, uñas que se despegan con enrojecimiento del lecho, o dermatitis que reaparece con cada servicio. Ante la sospecha, suspende el producto y consulta al dermatólogo. La prevención pasa por manicuristas entrenadas en curado correcto, lámparas adecuadas al producto, y evitar contacto del gel con la piel.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "EADV — Contact dermatitis guidelines (acrylates)", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "AAD — Nail cosmetics and allergies", "url": "https://www.aad.org/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acrilatos", "metacrilatos", "HEMA"],
+        "contraindications": ["alergia previa a acrilatos"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "fundamento_alergeno"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-004",
+      "title": "MMA (metil metacrilato): el monómero prohibido que aún aparece en salones",
+      "content": "El metil metacrilato (MMA) es un monómero acrílico cuyo uso en uñas ha sido prohibido o restringido por autoridades sanitarias en múltiples países, incluyendo alertas de la FDA, porque causa daños severos: es un sensibilizante potente, produce adherencia tan rígida que ante un golpe la uña natural se desgarra en lugar de ceder el producto, y sus vapores irritan vías respiratorias y ojos. A pesar de las prohibiciones, el MMA sigue apareciendo en salones de bajo costo porque es mucho más barato que el EMA (etil metacrilato), el monómero seguro y aceptado para uñas acrílicas. Señales de alerta de que un salón usa MMA: olor extremadamente fuerte y dulce durante el servicio, producto que se endurece tanto que es difícil de limar o remover, precios sospechosamente bajos, y envases sin etiquetado claro. En Colombia, el INVIMA regula los productos cosméticos de uñas y los establecimientos deben usar productos con registro sanitario; pregunta activamente qué monómero usan y verifica que el producto esté etiquetado. La manicura acrílica con EMA aplicado por una profesional entrenada, con ventilación adecuada y sin contacto con la piel, tiene un perfil de riesgo aceptable; con MMA, el riesgo de lesión y alergia es alto. Tu salud ungueal no debería depender de la suerte: elige salones transparentes con sus productos.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "FDA — MMA in nail products", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "INVIMA — Registro sanitario de cosméticos", "url": "https://www.invima.gov.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["MMA", "metil metacrilato", "EMA"],
+        "contraindications": ["productos con MMA"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "alerta_regulatoria"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-005",
+      "title": "Infecciones en manicura: paroniquia, uña verde y esterilización que debes exigir",
+      "content": "Los servicios de uñas pueden transmitir infecciones cuando la bioseguridad falla. Las más relevantes: la paroniquia bacteriana aguda (dolor, pus y enrojecimiento del pliegue ungueal, frecuentemente por Staphylococcus tras microtraumas o cutícula cortada), la paroniquia crónica por humedad y Candida en personas con manos húmedas, y la uña verde por Pseudomonas aeruginosa, que aparece cuando el agua queda atrapada bajo una uña artificial despegada o bajo el esmalte dañado, tiñendo la lámina de verde-negro. La prevención en el salón depende de prácticas verificables: instrumentos metálicos esterilizados en autoclave (el alcohol o el agua jabonosa NO esterilizan), limas y tacos de un solo uso por clienta (son porosos y no pueden esterilizarse), tinas de pedicura desinfectadas entre clientas, y que la manicurista lave sus manos y use guantes cuando corresponde. Como clienta puedes y debes exigir ver el autoclave, pedir lima nueva sellada, y evitar servicios si tienes heridas abiertas en las manos. En casa, seca bien las uñas tras el remojo prolongado y no cubras con producto una uña despegada o lesionada sin revisar. Ante signos de infección (dolor, pus, calor, enrojecimiento que avanza), la consulta médica es el paso correcto; los remedios caseros retrasan el tratamiento y pueden agravar el cuadro.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Nail infections and salon safety", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Bioseguridad en procedimientos estéticos", "url": "https://www.scd.org.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["servicio sobre heridas abiertas"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "bioseguridad"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "unas-006",
+      "title": "Red flags ungueales: banda oscura en la uña puede ser melanoma subungueal",
+      "content": "No todo cambio de color en la uña es benigno, y reconocer las señales de alarma salva vidas. La melanoniquia longitudinal es una banda pigmentada café o negra que recorre la uña de forma longitudinal; en fototipos oscuros (IV-VI) es más frecuente y muchas veces benigna, pero también es la presentación clásica del melanoma subungueal, un cáncer agresivo que se diagnostica tarde precisamente porque se confunde con un hematoma o un hongo. Los signos de alarma que requieren evaluación dermatológica pronta, idealmente con dermatoscopia y biopsia si corresponde, incluyen: banda que se ensancha con el tiempo o supera 3 mm, pigmentación que se extiende a la piel del pliegue periungueal (signo de Hutchinson), banda en un solo dedo de aparición reciente en adulto, uña que se destruye o sangrado espontáneo sin trauma, y lesión que no mejora en meses. Un hematoma por golpe, en cambio, crece con la uña y se desplaza hacia el borde en semanas. Otros red flags: lesión verrugosa que no cede, masa bajo la uña, o paroniquia que no responde a tratamiento en 4-6 semanas. El mensaje central: una banda oscura nueva o cambiante en la uña no se cubre con esmalte ni se trata en el salón; se evalúa por dermatología. Detectar un melanoma subungueal en etapa temprana cambia radicalmente el pronóstico.",
+      "category": "guias_unas",
+      "phase": 5,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Nail pigmentation and melanoma", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Consensos de melanoma", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["IV", "V", "VI"],
+        "ingredients": [],
+        "contraindications": ["cubrir lesion pigmentada sin evaluacion"],
+        "season": ["all"],
+        "applicable_modules": ["nails-classic", "nails-style", "aura"],
+        "content_type": "red_flags_derivacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

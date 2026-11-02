@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "polidocanol-prurito-001",
+    "title": "Polidocanol: Mecanismo antipruriginoso y seguridad en pieles atópicas",
+    "content": "El polidocanol, un anestésico local no iónico, se ha posicionado como un pilar en el manejo del prurito cutáneo, especialmente en pieles con dermatitis atópica y xerosis severa. A diferencia de los anestésicos tipo éster o amida, el polidocanol actúa mediante una inhibición reversible de las terminaciones nerviosas sensoriales en la epidermis, sin causar un bloqueo completo de la conducción nerviosa que podría derivar en efectos sistémicos. Su eficacia radica en la capacidad de interrumpir el ciclo 'picor-rascado', permitiendo que la barrera cutánea se recupere. Clínicamente, su uso es seguro en concentraciones del 2% al 3%, pero se debe monitorear la posibilidad de dermatitis de contacto alérgica, un efecto adverso raro pero documentado en pacientes hipersensibilizados. En el contexto de GlowApp, es fundamental diferenciar su uso terapéutico del alivio sintomático de irritaciones por otros activos. La evidencia sugiere que su integración en formulaciones emolientes mejora significativamente la adherencia al tratamiento en pacientes crónicos. Es vital evitar su aplicación en mucosas o heridas abiertas, donde la absorción sistémica podría alterar la estabilidad del producto o generar reacciones locales adversas. Su perfil de seguridad es superior a los antihistamínicos tópicos, los cuales han sido desplazados por su alto riesgo de sensibilización.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22462821/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polidocanol"
+      ],
+      "contraindications": [
+        "mucosas",
+        "heridas_abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_sensibilidad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:35:30.342Z"
+  }
+]

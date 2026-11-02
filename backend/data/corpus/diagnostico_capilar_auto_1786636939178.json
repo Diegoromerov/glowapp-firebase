@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-biofotomica-001",
+    "title": "Biofotónica: Espectroscopía de Reflectancia para el Daño de la Cutícula",
+    "content": "La evaluación del daño estructural en la cutícula capilar ha evolucionado hacia técnicas no invasivas como la espectroscopía de reflectancia difusa. A diferencia de la microscopía óptica convencional, esta tecnología permite analizar la integridad de las capas externas de la fibra mediante la dispersión de fotones. Según estudios publicados en el Journal of Cosmetic Dermatology, la reflectancia espectral en longitudes de onda específicas permite cuantificar la degradación de las proteínas cuticulares tras exposiciones a agentes químicos o radiación UV. Este método ofrece una medida objetiva de la porosidad del tallo, superando la subjetividad del tacto clínico. En el entorno de GlowApp, esta técnica facilita la personalización de protocolos de reparación al identificar el grado de desestructuración de la queratina antes de aplicar tratamientos de reconstrucción. La capacidad de detectar microfisuras mediante perfiles espectrales permite diferenciar entre un daño cosmético reversible y una degradación proteica profunda que requiere intervención estructural, optimizando así la recomendación de productos capilares en Bogotá.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:02:01.793Z"
+  }
+]

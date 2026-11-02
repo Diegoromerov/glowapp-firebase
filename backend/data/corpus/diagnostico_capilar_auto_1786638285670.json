@@ -1,0 +1,81 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-004",
+    "title": "Volatilómica del Cuero Cabelludo: Nuevos Biomarcadores de Salud",
+    "content": "La volatilómica constituye un horizonte innovador en el diagnóstico dermatológico, permitiendo la detección de compuestos orgánicos volátiles (COV) emitidos por el cuero cabelludo. Estos compuestos son subproductos metabólicos del microbioma folicular y del propio metabolismo epidérmico. Al analizar el perfil de gases emitidos, es posible identificar estados de disbiosis, presencia de inflamación subclínica o incluso inicios de patologías como la alopecia areata. Estudios recientes en el campo sugieren que cambios específicos en la concentración de alcoholes, aldehídos y cetonas volátiles actúan como huellas dactilares moleculares de la salud del folículo. La implementación de sensores de gas portátiles en la consulta permite una monitorización no invasiva y en tiempo real del ecosistema capilar. Este enfoque permite una intervención temprana, ajustando el régimen de cuidado capilar antes de que los desequilibrios metabólicos se traduzcan en una pérdida de densidad visible, marcando un cambio de paradigma hacia la medicina de precisión en cosmetología.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38200000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:24:27.959Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-009",
+    "title": "El Fenotipo Secretor Asociado a la Senescencia (SASP) en el Folículo",
+    "content": "El Fenotipo Secretor Asociado a la Senescencia (SASP) representa un estado en el cual las células foliculares senescentes, en lugar de morir, secretan un cóctel proinflamatorio de citoquinas, quimioquinas y metaloproteinasas de matriz (MMPs). Este fenómeno ejerce un efecto 'bystander' negativo, induciendo senescencia en células vecinas sanas y degradando el microambiente del nicho folicular. El SASP es un impulsor crítico del agotamiento de las células madre del bulge y la miniaturización progresiva. En el diagnóstico capilar avanzado, identificar la presencia de marcadores SASP permite detectar la 'edad biológica' del cuero cabelludo, la cual puede diferir significativamente de la edad cronológica del paciente. La mitigación de estos efectos mediante senolíticos o moduladores de la vía NF-κB es una estrategia terapéutica en desarrollo para revertir o ralentizar la atrofia folicular. La detección de este perfil secretor mediante análisis de fluidos o biopsias líquidas constituye un avance significativo hacia una medicina capilar preventiva y personalizada, enfocada en preservar la vitalidad del nicho regenerativo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrd/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos_mayores"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "senoliticos",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:24:27.959Z"
+  }
+]

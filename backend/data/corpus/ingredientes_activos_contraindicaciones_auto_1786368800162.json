@@ -1,0 +1,298 @@
+[
+  {
+    "chunk_id": "silicatos-caolin-arcillas-001",
+    "title": "Arcillas y silicatos: Riesgo de desecación excesiva y micro-trauma",
+    "content": "Las arcillas (caolín, bentonita) son ingredientes comunes en mascarillas de limpieza profunda. Su mecanismo de acción se basa en la absorción física de sebo y detritos. Sin embargo, su uso prolongado o en pieles con barrera lipídica comprometida puede inducir una desecación excesiva al absorber no solo el sebo, sino también el agua del estrato córneo. Un error clínico común es permitir que la mascarilla seque completamente ('cracking'), lo cual provoca una tensión mecánica que puede micro-fisurar la barrera cutánea. La AAD advierte que la sobre-exfoliación mecánica por remoción de arcillas secas puede exacerbar el eritema en pieles con rosácea o dermatitis atópica. Es fundamental retirar estos productos antes de que alcancen el punto de agrietamiento para preservar la integridad del manto hidrolipídico. La persistencia en el uso de arcillas en pieles secas puede desequilibrar el NMF (Factor de Humectación Natural), favoreciendo una reactividad cutánea aumentada frente a otros activos posteriormente aplicados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/dry/how-to-treat-dry-skin",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "kaolin",
+        "bentonite"
+      ],
+      "contraindications": [
+        "atopic_dermatitis",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  },
+  {
+    "chunk_id": "alcohol-polivinilico-peel-off-002",
+    "title": "Mascarillas peel-off y el riesgo de trauma por desprendimiento mecánico",
+    "content": "El alcohol polivinílico (PVA) es el agente formador de película predominante en las mascarillas tipo 'peel-off'. Clínicamente, su riesgo principal no es solo la oclusión, sino el trauma mecánico provocado durante el desprendimiento. Al adherirse al estrato córneo y al vello velloso, el acto físico de retirar la película puede remover capas de células queratinizadas de forma no selectiva, comprometiendo la función barrera. Estudios en dermatología cosmética indican que esta práctica puede inducir una dermatitis por contacto irritativa y, en casos de uso frecuente, una hiperreactividad cutánea. En pacientes con piel sensible o con telangiectasias faciales, el tirón mecánico es contraindicado, ya que puede exacerbar la inflamación vascular y el eritema. Es imperativo diferenciar entre la limpieza por afinidad (aceites/tensioactivos) y la limpieza por tracción mecánica. Se recomienda evitar el uso de estos productos en áreas con vello facial denso o lesiones activas de acné para prevenir la ruptura de pústulas y la diseminación bacteriana.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30554904/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polyvinyl_alcohol"
+      ],
+      "contraindications": [
+        "rosacea",
+        "acne_vulgaris",
+        "atopic_dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  },
+  {
+    "chunk_id": "goma-xantana-ph-estabilidad-003",
+    "title": "Goma Xantana: Interacciones de estabilidad en formulaciones ácidas",
+    "content": "La goma xantana es un polisacárido ampliamente utilizado como agente reológico y espesante en cosmética. Aunque es generalmente segura y bien tolerada, su interacción con activos de bajo pH (como el ácido L-ascórbico o AHAs de alta concentración) presenta un desafío técnico. En medios con pH inferior a 3.5, la estructura polimérica de la goma puede verse afectada, perdiendo sus propiedades de viscosidad y desestabilizando la emulsión. Clínicamente, esto no representa un riesgo de toxicidad, pero sí un riesgo de eficacia: la separación de fases o la precipitación de activos puede resultar en una aplicación desigual, donde el usuario recibe concentraciones no controladas de ácidos en zonas específicas, aumentando el riesgo de quemadura química localizada. Se recomienda a los formuladores asegurar un sistema de buffer adecuado y a los usuarios verificar la homogeneidad de productos que combinan espesantes naturales con potentes agentes exfoliantes, evitando aquellos que presenten indicios de sinéresis o cambios de textura inesperados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "xanthan_gum",
+        "ascorbic_acid"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_estabilidad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  },
+  {
+    "chunk_id": "cloruro-cetrimonio-dermatitis-004",
+    "title": "Cloruro de Cetrimonio: Riesgos de dermatitis en acondicionadores 'leave-on'",
+    "content": "El cloruro de cetrimonio es un compuesto de amonio cuaternario utilizado como agente antiestático y conservante. Su uso en productos de aclarado (rinse-off) es seguro, pero su inclusión en formulaciones 'leave-on' (sin aclarado) o en productos que entran en contacto prolongado con la piel del rostro y cuello durante la ducha, representa un riesgo documentado de dermatitis de contacto alérgica. Este ingrediente es un sensibilizante conocido que puede alterar la barrera cutánea al desnaturalizar proteínas de la capa córnea. La literatura dermatológica sugiere que la exposición repetida a cuaternarios puede inducir una respuesta inmune mediada por células T, manifestándose como eritema, prurito y descamación en zonas periauriculares y de la línea de implantación del cabello. Es vital que los pacientes con antecedentes de dermatitis de contacto o piel atópica verifiquen la presencia de este ingrediente en sus productos de cuidado capilar que puedan entrar en contacto con la piel facial durante el lavado, optando por alternativas con perfiles de menor sensibilización.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cetrimonium_chloride"
+      ],
+      "contraindications": [
+        "atopic_dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  },
+  {
+    "chunk_id": "diisopropanolamina-nitrosaminas-005",
+    "title": "Diisopropanolamina (DIPA) y el riesgo latente de nitrosaminas",
+    "content": "La diisopropanolamina (DIPA) se emplea frecuentemente como ajustador de pH en formulaciones cosméticas y como agente neutralizante en geles y emulsiones. Su preocupación toxicológica principal radica en su potencial capacidad para formar nitrosaminas cuando se combina con agentes nitrosantes (como ciertos conservantes o impurezas en las materias primas). Las nitrosaminas son compuestos químicos que han demostrado potencial carcinogénico en modelos experimentales. Aunque las normativas cosméticas actuales restringen estrictamente la presencia de agentes nitrosantes en productos que contienen DIPA, el riesgo persiste en formulaciones mal estabilizadas o que han sufrido degradación por condiciones ambientales extremas. La recomendación clínica es evitar productos que contengan DIPA en combinación con donantes de formaldehído o bronopol. La vigilancia sobre la estabilidad química del producto es clave: si un producto con DIPA presenta un olor acre o un cambio de color amarillento, debe suspenderse su uso, ya que estos pueden ser signos de degradación química y posible formación de subproductos indeseados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "diisopropanolamine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  },
+  {
+    "chunk_id": "argireline-mito-realidad-006",
+    "title": "Acetil Hexapéptido-8 (Argireline): Evidencia clínica frente a expectativas",
+    "content": "El Acetil Hexapéptido-8, comercializado comúnmente como Argireline, se promociona como una alternativa tópica a la toxina botulínica debido a su capacidad para inhibir la formación del complejo SNARE, reduciendo la liberación de catecolaminas y, por ende, la contracción muscular. Sin embargo, la evidencia clínica es modesta. Mientras que estudios in vitro muestran una inhibición eficaz, la penetración transdérmica de este péptido de alto peso molecular sigue siendo el factor limitante. No es una contraindicación de seguridad, sino una gestión de expectativas: su eficacia en la reducción de arrugas de expresión es significativamente inferior a los procedimientos médicos inyectables. El riesgo aquí es el abandono de terapias probadas por confiar en resultados cosméticos inalcanzables. No presenta contraindicaciones graves, pero debe ser visto como un coadyuvante hidratante y suavizante más que como un agente miorelajante activo de grado médico. Su uso es compatible con la mayoría de los activos, pero su eficacia depende críticamente de la formulación del vehículo (uso de DMI u otros potenciadores).",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "mature"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetyl_hexapeptide_8"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antiaging"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  },
+  {
+    "chunk_id": "aceite-bergamota-fototoxicidad-007",
+    "title": "Aceite de Bergamota y Furocumarinas: Fototoxicidad severa",
+    "content": "El aceite esencial de bergamota es ampliamente valorado en perfumería y cosmética natural, pero su contenido en furocumarinas (específicamente bergapteno) lo convierte en uno de los agentes fototóxicos más potentes. Cuando se aplica sobre la piel y se expone a radiación UVA, las furocumarinas se activan formando enlaces covalentes con el ADN de los queratinocitos, lo que desencadena una reacción fototóxica severa conocida como fitofotodermatitis. Esto se manifiesta con eritema intenso, ampollas y, posteriormente, una hiperpigmentación post-inflamatoria que puede durar meses. A diferencia de la fototoxia por fármacos, esta reacción es puramente tópica y dosis-dependiente. La recomendación clínica es absoluta: los productos que contengan aceite esencial de bergamota (no rectificado para eliminar furocumarinas) deben evitarse en zonas expuestas al sol. La distinción entre 'aceite de bergamota' y 'aceite de bergamota libre de bergapteno' (FCF - Furocoumarin Free) es crucial para la seguridad del paciente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/phytophotodermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bergamot_oil",
+        "bergapten"
+      ],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_solar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:33:02.478Z"
+  }
+]

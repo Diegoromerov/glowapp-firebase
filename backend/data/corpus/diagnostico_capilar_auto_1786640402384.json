@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-001",
+    "title": "Inmunometabolismo: El Rol de la Glutaminólisis en la Alopecia Areata",
+    "content": "El inmunometabolismo ha emergido como un pilar fundamental en la comprensión de la Alopecia Areata (AA). Estudios recientes en PubMed indican que las células T CD8+ autorreactivas, que infiltran el nicho folicular, dependen críticamente de la glutaminólisis para mantener su estado efector y citotóxico. A diferencia de las células T en reposo, estas células activadas experimentan una reprogramación metabólica que altera el microambiente del bulbo piloso, induciendo una fase catágena prematura. La inhibición farmacológica de la enzima glutaminasa no solo reduce la carga inflamatoria perifolicular, sino que también restaura parcialmente la integridad del privilegio inmune del folículo. Este enfoque traslada el diagnóstico desde la mera observación tricoscópica hacia una caracterización metabólica de la respuesta inmune local. La evaluación de marcadores séricos de glutamina y glutamato en pacientes con formas recalcitrantes de AA podría ofrecer una diana terapéutica personalizada, permitiendo un manejo más preciso que los corticosteroides sistémicos convencionales, los cuales suelen acarrear efectos metabólicos adversos a largo plazo en pacientes con predisposición sistémica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inhibidores-glutaminasa"
+      ],
+      "contraindications": [
+        "embarazo",
+        "inmunosupresion-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:59:43.533Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-002",
+    "title": "Senescencia del Músculo Erector del Pelo (MEP) y Estabilidad Folicular",
+    "content": "La integridad del músculo erector del pelo (MEP) es crucial para la estabilidad mecánica del folículo piloso. Recientes investigaciones publicadas por la American Academy of Dermatology sugieren que la pérdida de células madre del nicho del bulge está estrechamente vinculada a la denervación y atrofia del MEP. Este proceso de 'sarcopenia capilar' altera la angulación del folículo, lo que resulta en una menor eficacia en la expulsión del sebo y una mayor susceptibilidad a la obstrucción folicular. El diagnóstico diferencial de la alopecia androgenética debe considerar la función del MEP, ya que la debilidad muscular contribuye a la miniaturización al reducir el soporte estructural necesario para la fase anágena. La elastografía por ondas de corte es actualmente la técnica no invasiva más prometedora para evaluar la rigidez y el estado funcional del MEP en pacientes con pérdida de densidad capilar. Comprender esta dinámica permite diferenciar casos donde el tratamiento farmacológico debe acompañarse de terapias de estimulación mecánica para restaurar la arquitectura del cuero cabelludo antes de que la fibrosis perifolicular se vuelva irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tricoscopia-avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:59:43.533Z"
+  }
+]

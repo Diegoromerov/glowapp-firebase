@@ -1,0 +1,291 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-electrodinamica-001",
+    "title": "Efectos de la conductividad eléctrica de la fibra en la deposición de pigmentos",
+    "content": "La fibra capilar posee propiedades dieléctricas únicas que varían según su estado de hidratación y el daño estructural. Durante el proceso de coloración, la conductividad eléctrica de la corteza determina la eficiencia con la que los iones de los precursores de tinte se desplazan hacia el interior de la matriz queratínica. Cuando el cabello presenta una alta porosidad, la conductividad iónica aumenta, facilitando una penetración no selectiva que deriva en una coloración heterogénea o 'manchada'. La manipulación del potencial electrocinético mediante el uso de agentes acondicionadores catiónicos permite normalizar esta conductividad, creando un gradiente de carga que favorece la deposición uniforme de pigmentos. Estudios en revistas de ciencia cosmética indican que la gestión de la conductividad es esencial para evitar el viraje de tono hacia subtonos indeseados en cabellos sensibilizados. El control de estos parámetros mediante el uso de buffers electrolíticos permite que el tinte se deposite de forma controlada, optimizando la saturación cromática y reduciendo el riesgo de sobre-procesamiento en áreas de mayor daño cuticular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes cationicos",
+        "buffers electroliticos"
+      ],
+      "contraindications": [
+        "cabello con alta porosidad sin tratamiento previo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quimioluminiscencia-002",
+    "title": "Quimioluminiscencia residual: Marcador de daño oxidativo post-tinte",
+    "content": "La quimioluminiscencia es un fenómeno físico derivado de la liberación de energía fotónica durante la desactivación de especies reactivas de oxígeno (ROS) generadas por el peróxido de hidrógeno en la fibra capilar. En la práctica clínica, la detección de una quimioluminiscencia residual prolongada tras el aclarado del tinte indica un proceso oxidativo incompleto o incontrolado, lo cual compromete la integridad de la matriz de queratina a largo plazo. Este fenómeno es particularmente relevante en cabellos que han recibido tratamientos químicos previos, donde la catalasa residual del folículo y los restos de metales de transición actúan como catalizadores de una oxidación persistente. La monitorización de este daño invisible es crucial para prevenir la rotura fibrilar secundaria y el desvanecimiento prematuro del color. El uso de agentes quelantes específicos post-coloración es la estrategia clínica recomendada para detener esta reacción en cadena, estabilizando el estado redox del cabello y preservando la integridad de los puentes disulfuro y de los aminoácidos críticos como el triptófano, cuya degradación es un marcador clínico de daño estructural irreversible.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "cabellos con alta degradacion estructural"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post-tratamiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-histeresis-003",
+    "title": "Histéresis elástica y su rol en la retención de pigmentos",
+    "content": "La histéresis elástica en la fibra capilar describe el fenómeno donde la respuesta mecánica del cabello difiere durante la carga y descarga, un factor crítico en la retención de moléculas de pigmento sintético. Durante la coloración, la fibra experimenta un hinchamiento que altera su viscoelasticidad. Si la estructura no recupera su estado de reposo de manera eficiente, la red de queratina se vuelve incapaz de 'atrapar' las moléculas de tinte, resultando en una pérdida de color acelerada tras los primeros lavados. La histéresis está directamente influenciada por el estado de la capa F (ácido 18-metileicosanoico) y la integridad de los lípidos intercelulares. Los servicios de coloración que no consideran la recuperación elástica de la fibra fallan en garantizar la longevidad del color. La aplicación de polímeros reconstructores con pesos moleculares optimizados ayuda a minimizar la histéresis, proporcionando un soporte mecánico que estabiliza el pigmento dentro de la corteza. Evaluar la capacidad de retorno elástico del cabello antes de una coloración permanente es un paso clínico vital para predecir la durabilidad real del tono aplicado, especialmente en cabellos expuestos a factores estresantes ambientales.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros reconstructores",
+        "lipidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-donnan-004",
+    "title": "Efecto Donnan y su influencia en la retención de colorantes ácidos",
+    "content": "El efecto Donnan en la ciencia capilar se refiere a la distribución desigual de iones entre el interior de la fibra y el entorno circundante, causada por la presencia de grupos cargados inmovilizados en la queratina. Este efecto es fundamental al aplicar tintes ácidos o directos, ya que la carga neta del cabello determina la atracción o repulsión de las moléculas de color. En un pH cercano al punto isoeléctrico del cabello (aproximadamente 3.67), la carga neta es mínima, lo que altera significativamente la eficacia de la deposición de tintes catiónicos. Comprender el equilibrio de Donnan permite a los especialistas en coloración ajustar el pH de la formulación para maximizar la afinidad tintórea. Si el pH es demasiado alcalino, la repulsión electrostática impide que los pigmentos penetren adecuadamente, resultando en colores superficiales que se pierden fácilmente. Por el contrario, un control preciso del pH permite que el efecto Donnan trabaje a favor de la retención, anclando los pigmentos dentro de la matriz cortical mediante interacciones iónicas fuertes, garantizando un resultado cromático profundo y resistente a la oxidación y al lavado frecuente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "buffers de pH",
+        "tintes cationicos"
+      ],
+      "contraindications": [
+        "cabello con pH alterado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos-quimicos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-piezoelectrico-006",
+    "title": "El efecto piezoeléctrico en la fibra capilar durante el servicio",
+    "content": "El efecto piezoeléctrico en la queratina capilar es un fenómeno físico subestimado que ocurre durante la manipulación mecánica del cabello (cepillado, estiramiento, partición) en procesos de coloración. Cuando la fibra se somete a tensión mecánica, se genera una polarización eléctrica interna debido a la estructura cristalina de las proteínas de queratina. Este fenómeno puede interferir con la deposición uniforme de pigmentos, ya que crea zonas de atracción o repulsión electrostática que alteran la distribución del tinte a lo largo del tallo. En cabellos con daño estructural, este efecto es más pronunciado, aumentando la probabilidad de rotura bajo estrés mecánico durante la aplicación. La mitigación de este efecto mediante el uso de surfactantes anfóteros y polímeros lubricantes es esencial para mantener la estabilidad cromática. Al reducir la fricción y controlar la carga electrostática durante la aplicación, se garantiza una migración de precursores más homogénea hacia la corteza. La comprensión de esta dinámica es vital para los profesionales que buscan resultados de alta calidad, evitando las variaciones de tono causadas por la manipulación física del cabello durante el tiempo de pose del tinte.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes anfoteros",
+        "polimeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-de-aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-dispersao-mie-007",
+    "title": "Dispersión de Mie y el brillo en cabellos pre-aclarados",
+    "content": "La dispersión de Mie es un fenómeno óptico que ocurre cuando la luz interactúa con partículas cuyo tamaño es comparable a la longitud de onda de la luz incidente. En el contexto de la colorimetría capilar, este fenómeno es determinante en la percepción del brillo y la saturación cromática, especialmente en cabellos pre-aclarados donde la estructura interna ha sido alterada. Cuando la corteza presenta micro-cavidades por el proceso de decoloración, la luz se dispersa de manera difusa, lo que puede provocar un aspecto opaco o 'lavado' del color aplicado. El control de la dispersión de Mie se logra mediante la aplicación de agentes que rellenan estas micro-cavidades, restaurando la superficie reflectante natural de la fibra. La utilización de espectroscopía de reflectancia difusa permite a los especialistas medir este fenómeno y ajustar la fórmula del tinte para compensar la pérdida de brillo. Al alinear los índices de refracción de los polímeros de recubrimiento con los de la queratina, es posible maximizar la reflexión especular, otorgando al cabello tratado un acabado vibrante y saludable que resalta la profundidad del color aplicado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Optics Express (OSA)",
+        "url": "https://opg.optica.org/oe/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros de recubrimiento"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "percepcion-cromatica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-neurobiologia-009",
+    "title": "Neurobiología de la percepción del color en la consulta",
+    "content": "La percepción del resultado cromático post-tinte no es un proceso puramente físico, sino una interpretación neurobiológica compleja influenciada por factores contextuales y cognitivos. El cerebro humano integra la información espectral recibida por los fotorreceptores con la memoria visual y las expectativas previas, lo que a menudo genera discrepancias entre el color objetivo y la percepción subjetiva del cliente. Factores como la iluminación ambiental, el contraste con el tono de piel y el estado emocional pueden alterar la percepción del matiz final. En la consulta clínica, es fundamental gestionar estas expectativas utilizando herramientas de estandarización visual y luz controlada para minimizar el metamerismo. La neurobiología del color sugiere que el uso de nombres descriptivos y la demostración objetiva de la saturación mediante espectrofotometría pueden ayudar a alinear la percepción del cliente con el resultado real. Comprender que la satisfacción del cliente depende tanto de la química del tinte como de la psicología de su percepción es clave para el éxito en servicios de coloración de alta gama, donde la gestión de las expectativas es tan crítica como la técnica aplicada.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Neuroscience",
+        "url": "https://www.jneurosci.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consulta-clinica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:11:39.885Z"
+  }
+]

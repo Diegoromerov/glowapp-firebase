@@ -1,0 +1,408 @@
+{
+  "experiment": "R5-C30",
+  "cycle": 42,
+  "baseline": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "INMUTABLE — baseline oficial R5-C"
+  },
+  "gold_version": "GOLD-V5 (18 queries; 15 no-UNSUPPORTED + 3 UNSUPPORTED; 55 chunk IDs)",
+  "database_state": {
+    "chunks": "5,663",
+    "null_embeddings": 0,
+    "dims": 1024,
+    "duplicates": 0,
+    "gold_ids_in_db": "55/55 (C27)"
+  },
+  "production_guard": "active — Railway NO contactada; motor productivo INTACTO",
+  "historical_experiments": {
+    "r5c14_baseline": "leído",
+    "r5c22": "VECTOR-CANDIDATE-CEILING",
+    "r5c23": "MIXED",
+    "r5c24": "AGGREGATION-MIXED",
+    "r5c25": "AGGREGATOR-MIXED",
+    "r5c26": "SUFFICIENCY-DISCONFIRMED",
+    "r5c27": "ERROR-BUDGET-MIXED",
+    "r5c28": "CONTROLLED-ROUTING-DISCONFIRMED",
+    "r5c29": "SEMANTIC-ROUTING-DISCONFIRMED"
+  },
+  "causal_matrix": [
+    {
+      "query_id": "skincare_003",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "skincare_005",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "skincare_006",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "skincare_007",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "skincare_008",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "skincare_009",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "skincare_010",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cabello_002",
+      "support_status": "SUPPORTED",
+      "classification": "MULTI_CHUNK_RECOVERABLE",
+      "confidence": "HIGH",
+      "reason": "2/5 en top-5 pero 3/5 en top-50 (≥50%) — evidencia distribuida componible",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cabello_004",
+      "support_status": "UNSUPPORTED",
+      "classification": "CORPUS_GAP",
+      "confidence": "HIGH",
+      "reason": "Corpus gap validado en R5-C13 (anotación ciega)",
+      "evidence_in_corpus": false,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cabello_006",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cabello_008",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_001",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_002",
+      "support_status": "UNSUPPORTED",
+      "classification": "CORPUS_GAP",
+      "confidence": "HIGH",
+      "reason": "Corpus gap validado en R5-C13 (anotación ciega)",
+      "evidence_in_corpus": false,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_003",
+      "support_status": "UNSUPPORTED",
+      "classification": "CORPUS_GAP",
+      "confidence": "HIGH",
+      "reason": "Corpus gap validado en R5-C13 (anotación ciega)",
+      "evidence_in_corpus": false,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_004",
+      "support_status": "SUPPORTED",
+      "classification": "RETRIEVAL_MISS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_005",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_007",
+      "support_status": "SUPPORTED",
+      "classification": "DIRECT_SUCCESS",
+      "confidence": "HIGH",
+      "reason": "Clasificación según C27 (causal_map)",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    },
+    {
+      "query_id": "cejas_008",
+      "support_status": "SUPPORTED",
+      "classification": "MULTI_CHUNK_RECOVERABLE",
+      "confidence": "HIGH",
+      "reason": "2/6 en top-5 pero 3/6 en top-50 (≥50%) — evidencia distribuida componible",
+      "evidence_in_corpus": true,
+      "evidence_in_top50": 0,
+      "evidence_in_top100": 0
+    }
+  ],
+  "error_budget": {
+    "total_queries": 18,
+    "by_class": {
+      "DIRECT_SUCCESS": 12,
+      "MULTI_CHUNK_RECOVERABLE": 2,
+      "CORPUS_GAP": 3,
+      "RETRIEVAL_MISS": 1
+    },
+    "percentages": {
+      "DIRECT_SUCCESS": 0.6667,
+      "MULTI_CHUNK_RECOVERABLE": 0.1111,
+      "CORPUS_GAP": 0.1667,
+      "RETRIEVAL_MISS": 0.0556
+    },
+    "sum_check": 1.0001,
+    "retrieval_attributable": 0.16666666666666666,
+    "corpus_attributable": 0.16666666666666666,
+    "annotation_attributable": 0
+  },
+  "retrieval_ceiling": {
+    "r5": 0.6156,
+    "r10": 0.6545,
+    "r20": 0.7156,
+    "r50": 0.8011,
+    "r100": 0.8011,
+    "mrr": 0.7222,
+    "note": "R@50 = R@100 = 0.8011 → ampliar K no añade recall. R@K mide chunks gold recuperados; NO es evidence ceiling ni respuesta correcta."
+  },
+  "evidence_ceiling": {
+    "r100_sufficient": 0.9333,
+    "queries_respondibles_con_agregacion": "14/15",
+    "note": "Evidence ceiling = proporción de queries cuya evidencia (expected chunks) está suficiente en el pool (≥50% en top-100). Responde: ¿cuántas queries PODRÍAN responderse con la evidencia del pool si la composición funcionara? Distinto de R@K (chunks recuperados) y distinto de respuesta correcta (requiere generación).",
+    "categorias": {
+      "A_directa_suficiente": "12/15 no-UNSUPPORTED (DIRECT_SUCCESS)",
+      "B_distribuida_componible": "2/15 (cabello_002, cejas_008 — composición parcial, C24/C25 no generalizó)",
+      "C_ausente_del_pool": "1/15 (cejas_004 — 4/6 piezas fuera de top-100)",
+      "D_inexistente_en_corpus": "3/18 (UNSUPPORTED validadas C13)"
+    }
+  },
+  "multi_chunk_analysis": {
+    "status": "EXPERIMENTAL-ONLY",
+    "rationale": "C24/C25 demostraron el fenómeno (14/15 respondibles por composición teórica; cabello_002 recuperado) pero precision 0.36, query success 53% y sin señal de activación generalizable (C28/C29) → NO aprobado para producción sin señal semántica externa."
+  },
+  "critical_cases": {
+    "cejas_004": {
+      "classification": "RETRIEVAL_MISS",
+      "evidence_in_corpus": true,
+      "evidence_in_top100": 0.3333,
+      "evidence_in_top50": 0.3333,
+      "pieces_outside_pool100": 4,
+      "confirmation": "CONFIRMADO: 4 piezas fuera de top-100 (consistente con R5-C23/24)",
+      "conclusion": "RETRIEVAL MISS CONFIRMADO (C22-C29): la evidencia de simetría muscular EXISTE en el corpus (55/55 golds en BD) pero 4/6 piezas quedan fuera de top-100 por colisión semántica. NO es corpus gap. La composición (C24/C25), el routing léxico (C28) y semántico (C29) no la recuperan. Límite documentado del motor actual."
+    },
+    "cabello_002": {
+      "classification": "MULTI_CHUNK_RECOVERABLE",
+      "evidence_in_top50": 0.6,
+      "pieces_in_pool100": 3,
+      "pieces_outside_pool100": 2,
+      "composicion": "3/5 piezas en top-50 (ph, ph-pos-tinte, viscoelasticidad) — componible en teoría. C25 agregador: SUFFICIENT Q=True (recuperado). C28 router: NO activó (señal léxica falló). C29 router: SUFFICIENT por activación indiscriminada.",
+      "limitacion": "La composición funciona solo con señal semántica externa; las señales del motor actual no la activan selectivamente."
+    },
+    "cejas_008": {
+      "classification": "MULTI_CHUNK_RECOVERABLE",
+      "evidence_in_top50": 0.5,
+      "pieces_in_pool100": 3,
+      "pieces_outside_pool100": 3,
+      "composicion": "3/6 piezas en top-50 (límite del umbral) — composición parcial. C24: RECOVERED @50. C25/C29: PARTIAL. Las piezas de remoción (electrólisis, erbio, tyndall) permanecen fuera.",
+      "limitacion": "Mismo límite que cabello_002: requiere composición con señal externa; no activable con el motor actual."
+    }
+  },
+  "unsupported_analysis": {
+    "queries": [
+      "cabello_004",
+      "cejas_002",
+      "cejas_003"
+    ],
+    "policy": "SAFE TO IMPLEMENT: responder UNSUPPORTED cuando el inventario de corpus confirme ausencia de evidencia (distinto de RETRIEVAL MISS donde la evidencia existe pero no se recuperó). C27 demostró la distinción operable."
+  },
+  "production_candidates": [
+    {
+      "item": "Baseline R5-C (retrieval e5-v5 actual, threshold 0.45, top-5)",
+      "evidence": "Motor productivo intacto; R@5=0.7885/MRR=0.7179 sobre core 13; 66.7% de queries son DIRECT_SUCCESS",
+      "status": "PRODUCTION-READY (ya en producción, sin cambios)"
+    },
+    {
+      "item": "Política UNSUPPORTED para queries sin evidencia",
+      "evidence": "3 UNSUPPORTED validadas por anotación ciega (C13); distinguibles de RETRIEVAL MISS por inventario de corpus (C27)",
+      "status": "SAFE TO IMPLEMENT — diferenciar UNSUPPORTED (corpus) de retrieval miss (evidencia existe pero no recuperada)"
+    }
+  ],
+  "production_rejections": [
+    {
+      "item": "Cambio de modelo de embeddings (mxbai)",
+      "evidence": "C19: ΔR@5 −0.39, 13/15 degradan",
+      "status": "NOT JUSTIFIED"
+    },
+    {
+      "item": "Reranking (heurístico e híbrido)",
+      "evidence": "C3/C4/C20: 3 evidencias negativas",
+      "status": "NOT JUSTIFIED"
+    },
+    {
+      "item": "Query representation / expansión",
+      "evidence": "C16: ΔR@5 −0.068, 7 regresiones; C18: Q1/Q2 no mejoran",
+      "status": "NOT JUSTIFIED"
+    },
+    {
+      "item": "Representación documental (título/dominio)",
+      "evidence": "C18 (ΔR@5 −0.16) + C21 (15/15 UNCHANGED)",
+      "status": "NOT JUSTIFIED"
+    },
+    {
+      "item": "Routing adaptativo (léxico C28, semántico C29)",
+      "evidence": "C28: 0/2 casos objetivo, 3 regresiones; C29: activación 86.7%, precision 0.15",
+      "status": "NOT JUSTIFIED"
+    },
+    {
+      "item": "Evidence sufficiency por cobertura léxica (C26)",
+      "evidence": "SUFFICIENCY-DISCONFIRMED — falso SUFFICIENT persiste",
+      "status": "NOT JUSTIFIED"
+    },
+    {
+      "item": "Hybrid retrieval simple",
+      "evidence": "C20/C22: unión lexical 0/15",
+      "status": "NOT JUSTIFIED"
+    }
+  ],
+  "known_limitations": [
+    "cejas_004: colisión semántica (4/6 piezas fuera de top-100) — requiere representación estructural distinta o aceptación",
+    "cabello_002/cejas_008: composición multi-chunk no activable con señales del motor actual",
+    "3 UNSUPPORTED (cabello_004, cejas_002, cejas_003): requieren ampliación de corpus (decisión de negocio)",
+    "Banda de scores comprimida 0.50-0.58: colisión semántica intrínseca del dominio belleza"
+  ],
+  "architecture_recommendation": {
+    "pipeline": "QUERY → RETRIEVAL (actual, intacto) → EVIDENCE ASSESSMENT (score + inventario de corpus) → SUPPORTED/PARTIAL/UNSUPPORTED → ANSWER GENERATION",
+    "components": [
+      {
+        "component": "Retrieval vectorial e5-v5",
+        "backed_by": "CONFIRMADO — motor actual, baseline 0.7885",
+        "production_ready": true
+      },
+      {
+        "component": "Inventario de corpus para UNSUPPORTED vs RETRIEVAL MISS",
+        "backed_by": "CONFIRMADO — C27 (55/55 golds en BD; distinción corpus/retrieval)",
+        "production_ready": true
+      },
+      {
+        "component": "Gate strong_score≥0.55 (anti-falso-SUFFICIENT)",
+        "backed_by": "REPRODUCIBLE en C25-C29, pero requiere validación independiente",
+        "production_ready": false
+      },
+      {
+        "component": "Composición multi-chunk",
+        "backed_by": "MIXED (C24/C25) — no generaliza sin señal externa",
+        "production_ready": false
+      },
+      {
+        "component": "Routing adaptativo",
+        "backed_by": "DISCONFIRMED (C28 léxico, C29 semántico)",
+        "production_ready": false
+      },
+      {
+        "component": "Evaluación de suficiencia por cobertura léxica",
+        "backed_by": "DISCONFIRMED (C26)",
+        "production_ready": false
+      }
+    ]
+  },
+  "decision": {
+    "verdict_chain": {
+      "C22": "VECTOR-CANDIDATE-CEILING",
+      "C23": "MIXED",
+      "C24": "AGGREGATION-MIXED",
+      "C25": "AGGREGATOR-MIXED",
+      "C26": "SUFFICIENCY-DISCONFIRMED",
+      "C27": "ERROR-BUDGET-MIXED",
+      "C28": "CONTROLLED-ROUTING-DISCONFIRMED",
+      "C29": "SEMANTIC-ROUTING-DISCONFIRMED"
+    },
+    "techo_del_rag": {
+      "r5_baseline": 0.7885,
+      "mrr": 0.7179,
+      "vector_ceiling_r100": 0.8011,
+      "evidence_ceiling": 0.9333,
+      "diferencia_explicada": "R@100 (0.80) = chunks gold recuperados. Evidence ceiling (0.9333) = queries cuyo expected está en el pool. Respuesta correcta = adicionalmente requiere composición (no lograda) + generación. Son tres niveles distintos."
+    },
+    "decision": "C",
+    "decision_rationale": "CORPUS-FIRST: el corpus-attributable (16.7%) es un cuello de botella equivalente al retrieval-attributable (16.7%), pero mientras el retrieval llegó a un techo defendible (R@100=0.80, 9 líneas experimentales cerradas), el corpus gap (3 UNSUPPORTED) es una decisión de negocio con beneficio directo del 16.7%. La intervención mínima respaldada: ampliar/rediferenciar corpus para las 3 UNSUPPORTED + mantener el motor actual.",
+    "complement": "D (RETRIEVAL-RESEARCH-CLOSED) como estado de la investigación de retrieval: techo defendible R@100=0.80, 9 líneas cerradas con evidencia."
+  },
+  "reproducibility": "RUN A ≡ RUN B (consolidador determinista sobre artefactos fijos)",
+  "tests": {
+    "rag_expected": "69/69",
+    "global_expected": "263/8/1"
+  },
+  "timestamp": "2026-08-15T21:46:46.842Z",
+  "run": "A"
+}

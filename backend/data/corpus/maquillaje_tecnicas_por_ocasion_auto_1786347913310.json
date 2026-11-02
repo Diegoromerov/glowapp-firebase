@@ -1,0 +1,130 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-hiperbaricos-001",
+    "title": "Maquillaje en cámaras hiperbáricas: Estabilidad física y seguridad cutánea",
+    "content": "La exposición a entornos hiperbáricos, como en cámaras de oxigenoterapia o actividades de buceo técnico, altera drásticamente la dinámica de las emulsiones cosméticas. Bajo presiones superiores a 1 atmósfera (atm), el aire atrapado en las micro-burbujas de las emulsiones de maquillaje puede expandirse o contraerse, afectando la estabilidad del producto y facilitando la migración del pigmento hacia los ostiums foliculares. La AAD (American Academy of Dermatology) advierte que el aumento de la presión parcial de oxígeno incrementa la producción de especies reactivas de oxígeno (ERO), lo que puede acelerar la oxidación de los ácidos grasos presentes en el sebo y en los componentes lipídicos del maquillaje. Se recomienda evitar bases con alto contenido de siliconas volátiles, ya que su tasa de evaporación cambia bajo presión, pudiendo generar una oclusión excesiva. Es imperativo utilizar formulaciones con alta estabilidad dieléctrica y evitar pigmentos metálicos que puedan ser susceptibles a cambios de estado bajo condiciones de saturación gaseosa. La integridad de la barrera cutánea se ve comprometida al salir de la cámara, por lo que el maquillaje debe ser fácilmente removible con limpiadores de base acuosa para evitar fricciones mecánicas adicionales sobre una piel potencialmente sensibilizada por el gradiente de presión.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "pigmentos inorgánicos"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:44:48.068Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-polvos-metalicos-003",
+    "title": "Maquillaje en entornos industriales con alta exposición a polvos metálicos",
+    "content": "En entornos industriales donde prevalecen partículas metálicas en suspensión, el maquillaje funciona como un imán electrostático si no se selecciona adecuadamente. La carga electrostática de muchas bases de larga duración, rica en óxidos de hierro y polímeros sintéticos, puede atraer partículas metálicas ferrosas, creando una capa de 'suciedad' que se adhiere firmemente a la superficie cutánea. Esta interacción no es solo estética; puede provocar dermatitis de contacto irritativa al actuar como un agente abrasivo constante bajo la fricción del movimiento facial. Investigaciones publicadas en revistas de dermatología ocupacional sugieren que el uso de polvos minerales con carga positiva puede neutralizar la atracción de partículas metálicas cargadas negativamente, actuando como una barrera de sacrificio. Es fundamental aplicar una capa de 'primers' dieléctricos que reduzcan la acumulación de electricidad estática en la superficie del rostro. Además, la limpieza post-evento debe ser exhaustiva, utilizando aceites limpiadores que logren emulsificar no solo el maquillaje, sino también los contaminantes metálicos adheridos, evitando que estos penetren en los folículos pilosebáceos y desencadenen procesos inflamatorios crónicos o dermatitis por contacto alérgica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Occupational and Environmental Medicine",
+        "url": "https://journals.lww.com/joem/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers dieléctricos"
+      ],
+      "contraindications": [
+        "bases con alta carga electrostática"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-dermatologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:44:48.068Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibraciones-mecanicas-005",
+    "title": "Estabilidad del maquillaje ante vibraciones mecánicas continuas",
+    "content": "Las vibraciones mecánicas de baja frecuencia, presentes en eventos con maquinaria pesada, plataformas de transporte o entornos de construcción, generan un fenómeno físico de 'licuefacción' en los productos cosméticos. Este movimiento constante puede romper la estructura de red de los geles y cremas, provocando que el maquillaje se deposite preferencialmente en las líneas de expresión y poros, aumentando la visibilidad de los surcos cutáneos. Según principios de reología, los productos con alto límite elástico son más resistentes a este fenómeno. Para mantener el maquillaje intacto, se deben utilizar técnicas de fijación mediante polímeros de red tridimensional que mantengan la cohesión de las partículas a pesar de la oscilación. Además, el movimiento constante aumenta la fricción entre el maquillaje y la piel, lo que puede desgastar la capa lipídica protectora. Es vital aplicar una barrera oclusiva (como ceras naturales o siliconas de alto peso molecular) antes del maquillaje para minimizar el roce mecánico. La revisión del estado del maquillaje debe ser frecuente, ya que la vibración puede inducir la migración de ingredientes hacia la zona periocular, causando irritación mecánica por contacto directo con los párpados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35124098/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de red 3D",
+        "ceras naturales"
+      ],
+      "contraindications": [
+        "productos de baja viscosidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-dermatologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:44:48.068Z"
+  }
+]

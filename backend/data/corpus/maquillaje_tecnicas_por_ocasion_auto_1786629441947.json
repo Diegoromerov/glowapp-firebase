@@ -1,0 +1,172 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microbioma-oral-001",
+    "title": "Impacto de la transferencia de microbiota oral en la estabilidad del maquillaje en eventos",
+    "content": "La interacción constante durante eventos sociales, caracterizada por la conversación próxima, implica una exposición directa a aerosoles y microgotas de la cavidad oral sobre el maquillaje facial. Estudios microbiológicos, como los publicados en el Journal of Oral Microbiology, indican que la microbiota oral es compleja y puede alterar el pH superficial de la piel al depositarse sobre las bases cosméticas. Este cambio de pH induce una inestabilidad en las emulsiones, provocando la migración del pigmento y facilitando la proliferación de microorganismos oportunistas en la interfaz piel-maquillaje. Para mitigar este efecto, se recomienda el uso de selladores con polímeros formadores de película que actúen como una barrera física, evitando que los sustratos orales penetren en la matriz del producto. Además, la aplicación de sprays con agentes antibacterianos de amplio espectro, como el gluconato de clorhexidina en concentraciones seguras o extractos naturales con propiedades antimicrobianas, ayuda a preservar la integridad del maquillaje y la salud cutánea durante eventos de larga duración con alta interacción social.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Oral Microbiology",
+        "url": "https://www.tandfonline.com/toc/zjom20/current",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de acrilatos",
+        "agentes antimicrobianos"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-y-seguridad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:57:04.753Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-oxidativo-hev-002",
+    "title": "Estrategias de maquillaje para la protección contra el estrés oxidativo inducido por luz HEV",
+    "content": "La exposición prolongada a fuentes de luz visible de alta energía (HEV) en eventos en interiores con iluminación técnica avanzada genera un estrés oxidativo significativo en los queratinocitos. A diferencia de la radiación UV, la luz azul (400-500 nm) penetra profundamente en la dermis, induciendo la formación de especies reactivas de oxígeno (ERO) que degradan el colágeno y alteran la barrera cutánea. La curaduría clínica sugiere que los maquillajes convencionales son insuficientes. Es imperativo integrar pigmentos inorgánicos, específicamente el óxido de hierro y el dióxido de titanio de partícula grande, que han demostrado en estudios de fotobiología, como los indexados en PubMed, una capacidad efectiva de dispersión y reflexión de la luz visible. El uso de primers ricos en antioxidantes como la vitamina C estabilizada y la niacinamida al 5% crea un escudo metabólico que neutraliza los radicales libres antes de que afecten la cohesión del maquillaje. Esta técnica de estratificación es fundamental para mantener el tono y la textura durante eventos de larga duración bajo iluminación LED de alta intensidad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxido de hierro",
+        "niacinamida",
+        "vitamina C"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-cutanea-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:57:04.753Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-positiva-003",
+    "title": "Gestión de la adherencia de partículas PM2.5 en ambientes de alta ionización positiva",
+    "content": "Los eventos celebrados en entornos industriales o con alta densidad de equipos electrónicos suelen presentar una atmósfera cargada de iones positivos, lo que incrementa la adherencia electrostática de partículas contaminantes como el PM2.5 sobre el rostro. Este fenómeno no solo compromete la estética del maquillaje, sino que las partículas finas pueden penetrar en los folículos pilosebáceos, induciendo una respuesta inflamatoria subclínica. Según directrices de la American Academy of Dermatology (AAD), la oclusión folicular por partículas externas es una causa subestimada de exacerbación del acné. Para contrarrestar esto, se debe emplear una técnica de sellado con polímeros de carga negativa o agentes antiestáticos que neutralicen la polaridad de la superficie cutánea. La aplicación de brumas faciales con base de agua termal y polímeros de silicona permite crear un gradiente de potencial eléctrico que repele las partículas en suspensión. Esta estrategia es crucial para usuarios con pieles reactivas o con tendencia al acné, asegurando que el maquillaje actúe como una barrera protectora y no como un receptor de contaminantes atmosféricos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/pollutants",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "agentes antiestáticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:57:04.753Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-deshidratacion-osmotica-004",
+    "title": "Maquillaje en entornos de deshidratación osmótica: Estrategias de retención hídrica",
+    "content": "En entornos de baja humedad relativa, como aviones presurizados o salas de servidores, la piel experimenta una pérdida de agua transepidérmica (TEWL) acelerada debido a un gradiente osmótico desfavorable. Esto provoca que el maquillaje pierda su plasticidad, resultando en fisuras y descamación de los pigmentos. La evidencia clínica sugiere que el uso de oclusivos ligeros antes del maquillaje es insuficiente si no se combina con ingredientes humectantes de alto peso molecular, como el ácido hialurónico de cadena larga. Estos compuestos retienen el agua en el estrato córneo, manteniendo la elasticidad necesaria para que el maquillaje se adapte a los movimientos faciales sin fracturarse. Además, la incorporación de ceramidas en la base ayuda a restaurar la barrera lipídica, que suele verse comprometida en estos ambientes. Es fundamental evitar productos con alto contenido de alcoholes volátiles que exacerban la deshidratación. El sellado final debe realizarse con sprays fijadores que contengan glicerina o pantenol, asegurando una película flexible que soporte las fluctuaciones de humedad sin comprometer la integridad del acabado cosmético.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:57:04.753Z"
+  }
+]

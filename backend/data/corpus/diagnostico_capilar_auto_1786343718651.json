@@ -1,0 +1,268 @@
+[
+  {
+    "chunk_id": "epigenetica-microARN-folicular-001",
+    "title": "Regulación por MicroARNs en la Miniaturización Folicular",
+    "content": "La expresión génica en la alopecia androgenética no solo depende de polimorfismos en el receptor de andrógenos, sino de una compleja red de microARNs (miARNs) que actúan como reguladores post-transcripcionales. Estudios recientes en PubMed han identificado que miARNs específicos, como el miR-125b y el miR-205, se encuentran desregulados en las papilas dérmicas de folículos miniaturizados. Estos pequeños ARN no codificantes modulan la proliferación de las células de la matriz y la transición del ciclo capilar, ejerciendo un control epigenético sobre la duración de la fase anágena. Comprender este perfil de expresión permite predecir la respuesta terapéutica a fármacos que actúan sobre la señalización Wnt/β-catenina. La investigación actual sugiere que la manipulación terapéutica de estos miARNs podría representar una frontera en la medicina regenerativa capilar, superando las limitaciones de los tratamientos hormonales sistémicos al enfocarse en la reprogramación molecular del nicho folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_molecular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  },
+  {
+    "chunk_id": "biomecanica-tallo-friccion-002",
+    "title": "Biomecánica de la Fibra: Evaluación de la Resistencia a la Fricción",
+    "content": "La integridad estructural del tallo capilar frente a estímulos mecánicos es un marcador clave de salud cutánea. La fricción constante, mediada por hábitos de peinado y el uso de accesorios, induce una degradación progresiva de la cutícula que puede confundirse con fragilidad patológica. La evaluación biomecánica, mediante microscopía electrónica de barrido, permite cuantificar el coeficiente de fricción y el desgaste de las capas de células escamosas. Un cuero cabelludo con una barrera lipídica alterada disminuye la lubricación natural del tallo, exacerbando el daño mecánico. En la práctica clínica, es fundamental distinguir entre la fragilidad debida a una patología del folículo (como en la alopecia por tracción) y la fragilidad secundaria a la degradación del tallo. La cuantificación de la fuerza necesaria para la rotura de la fibra proporciona una métrica objetiva que complementa la tricoscopia convencional, permitiendo un manejo integral del paciente que combine tratamientos farmacológicos con recomendaciones específicas de cuidado cosmético.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  },
+  {
+    "chunk_id": "inmunometabolismo-linfocitos-003",
+    "title": "Inmunometabolismo: El Rol de los Linfocitos T en el Nicho Folicular",
+    "content": "El nicho del folículo piloso no es solo un centro de regeneración, sino un área de intensa actividad inmunológica. Los linfocitos T residentes de memoria (TRM) juegan un papel fundamental en la vigilancia del microambiente folicular. En condiciones de inflamación crónica, como en la alopecia areata o el liquen plano pilar, se observa una alteración metabólica en estos linfocitos, pasando de un metabolismo oxidativo a uno glucolítico. Este cambio metabólico está estrechamente vinculado con la secreción de citocinas proinflamatorias como el interferón-gamma, que inhibe la proliferación de las células madre del bulbo. La investigación en inmunometabolismo sugiere que la modulación de las vías metabólicas de los linfocitos T podría frenar la progresión de las alopecias cicatriciales. La identificación temprana de biomarcadores de activación linfocitaria en el cuero cabelludo, mediante técnicas de biopsia líquida o análisis de secreciones, representa una oportunidad para el diagnóstico precoz antes de que se produzca la destrucción irreversible del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inmunologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  },
+  {
+    "chunk_id": "autofagia-bulbo-piloso-004",
+    "title": "Autofagia: Mecanismo de Limpieza y Supervivencia Celular",
+    "content": "La autofagia es un proceso catabólico celular esencial para la homeostasis del folículo piloso, permitiendo la eliminación de orgánulos dañados y proteínas mal plegadas. En el bulbo piloso, la autofagia se activa cíclicamente para gestionar el estrés metabólico durante las fases de transición (catágeno). Investigaciones recientes han demostrado que una disfunción en el flujo autofágico está correlacionada con la senescencia prematura de las células madre foliculares. Cuando la maquinaria de autofagia se ve comprometida por factores ambientales o estrés oxidativo crónico, el folículo acumula detritos celulares que perpetúan un estado de inflamación subclínica. Potenciar la autofagia mediante moduladores farmacológicos o nutricionales se perfila como una estrategia prometedora para prolongar la fase anágena y mejorar la calidad del tallo. El diagnóstico clínico debe considerar la capacidad autofágica como un marcador de 'edad biológica' del folículo, especialmente en pacientes con signos de miniaturización difusa sin un componente androgénico claro.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrd/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_regenerativo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  },
+  {
+    "chunk_id": "glicacion-avanzada-matriz-005",
+    "title": "Impacto de los AGEs en la Estructura de la Matriz Folicular",
+    "content": "Los productos de glicación avanzada (AGEs) son moléculas resultantes de la unión no enzimática entre azúcares y proteínas, cuya acumulación en la matriz extracelular del cuero cabelludo acelera el envejecimiento folicular. En pacientes con resistencia a la insulina o dietas de alta carga glucémica, los niveles elevados de AGEs dañan el colágeno tipo IV de la membrana basal del folículo, alterando la comunicación entre la papila dérmica y las células epiteliales. Este daño estructural se manifiesta clínicamente como una reducción en el diámetro del tallo y una menor densidad capilar. La evaluación de los niveles séricos de hemoglobina glicosilada y el análisis del entorno perifolicular pueden revelar una 'glicación tisular' que contribuye a la alopecia. El manejo clínico requiere un enfoque multidisciplinar que incluya cambios en la dieta, agentes antiglicantes tópicos y una vigilancia estricta de los marcadores metabólicos para prevenir la atrofia del bulbo piloso a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  },
+  {
+    "chunk_id": "termografia-infrarroja-006",
+    "title": "Termografía Infrarroja en la Detección de Inflamación Folicular",
+    "content": "La termografía infrarroja de alta resolución se está consolidando como una herramienta diagnóstica no invasiva para detectar la inflamación perifolicular subclínica. Dado que la respuesta inflamatoria local genera un gradiente térmico detectable, la termografía permite mapear áreas del cuero cabelludo con actividad metabólica aumentada que preceden a la caída visible del cabello. Esta tecnología es particularmente útil en el diagnóstico diferencial entre alopecias no cicatriciales inflamatorias y estados de efluvio telógeno crónico. Al visualizar la distribución de calor, los clínicos pueden identificar zonas de 'estrés térmico' que se correlacionan con la disfunción microvascular. A diferencia de la tricoscopia convencional, que es estática, la termografía ofrece una visión dinámica del estado inflamatorio, permitiendo ajustar los protocolos de tratamiento antiinflamatorio de manera personalizada según la respuesta térmica observada en las revisiones de seguimiento clínico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tecnologico"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  },
+  {
+    "chunk_id": "proteostasis-matriz-009",
+    "title": "Proteostasis: Control de Calidad en la Matriz Piloso",
+    "content": "La proteostasis es la red compleja que regula la síntesis, plegamiento, tráfico y degradación de proteínas dentro del folículo piloso. Dada la alta tasa de síntesis de queratina, el folículo es extremadamente sensible a cualquier fallo en el control de calidad de las proteínas. Las chaperonas moleculares, como las proteínas de choque térmico (HSP), juegan un papel crucial en la protección de la matriz frente a factores estresantes como la polución o la radiación UV. Un desequilibrio en la proteostasis conduce a la acumulación de proteínas mal plegadas, lo que desencadena una respuesta de estrés del retículo endoplásmico y, eventualmente, la apoptosis celular. El diagnóstico clínico de las alopecias debe considerar la capacidad proteostática del folículo como un determinante clave de la resistencia ante el exposoma urbano. El fortalecimiento de esta red mediante nutracéuticos específicos puede mejorar la resiliencia estructural del tallo, ofreciendo una protección proactiva contra el daño crónico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:00.447Z"
+  }
+]

@@ -1,0 +1,196 @@
+[
+  {
+    "chunk_id": "colorimetria-ritmos-circadianos-001",
+    "title": "Oscilaciones de la perfusión sanguínea y su impacto en la lectura del subtono",
+    "content": "La colorimetría facial no es un parámetro estático; está sujeta a variaciones circadianas significativas mediadas por el ritmo de la microcirculación cutánea. Estudios publicados en el Journal of Investigative Dermatology indican que la perfusión sanguínea alcanza su pico máximo durante las horas de la tarde, lo que incrementa la saturación de hemoglobina oxigenada en la dermis papilar. Este fenómeno altera la percepción del subtono, haciendo que pieles neutras o levemente cálidas presenten una falsa coloración rosada o 'fría' debido al aumento del flujo sanguíneo superficial. Para un diagnóstico preciso en GlowApp, es imperativo estandarizar la evaluación en condiciones de reposo térmico y evitar las horas de mayor actividad metabólica, ya que la vasodilatación inducida por el ritmo circadiano puede enmascarar los pigmentos subyacentes de melanina y carotenos. La variabilidad diaria del tono es un factor subestimado que suele llevar a errores en la selección de bases, especialmente en pacientes con alta reactividad vascular.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30062-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:43:23.287Z"
+  },
+  {
+    "chunk_id": "colorimetria-bioimpedancia-002",
+    "title": "Correlación entre la hidratación profunda y la reflectancia espectral",
+    "content": "La hidratación del estrato córneo y la dermis profunda modifica drásticamente la dispersión de la luz sobre la superficie cutánea, un fenómeno cuantificable mediante bioimpedancia. Cuando los niveles de agua en la piel son subóptimos, la dispersión especular disminuye y la luz penetra menos en la dermis, lo que resulta en una apariencia opaca que altera la lectura del subtono. La literatura dermatológica, incluyendo reportes de la American Academy of Dermatology, subraya que una piel deshidratada dispersa la luz de manera heterogénea, dificultando la distinción entre subtonos cálidos y fríos. La correcta hidratación restaura la capacidad de la piel para reflejar el espectro de color de manera uniforme, permitiendo que la melanina y la hemoglobina se perciban en su proporción real. GlowApp debe considerar la medición de hidratación previa al diagnóstico colorimétrico, dado que una piel con baja hidratación suele mostrar una falsa saturación amarillenta o grisácea, sesgando la elección de correctores y bases hacia tonalidades erróneas.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/dry-skin-overview",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:43:23.287Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-003",
+    "title": "Microbioma cutáneo: un modulador invisible del pH y la cromaticidad",
+    "content": "El microbioma cutáneo, compuesto por una vasta red de bacterias, levaduras y hongos, no solo mantiene la barrera física, sino que influye en la estabilidad del pH superficial. Un pH desequilibrado, a menudo resultado de una disbiosis, altera la reflectancia de los pigmentos de maquillaje aplicados sobre la piel. Investigaciones en PubMed indican que el pH cutáneo influye en la tasa de oxidación de los ácidos grasos libres del sebo, los cuales pueden cambiar el tono de una base de maquillaje tras pocas horas de uso. Esta interacción química es un componente crítico en la colorimetría dinámica que GlowApp debe monitorizar. Las poblaciones de Cutibacterium acnes y Staphylococcus epidermidis, al metabolizar lípidos, alteran la acidez del manto hidrolipídico, lo que puede provocar que bases con subtonos neutros viren hacia tonos más cálidos o cetrinos. Comprender este eje permite a los especialistas recomendar preparadores de piel que estabilicen el pH, garantizando que el subtono elegido permanezca fiel durante toda la jornada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/National Institutes of Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:43:23.287Z"
+  },
+  {
+    "chunk_id": "colorimetria-hipoxia-bogota-004",
+    "title": "Hipoxia hipobárica y su impacto en la cromaticidad facial en Bogotá",
+    "content": "La altitud de Bogotá (2,640 msnm) genera un estado de hipoxia hipobárica leve que influye en la hemodinámica cutánea de sus habitantes. La respuesta fisiológica del organismo ante esta menor disponibilidad de oxígeno incluye cambios en la saturación de la hemoglobina capilar, lo cual puede manifestarse como una ligera cianosis subclínica o un aumento en la palidez cutánea. Este fenómeno altera la lectura del subtono, especialmente en pieles fototipo IV-VI, donde la percepción del subtono frío puede verse distorsionada por la saturación de hemoglobina desoxigenada. Los especialistas en GlowApp deben considerar que la colorimetría en entornos de alta montaña no es idéntica a la del nivel del mar. La hipoxia crónica provoca una adaptación vascular que modifica la reflectancia del espectro rojo en la piel facial. Es crucial realizar el diagnóstico colorimétrico considerando este factor ambiental, integrando la corrección de la saturación de hemoglobina en los algoritmos de detección del undertone para evitar la sobreestimación de subtonos azulados o cetrinos en la población bogotana.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/altitude-illness",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:43:23.287Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-hev-005",
+    "title": "Luz HEV y fatiga cromática: desafíos en el entorno digital",
+    "content": "La exposición prolongada a la luz de alta energía visible (HEV), emitida por dispositivos digitales, interfiere no solo con la salud cutánea, sino con la percepción neuro-estética del subtono. La luz HEV induce un fenómeno de fatiga cromática en la retina, donde la sensibilidad a longitudes de onda cortas se ve alterada, dificultando la evaluación precisa del color facial. Estudios indexados en revistas de oftalmología y dermatología sugieren que la fatiga visual por pantallas puede llevar a un sesgo de confirmación donde el observador percibe erróneamente subtonos más fríos o verdosos debido a la compensación retiniana. En GlowApp, este factor es crítico durante las consultas virtuales o el uso de apps de diagnóstico basadas en cámaras. Es necesario aplicar filtros de corrección de balance de blancos que compensen la emisión HEV de los dispositivos del usuario, asegurando que el algoritmo de colorimetría analice la piel bajo condiciones de iluminación neutral, evitando que la fatiga cromática del usuario o la distorsión del sensor del dispositivo sesguen los resultados.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_glowapp"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:43:23.287Z"
+  }
+]

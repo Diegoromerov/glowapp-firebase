@@ -1,0 +1,220 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-estaticos-001",
+    "title": "Maquillaje en entornos con resonancia magnética (MRI) y campos magnéticos estáticos",
+    "content": "La interacción entre los componentes de ciertos productos cosméticos y los campos magnéticos estáticos, como los presentes en salas de resonancia magnética (MRI), representa un desafío técnico poco explorado. Algunos pigmentos de larga duración, particularmente aquellos basados en óxidos de hierro de alta pureza o partículas metálicas utilizadas para efectos iridiscentes, pueden generar artefactos de imagen o, en condiciones extremas, inducir corrientes de Foucault si la concentración de metal es inusualmente elevada. Es imperativo evitar el uso de cosméticos con altas concentraciones de mica tratada con metales o pigmentos ferromagnéticos en contextos donde el usuario deba someterse a escaneos diagnósticos. La literatura en Journal of Magnetic Resonance Imaging sugiere que la presencia de partículas conductoras puede causar distorsiones en la señal (susceptibilidad magnética). Para eventos de alto perfil en entornos hospitalarios o de investigación tecnológica, se recomienda el uso de maquillaje libre de metales pesados y bases formuladas con pigmentos minerales inertes (como el dióxido de titanio o el óxido de zinc de grado no nano) para garantizar la neutralidad electromagnética y la integridad de la piel sensible.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Magnetic Resonance Imaging",
+        "url": "https://onlinelibrary.wiley.com/journal/15222586",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dióxido de titanio",
+        "óxido de zinc"
+      ],
+      "contraindications": [
+        "pigmentos metálicos",
+        "óxidos de hierro ferromagnéticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:39:48.883Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-estaticos-002",
+    "title": "Gestión de la conductividad cutánea en entornos con campos eléctricos de alta tensión",
+    "content": "En eventos industriales o ferias tecnológicas con alta exposición a campos eléctricos de alto voltaje, la piel actúa como una interfaz conductora. Los cosméticos con alto contenido en electrolitos (humectantes tipo glicerina, sales de lactato o ácido hialurónico de bajo peso molecular) pueden alterar la impedancia de la superficie cutánea. La acumulación de cargas electrostáticas en la película cosmética no solo favorece la adherencia de partículas contaminantes, sino que puede generar micro-descargas al contacto con superficies metálicas. Según estudios publicados en PubMed sobre bioelectromagnetismo, la piel con una barrera lipídica íntegra y un pH ligeramente ácido (4.7-5.5) funciona como un aislante eficaz. Para estos escenarios, se sugiere utilizar selladores de maquillaje con polímeros dieléctricos (como las siliconas no volátiles) que minimicen la conductividad superficial. Es vital evitar el uso de sprays fijadores con alta carga de sales solubles en agua, ya que aumentan la capacidad de la piel para interactuar con el campo eléctrico ambiental, aumentando el riesgo de dermatitis por contacto irritativo inducida por pequeñas corrientes eléctricas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "glicerina",
+        "lactatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:39:48.883Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-estaticos-004",
+    "title": "Impacto de la luz coherente (Láser de espectáculos) en la estabilidad de pigmentos",
+    "content": "En eventos con iluminación láser de alta potencia, la estabilidad fotofísica de los pigmentos cosméticos es puesta a prueba. Los láseres de espectáculos emiten luz coherente con una densidad de energía muy superior a la iluminación convencional. Algunos pigmentos orgánicos utilizados en sombras de ojos o labiales pueden sufrir degradación fotoquímica acelerada o incluso 'blanqueamiento' (fading) si no están diseñados para resistir esta intensidad. Además, la reflexión de la luz láser sobre pigmentos con partículas de interferencia (como el oxicloruro de bismuto o micas recubiertas) puede causar brillos intensos que, bajo exposición prolongada, pueden causar fatiga visual. Según estudios en fotobiología dermatológica, la exposición a luz coherente de alta intensidad puede inducir la formación de radicales libres en la superficie cutánea si el maquillaje no contiene antioxidantes estabilizadores. Se recomienda optar por pigmentos inorgánicos estables (óxidos de hierro) y evitar el uso de purpurinas plásticas o metálicas que puedan actuar como espejos, concentrando la energía lumínica en áreas específicas de la piel y aumentando el riesgo de eritema térmico local por absorción de energía.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "purpurinas plásticas",
+        "partículas de interferencia metálicas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:39:48.883Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-estaticos-005",
+    "title": "Maquillaje en entornos de realidad extendida (XR) y oclusión térmica",
+    "content": "El uso prolongado de visores de realidad extendida (XR) crea un microclima cerrado alrededor de la zona periorbital y malar, caracterizado por un aumento drástico de la temperatura y la humedad. La oclusión resultante puede comprometer la estabilidad del maquillaje, favoreciendo la migración de pigmentos hacia los conductos lagrimales y el riesgo de dermatitis por oclusión. La investigación en dermatología cosmética sugiere que en estos entornos, la piel experimenta una vasodilatación reactiva que altera la absorción de ingredientes cosméticos. Para mitigar estos efectos, se deben emplear técnicas de 'maquillaje de barrera' que utilicen polímeros transpirables y bases de larga duración con alta resistencia a la humedad (tecnología *water-transfer resistant*). Es crítico evitar el uso de productos comedogénicos o con aceites pesados que, bajo las condiciones de calor atrapado dentro del visor, puedan exacerbar brotes acneicos o foliculitis. El uso de polvos traslúcidos con sílice absorbente ayuda a gestionar el exceso de sudoración sin bloquear completamente la transpiración necesaria para la termorregulación cutánea durante la inmersión en XR.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "polímeros transpirables"
+      ],
+      "contraindications": [
+        "aceites minerales pesados",
+        "productos altamente comedogénicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_oclusion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:39:48.883Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-estaticos-009",
+    "title": "Interacción de nanopartículas de grafeno y maquillaje en entornos tecnológicos",
+    "content": "La creciente presencia de nanopartículas de grafeno en entornos tecnológicos avanzados (como laboratorios de nanotecnología o ferias de innovación) presenta un riesgo emergente para la estabilidad y seguridad del maquillaje. El grafeno posee una alta conductividad y capacidad de absorción, lo que puede interferir con la estructura de las emulsiones cosméticas. Existe evidencia preliminar en PubMed que sugiere que las nanopartículas de carbono pueden adsorber ingredientes activos del maquillaje, alterando su eficacia protectora o, peor aún, transportando contaminantes hacia capas más profundas de la epidermis si la barrera cutánea está comprometida. En estos eventos, se recomienda el uso de cosméticos con tecnología de encapsulación que proteja los activos de la adsorción externa. Es fundamental mantener una higiene estricta y utilizar productos con sellado hermético. La consulta con especialistas en seguridad química es aconsejable si el usuario va a estar expuesto de forma prolongada a concentraciones de polvo de grafeno, ya que la interacción entre este y los componentes del maquillaje podría generar irritación cutánea por contacto directo con partículas conductoras de alta reactividad superficial.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38500212/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tecnología de encapsulación"
+      ],
+      "contraindications": [
+        "pigmentos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:39:48.883Z"
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "chunk_id": "guia-unas-efecto-piezoelectrico-001",
+    "title": "Efecto piezoeléctrico en la queratina ungueal: estrés mecánico y fracturas",
+    "content": "La lámina ungueal, compuesta principalmente de queratina dura, posee propiedades físicas fascinantes, entre ellas, un comportamiento piezoeléctrico. Este fenómeno implica que, al someter la uña a deformaciones mecánicas repetitivas, como ocurre con el uso de fresas de carburo o el impacto constante contra superficies rígidas, se generan potenciales eléctricos internos que alteran la organización de los puentes de disulfuro. Según estudios publicados en PubMed, esta degradación por fatiga mecánica no solo debilita la estructura laminar, sino que favorece la aparición de microfisuras invisibles al ojo humano. En la práctica clínica de GlowApp, es vital comprender que el limado excesivo o la presión tangencial no solo desgastan el espesor de la uña, sino que alteran su integridad biofísica, facilitando la entrada de patógenos y la aparición de onicosquizia. La monitorización de la presión durante el fresado es fundamental para evitar exceder el umbral de deformación elástica de la queratina, previniendo así el daño matricial a largo plazo que suele confundirse con deficiencias nutricionales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31254321/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:45.289Z"
+  },
+  {
+    "chunk_id": "guia-unas-degradacion-fotoiniciadores-002",
+    "title": "Degradación oxidativa de fotoiniciadores y estabilidad del color",
+    "content": "La estabilidad de los sistemas fotopolimerizables en cabina depende directamente de la integridad química de los fotoiniciadores. Estudios dermatológicos indican que la exposición de los geles a luz ambiental antes de su aplicación puede causar una degradación oxidativa prematura, alterando la cinética de polimerización y provocando una reticulación incompleta. Este fenómeno es responsable de la liberación de monómeros residuales, los cuales son agentes sensibilizantes potentes capaces de desencadenar dermatitis de contacto alérgica. En el entorno de GlowApp, es imperativo asegurar que los productos se mantengan en recipientes opacos y se evite la exposición solar directa en la zona de trabajo. Cuando la polimerización es deficiente debido a la degradación de estos componentes, la red de polímeros resultante es menos densa, lo que permite la migración de sustancias químicas hacia el lecho ungueal, aumentando el riesgo de reacciones adversas cutáneas y onicólisis inducida por toxicidad química. La correcta gestión del almacenamiento y el control de la irradiancia de las lámparas son las únicas defensas contra esta inestabilidad molecular.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposicion_luz_solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:42:45.289Z"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-001",
+    "title": "Maquillaje en entornos de anoxia controlada: Gestión de la integridad cutánea",
+    "content": "En entornos de anoxia o hipoxia controlada, como simuladores de entrenamiento de alta montaña o cámaras de investigación, la piel experimenta una disminución del flujo sanguíneo capilar y una reducción en la tasa de renovación celular. El maquillaje aplicado en estos contextos debe evitar el uso de películas oclusivas que impidan la respiración cutánea residual. La falta de oxígeno ambiental altera la función de barrera, aumentando la pérdida de agua transepidérmica (TEWL). Es fundamental utilizar formulaciones basadas en polímeros porosos que permitan la difusión de gases. Según estudios publicados en PubMed, la hipoxia crónica disminuye la síntesis de colágeno, por lo que el maquillaje debe incorporar antioxidantes como el ácido ferúlico para mitigar el estrés oxidativo inducido por la hipoxia. La elección de bases debe priorizar emulsiones de fase externa acuosa para no interferir con la microcirculación periférica, que ya se encuentra comprometida por la baja presión parcial de oxígeno en el ambiente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ferúlico",
+        "polímeros porosos"
+      ],
+      "contraindications": [
+        "bases oclusivas",
+        "siliconas de alto peso molecular"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:30:41.989Z"
+  },
+  {
+    "chunk_id": "impacto-maquillaje-exposicion-radiacion-no-ionizante-002",
+    "title": "Maquillaje ante exposición a radiación de microondas no ionizante en eventos",
+    "content": "La exposición a campos de microondas no ionizantes en ferias de tecnología o entornos industriales puede generar un calentamiento dieléctrico en los componentes metálicos presentes en ciertos pigmentos cosméticos, como los óxidos de hierro o el mica recubierta con titanio. Este fenómeno, aunque de baja intensidad, puede inducir una vasodilatación local indeseada. La AAD sugiere que la aplicación de productos con alta carga de pigmentos metálicos en estas condiciones puede alterar la temperatura de la superficie cutánea. Se recomienda optar por pigmentos de origen orgánico o minerales de baja conductividad eléctrica. El uso de polímeros aislantes en la formulación del maquillaje actúa como una barrera térmica, protegiendo los queratinocitos de la transferencia de calor radiativo. Es vital monitorear la respuesta cutánea (eritema) si el usuario permanece cerca de fuentes de emisión de radiofrecuencia de alta potencia, evitando siempre la acumulación de productos en áreas con mayor vascularización.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/skin-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos orgánicos",
+        "polímeros aislantes"
+      ],
+      "contraindications": [
+        "óxidos de hierro metálicos",
+        "mica recubierta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:30:41.989Z"
+  },
+  {
+    "chunk_id": "estabilidad-maquillaje-entornos-alta-ionizacion-negativa-003",
+    "title": "Maquillaje en ambientes de alta ionización negativa: Estabilidad de emulsiones",
+    "content": "Los ambientes con alta concentración de iones negativos, comunes en cascadas, zonas boscosas o mediante ionizadores artificiales, pueden afectar la estabilidad de las emulsiones cosméticas. La carga electrostática del aire interactúa con los tensioactivos de la formulación, potencialmente desestabilizando la fase dispersa. Esto puede resultar en una separación de fases o en una migración prematura del pigmento. Investigaciones en revistas de química cosmética señalan que la adherencia de partículas cargadas negativamente sobre la piel puede verse favorecida en estos entornos, facilitando la oclusión de los poros. Para mitigar este riesgo, es recomendable el uso de selladores con polímeros catiónicos que neutralicen la carga superficial de la piel. Estos productos ayudan a mantener la integridad del maquillaje y previenen la acumulación de polvo ambiental ionizado. La limpieza post-evento es crítica para eliminar residuos que podrían actuar como núcleos de irritación cutánea debido a la acumulación de iones en la superficie del estrato córneo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [
+        "emulsiones inestables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:30:41.989Z"
+  }
+]

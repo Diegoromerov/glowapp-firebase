@@ -1,0 +1,251 @@
+[
+  {
+    "chunk_id": "guias_unas-1786387157708-1-f3ba8d13-evaluacion-de-la-conductividad-termica-en-bases-rubber-y-gel",
+    "title": "Evaluación de la conductividad térmica en bases rubber y geles de alta densidad",
+    "content": "La transferencia de calor durante la fotopolimerización es un fenómeno crítico determinado por la densidad de reticulación del polímero. En sistemas de alta densidad, la reacción exotérmica ocurre de forma acelerada, elevando la temperatura del lecho ungueal por encima del umbral de dolor (45°C). Este proceso no solo genera malestar, sino que puede inducir una quemadura térmica de primer grado o una respuesta inflamatoria en la matriz. La conductividad térmica del producto es inversamente proporcional a su capacidad de disipación durante la fase de transición vítrea. Es imperativo que el técnico ajuste la irradiancia de la lámpara (modo 'low heat') para controlar la cinética de la reacción, permitiendo que la cadena polimérica se estabilice sin liberar energía térmica de forma súbita. La monitorización de la temperatura es fundamental para evitar la desnaturalización de las proteínas de la queratina ungueal, lo cual compromete la estructura a largo plazo y debilita la adhesión mecánica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "onicolisis previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_polimeros"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:39:17.708Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387157708-2-f70ddba9-efecto-de-la-tension-superficial-en-la-humectacion-de-la-pla",
+    "title": "Efecto de la tensión superficial en la humectación de la placa ungueal",
+    "content": "La adhesión exitosa de cualquier sistema de recubrimiento depende de la energía superficial de la lámina ungueal. La queratina, al ser un sustrato hidrofílico, presenta variaciones en su tensión superficial según el estado de hidratación y la presencia de lípidos intercelulares. Si la tensión superficial del producto es superior a la energía crítica de la uña, se produce un fallo de humectación, resultando en micro-burbujas en la interfaz que actúan como puntos de concentración de estrés mecánico. Estos vacíos facilitan la infiltración de humedad y microorganismos, creando un entorno propicio para la proliferación de biofilms subungueales. El uso de deshidratadores con solventes volátiles (como el acetato de etilo o alcohol isopropílico) busca modificar temporalmente esta energía superficial, optimizando el ángulo de contacto para que el adhesivo penetre en las irregularidades microscópicas de la placa. Un control adecuado de la tensión superficial es la clave para prevenir el desprendimiento prematuro y asegurar la integridad del sellado biológico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "solventes",
+        "adhesivos"
+      ],
+      "contraindications": [
+        "hipersensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_placa"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:39:17.708Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387157708-3-551e0828-dinamica-de-las-fuerzas-de-cizallamiento-en-el-borde-libre",
+    "title": "Dinámica de las fuerzas de cizallamiento en el borde libre",
+    "content": "El borde libre de la uña actúa como una palanca cuando se aplica un recubrimiento rígido, generando fuerzas de cizallamiento que se transmiten directamente al lecho ungueal. La física de estas fuerzas dicta que, a mayor longitud del borde libre, mayor es el momento de torsión ejercido sobre la matriz y el hiponiquio. Este estrés mecánico constante puede provocar una onicólisis inducida por tracción, donde la lámina se separa del lecho debido a la incapacidad del tejido para absorber la carga. Para mitigar este riesgo, es fundamental diseñar el arco de tensión (apex) de manera que el punto de máxima resistencia soporte la carga estructural, evitando que el peso se concentre únicamente en la zona distal. La correcta distribución del material permite que la uña esculpida actúe como un elemento elástico y no rígido, reduciendo la fatiga del material y protegiendo la integridad de la unión entre la placa y el tejido blando subyacente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas delgadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "arquitectura_uñas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:39:17.708Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387157708-4-eaf5d4a0-fotobiologia-de-la-inhibicion-por-oxigeno-en-recubrimientos",
+    "title": "Fotobiología de la inhibición por oxígeno en recubrimientos",
+    "content": "La capa de inhibición por oxígeno es un fenómeno químico donde el oxígeno atmosférico reacciona con los radicales libres generados por el fotoiniciador durante la polimerización, impidiendo la formación de cadenas largas en la superficie del producto. Aunque a menudo se confunde con una polimerización incompleta, es un proceso necesario para permitir la adhesión de capas sucesivas. Sin embargo, si la capa de inhibición es excesiva debido a una baja intensidad de la lámpara o una formulación desequilibrada, aumenta el riesgo de migración de monómeros no reaccionados hacia la piel periungueal, lo cual es la principal causa de dermatitis alérgica de contacto en técnicos y clientes. La gestión de este fenómeno requiere lámparas con un espectro de emisión preciso que supere el umbral de inhibición, garantizando que la superficie se cure adecuadamente sin comprometer la biocompatibilidad. El uso de lámparas de baja potencia o con LEDs degradados impide alcanzar esta conversión crítica, dejando monómeros residuales expuestos al contacto cutáneo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:39:17.708Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387157708-5-1a37aa69-homeostasis-del-ph-ungueal-y-estabilidad-de-los-primers",
+    "title": "Homeostasis del pH ungueal y estabilidad de los primers",
+    "content": "El pH natural de la lámina ungueal oscila entre 5.0 y 6.0, un rango ligeramente ácido que mantiene la integridad de la queratina. La aplicación de primers ácidos (ácido metacrílico) altera drásticamente este equilibrio, reduciendo el pH a niveles que pueden causar desnaturalización proteica si se aplican en exceso o sobre tejido vivo (eponiquio). Esta alteración no solo debilita la estructura de la uña, sino que puede inducir una respuesta inflamatoria en el lecho. La estabilidad de los adhesivos modernos está diseñada para funcionar en este entorno ácido, pero la sobre-aplicación de primers crea una zona de fragilidad donde la queratina se vuelve quebradiza y susceptible a la pigmentación por metales. Es fundamental aplicar el producto exclusivamente sobre la lámina, evitando el contacto con la piel, para preservar el manto ácido protector y prevenir la irritación química. El monitoreo del pH post-servicio es una práctica recomendada para asegurar que la uña recupere su equilibrio homeostático tras el proceso de preparación.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://www.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico"
+      ],
+      "contraindications": [
+        "cutícula dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:39:17.708Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387157708-6-0b628132-anisotropia-mecanica-y-respuesta-al-impacto-en-unas-esculpid",
+    "title": "Anisotropía mecánica y respuesta al impacto en uñas esculpidas",
+    "content": "La lámina ungueal es un material anisotrópico, lo que significa que sus propiedades mecánicas varían según la dirección de la carga aplicada debido a la disposición de las fibras de queratina. Al aplicar un recubrimiento rígido, se altera la capacidad natural de la uña para disipar energía frente a impactos. Si el material no posee un módulo de elasticidad compatible con la uña natural, el impacto se transfiere directamente a la matriz, pudiendo causar micro-hemorragias o desprendimientos en la zona de la lúnula. La anisotropía debe considerarse al limar el borde libre: un limado en ángulo recto crea una zona de debilidad estructural que favorece la fractura longitudinal. Por el contrario, un limado redondeado o en arco distribuye las fuerzas de impacto de manera uniforme a través de toda la superficie. Comprender esta respuesta mecánica permite al técnico seleccionar el tipo de base (flexible vs. rígida) según las necesidades biomecánicas de la uña del cliente, optimizando la durabilidad y previniendo daños estructurales a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Biomechanics",
+        "url": "https://journals.humankinetics.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:39:17.708Z"
+  }
+]

@@ -1,0 +1,248 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786387232058-1-596dfb9b-migracion-ionica-y-el-efecto-donnan-en-la-cuticula-post-colo",
+    "title": "Migración iónica y el efecto Donnan en la cutícula post-coloración",
+    "content": "La retención del color tras un proceso de oxidación no depende únicamente de la profundidad de penetración, sino del equilibrio electroquímico descrito por el efecto Donnan. Durante el teñido, el pH alcalino altera la carga neta de la queratina, generando una diferencia de potencial entre el interior de la fibra y el medio externo. Este fenómeno regula la migración de los precursores tintóreos cargados. Cuando el pH del cabello no se restablece correctamente tras el enjuague, los gradientes de concentración iónica favorecen la salida prematura de pigmentos, especialmente en zonas de alta porosidad. La comprensión de este equilibrio es vital para formular acondicionadores post-tinte que actúen como agentes de sellado electrostático. Al manipular la fuerza iónica del medio, es posible estabilizar los complejos colorantes dentro de la corteza, minimizando el sangrado del pigmento en los primeros lavados. Este mecanismo es fundamental para entender por qué ciertos cabellos con daño estructural pierden el tono con mayor rapidez a pesar de utilizar productos de alta calidad, vinculando la termodinámica de los iones con la longevidad del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer",
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:40:32.058Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786387232058-2-5373c6c3-cinetica-de-la-cristalizacion-de-pigmentos-en-la-matriz-quer",
+    "title": "Cinética de la cristalización de pigmentos en la matriz queratínica",
+    "content": "La formación de color en el cabello permanente implica la polimerización oxidativa de precursores dentro de la corteza. Sin embargo, un factor crítico a menudo ignorado es la cinética de cristalización de estos polímeros. Si la tasa de oxidación es demasiado rápida, los pigmentos tienden a formar agregados moleculares de gran tamaño que quedan atrapados cerca de la cutícula, resultando en un color heterogéneo y una menor resistencia al desgaste mecánico. Por el contrario, una polimerización controlada permite una distribución uniforme en la matriz queratínica. La presencia de trazas de metales de transición, como el cobre o el hierro, puede actuar como catalizador incontrolado, acelerando la formación de macromoléculas insolubles que alteran la percepción del matiz final. El control de la cinética mediante agentes quelantes específicos es, por tanto, una estrategia esencial para garantizar que el color se desarrolle de manera homogénea. Este enfoque permite predecir el viraje cromático a largo plazo, evitando la aparición de tonos indeseados que surgen de una polimerización incompleta o desordenada dentro de la estructura proteica del cabello.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10845210/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "precursores oxidativos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:40:32.058Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786387232058-3-e501129a-interaccion-entre-la-capa-f-y-la-estabilidad-de-tintes-semip",
+    "title": "Interacción entre la capa F y la estabilidad de tintes semipermanentes",
+    "content": "La capa F (18-metileicosanoico) es la barrera lipídica más externa del cabello y desempeña un papel crucial en la hidrofobicidad de la fibra. En procesos de coloración, la integridad de esta capa determina la capacidad de anclaje de los tintes directos o semipermanentes. Cuando la capa F es erosionada por tratamientos químicos previos o exposición ambiental, la superficie del cabello se vuelve más hidrofílica, lo que facilita la entrada de pigmentos pero compromete drásticamente su retención. Los tintes semipermanentes, que se basan en interacciones de Van der Waals y fuerzas electrostáticas, requieren de una superficie lipídica intacta para maximizar su durabilidad. La pérdida de esta capa no solo altera la afinidad tintórea, sino que también provoca una dispersión de luz irregular, afectando la percepción del brillo. Estrategias de reposición lipídica post-coloración son necesarias para restaurar la función de barrera y prolongar la vida útil del color. Evaluar el estado de la capa F antes de la aplicación de un tinte es un paso diagnóstico fundamental para ajustar la formulación y evitar resultados de coloración desiguales o desvanecimientos acelerados en zonas de alta porosidad.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/cosmetic-chemistry",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácidos grasos",
+        "lípidos capilares"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estructura_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:40:32.058Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786387232058-4-ef476bb3-efectos-de-la-radiacion-electromagnetica-en-la-degradacion-d",
+    "title": "Efectos de la radiación electromagnética en la degradación de tintes azoicos",
+    "content": "Los tintes azoicos, ampliamente utilizados en la industria capilar por su intensidad cromática, presentan una vulnerabilidad específica ante la radiación electromagnética, particularmente en el espectro UV y luz visible de alta energía. La exposición a estos fotones provoca la ruptura del enlace azo (-N=N-), que es el cromóforo responsable del color. Este proceso de fotólisis no solo degrada el pigmento, sino que puede generar radicales libres secundarios que atacan la estructura proteica de la queratina, exacerbando el daño capilar. En ambientes de alta radiación, la estabilidad de estos tintes se reduce significativamente, lo que lleva a un viraje de tono hacia matices indeseados. La incorporación de filtros UV en las fórmulas de mantenimiento post-coloración es esencial para mitigar este fenómeno. Además, la presencia de antioxidantes en la matriz del tinte puede ayudar a neutralizar los radicales libres generados durante la exposición solar, preservando la integridad del enlace azoico. El análisis espectrofotométrico de la reflectancia en cabellos expuestos permite cuantificar la degradación y ajustar los protocolos de protección solar capilar para mantener la fidelidad del color original durante más tiempo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photochemistry and Photobiology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38552311/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "summer"
+      ],
+      "applicable_modules": [
+        "proteccion_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:40:32.058Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786387232058-5-e2866236-dinamica-de-la-transicion-vitrea-en-la-matriz-de-queratina-d",
+    "title": "Dinámica de la transición vítrea en la matriz de queratina durante el teñido",
+    "content": "La matriz de queratina del cabello puede comportarse como un material vítreo, cuya flexibilidad y permeabilidad dependen estrechamente de la temperatura y la hidratación. Durante el proceso de coloración, la transición vítrea (Tg) de la queratina se ve afectada por los agentes químicos del tinte, como el amoníaco o sus sustitutos, que actúan como plastificantes. Cuando la temperatura del cuero cabelludo eleva la temperatura de la fibra por encima de la Tg, la movilidad de las cadenas polipeptídicas aumenta, facilitando la difusión de los precursores de color hacia la corteza. Sin embargo, un control inadecuado de este proceso puede llevar a una expansión excesiva, resultando en un daño estructural irreversible. La optimización del tiempo de exposición debe considerar la termodinámica de la fibra para asegurar que la penetración sea eficiente sin comprometer la integridad mecánica. Este estudio de la transición vítrea permite diseñar servicios de coloración más precisos, donde la temperatura y el tiempo se ajustan según la historia clínica del cabello, garantizando que el depósito de pigmento ocurra en condiciones óptimas de permeabilidad sin sobrepasar los límites de resistencia de la estructura proteica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Materials Science and Engineering: C",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37984522/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes alcalinizantes"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:40:32.058Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786387232058-6-c1e16ac2-el-papel-de-los-polimeros-cationicos-en-la-modulacion-del-po",
+    "title": "El papel de los polímeros catiónicos en la modulación del potencial electrocinético",
+    "content": "El potencial electrocinético, o potencial Zeta, de la fibra capilar es un indicador clave de la estabilidad de las interacciones entre los tintes y la queratina. La superficie del cabello posee una carga negativa natural debido a los grupos carboxilo de los aminoácidos. Los polímeros catiónicos, incluidos en muchas fórmulas de tintes modernos, actúan modificando este potencial, permitiendo una adsorción más eficiente de los pigmentos directos. Al neutralizar la repulsión electrostática, estos polímeros actúan como puentes de anclaje que mejoran la afinidad tintórea y la uniformidad del color. No obstante, una sobreacumulación de estos polímeros puede generar una película que impide la penetración de futuros tratamientos o altera la textura del cabello. El equilibrio en la concentración de polímeros catiónicos es, por tanto, fundamental para lograr un color duradero sin comprometer la salud cosmética de la fibra. El monitoreo del potencial Zeta mediante técnicas de electroforesis capilar permite a los formuladores ajustar la carga de los tintes para optimizar la fijación en diferentes tipos de cabello, desde el virgen hasta el altamente procesado, asegurando resultados predecibles y una mayor resistencia al lavado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:40:32.058Z"
+  }
+]

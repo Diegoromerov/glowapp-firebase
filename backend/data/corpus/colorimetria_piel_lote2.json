@@ -1,0 +1,165 @@
+{
+  "batch_metadata": {
+    "category": "colorimetria_piel_undertone",
+    "phase": 6,
+    "risk_level": "bajo",
+    "batch_id": "color-piel-lote2",
+    "chunk_count": 6,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Lote 2 colorimetria piel: paletas estacionales, impacto de rosacea y melasma en el subtono, iluminadores, rubores y el mito del bronceado."
+  },
+  "chunks": [
+    {
+      "chunk_id": "colorpiel-007",
+      "title": "Paletas de color por estaciones: como aplicar la teoria a tu guardarropa y maquillaje",
+      "content": "La teoria de las estaciones adapta el subtono a la intensidad (valor) y saturacion (croma) de la piel. Primavera: subtono calido + luminosidad alta (colores melocoton, coral, dorados suaves). Verano: subtono frio + luminosidad media o baja (rosados empolvados, lavanda, plateados suaves). Otono: subtono calido + luminosidad media o baja (terracota, mostaza, verde oliva, cobres profundos). Invierno: subtono frio + luminosidad alta o contraste alto (fucsia, rojo intenso, negro, plateado brillante). Para piel latina, las estaciones Otono e Invierno son las mas frecuentes. La clave no es seguir la regla al pie de la letra, sino usarla como brujula: si un color de tu estacion te apaga, ajusta la saturacion, no el subtono. El modulo de colorimetria de GlowApp usa esta logica para sugerir paletas personalizadas.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "Sociedad Latinoamericana de Dermatologia (SLD) - Visajismo y colorimetria", "url": "https://www.dermalatino.org/", "year": 2023 },
+        { "institution": "Journal of Cosmetic Dermatology - Seasonal color analysis validity", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura", "glowstyle_wardrobe"],
+        "content_type": "visajismo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-008",
+      "title": "Como la rosacea y el melasma distorsionan la percepcion del subtono",
+      "content": "Condiciones dermatologicas comunes en Colombia, como la rosacea (enrojecimiento facial) y el melasma (manchas marrones), pueden enganar a la hora de identificar el subtono real. Una persona con subtono calido o neutro que tiene rosacea puede parecer de subtono frio por el enrojecimiento superficial, y comprar una base rosada que, al aplicarse sobre el resto del cuerpo, se vera grisacea. Lo mismo ocurre con el melasma: las zonas hiperpigmentadas pueden hacer que la piel se vea mas amarilla o verdosa de lo que es. La recomendacion clinica es: identifica tu subtono en una zona de piel no afectada (como el cuello, el pecho o la mandibula baja), y usa correctores de color (verde para rosacea, melocoton o naranja para melasma en fototipos oscuros) debajo de la base, en lugar de cambiar el tono de la base para que coincida con la mancha o el enrojecimiento.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "Sociedad Colombiana de Dermatologia (SCD) - Manejo cosmetico de rosacea y melasma", "url": "https://www.scd.org.co/", "year": 2024 },
+        { "institution": "AAD - Cosmetic camouflage for skin conditions", "url": "https://www.aad.org/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["III", "IV", "V", "VI"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "contexto_latinoamericano"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-009",
+      "title": "Iluminadores (highlighters) segun subtono: la regla del metal",
+      "content": "El iluminador debe fundirse con la piel, no sentarse encima como una capa de plastico. La regla practica es emparejar el matiz del iluminador con el subtono de la piel, usando la analogia de los metales. Para subtonos calidos: iluminadores con base dorada, champan calido o bronce. Para subtonos frios: iluminadores con base plateada, perla o rosa palido. Para subtonos neutros: champan neutro o marfil. Para piel oliva: iluminadores con un ligero matiz verdoso o dorado apagado (evitar los rosados brillantes, que resaltan el grisaceo de la piel oliva). En fototipos oscuros (V-VI), los iluminadores deben ser mas ricos y profundos (oro intenso, cobre, bronce) para evitar el efecto ceniza o fantasmal que producen los tonos perla claros. La textura tambien importa: las pieles con poros visibles o textura irregular se benefician mas de iluminadores en crema o liquido, ya que los polvos pueden asentarse en los poros y resaltarlos.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD - Makeup for different skin tones", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE - Cosmetic formulation and skin optics", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-010",
+      "title": "Errores comunes al elegir base de maquillaje: oxidacion, cuello y efecto mascara",
+      "content": "Tres errores dominan las quejas sobre bases de maquillaje. 1) Probar en la mano: el dorso de la mano tiene mas exposicion solar y un subtono diferente al rostro. Siempre prueba en la linea de la mandibula. 2) Ignorar la oxidacion: muchas bases contienen aceites o ingredientes que reaccionan con el pH y el sebo de la piel, oscureciendose o anaranjandose tras 15 a 30 minutos. Espera siempre este tiempo antes de decidir. 3) Elegir un tono mas claro para iluminar: esto crea el efecto mascara o cabeza flotante, donde el rostro es claramente mas palido que el cuello y el escote. La base debe igualar el cuello o el pecho; la iluminacion se logra con iluminadores estrategicos o correctores un tono mas claro solo en zonas puntuales (ojeras, centro del rostro), no con una base general mas clara.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "Sociedad Colombiana de Dermatologia (SCD) - Cosmetica y visajismo", "url": "https://www.scd.org.co/", "year": 2024 },
+        { "institution": "Journal of Cosmetic Dermatology - Foundation oxidation and matching", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-011",
+      "title": "Rubor y labiales: armonia cromatica para evitar el efecto flotante",
+      "content": "El rubor y el labial deben conversar con el subtono de la piel, no competir con el. Para subtonos calidos: rubores en melocoton, coral o terracota; labiales en rojo anaranjado, nude calido o marron. Para subtonos frios: rubores en rosa bebe, fucsia o ciruela; labiales en rojo azulado, rosa intenso o berry. Para subtonos neutros: tienen la ventaja de poder usar casi cualquier cosa, pero los tonos malva o rosa antiguo son universalmente favorecedores. El error mas comun es usar un rubor frio (rosa) en una piel calida, lo que hace que el color se vea como una mancha separada de la piel (efecto flotante), o un rubor naranja en una piel fria, que resalta el enrojecimiento natural. En piel oliva, los rubores con un toque de marron o ciruela apagada funcionan mejor que los rosas brillantes o los naranjas vivos.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD - Makeup tips for your skin tone", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Latinoamericana de Dermatologia (SLD) - Visajismo", "url": "https://www.dermalatino.org/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "visajismo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-012",
+      "title": "El mito del bronceado que cambia tu subtono: fototipo vs undertone",
+      "content": "Un mito persistente es que me broncee, asi que ahora soy de subtono calido. Esto es fisiologicamente incorrecto. El bronceado es un aumento de la produccion de melanina (eumelanina) en respuesta a la radiacion UV, lo que oscurece el fototipo (la profundidad del color). Sin embargo, el subtono (undertone) esta determinado por la vascularizacion de la dermis (hemoglobina, que da el matiz rosado o azul) y la mezcla de pigmentos base (caroteno, que da amarillo), los cuales no cambian con el sol. Una persona de subtono frio que se broncea seguira teniendo una base fria, solo que en una profundidad de tono mas oscura. Comprar una base mas calida en verano porque estas bronceada suele resultar en un aspecto anaranjado artificial. Lo correcto es mantener tu subtono y, si hay un cambio estacional muy marcado, ajustar ligeramente la profundidad (claro u oscuro) de la base, pero nunca saltar de frio a calido o viceversa.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD - Tanning and skin color changes", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE - Melanogenesis and skin undertones", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

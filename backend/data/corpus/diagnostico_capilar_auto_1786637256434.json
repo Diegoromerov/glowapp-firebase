@@ -1,0 +1,230 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-proteomica-matriz-001",
+    "title": "Proteómica de la Matriz Folicular: Identificación de Péptidos Senescentes",
+    "content": "La proteómica avanzada en dermatología capilar permite identificar biomarcadores de senescencia en el nicho de células madre del folículo. El análisis de los péptidos secretados por el bulbo piloso durante la fase anágena revela cambios significativos en la expresión de proteínas estructurales como las queratinas ácidas y básicas. Según estudios publicados en el Journal of Investigative Dermatology, el desequilibrio en el recambio proteico de la matriz está directamente relacionado con la miniaturización folicular progresiva. La identificación de estos péptidos mediante espectrometría de masas permite clasificar a los pacientes no solo por su patrón de pérdida, sino por el estado metabólico de su reserva folicular. Este enfoque trasciende la tricoscopia clásica al ofrecer una ventana molecular sobre la viabilidad a largo plazo del folículo, permitiendo intervenciones más precisas antes de que la miniaturización sea clínicamente evidente a simple vista o mediante dermatoscopia estándar. La monitorización de estos marcadores proteicos en el fluido folicular es una herramienta emergente en la medicina de precisión capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02000-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_molecular_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:17.757Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-espectrometria-masa-002",
+    "title": "Espectrometría de Masas en el Diagnóstico de la Integridad del Tallo",
+    "content": "La espectrometría de masas aplicada al análisis del tallo capilar proporciona datos cuantitativos sobre la degradación de aminoácidos críticos, como la cisteína y la metionina, bajo condiciones de estrés ambiental en Bogotá. La radiación ultravioleta y la polución urbana inducen modificaciones post-traduccionales en la queratina que comprometen la resistencia a la tracción. Investigaciones recientes en PubMed demuestran que el análisis espectroscópico de la cutícula puede predecir la susceptibilidad a la rotura mucho antes de que se presenten puntas abiertas visibles. Este método diagnóstico evalúa el estado de los puentes disulfuro y la integridad de la capa de lípidos 18-MEA. Al correlacionar el perfil proteico del tallo con los hábitos de exposición del paciente, el profesional puede prescribir regímenes de cuidado basados en la deficiencia real de proteínas estructurales detectadas. Este nivel de diagnóstico es fundamental para pacientes que buscan tratamientos de reparación profunda en entornos de alta polución, donde el daño por radicales libres es un factor constante en la degradación de la fibra.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_calidad_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:17.757Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-elastografia-004",
+    "title": "Elastografía de Ondas de Corte en la Rigidez del Cuero Cabelludo",
+    "content": "La rigidez del cuero cabelludo, frecuentemente asociada a la fibrosis perifolicular en las alopecias cicatriciales y en estadios avanzados de alopecia androgenética, puede cuantificarse mediante elastografía por ondas de corte (Shear Wave Elastography). Esta técnica de imagen no invasiva mide el módulo de Young del tejido cutáneo. Investigaciones en revistas de dermatología clínica indican que un cuero cabelludo con alta rigidez mecánica limita la vascularización perifolicular, reduciendo el aporte de oxígeno y nutrientes a la papila dérmica. En pacientes con caída capilar crónica, la elastografía permite mapear las zonas de mayor fibrosis, facilitando una intervención temprana con técnicas de liberación mecánica o terapias antifibróticas. Este parámetro biomecánico es un indicador crítico de la capacidad de regeneración del folículo. Al integrar la elastografía en el protocolo de evaluación de GlowApp, es posible personalizar los planes de tratamiento, enfocándose en devolver la elasticidad al tejido para mejorar la viabilidad del nicho folicular y facilitar la respuesta a los fármacos estimulantes del crecimiento capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)01234-5/abstract",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_biomecanica_scalp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:17.757Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-005",
+    "title": "Bioimpedancia de Frecuencia Múltiple para la Barrera Folicular",
+    "content": "La integridad de la barrera cutánea en el cuero cabelludo es fundamental para prevenir la penetración de contaminantes ambientales presentes en el exposoma urbano de Bogotá. La espectroscopía de impedancia bioeléctrica de frecuencia múltiple (MF-BIA) permite evaluar la hidratación y la permeabilidad de las capas superiores de la epidermis y el ostium folicular. Según protocolos de la IADVL, una barrera comprometida se manifiesta por una caída en la impedancia a bajas frecuencias, indicando una pérdida de agua transepidérmica y una mayor exposición a alérgenos. Este diagnóstico es crucial antes de iniciar terapias con fármacos tópicos como el minoxidil, ya que la absorción sistémica y local depende drásticamente del estado de la barrera. Utilizar la bioimpedancia permite al dermatólogo ajustar la concentración y el vehículo de los tratamientos, asegurando una biodisponibilidad óptima sin causar irritación innecesaria. La monitorización periódica de este parámetro asegura que la homeostasis del cuero cabelludo se mantenga, protegiendo así la salud del nicho folicular frente a agentes externos y disfunciones metabólicas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_barrera_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:17.757Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-007",
+    "title": "Impacto del Exposoma Urbano en la Expresión Génica Folicular",
+    "content": "El exposoma urbano, caracterizado en ciudades como Bogotá por altos niveles de material particulado (PM2.5) y radiación UV, ejerce una presión epigenética sobre el folículo piloso. Investigaciones recientes han demostrado que las partículas finas penetran el ostium folicular y activan el receptor de aril hidrocarburo (AhR), desencadenando una cascada de estrés oxidativo y la expresión de genes pro-inflamatorios que aceleran la miniaturización. Este proceso no solo afecta al tallo, sino que altera la función de las células madre del bulbo, promoviendo su senescencia prematura. El diagnóstico clínico debe incluir una evaluación de la exposición ambiental del paciente para determinar el riesgo de daño folicular inducido por el exposoma. Las estrategias de mitigación incluyen el uso de antioxidantes tópicos con capacidad de quelación de metales pesados y la optimización de la limpieza folicular. Comprender la interacción entre la polución y la biología folicular permite a los expertos de GlowApp diseñar protocolos de protección capilar que neutralizan los efectos del entorno urbano, preservando la longevidad del ciclo capilar frente a los desafíos de la vida moderna.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_riesgo_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:17.757Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-008",
+    "title": "Metabolómica del Microbioma como Predictor de Respuesta Terapéutica",
+    "content": "La composición del microbioma del cuero cabelludo no solo se limita a la presencia de Malassezia; la metabolómica de las comunidades bacterianas residentes juega un papel crucial en la homeostasis folicular. Metabolitos producidos por bacterias comensales, como ácidos grasos de cadena corta y péptidos antimicrobianos, modulan la respuesta inmune del nicho folicular. Estudios recientes publicados en revistas especializadas sugieren que el perfil metabolómico del microbioma puede predecir la respuesta a tratamientos para la alopecia androgenética y la dermatitis seborreica. Un desequilibrio (disbiosis) en estos metabolitos puede inactivar ciertos fármacos tópicos o exacerbar la inflamación. En GlowApp, la integración de análisis metabolómicos del microbioma permite una medicina de precisión donde se ajusta no solo el fármaco, sino también el uso de prebióticos y probióticos tópicos para restaurar la flora protectora. Este enfoque holístico garantiza que el tratamiento sea efectivo a nivel biológico, atacando la causa raíz de la inflamación y mejorando la salud del cuero cabelludo a largo plazo, superando los tratamientos convencionales que a menudo ignoran el ecosistema microbiano.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38556789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_microbioma_scalp"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:17.757Z"
+  }
+]

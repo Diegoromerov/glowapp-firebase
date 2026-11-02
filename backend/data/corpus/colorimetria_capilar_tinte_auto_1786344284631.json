@@ -1,0 +1,293 @@
+[
+  {
+    "chunk_id": "cromatografia-gas-fase-vapor-001",
+    "title": "Evaluación de compuestos orgánicos volátiles (VOC) en vapores de tintes permanentes",
+    "content": "La exposición inhalatoria a compuestos orgánicos volátiles durante la aplicación de tintes permanentes es un aspecto a menudo subestimado en la seguridad del salón. Estudios de la Agencia Europea de Sustancias y Mezclas Químicas (ECHA) han identificado que la liberación de amoniaco, junto con subproductos de la oxidación de precursores, puede generar una carga tóxica respiratoria. La cromatografía de gases acoplada a espectrometría de masas permite cuantificar estos vapores en ambientes poco ventilados. Es fundamental entender que la concentración de VOC no solo afecta al usuario, sino que representa un riesgo de sensibilización ocupacional para el estilista. La ventilación de flujo laminar y el uso de sistemas de extracción local son las únicas medidas eficaces para mitigar la inhalación de estas partículas. La evidencia sugiere que la exposición crónica a estos vapores puede contribuir a cuadros de asma ocupacional o rinitis alérgica. En el contexto de GlowApp, recomendamos protocolos de ventilación activa durante procesos de coloración permanente para garantizar la salud pulmonar del cliente y el operador, priorizando espacios con recambio de aire superior a 10 renovaciones por hora.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "European Chemicals Agency (ECHA)",
+        "url": "https://echa.europa.eu/es/regulations/reach/understanding-reach",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco",
+        "etanolamina"
+      ],
+      "contraindications": [
+        "asma",
+        "EPOC"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_salud_ocupacional"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  },
+  {
+    "chunk_id": "anisotropia-fibra-capilar-002",
+    "title": "Influencia de la anisotropía de la fibra capilar en la distribución del tinte",
+    "content": "La fibra capilar no es un cilindro isotrópico; su estructura presenta una anisotropía significativa debido a la orientación de las células de la cutícula y la disposición de las microfibrillas de queratina en la corteza. Esta variabilidad estructural afecta la difusión del tinte. Cuando aplicamos color, la penetración no es uniforme a lo largo del eje capilar debido a que el coeficiente de difusión varía según la integridad de las capas externas. En cabellos con daño estructural, la anisotropía se acentúa, provocando zonas de absorción preferencial que resultan en manchas o inconsistencias cromáticas. Estudios publicados en el Journal of Cosmetic Science subrayan que el uso de polímeros de bajo peso molecular puede actuar como agente nivelador, equilibrando esta anisotropía. Para un diagnóstico preciso, es vital evaluar la capacidad de retención de agua en diferentes segmentos de la hebra. La comprensión de este fenómeno permite a los profesionales de GlowApp ajustar la viscosidad del producto y el tiempo de aplicación según el grado de anisotropía detectado, logrando una saturación cromática homogénea desde la raíz hasta las puntas.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/journal-of-cosmetic-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  },
+  {
+    "chunk_id": "interaccion-microbiota-tintes-003",
+    "title": "Impacto de los agentes alcalinizantes en la diversidad del microbioma scalp",
+    "content": "El cuero cabelludo alberga una microbiota compleja, principalmente compuesta por especies de Malassezia y Staphylococcus. La aplicación de tintes con pH altamente alcalino (pH 9-11) altera drásticamente el microambiente epidérmico, reduciendo la diversidad bacteriana y favoreciendo el crecimiento de microorganismos oportunistas. Investigaciones recientes en PubMed indican que el uso recurrente de tintes permanentes puede inducir una disbiosis transitoria, manifestándose clínicamente como prurito, descamación o eritema leve, incluso en ausencia de una reacción alérgica verdadera. Esta alteración del pH cutáneo puede persistir hasta 72 horas post-coloración. Para minimizar este impacto, es imperativo realizar una neutralización efectiva post-servicio, restaurando el pH fisiológico de la piel (aprox. 5.5). La aplicación de sueros post-coloración con prebióticos puede acelerar la recuperación del ecosistema cutáneo. En GlowApp, promovemos la evaluación del estado del microbioma antes de servicios recurrentes de coloración, especialmente en clientes con antecedentes de dermatitis seborreica o sensibilidad cutánea, evitando así procesos inflamatorios crónicos que comprometen la salud del folículo piloso.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34523456/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes alcalinizantes",
+        "prebióticos"
+      ],
+      "contraindications": [
+        "dermatitis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cuero_cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  },
+  {
+    "chunk_id": "cinetica-polimerizacion-004",
+    "title": "Cinética de polimerización de precursores en la corteza capilar",
+    "content": "La formación del color permanente depende de la polimerización oxidativa de precursores (como p-fenilendiaminas) dentro de la corteza. Este proceso es altamente dependiente de la temperatura y la concentración de peróxido. Si la cinética de polimerización es demasiado lenta, las moléculas de color no alcanzarán el tamaño necesario para quedar atrapadas en la matriz de queratina, resultando en un color efímero o un viraje tonal indeseado. Por el contrario, una reacción demasiado rápida puede generar una polimerización superficial, dejando el núcleo de la fibra sin pigmento. La presencia de metales traza en el cabello, como cobre o hierro, puede actuar como catalizador incontrolado, acelerando la reacción y degradando prematuramente la estructura de la fibra. La literatura dermatológica de la AAD enfatiza que el control de la temperatura durante la pose es crítico para mantener la cinética bajo control. En GlowApp, recomendamos el uso de herramientas de monitoreo de temperatura durante la coloración en cabellos sensibilizados, evitando fuentes de calor externo que puedan acelerar la reacción de manera asimétrica y comprometer la estabilidad del pigmento final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/hair-dye",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxido de hidrógeno",
+        "precursores oxidativos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  },
+  {
+    "chunk_id": "fotodegradacion-pigmentos-005",
+    "title": "Mecanismos de fotodegradación y estabilidad de pigmentos sintéticos",
+    "content": "Una vez aplicado el tinte, el cabello se vuelve susceptible a la fotodegradación, un proceso mediado por la radiación UV que induce la ruptura de los enlaces cromóforos de los pigmentos artificiales. Este proceso no solo altera el matiz, sino que también degrada los aminoácidos de la queratina (especialmente triptófano y cisteína). La estabilidad del color es inversamente proporcional a la exposición solar directa. Estudios de la IADVL sugieren que la formación de radicales libres durante la exposición a la luz solar acelera el desvanecimiento del color, fenómeno conocido como 'bleaching fotoquímico'. Los tintes con tonos cobrizos o rojos son particularmente inestables debido a la mayor susceptibilidad de sus estructuras moleculares a la oxidación. Para la protección post-coloración, es esencial el uso de filtros UV capilares y antioxidantes tópicos que neutralicen los radicales libres antes de que alcancen el núcleo pigmentado. En GlowApp, aconsejamos a nuestros usuarios la implementación de rutinas de cuidado que incluyan protección solar capilar, especialmente en climas ecuatoriales donde la intensidad de la radiación UV es constante durante todo el año, garantizando así la longevidad del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://iadvl.org/publications/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  },
+  {
+    "chunk_id": "permeabilidad-cuticular-006",
+    "title": "Modulación de la permeabilidad cuticular mediante agentes acondicionadores",
+    "content": "La cutícula capilar actúa como una barrera natural que regula la entrada de agentes químicos. En procesos de coloración, la permeabilidad debe ser controlada para permitir la entrada de moléculas de tinte sin comprometer la estructura de la corteza. Los agentes acondicionadores, como los polímeros catiónicos y las siliconas, pueden modular esta permeabilidad mediante la formación de películas temporales. Sin embargo, una sobre-aplicación de estos agentes antes del tinte puede bloquear la cutícula, impidiendo la penetración del pigmento y causando resultados de color desiguales. La evidencia clínica indica que el uso de agentes quelantes y tensioactivos suaves es preferible para preparar la cutícula sin sellarla prematuramente. Es crucial que el profesional entienda que la 'salud' de la cutícula no es solo su integridad, sino también su capacidad de respuesta a los agentes químicos. En GlowApp, recomendamos protocolos de limpieza profunda (clarifying) antes de la coloración para asegurar que la cutícula esté en su estado más receptivo, evitando el uso de acondicionadores pesados que interfieran con la difusión del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes",
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  },
+  {
+    "chunk_id": "estres-oxidativo-matriz-007",
+    "title": "Estrés oxidativo inducido en la matriz folicular y su relación con la canicie prematura",
+    "content": "Existe una preocupación creciente sobre si el uso prolongado de tintes oxidativos puede inducir estrés oxidativo en la matriz folicular. Si bien los tintes se aplican sobre la fibra muerta, la exposición recurrente del cuero cabelludo a peróxidos y agentes alcalinizantes puede generar radicales libres que afectan la reserva de melanocitos en el bulbo piloso. Estudios en modelos in vitro sugieren que la peroxidación lipídica en la superficie del cuero cabelludo puede desencadenar una respuesta inflamatoria crónica que, a largo plazo, podría acelerar el agotamiento de las células madre de los melanocitos, contribuyendo a la canicie prematura. Aunque no hay una relación causal definitiva en humanos, la prudencia clínica sugiere minimizar el contacto directo del producto con el cuero cabelludo y asegurar una remoción total mediante lavado. La protección del cuero cabelludo con barreras oleosas o productos neutralizantes es una práctica recomendada en GlowApp para proteger la salud a largo plazo del folículo piloso, especialmente en usuarios frecuentes que buscan cubrir canas de manera sistemática.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxido de hidrógeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cuero_cabelludo"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:44:25.778Z"
+  }
+]
