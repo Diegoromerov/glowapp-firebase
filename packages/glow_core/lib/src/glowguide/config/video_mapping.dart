@@ -2,93 +2,101 @@
 //
 // Mapeo stepId -> URLs de video del GlowGuide (MP4 + WebM).
 //
-// FUENTE UNICA: los videos los sirve el backend Express como estaticos desde
-// `backend/public/assets/assets/glowguide/videos`. Verificado el 2026-11-01:
-// los 30 archivos (15 pasos x 2 formatos) responden HTTP 200.
+// FUENTE UNICA: Firebase Storage. Cada app tiene su propio proyecto y su propio
+// bucket, con los videos en la RAIZ del bucket.
 //
-// NO usar Firebase Storage: los objetos no son publicos.
-//   download/storage/v1/...            -> HTTP 400
-//   /v0/b/.../o/...?alt=media          -> HTTP 403
-// Tampoco Cloudflare Stream: los UID nunca se poblaron
-// (iframe.videodelivery.net/UID_C0x era un placeholder en la rama split).
+//   cliente  -> gs://glowapp-client.firebasestorage.app/{step_01_welcome...
+//   provider -> gs://glowapp-provider.firebasestorage.app/{step_01_inicio...
+//
+// 30 objetos (15 pasos x mp4/webm) verificados el 2026-11-01: HTTP 200 con
+// Content-Type correcto y Content-Length identico al tamano del objeto.
+//
+// POR QUE SE USA storage.googleapis.com Y NO firebasestorage.googleapis.com:
+// el endpoint `firebasestorage.googleapis.com/v0/b/.../o/...?alt=media` valida
+// Firebase Security Rules y devuelve 403 aun con el objeto publico. El endpoint
+// de GCS respeta el ACL del objeto (allUsers:READER), que es el que se aplico.
+//
+// SI SE VUELVEN A SUBIR LOS VIDEOS, el ACL por objeto se pierde: hay que
+// reaplicarlo (`allUsers` -> `READER`) o migrar a Storage Rules con
+// `allow read: if true;` sobre estas rutas, que sobreviven a la resubida.
+//
+// NO usar Firebase download/storage/v1 (400) ni Cloudflare Stream: los UID
+// nunca se poblaron (iframe.videodelivery.net/UID_C0x era un placeholder).
 
 class GlowGuideVideoMap {
-  /// Base del API. Se toma del mismo --dart-define que usa ApiService, para que
-  /// el mapeo siga al entorno; el host de produccion queda como respaldo.
-  static const String _apiBase = String.fromEnvironment(
-    'API_URL',
-    defaultValue: 'https://glowapp-api-production.up.railway.app',
-  );
+  /// Bucket del proyecto cliente (projectId 634593218804)
+  static const String _clientBase =
+      'https://storage.googleapis.com/glowapp-client.firebasestorage.app';
 
-  /// El backend publica `backend/public` en la raiz, asi que los videos viven
-  /// bajo /assets/assets/glowguide/videos (el doble `assets` es el real).
-  static const String _videoBase = '$_apiBase/assets/assets/glowguide/videos';
+  /// Bucket del proyecto provider (projectId 509840252897)
+  static const String _providerBase =
+      'https://storage.googleapis.com/glowapp-provider.firebasestorage.app';
 
   /// Videos del onboarding CLIENTE (8 pasos) - MP4 (iOS/Safari) + WebM (Chrome/Android)
   static const Map<String, Map<String, String>> client = {
     'step_01_welcome': {
-      'mp4': '$_videoBase/step_01_welcome.mp4',
-      'webm': '$_videoBase/step_01_welcome.webm',
+      'mp4': '$_clientBase/step_01_welcome.mp4',
+      'webm': '$_clientBase/step_01_welcome.webm',
     },
     'step_02_citas': {
-      'mp4': '$_videoBase/step_02_citas.mp4',
-      'webm': '$_videoBase/step_02_citas.webm',
+      'mp4': '$_clientBase/step_02_citas.mp4',
+      'webm': '$_clientBase/step_02_citas.webm',
     },
     'step_03_glowshop': {
-      'mp4': '$_videoBase/step_03_glowshop.mp4',
-      'webm': '$_videoBase/step_03_glowshop.webm',
+      'mp4': '$_clientBase/step_03_glowshop.mp4',
+      'webm': '$_clientBase/step_03_glowshop.webm',
     },
     'step_04_glowia': {
-      'mp4': '$_videoBase/step_04_glowia.mp4',
-      'webm': '$_videoBase/step_04_glowia.webm',
+      'mp4': '$_clientBase/step_04_glowia.mp4',
+      'webm': '$_clientBase/step_04_glowia.webm',
     },
     'step_05_perfil': {
-      'mp4': '$_videoBase/step_05_perfil.mp4',
-      'webm': '$_videoBase/step_05_perfil.webm',
+      'mp4': '$_clientBase/step_05_perfil.mp4',
+      'webm': '$_clientBase/step_05_perfil.webm',
     },
     'step_06_aurachat': {
-      'mp4': '$_videoBase/step_06_aurachat.mp4',
-      'webm': '$_videoBase/step_06_aurachat.webm',
+      'mp4': '$_clientBase/step_06_aurachat.mp4',
+      'webm': '$_clientBase/step_06_aurachat.webm',
     },
     'step_07_mapa': {
-      'mp4': '$_videoBase/step_07_mapa.mp4',
-      'webm': '$_videoBase/step_07_mapa.webm',
+      'mp4': '$_clientBase/step_07_mapa.mp4',
+      'webm': '$_clientBase/step_07_mapa.webm',
     },
     'step_08_despedida': {
-      'mp4': '$_videoBase/step_08_despedida.mp4',
-      'webm': '$_videoBase/step_08_despedida.webm',
+      'mp4': '$_clientBase/step_08_despedida.mp4',
+      'webm': '$_clientBase/step_08_despedida.webm',
     },
   };
 
   /// Videos del onboarding PROVEEDOR/SALON (7 pasos) - MP4 + WebM
   static const Map<String, Map<String, String>> provider = {
     'step_01_inicio': {
-      'mp4': '$_videoBase/step_01_inicio.mp4',
-      'webm': '$_videoBase/step_01_inicio.webm',
+      'mp4': '$_providerBase/step_01_inicio.mp4',
+      'webm': '$_providerBase/step_01_inicio.webm',
     },
     'step_02_agenda': {
-      'mp4': '$_videoBase/step_02_agenda.mp4',
-      'webm': '$_videoBase/step_02_agenda.webm',
+      'mp4': '$_providerBase/step_02_agenda.mp4',
+      'webm': '$_providerBase/step_02_agenda.webm',
     },
     'step_03_wallet': {
-      'mp4': '$_videoBase/step_03_wallet.mp4',
-      'webm': '$_videoBase/step_03_wallet.webm',
+      'mp4': '$_providerBase/step_03_wallet.mp4',
+      'webm': '$_providerBase/step_03_wallet.webm',
     },
     'step_04_glowshop': {
-      'mp4': '$_videoBase/step_04_glowshop.mp4',
-      'webm': '$_videoBase/step_04_glowshop.webm',
+      'mp4': '$_providerBase/step_04_glowshop.mp4',
+      'webm': '$_providerBase/step_04_glowshop.webm',
     },
     'step_05_academia': {
-      'mp4': '$_videoBase/step_05_academia.mp4',
-      'webm': '$_videoBase/step_05_academia.webm',
+      'mp4': '$_providerBase/step_05_academia.mp4',
+      'webm': '$_providerBase/step_05_academia.webm',
     },
     'step_06_chat': {
-      'mp4': '$_videoBase/step_06_chat.mp4',
-      'webm': '$_videoBase/step_06_chat.webm',
+      'mp4': '$_providerBase/step_06_chat.mp4',
+      'webm': '$_providerBase/step_06_chat.webm',
     },
     'step_07_perfil': {
-      'mp4': '$_videoBase/step_07_perfil.mp4',
-      'webm': '$_videoBase/step_07_perfil.webm',
+      'mp4': '$_providerBase/step_07_perfil.mp4',
+      'webm': '$_providerBase/step_07_perfil.webm',
     },
   };
 
