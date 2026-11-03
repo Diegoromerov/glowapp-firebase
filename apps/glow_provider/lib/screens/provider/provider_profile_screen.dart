@@ -638,13 +638,13 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     );
 
     if (confirm == true && mounted) {
-      final navigator = Navigator.of(context);
-      await AuthService.logout();
-      navigator.pushNamedAndRemoveUntil('/login', (route) => false);
-    }
-  }
+          final navigator = Navigator.of(context);
+          await AuthService.logout();
+          navigator.pushNamedAndRemoveUntil('/auth/login', (route) => false);
+        }
+      }
 
-  ImageProvider? _getAvatarProvider() {
+      ImageProvider? _getAvatarProvider() {
     if (_avatarUrl == null || _avatarUrl!.isEmpty) return null;
     try {
       if (_avatarUrl!.startsWith('data:')) {
@@ -1034,15 +1034,15 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                     ),
                     const Divider(color: Color(0xFFF3EFE9), height: 1, indent: 56, endIndent: 16),
                     _buildSettingsTile(
-                      icon: Icons.gavel_outlined,
-                      title: 'Mis Disputas de Servicio',
-                      onTap: () => Navigator.pushNamed(context, '/disputes'),
-                    ),
+                                          icon: Icons.gavel_outlined,
+                                          title: 'Mis Disputas de Servicio',
+                                          onTap: () => Navigator.pushNamed(context, '/support'),
+                                        ),
                     const Divider(color: Color(0xFFF3EFE9), height: 1, indent: 56, endIndent: 16),
                     _buildSettingsTile(
                       icon: Icons.school_outlined,
                       title: 'Academia Glow (Capacitación)',
-                      onTap: () => Navigator.pushNamed(context, '/provider/academy'),
+                      onTap: () => Navigator.pushNamed(context, '/academy'),
                     ),
                   ],
                 ),

@@ -136,7 +136,7 @@ class _SalonShellState extends State<SalonShell> {
           IconButton(
             tooltip: 'Resumen del salón',
             icon: GlowIcon.resolve('dashboard', size: GlowIconSize.sm, color: t.textSecondary),
-            onPressed: () => Navigator.pushNamed(context, '/salon/resumen'),
+            onPressed: () => Navigator.pushNamed(context, '/salon'),
           ),
         ],
         bottom: PreferredSize(
@@ -560,8 +560,8 @@ class _MasTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(Spacing.lg),
       children: [
-        enlace('Resumen del salón', '/salon/resumen', detalle: 'KPIs, equipo y ajustes'),
-        enlace('Facturación del plan', '/saas/billing'),
+              enlace('Resumen del salón', '/salon', detalle: 'KPIs, equipo y ajustes'),
+              enlace('Facturación del plan', '/saas/billing'),
         enlace('Uso del plan', '/saas/usage'),
         enlace('API keys', '/saas/api-keys'),
         enlace('Configuración', '/settings'),

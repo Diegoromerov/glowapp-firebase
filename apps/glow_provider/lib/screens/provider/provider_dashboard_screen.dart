@@ -228,7 +228,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           errStr.contains('401')) {
         await AuthService.logout();
         if (mounted) {
-          Navigator.pushReplacementNamed(context, '/login');
+          Navigator.pushReplacementNamed(context, '/auth/login');
           return;
         }
       }
@@ -249,7 +249,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       if (data['role'] == 'provider' &&
           data['estatus_verificacion'] != 'APROBADO') {
         if (mounted) {
-          Navigator.pushReplacementNamed(context, '/verification-pending');
+          Navigator.pushReplacementNamed(context, '/auth/verification-pending');
           return;
         }
       }
@@ -3773,7 +3773,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 onPressed: () async {
                   await AuthService.logout();
                   if (mounted) {
-                    Navigator.pushReplacementNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/auth/login');
                   }
                 },
                 icon: const Icon(Icons.logout),

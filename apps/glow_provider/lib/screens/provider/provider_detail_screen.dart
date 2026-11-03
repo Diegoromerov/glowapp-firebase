@@ -1827,15 +1827,15 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                     ],
                   ),
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final token = await AuthService.getToken();
-                      if (token == null) {
-                        if (context.mounted) {
-                          Navigator.pushNamed(context, '/login');
-                        }
-                        return;
-                      }
-                      if (context.mounted) {
+                                      onPressed: () async {
+                                        final token = await AuthService.getToken();
+                                        if (token == null) {
+                                          if (context.mounted) {
+                                            Navigator.pushNamed(context, '/auth/login');
+                                          }
+                                          return;
+                                        }
+                                        if (context.mounted) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -2259,28 +2259,28 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                       width: double.infinity,
                       height: 48,
                       child: ElevatedButton.icon(
-                        onPressed: () async {
-                          Navigator.pop(sheetCtx);
-                          final token = await AuthService.getToken();
-                          if (token == null) {
-                            if (context.mounted) {
-                              Navigator.pushNamed(context, '/login');
-                            }
-                            return;
-                          }
-                          if (context.mounted) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BookingScreen(
-                                  providerId: widget.providerId,
-                                  providerName: providerName,
-                                  services: services,
-                                ),
-                              ),
-                            );
-                          }
-                        },
+                                              onPressed: () async {
+                                                Navigator.pop(sheetCtx);
+                                                final token = await AuthService.getToken();
+                                                if (token == null) {
+                                                  if (context.mounted) {
+                                                    Navigator.pushNamed(context, '/auth/login');
+                                                  }
+                                                  return;
+                                                }
+                                                if (context.mounted) {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) => BookingScreen(
+                                                        providerId: widget.providerId,
+                                                        providerName: providerName,
+                                                        services: services,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                              },
                         icon: const Icon(Icons.calendar_today_outlined,
                             size: 16, color: Color(0xFF1F1A15)),
                         label: const Text(
@@ -2366,11 +2366,11 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
             width: double.infinity,
             height: 44,
             child: ElevatedButton.icon(
-              onPressed: () {
-                HapticFeedback.lightImpact();
-                Navigator.of(context).pushNamed('/ideas');
-              },
-              icon: const Icon(Icons.lightbulb_outline, size: 16, color: Color(0xFFC5A052)),
+                          onPressed: () {
+                            HapticFeedback.lightImpact();
+                            Navigator.of(context).pushNamed('/chat');
+                          },
+                          icon: const Icon(Icons.lightbulb_outline, size: 16, color: Color(0xFFC5A052)),
               label: const Text(
                 'Ver Ideas y Visajismo IA',
                 style: TextStyle(
