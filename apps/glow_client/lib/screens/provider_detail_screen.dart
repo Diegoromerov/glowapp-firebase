@@ -713,10 +713,14 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                             loadingBuilder: (context, child, loadingProgress) {
                               if (loadingProgress == null) return child;
                               return Container(
-                                color: AppTheme.surface,
+                                // Valores literales del monolito (shared/theme.dart:
+                                // surface = nude100, primary = gold871). Los tokens
+                                // del split usan otro blanco y otro dorado.
+                                color: const Color(0xFFF4EFEA),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                      strokeWidth: 2, color: AppTheme.primary),
+                                      strokeWidth: 2,
+                                      color: const Color(0xFFC5A052)),
                                 ),
                               );
                             },
