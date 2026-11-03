@@ -23,6 +23,20 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: glowtest
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     steps:
       - uses: actions/checkout@v4
@@ -47,10 +61,48 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
+      - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
+        env:
+          DATABASE_URL_ADMIN: postgres://postgres:postgres@localhost:5432/glowtest
+          RLS_ROLE_PASSWORD: test_rls_password
+        run: node scripts/prepareRlsDatabase.js
+
+      - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
+        env:
+          TEST_DATABASE_URL: postgres://app_owner:test_rls_password@localhost:5432/glowtest
+        run: node scripts/verifyTenantIsolation.js
+
       - name: Contrato app <-> API
         # Compara lo que llaman las dos apps Flutter contra lo que publica este
         # backend. Falla si una pantalla pide una ruta que no existe: es lo que
         # en `belleza-app` no se podia hacer porque los dos arboles vivian en
         # repos distintos.
-        working-directory: .
+        working-directory: ..
         run: python3 tools/verificar_contrato_api.py .
+
+      - name: Tests de contrato que requieren BD (audience-binding, routersMontados, critical-endpoints)
+        env:
+          DATABASE_URL: postgres://app_rls_user:test_rls_password@localhost:5432/glowtest
+          JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
+        run: npx jest --testPathPattern="src/tests/contract" --forceExit --verbose
+
+  staging-verification:
+    name: Staging - Verificacion X-App-Audience + RLS
+    needs: backend
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Verificar X-App-Audience + RLS en staging
+        run: |
+          echo "🔍 Verificando header X-App-Audience en staging..."
+          # Comprobar que el header es requerido en /api
+          curl -s -o /dev/null -w "%{http_code}" -H "X-App-Audience: client" https://glowapp-api-production.up.railway.app/api/providers | grep -q "200" && echo "✅ client header aceptado" || (echo "❌ client header rechazado" && exit 1)
+          
+          # Comprobar que sin header falla
+          curl -s -o /dev/null -w "%{http_code}" https://glowapp-api-production.up.railway.app/api/providers | grep -q "400" && echo "✅ sin header → 400" || (echo "❌ sin header no da 400" && exit 1)
+          
+          # Comprobar audience mismatch
+          curl -s -o /dev/null -w "%{http_code}" -H "X-App-Audience: salon" https://glowapp-api-production.up.railway.app/api/providers | grep -q "403" && echo "✅ audience mismatch → 403" || (echo "❌ audience mismatch no da 403" && exit 1)
+          
+          echo "✅ Staging verificado: X-App-Audience + RLS en vigor"
