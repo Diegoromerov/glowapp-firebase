@@ -158,23 +158,38 @@ exports.createBooking = async (req, res) => {
     // 04:59:59 UTC del día siguiente corresponde a 23:59:59 hora Colombia
     const endOfDay = new Date(Date.UTC(baseDate.getUTCFullYear(), baseDate.getUTCMonth(), baseDate.getUTCDate() + 1, 4, 59, 59, 999));
 
-    const overlaps = await Booking.findAll({
-      where: {
-        provider_id,
-        estado: { [Op.ne]: 'CANCELADA' },
-        scheduled_at: {
-          [Op.between]: [startOfDay, endOfDay]
-        }
-      },
-      include: [{
-        model: Service,
-        as: 'service',
-        attributes: ['duration_minutes']
-      }]
+    // Solapamiento: la agenda del prestador es cross-tenant (sus reservas y sus
+    // servicios pertenecen a su inquilino). Con el contexto del cliente, el
+    // include de `service` vuelve null y `b.service.duration_minutes` reventaba
+    // con «Cannot read properties of null». Se lee con rol de sistema.
+    const overlaps = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      return Booking.findAll({
+        where: {
+          provider_id,
+          estado: { [Op.ne]: 'CANCELADA' },
+          scheduled_at: {
+            [Op.between]: [startOfDay, endOfDay]
+          }
+        },
+        include: [{
+          model: Service,
+          as: 'service',
+          attributes: ['duration_minutes']
+        }],
+        transaction: t,
+      });
     });
 
     // Verificar solapamiento en el subconjunto filtrado
     for (const b of overlaps) {
+      // Guarda: nunca 500 por una fila huérfana (servicio borrado). Sin
+      // duración no se puede afirmar que no haya conflicto, así que se ignora
+      // esa fila y se deja constancia.
+      if (!b.service) {
+        console.warn(`[bookings] reserva ${b.id} sin servicio asociado; se omite en el control de solape`);
+        continue;
+      }
       const bStart = new Date(b.scheduled_at);
       const bDuration = parseInt(b.service.duration_minutes);
       const bEnd = new Date(bStart.getTime() + bDuration * 60 * 1000);
