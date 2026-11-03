@@ -269,18 +269,11 @@ const publicTenantContext = require('./src/middleware/publicTenantContext');
 // app.tenant_id, y sin él la fila nace con tenant_id NULL y la rechaza
 // usuarios_isolation). Con el contexto de plataforma, el alta entra igual que
 // el catálogo público.
-app.use(
-  [
-    '/api/providers',
-    '/api/products',
-    '/api/services',
-    '/api/auth/register',
-    '/api/auth/oauth',
-    '/api/auth/google',
-    '/api/auth/facebook',
-  ],
-  publicTenantContext,
-);
+// Solo catálogo público. El alta y el login NO entran aquí: la autenticación es
+// cross-tenant por naturaleza (un email pertenece a un inquilino y la petición
+// llega sin ninguno), así que esos controladores usan runAsSystem (app_system,
+// BYPASSRLS), que es el mecanismo previsto para operaciones de sistema.
+app.use(['/api/providers', '/api/products', '/api/services'], publicTenantContext);
 
 const { degradedLockMiddleware, clasificarSalud, asegurarEstadoComprobado } = require('./src/middleware/degradedLock');
 app.use('/api', degradedLockMiddleware);

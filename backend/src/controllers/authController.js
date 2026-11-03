@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { pool } = require('../config/db');
+const tenantRouting = require('../config/tenantRouting');
 const { getJwtSecret, toApiRole } = require('../config/jwt');
 const redisClient = require('../config/redis');
 const emailService = require('../services/email.service');
@@ -57,11 +58,13 @@ exports.register = async (req, res) => {
     const userRole = (role && validRoles.includes(role.toUpperCase())) ? role.toUpperCase() : 'CLIENTE';
     const onboarding = (userRole === 'CLIENTE'); // true para cliente, false para prestador/salón
 
-    const result = await pool.query(
-      `INSERT INTO usuarios (nombre, email, password_hash, phone, auth_provider, provider_id, rol, onboarding_completo) 
-       VALUES ($1, $2, $3, $4, 'LOCAL', $5, $6, $7) 
-       RETURNING id, nombre, email, rol, onboarding_completo`,
-      [full_name, cleanEmail, hashedPassword, phone || null, providerId, userRole, onboarding]
+    const result = await tenantRouting.runAsSystem({ pool }, (c) =>
+      c.query(
+        `INSERT INTO usuarios (nombre, email, password_hash, phone, auth_provider, provider_id, rol, onboarding_completo) 
+         VALUES ($1, $2, $3, $4, 'LOCAL', $5, $6, $7) 
+         RETURNING id, nombre, email, rol, onboarding_completo`,
+        [full_name, cleanEmail, hashedPassword, phone || null, providerId, userRole, onboarding]
+      )
     );
 
     const user = result.rows[0];
