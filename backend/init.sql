@@ -51,6 +51,7 @@ CREATE TABLE usuarios (
   phone VARCHAR(20),
   rol tipo_rol DEFAULT NULL,
   onboarding_completo BOOLEAN DEFAULT FALSE,
+  is_active BOOLEAN DEFAULT TRUE,
   creado_en TIMESTAMPTZ DEFAULT NOW(),
   CONSTRAINT unique_auth_provider_id UNIQUE (auth_provider, provider_id)
 );
