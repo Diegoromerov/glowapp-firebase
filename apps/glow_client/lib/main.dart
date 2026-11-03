@@ -17,7 +17,6 @@ import 'screens/auth/onboarding_screen.dart';
 import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/accept_invitation_screen.dart';
 import 'screens/auth/verification_pending_screen.dart';
-import 'screens/auth/role_selection_modal.dart';
 import 'screens/provider_detail_screen.dart';
 import 'screens/providers_screen.dart';
 import 'screens/client_bookings_screen.dart';
@@ -151,7 +150,6 @@ class GlowClientApp extends ConsumerWidget {
         '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
         '/auth/accept-invitation': (_) => const AcceptInvitationScreen(),
         '/auth/verification-pending': (_) => const VerificationPendingScreen(),
-        '/auth/role-selection': (_) => const RoleSelectionModal(),
 
         // Home / Navegación principal
         '/home': (_) => const ProvidersScreen() as Widget,
