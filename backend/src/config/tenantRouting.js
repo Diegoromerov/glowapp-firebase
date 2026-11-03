@@ -187,30 +187,41 @@ function runAsSystemContext(fn) {
  * vuelve al pool con su rol original. Lo contrario —un `SET ROLE` de sesión—
  * dejaría una conexión con BYPASSRLS circulando por el pool.
  *
+ * Si existe `systemPool` (DB_SYSTEM_URL configurada), usa esa conexión directa
+ * como `app_system` (NOLOGIN, BYPASSRLS). Si no, usa el pool principal y escala
+ * con `SET LOCAL ROLE app_system` (requiere GRANT app_system TO app_rls_user).
+ *
  * Requiere la membresía `GRANT app_system TO app_rls_user` (ver
  * scripts/setupRlsRole.sql). Si falta, este BEGIN/ROLLBACK falla en voz alta en
  * vez de ejecutar sin privilegios y devolver cero filas en silencio.
  *
- * @param {{ pool: {connect: Function} }} deps
+ * @param {{ pool: {connect: Function}, systemPool?: {connect: Function} }} deps
  * @param {(client: object) => Promise<any>} fn
  */
 async function runAsSystem(deps, fn) {
+  const useSystemPool = deps.systemPool && typeof deps.systemPool.connect === 'function';
+  const poolToUse = useSystemPool ? deps.systemPool : deps.pool;
   let client;
   let began = false;
 
   try {
-    client = await deps.pool.connect();
+    client = await poolToUse.connect();
     await client.query('BEGIN');
     began = true;
-    try {
-      await client.query('SET LOCAL ROLE app_system');
-    } catch (roleError) {
-      if (roleError.code === '22023' || /role "app_system" does not exist/i.test(roleError.message)) {
-        console.warn('⚠️ [tenantRouting] Rol "app_system" no disponible en la BD; ejecutando con privilegios de conexión por defecto.');
-      } else {
-        throw roleError;
+
+    if (!useSystemPool) {
+      // Solo escalar rol si usamos el pool principal (app_rls_user)
+      try {
+        await client.query('SET LOCAL ROLE app_system');
+      } catch (roleError) {
+        if (roleError.code === '22023' || /role "app_system" does not exist/i.test(roleError.message)) {
+          console.warn('[tenantRouting] Rol "app_system" no disponible en la BD; ejecutando con privilegios de conexión por defecto.');
+        } else {
+          throw roleError;
+        }
       }
     }
+    // Si useSystemPool, la conexión YA es app_system (BYPASSRLS), no hace falta SET ROLE
 
     const result = await runWithClient(client, () => fn(client), { system: true });
 

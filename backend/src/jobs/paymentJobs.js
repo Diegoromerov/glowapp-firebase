@@ -8,6 +8,7 @@ const { _mapearEstadoRetiro: mapearEstadoRetiro } = require('../services/wompiSe
 const { aplicarPricingDinamico } = require('./dynamicPricing');
 const { enviarNotificacionesRetencion } = require('./retentionNotification');
 const { runAsSystem } = require('../config/tenantRouting');
+const { systemPool } = require('../config/db');
 
 /**
  * Ejecuta un job con el ROL DE SISTEMA activo (SET LOCAL ROLE app_system, que
@@ -19,14 +20,18 @@ const { runAsSystem } = require('../config/tenantRouting');
  * (migración 068) sus consultas irían sin contexto y devolverían 0 filas, de modo
  * que el job se quedaría sin hacer su trabajo EN SILENCIO, sin lanzar un error.
  *
+ * Si existe systemPool (DB_SYSTEM_URL configurada), usa esa conexión directa
+ * como app_system (NOLOGIN, BYPASSRLS). Si no, usa el pool principal y escala
+ * con SET LOCAL ROLE app_system (requiere GRANT app_system TO app_rls_user).
+ *
  * Requiere `GRANT app_system TO app_rls_user` (scripts/setupRlsRole.sql): sin esa
  * membresía, el SET LOCAL ROLE falla en voz alta en vez de degradarse.
  */
 const comoSistema = (job) => async () => {
   try {
-    return await runAsSystem({ pool }, () => job());
+    return await runAsSystem({ pool, systemPool }, () => job());
   } catch (err) {
-    console.error(`❌ [paymentJobs] Error en job con ROL DE SISTEMA (${job.name || 'anon'}):`, err.message || err);
+    console.error(`[paymentJobs] Error en job con ROL DE SISTEMA (${job.name || 'anon'}):`, err.message || err);
   }
 };
 
