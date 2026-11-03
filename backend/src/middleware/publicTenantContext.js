@@ -84,16 +84,14 @@ module.exports = async function publicTenantContext(req, res, next) {
         // lea su propia escritura antes del COMMIT.
         res.once('finish', resolve);
         res.once('close', resolve);
-        next((err) => {
-          // Express reenvía centinelas y funciones por este canal: 'route' y
-          // 'router' NO son errores, y en esta cadena llegó a propagarse el
-          // propio callback (tipo Function). Tratarlos como error producía un
-          // 500 sin mensaje ("GET /api/providers: undefined").
-          if (!err) return;
-          if (typeof err === 'function') return;
-          if (err === 'route' || err === 'router') return;
+        // next() SIN callback: en Express 4 cualquier argumento distinto de
+        // 'route'/'router' se interpreta como error, así que pasar una función
+        // la convierte en el propio error de la petición (500 sin mensaje).
+        try {
+          next();
+        } catch (err) {
           reject(err);
-        });
+        }
       });
     });
   } catch (err) {
