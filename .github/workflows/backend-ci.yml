@@ -193,10 +193,13 @@ jobs:
       - name: Elegir host segun la rama
         id: host
         run: |
+          # El staging se sirve desde su propio servicio (glowapp-api-staging),
+          # porque el servicio de produccion no puede apuntar a dos ramas: la
+          # rama es a nivel de servicio en Railway.
           if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
             echo "url=https://glowapp-api-production.up.railway.app" >> "$GITHUB_OUTPUT"
           else
-            echo "url=https://glowapp-api-staging.up.railway.app" >> "$GITHUB_OUTPUT"
+            echo "url=https://glowapp-api-staging-staging.up.railway.app" >> "$GITHUB_OUTPUT"
           fi
 
       - name: La cabecera es obligatoria
