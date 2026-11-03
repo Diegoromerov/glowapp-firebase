@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if (rLower == 'salon') {
             Navigator.pushReplacementNamed(context, '/salon');
           } else if (rLower == 'provider') {
-            Navigator.pushReplacementNamed(context, '/provider');
+            Navigator.pushReplacementNamed(context, '/provider/dashboard');
           } else {
             Navigator.pushReplacementNamed(context, '/home');
           }
@@ -276,7 +276,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if (rLower == 'salon') {
             Navigator.pushReplacementNamed(context, '/salon');
           } else if (rLower == 'provider') {
-            Navigator.pushReplacementNamed(context, '/provider');
+            Navigator.pushReplacementNamed(context, '/provider/dashboard');
           } else {
             Navigator.pushReplacementNamed(context, '/home');
           }
@@ -328,7 +328,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (rLower == 'salon') {
           Navigator.pushReplacementNamed(context, '/salon');
         } else if (rLower == 'provider') {
-          Navigator.pushReplacementNamed(context, '/provider');
+          Navigator.pushReplacementNamed(context, '/provider/dashboard');
         } else {
           Navigator.pushReplacementNamed(context, '/home');
         }

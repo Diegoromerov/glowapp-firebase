@@ -905,10 +905,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                                                                                         style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
                                                                                                       ),
                                                                                                       onPressed: () {
-                                                        // Navigate to /ideas using arguments to pre-load a tool
+                                                        // Navigate to /chat using arguments to pre-load a tool
                                                         Navigator.pushNamed(
                                                           context,
-                                                          '/ideas',
+                                                          '/chat',
                                                           arguments: {'toolId': redirectToolId},
                                                         );
                                                       },

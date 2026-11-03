@@ -33,7 +33,7 @@ class _ContextSelectionScreenState extends State<ContextSelectionScreen> {
     if (normalizedRole == 'salon' || normalizedRole == 'owner' || normalizedRole == 'admin') {
       return '/salon';
     } else if (normalizedRole == 'provider' || normalizedRole == 'manager') {
-      return '/provider';
+      return '/provider/dashboard';
     }
     return '/home';
   }

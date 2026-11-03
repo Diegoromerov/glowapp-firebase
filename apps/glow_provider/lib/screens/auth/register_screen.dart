@@ -89,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               );
             } else if (role == 'provider') {
               navigator.pushNamedAndRemoveUntil(
-                '/provider',
+                '/provider/dashboard',
                 (route) => false,
               );
             } else {
