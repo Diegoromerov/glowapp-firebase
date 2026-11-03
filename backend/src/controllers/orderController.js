@@ -796,6 +796,21 @@ exports.storeWebhook = async (req, res) => {
       return res.status(401).json({ error: 'Invalid event signature' });
     }
 
+    // Wompi manda TODOS los eventos a una sola URL (esta, la de pedidos). Un
+    // evento de reserva no tiene pedido: antes caía aquí, no encontraba fila y
+    // se registraba como «sin_transaccion», de modo que el cobro se hacía en
+    // Wompi y la cita nunca pasaba a pagada. Se despacha al flujo de reservas,
+    // que ya sabe distinguir por referencia. `require` perezoso: bookingController
+    // importa este módulo y un require en cabecera cerraría el ciclo.
+    const referenciaEvento = String(
+      req.body?.data?.transaction?.reference
+        ?? req.body?.data?.reference
+        ?? ''
+    );
+    if (referenciaEvento && !referenciaEvento.startsWith('wompi_order_')) {
+      return require('./bookingController').wompiWebhook(req, res);
+    }
+
     const event = req.body;
     // Wompi manda `event` como STRING ("transaction.updated"), no como objeto
     // (docs.wompi.co -> Eventos -> Cuerpo de un evento). Leer `event.event.type`
@@ -855,6 +870,13 @@ exports.storeWebhook = async (req, res) => {
     let pedidoPagadoId = null;
     try {
       await client.query('BEGIN');
+
+      // El webhook llega sin contexto de inquilino (no hay usuario ni JWT), así
+      // que RLS devolvía 0 filas en `transactions`: todo evento se registraba
+      // como «sin_transaccion» y las reservas pagadas nunca se confirmaban. La
+      // firma del evento ya se verificó, así que operar con el rol de sistema es
+      // lo correcto aquí.
+      await client.query('SET LOCAL ROLE app_system');
 
       // FOR UPDATE: dos entregas concurrentes del mismo evento se serializan; la
       // segunda ya ve el estado final y no repite trabajo (ni factura).
