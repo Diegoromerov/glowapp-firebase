@@ -264,7 +264,23 @@ app.use('/api', validateAppAudience({ required: true }));
 // transacción por petición en login, webhooks o sondas agotaría el pool.
 // Las rutas autenticadas fijan su propio contexto en tenantContext.js.
 const publicTenantContext = require('./src/middleware/publicTenantContext');
-app.use(['/api/providers', '/api/products', '/api/services'], publicTenantContext);
+// Rutas de alta de usuario: el INSERT en `usuarios` no puede cumplir la
+// política sin contexto (el trigger trg_assign_tenant_id toma el valor de
+// app.tenant_id, y sin él la fila nace con tenant_id NULL y la rechaza
+// usuarios_isolation). Con el contexto de plataforma, el alta entra igual que
+// el catálogo público.
+app.use(
+  [
+    '/api/providers',
+    '/api/products',
+    '/api/services',
+    '/api/auth/register',
+    '/api/auth/oauth',
+    '/api/auth/google',
+    '/api/auth/facebook',
+  ],
+  publicTenantContext,
+);
 
 const { degradedLockMiddleware, clasificarSalud, asegurarEstadoComprobado } = require('./src/middleware/degradedLock');
 app.use('/api', degradedLockMiddleware);
