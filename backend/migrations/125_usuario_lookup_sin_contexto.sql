@@ -96,7 +96,7 @@ BEGIN
                           onboarding_completo, tenant_id)
     VALUES (p_nombre, p_email, p_provider, p_provider_id, p_rol,
             p_onboarding, v_tenant)
-    RETURNING usuarios.id INTO v_id;
+    RETURNING id INTO v_id;
   ELSE
     UPDATE usuarios u
        SET auth_provider = p_provider,
