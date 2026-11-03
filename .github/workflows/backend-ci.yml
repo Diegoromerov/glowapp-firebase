@@ -23,6 +23,24 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    services:
+      postgres:
+        # alpine no trae PostGIS y el esquema lo exige (init.sql:7). La imagen
+        # oficial de PostGIS ya lo carga al arrancar.
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: glowtest
+          PGDATA: /var/lib/postgresql/data/pgdata
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+          --health-start-period=20s
 
     steps:
       - uses: actions/checkout@v4
@@ -47,10 +65,54 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
+      - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
+        env:
+          DATABASE_URL_ADMIN: postgres://postgres:postgres@localhost:5432/glowtest
+          RLS_ROLE_PASSWORD: test_rls_password
+        run: node scripts/prepareRlsDatabase.js
+
+      - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
+        env:
+          TEST_DATABASE_URL: postgres://app_owner:test_rls_password@localhost:5432/glowtest
+        run: node scripts/verifyTenantIsolation.js
+
       - name: Contrato app <-> API
-        # Compara lo que llaman las dos apps Flutter contra lo que publica este
-        # backend. Falla si una pantalla pide una ruta que no existe: es lo que
-        # en `belleza-app` no se podia hacer porque los dos arboles vivian en
-        # repos distintos.
+        # Se ejecuta desde la raiz del monorepo: la herramienta compara lo que
+        # llaman las apps contra lo que publica este backend.
         working-directory: .
         run: python3 tools/verificar_contrato_api.py .
+
+      - name: Tests de contrato que requieren BD (audience-binding, routersMontados, critical-endpoints)
+        env:
+          DATABASE_URL: postgres://app_rls_user:test_rls_password@localhost:5432/glowtest
+          JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
+        run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js --forceExit --verbose
+
+  verificacion-entorno:
+    name: Verificacion X-App-Audience
+    needs: backend
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Elegir host segun la rama
+        id: host
+        run: |
+          if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
+            echo "url=https://glowapp-api-production.up.railway.app" >> "$GITHUB_OUTPUT"
+          else
+            echo "url=https://glowapp-api-staging.up.railway.app" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: La cabecera es obligatoria
+        run: |
+          url='${{ steps.host.outputs.url }}'
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$url/api/providers")
+          echo "sin cabecera -> $code"
+          test "$code" = "400"
+
+      - name: Con auditorio client responde
+        run: |
+          url='${{ steps.host.outputs.url }}'
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H 'X-App-Audience: client' "$url/api/providers")
+          echo "client -> $code"
+          test "$code" = "200"
