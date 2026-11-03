@@ -109,6 +109,7 @@ jobs:
           # trust auth: sin password en la URL
           DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
           JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
+          USE_PG_MEM: 'false'
         run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js --forceExit --verbose
 
       - name: La API sirve catalogo con el rol restringido (E2E)
