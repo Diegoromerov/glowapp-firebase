@@ -35,6 +35,7 @@ import 'screens/my_glow_dashboard_screen.dart';
 import 'screens/rewards_xp_screen.dart';
 import 'screens/glowstore_orders_screen.dart';
 import 'screens/biometric_history_screen.dart';
+import 'screens/booking_screen.dart';
 import 'screens/habeas_data_screen.dart';
 import 'screens/faq_screen.dart';
 import 'screens/settings_screen.dart';
@@ -65,7 +66,11 @@ void main() async {
     unawaited(CrashReportingService.instance.reportFlutterError(details));
   };
   ErrorWidget.builder = (details) => ErrorFallback(
-        codigo: details.exception.toString().hashCode.toRadixString(16).toUpperCase(),
+        codigo: details.exception
+            .toString()
+            .hashCode
+            .toRadixString(16)
+            .toUpperCase(),
       );
 
   // Inicializar Firebase (solo si está configurado)
@@ -111,7 +116,7 @@ class GlowClientApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final audienceMode = ref.watch(audienceModeProvider);
     final isMen = audienceMode == AudienceMode.men;
-    
+
     return MaterialApp(
       title: 'GlowApp',
       debugShowCheckedModeBanner: false,
@@ -138,147 +143,161 @@ class GlowClientApp extends ConsumerWidget {
       darkTheme: isMen ? _buildMensDarkTheme() : AppTheme.dark(),
       themeMode: ThemeMode.light,
       initialRoute: '/auth/login',
-            routes: <String, WidgetBuilder>{
-              // Auth
-              '/auth/login': (_) => const LoginScreen(),
-              '/auth/register': (_) => const RegisterScreen(),
-              '/auth/onboarding': (_) => const OnboardingScreen(),
-              '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
-              '/auth/accept-invitation': (_) => const AcceptInvitationScreen(),
-              '/auth/verification-pending': (_) => const VerificationPendingScreen(),
-              '/auth/role-selection': (_) => const RoleSelectionModal(),
+      routes: <String, WidgetBuilder>{
+        // Auth
+        '/auth/login': (_) => const LoginScreen(),
+        '/auth/register': (_) => const RegisterScreen(),
+        '/auth/onboarding': (_) => const OnboardingScreen(),
+        '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
+        '/auth/accept-invitation': (_) => const AcceptInvitationScreen(),
+        '/auth/verification-pending': (_) => const VerificationPendingScreen(),
+        '/auth/role-selection': (_) => const RoleSelectionModal(),
 
-              // Home / Navegación principal
-                      '/home': (_) => const ProvidersScreen() as Widget,
+        // Home / Navegación principal
+        '/home': (_) => const ProvidersScreen() as Widget,
 
-              // Mis Reservas
-              '/my-bookings': (_) => const ClientBookingsScreen(),
+        // Mis Reservas
+        '/my-bookings': (_) => const ClientBookingsScreen(),
 
-              // Chat
-              '/chat': (_) => const ChatListScreen(),
+        // Chat
+        '/chat': (_) => const ChatListScreen(),
 
-              // GlowStore
-              '/store': (_) => const StoreScreen(),
+        // GlowStore
+        '/store': (_) => const StoreScreen(),
 
-              // Disputas
-              '/disputes': (_) => const DisputesListScreen(),
-              '/disputes/open': (_) => const OpenDisputeScreen(),
+        // Disputas
+        '/disputes': (_) => const DisputesListScreen(),
+        '/disputes/open': (_) => const OpenDisputeScreen(),
 
-              // Soporte
-              '/support': (_) => const SupportCenterScreen(),
-              '/support/create': (_) => const CreateTicketScreen(),
-              '/terms': (_) => const TermsConditionsScreen(),
+        // Soporte
+        '/support': (_) => const SupportCenterScreen(),
+        '/support/create': (_) => const CreateTicketScreen(),
+        '/terms': (_) => const TermsConditionsScreen(),
 
-              // Perfil
-              '/profile': (_) => const UserProfileScreen(),
-              '/my-glow': (_) => const MyGlowDashboardScreen(),
-              '/rewards': (_) => const RewardsXpScreen(),
-              '/glowstore-orders': (_) => const GlowStoreOrdersScreen(),
-              '/biometric-history': (_) => const BiometricHistoryScreen(),
-              '/habeas-data': (_) => const HabeasDataScreen(),
-              '/faq': (_) => const FaqScreen(),
-              '/settings': (_) => const SettingsScreen(userEmail: '', onLogout: null),
+        // Perfil
+        '/profile': (_) => const UserProfileScreen(),
+        '/my-glow': (_) => const MyGlowDashboardScreen(),
+        '/rewards': (_) => const RewardsXpScreen(),
+        '/glowstore-orders': (_) => const GlowStoreOrdersScreen(),
+        '/biometric-history': (_) => const BiometricHistoryScreen(),
+        '/habeas-data': (_) => const HabeasDataScreen(),
+        '/faq': (_) => const FaqScreen(),
+        '/settings': (_) => const SettingsScreen(userEmail: '', onLogout: null),
 
-              // Ideas / Contenido - solo las que no requieren parámetros obligatorios
-              '/ideas/welcome': (_) => const BiometricWelcomeScreen(),
-              '/ideas/aura-welcome': (_) => const AuraWelcomeScreen(),
-              '/ideas/capture': (_) => const CaptureScreen(),
-            },
-            onGenerateRoute: (settings) {
-              switch (settings.name) {
-                case '/chat/detail':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => ChatScreen(
-                      partnerId: args?['partnerId'] ?? '',
-                      partnerName: args?['partnerName'] ?? '',
-                      partnerRole: args?['partnerRole'] ?? '',
-                      partnerAvatar: args?['partnerAvatar'],
-                      initialMessage: args?['initialMessage'],
-                      initialImagePath: args?['initialImagePath'],
-                    ),
-                  );
-                case '/support/ticket':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => TicketChatScreen(
-                      ticketId: args?['ticketId'] ?? '',
-                      ticketSubject: args?['ticketSubject'] ?? '',
-                      ticketStatus: args?['ticketStatus'] ?? '',
-                    ),
-                  );
-                // Ideas / Contenido - pantallas que requieren parámetros obligatorios
-                          case '/ideas/evolution':
-                            return MaterialPageRoute(builder: (_) => const EvolutionScreen());
-                          case '/ideas/glowstore-recipe':
-                            final args = settings.arguments as Map<String, dynamic>?;
-                            return MaterialPageRoute(
-                              builder: (_) => GlowstoreRecipeScreen(
-                                onAddToCart: args?['onAddToCart'],
-                                onCheckout: args?['onCheckout'],
-                              ),
-                            );
-                          case '/ideas/makeup-lookbook':
-                            final args = settings.arguments as Map<String, dynamic>?;
-                            return MaterialPageRoute(
-                              builder: (_) => MakeupLookbookScreen(
-                                biometricResult: args?['biometricResult'],
-                              ),
-                            );
-                          case '/ideas/nail-vto':
-                            final args = settings.arguments as Map<String, dynamic>?;
-                            return MaterialPageRoute(
-                              builder: (_) => NailVtoScreen(
-                                biometricResult: args?['biometricResult'],
-                                handsImage: args?['handsImage'],
-                              ),
-                            );
-                case '/ideas/processing':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => ProcessingScreen(
-                      faceImage: args?['faceImage'],
-                      handsImage: args?['handsImage'],
-                      geometry: args?['geometry'],
-                    ),
-                  );
-                case '/ideas/results':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => ResultsScreen(
-                      result: args?['result'],
-                    ),
-                  );
-                case '/ideas/vto-live':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => VtoLiveScreen(
-                      biometricResult: args?['biometricResult'],
-                      faceImage: args?['faceImage'],
-                    ),
-                  );
-                // Stubs para pantallas no implementadas aun
-                case '/booking':
-                  return MaterialPageRoute(builder: (_) => const _StubScreen(title: 'Reservar cita'));
-                case '/booking-tracking':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  final bookingId = (args?['bookingId'] ?? 'N/A').toString();
-                  return MaterialPageRoute(
-                    builder: (_) => _StubScreen(title: 'Tracking reserva: $bookingId'),
-                  );
-                case '/provider-detail':
-                  final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(
-                    builder: (_) => ProviderDetailScreen(
-                      providerId: (args?['providerId'] ?? '').toString(),
-                      nombreInicial: args?['providerName']?.toString(),
-                      avatarInicial: args?['avatarUrl']?.toString(),
-                    ),
-                  );
-                default:
-                  return null;
-              }
-            },
+        // Ideas / Contenido - solo las que no requieren parámetros obligatorios
+        '/ideas/welcome': (_) => const BiometricWelcomeScreen(),
+        '/ideas/aura-welcome': (_) => const AuraWelcomeScreen(),
+        '/ideas/capture': (_) => const CaptureScreen(),
+      },
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/chat/detail':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => ChatScreen(
+                partnerId: args?['partnerId'] ?? '',
+                partnerName: args?['partnerName'] ?? '',
+                partnerRole: args?['partnerRole'] ?? '',
+                partnerAvatar: args?['partnerAvatar'],
+                initialMessage: args?['initialMessage'],
+                initialImagePath: args?['initialImagePath'],
+              ),
+            );
+          case '/support/ticket':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => TicketChatScreen(
+                ticketId: args?['ticketId'] ?? '',
+                ticketSubject: args?['ticketSubject'] ?? '',
+                ticketStatus: args?['ticketStatus'] ?? '',
+              ),
+            );
+          // Ideas / Contenido - pantallas que requieren parámetros obligatorios
+          case '/ideas/evolution':
+            return MaterialPageRoute(builder: (_) => const EvolutionScreen());
+          case '/ideas/glowstore-recipe':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => GlowstoreRecipeScreen(
+                onAddToCart: args?['onAddToCart'],
+                onCheckout: args?['onCheckout'],
+              ),
+            );
+          case '/ideas/makeup-lookbook':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => MakeupLookbookScreen(
+                biometricResult: args?['biometricResult'],
+              ),
+            );
+          case '/ideas/nail-vto':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => NailVtoScreen(
+                biometricResult: args?['biometricResult'],
+                handsImage: args?['handsImage'],
+              ),
+            );
+          case '/ideas/processing':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => ProcessingScreen(
+                faceImage: args?['faceImage'],
+                handsImage: args?['handsImage'],
+                geometry: args?['geometry'],
+              ),
+            );
+          case '/ideas/results':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => ResultsScreen(
+                result: args?['result'],
+              ),
+            );
+          case '/ideas/vto-live':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => VtoLiveScreen(
+                biometricResult: args?['biometricResult'],
+                faceImage: args?['faceImage'],
+              ),
+            );
+          // Stubs para pantallas no implementadas aun
+          case '/booking':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => BookingScreen(
+                providerId: (args?['providerId'] ?? '').toString(),
+                providerName: (args?['providerName'] ?? 'Prestador').toString(),
+                services: ((args?['services'] as List?) ?? const [])
+                    .map((e) => Map<String, dynamic>.from(e as Map))
+                    .toList(),
+                initialServiceId: args?['initialServiceId']?.toString(),
+                initialNotes: args?['initialNotes']?.toString(),
+                initialAddress: args?['initialAddress']?.toString(),
+                preselectedProductId: args?['preselectedProductId']?.toString(),
+              ),
+            );
+          case '/booking-tracking':
+            final args = settings.arguments as Map<String, dynamic>?;
+            final bookingId = (args?['bookingId'] ?? 'N/A').toString();
+            return MaterialPageRoute(
+              builder: (_) =>
+                  _StubScreen(title: 'Tracking reserva: $bookingId'),
+            );
+          case '/provider-detail':
+            final args = settings.arguments as Map<String, dynamic>?;
+            return MaterialPageRoute(
+              builder: (_) => ProviderDetailScreen(
+                providerId: (args?['providerId'] ?? '').toString(),
+                nombreInicial: args?['providerName']?.toString(),
+                avatarInicial: args?['avatarUrl']?.toString(),
+              ),
+            );
+          default:
+            return null;
+        }
+      },
     );
   }
 }
@@ -362,7 +381,7 @@ ThemeData _buildMensDarkTheme() {
 class _StubScreen extends StatelessWidget {
   final String title;
   const _StubScreen({required this.title});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -375,7 +394,8 @@ class _StubScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Text(title, style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 8),
-            const Text('Pantalla en desarrollo', style: TextStyle(color: Colors.grey)),
+            const Text('Pantalla en desarrollo',
+                style: TextStyle(color: Colors.grey)),
           ],
         ),
       ),
@@ -384,7 +404,8 @@ class _StubScreen extends StatelessWidget {
 }
 
 // Provider para AudienceMode (ValueNotifier wrapper)
-final audienceModeProvider = StateNotifierProvider<AudienceModeNotifier, AudienceMode>((ref) {
+final audienceModeProvider =
+    StateNotifierProvider<AudienceModeNotifier, AudienceMode>((ref) {
   return AudienceModeNotifier();
 });
 
@@ -392,11 +413,11 @@ class AudienceModeNotifier extends StateNotifier<AudienceMode> {
   AudienceModeNotifier() : super(AudienceService.currentAudience.value) {
     AudienceService.currentAudience.addListener(_onChange);
   }
-  
+
   void _onChange() {
     state = AudienceService.currentAudience.value;
   }
-  
+
   @override
   void dispose() {
     AudienceService.currentAudience.removeListener(_onChange);
