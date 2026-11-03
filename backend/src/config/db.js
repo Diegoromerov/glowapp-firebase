@@ -790,6 +790,24 @@ const ragPool = (process.env.RAG_DATABASE_URL || process.env.DATABASE_URL)
     })
   : null;
 
+// ── Conexión de sistema (app_system, BYPASSRLS) ──
+// Usada por webhooks (Wompi) y jobs cron que operan cross-tenant intencionadamente.
+// Requiere DB_SYSTEM_URL en Railway: postgres://app_system@host:port/db (sin password, NOLOGIN).
+// Si no está definida, tenantRouting.runAsSystem usará SET LOCAL ROLE app_system sobre
+// una conexión del pool principal (app_rls_user), que tiene GRANT app_system.
+const systemPool = process.env.DB_SYSTEM_URL
+  ? new Pool({
+      connectionString: process.env.DB_SYSTEM_URL,
+      ssl: getSslConfig(process.env.DB_SYSTEM_URL),
+      max: isProduction ? 5 : 3,
+      connectionTimeoutMillis: CONNECTION_TIMEOUT_MS,
+      idleTimeoutMillis: IDLE_TIMEOUT_MS,
+      statement_timeout: STATEMENT_TIMEOUT_MS,
+      query_timeout: QUERY_TIMEOUT_MS,
+      idle_in_transaction_session_timeout: IDLE_IN_TRANSACTION_TIMEOUT_MS,
+    })
+  : null;
+
 const testRagConnection = async () => {
   if (!ragPool) {
     return false;
@@ -801,6 +819,23 @@ const testRagConnection = async () => {
     console.log(`✅ RAG conectado a: ${res.rows[0].current_database}`);
     return true;
   } catch (err) {
+    return false;
+  }
+};
+
+const testSystemConnection = async () => {
+  if (!systemPool) {
+    console.log('ℹ️  DB_SYSTEM_URL no configurada; system usará SET LOCAL ROLE app_system');
+    return true;
+  }
+  try {
+    const client = await systemPool.connect();
+    const res = await client.query('SELECT current_user, current_database()');
+    client.release();
+    console.log(`✅ System pool conectado como ${res.rows[0].current_user} a ${res.rows[0].current_database}`);
+    return true;
+  } catch (err) {
+    console.warn('⚠️  System pool connection failed:', err.message);
     return false;
   }
 };
@@ -832,5 +867,5 @@ const getDbStatus = () => ({
  *  cualquier error de SQL en datos inventados y la API parecía funcionar. */
 const dbEnMemoria = () => dbMode === 'memoria';
 
-module.exports = { pool, testConnection, getDbStatus, ragPool, testRagConnection, dbEnMemoria, memoryFallbackAllowed };
+module.exports = { pool, testConnection, getDbStatus, ragPool, testRagConnection, systemPool, testSystemConnection, dbEnMemoria, memoryFallbackAllowed };
 
