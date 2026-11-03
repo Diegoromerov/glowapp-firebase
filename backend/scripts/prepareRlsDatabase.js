@@ -36,12 +36,18 @@ const MIGRACIONES = [
   '068_force_rls_strict_isolation.sql',
   '107_rls_politicas_sin_contexto.sql',
   '012_business_engine.sql',
+  // 029 crea scan_product_matches (requerido por 071 y 123)
+  '029_refactor_biometric_architecture_premium.sql',
   '062_optimize_business_saas_postgres.sql',
   '082_memberships.sql',
   '114_memberships_sub_rol.sql',
   '118_drop_salon_miembros.sql',
   '119_force_rls_retention_policies.sql',
   '120_force_rls_all_tenant_tables.sql',
+  // 071: designa tenant de plataforma, crea app_platform_tenant_id(),
+  // añade tenant_id a pedidos_tienda/detalles/booking_productos/scan_product_matches/inventario,
+  // siembra listas de precios. Requiere 029 (scan_product_matches).
+  '071_glowshop_niveles_a0.sql',
   // GlowShop: crea las tablas de precios que la 071 nunca pudo crear (depende de
   // scan_product_matches, inexistente) y siembra las listas base. Da el 200 a
   // GET /api/products. Va al final a propósito: después de 120, para que el
