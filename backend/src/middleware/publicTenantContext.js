@@ -85,7 +85,14 @@ module.exports = async function publicTenantContext(req, res, next) {
         res.once('finish', resolve);
         res.once('close', resolve);
         next((err) => {
-          if (err) reject(err);
+          // Express reenvía centinelas y funciones por este canal: 'route' y
+          // 'router' NO son errores, y en esta cadena llegó a propagarse el
+          // propio callback (tipo Function). Tratarlos como error producía un
+          // 500 sin mensaje ("GET /api/providers: undefined").
+          if (!err) return;
+          if (typeof err === 'function') return;
+          if (err === 'route' || err === 'router') return;
+          reject(err);
         });
       });
     });
