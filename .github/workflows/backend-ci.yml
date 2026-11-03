@@ -86,7 +86,7 @@ jobs:
         env:
           DATABASE_URL: postgres://app_rls_user:test_rls_password@localhost:5432/glowtest
           JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
-        run: npx jest --testPathPattern="src/tests/contract" --forceExit --verbose
+        run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js --forceExit --verbose
 
   verificacion-entorno:
     name: Verificacion X-App-Audience
