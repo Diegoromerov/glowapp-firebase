@@ -46,12 +46,15 @@ END $$;
 GRANT USAGE   ON SCHEMA public TO app_rls_user;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES    IN SCHEMA public TO app_rls_user;
 GRANT USAGE, SELECT                  ON ALL SEQUENCES IN SCHEMA public TO app_rls_user;
+GRANT EXECUTE                        ON ALL FUNCTIONS IN SCHEMA public TO app_rls_user;
 
--- Que las tablas futuras también queden accesibles sin repetir el GRANT.
+-- Que las tablas/funciones futuras también queden accesibles sin repetir el GRANT.
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
   GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO app_rls_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
   GRANT USAGE, SELECT ON SEQUENCES TO app_rls_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+  GRANT EXECUTE ON FUNCTIONS TO app_rls_user;
 
 -- ---------------------------------------------------------------------------
 -- 2. Rol de sistema: solo para webhooks y jobs
@@ -80,6 +83,14 @@ END $$;
 GRANT USAGE   ON SCHEMA public TO app_system;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES    IN SCHEMA public TO app_system;
 GRANT USAGE, SELECT                  ON ALL SEQUENCES IN SCHEMA public TO app_system;
+GRANT EXECUTE                        ON ALL FUNCTIONS IN SCHEMA public TO app_system;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO app_system;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+  GRANT USAGE, SELECT ON SEQUENCES TO app_system;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+  GRANT EXECUTE ON FUNCTIONS TO app_system;
 
 -- ---------------------------------------------------------------------------
 -- 1b. Membresía: app_rls_user puede ESCALAR a app_system dentro de una
