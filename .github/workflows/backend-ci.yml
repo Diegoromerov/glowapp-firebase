@@ -68,7 +68,7 @@ jobs:
       - name: Instalar pgvector en el contenedor PostGIS
         # 029_refactor_biometric_architecture_premium.sql necesita CREATE EXTENSION vector
         run: |
-          CONTAINER=$(docker ps --filter "label=ebc48f" --format "{{.Names}}" | head -1)
+          CONTAINER=$(docker ps --filter "name=postgispostgis1634" --format "{{.Names}}" | head -1)
           echo "Contenedor PostGIS: $CONTAINER"
           docker exec -u root "$CONTAINER" apt-get update -qq && \
             docker exec -u root "$CONTAINER" apt-get install -y -qq postgresql-16-pgvector >/dev/null && \
