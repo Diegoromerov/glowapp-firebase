@@ -259,11 +259,12 @@ app.get('/metrics', metricsHandler);
 app.use('/api', validateAppAudience({ required: true }));
 
 // 🔹 PUBLIC TENANT CONTEXT (Fase 6 fix)
-// Fija el tenant de plataforma (es_plataforma=true) en rutas públicas
-// que leen catálogo (providers, products, services) ANTES de autenticar.
+// Fija el tenant de plataforma (es_plataforma=true) en las rutas públicas que
+// leen catálogo, ANTES de autenticar. Se monta SOLO sobre esas rutas: abrir una
+// transacción por petición en login, webhooks o sondas agotaría el pool.
 // Las rutas autenticadas fijan su propio contexto en tenantContext.js.
 const publicTenantContext = require('./src/middleware/publicTenantContext');
-app.use('/api', publicTenantContext);
+app.use(['/api/providers', '/api/products', '/api/services'], publicTenantContext);
 
 const { degradedLockMiddleware, clasificarSalud, asegurarEstadoComprobado } = require('./src/middleware/degradedLock');
 app.use('/api', degradedLockMiddleware);
