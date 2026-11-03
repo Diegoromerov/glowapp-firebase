@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "skincare-telemetrico-001",
+    "title": "Skincare Telemetrico: La monitorización de la barrera en tiempo real",
+    "content": "La tendencia del 'Skincare Telemetrico' utiliza sensores portátiles (wearables) que miden la pérdida de agua transepidérmica (TEWL) y el pH cutáneo en tiempo real. Si bien promete una personalización sin precedentes, la precisión de estos dispositivos caseros frente a los corneómetros clínicos (como el Tewameter de Courage + Khazaka) es aún cuestionable. La variabilidad ambiental (humedad, temperatura) en Bogotá puede sesgar las lecturas, llevando a usuarios a aplicar activos irritantes basándose en datos erróneos. La AAD advierte que la sobreinterpretación de estos datos puede conducir a una 'obsesión por la métrica' que ignora la respuesta clínica evidente de la piel, como el eritema o la descamación. Es fundamental entender que el pH de la piel es dinámico y fluctúa según el microbioma y la sudoración, por lo que un valor puntual no debe dictar cambios drásticos en la rutina diaria sin supervisión profesional.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00824-3/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "rosacea",
+        "dermatitis_atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_digital"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:25:30.258Z"
+  },
+  {
+    "chunk_id": "cosmetica-de-luz-pulsada-002",
+    "title": "Fotobiomodulación DIY: Los riesgos de la intensidad de pulso variable",
+    "content": "La popularización de dispositivos de luz roja (RLT) de bajo costo para uso doméstico ha introducido el concepto de 'fotobiomodulación de pulso variable'. A diferencia de los equipos clínicos que utilizan longitudes de onda estables y controladas (630-660 nm para rejuvenecimiento), muchos dispositivos virales carecen de una densidad de potencia (irradiancia) constante. La evidencia científica sugiere que la eficacia de la fotobiomodulación depende de una ventana terapéutica precisa; una irradiancia demasiado baja no genera respuesta celular (mitocondrial), mientras que una exposición excesiva puede inducir estrés oxidativo en lugar de reparación. Además, la proximidad del dispositivo a los tejidos oculares en dispositivos tipo 'mascarilla' sin certificación de seguridad fotobiológica (IEC 62471) plantea riesgos de daño retiniano a largo plazo. Es imperativo que el usuario verifique la certificación del dispositivo antes de su uso prolongado.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central - NIH",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8906266/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "melasma",
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fototerapia"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:25:30.258Z"
+  },
+  {
+    "chunk_id": "crioterapia-ocular-005",
+    "title": "El peligro de los 'Ice Globes' y el daño vascular periorbital",
+    "content": "Los 'Ice Globes' se han viralizado bajo la promesa de desinflamar las bolsas oculares mediante el frío. Sin embargo, la piel periorbital es la más fina del rostro (aproximadamente 0.5 mm) y extremadamente sensible a los cambios térmicos bruscos. La aplicación directa de temperaturas cercanas a los 0°C puede causar vasoconstricción excesiva, seguida de una vasodilatación reactiva que puede empeorar el eritema o incluso desencadenar una dermatitis por frío. En pacientes con predisposición a telangiectasias o rosácea, el uso recurrente de estas herramientas puede fragilizar los capilares, resultando en daño vascular permanente. La recomendación clínica es evitar el frío extremo, optando por compresas frescas o masajes manuales suaves que no comprometan la integridad de la microcirculación local. El efecto de 'desinflamación' suele ser temporal y puramente estético, sin abordar la causa subyacente del edema.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.15234",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "rosacea",
+        "cuperosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "ojos_y_labios"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:25:30.258Z"
+  }
+]

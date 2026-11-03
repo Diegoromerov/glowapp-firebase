@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "cuidado_corporal_y_spa-1786392570076-1-54de1689-impacto-de-la-modulacion-de-la-impedancia-bioelectrica-en-la",
+    "title": "Impacto de la modulación de la impedancia bioeléctrica en la permeabilidad de activos mediante parches de hidrogel",
+    "content": "La optimización de la entrega transdérmica en tratamientos corporales ha evolucionado hacia el uso de parches de hidrogel con conductividad controlada. Estos dispositivos permiten ajustar la impedancia bioeléctrica del estrato córneo, facilitando el transporte de activos hidrofílicos de alto peso molecular. Al reducir la resistencia eléctrica de la piel mediante una corriente galvánica de baja intensidad, se crea un entorno propicio para la electro-osmosis, permitiendo que moléculas como el ácido hialurónico de cadena larga penetren en las capas profundas de la dermis. Este mecanismo no solo mejora la hidratación profunda, sino que también minimiza la irritación superficial al evitar el uso de agentes tensoactivos agresivos. La integración de sensores de impedancia en tiempo real permite ajustar la dosis de entrega basándose en la hidratación basal del paciente, garantizando una eficacia terapéutica personalizada en protocolos de spa de alta precisión.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "electrolitos"
+      ],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "terapia_transdermica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:09:30.076Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-1786392570076-2-fc0771cc-dinamica-de-la-mecanotransduccion-en-adipocitos-mediante-est",
+    "title": "Dinámica de la mecanotransducción en adipocitos mediante estimulación por ultrasonido focalizado de baja frecuencia",
+    "content": "La mecanotransducción representa un pilar fundamental en la remodelación corporal no invasiva. El uso de ultrasonido focalizado de baja frecuencia induce una respuesta mecánica en los adipocitos, activando vías de señalización que promueven la lipólisis a través de la activación de la lipasa sensible a hormonas. A diferencia de las técnicas térmicas, este enfoque se basa en la oscilación mecánica de la matriz extracelular, lo que reduce el riesgo de daño térmico en los tejidos adyacentes. La estimulación mecánica constante altera la arquitectura del citoesqueleto del adipocito, facilitando la liberación de ácidos grasos libres hacia el sistema linfático. Este proceso debe ser complementado con técnicas de drenaje linfático para asegurar la correcta eliminación de los subproductos metabólicos. La dosificación precisa de la energía acústica es crucial para evitar la respuesta inflamatoria excesiva, logrando un equilibrio entre la remodelación tisular y la integridad de la barrera cutánea.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/dermatology-bulletin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "embarazo",
+        "procesos inflamatorios agudos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelado_corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:09:30.076Z"
+  }
+]

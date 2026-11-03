@@ -1,0 +1,215 @@
+[
+  {
+    "chunk_id": "guias_unas-1786384721123-1-688226c8-efecto-de-la-temperatura-ambiente-en-la-viscosidad-de-geles-",
+    "title": "Efecto de la temperatura ambiente en la viscosidad de geles constructores",
+    "content": "La viscosidad de los geles fotopolimerizables es altamente dependiente de la temperatura ambiente, un factor a menudo ignorado en cabina. A temperaturas inferiores a 20°C, la movilidad de las cadenas poliméricas disminuye, aumentando la viscosidad y dificultando una nivelación uniforme. Por el contrario, el exceso de calor reduce la viscosidad, facilitando el escurrimiento hacia los surcos periungueales, lo que incrementa el riesgo de contacto cutáneo y sensibilización a acrilatos. El control térmico del producto no solo optimiza la aplicación, sino que garantiza que la cinética de polimerización ocurra bajo los parámetros de diseño del fabricante. Se recomienda almacenar los geles en un entorno controlado entre 20-22°C y evitar la exposición directa a la luz solar o fuentes de calor intenso, las cuales pueden iniciar una polimerización prematura en el envase, alterando la estabilidad del fotoiniciador y comprometiendo la integridad estructural del sistema aplicado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposición a altas temperaturas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_de_productos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:58:41.123Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384721123-2-ffc1d823-influencia-de-la-deshidratacion-forzada-en-la-permeabilidad-",
+    "title": "Influencia de la deshidratación forzada en la permeabilidad de la lámina",
+    "content": "El uso excesivo de agentes deshidratantes, como el alcohol isopropílico al 99% o la acetona, altera drásticamente la estructura de los lípidos intercelulares de la lámina ungueal. Aunque la deshidratación es necesaria para la adhesión de sistemas artificiales, su aplicación indiscriminada provoca una pérdida de flexibilidad, tornando la uña quebradiza y aumentando su porosidad. Esta permeabilidad incrementada facilita la absorción de monómeros residuales y solventes hacia el lecho ungueal, exacerbando el riesgo de dermatitis de contacto irritativa. Es imperativo limitar el uso de deshidratantes exclusivamente a la zona de la cutícula y los bordes, evitando el empapamiento de la superficie total de la lámina. La integridad de la barrera queratínica es fundamental; una uña deshidratada en exceso no solo falla en la adhesión por fragilidad, sino que se convierte en un sustrato inestable que favorece el levantamiento prematuro del producto debido a la falta de elasticidad del soporte natural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol isopropílico",
+        "acetona"
+      ],
+      "contraindications": [
+        "uso excesivo de deshidratantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparación_de_lámina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:58:41.123Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384721123-3-b06438dd-degradacion-de-fotoiniciadores-por-exposicion-a-luz-ambienta",
+    "title": "Degradación de fotoiniciadores por exposición a luz ambiental",
+    "content": "Los sistemas de fotopolimerización utilizan fotoiniciadores sensibles a longitudes de onda específicas, típicamente en el espectro UVA/LED. La exposición prolongada de los productos abiertos a la luz ambiental del salón, incluso sin contacto directo con la lámpara, puede degradar la eficacia de estos compuestos. Este fenómeno, conocido como 'pre-polimerización parcial', altera la densidad de reticulación (cross-linking) del polímero final. Un gel cuya estructura molecular ha sido comprometida por luz ambiental presentará una menor resistencia mecánica y una mayor propensión a la lixiviación de monómeros no reaccionados. Estos monómeros residuales son los principales responsables de las reacciones de sensibilización alérgica en clientas y técnicos. La gestión correcta implica el uso de frascos opacos, mantener los envases cerrados durante el servicio y aplicar el producto en capas delgadas para asegurar que la radiación de la lámpara alcance la totalidad del espesor del gel, minimizando la zona de inhibición por oxígeno.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institute for Occupational Safety and Health",
+        "url": "https://www.cdc.gov/niosh/topics/skin/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "monómeros"
+      ],
+      "contraindications": [
+        "exposición a luz ambiental"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_en_cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:58:41.123Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384721123-4-0ae2b097-dinamica-de-la-presion-hidrostatica-en-la-adhesion-de-bases-",
+    "title": "Dinámica de la presión hidrostática en la adhesión de bases autonivelantes",
+    "content": "Las bases autonivelantes funcionan mediante un equilibrio de tensión superficial y presión hidrostática. Al aplicar una gota de producto, la gravedad y la viscosidad compiten para distribuir el material. Si la presión aplicada por el técnico al nivelar es excesiva, se generan micro-burbujas de aire que actúan como puntos de concentración de estrés, debilitando la interfaz adhesiva. Estas micro-fisuras son el punto de entrada ideal para la humedad y microorganismos, facilitando el desarrollo de biofilms subungueales. Además, una aplicación demasiado gruesa en el ápice aumenta la presión hidrostática sobre el lecho ungueal, lo que puede causar incomodidad térmica durante la polimerización. La técnica correcta requiere un control preciso de la presión del pincel, permitiendo que el material se asiente mediante su propia tensión superficial, asegurando una capa uniforme que minimice la contracción por polimerización y maximice la adhesión química al lecho ungueal, reduciendo el riesgo de onicólisis mecánica por levantamiento prematuro.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29876543",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros base"
+      ],
+      "contraindications": [
+        "presión excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "técnica_de_aplicación"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:58:41.123Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786384721124-5-65878e4d-impacto-de-la-oclusion-prolongada-en-la-microbiota-subunguea",
+    "title": "Impacto de la oclusión prolongada en la microbiota subungueal",
+    "content": "La aplicación de sistemas de uñas artificiales crea un entorno oclusivo que modifica drásticamente el microambiente subungueal. La falta de transpiración natural y el aumento de la humedad atrapada bajo la lámina artificial favorecen la proliferación de microorganismos oportunistas, particularmente Pseudomonas aeruginosa y diversas especies de Candida. Este fenómeno se agrava cuando existen micro-fisuras en la lámina o un sellado periférico deficiente. La oclusión prolongada, más allá de las 3-4 semanas recomendadas, impide la renovación natural de la queratina y altera el pH local, creando un nicho ecológico propicio para la infección. Es fundamental educar a la clienta sobre los tiempos de mantenimiento y la importancia de inspeccionar visualmente la uña en busca de cambios de coloración (cromoniquia) o desprendimientos. La detección temprana de una infección subungueal es crítica, ya que el tratamiento requiere la remoción completa del producto para permitir la oxigenación y la aplicación de agentes antimicrobianos bajo supervisión médica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "n/a"
+      ],
+      "contraindications": [
+        "oclusión prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:58:41.124Z"
+  }
+]

@@ -1,0 +1,248 @@
+[
+  {
+    "chunk_id": "bio-fotoluminiscencia-capilar-001",
+    "title": "La influencia de la fluorescencia capilar en la percepción del color",
+    "content": "La percepción del color no depende exclusivamente de la absorción de pigmentos, sino de la respuesta de la queratina y los aminoácidos ante la radiación ultravioleta. Este fenómeno, conocido como fluorescencia capilar, provoca que el cabello emita luz propia bajo ciertas longitudes de onda. En cabellos decolorados o con daños estructurales, la pérdida de triptófano y otros aminoácidos aromáticos altera la emisión fluorescente, lo que hace que los tonos rubios 'fríos' se perciban con reflejos amarillentos inesperados bajo luz solar directa o artificial. Clínicamente, esto explica por qué un tinte puede parecer perfecto en el salón (bajo luz incandescente) y distorsionado en exteriores. La literatura dermatológica, específicamente estudios en el Journal of Cosmetic Dermatology, sugieren que la degradación de la estructura proteica tras procesos de oxidación severa modifica la reflectancia espectral. Para el profesional, es vital comprender que no se trata solo de neutralizar el pigmento residual, sino de considerar la estabilidad de la matriz proteica que actúa como sustrato óptico, evitando así frustraciones en el resultado final tras la exposición a diferentes ambientes lumínicos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "triptofano"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:20:43.181Z"
+  },
+  {
+    "chunk_id": "metabolismo-peroxido-002",
+    "title": "Cinética de descomposición del peróxido de hidrógeno: El rol de la catalasa residual",
+    "content": "La aplicación de peróxido de hidrógeno en el cuero cabelludo no ocurre en un entorno inerte. La piel humana posee una carga enzimática significativa, principalmente catalasa y peroxidasa, que catalizan la descomposición del H2O2 en agua y oxígeno. Si el cuero cabelludo presenta procesos inflamatorios previos, la actividad de estas enzimas puede alterarse, modificando la tasa de liberación de oxígeno libre. Esta liberación acelerada o retardada afecta directamente la oxidación de los precursores de color y puede inducir un estrés oxidativo localizado innecesario. Estudios en PubMed indican que una descomposición prematura del peróxido debido a la catalasa cutánea reduce la eficacia del aclarado y aumenta el riesgo de irritación química. Es fundamental realizar una limpieza adecuada del cuero cabelludo antes de la coloración para minimizar la interferencia de componentes biológicos externos. Comprender esta cinética permite ajustar los tiempos de pose y la concentración de los reveladores, garantizando una uniformidad cromática superior y protegiendo la salud de la barrera cutánea frente a reacciones exotérmicas no deseadas o subproductos de la descomposición incontrolada.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24440024/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido de hidrogeno",
+        "catalasa"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:20:43.181Z"
+  },
+  {
+    "chunk_id": "estabilidad-ph-003",
+    "title": "Efectos de la alcalinidad residual en la integridad de la unión corteza-cutícula",
+    "content": "La alcalinidad residual post-coloración es uno de los factores más subestimados en la degradación prematura del color y la fragilidad capilar. Tras el uso de tintes permanentes, el pH del cabello tiende a permanecer por encima de 7.0, lo que mantiene las escamas de la cutícula elevadas y facilita la fuga de pigmentos sintéticos y proteínas estructurales. La investigación clínica sugiere que el retorno al punto isoeléctrico del cabello (pH 4.5 - 5.5) debe ser acelerado mediante agentes acidificantes específicos inmediatamente después del enjuague. Si este proceso no se gestiona correctamente, la capa F del cabello, rica en ácido 18-metileicosanoico, se vuelve vulnerable, perdiendo su propiedad hidrofóbica natural. Esto no solo afecta la retención del color, sino que también aumenta la porosidad del cabello, haciéndolo más susceptible a daños ambientales y mecánicos. Un protocolo post-coloración basado en la estabilización del pH no es solo cosmético, sino una medida preventiva para mantener la integridad biomecánica de la fibra. La falta de este paso compromete la durabilidad del servicio y la calidad del cabello a mediano plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4387693/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acidificantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:20:43.181Z"
+  },
+  {
+    "chunk_id": "quelacion-selectiva-004",
+    "title": "Interferencia de metales divalentes en la polimerización de colorantes",
+    "content": "La presencia de metales divalentes como el cobre y el hierro en el agua de lavado y en la propia estructura del cabello actúa como un catalizador incontrolado durante el proceso de oxidación. Estos metales reaccionan con el peróxido de hidrógeno, generando radicales libres hidroxilo en exceso, lo cual degrada la melanina de forma desigual y altera la polimerización de los precursores de color. Este fenómeno es particularmente crítico en zonas con alta dureza del agua. La quelación previa al servicio es una necesidad técnica, no una opción. Agentes como el EDTA o el fitato de sodio son fundamentales para secuestrar estos metales antes de que inicien reacciones redox indeseadas. Si no se eliminan, el resultado cromático será inconsistente: colores más oscuros en las zonas de mayor acumulación metálica y una degradación acelerada del tono. La literatura de la American Academy of Dermatology subraya la importancia de la calidad del agua en la dermatitis irritativa, pero su impacto en la colorimetría es igualmente relevante para evitar resultados 'manchados' que erróneamente se atribuyen a fallos en la aplicación del tinte.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "fitato de sodio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:20:43.181Z"
+  },
+  {
+    "chunk_id": "permeabilidad-cuticular-005",
+    "title": "Modulación de la permeabilidad cuticular mediante polímeros catiónicos",
+    "content": "La aplicación de tintes capilares implica necesariamente la apertura de la cutícula, un proceso que compromete la barrera natural del cabello. La industria ha evolucionado incorporando polímeros catiónicos en las formulaciones de los tintes modernos para mitigar este daño. Estos polímeros poseen una carga positiva que les permite adherirse selectivamente a las zonas dañadas (negativamente cargadas) de la fibra capilar. Al hacerlo, crean una película protectora que regula la velocidad de absorción del tinte, evitando la sobresaturación en áreas de alta porosidad. Este mecanismo de 'igualación' es vital para lograr un color uniforme desde la raíz hasta las puntas. Sin embargo, un exceso de polímeros puede crear una barrera física que dificulte la penetración profunda de las moléculas de color. El equilibrio técnico reside en la concentración adecuada de estos ingredientes para permitir la difusión del pigmento sin sacrificar la protección de la cutícula. Los estudios en cosmetología aplicada muestran que el uso inteligente de estos polímeros reduce significativamente la rotura capilar post-proceso, mejorando la textura y el brillo final del cabello tratado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:20:43.181Z"
+  },
+  {
+    "chunk_id": "estres-oxidativo-bulbo-006",
+    "title": "Impacto sistémico del estrés oxidativo inducido en la matriz capilar",
+    "content": "Aunque el tinte se aplica sobre la fibra queratinizada, existe una preocupación creciente sobre el estrés oxidativo inducido en las células del bulbo capilar. Las moléculas de bajo peso molecular presentes en algunos tintes pueden penetrar el cuero cabelludo y alcanzar la proximidad de la papila dérmica. Estudios recientes sugieren que la acumulación de especies reactivas de oxígeno (ROS) puede alterar el microambiente del folículo, afectando potencialmente el ciclo de crecimiento capilar y la reserva de melanocitos. Si bien no hay evidencia concluyente de que el tinte cause alopecia directa, el estrés oxidativo crónico en la matriz es un factor de riesgo para la miniaturización folicular. La aplicación clínica debe priorizar la protección del cuero cabelludo mediante el uso de barreras protectoras y evitar el contacto directo con la piel. La curaduría de productos debe enfocarse en fórmulas que contengan antioxidantes incorporados para neutralizar los radicales libres generados durante la reacción de oxidación, protegiendo así la salud folicular a largo plazo. Este enfoque preventivo es esencial en pacientes que requieren coloraciones frecuentes y buscan mantener la densidad de su cabellera.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "alopecia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:20:43.181Z"
+  }
+]

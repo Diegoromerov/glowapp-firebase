@@ -1,0 +1,85 @@
+[
+  {
+    "chunk_id": "skincare-hifu-casero-002",
+    "title": "HIFU casero: El peligro de la energía ultrasónica sin supervisión",
+    "content": "La comercialización de dispositivos de ultrasonido focalizado de alta intensidad (HIFU) para uso doméstico ha crecido como una alternativa al lifting quirúrgico. Sin embargo, el HIFU es un procedimiento médico que requiere un control preciso de la profundidad de penetración para evitar daños térmicos en el tejido subcutáneo, los nervios faciales y el periostio. Los dispositivos domésticos, al carecer de la calibración profesional y la capacidad de visualización ecográfica en tiempo real, aumentan drásticamente el riesgo de quemaduras de segundo grado, hipopigmentación o incluso parálisis facial transitoria por compromiso nervioso. La literatura médica, incluyendo estudios publicados en el Journal of Cosmetic Dermatology, advierte que la energía ultrasónica mal dirigida puede causar desnaturalización proteica no deseada. El colágeno requiere temperaturas específicas para su remodelación; una exposición inadecuada puede inducir necrosis grasa o cicatrización fibrótica. La seguridad del paciente debe priorizarse sobre la conveniencia del 'hágalo usted mismo' en procedimientos que alteran la arquitectura tisular profunda.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32452145/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procedimientos_medicos",
+        "implantes_metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_estetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:55.994Z"
+  },
+  {
+    "chunk_id": "skincare-bioimpresion-parches-009",
+    "title": "Bioimpresión de parches personalizados: ¿El futuro de la cosmética?",
+    "content": "La bioimpresión de parches personalizados representa la vanguardia de la dermatología cosmética, permitiendo la entrega precisa de activos según las necesidades específicas de la piel del paciente, analizadas mediante escaneo digital. Esta tecnología permite controlar la tasa de liberación de los ingredientes y la profundidad de penetración, superando las limitaciones de las cremas convencionales que se aplican de forma uniforme. Desde una perspectiva clínica, la personalización es el estándar de oro para maximizar la eficacia y minimizar los efectos adversos. Sin embargo, el desafío actual es la regulación de estos dispositivos y la estabilidad de las fórmulas personalizadas en tiempo real. La seguridad requiere que los componentes sean compatibles y que la base del parche no genere oclusividad excesiva que pueda causar foliculitis. Aunque el potencial es enorme, especialmente para el tratamiento de hiperpigmentación y acné, los pacientes deben ser cautelosos con servicios que no cuentan con validación dermatológica o que utilizan activos sin respaldo científico suficiente.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "activos_personalizados"
+      ],
+      "contraindications": [
+        "alergias_contactantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "innovacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:55.994Z"
+  }
+]

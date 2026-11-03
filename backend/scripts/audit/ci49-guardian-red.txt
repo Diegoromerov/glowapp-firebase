@@ -1,0 +1,4 @@
+❌ 1 credencial(es) en archivos TRACKEADOS (no se imprime ningún valor):
+   backend/seed.sql:70 — contraseña documentada en prosa o comentario
+
+Acción: mover el valor a una variable de entorno, rotarlo y purgar del historial (A360-2026-09-22/C-02).

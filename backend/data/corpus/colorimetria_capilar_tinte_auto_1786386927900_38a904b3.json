@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386927898-1-aab85621-control-del-potencial-redox-mediante-agentes-reductores-en-l",
+    "title": "Control del Potencial Redox mediante agentes reductores en la polimerización in situ",
+    "content": "La formación del complejo cromático dentro de la corteza capilar depende críticamente del control del potencial de óxido-reducción (Redox). Durante la aplicación de tintes de oxidación, la cinética de acoplamiento de los precursores (diaminas y acopladores) debe ser finamente regulada para evitar la formación prematura de polímeros de alto peso molecular fuera de la fibra. El uso de agentes reductores auxiliares permite estabilizar el estado de oxidación de los precursores antes de su penetración, asegurando que la reacción de polimerización ocurra únicamente dentro de la matriz queratínica. Un desequilibrio en este potencial no solo altera la profundidad del tono, sino que puede inducir la formación de radicales libres que degradan la estructura proteica. La optimización técnica implica ajustar la concentración de peróxido de hidrógeno en función de la porosidad del cabello, utilizando buffers específicos que mantengan el pH en el rango óptimo (9.0-10.5) para favorecer la difusión pasiva. El control preciso del potencial Redox es, por tanto, la variable técnica que garantiza la longevidad del color y minimiza el daño estructural derivado de la oxidación incontrolada, permitiendo resultados cromáticos más predecibles y una mayor integridad de la cutícula tras el servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxido de hidrógeno",
+        "diaminas",
+        "acopladores"
+      ],
+      "contraindications": [
+        "cabello altamente sensibilizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:35:27.898Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386927899-3-1bdf6b0b-efecto-piezoelectrico-y-su-influencia-en-la-estabilidad-del-",
+    "title": "Efecto piezoeléctrico y su influencia en la estabilidad del color durante la fricción",
+    "content": "El cabello, al ser un material biológico con propiedades piezoeléctricas intrínsecas, genera una respuesta eléctrica ante la deformación mecánica o la fricción. Durante el proceso de aplicación de tinte y el posterior peinado, la manipulación mecánica induce cargas superficiales que pueden alterar la deposición de los pigmentos. Este fenómeno es particularmente relevante en cabellos con cutículas dañadas, donde la falta de una capa F protectora permite que las cargas piezoeléctricas interfieran con la orientación de las moléculas de tinte. Investigaciones recientes sugieren que la fricción excesiva durante la coloración puede provocar una migración no deseada de los precursores hacia las zonas de mayor estrés mecánico, resultando en una coloración desigual. Para mitigar este efecto, se recomienda el uso de polímeros catiónicos de bajo peso molecular que actúen como agentes antiestáticos, neutralizando las cargas generadas por la fricción y facilitando una distribución homogénea del color. El control de la manipulación mecánica no solo mejora la estética final, sino que también protege la integridad estructural de la cutícula, evitando el levantamiento prematuro de las escamas y asegurando que el pigmento se mantenga encapsulado dentro de la corteza capilar de manera uniforme y estable.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/app.54321",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [
+        "ninguna"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:35:27.899Z"
+  }
+]

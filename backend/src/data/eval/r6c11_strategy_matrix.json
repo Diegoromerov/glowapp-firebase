@@ -1,0 +1,79 @@
+{
+  "cycle": "R6-C11",
+  "name": "STRATEGY_MATRIX",
+  "benchmark": "15 SUPPORTED queries / 58 GOLD / 13 canonical VECTOR_MISS (R6-C10)",
+  "generated_from": "r6c11_retrieval_enhancement_a.json + r6c11_retrieval_enhancement_b.json",
+  "matrix": [
+    {
+      "strategy": "NVIDIA baseline",
+      "run_a": { "mrr": 0.7222, "r5": 0.6156, "r10": 0.6545, "r20": 0.7156, "r50": 0.8011, "vector_miss": 14, "misses_resolved": 0, "regressions": 0, "nvidia_calls": 1, "ollama_calls": 0 },
+      "run_b": { "mrr": 0.7222, "r5": 0.6156, "r10": 0.6545, "r20": 0.7156, "r50": 0.8011, "vector_miss": 14, "misses_resolved": 0, "regressions": 0, "nvidia_calls": 1, "ollama_calls": 0 },
+      "reproducible": true,
+      "regression_gate": "N/A",
+      "notes": "Referencia canónica. MRR 0.7222 reproduce R6-C10 exactamente."
+    },
+    {
+      "strategy": "Query Expansion",
+      "run_a": { "mrr": 0.6446, "r5": 0.4378, "r10": 0.5989, "r20": 0.6656, "r50": 0.8311, "canonical_misses_recovered": 3, "new_misses": 0, "nvidia_calls": 2, "ollama_calls": 1 },
+      "run_b": { "mrr": 0.6788, "r5": 0.3878, "r10": 0.61, "r20": 0.7045, "r50": 0.8111, "canonical_misses_recovered": 1, "new_misses": 1, "nvidia_calls": 2, "ollama_calls": 1 },
+      "reproducible": false,
+      "regression_gate": "FAIL (MRR/R5/R10 < 95% baseline)",
+      "notes": "Recupera hasta 3/13 pero degrada MRR y R5 severamente. No determinista (llama3.2)."
+    },
+    {
+      "strategy": "Multi-query",
+      "run_a": { "mrr": 0.3999, "r5": 0.2633, "r10": 0.4022, "r20": 0.5689, "r50": 0.6822, "canonical_misses_recovered": 2, "new_misses": 4, "nvidia_calls": 4, "ollama_calls": 1 },
+      "run_b": { "mrr": 0.5317, "r5": 0.38, "r10": 0.4711, "r20": 0.6244, "r50": 0.7344, "canonical_misses_recovered": 1, "new_misses": 10, "nvidia_calls": 4, "ollama_calls": 1 },
+      "reproducible": false,
+      "regression_gate": "FAIL (MRR/R5/R10 < 95% baseline + new misses)",
+      "notes": "Peor estrategia: destruye MRR (−0.32) e introduce 4-10 nuevos misses."
+    },
+    {
+      "strategy": "HyDE",
+      "run_a": { "mrr": 0.6214, "r5": 0.3989, "r10": 0.4933, "r20": 0.7045, "r50": 0.7989, "canonical_misses_recovered": 2, "new_misses": 0, "nvidia_calls": 2, "ollama_calls": 1 },
+      "run_b": { "mrr": 0.673, "r5": 0.4044, "r10": 0.5989, "r20": 0.6778, "r50": 0.7956, "canonical_misses_recovered": 2, "new_misses": 1, "nvidia_calls": 2, "ollama_calls": 1 },
+      "reproducible": false,
+      "regression_gate": "FAIL (MRR/R5/R10 < 95% baseline)",
+      "notes": "Recupera 2/13 pero degrada R5 (−0.22) y MRR. No determinista."
+    },
+    {
+      "strategy": "Dense + Sparse",
+      "run_a": { "mrr": 0.7556, "r5": 0.6156, "r10": 0.6678, "r20": 0.7289, "r50": 0.8144, "canonical_misses_recovered": 0, "new_misses": 0, "nvidia_calls": 1, "ollama_calls": 0 },
+      "run_b": { "mrr": 0.7556, "r5": 0.6156, "r10": 0.6678, "r20": 0.7289, "r50": 0.8144, "canonical_misses_recovered": 0, "new_misses": 0, "nvidia_calls": 1, "ollama_calls": 0 },
+      "reproducible": true,
+      "regression_gate": "PASS",
+      "notes": "Única estrategia que mejora MRR (+0.033) y R10 (+0.013) sin regresión y es determinista. PERO recupera 0/13 canonical misses. Mejorador de ranking sin costo, no resuelve el problema de misses."
+    },
+    {
+      "strategy": "Candidate Fusion",
+      "run_a": { "mrr": 0.5473, "r5": 0.3878, "r10": 0.61, "r20": 0.6822, "r50": 0.79, "canonical_misses_recovered": 5, "new_misses": 0, "nvidia_calls": 7, "ollama_calls": 3 },
+      "run_b": { "mrr": 0.6889, "r5": 0.4322, "r10": 0.5656, "r20": 0.6711, "r50": 0.7756, "canonical_misses_recovered": 2, "new_misses": 0, "nvidia_calls": 7, "ollama_calls": 3 },
+      "reproducible": false,
+      "regression_gate": "FAIL (R5/R10 < 95% baseline; RUN A incluso MRR)",
+      "notes": "Máximo recovery en RUN A (5/13) pero destruye R5 (−0.23) y MRR (−0.17). No determinista. 7x llamadas NVIDIA + 3x LLM = costo 7x."
+    },
+    {
+      "strategy": "Routing",
+      "run_a": { "mrr": 0.6984, "r5": 0.5933, "r10": 0.6545, "r20": 0.7267, "r50": 0.8122, "canonical_misses_recovered": 3, "new_misses": 1, "nvidia_calls": "1-7 adaptive", "ollama_calls": "0-3 adaptive" },
+      "run_b": { "mrr": 0.7111, "r5": 0.6045, "r10": 0.6656, "r20": 0.7267, "r50": 0.8122, "canonical_misses_recovered": 1, "new_misses": 1, "nvidia_calls": "1-7 adaptive", "ollama_calls": "0-3 adaptive" },
+      "reproducible": false,
+      "regression_gate": "FAIL (new miss colorimetria-capilar-metales-003 en ambos runs)",
+      "notes": "Cerca del gate (MRR/R5/R10 ≈ baseline) pero introduce 1 nuevo miss en ambos runs y no es determinista."
+    }
+  ],
+  "conclusion": {
+    "best_by_recovery": "Candidate Fusion (5/13 = 38.5% en RUN A, pero con regresión severa)",
+    "best_by_gate": "Dense + Sparse (pasa gate, 0/13 recovery)",
+    "no_strategy_passes_all_criteria": true,
+    "reproducible_strategies": ["NVIDIA baseline", "Dense + Sparse"],
+    "llm_dependent_non_reproducible": ["Query Expansion", "Multi-query", "HyDE", "Candidate Fusion", "Routing"]
+  },
+  "production_guards": {
+    "env_guard": "PASS",
+    "read_only": true,
+    "no_railway": true,
+    "no_production_modification": true,
+    "nvidia_unchanged": true,
+    "no_reingestion": true
+  }
+}

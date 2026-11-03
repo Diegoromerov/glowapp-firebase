@@ -1,0 +1,69 @@
+{
+  "cycle": "23",
+  "experiment": "R5-C11",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR (threshold 0.45, topK 10, HNSW m=16/ef_construction=64)",
+  "runs": {
+    "A": "r5c11_dataset_v3_validation_a.json",
+    "B": "r5c11_dataset_v3_validation_b.json",
+    "reproducibility": "A ≡ B — retrieval IDs, métricas V3 y verificación física idénticos en ambas corridas"
+  },
+  "retrieval_invariance": "GARANTIZADA POR DISEÑO — un solo retrieval por query compartido entre V2 y V3; retrieved IDs idénticos por definición",
+  "physical_integrity": {
+    "total_expected_ids_v3": 33,
+    "missing_ids": [],
+    "hashes_verificados": true,
+    "verdict": "INTEGRIDAD FÍSICA OK — 33/33 IDs existen en BD local con content_hash"
+  },
+  "metrics": {
+    "v2": { "p1": 0.1111, "p3": 0.2037, "p5": 0.1222, "r5": 0.1667, "mrr": 0.2222 },
+    "v3": { "p1": 0.3889, "p3": 0.5371, "p5": 0.3667, "r5": 0.8333, "mrr": 0.6018 },
+    "delta": { "p1": 0.2778, "p3": 0.3334, "p5": 0.2445, "r5": 0.6666, "mrr": 0.3796 },
+    "note": "TODA la mejora es benchmark improvement (cambio de GT con retrieval idéntico). CERO retrieval improvement."
+  },
+  "classification_v3": {
+    "SUPPORTED_ALIGNED": 2,
+    "SUPPORTED_MISALIGNED": 10,
+    "PARTIALLY_SUPPORTED": 3,
+    "UNSUPPORTED": 3
+  },
+  "v2_v3_mapping": {
+    "RE-MAPPED": 11,
+    "REDUCED": 3,
+    "UNSUPPORTED": 3,
+    "EXPANDED": 1,
+    "UNCHANGED": 0
+  },
+  "anti_gaming_analysis": {
+    "retrieval_changed": false,
+    "improvement_source": "CAMBIO DE GROUND TRUTH (100%) — no del motor",
+    "circular_selection_bias": "⚠️ CRÍTICO: los expected V3 fueron elegidos de los top-5/10 que el retrieval ya recuperaba en R5-C7. R@5=0.8333 es el artefacto de esa selección, NO evidencia de que el motor recupere mejor.",
+    "verdict": "El V3 es estructuralmente más válido (expected defendibles, UNSUPPORTED correctos) PERO su validación numérica está contaminada por sesgo circular de construcción"
+  },
+  "unsupported_validation": {
+    "cabello_004": { "intencion": "Tratamiento caída post-parto/estrés", "evidencia_requerida": "chunks sobre alopecia post-parto, telógena por estrés", "evidencia_disponible": "solo higroscopía/pH/alcalinidad (colorimetría)", "verdict": "CORPUS GAP REAL — no es retrieval failure" },
+    "cejas_002": { "intencion": "Comparativa microblading vs microshading vs nanoblading", "evidencia_requerida": "chunk comparativo de técnicas", "evidencia_disponible": "solo chunks aislados por técnica", "verdict": "CORPUS GAP REAL" },
+    "cejas_003": { "intencion": "Forma ideal de cejas para cara redonda", "evidencia_requerida": "visajismo por forma de rostro", "evidencia_disponible": "solo espesor dérmico/microvascular", "verdict": "CORPUS GAP REAL" }
+  },
+  "oracle_evidence": {
+    "A_retrieval_correcto": 10,
+    "D_benchmark_incorrecto": 9,
+    "CORPUS_GAP": 3,
+    "MIXTA": 3,
+    "note": "De R5-C7: retrieval recupera evidencia E3 en 10/18 FULL_COVERAGE; GT desalineado en 9/18; corpus gap en 3/18"
+  },
+  "acceptance_criteria": {
+    "A_integridad": "PASS — 33/33 IDs existentes, 0 inventados",
+    "B_semantica": "REQUIERE REVISIÓN — expected defendibles pero sesgo de selección circular documentado",
+    "C_unsupported": "PASS — 3 UNSUPPORTED validados por corpus gap real (no por retrieval)",
+    "D_reproducibilidad": "PASS — A ≡ B",
+    "E_anti_gaming": "⚠️ PARCIAL — no se tocó el motor (OK) pero el GT se construyó del ranking observado (sesgo)",
+    "F_retrieval_invariant": "PASS — un solo retrieval compartido V2/V3"
+  },
+  "verdict": "V3-REVISION",
+  "recommendation": "Antes de aceptar V3 como benchmark oficial: re-validar cada expected con revisión independiente del ranking (humano o búsqueda léxica de corpus completo) para eliminar el sesgo circular. La ESTRUCTURA del V3 es correcta (clasificación A-F, primary/supporting, UNSUPPORTED validados); la VALIDACIÓN NUMÉRICA actual (R@5=0.83) no es interpretable como capacidad del motor."
+}

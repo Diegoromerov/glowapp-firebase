@@ -1,0 +1,657 @@
+{
+  "cycle": "31",
+  "experiment": "R5-C19",
+  "run": "B",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "model_a": "nvidia/nv-embedqa-e5-v5 (1024d, API NVIDIA)",
+  "model_b": "mxbai-embed-large (1024d, Ollama LOCAL) — misma dimensión que el productivo; comparación limpia del espacio semántico",
+  "methodology": "CANDIDATE POOL (top-50 A + golds por query; ~N chunks únicos). NO es evaluación completa del motor. Documentado.",
+  "config": {
+    "topK": 10,
+    "pool_k": 50,
+    "motor": "PRODUCTIVO sin modificar"
+  },
+  "baseline_r5c": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "NO MODIFICADO"
+  },
+  "cost": {
+    "pool_size": 489,
+    "embeddings_b_generated": 489,
+    "provider": "Ollama LOCAL (sin coste API)"
+  },
+  "metrics": {
+    "A": {
+      "p1": 0.4667,
+      "p3": 0.6667,
+      "p5": 0.4667,
+      "r5": 0.6267,
+      "mrr": 0.7222
+    },
+    "B": {
+      "p1": 0.4,
+      "p3": 0.2222,
+      "p5": 0.1733,
+      "r5": 0.2356,
+      "mrr": 0.4856
+    },
+    "delta": {
+      "r5": -0.3911,
+      "mrr": -0.2366
+    }
+  },
+  "groups": {
+    "misses": {
+      "A": {
+        "p1": 0.6667,
+        "p3": 0.6667,
+        "p5": 0.4667,
+        "r5": 0.4111,
+        "mrr": 0.8333
+      },
+      "B": {
+        "p1": 0.3333,
+        "p3": 0.1111,
+        "p5": 0.1333,
+        "r5": 0.1222,
+        "mrr": 0.4
+      }
+    },
+    "rest": {
+      "A": {
+        "p1": 0.4167,
+        "p3": 0.6667,
+        "p5": 0.4667,
+        "r5": 0.6806,
+        "mrr": 0.6944
+      },
+      "B": {
+        "p1": 0.4167,
+        "p3": 0.25,
+        "p5": 0.1833,
+        "r5": 0.2639,
+        "mrr": 0.5069
+      }
+    }
+  },
+  "discrimination": {
+    "improved": 5,
+    "worse": 9,
+    "same": 1,
+    "total": 15
+  },
+  "per_query": [
+    {
+      "query_id": "skincare_003",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.75,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.5807,
+        "margin": 0.0418,
+        "top1": "poros-clima-bogota-009"
+      },
+      "B": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.5,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.8449,
+        "margin": 0.0583,
+        "top1": "poros-humedad-bogota-008"
+      },
+      "delta": {
+        "r5": -0.25,
+        "mrr": 0,
+        "gold_score": 0.2642,
+        "margin": 0.0165
+      },
+      "discrimination": "IMPROVED_DISCRIMINATION"
+    },
+    {
+      "query_id": "skincare_005",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.5574,
+        "margin": -0.0056,
+        "top1": "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad"
+      },
+      "B": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.3333,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.8469,
+        "margin": 0.0246,
+        "top1": "trend-sunscreen-mixing-004"
+      },
+      "delta": {
+        "r5": -0.3334,
+        "mrr": 0.5,
+        "gold_score": 0.2895,
+        "margin": 0.0302
+      },
+      "discrimination": "IMPROVED_DISCRIMINATION"
+    },
+    {
+      "query_id": "skincare_006",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.75,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.5758,
+        "margin": -0.018,
+        "top1": "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a"
+      },
+      "B": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.25,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.818,
+        "margin": 0.0238,
+        "top1": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec"
+      },
+      "delta": {
+        "r5": -0.5,
+        "mrr": 0.5,
+        "gold_score": 0.2422,
+        "margin": 0.0418
+      },
+      "discrimination": "IMPROVED_DISCRIMINATION"
+    },
+    {
+      "query_id": "skincare_007",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.4247,
+        "margin": -0.0027,
+        "top1": "skincare-rutinas-por-tipo-piel-002"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "gold_rank": 6,
+        "gold_score": 0.6567,
+        "margin": -0.0211,
+        "top1": "skincare-rutinas-ritmos-circadianos-005"
+      },
+      "delta": {
+        "r5": -0.6667,
+        "mrr": -0.5,
+        "gold_score": 0.232,
+        "margin": -0.0184
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "skincare_008",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 1,
+          "p5": 0.6,
+          "r5": 0.75,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.6373,
+        "margin": 0.0191,
+        "top1": "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.4,
+          "r5": 0.5,
+          "mrr": 0.3333
+        },
+        "gold_rank": 3,
+        "gold_score": 0.8392,
+        "margin": -0.0077,
+        "top1": "cuidado_corporal_y_spa-inflamacion-007"
+      },
+      "delta": {
+        "r5": -0.25,
+        "mrr": -0.6667,
+        "gold_score": 0.2019,
+        "margin": -0.0268
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "skincare_009",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.5561,
+        "margin": -0.0074,
+        "top1": "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad"
+      },
+      "B": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.3333,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.8081,
+        "margin": 0.0121,
+        "top1": "niacinamida-hidrolisis-ph-002"
+      },
+      "delta": {
+        "r5": -0.3334,
+        "mrr": 0.5,
+        "gold_score": 0.252,
+        "margin": 0.0195
+      },
+      "discrimination": "IMPROVED_DISCRIMINATION"
+    },
+    {
+      "query_id": "skincare_010",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.5729,
+        "margin": 0.0476,
+        "top1": "skincare-microbioma-limpiadores-004"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "gold_rank": 25,
+        "gold_score": 0.6044,
+        "margin": -0.1435,
+        "top1": "poros-doble-limpieza-004"
+      },
+      "delta": {
+        "r5": -0.6667,
+        "mrr": -1,
+        "gold_score": 0.0315,
+        "margin": -0.1911
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cabello_002",
+      "support_status": "SUPPORTED",
+      "was_miss": true,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.4,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.5552,
+        "margin": 0.0145,
+        "top1": "colorimetria-capilar-ph-pos-tinte-009"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0.2,
+          "r5": 0.2,
+          "mrr": 0.2
+        },
+        "gold_rank": 5,
+        "gold_score": 0.7539,
+        "margin": -0.0219,
+        "top1": "colorimetria-capilar-compatibilidad-quimica-004"
+      },
+      "delta": {
+        "r5": -0.2,
+        "mrr": -0.8,
+        "gold_score": 0.1987,
+        "margin": -0.0364
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cabello_006",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.4769,
+        "margin": 0.027,
+        "top1": "microbiota-scalp-008"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0.2,
+          "r5": 0.3333,
+          "mrr": 0.25
+        },
+        "gold_rank": 4,
+        "gold_score": 0.6303,
+        "margin": -0.0362,
+        "top1": "colorimetria-capilar-agua-008"
+      },
+      "delta": {
+        "r5": -0.3334,
+        "mrr": -0.75,
+        "gold_score": 0.1534,
+        "margin": -0.0632
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cabello_008",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.75,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.5325,
+        "margin": 0.0262,
+        "top1": "hidratacion-oclusiva-corporal-008"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.25,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.6679,
+        "margin": -0.0033,
+        "top1": "tendencia-limpieza-agua-destilada-006"
+      },
+      "delta": {
+        "r5": -0.5,
+        "mrr": -0.5,
+        "gold_score": 0.1354,
+        "margin": -0.0295
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cejas_001",
+      "support_status": "PARTIALLY_SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.5542,
+        "margin": -0.0012,
+        "top1": "visajismo-cejas-microblading-neuro-ergonomia-005"
+      },
+      "B": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.8091,
+        "margin": 0.019,
+        "top1": "visajismo-cejas-microblading-piel-grasa-005"
+      },
+      "delta": {
+        "r5": 0,
+        "mrr": 0.5,
+        "gold_score": 0.2549,
+        "margin": 0.0202
+      },
+      "discrimination": "IMPROVED_DISCRIMINATION"
+    },
+    {
+      "query_id": "cejas_004",
+      "support_status": "SUPPORTED",
+      "was_miss": true,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.6,
+          "r5": 0.5,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.5238,
+        "margin": -0.0026,
+        "top1": "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "gold_rank": 8,
+        "gold_score": 0.7962,
+        "margin": -0.026,
+        "top1": "visajismo-cejas-microblading-metamerismo-iluminacion-002"
+      },
+      "delta": {
+        "r5": -0.5,
+        "mrr": -0.5,
+        "gold_score": 0.2724,
+        "margin": -0.0234
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cejas_005",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.5,
+          "mrr": 0.5
+        },
+        "gold_rank": 2,
+        "gold_score": 0.5884,
+        "margin": -0.0043,
+        "top1": "visajismo-microblading-psicodermatologia-009"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "gold_rank": 6,
+        "gold_score": 0.7938,
+        "margin": -0.0438,
+        "top1": "visajismo-cejas-microblading-piel-grasa-005"
+      },
+      "delta": {
+        "r5": -0.5,
+        "mrr": -0.5,
+        "gold_score": 0.2054,
+        "margin": -0.0395
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cejas_007",
+      "support_status": "SUPPORTED",
+      "was_miss": false,
+      "A": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0.3333,
+          "p5": 0.4,
+          "r5": 0.6667,
+          "mrr": 0.3333
+        },
+        "gold_rank": 3,
+        "gold_score": 0.5895,
+        "margin": -0.0027,
+        "top1": "microblading-psicodermatologia-expectativas-009"
+      },
+      "B": {
+        "metrics": {
+          "p1": 0,
+          "p3": 0,
+          "p5": 0,
+          "r5": 0,
+          "mrr": 0
+        },
+        "gold_rank": 7,
+        "gold_score": 0.8067,
+        "margin": -0.0206,
+        "top1": "microblading-psicodermatologia-expectativas-009"
+      },
+      "delta": {
+        "r5": -0.6667,
+        "mrr": -0.3333,
+        "gold_score": 0.2172,
+        "margin": -0.0179
+      },
+      "discrimination": "WORSE_DISCRIMINATION"
+    },
+    {
+      "query_id": "cejas_008",
+      "support_status": "SUPPORTED",
+      "was_miss": true,
+      "A": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.6667,
+          "p5": 0.4,
+          "r5": 0.3333,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.5916,
+        "margin": 0.0076,
+        "top1": "visajismo-cejas-microblading-piel-grasa-005"
+      },
+      "B": {
+        "metrics": {
+          "p1": 1,
+          "p3": 0.3333,
+          "p5": 0.2,
+          "r5": 0.1667,
+          "mrr": 1
+        },
+        "gold_rank": 1,
+        "gold_score": 0.8311,
+        "margin": 0.0091,
+        "top1": "visajismo-cejas-microblading-piel-grasa-005"
+      },
+      "delta": {
+        "r5": -0.1666,
+        "mrr": 0,
+        "gold_score": 0.2395,
+        "margin": 0.0015
+      },
+      "discrimination": "SAME"
+    }
+  ]
+}

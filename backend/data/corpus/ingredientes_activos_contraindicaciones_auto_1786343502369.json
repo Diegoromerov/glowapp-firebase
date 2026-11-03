@@ -1,0 +1,218 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-thioglycolic-acid-001",
+    "title": "Ácido Tioglicólico en cosmética: Riesgos de sensibilización y dermatitis",
+    "content": "El ácido tioglicólico y sus sales son ampliamente utilizados en productos de alisado capilar y depilatorios. Desde una perspectiva dermatológica, su mecanismo de acción implica la ruptura de los enlaces disulfuro de la queratina, lo cual es eficaz pero altamente corrosivo para la barrera cutánea. La evidencia clínica, documentada en estudios de dermatitis de contacto, señala que su uso en áreas sensibles o bajo condiciones de oclusión puede provocar quemaduras químicas, eritema severo y dermatitis alérgica. Es imperativo que el usuario comprenda que, aunque su pH está ajustado, la capacidad del activo para penetrar el estrato córneo es alta, aumentando el riesgo de sensibilización cruzada. Se desaconseja su uso en pieles con compromiso de barrera, pacientes con eccema previo o en zonas de piel fina como el rostro. La normativa de la UE y otras agencias reguladoras limitan estrictamente las concentraciones permitidas en productos 'leave-on' vs 'rinse-off', siendo el enjuague inmediato el factor crítico para minimizar la toxicidad sistémica y local.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31808945/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido tioglicólico"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "piel irritada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:24.379Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-metilisotiazolinona-003",
+    "title": "Metilisotiazolinona (MIT): El alérgeno de contacto en aumento",
+    "content": "La metilisotiazolinona (MIT) es un biocida altamente eficaz que ha ganado notoriedad en la literatura dermatológica debido a una epidemia de dermatitis de contacto alérgica observada en la última década. A pesar de su eficacia técnica, su capacidad sensibilizante es notablemente elevada, incluso en concentraciones bajas. La normativa cosmética ha restringido drásticamente su uso en productos que permanecen en la piel (leave-on), limitándolo casi exclusivamente a productos de enjuague (rinse-off) como champús o limpiadores, donde el tiempo de contacto es breve. No obstante, en pacientes con barrera cutánea alterada, incluso el uso de productos de enjuague puede ser problemático si el aclarado no es exhaustivo. La sensibilización a la MIT suele ser persistente y puede cruzarse con otros isotiazolinonas como la metilcloroisotiazolinona. La recomendación clínica es evitar estrictamente cualquier producto que contenga estos conservantes si el usuario presenta prurito inexplicable, eritema facial o dermatitis periorbital recurrente, buscando siempre formulaciones etiquetadas como 'fragrance-free' y 'preservative-safe' para pieles hipersensibles.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal (American Contact Dermatitis Society)",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilisotiazolinona"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "eccema facial"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:24.379Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-aceites-esenciales-fototoxicos-004",
+    "title": "Aceites esenciales y el riesgo de fototoxicidad severa",
+    "content": "El auge de la cosmética natural ha reintroducido aceites esenciales que, si bien son populares, presentan riesgos dermatológicos significativos, especialmente bajo exposición solar. Ciertos aceites, como los derivados de cítricos (bergamota, lima, limón), contienen furanocumarinas. Estos compuestos son fotosensibilizantes potentes; al absorber radiación UVA, pueden inducir una reacción fototóxica que se manifiesta como una quemadura química severa, seguida de hiperpigmentación post-inflamatoria (HPI) persistente. A diferencia de una alergia, la reacción fototóxica es una respuesta dependiente de la dosis y de la exposición a la luz, lo que significa que cualquier individuo está en riesgo. En GlowApp, enfatizamos que el concepto de 'natural' no es sinónimo de 'seguro'. Es fundamental educar al usuario sobre la diferencia entre aceites esenciales y aceites portadores (como el de jojoba o almendras), y desaconsejar el uso tópico de aceites cítricos sin procesar (sin terpenos o furanocumarinas) en áreas expuestas al sol durante el día. La prevención de la HPI es crucial, ya que su tratamiento es complejo y prolongado.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de bergamota",
+        "aceite de lima"
+      ],
+      "contraindications": [
+        "exposición solar"
+      ],
+      "season": [
+        "verano",
+        "todo el año"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:24.379Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-propilenglicol-005",
+    "title": "Propilenglicol: El vehículo alérgeno oculto",
+    "content": "El propilenglicol (PG) es un vehículo, humectante y potenciador de penetración ubicuo en formulaciones cosméticas y farmacéuticas. Aunque es generalmente reconocido como seguro (GRAS), su perfil como alérgeno de contacto es significativo. A menudo, pacientes que reportan irritación tras aplicar diversos productos no están reaccionando al principio activo principal, sino al vehículo (PG). La dermatitis por propilenglicol suele presentarse como un eritema difuso en las zonas de aplicación, a veces confundido con una reacción al retinol o a la vitamina C. Para usuarios con dermatitis de contacto sistémica o eccema crónico, es vital realizar una prueba de parche (patch test) si se sospecha de este componente. En la práctica clínica, la sustitución por vehículos alternativos como el propanodiol o la glicerina vegetal puede resolver la irritación persistente sin comprometer la eficacia del tratamiento. GlowApp recomienda identificar el PG en el INCI de productos que causen ardor inmediato, ya que su capacidad de penetración puede exacerbar la absorción de otros irritantes presentes en la fórmula.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (NIH)",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK448109/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "propilenglicol"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:24.379Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-trietanolamina-007",
+    "title": "Trietanolamina (TEA): Riesgo de nitrosaminas",
+    "content": "La trietanolamina (TEA) es un agente ajustador de pH ampliamente utilizado en geles y emulsiones para neutralizar ácidos (como el carbómero). El principal riesgo clínico asociado a la TEA no es la irritación per se, sino su potencial para formar nitrosaminas cuando se combina con agentes nitrosantes presentes en la misma formulación o en la piel. Las nitrosaminas son compuestos químicos con potencial carcinogénico demostrado en estudios toxicológicos. Aunque la regulación cosmética exige que los productos con TEA estén libres de agentes nitrosantes, la estabilidad química a largo plazo y las condiciones de almacenamiento (temperatura, exposición a la luz) pueden comprometer esta seguridad. En dermatología experta, se prefiere evitar la TEA en productos de uso diario prolongado si existen alternativas más estables y seguras, como el aminometil propanol o el ajuste de pH mediante buffers inorgánicos. GlowApp recomienda especial cautela con productos formulados con TEA que presenten cambios en el color o el olor, signos que podrían indicar una degradación química y un aumento del riesgo de formación de subproductos indeseados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "SCCS (Scientific Committee on Consumer Safety)",
+        "url": "https://health.ec.europa.eu/scientific-committees/scientific-committee-consumer-safety-sccs_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trietanolamina"
+      ],
+      "contraindications": [
+        "piel con compromiso de barrera"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:31:24.379Z"
+  }
+]

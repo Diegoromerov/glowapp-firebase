@@ -1,0 +1,86 @@
+[
+  {
+    "chunk_id": "bioelectrica-gradiente-ionico-002",
+    "title": "El gradiente iónico epidérmico como regulador de la absorción",
+    "content": "La homeostasis del gradiente de calcio en la epidermis es fundamental para la diferenciación celular y la integridad de la barrera cutánea. Investigaciones en PubMed destacan que la alteración de este gradiente iónico, inducida por limpiadores de pH elevado, compromete la formación de lípidos intercelulares. Una rutina optimizada debe priorizar productos con pH fisiológico (4.7-5.5) para preservar la señalización del calcio. Cuando el gradiente se interrumpe, la permeabilidad aumenta y se reduce la capacidad de la piel para absorber activos de manera controlada. En Bogotá, con variaciones constantes de humedad, mantener este equilibrio iónico es vital para prevenir la dermatitis por irritación. Se recomienda el uso de soluciones buffer que mantengan la estabilidad del manto ácido, permitiendo que activos como el ácido hialurónico de bajo peso molecular penetren de forma eficiente sin desestabilizar la función de barrera natural de la piel.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35678912/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_hialuronico",
+        "limpiadores_ph_balanceado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:25:45.438Z"
+  },
+  {
+    "chunk_id": "biomecanica-laxitud-masaje-005",
+    "title": "Biomecánica cutánea: impacto del masaje facial en la laxitud dérmica",
+    "content": "El masaje facial, cuando se realiza con técnicas biomecánicas correctas, puede influir en la expresión de genes relacionados con la integridad del colágeno y la elastina. Estudios recientes sugieren que la estimulación mecánica controlada de los fibroblastos puede aumentar la producción de matriz extracelular. Sin embargo, en pieles con laxitud severa, la técnica es crítica: un masaje descendente o con excesiva fricción puede exacerbar el daño de los ligamentos de retención. La recomendación experta es aplicar maniobras ascendentes y de drenaje linfático suave, utilizando un medio deslizante que no comprometa la barrera cutánea. Es vital diferenciar entre el masaje de estimulación metabólica y la manipulación agresiva. En GlowApp, integramos el masaje facial como un complemento a la rutina de activos para mejorar la microcirculación y la absorción de productos. La evidencia indica que la consistencia es más importante que la intensidad, evitando la fatiga mecánica de los tejidos dérmicos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.15234",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_no_comedogenicos"
+      ],
+      "contraindications": [
+        "acne_inflamatorio_severo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:25:45.438Z"
+  }
+]

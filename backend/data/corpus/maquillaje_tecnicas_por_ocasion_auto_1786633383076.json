@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-neurodivergencia-002",
+    "title": "Neurocosmética: Selección de pigmentos y reducción de la respuesta al estrés sensorial",
+    "content": "La neurocosmética aplicada al maquillaje de eventos sociales aborda cómo los estímulos químicos y físicos de los cosméticos interactúan con las terminaciones nerviosas cutáneas. Para pacientes con alta sensibilidad sensorial, la elección de pigmentos debe excluir metales pesados o partículas de alta dureza que puedan generar microabrasiones durante la aplicación. La literatura dermatológica, incluyendo guías de la American Academy of Dermatology, enfatiza la importancia de la barrera cutánea en la modulación de la señalización sensorial. El uso de ingredientes calmantes como el bisabolol o la niacinamida en la base del maquillaje puede ayudar a estabilizar la respuesta nerviosa frente a la estimulación externa del entorno. La técnica debe enfocarse en la aplicación de capas delgadas (thin-layering) para mantener la integridad sensorial. Se recomienda evitar productos con acabado 'efecto máscara', ya que el estiramiento mecánico de la película cosmética sobre la piel puede ser interpretado por el sistema nervioso como un estímulo invasivo, exacerbando la ansiedad en entornos de alta exposición social.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/sensitive-skin-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "bisabolol"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "neurocosmetica_aplicada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:02:45.051Z"
+  }
+]

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Beauty App - Servicios de belleza a domicilio">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fallback Client ID para Google Sign-In Web -->
+  <meta name="google-signin-client_id" content="374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com">
+  <!-- Meta tags para prevenir caché agresivo en navegadores móviles Safari/Chrome Mobile -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>GlowApp - Servicios de Belleza & Estética a Domicilio</title>
+
+  <!-- Schema.org JSON-LD Structured Data para Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "GlowApp",
+    "image": "https://glowapp-frontend-production.up.railway.app/assets/images/logo_maestro_v5.png",
+    "description": "Servicios de belleza, peluquería, barbería y cosmetología a domicilio con reserva instantánea.",
+    "url": "https://glowapp-frontend-production.up.railway.app/",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CO"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1250"
+    }
+  }
+  </script>
+
+  <!-- Material Icons - REQUERIDO para que Flutter Web renderice Icons correctamente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <!-- Cupertino (iOS) Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon y Manifest -->
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- OpenGraph / Social Share Meta Tags -->
+  <meta property="og:title" content="GlowApp - Servicios de Belleza & Estética a Domicilio">
+  <meta property="og:description" content="Reserva estilistas, cosmetólogas y profesionales de la belleza a domicilio en segundos con geolocalización en tiempo real.">
+  <meta property="og:image" content="https://glowapp-frontend-production.up.railway.app/assets/images/logo_maestro_v5.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://glowapp-frontend-production.up.railway.app/">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GlowApp - Tu Red de Belleza y Estética">
+  <meta name="twitter:description" content="Reserva servicios de belleza profesionales a domicilio con confirmación instantánea.">
+  <meta name="twitter:image" content="https://glowapp-frontend-production.up.railway.app/assets/images/logo_maestro_v5.png">
+
+  <!-- Google Tag Manager (GTM) Container -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-GLOWAPP');</script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    fbq('init', 'GLOWAPP_PIXEL_ID');
+    fbq('track', 'PageView');
+  }
+  </script>
+
+  <script>
+    // Limpieza automática de Service Workers viejos en navegadores móviles (iOS Safari / Android Chrome)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</head>
+<body>
+</body>
+</html>

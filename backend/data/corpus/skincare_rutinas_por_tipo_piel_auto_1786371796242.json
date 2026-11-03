@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-delta-6-desaturasa-003",
+    "title": "Impacto de la disfunción de la enzima delta-6-desaturasa en la barrera",
+    "content": "La enzima delta-6-desaturasa (D6D) es esencial para la conversión de ácidos grasos precursores en ácidos grasos poliinsaturados de cadena larga (PUFAs), como el ácido gamma-linolénico, que son componentes críticos de la matriz lipídica intercorneocitaria. En individuos con dermatitis atópica o xerosis severa, la actividad de esta enzima puede estar disminuida, resultando en una barrera cutánea deficiente y una mayor pérdida de agua transepidérmica (TEWL). La suplementación tópica y sistémica con aceites ricos en ácidos grasos esenciales busca compensar este déficit enzimático. Clínicamente, el manejo de estas pieles requiere la reintroducción de lípidos que no dependan de la síntesis endógena mediada por la D6D. La literatura dermatológica subraya que el uso de aceites de borraja o prímula, aplicados tópicamente, puede restaurar la fluidez y la integridad de la barrera en pacientes con disfunción metabólica de lípidos. Este enfoque es un pilar fundamental en la restauración de la homeostasis lipídica en pacientes crónicos, superando la hidratación básica convencional.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/atopic-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de borraja",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:56.894Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-gradiente-calcio-008",
+    "title": "El gradiente iónico de calcio y la diferenciación epidérmica",
+    "content": "La homeostasis de los gradientes iónicos de calcio en la epidermis es fundamental para la diferenciación adecuada de los queratinocitos desde la capa basal hasta el estrato córneo. Un gradiente bajo de calcio en la base que aumenta hacia las capas superiores actúa como una señal de 'stop' para la proliferación y un 'go' para la diferenciación y formación de la barrera lipídica. En condiciones de disfunción de barrera, este gradiente se altera, lo que provoca una diferenciación incompleta y una piel vulnerable a infecciones y pérdida de agua. El uso de productos con pH desequilibrado o limpiadores agresivos puede perturbar este gradiente iónico. La investigación clínica sugiere que la aplicación de activos que ayuden a mantener el equilibrio iónico y un pH ligeramente ácido (en torno a 4.7-5.0) es vital para la correcta maduración de los queratinocitos. Es crucial evitar la sobre-exfoliación, que puede erosionar las capas donde este gradiente es más crítico, comprometiendo a largo plazo la integridad funcional de la piel.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.journals.elsevier.com/journal-of-dermatological-science",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acidos suaves",
+        "minerales esenciales"
+      ],
+      "contraindications": [
+        "exfoliacion excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-epidermica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:56.894Z"
+  }
+]

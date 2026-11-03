@@ -1,0 +1,338 @@
+[
+  {
+    "chunk_id": "maq-evento-microbioma-001",
+    "title": "Maquillaje y estabilidad del microbioma en eventos de larga duración",
+    "content": "La aplicación de maquillaje durante eventos de larga duración altera significativamente el microambiente cutáneo, promoviendo un aumento en la humedad y temperatura local que favorece la proliferación de especies como Cutibacterium acnes y Staphylococcus epidermidis. Estudios publicados en PubMed indican que el uso de películas oclusivas durante más de 8 horas puede reducir la diversidad microbiana, desencadenando procesos inflamatorios subclínicos. Para mitigar este riesgo, es imperativo seleccionar fórmulas con conservantes de amplio espectro que no interfieran con la microbiota comensal. Se recomienda la técnica de 'maquillaje respirable' utilizando bases minerales no comedogénicas que permitan la transpiración y el intercambio gaseoso, evitando la formación de biofilms bajo la capa de pigmentos. La higiene pre-evento debe centrarse en el restablecimiento del pH ácido para mantener la función barrera intacta frente al sobrecrecimiento microbiano inducido por el maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30671607/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc oxide",
+        "titanium dioxide"
+      ],
+      "contraindications": [
+        "dermatitis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-estres-oxidativo-002",
+    "title": "Maquillaje en eventos con alta exposición a especies reactivas de oxígeno",
+    "content": "En entornos urbanos o eventos con alta exposición a contaminantes atmosféricos y radiación UV, la piel experimenta un aumento en la peroxidación lipídica. El maquillaje tradicional, si carece de activos antioxidantes, puede actuar como un catalizador de este daño al atrapar partículas PM2.5 en la superficie cutánea. La literatura científica sugiere que la incorporación de tocoferol, extracto de té verde y niacinamida en los productos cosméticos para eventos actúa como una barrera de defensa contra el estrés oxidativo. La técnica de aplicación debe priorizar una capa delgada y uniforme para evitar la acumulación de partículas en los poros, lo cual exacerba la inflamación. Es fundamental el uso de pre-bases con capacidad quelante de metales pesados para evitar que los contaminantes penetren en los queratinocitos. El sellado posterior con polvos minerales antioxidantes minimiza la adherencia de contaminantes durante la jornada, protegiendo la homeostasis lipídica y evitando el envejecimiento prematuro inducido por el entorno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/substances/how-pollution-affects-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamide",
+        "tocopherol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-termorregulacion-003",
+    "title": "Gestión de la termorregulación cutánea en maquillaje para eventos",
+    "content": "La oclusión excesiva por maquillaje en eventos con alta demanda térmica (como focos de iluminación intensa o ejercicio) puede inhibir la evaporación del sudor, elevando la temperatura de la superficie cutánea y provocando vasodilatación excesiva o miliaria. Según guías de la IADVL, el uso de texturas fluidas y emulsiones de silicona volátil permite una mejor gestión térmica en comparación con cremas pesadas o ceras. La estrategia consiste en aplicar el producto por capas finas (layering), permitiendo que el gradiente térmico se mantenga estable. Se debe evitar la aplicación de productos con alto contenido de glicerina en ambientes de alta humedad, ya que su higroscopía puede atraer excesiva agua, saturar la capa córnea y comprometer la termorregulación natural. El uso de sprays fijadores a base de polímeros acrílicos transpirables es preferible sobre los fijadores que forman películas plásticas rígidas, ya que estos últimos aumentan la temperatura cutánea al impedir el intercambio térmico necesario para mantener el equilibrio metabólico de la piel bajo estrés físico o ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicones",
+        "acrylates"
+      ],
+      "contraindications": [
+        "miliaria",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "termorregulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-fotosensibilidad-004",
+    "title": "Prevención de fototoxicidad inducida por maquillaje en eventos diurnos",
+    "content": "La interacción entre ingredientes cosméticos y radiación UV es un fenómeno crítico en eventos diurnos. Ciertos pigmentos, colorantes sintéticos y fragancias pueden actuar como fotosensibilizadores, aumentando el riesgo de dermatitis fototóxica. La AAD enfatiza que el uso de filtros solares de amplio espectro debajo del maquillaje es insuficiente si el producto cosmético altera la integridad del filtro. Se recomienda el uso de maquillaje que contenga filtros minerales integrados (óxido de zinc o dióxido de titanio) en lugar de filtros químicos que puedan degradarse ante la exposición. Además, es fundamental evitar fragancias como el bergapteno o ciertos aceites esenciales cítricos en productos para eventos al aire libre. La técnica de sellado debe garantizar que no se creen zonas de sombra o acumulación de producto que actúen como lentes de aumento para la radiación UV. La fotoprotección debe reaplicarse mediante polvos compactos con FPS, minimizando la fricción mecánica que arrastra el filtro aplicado previamente, asegurando así una cobertura continua y segura durante toda la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection/sunscreen/how-to-select-sunscreen",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc oxide",
+        "titanium dioxide"
+      ],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-ph-cutaneo-005",
+    "title": "Variación del pH cutáneo y adherencia de pigmentos en eventos",
+    "content": "El estrés emocional y físico durante eventos sociales induce la liberación de cortisol, lo que altera la composición del sudor y, en consecuencia, el pH de la superficie cutánea. Un aumento en el pH hacia la alcalinidad reduce la capacidad de la barrera ácida para prevenir la colonización bacteriana y puede afectar la adhesión de los pigmentos de maquillaje. Estudios sugieren que los pigmentos cuya estabilidad depende de un pH específico pueden oxidarse o cambiar de tono cuando el pH cutáneo se eleva. Para contrarrestar esto, se recomienda el uso de pre-bases (primers) con capacidad buffer que estabilicen el pH entre 4.5 y 5.5. Estas formulaciones ayudan a mantener la integridad del color y previenen la migración de pigmentos hacia los surcos cutáneos. La técnica de aplicación debe incluir un balanceador de pH previo a la base, permitiendo que la piel mantenga su función protectora frente a los cambios metabólicos inducidos por el estrés, asegurando una estética duradera y saludable incluso ante fluctuaciones hormonales intensas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "citric acid",
+        "buffers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-cargas-electrostaticas-006",
+    "title": "Impacto de cargas electrostáticas en la adherencia de partículas cosméticas",
+    "content": "En entornos con baja humedad y alta fricción (como eventos con alfombras sintéticas o telas técnicas), la generación de cargas electrostáticas puede atraer partículas contaminantes y afectar la distribución uniforme del maquillaje en polvo. El fenómeno de la adhesión electrostática puede hacer que los polvos se aglomeren o se desplacen, creando parches visibles. La solución técnica consiste en el uso de productos que contengan agentes antiestáticos y polímeros que neutralicen la carga superficial de la piel. La aplicación de brumas hidratantes con electrolitos ayuda a disipar la carga estática antes de la aplicación del maquillaje, mejorando la adherencia de los pigmentos. Además, el uso de herramientas de aplicación con fibras naturales en lugar de sintéticas reduce la generación de carga durante el proceso de difuminado. Este control de la estática no solo mejora el acabado estético, sino que reduce la acumulación de suciedad y polen en la superficie del rostro, protegiendo la piel de irritaciones por contacto en eventos de larga duración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "electrolytes",
+        "antistatic agents"
+      ],
+      "contraindications": [],
+      "season": [
+        "winter"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-luz-artificial-007",
+    "title": "Desafíos cromáticos bajo iluminación LED de espectro estrecho",
+    "content": "La iluminación LED de alta intensidad, común en eventos de gala o escenarios, presenta deficiencias en el espectro de color que pueden alterar la percepción del maquillaje, haciendo que los tonos parezcan desaturados o excesivamente cálidos/fríos. A diferencia de la luz natural, los LEDs de espectro estrecho pueden no revelar la verdadera cromaticidad de los pigmentos. La técnica experta sugiere el uso de maquillaje con alta carga de pigmentos inorgánicos y evitar aquellos con excesiva carga de micas reflectantes, que pueden crear 'puntos calientes' o reflejos no deseados bajo la iluminación dirigida. Es recomendable realizar la prueba de color bajo condiciones de luz similares a las del evento para asegurar una corrección de tono precisa. Además, el uso de bases con tecnología de ajuste de color (color-correcting) ayuda a neutralizar los cambios cromáticos percibidos. La gestión de la saturación es clave: en ambientes de luz artificial limitada, es preferible aplicar menos cantidad de producto y priorizar la precisión en la corrección de imperfecciones, evitando así el efecto de máscara bajo luces potentes.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron oxides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estetica_avanzada"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  },
+  {
+    "chunk_id": "maq-deshidratacion-008",
+    "title": "Maquillaje en ambientes de aire acondicionado: Gestión de la deshidratación",
+    "content": "Los sistemas de climatización en eventos cerrados reducen la humedad relativa a niveles críticos, provocando una deshidratación transepidérmica (TEWL) acelerada. El maquillaje aplicado en estas condiciones puede agrietarse o asentarse en líneas finas debido a la contracción de la piel por falta de agua. La estrategia clínica consiste en el uso de productos con ingredientes humectantes de alto peso molecular, como el ácido hialurónico, y oclusivos suaves como el escualano, que sellan la humedad sin generar sensación de pesadez. Se debe evitar el uso de polvos matificantes en exceso, prefiriendo técnicas de sellado localizado (solo en la zona T). La reaplicación de brumas hidratantes durante el evento es fundamental para mantener la flexibilidad de la película cosmética. Un error común es intentar cubrir la deshidratación con más base; esto solo empeora la apariencia al crear una capa inestable que se fisura. La clave es la preparación previa con una hidratación profunda y el uso de fijadores que contengan activos hidratantes para mantener la homeostasis durante toda la exposición al ambiente seco.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Environment and Health",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "dehydrated"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hyaluronic acid",
+        "squalane"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:39:08.856Z"
+  }
+]

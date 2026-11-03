@@ -1,0 +1,268 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-interaccion-microbiota-inmunidad-001",
+    "title": "Impacto de la Translocación Bacteriana en la Inflamación del Ostium",
+    "content": "La integridad de la barrera del cuero cabelludo es fundamental para prevenir la translocación de metabolitos microbianos hacia el nicho folicular. Recientes estudios publicados en PubMed sugieren que cuando la barrera se ve comprometida, componentes de la pared celular bacteriana, como los peptidoglicanos, pueden penetrar el ostium y activar receptores tipo Toll (TLR-2/4) en los queratinocitos de la vaina radicular externa. Esta activación desencadena una cascada de citoquinas proinflamatorias como IL-1beta y TNF-alfa, que alteran la fase anágena. En pacientes con alopecias inflamatorias, se ha observado una correlación directa entre la permeabilidad de la barrera y la severidad del infiltrado perifolicular. La evaluación clínica debe considerar la integridad de esta barrera no solo mediante tricoscopia, sino integrando pruebas de conductancia eléctrica para detectar micro-disrupciones antes de que se manifiesten síntomas clínicos visibles de inflamación.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210492/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-tallo-002",
+    "title": "Análisis de la Histéresis Elástica en la Cutícula Capilar",
+    "content": "La histéresis elástica en la fibra capilar es un indicador crítico del daño estructural acumulado por factores ambientales y químicos. A diferencia de las pruebas de tracción estándar, el análisis de histéresis mide la energía disipada durante los ciclos de carga y descarga de la fibra bajo condiciones controladas de humedad. Un aumento en la histéresis indica una degradación significativa de las proteínas de la membrana celular (CMC) y una pérdida de la capacidad de recuperación mecánica del tallo. Este fenómeno es particularmente relevante en pacientes con daño por exposoma, donde la cutícula presenta una arquitectura comprometida que facilita la fractura longitudinal. La evaluación de esta propiedad mecánica permite diferenciar entre un daño cosmético superficial y una alteración estructural profunda que requiere intervenciones de reconstrucción proteica o protección antioxidante específica para evitar la rotura prematura de la fibra.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-folicular-003",
+    "title": "El Rol de la Dinámica Mitocondrial en la Senescencia del Bulbo",
+    "content": "La senescencia de las células madre del folículo piloso está intrínsecamente ligada a la eficiencia de la dinámica mitocondrial, específicamente a través de los procesos de fisión y fusión. Estudios recientes indican que un desequilibrio en la proteína DRP1 conduce a la fragmentación mitocondrial y a la acumulación de especies reactivas de oxígeno (ROS) dentro del nicho del bulbo. Este estado de estrés mitocondrial acelera la entrada del folículo en una fase de reposo prolongada, contribuyendo a la miniaturización observada en la alopecia androgenética. La identificación de biomarcadores de disfunción mitocondrial en biopsias o muestras capilares permite predecir la capacidad de respuesta a terapias regenerativas. La optimización del entorno metabólico del folículo, mediante la modulación de la biogénesis mitocondrial, se perfila como una estrategia terapéutica emergente para revertir los signos de agotamiento folicular en estadios tempranos, más allá del simple bloqueo androgénico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/ncomms/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biotecnologia_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuroinmunologia-004",
+    "title": "Inflamación Neurogénica: La Sustancia P y la Vasodilatación Perifolicular",
+    "content": "El eje neuro-inmune desempeña un papel crucial en la patogénesis de las alopecias inflamatorias. La liberación de neuropéptidos, principalmente Sustancia P, por las terminaciones nerviosas sensoriales que rodean el folículo piloso, induce la desgranulación de los mastocitos perifoliculares. Este proceso no solo genera vasodilatación y edema, sino que también libera histamina y proteasas que dañan la matriz del pelo. En el contexto de la alopecia areata y otras formas de efluvio crónico, la persistencia de esta inflamación neurogénica impide la correcta transición del ciclo capilar a la fase anágena. El diagnóstico clínico mediante la evaluación de la tricodinia y la respuesta al eritema inducido puede ofrecer pistas sobre la actividad de este eje. La intervención terapéutica debe enfocarse en modular la respuesta de los receptores NK-1 para mitigar el impacto negativo de esta señalización en la supervivencia del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-005",
+    "title": "Metabolómica del Microbioma como Biomarcador de Respuesta Folicular",
+    "content": "La caracterización de la microbiota del cuero cabelludo ha evolucionado desde la simple identificación taxonómica hacia el análisis del metaboloma funcional. La producción de ácidos grasos de cadena corta (SCFAs) y la modificación lipídica mediada por bacterias como Cutibacterium acnes y especies de Malassezia tienen un efecto profundo en la homeostasis del ostium. Estudios recientes demuestran que un desequilibrio en estos metabolitos puede inhibir la proliferación de las células de la papila dérmica. El uso de técnicas de metabolómica aplicada permite hoy identificar perfiles de riesgo que preceden a la inflamación clínica. Esta aproximación permite una medicina de precisión donde los tratamientos tópicos se ajustan según la firma metabólica del microbioma del paciente, optimizando la biodisponibilidad de los activos y mejorando la tasa de éxito en el manejo de diversas alopecias, superando el enfoque tradicional de tratamiento estándar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-006",
+    "title": "El Impacto de las Partículas PM2.5 en la Expresión Génica Folicular",
+    "content": "La exposición crónica a contaminantes atmosféricos, especialmente partículas finas (PM2.5), induce un estrés oxidativo sistémico que afecta directamente al folículo piloso. Estas partículas pueden penetrar el canal folicular y activar el receptor de aril hidrocarburo (AhR), lo que resulta en una alteración de la diferenciación de los queratinocitos y una disminución en la síntesis de queratinas estructurales. La investigación sugiere que este proceso de 'exposoma capilar' no solo debilita el tallo, sino que también promueve la miniaturización folicular a largo plazo. La protección efectiva requiere el desarrollo de agentes quelantes y antioxidantes que formen una película protectora capaz de neutralizar las partículas antes de su interacción con el ostium. El diagnóstico debe incluir una anamnesis detallada sobre los niveles de exposición ambiental del paciente para ajustar el régimen de protección capilar diario.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-009",
+    "title": "Evaluación de la Barrera Folicular mediante Bioimpedancia",
+    "content": "La bioimpedancia eléctrica se ha consolidado como una herramienta no invasiva y altamente precisa para evaluar la hidratación y la integridad de la barrera del cuero cabelludo. Al medir la resistencia y la reactancia eléctrica, es posible determinar el estado de la capa hidrolipídica y la permeabilidad del ostium folicular. Un valor de impedancia bajo en el área perifolicular es indicativo de una disfunción de la barrera, lo cual correlaciona con un mayor riesgo de penetración de alérgenos y contaminantes. Esta técnica proporciona datos objetivos que complementan la tricoscopia, permitiendo un manejo personalizado basado en la restauración de la barrera cutánea. La implementación de sensores de bioimpedancia en la rutina de diagnóstico de GlowApp permitirá monitorizar la eficacia de los tratamientos tópicos en tiempo real, garantizando que los activos alcancen el nicho folicular de manera óptima y segura.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tecnologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:12:25.590Z"
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-radiacion-ionizante-001",
+    "title": "Maquillaje en entornos con exposición a radiación ionizante de baja dosis",
+    "content": "El uso de maquillaje en entornos con exposición a radiación ionizante, como radiología intervencionista o laboratorios específicos, presenta desafíos únicos para la integridad de la barrera cutánea. La exposición a radiación puede inducir estrés oxidativo en los queratinocitos, alterando la homeostasis de la piel. Es fundamental evitar pigmentos con base mineral pesada o partículas metálicas que podrían actuar como agentes de dispersión o absorción secundaria bajo exposición radiológica. Se recomienda el uso de formulaciones con alta capacidad antioxidante, priorizando ingredientes como la vitamina C estabilizada y la vitamina E, que ayudan a neutralizar los radicales libres generados por la radiación. Además, la oclusión debe ser mínima para evitar la acumulación de partículas en los poros, lo cual, sumado a la posible sequedad cutánea inducida por el ambiente controlado, podría exacerbar la irritación. La limpieza post-evento debe ser exhaustiva, utilizando limpiadores de base oleosa para asegurar la eliminación total de residuos sin fricción excesiva.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450849/",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "vitamina E"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:11.422Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-ionizacion-positiva-002",
+    "title": "Maquillaje en ambientes de alta ionización positiva y adherencia de partículas",
+    "content": "Los entornos con alta concentración de iones positivos, comunes en oficinas con sistemas de ventilación centralizados o cercanía a maquinaria eléctrica, influyen en la estática cutánea. Esta carga electrostática favorece la adhesión de partículas PM2.5 y contaminantes atmosféricos sobre el maquillaje, aumentando el riesgo de dermatitis de contacto irritativa. Para mitigar este fenómeno, es vital aplicar una bruma fijadora con propiedades antiestáticas que neutralice la carga superficial. La elección de bases debe favorecer texturas fluidas no pegajosas, evitando ceras de alto peso molecular que actúan como imanes para los contaminantes. Según investigaciones dermatológicas sobre la calidad del aire y la piel, el uso de películas protectoras que formen una barrera física invisible puede disminuir significativamente la penetración de alérgenos. La técnica de sellado debe ser ligera, utilizando polvos traslúcidos micronizados para minimizar la superficie de contacto con las partículas del ambiente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros antiestáticos"
+      ],
+      "contraindications": [
+        "ceras pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:11.422Z"
+  }
+]

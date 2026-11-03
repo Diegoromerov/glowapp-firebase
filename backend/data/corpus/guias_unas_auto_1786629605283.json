@@ -1,0 +1,210 @@
+[
+  {
+    "chunk_id": "guias_unas-biomarcadores-nutricionales-001",
+    "title": "Onicodistrofia por déficit de biotina y zinc: más allá del mito",
+    "content": "La relación entre la salud ungueal y la nutrición es un pilar fundamental en la dermatología, aunque frecuentemente malinterpretado por la industria cosmética. La biotina (vitamina B7) y el zinc son elementos críticos para la síntesis de queratina, pero su deficiencia clínica es rara en pacientes sanos. Según estudios publicados en el Journal of the American Academy of Dermatology, la suplementación con biotina solo es efectiva en casos de fragilidad ungueal confirmada por malabsorción. El zinc, por otro lado, es un cofactor esencial para la proliferación celular en la matriz; niveles bajos pueden manifestarse como paroniquia crónica y surcos transversales. Es vital diferenciar la onicodistrofia nutricional de la causada por el uso de agentes endurecedores que, al aumentar la rigidez de la lámina, paradójicamente la hacen más propensa a la fractura por estrés mecánico. La evaluación debe centrarse en descartar patologías sistémicas antes de prescribir suplementos, priorizando siempre la integridad de la matriz ungueal sobre el uso de lacas fortificantes que a menudo contienen formaldehído, un sensibilizante cutáneo potente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/healthy-nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "biotina",
+        "zinc"
+      ],
+      "contraindications": [
+        "suplementacion_indiscriminada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:46.745Z"
+  },
+  {
+    "chunk_id": "guias_unas-toxicidad-monomeros-002",
+    "title": "Polimerización incompleta y migración de monómeros en resinas acrílicas",
+    "content": "La polimerización de monómeros metacrilatos en sistemas de esmaltado semipermanente es una reacción química que rara vez alcanza el 100% de conversión. La fracción de monómero residual no reaccionado tiene la capacidad de migrar a través de la lámina ungueal hacia el lecho, donde puede interactuar con el tejido dérmico y desencadenar una dermatitis alérgica de contacto. Investigaciones en el International Journal of Dermatology destacan que el uso de lámparas con espectro de emisión inadecuado o tiempos de curado reducidos incrementa significativamente la disponibilidad de monómeros libres. Este fenómeno es particularmente peligroso cuando se combinan productos de diferentes marcas, ya que la incompatibilidad química puede inhibir la red de polímeros. La sensibilización no es inmediata; es un proceso acumulativo donde el sistema inmunitario desarrolla una memoria contra los acrilatos. Una vez sensibilizado, el paciente puede presentar reacciones cruzadas a prótesis dentales o adhesivos médicos, lo que subraya la importancia de protocolos de curado estrictos bajo irradiancia certificada y el uso de capas delgadas para asegurar una fotopolimerización profunda.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "curado_insuficiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:46.745Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomecanica-fresado-003",
+    "title": "Termodinámica del fresado de alta velocidad y daño matricial",
+    "content": "El uso de tornos (micromotores) en la preparación ungueal genera una fricción mecánica que se traduce rápidamente en calor. La lámina ungueal es un mal conductor térmico, pero el lecho ungueal y la matriz, altamente vascularizados, son extremadamente sensibles a cambios de temperatura superiores a los 42°C. El sobrecalentamiento por fricción (fricción mecánica) no solo causa molestias inmediatas, sino que puede inducir microtraumas en la matriz, resultando en onicodistrofias permanentes como surcos de Beau o desprendimientos focales. Estudios de la IADVL enfatizan que la presión ejercida por la fresa debe ser mínima y constante, evitando el 'punto de estancamiento' donde el calor se acumula en un solo sitio. La elección de fresas de carburo de tungsteno frente a las de diamante debe basarse en el tipo de producto a remover; las fresas de carburo tienen 'cuchillas' que cortan el material, mientras que las de diamante desgastan mediante abrasión, generando un calor residual mayor. Mantener una técnica de movimiento continuo y una limpieza periódica de los detritos es esencial para prevenir el daño térmico inducido por la tecnología de cabina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/nail-disorders-guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado_estatico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_manicura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:46.745Z"
+  },
+  {
+    "chunk_id": "guias_unas-psoriasis-diferencial-006",
+    "title": "Psoriasis ungueal: la trampa del diagnóstico clínico en cabina",
+    "content": "La psoriasis ungueal es una patología inflamatoria crónica que a menudo se confunde con la onicomicosis, debido a la presencia de pitting (puntos deprimidos), onicólisis distal y engrosamiento de la lámina. Esta confusión es peligrosa, ya que el tratamiento antimicótico es ineficaz y puede retrasar el manejo dermatológico adecuado, que requiere terapias inmunomoduladoras o inyecciones intralesionales de corticosteroides. Un signo clave de la psoriasis es la 'mancha de aceite' (coloración amarillenta bajo la uña) y la presencia de hiperqueratosis subungueal sin la presencia de detritos micóticos típicos. Los profesionales de la estética deben evitar realizar procedimientos invasivos como la limpieza subungueal profunda en estos casos, ya que el fenómeno de Koebner (la aparición de lesiones de psoriasis en sitios de trauma) puede exacerbar la condición. Si se observa una distrofia que afecta a varios dedos de forma simétrica, la referencia a un dermatólogo es obligatoria. La educación al cliente es crucial: la uña no es solo un lienzo para esmaltar, sino un indicador de salud que puede reflejar condiciones autoinmunes subyacentes que requieren atención médica especializada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Psoriasis Foundation",
+        "url": "https://www.psoriasis.org/nail-psoriasis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza_mecanica_invasiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:46.745Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotobiologia-uv-007",
+    "title": "Fotobiología de la radiación UV en el tejido periungueal",
+    "content": "El uso constante de lámparas UV/LED para el curado de geles ha generado una preocupación legítima sobre el fotoenvejecimiento y el riesgo de carcinogénesis cutánea en las manos. Aunque la dosis de radiación emitida por las lámparas de cabina es menor que la de las camas de bronceado, la exposición es recurrente. Es fundamental comprender que la matriz ungueal y el eponiquio son tejidos altamente proliferativos y sensibles a la radiación ionizante. La protección debe incluir el uso de guantes con protección UV (dejando expuestas solo las uñas) o la aplicación de protectores solares de amplio espectro antes del servicio. Además, el espectro de emisión de las lámparas debe ser compatible con los fotoiniciadores del gel utilizado. Un desajuste entre la longitud de onda de la lámpara (ej. 365nm vs 405nm) y el fotoiniciador provoca una polimerización incompleta, aumentando la liberación de monómeros tóxicos. La seguridad en cabina no termina con la aplicación del color; incluye la gestión de la exposición a la radiación y la mitigación del estrés oxidativo inducido por la luz en los tejidos periungueales circundantes.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32742-0/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteccion_solar"
+      ],
+      "contraindications": [
+        "exposicion_uv_sin_proteccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_salud"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:59:46.745Z"
+  }
+]

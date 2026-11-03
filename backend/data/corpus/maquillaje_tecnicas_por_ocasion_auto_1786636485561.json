@@ -1,0 +1,131 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+    "title": "Maquillaje para eventos con iluminación de espectro dinámico: Prevención del efecto estroboscópico",
+    "content": "En eventos con iluminación de espectro dinámico (luces estroboscópicas, láseres de alta intensidad y cambios rápidos de temperatura de color), el maquillaje enfrenta el desafío del metamerismo dinámico. Este fenómeno ocurre cuando los pigmentos cambian su apariencia cromática drásticamente bajo diferentes fuentes de luz, afectando la percepción de la uniformidad del tono. La AAD (American Academy of Dermatology) advierte que la sobreexposición a luces de alta intensidad, especialmente en pieles con fototipos altos (IV-VI), puede inducir respuestas fototóxicas subclínicas si el maquillaje contiene activos fotosensibilizantes o pigmentos metálicos no estabilizados. Es vital utilizar bases con polímeros de red abierta que permitan la transpiración mientras mantienen la reflectancia controlada. La gestión del color debe priorizar pigmentos minerales de alta pureza que minimicen la interferencia con la luz incidente, evitando el uso de partículas de interferencia que puedan amplificar el efecto de destello estroboscópico, lo cual no solo afecta la estética sino que puede inducir fatiga visual en el usuario. La fijación debe ser mediante polvos traslúcidos de sílice esférica, que ofrecen una dispersión de luz uniforme bajo condiciones de iluminación errática, garantizando que la barrera cutánea permanezca estable ante el estrés lumínico externo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/sun/sun-protection-clothing",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silica",
+        "iron oxides"
+      ],
+      "contraindications": [
+        "photosensitizing agents"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-cutaneo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:54:24.983Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-alta-concentracion-grafeno-002",
+    "title": "Maquillaje en entornos industriales con presencia de nanopartículas de grafeno",
+    "content": "La creciente exposición a nanopartículas de grafeno en entornos tecnológicos y de investigación industrial plantea un desafío único para la integridad del maquillaje. El grafeno posee una alta capacidad de adsorción y puede interactuar con los lípidos de superficie cutánea, facilitando la penetración de pigmentos cosméticos en el estrato córneo. Estudios indexados en PubMed sugieren que las partículas de grafeno pueden alterar la permeabilidad de la barrera cutánea, aumentando el riesgo de dermatitis de contacto si el maquillaje no está formulado con barreras oclusivas eficaces. Es fundamental implementar una capa de imprimación (primer) rica en ceramidas y polímeros de alto peso molecular que actúen como un escudo físico contra la adsorción de contaminantes ambientales. La limpieza post-evento debe ser exhaustiva, utilizando agentes tensoactivos suaves que no comprometan el microbioma ya estresado por la interacción con nanomateriales. Se recomienda evitar el uso de cosméticos en polvo suelto en estos entornos, ya que favorecen la retención de partículas sobre la superficie cutánea, aumentando la carga tóxica local y el riesgo de inflamación subclínica mediada por radicales libres.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210342/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramides",
+        "polymers"
+      ],
+      "contraindications": [
+        "loose powders"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:54:24.983Z"
+  },
+  {
+    "chunk_id": "maquillaje-vibraciones-acusticas-004",
+    "title": "Prevención de la dermatitis por fricción bajo exposición a vibraciones acústicas",
+    "content": "La exposición prolongada a niveles de presión sonora elevados y vibraciones acústicas de alta frecuencia puede alterar la estabilidad del maquillaje y la integridad de la barrera epidérmica. Estudios en revistas dermatológicas han demostrado que las vibraciones mecánicas continuas pueden inducir una micro-exfoliación del estrato córneo, facilitando la penetración de pigmentos y fragancias cosméticas, lo que aumenta el riesgo de dermatitis por contacto. Para mitigar este efecto en eventos sociales, es necesario utilizar primers con propiedades viscoelásticas que absorban parte de la energía mecánica. La técnica de aplicación debe evitar la fricción excesiva, optando por presionar el producto con esponjas de celdas cerradas en lugar de arrastrarlo. Además, se debe priorizar el uso de fórmulas hipoalergénicas y libres de fragancias irritantes para minimizar la respuesta inflamatoria ante una barrera cutánea debilitada por la vibración. La higiene post-evento es crítica; se debe eliminar el maquillaje utilizando aceites limpiadores que disuelvan las partículas sin necesidad de frotar, permitiendo que la piel recupere su pH natural y su capacidad de reparación antes de la siguiente exposición.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02456-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "reactive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "viscoelastic polymers"
+      ],
+      "contraindications": [
+        "fragrance"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:54:24.983Z"
+  }
+]

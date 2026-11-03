@@ -1,0 +1,116 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-001-hidro-estres",
+    "title": "Hidrodinámica del Ostium: Evaluación de la Presión de Salida del Sebo",
+    "content": "La hidrodinámica del ostium folicular es un determinante crítico en la patogénesis de las alopecias obstructivas. La viscosidad del sebo, influenciada por la composición lipídica y la temperatura local, genera una resistencia al flujo que puede derivar en la formación de micro-tapones lipídicos. Estudios recientes publicados en el Journal of Cosmetic Dermatology sugieren que la acumulación de sebo en el canal folicular no solo obstruye el eje del cabello, sino que crea un microambiente anaerobio propicio para la proliferación de microorganismos lipofílicos. La evaluación de esta dinámica requiere medir la presión de extrusión del sebo mediante técnicas de micro-succión controlada. Cuando la resistencia al flujo supera los umbrales fisiológicos, se observa una atrofia del bulbo debido a la presión hidrostática retrógrada. Este fenómeno es particularmente relevante en pacientes con dermatitis seborreica persistente, donde la alteración del pH cutáneo modifica la reología del sebo, haciéndolo más denso y difícil de eliminar. La monitorización de la fluidez lipídica permite predecir el riesgo de miniaturización secundaria a la obstrucción mecánica del ostium, un factor a menudo pasado por alto en los protocolos diagnósticos convencionales de GlowApp.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-sebo-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:29:32.374Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-002-bio-impedancia",
+    "title": "Bioimpedancia de Alta Frecuencia para el Análisis de la Barrera Folicular",
+    "content": "La integridad de la barrera cutánea del cuero cabelludo es fundamental para la homeostasis folicular. La bioimpedancia eléctrica de alta frecuencia (HF-BIA) permite mapear la capacidad de retención hídrica del estrato córneo que rodea el ostium folicular. Según investigaciones indexadas en PubMed, una disminución en la conductancia iónica de esta zona es un marcador temprano de estrés folicular, precediendo a menudo la manifestación clínica de efluvios o procesos inflamatorios. La deshidratación del tejido perifolicular altera la función de las uniones estrechas (tight junctions), facilitando la penetración de contaminantes del exposoma urbano hacia la papila dérmica. Este protocolo diagnóstico permite cuantificar la pérdida de agua transepidérmica (TEWL) específicamente a nivel periorificial, proporcionando una métrica objetiva para evaluar la eficacia de los tratamientos tópicos. La implementación de esta tecnología en el ecosistema de GlowApp facilita la detección de 'piel seca' oculta, que actúa como un factor de riesgo para la inflamación subclínica. Un cuero cabelludo con baja impedancia suele presentar una mayor susceptibilidad a la irritación por productos capilares, lo que exige una selección personalizada de agentes hidratantes y antiinflamatorios.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:29:32.374Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-005-glicacion-vaina",
+    "title": "Glicación No Enzimática: Rigidez y Envejecimiento de la Vaina Radicular",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) en la vaina radicular externa es un factor silencioso pero devastador en el envejecimiento folicular. A medida que los azúcares se unen a las proteínas estructurales como el colágeno y la elastina, se forman enlaces cruzados que aumentan la rigidez del tejido perifolicular. Este proceso, documentado en estudios de dermatología molecular, limita la capacidad del folículo para expandirse durante la fase anágena, lo que conduce a una miniaturización progresiva. Además, los AGEs activan los receptores RAGE, desencadenando una respuesta inflamatoria crónica que degrada el nicho de células madre del 'bulge'. La detección de estos productos mediante espectroscopía de fluorescencia permite identificar a los pacientes en riesgo de alopecia cicatricial subclínica. En el contexto de GlowApp, el manejo de la glicación implica no solo el control metabólico sistémico, sino también el uso de agentes tópicos antiglicantes que protejan la matriz extracelular del folículo. La rigidez de la vaina radicular también afecta la permeabilidad del ostium, dificultando la penetración de tratamientos tópicos estándar. Por ello, el diagnóstico debe integrar la evaluación de la viscoelasticidad del tejido para diseñar protocolos terapéuticos personalizados y efectivos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatology Research and Practice",
+        "url": "https://www.hindawi.com/journals/drp/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-envejecimiento-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:29:32.374Z"
+  }
+]

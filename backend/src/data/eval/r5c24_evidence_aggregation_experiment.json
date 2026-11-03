@@ -1,0 +1,73 @@
+{
+  "experiment": "R5-C24",
+  "verdict": "AGGREGATION-MIXED",
+  "baseline": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "evidence_threshold": 0.5,
+  "production_modified": false,
+  "railway_contacted": false,
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — ranks, evidence recall, min_pool_sufficient y chunks idénticos" },
+  "metrics": {
+    "evidence_recall_global": { "k5": 0.6156, "k10": 0.6545, "k20": 0.7156, "k50": 0.8011, "k100": 0.8011 },
+    "direct_recall_global": { "k5": 1.0, "k50": 1.0, "k100": 1.0, "note": "≥1 gold en top-K (mejor gold)" },
+    "aggregation_gain": { "k5": -0.3844, "k50": -0.1989, "k100": -0.1989, "interpretation": "Negativo porque compara proporción de TODOS los golds (evidence) vs ≥1 gold (direct). NO significa que la agregación dañe: significa que el recall de evidencia está limitado por el POOL (0.80), no por la composición. La agregación no añade chunks al pool; añade CAPACIDAD DE RESPUESTA." },
+    "queries_respondibles": { "baseline_direct": "12/15", "con_agregacion": "14/15", "gain": "+2/15", "matches_evidence_ceiling": true },
+    "multi_chunk_recovery_rate": 0.1333,
+    "classification_summary": { "DIRECT_SUCCESS": 12, "MULTI_CHUNK_RECOVERED": 2, "MULTI_CHUNK_PARTIAL": 1 }
+  },
+  "critical_misses": {
+    "cabello_002": {
+      "class": "MULTI_CHUNK_RECOVERED",
+      "evidence_recall": { "5": 0.4, "10": 0.4, "20": 0.4, "50": 0.6, "100": 0.6 },
+      "min_pool_sufficient": 50,
+      "piezas_presentes": "3/5 (ph-001, ph-pos-tinte-009, viscoelasticidad-009)",
+      "piezas_ausentes": "2/5 (SERS, metales-003)",
+      "conclusion": "Con K=50 la evidencia compuesta alcanza 0.6 ≥ 0.5 → la query ES respondible si el sistema agrega las 3 piezas presentes. La primera pieza (ph-001) está en el top; el gold principal en rank 1."
+    },
+    "cejas_008": {
+      "class": "MULTI_CHUNK_RECOVERED",
+      "evidence_recall": { "5": 0.3333, "10": 0.3333, "20": 0.3333, "50": 0.5, "100": 0.5 },
+      "min_pool_sufficient": 50,
+      "piezas_presentes": "3/6 (interaccion-laser-001, piel-grasa-005, autoinmunes-007)",
+      "piezas_ausentes": "3/6 (electrolisis-y-matriz, erbio-glass, tyndall)",
+      "conclusion": "Con K=50 la evidencia compuesta alcanza 0.5 ≥ 0.5 (umbral justo) → la query es respondible con las 3 piezas de interacción-láser/piel-grasa/autoinmunes. Límite exacto del umbral."
+    },
+    "cejas_004": {
+      "class": "MULTI_CHUNK_PARTIAL → VECTOR_MISS CONFIRMADO",
+      "evidence_recall": { "5": 0.3333, "10": 0.3333, "20": 0.3333, "50": 0.3333, "100": 0.3333 },
+      "min_pool_sufficient": 0,
+      "piezas_presentes": "2/6 (dispersion-luz, metamerismo-003)",
+      "piezas_ausentes": "4/6 (musculatura-orbicular, arquitectura-muscular, envejecimiento, psicologia)",
+      "conclusion": "CONTROL NEGATIVO VALIDADO: recall PLANO 0.33 de @5 a @100. La agregación NO puede fabricar evidencia que no está en el pool — 4/6 piezas de simetría muscular jamás entran. Confirma VECTOR_MISS real (colisión semántica), no multi-chunk."
+    }
+  },
+  "aggregation_gain": {
+    "interpretation": "La agregación NO mejora el recall del pool (el pool es fijo). Su ganancia es convertir chunks YA recuperados en CAPACIDAD DE RESPUESTA: +2 queries respondibles (cabello_002, cejas_008) → 14/15 = 0.9333 = evidence ceiling exacto.",
+    "by_k": { "k5": "0 queries adicionales", "k20": "0", "k50": "+2 (cabello_002, cejas_008)" }
+  },
+  "evidence_ceiling": 0.9333,
+  "queries": [
+    { "query_id": "skincare_003", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "skincare_005", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "skincare_006", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "skincare_007", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "skincare_008", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "skincare_009", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "skincare_010", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "cabello_002", "final_class": "MULTI_CHUNK_RECOVERED", "min_pool_sufficient": 50 },
+    { "query_id": "cabello_006", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "cabello_008", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "cejas_001", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "cejas_004", "final_class": "MULTI_CHUNK_PARTIAL", "min_pool_sufficient": 0 },
+    { "query_id": "cejas_005", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "cejas_007", "final_class": "DIRECT_SUCCESS", "min_pool_sufficient": 5 },
+    { "query_id": "cejas_008", "final_class": "MULTI_CHUNK_RECOVERED", "min_pool_sufficient": 50 }
+  ],
+  "answer_to_director": "La agregación de evidencia SÍ convierte 2 de los 3 misses (cabello_002, cejas_008) en queries respondibles — su evidencia compuesta existe en top-50 (0.6 y 0.5) y un agregador las reuniría. El techo ~0.80 NO es exclusivamente candidate retrieval: es 2/3 multi-chunk recuperable + 1/3 vector miss. cejas_004 permanece como VECTOR_MISS irresoluble por agregación (control negativo validado).",
+  "recommendation_r5c25": {
+    "1": "Diseñar Evidence Aggregator controlado para R5-C25: recuperación top-50 + clustering funcional (PRIMARY/SECONDARY/CONDITION/...) + composición determinista — objetivo: demostrar que cabello_002 y cejas_008 se responden correctamente con las piezas ya recuperadas",
+    "2": "cejas_004 queda FUERA del alcance del aggregator (VECTOR_MISS confirmado): requiere representación estructural distinta o aceptación del límite",
+    "3": "El gain teórico es +2 queries (0.7885 → 0.9333 en términos de respondibilidad), NO +recall de pool — el aggregator mejora la capacidad de respuesta, no el retrieval",
+    "4": "GOLD-V5, baseline R5-C y motor productivo intactos"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

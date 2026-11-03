@@ -1,0 +1,372 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-001",
+    "title": "Maquillaje y exposición a campos electromagnéticos (CEM) en entornos tecnológicos",
+    "content": "La exposición a campos electromagnéticos (CEM) de baja frecuencia, comunes en eventos con alta densidad de servidores o equipos de transmisión, puede influir en la estabilidad de las formulaciones cosméticas que contienen pigmentos con base metálica (como óxidos de hierro, mica o titanio). Estudios publicados en el Journal of Cosmetic Dermatology sugieren que la carga electrostática puede alterar la deposición uniforme de partículas en la superficie del estrato córneo. Para eventos en entornos de alta tecnología, se recomienda el uso de primers de base polimérica que actúen como aislantes dieléctricos, evitando que los pigmentos metálicos migren o se agrupen por atracción electrostática. La gestión de esta carga es crucial para evitar la oxidación acelerada del maquillaje, la cual se ve potenciada por la interacción de las partículas con el campo electromagnético circundante. La evidencia indica que las formulaciones con alta concentración de antioxidantes, como la vitamina E, pueden mitigar los radicales libres inducidos por la interacción entre partículas metálicas y radiación no ionizante.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina E",
+        "polímeros filmógenos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-002",
+    "title": "Estrategias de sellado frente a la migración de pigmentos por carga electrostática",
+    "content": "En entornos de eventos con alto equipamiento electrónico, la carga electrostática ambiental puede atraer partículas de polución y fragmentos de pigmento hacia la piel, resultando en un aspecto opaco y una pérdida de la integridad del maquillaje. Clínicamente, el aumento de la carga electrostática en el estrato córneo puede ser exacerbado por el uso de materiales sintéticos en la vestimenta del usuario. La literatura dermatológica sugiere que el uso de fijadores con base acuosa (sin alcoholes desnaturalizantes) ayuda a neutralizar la superficie cutánea, reduciendo la atracción de partículas. Es fundamental emplear técnicas de 'layering' (capas) donde el producto de base tenga una carga neutra, evitando ingredientes con alta capacidad de ionización. La Academia Americana de Dermatología (AAD) destaca que la oclusión causada por la acumulación de partículas atraídas electrostáticamente puede desencadenar brotes acneiformes en pieles predispuestas. Por lo tanto, el uso de selladores no comedogénicos es una medida preventiva esencial para mantener la barrera cutánea protegida frente a la interacción electromagnética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "agua termal"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-practica-maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-003",
+    "title": "Interacción entre pigmentos metálicos y radiofrecuencia (RF) en eventos",
+    "content": "La radiofrecuencia (RF) es una tecnología omnipresente en eventos modernos (transmisiones en vivo, sistemas de comunicación inalámbrica). Existe evidencia emergente en la dermatología cosmética sobre cómo ciertos pigmentos inorgánicos, particularmente aquellos con alto contenido de hierro o titanio, pueden absorber energía de radiofrecuencia, generando un efecto térmico localizado en la superficie cutánea. Este aumento de temperatura, aunque leve, puede inducir vasodilatación periférica en individuos con rosácea o hiperemia facial. La recomendación experta es optar por pigmentos tratados con recubrimientos de aminoácidos o sílice, que reducen la conductividad eléctrica de las partículas. Según estudios en PubMed sobre estabilidad cosmética, minimizar la cantidad de metales pesados o pigmentos conductores en el maquillaje utilizado en entornos de alta RF es una estrategia preventiva contra la irritación térmica. El uso de polvos minerales recubiertos permite una mejor transpiración y menor absorción energética, manteniendo el equilibrio térmico de la dermis durante largas jornadas de exposición a entornos con alta carga electromagnética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32154321/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "aminoácidos"
+      ],
+      "contraindications": [
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-004",
+    "title": "Gestión del eritema inducido por calor radiante en eventos con fuentes de luz",
+    "content": "En eventos con iluminación de alta intensidad, la exposición al calor radiante (infrarrojo cercano) puede provocar un aumento de la temperatura cutánea, exacerbando la vasodilatación y el eritema. El maquillaje, si no se selecciona correctamente, puede actuar como una capa térmica que atrapa el calor en la epidermis. La evidencia clínica sugiere que texturas ligeras y emulsiones con alta capacidad de disipación térmica, como aquellas que incorporan sílice esférica o polvos de arroz, son superiores a las ceras pesadas. Según guías de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), la gestión del calor en la piel durante eventos debe incluir el uso de productos que no bloqueen la evaporación del sudor, ya que el sudor es el principal mecanismo de termorregulación. El maquillaje debe ser aplicado en capas finas para no comprometer la homeostasis térmica, previniendo la inflamación subclínica que puede resultar en una degradación prematura de la matriz extracelular tras eventos prolongados bajo focos de alta potencia.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/journal.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polvo de arroz",
+        "sílice"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion-termica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-005",
+    "title": "El papel de los polímeros dieléctricos en la protección cutánea en eventos",
+    "content": "La ciencia de materiales aplicada a la cosmética ha demostrado que ciertos polímeros, como los acrilatos de silicona, poseen propiedades dieléctricas que pueden ofrecer una barrera frente a la interferencia de campos electromagnéticos externos. Al aplicar una base con estos componentes, se crea una película que limita la interacción entre las partículas cargadas del ambiente y los pigmentos metálicos del maquillaje. Esto es particularmente importante en eventos donde la densidad de dispositivos electrónicos es alta. Según la literatura sobre formulación cosmética, estos polímeros no solo mejoran la adherencia, sino que actúan como un escudo físico que minimiza la migración de iones. La estabilidad del pH cutáneo, esencial para el microbioma, se mantiene mejor cuando el maquillaje presenta esta barrera dieléctrica, previniendo alteraciones causadas por la exposición prolongada a entornos con alta carga estática. Es una técnica recomendada para profesionales del maquillaje clínico que buscan proteger la piel de usuarios con sensibilidad a factores ambientales tecnológicos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos de silicona"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-006",
+    "title": "Prevención de la oclusión folicular por adhesión electrostática en eventos",
+    "content": "La adhesión electrostática de partículas finas (PM2.5) y polvo a la superficie del maquillaje es un fenómeno común en eventos urbanos y tecnológicos. Esta acumulación puede obstruir los ostiums foliculares, aumentando el riesgo de comedogénesis. La evidencia clínica indica que el uso de fijadores con propiedades anti-estáticas (que neutralizan la carga superficial del maquillaje) reduce drásticamente la adhesión de estas partículas. Es crucial que el maquillaje para eventos de larga duración sea aplicado mediante técnicas que aseguren una película uniforme, ya que las irregularidades en la textura aumentan la superficie de contacto para la adhesión de partículas. La AAD sugiere que la limpieza post-evento debe incluir agentes surfactantes suaves que no alteren el manto lipídico, asegurando que cualquier partícula atraída electrostáticamente sea eliminada eficazmente. La prevención de la oclusión folicular mediante el control de la carga superficial es una de las estrategias más subestimadas pero necesarias para preservar la salud del folículo pilosebáceo en ambientes de alta polución o carga eléctrica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes anti-estáticos",
+        "surfactantes suaves"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-post-evento"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-007",
+    "title": "El impacto de los campos electromagnéticos en la estabilidad de las emulsiones cosméticas",
+    "content": "Estudios fisicoquímicos sobre estabilidad de emulsiones sugieren que los campos electromagnéticos de alta frecuencia pueden afectar la orientación de los tensioactivos en las interfases aceite-agua. En el caso del maquillaje, esto puede resultar en la separación de fases o en una migración de pigmentos hacia zonas de mayor temperatura en el rostro. Para mitigar este riesgo en eventos, se recomienda el uso de emulsiones de tipo 'water-in-silicone' (W/Si), que son intrínsecamente más estables ante fluctuaciones ambientales y carga estática. Según publicaciones en el Journal of Cosmetic Science, la estabilidad de la emulsión es crítica para mantener la protección solar y la cobertura del color durante eventos prolongados. Al utilizar ingredientes que estabilizan la red interfacial, se reduce la probabilidad de que el maquillaje se rompa o se desplace por la influencia del entorno. Es una recomendación técnica para productos de alta gama destinados a eventos de larga duración donde la integridad del film cosmético es primordial para la estética y la protección cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos de silicona"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-008",
+    "title": "Gestión del pH cutáneo como barrera contra la interferencia de campos electromagnéticos",
+    "content": "El pH de la superficie cutánea (manto ácido) actúa como un regulador biológico. En situaciones de estrés ambiental, como la exposición a campos electromagnéticos intensos, el pH puede variar, alterando la carga eléctrica de la piel. Dado que el maquillaje se adhiere mediante fuerzas de Van der Waals y electrostáticas, una variación significativa del pH puede causar que el producto pierda adherencia o se oxide prematuramente. La evidencia indica que el uso de tónicos con pH fisiológico (aprox. 5.5) antes de la aplicación del maquillaje ayuda a estabilizar la carga superficial, mejorando la durabilidad del producto. Es fundamental considerar que el sudor, al ser rico en electrolitos, aumenta la conductividad de la piel, potenciando la interacción con CEM externos. La aplicación de un primer diseñado para equilibrar el pH es una táctica avanzada para asegurar que el maquillaje permanezca inalterado a pesar de las fluctuaciones del entorno. Esta práctica es especialmente relevante en eventos de alto estrés físico o tecnológico, donde la homeostasis cutánea se ve desafiada constantemente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28551401/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "buffers de pH",
+        "ácido láctico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-009",
+    "title": "Efecto de la luz azul y campos electromagnéticos en la oxidación del maquillaje",
+    "content": "La luz azul de alta energía (HEV) emitida por pantallas y sistemas de iluminación LED en eventos, junto con la exposición a campos electromagnéticos, puede catalizar la formación de radicales libres en los pigmentos del maquillaje. Este proceso, conocido como foto-oxidación, altera el color y la textura del producto, provocando un aspecto amarillento o grisáceo tras varias horas. La literatura dermatológica sugiere que el uso de maquillaje enriquecido con antioxidantes hidrosolubles y liposolubles (como ferúlico, tocoferol y extractos de polifenoles) puede neutralizar los radicales libres antes de que afecten la integridad del pigmento. Además, la aplicación de filtros físicos minerales, como el óxido de zinc tratado, proporciona una barrera adicional frente a la luz azul. En eventos de alta tecnología, la combinación de estos antioxidantes con una base de alta adherencia es la estrategia clínica más efectiva para mantener el tono original y la estabilidad del maquillaje, protegiendo simultáneamente la salud celular de la piel frente al estrés oxidativo inducido tecnológicamente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ferúlico",
+        "óxido de zinc",
+        "tocoferol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-antioxidante"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:13:04.071Z"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "chunk_id": "bio-hack-insulina-cutanea-001",
+    "title": "La conexión entre picos glucémicos y el acné adulto: ¿Mito o realidad?",
+    "content": "La tendencia viral de restringir carbohidratos simples bajo el lema de 'dieta anti-acné' tiene una base fisiológica sólida que a menudo se simplifica en exceso. Los picos de insulina inducidos por alimentos de alto índice glucémico provocan un aumento en los niveles de IGF-1 (Factor de Crecimiento Insulínico tipo 1). Este aumento estimula directamente la proliferación de queratinocitos y la síntesis de sebo en las glándulas sebáceas, exacerbando las lesiones inflamatorias del acné. Estudios publicados en el Journal of the Academy of Dermatology sugieren que existe una correlación clínica entre la carga glucémica y la severidad del acné, debido a la activación de la vía de señalización mTORC1. Sin embargo, esto no implica que el azúcar sea la única causa ni que eliminar carbohidratos cure el acné de forma aislada. La recomendación clínica es mantener un equilibrio metabólico, priorizando alimentos de bajo índice glucémico, lo cual es más efectivo que las dietas restrictivas extremas que pueden derivar en deficiencias nutricionales. El enfoque debe ser integral, analizando el contexto hormonal del paciente y no solo el conteo de calorías o la eliminación de grupos alimenticios completos.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/causes/diet",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "20-40"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "trastornos_conducta_alimentaria"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:32:29.248Z"
+  },
+  {
+    "chunk_id": "spf-en-barra-fallacia-006",
+    "title": "La falacia de la cobertura uniforme en protectores solares en barra (Sticks)",
+    "content": "Los protectores solares en formato stick o barra se han vuelto extremadamente populares por su practicidad al reaplicar. Sin embargo, estudios han demostrado que la mayoría de los usuarios no aplican la cantidad suficiente para obtener el FPS indicado en el envase. Para lograr la protección declarada, se requiere una capa densa y uniforme, lo cual es difícil de conseguir con una barra, ya que el producto suele quedar en parches o ser arrastrado por el movimiento de la piel. Además, al ser productos formulados con ceras para mantener su solidez, la distribución sobre el rostro es desigual, dejando zonas vulnerables a la radiación UV. Los dermatólogos advierten que el stick debe usarse como complemento, nunca como sustituto del protector solar fluido o en crema para la primera aplicación del día. La falsa sensación de seguridad que ofrecen estos productos es un factor de riesgo para el daño solar acumulado, especialmente en áreas críticas como el contorno de ojos o la nariz. La recomendación es aplicar una base adecuada de protector solar convencional y utilizar el stick únicamente para retoques en zonas específicas durante el día, asegurando siempre varias pasadas para cubrir el área de manera efectiva.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "uv_filters"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:32:29.248Z"
+  }
+]

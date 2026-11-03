@@ -1,0 +1,372 @@
+[
+  {
+    "chunk_id": "textura_poros-nutricion-celular-001",
+    "title": "Impacto de los ácidos grasos omega-3 en la regulación de la secreción sebácea",
+    "content": "La regulación de la secreción sebácea no depende exclusivamente de factores hormonales; la composición lipídica del sebo está influenciada significativamente por la dieta. Estudios publicados en el Journal of Cosmetic Dermatology sugieren que una ingesta equilibrada de ácidos grasos omega-3 puede modular la respuesta inflamatoria dentro del canal folicular. A diferencia de los ácidos grasos proinflamatorios, el omega-3 ayuda a reducir la viscosidad del sebo, facilitando su flujo a través del ostium folicular y previniendo la formación de microcomedones. Esta fluidez es fundamental para evitar la obstrucción que, a largo plazo, dilata el poro. La suplementación controlada, bajo supervisión clínica, ha mostrado una correlación positiva en la mejora de la textura cutánea general, al reducir la hiperqueratinización reactiva secundaria a la inflamación. Es imperativo recordar que cualquier cambio en la dieta debe ser evaluado por un nutricionista clínico, especialmente en pacientes con historial de acné moderado a severo, donde la gestión de la barrera cutánea es una prioridad diagnóstica en GlowApp.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "omega-3"
+      ],
+      "contraindications": [
+        "alergias_pescado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_dermocosmética"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-cargas-electricas-002",
+    "title": "La influencia de las cargas electrostáticas y la acumulación de detritos en el poro",
+    "content": "Un fenómeno frecuentemente ignorado en la dermatología cosmética es la acumulación de partículas ambientales cargadas electrostáticamente sobre la superficie cutánea. La piel, al poseer una carga eléctrica natural, puede atraer micropartículas de contaminación y polvo que, al mezclarse con el sebo, aumentan la densidad de los detritos dentro del canal folicular. Esta interacción no solo provoca una obstrucción mecánica, sino que altera el microambiente del poro, favoreciendo la proliferación bacteriana. La limpieza con surfactantes aniónicos o micelares diseñadas para neutralizar estas cargas es una estrategia avanzada para mantener la permeabilidad del ostium folicular. Investigaciones en la International Journal of Dermatology destacan que el uso de tecnologías de limpieza, como los dispositivos sónicos, puede mejorar la eficiencia en la remoción de estos detritos en comparación con la limpieza manual. Mantener el poro libre de estas partículas es esencial para prevenir la dilatación por acumulación crónica, un factor crítico en entornos urbanos con alta densidad de tráfico como Bogotá.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-neuropeptidos-003",
+    "title": "Neuropeptidos y su papel en la contracción del músculo erector del pelo y el poro",
+    "content": "La apariencia del poro está intrínsecamente ligada a la unidad pilosebácea y su respuesta a mediadores neuroquímicos. El músculo erector del pelo, que se inserta en el folículo, responde a estímulos nerviosos y neuropeptidos liberados bajo condiciones de estrés o cambios de temperatura. Esta contracción muscular puede alterar momentáneamente la arquitectura del canal folicular, facilitando o dificultando la expulsión del sebo. En personas con piel hiperreactiva, la estimulación crónica de estos receptores neuropeptidérgicos puede derivar en una alteración de la elasticidad de la pared folicular, lo que se traduce visualmente como una textura irregular o poros dilatados. La modulación de estos receptores a través de ingredientes neurocosméticos emergentes es un campo de estudio activo en la dermatología actual. Entender esta conexión mente-piel permite a los usuarios de GlowApp identificar cuándo la causa de su textura no es puramente seborreica, sino una respuesta del sistema nervioso periférico a factores externos e internos, permitiendo un abordaje mucho más holístico y preciso.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central / NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "neurocosmeticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-biofilms-004",
+    "title": "Biofilms bacterianos y la persistencia de la textura rugosa",
+    "content": "La formación de biofilms dentro del folículo pilosebáceo es una causa subestimada de la textura persistente y los poros dilatados. Un biofilm es una comunidad organizada de microorganismos que se adhieren a la superficie folicular y están protegidos por una matriz extracelular, lo que los hace altamente resistentes a los tratamientos tópicos convencionales como el ácido salicílico o el peróxido de benzoilo. Esta estructura no solo mantiene una inflamación subclínica constante, sino que altera la queratinización del ostium, causando una apariencia de poro 'rugoso' que no responde a la exfoliación estándar. La ruptura de estos biofilms requiere estrategias que combinen agentes queratolíticos con ingredientes que alteren la comunicación intercelular bacteriana (quorum sensing). En el contexto clínico, el reconocimiento de esta patología es vital para evitar el sobretratamiento con exfoliantes físicos, los cuales pueden exacerbar la inflamación y dañar la barrera cutánea sin afectar la raíz bacteriana del problema, perpetuando el ciclo de dilatación.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/acne",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "adolescent",
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_azelaico",
+        "retinoides"
+      ],
+      "contraindications": [
+        "exfoliantes_fisicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_acne"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-hidratacion-profunda-005",
+    "title": "La importancia del NMF en la flexibilidad del ostium folicular",
+    "content": "El Factor de Humectación Natural (NMF, por sus siglas en inglés) juega un rol crítico no solo en la superficie del estrato córneo, sino en la flexibilidad del tejido peri-folicular. Cuando los niveles de NMF son bajos, la queratina que rodea el ostium se vuelve rígida y menos elástica, lo que impide que el poro se contraiga eficazmente tras la secreción de sebo. Esta falta de flexibilidad resulta en una apertura folicular que permanece dilatada permanentemente, incluso cuando la producción de sebo es normal. La suplementación con humectantes como urea, aminoácidos y lactato de sodio no solo mejora la hidratación superficial, sino que devuelve la plasticidad necesaria a la arquitectura del poro. Es fundamental comprender que la hidratación profunda es un pilar preventivo para evitar el estiramiento del poro por falta de soporte estructural. En GlowApp, recomendamos integrar humectantes de alta afinidad para mantener la cohesión celular y evitar que la deshidratación sea el factor determinante de una textura irregular y poros visibles.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "aminoacidos",
+        "lactato_sodio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-luz-azul-006",
+    "title": "Exposición a luz azul y su impacto en la función del poro",
+    "content": "La exposición prolongada a la luz visible de alta energía (HEV), proveniente de pantallas y dispositivos electrónicos, ha sido vinculada recientemente con cambios en la homeostasis de la unidad pilosebácea. Investigaciones preliminares indican que la luz azul puede inducir estrés oxidativo a nivel mitocondrial en los queratinocitos del canal folicular, alterando los procesos de diferenciación celular y favoreciendo una queratinización desordenada. Este proceso puede obstruir el poro y fomentar la inflamación crónica, contribuyendo a una textura irregular. A diferencia de la radiación UV, la luz azul penetra profundamente en la dermis, afectando potencialmente la estructura de soporte del poro. La incorporación de antioxidantes tópicos y filtros solares con protección contra luz visible es una recomendación cada vez más relevante para la salud del poro en el estilo de vida digital actual. Es crucial que los usuarios entiendan que la protección solar no es solo para evitar manchas, sino para preservar la integridad estructural del poro frente a las agresiones lumínicas diarias.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "filtros_fisicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-dieta-indice-007",
+    "title": "El papel de la insulina y el IG en la diferenciación sebocitaria",
+    "content": "La relación entre la dieta y la textura del poro es mediada en gran medida por la vía de señalización de la insulina y el factor de crecimiento similar a la insulina-1 (IGF-1). Un consumo elevado de alimentos con alto índice glucémico provoca picos de insulina que estimulan la proliferación y diferenciación de los sebocitos, aumentando drásticamente la producción de sebo. Este exceso de lípidos es, por definición, el precursor de la dilatación folicular. Además, el IGF-1 regula la expresión de genes implicados en la queratinización, promoviendo una hiperqueratosis que atrapa el sebo dentro del poro. La evidencia clínica es contundente: el control de la carga glucémica tiene un impacto directo en la reducción del tamaño aparente del poro al normalizar la secreción sebácea desde el origen. En GlowApp, promovemos una visión integral donde la nutrición no es un complemento, sino una herramienta terapéutica fundamental para pacientes con poros visibles por sobreproducción de sebo, alineada con las recomendaciones de la AAD sobre dieta y salud cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_dermocosmética"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-limpieza-enzimatica-008",
+    "title": "Enzimas proteolíticas: una alternativa suave para la textura del poro",
+    "content": "Para pieles sensibles o con barrera comprometida, los exfoliantes químicos (AHAs/BHAs) a veces resultan irritantes, lo que conlleva a una inflamación que paradójicamente empeora la textura. Las enzimas proteolíticas, como la papaína y la bromelina, representan una alternativa altamente efectiva para la gestión de la textura del poro. Estas enzimas actúan rompiendo los enlaces peptídicos de las proteínas de la capa córnea, facilitando la descamación sin necesidad de un cambio drástico en el pH cutáneo. Su acción es superficial y altamente selectiva, permitiendo una limpieza profunda del ostium sin el riesgo de irritación asociado a los ácidos fuertes. Al limpiar suavemente los detritos acumulados, permiten que el sebo fluya libremente, previniendo la dilatación por obstrucción. En GlowApp, recomendamos la integración de limpiezas enzimáticas en la rutina nocturna de pieles que buscan mejorar la textura sin comprometer la integridad de la barrera, especialmente en climas variables como el de Bogotá.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "papaina",
+        "bromelina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  },
+  {
+    "chunk_id": "textura_poros-microbioma-estres-009",
+    "title": "El eje microbiota-estrés y la resiliencia del folículo pilosebáceo",
+    "content": "La resiliencia del folículo frente a factores ambientales está mediada por la diversidad de la microbiota cutánea. El estrés crónico induce la liberación de glucocorticoides endógenos, los cuales alteran la composición de la microbiota, reduciendo la presencia de bacterias comensales protectoras y favoreciendo la proliferación de cepas que promueven la inflamación del folículo. Esta disbiosis no solo afecta la salud general de la piel, sino que reduce la capacidad del poro para mantener su estructura frente a agresiones externas. Estudios recientes en IADVL enfatizan que la preservación de la biodiversidad microbiana es fundamental para una textura cutánea uniforme. El uso de prebióticos y probióticos tópicos se está consolidando como una estrategia para restaurar el equilibrio y fortalecer la resiliencia folicular. Entender que el poro es un ecosistema dinámico, y no solo un orificio estático, permite a los usuarios de GlowApp adoptar una perspectiva de cuidado preventivo, enfocada en nutrir el microbioma para mejorar la textura de forma sostenible y biológica.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_cutaneo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:37:22.342Z"
+  }
+]

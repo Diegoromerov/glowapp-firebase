@@ -1,0 +1,192 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-vasculatura-001",
+    "title": "Análisis de la arquitectura vascular mediante Doppler Láser de escaneo",
+    "content": "La evaluación de la perfusión sanguínea perifolicular representa una frontera diagnóstica crítica en las alopecias cicatriciales y no cicatriciales. El uso de la imagenología Doppler Láser permite cuantificar el flujo eritrocitario en el plexo subpapilar, un parámetro que suele estar alterado antes de la manifestación clínica de la miniaturización. La hipoperfusión crónica no solo limita el aporte de oxígeno, sino que altera la entrega de factores de crecimiento esenciales para la transición del ciclo telógeno al anágeno. Estudios publicados en revistas indexadas sugieren que la reducción en la velocidad de flujo microvascular precede a la atrofia del bulbo piloso en la alopecia androgenética. Este abordaje diagnóstico permite identificar subgrupos de pacientes con componentes isquémicos, quienes podrían beneficiarse de terapias vasodilatadoras optimizadas o intervenciones de fotobiomodulación para mejorar la angiogénesis local. La medición precisa mediante esta tecnología proporciona un biomarcador funcional objetivo, diferenciándolo de las evaluaciones subjetivas basadas puramente en la densidad capilar observada en tricoscopia convencional.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6380979/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:02.510Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biofisica-002",
+    "title": "Evaluación de la capacitancia eléctrica en el estrato córneo folicular",
+    "content": "La integridad de la barrera cutánea en el orificio folicular es determinante para la penetración de activos tópicos y la susceptibilidad a microorganismos. La capacitancia eléctrica, medida mediante sensores de impedancia de alta frecuencia, permite evaluar el contenido hídrico y la funcionalidad de la barrera lipídica a nivel del ostium. Un estrato córneo deshidratado o con una composición lipídica alterada favorece la penetración de alérgenos y contaminantes del exposoma urbano, exacerbando procesos inflamatorios subclínicos. La evidencia clínica indica que la pérdida de agua transepidérmica (TEWL) en el cuero cabelludo correlaciona inversamente con la salud del folículo piloso. En pacientes con dermatitis seborreica o psoriasis capilar, la monitorización de la capacitancia ayuda a ajustar la formulación de los vehículos terapéuticos, asegurando una distribución óptima sin comprometer la homeostasis del microambiente. Este método diagnóstico no invasivo es fundamental para el diseño de protocolos personalizados de cuidado capilar, permitiendo detectar alteraciones en la barrera antes de que se presenten signos evidentes de descamación o eritema clínico, optimizando así el pronóstico de recuperación folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:02.510Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-003",
+    "title": "Análisis de la fatiga elástica en la cutícula mediante microscopía de fuerza atómica",
+    "content": "La cutícula capilar no solo es una estructura estética, sino una barrera mecánica cuya integridad es vital para proteger la corteza contra el daño ambiental. La microscopía de fuerza atómica permite medir la histéresis elástica y la resistencia a la fricción de las células cuticulares. El daño acumulativo por factores químicos, mecánicos y radiación UV se manifiesta como una pérdida de la capacidad de recuperación elástica, lo que predispone al tallo a la fractura prematura. Este análisis biomecánico revela que el uso repetido de tratamientos térmicos altera la disposición de las proteínas de la membrana celular (CMC), reduciendo la cohesión intercelular. Identificar la 'fatiga estructural' mediante este método permite a los especialistas en dermatología y cosmetología prescribir intervenciones restaurativas basadas en polímeros biomiméticos o lípidos reparadores antes de que la tricorrexis nodosa se vuelva irreversible. La comprensión profunda de estas propiedades físicas es esencial para diferenciar entre el daño estructural del tallo y las patologías de origen folicular, permitiendo un manejo integral del paciente que combine la salud del cuero cabelludo con la preservación de la integridad del tallo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:02.510Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-004",
+    "title": "El eje neuro-inmune: hiperalgesia folicular y sustrato inflamatorio",
+    "content": "La tricodinia, a menudo descartada como síntoma inespecífico, es un marcador clínico de inflamación neurogénica mediada por la liberación de neuropéptidos como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP). Estos mediadores, liberados por las terminaciones nerviosas periféricas en respuesta al estrés oxidativo o inflamación persistente, activan los mastocitos perifoliculares, perpetuando un ciclo de microinflamación que acelera la miniaturización folicular. La evaluación de la sensibilidad cutánea mediante escalas de dolor estandarizadas y la medición de la densidad de terminaciones nerviosas intraepidérmicas permiten mapear la actividad neurogénica. La evidencia actual vincula este fenómeno con estados de estrés crónico y disfunción del eje neuro-inmune, sugiriendo que el manejo de la alopecia requiere un abordaje psicodermatológico. La modulación de estos receptores mediante terapias tópicas o sistémicas que inhiban la liberación de neuropéptidos promete ser una estrategia terapéutica disruptiva. Reconocer este mecanismo permite al clínico intervenir en fases tempranas, evitando la progresión hacia una alopecia cicatricial irreversible por inflamación neurogénica crónica y mejorando significativamente la calidad de vida del paciente que sufre de dolor o prurito asociado a la caída del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:02.510Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-006",
+    "title": "Impacto de la glicación no enzimática en la matriz folicular",
+    "content": "La glicación no enzimática, proceso mediante el cual los azúcares se unen covalentemente a proteínas sin mediación enzimática, resulta en la formación de productos finales de glicación avanzada (AGEs). Estos compuestos se acumulan en la matriz extracelular del folículo piloso, induciendo rigidez y alterando la arquitectura del nicho de células madre. La evidencia científica muestra que la acumulación de AGEs en la vaina radicular externa correlaciona con la pérdida de elasticidad y una menor capacidad de regeneración folicular, factores que contribuyen al envejecimiento capilar prematuro. La detección de estos marcadores mediante espectroscopía de fluorescencia permite cuantificar el daño acumulado por estilo de vida y dieta. Los pacientes con alta carga de AGEs presentan una menor respuesta a la estimulación folicular, lo que sugiere la necesidad de implementar estrategias de 'desglicación' o inhibición de la formación de estos compuestos para preservar la función del bulbo. Este hallazgo subraya la importancia del eje sistémico en el diagnóstico capilar, donde los factores metabólicos, como el control glucémico, tienen un impacto directo en la estructura y funcionalidad del folículo, requiriendo un abordaje interdisciplinario para obtener resultados sostenibles en el tiempo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/3456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:13:02.510Z"
+  }
+]

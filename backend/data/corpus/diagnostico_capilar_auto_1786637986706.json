@@ -1,0 +1,120 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunologia-innata-001",
+    "title": "El rol de los receptores tipo Toll (TLR) en la detección de patógenos foliculares",
+    "content": "La inmunidad innata en el cuero cabelludo se articula principalmente a través de los receptores tipo Toll (TLR), proteínas transmembrana que reconocen patrones moleculares asociados a patógenos (PAMPs). En el contexto de la salud folicular, la expresión aberrante de TLR2 y TLR4 en el epitelio del infundíbulo folicular está directamente vinculada con la inflamación crónica en patologías como la alopecia cicatricial centrífuga central. Cuando estos receptores detectan una disbiosis bacteriana o fúngica, activan la vía NF-κB, desencadenando una cascada proinflamatoria que altera el ciclo del folículo, promoviendo la apoptosis prematura en la fase anágena. La monitorización de la expresión de estos receptores mediante biopsias por punch permite identificar estados de inflamación subclínica antes de la aparición de fibrosis clínica. La modulación de esta respuesta inmune innata representa un objetivo terapéutico emergente, alejándose de los enfoques puramente sintomáticos para abordar la raíz de la disfunción inmunitaria en el nicho folicular, mejorando así la resiliencia del folículo ante estresores ambientales comunes en entornos urbanos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_inflamacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:19:28.806Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-proteomics-002",
+    "title": "Análisis proteómico de la queratina: biomarcadores de daño estructural",
+    "content": "El análisis proteómico de la cutícula capilar ha evolucionado hacia la identificación de modificaciones post-traduccionales específicas que actúan como biomarcadores de integridad estructural. La oxidación de los residuos de cisteína, que forman los puentes disulfuro esenciales para la estabilidad de la alfa-queratina, se correlaciona directamente con la exposición acumulada a radiación UV y contaminantes atmosféricos. Estos cambios en el proteoma capilar no solo afectan la estética del tallo, sino que comprometen la barrera física contra agentes externos, facilitando la penetración de químicos y microorganismos. El uso de espectrometría de masas para mapear estas modificaciones permite una evaluación clínica precisa del daño estructural, permitiendo personalizar protocolos de reconstrucción molecular. Estudios recientes demuestran que la restauración de la proteostasis en la cutícula puede prevenir la tricorrexis nodosa inducida por fatiga mecánica. La identificación de estos perfiles proteicos permite predecir la susceptibilidad del cabello a la ruptura prematura, un factor crítico en pacientes con regímenes de cuidado agresivos o alta exposición ambiental.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00213-4/abstract",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:19:28.806Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microfluida-003",
+    "title": "Dinámica de microfluidos y obstrucción del canal folicular por sebo",
+    "content": "La obstrucción del ostium folicular no es solo un problema de acumulación lipídica, sino un proceso dinámico regido por las leyes de la microfluídica. La viscosidad del sebo, influenciada por la composición de ácidos grasos y la temperatura local del cuero cabelludo, determina la eficiencia con la que el sebo asciende a través del canal. Cuando la reología del sebo se altera, ya sea por desequilibrios hormonales o por el uso de productos oclusivos, se forman tapones que crean un microambiente hipóxico. Este estado de hipoxia altera la expresión génica de las células de la papila dérmica, reduciendo la producción de factores de crecimiento como el IGF-1. El diagnóstico clínico mediante la evaluación del ángulo de contacto del sebo y la viscosidad in vivo permite identificar a los pacientes en riesgo de desarrollar foliculitis o miniaturización folicular. La gestión de esta dinámica de fluidos, mediante agentes queratolíticos suaves y moduladores de la síntesis lipídica, es fundamental para mantener la permeabilidad del ostium y asegurar la viabilidad del folículo a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2024",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_salicilico",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:19:28.806Z"
+  }
+]

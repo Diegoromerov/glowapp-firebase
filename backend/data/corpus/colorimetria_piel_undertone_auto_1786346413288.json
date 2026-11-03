@@ -1,0 +1,237 @@
+[
+  {
+    "chunk_id": "colorimetria-influencia-ejercicio-vascular-001",
+    "title": "Impacto del ejercicio físico y la respuesta vasomotora en la lectura del subtono",
+    "content": "La práctica de ejercicio físico intenso induce una vasodilatación periférica significativa y un incremento en el flujo sanguíneo cutáneo, lo que altera temporalmente la percepción cromática del subtono. Este fenómeno, descrito como hiperemia reactiva, aumenta la reflectancia de las longitudes de onda rojas debido a la oxigenación de la hemoglobina en el plexo vascular dérmico. En el contexto de la colorimetría clínica, realizar una prueba de base de maquillaje inmediatamente después del entrenamiento puede conducir a un error de diagnóstico, llevando a la selección de tonos excesivamente fríos o rosados para compensar un eritema transitorio que no representa la cromaticidad basal del paciente. Estudios en fisiología cutánea sugieren esperar al menos 60 minutos tras la actividad física para permitir que la microcirculación retorne a su estado homeostático. La persistencia de este eritema puede ser un indicador de una reactividad vascular aumentada, común en pacientes con rosácea o disfunción de la barrera cutánea, lo cual debe ser considerado antes de realizar cualquier test de colorimetría para evitar el 'efecto máscara' post-ejercicio.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31602693/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "ejercicio_intenso_previo_test"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base_maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:54.454Z"
+  },
+  {
+    "chunk_id": "colorimetria-cromatismo-exposicion-pantallas-002",
+    "title": "Influencia de la luz azul de dispositivos digitales en la percepción del subtono",
+    "content": "La exposición prolongada a la luz azul (HEV - High Energy Visible light) emitida por pantallas no solo afecta la salud cutánea a largo plazo mediante la inducción de estrés oxidativo, sino que altera drásticamente la percepción del subtono en entornos de diagnóstico digital. La luz HEV tiene una longitud de onda cercana a los 450 nm, lo cual puede inducir una percepción de palidez o cianosis subclínica en la piel al ser captada por sensores de cámaras o por el ojo humano bajo condiciones de iluminación mixta. Este fenómeno, conocido como interferencia cromática por emisión, complica la colorimetría remota. Los pigmentos de la piel poseen una reflectancia específica que se ve distorsionada cuando la fuente de luz ambiental es predominantemente azulada. Para mitigar este sesgo, es imperativo utilizar fuentes de luz con un Índice de Reproducción Cromática (CRI) superior a 95 y una temperatura de color neutra (5000K-5500K). La literatura dermatológica subraya que el uso de filtros 'blue light' en pantallas de diagnóstico puede normalizar la percepción, pero el diagnóstico presencial bajo luz natural controlada sigue siendo el estándar de oro para evitar errores de subtono inducidos por tecnología.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_diagnostico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:54.454Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-periorbital-004",
+    "title": "El efecto Tyndall en la zona periorbital: ¿pigmentación o vascularización?",
+    "content": "El efecto Tyndall ocurre cuando la luz incide sobre la piel delgada del área periorbital, donde la falta de panículo adiposo y la presencia de vasos sanguíneos superficiales provocan una dispersión preferencial de las longitudes de onda azules. Este fenómeno es frecuentemente confundido con hiperpigmentación periorbital (ojeras). Desde la óptica de la colorimetría, es vital distinguir si el color oscuro se debe a un depósito de melanina (subtono cálido/marrón) o a la dispersión de luz (subtono frío/azulado). Aplicar correctores cálidos (naranja/melocotón) sobre una zona donde el problema es puramente físico-óptico (efecto Tyndall) puede generar una apariencia lodosa o artificial. El manejo clínico requiere una evaluación mediante la prueba de estiramiento: si al tensar la piel el color oscuro se atenúa, estamos ante un componente vascular y de dispersión de luz, lo que sugiere el uso de correctores con subtonos fríos o neutralizadores basados en la teoría del color complementario, evitando el exceso de pigmento cálido que solo acentuará la disparidad con el resto del rostro.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6374681/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correccion_color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:54.454Z"
+  },
+  {
+    "chunk_id": "colorimetria-estres-termico-subtono-005",
+    "title": "Variabilidad del subtono bajo estrés térmico ambiental",
+    "content": "El estrés térmico, ya sea por exposición a altas temperaturas o por el uso de dispositivos de calor facial, induce una respuesta termorreguladora que modifica drásticamente la lectura del subtono. La vasodilatación inducida por calor altera la reflectancia cutánea, aumentando el componente 'rojo' y disminuyendo la percepción de subtonos oliva o neutros. En un entorno tropical como Bogotá, donde las variaciones de temperatura pueden ser rápidas, es común que los clientes experimenten una 'deriva' en su colorimetría a lo largo del día. La piel bajo estrés térmico no solo cambia de tono, sino que también aumenta la producción de sebo, lo cual puede modificar la oxidación de los pigmentos de la base de maquillaje. La recomendación clínica es realizar el test de colorimetría en un ambiente con temperatura controlada (20-22°C) y esperar al menos 15 minutos tras la llegada del paciente para asegurar que la microcirculación se haya estabilizado. Ignorar la influencia de la temperatura ambiental en la evaluación del subtono es una causa principal de la insatisfacción con el tono de base elegido, dado que el producto que parece perfecto en el consultorio puede oxidarse o cambiar de apariencia al exponerse a las condiciones ambientales reales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base_maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:54.454Z"
+  },
+  {
+    "chunk_id": "colorimetria-ph-cutaneo-oxidacion-007",
+    "title": "El pH cutáneo y la oxidación química de los pigmentos de la base",
+    "content": "El pH de la superficie cutánea, que oscila normalmente entre 4.7 y 5.75, juega un papel crítico en la estabilidad de los pigmentos de hierro (óxidos de hierro) utilizados en las bases de maquillaje. Un pH cutáneo alterado, ya sea por el uso de limpiadores alcalinos o por disbiosis bacteriana, puede acelerar la oxidación de estos pigmentos, provocando que la base cambie de color (viraje) pocos minutos después de la aplicación. Este fenómeno, frecuentemente atribuido a 'mala calidad' del producto, es en realidad una interacción química entre la base y el ecosistema cutáneo. Los ácidos grasos libres presentes en el sebo también interactúan con la matriz de la base, disminuyendo su estabilidad cromática. Para asegurar una lectura precisa del subtono y mantener la fidelidad del color, es necesario equilibrar el pH cutáneo mediante tónicos post-limpieza. Las pieles con pH más alcalino suelen presentar una oxidación más rápida hacia tonos anaranjados. La evaluación del subtono debe realizarse siempre sobre una piel con el pH estabilizado para evitar errores en la elección de la cromaticidad de la base.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "reguladores_ph"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:54.454Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-cromaticidad-008",
+    "title": "El papel del microbioma cutáneo en la luminosidad y el subtono",
+    "content": "Investigaciones emergentes sugieren que la composición del microbioma cutáneo influye en la cromaticidad superficial de la piel. Ciertas cepas de Staphylococcus y Cutibacterium acnes producen metabolitos que pueden alterar la reflectancia de la luz. Una disbiosis cutánea no solo se manifiesta con eritema o inflamación, sino que puede conferir un tono opaco o terroso a la epidermis, complicando el diagnóstico del subtono. La presencia de una microbiota saludable y diversa favorece una mayor dispersión de la luz (scattering), lo que se traduce en una piel con mayor luminosidad natural. Cuando el microbioma está alterado, la piel absorbe más luz, haciendo que el subtono parezca más oscuro o saturado de lo que realmente es. En el diagnóstico clínico, es vital considerar que la salud del microbioma es un factor determinante en la 'frescura' del subtono. La aplicación de productos con prebióticos y probióticos puede ayudar a restaurar la barrera y mejorar la percepción del color real, permitiendo una selección de maquillaje más precisa y armoniosa con la colorimetría natural del paciente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/nrmicro/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:19:54.454Z"
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "textura-poros-glicacion-enzimatica-001",
+    "title": "Glicación enzimática y su impacto en la elasticidad del ostium folicular",
+    "content": "La glicación es un proceso fisiopatológico donde los azúcares se unen a proteínas sin mediación enzimática, pero la glicación enzimática también juega un rol crítico en la arquitectura de la piel. En el ostium folicular, la modificación de proteínas estructurales como la fibrilina y la elastina reduce la capacidad de retracción del poro. A diferencia de la glicación no enzimática (AGEs), la enzimática está regulada por vías metabólicas que, al desregularse por hiperglucemia sistémica, alteran la cohesión de la matriz extracelular periporo. Esto resulta en una dilatación permanente, ya que el tejido pierde su 'memoria elástica'. Investigaciones en Journal of Investigative Dermatology sugieren que la modulación de estas vías mediante compuestos antiglicantes tópicos puede mejorar la firmeza periporo. Es fundamental entender que el poro no solo es un canal, sino una estructura sujeta a tensiones biomecánicas donde la rigidez proteica determina su apertura visual. El control de picos insulínicos es, por tanto, una estrategia de manejo clínico indirecto pero esencial para preservar la integridad mecánica del ostium a largo plazo, evitando la elongación irreversible del poro observada en pieles con alta carga glucémica.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:13:39.483Z"
+  },
+  {
+    "chunk_id": "textura-poros-metabolismo-triptofano-002",
+    "title": "Metabolismo del triptófano y homeostasis folicular",
+    "content": "El metabolismo del triptófano a través de la vía de la quinurenina tiene implicaciones directas en la homeostasis de la unidad pilosebácea. Los queratinocitos foliculares expresan enzimas como la indolamina 2,3-dioxigenasa (IDO), que modulan la respuesta inmune local y la diferenciación celular. Una alteración en este eje puede derivar en una queratinización anómala dentro del conducto folicular, favoreciendo la formación de microcomedones que, al obstruir el paso del sebo, dilatan el poro mecánicamente. Estudios publicados en PubMed indican que metabolitos del triptófano actúan como ligandos para el receptor de hidrocarburos arilo (AhR), un regulador clave de la diferenciación epidérmica. Cuando este equilibrio se rompe, la barrera del ostium se debilita, aumentando la susceptibilidad a la inflamación subclínica. En GlowApp, es vital reconocer que la textura rugosa a menudo no es un exceso de grasa, sino una disfunción en el recambio celular mediado por señales neuroinmunes. La suplementación o el uso de activos que apoyen el metabolismo celular pueden ser estrategias emergentes para mejorar la suavidad cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35892147/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "triptófano",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:13:39.483Z"
+  },
+  {
+    "chunk_id": "textura-poros-gradientes-potasio-003",
+    "title": "Gradientes de potasio y dinámica contráctil del ostium",
+    "content": "La contractilidad del músculo erector del pelo y la tonicidad del ostium folicular están finamente reguladas por gradientes iónicos, particularmente el potasio. Los canales de potasio sensibles al ATP (KATP) en las células musculares lisas del folículo responden a señales metabólicas y de estrés. Una desregulación en la homeostasis de estos canales puede impedir que el poro mantenga su cierre fisiológico tras la secreción sebácea, contribuyendo a la apariencia de poros dilatados. En condiciones de estrés térmico o ansiedad (mediada por catecolaminas), la apertura del poro se ve exacerbada por la modulación de estos canales. La literatura dermatológica contemporánea destaca que el uso de agentes tópicos que influyen en la conductancia iónica podría ofrecer, en el futuro, una forma de 'cerrar' el poro de manera transitoria mediante la modulación de la contracción muscular. Es esencial educar al paciente sobre cómo los estados de estrés crónico en Bogotá, sumados a factores ambientales, impactan esta dinámica fisiológica, alejándonos del mito de que el poro es una estructura estática e inerte.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:13:39.483Z"
+  },
+  {
+    "chunk_id": "textura-poros-calicreinas-004",
+    "title": "Rol de las calicreínas en la descamación del ostium",
+    "content": "Las calicreínas son serina proteasas encargadas de la degradación de los corneodesmosomas, permitiendo una descamación ordenada. Dentro del ostium folicular, un desequilibrio en la actividad de estas enzimas, ya sea por un pH cutáneo elevado o por deficiencia de lípidos barrera, conduce a una retención de queratinocitos. Esta acumulación (hiperqueratosis folicular) es la causa principal de la textura rugosa y el ensanchamiento físico del poro. Estudios en revistas de dermatología clínica indican que el uso de ácidos exfoliantes controlados no solo elimina el 'tapón' visible, sino que normaliza la expresión de las calicreínas, restaurando el proceso natural de eliminación celular. En GlowApp, enfatizamos que la exfoliación debe ser un proceso de apoyo a este mecanismo biológico, nunca una agresión mecánica. El exceso de limpieza puede inhibir la función de las calicreínas al alterar el pH, creando un círculo vicioso de obstrucción y dilatación. La clave está en la regulación del pH a niveles fisiológicos (~4.7-5.5) para optimizar la función proteolítica natural.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido láctico",
+        "ácido salicílico"
+      ],
+      "contraindications": [
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-cuidado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:13:39.483Z"
+  },
+  {
+    "chunk_id": "textura-poros-esfingolipidos-005",
+    "title": "Esfingolípidos y la integridad del canal folicular",
+    "content": "Los esfingolípidos, incluyendo ceramidas, esfingomielinas y glucoesfingolípidos, son componentes estructurales fundamentales de la barrera cutánea dentro del canal folicular. Actúan como el 'cemento' que mantiene la cohesión de los queratinocitos en el ostium. Cuando los niveles de esfingolípidos disminuyen, la estructura del poro se vuelve más permeable a agentes irritantes y patógenos, lo que desencadena una respuesta inflamatoria de bajo grado que resulta en edema periporo. Este edema, aunque microscópico, aumenta la percepción visual de un poro dilatado. La reposición tópica de ceramidas de cadena larga ayuda a estabilizar la barrera del canal, reduciendo la pérdida de agua transepidérmica (TEWL) dentro del poro y mejorando su firmeza. Es fundamental notar que muchas rutinas de piel grasa en Bogotá abusan de surfactantes que eliminan estos lípidos esenciales, empeorando paradójicamente la textura. El enfoque experto de GlowApp recomienda la preservación de la barrera lipídica como paso previo a cualquier tratamiento de refinamiento de textura para evitar la dilatación por irritación crónica.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-textura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:13:39.483Z"
+  },
+  {
+    "chunk_id": "textura-poros-homeostasis-magnesio-006",
+    "title": "Homeostasis del ion magnesio y función folicular",
+    "content": "El magnesio actúa como un cofactor esencial en más de 300 reacciones enzimáticas, incluyendo aquellas que mantienen la cohesión de los queratinocitos y la estabilidad de las membranas celulares en el ostium folicular. Deficiencias en los niveles de magnesio pueden comprometer la función barrera y la regeneración celular, llevando a una descamación irregular que obstruye el poro. Además, el magnesio tiene propiedades antiinflamatorias que ayudan a mitigar el edema periporo. En el contexto de pieles urbanas expuestas a la contaminación, el mantenimiento de niveles adecuados de magnesio, tanto por vía tópica como sistémica, puede mejorar la resiliencia del folículo frente a factores ambientales. La evidencia sugiere que el magnesio estabiliza las uniones estrechas (tight junctions), mejorando la integridad estructural del canal. Para GlowApp, el diagnóstico de textura debe considerar factores nutricionales, ya que el poro es un reflejo de la salud metabólica global. Una piel con deficiencia de magnesio suele presentar una textura más rugosa y poros con mayor tendencia a la retención de detritos, independientemente de la carga sebácea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://ods.od.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "magnesio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:13:39.483Z"
+  }
+]

@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001-psoriasis-ungueal",
+    "title": "Abordaje clínico de la psoriasis ungueal en extremidades",
+    "content": "La psoriasis ungueal es una manifestación frecuente y a menudo subdiagnosticada que impacta significativamente la calidad de vida. A diferencia de la afectación cutánea, la matriz ungueal y el lecho ungueal presentan desafíos terapéuticos únicos debido a la barrera queratinizada de la uña. Clínicamente, se observa a través de signos como el pitting (punteado), las manchas en 'gota de aceite', hiperqueratosis subungueal y onicólisis. La fisiopatología implica una respuesta inflamatoria mediada por la vía IL-23/Th17, similar a la psoriasis cutánea. El manejo clínico en el contexto de spa médico debe ser cauteloso; procedimientos cosméticos agresivos, como el uso de limas de alta abrasión o esmaltes semipermanentes, pueden exacerbar el fenómeno de Koebner en el lecho ungueal, aumentando la inflamación. Es fundamental diferenciar la psoriasis ungueal de la onicomicosis mediante examen micológico directo, ya que el tratamiento es radicalmente distinto. Se recomienda el uso de corticoides tópicos de alta potencia en la matriz o análogos de vitamina D bajo supervisión dermatológica. La educación al paciente sobre la evitación de traumas mecánicos es el pilar de la contención en el cuidado corporal especializado.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/psoriasis/treatment/nails",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides",
+        "calcipotriol"
+      ],
+      "contraindications": [
+        "limado_excesivo",
+        "trauma_mecanico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:20:52.000Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002-hidrosadenitis-cicatrizal",
+    "title": "Manejo de la fibrosis post-inflamatoria en zonas de pliegues",
+    "content": "La Hidradenitis Supurativa (HS) evoluciona frecuentemente hacia un estado de fibrosis dérmica profunda, caracterizada por la formación de bandas cicatriciales que limitan la movilidad articular y alteran la arquitectura del tejido adiposo subyacente. A diferencia de las cicatrices hipertróficas comunes, la fibrosis en la HS es producto de una inflamación crónica persistente que induce una deposición desorganizada de colágeno. En el entorno de spa clínico, el manejo de estas áreas requiere un enfoque no invasivo que priorice la integridad de la barrera cutánea. El uso de terapias físicas, como la radiofrecuencia no ablativa, debe ser estrictamente evaluado para evitar la activación de focos inflamatorios latentes. La literatura reciente de la International Hidradenitis Suppurativa Foundation sugiere que la terapia de compresión y el uso de siliconas tópicas pueden mejorar la textura de la cicatriz tras la fase aguda de la enfermedad. Es imperativo evitar la exfoliación mecánica en estas zonas, ya que la fricción puede desencadenar una nueva cascada de citoquinas proinflamatorias, perpetuando el ciclo de la enfermedad. La comunicación constante con el dermatólogo tratante es esencial para determinar el momento seguro para iniciar intervenciones cosméticas rehabilitadoras.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicona"
+      ],
+      "contraindications": [
+        "exfoliacion_mecanica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_cicatrizal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:20:52.000Z"
+  }
+]

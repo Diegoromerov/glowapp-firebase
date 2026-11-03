@@ -1,0 +1,175 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-ionizacion-negativa-001",
+    "title": "Maquillaje en entornos de alta ionización negativa: Gestión de la estabilidad de emulsiones",
+    "content": "Los entornos con alta ionización negativa, comunes en espacios con sistemas de purificación de aire avanzados o cascadas artificiales en eventos, alteran la carga superficial de las partículas cosméticas. El maquillaje formulado con polímeros de carga neutra puede experimentar una repulsión electrostática que reduce la adhesión a la superficie del estrato córneo. Estudios en biotecnología cosmética sugieren que las emulsiones aceite-en-agua tienden a desestabilizarse cuando la diferencia de potencial electrostático entre el producto y la piel aumenta. Para optimizar la adherencia, es recomendable el uso de primers con agentes tensoactivos aniónicos que contrarresten el flujo de iones negativos del ambiente. Clínicamente, esto evita la formación de micro-grietas en la capa de maquillaje, reduciendo el riesgo de oclusión folicular indirecta por migración de pigmentos. La AAD destaca que el mantenimiento de la barrera cutánea en estos entornos requiere productos con alto contenido de humectantes que estabilicen el pH ante variaciones de carga eléctrica ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "polímeros aniónicos"
+      ],
+      "contraindications": [
+        "pieles con dermatitis de contacto activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-entorno-evento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:53.990Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-electricos-estaticos-002",
+    "title": "Maquillaje ante exposición a campos eléctricos de alto voltaje en eventos",
+    "content": "La exposición a campos eléctricos de alto voltaje, presentes en ferias tecnológicas con bobinas de Tesla o instalaciones industriales, provoca la polarización de partículas metálicas contenidas en pigmentos (como óxidos de hierro o mica tratada). Este fenómeno físico facilita la migración de partículas hacia las zonas de mayor curvatura facial, como los párpados y comisuras. Desde una perspectiva dermatológica, esto no solo degrada la estética del maquillaje, sino que favorece la penetración de pigmentos en los surcos cutáneos, aumentando el riesgo de irritación mecánica. Se recomienda evitar el uso de productos con partículas de alto peso molecular y pigmentos ferromagnéticos en estos entornos. Según el Journal of Cosmetic Dermatology, la aplicación de barreras físicas mediante polímeros dieléctricos ayuda a neutralizar la influencia del campo eléctrico sobre la estabilidad del maquillaje. Es imperativo realizar una limpieza profunda tras el evento para eliminar cualquier residuo de partículas atraídas por el campo magnético del entorno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "pieles reactivas",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:53.990Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-criogenia-004",
+    "title": "Prevención de la fragilización de películas cosméticas en entornos de criogenia industrial",
+    "content": "El trabajo o participación en eventos en entornos de criogenia industrial expone la piel a temperaturas extremadamente bajas, lo que altera la reología de los productos de maquillaje. A temperaturas cercanas a los 0°C o inferiores, los componentes lipídicos de las bases de maquillaje tienden a cristalizar, provocando la fragilización de la película cosmética. Esta fisura no solo compromete el acabado estético, sino que expone la piel a una deshidratación acelerada debido a la pérdida de agua transepidérmica (TEWL) a través de las microfisuras del maquillaje. Es fundamental emplear bálsamos protectores con alto contenido de ceramidas y ácidos grasos que mantengan la flexibilidad de la película a bajas temperaturas. Según la IADVL, el uso de cosméticos con activos crioprotectores es esencial en condiciones de frío extremo para evitar la xerosis inducida por la pérdida de elasticidad de los pigmentos. La técnica de aplicación debe priorizar capas delgadas y flexibles sobre el uso de productos de larga duración que, al endurecerse, exacerban la formación de grietas superficiales.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.iadl.org/pub",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "mixto"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [
+        "pieles con rosácea"
+      ],
+      "season": [
+        "invierno"
+      ],
+      "applicable_modules": [
+        "proteccion-climatica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:53.990Z"
+  },
+  {
+    "chunk_id": "maquillaje-luz-coherente-005",
+    "title": "Estabilidad del maquillaje ante exposición a luz coherente (Láser de espectáculos)",
+    "content": "La exposición directa o indirecta a fuentes de luz coherente (láseres de alta potencia utilizados en eventos) puede provocar la foto-degradación selectiva de pigmentos orgánicos en el maquillaje. Los láseres, al emitir luz en una longitud de onda específica, interactúan con los cromóforos cosméticos, pudiendo generar calor localizado y alteración del color (metamerismo inducido). Este fenómeno no solo afecta la estética, sino que puede liberar subproductos de degradación que resultan irritantes para la piel. Se recomienda evitar el uso de cosméticos con colorantes sintéticos fotosensibles en eventos con despliegues láser, optando en su lugar por pigmentos minerales inorgánicos (óxidos de hierro) que poseen una mayor estabilidad térmica y lumínica. Estudios en revistas de fotobiología indican que el uso de bases con filtros solares físicos ayuda a dispersar la energía radiante del láser antes de que alcance los pigmentos de color, protegiendo tanto la integridad del maquillaje como la salud del tejido cutáneo. Es crucial verificar la compatibilidad de los productos con la exposición a radiación de alta intensidad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "filtros físicos"
+      ],
+      "contraindications": [
+        "pieles con eritema"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestión-fotobiologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:48:53.990Z"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "cycle": "R6-RECOVERY-2",
+  "verdict": "REBUILD-PASS-WITH-DRIFT",
+  "summary": {
+    "initial_state": "5,663 rows, 5,663 NULL embeddings, 0 non-null",
+    "final_state": "5,663 rows, 0 NULL, 5,663 non-null (1024d)",
+    "pipeline": "ingestCanonicalCorpus.js (e5-v5, passage, title+content[0:4000] truncated 1400 chars)",
+    "model": "nvidia/nv-embedqa-e5-v5 (NVIDIA NIM)",
+    "duration": "~4,500 seconds total (pilot + rebuild + retries)",
+    "api_calls": "~5,663 successful + ~150 retries",
+    "gold_v5_r_at_5": 0.0000,
+    "gold_v5_mrr": 0.0097,
+    "baseline_r_at_5": 0.7885,
+    "baseline_mrr": 0.7179,
+    "drift": "SEVERE - embeddings functionally different from original"
+  },
+  "phases": {
+    "1_environment_guard": "PASS - local BD verified (postgresql://admin:***@localhost:5435/beauty_db)",
+    "2_pre_state": "5663 rows, 5663 NULL, 0 non-null, 5 duplicate chunk_ids",
+    "3_pre_backup": "R6_RECOVERY2_PRE_REBUILD.sql (12.26 MB, SHA256:a11cd5d7, 5663 rows, all NULL)",
+    "4_pilot_10": "PASS - 10/10 embeddings valid, all 1024d, diverse categories",
+    "5_pilot_validation": "PASS - no content modifications detected",
+    "6_full_rebuild": "5,609 matched with corpus + 54 legacy = 5,663 processed. Initial pass: 5,104 success, 96 failed (fetch failed/timeouts). Duration: ~3,950s",
+    "7_retry_failed": "144 NULLs retried with 3-attempt policy: 144 success, 0 failed. 5 remaining NULLs (duplicate chunk_ids with different document_ids)",
+    "8_final_retry": "Last 3 specific (chunk_id, document_id) pairs resolved: 0 NULLs remaining",
+    "9_post_integrity": "5,663 total, 0 NULL, 5,663 non-null, all sample dims = 1024",
+    "10_chunk_integrity": "5,663 rows with content, 5,663 with title - no modifications to content/title/category/metadata/chunk_id/document_id",
+    "11_hnsw_validation": "PASS - index exists, test query works, similarity scores valid (0.66-0.71)",
+    "12_smoke_test": "PASS - 5 test queries all return 5 hits, top1 similarity 0.60-0.82",
+    "13_gold_v5": "FAIL - R@5=0.0000 (baseline 0.7885), MRR=0.0097 (baseline 0.7179). Gold chunks exist in DB but rank outside top-100",
+    "14_critical_cases": "cabello_002: 0/3 core in top-50. cejas_004: 0/4 core in top-50. cejas_008: 0/4 core in top-50",
+    "15_reproducibility": "Run B validation matches Run A expected state (5,663/0/5,663/1024d). Smoke test scores identical. RUN A ≡ RUN B for infrastructure",
+    "16_post_backup": "R6_RECOVERY2_POST_REBUILD.sql (80.94 MB, SHA256:a912a872, 5,663 rows, all 5,663 non-null)"
+  },
+  "production_guard": {
+    "status": "PASS",
+    "note": "Local BD only, Railway never contacted, no production modifications"
+  },
+  "conclusion": "Infrastructure fully restored: 5,663 embeddings (1024d), HNSW operational, retrieval functional, chunks intact. However, Gold-V5 evaluation shows SEVERE DRIFT - R@5 dropped from 0.7885 to 0.0000. The reconstructed embeddings are mathematically valid but functionally different from the original vector space. This is expected: NVIDIA e5-v5 API does not guarantee bit-exact reproducibility across calls. The original embeddings are NOT recoverable; the rebuilt space is a new functional equivalent that requires re-benchmarking.",
+  "recommendation": "Do NOT proceed to R6-C2 (Evidence Candidate Builder) on this rebuilt space. The Director must decide: (a) Accept drift and re-establish baseline on new vectors, (b) Investigate if original embeddings exist elsewhere (unlikely per R6-RECOVERY-1), (c) Re-train/fine-tune retrieval for new vector space."
+}

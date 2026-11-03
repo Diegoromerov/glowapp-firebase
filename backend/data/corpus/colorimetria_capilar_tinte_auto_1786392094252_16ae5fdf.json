@@ -1,0 +1,243 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392094250-1-0ac820e5-anisotropia-optica-de-la-fibra-capilar-y-su-influencia-en-la",
+    "title": "Anisotropía óptica de la fibra capilar y su influencia en la percepción cromática",
+    "content": "La fibra capilar presenta una estructura anisotrópica que altera la reflexión de la luz tras el proceso de coloración. A diferencia de las superficies planas, la cutícula actúa como una serie de micro-prismas que dispersan los fotones de manera desigual. Este fenómeno, conocido como anisotropía óptica, implica que el mismo pigmento puede percibirse con matices distintos dependiendo del ángulo de incidencia de la luz y la curvatura del cabello. En términos de colorimetría, esto explica por qué las zonas de mayor daño cuticular presentan una saturación cromática inferior: la rugosidad de la superficie dispersa la luz de forma difusa, reduciendo la reflectancia especular y alterando la pureza del tono final. La optimización del color requiere, por tanto, no solo la deposición de precursores, sino la nivelación de la superficie cuticular mediante selladores que reduzcan la dispersión incontrolada de la luz visible.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de sellado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:01:34.250Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392094250-2-d00a30fa-dinamica-de-flujo-microfluidico-en-el-cortex-durante-la-apli",
+    "title": "Dinámica de flujo microfluídico en el córtex durante la aplicación de tintes",
+    "content": "El proceso de teñido puede modelarse como un sistema de microfluídica en un medio poroso altamente tortuoso. La penetración de los precursores tintóreos está regida por la ley de Darcy en medios capilares, donde la viscosidad de la emulsión y la permeabilidad de la matriz queratínica determinan la profundidad de la difusión. Cuando la viscosidad es excesivamente alta, se genera una zona de exclusión en la periferia de la fibra, impidiendo la migración hacia el córtex profundo. Por el contrario, una viscosidad insuficiente provoca una saturación superficial que no se traduce en durabilidad. El control de la reología no newtoniana en los geles tintóreos es fundamental para asegurar que los precursores alcancen las micro-cavidades corticales antes de la polimerización oxidativa. Este equilibrio dinámico es lo que garantiza la uniformidad del tono desde la raíz hasta las puntas, minimizando el efecto de gradiente de color que suele observarse en cabellos con porosidad variable.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38552109/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes",
+        "agentes espesantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulación_química"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:01:34.250Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392094250-3-79659ba3-efecto-piezoelectrico-inducido-por-friccion-y-degradacion-de",
+    "title": "Efecto piezoeléctrico inducido por fricción y degradación del color",
+    "content": "La fibra capilar posee propiedades piezoeléctricas intrínsecas debido a la estructura helicoidal de la queratina. Durante el peinado o el roce mecánico, se generan micro-cargas eléctricas que pueden alterar la estabilidad de los tintes iónicos depositados. Este fenómeno de fricción mecánica induce una redistribución de los pigmentos en la superficie de la cutícula, acelerando la lixiviación de las moléculas de colorante. En cabellos tratados con tintes directos, este efecto es particularmente pronunciado, ya que la unión es predominantemente electrostática. La mitigación de este impacto requiere el uso de agentes acondicionadores que modulen la constante dieléctrica de la superficie, reduciendo la acumulación de carga y, por ende, el estrés mecánico sobre el depósito de color. Comprender esta interacción permite diseñar regímenes de mantenimiento que preserven la integridad del matiz frente a los estímulos físicos cotidianos, prolongando la vida media del color en condiciones de uso normal.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/hair-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:01:34.250Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392094250-4-3ce3ce68-quelacion-selectiva-de-iones-metalicos-y-prevencion-de-la-ox",
+    "title": "Quelación selectiva de iones metálicos y prevención de la oxidación incontrolada",
+    "content": "La presencia de trazas de metales de transición (como hierro, cobre y manganeso) en la matriz queratínica actúa como catalizador de reacciones de oxidación incontrolada durante el proceso de teñido. Estos iones facilitan la formación de radicales libres que degradan prematuramente los precursores de color antes de que alcancen su polimerización final. La implementación de quelantes orgánicos de alta afinidad, como el EDTA o derivados de aminoácidos, es esencial para secuestrar estos metales y evitar el viraje cromático hacia tonos no deseados. La eficacia de esta quelación depende de la constante de estabilidad del complejo formado y de la capacidad del agente para penetrar en la corteza capilar. Un protocolo de pre-tratamiento con agentes quelantes no solo protege la integridad estructural de la queratina frente al daño oxidativo, sino que garantiza una mayor precisión en la reproducción del tono, especialmente en aguas con alta dureza mineral.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org/journal-archive/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácidos orgánicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparación_cabello"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:01:34.250Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392094250-5-5b7b956c-solvatocromismo-y-percepcion-del-matiz-en-matrices-queratini",
+    "title": "Solvatocromismo y percepción del matiz en matrices queratínicas hidratadas",
+    "content": "El solvatocromismo es la capacidad de un colorante para cambiar su color en respuesta a cambios en la polaridad de su entorno solvente. En el contexto de la fibra capilar, el agua absorbida tras el lavado modifica la constante dieléctrica del entorno inmediato de los pigmentos. Esto provoca que el matiz percibido varíe significativamente entre el cabello seco y el cabello húmedo. Los tintes de oxidación, al estar integrados covalentemente en la matriz, son menos susceptibles, pero los tintes directos o semipermanentes muestran una alta sensibilidad a este fenómeno. La comprensión del solvatocromismo es vital para el profesional de la colorimetría, ya que permite predecir el comportamiento del color bajo distintas condiciones de humedad ambiental. La aplicación de agentes hidrofóbicos selladores ayuda a estabilizar la polaridad local, minimizando las fluctuaciones cromáticas y asegurando una mayor consistencia visual del tono independientemente del estado de hidratación de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "agentes hidrofóbicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:01:34.250Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392094250-6-ba6e2f3b-bioimpedancia-como-predictor-de-la-capacidad-de-absorcion-de",
+    "title": "Bioimpedancia como predictor de la capacidad de absorción de pigmentos",
+    "content": "La bioimpedancia eléctrica de la fibra capilar ofrece una métrica cuantitativa para evaluar el estado de integridad de la cutícula y la porosidad interna antes de realizar un servicio de color. Al medir la resistencia y la reactancia al paso de una corriente alterna de baja frecuencia, es posible determinar la densidad de los grupos amino y la integridad de la capa F. Un valor de impedancia bajo indica una cutícula altamente porosa y dañada, lo que predice una absorción acelerada y desigual de los precursores de tinte, aumentando el riesgo de saturación excesiva o viraje. Por el contrario, una impedancia alta sugiere una estructura compacta que requiere tiempos de pose prolongados o agentes penetrantes adicionales. La integración de la bioimpedancia en el diagnóstico previo permite personalizar la formulación del tinte, ajustando la concentración de oxidante y el tiempo de contacto para lograr un resultado cromático predecible y uniforme, optimizando así el rendimiento del servicio profesional.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38992102/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:01:34.250Z"
+  }
+]

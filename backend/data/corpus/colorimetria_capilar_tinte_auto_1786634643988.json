@@ -1,0 +1,327 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-nanoparticulas-001",
+    "title": "Nanopartículas metálicas y su efecto en la estabilidad del matiz",
+    "content": "La incorporación de nanopartículas, como óxidos de hierro o titanio, en tintes de última generación busca mejorar la profundidad del color mediante la dispersión controlada de la luz. Sin embargo, clínicamente, estas partículas pueden alterar la conductividad eléctrica de la fibra capilar, afectando el potencial Zeta y promoviendo una adsorción no uniforme. Según estudios publicados en el International Journal of Cosmetic Science, la interacción de estas partículas con la queratina puede generar depósitos residuales difíciles de eliminar, que interfieren con procesos químicos posteriores como la decoloración. Es fundamental que el profesional comprenda que, aunque ofrecen una saturación cromática superior, su comportamiento en cabellos con porosidad alterada es impredecible. La acumulación de estos óxidos puede actuar como catalizador en reacciones de oxidación no deseadas, acelerando la degradación del color y comprometiendo la integridad estructural del complejo de membrana celular (CMC). La evaluación mediante espectroscopía de reflectancia es necesaria para determinar si la saturación obtenida es producto de una verdadera penetración cortical o de un depósito superficial anómalo que podría causar virajes cromáticos indeseados ante la exposición solar o la aplicación de calor.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "óxidos de titanio"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-ionizacion-002",
+    "title": "Efecto de la ionización atmosférica en la degradación cromática",
+    "content": "En entornos urbanos de alta altitud como Bogotá, la combinación de baja presión atmosférica y niveles elevados de radiación UV influye en la estabilidad química de los precursores de tinte una vez depositados. La investigación dermatológica sugiere que la ionización del aire puede catalizar la formación de radicales libres en la superficie capilar, acelerando la oxidación prematura de los pigmentos. Este fenómeno es particularmente evidente en tintes de tonos fríos, los cuales dependen de una polimerización precisa para mantener su estabilidad. La exposición constante a estos factores ambientales altera la integridad de la capa F (18-MEA), facilitando una mayor pérdida de humedad y pigmento. Es imperativo considerar el uso de agentes quelantes que no solo actúen sobre metales, sino que posean propiedades antioxidantes capaces de neutralizar la actividad radicalaria superficial inducida por el ambiente. La falta de control sobre este factor ambiental puede resultar en una pérdida de intensidad cromática en menos de dos semanas post-aplicación. Se recomienda la implementación de selladores post-coloración que incorporen filtros UV de amplio espectro, diseñados específicamente para proteger la matriz queratínica contra la degradación foto-oxidativa inducida por el entorno de altura.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4387693/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "filtros UV"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-neurobiologia-003",
+    "title": "Neurobiología de la percepción del color en la consulta clínica",
+    "content": "La percepción del resultado cromático post-aplicación no es un proceso puramente físico, sino una interpretación neurobiológica influenciada por la iluminación del entorno y el estado emocional del paciente. El efecto de contraste simultáneo, donde el color del cabello se percibe diferente según el tono de la piel y el entorno, es un factor crítico en la satisfacción del cliente. Estudios de la American Academy of Dermatology subrayan que la expectativa subjetiva puede ser distorsionada por la luz ambiente (metamerismo), lo que a menudo lleva a una percepción de insatisfacción aunque el proceso químico haya sido impecable. Es fundamental realizar la evaluación final del color bajo una fuente de luz estandarizada (D65) para mitigar estas variaciones. La neurobiología del color indica que las respuestas histaminérgicas inespecíficas, causadas por vapores de baja concentración, pueden inducir una percepción sensorial de picor o incomodidad, lo cual el paciente traduce erróneamente como una 'reacción alérgica' o un 'daño al cabello'. El profesional debe educar al usuario sobre la diferencia entre una respuesta sensorial inespecífica y una verdadera dermatitis de contacto, gestionando así las expectativas y reduciendo la ansiedad post-procedimiento mediante un protocolo de comunicación basado en evidencia científica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/hair-dye-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consulta_inicial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-bioimpedancia-004",
+    "title": "Bioimpedancia: Evaluación objetiva de la porosidad para coloración",
+    "content": "La medición de la integridad de la fibra capilar mediante espectroscopía de impedancia bioeléctrica ofrece una ventaja clínica significativa frente a las pruebas de porosidad tradicionales. Al aplicar una corriente de baja frecuencia, es posible cuantificar la capacidad de retención de agua y la integridad de la cutícula, factores que determinan directamente la tasa de difusión de los precursores de tinte hacia la corteza. Un cabello con impedancia reducida indica una pérdida significativa de lípidos intercuticulares, lo que resulta en una absorción acelerada pero inestable del pigmento, provocando un rápido viraje de tono. Esta técnica permite ajustar la concentración de peróxido de hidrógeno de manera personalizada, evitando el sobre-procesamiento en áreas de alta porosidad (puntas) y asegurando una saturación uniforme desde la raíz. La literatura en dermatología cosmética sugiere que el mapeo de impedancia es la herramienta más eficaz para predecir la longevidad del color en cabellos tratados químicamente. Al integrar esta métrica en la consulta, el profesional puede justificar la necesidad de tratamientos pre-coloración (como la reconstrucción del CMC) para garantizar que la matriz queratínica esté en condiciones óptimas para recibir el depósito de pigmento, elevando el estándar de seguridad y resultados del servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quelacion-005",
+    "title": "Quelación selectiva: Prevención de la degradación catalítica",
+    "content": "La presencia de metales de transición (cobre, hierro, manganeso) en la fibra capilar, derivados del agua de lavado o de tratamientos previos, es una causa principal de la degradación incontrolada del peróxido de hidrógeno durante la coloración. Estos metales actúan como catalizadores en la reacción de Fenton, generando radicales hidroxilo altamente reactivos que degradan los aminoácidos de la queratina, especialmente el triptófano, antes de que el tinte pueda fijarse adecuadamente. La implementación de agentes quelantes de alta afinidad (como el ácido etilendiamino disuccínico) antes de la aplicación del tinte es un paso crítico en la higiene química del cabello. Estos agentes secuestran los iones metálicos, evitando que interfieran con la polimerización oxidativa de los precursores. Clínicamente, esto se traduce en una mayor uniformidad del color y una reducción significativa del daño estructural post-servicio. La evidencia en revistas de toxicología dermatológica resalta que la quelación no es opcional en zonas con agua dura, ya que la acumulación de depósitos minerales no solo altera el matiz final, sino que también aumenta el riesgo de reacciones exotérmicas durante el tiempo de pose, poniendo en riesgo la integridad del cuero cabelludo y la salud de la fibra capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDDS",
+        "ácido etilendiamino disuccínico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-piezoelectrico-006",
+    "title": "Efecto piezoeléctrico y degradación mecánica del color",
+    "content": "El efecto piezoeléctrico en la fibra capilar se refiere a la generación de una carga eléctrica interna cuando la queratina es sometida a estrés mecánico o fricción. Durante el cepillado o el peinado post-coloración, esta carga puede alterar la orientación de las moléculas de pigmento ya depositadas en la matriz cortical, promoviendo una migración irregular hacia la superficie. Este fenómeno es una causa subestimada de la pérdida de intensidad en tonos permanentes que requieren alta precisión cromática. Además, la fricción mecánica constante puede inducir micro-fisuras en la capa F, facilitando la salida de moléculas de tinte de gran peso molecular. Clínicamente, el control de la estática mediante polímeros catiónicos de bajo peso molecular es esencial para estabilizar el pigmento y minimizar este efecto. La investigación sugiere que el uso de herramientas de peinado con materiales que minimicen la generación de carga electrostática puede prolongar la vida útil del color. El profesional debe instruir al cliente sobre la importancia de evitar el cepillado agresivo en los primeros días post-coloración, permitiendo que la red polimérica del tinte se estabilice completamente dentro de la estructura cortical antes de someterla a fuerzas mecánicas que puedan comprometer la distribución del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31206124/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-microbiota-007",
+    "title": "Disbiosis del microbioma scalp y respuesta inflamatoria",
+    "content": "La aplicación de tintes permanentes de alta alcalinidad provoca un cambio transitorio pero significativo en el pH del cuero cabelludo, lo cual puede alterar el equilibrio del microbioma residente, especialmente la población de Malassezia y bacterias comensales. Esta disbiosis puede inducir una respuesta inflamatoria inespecífica que se manifiesta como prurito, eritema o descamación post-coloración, síntomas que a menudo se confunden con una dermatitis alérgica de contacto. Investigaciones recientes destacan que la integridad de la barrera cutánea y la composición de la microbiota folicular son determinantes para mitigar estas reacciones. El uso de agentes buffer en la formulación del tinte es vital para retornar el pH a su punto isoeléctrico (aprox. 4.5-5.5) al finalizar el proceso, minimizando el impacto sobre el ecosistema microbiano. Clínicamente, es recomendable evaluar la salud previa del cuero cabelludo antes de la coloración; en pacientes con dermatitis seborreica o psoriasis, el riesgo de exacerbación es alto. La aplicación de sueros post-coloración con prebióticos puede ayudar a restaurar la homeostasis del microbioma, previniendo la inflamación y asegurando que el ambiente folicular no interfiera negativamente con la fijación del pigmento ni con la salud a largo plazo del folículo piloso.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer",
+        "prebióticos"
+      ],
+      "contraindications": [
+        "dermatitis activa",
+        "psoriasis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-birrefringencia-008",
+    "title": "Birrefringencia como indicador óptico de salud cuticular",
+    "content": "La birrefringencia es una propiedad óptica en la que la luz se descompone al atravesar la fibra capilar, siendo un indicador extremadamente sensible de la integridad de la cutícula y la orientación de las cadenas de queratina. Un cabello sano presenta una birrefringencia uniforme, lo que permite una reflexión de la luz coherente y, por ende, un brillo cromático intenso tras la coloración. En cabellos con daño estructural, la pérdida de esta propiedad altera la percepción del color, causando un aspecto opaco o 'lavado' incluso con pigmentos de alta calidad. El uso de microscopía de luz polarizada permite al profesional diagnosticar el estado del cabello antes del servicio: si la birrefringencia es baja, la penetración del tinte será desigual y la retención deficiente. Este diagnóstico permite planificar tratamientos de sellado cuticular o reconstrucción de la capa F antes de la aplicación del color. La comprensión de este fenómeno óptico es esencial para gestionar las expectativas del cliente, ya que el 'brillo' deseado no depende solo del pigmento, sino de la capacidad física de la fibra para reflejar la luz de manera ordenada. La restauración de la birrefringencia mediante polímeros que alisan la superficie es la clave para un acabado profesional y duradero.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28604753/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros selladores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:23:45.041Z"
+  }
+]

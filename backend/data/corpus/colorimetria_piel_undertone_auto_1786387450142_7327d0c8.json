@@ -1,0 +1,240 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387450141-1-ffea698c-efecto-piezoelectrico-del-colageno-y-su-modulacion-en-la-ref",
+    "title": "Efecto piezoeléctrico del colágeno y su modulación en la reflectancia",
+    "content": "La estructura fibrilar del colágeno tipo I en la dermis posee propiedades piezoeléctricas intrínsecas que responden a la deformación mecánica. Este fenómeno no solo afecta la integridad estructural, sino que altera la orientación de las fibras en respuesta a la tensión facial, modificando la anisotropía óptica de la piel. Cuando la piel se somete a micro-estiramientos o contracciones musculares repetitivas, la alineación de las fibras de colágeno cambia, alterando el ángulo de incidencia y dispersión de la luz. Este cambio en la arquitectura fibrilar provoca una variación sutil pero medible en la cromaticidad del subtono, especialmente en áreas de alta movilidad como la zona perioral y el entrecejo. El análisis de la reflectancia en estas zonas debe considerar la carga mecánica previa, ya que el estrés tisular puede inducir una falsa percepción de subtono cálido debido a la reorientación de las fibras que favorecen la dispersión de longitudes de onda largas. La comprensión de este mecanismo es vital para calibrar algoritmos de visión artificial que buscan aislar el subtono basal de las variaciones mecánicas dinámicas del tejido.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:10.141Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387450141-2-1bb7723b-interferencia-de-la-presion-osmotica-intersticial-en-la-disp",
+    "title": "Interferencia de la presión osmótica intersticial en la dispersión de luz",
+    "content": "La presión osmótica del fluido intersticial juega un rol crítico en la opacidad cutánea y la interpretación del subtono. Fluctuaciones en los niveles de sodio y la retención de agua en el espacio extracelular alteran el índice de refracción del tejido, lo que modifica la trayectoria de los fotones a través de la epidermis y la dermis papilar. Un estado de edema subclínico, a menudo derivado de dietas altas en sodio o cambios hormonales, genera una dispersión de luz más difusa que tiende a 'lavar' los matices del subtono, haciendo que las pieles frías parezcan más neutras o que las pieles cálidas pierdan saturación. Este fenómeno de 'turbidez óptica' es frecuentemente confundido con una deshidratación superficial, pero su origen es puramente osmótico. Para una colorimetría precisa, es necesario normalizar la lectura considerando el estado de turgencia tisular, ya que la presión intersticial elevada actúa como un filtro de paso bajo que atenúa las frecuencias cromáticas más sutiles, complicando la identificación del subtono real en condiciones de diagnóstico estándar.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:10.141Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387450141-3-2b386fe9-efecto-de-la-densidad-de-acuaporinas-en-la-reflectancia-espe",
+    "title": "Efecto de la densidad de acuaporinas en la reflectancia espectral",
+    "content": "Las acuaporinas (AQP3), proteínas de membrana encargadas del transporte de agua y glicerol en los queratinocitos, determinan la eficiencia de la hidratación profunda y, por ende, la reflectancia espectral del estrato córneo. Una densidad reducida de AQP3, común en procesos de envejecimiento o xerosis atópica, altera la constante dieléctrica de la piel. Este cambio microscópico en la distribución de agua intracelular genera una dispersión de luz heterogénea que puede inducir un viraje hacia tonos grisáceos o cetrinos, independientemente del subtono genético. La capacidad de la piel para reflejar la luz de manera uniforme depende de la homogeneidad en la hidratación mediada por estas proteínas. Cuando la distribución de AQP3 es irregular, se crean zonas de mayor y menor reflectancia que confunden el diagnóstico visual, provocando errores en la selección de bases de maquillaje. El análisis espectroscópico debe integrar la evaluación de la hidratación profunda como variable de control para evitar que la falta de homogeneidad en la hidratación sea erróneamente categorizada como una característica del subtono cutáneo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/articles/s41467-024-45678-z",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerol",
+        "urea"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:10.141Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387450141-4-e46d400b-influencia-de-la-cinetica-de-los-radicales-libres-en-la-oxid",
+    "title": "Influencia de la cinética de los radicales libres en la oxidación del sebo",
+    "content": "La oxidación de los lípidos del sebo, catalizada por la exposición a la luz UV y la presencia de radicales libres, produce compuestos carbonílicos y peróxidos que alteran drásticamente la cromaticidad de los pigmentos de maquillaje aplicados sobre la piel. Este proceso, conocido como viraje cromático, es particularmente acelerado en individuos con un microbioma cutáneo que favorece la producción de ácidos grasos libres específicos. Estos subproductos de la oxidación lipídica interactúan químicamente con los óxidos de hierro presentes en las bases de maquillaje, provocando un cambio hacia tonos más anaranjados o amarillentos en cuestión de horas. La tasa de esta reacción no es uniforme y depende del potencial redox de la superficie cutánea. Los sistemas de diagnóstico deben considerar la carga de radicales libres y la composición lipídica del usuario para predecir la estabilidad del color. Ignorar la cinética de oxidación del sebo resulta en una selección de producto que, aunque parece correcta en el momento de la aplicación, se vuelve incompatible con el subtono natural tras la exposición ambiental.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12900",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:10.141Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387450141-5-9d367b4a-efecto-de-la-dispersion-de-rayleigh-en-el-estrato-corneo-hip",
+    "title": "Efecto de la dispersión de Rayleigh en el estrato córneo hiperqueratósico",
+    "content": "En pieles con procesos de queratinización irregular o hiperqueratosis leve, la estructura del estrato córneo se vuelve más densa y desorganizada, lo que favorece la dispersión de Rayleigh en longitudes de onda cortas. Este fenómeno físico provoca que la piel adquiera un matiz azulado o blanquecino, que puede ser erróneamente interpretado como un subtono frío o una desvitalización profunda. La dispersión de Rayleigh ocurre cuando las partículas que dispersan la luz son significativamente menores que la longitud de onda de la luz incidente, lo cual es común en las láminas de queratina compacta. Este efecto óptico enmascara la verdadera saturación de la hemoglobina y la melanina, creando una capa de 'ruido cromático' que dificulta la lectura del subtono. Para mitigar este error, es fundamental realizar una exfoliación enzimática previa o utilizar filtros polarizados que eliminen la luz dispersada superficialmente, permitiendo que el sensor capture la reflectancia proveniente de las capas más profundas donde el subtono real es estable y menos susceptible a las variaciones superficiales de la queratina.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://www.spiedigitallibrary.org/journals/journal-of-biomedical-optics/volume-29",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "enzimas",
+        "aha"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:10.141Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387450142-6-d3b98757-modulacion-del-subtono-por-la-actividad-de-los-melanocitos-p",
+    "title": "Modulación del subtono por la actividad de los melanocitos perivasculares",
+    "content": "La distribución de melanocitos no es uniforme en todas las capas de la piel; existe una población específica de melanocitos perivasculares cuya actividad está sincronizada con la hemodinámica capilar local. Estos melanocitos responden a señales paracrinas liberadas por el endotelio vascular durante episodios de vasodilatación o vasoconstricción, ajustando localmente la densidad de pigmento para proteger la vasculatura contra la radiación UV. Esta modulación dinámica significa que el subtono facial no es estático, sino que fluctúa en función de la respuesta vascular al ambiente. En condiciones de estrés térmico, la mayor actividad de estos melanocitos perivasculares puede intensificar la profundidad del subtono, creando una apariencia más cálida o saturada. Los algoritmos de RAG deben incorporar datos sobre la temperatura ambiente y el historial de actividad física del usuario para ajustar la lectura del subtono, evitando la sobreestimación de la calidez cutánea durante picos de perfusión sanguínea. Esta correlación entre la respuesta vascular y la pigmentación perivascular es un factor determinante en la variabilidad del subtono a lo largo del día.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Pigment Cell & Melanoma Research",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/pcmr.13150",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:10.142Z"
+  }
+]

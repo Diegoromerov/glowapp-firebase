@@ -1,0 +1,92 @@
+{
+  "experiment": "R5-C23",
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "production_modified": false,
+  "railway_contacted": false,
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — ranks, evidence recall, clasificación y chunks idénticos" },
+  "evidence_threshold": { "rule": "evidencia suficiente si ≥50% de expected_chunks (core+supporting) dentro del top-K", "value": 0.5 },
+  "metrics": {
+    "direct_recall": { "k5": 1.0, "k100": 1.0, "note": "15/15 queries tienen ≥1 gold en top-5 (evidencia principal siempre recuperada)" },
+    "evidence_recall": { "k5": 0.5871, "k50": 0.8011, "k100": 0.8011, "note": "proporción de TODOS los expected chunks presentes en el pool" },
+    "delta_evidence_minus_direct": { "k100": -0.1989 },
+    "multi_chunk_recoverable_pct": 0.0,
+    "direct_success_pct": 1.0,
+    "partial_evidence_pct": 0.0,
+    "true_vector_miss_pct": 0.0,
+    "note": "La clasificación A-E del protocolo a nivel de 'mejor gold' da 15/15 DIRECT_SUCCESS; el análisis por PIEZAS revela la verdadera estructura (ver miss_analysis)"
+  },
+  "vector_ceiling": { "r100_direct": 1.0, "note": "todas las queries tienen ≥1 gold en top-100" },
+  "evidence_ceiling": { "r100_sufficient": 0.9333, "note": "14/15 queries tendrían evidencia compuesta suficiente en top-100 SI el sistema supiera componerla — el conocimiento está distribuido en el corpus" },
+  "three_real_misses": [
+    {
+      "query_id": "cabello_002",
+      "causal_class": "MULTI_CHUNK_PARCIAL (evidencia compuesta en top-50, 3/5 piezas)",
+      "best_gold_rank": 1,
+      "evidence_recall": { "5": 0.4, "20": 0.4, "50": 0.6, "100": 0.6 },
+      "min_pool_sufficient": 50,
+      "present": ["colorimetria-capilar-ph-001", "colorimetria-capilar-ph-pos-tinte-009", "colorimetria-capilar-viscoelasticidad-009"],
+      "missing": ["diagnostico_capilar-...-sers", "colorimetria-capilar-metales-003"],
+      "diagnosis": "3/5 piezas en top-50. Suficiente por composición (@50). El gold principal está en rank 1. Déficit: 2 piezas de soporte fuera del pool."
+    },
+    {
+      "query_id": "cejas_004",
+      "causal_class": "VECTOR_MISS (4/6 piezas fuera de top-100 — NO es multi-chunk recoverable)",
+      "best_gold_rank": 2,
+      "evidence_recall": { "5": 0.3333, "20": 0.3333, "50": 0.3333, "100": 0.3333 },
+      "min_pool_sufficient": 0,
+      "present": ["visajismo_cejas_...-evaluacion-dispersion-luz", "visajismo-cejas-microblading-metamerismo-003"],
+      "missing": ["musculatura-orbicular-009", "arquitectura-muscular-008", "microblading-envejecimiento-009", "microblading-psicologia-007"],
+      "diagnosis": "Recall PLANO 0.33 de @5 a @100. Las 4 piezas de simetría muscular NO entran ni en top-100. La composición NO puede ayudar porque la evidencia no está en el pool. Es VECTOR MISS real por colisión semántica."
+    },
+    {
+      "query_id": "cejas_008",
+      "causal_class": "MULTI_CHUNK_PARCIAL (evidencia compuesta en top-50, 3/6 piezas)",
+      "best_gold_rank": 1,
+      "evidence_recall": { "5": 0.3333, "20": 0.3333, "50": 0.5, "100": 0.5 },
+      "min_pool_sufficient": 50,
+      "present": ["interaccion-laser-001", "piel-grasa-005", "enfermedades-autoinmunes-007"],
+      "missing": ["guias_unas-electrolisis-y-matriz-001", "terapia-laser-erbio-glass-002", "efecto-tyndall-003"],
+      "diagnosis": "3/6 piezas en top-50. Suficiente por composición (@50). El gold principal en rank 1. Déficit: 3 piezas de remoción fuera del pool."
+    }
+  ],
+  "causal_classification": {
+    "per_query": [
+      { "query_id": "skincare_003", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "skincare_005", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "skincare_006", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "skincare_007", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "skincare_008", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "skincare_009", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "skincare_010", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "cabello_002", "class": "MULTI_CHUNK_PARCIAL", "min_pool": 50 },
+      { "query_id": "cabello_006", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "cabello_008", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "cejas_001", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "cejas_004", "class": "VECTOR_MISS", "min_pool": 0 },
+      { "query_id": "cejas_005", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "cejas_007", "class": "DIRECT_SUCCESS", "min_pool": 5 },
+      { "query_id": "cejas_008", "class": "MULTI_CHUNK_PARCIAL", "min_pool": 50 }
+    ],
+    "summary": { "DIRECT_SUCCESS": 12, "MULTI_CHUNK_PARCIAL": 2, "VECTOR_MISS": 1 }
+  },
+  "cejas_analysis": {
+    "cejas_001": "DIRECT_SUCCESS — evidencia completa en top-5",
+    "cejas_002": "UNSUPPORTED (corpus gap validado en R5-C13)",
+    "cejas_003": "UNSUPPORTED (corpus gap validado en R5-C13)",
+    "cejas_004": "VECTOR_MISS — 4/6 piezas de simetría fuera de top-100; NO es multi-chunk recoverable",
+    "cejas_005": "DIRECT_SUCCESS — evidencia en top-5 (2 piezas ausentes pero suficientes)",
+    "cejas_007": "DIRECT_SUCCESS — evidencia completa",
+    "cejas_008": "MULTI_CHUNK_PARCIAL — 3/6 piezas en top-50; composición podría ayudar",
+    "conclusion": "Cejas NO es un problema único: mezcla DIRECT_SUCCESS (001/005/007), MULTI_CHUNK_PARCIAL (008) y VECTOR_MISS (004)."
+  },
+  "answer_to_director": "Los misses que quedan son de DOS tipos distintos: (1) cabello_002 y cejas_008 — el conocimiento correcto YA está distribuido en top-50 (3/5 y 3/6 piezas) pero el RAG no lo reúne → evidence aggregation SÍ ayudaría; (2) cejas_004 — 4/6 piezas fuera de top-100 → ni la composición puede ayudar; es colisión vectorial pura que requeriría otra representación.",
+  "verdict": "MIXED",
+  "recommendation_r5c24": {
+    "1": "La hipótesis multi-chunk es PARCIALMENTE confirmada: 2/3 misses (cabello_002, cejas_008) tienen evidencia compuesta disponible en top-50 que el sistema no reúne → un experimento de evidence aggregation / query decomposition tiene justificación para estos 2 casos",
+    "2": "cejas_004 NO es multi-chunk recoverable (4/6 piezas fuera de top-100) → queda como VECTOR_MISS irresoluble por composición; requiere representación distinta o aceptación",
+    "3": "R5-C24: diseñar experimento controlado de evidence aggregation SIN tocar producción: medir si componer top-50 (2+ piezas complementarias) responde correctamente cabello_002 y cejas_008",
+    "4": "El evidence ceiling teórico (0.9333) indica que el conocimiento está en el corpus — el techo del sistema actual (0.7885 baseline) está limitado por: (a) no componer evidencia distribuida (2 queries), (b) colisión vectorial (1 query)",
+    "5": "GOLD-V5 y baseline R5-C intactos; motor productivo sin tocar"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

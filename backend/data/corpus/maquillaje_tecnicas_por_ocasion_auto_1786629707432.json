@@ -1,0 +1,219 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-inteligencia-artificial-001",
+    "title": "Maquillaje para eventos con sistemas de detección biométrica por inteligencia artificial",
+    "content": "La integración de sistemas de reconocimiento facial y biometría en eventos de alta seguridad plantea un desafío técnico para la aplicación de maquillaje. Los algoritmos de aprendizaje profundo (Deep Learning) analizan puntos nodales y texturas cutáneas que pueden verse alterados por el uso de pigmentos con alta reflectancia o partículas micro-brillantes. Estudios en visión artificial sugieren que el uso de bases con alto contenido de dióxido de titanio o mica puede generar 'ruido' en la detección de puntos de referencia faciales, incrementando la tasa de error en la verificación biométrica. Para eventos que requieren este tipo de validación, se recomienda el uso de productos con acabado mate y baja reflectancia especular. Es fundamental evitar el uso de delineadores o contornos excesivos que modifiquen artificialmente la geometría del rostro, ya que los modelos de detección de contornos faciales dependen de la morfología ósea subyacente. La elección de una base de textura fina que permita la transparencia de la textura cutánea real es clave para garantizar una coincidencia biométrica exitosa sin comprometer la estética del maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institute of Standards and Technology (NIST)",
+        "url": "https://www.nist.gov/programs-projects/face-recognition-vendor-test-frvt",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dióxido de titanio",
+        "mica"
+      ],
+      "contraindications": [
+        "glitter",
+        "polvos reflectantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biometria-seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:01:29.499Z"
+  },
+  {
+    "chunk_id": "maquillaje-estabilidad-emulsiones-microgravedad-003",
+    "title": "Estabilidad de emulsiones cosméticas en entornos de baja gravedad",
+    "content": "En entornos de microgravedad, como las cabinas de naves espaciales, la dinámica de fluidos de los cosméticos se ve alterada significativamente. Las emulsiones convencionales, que dependen de la gravedad para mantener la separación de fases, pueden presentar inestabilidad si no están formuladas con tensioactivos específicos. La falta de sedimentación permite que las partículas de pigmento se distribuyan de forma distinta, lo cual afecta la cobertura y la uniformidad en la piel. Es fundamental emplear productos con una viscosidad optimizada que impida el movimiento libre de las fases dentro del envase y sobre la superficie cutánea. La investigación sobre higiene en el espacio, respaldada por la NASA, subraya que la falta de gravedad altera la tasa de evaporación del agua en las emulsiones, pudiendo causar un secado prematuro o una acumulación de producto en áreas no deseadas. El uso de polímeros filmógenos es esencial para asegurar que, incluso en condiciones de baja gravedad, el maquillaje se mantenga adherido a la epidermis y no se convierta en un riesgo de inhalación para el usuario debido a la dispersión de partículas volátiles en el aire confinado de la cabina.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros filmógenos",
+        "tensioactivos"
+      ],
+      "contraindications": [
+        "polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "entornos-extremos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:01:29.499Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-realidad-extendida-occlusion-004",
+    "title": "Maquillaje en entornos de realidad extendida (XR): Prevención de la dermatitis por oclusión",
+    "content": "El uso prolongado de dispositivos de Realidad Extendida (XR), como visores de realidad virtual, genera un entorno de microclima sobre la piel facial. La oclusión constante por el acolchado del dispositivo aumenta la temperatura local y la humedad (hiperhidrosis local), lo que facilita la oclusión folicular y la dermatitis por contacto. El maquillaje aplicado bajo estos dispositivos debe ser estrictamente no comedogénico y libre de aceites pesados que puedan obstruir los poros ante el incremento de sebo inducido por el calor. Se recomienda el uso de bases minerales que permitan la transpiración cutánea y no reaccionen con el sudor para formar una barrera oclusiva. Además, la fricción mecánica del visor contra la piel puede remover el maquillaje, creando puntos de acumulación de producto que aumentan el riesgo de irritación. La estrategia clínica consiste en preparar la piel con agentes seborreguladores y sellar el maquillaje con sprays fijadores que no contengan alcoholes sensibilizantes. Es vital limpiar la zona de contacto entre el visor y el rostro inmediatamente después de finalizar el evento para restaurar la homeostasis del microbioma cutáneo y evitar la proliferación de microorganismos oportunistas por el exceso de humedad atrapada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/a-z/dermatitis-contact",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílica",
+        "óxido de zinc"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:01:29.499Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-subterraneos-hipoxia-006",
+    "title": "Maquillaje para eventos en entornos subterráneos: Gestión de la hipoxia y edema facial",
+    "content": "Los eventos realizados en entornos subterráneos, como búnkeres o minas turísticas, a menudo presentan niveles de oxígeno ligeramente inferiores y una presión atmosférica alterada, factores que pueden inducir un leve edema facial y una ralentización de la microcirculación. El maquillaje aplicado en estas condiciones debe evitar la oclusión excesiva para no agravar la sensación de pesadez cutánea. Se recomienda el uso de productos con ingredientes descongestionantes, como cafeína o extractos botánicos calmantes, que ayuden a mitigar la retención de líquidos. La ausencia de luz natural y la dependencia de iluminación artificial cálida exigen un maquillaje con tonos balanceados para evitar el aspecto cetrino o amarillento. La falta de flujo de aire fresco en espacios confinados aumenta el riesgo de que el maquillaje se sienta 'pesado' debido a la acumulación de sudor. Es preferible optar por texturas ligeras, estilo 'skin tint', que permitan una oxigenación cutánea óptima. El sellado debe ser mínimo, evitando polvos compactos que puedan acentuar la textura de la piel bajo iluminación artificial directa, la cual suele resaltar cualquier imperfección por mínima que sea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeína",
+        "extractos calmantes"
+      ],
+      "contraindications": [
+        "polvos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "entornos-confinados"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:01:29.499Z"
+  },
+  {
+    "chunk_id": "maquillaje-vibraciones-mecanicas-dermatitis-007",
+    "title": "Maquillaje y dermatitis por fricción ante vibraciones mecánicas de alta frecuencia",
+    "content": "En eventos donde se presentan vibraciones mecánicas de alta frecuencia, como conciertos con sistemas de sonido de gran potencia o entornos industriales, el maquillaje puede actuar como un factor de fricción adicional sobre la piel. Las vibraciones hacen que las partículas del maquillaje se desplacen constantemente, actuando como micro-abrasivos que pueden comprometer la función barrera del estrato córneo. Para mitigar este riesgo, es necesario utilizar productos de alta adherencia y flexibilidad que se muevan junto con la piel, evitando fórmulas rígidas o polvos que tiendan a fragmentarse. La aplicación de una base de silicona elástica es fundamental para absorber parte de la energía mecánica de las vibraciones. Si el maquillaje no es lo suficientemente flexible, la fricción constante puede derivar en una dermatitis irritativa de contacto. Es recomendable evitar el uso de accesorios faciales pesados o pedrería adhesiva, ya que las vibraciones aumentan la presión local sobre la piel, pudiendo causar lesiones mecánicas. La higiene post-evento debe incluir la aplicación de lípidos reparadores para restaurar la barrera cutánea que pudo verse alterada por el estrés mecánico prolongado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis - Journal of the American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas flexibles",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "pedrería adhesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:01:29.499Z"
+  }
+]

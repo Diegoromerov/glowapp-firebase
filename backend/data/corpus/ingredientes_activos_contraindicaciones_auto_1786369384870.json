@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "cisteamina-pigmentacion-001",
+    "title": "Cisteamina tópica: mecanismos de acción y el reto de la irritación",
+    "content": "La cisteamina es un compuesto aminotiol endógeno que ha emergido como una alternativa potente a la hidroquinona para el tratamiento del melasma y la hiperpigmentación postinflamatoria. Su mecanismo de acción principal radica en la inhibición de la tirosinasa y la peroxidasa, además de aumentar los niveles intracelulares de glutatión, lo que desplaza la síntesis de melanina hacia la feomelanina. A diferencia de otros despigmentantes, su eficacia clínica es notable, pero su perfil de seguridad presenta desafíos significativos. La irritación cutánea es el efecto adverso más común, manifestándose como eritema y descamación, lo que requiere protocolos estrictos de aplicación, como el método de 'contacto corto' (aplicación por 15 minutos y posterior lavado). La literatura científica, incluyendo estudios publicados en el Journal of the American Academy of Dermatology, subraya la importancia de una tolerancia gradual. Es fundamental instruir a los pacientes sobre el olor sulfuroso característico del producto, que puede ser confundido erróneamente con una degradación química o toxicidad, cuando en realidad es una propiedad intrínseca de la molécula. La supervisión dermatológica es indispensable, especialmente para evitar la exacerbación de condiciones inflamatorias preexistentes durante el proceso de aclimatación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32743-4/fulltext",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "III-VI"
+      ],
+      "ingredients": [
+        "cisteamina"
+      ],
+      "contraindications": [
+        "dermatitis-inflamatoria",
+        "embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-despigmentantes"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:42:44.705Z"
+  },
+  {
+    "chunk_id": "acido-tioglicolico-002",
+    "title": "Ácido tioglicólico: riesgos de sensibilización en cosmética de alisado",
+    "content": "El ácido tioglicólico y sus sales son agentes reductores frecuentemente utilizados en procesos de alisado capilar permanente. Desde una perspectiva de seguridad dermatológica, su uso conlleva un riesgo elevado de dermatitis de contacto alérgica y, en casos de exposición prolongada o incorrecta neutralización, irritación química severa del cuero cabelludo. La capacidad de este compuesto para romper los enlaces disulfuro de la queratina no es selectiva, lo que significa que, ante una mala manipulación o un tiempo de exposición excesivo, puede comprometer la integridad de la barrera cutánea. La normativa internacional, reflejada en las directrices del SCCS (Scientific Committee on Consumer Safety), establece límites estrictos de concentración y pH para minimizar la sensibilización cutánea. Es vital que los usuarios de GlowApp comprendan que, aunque estos productos se comercializan para uso domiciliario, la posibilidad de desarrollar una sensibilización cruzada con otros compuestos azufrados es real. Los síntomas de una reacción adversa incluyen prurito intenso, edema en la zona de aplicación y, en casos severos, quemaduras químicas con posterior pérdida de cabello. Se recomienda siempre realizar una prueba de parche en la zona retroauricular antes de cualquier aplicación completa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety (SCCS)",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_096.pdf",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-tioglicolico"
+      ],
+      "contraindications": [
+        "dermatitis-seborreica",
+        "cuero-cabelludo-sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:42:44.705Z"
+  }
+]

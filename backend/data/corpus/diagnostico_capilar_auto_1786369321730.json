@@ -1,0 +1,236 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-epigenetica-001",
+    "title": "Modulación Epigenética por Factores Ambientales en el Nicho Folicular",
+    "content": "La regulación epigenética representa un puente crítico entre la exposición ambiental y la expresión fenotípica de la alopecia. Investigaciones recientes en PubMed indican que factores como la exposición a metales pesados y compuestos orgánicos volátiles presentes en entornos urbanos pueden inducir cambios en la metilación del ADN en las células madre del folículo piloso. Estos cambios epigenéticos afectan directamente la transcripción de genes responsables de la fase anágena, acelerando la transición hacia la catágena. A diferencia de las mutaciones genéticas, estas modificaciones son potencialmente reversibles mediante intervenciones dirigidas. La curaduría clínica debe considerar el perfil del exposoma del paciente, analizando no solo la carga genética, sino el historial de exposición acumulada que condiciona la resiliencia del folículo ante el estrés oxidativo. La monitorización de estos marcadores epigenéticos permite predecir la respuesta a terapias regenerativas y ajustar las expectativas del tratamiento a largo plazo, integrando la medicina de precisión en el diagnóstico capilar de GlowApp.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_riesgo_exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:41.100Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-inmunologia-002",
+    "title": "Inflamación Neurogénica: El Rol de los Mastocitos Perifoliculares",
+    "content": "El sistema nervioso periférico y el sistema inmune mantienen una comunicación bidireccional en el cuero cabelludo que define la homeostasis del folículo. Los mastocitos, situados estratégicamente en la proximidad del bulbo piloso, actúan como sensores de estrés liberando mediadores proinflamatorios como la histamina, la triptasa y el factor de necrosis tumoral alfa (TNF-α). Este proceso, denominado inflamación neurogénica, es un factor clave en la patogénesis de las alopecias cicatriciales y no cicatriciales. El diagnóstico moderno debe evaluar la presencia de este 'ruido' inflamatorio mediante la detección de signos sutiles de eritema perifolicular o prurito localizado, que a menudo preceden a la pérdida de densidad visible. La interrupción de este eje neuro-inmune mediante moduladores específicos es una estrategia emergente en el manejo de la alopecia areata y otras condiciones inflamatorias crónicas. La identificación temprana de la activación mastocitaria es vital para detener el daño irreversible al nicho de células madre, permitiendo una intervención terapéutica antes de que la miniaturización alcance niveles críticos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion_inflamacion_subclinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:41.100Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-003",
+    "title": "Fatiga Estructural y Biomecánica de la Fibra Capilar",
+    "content": "La integridad estructural del tallo capilar no depende únicamente de su composición proteica, sino también de su comportamiento biomecánico bajo condiciones de estrés mecánico repetido. La fatiga estructural, un concepto derivado de la ingeniería de materiales, es aplicable a la cutícula capilar. El uso constante de herramientas térmicas, peinados con alta tensión y tratamientos químicos agresivos provoca microfisuras en la matriz de la cutícula, reduciendo su resiliencia. El diagnóstico clínico debe integrar pruebas de resistencia a la tracción y análisis de fricción para cuantificar el daño acumulado. La pérdida de la integridad de la cutícula expone el córtex a agentes oxidativos, creando un círculo vicioso de debilitamiento. La evaluación de la biomecánica capilar es fundamental para recomendar protocolos de cuidado preventivo que prioricen la reconstrucción del cemento intercelular. Este enfoque técnico permite a GlowApp ofrecer recomendaciones personalizadas basadas en el estado mecánico real del cabello, más allá de la percepción estética superficial, asegurando un diagnóstico robusto y científicamente fundamentado para cada usuario.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_integridad_tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:41.100Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-metaboloma-004",
+    "title": "Metabolómica del Microbioma: Biomarcadores de Salud Folicular",
+    "content": "El microbioma del cuero cabelludo es un ecosistema complejo donde las interacciones metabólicas entre especies definen la salud del entorno folicular. Más allá de la mera identificación de bacterias como Malassezia o Cutibacterium, el análisis del metaboloma —el conjunto de metabolitos producidos por estas comunidades— ofrece una visión clara del estado inflamatorio del cuero cabelludo. La producción de ácidos grasos de cadena corta y otros compuestos bioactivos por parte de la microbiota comensal puede actuar como un mecanismo de defensa contra patógenos oportunistas. Cuando este equilibrio se altera, la disbiosis resultante genera un ambiente propicio para el estrés oxidativo y la inflamación crónica. El diagnóstico avanzado en GlowApp debe integrar la evaluación de la salud del microbioma como un biomarcador clave. La capacidad de modular este ecosistema mediante prebióticos y probióticos tópicos abre una nueva frontera en el tratamiento de afecciones como la dermatitis seborreica y la alopecia androgenética asociada a inflamación, permitiendo un enfoque terapéutico dirigido a la causa raíz de la disfunción cutánea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:41.100Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-006",
+    "title": "Bioimpedancia del Cuero Cabelludo: Evaluación de la Hidratación",
+    "content": "La función barrera del cuero cabelludo es fundamental para la protección del folículo, y su alteración es un factor subestimado en el diagnóstico capilar. La bioimpedancia eléctrica se ha consolidado como una herramienta no invasiva para medir la hidratación del estrato córneo y la permeabilidad del ostium folicular. Un cuero cabelludo con una barrera comprometida presenta una menor resistencia al paso de corriente eléctrica, lo que correlaciona con una mayor susceptibilidad a alérgenos y contaminantes urbanos. Este método permite cuantificar la salud de la barrera cutánea de manera objetiva, diferenciando entre un cuero cabelludo sano y uno con disfunción de barrera. La implementación de la bioimpedancia en el protocolo de diagnóstico de GlowApp permite personalizar las rutinas de cuidado, seleccionando ingredientes que restauren el equilibrio hídrico y lipídico sin obstruir el canal folicular. Este enfoque clínico asegura que las recomendaciones no solo traten la caída del cabello, sino que optimicen el terreno biológico necesario para su crecimiento.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acido_hialuronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_barrera_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:41.100Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-007",
+    "title": "Autofagia en el Bulbo Piloso: Mecanismo de Supervivencia",
+    "content": "La autofagia es un proceso celular esencial para el mantenimiento de la homeostasis en el bulbo piloso, actuando como un mecanismo de limpieza que elimina organelos dañados y proteínas mal plegadas. En condiciones de estrés oxidativo o privación de nutrientes, la autofagia se activa para proporcionar los recursos energéticos necesarios para la supervivencia de las células madre foliculares. Sin embargo, con el envejecimiento o bajo condiciones crónicas de inflamación, la eficiencia de este mecanismo disminuye, contribuyendo a la acumulación de detritos celulares y al agotamiento del nicho folicular. El diagnóstico clínico que considera la capacidad autofágica de las células foliculares permite una comprensión más profunda de la resiliencia del paciente. Las estrategias terapéuticas que buscan potenciar la autofagia, como ciertos polifenoles y mímicos de restricción calórica, representan una tendencia prometedora en la medicina antienvejecimiento capilar. La evaluación de estos procesos permite a GlowApp identificar pacientes que se beneficiarían de protocolos de rejuvenecimiento celular, basándose en la biología molecular del ciclo de vida folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrd/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "spermidine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_envejecimiento_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:41:41.100Z"
+  }
+]

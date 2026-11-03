@@ -1,0 +1,291 @@
+[
+  {
+    "chunk_id": "guias_unas-disrupcion-electroquimica-001",
+    "title": "Disrupción electroquímica en la interfase lecho-gel: El potencial zeta",
+    "content": "La adhesión de sistemas fotopolimerizables no solo depende de la rugosidad mecánica, sino de la estabilidad electroquímica en la interfase uña-producto. El potencial zeta, una medida de la carga eléctrica en la superficie de los corneocitos del lecho ungueal, juega un papel crítico en la atracción de monómeros. Cuando el pH del lecho se altera por el uso de primers ácidos, se genera una modificación en la carga superficial que puede repeler moléculas de adhesivo, provocando desprendimientos prematuros. Estudios en ciencia de materiales aplicados a la dermatología sugieren que la acumulación de iones en la superficie ungueal debido a la desinfección con sales de amonio cuaternario puede interferir con la polimerización, creando un entorno de inestabilidad iónica. Es imperativo que el profesional comprenda que una superficie 'demasiado limpia' o químicamente alterada no garantiza adhesión, sino que puede comprometer la integridad del sellado. La gestión del potencial zeta mediante agentes neutralizantes suaves es una tendencia emergente para asegurar que el monómero se ancle correctamente a la queratina sin generar una reacción de rechazo electrostático. La monitorización de estos factores es fundamental para evitar la onicólisis inducida por fallos de adhesión química.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers",
+        "amonio cuaternario"
+      ],
+      "contraindications": [
+        "uso excesivo de ácidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "adhesion_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotopolimerizacion-espectro-002",
+    "title": "Desajuste espectral: La causa invisible de la sensibilización a metacrilatos",
+    "content": "La mayoría de las lámparas comerciales para cabina emiten un espectro de luz que puede no coincidir con el fotoiniciador específico presente en el gel utilizado. Esta falta de coincidencia, denominada desajuste espectral, impide la conversión total de los monómeros en polímeros, dejando monómeros residuales libres. Estos monómeros, debido a su bajo peso molecular, tienen una capacidad de penetración cutánea significativa, aumentando drásticamente el riesgo de dermatitis alérgica de contacto. Investigaciones publicadas en PubMed indican que la exposición crónica a estos residuos es la causa principal de la sensibilización sistémica a los acrilatos, una condición que puede volverse permanente y limitar el uso de dispositivos médicos futuros, como sellantes dentales o prótesis. El uso de lámparas de baja intensidad o con espectros de emisión estrechos es un factor de riesgo subestimado. Es vital que el profesional verifique la compatibilidad entre la longitud de onda de la lámpara (generalmente 365-405 nm) y el fotoiniciador del gel. La sub-polimerización no es solo un problema de durabilidad, es un problema de salud pública que requiere una estandarización técnica en la cabina para prevenir efectos inmunológicos adversos a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "lámparas no compatibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_polimeros"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  },
+  {
+    "chunk_id": "guias_unas-biofisica-queratina-003",
+    "title": "Biofísica de la queratina bajo estrés mecánico por herramientas rotativas",
+    "content": "La lámina ungueal es un material compuesto con propiedades viscoelásticas que responde de manera compleja al calor friccional generado por los tornos eléctricos. Cuando se supera el umbral térmico de aproximadamente 45-50°C, se produce una desnaturalización de las proteínas de queratina, lo que resulta en una pérdida irreversible de la resistencia a la tracción. Este daño no es inmediato, sino que se manifiesta como una fragilidad progresiva y descamación lamelar semanas después del servicio. La física del fresado implica no solo presión, sino también una velocidad tangencial que puede inducir microfisuras en la matriz ungueal si el ángulo de ataque es incorrecto. El uso de fresas de carburo de tungsteno con altas revoluciones crea un efecto de 'arado' que debilita la capa dorsal, la cual es la parte más resistente de la uña. Para minimizar este impacto, es necesario aplicar técnicas de fresado intermitente, permitiendo la disipación térmica y reduciendo la presión de contacto. La comprensión de la anisotropía de la uña (su capacidad de resistir fuerzas de manera diferente según la dirección) es clave para evitar la onicoclasia traumática y mantener la homeostasis de la estructura ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado a altas revoluciones"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomedica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  },
+  {
+    "chunk_id": "guias_unas-oclusion-microbioma-004",
+    "title": "Oclusión y disrupción del microbioma subungueal: Riesgos de la falta de transpirabilidad",
+    "content": "La aplicación de recubrimientos sintéticos sobre la uña crea un entorno de oclusión prolongada que altera radicalmente el microbioma subungueal. Bajo condiciones normales, el hiponiquio y el espacio subungueal mantienen una microbiota equilibrada que protege contra la colonización de patógenos oportunistas. La oclusión genera un microclima de alta humedad y pH alterado, favoreciendo la proliferación de bacterias anaerobias y hongos levaduriformes, incluso en ausencia de una infección activa visible. Estudios sobre la ecología microbiana sugieren que la falta de oxígeno en el lecho ungueal puede inhibir la capacidad de la piel para activar sus péptidos antimicrobianos naturales. Este desequilibrio no solo aumenta el riesgo de onicomicosis, sino que también puede inducir inflamaciones periungueales crónicas de origen bacteriano. Es fundamental que los profesionales consideren períodos de descanso o utilicen productos con mayor permeabilidad al vapor de agua para permitir la recuperación de la homeostasia del microbioma. La desinfección química agresiva antes de la aplicación puede empeorar esta situación al eliminar la flora comensal protectora, dejando el terreno libre para microorganismos patógenos que se aprovechan de la oclusión para colonizar el tejido.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "oclusión excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-galvanica-005",
+    "title": "Corrosión galvánica en instrumental: Un riesgo invisible para la asepsia",
+    "content": "La corrosión galvánica es un fenómeno electroquímico que ocurre cuando dos metales con diferentes potenciales de electrodo están en contacto físico en presencia de un electrolito, como los líquidos desinfectantes o el sudor humano. En el contexto de la cabina, el uso de herramientas de acero inoxidable de baja calidad puede provocar la liberación de iones metálicos como níquel o cromo, que son potentes alérgenos cutáneos. Estos iones pueden introducirse en las microfisuras del lecho ungueal durante el corte de cutícula, desencadenando una dermatitis por contacto alérgica. Además, la corrosión degrada la superficie del instrumento, creando porosidades donde los biofilms bacterianos se alojan y protegen de los procesos estándar de esterilización química. Un instrumento con signos de picaduras o corrosión superficial ya no es estéril, independientemente del método de desinfección utilizado. Es esencial realizar una inspección visual periódica de las herramientas y reemplazar aquellas que muestren signos de oxidación o desgaste. La integración de protocolos de esterilización por autoclave, que no dependen únicamente de agentes químicos, es la única forma eficaz de garantizar la seguridad frente a este riesgo invisible y acumulativo para la salud del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de herramientas oxidadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  },
+  {
+    "chunk_id": "guias_unas-degradacion-oxidativa-007",
+    "title": "Degradación oxidativa de la queratina por agentes quelantes",
+    "content": "Los removedores de esmalte y geles a menudo contienen agentes quelantes, como el EDTA, diseñados para estabilizar la fórmula del producto. Sin embargo, cuando estos agentes entran en contacto directo con la lámina ungueal durante periodos prolongados de inmersión, pueden extraer iones metálicos esenciales que mantienen la estructura de la queratina. Este proceso de quelación involuntaria debilita los puentes disulfuro y las interacciones iónicas que otorgan flexibilidad y resistencia a la uña, provocando una degradación oxidativa que hace que la lámina se vuelva quebradiza y susceptible a la onicosquizia lamelar. La exposición repetida a estos solventes, sumada a la pérdida de lípidos intercelulares, crea un círculo vicioso de fragilidad. Es fundamental minimizar el tiempo de contacto con solventes de alta concentración y priorizar métodos de retiro mecánicos controlados que no requieran una saturación prolongada del lecho. La restauración de la barrera lipídica tras el retiro del producto es un paso crítico, a menudo omitido, que ayuda a prevenir la deshidratación forzada de los corneocitos y a mantener la resiliencia estructural de la uña ante los ciclos de aplicación y retiro de sistemas artificiales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "solventes"
+      ],
+      "contraindications": [
+        "inmersión prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperhidrosis-adhesion-008",
+    "title": "Hiperhidrosis periungueal: El factor invisible en el fallo de adhesión",
+    "content": "La hiperhidrosis periungueal, a menudo subdiagnosticada en cabina, es uno de los factores más determinantes en el fracaso de la adhesión de los polímeros UV. La presencia constante de humedad en los surcos laterales y el eponiquio altera el equilibrio hidrofóbico necesario para que los adhesivos de base resina se anclen correctamente. El agua, actuando como un plastificante natural en la queratina, aumenta la flexibilidad de la lámina pero, al mismo tiempo, reduce la energía superficial disponible para la unión química. En presencia de sudoración excesiva, los monómeros no pueden formar enlaces estables, lo que resulta en desprendimientos en los bordes laterales. Además, la humedad constante favorece la formación de biofilms bacterianos en el área periungueal, aumentando el riesgo de paroniquia crónica. El manejo clínico requiere el uso de agentes deshidratantes específicos (no solo alcohol, sino agentes que regulen el pH local) y una técnica de sellado hermético que impida la migración de humedad hacia la zona de adhesión. Reconocer los signos de hiperhidrosis antes de iniciar el servicio es crucial para ajustar el protocolo y evitar la frustración de un trabajo que, por motivos fisiológicos, tiene una alta probabilidad de fracaso prematuro.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "productos de baja adhesión en hiperhidrosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_cutaneo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:58:04.524Z"
+  }
+]

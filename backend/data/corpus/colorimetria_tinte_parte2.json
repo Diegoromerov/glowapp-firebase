@@ -1,0 +1,241 @@
+{
+  "batch_metadata": {
+    "category": "colorimetria_capilar_tinte",
+    "phase": 4,
+    "risk_level": "alto",
+    "batch_id": "tinte-lote1-parte2",
+    "chunk_count": 9,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Parte 2 de 2: acrilatos, alternativas PPD, regulación INVIMA/FDA/UE, cuidados post-tinte, cuero cabelludo sensible, metales pesados, red flags, mitos y planificación profesional."
+  },
+  "chunks": [
+    {
+      "chunk_id": "tinte-010",
+      "title": "Alergia a acrilatos: otra sensibilización relevante en servicios capilares",
+      "content": "Aunque el PPD es el alérgeno más conocido en servicios capilares, los acrilatos son otro grupo de sensibilizantes con creciente relevancia clínica, especialmente por su uso en extensiones con adhesivos, pegamentos para pelucas, productos de fijación y también en uñas acrílicas. Los acrilatos (metacrilatos, cianoacrilatos) pueden producir dermatitis de contacto alérgica en párpados, cara, cuello y cuero cabelludo, a menudo por transferencia con las manos. La sensibilización cruzada es frecuente: una persona alérgica a las uñas acrílicas puede reaccionar a extensiones capilares con adhesivos acrílicos, y viceversa. Las reacciones pueden ser retardadas (24-72 horas) y afectar zonas distintas al punto de contacto, lo que dificulta el diagnóstico. El manejo incluye identificar el producto responsable, evitar los acrilatos en todas sus formas una vez confirmada la alergia, y consultar al dermatólogo para pruebas de parche específicas que determinen qué acrilatos concretos están implicados. Para prevenir, es útil preguntar por los componentes de los adhesivos antes de aplicar extensiones, y estar atenta a síntomas persistentes de dermatitis en párpados o cara cuando se usan extensiones capilares de forma regular. Esta sensibilización es otro ejemplo de por qué revelar al profesional tu historial de alergias es parte del cuidado responsable.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "EADV — Contact dermatitis guidelines", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "PubMed — Acrilatos en cosmética y dermatitis de contacto", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acrilatos", "metacrilatos", "cianoacrilatos"],
+        "contraindications": ["alergia previa a acrilatos"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "fundamento_alergeno"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-011",
+      "title": "Alternativas al PPD: tintes sin parafenilendiamina y sus límites",
+      "content": "Para personas sensibilizadas al PPD o que quieren evitarlo, existen alternativas con distintos perfiles de riesgo y resultados. Los tintes sin PPD pueden usar precursores diferentes como la tolueno-2,5-diamina sulfato (PTD), que tiene menor poder sensibilizante pero aún puede causar alergia en personas sensibles al PPD por sensibilización cruzada parcial; por eso no son completamente seguros para todos los alérgicos al PPD. Los tintes completamente vegetales, como la henna pura (Lawsonia inermis) y el índigo, son alternativas con buen perfil de seguridad, pero dan tonalidades limitadas (rojizos, cobrizos, oscuros con henna + índigo) y son menos duraderos. Los tintes metálicos progresivos contienen sales de plomo o plata y tienen limitaciones propias, incluyendo interacción con decoloraciones posteriores. Los productos denominados henna negra no son alternativa segura porque suelen contener PPD añadido. La recomendación responsable: si tienes alergia confirmada al PPD, consulta con dermatología qué precursores alternativos puedes tolerar, haz pruebas de parche específicas antes de usar cualquier tinte alternativo, y nunca asumas que un producto sin PPD es automáticamente seguro para ti. La sensibilización cruzada entre colorantes es real, y solo las pruebas específicas lo determinan.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Alternatives to PPD hair dyes", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Cochrane Library — Hair dye allergy and alternatives", "url": "https://www.cochranelibrary.com/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PTD", "henna pura", "indigo"],
+        "contraindications": ["henna negra"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "alternativas_seguras"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-012",
+      "title": "Regulación INVIMA, FDA y UE sobre tintes capilares: qué revisar al comprar",
+      "content": "Los tintes capilares son productos regulados en Colombia por el INVIMA, en Estados Unidos por la FDA y en Europa por la regulación cosmética europea, con requisitos distintos pero con un objetivo común: seguridad del consumidor. En Colombia, los productos colorantes capilares deben tener registro sanitario INVIMA visible en el empaque, que verifica que el producto ha sido evaluado en sus componentes y etiquetado. La Unión Europea tiene una lista de colorantes permitidos (Anexo III de la regulación cosmética) con concentraciones máximas específicas para PPD y otros precursores, y exige advertencias sobre sensibilización en el etiquetado. La FDA en Estados Unidos no aprueba los tintes antes de su comercialización salvo los colorantes específicos, pero exige advertencias sobre pruebas de sensibilidad y puede emitir alertas cuando detecta productos con componentes peligrosos, como formaldehído o metales pesados. Como consumidora responsable, puedes verificar: que el producto tenga registro INVIMA si lo compras en Colombia, que el etiquetado incluya advertencias sobre sensibilización y la recomendación de prueba de alergia, que no esté en listas de alerta del INVIMA o FDA, y que la lista de ingredientes sea legible y completa. Los productos importados sin registro, vendidos en mercados informales o de dudosa procedencia, pueden contener concentraciones superiores a las permitidas o ingredientes no declarados, y son los de mayor riesgo.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "INVIMA — Registro sanitario de cosméticos", "url": "https://www.invima.gov.co/", "year": 2024 },
+        { "institution": "FDA — Hair dyes and cosmetics regulation", "url": "https://www.fda.gov/cosmetics/", "year": 2024 },
+        { "institution": "Unión Europea — Cosmetic Regulation 1223/2009", "url": "https://ec.europa.eu/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD"],
+        "contraindications": ["productos sin registro INVIMA"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "regulacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-013",
+      "title": "Cuidados post-tinte: cómo mantener el color y la salud del cabello",
+      "content": "Después de una coloración, el cabello tiene la cutícula más abierta y es más vulnerable, por lo que los cuidados en los días siguientes determinan tanto la duración del color como la salud del tallo. Recomendaciones con respaldo: evitar lavar el cabello las primeras 48-72 horas para permitir el cierre de la cutícula y la fijación del color; luego usar champú sin sulfatos, que limpian sin retirar agresivamente los pigmentos; incorporar acondicionadores y mascarillas específicas para cabello teñido que ayudan a sellar la cutícula y aportar humedad; usar protector térmico si se usa secador o plancha, porque el calor acelera la oxidación del color y el daño; y proteger el cabello de la radiación UV, que decolora los pigmentos artificiales, usando sombreros o productos con filtros UV. La frecuencia de lavado afecta la duración: lavar menos veces por semana conserva más el color. Los retoques de raíz en lugar de teñir todo el largo reducen la acumulación de daño químico. Es importante evitar decoloraciones o procesos químicos adicionales en el mismo cabello sin espaciar el tiempo suficiente y sin evaluación previa del estado del cabello. Una rutina post-tinte adecuada prolonga el color, reduce la necesidad de retoques frecuentes y preserva la integridad del cabello.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Hair care after coloring", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Ciencia cosmética capilar", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura", "planificador_skincare"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-014",
+      "title": "Cuero cabelludo sensible o con dermatitis: consideraciones antes de teñir",
+      "content": "Teñir el cabello cuando el cuero cabelludo tiene dermatitis activa, psoriasis, heridas, quemaduras solares o irritación aumenta significativamente el riesgo de reacciones adversas y de mayor absorción de los componentes químicos. En estas condiciones, la barrera cutánea está comprometida, los alérgenos penetran más fácilmente y la irritación del proceso químico puede desencadenar brotes severos. La recomendación médica es posponer la coloración hasta que el cuero cabelludo esté clínicamente sano, y tratar primero la dermatitis con el manejo adecuado (por ejemplo, champús con ketoconazol, corticoides tópicos u otros según la causa). Cuando el cuero cabelludo está sano pero es crónicamente sensible, las precauciones incluyen: test de sensibilidad riguroso, preferir tintes semipermanentes sin PPD ni amoniaco, aplicar el producto principalmente al tallo evitando contacto prolongado con la piel, y considerar técnicas como mechas o balayage que minimizan el contacto con el cuero cabelludo. Si tienes antecedentes de reacciones previas a tintes o cuero cabelludo reactivo, la evaluación dermatológica con pruebas de parche puede determinar a qué componentes específicos eres sensible y orientar productos seguros para ti. Nunca se debe aplicar tinte sobre cuero cabelludo con heridas abiertas, quemaduras o brotes inflamatorios activos.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Hair dye safety in sensitive scalp", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Dermatitis y procedimientos cosméticos", "url": "https://www.scd.org.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["PPD", "amoniaco"],
+        "contraindications": ["dermatitis activa", "cuero cabelludo lesionado", "quemaduras solares"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "contraindicacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-015",
+      "title": "Tintes con metales pesados: alerta sobre productos no regulados",
+      "content": "Aunque los tintes capilares regulados cumplen límites estrictos de metales pesados, los productos informales, importados sin registro o de mercados no regulados pueden contener concentraciones peligrosas de plomo, mercurio, arsénico, níquel o cadmio. El acetato de plomo, por ejemplo, se usa en algunos tintes progresivos oscuros y está prohibido o restringido en varios países por su toxicidad acumulativa y riesgo neurológico, especialmente en embarazadas y niños. El níquel es un alérgeno común que puede estar presente como impureza y causar reacciones en personas sensibles. Los riesgos de metales pesados en cosméticos incluyen toxicidad sistémica por uso repetido, sensibilización alérgica, y en el caso del plomo, efectos sobre el desarrollo neurológico fetal cuando la exposición ocurre en el embarazo. En Colombia, el INVIMA ha emitido alertas sobre productos capilares con metales pesados por encima de los límites permitidos, y su sistema de farmacovigilancia recibe reportes de efectos adversos. Como consumidora, las señales de alerta son: productos sin etiquetado legible en español, sin registro INVIMA visible, con precio sospechosamente bajo, o vendidos por canales informales. Si sospechas intoxicación por metales pesados por uso prolongado de un producto capilar, consulta al médico y reporta al INVIMA. La compra de tintes debe ser en canales formales que garanticen trazabilidad y cumplimiento normativo.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "INVIMA — Alertas sobre cosméticos con metales pesados", "url": "https://www.invima.gov.co/", "year": 2024 },
+        { "institution": "FDA — Lead in cosmetics", "url": "https://www.fda.gov/cosmetics/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["plomo", "mercurio", "niquel"],
+        "contraindications": ["productos sin registro INVIMA", "embarazo"],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "alerta_seguridad"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-016",
+      "title": "Red flags: cuándo una reacción al tinte requiere dermatólogo urgente",
+      "content": "La mayoría de las reacciones a tintes pueden manejarse con atención primaria, pero hay señales que requieren evaluación dermatológica o incluso urgencias. Búsqueda urgente o urgencias: dificultad respiratoria, opresión torácica, mareo o sensación de desmayo, edema severo de labios, lengua o párpados, urticaria generalizada intensa; estas son manifestaciones de posible anafilaxia que requieren atención inmediata. Evaluación dermatológica pronta: reacción extensa con ampollas, supuración o costras en cuero cabelludo, cara o cuello; edema facial importante (facies leonina); lesiones que se extienden fuera del área de aplicación; reacción que no mejora con manejo básico en 48-72 horas; reacción en párpados o genitales. También es recomendable la evaluación si es la primera reacción significativa al tinte, porque las pruebas de parche realizadas por el dermatólogo determinan los alérgenos específicos y orientan sobre productos seguros futuros, previniendo reacciones más graves en exposiciones posteriores. Documentar el producto (marca, lote, fecha) y el tiempo entre aplicación y síntomas es útil tanto para el diagnóstico como para el reporte al INVIMA. En población pediátrica, cualquier reacción a tinte o henna negra debe ser evaluada por pediatría o dermatología pediátrica.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — When to seek emergency care for cosmetic reactions", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "INVIMA — Sistema de reporte de eventos adversos cosméticos", "url": "https://www.invima.gov.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "red_flags_derivacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-017",
+      "title": "Mitos del tinte vs evidencia: canas, caída y crecimientos",
+      "content": "La colorimetría capilar tiene mitos muy arraigados que conviene aclarar con evidencia. El tinte no hace que salgan más canas: las canas son el resultado de la pérdida de melanocitos del folículo por edad y genética, y el tinte solo afecta el tallo, no el folículo; la percepción de más canas tras dejar de teñir es simplemente ver las que ya habían salido. Teñir el cabello no lo hace crecer más rápido ni más grueso: el crecimiento ocurre en el folículo y es independiente de los procesos químicos del tallo; la sensación de mayor volumen después del tinte suele ser por el aumento de diámetro temporal del tallo por la apertura de la cutícula. El tinte no causa caída en condiciones normales: la caída del cabello (efluvio) tiene causas médicas o reactivales distintas, aunque una reacción alérgica severa sí puede dañar folículos y producir caída. Arrancar las canas no hace que salgan siete más, pero sí puede dañar el folículo de forma permanente. Los productos naturales no son automáticamente seguros: la henna negra con PPD es un ejemplo claro, y otros productos botánicos pueden causar alergia. Los tintes modernos regulados son seguros para la mayoría de la población cuando se usan correctamente con pruebas previas; no son la amenaza que algunas narrativas sugieren, pero tampoco son inocuos si se omiten las precauciones básicas. La clave es uso informado, no miedo.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Hair dye myths vs facts", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Ciencia cosmética capilar", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tinte-018",
+      "title": "Cuándo el cambio de color debe ser planificado por un profesional",
+      "content": "No todos los cambios de color requieren el mismo nivel de expertise, y saber cuándo buscar un profesional calificado previene daño y decepción. Los escenarios que definitivamente deben ser manejados por un colorista profesional incluyen: cambios drásticos de tono (más de 3-4 niveles de diferencia con el color base), especialmente en cabellos oscuros; correcciones de color (cambiar un resultado no deseado, eliminar tintes previos oscuros, corregir tonalidades verdosas o naranjas); cabellos con historial químico complejo (múltiples tintes previos, alisados, decoloraciones, henna); uso de técnicas avanzadas como balayage, babylights o mechas que requieren precisión; y cabellos con daño previo o condiciones del cuero cabelludo. Los tintes de caja son adecuados para cambios pequeños y mantenimiento, pero tienen limitaciones en personalización y manejo de complejidad. Un buen profesional evalúa el historial completo, hace pruebas de mecha y sensibilidad, explica riesgos y límites realistas del resultado, y planifica sesiones espaciadas cuando es necesario. En Colombia, puedes verificar la formación del estilista y preferir establecimientos que ofrezcan consultas previas y pruebas. La inversión en un buen colorista es también inversión en salud capilar y en evitar costosas correcciones posteriores.",
+      "category": "colorimetria_capilar_tinte",
+      "phase": 4,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Professional vs home hair coloring", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Procedimientos estéticos y profesionales calificados", "url": "https://www.scd.org.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

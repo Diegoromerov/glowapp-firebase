@@ -1,0 +1,245 @@
+[
+  {
+    "chunk_id": "onicolisis-traumatica-001",
+    "title": "Onicólisis traumática: cuando el desprendimiento de la uña no es infección",
+    "content": "La onicólisis es la separación indolora de la lámina ungueal del lecho ungueal, comenzando en el borde libre o lateral. En el entorno de manicura, a menudo se confunde con hongos, pero la causa más frecuente en usuarias de uñas artificiales es el trauma mecánico repetitivo. El uso de puntas de uñas demasiado largas, el apalancamiento excesivo durante el retiro de productos (limado agresivo) o el uso de la uña como herramienta para abrir objetos, genera una tensión mecánica que rompe la adhesión natural. Según la AAD, el lecho ungueal es una zona altamente vascularizada; si la uña se separa, el espacio resultante se convierte en un reservorio de humedad y detritos, facilitando la colonización secundaria por Candida albicans o Pseudomonas. Es crucial entender que la onicólisis requiere tiempo para sanar: la lámina no se vuelve a adherir, debe crecer desde la matriz hacia adelante. La recomendación clínica es mantener la uña corta, evitar la limpieza subungueal con instrumentos metálicos (que empeoran la separación) y mantener el área seca.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza_subungueal_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:32.953Z"
+  },
+  {
+    "chunk_id": "pseudomonas-uña-verde-002",
+    "title": "Síndrome de la uña verde: identificación y manejo de Pseudomonas",
+    "content": "La cloroniquia, conocida popularmente como 'uña verde', es una colonización bacteriana por Pseudomonas aeruginosa. Este patógeno prospera en ambientes húmedos y cálidos. En el contexto de uñas artificiales, ocurre cuando hay una onicólisis previa o un mal sellado del producto (liftings), permitiendo que el agua quede atrapada entre la lámina y el acrílico o gel. El color verde-azulado es producto de la piocianina y la fluoresceína, pigmentos producidos por la bacteria. A diferencia de lo que dictan algunos mitos de salón, el tratamiento no consiste en cubrir la uña con más producto; esto solo sella la bacteria, creando un ambiente anaeróbico que puede exacerbar la infección. La evidencia clínica sugiere el retiro inmediato del producto, la desinfección con antisépticos adecuados y, en casos persistentes, la aplicación de soluciones de vinagre diluido o antibióticos tópicos bajo supervisión médica. Es imperativo suspender cualquier servicio de manicura hasta que la uña haya sanado completamente y la coloración haya desaparecido o crecido fuera del lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32809569/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vinagre",
+        "antisepticos"
+      ],
+      "contraindications": [
+        "aplicacion_producto_sobre_infeccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_biologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:32.953Z"
+  },
+  {
+    "chunk_id": "leuconiquia-traumatica-003",
+    "title": "Leuconiquia punctata: mitos sobre deficiencias y realidad traumática",
+    "content": "Las manchas blancas en las uñas (leuconiquia punctata) son frecuentemente atribuidas por la cultura popular a deficiencias de calcio o zinc. Sin embargo, la evidencia dermatológica indica que, en la gran mayoría de los casos, se trata de una leuconiquia traumática. Estas marcas aparecen debido a microtraumas en la matriz ungueal durante la formación de la uña. En el contexto de la manicura, el empuje excesivo de la cutícula (que es la protección física de la matriz) puede dañar las células en desarrollo, resultando en áreas de queratinización anormal que se manifiestan como puntos blancos a medida que la uña crece. No existe evidencia científica sólida que vincule estas manchas con carencias nutricionales en personas sanas con una dieta balanceada. Como profesional de GlowApp, es vital educar al cliente para evitar el 'sobre-limado' de la placa ungueal y el trauma mecánico innecesario durante la preparación, ya que la matriz ungueal es extremadamente sensible y cualquier daño puede dejar secuelas visibles durante los 4 a 6 meses que tarda una uña en renovarse completamente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "empuje_agresivo_cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion_cliente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:32.953Z"
+  },
+  {
+    "chunk_id": "granuloma-piogeno-004",
+    "title": "Granuloma piógeno: una complicación por trauma en el pliegue ungueal",
+    "content": "El granuloma piógeno es una lesión vascular benigna, pero de crecimiento rápido, que puede aparecer en el pliegue ungueal proximal o lateral tras un trauma menor o una infección no tratada. En el entorno de salones de belleza, suele ser consecuencia de una manipulación excesiva de la cutícula, cortes accidentales con alicates o el uso de instrumentos no estériles que introducen bacterias. La lesión se presenta como un nódulo rojo brillante, friable, que sangra fácilmente ante el más mínimo contacto. Es fundamental que el personal de manicura reconozca esta lesión y se abstenga de intentar 'limpiarla' o cortarla, ya que el sangrado puede ser profuso y la lesión tiende a recidivar si no se trata médicamente (a menudo mediante cauterización o escisión). Cualquier cliente que presente una neoformación de este tipo debe ser derivado a un dermatólogo. La prevención se centra exclusivamente en el respeto a la integridad de la cutícula y la esterilización rigurosa del instrumental, evitando la abrasión innecesaria del tejido periungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "DermNet NZ",
+        "url": "https://dermnetnz.org/topics/pyogenic-granuloma",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_lesion_sangrante"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_biologica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:32.953Z"
+  },
+  {
+    "chunk_id": "hiperqueratosis-subungueal-005",
+    "title": "Hiperqueratosis subungueal y el riesgo de la limpieza mecánica",
+    "content": "La hiperqueratosis subungueal es la acumulación de detritos de queratina debajo de la lámina ungueal. Aunque a menudo se asocia con psoriasis ungueal o micosis severa, en la práctica de la manicura puede ser inducida por el uso de herramientas metálicas tipo 'cureta' para limpiar profundamente debajo de la uña. Al raspar el lecho ungueal, se elimina la capa protectora que sella el hiponiquio, lo cual no solo causa dolor e inflamación, sino que estimula al cuerpo a producir más queratina como mecanismo de defensa, aumentando el grosor del tejido bajo la uña. Este ciclo de 'limpiar-crecer-limpiar' crea una puerta de entrada para patógenos. La recomendación clínica es dejar esta zona intacta; el hiponiquio debe respetarse como una barrera anatómica fundamental. Si se observa una acumulación excesiva de piel debajo de la uña, se debe sospechar de una condición dermatológica subyacente y no intentar resolverla mediante procedimientos cosméticos agresivos o limado subungueal profundo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_subungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:32.953Z"
+  },
+  {
+    "chunk_id": "onicocriptosis-y-manicura-006",
+    "title": "Onicocriptosis (uña encarnada): por qué no tratarla en cabina",
+    "content": "La onicocriptosis ocurre cuando el borde de la uña penetra el tejido blando circundante, causando dolor, inflamación y, frecuentemente, infección bacteriana. En el contexto de GlowApp, es imperativo establecer una política de 'no intervención' ante uñas encarnadas. Intentar realizar una 'pedicura curativa' o extraer el espícula (el fragmento de uña que incide en la piel) sin los protocolos quirúrgicos adecuados y sin anestesia, es una práctica de alto riesgo. El uso de instrumentos no esterilizados en un tejido ya inflamado puede derivar en celulitis perungueal o abscesos severos. El personal debe identificar los signos de alerta: dolor punzante, calor local, eritema y presencia de tejido de granulación. Ante cualquiera de estos signos, el cliente debe ser referido a un podólogo o dermatólogo. La labor del profesional de uñas es estética y preventiva; realizar procedimientos quirúrgicos menores en un salón de belleza constituye una violación de los protocolos de seguridad sanitaria y pone en grave riesgo la salud del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Patient Safety",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "cirugia_estetica_en_salon"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_biologica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:26:32.953Z"
+  }
+]

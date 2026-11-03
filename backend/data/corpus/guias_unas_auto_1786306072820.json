@@ -1,0 +1,369 @@
+[
+  {
+    "chunk_id": "onicolisis-proximal-001",
+    "title": "Onicólisis proximal: el signo de Darier y la psoriasis ungueal",
+    "content": "La onicólisis proximal es una variante clínica menos frecuente que la distal, caracterizada por el desprendimiento de la lámina ungueal desde la zona de la matriz o el eponiquio. A diferencia de la onicólisis traumática, este fenómeno suele estar fuertemente asociado con enfermedades inflamatorias sistémicas, siendo la psoriasis ungueal su principal causa. El 'signo de Darier' o la presencia de manchas de aceite (oil spots) en el lecho ungueal son indicadores clave que deben alertar al profesional de GlowApp sobre una posible patología autoinmune. Es fundamental no confundir este desprendimiento con una infección fúngica primaria. La literatura médica sugiere que la inflamación en la matriz ungueal altera la queratinización, provocando una adherencia deficiente. Un error común es intentar limpiar mecánicamente el espacio subungueal, lo cual exacerba la inflamación y facilita la sobreinfección bacteriana secundaria. Ante la presencia de onicólisis que no sigue un patrón de trauma evidente, es imperativo derivar al paciente con un dermatólogo para descartar psoriasis o liquen plano ungueal, ya que el manejo requiere terapias sistémicas o intralesionales, no cosméticas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/psoriasis-nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza mecanica agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "eritroniquia-longitudinal-002",
+    "title": "Eritroniquia longitudinal: diagnóstico diferencial de bandas rojas",
+    "content": "La eritroniquia longitudinal (EL) se presenta como una banda eritematosa que recorre la lámina ungueal desde la lúnula hasta el borde libre. A diferencia de las bandas pigmentadas (melanoniquia), la EL representa una condición vascular o inflamatoria. Clínicamente, puede ser un hallazgo aislado, pero también puede ser indicativo de un onicopapiloma, una neoplasia benigna pero persistente que requiere vigilancia. Según estudios en PubMed, la EL ocurre debido a un adelgazamiento de la lámina ungueal que permite la visualización del lecho vascular subyacente, o bien por una hiperplasia vascular inducida por neoplasias benignas. Es vital diferenciarla de hemorragias en astilla, las cuales son transitorias y se desplazan con el crecimiento de la uña. Si la banda persiste, aumenta de tamaño o causa dolor, no se debe realizar manicura invasiva ni cubrir con esmaltes permanentes que oculten la evolución. La recomendación experta es la dermatoscopia ungueal para evaluar el patrón vascular. Ignorar una EL persistente puede retrasar el diagnóstico de lesiones tumorales que, aunque mayoritariamente benignas, requieren escisión quirúrgica para confirmar su naturaleza histopatológica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32453896/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manicura invasiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "triaje-clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "onicoficosis-003",
+    "title": "Onicoficosis: el impacto de la presión lateral en los pliegues ungueales",
+    "content": "La onicoficosis se refiere a la formación de callosidades o tejido hiperqueratósico doloroso dentro de los surcos laterales de la uña, a menudo confundida erróneamente con la onicocriptosis (uña encarnada). Este fenómeno ocurre cuando hay una fricción constante entre la lámina ungueal y el tejido blando periungueal, frecuentemente exacerbado por calzado inadecuado o una arquitectura ungueal con curvatura excesiva. A diferencia de la uña encarnada, donde hay una espícula que penetra la piel, en la onicoficosis el problema principal es la acumulación de queratina endurecida que presiona las terminaciones nerviosas. En cabina, el error común es intentar 'excavar' o cortar este callo con instrumentos metálicos, lo que genera un ciclo de inflamación y engrosamiento reactivo (hiperqueratosis compensatoria). La guía práctica establece que el manejo debe ser mediante la descarga de presión, uso de agentes queratolíticos suaves bajo supervisión y, en casos persistentes, derivación a podología clínica. La eliminación agresiva en GlowApp está contraindicada, ya que cualquier micro-herida en esa zona es puerta de entrada para patógenos como Staphylococcus aureus o Pseudomonas aeruginosa.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Podiatric Medical Association",
+        "url": "https://japmaonline.org/content/108/6/485",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "queratoliticos"
+      ],
+      "contraindications": [
+        "corte instrumental agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "uñas-fragiles-004",
+    "title": "Síndrome de uñas frágiles: el rol de la hidratación y los lípidos",
+    "content": "El síndrome de uñas frágiles (onychoschizia y onychorrhexis) afecta a gran parte de la población y suele atribuirse erróneamente solo a carencias de calcio o biotina. La evidencia actual, respaldada por la AAD, indica que la fragilidad ungueal es predominantemente una condición de deshidratación y pérdida de lípidos intercelulares debido a la exposición frecuente al agua, detergentes y solventes químicos (como la acetona). La lámina ungueal es una estructura porosa que absorbe agua con facilidad, lo que provoca la expansión y contracción constante de los corneocitos, debilitando los puentes disulfuro de la queratina. En GlowApp, debemos educar al cliente sobre el uso de aceites oclusivos (como el aceite de jojoba o escualano) en la matriz y el área periungueal para restaurar la barrera lipídica. Los fortalecedores de uñas con formaldehído o resinas sintéticas pueden ofrecer una solución temporal, pero a largo plazo suelen aumentar la rigidez y la fragilidad, favoreciendo el quiebre. Una rutina de cuidado efectiva debe priorizar la hidratación constante y la protección física durante tareas domésticas, más que la suplementación oral indiscriminada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/brittle-nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de jojoba",
+        "escualano"
+      ],
+      "contraindications": [
+        "formaldehido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutinas-cuidado"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "cromatonychia-005",
+    "title": "Cromatonychia externa: manchas por pigmentos externos vs. patología",
+    "content": "La cromatonychia se refiere a la coloración anormal de la lámina ungueal. Es crucial distinguir entre las pigmentaciones causadas por agentes externos (manchas de nicotina, esmaltes de mala calidad, productos químicos industriales) y las discromías intrínsecas que reflejan procesos patológicos. Las manchas externas suelen ser superficiales y presentan una distribución irregular o lineal que no sigue el crecimiento natural de la uña desde la matriz. En cambio, las pigmentaciones que emergen de la lúnula o la cutícula sugieren un proceso activo en la matriz ungueal. Un error común en los salones es intentar pulir en exceso la lámina para eliminar manchas, lo cual adelgaza la uña y la hace más susceptible a la penetración de químicos. Si una mancha no desaparece mediante el crecimiento natural o si cambia de forma, debe considerarse el uso de dermatoscopia. La literatura indica que el uso prolongado de esmaltes oscuros sin una base protectora de alta calidad es la causa principal de tinciones por transferencia de pigmento. La clave es la prevención: siempre aplicar una base que actúe como barrera química antes de cualquier esmaltado de color.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "base coat protector"
+      ],
+      "contraindications": [
+        "pulido excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-servicio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "quistes-mucoides-006",
+    "title": "Quistes mucoides digitales: el peligro de la manipulación en cabina",
+    "content": "Los quistes mucoides digitales son lesiones quísticas benignas que aparecen típicamente en la cara dorsal de la falange distal, cerca de la articulación interfalángica distal o el pliegue ungueal proximal. Estos quistes están conectados a la articulación y contienen líquido sinovial. Un error crítico en el ámbito de la manicura es intentar drenar, pinchar o presionar estos quistes, creyendo que son simples verrugas o callosidades. La manipulación mecánica de un quiste mucoide conlleva un riesgo extremadamente alto de introducir bacterias en el espacio articular, provocando una artritis séptica, una complicación grave que puede requerir intervención quirúrgica. Clínicamente, el quiste suele causar un surco longitudinal en la uña debido a la presión constante sobre la matriz ungueal. Todo profesional debe identificar estas lesiones por su apariencia traslúcida y su ubicación característica. Bajo ninguna circunstancia se debe realizar maniobras de limpieza o retiro de cutícula sobre o cerca de estas lesiones. La recomendación es referir al paciente a dermatología o cirugía de mano para evaluación y tratamiento, que suele incluir crioterapia, esclerosis o escisión quirúrgica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Society for Surgery of the Hand",
+        "url": "https://www.assh.org/handcare/condition/mucous-cyst",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion",
+        "drenaje",
+        "presion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "triaje-clinico"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "onicolisis-fisiologica-007",
+    "title": "Onicólisis fisiológica y el límite de la zona de adhesión",
+    "content": "La onicólisis fisiológica es una condición donde el hiponiquio, la banda de tejido que sella la uña al lecho, se retrae ligeramente, aumentando la longitud del borde libre. Muchos clientes en GlowApp solicitan que la cutícula y el hiponiquio sean 'limpiados' profundamente para lograr una apariencia de uña más larga. Sin embargo, el hiponiquio es una barrera protectora vital que previene la entrada de humedad, hongos y bacterias al lecho ungueal. La eliminación forzada de este tejido no solo es dolorosa, sino que rompe el sello biológico, facilitando la onicólisis mecánica y las infecciones. Es fundamental entender que la posición del hiponiquio es individual y genética. Intentar forzar su retroceso mediante el uso de empujadores metálicos o productos químicos cáusticos es una práctica desaconsejada. La educación al cliente debe enfocarse en la aceptación de la anatomía natural y en el cuidado hidratante del hiponiquio para mantener su integridad. Un hiponiquio sano es la mejor defensa contra la onicomicosis distal-lateral, la forma más común de infección fúngica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limpieza de hiponiquio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "onicodistrofia-medicamentosa-008",
+    "title": "Onicodistrofia inducida por fármacos: efectos secundarios ocultos",
+    "content": "Diversos fármacos pueden manifestarse a través de cambios en la morfología o color de las uñas, un fenómeno conocido como onicodistrofia medicamentosa. Antibióticos (como las tetraciclinas), agentes quimioterapéuticos (taxanos) y retinoides orales pueden provocar desde líneas de Beau (depresiones transversales), fragilidad, hasta onicólisis y pigmentaciones difusas. Es vital que los profesionales de GlowApp mantengan un historial clínico actualizado que incluya medicamentos de uso crónico. Cuando un cliente presenta cambios ungueales repentinos y simétricos en varios dedos, es poco probable que se trate de una infección local y sugiere una causa sistémica o farmacológica. En estos casos, el tratamiento cosmético debe ser conservador, evitando esmaltados permanentes que requieran limado de la placa o exposición a lámparas UV, ya que la uña ya se encuentra en un estado de compromiso estructural. La recomendación es informar al cliente sobre la posible relación con su tratamiento médico y sugerir una consulta con el dermatólogo para evaluar si es necesario un ajuste de dosis o el uso de protectores solares específicos si hay fotosensibilidad inducida por el fármaco.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/dth.12745",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "esmaltado permanente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  },
+  {
+    "chunk_id": "anomalias-lúnula-009",
+    "title": "Anomalías de la lúnula: indicadores de salud sistémica",
+    "content": "La lúnula es la parte visible de la matriz ungueal y su apariencia puede ofrecer pistas sobre el estado de salud general. La ausencia de lúnulas (anlúnula) puede ser un hallazgo normal en muchos individuos, pero su desaparición repentina o cambios en su coloración pueden ser significativos. Por ejemplo, la eritrolúnula (lúnula roja) se ha asociado con enfermedades como la insuficiencia cardíaca, cirrosis o lupus eritematoso sistémico. Por otro lado, la lúnula azul puede ser indicativa de enfermedad de Wilson (acumulación de cobre). En el contexto de GlowApp, es importante observar cualquier cambio brusco en la lúnula durante el servicio. Si bien no somos una entidad de diagnóstico médico, el entrenamiento clínico permite identificar estas señales de alerta para recomendar una revisión médica. El error principal es ignorar estos cambios o intentar ocultarlos con esmaltes de alta pigmentación sin haber documentado la anomalía en la ficha técnica. La observación constante y la documentación fotográfica permiten realizar un seguimiento no invasivo que aporta un valor diferencial al servicio, priorizando siempre la salud del cliente sobre la estética.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/nail-as-a-window-to-systemic-diseases/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "triaje-clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:07:26.242Z"
+  }
+]

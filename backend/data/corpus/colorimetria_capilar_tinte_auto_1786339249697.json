@@ -1,0 +1,364 @@
+[
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-001",
+    "title": "El efecto Tyndall en la percepción del color de cabellos rubios y canosos",
+    "content": "En colorimetría capilar, el efecto Tyndall explica por qué algunos cabellos rubios o canosos reflejan un matiz azulado o verdoso bajo ciertas condiciones de iluminación. Este fenómeno físico ocurre cuando las partículas coloidales en la fibra capilar dispersan la luz de longitudes de onda más cortas. Clínicamente, esto es fundamental para los coloristas, ya que no se trata de una saturación de pigmento, sino de una dispersión lumínica. Cuando un cabello ha perdido su eumelanina (canas) o se ha aclarado en exceso, la luz penetra profundamente y se dispersa al rebotar contra la corteza. Si el colorista aplica un tinte con base dorada sin comprender este fenómeno, el resultado puede virar hacia tonos indeseados. La AAD sugiere que la evaluación de la transparencia de la fibra es esencial para predecir si el cabello requiere una prepigmentación para contrarrestar este comportamiento físico antes de aplicar el color final. Entender la física de la luz es tan vital como entender la química de los tintes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/gray-hair",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos_directos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-cromatografia-papel-002",
+    "title": "Cromatografía capilar: Diagnóstico de la integridad del pigmento residual",
+    "content": "La técnica de cromatografía en papel adaptada al diagnóstico capilar permite identificar la presencia de pigmentos artificiales residuales en la fibra. En la práctica clínica y cosmética, es frecuente encontrar cabellos que presentan 'bandas de color' debido a aplicaciones previas. Utilizar solventes adecuados para realizar una prueba de arrastre ayuda a determinar si el pigmento es oxidativo (anclado en la corteza) o directo (adherido a la cutícula). Según estudios publicados en PubMed, la incapacidad de distinguir estos tipos de pigmentos lleva a errores de sobreposición de color que causan degradación estructural innecesaria. Un colorista experto debe realizar esta evaluación para evitar el uso de agentes oxidantes de alto volumen en zonas que ya contienen pigmentos metálicos o directos, los cuales reaccionan de manera distinta a los precursores de color convencionales. Identificar la historia clínica química del cabello reduce significativamente el riesgo de daño por sobreprocesamiento.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30676778/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes_reductores"
+      ],
+      "contraindications": [
+        "cabello_dañado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-colorimetrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-ph-isoelectrico-003",
+    "title": "El punto isoeléctrico del cabello y su relevancia en la fijación del color",
+    "content": "El punto isoeléctrico del cabello humano se sitúa aproximadamente en un pH de 3.67. A este valor, las cargas positivas y negativas de las proteínas de la queratina están equilibradas, otorgando a la fibra su máxima estabilidad estructural. Durante los procesos de coloración, que operan a pH alcalinos, la queratina se carga negativamente, lo que provoca la apertura de la cutícula. El reto clínico es devolver el cabello a su punto isoeléctrico tras el servicio. Si el pH final no se ajusta correctamente, la cutícula permanece parcialmente abierta, facilitando la fuga de moléculas de pigmento (lixiviación) y aumentando la porosidad. Investigaciones en dermatología cosmética indican que el uso de soluciones buffer post-coloración es más efectivo que el uso de acondicionadores convencionales para sellar la cutícula. Mantener el equilibrio electrostático es la clave para la longevidad del tono y la prevención de la rotura mecánica a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4158629/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes_acidificantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post-coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-quelacion-metales-004",
+    "title": "El papel de los agentes quelantes en la prevención de la oxidación incontrolada",
+    "content": "Los metales de transición como el cobre, hierro y calcio, presentes en el agua de red de muchas ciudades, se acumulan en la corteza capilar formando complejos que actúan como catalizadores de radicales libres. Durante la aplicación de tintes oxidativos, estos metales aceleran la descomposición del peróxido de hidrógeno, provocando una reacción exotérmica violenta y una oxidación incontrolada que degrada la melanina y la estructura proteica. La implementación de protocolos de quelación (uso de EDTA o agentes naturales como el fitato de sodio) antes del servicio de coloración no es opcional, sino una necesidad clínica. Esto previene la formación de 'puntos calientes' en la fibra capilar, garantizando un depósito de color uniforme y protegiendo la integridad del complejo de membrana celular (CMC). La evidencia sugiere que la eliminación de depósitos minerales mejora la fidelidad del color en un 30% y reduce drásticamente la porosidad inducida por el proceso químico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "agentes_quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-proteinas-hidrolizadas-005",
+    "title": "Interacción de proteínas hidrolizadas en la retención del color",
+    "content": "La incorporación de proteínas hidrolizadas de bajo peso molecular (como el trigo o la queratina) en las formulaciones de tintes busca compensar la pérdida de masa proteica durante el proceso alcalino. Estas moléculas poseen la capacidad de penetrar en las zonas de la corteza donde la estructura ha sido dañada, creando un 'puente' que no solo refuerza la fibra, sino que ayuda a anclar las moléculas de pigmento. Clínicamente, el uso de proteínas hidrolizadas mejora la afinidad tintórea en cabellos con porosidad media a alta. Sin embargo, es necesario un equilibrio: un exceso de proteínas puede generar una rigidez excesiva que, paradójicamente, facilita la rotura por fragilidad mecánica. La literatura científica destaca que los complejos proteicos actúan como agentes de sacrificio, siendo los primeros en oxidarse y protegiendo así la estructura interna del cabello. El profesional debe seleccionar tintes con tecnología de protección proteica para minimizar el impacto del amoniaco o sus sustitutos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteina_hidrolizada"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion-tinte"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-metamerismo-006",
+    "title": "Metamerismo: La trampa de la percepción cromática en la consulta clínica",
+    "content": "El metamerismo es un fenómeno visual donde dos colores parecen iguales bajo una fuente de luz (ej. luz incandescente) pero difieren bajo otra (ej. luz natural o LED). En un entorno clínico o de salón, el metamerismo es la causa principal de la insatisfacción del cliente post-coloración. Para mitigar este riesgo, es imperativo realizar la evaluación final del color bajo un espectro de luz estandarizado (D65). Los pigmentos utilizados en tintes capilares modernos, especialmente los tonos fríos y cenizos, son altamente sensibles a este fenómeno debido a su composición química basada en precursores sintéticos. La AAD recomienda que el profesional explique al cliente que la percepción del color es una construcción cerebral y no una propiedad absoluta del cabello. Utilizar una caja de luz con múltiples fuentes de iluminación durante la consulta inicial evita malentendidos y ajusta las expectativas del resultado final, asegurando que el tono seleccionado sea consistente en diferentes entornos cotidianos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Commission on Illumination (CIE)",
+        "url": "https://cie.co.at/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consulta-inicial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-lipidos-cuticulares-007",
+    "title": "Preservación de la capa F (ácido 18-metileicosanoico) durante la coloración",
+    "content": "La capa F es una capa lipídica externa que recubre la cutícula del cabello, compuesta principalmente por ácido 18-metileicosanoico (18-MEA). Esta capa es la responsable de la hidrofobicidad natural y la suavidad del cabello. Durante los procesos de coloración, especialmente aquellos que involucran una alcalinidad elevada, esta capa se degrada irreversiblemente. Una vez perdida, el cabello se vuelve higroscópico, absorbiendo humedad ambiental en exceso, lo que infla la fibra y provoca la salida del pigmento artificial (fading). La investigación actual en tricología busca el desarrollo de tintes que incorporen lípidos análogos a la capa F para minimizar este daño. El profesional debe evitar el uso de champús alcalinos pre-coloración que puedan barrer esta capa protectora. La protección de la barrera lipídica es tan crucial como la protección de la queratina interna para mantener el brillo y la profundidad del tono aplicado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lipidos",
+        "18-MEA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-fibra"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-pigmentos-naturales-008",
+    "title": "Dinámica de neutralización: Eumelanina vs. Pigmentos Sintéticos",
+    "content": "La neutralización del color no es una suma simple de colores en una rueda cromática; es una interacción química entre los pigmentos artificiales y la melanina residual del cabello. La eumelanina (pigmento oscuro) es particularmente resistente a la oxidación completa, dejando a menudo un residuo de tonos cálidos (naranja-amarillo) tras la decoloración. El error común es intentar neutralizar estos tonos con pigmentos cenizos de forma inmediata sin considerar que la eumelanina degradada sigue presente. La evidencia clínica sugiere que un enfoque de 'doble paso' (pre-pigmentación seguida de neutralización) es más efectivo para lograr tonos fríos duraderos. Además, la cantidad de melanina en el bulbo y la corteza varía según la genética del paciente, afectando la velocidad de absorción del tinte. Comprender la densidad de la melanina mediante un diagnóstico capilar preciso permite ajustar la fórmula del tinte para evitar resultados 'fangosos' o subtonos verdosos no deseados.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos_oxidativos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria-color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  },
+  {
+    "chunk_id": "colorimetria-micromoleculas-009",
+    "title": "Avances en micro-moléculas de pigmento para una penetración profunda",
+    "content": "La tecnología de micro-moléculas en tintes capilares representa un cambio de paradigma en la colorimetría. A diferencia de las moléculas de pigmento tradicionales, que son voluminosas y requieren una apertura extrema de la cutícula para penetrar, las micro-moléculas son capaces de entrar en la corteza con una alcalinidad mucho menor (pH más cercano al fisiológico). Esto reduce significativamente el daño estructural y la desnaturalización de las proteínas. Una vez dentro, estas moléculas se acoplan oxidativamente para formar estructuras más grandes que quedan 'atrapadas' en la matriz capilar. Este mecanismo permite obtener colores intensos y duraderos con un perfil de seguridad cutánea superior. La adopción de esta tecnología es recomendada para clientes con sensibilidad cutánea o cabellos finos y dañados, ya que preserva la integridad de la barrera cuticular mientras asegura resultados cromáticos de alta definición y brillo natural.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "European Journal of Dermatology",
+        "url": "https://www.ejd-online.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "micro-pigmentos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion-tinte"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:20:30.526Z"
+  }
+]

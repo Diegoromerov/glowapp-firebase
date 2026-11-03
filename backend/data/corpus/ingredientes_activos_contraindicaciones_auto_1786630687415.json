@@ -1,0 +1,176 @@
+[
+  {
+    "chunk_id": "interaccion-fotoproteccion-activos-001",
+    "title": "Interferencia de filtros solares orgánicos en la penetración de activos tópicos",
+    "content": "La aplicación de filtros solares químicos antes de activos liposolubles como el retinol o derivados de la vitamina A puede alterar significativamente la cinética de penetración cutánea. Estudios en dermatología cosmética indican que ciertos filtros orgánicos, como la avobenzona o el octocrileno, actúan como solventes que pueden modificar el coeficiente de partición del estrato córneo. Esta interacción no solo reduce la eficacia del activo por competencia en la ruta transepidérmica, sino que puede incrementar la irritabilidad local al favorecer una absorción profunda y descontrolada. La AAD sugiere que para optimizar la eficacia, los activos de tratamiento deben aplicarse sobre piel limpia y permitir su absorción completa antes de la fotoprotección. En pieles reactivas, esta oclusión combinada con filtros químicos puede derivar en dermatitis de contacto irritativa. Es fundamental considerar el orden de aplicación: primero activos de tratamiento (pH dependientes) y, tras un tiempo de espera de 10-15 minutos, aplicar el protector solar para evitar la desestabilización fisicoquímica de la formulación y asegurar la integridad de la barrera cutánea frente a agentes externos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/sun/sunscreen-faqs",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "avobenzona",
+        "octocrileno",
+        "retinol"
+      ],
+      "contraindications": [
+        "aplicacion-simultanea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-skincare"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:17:48.139Z"
+  },
+  {
+    "chunk_id": "cobre-peptidos-vitamina-c-002",
+    "title": "Inestabilidad por quelación: Péptidos de Cobre y Vitamina C",
+    "content": "La combinación de péptidos de cobre (GHK-Cu) con ácido L-ascórbico (Vitamina C pura) representa un desafío técnico importante en la formulación cosmética debido a la reacción de quelación. El cobre, al ser un metal de transición, posee una alta afinidad por los grupos funcionales del ácido ascórbico, lo que provoca la oxidación prematura de este último y la posible desnaturalización de la estructura peptídica del cobre. Esta interacción química anula los beneficios antioxidantes de la vitamina C y reduce la capacidad regenerativa de los péptidos de cobre. Investigaciones publicadas en PubMed indican que la presencia de iones metálicos libres en formulaciones de vitamina C a pH ácido cataliza reacciones de tipo Fenton, generando radicales libres que pueden inducir estrés oxidativo en lugar de prevenirlo. Para evitar esta contraindicación, se recomienda el uso de estos activos en momentos separados del día: vitamina C en la rutina matutina para aprovechar su sinergia con el protector solar, y péptidos de cobre en la rutina nocturna para favorecer los procesos de reparación celular durante el sueño. Esta separación asegura la estabilidad química de ambos componentes y maximiza su eficacia clínica sin riesgo de irritación o degradación oxidativa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30671609/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos-cobre",
+        "acido-l-ascorbico"
+      ],
+      "contraindications": [
+        "mezcla-incompatible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-skincare"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:17:48.139Z"
+  },
+  {
+    "chunk_id": "exfoliacion-quimica-barrera-003",
+    "title": "Daño a la barrera lipídica por sobre-exfoliación crónica",
+    "content": "La sobre-exfoliación química, caracterizada por el uso excesivo de AHAs y BHAs, induce una alteración profunda en la organización de los lípidos intercelulares del estrato córneo. Clínicamente, esto se manifiesta como una pérdida de la función barrera, aumento de la pérdida de agua transepidérmica (TEWL) y una respuesta inflamatoria crónica de bajo grado. La literatura dermatológica subraya que la eliminación excesiva de corneocitos reduce la capacidad de la piel para retener factores de hidratación natural (NMF). En pacientes con pieles sensibles o con rosácea, esta práctica es contraindicada, ya que la barrera cutánea comprometida permite la entrada de alérgenos e irritantes, exacerbando la eritema y la descamación. La recuperación de la barrera tras un episodio de sobre-exfoliación requiere la suspensión inmediata de cualquier ácido y la reintroducción de lípidos fisiológicos (ceramidas, colesterol, ácidos grasos libres). La IADVL recomienda evaluar el estado de la piel antes de cada ciclo de exfoliación, priorizando la integridad de la barrera sobre la renovación celular agresiva, dado que una barrera dañada es el precursor directo de dermatitis de contacto irritativa y sensibilización futura a productos cosméticos convencionales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.ijdvl.com/article.asp?issn=0378-6323;year=2021;volume=87;issue=5;spage=620;epage=630;aulast=Kaur",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aha",
+        "bha"
+      ],
+      "contraindications": [
+        "sobre-uso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-barrera"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:17:48.139Z"
+  },
+  {
+    "chunk_id": "niacinamida-ph-bajo-004",
+    "title": "Niacinamida y pH: Riesgo de conversión a ácido nicotínico",
+    "content": "La niacinamida (Vitamina B3) es un ingrediente versátil, pero su estabilidad es altamente dependiente del pH de la formulación. En medios con pH inferior a 5.0, especialmente si se combina con calor o tiempo de almacenamiento prolongado, la niacinamida puede hidrolizarse y convertirse en ácido nicotínico. A diferencia de la niacinamida, el ácido nicotínico actúa como un potente vasodilatador que provoca eritema, sensación de ardor y picor en la piel, un efecto conocido como 'niacin flush'. Este fenómeno es particularmente frecuente cuando se aplican productos de niacinamida inmediatamente después de exfoliantes químicos de pH ácido. Es un error común pensar que la combinación de ambos potenciará los resultados; en realidad, se desestabiliza el activo y se compromete la tolerancia cutánea. Se recomienda verificar que los productos contengan niacinamida estabilizada y mantener un intervalo de al menos 20-30 minutos entre la aplicación de un AHA/BHA y un suero de niacinamida. La educación sobre la compatibilidad de pH es esencial para evitar reacciones adversas en pacientes que buscan tratar la hiperpigmentación o la textura irregular sin provocar inflamación adicional.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/niacinamide-topical-benefits/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "aha"
+      ],
+      "contraindications": [
+        "ph-incompatible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-skincare"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:17:48.139Z"
+  }
+]

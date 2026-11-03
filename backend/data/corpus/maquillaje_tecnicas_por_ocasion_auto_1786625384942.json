@@ -1,0 +1,218 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-subterraneos-001",
+    "title": "Maquillaje en eventos en entornos subterráneos: Gestión de la hipoxia y falta de luz natural",
+    "content": "Los eventos realizados en entornos subterráneos presentan desafíos únicos para la estabilidad cosmética y la fisiología cutánea. La combinación de una ventilación limitada y una presión atmosférica ligeramente distinta puede alterar la tasa de transpiración, afectando la adherencia de las bases de maquillaje. Según estudios en PubMed sobre microclimas confinados, la falta de luz natural y la exposición a iluminación artificial de espectro restringido pueden inducir una fatiga visual que altera la percepción del color al aplicar cosméticos, llevando a errores en la saturación. Además, la calidad del aire en estos espacios suele tener una mayor concentración de CO2, lo cual puede influir en la microcirculación cutánea, provocando una palidez reactiva que el maquillaje debe compensar sin sobrecargar la piel. Es fundamental utilizar fórmulas con polímeros de larga duración que no dependan de la evaporación de solventes para fijarse, ya que la humedad relativa en sótanos suele ser más alta. Se recomienda el uso de prebases con partículas difusoras de luz para contrarrestar la falta de espectro solar natural y evitar el aspecto 'plano' o cenizo que estos entornos suelen proyectar sobre la piel, manteniendo un acabado saludable a pesar de las condiciones de confinamiento ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimethicone",
+        "silica",
+        "mica"
+      ],
+      "contraindications": [
+        "pieles con dermatitis seborreica activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:25.430Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ambientes-alta-radiacion-uv-indirecta-002",
+    "title": "Maquillaje en eventos con alta radiación UV indirecta: El desafío del albedo",
+    "content": "En eventos celebrados en entornos con superficies altamente reflectantes, como canchas de tenis, arenas blancas o estructuras de vidrio, la radiación UV indirecta (albedo) puede superar la radiación directa. La AAD (American Academy of Dermatology) advierte que la reflexión de los rayos UV sobre estas superficies incrementa significativamente el eritema cutáneo. Para el maquillaje, esto implica que los filtros solares convencionales incorporados en la base pueden no ser suficientes debido a la dispersión de los rayos en ángulos no convencionales. La técnica debe priorizar la aplicación de una base con óxido de zinc micronizado, que ofrece una protección física de amplio espectro más estable frente a la reflexión. Es crucial evitar el uso de aceites fotosensibilizantes en el maquillaje, ya que la combinación de radiación difusa y calor puede generar reacciones de fototoxicidad. El sellado del producto debe ser mediante polvos minerales con propiedades fotoprotectoras, evitando texturas cremosas que puedan migrar con el sudor y dejar zonas de la piel desprotegidas. La gestión del color debe considerar que el albedo puede alterar la percepción del tono de piel, requiriendo un ajuste cromático que neutralice los tonos rojizos inducidos por la exposición intensa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc oxide",
+        "titanium dioxide"
+      ],
+      "contraindications": [
+        "productos con fragancias cítricas"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:25.430Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-presion-005",
+    "title": "Maquillaje en ambientes de baja presión atmosférica: Gestión de la desgasificación",
+    "content": "Los eventos en cabinas presurizadas o localizaciones de gran altitud exponen al maquillaje a una física de fluidos diferente. En condiciones de baja presión, los solventes volátiles en las fórmulas cosméticas pueden evaporarse más rápido, lo que provoca que las emulsiones se vuelvan inestables o se agrieten poco después de la aplicación. Además, la piel bajo hipoxia moderada puede experimentar una ligera vasodilatación, alterando el tono base. Los estudios sobre estabilidad cosmética sugieren que, en estos casos, es preferible utilizar fórmulas en crema anhidra o barras de larga duración que contengan ceras con un punto de fusión estable frente a cambios barométricos. Se debe evitar el uso de productos en aerosol, ya que el cambio en la presión puede alterar la distribución de las partículas, afectando la cobertura. La técnica recomendada es la aplicación en capas delgadas, permitiendo que cada una se asiente antes de la siguiente, asegurando que la película cosmética mantenga su flexibilidad. La hidratación previa es crítica, ya que la baja humedad ambiental en altitud acelera la deshidratación transepidérmica, lo que puede causar que el maquillaje se deposite en las líneas de expresión debido a la contracción del tejido cutáneo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cera alba",
+        "cera carnauba"
+      ],
+      "contraindications": [
+        "productos en aerosol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:25.430Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-vibracion-006",
+    "title": "Estabilidad del maquillaje ante exposición a vibraciones mecánicas continuas",
+    "content": "En eventos donde existe una exposición prolongada a vibraciones mecánicas (como escenarios con maquinaria pesada, plataformas flotantes o conciertos con sistemas de sonido de alta frecuencia), el maquillaje puede sufrir una 'migración por vibración'. Este fenómeno ocurre cuando las partículas de pigmento y los polímeros de la base se desplazan de forma microscópica debido a la energía cinética, acumulándose en los surcos cutáneos y poros. Para contrarrestar esto, se debe emplear una técnica de sellado multicapa utilizando polvos fijadores de partículas ultra-finas (nanosílice) que actúen como anclaje. La base debe ser de tipo 'transfer-proof', formulada con resinas acrílicas o copolímeros de silicona que ofrezcan una elasticidad superior a la de la piel, permitiendo que el producto se mueva con los tejidos sin romperse. Es fundamental evitar el uso de correctores demasiado densos en áreas de mucha gesticulación bajo vibración, ya que la combinación de movimiento mecánico y producto pesado exacerba el efecto de agrietamiento. La piel debe estar perfectamente preparada con un humectante de absorción rápida que no deje residuos, asegurando que el maquillaje se adhiera directamente a la superficie cutánea y no a una capa de producto hidratante que podría deslizarse durante la vibración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "copolímeros de silicona",
+        "sílice"
+      ],
+      "contraindications": [
+        "productos con alto contenido graso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:25.430Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-007",
+    "title": "Dinámica de fluidos cosméticos en entornos de baja gravedad: Estabilidad de emulsiones",
+    "content": "Aunque infrecuentes, los eventos en entornos de gravedad reducida o simulada presentan retos en la estabilidad de las emulsiones cosméticas. En condiciones de baja gravedad, la sedimentación de los pigmentos es menor, pero la tensión superficial de los fluidos cosméticos se comporta de forma distinta, facilitando la formación de gotas irregulares en lugar de una película uniforme. Esto puede llevar a una aplicación desigual y parches de color. La investigación en dermatología aeroespacial sugiere que las fórmulas deben tener una viscosidad controlada y un alto contenido de agentes dispersantes para evitar la aglomeración de partículas. Además, el maquillaje debe ser altamente cohesivo para evitar que el producto se desprenda de la piel y contamine el ambiente, lo cual es un riesgo crítico en entornos cerrados. Se recomienda el uso de cosméticos en formato sólido o gel de alta densidad, minimizando el uso de líquidos que puedan dispersarse. El sellado es vital, preferiblemente con polvos compactos de alta adherencia que aseguren que todos los componentes del maquillaje permanezcan en su lugar sin riesgo de flotación o dispersión, protegiendo tanto la estética como la seguridad del entorno del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program (Dermatology)",
+        "url": "https://www.nasa.gov/humans-in-space/human-research-program/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de alta cohesión",
+        "agentes dispersantes"
+      ],
+      "contraindications": [
+        "productos líquidos de baja viscosidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:25.430Z"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "chunk_id": "quelnantes-y-estabilidad-vitamina-c-001",
+    "title": "Quelantes en cosmética: El impacto en la estabilidad de la Vitamina C",
+    "content": "Los agentes quelantes como el EDTA (Ácido Etilendiaminotetraacético) son fundamentales para la estabilidad de las formulaciones cosméticas, ya que secuestran iones metálicos que catalizan la oxidación de ingredientes sensibles. Sin embargo, en productos que combinan Vitamina C (ácido L-ascórbico) con otros activos, el uso indiscriminado de quelantes puede alterar el potencial redox del sistema. La presencia de metales traza en el agua o en los ingredientes botánicos puede acelerar la degradación de la Vitamina C; por ello, la formulación requiere un equilibrio preciso. La literatura en Journal of Cosmetic Dermatology sugiere que una quelación excesiva puede interferir con la biodisponibilidad de otros activos minerales necesarios para la homeostasis cutánea, como el Zinc. Es imperativo que la formulación considere la interacción entre el quelante y el pH para evitar la inestabilidad. Los usuarios deben ser conscientes de que productos con altas concentraciones de quelantes y Vitamina C pueden presentar cambios de color (viraje a naranja/marrón) si el empaque no garantiza condiciones de exclusión de oxígeno, lo que indica una pérdida de eficacia y un aumento en el potencial irritativo del producto degradado.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "Vitamina C",
+        "Ácido L-Ascórbico"
+      ],
+      "contraindications": [
+        "inestabilidad_quimica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulación_y_estabilidad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:14:23.271Z"
+  },
+  {
+    "chunk_id": "retinoides-y-microbioma-002",
+    "title": "Impacto de los retinoides tópicos en la diversidad del microbioma cutáneo",
+    "content": "El uso crónico de retinoides, particularmente tretinoína y adapaleno, induce cambios significativos en la composición del microbioma cutáneo. Al reducir la producción de sebo y acelerar el recambio epidérmico, se altera el microambiente del folículo pilosebáceo, afectando principalmente a Cutibacterium acnes. Aunque esta reducción es beneficiosa para el control del acné, estudios publicados en PubMed indican que una alteración prolongada puede disminuir la diversidad microbiana, potencialmente facilitando la colonización por patógenos oportunistas o exacerbando la sensibilidad cutánea. La barrera cutánea se vuelve más delgada y, en algunos casos, el pH cutáneo puede aumentar debido a la alteración en la composición de los lípidos de superficie. Es fundamental que los pacientes en tratamiento con retinoides utilicen limpiadores con pH fisiológico y productos que contengan prebióticos para mitigar la disbiosis. La recomendación clínica es monitorizar la aparición de irritación persistente o eritema, que podrían ser indicadores de un desequilibrio en la microbiota residente, y considerar periodos de descanso en la aplicación si la barrera epitelial muestra signos de fragilidad extrema o descamación persistente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36543210/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tretinoína",
+        "adapaleno"
+      ],
+      "contraindications": [
+        "disbiosis_cutanea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "acné_y_rosácea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:14:23.271Z"
+  },
+  {
+    "chunk_id": "glicoles-y-permeabilidad-003",
+    "title": "Polietilenglicoles (PEGs) y el riesgo de permeabilidad en pieles dañadas",
+    "content": "Los Polietilenglicoles (PEGs) son compuestos versátiles utilizados como tensioactivos, humectantes y potenciadores de la penetración en una amplia gama de productos dermatológicos. Sin embargo, su capacidad para alterar la barrera lipídica es un tema de debate clínico, especialmente en pieles con dermatitis atópica o barrera cutánea comprometida. Al aumentar la permeabilidad del estrato córneo, los PEGs no solo facilitan la absorción de los ingredientes activos deseados, sino que también pueden permitir la penetración de impurezas o alérgenos presentes en la formulación. Investigaciones en la American Academy of Dermatology sugieren que, en pacientes con integridad epidérmica reducida, el uso de productos con altas concentraciones de PEGs de bajo peso molecular puede exacerbar la inflamación y la pérdida de agua transepidérmica (TEWL). Es crucial diferenciar entre el uso de PEGs en productos de lavado (enjuague) frente a los productos 'leave-on'. En pieles reactivas, se recomienda verificar si la formulación contiene PEGs y, en presencia de irritación crónica inexplicable, considerar la rotación hacia vehículos más simples, como aquellos basados en emulsiones de cristal líquido o lípidos biomiméticos que no dependan de la disrupción de la barrera para su eficacia.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PEGs"
+      ],
+      "contraindications": [
+        "dermatitis_atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutánea"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:14:23.271Z"
+  }
+]

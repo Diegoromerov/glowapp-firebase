@@ -1,0 +1,192 @@
+[
+  {
+    "chunk_id": "colorimetria-neuro-cutanea-001",
+    "title": "El eje neuro-cutáneo y la modulación del subtono por estrés",
+    "content": "La conexión entre el sistema nervioso central y la piel, conocida como el eje neuro-cutáneo, desempeña un papel crítico pero subestimado en la colorimetría facial. El estrés psicológico agudo activa el eje hipotalámico-pituitario-adrenal (HPA), desencadenando la liberación de cortisol y catecolaminas. Estas sustancias no solo inducen vasodilatación periférica rápida, sino que alteran la microcirculación cutánea, modificando la reflectancia del espectro visible. En términos prácticos, un paciente bajo estrés crónico puede presentar una alteración persistente en su subtono debido a la respuesta inflamatoria sistémica y la redistribución del flujo sanguíneo. Estudios publicados en PubMed indican que los neuropéptidos liberados por las terminaciones nerviosas dérmicas pueden modular la síntesis de melanina y el tono vascular, lo que explica por qué el subtono percibido puede variar entre una consulta matutina y una vespertina. Para el experto en GlowApp, es imperativo realizar el diagnóstico de subtono en condiciones de reposo basal, evitando evaluaciones tras periodos de alta carga emocional o actividad física, ya que el eritema inducido por estrés puede enmascarar un subtono oliva o neutro bajo un falso matiz rosado.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31350672/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_digital"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:29:28.084Z"
+  },
+  {
+    "chunk_id": "colorimetria-farmacos-psicotropicos-002",
+    "title": "Efectos de la medicación psicotrópica en la perfusión y el subtono",
+    "content": "El uso de fármacos psicotrópicos, particularmente antidepresivos tricíclicos y ciertos inhibidores de la recaptación de serotonina, tiene un impacto documentado en la perfusión cutánea. Estos agentes pueden alterar la respuesta vasomotora, provocando episodios de rubor o palidez que distorsionan la lectura del subtono. La literatura dermatológica sugiere que la interacción de estos fármacos con los receptores adrenérgicos en la vasculatura cutánea puede inducir cambios sutiles en la coloración basal. Para el profesional de la belleza en GlowApp, es vital documentar el historial farmacológico del usuario. Si un usuario reporta cambios inesperados en cómo sus bases de maquillaje interactúan con su piel, no siempre se debe a la oxidación del producto, sino potencialmente a una alteración en la dinámica vascular inducida por medicación sistémica. La palidez inducida por fármacos puede ser erróneamente interpretada como un subtono frío, mientras que el rubor inducido puede sugerir un subtono cálido o neutro-rojizo inexistente. Se recomienda evaluar el subtono mediante zonas de menor vascularización, como el borde de la mandíbula o el antebrazo interno, para minimizar este sesgo farmacológico.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "historial_clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:29:28.084Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-hev-003",
+    "title": "El impacto de la luz HEV en la fatiga cromática del diagnóstico",
+    "content": "La exposición prolongada a la luz de alta energía visible (HEV o luz azul) emitida por dispositivos digitales y sistemas de iluminación LED modernos altera significativamente la percepción cognitiva del color. En el contexto de la colorimetría cutánea, el fenómeno de fatiga cromática ocurre cuando los fotorreceptores retinianos se saturan ante un espectro lumínico específico, reduciendo la sensibilidad del ojo humano para distinguir matices sutiles entre subtonos cálidos y fríos. Este sesgo es particularmente peligroso en entornos de consulta digital o cuando el usuario intenta elegir su base frente a una pantalla brillante. Estudios de fotobiología indican que la luz HEV no solo tiene efectos biológicos sobre la melanogénesis, sino que altera la discriminación visual en el rango de los amarillos y naranjas, los cuales son determinantes para identificar el subtono oliva o cetrino. Se recomienda que tanto el diagnóstico profesional como el autodiagnóstico del usuario se realicen bajo luz natural equilibrada o iluminación de espectro completo (CRI > 95), minimizando la influencia de pantallas digitales durante al menos 15 minutos previos a la evaluación para permitir el reajuste del sistema visual.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00001-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_diagnostico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:29:28.084Z"
+  },
+  {
+    "chunk_id": "colorimetria-ferritina-004",
+    "title": "Ferritina sérica y transparencia dérmica: el reto de la anemia subclínica",
+    "content": "La relación entre los niveles de ferritina sérica y la transparencia de la dermis es un fenómeno clave en la colorimetría precisa. Niveles bajos de hierro, incluso sin llegar a una anemia clínica diagnosticada, pueden reducir la saturación de hemoglobina oxigenada, resultando en una piel con menor opacidad y mayor translucidez. Esta 'transparencia dérmica' permite que estructuras subyacentes, como el plexo vascular profundo, influyan más intensamente en el tono superficial, lo que a menudo se traduce en un subtono azulado o verdoso que no corresponde a la pigmentación melánica real del individuo. En la práctica clínica y cosmética, esto puede llevar a errores comunes: intentar corregir con bases de alta cobertura lo que es, en realidad, un signo de una condición sistémica. Es fundamental que los profesionales de GlowApp consideren que la palidez no siempre es una falta de melanina, sino una propiedad óptica de la piel influenciada por la hemodinámica. La recomendación es evaluar el subtono en áreas con mayor espesor epidérmico para reducir el ruido óptico causado por la baja perfusión sanguínea y la transparencia capilar.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/health-topics/anemia",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:29:28.084Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-005",
+    "title": "Anisotropía óptica: cómo la textura altera la reflexión del color",
+    "content": "La anisotropía óptica se refiere a cómo la rugosidad y textura de la piel afectan la dirección en la que la luz es reflejada, impactando directamente la percepción del subtono. Una piel con textura irregular (debido a cicatrices, poros dilatados o queratosis) dispersa la luz de manera difusa, lo que reduce la saturación del color y puede hacer que un subtono cálido se perciba como grisáceo o cenizo. Este fenómeno es una de las razones principales por las cuales las bases de maquillaje se ven diferentes al aplicarse sobre zonas con texturas distintas, como las mejillas vs. la zona T. La física de la piel nos enseña que la reflexión especular frente a la difusa cambia la lectura del espectro cromático. Para corregir este sesgo en el diagnóstico, es necesario evaluar el subtono en zonas de piel lisa y uniforme, evitando áreas de alta textura. Además, el uso de primers alisadores de siliconas puede ayudar a homogeneizar la superficie, permitiendo una lectura más precisa y estable del subtono al normalizar la dispersión de la luz sobre el estrato córneo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_textura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:29:28.084Z"
+  }
+]

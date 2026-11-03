@@ -1,0 +1,226 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-001-fisiologia-exposoma-digital",
+    "title": "Impacto de la luz azul en la señalización de opsinas epidérmicas",
+    "content": "La exposición crónica a la luz visible de alta energía (HEV) emitida por dispositivos digitales trasciende el daño oxidativo superficial, afectando directamente a las opsinas (OPN3) presentes en los queratinocitos. Investigaciones publicadas en Journal of Investigative Dermatology indican que la activación de estos fotoreceptores modula la cascada de pigmentación y la expresión de citoquinas proinflamatorias. A diferencia de la radiación UV, la luz azul induce una respuesta inflamatoria de baja intensidad pero constante, que altera el ritmo circadiano de la piel y la síntesis de melatonina local. Clínicamente, esto se manifiesta como una hiperpigmentación persistente en zonas periorbitarias y un aumento en la reactividad cutánea. La estrategia de rutina debe integrar filtros físicos con óxido de hierro para bloquear el espectro HEV, ya que los filtros solares químicos convencionales son insuficientes. La protección contra el exposoma digital no es opcional en entornos de alta conectividad, siendo necesaria la aplicación de antioxidantes tópicos con alta capacidad de neutralización de radicales libres derivados de la luz visible.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)32079-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "óxido de hierro",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:00.524Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-002-guia-practica-estres-oxidativo",
+    "title": "Abordaje de la peroxidación lipídica en pieles con disfunción sebácea",
+    "content": "La peroxidación del escualeno en el sebo cutáneo es un factor crítico en la fisiopatología del acné inflamatorio y la seborrea. Cuando el escualeno se oxida bajo influencia de radicales libres, forma productos de oxidación (OS) que son altamente comedogénicos e inflamatorios para el folículo pilosebáceo. Según estudios en PubMed, la estabilización del sebo mediante el uso de antioxidantes tópicos específicos como el tocoferol y el ácido ferúlico es fundamental. En pacientes con tendencia acneica, la rutina debe priorizar limpiadores con pH fisiológico que no comprometan la barrera lipídica, seguidos de una capa de antioxidantes que impidan la conversión del escualeno en peróxido de escualeno. La integración de ingredientes como el gluconato de zinc ayuda a regular la actividad de la 5-alfa-reductasa, reduciendo la producción de sebo y minimizando el sustrato disponible para la peroxidación. Esta estrategia de doble acción —estabilización del sebo y control de la inflamación— es superior al uso exclusivo de agentes queratolíticos, que a menudo exacerban la disfunción de barrera al eliminar en exceso los lípidos protectores naturales de la epidermis.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30671607/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "ácido ferúlico",
+        "gluconato de zinc"
+      ],
+      "contraindications": [
+        "exceso de exfoliación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seborregulacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:00.524Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-003-fundamento-barrera-cutanea",
+    "title": "Rol de la esfingomielinasa en la síntesis de ceramidas ante xerosis",
+    "content": "La esfingomielinasa ácida (ASMasa) es una enzima clave en la vía de procesamiento lipídico que convierte la esfingomielina en ceramidas, componentes esenciales del estrato córneo. En pieles con xerosis crónica o dermatitis, la actividad de esta enzima a menudo se encuentra reducida, lo que deriva en una barrera cutánea incompetente y una pérdida de agua transepidérmica (TEWL) elevada. La evidencia científica sugiere que la aplicación de precursores lipídicos que estimulen la actividad enzimática o que aporten ceramidas en proporciones fisiológicas (3:1:1 de ceramidas, colesterol y ácidos grasos) es el estándar de oro para la restauración. Evitar limpiadores con surfactantes aniónicos fuertes (como el lauril sulfato de sodio) es imperativo, ya que estos elevan el pH cutáneo, inactivando la ASMasa. El enfoque clínico debe centrarse en mantener un pH ligeramente ácido (4.5-5.5) para optimizar la función enzimática endógena. La suplementación con lípidos biomiméticos debe realizarse mediante formulaciones de estructura lamelar para asegurar una integración efectiva en la bicapa lipídica dañada, favoreciendo la resiliencia mecánica ante agentes externos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/skincare-routine",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol",
+        "ácidos grasos"
+      ],
+      "contraindications": [
+        "surfactantes fuertes"
+      ],
+      "season": [
+        "invierno",
+        "climas_secos"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:00.524Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-004-mito-vs-realidad-exfoliacion",
+    "title": "Mito vs Realidad: La purga cutánea frente a la dermatitis por contacto",
+    "content": "Existe una confusión clínica común entre el fenómeno de la 'purga cutánea' (skin purging) y una reacción alérgica o irritativa por el uso de activos potentes como retinoides o exfoliantes químicos. La purga, según la AAD, es una aceleración del recambio celular que expone microcomedones preexistentes, manifestándose como un brote transitorio en zonas donde habitualmente se desarrollan lesiones. Por el contrario, la dermatitis por contacto irritativa se presenta con eritema, prurito, ardor y descamación en áreas no necesariamente proclives al acné. La purga debe ser autolimitada y no debe presentar signos inflamatorios agudos. Si los síntomas persisten más de 4-6 semanas o se extienden a zonas nuevas, se debe sospechar una reacción alérgica a los excipientes de la fórmula o una disrupción excesiva del estrato córneo. Clínicamente, la recomendación es la técnica de 'short contact therapy' o la reducción de la frecuencia de aplicación para permitir que la barrera cutánea recupere su integridad iónica. No se debe forzar el uso de un activo ante una reacción inflamatoria evidente, ya que esto compromete la microbiota residente y puede inducir una dermatitis crónica.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/news/retinoids-purging",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "AHA",
+        "BHA"
+      ],
+      "contraindications": [
+        "aplicación diaria inicial"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "introduccion_activos"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:00.524Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-005-fundamento-neurocosmetica",
+    "title": "Modulación de receptores TRPV1 en pieles con hiperreactividad sensorial",
+    "content": "La hipersensibilidad cutánea, a menudo catalogada como 'piel sensible', tiene una base neurobiológica clara: la sobreexpresión o activación excesiva de los canales de potencial receptor transitorio vanilloide 1 (TRPV1). Estos canales actúan como sensores de estímulos térmicos, químicos y mecánicos. Cuando se activan, liberan neuropéptidos proinflamatorios (como la sustancia P y CGRP) que causan vasodilatación y eritema. La neurocosmética busca modular esta respuesta mediante activos que inhiban o desensibilicen estos receptores. El uso de extractos como el *4-t-butylcyclohexanol* ha demostrado en ensayos clínicos reducir significativamente la percepción de ardor y escozor. En una rutina clínica, es imperativo evitar fragancias, alcoholes desnaturalizados y conservantes agresivos que actúen como agonistas de estos canales. Además, el mantenimiento de una temperatura estable en la rutina (evitando agua caliente) es fundamental para no activar los receptores térmicos. El enfoque debe ser la calma del sistema nervioso periférico cutáneo antes de introducir cualquier activo cosmético de tratamiento, garantizando una tolerancia óptima a largo plazo.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28556667/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "4-t-butylcyclohexanol",
+        "bisabolol"
+      ],
+      "contraindications": [
+        "fragancias",
+        "alcohol desnaturalizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "piel_sensible"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:43:00.524Z"
+  }
+]

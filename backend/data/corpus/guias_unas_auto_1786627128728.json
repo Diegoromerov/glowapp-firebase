@@ -1,0 +1,332 @@
+[
+  {
+    "chunk_id": "guias_unas-onicolisis-mecanica-001",
+    "title": "Onicólisis por fuerzas de cizallamiento en manicura rusa",
+    "content": "La onicólisis mecánica inducida por el uso excesivo de fresas de diamante en la zona de la cutícula y los pliegues laterales es una patología iatrogénica creciente. Al utilizar fresas de grano grueso a altas revoluciones, se genera una fricción que rompe la unión entre el hiponiquio y la lámina ungueal. Este proceso, descrito en la literatura dermatológica, facilita la entrada de patógenos y agentes irritantes, comprometiendo la barrera biológica. Según la American Academy of Dermatology (AAD), el trauma repetitivo en la matriz y el lecho altera la arquitectura ungueal, provocando una separación distal o lateral que es difícil de revertir una vez establecida. La técnica de 'manicura rusa' o 'limpieza profunda' suele ignorar que el eponiquio no es solo un exceso de piel, sino un sello hermético. La remoción agresiva destruye este sellado, dejando el lecho expuesto a la colonización por Candida o bacterias oportunistas, debilitando la placa ungueal a largo plazo. Es imperativo que los técnicos comprendan que la integridad de la unión ungueal depende de la preservación de estas estructuras anatómicas, evitando el uso de tornos en las zonas de transición cuticular para prevenir el desprendimiento crónico de la lámina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/how-to-care-for-nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de fresas de grano grueso en piel periungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad-manicura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-toxicidad-monomeros-002",
+    "title": "Toxicidad por monómeros residuales en sistemas de polimerización",
+    "content": "La polimerización incompleta de geles UV y acrílicos es una fuente primaria de sensibilización alérgica en el entorno clínico. Cuando la lámpara UV no cumple con la irradiancia necesaria o el tiempo de curado es insuficiente, quedan monómeros no reaccionados (como el HEMA o HPMA) en la superficie de la uña. Estos compuestos de bajo peso molecular tienen una alta capacidad de penetración cutánea, lo que desencadena una dermatitis alérgica de contacto. Investigaciones publicadas en PubMed indican que la exposición repetida a estos monómeros no polimerizados induce una respuesta inmunológica de tipo retardado (hipersensibilidad tipo IV), que puede manifestarse con edema, eritema y prurito, incluso en párpados o áreas distantes debido a la transferencia manual. Es fundamental verificar que los sistemas de curado sean compatibles con los geles utilizados y evitar el contacto accidental con la piel periungueal durante la aplicación. La prevención radica en la correcta calibración de las lámparas y la educación sobre el manejo de residuos químicos para minimizar la carga alergénica sobre los tejidos del cliente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33560662/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "HPMA"
+      ],
+      "contraindications": [
+        "lámparas no compatibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-biofilms-asepsia-003",
+    "title": "Biofilms y el desafío de la esterilización en instrumentos de acero",
+    "content": "Los biofilms o biopelículas son comunidades bacterianas protegidas por una matriz extracelular que se forman rápidamente sobre herramientas metálicas utilizadas en manicura, especialmente aquellas con microfisuras o desgaste por uso continuo. La esterilización convencional en autoclave puede ser insuficiente si el instrumento no ha sido pre-limpiado mediante procesos ultrasónicos. La literatura clínica señala que bacterias como Staphylococcus aureus pueden sobrevivir en estas biopelículas, convirtiendo herramientas de acero inoxidable en vectores de infección cruzada, como paroniquias bacterianas recurrentes. La IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) enfatiza que la desinfección química por inmersión en soluciones de glutaraldehído es a menudo incorrecta debido a tiempos de contacto inadecuados. En GlowApp, es vital implementar protocolos de limpieza ultrasónica seguidos de esterilización en autoclave validada. La inspección visual del instrumental bajo lupa para detectar corrosión o muescas es obligatoria, ya que cualquier superficie irregular es un refugio potencial para patógenos que resisten los desinfectantes de nivel intermedio utilizados comúnmente en los salones de belleza.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/articles.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "reutilización de herramientas dañadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-esterilizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotoproteccion-005",
+    "title": "Fotoprotección real ante lámparas UV en cabina",
+    "content": "El uso frecuente de lámparas UV para el secado de geles ha generado debate sobre el riesgo de fotocarcinogénesis en las manos. Aunque la exposición por sesión es breve, la acumulación a lo largo de los años es un factor a considerar. Según la Skin Cancer Foundation, la radiación UVA emitida por estas lámparas puede contribuir al fotoenvejecimiento prematuro y aumentar el riesgo de neoplasias cutáneas en personas susceptibles. La recomendación clínica actual es el uso de guantes protectores de dedos (sin puntas) con protección UPF 50+ durante el proceso de polimerización. Además, la aplicación de protector solar de amplio espectro en el dorso de las manos al menos 20 minutos antes de la exposición es una medida preventiva efectiva. Es importante educar a los clientes sobre la diferencia entre lámparas LED (que emiten principalmente luz visible pero requieren fotopolimerizadores específicos) y las lámparas UV tradicionales. En GlowApp, priorizamos el uso de lámparas con tecnología LED de baja irradiancia y tiempos de curado optimizados para reducir la exposición innecesaria a la radiación UV.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "The Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/your-gel-manicure-is-a-risk/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "protector solar"
+      ],
+      "contraindications": [
+        "exposición sin protección"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad-fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperhidrosis-adhesion-006",
+    "title": "Hiperhidrosis y el fallo de adhesión en sistemas UV",
+    "content": "La hiperhidrosis palmar es una condición fisiológica que representa un desafío técnico crítico para la adhesión de sistemas de polimerización. El exceso de humedad en el lecho ungueal y la piel circundante altera la química de los primers y las bases de gel, impidiendo la formación de enlaces moleculares estables. El agua residual en la lámina actúa como una barrera hidrofóbica que previene la penetración del adhesivo en los poros de la queratina. Clínicamente, esto resulta en desprendimientos prematuros (lifting) que a menudo se confunden con una mala técnica de aplicación, cuando en realidad se trata de un factor sistémico. La gestión de este problema en cabina requiere el uso de deshidratadores específicos con mayor concentración de solventes volátiles (como el acetato de etilo o alcohol isopropílico) justo antes de la aplicación. Sin embargo, es vital advertir que la deshidratación excesiva puede dañar la lámina ungueal a largo plazo. Se recomienda un enfoque de control de humedad basado en la preparación cuidadosa de la superficie y la elección de bases con mayor tolerancia a la humedad residual, siempre evitando la oclusión excesiva en personas con sudoración profusa.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol isopropílico",
+        "acetato de etilo"
+      ],
+      "contraindications": [
+        "uso de primers ácidos en piel húmeda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-hiperhidrosis"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicodistrofia-vibracion-007",
+    "title": "Onicodistrofia por vibración mecánica de tornos de alta frecuencia",
+    "content": "El uso prolongado de tornos (drills) de alta frecuencia sin un mantenimiento adecuado de las piezas de mano puede transmitir vibraciones armónicas a la matriz ungueal. Estas vibraciones, aunque imperceptibles para el operador, pueden causar microfracturas en la estructura de la uña en desarrollo y, en casos severos, daño matricial que se manifiesta meses después como bandas horizontales o distrofia ungueal. La biomecánica de este daño se basa en la transferencia de energía mecánica que altera la alineación de los corneocitos en la placa ungueal. Es crucial que los técnicos utilicen equipos con sistemas de absorción de vibraciones y que las fresas estén perfectamente centradas. Un torno que vibra es una señal de alerta de que el rodamiento está desgastado, lo cual no solo pone en riesgo la uña del cliente, sino que también puede causar lesiones osteoarticulares en la muñeca del profesional a largo plazo. La prevención consiste en la revisión técnica periódica de los equipos y la limitación del tiempo de contacto directo con la lámina ungueal a lo estrictamente necesario para el desbaste.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Occupational Safety and Health Administration",
+        "url": "https://www.osha.gov/hand-arm-vibration",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de tornos sin mantenimiento"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-herramientas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-008",
+    "title": "Gestión del pico exotérmico en fotopolimerización",
+    "content": "La reacción exotérmica es un fenómeno físico-químico inherente a la polimerización de resinas acrílicas y geles. Durante el proceso, la conversión de monómeros a polímeros libera energía en forma de calor. En geles de alta densidad o con un alto porcentaje de fotoiniciadores, este calor puede ser suficiente para causar quemaduras térmicas en el lecho ungueal, especialmente si el grosor del producto aplicado es excesivo. Los síntomas van desde una sensación de quemazón intensa hasta la formación de ampollas subungueales o onicólisis inducida por calor. Para mitigar este riesgo, los técnicos deben aplicar el producto en capas delgadas y permitir una polimerización gradual. Muchas lámparas modernas incluyen un modo 'low heat' o 'soft cure' que aumenta la potencia gradualmente, reduciendo la velocidad de la reacción y, por tanto, el pico de temperatura. Es fundamental educar al cliente para que retire la mano de la lámpara ante la primera señal de calor excesivo, evitando ignorar esta sensación, ya que la quemadura térmica es un daño real y evitable en el tejido vivo del lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "aplicación excesiva de producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad-lámpara"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicopapiloma-009",
+    "title": "Onicopapiloma: Identificación clínica y diferenciación",
+    "content": "El onicopapiloma es un tumor benigno del lecho ungueal que a menudo pasa desapercibido en salones de estética, siendo erróneamente confundido con una onicomicosis o una distrofia traumática. Clínicamente, se presenta como una banda longitudinal de color rojo (eritroniquia), a veces con una mancha blanquecina distal asociada a hiperqueratosis. A diferencia de las infecciones fúngicas, el onicopapiloma suele ser una lesión focal y persistente que no responde a antifúngicos. La importancia de su identificación en cabina radica en que, aunque es benigno, su presentación puede imitar neoplasias más graves como el carcinoma escamoso de la uña. Un técnico capacitado debe observar la presencia de bandas longitudinales fijas y sugerir una evaluación dermatológica si la lesión no mejora o si presenta cambios en la morfología. El diagnóstico definitivo requiere una biopsia del lecho ungueal. Es crucial que el personal de GlowApp no intente limar, pulir o tratar estas lesiones, ya que la manipulación traumática puede causar sangrado profuso debido a la naturaleza vascular del tumor, complicando el diagnóstico y el manejo posterior por parte del especialista.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulación de lesiones pigmentadas o rojas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "detección-lesiones-sospechosas"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:18:27.899Z"
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "chunk_id": "colorimetria-neuro-estetica-001",
+    "title": "La neuroestética del subtono: Sesgos cognitivos en la percepción del color facial",
+    "content": "La percepción del subtono cutáneo no es un proceso puramente óptico, sino un fenómeno neuroestético influenciado por sesgos cognitivos. Según estudios en neurociencia cognitiva publicados en journals como 'Frontiers in Human Neuroscience', el cerebro humano tiende a normalizar los colores de la piel basándose en expectativas socioculturales y fatiga cromática. Cuando evaluamos nuestro propio subtono, el 'sesgo de confirmación' nos lleva a ignorar áreas con eritema o hiperpigmentación, enfocándonos solo en zonas que validan nuestra creencia previa (ej. creer que somos fríos y solo mirar las venas azuladas de la muñeca). Este fenómeno es crítico en la consulta de GlowApp, donde la iluminación ambiental y la memoria cromática fallan al intentar emparejar bases. La percepción se ve alterada por la 'adaptación cromática', donde el sistema visual ajusta su sensibilidad tras una exposición prolongada a una fuente de luz específica, haciendo que cualquier base parezca 'correcta' inicialmente. Entender esto permite objetivar el diagnóstico mediante herramientas de espectroscopia, reduciendo la dependencia de la autopercepción subjetiva que suele ser errónea en pacientes con fatiga visual o estrés.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Frontiers in Human Neuroscience",
+        "url": "https://www.frontiersin.org/journals/human-neuroscience",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ai"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:45.136Z"
+  },
+  {
+    "chunk_id": "colorimetria-osmolaridad-002",
+    "title": "Presión osmótica intersticial y su impacto en la dispersión de luz cutánea",
+    "content": "La presión osmótica del espacio intersticial de la dermis tiene un efecto directo en la dispersión de luz y, por ende, en la percepción del subtono. Un estado de hidratación celular alterado, ya sea por edema subclínico o deshidratación, modifica el índice de refracción del tejido. Según investigaciones en 'Journal of Biomedical Optics', el aumento del volumen del espacio intersticial debido a la retención de líquidos altera la trayectoria de los fotones incidentes, causando un fenómeno de dispersión que puede hacer que la piel luzca más opaca o con un matiz cenizo, independientemente del subtono real. Este cambio físico es particularmente relevante en pacientes con fluctuaciones hormonales o consumo elevado de sodio, quienes reportan que su base de maquillaje se percibe 'desconectada' o grisácea en ciertos días del ciclo. La correcta evaluación del subtono requiere separar la variable de la 'luz dispersada' por edema de la pigmentación real del estrato basal. GlowApp debe considerar que la transparencia dérmica se ve comprometida por el edema intersticial, lo cual exige un ajuste en la saturación de los pigmentos de la base para compensar la falta de reflectancia profunda y evitar el efecto máscara.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "SPIE Digital Library (Journal of Biomedical Optics)",
+        "url": "https://spie.org/publications/journal-of-biomedical-optics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ai"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:45.136Z"
+  },
+  {
+    "chunk_id": "colorimetria-fotopletismografia-003",
+    "title": "Fotopletismografía remota: Análisis de perfusión para detectar el subtono basal",
+    "content": "La fotopletismografía remota (rPPG) es una tecnología emergente que utiliza la cámara de dispositivos móviles para extraer señales de perfusión sanguínea mediante el análisis de cambios minúsculos en el color de la piel, imperceptibles para el ojo humano. Este método permite aislar la señal pulsátil de la hemoglobina, lo que proporciona una lectura objetiva del subtono basal sin interferencias de la pigmentación superficial o el maquillaje. Según publicaciones en 'Nature Scientific Reports', la variabilidad en la perfusión sanguínea regional puede oscurecer el subtono real; al medir la frecuencia y amplitud de las variaciones de color causadas por el ciclo cardíaco, es posible filtrar el componente vascular del espectro de reflectancia cutánea. Para GlowApp, esto significa la posibilidad de realizar un diagnóstico de subtono que sea independiente del rubor pasajero, la temperatura ambiental o el estrés térmico. Al eliminar el ruido vascular, la app puede determinar con precisión si el subtono subyacente es frío, cálido o neutro basándose puramente en la interacción de la luz con la dermis profunda y no en la respuesta vasomotora superficial que suele confundir a los usuarios en las pruebas caseras tradicionales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/srep/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ai"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:45.136Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-004",
+    "title": "Metabolitos del microbioma y su rol en la estabilidad del pH cutáneo y el tono",
+    "content": "El microbioma cutáneo no solo protege la barrera cutánea, sino que sus metabolitos, como los ácidos grasos de cadena corta (AGCC), modulan activamente el pH de la superficie. Un pH cutáneo estable es fundamental para la colorimetría, ya que los pigmentos de las bases de maquillaje, especialmente los óxidos de hierro, pueden sufrir virajes cromáticos cuando entran en contacto con una superficie cutánea con pH alterado (disbiosis). Según investigaciones en 'Journal of Investigative Dermatology', la colonización por microorganismos específicos puede elevar el pH hacia la alcalinidad, lo que acelera la oxidación lipídica y el cambio de color de la base hacia tonos anaranjados o cenizos. Para la curaduría en GlowApp, esto implica que un usuario con una disbiosis cutánea tendrá dificultades consistentes para encontrar una base que no cambie de tono tras unas horas de uso. La solución no es solo elegir el subtono correcto, sino integrar productos que estabilicen el pH (prebióticos) antes de la aplicación del maquillaje. La salud del microbioma es, por tanto, una variable de control necesaria para asegurar que la colorimetría se mantenga fiel a lo largo de la jornada, previniendo la degradación cromática prematura causada por la interacción química superficial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_cuidado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:45.136Z"
+  },
+  {
+    "chunk_id": "colorimetria-eje-neuro-008",
+    "title": "Eje neuro-cutáneo: Modulación del subtono por estrés crónico",
+    "content": "El estrés crónico activa el eje neuro-cutáneo, liberando neuropéptidos como la Sustancia P y el Factor Liberador de Corticotropina (CRF) directamente en la piel. Esta señalización altera la microcirculación cutánea, provocando una vasodilatación persistente o una vasoconstricción reactiva según el individuo. Según estudios en 'Dermato-Endocrinology', esta respuesta dinámica altera la cromaticidad facial: el estrés agudo suele inducir un rubor que vira el subtono hacia el rojo, mientras que el estrés crónico puede causar una palidez cetrina por la vasoconstricción sostenida. Este fenómeno complica la colorimetría, ya que el subtono del paciente no es una constante, sino una variable que cambia según su estado de cortisol. En GlowApp, es vital reconocer que un usuario en estado de estrés crónico presentará una lectura de subtono distorsionada por la microinflamación. La recomendación es realizar el diagnóstico en momentos de calma basal y considerar el uso de productos calmantes con niacinamida o centella asiática antes de aplicar cualquier cosmético de color. Ignorar la modulación neuro-cutánea lleva a elecciones de base que se ven 'bien' en el momento de aplicación pero 'desentonan' cuando el cortisol baja y la microcirculación se normaliza.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermato-Endocrinology",
+        "url": "https://www.tandfonline.com/journals/kder20",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "centella_asiatica"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ai"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:45.136Z"
+  }
+]

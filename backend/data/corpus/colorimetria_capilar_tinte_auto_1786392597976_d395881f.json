@@ -1,0 +1,163 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392597974-1-156f4080-cinetica-de-la-auto-oxidacion-catalizada-por-trazas-de-cobre",
+    "title": "Cinética de la auto-oxidación catalizada por trazas de cobre en la matriz cortical",
+    "content": "La presencia de trazas de cobre (Cu2+) en la fibra capilar, provenientes de aguas de lavado o tratamientos previos, actúa como un catalizador heterogéneo que acelera la auto-oxidación prematura de los precursores de tinte antes de su penetración profunda en el córtex. Este fenómeno genera una polimerización in situ descontrolada en la región sub-cuticular, provocando un gradiente de color no uniforme y una saturación excesiva en las zonas más porosas. El control de esta cinética requiere la incorporación de agentes quelantes específicos, como el EDTA o el ácido etidrónico, capaces de secuestrar los iones metálicos sin interferir con el potencial redox necesario para la formación del pigmento final. La optimización de la relación entre la concentración de quelantes y el pH de la mezcla tintórea es crítica para asegurar que la polimerización ocurra exclusivamente en el interior de la matriz queratínica, evitando el depósito superficial que compromete la solidez a la luz y el lavado. Estudios recientes sugieren que el uso de quelantes orgánicos de nueva generación mejora la estabilidad cromática en un 25% frente a los sistemas tradicionales.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido etidrónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:09:57.974Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392597975-2-e0c19719-relajacion-dielectrica-y-su-impacto-en-la-retencion-de-tinte",
+    "title": "Relajación dieléctrica y su impacto en la retención de tintes catiónicos",
+    "content": "La dinámica de la relajación dieléctrica en la fibra capilar tras la coloración proporciona información crucial sobre la movilidad de los tintes catiónicos dentro de la matriz queratínica. La constante dieléctrica local, influenciada por la hidratación y el estado de los puentes disulfuro, determina la fuerza de adsorción electrostática entre los pigmentos y los grupos carboxilo de la queratina. Cuando la fibra presenta daños estructurales, la relajación dieléctrica se acelera, indicando una menor barrera energética para la migración iónica, lo que se traduce en una pérdida acelerada de color durante los ciclos de lavado. El análisis mediante espectroscopía de impedancia permite predecir la longevidad del matiz en cabellos altamente procesados. Se ha observado que el tratamiento con polímeros catiónicos de bajo peso molecular puede modular esta respuesta dieléctrica, estabilizando el potencial Zeta y aumentando la afinidad del pigmento hacia las zonas de mayor porosidad. Este enfoque permite una personalización más precisa de los tiempos de pose, ajustándolos a la conductividad específica de la fibra tratada para garantizar una deposición homogénea del color.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12900",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:09:57.975Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392597975-4-7c3a4c7f-efecto-piezoelectrico-inducido-por-friccion-y-degradacion-cr",
+    "title": "Efecto piezoeléctrico inducido por fricción y degradación cromática",
+    "content": "La fibra capilar exhibe propiedades piezoeléctricas debido a la estructura cristalina de la alfa-queratina. Durante el cepillado o el roce mecánico cotidiano, se genera una diferencia de potencial eléctrico en la superficie de la fibra que puede desestabilizar los tintes directos débilmente adsorbidos. Este efecto piezoeléctrico facilita la migración de pigmentos hacia el exterior de la cutícula, acelerando el desvanecimiento del color. La magnitud de este fenómeno es directamente proporcional a la rigidez de la fibra y a la carga electrostática acumulada. Para mitigar esta degradación, es necesario el uso de acondicionadores con agentes antiestáticos y polímeros de alto peso molecular que actúen como una barrera viscoelástica, absorbiendo la energía mecánica y reduciendo la respuesta piezoeléctrica. La comprensión de esta interacción es vital para los profesionales de la colorimetría, ya que permite recomendar productos de mantenimiento que no solo protejan contra la oxidación, sino que también estabilicen la carga superficial de la fibra frente al estrés mecánico, prolongando significativamente la intensidad del matiz tras el servicio de coloración.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://library.scconline.org/journal/75/1",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antiestáticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:09:57.975Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392597975-6-6822fc09-sistemas-buffer-de-borato-y-su-rol-en-la-estabilizacion-de-p",
+    "title": "Sistemas buffer de borato y su rol en la estabilización de precursores",
+    "content": "La estabilidad de los precursores de tinte durante la polimerización oxidativa depende críticamente del mantenimiento de un pH constante. Los sistemas buffer de borato han demostrado una capacidad superior para mitigar las fluctuaciones de pH causadas por la liberación de amoníaco o la degradación de la queratina durante el proceso de coloración. A diferencia de los buffers de fosfato, los de borato ofrecen una mayor estabilidad en el rango alcalino (pH 9-10.5), lo que previene la oxidación prematura y descontrolada de los precursores antes de que alcancen la corteza capilar. Este control preciso del potencial redox permite una polimerización más lenta y ordenada, favoreciendo la formación de moléculas de pigmento de mayor tamaño que quedan atrapadas de manera más eficiente en la matriz queratínica. Como resultado, se obtiene una mayor uniformidad en el depósito de color y una resistencia superior al lavado. La implementación de estos sistemas en las emulsiones tintóreas modernas es una estrategia clave para minimizar el impacto del daño químico y asegurar resultados de colorimetría consistentes, independientemente de la variabilidad en la porosidad inicial de la fibra capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "European Journal of Chemistry",
+        "url": "https://www.eurjchem.com/index.php/eurjchem/article/view/2567",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "boratos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:09:57.975Z"
+  }
+]

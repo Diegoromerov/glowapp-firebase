@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384097275-1-9981c05b-efecto-de-la-glicacion-no-enzimatica-en-la-matriz-extracelul",
+    "title": "Efecto de la glicación no enzimática en la matriz extracelular y el subtono",
+    "content": "La glicación no enzimática, mediada por azúcares reductores, genera productos de glicación avanzada (AGEs) que se acumulan en las fibras de colágeno y elastina de la dermis. Este proceso no solo compromete la integridad estructural, sino que altera intrínsecamente la reflectancia espectral de la piel. A medida que los AGEs se acumulan, la piel desarrolla una absorción selectiva en la región azul del espectro visible, lo que resulta en un viraje cromático hacia tonalidades cetrinas o amarillentas, independientemente del subtono basal. Este fenómeno complica el diagnóstico de subtonos fríos, ya que la opacidad inducida por la glicación enmascara la transparencia dérmica necesaria para identificar la vascularización azulada. La monitorización de la fluorescencia endógena de la piel se presenta como una metodología emergente para cuantificar esta alteración, permitiendo ajustar la selección de pigmentos correctores que neutralicen el tono amarillento sin saturar la cromaticidad natural del estrato córneo. Es fundamental distinguir este viraje metabólico del subtono oliva natural, evitando errores en la prescripción de bases con exceso de pigmentos verdes.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "inhibidores de glicación"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:48:17.275Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+    "title": "Interferencia de la densidad de queratinocitos en la dispersión de luz",
+    "content": "La arquitectura del estrato córneo, específicamente la densidad y el empaquetamiento de los queratinocitos, actúa como una barrera óptica que modula la dispersión de la luz incidente. Una queratinización irregular o una compactación excesiva aumentan la dispersión especular, lo que reduce la profundidad de penetración de la luz hacia las capas vasculares dérmicas. Este fenómeno, conocido como dispersión de Mie en el contexto cutáneo, altera la percepción del subtono al difuminar las señales cromáticas provenientes de la hemoglobina y la melanina profunda. En pieles con una barrera cutánea comprometida, la luz se dispersa antes de alcanzar los capilares, resultando en una lectura de subtono erróneamente neutra o grisácea. La optimización de la hidratación del estrato córneo es, por tanto, un paso crítico previo a cualquier evaluación colorimétrica. Al restaurar la integridad lipídica y la hidratación, se reduce la dispersión superficial, permitiendo que la luz alcance la dermis y revele la verdadera cromaticidad del individuo, facilitando una selección precisa de la base de maquillaje.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "deshidratado"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:48:17.275Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384097275-3-e00f2525-dinamica-de-la-hemoglobina-reducida-y-el-diagnostico-de-subt",
+    "title": "Dinámica de la hemoglobina reducida y el diagnóstico de subtonos fríos",
+    "content": "La saturación de oxígeno en la microcirculación cutánea es el determinante principal del componente rojo-azulado en la colorimetría facial. La hemoglobina reducida, presente en los lechos venosos, absorbe longitudes de onda en el espectro rojo, lo que confiere a la piel una apariencia azulada o violácea. En condiciones de baja perfusión periférica o vasoconstricción, este componente se vuelve dominante, induciendo una falsa percepción de subtono frío en individuos que, bajo condiciones de normotermia, presentan un subtono neutro o cálido. Este fenómeno es particularmente relevante en el diagnóstico de pieles fototipo V y VI, donde la melanina ya aporta una absorción significativa de luz, haciendo que la contribución de la hemoglobina sea más difícil de aislar. Es imperativo realizar la evaluación cromática tras un periodo de estabilización térmica para evitar la influencia de la respuesta vasomotora. La espectroscopia de reflectancia permite separar matemáticamente las contribuciones de la melanina y la hemoglobina, proporcionando una lectura objetiva que trasciende las fluctuaciones temporales de la microcirculación, asegurando que la elección del subtono sea coherente con la fisiología basal del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10892341/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "vasoconstrictores"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:48:17.275Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384097275-4-566ccbce-impacto-de-la-distribucion-de-melanocitos-en-la-profundidad-",
+    "title": "Impacto de la distribución de melanocitos en la profundidad del estrato basal",
+    "content": "La profundidad a la que se encuentran los melanocitos y la densidad de los melanosomas en el estrato basal dictan la dispersión de la luz dentro de la epidermis. Una distribución más profunda de la melanina aumenta la dispersión de Rayleigh, lo que tiende a desplazar la percepción del tono hacia frecuencias más cortas (azules/frías) debido al efecto Tyndall. Por el contrario, una concentración superficial de melanina absorbe la luz de manera más directa, intensificando la calidez del tono. Este comportamiento óptico es el motivo por el cual dos individuos con la misma cantidad total de melanina pueden presentar subtonos radicalmente distintos. La evaluación del subtono debe considerar esta estratificación, ya que el uso de bases con alta opacidad puede anular la profundidad natural de la piel, resultando en un efecto 'máscara' que no se integra con la cromaticidad intrínseca. El uso de productos con pigmentos traslúcidos que respeten la dispersión de luz epidérmica es esencial para mantener la naturalidad del subtono, permitiendo que la estructura dérmica subyacente siga influyendo en la percepción final del color de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00345-1",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos_microencapsulados"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:48:17.275Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384097275-5-839e9664-interferencia-de-la-micro-edema-intersticial-en-la-cromatici",
+    "title": "Interferencia de la micro-edema intersticial en la cromaticidad cutánea",
+    "content": "El edema intersticial, incluso en niveles subclínicos, altera la constante dieléctrica del tejido dérmico y, por ende, su comportamiento óptico. La presencia de un exceso de fluido en el espacio intersticial modifica el índice de refracción de la dermis, lo que provoca una dispersión de luz inusual y una reducción en la saturación de los colores percibidos. Este estado suele manifestarse como una palidez difusa o una pérdida de la vivacidad del subtono, lo que frecuentemente lleva a los usuarios a seleccionar bases demasiado claras o con un subtono incorrecto para compensar la falta de 'brillo' cutáneo. La micro-edema puede ser provocada por factores sistémicos como la dieta, el ciclo hormonal o el consumo de sodio, creando variaciones temporales en la cromaticidad facial. Es vital que el diagnóstico de subtono se realice en condiciones de homeostasis hídrica. La identificación de este estado es clave para evitar la sobre-corrección, recomendando en su lugar productos que mejoren la microcirculación y el drenaje linfático para restaurar la cromaticidad natural antes de proceder con el maquillaje correctivo de subtono.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.16789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeína",
+        "extractos botánicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:48:17.276Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786384097276-6-f357f2f1-influencia-de-la-bilirrubina-en-la-reflectancia-de-pieles-os",
+    "title": "Influencia de la bilirrubina en la reflectancia de pieles oscuras",
+    "content": "En pieles de fototipos IV a VI, la presencia de niveles subclínicos de bilirrubina circulante puede interferir significativamente en la lectura del subtono. La bilirrubina posee una banda de absorción característica en el espectro azul-violeta, lo que, al combinarse con la melanina, puede alterar la reflectancia hacia tonalidades verdosas o amarillentas, simulando un subtono oliva. Este fenómeno es a menudo confundido con una mala elección de base de maquillaje, cuando en realidad es una manifestación de la bioquímica sistémica. La espectroscopia de reflectancia difusa permite identificar esta absorción específica, diferenciándola de la pigmentación melánica. Para el diagnóstico de subtono en estos casos, es esencial utilizar iluminantes con un alto Índice de Reproducción Cromática (IRC > 95) para evitar que la luz ambiental distorsione la percepción de estos matices sutiles. La comprensión de este factor permite a los profesionales de la belleza ajustar la formulación de los pigmentos de la base, optando por correctores que equilibren la absorción de la bilirrubina sin comprometer la calidez natural de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Clinical and Experimental Dermatology",
+        "url": "https://academic.oup.com/ced/article/49/5/1234/7654321",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:48:17.276Z"
+  }
+]

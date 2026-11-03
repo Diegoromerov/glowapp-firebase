@@ -1,0 +1,1018 @@
+{
+  "cycle": "23",
+  "experiment": "R5-C11",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "generated_at": "2026-08-14T16:56:55.532Z",
+  "run": "B",
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "config": {
+    "topK": 10,
+    "threshold": "N/A (topK directo)",
+    "motor": "PRODUCTIVO sin modificar"
+  },
+  "retrieval_invariance": "GARANTIZADA POR DISEÑO — un solo retrieval por query, shared entre V2/V3",
+  "metrics": {
+    "v2": {
+      "p1": 0.1111,
+      "p3": 0.2037,
+      "p5": 0.1222,
+      "r5": 0.1667,
+      "mrr": 0.2222
+    },
+    "v3": {
+      "p1": 0.3889,
+      "p3": 0.5371,
+      "p5": 0.3667,
+      "r5": 0.8333,
+      "mrr": 0.6018
+    },
+    "delta": {
+      "p1": 0.2778,
+      "p3": 0.3334,
+      "p5": 0.2445,
+      "r5": 0.6666,
+      "mrr": 0.3796
+    }
+  },
+  "physical_integrity": {
+    "total_expected_ids": 33,
+    "missing_ids": []
+  },
+  "per_query": [
+    {
+      "query_id": "skincare_003",
+      "category": "skincare",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "status_v3": "SUPPORTED_ALIGNED",
+      "v2_expected": [
+        "poros-humedad-bogota-008",
+        "colorimetria-oxidacion-sebo-004",
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+        "maq-ocasion-piel-acneica-004",
+        "skincare-rutinas-quelacion-metales-006"
+      ],
+      "v3_expected_primary": [
+        "poros-clima-bogota-009",
+        "poros-humedad-bogota-008"
+      ],
+      "v3_expected_supporting": [
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006"
+      ],
+      "physical_check": {
+        "total": 3,
+        "found": 3,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "poros-clima-bogota-009",
+        "poros-humedad-bogota-008",
+        "maquillaje-eventos-presión-atmosférica-005",
+        "skincare-rutinas-008-osmolaridad-estrato-corneo",
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+        "colorimetria-capilar-humedad-006",
+        "skincare-rutinas-quelacion-metales-006",
+        "colorimetria-ambiental-005",
+        "colorimetria-capilar-agua-008",
+        "rutina-quelacion-metales-urbanos-004"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0.3333,
+        "p5": 0.2,
+        "r5": 0.2,
+        "mrr": 0.5
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.6,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 0.8,
+        "mrr": 0.5
+      }
+    },
+    {
+      "query_id": "skincare_005",
+      "category": "skincare",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se",
+        "oxido-zinc-nanoparticulas-seguridad-006",
+        "trend-sunscreen-mixing-004",
+        "magnetic-face-masks-002",
+        "tendencias-belleza-virales-skincare-magnetico-002"
+      ],
+      "v3_expected_primary": [
+        "proteccion-solar-filtros-quimicos-006"
+      ],
+      "v3_expected_supporting": [
+        "trend-sunscreen-mixing-004"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+        "proteccion-solar-filtros-quimicos-006",
+        "trend-sunscreen-mixing-004",
+        "skincare-rutinas-007-fotoproteccion-he-luz-visible",
+        "foto-envejecimiento-manos-007",
+        "skincare-rutinas-fotoproteccion-006",
+        "skincare-cronobiologico-003",
+        "fotoenvejecimiento-radiacion-006",
+        "visajismo-cejas-microblading-fotoproteccion-004",
+        "maq-ocasion-eventos-diurnos-001"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0.3333,
+        "p5": 0.2,
+        "r5": 0.2,
+        "mrr": 0.3333
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0.2,
+        "r5": 0.8,
+        "mrr": 0.1667
+      }
+    },
+    {
+      "query_id": "skincare_006",
+      "category": "skincare",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+        "hidratacion-oclusivos-humectantes-009",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "tendencia-beauty-bio-hacking-nutricosmetica-001",
+        "skincare-suplementos-004"
+      ],
+      "v3_expected_primary": [
+        "reologia-acido-hialuronico-005"
+      ],
+      "v3_expected_supporting": [
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "reologia-ah-006"
+      ],
+      "physical_check": {
+        "total": 3,
+        "found": 3,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+        "reologia-acido-hialuronico-005",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "reologia-ah-006",
+        "reologia-rellenos-008",
+        "ingredientes_activos_contraindicaciones-1786377212497-6-dab75f7c-acido-hialuronico-de-bajo-peso-molecular-inflamacion-en-piel",
+        "tendencia-beauty-bio-hacking-nutricosmetica-001",
+        "tendencias_belleza_virales-1786385270943-1-8555ce3b-suplementacion-con-acido-hialuronico-hidratacion-sistemica-o",
+        "reologia-ah-interaccion-matriz-007",
+        "ingredientes_activos_contraindicaciones-1786386717318-3-a76f3bad-acido-hialuronico-hidrolizado-el-riesgo-de-respuesta-pro-inf"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0.3333,
+        "p5": 0.2,
+        "r5": 0.2,
+        "mrr": 0.3333
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.6,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 0.8,
+        "mrr": 0.1667
+      }
+    },
+    {
+      "query_id": "skincare_007",
+      "category": "skincare",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "status_v3": "PARTIALLY_SUPPORTED",
+      "v2_expected": [
+        "skincare-rutinas-autofagia-peptidos-003",
+        "skincare-rutinas-bioenergetica-mitocondrial-007",
+        "ingredientes-activos-contraindicaciones-cobre-peptidos-009",
+        "peptidos-cobre-quelacion-003",
+        "activos-quelacion-vitamina-c-004"
+      ],
+      "v3_expected_primary": [
+        "skincare-ritmos-circadianos-001"
+      ],
+      "v3_expected_supporting": [
+        "tendencias-belleza-virales-skincare-cicadiano-002"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "skincare-rutinas-por-tipo-piel-002",
+        "skincare-ritmos-circadianos-001",
+        "tendencias-belleza-virales-skincare-cicadiano-002",
+        "skincare-bio-ritmo-001",
+        "skincare-rutinas-por-tipo-piel-ritmos-circadianos-003",
+        "skincare_rutinas_por_tipo_piel-1786383230424-5-9706c4fa-manejo-de-la-desincronizacion-de-los-ritmos-circadianos-cuta",
+        "skincare-003-ritmos-circadianos-reparacion",
+        "cuidado_corporal_y_spa-cronobiologia-006",
+        "subtema-skincare-hiper-personalizado-006",
+        "rutina-cronobiologia-melatonina-001"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      }
+    },
+    {
+      "query_id": "skincare_008",
+      "category": "skincare",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "status_v3": "SUPPORTED_ALIGNED",
+      "v2_expected": [
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare-rutinas-piel-fotodano-003",
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i"
+      ],
+      "v3_expected_primary": [
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci"
+      ],
+      "v3_expected_supporting": [
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "cuidado_corporal_y_spa-1786383716346-5-3380c079-manejo-de-la-hiperpigmentacion-por-friccion-en-zonas-de-flex",
+        "skincare_rutinas_por_tipo_piel-1786385298854-5-7aa0fd96-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+        "skincare-rutinas-piel-fotodano-003",
+        "efecto-rebote-despigmentantes-003",
+        "cuidado-corporal-hemosiderina-003",
+        "cuidado_corporal_y_spa-inflamacion-007"
+      ],
+      "metrics_v2": {
+        "p1": 1,
+        "p3": 1,
+        "p5": 0.6,
+        "r5": 0.6,
+        "mrr": 1
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": -0.2,
+        "r5": 0.4,
+        "mrr": 0
+      }
+    },
+    {
+      "query_id": "skincare_009",
+      "category": "skincare",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "activos-quelantes-y-metales-003",
+        "ingredientes-activos-contraindicaciones-peptidos-cobre-vitamina-c-001",
+        "activos-cosmeticos-interaccion-microbioma-004"
+      ],
+      "v3_expected_primary": [
+        "riesgo-niacinamida-ph-bajo-002"
+      ],
+      "v3_expected_supporting": [
+        "niacinamida-hidrolisis-ph-002"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+        "riesgo-niacinamida-ph-bajo-002",
+        "niacinamida-hidrolisis-ph-002",
+        "skincare-niacinamida-inflamacion-007",
+        "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+        "activos-ph-acido-nicotinico-003",
+        "activos-quelacion-vitamina-c-004",
+        "activos-quelantes-y-metales-003",
+        "niacina-hidrolisis-ph-005",
+        "ingredientes-contraindicaciones-niacinamida-009"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      }
+    },
+    {
+      "query_id": "skincare_010",
+      "category": "skincare",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "skincare-rutinas-piel-deshidratada-004",
+        "piel-sensible-mito-realidad-006"
+      ],
+      "v3_expected_primary": [
+        "skincare-microbioma-limpiadores-004"
+      ],
+      "v3_expected_supporting": [
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "skincare-microbioma-limpiadores-004",
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+        "trend-limpieza-doble-006",
+        "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+        "skincare-limpieza-acustica-004",
+        "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+        "poros-doble-limpieza-004",
+        "skincare-post-ejercicio-002",
+        "poros-limpieza-doble-006",
+        "tendencias-belleza-virales-exfoliacion-con-cepillos-007"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      }
+    },
+    {
+      "query_id": "cabello_002",
+      "category": "cabello",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion"
+      ],
+      "v3_expected_primary": [
+        "colorimetria-capilar-ph-pos-tinte-009"
+      ],
+      "v3_expected_supporting": [
+        "colorimetria-capilar-viscoelasticidad-009"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "colorimetria-capilar-microbiota-003",
+        "colorimetria-ph-balance-006",
+        "colorimetria-capilar-microbiota-009",
+        "colorimetria-quelacion-metales-005",
+        "colorimetria-degradacion-lipidos-006",
+        "estabilidad-ph-003",
+        "colorimetria-capilar-interaccion-cobre-002",
+        "colorimetria-capilar-quelacion-003"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      }
+    },
+    {
+      "query_id": "cabello_004",
+      "category": "cabello",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "status_v3": "UNSUPPORTED",
+      "v2_expected": [
+        "tendencia-aceite-romero-alopecia-005"
+      ],
+      "v3_expected_primary": [],
+      "v3_expected_supporting": [],
+      "physical_check": {
+        "total": 0,
+        "found": 0,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "colorimetria-capilar-humedad-006",
+        "colorimetria-ph-balance-006",
+        "estabilidad-ph-003",
+        "colorimetria-capilar-quimioluminiscencia-002",
+        "colorimetria-capilar-ph-estabilidad-008",
+        "efecto-piezoelectrico-friccion-004",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "color-capilar-higroscopia-y-estabilidad-007",
+        "trend-scalp-exfoliation-009",
+        "tendencias_belleza_virales-1786383551191-4-c6d09787-peelings-quimicos-capilares-renovacion-del-cuero-cabelludo-o"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "delta": {
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      }
+    },
+    {
+      "query_id": "cabello_006",
+      "category": "cabello",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "status_v3": "PARTIALLY_SUPPORTED",
+      "v2_expected": [
+        "estabilidad-ph-cuero-cabelludo-004",
+        "diag-capilar-microbiota-005",
+        "colorimetria-capilar-microbiota-003",
+        "microbiota-scalp-008",
+        "colorimetria-interaccion-microbiota-001"
+      ],
+      "v3_expected_primary": [
+        "microbiota-scalp-008"
+      ],
+      "v3_expected_supporting": [
+        "colorimetria-capilar-microbiota-003"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "microbiota-scalp-008",
+        "colorimetria-capilar-microbiota-003",
+        "colorimetria-capilar-microbiota-009",
+        "colorimetria-ph-balance-006",
+        "colorimetria-interaccion-metales-005",
+        "trend-aceites-capilares-003",
+        "colorimetria-capilar-agua-008",
+        "color-capilar-microbioma-y-tintes-004",
+        "colorimetria-ph-y-microbiota-003",
+        "colorimetria-capilar-barrera-007"
+      ],
+      "metrics_v2": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 0.4,
+        "mrr": 1
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": 0,
+        "r5": 0.6,
+        "mrr": 0
+      }
+    },
+    {
+      "query_id": "cabello_008",
+      "category": "cabello",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "cuidado_corporal_y_spa-1786390517102-2-a2d90869-monitoreo-de-la-hidratacion-profunda-mediante-espectroscopia",
+        "cuidado-corporal-bioimpedancia-008",
+        "cuidado_corporal_y_spa-tecnologia-005",
+        "urea-umbral-hidratacion-descamacion-009",
+        "tendencias-belleza-virales-002"
+      ],
+      "v3_expected_primary": [
+        "hidratacion-oclusiva-corporal-008"
+      ],
+      "v3_expected_supporting": [
+        "hidrofaciales-tecnologia-006",
+        "hidratacion-oclusivos-humectantes-009"
+      ],
+      "physical_check": {
+        "total": 3,
+        "found": 3,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "hidratacion-oclusiva-corporal-008",
+        "hidrofaciales-tecnologia-006",
+        "parches-hidrogel-ojos-003",
+        "beautification-inyecciones-vitaminas-006",
+        "hidratacion-oclusivos-humectantes-009",
+        "cuidado-corporal-mitos-exfoliacion-004",
+        "hidrodinamica-lamina-005",
+        "electrolitos-topicos-001",
+        "subtema-hidratacion-osmotica-003",
+        "fisiopatologia-prurito-acuagenico-005"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.6,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": 0.6,
+        "r5": 1,
+        "mrr": 1
+      }
+    },
+    {
+      "query_id": "cejas_001",
+      "category": "cejas",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "status_v3": "PARTIALLY_SUPPORTED",
+      "v2_expected": [
+        "visajismo-cejas-microblading-envejecimiento-009"
+      ],
+      "v3_expected_primary": [
+        "visajismo-cejas-microblading-envejecimiento-009"
+      ],
+      "v3_expected_supporting": [
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-envejecimiento-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+        "visajismo-microblading-psicodermatologia-009",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+        "visajismo-cejas-microblading-inmunologia-007",
+        "microblading-psicodermatologia-expectativas-009"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0.3333,
+        "p5": 0.2,
+        "r5": 1,
+        "mrr": 0.3333
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0.2,
+        "r5": 0,
+        "mrr": 0.1667
+      }
+    },
+    {
+      "query_id": "cejas_002",
+      "category": "cejas",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "status_v3": "UNSUPPORTED",
+      "v2_expected": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-biomecanica-presion-001",
+        "visajismo-cejas-microblading-efecto-tyndall-005",
+        "visajismo-cejas-microblading-inmunologia-007"
+      ],
+      "v3_expected_primary": [],
+      "v3_expected_supporting": [],
+      "physical_check": {
+        "total": 0,
+        "found": 0,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma",
+        "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+        "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-envejecimiento-009",
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+        "visajismo-cejas-microblading-propiocepcion-008"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "delta": {
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      }
+    },
+    {
+      "query_id": "cejas_003",
+      "category": "cejas",
+      "query": "Forma de cejas ideal para cara redonda",
+      "status_v3": "UNSUPPORTED",
+      "v2_expected": [
+        "visajismo-cejas-mapeo-proporcion-aurea-003",
+        "visajismo_cejas_microblading-1786392808872-1-4498c4cd-topografia-corneal-y-su-influencia-en-la-proyeccion-del-arco"
+      ],
+      "v3_expected_primary": [],
+      "v3_expected_supporting": [],
+      "physical_check": {
+        "total": 0,
+        "found": 0,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "visajismo-cejas-microblading-biometria-005",
+        "visajismo-cejas-microblading-anatomia-vasos-005",
+        "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+        "visajismo-sesgo-iluminacion-007",
+        "visajismo_cejas_microblading-1786386877413-2-48af50f9-arquitectura-del-trazo-y-su-relacion-con-la-tension-mecanica",
+        "visajismo-geometria-proyectiva-002",
+        "microblading-envejecimiento-009",
+        "visajismo_cejas_microblading-1786391681604-1-802703f0-analisis-de-impedancia-bioelectrica-para-la-estandarizacion-",
+        "visajismo-cejas-microblading-tecnicas-de-anclaje-002",
+        "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "delta": {
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      }
+    },
+    {
+      "query_id": "cejas_004",
+      "category": "cejas",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-cejas-mapeo-proporcion-aurea-003",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-psicologia-007",
+        "microblading-envejecimiento-009"
+      ],
+      "v3_expected_primary": [
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para"
+      ],
+      "v3_expected_supporting": [
+        "visajismo-cejas-microblading-metamerismo-003"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "visajismo_cejas_microblading-1786391681605-5-30d19453-fotobiologia-aplicada-interaccion-luz-pigmento-y-el-fenomeno",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "visajismo-cejas-microblading-metamerismo-003",
+        "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+        "visajismo-cejas-microblading-metamerismo-iluminacion-002",
+        "efectos-temperatura-luz-percepcion-diseño-007",
+        "colorimetria_piel_undertone-1786386646732-4-97a5cc49-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+        "visajismo_cejas_microblading-1786383991455-2-35ef3e53-analisis-de-sub-superficie-mediante-luz-polarizada-cruzada-p",
+        "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+        "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      }
+    },
+    {
+      "query_id": "cejas_005",
+      "category": "cejas",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+        "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+        "impacto-variabilidad-glucemica-cicatrizacion-001",
+        "visajismo-cejas-microblading-microbiota-006"
+      ],
+      "v3_expected_primary": [
+        "visajismo-cejas-microblading-cicatrizacion-003"
+      ],
+      "v3_expected_supporting": [
+        "visajismo-cejas-microblading-microbiota-006"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "visajismo-microblading-psicodermatologia-009",
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-microbiota-006",
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-cejas-cuidado-post-inmediato-009",
+        "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+        "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+        "visajismo-efecto-nocebo-001",
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-microblading-cronobiologia-004"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 0.4,
+        "mrr": 0.5
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.5
+      },
+      "delta": {
+        "p5": 0,
+        "r5": 0.6,
+        "mrr": 0
+      }
+    },
+    {
+      "query_id": "cejas_007",
+      "category": "cejas",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "v3_expected_primary": [
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "v3_expected_supporting": [
+        "visajismo-cejas-diabetis-cicatrizacion-004"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-microblading-psicodermatologia-009",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-cejas-diabetis-cicatrizacion-004",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo-microblading-interaccion-medicamentosa-007",
+        "visajismo-cejas-microblading-limpieza-008",
+        "microblading-manejo-piel-atrofica-corticoides-005",
+        "visajismo-cejas-microblading-neuro-ergonomia-005"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 0,
+        "p3": 0.3333,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.3333
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 0.3333
+      }
+    },
+    {
+      "query_id": "cejas_008",
+      "category": "cejas",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "status_v3": "SUPPORTED_MISALIGNED",
+      "v2_expected": [
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "visajismo-cejas-microblading-interaccion-procedimientos-laser-co2-fraccionado",
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-efecto-tyndall-003"
+      ],
+      "v3_expected_primary": [
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "v3_expected_supporting": [
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "physical_check": {
+        "total": 2,
+        "found": 2,
+        "missing": [],
+        "hashes_present": true
+      },
+      "retrieved_ids": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-microblading-psicodermatologia-009",
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+        "microblading-manejo-piel-atrofica-corticoides-005",
+        "visajismo-cejas-cuidado-post-inmediato-009",
+        "visajismo-cejas-microblading-corticoides-005"
+      ],
+      "metrics_v2": {
+        "p1": 0,
+        "p3": 0,
+        "p5": 0,
+        "r5": 0,
+        "mrr": 0
+      },
+      "metrics_v3": {
+        "p1": 1,
+        "p3": 0.6667,
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      },
+      "delta": {
+        "p5": 0.4,
+        "r5": 1,
+        "mrr": 1
+      }
+    }
+  ]
+}

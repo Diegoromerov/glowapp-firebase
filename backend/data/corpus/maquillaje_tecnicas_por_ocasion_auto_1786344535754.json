@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microgravedad-001",
+    "title": "Maquillaje en entornos de baja gravedad: Dinámica de fluidos y estabilidad de emulsiones",
+    "content": "La aplicación de maquillaje en entornos de baja gravedad o durante vuelos parabólicos presenta desafíos fisiológicos y físicos únicos. La ausencia de sedimentación gravitatoria altera la distribución de las partículas pigmentarias en las emulsiones cosméticas, provocando una separación de fases acelerada. Clínicamente, el aumento de fluidos hacia la región cefálica (cefalización de fluidos) provoca un edema facial transitorio, lo que incrementa la presión hidrostática en los capilares cutáneos. Esto altera la microcirculación y puede modificar la adherencia de los polímeros formadores de película al interactuar con el sudor y el sebo acumulado por la falta de convección natural. Según estudios de la NASA sobre salud dermatológica en microgravedad, la piel experimenta una mayor pérdida de hidratación transepidérmica (TEWL) debido a la alteración del microbioma y la falta de evaporación eficiente. Se recomienda el uso de cosméticos anhidros o con alta carga de siliconas volátiles para garantizar una fijación estable que no migre hacia las mucosas oculares o respiratorias, evitando la irritación mecánica por partículas sueltas en suspensión.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "ciclopentasiloxano"
+      ],
+      "contraindications": [
+        "productos en polvo suelto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestión-fisiológica-extrema"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:48:37.060Z"
+  }
+]

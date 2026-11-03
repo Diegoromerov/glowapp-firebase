@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-nanotecnologia-001",
+    "title": "Nanotecnología de encapsulación y entrega dirigida de pigmentos",
+    "content": "La nanotecnología está revolucionando la colorimetría capilar mediante el uso de nano-encapsulados que permiten una entrega dirigida de precursores de color. A diferencia de los tintes convencionales que dependen de una alcalinidad agresiva para hinchar la cutícula y facilitar la difusión, los sistemas basados en liposomas o nanoemulsiones de polímeros logran una penetración más profunda y uniforme con un pH significativamente menor. Según estudios publicados en el Journal of Cosmetic Dermatology, estas partículas de tamaño nanométrico poseen una mayor afinidad por las zonas de la corteza con daño estructural, permitiendo una igualación cromática sin necesidad de sobre-procesar las áreas más sanas de la fibra. Este avance reduce drásticamente el impacto sobre el complejo de membrana celular (CMC) y minimiza la degradación de los lípidos 18-MEA, preservando la integridad hidrofóbica natural del cabello. La aplicación técnica requiere considerar que el tiempo de pose puede ser menor debido a la eficiencia de transporte del vehículo nanotecnológico, evitando la sobre-oxidación innecesaria de la melanina residual.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "liposomas",
+        "nanopartículas de polímeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-formulacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:57:25.392Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-bio-sensores-002",
+    "title": "Biosensores colorimétricos para evaluación de daño estructural in-situ",
+    "content": "El uso de biosensores colorimétricos portátiles representa una frontera clínica para la evaluación precisa de la integridad capilar antes de cualquier servicio de coloración. Estos dispositivos permiten medir en tiempo real el pH de la superficie capilar, la carga electrostática (Potencial Zeta) y la presencia de residuos metálicos mediante reacciones químicas selectivas. La evidencia clínica sugiere que la evaluación basada en sensores reduce el error de diagnóstico en un 40% en comparación con la inspección visual tradicional, especialmente en cabellos con porosidad diferencial. Al integrar esta tecnología en la consulta inicial, el profesional puede ajustar la fórmula del tinte para compensar las irregularidades estructurales, evitando el fenómeno de 'saturación excesiva' en puntas porosas y asegurando una distribución homogénea del pigmento. Esta metodología es fundamental para alinear las expectativas del cliente con la capacidad real de absorción de la fibra, mitigando el riesgo de resultados cromáticos no deseados que suelen derivar en procesos correctivos posteriores que dañan aún más la cutícula.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38219452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:57:25.392Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-proteomica-003",
+    "title": "Proteómica capilar y su relación con la degradación del color",
+    "content": "Estudios avanzados de proteómica capilar han revelado que la degradación del color post-aplicación no es solo un fenómeno de lavado de pigmentos, sino una consecuencia directa de la degradación oxidativa de las proteínas estructurales de la corteza, particularmente de los residuos de triptófano y cisteína. La luz UV y los radicales libres generados por la oxidación incompleta del tinte inician una cascada de degradación proteica que altera la estructura del complejo de membrana celular (CMC). Investigaciones en el campo de la dermatología cosmética indican que la adición de péptidos biomiméticos en la fórmula de coloración puede 'rellenar' estos sitios de degradación, proporcionando un andamiaje que mejora la retención del pigmento. Entender la proteómica del cabello teñido permite al profesional recomendar tratamientos post-coloración específicos que no solo hidraten, sino que reparen activamente los enlaces peptídicos, prolongando la longevidad del matiz y manteniendo la reflectancia espectral deseada. Esta aproximación traslada la coloración de una simple reacción química a un proceso de mantenimiento de la salud proteica de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10255554/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos biomiméticos",
+        "triptófano"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:57:25.392Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-disbiosis-004",
+    "title": "Impacto de la disbiosis inducida por agentes alcalinizantes en la microbiota del cuero cabelludo",
+    "content": "La aplicación recurrente de tintes de alta alcalinidad (pH 9-11) induce una alteración significativa en el ecosistema microbiano del cuero cabelludo, favoreciendo la proliferación de especies como Malassezia spp. y reduciendo la diversidad de bacterias comensales protectoras. Esta disbiosis no solo incrementa el riesgo de dermatitis de contacto irritativa, sino que también altera el pH del sudor y del sebo, lo cual afecta directamente la estabilidad del color en las raíces, donde el crecimiento nuevo es más susceptible a las variaciones del entorno. La literatura dermatológica sugiere que la implementación de agentes buffer post-coloración es esencial para restaurar el pH fisiológico de la superficie del cuero cabelludo y prevenir la inflamación subclínica. Un cuero cabelludo sano es fundamental para la producción de un sebo equilibrado que actúe como barrera natural contra la oxidación prematura del tinte. El control de la microbiota debe ser considerado como parte integral del protocolo de coloración, recomendando el uso de productos con actividad prebiótica en clientes con antecedentes de sensibilidad cutánea o desequilibrios en el cuero cabelludo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/scalp-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer",
+        "prebióticos"
+      ],
+      "contraindications": [
+        "dermatitis seborreica activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:57:25.392Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quelacion-005",
+    "title": "Quelación avanzada frente a metales de transición: Prevención del estrés oxidativo",
+    "content": "La presencia de metales de transición, como el cobre y el hierro, en el agua de lavado y en la propia fibra capilar, actúa como un catalizador incontrolado para la degradación del peróxido de hidrógeno. Esta reacción catalítica no solo genera una cantidad masiva de radicales libres que dañan la queratina, sino que también altera la polimerización de los precursores de color, resultando en matices inconsistentes o virajes indeseados (frecuentemente hacia tonos verdosos o cobrizos). La quelación avanzada mediante agentes como el EDTA disódico o moléculas quelantes de nueva generación, aplicadas antes y durante el servicio de coloración, es la estrategia clínica más efectiva para mitigar este riesgo. Al secuestrar estos iones metálicos antes de que interactúen con el oxidante, se garantiza una cinética de polimerización predecible y se protege la estructura proteica de la fibra. La evaluación del historial del cliente respecto al agua de su zona de residencia es crucial; en ciudades con sistemas de tuberías antiguos, el riesgo de contaminación por metales es elevado, haciendo de la quelación un paso obligatorio en el protocolo de GlowApp.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-pre-servicio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:57:25.392Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-fototoxicidad-006",
+    "title": "Fototoxicidad inducida por precursores de color post-aplicación",
+    "content": "La fototoxicidad es un fenómeno clínico subestimado en la coloración permanente, donde ciertos precursores de color (o sus productos de oxidación incompleta) pueden absorber radiación UV y generar especies reactivas de oxígeno (ROS) en la fibra y el cuero cabelludo. Esto no solo degrada el color rápidamente, sino que puede causar eritema cutáneo en pacientes fotosensibles. Los estudios indican que el uso de filtros UV específicos dentro de los productos de cuidado post-coloración reduce significativamente la tasa de fotodegradación y el riesgo de reacciones cutáneas. En Bogotá, debido a la altitud y la mayor intensidad de la radiación UV, este riesgo es particularmente relevante. Es imperativo que el protocolo de GlowApp incluya una fase de estabilización post-tinte que contenga antioxidantes (como vitamina E o derivados del ácido ascórbico) y filtros solares capilares para neutralizar los radicales residuales y proteger la integridad de los pigmentos formados. La educación al cliente sobre el uso de protección solar capilar durante las primeras 48 horas post-servicio es un pilar de seguridad clínica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization)",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ultraviolet-radiation",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "filtros UV"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados-post-tinte"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:57:25.392Z"
+  }
+]

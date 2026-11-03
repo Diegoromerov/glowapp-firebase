@@ -1,0 +1,220 @@
+[
+  {
+    "chunk_id": "ingredientes-contraindicaciones-cromat-001",
+    "title": "Cromo en pigmentos de maquillaje: el riesgo de dermatitis alérgica",
+    "content": "El cromo, específicamente en sus formas hexavalentes y trivalentes, se encuentra frecuentemente como impureza en pigmentos cosméticos, particularmente en sombras de ojos verdes y azules. A diferencia de otros metales, el cromo tiene una alta capacidad de sensibilización cutánea, provocando dermatitis de contacto alérgica persistente. La AAD ha documentado que pacientes con eccema periorbitario crónico a menudo presentan respuestas positivas a pruebas de parche con dicromato de potasio. El problema radica en que, aunque el cromo no se añade intencionalmente como ingrediente activo, su presencia como contaminante en polvos minerales de baja calidad es común. La exposición crónica a estos pigmentos puede romper la tolerancia inmunológica, resultando en lesiones eritemato-escamosas que no responden a tratamientos convencionales si no se elimina la fuente de exposición. Es vital verificar que los productos utilicen pigmentos de grado farmacéutico con certificaciones de pureza que aseguren niveles mínimos de metales pesados, evitando la acumulación en el estrato córneo de pieles ya sensibilizadas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cromo",
+        "pigmentos"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:22:28.494Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-sulfatos-002",
+    "title": "Lauril sulfato de amonio vs. sodio: diferencias en irritabilidad",
+    "content": "A menudo se agrupan todos los tensioactivos bajo el término 'sulfatos', pero existe una diferencia clínica crucial entre el lauril sulfato de sodio (SLS) y el lauril sulfato de amonio (ALS). La evidencia sugiere que el ALS posee una molécula más grande y una menor tasa de penetración en la barrera cutánea, lo que resulta en un menor potencial de irritación en comparación con el SLS. El SLS, debido a su capacidad para desnaturalizar las proteínas de la queratina y aumentar la pérdida de agua transepidérmica (TEWL), es un irritante primario bien establecido. En pacientes con piel atópica o rosácea, el uso de SLS puede exacerbar significativamente la inflamación. El paso hacia formulaciones con ALS o tensioactivos no iónicos es una estrategia clínica válida para reducir la dermatitis irritativa inducida por la limpieza diaria. Es imperativo que el profesional evalúe no solo la presencia de sulfatos, sino la cadena específica del tensioactivo, ya que la longitud de la cadena alquílica determina la agresividad del producto sobre el microbioma y la barrera lipídica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/20492477/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lauril sulfato de sodio",
+        "lauril sulfato de amonio"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-limpieza"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:22:28.494Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-nitrosaminas-003",
+    "title": "Nitrosaminas en cosmética: el riesgo oculto de las aminas",
+    "content": "Las nitrosaminas son compuestos carcinogénicos potenciales que pueden formarse en productos cosméticos debido a la reacción entre agentes nitrosantes y aminas secundarias. Ingredientes como la trietanolamina (TEA) y otros ajustadores de pH actúan como precursores si la formulación contiene impurezas o si el producto se almacena en condiciones de calor extremo. Aunque la regulación cosmética limita los niveles de aminas, la estabilidad a largo plazo del producto es vital. La exposición tópica a nitrosaminas, aunque en concentraciones bajas, genera preocupación sobre la absorción sistémica en pieles dañadas. Investigaciones indican que la presencia de conservantes como los liberadores de formaldehído puede catalizar este proceso. Para minimizar riesgos, se recomienda evitar productos que presenten una combinación de TEA y agentes nitrosantes en la misma lista de ingredientes (INCI), especialmente si el producto tiene una fecha de caducidad próxima o ha sido expuesto a condiciones de almacenamiento inadecuadas. La seguridad del producto no solo depende de la concentración inicial, sino de la integridad química que evita la degradación hacia subproductos tóxicos durante su vida útil.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/nitrosamines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trietanolamina",
+        "nitrosaminas"
+      ],
+      "contraindications": [
+        "piel dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-producto"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:22:28.494Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-furocumarinas-004",
+    "title": "Furocumarinas: el riesgo de fototoxicidad severa en aceites naturales",
+    "content": "El uso de aceites esenciales cítricos como bergamota, lima o limón, ricos en furocumarinas (especialmente bergapteno), representa un riesgo clínico subestimado para la fototoxicidad. Estos compuestos son fotosensibilizadores potentes que, al absorber radiación UVA, desencadenan una reacción química que daña el ADN de los queratinocitos, provocando una respuesta inflamatoria intensa conocida como fitofotodermatitis. Los síntomas incluyen eritema, ampollas y, posteriormente, una hiperpigmentación post-inflamatoria severa y de larga duración. La IADVL advierte que la aplicación de estos aceites antes de la exposición solar es una causa frecuente de hiperpigmentación en fototipos altos. Es fundamental distinguir entre aceites cítricos prensados en frío (altos en furocumarinas) y aquellos destilados al vapor o 'furocumarin-free', que han sido procesados para eliminar estos componentes. Para pacientes con tendencia al melasma o hiperpigmentación, el uso de productos botánicos sin certificación de ausencia de furocumarinas está contraindicado, especialmente en áreas expuestas al sol. La seguridad en cosmética natural requiere un conocimiento profundo de la química botánica, más allá de la percepción de 'seguridad' que el marketing suele otorgar a los ingredientes de origen vegetal.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/content.php?id=123",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites esenciales",
+        "furocumarinas"
+      ],
+      "contraindications": [
+        "melasma",
+        "hiperpigmentación"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:22:28.494Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-niacinamida-009",
+    "title": "Niacinamida al 10%+: el mito de la dosis alta y el eritema",
+    "content": "La niacinamida es uno de los activos más versátiles en dermatología, pero existe una tendencia comercial hacia concentraciones del 10% al 20% que carecen de respaldo clínico sólido para su uso diario. La mayoría de los estudios que demuestran beneficios antiinflamatorios y de barrera utilizan concentraciones de entre el 2% y el 5%. A concentraciones superiores al 10%, el riesgo de irritación, picor y eritema aumenta drásticamente, especialmente en pieles sensibles o con rosácea. Existe además el riesgo de conversión química de la niacinamida a ácido nicotínico si el pH de la formulación no está estrictamente controlado, lo cual desencadena un efecto de vasodilatación (flushing) inmediato. La idea de que 'más es mejor' es un mito peligroso en cosmética activa. La recomendación experta es priorizar formulaciones con concentraciones probadas (5%) que ofrecen un balance óptimo entre eficacia y tolerancia. Para los usuarios de GlowApp, es crucial entender que una mayor concentración puede comprometer la barrera cutánea, anulando los beneficios que se buscan obtener para la salud del manto ácido. La moderación en la dosificación es la llave para una rutina sostenible a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/ingredients/niacinamide",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida"
+      ],
+      "contraindications": [
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-activos"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:22:28.494Z"
+  }
+]

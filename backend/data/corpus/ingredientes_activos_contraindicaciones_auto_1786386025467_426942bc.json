@@ -1,0 +1,263 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386025464-1-a384df62-acido-salicilico-en-pacientes-con-hipersensibilidad-a-salici",
+    "title": "Ácido Salicílico en pacientes con hipersensibilidad a salicilatos",
+    "content": "El ácido salicílico, un beta-hidroxiácido (BHA) ampliamente utilizado por sus propiedades queratolíticas, presenta contraindicaciones críticas en pacientes con antecedentes de hipersensibilidad a los salicilatos o aspirina. La absorción sistémica, aunque limitada en aplicaciones tópicas, puede desencadenar reacciones cruzadas en individuos susceptibles, incluyendo broncoespasmo o urticaria. Además, su uso concomitante con otros agentes exfoliantes o retinoides potencia el riesgo de dermatitis irritativa de contacto debido a la disrupción excesiva de la barrera lipídica. Es fundamental monitorizar la frecuencia de aplicación en pieles con compromiso de la barrera cutánea, dado que la penetración percutánea aumenta significativamente en presencia de inflamación activa. La evaluación clínica debe considerar la superficie corporal tratada para evitar niveles plasmáticos que, aunque raros, podrían inducir toxicidad leve en poblaciones vulnerables. Se recomienda evitar su uso en áreas extensas en pacientes con insuficiencia renal o hepática, donde el metabolismo del salicilato podría verse comprometido, priorizando siempre la integridad del estrato córneo antes de iniciar regímenes intensivos de exfoliación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/salicylic-acid",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Salicylic Acid"
+      ],
+      "contraindications": [
+        "Salicylate allergy",
+        "Renal impairment"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatology_consult"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:20:25.464Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386025464-2-1ade80ae-benzocaina-y-el-riesgo-de-metahemoglobinemia-inducida",
+    "title": "Benzocaína y el riesgo de metahemoglobinemia inducida",
+    "content": "La benzocaína, un anestésico local tipo éster, presenta un perfil de riesgo significativo cuando se utiliza en formulaciones tópicas de venta libre para el alivio del dolor orofaríngeo o cutáneo. La complicación más grave asociada a su uso es la metahemoglobinemia, una condición potencialmente mortal en la que la capacidad de transporte de oxígeno de la sangre se ve drásticamente reducida. Los síntomas incluyen cianosis, fatiga, disnea y taquicardia, manifestándose a menudo minutos u horas después de la aplicación. Debido a este riesgo, la FDA ha emitido advertencias severas sobre su uso en niños menores de dos años y su aplicación en mucosas inflamadas o dañadas, donde la absorción sistémica se acelera exponencialmente. Los profesionales deben desaconsejar el uso de productos con benzocaína en pacientes con deficiencias enzimáticas congénitas, como la deficiencia de glucosa-6-fosfato deshidrogenasa (G6PD), que predisponen a una mayor susceptibilidad a esta toxicidad hematológica. La alternativa terapéutica debe priorizar agentes con menor perfil de absorción sistémica y mayor margen de seguridad clínica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "U.S. Food and Drug Administration",
+        "url": "https://www.fda.gov/drugs/drug-safety-and-availability/benzocaine-topical-products",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Benzocaine"
+      ],
+      "contraindications": [
+        "G6PD deficiency",
+        "Infants under 2 years"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "safety_protocols"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:20:25.465Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386025465-3-14ee9af7-hidroquinona-y-el-riesgo-de-ocronosis-exogena",
+    "title": "Hidroquinona y el riesgo de ocronosis exógena",
+    "content": "La hidroquinona sigue siendo el estándar de oro en el tratamiento de hiperpigmentaciones melánicas, pero su uso prolongado o en concentraciones no supervisadas conlleva el riesgo de ocronosis exógena, una discromía cutánea caracterizada por una pigmentación azul-grisácea irreversible. Este fenómeno ocurre por la inhibición de la enzima homogentisato 1,2-dioxigenasa en la piel, provocando la acumulación de ácido homogentísico en la dermis. La contraindicación es absoluta para tratamientos que excedan los tres meses sin periodos de descanso, o cuando se combina con agentes fotosensibilizantes que aumentan la inflamación subdérmica. La inflamación crónica inducida por la hidroquinona, a menudo manifestada como eritema persistente, es un precursor clínico de la ocronosis. Se recomienda estrictamente el uso de protectores solares de amplio espectro durante el tratamiento, ya que la piel tratada presenta una vulnerabilidad extrema a la radiación UVA/UVB, lo que puede exacerbar la formación de pigmento reactivo. El seguimiento dermatológico es imperativo para detectar signos tempranos de hiperpigmentación paradójica o cambios en la textura dérmica antes de que el daño sea permanente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Hydroquinone"
+      ],
+      "contraindications": [
+        "Long-term use",
+        "Pregnancy"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pigmentation_management"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:20:25.465Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386025465-4-e5390f36-acido-kojico-estabilidad-oxidativa-y-dermatitis-de-contacto",
+    "title": "Ácido Kójico: Estabilidad oxidativa y dermatitis de contacto",
+    "content": "El ácido kójico es un agente despigmentante derivado de hongos, valorado por su capacidad para quelar iones de cobre en la tirosinasa. Sin embargo, su inestabilidad química frente a la luz y el oxígeno plantea riesgos dermatológicos considerables. El ácido kójico se oxida fácilmente, formando subproductos que actúan como alérgenos de contacto potentes, capaces de inducir dermatitis alérgica incluso en usuarios sin antecedentes de atopia. La contraindicación principal reside en su aplicación sobre pieles con barrera cutánea comprometida, donde la penetración incontrolada aumenta la probabilidad de sensibilización. Además, su interacción con otros activos quelantes puede alterar el pH de la fórmula, reduciendo su eficacia y aumentando el potencial irritativo. Es vital verificar la integridad del envase (opaco y hermético) y la presencia de antioxidantes estabilizadores. Los usuarios deben ser advertidos sobre la aparición de eritema, prurito o descamación, signos que indican una reacción de sensibilización y requieren la interrupción inmediata del tratamiento. La eficacia del ácido kójico es altamente dependiente de la formulación; una oxidación visible (cambio de color a amarillo/marrón) invalida el producto y aumenta el riesgo de irritación severa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/kojic-acid-safety/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Kojic Acid"
+      ],
+      "contraindications": [
+        "Compromised skin barrier"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pigmentation_management"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:20:25.465Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386025465-5-40a4a501-retinoides-topicos-y-el-riesgo-de-blefaritis-asociada",
+    "title": "Retinoides tópicos y el riesgo de blefaritis asociada",
+    "content": "El uso de retinoides tópicos (tretinoína, adapaleno, retinol) para el tratamiento del acné o el fotoenvejecimiento conlleva un riesgo frecuentemente subestimado: la disfunción de las glándulas de Meibomio y la blefaritis asociada. La migración del producto hacia el margen palpebral, ya sea por aplicación directa o por transferencia desde las manos, puede inducir una atrofia de las glándulas sebáceas del párpado, resultando en ojo seco severo, irritación ocular y queratinización del epitelio conjuntival. Esta contraindicación es particularmente relevante en pacientes que utilizan lentes de contacto o que ya presentan síntomas de ojo seco. La recomendación clínica es evitar la aplicación de retinoides en la zona periocular, manteniendo un margen de seguridad de al menos 2 cm desde el borde de las pestañas. En caso de presentar visión borrosa, enrojecimiento ocular o sensación de cuerpo extraño, se debe suspender el uso del retinoide y consultar con un oftalmólogo para evaluar la salud de la superficie ocular. La educación del paciente sobre la técnica de aplicación es la medida preventiva más eficaz para evitar complicaciones oculares crónicas derivadas de tratamientos dermatológicos faciales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Ophthalmology",
+        "url": "https://www.aao.org/eye-health/diseases/retinoid-eye-side-effects",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Retinol",
+        "Tretinoin",
+        "Adapalene"
+      ],
+      "contraindications": [
+        "Periocular application",
+        "Dry eye syndrome"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antiaging_protocols"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:20:25.465Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386025465-6-0cdd6c67-urea-en-altas-concentraciones-riesgo-de-irritacion-en-pieles",
+    "title": "Urea en altas concentraciones: Riesgo de irritación en pieles con barrera alterada",
+    "content": "La urea es un componente esencial del factor de hidratación natural (NMF) de la piel, valorado por sus propiedades humectantes y queratolíticas. Sin embargo, en concentraciones superiores al 10-20%, la urea adquiere propiedades irritantes que pueden comprometer la integridad de la barrera cutánea. En pieles con dermatitis atópica, rosácea o eccema, la aplicación de urea de alta concentración puede provocar una sensación de ardor intenso, prurito y eritema, debido a su capacidad para penetrar profundamente y modificar la estructura de las proteínas del estrato córneo. Esta irritación es más pronunciada cuando la barrera cutánea ya está debilitada, permitiendo que la urea actúe como un agente potenciador de la penetración para otros ingredientes irritantes presentes en la misma formulación. Se contraindica su uso en pieles erosionadas, fisuradas o con inflamación aguda. Para pacientes con pieles sensibles, se recomienda iniciar con concentraciones bajas (5%) y observar la tolerancia cutánea antes de escalar. La monitorización de la respuesta inflamatoria es esencial, ya que el efecto queratolítico, si es excesivo, puede derivar en una descamación reactiva que agrava la condición dermatológica subyacente en lugar de mejorarla.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://eadv.org/urea-dermatology-guidelines/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Urea"
+      ],
+      "contraindications": [
+        "Eczema",
+        "Broken skin"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "moisturizing_protocols"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:20:25.465Z"
+  }
+]

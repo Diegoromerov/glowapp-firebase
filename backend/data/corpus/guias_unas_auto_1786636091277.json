@@ -1,0 +1,208 @@
+[
+  {
+    "chunk_id": "guias_unas-efecto-termo-fresado-001",
+    "title": "Daño térmico matricial por fresado inadecuado",
+    "content": "El fresado mecánico de alta velocidad genera una transferencia de energía térmica que, si supera el umbral crítico de los 42-45°C, puede inducir daño irreversible en el tejido matricial. La matriz ungueal es extremadamente sensible al calor, y la acumulación de temperatura mediante fricción prolongada en un mismo punto provoca una desnaturalización de las proteínas queratínicas y una posible necrosis focal. Este daño se manifiesta semanas después del servicio como onicodistrofia, líneas de Beau o incluso onicólisis distal debido a la interrupción del ciclo de queratinización. La literatura dermatológica, incluyendo estudios en el Journal of the American Academy of Dermatology, enfatiza que el uso de fresas de carburo sin refrigeración o con presión excesiva altera la homeostasis de la matriz. La clave para prevenir esta complicación en cabina radica en la técnica de 'toque intermitente' y la reducción de las RPM (revoluciones por minuto) al trabajar cerca del eponiquio. Es fundamental reconocer que el daño matricial no es inmediato, sino que se observa con el crecimiento de la lámina, lo que suele llevar a diagnósticos erróneos de infecciones fúngicas cuando la causa es puramente traumática-térmica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "presión excesiva en matriz"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:47:53.747Z"
+  },
+  {
+    "chunk_id": "guias_unas-permeabilidad-solventes-002",
+    "title": "Cinética de absorción de solventes en la lámina ungueal",
+    "content": "La lámina ungueal, aunque compuesta por queratina densa, es significativamente más permeable que la piel. Estudios publicados en PubMed demuestran que la exposición recurrente a solventes orgánicos (como la acetona o el acetato de etilo) extrae los lípidos intercelulares que mantienen la cohesión entre los corneocitos ungueales. Esta pérdida de lípidos no solo aumenta la fragilidad y el riesgo de onicosquizia (descamación lamelar), sino que también facilita la absorción sistémica de otras sustancias químicas presentes en los productos de manicura. La permeabilidad aumenta drásticamente cuando la uña está hidratada, debido a que el agua expande la red de queratina, creando rutas de difusión para moléculas de mayor tamaño. Es un error común creer que la uña es una barrera inerte; por el contrario, actúa como una membrana semipermeable que reacciona a los cambios de pH y a la exposición a solventes. La recomendación clínica es minimizar el tiempo de inmersión en solventes y aplicar aceites oclusivos post-servicio para restaurar la barrera lipídica, evitando así la deshidratación crónica que precede a la distrofia ungueal inducida por agentes químicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22153242/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "acetato de etilo"
+      ],
+      "contraindications": [
+        "inmersión prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:47:53.747Z"
+  },
+  {
+    "chunk_id": "guias_unas-estres-contraccion-003",
+    "title": "Estrés de contracción volumétrica en geles UV",
+    "content": "El proceso de fotopolimerización implica una transición de monómeros a un polímero reticulado, acompañada inevitablemente por una contracción volumétrica. Este fenómeno genera tensiones tangenciales en la interfaz entre el producto y la lámina ungueal. Si la adhesión no es óptima o si el gel posee un alto grado de contracción (común en geles de construcción de alta densidad), estas fuerzas pueden provocar el desprendimiento prematuro de los bordes o incluso micro-fracturas en la uña natural. La literatura en materiales dentales y dermatológicos señala que la tasa de polimerización influye directamente en el estrés acumulado: una polimerización demasiado rápida, provocada por lámparas con irradiancia excesiva, aumenta el estrés interno en el material. Para mitigar este riesgo en cabina, es vital seguir los tiempos de curado específicos de cada fabricante y evitar el uso de lámparas no calibradas. La acumulación de este estrés mecánico, sumado a la flexión natural de la uña, es un factor subestimado en la etiología de la onicólisis traumática por uso de geles y acrílicos en uñas de longitud excesiva.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "curado incompleto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:47:53.747Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomarcadores-tiroides-004",
+    "title": "Alteraciones ungueales como señales de disfunción tiroidea",
+    "content": "Las uñas son indicadores sensibles del metabolismo sistémico. En casos de hipertiroidismo, es frecuente observar la onicólisis de Plummer, donde la uña se separa del lecho ungueal, especialmente en los dedos anular y meñique, debido a la hiperactividad del sistema nervioso simpático y cambios en la vascularización del lecho. Por otro lado, el hipotiroidismo suele asociarse con uñas frágiles, de crecimiento lento y con una superficie estriada longitudinalmente. Estas condiciones no son meramente estéticas y no responden a tratamientos tópicos o fortalecedores, ya que su origen es endocrino. La importancia de la observación clínica en cabina radica en la detección temprana de estos signos: si una cliente presenta cambios ungueales persistentes sin antecedentes de trauma o uso de químicos, se debe derivar al especialista médico para descartar patologías tiroideas subyacentes. El conocimiento de estos biomarcadores permite al profesional de la estética actuar con responsabilidad, evitando diagnósticos erróneos de hongos (onicomicosis) y mejorando la calidad de la atención integral al paciente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:47:53.747Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotobiologia-uv-008",
+    "title": "Fotobiología de la luz azul en la matriz ungueal",
+    "content": "La fotobiología de las lámparas utilizadas en cabina es un área de creciente interés clínico. Si bien el riesgo de carcinogenicidad es bajo con las lámparas LED modernas, la exposición repetida a longitudes de onda en el espectro azul (cerca de los 400-450 nm) puede inducir estrés oxidativo en las células epiteliales del lecho y la matriz ungueal. Este estrés oxidativo puede alterar la síntesis proteica de la queratina, lo que se traduce en una uña más frágil o con alteraciones pigmentarias. Además, los fotoiniciadores residuales que no han polimerizado correctamente debido a una irradiancia insuficiente pueden ser activados por la luz ambiental, provocando sensibilización cutánea. La recomendación de utilizar guantes con protección UV o cremas fotoprotectoras en manos antes del servicio no es solo una tendencia, sino una medida preventiva basada en la protección contra el fotoenvejecimiento y la degradación del tejido periungueal. Es fundamental que los profesionales verifiquen la compatibilidad entre el gel utilizado y la longitud de onda de la lámpara (espectro de emisión), garantizando una polimerización completa que minimice la presencia de monómeros libres potencialmente alergénicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "JAMA Dermatology",
+        "url": "https://jamanetwork.com/journals/jamadermatology/fullarticle/2763231",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "lámparas no calibradas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:47:53.747Z"
+  }
+]

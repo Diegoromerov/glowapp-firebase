@@ -1,0 +1,261 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-queratosis-pilaris-001",
+    "title": "Manejo clínico de la Queratosis Pilaris en el cuerpo",
+    "content": "La queratosis pilaris es una afección folicular común caracterizada por la hiperqueratinización del epitelio folicular, manifestándose como pápulas rugosas en zonas como brazos, muslos y glúteos. Fisiológicamente, el exceso de queratina obstruye el folículo piloso. El manejo clínico eficaz en dermatología cosmética se centra en la exfoliación química controlada mediante ácidos alfa-hidroxiácidos (AHA) como el ácido láctico o glicólico, y el uso de urea en concentraciones del 10% al 20%, que actúa como agente queratolítico y humectante. A diferencia de la exfoliación mecánica agresiva, que puede exacerbar la inflamación perifolicular, los agentes químicos promueven una renovación celular más uniforme. Es fundamental evitar el uso de jabones alcalinos que alteran el pH del manto ácido cutáneo. El tratamiento debe ser constante, ya que la condición suele ser crónica y recurrente. La fotoprotección en áreas expuestas es obligatoria, especialmente al utilizar ácidos que aumentan la fotosensibilidad. Se recomienda integrar emolientes con ceramidas para restaurar la función barrera tras el proceso de queratólisis, evitando así la xerosis reactiva.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/keratosis-pilaris-treatment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido láctico",
+        "urea",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "exfoliantes físicos de grano grueso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:22:15.564Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-barrera-cutanea-002",
+    "title": "Preservación de la barrera cutánea en el baño diario",
+    "content": "La piel corporal posee una superficie mayor que la facial, siendo más susceptible a la pérdida de agua transepidérmica (TEWL) debido a una menor densidad de glándulas sebáceas en extremidades. La práctica de baños prolongados con agua a altas temperaturas y el uso de tensoactivos aniónicos agresivos (como el lauril sulfato de sodio) comprometen la integridad de la bicapa lipídica del estrato córneo. Para optimizar la salud de la piel, los protocolos actuales sugieren el uso de syndets (detergentes sintéticos) con pH fisiológico (5.5) que minimizan la desnaturalización de proteínas epidérmicas. La aplicación de humectantes oclusivos y humectantes (como glicerina o petrolato) debe realizarse sobre la piel ligeramente húmeda dentro de los tres minutos posteriores al secado; este método aprovecha el gradiente de hidratación para sellar el agua en el estrato córneo. La evidencia sugiere que la preservación de la microbiota cutánea y el pH ácido son pilares en la prevención de dermatitis por irritación y exacerbación de condiciones como la dermatitis atópica en adultos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33580547/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "petrolato",
+        "syndets"
+      ],
+      "contraindications": [
+        "agua muy caliente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_diaria"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:22:15.564Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-hiperpigmentacion-postinflamatoria-003",
+    "title": "Abordaje de la hiperpigmentación postinflamatoria corporal",
+    "content": "La hiperpigmentación postinflamatoria (HPI) en el cuerpo es una respuesta común tras lesiones, foliculitis o procedimientos estéticos, especialmente en fototipos altos (Fitzpatrick IV-VI). La melanogénesis se activa debido a la liberación de mediadores inflamatorios como las prostaglandinas y leucotrienos, que estimulan a los melanocitos. El tratamiento clínico requiere un enfoque multifacético: primero, el control absoluto de la inflamación base; segundo, la inhibición de la tirosinasa y la transferencia de melanosomas. Ingredientes como el ácido azelaico, la niacinamida y el ácido tranexámico han demostrado eficacia clínica en la reducción de manchas sin el riesgo de irritación excesiva asociado a agentes como la hidroquinona en concentraciones altas. Es imperativo enfatizar que el uso de despigmentantes sin una protección solar estricta en las áreas tratadas es contraproducente, ya que la radiación UV exacerba la actividad melanocítica. En el contexto de GlowApp, es vital educar sobre la paciencia clínica: la resolución de la HPI corporal es significativamente más lenta que en el rostro debido a la menor tasa de recambio celular en el cuerpo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/post-inflammatory-hyperpigmentation/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "ácido azelaico",
+        "niacinamida",
+        "ácido tranexámico"
+      ],
+      "contraindications": [
+        "exposición solar directa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_manchas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:22:15.564Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-mitos-exfoliacion-004",
+    "title": "Mito vs Realidad: La exfoliación corporal excesiva",
+    "content": "Existe una tendencia creciente en el sector spa hacia la exfoliación corporal de alta frecuencia. Desde la perspectiva dermatológica, el estrato córneo cumple una función protectora crítica; su remoción mecánica excesiva mediante guantes de crin o scrubs abrasivos provoca microlesiones y compromete la integridad de la barrera cutánea. La realidad clínica es que la piel no requiere exfoliación diaria para mantenerse saludable. La renovación celular es un proceso biológico autolimitado. El uso de exfoliantes físicos con partículas irregulares, como cáscaras de nuez, causa daño físico microscópico que puede derivar en dermatitis de contacto irritativa. Recomendamos sustituir estos métodos por exfoliación química suave (ácidos polihidroxilados o PHA) que, además de exfoliar, hidratan debido a su mayor peso molecular y capacidad humectante. La frecuencia ideal para un usuario estándar no debe superar una o dos veces por semana, dependiendo de la tolerancia individual y la presencia de condiciones preexistentes como xerosis o foliculitis, donde la exfoliación debe ser incluso más conservadora o supervisada profesionalmente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/news/how-to-safely-exfoliate-at-home",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "gluconolactona",
+        "ácido lactobiónico"
+      ],
+      "contraindications": [
+        "uso diario de scrub físico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion_usuario"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:22:15.564Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-celulitis-realidad-005",
+    "title": "La fisiología de la celulitis: Perspectiva clínica",
+    "content": "La celulitis (paniculopatía edemato-fibroesclerótica) es una condición multifactorial que involucra cambios en la arquitectura del tejido conectivo subcutáneo y la microcirculación. No es, estrictamente hablando, una patología de acumulación de grasa, sino un fenómeno estructural donde los septos fibrosos traccionan la piel hacia abajo mientras el tejido adiposo protruye hacia la dermis. La evidencia científica actual indica que ninguna crema tópica puede eliminar la celulitis por completo, ya que los activos no alcanzan la profundidad necesaria para modificar la estructura de los septos. Los tratamientos cosméticos deben enfocarse en mejorar la turgencia cutánea y la hidratación para camuflar visualmente la irregularidad. Ingredientes como la cafeína o el retinol pueden mejorar temporalmente la apariencia mediante la estimulación del drenaje linfático y el aumento de la síntesis de colágeno, respectivamente. Es vital gestionar las expectativas del paciente: el manejo de la celulitis requiere un abordaje integral que incluya nutrición, ejercicio y, en casos específicos, procedimientos médico-estéticos invasivos de consultorio, desmitificando la idea de soluciones milagrosas de venta libre.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeína",
+        "retinol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_corporales"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:22:15.564Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-fotoproteccion-006",
+    "title": "Fotoprotección corporal: Más allá del rostro",
+    "content": "La fotoprotección corporal suele ser ignorada en la rutina diaria, a pesar de que la exposición acumulativa a la radiación UV en el cuello, escote y extremidades es un factor determinante en el fotoenvejecimiento cutáneo y el riesgo de carcinoma basocelular y melanoma. La piel corporal tiene una menor capacidad de autorreparación frente al daño por radicales libres en comparación con la facial. Un filtro solar corporal ideal debe cumplir con un espectro amplio (UVA/UVB) y una resistencia al agua comprobada (normativa ISO). La aplicación insuficiente es la causa principal de falla en la protección; se requiere aproximadamente 1 mg/cm² para alcanzar el factor de protección solar (FPS) indicado en la etiqueta. Es fundamental educar al usuario sobre la reaplicación cada dos horas, especialmente en entornos urbanos con alta radiación, como Bogotá, debido a su altitud. Los protectores en spray pueden ser convenientes, pero suelen llevar a una cobertura desigual; se recomienda su uso complementario o una aplicación generosa seguida de una extensión manual para asegurar una película protectora uniforme sobre toda la superficie expuesta.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/skin-cancer-prevention/sun-protection/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares de amplio espectro"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:22:15.564Z"
+  }
+]

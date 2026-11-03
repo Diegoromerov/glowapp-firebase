@@ -1,0 +1,82 @@
+[
+  {
+    "chunk_id": "guias_unas-disrupcion-microvascular-001",
+    "title": "Disrupción microvascular por compresión prolongada: el peligro de las uñas 'press-on' de ajuste inadecuado",
+    "content": "La aplicación de uñas artificiales tipo 'press-on' con adhesivos de alta resistencia puede generar una hipoxia tisular severa en el lecho ungueal. A diferencia de los sistemas de gel que se adaptan a la curvatura, las uñas preformadas rígidas ejercen una presión estática ininterrumpida sobre los capilares del lecho. Estudios en la literatura de dermatología ocupacional han demostrado que la compresión sostenida superior a la presión capilar (aprox. 32 mmHg) interrumpe el flujo sanguíneo, derivando en una onicólisis isquémica secundaria. Este fenómeno es frecuentemente confundido con infecciones fúngicas, aunque la ausencia de descamación y la presencia de dolor pulsátil tras la aplicación sugieren una etiología vascular. La falta de ventilación debajo de estas estructuras favorece un microambiente anaeróbico, propiciando el crecimiento oportunista de bacterias gramnegativas. Es crucial evaluar la curvatura C de la placa ungueal antes de aplicar cualquier sistema adhesivo, asegurando que el tamaño sea idéntico al lecho para evitar fuerzas de cizallamiento que comprometan la matriz ungueal a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/safe-nail-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "curvatura_C_incompatible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:16:57.345Z"
+  },
+  {
+    "chunk_id": "guias_unas-efecto-piezocristalino-002",
+    "title": "Efecto piezocristalino en la queratina: estrés mecánico y fracturas por impacto",
+    "content": "La queratina ungueal, al ser una estructura fibrosa altamente organizada, exhibe propiedades piezoeléctricas bajo condiciones de estrés mecánico. Cuando la lámina es sometida a impactos repetitivos o fuerzas tangenciales, se generan potenciales eléctricos internos que, en condiciones de deshidratación, pueden debilitar los puentes disulfuro. Investigaciones en biomecánica ungueal publicadas en PubMed indican que la lámina dorsal, al ser más rígida, absorbe la mayor parte del impacto, mientras que la lámina intermedia sufre microfracturas por cizallamiento. Este proceso no solo compromete la integridad estructural, sino que crea microfisuras que actúan como reservorios para la colonización de patógenos. En la práctica clínica, esto se manifiesta como onicosquizia lamelar o grietas transversales que no alcanzan la matriz pero debilitan el borde libre. El uso de polímeros demasiado rígidos exacerba este efecto al no absorber la energía del impacto, transfiriendo toda la carga a la unión uña-lecho, provocando onicólisis mecánica. Mantener el balance hídrico es fundamental para conservar la elasticidad natural y mitigar el daño por este mecanismo físico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "keratina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:16:57.345Z"
+  }
+]

@@ -1,0 +1,367 @@
+[
+  {
+    "chunk_id": "colorimetria-influencia-tiroidea-001",
+    "title": "Impacto de las disfunciones tiroideas en la absorción y fijación del tinte",
+    "content": "Las alteraciones en el eje hipotálamo-hipófisis-tiroides, específicamente el hipotiroidismo subclínico o diagnosticado, generan cambios significativos en la fisiología del folículo piloso. La reducción en la tasa de recambio celular y la alteración en la composición lipídica del sebo cutáneo, mediada por niveles bajos de hormonas tiroideas (T3/T4), afectan directamente la cutícula capilar. Clínicamente, esto se manifiesta como una fibra más seca, con tendencia a la fragilidad y una porosidad irregular. Durante el proceso de coloración, estas condiciones provocan una absorción desigual de los pigmentos oxidativos, resultando en un color no uniforme o con una degradación más rápida de los tonos fríos. Es imperativo que el profesional realice una anamnesis detallada sobre condiciones sistémicas, ya que la afinidad tintórea en pacientes con desequilibrios metabólicos difiere drásticamente de un cabello sano. Se recomienda realizar pruebas de porosidad previas y ajustar el tiempo de pose, considerando que la corteza puede mostrar una resistencia inusual o, por el contrario, una saturación acelerada por la falta de integridad en el complejo de membrana celular (CMC). La comunicación entre el profesional y el paciente sobre estos cambios metabólicos es clave para gestionar las expectativas de coloración y prevenir la insatisfacción post-servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/causes",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "hipotiroidismo_no_controlado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-nocebo-002",
+    "title": "El efecto nocebo y la percepción subjetiva del color post-aplicación",
+    "content": "El fenómeno nocebo en dermatología y servicios de estética capilar juega un papel crucial en la percepción del resultado final de una coloración. Cuando un paciente tiene una expectativa negativa o una ansiedad elevada respecto a la salud de su cabello, es más probable que reporte sensaciones de picor, ardor o insatisfacción cromática, incluso cuando la aplicación técnica del tinte ha sido ejecutada bajo los más estrictos estándares de seguridad. Estudios en psicodermatología sugieren que la percepción del color está mediada no solo por la longitud de onda de la luz reflejada, sino por el estado emocional del individuo al momento de la evaluación frente al espejo. En la práctica clínica, es vital diferenciar entre una reacción alérgica real (mediada por IgE o linfocitos T) y una respuesta psicosomática. La educación del paciente sobre el proceso químico y la validación de sus preocupaciones ayuda a mitigar este efecto. Un abordaje profesional incluye la documentación fotográfica objetiva (bajo luz controlada) antes y después del servicio, proporcionando una base empírica que contraste con la percepción subjetiva del paciente. Mantener un ambiente de calma durante la pose y el lavado es fundamental para reducir la reactividad del sistema nervioso autónomo sobre el cuero cabelludo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32154678/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_cliente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-interaccion-farmacos-003",
+    "title": "Interacción de fármacos sistémicos y la respuesta a tintes capilares",
+    "content": "El consumo de ciertos fármacos, incluidos los retinoides orales (como la isotretinoína), quimioterapéuticos o incluso terapias de reemplazo hormonal a largo plazo, puede alterar la composición estructural del cabello y su respuesta química a los tintes. Los retinoides, por ejemplo, reducen significativamente la producción de sebo y pueden inducir una fragilidad extrema en el tallo piloso, lo que altera la penetración del tinte. La literatura dermatológica advierte que el cabello de pacientes bajo estos tratamientos es más susceptible a la rotura por procesos químicos. Es fundamental realizar una historia clínica completa que incluya todos los medicamentos actuales antes de proceder con una coloración permanente. En casos de tratamientos con fármacos que inducen fotosensibilidad o xerosis extrema, se recomienda posponer servicios de coloración agresivos o optar por formulaciones semipermanentes libres de amoníaco y con agentes acondicionadores de alto peso molecular. La monitorización de la integridad de la cutícula durante el servicio es obligatoria; si se observa una reacción inusual, como un calentamiento excesivo de la fibra o una absorción irregular, el proceso debe detenerse inmediatamente. La seguridad del paciente prevalece sobre el resultado estético deseado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32456-7/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "quimioterapicos"
+      ],
+      "contraindications": [
+        "isotretinoina_reciente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-estabilidad-luz-004",
+    "title": "Degradación fotolítica del color y estabilidad cromática a largo plazo",
+    "content": "La estabilidad del color tras la aplicación no depende únicamente de la calidad del tinte, sino también de la fotodegradación de los pigmentos una vez depositados. La radiación ultravioleta (UV) induce la ruptura de los enlaces químicos en los colorantes oxidativos, un proceso conocido como fotólisis. Este fenómeno es particularmente acelerado en cabellos con una cutícula dañada o una porosidad elevada, donde la protección natural contra la luz es insuficiente. Los pigmentos de tonos fríos (cenizos, violetas) son intrínsecamente más inestables que los tonos cálidos debido a su peso molecular y estructura química, siendo los primeros en degradarse ante la exposición solar. La implementación de filtros UV capilares en la rutina post-coloración es una recomendación esencial para prolongar la vida útil del servicio. Además, la oxidación lipídica provocada por la luz solar puede generar radicales libres que atacan directamente los pigmentos recién aplicados. Educar al paciente sobre la importancia de usar protectores térmicos y solares específicos para el cabello, así como evitar la exposición prolongada sin protección tras una coloración reciente, es parte integral de la curaduría clínica. La durabilidad del color es, por tanto, una responsabilidad compartida entre la técnica del profesional y el mantenimiento preventivo por parte del cliente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4387693/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros_uv_capilares"
+      ],
+      "contraindications": [],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "cuidados_post_tinte"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-quelacion-metales-005",
+    "title": "El rol de los quelantes en la prevención de reacciones exotérmicas",
+    "content": "La presencia de metales de transición (cobre, hierro, manganeso) en la fibra capilar, provenientes del agua de lavado o de exposiciones ambientales, actúa como catalizador en la descomposición del peróxido de hidrógeno. Esta reacción catalítica no solo compromete la uniformidad del color, sino que puede generar una liberación de calor incontrolada (reacción exotérmica) durante la aplicación del tinte, causando daños estructurales severos en la queratina. El uso de agentes quelantes (como EDTA disódico o fitato de sodio) antes del servicio de coloración es un paso crítico y a menudo subestimado. Estos compuestos secuestran los iones metálicos, neutralizando su capacidad catalítica y permitiendo una oxidación controlada y predecible del tinte. En el contexto de Bogotá, donde la dureza del agua puede variar, la integración de un protocolo de quelación es una medida de seguridad estándar para prevenir la rotura del cabello y asegurar que el resultado cromático sea fiel a la carta de color. La práctica clínica demuestra que los cabellos tratados con quelantes muestran una mayor resistencia a la degradación oxidativa y una mejor retención del pigmento, lo que reduce la necesidad de procesos correctivos agresivos a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "fitato_de_sodio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_servicio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-ph-balance-006",
+    "title": "Equilibrio del pH: La clave para la longevidad del color y la salud cuticular",
+    "content": "El pH del cabello se sitúa naturalmente en un rango ligeramente ácido (4.5 a 5.5). Los tintes permanentes requieren un pH alcalino (generalmente entre 9 y 11) para hinchar la cutícula y permitir que las moléculas precursoras del tinte penetren en la corteza. Sin embargo, si el proceso de neutralización post-tinte no es efectivo, la alcalinidad residual puede persistir en la fibra, provocando una degradación continua de la queratina y una pérdida acelerada del color. El uso de champús y acondicionadores con pH ácido inmediatamente después de la coloración es esencial para 'cerrar' la cutícula y estabilizar el pigmento dentro de la estructura capilar. La falta de este paso crítico resulta en un cabello poroso, opaco y con un color que se desvanece tras apenas unos lavados. Clínicamente, el control del pH post-servicio también protege el manto ácido del cuero cabelludo, previniendo la irritación y la alteración de la microbiota cutánea. Los profesionales deben educar a sus clientes sobre el uso de productos de mantenimiento con pH balanceado, enfatizando que la salud del color es inseparable del mantenimiento del pH fisiológico de la fibra capilar, minimizando así el daño inducido por la química alcalina.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4158629/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes_acidificantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados_post_tinte"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbiota-cuero-007",
+    "title": "Impacto de los tintes en el microbioma del cuero cabelludo",
+    "content": "El cuero cabelludo alberga una compleja microbiota (bacterias como Staphylococcus epidermidis y hongos como Malassezia) que desempeña un papel fundamental en la barrera cutánea. La aplicación de tintes con pH alcalino y agentes oxidantes fuertes altera transitoriamente el pH del cuero cabelludo, lo que puede inducir un desequilibrio (disbiosis) en este ecosistema. Esta alteración puede manifestarse clínicamente como prurito, descamación inespecífica o, en casos más severos, exacerbación de condiciones preexistentes como la dermatitis seborreica. Aunque la piel posee mecanismos de resiliencia, el uso frecuente de coloraciones permanentes puede comprometer esta recuperación. Es recomendable evitar la exfoliación mecánica o química del cuero cabelludo inmediatamente antes de la coloración, ya que esto puede aumentar la permeabilidad de la barrera cutánea y facilitar la absorción sistémica de alérgenos como la PPD. La curaduría clínica sugiere el uso de protectores de barrera (ceras o aceites específicos) durante la aplicación del tinte para proteger la integridad de la piel y minimizar el impacto sobre la microbiota. El monitoreo de la salud del cuero cabelludo post-coloración es una práctica de excelencia que asegura la longevidad del folículo y la comodidad del paciente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/nrmicro.2017.157",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "protectores_de_barrera"
+      ],
+      "contraindications": [
+        "dermatitis_seborreica_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-higiene-quimica-008",
+    "title": "Protocolos de higiene química: Evitando la contaminación cruzada",
+    "content": "La contaminación cruzada entre diferentes tipos de tintes (por ejemplo, el uso de tintes metálicos seguido de colorantes oxidativos) representa uno de los riesgos más graves en la colorimetría capilar. Los tintes metálicos, a menudo presentes en productos de venta libre de baja calidad, dejan depósitos de sales de plomo o plata en la corteza. Cuando estos se exponen a agentes oxidantes (peróxido) o amoníaco, pueden producirse reacciones químicas violentas, incluyendo el sobrecalentamiento de la fibra, la emisión de vapores tóxicos y la desintegración total del cabello. Es obligatorio que el profesional realice una prueba de mecha en una zona poco visible, especialmente en casos de antecedentes de uso de tintes 'graduales' o productos no profesionales. La presencia de metales en la fibra puede detectarse mediante pruebas de reactividad química simples. Si se sospecha la presencia de metales, el servicio de coloración oxidativa debe ser rechazado o pospuesto hasta que la fibra haya sido tratada con agentes quelantes específicos y se confirme la estabilidad de la misma. La ética profesional exige informar al paciente sobre los peligros de los productos no regulados y la importancia de la transparencia en su historial capilar para garantizar la seguridad del procedimiento.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sales_de_plomo",
+        "sales_de_plata"
+      ],
+      "contraindications": [
+        "historial_de_tintes_metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  },
+  {
+    "chunk_id": "colorimetria-psicodermatologia-009",
+    "title": "El papel de la consulta inicial en la gestión de expectativas cromáticas",
+    "content": "La consulta inicial no es solo un trámite administrativo, sino una herramienta de psicodermatología clave para la satisfacción del paciente. Muchos conflictos en la colorimetría capilar surgen de una discrepancia entre la realidad biológica del cabello (tono base, niveles de melanina, porosidad) y la expectativa visual basada en imágenes editadas o filtros digitales. El profesional debe realizar una evaluación objetiva utilizando escalas de altura de tono y análisis de subtonos de piel (cálidos, fríos, neutros) para guiar al paciente hacia resultados viables y saludables. Es fundamental educar al cliente sobre la 'ley del color' y cómo el punto de partida limita las posibilidades de aclaración sin comprometer la integridad estructural. Un enfoque clínico incluye explicar los riesgos de intentar cambios drásticos (por ejemplo, pasar de un negro profundo a un rubio platino) en una sola sesión, priorizando la salud del complejo de membrana celular sobre la inmediatez del resultado. Establecer un plan a largo plazo para alcanzar el objetivo cromático deseado genera confianza y reduce la ansiedad del paciente, convirtiendo el servicio de coloración en un proceso seguro, planificado y profesional que respeta la fisiología individual de cada cabellera.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_cliente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T04:52:45.751Z"
+  }
+]

@@ -1,0 +1,179 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microbioma-quorumsensing-001",
+    "title": "Maquillaje en eventos de larga duración: Interrupción del Quorum Sensing bacteriano",
+    "content": "En eventos de alta concurrencia, la acumulación de maquillaje sobre la piel no solo genera una barrera física, sino que puede alterar el ecosistema microbiano cutáneo. Investigaciones en PubMed sugieren que la oclusión prolongada favorece la formación de biopelículas bacterianas que utilizan mecanismos de 'quorum sensing' para coordinar su virulencia. El uso de productos con alta carga de polímeros filmógenos puede crear microambientes anaeróbicos que favorecen la proliferación de Cutibacterium acnes. Para mitigar este riesgo, es fundamental seleccionar bases con tecnologías de transpirabilidad selectiva que no interrumpan el intercambio gaseoso basal. La curaduría clínica sugiere priorizar formulaciones enriquecidas con prebióticos como el alfa-glucano oligosacárido para mantener la homeostasia del microbioma. La aplicación de fijadores que no alteren el pH cutáneo es vital, ya que un pH elevado facilita la colonización por patógenos oportunistas. La higiene post-evento debe ser exhaustiva, utilizando limpiadores con surfactantes suaves que eliminen los residuos lipofílicos sin barrer la microbiota residente, previniendo así posibles brotes inflamatorios reactivos inducidos por la disrupción de la barrera cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34208579/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica",
+        "mixta"
+      ],
+      "age_ranges": [
+        "18-35",
+        "35-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alfa-glucano oligosacárido",
+        "polímeros transpirables"
+      ],
+      "contraindications": [
+        "productos altamente oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:27:30.777Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-fotopolimerizacion-002",
+    "title": "Maquillaje en entornos con exposición a luz visible de alta energía (HEV) y fotosensibilización",
+    "content": "La exposición a la luz visible de alta energía (HEV), común en eventos con iluminación LED de alta intensidad, puede inducir estrés oxidativo y pigmentación post-inflamatoria. A diferencia de la radiación UV, la luz HEV penetra más profundamente en la dermis, afectando a los melanocitos. El maquillaje tradicional a menudo carece de protección contra este espectro. Es imperativo integrar óxidos de hierro en las formulaciones, los cuales, según la Academia Americana de Dermatología (AAD), actúan como filtros físicos efectivos contra la luz visible. Además, la combinación de antioxidantes tópicos (vitamina C, niacinamida) bajo el maquillaje mejora la neutralización de especies reactivas de oxígeno (ERO) generadas por la exposición prolongada. La técnica de 'layering' debe considerar la estabilidad fotoquímica de los pigmentos; algunos pigmentos orgánicos pueden degradarse bajo iluminación continua, alterando el tono original. Se recomienda el uso de primers con propiedades reflectantes que dispersen la luz HEV antes de llegar a la barrera cutánea, minimizando la activación de las vías de señalización que conducen a la hiperpigmentación en fototipos altos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection/sunscreen/understand-sun-screens",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "todas"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV-VI"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "niacinamida",
+        "vitamina C"
+      ],
+      "contraindications": [
+        "pigmentos sintéticos inestables"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:27:30.777Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-oxidativo-003",
+    "title": "Maquillaje en eventos de alto estrés: Dinámica del cortisol y peroxidación lipídica",
+    "content": "El estrés emocional durante eventos sociales eleva los niveles séricos de cortisol, lo cual altera la barrera lipídica y aumenta la susceptibilidad de la piel a la peroxidación lipídica. En este estado, la piel produce un sebo con un perfil oxidado (ricos en escualeno peroxidado) que compromete la adherencia del maquillaje y promueve la inflamación folicular. Según estudios en la revista Journal of Investigative Dermatology, el cortisol induce una reducción en la síntesis de ceramidas, debilitando la función de barrera. Para eventos de alto estrés, se recomienda utilizar imprimantes (primers) con propiedades sellantes que contengan escualano vegetal y ceramidas, los cuales compensan la pérdida de lípidos cutáneos. Es crucial evitar el uso de cosméticos con fragancias sintéticas o alcoholes volátiles que, bajo el efecto del cortisol, pueden exacerbar la reactividad neurogénica de la piel. La aplicación debe ser minimalista, permitiendo que la piel realice sus funciones de termorregulación sin obstrucciones. El sellado debe realizarse con polvos minerales micronizados que absorban el exceso de sebo sin alterar el pH fisiológico, manteniendo la estabilidad del maquillaje a pesar de la respuesta fisiológica al estrés.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "escualano vegetal"
+      ],
+      "contraindications": [
+        "fragancias",
+        "alcohol desnaturalizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "neurocosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:27:30.777Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-polucion-004",
+    "title": "Maquillaje como escudo ante la penetración de metales pesados en entornos urbanos",
+    "content": "La polución atmosférica en ciudades como Bogotá presenta una alta concentración de material particulado (PM2.5) y metales pesados (cadmio, plomo) que pueden penetrar en la epidermis dañada. El maquillaje, si no es formulado correctamente, puede actuar como un imán para estas partículas. La estrategia clínica consiste en el uso de 'escudos' cosméticos basados en polímeros de red abierta (mesh polymers) que crean una película física sin obstruir el folículo pilosebáceo. Investigaciones de la Organización Mundial de la Salud (OMS) sobre la calidad del aire destacan que la exposición a estas partículas induce daño celular y acelera el envejecimiento cutáneo mediante la activación de receptores de hidrocarburos aromáticos (AhR). Los productos de maquillaje diseñados para protección urbana deben incluir agentes quelantes suaves o antioxidantes específicos que neutralicen la actividad de los metales pesados depositados sobre la superficie. Es vital que el desmaquillado sea realizado mediante doble limpieza (aceite limpiador seguido de gel base agua) para asegurar la eliminación total de las partículas adheridas a los polímeros del maquillaje, evitando que estas se acumulen en los poros durante la noche y generen fenómenos de sensibilidad cutánea acumulativa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de red abierta",
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "productos sin base filmógena"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:27:30.777Z"
+  }
+]

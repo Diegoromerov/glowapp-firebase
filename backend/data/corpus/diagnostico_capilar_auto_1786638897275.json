@@ -1,0 +1,124 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-mitocondrial-001",
+    "title": "Dinámica de la Mitofagia y Homeostasis Energética en la Papila Dérmica",
+    "content": "La mitofagia, un proceso selectivo de autofagia que degrada mitocondrias disfuncionales, emerge como un regulador crítico en la viabilidad de la papila dérmica. En condiciones de estrés oxidativo crónico, el acúmulo de mitocondrias dañadas compromete la producción de ATP necesaria para la fase anágena. Investigaciones recientes indican que la señalización de PINK1/Parkin es fundamental para mantener el pool de células madre foliculares. Cuando este mecanismo falla, el folículo entra en un estado de senescencia metabólica precoz. La evaluación tricoscópica de la miniaturización debe considerar no solo la influencia androgénica, sino también la eficiencia energética del nicho. La restauración de la integridad mitocondrial mediante moduladores metabólicos representa una frontera terapéutica prometedora en alopecias no cicatriciales. El monitoreo de la tasa de renovación mitocondrial mediante espectroscopía permite identificar folículos con potencial de recuperación antes de que la atrofia sea irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214300/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima-q10",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-metabolico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:34:39.807Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-metaboloma-002",
+    "title": "El Metaboloma del Microbioma Scalp como Predictor de Inflamación",
+    "content": "El análisis del microbioma del cuero cabelludo ha trascendido la identificación taxonómica, enfocándose ahora en el metaboloma funcional. La producción de ácidos grasos de cadena corta (AGCC) y metabolitos derivados de la degradación del sebo por Malassezia spp. modula directamente la respuesta inmunitaria del ostium folicular. Un perfil metabólico alterado, caracterizado por una disminución de metabolitos antiinflamatorios, se correlaciona con la progresión de la dermatitis seborreica y la inflamación perifolicular subclínica. El diagnóstico moderno debe integrar la metabolómica para evaluar la resiliencia del ecosistema scalp. La presencia de metabolitos de estrés microbiano puede preceder a los cambios clínicos visibles en la tricoscopia, permitiendo intervenciones preventivas. El uso de técnicas de espectrometría de masas para analizar muestras de sebo proporciona una ventana diagnóstica hacia la homeostasis folicular, permitiendo diferenciar entre disbiosis transitoria y patología crónica persistente que requiere abordaje médico especializado.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos-topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma-scalp"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:34:39.807Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-fibra-003",
+    "title": "Histéresis Elástica: Un Biomarcador de Salud de la Cutícula",
+    "content": "La histéresis elástica en la fibra capilar, definida como la energía disipada durante los ciclos de carga y descarga mecánica, es un indicador sensible del daño estructural de la cutícula y la corteza. A diferencia de las pruebas de tracción estáticas, el análisis de histéresis permite evaluar la capacidad de recuperación viscoelástica del tallo tras agresiones ambientales (exposoma urbano, radiación UV). Un aumento en el coeficiente de histéresis indica una degradación de las proteínas estructurales y una pérdida de la integridad de los puentes disulfuro, lo que predispone al quiebre. En dermatología cosmética, la cuantificación de este parámetro mediante microscopía de fuerza atómica o pruebas dinámico-mecánicas permite diagnosticar la fragilidad capilar antes de la rotura macroscópica. Este enfoque biomecánico es esencial para personalizar los tratamientos de reparación estructural, diferenciando entre daño superficial de cutícula y debilidad intrínseca del complejo membrana celular (CMC).",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Society for Dermatologic Surgery",
+        "url": "https://www.isdsonline.org/journal",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteinas-hidrolizadas",
+        "lipidos-cuticulares"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:34:39.807Z"
+  }
+]

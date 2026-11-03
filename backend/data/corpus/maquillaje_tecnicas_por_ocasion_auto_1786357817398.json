@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-radioactivos-001",
+    "title": "Maquillaje en entornos de exposición a radiación ionizante de baja dosis",
+    "content": "La exposición a radiación ionizante de baja dosis, presente en ciertos entornos industriales o diagnósticos clínicos, puede inducir estrés oxidativo en los queratinocitos. En el contexto de GlowApp, es crucial considerar que ciertos pigmentos inorgánicos, como el dióxido de titanio o el óxido de hierro, pueden actuar como sitios de nucleación para radicales libres bajo irradiación. La recomendación clínica es optar por formulaciones ricas en antioxidantes tópicos de alto peso molecular, como la vitamina C estabilizada o el ácido ferúlico, que actúan como secuestradores de electrones. Además, se debe evitar el uso de cosméticos que contengan nanopartículas metálicas no encapsuladas, ya que pueden alterar la deposición de energía en la superficie cutánea. La barrera física proporcionada por el maquillaje debe ser oclusiva pero no comedogénica, permitiendo que la piel mantenga su capacidad de reparación celular tras la exposición. Es vital limpiar el rostro inmediatamente después de abandonar el entorno para eliminar partículas depositadas que podrían prolongar la exposición cutánea a la radiación secundaria.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_c",
+        "acido_ferulico"
+      ],
+      "contraindications": [
+        "nanoparticulas_metalicas_libres"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:29:58.541Z"
+  }
+]

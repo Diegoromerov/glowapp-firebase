@@ -1,0 +1,217 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-inteligencia-artificial-biometria",
+    "title": "Maquillaje en entornos de escaneo biométrico: Evitando la interferencia de pigmentos",
+    "content": "El uso de sistemas de reconocimiento facial y escaneo biométrico en eventos corporativos y de seguridad presenta desafíos únicos para el maquillaje. Los pigmentos que contienen óxidos metálicos de alta reflectancia o partículas nacaradas pueden interferir con la captura de puntos nodales infrarrojos utilizados por los sensores de profundidad. Según estudios publicados en IEEE Xplore sobre visión artificial, el uso excesivo de iluminadores con mica o pigmentos interferenciales puede generar 'ruido' en la lectura de relieve facial, provocando fallos en la autenticación. Es crucial optar por fórmulas mate con baja reflectancia en zonas clave como el puente nasal y la frente. La recomendación clínica es evitar polvos con alta carga de dióxido de titanio en partículas grandes, prefiriendo formulaciones de sílice tratada que ofrecen un acabado natural sin alterar la respuesta espectral de la piel ante dispositivos de escaneo 3D.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IEEE Xplore Digital Library",
+        "url": "https://ieeexplore.ieee.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "dióxido de titanio micronizado"
+      ],
+      "contraindications": [
+        "pigmentos nacarados de alta reflectancia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_eventos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:50:33.391Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-oxigenacion-cabinas-presurizadas",
+    "title": "Maquillaje en ambientes de baja oxigenación: Gestión del edema facial",
+    "content": "La exposición prolongada a entornos de baja oxigenación, como cabinas presurizadas de alta duración o salas con sistemas de ventilación deficientes, induce una respuesta de vasodilatación compensatoria y edema facial leve. Esta condición altera la adherencia de las películas cosméticas debido a la mayor tasa de sudoración insensible. Datos de la American Academy of Dermatology sugieren que, ante una hipoxia leve, la barrera cutánea disminuye su capacidad de retención de agua, lo que favorece la migración de pigmentos hacia los surcos nasogenianos. Para mitigar esto, es vital aplicar una base con polímeros formadores de película de alta flexibilidad que se adapten a la micro-distensión cutánea. El uso de productos con ácido hialurónico de bajo peso molecular ayuda a mantener la turgencia, evitando que el maquillaje se agriete por la deshidratación rápida que ocurre en condiciones de baja presión parcial de oxígeno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "polímeros formadores de película"
+      ],
+      "contraindications": [
+        "bases densas de larga duración sin flexibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "viajes_largos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:50:33.391Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-iluminacion-bioluminiscente",
+    "title": "Desafíos cromáticos en eventos con iluminación bioluminiscente",
+    "content": "La iluminación bioluminiscente o basada en espectros de excitación de alta intensidad (como en eventos artísticos nocturnos) altera drásticamente la percepción del color del maquillaje. A diferencia de la luz blanca estándar, estos espectros pueden causar fluorescencia en ciertos ingredientes cosméticos, especialmente en productos que contienen blanqueadores ópticos o ciertos pigmentos orgánicos. De acuerdo con estudios sobre colorimetría y dermatología estética, el metamerismo se vuelve crítico: un tono de base que parece perfecto bajo luz natural puede adquirir matices verdosos o rosados bajo luces de espectro estrecho. Para eventos de esta naturaleza, se recomienda realizar pruebas de reflectancia espectral. Es aconsejable evitar pigmentos minerales con alto contenido de óxidos de hierro en favor de pigmentos sintéticos tratados, que poseen una curva de absorción más estable. El control de la saturación es vital para evitar el efecto de 'máscara' bajo luces de excitación intensa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos sintéticos tratados"
+      ],
+      "contraindications": [
+        "blanqueadores ópticos",
+        "pigmentos orgánicos fluorescentes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "eventos_nocturnos"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:50:33.391Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-alta-ionizacion-negativa",
+    "title": "Estabilidad de emulsiones en ambientes de alta ionización ambiental",
+    "content": "Los ambientes con alta ionización negativa (como cerca de fuentes de agua en movimiento o sistemas de purificación de aire industrial) pueden alterar la carga electrostática de las partículas de maquillaje. Esta variación en la carga puede provocar una atracción no deseada de partículas atmosféricas hacia el rostro, aumentando el riesgo de oclusión folicular. Según investigaciones en física de superficies aplicadas a la cosmética, las emulsiones con tensioactivos no iónicos son significativamente más estables en estos entornos que aquellas basadas en tensioactivos catiónicos. Es recomendable utilizar fijadores con polímeros dieléctricos que neutralicen la carga superficial de la piel. Al minimizar la diferencia de potencial entre la superficie cutánea y el aire ambiente, se reduce drásticamente la adherencia de contaminantes PM2.5, preservando el acabado del maquillaje y protegiendo al mismo tiempo la integridad de la barrera cutánea frente a la deposición de micropartículas cargadas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos no iónicos",
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "tensioactivos catiónicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "entornos_industriales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:50:33.391Z"
+  },
+  {
+    "chunk_id": "maquillaje-exposicion-campos-electricos-alto-voltaje",
+    "title": "Maquillaje ante exposición a campos eléctricos de alto voltaje",
+    "content": "La exposición a campos eléctricos de alto voltaje (cercanía a transformadores o equipos de alta potencia) puede generar una carga electrostática en la piel que atrae partículas ambientales cargadas. Este fenómeno, conocido como efecto corona a nivel microscópico, puede causar que el maquillaje actúe como un imán para polvos metálicos y contaminantes. Clínicamente, esto aumenta el riesgo de dermatitis por contacto irritativa. La recomendación es aplicar productos que contengan agentes antiestáticos y polímeros dieléctricos que disipen la carga. Las bases con alta concentración de pigmentos recubiertos (como el sílice recubierto de aminoácidos) son preferibles, ya que proporcionan una barrera de baja conductividad. Es crucial evitar el uso de accesorios metálicos que puedan concentrar el campo eléctrico cerca del rostro, exacerbando la adherencia de partículas y el riesgo de micro-descargas que pueden irritar la epidermis sensible, alterando la homeostasis cutánea y la durabilidad del maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "WHO - International EMF Project",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antiestáticos",
+        "sílice recubierta"
+      ],
+      "contraindications": [
+        "accesorios metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "entornos_industriales"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:50:33.391Z"
+  }
+]

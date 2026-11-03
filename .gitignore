@@ -16,3 +16,9 @@ apps/glow_provider/build/
 key.properties
 *.jks
 *.p12
+
+# Backend (monorepo desde 2026-11-02)
+backend/node_modules/
+backend/.env
+backend/*.log
+backend/coverage/

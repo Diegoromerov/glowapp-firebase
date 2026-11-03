@@ -1,0 +1,54 @@
+{
+  "cycle": "17",
+  "experiment": "R5-C5",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "second_model_tested": false,
+  "second_model_note": "NO se encontró un segundo modelo de embedding disponible de forma segura/gratuita/local en el entorno. El experimento se ejecutó exclusivamente con el modelo actual, comparando query original vs reformulada. Experimento de cambio de modelo: PENDIENTE.",
+  "runs": {
+    "A": "r5c5_embedding_discrimination_a.json",
+    "B": "r5c5_embedding_discrimination_b.json",
+    "reproducibility": "A ≡ B — 18/18 queries con métricas idénticas (determinista, sin LLM)"
+  },
+  "metrics": {
+    "original": {
+      "global": { "p1": 0.1111, "p3": 0.2037, "p5": 0.1222, "r5": 0.1667, "mrr": 0.2222 },
+      "gap_discrimination": {
+        "relevant_mean": 0.5054, "relevant_median": 0.5299, "relevant_std": 0.0820,
+        "non_relevant_mean": 0.5169, "non_relevant_median": 0.5238, "non_relevant_std": 0.0551,
+        "gap": -0.0116
+      }
+    },
+    "reformulated": {
+      "global": { "p1": 0.1667, "p3": 0.0926, "p5": 0.0667, "r5": 0.1139, "mrr": 0.1991 },
+      "gap_discrimination": {
+        "relevant_mean": 0.4734, "non_relevant_mean": 0.5020,
+        "gap": -0.0286
+      }
+    },
+    "delta_reformulation": { "mrr": -0.0231, "r5": -0.0528, "p5": -0.0555, "improved_queries": 3, "worsened_queries": 5, "neutral_queries": 10 }
+  },
+  "per_domain_original": {
+    "skincare": { "n": 7, "mrr": 0.3095, "r5": 0.1714, "p5": 0.1714, "gap": 0.0084 },
+    "cabello": { "n": 4, "mrr": 0.25, "r5": 0.1, "p5": 0.1, "gap": -0.0537 },
+    "cejas": { "n": 7, "mrr": 0.119, "r5": 0.2, "p5": 0.0857, "gap": -0.0079 }
+  },
+  "corpus_gap_queries_analysis": {
+    "cabello_004": { "orig_exp_sim": 0.3114, "ref_exp_sim": 0.302, "orig_mrr": 0, "ref_mrr": 0, "verdict": "CORPUS NO CONTIENE EVIDENCIA — ni original ni reformulada recuperan. UNSUPPORTED candidate." },
+    "cejas_002": { "orig_exp_sim": 0.544, "ref_exp_sim": 0.5483, "orig_mrr": 0, "ref_mrr": 0.25, "verdict": "REFORMULACIÓN AYUDA PARCIALMENTE (0→0.25 MRR) — el corpus tiene evidencia cercana pero mal formulada" },
+    "cejas_003": { "orig_exp_sim": 0.3984, "ref_exp_sim": 0.3639, "orig_mrr": 0, "ref_mrr": 0, "verdict": "CORPUS SIN EVIDENCIA DE VISAJISMO POR FORMA DE CARA — UNSUPPORTED candidate" },
+    "cejas_004": { "orig_exp_sim": 0.5194, "ref_exp_sim": 0.5446, "orig_mrr": 0, "ref_mrr": 1.0, "verdict": "REFORMULACIÓN RESUELVE (0→1.0 MRR) — 'corregir cejas asimétricas' alinea con 'adaptación del diseño en ptosis'" },
+    "cejas_008": { "orig_exp_sim": 0.5404, "ref_exp_sim": 0.4877, "orig_mrr": 0, "ref_mrr": 0, "verdict": "CORPUS SIN EVIDENCIA DE REMOCIÓN — UNSUPPORTED candidate" }
+  },
+  "hypotheses": {
+    "H1_embedding_discrimination": "CONTRIBUYE — gap relevante/no-relevante NEGATIVO (-0.0116 original): los no-relevantes del top-10 puntúan en promedio MÁS ALTO que los relevantes. La banda está comprimida (0.31-0.64). PERO: parte del gap negativo es artefacto del benchmark desalineado (R5-C2 demostró expected subóptimos), no pureza del embedding.",
+    "H2_query_formulation": "DESCARTADA como causa dominante — la reformulación controlada EMPEORA globalmente (MRR 0.2222→0.1991, R@5 0.1667→0.1139, gap -0.0116→-0.0286). Solo 3/18 queries mejoran, 5 empeoran. NO es que las queries estén mal formuladas de forma sistemática.",
+    "H3_corpus": "CONFIRMADA PARCIALMENTE — 5 queries corpus-gap: 3 (cabello_004, cejas_003, cejas_008) no tienen evidencia recuperable ni reformuladas (UNSUPPORTED candidates); 2 (cejas_002, cejas_004) sí tienen evidencia recuperable con mejor formulación."
+  },
+  "causal_classification": "CAUSA MIXTA — C (corpus) contribuye para 3/18 queries sin evidencia; E/F (ranking/discriminación) contribuye con gap negativo; D (benchmark) sigue dominante de ciclos anteriores; H2 (query formulation) DESCARTADA como solución global aunque 2 queries corpus-gap se resuelven con reformulación.",
+  "verdict": "CAUSA MIXTA",
+  "quality_gates": "TODAS las configuraciones FAIL — ninguna supera P@5≥0.70, R@5≥0.60, MRR≥0.65"
+}

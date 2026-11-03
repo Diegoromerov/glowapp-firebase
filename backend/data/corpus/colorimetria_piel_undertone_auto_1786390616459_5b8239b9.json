@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390616457-1-eb02bbe5-cinetica-de-la-glicacion-no-enzimatica-en-la-matriz-extracel",
+    "title": "Cinética de la glicación no enzimática en la matriz extracelular y su impacto en la cromaticidad",
+    "content": "La glicación no enzimática, mediada por la reacción de Maillard, altera la estructura de las fibras de colágeno y elastina, generando productos finales de glicación avanzada (AGEs) con propiedades fluorescentes intrínsecas. Estos compuestos absorben luz en el espectro azul y emiten en el amarillo-verdoso, lo que provoca un viraje cromático hacia tonos cetrinos o amarillentos, independientemente de la melanina. A nivel de diagnóstico, este fenómeno complica la identificación del subtono, ya que la fluorescencia de los AGEs se superpone a la reflectancia basal de la dermis. La acumulación de estos productos en la dermis papilar altera la dispersión de luz, creando una percepción de opacidad que suele confundirse con un subtono cálido o neutro-oliva. Es fundamental que los algoritmos de RAG consideren la densidad de AGEs como una variable de corrección espectral, especialmente en pacientes con perfiles metabólicos de alta ingesta glucémica, donde la cromaticidad cutánea se ve alterada por la degradación proteica estructural más que por la pigmentación superficial.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "inhibidores de glicación"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:36:56.457Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786390616457-2-a0b9419c-dinamica-de-la-dispersion-de-mie-y-la-arquitectura-de-los-me",
+    "title": "Dinámica de la dispersión de Mie y la arquitectura de los melanosomas en pieles fototipo IV-VI",
+    "content": "En pieles con alta concentración de melanina, la dispersión de Mie se convierte en el factor dominante de la reflectancia cutánea. A diferencia de la dispersión de Rayleigh, que afecta a longitudes de onda cortas, la dispersión de Mie es altamente dependiente del tamaño y la distribución espacial de los melanosomas en el estrato basal. Cuando los melanosomas están agrupados en complejos de membrana (típicos de fototipos oscuros), la luz sufre múltiples eventos de dispersión que suavizan el espectro de reflectancia, dificultando la lectura del subtono subyacente. Este fenómeno explica por qué las pieles oscuras pueden presentar una cromaticidad aparentemente neutra a pesar de tener una carga de hemoglobina significativa. La modelización de la dispersión de Mie permite aislar la señal del subtono de la interferencia causada por la arquitectura melanosómica. La precisión en la colorimetría facial requiere, por tanto, un ajuste algorítmico que compense la dispersión hacia adelante inducida por la melanina, permitiendo visualizar los matices fríos o cálidos ocultos bajo la densidad pigmentaria.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38472910/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:36:56.457Z"
+  }
+]

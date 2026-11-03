@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-magneticos-001",
+    "title": "Maquillaje ante exposición a campos magnéticos estáticos (MRI) y resonancias",
+    "content": "La exposición a entornos de resonancia magnética (MRI) presenta desafíos únicos para el maquillaje cosmético debido a la presencia de pigmentos con base metálica, como los óxidos de hierro, titanio o micas recubiertas. En entornos de campo magnético estático intenso, estos pigmentos pueden experimentar fuerzas de tracción o, más críticamente, causar artefactos de imagen o calentamiento por inducción. La literatura médica, incluyendo reportes en el Journal of Magnetic Resonance Imaging, sugiere que ciertos cosméticos de alta pigmentación pueden contener trazas de metales ferromagnéticos que interfieren con la homogeneidad del campo. Para usuarios que asisten a eventos o entornos de trabajo con exposición a equipos de alta potencia, es imperativo optar por fórmulas 'metal-free' o minerales purificados. La recomendación clínica es evitar polvos con alta carga de partículas metálicas brillantes (glitters metálicos) antes de entrar a zonas de alta intensidad magnética para prevenir riesgos de dermatitis por contacto inducida por calentamiento local o irritación mecánica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Magnetic Resonance Imaging",
+        "url": "https://onlinelibrary.wiley.com/journal/15222586",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "mica"
+      ],
+      "contraindications": [
+        "maquillaje metálico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:01:23.222Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-002",
+    "title": "Maquillaje en entornos de baja gravedad: Dinámica de fluidos cosméticos",
+    "content": "La aplicación de maquillaje en entornos de microgravedad o baja gravedad, como en vuelos parabólicos o futuras estancias prolongadas en estaciones espaciales, altera fundamentalmente la dinámica de fluidos de las emulsiones cosméticas. La ausencia de sedimentación gravitacional provoca que las partículas en suspensión dentro de una base líquida se comporten de manera distinta, afectando la estabilidad de la emulsión y su capacidad de adherencia. Según estudios sobre higiene y cuidado personal en la ISS (International Space Station) publicados por la NASA, la gestión de partículas volátiles es crítica para prevenir la inhalación de pigmentos y la contaminación de los sistemas de filtración de aire. Las técnicas de maquillaje deben priorizar texturas cremosas o sólidas (stick) que minimicen la dispersión de partículas finas. Además, la deshidratación cutánea acelerada en estos ambientes requiere que el maquillaje posea una alta capacidad de oclusión controlada para mantener la homeostasis de la barrera epicutánea bajo condiciones de baja humedad relativa y recirculación de aire cerrada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectantes",
+        "ceras"
+      ],
+      "contraindications": [
+        "polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biotecnología_cutánea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:01:23.222Z"
+  }
+]

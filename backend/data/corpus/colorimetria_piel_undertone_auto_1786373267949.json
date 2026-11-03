@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id": "colorimetria-indice-reproduccion-cromatica-004",
+    "title": "El impacto del índice de reproducción cromática (IRC) en el diagnóstico",
+    "content": "El Índice de Reproducción Cromática (IRC o CRI por sus siglas en inglés) es la medida de la capacidad de una fuente de luz para revelar los colores de los objetos de forma natural. En el contexto de la colorimetría clínica en dermatología, un IRC bajo (común en luces LED de baja calidad o fluorescentes de oficina) puede ocultar sutiles gradaciones de subtono, especialmente en el espectro entre el oliva y el neutro. Para el diagnóstico de subtono en GlowApp, se recomienda una iluminación con un IRC superior a 95. Si la fuente de luz tiene un IRC deficiente, el espectro de reflectancia de la piel se ve distorsionado, lo que puede llevar a una lectura errónea donde un subtono cálido se percibe como neutro debido a la falta de emisión en ciertas longitudes de onda. Este problema es crítico en el punto de venta y en espejos de maquillaje domésticos, donde la distorsión cromática es la causa principal de la insatisfacción con el tono de base elegido, provocando el efecto 'máscara' o 'oxidación' percibida.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Commission on Illumination",
+        "url": "https://cie.co.at/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_colorimetrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:47:30.435Z"
+  }
+]

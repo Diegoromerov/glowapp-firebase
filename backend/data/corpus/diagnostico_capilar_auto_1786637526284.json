@@ -1,0 +1,198 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-osteopontina-001",
+    "title": "La Osteopontina como Biomarcador de Fibrosis en Alopecias Cicatriciales",
+    "content": "La osteopontina (OPN) es una glicoproteína multifuncional que desempeña un papel crítico en la remodelación de la matriz extracelular y la respuesta inflamatoria. En el contexto de las alopecias cicatriciales, como el liquen plano pilar o la alopecia frontal fibrosante, la expresión elevada de OPN en la dermis perifolicular se ha identificado como un mediador clave de la fibrosis progresiva. A diferencia de otros marcadores inflamatorios, la OPN facilita la transición de fibroblastos a miofibroblastos, acelerando el cierre del nicho de células madre del bulge. La detección temprana mediante técnicas de inmunohistoquímica en biopsias de cuero cabelludo permite distinguir entre una fase inflamatoria reversible y una fase fibrótica irreversible. La evidencia actual sugiere que la modulación de las vías de señalización de la OPN podría frenar la atrofia folicular permanente. El diagnóstico clínico debe integrar este biomarcador para estratificar pacientes con alto riesgo de pérdida definitiva del folículo, superando las limitaciones de la tricoscopia convencional que solo detecta cambios estructurales tardíos. Estudios en PubMed indican que niveles séricos y tisulares de OPN se correlacionan con la severidad del infiltrado linfocitario, convirtiéndola en un objetivo diagnóstico prometedor para la medicina de precisión en dermatología capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-biopsia-digital"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:11:47.251Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-002",
+    "title": "Evaluación de la Senescencia del Nicho de Células Madre (SASP)",
+    "content": "El Fenotipo Secretor Asociado a la Senescencia (SASP) representa un cambio profundo en el secretoma de las células madre del folículo piloso, contribuyendo al agotamiento del ciclo capilar. A medida que las células entran en senescencia, comienzan a secretar citoquinas proinflamatorias, quimiocinas y proteasas que alteran la arquitectura del nicho de las células madre en el 'bulge'. Clínicamente, esto se manifiesta como una disminución en la capacidad regenerativa del folículo tras el efluvio o el daño mecánico. La evaluación diagnóstica moderna debe considerar la carga de células senescentes mediante la detección de p16INK4a y p21, marcadores clásicos de detención del ciclo celular. La acumulación de estas células en el cuero cabelludo no solo detiene el crecimiento del pelo, sino que promueve una inflamación crónica 'estéril' que perpetúa la miniaturización. La comprensión de este proceso permite al clínico diferenciar entre una alopecia androgenética mediada por andrógenos y una alopecia por agotamiento celular senescente. La intervención terapéutica dirigida a eliminar células senescentes (senolíticos) es una línea de investigación activa en dermatología avanzada, buscando restaurar el equilibrio homeostático del folículo mediante la modulación de las vías de supervivencia celular en el microambiente del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00215-6",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto",
+        "senil"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomarcadores-envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:11:47.251Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-vibraciones-003",
+    "title": "Nanovibraciones Mecánicas y Diferenciación Folicular",
+    "content": "El folículo piloso es un órgano mecanosensible. Recientes investigaciones han demostrado que las nanovibraciones mecánicas presentes en la matriz extracelular influyen directamente en la diferenciación de las células madre foliculares hacia linajes específicos de queratinocitos. Este fenómeno, conocido como mecanotransducción, ocurre a través de los canales iónicos sensibles a la fuerza en la membrana celular, como los canales Piezo1. En condiciones de alopecia, la rigidez del cuero cabelludo (fibrosis perifolicular) altera estas señales mecánicas, enviando al folículo una señal de 'detención' que inhibe el inicio de la fase anágena. El diagnóstico capilar avanzado debe integrar la evaluación de la viscoelasticidad del cuero cabelludo, utilizando herramientas de elastografía por ondas de corte para mapear zonas de alta rigidez que comprometen la salud folicular. Al restaurar la compliancia tisular, es posible modular la respuesta de mecanotransducción, favoreciendo un entorno propicio para el crecimiento. Este enfoque biomecánico proporciona una nueva perspectiva clínica, permitiendo tratar la alopecia no solo con fármacos, sino con intervenciones que devuelven la elasticidad necesaria al microambiente del bulbo piloso, evitando el estancamiento del ciclo y mejorando la calidad del tallo producido.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications (Dermatology Research)",
+        "url": "https://www.nature.com/articles/s41467-024-45678-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:11:47.251Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-peroxidacion-004",
+    "title": "Peroxidación Lipídica y su Rol en la Inflamación del Ostium",
+    "content": "La peroxidación lipídica en la superficie del cuero cabelludo es un marcador clave de estrés oxidativo que precede a la inflamación clínica observable. El sebo, compuesto principalmente por triglicéridos, ácidos grasos libres, escualeno y ceras, es susceptible a la oxidación por factores ambientales como la radiación UV y los contaminantes atmosféricos (PM2.5). Los productos de esta oxidación, como los peróxidos de escualeno, son potentes agentes proinflamatorios que dañan la barrera cutánea del ostium folicular. Este proceso no solo obstruye el canal, sino que altera la microbiota local, favoreciendo el crecimiento descontrolado de especies de Malassezia y otros patógenos oportunistas. La evaluación del índice de peroxidación lipídica en el sebo mediante espectroscopía de fluorescencia ofrece una herramienta diagnóstica temprana para prevenir la dermatitis seborreica y la inflamación perifolicular asociada a las alopecias. El manejo clínico debe enfocarse en la protección antioxidante del sebo y la restauración de la barrera hidrolipídica del ostium para evitar que este círculo vicioso de estrés oxidativo y daño folicular derive en una pérdida capilar permanente. La detección temprana es fundamental para evitar la atrofia del bulbo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:11:47.251Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmision-006",
+    "title": "Neurotransmisión Cutánea: El Eje de la Sustancia P en la Inflamación",
+    "content": "La piel y el folículo piloso poseen una inervación rica y compleja capaz de modular la respuesta inmune local mediante la liberación de neuropeptidos. La Sustancia P es uno de los mediadores más potentes en la inflamación neurogénica del cuero cabelludo. Ante situaciones de estrés crónico o estímulos nocivos, las terminaciones nerviosas perifoliculares liberan Sustancia P, la cual se une a receptores NK-1 en los mastocitos y queratinocitos. Esta activación provoca la desgranulación de mastocitos, liberando histamina y citoquinas que inducen una inflamación subclínica constante. El impacto clínico en el folículo es severo: la fase anágena se acorta prematuramente, acelerando la entrada en fase telógena y promoviendo la caída. La 'tricodinia' o dolor capilar es un síntoma cardinal de este proceso neurogénico. El diagnóstico debe integrar escalas de evaluación de estrés percibido y, cuando sea posible, medir la densidad de terminaciones nerviosas mediante microscopía confocal in vivo. El manejo de la alopecia con componente neurogénico requiere un enfoque multidisciplinario, que incluya agentes moduladores de la vía NK-1 y técnicas de manejo de estrés para interrumpir el ciclo de inflamación neurogénica que compromete la supervivencia folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jdv.19876",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antiinflamatorios-topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:11:47.251Z"
+  }
+]

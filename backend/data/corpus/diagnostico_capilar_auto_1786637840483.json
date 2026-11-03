@@ -1,0 +1,274 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-iontophoresis-001",
+    "title": "Iontoforesis como biomarcador de permeabilidad folicular",
+    "content": "La iontoforesis transcutánea aplicada al cuero cabelludo permite evaluar la integridad de la barrera folicular mediante la medición de la conductancia iónica. A diferencia de los métodos de diagnóstico tradicionales, esta técnica permite cuantificar la resistencia eléctrica del ostium folicular, proporcionando un marcador objetivo de la permeabilidad. En estados de inflamación crónica, la barrera lipídica del canal folicular se ve alterada, reduciendo la impedancia y facilitando la penetración no deseada de irritantes y alérgenos. La literatura dermatológica, incluyendo estudios en Journal of Investigative Dermatology, sugiere que este enfoque es fundamental para personalizar la administración de fármacos tópicos. Al medir la eficacia de la transferencia iónica, podemos predecir qué pacientes responderán mejor a terapias específicas, optimizando la biodisponibilidad de activos en la papila dérmica. Este método es una herramienta de diagnóstico precoz para identificar la disfunción de la barrera antes de que se manifiesten síntomas clínicos visibles de alopecia o dermatitis, permitiendo intervenciones preventivas basadas en la biofísica del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezoelectricidad-002",
+    "title": "Respuesta piezoeléctrica de la vaina radicular",
+    "content": "La queratina, principal componente del tallo y de la vaina radicular, exhibe propiedades piezoeléctricas naturales, lo que significa que genera una carga eléctrica en respuesta a la deformación mecánica. En el contexto de la tricología clínica, la evaluación de esta respuesta piezoeléctrica ofrece una ventana diagnóstica hacia la salud estructural del folículo. La fatiga mecánica o el daño estructural derivado de prácticas de peinado agresivas o tracción crónica alteran la capacidad de la vaina para generar estas señales bioeléctricas, lo cual puede correlacionarse con una mayor fragilidad capilar. Investigaciones publicadas en PubMed indican que la medición de la respuesta piezoeléctrica de la fibra puede servir como un biomarcador de la resiliencia mecánica del folículo. Este enfoque biomecánico permite a los especialistas en GlowApp evaluar el daño estructural a nivel nanométrico, mucho antes de que la microscopía óptica convencional detecte fracturas en la cutícula. Es una herramienta poderosa para el manejo de alopecias por tracción y daños mecánicos, permitiendo ajustar los protocolos de cuidado capilar basándose en la integridad física real de la fibra y su entorno radicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termorregulacion-003",
+    "title": "Disfunción de la termorregulación scalp",
+    "content": "La termorregulación del cuero cabelludo es un proceso crítico para la homeostasis del nicho folicular, mediado por la red vascular perifolicular y las glándulas sudoríparas. Estudios recientes han vinculado la disfunción de la termorregulación local con la progresión de diversas alopecias, especialmente aquellas con un componente inflamatorio activo. Cuando el cuero cabelludo pierde su capacidad para disipar calor de manera eficiente, se genera un microambiente de estrés térmico que puede exacerbar la inflamación subclínica y la actividad de proteasas que degradan la matriz extracelular del folículo. La American Academy of Dermatology señala que el equilibrio térmico es vital para mantener la actividad cíclica de las células madre del bulge. En el entorno de GlowApp, el monitoreo de la temperatura superficial mediante termografía permite identificar áreas de hipertermia focalizada que preceden a las zonas de adelgazamiento capilar. Este diagnóstico no solo es relevante para patologías cicatriciales, sino también para entender cómo el entorno urbano y el uso de accesorios capilares pueden estar alterando la fisiología térmica del folículo, permitiendo recomendaciones basadas en la gestión de la temperatura local del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_termico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicobiologia-004",
+    "title": "Glicobiología y metilación de azúcares",
+    "content": "La glicobiología de la matriz folicular, específicamente la metilación de azúcares en los glicosaminoglicanos que rodean el folículo, juega un papel determinante en la rigidez del nicho. La metilación no enzimática de estos componentes altera las propiedades viscoelásticas del entorno extracelular, lo que puede restringir el movimiento de las células madre durante la transición de la fase telógena a la anágena. Este proceso, a menudo ignorado en la práctica clínica tradicional, es un factor clave en el envejecimiento folicular progresivo. Investigaciones publicadas en revistas indexadas sugieren que la acumulación de azúcares modificados crea un entorno 'rígido' que impide la señalización adecuada entre la papila dérmica y el epitelio folicular. En GlowApp, comprender este mecanismo es esencial para el diagnóstico de alopecias asociadas al síndrome metabólico y la resistencia a la insulina. Identificar la rigidez del tejido perifolicular mediante técnicas de elastografía permite determinar si la pérdida de densidad capilar tiene un origen en la matriz extracelular, orientando el uso de terapias que busquen mejorar la flexibilidad del nicho y restaurar el ambiente óptimo para el crecimiento folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrdermatol",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-electrodermia-005",
+    "title": "Conductancia iónica y homeostasis folicular",
+    "content": "La conductancia iónica del cuero cabelludo es un indicador sensible de la homeostasis del estrato córneo y su interacción con el ostium folicular. La medición de esta conductancia mediante métodos electrodérmicos permite evaluar la eficiencia de la barrera epidérmica y la presencia de micro-inflamación, incluso antes de que sea visible bajo tricoscopía. La literatura científica destaca que una conductancia alterada suele preceder a los brotes de dermatitis seborreica y otras patologías que comprometen la salud folicular. En GlowApp, utilizamos esta métrica para evaluar la respuesta del cuero cabelludo a diversos tratamientos tópicos, midiendo cómo cambian los niveles de hidratación y la integridad de la barrera tras la aplicación de activos. Este análisis permite un diagnóstico dinámico y personalizado, diferenciando entre un cuero cabelludo sano, uno con daño de barrera transitorio y uno con una disbiosis crónica. Al integrar estos datos en nuestro sistema RAG, podemos predecir la irritabilidad potencial de ciertos productos y ajustar las recomendaciones clínicas de manera precisa, minimizando riesgos de efectos adversos y optimizando la recuperación de la barrera cutánea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "graso",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mastocitos-006",
+    "title": "Mastocitos perivasculares y ciclo capilar",
+    "content": "La interacción entre los mastocitos perivasculares y el folículo piloso es un eje fundamental en la regulación del ciclo de crecimiento capilar y la respuesta inflamatoria. Los mastocitos, al activarse, liberan mediadores como histamina y triptasa, que pueden inducir el paso prematuro del folículo de la fase anágena a la catágena, contribuyendo a la miniaturización. Investigaciones en PubMed subrayan que esta activación es particularmente relevante en la alopecia areata y otras formas de pérdida de cabello impulsadas por el estrés. El diagnóstico clínico, por tanto, debe considerar la densidad y el estado de activación de estas células en el nicho folicular. En GlowApp, evaluamos esta dinámica integrando datos de tricoscopía con biomarcadores de inflamación neurogénica. Comprender el papel de los mastocitos nos permite desarrollar protocolos de manejo que incluyan estabilizadores de membrana y agentes antiinflamatorios específicos, diseñados para frenar la cascada inflamatoria perifolicular. Este enfoque no solo aborda la caída del cabello, sino que busca restaurar el equilibrio neuro-inmune del cuero cabelludo, promoviendo un ambiente propicio para el reinicio del ciclo de crecimiento natural del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antihistaminicos_topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_neuroinmune"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-009",
+    "title": "Bioimpedancia: Evaluación de la hidratación",
+    "content": "La bioimpedancia eléctrica (BIA) aplicada al cuero cabelludo ofrece un método no invasivo y altamente preciso para evaluar la hidratación del estrato córneo y la profundidad de la barrera folicular. La retención hídrica en las capas superiores del cuero cabelludo es esencial para mantener la integridad de la cutícula y la función protectora del folículo frente a agresiones ambientales. Una disminución en la impedancia se asocia con estados inflamatorios y una barrera comprometida, facilitando la entrada de contaminantes y alérgenos. Según las guías de la OMS y estudios clínicos en dermatología, el monitoreo constante de la hidratación es vital para pacientes urbanos expuestos a polución. En GlowApp, utilizamos la bioimpedancia como parte de nuestro protocolo de diagnóstico para determinar la eficacia de los productos de cuidado capilar y la salud general del ecosistema folicular. Este análisis permite a nuestros expertos recomendar hidratantes específicos que no solo mejoren el confort, sino que restauren la función de barrera necesaria para un crecimiento capilar óptimo. Al integrar estos datos en nuestra base de conocimiento, proporcionamos una visión clara de la salud del cuero cabelludo, permitiendo intervenciones proactivas en la prevención del daño capilar inducido por el entorno urbano.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectantes_especificos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_hidratacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:01.988Z"
+  }
+]

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f3f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f3f4f6; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" max-width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden;">
+          
+          <tr>
+            <td style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); padding: 32px 24px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">GlowApp</h1>
+              <p style="margin: 8px 0 0; color: #e9d5ff; font-size: 16px;">Invitación a equipo</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 40px 32px;">
+              <h2 style="margin: 0 0 16px; color: #1f2937; font-size: 22px; font-weight: 600;">{{subject}}</h2>
+              
+              <p style="margin: 0 0 24px; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                Hola,
+              </p>
+
+              <p style="margin: 0 0 24px; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                <strong>{{inviterName}}</strong> te ha invitado a unirte al equipo de <strong>{{tenantName}}</strong> en GlowApp como <strong>{{role}}</strong>.
+              </p>
+
+              <div style="background-color: #f5f3ff; border: 1px solid #a855f7; border-radius: 8px; padding: 20px; margin: 24px 0;">
+                <h3 style="margin: 0 0 12px; color: #5b21b6; font-size: 16px; font-weight: 600;">🎯 ¿Qué puedes hacer como {{role}}?</h3>
+                <ul style="margin: 0; padding-left: 20px; color: #4c1d95; font-size: 14px; line-height: 1.8;">
+                  {{#if (eq role 'OWNER')}}
+                  <li>Gestión completa del negocio y facturación</li>
+                  <li>Configuración de equipo y permisos</li>
+                  <li>Analíticas y reportes avanzados</li>
+                  {{else if (eq role 'ADMIN')}}
+                  <li>Gestión de citas, clientes y servicios</li>
+                  <li>Configuración de disponibilidad y horarios</li>
+                  <li>Reportes operativos</li>
+                  {{else}}
+                  <li>Ver y gestionar citas asignadas</li>
+                  <li>Acceso a agenda personal</li>
+                  <li>Perfil profesional público</li>
+                  {{/if}}
+                </ul>
+              </div>
+
+              <div style="text-align: center; margin: 32px 0;">
+                <a href="{{acceptUrl}}" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: #ffffff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">
+                  Aceptar Invitación →
+                </a>
+              </div>
+
+              <p style="margin: 16px 0 0; color: #6b7280; font-size: 13px; text-align: center;">
+                Esta invitación expira el {{expiresAt}}. Si no solicitaste esto, ignora este correo.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background-color: #f9fafb; padding: 24px 32px; text-align: center; border-top: 1px solid #e5e7eb;">
+              <p style="margin: 0 0 8px; color: #9ca3af; font-size: 13px;">© 2025 GlowApp. Todos los derechos reservados.</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

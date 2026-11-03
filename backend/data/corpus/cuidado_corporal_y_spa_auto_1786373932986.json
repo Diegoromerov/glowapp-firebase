@@ -1,0 +1,296 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-tecnologia-wearable-001",
+    "title": "Impacto de los biosensores en la salud de la barrera cutánea corporal",
+    "content": "El uso prolongado de dispositivos wearable y monitores de glucosa continuos (CGM) ha introducido desafíos dermatológicos específicos en la piel corporal. La oclusión mecánica, sumada a la presión constante sobre el estrato córneo, puede alterar la homeostasis lipídica y favorecer la proliferación de microorganismos oportunistas. Investigaciones en dermatitis de contacto sugieren que los adhesivos acrílicos utilizados en estos dispositivos pueden causar sensibilización retardada. Es imperativo que el paciente mantenga una rotación estricta de los sitios de aplicación y utilice protectores de barrera tipo 'barrier film' para mitigar la fricción. La evaluación clínica debe considerar la integridad de la piel peridispositivo, evitando la aplicación sobre áreas con foliculitis preexistente o xerosis severa. La AAD destaca que la alteración de la microflora local bajo el adhesivo puede predisponer a infecciones bacterianas leves que, si no se monitorizan, podrían comprometer el uso del dispositivo médico. Se recomienda la limpieza suave con syndets sin fragancia y el secado minucioso antes de la reubicación para reducir el riesgo de dermatitis irritativa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "dermatitis activa",
+        "infecciones bacterianas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion-paciente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-microbioma-estres-002",
+    "title": "Efectos del cortisol sistémico en el microbioma corporal",
+    "content": "El eje neuro-endocrino ejerce una influencia directa sobre la composición del microbioma de la piel corporal. El estrés crónico, mediante la liberación sostenida de glucocorticoides, altera la producción de péptidos antimicrobianos (AMPs) y modifica el pH cutáneo, favoreciendo la disbiosis. Estudios recientes publicados en PubMed indican que el aumento de cortisol reduce la síntesis de lípidos epidérmicos esenciales, como las ceramidas, debilitando la barrera física y facilitando la colonización por Staphylococcus aureus en áreas de flexión. En la práctica clínica de GlowApp, es vital reconocer que las exacerbaciones de patologías como la dermatitis atópica o la psoriasis en el cuerpo no son puramente inflamatorias, sino que tienen un componente de alteración microbiana inducida por el estrés. La intervención debe ser integral: no solo restaurar la barrera con emolientes, sino también optimizar el entorno cutáneo para favorecer bacterias comensales como S. epidermidis. La gestión del entorno del paciente es clave para prevenir que el estrés psicológico se traduzca en una fragilidad cutánea persistente que dificulte tratamientos estéticos posteriores.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35213674/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos-fisiologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-limpieza-syndet-003",
+    "title": "Fisiología de la limpieza: Por qué los syndets superan al jabón tradicional",
+    "content": "La transición de jabones saponificados (alcalinos) a limpiadores sintéticos (syndets) es fundamental para preservar el manto ácido de la piel corporal. Los jabones tradicionales, con un pH entre 9 y 10, inducen una disrupción iónica en el estrato córneo que tarda horas en recuperarse, aumentando la permeabilidad transepidérmica y la susceptibilidad a irritantes. Por el contrario, los syndets, formulados con tensioactivos anfóteros o no iónicos, mantienen un pH cercano a 5.5, respetando la ecología del microbioma. La evidencia clínica indica que el uso prolongado de limpiadores de alta alcalinidad en el cuerpo contribuye a la xerosis senil y exacerba el prurito en pacientes con dermatitis. En el contexto de GlowApp, recomendamos la adopción de syndets enriquecidos con lípidos fisiológicos para pacientes con piel reactiva. Esta estrategia no solo mejora la hidratación basal, sino que disminuye la tasa de inflamación subclínica detectada en pliegues cutáneos. La educación sobre la técnica de lavado —evitando el agua a temperaturas superiores a 37°C— es el pilar fundamental para cualquier protocolo de mantenimiento de la salud cutánea corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30444-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos-no-ionicos",
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-diaria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-fotoproteccion-ir-004",
+    "title": "Radiación Infrarroja (IR-A) y su impacto en la matriz extracelular corporal",
+    "content": "A diferencia de la radiación UV, la radiación infrarroja (IR-A) penetra profundamente hasta la dermis reticular, generando calor que induce la activación de metaloproteinasas de matriz (MMPs). Este fenómeno, conocido como termólisis crónica, acelera la degradación del colágeno y la elastina, contribuyendo a la elastosis corporal en áreas expuestas como el escote y los hombros. La protección solar convencional basada únicamente en filtros químicos y físicos para UV es insuficiente para bloquear el daño térmico del IR-A. La evidencia actual sugiere que el uso de antioxidantes tópicos (como vitamina C, E y ácido ferúlico) es necesario para neutralizar las especies reactivas de oxígeno (ROS) generadas por la exposición térmica. En Bogotá, dada la altitud y la alta exposición a radiación solar, la fotoprotección corporal debe ser un protocolo multimodal que incluya filtros de amplio espectro, antioxidantes y, cuando sea posible, prendas con factor de protección ultravioleta (UPF). El enfoque clínico debe centrarse en la prevención de la degradación dérmica antes de que los signos de fotoenvejecimiento sean visibles, especialmente en áreas de piel delgada y propensas a la pérdida de elasticidad.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "filtros-fisicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-solar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-biofilm-pliegues-006",
+    "title": "Dinámica del biofilm en pliegues cutáneos y cronicidad de dermatosis",
+    "content": "La formación de biofilm en áreas de pliegues corporales es un factor determinante en la cronicidad de condiciones como la psoriasis invertida y la hidradenitis supurativa. El biofilm, una matriz extracelular polimérica secretada por colonias bacterianas, actúa como una barrera física contra la penetración de agentes tópicos, reduciendo drásticamente la eficacia de los tratamientos convencionales. La eliminación mecánica del biofilm mediante limpieza con agentes antisépticos suaves (como el ácido hipocloroso o soluciones de gluconato de clorhexidina diluidas) es un paso previo necesario antes de la aplicación de cualquier activo terapéutico. Estudios recientes demuestran que, sin el control del biofilm, la inflamación local persiste debido a la estimulación constante de los receptores tipo Toll (TLR) por parte de los residuos bacterianos. Para el equipo clínico, la recomendación es priorizar la higiene del pliegue y la reducción de la humedad local mediante polvos absorbentes inertes. El monitoreo de la carga bacteriana y la integridad cutánea debe ser regular para prevenir la progresión hacia procesos infecciosos sistémicos o cicatriciales graves.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-hipocloroso",
+        "clorhexidina"
+      ],
+      "contraindications": [
+        "piel-erodada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-clinicos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-tensoactivos-007",
+    "title": "Disrupción lipídica por tensoactivos aniónicos en la piel corporal",
+    "content": "El uso de tensoactivos aniónicos, comúnmente encontrados en geles de ducha comerciales (como el Lauril Sulfato de Sodio), es una causa primaria de la alteración de la barrera epidérmica. Estos compuestos tienen la capacidad de penetrar en el estrato córneo y desnaturalizar las proteínas de la queratina, además de solubilizar los lípidos intercelulares esenciales, como las ceramidas y el colesterol. La consecuencia directa es una pérdida de agua transepidérmica (TEWL) elevada, resultando en xerosis y microfisuras que permiten el ingreso de alérgenos. La evidencia sugiere que la exposición repetida a estos detergentes induce una inflamación subclínica que puede manifestarse como prurito o eritema. Es fundamental educar al paciente de GlowApp sobre la lectura de etiquetas: evitar productos que generen una espuma excesiva y preferir formulaciones que incluyan lípidos reengrasantes. La reparación de la barrera cutánea corporal no es posible si se mantiene el uso de agentes de limpieza que degradan activamente los componentes estructurales de la piel. La transición a limpiadores syndet es el primer paso crítico en cualquier tratamiento de dermatología estética corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion-paciente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-efecto-bohr-008",
+    "title": "Efecto Bohr en la oxigenación tisular para el rejuvenecimiento corporal",
+    "content": "El efecto Bohr, que describe cómo la disminución del pH local aumenta la liberación de oxígeno por la hemoglobina, es un mecanismo explotado en diversas terapias de rejuvenecimiento corporal, como la carboxiterapia. En el contexto de la microcirculación cutánea, la inducción controlada de hipercapnia local (aumento de CO2) promueve una vasodilatación compensatoria y mejora la entrega de oxígeno a los tejidos hipóxicos, como los presentes en la celulitis o las zonas con mala circulación periférica. Clínicamente, este aumento en la oxigenación tisular estimula la síntesis de fibroblastos y mejora la remodelación de la matriz extracelular. Sin embargo, el margen de seguridad es estrecho; la aplicación debe ser realizada por personal capacitado para evitar complicaciones como enfisema subcutáneo o lesiones vasculares. La evidencia sobre la eficacia de este mecanismo en la mejora de la textura cutánea es prometedora, siempre que se acompañe de un diagnóstico preciso de la calidad circulatoria del paciente. En GlowApp, integramos este conocimiento para evaluar qué pacientes son candidatos ideales para terapias de oxigenación tisular, priorizando siempre la seguridad vascular.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "trastornos-coagulacion",
+        "infeccion-activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos-esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:58:33.196Z"
+  }
+]

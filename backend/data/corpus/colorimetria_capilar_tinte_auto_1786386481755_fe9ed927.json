@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386481752-1-b70741c2-electroquimica-de-la-fibra-el-papel-de-los-grupos-amino-en-l",
+    "title": "Electroquímica de la fibra: El papel de los grupos amino en la retención de colorantes ácidos",
+    "content": "La retención de colorantes en la fibra capilar no depende únicamente de la penetración física, sino de la interacción electroquímica entre los grupos amino protonados de la queratina y los grupos sulfónicos de los pigmentos ácidos. A un pH inferior al punto isoeléctrico del cabello (aprox. 3.67), la carga neta de la queratina se vuelve positiva, facilitando la atracción electrostática de moléculas aniónicas. Este fenómeno es crítico en la coloración semipermanente, donde la durabilidad está supeditada a la densidad de estos sitios de unión. Si la cutícula presenta una degradación severa, la pérdida de grupos amino libres reduce drásticamente la capacidad de anclaje, provocando un desvanecimiento prematuro. El control del pH durante el proceso de enjuague es determinante: un pH demasiado alcalino desprotona los grupos amino, rompiendo el enlace iónico y liberando el pigmento. Entender esta dinámica permite a los profesionales ajustar los tratamientos post-coloración, utilizando agentes acidificantes que cierren la cutícula y estabilicen el complejo iónico formado, optimizando así la longevidad del tono aplicado sin comprometer la integridad estructural de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/pdf/cc2023/cc07401p001.pdf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácidos orgánicos",
+        "agentes buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:28:01.752Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386481753-2-cd4ec2c9-secuestro-de-metales-de-transicion-y-su-impacto-en-la-oxidac",
+    "title": "Secuestro de metales de transición y su impacto en la oxidación incontrolada",
+    "content": "La presencia de trazas de metales de transición, como hierro y cobre, en el agua de lavado o en la estructura interna del cabello, actúa como un catalizador heterogéneo en la reacción de descomposición del peróxido de hidrógeno. Este proceso genera radicales libres hidroxilo (•OH) de manera incontrolada, los cuales no solo degradan el pigmento recién formado, sino que también oxidan los aminoácidos de la queratina, debilitando la resistencia mecánica del cabello. La incorporación de agentes quelantes específicos, como el EDTA o el etidronato, es vital en la formulación de tintes modernos para neutralizar estos iones metálicos antes de que inicien la reacción en cadena. La eficacia de la quelación depende de la constante de estabilidad del complejo formado; si el agente no es lo suficientemente fuerte, los metales pueden ser liberados durante el proceso de oxidación, provocando un viraje cromático no deseado o 'manchado' del color. La implementación de un protocolo de desmineralización previo al servicio de coloración es, por tanto, una estrategia de seguridad clínica para garantizar la fidelidad del tono y la salud estructural del folículo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "etidronato"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:28:01.753Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786386481753-3-a2e5ee61-analisis-de-la-ley-de-fick-en-la-penetracion-de-precursores-",
+    "title": "Análisis de la Ley de Fick en la penetración de precursores de tinte",
+    "content": "La cinética de penetración de los precursores de tinte de oxidación (diaminas y acopladores) en la corteza capilar puede modelarse mediante la segunda ley de difusión de Fick. La tasa de difusión es directamente proporcional al gradiente de concentración entre el exterior y el interior de la fibra, pero está fuertemente limitada por la tortuosidad de la matriz queratínica y la densidad del complejo de membrana celular (CMC). En cabellos altamente porosos, el coeficiente de difusión aumenta, permitiendo una penetración rápida pero desigual, lo que resulta en una saturación cromática inconsistente. Por el contrario, en cabellos vírgenes o con cutícula compacta, la resistencia a la difusión es alta, requiriendo agentes alcalinizantes (como amoníaco o etanolaminas) para hinchar la fibra y aumentar el volumen libre. El control de este proceso es fundamental: una difusión demasiado rápida puede llevar a la polimerización prematura fuera de la corteza, resultando en un color superficial que se desprende con facilidad. El uso de agentes humectantes y la regulación de la temperatura folicular son herramientas clave para optimizar el flujo de precursores y asegurar una distribución homogénea del color en toda la longitud de la hebra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hair-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoníaco",
+        "etanolamina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:28:01.753Z"
+  }
+]

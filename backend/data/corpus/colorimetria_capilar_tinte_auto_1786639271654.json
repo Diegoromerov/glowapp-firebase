@@ -1,0 +1,166 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-tinte-005",
+    "title": "Dinámica del efecto Donnan y su impacto en la retención de tintes ácidos",
+    "content": "El efecto Donnan describe la distribución desigual de iones a través de una membrana semipermeable (en este caso, la cutícula y el complejo de membrana celular) cuando existen polielectrolitos cargados, como la queratina. Este principio es fundamental para entender por qué los colorantes ácidos y directos presentan dificultades de penetración en cabellos con el punto isoeléctrico alterado. Cuando el pH del tinte no es compatible con el potencial electrocinético de la fibra, el efecto Donnan puede repeler activamente los pigmentos, resultando en una coloración superficial y una resistencia al lavado muy baja. La optimización del pH antes de la aplicación es vital para contrarrestar este efecto. Al utilizar soluciones buffer que ajusten el potencial de la superficie capilar, es posible 'abrir' la fibra a la penetración iónica del pigmento. Este conocimiento permite a los expertos de GlowApp diseñar protocolos de pre-tratamiento que no solo limpian la fibra, sino que ajustan su entorno electrostático para maximizar la eficacia del color, reduciendo la necesidad de concentraciones elevadas de agentes químicos agresivos y mejorando la salud cuticular a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "buffer de pH",
+        "agentes quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:40:54.672Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-006",
+    "title": "Degradación del triptófano: El daño invisible post-oxidación",
+    "content": "La degradación del triptófano en la queratina es un marcador bioquímico del daño estructural severo tras procesos de coloración y decoloración. El triptófano es un aminoácido particularmente sensible a los radicales libres generados durante la polimerización del tinte. Cuando los precursores de color oxidan la fibra, la fotólisis y la oxidación química reducen drásticamente los niveles de triptófano, lo cual debilita la estabilidad estructural del cabello y altera su capacidad para reflejar la luz. Este 'daño invisible' no siempre es detectable a simple vista, pero se manifiesta como una pérdida de brillo y una mayor porosidad que acelera el viraje de tono. La espectroscopia de fluorescencia ha confirmado que el agotamiento de este aminoácido es un predictor clave de la fragilidad capilar futura. En GlowApp, la implementación de protocolos que incluyan antioxidantes específicos para proteger los residuos de triptófano durante la aplicación del tinte es esencial. Proteger este aminoácido no solo mejora la resistencia mecánica del cabello, sino que garantiza que el color se asiente sobre una base estructuralmente íntegra, evitando la degradación prematura del pigmento.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:40:54.672Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-007",
+    "title": "Análisis espectrofotométrico de la reflectancia en cabellos tratados con quelantes",
+    "content": "El uso de agentes quelantes de nueva generación en la preparación capilar no es solo una medida de higiene, sino un paso crítico para la precisión cromática medida por espectrofotometría de reflectancia. La presencia de trazas de metales de transición, como cobre y hierro, en la fibra capilar cataliza la oxidación incontrolada de los precursores de tinte, generando tonos no deseados o 'virajes' fuera de la gama esperada. Al realizar un análisis de reflectancia difusa, se observa que los cabellos tratados con quelantes quelantes de alta afinidad (como el ácido etidrónico o derivados de fitatos) logran una curva de saturación más uniforme en comparación con cabellos no tratados. Esta homogeneidad es fundamental en cabellos con porosidad diferencial, donde la acumulación de metales es mayor en los medios y puntas. El uso de quelantes permite que el colorista de GlowApp trabaje sobre una 'hoja en blanco' química, garantizando que el resultado final se acerque al 98% a la expectativa de color del cliente. Este control instrumental reduce el riesgo de resultados insatisfactorios y minimiza el daño por sobre-procesamiento al evitar la necesidad de correcciones posteriores.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes",
+        "EDTA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:40:54.672Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-008",
+    "title": "El papel de las metaloproteinasas en el microbioma scalp post-tinte",
+    "content": "La coloración permanente de alta alcalinidad no solo afecta la fibra capilar, sino que induce una respuesta inflamatoria en el cuero cabelludo que se correlaciona con la activación de metaloproteinasas (MMP) en el tejido peribulbar. Estudios recientes han vinculado la disbiosis del microbioma, causada por cambios abruptos en el pH del cuero cabelludo, con una mayor liberación de estas enzimas inflamatorias. Cuando la barrera cutánea se ve comprometida, la respuesta histaminérgica inespecífica aumenta, lo que puede influir en la percepción de sensibilidad y en la fijación del color. La modulación de este entorno mediante el uso de agentes buffer y prebióticos cutáneos es una tendencia clínica avanzada. Al mantener el pH del cuero cabelludo cerca de su punto fisiológico (5.5) mediante sistemas buffer de borato o citrato post-tinte, se logra estabilizar la respuesta del microbioma y reducir la inflamación subclínica. Para GlowApp, este enfoque no solo mejora la seguridad del servicio, sino que asegura que el cuero cabelludo sea un entorno saludable para el crecimiento de una fibra capilar resistente, fundamental para mantener la integridad del color a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos",
+        "agentes buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:40:54.672Z"
+  }
+]

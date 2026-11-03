@@ -1,0 +1,354 @@
+[
+  {
+    "chunk_id": "ingredientes-contraindicaciones-sulfatos-metales-001",
+    "title": "Interacción entre tensioactivos sulfatados y metales traza en el agua",
+    "content": "La calidad del agua utilizada en la limpieza facial impacta directamente la eficacia de los tensioactivos aniónicos como el Sodium Lauryl Sulfate (SLS). En zonas con agua dura, los iones de calcio y magnesio interactúan con los grupos sulfato, formando precipitados insolubles o 'jabón de cal' que se depositan en el estrato córneo. Este proceso no solo compromete la función barrera, sino que potencia la irritación cutánea al alterar el pH del manto ácido. Estudios publicados en revistas como 'Journal of Cosmetic Dermatology' indican que la acumulación de estos residuos metálicos en la superficie epidérmica puede exacerbar condiciones como la dermatitis atópica y la rosácea. Es crucial recomendar el uso de aguas micelares o el enjuague con agua filtrada para pacientes con pieles reactivas, evitando así la potencial desnaturalización proteica provocada por la combinación de tensioactivos agresivos y la dureza del agua local. La neutralización de estos iones mediante agentes quelantes en la fórmula no siempre es suficiente si la concentración de metales en el agua de red es elevada, convirtiendo a la limpieza en un punto crítico de riesgo inflamatorio.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopic",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Sodium Lauryl Sulfate",
+        "Magnesium",
+        "Calcium"
+      ],
+      "contraindications": [
+        "agua_dura"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-peptidos-cobre-002",
+    "title": "Interferencia de los péptidos de cobre en la absorción de fármacos tópicos",
+    "content": "Los péptidos de cobre (GHK-Cu) son ampliamente valorados por sus propiedades regenerativas y de estimulación de colágeno. Sin embargo, su capacidad para actuar como agentes quelantes potentes y su interacción con los mecanismos de transporte transdérmico presentan riesgos de interferencia. Existe evidencia de que la presencia de péptidos de cobre en altas concentraciones puede alterar la permeabilidad de la barrera cutánea, facilitando la absorción no controlada de otros fármacos tópicos aplicados simultáneamente. Según investigaciones en PubMed, esta sinergia puede resultar en una toxicidad sistémica imprevista o en una potenciación excesiva de la irritación por otros activos como retinoides o ácidos fuertes. La recomendación clínica es mantener un intervalo de al menos 30 minutos o aplicar en rutinas separadas (AM/PM). La complejidad química de estos péptidos, al ser moléculas bioactivas, exige una precaución especial en pacientes con pieles con barrera comprometida o en procesos post-procedimiento, donde la absorción percutánea está naturalmente incrementada por la disrupción física del estrato córneo. Ignorar esta interacción puede llevar a dermatitis de contacto irritativa severa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32822166/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "GHK-Cu",
+        "Copper Peptides"
+      ],
+      "contraindications": [
+        "uso_simultaneo_farmacos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antiaging"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-siliconas-003",
+    "title": "Siliconas volátiles y el riesgo de exacerbación en foliculitis",
+    "content": "Aunque las siliconas como las ciclopentasiloxano y dimeticona son consideradas generalmente inertes y no comedogénicas por su gran tamaño molecular, su uso en pieles con tendencia a la foliculitis presenta un riesgo subestimado. En pacientes con predisposición a la obstrucción folicular, la naturaleza oclusiva de las siliconas, especialmente las de baja viscosidad que se evaporan rápidamente, puede atrapar sebo y bacterias dentro del infundíbulo folicular. Esta oclusión micro-localizada crea un ambiente anaeróbico que favorece la proliferación de microorganismos como Cutibacterium acnes o levaduras del género Malassezia. A diferencia de la comedogenicidad clásica descrita en aceites, el mecanismo aquí es físico-mecánico. La literatura dermatológica sugiere que pacientes con foliculitis recurrente deben evitar formulaciones con altos contenidos de siliconas volátiles en áreas propensas. El riesgo aumenta cuando el producto se aplica en capas (layering) sobre otros activos que ya han sensibilizado el folículo. Es fundamental evaluar la densidad del producto y la capacidad de transpiración de la piel antes de recomendar su uso continuo en rutinas de cuidado diario para pieles seborreicas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Cyclopentasiloxane",
+        "Dimethicone"
+      ],
+      "contraindications": [
+        "foliculitis",
+        "acne_fungico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento_acne"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-antioxidantes-004",
+    "title": "Inestabilidad oxidativa del Ácido Ferúlico y riesgo de eritema",
+    "content": "El ácido ferúlico es un potente antioxidante que se estabiliza frecuentemente en formulaciones con vitamina C y vitamina E. Sin embargo, su estabilidad es altamente dependiente del pH y de la exposición a la luz y al oxígeno. Cuando la formulación se degrada por una mala conservación (envases transparentes, exposición al calor), el ácido ferúlico puede oxidarse prematuramente, generando subproductos que actúan como pro-oxidantes en lugar de antioxidantes. Estos productos de degradación tienen un potencial irritativo elevado, capaz de inducir eritema y dermatitis por contacto en pieles sensibles. La evidencia clínica sugiere que la aplicación de productos oxidados no solo pierde eficacia fotoprotectora, sino que genera una respuesta inflamatoria mediada por radicales libres. Es imperativo instruir al usuario sobre la coloración del producto (el cambio a un tono ámbar oscuro suele ser señal de degradación) y la importancia del almacenamiento en condiciones de baja exposición lumínica. La combinación de inestabilidad química y sensibilidad cutánea convierte al ácido ferúlico en un activo que requiere una gestión estricta de la cadena de suministro y un uso diligente por parte del paciente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ferulic Acid"
+      ],
+      "contraindications": [
+        "oxidacion_producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antioxidantes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-quelantes-005",
+    "title": "Quelación inespecífica: Riesgos de desequilibrio iónico cutáneo",
+    "content": "Los agentes quelantes como el EDTA (Ácido Etilendiaminotetraacético) y el ácido fítico se utilizan para estabilizar formulaciones cosméticas secuestrando metales traza. Si bien esto mejora la vida útil del producto, el uso crónico de quelantes fuertes en concentraciones elevadas puede interferir con la homeostasis de los metales esenciales en la piel, como el zinc, el cobre y el hierro, que son cofactores críticos para enzimas encargadas de la reparación y la diferenciación celular. La depleción local de estos metales puede comprometer la función barrera y la capacidad de la piel para combatir el estrés oxidativo. En pieles con barrera comprometida, el uso excesivo de estos agentes puede traducirse en una ralentización de los procesos de cicatrización y una mayor susceptibilidad a infecciones. La evidencia sugiere que la quelación debe ser específica y moderada, evitando la sobre-exposición mediante el uso de múltiples productos que contengan estos agentes. La recomendación clínica apunta a priorizar formulaciones con quelantes biológicos más suaves o en concentraciones mínimas, especialmente en pacientes con dermatitis atópica o pieles con procesos reparativos activos, donde el equilibrio iónico es fundamental para la integridad del estrato córneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopic",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "Phytic Acid"
+      ],
+      "contraindications": [
+        "piel_comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-biofermentos-006",
+    "title": "Bio-fermentos y el riesgo de proliferación microbiana latente",
+    "content": "La tendencia hacia el uso de ingredientes fermentados (lisados de bacterias, levaduras, lactobacilos) busca modular el microbioma cutáneo para fortalecer la barrera. Sin embargo, este tipo de activos presenta un desafío microbiológico único. Si el sistema conservante de la fórmula final no es robusto, los bio-fermentos pueden servir como sustrato para la proliferación de contaminantes oportunistas, especialmente en productos de uso prolongado. A diferencia de los ingredientes sintéticos, la variabilidad biológica de los fermentos exige controles de calidad extremadamente rigurosos. Se han documentado casos donde la contaminación cruzada en productos 'limpios' o sin conservantes tradicionales ha llevado a dermatitis de contacto infecciosas. Además, el uso de ciertos fermentos en pieles con disbiosis severa, como en casos de acné fúngico o rosácea, puede exacerbar la inflamación al sobrecargar el entorno cutáneo con moléculas de señalización que alteran el equilibrio local. La recomendación es verificar la estabilidad del lote y optar por marcas que realicen pruebas de desafío (challenge tests) específicas para sus productos fermentados, evitando su uso en pieles con procesos inflamatorios agudos sin supervisión previa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO/OMS - Seguridad en cosmética",
+        "url": "https://www.who.int/news-room",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Fermentos",
+        "Lactobacillus"
+      ],
+      "contraindications": [
+        "disbiosis",
+        "rosacea_aguda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-goma-xantana-008",
+    "title": "Interacciones de estabilidad de la Goma Xantana en medios ácidos",
+    "content": "La goma xantana es un polímero natural ampliamente utilizado como agente espesante y estabilizador en formulaciones cosméticas. Sin embargo, su comportamiento reológico cambia drásticamente en presencia de activos con pH bajo, como el ácido glicólico o la vitamina C (ácido L-ascórbico). En medios con pH inferior a 3.5, la estructura de la red de goma xantana puede colapsar, provocando la separación de fases (sinéresis) y la inestabilidad de la emulsión. Este colapso no solo altera la textura del producto, sino que puede resultar en una distribución desigual de los activos, lo que causa concentraciones erráticas en la aplicación. Un área de la piel puede recibir una dosis mucho más alta del ácido que la recomendada, aumentando el riesgo de quemadura química, mientras que otra recibe una dosis ineficaz. La recomendación clínica es verificar la compatibilidad de la base espesante con el pH del activo, evitando productos que combinan inestabilidad estructural con ingredientes altamente irritantes. Los usuarios deben observar si el producto presenta una textura inconsistente o acuosa, lo cual es una señal clara de que la estabilidad de la formulación ha sido comprometida por una interacción química inadecuada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Xanthan Gum"
+      ],
+      "contraindications": [
+        "ph_acido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  },
+  {
+    "chunk_id": "ingredientes-contraindicaciones-quats-009",
+    "title": "Compuestos de amonio cuaternario y riesgo de dermatitis",
+    "content": "Los compuestos de amonio cuaternario (Quats), como el cloruro de cetrimonio o el cloruro de benzalconio, son agentes acondicionadores y conservantes comunes en productos capilares y faciales. Su alta afinidad por la superficie de la piel, al ser moléculas cargadas positivamente, les permite permanecer en la piel incluso después del enjuague. Este efecto residual, aunque deseado para el acondicionamiento capilar, constituye un riesgo persistente de dermatitis de contacto irritativa y alérgica en el cuero cabelludo y el contorno facial (frente, orejas, cuello). Estudios clínicos han vinculado la exposición crónica a estos compuestos con la disrupción de la barrera cutánea y la alteración del microbioma natural. En pacientes con piel sensible o tendencia a la dermatitis, los Quats pueden provocar erupciones papulopustulosas que se confunden erróneamente con acné. La recomendación es minimizar el uso de productos 'leave-on' (sin enjuague) que contengan estos ingredientes y asegurar un enjuague exhaustivo en productos 'rinse-off' (de enjuague). La identificación de estos componentes en el INCI es fundamental, especialmente en productos de cuidado capilar que entran en contacto con la piel del rostro durante la ducha, siendo una causa oculta de dermatitis perioral y periauricular.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis - Journal of the American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Cetrimonium Chloride",
+        "Benzalkonium Chloride"
+      ],
+      "contraindications": [
+        "dermatitis_contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_capilar_facial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:55:27.201Z"
+  }
+]

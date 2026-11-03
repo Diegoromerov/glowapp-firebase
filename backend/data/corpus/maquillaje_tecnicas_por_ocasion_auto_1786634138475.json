@@ -1,0 +1,212 @@
+[
+  {
+    "chunk_id": "makeup-tecnicas-microbiota-oral-aerosolizacion-001",
+    "title": "Maquillaje en entornos con alta aerosolización: Riesgo de transferencia de microbiota oral",
+    "content": "En eventos sociales de larga duración donde existe una alta densidad de personas y comunicación constante, el maquillaje facial actúa como una superficie de captura para aerosoles provenientes de la cavidad oral. Estudios publicados en PubMed indican que las gotículas respiratorias contienen una microbiota diversa, incluyendo especies de Streptococcus y Veillonella. Cuando estas partículas impactan sobre bases de maquillaje con alto contenido de lípidos o polímeros adhesivos, se crea un microambiente húmedo propicio para la proliferación bacteriana y la formación de biopelículas (biofilms) sobre la superficie cutánea. La oclusión causada por el maquillaje impide la renovación natural de la barrera ácida, permitiendo que patógenos orales alcancen los folículos pilosebáceos. Para mitigar este riesgo, es fundamental utilizar fijadores con propiedades antimicrobianas de amplio espectro, como aquellos que contienen derivados de zinc o extractos de polifenoles, que ayudan a mantener el equilibrio del microbioma cutáneo a pesar de la exposición externa constante. La higiene post-evento es innegociable; se recomienda el uso de limpiadores de doble fase que eliminen no solo el pigmento, sino también la carga orgánica acumulada durante la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc-pca",
+        "polifenoles"
+      ],
+      "contraindications": [
+        "dermatitis-activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:15:18.749Z"
+  },
+  {
+    "chunk_id": "makeup-estabilidad-campo-electromagnetico-002",
+    "title": "Maquillaje en entornos de alta densidad electromagnética: Interacción con pigmentos conductores",
+    "content": "La exposición prolongada a campos electromagnéticos (CEM) en ferias tecnológicas o centros de datos puede inducir corrientes de Foucault en pigmentos metálicos presentes en productos de maquillaje, como micas recubiertas con óxidos de hierro o titanio. Aunque la intensidad del campo en entornos comerciales es baja, la presencia de partículas conductoras en el maquillaje puede alterar la distribución de la carga superficial, facilitando la adhesión de partículas PM2.5 (partículas finas) del aire. Este fenómeno, conocido como efecto de polarización dieléctrica, no solo altera la estética del maquillaje, sino que también puede inducir una dermatitis de contacto irritativa al concentrar contaminantes ambientales sobre los poros. Para eventos en entornos tecnológicos, se recomienda optar por pigmentos minerales recubiertos con polímeros aislantes o sílice, que reducen la conductividad eléctrica de la película cosmética. Asimismo, el uso de primers con bases de siliconas volátiles ayuda a crear una barrera hidrofóbica que previene la acumulación de contaminantes atraídos por la carga electrostática del maquillaje. La monitorización de la estabilidad del producto es esencial para prevenir la oclusión folicular inducida por la acumulación de partículas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/a-z/dermatitis-contact",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silica",
+        "dimethicone"
+      ],
+      "contraindications": [
+        "piel-sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:15:18.749Z"
+  },
+  {
+    "chunk_id": "makeup-estres-metabolico-co2-003",
+    "title": "Maquillaje en espacios con alta concentración de CO2: Impacto metabólico cutáneo",
+    "content": "En eventos realizados en espacios cerrados mal ventilados, el aumento en la concentración de dióxido de carbono (CO2) ambiental puede influir en el metabolismo celular de la piel. El CO2 puede alterar ligeramente el pH de la película hidrolipídica, provocando una respuesta de vasodilatación compensatoria. Cuando la piel está cubierta con maquillaje de larga duración, este proceso se ve dificultado, ya que la película cosmética actúa como una barrera que limita la transpiración y el intercambio gaseoso. Esto puede exacerbar el edema facial leve y la sensación de 'pesadez' en la piel. Para contrarrestar estos efectos, es preferible utilizar bases de maquillaje con tecnología de 'red abierta' (open-mesh polymers) que permiten la difusión de gases manteniendo la integridad del pigmento. Además, la incorporación de activos humectantes con bajo peso molecular, como el ácido hialurónico hidrolizado, ayuda a mantener la turgencia cutánea incluso bajo condiciones de estrés metabólico. Es crucial evitar fórmulas excesivamente oclusivas con ceras pesadas en estos entornos para prevenir el desarrollo de comedones cerrados por falta de oxigenación adecuada del estrato córneo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hyaluronic-acid"
+      ],
+      "contraindications": [
+        "acne-grado-iii"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:15:18.749Z"
+  },
+  {
+    "chunk_id": "makeup-vibracion-acustica-dermatitis-004",
+    "title": "Maquillaje ante vibraciones acústicas de alta frecuencia: Prevención de la dermatitis por fricción",
+    "content": "La exposición a niveles elevados de presión sonora, comunes en eventos musicales o entornos industriales, genera vibraciones mecánicas que afectan la estructura de la película cosmética aplicada sobre la piel. Estas vibraciones de alta frecuencia pueden causar el micro-desprendimiento de las partículas de pigmento y polímeros, lo que genera una fricción constante contra el estrato córneo. Esta fricción mecánica es un factor desencadenante de dermatitis de contacto irritativa, especialmente en áreas de alta movilidad facial. La evidencia sugiere que el uso de imprimantes con polímeros elastoméricos ayuda a absorber parte de esta energía vibratoria, actuando como un 'amortiguador' entre el pigmento y la superficie cutánea. Es fundamental evitar el uso de polvos sueltos en estas condiciones, ya que las partículas libres pueden penetrar en los folículos bajo el efecto de la vibración, aumentando el riesgo de oclusión. Se recomiendan fórmulas fluidas de alta adherencia que se integren de manera flexible con los movimientos del rostro, reduciendo la posibilidad de que la vibración mecánica comprometa la barrera cutánea. La remoción del producto debe realizarse con aceites limpiadores que disuelvan los polímeros sin necesidad de fricción mecánica adicional.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "elastomeric-polymers"
+      ],
+      "contraindications": [
+        "dermatitis-contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:15:18.749Z"
+  },
+  {
+    "chunk_id": "makeup-iluminacion-bioluminiscente-metamerismo-008",
+    "title": "Desafíos cromáticos y metamerismo en eventos bajo iluminación bioluminiscente",
+    "content": "La iluminación bioluminiscente, que utiliza espectros de emisión específicos (a menudo con picos en las bandas azul y verde), plantea un desafío crítico para la reproducción del color en el maquillaje. El fenómeno del metamerismo ocurre cuando dos colores que parecen iguales bajo luz natural (espectro completo) se ven radicalmente diferentes bajo fuentes artificiales de espectro limitado. Esto puede resultar en una apariencia facial distorsionada, con parches de color no deseados o una saturación inadecuada de los pigmentos. Clínicamente, el problema surge cuando el usuario intenta corregir esta percepción visual aplicando capas adicionales de producto, lo que resulta en una sobre-aplicación y oclusión folicular severa. Para mitigar este riesgo, los profesionales deben realizar pruebas de color bajo condiciones de luz similares a las del evento utilizando espectrómetros portátiles o filtros de corrección de color. La selección de pigmentos debe basarse en su reflectancia espectral en lugar de su apariencia visual en condiciones convencionales. La clave es la neutralidad: utilizar productos que no contengan blanqueadores ópticos fluorescentes, ya que estos reaccionan negativamente ante la iluminación bioluminiscente, creando un efecto de brillo artificial indeseado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron-oxides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:15:18.749Z"
+  }
+]

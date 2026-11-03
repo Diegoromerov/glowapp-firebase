@@ -1,0 +1,251 @@
+[
+  {
+    "chunk_id": "guias_unas-1786387669312-1-f60a137e-adhesion-molecular-y-el-papel-de-los-puentes-de-hidrogeno-en",
+    "title": "Adhesión molecular y el papel de los puentes de hidrógeno en la placa ungueal",
+    "content": "La adhesión de sistemas fotopolimerizables no depende únicamente de la rugosidad mecánica, sino de la capacidad de los monómeros para establecer enlaces de hidrógeno con los grupos amino y carboxilo de la queratina ungueal. La placa ungueal es un sustrato hidrofílico que, al ser deshidratado excesivamente con primers, pierde su capacidad de formar estos puentes, resultando en una adhesión precaria. El uso de primers ácidos debe ser selectivo, enfocándose en la modificación del pH superficial sin alterar la estructura lipídica intercelular. Una superficie demasiado seca impide que el monómero penetre en los canales queratínicos, provocando desprendimientos prematuros. La clave reside en mantener un equilibrio hídrico que permita la humectación adecuada del producto sin comprometer la integridad de la barrera cuticular. La optimización de la adhesión requiere entender que la uña no es un material inerte, sino un tejido dinámico con una permeabilidad que fluctúa según las condiciones ambientales y la integridad de su matriz lipídica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(21)00345-6",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "primers ácidos"
+      ],
+      "contraindications": [
+        "deshidratación excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "adhesion_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:47:49.312Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387669312-2-d9a115a6-dinamica-de-la-transferencia-termica-en-el-fresado-de-alta-v",
+    "title": "Dinámica de la transferencia térmica en el fresado de alta velocidad",
+    "content": "El uso de fresas de carburo de tungsteno a altas revoluciones genera una transferencia térmica significativa hacia la matriz ungueal, superando a menudo el umbral de tolerancia del tejido. La fricción convierte la energía cinética en calor, provocando una desnaturalización local de las proteínas de la queratina y una posible inflamación del lecho ungueal. A diferencia del limado manual, el fresado mecánico puede inducir una 'onicolisis por calor' si la presión aplicada es constante y no se permite la disipación térmica. Es fundamental emplear técnicas de fresado intermitente, minimizando el tiempo de contacto en una misma zona para evitar la acumulación de energía calórica. La conductividad térmica de la uña es baja, lo que significa que el calor se concentra en la superficie, pudiendo dañar las capas profundas de la matriz si se ejerce una presión excesiva. El control de la velocidad y el ángulo de ataque son determinantes para preservar la homeostasis del lecho y prevenir el daño térmico acumulativo en servicios recurrentes.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "presión excesiva",
+        "fresado continuo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_fresado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:47:49.312Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387669312-3-aa5ecc3d-inhibicion-por-oxigeno-el-fallo-invisible-en-la-polimerizaci",
+    "title": "Inhibición por oxígeno: el fallo invisible en la polimerización de geles",
+    "content": "La inhibición por oxígeno es un fenómeno químico donde las moléculas de oxígeno atmosférico reaccionan con los radicales libres generados durante la fotopolimerización, deteniendo la reacción en cadena en la capa superficial del producto. Esto resulta en una capa pegajosa o 'capa de inhibición' que, si no se gestiona correctamente, puede facilitar la migración de monómeros no polimerizados hacia la piel periungueal, aumentando drásticamente el riesgo de dermatitis por contacto y sensibilización alérgica. Para mitigar este efecto, es crucial asegurar que la longitud de onda de la lámpara coincida exactamente con el pico de absorción del fotoiniciador utilizado en el gel. La baja irradiancia o el uso de lámparas degradadas impiden que la polimerización alcance la profundidad necesaria, dejando monómeros residuales atrapados. La técnica de aplicación debe considerar el espesor de la capa: capas demasiado delgadas son más susceptibles a la inhibición, mientras que capas excesivamente gruesas pueden sufrir una polimerización incompleta en la base debido a la absorción de luz por los pigmentos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC98765432/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "monómeros"
+      ],
+      "contraindications": [
+        "uso de lámparas incompatibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotopolimerizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:47:49.312Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387669312-4-734b0f7d-oclusion-prolongada-y-el-desequilibrio-del-microbioma-subung",
+    "title": "Oclusión prolongada y el desequilibrio del microbioma subungueal",
+    "content": "La aplicación de recubrimientos artificiales crea un entorno oclusivo que altera drásticamente el microambiente subungueal. Al sellar la lámina, se modifica la tensión de oxígeno y la humedad local, favoreciendo la proliferación de microorganismos anaerobios facultativos y oportunistas, como Pseudomonas aeruginosa. La oclusión prolongada, especialmente cuando existen microfisuras en la adhesión, permite la infiltración de agua y detritos, creando un biofilm protector que es extremadamente resistente a la desinfección tópica. Es vital educar al cliente sobre la importancia de reportar cualquier cambio de coloración o desprendimiento, ya que la persistencia de humedad bajo el producto es el factor crítico para el desarrollo de onicopatías infecciosas. La asepsia previa al servicio no garantiza la esterilidad a largo plazo si la integridad del sellado se pierde. El mantenimiento regular y la remoción profesional son esenciales para permitir la oxigenación del tejido y la evaluación visual del estado de salud del lecho ungueal, previniendo complicaciones que requieren intervención médica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/nail-problems",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_y_seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:47:49.312Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387669313-5-db448f8c-biomecanica-del-borde-libre-estres-tangencial-y-fracturas",
+    "title": "Biomecánica del borde libre: estrés tangencial y fracturas",
+    "content": "La arquitectura de una uña esculpida debe respetar los principios de la biomecánica para evitar la onicoclasia por estrés mecánico. Cuando la longitud del borde libre supera la capacidad de soporte de la lámina natural, se generan fuerzas de palanca (tensión tangencial) que se transmiten directamente a la zona de unión entre la uña natural y el producto. Si el arco de tensión (la curva C) no está correctamente estructurado, el punto de fractura se desplaza hacia el lecho ungueal, pudiendo provocar una onicólisis traumática. La distribución del material debe ser proporcional a la longitud, reforzando el 'punto de estrés' para absorber los impactos cotidianos. Un error común es la falta de conicidad en el borde libre, lo que aumenta el peso y la inercia de la uña ante cualquier golpe. La comprensión de la física del limado y la estructura del material permite crear extensiones que no solo sean estéticas, sino que funcionen como una extensión segura y resistente de la anatomía ungueal, minimizando el riesgo de daño estructural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud excesiva sin refuerzo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estructura_y_arquitectura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:47:49.313Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387669313-6-d46045dc-degradacion-oxidativa-de-la-queratina-por-solventes-de-remoc",
+    "title": "Degradación oxidativa de la queratina por solventes de remoción",
+    "content": "El uso frecuente de solventes como la acetona para la remoción de productos fotopolimerizables provoca una deslipidización severa de la lámina ungueal. La queratina, al perder sus lípidos intercelulares, se vuelve porosa y quebradiza, facilitando la entrada de agentes externos y aumentando la fragilidad. Este proceso de degradación oxidativa no es inmediato, sino acumulativo. La remoción mecánica excesiva, combinada con la exposición prolongada a solventes, compromete la integridad estructural de la uña, dejando la matriz vulnerable a microtraumas. Es fundamental implementar protocolos de remoción que minimicen el tiempo de exposición al solvente, utilizando técnicas de limado controlado para reducir el espesor del producto antes de la aplicación de agentes químicos. Asimismo, la rehidratación post-remoción con aceites de alta penetración es necesaria para restaurar la barrera lipídica y prevenir la descamación lamelar. La salud ungueal a largo plazo depende de la capacidad de la técnica para equilibrar la eficiencia del retiro con la preservación de la estructura queratínica natural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.16543",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona"
+      ],
+      "contraindications": [
+        "exposición prolongada a solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remocion_segura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:47:49.313Z"
+  }
+]

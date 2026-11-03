@@ -1,0 +1,108 @@
+{
+  "cycle": "R6-RECOVERY-1",
+  "incident": {
+    "descripcion": "Embeddings perdidos entre R6-C1 (0 NULL) y R6-C2 (5,663 NULL). Chunks intactos. R6-C2 bloqueado.",
+    "window": "entre R6-C1 y R6-C2 (cont. Up 11h)"
+  },
+  "database_state": {
+    "total": "5663",
+    "nulls": "5663",
+    "nonnulls": "0",
+    "dup_chunk_id_groups": "5",
+    "vector_dims": null,
+    "pgvector_extension": "vector",
+    "embedding_column_type": "USER-DEFINED",
+    "indexes": [
+      "beauty_knowledge_embeddings_pkey",
+      "idx_beauty_knowledge_content_hash",
+      "idx_beauty_knowledge_fuente",
+      "idx_beauty_knowledge_embedding_hnsw",
+      "idx_beauty_knowledge_category",
+      "idx_beauty_knowledge_skin_type",
+      "idx_beauty_knowledge_season_station",
+      "idx_beauty_knowledge_age_range",
+      "idx_beauty_knowledge_ingredients",
+      "idx_beauty_knowledge_contraindications",
+      "idx_beauty_knowledge_chunk_id",
+      "uk_beauty_knowledge_chunk_identity",
+      "idx_beauty_knowledge_document_id",
+      "idx_beauty_knowledge_document_version"
+    ],
+    "triggers_user": [],
+    "timestamps": {
+      "min_c": "2026-08-02T00:28:05.098Z",
+      "max_c": "2026-08-14T00:54:59.311Z",
+      "min_u": "2026-08-13T21:46:59.013Z",
+      "max_u": "2026-08-14T00:57:16.436Z",
+      "upd_48h": "0"
+    },
+    "legacy_hash_chunk_ids": "31",
+    "table_size": "45 MB"
+  },
+  "pipeline_findings": {
+    "model": "nvidia/nv-embedqa-e5-v5",
+    "dimensions": "1024",
+    "input_type": "passage",
+    "texto_embedding": "title + '\\n\\n' + content.substring(0,4000), truncado a 1400 chars (MAX_EMBED_CHARS) antes de la llamada",
+    "truncamiento": "1400 chars (≈485 tokens) para la unidad de embedding; chunk canónico intacto",
+    "insercion": "INSERT ... ON CONFLICT (document_id, chunk_id) DO UPDATE SET embedding=EXCLUDED.embedding, updated_at=NOW()",
+    "fallback_upsert": "si generateEmbedding falla, el script lanza error (no escribe NULL) — verificado en código",
+    "determinismo": "mismo texto + mismo modelo → embedding funcionalmente equivalente (API NVIDIA no garantiza bit-exactitud entre llamadas)"
+  },
+  "source_findings": {
+    "corpus_source_files": {
+      "count": 1113,
+      "dir": "backend/data/corpus/"
+    },
+    "corpus_canonico": {
+      "chunks": 5619
+    },
+    "coverage": "5619 de 5,619 chunks canónicos (los 5,663 BD = 5,619 canónicos + ~44 legacy, 31 con chunk_id hash puro)"
+  },
+  "vector_artifacts": [],
+  "backup_findings": {
+    "dumps_encontrados": 127,
+    "relevantes": [
+      "C:\\beauty-app\\backend\\backup_pre029_real.sql",
+      "C:\\beauty-app\\backend\\migrations\\035_fix_embedding_dimension_and_hnsw_index.down.sql",
+      "C:\\beauty-app\\backend\\migrations\\035_fix_embedding_dimension_and_hnsw_index.sql",
+      "C:\\beauty-app\\backend\\sql\\seed_beauty_knowledge.sql",
+      "C:\\beauty-app\\backend\\src\\services\\biometric\\youcam.client.js.backup",
+      "C:\\beauty-app\\backend\\src\\services\\geminiService.js.backup",
+      "C:\\beauty-app\\backend\\backup_pre029_real.sql",
+      "C:\\beauty-app\\backend\\migrations\\035_fix_embedding_dimension_and_hnsw_index.down.sql",
+      "C:\\beauty-app\\backend\\migrations\\035_fix_embedding_dimension_and_hnsw_index.sql",
+      "C:\\beauty-app\\backend\\sql\\seed_beauty_knowledge.sql"
+    ],
+    "backup_pre029": {
+      "size": 1369,
+      "contiene_tabla_embeddings": false
+    },
+    "note": "backup_pre029 es ANTERIOR a la ingesta RAG (migraciones 035+); no contiene la tabla de embeddings (0 coincidencias)."
+  },
+  "docker_volumes_summary": "15 volúmenes: 1 activo (845c7a4c, creado 2026-08-02T00:25 = día de ingesta, contiene beauty_db 54MB con 0 vectores), 5 nombrados de otros proyectos (infra/oikos/boxing, bases ≤24MB sin beauty_knowledge_embeddings), 8 anónimos (6 Redis dump.rdb, 2 PG sin la tabla). NINGUNO contiene los vectores.",
+  "recovery_candidates": {
+    "copy_fisica": "NO ENCONTRADA — ningún volumen, archivo, dump o cache contiene los vectores originales",
+    "rebuild": "SÍ — pipeline reproducible (ingestCanonicalCorpus.js + e5-v5 passage 1024d + texto title+content truncado 1400) y fuente intacta (1,113 archivos corpus + corpus_canonico 5,619)",
+    "partial": "No aplica — no hay vectores parciales"
+  },
+  "temporal_evidence": {
+    "filas_sin_updated_reciente": "0 filas actualizadas en 48h → NO hubo upsert/re-ingesta (el upsert escribe NOW())",
+    "hipotesis": [
+      "UPDATE masivo SET embedding=NULL sin tocar updated_at",
+      "ALTER/recreación de columna embedding",
+      "restauración de dump con timestamps preservados y columna vector omitida"
+    ],
+    "causa_exacta": "NO DETERMINABLE CON LA EVIDENCIA DISPONIBLE (Postgres no loguea DDL/DML por defecto; no hay logs de ingesta)"
+  },
+  "production_guard": {
+    "status": "PASS",
+    "note": "URL local verificada; sin endpoints externos; Railway NO contactada"
+  },
+  "conclusion": "Los vectores originales NO son recuperables como copia física local. El pipeline de reconstrucción está íntegro y la fuente del corpus está intacta, por lo que la regeneración controlada es viable. La causa exacta de la pérdida no es determinable; la evidencia descarta re-ingesta con upsert (timestamps) y no hay volumen/backup alternativo con los vectores.",
+  "verdict": "REBUILD-POSSIBLE",
+  "recommendation": "R6-RECOVERY-2: re-ingesta controlada autorizada por el Director (ejecutar ingestCanonicalCorpus.js contra BD local; verificar 5,663 embeddings, 0 NULL, 1024d; validar contra GOLD-V5 para confirmar baseline R@5=0.7885/MRR=0.7179 reconstruido). Alternativa: si el Director prefiere diagnóstico más profundo, inspección de WAL/pg_wal del volumen actual.",
+  "reproducibility": "RUN A ≡ RUN B (consolidador determinista)",
+  "run": "A",
+  "timestamp": "2026-08-16T01:15:00.760Z"
+}

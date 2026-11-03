@@ -1,0 +1,281 @@
+{
+  "cycle": "R6",
+  "status": "CLOSED",
+  "scientific_verdict": "R6 agotó razonablemente la rama retrieval optimization y embedding adaptation. El cuello de botella principal es REPRESENTATION-BOUND: el espacio semántico de NVIDIA e5-v5 no ancla consultas coloquiales a conceptos ultraespecializados (simetría muscular, Tyndall, SERS, electrólisis, autofagia, LHA). Ninguna capa externa (retrieval, corpus, query expansion) resolvió esto sin regresión severa.",
+  "causal_classification": "REPRESENTATION-BOUND",
+  "baseline": {
+    "mrr": 0.7222,
+    "r5": 0.6156,
+    "r10": 0.6545,
+    "r20": 0.7156,
+    "r50": 0.8011,
+    "vector_miss": 13,
+    "model": "nvidia/nv-embedqa-e5-v5 (1024d, NIM managed API)",
+    "chunks": 5663,
+    "gold_v5": {
+      "queries": 15,
+      "gold_chunks": 58
+    }
+  },
+  "causal_chain": [
+    {
+      "stage": "R5",
+      "hypothesis": "El embedding histórico servía al dominio; pérdida de embeddings requiere recovery.",
+      "experiment": "N/A (contexto previo a R6)",
+      "result": "Embeddings históricos perdidos; drift confirmado vs NVIDIA NIM actual.",
+      "what_it_proved": "El espacio histórico no es reproducible bit-exacto con NVIDIA NIM gestionado.",
+      "what_it_disproved": "La recuperación de embeddings históricos no es viable.",
+      "what_remains": "Necesidad de nuevo baseline con NVIDIA e5-v5 actual."
+    },
+    {
+      "stage": "R6-Recovery",
+      "hypothesis": "Re-embedding del corpus con NVIDIA actual restaura capacidad.",
+      "experiment": "Re-ingestión completa 5,663 chunks via NVIDIA NIM (input_type=passage).",
+      "result": "Embeddings regenerados, 0 NULL, HNSW operacional. Baseline estable.",
+      "what_it_proveD": "Corpus físicamente completo, embeddings válidos, infra OK.",
+      "what_it_disproved": "No hay corpus gap ni data loss.",
+      "what_remains": "Baseline R6 provisional establecido."
+    },
+    {
+      "stage": "R6-C4",
+      "hypothesis": "Candidate Builder + Grouping mejora recall/MRR.",
+      "experiment": "Candidate pool expandido + grouping semántico por categoría.",
+      "result": "Grouping mejora R@5/MRR marginal. No rompe techo retrieval.",
+      "what_it_proved": "Estructuración de candidatos ayuda ranking pero no recall profundo.",
+      "what_it_disproved": "Grouping no resuelve VECTOR_MISS.",
+      "what_remains": "Techo de recall persistente."
+    },
+    {
+      "stage": "R6-C5",
+      "hypothesis": "Sufficiency Gate calibrado decide cuándo hay evidencia suficiente.",
+      "experiment": "Calibración de umbrales sufficiency sobre candidate pools.",
+      "result": "DISCONFIRMED — no existe configuración segura que resuelva el problema.",
+      "what_it_proved": "Gate binario insuficiente; riesgo false UNSUPPORTED/SUFFICIENT.",
+      "what_it_disproved": "Sufficiency gate no es solución a retrieval gaps.",
+      "what_remains": "Evidencia layer requiere retrieval confiable primero."
+    },
+    {
+      "stage": "R6-C7",
+      "hypothesis": "Aumentar K (50→100→200) recupera GOLD faltantes.",
+      "experiment": "K expansion + category boost + light reranking.",
+      "result": "AGOTADO — ampliar K no recupera GOLD nuevos; boost/reranking perjudican MRR.",
+      "what_it_proved": "Los misses no están en top-200 del espacio denso.",
+      "what_it_disproved": "K expansion no es solución; ranking problem descartado.",
+      "what_remains": "VECTOR_MISS confirmados como fuera del espacio recuperable."
+    },
+    {
+      "stage": "R6-C8",
+      "hypothesis": "Hybrid Vector + FTS (RRF) recupera misses léxicos.",
+      "experiment": "Vector cosine + FTS tsvector + RRF fusion.",
+      "result": "MARGINAL — MRR 0.7222→0.7556; recupera 1 GOLD nuevo; cejas_004 sigue miss.",
+      "what_it_proved": "FTS complementa léxicamente pero no semánticamente.",
+      "what_it_disproved": "Hybrid no resuelve conceptos especializados (Tyndall, SERS, simetría).",
+      "what_remains": "Gap semántico confirmado, no léxico."
+    },
+    {
+      "stage": "R6-C9",
+      "hypothesis": "Adaptive Hybrid (gates A-E) activa FTS solo cuando útil.",
+      "experiment": "Gating por top1_score, margin, entropy, category, query_type.",
+      "result": "DISCONFIRMED — top1_score no distingue misses recuperables; Gate A pierde cabello_002; Gates B-E ≈ HYBRID_ALWAYS.",
+      "what_it_proved": "No hay señal fiable para activar FTS selectivamente.",
+      "what_it_disproved": "Adaptive gating no mejora sobre hybrid always.",
+      "what_remains": "Hybrid always = mejor opción si se adopta FTS."
+    },
+    {
+      "stage": "R6-C10",
+      "hypothesis": "Corpus expansion + modelo alternativo (mxbai) mejora coverage.",
+      "experiment": "Expansión corpus + evaluación NVIDIA vs mxbai-embed-large.",
+      "result": "EMBEDDING_LIMITATION_NO_BETTER_MODEL — corpus gap 0 (58/58 presentes); 13 VECTOR_MISS; mxbai PEOR en todo (MRR −0.19, R@5 −0.37).",
+      "what_it_proved": "Corpus completo; modelo alternativo open peor que NVIDIA; 13 misses son representación, no coverage.",
+      "what_it_disproved": "Cambiar a modelo open no ayuda; corpus expansion no ayuda.",
+      "what_remains": "NVIDIA e5-v5 sigue siendo mejor embedding disponible."
+    },
+    {
+      "stage": "R6-C11",
+      "hypothesis": "Retrieval enhancement alrededor de NVIDIA recupera misses.",
+      "experiment": "7 estrategias: Query Expansion, Multi-query, HyDE, Dense+Sparse, Candidate Fusion, Routing, Reranking.",
+      "result": "NVIDIA_BASELINE_CONFIRMED — ninguna cumple 8 criterios adopción. Dense+Sparse +0.033 MRR determinista (0/13 recovery). Candidate Fusion 5/13 PERO MRR −24%, R@5 −37%, no reproducible.",
+      "what_it_proved": "Embedding space es el cuello real; capas externas no recuperan sin regresión; LLM no determinista invalida estrategias.",
+      "what_it_disproved": "Query representation, candidate generation, reranking no resuelven; solo Dense+Sparse mejora ranking seguro.",
+      "what_remains": "13 VECTOR_MISS irrecuperables con embedding actual."
+    },
+    {
+      "stage": "R6-C12",
+      "hypothesis": "Fine-tuning/domain adaptation sobre NVIDIA e5-v5 es viable.",
+      "experiment": "Análisis factibilidad: acceso pesos, dataset, infra, rutas adaptación.",
+      "result": "FEASIBILITY-BLOCKED — NVIDIA NIM no expone pesos (no existe en HF, API solo inferencia); GOLD-V5 15 queries eval-only (0 negativos, 3 leak); infra ML ausente.",
+      "what_it_proved": "Fine-tuning directo, LoRA, distillation, contrastive con GOLD-V5 = IMPOSIBLES. Única vía: Projection Head post-NVIDIA (diseñada, no ejecutada).",
+      "what_it_disproved": "Cambio de embedding via fine-tuning no es opción bajo restricciones actuales.",
+      "what_remains": "Projection Head experimental (fuera producción) como única vía teórica."
+    },
+    {
+      "stage": "R6-C13",
+      "hypothesis": "Corpus expansion dirigida resuelve misses significativos.",
+      "experiment": "Auditoría completa 13 misses: rankings reales, cobertura corpus, chunks equivalentes.",
+      "result": "CORPUS-EXPANSION-DISCONFIRMED — 0 corpus gaps (A=0, B=0); 8 semantic representation gaps (C); 5 retrieval instability (D). cejas_004 control negativo: 'Análisis de simetría facial dinámica' sim=0.42 rank~2857 con 110+ equivalentes. Inestabilidad NIM confirmada (envejecimiento rank 5 vs miss).",
+      "what_it_proved": "Corpus ya óptimo para e5-v5; 8 misses son gap semántico intrínseco del modelo; 5 son inestabilidad frontera; expansión NO ayuda.",
+      "what_it_disproved": "Corpus expansion como solución a misses.",
+      "what_remains": "Límite de representación de e5-v5 para conceptos ultraespecializados documentado."
+    },
+    {
+      "stage": "FINAL ARCHITECTURAL CONCLUSION",
+      "hypothesis": "R6 produjo evidencia suficiente para decisión arquitectónica.",
+      "experiment": "Síntesis causal de 10 sub-ciclos con métricas reproducibles.",
+      "result": "REPRESENTATION-BOUND confirmado. NVIDIA e5-v5 baseline (MRR 0.7222) es óptimo bajo restricciones. Dense+Sparse (+0.033 MRR) única mejora neta. Evidence Layer postergada hasta retrieval confiable. Producción con baseline + observabilidad.",
+      "what_it_proved": "Investigación retrieval optimization agotada; representación es límite duro; no más experimentos R6.",
+      "what_it_disproved": "Que otro boost/reranker/expansion FTS/rescoring resuelva el problema.",
+      "what_remains": "Decisión de producto: operar con baseline conocido + monitoreo."
+    }
+  ],
+  "closed_hypotheses": [
+    "Corpus expansion recupera VECTOR_MISS",
+    "K expansion recupera VECTOR_MISS",
+    "Category boost / light reranking ayuda",
+    "Hybrid FTS resuelve conceptos especializados",
+    "Adaptive hybrid gating mejora sobre always-on",
+    "Query expansion / HyDE / Multi-query recuperan sin regresión",
+    "Candidate Fusion adoptable (regression severa + no determinista)",
+    "Fine-tuning NVIDIA e5-v5 viable",
+    "LoRA/Adapter sobre NVIDIA viable",
+    "Distillation desde NVIDIA viable con datos actuales",
+    "Reranker rescata misses (fuera candidate pool)",
+    "Modelo open (mxbai) superior a NVIDIA",
+    "GOLD-V5 suficiente para entrenamiento supervisado",
+    "Sufficiency Gate calibrable con datos actuales"
+  ],
+  "confirmed_findings": [
+    "NVIDIA e5-v5 (NIM) es el mejor embedding disponible para el dominio; MRR 0.7222 baseline reproducido RUN A ≡ RUN B",
+    "13 VECTOR_MISS canónicos existen en BD + corpus canónico con embeddings válidos; 0 corpus gaps",
+    "8/13 misses = SEMANTIC REPRESENTATION GAP (conceptos: simetría muscular, Tyndall, SERS, electrólisis cross-domain, autofagia, LHA, arquitectura muscular, psicología percepción)",
+    "5/13 misses = RETRIEVAL INSTABILITY (frontera top-200 fluctúa por inestabilidad query-embedding NIM no bit-exacto)",
+    "Dense+Sparse (RRF vector+FTS) mejora MRR +0.033 determinista, 0 regresiones, 0 costo API extra, +300ms latencia",
+    "Candidate Fusion recupera hasta 5/13 PERO MRR −24%, R@5 −37%, no reproducible (LLM temp>0)",
+    "NVIDIA NIM no expone pesos → fine-tuning/LoRA/distillation IMPOSIBLES",
+    "GOLD-V5 = 15 queries / 58 positivos / 0 negativos / 3 leak → dataset EVALUACIÓN, no ENTRENAMIENTO",
+    "cejas_004 = CONTROL NEGATIVO: 147 chunks 'simetría', 223 'musculatura', título literal 'Análisis de simetría facial dinámica' → sim 0.42 rank ~2857 → gap es anclaje semántico, no cobertura",
+    "Sufficiency Gate no validado → riesgo false UNSUPPORTED/SUFFICIENT en producción"
+  ],
+  "disconfirmed_findings": [
+    "FTS recupera misses semánticos especializados (Tyndall, SERS, simetría muscular)",
+    "Query expansion LLM acerca espacio semántico",
+    "Multi-query generation mejora recall",
+    "HyDE documentos sintéticos recuperan misses",
+    "Reranking (cross-encoder) rescata chunks fuera top-200",
+    "Routing por categoría ayuda misses cross-domain",
+    "Corpus expansion añade información que e5-v5 puede usar",
+    "mxbai-embed-large supera a NVIDIA e5-v5 en dominio"
+  ],
+  "remaining_limitations": [
+    "8 conceptos ultraespecializados irrecuperables con e5-v5 actual: simetría muscular dinámica, efecto Tyndall, SERS/Raman, electrólisis cross-domain, arquitectura muscular facial, autofagia celular, LHA, psicología percepción simetría",
+    "Inestabilidad query-embedding NIM: misma query produce embeddings no idénticos entre llamadas → frontier top-200 fluctúa (5 misses borderline afectados)",
+    "Dense+Sparse mejora ranking general pero 0/13 VECTOR_MISS recuperados",
+    "Sufficiency Gate no calibrado → no deployable como guard de generación",
+    "GOLD-V5 pequeño (15 queries) → varianza métricas alta; 1 GOLD = ~7% recovery delta",
+    "No hay datos de producción reales para validar distribución queries vs GOLD-V5"
+  ],
+  "production_readiness": {
+    "baseline_rag": {
+      "status": "PRODUCTION_READY",
+      "mrr": 0.7222,
+      "r5": 0.6156,
+      "latency_p50_ms": 500,
+      "nvidia_calls_per_query": 1,
+      "notes": "RAG funcional: responde, cita fuentes, no alucina evidencia, tiene fallback. NO tiene retrieval perfecto ni alta precisión en conceptos ultraespecializados."
+    },
+    "dense_sparse": {
+      "status": "OPTIONAL_FREE_GAIN_APPROVAL_REQUIRED",
+      "mrr_gain": 0.033,
+      "r10_gain": 0.013,
+      "additional_latency_ms": 300,
+      "additional_nvidia_calls": 0,
+      "risk": "LOW — solo añade FTS postgres; reversible; no toca embeddings"
+    },
+    "evidence_layer": {
+      "status": "NOT_READY",
+      "reason": "Sufficiency Gate no validado; VECTOR_MISS fuera candidate pool; aggregator no recupera lo que retrieval no entrega"
+    },
+    "fine_tuning": {
+      "status": "BLOCKED",
+      "reason": "NIM sin pesos; dataset insuficiente; infra ausente"
+    }
+  },
+  "evidence_layer_decision": {
+    "candidate_builder": "B_DESIGNED_NOT_IMPLEMENTED",
+    "evidence_grouping": "B_DESIGNED_NOT_IMPLEMENTED",
+    "evidence_packet": "B_DESIGNED_NOT_IMPLEMENTED",
+    "provenance": "B_DESIGNED_NOT_IMPLEMENTED",
+    "aggregator": "C_POSTPONED_UNTIL_REPRESENTATION_IMPROVES",
+    "sufficiency": "C_POSTPONED_UNTIL_REPRESENTATION_IMPROVES",
+    "rationale": "Implementar Evidence Layer sobre retrieval con 13 VECTOR_MISS (8 representation-bound) y sufficiency gate no validado introduce riesgo false SUFFICIENT/UNSUPPORTED. Aggregator no puede inventar evidencia que retrieval no entrega. Postergar hasta: (a) representación mejore, o (b) estrategia retrieval estable con confidence calibrada."
+  },
+  "embedding_decision": {
+    "official_model": "nvidia/nv-embedqa-e5-v5",
+    "status": "MAINTAINED_AS_OFFICIAL",
+    "why_valid": "Mejor MRR disponible (0.7222), reproducido exactamente A≡B; supera mxbai (−0.19 MRR); 1024d compatible HNSW; API managed estable; input_type query/passage única palanca semántica nativa",
+    "demonstrated_limitations": "No ancla consultas coloquiales a conceptos ultraespecializados: simetría muscular dinámica (cejas_004 >3000), efecto Tyndall (cejas_008 ~1800), SERS/Raman (cabello_002 ~567), electrólisis cross-domain (cejas_008 ~606), arquitectura muscular (cejas_004 ~1033), autofagia (skincare_007 ~651), LHA (skincare_003 ~1998), psicología percepción (cejas_004 ~377)",
+    "strategies_proven_ineffective": "Fine-tuning directo (NIM sin pesos), LoRA/Adapter (requiere pesos), Distillation (dataset insuficiente), Modelo open alternativo (mxbai peor), Projection Head (diseñada, no ejecutada, riesgo overfit data sintética)"
+  },
+  "retrieval_decision": {
+    "strategy": "OPCIÓN A: Mantener RAG actual como baseline productivo + OPCIÓN B OPCIONAL: Dense+Sparse si Director aprueba",
+    "baseline": "Vector-only (NVIDIA e5-v5, K=50, threshold 0.45)",
+    "optional_improvement": "Dense+Sparse RRF (vector + FTS postgres) — +0.033 MRR determinista, 0 regresiones, +300ms, reversible",
+    "rejected": "K expansion, category boost, light reranking, hybrid adaptive, candidate fusion, query expansion, multi-query, HyDE, routing, reranking"
+  },
+  "corpus_decision": {
+    "status": "CORPUS_OPTIMAL_FOR_CURRENT_EMBEDDING",
+    "action": "NO_EXPANSION",
+    "justification": "5,663 chunks cubren todos los conceptos GOLD; 147-223 chunks equivalentes para misses críticos; añadir contenido duplicado contamina categorías sin ganancia semántica"
+  },
+  "recommended_next_phase": {
+    "name": "R7 — PRODUCTION OBSERVABILITY & CONFIDENCE CALIBRATION",
+    "objective": "Operar baseline RAG en producción con observabilidad completa, calibrar confidence scoring sobre evidencia real, y recolectar distribution shift queries reales vs GOLD-V5 para futura decisión de representación.",
+    "research_question": "¿La distribución de queries en producción coincide con GOLD-V5? ¿El confidence scoring basado en top-k similarity + provenance detecta EVIDENCE_INSUFFICIENT de forma fiable sin false positives?",
+    "hypothesis": "El baseline RAG (MRR 0.7222) es suficiente para operación productiva con guardrails: confidence scoring + provenance + safe fallback (EVIDENCE_INSUFFICIENT) + observabilidad. La representación se mejora solo con datos reales de producción, no con experimentos sintéticos.",
+    "constraints": [
+      "NVIDIA e5-v5 inmutable",
+      "No re-embedding productivo sin approval Director",
+      "Sufficiency gate solo si calibrado con datos reales",
+      "Evidence Layer solo post retrieval confidence validado",
+      "Cualquier cambio requiere A/B shadow 2 semanas read-only"
+    ],
+    "baseline": {
+      "mrr": 0.7222,
+      "r5": 0.6156,
+      "r10": 0.6545,
+      "vector_miss": 13,
+      "model": "nvidia/nv-embedqa-e5-v5"
+    },
+    "success_criteria": [
+      "Confidence scoring separa SUPPORTED/UNSUPPORTED con precision@0.8 > 0.85 en datos reales",
+      "EVIDENCE_INSUFFICIENT rate < 15% en queries productivas",
+      "No hallucinated evidence en generación (0 tolerancia)",
+      "Latencia p95 < 2s end-to-end",
+      "Provenance 100% traceable (chunk_id + score + source)"
+    ],
+    "failure_criteria": [
+      "EVIDENCE_INSUFFICIENT > 30% → retrieval insuficiente para producto",
+      "Hallucinated evidence detectado → bloqueo generación",
+      "Latencia p95 > 5s → arquitectura no viable",
+      "Distribution shift severa (GOLD-V5 no representativo) → requerir R7-RAG-RESEARCH"
+    ],
+    "stop_criteria": [
+      "Confidence scoring validado con 1000+ queries reales",
+      "Distribution shift cuantificado",
+      "Decisión Director: (a) mantener baseline, (b) R7-RAG-RESEARCH para representación, (c) Evidence Layer deploy"
+    ]
+  },
+  "stop_reason": "R6 agotó razonablemente la rama retrieval optimization (10 sub-ciclos, 7 estrategias, 3 vías model adaptation, corpus audit). El cuello es REPRESENTATION-BOUND intrínseco a NVIDIA e5-v5. Ningún experimento adicional de retrieval/corpus/query representation cambia este hecho. Dense+Sparse (+0.033 MRR) es la única mejora neta confirmada. Evidence Layer requiere retrieval confidence calibrado primero. La decisión arquitectónica correcta es operar baseline + observabilidad y recolectar datos reales para futura R7 de representación.",
+  "production_guards": [
+    "env_guard: PASS",
+    "read_only_analysis: true",
+    "no_insert_update_delete: true",
+    "no_embedding_regeneration: true",
+    "no_corpus_ingestion: true",
+    "no_production_changes: true",
+    "no_railway_contact: true",
+    "no_env_changes: true",
+    "nvidia_unchanged: true",
+    "hnsw_untouched: true",
+    "gold_v5_untouched: true"
+  ]
+}

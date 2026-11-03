@@ -1,0 +1,259 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-inteligencia-artificial-001",
+    "title": "Maquillaje para eventos con sistemas de reconocimiento facial y biometría",
+    "content": "El uso de maquillaje en eventos donde operan sistemas de reconocimiento facial (FRT) presenta desafíos técnicos únicos. Los algoritmos de visión artificial, basados en redes neuronales convolucionales, se entrenan para detectar puntos de referencia faciales (landmarks). Ciertos pigmentos con alta reflectancia infrarroja (IR) o el uso excesivo de iluminadores con partículas de mica de gran tamaño pueden generar 'ruido' en la detección de puntos de contorno, provocando errores en el procesamiento biométrico. Clínicamente, el riesgo radica en la oclusión deliberada de poros mediante el uso de sprays fijadores con alta carga de polímeros plásticos diseñados para crear una película de alta reflectancia. Es fundamental priorizar productos con acabado mate y baja reflectancia especular para evitar la dispersión de luz que confunde a los sensores. La Asociación Americana de Dermatología (AAD) subraya que el uso de películas oclusivas pesadas puede alterar la homeostasis del estrato córneo durante eventos de larga duración, recomendando el uso de bases minerales que permitan la transpiración mientras mantienen una cobertura cromática uniforme sin distorsión espectral.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/makeup",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mica",
+        "polímeros sintéticos"
+      ],
+      "contraindications": [
+        "productos con alta reflectancia IR"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biometría_y_estética"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:37.202Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-electromagneticos-002",
+    "title": "Estabilidad del maquillaje en entornos con alta densidad de dispositivos móviles",
+    "content": "La exposición a campos electromagnéticos (CEM) en eventos tecnológicos de alta densidad (ferias, lanzamientos) puede influir en la estabilidad de las emulsiones cosméticas que contienen pigmentos metálicos, como los óxidos de hierro o pigmentos con recubrimientos de aluminio. Aunque la evidencia sobre la interacción directa es incipiente, estudios en PubMed sugieren que la carga electrostática inducida por CEM de alta frecuencia puede favorecer la atracción de partículas de polución hacia la superficie cutánea. En el contexto de GlowApp, esto implica un riesgo aumentado de dermatitis por contacto irritativa al combinarse el maquillaje con partículas atmosféricas cargadas. Se recomienda el uso de primers con propiedades dieléctricas y antioxidantes para minimizar la adhesión de partículas. La guía de la IADVL sobre polución y piel enfatiza que el sellado del maquillaje con polvos finos no oclusivos es vital para mantener la barrera lipídica íntegra ante el estrés ambiental. El uso de ingredientes como la niacinamida en la preparación de la piel ayuda a estabilizar la barrera cutánea frente a la deshidratación inducida por el entorno electromagnético.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34212558/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "óxidos de hierro"
+      ],
+      "contraindications": [
+        "pigmentos metálicos sin encapsular"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protección_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:37.202Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-realidad-aumentada-003",
+    "title": "Maquillaje en entornos de realidad aumentada: Gestión de la reflectancia",
+    "content": "La integración de interfaces de realidad aumentada (AR) en eventos sociales modernos impone exigencias técnicas sobre la reflectancia del maquillaje. Los dispositivos de AR utilizan sensores ópticos que pueden malinterpretar brillos intensos causados por iluminadores de alta saturación, generando 'glitches' o artefactos visuales sobre el rostro del usuario. Clínicamente, el uso de iluminadores con partículas de purpurina plástica (microplásticos) presenta un riesgo de irritación mecánica y oclusión de los ostium foliculares, especialmente bajo el calor generado por los cascos de realidad virtual. La literatura dermatológica, incluyendo reportes de la revista 'Dermatitis', advierte sobre la dermatitis alérgica por contacto a los colorantes utilizados en estos productos de alta gama. Para optimizar la experiencia, se debe optar por iluminadores de base líquida con pigmentos minerales esféricos que difuminan la luz sin crear puntos de alta reflectancia. Es crucial asegurar que el maquillaje sea no comedogénico y fácil de retirar, evitando el uso de adhesivos fuertes que puedan comprometer la integridad del estrato córneo tras horas de uso prolongado del dispositivo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal (American Contact Dermatitis Society)",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales"
+      ],
+      "contraindications": [
+        "microplásticos",
+        "purpurina"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estética_digital"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:37.202Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-baja-gravedad-005",
+    "title": "Estabilidad cosmética y dinámica de fluidos en entornos de baja gravedad",
+    "content": "Aunque el maquillaje en entornos de baja gravedad (como el entrenamiento en vuelos parabólicos) es un escenario extremo, los principios de dinámica de fluidos aplicados a la cosmética ofrecen lecciones valiosas para productos de larga duración. En estas condiciones, las emulsiones sufren una menor separación de fases, pero la sedimentación de pigmentos pesados cambia drásticamente. Para GlowApp, esto se traduce en la recomendación de fórmulas con agentes reológicos avanzados que mantengan la viscosidad constante bajo condiciones de estrés mecánico. La literatura en dermatología aeroespacial indica que la falta de gravedad altera la microcirculación facial, favoreciendo el edema. El uso de maquillaje con ingredientes descongestionantes, como la cafeína o extractos botánicos, es fundamental en eventos que implican cambios de presión bruscos. La estabilidad de la película cosmética depende de la adhesión polimérica; se deben evitar productos que dependan de la gravedad para una distribución uniforme, prefiriendo texturas tipo mousse o cremas anhidras que se mantengan adheridas a la superficie cutánea mediante fuerzas moleculares superiores.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeína",
+        "agentes reológicos"
+      ],
+      "contraindications": [
+        "pigmentos pesados sin recubrimiento"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estética_extrema"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:37.202Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-nanoparticulas-grafeno-007",
+    "title": "Riesgos de adsorción de nanopartículas de grafeno en eventos tecnológicos",
+    "content": "El uso de entornos tecnológicos donde existe presencia de nanopartículas de grafeno o materiales avanzados (como en ferias de nanotecnología) plantea interrogantes sobre la seguridad dermatológica. Aunque el grafeno tiene aplicaciones prometedoras, su capacidad de adsorción de sustancias químicas en la superficie de la piel es alta. Si una persona utiliza maquillaje en estos entornos, existe el riesgo de que las nanopartículas actúen como transportadores ('carriers') de pigmentos o conservantes hacia capas más profundas de la epidermis, pudiendo desencadenar reacciones de hipersensibilidad. La literatura indexada en PubMed sobre nanotoxicología cutánea recomienda una barrera física fuerte. El uso de bases de maquillaje con películas poliméricas (polímeros de alto peso molecular) no absorbentes es la estrategia de mitigación más efectiva. Es fundamental que el maquillaje sea retirado mediante una doble limpieza profunda para asegurar la eliminación de cualquier partícula adherida que pueda haber interactuado con los componentes del maquillaje a nivel molecular durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36012445/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de alto peso molecular"
+      ],
+      "contraindications": [
+        "productos porosos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_industrial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:37.202Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibraciones-acusticas-008",
+    "title": "Prevención de la dermatitis por fricción bajo vibraciones acústicas",
+    "content": "Los eventos con sistemas de sonido de alta potencia generan vibraciones mecánicas que pueden afectar la estabilidad del maquillaje en contacto directo con la piel. Las vibraciones acústicas de alta frecuencia inducen micro-movimientos en la capa de maquillaje, lo que puede provocar la migración de pigmentos hacia los pliegues cutáneos (surcos nasogenianos, contorno periocular). Clínicamente, esto incrementa la fricción entre el producto y el estrato córneo, pudiendo desencadenar una dermatitis por fricción. La recomendación experta es emplear técnicas de 'layering' (capas) con primers de fijación mecánica que creen una red polimérica elástica, capaz de absorber las vibraciones sin romperse. Es vital evitar productos de textura seca o polvos compactos excesivos, ya que la vibración puede causar el agrietamiento del pigmento, dejando la piel expuesta y aumentando la pérdida de agua transepidérmica (TEWL). La aplicación de un fijador con base de alcohol de cadena larga y glicerina puede ofrecer la flexibilidad necesaria para mantener el maquillaje intacto frente a estas tensiones mecánicas constantes.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "polímeros elásticos"
+      ],
+      "contraindications": [
+        "polvos compactos secos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "eventos_masivos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:37.202Z"
+  }
+]

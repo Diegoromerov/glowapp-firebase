@@ -1,0 +1,290 @@
+[
+  {
+    "chunk_id": "tendencia-skin-fasting-metabolico-001",
+    "title": "Skin Fasting Metabólico: ¿Reposo cutáneo o déficit de nutrientes?",
+    "content": "La tendencia del 'Skin Fasting' metabólico sugiere que la piel necesita periodos de ayuno total de productos para 'resetear' su función. Desde la fisiología cutánea, esto es un error conceptual. La piel, especialmente en entornos urbanos como Bogotá, está expuesta a factores como la radiación UV, la polución y el estrés oxidativo. Según la AAD, la piel no tiene mecanismos intrínsecos para 'limpiarse' de estos agentes sin apoyo exógeno. Eliminar la hidratación y fotoprotección bajo la premisa de 'dejar respirar' la piel solo exacerba la pérdida transepidérmica de agua (TEWL) y debilita la función barrera. La piel no respira a través de los poros; el intercambio gaseoso ocurre a nivel vascular. Por tanto, el ayuno cosmético prolongado expone al estrato córneo a una deshidratación severa y al daño acumulativo por radicales libres. Es fundamental entender que la piel requiere mantenimiento constante, no abstinencia, para preservar la homeostasis lipídica y proteica.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "rosacea",
+        "dermatitis_atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  },
+  {
+    "chunk_id": "tendencia-suplementacion-fitoceramidas-002",
+    "title": "Fitoceramidas orales: ¿Hidratación sistémica real?",
+    "content": "La suplementación viral con fitoceramidas derivadas del trigo o arroz promete mejorar la hidratación cutánea desde el interior. Si bien estudios publicados en PubMed sugieren que las ceramidas ingeridas pueden influir en la composición lipídica del estrato córneo, la evidencia clínica aún es limitada para sustituir la hidratación tópica. Las ceramidas son lípidos esenciales que mantienen la cohesión de los corneocitos, pero su biodisponibilidad tras la digestión es compleja. La ingesta oral no garantiza una entrega dirigida a la dermis o epidermis de manera uniforme. En pacientes con piel comprometida, confiar exclusivamente en suplementos sin una rutina tópica adecuada es insuficiente. Además, se debe considerar el riesgo de alérgenos en suplementos de origen vegetal. La recomendación clínica es verlos como un adyuvante, nunca como un reemplazo de los lípidos aplicados tópicamente, que actúan directamente sobre la barrera dañada para prevenir la evaporación de agua.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33580547/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "dehydrated"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas"
+      ],
+      "contraindications": [
+        "celiacos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  },
+  {
+    "chunk_id": "tendencia-maquillaje-con-spf-003",
+    "title": "La falacia del SPF en el maquillaje: ¿Protección insuficiente?",
+    "content": "La tendencia de utilizar maquillaje con SPF (bases o polvos) como única fuente de fotoprotección es una de las causas principales de fotoenvejecimiento prematuro. Para obtener el SPF indicado en el empaque, se requiere aplicar una cantidad de producto equivalente a 2mg/cm², lo cual, en el caso de bases de maquillaje, resultaría en una capa estéticamente inaceptable y poco natural. Estudios dermatológicos confirman que los usuarios aplican, en promedio, una cuarta parte de la cantidad necesaria, lo que reduce drásticamente el factor de protección real. Además, el maquillaje no ofrece una cobertura uniforme, dejando zonas vulnerables como el contorno de ojos o los bordes del rostro. El SPF en el maquillaje debe considerarse exclusivamente como una capa de refuerzo, pero nunca como el método principal de protección solar. La fotoprotección debe ser un producto específico aplicado con antelación, garantizando una película continua y resistente a la radiación UVA/UVB.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/ask-the-expert-does-a-long-sleeve-shirt-mean-you-dont-need-sunscreen/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros_solares"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  },
+  {
+    "chunk_id": "tendencia-aceite-romero-alopecia-005",
+    "title": "Aceite de romero y alopecia: ¿Alternativa real al minoxidil?",
+    "content": "La tendencia de usar aceite esencial de romero para tratar la alopecia androgenética ha ganado fuerza basándose en un único estudio clínico que comparó su eficacia con el minoxidil al 2%. Aunque los resultados mostraron una mejora comparable a largo plazo, es crucial aclarar que el aceite de romero es altamente sensibilizante. La aplicación directa de aceites esenciales sin dilución adecuada en el cuero cabelludo puede inducir dermatitis alérgica de contacto, agravando la caída del cabello por inflamación folicular. Además, la pureza del aceite comercial es variable y no está regulada con los mismos estándares que un fármaco dermatológico. El minoxidil sigue siendo el estándar de oro con una trayectoria de seguridad y eficacia validada por décadas de estudios clínicos. El romero puede ser un complemento aromático o apoyo, pero no debe considerarse un sustituto del tratamiento médico prescrito, especialmente si existe una patología subyacente diagnosticada por un tricólogo.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25842469/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite_esencial_romero"
+      ],
+      "contraindications": [
+        "dermatitis_seborreica",
+        "piel_sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tricologia"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  },
+  {
+    "chunk_id": "tendencia-limpieza-agua-destilada-006",
+    "title": "Lavado facial con agua destilada: ¿Es realmente beneficioso?",
+    "content": "La tendencia de lavar el rostro con agua destilada o mineral embotellada para evitar el 'agua dura' del grifo carece de fundamento clínico sólido. Si bien es cierto que el agua con alto contenido mineral (agua dura) puede resecar ligeramente la piel en personas con dermatitis atópica, el uso de agua destilada no ofrece una ventaja terapéutica que justifique el costo y el impacto ambiental. La piel es un órgano diseñado para interactuar con el entorno; el pH ligeramente ácido del manto cutáneo es capaz de neutralizar el pH del agua del grifo en pocos minutos. Lo que realmente importa en la limpieza no es la pureza del agua, sino la calidad del limpiador (surfactantes suaves) y el tiempo de contacto. El enfoque debe centrarse en evitar limpiadores alcalinos que sí alteran permanentemente el pH y la barrera lipídica, no en la fuente del agua empleada para enjuagar.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  },
+  {
+    "chunk_id": "tendencia-parches-cafeina-007",
+    "title": "Parches de cafeína para bolsas: ¿Vasoconstricción o irritación?",
+    "content": "Los parches de cafeína para el contorno de ojos se promocionan por su capacidad vasoconstrictora, prometiendo reducir la hinchazón y las bolsas periorbitales. Fisiológicamente, la cafeína tópica tiene un efecto diurético y vasoconstrictor real, lo que puede mejorar temporalmente el drenaje linfático de la zona. Sin embargo, la piel del contorno de ojos es extremadamente delgada (0.3 a 0.5 mm) y es altamente susceptible a la sensibilización. El uso frecuente de parches, especialmente aquellos con fragancias o conservantes fuertes, puede causar dermatitis de contacto irritativa, exacerbando la inflamación que se busca tratar. Además, la cafeína no trata la herniación de grasa infraorbitaria ni la laxitud de la piel, causas comunes de bolsas persistentes. El uso de estos parches debe ser esporádico y siempre vigilando la aparición de eritema o descamación. Si la hinchazón persiste, es probable que se requiera una evaluación médica para descartar causas sistémicas como retención de líquidos o problemas renales.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/eyes/dark-circles",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina"
+      ],
+      "contraindications": [
+        "dermatitis_periorbital"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "contorno_ojos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  },
+  {
+    "chunk_id": "tendencia-cepillos-faciales-009",
+    "title": "Cepillos faciales eléctricos: ¿Limpieza o micro-abrasión?",
+    "content": "El renacimiento de los cepillos faciales eléctricos como herramienta de limpieza profunda ignora el riesgo de micro-abrasión mecánica. Si bien prometen una limpieza superior, el uso diario de estos dispositivos, especialmente con cabezales de cerdas duras, puede erosionar el estrato córneo y comprometer la función barrera de la piel. La fricción constante debilita la integridad de la piel, facilitando la pérdida de agua y la entrada de irritantes ambientales. Para pieles con condiciones inflamatorias como acné activo o rosácea, el uso de estos dispositivos está contraindicado, ya que puede dispersar bacterias y aumentar la inflamación. La limpieza más efectiva y segura sigue siendo la técnica manual suave o, en su defecto, el uso de dispositivos de silicona de grado médico con vibraciones sónicas controladas, siempre evitando la presión excesiva. La 'limpieza profunda' no debe ser sinónimo de abrasión; la piel requiere respeto para mantener su equilibrio microbiológico y lipídico.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/cleansing",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "acne_inflamatorio",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:36:04.548Z"
+  }
+]

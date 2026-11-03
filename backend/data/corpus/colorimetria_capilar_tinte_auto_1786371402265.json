@@ -1,0 +1,244 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-efecto-piezoelectrico-001",
+    "title": "Efecto piezoeléctrico en la fibra capilar durante procesos de fricción y coloración",
+    "content": "La fibra capilar posee propiedades dieléctricas y piezoeléctricas naturales debido a la estructura helicoidal de la queratina. Durante los procesos de coloración, especialmente al manipular el cabello con herramientas térmicas o cepillado vigoroso previo a la aplicación del tinte, se genera una carga electrostática significativa. Este fenómeno, conocido como efecto piezoeléctrico, altera la distribución de los pigmentos al modificar el Potencial Zeta de la cutícula. Un cabello con alta carga estática presenta una repulsión desigual hacia las moléculas de color, lo que resulta en una absorción heterogénea, especialmente en las zonas de mayor fricción. Estudios en el Journal of Cosmetic Science sugieren que la neutralización de estas cargas mediante surfactantes catiónicos antes de la aplicación del pigmento mejora la uniformidad del depósito cromático. Es vital comprender que el estrés mecánico previo a la coloración no solo daña la cutícula físicamente, sino que establece un gradiente electrostático que puede arruinar la igualación del tono, especialmente en cabellos largos con alta porosidad en puntas.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:16:23.608Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-solubilidad-pigmentos-002",
+    "title": "Solubilidad y partición de pigmentos en el complejo de membrana celular (CMC)",
+    "content": "La eficacia de un tinte permanente depende de la capacidad de sus precursores para atravesar el complejo de membrana celular (CMC). El CMC actúa como una barrera lipídica y proteica que regula el tránsito de moléculas. La partición de los pigmentos entre la fase acuosa del tinte y la fase lipídica del CMC es un proceso termodinámico crítico. Si la lipofilicidad del pigmento es excesiva, este se acumula en las capas externas (cutícula) sin penetrar la corteza, provocando una rápida degradación del color y un aspecto opaco. Por el contrario, una alta hidrofilia facilita la penetración pero reduce la retención a largo plazo. La investigación dermatológica indica que el uso de agentes promotores de penetración, como ciertos alcoholes grasos, puede modular este equilibrio. Los profesionales deben evaluar la integridad de la capa F (ácido 18-metileicosanoico) antes de decidir la formulación, ya que la pérdida de esta capa altera drásticamente la capacidad de partición de los colorantes, generando resultados impredecibles en cabellos tratados químicamente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcoholes grasos"
+      ],
+      "contraindications": [
+        "cabello extremadamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion-tinte"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:16:23.608Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quelacion-metales-003",
+    "title": "Interferencia de metales divalentes en la oxidación de precursores",
+    "content": "La presencia de metales de transición como hierro, cobre y manganeso en la matriz capilar actúa como catalizador no deseado en la reacción de oxidación del tinte. Estos metales reaccionan con el peróxido de hidrógeno, acelerando la descomposición del agente oxidante antes de que este pueda activar los precursores de color (acoplamiento oxidativo). Esto resulta en una polimerización prematura del pigmento fuera de la corteza, causando manchas, falta de profundidad y un riesgo elevado de daño térmico por reacción exotérmica descontrolada. La AAD (American Academy of Dermatology) advierte sobre la importancia de la quelación previa en entornos con agua de suministro de baja calidad, común en muchas regiones urbanas. Los agentes quelantes como el EDTA disódico o el ácido etidrónico son fundamentales en la fase de preparación. La falta de un protocolo de quelación no solo afecta el resultado estético, sino que aumenta la liberación de radicales libres, exacerbando el estrés oxidativo en la fibra capilar y comprometiendo la integridad de la queratina a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA disodico",
+        "acido etidronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-cabello"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:16:23.608Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-estres-oxidativo-005",
+    "title": "Estrés oxidativo inducido en la reserva de melanocitos y la canicie",
+    "content": "El uso recurrente de tintes permanentes de alta oxidación ha demostrado, en estudios in vitro, generar un estrés oxidativo sistémico en la matriz folicular que puede acelerar la apoptosis de los melanocitos. Aunque el tinte actúa sobre la fibra queratinizada, la exposición crónica a radicales libres generados durante la reacción de peróxido puede permear hacia el bulbo piloso. Este fenómeno es particularmente relevante en pacientes con predisposición genética a la canicie prematura. La modulación de este estrés mediante el uso de antioxidantes incorporados en el sistema de coloración, como la vitamina E o extractos botánicos estabilizadores, es un área de investigación activa en dermatología cosmética. Es fundamental que los especialistas en GlowApp informen sobre la diferencia entre el tinte aplicado en la fibra y el impacto potencial en el cuero cabelludo si no se utilizan productos con sistemas de protección de barrera. La protección de la reserva de melanocitos es vital no solo para la salud estética del cabello, sino para mantener la funcionalidad biológica del folículo a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists)",
+        "url": "https://www.iadvl.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina E"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:16:23.608Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-biocompatibilidad-polimeros-006",
+    "title": "Biocompatibilidad y función de los polímeros catiónicos en la fijación del color",
+    "content": "Los polímeros catiónicos, como el Polyquaternium-10 o el cloruro de guar hidroxipropiltrimonio, desempeñan un papel dual en la coloración capilar. Por un lado, actúan como agentes de deposición que dirigen las moléculas de tinte hacia las zonas de carga negativa del cabello dañado, ayudando a igualar la porosidad. Por otro lado, su biocompatibilidad es esencial para evitar irritaciones en el cuero cabelludo. Estudios recientes indican que la interacción entre estos polímeros y los pigmentos puede formar una película protectora que ralentiza la lixiviación del color durante el lavado. Sin embargo, una sobre-saturación de polímeros puede generar 'build-up', dificultando futuras aplicaciones de color o procesos de aclarado. Es imperativo que los coloristas en Bogotá entiendan que la elección del polímero debe ser proporcional al grado de porosidad diagnosticado. Un exceso de agentes acondicionadores en el tinte puede actuar como una barrera física que impida la penetración profunda, resultando en un color superficial que se desvanece tras pocos lavados. La clave es el equilibrio entre la afinidad electrostática y la permeabilidad de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polyquaternium-10",
+        "guar hidroxipropiltrimonio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-productos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:16:23.608Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-efecto-tyndall-007",
+    "title": "El efecto Tyndall y la percepción cromática en cabellos rubios y canosos",
+    "content": "El efecto Tyndall es un fenómeno físico donde la dispersión de la luz ocurre cuando esta atraviesa partículas coloidales en un medio. En dermatología capilar, este efecto explica por qué ciertos cabellos rubios o canosos pueden adquirir matices azulados o verdosos inesperados tras la aplicación de tintes con alta concentración de pigmentos fríos. La estructura de la queratina en cabellos desprovistos de melanina (canosos) dispersa preferentemente las ondas de luz de longitud corta (azules). Si el colorista no compensa esta física óptica con una formulación que contenga pigmentos cálidos correctores (como dorados o cobrizos), el resultado final será un color 'sucio' o 'metálico'. Este fenómeno es independiente de la calidad del tinte y es puramente una consecuencia de la interacción luz-materia. Comprender el efecto Tyndall es vital para la gestión de expectativas en clientes con cabello aclarado o canoso, permitiendo al profesional explicar por qué se requieren fórmulas de neutralización específicas en lugar de tonos puros.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria-color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:16:23.608Z"
+  }
+]

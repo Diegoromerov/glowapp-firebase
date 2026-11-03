@@ -1,0 +1,251 @@
+[
+  {
+    "chunk_id": "guias_unas-onicolisis-mecanica-001",
+    "title": "Onicólisis por tracción: el efecto 'palanca' en uñas esculpidas",
+    "content": "La onicólisis traumática por tracción mecánica es una entidad frecuente en usuarios de sistemas de extensión largos. Cuando la longitud de la extensión supera la capacidad de soporte del lecho ungueal, se genera una fuerza de palanca que actúa sobre el hiponiquio. Según estudios publicados en el 'Journal of the American Academy of Dermatology', el trauma repetitivo en el borde libre provoca una separación gradual de la lámina del lecho ungueal, creando un espacio subungueal que facilita la colonización por patógenos oportunistas. La física detrás de este fenómeno es simple: a mayor longitud de la uña, mayor es el brazo de palanca y, por ende, mayor la tensión tangencial ejercida sobre la zona de adhesión del hiponiquio. Es fundamental educar al cliente sobre la relación directa entre la longitud de la extensión y la integridad del sellado natural. La recomendación clínica es mantener el borde libre a una longitud proporcional al lecho ungueal natural para evitar la fatiga del tejido conectivo periungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas_muy_largas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_onicolisis"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:36:09.054Z"
+  },
+  {
+    "chunk_id": "guias_unas-limado-matriz-002",
+    "title": "Impacto del limado excesivo en la zona de la matriz",
+    "content": "El limado excesivo sobre la superficie de la lámina ungueal, especialmente cerca del eponiquio, es una práctica de riesgo que compromete la fisiología de la matriz. La lámina ungueal tiene un espesor limitado, y el uso de limas de grano grueso o tornos de alta velocidad puede generar un adelgazamiento excesivo, exponiendo la placa a una mayor permeabilidad. Investigaciones en 'PubMed' indican que la integridad de la placa dorsal es esencial para mantener el balance hídrico y evitar la entrada de químicos irritantes. Cuando se desgasta la capa dorsal, se pierde la protección natural de la queratina, lo que puede derivar en onicodistrofias permanentes. Un aspecto crítico es el calor generado por la fricción, que puede inducir microinflamación en la matriz ungueal. La técnica debe priorizar la preservación del espesor original de la placa, evitando cualquier manipulación mecánica que reduzca la resistencia estructural de la uña a factores externos y químicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30248888/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_preparacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:36:09.054Z"
+  },
+  {
+    "chunk_id": "guias_unas-ph-polimerizacion-004",
+    "title": "Variabilidad del pH ungueal y adhesión química",
+    "content": "La adhesión de los sistemas fotopolimerizables depende en gran medida del pH de la superficie de la lámina ungueal. El pH fisiológico de la uña es ligeramente ácido, lo cual favorece la interacción química con los monómeros y oligómeros de los geles. Factores como el uso excesivo de agentes deshidratantes alcalinos o la presencia de hiperhidrosis pueden alterar este equilibrio, provocando una falla prematura en la polimerización. Estudios en dermatología cosmética sugieren que una superficie demasiado alcalina inhibe la formación de enlaces covalentes robustos, dejando monómeros residuales que aumentan el riesgo de dermatitis alérgica de contacto. Es esencial evaluar el estado de la uña antes de aplicar cualquier producto. Si se detecta un pH alterado o una humedad excesiva, el uso de primers con pH balanceado es indispensable para asegurar una adhesión duradera y minimizar la liberación de componentes sensibilizantes. Mantener el pH natural es la clave para una manicura segura y duradera.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros",
+        "oligomeros"
+      ],
+      "contraindications": [
+        "hiperhidrosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:36:09.054Z"
+  },
+  {
+    "chunk_id": "guias_unas-exotermia-005",
+    "title": "Gestión de la reacción exotérmica en geles",
+    "content": "La reacción exotérmica durante la fotopolimerización es un proceso químico donde se libera energía en forma de calor. En geles de alta densidad o con alta carga de pigmentos, esta liberación puede ser intensa y superar el umbral de dolor del cliente, provocando una quemadura térmica en el lecho ungueal. La intensidad de esta reacción es proporcional a la velocidad de polimerización. Clínicamente, es fundamental utilizar lámparas con modo de 'bajo calor' (low heat mode) que gradúan la potencia de emisión UV/LED, permitiendo que la red polimérica se forme de manera gradual sin un pico de temperatura brusco. Ignorar este fenómeno no solo causa incomodidad, sino que puede derivar en onicólisis traumática por el desprendimiento del lecho debido al choque térmico. La educación sobre la potencia de la lámpara y el grosor de las capas aplicadas es la estrategia preventiva más efectiva para evitar complicaciones térmicas en el lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "geles_uv"
+      ],
+      "contraindications": [
+        "capas_muy_gruesas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso_tecnologia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:36:09.054Z"
+  },
+  {
+    "chunk_id": "guias_unas-cuticula-barrera-006",
+    "title": "La cutícula como barrera inmunológica protectora",
+    "content": "La cutícula, a menudo malentendida como un resto epidérmico desechable, es en realidad una estructura anatómica crucial que actúa como el sello hermético del eponiquio. Su función principal es proteger la matriz ungueal contra la penetración de microorganismos, alérgenos y contaminantes ambientales. La eliminación agresiva o 'corte profundo' de la cutícula rompe esta barrera, induciendo una respuesta inflamatoria crónica que puede predisponer al cliente a paroniquias bacterianas o fúngicas. Estudios dermatológicos enfatizan que la integridad de la cutícula es esencial para prevenir la entrada de patógenos en el espacio subungueal. En lugar de una remoción total, la tendencia actual en dermatología es el mantenimiento mediante hidratación con emolientes y un suave empuje hacia atrás, preservando la barrera cutánea. La práctica de cortar la cutícula debería ser limitada exclusivamente a la eliminación de tejido muerto (cutícula queratinizada) y nunca sobre el tejido vivo, para evitar la inflamación y la sensibilización alérgica a los productos químicos aplicados después.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "emolientes"
+      ],
+      "contraindications": [
+        "corte_agresivo_cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_cuticula"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:36:09.054Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidratacion-008",
+    "title": "La paradoja de la hidratación ungueal",
+    "content": "Existe una paradoja en el cuidado de la uña: aunque el agua es necesaria para la flexibilidad de la queratina, el exceso de hidratación (o la inmersión prolongada) debilita la estructura de la lámina. La uña es una estructura hidrofóbica natural. Cuando los corneocitos se saturan de agua, se hinchan y pierden su cohesión, lo que facilita que la lámina se descame (onicosquizia lamelar) y se ablande. Este estado de 'uña blanda' es el peor escenario para la adhesión de geles, ya que la lámina se flexiona demasiado, rompiendo los enlaces químicos del producto. La clave es el equilibrio hídrico. El uso de aceites de cutícula ricos en ácidos grasos ayuda a mantener la barrera lipídica, que protege contra la deshidratación excesiva pero también evita la sobre-hidratación. Es vital educar a los clientes sobre el uso de guantes en tareas domésticas para mantener este balance, garantizando que la uña conserve su rigidez natural necesaria para soportar sistemas artificiales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Clinics",
+        "url": "https://www.dermatologic.theclinics.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acidos_grasos"
+      ],
+      "contraindications": [
+        "inmersion_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consejos_cuidado_hogar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:36:09.054Z"
+  }
+]

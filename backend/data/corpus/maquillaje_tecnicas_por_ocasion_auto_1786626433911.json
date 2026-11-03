@@ -1,0 +1,338 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-deshidratacion-osmotica-001",
+    "title": "Maquillaje en entornos de deshidratación osmótica: Gestión del balance hídrico",
+    "content": "En eventos realizados en entornos con alta concentración de solutos ambientales o exposición a vapores químicos, la piel experimenta un fenómeno de deshidratación osmótica que altera la adherencia de las bases cosméticas. El gradiente de concentración entre el estrato córneo y el ambiente provoca una pérdida transepidérmica de agua (TEWL) acelerada. Para mitigar esto, es crucial utilizar humectantes higroscópicos como el ácido hialurónico de bajo peso molecular antes de la aplicación de pigmentos, evitando el uso de polvos minerales secantes que pueden absorber la humedad residual de la piel, exacerbando la xerosis. La evidencia clínica sugiere que el mantenimiento de la integridad del manto hidrolipídico es la primera línea de defensa contra la fisura de los pigmentos en estas condiciones. Se recomienda el uso de selladores con polímeros formadores de película que permitan la transpiración pero bloqueen la evaporación forzada por el gradiente osmótico ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/dry-skin-treatment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "glicerina"
+      ],
+      "contraindications": [
+        "polvos de talco"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-oxidativo-UV-002",
+    "title": "Maquillaje y protección contra el estrés oxidativo inducido por luz visible de alta energía",
+    "content": "La exposición prolongada a luz visible de alta energía (HEV) durante eventos sociales en interiores con iluminación intensa puede generar especies reactivas de oxígeno (ERO) que degradan los lípidos del maquillaje, causando el fenómeno de oxidación del pigmento. Este proceso no solo altera el color cosmético, sino que promueve el daño celular cutáneo mediado por fotosensores. Según estudios publicados en PubMed, la incorporación de antioxidantes tópicos como la vitamina C estabilizada o el resveratrol bajo la base de maquillaje actúa como un escudo scavenger contra los radicales libres. Es fundamental seleccionar bases que contengan óxidos de hierro tratados para reducir su capacidad catalítica en la formación de ERO. La gestión del color mediante correctores con pigmentos de contraste es insuficiente si no se controla la estabilidad redox de la emulsión sobre la piel durante el evento, previniendo la formación de subproductos indeseados que pueden irritar la barrera cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33913615/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microbiota-adherencia-003",
+    "title": "Impacto de la carga microbiana ambiental en la estabilidad del maquillaje",
+    "content": "El contacto social prolongado en eventos de alta concurrencia expone la piel a un intercambio de microbiota ambiental que puede colonizar la superficie de los productos cosméticos mal sellados. La proliferación de microorganismos en emulsiones con alto contenido de agua y pH neutro es un riesgo latente para la salud cutánea. Para prevenir esto, las técnicas de maquillaje profesional deben priorizar el uso de espátulas desechables y la desinfección de herramientas, evitando la contaminación cruzada. La literatura dermatológica subraya que la alteración del microbioma residente por patógenos exógenos puede desencadenar brotes acneiformes o dermatitis. Se recomienda el uso de primers con propiedades antimicrobianas naturales o conservantes de grado cosmético que mantengan el equilibrio del ecosistema cutáneo. La aplicación de capas finas de productos no oclusivos es esencial para no crear un ambiente anaeróbico que favorezca el crecimiento bacteriano bajo el maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "graso",
+        "acneico"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico",
+        "zinc"
+      ],
+      "contraindications": [
+        "productos comedogénicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-termorregulacion-004",
+    "title": "Maquillaje y termorregulación: Gestión de la vasodilatación inducida por calor ambiental",
+    "content": "En eventos bajo condiciones de calor radiante, la piel activa mecanismos de termorregulación que incluyen la vasodilatación periférica y la sudoración. El maquillaje convencional, al ser oclusivo, puede interferir con la evaporación del sudor, elevando la temperatura de la superficie cutánea y provocando el fenómeno de 'sudoración por rebote'. Esta condición dilata los poros y degrada la estructura de la base de maquillaje, causando migración y apelmazamiento. La estrategia clínica consiste en utilizar bases de maquillaje con tecnología de micro-porosidad o emulsiones de silicona volátil que permitan la salida del vapor de agua sin comprometer la cobertura. Además, el uso de aguas termales con alto contenido de sílice puede ayudar a absorber el exceso de humedad sin barrer los pigmentos. Evitar el uso de ceras pesadas es imperativo para mantener la homeostasis térmica y prevenir la dermatitis por fricción inducida por el roce con accesorios textiles húmedos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "dimeticona"
+      ],
+      "contraindications": [
+        "ceras oclusivas"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "termorregulacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-campos-electricos-005",
+    "title": "Maquillaje en entornos con alta intensidad de campos electromagnéticos",
+    "content": "La exposición a campos electromagnéticos (CEM) en ferias tecnológicas o entornos con alta densidad de dispositivos electrónicos puede influir en la adherencia de partículas cosméticas cargadas electrostáticamente. La interacción entre partículas metálicas presentes en pigmentos de alta saturación y los CEM puede alterar la distribución uniforme del maquillaje sobre la dermis. Estudios sugieren que la aplicación de primers con polímeros dieléctricos puede reducir la acumulación de partículas contaminantes y estabilizar la película cosmética. Es vital evitar el uso de pigmentos con alto contenido de hierro o partículas ferromagnéticas en entornos de alta exposición a radiofrecuencia (RF). La gestión de la carga electrostática de la piel mediante el uso de brumas hidratantes con electrolitos balanceados ayuda a neutralizar el potencial eléctrico superficial, mejorando la durabilidad del maquillaje y previniendo la adherencia de micropartículas urbanas que pueden causar inflamación subclínica por contacto.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-electromagnetic-fields",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-ph-006",
+    "title": "Variación del pH cutáneo por estrés emocional y su impacto en la adherencia del maquillaje",
+    "content": "El estrés emocional agudo, común en eventos de alta exigencia o entornos competitivos, induce la liberación de cortisol, lo cual altera el pH cutáneo, desplazándolo hacia un rango más alcalino. Esta variación afecta la estabilidad de las emulsiones cosméticas formuladas a un pH ligeramente ácido (4.7-5.5), provocando que los pigmentos se separen o cambien de tono debido a la desestabilización de los tensioactivos. La evidencia clínica indica que el uso de tónicos equilibradores de pH previo al maquillaje es fundamental para asegurar la adherencia y la integridad del color. Se recomienda el uso de bases con sistemas tampón (buffers) que resistan las fluctuaciones del pH inducidas por la respuesta endocrina. El control del pH no solo mejora la estética del maquillaje, sino que previene el debilitamiento de la barrera cutánea, reduciendo la susceptibilidad a irritaciones por contacto prolongado con productos químicos durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "buffers de pH"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-presion-barometrica-007",
+    "title": "Maquillaje en eventos de baja presión atmosférica: Gestión de la desgasificación",
+    "content": "En eventos realizados a gran altitud o en cabinas presurizadas, la disminución de la presión barométrica provoca la expansión de los gases atrapados en los poros y en la estructura de los productos cosméticos. Este fenómeno de desgasificación puede generar micro-fisuras en el maquillaje y promover la formación de burbujas en emulsiones líquidas, alterando la cobertura uniforme. La técnica recomendada para estas condiciones es la aplicación de productos en capas delgadas y el uso de selladores con polímeros elásticos que se adapten a la expansión volumétrica sin fracturarse. Es crucial evitar el uso de productos con altas concentraciones de disolventes volátiles que pueden evaporarse rápidamente bajo baja presión, dejando una película inestable. La hidratación profunda es necesaria para compensar la hipoxia hipobárica que reduce la capacidad de regeneración cutánea, manteniendo la piel elástica y capaz de retener el maquillaje de forma segura durante la duración del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6409243/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros elásticos"
+      ],
+      "contraindications": [
+        "disolventes volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "altitud"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibracion-mecanica-009",
+    "title": "Estabilidad del maquillaje ante la exposición a vibraciones mecánicas de alta frecuencia",
+    "content": "En eventos con sistemas de sonido de alta potencia o maquinaria industrial, la exposición a vibraciones mecánicas de alta frecuencia puede comprometer la estabilidad física de las emulsiones cosméticas sobre la piel. Estas vibraciones pueden inducir la coalescencia de las fases de la base de maquillaje, causando la separación de aceites y pigmentos, lo que resulta en un acabado irregular. Para mitigar este efecto, se deben seleccionar productos con agentes tixotrópicos que mantengan su viscosidad bajo estrés mecánico. La aplicación de un fijador en spray con polímeros de red tridimensional ayuda a 'anclar' los pigmentos, proporcionando una resistencia adicional a la degradación por vibración. Clínicamente, el manejo de la integridad de la película cosmética es vital no solo por estética, sino porque la separación de los componentes puede exponer la piel a ingredientes irritantes que normalmente estarían encapsulados. Se recomienda realizar pruebas de estrés previo al evento en entornos con vibraciones constantes para asegurar la durabilidad del maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes tixotrópicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:06:57.505Z"
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "chunk_id": "guias_unas-1786385697675-1-efa19b74-efecto-de-la-presion-osmotica-en-la-integridad-del-lecho-ung",
+    "title": "Efecto de la presión osmótica en la integridad del lecho ungueal",
+    "content": "La aplicación prolongada de sistemas fotopolimerizables genera un gradiente de presión osmótica en el lecho ungueal, especialmente cuando se utilizan bases de alta densidad. Este fenómeno, a menudo ignorado, puede inducir una micro-edematización del tejido subyacente debido a la diferencia de concentración de solutos entre el adhesivo y la queratina hidratada. La presión osmótica resultante altera la homeostasis del lecho, facilitando la penetración de monómeros residuales no polimerizados. Es crítico entender que la deshidratación excesiva previa a la aplicación, lejos de mejorar la adhesión, puede exacerbar este desequilibrio osmótico al intentar compensar la falta de humedad con la absorción de componentes químicos del gel. La gestión técnica implica el uso de primers con pH balanceado que no alteren drásticamente la presión osmótica del tejido. La monitorización de la sensación de 'tensión' o 'tirantez' por parte del cliente es el primer indicador clínico de un desajuste en este gradiente. Mantener la integridad de la barrera lipídica es la única defensa efectiva contra la migración de sustancias por gradiente osmótico, previniendo así reacciones de sensibilización a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "primers"
+      ],
+      "contraindications": [
+        "onicólisis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_aplicada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:57.675Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385697675-2-74abc5bc-fotobiologia-de-la-luz-azul-impacto-en-la-matriz-ungueal",
+    "title": "Fotobiología de la luz azul: impacto en la matriz ungueal",
+    "content": "Más allá de la radiación UV, las lámparas de cabina emiten luz azul de alta energía (HEV) que interactúa con los fotoiniciadores de los geles. Esta radiación tiene una longitud de onda cercana a los 450 nm, capaz de penetrar capas más profundas de la matriz ungueal que los rayos UVA. La exposición repetida a este espectro puede inducir estrés oxidativo en los melanocitos matriciales, lo que se manifiesta clínicamente como una pigmentación longitudinal transitoria o, en casos de susceptibilidad, una alteración en la tasa de crecimiento ungueal. La fotobiología moderna sugiere que la emisión de luz azul no es inocua para el tejido vivo periungueal. Se recomienda el uso de guantes con protección UV certificada que cubran no solo la piel, sino que minimicen la dispersión de luz hacia la matriz. La gestión de la intensidad de la luz azul durante la fase de 'flash cure' es esencial para reducir la fototoxicidad acumulativa. La comprensión de la curva de emisión de los diodos LED de la cabina permite ajustar los tiempos de exposición para optimizar la polimerización sin comprometer la salud celular del tejido germinativo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotobiología"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:57.675Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385697675-3-960426e9-reologia-de-geles-constructores-viscosidad-y-nivelacion",
+    "title": "Reología de geles constructores: viscosidad y nivelación",
+    "content": "La reología, o el estudio del flujo de la materia, es fundamental para el manejo de geles constructores. Un gel con comportamiento pseudoplástico (tixotrópico) disminuye su viscosidad bajo esfuerzo mecánico, permitiendo una nivelación precisa sin desbordamiento hacia los surcos periungueales. El error técnico común es aplicar una fuerza de nivelación excesiva que supera el límite elástico del material, provocando una distribución desigual que genera puntos de estrés mecánico tras la polimerización. La viscosidad no es solo una propiedad física, sino un factor de seguridad: un gel demasiado fluido aumenta el riesgo de contacto cutáneo con monómeros no polimerizados, lo cual es la principal causa de dermatitis alérgica de contacto en profesionales. La gestión de la reología requiere entender el tiempo de relajación del material; si el gel se polimeriza antes de alcanzar su estado de equilibrio, se crean tensiones internas en la estructura molecular del polímero, lo que reduce la durabilidad y aumenta la fragilidad del borde libre. Un profesional experto debe adaptar la técnica de aplicación según el índice de viscosidad del producto, garantizando una arquitectura ungueal biomecánicamente estable.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligómeros",
+        "monómeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "reología"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:57.675Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385697676-4-5f3a0693-cinetica-de-la-inhibicion-por-oxigeno-en-recubrimientos",
+    "title": "Cinética de la inhibición por oxígeno en recubrimientos",
+    "content": "La capa de inhibición por oxígeno es un fenómeno químico donde el oxígeno atmosférico reacciona con los radicales libres generados durante la fotopolimerización, deteniendo la cadena de reacción en la superficie del gel. Aunque esta capa pegajosa es útil para la adhesión entre capas, su presencia excesiva es un indicador de una polimerización incompleta en la interfaz. Si la capa de inhibición es demasiado profunda, la superficie del producto final queda enriquecida con monómeros no reaccionados, lo que aumenta significativamente el riesgo de sensibilización cutánea. La gestión técnica implica el uso de lámparas con la longitud de onda adecuada para superar la barrera de inhibición o la aplicación de técnicas de sellado que minimicen la exposición al aire durante el curado. Es vital entender que limpiar esta capa con solventes inadecuados puede arrastrar monómeros hacia la piel circundante. La correcta cinética de polimerización busca un equilibrio donde la superficie esté suficientemente curada para ser inerte, pero mantenga la energía superficial necesaria para la adhesión del siguiente producto, evitando así la formación de residuos tóxicos en la superficie de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "acrilatos"
+      ],
+      "contraindications": [
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_aplicada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:57.676Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385697676-5-421a15a5-dinamica-de-la-presion-friccional-en-la-matriz-ungueal",
+    "title": "Dinámica de la presión friccional en la matriz ungueal",
+    "content": "El uso de fresas de carburo o diamante genera una presión friccional que se traduce en calor mecánico. Este calor no solo afecta la queratina, sino que puede inducir una hiperestimulación de la matriz ungueal, alterando la queratinización normal. La dinámica de la presión ejercida sobre el lecho ungueal durante el limado debe ser controlada para evitar la formación de microfisuras en la lámina. Un error común es aplicar una presión constante en lugar de movimientos intermitentes, lo que impide la disipación térmica y eleva la temperatura local por encima del umbral de tolerancia del tejido vivo. La fricción excesiva también desestabiliza la adhesión de los sistemas fotopolimerizables al crear una superficie irregular con restos de queratina desnaturalizada. La técnica correcta implica el uso de fresas con la granulometría adecuada para cada fase, minimizando el contacto directo con la zona de la matriz. La observación de la temperatura de la pieza de mano y la respuesta del cliente son indicadores clínicos fundamentales. Reducir la presión friccional es la medida preventiva más eficaz contra la onicólisis mecánica y la inflamación crónica del eponiquio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "onicólisis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "técnica_mecánica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:57.676Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385697676-6-b9335c93-homeostasis-del-lecho-ungueal-y-primers-acidos",
+    "title": "Homeostasis del lecho ungueal y primers ácidos",
+    "content": "Los primers ácidos funcionan mediante la desmineralización superficial de la lámina ungueal para aumentar la porosidad y mejorar el anclaje químico. Sin embargo, su uso indiscriminado altera el pH natural del lecho ungueal, que oscila entre 5.0 y 6.0, desplazándolo hacia un entorno más ácido que puede irritar el hiponiquio y el eponiquio. Esta alteración de la homeostasis favorece la proliferación de microorganismos oportunistas al romper la barrera ácida protectora. La gestión clínica de los primers requiere una aplicación mínima y localizada, evitando el contacto con el tejido vivo periungueal. La neutralización del pH tras la aplicación es un paso crítico que a menudo se omite, dejando residuos ácidos que pueden degradar la integridad de la queratina a largo plazo. La elección entre primers ácidos y no ácidos debe basarse en el estado de la lámina ungueal y la necesidad real de adhesión. Un enfoque preventivo prioriza la salud del lecho ungueal sobre la fuerza de adhesión extrema, reconociendo que una lámina sana es el mejor sustrato para cualquier sistema fotopolimerizable. La monitorización de signos de irritación periungueal es obligatoria tras el uso de estos agentes químicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácidos",
+        "primers"
+      ],
+      "contraindications": [
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_aplicada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:57.676Z"
+  }
+]

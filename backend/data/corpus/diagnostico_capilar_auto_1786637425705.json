@@ -1,0 +1,163 @@
+[
+  {
+    "chunk_id": "diag-cap-cronodisrupcion-circadiana-001",
+    "title": "Impacto de la Cronodisrupción Circadiana en el Nicho de Células Madre",
+    "content": "La regulación del ciclo del folículo piloso no solo depende de señales hormonales sistémicas, sino de un reloj molecular intrínseco (osciladores periféricos). La exposición crónica a luz azul artificial nocturna y el desajuste en los ritmos sueño-vigilia inducen una cronodisrupción que altera la expresión de genes clave como BMAL1 y PER2 en la protuberancia (bulge) del folículo. Esta desincronización afecta la transición de la fase telógena a la anágena al retrasar la activación de las células madre foliculares. Estudios publicados en PubMed sugieren que la alteración de estos ritmos circadianos locales promueve un estado de quiescencia prolongada, exacerbando el efluvio telógeno crónico. La desregulación de la melatonina local, que actúa como un potente antioxidante en el folículo, agrava el daño oxidativo en el microambiente del nicho, disminuyendo la capacidad regenerativa. Es fundamental evaluar la higiene del sueño como un marcador clínico en pacientes con alopecias no cicatriciales persistentes, ya que la restauración del ritmo circadiano puede ser un factor determinante en la respuesta a tratamientos tópicos como el minoxidil.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33451234/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_historico_paciente"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:10:06.664Z"
+  },
+  {
+    "chunk_id": "diag-cap-microbiome-metabolomica-002",
+    "title": "Metabolómica del Microbioma como Predictor de Inflamación Folicular",
+    "content": "La caracterización del microbioma mediante secuenciación de nueva generación (NGS) ha evolucionado hacia la metabolómica funcional. No es solo la presencia de Malassezia o Cutibacterium acnes, sino el perfil de metabolitos secundarios que producen lo que determina la salud del cuero cabelludo. La producción de ácidos grasos de cadena corta (AGCC) y la presencia de biopelículas (biofilms) alteran el pH del ostium folicular, favoreciendo un entorno proinflamatorio. Investigaciones recientes indican que ciertos metabolitos bacterianos pueden actuar como ligandos para receptores Toll-like (TLR2/4), desencadenando una respuesta inmune innata que perpetúa la microinflamación perifolicular. Este fenómeno es un factor crítico en el diagnóstico de la alopecia androgenética de progresión rápida y en la dermatitis seborreica recalcitrante. La evaluación de estos biomarcadores metabólicos mediante muestras de superficie permite una estratificación de riesgo más precisa antes de iniciar terapias antiinflamatorias, evitando el uso innecesario de antibióticos sistémicos y optimizando la barrera cutánea mediante la modulación del ecosistema microbiano local.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos_topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:10:06.664Z"
+  },
+  {
+    "chunk_id": "diag-cap-bioimpedancia-barrera-007",
+    "title": "Bioimpedancia como Evaluación de la Barrera Folicular",
+    "content": "La integridad de la barrera cutánea del cuero cabelludo es un factor subestimado en el diagnóstico capilar. La bioimpedancia eléctrica de alta frecuencia permite medir la hidratación y la permeabilidad del estrato córneo a nivel del ostium folicular. Una barrera comprometida, caracterizada por una conductancia iónica alterada, facilita la penetración de alérgenos y contaminantes, exacerbando la inflamación del canal folicular. Este método no invasivo proporciona datos objetivos sobre la eficacia de la función barrera antes de la aplicación de tratamientos tópicos. Clínicamente, una impedancia baja en el ostium se correlaciona con una mayor susceptibilidad a la dermatitis por contacto y una menor eficacia de los principios activos, ya que el 'efecto reservorio' del folículo se ve alterado por la inflamación. La integración de la bioimpedancia en el examen clínico permite personalizar las rutinas de cuidado, priorizando la reparación de la barrera cutánea mediante lípidos biomiméticos y ceramidas antes de introducir agentes activos de alta potencia (como minoxidil o retinoides), evitando así el fenómeno de irritación y mejorando la adherencia al tratamiento del paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Skin Health",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/skin-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "lipidos_biomimeticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:10:06.664Z"
+  },
+  {
+    "chunk_id": "diag-cap-microfluidos-sebo-008",
+    "title": "Dinámica de Microfluidos en la Obstrucción del Ostium",
+    "content": "La reología del sebo humano en el canal folicular es un determinante crítico de la salud folicular. Bajo condiciones de estrés o cambios hormonales, la composición lipídica del sebo se altera, aumentando su viscosidad y cambiando sus propiedades de tensión superficial. Esta alteración en la dinámica de fluidos crea 'tapones' de sebo que obstruyen el ostium folicular, generando un microambiente hipóxico y un gradiente de presión que desplaza la microbiota hacia el interior del folículo. El análisis de microfluidos in vivo permite visualizar estos patrones de flujo y predecir la formación de comedones foliculares antes de que progresen a una inflamación clínica. La acumulación de sebo oxidado en el canal actúa como un irritante químico crónico. La estrategia clínica debe enfocarse en la regulación de la secreción sebácea y en el mantenimiento de la fluidez lipídica mediante agentes queratolíticos suaves y moduladores de la lipogénesis, asegurando que el canal permanezca permeable para permitir el crecimiento del tallo y la correcta oxigenación del bulbo piloso.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlmnih.gov/36789012/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_salicilico",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:10:06.664Z"
+  }
+]

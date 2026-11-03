@@ -1,0 +1,418 @@
+{
+  "batch_metadata": {
+    "category": "textura_poros",
+    "phase": 2,
+    "risk_level": "alto",
+    "batch_id": "textpor-lote1",
+    "chunk_count": 16,
+    "generated_at": "2026-08-08T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Fase 2 alto riesgo: textura y poros. Incluye contexto latinoamericano (fototipos IV-VI, MPIH) y expectativas realistas vs mitos."
+  },
+  "chunks": [
+    {
+      "chunk_id": "textpor-001",
+      "title": "Qué son los poros y por qué no son un defecto: función fisiológica",
+      "content": "Los poros son las aberturas visibles de los folículos pilosebáceos en la superficie de la piel, y cumplen una función fisiológica esencial: a través de ellos llega a la superficie el sebo producido por las glándulas sebáceas, que forma parte de la película hidrolipídica que protege, lubrica e impermeabiliza la piel. Tener poros visibles no es un defecto ni una enfermedad: es anatomía normal. Un concepto clave que la dermatología enfatiza es que los poros no tienen músculo ni compuerta: no se abren ni se cierren como una puerta, y por lo tanto ningún producto puede cerrarlos de forma permanente. Lo que sí es posible es reducir su apariencia: cuando un poro está dilatado por exceso de sebo, queratina acumulada o pérdida de colágeno alrededor, al limpiar su contenido y mejorar la calidad de la piel circundante, visualmente se ve más pequeño. Entender esto es fundamental para tener expectativas realistas y no caer en productos que prometen cerrar los poros, una promesa fisiológicamente imposible. La piel sana tiene poros; el objetivo de una rutina de textura no es eliminarlos sino mantenerlos limpios y la piel firme.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "AAD — Skin Care Basics (Patient Education)", "url": "https://www.aad.org/public/everyday-care/skin-care-basics", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "grasa", "mixta"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_fisiologia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-002",
+      "title": "Qué determina el tamaño de los poros: genética, edad, sebo y sol",
+      "content": "El tamaño aparente de los poros depende de varios factores bien documentados en dermatología. Primero, la genética: el tamaño basal de los folículos y la actividad de las glándulas sebáceas están determinados en gran parte por la herencia y por los andrógenos, por lo que algunas personas tienen naturalmente poros más visibles, especialmente en pieles grasas. Segundo, la edad y la pérdida de colágeno: con el tiempo y el fotoenvejecimiento, la piel pierde elasticidad y el soporte de colágeno alrededor del poro se debilita, haciendo que el poro se vea más dilatado y alargado. Tercero, el exceso de sebo y la acumulación de queratina: cuando el folículo se llena de sebo y células muertas, el poro se distiende y se ve más grande; este es el factor más modificable con tratamiento. Cuarto, la exposición solar crónica, que degrada el colágeno y acelera la dilatación aparente. Quinto, los cambios hormonales (pubertad, ciclo menstrual, síndrome de ovario poliquístico) que aumentan la producción de sebo. De estos factores, los que se pueden modificar con una rutina adecuada son el contenido de sebo/queratina y la calidad del colágeno; los que no se modifican son el tamaño genético basal y la estructura anatómica. Por eso el enfoque correcto es mejorar la apariencia y la salud de la piel, no perseguir la eliminación total del poro.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "BJD/JAMA Dermatology/JAAD — Estudios de poros y textura facial", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "grasa"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "fundamento_fisiologia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-003",
+      "title": "El mito de 'cerrar los poros': qué es posible y qué es marketing",
+      "content": "La promesa de cerrar los poros es una de las más comunes y una de las más engañosas en cosmética. Fisiológicamente, los poros no pueden cerrarse porque no tienen músculo que los contraiga; ningún tónico, agua fría, hielo o producto los cierra de forma permanente. Lo que sí es posible, y está respaldado por la evidencia, es reducir su apariencia actuando sobre los factores modificables. Limpiar el contenido del poro: los comedolíticos como el ácido salicílico (BHA) y los retinoides destapan el sebo y la queratina que distienden el poro, y al vaciarse el poro se ve más pequeño. Mejorar el soporte de colágeno: los retinoides y la protección solar diaria preservan y estimulan el colágeno periporal, lo que con el tiempo mejora la firmeza y la apariencia del poro. Controlar el brillo: la niacinamida regula el sebo y reduce el aspecto graso que hace notar los poros. Estos cambios toman semanas, no minutos, y son mejoras de apariencia, no cambios anatómicos. Desconfía de productos que prometen cerrar poros en días: en el mejor de los casos producen un efecto visual temporal (astringentes que tensan la superficie), y en el peor irritan la barrera y empeoran la textura. La expectativa realista y saludable es: poros limpios, piel firme y textura uniforme, no piel sin poros.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Skin Care Basics (Patient Education)", "url": "https://www.aad.org/public/everyday-care/skin-care-basics", "year": 2024 },
+        { "institution": "FDA — Understanding Over-the-Counter Acne Treatments", "url": "https://www.fda.gov/drugs/understanding-over-counter-medicines/understanding-over-counter-acne-treatments", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido salicilico", "niacinamida", "retinoides"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-004",
+      "title": "Niacinamida para poros y textura: evidencia con concentraciones 2-5%",
+      "content": "La niacinamida es uno de los ingredientes con mejor evidencia para mejorar la apariencia de los poros y la textura de la piel, y es especialmente valiosa porque es bien tolerada por todos los tipos de piel y fototipos. Sus mecanismos incluyen la regulación de la producción de sebo, el refuerzo de la barrera cutánea mediante la síntesis de ceramidas, y la acción antiinflamatoria. Estudios publicados en revistas como el British Journal of Dermatology y JAAD han evaluado concentraciones del 2% al 5%, encontrando reducción medible del sebo y mejora de la apariencia de los poros tras varias semanas de uso, con excelente perfil de seguridad. En la práctica, la niacinamida es ideal para pieles grasas o mixtas con poros visibles porque controla el brillo sin irritar, a diferencia de otros activos más agresivos. Se puede usar de día y de noche, combina bien con prácticamente todos los ingredientes (incluyendo retinol, vitamina C y ácido hialurónico), y es una opción segura incluso en pieles sensibles. Para textura y poros, una rutina sencilla y efectiva incluye un suero de niacinamida al 4-5% diario más protector solar. Los resultados no son inmediatos: la mejora de la apariencia de los poros se observa típicamente entre las 4 y 8 semanas de uso constante.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "BJD/JAMA Dermatology/JAAD — Seguridad y eficacia niacinamida 2-5% en poros y sebo", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Revisiones sistemáticas de ingredientes activos", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["grasa", "mixta", "sensible", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["niacinamida"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-005",
+      "title": "Ácido salicílico (BHA) para poros y comedones: concentraciones OTC según FDA",
+      "content": "El ácido salicílico es el exfoliante químico de referencia para poros y comedones porque es liposoluble: a diferencia de los AHAs que actúan en la superficie, el BHA penetra dentro del poro y disuelve el sebo y la queratina que lo obstruyen. Esto lo hace especialmente efectivo para puntos negros, puntos blancos y poros dilatados por contenido. La FDA, en su guía de tratamientos de acné de venta libre, reconoce el ácido salicílico en concentraciones del 0.5% al 2% como ingrediente seguro y efectivo para uso cosmético domiciliario; concentraciones mayores se reservan para procedimientos profesionales. Para el uso en casa, se recomienda empezar con concentraciones bajas (0.5-1%) unas 2-3 veces por semana e ir aumentando según tolerancia. Puede causar sequedad e irritación si se usa en exceso, y no debe combinarse con otros exfoliantes potentes en la misma rutina sin supervisión. En pieles muy sensibles, con rosácea activa o barrera comprometida, debe usarse con precaución. Durante el embarazo, el uso puntual en concentraciones bajas y áreas pequeñas se considera de bajo riesgo, pero el uso frecuente o en áreas extensas debe consultarse con el médico. Como con todo exfoliante, el protector solar diario es obligatorio. El ácido salicílico es una pieza central de cualquier rutina para poros, pero su beneficio depende de la constancia y de no sobre-exfoliar.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Understanding Over-the-Counter Acne Treatments", "url": "https://www.fda.gov/drugs/understanding-over-counter-medicines/understanding-over-counter-acne-treatments", "year": 2024 },
+        { "institution": "INVIMA — Fichas Técnicas de Ingredientes Cosméticos", "url": "https://www.invima.gov.co/", "year": 2024, "note": "Concentración máxima permitida en Colombia requiere verificación local" }
+      ],
+      "metadata": {
+        "skin_types": ["grasa", "mixta"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido salicilico", "BHA"],
+        "contraindications": ["piel muy sensible", "rosacea activa", "embarazo uso extenso sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-006",
+      "title": "Retinoides para textura: adapaleno y tretinoína como comedolíticos y estimuladores de colágeno",
+      "content": "Los retinoides son el ingrediente con mayor impacto en la textura de la piel a mediano y largo plazo, y actúan sobre los poros por dos vías. Primero, son comedolíticos: normalizan la queratinización del folículo y destapan los comedones, vaciando el contenido que distiende el poro; el adapaleno, disponible sin receta en muchos países, es el retinoide de referencia para acné comedoniano por su buena tolerabilidad. Segundo, estimulan la producción de colágeno y aceleran la renovación celular, mejorando la firmeza de la piel alrededor del poro y la textura general; la tretinoína es el estándar de oro en fotoenvejecimiento por esta razón. Los retinoides requieren uso nocturno, introducción gradual para tolerar la retinización, y protector solar diario obligatorio. Están contraindicados en embarazo y lactancia, y deben usarse con precaución en pieles sensibles o con rosácea. En una rutina para textura y poros, el retinoide es el activo de mayor potencia, pero debe combinarse con hidratación y protección solar, y no sumarse a otros exfoliantes irritantes en la misma aplicación. Los resultados de textura se observan a partir de las 8-12 semanas. Si estás embarazada, en lactancia o con piel muy reactiva, consulta a tu dermatólogo antes de usar retinoides; existen alternativas como la niacinamida y el ácido azelaico.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["grasa", "mixta", "all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["adapaleno", "tretinoina", "retinoides"],
+        "contraindications": ["embarazo", "lactancia", "piel sensible sin supervision"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-007",
+      "title": "AHAs para textura superficial: glicólico y láctico, renovación y luminosidad",
+      "content": "Los alfa-hidroxiácidos (AHAs) como el ácido glicólico y el ácido láctico actúan en la superficie de la piel, rompiendo los enlaces entre las células muertas de la capa córnea y acelerando la renovación. Esto mejora la textura áspera, la opacidad y las irregularidades superficiales, dando luminosidad y suavidad. El ácido glicólico, de menor tamaño molecular, penetra más y es más potente, ideal para pieles resistentes; el ácido láctico, más grande y con acción humectante, es más suave y adecuado para pieles secas o sensibles. Para textura, los AHAs se usan 1-3 veces por semana, preferiblemente de noche, y siempre con protector solar de amplio espectro al día siguiente, porque aumentan la sensibilidad a la radiación UV. Una precaución importante en fototipos medios a oscuros (III-VI), prevalentes en Latinoamérica: la sobre-exfoliación o el uso de concentraciones altas puede desencadenar hiperpigmentación postinflamatoria, por lo que se recomienda empezar con concentraciones bajas y frecuencia reducida. Los AHAs no penetran el poro como el BHA, así que para puntos negros y poros obstruidos el ácido salicílico es más efectivo; los AHAs brillan en textura superficial y luminosidad. Pueden alternarse con BHA en rutinas separadas, pero no combinarse en la misma aplicación sin orientación profesional.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "ANVISA — Monografías de Ingredientes Cosméticos", "url": "https://www.gov.br/anvisa/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all", "seca", "sensible"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido glicolico", "acido lactico", "AHA"],
+        "contraindications": ["sobre-exfoliacion", "fototipos oscuros sin precaucion"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_ingrediente"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-008",
+      "title": "Sol y poros: por qué el protector solar es el mejor tratamiento de textura",
+      "content": "Si hubiera que elegir un solo producto para la textura y la apariencia de los poros, la evidencia apunta al protector solar de amplio espectro. La radiación ultravioleta degrada el colágeno y la elastina de la dermis, incluido el colágeno que rodea y sostiene los poros; cuando ese soporte se debilita, el poro pierde firmeza y se ve más dilatado y alargado. Este es uno de los mecanismos del fotoenvejecimiento, y es acumulativo e irreversible en gran parte. Por eso, proteger la piel del sol todos los días, incluso en días nublados o de oficina, preserva el colágeno periporal y mantiene la textura que tanto cuesta mejorar con activos. Además, en fototipos medios y oscuros, la exposición solar oscurece y prolonga las marcas postinflamatorias del acné, empeorando la percepción de textura irregular; el protector solar es el paso número uno para prevenir y tratar esas manchas. Las guías dermatológicas recomiendan un protector solar de amplio espectro con FPS 30 o superior, aplicado en cantidad suficiente (aproximadamente dos dedos para el rostro) y reaplicado cada 2-3 horas en exposición directa. Para pieles grasas con poros visibles, existen fórmulas en gel, fluidos o con acabado mate que no aportan brillo. Ningún activo de textura rinde su máximo beneficio si no se acompaña de protección solar diaria.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Skin Care Basics (Patient Education)", "url": "https://www.aad.org/public/everyday-care/skin-care-basics", "year": 2024 },
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Guías de Práctica Clínica (fotoprotección y MPIH)", "url": "https://www.dermalatino.org/guias/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": ["protector solar"],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "fundamento_fotoproteccion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-009",
+      "title": "Rutina segura para piel grasa con poros visibles: limpieza suave y constancia",
+      "content": "Para piel grasa con poros visibles, la rutina con mejor relación beneficio-riesgo según las guías de la AAD y EADV se basa en suavidad y constancia, no en agresividad. Limpieza: máximo dos veces al día con un limpiador suave; lavar con más frecuencia o con productos muy detergentes daña la barrera y puede producir efecto rebote de irritación, no menos grasa. Activos: un comedolítico como ácido salicílico 0.5-2% o adapaleno por la noche, introducido gradualmente; niacinamida al 4-5% de día para sebo y brillo. Hidratación: sí, la piel grasa también necesita hidratante; elegir fórmulas ligeras etiquetadas como no comedogénicas o oil-free, porque una barrera hidratada tolera mejor los activos. Protección solar diaria en textura gel o mate. Errores a evitar: exfoliar a diario, combinar varios ácidos a la vez, usar scrubs agresivos, y saltarse el hidratante. La constancia importa más que la intensidad: los cambios de textura toman de 6 a 12 semanas. Si después de 8 semanas de rutina constante no hay mejora, o aparecen brotes inflamatorios, es momento de consultar al dermatólogo, que puede ajustar concentraciones o añadir tratamiento médico. Esta estructura de rutina es la base que el planificador de skincare de GlowApp personaliza según tu tipo de piel y objetivos.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Skin care habits that worsen acne (Patient education)", "url": "https://www.aad.org/public/diseases/acne/skin-care", "year": 2024 },
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["grasa", "mixta"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido salicilico", "niacinamida", "adapaleno"],
+        "contraindications": ["sobre-exfoliacion"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-010",
+      "title": "Lo que NO debes hacer con los poros: exprimir, tiras y sobre-exfoliación",
+      "content": "Algunas prácticas populares para los poros no solo no ayudan, sino que empeoran la textura y pueden dejar secuelas. Exprimir puntos negros o blancos con los dedos o instrumentos caseros: produce microtraumas, inflamación y riesgo de infección, y en fototipos medios a oscuros frecuentemente deja hiperpigmentación postinflamatoria que dura meses; además, la manipulación repetida puede dañar la pared del folículo y hacer el poro permanentemente más visible. Tiras adhesivas para poros: arrancan el contenido superficial del comedón y dan un efecto visual inmediato, pero no modifican el poro y pueden irritar o lesionar la capa córnea, especialmente en pieles sensibles o con rosácea. Scrubs con gránulos grandes o cepillos agresivos: raspan la superficie, dañan la barrera y empeoran la inflamación del acné activo; la AAD desaconseja el frote agresivo en piel acneica. Sobre-exfoliación química: combinar AHAs, BHA y retinoides sin criterio satura la barrera cutánea, causando enrojecimiento, ardor y textura paradójicamente peor. El vapor y el hielo tampoco abren ni cierran poros de forma permanente. La alternativa segura para comedones resistentes es la extracción profesional realizada por un dermatólogo o esteticista certificado con técnica e higiene adecuadas. En casa, la vía efectiva y segura es química y gradual: BHA, retinoides y niacinamida con protección solar.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Skin care habits that worsen acne (Patient education)", "url": "https://www.aad.org/public/diseases/acne/skin-care", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD) — Consensos", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["exprimir comedones", "tiras adhesivas", "scrubs agresivos", "sobre-exfoliacion"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "practicas_de_riesgo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-011",
+      "title": "Manchas post-acné en fototipos IV-VI: hiperpigmentación postinflamatoria en piel latina",
+      "content": "En la población colombiana y latinoamericana, donde predominan los fototipos de Fitzpatrick III a VI, una de las consecuencias más frecuentes y molestas del acné no es la cicatriz sino la hiperpigmentación postinflamatoria (MPIH): manchas oscuras que persisten semanas o meses después de que el grano sana. Esto ocurre porque los melanocitos de las pieles más pigmentadas responden a la inflamación produciendo exceso de melanina. El manejo de la MPIH tiene tres pilares. Primero, prevención: no exprimir ni manipular las lesiones, y usar protector solar de amplio espectro todos los días, porque la radiación UV oscurece y prolonga las manchas; en fototipos oscuros el FPS es parte del tratamiento despigmentante. Segundo, activos seguros y efectivos: niacinamida, ácido azelaico y ácido tranexámico tópico tienen buen perfil para MPIH y son seguros en fototipos oscuros; la hidroquinona puede usarse solo en ciclos cortos y bajo supervisión médica por el riesgo de ocronosis. Tercero, precaución con procedimientos: peelings profundos y láseres agresivos en fototipos IV-VI pueden causar nueva hiperpigmentación si no los realiza un profesional con experiencia en piel pigmentada; las guías de la SLD y SCD enfatizan la selección cuidadosa de energía y preparación previa de la piel. La MPIH mejora, pero toma meses; la paciencia y la fotoprotección constante son parte central del tratamiento.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Guías de Práctica Clínica", "url": "https://www.dermalatino.org/guias/", "year": 2023 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD) — Consensos", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["IV", "V", "VI"],
+        "ingredients": ["niacinamida", "acido azelaico", "acido tranexamico", "hidroquinona"],
+        "contraindications": ["exprimir lesiones", "procedimientos agresivos sin experto"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "analizador_colorimetria", "aura"],
+        "content_type": "contexto_latinoamericano"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-012",
+      "title": "Señales de alarma en acné y textura: cuándo ir al dermatólogo",
+      "content": "El cuidado domiciliario de poros y textura es seguro y efectivo para la mayoría, pero hay señales que indican que se necesita evaluación dermatológica. Acné inflamatorio profundo: nódulos o quistes dolorosos, que no responden a productos de venta libre y que dejan cicatriz; el acné noduloquístico requiere tratamiento médico (retinoides orales, antibióticos u otros) y el retraso aumenta el riesgo de cicatrices permanentes. Cicatrices establecidas: las cicatrices atróficas (deprimidas) no mejoran con cosméticos; existen procedimientos como láser, microneedling o subcisión que deben ser realizados por un dermatólogo. Ausencia de mejora tras 6-8 semanas de rutina constante con activos adecuados. Sospecha de causa hormonal: acné de aparición tardía con patrón mandibular, irregularidades menstruales o vello aumentado pueden indicar un desbalance que requiere estudio. Impacto emocional significativo: el acné y las manchas afectan la calidad de vida y merecen tratamiento activo. Embarazo o lactancia con acné activo: las opciones se reducen y el plan debe diseñarlo un médico. En Colombia, los dermatólogos certificados están registrados y puedes verificarlos en los listados de la Sociedad Colombiana de Dermatología (SCD). Consultar a tiempo no es fracasar con la rutina: es usar la herramienta correcta en el momento correcto.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 },
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD) — Consensos", "url": "https://www.scd.org.co/consensos/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "red_flags_derivacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-013",
+      "title": "Escáneres de textura y poros con IA: qué miden y qué no pueden diagnosticar",
+      "content": "Los módulos de análisis facial con inteligencia artificial, como el escáner de textura y poros de GlowApp, usan visión computarizada para cuantificar características visibles de la piel: distribución del brillo y sebo, contraste y tamaño aparente de poros en zonas como nariz y mejillas, uniformidad de la textura, y presencia de marcas o rojeces. Esta medición es útil para tres cosas: establecer una línea base objetiva, hacer seguimiento en el tiempo del efecto de una rutina (comparar fotos estandarizadas semana a semana), y personalizar recomendaciones cosméticas según el perfil detectado. Pero es fundamental entender sus límites: un escáner de imagen no diagnostica acné ni ninguna enfermedad, no mide la salud interna de la piel, no sustituye la evaluación clínica con dermatoscopia o historia médica, y su precisión depende de la iluminación, el ángulo y la limpieza de la cámara. Desde el punto de vista regulatorio, estas herramientas de bienestar y cosmética no son dispositivos médicos de diagnóstico (la FDA y el INVIMA distinguen claramente entre apps de bienestar/estética y software médico), por lo que sus resultados deben interpretarse como orientación cosmética, no como juicio clínico. La regla de oro: si el escáner o tú detectan lesiones inflamatorias, dolor, o cambios que preocupan, la vía correcta es el dermatólogo. La IA es un espejo inteligente que te ayuda a cuidar tu piel, no un médico.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "FDA — Understanding Over-the-Counter Acne Treatments / Software de bienestar vs dispositivo médico", "url": "https://www.fda.gov/", "year": 2024 },
+        { "institution": "INVIMA — Fichas Técnicas y clasificación de dispositivos", "url": "https://www.invima.gov.co/", "year": 2024 },
+        { "institution": "BJD/JAMA Dermatology/JAAD — Estudios de análisis de poros por imagen e IA facial", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "limites_tecnologia_ia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-014",
+      "title": "Textura y poros en embarazo y lactancia: qué activos sí y cuáles no",
+      "content": "Durante el embarazo y la lactancia, el aumento hormonal de sebo puede empeorar poros y acné, pero las opciones de tratamiento se reducen por seguridad. Lo que se evita: retinoides tópicos y orales (contraindicados por teratogenicidad), hidroquinona (sin evidencia de seguridad), y ácido salicílico en concentraciones altas o áreas extensas sin orientación médica. Lo que generalmente se considera seguro o de bajo riesgo con aval médico: ácido azelaico (una de las opciones con mejor perfil para acné y manchas en gestantes), niacinamida (excelente tolerancia y útil para sebo y poros), y en algunos esquemas, ácido glicólico en concentraciones bajas de uso cosmético, aunque muchos profesionales prefieren limitarlo o consultarlo. La rutina base segura incluye limpieza suave, hidratante no comedogénico y protector solar de amplio espectro, que además previene la hiperpigmentación del embarazo (melasma). Si aparece acné inflamatorio durante el embarazo, el manejo debe diseñarlo un dermatólogo en coordinación con el obstetra; existen opciones sistémicas seguras cuando se necesitan. La regla práctica: en embarazo y lactancia, simplifica la rutina, evita los activos de alto riesgo aunque sean de venta libre, y consulta antes de incorporar cualquier producto nuevo. Esta información es orientativa y no reemplaza la consulta médica.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "PubMed — Ly et al. Treatment of Acne During Pregnancy and Lactation (Dermatol Ther 2023)", "pmid": "36447117", "url": "https://pubmed.ncbi.nlm.nih.gov/36447117/", "year": 2023 },
+        { "institution": "AAD — Clinical Guidelines", "url": "https://www.aad.org/education/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido azelaico", "niacinamida", "acido glicolico", "retinoides", "hidroquinona"],
+        "contraindications": ["embarazo", "lactancia"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura", "planificador_skincare"],
+        "content_type": "contraindicacion"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-015",
+      "title": "Procedimientos profesionales para textura: peelings, microneedling y láser, con precaución en piel oscura",
+      "content": "Cuando la rutina domiciliaria no es suficiente para textura, poros y cicatrices leves, existen procedimientos profesionales con evidencia: peelings químicos (glicólico, salicílico, combinados) que aceleran la renovación y mejoran textura y comedones; microneedling, que estimula colágeno y mejora cicatrices atróficas y poros aparentes; y láseres o radiofrecuencia fraccionados para remodelación de colágeno en cicatrices y fotoenvejecimiento. Estos procedimientos deben ser realizados por un dermatólogo o profesional certificado, porque la selección de profundidad, energía y preparación previa de la piel determina el resultado y la seguridad. Una advertencia esencial para la población colombiana: en fototipos IV-VI, los procedimientos agresivos o mal parametrizados pueden causar hiperpigmentación postinflamatoria persistente; por eso las guías de la SLD y SCD recomiendan preparación previa con despigmentantes o fotoprotección, energías conservadoras y profesionales con experiencia en piel pigmentada. Los procedimientos no reemplazan la rutina: sin limpieza adecuada, activos comedolíticos y protector solar diario, los resultados se pierden. Tampoco sustituyen el tratamiento médico del acné activo: primero se controla la inflamación y luego se tratan las secuelas. La combinación correcta de rutina diaria más procedimientos puntuales es la estrategia con mejor evidencia para textura a largo plazo.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Guías de Práctica Clínica", "url": "https://www.dermalatino.org/guias/", "year": 2023 },
+        { "institution": "Sociedad Colombiana de Dermatología y Cirugía Dermatológica (SCD) — Consensos", "url": "https://www.scd.org.co/consensos/", "year": 2024 },
+        { "institution": "EADV — European Guidelines for Acne Management", "url": "https://eadv.org/clinical-guidelines", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["IV", "V", "VI"],
+        "ingredients": [],
+        "contraindications": ["procedimientos sin experto en fototipos oscuros"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "procedimientos_profesionales"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    },
+    {
+      "chunk_id": "textpor-016",
+      "title": "Mitos de textura y poros vs evidencia: agua fría, vapor, pasta de dientes y más",
+      "content": "La cultura popular está llena de remedios para los poros que la evidencia desmiente. El agua fría no cierra los poros ni el vapor los abre de forma permanente: los poros no tienen músculo; el vapor puede ablandar el sebo y facilitar la extracción profesional, pero no cambia el tamaño del poro. La pasta de dientes sobre los granos: contiene mentol, fluoruros y detergentes que irritan y pueden quemar químicamente la piel, empeorando la marca; los tratamientos puntuales correctos son peróxido de benzoilo o ácido salicílico en fórmulas diseñadas para piel. El alcohol y los astringentes fuertes: desengrasan al instante pero dañan la barrera y producen efecto rebote de irritación. El bronceado seca el grano pero daña el colágeno y oscurece las manchas, empeorando la textura a mediano plazo. Los poros no son suciedad: los puntos negros son sebo oxidado, no tierra, y frotar no los elimina. La piel grasa no envejece mejor por producir grasa: el fotoenvejecimiento afecta a todos los tipos de piel. Lo que sí funciona, según la evidencia: limpieza suave, BHA o retinoides para comedones, niacinamida para sebo, protector solar diario para preservar colágeno, y paciencia de 6-12 semanas. Cuando un consejo de redes suene demasiado bueno o demasiado rápido, probablemente no tenga evidencia detrás.",
+      "category": "textura_poros",
+      "phase": 2,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD — Skin care habits that worsen acne (Patient education)", "url": "https://www.aad.org/public/diseases/acne/skin-care", "year": 2024 },
+        { "institution": "FDA — Understanding Over-the-Counter Acne Treatments", "url": "https://www.fda.gov/drugs/understanding-over-counter-medicines/understanding-over-counter-acne-treatments", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["acido salicilico", "peroxido de benzoilo", "niacinamida"],
+        "contraindications": ["pasta de dientes", "alcohol topico", "bronceado"],
+        "season": ["all"],
+        "applicable_modules": ["escaner_textura_poros", "aura"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-08T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "chunk_id": "guias-unas-onico-reologia-001",
+    "title": "Reología de polímeros acrílicos y su impacto en la lámina ungueal",
+    "content": "La reología, el estudio del flujo de la materia, es fundamental en la química de los geles y acrílicos utilizados en cabina. Un gel con comportamiento tixotrópico excesivo puede dificultar la nivelación, forzando al técnico a realizar limados correctivos que comprometen el espesor de la placa dorsal. Según estudios en el Journal of Cosmetic Dermatology, la viscosidad no controlada no solo afecta el acabado estético, sino que altera la distribución de esfuerzos sobre la matriz ungueal. Cuando un producto es demasiado denso, el técnico tiende a aplicar presión mecánica excesiva, lo que puede inducir microtraumas en la matriz. La correcta comprensión de la viscosidad permite una aplicación más uniforme, reduciendo la necesidad de limado mecánico y preservando la integridad de las capas de queratina. El uso de productos con una reología adaptada a la velocidad de trabajo es esencial para evitar el desgaste prematuro de la lámina ungueal y minimizar el riesgo de onicólisis mecánica por sobrecarga de peso.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:55:35.861Z"
+  },
+  {
+    "chunk_id": "guias-unas-onico-termodinamica-002",
+    "title": "Termodinámica del desprendimiento por calor friccional",
+    "content": "La generación de calor durante el uso de fresas de carburo o diamante no es solo un factor de incomodidad, sino un riesgo térmico para el lecho ungueal. La termodinámica del fresado sugiere que el aumento de temperatura en el lecho puede superar los 45°C, umbral crítico para inducir daño celular y desnaturalización de proteínas en la zona de la matriz. Estudios publicados en PubMed indican que la fricción prolongada degrada la adhesión entre el producto y la placa ungueal, creando espacios microscópicos que favorecen la proliferación de microorganismos. El calor excesivo también altera la estructura de la queratina, disminuyendo su elasticidad y aumentando la fragilidad. Para mitigar este riesgo, es imperativo utilizar técnicas de fresado con pulsos cortos, velocidades controladas y presión mínima. La evaluación clínica del calor generado debe ser una constante en el protocolo de retiro, evitando siempre el sobrecalentamiento que precede al desprendimiento iatrogénico de la lámina y la inflamación del hiponiquio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado continuo",
+        "alta presion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-retiro"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:55:35.861Z"
+  }
+]

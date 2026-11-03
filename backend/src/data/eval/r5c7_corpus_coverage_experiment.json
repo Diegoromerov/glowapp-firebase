@@ -1,0 +1,80 @@
+{
+  "cycle": "19",
+  "experiment": "R5-C7",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "runs": {
+    "A": "r5c7_corpus_coverage_audit_a.json",
+    "B": "r5c7_corpus_coverage_audit_b.json",
+    "reproducibility": "A ≡ B — 18/18 queries con top-20 HNSW y exact idénticos"
+  },
+  "coverage": {
+    "FULL_COVERAGE": 10,
+    "PARTIAL_COVERAGE": 5,
+    "NO_COVERAGE": 3,
+    "GROUND_TRUTH_MISALIGNED": 8,
+    "full_coverage_rate": 0.556,
+    "partial_coverage_rate": 0.278,
+    "no_coverage_rate": 0.167,
+    "coverage_by_domain": {
+      "skincare": { "FULL": 5, "PARTIAL": 2, "NO": 0, "total": 7 },
+      "cabello": { "FULL": 2, "PARTIAL": 1, "NO": 1, "total": 4 },
+      "cejas": { "FULL": 2, "PARTIAL": 2, "NO": 2, "total": 7 }
+    },
+    "note": "FULL = evidencia suficiente/fuerte (E2/E3 de R5-C6); PARTIAL = E1; NO = E0. Coverage E2/E3 aquí = 10/18 (55.6%) porque se exige cobertura específica de la intención, no solo contenido relacionado."
+  },
+  "hnsw_vs_exact": {
+    "hnsw_misses_total": 0,
+    "conclusion": "HNSW DESCARTADO — el índice productivo (m=16, ef_construction=64) no pierde ningún expected frente al scan exacto en top-20. La contribución HNSW es nula en este experimento."
+  },
+  "expected_in_top5_hnsw": "10/65 referencias (15.4%)",
+  "expected_in_top20_hnsw": "22/65 referencias (33.8%)",
+  "expected_in_top20_exact": "22/65 referencias (33.8%)",
+  "key_evidence": {
+    "skincare_010": "FULL_COVERAGE + GT_MISALIGNED: expected NO en top-20 (sim 0.481) pero retrieval recupera 'El pH de los limpiadores' (0.573) — evidencia OBJETIVAMENTE más relevante para 'mejor limpiador'. Ground truth declara 'piel seca vs deshidratada'.",
+    "cabello_002": "FULL_COVERAGE + GT_MISALIGNED: expected SERS diagnóstico (0.426) NO en top-20; retrieval recupera 'Restauración del pH y sellado cuticular post-proceso' (0.555) — tratamiento real para cabello decolorado.",
+    "skincare_009": "FULL_COVERAGE + GT_MISALIGNED: expected cobre+VitC (0.516); retrieval recupera 'Niacinamida y pH ácido' (0.556) + 'Niacinamida: hidrólisis' (0.545) — responden la combinación niacinamida+VitC real.",
+    "cejas_007": "FULL_COVERAGE + GT_MISALIGNED: expected 'piel grasa' (0.563) en rank 18; retrieval recupera 'enfermedades autoinmunes' (0.590) y 'diabéticos' (0.583) — contraindicaciones REALES en top-4.",
+    "cabello_008": "FULL_COVERAGE + GT_MISALIGNED: expected bioimpedancia (0.480) rank 19; retrieval recupera 'oclusivos vs humectantes' (0.533) — hidratación profunda real."
+  },
+  "cejas_analysis": {
+    "cejas_001": { "coverage": "PARTIAL", "top1": "Neuro-ergonomía (0.555)", "exp_top20": 1, "causa": "GT_MISALIGNED — evidencia de duración parcial; expected es envejecimiento no definición" },
+    "cejas_002": { "coverage": "NO", "top1": "Neuro-ergonomía (0.574)", "exp_top20": 2, "causa": "CORPUS — no existe comparativa microblading/microshading/nanoblading; solo términos aislados" },
+    "cejas_003": { "coverage": "NO", "top1": "espesor dérmico (0.462)", "exp_top20": 0, "causa": "CORPUS — no existe visajismo por forma de cara" },
+    "cejas_004": { "coverage": "PARTIAL", "top1": "Fotobiología (0.526)", "exp_top20": 0, "causa": "RETRIEVAL — evidencia de ptosis/asimetría existe (0.519) pero fuera de top-20; Q2 de R5-C6 la rescata (MRR 1.0)" },
+    "cejas_005": { "coverage": "FULL", "top1": "psicodermatología (0.593)", "exp_top20": 2, "causa": "GT_MISALIGNED parcial — cicatrización en rank 2 pero top1 es tangencial" },
+    "cejas_007": { "coverage": "FULL", "top1": "psicodermatología (0.592)", "exp_top20": 1, "causa": "GT_MISALIGNED — autoinmunes+diabéticos en top-4 (contraindicaciones reales), expected piel grasa rank 18" },
+    "cejas_008": { "coverage": "PARTIAL", "top1": "piel seborreica (0.592)", "exp_top20": 0, "causa": "RETRIEVAL — evidencia de láser/remoción existe (0.536) pero fuera de top-20; Q2 de R5-C6 la rescata (MRR 1.0)" }
+  },
+  "coverage_adjusted_recall": {
+    "value": "NO DETERMINABLE con este experimento",
+    "note": "R@5 sobre FULL_COVERAGE: de 10 queries FULL, expected en top-5 en 4 (skincare_003, 005, 006, cejas_005) + skincare_008 (3/5). La métrica oficial NO se modifica; el cálculo ajustado por cobertura requiere el candidate dataset de R5-C2 (R@5=0.50), no el expected original.",
+    "experimental_observation": "De las 10 FULL_COVERAGE, 5 tienen expected AUSENTE del top-20 pese a que el retrieval recupera evidencia E3 — el motor no falla, el benchmark no declara la evidencia correcta."
+  },
+  "root_cause_by_query": {
+    "GROUND_TRUTH": ["skincare_005", "skincare_006", "skincare_009", "skincare_010", "cabello_002", "cabello_008", "cejas_001", "cejas_005", "cejas_007"],
+    "CORPUS": ["skincare_007", "cabello_004", "cejas_002", "cejas_003"],
+    "RETRIEVAL": ["cejas_004", "cejas_008"],
+    "OK": ["skincare_003", "skincare_008", "cabello_006"],
+    "MIXTO": ["skincare_007"]
+  },
+  "causal_classification": {
+    "GROUND_TRUTH": "CAUSA DOMINANTE — 9/18 queries (50%): evidencia E3 recuperada por el retrieval pero expected incorrecto o no declarado",
+    "CORPUS": "CAUSA SIGNIFICATIVA — 4/18 (22%): 3 sin evidencia genuina (cabello_004, cejas_002, cejas_003) + 1 parcial (skincare_007)",
+    "RETRIEVAL": "CONTRIBUYENTE — 2/18 (11%): cejas_004, cejas_008 (evidencia existe pero mal posicionada; rescatable con reformulación)",
+    "RANKING": "CONTRIBUYENTE — expected en rank 2-19 cuando aparece; margins comprimidos",
+    "EMBEDDING": "CONTRIBUYENTE — gap -0.0116 (R5-C5), banda 0.31-0.64 comprimida",
+    "HNSW": "DESCARTADA — 0 misses vs exact",
+    "INFRAESTRUCTURA": "DESCARTADA"
+  },
+  "verdict": "CAUSA MIXTA con GROUND TRUTH dominante",
+  "recommendation_r5c8": [
+    { "order": 1, "action": "Corregir formalmente el dataset (expected_chunks) usando el candidate de R5-C2 + evidencia de R5-C6/C7", "evidence": "9/18 queries GT misaligned; candidate R@5=0.50 sin tocar motor", "impact": "R@5 0.17→0.50; MRR 0.22→0.37", "risk": "bajo (solo benchmark)", "confidence": "ALTA" },
+    { "order": 2, "action": "Re-clasificar 3 queries como UNSUPPORTED (cabello_004, cejas_003, cejas_002-parcial)", "evidence": "NO_COVERAGE verificado con HNSW y exact top-20 + paráfrasis", "impact": "limpieza de benchmark; coverage honesta", "risk": "bajo", "confidence": "ALTA" },
+    { "order": 3, "action": "Reformulación de queries en producción para cejas_004/007/008 (formulación de intención)", "evidence": "R5-C6 Q2: MRR 0→1.0 en las 3", "impact": "MRR cejas 0.12→0.42", "risk": "medio (capa de entrada, requiere validación)", "confidence": "MEDIA" },
+    { "order": 4, "action": "NO cambiar embeddings/HNSW/retrieval todavía", "evidence": "HNSW 0 misses; gap embedding mezclado con GT; sin modelo candidato disponible", "impact": "evita cambio sin evidencia", "risk": "bajo", "confidence": "ALTA" }
+  ]
+}

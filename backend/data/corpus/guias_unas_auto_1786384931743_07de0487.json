@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "guias_unas-1786384931740-2-54947dae-cinetica-de-degradacion-de-fotoiniciadores-bajo-exposicion-s",
+    "title": "Cinética de degradación de fotoiniciadores bajo exposición solar",
+    "content": "Los sistemas fotopolimerizables modernos dependen de fotoiniciadores como el TPO (difenil(2,4,6-trimetilbenzoil)fosfina óxido) o BAPO, los cuales son altamente sensibles a la radiación actínica. Una exposición prolongada a la luz ambiental, incluso en interiores, puede inducir una polimerización prematura o una degradación parcial de estas moléculas antes de la aplicación. Esta degradación altera la estequiometría de la mezcla, resultando en una red polimérica incompleta, lo que aumenta drásticamente el riesgo de lixiviación de monómeros no reaccionados hacia el lecho ungueal. La migración de estos monómeros es el principal factor etiológico en la sensibilización alérgica de contacto. Para mitigar este riesgo, es fundamental el almacenamiento de productos en envases opacos y la minimización del tiempo de exposición del producto al aire y luz durante el servicio. La degradación fotoquímica no solo reduce la durabilidad del esmalte, sino que compromete la seguridad biocompatible del sistema al generar subproductos de bajo peso molecular con potencial alergénico elevado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "TPO",
+        "BAPO"
+      ],
+      "contraindications": [
+        "exposición solar directa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:02:11.741Z"
+  }
+]

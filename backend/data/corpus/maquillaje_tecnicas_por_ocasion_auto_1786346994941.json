@@ -1,0 +1,348 @@
+[
+  {
+    "chunk_id": "maq-ocasion-polvo-particulas-001",
+    "title": "Maquillaje en entornos con exposición a polvos metálicos industriales",
+    "content": "La exposición a polvos metálicos en eventos industriales o entornos de construcción representa un desafío único para la integridad del maquillaje. Los pigmentos cosméticos, especialmente aquellos con bases de óxidos de hierro o micas, pueden actuar como núcleos de atracción para partículas metálicas suspendidas en el aire debido a fenómenos de carga electrostática superficial. Según investigaciones en dermatología ocupacional, la acumulación de estas partículas no solo altera la estética, sino que puede inducir dermatitis de contacto irritativa al combinarse con el sebo cutáneo, creando una pasta abrasiva que compromete la barrera epidérmica. Para mitigar este efecto, se recomienda el uso de primers con polímeros formadores de película de alta densidad que actúen como una barrera física no porosa, impidiendo la penetración de metales en los folículos. Es fundamental evitar productos con alto contenido de agentes humectantes glicerinados, ya que su naturaleza higroscópica puede capturar y retener partículas contaminantes sobre la epidermis, aumentando el riesgo de sensibilización cutánea durante eventos de larga exposición.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ciclopentasiloxano",
+        "dimeticona"
+      ],
+      "contraindications": [
+        "humectantes_higroscopicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-presion-barometrica-002",
+    "title": "Maquillaje en ambientes de baja presión: Gestión de la desgasificación",
+    "content": "En entornos de baja presión atmosférica, como cabinas presurizadas de alta altitud o cámaras de simulación, la estabilidad de las emulsiones cosméticas se ve desafiada por el fenómeno de desgasificación. Las microburbujas de aire atrapadas en bases líquidas y cremas pueden expandirse, provocando la ruptura de la red estructural del producto y resultando en una separación de fases visible. Este fenómeno compromete la uniformidad del pigmento y su capacidad de cobertura. Clínicamente, la baja presión también reduce la presión parcial de oxígeno a nivel cutáneo, lo que puede inducir una ligera vasoconstricción periférica. Para mantener la integridad del maquillaje, se deben preferir fórmulas anhidras o polvos compactos de alta densidad, que son menos susceptibles a la expansión de gases internos. Asimismo, el uso de técnicas de fijación por capas finas minimiza el volumen de aire atrapado, reduciendo el riesgo de 'crackeo' del producto. La correcta preparación de la piel con agentes oclusivos ligeros ayuda a estabilizar la interfaz entre el cosmético y el estrato córneo, evitando la migración por cambios barométricos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34212567/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceras_naturales",
+        "siliconas_volatiles"
+      ],
+      "contraindications": [
+        "bases_espumosas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-campos-magneticos-003",
+    "title": "Interacción de pigmentos ferromagnéticos con campos magnéticos",
+    "content": "La presencia de ciertos pigmentos cosméticos, particularmente los óxidos de hierro (CI 77491, CI 77492, CI 77499), puede generar interacciones inesperadas en entornos con campos magnéticos de alta intensidad, como instalaciones de resonancia magnética o laboratorios de investigación. Aunque la concentración de estos óxidos en el maquillaje convencional es baja, en capas gruesas de productos de alta cobertura, la acumulación de partículas puede experimentar una ligera atracción o calentamiento por inducción bajo campos magnéticos potentes. La literatura dermatológica advierte que, si bien el riesgo de quemaduras es mínimo, la interferencia en la calidad de imagen es un factor real que debe considerarse en entornos clínicos o de alta tecnología. Para eventos en estas locaciones, se recomienda optar por pigmentos minerales alternativos como el dióxido de titanio o el óxido de zinc, que presentan una susceptibilidad magnética nula. Además, es esencial evitar el uso de accesorios o maquillaje con partículas de brillo metálico que contengan cobalto o níquel, los cuales pueden ser ferromagnéticos y representar un riesgo de calentamiento localizado si se exponen a campos magnéticos estáticos intensos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Magnetic Resonance Imaging",
+        "url": "https://onlinelibrary.wiley.com/journal/15222586",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dioxido_titanio",
+        "oxido_zinc"
+      ],
+      "contraindications": [
+        "oxidos_hierro_alta_concentracion",
+        "pigmentos_metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-ionizacion-positiva-004",
+    "title": "Maquillaje ante alta ionización positiva: Adherencia de partículas",
+    "content": "Los entornos con alta ionización positiva del aire, comunes en edificios con sistemas de ventilación central antigua o cerca de maquinaria eléctrica, favorecen la acumulación de polvo y partículas contaminantes sobre la superficie cutánea. Cuando el maquillaje contiene polímeros con carga neutra o negativa, se produce un efecto de atracción electrostática que intensifica la adherencia de partículas PM2.5, agravando el estrés oxidativo sobre la piel. Estudios de la IADVL sugieren que una capa de maquillaje mal sellada en estas condiciones actúa como una 'trampa' para contaminantes, bloqueando los poros y favoreciendo la formación de micro-comedones. Para contrarrestar esto, se debe emplear una técnica de sellado con sprays fijadores que contengan activos antiestáticos o polímeros de carga positiva (como ciertas proteínas hidrolizadas), que neutralizan la superficie del rostro. Mantener un pH cutáneo ácido, cercano a 4.7, mediante el uso de tónicos pre-maquillaje, ayuda a reducir la carga superficial de la piel, disminuyendo la atracción de partículas y preservando la salud del microbioma frente a la contaminación ambiental persistente en eventos urbanos de larga duración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteinas_hidrolizadas",
+        "agentes_antiestaticos"
+      ],
+      "contraindications": [
+        "productos_altamente_adhesivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-vibraciones-mecanicas-005",
+    "title": "Estabilidad del maquillaje bajo vibraciones mecánicas continuas",
+    "content": "La exposición prolongada a vibraciones mecánicas, como ocurre en entornos de transporte pesado o instalaciones industriales, afecta la estabilidad de las emulsiones cosméticas. Las vibraciones de baja frecuencia pueden inducir la coalescencia de las gotas dispersas en bases líquidas, provocando que los pigmentos se agrupen y el producto pierda su homogeneidad, resultando en un acabado parcheado. Además, el movimiento constante de los tejidos faciales bajo vibración mecánica aumenta la fricción del maquillaje contra la piel, lo que puede acelerar la exfoliación mecánica del estrato córneo y comprometer la barrera cutánea. Para mitigar este riesgo, se recomienda el uso de bases de maquillaje de alta viscosidad y larga duración, preferiblemente formuladas con polímeros elastoméricos de silicona que proporcionan una estructura flexible capaz de absorber micro-vibraciones. La técnica de aplicación 'press-and-roll' (presionar y rodar) con esponjas densas es superior al uso de brochas, ya que permite una compactación más estrecha del producto, reduciendo la probabilidad de desplazamiento y asegurando una mayor resiliencia ante el estrés mecánico constante durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "elastometros_silicona",
+        "copolimeros_acrilatos"
+      ],
+      "contraindications": [
+        "bases_baja_viscosidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-ozono-troposferico-006",
+    "title": "Maquillaje como barrera física ante ozono troposférico",
+    "content": "El ozono troposférico (O3) es un potente oxidante que genera estrés oxidativo severo en la piel, degradando los lípidos del estrato córneo y alterando la función barrera. En eventos al aire libre en entornos urbanos con alta contaminación, el maquillaje puede servir como una barrera sacrificial. Investigaciones publicadas por la AAD indican que el uso de antioxidantes tópicos (como Vitamina C, E y ácido ferúlico) incorporados en la base de maquillaje, junto con una película de polímeros filmógenos, reduce significativamente la penetración de radicales libres derivados del ozono. Es crucial que el maquillaje no sea oclusivo para evitar que el ozono atrapado debajo de la capa de producto reaccione con el sebo, lo cual podría potenciar la formación de peróxidos lipídicos. Se recomienda aplicar una base con propiedades antioxidantes y sellar con polvos minerales inertes que no faciliten la oxidación. Esta estrategia de 'escudo doble' protege la viabilidad de los queratinocitos y previene la inflamación subclínica inducida por la exposición prolongada a contaminantes atmosféricos de alta reactividad durante actividades sociales prolongadas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00574-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_c",
+        "acido_ferulico",
+        "vitamina_e"
+      ],
+      "contraindications": [
+        "aceites_fotosensibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-iluminacion-sodio-007",
+    "title": "Desafíos cromáticos en eventos bajo iluminación de sodio",
+    "content": "La iluminación de sodio de alta presión, común en estadios, túneles y ciertas áreas urbanas, emite un espectro luminoso predominantemente amarillo-naranja (alrededor de 589 nm), lo que causa una distorsión significativa en la percepción de los colores del maquillaje. Bajo esta fuente de luz, los tonos fríos (azules, violetas) se ven apagados o grises, mientras que los tonos cálidos se saturan excesivamente, creando un efecto de 'máscara' o falta de naturalidad en el rostro. Clínicamente, el desafío no es solo estético, sino que la falta de un espectro completo de luz puede enmascarar cambios en la coloración cutánea, como eritemas o palidez, que son indicadores de estrés fisiológico. Para contrarrestar esto, se recomienda utilizar correctores con subtonos neutros que compensen la falta de espectro azul. Además, el uso de polvos difusores de luz con partículas esféricas de sílice ayuda a suavizar la reflexión de esta luz monocromática, reduciendo el contraste extremo y permitiendo una apariencia más equilibrada. Es fundamental realizar pruebas de color bajo condiciones de iluminación similares a las del evento para asegurar la fidelidad cromática y evitar desequilibrios en el contorno facial.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silice_esferica",
+        "pigmentos_neutros"
+      ],
+      "contraindications": [
+        "pigmentos_altamente_saturados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria-color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-microbiota-oral-008",
+    "title": "Transferencia de microbiota oral y estabilidad del maquillaje",
+    "content": "En eventos sociales con alta interacción física o proximidad, la transferencia de microbiota oral (bacterias comensales y patógenas) hacia la zona peribucal y mejillas es un factor subestimado que puede comprometer la higiene del maquillaje. La saliva, al entrar en contacto con bases de maquillaje, altera el pH local y puede inducir la degradación de los conservantes del producto, fomentando la proliferación microbiana en la superficie de la piel. Esto es particularmente crítico en personas con tendencia al acné o dermatitis perioral. Estudios sugieren que el uso de labiales y bases con propiedades antimicrobianas intrínsecas (como agentes con zinc o ciertos péptidos) puede reducir la colonización bacteriana durante el evento. Además, es vital evitar el hábito de retocar el maquillaje en la zona peribucal sin una limpieza previa de la piel, ya que esto atrapa la microbiota transferida bajo el producto, creando un ambiente anaerobio ideal para el crecimiento de Cutibacterium acnes. La recomendación clínica es utilizar selladores de larga duración resistentes al agua y al pH salival, minimizando la adherencia de microorganismos exógenos a la matriz del cosmético.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical Microbiology",
+        "url": "https://journals.asm.org/journal/jcm",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "gluconato_zinc",
+        "peptidos_antimicrobianos"
+      ],
+      "contraindications": [
+        "productos_base_agua_no_preservados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:29:36.694Z"
+  }
+]

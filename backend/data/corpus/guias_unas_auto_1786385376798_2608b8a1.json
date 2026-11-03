@@ -1,0 +1,165 @@
+[
+  {
+    "chunk_id": "guias_unas-1786385376791-1-2ef132d8-la-reologia-de-los-geles-constructores-viscosidad-y-nivelaci",
+    "title": "La reología de los geles constructores: viscosidad y nivelación",
+    "content": "La reología, o el estudio del flujo de la materia, es fundamental para entender el comportamiento de los geles constructores en cabina. La mayoría de estos sistemas exhiben un comportamiento pseudoplástico: su viscosidad disminuye bajo la aplicación de una fuerza de corte (como el movimiento del pincel) y aumenta al cesar dicha fuerza. Este fenómeno es crítico para lograr una estructura nivelada sin inundar los surcos periungueales. Un error común es intentar manipular geles de alta viscosidad sin considerar su límite elástico, lo que provoca una distribución desigual del polímero y zonas de debilidad estructural. La temperatura ambiente altera drásticamente este comportamiento; un gel almacenado en un entorno frío presentará una resistencia al flujo mayor, lo que induce al profesional a aplicar mayor presión mecánica, aumentando el riesgo de contacto accidental con la piel. Comprender la curva de fluidez permite optimizar los tiempos de aplicación y reducir la necesidad de limado correctivo posterior, protegiendo así la integridad de la lámina ungueal y minimizando la exposición a monómeros no polimerizados.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_polimeros"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:36.791Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385376792-4-5bdc41a7-homeostasis-del-lecho-ungueal-y-el-impacto-de-los-primers-ac",
+    "title": "Homeostasis del lecho ungueal y el impacto de los primers ácidos",
+    "content": "La aplicación de primers ácidos, compuestos principalmente por ácido metacrílico, busca modificar la energía superficial de la lámina ungueal para favorecer la adhesión química. Sin embargo, su mecanismo de acción implica una descalcificación controlada y una alteración temporal del pH del lecho ungueal. El uso excesivo o innecesario de estos agentes puede comprometer la homeostasis del tejido, provocando una deshidratación profunda que reduce la flexibilidad natural de la uña. La interacción química entre el pH ácido y las proteínas de la queratina puede generar una respuesta inflamatoria en el eponiquio si ocurre una filtración accidental. Es fundamental entender que la adhesión duradera no depende únicamente de la agresividad del primer, sino de un equilibrio entre la preparación mecánica suave y la compatibilidad química del sistema. En casos de lechos ungueales con pH naturalmente bajo o alta sensibilidad, el uso de primers sin ácido es una alternativa técnica superior que protege la barrera lipídica natural, evitando la sensibilización acumulativa y manteniendo la salud a largo plazo de la unidad ungueal frente a los servicios recurrentes de fotopolimerización.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido metacrílico"
+      ],
+      "contraindications": [
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:36.792Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385376793-5-d6fa2ddc-higroscopia-y-estabilidad-dimensional-en-bases-de-polimeriza",
+    "title": "Higroscopía y estabilidad dimensional en bases de polimerización",
+    "content": "La lámina ungueal es una estructura higroscópica, capaz de absorber y perder agua según las condiciones ambientales y la oclusión. Cuando se aplica una base de polimerización UV, se crea una barrera que altera el intercambio natural de humedad. Si la base presenta una alta tasa de absorción de agua (higroscopía), puede sufrir cambios dimensionales tras el contacto prolongado con el agua, lo que genera tensiones internas en la interfaz adhesiva. Este fenómeno es una causa frecuente de desprendimientos prematuros en los bordes libres. La estabilidad dimensional es un parámetro técnico crítico que define la calidad de un gel base; un producto con baja contracción de polimerización y baja higroscopía garantiza que la unión entre el polímero y la queratina se mantenga intacta a pesar de las variaciones en la hidratación de la uña. Los profesionales deben considerar este factor al seleccionar productos para clientes con profesiones que impliquen una exposición constante a la humedad, ya que la falla de adhesión no siempre es un error de aplicación, sino una incompatibilidad entre la física del producto y la fisiología de la uña natural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_polimeros"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:36.793Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786385376793-6-27689e6c-arquitectura-del-arco-de-tension-y-prevencion-de-fracturas",
+    "title": "Arquitectura del arco de tensión y prevención de fracturas",
+    "content": "La resistencia mecánica de una uña esculpida depende directamente de la arquitectura del 'arco de tensión' o punto de estrés. Este punto, situado en la zona de transición entre la matriz y el borde libre, debe soportar las fuerzas de palanca que se ejercen sobre la uña durante las actividades cotidianas. Una distribución incorrecta del material, donde el ápice se desplaza hacia la punta, traslada el punto de estrés a una zona más débil, aumentando drásticamente la probabilidad de fractura de la lámina ungueal natural. La física aplicada sugiere que el espesor del material debe seguir una curva catenaria para distribuir las cargas de manera uniforme hacia los laterales. Un diseño ergonómico no solo mejora la estética, sino que previene el 'palanqueo' que causa onicólisis mecánica. Al esculpir, el profesional debe visualizar la uña como una estructura de ingeniería donde el material actúa como un refuerzo estructural; el exceso de material en los bordes aumenta el peso y la inercia, mientras que la falta de refuerzo en el centro compromete la integridad estructural. La educación en la geometría del esculpido es fundamental para evitar daños traumáticos en el lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Biomechanics",
+        "url": "https://www.sciencedirect.com/journal/journal-of-biomechanics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_escultura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:09:36.793Z"
+  }
+]

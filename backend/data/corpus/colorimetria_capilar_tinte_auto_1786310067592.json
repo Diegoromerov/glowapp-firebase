@@ -1,0 +1,376 @@
+[
+  {
+    "chunk_id": "color-capilar-interaccion-farmacologica-001",
+    "title": "Interacción entre fármacos sistémicos y la respuesta al tinte capilar",
+    "content": "La administración de ciertos fármacos sistémicos puede alterar significativamente la estructura del cabello y su afinidad por los pigmentos oxidativos. Medicamentos como los retinoides orales (isotretinoína), antitiroideos o ciertos tratamientos oncológicos modifican la tasa de queratinización y la calidad de la matriz proteica capilar. Estos cambios pueden resultar en una absorción irregular del tinte, una degradación más rápida del color o, en casos extremos, una mayor vulnerabilidad a la sensibilización cutánea. Es fundamental que el profesional realice una anamnesis farmacológica completa antes de cualquier servicio de coloración. La evidencia sugiere que el cuero cabelludo bajo tratamiento con retinoides presenta una barrera lipídica comprometida, lo que aumenta el riesgo de dermatitis de contacto irritativa ante la exposición a agentes alcalinizantes como la etanolamina o el amoniaco. La recomendación clínica es realizar siempre una prueba de mecha y de parche, incluso si el cliente ha utilizado el mismo producto anteriormente, debido a la alteración del umbral de tolerancia cutánea.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/treatment/side-effects",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "isotretinoina",
+        "agentes-alcalinizantes"
+      ],
+      "contraindications": [
+        "uso-reciente-de-retinoides-orales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anamnesis-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-estres-oxidativo-mitocondrial-002",
+    "title": "Estrés oxidativo inducido y la reserva de melanocitos en el bulbo",
+    "content": "El proceso de coloración permanente no solo afecta la fibra capilar, sino que genera una cascada de estrés oxidativo en el microambiente del folículo piloso. La literatura científica actual, indexada en PubMed, destaca que el uso frecuente de oxidantes potentes puede impactar la supervivencia de las células madre de los melanocitos en el nicho del bulbo piloso. La acumulación de especies reactivas de oxígeno (ROS) durante la síntesis de pigmentos sintéticos puede acelerar la canicie prematura si existe una exposición sistémica o una penetración profunda en el folículo. El equilibrio entre el sistema antioxidante endógeno (como la catalasa) y los agentes externos es vital. Los profesionales deben priorizar técnicas que minimicen la difusión de peróxido hacia el cuero cabelludo, utilizando protectores de barrera que no interfieran con la reacción cromática. La protección del complejo de membrana celular (CMC) y la neutralización enzimática post-tinte son estrategias emergentes para preservar la longevidad del folículo y evitar la fatiga celular del melanocito, garantizando no solo el color deseado, sino la salud a largo plazo del sistema piloso.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31350697/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido-de-hidrogeno"
+      ],
+      "contraindications": [
+        "cuero-cabelludo-inflamado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-tecnicas-quelacion-avanzada-003",
+    "title": "Quelación avanzada: Más allá de los metales en la fibra",
+    "content": "La presencia de metales como cobre, hierro y calcio en el agua de lavado y en el cabello es uno de los factores más subestimados en la colorimetría profesional. Estos metales actúan como catalizadores en la descomposición incontrolada del peróxido de hidrógeno, generando radicales libres que degradan la queratina y alteran la precisión del tono final, provocando virajes indeseados hacia matices rojizos o verdosos. La quelación avanzada no debe limitarse a un champú clarificante, sino que requiere agentes quelantes específicos (como el EDTA disódico o fitatos) capaces de secuestrar estos iones sin deshidratar la fibra. En la práctica clínica, la eliminación de estos depósitos antes de aplicar el tinte mejora la homogeneidad del color y reduce la necesidad de volúmenes altos de peróxido. Al estandarizar el protocolo de quelación, el colorista de GlowApp puede garantizar resultados más predecibles y una integridad estructural superior, evitando que la oxidación catalítica comprometa la retención del color en cabellos de alta porosidad expuestos a aguas duras, un problema frecuente en diversas zonas urbanas de Colombia.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2015;volume=7;issue=1;spage=2;epage=15;aulast=Draelos",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "agentes-quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-pre-servicio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-microbioma-y-tintes-004",
+    "title": "Impacto del tinte en el microbioma del cuero cabelludo",
+    "content": "El cuero cabelludo alberga una microbiota compleja, predominantemente compuesta por bacterias como Staphylococcus epidermidis y hongos del género Malassezia, que mantienen la homeostasis cutánea. Las aplicaciones frecuentes de tintes alcalinos alteran drásticamente el pH del cuero cabelludo, pasando de su rango fisiológico (4.5-5.5) a niveles de alcalinidad que pueden favorecer el sobrecrecimiento de patógenos oportunistas. Esta disbiosis no solo se manifiesta como irritación o descamación, sino que puede comprometer la función barrera de la piel, aumentando la permeabilidad a alérgenos y compuestos químicos del tinte. La investigación dermatológica actual subraya que la integridad del microbioma es un predictor de la tolerancia a largo plazo a los servicios de coloración. Para mitigar este impacto, es esencial el uso de productos con sistemas buffer que permitan un retorno rápido al pH ácido natural tras el proceso de coloración. Además, se desaconseja el lavado excesivo previo al tinte, ya que el sebo natural actúa como un escudo protector para la microbiota y la barrera cutánea frente a la penetración de precursores químicos.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(21)00085-7/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "microbiota",
+        "pH"
+      ],
+      "contraindications": [
+        "dermatitis-seborreica-activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-reacciones-cruzadas-005",
+    "title": "Reactividad cruzada: El riesgo latente en coloraciones permanentes",
+    "content": "La reactividad cruzada es un fenómeno inmunológico crítico en la coloración capilar que a menudo se subestima. Los individuos sensibilizados a la parafenilendiamina (PPD) tienen un riesgo elevado de reaccionar ante una amplia gama de sustancias químicas relacionadas, incluyendo colorantes dispersos en textiles, fármacos sulfonamídicos, anestésicos locales (como la benzocaína) y protectores solares como el PABA. Esta sensibilización no se limita al cuero cabelludo; una vez que el sistema inmunológico ha reconocido estos epítopos, cualquier exposición futura puede desencadenar una dermatitis de contacto sistémica o localizada. Es imperativo que el profesional de GlowApp eduque al cliente sobre este riesgo. Si un cliente reporta antecedentes de alergia a tintes textiles o reacciones a medicamentos, el uso de tintes permanentes convencionales está contraindicado. La alternativa, bajo supervisión dermatológica, suele ser la búsqueda de colorantes de base botánica o pigmentos directos que no requieran oxidación, siempre verificando la ausencia de precursores de aminas aromáticas que comparten estructuras moleculares similares a la PPD.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "aminas-aromaticas"
+      ],
+      "contraindications": [
+        "historial-de-alergia-a-PPD"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-del-cliente"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-biocompatibilidad-polimeros-006",
+    "title": "Biocompatibilidad de polímeros catiónicos en tintes",
+    "content": "Los polímeros catiónicos (como el Polyquaternium) son componentes esenciales en las fórmulas de tintes modernos para mejorar la suavidad y el desenredo tras el proceso oxidativo. Sin embargo, su interacción con los pigmentos es compleja; una carga excesiva de polímeros puede formar una película densa sobre la cutícula que dificulta la penetración uniforme de las moléculas de color. Además, existe un riesgo emergente de sensibilización a ciertos tipos de polímeros en clientes con dermatitis atópica. La clave en la curaduría de productos para GlowApp es evaluar el balance entre el peso molecular del polímero y su afinidad con la fibra capilar. Polímeros de bajo peso molecular tienden a penetrar mejor y ofrecer acondicionamiento interno sin comprometer el depósito de pigmento. La evidencia sugiere que el uso de polímeros biocompatibles, que mimetizan la estructura lipídica del cabello, reduce la acumulación residual y mejora la reflexión de la luz, logrando colores con mayor cromaticidad y brillo sin sacrificar la salud del complejo de membrana celular (CMC).",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polyquaternium",
+        "polimeros-cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seleccion-de-producto"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-higroscopia-y-estabilidad-007",
+    "title": "Higroscopía y estabilidad cromática en climas tropicales",
+    "content": "El cabello es una fibra higroscópica que absorbe y libera humedad en respuesta a las condiciones ambientales. En climas tropicales como el de Bogotá o regiones costeras de Colombia, las fluctuaciones extremas de humedad afectan directamente la estabilidad del color. Un cabello con alta porosidad, tras ser teñido, tiende a absorber humedad del ambiente, lo que causa el hinchamiento de la fibra y la lixiviación (pérdida) de las moléculas de pigmento, acelerando el desgaste del color. Además, la humedad ambiente influye en la velocidad de oxidación del tinte durante la pose. La estrategia para el colorista profesional debe incluir el uso de selladores cuticulares con propiedades oclusivas ligeras que minimicen la permeabilidad al vapor de agua, manteniendo el pigmento atrapado dentro de la corteza. La educación al cliente sobre el uso de productos de acabado con protección UV y agentes hidrofóbicos es fundamental para preservar el resultado cromático en entornos de alta humedad, evitando que la estructura capilar se convierta en una esponja de factores ambientales degradantes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/pdf/cc2019/cc070n01/p00001-p00015.pdf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes-oclusivos",
+        "protectores-uv"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento-color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-metamerismo-espectral-008",
+    "title": "Evaluación cromática y el fenómeno del metamerismo",
+    "content": "El metamerismo es el fenómeno donde dos colores que parecen iguales bajo una fuente de luz (por ejemplo, la luz cálida de un salón de belleza) se ven completamente distintos bajo otra (como la luz natural del día o la luz fluorescente de una oficina). Este es uno de los mayores desafíos en la satisfacción del cliente tras una coloración. Los pigmentos utilizados en los tintes capilares tienen curvas de reflectancia espectral únicas. Para evitar errores de diagnóstico cromático, GlowApp recomienda realizar la evaluación final del color bajo fuentes de luz de espectro completo (CRI > 95). La dependencia exclusiva de la iluminación artificial del salón puede llevar a correcciones innecesarias que dañan la fibra. Entender que el tono final es una interacción entre la física de la luz, las propiedades de absorción del cabello y la percepción retiniana del observador es lo que separa a un colorista técnico de un experto en colorimetría capilar. La estandarización de las condiciones de luz durante la consulta y la entrega del servicio es una práctica de excelencia clínica.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  },
+  {
+    "chunk_id": "color-capilar-degradacion-aminoacidos-009",
+    "title": "Degradación oxidativa de aminoácidos más allá de la melanina",
+    "content": "Aunque el objetivo principal del tinte es modificar la melanina, el proceso oxidativo degrada inevitablemente los aminoácidos estructurales de la queratina, especialmente la cisteína y el triptófano. La pérdida de estos aminoácidos reduce la fuerza tensil y la elasticidad del cabello, un efecto que se acumula con cada sesión de coloración. La ciencia de materiales capilares sugiere que el uso de agentes reductores post-tinte y tratamientos de reposición de aminoácidos mediante enlaces de hidrógeno puede mitigar esta degradación. A diferencia de los acondicionadores superficiales, los tratamientos de reconstrucción molecular actúan dentro de la corteza, estabilizando los enlaces disulfuro que han sido tensionados por el proceso de alcalinización y oxidación. En GlowApp, la visión clínica implica tratar el cabello no solo como un lienzo de color, sino como una proteína compleja que requiere regeneración bioquímica para mantener su integridad estructural. La prevención de la rotura post-tinte es el resultado directo de una gestión experta de la cinética de oxidación y de la reposición posterior de los bloques constructores del cabello.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cisteina",
+        "triptofano",
+        "queratina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "reparacion-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:08.571Z"
+  }
+]

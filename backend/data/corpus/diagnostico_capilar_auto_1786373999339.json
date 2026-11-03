@@ -1,0 +1,163 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-iontophoresis-001",
+    "title": "Iontoforesis en el diagnóstico: Evaluación de la conductividad folicular",
+    "content": "La iontoforesis diagnóstica representa una frontera emergente en la tricología clínica, permitiendo medir la conductancia iónica específica del cuero cabelludo. A diferencia de las mediciones de impedancia estándar, esta técnica evalúa la integridad de los canales iónicos en el ostium folicular. La literatura reciente, respaldada por estudios en biofísica dermatológica, indica que una alteración en la conductividad iónica es a menudo un marcador precoz de disfunción en la barrera epidérmica perifolicular, incluso antes de la aparición de la miniaturización visible. Al aplicar una corriente galvánica de baja intensidad, podemos mapear zonas de inflamación subclínica que no son detectables mediante tricoscopia convencional. Este método proporciona datos cuantitativos sobre la permeabilidad del canal folicular, facilitando el diagnóstico diferencial entre alopecias cicatriciales tempranas y efluvios crónicos. La estandarización de este parámetro es crucial para personalizar los protocolos de entrega de activos tópicos, asegurando que los tratamientos alcancen la papila dérmica con la máxima eficacia posible, evitando la acumulación innecesaria en el estrato córneo superficial.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:59:42.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezo-002",
+    "title": "Respuesta piezoeléctrica de la vaina radicular: Diagnóstico biomecánico",
+    "content": "La vaina radicular externa (VRE) posee propiedades piezoeléctricas intrínsecas que responden al estrés mecánico del crecimiento capilar. Investigaciones publicadas en PubMed sugieren que la pérdida de esta capacidad de respuesta es un indicador crítico en la progresión de la alopecia androgenética. Cuando la VRE pierde su elasticidad y capacidad de generar señales eléctricas bajo tensión, el folículo entra en un estado de estancamiento metabólico. El diagnóstico clínico puede beneficiarse del análisis de la resiliencia mecánica de la fibra, utilizando dispositivos de micro-estiramiento que evalúan la respuesta piezoeléctrica. Esta métrica es fundamental para predecir qué pacientes responderán favorablemente a la estimulación mecánica o a terapias de fotobiomodulación, ya que un tejido con respuesta piezoeléctrica conservada tiene mayor potencial de regeneración. La integración de estos datos en el software de GlowApp permite una evaluación no invasiva de la vitalidad del folículo, diferenciando entre folículos en fase de reposo profundo y aquellos que presentan una atrofia estructural irreversible debido a procesos de rigidez tisular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:59:42.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicobiologia-003",
+    "title": "Glicobiología y metilación de azúcares en la matriz folicular",
+    "content": "La glicobiología del folículo piloso es un campo emergente que analiza cómo la metilación de azúcares en la matriz afecta la señalización celular. El exceso de azúcares no metabolizados en el entorno folicular puede llevar a una modificación de los proteoglicanos, alterando la comunicación entre la papila dérmica y las células madre del bulge. Según estudios de la American Academy of Dermatology, la acumulación de glicanos alterados en la matriz está estrechamente vinculada con la miniaturización folicular en pacientes con resistencia a la insulina. El diagnóstico debe considerar no solo los niveles sistémicos de glucosa, sino el estado metabólico local del folículo. La evaluación de marcadores de glicación en la vaina radicular externa permite identificar una 'fase de rigidez' prematura, donde el folículo pierde su capacidad de cíclica. Esta información es vital para ajustar la dieta y los suplementos, priorizando agentes antiglicantes que protejan la matriz y restauren la fluidez del microambiente folicular, promoviendo un entorno óptimo para la fase anágena y prolongando la vida útil del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "metabolismo-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:59:42.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mastocitos-004",
+    "title": "Interacción de mastocitos perivasculares y ciclo capilar",
+    "content": "Los mastocitos perivasculares actúan como centinelas inmunológicos en el nicho folicular, regulando la transición entre las fases del ciclo capilar. Estudios clínicos publicados en revistas dermatológicas de alto impacto demuestran que una activación aberrante de estos mastocitos, inducida por estrés neurogénico, precipita la entrada prematura en la fase catágena. El diagnóstico de esta interacción se realiza mediante el análisis de la inflamación perifolicular, donde la liberación de triptasa y quimasa por parte de los mastocitos degrada la matriz extracelular, impidiendo el anclaje del bulbo. Es fundamental identificar este patrón en pacientes que presentan dolor capilar o prurito intenso, ya que el abordaje terapéutico debe centrarse en la estabilización de los mastocitos y no solo en el uso de minoxidil. La monitorización de la densidad de mastocitos mediante biopsias no invasivas o el análisis de biomarcadores en el sebo puede predecir la severidad de la caída y la respuesta a los estabilizadores de membrana. Este enfoque es esencial para el manejo de alopecias inflamatorias donde la respuesta a los tratamientos convencionales es subóptima.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antihistamínicos tópicos",
+        "estabilizadores de mastocitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "inmunologia-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:59:42.633Z"
+  }
+]

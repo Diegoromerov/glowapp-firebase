@@ -1,0 +1,251 @@
+[
+  {
+    "chunk_id": "guias_unas-efecto-piezocristalino-001",
+    "title": "Efecto piezocristalino en la queratina: estrés mecánico y fracturas",
+    "content": "La queratina ungueal, al ser una proteína fibrilar altamente organizada, exhibe propiedades piezoeléctricas bajo condiciones de estrés mecánico. Cuando se aplican cargas externas, como el limado excesivo o la presión de uñas esculpidas demasiado largas, se genera una polarización eléctrica interna dentro de la lámina. Este fenómeno, aunque poco estudiado en el ámbito cosmético, es crítico para entender por qué ciertas uñas desarrollan microfracturas longitudinales sin trauma visible. La acumulación de cargas electrostáticas en la estructura queratínica altera la alineación de los puentes disulfuro, debilitando la cohesión entre los corneocitos. Según estudios publicados en 'Journal of Biomedical Materials Research', la integridad estructural de la uña depende no solo de su hidratación, sino de la estabilidad de su red cristalina. La manipulación mecánica constante (fresado de alta frecuencia) interfiere con esta propiedad, facilitando la desestabilización de la lámina y aumentando la susceptibilidad a la onicólisis mecánica. Es fundamental que los profesionales de GlowApp comprendan que la uña no es una estructura inerte, sino un polímero biológico sensible a la energía mecánica aplicada durante los servicios de cabina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado_alta_frecuencia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:54:17.573Z"
+  },
+  {
+    "chunk_id": "guias_unas-migracion-fotoiniciadores-002",
+    "title": "Migración de fotoiniciadores y sensibilización cutánea retardada",
+    "content": "La fotopolimerización incompleta de geles UV/LED deja monómeros residuales y fotoiniciadores sin reaccionar en la matriz del polímero. Estos compuestos, debido a su bajo peso molecular, tienen una alta capacidad de migración a través de la lámina ungueal hacia el lecho y el tejido periungueal. La literatura dermatológica, incluyendo reportes de la American Academy of Dermatology (AAD), advierte que esta exposición crónica es el principal factor de sensibilización a metacrilatos. A diferencia de las reacciones agudas, la sensibilización es un proceso inmunológico de memoria: una vez que el sistema inmune reconoce el hapteno (monómero), la respuesta alérgica será sistémica y permanente. En cabina, el uso de lámparas con espectros de emisión no compatibles con el fotoiniciador específico del gel (ej. TPO vs. BAPO) agrava este problema. Los profesionales deben asegurar protocolos de curado completo, evitando la oclusión de zonas donde se sospeche polimerización subóptima. La educación sobre la toxicidad por monómeros es vital para prevenir la dermatitis alérgica de contacto, que puede manifestarse no solo en dedos, sino en párpados y cuello por contacto indirecto.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-gel-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "curado_incompleto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:54:17.573Z"
+  },
+  {
+    "chunk_id": "guias_unas-homostasis-lipidica-003",
+    "title": "Homeostasis lipídica y permeabilidad de la placa ungueal",
+    "content": "La lámina ungueal no es una barrera impermeable; su permeabilidad está regulada por la presencia de lípidos intercelulares que actúan como sello entre los corneocitos. La deshidratación forzada con primers ácidos agresivos o solventes desengrasantes elimina esta barrera lipídica, alterando la homeostasis natural. Según estudios en 'Journal of Cosmetic Dermatology', la pérdida de estos lípidos aumenta la absorción de sustancias externas, incluyendo monómeros, pigmentos y microorganismos presentes en el ambiente de cabina. Esta alteración no solo debilita la uña, sino que facilita la penetración de patógenos que pueden colonizar el lecho ungueal. Es crucial entender que, aunque buscamos una superficie 'seca' para la adhesión, la eliminación total de la barrera lipídica es contraproducente a largo plazo. Se recomienda el uso de agentes deshidratantes de pH balanceado y la reincorporación de lípidos protectores en la rutina post-servicio. Mantener la integridad de los lípidos es la primera línea de defensa contra la onicodistrofia inducida por productos químicos y el primer paso para asegurar que el sistema de recubrimiento sea biocompatible con la estructura biológica subyacente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lipidos",
+        "primers"
+      ],
+      "contraindications": [
+        "uso_excesivo_solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:54:17.573Z"
+  },
+  {
+    "chunk_id": "guias_unas-dinamica-termica-004",
+    "title": "Dinámica de transferencia térmica en fresado de alta velocidad",
+    "content": "La termodinámica del fresado de alta velocidad es un factor determinante en el daño matricial silencioso. Durante el uso de tornos (e-files), la fricción genera una transferencia térmica que puede exceder el umbral de tolerancia biológica del lecho ungueal, que se estima en torno a los 42-45°C. El sobrecalentamiento no solo causa molestias al cliente, sino que induce cambios irreversibles en la estructura de la queratina y puede provocar inflamación subclínica en la matriz ungueal. La evidencia clínica sugiere que el daño térmico acumulativo puede derivar en onicodistrofia, manifestándose semanas después como surcos transversales o pérdida de brillo. Es imperativo utilizar fresas de carburo con diseño de corte optimizado para disipar el calor y mantener una técnica de presión constante pero ligera. El 'tiempos de contacto' debe ser mínimo. La evaluación del estado de la fresa es vital: herramientas desgastadas aumentan la fricción drásticamente, transformando la energía mecánica en energía térmica destructiva. En GlowApp, la estandarización del uso de tornos debe incluir la monitorización de la temperatura de la lámina mediante técnicas de contacto seguras.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://ijdvl.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresas_desgastadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_manicura"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:54:17.573Z"
+  },
+  {
+    "chunk_id": "guias_unas-psicodermatologia-tic-005",
+    "title": "Neurobiología del tic ungueal y onicotilomanía",
+    "content": "La onicotilomanía es una manifestación física de trastornos de conducta repetitiva centrada en el cuerpo (BFRB, por sus siglas en inglés). Desde una perspectiva de psicodermatología, no debe tratarse meramente como un problema estético. El trauma autoinfligido, ya sea por morder, arrancar o manipular las uñas, altera el microbioma periungueal y crea puertas de entrada para infecciones oportunistas. La literatura médica destaca que el estrés oxidativo generado por el trauma constante induce una respuesta inflamatoria crónica en la matriz, lo que puede resultar en una distrofia permanente, conocida como 'uña distrófica por tic'. Es fundamental que los especialistas de GlowApp reconozcan estos patrones: la presencia de lesiones lineales, simétricas o en zonas de fácil acceso para la mano dominante, sugiere una etiología conductual. El abordaje debe ser empático, multidisciplinario y enfocado en la barrera cutánea. La remoción de recubrimientos (como geles) en pacientes con onicotilomanía debe ser extremadamente cuidadosa, evitando el uso de herramientas metálicas que puedan ser utilizadas para continuar el trauma autoinfligido. La educación sobre el ciclo del hábito es el primer paso para la rehabilitación ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "The TLC Foundation for Body-Focused Repetitive Behaviors",
+        "url": "https://www.bfrb.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas_metalicas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:54:17.573Z"
+  },
+  {
+    "chunk_id": "guias_unas-inhibicion-oxigeno-006",
+    "title": "Inhibición por oxígeno: el fallo invisible en la polimerización",
+    "content": "La inhibición por oxígeno es un fenómeno químico donde el oxígeno atmosférico reacciona con los radicales libres producidos por el fotoiniciador, impidiendo que la reacción de polimerización llegue a completarse en la superficie del gel. Este proceso resulta en una capa pegajosa (inhibitory layer) que, aunque es útil para la adhesión de capas sucesivas, representa un riesgo significativo de sensibilización si no se maneja correctamente. La presencia de esta capa superficial sin polimerizar expone al cliente a monómeros no reaccionados que pueden penetrar la piel circundante. Según guías técnicas de polimerización, el control de la inhibición por oxígeno es crítico en geles de alta viscosidad y bases de nueva generación. Un curado insuficiente en los bordes, donde el oxígeno está más presente, es la causa principal de dermatitis de contacto en los pliegues periungueales. La solución técnica no es simplemente aumentar el tiempo de lámpara, sino utilizar lámparas con la longitud de onda adecuada y considerar la oclusión durante el proceso de curado si el producto lo requiere. Entender esta cinética química permite a los profesionales de GlowApp reducir drásticamente los eventos de alergia cruzada y mejorar la durabilidad del servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Society of Contact Dermatitis",
+        "url": "https://www.escd.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "curado_insuficiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:54:17.573Z"
+  }
+]

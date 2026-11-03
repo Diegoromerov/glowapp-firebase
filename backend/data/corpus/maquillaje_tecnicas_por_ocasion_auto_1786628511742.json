@@ -1,0 +1,91 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-hiperbaricos-001",
+    "title": "Maquillaje en entornos de hiperbaria: Estabilidad y seguridad cutánea",
+    "content": "La exposición a cámaras hiperbáricas durante eventos de entrenamiento o investigación clínica presenta desafíos únicos para el maquillaje. Bajo condiciones de presión aumentada, el oxígeno hiperbárico puede acelerar la oxidación de los lípidos presentes en las bases cosméticas, alterando su estabilidad. Según estudios en PubMed sobre fisiología cutánea en entornos extremos, la presión parcial de oxígeno incrementa la producción de especies reactivas de oxígeno (ERO) en la superficie cutánea. Los productos cosméticos con alto contenido en aceites insaturados deben evitarse, ya que la oxidación prematura no solo altera el color y la textura del maquillaje, sino que puede generar subproductos comedogénicos. Se recomienda el uso de formulaciones anhidras con polímeros de silicona volátiles, los cuales presentan una mayor inercia química bajo presiones elevadas. Asimismo, es imperativo evitar el uso de adhesivos de pestañas o pegamentos de maquillaje que contengan solventes volátiles, ya que su tasa de evaporación cambia drásticamente en cámaras presurizadas, aumentando el riesgo de irritación ocular o dermatitis por contacto accidental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "polimeros_sinteticos"
+      ],
+      "contraindications": [
+        "solventes_volatiles",
+        "aceites_insaturados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje_profesional_tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:41:32.415Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-deshidratacion-osmotica-004",
+    "title": "Maquillaje en entornos de deshidratación osmótica: Estrategias de retención",
+    "content": "Los ambientes de deshidratación osmótica, tales como espacios con sistemas de purificación de aire industriales o entornos de laboratorio, extraen la humedad de forma activa de la superficie cutánea. En estas condiciones, el maquillaje convencional pierde rápidamente su fase acuosa, lo que provoca la fisura de los polímeros y la migración de pigmentos hacia los surcos cutáneos. Según la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), el mantenimiento de la barrera lipídica es crítico cuando la humedad relativa ambiental es inferior al 30%. Para mitigar este efecto, es necesario utilizar técnicas de 'layering' que empleen humectantes oclusivos como ceramidas o ácido hialurónico de bajo peso molecular antes de la aplicación del maquillaje. Estos ingredientes crean un reservorio de agua que impide que el maquillaje absorba la humedad de la propia piel. Se recomienda evitar bases de maquillaje con alto contenido en alcoholes desnaturalizados, ya que estos actúan como agentes deshidratantes que exacerban el problema. La fijación del maquillaje debe realizarse con sprays que contengan glicerina o pantenol, asegurando que el film cosmético se mantenga flexible y resistente a la tracción mecánica inducida por la pérdida de agua en el estrato córneo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iad.org.in/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acido_hialuronico",
+        "pantenol"
+      ],
+      "contraindications": [
+        "alcoholes_desnaturalizados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje_cuidado_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:41:32.415Z"
+  }
+]

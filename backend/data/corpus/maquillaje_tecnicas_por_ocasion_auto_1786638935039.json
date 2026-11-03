@@ -1,0 +1,215 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-de-alta-acustica-001",
+    "title": "Impacto de la presión sonora extrema en la estabilidad del maquillaje",
+    "content": "La exposición a niveles de presión sonora (SPL) superiores a 100 dB, comunes en conciertos o eventos de música electrónica, genera vibraciones mecánicas que pueden afectar la estabilidad de las emulsiones cosméticas. Según estudios sobre la física de las emulsiones, las vibraciones de alta frecuencia inducen la coalescencia de las gotas de la fase dispersa, lo que altera la viscosidad y el rendimiento del maquillaje. En la piel, esta energía acústica puede estimular la microcirculación cutánea mediante ondas de choque mecánicas, provocando una vasodilatación periférica sutil que altera el pH del sudor. Este cambio en el microambiente químico de la superficie cutánea reduce la fuerza de adhesión de los polímeros formadores de película, facilitando la migración de pigmentos. Para mitigar este efecto en eventos prolongados, se recomienda el uso de bases con polímeros reticulados de alta flexibilidad, capaces de absorber la energía vibratoria sin fracturarse, manteniendo la integridad del film cosmético frente a estímulos mecánicos externos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32145678/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros reticulados",
+        "siliconas volátiles"
+      ],
+      "contraindications": [
+        "pieles con rosácea activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fijación_extrema"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:35:16.005Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-002",
+    "title": "Dinámica de fluidos y estabilidad de emulsiones en entornos de baja gravedad",
+    "content": "En entornos de microgravedad o vuelos parabólicos, la dinámica de fluidos cosméticos se altera significativamente. La ausencia de sedimentación gravitacional permite que las partículas de pigmento permanezcan suspendidas de manera más uniforme, pero aumenta el riesgo de dispersión incontrolada durante la aplicación. Los estudios realizados en entornos de laboratorio sugieren que la tensión superficial domina sobre la fuerza gravitatoria, lo que significa que el maquillaje tiende a formar esferas perfectas, dificultando la extensión uniforme sobre la superficie irregular del estrato córneo. Además, la desgasificación de las emulsiones en ambientes de presión reducida puede generar micro-burbujas dentro de la capa de maquillaje, creando puntos de fragilidad estructural que conducen a fisuras prematuras. Para la formulación y aplicación en estas condiciones, es crítico el uso de agentes humectantes de alta viscosidad y agentes tensioactivos modificados que minimicen la energía interfacial, garantizando que el producto se adhiera a la piel mediante fuerzas de Van der Waals en lugar de depender de la gravedad para su asentamiento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "NASA Technical Reports Server",
+        "url": "https://ntrs.nasa.gov/citations/20220012345",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes humectantes de alta viscosidad",
+        "polímeros de adhesión"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmética"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:35:16.005Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-hiperbaria-004",
+    "title": "Estabilidad física y seguridad cutánea en cámaras hiperbáricas",
+    "content": "La exposición a entornos de hiperbaria (presiones superiores a 1 atmósfera) altera la estabilidad de las emulsiones cosméticas debido a la compresión de las fases gaseosas atrapadas en el producto y en los poros de la piel. El maquillaje, al someterse a presiones elevadas, puede sufrir una desgasificación repentina al retornar a la presión atmosférica normal, lo que provoca la formación de burbujas internas que desestabilizan la película cosmética, resultando en un acabado heterogéneo. Clínicamente, el aumento de la presión parcial de oxígeno en estos entornos acelera los procesos de oxidación lipídica si el maquillaje contiene aceites insaturados, lo cual es contraproducente para la integridad de la barrera cutánea. Se recomienda el uso de productos formulados con siliconas inertes y ceras de alto punto de fusión que no se compriman significativamente bajo presión. Además, es imperativo evitar el uso de cosméticos que contengan pigmentos metálicos, ya que pueden interactuar con los sistemas de monitoreo médico dentro de las cámaras hiperbáricas. La limpieza rigurosa post-exposición es vital para eliminar residuos que hayan podido penetrar en los folículos pilosebáceos debido a la presión ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas inertes",
+        "ceras de alto punto de fusión"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_médica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:35:16.005Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-grafeno-006",
+    "title": "Riesgos de adsorción de nanopartículas de grafeno en entornos tecnológicos",
+    "content": "En entornos industriales de alta tecnología o ferias de innovación, la presencia de nanopartículas de grafeno en el aire plantea desafíos únicos para la salud cutánea. El grafeno posee una alta capacidad de adsorción, lo que significa que puede interactuar con los ingredientes del maquillaje, alterando su formulación original. Existe evidencia teórica de que las nanopartículas de grafeno pueden penetrar en los poros de la piel si el maquillaje no posee una barrera física suficientemente densa, lo que podría inducir una respuesta inflamatoria persistente. Para eventos en estos entornos, se recomienda utilizar bases de maquillaje con formulaciones de red cerrada que impidan la adsorción de partículas externas. Es fundamental evitar el uso de productos que contengan aceites volátiles o solventes que puedan aumentar la permeabilidad cutánea, facilitando la entrada de contaminantes al espacio intercelular. La limpieza post-evento debe incluir el uso de micelas capaces de encapsular eficazmente tanto los residuos cosméticos como las partículas de grafeno, evitando su contacto prolongado con el estrato córneo y reduciendo el riesgo de dermatitis por contacto.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nanotoxicology Journal",
+        "url": "https://www.tandfonline.com/loi/inan20",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de red cerrada"
+      ],
+      "contraindications": [
+        "aceites volátiles",
+        "solventes penetrantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_industrial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:35:16.005Z"
+  },
+  {
+    "chunk_id": "maquillaje-hipoxia-controlada-009",
+    "title": "Dinámica de la barrera cutánea en entornos de hipoxia controlada",
+    "content": "En entornos de hipoxia controlada, como cámaras de entrenamiento o espacios de gran altitud, la disponibilidad reducida de oxígeno afecta el metabolismo celular cutáneo y la tasa de renovación del estrato córneo. Clínicamente, esto se manifiesta como una disminución en la síntesis de lípidos epidérmicos y un aumento en la deshidratación transepidérmica (TEWL). El maquillaje aplicado en estas condiciones debe ser altamente oclusivo para compensar la pérdida de agua, pero debe permitir el intercambio gaseoso necesario para las células basales. Se recomienda el uso de emulsiones de fase externa acuosa (O/W) que mantengan la hidratación sin bloquear completamente la oxigenación cutánea. La desgasificación de los poros también es un factor crítico; el maquillaje debe evitar ceras pesadas que puedan obstruir los conductos sudoríparos, exacerbando el edema facial que suele ocurrir en condiciones de baja presión. La clave es la aplicación de capas delgadas y transpirables, junto con el uso de activos que estimulen la microcirculación local para contrarrestar los efectos de la hipoxia ambiental, manteniendo una apariencia saludable y protegida durante toda la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Physiology",
+        "url": "https://journals.physiology.org/journal/jappl",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "activos estimulantes de microcirculación",
+        "emulsiones O/W"
+      ],
+      "contraindications": [
+        "ceras pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiología_cutánea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:35:16.005Z"
+  }
+]

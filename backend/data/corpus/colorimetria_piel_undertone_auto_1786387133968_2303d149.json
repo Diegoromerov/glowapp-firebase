@@ -1,0 +1,81 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387133967-1-12ba0f8e-efecto-tyndall-en-la-dermis-papilar-dispersion-selectiva-de-",
+    "title": "Efecto Tyndall en la dermis papilar: dispersión selectiva de longitudes de onda cortas",
+    "content": "El efecto Tyndall es un fenómeno físico crucial para comprender el subtono frío, especialmente en áreas de piel delgada como el contorno periorbital. Cuando la luz incide sobre la piel, las partículas coloidales y las estructuras de la dermis papilar dispersan preferentemente las longitudes de onda más cortas (azul/violeta). En individuos con una baja densidad de melanina en el estrato basal, esta dispersión es más evidente, creando una apariencia azulada o violácea que a menudo se confunde con ojeras vasculares. Este fenómeno es puramente físico y no biológico, lo que significa que el subtono percibido es una función de la profundidad de la dispersión de Rayleigh frente a la absorción de hemoglobina. La correcta identificación del subtono requiere separar la cromaticidad de la piel del efecto Tyndall, evitando diagnósticos erróneos basados en la transparencia dérmica. La espectroscopia de reflectancia confirma que la dispersión de luz en estas capas superficiales puede alterar el valor L* (luminosidad) sin modificar la saturación cromática del subtono subyacente, un factor crítico para la selección de correctores de color.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30062-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_subtono"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:38:53.967Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387133967-2-e86bd64c-cinetica-de-la-oxidacion-lipidica-y-su-impacto-en-el-viraje-",
+    "title": "Cinética de la oxidación lipídica y su impacto en el viraje de pigmentos de base",
+    "content": "La interacción química entre el sebo cutáneo y los pigmentos de las bases de maquillaje genera un fenómeno de viraje cromático conocido como 'oxidación'. Este proceso es catalizado por la composición de ácidos grasos libres (AGL) y el pH cutáneo. Cuando el sebo, rico en escualeno y triglicéridos, se oxida debido a la exposición a radicales libres, los productos resultantes alteran el índice de refracción de la película de maquillaje, provocando un desplazamiento hacia tonos más anaranjados o amarillentos. Este viraje no es una propiedad del subtono del usuario, sino una falla en la estabilidad química del producto frente a la bioquímica del estrato córneo. Estudios recientes indican que individuos con una mayor tasa de secreción sebácea experimentan un viraje cromático más acelerado, lo que invalida las pruebas de color realizadas inmediatamente después de la aplicación. Para mitigar este riesgo, es necesario evaluar el subtono utilizando bases de alta estabilidad oxidativa o realizar pruebas de parche de 4 horas para observar el comportamiento del pigmento frente a la carga lipídica específica del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "analisis_subtono"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:38:53.967Z"
+  }
+]

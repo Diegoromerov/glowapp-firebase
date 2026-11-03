@@ -1,0 +1,398 @@
+[
+  {
+    "chunk_id": "peelings-quimicos-domicilio-riesgos-001",
+    "title": "Peelings químicos de uso domiciliario: límites de seguridad y riesgos",
+    "content": "El auge de los peelings químicos de alta concentración para uso en casa, especialmente aquellos con concentraciones de AHA superiores al 10% o combinaciones complejas, representa un riesgo significativo de quemadura química y alteración de la barrera cutánea. A diferencia de los procedimientos realizados en consultorio bajo supervisión dermatológica, el uso domiciliario carece de control sobre el tiempo de contacto y la neutralización adecuada. La American Academy of Dermatology (AAD) advierte que la aplicación incorrecta puede derivar en hiperpigmentación postinflamatoria (HPI), especialmente en fototipos altos (IV-VI). Es fundamental entender que la exfoliación química no debe causar ardor intenso ni eritema persistente. La barrera cutánea, compuesta por lípidos intercelulares y el manto ácido, puede comprometerse severamente, facilitando infecciones bacterianas o dermatitis por contacto irritativa. Recomendamos que cualquier producto con pH inferior a 3.5 se utilice exclusivamente bajo indicación profesional, priorizando siempre la integridad de la barrera cutánea sobre la intensidad del efecto exfoliante.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/peeling-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "AHA",
+        "BHA",
+        "TCA"
+      ],
+      "contraindications": [
+        "dermatitis_atopica",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "corticoides-topicos-cosmetica-peligro-002",
+    "title": "Corticoides tópicos en productos de venta libre: el riesgo de la automedicación",
+    "content": "El uso inadvertido de corticoides tópicos de mediana o alta potencia en productos cosméticos no etiquetados representa un grave problema de salud pública. La aplicación prolongada de estos compuestos, incluso en concentraciones bajas, puede inducir atrofia cutánea, telangiectasias, estrías y el desarrollo de dermatitis perioral inducida por esteroides. Según publicaciones en el Journal of the American Academy of Dermatology (JAAD), el uso de corticoides fuera de una indicación médica estricta para condiciones inflamatorias específicas altera la respuesta inmune local de la piel. Es vital que los usuarios de GlowApp identifiquen ingredientes como la hidrocortisona o derivados sintéticos en sus rutinas; si un producto 'calmante' reduce rojeces de forma sospechosamente rápida y constante, debe ser evaluado por un profesional. La interrupción abrupta tras el uso prolongado puede provocar un efecto rebote severo, empeorando la condición inicial (ej. rosácea o acné). La educación sobre la lectura de etiquetas es la primera línea de defensa contra estos efectos iatrogénicos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "JAAD - Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30509-3/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides",
+        "hidrocortisona"
+      ],
+      "contraindications": [
+        "rosacea",
+        "acne_vulgar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "benzoyl-peroxide-interacciones-003",
+    "title": "Peróxido de benzoilo: precauciones en la combinación de activos",
+    "content": "El peróxido de benzoilo (PB) es un agente oxidante potente utilizado en el tratamiento del acné vulgar debido a sus propiedades bactericidas. Sin embargo, su naturaleza química presenta contraindicaciones claras en términos de combinación. La interacción más crítica ocurre con los retinoides de primera generación (como la tretinoína), ya que el PB puede inactivar la molécula de tretinoína mediante oxidación, reduciendo drásticamente su eficacia terapéutica. Investigaciones en PubMed subrayan que, aunque existen formulaciones estabilizadas, el uso simultáneo de PB con otros exfoliantes o agentes oxidantes puede exacerbar la irritación, provocando dermatitis de contacto irritativa. Además, el PB es un agente blanqueador, por lo que su contacto con textiles debe ser monitoreado. Es fundamental aplicar el PB preferiblemente en horarios distintos a los retinoides o optar por formulaciones específicamente diseñadas para ser compatibles. La paciencia en la introducción de este activo es clave para evitar el compromiso de la barrera cutánea, especialmente en pieles con tendencia a la deshidratación o sensibilidad marcada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31513364/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzoyl_peroxide",
+        "tretinoina"
+      ],
+      "contraindications": [
+        "piel_sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-acne"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "alfa-arbutina-seguridad-004",
+    "title": "Alfa-arbutina: alternativa a la hidroquinona y sus límites",
+    "content": "La alfa-arbutina es un derivado biosintético de la hidroquinona que actúa como inhibidor de la tirosinasa, la enzima clave en la melanogénesis. A diferencia de la hidroquinona, la alfa-arbutina se considera una opción con un perfil de seguridad superior y menor riesgo de ocronosis exógena. No obstante, su eficacia depende críticamente de la formulación y la penetración transdérmica. Estudios clínicos sugieren que concentraciones entre el 1% y el 2% son seguras para el uso a largo plazo en el manejo de hiperpigmentaciones. Sin embargo, es fundamental no confundir su seguridad con la ausencia de efectos secundarios; el uso indiscriminado junto con otros agentes aclarantes o exfoliantes potentes puede llevar a un efecto rebote o irritación crónica. En el contexto de GlowApp, recomendamos integrar la alfa-arbutina siempre acompañada de una protección solar estricta, ya que cualquier activo que interfiera con la producción de melanina requiere una defensa física contra la radiación UV para prevenir la repigmentación. La evidencia actual avala su uso como coadyuvante en protocolos de melasma, siempre bajo un enfoque de constancia y no de inmediatez.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL - Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/alpha-arbutin-as-a-skin-brightening-agent/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alfa_arbutina"
+      ],
+      "contraindications": [
+        "piel_irritada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-manchas"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "aceites-esenciales-dermatitis-005",
+    "title": "Aceites esenciales en cosmética: el riesgo de sensibilización alérgica",
+    "content": "Los aceites esenciales, a menudo comercializados como 'naturales' y 'seguros', son una de las causas más frecuentes de dermatitis alérgica de contacto en el cuidado de la piel. Componentes como el linalool, limoneno, geraniol y eugenol son alérgenos de contacto bien documentados que pueden sensibilizar la piel incluso en concentraciones bajas. A diferencia de los aceites vegetales (como el de jojoba o escualano), que son emolientes, los aceites esenciales son mezclas volátiles altamente complejas. La aplicación recurrente de estos compuestos puede romper la tolerancia inmunológica de la piel, resultando en erupciones, prurito y rojez crónica. La AAD enfatiza que el término 'natural' no es sinónimo de 'hipoalergénico'. Para usuarios con antecedentes de atopia, rosácea o piel reactiva, el uso de productos que contienen fragancias naturales o aceites esenciales debe ser evitado por completo. La curaduría clínica para GlowApp prioriza fórmulas libres de fragancias irritantes para minimizar el riesgo de sensibilización acumulativa, un fenómeno que puede manifestarse meses después de haber comenzado a usar un producto aparentemente inofensivo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/childhood/skin-care/fragrance-free",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_esenciales",
+        "fragancias"
+      ],
+      "contraindications": [
+        "dermatitis_atopica",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "proteccion-solar-filtros-quimicos-006",
+    "title": "Filtros solares: diferencia entre químicos y físicos en pieles reactivas",
+    "content": "La elección entre filtros solares químicos (orgánicos) y físicos (inorgánicos/minerales) es crucial para pacientes con pieles reactivas o condiciones como el melasma. Los filtros químicos (como la avobenzona o el octocrileno) absorben la radiación UV y la transforman en calor, lo cual puede elevar la temperatura cutánea y exacerbar la vasodilatación en casos de rosácea. Por otro lado, los filtros físicos como el óxido de zinc y el dióxido de titanio actúan principalmente mediante reflexión y dispersión, siendo generalmente mejor tolerados por pieles sensibles. La evidencia sugiere que, para condiciones de hiperpigmentación, los filtros minerales ofrecen una protección más estable frente al espectro visible y la luz infrarroja, factores que contribuyen al empeoramiento del melasma. Es importante desmitificar que los filtros minerales dejan una capa blanca; las formulaciones modernas con tecnología de micronización han mejorado drásticamente la cosmética. Para los usuarios de GlowApp, recomendamos la transición a filtros minerales o híbridos si experimentan calor o enrojecimiento tras la aplicación de su protector solar habitual, priorizando siempre la protección de amplio espectro frente a las preferencias de textura.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/skin-cancer-prevention/sun-protection/sunscreen/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxido_de_zinc",
+        "filtro_solar"
+      ],
+      "contraindications": [
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-proteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "urea-concentraciones-efecto-007",
+    "title": "Urea: el activo dual según su concentración",
+    "content": "La urea es un ingrediente versátil cuya función cambia drásticamente según la concentración utilizada en la fórmula. A bajas concentraciones (del 5% al 10%), la urea actúa como un excelente humectante, capaz de captar agua y mejorar la función barrera en pieles secas o con dermatitis atópica. Sin embargo, a concentraciones superiores al 20%, la urea adquiere propiedades queratolíticas, siendo efectiva para el tratamiento de hiperqueratosis (piel gruesa en talones, codos o queratosis pilaris). El error clínico común es aplicar urea de alta concentración en zonas de piel fina o dañada, lo cual resulta en irritación, ardor y descamación excesiva. Es imperativo que el usuario de GlowApp identifique la concentración del producto: para el rostro, generalmente no se recomiendan concentraciones superiores al 5-10% salvo indicación médica expresa para condiciones específicas. La urea es un componente natural del Factor Natural de Hidratación (NMF) de la piel, por lo que, usada en la concentración adecuada, es uno de los activos más compatibles y reparadores para el cuidado diario, fortaleciendo la integridad del estrato córneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/20620944/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea"
+      ],
+      "contraindications": [
+        "piel_irritada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "ceramidas-colesterol-acidos-grasos-008",
+    "title": "La tríada lipídica: importancia de la proporción en la barrera cutánea",
+    "content": "La barrera cutánea no se repara únicamente con un solo ingrediente; requiere una reposición equilibrada de los lípidos que componen la matriz intercelular: ceramidas, colesterol y ácidos grasos libres. La literatura dermatológica, incluyendo estudios en el Journal of Investigative Dermatology, enfatiza que la proporción fisiológica óptima de estos tres componentes es aproximadamente 3:1:1. El uso de productos que solo contienen ceramidas sin los otros dos componentes puede no ser suficiente para restaurar la función barrera en pieles con disfunción crónica o daño por sobre-exfoliación. Al curar rutinas para GlowApp, buscamos fórmulas que respeten esta sinergia, ya que el colesterol es vital para la fluidez de la bicapa lipídica y los ácidos grasos son precursores de la integridad estructural. Ignorar esta tríada y enfocarse solo en activos exfoliantes o potentes puede llevar a un círculo vicioso de irritación. Una barrera cutánea sana es la mejor protección contra agentes externos y la clave para tolerar ingredientes activos potentes como los retinoides o ácidos. La reposición lipídica es, por tanto, un pilar fundamental de la salud dermatológica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)34559-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol",
+        "acidos_grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-reparacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  },
+  {
+    "chunk_id": "alcoholes-denat-vs-grasos-009",
+    "title": "Alcoholes en cosmética: diferenciación crucial para la hidratación",
+    "content": "La confusión terminológica entre alcoholes de cadena corta (como el alcohol denat o alcohol isopropílico) y alcoholes grasos (como el cetílico, estearílico o cetearílico) es una causa frecuente de ansiedad innecesaria en el cuidado de la piel. Los alcoholes de cadena corta actúan como solventes y potenciadores de la penetración, pero pueden ser extremadamente deshidratantes, eliminando los lípidos naturales de la piel y comprometiendo su barrera si se usan en altas concentraciones. Por el contrario, los alcoholes grasos son emolientes sólidos que ayudan a suavizar la piel y estabilizar las emulsiones, sin las propiedades irritantes de los primeros. Es fundamental que los usuarios de GlowApp aprendan a distinguir estos compuestos en las etiquetas (INCI). Mientras que el alcohol denat debe evitarse en pieles secas, sensibles o con rosácea, los alcoholes grasos son ingredientes seguros y beneficiosos que aportan textura y oclusión. La demonización generalizada de la palabra 'alcohol' en los productos cosméticos es un mito que debemos abordar con precisión técnica, educando al usuario para que tome decisiones basadas en la composición real y no en términos genéricos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/routine/dry-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol_denat",
+        "alcohol_cetilico"
+      ],
+      "contraindications": [
+        "piel_seca",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:51:11.678Z"
+  }
+]

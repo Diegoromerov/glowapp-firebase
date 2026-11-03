@@ -1,0 +1,389 @@
+[
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-001",
+    "title": "Manejo de la remodelación de cicatrices en Hidradenitis Supurativa",
+    "content": "La Hidradenitis Supurativa (HS) genera un proceso inflamatorio crónico que culmina en fibrosis extensa y cicatrices hipertróficas o queloides, alterando la arquitectura del colágeno dérmico. El manejo clínico post-inflamatorio no solo requiere control de la recidiva, sino una estrategia para la remodelación del tejido cicatrizal para restaurar la movilidad articular y reducir el dolor crónico. La evidencia sugiere que el uso de corticoides intralesionales combinados con láser de CO2 fraccionado puede mejorar la elasticidad del tejido, aunque el riesgo de reactivación inflamatoria debe ser monitoreado. Es fundamental evaluar la tensión mecánica sobre la zona afectada, ya que el movimiento constante en axilas e ingles favorece la formación de tejido fibroso desorganizado. La terapia debe ser conservadora, priorizando la preservación de la integridad cutánea antes de considerar procedimientos invasivos de escisión quirúrgica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hidradenitis-suppurativa",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticosteroides",
+        "silicona"
+      ],
+      "contraindications": [
+        "infeccion_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-002",
+    "title": "El papel de los moduladores de colágeno en la cicatrización de la HS",
+    "content": "El tratamiento de las secuelas cicatrizales de la hidradenitis supurativa se beneficia del uso de moduladores de la síntesis de colágeno. A diferencia de las cicatrices quirúrgicas simples, las secuelas de la HS presentan un entorno proinflamatorio persistente. La aplicación tópica de geles de silicona de grado médico ha demostrado ser el estándar de oro para la hidratación oclusiva y la regulación de los fibroblastos en cicatrices inmaduras. La evidencia publicada en PubMed sugiere que la oclusión prolongada reduce la pérdida de agua transepidérmica (TEWL) en la zona, mitigando la señalización de citoquinas pro-fibróticas. Es vital que el paciente mantenga un régimen de hidratación constante, evitando fricciones mecánicas adicionales que exacerben la inflamación subyacente. La educación del paciente sobre la maduración de la cicatriz, que puede extenderse hasta 18 meses, es clave para gestionar las expectativas terapéuticas en pacientes con HS severa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicona_grado_medico",
+        "acido_hialuronico"
+      ],
+      "contraindications": [
+        "heridas_abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-003",
+    "title": "Prevención de la fibrosis post-quirúrgica en HS axilar",
+    "content": "Tras la escisión quirúrgica de nódulos en la hidradenitis supurativa, la prevención de la fibrosis excesiva es un desafío clínico crítico. La tensión de la herida en áreas de alta movilidad como la axila aumenta el riesgo de dehiscencia y cicatrices hipertróficas. El protocolo post-operatorio debe incluir técnicas de soporte mecánico, como vendajes de descarga, para minimizar la tracción sobre los bordes de la herida durante la fase de epitelización. La literatura médica subraya que la aplicación temprana de láser de baja intensidad (LLLT) puede acelerar la modulación de la respuesta inflamatoria y mejorar la organización de las fibras de colágeno. Es imperativo evitar el uso de fragancias o limpiadores agresivos en el área perilesional, ya que la piel recién epitelizada posee una barrera cutánea altamente susceptible a la irritación y a la dermatitis de contacto, lo cual podría desencadenar una nueva respuesta inflamatoria persistente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)02890-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "solucion_salina",
+        "emolientes_sin_fragancia"
+      ],
+      "contraindications": [
+        "retinoides_topicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_post_quirurgico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-004",
+    "title": "Mito vs Realidad: ¿La exfoliación ayuda en la HS?",
+    "content": "Existe una creencia extendida de que la exfoliación mecánica o química intensa ayuda a 'desobstruir' los folículos en pacientes con predisposición a hidradenitis supurativa. Clínicamente, esto es contraproducente. La HS es una enfermedad del folículo pilosebáceo que involucra una respuesta inmune mediada por células, no una simple hiperqueratosis. La fricción mecánica derivada de exfoliantes granulares induce microtraumas que activan la cascada inflamatoria, facilitando la ruptura folicular y la formación de nuevos abscesos. La evidencia clínica desaconseja cualquier procedimiento de exfoliación física en áreas afectadas por HS. En su lugar, se recomienda el uso de limpiadores con agentes calmantes y pH fisiológico que respeten la barrera cutánea sin comprometer la integridad de la piel perilesional. La gestión de la HS debe enfocarse en la reducción de la carga bacteriana y la modulación de la inflamación, nunca en la remoción mecánica de capas de piel.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "DermNet NZ",
+        "url": "https://dermnetnz.org/topics/hidradenitis-suppurativa",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "zinc"
+      ],
+      "contraindications": [
+        "exfoliantes_fisicos",
+        "scrubs"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion_paciente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-005",
+    "title": "El impacto de la oclusión en el microbioma de áreas con HS",
+    "content": "El uso de vendajes oclusivos en pacientes con hidradenitis supurativa tiene una doble cara. Si bien la oclusión es necesaria para contener el exudado y proteger la herida, el ambiente húmedo y cálido creado bajo el apósito favorece la proliferación de bacterias anaerobias y la alteración del microbioma cutáneo. Estudios recientes indican que la oclusión prolongada sin cambios frecuentes puede inducir una disbiosis que perpetúa la inflamación. Es imperativo utilizar apósitos de alta permeabilidad al vapor de agua (MVTR) y realizar curaciones frecuentes para mantener el equilibrio microbiológico. La elección del material del apósito es determinante: las espumas de poliuretano con capacidad de absorción controlada son preferibles a los vendajes de gasa tradicionales, que pueden adherirse al lecho de la herida y causar trauma mecánico al ser retirados, exacerbando la formación de tejido de granulación exuberante y posterior cicatrización anómala.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "apositios_hidrocoloides"
+      ],
+      "contraindications": [
+        "adhesivos_fuertes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_heridas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-006",
+    "title": "Fotoprotección en áreas cicatrizales post-HS",
+    "content": "La hiperpigmentación post-inflamatoria (HPI) es una secuela común en pacientes con hidradenitis supurativa, particularmente en fototipos altos. La exposición solar sin protección adecuada sobre áreas cicatrizales o inflamadas intensifica la melanogénesis, dejando manchas oscuras persistentes que pueden durar meses o años. La fotoprotección en estas áreas es un reto debido a la sudoración excesiva y la fricción constante. Se recomienda el uso de filtros solares de amplio espectro con tecnología 'dry touch' o formulaciones en gel que no obstruyan los folículos pilosos. La evidencia clínica sugiere que la protección contra la luz visible es igualmente importante, por lo que el uso de filtros con óxidos de hierro es altamente recomendado para prevenir la estimulación de los melanocitos en pieles inflamadas. La educación sobre la reaplicación constante es vital, ya que la transpiración en axilas e ingles degrada rápidamente la película fotoprotectora aplicada inicialmente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/skin-cancer-prevention/sun-protection/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "filtros_minerales",
+        "oxidos_de_hierro"
+      ],
+      "contraindications": [
+        "filtros_comedogenicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-007",
+    "title": "Evaluación del prurito en cicatrices de HS",
+    "content": "El prurito crónico en cicatrices de hidradenitis supurativa es un síntoma a menudo subestimado, pero clínicamente significativo. Resulta de la liberación de mediadores inflamatorios y la alteración de las fibras nerviosas durante el proceso de remodelación tisular. El rascado constante no solo altera la arquitectura de la cicatriz, sino que introduce microorganismos que pueden reactivar la infección. La aproximación clínica debe basarse en el uso de antipruriginosos tópicos y, en casos seleccionados, la modulación del sistema nervioso periférico mediante fármacos específicos. Es fundamental distinguir el prurito inflamatorio del prurito neuropático, ya que el manejo difiere significativamente. La hidratación con agentes que contengan polidocanol o urea en concentraciones bajas puede ayudar a calmar la sintomatología sin sobrecargar la piel. Se desaconseja el uso de antihistamínicos tópicos por el alto riesgo de sensibilización y dermatitis de contacto alérgica en pieles ya comprometidas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Forum for the Study of Itch",
+        "url": "https://itch-forum.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polidocanol",
+        "urea"
+      ],
+      "contraindications": [
+        "antihistaminicos_topicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_sintomas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-008",
+    "title": "Tendencias: Terapia con plasma rico en plaquetas (PRP) en HS",
+    "content": "La aplicación de Plasma Rico en Plaquetas (PRP) como terapia adyuvante en la reparación de tejidos tras el manejo de la hidradenitis supurativa es una tendencia emergente. Los factores de crecimiento liberados por las plaquetas, incluyendo el TGF-beta y el PDGF, juegan un rol fundamental en la modulación de la inflamación y la promoción de una cicatrización organizada. Si bien la evidencia en cicatrices de HS aún está en desarrollo, estudios preliminares sugieren una mejora en la calidad del tejido perilesional y una reducción en el tiempo de epitelización. Es crucial señalar que el PRP debe ser administrado únicamente por profesionales capacitados, bajo estrictas condiciones de asepsia, para evitar la introducción de bacterias en un entorno ya propenso a infecciones recurrentes. La selección del paciente debe ser rigurosa, descartando aquellos con actividad inflamatoria aguda que podría ser exacerbada por la inyección de factores de crecimiento.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "plasma_rico_en_plaquetas"
+      ],
+      "contraindications": [
+        "infeccion_activa",
+        "trastornos_coagulacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina_regenerativa"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  },
+  {
+    "chunk_id": "subtema-hidradenitis-cicatrizal-009",
+    "title": "Nutrición y su impacto en la resiliencia cutánea ante la HS",
+    "content": "El estado metabólico del paciente juega un rol determinante en la capacidad de cicatrización de la piel. En pacientes con hidradenitis supurativa, la optimización de los niveles de zinc, vitamina D y proteínas de alto valor biológico es esencial para la síntesis de colágeno y la modulación de la respuesta inflamatoria. El zinc, en particular, es un cofactor clave para la metaloproteinasas de la matriz (MMPs), enzimas necesarias para el remodelado de la cicatriz. La evidencia sugiere que la suplementación nutricional, bajo supervisión médica, puede mejorar significativamente la respuesta de la piel ante los procedimientos de tratamiento. Asimismo, el control estricto de la glicemia es vital, ya que la hiperglucemia crónica altera la reticulación del colágeno, resultando en cicatrices menos elásticas y más propensas a la retracción. Un enfoque integral que combine nutrición clínica con el manejo dermatológico tópico es la estrategia más robusta para el manejo a largo plazo de la HS.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Journal of Clinical Dermatology",
+        "url": "https://link.springer.com/journal/40257",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "vitamina_d"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:19:54.603Z"
+  }
+]

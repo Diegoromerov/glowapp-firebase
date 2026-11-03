@@ -1,0 +1,116 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-biofotometria-001",
+    "title": "Biofotometría de Reflectancia para la Evaluación del Brillo y Salud de la Cutícula",
+    "content": "La biofotometría de reflectancia es una técnica avanzada que permite cuantificar de manera objetiva la integridad de la cutícula capilar mediante el análisis de la dispersión de la luz sobre la superficie de la fibra. A diferencia de la dermatoscopia tradicional que se enfoca en la densidad folicular, esta técnica mide el índice de refracción y la reflectancia especular, parámetros directamente correlacionados con la salud de las capas externas de la queratina. Según estudios publicados en el Journal of Cosmetic Dermatology, la pérdida de reflectancia es un marcador temprano de daño por exposición a radiación UV y tratamientos químicos agresivos, incluso antes de que la microscopía óptica muestre fisuras visibles en el tallo. Este enfoque permite a los especialistas de GlowApp establecer una línea base cuantitativa para evaluar la eficacia de tratamientos reconstructivos y humectantes, transformando la evaluación estética en una métrica diagnóstica reproducible. La detección temprana de la degradación cuticular mediante este método es crucial para prevenir la rotura distal y el deshilachado de la punta, permitiendo intervenciones preventivas antes de que la estructura interna de la corteza capilar sufra daños irreversibles por hidratación deficiente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:15:02.015Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezoelectricidad-002",
+    "title": "Respuesta Piezoeléctrica del Tallo como Biomarcador de Integridad Estructural",
+    "content": "La queratina, como proteína fibrosa altamente organizada, exhibe propiedades piezoeléctricas que pueden ser aprovechadas para el diagnóstico capilar. Cuando se aplica una tensión mecánica controlada, el tallo capilar genera una señal eléctrica proporcional a la integridad de sus puentes disulfuro y su estructura cristalina. Investigaciones recientes en ciencia de materiales aplicados a la dermatología sugieren que la pérdida de esta respuesta piezoeléctrica es un indicador clínico de fatiga estructural antes de la manifestación de la tricorrexis nodosa. En la práctica clínica, este fenómeno permite evaluar la resiliencia del cabello ante el peinado mecánico y la fricción constante. Un tallo con alta respuesta piezoeléctrica mantiene mejor su forma y resistencia, mientras que un cabello debilitado por procesos de decoloración o alisado químico muestra una atenuación significativa de estas señales. La medición de esta propiedad mediante dispositivos de micro-tensión ofrece un ángulo diagnóstico novedoso para evaluar la fatiga mecánica del cabello, ayudando a los pacientes a entender por qué ciertos tratamientos de estilizado aceleran la degradación de la fibra capilar, permitiendo protocolos de cuidado basados en la resistencia física real medida en tiempo real.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:15:02.015Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-electro-ostium-004",
+    "title": "Conductancia Iónica del Ostium como Indicador de Barrera Folicular",
+    "content": "El ostium folicular actúa como una interfaz crítica entre el ambiente externo y el nicho de células madre del folículo. La medición de la conductancia iónica en este punto específico proporciona información valiosa sobre la integridad de la barrera cutánea. Un aumento en la conductancia iónica sugiere una disrupción de la película hidrolipídica y una posible inflamación subclínica, lo que permite la penetración de contaminantes del exposoma urbano y alérgenos de productos capilares. Según investigaciones publicadas en revistas de dermatología experimental, el monitoreo constante de esta conductancia permite identificar pacientes en riesgo de desarrollar dermatitis de contacto alérgica o disbiosis folicular. A diferencia de las mediciones globales de hidratación en la piel, la conductancia focalizada en el ostium es altamente sensible a los cambios metabólicos del sebo y la presencia de microflora oportunista. Este biomarcador eléctrico es una herramienta diagnóstica prometedora para personalizar los protocolos de limpieza y protección en pacientes con cueros cabelludos sensibles, permitiendo ajustar el pH de los productos tópicos para restaurar la homeostasis eléctrica del ostium y prevenir el daño oxidativo crónico inducido por la pérdida de la función de barrera.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:15:02.015Z"
+  }
+]

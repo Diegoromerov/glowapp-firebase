@@ -1,0 +1,376 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-inmunologia-001",
+    "title": "Activación de la inmunidad innata por componentes de tintes permanentes",
+    "content": "La aplicación de tintes capilares permanentes, particularmente aquellos que contienen parafenilendiamina (PPD) y sus derivados, no solo desencadena respuestas alérgicas mediadas por linfocitos T, sino que puede activar receptores de reconocimiento de patrones (PRR) en los queratinocitos del cuero cabelludo. Estudios recientes publicados en Journal of Investigative Dermatology sugieren que ciertos precursores de color actúan como ligandos para los receptores tipo Toll (TLR), induciendo la liberación de citoquinas proinflamatorias como IL-1alfa e IL-6 incluso en ausencia de una sensibilización alérgica previa. Esta respuesta inmunológica innata explica por qué algunos pacientes reportan prurito y eritema transitorio tras la coloración, síntomas que a menudo se confunden con una dermatitis irritativa primaria. Comprender esta activación es crucial para diferenciar entre la toxicidad química por pH elevado y una respuesta inmune mediada por receptores específicos, permitiendo ajustar los protocolos de pre-tratamiento con agentes calmantes que modulen esta señalización celular antes de la exposición al tinte.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "PTD"
+      ],
+      "contraindications": [
+        "dermatitis seborreica activa",
+        "psoriasis cuero cabelludo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-biofisica-002",
+    "title": "Influencia de la arquitectura del complejo de membrana celular (CMC) en la migración de pigmentos",
+    "content": "El complejo de membrana celular (CMC) es la principal vía de difusión para las moléculas de tinte hacia la corteza capilar. La integridad de la capa beta del CMC, rica en proteínas, y la capa delta, rica en lípidos, determina la tasa de absorción de los precursores de color antes de su polimerización oxidativa. Cuando la arquitectura del CMC se degrada debido a procesos previos de decoloración o exposición ambiental, la permeabilidad aumenta de manera incontrolada, provocando una distribución irregular del pigmento. Investigaciones en la International Journal of Cosmetic Science destacan que el uso de agentes de bajo peso molecular ayuda a restaurar temporalmente la cohesión entre los planos de la cutícula, permitiendo una penetración más uniforme. El reto clínico reside en que una alta porosidad del CMC no solo facilita la entrada del tinte, sino su rápida lixiviación, comprometiendo la longevidad del color. Es vital realizar una evaluación de la viscoelasticidad antes de la aplicación para determinar si la estructura interna puede soportar el proceso de oxidación sin comprometer la integridad estructural a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "proteinas hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-fibra-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-fotobiologia-003",
+    "title": "Impacto de la radiación UV en la estabilidad de los tintes de oxidación",
+    "content": "La fotodegradación de los tintes capilares es un proceso complejo que involucra la ruptura de los enlaces de acoplamiento oxidativo formados dentro de la corteza capilar tras la exposición a la radiación UV. Los fotones de alta energía, particularmente en el espectro UVA, pueden penetrar la cutícula y generar radicales libres que oxidan los pigmentos ya formados, causando un cambio en el tono (viraje) y una pérdida de saturación. En ciudades de alta altitud como Bogotá, la mayor intensidad de radiación UV aumenta la tasa de fotólisis de los complejos colorantes. Según datos de la American Academy of Dermatology, la protección del color no solo depende de agentes selladores, sino del uso de filtros UV específicos que minimicen la absorción de energía por parte de las moléculas de color. El viraje hacia tonos cobrizos o amarillentos es a menudo un indicador de la degradación selectiva de los componentes azules del tinte. Es imperativo integrar protocolos de protección fotolítica en el mantenimiento post-coloración para preservar la fidelidad cromática frente al estrés radiativo constante al que se expone la fibra en entornos de gran altitud.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento-color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-electroquimica-004",
+    "title": "Potencial Zeta y adsorción de pigmentos catiónicos",
+    "content": "La electroquímica de la superficie capilar juega un papel determinante en la retención de pigmentos, especialmente en tintes semipermanentes y mascarillas de color. El potencial Zeta, que mide la carga eléctrica superficial de la fibra, suele ser negativo debido a la presencia de grupos sulfato y carboxilo en la queratina. Los pigmentos catiónicos, al poseer carga positiva, se adhieren mediante fuerzas electrostáticas al eje capilar. Sin embargo, en cabellos con daño estructural, el potencial Zeta puede verse alterado por la exposición de grupos amino, lo que reduce la afinidad por ciertos pigmentos. Investigaciones en PubMed sobre ciencia de materiales aplicados a la cosmética indican que la manipulación del pH durante el proceso de aplicación puede optimizar la magnitud del potencial Zeta, maximizando la deposición del color. Un diagnóstico previo del estado de la cutícula, mediante técnicas de medición de carga, permitiría predecir si el cabello retendrá eficazmente el pigmento o si, por el contrario, presentará una deposición heterogénea. Este enfoque técnico es fundamental para evitar resultados cromáticos desiguales en cabellos con historia de daños químicos acumulados.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-bioquimica-005",
+    "title": "Cinética de la peroxidasa residual y su efecto en la oxidación incontrolada",
+    "content": "La persistencia de la actividad catalítica de la enzima peroxidasa, o restos de peróxido de hidrógeno atrapados en la corteza tras el enjuague inadecuado, puede inducir una oxidación incontrolada de los aminoácidos estructurales. Este fenómeno es particularmente peligroso en cabellos con alta porosidad, donde la peroxidación lipídica continúa degradando la capa F (ácido 18-metileicosanoico) horas después del servicio de coloración. La literatura científica subraya que la neutralización química efectiva no termina con el lavado, sino que requiere agentes reductores que desactiven el potencial oxidativo remanente. En la práctica clínica, esto se traduce en la necesidad de utilizar soluciones tamponadoras post-coloración que estabilicen el pH y eliminen los radicales libres residuales. Ignorar esta etapa de post-procesamiento acelera la fragilidad capilar y la pérdida progresiva de los pigmentos depositados. Un protocolo de higiene química riguroso debe incluir la quelación de metales de transición que actúan como catalizadores de esta reacción destructiva, asegurando la durabilidad del color y la salud del complejo membrana celular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-post-coloracion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-fisiologia-006",
+    "title": "Impacto de la microbiota scalp en la respuesta inflamatoria post-tinte",
+    "content": "La microbiota del cuero cabelludo, especialmente la abundancia de especies de Malassezia, puede verse alterada significativamente por el pH altamente alcalino de los tintes permanentes. La alteración de esta barrera microbiana no solo predispone al cuero cabelludo a infecciones oportunistas, sino que puede potenciar la respuesta inflamatoria ante el contacto con colorantes sintéticos. Estudios sobre la ecología del cuero cabelludo sugieren que una microbiota desequilibrada libera mediadores inflamatorios que pueden exacerbar las reacciones de contacto. Mantener el equilibrio de la microbiota es un aspecto clínico clave para prevenir la dermatitis de contacto alérgica y la irritación inespecífica. El uso de productos colorantes con pH ajustado y la incorporación de prebióticos en los tratamientos de cuero cabelludo antes de la coloración podrían mitigar estos efectos adversos. La evaluación del estado de la microbiota debería considerarse en pacientes con antecedentes de sensibilidad recurrente, ya que la inflamación subclínica previa al servicio de coloración aumenta drásticamente el riesgo de una reacción adversa aguda al pigmento.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Health Topics",
+        "url": "https://www.who.int/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [
+        "dermatitis seborreica",
+        "foliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-optica-007",
+    "title": "Birrefringencia y la percepción clínica del brillo cromático",
+    "content": "La birrefringencia, o doble refracción de la luz, es una propiedad óptica inherente a la estructura cristalina de la queratina cortical. Cuando el cabello está sano y la cutícula se encuentra alineada, la luz se refracta de manera uniforme, otorgando un brillo característico. En cabellos dañados por coloraciones frecuentes, la disrupción de la estructura de la corteza altera esta propiedad, provocando que la luz se disperse de forma difusa, lo que reduce la percepción del brillo y altera la interpretación del color. Este fenómeno óptico es a menudo confundido con una pérdida de saturación del tinte, cuando en realidad es un problema de reflectancia superficial. La aplicación de agentes selladores de cutícula que suavicen la superficie capilar puede restaurar temporalmente la birrefringencia normal, mejorando drásticamente la apariencia del color sin necesidad de aplicar pigmento adicional. Es vital que los profesionales de GlowApp realicen una evaluación bajo luz controlada para distinguir entre una pérdida real de pigmento y una alteración en la birrefringencia de la fibra, evitando así procesos de saturación de color innecesarios.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas de bajo peso molecular"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-estetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-toxicologia-008",
+    "title": "Evaluación de compuestos orgánicos volátiles (VOC) y seguridad respiratoria",
+    "content": "La exposición a compuestos orgánicos volátiles (VOC) durante la aplicación de tintes permanentes y decolorantes es un riesgo subestimado en entornos de salón cerrados. Sustancias como el amoníaco, pero también subproductos de la descomposición de precursores, pueden alcanzar concentraciones que irritan las mucosas respiratorias y oculares. Aunque la mayoría de los tintes están formulados para cumplir con límites de seguridad, la acumulación en espacios sin ventilación adecuada puede causar cefaleas y malestar sistémico. La evidencia sugiere que la monitorización de la calidad del aire es tan importante como el diagnóstico clínico capilar. Los profesionales deben priorizar productos con bajo perfil de emisión de VOC y asegurar una ventilación cruzada efectiva. Además, la sensibilización respiratoria a largo plazo es una preocupación válida para los coloristas que trabajan diariamente con estos productos. La implementación de protocolos de seguridad laboral, incluyendo el uso de mascarillas con filtros para vapores orgánicos en casos de alta frecuencia de uso, es una medida preventiva esencial para proteger la salud de todo el equipo de trabajo en GlowApp.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "OSHA (Occupational Safety and Health Administration)",
+        "url": "https://www.osha.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amonico",
+        "etanolamina"
+      ],
+      "contraindications": [
+        "asma",
+        "hipersensibilidad respiratoria"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-laboral"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-farmacologia-009",
+    "title": "Interferencia de fármacos sistémicos en la afinidad tintórea",
+    "content": "La administración sistémica de ciertos fármacos, como los retinoides, inhibidores de la bomba de protones o tratamientos hormonales, puede alterar significativamente la fisiología del folículo piloso y la composición de la fibra capilar. Se ha documentado que estos fármacos pueden modificar la tasa de secreción de sebo y la estructura de la queratina en formación, lo que a su vez cambia la porosidad y la afinidad del cabello por los pigmentos sintéticos. Por ejemplo, pacientes bajo terapia hormonal pueden experimentar una mayor resistencia a la fijación del color debido a cambios en la cutícula. Es imperativo realizar un historial clínico completo que incluya medicación actual antes de cualquier servicio de coloración. La falta de comunicación sobre estos tratamientos puede llevar a resultados cromáticos impredecibles, como zonas con mayor absorción (manchas) o una rápida decoloración. En el entorno de GlowApp, la consulta inicial debe incluir preguntas específicas sobre cambios en el régimen farmacológico durante los últimos seis meses, permitiendo al profesional ajustar la fórmula del tinte y el tiempo de pose según la nueva condición fisiológica del cabello del cliente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "medicacion fotosensibilizante"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "historial-clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:31:55.616Z"
+  }
+]

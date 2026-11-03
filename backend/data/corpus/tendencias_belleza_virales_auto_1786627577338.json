@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "bio-hacks-skincare-001",
+    "title": "Cosmética 'Neuro-Glow': ¿Es el cortisol el nuevo enemigo de la piel?",
+    "content": "La tendencia actual de la 'Neurocosmética' sugiere que los niveles de cortisol, derivados del estrés crónico, afectan directamente la integridad de la barrera cutánea. Estudios recientes en PubMed indican que el eje cerebro-piel es bidireccional: el estrés psicológico altera la diferenciación de queratinocitos y retrasa la recuperación de la barrera tras una agresión. La tendencia viral propone ingredientes adaptógenos para 'calmar' las terminaciones nerviosas dérmicas. Clínicamente, es fundamental distinguir entre la modulación del estrés y la aplicación de activos tópicos. Si bien ingredientes como la Tephrosia purpurea muestran potencial para reducir la liberación de cortisol inducida por el estrés en los queratinocitos, no sustituyen la necesidad de una rutina de fotoprotección y limpieza básica. El riesgo radica en creer que estos productos compensan un estilo de vida pro-inflamatorio, ignorando que el daño cutáneo por estrés es sistémico y no solo superficial. La evidencia clínica sobre la eficacia de los péptidos neuroactivos en la reducción de eritema por estrés es prometedora, pero los consumidores deben evitar el marketing que promete 'rejuvenecimiento emocional' sin sustento en la fisiología cutánea.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25695020/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Tephrosia purpurea",
+        "péptidos neuroactivos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educación-paciente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:59.010Z"
+  },
+  {
+    "chunk_id": "bio-hacks-skincare-002",
+    "title": "Uso de Parches de Magnesio para el 'Skin-De-stressing': ¿Eficacia real?",
+    "content": "La aplicación tópica de magnesio ha ganado tracción en redes sociales como una solución para la inflamación cutánea y el 'estrés muscular' facial. La premisa es que el magnesio, al absorberse, ayuda a estabilizar la barrera cutánea. Sin embargo, la absorción transdérmica de magnesio es un tema debatido en la dermatología. Si bien el magnesio es un cofactor esencial en más de 300 reacciones enzimáticas, la literatura actual sugiere que la aplicación tópica no garantiza una penetración profunda suficiente para alterar la homeostasis de la piel en pacientes sin deficiencias sistémicas. Existe un riesgo de dermatitis por contacto si el producto contiene concentraciones elevadas de sales de magnesio que alteran el pH natural de la superficie cutánea (cercano a 5.0). La AAD enfatiza que la salud de la piel depende más de una hidratación adecuada y el uso de oclusivos que de la suplementación tópica de minerales. Los usuarios deben ser cautelosos con productos que prometen 'desintoxicación' a través de parches, ya que la piel no es un órgano excretor de toxinas en el sentido que propone el marketing viral. La hidratación y la integridad de la barrera son los pilares indiscutibles.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Magnesio"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduría-productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:59.010Z"
+  },
+  {
+    "chunk_id": "bio-hacks-skincare-005",
+    "title": "La falacia de la protección solar 'en barra' y la cobertura uniforme",
+    "content": "Los protectores solares en barra (sticks) han ganado popularidad por su conveniencia para el reaplicado. No obstante, existe un riesgo clínico significativo: la dificultad de lograr la densidad de aplicación necesaria (2 mg/cm²) para alcanzar el SPF declarado en la etiqueta. Los estudios demuestran que, debido a la naturaleza sólida del vehículo, los usuarios tienden a aplicar capas más delgadas, lo que reduce la protección eficaz hasta en un 50-70%. Además, la aplicación en zonas irregulares como la nariz o cerca de los ojos suele ser deficiente, dejando áreas expuestas. La recomendación clínica es utilizar las barras exclusivamente para retoques durante el día o en zonas pequeñas, y no como la fuente primaria de protección solar. La AAD insiste en que la aplicación de crema solar líquida o loción sigue siendo el estándar de oro para una cobertura uniforme. La falsa sensación de seguridad proporcionada por el formato 'stick' es una causa común de eritema solar y daño actínico acumulativo en pacientes que creen estar protegidos.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/media/stats/prevention-and-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoprotección"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:25:59.010Z"
+  }
+]

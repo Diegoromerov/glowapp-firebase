@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "cuidado_corporal_y_spa-1786392835039-1-669cc3ec-modulacion-de-la-conductancia-ionica-mediante-parches-de-hid",
+    "title": "Modulación de la conductancia iónica mediante parches de hidrogel funcionalizados con grafeno",
+    "content": "La integración de nanomateriales de carbono, específicamente grafeno, en sistemas de administración transdérmica representa un avance disruptivo en el cuidado corporal. Estos parches actúan como electrodos flexibles que modulan la conductancia iónica de la piel, facilitando la penetración de activos de alto peso molecular que, de otro modo, serían incapaces de atravesar el estrato córneo. Al aplicar una corriente de baja intensidad, el grafeno permite ajustar la permeabilidad dérmica en tiempo real, optimizando la entrega de agentes reafirmantes y lipolíticos directamente en el tejido adiposo subcutáneo. Este sistema no solo mejora la biodisponibilidad de los ingredientes, sino que permite un monitoreo constante de la impedancia cutánea, proporcionando datos precisos sobre la hidratación y la integridad de la barrera hidrolipídica durante el tratamiento. La biocompatibilidad del grafeno, cuando se procesa adecuadamente, minimiza las respuestas inflamatorias, convirtiéndolo en una herramienta esencial para protocolos de spa de alta precisión enfocados en la remodelación corporal no invasiva.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "grafeno",
+        "péptidos biomiméticos"
+      ],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_transdermica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:13:55.039Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-1786392835040-6-0d3ac47b-dinamica-de-la-mecanotransduccion-en-adipocitos-mediante-est",
+    "title": "Dinámica de la mecanotransducción en adipocitos mediante estimulación por ultrasonido de baja frecuencia",
+    "content": "La estimulación por ultrasonido de baja frecuencia (LFUS) se ha consolidado como un método avanzado para la modulación de la arquitectura del tejido adiposo. A diferencia de las ondas de alta frecuencia, las de baja frecuencia poseen una mayor profundidad de penetración, permitiendo alcanzar depósitos de grasa profunda. El mecanismo de acción se basa en la creación de micro-burbujas de cavitación estable que ejercen fuerzas de cizallamiento sobre la membrana de los adipocitos, induciendo una respuesta mecanobiológica que favorece la lipólisis y la reorganización de la matriz extracelular. Este proceso no solo reduce el volumen del adipocito, sino que también estimula la producción de colágeno en los septos fibrosos, mejorando la apariencia de la piel con celulitis. La clave de este tratamiento reside en el control preciso de la intensidad y la frecuencia para evitar el daño térmico, garantizando que el tejido conectivo se mantenga íntegro mientras se optimiza la respuesta metabólica del tejido adiposo. Es una herramienta esencial para protocolos de remodelación corporal que buscan resultados visibles con un perfil de seguridad elevado.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "implantes metálicos",
+        "enfermedades metabólicas descompensadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelacion_corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:13:55.040Z"
+  }
+]

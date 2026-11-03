@@ -1,0 +1,310 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Alcohol Polivinílico en mascarillas 'peel-off' y el riesgo de trauma mecánico",
+    "content": "El alcohol polivinílico (PVA) es el polímero base en la mayoría de las mascarillas faciales tipo 'peel-off'. Aunque se considera seguro desde una perspectiva química, su mecanismo de acción implica la formación de una película oclusiva que, al retirarse físicamente, ejerce una tracción significativa sobre el estrato córneo. En pieles con compromiso de la barrera lipídica, rosácea o dermatitis atópica, este trauma mecánico puede provocar micro-excoriaciones y una respuesta inflamatoria aguda. La AAD advierte que la eliminación forzada de células queratinizadas no es un proceso exfoliante fisiológico, sino un evento traumático que puede comprometer la integridad de la unión dermo-epidérmica. La contraindicación es absoluta en pieles con fragilidad capilar o acné inflamatorio activo, donde el desprendimiento mecánico puede diseminar bacterias y exacerbar la inflamación perifolicular. Se recomienda evitar su uso en protocolos de GlowApp para pieles reactivas, priorizando métodos de exfoliación química controlada que no dependan de la adhesión física al tejido cutáneo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/care/face-masks",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca",
+        "con rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol polivinilico"
+      ],
+      "contraindicaciones": [
+        "piel fragil",
+        "rosacea",
+        "acne inflamatorio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Cloruro de benzalconio en cosmética: riesgos de sensibilización y disrupción del microbioma",
+    "content": "El cloruro de benzalconio es un compuesto de amonio cuaternario utilizado principalmente como conservante y agente antimicrobiano en productos de limpieza facial y tónicos. A diferencia de otros conservantes, su acción es inespecífica, lo que significa que no solo elimina patógenos, sino que altera la microbiota comensal de la piel, como S. epidermidis, esencial para mantener la integridad de la barrera cutánea. Estudios publicados en PubMed sugieren que el uso crónico de benzalconio puede inducir dermatitis de contacto alérgica y, en concentraciones superiores al 0.1%, causar una irritación acumulativa severa. La evidencia señala que su presencia en productos 'leave-on' (que no se enjuagan) es altamente desaconsejable para pieles con dermatitis atópica, ya que puede desencadenar brotes por alteración del pH cutáneo y la eliminación de lípidos protectores. En GlowApp, evaluamos su presencia como un factor de riesgo para la disfunción de la barrera cutánea, recomendando alternativas de conservación más biocompatibles y menos citotóxicas para los queratinocitos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30689914/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio"
+      ],
+      "contraindicaciones": [
+        "dermatitis atopica",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Mentol y derivados: la ilusión de frescura y la vasodilatación inducida",
+    "content": "El mentol, a menudo incluido en productos para piel grasa o con acné bajo la premisa de proporcionar un efecto refrescante o astringente, actúa activando los receptores TRPM8 (canales de potencial de receptor transitorio). Aunque esta activación genera una sensación sensorial de frío, no reduce la temperatura cutánea real; por el contrario, induce una vasodilatación periférica compensatoria. Este fenómeno puede empeorar significativamente el eritema en pacientes con rosácea o dermatitis perioral. Además, el mentol es un sensibilizante conocido y un potenciador de la absorción percutánea, lo que puede aumentar la irritación si se combina con otros activos como retinoides o AHAs. La literatura dermatológica advierte que el uso de mentol en pieles inflamadas es una práctica contraproducente, ya que la vasodilatación favorece la liberación de mediadores proinflamatorios. En el marco de GlowApp, categorizamos al mentol como un ingrediente de alta reactividad, sugiriendo su eliminación en rutinas enfocadas en la calma y reparación de la barrera cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30383-7/fulltext",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mentol"
+      ],
+      "contraindicaciones": [
+        "rosacea",
+        "dermatitis perioral",
+        "piel inflamada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Propilenglicol: el vehículo irritante oculto en formulaciones dermatológicas",
+    "content": "El propilenglicol es uno de los solventes y humectantes más comunes en la industria cosmética debido a su bajo costo y eficacia para solubilizar ingredientes activos. Sin embargo, su perfil de seguridad es motivo de debate clínico. Actúa como un potenciador de penetración, lo que significa que puede facilitar la entrada de otros componentes potencialmente irritantes o alérgenos en las capas profundas de la epidermis. En individuos con dermatitis de contacto previa o pieles hipersensibles, el propilenglicol es un alérgeno de contacto frecuente, capaz de inducir eritema, prurito y descamación. Las guías de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) sugieren que los pacientes con antecedentes de dermatitis alérgica deben realizar una prueba de parche antes de usar productos con altas concentraciones de este compuesto. En GlowApp, identificamos al propilenglicol como un factor de riesgo en formulaciones para pieles atópicas, recomendando buscar vehículos alternativos como el propanediol o la glicerina pura cuando el objetivo es la hidratación sin riesgo de sensibilización.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/dermatitis-contact-guidelines",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "propilenglicol"
+      ],
+      "contraindicaciones": [
+        "dermatitis de contacto",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Resinas de acrilatos: la epidemia de sensibilización cruzada en cosmética técnica",
+    "content": "Las resinas de acrilatos (incluyendo acrilatos de etilo, butilo y metilmetacrilato) son componentes fundamentales en esmaltes de uñas de larga duración, adhesivos para pestañas y algunos productos de 'maquillaje tecnológico'. La sensibilización a los acrilatos es una de las causas más crecientes de dermatitis de contacto alérgica en el mundo, observándose a menudo una sensibilización cruzada entre diferentes tipos de monómeros. Una vez que el paciente desarrolla una alergia a los acrilatos, existe el riesgo de que esta se manifieste no solo en el sitio de aplicación, sino también en áreas distantes debido a la transferencia manual. Además, los acrilatos pueden causar complicaciones en procedimientos médicos, ya que son componentes de adhesivos quirúrgicos y materiales dentales. En GlowApp, enfatizamos que los pacientes con antecedentes de dermatitis de contacto a esmaltes deben evitar rigurosamente cualquier producto cosmético que contenga polímeros de acrilatos, ya que la sensibilización es permanente y suele empeorar con la reexposición constante.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/acds-position-on-acrylates",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos"
+      ],
+      "contraindicaciones": [
+        "dermatitis de contacto",
+        "alergia a esmaltes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "Ácido Tioglicólico en cosmética de alisado y sus riesgos de sensibilización",
+    "content": "El ácido tioglicólico y sus sales (tioglicolatos) son los agentes reductores estándar en kits de alisado permanente y ondulación capilar. Su función es romper los puentes disulfuro de la queratina, lo cual requiere un pH alcalino para ser efectivo. Esta combinación de pH alcalino y la naturaleza química del ácido tioglicólico lo convierte en un irritante primario potente, capaz de causar dermatitis de contacto tanto irritativa como alérgica. La exposición accidental al cuero cabelludo o la piel periorbitaria puede resultar en quemaduras químicas y pérdida de cabello (alopecia traumática). Además, el olor sulfuroso característico es un indicador de su reactividad química. Es fundamental que los usuarios de GlowApp comprendan que, si bien estos productos están destinados principalmente al cabello, la transferencia por contacto (al sudar o durante el lavado) puede afectar la piel del rostro y cuello. Se recomienda evitar el uso de productos de alisado con tioglicolatos en pacientes con dermatitis seborreica o cuero cabelludo sensible, priorizando técnicas de alisado mecánico o menos agresivas para el mantenimiento de la salud cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22409549/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido tioglicolico"
+      ],
+      "contraindicaciones": [
+        "dermatitis seborreica",
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-009",
+    "title": "Cloruro de aluminio en antitranspirantes: manejo de la dermatitis irritativa",
+    "content": "El cloruro de aluminio es el ingrediente activo en antitranspirantes de alta intensidad, diseñado para formar tapones temporales en los conductos de las glándulas sudoríparas. Aunque es altamente eficaz para la hiperhidrosis, su aplicación frecuente en pieles axilares sensibles puede derivar en una dermatitis irritativa severa. La reacción ocurre debido a la formación de ácido clorhídrico en la superficie cutánea cuando el producto entra en contacto con la humedad, lo que reduce drásticamente el pH de la zona, causando irritación, ardor y descamación. Para mitigar este riesgo, las guías dermatológicas sugieren aplicar el producto solo sobre piel seca (evitar aplicar inmediatamente después de la ducha) y por la noche, cuando la actividad de las glándulas sudoríparas es mínima. En GlowApp, aconsejamos a los usuarios que presentan irritación persistente considerar formulaciones con lactato de aluminio o concentraciones menores, así como evitar el uso de desodorantes perfumados en conjunto, ya que el daño a la barrera cutánea inducido por el cloruro de aluminio aumenta exponencialmente el riesgo de sensibilización a las fragancias presentes en otros productos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/hyperhidrosis-treatments/antiperspirants.html",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de aluminio"
+      ],
+      "contraindicaciones": [
+        "dermatitis axilar",
+        "piel irritada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-de-producto"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:17:20.658Z"
+  }
+]

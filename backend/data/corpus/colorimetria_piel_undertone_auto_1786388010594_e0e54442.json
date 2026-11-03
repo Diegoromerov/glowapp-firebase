@@ -1,0 +1,230 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786388010593-1-01c329be-modulacion-del-subtono-por-la-actividad-de-los-canales-ionic",
+    "title": "Modulación del subtono por la actividad de los canales iónicos TRP",
+    "content": "Los canales iónicos de potencial receptor transitorio (TRP), particularmente el TRPV3 y TRPV4, desempeñan un papel crítico en la termorregulación y la percepción sensorial cutánea. Estos canales actúan como sensores de temperatura y estímulos ambientales, modulando la vasodilatación periférica de manera casi instantánea. En el contexto de la colorimetría, la activación de estos canales por variaciones térmicas o irritantes químicos induce una respuesta vasomotora que altera la perfusión sanguínea en la dermis papilar, modificando la reflectancia espectral y, por ende, la lectura del subtono. Cuando un usuario se expone a ambientes con fluctuaciones térmicas, la activación de los canales TRP puede inducir un eritema transitorio que enmascara el subtono basal, dificultando la precisión de los algoritmos de visión artificial. Comprender la cinética de estos canales es esencial para desarrollar sistemas de corrección cromática que integren variables ambientales y sensores de temperatura superficial, permitiendo una lectura del subtono que sea independiente de la respuesta vasomotora inducida por el entorno o el estrés térmico.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:53:30.593Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786388010593-2-622d6da7-efecto-de-la-presion-osmotica-intersticial-en-la-dispersion-",
+    "title": "Efecto de la presión osmótica intersticial en la dispersión de luz",
+    "content": "La presión osmótica del fluido intersticial es un factor determinante en la hidratación dérmica y, consecuentemente, en las propiedades ópticas de la piel. Alteraciones en el equilibrio electrolítico o estados de edema subclínico modifican la distancia entre las fibras de colágeno y la densidad de la matriz extracelular. Este cambio estructural altera el camino libre medio de los fotones que penetran en la dermis, afectando la dispersión de luz y la intensidad de la reflectancia difusa. En términos de colorimetría, una mayor presión osmótica puede aumentar la dispersión de longitudes de onda cortas, lo que resulta en una percepción errónea de un subtono más frío o azulado, incluso en pieles con subtonos cálidos. Este fenómeno es particularmente relevante en diagnósticos realizados tras el consumo elevado de sodio o durante fases del ciclo hormonal, donde la retención de líquidos es mayor. Implementar modelos de corrección que consideren la turgencia cutánea y la hidratación profunda permitirá refinar la precisión del diagnóstico de subtono, minimizando el ruido óptico causado por la dinámica de fluidos intersticiales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:53:30.593Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786388010593-3-4b57c33b-birrefringencia-del-colageno-y-polarizacion-en-el-subtono",
+    "title": "Birrefringencia del colágeno y polarización en el subtono",
+    "content": "La piel humana exhibe propiedades de birrefringencia debido a la organización altamente estructurada de las fibras de colágeno en la dermis. Esta característica óptica significa que la luz que atraviesa el tejido se descompone en dos rayos con diferentes índices de refracción, lo cual influye directamente en la polarización de la luz reflejada. En el diagnóstico de colorimetría, la birrefringencia puede causar artefactos en la lectura del subtono, especialmente cuando se utilizan fuentes de luz no polarizada. La orientación de las fibras de colágeno, que varía según la edad y el daño solar, determina la dirección y la intensidad de la luz polarizada que llega al sensor. Al aplicar técnicas de fotografía con polarización cruzada, es posible filtrar los reflejos especulares de la superficie, pero la birrefringencia profunda sigue afectando la señal de reflectancia. Integrar algoritmos que compensen la anisotropía del colágeno es fundamental para aislar el color real del subtono de los efectos de la estructura dérmica, logrando una evaluación más objetiva y menos dependiente de la arquitectura del tejido conectivo del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00456-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:53:30.593Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786388010593-4-c65cd09f-interaccion-melanocito-vaso-y-la-unidad-neuro-vascular",
+    "title": "Interacción melanocito-vaso y la unidad neuro-vascular",
+    "content": "La cromaticidad facial no es un parámetro estático, sino el resultado de una interacción dinámica en la unidad neuro-vascular. Los melanocitos, además de su función fotoprotectora, mantienen una comunicación paracrina con las células endoteliales de los capilares dérmicos. Esta interacción, mediada por factores de crecimiento y citoquinas, regula tanto la densidad de melanina como el tono vascular basal. En situaciones de estrés crónico o inflamación sistémica, la liberación de neuropéptidos altera el equilibrio de esta unidad, provocando cambios en la distribución de los melanosomas y en la reactividad vascular. Estos cambios se manifiestan como una alteración en la cromaticidad cutánea, donde el subtono puede virar hacia matices más cenizos o eritematosos. Para un sistema RAG de GlowApp, es crucial considerar que el diagnóstico del subtono debe ser interpretado como una lectura de la salud de esta unidad funcional. El análisis de la variabilidad cromática a lo largo del tiempo, correlacionado con factores de estilo de vida, permite una segmentación más precisa del usuario, diferenciando entre un subtono constitucional y una alteración cromática temporal derivada de la actividad neuro-vascular.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/articles/s41568-024-00678-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:53:30.593Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786388010593-5-55c57a75-efecto-de-la-densidad-de-acuaporinas-en-la-reflectancia",
+    "title": "Efecto de la densidad de acuaporinas en la reflectancia",
+    "content": "Las acuaporinas, proteínas de canal de membrana, facilitan el transporte de agua a través de las células del estrato córneo y la epidermis. La densidad y actividad de estas proteínas determinan el estado de hidratación superficial, un factor que altera drásticamente el índice de refracción de la piel. Cuando la piel presenta una baja densidad de acuaporinas o una barrera cutánea comprometida, la dispersión de luz en la superficie aumenta debido a la descamación microscópica y la falta de homogeneidad en el estrato córneo. Este fenómeno, conocido como dispersión superficial, actúa como un filtro difusor que blanquea la apariencia del tono de piel y oculta el subtono real. Los sistemas de diagnóstico deben ser capaces de distinguir entre la reflectancia profunda (que define el subtono) y la reflectancia superficial (influenciada por el estado de las acuaporinas). La implementación de un índice de hidratación basado en visión artificial permite normalizar los datos de color, eliminando el sesgo introducido por una piel deshidratada y permitiendo una identificación precisa del subtono, independientemente de la salud de la barrera cutánea del usuario en el momento de la captura.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12901",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:53:30.593Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786388010593-6-5b8604b9-difraccion-de-fraunhofer-y-la-queratina-del-estrato-corneo",
+    "title": "Difracción de Fraunhofer y la queratina del estrato córneo",
+    "content": "La estructura laminar de la queratina en el estrato córneo no solo actúa como una barrera física, sino también como una red de difracción para la luz incidente. La difracción de Fraunhofer ocurre cuando la luz interactúa con las estructuras queratinizadas, cuyos tamaños son comparables a la longitud de onda de la luz visible. Este fenómeno genera patrones de interferencia que pueden alterar la percepción del color, especialmente en pieles con hiperqueratosis o irregularidades en la superficie. En la práctica de la colorimetría, este efecto puede causar una desviación en la saturación y el matiz percibido, dificultando la clasificación del subtono. La luz que incide en un ángulo específico sobre una superficie queratinizada irregular producirá una dispersión que no corresponde al tono basal de la dermis. Para mitigar este error, es necesario emplear técnicas de iluminación difusa controlada que minimicen los efectos de la difracción de borde en el estrato córneo. Al normalizar los datos de entrada mediante modelos matemáticos de difracción, el sistema puede recuperar la información espectral subyacente, garantizando que el diagnóstico del subtono sea robusto ante variaciones en la textura y el estado de queratinización de la piel del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Biophysical Journal",
+        "url": "https://www.cell.com/biophysj/fulltext/S0006-3495(24)00234-1",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo_diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:53:30.593Z"
+  }
+]

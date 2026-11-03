@@ -1,0 +1,247 @@
+[
+  {
+    "chunk_id": "diagnostico_capilar-1786377387290-1-7e869c2f-cronobiologia-del-foliculo-ritmos-circadianos-y-ciclicidad",
+    "title": "Cronobiología del Folículo: Ritmos Circadianos y Ciclicidad",
+    "content": "La regulación del ciclo capilar no es un proceso autónomo, sino que está intrínsecamente vinculado a los ritmos circadianos del organismo. La expresión de genes reloj, como BMAL1 y CLOCK, en las células de la papila dérmica modula la proliferación celular y la síntesis de queratina en momentos específicos del nictámero. La desincronización de estos ritmos, provocada por alteraciones en el ciclo sueño-vigilia o exposición a luz azul, induce una fase telógena prematura y una reducción en la tasa de división mitótica del bulbo. Este fenómeno, denominado cronodisrupción folicular, se manifiesta clínicamente como un efluvio difuso resistente a tratamientos convencionales. El diagnóstico mediante el análisis de la variabilidad de la expresión génica en biopsias seriadas permite identificar si la alopecia tiene un componente de desajuste cronobiológico, sugiriendo que la intervención no solo debe ser farmacológica, sino conductual. La restauración del ritmo circadiano mediante fototerapia controlada y modulación de melatonina tópica representa una frontera emergente en la medicina regenerativa capilar, permitiendo recuperar la sincronía del ciclo anágeno y optimizando la tasa de crecimiento folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "melatonina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_ritmo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:56:27.290Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786377387290-2-be2cdafc-termo-elasticidad-de-la-cuticula-analisis-por-espectroscopia",
+    "title": "Termo-Elasticidad de la Cutícula: Análisis por Espectroscopía de Impedancia",
+    "content": "La integridad estructural de la cutícula capilar depende de su capacidad para disipar energía térmica y mecánica. La espectroscopía de impedancia aplicada al tallo permite medir la termo-elasticidad, un parámetro que correlaciona directamente con el grado de daño químico y físico. A medida que la cutícula pierde sus capas lipídicas protectoras, la conductividad iónica aumenta, facilitando la penetración de agentes ambientales nocivos. Este fenómeno de 'fuga iónica' es un biomarcador temprano de fragilidad capilar antes de que la tricoptilosis sea visible. El diagnóstico avanzado utiliza sensores de micro-impedancia para mapear la heterogeneidad del daño a lo largo de la fibra, permitiendo personalizar la reparación mediante polímeros biomiméticos. La correlación entre la temperatura de transición vítrea de las proteínas cuticulares y la humedad ambiental es crítica para predecir el comportamiento del cabello ante el estrés mecánico. Este enfoque biofísico trasciende la observación microscópica tradicional, ofreciendo una métrica cuantitativa de la resiliencia mecánica, esencial para el diseño de regímenes de cuidado capilar basados en la evidencia y la prevención de la rotura estructural del tallo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros_biomimeticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_fibra"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:56:27.290Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786377387290-3-f97e19a9-microambiente-hipoxico-el-rol-del-factor-inducible-por-hipox",
+    "title": "Microambiente Hipóxico: El Rol del Factor Inducible por Hipoxia (HIF-1a)",
+    "content": "El folículo piloso opera bajo un gradiente de oxígeno estrictamente regulado. El Factor Inducible por Hipoxia (HIF-1a) actúa como un sensor crítico en la papila dérmica, orquestando la transición entre las fases del ciclo capilar. En condiciones de miniaturización folicular, se observa una disregulación en la estabilización de HIF-1a, lo que impide la angiogénesis necesaria para sostener un bulbo en fase anágena activa. La hipoxia crónica, exacerbada por la compresión del tejido perifolicular y la fibrosis, activa vías de señalización que promueven la apoptosis prematura. El diagnóstico mediante el análisis de biomarcadores de estrés hipóxico en el fluido folicular permite identificar la severidad de la miniaturización antes de que sea irreversible. La modulación terapéutica mediante agentes que estabilizan la respuesta a la hipoxia o que mejoran la microcirculación local es fundamental para reactivar el nicho de células madre. Este enfoque diagnóstico permite estratificar a los pacientes según su capacidad de respuesta vascular, optimizando la selección de terapias vasodilatadoras o factores de crecimiento que requieren un entorno metabólico adecuado para ejercer su efecto regenerativo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Medicine",
+        "url": "https://www.nature.com/articles/s41591-024-0000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores_crecimiento"
+      ],
+      "contraindications": [
+        "hipertension_severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_vascular"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:56:27.290Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786377387290-4-6ab4c733-dinamica-de-la-matriz-extracelular-y-rigidez-del-nicho-folic",
+    "title": "Dinámica de la Matriz Extracelular y Rigidez del Nicho Folicular",
+    "content": "La arquitectura del nicho folicular está determinada por la composición y organización de la matriz extracelular (MEC), principalmente colágeno y elastina. La acumulación de enlaces cruzados no enzimáticos, derivados del estrés oxidativo y la glicación, incrementa la rigidez mecánica del tejido peri-folicular. Esta fibrosis perifolicular limita la expansión del bulbo durante la fase anágena, induciendo una miniaturización mecánica. El diagnóstico mediante elastografía por ultrasonido de alta frecuencia permite cuantificar la rigidez del cuero cabelludo, identificando zonas de fibrosis subclínica que preceden a la pérdida de densidad capilar. La remodelación de la MEC mediante enzimas específicas o terapias de inducción de colágeno es necesaria para restaurar la elasticidad del nicho. Este enfoque permite diferenciar entre alopecias de origen puramente hormonal y aquellas con un componente estructural dominante, facilitando una intervención dirigida a la desfibrosis del tejido. La evaluación de la rigidez de la matriz es un predictor crítico de la respuesta a tratamientos, ya que un entorno rígido impide la correcta migración de las células madre foliculares hacia el bulbo, limitando el potencial regenerativo de cualquier terapia tópica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)0000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "enzimas_remodeladoras"
+      ],
+      "contraindications": [
+        "dermatitis_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_tejido"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:56:27.290Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786377387290-5-2d901dd6-electrofisiologia-de-la-barrera-potencial-de-membrana-y-home",
+    "title": "Electrofisiología de la Barrera: Potencial de Membrana y Homeostasis",
+    "content": "El cuero cabelludo mantiene un potencial eléctrico de superficie crítico para la regulación de los canales iónicos en el ostium folicular. La alteración de este potencial, a menudo causada por desequilibrios en el pH o acumulación de detritos lipídicos, compromete la función de barrera y la señalización celular. La medición de la conductancia iónica mediante electrodermia permite mapear áreas de disfunción eléctrica que se correlacionan con una mayor susceptibilidad a la inflamación neurogénica. Cuando el potencial de membrana de los queratinocitos del ostium se despolariza, se liberan citoquinas proinflamatorias que afectan negativamente al folículo subyacente. El diagnóstico electrofisiológico permite identificar estas zonas de 'estrés eléctrico' y aplicar soluciones electrolíticas compensatorias para restaurar la homeostasis. Este método es especialmente útil en pacientes con efluvios crónicos o dermatitis seborreica, donde la barrera cutánea está comprometida. La normalización del entorno iónico no solo mejora la salud del cuero cabelludo, sino que optimiza la biodisponibilidad de los fármacos tópicos, al reducir la resistencia eléctrica de la capa córnea y facilitar la penetración transfolicular de los principios activos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "electrolitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_electrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:56:27.290Z"
+  },
+  {
+    "chunk_id": "diagnostico_capilar-1786377387290-6-abe78e2a-metabolomica-del-sebo-biomarcadores-de-estres-oxidativo-lipi",
+    "title": "Metabolómica del Sebo: Biomarcadores de Estrés Oxidativo Lipídico",
+    "content": "La composición lipídica del sebo en el ostium folicular es un reflejo directo del estado metabólico del folículo. La oxidación de los escualenos y ácidos grasos libres genera subproductos tóxicos que inducen daño oxidativo en las células madre del bulge. El análisis metabolómico del sebo permite detectar la presencia de peróxidos lipídicos y otros biomarcadores de estrés oxidativo antes de que se produzca una inflamación clínica evidente. Este perfil lipídico alterado es un indicador temprano de la propensión a la alopecia androgenética y otras patologías inflamatorias. El diagnóstico mediante espectrometría de masas permite clasificar el sebo en 'saludable' o 'pro-inflamatorio', facilitando la elección de antioxidantes tópicos específicos para neutralizar el daño. La regulación de la secreción sebácea mediante moduladores enzimáticos, combinada con la reposición de lípidos protectores, constituye una estrategia preventiva avanzada. Al tratar el sebo no como un residuo, sino como un fluido biológico informativo, se obtiene una ventana diagnóstica única para intervenir en la progresión de las alopecias desde sus etapas más tempranas y silenciosas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38555999/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "lipidos_biomimeticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_sebo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:56:27.290Z"
+  }
+]

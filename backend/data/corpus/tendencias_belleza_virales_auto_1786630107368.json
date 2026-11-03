@@ -1,0 +1,90 @@
+[
+  {
+    "chunk_id": "skincare-osmolaridad-002",
+    "title": "La trampa de la osmolaridad en sérums de Ácido Hialurónico",
+    "content": "El 'Skin Flooding' o saturación de hidratación ha popularizado el uso masivo de sérums de ácido hialurónico (AH) sobre piel seca. Clínicamente, el AH es un humectante potente que atrae agua. Si el ambiente es seco (baja humedad) o si el producto no se sella con un oclusivo, el AH puede extraer agua de las capas profundas de la epidermis hacia la superficie, donde se evapora, provocando una deshidratación transepidérmica paradójica. La osmolaridad del producto final importa: una concentración excesiva de AH sin el equilibrio de electrolitos o lípidos puede alterar el gradiente osmótico del estrato córneo. Según la AAD, la hidratación efectiva no depende de la cantidad de capas, sino de la integridad de la barrera lipídica. Aplicar AH sobre piel húmeda y sellar con una crema oclusiva es la única forma de evitar que la tendencia se convierta en una causa de xerosis iatrogénica.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/dry/how-to-treat-dry-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_hialuronico",
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [
+        "humedad_ambiental_baja"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:10.729Z"
+  },
+  {
+    "chunk_id": "skincare-menopausia-007",
+    "title": "Skincare para la menopausia: ¿Necesidad biológica o marketing?",
+    "content": "La caída de los estrógenos durante la menopausia provoca una disminución drástica en la síntesis de colágeno, una reducción en la producción de sebo y una menor capacidad de retención hídrica en la piel. La tendencia 'Menopause-Friendly Skincare' busca abordar estos cambios mediante el uso de fitoestrógenos, péptidos de señal y activos que compensan la pérdida de lípidos. Clínicamente, no existe una 'piel menopáusica' distinta, sino una piel que requiere una mayor densidad de activos reparadores y un enfoque intensivo en la barrera lipídica. El marketing suele sobredimensionar la necesidad de productos específicos, cuando la realidad es que el manejo de esta etapa requiere retinoides para la renovación, péptidos para el soporte estructural y ceramidas para compensar la sequedad. La segmentación comercial es útil para facilitar la elección del consumidor, pero no debe ignorar que los principios dermatológicos de protección solar y antioxidación siguen siendo los mismos.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Menopause Society",
+        "url": "https://www.menopause.org/for-women/expert-answers-to-frequently-asked-questions-about-skin-care-in-menopause",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "madura"
+      ],
+      "age_ranges": [
+        "45+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "ceramidas",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-aging"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:08:10.729Z"
+  }
+]

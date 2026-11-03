@@ -1,0 +1,230 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-mitocondrial-001",
+    "title": "Inmunometabolismo y Dinámica Mitocondrial en la Alopecia Areata",
+    "content": "La Alopecia Areata (AA) no es solo una enfermedad autoinmune mediada por células T; es un trastorno del inmunometabolismo folicular. Investigaciones recientes sugieren que el 'privilegio inmune' del folículo piloso depende de una tasa metabólica específica controlada por la integridad mitocondrial. Cuando las células de la papila dérmica sufren disfunción mitocondrial, se altera la producción de ATP, lo que activa vías de señalización proinflamatorias (como la vía JAK-STAT). Esta disfunción mitocondrial reduce la capacidad de las células madre del folículo para entrar en la fase anágena, prolongando el estado de latencia del pelo. El agotamiento del potencial de membrana mitocondrial en las células del bulbo piloso se correlaciona directamente con la severidad de la pérdida de cabello en pacientes con AA. La comprensión de este eje metabólico permite explorar estrategias no solo inmunosupresoras, sino de optimización bioenergética del nicho folicular, mejorando la respuesta a terapias convencionales y promoviendo la supervivencia celular ante el estrés oxidativo crónico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214309/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:55:03.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-metabolomica-002",
+    "title": "Metabolómica del Microbioma Scalp como Biomarcador de Inflamación",
+    "content": "El microbioma del cuero cabelludo excede la simple presencia de Malassezia; su perfil metabolómico funcional determina la homeostasis de la barrera cutánea. La producción de ácidos grasos de cadena corta (AGCC) y metabolitos derivados de la degradación lipídica por parte de bacterias comensales (como Cutibacterium acnes) actúa como un sensor de inflamación subclínica. Un desequilibrio en la proporción de estos metabolitos altera el pH del cuero cabelludo, favoreciendo la permeabilidad de la barrera folicular y facilitando la entrada de antígenos. En el diagnóstico clínico, el análisis del perfil lipídico y metabólico del sebo permite predecir la susceptibilidad a la inflamación perifolicular antes de que aparezcan signos tricoscópicos evidentes. La identificación de firmas metabolómicas específicas en el cuero cabelludo de pacientes con alopecia androgenética o dermatitis seborreica permite un enfoque de medicina de precisión, donde el tratamiento no se limita a reducir la carga microbiana, sino a restaurar el equilibrio metabólico del ecosistema folicular para prevenir la miniaturización inducida por citoquinas proinflamatorias derivadas de la disbiosis.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02544-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:55:03.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-epigenetica-003",
+    "title": "Impacto Epigenético del Exposoma Urbano en el Folículo",
+    "content": "La exposición a contaminantes atmosféricos (PM2.5, hidrocarburos aromáticos policíclicos) induce modificaciones epigenéticas críticas en el folículo piloso, específicamente a través de la activación del receptor de aril hidrocarburos (AhR). Este receptor, al ser estimulado por partículas contaminantes, regula negativamente la expresión de genes implicados en la diferenciación de la vaina radicular y la síntesis de queratina. Además, se ha documentado que el exposoma urbano promueve la metilación aberrante del ADN en las células de la papila dérmica, lo que resulta en una señalización Wnt/beta-catenina atenuada, esencial para el crecimiento capilar. Este daño epigenético no es inmediato, sino acumulativo, convirtiendo al folículo en un sensor biológico de la calidad del aire. Clínicamente, esto explica por qué pacientes en centros urbanos de alta densidad presentan signos de envejecimiento capilar prematuro y una menor resiliencia al estrés mecánico. El diagnóstico capilar moderno debe considerar el historial de exposición ambiental como un factor de riesgo epigenético que compromete la longevidad del ciclo folicular y la eficacia de los tratamientos tópicos de regeneración.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:55:03.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuroinmunologia-005",
+    "title": "Inflamación Neurogénica: El Rol del Factor de Crecimiento Nervioso",
+    "content": "La inervación cutánea desempeña un papel activo en la modulación del ciclo folicular a través del eje neuroinmune. El Factor de Crecimiento Nervioso (NGF) y la Sustancia P, liberados por las terminaciones nerviosas periféricas en respuesta al estrés, actúan sobre los mastocitos perivasculares para inducir la desgranulación y la liberación de mediadores proinflamatorios. Esta respuesta, conocida como inflamación neurogénica, es un factor clave en la patogénesis de la alopecia areata y en la exacerbación de la alopecia androgenética. El NGF no solo regula el dolor (tricodinia), sino que también influye en la transición de la fase anágena a catágena al alterar el microambiente de la papila dérmica. Clínicamente, el manejo de la inflamación neurogénica requiere un enfoque psicodermatológico que considere el estado emocional del paciente y el uso de agentes tópicos con propiedades neuro-moduladoras. La detección de hipersensibilidad en el cuero cabelludo mediante termografía infrarroja puede identificar zonas de alta actividad neurogénica, permitiendo una intervención temprana para frenar la miniaturización inducida por procesos inflamatorios de origen neurológico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37821123/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:55:03.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-008",
+    "title": "Senescencia del Músculo Erector del Pelo (Sarcopenia Capilar)",
+    "content": "El músculo erector del pelo (MEP) no solo regula la posición del tallo, sino que es un componente vital del nicho de células madre foliculares. La senescencia del MEP, denominada a menudo 'sarcopenia capilar', implica una pérdida de masa muscular y contractilidad, lo que desestabiliza la arquitectura folicular y altera la comunicación intercelular necesaria para la activación de las células madre del 'bulge'. La disfunción del MEP se asocia con un aplanamiento de la estructura folicular y una menor capacidad de regeneración ante el daño. Este proceso es exacerbado por el estrés oxidativo y la inflamación crónica del cuero cabelludo. En el diagnóstico capilar, la evaluación de la estabilidad del MEP mediante técnicas de elastografía por ondas de corte permite determinar la salud del nicho folicular. La preservación de la función del MEP mediante terapias físicas (fotobiomodulación) y agentes que mejoren la contractilidad muscular es una frontera prometedora en la dermatología capilar, ofreciendo un nuevo ángulo para frenar la progresión de las alopecias cicatriciales y no cicatriciales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/3/1782",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:55:03.633Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-inmunosenescencia-009",
+    "title": "Inmunosenescencia: El Rol de las Células T Reguladoras (Tregs)",
+    "content": "La inmunosenescencia del nicho folicular se caracteriza por una disregulación de las células T reguladoras (Tregs), que son fundamentales para mantener el privilegio inmune y facilitar el crecimiento del pelo. A medida que el folículo envejece, la población de Tregs disminuye o pierde su capacidad funcional, permitiendo una infiltración de células T efectoras proinflamatorias. Esta alteración inmunológica es un marcador crítico de la progresión de la alopecia areata y otras formas de pérdida capilar inflamatoria. Las Tregs no solo suprimen la autoinmunidad, sino que secretan factores de crecimiento que estimulan directamente las células madre del folículo piloso para iniciar el anágeno. La pérdida de este 'escudo' inmunológico explica la susceptibilidad aumentada a alopecias en pacientes mayores. El diagnóstico avanzado debe evaluar la presencia y actividad de Tregs en el cuero cabelludo como predictor de la respuesta a inmunoterapias. La modulación de este nicho inmunológico mediante terapias que restauren la población de Tregs representa un avance significativo hacia la regeneración capilar dirigida, enfocándose en la raíz inmunológica de la patología más que en la simple supresión del sistema inmune.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Frontiers in Immunology",
+        "url": "https://www.frontiersin.org/articles/10.3389/fimmu.2023.1254321/full",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:55:03.633Z"
+  }
+]

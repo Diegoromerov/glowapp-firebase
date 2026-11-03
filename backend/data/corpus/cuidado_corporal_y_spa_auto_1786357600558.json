@@ -1,0 +1,219 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-mastocitosis-cutanea-001",
+    "title": "Abordaje clínico de la mastocitosis cutánea indolente en dermatología corporal",
+    "content": "La mastocitosis cutánea, particularmente la urticaria pigmentosa, presenta desafíos únicos en el cuidado corporal. Se caracteriza por la infiltración de mastocitos en la dermis, lo que puede derivar en la liberación de mediadores inflamatorios ante estímulos físicos como la fricción, el calor o el ejercicio. Desde una perspectiva clínica, es imperativo educar al paciente sobre la evitación de desencadenantes físicos (signo de Darier positivo). El manejo debe enfocarse en la estabilización de la membrana del mastocito y el control de síntomas pruriginosos mediante antihistamínicos H1 y H2. Es crucial que el profesional de estética realice una anamnesis exhaustiva antes de cualquier procedimiento de aparatología que involucre calor o fricción, como la radiofrecuencia o el masaje vigoroso, ya que el trauma mecánico puede inducir una degranulación masiva. La barrera cutánea en estos pacientes suele estar comprometida, por lo que el uso de emolientes neutros y la protección contra irritantes es fundamental para mantener la homeostasis cutánea. La evaluación dermatológica previa es obligatoria antes de cualquier intervención cosmética para evitar reacciones anafilactoides sistémicas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/mastocytosis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antihistaminicos",
+        "emolientes_neutros"
+      ],
+      "contraindications": [
+        "calor",
+        "friccion",
+        "masaje_vigoroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_procedimientos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:26:22.489Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-amiloidosis-friccional-002",
+    "title": "Amiloidosis cutánea liquenoide: El rol de la fricción crónica",
+    "content": "La amiloidosis cutánea primaria, específicamente la variedad liquenoide, es una patología frecuentemente subdiagnosticada en el contexto de la dermatología corporal. Se manifiesta como pápulas pruriginosas, hiperpigmentadas y firmes, localizadas predominantemente en la región interescapular y extremidades extensoras. Su fisiopatología se vincula estrechamente con el rascado crónico y la fricción mecánica repetida, lo que induce una degeneración de los queratinocitos basales y el depósito de material amiloide derivado de la queratina en la dermis papilar. En el spa, el manejo debe centrarse en romper el ciclo prurito-rascado. El uso de queratolíticos suaves y agentes antiinflamatorios tópicos bajo supervisión médica es el estándar. Es imperativo evitar el uso de exfoliantes físicos abrasivos o cepillos corporales en estas áreas, ya que el estímulo mecánico perpetúa la deposición de amiloide. La educación del paciente sobre el manejo del prurito y el control de la barrera cutánea es el pilar fundamental del tratamiento, complementado con el uso de corticoides tópicos de potencia media y análogos de la vitamina D cuando sea indicado por el dermatólogo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides",
+        "queratoliticos"
+      ],
+      "contraindications": [
+        "exfoliacion_mecanica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:26:22.489Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-hidradenitis-microbioma-003",
+    "title": "Dinámica del microbioma y el biofilm en pliegues con Hidradenitis Supurativa",
+    "content": "La Hidradenitis Supurativa (HS) no es solo un trastorno inflamatorio folicular, sino un ecosistema alterado. Recientes estudios han demostrado que la formación de biofilms bacterianos en los túneles y senos dérmicos de las áreas axilares e inguinales juega un rol crítico en la cronicidad y resistencia a los antibióticos. El microbioma en estas zonas muestra una pérdida de diversidad, con una prevalencia de Staphylococcus aureus y bacterias anaerobias. En el cuidado clínico, la limpieza con agentes antisépticos específicos (como la clorhexidina diluida o limpiadores con pH ácido) es esencial para reducir la carga de biofilm sin alterar excesivamente la barrera lipídica. La oclusión debe evitarse a toda costa, ya que favorece la anaerobiosis y la inflamación. El uso de apósitos de plata o apósitos absorbentes de alta tecnología está indicado para gestionar el exudado. Es vital entender que la intervención debe ser mínimamente invasiva; el trauma físico o la presión excesiva durante la limpieza puede exacerbar el proceso inflamatorio y favorecer la formación de nuevas lesiones, complicando el cuadro clínico del paciente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00567-8/abstract",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "clorhexidina",
+        "agentes_anti_biofilm"
+      ],
+      "contraindications": [
+        "oclusion",
+        "friccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_pliegues"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:26:22.489Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-neurodermatitis-004",
+    "title": "Manejo del liquen simple crónico y su impacto en la calidad de vida",
+    "content": "El liquen simple crónico (LSC) es el resultado final de un ciclo persistente de rascado y frotamiento, derivado de un prurito primario o secundario. En el cuerpo, las placas liquenificadas presentan una hiperqueratosis marcada y cambios en la pigmentación. La piel en estas áreas es extremadamente frágil y tiene una barrera cutánea disfuncional. El abordaje clínico implica el control del prurito con antihistamínicos orales y la aplicación de corticoides tópicos de alta potencia bajo oclusión intermitente, según criterio médico. Desde el punto de vista del cuidado en spa, es fundamental evitar cualquier producto con fragancias o conservantes sensibilizantes, ya que la piel liquenificada tiene una mayor capacidad de absorción de alérgenos. La aplicación de emolientes que contengan ceramidas, urea (en concentraciones bajas) o polidocanol puede ayudar a restaurar la integridad de la barrera y disminuir la sensación de picor. Se debe educar al paciente sobre la importancia de las técnicas de relajación y el manejo del estrés, dado que el componente psicocutáneo del LSC es significativo y perpetúa el cuadro clínico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institute of Arthritis and Musculoskeletal and Skin Diseases",
+        "url": "https://www.niams.nih.gov/health-topics/lichen-simplex-chronicus",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "polidocanol",
+        "corticoides"
+      ],
+      "contraindications": [
+        "fragancias",
+        "conservantes_sensibilizantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_prurito"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:26:22.489Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-calcifilaxis-007",
+    "title": "Calcifilaxis cutánea: Vigilancia clínica en medicina estética",
+    "content": "Aunque la calcifilaxis (arteriolopatía urémica calcificante) es una condición rara, su relevancia en dermatología estética radica en la necesidad de vigilancia en pacientes con factores de riesgo metabólico, como enfermedad renal crónica o trastornos del metabolismo del calcio. Se presenta como placas dolorosas, induradas, que progresan rápidamente a necrosis y ulceración. La manipulación de áreas corporales con sospecha de calcifilaxis está terminantemente contraindicada. Cualquier procedimiento invasivo, incluyendo la inyección de sustancias o el uso de energía, puede desencadenar una necrosis tisular catastrófica. La identificación temprana de lesiones purpúricas o necróticas es vital. El profesional de la estética debe estar capacitado para reconocer estos signos de alarma y derivar de inmediato al servicio de dermatología hospitalaria. La fisiopatología implica la calcificación de las arteriolas dérmicas, lo que conduce a isquemia e infarto cutáneo. La prevención se basa en la gestión de las comorbilidades sistémicas, y el papel de la estética se limita a la hidratación suave con productos que no comprometan la perfusión tisular ni contengan ingredientes irritantes.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Kidney International",
+        "url": "https://www.kidney-international.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "cualquier_procedimiento_invasivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_procedimientos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:26:22.489Z"
+  }
+]

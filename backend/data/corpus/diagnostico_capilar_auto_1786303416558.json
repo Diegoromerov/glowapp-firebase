@@ -1,0 +1,245 @@
+[
+  {
+    "chunk_id": "diag-capilar-miniaturizacion-001",
+    "title": "Mecanismos Moleculares de la Miniaturización Folicular",
+    "content": "La miniaturización folicular es el proceso fisiopatológico central en las alopecias androgenéticas. Este fenómeno implica una reducción progresiva del tamaño del folículo piloso, pasando de folículos terminales a vellosos. A nivel molecular, la enzima 5-alfa-reductasa convierte la testosterona en dihidrotestosterona (DHT), la cual se une a los receptores androgénicos en la papila dérmica. Esta interacción desencadena una cascada de señalización que acorta la fase anágena y prolonga la fase telógena, resultando en tallos cada vez más finos y cortos. Estudios en PubMed indican que la expresión de factores de crecimiento como el TGF-beta1, inducido por andrógenos, juega un rol inhibitorio clave en la proliferación de las células de la matriz capilar. Es vital identificar la miniaturización mediante tricoscopia antes de que la fibrosis irreversible del folículo impida la recuperación clínica. La detección temprana permite intervenciones farmacológicas que pueden estabilizar el diámetro del tallo antes de que el folículo se vuelva atrófico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30559795/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "finasteride"
+      ],
+      "contraindications": [
+        "embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tricoscopico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:23:24.968Z"
+  },
+  {
+    "chunk_id": "diag-capilar-fibrosante-002",
+    "title": "Alopecia Frontal Fibrosante: Diagnóstico Diferencial y Signos de Alerta",
+    "content": "La Alopecia Frontal Fibrosante (AFF) es una variante de liquen plano pilar que ha mostrado una incidencia creciente. Se caracteriza por la recesión de la línea de implantación frontotemporal y la pérdida de cejas. Clínicamente, el diagnóstico se apoya en la presencia de eritema perifolicular, hiperqueratosis peripilar y la ausencia de orificios foliculares en las áreas afectadas. A diferencia de la alopecia androgenética, la AFF presenta una inflamación mediada por linfocitos T que destruye el tallo capilar de forma permanente. Es fundamental realizar un diagnóstico diferencial preciso, ya que el manejo de la AFF requiere inmunomoduladores y antiinflamatorios potentes, en lugar de los tratamientos convencionales para la caída hormonal. La American Academy of Dermatology sugiere que la detección temprana es crucial para detener la progresión hacia la cicatrización irreversible. En la práctica clínica, la observación de 'signos de marcador' en la línea de implantación es una herramienta diagnóstica clave para el dermatólogo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/frontal-fibrosing-alopecia",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de cosméticos irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-diferencial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:23:24.968Z"
+  },
+  {
+    "chunk_id": "diag-capilar-traccion-003",
+    "title": "Alopecia por Tracción: Identificación de Patrones de Daño Mecánico",
+    "content": "La alopecia por tracción es una forma de pérdida capilar inducida por la tensión mecánica prolongada sobre el folículo, comúnmente asociada a peinados tirantes, extensiones o uso frecuente de herramientas de calor. A diferencia de las alopecias autoinmunes, esta es una condición mecánica reversible en sus etapas iniciales. Los signos clínicos incluyen el 'signo de la franja' (hairline fringe sign), eritema, pústulas perifoliculares y, en estadios avanzados, fibrosis cicatricial. Es esencial educar al paciente sobre las prácticas de peinado que causan microtraumas. La literatura dermatológica subraya que la tracción crónica altera la arquitectura de la papila dérmica, induciendo una respuesta inflamatoria que precede a la atrofia folicular. La intervención temprana mediante cambios en el estilo de peinado y el uso de antiinflamatorios tópicos puede revertir el proceso. Si la tracción se mantiene, el daño se vuelve permanente, requiriendo intervenciones quirúrgicas como el trasplante capilar para restaurar la densidad.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7436735/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil"
+      ],
+      "contraindications": [
+        "peinados apretados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consejo-estilismo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:23:24.968Z"
+  },
+  {
+    "chunk_id": "diag-capilar-tricodinia-004",
+    "title": "Tricodinia: El Rol del Dolor en la Inflamación Folicular",
+    "content": "La tricodinia, definida como la sensación de dolor, ardor o sensibilidad en el cuero cabelludo, es un síntoma frecuente en pacientes con diversas formas de alopecia. Aunque su etiología no es del todo clara, existe una correlación clínica significativa con estados inflamatorios perifoliculares. Estudios indican que la tricodinia suele exacerbarse en pacientes con alopecia androgenética activa o efluvio telógeno severo, sugiriendo que la liberación de mediadores proinflamatorios alrededor del folículo piloso puede estimular las terminaciones nerviosas del cuero cabelludo. Es importante que el clínico no desestime este síntoma, ya que puede indicar un proceso inflamatorio subyacente que requiere manejo. El tratamiento se centra en reducir la inflamación mediante corticosteroides tópicos o tratamientos sistémicos si la causa es autoinmune. La gestión de la tricodinia mejora drásticamente la calidad de vida del paciente y su adherencia a los protocolos terapéuticos, permitiendo una evaluación más precisa del progreso capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)32502-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticosteroides_topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-sintomas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:23:24.968Z"
+  },
+  {
+    "chunk_id": "diag-capilar-prueba-traccion-005",
+    "title": "Estandarización de la Prueba de Tracción (Pull Test)",
+    "content": "La prueba de tracción o 'pull test' es una maniobra clínica sencilla pero fundamental para evaluar la actividad de la caída capilar. Consiste en tomar un mechón de aproximadamente 50-60 cabellos entre el pulgar, índice y medio, y tirar con una fuerza constante y suave desde la raíz hasta la punta. La prueba se considera positiva si se extraen más de 6 cabellos en diferentes zonas del cuero cabelludo, lo cual sugiere un proceso de efluvio telógeno activo. Es crucial realizar esta prueba en diversas áreas para mapear si la pérdida es difusa o localizada. La estandarización de esta técnica, descrita en protocolos de la IADVL, es vital para evitar falsos positivos derivados de un lavado reciente o manipulación excesiva. Un resultado positivo indica que el ciclo folicular está afectado y que el paciente se encuentra en una fase de caída activa, lo que requiere una anamnesis detallada sobre eventos desencadenantes ocurridos 3 meses previos, como cirugías, fiebre alta o cambios metabólicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://iadvl.org/publications/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "cabello-recien-lavado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:23:24.968Z"
+  },
+  {
+    "chunk_id": "diag-capilar-densidad-006",
+    "title": "Evaluación de la Densidad Capilar: Métodos Subjetivos vs. Objetivos",
+    "content": "La evaluación de la densidad capilar es crítica para monitorear la progresión de cualquier alopecia. Mientras que la inspección visual es el primer paso, la tricoscopia digital permite mediciones objetivas mediante el conteo de unidades foliculares por centímetro cuadrado. El estándar de oro clínico implica comparar la densidad de la zona occipital (área donante o estable) con las zonas frontales o parietales afectadas. En la alopecia androgenética, la pérdida de densidad es progresiva y suele acompañarse de una mayor variabilidad en el diámetro del tallo (anisotricosis). El uso de herramientas de magnificación (dermatoscopios) permite observar la presencia de 'puntos amarillos' (folículos vacíos con queratina) y 'puntos blancos' (fibrosis), indicadores claros de la severidad del proceso. La capacidad de cuantificar estos parámetros permite a los especialistas de GlowApp ofrecer diagnósticos basados en datos, mejorando la precisión en la recomendación de tratamientos y el seguimiento a largo plazo de la salud folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/category/hair-disorders/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tricoscopico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:23:24.968Z"
+  }
+]

@@ -1,0 +1,215 @@
+[
+  {
+    "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-1-05a31055-maquillaje-en-entornos-de-alta-exposicion-a-campos-de-microo",
+    "title": "Maquillaje en entornos de alta exposición a campos de microondas y Wi-Fi",
+    "content": "La exposición prolongada a campos electromagnéticos de radiofrecuencia (RF) en entornos de alta densidad tecnológica puede inducir fenómenos de calentamiento dieléctrico en formulaciones cosméticas con alto contenido en pigmentos metálicos (óxidos de hierro, mica recubierta). Este fenómeno puede alterar la viscosidad de emulsiones y la estabilidad de polímeros filmógenos. Para mitigar la absorción de energía y prevenir la transferencia de calor hacia la dermis, se recomienda el uso de bases con vehículos de base acuosa y agentes termorreguladores encapsulados. El uso de polvos minerales con propiedades de dispersión de ondas puede actuar como una barrera física pasiva. Es fundamental evitar el uso de productos con alta concentración de solventes volátiles, los cuales pueden sufrir una desgasificación acelerada bajo condiciones de campo electromagnético intenso, comprometiendo la integridad del acabado y la oclusión cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mica",
+        "óxidos de hierro"
+      ],
+      "contraindications": [
+        "productos con alta carga de solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:01.176Z"
+  },
+  {
+    "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-2-0bb6bb6e-maquillaje-ante-exposicion-a-campos-de-luz-coherente-laser-d",
+    "title": "Maquillaje ante exposición a campos de luz coherente (Láser de eventos)",
+    "content": "La exposición a sistemas de iluminación láser en eventos de entretenimiento plantea desafíos únicos para la estabilidad de los pigmentos fotosensibles. La luz coherente de alta intensidad puede inducir la degradación fotoquímica de colorantes orgánicos, provocando un viraje cromático no deseado durante el evento. Para gestionar este riesgo, se deben emplear formulaciones con filtros UV de amplio espectro y pigmentos inorgánicos de alta estabilidad térmica. Además, la reflexión especular de los productos con partículas de brillo (glitter) puede concentrar la energía del láser, aumentando el riesgo de irritación ocular o térmica. Se recomienda optar por acabados mate o satinados con baja reflectancia para minimizar la dispersión de luz coherente. La aplicación de un primer con propiedades de dispersión de luz ayudará a mantener la uniformidad del tono bajo condiciones de iluminación dinámica y variable, evitando la aparición de manchas o zonas de degradación prematura en el maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV",
+        "pigmentos inorgánicos"
+      ],
+      "contraindications": [
+        "glitter de alta reflectancia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cromatica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:01.176Z"
+  },
+  {
+    "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-3-0b92f266-maquillaje-en-ambientes-de-alta-carga-electrostatica-y-adher",
+    "title": "Maquillaje en ambientes de alta carga electrostática y adherencia de contaminantes",
+    "content": "En entornos con alta carga electrostática, como los centros de datos o salas de servidores, la piel actúa como un colector de partículas en suspensión debido a la diferencia de potencial eléctrico. El maquillaje, si no está formulado con agentes antiestáticos, puede facilitar la adherencia de partículas PM2.5 y microplásticos. La técnica recomendada implica el uso de selladores con polímeros de carga neutra que minimicen el efecto triboeléctrico. Es crucial evitar el uso de productos en polvo suelto que puedan ionizarse y atraer contaminantes ambientales. Se debe priorizar el uso de emulsiones de fase continua acuosa que mantengan la hidratación y reduzcan la conductividad superficial. La limpieza previa con soluciones micelares con propiedades quelantes es esencial para eliminar trazas de metales pesados que, al interactuar con el campo electrostático, podrían exacerbar la inflamación cutánea o inducir dermatitis de contacto por irritación mecánica de partículas adheridas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Environmental Health Perspectives",
+        "url": "https://ehp.niehs.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antiestáticos",
+        "polímeros de carga neutra"
+      ],
+      "contraindications": [
+        "polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:01.176Z"
+  },
+  {
+    "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-5-dae7b816-maquillaje-en-entornos-de-alta-presion-sonora-y-vibracion-ac",
+    "title": "Maquillaje en entornos de alta presión sonora y vibración acústica",
+    "content": "La exposición a niveles de presión sonora extremadamente altos (eventos de música electrónica, conciertos) genera vibraciones mecánicas que pueden afectar la estructura de las emulsiones cosméticas, provocando la coalescencia de gotas y la separación de fases. Este fenómeno de 'desestabilización por vibración' es particularmente crítico en productos de textura cremosa. Para asegurar la integridad del maquillaje, se recomienda el uso de emulsiones con alta fuerza iónica y agentes espesantes reológicos que proporcionen una estructura de red tridimensional capaz de absorber la energía vibratoria. Además, la vibración acústica puede aumentar la permeabilidad cutánea temporal, facilitando la penetración de ingredientes potencialmente irritantes. Se debe optar por fórmulas hipoalergénicas y libres de fragancias sintéticas, minimizando así el riesgo de absorción sistémica de compuestos químicos durante periodos prolongados de exposición a campos acústicos de alta intensidad. La fijación debe realizarse con polímeros de alta flexibilidad para evitar el agrietamiento del film cosmético bajo vibración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Physics",
+        "url": "https://aip.scitation.org/journal/jap",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "espesantes reológicos"
+      ],
+      "contraindications": [
+        "fragancias sintéticas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_fisica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:01.176Z"
+  },
+  {
+    "chunk_id": "maquillaje_tecnicas_por_ocasion-1786383421176-6-ffeeddb2-maquillaje-y-gestion-de-la-oclusion-en-entornos-de-realidad-",
+    "title": "Maquillaje y gestión de la oclusión en entornos de realidad virtual (RV) prolongada",
+    "content": "El uso prolongado de visores de realidad virtual impone condiciones de oclusión severas sobre la zona periocular y frontal, alterando la temperatura cutánea y la tasa de evaporación del sudor. El maquillaje aplicado en estas áreas debe ser altamente transpirable y no comedogénico para evitar la acumulación de sebo y la proliferación microbiana inducida por el microclima generado por el dispositivo. Se recomienda el uso de bases de maquillaje con tecnología de 'red abierta' que permitan la transferencia de vapor de agua. Es imperativo evitar productos con ceras de alto punto de fusión que puedan obstruir los poros bajo presión mecánica del visor. La gestión de la fatiga sensorial y la oclusión se complementa con la aplicación previa de un suero hidratante de bajo peso molecular, que mantenga la turgencia cutánea sin añadir una carga oclusiva adicional. La remoción del maquillaje tras la sesión de RV debe ser inmediata para restablecer la homeostasis de la barrera cutánea y prevenir la dermatitis por oclusión.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "suero de bajo peso molecular"
+      ],
+      "contraindications": [
+        "ceras de alto punto de fusión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:37:01.176Z"
+  }
+]

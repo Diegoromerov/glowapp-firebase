@@ -1,0 +1,43 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-potencial-zeta-002",
+    "title": "Potencial Zeta y estabilidad de las dispersiones de pigmentos",
+    "content": "El Potencial Zeta es una medida electrocinética fundamental para entender la estabilidad de las dispersiones de pigmentos en los tintes capilares. En la formulación de colorantes, la carga eléctrica de las partículas de pigmento determina su capacidad de repulsión o agregación. Un Potencial Zeta optimizado evita la floculación prematura de los precursores de color, garantizando una distribución homogénea a lo largo de la fibra capilar durante el tiempo de pose. Si el potencial se ve afectado por la presencia de electrolitos o cambios en el pH, la deposición del color puede ser desigual, resultando en parches o una saturación deficiente. En la práctica clínica de GlowApp, comprender este fenómeno permite predecir cómo interactuará el tinte con cabellos tratados previamente con productos acondicionadores cargados catiónicamente. La literatura científica, incluyendo investigaciones en el Journal of Applied Polymer Science, confirma que el control de la carga superficial es determinante para la eficacia de la coloración permanente y semipermanente, evitando la acumulación innecesaria de producto en zonas de alta porosidad.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes_anfoteros",
+        "electrolitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica-aplicada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:27:23.361Z"
+  }
+]

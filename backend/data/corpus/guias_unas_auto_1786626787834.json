@@ -1,0 +1,297 @@
+[
+  {
+    "chunk_id": "guias_unas-onico-hidrodinamica-001",
+    "title": "La hidrodinámica de la placa ungueal y la absorción de sustancias",
+    "content": "La lámina ungueal no es una estructura inerte; actúa como una membrana semipermeable cuya permeabilidad depende drásticamente de su estado de hidratación. A diferencia de la piel, la uña tiene una capacidad de absorción de agua hasta 100 veces mayor que la de los lípidos. Cuando la uña se sumerge en agua, la absorción provoca una expansión de los corneocitos, lo que altera la cohesión entre las capas de queratina. Este proceso, conocido como higroscopía, debilita las fuerzas de van der Waals que mantienen la lámina compacta. Estudios publicados en PubMed indican que la fluctuación constante entre hidratación y deshidratación (ciclos de humectación) es el principal factor de fatiga mecánica en la placa ungueal, facilitando la penetración de agentes químicos externos, solventes y patógenos. Para la práctica en GlowApp, es vital comprender que la aplicación de productos sobre una uña saturada de agua impide una adhesión molecular óptima, ya que el agua residual desplaza los monómeros de los adhesivos, favoreciendo el levantamiento prematuro y la posible sensibilización por contacto con monómeros no polimerizados adecuadamente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI/PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22153578/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agua",
+        "monómeros"
+      ],
+      "contraindications": [
+        "exposición prolongada a agua antes de aplicación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-resistencia-termica-002",
+    "title": "Transferencia térmica y daño matricial por fricción mecánica",
+    "content": "El uso de tornos (fresas) a alta velocidad genera calor friccional que se transmite directamente a través de la lámina ungueal hacia el lecho y la matriz. La uña es un conductor térmico eficiente. Cuando se supera el umbral de dolor del paciente, la temperatura en la matriz puede alcanzar niveles capaces de causar una quemadura térmica interna o micro-inflamación del tejido matricial. Según guías de la American Academy of Dermatology (AAD), la fricción excesiva no solo debilita la lámina al eliminar capas dorsales críticas, sino que también puede inducir distrofias ungueales permanentes si se daña la zona de la matriz proximal. El riesgo es mayor con fresas de carburo de tungsteno mal calibradas o desgastadas, que actúan por desgarro en lugar de corte. En cabina, es obligatorio emplear técnicas de 'pulso' y velocidades controladas (inferiores a 15,000 RPM para limado de lámina) para minimizar la transmisión de calor y preservar la integridad del sistema de anclaje de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/how-to-keep-nails-healthy",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de tornos a alta velocidad",
+        "fresas desgastadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_limado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-quimica-adhesivos-003",
+    "title": "Polaridad molecular y adhesión: el rol del pH en el lecho",
+    "content": "La adhesión de sistemas fotopolimerizables (bases rubber, geles) depende de una interacción química precisa entre el sustrato (lámina ungueal) y el adhesivo. El pH del lecho ungueal y de la superficie de la lámina influye en la estabilidad de los enlaces de hidrógeno y las fuerzas electrostáticas. Muchos primers ácidos están diseñados para modificar el pH de la superficie y crear micro-rugosidades, pero su uso excesivo puede alterar la homeostasis lipídica del eponiquio. Cuando el pH es demasiado bajo, se puede degradar la queratina intercelular, causando un efecto contraproducente: la uña se vuelve más porosa y frágil, facilitando la entrada de monómeros sensibilizantes. La investigación dermatológica subraya que la estabilidad del monómero es sensible al pH; una desviación significativa del pH natural (aprox. 5.5 a 6.0) puede inhibir la polimerización completa del producto. La correcta neutralización o el uso de primers de nueva generación (libres de ácido o de bajo impacto) es esencial para mantener la integridad de la barrera cutánea y evitar la sensibilización acumulativa a los metacrilatos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(19)32675-5/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers ácidos",
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "uso excesivo de ácidos",
+        "pH desequilibrado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-biocapa-004",
+    "title": "Biofilms en microfisuras: el desafío invisible de la esterilización",
+    "content": "Las herramientas metálicas, aunque parezcan lisas al ojo humano, presentan microfisuras en su superficie derivadas del uso y la fatiga del material. Estas microfisuras actúan como nichos para la formación de biofilms bacterianos (comunidades complejas de bacterias protegidas por una matriz polimérica). La esterilización estándar en autoclave es efectiva solo si el proceso de limpieza previo (eliminación de detritos orgánicos) es impecable. El uso de herramientas con corrosión galvánica (liberación de iones metálicos por contacto entre metales diferentes) acelera la degradación del acero, creando más porosidad donde los patógenos pueden alojarse y evadir los desinfectantes químicos. Según protocolos de la IADVL, el acero inoxidable de grado quirúrgico es indispensable, pero su mantenimiento es crítico: cualquier signo de oxidación o picadura superficial implica que la herramienta ha perdido su capacidad de ser esterilizada de forma segura. En GlowApp, la inspección microscópica o bajo lupa de alta resolución de los instrumentos es una medida de seguridad clínica innegociable para prevenir la transmisión de infecciones cruzadas en el área periungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://iadvl.org/guidelines.php",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas oxidadas",
+        "limpieza insuficiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "esterilizacion_asepsia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-exotermica-005",
+    "title": "Manejo clínico del pico exotérmico en fotopolimerización",
+    "content": "La reacción exotérmica es un proceso químico inevitable durante la polimerización de geles UV/LED, donde la energía se libera en forma de calor al pasar de monómero líquido a polímero sólido. Este pico de calor es directamente proporcional a la velocidad de polimerización y al volumen de producto aplicado. Una capa demasiado gruesa o un gel de alta densidad con una concentración elevada de fotoiniciadores puede generar una temperatura superior a los 50°C, causando dolor agudo y, en casos extremos, quemaduras de primer o segundo grado en el lecho ungueal. La literatura clínica sugiere que el manejo de esta reacción debe ser preventivo: aplicar el producto en capas finas y utilizar el modo 'low heat' (baja intensidad) de las lámparas, que aumenta gradualmente la irradiancia. Es fundamental educar al cliente para que retire la mano ante la primera sensación de calor punzante, evitando el 'aguantar el dolor', ya que la exposición prolongada puede inducir una inflamación crónica del lecho ungueal y aumentar el riesgo de onicólisis inducida por trauma térmico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/nail-gel-safety/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "aplicación de capas gruesas",
+        "lámparas de alta potencia sin control"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-biomecanica-007",
+    "title": "Anisotropía de la lámina ungueal y respuesta al estrés mecánico",
+    "content": "La uña humana es un material anisotrópico, lo que significa que sus propiedades mecánicas varían según la dirección en la que se aplique la fuerza. La lámina tiene una resistencia superior a la compresión longitudinal, pero es vulnerable a las fuerzas de cizallamiento y tensión tangencial. Cuando aplicamos una uña esculpida o un recubrimiento rígido, estamos alterando la distribución natural de estas tensiones. Si la arquitectura del arco (curva C) no está correctamente balanceada o si el borde libre es excesivamente largo, la uña esculpida actúa como una palanca sobre el lecho ungueal. Este 'efecto palanca' puede provocar micro-onicólisis distal o incluso desprendimiento del hiponiquio. La biomecánica del borde libre exige que el punto de mayor estrés (apex) esté situado correctamente para disipar las fuerzas de impacto. Un diseño estético que ignore la física del arco de tensión no solo es propenso a fracturas, sino que compromete la salud del lecho al someter a los tejidos blandos subyacentes a tensiones mecánicas para las que no están adaptados.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Biomechanics",
+        "url": "https://www.sciencedirect.com/journal/journal-of-biomechanics",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas con arco de tensión incorrecto",
+        "longitud excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "arquitectura_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  },
+  {
+    "chunk_id": "guias_unas-onico-triboelectrica-009",
+    "title": "Efecto triboeléctrico y su impacto en la adhesión molecular",
+    "content": "El limado de la lámina ungueal, especialmente con fresas sintéticas o bloques de pulido, genera un fenómeno físico conocido como efecto triboeléctrico: la acumulación de carga estática en la superficie de la uña. Esta carga puede repeler o atraer moléculas del adhesivo de manera no uniforme, afectando la humectación y la capacidad de formación de enlaces químicos. Si la superficie de la uña está cargada eléctricamente, el primer o la base pueden no extenderse correctamente, creando zonas de micro-vacío donde el aire queda atrapado. Estos vacíos son puntos de inicio para el levantamiento del producto. Para mitigar este efecto, es recomendable realizar una limpieza con alcohol isopropílico de alta pureza después del limado, lo cual no solo elimina el polvo, sino que ayuda a disipar las cargas electrostáticas acumuladas. La comprensión de estos fenómenos físicos microscópicos es lo que separa una aplicación de alta durabilidad (estilo GlowApp) de una aplicación estándar, asegurando que los productos químicos se adhieran a una superficie neutra y receptiva, maximizando la longevidad del sistema y protegiendo la lámina subyacente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Physics",
+        "url": "https://aip.scitation.org/journal/jap",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol isopropílico"
+      ],
+      "contraindications": [
+        "limado excesivo sin limpieza posterior"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:12:48.862Z"
+  }
+]

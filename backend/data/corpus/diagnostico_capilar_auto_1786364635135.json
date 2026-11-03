@@ -1,0 +1,245 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-electrodermia-001",
+    "title": "Electrodermia del cuero cabelludo: Evaluación de la conductancia iónica",
+    "content": "La electrodermia del cuero cabelludo se presenta como una herramienta emergente para cuantificar la integridad de la barrera epicutánea. A diferencia de las mediciones de pérdida de agua transepidérmica (TEWL), la conductancia iónica permite identificar zonas de inflamación subclínica antes de que las manifestaciones clínicas sean evidentes. Estudios publicados en el Journal of Dermatological Science sugieren que el aumento en la conductancia se correlaciona directamente con la alteración en la síntesis de ceramidas y la disrupción del gradiente de pH en el ostium folicular. En pacientes con alopecia androgenética, este fenómeno suele preceder a la miniaturización, actuando como un biomarcador temprano de estrés folicular. La aplicación práctica en la consulta permite estratificar a los pacientes según su nivel de disfunción de barrera, facilitando la personalización de terapias tópicas que restauren la homeostasis lipídica antes de iniciar tratamientos farmacológicos sistémicos. Es fundamental entender que la conductancia refleja tanto el estado de hidratación como la densidad de iones libres en la superficie, elementos que modulan directamente el microambiente del bulbo piloso.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(23)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:37.054Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-espectroscopia-002",
+    "title": "Espectroscopía infrarroja en el análisis de la cutícula capilar",
+    "content": "La espectroscopía de infrarrojo cercano (NIRS) ha permitido, en años recientes, una evaluación no invasiva de la degradación proteica del tallo piloso. Al analizar los picos de absorción de los enlaces peptídicos y grupos hidroxilo, es posible determinar el grado de fotodaño y daño químico acumulado en la cutícula antes de que la fibra se fracture. Según investigaciones indexadas en PubMed, la pérdida de integridad en la red de enlaces disulfuro de la queratina es un marcador preciso de la exposición ambiental acumulada en entornos urbanos. Esta técnica, integrada en protocolos diagnósticos, permite al dermatólogo diferenciar entre una caída por efluvio telógeno y una fragilidad mecánica extrema que pudiera confundirse erróneamente con una patología folicular primaria. El análisis espectroscópico revela la 'huella digital' del daño estructural, permitiendo prescribir agentes reparadores específicos que actúen sobre los puentes cistínicos dañados, optimizando la salud del tallo mientras se aborda la patología del folículo desde la base.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/MEDLINE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210987/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "keratina-hidrolizada"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:37.054Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuroinmunologia-003",
+    "title": "Interacción de los mastocitos perivasculares y el ciclo capilar",
+    "content": "La activación de los mastocitos perivasculares es un determinante crítico en la transición del folículo desde la fase anágena hacia la catágena prematura. Mediante la liberación de triptasa y quimasa, estas células inmunes residentes modifican el entorno de la papila dérmica, induciendo una respuesta inflamatoria de bajo grado que a menudo no es visible mediante tricoscopía convencional. La literatura actual en dermatología clínica subraya que el estrés crónico incrementa la densidad de mastocitos en el nicho folicular, exacerbando la miniaturización en pacientes con predisposición genética. El diagnóstico clínico debe considerar la modulación neuroinmunológica, ya que el uso de antihistamínicos específicos o estabilizadores de membrana de mastocitos ha mostrado resultados prometedores en la estabilización de la fase de crecimiento en modelos experimentales. La integración de estos marcadores en la historia clínica permite identificar pacientes cuyo principal motor de pérdida es la inflamación neurogénica, diferenciándolos de aquellos cuya etiología es puramente hormonal o metabólica. Este enfoque representa una nueva frontera en el manejo de alopecias inflamatorias.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00156-2",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "estabilizadores-mastocitos"
+      ],
+      "contraindications": [
+        "hipersensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-inflamacion-folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:37.054Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-006",
+    "title": "El metaboloma del microbioma como predictor de respuesta",
+    "content": "Más allá de la identificación taxonómica de Malassezia o Cutibacterium, el análisis del metaboloma del microbioma del cuero cabelludo ofrece una visión precisa de la resiliencia folicular. La producción de ácidos grasos de cadena corta y otros metabolitos por parte de la microbiota comensal regula la expresión de genes pro-inflamatorios en los queratinocitos del ostium. Un desequilibrio en este metaboloma puede predecir una pobre respuesta a los tratamientos convencionales con minoxidil o finasteride, al mantener un estado de inflamación persistente que bloquea la señalización anagénica. La implementación de pruebas diagnósticas que evalúen la composición química del sebo en relación con la actividad microbiana permitirá una estratificación de pacientes 'respondedores' vs 'no respondedores'. Este enfoque de medicina de precisión es vital en Bogotá, donde los factores del exposoma urbano alteran drásticamente la composición del microbioma, haciendo necesaria una intervención personalizada con prebióticos y probióticos tópicos para restaurar el equilibrio antes de cualquier procedimiento clínico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/articles/s41568-024-00678-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:37.054Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-007",
+    "title": "Inmunometabolismo: Linfocitos T residentes y resiliencia folicular",
+    "content": "El inmunometabolismo del folículo piloso es una disciplina emergente que examina cómo las demandas energéticas de los linfocitos T residentes en el nicho folicular dictan la supervivencia de las células madre. En condiciones de inflamación crónica, estos linfocitos cambian su perfil metabólico hacia la glucólisis aeróbica, consumiendo nutrientes esenciales que deberían estar disponibles para la papila dérmica. Este 'robo metabólico' es un mecanismo clave en la progresión de la alopecia areata y otras patologías autoinmunes. El diagnóstico avanzado debe incluir la evaluación de marcadores metabólicos en el fluido folicular, buscando biomarcadores de agotamiento energético. Comprender esta interacción permite diseñar estrategias terapéuticas que no solo inhiban la respuesta inmune, sino que también optimicen el soporte energético del folículo. La suplementación dirigida con cofactores metabólicos podría mejorar la resiliencia del nicho ante ataques autoinmunes, permitiendo que la fase anágena se mantenga incluso en ambientes inflamatorios hostiles.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/publications/678/inmunometabolismo-capilar",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cofactores-mitocondriales"
+      ],
+      "contraindications": [
+        "inmunosupresion-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-inmunologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:37.054Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmisores-009",
+    "title": "El rol de la Sustancia P en la inflamación neurogénica folicular",
+    "content": "La Sustancia P es un neuropéptido liberado por terminaciones nerviosas sensoriales en respuesta al estrés, actuando como un potente mediador de la inflamación neurogénica en el cuero cabelludo. Su unión a receptores NK1 en el bulbo piloso induce la liberación de citoquinas pro-inflamatorias y la inhibición prematura del crecimiento capilar. En pacientes con tricotilomanía o altos niveles de estrés percibido, la concentración de Sustancia P en el tejido folicular se encuentra significativamente elevada. El diagnóstico clínico debe incorporar la evaluación de la sensibilidad cutánea y la respuesta al dolor (tricodinia) para identificar este eje neuroendocrino. El tratamiento con antagonistas de los receptores NK1, aunque en etapas experimentales, representa una diana terapéutica prometedora para frenar el ciclo de inflamación crónica. La comprensión de este mecanismo permite al clínico ofrecer un enfoque integral, combinando el manejo farmacológico con técnicas de modulación del estrés, fundamentales para la recuperación del ciclo capilar en pacientes con alopecias refractarias al manejo convencional.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00289-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antagonistas-nk1"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-psicodermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:37.054Z"
+  }
+]

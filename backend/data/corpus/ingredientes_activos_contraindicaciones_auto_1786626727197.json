@@ -1,0 +1,130 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Ácido Kójico y el riesgo de dermatitis de contacto por auto-oxidación",
+    "content": "El ácido kójico es un agente despigmentante derivado de hongos ampliamente utilizado en la dermatología cosmética por su capacidad para inhibir la tirosinasa. Sin embargo, su estabilidad química es un desafío clínico significativo. En presencia de oxígeno y luz, el ácido kójico tiende a oxidarse, transformándose en subproductos que pueden ser altamente sensibilizantes. La literatura dermatológica, incluyendo estudios publicados en el Journal of Cosmetic Dermatology, advierte que el uso de formulaciones con ácido kójico oxidado (que a menudo vira hacia un tono marrón o amarillento) aumenta drásticamente el riesgo de dermatitis de contacto alérgica. A diferencia de otros agentes, la respuesta alérgica al ácido kójico no siempre es inmediata, pudiendo presentarse como un eritema retardado. Es imperativo instruir a los pacientes en GlowApp que cualquier cambio de color en el producto es una señal de alerta absoluta para suspender su uso y desechar el envase. La concentración óptima de seguridad se sitúa entre el 1% y el 2%; exceder este margen en formulaciones no controladas eleva exponencialmente el potencial irritativo, especialmente en pieles con barrera cutánea comprometida o antecedentes de dermatitis atópica. La combinación con antioxidantes estabilizadores como el metabisulfito de sodio es una práctica común de formulación para mitigar este riesgo, pero no garantiza inmunidad frente a la degradación si el almacenamiento es inadecuado.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15569265/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido kójico"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "oxidación del producto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asesoria-despigmentante"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:46.501Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Fenoxietanol: Límites de seguridad y riesgo de disrupción cutánea",
+    "content": "El fenoxietanol se ha consolidado como el conservante de elección tras el declive de los parabenos en la industria cosmética. Sin embargo, su perfil de seguridad no es absoluto. La FDA y el Comité Científico de Seguridad de los Consumidores (SCCS) han establecido límites estrictos, permitiendo una concentración máxima del 1% en productos cosméticos. El riesgo clínico principal radica en su capacidad para inducir dermatitis de contacto en pieles hipersensibles y su potencial efecto nocivo sobre la barrera cutánea si se utiliza en concentraciones superiores o en áreas de piel dañada. Aunque se considera seguro para adultos en dosis controladas, existen preocupaciones sobre su toxicidad sistémica en lactantes si se ingiere accidentalmente, lo que ha llevado a restricciones específicas en productos destinados al área del pañal. En el contexto de GlowApp, es vital educar sobre la lectura de etiquetas: el fenoxietanol suele aparecer cerca del final de la lista de ingredientes debido a su baja concentración permitida. Si un usuario reporta ardor, picor o eritema persistente tras la aplicación de varios productos, el fenoxietanol debe ser considerado como un posible alérgeno oculto, dado que su presencia es casi ubicua en formulaciones modernas de limpieza y cuidado facial.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "European Commission (SCCS)",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fenoxietanol"
+      ],
+      "contraindications": [
+        "dermatitis de contacto",
+        "piel dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-etiquetas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:46.501Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-009",
+    "title": "Ácido Fítico: La ciencia de la quelación en cosmética",
+    "content": "El ácido fítico es un compuesto natural presente en semillas y granos que actúa como un agente quelante potente, capaz de capturar metales traza (como hierro, cobre y zinc) que se encuentran en la superficie de la piel o dentro de las formulaciones. En dermatología cosmética, su función es doble: por un lado, ayuda a estabilizar fórmulas antioxidantes (como la Vitamina C) evitando que los metales catalicen la degradación oxidativa; por otro, actúa como un exfoliante suave y despigmentante al interferir con la activación de la tirosinasa. Sin embargo, el riesgo clínico del ácido fítico radica en su capacidad de quelación inespecífica. Si se utiliza en concentraciones elevadas o en pieles con barrera severamente comprometida, puede llegar a 'secuestrar' minerales esenciales para la homeostasis celular y la función enzimática de la piel, alterando el equilibrio electrolítico local. Además, al ser un ácido, su pH bajo puede causar irritación en pieles reactivas. Es fundamental que los usuarios de GlowApp no sobrepongan múltiples productos con agentes quelantes (como EDTA y ácido fítico), ya que la sinergia puede resultar en una deslipidización excesiva. El uso del ácido fítico debe ser moderado, idealmente en productos de aclarado o en concentraciones inferiores al 1% para garantizar la seguridad sin comprometer la función de barrera cutánea a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido fítico"
+      ],
+      "contraindications": [
+        "piel comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "asesoria-despigmentante"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:46.501Z"
+  }
+]

@@ -1,0 +1,203 @@
+[
+  {
+    "chunk_id": "colorimetria-trans-dermica-001",
+    "title": "Interferencia de la densidad de melanina en el diagnóstico del subtono perioral",
+    "content": "La región perioral presenta una complejidad cromática única debido a la combinación de una dermis más delgada y una mayor densidad de melanocitos en comparación con otras áreas del rostro. Este fenómeno, documentado en estudios sobre hiperpigmentación periorificial, a menudo induce a errores en la selección de bases de maquillaje, ya que el subtono percibido en esta zona suele ser más oscuro y grisáceo que en el resto de la mejilla. La clave clínica radica en diferenciar la hiperpigmentación perioral fisiológica de la hiperpigmentación postinflamatoria (HPI). En pieles latinas, la presencia de una saturación melánica más alta en el área perioral puede llevar al profesional a diagnosticar erróneamente un subtono frío o cetrino, cuando en realidad se trata de una acumulación de pigmento superficial. Para una colorimetría precisa, es fundamental realizar la prueba de color en la transición de la mandíbula hacia el cuello, evitando el área perioral, donde el contraste cromático es artificialmente alterado por la densidad de melanina y la vascularización profunda del músculo orbicular de los labios.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/hyperpigmentation-treatment",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "III",
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:56:55.883Z"
+  },
+  {
+    "chunk_id": "colorimetria-micro-inflamacion-002",
+    "title": "Microinflamación subclínica y su efecto en la lectura del subtono",
+    "content": "La microinflamación cutánea, a menudo invisible a simple vista pero detectable mediante dermatoscopia o cámaras de luz polarizada, altera significativamente la percepción del subtono. La vasodilatación inducida por mediadores inflamatorios como las citoquinas proinflamatorias (IL-1, IL-6) aumenta el flujo sanguíneo en la dermis papilar, lo que proyecta un tono rosado o eritematoso que enmascara el subtono real del individuo. Este estado es común en pieles con barrera cutánea comprometida o bajo condiciones de estrés ambiental. En el contexto de GlowApp, es imperativo advertir que el uso de bases de alta cobertura sobre una piel con inflamación subclínica puede resultar en una oxidación acelerada del maquillaje, ya que la temperatura cutánea local suele estar ligeramente elevada. La recomendación clínica es evaluar el subtono tras un periodo de reposo de la piel o después de la aplicación de un suero calmante, para asegurar que la lectura del color no esté sesgada por la reactividad vascular temporal del paciente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450849/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "centella_asiatica"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:56:55.883Z"
+  },
+  {
+    "chunk_id": "colorimetria-ph-lipidos-003",
+    "title": "Composición de ácidos grasos del sebo y su rol en el viraje de pigmentos",
+    "content": "El sebo humano es una mezcla compleja de triglicéridos, escualeno, ceras y ácidos grasos libres. La oxidación de estos lípidos superficiales, catalizada por la exposición a la luz UV y la polución, genera subproductos que interactúan químicamente con los pigmentos de las bases de maquillaje, especialmente con los óxidos de hierro. Este proceso, conocido como viraje cromático, es particularmente evidente en pieles con tendencia seborreica, donde el pH cutáneo tiende a ser ligeramente más ácido. Los ácidos grasos libres pueden reaccionar con el recubrimiento de los pigmentos minerales, provocando que la base se torne naranja o grisácea a las pocas horas de su aplicación. Para mitigar este efecto, es fundamental el uso de primers con propiedades absorbentes o la aplicación de polvos traslúcidos que actúen como una barrera física entre el sebo oxidado y la base. La comprensión de esta química es vital para las usuarias con piel grasa que reportan una constante 'oxidación' de sus productos cosméticos, la cual no siempre depende de la calidad del maquillaje, sino de la interacción bioquímica con el manto hidrolipídico.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "caolin"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:56:55.883Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectro-luz-004",
+    "title": "La influencia de la luz HEV (High Energy Visible) en la fatiga cromática",
+    "content": "La luz azul de alta energía visible (HEV), emitida por dispositivos digitales y luminarias LED modernas, tiene una longitud de onda cercana a la luz ultravioleta (380-500 nm). Esta radiación no solo contribuye al estrés oxidativo, sino que altera la percepción visual del subtono al inducir fatiga en los conos de la retina, un fenómeno conocido como adaptación cromática. Cuando un usuario intenta elegir su tono de maquillaje frente a una pantalla o bajo luz LED de alta temperatura, la saturación del rojo y el azul en la piel se ve distorsionada, lo que lleva a elegir bases demasiado cálidas para compensar la supuesta 'palidez' inducida por la luz azul. Investigaciones sugieren que la evaluación del color bajo luz natural (IRC > 90) es el estándar necesario para evitar el sesgo de confirmación cromática. En GlowApp, promovemos la calibración de la cámara del usuario mediante una tarjeta de referencia neutra para neutralizar el impacto de la luz HEV en el diagnóstico digital del subtono, asegurando que la elección del producto sea independiente del entorno lumínico del usuario.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(21)00345-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_digital"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:56:55.883Z"
+  },
+  {
+    "chunk_id": "colorimetria-estres-neuro-006",
+    "title": "Eje neuro-cutáneo y la modulación del subtono por estrés agudo",
+    "content": "El eje neuro-cutáneo conecta el sistema nervioso central con la microvasculatura de la piel a través de la liberación de neuropéptidos como la Sustancia P. Ante situaciones de estrés agudo, la descarga adrenérgica provoca una vasoconstricción periférica seguida de una vasodilatación compensatoria, lo que genera cambios rápidos en la tonalidad facial. Este 'rubor pasajero' o palidez reactiva altera la lectura del subtono, haciendo que un individuo parezca tener un subtono frío (por vasoconstricción) o cálido (por vasodilatación) en cuestión de minutos. Estudios dermatológicos indican que esta variabilidad es un desafío importante para el diagnóstico colorimétrico preciso. En la práctica clínica, se recomienda realizar la evaluación del subtono en un estado de homeostasis, idealmente tras un periodo de relajación. Para los usuarios de GlowApp, es esencial entender que la percepción del subtono no es estática y puede fluctuar según el estado emocional y la respuesta del sistema nervioso autónomo, lo que explica por qué una base de maquillaje puede parecer perfecta un día y desajustada al día siguiente bajo condiciones de estrés.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:56:55.883Z"
+  }
+]

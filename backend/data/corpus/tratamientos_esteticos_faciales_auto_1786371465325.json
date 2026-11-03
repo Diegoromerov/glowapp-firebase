@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "bio-fotonica-mitocondrial-001",
+    "title": "Biofotónica y Activación Mitocondrial en el Rejuvenecimiento Facial",
+    "content": "La biofotónica aplicada a la medicina estética se centra en la interacción de fotones con receptores específicos en la cadena de transporte de electrones mitocondrial. El cromóforo principal, la citocromo c oxidasa, absorbe longitudes de onda en el espectro rojo e infrarrojo cercano, incrementando la producción de ATP y modulando la señalización de especies reactivas de oxígeno (ROS). Este proceso, conocido como fotobiomodulación, no solo mejora el metabolismo energético celular, sino que también promueve la proliferación de fibroblastos y la síntesis de colágeno tipo I. Investigaciones actuales publicadas en PubMed sugieren que la modulación de la dinámica mitocondrial es un pilar fundamental para revertir el envejecimiento fotoinducido, optimizando la capacidad de reparación tisular ante procedimientos invasivos. La coherencia de la luz y la densidad de energía (fluencia) son determinantes para evitar efectos fototóxicos, logrando un equilibrio entre la estimulación metabólica y la homeostasis celular. Es crucial que el profesional comprenda que esta respuesta biológica depende de la ventana terapéutica, donde una dosificación excesiva puede inhibir la proliferación celular (efecto bifásico de Arndt-Schulz).",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31336025/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "luz-roja",
+        "infrarrojo-cercano"
+      ],
+      "contraindications": [
+        "epilepsia-fotosensible",
+        "neoplasias-activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimulacion-celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:17:26.358Z"
+  }
+]

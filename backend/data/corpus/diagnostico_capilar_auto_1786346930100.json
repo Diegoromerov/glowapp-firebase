@@ -1,0 +1,353 @@
+[
+  {
+    "chunk_id": "diag-cap-001",
+    "title": "Evaluación del Estrés Mecánico por Tensión de Superficie en el Cuero Cabelludo",
+    "content": "La tensión de superficie en el cuero cabelludo, a menudo pasada por alto, juega un papel crucial en la arquitectura folicular. Un cuero cabelludo con baja elasticidad y alta tensión mecánica puede inducir una isquemia relativa en la papila dérmica, limitando la perfusión sanguínea necesaria para el anagen. Estudios recientes en Journal of Dermatological Science sugieren que la rigidez de la galea aponeurótica contribuye a la miniaturización androgénica al elevar la presión hidrostática intramural. La evaluación clínica debe integrar la palpación de la movilidad del cuero cabelludo frente al cráneo; una fijación excesiva es un marcador predictivo de mala respuesta a tratamientos tópicos. La reducción de esta tensión mediante técnicas de masaje especializado o liberación miofascial es un campo emergente en la dermatología funcional. La comprensión de la biomecánica craneal permite al clínico identificar pacientes que, a pesar de seguir protocolos farmacológicos, no logran resultados debido a una restricción mecánica persistente. La monitorización de la movilidad del cuero cabelludo debe ser parte del examen físico rutinario en la consulta capilar para estratificar el pronóstico del paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(20)30174-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-002",
+    "title": "El Papel del Factor de Crecimiento Nervioso (NGF) en la Ciclicidad Folicular",
+    "content": "El Factor de Crecimiento Nervioso (NGF) es una neurotrofina esencial no solo para la inervación periférica, sino como un regulador clave del ciclo del folículo piloso. Investigaciones publicadas en PubMed indican que el NGF modula la transición de la fase telógena a la anágena, actuando sobre las células madre del bulbo. En pacientes con alopecia areata o efluvio crónico, se ha observado una desregulación en la expresión de receptores de NGF, lo que sugiere una 'fatiga nerviosa' del microambiente folicular. La neuroinflamación, mediada por la liberación excesiva de neuropéptidos, puede acortar prematuramente la fase anágena. El diagnóstico clínico debe considerar la relación entre la sensibilidad del cuero cabelludo (tricodinia) y la expresión de NGF. Este enfoque neuro-dermatológico abre la puerta a terapias moduladoras que no solo buscan el crecimiento, sino la homeostasis del entorno neuro-inmune. Es fundamental que el dermatólogo identifique la asociación entre el estrés percibido y los cambios en la arquitectura folicular, utilizando herramientas de evaluación de la calidad de vida y escalas de dolor cutáneo para un abordaje integral del paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-003",
+    "title": "Evaluación del pH del Cuero Cabelludo como Barrera de Defensa",
+    "content": "El pH del cuero cabelludo es un determinante crítico de la salud folicular, influyendo directamente en la composición del microbioma y la integridad de la cutícula. Un pH alcalino, a menudo derivado del uso de productos de higiene agresivos o desequilibrios metabólicos, compromete la función barrera y favorece el sobrecrecimiento de patógenos como Malassezia. Según la American Academy of Dermatology, la restauración del manto ácido es el primer paso en el manejo de diversas condiciones de descamación y fragilidad capilar. La medición del pH mediante tiras reactivas o sensores digitales en la consulta permite una personalización precisa del régimen de cuidado. Un pH equilibrado es esencial para la correcta queratinización y para evitar el 'efecto de hinchazón' de la cutícula, que predispone al daño mecánico. En GlowApp, promovemos la evaluación del pH como un biomarcador de la salud del cuero cabelludo, permitiendo prescribir productos con el rango de pH adecuado (4.5 a 5.5) para restaurar el ecosistema capilar. Este diagnóstico preventivo es fundamental para evitar la inflamación subclínica que precede a la caída capilar persistente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos_suaves"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-004",
+    "title": "Resiliencia de la Papila Dérmica: El rol de la Hipoxia Fisiológica",
+    "content": "La papila dérmica es un centro de señalización altamente especializado que requiere un equilibrio preciso de oxígeno y nutrientes. La hipoxia tisular crónica, a menudo exacerbada por la microangiopatía asociada a la edad o la inflamación, induce la expresión del Factor Inducible por Hipoxia (HIF-1alpha), lo cual puede ser paradójico: niveles bajos estimulan la angiogénesis, pero niveles sostenidos promueven la atrofia del bulbo. La literatura actual en dermatología molecular sugiere que el diagnóstico capilar debe incluir la evaluación de los marcadores de perfusión. La microcirculación deficiente es un factor subestimado en la progresión de la alopecia androgenética. El uso de técnicas de capilaroscopia para observar la morfología de los bucles vasculares en la base del folículo permite al médico identificar signos tempranos de compromiso circulatorio. Mejorar la resiliencia de la papila mediante la optimización de los factores de crecimiento y la reducción del estrés oxidativo es vital para revertir la miniaturización. La intervención no se limita a fármacos, sino a la mejora de la microcirculación local mediante terapias físicas complementarias y optimización metabólica sistémica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2023",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-005",
+    "title": "Marcadores Epigenéticos y su Influencia en la Respuesta al Tratamiento",
+    "content": "La expresión génica en los folículos pilosos no es estática; está sujeta a modificaciones epigenéticas influenciadas por el exposoma, incluyendo la dieta, la contaminación y el estrés crónico. La metilación del ADN en los promotores de receptores de andrógenos puede explicar por qué pacientes con perfiles hormonales similares presentan grados de alopecia tan divergentes. La medicina de precisión aplicada a la tricoscopia comienza a integrar el análisis del riesgo epigenético. Al evaluar la historia clínica, debemos considerar factores como la exposición temprana a disruptores endocrinos y el estado inflamatorio sistémico de bajo grado. Estos factores 'silenciosos' pueden inducir una reprogramación celular que hace que el folículo sea más susceptible a la miniaturización. Comprender que el tratamiento no solo debe ser farmacológico, sino también un modulador epigenético (a través de la nutrición y el manejo del exposoma), es la nueva frontera en la dermatología capilar. El diagnóstico debe incluir un cuestionario de estilo de vida que permita mapear estos factores y ajustar las expectativas terapéuticas del paciente basándose en su resiliencia biológica individual.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nature Reviews Disease Primers",
+        "url": "https://www.nature.com/articles/s41572-023-00450-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-006",
+    "title": "Impacto de la Glicación en la Matriz Folicular: Rigidez y Envejecimiento",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular (AGEs) es un proceso biológico que afecta negativamente la elasticidad y funcionalidad del folículo piloso. En el cuero cabelludo, la acumulación de AGEs en el colágeno peri-folicular crea una 'jaula' rígida que dificulta la expansión del folículo durante el ciclo de crecimiento. Este fenómeno, descrito en estudios de envejecimiento cutáneo, se extrapola directamente a la alopecia senescente y a la miniaturización androgénica. Un cuero cabelludo con altos niveles de glicación es clínicamente menos receptivo a los tratamientos tópicos debido a una menor permeabilidad y una arquitectura fibrosa alterada. El diagnóstico debe incluir la identificación de signos de glicación sistémica y local, como el engrosamiento cutáneo y la pérdida de elasticidad. El manejo clínico implica la incorporación de agentes antiglicantes y la reducción de la carga glucémica en la dieta del paciente, además de tratamientos dermatológicos que estimulen el recambio de la matriz extracelular. La lucha contra la glicación es vital para mantener la longevidad folicular y asegurar que el entorno sea propicio para el anagen.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/category/hair-loss/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-007",
+    "title": "Proteostasis y Control de Calidad en el Bulbo Piloso",
+    "content": "La proteostasis, o equilibrio de la homeostasis proteica, es fundamental para la supervivencia de las células madre del bulbo piloso. El estrés celular constante, derivado de factores ambientales como la radiación UV y la contaminación, puede saturar la capacidad de plegamiento y degradación de proteínas, llevando al acumulo de proteínas mal plegadas y al fenómeno de senescencia. La activación de los mecanismos de autofagia (limpieza celular) es necesaria para que el folículo mantenga su capacidad de regeneración. Un diagnóstico avanzado debe considerar la capacidad de resiliencia proteica del folículo como un marcador de su potencial de recuperación. En GlowApp, observamos que pacientes con una dieta deficiente en aminoácidos esenciales y antioxidantes presentan signos tricoscópicos compatibles con una deficiencia en la proteostasis, como tallos con cutículas irregulares y menor densidad. La suplementación dirigida y la protección antioxidante del cuero cabelludo son estrategias para fortalecer el control de calidad interno del folículo, promoviendo una estructura capilar más robusta y una fase anágena más prolongada y saludable.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms/sections/Molecular_Dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-008",
+    "title": "Disrupción de la Barrera Cutánea: El Factor Silencioso en Alopecias",
+    "content": "La barrera cutánea del cuero cabelludo es mucho más que una capa protectora; es el primer punto de interacción con el exposoma. Una disrupción en los lípidos intercelulares (ceramidas, colesterol) y en las proteínas de unión estrecha (claudinas) permite la penetración de alérgenos y contaminantes que desencadenan una respuesta inflamatoria crónica. Esta inflamación, aunque a menudo subclínica, es un disparador conocido de la miniaturización en individuos genéticamente predispuestos. La tricoscopia puede revelar signos de esta disrupción, como eritema perifolicular, descamación fina o cambios en la reflectancia de la superficie del cuero cabelludo. El diagnóstico debe incluir una evaluación de la integridad de la barrera mediante escalas de sensibilidad y, en casos específicos, el análisis de la pérdida de agua transepidérmica (TEWL). La reparación de la barrera es un pilar fundamental en el tratamiento de cualquier alopecia, ya que sin un entorno cutáneo estable, los fármacos activos tienen una penetración subóptima y el folículo permanece bajo un estrés constante que impide su recuperación óptima. La hidratación y el uso de lípidos fisiológicos son esenciales en la rutina capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "lipidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  },
+  {
+    "chunk_id": "diag-cap-009",
+    "title": "Termografía Infrarroja: Mapeo de la Inflamación Folicular",
+    "content": "La termografía infrarroja se está consolidando como una herramienta diagnóstica no invasiva de alto valor para detectar la inflamación activa en el cuero cabelludo antes de que sea visible al ojo clínico o a la tricoscopia convencional. Las áreas de hipertermia focalizada a menudo corresponden a zonas de inflamación perifolicular activa, característica de procesos como la alopecia cicatricial incipiente o la alopecia androgenética con un componente inflamatorio marcado. Al identificar estos 'puntos calientes', el dermatólogo puede dirigir las terapias antiinflamatorias de forma más precisa y monitorizar la respuesta al tratamiento en tiempo real. Este método permite cuantificar objetivamente la mejoría del proceso inflamatorio, algo que los métodos subjetivos no logran capturar con la misma eficacia. En el contexto de GlowApp, el uso de tecnología de imagen térmica en la consulta permite una estratificación de riesgo más profunda, facilitando la toma de decisiones clínicas basadas en evidencia fisiológica. La termografía es un complemento poderoso que integra la fisiología vascular con el estado inflamatorio del folículo, proporcionando una visión más completa del entorno capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Research and Technology Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000846",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_clinico"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:28:31.955Z"
+  }
+]

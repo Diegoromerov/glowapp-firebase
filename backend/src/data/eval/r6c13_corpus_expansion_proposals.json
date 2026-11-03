@@ -1,0 +1,12 @@
+{
+  "cycle": "R6-C13",
+  "status": "NO_PROPOSALS_JUSTIFIED",
+  "note": "La auditoría determinó que NO hay corpus gaps reales: los 13 chunks GOLD existen en BD y canónico con contenido íntegro y los conceptos tienen cobertura abundante. Proponer chunks nuevos sería duplicación de contenido ya presente, con riesgo de contaminación de categorías y sin efecto sobre el espacio semántico e5-v5.",
+  "proposed_chunks": [],
+  "justification_for_empty": [
+    "8/13 misses son C_SEMANTIC_REPRESENTATION_GAP: el contenido existe (simetría 147 chunks, láser 183, SERS 113, autofagia 79, LHA 66) — añadir más del mismo contenido no acerca el embedding al query.",
+    "5/13 misses son D_RETRIEVAL_GAP (inestabilidad de frontera): fluctuaron dentro/fuera del top-200 entre ejecuciones — se resuelven con estabilidad de retrieval, no con contenido.",
+    "El control negativo cejas_004 demostró que incluso un chunk titulado 'Análisis de simetría facial dinámica' obtiene sim=0.42 (rank ~2857): el gap es de anclaje semántico, no de cobertura.",
+    "Cualquier chunk nuevo que reformule contenido existente con lenguaje coloquial degradaría queries técnicas correctas (regresión no medida)."
+  ]
+}

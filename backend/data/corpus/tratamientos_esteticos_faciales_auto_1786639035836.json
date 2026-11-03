@@ -1,0 +1,86 @@
+[
+  {
+    "chunk_id": "bio-modulacion-exosomas-001",
+    "title": "Bio-modulación de la matriz extracelular mediante exosomas de origen autólogo",
+    "content": "La aplicación de exosomas derivados de células madre mesenquimales (MSCs) representa un cambio de paradigma en la medicina regenerativa estética. A diferencia de los factores de crecimiento convencionales, los exosomas actúan como nanotransportadores de ARN mensajero, microARN y proteínas reguladoras que modulan directamente la expresión génica de los fibroblastos senescentes. Investigaciones en PubMed indican que estos nanovesículas facilitan la comunicación intercelular, induciendo la síntesis de colágeno tipo I y elastina de manera más eficiente que la estimulación mecánica aislada. En el contexto de GlowApp, la integración de exosomas post-procedimientos ablativos o de microneedling acelera la recuperación de la barrera cutánea al reducir la respuesta inflamatoria persistente. La evidencia sugiere que el microambiente generado por los exosomas promueve una regeneración tisular más organizada, minimizando el riesgo de fibrosis cicatricial y mejorando la calidad óptica de la piel. Es fundamental asegurar la trazabilidad y la pureza de los exosomas utilizados, priorizando protocolos que garanticen la ausencia de contaminantes proteicos y manteniendo la estabilidad térmica durante la aplicación clínica.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38219432/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "cáncer activo",
+        "infecciones cutáneas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion_tisular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:57.855Z"
+  },
+  {
+    "chunk_id": "electrolipolisis-focal-002",
+    "title": "Electrolipólisis focal: Mecanismos de la corriente galvánica en tejido adiposo facial",
+    "content": "La electrolipólisis facial se basa en la aplicación de corrientes galvánicas de baja intensidad para inducir la lipólisis en áreas de acumulación grasa localizada, como la papada o los compartimentos grasos malares profundos. El mecanismo fisiológico implica la activación de receptores beta-adrenérgicos a través de la modificación del potencial de membrana de los adipocitos, facilitando la hidrólisis de triglicéridos en ácidos grasos libres y glicerol. A diferencia de los métodos de liposucción, este enfoque no quirúrgico minimiza el trauma tisular y el riesgo de irregularidades en el contorno facial. La literatura dermatológica subraya la importancia de controlar la impedancia del tejido durante el procedimiento para evitar quemaduras electroquímicas y asegurar una entrega de energía constante. La técnica requiere una selección precisa de parámetros (intensidad y frecuencia) adaptada a la profundidad del tejido adiposo. Es esencial combinar la electrolipólisis con protocolos de drenaje linfático para facilitar la eliminación de los subproductos lipídicos a través del sistema circulatorio, optimizando así los resultados estéticos y la satisfacción del paciente en el tratamiento del tercio inferior facial.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos faciales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "remodelacion_facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:36:57.855Z"
+  }
+]

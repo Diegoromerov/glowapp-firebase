@@ -1,0 +1,268 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-dermatoscopia-inteligente-001",
+    "title": "Análisis de Textura y Patrones de Distribución en la Dermatoscopia Digital",
+    "content": "La dermatoscopia digital ha evolucionado hacia el análisis de patrones geométricos en la disposición de las unidades foliculares. Más allá de la simple observación de tallos, la evaluación de la arquitectura de la 'red folicular' permite identificar cambios incipientes en la densidad y el calibre antes de que la alopecia sea clínicamente evidente. Estudios publicados en el Journal of the American Academy of Dermatology sugieren que la cuantificación de los espacios interfoliculares, mediante algoritmos de procesamiento de imagen, puede predecir la progresión de la alopecia androgenética con una precisión superior a la evaluación visual convencional. La estandarización de estas capturas, considerando la iluminación polarizada y el aumento, es fundamental para eliminar variables de error. Este enfoque permite una monitorización longitudinal precisa de la respuesta al tratamiento, transformando la tricoscopia en una herramienta cuantitativa de alta fidelidad. Es imperativo que el clínico se familiarice con la interpretación de estos mapas de densidad para diferenciar entre la atrofia del nicho y la simple miniaturización reversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-capilar-ia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-proteccion-002",
+    "title": "Evaluación del Daño por Radiación UV en la Estructura de la Queratina",
+    "content": "La exposición crónica a la radiación ultravioleta no solo afecta el cuero cabelludo, sino que degrada directamente la estructura primaria de la queratina del tallo capilar. La fotodegradación induce la ruptura de los enlaces disulfuro y la oxidación de los aminoácidos, resultando en una cutícula porosa y una pérdida de la integridad hidrofóbica natural. Según investigaciones en PubMed, este daño estructural es acumulativo y altera la capacidad del cabello para retener nutrientes, lo que a menudo se confunde con problemas de crecimiento. El diagnóstico clínico debe integrar una evaluación de la 'fatiga del tallo' para descartar que la fragilidad observada sea de origen externo (exposoma) en lugar de una patología folicular subyacente. La implementación de técnicas de microscopía de luz polarizada ayuda a diferenciar el daño por fotoxidación del daño por manipulación mecánica, permitiendo una recomendación terapéutica más precisa para pacientes con exposición solar prolongada en entornos urbanos de alta montaña, como Bogotá.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-perfil-lipidico-003",
+    "title": "El Perfil Lipídico del Sebo como Indicador de Disbiosis Folicular",
+    "content": "La composición del sebo folicular es un determinante crítico en la salud del microambiente del cuero cabelludo. Alteraciones en el equilibrio de triglicéridos, ácidos grasos libres y escualeno pueden favorecer la proliferación de microorganismos oportunistas. Investigaciones recientes destacan que la oxidación de estos lípidos genera mediadores inflamatorios que irritan el epitelio del infundíbulo, exacerbando condiciones como la dermatitis seborreica y la alopecia inflamatoria. El diagnóstico moderno debe considerar la 'lipidómica folicular' no solo como un factor estético, sino como un marcador biológico de la barrera cutánea. Un pH alcalino, derivado de una limpieza inadecuada o productos de alta irritabilidad, altera la emulsión epicutánea, facilitando la pérdida de agua transepidérmica (TEWL) en el cuero cabelludo. Identificar este desequilibrio es esencial antes de iniciar tratamientos tópicos, ya que una barrera comprometida reduce significativamente la eficacia de fármacos como el minoxidil, debido a una absorción errática o una mayor irritación local.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-sebo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-estres-oxidativo-004",
+    "title": "Mecanismos de Estrés Oxidativo y su Impacto en el Bulbo Piloso",
+    "content": "El bulbo piloso es un tejido metabólicamente activo con una alta demanda de oxígeno, lo que lo hace particularmente vulnerable al estrés oxidativo inducido por factores sistémicos y ambientales. La acumulación de especies reactivas de oxígeno (ROS) afecta la función mitocondrial de las células de la matriz, reduciendo su capacidad proliferativa y acelerando la transición hacia la fase catágena prematura. Estudios clínicos han demostrado que el desequilibrio entre la producción de radicales libres y la capacidad antioxidante del folículo es un mediador clave en la miniaturización androgénica. La evaluación clínica debe considerar marcadores de estrés oxidativo sistémico, como los niveles de ferritina y la vitamina D, que actúan como cofactores esenciales para la reparación celular folicular. Comprender este eje metabólico permite al clínico diseñar estrategias que incluyan no solo tratamientos tópicos, sino también intervenciones en la nutrición y el estilo de vida, mitigando el daño oxidativo desde el interior y protegiendo el nicho de las células madre del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-integral"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-inmune-005",
+    "title": "Inflamación Neurogénica: El Rol de la Sustancia P en la Alopecia",
+    "content": "La inflamación neurogénica representa un área fascinante en la tricoscopia clínica, donde el estrés psicológico se traduce en cambios biológicos en el folículo a través de la liberación de neuropéptidos como la Sustancia P. Este mediador activa a los mastocitos perifoliculares, provocando una respuesta inflamatoria que altera la ciclicidad capilar y la integridad del nicho de las células madre. El paciente con alopecia psicógena suele presentar tricodinia (dolor en el cuero cabelludo) como síntoma clínico característico. El abordaje diagnóstico debe integrar la historia de estrés del paciente con la evaluación dermatoscópica de signos sutiles de inflamación perifolicular, como el eritema peripilar. Reconocer esta fisiopatología es crucial para evitar tratamientos ineficaces centrados únicamente en andrógenos, y dirigir el esfuerzo hacia terapias que modulen la respuesta neuro-inmune y reduzcan la reactividad del sistema nervioso cutáneo, mejorando así el pronóstico de recuperación folicular en entornos urbanos de alta exigencia.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Clinics",
+        "url": "https://www.dermatologic.theclinics.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-006",
+    "title": "Análisis de la Resiliencia de la Vaina Radicular Externa",
+    "content": "La vaina radicular externa (VRE) funciona como un anclaje estructural esencial para la fibra capilar, y su integridad biomecánica es vital para prevenir la caída mecánica y las alopecias por tracción. La evaluación clínica de la resiliencia de la VRE mediante pruebas de elasticidad permite identificar debilidades en el anclaje antes de que se produzca una pérdida capilar irreversible. La glicación de las proteínas de la VRE, exacerbada por niveles elevados de glucosa sanguínea y estrés oxidativo, vuelve el folículo más rígido y menos adaptable a las fuerzas de tracción diarias. El diagnóstico debe incluir una inspección minuciosa de la angulación de salida del pelo, ya que una angulación alterada es a menudo un signo de fibrosis perifolicular incipiente. Al integrar la biomecánica en el diagnóstico capilar, el equipo de GlowApp puede ofrecer intervenciones preventivas que optimicen la salud estructural del folículo y prolonguen la permanencia del cabello en la fase anágena, mediante la mejora de la elasticidad de los tejidos perifoliculares.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termografia-008",
+    "title": "Termografía Infrarroja como Mapeo de Inflamación Subclínica",
+    "content": "La termografía infrarroja de alta resolución permite detectar gradientes de temperatura en el cuero cabelludo que no son visibles al examen clínico estándar. La inflamación subclínica, a menudo asociada con alopecias cicatriciales tempranas o procesos inflamatorios crónicos, se manifiesta como áreas de hipertermia focalizada debido a la vasodilatación y el aumento del metabolismo celular. Este mapeo térmico es una herramienta invaluable para el diagnóstico diferencial, permitiendo identificar zonas donde el proceso inflamatorio está activo antes de que aparezcan signos de fibrosis o pérdida de densidad. La integración de la termografía en la práctica clínica de GlowApp permite personalizar el tratamiento, aplicando agentes antiinflamatorios solo en las áreas que muestran actividad térmica anormal, mejorando así la eficacia y reduciendo la exposición innecesaria a fármacos tópicos. Es una tecnología no invasiva que aporta una capa de datos cuantitativos sobre la actividad metabólica del cuero cabelludo, fundamental para el monitoreo de patologías complejas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tecnologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:14:20.747Z"
+  }
+]

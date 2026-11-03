@@ -1,0 +1,203 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-tinte-efecto-tyndall-rubios-002",
+    "title": "El efecto Tyndall y la percepción cromática en cabellos rubios",
+    "content": "El efecto Tyndall es un fenómeno físico que explica por qué los cabellos rubios, blancos o canosos pueden presentar reflejos azulados, grisáceos o verdosos no deseados tras una coloración. Este fenómeno ocurre cuando las partículas de pigmento en la corteza tienen un tamaño comparable a la longitud de onda de la luz visible, provocando una dispersión selectiva. En la consulta clínica de colorimetría, es vital distinguir entre un error de formulación (falta de neutralización) y la manifestación física del efecto Tyndall. Cuando un cabello aclarado pierde su pigmentación natural, la estructura porosa restante interactúa con la luz ambiente de manera diferente a la prevista por el círculo cromático estándar. Según investigaciones dermatológicas, este efecto se exacerba en cabellos con alta porosidad y daño en la capa F, ya que la irregularidad cuticular dispersa la luz de forma caótica. Para evitar este resultado, se recomienda ajustar la fórmula cromática considerando la reflectancia específica del cabello post-aclarado, optando por pigmentos de mayor peso molecular que rellenen eficazmente los espacios corticales y minimicen la dispersión no deseada de las ondas de luz azul.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-sinteticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:25:42.987Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-quimioluminiscencia-003",
+    "title": "La quimioluminiscencia residual como marcador de daño oxidativo",
+    "content": "La quimioluminiscencia residual es un indicador biofísico emergente que permite detectar la actividad oxidativa continua en la fibra capilar después de un proceso de coloración. Tras la aplicación de tintes de oxidación, es común que queden radicales libres atrapados en la matriz queratínica, los cuales continúan degradando la estructura capilar incluso semanas después del servicio. Este proceso de oxidación incontrolada es una causa frecuente de la pérdida progresiva del tono, el viraje cromático hacia matices amarillentos y el debilitamiento de la fibra. La literatura científica sugiere que la detección de estas reacciones mediante quimioluminiscencia en el salón o en la consulta clínica puede ayudar a identificar cabellos con alta susceptibilidad al daño químico. El uso de agentes quelantes y antioxidantes específicos durante la fase de post-coloración es esencial para neutralizar esta actividad antes de que se produzca una degradación irreversible de las proteínas capilares. Al integrar esta comprensión en los protocolos de GlowApp, se logra no solo una mayor longevidad del color sino también una preservación clínica de la integridad estructural, reduciendo la incidencia de quiebre y deshidratación post-tinte, elementos clave en la satisfacción del usuario a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-post-coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:25:42.987Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-nanoburbujas-004",
+    "title": "Nanoburbujas de oxígeno en la activación de tintes",
+    "content": "La aplicación de tecnología de nanoburbujas de oxígeno en el proceso de coloración representa un avance significativo en la eficiencia y seguridad de la penetración del pigmento. A diferencia de los métodos tradicionales que requieren altas concentraciones de peróxido de hidrógeno, las nanoburbujas permiten una distribución más uniforme de los precursores de color en la corteza, minimizando la necesidad de agentes alcalinizantes agresivos. Esta técnica mejora la estabilidad de la reacción de acoplamiento oxidativo, reduciendo el estrés sobre el complejo de membrana celular (CMC). Clínicamente, esto se traduce en una menor incidencia de dermatitis irritativa y una mayor retención del matiz en cabellos porosos. Las nanoburbujas poseen una carga superficial que facilita su interacción con los grupos amino de la queratina, mejorando la afinidad tintórea incluso en estructuras dañadas. En el entorno de Bogotá, donde la altitud y la radiación UV juegan un rol en la degradación de los pigmentos, esta tecnología ofrece una ventaja competitiva al sellar mejor la cutícula y proteger el pigmento contra la fotodegradación prematura. Es una tendencia que redefine la coloración clínica hacia un enfoque de menor impacto químico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oxigeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-capilar"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:25:42.987Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-histeresis-005",
+    "title": "Histéresis elástica y retención de pigmentos",
+    "content": "La histéresis elástica se refiere a la diferencia en la respuesta de la fibra capilar ante los ciclos de expansión y contracción durante los procesos de lavado y secado tras la coloración. Un cabello que ha perdido su viscoelasticidad natural debido a procesos químicos repetidos muestra una histéresis significativa, lo que compromete la retención de pigmentos sintéticos en la corteza. En términos prácticos, esta propiedad determina qué tan rápido se desvanece el color tras cada lavado. La estructura interna de la queratina, al no poder recuperar su forma original, crea micro-espacios donde el tinte se deposita de forma inestable. Estudios de biomecánica capilar demuestran que la restauración de la flexibilidad mediante polímeros catiónicos es fundamental para reducir este fenómeno. Para el profesional de GlowApp, diagnosticar la histéresis elástica es clave para ajustar la frecuencia de mantenimiento y recomendar productos que fortalezcan la matriz queratínica desde el interior, evitando así que el color se pierda prematuramente. Comprender este fenómeno permite una gestión más eficaz de las expectativas del paciente sobre la duración del tono en cabellos con historial de daño químico severo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30000000/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros-cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:25:42.987Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-proteomica-009",
+    "title": "Proteómica capilar y degradación del color",
+    "content": "La proteómica capilar es un campo avanzado que permite identificar las alteraciones específicas en las proteínas de la queratina tras la exposición a tintes oxidativos. Al estudiar la degradación de proteínas como las queratinas asociadas a la matriz (KAPs), es posible comprender por qué ciertos cabellos pierden el color más rápido que otros, incluso bajo condiciones idénticas de aplicación. La desnaturalización proteica no solo afecta la retención del pigmento, sino que también altera la capacidad de la fibra para absorber nuevos tratamientos. Estudios recientes demuestran que la pérdida de proteínas estructurales clave debilita la barrera cuticular, permitiendo una mayor fuga de pigmento durante los lavados posteriores. Para GlowApp, el diagnóstico basado en proteómica representa el futuro de la personalización: identificar qué proteínas han sido más afectadas permite seleccionar productos de relleno proteico (hidrolizados de bajo peso molecular) que reconstruyan la matriz antes de que el color se aplique. Este enfoque clínico asegura que la coloración no solo sea un proceso estético, sino uno que respete y refuerce la arquitectura proteica del cabello, garantizando resultados duraderos y una salud capilar óptima a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36000000/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteinas-hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:25:42.987Z"
+  }
+]

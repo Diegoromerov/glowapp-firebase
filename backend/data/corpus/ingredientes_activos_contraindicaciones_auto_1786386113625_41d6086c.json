@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386113622-1-b4a23a87-polisorbato-80-y-el-riesgo-de-permeabilidad-alterada-en-piel",
+    "title": "Polisorbato 80 y el riesgo de permeabilidad alterada en pieles con rosácea",
+    "content": "El Polisorbato 80 es un tensioactivo no iónico ampliamente utilizado como emulsionante y solubilizante en cosmética. Sin embargo, su capacidad para modificar la estructura de la bicapa lipídica del estrato córneo plantea riesgos significativos en pacientes con patologías de barrera, como la rosácea. Al actuar como un potenciador de la penetración (penetration enhancer), el Polisorbato 80 puede facilitar la entrada de otros ingredientes irritantes o conservantes hacia las capas más profundas de la epidermis, desencadenando respuestas inflamatorias. En pieles con rosácea, esta desorganización lipídica exacerba la pérdida de agua transepidérmica y aumenta la reactividad ante estímulos externos. La evidencia sugiere que su uso en formulaciones 'leave-on' debe ser cauteloso, especialmente cuando se combina con fragancias o activos de bajo peso molecular. Se recomienda monitorizar la aparición de eritema persistente tras la aplicación prolongada de productos que contengan este emulsionante, ya que la disrupción de la barrera cutánea es acumulativa y puede derivar en una dermatitis de contacto irritativa crónica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polisorbato 80"
+      ],
+      "contraindications": [
+        "Rosácea",
+        "Dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_inci"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:53.623Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386113623-4-faf7c3bc-dimetil-isosorbida-y-el-riesgo-de-irritacion-por-potenciacio",
+    "title": "Dimetil Isosorbida y el riesgo de irritación por potenciación de penetración",
+    "content": "La Dimetil Isosorbida (DMI) es un solvente de alta pureza utilizado en cosmética para mejorar la solubilidad y la estabilidad de activos difíciles de formular, como la Vitamina C o ciertos retinoides. Su mecanismo de acción principal es la modificación de la permeabilidad del estrato córneo, permitiendo que los ingredientes alcancen capas más profundas de la epidermis. Si bien esto aumenta la eficacia del tratamiento, también eleva exponencialmente el riesgo de irritación. Al facilitar la penetración de ingredientes que, en condiciones normales, no causarían una reacción adversa, la DMI puede convertir una fórmula bien tolerada en una potencialmente irritante. Este riesgo es particularmente elevado en personas con piel sensible o con una función de barrera comprometida. La administración de activos potentes mediante DMI debe realizarse con una dosificación controlada y una frecuencia de uso progresiva. Es fundamental que el usuario observe signos de irritación, como eritema, prurito o descamación, ya que la DMI puede estar potenciando la absorción de sustancias que, de otro modo, serían seguras para la piel.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Dimetil Isosorbida"
+      ],
+      "contraindications": [
+        "Piel hiperreactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_inci"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:21:53.623Z"
+  }
+]

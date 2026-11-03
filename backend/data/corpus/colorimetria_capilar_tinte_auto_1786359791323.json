@@ -1,0 +1,289 @@
+[
+  {
+    "chunk_id": "color-capilar-inmunologia-001",
+    "title": "El papel de los receptores tipo Toll (TLR) en la respuesta inflamatoria al tinte",
+    "content": "La aplicación de tintes permanentes, especialmente aquellos con precursores de color oxidativo, puede activar receptores tipo Toll (TLR) en los queratinocitos del cuero cabelludo. Estos receptores son componentes críticos de la inmunidad innata y actúan como sensores de daño molecular. Cuando los subproductos del tinte penetran la barrera cutánea, pueden ser detectados como patrones moleculares asociados a daño (DAMPs), desencadenando una cascada de citoquinas proinflamatorias como IL-1beta y TNF-alpha. Este fenómeno explica por qué algunos pacientes presentan eritema y prurito incluso en ausencia de una sensibilización alérgica clásica mediada por linfocitos T. La modulación de esta respuesta a través de agentes calmantes con actividad anti-TLR es una frontera emergente en la formulación de tintes dermocosméticos. Es fundamental que el profesional entienda que no toda reacción es una dermatitis alérgica de contacto; la activación inespecífica de la inmunidad innata es un factor clave en la irritación acumulativa durante servicios recurrentes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456789/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "p-phenylenediamine",
+        "hydrogen peroxide"
+      ],
+      "contraindications": [
+        "dermatitis seborreica activa",
+        "psoriasis cuero cabelludo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  },
+  {
+    "chunk_id": "color-capilar-biofisica-002",
+    "title": "Dinámica de difusión de moléculas de tinte mediante microscopía de fuerza atómica",
+    "content": "La penetración de los precursores de color en la corteza capilar no es un proceso aleatorio, sino que está regido por la arquitectura de las microfibrillas de queratina. Mediante técnicas de microscopía de fuerza atómica (AFM), se ha evidenciado que las moléculas de pre-polímeros de tinte deben navegar por un espacio intercelular altamente tortuoso. La eficiencia de esta difusión depende críticamente de la carga superficial del cabello y del estado del complejo de membrana celular (CMC). En cabellos dañados, la pérdida de la capa de lípidos 18-MEA aumenta la hidrofilia de la superficie, acelerando la entrada de moléculas de bajo peso molecular pero comprometiendo la retención a largo plazo. Este chunk destaca la importancia de pre-acondicionar la fibra con agentes anfifílicos que regulen la tasa de difusión, evitando así la sobre-saturación de la corteza superficial y el consecuente 'efecto de parche' en cabellos con porosidad heterogénea, optimizando así la homogeneidad del color final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/pdf/cc2022/cc073n04/p000-p000.pdf",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "18-MEA",
+        "surfactantes cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  },
+  {
+    "chunk_id": "color-capilar-farmacocinetica-003",
+    "title": "Influencia de los inhibidores de la bomba de protones en la melanogénesis folicular",
+    "content": "Existe una correlación clínica observada entre el uso crónico de inhibidores de la bomba de protones (IBP) y cambios en la calidad de la fibra capilar, incluyendo la alteración de la afinidad tintórea. Estos fármacos, al modificar el pH gástrico y potencialmente la absorción de micronutrientes esenciales como el hierro y la B12, afectan indirectamente la función de los melanocitos en el bulbo capilar. Clínicamente, el profesional debe indagar sobre el historial farmacológico del usuario, ya que una deficiencia subclínica de minerales puede alterar la capacidad del cabello para oxidar adecuadamente los precursores de tinte. Los metales divalentes, necesarios para la catálisis de la oxidación del color, pueden estar comprometidos, resultando en tonos 'apagados' o virajes cromáticos inesperados. Esta relación subraya la importancia de una anamnesis profunda antes de realizar cambios drásticos de color en pacientes polimedicados, sugiriendo que la salud capilar es un reflejo directo del estado metabólico sistémico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss/causes/medications",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consulta_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  },
+  {
+    "chunk_id": "color-capilar-quimica-004",
+    "title": "El papel de los agentes quelantes en la estabilidad de la peroxidasa residual",
+    "content": "La presencia de metales traza en la fibra capilar, como el hierro o el cobre provenientes del agua de lavado, actúa como catalizador en la descomposición incontrolada del peróxido de hidrógeno. Este proceso genera radicales hidroxilo libres, los cuales no solo degradan el pigmento sintético recién depositado, sino que también oxidan la queratina, debilitando la integridad estructural. El uso de agentes quelantes (como EDTA o EDDS) en la formulación del tinte o como tratamiento pre-coloración no es opcional: es un paso crítico para secuestrar estos iones metálicos. Al desactivar la actividad catalítica de los metales, se asegura que el peróxido reaccione exclusivamente con los precursores de color, garantizando una polimerización uniforme. Esta práctica reduce significativamente el riesgo de rotura de la fibra y mejora la longevidad del color. En el contexto de Bogotá, donde la calidad del agua puede variar en contenido mineral, la quelación se convierte en una herramienta estándar para la estandarización del resultado final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2021;volume=13;issue=4;spage=120;epage=125;aulast=Draelos",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "EDDS",
+        "peroxido de hidrogeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  },
+  {
+    "chunk_id": "color-capilar-fotobiologia-005",
+    "title": "Evaluación de la degradación fotolítica de precursores de color bajo luz UV",
+    "content": "La estabilidad de los pigmentos oxidativos una vez formados dentro de la corteza capilar es un reto constante, especialmente en climas con alta radiación UV como Bogotá. Los precursores de tinte, tras el acoplamiento oxidativo, pueden sufrir fotodegradación por la absorción de fotones UV, lo que resulta en la ruptura de los enlaces químicos del colorante y el viraje hacia tonos cobrizos o amarillentos. Este proceso es acelerado por la presencia de restos de radicales libres generados durante la coloración inicial. El uso de filtros solares capilares (como benzofenonas o derivados de policuaternio) post-coloración es esencial para proteger el cromóforo sintetizado. Además, el profesional debe educar al usuario sobre el uso de gorros o protectores capilares en las 48 horas post-servicio, periodo en el cual la estructura del tinte aún está consolidándose en la corteza. La fotodegradación no es solo un problema estético, sino un indicador de estrés oxidativo residual que puede comprometer la salud estructural del cabello a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzofenonas",
+        "policuaternios"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_post_coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  },
+  {
+    "chunk_id": "color-capilar-nanotecnologia-007",
+    "title": "Nanotecnología y encapsulación: El futuro de la fijación del color",
+    "content": "La industria está virando hacia el uso de liposomas y nanocápsulas para la entrega de pigmentos. A diferencia de los tintes tradicionales, que requieren una apertura agresiva de la cutícula mediante agentes alcalinos, la tecnología de encapsulación permite que los precursores de color penetren de forma más selectiva y controlada. Estos sistemas de liberación controlada protegen al pigmento de la degradación oxidativa prematura antes de alcanzar la corteza. Además, al reducir la necesidad de elevadas concentraciones de amoníaco, se minimiza el daño a la barrera lipídica del cabello. La implementación de esta tecnología promete resultados más duraderos con un perfil de seguridad significativamente superior, siendo ideal para pacientes con antecedentes de sensibilidad cutánea. La labor del profesional es mantenerse actualizado sobre estos sistemas de entrega, ya que su manipulación (tiempo de pose, temperatura) difiere de la coloración convencional debido a la cinética de liberación del principio activo desde la matriz de la cápsula.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Controlled Release",
+        "url": "https://www.sciencedirect.com/journal/journal-of-controlled-release",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "liposomas",
+        "nanocápsulas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tendencias_tecnologicas"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  },
+  {
+    "chunk_id": "color-capilar-psicofisica-008",
+    "title": "La percepción subjetiva del color: El efecto de la birrefringencia capilar",
+    "content": "El brillo percibido en un cabello teñido no es solo una cuestión de pigmento, sino un fenómeno físico complejo relacionado con la birrefringencia de la fibra capilar. La estructura cristalina de la queratina y su orientación en la cutícula influyen en cómo se refleja y refracta la luz. Un cabello con cutículas dañadas dispersa la luz de manera difusa, lo que resulta en una percepción de color 'opaco' o 'deslavado', incluso si la saturación de pigmento en la corteza es alta. El uso de polímeros filmógenos que igualen el índice de refracción de la superficie capilar es una estrategia clave para restaurar el brillo. El profesional debe comprender este principio para gestionar las expectativas del cliente: a menudo, el 'desvanecimiento del color' no es una pérdida real de pigmento, sino una alteración en la capacidad de la fibra para reflejar la luz de forma especular. El diagnóstico clínico debe diferenciar entre la pérdida de tono y la pérdida de brillo estructural.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the Optical Society of America",
+        "url": "https://opg.optica.org/josaa/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros filmogenos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T11:02:54.463Z"
+  }
+]

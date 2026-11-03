@@ -1,0 +1,85 @@
+[
+  {
+    "chunk_id": "color-capilar-interaccion-polimorfismos-geneticos-001",
+    "title": "Influencia de los polimorfismos genéticos en la respuesta al tinte capilar",
+    "content": "La variabilidad interindividual en la respuesta a la coloración capilar no solo depende de la estructura física del cabello, sino también de polimorfismos genéticos específicos en las enzimas metabolizadoras de xenobióticos. Estudios publicados en revistas como 'Dermatitis' y bases de datos como PubMed sugieren que variantes en los genes de la familia N-acetiltransferasa (NAT1 y NAT2) pueden alterar la velocidad con la que el cuero cabelludo procesa los precursores de colorantes, como las aminas aromáticas presentes en tintes permanentes. Esta variabilidad metabólica explica por qué individuos bajo condiciones idénticas de aplicación presentan diferentes umbrales de irritación o sensibilización. La capacidad de acetilación rápida o lenta determina la exposición sistémica y local a los subproductos del tinte. En el ámbito clínico de GlowApp, es fundamental comprender que el historial genético del cliente puede influir en la retención cromática y en la susceptibilidad a dermatitis de contacto alérgica. La evaluación de estos factores permite personalizar la elección de agentes oxidantes y el tiempo de exposición, minimizando el riesgo de reacciones adversas mediadas por la acumulación de metabolitos reactivos en la matriz folicular y la epidermis del cuero cabelludo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22158913/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "p-fenilendiamina"
+      ],
+      "contraindications": [
+        "antecedentes de dermatitis severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:48:00.623Z"
+  },
+  {
+    "chunk_id": "color-capilar-estabilidad-ph-buffering-002",
+    "title": "Dinámica de los sistemas buffer en la estabilidad de la cutícula durante el teñido",
+    "content": "El control del pH durante el proceso de coloración es un equilibrio termodinámico crítico. Los sistemas buffer incorporados en las formulaciones modernas de tintes actúan para resistir los cambios drásticos de pH que ocurren al mezclar el colorante con el peróxido de hidrógeno. Según investigaciones en dermatología cosmética, la capacidad de tamponamiento del tinte es determinante para evitar la sobre-exposición de la cutícula. Un pH demasiado elevado no solo acelera la oxidación, sino que provoca una desnaturalización irreversible de la queratina, aumentando la porosidad y reduciendo la longevidad del color al facilitar la lixiviación de los pigmentos. El uso de agentes buffer, como las sales de citrato o fosfato, permite mantener un rango de pH óptimo (típicamente entre 9.0 y 10.5 para tintes permanentes) que maximiza la penetración de las moléculas de tinte sin comprometer la integridad del complejo de membrana celular (CMC). En Bogotá, la alta altitud puede influir en la presión de vapor de estos sistemas, lo que exige una gestión estricta de las condiciones ambientales durante la aplicación. La eficacia de estos agentes está directamente relacionada con la retención del color tras múltiples lavados, siendo un factor clave en la satisfacción del cliente a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "citratos",
+        "fosfatos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:48:00.623Z"
+  }
+]

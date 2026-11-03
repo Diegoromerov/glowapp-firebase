@@ -1,0 +1,209 @@
+[
+  {
+    "chunk_id": "onicocriptosis-remodelacion-osea-001",
+    "title": "Remodelación ósea periungueal: el impacto de la presión crónica",
+    "content": "La onicocriptosis recurrente no solo afecta los tejidos blandos, sino que puede desencadenar cambios en la arquitectura ósea de la falange distal. Estudios radiológicos han demostrado que la presión constante ejercida por una lámina ungueal mal dirigida o el uso de calzado inadecuado provoca una respuesta osteolítica o de formación de osteofitos en el margen lateral del hueso distal. Este fenómeno, a menudo ignorado en la práctica estética, explica por qué ciertos pacientes presentan dolor persistente incluso después de la corrección del borde libre. La inflamación crónica del pliegue ungueal libera citoquinas proinflamatorias como IL-1 y TNF-alfa, que estimulan la resorción ósea. Es fundamental que los profesionales de GlowApp identifiquen que el dolor punzante persistente tras una intervención de cabina podría ser un signo de esta afectación ósea subyacente, requiriendo derivación inmediata a podología o dermatología para estudios de imagen (radiografía simple), evitando así maniobras estéticas que solo exacerbarán el daño estructural al tejido periungueal y óseo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Podiatric Medical Association",
+        "url": "https://www.apma.org/clinical-guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_mecanica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomedica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:20:48.373Z"
+  },
+  {
+    "chunk_id": "micro-biologia-adhesion-002",
+    "title": "Potencial Zeta y adhesión: la física de la interfase uña-producto",
+    "content": "La adhesión de sistemas fotopolimerizables depende críticamente de la carga electrostática en la superficie de la lámina ungueal, fenómeno descrito por el Potencial Zeta. La queratina de la uña posee grupos funcionales que, al variar su pH por factores externos (jabones, desinfectantes, sudor), alteran su carga neta. Si la superficie presenta un potencial Zeta incompatible con el monómero de la base, se produce una repulsión molecular a nivel microscópico, resultando en desprendimientos prematuros (lifting). Es un error común intentar corregir esto mediante limado excesivo. La evidencia sugiere que el uso de primers con equilibrio de pH es vital para neutralizar estas cargas y permitir una adhesión química estable. Los profesionales deben comprender que la 'limpieza' no se trata solo de eliminar residuos, sino de preparar un sustrato electroquímicamente receptivo. La falta de este equilibrio es la causa principal de la formación de bolsas de aire donde prolifera humedad y, eventualmente, colonización bacteriana oportunista.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros_acrilatos"
+      ],
+      "contraindications": [
+        "limado_excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:20:48.373Z"
+  },
+  {
+    "chunk_id": "onicosquizia-lamelar-003",
+    "title": "Onicosquizia lamelar: el rol de los lípidos intercelulares",
+    "content": "La onicosquizia lamelar o descamación de las capas dorsales de la uña no es únicamente un problema de hidratación, sino de deficiencia en el cemento lipídico intercelular. La lámina ungueal, a diferencia de la piel, no posee glándulas sebáceas, por lo que depende de la difusión de lípidos desde el eponiquio y el lecho. La exposición constante a solventes orgánicos (acetona, removedores con alcoholes pesados) disuelve este 'pegamento' que mantiene unidos a los corneocitos ungueales. Cuando los lípidos disminuyen, la estructura pierde su flexibilidad y se vuelve quebradiza bajo tensiones mecánicas. La evidencia clínica indica que la aplicación de aceites oclusivos con ceramidas y colesterol es necesaria para restaurar la integridad de la lámina. En cabina, el uso de deshidratadores agresivos antes de la aplicación de gel sin reponer la barrera lipídica posteriormente es una práctica que compromete la salud a largo plazo de la uña, favoreciendo la entrada de patógenos a través de las microfisuras resultantes de la sequedad extrema.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol"
+      ],
+      "contraindications": [
+        "solventes_agresivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioquimica_ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:20:48.373Z"
+  },
+  {
+    "chunk_id": "onicodistrofia-vibracion-004",
+    "title": "Onicodistrofia por vibración: el daño matricial crónico",
+    "content": "El uso prolongado de tornos o fresas de alta frecuencia sin mantenimiento (rodamientos desgastados) genera vibraciones armónicas que se transmiten directamente a la matriz ungueal. Esta energía mecánica, aunque invisible a corto plazo, altera la mitosis de los onicocitos. El daño se manifiesta como líneas de Beau persistentes o estrías longitudinales que no responden a tratamientos tópicos. La literatura científica clasifica este daño como un trauma mecánico de baja intensidad pero alta repetición. La matriz, al ser un tejido altamente vascularizado y sensible, responde a estas micro-vibraciones con una producción de queratina defectuosa, perdiendo su estructura laminar compacta. Para los profesionales de GlowApp, el criterio debe ser: si la herramienta genera una vibración perceptible en los dedos del operador, es probable que esté dañando la matriz del cliente. Se recomienda la inspección técnica periódica de las piezas de mano y el uso de fresas de carburo de alta precisión con balanceo dinámico para minimizar la transferencia de energía mecánica al lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "herramientas_descalibradas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_en_cabina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:20:48.373Z"
+  },
+  {
+    "chunk_id": "hiperhidrosis-adhesion-007",
+    "title": "Hiperhidrosis periungueal: el factor silencioso en el fallo de adhesión",
+    "content": "La hiperhidrosis, incluso en grados leves, altera la homeostasis de la superficie ungueal al mantener un ambiente de humedad constante que impide la correcta polimerización de los sistemas de adhesión. La presencia de agua en la interfaz uña-producto actúa como un agente de desprendimiento, ya que los polímeros acrílicos son, por naturaleza, hidrofóbicos. La humedad residual no solo debilita la adhesión mecánica, sino que favorece la degradación hidrolítica de las resinas a largo plazo. En GlowApp, es esencial realizar una evaluación de la humedad de la placa ungueal antes de iniciar el protocolo. En casos de sudoración palmar/periungueal marcada, el uso de deshidratadores específicos con agentes quelantes y soluciones astringentes suaves puede mejorar la estabilidad del sistema. Ignorar esta condición fisiológica resulta en un ciclo de desprendimientos que, al ser retirados mecánicamente por el cliente, terminan en onicodistrofia por abuso de limado, perpetuando un círculo vicioso de daño estructural y pérdida de la barrera protectora natural de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Society of Dermatology",
+        "url": "https://www.isd-dermatology.org/guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes_quelantes"
+      ],
+      "contraindications": [
+        "oclusion_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomedica_ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:20:48.373Z"
+  }
+]

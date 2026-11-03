@@ -1,0 +1,204 @@
+[
+  {
+    "chunk_id": "textura_poros-mitocondria-001",
+    "title": "Disfunción mitocondrial y bioenergética en el queratinocito folicular",
+    "content": "La integridad estructural del ostium folicular depende directamente de la eficiencia energética de los queratinocitos. Estudios recientes en PubMed indican que la disfunción mitocondrial en estas células altera el recambio epitelial, favoreciendo la retención de detritos y la dilatación mecánica del poro. Cuando las mitocondrias no producen suficiente ATP debido a factores como la exposición a radiación UV o estrés oxidativo, la capacidad de los queratinocitos para completar su diferenciación terminal se ve comprometida. Esto genera una acumulación de corneocitos inmaduros que obstruyen el canal. La suplementación con precursores de NAD+ y antioxidantes mitocondriales está siendo investigada como una estrategia para restaurar la función barrera y la contracción fisiológica del poro, permitiendo que el sebo fluya sin generar tapones que estiren el folículo. El mantenimiento de la red mitocondrial es vital para la resiliencia mecánica de la arquitectura folicular frente a los retos ambientales de ciudades de alta altitud como Bogotá.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Niacinamida",
+        "Coenzima Q10"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:01.376Z"
+  },
+  {
+    "chunk_id": "textura_poros-exosomas-002",
+    "title": "Comunicación intercelular mediante exosomas en la unidad pilosebácea",
+    "content": "La unidad pilosebácea no es una estructura estática, sino una comunidad celular en comunicación constante. La liberación de exosomas, pequeñas vesículas extracelulares, permite a los sebocitos y queratinocitos enviar señales paracrinas que regulan la proliferación y la secreción. Investigaciones en dermatología molecular sugieren que el contenido molecular de estos exosomas puede estar alterado en pieles con poros dilatados, transmitiendo señales pro-inflamatorias que perpetúan la hiperqueratinización del ostium. Entender este lenguaje molecular es crucial para el desarrollo de terapias tópicas que logren 'reprogramar' la actividad folicular. Al modular la carga de exosomas mediante ingredientes activos específicos, es posible influir en la homeostasis del poro, reduciendo la señalización de estrés que conduce a la dilatación persistente. Esta vía de comunicación representa una frontera innovadora para la cosmética de precisión en GlowApp, permitiendo abordar la textura de la piel desde una perspectiva de señalización celular en lugar de solo limpieza superficial.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia-cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:01.376Z"
+  },
+  {
+    "chunk_id": "textura_poros-reticulo-006",
+    "title": "Estrés del retículo endoplasmático en el sebocito",
+    "content": "El sebocito es una célula altamente activa que sintetiza grandes cantidades de lípidos, lo que lo hace vulnerable al estrés del retículo endoplasmático (ER). Cuando el ER se sobrecarga, por ejemplo, debido a dietas de alto índice glucémico o cambios hormonales, se activa la Respuesta a Proteínas Desplegadas (UPR). Este estado de estrés crónico altera la composición del sebo y promueve una hiperplasia de la glándula sebácea, lo que resulta en un poro físicamente más grande y una textura superficial irregular. La gestión de este estrés mediante agentes calmantes y moduladores metabólicos es vital para reducir la inflamación y la dilatación folicular. Al mitigar el estrés del ER, no solo mejoramos la calidad del sebo, sino que también permitimos que la glándula sebácea funcione dentro de sus parámetros fisiológicos normales, evitando el agrandamiento por sobreestimulación y manteniendo la textura de la piel bajo control.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Zinc",
+        "Niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:01.376Z"
+  },
+  {
+    "chunk_id": "textura_poros-autofagia-008",
+    "title": "El papel de la autofagia lisosomal en la homeostasis lipídica",
+    "content": "La autofagia lisosomal es el sistema de reciclaje interno del sebocito. Este proceso asegura que los lípidos sintetizados y los orgánulos dañados sean degradados eficientemente antes de que el sebo sea excretado al canal folicular. Si la autofagia es ineficiente, se acumulan lípidos oxidados y restos celulares que obstruyen el poro, aumentando su tamaño y favoreciendo la rugosidad de la textura. Estimular la autofagia a través de ingredientes activos específicos y una dieta equilibrada es una forma poderosa de 'limpieza profunda' biológica. A diferencia de la exfoliación mecánica, que solo retira detritos superficiales, la modulación de la autofagia mejora la calidad del sebo desde su origen, facilitando un flujo más fluido y evitando la formación de comedones. Este enfoque preventivo es clave en GlowApp para mantener la pureza del canal folicular y la suavidad de la textura cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Autophagy (Journal)",
+        "url": "https://www.tandfonline.com/journals/kaup20",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Resveratrol",
+        "Espermidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:01.376Z"
+  },
+  {
+    "chunk_id": "textura_poros-epigenetica-009",
+    "title": "Modificaciones epigenéticas y la expresión génica en el poro",
+    "content": "La expresión génica que determina el tamaño, la actividad sebácea y la elasticidad periporo no es inmutable. Las modificaciones epigenéticas, influenciadas por el exposoma (dieta, estrés, UV, contaminación), pueden 'encender' o 'apagar' genes relacionados con la hiperplasia sebácea o la degradación de la matriz extracelular. Por ejemplo, la metilación del ADN en genes que controlan la producción de sebo puede aumentar tras periodos de estrés crónico, dilatando los poros de forma persistente. La cosmética epigenética busca revertir estas marcas mediante el uso de activos que modulan las histonas o las metiltransferasas, permitiendo que la piel recupere su 'configuración' de juventud. Aunque es un campo incipiente, la capacidad de influir en la expresión génica ofrece una nueva vía para tratar la textura de los poros de manera profunda y personalizada, considerando el historial del paciente más allá de los factores genéticos heredados.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Clinical, Cosmetic and Investigational Dermatology",
+        "url": "https://www.dovepress.com/clinical-cosmetic-and-investigational-dermatology-journal",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Retinoides",
+        "Niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia-cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:30:01.376Z"
+  }
+]

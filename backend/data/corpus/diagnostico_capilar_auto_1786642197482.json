@@ -1,0 +1,165 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-inmunometabolismo-001",
+    "title": "La reprogramación metabólica de los linfocitos T en la Alopecia Areata",
+    "content": "El estudio del inmunometabolismo ha revelado que la Alopecia Areata no es solo un proceso autoinmune, sino una alteración profunda en la bioenergética de los linfocitos T residentes en el nicho folicular. Investigaciones actuales indican que los linfocitos T CD8+ citotóxicos, responsables del ataque al folículo, experimentan un cambio hacia la glucólisis aeróbica, un fenómeno conocido como efecto Warburg, para sostener su activación constante. Este cambio metabólico permite una producción acelerada de citoquinas proinflamatorias como el interferón-gamma (IFN-γ), que induce prematuramente la fase catágena. La modulación terapéutica de rutas metabólicas como la vía de la glutaminólisis y la inhibición de la quinasa mTOR representan una frontera prometedora en el diagnóstico y tratamiento. Identificar la firma metabólica de estos linfocitos mediante análisis proteómicos en biopsias de cuero cabelludo permite predecir la severidad de la alopecia y la resistencia a los tratamientos convencionales con corticosteroides. La capacidad de revertir esta reprogramación metabólica podría restaurar la tolerancia inmune del folículo piloso, evitando la progresión de la enfermedad hacia formas universales o totales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210350/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Inhibidores de JAK"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-inmunologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:29:36.358Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-optogenetica-002",
+    "title": "Potencial de la optogenética en el control del ciclo folicular",
+    "content": "La optogenética, técnica que utiliza la luz para controlar células modificadas genéticamente, está emergiendo como una herramienta revolucionaria para estudiar la dinámica folicular in vivo. En el contexto de la regeneración capilar, los investigadores están utilizando canales iónicos sensibles a la luz (opsinas) para activar selectivamente las células madre del 'bulge' o las células de la papila dérmica. Mediante la modulación de la señalización Wnt/β-catenina con pulsos de luz de longitudes de onda específicas, es posible inducir la transición de la fase telógena a la fase anágena de forma controlada, evitando los efectos secundarios sistémicos de los fármacos tradicionales como el minoxidil o los inhibidores de la 5-alfa reductasa. Aunque el uso de esta tecnología está actualmente limitado a modelos experimentales, su aplicación clínica futura mediante dispositivos de fotobiomodulación de alta precisión podría permitir una 'reprogramación' del ciclo de crecimiento en pacientes con alopecias cicatriciales tempranas o efluvios crónicos. La clave reside en la capacidad de sintonizar la respuesta celular sin alterar la integridad genómica, marcando un hito en la medicina regenerativa dermatológica y la bioingeniería capilar aplicada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/alopecia",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "terapias-regenerativas"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:29:36.358Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-004",
+    "title": "Volatilómica del cuero cabelludo: El diagnóstico por el aliento folicular",
+    "content": "La volatilómica del cuero cabelludo se posiciona como una técnica diagnóstica no invasiva de vanguardia, capaz de detectar la firma de compuestos orgánicos volátiles (COVs) emitidos por el microbioma folicular. Cada individuo posee un perfil de COVs único, influenciado por la microbiota comensal (como Staphylococcus epidermidis y Malassezia spp.) y por el estado metabólico del propio folículo. En estados de disbiosis, como la dermatitis seborreica o la alopecia inflamatoria, la producción de ciertos alcoholes, aldehídos y cetonas cambia drásticamente. Mediante la espectrometría de movilidad iónica (IMS) o la nariz electrónica (e-nose), es posible identificar biomarcadores gaseosos que preceden a la aparición de signos clínicos visibles como eritema o descamación. Este enfoque permite una intervención temprana en la homeostasia del cuero cabelludo, ajustando los tratamientos tópicos o la suplementación prebiótica antes de que ocurra un daño folicular permanente. Además, la volatilómica es una herramienta invaluable en la investigación de la influencia del exposoma urbano, ya que los contaminantes del aire pueden alterar la composición de los lípidos sebáceos y, por ende, el perfil de los COVs liberados por el ostium folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization - Health Topics)",
+        "url": "https://www.who.int/health-topics/skin-diseases",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:29:36.358Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-iontoforesis-007",
+    "title": "Iontoforesis diagnóstica: Evaluación de la permeabilidad folicular",
+    "content": "La iontoforesis diagnóstica es una técnica emergente que utiliza una corriente eléctrica de baja intensidad para medir la conductividad iónica y la permeabilidad del estrato córneo folicular. Esta medición permite evaluar la integridad de la barrera cutánea en el cuero cabelludo, la cual suele estar comprometida en pacientes con alopecias crónicas y dermatitis. Una conductancia iónica alterada indica una disfunción en la permeabilidad de los canales foliculares, lo que facilita la penetración de alérgenos, contaminantes ambientales (PM2.5) y microorganismos, perpetuando un ciclo de inflamación subclínica. Al cuantificar la resistencia eléctrica del ostium, el clínico puede determinar la eficacia de absorción de los principios activos tópicos (como el minoxidil o los péptidos de señal), permitiendo una dosificación personalizada y maximizando el potencial terapéutico. Esta técnica es particularmente útil en el diagnóstico de pacientes con cuero cabelludo sensible o reactivo, ofreciendo datos cuantitativos sobre el estado de la barrera que no son visibles mediante la tricoscopia estándar. La normalización de la conductancia iónica se utiliza como un marcador de éxito terapéutico en protocolos de restauración de la barrera cutánea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/guidelines.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acido-hialuronico"
+      ],
+      "contraindications": [
+        "marcapasos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:29:36.358Z"
+  }
+]

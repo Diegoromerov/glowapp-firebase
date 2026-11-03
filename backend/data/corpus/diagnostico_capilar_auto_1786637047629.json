@@ -1,0 +1,154 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-termorregulacion-001",
+    "title": "Disrupción de la Termorregulación Scalp y su Correlación con la Alopecia",
+    "content": "La termorregulación del cuero cabelludo es un proceso fisiológico complejo que depende de la perfusión sanguínea y la actividad de las glándulas sudoríparas ecrinas. Alteraciones en la capacidad de disipación de calor en la piel cabelluda pueden inducir un microambiente de estrés térmico, el cual afecta negativamente la viabilidad de las células madre en el 'bulge'. Estudios publicados en 'Experimental Dermatology' sugieren que el aumento crónico de la temperatura local favorece la expresión de mediadores inflamatorios y la degradación prematura de la matriz extracelular. En el contexto de la alopecia androgenética, la vasculatura suele estar comprometida, limitando la capacidad del folículo para enfriarse, lo que resulta en una acumulación de metabolitos reactivos. La evaluación de la temperatura cutánea mediante termometría infrarroja de alta precisión ofrece una ventana clínica para medir el grado de inflamación subclínica antes de que la caída sea visible. Este enfoque permite identificar pacientes en etapas tempranas de miniaturización donde la termorregulación está alterada, permitiendo intervenciones que optimicen el flujo sanguíneo perifolicular y reduzcan el estrés térmico sobre el folículo, mejorando así la resiliencia del ciclo capilar ante agresiones externas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32483876/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:48.976Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-002",
+    "title": "Glicación No Enzimática: El Rigidez del Colágeno Perifolicular",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular (MEC) perifolicular, mediada por la formación de productos de glicación avanzada (AGEs), constituye un factor crítico en la fibrosis del cuero cabelludo. A diferencia de otros tejidos, la red de colágeno que sostiene el folículo piloso es altamente sensible a la acumulación de azúcares, lo que reduce su elasticidad y capacidad de regeneración. Esta rigidez física actúa como un obstáculo mecánico para el crecimiento del tallo, dificultando la transición del folículo de la fase telógena a la anágena. Investigaciones en la 'Journal of Investigative Dermatology' indican que la acumulación de AGEs activa receptores específicos (RAGE) que disparan cascadas proinflamatorias crónicas. Clínicamente, el diagnóstico de esta condición requiere evaluar la movilidad del cuero cabelludo y la presencia de signos de fibrosis incipiente. El control glucémico sistémico y el uso de agentes antiglicantes tópicos representan una estrategia emergente para restaurar la plasticidad del nicho folicular. El abordaje terapéutico debe centrarse en la inhibición de la formación de AGEs y la estimulación de la síntesis de colágeno tipo III, esencial para mantener la integridad estructural del canal folicular y facilitar un crecimiento capilar saludable y sin restricciones físicas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(22)00543-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:48.976Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microfluida-003",
+    "title": "Dinámica de Microfluidos en el Ostium Folicular: Diagnóstico de Obstrucción",
+    "content": "La reología del sebo y su interacción dinámica dentro del canal folicular determinan la salud del ostium. Un sebo con una composición lipídica alterada, rica en escualeno oxidado, aumenta la viscosidad y promueve la formación de micro-tapones que obstruyen el flujo natural de la fibra. Este fenómeno de 'estasis folicular' no solo impide la salida normal del pelo, sino que altera la microbiota local al crear un entorno anaeróbico propicio para el sobrecrecimiento de patógenos. El diagnóstico basado en la dinámica de microfluidos se enfoca en medir la tensión superficial y el ángulo de contacto del sebo sobre la piel cabelluda. Técnicas de espectroscopía de impedancia permiten evaluar la integridad de la barrera en el ostium y detectar la acumulación de detritos antes de que se manifiesten como queratosis pilaris o foliculitis. Mantener la fluidez del sebo mediante el uso de activos lipolíticos suaves y la modulación de la síntesis de lípidos glandulares es fundamental para prevenir la obstrucción. Este enfoque clínico permite prevenir la miniaturización secundaria a la inflamación por obstrucción, optimizando la permeabilidad de la barrera cutánea para mejorar la absorción de tratamientos tópicos y asegurar un entorno propicio para la fase de crecimiento del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/diseases/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_fisico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:48.976Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-008",
+    "title": "Bioimpedancia: Evaluación de la Hidratación Estrato-Folicular",
+    "content": "La bioimpedancia eléctrica es una técnica no invasiva que permite evaluar el estado de hidratación del estrato córneo y la barrera cutánea a nivel folicular. Una hidratación adecuada es esencial para el mantenimiento de la integridad del ostium y la función de las glándulas sebáceas. La deshidratación, frecuentemente subestimada en el diagnóstico capilar, compromete la barrera epidérmica, facilitando la penetración de alérgenos y contaminantes que desencadenan inflamación. Mediante la medición de la impedancia a diferentes frecuencias, es posible obtener un perfil detallado de la permeabilidad y el estado de salud del cuero cabelludo. Este método permite identificar áreas de sequedad localizada que podrían estar contribuyendo a la descamación o al prurito, síntomas comunes en diversas alopecias. La optimización de la hidratación mediante formulaciones específicas mejora la resiliencia del folículo frente a agresiones externas y potencia la eficacia de tratamientos tópicos aplicados. Este diagnóstico cuantitativo es fundamental para una rutina de cuidado capilar personalizada que mantenga el equilibrio fisiológico necesario para un crecimiento capilar óptimo y saludable, evitando complicaciones derivadas de una barrera cutánea debilitada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:03:48.976Z"
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "chunk_id": "textura-poros-glicacion-enzimatica-001",
+    "title": "Impacto de las transglutaminasas en la rigidez del ostium folicular",
+    "content": "La integridad estructural del ostium folicular no solo depende del colágeno, sino también de la actividad de las transglutaminasas tisulares (TG2). Estas enzimas catalizan enlaces cruzados isopeptídicos entre proteínas de la matriz extracelular, lo que confiere una rigidez anómala en el borde del poro. Cuando este proceso se exacerba, el canal folicular pierde su capacidad de contracción elástica, resultando en una dilatación visible que no responde a métodos convencionales de limpieza. La literatura científica sugiere que un entorno inflamatorio subclínico, frecuente en pieles urbanas expuestas a contaminantes, sobreactiva estas enzimas, fijando el poro en una posición abierta. La modulación de la actividad de TG2 mediante ingredientes tópicos específicos se perfila como una estrategia emergente para restaurar la flexibilidad del ostium.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31829012/",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inhibidores de transglutaminasa"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  },
+  {
+    "chunk_id": "textura-poros-microbiota-adhesion-002",
+    "title": "Adhesión de biofilms y su efecto en la geometría folicular",
+    "content": "La formación de biofilms bacterianos, particularmente por cepas específicas de Cutibacterium acnes y Staphylococcus epidermidis, altera la geometría del conducto pilosebáceo. A diferencia de la colonización simple, la matriz extracelular polimérica (EPS) producida por estas bacterias aumenta la viscosidad del sebo y crea un tapón físico que impide la salida natural de las secreciones. Este fenómeno no solo favorece el comedón, sino que genera una presión mecánica interna que ensancha el diámetro del poro. Estudios en dermatología molecular indican que la presencia de estos biofilms es un factor determinante en la rugosidad persistente de la textura cutánea, incluso tras limpiezas profundas. La gestión de estos biofilms requiere agentes surfactantes que no solo remuevan lípidos, sino que desestabilicen la matriz del biofilm para permitir el drenaje fisiológico.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30872-5/fulltext",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos suaves"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_profunda"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  },
+  {
+    "chunk_id": "textura-poros-canales-potasio-003",
+    "title": "Canales de potasio y la dinámica contráctil del músculo erector",
+    "content": "El músculo erector del pelo, aunque microscópico, desempeña un papel crítico en la apariencia del poro. Los canales de potasio dependientes de ATP (KATP) en estas células musculares regulan el tono contráctil. Cuando estos canales se ven afectados por el estrés oxidativo o desequilibrios electrolíticos, el músculo pierde su capacidad de mantener la tensión perifolicular, lo que se traduce clínicamente como una dilatación por pérdida de soporte mecánico. La modulación de estos canales iónicos es un área de investigación activa en dermatología para el tratamiento de la textura folicular. Comprender que el poro no es una estructura estática, sino una unidad dinámica bajo control neuro-muscular, es fundamental para diseñar rutinas que busquen una apariencia más compacta mediante la mejora de la tonicidad del tejido circundante.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28334451/",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tonificacion_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  },
+  {
+    "chunk_id": "textura-poros-autofagia-004",
+    "title": "Autofagia folicular como mecanismo de limpieza interna",
+    "content": "La autofagia es el proceso celular mediante el cual los sebocitos y queratinocitos del canal folicular degradan componentes dañados o excedentes lipídicos. En poros con textura rugosa, a menudo se observa una deficiencia en la maquinaria autofágica, lo que lleva a una acumulación de detritos celulares que distienden el ostium. Estimular la autofagia a través de compuestos específicos (como ciertos polifenoles o derivados de vitamina B3) puede mejorar significativamente la claridad del canal folicular desde adentro hacia afuera. Este enfoque es superior a la exfoliación mecánica agresiva, que puede causar micro-inflamación y, paradójicamente, una mayor dilatación del poro a largo plazo. La ciencia actual respalda el uso de moduladores metabólicos celulares como una vía terapéutica para restaurar la función del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/articles/s41467-021-23659-w",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento_preventivo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  },
+  {
+    "chunk_id": "textura-poros-exosomas-006",
+    "title": "Exosomas como mediadores en la comunicación sebocito-dermis",
+    "content": "La comunicación intercelular en la unidad pilosebácea está mediada en gran medida por exosomas, pequeñas vesículas extracelulares que contienen proteínas, lípidos y micro-ARN. Estas moléculas actúan como mensajeros que instruyen a los fibroblastos periporo sobre cómo remodelar la matriz extracelular. En pieles con poros dilatados, se ha detectado una señalización aberrante mediante estos exosomas, lo que resulta en una degradación acelerada del colágeno periporo. La tecnología de cosmecéuticos actuales empieza a explorar el uso de péptidos miméticos que pueden modular esta comunicación, ayudando a estabilizar la arquitectura del poro. Entender esta red de comunicación permite pasar de un tratamiento puramente superficial a uno que actúe sobre la señalización celular que dicta la estructura del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)32039-3/fulltext",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_avanzada"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  },
+  {
+    "chunk_id": "textura-poros-insulina-008",
+    "title": "Picos insulínicos nocturnos y secreción sebácea",
+    "content": "La regulación de la glándula sebácea está íntimamente ligada al eje insulina/IGF-1. Estudios recientes han demostrado que los picos de insulina durante la noche, a menudo derivados de una carga glucémica alta en la cena, pueden activar directamente los receptores sebocitarios durante el pico de actividad circadiana de la glándula. Esto resulta en una sobreproducción de sebo durante las horas de sueño, que se acumula en el ostium folicular y promueve su dilatación mecánica. El control de la carga glucémica nocturna no solo es una recomendación dietética, sino una estrategia dermatológica para reducir la hiperplasia sebácea. Al estabilizar la respuesta insulínica, se reduce la presión interna sobre el poro, facilitando que los activos tópicos de control de textura actúen sobre una glándula menos hiperactiva.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermato-Endocrinology",
+        "url": "https://www.tandfonline.com/doi/full/10.4161/derm.22876",
+        "year": 2013
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  },
+  {
+    "chunk_id": "textura-poros-delta6-009",
+    "title": "Delta-6-desaturasa y la viscosidad del sebo folicular",
+    "content": "La enzima delta-6-desaturasa es fundamental en la síntesis de ácidos grasos insaturados que componen el sebo humano. Cuando existe una deficiencia o una regulación alterada de esta enzima, la composición lipídica del sebo cambia, volviéndose más viscosa y propensa a la oxidación. Este sebo 'espeso' tiene dificultades para migrar a través del canal folicular, acumulándose y dilatando el ostium. La suplementación con ácidos grasos esenciales y el uso de ingredientes tópicos que optimicen la fluidez lipídica pueden mejorar la textura del poro al facilitar el drenaje natural del sebo. Este enfoque fisiológico es clave para tratar la textura rugosa en pacientes con pieles deshidratadas pero con alta producción sebácea, donde el problema no es la cantidad de sebo, sino su calidad física.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28334451/",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "omega-3",
+        "omega-6"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_lipidica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:48:32.402Z"
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-epigenetica-metilacion-001",
+    "title": "Impacto de la Metilación del ADN en el Receptor de Andrógenos",
+    "content": "La regulación epigenética, específicamente la metilación del ADN en el promotor del receptor de andrógenos (AR), juega un papel crucial en la susceptibilidad a la alopecia androgenética (AGA). Estudios recientes publicados en PubMed indican que los patrones de metilación diferencial en las células de la papila dérmica pueden modular la respuesta folicular a los andrógenos circulantes, incluso en individuos con niveles séricos normales. Este mecanismo explica por qué ciertos folículos miniaturizados presentan una resistencia paradójica a los tratamientos convencionales. La evaluación de estos marcadores epigenéticos permite una estratificación del riesgo más precisa, superando las limitaciones de la tricoscopia tradicional al identificar la 'memoria celular' de la miniaturización. La desmetilación terapéutica mediante agentes específicos es un área de investigación activa que busca revertir la expresión génica aberrante en el nicho folicular, ofreciendo una nueva frontera para personalizar los protocolos de GlowApp en pacientes con perfiles de resistencia terapéutica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214392/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:08:18.926Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-metabolomica-002",
+    "title": "Metabolómica del Microbioma como Predictor de Inflamación",
+    "content": "El análisis del metaboloma del microbioma del cuero cabelludo ha trascendido la simple identificación taxonómica de especies como Malassezia. Investigaciones actuales demuestran que los perfiles de metabolitos secundarios secretados por la microbiota residente actúan como señales proinflamatorias o antiinflamatorias en el ostium folicular. La producción de ácidos grasos de cadena corta y otros subproductos metabólicos influye directamente en la integridad de la barrera cutánea y en la activación de receptores inmunes perifoliculares. En el contexto clínico, esta metabolómica nos permite predecir brotes de dermatitis seborreica o exacerbaciones de alopecias inflamatorias antes de que los signos tricoscópicos sean evidentes. La integración de este enfoque permite a GlowApp ajustar las formulaciones tópicas de forma dinámica, priorizando el equilibrio del ecosistema microbiano sobre el uso indiscriminado de agentes antimicóticos o antiinflamatorios, minimizando el riesgo de disbiosis iatrogénica y mejorando la resiliencia del folículo ante estresores externos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:08:18.926Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-osteopontina-fibrosis-006",
+    "title": "Osteopontina como Biomarcador de Fibrosis en Alopecias",
+    "content": "La osteopontina (OPN) se ha identificado como una citoquina clave en la patogénesis de la fibrosis perifolicular en las alopecias cicatriciales. Su sobreexpresión en el nicho folicular promueve la diferenciación de fibroblastos en miofibroblastos, lo que conduce a la sustitución irreversible del tejido folicular por colágeno denso. Clínicamente, el monitoreo de los niveles de osteopontina en el fluido del cuero cabelludo puede actuar como un indicador temprano de fibrosis subclínica, mucho antes de que se observen signos de cicatrización clínica. Este biomarcador es esencial para distinguir entre alopecias no cicatriciales en fase de involución y aquellas con potencial de cicatrización, permitiendo una intervención agresiva con antiinflamatorios específicos. Para el equipo de GlowApp, la detección temprana mediante este marcador permite ajustar las expectativas terapéuticas y priorizar la detención del proceso fibrótico, protegiendo así el capital folicular del paciente contra daños permanentes e irreversibles.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology (JAAD)",
+        "url": "https://www.jaad.org/article/S0190-9622(23)02987-1/abstract",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "anti-fibroticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_patologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:08:18.926Z"
+  }
+]

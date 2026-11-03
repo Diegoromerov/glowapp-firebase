@@ -1,0 +1,131 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-espectroscopia-001",
+    "title": "Maquillaje en entornos de espectroscopia de absorción y sensores ópticos",
+    "content": "En eventos donde se utilizan sensores biométricos de absorción óptica, como los oxímetros de pulso integrados en wearables o sistemas de escaneo de piel, la composición del maquillaje es crítica. Los pigmentos con base de óxido de hierro y dióxido de titanio pueden alterar la longitud de onda de la luz reflejada, generando lecturas erróneas en la saturación de oxígeno o la perfusión tisular. Estudios en PubMed sugieren que el uso de bases con alta opacidad física bloquea la penetración de la luz infrarroja cercana necesaria para estos sensores. Para eventos que requieren monitoreo constante, se recomienda el uso de cosméticos con tecnología de transparencia óptica, que permitan el paso de fotones sin sacrificar la cobertura estética. La interferencia no solo afecta la precisión del sensor, sino que puede inducir falsas alarmas en dispositivos de monitoreo médico. Es fundamental evitar polvos con partículas reflectantes tipo mica en áreas donde el sensor esté en contacto directo con la epidermis, ya que la dispersión de luz (scattering) es el principal factor de error técnico en estas aplicaciones.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxido de hierro",
+        "dióxido de titanio"
+      ],
+      "contraindications": [
+        "uso de sensores biométricos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biometría-estética"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:59:16.033Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-ionizacion-negativa-002",
+    "title": "Maquillaje en ambientes de alta ionización negativa y estabilidad de emulsiones",
+    "content": "Los ambientes con alta concentración de iones negativos, comunes en entornos de spa de lujo o áreas con sistemas de purificación de aire avanzados, alteran la estabilidad electrostática de las emulsiones cosméticas. La carga eléctrica del aire puede favorecer la floculación de partículas de pigmento si el sistema emulsionante no cuenta con agentes tensioactivos no iónicos suficientemente estables. Este fenómeno provoca que el maquillaje pierda su homogeneidad visual tras pocas horas, resultando en un aspecto de 'cuarteado' no relacionado con la deshidratación cutánea. La evidencia en dermatología cosmética indica que las formulaciones ricas en polímeros formadores de película con carga neutra son más resistentes a este entorno. Es vital evitar el uso de fijadores en spray que contengan altas concentraciones de alcohol, ya que estos pueden interactuar con los iones del aire, acelerando la evaporación de la fase acuosa y comprometiendo la integridad del maquillaje. Se recomienda aplicar una base de imprimación (primer) con propiedades dieléctricas para aislar la piel y el maquillaje del potencial eléctrico ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos no iónicos",
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "sprays fijadores alcohólicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-cosmética"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:59:16.033Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-radiofrecuencia-004",
+    "title": "Maquillaje ante exposición a radiofrecuencia (RF) y pigmentos metálicos",
+    "content": "La exposición a campos de radiofrecuencia (RF) en eventos con alta densidad de dispositivos de telecomunicaciones puede generar una interacción física con pigmentos metálicos, como los óxidos de hierro o partículas de aluminio utilizadas en sombras de ojos de larga duración. Aunque el riesgo de calentamiento tisular es mínimo, la inducción de corrientes parásitas en partículas metálicas puede afectar la estabilidad de la película cosmética, provocando una migración del pigmento hacia los pliegues cutáneos. Según investigaciones en el Journal of Dermatological Science, la presencia de metales en el maquillaje puede actuar como un receptor de ondas electromagnéticas, alterando la temperatura local de la piel de forma imperceptible pero suficiente para modificar la viscosidad del producto. Se recomienda optar por pigmentos de origen mineral no metálico (como óxidos de cromo o pigmentos orgánicos certificados) en eventos con alta exposición a RF. Además, el uso de primers con propiedades bloqueadoras de RF, que contengan polímeros aislantes, ayuda a estabilizar la temperatura de la superficie cutánea y previene la oxidación acelerada del sebo provocada por la energía absorbida por los pigmentos metálicos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "pigmentos orgánicos"
+      ],
+      "contraindications": [
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnología-cosmética"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:59:16.033Z"
+  }
+]

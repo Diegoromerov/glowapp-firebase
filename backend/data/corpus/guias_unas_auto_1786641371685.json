@@ -1,0 +1,128 @@
+[
+  {
+    "chunk_id": "guias_unas-disrupcion-interfaz-001",
+    "title": "La interfase lecho-gel: impacto de la tensión superficial y el potencial zeta",
+    "content": "La adhesión de sistemas fotopolimerizables no depende únicamente de la rugosidad mecánica, sino de la física de la interfase. El potencial zeta, que describe la carga eléctrica en la superficie de la lámina ungueal, juega un papel crucial en la atracción de los monómeros. Cuando el pH del lecho se altera por el uso de primers ácidos, se modifica esta carga, pudiendo generar una repulsión electrostática que compromete la adhesión a largo plazo. Según estudios en ciencia de materiales aplicados a la dermatología, una superficie con carga neta negativa es fundamental para la humectación adecuada de las bases. La inestabilidad en esta interfase no solo provoca desprendimiento prematuro, sino que favorece la creación de microespacios donde la humedad residual y los microorganismos pueden proliferar. Es vital entender que la adhesión es un fenómeno químico-eléctrico, donde el equilibrio de la lámina es el factor determinante. La aplicación de agentes deshidratantes debe ser precisa para no alterar la polaridad de la queratina, lo cual podría inducir un fallo catastrófico en la polimerización del sistema elegido.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32451234/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers ácidos",
+        "monómeros"
+      ],
+      "contraindications": [
+        "uso excesivo de ácidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "adhesion_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:15:53.332Z"
+  },
+  {
+    "chunk_id": "guias_unas-degradacion-fotoiniciadores-002",
+    "title": "Degradación de fotoiniciadores y su relación con el sub-curado",
+    "content": "Los fotoiniciadores presentes en los geles, como el TPO (trimetilbenzoil-difenilfosfina óxido), son extremadamente sensibles a la radiación ambiental. La degradación de estos compuestos antes de la polimerización, debido a una exposición inadecuada a la luz solar en el puesto de trabajo, altera la estequiometría de la reacción. Un gel que ha sufrido degradación parcial de sus iniciadores no alcanzará el grado de conversión necesario, dejando monómeros residuales sin reaccionar. Estos monómeros libres son los principales responsables de la sensibilización alérgica a largo plazo en las profesionales de cabina. La literatura técnica subraya que la vida útil de los productos una vez abiertos está condicionada por la estabilidad de estas moléculas. Es imperativo almacenar los envases lejos de fuentes de luz UV y verificar la consistencia reológica del producto; cualquier cambio en la viscosidad puede ser un indicativo de que la cadena de polimerización se ha visto alterada por factores externos. La gestión del inventario y la protección lumínica son, por tanto, medidas de seguridad clínica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "TPO",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exposicion_luz_solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:15:53.332Z"
+  },
+  {
+    "chunk_id": "guias_unas-cavitacion-acustica-004",
+    "title": "Cavitación acústica y microfracturas por ultrasonido en fresas",
+    "content": "El uso de herramientas rotativas de alta frecuencia, especialmente fresas de diamante, puede generar fenómenos de cavitación acústica si se combinan con fluidos de limpieza o desinfectantes. Aunque la cavitación es efectiva para remover detritos, en la placa ungueal puede inducir microfracturas en la estructura de la queratina si la presión ejercida es inadecuada. Estas fisuras, a menudo invisibles al ojo humano, se convierten en reservorios para la colonización por biofilms. Estudios biomecánicos indican que la vibración armónica de las fresas, al entrar en resonancia con la lámina, dispersa la energía cinética de manera desigual, debilitando la cohesión de las células corneocitos. Es crítico ajustar la velocidad de rotación según la densidad de la uña y evitar la presión tangencial excesiva. La limpieza de estas microfisuras mediante esterilización convencional es ineficaz, lo que subraya la necesidad de prevenir el daño mecánico desde el primer contacto. La técnica de fresado debe ser siempre tangencial y nunca perpendicular, minimizando el impacto vibratorio sobre la matriz ungueal, la cual es extremadamente sensible al estrés mecánico crónico derivado de estas operaciones.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29878765/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado_perpendicular"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_fresado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:15:53.332Z"
+  }
+]

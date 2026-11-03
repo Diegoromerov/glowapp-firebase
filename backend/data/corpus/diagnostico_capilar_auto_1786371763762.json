@@ -1,0 +1,334 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-glymphatic-001",
+    "title": "El Sistema Glinfático del Cuero Cabelludo y el Aclaramiento de Metabolitos",
+    "content": "Estudios recientes sugieren que el cuero cabelludo posee un sistema de drenaje linfático especializado, análogo al sistema glinfático cerebral, responsable de la eliminación de desechos metabólicos y proteínas mal plegadas del microambiente folicular. La estasis de este sistema, influenciada por la presión hidrostática y la tensión del cuero cabelludo, puede acelerar la miniaturización al permitir la acumulación de detritos celulares que promueven un estado proinflamatorio crónico. La evaluación de la cinética de flujo en el espacio intersticial del cuero cabelludo mediante técnicas de imagen avanzadas permite identificar áreas de 'congestión metabólica' que preceden a la pérdida de densidad capilar. La optimización de este drenaje, a través de técnicas de masaje terapéutico estandarizado o agentes osmóticos, representa una nueva frontera en el manejo de la alopecia androgenética, buscando restaurar la homeostasis del nicho folicular mediante el aclaramiento eficiente de subproductos citotóxicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "caffeine",
+        "niacinamide"
+      ],
+      "contraindications": [
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mechanotransduction-002",
+    "title": "Mecanotransducción y la Integridad de la Vaina Radicular Externa",
+    "content": "La mecanotransducción es el proceso mediante el cual las células de la vaina radicular externa detectan y responden a fuerzas mecánicas externas, como el peinado, la tracción o la presión del casco. Este fenómeno activa canales iónicos mecanosensibles que modulan la expresión de factores de crecimiento como el TGF-beta, implicado en la inhibición del ciclo anágeno. Un diagnóstico capilar preciso debe considerar la carga mecánica acumulada en el cuero cabelludo, ya que la sobreestimulación de estos mecanorreceptores puede inducir una diferenciación prematura de las células madre del bulbo hacia un linaje epidérmico, perdiendo su potencial regenerativo folicular. La evaluación de la rigidez de la piel cabelluda mediante elastografía por ultrasonido proporciona datos objetivos sobre cómo esta tensión mecánica altera la señalización paracrina de la papila dérmica, siendo un factor crítico en el desarrollo de alopecias por tracción subclínica en pacientes con alta carga de estrés mecánico diario.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "cirugias recientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-ion-channels-003",
+    "title": "Canales Iónicos en el Ostium Folicular: Regulación de la Homeostasis",
+    "content": "El ostium folicular es una región crítica donde la conductancia iónica determina la integridad de la barrera cutánea. La alteración en el gradiente de potasio y calcio a través de las membranas de los queratinocitos del infundíbulo folicular puede desestabilizar el pH local, favoreciendo el crecimiento de microorganismos oportunistas. Investigaciones recientes han demostrado que el uso de productos cosméticos con pH no fisiológico altera la apertura de estos canales, provocando una pérdida de agua transepidérmica (TEWL) que deshidrata la matriz del pelo. El diagnóstico capilar moderno debe incluir la medición de la conductancia iónica de la superficie para predecir la susceptibilidad a la dermatitis de contacto y la inflamación folicular. La restauración de este equilibrio iónico es fundamental para mantener la cohesión de la cutícula y la salud del tallo a largo plazo, previniendo la fragilidad estructural inducida por la inestabilidad de la barrera cutánea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "graso"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acidos-grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mitophagy-004",
+    "title": "Mitofagia y Eficiencia Energética en el Bulbo Piloso",
+    "content": "La mitofagia, un proceso selectivo de autofagia para eliminar mitocondrias disfuncionales, es esencial para mantener la alta demanda energética del folículo piloso durante la fase anágena. Un fallo en este mecanismo de 'control de calidad' mitocondrial se traduce en una acumulación de especies reactivas de oxígeno (ROS) que dañan el ADN mitocondrial de las células de la matriz. En el contexto de la alopecia androgenética, se observa una disminución en la eficiencia de la mitofagia, lo que conduce a un agotamiento prematuro de las células progenitoras del folículo. La evaluación clínica de marcadores de estrés mitocondrial, mediante análisis de espectroscopía de la cutícula, permite identificar folículos en riesgo de involución antes de que sea visible la miniaturización. La intervención terapéutica dirigida a estimular la mitofagia, mediante compuestos activadores de la vía AMPK, representa un enfoque prometedor para prolongar la vida útil del folículo y mejorar la calidad de la fibra capilar, combatiendo la senescencia desde el nivel subcelular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/ncomms/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "urolitina-a"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomarcadores-capilares"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glycation-005",
+    "title": "Glicación de la Vaina Radicular: Rigidez y Pérdida de Elasticidad",
+    "content": "La formación de productos de glicación avanzada (AGEs) debido a la exposición a azúcares sistémicos y factores ambientales provoca un entrecruzamiento de las fibras de colágeno en la dermis perifolicular. Este proceso, conocido como glicación, resulta en una mayor rigidez de la vaina radicular y la matriz extracelular, lo que limita la capacidad del folículo para expandirse y regenerarse durante el ciclo capilar. Clínicamente, este endurecimiento de la interfase dermo-epidérmica se manifiesta como una pérdida de la elasticidad del cuero cabelludo y una disminución en la profundidad de anclaje del folículo. El diagnóstico de la glicación a nivel folicular es clave en pacientes con trastornos metabólicos, ya que la rigidez tisular dificulta la penetración de fármacos tópicos y compromete la microcirculación. La implementación de terapias antiglicación y el control metabólico son fundamentales para revertir el daño estructural y mejorar la supervivencia del folículo en pacientes con signos de envejecimiento capilar prematuro.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-envejecimiento-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurovascular-006",
+    "title": "El Eje Neurovascular en la Inflamación Perifolicular",
+    "content": "La liberación de neuropéptidos como la Sustancia P por las terminaciones nerviosas sensoriales que rodean el folículo piloso juega un rol determinante en la inflamación neurogénica. En condiciones de estrés crónico, esta descarga neurogénica provoca una vasodilatación persistente y el reclutamiento de mastocitos, cuya degranulación libera mediadores inflamatorios que atacan la papila dérmica. El diagnóstico de esta inflamación neurogénica requiere una evaluación de la sensibilidad del cuero cabelludo, a menudo manifestada como tricodinia o prurito localizado. La termografía infrarroja es una herramienta valiosa en este escenario, permitiendo mapear las zonas de hipertermia focal que coinciden con los patrones de pérdida capilar. Entender el eje neurovascular es crucial para el diseño de estrategias terapéuticas que no solo busquen la estimulación del crecimiento, sino también la modulación del microambiente inflamatorio, reduciendo la carga de mediadores neurogénicos que perpetúan la caída del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Dermatological Section",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capsaicina-topica",
+        "mentol"
+      ],
+      "contraindications": [
+        "rosacea-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-tricodinia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiome-metabolomics-007",
+    "title": "Metabolómica del Microbioma y su Impacto en el Crecimiento",
+    "content": "Más allá de la identificación de especies como Malassezia, el estudio del metaboloma del microbioma del cuero cabelludo revela cómo las interacciones químicas entre bacterias, hongos y el huésped influyen en la salud folicular. Los metabolitos producidos por la microbiota, como ácidos grasos de cadena corta y péptidos antimicrobianos, modulan la expresión de genes en las células del bulbo piloso. Un desequilibrio en estos metabolitos puede alterar la señalización necesaria para la transición del ciclo capilar, favoreciendo estados inflamatorios subclínicos. El diagnóstico moderno se está desplazando hacia el análisis funcional del microbioma para predecir la respuesta a tratamientos tópicos. Si el perfil metabólico del cuero cabelludo es disbiótico, la eficacia de agentes como el minoxidil puede verse reducida, evidenciando la importancia de restaurar el ecosistema microbiano como paso previo o complementario a cualquier protocolo de tratamiento capilar en el consultorio dermatológico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos-topicos",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposome-009",
+    "title": "Exposoma Urbano y su Efecto en la Barrera Cutánea Folicular",
+    "content": "El exposoma urbano, compuesto por partículas suspendidas (PM2.5), radiación UV e hidrocarburos policíclicos aromáticos, ejerce un efecto sinérgico deletéreo sobre el cuero cabelludo. Estas partículas no solo actúan como irritantes físicos, sino que penetran en el orificio folicular, induciendo una respuesta inflamatoria mediada por el receptor de hidrocarburos de arilo (AhR). Esta activación crónica del receptor AhR desplaza la diferenciación celular hacia vías inflamatorias, alterando la barrera cutánea y comprometiendo la supervivencia del folículo piloso. El diagnóstico capilar en entornos urbanos debe incluir una evaluación de la exposición a contaminantes para ajustar los protocolos de limpieza y protección. La aplicación de antioxidantes y agentes quelantes de metales pesados en el cuero cabelludo es esencial para neutralizar el daño inducido por el exposoma, preservando la integridad del nicho folicular frente a los desafíos ambientales de las grandes ciudades como Bogotá.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:22:26.731Z"
+  }
+]

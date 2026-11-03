@@ -1,0 +1,210 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001-dermatitis-oculta",
+    "title": "Dermatitis por contacto sistémica inducida por alérgenos ingeridos",
+    "content": "La dermatitis por contacto sistémica (DCS) representa un desafío diagnóstico en dermatología corporal, ya que las manifestaciones cutáneas aparecen tras la ingestión de alérgenos (como níquel, cobalto o bálsamo del Perú) en pacientes previamente sensibilizados. A diferencia de la dermatitis de contacto alérgica clásica, la DCS se presenta como erupciones generalizadas, intertriginosas o exacerbaciones de eccemas preexistentes en áreas cubiertas. El mecanismo inmunológico implica la activación de células T de memoria en la circulación sistémica. Es fundamental que el clínico considere la dieta y la suplementación en pacientes con dermatitis corporal persistente que no responden a tópicos. Estudios publicados en el Journal of the American Academy of Dermatology sugieren que la restricción dietética selectiva puede reducir la carga inflamatoria en casos recalcitrantes. La evaluación debe incluir una historia dietética detallada y, si es necesario, pruebas de parche para confirmar la sensibilización primaria. La gestión exitosa requiere un enfoque multidisciplinario entre dermatología y nutrición clínica, evitando la eliminación indiscriminada de grupos alimenticios sin evidencia de sensibilización previa documentada por pruebas epicutáneas estandarizadas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dietas restrictivas sin supervisión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:43.040Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002-calcifilaxis-cutanea",
+    "title": "Fisiopatología de la calcifilaxis y riesgo en dermatología estética",
+    "content": "La calcifilaxis o arteriolopatía urémica calcificante es una condición rara pero grave que afecta principalmente a pacientes con enfermedad renal crónica, caracterizada por la calcificación de las arteriolas dérmicas y del tejido adiposo subcutáneo, derivando en isquemia, dolor severo y necrosis cutánea. En el contexto de la estética corporal, es vital reconocer las lesiones iniciales —placas violáceas reticuladas— que pueden confundirse con hematomas o livedo reticularis. Aunque es infrecuente en población sana, el uso de ciertos procedimientos invasivos o el trauma cutáneo en pacientes con disfunción metabólica subyacente puede desencadenar una respuesta inflamatoria desproporcionada. La literatura en PubMed subraya que el diagnóstico temprano mediante biopsia cutánea y el manejo del metabolismo calcio-fósforo son críticos. Como profesionales de la estética en Bogotá, debemos mantener un alto índice de sospecha ante lesiones necróticas que no siguen patrones de trauma habitual, evitando procedimientos invasivos (como mesoterapia o lipoescultura) en pacientes con perfiles metabólicos alterados sin autorización médica previa. La prevención reside en la anamnesis exhaustiva sobre comorbilidades sistémicas antes de cualquier intervención invasiva en el tejido adiposo corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institutes of Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35405021/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procedimientos invasivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:43.040Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003-efecto-osmolar",
+    "title": "Dinámica de la hidratación corporal: El papel de los solutos osmolares",
+    "content": "La hidratación profunda de la piel corporal no depende únicamente de la aplicación de lípidos oclusivos, sino también de la modulación de la presión osmótica en el estrato córneo. Los humectantes fisiológicos, como el lactato de sodio, la urea y el glicerol, actúan aumentando la capacidad de retención hídrica al atraer agua hacia los corneocitos. Sin embargo, una concentración excesiva de ciertos solutos puede alterar el gradiente osmótico natural, provocando una deshidratación paradójica si el ambiente es extremadamente seco, como sucede en climas de gran altitud como Bogotá. Los estudios indican que la combinación de agentes oclusivos y humectantes en formulaciones corporales debe respetar el equilibrio electrolítico de la barrera cutánea. La elección del producto debe basarse en la integridad de la barrera: en casos de xerosis severa, los lípidos intercelulares (ceramidas, colesterol) son indispensables para restaurar la función de barrera, mientras que en pieles sanas, los humectantes mantienen la turgencia. Es crucial educar al paciente sobre la aplicación sobre piel ligeramente húmeda para maximizar la eficacia de los agentes higroscópicos y evitar la transpiración transepidérmica (TEWL) excesiva durante el proceso de absorción del producto cosmético.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/hydration-strategies/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "lactato de sodio",
+        "glicerol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos-cosmeticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:43.040Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-005-estrias-laser",
+    "title": "Remodelación de estrías distensae mediante láser fraccionado no ablativo",
+    "content": "El tratamiento de las estrías distensae (striae albae) mediante láser fraccionado no ablativo (como el láser 1540nm o 1550nm) se basa en la inducción de zonas de fototermólisis microscópica que estimulan la síntesis de colágeno y elastina en la dermis reticular. A diferencia de los métodos ablativos, esta tecnología minimiza el riesgo de hiperpigmentación postinflamatoria, una complicación frecuente en fototipos altos. La evidencia clínica indica que el éxito del tratamiento depende de la fase de la estría: las estrías rojas (striae rubrae) responden mejor a láseres vasculares (PDL), mientras que las estrías blancas requieren una estimulación más agresiva de la matriz extracelular. Es imperativo gestionar las expectativas del paciente, ya que la resolución completa es biológicamente imposible; el objetivo clínico es la mejora en la textura, profundidad y pigmentación de la lesión. En pacientes con antecedentes de queloides, se debe proceder con extrema cautela. El protocolo debe incluir una preparación de la piel con retinoides tópicos semanas antes de iniciar las sesiones para optimizar la respuesta de los fibroblastos y asegurar una recuperación tisular más rápida y uniforme.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Society for Dermatologic Surgery",
+        "url": "https://asds.net/skin-experts/skin-treatments/laser-skin-resurfacing",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides"
+      ],
+      "contraindications": [
+        "antecedentes de queloides"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-laser"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:43.040Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-008-onicosquisis-esmaltes",
+    "title": "Onicosquisis y el impacto clínico de los esmaltes semipermanentes",
+    "content": "La onicosquisis, o separación laminar del plato ungueal, es una consulta creciente asociada al uso frecuente de esmaltes de larga duración (semipermanentes). Estos productos, basados en polímeros acrílicos que requieren fotopolimerización, pueden inducir deshidratación de la lámina ungueal y debilitar la adhesión de los corneocitos del clavo. El daño no proviene únicamente del producto químico, sino también del proceso de remoción mecánica (limado excesivo) que reduce el espesor de la placa, aumentando la permeabilidad a agentes irritantes. Además, la exposición a lámparas UV/LED para el curado del esmalte plantea preocupaciones sobre la fototoxicidad cutánea periungueal. Estudios dermatológicos recomiendan intervalos de descanso entre aplicaciones para permitir la recuperación de la barrera ungueal y la hidratación mediante el uso de aceites ricos en ácidos grasos esenciales. La educación al paciente sobre la importancia de evitar el limado agresivo y la hidratación constante de la matriz es fundamental para prevenir la onicodistrofia inducida por cosméticos. En casos de fragilidad extrema, el uso de endurecedores con formaldehído debe evitarse, prefiriendo formulaciones basadas en queratina o agentes hidratantes profundos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/nail-health-cosmetics/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "queratina",
+        "ácidos grasos"
+      ],
+      "contraindications": [
+        "formaldehído"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-uñas"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:50:43.040Z"
+  }
+]

@@ -1,0 +1,133 @@
+[
+  {
+    "chunk_id": "terapia-luz-pulsada-intensa-vaskular-001",
+    "title": "Optimización de la Fluencia en IPL para Rosácea Eritematotelangiectásica",
+    "content": "La optimización de la fluencia en el tratamiento de la rosácea eritematotelangiectásica mediante Luz Pulsada Intensa (IPL) requiere una comprensión profunda de la cinética de relajación térmica de los vasos sanguíneos. Según la American Academy of Dermatology (AAD), el ajuste preciso de los parámetros de pulso y la selección de filtros de corte específicos son críticos para maximizar la fototermólisis selectiva de la hemoglobina oxigenada sin comprometer la integridad de la epidermis. En pacientes con fototipos altos (Fitzpatrick IV-VI), el riesgo de hiperpigmentación post-inflamatoria (PIH) aumenta significativamente, por lo que se recomienda emplear sistemas de enfriamiento epidérmico por contacto y una estrategia de disparo fraccionado. La evidencia sugiere que la reducción del eritema no solo depende de la energía total administrada, sino de la coherencia en la entrega de energía que minimiza la dispersión térmica hacia los tejidos adyacentes. El uso de protocolos de pulso dual, que permiten una fase de calentamiento seguida de una fase de coagulación, ha demostrado una mayor eficacia clínica en la resolución de telangiectasias faciales persistentes.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/rosacea/treatment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fotosensibilidad",
+        "uso de isotretinoina reciente"
+      ],
+      "season": [
+        "invierno",
+        "otoño"
+      ],
+      "applicable_modules": [
+        "terapias-luz-pulsada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:33:18.587Z"
+  },
+  {
+    "chunk_id": "bioestimulacion-policaprolactona-002",
+    "title": "Policaprolactona (PCL): Dinámica de Degradación y Soporte Estructural",
+    "content": "La Policaprolactona (PCL) se distingue como un bioestimulador de larga duración que induce una respuesta neocolagénica mediada por la estimulación de fibroblastos. A diferencia del ácido hialurónico, la PCL actúa mediante un proceso de degradación hidrolítica lenta que permite una integración tisular gradual. Estudios publicados en PubMed indican que la microsfera de PCL suspensa en un gel portador de carboximetilcelulosa proporciona una corrección inmediata, seguida de una formación de colágeno tipo I que persiste hasta por 24 meses. La reología del material es fundamental para su aplicación en el tercio inferior, donde la tensión mecánica es elevada. Es imperativo que el profesional comprenda la curva de degradación del polímero para evitar la sobrecorrección, ya que el volumen final es resultado de la combinación entre el producto inyectado y la matriz de colágeno autólogo sintetizada por el paciente. La técnica de inyección debe ser precisa, evitando planos superficiales para prevenir la formación de nódulos o irregularidades visibles en áreas de piel delgada.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Policaprolactona"
+      ],
+      "contraindications": [
+        "infeccion activa",
+        "enfermedades autoinmunes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioestimuladores-inyectables"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:33:18.587Z"
+  },
+  {
+    "chunk_id": "nanofluidica-entrega-activos-003",
+    "title": "Nanofluidica y Precisión en la Entrega Transdérmica de Activos",
+    "content": "La nanofluidica aplicada a la dermatología estética representa un cambio de paradigma en la entrega de ingredientes activos. Mediante el uso de sistemas de micro-canales y dispositivos de electroporación de alta frecuencia, es posible superar la barrera del estrato córneo con una precisión nanométrica. Estos sistemas permiten que moléculas de alto peso molecular, que normalmente serían excluidas por la barrera lipídica, alcancen la dermis papilar de forma controlada. La literatura reciente resalta la importancia de la estabilidad de la carga eléctrica en los activos transportados, ya que la polaridad del activo debe ser compatible con el campo electromagnético aplicado para evitar la degradación prematura. Este método es particularmente útil para la entrega de péptidos biomiméticos y factores de crecimiento, optimizando la biodisponibilidad y reduciendo la necesidad de inyecciones traumáticas. La precisión en la entrega minimiza los efectos secundarios sistémicos y permite una dosificación personalizada basada en la impedancia específica del tejido cutáneo del paciente, logrando protocolos más seguros y eficaces para el rejuvenecimiento facial no invasivo.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Controlled Release",
+        "url": "https://www.sciencedirect.com/journal/journal-of-controlled-release",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "factores de crecimiento"
+      ],
+      "contraindications": [
+        "implantes metalicos faciales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia-avanzada"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:33:18.587Z"
+  }
+]

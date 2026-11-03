@@ -1,0 +1,268 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-sincronia-mitocondrial-001",
+    "title": "Dinámica de Fisión y Fusión Mitocondrial en la Célula Madre Folicular",
+    "content": "La salud del nicho folicular depende críticamente de la dinámica mitocondrial. En el estado de reposo (telógeno), las células madre del bulbo presentan mitocondrias fragmentadas, lo que limita la producción de especies reactivas de oxígeno (ROS) y protege el genoma. La transición al anágeno requiere una fusión mitocondrial eficiente para aumentar la capacidad de fosforilación oxidativa. Estudios en PubMed indican que la desregulación de las proteínas OPA1 y DRP1 impide la activación del ciclo, conduciendo a una miniaturización prematura. La evaluación de este estado metabólico mediante biomarcadores de estrés mitocondrial es crucial para entender alopecias no cicatriciales resistentes a tratamientos convencionales. La disfunción en esta maquinaria energética reduce la capacidad regenerativa del folículo ante estímulos de crecimiento, siendo un marcador objetivo de senescencia folicular temprana. La monitorización de estos procesos permite predecir la respuesta a terapias que buscan optimizar el metabolismo del bulbo piloso, evitando el agotamiento energético crónico que caracteriza a las alopecias androgénicas de progresión rápida.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214562/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microambiente-extracelular-002",
+    "title": "Rigidez de la Matriz Extracelular y Fibrosis Subclínica",
+    "content": "La matriz extracelular (MEC) del cuero cabelludo no es un soporte pasivo; su composición determina la señalización mecánica que recibe el folículo. El aumento en la reticulación de colágeno y la acumulación de tenascina-C generan un microambiente rígido que inhibe la proliferación de las células de la papila dérmica. Este proceso, descrito en literatura dermatológica reciente, es precursor de la fibrosis perifolicular incluso en ausencia de inflamación clínica evidente. La medición de la rigidez mecánica del cuero cabelludo mediante técnicas de elastografía de ondas de corte permite identificar zonas con alta probabilidad de miniaturización irreversible. La remodelación de esta matriz es un objetivo terapéutico emergente, donde el control de la actividad de las metaloproteinasas de matriz (MMPs) y sus inhibidores tisulares (TIMPs) juega un papel fundamental. La fibrosis subclínica actúa como una barrera física que impide la correcta vascularización y el intercambio de nutrientes, perpetuando el ciclo de atrofia folicular independientemente de los niveles de dihidrotestosterona en el paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02541-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_biomedico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-señalizacion-wnt-003",
+    "title": "Modulación de la Vía Wnt/β-catenina por Estrés Mecánico",
+    "content": "El folículo piloso responde a estímulos mecánicos mediante la vía de señalización Wnt/β-catenina, esencial para mantener el estado anágeno. La mecanotransducción, mediada por canales iónicos sensibles a la tensión, como los canales Piezo1, traduce la fuerza física ejercida sobre el cuero cabelludo en señales moleculares. Un estrés mecánico excesivo o crónico puede desensibilizar al nicho folicular, provocando una caída prematura en la expresión de genes de diferenciación. La investigación actual sugiere que la manipulación controlada de estas fuerzas, a través de técnicas de masaje o dispositivos de estimulación, puede reactivar la vía Wnt. Es fundamental diferenciar entre el estrés mecánico que favorece la regeneración y aquel que induce inflamación y fibrosis. El diagnóstico capilar moderno debe considerar la tensión superficial y la elasticidad de la piel cabelluda como variables predictoras del éxito terapéutico. La falta de respuesta a minoxidil o finasteride en ciertos pacientes puede estar correlacionada con una alteración en estos sensores mecánicos, sugiriendo la necesidad de enfoques de medicina regenerativa complementarios.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exosomas-nicho-004",
+    "title": "Comunicación Exosomal en el Nicho de Células Madre",
+    "content": "La comunicación intercelular dentro del nicho folicular es mediada en gran medida por exosomas, pequeñas vesículas extracelulares cargadas de microARNs y proteínas regulatorias. En estados de alopecia, se observa una alteración en la carga molecular de estos exosomas, promoviendo un ambiente pro-senescente en lugar de uno regenerativo. El análisis del perfil de exosomas en el fluido del cuero cabelludo ofrece una ventana diagnóstica única para evaluar la viabilidad de las células madre del 'bulge'. Estudios publicados en revistas indexadas indican que la transferencia de microARNs específicos desde la papila dérmica a los queratinocitos del bulbo es vital para la progresión del ciclo capilar. La identificación de biomarcadores exosomales podría revolucionar el diagnóstico precoz de las alopecias, permitiendo intervenciones antes de que la miniaturización sea clínicamente visible mediante dermatoscopia. Este enfoque permite una medicina de precisión donde se evalúa no solo la densidad, sino la capacidad de comunicación celular del folículo, siendo un campo de investigación activa para terapias de reemplazo regenerativo en pacientes con alopecias refractarias.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NIH)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10784231/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_molecular"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-hipoxia-tisular-005",
+    "title": "Microambiente Hipóxico y Estabilización de HIF-1a",
+    "content": "La papila dérmica requiere niveles precisos de oxígeno para su correcto funcionamiento. Paradójicamente, una hipoxia fisiológica controlada es necesaria para la estabilización del Factor Inducible por Hipoxia 1-alfa (HIF-1a), el cual activa genes angiogénicos vitales para la fase anágena. Sin embargo, en patologías como la alopecia androgenética, la microvasculatura perifolicular se degrada, llevando a una hipoxia tisular patológica que supera el umbral de supervivencia. Esto resulta en la acumulación de radicales libres y la inducción de autofagia excesiva, lo que compromete la integridad del bulbo piloso. El diagnóstico mediante mapeo de oxigenación tisular proporciona información valiosa sobre el estado de la microcirculación antes de la atrofia total del folículo. La optimización del flujo sanguíneo, mediante agentes que modulan la vía de óxido nítrico o la estimulación de la angiogénesis, puede revertir parcialmente la miniaturización si el nicho de células madre permanece viable. Comprender el equilibrio entre la hipoxia fisiológica y la patológica es fundamental para el manejo clínico de la pérdida de densidad capilar en pacientes urbanos con alta exposición al estrés oxidativo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/3/1647",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-inmunosenescencia-006",
+    "title": "Inmunosenescencia y Disregulación de Células T Reguladoras",
+    "content": "El nicho folicular es un sitio con privilegio inmunológico, mantenido en parte por las células T reguladoras (Tregs). La inmunosenescencia, caracterizada por la disminución y disfunción de estas células, rompe la tolerancia inmunológica, exponiendo al folículo a procesos inflamatorios crónicos de bajo grado. Este fenómeno es particularmente relevante en alopecias areata y en la progresión de la alopecia androgenética asociada a la edad. La presencia de marcadores de senescencia en las células inmunes residentes del cuero cabelludo se correlaciona con una menor resiliencia frente a agresores ambientales. El diagnóstico debe incluir la evaluación de la arquitectura inmunológica del cuero cabelludo, donde la pérdida de la población de Tregs predice una mala respuesta a terapias antiinflamatorias convencionales. La restauración de la homeostasis inmunológica, mediante estrategias que promuevan la expansión de Tregs o la modulación de citocinas proinflamatorias (como IL-17 o IFN-gamma), representa un nuevo horizonte en el tratamiento de las alopecias inflamatorias. La identificación temprana de este desequilibrio es clave para evitar la pérdida permanente de folículos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Nature Reviews Immunology",
+        "url": "https://www.nature.com/articles/s41577-023-00965-7",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inmunologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmision-008",
+    "title": "Eje Neuro-Inmune: Sustancia P y Tricodinia Crónica",
+    "content": "La tricodinia, descrita como una sensación de dolor, ardor o prurito en el cuero cabelludo, es a menudo un síntoma subestimado en el diagnóstico capilar. Este fenómeno está íntimamente ligado a la inflamación neurogénica, donde la liberación de Sustancia P por las terminaciones nerviosas sensoriales activa a los mastocitos perifoliculares. Esta cascada neuro-inmune no solo causa molestias, sino que libera mediadores que inhiben el crecimiento folicular y aceleran la transición al catágeno. El diagnóstico debe considerar la hipersensibilidad cutánea y el papel de los neuropéptidos en la patogénesis de las alopecias. El uso de técnicas de termografía infrarroja puede visualizar zonas de inflamación neurogénica subclínica, permitiendo un abordaje terapéutico que combine moduladores nerviosos y agentes antiinflamatorios. Ignorar la tricodinia en el protocolo de atención puede llevar a una mala interpretación de la respuesta al tratamiento, ya que el estrés neurogénico puede perpetuar la pérdida de cabello a pesar de un control hormonal adecuado. La evaluación del eje neuro-inmune es crucial para pacientes con alta carga de estrés emocional o ansiedad.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/article/S0378-6323(23)00000-0",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_neurologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:53.644Z"
+  }
+]

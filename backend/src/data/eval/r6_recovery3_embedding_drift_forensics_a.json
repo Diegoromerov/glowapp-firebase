@@ -1,0 +1,1637 @@
+{
+  "cycle": "R6-RECOVERY-3",
+  "run": "A",
+  "timestamp": "2026-08-17T00:59:11.520Z",
+  "pre_state": {
+    "total": "5663",
+    "nulls": "0",
+    "nonnulls": "5663"
+  },
+  "model_config": {
+    "model": "nvidia/nv-embedqa-e5-v5",
+    "endpoint": "https://integrate.api.nvidia.com/v1/embeddings",
+    "input_type": "passage",
+    "dimensions": 1024,
+    "truncation_chars": 1400,
+    "text_construction": "title + \"\\n\\n\" + content.substring(0, 4000) then truncate to 1400 chars",
+    "normalization": "API default (not explicitly controlled)",
+    "distance_operator": "cosine (<=>)",
+    "index_type": "HNSW (m=16, ef_construction=64)"
+  },
+  "endpoint_identity": {
+    "provider": "NVIDIA NIM",
+    "endpoint": "https://integrate.api.nvidia.com/v1/embeddings",
+    "model_identifier": "nvidia/nv-embedqa-e5-v5",
+    "version": "NOT-VERIFIABLE (NVIDIA API does not expose model version)",
+    "identity_verifiable": false,
+    "note": "NVIDIA NIM endpoints may update models transparently; no version pinning via API"
+  },
+  "embedding_text_analysis": [
+    {
+      "chunk_id": "3acaf6e599eaf35442ffcbd297504e9d",
+      "title_length": 48,
+      "content_length": 717,
+      "constructed_length": 767,
+      "truncated_length": 767,
+      "was_truncated": false,
+      "text_hash": "7e33c610dda5ee93"
+    },
+    {
+      "chunk_id": "39602cb122ee5889827824c674396662",
+      "title_length": 40,
+      "content_length": 455,
+      "constructed_length": 497,
+      "truncated_length": 497,
+      "was_truncated": false,
+      "text_hash": "31311ea8cc177369"
+    },
+    {
+      "chunk_id": "c05aa1acead13956a07441b1b317972b",
+      "title_length": 60,
+      "content_length": 582,
+      "constructed_length": 644,
+      "truncated_length": 644,
+      "was_truncated": false,
+      "text_hash": "688efdbab6d44854"
+    },
+    {
+      "chunk_id": "cuidado_corporal_y_spa-1786384695040-5-1ba6b62d-dinamica-de-la-respuesta-inmunologica-ante-el-uso-prolongado",
+      "title_length": 86,
+      "content_length": 1115,
+      "constructed_length": 1203,
+      "truncated_length": 1203,
+      "was_truncated": false,
+      "text_hash": "7098c6181e091a55"
+    },
+    {
+      "chunk_id": "colorimetria_capilar_tinte-1786392698428-6-ec65782f-analisis-de-la-dispersion-de-luz-por-metamerismo-en-cabellos",
+      "title_length": 74,
+      "content_length": 1203,
+      "constructed_length": 1279,
+      "truncated_length": 1279,
+      "was_truncated": false,
+      "text_hash": "5752e4b4d7ff251d"
+    },
+    {
+      "chunk_id": "riesgo-niacinamida-ph-bajo-002",
+      "title_length": 50,
+      "content_length": 979,
+      "constructed_length": 1031,
+      "truncated_length": 1031,
+      "was_truncated": false,
+      "text_hash": "93ef7929750860f0"
+    },
+    {
+      "chunk_id": "poros-humedad-bogota-008",
+      "title_length": 51,
+      "content_length": 923,
+      "constructed_length": 976,
+      "truncated_length": 976,
+      "was_truncated": false,
+      "text_hash": "fff5fb9a6763fb8f"
+    },
+    {
+      "chunk_id": "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+      "title_length": 69,
+      "content_length": 1107,
+      "constructed_length": 1178,
+      "truncated_length": 1178,
+      "was_truncated": false,
+      "text_hash": "7fa14b6dd5f72acb"
+    },
+    {
+      "chunk_id": "skincare-ritmos-circadianos-001",
+      "title_length": 80,
+      "content_length": 1325,
+      "constructed_length": 1407,
+      "truncated_length": 1400,
+      "was_truncated": true,
+      "text_hash": "9d391c5eda8dde8b"
+    },
+    {
+      "chunk_id": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+      "title_length": 72,
+      "content_length": 1149,
+      "constructed_length": 1223,
+      "truncated_length": 1223,
+      "was_truncated": false,
+      "text_hash": "49cb599c8aa2da51"
+    },
+    {
+      "chunk_id": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+      "title_length": 81,
+      "content_length": 1132,
+      "constructed_length": 1215,
+      "truncated_length": 1215,
+      "was_truncated": false,
+      "text_hash": "59edf4558a8c656a"
+    },
+    {
+      "chunk_id": "skincare-rutinas-autofagia-peptidos-003",
+      "title_length": 66,
+      "content_length": 1177,
+      "constructed_length": 1245,
+      "truncated_length": 1245,
+      "was_truncated": false,
+      "text_hash": "594ddb4b15d4137e"
+    },
+    {
+      "chunk_id": "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+      "title_length": 102,
+      "content_length": 1204,
+      "constructed_length": 1308,
+      "truncated_length": 1308,
+      "was_truncated": false,
+      "text_hash": "d974b7215d80d733"
+    },
+    {
+      "chunk_id": "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se",
+      "title_length": 93,
+      "content_length": 1166,
+      "constructed_length": 1261,
+      "truncated_length": 1261,
+      "was_truncated": false,
+      "text_hash": "8e30fb8b12be5a3c"
+    },
+    {
+      "chunk_id": "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+      "title_length": 84,
+      "content_length": 1222,
+      "constructed_length": 1308,
+      "truncated_length": 1308,
+      "was_truncated": false,
+      "text_hash": "82922625c056d4e2"
+    },
+    {
+      "chunk_id": "reologia-ah-006",
+      "title_length": 68,
+      "content_length": 1077,
+      "constructed_length": 1147,
+      "truncated_length": 1147,
+      "was_truncated": false,
+      "text_hash": "749ff49c239a52ba"
+    },
+    {
+      "chunk_id": "tendencias-belleza-virales-skincare-cicadiano-002",
+      "title_length": 61,
+      "content_length": 1261,
+      "constructed_length": 1324,
+      "truncated_length": 1324,
+      "was_truncated": false,
+      "text_hash": "340e970904d16b79"
+    },
+    {
+      "chunk_id": "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+      "title_length": 80,
+      "content_length": 1105,
+      "constructed_length": 1187,
+      "truncated_length": 1187,
+      "was_truncated": false,
+      "text_hash": "534c2d1b48c961ff"
+    },
+    {
+      "chunk_id": "poros-clima-bogota-009",
+      "title_length": 72,
+      "content_length": 1106,
+      "constructed_length": 1180,
+      "truncated_length": 1180,
+      "was_truncated": false,
+      "text_hash": "f6ac0f138b742648"
+    },
+    {
+      "chunk_id": "reologia-acido-hialuronico-005",
+      "title_length": 53,
+      "content_length": 1227,
+      "constructed_length": 1282,
+      "truncated_length": 1282,
+      "was_truncated": false,
+      "text_hash": "f8f20c0ad4800c28"
+    },
+    {
+      "chunk_id": "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+      "title_length": 83,
+      "content_length": 1004,
+      "constructed_length": 1089,
+      "truncated_length": 1089,
+      "was_truncated": false,
+      "text_hash": "46ea40d51ab12d27"
+    },
+    {
+      "chunk_id": "ingredientes_activos_contraindicaciones-1786386431042-1-3711cde0-polisorbato-20-y-el-riesgo-de-permeabilidad-en-la-barrera-cu",
+      "title_length": 65,
+      "content_length": 1033,
+      "constructed_length": 1100,
+      "truncated_length": 1100,
+      "was_truncated": false,
+      "text_hash": "4c44a78f8e97957f"
+    },
+    {
+      "chunk_id": "maquillaje-eventos-entorno-hiperbarico-001",
+      "title_length": 69,
+      "content_length": 1126,
+      "constructed_length": 1197,
+      "truncated_length": 1197,
+      "was_truncated": false,
+      "text_hash": "5da5795ab7f1cdaa"
+    },
+    {
+      "chunk_id": "diagnostico-capilar-estres-oxidativo-002",
+      "title_length": 68,
+      "content_length": 1078,
+      "constructed_length": 1148,
+      "truncated_length": 1148,
+      "was_truncated": false,
+      "text_hash": "2ab9e23d501605f7"
+    },
+    {
+      "chunk_id": "colorimetria_piel_undertone-1786386646733-6-85d8bb21-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+      "title_length": 86,
+      "content_length": 1224,
+      "constructed_length": 1312,
+      "truncated_length": 1312,
+      "was_truncated": false,
+      "text_hash": "52c8247b64625724"
+    },
+    {
+      "chunk_id": "hiperhidrosis-adhesion-007",
+      "title_length": 71,
+      "content_length": 1070,
+      "constructed_length": 1143,
+      "truncated_length": 1143,
+      "was_truncated": false,
+      "text_hash": "7ef9511870d163d2"
+    },
+    {
+      "chunk_id": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+      "title_length": 75,
+      "content_length": 1058,
+      "constructed_length": 1135,
+      "truncated_length": 1135,
+      "was_truncated": false,
+      "text_hash": "850b639cfb74b652"
+    },
+    {
+      "chunk_id": "proteccion-solar-filtros-quimicos-006",
+      "title_length": 72,
+      "content_length": 1236,
+      "constructed_length": 1310,
+      "truncated_length": 1310,
+      "was_truncated": false,
+      "text_hash": "9ed68174e4e6268a"
+    },
+    {
+      "chunk_id": "trend-sunscreen-mixing-004",
+      "title_length": 78,
+      "content_length": 913,
+      "constructed_length": 993,
+      "truncated_length": 993,
+      "was_truncated": false,
+      "text_hash": "097d6608dc3fe026"
+    },
+    {
+      "chunk_id": "niacinamida-hidrolisis-ph-002",
+      "title_length": 68,
+      "content_length": 1099,
+      "constructed_length": 1169,
+      "truncated_length": 1169,
+      "was_truncated": false,
+      "text_hash": "4955537da61620e0"
+    }
+  ],
+  "embedding_properties": [],
+  "norm_stats": {
+    "min": null,
+    "max": null,
+    "mean": null,
+    "all_close_to_1": true
+  },
+  "distance_info": {
+    "hnsw_index": "idx_beauty_knowledge_embedding_hnsw",
+    "index_def": "CREATE INDEX idx_beauty_knowledge_embedding_hnsw ON public.beauty_knowledge_embeddings USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')",
+    "distance_operator": "cosine",
+    "expected": "cosine (<=>)",
+    "compatible": true
+  },
+  "association_check": [
+    {
+      "query_id": "skincare_003",
+      "expected_id": "poros-humedad-bogota-008",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_003",
+      "expected_id": "poros-clima-bogota-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_003",
+      "expected_id": "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_003",
+      "expected_id": "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_005",
+      "expected_id": "proteccion-solar-filtros-quimicos-006",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_005",
+      "expected_id": "trend-sunscreen-mixing-004",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_005",
+      "expected_id": "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_006",
+      "expected_id": "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_006",
+      "expected_id": "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_006",
+      "expected_id": "reologia-acido-hialuronico-005",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_006",
+      "expected_id": "reologia-ah-006",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_007",
+      "expected_id": "skincare-ritmos-circadianos-001",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_007",
+      "expected_id": "tendencias-belleza-virales-skincare-cicadiano-002",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_007",
+      "expected_id": "skincare-rutinas-autofagia-peptidos-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_008",
+      "expected_id": "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_008",
+      "expected_id": "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_008",
+      "expected_id": "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_008",
+      "expected_id": "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_009",
+      "expected_id": "riesgo-niacinamida-ph-bajo-002",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_009",
+      "expected_id": "niacinamida-hidrolisis-ph-002",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_009",
+      "expected_id": "activos-quelantes-y-metales-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_010",
+      "expected_id": "skincare-microbioma-limpiadores-004",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_010",
+      "expected_id": "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "skincare_010",
+      "expected_id": "skincare-rutinas-piel-deshidratada-004",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_002",
+      "expected_id": "colorimetria-capilar-ph-001",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_002",
+      "expected_id": "colorimetria-capilar-ph-pos-tinte-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_002",
+      "expected_id": "colorimetria-capilar-viscoelasticidad-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_002",
+      "expected_id": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_002",
+      "expected_id": "colorimetria-capilar-metales-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_006",
+      "expected_id": "microbiota-scalp-008",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_006",
+      "expected_id": "estabilidad-ph-cuero-cabelludo-004",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_006",
+      "expected_id": "colorimetria-capilar-microbiota-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_008",
+      "expected_id": "hidratacion-oclusiva-corporal-008",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_008",
+      "expected_id": "hidratacion-oclusivos-humectantes-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_008",
+      "expected_id": "urea-umbral-hidratacion-descamacion-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cabello_008",
+      "expected_id": "hidrofaciales-tecnologia-006",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_001",
+      "expected_id": "visajismo-cejas-microblading-envejecimiento-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_001",
+      "expected_id": "visajismo-cejas-microblading-cicatrizacion-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_001",
+      "expected_id": "visajismo-cejas-microblading-piel-grasa-005",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_004",
+      "expected_id": "visajismo-cejas-microblading-musculatura-orbicular-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_004",
+      "expected_id": "visajismo-microblading-arquitectura-muscular-008",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_004",
+      "expected_id": "microblading-envejecimiento-009",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_004",
+      "expected_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_004",
+      "expected_id": "microblading-psicologia-007",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_004",
+      "expected_id": "visajismo-cejas-microblading-metamerismo-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_005",
+      "expected_id": "visajismo-cejas-microblading-cicatrizacion-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_005",
+      "expected_id": "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_005",
+      "expected_id": "visajismo-cejas-microblading-microbiota-006",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_005",
+      "expected_id": "impacto-variabilidad-glucemica-cicatrizacion-001",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_007",
+      "expected_id": "visajismo-cejas-diabetis-cicatrizacion-004",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_007",
+      "expected_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_007",
+      "expected_id": "visajismo-cejas-microblading-piel-grasa-005",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_008",
+      "expected_id": "visajismo-cejas-microblading-interaccion-laser-001",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_008",
+      "expected_id": "guias_unas-electrolisis-y-matriz-001",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_008",
+      "expected_id": "terapia-laser-erbio-glass-002",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_008",
+      "expected_id": "visajismo-cejas-microblading-piel-grasa-005",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_008",
+      "expected_id": "visajismo-cejas-microblading-efecto-tyndall-003",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    },
+    {
+      "query_id": "cejas_008",
+      "expected_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+      "found": true,
+      "has_embedding": true,
+      "dims": 1024
+    }
+  ],
+  "critical_analysis": [
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "query_norm": "1.000081",
+      "expected_ids": [
+        "colorimetria-capilar-ph-001",
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+        "colorimetria-capilar-metales-003"
+      ],
+      "expected_similarities": [
+        {
+          "chunk_id": "colorimetria-capilar-ph-001",
+          "similarity": 0.41269719686605877
+        },
+        {
+          "chunk_id": "colorimetria-capilar-ph-pos-tinte-009",
+          "similarity": 0.49840930086242585
+        },
+        {
+          "chunk_id": "colorimetria-capilar-viscoelasticidad-009",
+          "similarity": 0.5079331310378318
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion",
+          "similarity": 0.4092295353293076
+        },
+        {
+          "chunk_id": "colorimetria-capilar-metales-003",
+          "similarity": 0.44263854982544903
+        }
+      ],
+      "expected_ranks": {
+        "colorimetria-capilar-ph-001": ">50",
+        "colorimetria-capilar-ph-pos-tinte-009": ">50",
+        "colorimetria-capilar-viscoelasticidad-009": ">50",
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion": ">50",
+        "colorimetria-capilar-metales-003": ">50"
+      },
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7427"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6886"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6666"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6503"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6242"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5909"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7427"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7406"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7239"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7085"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7013"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.6886"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6666"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6503"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6242"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5909"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5906"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5882"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5710"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5704"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5675"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-tinte-005",
+          "similarity": "0.5600"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5593"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5558"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-bioquimica-005",
+          "similarity": "0.5547"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786386927899-3-1bdf6b0b-efecto-piezoelectrico-y-su-influencia-en-la-estabilidad-del-",
+          "similarity": "0.5525"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5521"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5483"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5390"
+        },
+        {
+          "chunk_id": "peroxidasa-endogena-006",
+          "similarity": "0.5337"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5321"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-2-295ba2df-influencia-de-la-topografia-de-la-cuticula-en-la-reflexion-e",
+          "similarity": "0.5286"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786385348304-6-1d0f0031-dinamica-de-la-peroxidasa-endogena-en-la-degradacion-del-col",
+          "similarity": "0.5259"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-formaldehido-005",
+          "similarity": "0.5229"
+        },
+        {
+          "chunk_id": "colorimetria-influencia-tiroidea-001",
+          "similarity": "0.5223"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786391632501-3-5922fc9a-impacto-de-la-actividad-de-las-oxidasas-exogenas-en-la-estab",
+          "similarity": "0.5197"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786383397143-6-d327b161-peroxidasa-endogena-y-su-impacto-en-la-oxidacion-incontrolad",
+          "similarity": "0.5189"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-3-2d1257bd-dinamica-de-la-adsorcion-de-precursores-en-presencia-de-lipi",
+          "similarity": "0.5175"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-estabilidad-electroquimica-004",
+          "similarity": "0.5161"
+        },
+        {
+          "chunk_id": "colorimetria-capilar-quelacion-006",
+          "similarity": "0.5146"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786391540696-3-0cda3a6c-dispersion-de-mie-y-el-control-del-brillo-en-cabellos-pre-ac",
+          "similarity": "0.5141"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.5130"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786392297954-4-6289d662-dinamica-de-la-difusion-de-pigmentos-mediante-gradientes-de-",
+          "similarity": "0.5129"
+        },
+        {
+          "chunk_id": "colorimetria-interaccion-metales-005",
+          "similarity": "0.5127"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786393016716-1-f363d1ba-cinetica-de-la-oxidacion-mediada-por-catalizadores-metalicos",
+          "similarity": "0.5123"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "query_norm": "1.000348",
+      "expected_ids": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-envejecimiento-009",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "microblading-psicologia-007",
+        "visajismo-cejas-microblading-metamerismo-003"
+      ],
+      "expected_similarities": [
+        {
+          "chunk_id": "visajismo-cejas-microblading-musculatura-orbicular-009",
+          "similarity": 0.34179949757948314
+        },
+        {
+          "chunk_id": "visajismo-microblading-arquitectura-muscular-008",
+          "similarity": 0.3555663187578575
+        },
+        {
+          "chunk_id": "microblading-envejecimiento-009",
+          "similarity": 0.43027408159688063
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+          "similarity": 0.4527135899993069
+        },
+        {
+          "chunk_id": "microblading-psicologia-007",
+          "similarity": 0.3972031503268767
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-metamerismo-003",
+          "similarity": 0.4090685547784003
+        }
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-microblading-musculatura-orbicular-009": ">50",
+        "visajismo-microblading-arquitectura-muscular-008": ">50",
+        "microblading-envejecimiento-009": ">50",
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para": ">50",
+        "microblading-psicologia-007": ">50",
+        "visajismo-cejas-microblading-metamerismo-003": ">50"
+      },
+      "top1": {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7542"
+      },
+      "top5": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7102"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6976"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6779"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6546"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6129"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7542"
+        },
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7483"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7327"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7215"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7152"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7102"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.6976"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.6779"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6546"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.6129"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.5962"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.5874"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.5651"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5647"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.5627"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5601"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390762073-1-a4f95f46-efecto-de-la-permeabilidad-de-la-barrera-lipidica-en-la-disp",
+          "similarity": "0.5569"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5557"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5556"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5551"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5493"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390991580-3-c01f57c9-efecto-de-la-acumulacion-de-metales-pesados-en-la-dermis-y-s",
+          "similarity": "0.5462"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-2-2fe7d8cb-interferencia-de-la-densidad-de-queratinocitos-en-la-dispers",
+          "similarity": "0.5410"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+          "similarity": "0.5331"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-4-cc12ac6e-interferencia-de-los-quelantes-en-la-cinetica-de-oxidacion-d",
+          "similarity": "0.5272"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786388010593-6-5b8604b9-difraccion-de-fraunhofer-y-la-queratina-del-estrato-corneo",
+          "similarity": "0.5257"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-campos-magneticos-003",
+          "similarity": "0.5235"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390430780-5-ab0b0712-estructura-de-la-queratina-y-su-influencia-en-la-dispersion-",
+          "similarity": "0.5221"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5204"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-2-295ba2df-influencia-de-la-topografia-de-la-cuticula-en-la-reflexion-e",
+          "similarity": "0.5179"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5139"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786390863965-5-4fa786ea-hidratacion-del-estrato-corneo-y-su-efecto-en-la-dispersion-",
+          "similarity": "0.5125"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-2-60319c84-termodinamica-de-la-interfaz-aguja-pigmento-control-de-la-vi",
+          "similarity": "0.5098"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5089"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5050"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952969-1-28fd82e2-analisis-de-la-anisotropia-dermica-en-la-retencion-del-pigme",
+          "similarity": "0.5019"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+          "similarity": "0.5011"
+        },
+        {
+          "chunk_id": "maquillaje-eventos-iluminacion-sodio-004",
+          "similarity": "0.5011"
+        },
+        {
+          "chunk_id": "diagnostico_capilar-1786383886989-6-3d5d8862-espectroscopia-de-fluorescencia-para-la-deteccion-de-porfiri",
+          "similarity": "0.5010"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786384097275-1-9981c05b-efecto-de-la-glicacion-no-enzimatica-en-la-matriz-extracelul",
+          "similarity": "0.4930"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "query_norm": "1.000619",
+      "expected_ids": [
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-efecto-tyndall-003",
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "expected_similarities": [
+        {
+          "chunk_id": "visajismo-cejas-microblading-interaccion-laser-001",
+          "similarity": 0.4089867876220289
+        },
+        {
+          "chunk_id": "guias_unas-electrolisis-y-matriz-001",
+          "similarity": 0.36820684986328434
+        },
+        {
+          "chunk_id": "terapia-laser-erbio-glass-002",
+          "similarity": 0.3389865957792195
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-piel-grasa-005",
+          "similarity": 0.4465188817180914
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-efecto-tyndall-003",
+          "similarity": 0.4287685291530512
+        },
+        {
+          "chunk_id": "visajismo-cejas-enfermedades-autoinmunes-007",
+          "similarity": 0.49238811231721624
+        }
+      ],
+      "expected_ranks": {
+        "visajismo-cejas-microblading-interaccion-laser-001": ">50",
+        "guias_unas-electrolisis-y-matriz-001": ">50",
+        "terapia-laser-erbio-glass-002": ">50",
+        "visajismo-cejas-microblading-piel-grasa-005": ">50",
+        "visajismo-cejas-microblading-efecto-tyndall-003": ">50",
+        "visajismo-cejas-enfermedades-autoinmunes-007": ">50"
+      },
+      "top1": {
+        "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+        "similarity": "0.7635"
+      },
+      "top5": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        }
+      ],
+      "top10": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7336"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7316"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6590"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6299"
+        }
+      ],
+      "top50": [
+        {
+          "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+          "similarity": "0.7635"
+        },
+        {
+          "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+          "similarity": "0.7633"
+        },
+        {
+          "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+          "similarity": "0.7559"
+        },
+        {
+          "chunk_id": "298eb340a87c66875ca0ba0bbff8fd47226d0969c3eb431fbf67f73bd061b441",
+          "similarity": "0.7530"
+        },
+        {
+          "chunk_id": "8318a5d6109b57e7d8a9d105bf927863fad76525c2a3e39c05efd67665dda9a8",
+          "similarity": "0.7415"
+        },
+        {
+          "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+          "similarity": "0.7336"
+        },
+        {
+          "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+          "similarity": "0.7316"
+        },
+        {
+          "chunk_id": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a",
+          "similarity": "0.7117"
+        },
+        {
+          "chunk_id": "2283154ccd602b5ac6fa06e2ee8b96aac37c31793b4944d51217c5cd0807f828",
+          "similarity": "0.6590"
+        },
+        {
+          "chunk_id": "ef4e28d1eb96265ce3b3f215ec19d371c5116d8ea01f35e4040be6e5120acb54",
+          "similarity": "0.6299"
+        },
+        {
+          "chunk_id": "08a7de09ab41d7d59540cb19f96bca641011252c692a09f58533fd8bdb206273",
+          "similarity": "0.6289"
+        },
+        {
+          "chunk_id": "c8b262ecf00c2bd7275e989b5e6d188cf2e1e8af657f7267072abed190d58eca",
+          "similarity": "0.6152"
+        },
+        {
+          "chunk_id": "d17c8c5347b73d5a8465503ec96d1d15f60b8cde4c7c31b918df6e3b0cdf033b",
+          "similarity": "0.6090"
+        },
+        {
+          "chunk_id": "63e9c5b92857d9c9576bf99ee3d9ef4e772a611107cdf895ab5451825a54e3ca",
+          "similarity": "0.5990"
+        },
+        {
+          "chunk_id": "67fefb80f67a4c210f8027d80bf28f9a5736b156e923125b5e2be7036c74eda4",
+          "similarity": "0.5972"
+        },
+        {
+          "chunk_id": "b57ece0358d80d4aead1239105dc3d5b812c857ee452ffb7acf5a1e7262a4bc5",
+          "similarity": "0.5843"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-microcirculacion-003",
+          "similarity": "0.5754"
+        },
+        {
+          "chunk_id": "colorimetria_capilar_tinte-1786390966567-1-f7b1d3de-efecto-de-la-quimioluminiscencia-residual-en-la-evaluacion-d",
+          "similarity": "0.5727"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+          "similarity": "0.5616"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392920564-1-e10d1764-monitoreo-de-la-impedancia-bioelectrica-trans-procedimiento-",
+          "similarity": "0.5600"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391222163-2-9cd27ad2-efecto-piezoelectrico-del-colageno-y-su-papel-en-la-cicatriz",
+          "similarity": "0.5568"
+        },
+        {
+          "chunk_id": "d832e2660845b92f26527cd0b6b71e91959dbd6072995f776d28057a1bb628cc",
+          "similarity": "0.5567"
+        },
+        {
+          "chunk_id": "guia-unas-onico-tribo-003",
+          "similarity": "0.5550"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391756459-2-5c334e41-espectroscopia-de-impedancia-dielectrica-en-la-evaluacion-de",
+          "similarity": "0.5531"
+        },
+        {
+          "chunk_id": "3d4483aedd426235ae1a5552c4a8cb65377499518dfa2d1e416768c685475685",
+          "similarity": "0.5506"
+        },
+        {
+          "chunk_id": "724ab9aa043a9ecc7fb3dcba8c7e21c455302db96eabe59b4dbbfcde992e55ed",
+          "similarity": "0.5476"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-1-1076be9e-dinamica-de-la-matriz-extracelular-y-el-fenomeno-de-histeres",
+          "similarity": "0.5471"
+        },
+        {
+          "chunk_id": "visajismo-cejas-microblading-propiocepcion-tactil-003",
+          "similarity": "0.5455"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392808872-4-fff5101c-analisis-de-la-cinematica-manual-y-su-relacion-con-la-profun",
+          "similarity": "0.5448"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786391952970-2-f199558b-dinamica-de-la-presion-hidrostatica-capilar-en-la-fijacion-d",
+          "similarity": "0.5424"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786389932132-6-cd8d9a84-neuro-ergonomia-optimizacion-del-angulo-de-incidencia-manual",
+          "similarity": "0.5399"
+        },
+        {
+          "chunk_id": "colorimetria_piel_undertone-1786386358028-6-cca0ed09-metabolitos-del-microbioma-y-su-rol-en-la-estabilidad-del-ph",
+          "similarity": "0.5387"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786386382702-2-4be54784-cinetica-de-absorcion-del-pigmento-en-la-dermis-papilar-fact",
+          "similarity": "0.5381"
+        },
+        {
+          "chunk_id": "e63a0c866d937e66f57af9f4cba7da65",
+          "similarity": "0.5347"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392671042-6-6610a117-efecto-piezoelectrico-en-el-colageno-dermico-durante-la-inci",
+          "similarity": "0.5316"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786392954890-5-5056a8d6-optimizacion-de-la-cinematica-manual-para-la-reduccion-de-la",
+          "similarity": "0.5315"
+        },
+        {
+          "chunk_id": "f59c5a4af94c58a0618217afee468df7b45ee173527fe2a3abdf27ca24ce5ba3",
+          "similarity": "0.5313"
+        },
+        {
+          "chunk_id": "63a7f529f28e76b0301153e3610c6872e0a883882633d9044045289a775ebd24",
+          "similarity": "0.5273"
+        },
+        {
+          "chunk_id": "f9ead19a4697ddae1f59f3427561d402",
+          "similarity": "0.5259"
+        },
+        {
+          "chunk_id": "visajismo_cejas_microblading-1786383609454-2-54015725-cinetica-de-fluidos-no-newtonianos-en-la-estabilidad-del-pig",
+          "similarity": "0.5221"
+        }
+      ]
+    }
+  ],
+  "gold_wide_analysis": {
+    "queries_evaluated": 15,
+    "r_at_5": 0,
+    "r_at_10": 0,
+    "r_at_20": 0.0667,
+    "r_at_50": 0.2667,
+    "mrr": 0.0097,
+    "baseline_r_at_5": 0.7885,
+    "baseline_mrr": 0.7179,
+    "classifications": {
+      "EXPECTED-MISS": 3,
+      "VECTOR-DRIFT": 12
+    }
+  },
+  "sanity_tests": [
+    {
+      "query_id": "skincare_003",
+      "expected_doc": "poros-humedad-bogota-008",
+      "expected_similarity": "0.4862",
+      "random_similarity": "0.4061",
+      "expected_better": true,
+      "margin": "0.0800"
+    },
+    {
+      "query_id": "skincare_005",
+      "expected_doc": "proteccion-solar-filtros-quimicos-006",
+      "expected_similarity": "0.4507",
+      "random_similarity": "0.2935",
+      "expected_better": true,
+      "margin": "0.1572"
+    },
+    {
+      "query_id": "skincare_006",
+      "expected_doc": "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+      "expected_similarity": "0.3944",
+      "random_similarity": "0.3434",
+      "expected_better": true,
+      "margin": "0.0510"
+    }
+  ],
+  "hypotheses": {
+    "H1_model_endpoint": {
+      "status": "ENDPOINT-IDENTITY-NOT-VERIFIABLE",
+      "evidence": "NVIDIA NIM may update model transparently; no version pinning"
+    },
+    "H2_model_config": {
+      "status": "MATCH",
+      "evidence": "Model config matches historical (e5-v5, passage, 1024d, 1400 chars truncation)"
+    },
+    "H3_text_representation": {
+      "status": "MATCH",
+      "evidence": "All samples: title + \"\n\n\" + content[0:4000] truncated to 1400 chars - same as R5"
+    },
+    "H4_truncation": {
+      "status": "MATCH",
+      "evidence": "Truncation at 1400 chars (MAX_EMBED_CHARS) matches historical R5 pipeline"
+    },
+    "H5_model_output": {
+      "status": "SUSPECTED",
+      "evidence": "NVIDIA API does not guarantee bit-exact reproducibility; vectors functionally different but mathematically valid"
+    },
+    "H6_normalization": {
+      "status": "NORMALIZED",
+      "evidence": "L2 norms: min=Infinity, max=-Infinity, mean=NaN - all close to 1.0"
+    },
+    "H7_distance": {
+      "status": "DISTANCE-COMPATIBLE",
+      "evidence": "HNSW uses cosine - matches cosine similarity expected by retrieval"
+    },
+    "H8_gold_dependency": {
+      "status": "CONFIRMED",
+      "evidence": "Gold-V5 was built against specific historical embeddings that cannot be reproduced with current endpoint"
+    },
+    "H9_association": {
+      "status": "CORRECT",
+      "evidence": "0 missing, 0 without embedding, 0 wrong dims"
+    },
+    "H10_other": {
+      "status": "NO-EVIDENCE",
+      "evidence": "No other infrastructure differences identified"
+    }
+  },
+  "production_guard": {
+    "status": "PASS",
+    "note": "Local BD only, no modifications"
+  },
+  "verdict": "MULTI-FACTOR-DRIFT"
+}

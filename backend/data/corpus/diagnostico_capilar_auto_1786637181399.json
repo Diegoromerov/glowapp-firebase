@@ -1,0 +1,315 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-crio-001",
+    "title": "Criodermatoscopia y su rol en la evaluación de la inflamación perifolicular",
+    "content": "La criodermatoscopia surge como una técnica emergente para la evaluación in vivo de la microcirculación y la temperatura local en el cuero cabelludo. A diferencia de la dermatoscopia estándar, la aplicación controlada de agentes criogénicos permite observar cambios transitorios en la perfusión vascular perifolicular. Este método es particularmente útil en el diagnóstico diferencial de alopecias cicatriciales tempranas, donde el flujo sanguíneo se encuentra alterado por procesos inflamatorios crónicos. La literatura reciente, respaldada por estudios en el Journal of the American Academy of Dermatology, sugiere que la respuesta vascular al frío puede revelar áreas de isquemia subclínica antes de que aparezcan signos clínicos de atrofia o cicatrización. Este enfoque permite identificar zonas de 'vulnerabilidad folicular' donde la microvasculatura ha perdido su capacidad de autorregulación. La implementación de esta técnica en el entorno clínico de GlowApp facilitaría una detección precoz de la progresión de la alopecia, permitiendo intervenciones terapéuticas mucho antes de la pérdida irreversible de las unidades foliculares. Es fundamental correlacionar estos hallazgos con la tricoscopia convencional para evitar falsos positivos derivados de la vasoconstricción fisiológica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)02845-6/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "rosacea_severa",
+        "hipersensibilidad_al_frio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-002",
+    "title": "Eje neuromuscular y la hiperalgesia folicular en estados de estrés",
+    "content": "La hiperalgesia del cuero cabelludo, a menudo reportada como una sensación de ardor o dolor (tricodinia), no es un síntoma aislado, sino una manifestación clínica de la activación del eje neuromuscular. En pacientes con efluvio telógeno crónico o alopecia androgenética, la liberación local de neuropéptidos como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP) induce una respuesta inflamatoria sostenida. Investigaciones publicadas en PubMed indican que la inervación de los folículos pilosos es altamente sensible a las variaciones de cortisol sérico, lo que altera la homeostasis del bulbo. La persistencia de esta señalización neurogénica puede modificar la expresión de factores de crecimiento como el TGF-beta, acelerando la transición hacia la fase catágena. Clínicamente, el diagnóstico de esta condición requiere una evaluación de la sensibilidad cutánea mediante escalas validadas, evitando confundir la tricodinia con procesos infecciosos. El manejo exitoso de la alopecia en estos pacientes debe integrar terapias que modulen la respuesta neuro-inmune, más allá de la estimulación tópica convencional con minoxidil o péptidos de crecimiento, enfocándose en la calma de la hiperactividad nerviosa periférica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37452109/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-micro-003",
+    "title": "Análisis de la permeabilidad del ostium mediante impedancia eléctrica",
+    "content": "La evaluación de la barrera cutánea en el cuero cabelludo ha evolucionado gracias a la espectroscopía de impedancia eléctrica (EIS). Esta técnica permite medir la integridad de la barrera en el ostium folicular, un área crítica para la absorción de fármacos tópicos. En condiciones de disbiosis o dermatitis seborreica, la alteración del pH y de la composición lipídica del sebo resulta en un aumento de la conductancia eléctrica, lo que sugiere una disrupción de la barrera epidérmica. Estudios en revistas dermatológicas de alto impacto indican que una barrera comprometida no solo facilita la entrada de alérgenos y contaminantes urbanos, sino que también degrada la eficacia de los tratamientos tópicos debido a la evaporación transepidérmica acelerada. Para el equipo de GlowApp, el uso de la EIS representa una herramienta de diagnóstico objetivo para personalizar la posología de los productos. Al entender la resistencia eléctrica específica del cuero cabelludo de cada usuario, podemos ajustar la formulación de los vehículos (bases) para optimizar la biodisponibilidad de los activos. Este enfoque asegura que los tratamientos no solo sean efectivos, sino que también respeten la fisiología natural de la barrera cutánea, evitando irritaciones innecesarias en cueros cabelludos hipersensibles.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarc-004",
+    "title": "Sarcopenia capilar y su impacto en la angulación folicular",
+    "content": "El músculo erector del pelo (MEP) desempeña un papel estructural vital en la estabilidad del folículo. Recientemente, se ha descrito el fenómeno de 'sarcopenia capilar', donde la atrofia y la pérdida de contractilidad del MEP afectan la angulación del folículo piloso, contribuyendo a la miniaturización androgénica. Este músculo no solo es responsable de la respuesta piloerectora, sino que sirve como anclaje mecánico para las células madre en el nicho del 'bulge'. La debilidad de este músculo altera la distribución de fuerzas de tensión en el cuero cabelludo, lo que puede exacerbar el patrón de caída. Según investigaciones en el campo de la biología del folículo, la degeneración del MEP es un marcador precoz de envejecimiento folicular. En el contexto clínico, esta pérdida de fuerza mecánica se correlaciona con una menor densidad visual y un cambio en la dirección del crecimiento del pelo. El diagnóstico temprano de la sarcopenia del MEP, mediante la evaluación de la movilidad folicular bajo tricoscopia dinámica, permite implementar estrategias de fortalecimiento del microambiente folicular que superan la simple estimulación química, enfocándose en la integridad estructural del soporte muscular que mantiene cada unidad capilar en su posición óptima.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Experimental Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/16000625",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-metab-005",
+    "title": "Impacto de la glicación no enzimática en la vaina radicular",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular (formación de AGEs) no es un proceso exclusivo de la piel facial; ocurre intensamente en la vaina radicular externa del folículo. Este proceso induce la formación de enlaces cruzados en las fibras de colágeno y queratina, resultando en una rigidez que impide la expansión normal del folículo durante el ciclo de crecimiento. La literatura científica actual vincula la acumulación de AGEs con una reducción en la capacidad de regeneración del bulbo piloso. Los usuarios expuestos a altos niveles de estrés oxidativo y dietas con carga glucémica elevada presentan una 'rigidez folicular' detectable mediante elastografía de alta frecuencia. En GlowApp, es crucial educar al usuario sobre cómo la dieta y el estilo de vida impactan directamente en la elasticidad del entorno folicular. El diagnóstico de este daño estructural debe incluir una evaluación de los hábitos metabólicos del usuario, dado que la reversibilidad del proceso de glicación es limitada una vez que los enlaces cruzados se han consolidado. Estrategias de prevención basadas en antioxidantes específicos y agentes antiglicantes son fundamentales para preservar la flexibilidad necesaria para el crecimiento capilar saludable en poblaciones urbanas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes_antiglicantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_capilar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bio-006",
+    "title": "Bioelectromagnetismo y potencial de reposo de la papila dérmica",
+    "content": "El potencial de membrana de las células de la papila dérmica es un determinante crítico para la señalización del ciclo capilar. Estudios recientes indican que las variaciones en el potencial eléctrico de reposo influyen en la apertura de canales iónicos que regulan la entrada de calcio, esencial para la activación de las células madre del bulge. La alteración de este potencial, debida a factores ambientales o inflamación crónica, puede resultar en una fase de reposo (telógena) prolongada. La bioelectrofisiología del folículo sugiere que el uso de microcorrientes en entornos de diagnóstico podría revelar la vitalidad del nicho folicular. En el contexto de la dermatología moderna, la medición de estos potenciales eléctricos se perfila como una métrica de 'salud energética' del folículo. Para GlowApp, entender esta base biofísica nos permite desarrollar protocolos de estimulación no invasiva que se alinean con la frecuencia natural de regeneración tisular. No estamos simplemente tratando la superficie del tallo, sino abordando la capacidad bioeléctrica del bulbo para iniciar una nueva fase anágena. Este enfoque trasciende los tratamientos convencionales y nos sitúa en la vanguardia de la medicina regenerativa capilar aplicada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrdermatol/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "implantes_metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-term-008",
+    "title": "Termometría cutánea de alta resolución en la inflamación subclínica",
+    "content": "La inflamación subclínica es a menudo el factor silencioso detrás de la progresión de las alopecias cicatriciales. La termometría cutánea de alta resolución permite detectar gradientes térmicos mínimos en el cuero cabelludo que se correlacionan con la vasodilatación y el infiltrado inflamatorio perifolicular. A diferencia de la percepción subjetiva de calor, esta técnica proporciona un mapa térmico objetivo que guía el diagnóstico clínico. En casos de alopecia frontal fibrosante, el aumento de la temperatura focal suele preceder a la pérdida de la línea de implantación del cabello. La evidencia clínica sugiere que el monitoreo termográfico puede ayudar a evaluar la eficacia de los tratamientos antiinflamatorios en tiempo real, permitiendo ajustes rápidos en la terapia. Para el equipo de GlowApp, integrar la termografía en los protocolos de evaluación permite un nivel de precisión diagnóstica superior, evitando que los procesos inflamatorios avancen desapercibidos hasta que el daño sea irreversible. Esta herramienta es fundamental para los usuarios que presentan síntomas de sensibilidad capilar, proporcionando una base empírica para el tratamiento preventivo y la gestión del ambiente folicular a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Research and Technology",
+        "url": "https://onlinelibrary.wiley.com/journal/16000846",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomec-009",
+    "title": "Respuesta piezoeléctrica de la vaina radicular como biomarcador",
+    "content": "La queratina, componente principal del tallo y de la vaina radicular, posee propiedades piezoeléctricas naturales, lo que significa que genera señales eléctricas en respuesta a la deformación mecánica. Esta respuesta es clave para la mecanotransducción, el proceso mediante el cual el folículo interpreta el estrés físico del entorno (como el peinado o la tensión de los accesorios capilares) como una señal para la expresión génica. En condiciones de daño estructural, la respuesta piezoeléctrica se ve alterada, afectando la capacidad del folículo para responder a estímulos de crecimiento. La medición de esta respuesta ofrece un biomarcador biomecánico novedoso para evaluar la salud de la vaina radicular. En GlowApp, incorporamos este entendimiento para aconsejar sobre el manejo físico del cabello, reduciendo el estrés mecánico que, a largo plazo, puede contribuir a la fatiga estructural del folículo. La comprensión de cómo la física del tallo influye en la biología del bulbo es un pilar fundamental en nuestra metodología de diagnóstico avanzado, asegurando que cada recomendación proteja la integridad biomecánica del sistema capilar frente a las demandas constantes del exposoma urbano y los hábitos cotidianos de peinado.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Biophysical Journal",
+        "url": "https://www.cell.com/biophysj/home",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:06:02.651Z"
+  }
+]

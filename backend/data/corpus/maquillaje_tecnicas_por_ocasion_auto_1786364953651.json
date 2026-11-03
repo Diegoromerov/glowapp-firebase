@@ -1,0 +1,341 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microclima-textil-001",
+    "title": "Maquillaje en eventos con uso de mascarillas o accesorios textiles: Prevención de la dermatitis por oclusión",
+    "content": "El uso de accesorios textiles en eventos, como mascarillas de alta filtración o tocados ajustados, genera un microclima cutáneo caracterizado por un aumento en la temperatura y humedad local. Este fenómeno, documentado en estudios de dermatología ocupacional, altera la función barrera del estrato córneo y facilita la maceración. Cuando se aplica maquillaje en estas zonas, la oclusión se potencia, aumentando el riesgo de brotes acneiformes y dermatitis irritativa de contacto. La recomendación clínica es optar por bases de maquillaje con formulaciones no comedogénicas, ricas en sílice o polímeros absorbentes que minimicen la transferencia y permitan la transpiración. Es fundamental evitar productos con altas concentraciones de aceites minerales o ceras parafínicas en las áreas de contacto directo con el textil, ya que el roce mecánico (fricción) combinado con la oclusión favorece la penetración de pigmentos y conservantes hacia las capas profundas de la epidermis, desencadenando procesos inflamatorios subclínicos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/face-masks",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "polímeros absorbentes"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "ceras parafínicas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-ozono-002",
+    "title": "Maquillaje como barrera pasiva ante la exposición a ozono troposférico en eventos urbanos",
+    "content": "El ozono troposférico es un potente oxidante que induce estrés oxidativo cutáneo, exacerbando la degradación de colágeno y la peroxidación lipídica. En eventos realizados en entornos urbanos con alta densidad de tráfico, la piel está expuesta a niveles elevados de este gas. El maquillaje, cuando se formula correctamente con agentes formadores de película (film-formers) y antioxidantes tópicos, puede actuar como una barrera física y química protectora. Investigaciones publicadas en revistas dermatológicas señalan que el uso de bases con antioxidantes como el tocoferol y derivados de la vitamina C, junto con una base de polímeros que impidan la adhesión de partículas contaminantes, reduce la penetración de radicales libres derivados del ozono. Esta estrategia no solo mejora la estética durante el evento, sino que preserva la integridad de la barrera cutánea a largo plazo frente a la polución fotoquímica, evitando la inflamación inducida por la exposición prolongada al aire urbano contaminado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33565158/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "vitamina C",
+        "polímeros protectores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-iluminacion-tecnologica-003",
+    "title": "Desafíos de la estabilidad cosmética bajo iluminación LED de alta intensidad y espectro variable",
+    "content": "La iluminación LED utilizada en eventos modernos, especialmente en estudios de grabación y ferias tecnológicas, emite picos de luz azul y espectros de alta energía que pueden alterar la percepción visual del tono de la piel y la estabilidad de ciertos pigmentos fotosensibles. A diferencia de la luz solar, esta iluminación constante puede provocar un efecto de 'desvanecimiento' o alteración cromática del maquillaje debido a la degradación de ciertos colorantes orgánicos. Clínicamente, el desafío radica en seleccionar productos de maquillaje que contengan filtros físicos estables, como el óxido de zinc o el dióxido de titanio, que no solo protejan de la radiación UV, sino que también actúen como estabilizadores de color. Además, el uso de primers con propiedades de difracción de luz ayuda a neutralizar las sombras proyectadas por la iluminación artificial, evitando que las imperfecciones cutáneas se acentúen por el contraste de espectro limitado. La gestión de la saturación del color debe ajustarse para compensar la falta de espectro infrarrojo en estas fuentes de luz.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxido de zinc",
+        "dióxido de titanio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-maquillaje"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-metabolico-004",
+    "title": "Dinámica de la vasodilatación cutánea y el maquillaje en eventos de alta carga emocional",
+    "content": "El estrés emocional agudo durante eventos sociales o profesionales desencadena la liberación de cortisol y catecolaminas, resultando en una vasodilatación periférica rápida. Este cambio hemodinámico altera la temperatura superficial de la piel, lo cual puede comprometer la adherencia de emulsiones cosméticas. Cuando la piel se calienta, la viscosidad de las bases de maquillaje disminuye, facilitando la migración del producto hacia los surcos nasogenianos y poros. Para mitigar este efecto, se recomienda el uso de técnicas de 'layering' con polvos fijadores de base mineral que contengan propiedades higroscópicas leves para absorber el exceso de humedad sin deshidratar. Es crucial evitar ingredientes humectantes altamente oclusivos en situaciones de estrés inminente, ya que la combinación de vasodilatación, sudoración y oclusión es un factor crítico para la dermatitis perioral y la formación de comedones. La preparación previa con activos vasoconstrictores suaves o calmantes, como la niacinamida, puede estabilizar la respuesta vascular cutánea antes de la aplicación del maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "polvos minerales"
+      ],
+      "contraindications": [
+        "humectantes oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microbioma-005",
+    "title": "Preservación del microbioma cutáneo en eventos de contacto físico prolongado",
+    "content": "En eventos que implican contacto físico frecuente, existe un riesgo intrínseco de transferencia de microbiota oral y cutánea, lo cual puede alterar el equilibrio del microbioma del rostro. El maquillaje, si no se formula con conservantes de amplio espectro o si se aplica con herramientas contaminadas, puede actuar como un vector de patógenos. La evidencia sugiere que la aplicación de productos con prebióticos y un pH ajustado al manto ácido de la piel (aproximadamente 5.5) ayuda a mantener la resiliencia de la barrera cutánea frente a la colonización bacteriana externa. Es imperativo priorizar productos con envases 'airless' para evitar la contaminación cruzada durante la reaplicación en el evento. Además, se desaconseja el uso de brochas o esponjas de uso compartido, ya que estas actúan como reservorios de biofilm. Mantener el microbioma equilibrado es una estrategia clínica fundamental para prevenir la aparición de foliculitis y otras infecciones oportunistas derivadas de la interacción social intensa durante eventos de larga duración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos"
+      ],
+      "contraindications": [
+        "herramientas de maquillaje compartidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma-cutaneo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-campos-electromagneticos-007",
+    "title": "Interacción de pigmentos metálicos y campos electromagnéticos en ferias tecnológicas",
+    "content": "El uso de maquillaje que contiene pigmentos metálicos (como óxidos de hierro, mica o titanio) puede presentar desafíos en entornos con alta densidad de campos electromagnéticos (CEM). Aunque los efectos biológicos a largo plazo son objeto de estudio, la interacción física con los pigmentos puede alterar ligeramente la disposición de las partículas sobre la piel bajo la influencia de campos magnéticos estáticos o variables. Clínicamente, se recomienda evitar el uso de productos cosméticos que contengan metales ferromagnéticos en concentraciones elevadas si el usuario estará expuesto a resonancias magnéticas o equipos de radiofrecuencia de alta potencia. La alternativa técnica es recurrir a pigmentos de origen orgánico o minerales no ferrosos que no exhiban susceptibilidad magnética. Esta precaución protege contra la posible irritación por calentamiento por inducción de partículas metálicas en la superficie cutánea, un fenómeno que, aunque infrecuente, es relevante en la seguridad cosmética avanzada durante la asistencia a eventos de alta tecnología industrial.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IEEE Transactions on Electromagnetic Compatibility",
+        "url": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=15",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos orgánicos",
+        "minerales no ferrosos"
+      ],
+      "contraindications": [
+        "pigmentos ferromagnéticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-negativa-008",
+    "title": "Gestión de la adherencia de partículas en ambientes de alta ionización ambiental",
+    "content": "Los ambientes con alta concentración de iones negativos (comunes cerca de cascadas, bosques o dispositivos de purificación de aire) pueden alterar la carga electrostática de la superficie cutánea. Esta modificación afecta la forma en que el maquillaje se adhiere a la piel, provocando a menudo una atracción excesiva de partículas de polvo ambiental o una repulsión de los pigmentos del maquillaje. Para neutralizar este fenómeno, se recomienda aplicar un sellador con propiedades antiestáticas que rompa la acumulación de carga. Las formulaciones que incluyen polímeros conductores o agentes hidratantes que mantienen un nivel óptimo de conductividad en el estrato córneo son ideales. Al equilibrar la carga eléctrica de la piel, se garantiza que el maquillaje permanezca inalterado durante el evento, evitando que la polución atmosférica se 'pegue' a la base, lo cual es vital para prevenir la dermatitis por contacto con partículas PM2.5 en entornos urbanos o industriales de alta ionización.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Aerosol Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-aerosol-science",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antiestáticos",
+        "polímeros conductores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-hipoxia-altitud-009",
+    "title": "Maquillaje en ambientes de gran altitud: Gestión de la hipoxia cutánea y deshidratación",
+    "content": "En eventos realizados a gran altitud (por encima de los 2.500 metros), la disminución de la presión parcial de oxígeno (hipoxia) y la baja humedad relativa inducen cambios metabólicos en la piel, como la reducción de la microcirculación y una mayor deshidratación transepidérmica. El maquillaje en estas condiciones debe priorizar la oclusión mínima y la máxima hidratación. El uso de bases con alto contenido de ácido hialurónico y ceramidas es fundamental para compensar la pérdida de agua. Además, la radiación UV es significativamente más intensa en altura, por lo que el maquillaje debe incluir filtros solares de amplio espectro con un SPF superior a 50. La técnica de aplicación debe ser ligera, evitando texturas densas que puedan bloquear la ya ralentizada oxigenación cutánea. Se recomienda evitar productos con alcoholes secantes, que exacerban la xerosis inducida por la altitud, y optar por texturas en crema que mantengan la flexibilidad del estrato córneo ante el estrés ambiental extremo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "High Altitude Medicine & Biology",
+        "url": "https://www.liebertpub.com/journal/ham",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "alcoholes secantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "climas-extremos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:28:55.426Z"
+  }
+]

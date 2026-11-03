@@ -1,0 +1,305 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microclima-protesis-001",
+    "title": "Maquillaje en entornos con prótesis cutáneas y adhesivos médicos",
+    "content": "La aplicación de maquillaje sobre la piel en contacto directo con prótesis, parches sensores o adhesivos médicos en eventos prolongados presenta desafíos de biocompatibilidad únicos. La oclusión generada por el adhesivo altera la función barrera del estrato córneo, aumentando la permeabilidad a ingredientes cosméticos. Es fundamental evitar pigmentos con altas concentraciones de óxidos de hierro o fragancias sintéticas, que pueden exacerbar la dermatitis de contacto alérgica bajo oclusión. La evidencia sugiere que el uso de selladores de barrera a base de siliconas de grado médico protege la integridad del adhesivo y evita que los pigmentos migren hacia el margen de la prótesis. Según estudios en Journal of the American Academy of Dermatology, la integridad del microbioma bajo parches es crítica; por ello, el maquillaje debe ser no comedogénico y libre de conservantes sensibilizantes como la metilisotiazolinona. La técnica de aplicación debe ser periférica, evitando el sellado del borde donde la fricción mecánica es máxima, previniendo así la irritación mecánica añadida por el peso de las partículas cosméticas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "ciclopentasiloxano"
+      ],
+      "contraindications": [
+        "fragancias",
+        "metilisotiazolinona"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-002",
+    "title": "Estabilidad de emulsiones en entornos de baja gravedad y alta presión",
+    "content": "En eventos que involucran entornos de alta presión o condiciones de microgravedad simulada, la dinámica de fluidos de las emulsiones cosméticas se altera significativamente. La sedimentación de pigmentos y la coalescencia de las gotas de aceite en la emulsión pueden acelerarse, comprometiendo la estabilidad del producto. Es necesario priorizar formulaciones con agentes reológicos avanzados como los polímeros de acrilatos cruzados que mantienen la viscosidad incluso bajo variaciones de presión atmosférica. La investigación en PubMed señala que la desgasificación de los productos (presencia de burbujas de aire) puede inducir una degradación oxidativa más rápida de los lípidos. Se recomienda el uso de envases 'airless' para minimizar la interacción del producto con el oxígeno ambiental en entornos presurizados. La aplicación debe ser por capas delgadas (técnica de 'layering') para evitar que la falta de gravedad natural permita que el maquillaje migre hacia los pliegues cutáneos por adhesión simple, un fenómeno documentado en estudios de fisiología espacial aplicados a la cosmética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "polímeros de silicona"
+      ],
+      "contraindications": [
+        "aceites minerales fluidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cosmetologia-avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-fotoluminiscencia-003",
+    "title": "Desafíos de la reflectancia en eventos con iluminación de espectro UV-A",
+    "content": "La exposición a iluminación de tipo 'Blacklight' (UV-A) en eventos nocturnos altera la percepción cromática de los cosméticos, debido a la presencia de agentes blanqueadores ópticos o ciertos óxidos metálicos que exhiben fluorescencia. Muchos productos de maquillaje convencional contienen pigmentos que, al ser irradiados con longitudes de onda de 365-400 nm, reflejan luz, creando un efecto visual no deseado o 'parches' brillantes en el rostro. Para mitigar este riesgo, es imperativo realizar pruebas de espectro bajo luz UV antes del evento. La literatura dermatológica, citada en IADVL, advierte que la exposición prolongada a luz UV-A, aunque sea artificial, puede inducir estrés oxidativo en los melanocitos, especialmente si se utilizan bases con alta carga de dióxido de titanio mal dispersado. Se recomienda el uso de polvos minerales tratados con sílice que minimizan la dispersión de luz artificial, garantizando un acabado mate y neutro bajo condiciones de fluorescencia intensa. El uso de antioxidantes tópicos previos al maquillaje es altamente recomendable para contrarrestar la generación de especies reactivas de oxígeno durante la exposición.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.ijdvl.com/article.asp?issn=0378-6323",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "agentes blanqueadores ópticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-hidrocarburos-004",
+    "title": "Maquillaje y protección contra hidrocarburos aromáticos policíclicos (HAP)",
+    "content": "En eventos urbanos con alta exposición a gases de escape y polución, los hidrocarburos aromáticos policíclicos (HAP) pueden penetrar la barrera cutánea y fomentar la inflamación subclínica. La adherencia de estas partículas a la base de maquillaje es un fenómeno físico-químico que puede exacerbar el daño por radicales libres. Estudios recientes publicados en revistas dermatológicas indican que el uso de imprimantes ('primers') con polímeros formadores de película, capaces de crear una barrera hidrofóbica, reduce significativamente la deposición de partículas PM2.5 y HAP en los poros. Este 'escudo' debe ser complementado con técnicas de limpieza doble al finalizar el evento para asegurar la remoción total de las partículas adsorbidas. La formulación del maquillaje debe priorizar ingredientes con propiedades quelantes y antioxidantes (como la Vitamina E y el extracto de té verde) para neutralizar los radicales libres en la superficie antes de que interactúen con el sebo cutáneo, evitando la oxidación acelerada del maquillaje y el consecuente cambio de tono (oxidación) durante el transcurso del evento social.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(22)00456-7/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "polímeros filmógenos"
+      ],
+      "contraindications": [
+        "aceites comedogénicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-006",
+    "title": "Adherencia de partículas en ambientes con alta ionización ambiental",
+    "content": "Los ambientes con alta ionización negativa o positiva, comunes en ciertos espacios cerrados con sistemas de purificación de aire industrial o cerca de maquinaria de alta tensión, alteran la deposición de partículas cosméticas sobre la piel. La carga electrostática de la piel, influenciada por la humedad relativa y la composición del maquillaje, determina la tasa de adherencia de polvo y contaminantes. Un maquillaje con una base de polímeros que actúen como aislantes dieléctricos puede minimizar la atracción de estas partículas. La investigación en biofísica cutánea sugiere que las pieles con una barrera lipídica deficiente (xerosis) presentan una mayor susceptibilidad a la acumulación de carga estática, facilitando que el maquillaje actúe como un imán para el polvo ambiental. Se recomienda aplicar una emulsión hidratante con alta concentración de ceramidas antes de la base para normalizar el potencial eléctrico cutáneo y mejorar la estabilidad del producto. Es fundamental monitorear la duración del evento: a mayor tiempo de exposición, mayor es el riesgo de que la acumulación de partículas altere el pH del manto ácido, induciendo una posible dermatitis por contacto irritativa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [
+        "talco de baja pureza"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-termico-007",
+    "title": "Gestión de la vasodilatación inducida por calor radiante",
+    "content": "La exposición a fuentes de calor radiante en eventos (iluminación de escenario, estufas externas) provoca una vasodilatación periférica que aumenta la temperatura de la superficie cutánea. Este aumento térmico altera la viscosidad de las bases cosméticas, provocando que los pigmentos migren hacia los surcos nasogenianos y perioculares. Clínicamente, este calor puede exacerbar condiciones como la rosácea, donde la vasodilatación es una respuesta inflamatoria persistente. Para mitigar esto, es vital emplear bases con tecnología de 'termorregulación', que utilizan polímeros encapsulados capaces de absorber el exceso de calor. Además, la aplicación de un spray fijador con ingredientes refrescantes (como agua de hamamelis o niacinamida en bajas concentraciones) puede ayudar a mantener la microcirculación controlada. La técnica de sellado debe ser selectiva, evitando el uso de polvos compactos pesados en zonas de alta vascularización, ya que el bloqueo del sudor puede inducir una dermatitis por oclusión folicular, una complicación frecuente en escenarios de alta exigencia termorregulatoria según estudios de dermatología aplicada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/category/dermatology-articles/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "hamamelis"
+      ],
+      "contraindications": [
+        "ceras pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ozono-009",
+    "title": "Maquillaje como barrera pasiva ante la exposición a ozono troposférico",
+    "content": "El ozono troposférico (O3) es un potente oxidante que, en ambientes urbanos, contribuye al envejecimiento prematuro y la inflamación cutánea. Estudios en PubMed han demostrado que la exposición al ozono reduce los niveles de vitamina E y escualeno en el sebo cutáneo. Un maquillaje bien estructurado actúa como una barrera de sacrificio. Al aplicar una base rica en antioxidantes (especialmente Vitamina C y ácido ferúlico), se crea una capa que neutraliza el ozono antes de que dañe la barrera lipídica. Es fundamental que el maquillaje posea una estructura de red polimérica densa para limitar la difusión de gas hacia los poros. No obstante, esta capa también debe permitir una tasa de transferencia de vapor de agua (TEWL) equilibrada para evitar la oclusión. La combinación de filtros físicos minerales, como el óxido de zinc, junto con antioxidantes, ofrece la mejor protección contra la peroxidación lipídica inducida por el ozono en eventos urbanos de larga duración. La remoción debe ser exhaustiva mediante doble limpieza para asegurar que los productos oxidados no permanezcan en contacto con la piel durante el ciclo de descanso nocturno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jddsjournal.org/article/S0923-1811(23)00123-4",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ferúlico",
+        "vitamina C",
+        "óxido de zinc"
+      ],
+      "contraindications": [
+        "productos sin antioxidantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:14:13.853Z"
+  }
+]

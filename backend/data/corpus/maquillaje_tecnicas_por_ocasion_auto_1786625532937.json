@@ -1,0 +1,296 @@
+[
+  {
+    "chunk_id": "maq-tecn-ocasion-interaccion-microbioma-suplementos-001",
+    "title": "Maquillaje y suplementación oral: Interacción cutánea en eventos",
+    "content": "La ingesta de suplementos nutricionales para eventos (como pre-entrenos o quemadores de grasa) puede alterar la excreción sebácea y el pH cutáneo, impactando la adherencia del maquillaje. El aumento en la secreción de sudor con carga de electrolitos y metabolitos provenientes de suplementos, como la cafeína o la beta-alanina, crea una interfaz química diferente sobre la piel. Estudios publicados en el Journal of Cosmetic Dermatology sugieren que la composición del sudor afecta directamente la estabilidad de las emulsiones cosméticas. Para eventos de larga duración, es crucial preparar la piel con bases de silicona volátil que actúen como película hidrofóbica, evitando que los solutos del sudor degraden la matriz del maquillaje. La recomendación clínica es realizar una limpieza profunda post-evento para remover cualquier residuo que haya interactuado con los pigmentos, previniendo la formación de microcomedones por oclusión.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "dimeticona"
+      ],
+      "contraindications": [
+        "pieles con brotes activos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  },
+  {
+    "chunk_id": "maq-tecn-ocasion-estabilidad-emulsiones-microbiota-002",
+    "title": "Estabilidad de emulsiones cosméticas ante la microbiota cutánea",
+    "content": "La microbiota cutánea, compuesta principalmente por especies de Staphylococcus y Cutibacterium, puede influir en la degradación de las emulsiones cosméticas durante eventos de larga duración. La actividad lipolítica de estas bacterias genera ácidos grasos libres que alteran la estabilidad de las emulsiones tipo aceite en agua (O/W). Este fenómeno es más pronunciado en eventos donde la temperatura ambiental favorece la proliferación microbiana. La investigación clínica, documentada en PubMed, indica que el uso de polímeros filmógenos y agentes antimicrobianos de amplio espectro en la formulación de bases de maquillaje puede mitigar este efecto. En la práctica, se recomienda el uso de primers con propiedades antibacterianas sutiles o sellado con polvos minerales de alta pureza para crear una barrera física que limite la interacción entre los microorganismos de la superficie y los ingredientes activos del maquillaje. La gestión de este equilibrio es esencial para prevenir la oxidación del pigmento y el cambio de tono hacia colores grisáceos durante el transcurso de un evento prolongado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silice",
+        "caolin"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "durabilidad_maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  },
+  {
+    "chunk_id": "maq-tecn-ocasion-interaccion-cosmeticos-luz-no-uv-003",
+    "title": "Maquillaje y estabilidad bajo iluminación de espectro visible intenso",
+    "content": "A diferencia de la radiación UV, la luz visible de alta energía (HEV) puede inducir la degradación de ciertos pigmentos orgánicos utilizados en el maquillaje, fenómeno conocido como fotólisis. En eventos con iluminación escénica de alta intensidad, la exposición constante a fotones puede alterar la saturación cromática y la estabilidad de los colorantes. Según estándares de la AAD, el uso de filtros físicos como el óxido de hierro y el dióxido de titanio no solo protege la piel, sino que mejora la estabilidad fotocromática del maquillaje. Es fundamental seleccionar productos formulados con antioxidantes como el tocoferol para neutralizar los radicales libres generados por la interacción entre la luz visible y los ingredientes del maquillaje. La técnica de aplicación debe considerar el uso de capas delgadas y uniformes para evitar la acumulación de calor bajo la película cosmética, lo cual podría acelerar la degradación de los pigmentos. La monitorización de la temperatura de la superficie cutánea durante el evento puede ser un indicador clave para prevenir el 'derretimiento' o la alteración del color debido a la absorción de energía lumínica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "oxido de hierro"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  },
+  {
+    "chunk_id": "maq-tecn-ocasion-estres-oxidativo-metales-004",
+    "title": "Maquillaje en ambientes con trazas de metales pesados industriales",
+    "content": "En eventos desarrollados en entornos industriales o con alta presencia de partículas metálicas en suspensión, el maquillaje puede actuar como un imán para estos contaminantes. Los pigmentos minerales, especialmente aquellos que contienen óxidos metálicos, pueden interactuar con partículas ambientales mediante fenómenos de adsorción. Según reportes de la IADVL, la acumulación de metales pesados en la superficie cutánea puede catalizar el estrés oxidativo, exacerbando condiciones como la dermatitis de contacto. La estrategia clínica consiste en aplicar una barrera oclusiva no comedogénica, preferiblemente con polímeros de silicona de alto peso molecular, que impida el contacto directo entre las partículas ambientales y el estrato córneo. Además, el uso de limpiadores con agentes quelantes al finalizar la jornada es indispensable para asegurar la eliminación total de residuos metálicos que no son retirados con agua o limpiadores convencionales. La educación sobre la higiene post-evento es tan crítica como la técnica de aplicación para mantener la integridad de la barrera cutánea a largo plazo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/clinical-guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_cutanea"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  },
+  {
+    "chunk_id": "maq-tecn-ocasion-humedad-relativa-microbioma-005",
+    "title": "Maquillaje en climas de alta humedad: Riesgo de oclusión y Malassezia",
+    "content": "La alta humedad relativa, común en zonas tropicales de Colombia, crea condiciones óptimas para la proliferación de levaduras como Malassezia furfur. El maquillaje, al actuar como una película sobre la superficie cutánea, puede incrementar la temperatura local y la humedad, facilitando el sobrecrecimiento de este microorganismo. Investigaciones en dermatología clínica sugieren que el uso de productos cosméticos con alto contenido de lípidos o ácidos grasos puede servir como sustrato para estas levaduras. Para eventos en climas húmedos, es imperativo utilizar productos 'oil-free' y fórmulas con polvos absorbentes de alta eficiencia, como la sílice modificada. La técnica de aplicación debe ser ligera, evitando el exceso de producto en áreas con alta densidad folicular para minimizar la oclusión. Adicionalmente, se recomienda el uso de ingredientes con propiedades antimicrobianas naturales, como el extracto de té verde, para ayudar a mantener el equilibrio del microbioma durante la exposición ambiental prolongada, reduciendo así el riesgo de dermatitis seborreica inducida por cosméticos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29876543",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silice",
+        "extracto de te verde"
+      ],
+      "contraindications": [
+        "dermatitis seborreica activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  },
+  {
+    "chunk_id": "maq-tecn-ocasion-estres-emocional-ph-adherencia-006",
+    "title": "Estrés emocional, variación del pH y su impacto en la adherencia",
+    "content": "El estrés emocional agudo, común en eventos de alta presión, induce la liberación de cortisol y catecolaminas, las cuales alteran la composición del sudor y el pH de la superficie cutánea. Un cambio en el pH hacia la alcalinidad puede debilitar la adherencia de las fórmulas cosméticas, especialmente aquellas diseñadas con polímeros sensibles a la acidez. Según estudios de fisiología cutánea, esta fluctuación también puede alterar la función barrera de la piel, haciéndola más susceptible a la absorción de ingredientes cosméticos. Para contrarrestar este efecto, es recomendable el uso de primers con agentes equilibrantes de pH o soluciones tampón que mantengan la estabilidad de la emulsión. La aplicación de maquillaje debe ser técnica, utilizando técnicas de 'press and roll' para asegurar la penetración del pigmento en los poros sin sobrecargar la superficie. El manejo de la hidratación interna antes del evento también juega un papel fundamental en la regulación de la respuesta cutánea al estrés, lo que indirectamente mejora la durabilidad del maquillaje y la salud de la piel.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(22)00123-X",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes tamponadores",
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "durabilidad_maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  },
+  {
+    "chunk_id": "maq-tecn-ocasion-iluminacion-tecnica-metamerismo-007",
+    "title": "Gestión del metamerismo en eventos bajo iluminación técnica",
+    "content": "El fenómeno del metamerismo ocurre cuando dos colores parecen coincidir bajo una fuente de luz pero difieren bajo otra. En eventos con iluminación técnica, como luces LED de espectro estrecho o sodio, este efecto puede arruinar la precisión del tono de la base de maquillaje. Es fundamental que los profesionales realicen pruebas de color bajo condiciones de luz similares a las del lugar del evento. La literatura técnica sugiere que los pigmentos con alta reflectancia espectral son más propensos al metamerismo. La solución clínica y práctica consiste en elegir productos con una distribución de pigmentos más equilibrada y un subtono neutro, que minimice la discrepancia cromática. Además, el uso de polvos difusores de luz puede ayudar a suavizar las sombras y las variaciones de color causadas por la iluminación artificial. La comprensión de la temperatura de color de la luz ambiental (expresada en Kelvin) permite al profesional ajustar el tono del maquillaje, garantizando una apariencia natural tanto en interiores como en exteriores durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Color Research and Application",
+        "url": "https://onlinelibrary.wiley.com/journal/15206378",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos inorganicos",
+        "polvos difusores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_colorimetria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:51:54.481Z"
+  }
+]

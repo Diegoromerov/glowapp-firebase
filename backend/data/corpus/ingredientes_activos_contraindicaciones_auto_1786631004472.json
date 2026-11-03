@@ -1,0 +1,310 @@
+[
+  {
+    "chunk_id": "activos-queratoliticos-riesgo-hiperpigmentacion-001",
+    "title": "Ácido Salicílico en fototipos altos: riesgo de hiperpigmentación post-inflamatoria",
+    "content": "El ácido salicílico (BHA) es un estándar en el tratamiento del acné, pero su uso en fototipos IV-VI requiere precaución extrema. A diferencia de los AHAs, el BHA es altamente lipofílico y penetra profundamente en la unidad pilosebácea, lo que puede inducir una inflamación subclínica si se sobreutiliza. En pieles con alta concentración de melanina, cualquier grado de inflamación inducida por un agente queratolítico puede desencadenar una respuesta melanocitaria reactiva, resultando en hiperpigmentación post-inflamatoria (HPI). Estudios publicados en el Journal of Clinical and Aesthetic Dermatology advierten que la barrera cutánea en fototipos oscuros es funcionalmente distinta, con una mayor densidad de melanosomas que responden rápidamente a la irritación química. La aplicación diaria de concentraciones superiores al 2% en estas pieles puede comprometer la integridad lipídica, facilitando la penetración excesiva de otros activos y exacerbando la respuesta inflamatoria. Se recomienda limitar su uso a zonas específicas (spot treatment) y monitorear la aparición de eritema, incluso si es leve, para prevenir manchas persistentes que son significativamente más difíciles de tratar que el acné original. La clave es la alternancia con agentes reparadores de la barrera cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/acne-in-skin-of-color/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica",
+        "grasa"
+      ],
+      "age_ranges": [
+        "18-60"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "ácido salicílico"
+      ],
+      "contraindications": [
+        "uso diario extenso en fototipos oscuros"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-acne"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  },
+  {
+    "chunk_id": "estabilizadores-ph-aminas-riesgo-nitrosaminas-002",
+    "title": "Ajustadores de pH (TEA, DIPA): el riesgo de nitrosaminas",
+    "content": "Las aminas terciarias como la trietanolamina (TEA) y la diisopropanolamina (DIPA) se utilizan frecuentemente como agentes de ajuste de pH en formulaciones cosméticas para neutralizar ácidos. El riesgo clínico fundamental reside en su potencial interacción con agentes nitrosantes presentes en el producto o el ambiente, lo que puede llevar a la formación de nitrosaminas. Las nitrosaminas son compuestos conocidos por su potencial carcinogénico y toxicidad sistémica. Aunque la regulación de la UE y la FDA limita estrictamente la pureza de estas materias primas para evitar la presencia de aminas secundarias libres (las precursoras directas), el riesgo persiste si el producto no es formulado correctamente bajo condiciones de estabilidad controlada. Un producto que contenga TEA y un agente liberador de nitritos puede desarrollar nitrosaminas durante su vida útil, especialmente bajo exposición a altas temperaturas. La dermatología clínica sugiere evitar productos que contengan estos ajustadores de pH en pacientes con antecedentes de dermatitis de contacto severa o en áreas de piel con integridad de barrera comprometida, donde la absorción sistémica podría ser superior a la esperada en piel sana. Es crucial verificar que las formulaciones sean 'nitrosamine-free' mediante pruebas de laboratorio validadas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety (SCCS)",
+        "url": "https://health.ec.europa.eu/scientific-committees/scientific-committee-consumer-safety-sccs_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trietanolamina",
+        "diisopropanolamina"
+      ],
+      "contraindications": [
+        "dermatitis de contacto severa",
+        "barrera cutánea comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  },
+  {
+    "chunk_id": "filtros-solares-organicos-interferencia-penetracion-003",
+    "title": "Interferencia de filtros orgánicos en la permeabilidad de activos",
+    "content": "Los filtros solares orgánicos (químicos) no solo cumplen la función de protección UV, sino que, debido a su estructura molecular y a los solventes necesarios para solubilizarlos, actúan como potenciadores de penetración (penetration enhancers). Estudios en la revista 'Photodermatology, Photoimmunology & Photomedicine' indican que el uso simultáneo de filtros químicos con activos irritantes (como retinoides o ácidos) puede aumentar la absorción sistémica y la irritación local de estos últimos. Este fenómeno ocurre porque los filtros químicos pueden alterar transitoriamente la organización de los lípidos del estrato córneo. Para pacientes con piel reactiva o rosácea, aplicar un suero de alta potencia seguido inmediatamente de un protector solar químico puede resultar en una cascada inflamatoria no deseada. Se recomienda, en casos de alta sensibilidad, esperar al menos 10-15 minutos entre la aplicación del activo y el protector solar, o preferir protectores solares inorgánicos (físicos) que tienen un perfil de interacción inerte con la barrera cutánea. Esta estrategia de 'espaciado' es fundamental en protocolos de retinización para minimizar el eritema inducido por la acumulación de activos en los folículos pilosebáceos, evitando así la dermatitis irritativa de contacto.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares químicos"
+      ],
+      "contraindications": [
+        "aplicación simultánea con activos irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  },
+  {
+    "chunk_id": "acne-fungico-contraindicacion-emolientes-004",
+    "title": "Acné fúngico y la contraindicación de ciertos lípidos",
+    "content": "La foliculitis por Malassezia, comúnmente conocida como acné fúngico, es una afección dermatológica que a menudo se confunde con el acné vulgar. A diferencia de este último, la foliculitis fúngica es causada por la proliferación de levaduras del género Malassezia en los folículos pilosebáceos. La contraindicación clínica clave es el uso de aceites y ésteres de ácidos grasos con cadenas de carbono de longitud media (C11 a C24), como el ácido oleico, el miristato de isopropilo y ciertos aceites vegetales ricos en triglicéridos. Estos ingredientes actúan como sustratos nutricionales que favorecen la replicación de la levadura. El uso de humectantes o protectores solares que contengan estos ingredientes en pacientes con predisposición a Malassezia puede exacerbar drásticamente la inflamación y el prurito. Para el manejo clínico, es imperativo realizar una lectura de etiquetas buscando ingredientes 'fungal acne safe', priorizando vehículos basados en siliconas ligeras (como la dimeticona) o humectantes puros como la glicerina y el ácido hialurónico, que no alimentan el crecimiento fúngico. La persistencia de pápulas monomórficas en la frente y espalda a pesar del tratamiento con peróxido de benzoilo sugiere una sospecha clínica de foliculitis fúngica que requiere revisión.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/a-z/malassezia-folliculitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica"
+      ],
+      "age_ranges": [
+        "adolescentes",
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido oleico",
+        "miristato de isopropilo"
+      ],
+      "contraindications": [
+        "acné fúngico",
+        "foliculitis por malassezia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-acne"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  },
+  {
+    "chunk_id": "quelantes-estabilidad-vitamina-c-005",
+    "title": "Quelantes y la inestabilidad de la Vitamina C",
+    "content": "La Vitamina C pura (ácido L-ascórbico) es extremadamente sensible a la oxidación, proceso acelerado por la presencia de metales traza (como cobre o hierro) que actúan como catalizadores. Muchos productos cosméticos incluyen agentes quelantes como el EDTA disódico o el ácido fítico para prevenir la oxidación y mejorar la estabilidad. Sin embargo, existe una incompatibilidad química crítica cuando se formulan péptidos de cobre (como el GHK-Cu) junto con Vitamina C pura. El agente quelante en la fórmula puede 'secuestrar' el cobre del péptido, inactivando su función biológica y, simultáneamente, la Vitamina C puede reducir el cobre, perdiendo su estabilidad y eficacia antioxidante. Este proceso de inestabilidad mutua no solo hace que el producto sea ineficaz, sino que puede generar subproductos de degradación que son potencialmente irritantes. La evidencia clínica sugiere que estos activos deben ser utilizados en momentos diferentes del día o en formulaciones separadas por tecnologías de encapsulación. La aplicación simultánea en capas (layering) sin una formulación técnica diseñada para coexistir resulta en una pérdida de potencia del 50% o más en menos de 24 horas tras la apertura del envase.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30675685/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido ascórbico",
+        "péptidos de cobre",
+        "EDTA"
+      ],
+      "contraindications": [
+        "mezcla simultánea en la misma rutina"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-antioxidante"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  },
+  {
+    "chunk_id": "bio-fermentos-riesgo-microbiologico-006",
+    "title": "Bio-fermentos: el riesgo de proliferación microbiana latente",
+    "content": "La tendencia de los 'ingredientes fermentados' (como el Galactomyces o Bifida Ferment Lysate) ha ganado popularidad por su capacidad para modular el microbioma cutáneo. No obstante, desde una perspectiva de formulación backend y seguridad clínica, estos ingredientes representan un desafío microbiológico. Los fermentos son, por naturaleza, medios de cultivo ricos en nutrientes. Si el sistema conservante de la fórmula no es extremadamente robusto, existe el riesgo de contaminación microbiana secundaria durante el uso del consumidor, especialmente en envases tipo tarro (jar) con apertura frecuente. Además, la variabilidad lote a lote de los bio-fermentos puede alterar la estabilidad del pH de la fórmula. En pieles con barrera comprometida o dermatitis atópica, la aplicación de un producto con carga microbiana, aunque sea mínima y dentro de los límites regulatorios, puede inducir una respuesta inmune exacerbada. Se aconseja priorizar productos con fermentos que vengan en envases tipo 'airless' y que hayan pasado pruebas de desafío conservante (Challenge Testing) específicas para microorganismos oportunistas. La falta de estabilidad en estos activos puede llevar a la hidrólisis de otros componentes de la fórmula, reduciendo su vida útil efectiva a menos de 6 meses tras la apertura.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bio-fermentos"
+      ],
+      "contraindications": [
+        "envases de tarro abierto",
+        "piel con barrera comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-formulacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  },
+  {
+    "chunk_id": "paradoja-glicerina-climas-extremos-008",
+    "title": "La paradoja de la glicerina en humedades extremas",
+    "content": "La glicerina es el humectante más eficaz y seguro en la cosmética moderna, pero su funcionamiento depende estrictamente de la humedad relativa del ambiente. En condiciones de baja humedad (climas secos o ambientes con calefacción/aire acondicionado), la glicerina, por su alta capacidad higroscópica, puede extraer agua de las capas profundas de la epidermis (estrato espinoso) hacia el estrato córneo superior, desde donde se evapora rápidamente. Este fenómeno, conocido como 'efecto succión inversa', puede paradójicamente aumentar la deshidratación transepidérmica (TEWL) en pieles con barrera dañada. Estudios dermatológicos indican que para que la glicerina sea beneficiosa en ambientes de baja humedad (<30%), debe estar formulada junto con agentes oclusivos (como ceramidas, escualano o mantecas) que sellen la hidratación. El error común es el uso de geles de glicerina pura o con alta concentración sin una fase lipídica compensatoria. En pieles atópicas, este uso incorrecto puede derivar en un aumento de la sensación de tirantez y picor. Se recomienda educar al usuario sobre la necesidad de aplicar productos hidratantes humectantes sobre piel ligeramente húmeda y sellar siempre con un emoliente en climas áridos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [
+        "uso en climas de baja humedad sin oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:23:03.312Z"
+  }
+]

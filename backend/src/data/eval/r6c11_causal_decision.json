@@ -1,0 +1,88 @@
+{
+  "cycle": "R6-C11",
+  "name": "CAUSAL_DECISION",
+  "baseline": {
+    "embedding": "NVIDIA nv-embedqa-e5-v5 (1024d) — OFFICIAL, UNCHANGED",
+    "mrr": 0.7222,
+    "r5": 0.6156,
+    "r10": 0.6545,
+    "r20": 0.7156,
+    "r50": 0.8011,
+    "vector_miss": 14,
+    "canonical_vector_miss": 13,
+    "reproduced_from_r6c10": true
+  },
+  "decision": {
+    "BASELINE": "NVIDIA e5-v5",
+    "BEST_STRATEGY": "Dense + Sparse (RRF) — único que pasa el gate de regresión",
+    "BASELINE_MRR": 0.7222,
+    "BEST_MRR": 0.7556,
+    "BASELINE_VECTOR_MISS": 13,
+    "BEST_VECTOR_MISS": 13,
+    "MISSES_RECOVERED": 0,
+    "MISS_RECOVERY_RATE": 0.0,
+    "REGRESSIONS": 0,
+    "ADDITIONAL_LATENCY": "+300ms (Dense+Sparse) / hasta +4500ms (Candidate Fusion)",
+    "ADDITIONAL_COST": "0 llamadas NVIDIA extra (Dense+Sparse) / hasta 6 extra + 3 LLM (Candidate Fusion)",
+    "VERDICT": "NVIDIA_BASELINE_CONFIRMED",
+    "next_cycle": "R6-C12: Fine-tuning / Domain Adaptation Research"
+  },
+  "hypothesis_evaluation": {
+    "principal": "Los 13 VECTOR_MISS no requieren otro embedding; algunos recuperables con query representation más rica o multi-candidate generation",
+    "result": "PARCIALMENTE RECHAZADA — Candidate Fusion recupera hasta 5/13 (38.5%) en RUN A, pero SIEMPRE con regresión severa en MRR/R@5/R@10. Ninguna estrategia recupera misses sin degradar el retrieval normal.",
+    "secundaria": "El problema puede estar parcialmente localizado en la representación de la consulta",
+    "result_sec": "DÉBIL — Query expansion / HyDE recuperan 2-3/13 pero destruyen R@5 (más de −0.2). La representación de consulta LLM expandida no acerca el espacio semántico de conceptos especializados (simetría muscular, Tyndall, SERS).",
+    "nula": "Ninguna estrategia complementaria logra recuperar suficientes misses sin regresiones o coste excesivo",
+    "result_nula": "CONFIRMADA — 7 estrategias evaluadas, ninguna cumple los 8 criterios de adopción simultáneamente."
+  },
+  "causality": {
+    "corpus_gap": "DESCARTADO (0 ausentes, confirmado R6-C10)",
+    "query_representation": "DESCARTADO COMO SOLUCIÓN (expansión LLM no recupera sin regresión)",
+    "candidate_generation": "PARCIAL — fusion recupera misses pero rompe ranking (RRF con 7 fuentes diluye el denso)",
+    "embedding_space": "CONFIRMADO COMO CUELLO REAL — los 13 chunks existen con embeddings válidos pero quedan fuera del top-200 de NVIDIA e5-v5, y ninguna capa externa los acerca sin degradar el resto",
+    "lexical_complement": "MÍNIMO — FTS recupera 0/13 canónicos (el único lexical miss colorimetria-capilar-metales-003 se recupera vía FTS en baseline top-200)"
+  },
+  "per_strategy_verdict": {
+    "query_expansion": "RECHAZADA — recovery 1-3/13, R5 −0.18..−0.23, no determinista",
+    "multi_query": "RECHAZADA — peor MRR (−0.19..−0.32), 4-10 nuevos misses, no determinista",
+    "hyde": "RECHAZADA — recovery 2/13, R5 −0.21, no determinista",
+    "dense_sparse": "INTERESANTE PERO INSUFICIENTE — mejora MRR +0.033 y R10 +0.013 sin costo ni regresión, determinista; pero 0/13 recovery. Nota: mejorador de ranking seguro, no solución de misses.",
+    "candidate_fusion": "RECHAZADA — max recovery 5/13 pero R5 −0.23, MRR −0.17 (RUN A), 7x costo, no determinista",
+    "routing": "RECHAZADA — 1 nuevo miss en ambos runs, no determinista",
+    "reranking": "NO EVALUADO COMO ESTRATEGIA INDEPENDIENTE — sin valor: 8/13 misses ni siquiera entran al candidate pool top-200 de ninguna fuente; reranker no puede recuperar lo que no se genera como candidato (criterio §17 del prompt)"
+  },
+  "key_evidence": [
+    "Baseline MRR 0.7222 reproducido EXACTAMENTE en RUN A y RUN B (≡)",
+    "Dense+Sparse MRR 0.7556 reproducido EXACTAMENTE en ambos runs (≡) — única estrategia determinista que mejora",
+    "Candidate Fusion RUN A: 5/13 misses recuperados PERO MRR 0.7222→0.5473 (−24%), R@5 −37%",
+    "Multi-query RUN B: 10 nuevos misses introducidos — la generación LLM multi-formulación aleja el denso del intento original",
+    "Estrategias con llama3.2 (temperatura > 0) no reproducibles: ΔMRR hasta 0.142 entre runs",
+    "8/13 VECTOR_MISS permanecen fuera del top-200 incluso tras fusionar 7 fuentes en RUN B"
+  ],
+  "recommendation": {
+    "adopt": "NINGUNA estrategia se adopta. NVIDIA e5-v5 baseline se mantiene.",
+    "optional_free_gain": "Dense+Sparse RRF (postgres FTS + vector) puede considerarse como mejora de ranking sin riesgo (+0.033 MRR, 0 costo, 0 regresión) — SIEMPRE que el Director lo apruebe como cambio de capa de retrieval y no de embeddings. NO resuelve los 13 misses.",
+    "next_step": "FINE-TUNING / DOMAIN ADAPTATION sobre NVIDIA e5-v5 (o un embedding bilingüe especializado en dermocosmética) — el espacio semántico actual no representa conceptos como simetría muscular facial, efecto Tyndall, electrólisis o SERS lo suficientemente cerca de las consultas coloquiales.",
+    "risk_note": "Cualquier estrategia LLM-dependente requiere determinismo (temperature=0 con seed, o plantillas estáticas) antes de poder ser candidata a producción — los resultados actuales no son reproducibles."
+  },
+  "cost_analysis": {
+    "baseline": { "nvidia_calls": 1, "ollama_calls": 0, "latency_ms": 500 },
+    "query_expansion": { "nvidia_calls": 2, "ollama_calls": 1, "latency_ms": 1500 },
+    "multi_query": { "nvidia_calls": 4, "ollama_calls": 1, "latency_ms": 2500 },
+    "hyde": { "nvidia_calls": 2, "ollama_calls": 1, "latency_ms": 2000 },
+    "dense_sparse": { "nvidia_calls": 1, "ollama_calls": 0, "latency_ms": 800 },
+    "candidate_fusion": { "nvidia_calls": 7, "ollama_calls": 3, "latency_ms": 5000 },
+    "routing": { "nvidia_calls": "1-7", "ollama_calls": "0-3", "latency_ms": "500-5000" },
+    "note": "Candidate Fusion multiplica costo ×7 para recuperar 5/13 con regresión. Dense+Sparse añade ~300ms sin costo de API."
+  },
+  "production_guards": {
+    "env_guard": "PASS",
+    "read_only": true,
+    "no_railway": true,
+    "no_production_modification": true,
+    "nvidia_unchanged": true,
+    "no_reingestion": true,
+    "no_gold_modification": true,
+    "no_test_modification": true
+  }
+}

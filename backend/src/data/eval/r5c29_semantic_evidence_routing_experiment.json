@@ -1,0 +1,74 @@
+{
+  "experiment": "R5-C29",
+  "cycle": 41,
+  "hypothesis": "H29: las señales SEMÁNTICAS del retrieval vectorial actual pueden identificar cuándo una query tiene evidencia incompleta y necesita composición multi-chunk, mejor que las señales léxicas (C28), sin gold leakage ni reordenamiento.",
+  "timestamp": "2026-08-15",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435) — verificado",
+  "production_guard": "activa — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (15 queries no-UNSUPPORTED; 55 chunk IDs)",
+  "baseline": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "semantic_signals": {
+    "score_top1": "similitud máxima",
+    "score_top2": "segunda mejor similitud",
+    "score_top3": "tercera mejor similitud",
+    "margin12": "top1 - top2",
+    "margin13": "top1 - top3",
+    "score_drop_12": "(top1-top2)/top1 — caída relativa",
+    "score_mean_top5": "media de top-5",
+    "score_std_top5": "desviación estándar de top-5",
+    "density_top3": "candidatos top-20 con score ≥ top1-0.05",
+    "diversity_top5": "dominios distintos en top-5",
+    "concentration": "top1 / media top-5"
+  },
+  "router_configuration": {
+    "semantic": { "margin12_activation": 0.02, "density_min": 3, "min_top1_score": 0.45, "strong_score": 0.55, "suff_coverage": 0.5, "max_evidence": 8 },
+    "lexical_control": { "coverage_activation": 0.6, "min_complement": 2, "min_top1_score": 0.45, "strong_score": 0.55, "suff_coverage": 0.5, "max_evidence": 8 },
+    "note": "Reglas PRE-REGISTRADAS antes de ejecutar; análisis de señales DESCRIPTIVO (sin tuning sobre Gold)"
+  },
+  "signal_statistics": {
+    "margin12": { "multi_chunk_avg": 0.0082, "resto_avg": 0.0094, "discrimina": "NO — ambos en banda comprimida" },
+    "score_drop_12": { "multi_chunk_avg": 0.0145, "resto_avg": 0.0166, "discrimina": "NO" },
+    "density_top3": { "multi_chunk_avg": 20.0, "resto_avg": 12.92, "discrimina": "SÍ pero dirección NO informativa (multi-chunk tiene MÁS densidad por pool denso)" },
+    "score_std_top5": { "multi_chunk_avg": 0.0066, "resto_avg": 0.0116, "discrimina": "NO" },
+    "concentration": { "multi_chunk_avg": 1.0194, "resto_avg": 1.0323, "discrimina": "NO" },
+    "diversity_top5": { "multi_chunk_avg": 1.0, "resto_avg": 2.23, "discrimina": "SÍ pero CONTRARIA a la hipótesis: multi-chunk tiene MENOS diversidad (chunks del mismo documento)" },
+    "score_top1": { "multi_chunk_avg": 0.5734, "resto_avg": 0.555, "discrimina": "NO" }
+  },
+  "controls": {
+    "A": "baseline top-5 sin routing",
+    "B": "LEXICAL routing (regla C28 exacta, control)",
+    "C": "SEMANTIC routing (regla nueva)"
+  },
+  "metrics": {
+    "activation": { "semantic": 0.8667, "lexical": 0.2667 },
+    "query_success": { "A": 1.0, "B": 0.8, "C": 0.5333 },
+    "precision": { "B": 0.3633, "C": 0.3922 },
+    "false_sufficient": { "B": ["skincare_009", "cejas_007"], "C": ["skincare_006", "skincare_009", "cejas_007"] },
+    "class_B_summary": { "NORMAL_PATH": 11, "SUFFICIENT": 2, "PARTIAL": 2 },
+    "class_C_summary": { "SUFFICIENT": 9, "NORMAL_PATH": 2, "PARTIAL": 4 }
+  },
+  "confusion_matrix": {
+    "real_compose_definition": "cabello_002 + cejas_008 (B_MULTI_CHUNK de C27)",
+    "semantic": { "TP": 2, "FP": 11, "FN": 0, "TN": 2, "precision": 0.1538, "recall": 1.0 },
+    "lexical": { "TP": 0, "FP": 4, "FN": 2, "TN": 9 },
+    "conclusion": "El router semántico activa en 13/15 (86.7%): la señal margin12<0.02 se cumple en casi todas las queries porque la banda de scores del dominio está comprimida (0.50-0.58, colisión semántica C17). No discrimina: precision 0.15, 11 falsos positivos. El recall 1.0 es trivial (activa casi siempre)."
+  },
+  "critical_cases": {
+    "cejas_004": { "routing": "COMPOSE", "C": { "class": "PARTIAL", "precision": 0, "query_success": false, "false_sufficient": false }, "gate": "GATE OK — no falso SUFFICIENT (strong_score≥0.55) — heredado de C28 funciona" },
+    "cabello_002": { "routing": "COMPOSE", "C": { "class": "SUFFICIENT", "precision": 0.5, "query_success": true }, "conclusion": "RECUPERADO pero por activación indiscriminada (FP de routing), no por capacidad discriminativa de las señales" },
+    "cejas_008": { "routing": "COMPOSE", "C": { "class": "PARTIAL", "precision": 0.5, "query_success": false }, "conclusion": "NO recuperado — composición no logra reunir la evidencia de remoción" }
+  },
+  "regressions": ["skincare_006", "skincare_009", "cabello_006", "cabello_008", "cejas_004", "cejas_007", "cejas_008"],
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — señales, decisiones, clases y métricas idénticos en las 15 queries" },
+  "verdict": "SEMANTIC-ROUTING-DISCONFIRMED",
+  "verdict_rationale": "Las señales semánticas del retrieval actual NO tienen capacidad discriminativa entre queries con evidencia suficiente y queries multi-chunk: (1) la banda de scores 0.50-0.58 está tan comprimida por la colisión semántica del dominio que margin12, drop, concentration y std NO distinguen grupos; (2) la única señal con poder (diversity_top5) apunta en dirección CONTRARIA a la hipótesis (multi-chunk tiene MENOS diversidad de dominios porque sus piezas vienen del mismo documento); (3) el router semántico activa en 86.7% (13/15) con precision 0.15 y 11 falsos positivos, degradando Q_success a 0.53 (vs 1.0 baseline) con 7 regresiones. El recall 1.0 es trivial (activa casi siempre). El único resultado positivo (cabello_002 recuperado) es un falso positivo de routing que casualmente ayuda. La hipótesis de routing semántico queda DESCARTADA: la colisión semántica hace que el perfil de distribución de scores sea indistinguible entre tipos de query, y las señales de diversidad de dominio son opuestas a lo necesario.",
+  "routing_line_closed": true,
+  "recommendation_r5c30": {
+    "1": "CERRAR formalmente la línea de routing adaptativo: C28 (léxico) + C29 (semántico) ambas DISCONFIRMED con evidencia reproducible — las señales del retrieval actual (léxicas o de scores) no pueden distinguir cuándo componer",
+    "2": "El gate strong_score≥0.55 sigue siendo el único hallazgo reutilizable (evita falso SUFFICIENT en cejas_004 en ambos ciclos) — conservar como regla de seguridad documentada, NO como threshold productivo sin aprobación",
+    "3": "La evidencia acumulada C15-C29 converge: el déficit multi-chunk (cabello_002, cejas_008) NO es detectable ni explotable con las señales del motor actual; se requeriría señal SEMÁNTICA EXTERNA (otro modelo de reranking/LLM, fuera del alcance de las restricciones) o aceptar el techo",
+    "4": "Decisión del Director: (a) ACEPTAR baseline R5-C (R@5=0.7885, MRR=0.7179) como techo documentado del motor con este corpus y CERRAR la investigación R5-C con el mapa causal de C27 (66.7% directo / 16.7% retrieval / 16.7% corpus); (b) ampliar corpus para las 3 UNSUPPORTED (decisión de negocio, beneficio 16.7%); (c) autorizar señal semántica externa (riesgo alto, beneficio 11.1% teórico)",
+    "5": "GOLD-V5, baseline R5-C y motor productivo intactos; Railway NO contactada"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

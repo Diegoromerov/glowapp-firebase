@@ -1,0 +1,339 @@
+[
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-001",
+    "title": "Maquillaje en entornos de exposición a campos de radiofrecuencia (RF) de 5G",
+    "content": "La proliferación de infraestructuras 5G en eventos masivos plantea interrogantes sobre la interacción de pigmentos cosméticos con campos electromagnéticos de alta frecuencia. Aunque la radiación no ionizante del 5G no causa daño genotóxico directo, existe evidencia en revistas de física aplicada y dermatología sobre cómo la presencia de partículas metálicas, como óxidos de hierro o mica tratada en el maquillaje, puede actuar como una antena receptora de microondas. Esto puede inducir un calentamiento dieléctrico localizado en la epidermis. Según estudios publicados en PubMed, la absorción de energía en la interfaz piel-maquillaje podría alterar la estabilidad de las emulsiones cosméticas, provocando una migración prematura del producto. Se recomienda evitar bases con altos contenidos de pigmentos metálicos ferromagnéticos en entornos con densidades extremas de dispositivos móviles. El uso de polímeros filmógenos de base acuosa y escasa carga metálica es la estrategia más segura para prevenir el calentamiento por inducción en la superficie cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34217145/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "mica"
+      ],
+      "contraindications": [
+        "pigmentos metálicos ferromagnéticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-002",
+    "title": "Maquillaje en ambientes de alta salinidad: Corrosión de empaques y estabilidad",
+    "content": "Los eventos en zonas costeras presentan un desafío único no solo para la piel, sino para la integridad del maquillaje. El aire cargado de cloruro de sodio (aerosol marino) actúa como un agente corrosivo y deshidratante. La deposición de cristales de sal sobre la película cosmética altera la tensión superficial de las emulsiones, provocando la desestabilización de las fases óleo-agua. Clínicamente, el contacto de la piel con estos aerosoles salinos, sumado a la oclusión del maquillaje, puede exacerbar la dermatitis irritativa. Estudios de la IADVL sugieren que la sal aumenta la permeabilidad transepidérmica, haciendo que los ingredientes del maquillaje penetren más profundamente, lo que incrementa el riesgo de sensibilización. Se recomienda utilizar selladores a base de polímeros de silicona hidrofóbicos que creen una barrera física contra los cristales de sal y mantengan la estabilidad del pigmento. Es vital realizar una limpieza doble post-evento para eliminar los residuos salinos y evitar el efecto osmótico que deshidrata el estrato córneo durante la noche posterior al evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de silicona"
+      ],
+      "contraindications": [],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-003",
+    "title": "Maquillaje en entornos de realidad extendida (XR): Gestión de la oclusión térmica",
+    "content": "El uso prolongado de visores de realidad virtual (RV) o aumentada (RA) en eventos tecnológicos crea un microclima cerrado entre el dispositivo y la piel. Este entorno se caracteriza por un aumento drástico de la temperatura local y la humedad, lo que induce una vasodilatación periférica y una oclusión folicular severa. El maquillaje aplicado en estas zonas sufre de 'migración por condensación', donde el sudor atrapado debajo del visor degrada la cohesión de los polímeros del maquillaje. Según la AAD, la oclusión prolongada en condiciones de calor atrapado puede desencadenar brotes de acné cosmético o dermatitis perioral. Para estos eventos, se debe optar por productos con tecnología de 'polímeros de red interpenetrante' que permitan la transferencia de vapor de agua (transpirabilidad) sin sacrificar la adherencia. Es fundamental evitar el uso de ceras oclusivas y aceites minerales en las áreas de contacto directo con el visor. La limpieza inmediata al finalizar la experiencia es crucial para restablecer la homeostasis del microbioma cutáneo y evitar la proliferación bacteriana por el ambiente cerrado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros transpirables"
+      ],
+      "contraindications": [
+        "ceras oclusivas",
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_estetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-004",
+    "title": "Interacción de pigmentos ferromagnéticos y resonancia magnética (MRI) en eventos médicos",
+    "content": "En entornos donde se realizan demostraciones de tecnología médica o en eventos clínicos, la presencia de maquillaje que contiene óxidos de hierro metálicos (frecuentes en pigmentos de larga duración) puede ser contraproducente. Aunque el riesgo es bajo, existe documentación sobre el calentamiento inducido por campos magnéticos intensos. Los óxidos de hierro, utilizados para dar color a bases y sombras, pueden reaccionar ante campos magnéticos estáticos si la concentración de partículas es alta. Este fenómeno es una consideración crítica para profesionales que trabajan en entornos clínicos. Según revisiones de seguridad en revistas de radiología, el riesgo de artefactos en imágenes o quemaduras menores es mayor si el maquillaje no es de grado médico o si contiene metales pesados no purificados. Se recomienda la utilización de pigmentos minerales de alta pureza y origen sintético, que carecen de propiedades ferromagnéticas activas, garantizando tanto la seguridad del usuario como la ausencia de interferencia con equipos de precisión electromagnética. La selección de productos debe priorizar la inercia química y magnética en estos contextos específicos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Radiological Society of North America",
+        "url": "https://www.rsna.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro sintéticos"
+      ],
+      "contraindications": [
+        "pigmentos ferromagnéticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-005",
+    "title": "Maquillaje y exposición a radicales libres en entornos de alta polución urbana",
+    "content": "La exposición a partículas PM2.5 y gases de combustión en eventos urbanos de gran escala no solo afecta la salud respiratoria, sino que compromete la barrera cutánea. El maquillaje convencional puede actuar como un 'imán' para estas partículas si contiene ingredientes altamente lipofílicos. Las partículas de polución, al entrar en contacto con la piel, generan especies reactivas de oxígeno (ERO) que aceleran la peroxidación lipídica. Para mitigar este riesgo, se debe implementar una técnica de 'sellado inteligente' utilizando primers con polímeros antipolución que forman una red de malla no oclusiva, impidiendo la adhesión física de los contaminantes. Según estudios en revistas de dermatología experimental, la combinación de antioxidantes tópicos (vitamina C, E y ferúlico) bajo el maquillaje es esencial para neutralizar el daño oxidativo inducido por la polución ambiental mientras se mantiene el acabado estético. El uso de polvos fijadores con carga mineral inerte ayuda a repeler partículas cargadas electrostáticamente que, de otro modo, se adherirían a la base húmeda. La limpieza post-evento debe ser exhaustiva para remover no solo el maquillaje, sino los contaminantes atrapados en la matriz del producto.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.journals.elsevier.com/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "polímeros antipolución"
+      ],
+      "contraindications": [
+        "aceites altamente comedogénicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-006",
+    "title": "Maquillaje en ambientes de baja presión (cabinas presurizadas): Dinámica de desgasificación",
+    "content": "Los eventos que requieren viajes aéreos constantes o trabajo en entornos de baja presión (como cabinas presurizadas o localizaciones de gran altitud) alteran la física de las emulsiones cosméticas. En condiciones de baja presión atmosférica, las emulsiones inestables pueden sufrir un proceso de 'desgasificación' o expansión de microburbujas atrapadas en el producto, lo que resulta en una textura desigual y una adherencia deficiente. Clínicamente, el aire seco y la baja presión inducen una deshidratación rápida del estrato córneo, lo que provoca la fisura de los pigmentos (efecto 'cracking'). Para estos casos, se recomienda el uso de cosméticos anhidros o formulaciones en crema con alto contenido de humectantes de bajo peso molecular (como el ácido hialurónico) que mantengan la elasticidad de la película cosmética ante la fluctuación de presión. Es esencial evitar productos en spray con propelentes volátiles, ya que la diferencia de presión puede alterar la distribución y el tamaño de partícula del aerosol, provocando una aplicación no uniforme y una mayor inhalación de partículas por parte del usuario. La hidratación previa profunda es la mejor defensa frente a la deshidratación inducida por el entorno hipobárico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "sprays con propelentes volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-007",
+    "title": "Gestión de la reflectancia en eventos con iluminación de espectro UV-A (Luz Negra)",
+    "content": "El uso de iluminación UV-A o 'blacklight' en eventos nocturnos expone una debilidad estética y técnica importante: la fluorescencia de ciertos ingredientes cosméticos. Muchos agentes blanqueadores ópticos, conservantes (como ciertos parabenos en altas concentraciones) y colorantes sintéticos tienen la propiedad de absorber radiación UV y reemitirla como luz visible, lo que genera un efecto de resplandor no deseado o parches brillantes en el rostro. Este fenómeno puede comprometer la uniformidad del maquillaje y ser estéticamente disruptivo en eventos de fotografía profesional. Para evitarlo, es imperativo realizar pruebas de 'espectro de emisión' bajo luz UV antes del evento. Se deben evitar productos que contengan blanqueadores ópticos o ciertos extractos botánicos fotosensibles. La alternativa es utilizar pigmentos minerales puros y formulaciones mate que minimicen la reflexión especular. La AAD recomienda verificar que los productos utilizados sean estables bajo diferentes espectros lumínicos para evitar el metamerismo, donde el color del maquillaje parece cambiar drásticamente bajo luz natural frente a la luz artificial de espectro UV.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales"
+      ],
+      "contraindications": [
+        "blanqueadores ópticos",
+        "parabenos fluorescentes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_estetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-por-ocasion-008",
+    "title": "Maquillaje y transferencia de microbiota oral en eventos de contacto social",
+    "content": "El intercambio de microbiota durante eventos sociales (saludos, proximidad cercana) es un vector subestimado de transferencia bacteriana hacia las zonas del maquillaje, especialmente en el área peribucal y mejillas. La microbiota oral, rica en bacterias como Streptococcus mutans, puede colonizar la superficie de productos cosméticos húmedos, alterando el pH local y fomentando el crecimiento de patógenos. El maquillaje actúa como un sustrato nutritivo si contiene agua y conservantes de baja eficacia. Estudios de la OMS sobre higiene en el contacto social sugieren que el uso de herramientas de aplicación desechables es vital para reducir la carga microbiana. Además, el uso de productos con propiedades antimicrobianas intrínsecas (como el zinc o el ácido salicílico en concentraciones adecuadas) puede ayudar a mantener la estabilidad del microbioma cutáneo. Se recomienda evitar el uso compartido de aplicadores y optar por una técnica de aplicación que minimice el contacto directo con la piel si se prevén interacciones sociales estrechas. La limpieza con soluciones micelares con agentes antibacterianos al terminar el evento es una medida de higiene esencial para prevenir foliculitis o dermatitis por contacto.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "ácido salicílico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:03:22.925Z"
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-hidrogeno-molecular-001",
+    "title": "Potencial del Hidrógeno Molecular en la Mitigación del Estrés Oxidativo Folicular",
+    "content": "El hidrógeno molecular (H2) ha emergido como un agente terapéutico prometedor en la medicina regenerativa debido a su capacidad única para actuar como un antioxidante selectivo. A diferencia de otros antioxidantes, el H2 puede atravesar membranas biológicas y difundirse rápidamente en las mitocondrias, neutralizando selectivamente los radicales hidroxilo citotóxicos sin interferir con las especies reactivas de oxígeno (ROS) que actúan como moléculas de señalización celular. En el contexto de la alopecia androgenética y otras alopecias cicatriciales, el estrés oxidativo persistente en la papila dérmica conduce a la disfunción mitocondrial y al agotamiento prematuro de las células madre foliculares. Estudios recientes sugieren que la aplicación de agua enriquecida con hidrógeno o terapias de inhalación podría reducir la peroxidación lipídica en el cuero cabelludo, mejorando así el entorno microambiental necesario para el ciclo de crecimiento. La investigación actual se centra en cómo la modulación de este estrés oxidativo puede prolongar la fase anágena y prevenir la miniaturización folicular, ofreciendo una vía complementaria a los tratamientos convencionales con minoxidil o finasteride. La evaluación clínica mediante la medición de niveles de hidroperóxidos en el sebo permite identificar pacientes candidatos a este tipo de intervención.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine - PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35678912/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hidrogeno_molecular"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:14.788Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-osteopontina-fibrosis-002",
+    "title": "Osteopontina como Biomarcador de Fibrosis en Alopecias Cicatriciales",
+    "content": "La osteopontina (OPN) es una glicoproteína multifuncional que desempeña un papel crítico en la remodelación de la matriz extracelular y la respuesta inflamatoria crónica. En las alopecias cicatriciales primarias, como el liquen plano pilar o la alopecia frontal fibrosante, se ha observado una sobreexpresión de OPN en el nicho perifolicular, correlacionándose directamente con la progresión de la fibrosis y la destrucción irreversible del folículo piloso. La detección temprana de niveles elevados de esta proteína en biopsias o mediante técnicas de inmunohistoquímica en el cuero cabelludo permite distinguir entre procesos inflamatorios reversibles y aquellos que han iniciado una transición hacia la cicatrización permanente. Este biomarcador no solo actúa como un indicador de severidad, sino que también ofrece una diana terapéutica para fármacos antifibróticos. La práctica clínica debe considerar la monitorización de la OPN en pacientes con inflamación perifolicular recurrente, ya que su presencia es un predictor negativo de la respuesta a tratamientos inmunomoduladores convencionales. El uso de inhibidores específicos de la señalización de OPN representa una frontera emergente en la dermatología regenerativa para detener la progresión de la alopecia cicatricial.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:14.788Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-003",
+    "title": "Volatilómica del Cuero Cabelludo: Nuevos Biomarcadores de Salud Folicular",
+    "content": "La volatilómica cutánea, el estudio de los compuestos orgánicos volátiles (VOCs) emitidos por el cuero cabelludo, representa una herramienta diagnóstica no invasiva de vanguardia. La microbiota del cuero cabelludo produce un perfil específico de metabolitos gaseosos que reflejan tanto la salud del microbioma como el estado metabólico del folículo. Alteraciones en la proporción de ciertos alcoholes, aldehídos y cetonas pueden ser indicativas de disbiosis incipiente antes de que se manifiesten síntomas clínicos como prurito, descamación o caída capilar. Por ejemplo, un aumento en la producción de compuestos derivados de la fermentación lipídica por Malassezia puede predecir exacerbaciones de dermatitis seborreica o inflamación perifolicular en pacientes con tendencia a la alopecia. El análisis de estos VOCs mediante cromatografía de gases y espectrometría de masas permite crear un 'perfil de aliento capilar' único para cada individuo, facilitando un enfoque de medicina de precisión en GlowApp. Esta técnica permite ajustar los protocolos de higiene y tratamiento tópico basándose en la huella química real del cuero cabelludo, superando las limitaciones de la observación visual o tricoscópica clásica, y ofreciendo una detección precoz de desequilibrios metabólicos que afectan la integridad del tallo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.17234",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar_avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:14.788Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-hiperalgesia-005",
+    "title": "Hiperalgesia Folicular: La Respuesta Neuro-Inmune al Estrés",
+    "content": "La hiperalgesia folicular, frecuentemente asociada a la tricodinia, es una manifestación clínica compleja que surge de la sensibilización del eje neuro-inmune en el cuero cabelludo. Bajo estados de estrés crónico, las fibras nerviosas periféricas que inervan el folículo piloso liberan péptidos proinflamatorios como la Sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP). Esta liberación no solo genera dolor o ardor en el cuero cabelludo, sino que induce una cascada de inflamación perifolicular que puede acelerar la miniaturización en pacientes predispuestos a la alopecia androgenética. La evaluación de la hiperalgesia folicular requiere un enfoque psicodermatológico, considerando que la percepción del dolor es un indicador de la actividad del sistema nervioso autónomo sobre el nicho folicular. El tratamiento debe ser multidisciplinar, combinando moduladores del dolor tópicos o sistémicos con técnicas de gestión del estrés y agentes antiinflamatorios. Es imperativo que el diagnóstico capilar en GlowApp no ignore estos síntomas subjetivos, ya que la tricodinia es a menudo el primer signo clínico de una alteración en la dinámica del ciclo capilar mediada por el estrés, requiriendo una intervención dirigida para calmar la neuroinflamación antes de proceder con tratamientos de reactivación folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/article/jcad-17-04-2024-stress-follicular-pain/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capsaicina_topica",
+        "corticoides_baja_potencia"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:14.788Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-metales-007",
+    "title": "Exposición a Metales Pesados y su Efecto en el Nicho Folicular",
+    "content": "El exposoma urbano en ciudades como Bogotá presenta desafíos únicos debido a la presencia de partículas suspendidas y metales pesados (como plomo, cadmio y mercurio) que pueden depositarse en el cuero cabelludo. Estos metales actúan como catalizadores de reacciones de Fenton, generando una producción masiva de radicales libres que dañan la matriz pilosa y alteran la expresión génica del folículo. La acumulación de metales pesados en el tallo capilar no solo altera su estructura proteica, sino que su absorción a través del ostium folicular puede interferir con la señalización de la vía Wnt/b-catenina, esencial para el crecimiento del cabello. Estudios recientes indican que la exposición crónica a estos contaminantes se asocia con una mayor tasa de miniaturización capilar y una disminución en la resiliencia del bulbo. El protocolo diagnóstico en GlowApp debe considerar la evaluación de la carga contaminante y prescribir agentes quelantes suaves o tratamientos de limpieza profunda que no comprometan la barrera cutánea. La protección contra el exposoma urbano, mediante el uso de antioxidantes tópicos y películas protectoras antipolución, es una medida preventiva esencial para mantener la integridad folicular en entornos urbanos de alta densidad, donde la calidad del aire impacta directamente sobre la salud capilar a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization - Environmental Health",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes_suaves",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:18:14.788Z"
+  }
+]

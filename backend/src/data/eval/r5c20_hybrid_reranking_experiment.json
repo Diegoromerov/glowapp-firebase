@@ -1,0 +1,67 @@
+{
+  "cycle": "32",
+  "experiment": "R5-C20",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "baseline_r5c_unchanged": true,
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "reproducibility": "A ≡ B — métricas idénticas en RUN A y RUN B (determinista)",
+  "reranker": {
+    "formula": "hybrid = w_v * norm(vector) + w_l * lexical + w_c * concept + w_t * title",
+    "grid_pre_registrado": {
+      "CFG1": { "w_v": 0.7, "w_l": 0.2, "w_c": 0.05, "w_t": 0.05 },
+      "CFG2": { "w_v": 0.5, "w_l": 0.3, "w_c": 0.1, "w_t": 0.1 },
+      "CFG3": { "w_v": 0.3, "w_l": 0.4, "w_c": 0.15, "w_t": 0.15 }
+    },
+    "note": "Pesos pre-registrados ANTES de evaluar (sin tuning post-hoc). Señales deterministas (vector + lexical + conceptos genéricos + título). Sin reglas por query. Sin LLM externo. Sin leakage: la lista de conceptos es genérica del dominio, no derivada del gold."
+  },
+  "candidate_recall": {
+    "r10": 0.6545, "r20": 0.7156, "r50": 0.8011,
+    "gold_in_pool": "15/15",
+    "outside_pool": [],
+    "conclusion": "El recall del candidate pool es alto (0.80 @50) y TODOS los golds están dentro del top-50. El problema NO es de candidate generation a nivel de pool."
+  },
+  "metrics_15_queries": {
+    "A_vector": { "p1": 0.4667, "p3": 0.6667, "p5": 0.4533, "r5": 0.6156, "r10": 0.6545, "mrr": 0.7222 },
+    "B_CFG1": { "p1": 0.6667, "p3": 0.5778, "p5": 0.4667, "r5": 0.6322, "r10": 0.6545, "mrr": 0.8222 },
+    "B_CFG2": { "p1": 0.6667, "p3": 0.5333, "p5": 0.4, "r5": 0.5433, "r10": 0.6322, "mrr": 0.8056 },
+    "B_CFG3": { "p1": 0.6, "p3": 0.4222, "p5": 0.36, "r5": 0.4933, "r10": 0.6567, "mrr": 0.75 }
+  },
+  "delta_vs_A": {
+    "CFG1": { "r5": 0.0166, "mrr": 0.1, "p5": 0.0134, "p1": 0.2 },
+    "CFG2": { "r5": -0.0723, "mrr": 0.0834, "p5": -0.0533, "p1": 0.2 },
+    "CFG3": { "r5": -0.1223, "mrr": 0.0278, "p5": -0.0933, "p1": 0.1333 }
+  },
+  "the_3_misses": {
+    "cabello_002": { "gold_in_pool": true, "recall50": 0.6, "gold_rank_A": 1, "gold_rank_CFG2": 1, "classification": "UNCHANGED", "verdict": "No recuperado ni empeorado — el reranking no cambia el resultado" },
+    "cejas_004": { "gold_in_pool": true, "recall50": 0.3333, "gold_rank_A": 2, "gold_rank_CFG2": 4, "classification": "RERANK_HARMFUL", "verdict": "EMPEORA — el gold baja de rank 2 a 4; R@5 0.33→0.17" },
+    "cejas_008": { "gold_in_pool": true, "recall50": 0.5, "gold_rank_A": 1, "gold_rank_CFG2": 1, "classification": "UNCHANGED", "verdict": "No recuperado — los golds de remoción siguen fuera del top-5 pese a estar en el pool" }
+  },
+  "classification_summary": {
+    "UNCHANGED": 7, "RERANK_HARMFUL": 4, "RERANK_RECOVERED": 1, "RERANK_IMPROVED_BUT_NOT_RECOVERED": 3,
+    "recovered_queries": ["skincare_008"],
+    "harmful_queries": ["skincare_006", "skincare_010", "cabello_008", "cejas_004"]
+  },
+  "margin_analysis": {
+    "note": "Los márgenes vectoriales gold−negativo son estrechos (5 negativos de 15), confirmando la colisión semántica de R5-C17. El reranker léxico no corrige esta colisión porque los hard negatives comparten términos con la query (mismo dominio).",
+    "negative_margins": ["skincare_005", "skincare_006", "skincare_007", "skincare_009", "cejas_001", "cejas_004", "cejas_005", "cejas_007"]
+  },
+  "verdict": "RERANKING-DISCONFIRMED",
+  "verdict_rationale": "El reranker híbrido (fórmula congelada, grid de 3 configuraciones pre-registrado) NO recupera los 3 misses reales (0/3; cejas_004 empeora con 4 RERANK_HARMFUL). La única señal positiva es CFG1 con ΔR@5=+0.017 y ΔMRR=+0.10 — marginal, por mejora de P@1 (0.47→0.67) que no se traduce en recall, y acompañada de regresiones. El recall del pool es alto (0.80 @50, 15/15 golds dentro) → el problema NO es de candidate generation a nivel top-50; el problema residual es que los golds de los misses (cejas_004 simetría, cejas_008 remoción) están en el pool PERO con scores bajos y hard negatives semánticamente idénticos que ni el vector ni las señales léxicas pueden separar. La colisión semántica del dominio (R5-C17) no es corregible con reranking híbrido determinista.",
+  "answers": {
+    "gold_en_candidate_pool": "SÍ — 15/15 en top-50 (recall@50=0.80)",
+    "reranker_puede_subirlo": "NO para los misses — 0/3 recuperados; cejas_004 empeora",
+    "recall_problem": "NO a nivel top-50 — el recall del pool es 0.80",
+    "ranking_problem": "PARCIAL — los golds de misses están en el pool pero en posiciones 1-2 (no fuera), y el problema es que los hard negatives los desplazan por colisión semántica, no por orden",
+    "por_que_no_funciona": "Las señales léxicas/conceptos no distinguen gold de hard negative porque ambos comparten el mismo dominio y términos (p.ej. cejas_004: 'microblading', 'diseño', 'asimetría' aparecen en el gold Y en los competidores)"
+  },
+  "recommendation_r5c21": {
+    "1": "CERRAR la línea de reranking híbrido determinista (evidencia negativa reproducible en R5-C3/C4/C20)",
+    "2": "El problema residual NO es de ranking ni de recall del pool — es COLISIÓN SEMÁNTICA INTRÍNSECA del dominio (conceptos de belleza comparten vocabulario)",
+    "3": "Opciones restantes: (a) A/B de otro modelo de la familia E5/retrieval-especializada (bge-m3, nomic-embed-text) como última prueba de la línea de embeddings, (b) aceptar el baseline R5-C (R@5=0.7885) como techo del motor con e5-v5 en este corpus, (c) ampliar el corpus con contenido más diferenciado (decisión del Director — requiere autorización)",
+    "4": "El baseline R5-C y GOLD-V5 permanecen intactos; los 3 misses permanecen como casos de evaluación"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

@@ -1,0 +1,125 @@
+[
+  {
+    "chunk_id": "poros-metabolismo-lipidos-001",
+    "title": "El papel de la señalización de esfingosina-1-fosfato en la arquitectura del poro",
+    "content": "La esfingosina-1-fosfato (S1P) es un mediador lipídico bioactivo con un rol crítico en la homeostasis de la unidad pilosebácea. Investigaciones recientes en dermatología experimental sugieren que los niveles de S1P regulan la proliferación de sebocitos y la diferenciación de los queratinocitos en el ostium folicular. Cuando este equilibrio se altera, ya sea por factores ambientales o estrés oxidativo, se produce una hiperqueratinización reactiva que contribuye a la dilatación visible del poro. La modulación de la vía de la S1P influye directamente en la cohesión de las células del epitelio folicular, evitando la formación de microcomedones que distienden la estructura del ostium. Es fundamental entender que el poro no es un simple orificio pasivo, sino una estructura dinámica cuya arquitectura depende de la señalización lipídica intracelular. Mantener la integridad de estas vías de señalización es esencial para prevenir la pérdida de soporte periporo y mejorar la textura cutánea a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos esenciales"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:40:21.479Z"
+  },
+  {
+    "chunk_id": "poros-homeostasis-ion-potasio-002",
+    "title": "Canales de potasio y su modulación en la contractilidad del músculo erector del pelo",
+    "content": "La apariencia dilatada de los poros en zonas como la nariz y mejillas está intrínsecamente ligada a la actividad del músculo erector del pelo (arrector pili). Estudios de mecanobiología cutánea han demostrado que los canales de potasio (K+) regulan el potencial de membrana de las células musculares lisas asociadas al folículo. Una modulación adecuada de estos canales puede prevenir la relajación excesiva del tejido periporo, que es una causa subestimada de la apariencia de 'poro dilatado' en pieles maduras. La activación de canales de potasio dependientes de calcio influye en la tonicidad folicular; si esta homeostasis se pierde, el poro pierde su capacidad de mantenerse firme y cerrado. La investigación sugiere que ciertos compuestos botánicos y péptidos podrían interactuar con estos receptores para mejorar la percepción visual de la textura. Es un área emergente que conecta la fisiología muscular con la estética cosmética, permitiendo estrategias de tratamiento más allá de la simple exfoliación química o física.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos tensores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:40:21.479Z"
+  },
+  {
+    "chunk_id": "poros-proteostasis-matriz-003",
+    "title": "Proteostasis y resiliencia de la matriz extracelular en el entorno folicular",
+    "content": "La proteostasis, o el mantenimiento de la homeostasis proteica, es un determinante clave de la calidad de la piel alrededor del poro. En el entorno folicular, la acumulación de proteínas mal plegadas o dañadas por el exposoma (radiación UV, polución) conduce a una degradación acelerada de la matriz extracelular periporo. La pérdida de colágeno tipo III y elastina funcional en el anillo que rodea el ostium provoca que este pierda su soporte mecánico y se ensanche. Las chaperonas moleculares y los sistemas de degradación proteica (como el proteasoma) son fundamentales para eliminar estos detritos proteicos. Cuando la capacidad de limpieza celular disminuye, la matriz se vuelve rígida y menos elástica, lo que impide que el poro recupere su forma original tras la secreción de sebo. Promover la proteostasis mediante ingredientes que activen las rutas de limpieza celular es una estrategia avanzada para combatir la dilatación folicular vinculada al envejecimiento cronológico y fotoinducido.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:40:21.479Z"
+  }
+]

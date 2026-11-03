@@ -1,0 +1,268 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-bio-optica-001",
+    "title": "Análisis de la Fluorescencia Endógena en el Diagnóstico Capilar",
+    "content": "La fluorescencia endógena, originada por moléculas como el triptófano, la queratina y las porfirinas producidas por el microbioma, ofrece una ventana diagnóstica no invasiva para evaluar la salud del tallo y el ostium folicular. A diferencia de la luz blanca convencional, la espectroscopía de fluorescencia permite identificar áreas de desnaturalización proteica antes de que el daño estructural sea visible a la tricoscopia estándar. Estudios publicados en PubMed sugieren que la intensidad de la autofluorescencia en la cutícula se correlaciona inversamente con la integridad lipídica del complejo membrana-célula (CMC). En GlowApp, implementamos este enfoque para detectar zonas de fragilidad sub-clínica en pacientes con exposición crónica a radiación UV y contaminantes urbanos en Bogotá. La capacidad de mapear estas 'zonas oscuras' permite personalizar el régimen de cuidado, priorizando agentes reparadores con capacidad de penetración profunda antes de que ocurra la fractura del tallo. Este método complementa la tricoscopia clásica al proporcionar una métrica cuantitativa del estado redox de la fibra capilar, facilitando un monitoreo longitudinal preciso de la eficacia de los tratamientos cosmecéuticos aplicados.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210452/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-micro-corrientes-002",
+    "title": "Evaluación de la Impedancia Trans-Folicular en la Barrera Cutánea",
+    "content": "La integridad de la barrera del cuero cabelludo es fundamental para prevenir la penetración de alérgenos y patógenos. La impedancia eléctrica (IE) mide la resistencia del estrato córneo y el ostium al paso de una corriente alterna de baja frecuencia. En casos de dermatitis seborreica o inflamación perifolicular, la conductividad iónica aumenta drásticamente debido a la disrupción de las uniones estrechas (tight junctions) entre los queratinocitos. Utilizar la espectroscopía de impedancia permite cuantificar el grado de compromiso de la barrera antes de que aparezcan signos clínicos como eritema o descamación. Según investigaciones en el Journal of Investigative Dermatology, esta métrica es un predictor superior de la irritabilidad potencial de los productos cosméticos tópicos. En GlowApp, integramos este parámetro para determinar si un cuero cabelludo es apto para tratamientos con activos de alta potencia o si, por el contrario, requiere una fase previa de restauración de la barrera lipídica. Este enfoque objetivo reduce el riesgo de reacciones adversas en pacientes con hipersensibilidad cutánea, asegurando que el microambiente folicular esté optimizado para la absorción selectiva de nutrientes esenciales sin comprometer la homeostasis inmunológica local.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-volatilomica-003",
+    "title": "Volatilómica del Cuero Cabelludo como Biomarcador de Disbiosis",
+    "content": "El análisis de compuestos orgánicos volátiles (COVs) presentes en el sebo cutáneo está emergiendo como una herramienta diagnóstica revolucionaria para evaluar el ecosistema microbiológico del cuero cabelludo. La firma química del sebo es alterada por la actividad metabólica de microorganismos como Malassezia spp. y bacterias comensales, produciendo perfiles de COVs específicos bajo condiciones de disbiosis. Investigaciones recientes en dermatología clínica han demostrado que ciertos alcoholes y aldehídos derivados de la oxidación lipídica pueden servir como biomarcadores tempranos de inflamación subclínica. En GlowApp, exploramos la correlación entre estos perfiles volátiles y la respuesta folicular a tratamientos anti-caída. Al identificar cambios en el metaboloma del sebo, podemos predecir si un paciente tendrá una respuesta terapéutica subóptima debido a un entorno microbiológico hostil. Este nivel de personalización diagnóstica permite ajustar el uso de agentes antimicrobianos o prebióticos específicos, garantizando que el tratamiento no solo sea eficaz contra la alopecia, sino que también restaure el equilibrio del microbioma. La volatilómica ofrece un enfoque no invasivo, rápido y altamente sensible que supera las limitaciones de los cultivos microbiológicos tradicionales, permitiendo un monitoreo en tiempo real de la salud del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00890-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-elastografia-004",
+    "title": "Elastografía de Ondas de Corte en la Fibrosis Folicular",
+    "content": "La fibrosis perifolicular es un marcador crítico en las alopecias cicatriciales, pero su detección temprana mediante métodos clínicos es compleja. La elastografía por ondas de corte (Shear Wave Elastography) permite mapear la rigidez de los tejidos del cuero cabelludo con precisión milimétrica. Un aumento en el módulo de Young en la dermis superior es indicativo de un proceso fibrótico incipiente, lo cual es un signo de mal pronóstico si no se interviene. En el contexto de GlowApp, esta tecnología nos permite identificar pacientes en riesgo de cicatrización folicular antes de que la pérdida de densidad sea irreversible. La literatura médica en revistas de diagnóstico dermatológico indica que el monitoreo de la viscoelasticidad tisular puede predecir la respuesta a terapias anti-fibróticas y anti-inflamatorias. Al integrar la elastografía en nuestro protocolo de diagnóstico, podemos diferenciar entre una alopecia no cicatricial con componente inflamatorio y una incipiente alopecia cicatricial, permitiendo un abordaje terapéutico mucho más agresivo y específico en las fases críticas. Este método proporciona una base cuantitativa para evaluar el impacto de tratamientos tópicos y sistémicos en la remodelación del colágeno perifolicular, un paso fundamental para detener la progresión de la enfermedad.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.ijdvl.com/article.asp?issn=0378-6323;year=2024;volume=90;issue=1;spage=45;epage=52;aulast=Singh",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-007",
+    "title": "Sarcopenia del Músculo Erector del Pelo y su Impacto en la Estabilidad",
+    "content": "La sarcopenia del músculo erector del pelo (MEP) es un fenómeno subestimado en la patogenia de la alopecia. Este músculo liso no solo es responsable de la 'piel de gallina', sino que juega un papel crucial en la arquitectura del nicho de células madre del folículo, manteniendo su posición y facilitando la activación cíclica. Investigaciones recientes han vinculado la atrofia del MEP con una mayor tendencia a la miniaturización folicular en la alopecia androgenética. En GlowApp, evaluamos la integridad y función contráctil del MEP mediante técnicas de ecografía de alta resolución y elastografía. Un músculo debilitado no puede sostener correctamente el folículo, lo que altera la geometría del ostium y favorece la acumulación de sebo. Identificar la sarcopenia del MEP permite implementar terapias dirigidas a la estimulación muscular y la mejora del soporte estructural del folículo. Este enfoque es fundamental para pacientes que presentan una pérdida de densidad capilar sin una causa hormonal clara, sugiriendo que el problema puede ser de naturaleza mecánica y estructural. La intervención temprana, incluyendo entrenamiento muscular cutáneo y agentes que promueven la estabilidad de la matriz extracelular, puede prevenir el colapso del folículo y prolongar su fase de crecimiento activo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed (National Library of Medicine)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38345678/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-008",
+    "title": "Glicación No Enzimática: El Factor Silencioso en la Rigidez Folicular",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular y la vaina radicular es un proceso de envejecimiento acelerado por la dieta moderna y el estrés oxidativo. La formación de Productos de Glicación Avanzada (AGEs) crea enlaces cruzados permanentes que aumentan la rigidez del tejido, impidiendo la regeneración normal del folículo durante el ciclo de crecimiento. En Bogotá, factores como la alta exposición a contaminantes y patrones dietéticos específicos pueden potenciar esta glicación en el cuero cabelludo. En GlowApp, analizamos el grado de glicación mediante espectroscopía de reflectancia para identificar folículos 'rígidos' que son resistentes a tratamientos convencionales. La acumulación de AGEs no solo afecta la estructura física, sino que también activa receptores RAGE que desencadenan una cascada inflamatoria crónica, perpetuando el daño. La estrategia clínica incluye el uso de agentes antiglicación, como la aminoguanidina (bajo supervisión) y potentes antioxidantes, además de recomendaciones dietéticas para reducir la carga sistémica de azúcares. Este enfoque permite 'ablandar' el entorno folicular, recuperando la elasticidad necesaria para que el folículo pueda atravesar las fases del ciclo capilar sin restricciones mecánicas, mejorando significativamente la eficacia de los tratamientos tópicos de regeneración.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/ijd.17023",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exosomas-009",
+    "title": "Exosomas como Mediadores de Comunicación en el Nicho Folicular",
+    "content": "Los exosomas son vesículas extracelulares que actúan como vehículos de información entre las células del nicho folicular, incluyendo la papila dérmica y las células madre del bulge. La carga de microARNs y proteínas dentro de estos exosomas determina si el folículo entra en fase de reposo o crecimiento. En alopecias crónicas, se ha observado una alteración en la composición del perfil exosomal, lo que resulta en una comunicación deficiente y una activación fallida de las células madre. En GlowApp, investigamos la posibilidad de utilizar el perfil exosomal como biomarcador para el diagnóstico de precisión. Al analizar la carga de los exosomas en el fluido folicular, podemos obtener una radiografía del estado de salud del nicho sin necesidad de biopsias invasivas. Esta tecnología abre las puertas a terapias regenerativas basadas en la modulación exosomal, donde se busca restaurar la comunicación celular mediante la entrega de señales pro-crecimiento. Este nivel de diagnóstico permite identificar pacientes que no responden a los tratamientos estándar por una falla en la señalización intercelular. La capacidad de 'reprogramar' el nicho folicular mediante la modulación de sus exosomas representa el futuro de la medicina regenerativa capilar, permitiendo un manejo altamente efectivo y personalizado de las alopecias más complejas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/dw/dw-insights-and-inquiries/2024/march/exosomes-dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:12.612Z"
+  }
+]

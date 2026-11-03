@@ -1,0 +1,174 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-001",
+    "title": "Impacto de la disrupción del gradiente de pH en la homeostasis epidérmica",
+    "content": "La superficie cutánea presenta un pH ácido, generalmente entre 4.5 y 5.5, fundamental para la actividad enzimática necesaria en la síntesis de lípidos (ceramidas, colesterol, ácidos grasos libres) y el desprendimiento celular. La alteración de este gradiente, frecuentemente causada por limpiadores alcalinos, compromete la función barrera aumentando la pérdida de agua transepidérmica (TEWL). Estudios publicados en el Journal of Clinical and Aesthetic Dermatology resaltan que el uso de surfactantes con pH neutro o ácido es crucial para prevenir la proliferación de patógenos como Cutibacterium acnes y Staphylococcus aureus. Mantener la acidez cutánea no solo protege la microbiota, sino que optimiza la respuesta de la piel frente a agresores ambientales. Una rutina clínica eficiente debe priorizar limpiadores syndet con pH balanceado, evitando la agresión mecánica y química que altera la película hidrolipídica. La restauración del pH tras la limpieza es un paso preventivo contra procesos inflamatorios subclínicos y la descamación excesiva, permitiendo que los activos posteriores penetren sin causar irritación reactiva.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/the-impact-of-skin-ph-on-barrier-function/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes_syndet"
+      ],
+      "contraindications": [
+        "jabones_alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:01.332Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-003",
+    "title": "Dinámica de la osmolaridad en el estrato córneo ante estrés ambiental",
+    "content": "La hidratación cutánea depende en gran medida de la capacidad del estrato córneo para mantener un equilibrio osmótico, regulado por los Factores Naturales de Hidratación (NMF). En climas con baja humedad o alta exposición a sistemas de aire acondicionado, la pérdida de agua transepidérmica aumenta, alterando la osmolaridad local. Esto puede activar sensores de estrés en los queratinocitos, disparando la liberación de citoquinas inflamatorias. La estrategia clínica consiste en el uso de humectantes higroscópicos, como la glicerina y el ácido hialurónico de bajo peso molecular, combinados con oclusivos de nueva generación que crean un microambiente controlado. Es vital comprender que la aplicación de activos en un estrato córneo deshidratado puede aumentar la penetración no deseada de irritantes. La recomendación es aplicar humectantes sobre la piel ligeramente húmeda, sellando posteriormente con oclusivos que imiten la estructura de la barrera lipídica, asegurando así la estabilidad osmótica necesaria para una función celular óptima y una reducción de la sensibilidad reactiva.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "acido_hialuronico"
+      ],
+      "contraindications": [
+        "humectantes_en_ambientes_extremos_sin_oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:01.332Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-004",
+    "title": "Control clínico de la peroxidación lipídica en pieles con tendencia acneica",
+    "content": "En pieles con tendencia acneica, la composición del sebo suele estar alterada, con una mayor proporción de escualeno oxidado. Este compuesto, producto de la peroxidación lipídica inducida por radiación UV y contaminantes, es altamente comedogénico e inflamatorio. La rutina debe enfocarse no solo en la seborregulación, sino en la protección antioxidante del sebo. Ingredientes como la niacinamida, el zinc y los antioxidantes liposolubles (como la vitamina E estabilizada) juegan un papel preventivo clave al estabilizar los lípidos del sebo y evitar su oxidación. La evidencia clínica sugiere que el control de esta peroxidación reduce significativamente la formación de comedones y la intensidad del proceso inflamatorio. Es fundamental que los pacientes utilicen fotoprotección con filtros que incluyan protección contra la radiación infrarroja y la luz visible, ya que estas longitudes de onda aceleran la peroxidación lipídica más que la radiación UV por sí sola. Este enfoque preventivo es un pilar en el manejo del acné del adulto, donde la inflamación es el motor principal de las lesiones.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "vitamina_e"
+      ],
+      "contraindications": [
+        "aceites_comedogenicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:01.332Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-006",
+    "title": "Quelación de metales pesados como defensa ante el exposoma urbano",
+    "content": "En entornos urbanos como Bogotá, la exposición a partículas de polución cargadas de metales pesados es un factor determinante en el envejecimiento prematuro y la inflamación cutánea. Estos metales actúan como catalizadores en la generación de especies reactivas de oxígeno (ROS) directamente sobre la superficie de la piel. La estrategia de defensa consiste en la incorporación de agentes quelantes en la rutina matutina, capaces de secuestrar estos metales antes de que inicien la cascada oxidativa. Ingredientes como el EDTA disódico, el ácido fítico o ciertos polímeros específicos funcionan como una barrera química adicional. Es fundamental que estos activos se apliquen bajo el fotoprotector, creando un escudo que neutralice la polución atmosférica. La eficacia de esta estrategia se mide en la reducción de la respuesta inflamatoria subclínica y la preservación de la integridad del proteoma cutáneo. Para el paciente urbano, la quelación no es opcional; es un paso necesario para mitigar el daño acumulativo que los antioxidantes convencionales, por sí solos, no logran neutralizar eficazmente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (Air Quality Guidelines)",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "EDTA",
+        "acido_fitico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_exposoma"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:01.332Z"
+  }
+]

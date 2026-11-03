@@ -1,0 +1,349 @@
+[
+  {
+    "chunk_id": "colorimetria-cronobiologia-circadiana-001",
+    "title": "Variabilidad del subtono según el ciclo circadiano y temperatura corporal",
+    "content": "La colorimetría facial no es estática a lo largo del día. La fisiología cutánea está sujeta a ritmos circadianos que regulan la microcirculación y la temperatura periférica. Estudios publicados en el Journal of Investigative Dermatology indican que la perfusión sanguínea alcanza su pico en horas de la tarde, lo que incrementa el eritema basal y altera la lectura del subtono hacia matices más rosados o cálidos. Por el contrario, durante las primeras horas de la mañana, la vasoconstricción periférica puede hacer que el subtono parezca más frío o cetrino debido a una menor oxigenación superficial. Este fenómeno, conocido como termorregulación dinámica, es fundamental para el diagnóstico en GlowApp: una base elegida a las 8:00 AM puede resultar desajustada a las 4:00 PM. Recomendamos realizar las pruebas de colorimetría en un horario estandarizado o considerar el factor de vasodilatación inducida por la actividad metabólica diaria para evitar errores en la selección de bases de maquillaje.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-altitud-bogota-002",
+    "title": "Impacto de la hipoxia hipobárica en la cromaticidad de la piel en Bogotá",
+    "content": "La ubicación de Bogotá a 2.600 metros sobre el nivel del mar induce una respuesta fisiológica de adaptación crónica: la poliglobulia moderada o aumento de la masa eritrocitaria. Este incremento en la concentración de hemoglobina, sumado a una saturación de oxígeno arterial ligeramente menor en comparación con el nivel del mar, puede generar un subtono con matices azulados o cianóticos subclínicos que interfieren con la lectura cromática convencional. Investigaciones en medicina de altura sugieren que la piel de los residentes en zonas de alta montaña presenta una reflectancia disminuida en las longitudes de onda del espectro rojo, lo que se traduce en una percepción de subtono 'frío' o 'grisáceo' incluso en fototipos con alta carga de melanina. Al seleccionar correctores en GlowApp, es vital compensar esta tendencia a la cianosis subclínica con pigmentos que contengan bases cálidas o durazno, evitando los correctores excesivamente fríos que potenciarían esta característica fisiológica regional.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_colorimetria"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-microbioma-metabolitos-003",
+    "title": "El papel de los metabolitos del microbioma en la luminosidad y el subtono",
+    "content": "Más allá de la melanina y la hemoglobina, el microbioma cutáneo influye en la cromaticidad superficial a través de la producción de metabolitos. La fermentación bacteriana en la superficie cutánea puede alterar el pH y, por ende, la reflectancia de la luz. Estudios recientes en la revista 'Nature Communications' han demostrado que la diversidad bacteriana influye en la opacidad de la piel; una disbiosis puede aumentar la dispersión de luz inespecífica, haciendo que el subtono se perciba 'apagado' o con un matiz terroso. En pieles con predominio de ciertas cepas de Cutibacterium acnes, se ha observado una alteración en la oxidación de los ácidos grasos del sebo, lo que genera un viraje cromático hacia el amarillo o naranja al contacto con bases de maquillaje. Entender que el estado de salud del microbioma no solo afecta la textura, sino también el diagnóstico de color, permite a nuestras usuarias de GlowApp ajustar su rutina de cuidado previo para asegurar que la base se mantenga fiel a su subtono real durante todo el día.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/ncomms/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-estres-oxidativo-004",
+    "title": "Estrés oxidativo y su impacto en la reflectancia cutánea",
+    "content": "El estrés oxidativo crónico, derivado de la exposición a radiación UV y contaminantes ambientales (partículas PM2.5), induce la formación de productos de oxidación lipídica en la barrera cutánea. Estos productos alteran la dispersión especular de la luz, provocando que la piel pierda su capacidad de reflejar los tonos subyacentes de forma clara. Clínicamente, esto se traduce en un viraje hacia un subtono 'grisáceo' o 'cenizo' que dificulta la elección de bases, ya que las fórmulas estándar a menudo no logran neutralizar este matiz. Según la American Academy of Dermatology (AAD), la acumulación de radicales libres en la epidermis superficial puede acelerar la degradación de los pigmentos de maquillaje, fenómeno comúnmente confundido con la oxidación de la base. En GlowApp, es esencial educar sobre el uso de antioxidantes tópicos (como Vitamina C o ácido ferúlico) no solo como tratamiento antiedad, sino como una herramienta de preparación de la piel para estabilizar el subtono y mejorar la fidelidad del color del maquillaje aplicado.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Vitamina C",
+        "Ácido Ferúlico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_piel"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-fisiologia-vascular-005",
+    "title": "Respuesta vasomotora y el fenómeno de 'rubor' en la lectura del subtono",
+    "content": "La microcirculación cutánea es un factor dinámico que a menudo se ignora en la colorimetría. La respuesta vasomotora —la capacidad de los capilares de dilatarse o contraerse ante estímulos térmicos, emocionales o químicos— puede oscurecer el diagnóstico del subtono. En pacientes con piel reactiva, el eritema transitorio puede enmascarar un subtono neutro bajo una apariencia rosada, llevando a errores comunes como la selección de bases con subtonos excesivamente fríos. Estudios dermatológicos indican que la evaluación del subtono debe realizarse en áreas donde la densidad capilar sea menor, como la zona de la mandíbula o el cuello, y nunca sobre las mejillas si existe un historial de rosácea o hiperreactividad. Es crucial entender que la base de maquillaje no debe intentar cubrir el 'rubor' mediante la imposición de un subtono opuesto, sino neutralizarlo con pigmentos correctores específicos antes de aplicar el fondo de maquillaje. En GlowApp, promovemos la evaluación en condiciones de reposo térmico para minimizar esta interferencia vascular.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-espectroscopia-difusa-006",
+    "title": "Espectroscopia de reflectancia difusa: el estándar de oro en objetivación",
+    "content": "La subjetividad humana en la evaluación del subtono es una limitante conocida, influenciada por la fatiga visual y el sesgo de confirmación. La espectroscopia de reflectancia difusa se ha consolidado como la herramienta científica para objetivar el subtono, midiendo la absorción y dispersión de luz en las capas de la dermis y epidermis. A diferencia de la observación visual, este método permite cuantificar la concentración exacta de hemoglobina, melanina y carotenos en la piel. Al implementar esta tecnología o sus principios teóricos en GlowApp, podemos ayudar a las usuarias a entender que su subtono no es una opinión, sino una medida espectral. La capacidad de analizar la piel mediante datos de reflectancia nos permite recomendar bases que no solo coincidan con el tono superficial, sino que armonicen con las propiedades ópticas profundas de la piel, garantizando un acabado natural que resiste la luz directa y artificial sin sufrir alteraciones cromáticas detectables por el ojo humano.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_glowapp"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-optica-007",
+    "title": "Anisotropía óptica: cómo la textura cutánea altera la lectura del color",
+    "content": "La anisotropía óptica se refiere a cómo la textura de la piel —la profundidad de los poros, la presencia de cicatrices o la rugosidad del estrato córneo— modifica la forma en que la luz rebota sobre la superficie. Una piel con textura irregular dispersa la luz de manera multidireccional, lo que puede causar que un mismo tono de base se perciba más claro o más oscuro en diferentes zonas del rostro (por ejemplo, en el área de los poros dilatados frente a las zonas lisas). Este fenómeno, a menudo ignorado en la colorimetría tradicional, es vital para entender por qué la base puede parecer 'parchosa' o 'envejecida'. Al diagnosticar el subtono en GlowApp, debemos considerar la anisotropía óptica; en texturas irregulares, es preferible utilizar bases con acabado satinado o reflectante que ayuden a uniformar la dispersión de luz, evitando los acabados mate extremo que acentúan la irregularidad y la distorsión del subtono percibido por el observador.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "texturizada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-psicologia-sesgo-008",
+    "title": "Psicología de la percepción: el sesgo de confirmación en la evaluación propia",
+    "content": "La evaluación del subtono no es solo un proceso biológico, sino también cognitivo. El sesgo de confirmación lleva a las personas a 'ver' lo que creen que es su subtono, ignorando las señales clínicas que indican lo contrario. Por ejemplo, alguien que se identifica erróneamente como 'cálida' debido a una preferencia cultural por los tonos dorados puede ignorar sistemáticamente las pruebas de venas o joyas que sugieren un subtono frío. Este sesgo de memoria cromática explica por qué muchas usuarias sienten que 'ninguna base les queda bien'. En GlowApp, nuestra metodología de diagnóstico debe ser ciega y basada en la evidencia, guiando al usuario a través de comparativas objetivas que eliminan la influencia de las expectativas personales. Al despojar el diagnóstico de prejuicios estéticos, logramos una selección mucho más precisa que mejora la satisfacción del usuario y reduce el desperdicio de productos cosméticos mal elegidos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Psychological Association",
+        "url": "https://www.apa.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-hev-fatiga-009",
+    "title": "La influencia de la luz HEV en la fatiga cromática del diagnóstico",
+    "content": "La exposición constante a la luz de alta energía visible (HEV o 'luz azul') emitida por pantallas digitales no solo afecta la salud cutánea a nivel celular, sino que altera drásticamente nuestra capacidad de discernir colores. La fatiga cromática inducida por la luz HEV provoca que el ojo humano pierda sensibilidad ante los matices sutiles, especialmente en la gama de los amarillos y naranjas, lo que resulta en diagnósticos erróneos de subtono. Además, la luz HEV puede inducir una hiperestimulación de los melanocitos, alterando levemente la tonalidad cutánea a largo plazo. Es fundamental realizar las sesiones de colorimetría en GlowApp bajo condiciones de luz natural controlada y en momentos de baja fatiga visual. Recomendamos a nuestras usuarias evitar realizar pruebas de color inmediatamente después de jornadas prolongadas frente a pantallas, ya que la fatiga ocular y la exposición a HEV alteran la percepción del contraste y la saturación, llevando a una elección de base que, bajo luz solar, se verá desajustada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:15:27.860Z"
+  }
+]

@@ -1,0 +1,243 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-electrodinamica-001",
+    "title": "Influencia del Potencial Zeta en la adsorción de pigmentos catiónicos",
+    "content": "El potencial zeta es un indicador crítico de la estabilidad de las dispersiones coloidales en los sistemas de coloración. En la fibra capilar, la carga superficial neta es predominantemente negativa debido a la presencia de grupos carboxilo en las proteínas del cabello, especialmente tras procesos de daño químico. Cuando aplicamos tintes, la interacción electrostática entre los pigmentos catiónicos y la superficie aniónica de la cutícula determina la eficiencia de la deposición. Un potencial zeta optimizado permite que las moléculas de colorante se adhieran uniformemente, minimizando la repulsión y mejorando la longevidad del tono. Si el pH del producto altera drásticamente el punto isoeléctrico de la queratina, la carga superficial puede invertirse, provocando una adsorción deficiente o irregular. Entender esta dinámica electrocinética permite a los coloristas predecir mejor la saturación en cabellos con porosidad variable. La ciencia de los polímeros en cosmética capilar utiliza agentes acondicionadores con cargas opuestas para neutralizar zonas de alta porosidad, creando una superficie más homogénea para el depósito de pigmentos oxidativos. La literatura en Journal of Cosmetic Science subraya que el control de la carga superficial es el factor oculto detrás de los resultados de coloración profesional de alta precisión.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos",
+        "tensioactivos anfóteros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:32.565Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-espectroscopia-002",
+    "title": "Espectroscopía de reflectancia: Midiendo la saturación cromática real",
+    "content": "La evaluación visual del color es altamente subjetiva y está sujeta a errores de percepción humana, como el metamerismo o el cansancio visual del colorista. La espectroscopía de reflectancia ofrece una solución técnica al medir la intensidad de la luz reflejada a diferentes longitudes de onda, permitiendo cuantificar con precisión la saturación y el matiz del cabello. En un entorno de salón, esta tecnología permite objetivar la diferencia entre el color objetivo (target) y el color resultante tras el proceso de oxidación. Estudios publicados en revistas de dermatología cosmética indican que la degradación del color post-teñido puede ser monitoreada mediante el seguimiento de las coordenadas cromáticas L*a*b* (espacio de color CIELAB). Al utilizar estos datos, el profesional puede ajustar el tiempo de exposición o la formulación de los correctores cromáticos (neutralizadores) con base en evidencia matemática en lugar de intuición. Esta herramienta es vital para corregir errores en cabellos con historial de coloraciones previas, donde la acumulación de pigmentos residuales altera la base natural. La implementación de dispositivos portátiles de medición de color está transformando la consulta clínica capilar, ofreciendo un estándar de calidad que garantiza la satisfacción del cliente y la integridad del diagnóstico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consulta-inicial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:32.565Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-biologia-004",
+    "title": "Impacto de la peroxidación lipídica en la integridad del complejo de membrana celular",
+    "content": "El complejo de membrana celular (CMC) es la 'goma' que mantiene unidas las células de la cutícula y la corteza. Durante un proceso de coloración permanente, el uso de peróxido de hidrógeno puede inducir la peroxidación lipídica, dañando los ácidos grasos esenciales como el 18-metileicosanoico (capa F) que protege la hidrofobicidad natural del cabello. Cuando esta barrera se degrada, la fibra se vuelve higroscópica, absorbiendo humedad ambiental en exceso, lo cual es contraproducente para la estabilidad del color. En climas tropicales como el de Bogotá, la alta humedad acelera la lixiviación de los pigmentos hidrosolubles. La literatura médica sugiere que la reposición de lípidos tras el teñido es tan crucial como el sellado del pH. La pérdida de integridad del CMC no solo resulta en un cabello opaco y quebradizo, sino que también facilita la penetración de agentes irritantes hacia el cuero cabelludo. Es imperativo utilizar productos que contengan restauradores lipídicos y ceramidas para mitigar el estrés oxidativo. Un enfoque clínico hacia la coloración debe considerar la salud del CMC como el factor principal para mantener el brillo, la textura y la retención del pigmento a largo plazo, evitando la porosidad secundaria post-coloración.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido 18-metileicosanoico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados-post-tinte"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:32.565Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-farmacologia-005",
+    "title": "Interacción de fármacos sistémicos y la respuesta al tinte capilar",
+    "content": "La respuesta del cabello a los procesos químicos puede verse alterada por la ingesta de fármacos sistémicos, un factor a menudo ignorado en la consulta clínica. Medicamentos como los retinoides, agentes quimioterapéuticos, ciertos tratamientos hormonales o incluso suplementos de alta concentración de hierro pueden alterar la estructura de la cutícula y la tasa de oxidación de los pigmentos. En el caso de pacientes en terapia hormonal, se ha observado que la afinidad tintórea cambia debido a modificaciones en la composición lipídica del sebo y la estructura de la queratina. Es fundamental realizar una anamnesis detallada antes de aplicar cualquier coloración permanente. La literatura médica indexada en PubMed advierte que los pacientes bajo medicación que afecta el ciclo de vida del folículo o la composición del sebo pueden presentar resultados de color inconsistentes o reacciones adversas inesperadas. La comunicación entre el dermatólogo y el estilista es clave en estos escenarios para ajustar las expectativas y elegir fórmulas más suaves o temporales. El impacto farmacológico no se limita al resultado cromático, sino que puede potenciar la sensibilidad cutánea frente a componentes alérgenos como la PPD, exigiendo protocolos de seguridad mucho más rigurosos y una prueba de mecha extendida.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlmnih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "retinoides",
+        "quimioterapia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "consulta-inicial"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:32.565Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-optica-007",
+    "title": "El efecto Tyndall y la percepción del color en cabellos rubios y canosos",
+    "content": "La percepción del color en cabellos claros (rubios, decolorados o canosos) no depende únicamente de la pigmentación, sino también de la dispersión de la luz, fenómeno conocido como efecto Tyndall. En cabellos con baja concentración de melanina, la luz penetra más profundamente y se dispersa de manera que puede generar matices azulados o amarillentos no deseados. Este fenómeno es particularmente relevante en la neutralización de tonos, donde una aplicación excesiva de pigmento violeta puede resultar en un aspecto grisáceo o 'sucio' debido a esta dispersión óptica. Comprender que no estamos solo aplicando color, sino modificando la forma en que la luz interactúa con la estructura capilar, es lo que diferencia a un experto colorista. La evaluación cromática bajo diferentes espectros de luz es indispensable para evitar el metamerismo, donde el color se ve distinto según la fuente de iluminación (luz natural, fluorescente o incandescente). Clínicamente, es vital educar al cliente sobre cómo la luz ambiental afecta la percepción subjetiva del resultado final. El uso de correctores ópticos (agentes abrillantadores) puede ayudar a minimizar estos efectos no deseados, proporcionando un acabado más natural y vibrante que respeta la física de la luz sobre la fibra capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/jocd",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "abrillantadores ópticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:32.565Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-estructura-008",
+    "title": "Preservación de la capa F y el punto isoeléctrico del cabello",
+    "content": "La capa F, compuesta principalmente por ácido 18-metileicosanoico, es una monocapa de lípidos unida covalentemente a la cutícula que confiere al cabello su carácter hidrofóbico y suavidad. Durante los procesos de coloración alcalina, esta capa es susceptible de ser eliminada o alterada, lo que resulta en una superficie porosa y propensa a la pérdida rápida del tinte. El punto isoeléctrico del cabello, que se encuentra alrededor de un pH de 3.67, es donde la carga neta de la queratina es cero. La mayoría de los servicios de coloración operan muy lejos de este punto, lo que provoca una repulsión de cargas y una estructura capilar hinchada y vulnerable. La clave para la longevidad del color es la re-acidificación post-proceso, que ayuda a cerrar las escamas de la cutícula y a estabilizar la estructura proteica. Los productos de alta gama incorporan agentes que imitan la capa F o facilitan su reestructuración, asegurando que el cabello recupere su repelencia al agua y, por ende, retenga el pigmento por más tiempo. Un diagnóstico clínico debe evaluar la integridad de esta capa antes de proceder con cualquier cambio de color drástico, pues una capa F comprometida garantiza una degradación prematura del matiz.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido 18-metileicosanoico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados-post-tinte"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:36:32.565Z"
+  }
+]

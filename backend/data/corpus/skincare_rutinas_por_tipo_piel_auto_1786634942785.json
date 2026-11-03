@@ -1,0 +1,384 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-001",
+    "title": "Impacto de la luz artificial y el síndrome de fatiga ocular en la piel periorbitaria",
+    "content": "La exposición prolongada a la luz visible de alta energía (HEV) emitida por dispositivos digitales en entornos laborales acelera la degradación de la matriz extracelular en el área periorbitaria. Estudios recientes indican que la fatiga ocular y el parpadeo constante inducen una contracción muscular repetitiva que, sumada al daño oxidativo por HEV, exacerba la aparición de líneas de expresión y la pigmentación vascular. La piel de esta zona, al ser la más delgada del rostro, presenta una menor densidad de glándulas sebáceas, lo que la hace altamente susceptible a la pérdida de hidratación transepidérmica. Es fundamental integrar péptidos específicos que inhiban la contracción muscular leve y antioxidantes que neutralicen el estrés oxidativo provocado por la luz azul. El uso de fotoprotección mineral con óxidos de hierro es esencial para bloquear la radiación HEV en fototipos propensos a la hiperpigmentación periorbitaria, previniendo así el fotoenvejecimiento prematuro en profesionales con alta demanda de tiempo frente a pantallas.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/blue-light-skin",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos",
+        "óxidos de hierro",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "ojos-y-contorno"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-002",
+    "title": "Modulación de la permeabilidad cutánea por cambios en la humedad relativa",
+    "content": "La fluctuación en la humedad relativa, común en ciudades con alta variabilidad climática como Bogotá, altera drásticamente el gradiente de hidratación del estrato córneo. Cuando la humedad cae por debajo del 40%, la función de las enzimas encargadas de la desquamación y la síntesis de lípidos se ve comprometida, lo que resulta en una piel descamativa y reactiva. La estrategia clínica debe enfocarse en la aplicación de humectantes higroscópicos, como la glicerina y el ácido hialurónico, seguidos de oclusivos de nueva generación con texturas ligeras que no obstruyan el folículo. El uso de ceramidas en proporciones fisiológicas (3:1:1) es crítico para restaurar la función barrera, evitando la pérdida de agua transepidérmica (TEWL). Es imperativo que el paciente ajuste la oclusividad de su rutina basándose en los niveles de humedad ambiental reportados, evitando el exceso de oclusivos en días de alta humedad para prevenir la dermatitis por oclusión folicular.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34212959/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "ácido hialurónico",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "comedogénicos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-003",
+    "title": "Abordaje de la disfunción de la barrera por el uso excesivo de limpiadores alcalinos",
+    "content": "La utilización de limpiadores con pH alcalino (superior a 7) altera el manto ácido protector, elevando el pH cutáneo y promoviendo el crecimiento de patógenos como Staphylococcus aureus en detrimento de la microbiota comensal. Este desequilibrio aumenta la susceptibilidad a la inflamación subclínica y reduce la actividad de las enzimas epidérmicas dependientes de pH, necesarias para la maduración de los corneocitos. La recomendación clínica es transicionar hacia limpiadores de base sintética (syndets) con un pH fisiológico cercano a 5.5, que preserven la integridad lipídica. En pacientes con piel sensible o dermatitis, la limpieza ácida no solo mejora la hidratación, sino que reduce significativamente la reactividad frente a factores ambientales. La corrección del pH es el primer paso en cualquier protocolo de restauración de la barrera cutánea antes de introducir activos potentes como retinoides o exfoliantes químicos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/skin-ph-from-basic-science-to-basic-skin-care-S1545961614P0032X/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes suaves",
+        "ácido láctico"
+      ],
+      "contraindications": [
+        "jabones en barra alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-y-preparacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-004",
+    "title": "Efectos del estrés mecánico en la dermis papilar: La importancia de la técnica de aplicación",
+    "content": "El estrés mecánico derivado de una aplicación agresiva de productos o masajes faciales sin la técnica adecuada puede inducir una respuesta inflamatoria crónica en la dermis papilar. La tracción repetitiva sobre los tejidos, especialmente en pieles con laxitud incipiente, puede degradar la red de colágeno y elastina, acelerando la pérdida de firmeza. Es crucial enseñar a los pacientes una técnica de aplicación mediante presiones suaves o toques (tapping) en lugar de fricciones intensas. Además, la aplicación de productos debe seguir las líneas de tensión de Langer para minimizar la deformación tisular innecesaria. En pacientes con condiciones inflamatorias como rosácea, la fricción mecánica es un disparador conocido de brotes. Por tanto, la educación en la manipulación mecánica de la piel es tan importante como la selección de los activos tópicos en cualquier rutina clínica de GlowApp.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "masajes agresivos",
+        "exfoliación física"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica-facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-005",
+    "title": "Optimización del eje sebáceo mediante la modulación de la microbiota",
+    "content": "La seborregulación clínica en el acné del adulto no debe limitarse únicamente al control de la producción de sebo, sino también a la modulación del ecosistema microbiano folicular. El crecimiento desmedido de Cutibacterium acnes, cuando se ve favorecido por una dieta alta en índice glucémico y el estrés, genera mediadores proinflamatorios que dañan la barrera folicular. La aplicación tópica de postbióticos, como fermentos de lactobacilos, ayuda a estabilizar la comunidad bacteriana y reducir la respuesta inflamatoria local. Es fundamental evitar el uso de agentes antibacterianos sistémicos o tópicos sin supervisión, ya que pueden inducir resistencia bacteriana. La rutina ideal para este tipo de piel debe incluir ingredientes que regulen la señalización lipídica (como el zinc PCA) y fortalezcan la barrera mediante la modulación del pH, creando un entorno desfavorable para la disbiosis sin comprometer la salud del microbioma residente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "tendencia acneica"
+      ],
+      "age_ranges": [
+        "20-45"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc PCA",
+        "postbióticos",
+        "fermentos"
+      ],
+      "contraindications": [
+        "antibióticos sin receta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "control-sebo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-006",
+    "title": "Defensa contra el exposoma: El papel crítico de los quelantes de metales",
+    "content": "En entornos urbanos como Bogotá, la piel está expuesta a metales pesados suspendidos en el material particulado (PM2.5), que actúan como catalizadores de la peroxidación lipídica y el daño oxidativo inducido por luz UV. Los quelantes de metales, como el ácido fítico o el EDTA disódico en concentraciones cosméticas seguras, son esenciales para capturar estos contaminantes antes de que penetren en la barrera cutánea. Esta estrategia de defensa es vital para prevenir el envejecimiento prematuro y la hiperpigmentación post-inflamatoria. La rutina urbana debe incluir estos agentes en la etapa de limpieza o como un suero antioxidante de capa base. Al neutralizar los metales, se protege la integridad del proteoma cutáneo frente a la carbonilación proteica, permitiendo que otros activos antienvejecimiento trabajen con mayor eficacia sobre una piel no saturada de contaminantes ambientales.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido fítico",
+        "EDTA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "defensa-urbana"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-007",
+    "title": "Mitigación de la inflamación subclínica mediante la modulación de defensinas",
+    "content": "La inflamación subclínica o 'inflammaging' es un proceso crónico de bajo grado que acelera la senescencia cutánea y es desencadenado por factores como la radiación UV, la polución y el estrés crónico. Una estrategia emergente es la modulación de las defensinas epidérmicas, péptidos antimicrobianos endógenos que también actúan como reguladores de la respuesta inmune. Ciertos extractos botánicos y péptidos biomiméticos pueden estimular la producción de estas defensinas, fortaleciendo la capacidad de la piel para autorregular su respuesta inflamatoria. Este enfoque es particularmente útil en pieles maduras o con reactividad vascular, ya que ayuda a calmar la inflamación persistente sin recurrir a corticosteroides tópicos. La integración de estos moduladores en la rutina nocturna sincroniza la reparación celular con el ciclo de autofagia, maximizando los resultados en la regeneración dérmica y la resiliencia cutánea a largo plazo.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33823050/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos",
+        "extractos botánicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-inflamacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-008",
+    "title": "La importancia de la fotoprotección adaptativa según el fototipo y exposoma",
+    "content": "La fotoprotección en climas tropicales y de alta altitud no debe ser estática. La radiación UV en Bogotá presenta un índice UV elevado debido a la altitud, lo que exige una reaplicación rigurosa de filtros de amplio espectro. Sin embargo, la aceptabilidad cosmética es la principal barrera para la adherencia. Se recomienda la técnica de 'layering' de fotoprotección: una base de antioxidantes (Vitamina C, Ácido Ferúlico) que actúe como escudo contra radicales libres, seguida de un protector solar con tecnología de encapsulación que mejore la textura y la resistencia al sudor. En fototipos altos (IV-VI), es imperativo incluir filtros contra la luz visible (HEV) para prevenir la hiperpigmentación periorbitaria y el melasma, dado que la radiación HEV es un componente significativo del exposoma urbano que a menudo no es cubierto por filtros UV tradicionales.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/index.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "ácido ferúlico",
+        "filtros HEV"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-009",
+    "title": "Sincronización de activos con los ritmos circadianos cutáneos",
+    "content": "La piel posee su propio reloj molecular que regula procesos de regeneración y reparación celular en función de la hora del día. Por la noche, la piel entra en una fase de mayor permeabilidad y síntesis de colágeno, lo que la hace el momento ideal para la aplicación de activos reparadores como los retinoides y la melatonina tópica. La melatonina, además de su función antioxidante, ayuda a modular el estrés oxidativo acumulado durante el día, promoviendo la mitofagia (eliminación de mitocondrias dañadas). Inversamente, durante el día, la rutina debe centrarse en la protección y la prevención del daño ambiental. Sincronizar el uso de péptidos que activan las sirtuinas con el ciclo nocturno potencia la eficacia de los tratamientos antienvejecimiento, permitiendo que la piel aproveche sus mecanismos naturales de reparación para maximizar la turgencia dérmica y la integridad de la barrera cutánea.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)32070-5/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "melatonina",
+        "retinoides",
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cronobiologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:28:44.848Z"
+  }
+]

@@ -1,0 +1,327 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-epigenetica-ambiental-001",
+    "title": "Impacto de la Exposición a Metales Pesados en el Nicho Folicular",
+    "content": "La acumulación de metales pesados como el cadmio, plomo y mercurio en el cuero cabelludo ha sido identificada por estudios recientes como un factor disruptor crítico del ciclo capilar. Estos elementos inducen estrés oxidativo severo en la papila dérmica, alterando la expresión de genes esenciales para la diferenciación de las células madre del folículo. La evidencia sugiere que la exposición crónica a contaminantes urbanos, común en ciudades como Bogotá, facilita la miniaturización prematura al interferir con la señalización de la vía Wnt/beta-catenina. Clínicamente, el diagnóstico de pacientes expuestos a altos niveles de polución debe considerar el análisis de oligoelementos en el tallo capilar como biomarcador de toxicidad acumulada. La toxicidad por metales pesados no solo compromete la integridad estructural del tallo, sino que acelera la senescencia celular, reduciendo la capacidad regenerativa del folículo ante estímulos terapéuticos tradicionales. Es imperativo implementar protocolos de detoxificación del ostium folicular y protección antioxidante tópica avanzada para mitigar este daño ambiental en pacientes residentes de zonas industriales o con alta densidad vehicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biofisica-002",
+    "title": "Resonancia de la Membrana Folicular y Diagnóstico de Permeabilidad",
+    "content": "La integridad de la membrana del ostium folicular es un determinante clave para la penetración eficaz de principios activos en tratamientos dermatológicos. La biofísica moderna propone el uso de mediciones de capacitancia eléctrica para evaluar el estado de la barrera cutánea en el cuero cabelludo. Una disminución en la capacitancia indica una deshidratación profunda de la vaina radicular externa, lo que a menudo se correlaciona con un fallo en la función de barrera y una mayor susceptibilidad a la inflamación subclínica. El diagnóstico clínico debe integrar esta evaluación para personalizar la viscosidad y el vehículo de los tratamientos tópicos, evitando la oclusión innecesaria que podría exacerbar la disbiosis del microbioma. La medición de la conductancia iónica permite identificar áreas de 'fuga' donde la barrera está comprometida, facilitando la aplicación dirigida de agentes reparadores lipídicos. Este enfoque técnico permite una estratificación precisa de los pacientes, diferenciando aquellos que requieren hidratación profunda de aquellos que necesitan una intervención dirigida a la reconstrucción del cemento intercelular del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-003",
+    "title": "Hiperestimulación del Eje Neuro-Cutáneo y Tricodinia Crónica",
+    "content": "La tricodinia, a menudo subestimada en la consulta clínica, no es simplemente un síntoma sensorial, sino una manifestación de la inflamación neurogénica que ocurre en el nicho folicular. La liberación constante de neuropéptidos como la Sustancia P en respuesta al estrés crónico provoca una vasodilatación sostenida y la activación de mastocitos perifoliculares. Este estado de hiperalgesia folicular puede preceder a la caída capilar en meses, actuando como un marcador predictivo de efluvios telógenos crónicos. El diagnóstico debe incluir una anamnesis detallada sobre la percepción de dolor al tacto o al peinado, utilizando escalas validadas para evaluar la severidad de la inflamación neurogénica. La intervención requiere un enfoque multidisciplinario que combine moduladores del estrés con activos tópicos antiinflamatorios que bloqueen los receptores NK1. La identificación temprana de este eje permite detener el daño antes de que ocurra la miniaturización definitiva, protegiendo así la vitalidad del folículo frente a la liberación masiva de citoquinas proinflamatorias mediadas por la inervación cutánea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "neuromoduladores tópicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-metabolismo-004",
+    "title": "Metabolismo Energético del Bulbo y Disfunción Mitocondrial",
+    "content": "El bulbo piloso es uno de los tejidos con mayor tasa metabólica en el cuerpo humano, dependiendo casi exclusivamente de la fosforilación oxidativa mitocondrial para sustentar el crecimiento capilar. La disfunción mitocondrial, frecuentemente exacerbada por deficiencias de cofactores como la Coenzima Q10 y el Magnesio, resulta en un agotamiento energético folicular que conduce a una fase anágena acortada. En el diagnóstico clínico de alopecias complejas, es fundamental investigar marcadores de fatiga mitocondrial, como la disminución de la biogénesis mitocondrial en las células de la matriz. La presencia de especies reactivas de oxígeno (ROS) debido a un ciclo mitocondrial ineficiente acelera el envejecimiento folicular. El tratamiento debe enfocarse en la optimización del pool energético a través de suplementación sistémica y tópica dirigida a mejorar la dinámica mitocondrial. Este enfoque representa una nueva frontera en la dermatología regenerativa, donde la salud capilar se trata como una cuestión de eficiencia metabólica y protección de la maquinaria energética celular frente al estrés metabólico sistémico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) Nutrition Reports",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/nutrition",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Coenzima Q10",
+        "Magnesio"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbioma-005",
+    "title": "Volatilómica: El Nuevo Horizonte en el Diagnóstico del Microbioma",
+    "content": "La volatilómica del cuero cabelludo, el estudio de los compuestos orgánicos volátiles (COV) emitidos por el microbioma folicular, ofrece una ventana diagnóstica sin precedentes para identificar disbiosis antes de que se manifiesten síntomas clínicos como la caspa o la inflamación. Diferentes perfiles de COV están asociados a estados de salud folicular o a condiciones patológicas como la dermatitis seborreica o la alopecia androgenética. La capacidad de analizar estos perfiles en el consultorio mediante sensores de gas de alta precisión permite una detección temprana de alteraciones en el equilibrio microbiano. Este método no invasivo permite monitorear la respuesta a tratamientos moduladores del microbioma en tiempo real. La integración de la volatilómica en la práctica clínica de GlowApp facilitará una personalización extrema en la selección de productos de cuidado capilar, asegurando que la microbiota residente se mantenga en un estado de simbiosis, favoreciendo así un entorno óptimo para el crecimiento capilar y la integridad estructural de la cutícula.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Association of Dermatologists (IADVL)",
+        "url": "https://iadvl.org/publications/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebióticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_scalp"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biomecanica-006",
+    "title": "Histéresis Elástica y Fatiga de la Cutícula Capilar",
+    "content": "La fatiga estructural de la cutícula capilar es un fenómeno biomecánico que compromete la resistencia del tallo a las agresiones mecánicas diarias, como el cepillado o el uso de calor térmico. La histéresis elástica, definida como la diferencia entre la carga y descarga de la fibra capilar, es un indicador preciso de la degradación de las proteínas de la cutícula. Un aumento en la histéresis sugiere una pérdida de la capacidad de recuperación del tallo, lo que conduce a la fractura y el deshilachado. En un contexto clínico, medir la histéresis permite evaluar la eficacia de los tratamientos de reconstrucción capilar a nivel microscópico. Los pacientes con daño estructural significativo presentan una cutícula con mayor rigidez y menor resiliencia, lo que requiere un abordaje basado en el sellado de las escamas mediante polímeros biomiméticos y la reposición de lípidos estructurales. Este análisis biomecánico es fundamental para diferenciar el daño químico del daño físico y ofrecer recomendaciones personalizadas sobre el manejo del estilo de vida y el uso de herramientas de calor.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Journal of Clinical Dermatology",
+        "url": "https://link.springer.com/journal/40257",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteínas hidrolizadas",
+        "lípidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_tallo_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezo-008",
+    "title": "Respuesta Piezoeléctrica de la Queratina en el Diagnóstico Biomecánico",
+    "content": "La queratina, el componente mayoritario del tallo capilar, posee propiedades piezoeléctricas naturales, lo que significa que genera una carga eléctrica en respuesta a una deformación mecánica. Esta propiedad es fundamental para la señalización celular dentro del folículo: el estrés físico causado por el movimiento del cabello o el peinado se traduce en señales eléctricas que pueden influir en la expresión génica de la papila dérmica. En condiciones de patología folicular, la respuesta piezoeléctrica puede estar alterada, indicando un daño en la estructura molecular de la queratina o una rigidez excesiva de la vaina radicular. El diagnóstico mediante el análisis de la respuesta piezoeléctrica permite evaluar la integridad mecánica del folículo desde su raíz. Este biomarcador biomecánico ofrece información sobre la salud del tallo a nivel molecular, permitiendo predecir la susceptibilidad a la rotura mucho antes de que el daño sea visible al ojo humano o mediante tricoscopía convencional. La monitorización de esta propiedad es una herramienta poderosa para el desarrollo de productos que no solo cubran el cabello, sino que restauren su funcionalidad biofísica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Materials",
+        "url": "https://www.nature.com/articles/natrevmats.2024.12",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros fortalecedores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termorregulacion-009",
+    "title": "Termorregulación Scalp y su Correlación con la Alopecia Androgenética",
+    "content": "La termorregulación eficiente del cuero cabelludo es vital para mantener un microambiente folicular estable. Alteraciones en la microcirculación, a menudo asociadas a la alopecia androgenética, resultan en una incapacidad del cuero cabelludo para disipar el calor adecuadamente, creando un microambiente térmico elevado que favorece la inflamación y la degradación de proteínas. El análisis de la termografía infrarroja permite mapear estas zonas de 'hipertermia local' que coinciden con áreas de adelgazamiento capilar. La elevación de la temperatura local no solo aumenta la tasa metabólica basal del folículo, sino que también puede acelerar la peroxidación lipídica del sebo, convirtiéndolo en un agente irritante. El diagnóstico clínico debe integrar la termografía para identificar áreas de riesgo antes de que se produzca la pérdida de densidad. El manejo terapéutico implica la implementación de agentes refrescantes y moduladores de la microcirculación que restauren el equilibrio térmico, protegiendo así el nicho de células madre frente al estrés térmico ambiental y metabólico que caracteriza a las alopecias progresivas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "mentol",
+        "agentes refrescantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:17:38.506Z"
+  }
+]

@@ -1,0 +1,392 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-cumarinas-001",
+    "title": "Cumarinas en extractos botánicos: El riesgo de fototoxicidad sistémica y tópica",
+    "content": "Las cumarinas, presentes en diversos extractos botánicos como la bergamota, el apio y la ruda, poseen un potencial fototóxico significativo. Al aplicarse sobre la piel y exponerse a la radiación UVA, estos compuestos absorben fotones y entran en un estado excitado, reaccionando con el ADN celular y produciendo especies reactivas de oxígeno. Este fenómeno, conocido como fitofotodermatitis, no es una alergia, sino una reacción química directa que genera eritema, ampollas y, frecuentemente, hiperpigmentación post-inflamatoria persistente. La regulación cosmética en la Unión Europea (SCCS) ha limitado estrictamente el uso de aceites esenciales ricos en furocumarinas, como el aceite de bergamota, debido a su peligro clínico. En el contexto de GlowApp, es vital educar a los usuarios sobre la presencia de estos compuestos en productos naturales, enfatizando que el origen 'orgánico' o 'botánico' no garantiza la ausencia de riesgos fototóxicos. La recomendación clínica es evitar productos que contengan extractos cítricos no desterpenados antes de la exposición solar directa, ya que la reacción puede ser severa incluso en fototipos altos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety (SCCS)",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety_en",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "furocumarinas",
+        "aceite de bergamota"
+      ],
+      "contraindications": [
+        "exposición solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-segura"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-metil-parabenos-002",
+    "title": "Disrupción endocrina y parabenos: El estado actual de la evidencia",
+    "content": "Los parabenos (metil, etil, propil y butilparabeno) han sido objeto de un intenso debate sobre su potencial actividad estrogénica. Aunque la industria cosmética los utiliza ampliamente por su bajo costo y eficacia antimicrobiana, estudios in vitro han demostrado que pueden unirse a receptores de estrógeno, aunque con una afinidad miles de veces menor que el estradiol endógeno. La preocupación clínica reside en el efecto acumulativo y la exposición sistémica, especialmente en productos de uso diario (leave-on) como cremas hidratantes. Aunque organismos como el SCCS han reafirmado la seguridad de los parabenos de cadena corta (metil y etil) en las concentraciones permitidas, existe una creciente evidencia sobre el impacto de los parabenos de cadena larga (propil y butil) en el equilibrio hormonal. Para pacientes con antecedentes de patologías estrógeno-dependientes, la recomendación experta es optar por formulaciones libres de parabenos de cadena larga. Es fundamental diferenciar entre el miedo infundado y la precaución basada en la exposición crónica total, considerando la carga de productos que el usuario aplica simultáneamente en su rutina diaria.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8383863/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilparabeno",
+        "propilparabeno"
+      ],
+      "contraindications": [
+        "patologías estrógeno-dependientes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-glutaraldehido-003",
+    "title": "Glutaraldehído y derivados: Riesgos de sensibilización en cosmética capilar",
+    "content": "El glutaraldehído, utilizado frecuentemente como agente endurecedor o conservante en formulaciones cosméticas técnicas y productos de alisado capilar, es un potente sensibilizante de contacto y un irritante respiratorio reconocido. A diferencia de otros conservantes, su capacidad para causar dermatitis alérgica de contacto es significativamente alta, incluso en concentraciones bajas. En el entorno de la peluquería profesional y el uso doméstico, la exposición a vapores de glutaraldehído durante el secado o planchado del cabello puede desencadenar reacciones cutáneas no solo en el cuero cabelludo, sino también en las manos del aplicador y en áreas de contacto indirecto como el cuello y la cara. La evidencia clínica indica que una vez sensibilizado, el individuo puede reaccionar a niveles mínimos de exposición. En GlowApp, desaconsejamos enfáticamente el uso de productos que contengan precursores de aldehídos en usuarios con antecedentes de dermatitis atópica o hiperreactividad cutánea. Ante cualquier síntoma de prurito, eritema o descamación tras un tratamiento capilar, es imperativo realizar una prueba de parche (patch test) para confirmar la sensibilización y evitar la exposición cruzada con otros compuestos de la familia de los aldehídos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glutaraldehido"
+      ],
+      "contraindications": [
+        "dermatitis atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-isopropil-miristato-004",
+    "title": "Miristato de isopropilo: La trampa de la comedogenicidad en pieles grasas",
+    "content": "El miristato de isopropilo (IPM) es un éster sintético ampliamente utilizado en cosmética como emoliente y potenciador de penetración debido a su textura ligera y rápida absorción. Sin embargo, su perfil de seguridad es problemático para usuarios con tendencia acneica. El IPM es clasificado como altamente comedogénico, con una capacidad demostrada para obstruir el folículo pilosebáceo, exacerbando la formación de microcomedones. En pieles grasas o propensas al acné, el uso de productos que contengan este ingrediente como uno de los primeros cinco elementos en la lista INCI puede revertir los beneficios de otros activos tratantes. A menudo, el usuario confunde la sensación de 'piel seca' tras la aplicación con una mejoría, sin notar que el ingrediente está bloqueando la salida del sebo. La recomendación experta para pacientes con acné activo o comedonal es verificar la ausencia de miristato de isopropilo y sus derivados (como el palmitato de isopropilo) en sus humectantes y protectores solares. La sustitución por emolientes no comedogénicos, como el escualano o triglicéridos de cadena media (MCT), es una estrategia clave para mejorar el control del acné sin comprometer la hidratación de la barrera cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "miristato de isopropilo"
+      ],
+      "contraindications": [
+        "acne",
+        "piel comedogenica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-acne"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-formaldehido-005",
+    "title": "Liberadores de formaldehído: Identificación y riesgos de sensibilización oculta",
+    "content": "Muchos conservantes comunes, como la imidazolidinil urea, el diazolidinil urea, la DMDM hidantoína y el quaternium-15, actúan como 'liberadores de formaldehído'. Estos ingredientes no contienen formaldehído en su estado puro, pero lo liberan gradualmente en la formulación, especialmente ante cambios de temperatura o pH. El formaldehído es un alérgeno de contacto potente y un carcinógeno reconocido por la IARC (Agencia Internacional para la Investigación del Cáncer). La problemática principal en dermatología es que el usuario puede ser alérgico al formaldehído sin saberlo, y al utilizar múltiples productos (champú, acondicionador, loción corporal) que contienen diferentes liberadores, se supera el umbral de tolerancia, desencadenando una dermatitis alérgica de contacto sistémica. GlowApp recomienda a los usuarios con piel reactiva o antecedentes de eccema revisar las listas INCI buscando estos compuestos. La identificación de estos liberadores permite al paciente eliminar la fuente de sensibilización crónica, lo cual es el primer paso crítico en el manejo de cualquier dermatitis persistente de origen desconocido. La transparencia en el etiquetado es una herramienta terapéutica esencial en el control de la salud cutánea a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Agency for Research on Cancer (IARC)",
+        "url": "https://www.iarc.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "DMDM hidantoina",
+        "diazolidinil urea"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-butilhidroxianisol-006",
+    "title": "BHA (Butilhidroxianisol) como antioxidante: Seguridad y controversia",
+    "content": "El BHA (Butilhidroxianisol) y su análogo, el BHT (Butilhidroxitolueno), son antioxidantes sintéticos utilizados para prevenir la rancidez de los aceites en las formulaciones cosméticas. Mientras que su función técnica es proteger la estabilidad del producto, su perfil de seguridad ha sido cuestionado. Algunos estudios han vinculado la ingesta de BHA con efectos hormonales y potenciales riesgos carcinogénicos en modelos animales, lo que ha generado una corriente de precaución. Aunque la aplicación tópica es menos preocupante que la ingestión, la penetración cutánea de estos compuestos es un hecho comprobado. En el contexto de GlowApp, aunque no se consideran ingredientes prohibidos, recomendamos a los usuarios con pieles altamente reactivas o con antecedentes de sensibilidad química múltiple evitarlos. Es preferible optar por antioxidantes naturales como los tocoferoles (Vitamina E) o el extracto de romero, que ofrecen una estabilidad similar sin la carga de preocupación asociada a los antioxidantes sintéticos. La curaduría clínica implica no solo basarse en la prohibición legal, sino también en la reducción de la carga química innecesaria en pacientes con barreras cutáneas comprometidas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Toxicology Program (NTP)",
+        "url": "https://ntp.niehs.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "BHA",
+        "BHT"
+      ],
+      "contraindications": [
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-cloruro-benzalconio-007",
+    "title": "Cloruro de benzalconio: Impacto en la microbiota y barrera cutánea",
+    "content": "El cloruro de benzalconio es un compuesto de amonio cuaternario utilizado ampliamente como conservante y agente antiséptico. Aunque es eficaz contra una amplia gama de microorganismos, su uso en productos 'leave-on' (que no se enjuagan) es controvertido debido a su capacidad para alterar el microbioma cutáneo y debilitar la función barrera de la piel. La evidencia reciente en dermatología subraya la importancia de la diversidad microbiana para mantener una piel sana y prevenir condiciones como la dermatitis atópica y la rosácea. El uso crónico de antisépticos potentes como el benzalconio puede inducir una selección de bacterias resistentes y eliminar la flora comensal protectora. En GlowApp, recomendamos evitar el uso de productos faciales que contengan cloruro de benzalconio, prefiriendo conservantes con menor impacto sobre la homeostasis del microbioma. Para usuarios que presentan irritación persistente, la eliminación de este ingrediente de la rutina diaria suele ser el factor decisivo para la recuperación de la integridad de la barrera cutánea. La salud de la piel depende de un equilibrio delicado que los antisépticos de amplio espectro suelen desestabilizar.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio"
+      ],
+      "contraindications": [
+        "dermatitis atopica",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-alfa-hidroxiacidos-008",
+    "title": "La trampa del pH en AHAs: ¿Por qué la concentración no es suficiente?",
+    "content": "A menudo, los usuarios se centran únicamente en el porcentaje de concentración de un Alfa-Hidroxiácido (AHA) como el ácido glicólico (ej. '10% AHA'). Sin embargo, la eficacia y la seguridad de estos ácidos dependen críticamente del pH de la fórmula. Para que un AHA penetre en la piel y ejerza su efecto exfoliante, debe estar en su forma libre (no disociada). Esto ocurre cuando el pH de la fórmula es cercano al pKa del ácido (aproximadamente 3.8 para el ácido glicólico). Si el pH de un producto es superior a 4.5, la mayor parte del ácido se encuentra en forma de sal (lactato o glicolato), perdiendo su capacidad exfoliante y convirtiéndose en un humectante suave. Por el contrario, un pH inferior a 3.0 aumenta drásticamente el riesgo de quemadura química y daño a la barrera lipídica, independientemente de la concentración. GlowApp enfatiza que un producto con '10% de glicólico' a pH 5.0 es ineficaz, mientras que uno al '5%' a pH 3.5 puede ser muy agresivo. La recomendación es buscar siempre el pH del producto, ya que es el determinante real de la seguridad y el riesgo de irritación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido glicolico",
+        "acido lactico"
+      ],
+      "contraindications": [
+        "uso incorrecto de pH"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-exfoliacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-aceites-esenciales-009",
+    "title": "Linalool y Limoneno: Los alérgenos de fragancia inevitables",
+    "content": "El linalool y el limoneno son componentes químicos que forman parte de la estructura de muchos aceites esenciales (como la lavanda o los cítricos). Debido a su alta prevalencia como alérgenos de contacto, la Unión Europea exige que se declaren explícitamente en el etiquetado si superan ciertas concentraciones. El problema clínico es que estos compuestos se oxidan al entrar en contacto con el aire, transformándose en hidroperóxidos, los cuales son alérgenos mucho más potentes que las sustancias originales. Un producto que no causa reacción al abrirse puede volverse sensibilizante tras varios meses de uso si no se almacena correctamente. En GlowApp, advertimos a los usuarios con piel sensible que la presencia de estos compuestos, incluso bajo la etiqueta de 'fragancia natural', representa un riesgo real de dermatitis alérgica. La recomendación es priorizar productos 'fragrance-free' (sin fragancia añadida) en lugar de 'unscented' (que pueden contener fragancias para enmascarar el olor químico). La identificación precoz de estos componentes es vital para prevenir la sensibilización crónica, especialmente en individuos que ya presentan cuadros de eccema o dermatitis reactiva, donde la integridad de la barrera está comprometida y la penetración de alérgenos es más fácil.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "linalool",
+        "limoneno"
+      ],
+      "contraindications": [
+        "dermatitis alergica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T10:57:15.158Z"
+  }
+]

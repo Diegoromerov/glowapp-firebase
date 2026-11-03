@@ -1,0 +1,50 @@
+{
+  "cycle": "31",
+  "experiment": "R5-C19",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "baseline_r5c_unchanged": true,
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "reproducibility": "A ≡ B — métricas idénticas en ambas corridas (RUN A y RUN B)",
+  "model_a": "nvidia/nv-embedqa-e5-v5 (1024d, API NVIDIA) — modelo productivo",
+  "model_b": "mxbai-embed-large (1024d, Ollama LOCAL) — misma dimensión, comparación limpia",
+  "methodology": "CANDIDATE POOL (top-50 de A + golds por query; 489 chunks únicos). NO es evaluación completa del motor — documentado como limitación.",
+  "pool": { "size": 489, "note": "top-50 ARM A por query + gold chunks; embeddings B generados en memoria" },
+  "cost": { "embeddings_b": 489, "provider": "Ollama local (sin coste API)", "time": "~20 min (primera carga del modelo en RAM)" },
+  "metrics_15_queries": {
+    "A_e5v5": { "p1": 0.4667, "p3": 0.6667, "p5": 0.4667, "r5": 0.6267, "mrr": 0.7222 },
+    "B_mxbai": { "p1": 0.4, "p3": 0.2222, "p5": 0.1733, "r5": 0.2356, "mrr": 0.4856 },
+    "delta": { "r5": -0.3911, "mrr": -0.2366, "p5": -0.2934, "p3": -0.4445 }
+  },
+  "groups": {
+    "misses_3": { "A": { "r5": 0.4111, "mrr": 0.8333 }, "B": { "r5": 0.1222, "mrr": 0.4 }, "delta_r5": -0.2889 },
+    "resto_12": { "A": { "r5": 0.6806, "mrr": 0.6944 }, "B": { "r5": 0.2639, "mrr": 0.5069 }, "delta_r5": -0.4167 }
+  },
+  "the_3_misses": {
+    "cabello_002": { "A": { "goldRank": 1, "goldScore": 0.5552, "margin": 0.0145 }, "B": { "goldRank": 5, "goldScore": 0.7539, "margin": -0.0219 }, "verdict": "WORSE — goldRank 1→5, margen se vuelve negativo" },
+    "cejas_004": { "A": { "goldRank": 2, "goldScore": 0.5238, "margin": -0.0026 }, "B": { "goldRank": 8, "goldScore": 0.7962, "margin": -0.026 }, "verdict": "WORSE — goldRank 2→8, R@5 0.5→0" },
+    "cejas_008": { "A": { "goldRank": 1, "goldScore": 0.5916, "margin": 0.0076 }, "B": { "goldRank": 1, "goldScore": 0.8311, "margin": 0.0091 }, "verdict": "SAME rank pero R@5 0.33→0.17 — pierde otros golds" }
+  },
+  "discrimination": {
+    "improved": 5, "worse": 9, "same": 1,
+    "key_finding": "Los 5 'IMPROVED' en margen (skincare_003/005/006/009, cejas_001) son ARTEFACTO DE ESCALA: mxbai produce scores 0.75-0.83 vs e5-v5 0.52-0.59, inflando márgenes absolutos. PERO el recall empeoró en esos mismos casos (skincare_005 R@5 0.67→0.33, skincare_006 0.75→0.25) — el margen no se tradujo en mejor recuperación."
+  },
+  "margin_analysis": {
+    "note": "mxbai mejora márgenes absolutos en 5/15 pero empeora recall en 13/15 — la 'mejora de discriminación' no es real, es re-escalamiento del espacio",
+    "evidence": "Los casos donde B 'mejora' el margen son los mismos donde B pierde recall (skincare_005: margin +0.0302 pero R@5 −0.33; skincare_006: margin +0.0418 pero R@5 −0.50)"
+  },
+  "verdict": "MODEL-DISCONFIRMED",
+  "verdict_rationale": "El modelo alternativo (mxbai-embed-large, 1024d) es CLARAMENTE INFERIOR al productivo (e5-v5): R@5 cae −0.39, MRR −0.24, los 3 misses empeoran (goldRanks 1→5, 2→8, y pérdida de recall), y 13/15 queries degradan. La aparente 'mejora de discriminación' en 5 queries es un artefacto de escala (scores 0.75-0.83 vs 0.52-0.59) que NO se tradujo en mejor recall. Esto DISCONFIRMA la hipótesis 'cambiar el modelo de embeddings mejora el retrieval' para esta alternativa: el problema NO es el modelo en sí, sino la estructura semántica del dominio (conceptos de belleza/dermatología intrínsecamente cercanos en espacio embedding).",
+  "causal_analysis": {
+    "por_que_b_es_peor": "mxbai-embed-large es un modelo generalista de 334M params; e5-v5 está afinado para retrieval (E5 family, entrenado con pares query-passage). El dominio GlowApp (dermatología/cosmética en español) favorece al modelo especializado en retrieval multilingüe.",
+    "el_problema_real": "La banda 0.50-0.59 de colisión en e5-v5 es una propiedad del ESPACIO SEMÁNTICO del dominio (términos de belleza muy próximos entre sí), NO una deficiencia corregible cambiando de modelo con esta alternativa.",
+    "que_queda": "El déficit residual (3 misses) persiste con ambos modelos → la causa está en la estructura del corpus/conceptos, no en el modelo. Las opciones restantes: representación documental más sofisticada (ya descartada en R5-C18 con dominio+título), reranking (descartado R5-C3/C4), o aceptar el déficit como límite del espacio semántico del dominio."
+  },
+  "recommendation_r5c20": {
+    "1": "DESCARTAR cambio a mxbai-embed-large (evidencia negativa reproducible: ΔR@5 −0.39)",
+    "2": "Si se quiere probar OTRO modelo, usar uno de la familia E5/retrieval-especializada (p.ej. bge-m3, nomic-embed-text) — pero con la advertencia de que la hipótesis del modelo queda debilitada",
+    "3": "La causa real del déficit residual apunta a la ESTRUCTURA SEMÁNTICA DEL DOMINIO (conceptos de belleza intrínsecamente cercanos). Opciones restantes: (a) aceptar el límite y optimizar con reranking léxico complementario (re-abrir R5-C3 con evidencia nueva), (b) mejorar la representación documental con técnicas no probadas (título SOLO + contenido, sin dominio), (c) aceptar el baseline R5-C como techo del motor actual",
+    "4": "GOLD-V5 y baseline R5-C intactos; los 3 misses permanecen como casos de evaluación"
+  },
+  "not_to_touch": ["motor productivo", "modelo de embeddings (cambio descartado)", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

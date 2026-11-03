@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-interaccion-farmacocinetica-001",
+    "title": "Interacción Farmacocinética de los Tópicos y Biodisponibilidad en el Ostium Folicular",
+    "content": "La eficacia de los tratamientos tópicos capilares, como el minoxidil o los análogos de prostaglandinas, depende críticamente de la permeabilidad del ostium folicular. La investigación actual sugiere que la presencia de sebo modificado, restos de polímeros de styling y células queratinizadas en el infundíbulo actúa como una barrera física que limita la penetración del fármaco hacia la protuberancia folicular (bulge). Estudios publicados en el Journal of Cosmetic Dermatology indican que la limpieza profunda del cuero cabelludo mediante exfoliantes químicos (ácidos AHA/BHA) mejora la biodisponibilidad de los activos al reducir la impedancia de la barrera cutánea. Es fundamental que el diagnóstico clínico evalúe no solo la patología, sino el estado de permeabilidad del conducto. Una obstrucción por biofilm o exceso de lípidos oxidados puede convertir un tratamiento de alta eficacia en un fracaso terapéutico por simple falta de llegada al objetivo molecular. La práctica clínica debe considerar la preparación previa del cuero cabelludo antes de la aplicación de agentes activos para maximizar la absorción transfolicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "AHAs",
+        "BHAs"
+      ],
+      "contraindications": [
+        "dermatitis_aguda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tricoscopia_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:23:04.152Z"
+  }
+]

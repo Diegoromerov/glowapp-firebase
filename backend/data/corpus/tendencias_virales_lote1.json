@@ -1,0 +1,165 @@
+{
+  "batch_metadata": {
+    "category": "tendencias_belleza_virales",
+    "phase": 7,
+    "risk_level": "alto",
+    "batch_id": "tiktok-lote1",
+    "chunk_count": 6,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Lote 1 tendencias: filtro critico a hacks virales peligrosos (slugging en acne, DIY peeling, rutinas de 10 pasos, pegamento en cara, pasta de dientes)."
+  },
+  "chunks": [
+    {
+      "chunk_id": "tiktok-001",
+      "title": "Slugging en piel acneica: por que el hack viral de la vaselina es una trampa",
+      "content": "El 'slugging' (aplicar una capa oclusiva de vaselina o ungüentos petrolatos como ultimo paso de la rutina nocturna) se volvio viral en TikTok como secreto para una piel jugosa. Si bien es seguro y efectivo para pieles secas o con dermatitis atopica, es **altamente contraproducente para piel acneica o con tendencia a brotes**. La vaselina es oclusiva al 100%: no deja escapar el agua, pero tampoco deja respirar la piel ni salir el sebo. En piel con acne, esto crea un ambiente anaerobico perfecto para que la bacteria Cutibacterium acnes prolifere, atrapando suciedad, bacterias y queratina, lo que garantiza brotes de comedones y pustulas. La regla de oro: si tienes piel grasa, mixta o acneica, evita la oclusion total. Opta por hidratantes en gel o lociones ligeras con acido hialuronico o niacinamida, que hidratan sin ocluir.",
+      "category": "tendencias_belleza_virales",
+      "phase": 7,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD - Acne and skincare myths", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Journal of the American Academy of Dermatology - Occlusive moisturizers and acne", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["grasa", "acneica", "mixta"],
+        "age_ranges": ["adolescente", "adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["vaselina", "petrolato"],
+        "contraindications": ["piel acneica", "tendencia a comedones"],
+        "season": ["all"],
+        "applicable_modules": ["aura", "planificador_skincare"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tiktok-002",
+      "title": "DIY Peeling de limon y bicarbonato: la receta casera que quema tu barrera cutanea",
+      "content": "Los videos que promueven exfoliar la cara con limon y bicarbonato son uno de los mayores riesgos virales en dermatologia. El limon tiene un pH extremadamente acido (alrededor de 2), lo que causa irritacion quimica, y contiene psoralenos que, al exponerse al sol, provocan fitofotodermatitis (manchas oscuras severas y ampollas). El bicarbonato, por su parte, tiene un pH muy alcalino (alrededor de 9), que destruye el manto acido protector de la piel, alterando el microbioma y facilitando infecciones. La combinacion de ambos crea una reaccion efervescente que no 'limpia los poros', sino que agreda la barrera cutanea, causando enrojecimiento, ardor y, a largo plazo, hiperpigmentacion postinflamatoria, especialmente en fototipos latinos (IV-VI). La exfoliacion segura se hace con activos formulados a pH controlado, como acido salicilico (BHA) o acido lactico, nunca con ingredientes de cocina.",
+      "category": "tendencias_belleza_virales",
+      "phase": 7,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "Sociedad Colombiana de Dermatologia (SCD) - Alertas sobre remedios caseros", "url": "https://www.scd.org.co/", "year": 2024 },
+        { "institution": "AAD - Dangers of DIY skincare", "url": "https://www.aad.org/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["III", "IV", "V", "VI"],
+        "ingredients": ["limon", "bicarbonato"],
+        "contraindications": ["aplicacion topica de alimentos", "exposicion solar posterior"],
+        "season": ["all"],
+        "applicable_modules": ["aura", "planificador_skincare"],
+        "content_type": "alerta_seguridad"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tiktok-003",
+      "title": "La falacia de la rutina de 10 pasos: por que menos es mas para tu barrera cutanea",
+      "content": "Las rutinas coreanas de 10 o 12 pasos se viralizaron como el estandar de belleza, pero aplicarlas sin criterio dermatologico es una receta para el desastre. La piel tiene un limite de absorcion y tolerancia. Usar multiples tonicos, serums con activos superpuestos (ej. retinol + vitamina C + AHA + BHA en la misma noche) y cremas pesadas satura la barrera cutanea, llevando a la 'dermatitis por exceso de productos' (irritacion, descamacion, brotes repentinos). La dermatologia moderna aboga por el 'skinimalism': una rutina base de 3 a 4 pasos efectivos (limpieza suave, hidratante, protector solar de dia, y un solo activo de tratamiento de noche). Si tu piel esta irritada, la regla es 'suspender todo' y volver a la base. Mas productos no equivalen a mejor piel; equivalen a mayor riesgo de alergia de contacto e irritacion.",
+      "category": "tendencias_belleza_virales",
+      "phase": 7,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "Journal of Cosmetic Dermatology - Skinimalism and barrier repair", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 },
+        { "institution": "AAD - Simple skincare routines", "url": "https://www.aad.org/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["superposicion de activos irritantes"],
+        "season": ["all"],
+        "applicable_modules": ["aura", "planificador_skincare"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tiktok-004",
+      "title": "Pegamento de pestañas o superglue en la cara: el hack de belleza que termina en urgencias",
+      "content": "Trends que sugieren usar pegamento de pestañas, pegamento escolar o incluso cianocrilato (superglue) para 'levantar' la piel, cerrar heridas de acne o crear efectos esteticos son extremadamente peligrosos. Estos adhesivos no estan formulados para uso cutaneo extensivo. El cianocrilato genera una reaccion exotermica (calor) al curarse, que puede causar quemaduras quimicas de segundo grado. Ademas, al retirarlo, arranca el estrato corneo de la piel, provocando dermatitis de contacto severa, ampollas y riesgo alto de infeccion bacteriana secundaria. Cualquier producto que se aplique en la cara debe ser cosmético o farmaceutico, con pruebas de seguridad dermatologica. Si un video sugiere usar un producto de ferreteria o manualidades en la piel, es una bandera roja inmediata: bloquelo y reportelo.",
+      "category": "tendencias_belleza_virales",
+      "phase": 7,
+      "risk_level": "alto",
+      "sources": [
+        { "institution": "AAD - Dangers of beauty hacks", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatologia (SCD) - Alertas de redes sociales", "url": "https://www.scd.org.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["adolescente", "adulto"],
+        "fototipos": ["all"],
+        "ingredients": ["cianocrilato", "adhesivos no cosmeticos"],
+        "contraindications": ["uso topico de adhesivos industriales"],
+        "season": ["all"],
+        "applicable_modules": ["aura"],
+        "content_type": "alerta_seguridad"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tiktok-005",
+      "title": "Pasta de dientes en granos: por que este remedio de la abuela causa mas daño que beneficio",
+      "content": "Aplicar pasta de dientes sobre un grano es un mito persistente que la dermatologia lleva decadas desmintiendo. Las pastas dentales contienen ingredientes diseñados para el esmalte dental, no para la piel: lauril sulfato de sodio (detergente irritante), fluoruro, mentol, bicarbonato y peroxido. Al aplicarlos en la piel, provocan una dermatitis de contacto irritativa: la zona se pone roja, arde, se descama y, lo que es peor en fototipos latinos, deja una mancha oscura (hiperpigmentacion postinflamatoria) que dura meses, mucho mas tiempo que el grano original. El tratamiento correcto y seguro para un brote puntual es un parche hidrocoloide (que absorbe el exudado sin irritar) o un producto con peroxido de benzoilo al 2.5% o acido salicilico, formulados especificamente para la piel.",
+      "category": "tendencias_belleza_virales",
+      "phase": 7,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "AAD - Acne home remedies to avoid", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Journal of Clinical and Aesthetic Dermatology - Toothpaste and skin irritation", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["acneica", "all"],
+        "age_ranges": ["adolescente", "adulto"],
+        "fototipos": ["III", "IV", "V", "VI"],
+        "ingredients": ["pasta de dientes", "fluoruro", "mentol"],
+        "contraindications": ["aplicacion topica de productos de higiene oral"],
+        "season": ["all"],
+        "applicable_modules": ["aura", "planificador_skincare"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "tiktok-006",
+      "title": "El falso 'Glass Skin': cuando la exfoliacion agresiva destruye la barrera en busca de brillo",
+      "content": "El 'Glass Skin' (piel de cristal) es un ideal estetico legitimo que se basa en una barrera cutanea sana, bien hidratada y con textura uniforme. Sin embargo, el trend viral lo ha distorsionado, llevando a muchas personas a usar exfoliantes fisicos (scrubs con particulas, cepillos sónicos a maxima potencia) y quimicos (acidos a altas concentraciones todos los dias) para 'pulir' la piel. El resultado no es brillo, sino una barrera cutanea comprometida: la piel se vuelve roja, brillante por la inflamacion (no por la salud), sensible y propensa a brotes. El verdadero Glass Skin se logra con hidratacion profunda (acido hialuronico, ceramidas), proteccion solar estricta y exfoliacion suave y esporadica (1-2 veces por semana maximo). Si tu piel arde al aplicarte hidratante, has ido demasiado lejos: detén la exfoliacion y repara la barrera.",
+      "category": "tendencias_belleza_virales",
+      "phase": 7,
+      "risk_level": "medio",
+      "sources": [
+        { "institution": "Sociedad Latinoamericana de Dermatologia (SLD) - Barrera cutanea y tendencias", "url": "https://www.dermalatino.org/", "year": 2023 },
+        { "institution": "AAD - Over-exfoliation signs and treatment", "url": "https://www.aad.org/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["sensible", "all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": ["exfoliacion diaria agresiva"],
+        "season": ["all"],
+        "applicable_modules": ["aura", "planificador_skincare"],
+        "content_type": "mitos_vs_evidencia"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

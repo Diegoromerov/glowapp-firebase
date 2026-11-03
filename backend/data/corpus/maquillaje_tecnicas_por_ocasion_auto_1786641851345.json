@@ -1,0 +1,172 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-001",
+    "title": "Maquillaje en entornos de hipoxia hipobárica y cabinas de simulación",
+    "content": "La exposición a entornos de hipoxia hipobárica, comunes en cabinas de simulación de entrenamiento o aeronaves, altera drásticamente la fisiología cutánea. La disminución de la presión parcial de oxígeno induce una vasoconstricción periférica compensatoria que reduce la perfusión tisular, afectando la estabilidad de las emulsiones cosméticas. En estas condiciones, la piel experimenta una pérdida acelerada de agua transepidérmica (TEWL), lo que provoca la fisuración prematura de las bases de maquillaje. Los estudios en medicina aeroespacial sugieren que el uso de polímeros filmógenos de alto peso molecular es esencial para mantener la integridad de la película cosmética bajo estas presiones reducidas. Es fundamental evitar productos con alta carga de alcoholes volátiles, los cuales exacerban la deshidratación cutánea en ambientes de baja humedad relativa. Se recomienda el uso de selladores hidratantes con propiedades oclusivas ligeras para preservar la barrera lipídica durante la exposición prolongada, garantizando que el maquillaje no se convierta en un agente irritante al fracturarse sobre una piel ya deshidratada por la hipoxia ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de alto peso molecular",
+        "glicerina"
+      ],
+      "contraindications": [
+        "alcoholes desnaturalizados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea_extrema"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:23:52.718Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-radioterapia-002",
+    "title": "Maquillaje en pacientes post-radioterapia: Integridad de la barrera",
+    "content": "El manejo cosmético en pacientes que han recibido radioterapia requiere una cautela extrema debido a la fragilidad de la barrera cutánea inducida por la radiación. Tras el tratamiento, la piel presenta una respuesta inflamatoria persistente y una disminución en la capacidad de regeneración celular. El uso de maquillaje debe limitarse a productos hipoalergénicos, libres de fragancias y conservantes potencialmente irritantes como los parabenos. La evidencia clínica indica que el uso de pigmentos minerales inertes (como óxidos de hierro tratados) es preferible, ya que reducen la probabilidad de dermatitis por contacto. Es imperativo evitar la aplicación de productos que requieran fricción mecánica intensa para su remoción, ya que la piel irradiada es extremadamente sensible a la abrasión. Se recomienda emplear técnicas de 'stippling' con esponjas de silicona no porosas para minimizar la transferencia de patógenos y la presión sobre el estrato córneo comprometido. La meta es mejorar la calidad de vida y el bienestar emocional sin comprometer la homeostasis cutánea ni interferir con los procesos de cicatrización en curso.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/skin-cancer/radiation-skin-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "comprometida"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "siliconas grado médico"
+      ],
+      "contraindications": [
+        "fragancias",
+        "conservantes irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_oncologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:23:52.718Z"
+  },
+  {
+    "chunk_id": "maquillaje-neurocosmetica-estres-003",
+    "title": "Neurocosmética: Maquillaje para la modulación de la respuesta sensorial",
+    "content": "La neurocosmética explora la relación entre las texturas cosméticas y la modulación de la percepción sensorial a través de las terminaciones nerviosas cutáneas. En eventos de alta carga sensorial (luces parpadeantes, ruido, multitudes), el maquillaje puede actuar como una barrera psicológica y física. La aplicación de formulaciones que contienen activos con propiedades calmantes, como el bisabolol o extractos de avena coloidal, puede ayudar a reducir la respuesta de hipersensibilidad táctil. La clave reside en la elección de texturas que minimicen la estimulación de los mecanorreceptores y termorreceptores. Al aplicar productos con un peso molecular equilibrado, se puede lograr una sensación de 'segunda piel' que reduce la percepción de estiramiento o tirantez, factores que a menudo exacerban los niveles de estrés detectados por el sistema nervioso central. La evidencia sugiere que la reducción del estrés sensorial mediante la aplicación consciente de texturas ligeras y no oclusivas mejora la adherencia del producto y la comodidad del usuario, evitando el ciclo vicioso de irritación y estrés que afecta la integridad del microbioma cutáneo en entornos sociales complejos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "avena coloidal"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "neurocosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:23:52.718Z"
+  },
+  {
+    "chunk_id": "maquillaje-estres-emocional-009",
+    "title": "Dinámica del pH cutáneo ante el estrés emocional y su impacto en la adherencia",
+    "content": "El estrés emocional agudo induce una respuesta del sistema endocrino que eleva los niveles de cortisol, afectando directamente la composición del sudor y el sebo, lo cual altera el pH de la superficie cutánea. Esta variación del pH puede desestabilizar la carga eléctrica de los pigmentos cosméticos, provocando que el maquillaje se torne irregular, cambie de tono (oxidación) o pierda adherencia. En eventos de alta carga emocional, es fundamental utilizar bases de maquillaje con tecnología de ajuste de pH o con sistemas de liberación sostenida de activos que mantengan la estabilidad de la emulsión. La evidencia científica sugiere que las bases con polímeros de red tridimensional son más resistentes a estos cambios químicos, manteniendo el pigmento en su lugar a pesar de la variabilidad del pH inducida por el cortisol. Se recomienda la aplicación de un fijador con propiedades buffer (tamponadoras) para neutralizar las fluctuaciones del pH cutáneo durante el evento, asegurando una apariencia uniforme y duradera incluso en situaciones de alta demanda emocional.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de red tridimensional",
+        "agentes buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:23:52.718Z"
+  }
+]

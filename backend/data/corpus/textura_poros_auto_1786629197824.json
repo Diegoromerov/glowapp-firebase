@@ -1,0 +1,324 @@
+[
+  {
+    "chunk_id": "textura-poros-glicosaminoglicanos-001",
+    "title": "El papel de los proteoglicanos en la turgencia periporo",
+    "content": "Los proteoglicanos, como el ácido hialurónico y el versicano, son componentes críticos de la matriz extracelular que rodea el ostium folicular. Su capacidad para retener agua es fundamental para mantener la turgencia del tejido que soporta físicamente el poro. Cuando la síntesis de estos componentes disminuye o su degradación se acelera por la exposición a la radiación UV, el tejido periporo pierde su capacidad de expansión y retracción elástica, resultando en una apariencia de poro dilatado. Estudios en el Journal of Investigative Dermatology han demostrado que la integridad de los glicosaminoglicanos es esencial para prevenir la 'flacidez' del ostium. Mantener un entorno hidratado mediante precursores de la matriz puede ayudar a mejorar la estructura física que rodea al poro, evitando que la piel ceda ante la gravedad o la falta de soporte mecánico. La suplementación tópica con moléculas de bajo peso molecular busca penetrar la dermis superior para restaurar esta red de soporte, mejorando la textura global mediante la recuperación del volumen perdido en el espacio perifolicular.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30034-7/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_hialuronico",
+        "precursores_colageno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-senescencia-002",
+    "title": "Fenotipo secretor asociado a la senescencia (SASP) y poros",
+    "content": "El fenotipo secretor asociado a la senescencia (SASP) describe cómo los fibroblastos periporo, al entrar en senescencia, comienzan a liberar citoquinas proinflamatorias, quimiocinas y metaloproteinasas (MMP) que degradan el colágeno circundante. Este proceso altera la arquitectura del ostium folicular, volviéndolo más rígido y dilatado. La investigación publicada en Nature Aging subraya que este microambiente inflamatorio crónico impide que los queratinocitos del poro se renueven correctamente, favoreciendo la acumulación de detritos. A diferencia de la inflamación aguda, el SASP es sutil y persistente, lo que explica por qué los poros parecen 'estirarse' permanentemente con la edad, independientemente de la secreción sebácea. La modulación de este ambiente mediante compuestos senolíticos o antioxidantes específicos busca revertir parcialmente la degradación de la matriz, permitiendo que el poro recupere su tono original. Es un factor determinante para entender que la textura de la piel no solo depende de la grasa, sino de la salud celular del soporte estructural circundante.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Aging",
+        "url": "https://www.nature.com/nataging/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-exosomas-003",
+    "title": "Comunicación mediante exosomas en la unidad pilosebácea",
+    "content": "La comunicación intercelular en la unidad pilosebácea es mediada en gran medida por exosomas, vesículas extracelulares que transportan proteínas, lípidos y micro-ARN entre los sebocitos y los fibroblastos periporo. Esta diafonía celular es crucial para regular el tamaño del poro. Estudios recientes en PubMed indican que, bajo condiciones de estrés o inflamación, los exosomas pueden transmitir señales que inducen una hiperplasia de la glándula sebácea o una respuesta fibrótica inadecuada, dilatando el ostium. El entendimiento de esta señalización permite identificar nuevas dianas terapéuticas para la textura de la piel. Por ejemplo, la regulación de la carga exosomal mediante el control de la inflamación sistémica podría ser una estrategia para mantener la homeostasis del poro. Estos hallazgos abren una puerta hacia tratamientos personalizados que no solo actúan sobre la superficie, sino que regulan el diálogo biológico que dicta la morfología del poro desde el interior de la dermis, un avance significativo en la dermatología cosmética moderna.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38204555/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-peroxido-hidrogeno-004",
+    "title": "Peróxido de hidrógeno endógeno y oxidación del sebo",
+    "content": "La producción de peróxido de hidrógeno (H2O2) como subproducto del metabolismo celular dentro del canal folicular juega un papel negativo en la textura de la piel. Este agente oxidante, al entrar en contacto con el escualeno y otros lípidos sebáceos, promueve la peroxidación lipídica, convirtiendo un sebo fluido en una masa comedogénica más viscosa. Este tapón, a su vez, genera una obstrucción física que dilata el ostium folicular desde adentro. La evidencia sugiere que el exceso de H2O2 no solo oxida el sebo, sino que también daña las membranas de los queratinocitos periporo, debilitando la estructura que sostiene el poro. La aplicación de antioxidantes tópicos con capacidad de penetración folicular, como ciertos derivados de la vitamina C o polifenoles, busca neutralizar este H2O2 antes de que inicie la cascada de oxidación. El control de este estrés oxidativo endógeno es una estrategia clave para prevenir la dilatación mecánica causada por la acumulación de sebo oxidado y la inflamación subclínica asociada.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/poros",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_c",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-wnt-beta-005",
+    "title": "Señalización Wnt/β-catenina y regeneración del poro",
+    "content": "La vía de señalización Wnt/β-catenina es fundamental para el mantenimiento y la regeneración del epitelio folicular. Esta cascada molecular regula la diferenciación de las células madre del folículo piloso, impactando directamente en la renovación de la pared del poro. Cuando esta señalización se ve alterada, ya sea por factores ambientales o por el envejecimiento intrínseco, la renovación del epitelio se vuelve irregular, lo que puede manifestarse como una textura rugosa o poros visiblemente agrandados. La investigación en dermatología molecular sugiere que estimular correctamente esta vía podría mejorar la cohesión y la salud del ostium, permitiendo que la piel mantenga una textura más uniforme. A diferencia de las intervenciones mecánicas, esta aproximación biológica busca optimizar la capacidad regenerativa natural de la unidad pilosebácea. Es un área de estudio emergente que destaca la importancia de la homeostasis celular para lograr una piel con poros menos perceptibles y una textura más refinada a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://ijdvl.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-acuaporinas-006",
+    "title": "Acuaporinas y la turgencia hídrica del ostium",
+    "content": "Las acuaporinas, especialmente la AQP3, son proteínas de canal que facilitan el transporte de agua y glicerol a través de la membrana de los queratinocitos en la epidermis y el epitelio folicular. Una hidratación óptima mediante el flujo regulado de agua es necesaria para mantener la turgencia del tejido periporo. Cuando la expresión de acuaporinas disminuye, la piel pierde volumen y elasticidad, lo que hace que los poros se tornen más visibles debido a la falta de soporte estructural por parte de las células circundantes. Estudios publicados en revistas de dermatología experimental han demostrado que la estimulación de la síntesis de acuaporinas, mediante ingredientes como el glicerol o extractos botánicos específicos, ayuda a restaurar la turgencia del ostium folicular. Esta mejora en la hidratación interna del tejido no solo suaviza la textura, sino que también mejora la barrera cutánea, reduciendo la necesidad de una sobreproducción de sebo como mecanismo compensatorio de hidratación. Es una estrategia de hidratación profunda clave para el manejo de la textura en pieles deshidratadas.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/24/3/2186",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "deshidratada",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerol",
+        "acuaporinas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-autofagia-lisosomal-008",
+    "title": "Autofagia lisosomal y homeostasis lipídica en el ostium",
+    "content": "La autofagia lisosomal es el proceso por el cual las células degradan sus propios componentes innecesarios o dañados. En la unidad pilosebácea, este mecanismo es vital para la limpieza interna del poro, eliminando lípidos oxidados y detritos celulares que de otra forma obstruirían el canal. Una autofagia eficiente asegura que el ostium se mantenga despejado y con una estructura regular. Sin embargo, con el envejecimiento o la exposición a factores ambientales, la eficacia de la autofagia disminuye, lo que resulta en una acumulación persistente de lípidos y una dilatación del poro. Los estudios actuales en biología celular sugieren que la activación de la autofagia mediante agentes específicos (como ciertos inductores naturales) podría mejorar la textura de la piel al promover una limpieza profunda y continua de los canales foliculares. Este enfoque es superior a la exfoliación mecánica, ya que actúa desde el interior de la unidad pilosebácea, respetando la barrera cutánea mientras se optimiza la arquitectura del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Autophagy Journal",
+        "url": "https://www.tandfonline.com/journals/kaup20",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "autofagia_inductores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_profunda"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  },
+  {
+    "chunk_id": "textura-poros-epigenetica-009",
+    "title": "Modificaciones epigenéticas y expresión génica del poro",
+    "content": "La epigenética, que comprende cambios en la expresión génica sin alterar la secuencia del ADN, juega un papel crucial en cómo nuestros poros responden al entorno. Factores como la dieta, el estrés y la exposición a contaminantes en Bogotá pueden inducir modificaciones en la metilación del ADN de los fibroblastos y queratinocitos periporo. Estas marcas epigenéticas pueden 'programar' a las células para producir más sebo o ser menos resilientes ante la degradación del colágeno, afectando permanentemente la textura. A diferencia de la genética fija, las modificaciones epigenéticas son potencialmente reversibles. El uso de ingredientes activos que influyen en la metilación o en la acetilación de histonas abre un nuevo campo en la cosmética personalizada para la textura de poros. Al entender que el tamaño y la textura del poro son también un reflejo de nuestras interacciones diarias con el exposoma, podemos adoptar hábitos y tratamientos que modulen positivamente esta expresión génica, buscando una piel más uniforme y resistente a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Epigenetics Journal",
+        "url": "https://www.tandfonline.com/journals/kepi20",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "activos_epigeneticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exposoma_cutaneo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:53:00.832Z"
+  }
+]

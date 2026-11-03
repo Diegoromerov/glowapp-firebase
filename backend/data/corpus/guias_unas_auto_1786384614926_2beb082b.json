@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "guias_unas-1786384614802-1-0a92faf1-efecto-de-la-presion-hidrostatica-en-la-adhesion-de-bases-au",
+    "title": "Efecto de la presión hidrostática en la adhesión de bases autonivelantes",
+    "content": "La adhesión de los sistemas de bases rubber o autonivelantes depende críticamente de la tensión superficial y la presión hidrostática durante la fase de curado. Cuando se aplica una capa excesivamente gruesa, el peso del producto genera una presión que desplaza el monómero hacia los bordes antes de alcanzar el punto de gelificación, creando una zona de debilidad estructural en el hiponiquio. Este fenómeno, a menudo confundido con un fallo de fotopolimerización, es en realidad un error de distribución de masa. La física de fluidos dicta que a mayor viscosidad, mayor es el riesgo de atrapamiento de burbujas de aire que actúan como núcleos de fractura bajo estrés mecánico. Para mitigar este riesgo, se recomienda la técnica de aplicación en capas delgadas sucesivas (layering), permitiendo que la presión hidrostática se estabilice antes de la exposición a la lámpara. El control de la viscosidad mediante la temperatura ambiente de la cabina es otro factor determinante: un producto demasiado frío aumenta la tensión interna, mientras que uno demasiado cálido pierde su capacidad de nivelación, comprometiendo la integridad del sellado periférico y facilitando la entrada de agentes externos que degradan la adhesión a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monómeros",
+        "oligómeros"
+      ],
+      "contraindications": [
+        "aplicación en capa gruesa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_adhesivos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:56:54.829Z"
+  }
+]

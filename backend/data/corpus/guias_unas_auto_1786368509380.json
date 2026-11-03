@@ -1,0 +1,293 @@
+[
+  {
+    "chunk_id": "guias_unas-electrolisis-y-matriz-001",
+    "title": "Electrólisis y daño matricial: riesgos de la remoción de cutícula con herramientas eléctricas",
+    "content": "La tendencia de utilizar fresas de punta de diamante para 'limpiar' el eponiquio ha introducido un riesgo clínico subestimado: la micro-electrólisis y el daño térmico en la matriz ungueal. Cuando la fresa contacta la piel viva del pliegue proximal, la fricción genera una transferencia de calor que supera el umbral de tolerancia de las células madre de la matriz. Estudios en dermatología han demostrado que el trauma mecánico repetitivo en esta zona puede inducir la formación de onicodistrofias permanentes, como las líneas de Beau o la pérdida de la curvatura natural. Además, el uso de herramientas metálicas mal calibradas puede alterar la barrera lipídica del eponiquio, facilitando la entrada de patógenos oportunistas. La literatura en PubMed subraya que la matriz ungueal es un tejido altamente sensible y cualquier alteración en su microambiente vascular puede derivar en una detención transitoria del crecimiento de la placa. Es imperativo que los profesionales de cabina comprendan que el eponiquio no es un tejido muerto, sino una estructura inmunológica activa cuya integridad es vital para evitar la entrada de alérgenos y bacterias hacia el lecho.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6358766/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de fresas eléctricas en eponiquio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_en_cabina"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  },
+  {
+    "chunk_id": "guias_unas-quimica-adhesivos-002",
+    "title": "La cinética de polimerización y el riesgo de migración de monómeros",
+    "content": "La polimerización incompleta de los geles UV es uno de los factores más críticos en la sensibilización a metacrilatos. Cuando la intensidad de la lámpara no coincide con el fotoiniciador del producto (ej. lámparas LED de 365nm vs 405nm), se produce una reacción de curado parcial. Esto deja monómeros libres que no se han integrado en la red polimérica, los cuales tienen un bajo peso molecular y pueden penetrar fácilmente la barrera cutánea. Una vez en la dermis, estos monómeros actúan como haptenos, uniéndose a proteínas de la piel y desencadenando una respuesta inmunológica de tipo IV (dermatitis alérgica de contacto). La American Academy of Dermatology advierte que esta sensibilización es irreversible; una vez que un paciente desarrolla alergia a un acrilato, es probable que reaccione a otros compuestos químicos de estructura similar, complicando procedimientos médicos futuros como selladores dentales o adhesivos quirúrgicos. Es fundamental verificar la compatibilidad entre el gel y la lámpara según las fichas técnicas de seguridad (MSDS).",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-cosmetic-reactions",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "polimerización incompleta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_aplicada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomarcadores-nutricionales-003",
+    "title": "La lámina ungueal como espejo de deficiencias subclínicas: más allá del calcio",
+    "content": "Existe la creencia popular de que las uñas frágiles son siempre una señal de deficiencia de calcio, pero la evidencia clínica indica lo contrario. La lámina ungueal está compuesta principalmente por queratina de tipo blando y duro, y su resistencia depende más de la cohesión entre los corneocitos que del contenido mineral. Deficiencias reales, como la anemia ferropénica, pueden manifestarse a través de la coiloniquia (uñas cóncavas), mientras que la falta de biotina (vitamina B7) o zinc puede asociarse a una mayor fragilidad, pero estas condiciones deben ser diagnosticadas mediante analíticas sanguíneas, no con suplementación arbitraria. En la práctica de cabina, debemos evitar recomendar 'fortalecedores' que contengan formaldehído, ya que este agente endurece la uña mediante la creación de enlaces cruzados artificiales que, con el tiempo, vuelven la queratina quebradiza y propensa a la onicosquizia. La salud de la uña es un reflejo del estado nutricional sistémico y de la hidratación de la matriz, por lo que el abordaje debe ser siempre integral, priorizando la ingesta de ácidos grasos esenciales y proteínas de alta calidad sobre los tratamientos tópicos agresivos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(16)30141-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "biotina",
+        "zinc"
+      ],
+      "contraindications": [
+        "formaldehído"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_ungueal"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  },
+  {
+    "chunk_id": "guias_unas-psoriasis-ungueal-004",
+    "title": "Psioriasis ungueal: por qué la confusión con onicomicosis es peligrosa",
+    "content": "La psoriasis ungueal es una condición mediada por el sistema inmune que frecuentemente se diagnostica erróneamente como onicomicosis. Mientras que la infección fúngica responde a antifúngicos, la psoriasis requiere un abordaje dermatológico avanzado. Signos clínicos como el 'pitting' (depresiones puntiformes), la mancha de aceite (onicólisis amarillenta) y la hiperqueratosis subungueal son característicos de la psoriasis. El error común en salones es intentar tratar estas manifestaciones con limado excesivo o productos antifúngicos, lo cual no solo es ineficaz, sino que exacerba la inflamación local y puede desencadenar el fenómeno de Koebner, donde el trauma mecánico induce nuevas lesiones psoriásicas. La IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) enfatiza que cualquier cambio en la arquitectura ungueal que no responda al tratamiento tópico estándar debe ser derivado a un dermatólogo para una biopsia o cultivo, evitando la manipulación estética que compromete la barrera cutánea y facilita sobreinfecciones bacterianas secundarias en un lecho ya inflamado.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/articles/123/psoriasis-nail-management",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado excesivo",
+        "antifúngicos sin diagnóstico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-006",
+    "title": "Manejo clínico de la reacción exotérmica: prevención de quemaduras térmicas",
+    "content": "La reacción de polimerización de los geles es, por naturaleza, exotérmica. La cantidad de calor liberado depende del volumen del producto, el porcentaje de fotoiniciadores y la velocidad de curado. En capas gruesas (como en extensiones o nivelaciones), el calor generado puede alcanzar temperaturas que superan el umbral de dolor del paciente (45°C), provocando lo que se conoce como 'quemadura por gel'. Este calor no solo causa dolor inmediato, sino que puede causar un desprendimiento térmico de la placa ungueal del lecho (onicólisis traumática por calor). La recomendación clínica es utilizar el modo 'Low Heat' o 'Soft Cure' en las lámparas, que reduce la potencia inicial para permitir una polimerización más lenta y controlada. Además, es esencial educar al cliente para que retire la mano en cuanto sienta un aumento súbito de temperatura, evitando el intento de 'aguantar el dolor', ya que el daño tisular puede ser microscópico pero acumulativo, afectando la salud de la matriz a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/ask-the-expert-are-nail-salon-uv-lamps-safe/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "curado de alta potencia en capas gruesas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_de_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  },
+  {
+    "chunk_id": "guias_unas-corrosion-galvanica-008",
+    "title": "Corrosión galvánica: el peligro invisible en herramientas de acero inoxidable",
+    "content": "La corrosión galvánica ocurre cuando dos metales con diferentes potenciales eléctricos entran en contacto en presencia de un electrolito (como los desinfectantes químicos o los fluidos corporales). Muchas herramientas de 'acero inoxidable' de baja calidad en el mercado de la belleza no son 100% resistentes a la corrosión y pueden sufrir este proceso al ser sumergidas en soluciones desinfectantes agresivas. Este fenómeno libera iones metálicos como níquel, cromo y cobalto, que son alérgenos de contacto conocidos. La dermatitis alérgica por níquel es una de las causas más frecuentes de eccema periungueal crónico. Al usar herramientas que muestran signos de corrosión (manchas oscuras, rugosidad en el filo o pérdida de brillo), el profesional está exponiendo al cliente a una sensibilización metálica innecesaria. Es vital realizar una inspección visual periódica de las herramientas bajo lupa y reemplazar cualquier instrumento que presente signos de degradación superficial, garantizando que el acero sea de grado médico (ej. AISI 420 o superior), el cual posee una mayor resistencia a la corrosión y una superficie más inerte frente a químicos de desinfección.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal (American Contact Dermatitis Society)",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "níquel",
+        "cromo",
+        "cobalto"
+      ],
+      "contraindications": [
+        "uso de herramientas corroídas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad_y_equipo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotoproteccion-real-009",
+    "title": "Fotoprotección real en cabina: el riesgo de las lámparas UV más allá de la uña",
+    "content": "El uso constante de lámparas UV para el curado de geles ha generado una preocupación legítima sobre el fotoenvejecimiento y el riesgo de carcinoma cutáneo en las manos. La radiación emitida por estas lámparas, aunque menor que la del sol, es una exposición concentrada en un área muy específica. Estudios recientes publicados en revistas dermatológicas han confirmado que la exposición repetida a la radiación UVA puede inducir daño en el ADN de los queratinocitos. La mejor estrategia de fotoprotección en GlowApp no es solo el uso de guantes de protección (que dejan la uña expuesta) o protectores solares (que pueden comprometer la adhesión del producto si se contaminan las uñas), sino la transición hacia lámparas LED con espectro de emisión optimizado y menor intensidad de UVA, junto con la reducción del tiempo de exposición. Es fundamental que los profesionales eduquen a los clientes sobre la importancia de la prevención del daño actínico y la detección temprana de lesiones pigmentadas, diferenciando una mancha por producto de una lesión cutánea sospechosa que requiere evaluación médica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "JAMA Dermatology",
+        "url": "https://jamanetwork.com/journals/jamadermatology/fullarticle/2798606",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "exposición prolongada a lámparas UV antiguas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_en_cabina"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:28:08.355Z"
+  }
+]

@@ -1,0 +1,386 @@
+{
+  "cycle": "R6-C3",
+  "status": "READY_FOR_DESIGN",
+  "baseline_r6": {
+    "name": "BASELINE-R6-PROVISIONAL",
+    "version": "1.0",
+    "source": "R6-C4 rebaseline on reconstructed embeddings",
+    "space": "reconstructed_embeddings_r6_recovery2",
+    "embeddings": {
+      "total": 5663,
+      "nulls": 0,
+      "dims": 1024
+    },
+    "index": {
+      "type": "HNSW",
+      "m": 16,
+      "ef_construction": 64,
+      "distance": "cosine",
+      "operator": "<=>"
+    },
+    "model": "nvidia/nv-embedqa-e5-v5 (NVIDIA NIM)",
+    "gold_dataset": "evaluation_dataset_v5_candidate.json (v5.0-candidate, 15 supported queries)",
+    "metrics": {
+      "r_at_5": 0.0000,
+      "r_at_10": 0.0000,
+      "r_at_20": 0.0667,
+      "r_at_50": 0.2000,
+      "mrr": 0.0097,
+      "query_success_at_50": 0.2000
+    },
+    "classifications": {
+      "VECTOR-DRIFT": 12,
+      "HIT-AT-20": 1,
+      "HIT-AT-50": 2
+    },
+    "historical_baseline_r5c": {
+      "name": "BASELINE-R5-C",
+      "r_at_5": 0.7885,
+      "mrr": 0.7179,
+      "note": "HISTORICAL — preserved, not modified, not comparable due to MULTI-FACTOR-DRIFT"
+    },
+    "delta_descriptivo": {
+      "r_at_5": -0.7885,
+      "mrr": -0.7082,
+      "explanation": "Embedding drift: NVIDIA API non-reproducible + Gold-V5 bound to historical vectors"
+    },
+    "reproducibility": {
+      "run_a": "r6c4_rebaseline_embedding_drift_a.json",
+      "run_b": "r6c4_rebaseline_embedding_drift_b.json",
+      "match": true
+    }
+  },
+  "architecture": {
+    "evidence_layer_exists": false,
+    "evidence_layer_defined": true,
+    "components": {
+      "Query": { "exists": true, "build": "NO", "file": "N/A", "description": "User input, normalization" },
+      "QueryEmbedding": { "exists": true, "build": "NO", "file": "src/services/embeddingService.js + ragService.js", "description": "generateEmbedding with input_type='query', 1400 char truncation" },
+      "VectorRetrieval": { "exists": true, "build": "NO", "file": "src/services/ragService.js:searchBeautyKnowledge", "description": "HNSW cosine similarity, topK=5, threshold=0.45, FTS fallback" },
+      "CandidateBuilder": { "exists": true, "build": "EXPERIMENTAL", "file": "scripts/r6c2EvidenceCandidateBuilder.js", "description": "Groups by category, max 3 chunks/category, lead score, provenance, confidence signals" },
+      "EvidenceGrouper": { "exists": false, "build": "NEW", "file": "N/A", "description": "Not implemented — groups by complementarity, deduplicates, detects redundancy/contradiction" },
+      "EvidenceValidator": { "exists": false, "build": "NEW", "file": "N/A", "description": "Not implemented — consistency, contradiction, hard negative filtering" },
+      "SufficiencyGate": { "exists": false, "build": "NEW", "file": "N/A", "description": "Not implemented — interpretable model: coverage + gate ≥0.55 + consistency" },
+      "EvidencePacket": { "exists": false, "build": "NEW", "file": "N/A", "description": "Not implemented — contract defined in R6-C1" },
+      "AnswerGenerator": { "exists": "PARTIAL", "build": "ADAPT", "file": "src/services/auraToolExecutor.js:221", "description": "Currently returns raw chunks; needs EvidencePacket input" },
+      "ClaimEvidenceTrace": { "exists": false, "build": "NEW", "file": "N/A", "description": "Prepared in R6-C1 contracts, parser optional v1" }
+    },
+    "pipeline_map": "USER_QUERY → QUERY_EMBEDDING (embeddingService) → VECTOR_RETRIEVAL (ragService) → CANDIDATES (r6c2Builder) → EVIDENCE_LAYER (MISSING: Grouper, Validator, Sufficiency, Packet) → ANSWER_GENERATION (auraToolExecutor) → PROVENANCE (MISSING: claim-level trace)"
+  },
+  "evidence_contract": {
+    "Evidence": {
+      "defined": true,
+      "source": "R6-C1 r6c1EvidenceArchitectureAnalysis.js",
+      "fields": 11,
+      "core_fields": ["evidence_id", "chunk_id", "source_id", "category", "title", "content", "retrieval_score", "rank", "metadata", "relevance", "provenance"],
+      "status": "CONTRACT_DEFINED — NOT IMPLEMENTED",
+      "producer_consumer_model": "Each field has producer/consumer/required/reason documented"
+    },
+    "EvidenceGroup": {
+      "defined": true,
+      "source": "R6-C1",
+      "fields": ["group_id", "evidence_ids", "primary", "complementary", "redundant", "contradictory", "complementarity_score"],
+      "rule": "Más chunks ≠ mejor evidencia. Grupo solo si cobertura de claims aumenta",
+      "status": "CONTRACT_DEFINED — NOT IMPLEMENTED"
+    },
+    "EvidencePacket": {
+      "defined": true,
+      "source": "R6-C1",
+      "fields": ["evidence", "state", "confidence", "provenance", "constraints", "unsupported_reason"],
+      "states": ["SUPPORTED", "PARTIAL", "UNSUPPORTED", "RETRIEVAL_UNCERTAIN"],
+      "status": "CONTRACT_DEFINED — NOT IMPLEMENTED"
+    },
+    "completeness": {
+      "Evidence": "COMPLETE",
+      "EvidenceGroup": "COMPLETE",
+      "EvidencePacket": "COMPLETE",
+      "missing": "IMPLEMENTATION — all three contracts defined but no code exists"
+    }
+  },
+  "critical_cases": {
+    "cabello_002": {
+      "query": "Rutina para cabello teñido con pH bajo y pérdida de elasticidad",
+      "category": "cabello",
+      "expected_chunks": {
+        "core": 3,
+        "supporting": 2,
+        "ids": ["colorimetria-capilar-ph-001", "colorimetria-capilar-ph-pos-tinte-009", "colorimetria-capilar-viscoelasticidad-009", "diagnostico_capilar-...sers...", "colorimetria-capilar-metales-003"]
+      },
+      "current_retrieval": {
+        "top1_similarity": 0.65,
+        "top1_chunk": "e6a987... (skincare)",
+        "gold_chunk_similarities": [0.31, 0.32, 0.34],
+        "gold_chunk_ranks": [">50", ">50", ">50"],
+        "gold_chunks_in_top50": 0,
+        "gold_chunks_in_top100": 0
+      },
+      "evidence_builder": {
+        "candidates_generated": 6,
+        "gold_category_present": true,
+        "gold_category": "colorimetria_capilar_tinte",
+        "gold_category_candidate_rank": 1,
+        "gold_category_candidate_score": 0.5906,
+        "gold_chunks_in_candidates": 0,
+        "candidate_chunks": "other chunks from same category"
+      },
+      "analysis": {
+        "retrieval_miss": "Gold chunks rank >100, sim 0.31-0.34 vs hard negatives 0.65+",
+        "evidence_composition": "Builder creates correct category candidate but with wrong chunks (not gold)",
+        "generation_impact": "If passed to generator, would cite non-gold chunks from correct category",
+        "root_cause": "Embedding drift — gold chunks exist but displaced by hard negatives"
+      }
+    },
+    "cejas_008": {
+      "query": "Tratamiento láser para eliminación de microblading en cejas",
+      "category": "cejas",
+      "expected_chunks": {
+        "core": 4,
+        "supporting": 0,
+        "ids": ["hidratacion-oclusiva-corporal-008", "hidratacion-oclusivos-humectantes-009", "urea-umbral-hidratacion-descamacion-009", "hidrofaciales-tecnologia-006"]
+      },
+      "current_retrieval": {
+        "top1_similarity": 0.76,
+        "top1_chunk": "268ac6... (cabello)",
+        "gold_chunk_similarities": [0.34, 0.38, 0.42, 0.49],
+        "gold_chunk_ranks": [">50", ">50", ">50", ">50"],
+        "gold_chunks_in_top50": 0,
+        "gold_chunks_in_top100": 0
+      },
+      "evidence_builder": {
+        "candidates_generated": 7,
+        "gold_category_present": true,
+        "gold_category": "visajismo_cejas_microblading",
+        "gold_category_candidate_rank": 1,
+        "gold_category_candidate_score": 0.5616,
+        "gold_chunks_in_candidates": 0,
+        "candidate_chunks": "other chunks from same domain"
+      },
+      "analysis": {
+        "retrieval_miss": "Gold chunks rank >50, sim 0.34-0.49 vs hard negatives 0.76+",
+        "evidence_composition": "Builder creates correct category candidate but with non-gold chunks",
+        "generation_impact": "Would cite related domain chunks, not the specific laser removal evidence",
+        "root_cause": "Embedding drift + hard negative contamination (cabello dominates)"
+      }
+    },
+    "cejas_004": {
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "expected_chunks": {
+        "core": 4,
+        "supporting": 2,
+        "ids": ["visajismo-cejas-microblading-musculatura-orbicular-009", "visajismo-microblading-arquitectura-muscular-008", "microblading-envejecimiento-009", "visajismo_cejas_microblading-...dispersion-luz-dermico...", "microblading-psicologia-007", "visajismo-cejas-microblading-metamerismo-003"]
+      },
+      "current_retrieval": {
+        "top1_similarity": 0.75,
+        "top1_chunk": "e6a987... (skincare)",
+        "gold_chunk_similarities": [0.34, 0.38, 0.42, 0.45],
+        "gold_chunk_ranks": [">50", ">50", ">50", ">50"],
+        "gold_chunks_in_top50": 0,
+        "gold_chunks_in_top100": 0
+      },
+      "evidence_builder": {
+        "candidates_generated": 8,
+        "gold_category_present": true,
+        "gold_category": "visajismo_cejas_microblading",
+        "gold_category_candidate_rank": 2,
+        "gold_category_candidate_score": 0.5647,
+        "gold_chunks_in_candidates": 0,
+        "candidate_chunks": "other chunks from same domain"
+      },
+      "analysis": {
+        "retrieval_miss": "VECTOR_MISS — Gold chunks rank >100, sim 0.34-0.45 vs hard negatives 0.75+",
+        "evidence_composition": "Builder creates correct category candidate but ZERO gold chunks included",
+        "generation_impact": "Highest risk — would produce answer with NO gold evidence, potential false SUFFICIENT",
+        "root_cause": "Deep embedding drift — all 4 core pieces displaced; R5-C27 confirmed 4/6 pieces outside top-100"
+      }
+    }
+  },
+  "ceilings": {
+    "vector_retrieval_ceiling": {
+      "definition": "Maximum recall achievable by vector retrieval alone (top-100)",
+      "r_at_50": 0.2000,
+      "r_at_100": "NOT MEASURED",
+      "evidence_from_R6_RECOVERY_3": "Gold-wide: 12/15 VECTOR-DRIFT (rank >50), 3/15 EXPECTED-MISS (top-50 but not top-5)",
+      "status": "CALCULATED_FROM_R6C4"
+    },
+    "evidence_availability_ceiling": {
+      "definition": "Maximum recall if ALL chunks with similarity >0.3 were available (evidence exists in corpus)",
+      "value": "NOT CALCULATED",
+      "note": "R6-RECOVERY-3 sanity test shows expected > random (margin +0.05 to +0.15), suggesting evidence exists but ranked low. Requires full corpus scan to compute true ceiling.",
+      "status": "MISSING"
+    },
+    "aggregation_ceiling": {
+      "definition": "Maximum recall if Evidence Grouper perfectly combines all relevant chunks per query",
+      "value": "NOT CALCULATED",
+      "note": "R5-C23 evidence ceiling @100 = 0.9333 (14/15 answerable), but that was on HISTORICAL vectors. On current vectors, unknown. Requires experiment.",
+      "status": "MISSING"
+    },
+    "answerability_ceiling": {
+      "definition": "Maximum queries answerable with SUFFICIENT evidence after full Evidence Layer",
+      "value": "NOT CALCULATED",
+      "note": "Depends on Sufficiency Gate calibration. R5-C28 gate strong_score ≥0.55 reduced false SUFFICIENT but had 3 regressions. Not yet tested on R6 space.",
+      "status": "MISSING"
+    }
+  },
+  "unsupported_policy": {
+    "states_defined": ["SUPPORTED", "PARTIAL", "UNSUPPORTED", "RETRIEVAL_UNCERTAIN"],
+    "state_definitions": {
+      "SUPPORTED": "Cobertura≥0.5 Y gate_fuerte(score≥0.55) Y consistencia",
+      "PARTIAL": "Cobertura 0.2-0.5",
+      "UNSUPPORTED": "Cobertura <0.2 O corpus gap",
+      "RETRIEVAL_UNCERTAIN": "Señal débil o fallback full-text"
+    },
+    "unsupported_differentiation": {
+      "CORPUS_GAP": "Inventario confirma ausencia (R5-C27: 3 UNSUPPORTED validadas)",
+      "EVIDENCE_INSUFFICIENT": "Evidencia existe pero no alcanza cobertura/gate (cejas_004: 4/6 piezas fuera pool)",
+      "RETRIEVAL_UNCERTAIN": "No se distingue gap de miss"
+    },
+    "generator_behavior": "En modo corpus-grounded, NO completa con conocimiento externo. Responde declarando insuficiencia + motivo trazable.",
+    "gate_strong_score_055": {
+      "origin": "R5-C25/C28/C29 — reproducible finding",
+      "valid_after_rebaseline": "UNVERIFIED — gate was calibrated on historical vectors; effectiveness on R6 space unknown",
+      "note": "R6-C4 baseline R@5=0.0000 suggests most queries have no chunks ≥0.55; gate may be too strict for new space"
+    },
+    "false_sufficient_risk": {
+      "identified": true,
+      "case": "cejas_004 in R5-C26: Evidence Aggregator declared SUFFICIENT with precision=0 (false positive)",
+      "current_status": "Evidence Candidate Builder does not have sufficiency logic; risk persists for R6-C3"
+    }
+  },
+  "r6c2_reusability": {
+    "Retrieval": {
+      "status": "REUSE",
+      "reason": "ragService.searchBeautyKnowledge intact, HNSW operational, FTS fallback works. No changes needed."
+    },
+    "Candidate_representation": {
+      "status": "REUSE",
+      "reason": "EvidenceCandidate structure (candidate_id, chunk_ids, category, titles, retrieval_scores, evidence_text, provenance, candidate_score, evidence_count, confidence_signals) is well-defined and useful for EvidencePacket."
+    },
+    "Evidence_grouping": {
+      "status": "ADAPT",
+      "reason": "Current grouping by metadata.category is simplistic. Needs semantic clustering (embedding similarity) + complementarity detection. Keep structure, replace algorithm."
+    },
+    "Deduplication": {
+      "status": "NEW",
+      "reason": "R6-C1 documented 5 duplicate chunk_ids in BD. R6-C2 builder does NOT deduplicate cross-category. Required in Grouper."
+    },
+    "Evidence_scoring": {
+      "status": "ADAPT",
+      "reason": "Current candidate_score = lead chunk similarity. Insufficient for sufficiency. Needs composite: coverage + gate + consistency + redundancy penalty."
+    },
+    "Sufficiency": {
+      "status": "NEW",
+      "reason": "No sufficiency logic in R6-C2. Contract defined in R6-C1 (6 dimensions + gate 0.55). Must be implemented in R6-C3."
+    },
+    "Provenance": {
+      "status": "REUSE",
+      "reason": "R6-C2 provenance object (source, retrieval_count, categories_represented, max/min/spread score) is complete and traces back to vector retrieval. Extend for grouper/packet."
+    },
+    "Unsupported": {
+      "status": "NEW",
+      "reason": "R6-C2 has no unsupported logic. Policy defined in R6-C1 (3 subtypes). Required for EvidencePacket."
+    },
+    "Answer_packet": {
+      "status": "NEW",
+      "reason": "No EvidencePacket produced. Contract defined in R6-C1. Required to replace raw chunks in auraToolExecutor."
+    }
+  },
+  "production_map": {
+    "USER_QUERY": { "exists": true, "file": "Flutter frontend → API → auraToolExecutor" },
+    "QUERY_EMBEDDING": { "exists": true, "file": "src/services/embeddingService.js:generateEmbedding(input_type='query')" },
+    "VECTOR_RETRIEVAL": { "exists": true, "file": "src/services/ragService.js:searchBeautyKnowledge(topK=5, threshold=0.45)" },
+    "CANDIDATES": { "exists": "EXPERIMENTAL_ONLY", "file": "scripts/r6c2EvidenceCandidateBuilder.js", "note": "Not in production path" },
+    "EVIDENCE_LAYER": { "exists": false, "missing": ["Evidence Grouper", "Evidence Validator", "Sufficiency Gate", "Evidence Packet"] },
+    "SUFFICIENCY": { "exists": false, "missing": "Full sufficiency model (coverage, relevance, complementarity, consistency, redundancy, gate≥0.55)" },
+    "ANSWER_GENERATION": { "exists": "PARTIAL", "file": "src/services/auraToolExecutor.js:221", "current_behavior": "Returns raw chunks {status: success, knowledge: results}", "required": "Accept EvidencePacket, generate grounded answer with claim tracing" },
+    "PROVENANCE": { "exists": "PARTIAL", "file": "src/services/ragLogger.js + formatKnowledgeContext", "current": "traceId, sanitization, sources in formatter", "missing": "Evidence-level provenance, claim→evidence trace, state logging" }
+  },
+  "risks": {
+    "excessive_embedding_score_dependency": {
+      "severity": "HIGH",
+      "evidence": "R6-C2 candidate_score = lead chunk similarity; skincare dominates top-1 in 11/15 non-skincare queries; hard negatives score 0.65-0.76 vs gold 0.31-0.49",
+      "impact": "Builder promotes high-score hard negatives over lower-score gold evidence"
+    },
+    "topk_dependency": {
+      "severity": "HIGH",
+      "evidence": "Builder only sees top-50 retrieval; gold chunks for critical cases rank >100; increasing K helps but at latency/cost tradeoff",
+      "impact": "Evidence ceiling bounded by retrieval K"
+    },
+    "hard_negative_contamination": {
+      "severity": "HIGH",
+      "evidence": "Skincare chunks dominate top ranks across categories; R6-C2 candidates show skincare as top-1 in 11/15 queries",
+      "impact": "Cross-category contamination reduces diversity; gold categories buried"
+    },
+    "evidence_redundancy": {
+      "severity": "MEDIUM",
+      "evidence": "R6-C2 max 3 chunks/category, no cross-category dedup; same chunk could appear in multiple candidates if metadata allows",
+      "impact": "Inflated evidence_count without new information"
+    },
+    "contradictory_evidence": {
+      "severity": "MEDIUM",
+      "evidence": "R6-C1 contract includes 'contradictory' field in EvidenceGroup; not detected in R6-C2",
+      "impact": "Contradictory chunks could be grouped, reducing answer quality"
+    },
+    "insufficient_declared_sufficient": {
+      "severity": "HIGH",
+      "evidence": "R5-C26 false SUFFICIENT (cejas_004: precision=0); R5-C28 gate 0.55 helped but caused 3 regressions; R6-C2 has no sufficiency",
+      "impact": "Without Sufficiency Gate, R6-C3 could repeat false positives"
+    },
+    "corpus_gap_vs_retrieval_miss_confusion": {
+      "severity": "MEDIUM",
+      "evidence": "R6-C4: 12/15 VECTOR-DRIFT (retrieval miss), 0 CORPUS-GAP; but R5-C27 found 3 CORPUS-GAP. On new vectors, classification harder.",
+      "impact": "Misattribution could drive wrong fixes (corpus vs retrieval)"
+    }
+  },
+  "missing_information": [
+    "Evidence availability ceiling on current vectors (requires full corpus similarity scan)",
+    "Aggregation ceiling on current vectors (requires Evidence Grouper experiment)",
+    "Answerability ceiling with R6 Sufficiency Gate (requires calibration on new space)",
+    "Gate strong_score ≥0.55 effectiveness on reconstructed embeddings (not tested post-rebaseline)",
+    "Semantic clustering quality vs metadata.category grouping (not measured)",
+    "Hard negative filtering strategies effectiveness (not tested)",
+    "Cross-category deduplication requirements (5 duplicate chunk_ids known, but cross-category overlap unknown)",
+    "EvidencePacket integration with auraToolExecutor (interface not defined)",
+    "Provenance trace schema for claim-level grounding (defined in R6-C1 but not implemented)"
+  ],
+  "recommended_next_experiment": {
+    "name": "R6-C3 — Evidence Aggregator Experimental",
+    "hypothesis": "Un Evidence Aggregator operando sobre los candidatos estructurados por el Builder puede componer EvidencePackets con suficiencia semántica, resolviendo los misses multi-chunk (cabello_002, cejas_008) manteniendo precision, sin requerir cambios al espacio vectorial.",
+    "input": "EvidenceCandidates from R6-C2 Builder (9.6 avg candidates/query, 1.71 chunks/candidate, provenance complete)",
+    "components_to_build": [
+      "Evidence Grouper: cluster candidates by semantic complementarity (embedding similarity + claim coverage), not just category",
+      "Deduplication: remove duplicate/overlapping chunks across candidates (address 5 known duplicate chunk_ids + cross-category)",
+      "Evidence Validator: detect contradictions, filter hard negatives (skincare dominance), score consistency",
+      "Sufficiency Gate: implement 6-dimension model (coverage + gate≥0.55 + consistency + complementarity + redundancy + relevance)",
+      "Evidence Packet: assemble authorized evidence + state + confidence + provenance + constraints"
+    ],
+    "evaluation": {
+      "primary_metrics": ["Evidence Recall @5/10/20/50", "Sufficiency Rate (SUPPORTED queries)", "False SUFFICIENT Rate", "Precision of EvidencePacket"],
+      "critical_cases": ["cabello_002: expect SUPPORTED (multi-chunk recoverable)", "cejas_008: expect PARTIAL/SUPPORTED", "cejas_004: expect UNSUPPORTED/EVIDENCE_INSUFFICIENT (vector miss)"],
+      "comparison": "Control = R6-C2 Builder output vs Experiment = Aggregator output"
+    },
+    "constraints": [
+      "Read-only — no BD modifications",
+      "No production changes",
+      "RUN A ≡ RUN B reproducibility required",
+      "RAG 69/69 PASS must hold",
+      "No LLM-as-judge for evidence quality (use Gold-V5)"
+    ],
+    "success_criteria": {
+      "R6_C3_AGGREGATOR_CONFIRMED": "Evidence Recall @20 ≥ 0.33 AND False SUFFICIENT = 0 AND cabello_002 → SUPPORTED",
+      "R6_C3_AGGREGATOR_MIXED": "Improvement on multi-chunk cases but cejas_004 unresolved OR false SUFFICIENT > 0",
+      "R6_C3_AGGREGATOR_DISCONFIRMED": "No improvement over R6-C2 Builder or regression in precision"
+    }
+  },
+  "confidence": {
+    "baseline_r6_established": "HIGH — R6-C4 RUN A ≡ RUN B, metrics reproducible, BD intact",
+    "evidence_contracts_defined": "HIGH — R6-C1 complete contracts with producer/consumer model",
+    "critical_cases_understood": "HIGH — R6-RECOVERY-3 + R6-C4 + R6-C2 all analyzed same 3 cases",
+    "retrieval_behavior_mapped": "HIGH — ragService, embeddingService, auraToolExecutor fully inspected",
+    "r6c2_behavior_verified": "HIGH — MIXED verdict with quantified metrics, reproducible",
+    "evidence_ceiling_unknown": "LOW — requires R6-C3 experiment to measure",
+    "sufficiency_gate_calibration_needed": "HIGH — gate 0.55 untested on R6 space, risk of over/under filtering",
+    "production_integration_path_clear": "MEDIUM — auraToolExecutor integration point identified (line 221), but EvidencePacket interface not designed",
+    "overall_readiness_for_r6c3": "HIGH — All prerequisites met: baseline established, contracts defined, builder validated, risks identified, hypothesis formulated"
+  }
+}

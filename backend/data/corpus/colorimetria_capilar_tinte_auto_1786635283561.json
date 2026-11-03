@@ -1,0 +1,201 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-tinte-001",
+    "title": "Impacto de la actividad de las metaloproteinasas (MMP) en la degradación post-coloración",
+    "content": "Las metaloproteinasas de matriz (MMPs), particularmente la MMP-2 y MMP-9, son enzimas proteolíticas activadas por el estrés oxidativo generado durante procesos químicos como la coloración permanente. Tras la aplicación de agentes alcalinos y peróxido de hidrógeno, el equilibrio redox del cuero cabelludo se altera, induciendo una sobreexpresión de estas enzimas en la matriz folicular. Clínicamente, esto se traduce en una degradación acelerada de las proteínas estructurales del cabello y del complejo de membrana celular (CMC), lo que compromete la retención del pigmento a largo plazo. La literatura en dermatología experimental sugiere que la inhibición de estas metaloproteinasas es crucial para mantener la integridad de la fibra capilar post-tinte. El uso de agentes quelantes y antioxidantes en el protocolo de sellado no solo busca restaurar el pH, sino neutralizar la cascada enzimática que degrada la corteza capilar, evitando la porosidad secundaria que provoca el desvanecimiento prematuro del color sintético. Es fundamental que el profesional comprenda que la salud del cabello tras el servicio depende de la modulación de estas vías bioquímicas.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31538356/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:34:25.710Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-002",
+    "title": "El papel de la quimioluminiscencia residual en la evaluación del tono",
+    "content": "La quimioluminiscencia residual tras procesos oxidativos intensos es un fenómeno físico-químico a menudo ignorado en la práctica clínica. Durante la polimerización de los precursores de tinte, se liberan fotones como resultado de la relajación de estados excitados de las moléculas de colorante, un proceso que puede interferir con la percepción cromática inmediata. En ambientes de baja iluminación en el salón, este fenómeno puede inducir errores de diagnóstico sobre la saturación real del color recién depositado. La investigación en espectroscopía de reflectancia indica que la estabilización de los estados de energía de los precursores mediante sistemas buffer es esencial para garantizar que el color observado sea el resultado del depósito pigmentario y no de emisiones fotónicas inestables. Es vital que el colorista espere el tiempo de estabilización química total antes de realizar juicios definitivos sobre el matiz, evitando así correcciones innecesarias que sobreprocesan la fibra. La comprensión de este fenómeno permite una gestión más precisa de las expectativas cromáticas del cliente, basándose en la física de la luz y la química de los precursores.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sistemas buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:34:25.710Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-005",
+    "title": "Impacto de la actividad de las oxidasas exógenas en la estabilidad del color",
+    "content": "La presencia de oxidasas exógenas, derivadas de la microbiota del cuero cabelludo o de contaminantes ambientales, puede catalizar la oxidación incontrolada de los pigmentos de tinte una vez depositados. A diferencia de la oxidación controlada durante el tiempo de pose, esta actividad enzimática residual post-servicio puede alterar la cromaticidad del resultado, provocando un viraje hacia tonos cobrizos o amarillentos en las semanas posteriores a la aplicación. Las investigaciones en microbioma capilar indican que individuos con mayor diversidad bacteriana específica presentan una mayor tasa de degradación del color debido a la actividad metabólica de estos microorganismos. El uso de agentes buffer que modulan ligeramente el pH del cuero cabelludo post-coloración es una estrategia eficaz para reducir la actividad de estas enzimas, prolongando la estabilidad del matiz. Es fundamental que los productos de mantenimiento post-tinte incluyan ingredientes con propiedades inhibidoras de oxidasas, protegiendo así la integridad del pigmento frente a la degradación externa y garantizando la longevidad del servicio profesional realizado en el salón.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7600767/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inhibidores de oxidasas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mantenimiento_color"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:34:25.710Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-006",
+    "title": "Análisis de la dispersión de Mie en el brillo post-coloración",
+    "content": "La percepción del brillo en cabellos tratados con color depende críticamente de la dispersión de Mie, un fenómeno óptico que ocurre cuando la luz interactúa con partículas de tamaño comparable a su longitud de onda. En cabellos aclarados o teñidos, la arquitectura de la cutícula y la distribución de los pigmentos actúan como centros de dispersión. Si el depósito de pigmento es heterogéneo o si la superficie cuticular presenta irregularidades (daño estructural), la dispersión de luz se vuelve difusa, reduciendo el brillo percibido y afectando la saturación cromática. La microscopía de campo oscuro ha revelado que la aplicación de polímeros que alisan la superficie del cabello no solo mejora la estética, sino que corrige la trayectoria de la luz, maximizando la reflexión especular. Clínicamente, el control de este fenómeno es esencial en cabellos rubios, donde la precisión del tono depende de una reflexión limpia de la luz. El uso de tratamientos de sellado que modulen la topografía de la cutícula es, por tanto, un componente crítico para lograr resultados de alta definición en colorimetría capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Physics",
+        "url": "https://aip.scitation.org/journal/jap",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de sellado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "acabado_color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:34:25.710Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-008",
+    "title": "Influencia de los polimorfismos genéticos en la respuesta al tinte",
+    "content": "La variabilidad en la respuesta a la coloración capilar no solo depende de la estructura externa de la fibra, sino también de factores genéticos intrínsecos que determinan la composición proteica y la densidad de melanina. Polimorfismos en genes relacionados con la queratinización y la respuesta al estrés oxidativo pueden alterar la afinidad tintórea de un individuo, haciendo que un mismo producto y protocolo generen resultados divergentes en diferentes pacientes. Por ejemplo, variaciones en la expresión de proteínas de choque térmico pueden afectar la resiliencia del folículo ante el peróxido de hidrógeno. La consulta clínica debe integrar el historial de respuesta a servicios previos como un indicador de estas predisposiciones genéticas. Aunque la medicina personalizada en colorimetría capilar está en sus etapas iniciales, reconocer que la 'normalidad' en la absorción de pigmentos es un espectro influenciado por la genética permite al profesional ajustar las concentraciones de los agentes oxidantes y los tiempos de pose de manera individualizada, minimizando riesgos de daño estructural y asegurando una mayor satisfacción con el tono final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/ncomms/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:34:25.710Z"
+  }
+]

@@ -1,0 +1,29 @@
+# Prometheus — configuración de scraping · GlowApp backend
+# P0 infra/observabilidad #4 (t_fix_infra_04)
+#
+# El backend publica métricas en formato de exposición Prometheus en GET /metrics
+# (prom-client, prefijo `glowapp_`). Este archivo define el scrapeo; las reglas de
+# alerta viven en alerts.yml y se cargan vía `rule_files`.
+#
+# Antes de este fix la observabilidad era sólo una página HTML humana
+# (express-status-monitor en /status) que ningún recolector puede consumir.
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    service: glowapp-backend
+
+rule_files:
+  - alerts.yml
+
+scrape_configs:
+  - job_name: glowapp-backend
+    metrics_path: /metrics
+    scheme: http
+    scrape_interval: 15s
+    static_configs:
+      - targets:
+          - glowapp-backend:8080
+        labels:
+          environment: production

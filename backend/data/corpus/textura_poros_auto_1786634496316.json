@@ -1,0 +1,126 @@
+[
+  {
+    "chunk_id": "textura-poros-glicacion-enzimatica-001",
+    "title": "La glicación enzimática frente a la no enzimática en la elasticidad del ostium",
+    "content": "La integridad estructural del ostium folicular depende críticamente de la calidad de su matriz extracelular (MEC). Mientras que la glicación no enzimática (reacción de Maillard) es un proceso bien documentado que genera AGEs (productos finales de glicación avanzada) rígidos y poco elásticos, la glicación enzimática —específicamente a través de la acción de transglutaminasas— juega un papel fisiológico en la estabilización de la arquitectura del poro. En la piel con poros dilatados, observamos un desequilibrio: una acumulación excesiva de AGEs en el colágeno tipo I y III periporo reduce la capacidad de retracción elástica tras la secreción sebácea. La literatura en Journal of Dermatological Science sugiere que la inhibición de la glicación no enzimática, mediante agentes antiglicantes, podría preservar la elasticidad periporo, permitiendo que el ostium mantenga su diámetro funcional sin estiramiento permanente. Este proceso es vital en pacientes con alta ingesta de azúcares refinados, donde el microambiente folicular se vuelve propenso a una rigidez que impide el cierre natural del poro tras el ciclo de secreción.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(23)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:21:19.041Z"
+  },
+  {
+    "chunk_id": "textura-poros-proteasoma-003",
+    "title": "La eficiencia del proteasoma en la textura del poro",
+    "content": "La resiliencia del poro depende de la renovación proteica constante en la unidad pilosebácea. El sistema ubiquitina-proteasoma es responsable de degradar proteínas dañadas o mal plegadas dentro de los sebocitos y los queratinocitos foliculares. A medida que la piel envejece o se expone a factores ambientales como la radiación UV o la polución, la eficiencia de este sistema disminuye, provocando la acumulación de desechos intracelulares. Esta acumulación induce estrés en el retículo endoplasmático, lo que altera la composición del sebo y la estructura del ostium. Un estudio en The Journal of Investigative Dermatology destaca que la activación de la proteostasis no solo rejuvenece el queratinocito, sino que permite que el canal folicular mantenga su forma original sin ser distendido por detritos de proteínas oxidadas. Optimizar la actividad del proteasoma mediante activos tópicos es una estrategia avanzada para prevenir la apariencia de poros dilatados asociados a la senescencia celular y al agotamiento de los mecanismos de reparación cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00156-8",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-edad",
+        "textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:21:19.041Z"
+  },
+  {
+    "chunk_id": "textura-poros-sistema-endocannabinoide-006",
+    "title": "El sistema endocannabinoide cutáneo y la homeostasis del poro",
+    "content": "El sistema endocannabinoide (SEC) juega un papel regulador crucial en la fisiología de los sebocitos y la proliferación de los queratinocitos foliculares. Estudios recientes han demostrado que la activación de los receptores CB2 en la unidad pilosebácea puede ejercer efectos antiinflamatorios y reguladores de la lipogénesis, evitando la hiperplasia sebácea que frecuentemente dilata el ostium. Sin embargo, un SEC desregulado puede contribuir a una proliferación celular excesiva en el canal folicular, facilitando la retención de sebo. El uso de fitocannabinoides no psicotrópicos o moduladores de la degradación de endocannabinoides está siendo explorado como una estrategia para normalizar el tamaño del poro al reducir la inflamación subclínica que perpetúa su dilatación. La capacidad del SEC para modular la respuesta al estrés en la piel sugiere que este sistema es un mediador clave en la comunicación neuro-cutánea que determina si un poro se mantiene estrecho o se expande bajo presión inflamatoria o ambiental constante.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02015-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cannabidiol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "innovacion-tratamiento"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:21:19.041Z"
+  }
+]

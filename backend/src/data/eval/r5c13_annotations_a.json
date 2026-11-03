@@ -1,0 +1,1740 @@
+{
+  "phase": "FASE 2 — ANOTACIÓN CIEGA COMPLETA",
+  "generated_at": "2026-08-14T18:07:28.539Z",
+  "run": "A",
+  "note": "Anotación por CONTENIDO (título + contenido leído). El anotador no tuvo acceso a chunk_ids ni rankings.",
+  "queries": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Efecto del clima de Bogotá en la textura de la piel",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Clima de Bogotá + textura de piel: responde rutina para piel grasa en clima húmedo"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Ácido Capriloil Salicílico (LHA) y la descamación acumulativa en pieles reactivas",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "LHA para descamación: ingrediente útil para piel grasa, no específico de clima"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Maquillaje para eventos en piel con brotes activos: Estrategias de no-comedogenicidad",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Maquillaje para brotes: tangencial"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Quelación de metales pesados en la rutina urbana",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Quelación de metales: contexto urbano pero no responde rutina"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Altitud y poros: adaptación cutánea en Bogotá y su impacto en la textura",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Altitud y poros en Bogotá: adaptación cutánea directa a la intención"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Gestión de la osmolaridad del estrato córneo en condiciones de baja humedad",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Osmolaridad del estrato córneo: relacionado con clima/humedad"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Impacto de fármacos fotosensibilizantes y sistémicos en la percepción del subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Cambios en la percepción del subtono por atrofia dérmica y senescencia",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "El efecto de la iluminación del punto de venta en el diagnóstico del subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Signos clínicos de anemia y su interferencia en la colorimetría de base",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "La relación entre el uso de filtros solares y la alteración del subtono percibido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Interferencia de la Hiperpigmentación Postinflamatoria (HPI) en el Diagnóstico del Subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_15",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Control de la reactividad neurogénica: Abordaje de la piel sensible mediante receptores TRPV1",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Reactividad neurogénica de piel sensible: contexto, no selección de SPF"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Mezcla de protector solar con maquillaje: La dilución del factor de protección",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Mezcla de protector con maquillaje: relacionado con uso de SPF"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Mascarillas magnéticas: ¿Extracción de impurezas o daño físico residual?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Mascarillas de hierro y magnetismo: ¿Limpieza profunda o daño físico?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Filtros solares: diferencia entre químicos y físicos en pieles reactivas",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Filtros solares químicos vs físicos en pieles reactivas: responde directamente"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Peelings químicos de uso domiciliario: límites de seguridad y riesgos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Peróxido de benzoilo: precauciones en la combinación de activos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Alfa-arbutina: alternativa a la hidroquinona y sus límites",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Alfa-arbutina: activo para melasma pero no es protector solar"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Aceites esenciales en cosmética: el riesgo de sensibilización alérgica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Urea: el activo dual según su concentración",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "La tríada lipídica: importancia de la proporción en la barrera cutánea",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Skin Flooding con Ácido Hialurónico: ¿Hidratación o deshidratación transepidérmica?",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Skin flooding con AH: técnica de aplicación directa"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Ácido Hialurónico de alto peso molecular y el riesgo de 'efecto esponja'",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "AH alto peso molecular y riesgo de efecto esponja: uso correcto"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Suplementación con Ácido Hialurónico ingerible: ¿Hidratación sistémica o digestión?",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Suplementación ingerible: no responde aplicación tópica"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Suplementación con Ácido Hialurónico oral: ¿Hidratación sistémica o placebo?",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Suplementación oral: tangencial"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Reología del Ácido Hialurónico: Selección Estratégica",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Reología del AH: selección estratégica, responde uso correcto"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Reología del Ácido Hialurónico: Selección Estratégica por Indicación",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Reología por indicación: relacionado"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Manejo clínico de la Queratosis Pilaris en el cuerpo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Abordaje de la hiperpigmentación postinflamatoria corporal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Mito vs Realidad: La exfoliación corporal excesiva",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "La fisiología de la celulitis: Perspectiva clínica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Fotoprotección corporal: Más allá del rostro",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Abordaje clínico de la Hidradenitis Supurativa axilar e inguinal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_15",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Modulación de la autofagia celular mediante péptidos señalizadores",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Autofagia con péptidos: mecanismo anti-edad pero no rutina nocturna"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Péptidos de Cobre vs. Ácido L-Ascórbico: La inestabilidad por quelación",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Péptidos cobre vs VitC: combinación, no rutina"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Interacción entre Péptidos de Cobre y Vitamina C: El riesgo de quelación",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Interacción péptidos cobre + VitC: tangencial"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Incompatibilidad química: Péptidos de Cobre y Vitamina C pura",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Incompatibilidad química: no responde rutina anti-edad"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Impacto de la desincronización del reloj biológico cutáneo en la función barrera",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Reloj biológico cutáneo y rutina nocturna: responde anti-edad nocturna"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Cronocosmética: ¿Sincronización real con el ritmo circadiano?",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Cronocosmética: sincronización con ritmo circadiano, anti-edad nocturna"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Peelings químicos de uso domiciliario: límites de seguridad y riesgos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Peróxido de benzoilo: precauciones en la combinación de activos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Alfa-arbutina: alternativa a la hidroquinona y sus límites",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Aceites esenciales en cosmética: el riesgo de sensibilización alérgica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Filtros solares: diferencia entre químicos y físicos en pieles reactivas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Urea: el activo dual según su concentración",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_15",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Gestión de la hiperpigmentación post-inflamatoria: Inhibición selectiva melanosómica",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Gestión HPI con inhibición: tratamiento directo"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Regulación de la melanogénesis en pieles con hiperpigmentación post-inflamatoria",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Regulación melanogénesis en HPI: responde tratamiento hiperpigmentación"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Regulación de la melanogénesis en hiperpigmentación post-inflamatoria",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Regulación melanogénesis en HPI: tratamiento directo"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Gestión de la hiperpigmentación post-inflamatoria mediante inhibición de la transferencia melanosómica",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Gestión HPI mediante inhibición: tratamiento directo"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Protocolo de cuidado básico para pieles con rosácea y sensibilidad extrema",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Estrategias de restauración lipídica para pieles con xerosis crónica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Optimización del cuidado en piel madura: Prevención del fotoenvejecimiento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Gestión estratégica de la zona T y zonas periféricas en pieles mixtas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Mito vs. Realidad: La piel sensible como diagnóstico clínico",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Impacto de la exposición intermitente y epigenética en pieles jóvenes",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Interacción entre Péptidos de Cobre y Vitamina C",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Péptidos cobre + VitC: interacción con VitC pero no niacinamida"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Interacción química: Quelantes y la estabilidad de la Vitamina C",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Quelantes y estabilidad VitC: contexto de formulación"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Niacinamida y pH ácido: Riesgo de eritema inducido",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Niacinamida y pH ácido (VitC): responde combinación directa"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Niacinamida: El riesgo de hidrólisis y formación de ácido nicotínico",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Niacinamida hidrólisis y ácido nicotínico: riesgo de combinación"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Peelings químicos de uso domiciliario: límites de seguridad y riesgos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Peróxido de benzoilo: precauciones en la combinación de activos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Alfa-arbutina: alternativa a la hidroquinona y sus límites",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Aceites esenciales en cosmética: el riesgo de sensibilización alérgica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Filtros solares: diferencia entre químicos y físicos en pieles reactivas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Urea: el activo dual según su concentración",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Diferenciación clínica entre piel seca y piel deshidratada",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Piel seca vs deshidratada: contexto de tipo de piel"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "El pH de los limpiadores como determinante del microbioma",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "pH de limpiadores y microbioma: responde selección de limpiador"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Estrategias de preservación del microbioma cutáneo en pieles reactivas",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Preservación microbioma en piel reactiva: complementa limpiador"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Protocolo de cuidado básico para pieles con rosácea y sensibilidad extrema",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Estrategias de restauración lipídica para pieles con xerosis crónica",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Restauración lipídica en xerosis: no es limpiador"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Optimización del cuidado en piel madura: Prevención del fotoenvejecimiento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Gestión estratégica de la zona T y zonas periféricas en pieles mixtas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Impacto de la exposición intermitente y epigenética en pieles jóvenes",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Cronobiología cutánea: Optimización de rutinas según ritmos circadianos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Espectroscopía de Raman de Superficie (SERS) para la Detección de Proteínas de Estrés en el Tallo",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "SERS para detectar daño proteico: diagnóstico de daño"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Viscoelasticidad capilar y su rol en la retención de pigmentos",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Viscoelasticidad: propiedad, no tratamiento"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "pH en integridad de cutícula durante tinte: proceso químico que daña cabello"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Metales en cabello y decoloración: relacionado con daño por decoloración"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "La cinética de oxidación: ¿Por qué el tiempo de pose es sagrado?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Pigmentos directos vs. oxidativos: Diferencias en la seguridad cutánea",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Protección de la barrera cutánea durante el servicio de coloración",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Protección barrera cuero cabelludo: contexto de servicio"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Impacto de fármacos fotosensibilizantes y sistémicos en la percepción del subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Cambios en la percepción del subtono por atrofia dérmica y senescencia",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "El efecto de la iluminación del punto de venta en el diagnóstico del subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Aceite de romero y alopecia: ¿Alternativa real al minoxidil?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Sunscreen Contouring: El peligro de la fotoprotección selectiva",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Ice Facials: ¿Desinflamación o riesgo de paniculitis por frío?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Microneedling casero: El peligro de la autoinoculación y la infección",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Crema hidratante con SPF: ¿Suficiente protección?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Yoga Facial: ¿Rejuvenecimiento muscular o riesgo de hipercinesia?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Homeostasis del cuero cabelludo post-coloración",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Homeostasis del cuero cabelludo: relacionado con salud del cuero"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Impacto del tinte en la microbiota del cuero cabelludo",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Tinte y microbiota: no es champú"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Impacto de la alcalinidad residual en la diversidad del microbioma del cuero cabelludo",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Alcalinidad y microbiota: no champú para graso"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Impacto de la disbiosis inducida por alcalinizantes en la microbiota del cuero cabelludo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "La cinética de oxidación: ¿Por qué el tiempo de pose es sagrado?",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Pigmentos directos vs. oxidativos: Diferencias en la seguridad cutánea",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Protección de la barrera cutánea durante el servicio de coloración",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Impacto de fármacos fotosensibilizantes y sistémicos en la percepción del subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Cambios en la percepción del subtono por atrofia dérmica y senescencia",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "El efecto de la iluminación del punto de venta en el diagnóstico del subtono",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Monitoreo de la hidratación profunda mediante espectroscopía de bioimpedancia",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Bioimpedancia multifrecuencia: Evaluación de hidratación profunda",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Urea: El umbral de seguridad entre hidratación y queratolisis",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Urea umbral hidratación/queratolisis: activo hidratante"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "La tendencia del 'Face-Basting': ¿Hidratación profunda o riesgo de oclusión folicular?",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Face-basting: tendencia, no comparativa"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Mecanismos de hidratación: oclusivos vs. humectantes",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Mecanismos oclusivos vs humectantes: responde hidratación profunda"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Hidrofaciales: Más allá de la Limpieza Convencional",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Hidrofaciales: tratamiento de hidratación profesional"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Mecanismos de hidratación: Diferenciación entre oclusivos y humectantes",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Diferenciación oclusivos/humectantes: hidratación directa"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Manejo clínico de la Queratosis Pilaris en el cuerpo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Abordaje de la hiperpigmentación postinflamatoria corporal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Mito vs Realidad: La exfoliación corporal excesiva",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "La fisiología de la celulitis: Perspectiva clínica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Fotoprotección corporal: Más allá del rostro",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "Abordaje clínico de la Hidradenitis Supurativa axilar e inguinal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_15",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_16",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Microblading y envejecimiento cutáneo: cambios en la arquitectura de la ceja",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Microblading y envejecimiento: responde parcialmente qué es"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Cicatrización post-microblading: relacionado con el procedimiento"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Fotoprotección en longevidad: tangencial a duración"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Dermatitis de contacto alérgica a los pigmentos: mecanismos y manejo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Consideraciones anatómicas: vascularización y riesgo de hematomas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Mecanismos físicos del efecto Tyndall en microblading",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Dinámica de la matriz extracelular y el efecto Tyndall en microblading",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Dermatitis de contacto alérgica a los pigmentos: mecanismos y manejo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Consideraciones anatómicas: vascularización y riesgo de hematomas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Fundamentos del visajismo: la proporción áurea en el diseño de cejas",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Visajismo proporción áurea: base del diseño de cejas"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Dermatitis de contacto alérgica a los pigmentos: mecanismos y manejo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Consideraciones anatómicas: vascularización y riesgo de hematomas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Influencia de la dinámica muscular orbicular en la simetría del diseño de cejas",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Dinámica muscular orbicular y simetría: responde corrección de asimetría"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Dinámica muscular facial y su efecto en la simetría del diseño",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Dinámica muscular facial y simetría del diseño: corrección directa"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Sesgos cognitivos en la evaluación del diseño de cejas",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Sesgos cognitivos en evaluación de diseño: contexto"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Adaptación del diseño en cejas con ptosis palpebral",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Adaptación del diseño en ptosis palpebral: corrección de asimetría"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Evaluación de la dispersión de luz en el tejido dérmico para la selección de pigmentos",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "El fenómeno de metamerismo en la selección de pigmentos bajo iluminación LED",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Dermatitis de contacto alérgica a los pigmentos: mecanismos y manejo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Consideraciones anatómicas: vascularización y riesgo de hematomas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_15",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Fisiología de cicatrización post-microblading: cuidados directos"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Fotoprotección estratégica: más allá del FPS en el post-microblading",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Fotoprotección estratégica post-microblading: cuidado directo"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Variabilidad glucémica y su efecto en la cascada de cicatrización post-microblading",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Variabilidad glucémica y cicatrización: factor que afecta cuidados"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Interacción entre la microbiota ciliar y el proceso de curación post-microblading",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Microbiota ciliar y curación post-microblading: cuidado directo"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Dermatitis de contacto alérgica a los pigmentos: mecanismos y manejo",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Consideraciones anatómicas: vascularización y riesgo de hematomas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Protocolos de desinfección y bioseguridad en el consultorio",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Piel seborreica: contraindicación técnica"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Microblading en pacientes diabéticos: riesgos metabólicos y dermatológicos",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Microblading en diabéticos: contraindicación directa"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Fisiología de la cicatrización post-microblading: qué es normal y qué no",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "Importancia crítica de la fotoprotección en la longevidad del pigmento",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Dermatitis de contacto alérgica a los pigmentos: mecanismos y manejo",
+          "label": "RELATED_BUT_NOT_ANSWERING",
+          "score": 1,
+          "reason": "Dermatitis a pigmentos: riesgo, no contraindicación absoluta"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Consideraciones anatómicas: vascularización y riesgo de hematomas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Dimensión psicológica: dismorfia y expectativas irreales",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "candidates": [
+        {
+          "anon_id": "candidate_01",
+          "title": "Interacción entre microblading y láser de eliminación de tatuajes: riesgos y consideraciones",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Microblading y láser de eliminación: remoción directa"
+        },
+        {
+          "anon_id": "candidate_02",
+          "title": "Electrólisis y daño matricial: riesgos de la remoción de cutícula con herramientas eléctricas",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Electrólisis y remoción: opción de remoción directa"
+        },
+        {
+          "anon_id": "candidate_03",
+          "title": "Láser Erbio-Glass 1550nm: Fototermólisis Fraccionada No Ablativa",
+          "label": "RELEVANT",
+          "score": 3,
+          "reason": "Láser Erbio-Glass: tecnología de remoción"
+        },
+        {
+          "anon_id": "candidate_04",
+          "title": "Mecanismos físico-químicos del efecto Tyndall en microblading mal ejecutado",
+          "label": "PARTIALLY_RELEVANT",
+          "score": 2,
+          "reason": "Tyndall en microblading mal ejecutado: contexto de remoción"
+        },
+        {
+          "anon_id": "candidate_05",
+          "title": "El reto de la piel seborreica: por qué el microblading no es la técnica ideal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_06",
+          "title": "Microblading y enfermedades autoinmunes: consideraciones de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_07",
+          "title": "Onicólisis traumática: cuando el desprendimiento de la uña no es infección",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_08",
+          "title": "Leuconiquia punctata: mitos sobre deficiencias y realidad traumática",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_09",
+          "title": "Granuloma piógeno: una complicación por trauma en el pliegue ungueal",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_10",
+          "title": "Hiperqueratosis subungueal y el riesgo de la limpieza mecánica",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_11",
+          "title": "Onicocriptosis (uña encarnada): por qué no tratarla en cabina",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_12",
+          "title": "Onicofagia severa y sus secuelas: más allá de la estética",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_13",
+          "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_14",
+          "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        },
+        {
+          "anon_id": "candidate_15",
+          "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+          "label": "NOT_RELEVANT",
+          "score": 0,
+          "reason": "Sin relación semántica suficiente con la intención de la query"
+        }
+      ]
+    }
+  ]
+}

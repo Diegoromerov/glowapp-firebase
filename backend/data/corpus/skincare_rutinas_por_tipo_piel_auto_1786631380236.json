@@ -1,0 +1,170 @@
+[
+  {
+    "chunk_id": "skincare-disrupcion-glicocalix-001",
+    "title": "Impacto de la degradación del glicocálix endotelial en la perfusión dérmica",
+    "content": "El glicocálix endotelial es una estructura de proteoglicanos y glicosaminoglicanos que recubre el interior de los capilares cutáneos. En el contexto de la dermatología clínica, su degradación por estrés oxidativo, inflamación sistémica o exposición crónica a radiación UV altera la microcirculación, disminuyendo la oxigenación de la dermis profunda. Estudios publicados en PubMed sugieren que la pérdida de este recubrimiento reduce la capacidad de los nutrientes para alcanzar los fibroblastos, acelerando la laxitud tisular. Para optimizar la rutina, es fundamental integrar activos que protejan la integridad endotelial y reduzcan la respuesta inflamatoria mediada por citoquinas. La protección contra el exposoma, incluyendo el uso de antioxidantes tópicos y quelantes de metales pesados, no solo protege la epidermis, sino que preserva la dinámica del lecho vascular, garantizando una entrega eficiente de metabolitos necesarios para la síntesis de colágeno y elastina. La intervención clínica debe enfocarse en mantener la homeostasis de la matriz extracelular para prevenir la senescencia vascular prematura.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura",
+        "desvitalizada"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microcirculacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:29:23.588Z"
+  },
+  {
+    "chunk_id": "skincare-metilacion-adn-barrera-002",
+    "title": "Modulación epigenética: Metilación del ADN y resiliencia de la barrera",
+    "content": "La metilación del ADN es un mecanismo epigenético clave que regula la expresión de genes implicados en la diferenciación de queratinocitos y la síntesis de proteínas de barrera como la filagrina y la loricrina. Alteraciones en este proceso, inducidas por factores ambientales como la polución (partículas PM2.5) y el estrés psicológico, pueden silenciar genes protectores, dejando a la piel vulnerable a la deshidratación y a la penetración de alérgenos. Investigaciones en la revista 'Journal of Investigative Dermatology' indican que ciertos activos tópicos, como los extractos botánicos ricos en polifenoles, pueden modular la maquinaria enzimática de metilación, favoreciendo un perfil de expresión génica más resiliente. La integración de estos ingredientes en la rutina de cuidado no solo busca la hidratación inmediata, sino la reprogramación de la capacidad de respuesta de la piel ante estímulos estresantes. Entender este eje permite diseñar regímenes que no solo tratan síntomas, sino que refuerzan la arquitectura molecular de la barrera cutánea a largo plazo, mitigando el impacto del envejecimiento epigenético.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polifenoles",
+        "epigeneticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "epigenetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:29:23.588Z"
+  },
+  {
+    "chunk_id": "skincare-microarns-homeostasis-005",
+    "title": "MicroARNs en la rutina tópica: Regulación epigenética epidérmica",
+    "content": "Los microARNs (miRNAs) son moléculas pequeñas de ARN no codificante que actúan como reguladores maestros de la expresión génica post-transcripcional. En la piel, ciertos miRNAs controlan la proliferación de queratinocitos, la diferenciación y la respuesta inflamatoria. La investigación dermatológica actual está explorando cómo la entrega tópica de moduladores de miRNAs puede corregir desequilibrios en pieles con dermatitis atópica o psoriasis, donde el control de la proliferación celular está alterado. A diferencia de los activos tradicionales que actúan sobre proteínas o lípidos, esta tecnología busca influir en el 'software' de las células cutáneas. Aunque aún se encuentra en etapas de desarrollo clínico avanzado, la comprensión de estos mecanismos permite a los dermatólogos diseñar protocolos más específicos para pieles con patologías crónicas. La aplicación de estos compuestos requiere un sistema de entrega avanzado (liposomas, nanocarriers) para asegurar la penetración efectiva. Es una vía prometedora para restaurar la homeostasis en pieles que han perdido su capacidad natural de autorregulación debido a factores genéticos o ambientales persistentes.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL - Indian Association of Dermatologists",
+        "url": "https://iadvl.org/journal-of-dermatology/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopica",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tecnologia-rn"
+      ],
+      "contraindications": [
+        "piel-con-heridas-abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "innovacion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:29:23.588Z"
+  },
+  {
+    "chunk_id": "skincare-homeostasis-ionica-006",
+    "title": "Homeostasis de los gradientes iónicos en la diferenciación epidérmica",
+    "content": "El gradiente iónico de calcio y potasio en la epidermis es fundamental para la correcta diferenciación de los queratinocitos y la formación de la barrera física. El calcio, en particular, aumenta desde la capa basal hacia las capas superiores, actuando como una señal para la cornificación. La disrupción de este gradiente, causada por limpiadores con pH alcalino o ambientes de baja humedad, compromete la cohesión del estrato córneo, facilitando la pérdida de agua transepidérmica (TEWL). La rutina clínica debe enfocarse en mantener este equilibrio iónico utilizando limpiadores con pH fisiológico y humectantes que contengan electrolitos esenciales. La restauración del gradiente iónico no solo mejora la hidratación, sino que previene la entrada de patógenos y alérgenos, estabilizando el microbioma residente. Estudios en dermatología experimental demuestran que una barrera con gradientes iónicos intactos es significativamente más resistente al daño mecánico y químico. Este abordaje es esencial para pacientes con pieles reactivas o condiciones de xerosis persistente, donde el daño de la barrera es el factor etiológico principal.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD - American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "electrolitos",
+        "humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:29:23.588Z"
+  }
+]

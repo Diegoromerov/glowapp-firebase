@@ -1,0 +1,234 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-fotobiomodulacion-mitocondrial-001",
+    "title": "Dinámica de la Fotobiomodulación en la Citocromo C Oxidasa Folicular",
+    "content": "La fotobiomodulación (LPT) de bajo nivel actúa mediante la absorción de fotones por la enzima citocromo c oxidasa (CCO) dentro de las mitocondrias de las células de la papila dérmica. Este proceso incrementa la síntesis de ATP, facilitando la transición del folículo desde la fase telógena hacia la fase anágena. Estudios publicados en el Journal of Cosmetic Dermatology subrayan que la modulación de los niveles de óxido nítrico y el aumento del flujo sanguíneo perifolicular son los principales mecanismos de acción. En la práctica clínica, la dosimetría es crítica: una potencia excesiva puede inducir una respuesta inhibitoria por estrés oxidativo, mientras que una dosis optimizada estimula la proliferación de células madre foliculares. La evaluación del potencial de membrana mitocondrial mediante sondas fluorescentes en biopsias de cuero cabelludo ha permitido mapear la respuesta individual a la terapia, sugiriendo que la eficacia es dependiente del estado metabólico basal del folículo. Este enfoque terapéutico debe ser considerado como un complemento a los tratamientos farmacológicos tradicionales en la alopecia androgenética, dado que no altera los niveles hormonales sistémicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31513302/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tricoscopia_terapeutica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:36:28.012Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-metabolitos-002",
+    "title": "Impacto de los Ácidos Grasos de Cadena Corta en la Inflamación Folicular",
+    "content": "La microbiota del cuero cabelludo no solo se compone de especies bacterianas y fúngicas, sino que su actividad metabólica es un determinante clave en la salud del folículo. Los ácidos grasos de cadena corta (AGCC), como el butirato y el propionato, producidos por comensales como Cutibacterium acnes, actúan como reguladores epigenéticos y moduladores de la respuesta inmune local. La investigación reciente indica que un desequilibrio en la producción de estos metabolitos altera la integridad de la barrera cutánea folicular, facilitando la penetración de alérgenos y contaminantes urbanos. El diagnóstico mediante metabolómica superficial permite identificar perfiles de riesgo en pacientes con dermatitis seborreica recurrente y alopecias inflamatorias. La restauración del ecosistema mediante prebióticos tópicos busca optimizar la producción de estos AGCC, promoviendo un ambiente menos pro-inflamatorio y reduciendo la activación de los linfocitos T residentes. Es fundamental integrar el análisis de la composición lipídica y metabólica del cuero cabelludo para personalizar los protocolos de cuidado capilar en entornos urbanos con alta carga de polución.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_scalp"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:36:28.012Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senescencia-muscular-003",
+    "title": "Sarcopenia del Músculo Erector del Pelo y Disfunción de la Angulación Folicular",
+    "content": "El músculo erector del pelo (MEP) desempeña un papel crítico en la arquitectura del folículo y en la estabilidad de la vaina radicular. Con el envejecimiento folicular, ocurre un proceso análogo a la sarcopenia sistémica, donde el MEP experimenta atrofia, pérdida de contractilidad y acumulación de tejido fibrótico. Esta disfunción resulta en una pérdida de la angulación normal del folículo, lo que se traduce clínicamente en un cabello de aspecto lacio, sin volumen y con una mayor vulnerabilidad al daño mecánico. La pérdida de la integridad del MEP afecta además la comunicación entre el nicho de células madre (bulge) y la papila dérmica, perturbando la señalización durante la fase anágena. El uso de elastografía de ondas de corte ha permitido cuantificar la rigidez del tejido perifolicular, revelando que la fibrosis del MEP es un marcador temprano de la miniaturización en la alopecia androgenética. El abordaje terapéutico debe enfocarse en la estimulación de la mecanotransducción y el mantenimiento de la elasticidad de los tejidos conectivos peri-foliculares para prevenir la progresión de la miniaturización.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlmnih.gov/34217342/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:36:28.012Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-histeresis-006",
+    "title": "Histéresis Elástica y Fatiga de la Cutícula",
+    "content": "La histéresis elástica es una propiedad biomecánica que define la capacidad de un material para disipar energía bajo carga cíclica. En la cutícula capilar, la histéresis es un marcador fundamental de la integridad estructural y la salud. Cuando la cutícula se somete a fricciones mecánicas, procesos químicos o radiación UV, su estructura polimérica se debilita, aumentando el valor de histéresis y provocando una fatiga estructural prematura. El diagnóstico de esta fatiga permite identificar el daño capilar antes de que ocurra la ruptura del tallo. La microscopía de fuerza atómica (AFM) se ha convertido en el estándar de oro para medir estas propiedades a nanoescala. En la práctica clínica diaria, el análisis de la resistencia a la fricción mediante sensores de superficie proporciona una medida indirecta pero altamente correlacionada con la salud de la cutícula. Entender la histéresis permite a los especialistas recomendar tratamientos específicos, como selladores lipídicos o polímeros biomiméticos, que restauran la capacidad de disipación de energía y previenen la rotura de la fibra.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:36:28.012Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-osteopontina-007",
+    "title": "Osteopontina: Biomarcador de Fibrosis en Alopecias Cicatriciales",
+    "content": "La osteopontina (OPN) es una glicoproteína de la matriz extracelular que actúa como un regulador clave en la inflamación y la fibrosis tisular. En el contexto de las alopecias cicatriciales, como el liquen plano pilar o la alopecia frontal fibrosante, los niveles de osteopontina en el cuero cabelludo se encuentran significativamente elevados, correlacionándose con la progresión de la fibrosis perifolicular. La detección de OPN mediante técnicas inmunohistoquímicas o análisis de fluidos intersticiales representa un avance significativo en el diagnóstico temprano de estas patologías, donde la pérdida folicular suele ser irreversible una vez establecida la cicatrización. La monitorización de la osteopontina permite evaluar la eficacia de los tratamientos antifibróticos y antiinflamatorios en tiempo real. Además, estudios recientes sugieren que la modulación de la señalización mediada por OPN podría prevenir la atrofia del nicho folicular, abriendo nuevas vías terapéuticas para frenar el proceso cicatricial antes de que se produzca la atrofia total del bulbo piloso y la pérdida permanente del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlmnih.gov/33829102/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:36:28.012Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-iontoforesis-009",
+    "title": "Iontoforesis Diagnóstica de la Barrera Folicular",
+    "content": "La iontoforesis diagnóstica es una herramienta emergente para evaluar la permeabilidad de la barrera cutánea en el ostium folicular. Al medir la conductancia iónica mediante la aplicación de una corriente eléctrica de baja intensidad, es posible determinar el estado de la barrera cutánea en zonas específicas con alopecia. Una conductancia elevada es indicativa de una disrupción de la barrera, lo que correlaciona con una mayor susceptibilidad a la inflamación por agentes externos y una menor eficacia de los tratamientos tópicos debido a la pérdida de control en la absorción. Esta técnica permite una evaluación cuantitativa del daño en el ostium, facilitando la personalización de las formulaciones terapéuticas para asegurar la biodisponibilidad óptima de los activos. La iontoforesis no solo sirve para el diagnóstico, sino que también permite la administración controlada de sustancias, optimizando el tiempo de tratamiento y la respuesta clínica. Es una herramienta esencial en la dermatología moderna para el manejo de alopecias complejas donde la integridad de la barrera cutánea es el eslabón débil del proceso de regeneración folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:36:28.012Z"
+  }
+]

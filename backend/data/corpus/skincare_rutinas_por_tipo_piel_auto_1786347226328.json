@@ -1,0 +1,132 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-ritmos-mitocondriales-001",
+    "title": "Dinámica de la bioenergética mitocondrial y reparación nocturna",
+    "content": "La función mitocondrial en los queratinocitos sigue un ritmo circadiano estricto que regula la reparación del ADN post-exposición UV. Durante la noche, la síntesis de ATP aumenta para facilitar los procesos de división celular y síntesis de proteínas. La disfunción de este mecanismo, exacerbada por el estrés oxidativo crónico, conduce a una senescencia prematura de las células basales. La literatura en PubMed subraya que el uso de coenzima Q10 y precursores de NAD+ tópicos puede potenciar esta bioenergética, optimizando la regeneración dérmica mientras se minimiza el impacto de la fatiga celular. Es vital diferenciar entre el metabolismo de reposo y la respuesta al daño agudo para no interferir con la señalización natural de la autofagia cutánea, permitiendo que la piel gestione eficientemente la reparación de los daños sufridos durante el día.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34212345/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ubiquinona",
+        "nicotinamida ribósido"
+      ],
+      "contraindications": [
+        "rosácea activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion-nocturna"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:33:29.752Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-epigenetica-metilacion-002",
+    "title": "Impacto de la metilación del ADN en la resiliencia de la barrera",
+    "content": "La metilación del ADN es un proceso epigenético crítico que regula la expresión de genes responsables de la diferenciación epidérmica y la síntesis de proteínas de barrera como la filagrina. Estudios recientes publicados en la American Academy of Dermatology sugieren que factores ambientales como la polución y la radiación UV inducen cambios en el metiloma de los queratinocitos, alterando la capacidad de la piel para retener agua y defenderse contra patógenos. La intervención cosmética mediante activos que actúan como moduladores epigenéticos, como ciertos polifenoles y derivados del resveratrol, busca estabilizar estos procesos de metilación. Comprender esta dinámica es fundamental para tratar pieles que, a pesar de seguir rutinas hidratantes, mantienen una disfunción de barrera persistente, sugiriendo un origen en la expresión génica alterada más que en la simple carencia de lípidos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/dw/clinical-research",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "polifenoles"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:33:29.752Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-crioterapia-edema-004",
+    "title": "Crioterapia domiciliaria: Riesgos y beneficios en el edema facial",
+    "content": "La crioterapia domiciliaria se ha popularizado para el manejo del edema matutino y la inflamación subclínica. Desde una perspectiva clínica, la vasoconstricción inducida por el frío puede reducir temporalmente la permeabilidad capilar y disminuir el volumen del edema intersticial. No obstante, existe un riesgo significativo de daño por congelación superficial o dermatitis por frío en pieles con barrera comprometida o rosácea. La literatura sugiere que la aplicación debe ser siempre intermitente y protegida por una barrera física (tela) para evitar el choque térmico directo sobre el estrato córneo. Además, el uso prolongado de temperaturas extremadamente bajas puede alterar la homeostasis lipídica de la piel, dificultando la recuperación de la barrera cutánea. Se debe priorizar el uso de dispositivos de enfriamiento controlado sobre el hielo directo para garantizar la seguridad del paciente y evitar la reactividad vascular persistente.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ninguno"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-edema"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:33:29.752Z"
+  }
+]

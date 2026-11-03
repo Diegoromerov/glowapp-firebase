@@ -1,0 +1,219 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-001",
+    "title": "Estabilidad de emulsiones cosméticas en entornos de microgravedad",
+    "content": "La aplicación de maquillaje en entornos de microgravedad, como en estaciones espaciales o vuelos parabólicos, presenta desafíos únicos para la estabilidad de las emulsiones. En ausencia de gravedad, la sedimentación de partículas (Ley de Stokes) se ralentiza, pero la coalescencia de gotas y la floculación pueden acelerarse debido a cambios en la dinámica de fluidos. Los productos cosméticos deben formularse con tensioactivos de alto peso molecular que mantengan la estabilidad interfacial sin depender de la densidad diferencial. Un riesgo clínico es la dispersión de partículas volátiles en el aire, que pueden ser inhaladas, causando irritación en las vías respiratorias superiores o conjuntivitis mecánica. Se recomienda el uso de productos en formato sólido o bálsamos anhidros, que minimizan la dispersión de partículas finas y evitan la migración de pigmentos hacia el globo ocular, protegiendo así la integridad de la barrera conjuntival en condiciones de confinamiento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp/elements/hxc",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cera de abejas",
+        "polímeros sintéticos"
+      ],
+      "contraindications": [
+        "productos en spray",
+        "polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:55:19.831Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-ionizacion-positiva-002",
+    "title": "Adherencia de partículas PM2.5 en ambientes de alta ionización positiva",
+    "content": "En entornos con alta ionización positiva, como centros de datos o áreas con maquinaria industrial de alto voltaje, las partículas cosméticas pueden adquirir una carga electrostática que favorece la adherencia de contaminantes atmosféricos (PM2.5). Esta interacción aumenta la tasa de depósito de polución sobre la superficie cutánea, incrementando el riesgo de estrés oxidativo y la liberación de citoquinas proinflamatorias. El maquillaje debe actuar como una barrera dieléctrica para mitigar este efecto. El uso de imprimaciones (primers) con polímeros conductores o agentes antiestáticos ayuda a neutralizar la carga superficial. Clínicamente, es crucial evitar texturas pegajosas que actúen como un 'imán' para estas partículas. La limpieza post-evento debe ser exhaustiva, utilizando limpiadores con pH fisiológico que eliminen las partículas adheridas sin comprometer la barrera cutánea, previniendo así la dermatitis de contacto irritativa que suele aparecer tras exposiciones prolongadas a estos ambientes técnicos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34214567/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas volátiles",
+        "polímeros antiestáticos"
+      ],
+      "contraindications": [
+        "polvos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:55:19.831Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-crioterapia-003",
+    "title": "Maquillaje en ambientes de crioterapia y exposición a frío extremo",
+    "content": "La exposición a temperaturas criogénicas altera drásticamente la viscosidad de las formulaciones cosméticas. Durante eventos que involucran crioterapia o ambientes de frío extremo, las emulsiones agua-en-aceite pueden sufrir una ruptura de fase, provocando la cristalización de los componentes acuosos. Esto no solo altera el acabado estético, sino que puede generar micro-fisuras en la película de maquillaje que exponen la piel a un enfriamiento desigual y una mayor deshidratación transepidérmica. Se recomienda el uso de cosméticos con alto contenido en lípidos oclusivos y ceras con bajo punto de fusión, que mantienen su flexibilidad incluso a temperaturas cercanas a 0°C. Es fundamental evitar productos con alto contenido en alcohol, ya que su rápida evaporación en condiciones de baja humedad induciría una vasoconstricción periférica severa, exacerbando el riesgo de eritema por frío. La aplicación de un bálsamo protector previo es esencial para evitar la xerosis inducida por el choque térmico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00567-8",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "escualano"
+      ],
+      "contraindications": [
+        "alcohol denat"
+      ],
+      "season": [
+        "invierno"
+      ],
+      "applicable_modules": [
+        "proteccion_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:55:19.831Z"
+  },
+  {
+    "chunk_id": "maquillaje-realidad-virtual-fatiga-004",
+    "title": "Maquillaje en entornos de realidad virtual: Gestión de la oclusión",
+    "content": "El uso prolongado de visores de realidad virtual (VR) implica una oclusión mecánica constante sobre la zona periorbitaria y el puente nasal. Esta presión, combinada con la acumulación de calor y sudor, crea un microclima de alta humedad que favorece la proliferación de microorganismos y aumenta la permeabilidad cutánea. El maquillaje utilizado en estas sesiones debe ser altamente resistente a la transferencia y no comedogénico. Se recomienda evitar bases de maquillaje densas en áreas de contacto con el visor, prefiriendo selladores de fijación técnica que permitan la transpiración. La oclusión prolongada puede derivar en acné mecánico o dermatitis perioral. Es vital realizar una limpieza profunda post-sesión utilizando soluciones micelares que respeten el microbioma, asegurando la eliminación de cualquier residuo que, bajo la presión del visor, pueda penetrar en los folículos pilosebáceos y desencadenar una respuesta inflamatoria subclínica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "graso",
+        "acneico"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "polímeros de alta adherencia"
+      ],
+      "contraindications": [
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevenccion_dermatitis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:55:19.831Z"
+  },
+  {
+    "chunk_id": "maquillaje-presion-hiperbarica-007",
+    "title": "Maquillaje en cámaras hiperbáricas: Estabilidad y seguridad",
+    "content": "El uso de maquillaje en cámaras hiperbáricas, donde la presión atmosférica es significativamente superior a la normal, plantea riesgos de seguridad y estabilidad. Los productos que contienen componentes volátiles o disolventes de baja presión de vapor pueden sufrir desgasificación, lo que altera la estructura del producto. Más grave aún es el riesgo de inflamabilidad: en una atmósfera enriquecida con oxígeno, cualquier residuo cosmético inflamable (como ciertos aerosoles o aceites esenciales altamente volátiles) representa un peligro de incendio. Clínicamente, la alta presión puede forzar la penetración de ingredientes cosméticos a través de los poros, aumentando el riesgo de dermatitis por contacto o sensibilización ante ingredientes que, en condiciones normales, serían inertes. Se desaconseja totalmente el uso de maquillaje en cámaras hiperbáricas de uso clínico o recreativo. Si es estrictamente necesario, deben utilizarse únicamente formulaciones certificadas como seguras para entornos de oxígeno hiperbárico, libres de aceites minerales y solventes inflamables.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "aerosoles",
+        "aceites esenciales",
+        "solventes volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_paciente"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:55:19.831Z"
+  }
+]

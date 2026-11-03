@@ -1,0 +1,265 @@
+[
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386281392-1-5e98aa64-glucosido-de-ascorbilo-riesgos-de-degradacion-y-potencial-pr",
+    "title": "Glucósido de Ascorbilo: Riesgos de degradación y potencial pro-oxidante",
+    "content": "Aunque el glucósido de ascorbilo es valorado por su estabilidad superior frente al ácido L-ascórbico, su perfil de seguridad no es absoluto. La hidrólisis enzimática necesaria para liberar vitamina C activa en la dermis depende de la actividad de la alfa-glucosidasa cutánea, la cual puede verse alterada en condiciones de inflamación crónica o envejecimiento cutáneo. Existe un riesgo latente de acumulación de subproductos de degradación si el pH de la fórmula no se mantiene estrictamente en el rango de 5.0 a 6.0. Además, en presencia de metales traza (como hierro o cobre) en la superficie cutánea, el glucósido puede actuar como un agente pro-oxidante, induciendo estrés oxidativo en lugar de neutralizarlo. Es crucial evitar su combinación con quelantes de baja afinidad que puedan liberar iones metálicos durante la aplicación. La monitorización de la estabilidad en formulaciones con extractos botánicos es obligatoria para prevenir reacciones cruzadas que comprometan la integridad de la barrera cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Glucósido de Ascorbilo"
+      ],
+      "contraindications": [
+        "inflamación cutánea",
+        "presencia de metales traza"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulación"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:24:41.392Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386281392-2-9473dc27-poliglicerol-10-laurato-el-riesgo-de-irritacion-en-pieles-co",
+    "title": "Poliglicerol-10 Laurato: El riesgo de irritación en pieles con barrera comprometida",
+    "content": "El poliglicerol-10 laurato es un tensioactivo no iónico frecuentemente utilizado como solubilizante en formulaciones 'clean beauty'. A pesar de su reputación de suavidad, su estructura molecular permite la interacción con los lípidos del estrato córneo. En pieles con la función barrera alterada, como en casos de dermatitis atópica o rosácea, este ingrediente puede favorecer la penetración profunda de conservantes y fragancias, aumentando el riesgo de dermatitis de contacto irritativa. A diferencia de otros emulsionantes, su capacidad para deslipidizar parcialmente la capa protectora es acumulativa. Se desaconseja su uso en formulaciones leave-on destinadas a áreas con alta densidad de glándulas sebáceas si la formulación contiene otros potenciadores de penetración, ya que la sinergia puede desencadenar una respuesta inflamatoria subclínica. La evaluación de la tolerancia debe realizarse mediante parches de uso prolongado en pacientes con antecedentes de hipersensibilidad a tensioactivos etoxilados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/dermatology-world/2024/surfactants",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopic",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Poliglicerol-10 Laurato"
+      ],
+      "contraindications": [
+        "barrera cutánea comprometida",
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:24:41.392Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386281392-3-776e53cf-acido-ferulico-y-el-riesgo-de-sensibilizacion-por-fotoproduc",
+    "title": "Ácido Ferúlico y el riesgo de sensibilización por fotoproductos",
+    "content": "El ácido ferúlico es un potente antioxidante, pero su estabilidad es altamente dependiente de la matriz de formulación. Cuando se expone a radiación UV sin una protección adecuada o en ausencia de un sistema estabilizador robusto (como el uso de vitamina E y ácido ascórbico en proporciones específicas), el ácido ferúlico puede sufrir fotodegradación, generando radicales libres y productos de oxidación que poseen un potencial sensibilizante significativo. Este fenómeno es particularmente peligroso en pieles con hiperpigmentación post-inflamatoria, donde la aplicación de un producto degradado puede exacerbar la mancha en lugar de tratarla. Además, el ácido ferúlico tiene una solubilidad limitada, lo que a menudo obliga al uso de solventes como el alcohol denat o propilenglicol, que por sí mismos pueden causar irritación. Se recomienda verificar la integridad del color y el olor del producto, ya que cualquier viraje hacia tonos amarillentos indica una degradación que debe evitarse estrictamente en pieles reactivas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38500000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "hyperpigmented"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ácido Ferúlico"
+      ],
+      "contraindications": [
+        "hiperpigmentación post-inflamatoria",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:24:41.392Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386281393-4-102eb498-pantenol-y-la-formacion-de-comedones-en-pieles-con-acne-fung",
+    "title": "Pantenol y la formación de comedones en pieles con acné fúngico",
+    "content": "Aunque el pantenol (provitamina B5) es ampliamente reconocido por sus propiedades calmantes y regeneradoras, su perfil de seguridad debe ser reevaluado en pacientes con acné fúngico (foliculitis por Malassezia). El pantenol, al ser un alcohol derivado, puede actuar como sustrato para ciertas levaduras lipofílicas en condiciones de alta oclusión o humedad. En pieles con una barrera cutánea alterada y una microbiota desequilibrada, la aplicación de altas concentraciones de pantenol en vehículos oclusivos (como cremas ricas en ceras o siliconas) puede promover la proliferación de Malassezia, exacerbando las pápulas y pústulas características de esta condición. Es fundamental diferenciar entre la acción reparadora del ingrediente y su potencial para alterar el microambiente folicular. En pacientes con tendencia a la foliculitis, se recomienda preferir formulaciones en suero acuoso o geles ligeros, evitando el uso de pantenol en combinación con aceites vegetales que puedan ser metabolizados por el hongo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatology Times",
+        "url": "https://www.dermatologytimes.com/view/panthenol-acne-fungus",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneic",
+        "oily"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Pantenol"
+      ],
+      "contraindications": [
+        "acné fúngico",
+        "foliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatología"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:24:41.393Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386281393-5-2ea24e45-acido-succinico-el-riesgo-de-irritacion-por-ph-y-concentraci",
+    "title": "Ácido Succínico: El riesgo de irritación por pH y concentración",
+    "content": "El ácido succínico ha ganado popularidad como una alternativa más suave al ácido salicílico para el tratamiento del acné. Sin embargo, su eficacia y perfil de seguridad están intrínsecamente ligados a su capacidad de amortiguación (buffering) en la fórmula. Al ser un ácido dicarboxílico, su pKa permite una actividad biológica significativa, pero si el pH de la formulación cae por debajo de 4.0, el riesgo de irritación cutánea aumenta drásticamente, especialmente en pieles con rosácea o dermatitis seborreica. A diferencia de los AHAs, el ácido succínico tiene una capacidad de penetración más profunda debido a su menor peso molecular, lo que puede causar una sensación de ardor o eritema si se combina con otros activos exfoliantes. La falta de estudios a largo plazo sobre su impacto en el microbioma cutáneo sugiere precaución. Se debe evitar su uso en protocolos de exfoliación intensiva para prevenir el daño acumulativo en la barrera lipídica y la sensibilización nerviosa periférica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12900",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneic",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ácido Succínico"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis seborreica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:24:41.393Z"
+  },
+  {
+    "chunk_id": "ingredientes_activos_contraindicaciones-1786386281393-6-b0c7410c-dimetil-isosorbida-el-riesgo-de-penetracion-sistemica-de-con",
+    "title": "Dimetil Isosorbida: El riesgo de penetración sistémica de contaminantes",
+    "content": "La dimetil isosorbida (DMI) es un solvente de alta eficiencia utilizado para mejorar la penetración de activos como la hidroquinona o los retinoides. Su mecanismo de acción implica la alteración temporal de la estructura lipídica del estrato córneo. El riesgo clínico principal no reside en el ingrediente en sí, sino en su capacidad para transportar contaminantes, conservantes o subproductos de degradación presentes en la fórmula hacia las capas más profundas de la dermis y, potencialmente, al torrente sanguíneo. En pieles con barrera dañada, la DMI puede facilitar la absorción de sustancias que normalmente serían excluidas por la piel sana, aumentando el riesgo de toxicidad sistémica o respuestas alérgicas severas. Se desaconseja el uso de DMI en productos destinados a áreas extensas del cuerpo o en pieles con procesos inflamatorios activos (como eccema o psoriasis), donde la permeabilidad ya está aumentada. La pureza del grado cosmético de la DMI debe ser validada para asegurar la ausencia de impurezas residuales de síntesis.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Toxicology Reports",
+        "url": "https://www.sciencedirect.com/science/article/pii/S221475002400123X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Dimetil Isosorbida"
+      ],
+      "contraindications": [
+        "eccema",
+        "psoriasis",
+        "piel inflamada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "toxicología"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:24:41.393Z"
+  }
+]

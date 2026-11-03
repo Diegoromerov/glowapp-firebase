@@ -1,0 +1,249 @@
+[
+  {
+    "chunk_id": "textura-poros-glicolisis-anaerobica-001",
+    "title": "Glicolisis anaeróbica en el folículo: el impacto del metabolismo energético local",
+    "content": "La unidad pilosebácea, bajo condiciones de alta demanda metabólica o microambiente hipóxico, tiende a cambiar su vía de obtención de energía hacia la glicolisis anaeróbica. Este proceso incrementa la producción de lactato en el canal folicular, lo que altera el pH local y favorece la activación de metaloproteinasas (MMP). La acumulación de lactato no solo altera la cohesión de los queratinocitos en el ostium, sino que también estimula una respuesta inflamatoria de bajo grado que contribuye a la dilatación visible del poro. Estudios publicados en el Journal of Investigative Dermatology indican que la eficiencia metabólica del queratinocito folicular es un determinante directo de la integridad de la pared del poro. Cuando el metabolismo se ve comprometido, la resiliencia estructural disminuye, permitiendo que el ostium pierda su forma circular y adquiera una apariencia rugosa o dilatada. La optimización de la oxigenación folicular mediante la mejora de la microcirculación y el uso de antioxidantes específicos es fundamental para revertir esta tendencia y restaurar la arquitectura folicular normal.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_folicular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:26:50.792Z"
+  },
+  {
+    "chunk_id": "textura-poros-senescencia-inmunitaria-002",
+    "title": "Senescencia inmunitaria y el microambiente periporo",
+    "content": "La senescencia de las células inmunitarias residentes en la dermis periporo, particularmente los macrófagos y células dendríticas, altera la capacidad de remodelación de la matriz extracelular. A medida que estas células envejecen, adoptan un fenotipo secretor asociado a la senescencia (SASP) que libera citoquinas proinflamatorias como IL-6 y TNF-alfa. Estas moléculas degradan las fibras de colágeno y elastina que mantienen la estructura del ostium, provocando una pérdida de soporte mecánico. Según investigaciones en PubMed, este fenómeno no solo afecta la firmeza general de la piel, sino que se manifiesta específicamente como una dilatación persistente y una pérdida de la elasticidad en los bordes del poro. La modulación de este ambiente inflamatorio, mediante el uso de activos que promuevan la senolisis selectiva o la modulación de citoquinas, es una estrategia emergente en el tratamiento de la textura cutánea. Es vital comprender que el poro no es una estructura estática, sino un ecosistema dinámico influenciado por la senescencia celular sistémica y local.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:26:50.792Z"
+  },
+  {
+    "chunk_id": "textura-poros-estres-reticulo-004",
+    "title": "Estrés del retículo endoplasmático en sebocitos y poros",
+    "content": "El estrés del retículo endoplasmático (ER) en los sebocitos es un factor crítico en la patogénesis de la textura rugosa del poro. Cuando la carga lipídica excede la capacidad de procesamiento de la célula, se activa la respuesta de proteínas desplegadas (UPR), lo que altera la composición del sebo y la tasa de diferenciación sebocitaria. Este estrés no solo incrementa la secreción sebácea, sino que también promueve la liberación de mediadores inflamatorios que remodelan la matriz periporo de forma negativa. Según estudios publicados en revistas de dermatología experimental, el control del estrés del ER mediante la regulación de la dieta y el uso de activos como el zinc puede normalizar la función sebocitaria. Un sebocito que opera bajo estrés produce un sebo de mayor viscosidad y menor fluidez, lo que facilita la formación de micro-tapones que dilatan físicamente el canal folicular. La intervención clínica debe enfocarse en reducir la sobrecarga metabólica del sebocito para mejorar la textura superficial del ostium folicular a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "metabolismo_sebocito"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:26:50.792Z"
+  },
+  {
+    "chunk_id": "textura-poros-mecanotransduccion-005",
+    "title": "Mecanotransducción: la tensión facial y el poro",
+    "content": "La mecanotransducción es el proceso mediante el cual las células de la piel perciben y responden a fuerzas físicas externas, como la tensión facial constante o la gravedad. Los fibroblastos situados en la dermis periporo son particularmente sensibles a estas fuerzas; una tensión mecánica excesiva o sostenida puede inducir la diferenciación de fibroblastos en miofibroblastos, alterando la síntesis de colágeno y provocando una remodelación que favorece la dilatación del ostium. Este fenómeno es más pronunciado en áreas con alta movilidad muscular, como la zona T. La investigación clínica sugiere que el estiramiento dinámico, sumado a la pérdida de soporte elástico, crea un efecto de 'tracción' que mantiene el poro abierto. La aplicación de masajes faciales inadecuados o el uso de dispositivos de succión puede exacerbar este proceso si no se realiza bajo un protocolo correcto. El objetivo es minimizar la tensión mecánica sobre el folículo, permitiendo que la arquitectura periporo recupere su integridad estructural y reduciendo la visibilidad de los poros dilatados por tracción mecánica.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "succion_agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:26:50.792Z"
+  },
+  {
+    "chunk_id": "textura-poros-gradientes-calcio-008",
+    "title": "Gradientes de calcio y cohesión en el ostium",
+    "content": "El gradiente de calcio en la epidermis es esencial para la diferenciación celular y la formación de la barrera cutánea. En el ostium folicular, este gradiente regula la cohesión de los queratinocitos; una alteración en los niveles de calcio extracelular puede causar una descamación prematura o una queratinización anómala, lo que obstruye el poro y favorece su dilatación. La homeostasis del calcio está controlada por transportadores iónicos específicos que son sensibles al pH cutáneo y a la composición del sebo. Cuando el pH aumenta (se vuelve más alcalino), la disponibilidad de calcio libre se ve afectada, debilitando las uniones intercelulares (desmosomas) del canal. Esto no solo genera poros más visibles, sino que también facilita la colonización bacteriana. La aplicación de productos con un pH fisiológico y el uso de activos que ayuden a estabilizar el gradiente iónico son fundamentales para mantener la integridad del ostium folicular y prevenir la textura rugosa asociada a una cohesión celular deficiente en el canal.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "calcio",
+        "agentes_acidificantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisicoquimica_piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:26:50.792Z"
+  },
+  {
+    "chunk_id": "textura-poros-estres-oxidativo-sebo-009",
+    "title": "Estrés oxidativo del sebo: impacto en la señalización del poro",
+    "content": "El sebo no es solo una secreción lubricante; sufre procesos de peroxidación lipídica que generan subproductos tóxicos, como el escualeno oxidado. Estos compuestos actúan como moléculas de señalización que irritan el epitelio folicular y activan la respuesta inflamatoria de los queratinocitos. Esta inflamación subclínica constante es un motor principal de la dilatación folicular, ya que induce la liberación de enzimas que degradan la matriz extracelular circundante. La oxidación del sebo es particularmente problemática en ambientes con altos niveles de contaminación, como es el caso de Bogotá, donde la exposición a partículas PM2.5 acelera estos procesos. La protección contra el estrés oxidativo lipídico, mediante el uso de antioxidantes tópicos potentes (como vitamina C, E y ferúlico) y una limpieza adecuada que elimine los lípidos oxidados sin dañar la barrera, es la piedra angular para mejorar la textura de los poros. La prevención de la peroxidación es, por tanto, una estrategia terapéutica de alta eficacia para mantener el ostium folicular limpio y funcional.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_c",
+        "vitamina_e",
+        "acido_ferulico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:26:50.792Z"
+  }
+]

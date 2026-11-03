@@ -1,0 +1,263 @@
+[
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-002",
+    "title": "Dinámica de la barrera cutánea ante la deshidratación en microgravedad",
+    "content": "El entorno de microgravedad induce una redistribución de fluidos corporales hacia la parte superior del cuerpo, incluyendo el rostro, provocando edema facial y una alteración en la función barrera de la piel. La piel, bajo estas condiciones, experimenta una mayor pérdida de agua transepidérmica (TEWL) debido a la sequedad del aire en sistemas presurizados. La aplicación de maquillaje debe ser precedida por una preparación con humectantes oclusivos avanzados que no interfieran con la monitorización dermatológica. De acuerdo con investigaciones publicadas en Nature Microgravity, el estrés cutáneo en estas condiciones altera la producción de sebo, lo que requiere que el maquillaje sea no comedogénico y altamente estable para evitar la oclusión folicular exacerbada. La selección de productos con tecnología filmógena es vital para mantener la hidratación cutánea mientras se asegura que el producto no migre hacia los ojos o cavidades respiratorias en ausencia de gravedad constante.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Microgravity",
+        "url": "https://www.nature.com/npjmgrav/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "productos con alta carga de polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:06:04.277Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-003",
+    "title": "Protocolos de seguridad para maquillaje en cabinas presurizadas",
+    "content": "La presurización en cabinas de naves espaciales o cámaras hiperbáricas introduce el fenómeno de desgasificación (outgassing) de los componentes cosméticos. Los productos líquidos o cremosos que contienen disolventes con alta presión de vapor pueden liberar gases que afectan la calidad del aire respirable. Instituciones como la Agencia Espacial Europea (ESA) enfatizan la necesidad de seleccionar ingredientes con baja volatilidad (baja presión de vapor) para evitar la contaminación cruzada. En este contexto, el maquillaje debe ser aplicado en capas delgadas, utilizando fórmulas basadas en ceras sólidas o polímeros de alto peso molecular. La ausencia de corrientes de convección naturales en estos entornos significa que cualquier partícula desprendida del maquillaje permanecerá suspendida en el aire, aumentando el riesgo de irritación ocular y respiratoria. Es imperativo utilizar productos testeados bajo condiciones de vacío parcial para garantizar que los pigmentos y vehículos se mantengan unidos a la matriz del producto durante su uso prolongado.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Space Agency (ESA)",
+        "url": "https://www.esa.int/Space_in_Member_States/Spain/Normas_de_seguridad_materiales",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceras naturales",
+        "polímeros de alta adherencia"
+      ],
+      "contraindications": [
+        "aerosoles",
+        "solventes volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:06:04.277Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-004",
+    "title": "Adherencia cosmética y carga electrostática en entornos presurizados",
+    "content": "En entornos de alta tecnología y baja presión, la carga electrostática suele acumularse debido a la baja humedad relativa y al contacto con materiales sintéticos. Esta carga afecta directamente la adherencia del maquillaje, atrayendo partículas contaminantes hacia el rostro del usuario. Estudios en tribología cosmética sugieren que la utilización de ingredientes dieléctricos puede ayudar a mitigar la acumulación de cargas, evitando que el maquillaje actúe como un imán para polvos metálicos u otras partículas suspendidas. El uso de polvos fijadores debe ser estrictamente controlado; se prefieren fórmulas compactas o cremosas que posean una estructura molecular capaz de disipar la carga estática. La combinación de una base de maquillaje con propiedades antiestáticas y un sellado mediante sprays que contengan agentes humectantes es fundamental para mantener la integridad del look y proteger la piel de la adherencia indeseada de partículas ambientales, garantizando así una mayor higiene en ambientes confinados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antiestáticos",
+        "glicerina"
+      ],
+      "contraindications": [
+        "polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:06:04.277Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-005",
+    "title": "Desafíos de la estabilidad del maquillaje ante variaciones de presión",
+    "content": "Las variaciones de presión atmosférica en entornos cerrados, como cabinas de aviones a gran altitud o cámaras hiperbáricas, pueden inducir la desgasificación de burbujas de aire atrapadas en emulsiones cosméticas. Este proceso, conocido como desgasificación, puede comprometer la estabilidad del producto, causando la separación de fases o cambios en la textura del maquillaje aplicado. Según datos de la American Academy of Dermatology (AAD) sobre estabilidad de productos médicos tópicos, los vehículos cosméticos deben ser formulados para resistir gradientes de presión sin alterar su viscosidad. En eventos que implican transiciones de presión, es vital optar por formulaciones anhidras o de tipo 'w/o' (agua en aceite) de alta estabilidad, que minimicen la expansión de gases internos. La aplicación debe ser realizada con herramientas que aseguren una distribución uniforme, evitando la formación de burbujas que puedan expandirse bajo presión reducida, lo que garantiza un acabado estético duradero y previene la migración de pigmentos durante el ciclo de presurización.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "emulsionantes w/o",
+        "ceras microcristalinas"
+      ],
+      "contraindications": [
+        "espumas ligeras"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-practica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:06:04.277Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-006",
+    "title": "Mito vs Realidad: Estabilidad de los cosméticos en entornos de hiperbaria",
+    "content": "Existe la creencia popular de que el maquillaje se vuelve inestable o tóxico en cámaras hiperbáricas debido a la alta concentración de oxígeno. Si bien es cierto que el oxígeno puro acelera la oxidación de ciertos lípidos, la realidad es que el riesgo principal reside en la inflamabilidad de ciertos ingredientes volátiles. Según protocolos de seguridad de la Undersea and Hyperbaric Medical Society (UHMS), el uso de cosméticos con alto contenido de aceites minerales o parafinas debe ser evitado en entornos de oxigenación hiperbárica debido al riesgo de ignición. Contrario al mito de que todo maquillaje es prohibido, el uso de productos a base de agua, polímeros no volátiles y pigmentos minerales inertes es seguro y aceptable. Es fundamental realizar una curaduría de ingredientes para asegurar que no contengan solventes inflamables. La estabilidad física del maquillaje, por otro lado, se mantiene bien en condiciones hiperbáricas siempre que se eviten las formulaciones que contengan gases propelentes o solventes de baja viscosidad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales",
+        "agua"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "parafinas",
+        "aerosoles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:06:04.277Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-009",
+    "title": "Tendencias en formulación: Cosméticos de alta adherencia",
+    "content": "La tendencia en la formulación de cosméticos para eventos en entornos de alta ionización y baja gravedad se centra en el desarrollo de polímeros de red tridimensional. Estos materiales, conocidos como 'film-formers' de nueva generación, permiten que el maquillaje se adhiera a la superficie de la piel con una fuerza de enlace superior, resistiendo el movimiento y la posible dispersión de partículas. Investigaciones en química cosmética demuestran que la incorporación de resinas de silicona y polímeros de acrilato permite una flexibilidad necesaria para adaptarse a las micro-deformaciones de la piel sin fisurarse. Además, estos ingredientes proporcionan un escudo contra la adherencia de partículas cargadas eléctricamente, comunes en entornos industriales o de alta tecnología. La tendencia es clara: abandonar las fórmulas tradicionales de base acuosa o en polvo en favor de estructuras complejas que ofrezcan una barrera física, resistencia al desgaste y seguridad microbiológica, asegurando que el maquillaje permanezca inerte y estable frente a condiciones ambientales que desafían los estándares cosméticos convencionales.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resinas de silicona",
+        "polímeros de acrilato"
+      ],
+      "contraindications": [
+        "productos de baja adherencia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tendencias-cosmeticas"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:06:04.277Z"
+  }
+]

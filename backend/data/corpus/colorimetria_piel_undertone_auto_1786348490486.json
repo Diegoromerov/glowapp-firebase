@@ -1,0 +1,157 @@
+[
+  {
+    "chunk_id": "colorimetria-influencia-medicamentos-psicotropicos-001",
+    "title": "Efectos de la medicación psicotrópica en la perfusión y el subtono facial",
+    "content": "El uso crónico de ciertos psicotrópicos, particularmente los inhibidores selectivos de la recaptación de serotonina (ISRS) y algunos antipsicóticos, puede inducir cambios sutiles pero significativos en la microcirculación cutánea periférica. Estos fármacos poseen efectos vasomotores que alteran la respuesta de los esfínteres precapilares, modificando el eritema basal y el tono de la piel. En pacientes bajo tratamiento prolongado, es común observar un aumento en la palidez o, por el contrario, una reactividad vascular incrementada (flushing), lo cual distorsiona la lectura del subtono. Clínicamente, esto complica la selección de bases, ya que el componente azul/rosado del subtono puede verse enmascarado por la vasoconstricción periférica. La literatura en farmacodermatología indica que la modulación de los niveles de serotonina sistémica impacta directamente en la turgencia y el color de la dermis facial. Es fundamental para el consultor de GlowApp realizar una anamnesis sobre medicación activa antes de determinar el subtono, considerando que la respuesta vascular al estrés o a estímulos térmicos será atípica en estos perfiles. El diagnóstico debe priorizar zonas con menor reactividad vascular, como la zona mandibular, para obtener una lectura cromática más estable y evitar errores de subestimación del componente frío o neutro, que pueden verse alterados por la farmacodinamia del paciente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34523190/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "evaluacion_en_zonas_con_flushing"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base_maquillaje"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:54:28.404Z"
+  },
+  {
+    "chunk_id": "colorimetria-impacto-insuficiencia-venosa-002",
+    "title": "Insuficiencia venosa crónica y su interferencia en la colorimetría periorbital",
+    "content": "La insuficiencia venosa crónica (IVC) no se limita a las extremidades inferiores; su manifestación en el rostro, específicamente en el área periorbital, altera drásticamente la percepción del subtono. La estasis sanguínea y la dilatación de los plexos venosos superficiales aumentan la reflectancia de longitudes de onda azules y violetas, creando un fenómeno de 'subtono frío' aparente que, en realidad, es una condición vascular. Según estudios de la American Academy of Dermatology, la deposición de hemosiderina tras microhemorragias periorbitales añade un matiz grisáceo-azulado que se confunde frecuentemente con un subtono frío real. Al seleccionar productos correctores, es imperativo diferenciar si el color es pigmentario (melanina) o vascular (hemoglobina). El uso de correctores con base cálida o naranja es efectivo para neutralizar el azul, pero debe aplicarse bajo la premisa de que no estamos cambiando el subtono de la piel, sino compensando una alteración hemodinámica. Ignorar esta distinción lleva a la selección de bases demasiado grises o cenizas, que acentúan el aspecto de fatiga en lugar de neutralizarlo. La evaluación debe realizarse bajo luz neutra, evitando la zona periorbital para determinar el subtono general del rostro, y utilizando una técnica de presión suave para observar la respuesta de aclarado, lo que confirma el origen vascular del color.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/venous-disease",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos_jovenes",
+        "maduras"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correccion_ojeras"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:54:28.404Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-luz-azul-dispositivos-003",
+    "title": "El impacto de la luz HEV (High Energy Visible) en la percepción del subtono",
+    "content": "La exposición prolongada a la luz visible de alta energía (HEV) o luz azul emitida por dispositivos digitales altera la percepción visual del subtono cutáneo durante el diagnóstico. La luz azul tiene una capacidad de dispersión mayor y puede inducir una sobreestimación de los matices fríos al interactuar con las capas superficiales de la epidermis. Investigaciones en fotobiología sugieren que la luz HEV no solo estimula la pigmentación, sino que crea un efecto de contraste cromático en el ojo humano, donde la piel parece más 'apagada' o 'grisácea' de lo que es en condiciones de iluminación natural. Para los profesionales de GlowApp, realizar pruebas de color bajo iluminación artificial sesgada por pantallas de computadoras o teléfonos es un error común. La recomendación clínica es realizar el diagnóstico cromático en un ambiente con iluminación de espectro completo (CRI > 95) para evitar el sesgo de confirmación cromática. Además, la luz azul puede exacerbar la percepción de irregularidades pigmentarias en pieles con melasma, haciendo que el diagnóstico del subtono se desvíe hacia tonos más neutros o fríos por la falta de calidez cromática percibida. Es esencial limpiar el rostro de cualquier residuo cosmético y estabilizar la luz ambiental antes de realizar el test de las venas o la prueba de la mandíbula, garantizando que el ojo humano reciba la información espectral correcta sin interferencias tecnológicas.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(21)00150-1/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base_maquillaje"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:54:28.404Z"
+  },
+  {
+    "chunk_id": "colorimetria-efecto-tyndall-007",
+    "title": "El efecto Tyndall y el diagnóstico de subtonos fríos en la zona periorbital",
+    "content": "El efecto Tyndall describe la dispersión de la luz al atravesar partículas pequeñas o estructuras dérmicas delgadas. En la zona periorbital, donde la piel es extremadamente fina (aprox. 0.5mm), la luz se dispersa de tal manera que las estructuras subyacentes (vasos sanguíneos, músculo orbicular) adquieren un matiz azulado. Este fenómeno físico es frecuentemente confundido con un subtono de piel frío. Sin embargo, el subtono es una propiedad de la dermis profunda y no de la epidermis superficial periorbital. El error clínico más frecuente es intentar 'corregir' este color azulado con bases de maquillaje de subtono frío en todo el rostro, lo que genera una desarmonía cromática. Según investigaciones dermatológicas, el diagnóstico de subtono debe basarse en la zona del cuello o el centro de la mejilla, donde el panículo adiposo y el grosor dérmico son representativos de la tez general. La zona periorbital debe tratarse de forma aislada, utilizando correctores con pigmentos salmón o naranja que neutralicen la dispersión azul, sin que esto interfiera con la elección del tono de base. Comprender que el efecto Tyndall es una propiedad óptica local y no un indicador sistémico del subtono es esencial para evitar el 'efecto máscara' y lograr una transición cromática natural entre el rostro y el resto del cuerpo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.13689",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correccion_ojeras"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:54:28.404Z"
+  }
+]

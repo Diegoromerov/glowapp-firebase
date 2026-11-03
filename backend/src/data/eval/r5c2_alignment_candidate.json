@@ -1,0 +1,297 @@
+{
+  "generated_at": "2026-08-14T00:00:00Z",
+  "purpose": "R5-C2 candidate dataset — propuesta de expected_chunks corregidos (NO modifica el original)",
+  "note": "NO es un nuevo benchmark oficial. Solo diagnóstico experimental para separar causas.",
+  "queries": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "poros-humedad-bogota-008",
+        "colorimetria-oxidacion-sebo-004",
+        "ingredientes_activos_contraindicaciones-1786387012476-3-4ef2629c-acido-capriloil-salicilico-lha-y-la-descamacion-acumulativa-",
+        "maq-ocasion-piel-acneica-004",
+        "skincare-rutinas-quelacion-metales-006"
+      ],
+      "candidate_expected_chunks": [
+        "skincare-rutinas-por-tipo-piel-002",
+        "poros-humedad-bogota-008"
+      ],
+      "alignment_status": "PARTIALLY_ALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "skincare_rutinas_por_tipo_piel-1786385298853-3-1d3e6a71-control-de-la-reactividad-neurogenica-abordaje-de-la-piel-se",
+        "oxido-zinc-nanoparticulas-seguridad-006",
+        "trend-sunscreen-mixing-004",
+        "magnetic-face-masks-002",
+        "tendencias-belleza-virales-skincare-magnetico-002"
+      ],
+      "candidate_expected_chunks": [
+        "filtros-solares-quimicos-vs-fisicos-005"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "tendencias_belleza_virales-1786384901972-1-b5cabc7d-skin-flooding-con-acido-hialuronico-hidratacion-o-deshidrata",
+        "hidratacion-oclusivos-humectantes-009",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "tendencia-beauty-bio-hacking-nutricosmetica-001",
+        "skincare-suplementos-004"
+      ],
+      "candidate_expected_chunks": [
+        "acido-hialuronico-alto-peso-molecular-004"
+      ],
+      "alignment_status": "PARTIALLY_ALIGNED",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "skincare-rutinas-autofagia-peptidos-003",
+        "skincare-rutinas-bioenergetica-mitocondrial-007",
+        "ingredientes-activos-contraindicaciones-cobre-peptidos-009",
+        "peptidos-cobre-quelacion-003",
+        "activos-quelacion-vitamina-c-004"
+      ],
+      "candidate_expected_chunks": [
+        "skincare-ritmos-circadianos-001"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare-rutinas-piel-fotodano-003",
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i"
+      ],
+      "candidate_expected_chunks": [
+        "melanogenesis-hiperpigmentacion-post-inflamatoria-001"
+      ],
+      "alignment_status": "ALIGNED",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "activos-quelantes-y-metales-003",
+        "ingredientes-activos-contraindicaciones-peptidos-cobre-vitamina-c-001",
+        "activos-cosmeticos-interaccion-microbioma-004"
+      ],
+      "candidate_expected_chunks": [
+        "niacinamida-ph-acido-eritema-003"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "original_expected_chunks": [
+        "skincare-rutinas-piel-deshidratada-004",
+        "piel-sensible-mito-realidad-006"
+      ],
+      "candidate_expected_chunks": [
+        "skincare-microbioma-limpiadores-004"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "original_expected_chunks": [
+        "diagnostico_capilar-1786404223187-3-83fda2b9-espectroscopia-de-raman-de-superficie-sers-para-la-deteccion"
+      ],
+      "candidate_expected_chunks": [
+        "colorimetria-capilar-ph-pos-tinte-009"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "category": "cabello",
+      "original_expected_chunks": [
+        "tendencia-aceite-romero-alopecia-005"
+      ],
+      "candidate_expected_chunks": [],
+      "alignment_status": "CORPUS_GAP",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "original_expected_chunks": [
+        "estabilidad-ph-cuero-cabelludo-004",
+        "diag-capilar-microbiota-005",
+        "colorimetria-capilar-microbiota-003",
+        "microbiota-scalp-008",
+        "colorimetria-interaccion-microbiota-001"
+      ],
+      "candidate_expected_chunks": [
+        "colorimetria-capilar-microbiota-003"
+      ],
+      "alignment_status": "PARTIALLY_ALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "original_expected_chunks": [
+        "cuidado_corporal_y_spa-1786390517102-2-a2d90869-monitoreo-de-la-hidratacion-profunda-mediante-espectroscopia",
+        "cuidado-corporal-bioimpedancia-008",
+        "cuidado_corporal_y_spa-tecnologia-005",
+        "urea-umbral-hidratacion-descamacion-009",
+        "tendencias-belleza-virales-002"
+      ],
+      "candidate_expected_chunks": [
+        "hidratacion-oclusiva-corporal-008"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-microblading-envejecimiento-009"
+      ],
+      "candidate_expected_chunks": [
+        "visajismo-cejas-microblading-envejecimiento-001"
+      ],
+      "alignment_status": "PARTIALLY_ALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-biomecanica-presion-001",
+        "visajismo-cejas-microblading-efecto-tyndall-005",
+        "visajismo-cejas-microblading-inmunologia-007"
+      ],
+      "candidate_expected_chunks": [],
+      "alignment_status": "CORPUS_GAP",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-mapeo-proporcion-aurea-003",
+        "visajismo_cejas_microblading-1786392808872-1-4498c4cd-topografia-corneal-y-su-influencia-en-la-proyeccion-del-arco"
+      ],
+      "candidate_expected_chunks": [],
+      "alignment_status": "CORPUS_GAP",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-microblading-musculatura-orbicular-009",
+        "visajismo-cejas-mapeo-proporcion-aurea-003",
+        "visajismo-microblading-arquitectura-muscular-008",
+        "microblading-psicologia-007",
+        "microblading-envejecimiento-009"
+      ],
+      "candidate_expected_chunks": [],
+      "alignment_status": "MISALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-cronobiologia-circadiana-001",
+        "visajismo-cejas-microblading-fotoproteccion-avanzada-007",
+        "impacto-variabilidad-glucemica-cicatrizacion-001",
+        "visajismo-cejas-microblading-microbiota-006"
+      ],
+      "candidate_expected_chunks": [
+        "visajismo-cejas-microblading-cicatrizacion-001"
+      ],
+      "alignment_status": "PARTIALLY_ALIGNED",
+      "confidence": "medium",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-microblading-piel-grasa-005"
+      ],
+      "candidate_expected_chunks": [
+        "visajismo-cejas-enfermedades-autoinmunes-007"
+      ],
+      "alignment_status": "MISALIGNED",
+      "confidence": "high",
+      "changed": true
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "original_expected_chunks": [
+        "visajismo-cejas-microblading-interaccion-laser-001",
+        "visajismo-cejas-microblading-interaccion-procedimientos-laser-co2-fraccionado",
+        "guias_unas-electrolisis-y-matriz-001",
+        "terapia-laser-erbio-glass-002",
+        "visajismo-cejas-microblading-efecto-tyndall-003"
+      ],
+      "candidate_expected_chunks": [],
+      "alignment_status": "MISALIGNED",
+      "confidence": "medium",
+      "changed": true
+    }
+  ]
+}

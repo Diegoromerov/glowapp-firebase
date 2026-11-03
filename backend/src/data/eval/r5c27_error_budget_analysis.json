@@ -1,0 +1,79 @@
+{
+  "experiment": "R5-C27",
+  "cycle": 39,
+  "hypothesis": "H27: el techo de R@5 puede descomponerse cuantitativamente entre éxito de retrieval, evidencia multi-chunk, retrieval miss, corpus gap y problemas de anotación.",
+  "timestamp": "2026-08-15",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435) — verificado",
+  "production_guard": "activa — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (18 queries: 15 no-UNSUPPORTED + 3 UNSUPPORTED; 55 chunk IDs únicos; 55/55 re-verificados en BD en este ciclo)",
+  "baseline": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "retrieval_configuration": { "model": "e5-v5 (1024d)", "top_k": 100, "pool": "top-100 natural", "metric": "cosine", "motor": "PRODUCTIVO sin modificar" },
+  "corpus_snapshot": { "chunks": "5,663 en BD", "canonico": "5,619", "gold_ids_en_bd": "55/55", "duplicados": 0, "null_embeddings": 0 },
+  "error_budget": {
+    "total_queries": 18,
+    "by_class": { "A_DIRECT_SUCCESS": 12, "B_MULTI_CHUNK_RECOVERABLE": 2, "C_RETRIEVAL_MISS": 1, "D_CORPUS_GAP": 3 },
+    "percentages": { "A_DIRECT_SUCCESS": 0.6667, "B_MULTI_CHUNK_RECOVERABLE": 0.1111, "C_RETRIEVAL_MISS": 0.0556, "D_CORPUS_GAP": 0.1667 },
+    "retrieval_attributable_error": 0.1667,
+    "corpus_attributable_error": 0.1667,
+    "annotation_attributable_error": 0.0,
+    "note": "RETRIEVAL-attributable = B_MULTI_CHUNK_RECOVERABLE (2: cabello_002, cejas_008 — evidencia existe y es componible en top-50) + C_RETRIEVAL_MISS (1: cejas_004 — evidencia existe pero 4/6 piezas fuera de top-100). CORPUS-attributable = D_CORPUS_GAP (3: las UNSUPPORTED validadas en R5-C13). Ambos pesos son IGUALES (16.7%)."
+  },
+  "causal_map": {
+    "A_DIRECT_SUCCESS": ["skincare_003", "skincare_005", "skincare_006", "skincare_007", "skincare_008", "skincare_009", "skincare_010", "cabello_006", "cabello_008", "cejas_001", "cejas_005", "cejas_007"],
+    "B_MULTI_CHUNK_RECOVERABLE": ["cabello_002", "cejas_008"],
+    "C_RETRIEVAL_MISS": ["cejas_004"],
+    "D_CORPUS_GAP": ["cabello_004", "cejas_002", "cejas_003"]
+  },
+  "miss_analysis": {
+    "cabello_002": {
+      "classification": "B_MULTI_CHUNK_RECOVERABLE", "confidence": "HIGH",
+      "reason": "2/5 en top-5 pero 3/5 en top-50 (≥50%) — evidencia distribuida componible",
+      "evidence": { "k5": 0.4, "k20": 0.4, "k50": 0.6, "k100": 0.6 },
+      "conclusion": "No es retrieval miss ni corpus gap: la evidencia completa (ph, ph-pos-tinte, viscoelasticidad) está en top-50 y es componible. El error es de COMPOSICIÓN, no de recuperación."
+    },
+    "cejas_008": {
+      "classification": "B_MULTI_CHUNK_RECOVERABLE", "confidence": "HIGH",
+      "reason": "2/6 en top-5 pero 3/6 en top-50 (≥50%) — evidencia distribuida componible",
+      "evidence": { "k5": 0.3333, "k20": 0.3333, "k50": 0.5, "k100": 0.5 },
+      "conclusion": "Igual que cabello_002: la evidencia de remoción está parcialmente en top-50 (3/6). Componible en el límite del umbral. Error de composición."
+    },
+    "cejas_004": {
+      "classification": "C_RETRIEVAL_MISS", "confidence": "MEDIUM",
+      "confirmation": "CONFIRMADO: 4 piezas fuera de top-100 (consistente con R5-C23/24)",
+      "piezas": { "requeridas": 6, "en_pool100": 2, "fuera_pool100": 4 },
+      "evidence": { "k5": 0.3333, "k20": 0.3333, "k50": 0.3333, "k100": 0.3333 },
+      "piezas_fuera": ["visajismo-cejas-microblading-musculatura-orbicular-009", "visajismo-microblading-arquitectura-muscular-008", "microblading-envejecimiento-009", "microblading-psicologia-007"],
+      "piezas_dentro": ["visajismo_cejas_...-evaluacion-dispersion-luz (rank 2)", "visajismo-cejas-microblading-metamerismo-003 (rank 3)"],
+      "conclusion": "RETRIEVAL MISS real confirmado cuantitativamente: las 4 piezas de simetría muscular EXISTEN en el corpus (55/55 golds en BD) pero están fuera de top-100. No es corpus gap: es colisión semántica que impide la recuperación."
+    }
+  },
+  "corpus_gap_analysis": {
+    "queries": ["cabello_004", "cejas_002", "cejas_003"],
+    "note": "Las 3 UNSUPPORTED validadas por anotación ciega en R5-C13. Sus chunks gold físicos SÍ existen en BD (0/0 para dos sin golds asignados; 1/1 para cejas_003) pero la evidencia es semánticamente insuficiente — corpus gap de CONTENIDO, no ausencia física."
+  },
+  "retrieval_miss_analysis": {
+    "queries": [{ "query_id": "cejas_004", "pieces_outside_pool100": 4 }],
+    "note": "Única query no-UNSUPPORTED con retrieval miss real: evidencia existe en corpus pero 4/6 piezas fuera de top-100."
+  },
+  "annotation_analysis": {
+    "queries": [],
+    "note": "Sin evidencia objetiva de ambigüedad suficiente. El GOLD-V5 fue construido con anotación ciega (R5-C13, overlap 57.1%) — no se detectan nuevos gaps de anotación."
+  },
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — clasificación, evidencia localizada, ranks, métricas y error budget idénticos en las 18 queries" },
+  "verdict": "ERROR-BUDGET-MIXED",
+  "verdict_rationale": "El techo del RAG se explica con pesos IGUALES de dos factores: RETRIEVAL-attributable 16.7% (3 queries: cabello_002 y cejas_008 = evidencia multi-chunk componible en top-50 que el sistema no reúne; cejas_004 = 4/6 piezas de simetría fuera de top-100 por colisión semántica) y CORPUS-attributable 16.7% (3 queries UNSUPPORTED con evidencia semánticamente insuficiente). El 66.7% restante es éxito directo. NO hay annotation gap. Conclusión clave: el error NO es predominantemente del motor (solo 5.6% es retrieval miss puro) — la mayor parte del déficit recuperable es de COMPOSICIÓN multi-chunk (11.1%) + un único retrieval miss (5.6%), frente a un corpus gap equivalente (16.7%).",
+  "retrieval_vs_corpus_answer": {
+    "recuperables_por_ingenieria_retrieval": "3/18 (16.7%): cabello_002 + cejas_008 (composición de evidencia ya recuperada) + cejas_004 (único miss puro — requeriría representación distinta)",
+    "solo_mejorando_corpus": "3/18 (16.7%): las UNSUPPORTED requieren contenido nuevo, no retrieval",
+    "implicacion": "Incluso con retrieval perfecto y composición ideal, el techo sería ~83-89% (15-16/18). El 100% es inalcanzable sin ampliar el corpus (16.7%) ni resolver la colisión de cejas_004 (5.6%)."
+  },
+  "recommendation_r5c28": {
+    "1": "El error budget está equilibrado: NO hay una palanca única dominante",
+    "2": "El déficit recuperable más barato: composición de evidencia multi-chunk ya recuperada (cabello_002, cejas_008 = 11.1%) — pero R5-C25/C26 demostraron que el agregador léxico no generaliza; se necesitaría señal semántica de soporte (no probada)",
+    "3": "cejas_004 (5.6%) es el único retrieval miss puro — requiere representación estructural distinta (no concatenación simple, ya refutada) o aceptación documentada",
+    "4": "El corpus gap (16.7%) es decisión de negocio: ampliar contenido para las UNSUPPORTED",
+    "5": "Con la evidencia acumulada (C15-C27), la recomendación honesta es: ACEPTAR el baseline R5-C (R@5=0.7885) como techo del motor actual con este corpus, documentar el mapa causal, y que el Director decida entre (a) ampliar corpus, (b) invertir en señal semántica de composición (riesgo alto, beneficio 11.1%), (c) cerrar la investigación R5-C",
+    "6": "GOLD-V5, baseline R5-C y motor productivo intactos"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

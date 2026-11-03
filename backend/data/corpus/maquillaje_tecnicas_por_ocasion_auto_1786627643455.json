@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-002",
+    "title": "Dinámica de fluidos cosméticos en entornos de microgravedad",
+    "content": "La aplicación de maquillaje en entornos de microgravedad presenta desafíos únicos para la estabilidad de las emulsiones. En ausencia de gravedad, la sedimentación de partículas (ley de Stokes) se ralentiza, pero la tensión superficial se convierte en la fuerza dominante, facilitando la formación de gotas esféricas que no se adhieren uniformemente a la superficie cutánea. La cosmética convencional puede presentar inestabilidad, donde la fase oleosa y acuosa tienden a separarse o formar cúmulos. Clínicamente, el riesgo principal es la dispersión de partículas en el aire, que pueden ser inhaladas o entrar en contacto con la mucosa ocular, causando irritación o conjuntivitis. Se requiere el uso de formulaciones con agentes viscosantes de alta eficiencia y polímeros de adhesión tipo acrilato para asegurar que el pigmento permanezca en el estrato córneo. Según investigaciones de la NASA sobre higiene en el espacio, la gestión de partículas es crítica para evitar la contaminación del sistema de soporte vital. El maquillaje para estos eventos debe ser de tipo 'transfer-proof' absoluto, evitando cualquier residuo volátil que pueda comprometer la calidad del aire del entorno confinado, manteniendo una barrera estable ante el estrés mecánico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de acrilato",
+        "agentes viscosantes"
+      ],
+      "contraindications": [
+        "polvos sueltos",
+        "pigmentos volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_formulacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:27:04.125Z"
+  }
+]

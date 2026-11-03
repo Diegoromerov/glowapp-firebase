@@ -1,0 +1,101 @@
+{
+  "_comment": "Baseline congelado de la suite Jest de backend/ (rama baseline-v1-stable). Generado en el worktree setup_glowguide_architecture. Los fallos listados en 'rojo_heredado' son PRE-EXISTENTES y quedan fuera del alcance del sprint de RLS/Multi-Tenancy. Criterio de aceptación: ninguna suite de 'verde' puede regresar, y ningún fallo nuevo puede aparecer.",
+  "medido_en": "2026-09-21",
+  "rama": "baseline-v1-stable",
+  "comando": "npm test  (jest)",
+  "runner": "C:/Users/Compu casa/.gemini/antigravity/worktrees/beauty-app/setup_glowguide_architecture/backend",
+  "totales": {
+    "suites_total": 55,
+    "suites_verde": 43,
+    "suites_rojo_heredado": 12,
+    "tests_total": 406,
+    "tests_pasados": 375,
+    "tests_fallidos": 30,
+    "tests_omitidos": 1,
+    "duracion_s": 125.7
+  },
+  "verde": [
+    "src/tests/abuseDetection.test.js",
+    "src/tests/app.test.js",
+    "src/tests/automation_patterns.test.js",
+    "src/tests/businessAdminDocs.integration.test.js",
+    "src/tests/businessHardening.integration.test.js",
+    "src/tests/businessRAG.integration.test.js",
+    "src/tests/chunkingService.test.js",
+    "src/tests/ciRagEvaluation.test.js",
+    "src/tests/consentMiddleware.test.js",
+    "src/tests/consentService.test.js",
+    "src/tests/contextCompressor.test.js",
+    "src/tests/embeddingService.test.js",
+    "src/tests/gemini.client.integration.test.js",
+    "src/tests/glowCycle.service.test.js",
+    "src/tests/metadataEnricher.test.js",
+    "src/tests/orchestrator.resilience.test.js",
+    "src/tests/productRoutesOwnership.test.js",
+    "src/tests/provider_schedule.test.js",
+    "src/tests/qualityGates.test.js",
+    "src/tests/ragEvaluator.test.js",
+    "src/tests/ragLogger.test.js",
+    "src/tests/ragMetrics.test.js",
+    "src/tests/ragService.test.js",
+    "src/tests/rateLimiter.test.js",
+    "src/tests/resilience.service.test.js",
+    "src/tests/serviceHealth.test.js",
+    "src/tests/sprint2_agents.test.js",
+    "src/tests/sprint3_agents.test.js",
+    "src/tests/transformationEngine.test.js",
+    "src/tests/wallet.test.js",
+    "src/tests/youcam.client.integration.test.js",
+    "tests/api.cors.test.js",
+    "tests/api.upload_image.test.js",
+    "tests/auth.integration.test.js",
+    "tests/biometric.integration.test.js",
+    "tests/booking.test.js",
+    "tests/e2e_full_user_journey.test.js",
+    "tests/e2e_marketplace_to_saas.test.js",
+    "tests/gemini.prompts.test.js",
+    "tests/infra_email.integration.test.js",
+    "tests/payment.test.js",
+    "tests/role_segmentation.test.js",
+    "tests/userBadge.controller.test.js"
+  ],
+  "rojo_heredado": [
+    "src/tests/auraToolExecutor.test.js",
+    "src/tests/biometric.integration.test.js",
+    "src/tests/biometricE2E.test.js",
+    "src/tests/business.integration.test.js",
+    "src/tests/businessRatingDebugging.test.js",
+    "src/tests/businessSystem.integration.test.js",
+    "src/tests/contract/biometric-scan.contract.test.js",
+    "src/tests/fase5_e2e_integration.test.js",
+    "src/tests/geminiFallback.test.js",
+    "src/tests/geminiService.test.js",
+    "src/tests/resilience.test.js",
+    "src/tests/sprint4_agents.test.js"
+  ],
+  "inestables_conocidos": {
+    "_motivo": "Se documenta una CLASE, no una lista cerrada: suites que miden tiempo de reloj de pared (setTimeout sobre Date.now) y fallan bajo carga de máquina sin que el código sea incorrecto. El verificador NO depende de esta lista: reejecuta en aislamiento cualquier suite verde que falle y solo declara regresión si falla también aislada. Esto es documentación de lo observado, no un mecanismo de tolerancia.",
+    "suites": [
+      "src/tests/resilience.service.test.js",
+      "src/tests/ciRagEvaluation.test.js"
+    ],
+    "evidencia": [
+      "resilience.service.test.js:79 — expect(elapsed).toBeLessThan(100) con retryDelay = 1 ms. En corrida completa bajo carga dio 125 ms; en 3 corridas aisladas con --runInBand pasó 10/10 las tres veces. La propia suite documenta la imprecisión: 'We'll allow some variance due to setTimeout imprecision'.",
+      "ciRagEvaluation.test.js — falló en la corrida completa bajo carga y PASÓ al reejecutarse aislada por el verificador. Se observó en una corrida DISTINTA a la de resilience.service.test.js, de ahí que se documente la clase y no un único caso: la lista cerrada daba falsa sensación de cobertura."
+    ]
+  },
+  "causas_identificadas": {
+    "timeouts_retry": [
+      "src/tests/resilience.test.js",
+      "src/tests/geminiService.test.js",
+      "src/tests/fase5_e2e_integration.test.js"
+    ],
+    "crash_aura": [
+      "TypeError: Cannot read properties of undefined (reading 'sender_id') en processAssistantMessage"
+    ],
+    "inconsistencia_calculo": [
+      "src/tests/businessRatingDebugging.test.js — Expected: 50, Received: 25"
+    ]
+  },
+  "hallazgo_colateral": "Existen dos archivos con el mismo basename: src/tests/biometric.integration.test.js (ROJO) y tests/biometric.integration.test.js (VERDE). No son duplicados: uno falla y el otro pasa, así que la ruta real del test importa al citar resultados."
+}

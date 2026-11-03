@@ -1,0 +1,251 @@
+[
+  {
+    "chunk_id": "poro-neuro-endocrino-001",
+    "title": "El sistema endocannabinoide cutáneo y el tono folicular",
+    "content": "El sistema endocannabinoide (SEC) cutáneo, compuesto por receptores CB1 y CB2, juega un rol emergente en la homeostasis de la unidad pilosebácea. Investigaciones recientes sugieren que la activación de estos receptores modula directamente la síntesis de lípidos sebáceos y la diferenciación de los sebocitos. En el contexto de la textura y el tamaño de los poros, una desregulación en los niveles de anandamida y 2-araquidonilglicerol puede inducir una hiperplasia sebácea subclínica, aumentando la carga lipídica dentro del ostium folicular. Esto no solo dilata el poro por acumulación mecánica, sino que altera la señalización lipídica que controla la descamación del epitelio. El SEC actúa como un mediador de estrés; ante estímulos ambientales, la sobreestimulación de los receptores CB2 puede promover una respuesta inflamatoria de bajo grado que altera la arquitectura periporo. Comprender este eje es vital para desarrollar estrategias tópicas que, mediante la modulación del tono folicular, permitan reducir la apariencia dilatada del poro sin comprometer la barrera hidrolipídica natural, ofreciendo una vía terapéutica más precisa que los astringentes tradicionales que suelen deshidratar el estrato córneo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25061870/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cannabidiol"
+      ],
+      "contraindications": [
+        "rosacea_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:03:20.982Z"
+  },
+  {
+    "chunk_id": "poro-metabolismo-lipidos-002",
+    "title": "Efecto de la delta-6-desaturasa en la viscosidad del sebo",
+    "content": "La enzima delta-6-desaturasa (D6D) es un actor crítico en la conversión de ácidos grasos esenciales y, por extensión, en la composición del sebo humano. Un perfil de ácidos grasos con alta proporción de componentes saturados frente a insaturados incrementa significativamente la viscosidad del sebo dentro del canal folicular. Esta mayor viscosidad dificulta el flujo natural del sebo hacia la superficie, favoreciendo la formación de tapones queratinosos y la dilatación mecánica del ostium folicular. Estudios metabólicos indican que factores dietéticos y la expresión genética individual pueden alterar la eficiencia de la D6D, resultando en un sebo 'espeso' que se acumula más fácilmente. En la práctica clínica, esto explica por qué individuos con la misma tasa de secreción sebácea presentan texturas de poro marcadamente distintas. La intervención mediante el aporte tópico de ácidos grasos insaturados o la modulación enzimática puede mejorar la fluidez del contenido folicular, disminuyendo la presión mecánica sobre las paredes del poro y reduciendo su apariencia dilatada. Este enfoque aborda la causa raíz de la obstrucción más allá de la simple limpieza superficial.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30113-5/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "linoleic_acid"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:03:20.982Z"
+  },
+  {
+    "chunk_id": "poro-exosomas-005",
+    "title": "Exosomas: mediadores de comunicación sebocito-dermis",
+    "content": "Los exosomas son vesículas extracelulares que actúan como vehículos de comunicación intercelular, transportando proteínas, lípidos y micro-ARN entre los sebocitos y los fibroblastos de la dermis periporo. Esta 'diafonía' es esencial para coordinar la respuesta de la piel ante cambios en el entorno. En una piel con poros dilatados, se ha observado un perfil alterado de carga exosomal que puede inducir una degradación acelerada de la matriz extracelular por parte de los fibroblastos, exacerbando la flacidez del poro. La investigación actual sobre el uso de exosomas derivados de células madre o extractos vegetales busca restaurar la comunicación celular correcta, promoviendo un microambiente más firme y menos inflamatorio. Al modular las señales que los sebocitos envían a su entorno, los exosomas representan una tecnología de vanguardia para la gestión de la textura de la piel. A diferencia de los activos tradicionales que actúan de forma externa, los exosomas intentan reprogramar la respuesta biológica de la unidad pilosebácea, ofreciendo una solución más duradera y profunda para la apariencia del poro en pieles con signos de envejecimiento o daño actínico crónico.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/24/3/2607",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomes"
+      ],
+      "contraindications": [
+        "procesos_neoplasicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biotecnologia_cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:03:20.982Z"
+  },
+  {
+    "chunk_id": "poro-autofagia-006",
+    "title": "Autofagia lisosomal y homeostasis lipídica del poro",
+    "content": "La autofagia lisosomal es un proceso catabólico vital en el que las células foliculares degradan sus propios componentes, incluyendo lípidos acumulados y orgánulos dañados. En el canal folicular, este mecanismo es responsable de la eliminación natural de los detritos celulares y el exceso de sebo, previniendo la formación de microcomedones que dilatan el poro. Cuando la autofagia se ve comprometida por el estrés metabólico o el envejecimiento, la acumulación de lípidos oxidados y restos celulares se vuelve persistente, forzando la expansión del ostium. Potenciar la autofagia mediante activos específicos, como ciertos polifenoles o moduladores de la vía AMPK, puede optimizar la 'limpieza interna' del poro. Este enfoque fisiológico es superior a la exfoliación física o química agresiva, ya que estimula la capacidad regenerativa intrínseca de la piel sin erosionar la barrera cutánea. La estimulación de la autofagia folicular no solo mejora la textura al reducir el volumen de los tapones, sino que también protege al folículo contra la inflamación subclínica recurrente, un factor clave en la dilatación crónica de los poros en pacientes con piel grasa y tendencia acnéica.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Autophagy (Journal)",
+        "url": "https://www.tandfonline.com/doi/full/10.1080/15548627.2023.2201211",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "20+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "polyphenols"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_poros"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:03:20.982Z"
+  },
+  {
+    "chunk_id": "poro-metabolismo-triptofano-008",
+    "title": "El metabolismo del triptófano en la homeostasis folicular",
+    "content": "El metabolismo del triptófano a través de la vía de la quinurenina es un regulador crítico de la inmunidad cutánea y la homeostasis del folículo pilosebáceo. Metabolitos derivados de esta ruta actúan como ligandos para los receptores de hidrocarburos arilos (AhR), los cuales controlan la diferenciación de los queratinocitos y la producción de sebo. Una alteración en este eje metabólico puede llevar a una queratinización descontrolada dentro del ostium, aumentando la rugosidad y facilitando la colonización bacteriana. En la piel de personas con poros visibles, se ha observado una desregulación en la conversión de triptófano, lo que sugiere que la suplementación tópica o la modulación de esta vía podría mejorar significativamente la textura y la resiliencia del folículo. Al estabilizar la respuesta inmunitaria local, se reduce la inflamación periporo que, de otro modo, contribuiría a la dilatación crónica. Este conocimiento posiciona al triptófano no solo como un nutriente esencial, sino como una molécula clave en la señalización que mantiene la integridad estructural y la apariencia cerrada de los poros frente a las agresiones externas constantes.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Frontiers in Immunology",
+        "url": "https://www.frontiersin.org/articles/10.3389/fimmu.2023.1147570",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tryptophan_derivatives"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:03:20.982Z"
+  },
+  {
+    "chunk_id": "poro-sarcopenia-cutanea-009",
+    "title": "Sarcopenia cutánea: tracción y dilatación folicular",
+    "content": "La sarcopenia cutánea, entendida como la pérdida de masa y funcionalidad de los músculos faciales (incluyendo el músculo erector del pelo y los músculos de la expresión), tiene un impacto directo y subestimado en la apariencia de los poros. Estos músculos proporcionan una tensión mecánica que sostiene la estructura de la piel; a medida que pierden tono, la piel facial experimenta fuerzas de tracción que 'estiran' el ostium folicular, haciendo que los poros pasen de una forma circular a una ovalada o alargada. Este fenómeno es una causa primaria de la apariencia de 'poros dilatados' en adultos mayores, a menudo confundida únicamente con la pérdida de colágeno. El tratamiento efectivo no solo debe enfocarse en la matriz extracelular, sino en la estimulación de la contractilidad y el soporte muscular. Técnicas que mejoran la biomecánica facial, junto con activos que promueven la firmeza dermo-epidérmica, son esenciales para contrarrestar este efecto de tracción. Entender la sarcopenia cutánea permite un diagnóstico más preciso y un plan de tratamiento que integra la estructura profunda con la calidad superficial de la textura.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery (Journal)",
+        "url": "https://journals.lww.com/dermatologicsurgery/Abstract/2023/04000/Cutaneous_Sarcopenia_and_Facial_Aging.12.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dmae",
+        "peptides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti_aging"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:03:20.982Z"
+  }
+]

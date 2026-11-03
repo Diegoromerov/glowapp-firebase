@@ -1,0 +1,208 @@
+{
+  "cycle": "18",
+  "experiment": "R5-C6",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "runs": {
+    "A": "r5c6_query_corpus_coverage_a.json",
+    "B": "r5c6_query_corpus_coverage_b.json",
+    "reproducibility": "A ≡ B — 18/18 idénticas"
+  },
+  "metrics_official": {
+    "Q0": {
+      "p1": 0.1111,
+      "p3": 0.2037,
+      "p5": 0.1222,
+      "r5": 0.1667,
+      "mrr": 0.2222
+    },
+    "Q1": {
+      "p1": 0.1667,
+      "p3": 0.0926,
+      "p5": 0.0667,
+      "r5": 0.1139,
+      "mrr": 0.1991
+    },
+    "Q2": {
+      "p1": 0.1667,
+      "p3": 0.1111,
+      "p5": 0.0778,
+      "r5": 0.1694,
+      "mrr": 0.2176
+    },
+    "delta_Q1_vs_Q0": {
+      "p1": 0.0556,
+      "p3": -0.1111,
+      "p5": -0.0555,
+      "r5": -0.0528,
+      "mrr": -0.0231
+    },
+    "delta_Q2_vs_Q0": {
+      "p1": 0.0556,
+      "p3": -0.0926,
+      "p5": -0.0444,
+      "r5": 0.0027,
+      "mrr": -0.0046
+    }
+  },
+  "corpus_coverage": {
+    "E3_fuerte": 10,
+    "E2_suficiente": 2,
+    "E1_parcial": 3,
+    "E0_sin_evidencia": 3,
+    "coverage_E2E3": 0.6667,
+    "por_dominio": {
+      "skincare": {
+        "E3": 6,
+        "E2": 0,
+        "E1": 1,
+        "E0": 0
+      },
+      "cabello": {
+        "E3": 2,
+        "E2": 1,
+        "E1": 0,
+        "E0": 1
+      },
+      "cejas": {
+        "E3": 2,
+        "E2": 1,
+        "E1": 2,
+        "E0": 2
+      }
+    }
+  },
+  "per_query_classification": [
+    {
+      "query_id": "skincare_003",
+      "corpus_evidence": "E3",
+      "reason": "Rutina piel grasa clima húmedo: \"Altitud y poros: adaptación cutánea en Bogotá\" (0.581) y \"Efecto del clima de Bogotá\" (0.572) responden directamente",
+      "query_quality": "Q-A bien formulada",
+      "causa_principal": "GROUND_TRUTH (retrieval recupera evidencia E3 pero expected distinto)"
+    },
+    {
+      "query_id": "skincare_005",
+      "corpus_evidence": "E3",
+      "reason": "\"Filtros solares: diferencia entre químicos y físicos en pieles reactivas\" (0.557) + zinc (0.437) — evidencia directa sobre protector solar piel sensible",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3 recuperada, expected incluye mascarillas magnéticas irrelevantes)"
+    },
+    {
+      "query_id": "skincare_006",
+      "corpus_evidence": "E3",
+      "reason": "\"Ácido Hialurónico de alto peso molecular\" (0.555), \"Reología del AH\" (0.576), \"Skin Flooding\" — evidencia directa",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3, expected parcial)"
+    },
+    {
+      "query_id": "skincare_007",
+      "corpus_evidence": "E1",
+      "reason": "Solo ritmos circadianos/cronocosmética (0.42-0.43) — tangencial a \"rutina anti-edad piel mixta 35\"; sin rutina concreta nocturna anti-edad",
+      "query_quality": "Q-A",
+      "causa_principal": "CORPUS (solo E1 — sin rutina anti-edad nocturna concreta)"
+    },
+    {
+      "query_id": "skincare_008",
+      "corpus_evidence": "E3",
+      "reason": "\"Regulación de la melanogénesis en pieles con HPI\" (0.637) + \"Gestión de HPI en pieles latinas\" — evidencia fuerte",
+      "query_quality": "Q-A",
+      "causa_principal": "NINGUNA (funciona: MRR 1.0)"
+    },
+    {
+      "query_id": "skincare_009",
+      "corpus_evidence": "E3",
+      "reason": "\"Niacinamida y pH ácido: riesgo de eritema\" (0.556) + \"Niacinamida: hidrólisis\" (0.545) — responden combinación niacinamida+VitC",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3 de niacinamida recuperada, expected es cobre+VitC)"
+    },
+    {
+      "query_id": "skincare_010",
+      "corpus_evidence": "E3",
+      "reason": "\"El pH de los limpiadores como determinante del microbioma\" (0.573) + \"Doble limpieza\" (0.525) — evidencia directa sobre limpiadores",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3 de limpiadores recuperada, expected es piel seca vs deshidratada)"
+    },
+    {
+      "query_id": "cabello_002",
+      "corpus_evidence": "E3",
+      "reason": "\"Restauración del pH y sellado cuticular post-proceso\" (0.555) + \"Viscoelasticidad capilar\" (0.543) — tratamiento cabello decolorado",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3 recuperada, expected es SERS diagnóstico)"
+    },
+    {
+      "query_id": "cabello_004",
+      "corpus_evidence": "E0",
+      "reason": "Solo higroscopía/pH/alcalinidad (0.44-0.45) — NADA sobre caída post-parto o estrés. Sin evidencia",
+      "query_quality": "Q-A",
+      "causa_principal": "CORPUS (E0 — no existe evidencia)"
+    },
+    {
+      "query_id": "cabello_006",
+      "corpus_evidence": "E2",
+      "reason": "Microbiota cuero cabelludo (0.476-0.477) — relacionado pero centrado en tinte, no en champú para graso+puntas secas",
+      "query_quality": "Q-A",
+      "causa_principal": "CORPUS (E2 parcial — corpus centrado en tinte, no champú)"
+    },
+    {
+      "query_id": "cabello_008",
+      "corpus_evidence": "E3",
+      "reason": "\"Mecanismos de hidratación: oclusivos vs humectantes\" (0.532) + \"Hidrofaciales\" (0.516) — evidencia de hidratación casero/profesional",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3 recuperada, expected es bioimpedancia)"
+    },
+    {
+      "query_id": "cejas_001",
+      "corpus_evidence": "E2",
+      "reason": "\"Microblading y envejecimiento cutáneo\" (0.553) — responde parcialmente qué es y duración; no hay definición+duración directa",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E2, expected es envejecimiento no definición/duración)"
+    },
+    {
+      "query_id": "cejas_002",
+      "corpus_evidence": "E0",
+      "reason": "Neuro-ergonomía/propiocepción (0.55-0.57) — NADA que compare microblading vs microshading vs nanoblading. Sin evidencia",
+      "query_quality": "Q-A",
+      "causa_principal": "CORPUS (E0 — no existe comparativa de técnicas)"
+    },
+    {
+      "query_id": "cejas_003",
+      "corpus_evidence": "E0",
+      "reason": "Espesor dérmico/microvascular (0.45-0.46) — NADA sobre forma de cejas para cara redonda. Sin evidencia",
+      "query_quality": "Q-A",
+      "causa_principal": "CORPUS (E0 — no existe visajismo por forma de cara)"
+    },
+    {
+      "query_id": "cejas_004",
+      "corpus_evidence": "E1",
+      "reason": "Fotobiología/metamerismo (0.52-0.53) — tangencial; la corrección de asimetría existe pero no se recupera (ptosis 0.52 fuera de top3)",
+      "query_quality": "Q-A",
+      "causa_principal": "RETRIEVAL (evidencia E1 de ptosis 0.52 existe pero rank>5; Q1/Q2 la recuperan → formulación ayuda)"
+    },
+    {
+      "query_id": "cejas_005",
+      "corpus_evidence": "E3",
+      "reason": "\"Fisiología de la cicatrización post-microblading\" (0.588) + \"microbiota ciliar\" (0.575) — evidencia directa de cuidados post",
+      "query_quality": "Q-A",
+      "causa_principal": "GROUND_TRUTH (evidencia E3 recuperada en rank 2, expected rank 1)"
+    },
+    {
+      "query_id": "cejas_007",
+      "corpus_evidence": "E3",
+      "reason": "\"Microblading y enfermedades autoinmunes: consideraciones de seguridad\" (0.590) — evidencia DIRECTA de contraindicaciones",
+      "query_quality": "Q-A",
+      "causa_principal": "RETRIEVAL (evidencia E3 de autoinmunes rank 3 pero no en expected; Q1/Q2 la suben)"
+    },
+    {
+      "query_id": "cejas_008",
+      "corpus_evidence": "E1",
+      "reason": "\"Interacción entre microblading y láser de eliminación\" (0.536) existe pero en rank >5 (0.59+ lo superan con piel seborreica/autoinmunes irrelevantes)",
+      "query_quality": "Q-A",
+      "causa_principal": "RETRIEVAL (evidencia E1 de láser existe pero rank>5; Q2 la recupera → formulación ayuda)"
+    }
+  ],
+  "causal_classification": "CAUSA MIXTA — GROUND_TRUTH dominante (8/18), CORPUS significativa (5/18: E0×4 + E2 parcial×1), RETRIEVAL contribuye (3/18: cejas_004, cejas_007, cejas_008), QUERY FORMULATION descartada como causa global (Q1/Q2 no mejoran globalmente pero rescatan 4 queries específicas de cejas)",
+  "verdict": "CAUSA MIXTA"
+}

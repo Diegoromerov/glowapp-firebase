@@ -1,0 +1,176 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-001",
+    "title": "Maquillaje en entornos de microgravedad: Dinámica de fluidos y estabilidad de emulsiones",
+    "content": "La aplicación de maquillaje en entornos de microgravedad, como en misiones de turismo espacial o simuladores, presenta desafíos físicos únicos debido a la ausencia de sedimentación gravitatoria. En condiciones terrestres, las emulsiones cosméticas dependen de la densidad de sus componentes para mantener su estructura; en microgravedad, la falta de peso altera la distribución de las partículas pigmentarias y la estabilidad de las fases oleosa y acuosa. Los estudios de la NASA sobre higiene personal en órbita sugieren que la volatilidad de los polvos cosméticos representa un riesgo respiratorio y ocular grave, ya que las partículas no se depositan y permanecen en suspensión. Para eventos en entornos de baja gravedad, es imperativo utilizar fórmulas en gel o barras de alta viscosidad que minimicen la dispersión de partículas. La adhesión debe ser optimizada mediante polímeros de red tridimensional que eviten la migración del producto hacia las membranas mucosas, previniendo reacciones de cuerpo extraño o irritación conjuntival por dispersión de pigmentos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de red",
+        "geles de silicona"
+      ],
+      "contraindications": [
+        "polvos sueltos",
+        "pigmentos volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:40.088Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-ionizacion-negativa-003",
+    "title": "Estabilidad de emulsiones cosméticas en ambientes de alta ionización negativa",
+    "content": "Los ambientes con alta ionización negativa, como las proximidades de cascadas, sistemas de purificación de aire industriales o ciertos entornos naturales, pueden influir en la estabilidad electrostática de las partículas contenidas en el maquillaje. La ionización del aire afecta la carga superficial de las gotículas de la emulsión y de los pigmentos minerales, lo que puede inducir la aglomeración de partículas cosméticas sobre la superficie cutánea. Investigaciones en dermatología ambiental sugieren que esta acumulación puede alterar el comportamiento de los filtros solares y la distribución uniforme del color. En estos escenarios, el uso de agentes tensoactivos no iónicos es preferible para evitar que la carga ambiental interfiera con la estabilidad de la película cosmética. Además, los productos deben estar formulados con polímeros antiestáticos que neutralicen la atracción de contaminantes atmosféricos cargados, previniendo la oclusión folicular inducida por la adhesión de partículas. Es fundamental asegurar que la formulación no sea fotosensibilizante, ya que la interacción entre iones y pigmentos puede modificar el perfil de seguridad del producto bajo condiciones de luz variable.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensoactivos no iónicos",
+        "polímeros antiestáticos"
+      ],
+      "contraindications": [
+        "pigmentos metálicos conductores"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_formula"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:40.088Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-bioluminiscencia-005",
+    "title": "Desafíos cromáticos en eventos bajo iluminación bioluminiscente",
+    "content": "La iluminación bioluminiscente, caracterizada por emisiones de luz de espectro estrecho (frecuentemente en el rango azul-verde), impone un desafío técnico para la colorimetría del maquillaje. El fenómeno del metamerismo ocurre cuando dos colores parecen coincidir bajo luz natural pero difieren drásticamente bajo fuentes artificiales. En eventos con iluminación bioluminiscente, los pigmentos tradicionalmente utilizados en bases y correctores pueden sufrir distorsiones cromáticas, revelando matices grises o verdosos no deseados debido a la falta de longitudes de onda rojas en la fuente luminosa. Los expertos en óptica cosmética recomiendan realizar pruebas de color bajo el espectro específico de la fuente de luz del evento antes de la aplicación definitiva. Además, la fluorescencia intrínseca de algunos ingredientes, como ciertos blanqueadores ópticos o polímeros, puede ser excitada por la iluminación, creando un efecto de brillo artificial no planificado. Se debe optar por pigmentos de alta saturación y opacidad que mantengan su integridad cromática bajo condiciones de espectro limitado, evitando formulaciones con agentes blanqueadores ópticos que reaccionan a la luz de baja longitud de onda.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos de alta saturación"
+      ],
+      "contraindications": [
+        "blanqueadores ópticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:40.088Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-realidad-extendida-006",
+    "title": "Prevención de dermatitis por oclusión térmica en entornos de Realidad Extendida (XR)",
+    "content": "La práctica de eventos en entornos de Realidad Extendida (XR), donde los usuarios utilizan visores de inmersión prolongada, genera condiciones propicias para la dermatitis por oclusión térmica. El uso de cascos y visores crea una zona de microclima bajo el dispositivo, caracterizada por altas temperaturas (34-37°C) y humedad relativa elevada. En esta zona, el maquillaje convencional tiende a migrar y acumularse en los poros, bloqueando las glándulas sudoríparas y sebáceas. Este fenómeno puede derivar en erupciones acneiformes o dermatitis de contacto por irritación. Para mitigar este riesgo, es fundamental aplicar técnicas de maquillaje con fórmulas no comedogénicas y de alta transpirabilidad. Se sugiere el uso de polvos matificantes con base de sílice tratada que absorban el exceso de sudor sin formar tapones lipídicos. Es imperativo limpiar la piel inmediatamente antes de la colocación del dispositivo para eliminar residuos de sebo que, bajo oclusión, pueden oxidarse y aumentar el riesgo de inflamación folicular. La aplicación de una barrera fina de polímeros filmógenos no oclusivos puede ayudar a proteger la integridad de la piel contra la fricción mecánica del visor.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice tratada",
+        "polímeros filmógenos"
+      ],
+      "contraindications": [
+        "ceras pesadas",
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_de_acne"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:27:40.088Z"
+  }
+]

@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "activos-quelantes-edta-001",
+    "title": "Ácido Etilendiaminotetraacético (EDTA) y el riesgo de permeabilidad cutánea",
+    "content": "El EDTA es un agente quelante ampliamente utilizado en cosmética para estabilizar formulaciones frente a la oxidación metálica. Si bien es eficaz, su rol como potenciador de la permeabilidad cutánea es una preocupación clínica latente. Estudios han demostrado que el EDTA puede alterar temporalmente la función de barrera del estrato córneo al quelar iones de calcio esenciales para la cohesión de los corneocitos y la formación de uniones estrechas. Esta alteración puede facilitar la absorción no deseada de otros ingredientes, incluidos conservantes potencialmente irritantes o contaminantes. En pieles con compromiso de barrera, como en la dermatitis atópica, el uso recurrente de productos con altas concentraciones de EDTA puede exacerbar la inflamación. Es fundamental que los formuladores equilibren la estabilidad del producto con la integridad de la barrera cutánea del usuario. Los usuarios con piel sensible deben observar si la aplicación de productos que contienen EDTA desencadena eritema o prurito, lo cual podría indicar una permeabilidad aumentada. La evidencia sugiere una vigilancia especial en productos leave-on, donde el tiempo de contacto prolongado maximiza esta interacción fisiológica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22533316/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopia"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA"
+      ],
+      "contraindications": [
+        "dermatitis atópica severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:38:38.427Z"
+  }
+]

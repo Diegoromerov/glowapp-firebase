@@ -1,0 +1,88 @@
+[
+  {
+    "chunk_id": "skincare-homeostasis-ionica-magnesio-002",
+    "title": "Homeostasis de los gradientes iónicos de magnesio en la diferenciación epidérmica",
+    "content": "El magnesio es un catión bivalente esencial que regula la proliferación y diferenciación de los queratinocitos a través de la modulación de las integrinas. Investigaciones en dermatología molecular indican que un gradiente de magnesio decreciente desde la capa basal hacia el estrato córneo es fundamental para la formación de uniones estrechas (tight junctions) competentes. Cuando este gradiente se altera, la integridad de la barrera cutánea se ve comprometida, aumentando la pérdida de agua transepidérmica y la susceptibilidad a alérgenos ambientales. La suplementación tópica con sales de magnesio estabilizadas puede restaurar parcialmente esta homeostasis, promoviendo una diferenciación ordenada del estrato córneo. Para usuarios de GlowApp en Bogotá, donde los cambios de humedad ambiental pueden desestabilizar la barrera, el uso de formulaciones ricas en minerales es una estrategia proactiva para fortalecer la resiliencia cutánea frente a la deshidratación osmótica. La clave clínica radica en la biodisponibilidad del magnesio, prefiriendo vehículos que faciliten la penetración a través de los poros foliculares sin disrumpir el pH ácido natural de la piel.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30064-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "magnesio-gluconato",
+        "cloruro-magnesio"
+      ],
+      "contraindications": [
+        "piel-con-heridas-abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:11:53.137Z"
+  },
+  {
+    "chunk_id": "skincare-homeostasis-ionica-potasio-magnesio-006",
+    "title": "Homeostasis de los gradientes iónicos de potasio y magnesio en la diferenciación epidérmica",
+    "content": "La diferenciación de los queratinocitos es un proceso estrictamente regulado por gradientes iónicos. Mientras que el calcio es bien conocido por su rol en la cohesión celular, el potasio y el magnesio son fundamentales para la activación de enzimas de membrana y la síntesis de lípidos epidérmicos. La disrupción de estos gradientes, a menudo causada por el uso de limpiadores con pH elevado o agua muy dura, resulta en una barrera defectuosa y una piel deshidratada que no responde a los humectantes convencionales. La estrategia clínica de GlowApp se centra en restaurar estos gradientes iónicos mediante el uso de aguas termales ricas en minerales y tónicos con electrolitos que imitan la composición del factor natural de hidratación (NMF). Al estabilizar la homeostasis iónica, mejoramos la capacidad de la piel para retener agua y resistir la penetración de irritantes ambientales. Este paso es esencial para pieles con dermatitis o xerosis, ya que optimiza el entorno bioquímico necesario para que la barrera cutánea se repare a sí misma de manera eficiente y natural.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(19)30252-7/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "electrolitos",
+        "agua-termal"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:11:53.137Z"
+  }
+]

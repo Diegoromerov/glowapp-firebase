@@ -1,0 +1,248 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391703479-1-63b5ee6e-efectos-de-la-radiacion-de-microondas-en-la-aceleracion-de-l",
+    "title": "Efectos de la radiación de microondas en la aceleración de la polimerización oxidativa",
+    "content": "La aplicación de radiación electromagnética de baja frecuencia (microondas) durante el tiempo de pose del tinte permanente altera la cinética de polimerización in situ. A diferencia del calor convectivo tradicional, la radiación de microondas induce una rotación dipolo de las moléculas de agua y precursores de color, reduciendo la energía de activación necesaria para la formación del complejo cromóforo. Este fenómeno acelera la transferencia de carga entre los precursores de diamina y los acopladores, permitiendo una formación de pigmentos de mayor peso molecular en tiempos reducidos. Sin embargo, este proceso conlleva riesgos de desnaturalización térmica de la queratina si la potencia no es estrictamente controlada, pudiendo resultar en una estructura cuticular porosa que compromete la retención del color a largo plazo. El control preciso de la frecuencia es vital para evitar la formación de radicales libres secundarios que degradan la integridad de la fibra capilar durante el proceso de síntesis.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "diaminas",
+        "acopladores"
+      ],
+      "contraindications": [
+        "cabello extremadamente dañado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:55:03.479Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391703479-2-0a249872-bioimpedancia-de-la-fibra-capilar-como-predictor-de-la-absor",
+    "title": "Bioimpedancia de la fibra capilar como predictor de la absorción de pigmentos sintéticos",
+    "content": "La medición de la bioimpedancia eléctrica de la fibra capilar ofrece una métrica cuantitativa sobre el estado de la cutícula y la integridad del complejo de membrana celular (CMC). Al aplicar una corriente alterna de baja intensidad, es posible determinar la capacidad de retención iónica del cabello antes de la aplicación de tintes directos catiónicos. Un valor de impedancia bajo indica una cutícula degradada con alta permeabilidad, lo que sugiere una absorción rápida pero una fijación deficiente. Por el contrario, una alta impedancia refleja una estructura compacta que requiere agentes de hinchamiento o surfactantes no iónicos para facilitar la penetración. La correlación entre la bioimpedancia y la saturación del color permite a los profesionales ajustar la concentración de precursores y el pH de la mezcla tintórea de manera personalizada, minimizando el desperdicio de producto y optimizando la uniformidad del matiz final en cabellos con porosidad heterogénea.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/journals",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:55:03.479Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391703479-3-d6e4db37-cinetica-de-la-quelacion-selectiva-de-iones-ferricos-en-la-p",
+    "title": "Cinética de la quelación selectiva de iones férricos en la prevención del viraje cromático",
+    "content": "El viraje cromático no deseado, particularmente hacia tonos cobrizos o verdosos, es a menudo el resultado de la oxidación catalítica mediada por metales de transición presentes en el agua de lavado. Los iones férricos (Fe3+) actúan como catalizadores en la degradación prematura de los precursores de color, acelerando la formación de subproductos indeseados. La incorporación de agentes quelantes orgánicos, como el EDTA o derivados de fitatos, en la formulación del tinte permite secuestrar estos iones antes de que interactúen con la matriz queratínica. La cinética de esta reacción de quelación debe ser superior a la tasa de oxidación de los precursores para garantizar la estabilidad del tono. Este análisis es fundamental para formulaciones destinadas a regiones con alta dureza del agua, donde la presencia de metales pesados es una constante que compromete la fidelidad del color y la salud estructural de la cutícula.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "fitatos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulación_quimica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:55:03.479Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391703479-4-b334c607-interferencia-de-la-birrefringencia-en-la-percepcion-del-col",
+    "title": "Interferencia de la birrefringencia en la percepción del color tras tratamientos de alisado",
+    "content": "Los tratamientos de alisado químico que alteran la estructura de los puentes disulfuro modifican significativamente las propiedades ópticas de la fibra capilar, induciendo fenómenos de birrefringencia. Esta alteración en la anisotropía del cabello afecta cómo la luz se refracta al atravesar la corteza, lo que provoca que el mismo pigmento sintético se perciba con matices distintos en función del ángulo de incidencia. En cabellos tratados, la orientación de las fibrillas de queratina se vuelve más uniforme, lo que reduce la dispersión difusa y aumenta la reflexión especular. Este cambio físico puede causar un efecto de 'color falso' donde el tono parece más oscuro o más frío de lo que es en realidad. Es crucial que el colorista considere la historia química previa, ya que la modificación de la arquitectura interna de la fibra altera la respuesta cromática final, requiriendo ajustes en la formulación de los tintes para compensar la nueva respuesta óptica del cabello.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "cabello con alisado reciente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:55:03.479Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391703479-5-e9cd601c-impacto-de-la-expresion-de-proteinas-de-choque-termico-en-la",
+    "title": "Impacto de la expresión de proteínas de choque térmico en la resiliencia del folículo post-tinte",
+    "content": "La exposición del cuero cabelludo a agentes oxidantes potentes durante el proceso de coloración permanente puede inducir una respuesta de estrés celular, manifestada por la sobreexpresión de proteínas de choque térmico (HSP). Estas proteínas actúan como chaperonas moleculares para proteger la integridad de los queratinocitos del folículo piloso frente al daño oxidativo. Si bien esta respuesta es un mecanismo de defensa natural, una exposición crónica a tintes de alta concentración puede agotar la capacidad de respuesta del folículo, llevando a una inflamación subclínica. Estudios recientes sugieren que la modulación de estas proteínas mediante ingredientes botánicos calmantes en la mezcla tintórea puede mejorar la resiliencia del cuero cabelludo. Comprender esta interacción molecular es vital para desarrollar servicios de coloración que no solo busquen la estética, sino que también preserven la homeostasis del microambiente folicular, reduciendo la incidencia de dermatitis de contacto y la sensibilidad post-procedimiento en clientes recurrentes.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://www.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes calmantes"
+      ],
+      "contraindications": [
+        "dermatitis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:55:03.479Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786391703480-6-d566f556-termodinamica-de-la-adsorcion-de-tintes-directos-en-superfic",
+    "title": "Termodinámica de la adsorción de tintes directos en superficies hidrofóbicas modificadas",
+    "content": "La adsorción de tintes directos sobre la superficie del cabello está gobernada por la energía libre de Gibbs y la interacción entre las colas hidrofóbicas de los pigmentos y los lípidos de la capa F (18-MEA). Cuando la capa F se degrada por procesos de lavado o daño mecánico, la superficie capilar se vuelve más hidrofílica, lo que altera drásticamente la afinidad de los colorantes. La termodinámica de este proceso indica que la adsorción es un fenómeno exotérmico; por lo tanto, el control de la temperatura durante la aplicación es crítico para maximizar la entalpía de unión. Un aumento excesivo de la temperatura puede desfavorecer la adsorción al incrementar la entropía del sistema, provocando una fijación inestable. El uso de polímeros anfifílicos puede actuar como puente, restaurando la afinidad necesaria para que los tintes directos se anclen eficazmente, incluso en cabellos con la cutícula severamente comprometida por degradación lipídica previa.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/journal/10974628",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros anfifílicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_superficial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T19:55:03.480Z"
+  }
+]

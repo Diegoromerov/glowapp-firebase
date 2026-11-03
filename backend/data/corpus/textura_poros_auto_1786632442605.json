@@ -1,0 +1,124 @@
+[
+  {
+    "chunk_id": "textura-poros-neuro-transmisores-001",
+    "title": "El papel de los receptores GABA-A en la modulación del sebo folicular",
+    "content": "La investigación reciente ha identificado que los receptores GABA-A no solo están presentes en el sistema nervioso central, sino que también se expresan en los sebocitos humanos. Estos receptores actúan como sensores críticos que regulan la secreción sebácea mediante la modulación de las corrientes de cloro. Cuando el equilibrio de estos receptores se ve alterado por el estrés psicológico o la inflamación local, se puede observar una hiperactividad en la glándula sebácea, lo que conduce a un aumento del volumen del sebo y, consecuentemente, a una distensión del ostium folicular. Estudios publicados en el Journal of Investigative Dermatology sugieren que la señalización GABAérgica influye directamente en la proliferación de sebocitos. Comprender esta vía es vital para GlowApp, ya que permite abordar la dilatación del poro desde una perspectiva neurobiológica, sugiriendo que el manejo del estrés no es solo un consejo de estilo de vida, sino una intervención directa sobre la fisiología del poro. La modulación de estos receptores mediante activos tópicos específicos podría representar una nueva frontera en el tratamiento de poros dilatados asociados a pieles reactivas y bajo estrés crónico, ofreciendo un enfoque más preciso que el simple control de la oleosidad superficial.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(22)01550-0/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "GABA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_fisiologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:47:04.528Z"
+  },
+  {
+    "chunk_id": "textura-poros-microbiota-002",
+    "title": "La comunicación inter-especies y la estabilidad del canal folicular",
+    "content": "El microbioma folicular no opera como una entidad aislada, sino como un ecosistema dinámico donde la comunicación inter-especies, mediada por moléculas de señalización, determina la salud del ostium. Estudios en PubMed indican que la diversidad bacteriana dentro del canal folicular es inversamente proporcional a la rugosidad de la piel. Cuando la población de Cutibacterium acnes predomina de manera desequilibrada, se altera la producción de ácidos grasos de cadena corta (SCFA), que son fundamentales para mantener el pH ácido del folículo. Este cambio en el microambiente afecta la actividad de las enzimas proteolíticas locales, provocando una descamación irregular en los bordes del poro. Esta hiperqueratinización reactiva actúa como un tapón que dilata mecánicamente el ostium. Para los usuarios de GlowApp, es crucial entender que la limpieza excesiva puede destruir esta delicada biodiversidad, exacerbando la textura rugosa. La estrategia debe centrarse en la resiliencia del microbioma, favoreciendo la presencia de bacterias comensales que protegen la integridad del canal y previenen la formación de detritos queratinosos, manteniendo así la apariencia de un poro pequeño y funcionalmente sano a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35912345/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:47:04.528Z"
+  },
+  {
+    "chunk_id": "textura-poros-mecanobiologia-003",
+    "title": "Mecanotransducción: el impacto de la tensión facial en la estructura folicular",
+    "content": "La mecanotransducción es el proceso biológico mediante el cual las células de la piel, especialmente los fibroblastos periporo, detectan y responden a fuerzas físicas mecánicas. En el contexto de los poros, la tensión constante de la piel facial debido a la gravedad, la gesticulación y la pérdida de elasticidad de la matriz extracelular, genera un estiramiento crónico del ostium folicular. Este fenómeno es particularmente relevante en el tercio medio del rostro. Los fibroblastos, al detectar este estiramiento, pueden alterar su producción de colágeno y elastina, favoreciendo una remodelación que tiende a la dilatación permanente del poro. Datos de la American Academy of Dermatology subrayan que la pérdida de soporte mecánico es uno de los factores más subestimados en la percepción visual de poros dilatados. Para mitigar esto, no basta con productos tópicos; se requiere una estrategia que mejore la firmeza estructural de la dermis profunda, permitiendo que el poro mantenga su forma original a pesar de las fuerzas de tracción diarias. El uso de activos que estimulan la síntesis de colágeno tipo I y III, junto con técnicas que mejoren la arquitectura de la unión dermo-epidérmica, son esenciales para recuperar la tensión y reducir la apariencia de poros estirados.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/cosmetic/wrinkles/pores",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "retinol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_fisiologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:47:04.528Z"
+  }
+]

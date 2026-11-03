@@ -1,0 +1,180 @@
+[
+  {
+    "chunk_id": "siliconas-volatiles-ciclosiloxanos-001",
+    "title": "Ciclosiloxanos (D4, D5, D6): Regulación y Riesgos Bioacumulativos",
+    "content": "Los ciclosiloxanos, específicamente el octametilciclotetrasiloxano (D4), decametilciclopentasiloxano (D5) y dodecametilciclohexasiloxano (D6), son siliconas volátiles ampliamente utilizadas en cosmética por su tacto sedoso y rápida evaporación. Sin embargo, su perfil de seguridad ha sido cuestionado debido a su persistencia ambiental y potencial bioacumulación. Según la Agencia Europea de Sustancias y Mezclas Químicas (ECHA), el D4 está clasificado como una sustancia altamente preocupante (SVHC) por ser persistente, bioacumulable y tóxica (PBT). Aunque el riesgo de absorción sistémica cutánea es bajo debido a su alto peso molecular y volatilidad, la comunidad científica ha instado a limitar su uso en productos 'leave-on' (que no se enjuagan) para reducir la exposición crónica y el impacto en ecosistemas acuáticos. La tendencia actual en formulación es la sustitución por alcanos de origen vegetal (como el undecano y tridecano) que ofrecen una emoliencia similar sin el perfil de toxicidad ambiental. Es fundamental que los profesionales de GlowApp identifiquen estas moléculas, especialmente en formulaciones de alta gama donde la experiencia sensorial suele priorizar la volatilidad de estos compuestos sobre la sostenibilidad, advirtiendo a pacientes con pieles sensibles sobre la oclusión potencial en folículos pilosos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "European Chemicals Agency (ECHA)",
+        "url": "https://echa.europa.eu/substances-restricted-under-reach",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "D4",
+        "D5",
+        "D6",
+        "Cyclomethicone"
+      ],
+      "contraindications": [
+        "piel-con-tendencia-comedogenica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:14:17.373Z"
+  },
+  {
+    "chunk_id": "liberadores-formaldehido-sensibilizacion-002",
+    "title": "Identificación de Liberadores de Formaldehído en Conservantes",
+    "content": "Los liberadores de formaldehído (formaldehyde releasers) son conservantes que, al degradarse en la formulación, liberan pequeñas cantidades de formaldehído para prevenir la proliferación microbiana. Entre los más comunes encontramos el DMDM hidantoína, imidazolidinil urea, diazolidinil urea y el cuaternio-15. La AAD (American Academy of Dermatology) identifica a estos compuestos como alérgenos de contacto significativos, capaces de desencadenar dermatitis alérgica en pacientes sensibilizados. El riesgo no reside en el formaldehído en sí mismo, sino en la liberación constante de concentraciones bajas que pueden superar el umbral de tolerancia de un paciente con barrera cutánea comprometida o antecedentes de eczema. Es imperativo que en la curaduría clínica de GlowApp se detecten estos ingredientes en productos para el contorno de ojos o labios, zonas donde la piel es más delgada y la permeabilidad es mayor. La recomendación es evitar el uso de productos que contengan múltiples liberadores de formaldehído, especialmente en pacientes con piel atópica, y buscar alternativas libres de liberadores que utilicen sistemas de conservación más modernos y con menor potencial alergénico, asegurando así la integridad del microbioma cutáneo y evitando reacciones de hipersensibilidad retardada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/insider/allergy-guide",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "DMDM Hydantoin",
+        "Imidazolidinyl Urea",
+        "Quaternium-15"
+      ],
+      "contraindications": [
+        "dermatitis-contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-producto"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:14:17.373Z"
+  },
+  {
+    "chunk_id": "isoflavonas-soja-impacto-endocrino-003",
+    "title": "Isoflavonas de Soja: Debate sobre Impacto Endocrino en Piel",
+    "content": "El uso de isoflavonas de soja en cosmética se ha popularizado por sus propiedades antioxidantes y su capacidad para mejorar la densidad dérmica a través de la estimulación de receptores de estrógeno. Sin embargo, su perfil de seguridad es objeto de debate en el ámbito endocrinológico. Las isoflavonas (genisteína, daidzeína) actúan como fitoestrógenos que pueden competir con el estradiol endógeno por los receptores de estrógeno alfa y beta en la piel. Aunque la absorción sistémica tras la aplicación tópica parece ser limitada, existe preocupación en pacientes con antecedentes de cánceres hormonodependientes o desequilibrios endocrinos severos. La literatura en PubMed subraya que, si bien el beneficio cosmético es real, la falta de estudios clínicos a largo plazo sobre el impacto sistémico de estas moléculas en el eje hipotálamo-hipófisis-gonadal exige precaución. GlowApp debe adoptar una postura conservadora: no recomendar productos con altas concentraciones de isoflavonas a pacientes bajo tratamiento hormonal sustitutivo o con patologías estrógeno-dependientes. La curaduría debe enfocarse en alternativas antioxidantes que no presenten actividad estrogénica, garantizando que el tratamiento cosmético no interfiera con los procesos fisiológicos sistémicos de la paciente, manteniendo el enfoque en la seguridad clínica como pilar fundamental de nuestra plataforma.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Soy Isoflavones",
+        "Genistein",
+        "Daidzein"
+      ],
+      "contraindications": [
+        "cancer-hormonodependiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:14:17.373Z"
+  },
+  {
+    "chunk_id": "resinas-acrilatos-sensibilizacion-005",
+    "title": "Resinas de Acrilatos: Epidemia de Sensibilización en Cosmética",
+    "content": "Las resinas de acrilatos y metacrilatos son componentes fundamentales en esmaltes de uñas, adhesivos para pestañas postizas y ciertos polímeros de acabado en productos de cuidado de la piel. La sensibilización a los acrilatos se ha convertido en una epidemia clínica, clasificada por la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) y grupos de alergología europeos como un riesgo creciente. La sensibilización cruzada es un factor crítico: una vez que el paciente desarrolla una alergia a un tipo de acrilato (como el HEMA - 2-hidroxietil metacrilato), es altamente probable que reaccione a toda la familia de químicos relacionados. El contacto cutáneo con estos polímeros, si no están perfectamente polimerizados, puede desencadenar dermatitis de contacto severa, no solo en los dedos, sino también en áreas donde el paciente toca su rostro (dermatitis ectópica). En GlowApp, es vital educar a los usuarios sobre los riesgos de los 'kits de manicura en casa' y la importancia de verificar los ingredientes en productos de maquillaje técnico. La recomendación es evitar el uso de productos con acrilatos en pacientes con antecedentes de dermatitis de contacto alérgica y optar por formulaciones que no incluyan monómeros de bajo peso molecular, que son los principales responsables de la penetración y sensibilización cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/allergy-acrylates-guidelines/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "Acrylates",
+        "Methacrylates"
+      ],
+      "contraindications": [
+        "dermatitis-contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria-ingredientes"
+      ],
+      "content_type": "mitos_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:14:17.373Z"
+  }
+]

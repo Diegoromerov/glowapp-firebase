@@ -1,0 +1,387 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Ácido Bórico en cosmética: Toxicidad sistémica y riesgos dermatológicos",
+    "content": "El ácido bórico ha sido utilizado históricamente como antiséptico y conservante en formulaciones cosméticas. Sin embargo, su perfil de seguridad ha sido reevaluado debido a su capacidad de absorción percutánea, especialmente en pieles dañadas o inflamadas. Según la normativa del SCCS (Scientific Committee on Consumer Safety), el uso de compuestos de boro está estrictamente limitado en concentraciones y tipos de productos, debido a su potencial toxicidad reproductiva y desarrollo sistémico. La aplicación tópica crónica, especialmente en mucosas o zonas con barrera cutánea comprometida, puede llevar a una acumulación sistémica. Clínicamente, el riesgo de dermatitis de contacto irritativa es significativo, y la exposición accidental en niños es una preocupación mayor debido a la inmadurez de su función de barrera. Es imperativo evitar su uso en formulaciones 'leave-on' para áreas extensas del cuerpo. La recomendación actual es priorizar alternativas con perfiles de seguridad mejor establecidos, como los conservantes de nueva generación que no comprometen el eje endocrino ni presentan riesgos de absorción sistémica documentados en la literatura toxicológica actual.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety (SCCS)",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido bórico"
+      ],
+      "contraindications": [
+        "embarazo",
+        "lactancia",
+        "piel dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Dietanolamina (DEA) y riesgo de nitrosaminas en formulaciones",
+    "content": "La dietanolamina (DEA) y sus derivados, como la cocamida DEA, se utilizan frecuentemente como agentes espumantes y emulsionantes en productos de limpieza. El riesgo clínico fundamental no reside únicamente en el ingrediente per se, sino en su capacidad para reaccionar con agentes nitrosantes presentes en la formulación o en el ambiente, formando nitrosaminas, compuestos clasificados como carcinógenos probables por la IARC (International Agency for Research on Cancer). Estas impurezas pueden penetrar la barrera cutánea. La dermatología moderna desaconseja el uso de DEA en productos que se dejan sobre la piel (leave-on) debido a la exposición prolongada. Aunque en productos de aclarado (rinse-off) el tiempo de contacto es breve, la tendencia en formulación segura es la sustitución por alternativas como los glucósidos de alquilo o tensioactivos libres de aminas. La monitorización de la estabilidad química para evitar la formación de nitrosaminas es un estándar de oro en la industria cosmética de alta calidad para prevenir la exposición involuntaria a carcinógenos potenciales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Agency for Research on Cancer (IARC)",
+        "url": "https://www.iarc.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dietanolamina"
+      ],
+      "contraindications": [
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Fluoruros en pastas dentales y su impacto en la dermatitis perioral",
+    "content": "La dermatitis perioral es una patología inflamatoria crónica que a menudo se ve exacerbada por factores tópicos. Existe evidencia clínica que vincula el uso de pastas dentales con alto contenido de flúor y ciertos agentes aromatizantes (como la canela o el mentol) con la persistencia o recurrencia de erupciones periorales. El flúor, aunque esencial para la salud dental, puede actuar como un irritante de contacto en individuos predispuestos, desencadenando una respuesta inflamatoria alrededor de los pliegues nasolabiales y el mentón. En pacientes con dermatitis perioral refractaria, la recomendación dermatológica estándar incluye la transición temporal a pastas dentales libres de flúor y fragancias irritantes para evaluar la remisión de los síntomas. La oclusión causada por la espuma de la pasta dental durante el cepillado prolonga el contacto del agente con la piel, aumentando el potencial de sensibilización. Este es un ejemplo clásico de cómo un producto de higiene diaria puede contrarrestar tratamientos dermatológicos activos si no se considera la interacción del ingrediente con la fisiología local de la piel facial.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fluoruro"
+      ],
+      "contraindications": [
+        "dermatitis perioral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Formol y liberadores de formaldehído en esmaltes y endurecedores",
+    "content": "El formaldehído es un sensibilizante cutáneo potente y un carcinógeno humano conocido. Aunque su uso en cosmética facial está estrictamente regulado, sigue presente en endurecedores de uñas y algunos tratamientos capilares (alisados brasileños). El peligro radica en la sensibilización cruzada y la dermatitis alérgica de contacto, que a menudo se manifiesta no solo en las uñas, sino en los párpados y el cuello debido a la transferencia manual. Además, los 'liberadores de formaldehído' (como el imidazolidinil urea o el DMDM hidantoína) pueden descomponerse y liberar pequeñas cantidades de gas formaldehído con el tiempo, especialmente bajo condiciones de calor o pH inestable. Para pacientes con antecedentes de dermatitis de contacto, es crucial revisar el INCI de todos los productos de cuidado personal, no solo los faciales. La sensibilización al formaldehído es una condición permanente; una vez sensibilizado, el paciente puede reaccionar a concentraciones mínimas, complicando el tratamiento y la elección de futuros productos cosméticos y médicos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450512/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "formaldehído",
+        "DMDM hidantoína"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "alergia_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "Propilgalato: El antioxidante oculto y la dermatitis alérgica",
+    "content": "El propilgalato es un éster utilizado como antioxidante en aceites cosméticos y productos que contienen ingredientes lipídicos propensos a la rancidez. Aunque se considera seguro en concentraciones bajas, es un alérgeno de contacto emergente que a menudo pasa desapercibido en el etiquetado. Clínicamente, la dermatitis alérgica por propilgalato puede imitar otras afecciones cutáneas, lo que dificulta su diagnóstico sin pruebas de parche (patch testing). Lo preocupante es su presencia en productos que se asumen como 'naturales' o 'botánicos', donde se añade para estabilizar los aceites vegetales. Los pacientes con piel atópica o historia de múltiples alergias deben ser cautelosos con productos basados en aceites que no especifican sus sistemas de estabilización. La reacción alérgica puede presentarse como eritema, descamación y prurito intenso. La identificación de este compuesto es vital para pacientes que no encuentran mejora evitando fragancias o conservantes comunes, ya que el propilgalato puede ser la causa oculta de su inflamación crónica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "propilgalato"
+      ],
+      "contraindications": [
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "alergia_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Metilcloroisotiazolinona (MCI): El alérgeno de contacto persistente",
+    "content": "La metilcloroisotiazolinona (MCI), a menudo combinada con la metilisotiazolinona (MIT) en la mezcla 'Kathon CG', ha sido una de las causas principales de dermatitis alérgica de contacto en la última década. Aunque su uso en productos 'leave-on' ha sido restringido severamente en la Unión Europea y otros mercados, sigue siendo común en productos de aclarado (rinse-off) como champús, acondicionadores y geles de baño. El problema clínico radica en la exposición accidental: el residuo que queda en la piel después del aclarado puede ser suficiente para desencadenar una reacción en individuos sensibilizados. Además, la sensibilización a MCI a menudo conlleva una reactividad cruzada con otros miembros de la familia de las isotiazolinonas. La recomendación experta es identificar y evitar estas mezclas en todos los productos de higiene, incluso aquellos que se retiran con agua, especialmente en pacientes con antecedentes de eccema de manos o dermatitis facial. La lectura minuciosa de las etiquetas es la única defensa efectiva contra este alérgeno potente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://eadv.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilcloroisotiazolinona"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "alergia_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Ácido cinámico y sus derivados: Fototoxicidad y sensibilización",
+    "content": "El ácido cinámico y sus derivados, como el cinamaldehído y el alcohol cinamílico, son componentes naturales de muchas fragancias y extractos botánicos (como la canela, el bálsamo del Perú o el aceite de casia). Estos compuestos poseen un doble riesgo: son potentes alérgenos de contacto y, en ciertas condiciones, pueden inducir fototoxicidad. La exposición a la radiación UV después de la aplicación de productos que contienen estos derivados puede resultar en reacciones fotoalérgicas, manifestadas como eritema persistente, hiperpigmentación post-inflamatoria o incluso ampollas. Es fundamental que los pacientes con piel sensible o antecedentes de dermatitis actínica eviten productos que contengan estos ingredientes, especialmente en rutinas de cuidado diurno. La industria cosmética a menudo oculta estos componentes bajo el término genérico 'parfum' o 'fragrance', lo que dificulta la evitación. Se recomienda buscar productos etiquetados como 'fragrance-free' (no solo 'unscented') para eliminar completamente el riesgo de exposición a estos compuestos reactivos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28558455/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido cinámico",
+        "cinamaldehído"
+      ],
+      "contraindications": [
+        "piel fotosensible",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "alergia_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "Sustancias quelantes y su impacto en la barrera cutánea",
+    "content": "Los agentes quelantes como el EDTA (ácido etilendiaminotetraacético) y el ácido fítico se utilizan ampliamente para mejorar la estabilidad de las fórmulas al secuestrar metales pesados. Si bien son beneficiosos para la integridad del producto, su uso excesivo en productos de cuidado de la piel puede alterar la homeostasis iónica de la superficie cutánea. La barrera cutánea depende de un equilibrio preciso de cationes (como calcio y magnesio) para la diferenciación adecuada de los queratinocitos y la formación de lípidos epidérmicos. La aplicación prolongada de altas concentraciones de quelantes puede, en teoría, interferir con estos procesos, debilitando la función de barrera y aumentando la permeabilidad a irritantes externos. Aunque el riesgo es bajo en productos bien formulados, en pacientes con barrera cutánea ya comprometida (como en la dermatitis atópica), es preferible optar por formulaciones con sistemas quelantes más suaves o en concentraciones mínimas. Este equilibrio es crucial para mantener la salud del microbioma y la cohesión de la capa córnea, evitando la deshidratación transepidérmica inducida por la desregulación iónica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido fítico"
+      ],
+      "contraindications": [
+        "piel atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-009",
+    "title": "Polisorbato 80: Potenciador de permeabilidad y riesgo de irritación",
+    "content": "El Polisorbato 80 es un tensioactivo no iónico y emulsionante utilizado habitualmente para solubilizar fragancias y aceites esenciales en bases acuosas. A diferencia de otros emulsionantes, el Polisorbato 80 posee propiedades que pueden aumentar la permeabilidad de la barrera cutánea, facilitando que otros ingredientes (incluidos posibles irritantes o alérgenos) penetren en capas más profundas de la epidermis. En pieles sanas, este efecto es manejable, pero en pieles reactivas, sensibilizadas o con patologías como la rosácea, el uso de productos con altas concentraciones de Polisorbato 80 puede exacerbar el eritema y la inflamación. Además, existe un debate sobre su impacto en la permeabilidad de la barrera intestinal si se ingiere (en productos labiales), aunque el enfoque dermatológico se centra en su papel como facilitador de la penetración de alérgenos. La recomendación para pacientes con alta reactividad cutánea es priorizar formulaciones con emulsionantes de menor impacto en la integridad de la barrera y menos capacidad de 'arrastre' de sustancias, protegiendo así la homeostasis natural de la piel frente a factores externos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.journals.elsevier.com/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polisorbato 80"
+      ],
+      "contraindications": [
+        "rosácea",
+        "piel sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:50:30.730Z"
+  }
+]

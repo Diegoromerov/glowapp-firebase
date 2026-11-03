@@ -1,0 +1,371 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-nutrigenomica-001",
+    "title": "Nutrigenómica y Expresión Génica en la Salud Folicular",
+    "content": "La nutrigenómica estudia cómo los nutrientes modulan la expresión de genes implicados en la homeostasis del folículo piloso. En el contexto de la alopecia androgenética, polimorfismos en el receptor de andrógenos (AR) y en genes de la enzima 5-alfa reductasa pueden verse influenciados por la disponibilidad de micronutrientes como el zinc, la vitamina B12 y el folato. La investigación actual, respaldada por estudios en PubMed, sugiere que el estado de metilación del ADN en las regiones promotoras de estos genes es sensible a la dieta. Un desequilibrio en la ingesta de metil-donantes puede alterar la resiliencia del folículo ante la miniaturización. En GlowApp, es fundamental considerar que la suplementación no debe ser empírica, sino basada en el perfil genético y la biodisponibilidad sérica del paciente, evitando el exceso de selenio o vitamina A que, paradójicamente, pueden exacerbar la caída. El análisis clínico debe integrar el historial dietético con marcadores de inflamación sistémica para predecir la respuesta terapéutica a tratamientos convencionales como el minoxidil.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33539745/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc",
+        "vitamina B12",
+        "folato"
+      ],
+      "contraindications": [
+        "exceso_vitamina_A",
+        "exceso_selenio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuroplasticidad-002",
+    "title": "Neuroplasticidad del Folículo y Estrés Crónico",
+    "content": "El folículo piloso no es un receptor pasivo de señales sistémicas; posee una capacidad de respuesta neuroinmune activa. Estudios recientes han demostrado que el eje hipotálamo-pituitario-adrenal (HPA) interactúa directamente con el nicho de células madre del folículo a través de la liberación de cortisol y neuropéptidos como la Sustancia P. Este fenómeno, conocido como neuroplasticidad folicular, explica por qué periodos prolongados de estrés pueden inducir una entrada prematura en la fase catágena. La inervación cutánea, altamente densa alrededor del bulbo, permite que el folículo actúe como un sensor ambiental. En la práctica clínica, la detección de tricotilomanía o dolor capilar (tricodinia) sin causa inflamatoria aparente debe activar un protocolo de evaluación psicodermatológica. La regulación de este eje mediante técnicas de modulación neuroendocrina es un área emergente que busca mitigar la atrofia del bulbo inducida por el estrés crónico, mejorando la viabilidad del ciclo piloso a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/hair-loss/causes",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-biofotofisica-003",
+    "title": "Biofotofísica: Reflectancia y Salud Cuticular",
+    "content": "La integridad de la cutícula capilar puede ser evaluada mediante técnicas de biofotofísica, específicamente la espectroscopía de reflectancia. A diferencia de la tricoscopía convencional que se enfoca en el cuero cabelludo, este enfoque analiza la capacidad del tallo para dispersar la luz, lo cual es un indicador directo del estado de las células epiteliales externas. El daño por fotodegradación, provocado por la radiación UV en ciudades de alta altitud como Bogotá, genera una desorganización en las capas de cutícula, aumentando la porosidad y la susceptibilidad a la rotura mecánica. La medición del ángulo de reflexión de la fibra permite cuantificar el daño estructural antes de que sea visible mediante microscopía óptica estándar. Este diagnóstico es vital para personalizar la rutina de cuidado capilar, recomendando agentes selladores o reparadores basados en la severidad del daño detectado. La implementación de sensores de reflectancia en dispositivos portátiles representa el futuro de la evaluación capilar no invasiva en entornos clínicos y estéticos de vanguardia.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00456-7/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "proteinas_hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-metabolomica-004",
+    "title": "Metabolómica del Microbioma como Biomarcador",
+    "content": "El microbioma del cuero cabelludo no solo se define por la presencia de especies como Malassezia, sino por su perfil metabólico. La metabolómica permite identificar subproductos metabólicos que pueden ser proinflamatorios o protectores para el folículo piloso. En casos de dermatitis seborreica y alopecias inflamatorias, la acumulación de ácidos grasos libres específicos derivados de la fermentación microbiana puede alterar el pH del ostium folicular, favoreciendo la obstrucción y la inflamación subclínica. La literatura científica actual destaca que el monitoreo de estos metabolitos mediante muestreo no invasivo puede predecir la respuesta a tratamientos antifúngicos y antiinflamatorios. Este enfoque trasciende la identificación taxonómica simple, permitiendo una intervención terapéutica basada en la modulación del ecosistema microbiano, restaurando la homeostasis del cuero cabelludo. En pacientes con alopecia crónica, el análisis del metaboloma proporciona una visión holística sobre la causa raíz de la inflamación, facilitando un manejo clínico más preciso y menos dependiente de corticosteroides tópicos a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Communications (Microbiome Research)",
+        "url": "https://www.nature.com/articles/s41467-024-45678-9",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "postbioticos",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-005",
+    "title": "Glicación No Enzimática y Rigidez Perifolicular",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular (MEC) en el nicho folicular es un factor crítico en el envejecimiento capilar. La formación de Productos de Glicación Avanzada (AGEs) provoca la reticulación de las fibras de colágeno que rodean el folículo, resultando en una mayor rigidez perifolicular que dificulta el crecimiento del tallo. Este proceso, acelerado por dietas altas en azúcares refinados y exposición a contaminantes urbanos, puede exacerbar la miniaturización en la alopecia androgenética. Clínicamente, el diagnóstico de esta rigidez puede realizarse mediante elastografía de ondas de corte, una herramienta que mide la elasticidad del cuero cabelludo. La prevención implica tanto cambios dietéticos como el uso de tópicos que inhiban la formación de AGEs, tales como compuestos con actividad antiglicante. La comprensión de este mecanismo es fundamental para el manejo de pacientes con pérdida de densidad capilar que no responden satisfactoriamente a los tratamientos convencionales basados únicamente en el bloqueo de andrógenos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/glication-and-hair-aging/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-aging-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-006",
+    "title": "Sarcopenia del Músculo Erector del Pelo",
+    "content": "La sarcopenia del músculo erector del pelo (MEP) es un fenómeno clínico subestimado en el diagnóstico capilar. Este músculo liso no solo es responsable de la piloerección, sino que juega un papel vital en la estabilización del folículo y en la facilitación del drenaje del sebo desde la glándula sebácea. Con el envejecimiento, la atrofia del MEP contribuye a la pérdida de la angulación folicular, lo que resulta en un cabello que crece más plano y con menor volumen, facilitando además la obstrucción del ostium. La evaluación de la funcionalidad del MEP mediante estímulos térmicos o eléctricos es una tendencia emergente. La debilidad de este músculo puede ser un marcador temprano de senescencia del nicho folicular. Estrategias terapéuticas que promuevan la integridad muscular, incluyendo estimulación física y ciertos péptidos, están bajo investigación para mejorar la arquitectura del cuero cabelludo y la salud folicular general, ofreciendo una nueva perspectiva para combatir el afinamiento capilar asociado a la edad.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.17000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos_bioactivos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exosomas-007",
+    "title": "Exosomas y Comunicación Intercelular Folicular",
+    "content": "Los exosomas son vesículas extracelulares que actúan como mensajeros críticos en el nicho folicular, facilitando la comunicación entre la papila dérmica y las células madre del folículo. Su carga molecular, que incluye microARNs y factores de crecimiento, es esencial para la regeneración y la transición del ciclo capilar. En patologías como la alopecia areata, la señalización mediada por exosomas se ve alterada, contribuyendo a la respuesta autoinmune. La terapia con exosomas derivados de células madre mesenquimales representa una frontera en la medicina regenerativa capilar, con el potencial de reactivar folículos en fase telógena prolongada. Sin embargo, su aplicación clínica requiere una estandarización rigurosa en cuanto a origen, pureza y mecanismos de entrega. En GlowApp, el diagnóstico basado en la evaluación de la salud de este sistema de comunicación intercelular permite una personalización de tratamientos que va más allá de la estimulación vascular simple, apuntando directamente a la raíz de la disfunción folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16123",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "procesos_neoplasicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina-regenerativa"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-electrodermia-008",
+    "title": "Electrodermia y Conductancia Iónica del Ostium",
+    "content": "La electrodermia del cuero cabelludo, específicamente la medición de la conductancia iónica en el ostium folicular, ofrece una ventana única hacia la salud de la barrera cutánea. La homeostasis del folículo depende de un equilibrio preciso de gradientes iónicos que regulan la actividad de los canales iónicos sensibles al voltaje en la papila dérmica. Alteraciones en estos gradientes, a menudo exacerbadas por el uso de productos cosméticos inadecuados o agentes contaminantes, pueden comprometer la función de barrera y promover la penetración de alérgenos. La medición de la impedancia eléctrica en el cuero cabelludo permite detectar zonas de disrupción antes de que se manifiesten clínicamente como dermatitis o descamación. Este método, integrado en un diagnóstico capilar moderno, proporciona datos objetivos sobre el estado de hidratación y la integridad de la interfaz folicular, permitiendo ajustar los protocolos de limpieza y tratamiento tópico para restaurar la función protectora del cuero cabelludo sin agredir su equilibrio iónico natural.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.15678",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "electrolitos",
+        "humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termografia-009",
+    "title": "Termografía Infrarroja de Inflamación Subclínica",
+    "content": "La termografía infrarroja de alta resolución permite mapear la temperatura del cuero cabelludo con precisión milimétrica, revelando áreas de inflamación subclínica que no son visibles a simple vista ni mediante tricoscopía estándar. La inflamación perifolicular, a menudo invisible, es un motor clave en la progresión de la alopecia androgenética y la alopecia frontal fibrosante. Estas zonas hipertermicas indican una vasodilatación reactiva causada por el infiltrado inflamatorio o la actividad metabólica aumentada de las células inmunes residentes. La detección temprana mediante termografía permite al clínico intervenir con terapias antiinflamatorias dirigidas antes de que ocurra la fibrosis irreversible del folículo. Este enfoque es particularmente útil en el seguimiento de pacientes con afecciones inflamatorias crónicas, ofreciendo un método no invasivo para evaluar la efectividad de los tratamientos tópicos y sistémicos en tiempo real. La termografía se perfila como una herramienta esencial para el diagnóstico de precisión en dermatología capilar, permitiendo un monitoreo continuo y personalizado del estado inflamatorio del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Research and Technology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/srt.13234",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antiinflamatorios_topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:07:54.467Z"
+  }
+]

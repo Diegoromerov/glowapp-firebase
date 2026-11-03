@@ -1,0 +1,288 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-tinte-001",
+    "title": "Efecto de la temperatura de transición vítrea (Tg) en la difusión de pigmentos",
+    "content": "La temperatura de transición vítrea (Tg) de la queratina capilar es un factor crítico en la cinética de penetración de los precursores de tinte. Cuando el cabello se encuentra por debajo de su Tg, la matriz proteica se comporta como un sólido rígido, limitando severamente la movilidad de las moléculas de tinte hacia la corteza. En condiciones de humedad y temperatura controladas, los agentes alcalinizantes y el agua actúan como plastificantes, reduciendo la Tg y permitiendo que la red de queratina pase a un estado más 'gomoso' o flexible. Estudios en ciencia de polímeros aplicados a la tricología indican que una manipulación inadecuada de este umbral térmico durante el proceso de coloración resulta en una distribución heterogénea del pigmento. Si la temperatura de pose es insuficiente, la difusión es superficial, afectando la longevidad del color y la uniformidad. Por el contrario, un exceso de calor puede inducir una desnaturalización irreversible de la estructura alfa-hélice. La gestión de la Tg mediante la temperatura del agua de lavado y el control del ambiente en el salón es una estrategia avanzada para asegurar una penetración profunda y uniforme de los precursores sin comprometer la integridad estructural de la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agua",
+        "agentes alcalinizantes"
+      ],
+      "contraindications": [
+        "calor excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-002",
+    "title": "Interacción entre la actividad de agua (aw) y la estabilidad de precursores",
+    "content": "La actividad de agua (aw) es una medida de la cantidad de agua libre o disponible en la matriz capilar, que influye directamente en la estabilidad química de los precursores de tinte de oxidación. A diferencia del contenido total de humedad, la aw determina la velocidad de las reacciones de polimerización in situ dentro de la corteza. Un nivel de aw subóptimo puede inhibir la formación de los complejos de color, resultando en tonos oxidados incompletos o virajes cromáticos no deseados. Investigaciones en la estabilidad de productos capilares demuestran que las fibras con porosidad extrema presentan una aw dinámica que fluctúa rápidamente, lo que complica la previsibilidad del tono final. Durante el servicio de coloración, la hidratación previa debe ser equilibrada; una fibra demasiado seca presenta una barrera difusional, mientras que una saturación hídrica excesiva puede diluir la concentración de precursores en el sitio de reacción. El control de la aw mediante agentes acondicionadores catiónicos antes de la aplicación del tinte permite estandarizar el entorno físico-químico, promoviendo una polimerización más eficiente y un resultado cromático más predecible en diversos perfiles de porosidad capilar.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456321/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes acondicionadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_color"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-003",
+    "title": "Correlación entre la conductividad iónica del agua de lavado y el viraje",
+    "content": "La calidad del agua utilizada en el proceso de enjuague y lavado post-coloración es un factor subestimado en la estabilidad del color. La conductividad iónica del agua, determinada por la presencia de sales disueltas como calcio, magnesio y hierro, interfiere directamente con la fijación de los tintes permanentes y semipermanentes. Estos iones pueden formar complejos insolubles con los agentes quelantes presentes en las fórmulas de los tintes o, peor aún, catalizar la oxidación incontrolada de los precursores de color ya depositados, lo que conduce a un viraje de tono prematuro hacia matices indeseados. En ciudades con suministro de agua de alta dureza, la deposición de estas sales sobre la cutícula crea una película que altera la reflectancia de la luz, afectando la percepción del brillo y el matiz final. La implementación de filtros quelantes o el uso de agua purificada en los protocolos de lavado de GlowApp es fundamental para mitigar este fenómeno. La evidencia sugiere que el control de la conductividad iónica no solo protege la integridad del color, sino que también previene la acumulación de depósitos minerales que pueden sensibilizar el cuero cabelludo y comprometer la salud estructural de la fibra a largo plazo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "agua dura"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_lavado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-005",
+    "title": "Influencia de la histéresis elástica en la retención post-lavado",
+    "content": "La histéresis elástica de la fibra capilar, entendida como la diferencia entre las propiedades de carga y descarga de la queratina tras la exposición a ciclos de hidratación y secado, juega un papel determinante en la retención de los pigmentos sintéticos. Durante el proceso de coloración, la estructura capilar se expande y contrae; si la matriz de queratina no recupera su estado de reposo original debido a una histéresis significativa, los pigmentos depositados quedan en un entorno inestable. Los estudios indican que los cabellos tratados con químicos agresivos muestran una histéresis elástica alterada, lo que resulta en una 'pérdida de memoria' estructural que facilita la salida de las moléculas de tinte durante los lavados posteriores. Esta pérdida es más pronunciada en cabellos con degradación del complejo de membrana celular (CMC). Para optimizar la retención, es vital aplicar tratamientos post-coloración que favorezcan la recuperación de la elasticidad de la fibra, tales como agentes de sellado cuticular que reduzcan la histéresis y estabilicen la estructura. La evaluación de este fenómeno permite predecir la durabilidad real del color en clientes con procesos químicos previos, ajustando las expectativas de mantenimiento y la selección de productos de cuidado en casa para preservar la integridad mecánica y cromática.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes de sellado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post_coloracion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-006",
+    "title": "Efectos de la radiación infrarroja en la estabilidad cromática a gran altitud",
+    "content": "En ciudades como Bogotá, situadas a gran altitud, la mayor exposición a la radiación infrarroja (IR) ejerce un impacto directo sobre la estabilidad de los precursores de color y la estructura de la queratina. La radiación IR penetra profundamente en la fibra, generando un aumento de temperatura localizado que acelera la cinética de oxidación de manera incontrolada. Este fenómeno puede provocar la degradación prematura de los pigmentos azoicos, responsables de los matices fríos, llevando a un viraje indeseado hacia tonos cálidos o cobrizos. Además, el calor inducido por el espectro IR acelera la degradación de los lípidos 18-MEA, debilitando la barrera hidrofóbica de la cutícula y aumentando la permeabilidad del cabello a agentes externos. Los protocolos de coloración en entornos de alta montaña deben considerar el uso de protectores térmicos y filtros UV/IR específicos durante el proceso de pose y post-aplicación. La evidencia sugiere que la combinación de radiación IR y el estrés oxidativo ambiental requiere una formulación de tinte con sistemas antioxidantes robustos para prevenir la fotodegradación acelerada y mantener la fidelidad del tono inicial bajo condiciones atmosféricas adversas.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "exposición solar directa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_color"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-008",
+    "title": "Proteómica capilar y degradación del color: el papel de la queratina",
+    "content": "La degradación del color no es solo un fenómeno de pérdida de pigmento, sino una manifestación de la degradación proteica de la fibra capilar. La proteómica capilar revela que la oxidación incontrolada durante el teñido permanente degrada aminoácidos específicos, como el triptófano, que son vitales para la estructura de la queratina. Esta degradación altera la reflectancia de la fibra y crea huecos estructurales que facilitan la salida de moléculas de tinte. El estudio de la integridad de la queratina post-tinte mediante espectroscopía muestra una correlación directa entre el daño proteico y la pérdida de fidelidad del tono. Los precursores de tinte que requieren altas concentraciones de peróxido son particularmente agresivos para la estructura de la alfa-hélice. La tendencia actual en dermocosmética es el uso de 'bond builders' o agentes reparadores que protegen los enlaces disulfuro durante el proceso químico. Estos componentes no solo preservan la salud estructural, sino que actúan como matrices de retención para los pigmentos, mejorando la estabilidad del color. El conocimiento de la composición proteica permite a los profesionales de GlowApp realizar diagnósticos más precisos, recomendando tratamientos específicos que restauren la matriz proteica y aseguren un resultado cromático duradero y saludable.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://journal.scconline.org/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes reparadores",
+        "bond builders"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_capilares"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-009",
+    "title": "Uso de biosensores colorimétricos para evaluación de daño in-situ",
+    "content": "La tecnología de biosensores colorimétricos representa una frontera emergente en la consulta clínica de coloración. Estos dispositivos, capaces de medir en tiempo real el pH, la hidratación y la integridad estructural de la fibra mediante cambios cromáticos, permiten una personalización del servicio sin precedentes. En lugar de depender de diagnósticos subjetivos, el uso de sensores permite cuantificar el daño cuticular antes y después de la aplicación del tinte, proporcionando datos objetivos sobre la porosidad diferencial y la capacidad de absorción. Esta información es crucial para ajustar el tiempo de pose y la concentración de los agentes alcalinizantes, minimizando el riesgo de sobre-procesamiento. La adopción de estas herramientas en el flujo de trabajo de GlowApp facilitaría la transición hacia una coloración de precisión, donde cada formula es diseñada basándose en las necesidades biológicas reales de la fibra del cliente. Además, los biosensores pueden detectar residuos químicos o metales pesados en la fibra, previniendo reacciones exotérmicas durante el servicio de decoloración. Esta integración tecnológica no solo eleva la calidad del resultado cromático, sino que sitúa la seguridad del cliente y la salud capilar en el centro del proceso técnico.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO (World Health Organization) Cosmetic Safety Guidelines",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:42:25.588Z"
+  }
+]

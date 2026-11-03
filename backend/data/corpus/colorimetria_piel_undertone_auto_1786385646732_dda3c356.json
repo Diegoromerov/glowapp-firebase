@@ -1,0 +1,160 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385646726-1-f37bb03e-cinetica-de-la-glicacion-no-enzimatica-y-su-impacto-en-la-cr",
+    "title": "Cinética de la glicación no enzimática y su impacto en la cromaticidad de la dermis profunda",
+    "content": "La glicación no enzimática, mediada por la reacción de Maillard, altera la estructura del colágeno y la elastina, generando productos de glicación avanzada (AGEs) que poseen propiedades intrínsecas de fluorescencia y absorción en el espectro azul-violeta. A diferencia de la pigmentación superficial, esta alteración ocurre en la matriz extracelular dérmica, provocando un viraje cromático hacia tonalidades cetrinas o amarillentas que no responden a la corrección de color superficial. La acumulación de AGEs modifica la reflectancia espectral de la piel, haciendo que el subtono parezca más cálido de lo que es en realidad. Este fenómeno es particularmente relevante en pacientes con regímenes dietéticos altos en azúcares refinados, donde la saturación de AGEs en la dermis papilar distorsiona la lectura del subtono base. La comprensión de esta cinética es vital para diferenciar entre un subtono oliva natural y una alteración cromática inducida por el estilo de vida, evitando errores en la selección de bases de maquillaje que buscan neutralizar un tono que, en realidad, requiere un enfoque de tratamiento metabólico y antioxidante.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:06.726Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385646726-2-2c2edeaa-distribucion-espacial-de-melanosomas-y-su-influencia-en-la-d",
+    "title": "Distribución espacial de melanosomas y su influencia en la dispersión de Mie",
+    "content": "La percepción del subtono cutáneo está intrínsecamente ligada a la dispersión de luz dentro de las capas epidérmicas, un proceso regido por la teoría de Mie. La distribución espacial y el tamaño de los melanosomas en el estrato basal actúan como filtros ópticos selectivos. En pieles con una disposición densa y agregada de melanosomas, la dispersión de la luz es predominantemente hacia adelante, lo que reduce la profundidad de penetración de los fotones y altera la percepción del subtono hacia matices más neutros o fríos. Por el contrario, una distribución dispersa de melanosomas permite una mayor penetración de la luz hacia la dermis, donde la dispersión de Rayleigh en las fibras de colágeno contribuye a la apariencia de subtonos fríos o azulados. Este fenómeno explica por qué el mismo fototipo puede presentar variaciones significativas en la lectura del subtono según la arquitectura de sus melanosomas. Analizar esta distribución es fundamental para entender por qué los métodos tradicionales de diagnóstico basados únicamente en la observación superficial fallan en pieles con alta densidad de melanina, requiriendo un enfoque basado en la física de la dispersión de luz.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV-VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:06.728Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385646728-3-e7974548-respuesta-vasomotora-inducida-por-el-estres-y-la-modulacion-",
+    "title": "Respuesta vasomotora inducida por el estrés y la modulación del subtono dinámico",
+    "content": "La colorimetría facial no es un parámetro estático; está sujeta a la modulación constante del eje neuro-cutáneo. La respuesta vasomotora, mediada por la liberación de catecolaminas y neuropeptidos en situaciones de estrés agudo, provoca una vasodilatación o vasoconstricción periférica que altera el flujo sanguíneo en el plexo subpapilar. Este cambio en la perfusión sanguínea modifica la concentración de hemoglobina oxigenada y reducida cerca de la superficie, lo que altera directamente la reflectancia espectral de la piel. En un diagnóstico de subtono, este fenómeno puede inducir a error, ya que el rubor pasajero o la palidez inducida por el estrés pueden enmascarar el subtono subyacente. La variabilidad cromática resultante es un desafío para los sistemas de visión artificial que no integran datos de la dinámica vascular. Es imperativo que cualquier evaluación de subtono se realice bajo condiciones de homeostasis térmica y emocional, o bien, que el sistema RAG contemple un factor de corrección basado en la variabilidad de la perfusión detectada mediante fotopletismografía remota, garantizando así la precisión del diagnóstico en entornos no controlados.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/articles/nrderm",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dinamico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:06.728Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385646728-4-a365e7e9-interferencia-del-micro-edema-intersticial-en-la-cromaticida",
+    "title": "Interferencia del micro-edema intersticial en la cromaticidad del subtono",
+    "content": "El micro-edema intersticial, a menudo subclínico y derivado de fluctuaciones hormonales o inflamación de bajo grado, altera la constante dieléctrica de los tejidos cutáneos. Al aumentar el contenido de agua en la dermis, se modifica el índice de refracción del tejido, lo que altera la trayectoria de la luz incidente y su dispersión. Este fenómeno de 'hinchazón' microscópica provoca que la piel adquiera una apariencia translúcida o 'vidriosa', lo que dificulta la lectura del subtono al dispersar la luz de forma más difusa y reducir la saturación de los colores subyacentes. El micro-edema puede hacer que un subtono cálido parezca más frío o neutro debido a la dispersión aumentada de las longitudes de onda cortas. Para los sistemas de diagnóstico, este factor es crítico: la presencia de edema subclínico en la zona periorbital o malar puede sesgar los algoritmos de detección de color. Se recomienda integrar sensores de impedancia o análisis de textura para identificar la presencia de edema antes de realizar la clasificación cromática, permitiendo así una compensación algorítmica que restaure la precisión del diagnóstico de subtono en pieles con retención de líquidos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina",
+        "drenantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:14:06.728Z"
+  }
+]

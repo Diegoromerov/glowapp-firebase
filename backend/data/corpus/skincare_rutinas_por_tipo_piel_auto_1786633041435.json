@@ -1,0 +1,306 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-001",
+    "title": "Modulación de la vía de señalización del receptor de aril-hidrocarburos (AhR) ante la polución",
+    "content": "El receptor de aril-hidrocarburos (AhR) es un factor de transcripción citosólico que actúa como sensor ambiental ante contaminantes como el material particulado (PM2.5) y los hidrocarburos aromáticos policíclicos presentes en el aire de Bogotá. La activación crónica de este receptor en los queratinocitos induce una respuesta inflamatoria persistente y la expresión de metaloproteinasas de matriz (MMPs), acelerando la degradación del colágeno. Clínicamente, esto se traduce en una barrera cutánea debilitada y una respuesta exacerbada a irritantes tópicos. La estrategia terapéutica debe centrarse en la aplicación de antioxidantes de bajo peso molecular capaces de modular la activación del AhR sin bloquear su función fisiológica necesaria para la homeostasis epidérmica. Estudios en la literatura dermatológica sugieren que compuestos como los polifenoles específicos y ciertos derivados de la vitamina B3 pueden antagonizar parcialmente esta vía, protegiendo la integridad de la unión dermo-epidérmica frente al exposoma urbano. Es fundamental incluir agentes quelantes en la rutina nocturna para asegurar la eliminación de partículas metálicas depositadas en el estrato córneo, evitando que actúen como catalizadores de reacciones de oxidación adicionales.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33946258/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "antioxidantes",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exposoma_urbano"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-002",
+    "title": "Dinámica de los canales de acuaporinas (AQP3) en la hidratación inducida por oclusivos",
+    "content": "Las acuaporinas, específicamente la AQP3, son proteínas de membrana responsables del transporte de agua y glicerol a través de la epidermis. En pieles deshidratadas, la expresión de AQP3 suele estar disminuida, limitando la capacidad de la piel para retener humedad en las capas profundas del estrato córneo. El uso clínico de oclusivos tradicionales como la vaselina o la dimeticona es efectivo para reducir la pérdida de agua transepidérmica (TEWL), pero no potencia la funcionalidad intrínseca de los canales de acuaporinas. Para una optimización clínica, se recomienda la combinación de oclusivos de nueva generación con ingredientes que estimulen la expresión de AQP3, como el extracto de glucósido de glicerol. Este enfoque dual no solo sella la superficie, sino que facilita la distribución uniforme del agua desde la dermis hacia los queratinocitos viables. La evidencia sugiere que el mantenimiento de un gradiente osmótico adecuado es crucial para la diferenciación celular, evitando la acumulación de células muertas que otorgan una textura rugosa a la superficie cutánea. La rutina debe priorizar la aplicación sobre piel ligeramente humedecida para maximizar la eficacia de estos canales.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerol",
+        "dimeticona",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_profunda"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-003",
+    "title": "Impacto de la actividad enzimática de la esfingomielinasa en la xerosis persistente",
+    "content": "La esfingomielinasa es una enzima clave en la síntesis de ceramidas a partir de la esfingomielina en la bicapa lipídica del estrato córneo. En pacientes con xerosis persistente o dermatitis atópica, se ha observado una disminución en la actividad de esta enzima, lo que compromete la formación de las laminillas lipídicas necesarias para la función de barrera. A diferencia de la simple aplicación de cremas hidratantes, el abordaje clínico para restaurar esta barrera requiere el uso de precursores específicos y la modulación del pH local, ya que la esfingomielinasa posee un pH óptimo ligeramente ácido para su máxima actividad enzimática. Los limpiadores con pH alcalino pueden inactivar esta enzima, exacerbando la sequedad cutánea. Se recomienda la incorporación de limpiadores syndet con pH 5.0-5.5 y el uso de lípidos biomiméticos que contengan precursores de ceramidas de cadena larga. Esta estrategia no solo alivia el síntoma inmediato, sino que promueve la regeneración endógena de la barrera cutánea a largo plazo, reduciendo la dependencia de emolientes frecuentes y mejorando la resiliencia ante factores ambientales externos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24755836/",
+        "year": 2014
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "esfingosina",
+        "limpiadores-syndet"
+      ],
+      "contraindications": [
+        "limpiadores-alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-004",
+    "title": "Modulación de la respuesta neuroinmunológica mediante receptores TRPV1 en pieles reactivas",
+    "content": "El receptor de potencial transitorio vanilloide 1 (TRPV1) es un canal iónico expresado en las terminaciones nerviosas sensoriales de la piel y en los queratinocitos. Su activación excesiva, provocada por estímulos térmicos (calor), químicos o psicosomáticos, desencadena la liberación de neuropéptidos proinflamatorios como la sustancia P, resultando en el característico enrojecimiento y sensación de ardor o picor en pieles sensibles. El manejo clínico de este eje neurocutáneo es esencial en pacientes con rosácea o dermatitis por contacto. Las estrategias actuales incluyen el uso de moduladores tópicos que elevan el umbral de activación del TRPV1, tales como extractos de plantas con propiedades calmantes específicas o ingredientes biotecnológicos que minimizan la percepción sensorial de irritación. Es vital evitar el uso de productos que contengan fragancias volátiles, mentol o alcohol, ya que estos actúan como agonistas directos de los canales TRP, exacerbando la cascada neurogénica. La educación al paciente sobre la temperatura de los productos aplicados (evitar agua caliente o productos refrigerados en exceso) es parte fundamental de la rutina para prevenir la activación de estos receptores.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.iadvl.org/articles/123",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "extracto-de-avena",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "mentol",
+        "alcohol-desnaturalizado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "piel_sensible"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-005",
+    "title": "Optimización del metabolismo sebáceo mediante la vía SREBP-1 en el acné del adulto",
+    "content": "La proteína de unión al elemento regulador de esteroles (SREBP-1) es un factor de transcripción central en la regulación de la lipogénesis en las glándulas sebáceas. En el acné del adulto, la sobreactivación de esta vía, a menudo modulada por factores hormonales y el exposoma, conduce a una producción excesiva de sebo con una composición alterada (mayor proporción de escualeno oxidado). Esta alteración no solo favorece la proliferación de Cutibacterium acnes, sino que también estimula la inflamación folicular. El tratamiento clínico moderno busca la regulación de la vía SREBP-1 sin recurrir exclusivamente a agentes secantes que alteran la barrera lipídica. Ingredientes como el ácido azelaico y ciertos derivados del zinc han demostrado capacidad para interferir en la señalización lipídica, reduciendo la tasa de seborregulación. Además, la modulación dietética (reducción de carga glucémica) es un complemento necesario, ya que la insulina y el factor de crecimiento similar a la insulina (IGF-1) son activadores potentes de SREBP-1. Una rutina efectiva para este tipo de piel debe priorizar activos que mantengan la fluidez del sebo, evitando la hiperqueratinización folicular que obstruye los poros.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28552763/",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-azelaico",
+        "zinc",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "exceso-de-oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "control_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-006",
+    "title": "Bioenergética mitocondrial y reparación nocturna en pieles maduras",
+    "content": "La senescencia celular cutánea está intrínsecamente ligada al declive de la bioenergética mitocondrial. Durante el ciclo circadiano nocturno, la piel entra en una fase de reparación donde la mitofagia (eliminación de mitocondrias dañadas) y la biogénesis mitocondrial son esenciales para restaurar la función celular. En pieles maduras, este proceso se ralentiza, resultando en una acumulación de especies reactivas de oxígeno (ROS) y una disminución en la síntesis de proteínas estructurales como el colágeno y la elastina. La intervención clínica debe enfocarse en la sincronización de activos tópicos con este ritmo biológico. Ingredientes que actúan como inductores de la autofagia o precursores de NAD+ pueden potenciar la capacidad regenerativa nocturna. Es fundamental que la rutina nocturna no sea sobrecargada con oclusivos que impidan la eliminación de desechos metabólicos, permitiendo una correcta oxigenación tisular. La evidencia sugiere que la aplicación de péptidos específicos antes del descanso puede mejorar la señalización necesaria para que las mitocondrias recuperen su eficiencia energética, lo cual es visible a mediano plazo en una mejora de la turgencia y luminosidad facial.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "nad-precursores",
+        "sirtuinas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-008",
+    "title": "Gestión de la osmolaridad del estrato córneo ante estrés ambiental y baja humedad",
+    "content": "La osmolaridad del estrato córneo es un determinante fundamental de la función barrera. En ambientes con baja humedad o alta exposición a contaminantes, la pérdida de agua transepidérmica altera el equilibrio iónico, lo que puede desencadenar la apoptosis prematura de los queratinocitos y la desestabilización de las uniones intercelulares. El uso de solutos compatibles, como la ectoína o el betaína, es una estrategia clínica eficaz para gestionar este estrés osmótico. Estos compuestos actúan como chaperonas moleculares que estabilizan las proteínas y las membranas celulares frente a la deshidratación y el calor. A diferencia de los humectantes tradicionales, los solutos compatibles ayudan a mantener la presión osmótica interna sin interferir con los procesos metabólicos normales de la epidermis. La incorporación de estos ingredientes en la rutina diaria, especialmente en entornos urbanos con fluctuaciones de humedad, permite que la piel mantenga su integridad estructural incluso bajo condiciones ambientales adversas. Es una medida preventiva de alto valor clínico para pacientes con piel sensible o tendencia a la xerosis, mejorando significativamente su capacidad de respuesta adaptativa.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28552763/",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ectoina",
+        "betaina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:02.674Z"
+  }
+]

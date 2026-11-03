@@ -1,0 +1,209 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-inteligencia-artificial-001",
+    "title": "Maquillaje para eventos con sistemas de reconocimiento biométrico por infrarrojos",
+    "content": "El auge de la biometría en eventos de alta seguridad plantea desafíos únicos para el maquillaje. Los sistemas de reconocimiento facial basados en infrarrojo cercano (NIR) detectan patrones de absorción y reflexión de la piel que pueden verse alterados por productos cosméticos. Algunos pigmentos, particularmente los que contienen óxidos de hierro o micas tratadas, pueden generar 'puntos ciegos' o artefactos en la lectura de la profundidad facial. Según estudios sobre visión artificial, el uso de productos con alta reflectancia en el espectro NIR puede inducir falsos negativos. Se recomienda el uso de cosméticos con tecnología de dispersión de luz neutra y evitar polvos de acabado con sílice amorfa en exceso, ya que su capacidad de dispersión de luz visible no siempre es coherente con el espectro infrarrojo. La clave reside en la uniformidad de la capa cosmética, evitando la acumulación en pliegues nasolabiales, donde los sensores suelen buscar puntos de referencia críticos para la validación de identidad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IEEE Xplore",
+        "url": "https://ieeexplore.ieee.org/document/9452811",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice amorfa",
+        "óxidos de hierro"
+      ],
+      "contraindications": [
+        "productos con alto contenido de micas reflectantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biometria-y-estetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:52:22.799Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-ozono-002",
+    "title": "Maquillaje como escudo frente a la oxidación por ozono troposférico",
+    "content": "El ozono troposférico (O3) es un potente agente oxidante que, al contacto con la superficie cutánea, desencadena la peroxidación lipídica, especialmente en el sebo rico en escualeno. En eventos urbanos con alta contaminación, esta reacción compromete la barrera cutánea y desestabiliza el maquillaje. La literatura dermatológica, incluyendo reportes de la American Academy of Dermatology, sugiere que la formación de radicales libres por ozono puede alterar la integridad de las emulsiones cosméticas, provocando su separación o degradación prematura. Para contrarrestar esto, el maquillaje debe integrarse con una base de antioxidantes de alto peso molecular que no se absorban totalmente, actuando como una película de sacrificio. Es fundamental priorizar formulaciones con polímeros formadores de película que minimicen la permeabilidad de los gases contaminantes, protegiendo tanto la salud de la barrera cutánea como la estética del producto aplicado. La aplicación de un 'primer' con capacidad quelante de metales pesados es una estrategia complementaria eficaz.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/pollution-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "polímeros formadores de película"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:52:22.799Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-alta-ionizacion-003",
+    "title": "Adherencia de partículas PM2.5 en ambientes de alta ionización ambiental",
+    "content": "La ionización del aire en espacios cerrados o cercanos a maquinaria eléctrica genera una carga electrostática sobre la superficie cutánea. Esta carga facilita la atracción y adhesión de partículas en suspensión (PM2.5), las cuales pueden quedar atrapadas en la matriz del maquillaje. Estudios en toxicología cutánea indican que estas partículas pueden inducir inflamación subclínica mediante la activación de los receptores de hidrocarburos arilo (AhR). Para mitigar este riesgo, es necesario emplear técnicas de sellado que neutralicen la carga electrostática. El uso de sprays fijadores con agentes antiestáticos y polímeros que crean una barrera física no oclusiva es esencial. Además, el mantenimiento de un pH cutáneo equilibrado previene que el sudor, con su carga electrolítica, potencie la conductividad eléctrica de la piel, lo cual atrae más contaminantes. Se recomienda el uso de polvos translúcidos con propiedades de dispersión electrostática para eventos en entornos tecnológicos o industriales de alta carga.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32452109/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes antiestáticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:52:22.799Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-estres-emocional-004",
+    "title": "Gestión del pH cutáneo ante el estrés emocional y su impacto en la adherencia",
+    "content": "El estrés emocional agudo durante eventos sociales activa el eje hipotalámico-pituitario-adrenal, provocando la liberación de cortisol y un aumento en la secreción sebácea, lo que altera el pH del manto ácido cutáneo. Esta variación, a menudo hacia un entorno más alcalino, afecta directamente la estabilidad de las emulsiones cosméticas formuladas para un pH fisiológico de ~5.5. Cuando el pH aumenta, la adherencia de pigmentos y polímeros se debilita, favoreciendo la migración y la oxidación del maquillaje. Para gestionar esto, es fundamental utilizar pre-bases (primers) con propiedades buffer que ayuden a mantener el pH estable frente a la sudoración inducida por el estrés. La evidencia sugiere que la aplicación de productos con un ligero exceso de capacidad amortiguadora puede prevenir que la variabilidad química del sudor comprometa la integridad del maquillaje. Es crucial evitar ingredientes que, al contacto con un pH alterado, cambien de color (efecto metamerismo químico) o pierdan su capacidad de fijación.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:52:22.799Z"
+  },
+  {
+    "chunk_id": "maquillaje-deshidratacion-osmotica-008",
+    "title": "Maquillaje en entornos de deshidratación osmótica ambiental",
+    "content": "En entornos de muy baja humedad relativa, como aviones o climas desérticos, ocurre el fenómeno de deshidratación osmótica. La piel, buscando equilibrar el gradiente de humedad, libera agua desde las capas profundas hacia la atmósfera. Si el maquillaje aplicado es oclusivo pero carece de agentes humectantes, la evaporación se ve impedida, pero si es permeable, la piel pierde agua rápidamente, provocando la fisuración de la base cosmética. Para eventos en estas condiciones, se requiere una estrategia de 'hidratación estratificada': aplicar humectantes de bajo peso molecular (como ácido hialurónico de cadena corta) seguidos de una barrera lipídica que mantenga la flexibilidad de la película de maquillaje. Los productos cosméticos con polímeros elastoméricos son superiores, ya que permiten que la película se estire y adapte a las micro-contracciones cutáneas causadas por la deshidratación sin agrietarse. Es vital evitar el uso de polvos en exceso, ya que estos absorben la poca humedad superficial disponible, exacerbando la sequedad.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "polímeros elastoméricos"
+      ],
+      "contraindications": [
+        "polvos compactos en exceso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:52:22.799Z"
+  }
+]

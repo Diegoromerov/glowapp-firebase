@@ -1,0 +1,97 @@
+{
+  "cycle": "R6-RECOVERY-2",
+  "run": "B",
+  "timestamp_start": "2026-08-17T00:32:08.739Z",
+  "pre_state": {
+    "total": "5663",
+    "nulls": "0",
+    "nonnulls": "5663"
+  },
+  "backup_pre": {
+    "path": "C:\\beauty-app\\backend\\R6_RECOVERY2_PRE_REBUILD.sql",
+    "size_mb": "12.26",
+    "sha256": "a11cd5d73fe1e4a3",
+    "rows": 5663,
+    "nulls": 5663
+  },
+  "pilot": null,
+  "rebuild": null,
+  "post_integrity": {
+    "total": "5663",
+    "nulls": "0",
+    "nonnulls": "5663",
+    "all_sample_dims_1024": true
+  },
+  "chunk_integrity": {
+    "rows": {
+      "total": "5663",
+      "with_content": "5663",
+      "with_title": "5663"
+    }
+  },
+  "index_validation": {
+    "hnsw_index_exists": true,
+    "test_query_works": true,
+    "sample_results": [
+      {
+        "chunk_id": "e6a9873330f011845fac3e15ad1ceb005106f32f31e9d7a3b1228f831ac231d0",
+        "similarity": "0.7054"
+      },
+      {
+        "chunk_id": "268ac643a35810fed299a92aa2f34bbde168a7e7b7ecc78deae2eb8c93fcfc40",
+        "similarity": "0.6990"
+      },
+      {
+        "chunk_id": "9d8491a3ca1abdb52b0883e91c03f00f11b4e82ba0cf86761582dbd266dd3246",
+        "similarity": "0.6955"
+      },
+      {
+        "chunk_id": "9384f4249d89a69ec72513ddedbc4372c2b38b94e59460a97587b141791d7983",
+        "similarity": "0.6693"
+      },
+      {
+        "chunk_id": "689639e37189f3ca1d6953b8e384608305d11e9b4910168c5aabc125dcba6577",
+        "similarity": "0.6686"
+      }
+    ]
+  },
+  "smoke_test": [
+    {
+      "query": "niacinamida rutina facial",
+      "hits": 5,
+      "top1": 0.6233471805831218
+    },
+    {
+      "query": "micropigmentación cejas asimétricas",
+      "hits": 5,
+      "top1": 0.761419406046638
+    },
+    {
+      "query": "decoloración cabello cuidados",
+      "hits": 5,
+      "top1": 0.6588633925488593
+    },
+    {
+      "query": "colorimetría capilar tinte",
+      "hits": 5,
+      "top1": 0.6019902943284322
+    },
+    {
+      "query": "esmalte semipermanente uñas",
+      "hits": 5,
+      "top1": 0.8192417305144558
+    }
+  ],
+  "gold_v5": null,
+  "critical_cases": null,
+  "reproducibility": {
+    "note": "Run B must be executed separately for A≡B comparison"
+  },
+  "backup_post": null,
+  "production_guard": {
+    "status": "PASS",
+    "note": "Local BD verified"
+  },
+  "verdict": "REBUILD-PASS-WITH-DRIFT",
+  "timestamp_end": "2026-08-17T00:32:17.216Z"
+}

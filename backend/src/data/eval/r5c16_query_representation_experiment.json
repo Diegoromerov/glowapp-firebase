@@ -1,0 +1,71 @@
+{
+  "cycle": "28",
+  "experiment": "R5-C16",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "baseline_r5c_unchanged": true,
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO — referencia histórica" },
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "reproducibility": "A ≡ B — top-10 IDs idénticos en las 3 condiciones (A/B/C) en ambas corridas",
+  "conditions": {
+    "A": "ORIGINAL QUERY (texto exacto del dataset)",
+    "B": "SEMANTICALLY ENRICHED (intención explicada, sin información nueva)",
+    "C": "STRUCTURED INTENT (sujeto + acción + contexto)"
+  },
+  "leakage_checks": {
+    "chunk_id_in_queries": 0,
+    "queries_constructed_without_retrieval": true,
+    "expected_identical_across_conditions": true,
+    "note": "B/C construidas manualmente (sin LLM, sin retrieval, sin expected). Verificación automática de chunk_ids: 0. Solo cambia el texto de entrada al embedding."
+  },
+  "metrics_supported_13": {
+    "A_original": { "p1": 0.4615, "p3": 0.6667, "p5": 0.4615, "r5": 0.6077, "mrr": 0.7179 },
+    "B_enriched": { "p1": 0.8462, "p3": 0.4872, "p5": 0.4, "r5": 0.5398, "mrr": 0.9231 },
+    "C_structured": { "p1": 0.9231, "p3": 0.4615, "p5": 0.3692, "r5": 0.4987, "mrr": 0.9615 }
+  },
+  "delta": {
+    "B_minus_A": { "r5": -0.0679, "mrr": 0.2052, "p5": -0.0615, "p1": 0.3847 },
+    "C_minus_A": { "r5": -0.109, "mrr": 0.2436, "p5": -0.0923, "p1": 0.4616 }
+  },
+  "miss_recovery": {
+    "misses_baseline": 13,
+    "recovered_by_representation": 2,
+    "recovery_rate": 0.1538,
+    "recovered_queries": ["skincare_008", "cabello_002"],
+    "regressions": 7,
+    "regressed_queries": ["skincare_003", "skincare_006", "cabello_008", "cejas_004", "cejas_005", "cejas_007", "cejas_008"]
+  },
+  "the_3_real_misses_of_r5c15": {
+    "cabello_002": { "A_r5": 0.4, "B_r5": 0.6, "C_r5": 0.4, "verdict": "RECOVERED por B (0.4→0.6, +0.2)" },
+    "cejas_004": { "A_r5": 0.3333, "B_r5": 0.1667, "C_r5": 0.1667, "verdict": "REGRESSED (la representación enriquecida empeora)" },
+    "cejas_008": { "A_r5": 0.3333, "B_r5": 0.1667, "C_r5": 0.1667, "verdict": "REGRESSED (la representación enriquecida empeora)" }
+  },
+  "semantic_competition_analysis": {
+    "band": "0.50-0.58 (confirmada)",
+    "effect_of_enrichment": "La expansión de intención mueve el embedding FUERA de la banda de competencia correcta: concentra la similitud en 1-2 chunks (MRR sube) pero pierde la evidencia multi-chunk (R@5 baja). Es un artefacto de recall↔precisión, no una mejora de retrieval.",
+    "why_mrr_rose_while_r5_fell": "MRR premia el primer hit correcto; B/C colocan un gold en rank 1 (P@1 0.46→0.85) pero pierden los demás chunks de evidencia dentro de top-5 → R@5 cae. Mejora aparente, no real."
+  },
+  "verdict": "QUERY-REPRESENTATION-DISCARDED",
+  "verdict_rationale": "La representación enriquecida/estructurada NO recupera los misses reales (solo 2/13, 15.4%) e introduce 7 regresiones (54%). R@5 y P@5 EMPEORAN en ambas condiciones experimentales (ΔR@5 −0.068 B, −0.109 C). El MRR sube por artefacto de concentración del primer hit, no por mejora de retrieval. De los 3 misses reales de R5-C15, 2 empeoran con la reformulación. La competencia semántica en la banda 0.50-0.58 NO se reduce con mejor representación de query.",
+  "answers": {
+    "1_misses_recuperados": "2/13 (skincare_008, cabello_002)",
+    "2_porcentaje": "15.4%",
+    "3_cambio_r5": "-0.0679 (B) / -0.1090 (C) — EMPEORA",
+    "4_cambio_mrr": "+0.2052 (B) / +0.2436 (C) — artefacto de concentración, no mejora real",
+    "5_regresiones": "7/13 (54%)",
+    "6_mejora_reproducible": "A≡B sí reproducible (top10 idénticos), pero la 'mejora' es negativa en recall",
+    "7_competencia_semantica": "NO disminuye — la banda 0.50-0.58 persiste; los chunks de simetría muscular (cejas_004, sim 0.34) y remoción (cejas_008, sim 0.41-0.54) siguen fuera",
+    "8_problema_restante": "El déficit NO está en la representación textual de la query. Apunta a: (a) discriminación del embedding (banda comprimida 0.50-0.58, R5-C5 gap −0.0116), (b) representación del DOCUMENTO (chunks con sim 0.34-0.54 pese a ser evidencia real), (c) competencia semántica estructural",
+    "9_intervenir_motor": "NO todavía — la representación de query no es la palanca; el siguiente experimento debe atacar discriminación de embeddings (A/B controlado) o representación de documentos",
+    "10_siguiente_experimento": "R5-C17: A/B controlado de modelo de embeddings (mismo corpus, mismo gold V5, mismas queries) o experimento de representación de documentos (chunk enrichment) — ambos sin tocar producción"
+  },
+  "recommendation_r5c17": {
+    "1": "DESCARTAR query expansion/reformulación como intervención — evidencia negativa reproducible (ΔR@5 < 0, 7 regresiones)",
+    "2": "El siguiente experimento causal: A/B controlado de modelo de embeddings (p.ej. comparar nv-embedqa-e5-v5 vs alternativa en la MISMA BD/corpus/gold, evaluando solo la banda 0.50-0.58 donde ocurre la competencia)",
+    "3": "Alternativa complementaria: experimento de representación de documentos (enriquecer el texto del chunk que entra al embedding de passage) — los chunks de simetría/remoción tienen sim 0.34-0.54 pese a ser evidencia real, lo que sugiere representación de documento deficiente",
+    "4": "Mantener los 3 misses como casos de evaluación (no eliminarlos)",
+    "5": "Baseline R5-C y GOLD-V5 permanecen intactos"
+  },
+  "not_to_touch": ["motor productivo", "HNSW", "threshold", "chunking", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

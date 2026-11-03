@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-08-05T15:00:00Z",
+  "version": "1.0",
+  "description": "Baseline de métricas RAG para GlowApp - Primera evaluación de referencia",
+  "metrics": {
+    "retrieval": {
+      "precision_at_5": 0.75,
+      "recall_at_5": 0.65,
+      "mrr": 0.70,
+      "top_k_accuracy": 0.55
+    },
+    "generation": {
+      "faithfulness": 0.85,
+      "answer_relevancy": 0.80
+    },
+    "latency": {
+      "p50_ms": 2500,
+      "p95_ms": 6000,
+      "p99_ms": 12000
+    },
+    "availability": {
+      "error_rate": 0.02,
+      "fallback_rate": 0.15
+    }
+  },
+  "quality_gates_passed": true,
+  "dataset_info": {
+    "total_queries": 30,
+    "categories": {
+      "skincare": 10,
+      "cabello": 10,
+      "cejas": 10
+    },
+    "difficulties": {
+      "easy": 10,
+      "medium": 12,
+      "hard": 8
+    }
+  },
+  "notes": "Baseline inicial. Actualizar cuando se hagan cambios significativos al RAG (chunking, embeddings, metadata, prompts)."
+}

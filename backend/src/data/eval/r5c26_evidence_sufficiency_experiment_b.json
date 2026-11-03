@@ -1,0 +1,676 @@
+{
+  "experiment": "R5-C26",
+  "cycle": 38,
+  "hypothesis": "H26: descomponer la respuesta en claims verificables y vincular cada claim requerido con evidencia recuperada reduce los falsos SUFFICIENT del agregador sin perder los casos multi-chunk realmente sustentados.",
+  "timestamp": "2026-08-15T20:00:21.140Z",
+  "database_guard": "LOCAL_ONLY (beauty_db @ localhost:5435)",
+  "production_guard": "active — aborta si URL no contiene localhost; Railway NO contactada",
+  "dataset": "GOLD-V5 (18 queries; 15 no-UNSUPPORTED evaluadas; 55 chunk IDs únicos)",
+  "baseline": {
+    "r5": 0.7885,
+    "mrr": 0.7179,
+    "note": "NO MODIFICADO"
+  },
+  "controls": {
+    "oracle_only": {
+      "note": "ORACLE_ONLY — gold usado SOLO para evaluación post-hoc, nunca dentro del mecanismo",
+      "evidence_sufficiency_50": "14/15"
+    }
+  },
+  "configuration": {
+    "top_k": 100,
+    "suff_coverage": 0.5,
+    "partial_coverage": 0.2,
+    "min_claim_len": 5,
+    "min_score": 0.45,
+    "informativeness": "IDF-suave: 1 − (chunks del pool que soportan el claim / 100)",
+    "mechanism_inputs": [
+      "query",
+      "candidate_pool",
+      "contenido de chunks",
+      "metadata título"
+    ],
+    "mechanism_forbidden": [
+      "gold IDs",
+      "expected chunks",
+      "labels",
+      "información de misses",
+      "LLM externo",
+      "Internet"
+    ]
+  },
+  "metrics": {
+    "classification_summary": {
+      "SUFFICIENT": 11,
+      "VECTOR_MISS": 1,
+      "PARTIAL": 3
+    },
+    "false_sufficient_rate": 0,
+    "false_insufficient_rate": 0,
+    "query_success_rate": 0.7333,
+    "evidence_precision_avg": 0.1431,
+    "claim_coverage_avg": 0.7415,
+    "comparison_r5c25": {
+      "c25_false_sufficient_rate": null,
+      "c25_query_success": 0.5333,
+      "c25_precision": 0.3611,
+      "note": "R5-C25: 4 queries SUFFICIENT con precision 0 (skincare_006, skincare_009, cejas_004, cejas_007) → false-sufficient ≈ 4/15 = 0.267 si se reconstruye con el criterio SUFFICIENT+prec=0"
+    }
+  },
+  "false_sufficient_analysis": {
+    "rate": 0,
+    "queries": [],
+    "comparison_note": "R5-C25: 4/15 SUFFICIENT con precision 0 (0.267). R5-C26 objetivo: reducir este número."
+  },
+  "false_insufficient_analysis": {
+    "rate": 0,
+    "queries": [],
+    "comparison_note": "Una query con evidencia real en top-50 no debe marcarse INSUFFICIENT (especialmente cabello_002 y cejas_008)."
+  },
+  "per_query_results": [
+    {
+      "query_id": "skincare_003",
+      "claims": [
+        "rutina",
+        "grasa",
+        "clima",
+        "humedo",
+        "bogota"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.075,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "poros-clima-bogota-009",
+        "poros-humedad-bogota-008",
+        "maquillaje-eventos-presión-atmosférica-005",
+        "skincare-rutinas-008-osmolaridad-estrato-corneo",
+        "skincare-rutinas-por-tipo-piel-osmolaridad-006",
+        "colorimetria-capilar-humedad-006",
+        "skincare-rutinas-quelacion-metales-006",
+        "colorimetria-ambiental-005"
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "claims": [
+        "mejor",
+        "protector",
+        "solar",
+        "sensible",
+        "melasma"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.075,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+        "proteccion-solar-filtros-quimicos-006",
+        "trend-sunscreen-mixing-004",
+        "skincare-rutinas-007-fotoproteccion-he-luz-visible",
+        "foto-envejecimiento-manos-007",
+        "skincare-rutinas-fotoproteccion-006",
+        "skincare-cronobiologico-003",
+        "fotoenvejecimiento-radiacion-006"
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "claims": [
+        "acido",
+        "hialuronico",
+        "correctamente"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.1026,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "a2278f70d13dce52cc7e9ec0e655337f1492a2e93dbf7c1097535da0cf4e133a",
+        "reologia-acido-hialuronico-005",
+        "ingredientes_activos_contraindicaciones-1786377360011-6-35b0c828-acido-hialuronico-de-alto-peso-molecular-y-el-riesgo-de-efec",
+        "reologia-ah-006",
+        "reologia-rellenos-008",
+        "ingredientes_activos_contraindicaciones-1786377212497-6-dab75f7c-acido-hialuronico-de-bajo-peso-molecular-inflamacion-en-piel",
+        "tendencia-beauty-bio-hacking-nutricosmetica-001",
+        "tendencias_belleza_virales-1786385270943-1-8555ce3b-suplementacion-con-acido-hialuronico-hidratacion-sistemica-o"
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "claims": [
+        "rutina",
+        "nocturna",
+        "anti-edad",
+        "mixta"
+      ],
+      "claim_coverage": 0,
+      "classification": "VECTOR_MISS",
+      "evidence_precision": 0,
+      "query_success": false,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "rutina",
+        "nocturna",
+        "anti-edad",
+        "mixta"
+      ],
+      "selected_evidence": []
+    },
+    {
+      "query_id": "skincare_008",
+      "claims": [
+        "tratamiento",
+        "hiperpigmentacion",
+        "post-inflamatoria",
+        "morena"
+      ],
+      "claim_coverage": 0.697,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.1212,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "morena"
+      ],
+      "selected_evidence": [
+        "skincare_rutinas_por_tipo_piel-1786383525373-5-d63c7938-regulacion-de-la-melanogenesis-en-pieles-con-hiperpigmentaci",
+        "skincare_rutinas_por_tipo_piel-1786386526556-5-d5b91d3d-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare_rutinas_por_tipo_piel-1786383913119-5-2e8d3614-regulacion-de-la-melanogenesis-en-hiperpigmentacion-post-inf",
+        "cuidado_corporal_y_spa-1786383716346-5-3380c079-manejo-de-la-hiperpigmentacion-por-friccion-en-zonas-de-flex",
+        "skincare_rutinas_por_tipo_piel-1786385298854-5-7aa0fd96-gestion-de-la-hiperpigmentacion-post-inflamatoria-inhibicion",
+        "skincare_rutinas_por_tipo_piel-1786384668484-5-b6573116-gestion-de-la-hiperpigmentacion-post-inflamatoria-mediante-i",
+        "skincare-rutinas-piel-fotodano-003",
+        "efecto-rebote-despigmentantes-003"
+      ]
+    },
+    {
+      "query_id": "skincare_009",
+      "claims": [
+        "puedo",
+        "combinar",
+        "niacinamida",
+        "vitamina",
+        "misma",
+        "rutina"
+      ],
+      "claim_coverage": 0.8088,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.0833,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "puedo"
+      ],
+      "selected_evidence": [
+        "01f01621c2ce95fe24a4c245010ad38011d7e6f444406ef7e22843b38d0e35ad",
+        "riesgo-niacinamida-ph-bajo-002",
+        "niacinamida-hidrolisis-ph-002",
+        "skincare-niacinamida-inflamacion-007",
+        "8bce9de6e9ec233679e16fff4c3d90b63cc87d48311ce1e3afe3f4154e64cbad",
+        "activos-ph-acido-nicotinico-003",
+        "activos-quelacion-vitamina-c-004",
+        "activos-quelantes-y-metales-003"
+      ]
+    },
+    {
+      "query_id": "skincare_010",
+      "claims": [
+        "mejor",
+        "limpiador",
+        "sensible"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.0909,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "skincare-microbioma-limpiadores-004",
+        "skincare-rutinas-por-tipo-piel-microbioma-barrera-002",
+        "trend-limpieza-doble-006",
+        "skincare-limpieza-acustica-004",
+        "maquillaje-eventos-entornos-alta-humedad-ionica-005",
+        "poros-doble-limpieza-004",
+        "skincare-post-ejercicio-002",
+        "poros-limpieza-doble-006"
+      ]
+    },
+    {
+      "query_id": "cabello_002",
+      "claims": [
+        "tratamiento",
+        "cabello",
+        "danado",
+        "decoloracion"
+      ],
+      "claim_coverage": 0.7207,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.0938,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "danado"
+      ],
+      "selected_evidence": [
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "colorimetria-ph-balance-006",
+        "colorimetria-quelacion-metales-005",
+        "colorimetria-degradacion-lipidos-006",
+        "estabilidad-ph-003",
+        "colorimetria-capilar-interaccion-cobre-002",
+        "colorimetria-capilar-viscoelasticidad-003"
+      ]
+    },
+    {
+      "query_id": "cabello_006",
+      "claims": [
+        "mejor",
+        "champu",
+        "cuero",
+        "cabelludo",
+        "graso",
+        "puntas",
+        "secas"
+      ],
+      "claim_coverage": 0.3736,
+      "classification": "PARTIAL",
+      "evidence_precision": 1,
+      "query_success": false,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "mejor",
+        "graso",
+        "puntas",
+        "secas"
+      ],
+      "selected_evidence": [
+        "microbiota-scalp-008",
+        "colorimetria-capilar-microbiota-003"
+      ]
+    },
+    {
+      "query_id": "cabello_008",
+      "claims": [
+        "tratamiento",
+        "casero",
+        "profesional",
+        "hidratacion",
+        "profunda"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.1081,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "hidratacion-oclusiva-corporal-008",
+        "hidrofaciales-tecnologia-006",
+        "parches-hidrogel-ojos-003",
+        "beautification-inyecciones-vitaminas-006",
+        "hidratacion-oclusivos-humectantes-009",
+        "cuidado-corporal-mitos-exfoliacion-004",
+        "hidrodinamica-lamina-005",
+        "electrolitos-topicos-001"
+      ]
+    },
+    {
+      "query_id": "cejas_001",
+      "claims": [
+        "microblading",
+        "cuanto"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.075,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-microblading-envejecimiento-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo_cejas_microblading-1786390887661-6-b2026874-optimizacion-del-angulo-de-incidencia-manual-mediante-cinema",
+        "visajismo-microblading-psicodermatologia-009",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo_cejas_microblading-1786391681605-6-b05115c7-neuro-ergonomia-del-trazado-optimizacion-de-la-cinematica-ma"
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "claims": [
+        "correccion",
+        "cejas",
+        "asimetricas",
+        "micropigmentacion"
+      ],
+      "claim_coverage": 0.7354,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.0526,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "asimetricas"
+      ],
+      "selected_evidence": [
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+        "efectos-temperatura-luz-percepcion-diseño-007",
+        "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+        "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+        "micropigmentacion-y-viraje-002",
+        "visajismo-cejas-microblading-007",
+        "visajismo-cejas-microblading-metamerismo-008"
+      ]
+    },
+    {
+      "query_id": "cejas_005",
+      "claims": [
+        "cuidados",
+        "post-microblading",
+        "hacer",
+        "evitar"
+      ],
+      "claim_coverage": 1,
+      "classification": "SUFFICIENT",
+      "evidence_precision": 0.1176,
+      "query_success": true,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [],
+      "selected_evidence": [
+        "visajismo-cejas-microblading-cicatrizacion-003",
+        "visajismo-cejas-microblading-microbiota-006",
+        "visajismo-cejas-microblading-interaccion-peptidos-cicatrizacion",
+        "visajismo-cejas-microblading-neuro-ergonomia-005",
+        "visajismo-microblading-cronobiologia-004",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo-cejas-microblading-envejecimiento-009",
+        "visajismo-cejas-microblading-limpieza-008"
+      ]
+    },
+    {
+      "query_id": "cejas_007",
+      "claims": [
+        "contraindicaciones",
+        "microblading",
+        "deberia",
+        "hacerse"
+      ],
+      "claim_coverage": 0.4444,
+      "classification": "PARTIAL",
+      "evidence_precision": 0.0769,
+      "query_success": false,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "deberia",
+        "hacerse"
+      ],
+      "selected_evidence": [
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-microblading-psicodermatologia-009",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-cejas-diabetis-cicatrizacion-004",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo-microblading-interaccion-medicamentosa-007",
+        "visajismo-cejas-microblading-limpieza-008"
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "claims": [
+        "remocion",
+        "microblading",
+        "hecho",
+        "opciones",
+        "riesgos"
+      ],
+      "claim_coverage": 0.3421,
+      "classification": "PARTIAL",
+      "evidence_precision": 0.075,
+      "query_success": false,
+      "false_sufficient": false,
+      "false_insufficient": false,
+      "unsupported_claims": [
+        "remocion",
+        "hecho",
+        "opciones"
+      ],
+      "selected_evidence": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-microblading-psicodermatologia-009",
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+        "microblading-manejo-piel-atrofica-corticoides-005"
+      ]
+    }
+  ],
+  "claim_evidence_matrices": [
+    {
+      "query_id": "cabello_002",
+      "claims": [
+        {
+          "claim": "tratamiento",
+          "informativeness": 0.9,
+          "supporting_chunks": [
+            "colorimetria-capilar-ph-pos-tinte-009",
+            "colorimetria-capilar-viscoelasticidad-009",
+            "colorimetria-capilar-proteomica-003",
+            "colorimetria-capilar-ph-estabilidad-008"
+          ],
+          "supported": true
+        },
+        {
+          "claim": "cabello",
+          "informativeness": 0.69,
+          "supporting_chunks": [
+            "colorimetria-capilar-ph-pos-tinte-009",
+            "colorimetria-capilar-viscoelasticidad-009",
+            "colorimetria-ph-balance-006",
+            "colorimetria-quelacion-metales-005"
+          ],
+          "supported": true
+        },
+        {
+          "claim": "danado",
+          "informativeness": 1,
+          "supporting_chunks": [],
+          "supported": false
+        },
+        {
+          "claim": "decoloracion",
+          "informativeness": 0.99,
+          "supporting_chunks": [
+            "colorimetria-degradacion-lipidos-006"
+          ],
+          "supported": true
+        }
+      ],
+      "classification": "SUFFICIENT"
+    },
+    {
+      "query_id": "cejas_004",
+      "claims": [
+        {
+          "claim": "correccion",
+          "informativeness": 0.92,
+          "supporting_chunks": [
+            "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+            "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+            "visajismo-cejas-microblading-efecto-tyndall-005",
+            "visajismo-cejas-microblading-uso-espectrofotometria-seleccion-pigmento"
+          ],
+          "supported": true
+        },
+        {
+          "claim": "cejas",
+          "informativeness": 0.88,
+          "supporting_chunks": [
+            "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+            "efectos-temperatura-luz-percepcion-diseño-007",
+            "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+            "micropigmentacion-y-viraje-002"
+          ],
+          "supported": true
+        },
+        {
+          "claim": "asimetricas",
+          "informativeness": 1,
+          "supporting_chunks": [],
+          "supported": false
+        },
+        {
+          "claim": "micropigmentacion",
+          "informativeness": 0.98,
+          "supporting_chunks": [
+            "micropigmentacion-y-viraje-002",
+            "interferencia-pigmentos-micropigmentacion-003"
+          ],
+          "supported": true
+        }
+      ],
+      "classification": "SUFFICIENT"
+    },
+    {
+      "query_id": "cejas_008",
+      "claims": [
+        {
+          "claim": "remocion",
+          "informativeness": 1,
+          "supporting_chunks": [],
+          "supported": false
+        },
+        {
+          "claim": "microblading",
+          "informativeness": 0.6,
+          "supporting_chunks": [
+            "visajismo-cejas-microblading-piel-grasa-005",
+            "visajismo-cejas-enfermedades-autoinmunes-007",
+            "visajismo-microblading-psicodermatologia-009",
+            "microblading-psicodermatologia-expectativas-009"
+          ],
+          "supported": true
+        },
+        {
+          "claim": "hecho",
+          "informativeness": 1,
+          "supporting_chunks": [],
+          "supported": false
+        },
+        {
+          "claim": "opciones",
+          "informativeness": 1,
+          "supporting_chunks": [],
+          "supported": false
+        },
+        {
+          "claim": "riesgos",
+          "informativeness": 0.96,
+          "supporting_chunks": [
+            "visajismo-cejas-cuidado-post-inmediato-009",
+            "visajismo-cejas-diabetis-cicatrizacion-004",
+            "visajismo-cejas-microblading-interaccion-procedimientos-laser-co2-fraccionado",
+            "visajismo-cejas-microblading-interaccion-laser-001"
+          ],
+          "supported": true
+        }
+      ],
+      "classification": "PARTIAL"
+    }
+  ],
+  "miss_analysis": [
+    {
+      "query_id": "cabello_002",
+      "classification": "SUFFICIENT",
+      "query_success": true,
+      "claim_coverage": 0.7207,
+      "evidence_precision": 0.0938,
+      "unsupported_claims": [
+        "danado"
+      ],
+      "selected_evidence": [
+        "colorimetria-capilar-ph-pos-tinte-009",
+        "colorimetria-capilar-viscoelasticidad-009",
+        "colorimetria-ph-balance-006",
+        "colorimetria-quelacion-metales-005",
+        "colorimetria-degradacion-lipidos-006",
+        "estabilidad-ph-003",
+        "colorimetria-capilar-interaccion-cobre-002",
+        "colorimetria-capilar-viscoelasticidad-003"
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "classification": "SUFFICIENT",
+      "query_success": true,
+      "claim_coverage": 0.7354,
+      "evidence_precision": 0.0526,
+      "unsupported_claims": [
+        "asimetricas"
+      ],
+      "selected_evidence": [
+        "visajismo_cejas_microblading-1786392731705-2-770a6226-evaluacion-de-la-dispersion-de-luz-en-el-tejido-dermico-para",
+        "visajismo_cejas_microblading-1786387183421-2-11a156a2-interferencia-electromagnetica-y-estabilidad-de-pigmentos-co",
+        "efectos-temperatura-luz-percepcion-diseño-007",
+        "visajismo_cejas_microblading-1786390596133-2-03647cc0-interferencia-cromatica-por-vascularizacion-profunda-en-el-d",
+        "visajismo_cejas_microblading-1786390788828-5-e5c0814c-espectroscopia-de-reflectancia-para-la-prediccion-del-viraje",
+        "micropigmentacion-y-viraje-002",
+        "visajismo-cejas-microblading-007",
+        "visajismo-cejas-microblading-metamerismo-008"
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "classification": "PARTIAL",
+      "query_success": false,
+      "claim_coverage": 0.3421,
+      "evidence_precision": 0.075,
+      "unsupported_claims": [
+        "remocion",
+        "hecho",
+        "opciones"
+      ],
+      "selected_evidence": [
+        "visajismo-cejas-microblading-piel-grasa-005",
+        "visajismo-cejas-enfermedades-autoinmunes-007",
+        "visajismo-microblading-psicodermatologia-009",
+        "microblading-psicodermatologia-expectativas-009",
+        "visajismo-cejas-microblading-propiocepcion-tactil-003",
+        "visajismo-cejas-microblading-propiocepcion-008",
+        "visajismo_cejas_microblading-1786391608383-2-b036de32-neuroergonomia-del-trazado-optimizacion-de-la-cinematica-man",
+        "microblading-manejo-piel-atrofica-corticoides-005"
+      ]
+    }
+  ],
+  "reproducibility": "RUN A ≡ RUN B (verificar en segunda corrida)",
+  "verdict": null
+}

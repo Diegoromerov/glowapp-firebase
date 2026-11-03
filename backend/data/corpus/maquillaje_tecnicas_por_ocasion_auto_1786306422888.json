@@ -1,0 +1,396 @@
+[
+  {
+    "chunk_id": "maq-ocasion-microbiota-001",
+    "title": "Maquillaje para eventos en entornos cerrados: Impacto del microbioma",
+    "content": "Los eventos en entornos cerrados y climatizados alteran significativamente el microbioma cutáneo. La aplicación de maquillaje de larga duración en estas condiciones crea una película oclusiva que, al combinarse con la recirculación de aire, favorece la proliferación de bacterias comensales y patógenas, como Cutibacterium acnes. Según estudios publicados en el Journal of Investigative Dermatology, la alteración del pH cutáneo debida a la oclusión prolongada modifica la diversidad microbiana, aumentando el riesgo de disbiose. Para eventos de larga duración, se recomienda el uso de cosméticos que incorporen prebióticos o postbióticos que mantengan la integridad de la barrera cutánea. Es crucial evitar fórmulas con conservantes que alteren drásticamente la flora residente, optando por productos no oclusivos que permitan la transpiración natural durante la exposición prolongada en interiores.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [
+        "productos oclusivos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-inflamacion-002",
+    "title": "Maquillaje en eventos post-exposición a radiación UV: Gestión del eritema",
+    "content": "La aplicación de maquillaje inmediatamente después de una exposición solar prolongada, incluso si no hay quemadura visible, puede exacerbar una respuesta inflamatoria subclínica. La radiación UV induce la liberación de citoquinas proinflamatorias como IL-1 e IL-6. Aplicar productos cosméticos con fragancias o conservantes irritantes sobre esta piel sensibilizada aumenta el riesgo de dermatitis de contacto irritativa. La American Academy of Dermatology sugiere priorizar la reparación de la barrera lipídica mediante el uso de ceramidas y niacinamida antes de aplicar cualquier pigmento. Se recomienda evitar bases de alta cobertura que requieran desmaquillantes agresivos al finalizar el evento, optando por formulaciones minerales con óxido de zinc que calmen la dermis y proporcionen una barrera física adicional sin ocluir los folículos ni interferir con los mecanismos de reparación celular post-exposición.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "niacinamida",
+        "oxido de zinc"
+      ],
+      "contraindications": [
+        "fragancias",
+        "alcohol denat"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "manejo_post_solar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-estatica-003",
+    "title": "Maquillaje en entornos con alta carga electrostática: Adherencia de partículas",
+    "content": "En entornos modernos con alta carga de dispositivos electrónicos y climatización, la acumulación de carga electrostática en la superficie cutánea puede atraer partículas de polución y micropartículas del propio maquillaje. Este fenómeno, documentado en estudios de dermatología ambiental, incrementa la oclusión folicular y el estrés oxidativo. El uso de polvos fijadores con propiedades antiestáticas es una estrategia emergente para reducir la deposición de contaminantes atmosféricos durante eventos urbanos. Investigaciones en PubMed destacan que la neutralización de la carga superficial mediante ingredientes humectantes y polímeros no iónicos puede mejorar significativamente la durabilidad del maquillaje y prevenir la formación de radicales libres derivados de la interacción entre la polución y la piel. Es fundamental integrar antioxidantes tópicos en la rutina pre-maquillaje para mitigar el daño oxidativo inducido por esta interacción electrostática constante en eventos de larga duración.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "polimeros no ionicos"
+      ],
+      "contraindications": [
+        "polvos con alta carga mineral estatica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-sedentaria-004",
+    "title": "Maquillaje para eventos de sedentarismo prolongado: Dinámica de la microcirculación",
+    "content": "Durante eventos de larga duración que implican sedentarismo prolongado, como conferencias o vuelos de larga distancia, la microcirculación cutánea puede verse comprometida debido a la inactividad física. Esto reduce el aporte de oxígeno y nutrientes a los queratinocitos, lo que se traduce en una piel con tono apagado y menor capacidad de regeneración. La aplicación de maquillaje debe ser mínima para no entorpecer los procesos de intercambio gaseoso. Se recomienda el uso de técnicas de 'maquillaje activo' que utilicen ingredientes con propiedades vasodilatadoras suaves o estimulantes de la microcirculación, como la cafeína, para combatir el efecto de estancamiento circulatorio. Evitar texturas densas que limiten la flexibilidad de la capa córnea es esencial, ya que, bajo condiciones de baja actividad, la piel tiende a perder elasticidad y la migración de pigmentos hacia las líneas de expresión se vuelve más evidente debido a la falta de tono muscular facial constante.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura",
+        "seca"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina"
+      ],
+      "contraindications": [
+        "bases densas de alta cobertura"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_circulatoria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-ph-005",
+    "title": "Maquillaje para eventos con alta carga emocional: Variación del pH cutáneo",
+    "content": "El estrés emocional intenso durante eventos sociales o laborales provoca una respuesta sistémica que incluye la secreción de sudor apocrino y cambios en la composición del sebo cutáneo. Este cambio altera el manto ácido protector, elevando el pH de la superficie cutánea. Un pH elevado reduce la eficacia de los péptidos antimicrobianos naturales y altera la estabilidad de los pigmentos de maquillaje, pudiendo causar su oxidación prematura o viraje de color (efecto naranja). Para estos eventos, es vital utilizar primers equilibrantes del pH que contengan agentes tamponadores. Según literatura de la IADVL, el mantenimiento de un pH cercano a 5.0 es indispensable para la homeostasis cutánea. El uso de productos con tecnología de ajuste de color y fórmulas estables frente a variaciones de acidez protege no solo la estética del maquillaje, sino también la integridad de la barrera cutánea frente a la proliferación bacteriana inducida por el estrés emocional.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes tamponadores",
+        "primers equilibrantes"
+      ],
+      "contraindications": [
+        "productos con alta carga de acidos grasos libres"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_estres_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-oclusion-006",
+    "title": "Maquillaje y riesgo de dermatitis por contacto en eventos de alta fricción",
+    "content": "En eventos que implican contacto físico frecuente o uso de accesorios (máscaras, cascos, equipos de protección), el maquillaje puede actuar como un irritante mecánico. La fricción constante sobre una capa de maquillaje puede fragmentar las partículas de pigmento, introduciéndolas en los poros y favoreciendo la irritación por contacto. Este fenómeno, conocido como dermatitis por fricción, es exacerbado por el uso de productos con partículas sólidas abrasivas o ceras de bajo punto de fusión. La recomendación clínica es optar por selladores de maquillaje basados en polímeros flexibles que actúen como una 'segunda piel' elástica, evitando la ruptura del producto. Es fundamental asegurar que los ingredientes sean hipoalergénicos y libres de fragancias para minimizar el riesgo de sensibilización cuando el producto es presionado contra la piel. La limpieza posterior al evento debe ser exhaustiva para eliminar cualquier resto de pigmento que haya podido penetrar en los conductos pilosebáceos debido a la presión mecánica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros flexibles",
+        "agentes hipoalergenicos"
+      ],
+      "contraindications": [
+        "particulas exfoliantes",
+        "ceras pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion_dermatitis"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-espectro-007",
+    "title": "Maquillaje para eventos bajo iluminación de espectro artificial variable",
+    "content": "La iluminación en eventos (LEDs, lámparas halógenas, fluorescentes) tiene un impacto directo en cómo se percibe el maquillaje y en la respuesta de la piel. La exposición a luz artificial de espectro incompleto puede enmascarar la verdadera saturación del color, llevando a una sobre-aplicación que obstruye los poros. Además, ciertas longitudes de onda, como la luz azul de alta intensidad, pueden inducir la formación de radicales libres en la piel si no se utilizan filtros adecuados. La estrategia experta consiste en el uso de bases con pigmentos tratados que reflejen la luz de manera uniforme, evitando el efecto de 'máscara' bajo diferentes temperaturas de color. La incorporación de antioxidantes de amplio espectro en la base permite neutralizar los efectos nocivos de la luz visible de alta energía (HEV). Es esencial realizar pruebas de color bajo condiciones de luz similares a las del evento para evitar el uso excesivo de producto y garantizar la salud cutánea a largo plazo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos tratados",
+        "antioxidantes HEV"
+      ],
+      "contraindications": [
+        "pigmentos con alta carga de oxido de titanio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-clima-seco-008",
+    "title": "Maquillaje en ambientes de baja humedad: El riesgo de la fisura de pigmentos",
+    "content": "En entornos con baja humedad relativa (aire acondicionado central o climas áridos), la piel experimenta una pérdida de agua transepidérmica acelerada. El maquillaje, especialmente las bases de larga duración, puede deshidratarse sobre la superficie cutánea, provocando la formación de microfisuras en la capa de pigmento. Estas fisuras no solo afectan la estética, sino que permiten la entrada de partículas de polvo y microorganismos a la dermis. La técnica de 'maquillaje en capas' debe priorizar el uso de humectantes oclusivos y agentes higroscópicos como el ácido hialurónico de bajo peso molecular debajo de la base. Según la American Academy of Dermatology, es crucial mantener la hidratación de la capa córnea para evitar la exacerbación de condiciones como el eczema o la xerosis. Se recomienda evitar productos con alcoholes secantes y optar por emulsiones de agua en aceite (W/O) que proporcionan una barrera de hidratación superior durante eventos de larga exposición a ambientes secos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido hialuronico",
+        "humectantes"
+      ],
+      "contraindications": [
+        "alcohol denat",
+        "polvos compactos en exceso"
+      ],
+      "season": [
+        "invierno"
+      ],
+      "applicable_modules": [
+        "manejo_hidratacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  },
+  {
+    "chunk_id": "maq-ocasion-circadiano-009",
+    "title": "Maquillaje y sincronización circadiana: Impacto en la permeabilidad cutánea",
+    "content": "La piel presenta ritmos circadianos que regulan la permeabilidad de la barrera cutánea y la actividad de las glándulas sebáceas. Durante la noche, la permeabilidad cutánea aumenta, lo que incrementa el riesgo de absorción de ingredientes cosméticos potencialmente irritantes presentes en el maquillaje. Aplicar productos de maquillaje de larga duración durante eventos nocturnos puede interferir con los mecanismos naturales de reparación celular. Es fundamental que los productos utilizados para eventos nocturnos sean formulados con ingredientes de alta biocompatibilidad y libres de disruptores endocrinos. Estudios en cronobiología dermatológica sugieren que el uso de maquillaje nocturno debe limitarse a formulaciones que respeten el pH fisiológico y que no obstruyan la renovación celular. La eliminación inmediata del maquillaje al finalizar el evento es vital para permitir que la piel realice sus funciones de reparación nocturna sin la interferencia de residuos cosméticos que pueden inducir estrés oxidativo y comprometer la salud de la barrera a largo plazo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ingredientes biocompatibles"
+      ],
+      "contraindications": [
+        "disruptores endocrinos",
+        "siliconas pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cronobiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:13:26.957Z"
+  }
+]

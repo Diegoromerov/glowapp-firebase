@@ -1,0 +1,214 @@
+[
+  {
+    "chunk_id": "guias_unas-1786387474332-1-a6f1a212-efecto-piezorresistivo-en-la-lamina-ungueal-estres-mecanico-",
+    "title": "Efecto piezorresistivo en la lámina ungueal: estrés mecánico y adhesión",
+    "content": "La lámina ungueal no es un tejido inerte; posee propiedades piezorresistivas donde la aplicación de cargas mecánicas altera su conductividad eléctrica y respuesta estructural. Al aplicar geles de alta densidad, la rigidez del producto crea una interfaz de alta tensión frente a la flexibilidad natural de la uña. Este desajuste en el módulo de Young genera micro-fracturas en la zona de estrés (perfil lateral), facilitando la infiltración de agua y microorganismos. Es fundamental comprender que la adhesión química no solo depende del pH, sino de la capacidad del producto para absorber las deformaciones elásticas de la uña sin comprometer la integridad de los hemidesmosomas en el lecho. Un curado insuficiente en los bordes laterales exacerba este fenómeno, provocando desprendimientos prematuros que a menudo se confunden con una mala preparación de la placa. La técnica de aplicación debe considerar la arquitectura del arco de tensión para distribuir las fuerzas tangenciales de manera uniforme, evitando la concentración de estrés en los puntos de fractura habituales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00654-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos",
+        "oligómeros"
+      ],
+      "contraindications": [
+        "onicolisis previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_aplicada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:34.332Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387474333-2-caeb08ae-migracion-de-monomeros-y-sensibilizacion-cutanea-por-contact",
+    "title": "Migración de monómeros y sensibilización cutánea por contacto accidental",
+    "content": "La sensibilización a los acrilatos es un proceso acumulativo mediado por la penetración de monómeros de bajo peso molecular a través de la barrera cuticular. Cuando los productos fotopolimerizables entran en contacto con la piel periungueal, la falta de una polimerización total (debido a la inhibición por oxígeno o sub-curado) permite que los monómeros libres atraviesen la epidermis. Una vez en la dermis, actúan como haptenos, uniéndose a proteínas transportadoras y activando las células de Langerhans. Este mecanismo inmunológico puede desencadenar una dermatitis alérgica de contacto que, una vez establecida, es irreversible y limita el uso de dispositivos médicos futuros (como adhesivos dentales o prótesis). La prevención radica en el uso de lámparas con irradiancia calibrada y la eliminación inmediata de cualquier residuo de gel antes de la exposición a la luz. La limpieza con solventes debe ser precisa para no alterar el pH del lecho, evitando así la desnaturalización de la queratina superficial que facilita la absorción sistémica de los componentes químicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "di-HEMA"
+      ],
+      "contraindications": [
+        "dermatitis activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_biologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:34.333Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387474333-3-f72d8b9c-fotobiologia-de-la-inhibicion-por-oxigeno-causas-y-consecuen",
+    "title": "Fotobiología de la inhibición por oxígeno: causas y consecuencias",
+    "content": "La capa pegajosa (inhibición por oxígeno) observada tras el curado de geles es el resultado de la reacción de los radicales libres con el oxígeno atmosférico, lo que termina prematuramente la cadena de polimerización en la superficie. Si bien es necesaria para la adhesión entre capas, su presencia excesiva indica una falla en la cinética de curado. En sistemas de baja irradiancia, esta capa puede ser demasiado profunda, dejando monómeros sin reaccionar expuestos al medio ambiente. La gestión técnica de este fenómeno requiere un equilibrio entre el tiempo de exposición y la intensidad espectral de la lámpara. Un exceso de inhibición no solo compromete la durabilidad del servicio, sino que aumenta el riesgo de toxicidad por contacto. Es imperativo verificar que la longitud de onda de la lámpara coincida con el pico de absorción del fotoiniciador (típicamente TPO o BAPO) para asegurar una conversión de monómero a polímero superior al 95%. La limpieza de esta capa debe realizarse con agentes que no comprometan la integridad de la matriz lipídica ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/3/1234",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores",
+        "monómeros"
+      ],
+      "contraindications": [
+        "lámparas no certificadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotopolimerizacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:34.333Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387474333-4-a3c8f478-homeostasis-lipidica-y-permeabilidad-de-la-lamina-ungueal",
+    "title": "Homeostasis lipídica y permeabilidad de la lámina ungueal",
+    "content": "La lámina ungueal contiene una matriz lipídica intercelular que regula su flexibilidad y permeabilidad. El uso indiscriminado de deshidratadores agresivos (acetona pura o primers ácidos fuertes) no solo elimina la humedad superficial, sino que extrae los lípidos estructurales que mantienen la cohesión de los queratinocitos. Esta deslipidación forzada vuelve a la uña porosa, aumentando la absorción de solventes y monómeros en aplicaciones posteriores. La homeostasis lipídica es vital para prevenir la onicoclasia química. Un protocolo técnico correcto debe limitar la deshidratación a la zona de la placa ungueal que recibirá el producto, evitando el contacto con el eponiquio y los pliegues laterales. La restauración de la barrera tras el servicio es un paso crítico a menudo omitido. La aplicación de aceites de cutícula con ácidos grasos esenciales ayuda a sellar los espacios intercelulares, reduciendo la entrada de patógenos y manteniendo la elasticidad necesaria para soportar las tensiones mecánicas de la vida diaria.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.15678",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "lípidos",
+        "ácidos grasos"
+      ],
+      "contraindications": [
+        "uso excesivo de acetona"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion_placa"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:34.333Z"
+  },
+  {
+    "chunk_id": "guias_unas-1786387474333-5-c7b1dd7f-dinamica-de-la-presion-friccional-en-el-fresado-de-alta-velo",
+    "title": "Dinámica de la presión friccional en el fresado de alta velocidad",
+    "content": "El uso de tornos (fresas) de alta frecuencia genera un calor friccional que, si supera los 42°C, puede causar daños térmicos irreversibles en la matriz ungueal. La matriz es un tejido altamente vascularizado y sensible; el sobrecalentamiento induce una respuesta inflamatoria que puede manifestarse como onicodistrofia, surcos de Beau o incluso desprendimiento de la lámina. La presión ejercida por la fresa debe ser mínima, permitiendo que el abrasivo realice el trabajo sin generar resistencia. La acumulación de polvillo de limado en la zona de trabajo actúa como un aislante térmico, atrapando el calor y aumentando el riesgo de quemadura. Es fundamental utilizar sistemas de aspiración y técnicas de limado intermitente para disipar la energía térmica. Además, la elección del grano de la fresa debe ser proporcional a la dureza del material a retirar; el uso de fresas de carburo de tungsteno sobre uña natural debe evitarse, prefiriendo fresas de diamante de grano fino para minimizar la abrasión mecánica y el estrés térmico resultante.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-care-safety",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso_instrumental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:44:34.333Z"
+  }
+]

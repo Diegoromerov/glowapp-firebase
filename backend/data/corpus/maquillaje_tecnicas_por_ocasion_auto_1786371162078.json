@@ -1,0 +1,47 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entorno-hiperbarico-001",
+    "title": "Maquillaje en entornos de cámara hiperbárica: Estabilidad y seguridad",
+    "content": "La oxigenación hiperbárica (OHB) implica presiones atmosféricas elevadas, lo que altera la dinámica de gases y la estabilidad de las emulsiones cosméticas. En un entorno donde la presión parcial de oxígeno aumenta significativamente, los productos con altos contenidos de aceites volátiles o solventes pueden sufrir cambios en su tasa de evaporación, afectando la adherencia. Es fundamental evitar cosméticos con ingredientes inflamables o compuestos que puedan actuar como acelerantes de combustión bajo condiciones de hiperoxia, siguiendo los protocolos de seguridad de la Undersea and Hyperbaric Medical Society (UHMS). La piel bajo OHB experimenta una deshidratación acelerada por el flujo constante de gas seco; por tanto, se recomienda el uso de selladores oclusivos a base de siliconas de grado médico que no interfieran con la conductividad térmica ni aumenten el riesgo de irritación durante la sesión. La selección de pigmentos debe priorizar aquellos inertes, evitando partículas metálicas que podrían interactuar con los sistemas de monitoreo o generar puntos calientes en caso de descarga electrostática residual.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/resources/hbo-safety.html",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "polímeros dieléctricos"
+      ],
+      "contraindications": [
+        "productos inflamables",
+        "metales",
+        "aceites volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-procedimientos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:12:23.973Z"
+  }
+]

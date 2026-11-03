@@ -1,0 +1,373 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-mecanica-001",
+    "title": "Onicólisis por palanca mecánica: la física detrás del levantamiento",
+    "content": "La onicólisis mecánica inducida por el uso incorrecto de herramientas de metal es una de las lesiones más prevalentes en cabinas de estética en Bogotá. Ocurre cuando el operador ejerce una fuerza de palanca excesiva al intentar remover el producto o realizar la limpieza del surco periungueal. Fisiológicamente, el lecho ungueal está fuertemente adherido a la lámina mediante crestas longitudinales; una presión lateral inadecuada rompe estas uniones de forma irreversible. La literatura en dermatología subraya que, una vez que el lecho se separa de la lámina, la zona pierde su capacidad de adhesión rápida, creando un espacio vacío (hiponiquio virtual) que se convierte en un reservorio de humedad, detritos celulares y microorganismos oportunistas. Es fundamental que el profesional comprenda que el metal no debe usarse como una cuña para despegar el producto, sino como un elemento de guía. La técnica de 'arrastre' debe evitar tocar la superficie del lecho, ya que cualquier fricción sobre el tejido vivo induce una respuesta inflamatoria que puede cronificarse, derivando en una onicólisis distal permanente. La prevención radica en el uso de solventes adecuados y en la reducción del grosor del producto mediante limado controlado antes de cualquier intento de remoción física.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/tips",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de herramientas metálicas sobre lecho ungueal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-remocion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-ph-y-adhesion-002",
+    "title": "El pH del lecho ungueal y su rol en la polimerización",
+    "content": "La estabilidad de cualquier sistema fotopolimerizable en GlowApp depende directamente de la homeostasis del lecho ungueal. El pH natural de la superficie cutánea y ungueal es ligeramente ácido (entre 4.5 y 5.5). La aplicación indiscriminada de deshidratadores con pH extremadamente bajo o el uso excesivo de primers ácidos puede alterar esta barrera, provocando una desnaturalización de las proteínas de la lámina dorsal. Estudios en PubMed indican que una alteración drástica del pH no solo compromete la adhesión química del gel, sino que también debilita la capa de queratina, facilitando la penetración de monómeros hacia el tejido vivo, lo que aumenta exponencialmente el riesgo de dermatitis alérgica de contacto. Un lecho ungueal sano, con su manto ácido intacto, ofrece una mejor plataforma de anclaje. Los profesionales deben evitar la sobre-preparación (buffing excesivo) que eleva el pH y expone las capas profundas de la uña. El objetivo es mantener la integridad de la placa para que los enlaces covalentes del polímero se formen de manera óptima sin necesidad de agredir el tejido subyacente. La educación sobre el uso de niveladores de pH es clave para prevenir la sensibilización a largo plazo en clientas recurrentes.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31206584/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers",
+        "deshidratadores"
+      ],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-pseudomonas-precaucion-003",
+    "title": "Pseudomonas aeruginosa: más allá de la 'uña verde'",
+    "content": "La pigmentación verdosa subungueal es un signo patognomónico de una infección por Pseudomonas aeruginosa, una bacteria oportunista que prolifera en condiciones de humedad atrapada bajo una capa de gel o acrílico desprendido (lifting). A diferencia de otras infecciones, la Pseudomonas no suele causar dolor agudo, pero su presencia indica una ruptura crítica en la integridad del sellado del producto. El error común en cabina es intentar 'pulir' o cubrir la mancha con más producto. Esto es contraindicado, ya que sella la bacteria en un entorno anaeróbico, permitiendo que la infección progrese hacia una paroniquia o una onicólisis severa. La guía clínica sugiere que ante la sospecha de Pseudomonas, el servicio debe suspenderse inmediatamente, retirar el producto de forma aséptica y recomendar la limpieza con antisépticos de amplio espectro, evitando el uso de antibióticos tópicos sin prescripción médica. La prevención es la única estrategia efectiva: asegurar que la adhesión del producto sea total y educar a la clienta para que reporte cualquier desprendimiento prematuro. En el contexto de GlowApp, el monitoreo del sellado del borde libre es la herramienta más potente contra esta patología bacteriana.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30877-6/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "aplicar producto sobre uña verde"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion-infecciones"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-limado-y-friccion-004",
+    "title": "La física del limado: termodinámica aplicada a la matriz",
+    "content": "El uso de tornos (drills) a altas revoluciones genera una transferencia de calor por fricción que puede afectar la matriz ungueal, especialmente en uñas delgadas. La matriz es el tejido germinativo responsable de la producción de queratina; una exposición térmica constante puede inducir una onicodistrofia por estrés térmico. Los estudios sobre biomecánica ungueal indican que la temperatura del lecho no debe superar los 40-42°C para evitar daños tisulares. Cuando la clienta siente 'quemazón' durante el limado, el daño ya ha ocurrido a nivel celular. Además, el limado excesivo reduce la lámina dorsal, que es la barrera natural más resistente contra la permeación de químicos. Al adelgazar esta capa, el lecho queda expuesto y la tasa de absorción de monómeros aumenta significativamente. Es vital que los profesionales de GlowApp calibren sus equipos y utilicen limas de gramaje adecuado (180 o superior para uña natural) y mantengan el torno en movimiento constante sin ejercer presión. La termodinámica nos enseña que el calor acumulado es el mayor enemigo de la salud ungueal a largo plazo. Un limado consciente protege no solo la estética de la uña, sino su salud fisiológica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de torno en alta velocidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-limado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-cuticula-barrera-005",
+    "title": "Cutícula: la barrera biológica contra la inflamación",
+    "content": "La cutícula es la extensión del eponiquio que sella el espacio entre la piel y la lámina ungueal. Su función es actuar como una barrera inmunológica que impide la entrada de patógenos, levaduras y químicos al complejo de la matriz. La tendencia de eliminar la cutícula 'hasta el fondo' o mediante corte agresivo es una de las causas principales de paroniquia aguda y crónica. Al retirar este tejido protector, dejamos una puerta abierta para que los monómeros de los geles, los solventes de los esmaltes y las bacterias ambientales penetren en el tejido vivo. La inflamación resultante de este trauma mecánico puede alterar la producción de la placa, generando estrías transversales o surcos. Desde una perspectiva clínica, la cutícula no debe ser 'eliminada', sino 'mantenida' mediante hidratación y empuje suave. El uso de aceites ricos en lípidos es fundamental para mantener su flexibilidad y sellado hermético. En GlowApp, promovemos la preservación de la cutícula como parte esencial de la salud ungueal a largo plazo, entendiendo que una manicura estética no debe comprometer la integridad biológica de la mano.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/cuticle-care",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites hidratantes"
+      ],
+      "contraindications": [
+        "corte excesivo de cutícula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-cuticula"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-deshidratacion-006",
+    "title": "Onicosquizia y el balance hídrico de la lámina",
+    "content": "La onicosquizia lamelar (deshojamiento de la uña) es un problema común que suele atribuirse erróneamente a la falta de calcio o vitaminas, cuando en realidad es un problema de balance hídrico y lipídico. La lámina ungueal es una estructura porosa que absorbe agua con mucha más facilidad que la piel. Cuando la uña se somete a ciclos repetitivos de hidratación (agua) y deshidratación (uso de solventes como acetona), los puentes disulfuro de la queratina se debilitan y la uña pierde su capacidad de mantenerse unida, resultando en capas que se separan en el borde libre. La evidencia sugiere que el uso excesivo de quitaesmaltes con acetona pura es el principal factor de riesgo para esta condición. Para revertir este daño, no es suficiente con aplicar endurecedores; se requiere la reposición de lípidos que sellen la humedad interna. En GlowApp, recomendamos el uso de aceites de jojoba o almendras aplicados de forma constante para restaurar la flexibilidad de la lámina. Entender que la uña necesita un balance entre hidratación (aceites) y protección (sellado) es la clave para tratar la onicosquizia de manera efectiva y duradera.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de jojoba",
+        "aceite de almendras"
+      ],
+      "contraindications": [
+        "acetona pura frecuente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos-hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-sensibilizacion-acrilatos-007",
+    "title": "Sensibilización a acrilatos: el efecto acumulativo",
+    "content": "La dermatitis alérgica de contacto a acrilatos (como el HEMA o HPMA) es una condición que, una vez desarrollada, es de por vida. El sistema inmune del paciente reconoce al monómero como un agente extraño y genera una respuesta inflamatoria cada vez que entra en contacto con el material. Lo más alarmante es que la sensibilización no ocurre necesariamente en el primer uso; es un fenómeno acumulativo. La exposición repetida a geles mal curados (debido a lámparas con potencia insuficiente o tiempos de exposición cortos) permite que monómeros no polimerizados penetren en el tejido, desencadenando la reacción. Los síntomas incluyen eritema, edema, prurito y, en casos graves, ampollas periungueales. Una vez sensibilizada, la persona puede reaccionar a múltiples tipos de acrilatos, incluso en dispositivos médicos o dentales. Es responsabilidad del profesional de GlowApp garantizar una polimerización completa siguiendo los tiempos y lámparas recomendados por el fabricante. La prevención es la única cura. Ante cualquier signo de enrojecimiento o picazón persistente post-servicio, se debe suspender la aplicación y derivar al dermatólogo para pruebas de parche, evitando la automedicación con cremas de cortisona que solo enmascaran el problema.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13652133",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "HPMA"
+      ],
+      "contraindications": [
+        "uso de lámparas no compatibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion-alergias"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-bioquimica-queratina-008",
+    "title": "Bioquímica de la queratina: la estructura bajo estrés",
+    "content": "La lámina ungueal está compuesta por queratinocitos altamente compactados y cementados por lípidos intercelulares. A diferencia del cabello, la queratina de la uña es más dura debido a su alto contenido de enlaces disulfuro de cisteína. Este diseño le otorga la resistencia necesaria para proteger el lecho ungueal, pero la hace vulnerable a la desnaturalización química. El uso de desengrasantes agresivos o solventes desnaturaliza estas proteínas, provocando que la uña se vuelva quebradiza y pierda su capacidad de flexión. La bioquímica nos enseña que el agua es, paradójicamente, un plastificante: en niveles adecuados, mantiene la uña flexible, pero en exceso, degrada la estructura de los puentes. Para un profesional en GlowApp, el conocimiento de esta estructura es vital para seleccionar productos que respeten el pH y la integridad de la queratina. El uso de productos con moléculas de bajo peso molecular debe ser limitado, ya que tienen mayor capacidad de penetrar profundamente y comprometer la estructura de la placa. La salud ungueal debe basarse en un enfoque que preserve la cohesión de los estratos de queratina, evitando el uso de agentes que rompan los enlaces químicos naturales de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso prolongado de solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fundamentos-biologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  },
+  {
+    "chunk_id": "guias-unas-microtrauma-009",
+    "title": "Microtrauma crónico: la biomecánica del calzado y la uña",
+    "content": "El microtrauma acumulativo es una de las causas más ignoradas de las distrofias ungueales en los pies, particularmente en clientes que practican deportes o utilizan calzado inadecuado. La presión repetitiva de la puntera del zapato contra la lámina ungueal genera una respuesta inflamatoria en la matriz, que se manifiesta como engrosamiento de la uña, onicólisis distal o hematomas subungueales recurrentes. A menudo, este trauma es confundido con onicomicosis, llevando a tratamientos antifúngicos innecesarios y costosos. La clave para identificar el origen mecánico es la observación de la simetría: si el daño es bilateral y coincide con los puntos de presión del calzado, es probable que se trate de un fenómeno mecánico. La intervención en cabina debe enfocarse en la descarga de presión y la recomendación de calzado con mayor espacio en la puntera. Los tratamientos estéticos no deben ocultar estas lesiones; por el contrario, deben servir para monitorizar la recuperación del tejido. En GlowApp, es esencial educar a la clienta sobre la relación entre la biomecánica del paso y la salud de la uña, evitando la aplicación de productos que puedan ejercer una presión extra sobre una uña ya comprometida por trauma mecánico.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Podiatric Medical Association",
+        "url": "https://japmaonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de calzado ajustado con uñas comprometidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-diferencial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:09:33.561Z"
+  }
+]

@@ -1,0 +1,284 @@
+[
+  {
+    "chunk_id": "guia-unas-onico-reologia-001",
+    "title": "Reología de las bases rubber: comportamiento viscoelástico y estabilidad",
+    "content": "Las bases 'rubber' o de caucho han revolucionado la adhesión en sistemas UV, pero su comportamiento reológico es a menudo incomprendido en cabina. A diferencia de los geles constructores rígidos, estas bases poseen una naturaleza viscoelástica que les permite absorber impactos y deformaciones mecánicas sin fracturarse, lo cual es ideal para uñas con alta flexibilidad o curvatura pronunciada. Sin embargo, su capacidad de nivelación depende críticamente de la temperatura ambiente y la tasa de cizallamiento aplicada durante la aplicación. Cuando la temperatura es baja, la viscosidad aumenta, dificultando una distribución uniforme y favoreciendo la acumulación de producto en los laterales, lo que puede derivar en desprendimientos prematuros. La literatura en ciencia de polímeros aplicada a la estética sugiere que una aplicación demasiado gruesa en la zona de tensión no solo altera la estética, sino que incrementa la probabilidad de una polimerización incompleta en las capas profundas, dejando monómeros residuales que pueden migrar hacia el lecho ungueal. Es imperativo que el profesional comprenda que la 'flexibilidad' de estas bases es una propiedad molecular diseñada para la resiliencia, no una licencia para omitir el sellado correcto del borde libre, el cual sigue siendo el punto crítico de falla por entrada de humedad.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligomeros-uretano-acrilato"
+      ],
+      "contraindications": [
+        "onicolisis-previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-adhesion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  },
+  {
+    "chunk_id": "guia-unas-onico-tribo-003",
+    "title": "Efecto triboeléctrico: acumulación de carga y su impacto en la adhesión",
+    "content": "El limado de la placa ungueal, especialmente con fresas de carburo de tungsteno o diamante a alta velocidad, genera un fenómeno físico conocido como efecto triboeléctrico. Durante la fricción mecánica, los electrones se transfieren entre la lámina ungueal (queratina) y la herramienta (acero o recubrimiento abrasivo), generando una acumulación de carga estática en la superficie de la uña. Esta carga puede alterar la energía superficial del lecho y la lámina, afectando la humectación de los primers y bases. Si la carga estática es elevada, puede repeler momentáneamente las moléculas del adhesivo, generando zonas de baja adhesión que no son visibles a simple vista pero que actúan como puntos de nucleación para el desprendimiento. Además, la descarga de esta energía estática durante el contacto con herramientas metálicas puede causar una sensación de 'pinchazo' o calor localizado que el cliente interpreta erróneamente como quemadura química. Para mitigar este efecto, se recomienda utilizar un paño con alcohol isopropílico inmediatamente después del limado, lo cual no solo limpia el polvo, sino que ayuda a neutralizar la carga superficial, restaurando la polaridad necesaria para una adhesión molecular óptima. Este paso es fundamental cuando se trabaja con sistemas de polimerización UV de nueva generación, que requieren una superficie eléctricamente neutra para una reticulación homogénea.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol-isopropilico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "preparacion-placa"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  },
+  {
+    "chunk_id": "guia-unas-onico-osmosis-004",
+    "title": "Presión osmótica y su rol en el desprendimiento de bases rubber",
+    "content": "La integridad de un sistema de manicura depende de la estabilidad osmótica en la interfaz entre la queratina de la placa ungueal y el polímero artificial. La lámina ungueal es una estructura semipermeable que mantiene un equilibrio hídrico natural; sin embargo, cuando se aplican recubrimientos (especialmente bases de alta densidad o 'rubber'), se crea una barrera que altera este intercambio. Si el lecho ungueal presenta hiperhidrosis o si el sellado del borde libre es deficiente, la humedad puede infiltrarse a través de microfisuras, estableciendo un gradiente de presión osmótica. Esta presión actúa como una fuerza mecánica interna que empuja el producto hacia afuera desde el lecho, causando el fenómeno de 'lifting' o desprendimiento en bloque. Este proceso es exacerbado por la naturaleza hidroscópica de ciertos componentes en los geles de baja reticulación. El manejo clínico de este fallo requiere identificar si el desprendimiento es por estrés mecánico (fractura de la lámina) o por fallo de adhesión osmótica (presencia de humedad atrapada). En casos de pacientes con hiperhidrosis, el uso de deshidratadores con base de acetato de etilo y una correcta preparación de la superficie son vitales para compensar este gradiente y asegurar que la red de polimerización se ancle eficazmente a la queratina, evitando que la humedad residual se convierta en un agente de separación a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Society for Dermatologic Surgery",
+        "url": "https://isds-online.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetato-etilo"
+      ],
+      "contraindications": [
+        "hiperhidrosis-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion-desprendimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  },
+  {
+    "chunk_id": "guia-unas-onico-cavitacion-005",
+    "title": "Cavitación acústica en el uso de fresas de diamante",
+    "content": "El uso de fresas de diamante, especialmente cuando se combinan con técnicas de limpieza ultrasónica o simplemente por la vibración a alta frecuencia (tornos de +30,000 RPM), puede inducir el fenómeno de cavitación si hay presencia de fluidos residuales o agentes de limpieza entre la herramienta y la uña. La cavitación acústica genera microburbujas que colapsan violentamente, liberando energía térmica y mecánica concentrada que puede microfracturar la superficie de la lámina dorsal. Estas microfisuras son invisibles al ojo humano pero actúan como reservorios para la formación de biofilms bacterianos y fúngicos. Además, la transferencia de calor resultante del colapso de estas burbujas puede dañar la matriz ungueal si el fresado es demasiado prolongado, acelerando procesos de onicodistrofia. Es fundamental que los profesionales en cabina limiten la velocidad del torno según la zona de trabajo: el área periungueal requiere una fricción mínima y controlada, mientras que el área de la lámina dorsal debe ser tratada con herramientas de grano fino para evitar la creación de estos puntos de estrés. La esterilización de las fresas debe ser rigurosa, ya que las microfisuras creadas por la cavitación pueden alojar patógenos que son difíciles de eliminar mediante métodos de desinfección química superficial, requiriendo procesos de autoclave para garantizar la seguridad del paciente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "onicodistrofia-previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "uso-tornos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  },
+  {
+    "chunk_id": "guia-unas-onico-piezo-007",
+    "title": "Efecto piezorresistivo en la queratina: estrés mecánico y adhesión",
+    "content": "El efecto piezorresistivo en la lámina ungueal ocurre cuando las fuerzas mecánicas aplicadas (presión, torsión) alteran la resistencia eléctrica interna de la queratina. Este fenómeno, aunque sutil, tiene implicaciones directas en la adhesión de los polímeros modernos. Cuando una uña está bajo estrés constante debido a una curvatura excesiva o al uso de calzado ajustado, la estructura interna de la queratina genera campos de carga que pueden interferir con la polimerización de los monómeros de los primers. En términos prácticos, esto significa que una uña bajo tensión mecánica constante es un sustrato menos receptivo para la adhesión química que una uña en estado de reposo. Además, la evidencia sugiere que este estrés crónico puede inducir una hiperqueratosis reactiva en el hiponiquio como mecanismo de defensa. Los técnicos deben evaluar la morfología de la uña antes de aplicar sistemas de alta reticulación; si la uña muestra signos de estrés mecánico (como líneas de Beau o curvatura pronunciada), es recomendable optar por bases más elásticas que puedan absorber parte de esa tensión, reduciendo el riesgo de que el efecto piezorresistivo comprometa la unión química. Ignorar este factor biomecánico suele resultar en un desprendimiento prematuro que se atribuye erróneamente a la calidad del producto, cuando en realidad es un fallo de compatibilidad entre la física de la uña y la química del adhesivo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32158900/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-morfologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  },
+  {
+    "chunk_id": "guia-unas-onico-termocromismo-008",
+    "title": "Termocromismo en resinas: riesgos de las resinas termosensibles",
+    "content": "Las resinas termosensibles, que cambian de color según la temperatura, contienen pigmentos leuco-colorantes que son altamente sensibles a la degradación química. A diferencia de los pigmentos convencionales, estos compuestos termocromáticos tienen una estabilidad química reducida frente a la radiación UV intensa necesaria para la fotopolimerización. Durante el proceso de curado, la exposición al espectro UV/LED puede alterar la estructura molecular de estos pigmentos, provocando una polimerización desigual o 'zonas muertas' donde el gel no reticula completamente. Este fenómeno no solo afecta la apariencia estética del color, sino que también crea una barrera de monómeros no curados en la base del recubrimiento. La migración de estos monómeros hacia el lecho ungueal, especialmente en clientes con lechos sensibilizados, puede desencadenar reacciones alérgicas de contacto. Además, la presencia de estos pigmentos inestables puede generar una reacción exotérmica más agresiva al absorber parte de la radiación UV de manera ineficiente. Se desaconseja el uso de estos productos en servicios frecuentes o como base única sin un recubrimiento protector. La recomendación es limitar su uso a aplicaciones de corta duración y asegurar que la potencia de la lámpara sea la adecuada para penetrar a través de estos pigmentos, evitando el uso de lámparas de baja potencia que no garanticen la conversión total del polímero.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "leuco-colorantes"
+      ],
+      "contraindications": [
+        "sensibilizacion-acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-productos"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  },
+  {
+    "chunk_id": "guia-unas-onico-ergonomia-009",
+    "title": "Ergonomía visual y fatiga ocular en el diagnóstico ungueal",
+    "content": "La precisión en el diagnóstico clínico de patologías ungueales en cabina no depende únicamente de la pericia, sino de la ergonomía visual del profesional. El uso prolongado de lámparas de mesa con espectros de luz que alteran la percepción cromática (como luces LED frías mal calibradas) puede llevar a una fatiga ocular significativa, reduciendo la capacidad de detectar signos tempranos como la eritroniquia longitudinal, cambios en la coloración de la lúnula o micro-onicólisis. La falta de un contraste adecuado entre la placa ungueal y el entorno puede enmascarar signos de onicomicosis o dermatitis de contacto. Se recomienda el uso de lupas con iluminación de espectro completo (CRI > 90) para asegurar una representación fiel de los colores. La fatiga ocular también conlleva una pérdida de atención al detalle, aumentando el riesgo de errores técnicos durante el fresado (como daños matriciales) o el sellado de cutículas. Implementar protocolos de iluminación adecuados y descansos visuales no es solo una cuestión de salud laboral para el profesional, sino un requisito indispensable para la seguridad del paciente. Un diagnóstico correcto comienza con una visión clara; si el profesional no puede distinguir los cambios mínimos en la arquitectura ungueal, el riesgo de pasar por alto condiciones graves, como un melanoma subungueal incipiente, aumenta considerablemente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-diagnostico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:56:01.933Z"
+  }
+]

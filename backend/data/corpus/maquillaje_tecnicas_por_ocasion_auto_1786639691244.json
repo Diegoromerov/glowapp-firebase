@@ -1,0 +1,178 @@
+[
+  {
+    "chunk_id": "maquillaje-entornos-neurotecnologia-002",
+    "title": "Maquillaje y estabilidad frente a interfaces cerebro-computadora (BCI)",
+    "content": "Con el auge de los eventos tecnológicos que emplean interfaces cerebro-computadora o sensores de electroencefalografía (EEG) de grado comercial, el maquillaje enfrenta un nuevo desafío: la conductividad eléctrica. Los pigmentos cosméticos tradicionales, especialmente aquellos que contienen óxidos metálicos como la mica recubierta o pigmentos ferromagnéticos, pueden interferir con la impedancia de los electrodos, generando ruido en la señal o artefactos en el registro de datos. Estudios sobre la biocompatibilidad de materiales en contacto con sensores cutáneos sugieren que el uso de bases con alta carga de siliconas no volátiles puede actuar como un aislante, empeorando la calidad de la señal. Para eventos de este tipo, es imperativo utilizar fórmulas con base acuosa, libres de partículas metálicas conductoras en las zonas de contacto con los sensores (frente y sienes). La guía de la AAD sobre el cuidado de la piel en pacientes con dispositivos médicos resalta la importancia de mantener la integridad de la barrera cutánea para evitar dermatitis por contacto irritativo inducida por la presión constante de los accesorios tecnológicos. Se recomienda una limpieza profunda post-evento para eliminar cualquier residuo que pueda haber interactuado con el campo electromagnético del sensor.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos orgánicos",
+        "base acuosa"
+      ],
+      "contraindications": [
+        "mica",
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_tecnologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:51.617Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-baja-gravedad-003",
+    "title": "Desafíos de la estabilidad cosmética en entornos de microgravedad",
+    "content": "La dinámica de fluidos en entornos de baja gravedad presenta retos únicos para la estabilidad de las emulsiones cosméticas. La ausencia de sedimentación gravitacional altera la distribución de las partículas de pigmento en la formulación, lo que puede llevar a una separación prematura de fases o a la formación de aglomerados que afectan la aplicación uniforme. Investigaciones sobre el comportamiento de fluidos en condiciones de microgravedad han demostrado que la tensión superficial domina sobre la gravedad, lo que provoca que los cosméticos se comporten de manera distinta al ser dispensados. Para eventos en entornos espaciales o de simulación, la formulación debe basarse en sistemas de alta estabilidad interfacial, evitando ingredientes que tiendan a la coalescencia. Además, el ambiente cerrado de estas naves promueve una acumulación de partículas en suspensión, lo que requiere que el maquillaje posea propiedades anti-adherentes para evitar que el polvo ambiental se incruste en la película cosmética. La hidratación en estos entornos es crítica, ya que la piel tiende a experimentar una redistribución de fluidos corporales, lo que altera la turgencia cutánea y la adherencia de productos en crema. Es fundamental utilizar selladores volátiles que aseguren la fijación sin aumentar la carga de partículas en la atmósfera del habitáculo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "European Space Agency (ESA) Life Sciences",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de alta adherencia",
+        "agentes fijadores volátiles"
+      ],
+      "contraindications": [
+        "pigmentos en polvo suelto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:51.617Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-radioterapia-006",
+    "title": "Maquillaje en entornos de radioterapia: Integridad de la barrera cutánea",
+    "content": "La aplicación de maquillaje en pacientes bajo tratamiento de radioterapia es un tema delicado que requiere una evaluación médica previa. La piel irradiada presenta una fragilidad extrema, con un riesgo elevado de dermatitis por radiación, caracterizada por eritema, descamación y alteración de la barrera cutánea. El maquillaje no debe aplicarse sobre áreas con eritema agudo, piel descamada o heridas abiertas. Si se permite el uso de productos cosméticos, estos deben ser formulaciones estériles, hipoalergénicas y libres de fragancias, conservantes agresivos o metales pesados que puedan aumentar la deposición de dosis de radiación en la piel. Estudios de la IADVL sobre el cuidado de la piel en oncología dermatológica enfatizan que cualquier producto aplicado debe ser fácil de retirar sin fricción, preferiblemente mediante limpieza por arrastre suave. El maquillaje correctivo, si se utiliza para camuflar el eritema, debe tener una base mineral inerte que no interfiera con la cicatrización. Es esencial evitar el uso de esponjas o aplicadores que no sean de un solo uso para prevenir la introducción de patógenos en un tejido con capacidad de respuesta inmunológica comprometida. La hidratación debe realizarse con emolientes prescritos por el oncólogo radioterápico antes de cualquier intento de maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+        "url": "https://www.iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos minerales inertes",
+        "emolientes estériles"
+      ],
+      "contraindications": [
+        "fragancias",
+        "conservantes",
+        "metales pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "oncologia_dermatologica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:51.617Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-realidad-extendida-007",
+    "title": "Maquillaje en entornos de Realidad Extendida (XR): Oclusión térmica",
+    "content": "El uso prolongado de cascos de realidad virtual o realidad aumentada (XR) en eventos de larga duración crea un microclima de alta temperatura y humedad en las zonas de contacto (frente, puente nasal y mejillas). Este entorno favorece la oclusión de los folículos pilosos y la dermatitis por fricción. La acumulación de sudor atrapado bajo el dispositivo puede disolver los pigmentos y polímeros del maquillaje, provocando su migración hacia los ojos o la obstrucción de los poros. Para prevenir la dermatitis por oclusión térmica, se recomienda evitar el uso de bases de alta cobertura en las zonas de contacto directo con el visor. Es preferible optar por texturas ligeras, resistentes al agua y de secado rápido, que no se degraden con la humedad. Además, la limpieza de la piel antes del uso de dispositivos XR es crucial; se deben eliminar residuos de sebo que, combinados con el calor generado por el hardware, podrían fomentar la proliferación de Malassezia. Tras el evento, la aplicación de una compresa fría y un hidratante calmante ayuda a restablecer la temperatura cutánea y reducir la vasodilatación residual provocada por el uso prolongado del equipo electrónico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros resistentes al agua",
+        "agentes calmantes"
+      ],
+      "contraindications": [
+        "bases densas",
+        "ceras pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion_dermatitis"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:47:51.617Z"
+  }
+]

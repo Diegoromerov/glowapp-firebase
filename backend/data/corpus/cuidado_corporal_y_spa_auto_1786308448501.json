@@ -1,0 +1,393 @@
+[
+  {
+    "chunk_id": "psoriasis-inversa-manejo-001",
+    "title": "Abordaje clínico de la psoriasis invertida en pliegues",
+    "content": "La psoriasis invertida (intertriginosa) presenta un desafío diagnóstico y terapéutico único al manifestarse en áreas de fricción como axilas, ingles y pliegue submamario. A diferencia de la psoriasis en placas clásica, la variante invertida carece de escamas gruesas debido a la maceración constante del área. La literatura de la American Academy of Dermatology (AAD) subraya que el manejo debe ser extremadamente cuidadoso, evitando el uso de corticoesteroides de alta potencia debido al riesgo de atrofia cutánea en áreas de piel delgada y la alta absorción sistémica. Se prefieren los inhibidores de la calcineurina tópicos (tacrolimus o pimecrolimus) como agentes de primera línea para reducir la inflamación sin inducir adelgazamiento epidérmico. Es fundamental mantener el área seca y reducir la fricción mecánica, ya que el fenómeno de Koebner puede exacerbar las lesiones. El control del microbioma local es vital para prevenir sobreinfecciones bacterianas o candidiasis, que complican frecuentemente el cuadro clínico. La educación al paciente sobre la higiene no irritante es el pilar fundamental del tratamiento a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/psoriasis/types/inverse",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tacrolimus",
+        "pimecrolimus"
+      ],
+      "contraindications": [
+        "corticoides-alta-potencia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-patologias-pliegues"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "disrupcion-barrera-ph-alcalino-002",
+    "title": "Impacto de los limpiadores alcalinos en el pH cutáneo",
+    "content": "La piel humana posee un pH fisiológico ácido (aproximadamente 4.7 a 5.7), el cual es crítico para la función de barrera y la integridad del microbioma. La utilización de jabones corporales con pH alcalino (frecuentemente >9.0) induce una disrupción significativa de la capa lipídica y altera la actividad de las enzimas proteolíticas necesarias para la descamación normal. Según estudios publicados en PubMed, esta elevación del pH favorece la colonización por Staphylococcus aureus y reduce la capacidad de la piel para retener humedad, exacerbando estados de xerosis. La transición hacia limpiadores sintéticos (syndets) con pH fisiológico es una recomendación estándar para pacientes con dermatitis atópica o piel sensible. El mantenimiento del manto ácido es esencial para la síntesis de ceramidas y la estabilidad de las uniones estrechas (tight junctions) epidérmicas. En GlowApp, promovemos la sustitución de barras de jabón convencionales por formulaciones syndet que respeten la ecología bacteriana de la piel corporal, reduciendo la prevalencia de prurito inducido por productos de higiene inadecuados.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18489300/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "tensioactivos-anfoteros"
+      ],
+      "contraindications": [
+        "jabones-alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-corporal-avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "eritrasma-diagnostico-diferencial-003",
+    "title": "Eritrasma: Diagnóstico diferencial en pliegues corporales",
+    "content": "El eritrasma es una infección bacteriana superficial, causada habitualmente por Corynebacterium minutissimum, que frecuentemente se confunde con candidiasis o tiña cruris en áreas intertriginosas. Clínicamente se presenta como placas eritemato-marrones, ligeramente arrugadas y con una descamación fina. Una herramienta diagnóstica esencial y sencilla en la práctica clínica es el uso de la lámpara de Wood, donde las lesiones emiten una fluorescencia de color rojo coral característica, debido a la producción de porfirinas por la bacteria. Según la literatura de la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists), el tratamiento suele ser tópico con ácido fusídico o eritromicina, aunque en casos extensos puede requerirse terapia oral. Es imperativo diferenciar esta condición de las dermatitis de contacto, ya que el manejo con corticoides tópicos, si bien puede aliviar el eritema temporalmente, no resuelve la infección bacteriana subyacente y puede favorecer la persistencia del cuadro. El diagnóstico preciso es clave para evitar la cronificación de la condición en pacientes con sobrepeso u obesidad, donde el ambiente de los pliegues es propicio para la proliferación bacteriana.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists",
+        "url": "https://ijdvl.com/erythrasma-a-clinical-study/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-fusidico",
+        "eritromicina"
+      ],
+      "contraindications": [
+        "corticoides-topicos-monoterapia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "friccion-intertriginosa-004",
+    "title": "Mecanismos de daño por fricción en áreas de pliegues",
+    "content": "La fricción mecánica repetitiva (intertrigo mecánico) es un factor determinante en la disfunción de la barrera cutánea en pliegues corporales. El contacto piel con piel, exacerbado por la humedad (sudor) y el calor, aumenta el coeficiente de fricción, lo que resulta en la formación de microfisuras en el estrato córneo. Estas fisuras no solo causan dolor y ardor, sino que actúan como puertas de entrada para patógenos oportunistas. La investigación dermatológica moderna sugiere que el manejo no debe limitarse a la aplicación de polvos absorbentes, que pueden acumularse y causar irritación adicional, sino al uso de agentes lubricantes de barrera que reduzcan el coeficiente de fricción sin ocluir los poros. Las siliconas de grado médico y los polímeros formadores de película son superiores en este aspecto, ya que proporcionan una protección duradera frente a la humedad. La prevención del intertrigo es crítica en pacientes con obesidad, donde la superficie de contacto es mayor, y el manejo proactivo mediante la reducción de la fricción es más efectivo que el tratamiento reactivo de las lesiones ya establecidas.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32483-3/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "ciclopentasiloxano"
+      ],
+      "contraindications": [
+        "polvos-talco-irritantes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion-lesiones-corporales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "fotoproteccion-pliegues-005",
+    "title": "Desafíos de la fotoprotección en áreas de alta sudoración",
+    "content": "La fotoprotección corporal suele enfocarse en áreas expuestas, pero la protección de pliegues cutáneos (cuando están expuestos al sol, como en el escote o axilas durante actividades deportivas) requiere formulaciones específicas. Los filtros solares convencionales pueden migrar o volverse pegajosos debido a la sudoración excesiva, provocando oclusión de los conductos sudoríparos y dermatitis por fricción. La evidencia sugiere optar por fotoprotectores con tecnologías de polímeros 'film-forming' que ofrecen alta resistencia al agua y al sudor, sin efecto comedogénico. En áreas de pliegues, es crucial evitar ingredientes que puedan ser fototóxicos o altamente sensibilizantes. La aplicación debe realizarse sobre piel completamente seca para asegurar la formación de la película protectora uniforme. Además, el uso de textiles técnicos con protección UPF (Ultraviolet Protection Factor) es una estrategia complementaria superior para pliegues corporales, ya que no requiere reaplicación y elimina la variable de la sudoración sobre el producto tópico. Este enfoque integral es vital para prevenir la hiperpigmentación postinflamatoria en áreas propensas a la inflamación crónica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/skin-cancer-prevention/sun-protection/sunscreen/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros-inorganicos",
+        "polimeros-filmogenos"
+      ],
+      "contraindications": [
+        "filtros-quimicos-sensibilizantes"
+      ],
+      "season": [
+        "verano",
+        "todo-el-ano"
+      ],
+      "applicable_modules": [
+        "fotoproteccion-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "hidratacion-oclusiva-pliegues-006",
+    "title": "Manejo de la xerosis en pliegues: Oclusivos vs. Humectantes",
+    "content": "En el contexto de los pliegues cutáneos, la elección del agente hidratante es crítica. Mientras que los humectantes (glicerina, ácido hialurónico, urea) atraen agua a la epidermis, su uso excesivo en pliegues puede generar un ambiente demasiado húmedo que favorezca la maceración y el sobrecrecimiento fúngico. Por el contrario, los oclusivos (vaselina, aceites, ceramidas pesadas) crean una barrera física que evita la pérdida transepidérmica de agua, pero pueden resultar incómodos o comedogénicos. La recomendación clínica para pliegues con xerosis es utilizar emulsiones de fase externa acuosa (O/W) de rápida absorción, ricas en lípidos fisiológicos (ceramidas, colesterol y ácidos grasos libres en relación 3:1:1), que restauran la barrera sin dejar residuos grasos que aumenten la fricción. Es fundamental evitar el uso de fragancias o conservantes irritantes, ya que la piel en los pliegues presenta una mayor permeabilidad debido a la oclusión natural. El monitoreo de la respuesta cutánea es necesario para ajustar la frecuencia de aplicación, priorizando la restauración de la barrera por encima de la hidratación profunda momentánea.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "colesterol",
+        "acidos-grasos-libres"
+      ],
+      "contraindications": [
+        "fragancias-sinteticas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion-corporal-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "microbioma-pliegues-007",
+    "title": "Estrategias para el mantenimiento del microbioma en pliegues",
+    "content": "El microbioma de los pliegues cutáneos (axilas, ingles, región inframamaria) es un ecosistema complejo dominado por bacterias lipofílicas como Corynebacterium y Staphylococcus epidermidis. Cuando este ecosistema se altera, ya sea por el uso de desodorantes con alcohol, jabones antisépticos agresivos o falta de ventilación, se abre la puerta a disbios. La tendencia clínica actual no es la esterilización, sino el mantenimiento del equilibrio. El uso de prebióticos (como inulina o oligosacáridos) y postbióticos en productos tópicos puede ayudar a favorecer las cepas comensales beneficiosas que protegen contra patógenos. La literatura sugiere que la aplicación de productos que alteran radicalmente el pH local disminuye la diversidad microbiana, lo cual se correlaciona con un aumento de mal olor (bromhidrosis) y susceptibilidad a infecciones. GlowApp recomienda protocolos de limpieza suave, evitando antisépticos tópicos de uso diario, y prefiriendo formulaciones que soporten el pH natural para mantener la resiliencia del microbioma cutáneo frente a factores ambientales y el estrés oxidativo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/nrmicro.2017.157",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [
+        "desodorantes-base-alcohol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "hiperpigmentacion-intertriginosa-008",
+    "title": "Mecanismos de la hiperpigmentación intertriginosa",
+    "content": "La hiperpigmentación en áreas de pliegues no siempre es Acantosis Nigricans. A menudo, se trata de una hiperpigmentación postinflamatoria (HPI) resultante de la fricción crónica y el roce (intertrigo). El proceso fisiopatológico implica la activación de los melanocitos por citocinas proinflamatorias liberadas por los queratinocitos dañados por la fricción. A diferencia de otras formas de hiperpigmentación, el manejo clínico requiere, ante todo, la eliminación del factor mecánico. El uso de agentes despigmentantes agresivos (como hidroquinona al 4%) en estas áreas puede ser contraproducente, causando irritación adicional y empeorando la mancha. En su lugar, se prefieren agentes de perfil más seguro como el ácido azelaico, la niacinamida o el ácido kójico en concentraciones controladas, combinados con agentes que reduzcan la fricción. La evidencia clínica sugiere que la clave para revertir esta hiperpigmentación es un enfoque bifásico: primero, estabilizar la barrera y eliminar la fricción; segundo, tratar la melanogénesis activa mediante inhibidores de la tirosinasa tópicos, bajo estricto monitoreo médico para evitar la dermatitis por irritación secundaria.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/post-inflammatory-hyperpigmentation/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "III",
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "acido-azelaico",
+        "niacinamida",
+        "acido-kojico"
+      ],
+      "contraindications": [
+        "hidroquinona-alta-concentracion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "despigmentacion-corporal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  },
+  {
+    "chunk_id": "dermatitis-contacto-textiles-009",
+    "title": "Dermatitis por contacto con fibras textiles sintéticas",
+    "content": "La dermatitis de contacto textil (DCT) es una entidad clínica a menudo subdiagnosticada en el cuidado corporal. A diferencia de la dermatitis por fragancias, esta se debe a la fricción física con fibras sintéticas (poliéster, nylon) o a la sensibilización frente a tintes y resinas de acabado (como el formaldehído) presentes en la ropa deportiva. En áreas de pliegues, donde la piel está más hidratada, la absorción de estos químicos es mayor. Los síntomas incluyen prurito intenso, eritema y, a veces, pápulas foliculares. La gestión clínica implica la identificación del alérgeno mediante parches (patch testing) si la condición es recurrente. Como medida preventiva, se recomienda el uso de fibras naturales (algodón, seda, bambú) que minimicen la fricción y permitan una mejor transpiración. Es fundamental educar al paciente sobre el lavado adecuado de las prendas nuevas para eliminar el exceso de tintes y químicos residuales de fabricación. En GlowApp, evaluamos la DCT como un factor de confusión frecuente en pacientes que presentan erupciones persistentes en áreas cubiertas, recomendando una revisión de los hábitos de vestimenta como parte del protocolo de diagnóstico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fibras-sinteticas-ajustadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:47:09.557Z"
+  }
+]

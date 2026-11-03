@@ -1,0 +1,43 @@
+[
+  {
+    "chunk_id": "colorimetria-farmacos-sistemicos-004",
+    "title": "Influencia de fármacos sistémicos en la afinidad tintórea",
+    "content": "La interacción entre medicamentos sistémicos y la respuesta del cabello a la coloración es un área de estudio emergente en dermatología cosmética. Fármacos como los inhibidores de la bomba de protones, ciertos tratamientos hormonales, o incluso agentes quimioterapéuticos en dosis bajas, pueden alterar la estructura de la queratina, la velocidad de crecimiento folicular y la composición lipídica del sebo. Estos cambios sistémicos pueden modificar la afinidad tintórea, causando resultados inesperados como una fijación irregular del pigmento o un aclarado más rápido de lo previsto. Por ejemplo, la terapia de reemplazo hormonal puede aumentar la densidad de los lípidos en el sebo, actuando como una barrera hidrofóbica que impide la penetración uniforme de los precursores de tinte. Es imperativo que el profesional realice una anamnesis clínica completa, consultando sobre tratamientos crónicos. La evidencia recopilada en plataformas como PubMed indica que la respuesta del cabello a químicos externos es una extensión de la salud sistémica del individuo. Un enfoque de 'colorimetría clínica' debe considerar estos factores, ajustando el tiempo de pose y la selección del revelador según la historia farmacológica del paciente para mitigar riesgos de insatisfacción o reacciones adversas inesperadas durante el proceso de coloración.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/hair-loss/types/hair-changes",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "tratamientos hormonales",
+        "quimioterapia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:27:21.671Z"
+  }
+]

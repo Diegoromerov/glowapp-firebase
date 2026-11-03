@@ -1,0 +1,205 @@
+[
+  {
+    "chunk_id": "cuidado_corporal_y_spa-estrias-corticoides-001",
+    "title": "Atrofia cutánea y estrías inducidas por corticoides tópicos",
+    "content": "El uso prolongado o inadecuado de corticosteroides tópicos de alta potencia en áreas extensas del cuerpo puede desencadenar atrofia cutánea irreversible y la formación de estrías atróficas (striae distensae). Este fenómeno ocurre debido a la inhibición de la síntesis de colágeno por parte de los fibroblastos dérmicos y la alteración en la matriz extracelular. A diferencia de las estrías por estiramiento mecánico, estas presentan una pérdida de densidad dérmica más severa y una fragilidad vascular aumentada. La literatura en dermatología clínica subraya la importancia del 'corticoide-sparing' y la monitorización de la barrera cutánea. Es fundamental educar al paciente sobre la aplicación intermitente y el uso de vehículos adecuados. La prevención de este daño requiere un diagnóstico preciso de la patología de base y la transición a terapias alternativas, como inhibidores de la calcineurina o emolientes con ceramidas, para restaurar la homeostasis de la piel afectada. La evaluación clínica debe considerar la profundidad de la atrofia y la vascularización presente para determinar el pronóstico de recuperación tisular.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/topical-corticosteroids",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticosteroides"
+      ],
+      "contraindications": [
+        "uso prolongado sin supervisión"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:45:28.079Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-dermatitis-textil-003",
+    "title": "Dermatitis de contacto por acabados en fibras textiles sintéticas",
+    "content": "La dermatitis de contacto por textiles no siempre se debe a la fibra en sí (poliéster, nailon), sino a los productos químicos añadidos durante el acabado: resinas de formaldehído, tintes dispersos y suavizantes. En el contexto clínico, el paciente presenta un eccema localizado en áreas de mayor fricción, como la cintura, axilas o ingles, donde la humedad y el roce facilitan la penetración de estos alérgenos. El diagnóstico diferencial debe excluir la dermatitis atópica y la psoriasis inversa. La gestión clínica implica la identificación del alérgeno mediante pruebas de parche (patch testing) y la recomendación de prendas de fibras naturales (algodón, seda) con procesos de fabricación orgánicos. El tratamiento tópico con corticosteroides de baja potencia o inhibidores de la calcineurina ayuda a controlar el prurito inicial, mientras que la hidratación con emolientes sin fragancias es vital para restaurar la integridad de la barrera cutánea. Es imperativo instruir al paciente sobre el lavado previo de prendas nuevas para reducir la carga de químicos residuales antes del primer uso.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "DermNet NZ",
+        "url": "https://dermnetnz.org/topics/textile-contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de suavizantes perfumados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-de-barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:45:28.079Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-anhidrosis-focal-004",
+    "title": "Anhidrosis focal inducida: Abordaje clínico y diagnóstico",
+    "content": "La anhidrosis focal, o la incapacidad de una zona cutánea específica para producir sudor, puede ser una manifestación de daño en las glándulas ecrinas o en su inervación simpática. En el ámbito cosmético y dermatológico, es importante diferenciarla de la hipohidrosis por obstrucción mecánica. Las causas pueden variar desde cicatrices profundas por quemaduras o traumas, hasta neuropatías localizadas o el uso crónico de ciertos agentes tópicos que alteran la función glandular. El riesgo clínico principal es la intolerancia al calor en las áreas afectadas, lo que puede derivar en dermatitis por calor o prurito intenso. La evaluación requiere pruebas como el test de sudoración de Minor (yodo-almidón) para delimitar el área anhidrótica. El manejo consiste en la protección de la piel ante el sobrecalentamiento, uso de ropa transpirable y, en casos de disfunción nerviosa, la derivación a neurología. Es fundamental evitar el uso de productos oclusivos pesados en estas zonas, ya que pueden exacerbar la irritación térmica al impedir la disipación natural de calor por convección o evaporación residual.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(22)00567-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso de oclusivos en zonas anhidróticas"
+      ],
+      "season": [
+        "verano"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:45:28.079Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-dermatitis-artefacta-005",
+    "title": "Dermatitis artefacta: El reto del diagnóstico en dermatología corporal",
+    "content": "La dermatitis artefacta representa un desafío diagnóstico significativo, donde el paciente, de forma consciente o inconsciente, se autoinflige lesiones cutáneas. Estas lesiones suelen presentarse en áreas accesibles (brazos, piernas, torso), exhibiendo formas geométricas, bordes lineales o patrones que no corresponden a ninguna patología dermatológica conocida. La falta de respuesta a los tratamientos convencionales es una señal de alerta. Clínicamente, el abordaje requiere una relación médico-paciente empática, evitando la confrontación directa. Es vital realizar una biopsia si la sospecha es alta, aunque los hallazgos suelen ser inespecíficos (inflamación traumática). El manejo debe ser multidisciplinario, involucrando psiquiatría o psicología, además de cuidados tópicos para evitar sobreinfecciones bacterianas. El papel del experto en GlowApp es identificar la irregularidad en la presentación clínica y derivar oportunamente para evitar intervenciones cosméticas innecesarias o procedimientos invasivos que podrían empeorar la condición. La clave reside en la observación de la simetría y la accesibilidad de las lesiones.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procedimientos invasivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:45:28.079Z"
+  },
+  {
+    "chunk_id": "cuidado_corporal_y_spa-eritema-igne-008",
+    "title": "Eritema ab igne: El impacto térmico crónico en la piel",
+    "content": "El eritema ab igne es una condición dermatológica reticulada, hiperpigmentada y a veces atrófica, causada por la exposición crónica a niveles de calor infrarrojo insuficientes para producir una quemadura térmica aguda. Históricamente asociado al uso de estufas o chimeneas, actualmente es cada vez más común debido al uso prolongado de dispositivos electrónicos (laptops) sobre los muslos o mantas eléctricas. La fisiopatología implica un daño vascular y degeneración de fibras elásticas, similar a la elastosis actínica. Inicialmente, el patrón es eritematoso y transitorio, pero con la exposición continua, se convierte en una hiperpigmentación fija. El tratamiento principal es el cese de la fuente de calor. En casos de pigmentación persistente, se pueden evaluar retinoides tópicos o láseres vasculares para mejorar la apariencia. La prevención es simple pero crítica: evitar el contacto directo de fuentes de calor con la piel corporal. Es vital que los usuarios identifiquen este patrón para evitar el progreso hacia cambios cutáneos permanentes.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32145678/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fuentes de calor directo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exposoma-corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:45:28.079Z"
+  }
+]

@@ -1,0 +1,213 @@
+[
+  {
+    "chunk_id": "terapia-luz-baja-nivel-mitocondria-001",
+    "title": "Fotobiomodulación de Baja Intensidad: Dinámica de Citocromo C Oxidasa",
+    "content": "La fotobiomodulación (PBM) mediante longitudes de onda en el espectro rojo e infrarrojo cercano actúa principalmente sobre la mitocondria. El cromóforo principal, la citocromo c oxidasa (CCO), absorbe fotones, lo que facilita la disociación del óxido nítrico, incrementando la producción de ATP y la señalización celular. Estudios en PubMed indican que este incremento energético potencia la proliferación de fibroblastos y la síntesis de colágeno tipo I y III. A diferencia de los láseres ablativos, la PBM utiliza densidades de potencia bajas que no inducen daño térmico, sino una respuesta fotofísica y fotoquímica. Este proceso es fundamental en la recuperación post-procedimientos invasivos, reduciendo la duración del eritema y acelerando la resolución del edema al mejorar la microcirculación local. La coherencia de la luz y la fluencia son variables críticas para evitar efectos inhibitorios, siguiendo la curva de respuesta bifásica de Arndt-Schulz. La aplicación clínica exige protocolos estandarizados de tiempo y distancia para garantizar la penetración dérmica efectiva sin saturar los receptores fotónicos.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27874971/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "luz-led"
+      ],
+      "contraindications": [
+        "fotosensibilidad-activa",
+        "neoplasias-cutaneas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion-celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:36.071Z"
+  },
+  {
+    "chunk_id": "iontoforesis-nanotecnologica-002",
+    "title": "Iontoforesis y Nanotransporte: Permeabilización Selectiva de la Barrera",
+    "content": "La iontoforesis moderna ha evolucionado hacia sistemas de entrega de activos mediante gradientes eléctricos controlados, superando la barrera del estrato córneo. Al aplicar una corriente galvánica de baja intensidad, se facilita el transporte de moléculas cargadas (ionizadas) hacia la dermis mediante electro-repulsión y electro-ósmosis. Este mecanismo es particularmente eficaz para la entrega de péptidos de alto peso molecular que, por vía tópica simple, tendrían una penetración nula. La integración de nanotransportadores (liposomas, niosomas) permite proteger el activo durante su trayecto a través de las glándulas sudoríparas y folículos pilosos. Es crucial monitorizar la impedancia cutánea durante el procedimiento, ya que variaciones en la hidratación y el pH del tejido pueden alterar la eficiencia del transporte y aumentar el riesgo de irritación por acumulación de iones. La personalización del protocolo según la conductividad del paciente permite maximizar la entrega de activos regeneradores como el ácido hialurónico de bajo peso molecular, optimizando los resultados clínicos sin recurrir a técnicas inyectables en pacientes con fobia a las agujas.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-hialuronico",
+        "peptidos"
+      ],
+      "contraindications": [
+        "marcapasos",
+        "implantes-metalicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "entrega-activos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:36.071Z"
+  },
+  {
+    "chunk_id": "microrna-reparacion-cutanea-003",
+    "title": "Modulación de Micro-ARNs (miRNAs) en la Reparación Post-Procedimiento",
+    "content": "La regulación epigenética a través de micro-ARNs (miRNAs) representa un campo emergente en la dermatología estética. Tras procedimientos de resurfacing o microneedling, la expresión de ciertos miRNAs, como el miR-21 o el miR-155, se altera, modulando la respuesta inflamatoria y la síntesis de colágeno. Estos pequeños ARN no codificantes actúan como reguladores post-transcripcionales, silenciando genes pro-inflamatorios o activando vías de reparación tisular. La comprensión de cómo los activos tópicos pueden influir en este perfil epigenético permite diseñar protocolos de recuperación post-procedimiento mucho más precisos. Por ejemplo, la aplicación de ciertos extractos botánicos puede favorecer un perfil de expresión génica que acelere la epitelización y reduzca el riesgo de hiperpigmentación post-inflamatoria. Aunque la investigación aún se centra en modelos in vitro y preclínicos, el potencial de modular la expresión génica para optimizar la cicatrización y la calidad de la piel a largo plazo es inmenso. El objetivo es transitar de un cuidado basado puramente en la hidratación hacia uno basado en la señalización celular dirigida.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "miRNA-moduladores"
+      ],
+      "contraindications": [
+        "procesos-inflamatorios-agudos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia-molecular"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:36.071Z"
+  },
+  {
+    "chunk_id": "neurocosmetica-eje-piel-cerebro-004",
+    "title": "Neurocosmética: Péptidos y la Modulación del Eje Piel-Cerebro",
+    "content": "La neurocosmética explora la conexión bidireccional entre el sistema nervioso periférico y la piel. Los queratinocitos y fibroblastos poseen receptores para neurotransmisores como la sustancia P, el péptido relacionado con el gen de la calcitonina (CGRP) y la acetilcolina. El estrés psicológico crónico eleva los niveles de cortisol, lo cual induce una degradación acelerada de la matriz extracelular y una alteración de la función barrera. Los péptidos neurocosméticos, diseñados para mimetizar o antagonizar estas señales, pueden reducir la reactividad cutánea y la inflamación neurogénica. Por ejemplo, los péptidos que modulan los receptores de TRPV1 pueden calmar la piel sensible tras peelings químicos agresivos, reduciendo la sensación de ardor y eritema persistente. La incorporación de estos activos en rutinas post-procedimiento no solo mejora el confort del paciente, sino que ayuda a estabilizar la homeostasis cutánea en entornos urbanos de alta polución y estrés, factores que comprometen la resiliencia de la piel en Bogotá.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos-neurocosmeticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "recuperacion-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:36.071Z"
+  },
+  {
+    "chunk_id": "bioimpedancia-rf-optimizacion-005",
+    "title": "Análisis de Bioimpedancia: Personalización de Energía en Radiofrecuencia",
+    "content": "La eficacia de la radiofrecuencia (RF) depende críticamente de la impedancia eléctrica del tejido tratado. La impedancia varía según la hidratación, el espesor de la capa adiposa y la densidad de colágeno, lo cual explica la variabilidad en los resultados clínicos entre pacientes. El uso de sistemas de RF con monitoreo de impedancia en tiempo real permite ajustar la potencia de salida automáticamente, asegurando que se alcance la temperatura terapéutica (aprox. 42-45°C) necesaria para la desnaturalización controlada del colágeno sin riesgo de quemaduras. En zonas con alta impedancia, como áreas cicatriciales o con fibrosis, la energía debe ser redistribuida para evitar puntos calientes. Los dispositivos avanzados que integran sensores de impedancia ofrecen una mayor seguridad y predictibilidad, convirtiéndose en el estándar de oro para protocolos de tensado subdérmico. La calibración precisa de estos equipos, combinada con una preparación adecuada de la piel (hidratación previa), es fundamental para maximizar la eficacia clínica de la termocontracción del septum dérmico.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "ASDS (American Society for Dermatologic Surgery)",
+        "url": "https://asds.net/skin-experts/skin-treatments/radiofrequency",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "implantes-metalicos",
+        "marcapasos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "radiofrecuencia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:57:36.071Z"
+  }
+]

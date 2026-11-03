@@ -1,0 +1,78 @@
+[
+  {
+    "chunk_id": "epigenetica-metilacion-adn-001",
+    "title": "Impacto de la Metilación del ADN en la Expresión de Receptores de Andrógenos",
+    "content": "La regulación epigenética, específicamente la metilación de las islas CpG en el promotor del receptor de andrógenos (AR), juega un papel crítico en la susceptibilidad a la alopecia androgenética. Investigaciones recientes indican que cambios en los niveles de metilación pueden alterar drásticamente la sensibilidad del folículo piloso a la dihidrotestosterona (DHT), incluso en individuos con niveles séricos hormonales dentro de rangos de normalidad. Este fenómeno explica por qué pacientes con perfiles hormonales similares exhiben grados de miniaturización folicular tan divergentes. La plasticidad epigenética sugiere que factores ambientales, incluyendo el estilo de vida y la exposición a contaminantes, pueden inducir modificaciones heredables en la expresión génica del folículo. El análisis de estas marcas epigenéticas en muestras de biopsia o tricogramas avanzados podría permitir en el futuro una medicina de precisión en dermatología, permitiendo predecir la respuesta a terapias antiandrogénicas tópicas o sistémicas antes de iniciar el tratamiento, optimizando así los resultados clínicos en pacientes con patrones complejos de pérdida capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34215892/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:49:38.895Z"
+  },
+  {
+    "chunk_id": "senescencia-sasp-foliculo-002",
+    "title": "El Fenotipo Secretor Asociado a la Senescencia (SASP) en el Nicho Folicular",
+    "content": "La acumulación de células senescentes en el nicho de las células madre del folículo piloso no solo impide la regeneración cíclica, sino que promueve un microambiente inflamatorio a través del Fenotipo Secretor Asociado a la Senescencia (SASP). Estas células liberan citoquinas proinflamatorias, quimiocinas y metaloproteinasas que degradan la matriz extracelular, acelerando el proceso de miniaturización. A diferencia de la apoptosis, la senescencia celular implica que las células permanecen metabólicamente activas pero disfuncionales, alterando la comunicación paracrina con las células progenitoras de la papila dérmica. El diagnóstico clínico de este estado implica identificar marcadores de inflamación persistente y una disminución en la tasa de recambio capilar. La comprensión del SASP es fundamental para entender por qué ciertas alopecias son refractarias a tratamientos convencionales. Las intervenciones futuras se enfocan en agentes senolíticos que eliminen selectivamente estas células, restaurando la homeostasis del ciclo capilar y permitiendo que las células madre vuelvan a activarse bajo señales moleculares adecuadas, revirtiendo potencialmente la atrofia del bulbo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00215-4/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:49:38.895Z"
+  }
+]

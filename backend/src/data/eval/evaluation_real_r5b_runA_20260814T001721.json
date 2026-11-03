@@ -1,0 +1,873 @@
+{
+  "timestamp": "2026-08-14T05:18:26.695Z",
+  "summary": {
+    "total_queries": 18,
+    "successful": 18,
+    "errors": 0,
+    "retrieval": {
+      "precision_at_k": 0.1556,
+      "recall_at_k": 0.1667,
+      "mrr": 0.2222,
+      "top_k_accuracy": 0.1111,
+      "precision_at_1": 0.1111,
+      "precision_at_3": 0.2222,
+      "precision_at_5": 0.1556,
+      "recall_at_1": 0.0222,
+      "recall_at_3": 0.1667,
+      "recall_at_5": 0.1667
+    },
+    "generation": {
+      "faithfulness": 0,
+      "answer_relevancy": 0
+    },
+    "context": {
+      "precision": 0.4869,
+      "recall": 0.1667
+    },
+    "latency": {
+      "avg_ms": 3150,
+      "p50_ms": 3120,
+      "p95_ms": 5451,
+      "p99_ms": 5451
+    },
+    "by_category": {
+      "skincare": {
+        "count": 7,
+        "precision_at_k": 0.1714,
+        "recall_at_k": 0.1714,
+        "faithfulness": 0
+      },
+      "cabello": {
+        "count": 4,
+        "precision_at_k": 0.25,
+        "recall_at_k": 0.1,
+        "faithfulness": 0
+      },
+      "cejas": {
+        "count": 7,
+        "precision_at_k": 0.0857,
+        "recall_at_k": 0.2,
+        "faithfulness": 0
+      }
+    },
+    "by_difficulty": {
+      "medium": {
+        "count": 10,
+        "precision_at_k": 0.18,
+        "recall_at_k": 0.12
+      },
+      "easy": {
+        "count": 3,
+        "precision_at_k": 0.1333,
+        "recall_at_k": 0.4
+      },
+      "hard": {
+        "count": 5,
+        "precision_at_k": 0.12,
+        "recall_at_k": 0.12
+      }
+    }
+  },
+  "per_query_results": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2,
+        "mrr": 0.5,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 0.2,
+        "precision_at_5": 0.2,
+        "recall_at_5": 0.2,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.4916,
+      "context_recall": 0.2,
+      "latency_ms": 4256,
+      "retrieval_latency_ms": 1935,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2,
+        "mrr": 0.3333,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 0.2,
+        "precision_at_5": 0.2,
+        "recall_at_5": 0.2,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5127,
+      "context_recall": 0.2,
+      "latency_ms": 3804,
+      "retrieval_latency_ms": 1071,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "difficulty": "easy",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.2,
+        "mrr": 0.3333,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 0.2,
+        "precision_at_5": 0.2,
+        "recall_at_5": 0.2,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5673,
+      "context_recall": 0.2,
+      "latency_ms": 5451,
+      "retrieval_latency_ms": 1415,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 0,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0,
+      "context_recall": 0,
+      "latency_ms": 2188,
+      "retrieval_latency_ms": 1927,
+      "answer_generated": false,
+      "chunks_retrieved": 0
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "difficulty": "hard",
+      "retrieval": {
+        "precision_at_k": 0.6,
+        "recall_at_k": 0.6,
+        "mrr": 1,
+        "top_k_accuracy": 1,
+        "precision_at_1": 1,
+        "recall_at_1": 0.2,
+        "precision_at_3": 1,
+        "recall_at_3": 0.6,
+        "precision_at_5": 0.6,
+        "recall_at_5": 0.6,
+        "relevant_retrieved": 3,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.605,
+      "context_recall": 0.6,
+      "latency_ms": 3681,
+      "retrieval_latency_ms": 1159,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 3
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5233,
+      "context_recall": 0,
+      "latency_ms": 3548,
+      "retrieval_latency_ms": 899,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "difficulty": "easy",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 2
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5096,
+      "context_recall": 0,
+      "latency_ms": 3887,
+      "retrieval_latency_ms": 1230,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 1
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5108,
+      "context_recall": 0,
+      "latency_ms": 3434,
+      "retrieval_latency_ms": 553,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "category": "cabello",
+      "difficulty": "hard",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 1,
+        "total_expected": 1
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.4366,
+      "context_recall": 0,
+      "latency_ms": 1522,
+      "retrieval_latency_ms": 537,
+      "answer_generated": false,
+      "chunks_retrieved": 1
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 1,
+        "recall_at_k": 0.4,
+        "mrr": 1,
+        "top_k_accuracy": 1,
+        "precision_at_1": 1,
+        "recall_at_1": 0.2,
+        "precision_at_3": 1,
+        "recall_at_3": 0.4,
+        "precision_at_5": 1,
+        "recall_at_5": 0.4,
+        "relevant_retrieved": 2,
+        "total_retrieved": 2,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.3831,
+      "context_recall": 0.4,
+      "latency_ms": 1907,
+      "retrieval_latency_ms": 527,
+      "answer_generated": false,
+      "chunks_retrieved": 2
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "difficulty": "hard",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.4558,
+      "context_recall": 0,
+      "latency_ms": 3191,
+      "retrieval_latency_ms": 555,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "difficulty": "easy",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1,
+        "mrr": 0.3333,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.3333,
+        "recall_at_3": 1,
+        "precision_at_5": 0.2,
+        "recall_at_5": 1,
+        "relevant_retrieved": 1,
+        "total_retrieved": 5,
+        "total_expected": 1
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5422,
+      "context_recall": 1,
+      "latency_ms": 3168,
+      "retrieval_latency_ms": 536,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "category": "cejas",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 4
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5686,
+      "context_recall": 0,
+      "latency_ms": 2947,
+      "retrieval_latency_ms": 472,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "category": "cejas",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 1,
+        "total_expected": 2
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.4373,
+      "context_recall": 0,
+      "latency_ms": 1529,
+      "retrieval_latency_ms": 495,
+      "answer_generated": false,
+      "chunks_retrieved": 1
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "difficulty": "hard",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5248,
+      "context_recall": 0,
+      "latency_ms": 3080,
+      "retrieval_latency_ms": 522,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 0.4,
+        "mrr": 0.5,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0.6667,
+        "recall_at_3": 0.4,
+        "precision_at_5": 0.4,
+        "recall_at_5": 0.4,
+        "relevant_retrieved": 2,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5453,
+      "context_recall": 0.4,
+      "latency_ms": 3026,
+      "retrieval_latency_ms": 380,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "difficulty": "medium",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 1
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5708,
+      "context_recall": 0,
+      "latency_ms": 3120,
+      "retrieval_latency_ms": 467,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "difficulty": "hard",
+      "retrieval": {
+        "precision_at_k": 0,
+        "recall_at_k": 0,
+        "mrr": 0,
+        "top_k_accuracy": 0,
+        "precision_at_1": 0,
+        "recall_at_1": 0,
+        "precision_at_3": 0,
+        "recall_at_3": 0,
+        "precision_at_5": 0,
+        "recall_at_5": 0,
+        "relevant_retrieved": 0,
+        "total_retrieved": 5,
+        "total_expected": 5
+      },
+      "generation": {
+        "faithfulness": 0,
+        "answer_relevancy": 0
+      },
+      "context_precision": 0.5787,
+      "context_recall": 0,
+      "latency_ms": 2967,
+      "retrieval_latency_ms": 378,
+      "answer_generated": false,
+      "chunks_retrieved": 5
+    }
+  ],
+  "failures": [
+    {
+      "query_id": "skincare_003",
+      "query": "Rutina para piel grasa en clima húmedo de Bogotá",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_005",
+      "query": "Mejor protector solar para piel sensible con melasma",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_006",
+      "query": "¿Cómo usar ácido hialurónico correctamente?",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_007",
+      "query": "Rutina nocturna anti-edad para piel mixta 35 años",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_008",
+      "query": "Tratamiento para hiperpigmentación post-inflamatoria en piel morena",
+      "category": "skincare",
+      "issues": [
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query"
+      ]
+    },
+    {
+      "query_id": "skincare_009",
+      "query": "¿Puedo combinar niacinamida y vitamina C en la misma rutina?",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "skincare_010",
+      "query": "Mejor limpiador para piel seca y sensible",
+      "category": "skincare",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cabello_002",
+      "query": "Tratamiento para cabello dañado por decoloración",
+      "category": "cabello",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cabello_004",
+      "query": "Caída de cabello post-parto y estrés, qué usar",
+      "category": "cabello",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cabello_006",
+      "query": "Mejor champú para cuero cabelludo graso y puntas secas",
+      "category": "cabello",
+      "issues": [
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes"
+      ]
+    },
+    {
+      "query_id": "cabello_008",
+      "query": "Tratamiento casero vs profesional para hidratación profunda",
+      "category": "cabello",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cejas_001",
+      "query": "¿Qué es el microblading y cuánto dura?",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query"
+      ]
+    },
+    {
+      "query_id": "cejas_002",
+      "query": "Diferencia entre microblading, microshading y nanoblading",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cejas_003",
+      "query": "Forma de cejas ideal para cara redonda",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Chunks recuperados poco relevantes",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cejas_004",
+      "query": "Corrección de cejas asimétricas con micropigmentación",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cejas_005",
+      "query": "Cuidados post-microblading: qué hacer y qué evitar",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query"
+      ]
+    },
+    {
+      "query_id": "cejas_007",
+      "query": "Contraindicaciones del microblading: quién NO debería hacerse",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    },
+    {
+      "query_id": "cejas_008",
+      "query": "Remoción de microblading mal hecho: opciones y riesgos",
+      "category": "cejas",
+      "issues": [
+        "Baja precisión retrieval",
+        "Bajo recall retrieval",
+        "MRR bajo - chunks relevantes muy abajo",
+        "Baja fidelidad - respuesta no respaldada",
+        "Baja relevancia - no responde la query",
+        "Faltan chunks esperados"
+      ]
+    }
+  ],
+  "recommendations": [
+    "Considerar aumentar threshold de similitud o mejorar metadata filtering",
+    "Considerar aumentar topK o mejorar chunking/embeddings",
+    "Revisar prompt de LLM para reducir hallucinations; añadir instrucción \"solo usa el contexto\"",
+    "Mejorar prompt para que LLM se centre en responder la pregunta específica",
+    "ALERTA: 18 queries fallando. Revisar chunking, embeddings o dataset."
+  ],
+  "dataset_version": "2.0",
+  "corpus_version": "1.0.0",
+  "queries_valid": 18,
+  "queries_unsupported": 12,
+  "expected_chunks_total": 65,
+  "expected_chunks_in_bd": 65,
+  "baseline_path": "C:\\beauty-app\\backend\\src\\data\\eval\\baseline_real_r5b.json"
+}

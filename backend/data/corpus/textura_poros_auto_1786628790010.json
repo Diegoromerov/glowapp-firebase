@@ -1,0 +1,367 @@
+[
+  {
+    "chunk_id": "textura_poros-nutrigenomica-001",
+    "title": "Nutrigenómica y expresión génica en la glándula sebácea",
+    "content": "La nutrigenómica investiga cómo los componentes dietéticos, especialmente los ácidos grasos poliinsaturados y polifenoles, modulan la expresión de genes implicados en la diferenciación sebocitaria. En la unidad pilosebácea, la ingesta de nutrientes específicos puede influir en la actividad de los factores de transcripción PPAR (Receptores Activados por Proliferadores de Peroxisomas), los cuales dictan la síntesis de lípidos sebáceos. Una dieta rica en precursores de metilación puede alterar la epigenética del poro, reduciendo la hiperplasia de las glándulas sebáceas mediada por insulina. Estudios en PubMed sugieren que la modulación dietética no solo afecta la composición del sebo, sino también la tasa de recambio celular en el ostium folicular. Al optimizar la ingesta de micronutrientes, se puede disminuir la respuesta inflamatoria subclínica que contribuye a la dilatación del poro a largo plazo. Es fundamental entender que la piel es un órgano metabólicamente activo que responde a la biodisponibilidad de nutrientes en tiempo real, impactando directamente en la arquitectura y textura del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33583279/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "omega-3",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-bioelectricidad-002",
+    "title": "Bioelectricidad y potenciales de membrana en el ostium",
+    "content": "El potencial de membrana de los queratinocitos que recubren el ostium folicular es crítico para mantener la cohesión celular. La bioelectricidad cutánea regula el flujo iónico a través de canales específicos, lo cual influye en la capacidad del poro para contraerse o dilatarse ante estímulos externos. Investigaciones recientes han demostrado que la alteración en el gradiente de potasio y sodio puede comprometer la integridad estructural del canal, favoreciendo una apariencia de poro dilatado. La homeostasis eléctrica es esencial para que las uniones estrechas (tight junctions) funcionen correctamente, evitando la filtración de detritos hacia las capas más profundas de la dermis. La exposición a campos electromagnéticos ambientales o la deshidratación severa pueden modificar estos potenciales eléctricos, alterando la comunicación celular y el tono folicular. Mantener el equilibrio de iones en el microambiente del poro es, por tanto, una estrategia emergente para mejorar la textura cutánea, apoyando la estabilidad mecánica de la entrada del folículo piloso frente a factores de estrés ambiental.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30043-4/fulltext",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "electrolitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-adhesion-molecular-003",
+    "title": "Moléculas de adhesión celular y estabilidad del poro",
+    "content": "Las moléculas de adhesión celular, como las cadherinas y desmogleínas, son las encargadas de mantener la estructura del epitelio que recubre el canal folicular. Cuando estas moléculas se degradan debido a la exposición prolongada a radiación UV o a procesos inflamatorios crónicos, el ostium pierde su capacidad de mantenerse firme, resultando en un ensanchamiento visible. La integridad de estas proteínas de anclaje es vital para resistir las fuerzas de cizallamiento que ocurren durante los movimientos faciales constantes. Estudios demuestran que el uso de retinoides tópicos no solo estimula el colágeno dérmico, sino que también regula la expresión de estas moléculas de adhesión en el epitelio folicular, promoviendo una arquitectura más compacta. La debilidad en la unión entre queratinocitos puede permitir que el poro se estire permanentemente si no se acompaña de una protección adecuada contra la degradación proteolítica. Comprender este mecanismo permite enfocar los tratamientos no solo en la limpieza, sino en la consolidación estructural de las paredes del poro mediante ingredientes que favorezcan la síntesis y estabilidad de estas proteínas.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/pores-treatment",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "péptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-microambiente-gaseoso-004",
+    "title": "Impacto del microambiente gaseoso en el folículo",
+    "content": "El microambiente gaseoso dentro del canal folicular, influenciado por la difusión de oxígeno y la producción de dióxido de carbono metabólico, juega un papel determinante en la queratinización. Un entorno hipóxico puede desencadenar una hiperqueratosis folicular, donde las células muertas no se descaman adecuadamente y obstruyen la salida del sebo, dilatando el poro. El estrés oxidativo, exacerbado por la falta de un intercambio gaseoso eficiente, promueve la formación de radicales libres que dañan la matriz extracelular periporo. La microcirculación perifolicular es responsable de suministrar el oxígeno necesario para mantener la homeostasis; si este flujo se ve comprometido, la arquitectura del poro se debilita. Tecnologías que favorecen la oxigenación cutánea pueden ayudar a mejorar la textura al reducir el taponamiento folicular inducido por hipoxia. Es crucial reconocer que la salud del poro depende de un delicado equilibrio entre la demanda metabólica y el suministro de nutrientes y oxígeno a nivel microscópico, un factor a menudo ignorado en los diagnósticos tradicionales de textura y apariencia de la piel.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28333100/",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-osmosis-celular-005",
+    "title": "Osmosis y turgencia celular en el ostium",
+    "content": "La turgencia celular de los queratinocitos en el ostium depende directamente de la presión osmótica interna y externa. Un desequilibrio en los niveles de humedad o una barrera cutánea comprometida puede llevar a una pérdida de agua transepidérmica, causando que los queratinocitos se contraigan y el poro pierda su soporte estructural. La presencia de NMF (Factor de Hidratación Natural) es crucial para retener el agua dentro de estas células y mantener la elasticidad del canal folicular. La aplicación de humectantes inteligentes que regulen la osmolaridad del entorno folicular es fundamental para prevenir que el poro se vea visualmente más grande debido a la deshidratación. Estudios indican que el mantenimiento de un gradiente osmótico adecuado no solo mejora la textura, sino que protege al folículo contra la penetración de irritantes externos. La hidratación no debe ser vista solo como un beneficio superficial, sino como un mecanismo fisiológico indispensable para la resiliencia mecánica del poro ante las fuerzas de estiramiento constantes del rostro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "acido_hialuronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-mecanotransduccion-006",
+    "title": "Mecanotransducción: el impacto de la tensión facial",
+    "content": "La mecanotransducción es el proceso mediante el cual las células de la piel perciben y responden a estímulos mecánicos. Los fibroblastos situados en la dermis periporo actúan como sensores de la tensión facial, ajustando la síntesis de colágeno y elastina según las fuerzas de tracción que experimentan. En zonas de alta actividad muscular, como el centro del rostro, el estiramiento crónico puede inducir una remodelación del poro, aumentando su diámetro para acomodar el exceso de tensión. Este fenómeno explica por qué el mantenimiento de la firmeza dérmica es vital para la apariencia de los poros: a mayor soporte mecánico, menor es la dilatación inducida por la tracción. Terapias que reducen la sobrecarga mecánica o mejoran la elasticidad de la red de colágeno pueden mitigar este efecto. Es esencial considerar la anatomía dinámica del rostro al evaluar la textura de los poros, reconociendo que los cambios en la tensión facial son determinantes para la morfología folicular a lo largo del tiempo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Molecular Cell Biology",
+        "url": "https://www.nature.com/articles/nrm.2016.148",
+        "year": 2016
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos_tensore"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-senescencia-007",
+    "title": "Senescencia celular y el fenotipo SASP en el poro",
+    "content": "La senescencia de los fibroblastos y queratinocitos periporo no solo implica una menor producción de colágeno, sino también la activación del Fenotipo Secretor Asociado a la Senescencia (SASP). Las células senescentes liberan citoquinas proinflamatorias y metaloproteinasas que degradan la matriz extracelular que sostiene la estructura del poro. Este proceso, conocido como inflamación del envejecimiento (inflammaging), contribuye significativamente a la pérdida de elasticidad alrededor del ostium folicular, haciendo que los poros parezcan más grandes y flácidos. La acumulación de células senescentes en la unidad pilosebácea crea un entorno hostil que impide la regeneración tisular eficiente. Estrategias que buscan modular la senescencia celular, como el uso de antioxidantes potentes y activos que promueven la proteostasis, son fundamentales para preservar la integridad del poro. Es vital tratar la textura no solo como un problema de acumulación de sebo, sino como un reflejo del estado biológico de las células que conforman el soporte estructural del folículo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(18)32742-X/fulltext",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "retinoides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-exosomas-008",
+    "title": "Exosomas y comunicación intercelular en la unidad pilosebácea",
+    "content": "Los exosomas son vesículas extracelulares que actúan como mensajeros entre diferentes tipos celulares en la piel, incluyendo sebocitos, queratinocitos y fibroblastos. En la unidad pilosebácea, el intercambio de exosomas regula procesos críticos como la proliferación celular y la respuesta inflamatoria. Un desajuste en el contenido de estos exosomas puede enviar señales erróneas que promueven la hiperqueratinización o la sobreproducción sebácea, afectando directamente la textura del poro. La investigación actual sugiere que la modulación de esta comunicación intercelular podría ser clave para tratar poros dilatados de origen inflamatorio. Al restaurar la señalización correcta mediante ingredientes que favorecen la comunicación celular saludable, es posible influir en el comportamiento del poro desde su raíz biológica. Los exosomas representan una nueva frontera en la dermatología cosmética, ofreciendo una perspectiva más profunda sobre cómo las células del poro se coordinan para mantener su estructura y función, más allá de los tratamientos tópicos convencionales que solo actúan sobre la superficie.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34515545/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "factores_crecimiento"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_celular"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  },
+  {
+    "chunk_id": "textura_poros-proteostasis-009",
+    "title": "Proteostasis: mantenimiento de la calidad proteica periporo",
+    "content": "La proteostasis es el conjunto de mecanismos celulares que aseguran que las proteínas se plieguen correctamente y se degraden cuando están dañadas. En el microambiente del poro, la acumulación de proteínas mal plegadas debido a estrés térmico, radiación UV o glicación puede desencadenar una respuesta inflamatoria que altera la arquitectura periporo. La capacidad de las células (especialmente los fibroblastos) para mantener una proteostasis efectiva disminuye con la edad, lo que conduce a una pérdida de elasticidad y a la dilatación del ostium. Los sistemas de control de calidad proteica, como el proteasoma y la autofagia, son vitales para eliminar estas proteínas disfuncionales. Fomentar la actividad de estos sistemas mediante activos tópicos específicos puede mejorar significativamente la textura y firmeza de la piel alrededor del poro. Es fundamental entender que la apariencia de 'poros abiertos' suele estar vinculada a una falla en la renovación de la matriz extracelular, la cual depende enteramente de la eficiencia de la proteostasis local para mantenerse firme y resiliente ante el exposoma.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)00246-X/fulltext",
+        "year": 2015
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:12.545Z"
+  }
+]

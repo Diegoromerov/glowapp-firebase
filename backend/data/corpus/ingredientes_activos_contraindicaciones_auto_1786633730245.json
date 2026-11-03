@@ -1,0 +1,89 @@
+[
+  {
+    "chunk_id": "polidocanol-dermatitis-contacto-001",
+    "title": "Polidocanol y riesgo de sensibilización en pieles con dermatitis de contacto",
+    "content": "El polidocanol, un anestésico local no iónico, se emplea frecuentemente en formulaciones dermatológicas para el control del prurito intenso en pieles atópicas o xeróticas. Aunque se considera un ingrediente seguro con un perfil de irritación bajo, la literatura clínica reciente señala una incidencia creciente de dermatitis alérgica de contacto (DAC) secundaria a su uso. A diferencia de otros anestésicos, la sensibilización al polidocanol puede ser difícil de detectar debido a que su presencia en productos 'leave-on' suele enmascararse por el alivio sintomático inicial del picor. Estudios publicados en revistas como Contact Dermatitis advierten que, en pacientes con barrera cutánea comprometida, la absorción sistémica y el contacto prolongado con el estrato córneo alterado facilitan la respuesta inmune. Es fundamental que los profesionales de la salud consideren el polidocanol como posible alérgeno cuando un paciente con dermatitis atópica experimenta un empeoramiento paradójico de su cuadro tras iniciar tratamientos antipruriginosos. La recomendación clínica es realizar pruebas de parche específicas si la sospecha diagnóstica es alta, evitando su aplicación en áreas de piel erosionada donde la permeabilidad está significativamente aumentada.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopic",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polidocanol"
+      ],
+      "contraindications": [
+        "dermatitis de contacto activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-ingredientes"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:08:32.018Z"
+  },
+  {
+    "chunk_id": "silicatos-aluminio-microabrasion-002",
+    "title": "Silicato de Magnesio y Aluminio: El riesgo de micro-abrasión en pieles finas",
+    "content": "El silicato de magnesio y aluminio (veegum) se utiliza ampliamente como agente espesante y estabilizador en emulsiones cosméticas, proporcionando una textura sedosa y un acabado mate apreciado en productos para pieles grasas. Sin embargo, su estructura mineral de láminas finas plantea un riesgo clínico a menudo subestimado: la micro-abrasión mecánica en pieles con estrato córneo debilitado o muy fino, como ocurre en pacientes tratados con retinoides tópicos o tras procedimientos de exfoliación química. Aunque el ingrediente es inerte químicamente, su naturaleza física puede actuar como un agente exfoliante abrasivo no intencionado si el producto no está formulado con una dispersión coloidal perfecta. La evidencia dermatológica sugiere que, en pieles con barrera lipídica comprometida, la fricción mecánica repetida causada por partículas de silicatos puede exacerbar la pérdida transepidérmica de agua (TEWL) y aumentar la vulnerabilidad a irritantes secundarios. Se recomienda precaución al combinar productos que contengan altas concentraciones de estos silicatos con regímenes de retinización, ya que el riesgo de irritación acumulativa es real. Los formuladores deben asegurar que la granulometría de estas arcillas sea compatible con el uso diario en pieles reactivas para evitar procesos inflamatorios subclínicos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "magnesium aluminum silicate"
+      ],
+      "contraindications": [
+        "piel irritada",
+        "post-peeling"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:08:32.018Z"
+  }
+]

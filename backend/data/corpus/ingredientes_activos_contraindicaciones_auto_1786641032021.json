@@ -1,0 +1,214 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Polímeros de acrilato en protectores solares: el riesgo de sensibilización cruzada",
+    "content": "Los polímeros de acrilato se utilizan frecuentemente en formulaciones de protección solar para mejorar la resistencia al agua y la estabilidad de los filtros. Sin embargo, los acrilatos, incluyendo el metilacrilato y otros derivados, son alérgenos de contacto conocidos. La AAD ha documentado un aumento en la incidencia de dermatitis alérgica de contacto (DAC) relacionada con estos polímeros en productos 'water-resistant'. El riesgo aumenta significativamente cuando el protector solar se aplica sobre pieles con la barrera cutánea comprometida. A diferencia de los filtros químicos que se degradan, estos polímeros pueden permanecer en el estrato córneo, facilitando una sensibilización retardada. Es crucial que pacientes con antecedentes de dermatitis de contacto a adhesivos médicos o esmaltes de uñas (que contienen resinas de acrilatos) realicen una prueba de parche antes de usar protectores solares con alta resistencia al agua. La exposición repetida a estos polímeros puede inducir una sensibilización permanente, dificultando la selección futura de fotoprotectores eficaces y seguros, ya que muchos productos de alto rendimiento dependen de esta tecnología para cumplir con los estándares de permanencia en condiciones de sudoración o inmersión.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acrilatos"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:10:14.522Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Ácido tioglicólico en productos de cuidado capilar y el riesgo de sensibilización",
+    "content": "El ácido tioglicólico y sus sales son agentes reductores potentes utilizados en tratamientos de alisado y ondulación permanente. Su mecanismo implica la ruptura de los puentes disulfuro de la queratina. En dermatología, su uso es una causa documentada de dermatitis de contacto irritativa y alérgica, no solo en el cuero cabelludo, sino también en áreas adyacentes como la frente, párpados y cuello debido a la transferencia accidental. Estudios publicados en PubMed indican que la exposición crónica a estos agentes puede comprometer la integridad de la barrera cutánea, facilitando la penetración de otros alérgenos cosméticos. La irritación severa puede derivar en una dermatitis descamativa que, si no se trata, puede dejar secuelas pigmentarias en fototipos altos. La IADVL recomienda evitar cualquier producto con ácido tioglicólico en pacientes con dermatitis atópica activa o condiciones de cuero cabelludo inflamatorio, ya que el riesgo de sensibilización es significativamente mayor. La aplicación debe ser realizada por profesionales, pero el riesgo de uso doméstico sin los protocolos de protección adecuados es una preocupación clínica creciente en el manejo de la salud capilar y dérmica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/NIH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450000/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido tioglicólico"
+      ],
+      "contraindications": [
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-capilar"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:10:14.522Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Cloruro de benzalconio: impacto en la homeostasis del microbioma",
+    "content": "El cloruro de benzalconio es un compuesto de amonio cuaternario utilizado como conservante y agente antiséptico en diversos productos cosméticos de limpieza. Aunque es eficaz contra bacterias, su uso prolongado en productos de aplicación diaria puede alterar la diversidad del microbioma cutáneo. Investigaciones recientes han demostrado que el benzalconio no discrimina entre bacterias patógenas y comensales beneficiosas, lo que puede inducir una disbiosis cutánea. Esta alteración es particularmente peligrosa para pacientes con dermatitis atópica, donde el equilibrio del microbioma es esencial para la función de barrera. La exposición persistente puede provocar una dermatitis de contacto irritativa, manifestándose como eritema y prurito persistente. Además, existe preocupación por la resistencia bacteriana inducida por el uso continuado de antisépticos en productos de cuidado personal. La recomendación actual en el manejo de pieles reactivas es preferir tensioactivos suaves y conservantes con perfiles de seguridad más respetuosos con la microbiota, como los ácidos orgánicos o sistemas de conservación de última generación, evitando el uso rutinario de amonios cuaternarios en las rutinas de limpieza facial diaria.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "disbiosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:10:14.522Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Polidocanol: seguridad y manejo del prurito en pieles atópicas",
+    "content": "El polidocanol es un agente antipruriginoso no anestésico que se ha posicionado como una alternativa segura y eficaz a los anestésicos locales como la benzocaína. Actúa modulando los canales de sodio en las terminaciones nerviosas sensoriales de la piel, proporcionando un alivio rápido del picor sin los riesgos de metahemoglobinemia asociados a otros compuestos. Es particularmente útil en el manejo de la dermatitis atópica, donde el ciclo 'picor-rascado' es el principal factor de exacerbación de la enfermedad. A diferencia de otros activos, el polidocanol tiene un perfil de sensibilización muy bajo, lo que lo hace adecuado para su uso en pieles altamente reactivas. No obstante, es fundamental que se utilice en formulaciones bien equilibradas que no comprometan la barrera cutánea. La evidencia clínica sugiere que su integración en cremas emolientes mejora significativamente la adherencia al tratamiento en pacientes con prurito crónico. Es una herramienta valiosa en la curaduría de productos para pieles sensibles, siempre que se garantice la ausencia de fragancias o conservantes irritantes en la misma fórmula, evitando así reacciones cruzadas que podrían anular sus beneficios terapéuticos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://eadv.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "atopic"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polidocanol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-prurito"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:10:14.522Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "Sulfato de cobre tópico: riesgo de desequilibrio iónico y citotoxicidad",
+    "content": "El sulfato de cobre se utiliza en cosmética por sus propiedades antimicrobianas y seborreguladoras. No obstante, su aplicación tópica requiere una supervisión cuidadosa. El cobre es un oligoelemento esencial, pero su exceso en la piel puede ser citotóxico. El sulfato de cobre, en particular, puede causar irritación, eritema y, en casos de uso prolongado o alta concentración, puede interferir con la homeostasis de otros metales esenciales en la piel, como el zinc. Además, existe una incompatibilidad química conocida con ciertos péptidos de señalización y con la Vitamina C pura (ácido L-ascórbico), donde el cobre puede catalizar la oxidación inútil del activo, convirtiéndolo en pro-oxidante. En pacientes con pieles seborreicas o con acné, el uso de sulfato de cobre debe ser puntual y no reemplazar terapias de primera línea. Su capacidad para alterar el equilibrio iónico de la barrera cutánea lo convierte en un ingrediente que, aunque útil en manos expertas para el control microbiano, presenta riesgos de irritación y desestabilización de fórmulas complejas que no deben subestimarse en la curaduría de una rutina de cuidado diario.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato de cobre"
+      ],
+      "contraindications": [
+        "pieles con rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "control-sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:10:14.522Z"
+  }
+]

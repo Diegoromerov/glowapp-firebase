@@ -1,0 +1,291 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-focal-001",
+    "title": "Onicólisis focal por tensión tangencial en uñas largas",
+    "content": "La onicólisis focal, a diferencia de la traumática generalizada, ocurre por una tensión tangencial repetida en el punto de anclaje del hiponiquio. En uñas con extensión, el efecto palanca generado por el peso del producto (acrílico o gel) sobre el borde libre actúa como un vector de fuerza constante que separa la lámina del lecho. Según estudios publicados en el Journal of the American Academy of Dermatology, este microtrauma mecánico altera la adhesión de los queratinocitos del lecho ungueal, facilitando la entrada de humedad y patógenos oportunistas. La clave para prevenir esta condición no es solo el grosor del material, sino la arquitectura de la estructura: un apex mal posicionado traslada la carga hacia el hiponiquio en lugar de distribuirla hacia la matriz. Es imperativo que los profesionales de GlowApp evalúen la longitud máxima funcional según la curvatura natural de la uña del cliente, evitando sobrepasar el límite de 'estabilidad biomecánica' para prevenir la retracción permanente del hiponiquio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-problems-causes",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas con hiponiquio corto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  },
+  {
+    "chunk_id": "guias-unas-fotopolicarbonatos-002",
+    "title": "Fotopolimerización y el riesgo de reacciones exotérmicas",
+    "content": "La reacción exotérmica durante el curado de geles UV/LED es un fenómeno físico-químico donde la polimerización rápida libera energía en forma de calor. En el lecho ungueal, este aumento térmico puede superar el umbral de tolerancia de los nociceptores, provocando dolor intenso e incluso una quemadura química o térmica sutil que debilita la adhesión del lecho. La literatura en PubMed indica que una polimerización demasiado rápida, inducida por lámparas de alta intensidad o una capa de producto excesivamente gruesa, favorece la formación de una red de polímero con alta densidad de enlaces cruzados, lo que aumenta la contracción del material y la generación de calor. Es fundamental que el técnico de GlowApp aplique capas delgadas y utilice el modo 'low heat' en las lámparas, permitiendo una polimerización gradual. Este enfoque reduce el estrés mecánico sobre la lámina y minimiza la posibilidad de onicólisis inducida por contracción del material tras el servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32158652/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "oligómeros",
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "lámina ungueal adelgazada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  },
+  {
+    "chunk_id": "guias-unas-limado-y-matriz-003",
+    "title": "Efectos del limado excesivo en la matriz ungueal",
+    "content": "El limado agresivo de la lámina dorsal, especialmente en la zona proximal cercana al eponiquio, es una práctica de riesgo que compromete la integridad estructural de la uña nueva. La matriz ungueal, aunque protegida por el pliegue proximal, es sensible a vibraciones de alta frecuencia y al calor generado por limas eléctricas de alta velocidad. Estudios dermatológicos advierten que la eliminación excesiva de las capas superficiales (dorsales) de la queratina no solo debilita la uña, sino que altera la barrera protectora natural que impide la absorción de sustancias químicas y la colonización por bacterias. Al adelgazar demasiado la lámina, aumentamos la permeabilidad de la placa, facilitando que los fotoiniciadores de los geles penetren hasta el lecho, incrementando el riesgo de dermatitis alérgica de contacto. En GlowApp, promovemos la técnica de 'limado mínimo' utilizando granos suaves y controlando la velocidad de la pieza de mano, priorizando siempre la preservación del grosor natural de la lámina para mantener la homeostasis del lecho ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica-profesional"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  },
+  {
+    "chunk_id": "guias-unas-hidratacion-lamina-004",
+    "title": "El papel de los lípidos en la flexibilidad de la lámina",
+    "content": "La lámina ungueal es una estructura porosa compuesta de queratina que requiere un equilibrio hídrico y lipídico para mantenerse flexible y resistente. A diferencia de la piel, la uña no contiene glándulas sebáceas, por lo que su hidratación depende de la difusión de lípidos desde el eponiquio y el lecho ungueal. Cuando aplicamos productos deshidratadores de forma indiscriminada (como acetona pura o primers ácidos) de manera repetida, eliminamos los lípidos intercelulares que actúan como 'cemento' entre las células de queratina. Esto resulta en onicosquizia (descamación) y fragilidad extrema. La evidencia sugiere que el uso de aceites para cutícula ricos en ácidos grasos esenciales y vitamina E post-servicio ayuda a restaurar la barrera lipídica, mejorando la resistencia a la rotura por impacto. En GlowApp, recomendamos que la hidratación de la zona periungueal sea un paso obligatorio, no solo estético, para asegurar que la uña mantenga su capacidad de flexión frente a las tensiones diarias, evitando que la lámina se vuelva quebradiza y propensa a fisuras longitudinales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites vegetales",
+        "vitamina E"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado-post-servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  },
+  {
+    "chunk_id": "guias-unas-pseudomonas-biopelicula-005",
+    "title": "Pseudomonas aeruginosa: la formación de biopelículas en el lecho",
+    "content": "La infección por Pseudomonas aeruginosa, comúnmente llamada 'uña verde', es un ejemplo clásico de colonización bacteriana oportunista tras una onicólisis. La bacteria produce piocianina, un pigmento que tiñe la queratina de un color verdoso característico. Lo que muchos técnicos ignoran es que estas bacterias forman una biopelícula (biofilm) que las protege de los antisépticos tópicos comunes. Una vez que la uña se ha desprendido del lecho, el espacio creado bajo la lámina actúa como un reservorio húmedo y cálido, ideal para la proliferación bacteriana. La limpieza mecánica profunda en cabina sin un diagnóstico médico previo suele ser contraproducente, ya que puede introducir la bacteria más profundamente. La recomendación clínica es suspender cualquier aplicación de producto, mantener la zona seca y, si la coloración persiste, remitir al dermatólogo para el uso de antibióticos tópicos específicos. En GlowApp, nuestro protocolo ante la sospecha de uña verde es el cese inmediato del servicio y la derivación para evitar la cronicidad de la infección.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "aplicación de productos sobre uña verde"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  },
+  {
+    "chunk_id": "guias-unas-alergia-cruzada-006",
+    "title": "Alergia cruzada a acrilatos: el peligro de la sensibilización",
+    "content": "La dermatitis alérgica de contacto por acrilatos es una de las afecciones ocupacionales más frecuentes en la industria de la estética. Una vez que un cliente se sensibiliza a un monómero específico (como el Hidroxipropil Metacrilato o HPMA), es altamente probable que desarrolle una reacción cruzada a otros monómeros de estructura química similar. Esto significa que el cliente no solo reaccionará al producto que causó la alergia, sino a cualquier sistema de uñas (gel, acrílico, dip powder) que contenga derivados acrílicos. La sensibilización es irreversible y puede manifestarse no solo en las uñas, sino también en áreas distantes como párpados, cuello y cara tras el contacto indirecto. El protocolo de GlowApp debe enfocarse en la prevención: evitar el contacto del producto con la piel periungueal durante la aplicación. Si un cliente presenta prurito, eritema o edema en los dedos tras un servicio, debe cesar el uso de estos sistemas de forma permanente y consultar con un alergólogo para realizar pruebas de parche específicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://contactderm.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "acrilatos"
+      ],
+      "contraindications": [
+        "pacientes con dermatitis de contacto previa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-seguridad"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  },
+  {
+    "chunk_id": "guias-unas-hiperhidrosis-adhesion-007",
+    "title": "Hiperhidrosis y su impacto en la falla de adhesión",
+    "content": "La hiperhidrosis (sudoración excesiva) es una condición que a menudo pasa desapercibida en el diagnóstico previo al servicio, pero es una causa principal de levantamiento prematuro de productos fotopolimerizables. El exceso de humedad en el lecho ungueal y el pliegue proximal altera el pH de la superficie y reduce la capacidad de adhesión de los primers y bases. La humedad residual bajo el producto crea un microambiente que favorece el desprendimiento mecánico. Además, el uso constante de deshidratadores potentes para compensar la sudoración puede resecar en exceso la piel periungueal, causando dermatitis por irritación. En GlowApp, recomendamos que ante clientes con hiperhidrosis, se realice un protocolo de preparación específico: una limpieza profunda con agentes desengrasantes suaves, una deshidratación controlada y, preferiblemente, la selección de productos con mayor afinidad por superficies húmedas. Es vital educar al cliente sobre esta limitación fisiológica para gestionar sus expectativas sobre la durabilidad del servicio.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Hyperhidrosis Society",
+        "url": "https://www.sweathelp.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "deshidratadores"
+      ],
+      "contraindications": [
+        "uso excesivo de ácidos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-cliente"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:37:06.257Z"
+  }
+]

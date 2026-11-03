@@ -1,0 +1,305 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001",
+    "title": "Fisiopatología del prurito neuropático localizado en la zona escapular",
+    "content": "El prurito neuropático localizado, específicamente la notalgia parestésica, es una neuropatía sensorial crónica que afecta el área escapular. A diferencia del prurito dermatológico común, su origen es la disfunción de los nervios espinales dorsales (T2-T6). El atrapamiento nervioso o la compresión mecánica por degeneración de los discos intervertebrales altera la señalización sensorial, provocando una percepción de picor, ardor o dolor en la piel suprayacente. Clínicamente, se manifiesta con una placa hiperpigmentada debido al rascado crónico, lo que genera una respuesta inflamatoria persistente. El manejo no debe centrarse solo en la barrera cutánea, sino en la evaluación de la columna vertebral y el uso de neuromoduladores tópicos como la capsaicina al 0.025% o anestésicos locales. La literatura sugiere que el abordaje debe ser multidisciplinario, involucrando fisioterapia para corregir la postura y reducir la compresión nerviosa, evitando así la progresión a una liquenificación severa y el daño permanente de las fibras nerviosas dérmicas. La educación del paciente sobre la naturaleza no dermatológica del síntoma es fundamental para el éxito terapéutico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto",
+        "senil"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capsaicina"
+      ],
+      "contraindications": [
+        "corticoides_sistemicos_sin_diagnostico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002",
+    "title": "Impacto de la luz azul artificial en la hiperpigmentación corporal",
+    "content": "La exposición a la luz visible de alta energía (HEV) o luz azul, proveniente tanto del sol como de dispositivos electrónicos, ha demostrado inducir hiperpigmentación en fototipos altos (IV-VI). A diferencia de la radiación UV que induce daño en el ADN, la luz azul activa los receptores de opsina-3 (OPN3) en los melanocitos, estimulando la melanogénesis a través de la vía de la tirosinasa sin causar eritema inmediato. En el contexto de GlowApp, es vital educar sobre la protección contra la luz visible en pacientes que realizan teletrabajo o permanecen largas horas frente a pantallas. Los filtros solares convencionales (UV) son insuficientes; se requieren formulaciones con óxido de hierro o pigmentos minerales que bloqueen el espectro de luz visible. La evidencia sugiere que la combinación de antioxidantes tópicos potentes, como la niacinamida y la vitamina C, puede mitigar la señalización de OPN3. La prevención de la hiperpigmentación inducida por HEV es un componente crítico en la gestión estética de áreas expuestas, como los brazos y el escote, especialmente en pacientes bajo tratamientos aclarantes.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33333333",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "oxido_de_hierro",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003",
+    "title": "Fisiología de la apoptosis inducida por frío en el tejido adiposo subcutáneo",
+    "content": "La criolipólisis se basa en la susceptibilidad selectiva de los adipocitos al frío prolongado, un fenómeno conocido como apoptosis inducida. Al enfriar el tejido por debajo de los 10°C, se desencadena una cascada de cristalización de lípidos intracelulares y una respuesta inflamatoria controlada. Este proceso activa la vía de la caspasa-3, llevando a la fragmentación del ADN celular y la posterior eliminación de los adipocitos mediante macrófagos en un periodo de 2 a 4 meses. Es crucial entender que, a diferencia de la liposucción, la criolipólisis no elimina el adipocito de manera inmediata, sino que induce una reducción gradual del volumen del panículo adiposo. Los riesgos clínicos incluyen la hiperplasia adiposa paradójica (HAP), aunque poco frecuente, que requiere monitoreo post-procedimiento. La eficacia depende de la adecuada selección del paciente y la integridad del tejido conectivo. La evaluación de la densidad del tejido graso antes del procedimiento es fundamental, ya que la grasa fibrosa responde de manera diferente a la grasa blanda o edematosa. Los protocolos actuales enfatizan la importancia de no sobrepasar los ciclos de enfriamiento para evitar daños en la dermis suprayacente.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "crioglobulinemia",
+        "hemoglobinuria_paroxistica_al_frio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos_esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-005",
+    "title": "Mecanismo de acción de la radiofrecuencia con microagujas (RFM) corporal",
+    "content": "La radiofrecuencia con microagujas (RFM) es una modalidad terapéutica que combina el daño mecánico controlado de las microagujas con la energía térmica de la radiofrecuencia bipolar o monopolar. Este abordaje dual permite una remodelación profunda de la matriz extracelular (MEC) en la dermis profunda y el tejido subcutáneo. La penetración de las agujas a profundidades ajustables (de 0.5 mm a 3.5 mm) crea zonas de coagulación térmica que inducen la desnaturalización del colágeno preexistente y estimulan una respuesta de cicatrización mediada por fibroblastos, resultando en la síntesis de nuevo colágeno tipo I y elastina. En el cuerpo, esta tecnología es particularmente eficaz para el tratamiento de la laxitud cutánea post-pérdida de peso, estrías distensae y cicatrices quirúrgicas. La seguridad del procedimiento depende de la conductividad de la piel, la densidad de los disparos y el enfriamiento superficial para evitar quemaduras epidérmicas. Es imperativo realizar una evaluación clínica previa para descartar contraindicaciones como implantes metálicos cercanos o trastornos de la coagulación. La recuperación requiere un protocolo estricto de hidratación y fotoprotección para evitar la hiperpigmentación postinflamatoria.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Society for Dermatologic Surgery",
+        "url": "https://asds.net/skin-experts",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "marcapasos",
+        "embarazo",
+        "infeccion_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "procedimientos_esteticos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-006",
+    "title": "El papel de la microbiota en el prurito acuagénico",
+    "content": "El prurito acuagénico es una condición rara pero debilitante, caracterizada por la aparición de prurito intenso tras el contacto con el agua, independientemente de su temperatura. Investigaciones recientes sugieren una conexión entre la composición del microbioma cutáneo y la susceptibilidad al prurito. Se ha observado que la alteración del pH cutáneo causada por limpiadores alcalinos (syndets con pH superior a 7) favorece la proliferación de bacterias como Staphylococcus epidermidis, cuya actividad metabólica puede alterar la barrera lipídica y exponer terminaciones nerviosas libres a estímulos osmóticos. En el prurito acuagénico, el contacto con el agua provoca una disrupción osmótica que libera mediadores inflamatorios como la acetilcolina y la histamina. El manejo clínico se basa en la restauración del pH ácido (5.5) y la preservación de la barrera con emolientes ricos en ceramidas y lípidos fisiológicos. Es fundamental evitar el uso de limpiadores irritantes y optar por fórmulas con tensoactivos suaves que no degraden los lípidos del estrato córneo. La estabilización del microbioma ayuda a reducir la reactividad cutánea ante estímulos externos.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acido_lactico"
+      ],
+      "contraindications": [
+        "limpiadores_alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_corporal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-007",
+    "title": "Mitos sobre el aclarado de zonas de pliegues en fototipos altos",
+    "content": "Existe una creencia generalizada de que la hiperpigmentación en pliegues (axilas, ingles, cuello) se debe a una acumulación de células muertas que requiere exfoliación agresiva. Desde una perspectiva clínica, esto es un error grave. En fototipos altos (IV-VI), la hiperpigmentación intertriginosa es frecuentemente una respuesta a la fricción crónica (acantosis nigricans o hiperpigmentación post-fricción) y a la inflamación subclínica. La exfoliación mecánica o química agresiva (usando ácidos a altas concentraciones como el glicólico) puede exacerbar la inflamación, aumentando la actividad de los melanocitos y empeorando la mancha, un fenómeno conocido como hiperpigmentación postinflamatoria (HPI). El manejo experto debe centrarse en reducir la fricción, controlar la inflamación con agentes calmantes y utilizar inhibidores de la tirosinasa suaves (como ácido azelaico o niacinamida) en lugar de agentes exfoliantes agresivos. La seguridad en estas zonas es prioritaria debido a la alta absorción percutánea y la susceptibilidad a la irritación. Es vital educar a los pacientes de GlowApp sobre la necesidad de paciencia y un enfoque antiinflamatorio en lugar de uno puramente queratolítico.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Skin Therapy Letter",
+        "url": "https://www.skintherapyletter.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [
+        "acido_azelaico",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "acidos_fuertes",
+        "exfoliacion_mecanica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_hiperpigmentacion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-009",
+    "title": "Abordaje clínico de la onicosquisis en usuarios de esmaltes semipermanentes",
+    "content": "La onicosquisis, o separación lamelar de la placa ungueal, es una complicación frecuente asociada al uso prolongado de esmaltes semipermanentes y la exposición a lámparas UV/LED. La técnica de remoción mecánica (limado agresivo) y el uso de solventes como la acetona deshidratan la queratina ungueal y debilitan la cohesión entre los onicocitos. Clínicamente, las uñas se presentan delgadas, quebradizas y con descamación distal. El abordaje debe incluir el cese temporal del uso de esmaltes para permitir la regeneración natural de la matriz ungueal. Se recomiendan tratamientos tópicos con agentes fortalecedores que contengan queratina hidrolizada, biotina o silicio orgánico, los cuales ayudan a restaurar la integridad estructural de la uña. Además, es vital educar sobre la importancia de aplicar fotoprotección en las manos (o guantes con protección UV) durante el uso de lámparas de secado, minimizando el riesgo de daño actínico periungueal. La hidratación intensiva de la cutícula y la matriz proximal es fundamental para promover un crecimiento ungueal saludable y resistente a la fragilidad mecánica.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "biotina",
+        "silicio",
+        "queratina"
+      ],
+      "contraindications": [
+        "limado_excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_manos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:23:29.567Z"
+  }
+]

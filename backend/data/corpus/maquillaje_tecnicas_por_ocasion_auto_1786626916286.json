@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "maquillaje-tecnicas-microbiota-oral-001",
+    "title": "Maquillaje y transferencia de microbiota oral: Riesgos en eventos sociales",
+    "content": "La transferencia de microbiota oral al rostro durante eventos sociales, exacerbada por el uso de labiales de larga duración que requieren retoques frecuentes, representa un desafío subestimado para la salud cutánea. Estudios en Journal of Oral Microbiology sugieren que la traslocación de bacterias comensales orales, como Streptococcus salivarius, hacia la zona peribucal puede alterar el microbioma cutáneo, especialmente si existe una barrera lipídica comprometida. Al aplicar productos cosméticos en un entorno con alta carga de patógenos o tras contacto físico, la oclusión creada por el maquillaje puede favorecer la proliferación bacteriana. Es fundamental implementar protocolos de higiene que incluyan la desinfección de aplicadores y la elección de fórmulas con conservantes de amplio espectro, evitando la contaminación cruzada entre la mucosa oral y la piel. La AAD destaca que la integridad de la barrera cutánea es la mejor defensa contra la colonización bacteriana exógena. Se recomienda el uso de aplicadores desechables individuales y evitar el 'doble dipping' en envases compartidos durante eventos prolongados para mitigar este riesgo de disbiosis cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Oral Microbiology",
+        "url": "https://www.tandfonline.com/journals/zjom20",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "conservantes",
+        "agentes antimicrobianos"
+      ],
+      "contraindications": [
+        "piel con heridas abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:14:58.739Z"
+  },
+  {
+    "chunk_id": "maquillaje-tecnicas-radiacion-hev-006",
+    "title": "Maquillaje y protección contra el estrés oxidativo inducido por luz HEV",
+    "content": "La exposición a la luz visible de alta energía (HEV) en entornos de oficinas modernas o eventos con iluminación LED intensa puede inducir la formación de especies reactivas de oxígeno (ERO) en la piel, un fenómeno que contribuye al envejecimiento prematuro y la hiperpigmentación. El maquillaje convencional, aunque cubriente, no suele ofrecer una protección efectiva contra este espectro de luz. Es necesario integrar pigmentos que contengan óxidos de hierro específicos y filtros físicos como el dióxido de titanio, que han demostrado en estudios clínicos capacidad para reflejar y dispersar parte del espectro HEV. Adicionalmente, la incorporación de antioxidantes tópicos (vitamina C, niacinamida, tocoferol) en el maquillaje permite neutralizar los radicales libres generados durante la exposición. La AAD recomienda que el maquillaje para eventos en interiores con alta intensidad lumínica actúe como una barrera activa, no solo estética. El uso de primers con agentes fotoprotectores de amplio espectro es crucial para prevenir la cascada de señalización pro-inflamatoria que la luz HEV desencadena en melanocitos y queratinocitos, asegurando una piel protegida y uniforme durante toda la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "vitamina C",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:14:58.739Z"
+  }
+]

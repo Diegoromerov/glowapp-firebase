@@ -1,0 +1,124 @@
+[
+  {
+    "chunk_id": "color-capilar-degradacion-triptofano-002",
+    "title": "Degradación del triptófano en la queratina capilar bajo oxidación",
+    "content": "El triptófano es uno de los aminoácidos más sensibles a la oxidación durante los procesos de coloración permanente. La literatura dermatológica, incluyendo reportes en el International Journal of Cosmetic Science, señala que la degradación del triptófano bajo la influencia del peróxido de hidrógeno y agentes alcalinos conduce a la formación de subproductos como la quinurenina. Este proceso no solo debilita la estructura mecánica de la corteza, sino que también altera la capacidad de la fibra para retener pigmentos sintéticos de manera uniforme. La pérdida de triptófano está directamente correlacionada con una mayor porosidad y una menor afinidad por los colorantes directos en aplicaciones posteriores. La implementación de agentes quelantes y antioxidantes en la formulación del tinte busca mitigar esta degradación, protegiendo los residuos de aminoácidos críticos. Identificar el grado de degradación del triptófano permite al profesional ajustar el volumen del peróxido para evitar daños irreversibles, asegurando una retención cromática superior y una mayor resistencia a la fotodegradación ambiental post-servicio.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido de hidrogeno"
+      ],
+      "contraindications": [
+        "cabello altamente decolorado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:37:44.321Z"
+  },
+  {
+    "chunk_id": "color-capilar-potencial-zeta-003",
+    "title": "Potencial Zeta y estabilidad de dispersiones de pigmentos",
+    "content": "El Potencial Zeta es un parámetro electrocinético fundamental para predecir la estabilidad de las emulsiones de tintes y la eficiencia de la deposición de pigmentos catiónicos. Cuando el potencial zeta de la superficie capilar es altamente negativo, existe una fuerte atracción electrostática hacia los pigmentos catiónicos, facilitando su adsorción. Sin embargo, en cabellos con daño estructural, la carga superficial se vuelve menos negativa, lo que dificulta la fijación uniforme. La ciencia de la coloración moderna utiliza polímeros catiónicos para modular este potencial, creando puentes entre la queratina y el pigmento. Un control preciso del potencial zeta permite optimizar la penetración del tinte en la corteza y reducir el riesgo de migración indeseada de pigmentos. La medición de este parámetro es un campo emergente en la cosmetología clínica, permitiendo a los profesionales de GlowApp realizar un diagnóstico más preciso sobre la capacidad de absorción de cada fibra, evitando la saturación desigual y el efecto de 'parche' en cabellos con porosidad variable.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Colloid and Interface Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-colloid-and-interface-science",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polimeros cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tricologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:37:44.321Z"
+  },
+  {
+    "chunk_id": "color-capilar-efecto-donnan-008",
+    "title": "El efecto Donnan y su influencia en la retención de colorantes ácidos",
+    "content": "El efecto Donnan juega un papel crucial en la deposición de colorantes ácidos en la matriz queratínica, especialmente en condiciones de pH controlado. Este equilibrio electroquímico determina la distribución de iones y moléculas cargadas a través de la membrana cuticular. En el contexto de un tinte capilar, la presencia de grupos amino en la queratina, que se protonan a pH bajos, crea una carga positiva que atrae a los colorantes aniónicos (ácidos). Sin embargo, si la concentración de electrolitos en el medio es alta, el efecto Donnan puede inhibir la entrada de pigmento, resultando en una coloración superficial y poco duradera. Los coloristas expertos deben ajustar el pH del proceso para optimizar esta interacción. En GlowApp, la comprensión de este fenómeno permite ajustar los sistemas buffer de los tintes para asegurar que el color no solo se deposite superficialmente, sino que logre una penetración profunda mediante el aprovechamiento de la carga eléctrica de la fibra. Este control es fundamental para evitar el desvanecimiento rápido tras los primeros lavados.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Physical Chemistry B",
+        "url": "https://pubs.acs.org/journal/jpcbfk",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:37:44.321Z"
+  }
+]

@@ -1,0 +1,175 @@
+[
+  {
+    "chunk_id": "tendencias-belleza-virales-ph-cutaneo-001",
+    "title": "La moda del pH alcalino: Por qué el jabón sólido sigue siendo un riesgo",
+    "content": "A pesar de la tendencia viral de volver a los jabones saponificados 'artesanales' por su supuesta pureza, la dermatología clínica advierte sobre el daño irreversible a la barrera cutánea. La piel humana posee un manto ácido natural con un pH que oscila entre 4.5 y 5.5, fundamental para la función de las ceramidas y la microbiota protectora. Los jabones tradicionales tienen un pH alcalino superior a 9.0, lo que altera la actividad de las enzimas proteolíticas encargadas de la descamación natural y favorece la proliferación de bacterias como Cutibacterium acnes. Estudios publicados en el Journal of Clinical and Aesthetic Dermatology demuestran que el uso prolongado de limpiadores alcalinos aumenta la pérdida de agua transepidérmica (TEWL) y exacerba condiciones como la dermatitis atópica y la rosácea. La 'sensación de limpieza extrema' que muchos usuarios describen tras usar estos jabones es, en realidad, el signo clínico de una disrupción de los lípidos intercelulares. Es imperativo priorizar limpiadores con pH fisiológico o syndets, que respetan el equilibrio homeostático de la piel sin comprometer la integridad de su barrera mecánica.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/the-ph-of-the-skin-surface-and-its-relevance-to-skin-health/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "jabón saponificado"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis atópica",
+        "acné"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_facial"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:19.882Z"
+  },
+  {
+    "chunk_id": "tendencias-belleza-virales-fotoproteccion-002",
+    "title": "La falacia del 'SPF en capas': ¿Realmente estamos protegidos?",
+    "content": "La tendencia viral de combinar múltiples productos con factor de protección solar (SPF) —como aplicar base, corrector y protector solar— ha generado una falsa sensación de seguridad. La evidencia clínica indica que los consumidores rara vez aplican la cantidad necesaria (2 mg/cm²) para alcanzar el SPF declarado en el envase. Además, la superposición de productos con diferentes filtros solares puede interferir con la estabilidad fotoquímica de las fórmulas. Según la American Academy of Dermatology, la protección solar no es acumulativa: el valor de SPF final está determinado por el producto con mayor protección aplicado, no por la suma de todos los productos. Mezclar texturas y filtros puede causar una dilución de los ingredientes activos, reduciendo drásticamente la eficacia del filtro frente a la radiación UVA y UVB. Es fundamental tratar el protector solar como un paso independiente y no como un componente del maquillaje, asegurando una aplicación uniforme y sin diluciones que comprometan la prevención del fotoenvejecimiento y la carcinogénesis cutánea.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection/sunscreen/how-to-select-sunscreen",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros solares"
+      ],
+      "contraindications": [
+        "pieles con tendencia a hiperpigmentación"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:19.882Z"
+  },
+  {
+    "chunk_id": "tendencias-belleza-virales-suplementacion-003",
+    "title": "Suplementación con Ácido Hialurónico: ¿Hidratación sistémica real?",
+    "content": "El auge de los suplementos orales de ácido hialurónico (AH) ha posicionado a este ingrediente como una panacea para la hidratación dérmica. Sin embargo, desde una perspectiva fisiológica, el AH ingerido es sometido a un proceso de degradación enzimática en el tracto gastrointestinal. Aunque algunos estudios en PubMed sugieren una mejora en la hidratación del estrato córneo tras suplementación a largo plazo, la evidencia clínica es aún limitada y a menudo financiada por intereses comerciales. El AH oral no llega intacto a la dermis para 'rellenar' arrugas desde dentro, sino que sus metabolitos pueden influir en la síntesis endógena de fibroblastos. Es crucial que los pacientes entiendan que los suplementos no sustituyen la aplicación tópica de humectantes y oclusivos, que son los que realmente mantienen la integridad de la barrera cutánea de forma inmediata. La hidratación cutánea es un proceso multifactorial que depende principalmente del contenido de agua en la epidermis y la función de las glándulas sebáceas, factores que no pueden ser corregidos exclusivamente mediante la ingesta de moléculas de gran peso molecular.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33580554/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico"
+      ],
+      "contraindications": [
+        "patologías gastrointestinales severas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_dermatologica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:19.882Z"
+  },
+  {
+    "chunk_id": "tendencias-belleza-virales-exfoliacion-004",
+    "title": "La trampa de la exfoliación diaria con ácidos: El riesgo de la dermatitis por irritación",
+    "content": "La tendencia del 'layering' de ácidos (AHA, BHA, PHA) en la rutina diaria ha provocado un aumento significativo en las consultas dermatológicas por dermatitis de contacto irritativa. El estrato córneo tiene un espesor limitado y su función principal es actuar como un escudo protector. La exfoliación química frecuente elimina los corneocitos antes de que su ciclo de renovación natural se complete, dejando la piel expuesta a agresores externos y radiación UV. La literatura dermatológica, incluyendo reportes de la IADVL, subraya que el uso indiscriminado de ácidos potentes puede causar una inflamación subclínica crónica que acelera el proceso de senescencia cutánea o 'inflammaging'. La piel no necesita ser pulida diariamente para lucir saludable; al contrario, una barrera dañada se presenta con eritema, descamación y una sensibilidad extrema. La recomendación clínica es clara: los exfoliantes químicos deben ser utilizados según la tolerancia individual y la necesidad específica, nunca como un paso obligatorio en una rutina de cuidado diario, priorizando siempre el mantenimiento de la integridad del manto hidrolipídico.",
+    "category": "tendencias_belleza_virales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/articles/chemical-peels-safety-and-efficacy",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido glicólico",
+        "ácido salicílico",
+        "ácido láctico"
+      ],
+      "contraindications": [
+        "pieles reactivas",
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exfoliacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:37:19.882Z"
+  }
+]

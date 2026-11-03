@@ -1,0 +1,44 @@
+[
+  {
+    "chunk_id": "textura-poros-glicolisis-anaerobica-001",
+    "title": "Glicólisis anaeróbica en el folículo: el impacto del metabolismo energético local",
+    "content": "El microambiente del ostium folicular a menudo experimenta condiciones de baja disponibilidad de oxígeno, lo que obliga a los queratinocitos y sebocitos a depender de la glicólisis anaeróbica para su mantenimiento energético. A diferencia de la fosforilación oxidativa, esta vía metabólica es menos eficiente en términos de ATP, pero produce un exceso de lactato como subproducto. El aumento de la concentración de lactato en el canal folicular altera el pH local, acidificando el entorno de manera desproporcionada. Esta acidificación no solo modifica la estructura de los lípidos sebáceos, volviéndolos más viscosos y propensos a la formación de microcomedones, sino que también estimula la actividad de las catepsinas, enzimas proteolíticas que degradan prematuramente las proteínas de adhesión celular. El resultado clínico es una pérdida de la cohesión del ostium, lo que se traduce visualmente en una apariencia dilatada y una textura rugosa. La investigación sugiere que optimizar el aporte de oxígeno mediante la microcirculación perifolicular puede mitigar esta deriva metabólica, favoreciendo una queratinización más ordenada y reduciendo la dilatación por acumulación de detritos metabólicos.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "20-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "zinc"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:35:01.536Z"
+  }
+]

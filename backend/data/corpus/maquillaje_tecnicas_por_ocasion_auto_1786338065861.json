@@ -1,0 +1,215 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-ozono-001",
+    "title": "Maquillaje como barrera física ante la exposición a ozono troposférico",
+    "content": "La exposición al ozono troposférico (O3) en entornos urbanos genera un estrés oxidativo significativo en la epidermis, desencadenando la peroxidación lipídica y la degradación de proteínas estructurales como el colágeno. Durante eventos al aire libre, el maquillaje puede funcionar como una barrera física, pero su formulación es crítica. Estudios publicados en el Journal of Investigative Dermatology indican que la aplicación de películas cosméticas con antioxidantes, como la Vitamina E (tocoferol) y la Vitamina C (ácido ascórbico), ayuda a neutralizar los radicales libres inducidos por el ozono antes de que penetren en el estrato córneo. Es fundamental evitar productos con texturas excesivamente porosas que puedan atrapar partículas contaminantes, optando por bases de maquillaje con tecnología filmógena que minimicen la superficie de contacto entre el contaminante y la piel. La remoción al finalizar el evento debe ser profunda, utilizando agentes limpiadores que eliminen la capa de polución adherida sin comprometer la integridad de la barrera cutánea. La combinación de filtros solares y antioxidantes en el maquillaje es la estrategia más eficaz para prevenir el daño a largo plazo por exposición ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30064-9/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tocoferol",
+        "acido-ascorbico"
+      ],
+      "contraindications": [
+        "piel-con-barrera-comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:00:45.902Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microbiota-oral-002",
+    "title": "Transferencia de patógenos: La microbiota oral y su impacto en el maquillaje",
+    "content": "Durante eventos sociales que implican contacto físico cercano o consumo de alimentos y bebidas, la transferencia de microbiota oral hacia las zonas peribucales es un fenómeno subestimado en la higiene del maquillaje. La saliva contiene una carga bacteriana diversa, incluyendo especies de Streptococcus y Veillonella, que pueden colonizar la película de maquillaje, especialmente en productos de larga duración con texturas cremosas o emolientes. La presencia de humedad y calor atrapados bajo el maquillaje crea un microambiente propicio para la proliferación bacteriana, lo que puede derivar en erupciones acneiformes o dermatitis perioral. Según la American Academy of Dermatology, el uso de aplicadores desechables es imperativo para evitar la contaminación cruzada del envase original. Se recomienda que, tras eventos de larga duración, la limpieza facial sea rigurosa, priorizando limpiadores con pH equilibrado que no alteren la microbiota residente de la piel. La aplicación de maquillaje sobre pieles con irritación perioral debe evitarse para prevenir la exacerbación de cuadros inflamatorios causados por la oclusión de patógenos orales en los folículos pilosebáceos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/care/skin-care-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-salicilico"
+      ],
+      "contraindications": [
+        "dermatitis-perioral"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:00:45.902Z"
+  },
+  {
+    "chunk_id": "maquillaje-inflamacion-subclinica-006",
+    "title": "Maquillaje en pieles con inflamación subclínica: Gestión térmica",
+    "content": "La inflamación subclínica, caracterizada por la activación persistente de citoquinas proinflamatorias sin signos clínicos evidentes como eritema severo, altera la termorregulación cutánea. En eventos donde la temperatura ambiental aumenta, estas pieles experimentan una vasodilatación acelerada, lo que compromete la adherencia del maquillaje. El calor generado internamente por el proceso inflamatorio interactúa con la formulación del maquillaje, facilitando la migración del pigmento hacia los poros. Es fundamental utilizar bases con propiedades calmantes, ricas en niacinamida o extracto de regaliz, que ayuden a estabilizar la temperatura cutánea local. La IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) sugiere que el maquillaje en pieles reactivas debe ser minimalista, evitando ingredientes oclusivos como aceites minerales pesados que puedan aumentar la temperatura de la superficie cutánea. La técnica de aplicación debe ser ligera, prefiriendo brochas suaves o esponjas tratadas con agentes antibacterianos para no generar fricción adicional, la cual podría exacerbar la respuesta inflamatoria y la inestabilidad del producto durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/index.php",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "extracto-de-regaliz"
+      ],
+      "contraindications": [
+        "aceites-minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-estetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:00:45.902Z"
+  },
+  {
+    "chunk_id": "maquillaje-radiofrecuencia-007",
+    "title": "Maquillaje y exposición a radiofrecuencia (RF): Prevención de interacción",
+    "content": "La exposición a radiofrecuencias (RF) de telecomunicaciones en entornos de alta densidad tecnológica puede, teóricamente, interactuar con ciertos pigmentos metálicos presentes en productos de maquillaje de alta cobertura. Aunque el riesgo de calentamiento directo es mínimo en condiciones normales, el uso de correctores con alto contenido de óxidos metálicos (como óxido de hierro o mica tratada) en zonas donde la piel está muy fina puede generar una leve respuesta térmica si la exposición es prolongada. La literatura dermatológica sugiere que para eventos en entornos con alta radiación electromagnética (centros de datos, zonas con antenas de alta frecuencia), se debe optar por maquillaje mineral certificado que sea inerte y no conductor. La clave es la formulación: los productos que utilizan pigmentos orgánicos revestidos ofrecen una mayor seguridad frente a la interacción con campos electromagnéticos. Es recomendable evitar productos con purpurinas metálicas o partículas reflectoras excesivas si se planea una exposición prolongada a fuentes de RF intensas, priorizando acabados mate que no contengan partículas que actúen como antenas pasivas en la superficie cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-electromagnetic-fields",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "pigmentos-organicos"
+      ],
+      "contraindications": [
+        "particulas-metalicas-libres"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:00:45.902Z"
+  },
+  {
+    "chunk_id": "maquillaje-ph-estres-008",
+    "title": "Variación del pH cutáneo por estrés y su impacto en la adherencia",
+    "content": "El estrés agudo durante eventos de alta presión desencadena la liberación de cortisol, lo que altera la composición del sudor y el pH de la superficie cutánea, volviéndolo más alcalino. Este cambio de pH afecta directamente la estabilidad de las emulsiones cosméticas que han sido formuladas para un pH ligeramente ácido (aprox. 5.5). Cuando el pH de la piel sube, la adherencia de la base de maquillaje se debilita, provocando la separación de la fase grasa y la migración del pigmento. Para eventos de alto estrés, se recomienda el uso de primers con agentes tampón (buffers) que mantengan el equilibrio del pH cutáneo y aseguren que la base se mantenga estable a pesar de la respuesta fisiológica al estrés. Estudios en el Journal of Cosmetic Dermatology indican que el uso de pre-bases con polímeros inteligentes es más efectivo que el uso excesivo de polvos para controlar el sudor, ya que los polvos pueden alterar aún más el ambiente microbiano de la piel cuando se mezclan con el sudor alcalino resultante del estrés. La preparación de la piel con productos equilibradores es, por tanto, una estrategia de maquillaje de larga duración esencial.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes-buffer"
+      ],
+      "contraindications": [
+        "productos-altamente-alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:00:45.902Z"
+  }
+]

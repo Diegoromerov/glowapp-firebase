@@ -1,0 +1,329 @@
+[
+  {
+    "chunk_id": "guias_unas-osteoniquia-001",
+    "title": "Osteoniquia y su vinculación con patologías óseas distales",
+    "content": "La osteoniquia, o el compromiso óseo subyacente a la unidad ungueal, es una entidad que a menudo se subestima en el ámbito de la cosmetología. Cuando observamos deformidades ungueales persistentes que no responden a tratamientos tópicos, debemos considerar la posibilidad de una patología ósea, como osteomas o exostosis subungueales. La unidad ungueal está íntimamente ligada a la falange distal; cualquier proliferación ósea en esta zona ejerce una presión mecánica ascendente sobre la matriz y el lecho ungueal, provocando onicodistrofia, onicólisis o dolor crónico. La literatura clínica, especialmente en revistas de podología dermatológica, subraya que la presencia de una uña con elevación distal sin signos de infección fúngica debe derivar en una radiografía de la falange afectada. La confusión frecuente con verrugas periungueales o callosidades lleva a intentos de limado agresivo que, lejos de solucionar el problema, exacerban la inflamación del tejido blando. Un profesional consciente debe realizar una palpación cuidadosa para identificar masas duras e inamovibles, evitando cualquier manipulación mecánica que pueda traumatizar el periostio o inducir una reacción inflamatoria severa, recomendando siempre la interconsulta con un especialista en ortopedia o dermatología.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30679-X/abstract",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_mecanico",
+        "presion_directa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-efecto-piezoelectrico-002",
+    "title": "Efecto piezoeléctrico en la queratina y su impacto en la adhesión",
+    "content": "La queratina ungueal posee propiedades piezoeléctricas, lo que significa que genera una carga eléctrica en respuesta a una deformación mecánica. En el contexto de la aplicación de productos acrílicos o geles, este fenómeno es crítico. Cuando se aplica presión excesiva al preparar la lámina con tornos o limas, la estructura interna de la queratina no solo sufre un desgaste físico, sino que experimenta una redistribución de cargas electrostáticas. Estas cargas pueden interferir con la polimerización de los monómeros y la estabilidad de los enlaces químicos del adhesivo (primers). Estudios en biomecánica ungueal indican que una lámina sometida a estrés mecánico constante altera su capacidad de anclaje molecular, facilitando el desprendimiento prematuro (lifting). Además, la generación de microcorrientes por el efecto piezoeléctrico podría influir en la migración de iones en el lecho ungueal, alterando sutilmente el pH local y afectando la reticulación del gel. Entender este proceso permite al profesional ajustar la técnica de limado: menos presión, mayor eficiencia y menor alteración del potencial eléctrico de la superficie, garantizando una unión duradera y una lámina menos estresada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6322960/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "presion_excesiva_torno"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-cavitacion-fresas-003",
+    "title": "Cavitación acústica y microfracturas por fresas de diamante",
+    "content": "El uso de fresas de diamante a altas revoluciones sin una técnica de enfriamiento adecuada genera fenómenos de cavitación acústica a nivel microscópico. Aunque el término se asocia comúnmente a la limpieza ultrasónica, en la cabina de uñas, la vibración de alta frecuencia de las fresas sobre la superficie queratinizada produce micro-ondas de presión que pueden inducir fisuras invisibles en la lámina dorsal. Estas microfracturas actúan como puntos de entrada para la humedad, solventes y microorganismos, aumentando el riesgo de onicólisis traumática o colonización bacteriana. La literatura sobre ingeniería de materiales en dermatología sugiere que el impacto repetitivo de las partículas de diamante, cuando la herramienta no está perfectamente calibrada o el giro es inestable, causa una fragmentación de la estructura laminar de la uña. Esto no solo debilita la integridad estructural, sino que altera la rugosidad superficial necesaria para una adhesión uniforme del producto. Es imperativo utilizar herramientas de alta calidad, mantener velocidades controladas y asegurar que el contacto sea tangencial, no perpendicular, para minimizar estas micro-lesiones que comprometen la salud de la uña a mediano plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.ijdpdd.com/article.asp?issn=2229-5178;year=2022",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fresas_desgastadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_preparacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-reologia-bases-004",
+    "title": "Reología de bases autonivelantes y estabilidad viscoelástica",
+    "content": "La reología, o el estudio del flujo de la materia, es fundamental para entender por qué ciertas bases (como las 'rubber bases') fallan en uñas con curvaturas pronunciadas. Estas bases presentan un comportamiento viscoelástico: bajo tensión, se comportan como un líquido (permitiendo la nivelación), pero al cesar la fuerza, recuperan una estructura sólida. Si la viscosidad no es la adecuada para la arquitectura de la uña del cliente, la base puede acumularse en los laterales (zonas de presión) antes de polimerizar, creando puntos de estrés tangencial. Este exceso de material en los pliegues periungueales, al polimerizar, genera una tensión de contracción que puede provocar levantamientos laterales e incluso onicólisis por tracción mecánica. Un profesional experto debe evaluar la reología del producto: una uña plana requiere una base con mayor tixotropía para evitar el desbordamiento, mientras que una uña muy curvada se beneficia de bases con mayor viscosidad inicial. El control de este flujo es la clave para evitar el contacto del producto con la piel, reduciendo drásticamente el riesgo de dermatitis alérgica por contacto a los metacrilatos residuales.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos"
+      ],
+      "contraindications": [
+        "contacto_cutaneo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-termocromismo-005",
+    "title": "Riesgos de las resinas termosensibles y cambios de fase",
+    "content": "Las resinas termosensibles o aquellas que cambian de color con la temperatura contienen pigmentos y aditivos químicos cuya estabilidad es distinta a la de los geles convencionales. Durante el proceso de fotopolimerización, estos materiales pueden experimentar cambios de fase que afectan su grado de conversión. Si la lámpara UV emite un exceso de calor, el equilibrio químico de la resina puede verse comprometido, resultando en una polimerización incompleta. Los monómeros no reaccionados quedan atrapados en la matriz del gel, aumentando significativamente el potencial de sensibilización alérgica para el usuario. Además, la fluctuación térmica constante en la uña tras la aplicación (por exposición al agua fría o caliente) puede inducir micro-tensiones en la interfaz uña-producto debido a los diferentes coeficientes de expansión térmica. Es crucial que el profesional identifique estos materiales de alta reactividad y asegure tiempos de curado precisos, evitando el uso de potencias excesivas que disparen reacciones exotérmicas. La seguridad del cliente depende de la integridad de la red polimérica final; cualquier residuo químico no polimerizado es un disparador potencial de dermatitis de contacto a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus-treatment",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "polimerizacion_incompleta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-biofilms-instrumentos-007",
+    "title": "Limitaciones de los limpiadores ultrasónicos en biofilms",
+    "content": "Existe la falsa creencia de que un limpiador ultrasónico esteriliza las herramientas de manicura. En realidad, los limpiadores ultrasónicos solo eliminan restos orgánicos visibles mediante cavitación, pero no garantizan la eliminación de biofilms bacterianos, especialmente en las microfisuras de las herramientas de acero inoxidable desgastadas. Un biofilm es una comunidad de microorganismos protegida por una matriz extracelular polimérica que resiste los desinfectantes químicos superficiales. Si las herramientas presentan porosidades o corrosión galvánica, los patógenos pueden sobrevivir incluso después de pasar por el ultrasonido. La esterilización real requiere un proceso de dos pasos: primero, la limpieza mecánica profunda (que el ultrasonido facilita) y, segundo, un ciclo de esterilización en autoclave (calor húmedo bajo presión). Sin el autoclave, el riesgo de transmisión de paroniquia crónica o infecciones por Pseudomonas es alto. El profesional debe inspeccionar sus herramientas con lupa: cualquier signo de oxidación o picadura en el metal indica que el instrumento ya no puede ser esterilizado de forma segura y debe ser descartado. La seguridad de la barrera cutánea del cliente comienza con la integridad absoluta del metal que toca su matriz.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "CDC (Centers for Disease Control and Prevention)",
+        "url": "https://www.cdc.gov/infection-control/hcp/sterilization/index.html",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso_instrumental_oxidado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_asepsia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-primers-lipidos-008",
+    "title": "Interacción de primers ácidos y la matriz lipídica ungueal",
+    "content": "Los primers ácidos (basados en ácido metacrílico) funcionan reduciendo el pH de la superficie ungueal y aumentando la energía superficial para facilitar la adhesión. Sin embargo, su uso indiscriminado altera permanentemente la homeostasis lipídica de la lámina ungueal. La lámina contiene lípidos intercelulares esenciales que mantienen la flexibilidad y la barrera contra la deshidratación. El ácido penetra en los espacios entre los corneocitos, eliminando estos lípidos y dejando una estructura queratínica porosa y frágil. A largo plazo, esto no solo causa fragilidad ungueal, sino que aumenta la permeabilidad de la uña a los monómeros, lo que eleva el riesgo de sensibilización alérgica. Un enfoque clínico moderno sugiere limitar el uso de primers ácidos solo a los bordes de la placa, utilizando bases 'non-acid' (libres de ácido) para el resto de la superficie. Esta estrategia preserva la integridad de la barrera ungueal y reduce el riesgo de onicodistrofia inducida por el profesional. El daño por ácido no es inmediato, pero es acumulativo; una uña que se siente 'delgada' o 'sensible' después de meses de servicio suele ser víctima de una gestión incorrecta de estos agentes químicos.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_metacrilico"
+      ],
+      "contraindications": [
+        "uso_excesivo_primer"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_adhesion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  },
+  {
+    "chunk_id": "guias_unas-neurobiologia-tic-009",
+    "title": "Neurobiología del tic ungueal y la onicotilomanía",
+    "content": "La onicotilomanía, o el hábito de arrancar o manipular compulsivamente las uñas y el tejido periungueal, tiene una base neurobiológica compleja que trasciende lo estético. Se clasifica dentro del espectro de los comportamientos repetitivos centrados en el cuerpo (CRCC). Desde una perspectiva clínica, estos pacientes presentan una disrupción constante del sello biológico (cutícula y eponiquio), lo que expone la matriz a infecciones recurrentes y microtraumas que alteran la queratinización. El tratamiento en cabina no debe limitarse a embellecer la uña, sino a evitar la estimulación táctil del tic. El uso de recubrimientos protectores (como capas de gel de alta resistencia) puede actuar como una barrera física, pero si el paciente tiene una carga de ansiedad alta, el trauma se trasladará a la piel periungueal. Es fundamental que el esteticista reconozca que esta condición requiere un enfoque multidisciplinario, involucrando a psicólogos o psiquiatras. Manipular una uña con onicotilomanía activa con herramientas metálicas puede causar un daño matricial permanente, resultando en distrofias crónicas. La empatía y la derivación profesional son herramientas tan valiosas como el instrumental de manicura, evitando que la cabina sea un lugar de iatrogenia.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central (Dermatology Research)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7482555/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:49:29.764Z"
+  }
+]

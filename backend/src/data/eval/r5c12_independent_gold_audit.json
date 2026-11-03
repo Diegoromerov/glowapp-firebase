@@ -1,0 +1,75 @@
+{
+  "cycle": "24",
+  "experiment": "R5-C12",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "runs": {
+    "A": "r5c12_independent_gold_audit_a.json",
+    "B": "r5c12_independent_gold_audit_b.json",
+    "reproducibility": "A ≡ B — retrieval IDs y métricas core idénticos"
+  },
+  "gold_candidate": "evaluation_dataset_v4_gold_candidate.json",
+  "gold_physical_validation": {
+    "total_ids": 25,
+    "found_in_db": 25,
+    "missing": 0,
+    "without_hash": 0,
+    "verdict": "INTEGRIDAD FÍSICA OK — 25/25 IDs reales con content_hash"
+  },
+  "classification_v4": {
+    "SUPPORTED": 10,
+    "PARTIALLY_SUPPORTED": 5,
+    "UNSUPPORTED": 3
+  },
+  "v2_to_v4_mapping": {
+    "RE-MAPPED": 11,
+    "REDUCED": 4,
+    "UNSUPPORTED": 3,
+    "SAME": 1
+  },
+  "metrics_supported_only": {
+    "core_gold": { "p1": 0.3333, "p3": 0.2777, "p5": 0.1667, "r5": 0.8333, "mrr": 0.5648 },
+    "core_plus_supporting": { "p1": 0.3889, "p3": 0.4259, "p5": 0.2778, "r5": 0.8333, "mrr": 0.5926 },
+    "n_supported": 15
+  },
+  "gold_historical_overlap": {
+    "gold_chunks_total": 25,
+    "gold_in_retrieved_top10": 25,
+    "overlap_ratio": 1.0,
+    "interpretation": "⚠️ Overlap COMPLETO (100%). Señal de posible contaminación retrospectiva del constructor."
+  },
+  "independence_analysis": {
+    "script_blinding": "OK — PHASE 1 construye gold sin cargar retrieval; PHASE 2 ejecuta retrieval después",
+    "constructor_blinding": "⚠️ NO DEMOSTRABLE — el constructor (Hermes) ya había observado los top-20 de R5-C6/C7 en ciclos anteriores antes de escribir el gold",
+    "anti_gaming_test": "UNCERTAIN — el proceso del script es independiente, pero el conocimiento previo del constructor introduce un sesgo retrospectivo que no puede descartarse con evidencia disponible",
+    "verdict": "La independencia del PROCESO es defendible; la independencia del CONSTRUCTOR no es demostrable retrospectivamente"
+  },
+  "bias_analysis": {
+    "seleccion": "⚠️ Los chunks elegidos coinciden 100% con los recuperados por el motor (overlap 1.0) — consistente con sesgo retrospectivo del constructor O con motor que funciona correctamente",
+    "dominio": "Sin sesgo evidente de dominio (10 skincare/cabello, 5 cejas PARTIAL/SUPPORTED equilibrado)",
+    "cantidad": "Gold minimalista (core 1-2 chunks por query) — sin inflado artificial",
+    "cobertura": "3 UNSUPPORTED correctamente vacíos — sin chunks tangenciales para evitar ceros",
+    "corpus": "Validado: gold chunks existen en corpus canónico"
+  },
+  "circularity_check": {
+    "pregunta": "¿Podría alguien construir este Gold mirando primero los resultados del RAG?",
+    "respuesta": "YES (con la información disponible) — el overlap 1.0 y el conocimiento previo del constructor no permiten descartar selección retrospectiva",
+    "consecuencia": "V4 NO puede declararse Gold validado en este ciclo"
+  },
+  "verdict": "V4-REVISION — estructura y clasificación defendibles, pero independencia del constructor NO demostrable (overlap 1.0 + conocimiento previo). NO es un gold set validado todavía.",
+  "recommendation": {
+    "1": "Re-construir el Gold con un anotador que NO haya visto los retrievals (revisor independiente humano o proceso automatizado con búsqueda léxica de corpus completo + criterios pre-registrados)",
+    "2": "Pre-registrar los criterios de selección ANTES de cualquier consulta al motor (protocolo de anotación)",
+    "3": "Calcular overlap tras la anotación independiente — si persiste ~1.0, es evidencia de que el motor funciona (no de contaminación); si baja, el V4 actual tenía sesgo",
+    "4": "Hasta entonces: NO usar V4 como benchmark oficial; V2 sigue siendo el baseline oficial (con sus limitaciones documentadas)"
+  },
+  "next_steps": [
+    "R5-C13: anotación independiente con revisor ciego",
+    "R5-C14: baseline definitivo con gold validado",
+    "R5-C15+: intervenciones de motor solo con instrumento validado"
+  ]
+}

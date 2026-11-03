@@ -1,0 +1,371 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-001",
+    "title": "Impacto de la Glicación Avanzada en el Entorno Folicular",
+    "content": "La glicación no enzimática, o reacción de Maillard, es un proceso post-traduccional que compromete la integridad estructural del folículo piloso. En el contexto de la dermatología capilar, la acumulación de Productos Finales de Glicación Avanzada (AGEs) en la matriz extracelular del cuero cabelludo afecta la flexibilidad de las fibras de colágeno y elastina que sostienen la unidad pilosebácea. Investigaciones publicadas en 'Journal of Investigative Dermatology' indican que los AGEs activan el receptor RAGE, desencadenando una cascada proinflamatoria que acelera la miniaturización folicular. Este fenómeno es particularmente crítico en pacientes con desregulación metabólica, donde la rigidez del tejido perifolicular dificulta el anclaje del tallo y reduce la eficiencia del ciclo anágeno. La identificación de biomarcadores de glicación en el cuero cabelludo permite predecir una peor respuesta a tratamientos convencionales de estimulación capilar, sugiriendo que la intervención debe incluir agentes antiglicantes para restaurar el microambiente dérmico y permitir una regeneración folicular efectiva.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina",
+        "carnosina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-hipoxia-002",
+    "title": "Hipoxia Tisular y su Rol en la Atrofia del Bulbo Piloso",
+    "content": "El folículo piloso es una estructura metabólicamente demandante que requiere una perfusión sanguínea óptima para mantener la fase anágena. La hipoxia tisular, derivada de una microcirculación deficiente o factores ambientales, induce la estabilización del Factor Inducible por Hipoxia (HIF-1α). Estudios en PubMed demuestran que la sobreexpresión de HIF-1α en condiciones de estrés crónico promueve la transición prematura hacia la fase catágena. A diferencia de la alopecia androgenética convencional, la alopecia por hipoxia se caracteriza por un adelgazamiento difuso que no responde exclusivamente a bloqueadores de la 5-alfa-reductasa. El diagnóstico clínico debe integrar la evaluación de la saturación de oxígeno a nivel cutáneo y la integridad de la red capilar mediante tricoscopia de alta resolución. La falta de oxígeno celular limita la síntesis proteica del tallo, resultando en cabellos con menor diámetro y resistencia a la tracción. Abordar la angiogénesis y mejorar la microcirculación capilar se vuelve un pilar fundamental para revertir el estado de latencia folicular inducido por hipoxia sistémica o local.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "cafeina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-linfatico-003",
+    "title": "Drenaje Linfático y Homeostasis del Microambiente Folicular",
+    "content": "A menudo ignorado en el diagnóstico clínico, el sistema linfático del cuero cabelludo desempeña un papel crucial en la eliminación de desechos metabólicos y mediadores inflamatorios. La estasis linfática, provocada por edemas subclínicos o tensión muscular crónica pericraneal, crea un entorno tóxico que favorece la inflamación perifolicular. Según guías de la American Academy of Dermatology (AAD), la acumulación de fluidos puede comprimir los vasos sanguíneos perifoliculares, exacerbando la isquemia relativa del bulbo. En pacientes con efluvio crónico, la evaluación de la movilidad del cuero cabelludo y la presencia de puntos gatillo miofasciales es vital. Un drenaje linfático ineficiente altera el gradiente de nutrientes necesarios para la queratinización, resultando en un tallo capilar frágil y opaco. El diagnóstico debe incluir la palpación del cuero cabelludo para detectar zonas de fibrosis o retención de líquidos, integrando terapias de masaje manual o estimulación mecánica que favorezcan la eliminación de toxinas y mejoren la oxigenación necesaria para la proliferación celular en la matriz pilosa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_estructural"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-004",
+    "title": "Inervación Cutánea y su Influencia en la Ciclicidad Folicular",
+    "content": "La unidad pilosebácea está ricamente inervada, y la comunicación entre los nervios sensoriales y las células madre del folículo es un área emergente en la tricología. La liberación de neuropéptidos como la Sustancia P y el CGRP (péptido relacionado con el gen de la calcitonina) en respuesta al estrés, modula directamente la proliferación de los queratinocitos de la matriz. Estudios recientes publicados en revistas dermatológicas señalan que una sobreestimulación nerviosa puede inducir un estado de inflamación neurogénica, acortando la fase anágena y provocando la pérdida prematura de cabello. En el diagnóstico de alopecias complejas, es necesario considerar la hipersensibilidad sensorial del cuero cabelludo, a menudo manifestada como prurito o disestesia, como un marcador clínico de este desbalance. Este eje neuro-folicular explica por qué algunas patologías no responden a tratamientos hormonales, requiriendo un abordaje que estabilice la respuesta nerviosa local. La tricoscopia puede revelar signos indirectos de esta afectación, como eritema perifolicular persistente en áreas de dolor focalizado.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "capsaicina",
+        "mentol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-ph-005",
+    "title": "El pH del Cuero Cabelludo como Regulador de la Barrera Microbiana",
+    "content": "El mantenimiento del manto ácido del cuero cabelludo, con un pH óptimo cercano a 5.5, es fundamental para la salud del microbioma residente. Un pH elevado, causado por el uso excesivo de productos alcalinos o desequilibrios metabólicos, altera la función barrera y permite la colonización de patógenos oportunistas. La literatura científica actual enfatiza que el pH del cuero cabelludo es un factor determinante en la biodisponibilidad de tratamientos tópicos. Un entorno demasiado alcalino inactiva la acción de ingredientes activos como ciertos péptidos y antioxidantes. El diagnóstico clínico debe incluir la medición del pH superficial en casos de dermatitis seborreica recurrente o descamación inexplicable. La restauración del pH es el primer paso antes de iniciar cualquier protocolo de estimulación, ya que un cuero cabelludo con pH alterado es intrínsecamente inflamatorio y menos receptivo a los fármacos. La educación del paciente sobre el uso de limpiadores de pH balanceado es una herramienta diagnóstica y terapéutica de bajo costo pero alto impacto en la prevención de la caída capilar por alteración de la barrera cutánea.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_lactico",
+        "acido_citrico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-oxidativo-006",
+    "title": "Estrés Oxidativo y la Disfunción de las Células Madre del Bulbo",
+    "content": "El folículo piloso es una de las estructuras con mayor tasa de proliferación celular en el organismo, lo que lo hace excepcionalmente vulnerable al estrés oxidativo. La acumulación de especies reactivas de oxígeno (ROS) en el nicho de las células madre del bulbo piloso conduce a un daño irreversible en el ADN mitocondrial y nuclear. Este fenómeno, documentado ampliamente en publicaciones de la IADVL, es un precursor clave de la miniaturización folicular. A diferencia del envejecimiento cronológico, el daño por ROS puede ser exacerbado por factores del exposoma como la radiación UV y la contaminación atmosférica. El diagnóstico clínico debe buscar signos de 'envejecimiento precoz' del folículo, tales como la despigmentación (canicie prematura asociada a alopecia) y la reducción del diámetro del tallo. La implementación de terapias antioxidantes tópicas y sistémicas es esencial no solo para frenar la caída, sino para proteger la capacidad regenerativa del folículo a largo plazo. La tricoscopia puede evidenciar cambios estructurales en la cutícula que reflejan este daño oxidativo acumulado a lo largo del tiempo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_c",
+        "ferulico",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-007",
+    "title": "Eje Intestino-Cuero Cabelludo: El Impacto de la Microbiota Sistémica",
+    "content": "Existe una conexión creciente entre la salud del microbioma intestinal y las patologías capilares. La inflamación sistémica derivada de la disbiosis intestinal puede manifestarse en el cuero cabelludo mediante el aumento de citoquinas proinflamatorias circulantes. Estudios en la literatura médica sugieren que la permeabilidad intestinal altera el perfil inmunológico del folículo, exacerbando condiciones como la alopecia areata o la dermatitis seborreica. En el diagnóstico clínico, es imperativo interrogar sobre síntomas digestivos y hábitos nutricionales, ya que la deficiencia en la absorción de micronutrientes esenciales (zinc, biotina, hierro) es una consecuencia directa de este desequilibrio. La restauración de la microbiota intestinal mediante probióticos y una dieta antiinflamatoria puede mejorar significativamente la respuesta a los tratamientos capilares tópicos. Este enfoque holístico es fundamental para casos recalcitrantes donde la terapia convencional falla. La integración de análisis de biomarcadores sistémicos junto con la tricoscopia permite una visión completa del estado del paciente, moviéndose hacia una medicina personalizada y de precisión en el diagnóstico de la salud capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos",
+        "omega3"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-genetica-008",
+    "title": "Variantes Genéticas en el Receptor de Andrógenos y Pronóstico Folicular",
+    "content": "La sensibilidad del folículo piloso a los andrógenos no depende únicamente de los niveles séricos de hormonas, sino de la expresión genética del receptor de andrógenos (AR) y la actividad de la enzima 5-alfa-reductasa. El polimorfismo en el gen del receptor de andrógenos (específicamente la longitud de las repeticiones CAG) es un factor determinante en la severidad de la alopecia androgenética. Identificar esta predisposición genética mediante test de saliva o antecedentes familiares permite establecer un pronóstico más preciso y personalizar la estrategia terapéutica desde etapas tempranas. La medicina genómica aplicada a la dermatología capilar permite diferenciar entre pacientes que requieren un bloqueo hormonal agresivo frente a aquellos donde la estimulación del crecimiento debe ser la prioridad. Este conocimiento es vital para gestionar las expectativas del paciente y evitar tratamientos ineficaces a largo plazo. La integración de la genética en el diagnóstico clínico representa un avance significativo, transformando el manejo de la alopecia de un enfoque de 'talla única' a uno basado en el perfil molecular específico de cada paciente.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://www.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "finasteride",
+        "dutasteride"
+      ],
+      "contraindications": [
+        "embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_genetico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-metabolismo-009",
+    "title": "Resistencia a la Insulina y su Efecto en la Keratinización Folicular",
+    "content": "La hiperinsulinemia crónica afecta la homeostasis del folículo piloso al promover un estado de inflamación sistémica y alterar el metabolismo energético de los queratinocitos. La insulina, en concentraciones elevadas, actúa como un factor de crecimiento que, irónicamente, puede desregular el ciclo de crecimiento del cabello al estimular la proliferación excesiva de sebo y alterar la diferenciación celular. Los estudios indican que la resistencia a la insulina está fuertemente correlacionada con la progresión de la alopecia androgenética tanto en hombres como en mujeres. En el diagnóstico, la evaluación de marcadores metabólicos como la glucosa en ayunas y el índice HOMA-IR es esencial. El tratamiento de la alopecia en pacientes con este perfil debe incluir necesariamente cambios en el estilo de vida y, en ocasiones, agentes sensibilizadores a la insulina, ya que los tratamientos tópicos convencionales suelen ser menos efectivos si la causa metabólica subyacente no es controlada. El monitoreo constante de estos niveles permite ajustar la estrategia terapéutica, garantizando resultados sostenibles y mejorando la salud metabólica global del paciente, lo cual se refleja directamente en la calidad y densidad del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metformina",
+        "mioinositol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:32:51.687Z"
+  }
+]

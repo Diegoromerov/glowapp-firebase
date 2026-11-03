@@ -1,0 +1,332 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-exposoma-epigenetica-001",
+    "title": "Impacto de la Polución Atmosférica en la Expresión de Receptores de Andrógenos",
+    "content": "La exposición crónica a material particulado (PM2.5 y PM10) en entornos urbanos como Bogotá no solo genera estrés oxidativo, sino que se ha vinculado con la modulación epigenética de los folículos pilosos. Estudios recientes sugieren que los hidrocarburos aromáticos policíclicos (HAP) presentes en la polución pueden activar el receptor de hidrocarburos de arilo (AhR), lo cual interfiere con la vía de señalización de los andrógenos en la papila dérmica. Este fenómeno potencia la miniaturización incluso en individuos sin predisposición genética severa. La inflamación mediada por AhR altera la homeostasis del ciclo capilar, favoreciendo el paso prematuro a la fase telógena. Es fundamental que el diagnóstico clínico en pacientes urbanos incorpore una anamnesis sobre el nivel de exposición ambiental y el uso de antioxidantes tópicos específicos que bloqueen la activación de este receptor para preservar la integridad del nicho folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00245-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Niacinamida",
+        "Antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microfluida-002",
+    "title": "Análisis de la Dinámica de Fluidos del Sebo en el Orificio Folicular",
+    "content": "La reología del sebo humano es un determinante crítico para la salud del cuero cabelludo. Cuando la viscosidad del sebo aumenta debido a alteraciones en la composición lipídica (como una relación desequilibrada entre escualeno y ácidos grasos libres), se altera la dinámica de fluidos en el canal folicular. Este 'estancamiento' lipídico crea un entorno anaeróbico que favorece la proliferación de microorganismos y la formación de microcomedones foliculares. El diagnóstico clínico debe evaluar no solo la cantidad de sebo (seborrea), sino su calidad. La obstrucción del orificio folicular por sebo oxidado impide la correcta salida del tallo piloso, lo que puede causar una inflamación perifolicular de bajo grado. La evaluación mediante videodermatoscopia permite identificar tapones sebáceos que actúan como barreras físicas, impiriendo la penetración de tratamientos tópicos y perpetuando la fragilidad estructural del cabello que emerge.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37829341/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ácido salicílico",
+        "Zinc PCA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-sebo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-003",
+    "title": "Sarcopenia Capilar: El Envejecimiento del Músculo Erector del Pelo",
+    "content": "El músculo erector del pelo (arrector pili) no solo tiene una función termorreguladora, sino que actúa como un ancla mecánica y un soporte metabólico para las células madre del folículo piloso. Recientes investigaciones han acuñado el término 'sarcopenia capilar' para describir la atrofia y pérdida de funcionalidad de este músculo en el envejecimiento. Cuando el músculo erector pierde masa, el folículo pierde su capacidad de estabilización y su conexión con el nicho de células madre, lo que resulta en una miniaturización progresiva y una menor densidad. Este proceso es independiente de los andrógenos, lo que explica por qué algunas alopecias seniles no responden exclusivamente a bloqueadores hormonales. El diagnóstico debe incluir la observación de la angulación del tallo capilar; una pérdida de la verticalidad y una mayor laxitud en el cuero cabelludo pueden ser indicadores precoces de este proceso de declive estructural del músculo erector.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "50+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-osmolaridad-004",
+    "title": "Gradientes de Presión Osmótica en la Matriz Piloso",
+    "content": "La homeostasis del folículo piloso depende de un estricto control de la presión osmótica en el microambiente de la matriz. Alteraciones en la barrera cutánea del cuero cabelludo, frecuentemente exacerbadas por el uso de surfactantes agresivos, rompen el equilibrio osmótico, causando deshidratación celular en los queratinocitos de la matriz. Esta pérdida de agua intracelular activa vías de señalización de estrés que detienen la proliferación celular, acortando la fase anágena. El diagnóstico clínico de 'cuero cabelludo sensible' o reactivo debe incluir la evaluación de la integridad de la barrera mediante la medición de la pérdida de agua transepidérmica (TEWL). Un cuero cabelludo con alta TEWL es menos capaz de sustentar un ciclo capilar eficiente, ya que el gasto energético necesario para compensar la pérdida hídrica reduce la disponibilidad de ATP para la síntesis de queratina, comprometiendo la resistencia del tallo capilar desde su formación.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ceramidas",
+        "Ácido hialurónico"
+      ],
+      "contraindications": [
+        "Surfactantes fuertes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neuro-inmuno-005",
+    "title": "El Rol de la Sustancia P en la Inflamación Neurogénica del Folículo",
+    "content": "El sistema nervioso periférico juega un papel activo en la regulación de la inflamación folicular. Ante estímulos estresantes, las terminaciones nerviosas liberan neuropéptidos como la Sustancia P, que actúa directamente sobre los mastocitos perivasculares. Esta activación induce la desgranulación de los mastocitos, liberando histamina y citoquinas proinflamatorias que dañan el bulbo piloso. Este proceso, conocido como inflamación neurogénica, es una causa subestimada de efluvios persistentes y de la exacerbación de la alopecia areata. El diagnóstico clínico debe considerar la relación entre los episodios de estrés agudo y la aparición de dolor o prurito en el cuero cabelludo (tricodinia). La evaluación tricoscópica mostrará signos de inflamación perifolicular incluso en ausencia de eritema visible. Es vital integrar el manejo del estrés y el uso de moduladores neuro-cutáneos para interrumpir este ciclo de daño inflamatorio mediado por el sistema nervioso.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Capsaicina (baja dosis)",
+        "Extractos calmantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-proteostasis-006",
+    "title": "Proteostasis: Control de Calidad en la Matriz del Folículo",
+    "content": "La proteostasis, o homeostasis de proteínas, es un mecanismo crítico para la viabilidad de las células de la matriz folicular. Durante la fase anágena, el folículo sintetiza cantidades masivas de queratina; cualquier fallo en el plegamiento de estas proteínas conduce a la acumulación de agregados proteicos tóxicos, lo que activa la respuesta de proteínas desplegadas (UPR) y puede desencadenar la apoptosis del folículo. La eficiencia de este control de calidad disminuye con la edad y bajo condiciones de estrés oxidativo. Un diagnóstico clínico avanzado debe considerar biomarcadores de estrés estructural en la cutícula que reflejen una falla previa en la síntesis proteica. El uso de chaperonas moleculares y precursores de aminoácidos azufrados es una estrategia emergente para apoyar la proteostasis, asegurando que la fibra capilar se forme con la integridad estructural necesaria para resistir el daño ambiental cotidiano.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Molecular Cell Biology",
+        "url": "https://www.nature.com/nrm/articles/proteostasis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Cisteína",
+        "Metionina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-007",
+    "title": "Autofagia como Mecanismo de Limpieza en el Bulbo Piloso",
+    "content": "La autofagia es el proceso de 'autolimpieza' celular esencial para la supervivencia de las células madre en el nicho folicular. Durante la transición de la fase catágena a la telógena, la autofagia es fundamental para eliminar orgánulos dañados y proteínas mal plegadas, permitiendo que el folículo se regenere adecuadamente. Se ha observado que en pacientes con alopecias crónicas, la actividad autofágica está significativamente reducida. Este déficit impide la renovación celular eficiente, llevando al agotamiento prematuro del potencial regenerativo del folículo. El diagnóstico clínico de una alopecia resistente debe considerar la posibilidad de una disfunción en estos mecanismos de reciclaje celular. Estrategias que promueven la autofagia, como la restricción calórica controlada o ciertos compuestos miméticos, están siendo investigadas como terapias adyuvantes para reactivar el ciclo de crecimiento en folículos 'dormidos' o en senescencia temprana.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Autophagy Journal",
+        "url": "https://www.tandfonline.com/journals/kaup20",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Espermidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion-celular"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-009",
+    "title": "Impacto de los AGEs en la Matriz Folicular",
+    "content": "Los productos de glicación avanzada (AGEs) son proteínas o lípidos que se han glicosilado como resultado de la exposición a azúcares, un proceso acelerado por la dieta moderna y el estrés oxidativo. En el cuero cabelludo, los AGEs se acumulan en la matriz extracelular que rodea al folículo piloso, endureciendo el tejido (fibrosis) y dificultando la comunicación celular. Esta rigidez peritubular impide el crecimiento normal del tallo y contribuye a la miniaturización. La glicación altera la estructura del colágeno tipo IV en la membrana basal del folículo, comprometiendo su anclaje. Clínicamente, el diagnóstico debe considerar hábitos dietéticos y marcadores metabólicos de azúcar en sangre. La prevención del daño por AGEs mediante el uso de ingredientes antiglicantes y la optimización metabólica es esencial para frenar la progresión de la alopecia en pacientes con resistencia a la insulina o niveles elevados de glucosa basal, donde el daño folicular es sistémico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Carnosina",
+        "Vitamina B6"
+      ],
+      "contraindications": [
+        "Azúcares refinados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "metabolismo-capilar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:21:39.528Z"
+  }
+]

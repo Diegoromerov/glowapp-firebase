@@ -1,0 +1,82 @@
+[
+  {
+    "chunk_id": "guias_unas-onicolisis-focal-estres-mecanico-001",
+    "title": "Onicólisis focal por tensión tangencial en uñas esculpidas",
+    "content": "La onicólisis focal inducida por tensión tangencial representa una complicación biomecánica frecuente en usuarias de sistemas de uñas esculpidas de longitud excesiva. Cuando la lámina artificial supera la longitud de la uña natural, el borde libre actúa como una palanca de primer grado. Al realizar actividades cotidianas, la presión ejercida sobre el extremo de la uña se transmite directamente a la zona de adhesión del hiponiquio. Este microtrauma repetitivo genera una separación mecánica de la lámina ungueal respecto al lecho, facilitando la entrada de humedad y microorganismos. A diferencia de la onicólisis infecciosa, esta es de origen puramente físico. La literatura dermatológica, incluyendo estudios publicados en el Journal of the American Academy of Dermatology, enfatiza que la fatiga del material y la palanca mecánica son factores críticos. Es imperativo educar a las clientas sobre la relación directa entre la longitud de la extensión y el riesgo de desprendimiento distal, recomendando la reducción del borde libre para pacientes con lechos ungueales hipoplásicos o fragilidad preexistente. La prevención radica en el diseño arquitectónico de la estructura, buscando un equilibrio entre estética y biomecánica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus-symptoms",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uñas largas con soporte debilitado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-estructural"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:04:26.229Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicodistrofia-vibracion-009",
+    "title": "Onicodistrofia inducida por vibración: el impacto de los tornos",
+    "content": "El uso inadecuado de tornos eléctricos (e-files) de alta frecuencia puede causar onicodistrofia traumática por transmisión de vibraciones armónicas a la matriz ungueal. La vibración mecánica, cuando se aplica sobre una lámina delgada o directamente sobre el eponiquio, puede inducir microfracturas en las células de la matriz, alterando la producción normal de queratina. Este daño no es inmediato, sino que se manifiesta semanas después con la aparición de surcos transversales o alteraciones en la textura de la uña (onicodistrofia). La frecuencia de rotación (RPM) y la presión ejercida son variables críticas. La capacitación técnica debe enfocarse en mantener una presión constante y mínima, utilizando fresas de granulometría adecuada para el tipo de superficie. Estudios dermatológicos indican que la vibración excesiva, sumada a la fricción térmica, crea un entorno de estrés mecánico que compromete la adhesión de la cutícula a la placa, favoreciendo el levantamiento del sellado biológico. GlowApp debe implementar protocolos de calibración para sus equipos y capacitación continua en el uso ergonómico y seguro de herramientas eléctricas para proteger la salud matricial de las clientas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://iadvl.org/publications/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "alta presión con torno"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:04:26.229Z"
+  }
+]

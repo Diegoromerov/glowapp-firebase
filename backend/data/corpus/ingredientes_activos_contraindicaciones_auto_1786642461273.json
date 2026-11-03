@@ -1,0 +1,261 @@
+[
+  {
+    "chunk_id": "activos-liposolubles-permeabilidad-001",
+    "title": "Activos liposolubles: Riesgo de penetración sistémica incontrolada",
+    "content": "La formulación de activos en vehículos altamente lipofílicos, como los triglicéridos de cadena media o ciertos ésteres, busca maximizar la penetración transepidérmica. Sin embargo, en pieles con la barrera cutánea comprometida, como en pacientes con dermatitis atópica o eccema, esta alta lipofilia facilita una absorción sistémica no deseada de ingredientes que, en condiciones normales, deberían permanecer en el estrato córneo o la epidermis viable. Estudios publicados en el Journal of Investigative Dermatology sugieren que la aplicación prolongada de vehículos de alta permeabilidad puede alterar la farmacocinética local, aumentando el riesgo de efectos adversos sistémicos, especialmente con ingredientes activos potentes como retinoides o agentes despigmentantes. Es crucial evaluar la integridad de la barrera antes de recomendar vehículos potenciadores de penetración, ya que el riesgo de toxicidad acumulativa aumenta significativamente en pacientes con disfunción de la barrera lipídica, donde la vía transfolicular y la vía intercelular quedan desprotegidas contra la permeabilidad excesiva de xenobióticos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitized"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "trigliceridos",
+        "esteres"
+      ],
+      "contraindications": [
+        "dermatitis atopica",
+        "barrera cutanea alterada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulacion_dermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:34:04.792Z"
+  },
+  {
+    "chunk_id": "excipientes-polietilenglicoles-002",
+    "title": "Polietilenglicoles (PEGs) y el riesgo de sensibilización latente",
+    "content": "Los polietilenglicoles (PEGs) son ampliamente utilizados en cosmética como tensioactivos, humectantes y potenciadores de penetración debido a su versatilidad. No obstante, la literatura dermatológica ha documentado casos de dermatitis de contacto alérgica inducida por PEGs, especialmente en productos de aplicación diaria y prolongada. El riesgo no reside únicamente en la molécula base, sino en las impurezas derivadas del proceso de fabricación, como el 1,4-dioxano, un subproducto potencialmente tóxico. En pieles con barrera alterada o inflamación crónica, la absorción de PEGs de bajo peso molecular puede desencadenar respuestas inmunitarias mediadas por células. La American Academy of Dermatology advierte que, aunque los PEGs son considerados seguros en concentraciones reguladas, la exposición crónica en pieles reactivas puede resultar en una sensibilización subclínica. Es imperativo considerar la presencia de estos compuestos en rutinas de cuidado para pacientes con antecedentes de dermatitis de contacto recurrente, ya que el uso de múltiples productos que contengan PEGs aumenta la carga de exposición total, facilitando la aparición de eritema y prurito persistente sin una causa aparente clara.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PEGs"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:34:04.792Z"
+  },
+  {
+    "chunk_id": "alcalinizacion-barrera-cutanea-003",
+    "title": "El impacto de la alcalinización por tensioactivos en la microbiota",
+    "content": "El manto ácido de la piel, con un pH fisiológico cercano a 4.7-5.5, es fundamental para la función de barrera y la homeostasis del microbioma. El uso de tensioactivos con pH alcalino (frecuentemente superior a 8.0) no solo causa una desnaturalización proteica inmediata de la queratina, sino que altera drásticamente la composición bacteriana residente. La colonización por S. aureus y otras especies patógenas se ve favorecida cuando el pH cutáneo se desplaza hacia la alcalinidad, exacerbando condiciones como el acné o la dermatitis atópica. La evidencia indica que la recuperación del pH natural tras un lavado con un producto alcalino puede tardar varias horas, durante las cuales la barrera lipídica es vulnerable a la pérdida de agua transepidérmica y a la penetración de agentes irritantes. La recomendación clínica es priorizar limpiadores con pH fisiológico o ligeramente ácidos, evitando aquellos que, aunque limpien profundamente, comprometan la integridad a largo plazo del ecosistema cutáneo. La desregulación del microbioma por agentes de limpieza alcalinos es un factor subestimado en la persistencia de cuadros inflamatorios cutáneos crónicos según datos de la IADVL.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos anionicos"
+      ],
+      "contraindications": [
+        "acne",
+        "dermatitis atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_facial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:34:04.792Z"
+  },
+  {
+    "chunk_id": "interaccion-quelantes-metales-004",
+    "title": "Quelantes cosméticos y la desestabilización de metales traza",
+    "content": "Los agentes quelantes como el EDTA (Ácido Etilendiaminotetraacético) y el ácido fítico se añaden a las formulaciones para estabilizar los productos frente a la oxidación inducida por metales. Sin embargo, su aplicación tópica prolongada puede tener efectos inespecíficos sobre la piel, ya que también pueden quelar metales esenciales como el zinc, el cobre y el hierro presentes en la superficie cutánea y dentro de las capas epidérmicas. Estos metales son cofactores críticos para enzimas como las metaloproteinasas y la tirosinasa, involucradas en la reparación tisular y la melanogénesis. La quelación inespecífica puede interferir con la función enzimática natural, potencialmente alterando los procesos de cicatrización o la pigmentación. Aunque el riesgo es bajo en productos de enjuague, en formulaciones 'leave-on' (cremas o sérums) de uso diario, el efecto acumulativo podría ser clínicamente relevante, especialmente en pieles con procesos inflamatorios activos donde la homeostasis de los metales es vital. Es necesario considerar este riesgo en pacientes con trastornos pigmentarios o pieles con capacidad de reparación disminuida.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "acido fitico"
+      ],
+      "contraindications": [
+        "trastornos de pigmentacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:34:04.792Z"
+  },
+  {
+    "chunk_id": "poliaminas-autofagia-005",
+    "title": "Poliaminas en cosmética: Riesgo de disrupción en la autofagia",
+    "content": "Las poliaminas, como la espermidina y la espermina, son moléculas endógenas que desempeñan un papel crucial en la regulación del ciclo celular y la autofagia. Recientemente, han sido introducidas en formulaciones cosméticas bajo la premisa de promover la regeneración celular y el rejuvenecimiento. No obstante, el control preciso de los niveles de poliaminas es vital; un exceso exógeno podría inducir una sobreestimulación de procesos celulares, potencialmente alterando el equilibrio de la autofagia cutánea. Existe evidencia en modelos in vitro de que niveles desregulados de poliaminas pueden influir en la proliferación de queratinocitos de una manera que no siempre es beneficiosa, pudiendo incluso favorecer la supervivencia de células con daño genético. La falta de estudios clínicos a largo plazo en humanos sobre la aplicación tópica de poliaminas sugiere precaución, especialmente en pieles con antecedentes de neoplasias cutáneas o condiciones proliferativas. El uso de estos activos requiere un entendimiento profundo del estado biológico de la piel del paciente para evitar efectos pro-proliferativos no deseados.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "espermidina",
+        "espermina"
+      ],
+      "contraindications": [
+        "antecedentes de neoplasias cutaneas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antiaging"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:34:04.792Z"
+  },
+  {
+    "chunk_id": "sulfato-cobre-toxicidad-008",
+    "title": "Sulfato de Cobre tópico: Riesgo de citotoxicidad",
+    "content": "El sulfato de cobre se utiliza en formulaciones cosméticas por sus propiedades antimicrobianas y seborreguladoras. Sin embargo, la concentración es un factor crítico para su seguridad. A niveles elevados o en aplicaciones sobre pieles con barrera dañada, el cobre puede presentar citotoxicidad. El ion cobre es un metal de transición capaz de participar en reacciones tipo Fenton, generando especies reactivas de oxígeno (ROS) que pueden dañar el ADN celular y los lípidos de la membrana. En pacientes con condiciones como dermatitis seborreica o rosácea, donde la barrera cutánea está comprometida, el uso de productos con altas concentraciones de sales de cobre puede exacerbar la inflamación en lugar de calmarla. Además, la acumulación de iones de cobre en la piel puede interferir con la actividad de otras enzimas dérmicas esenciales. La evidencia sugiere que la aplicación debe limitarse a concentraciones muy bajas y en vehículos que minimicen la penetración sistémica para evitar el riesgo de desequilibrio iónico cutáneo. Es fundamental realizar una prueba de parche en pacientes con pieles hipersensibles antes de prescribir productos que contengan sales de cobre.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato de cobre"
+      ],
+      "contraindications": [
+        "dermatitis seborreica",
+        "rosacea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:34:04.792Z"
+  }
+]

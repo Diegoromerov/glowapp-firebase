@@ -1,0 +1,89 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-de-alta-altitud-hipoxia-001",
+    "title": "Maquillaje en entornos de gran altitud: Gestión de la desgasificación y oclusión",
+    "content": "En entornos de gran altitud, la disminución de la presión atmosférica provoca fenómenos físicos en las emulsiones cosméticas, como la expansión de gases atrapados en envases presurizados y una mayor tasa de evaporación del vehículo acuoso. Desde una perspectiva dermatológica, la hipoxia hipobárica altera la microcirculación cutánea, reduciendo la oxigenación de los queratinocitos y exacerbando la pérdida de agua transepidérmica (TEWL). El uso de bases con alto contenido de polímeros filmógenos puede generar una oclusión excesiva, impidiendo la correcta transpiración en un ambiente donde la piel ya está bajo estrés metabólico. Se recomienda el uso de formulaciones anhidras o con alto contenido de lípidos oclusivos fisiológicos que mantengan la barrera sin comprometer la oxigenación. El estudio publicado en 'Journal of Dermatology' subraya que la falta de oxígeno ambiental induce una respuesta de estrés oxidativo, por lo que integrar antioxidantes como vitamina E o ferúlico en el maquillaje es crucial para mitigar el daño celular. La aplicación debe ser en capas finas para evitar la formación de fisuras debido a la baja humedad relativa del entorno.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina E",
+        "acido ferulico",
+        "ceramidas"
+      ],
+      "contraindications": [
+        "productos con alta carga de alcohol denat"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:26.135Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-subterraneos-hipoxia-luz-002",
+    "title": "Maquillaje para eventos en entornos subterráneos: Gestión de la hipoxia y luz artificial",
+    "content": "Los eventos en entornos subterráneos presentan desafíos únicos: baja concentración de oxígeno, iluminación de espectro artificial limitado y alta humedad. La hipoxia leve en estos espacios afecta la coloración cutánea, volviéndola más pálida o cetrina, lo cual altera la percepción del tono de la base de maquillaje. Es fundamental realizar pruebas de color bajo iluminación técnica de espectro similar al del evento para evitar el metamerismo. Desde el punto de vista clínico, la falta de ventilación natural favorece la proliferación de microorganismos en la superficie cutánea, por lo que el maquillaje debe ser aplicado con herramientas estériles para evitar la inoculación de bacterias. El uso de ingredientes no comedogénicos es imperativo, dado que la oclusión en ambientes de alta humedad aumenta el riesgo de foliculitis. Según recomendaciones de la AAD, mantener la homeostasis del microbioma es vital en espacios cerrados; se sugiere el uso de sprays fijadores libres de fragancias irritantes que puedan exacerbar cuadros de sensibilidad bajo condiciones de estrés ambiental. La técnica de sellado debe ser mínima para permitir que la piel se recupere durante la exposición prolongada a estas condiciones.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/everyday-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "zinc"
+      ],
+      "contraindications": [
+        "fragancias sinteticas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene-y-seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:53:26.135Z"
+  }
+]

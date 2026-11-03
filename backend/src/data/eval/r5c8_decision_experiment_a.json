@@ -1,0 +1,429 @@
+{
+  "cycle": "20",
+  "experiment": "R5-C8",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "official_baseline_unchanged": true,
+  "queries_valid": 18,
+  "generated_at": "2026-08-14T15:51:23.132Z",
+  "run": "A",
+  "bd_integrity": {
+    "rows": 5663,
+    "nulls": 0,
+    "dims": 1024
+  },
+  "evidence_sources": [
+    "r5c7_corpus_coverage_experiment.json",
+    "r5c7_corpus_coverage_audit_a.json",
+    "r5c6_query_corpus_coverage_a.json"
+  ],
+  "matrix_causal": [
+    {
+      "query_id": "skincare_003",
+      "domain": "skincare",
+      "coverage": "FULL",
+      "gt_misaligned": false,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 2,
+      "paraphrase_effect": "EMPEORA",
+      "primary_cause": "OK"
+    },
+    {
+      "query_id": "skincare_005",
+      "domain": "skincare",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 3,
+      "paraphrase_effect": "EMPEORA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "skincare_006",
+      "domain": "skincare",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 3,
+      "paraphrase_effect": "EMPEORA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "skincare_007",
+      "domain": "skincare",
+      "coverage": "PART",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "RETRIEVAL/EMBEDDING"
+    },
+    {
+      "query_id": "skincare_008",
+      "domain": "skincare",
+      "coverage": "FULL",
+      "gt_misaligned": false,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 1,
+      "paraphrase_effect": "EMPEORA",
+      "primary_cause": "OK"
+    },
+    {
+      "query_id": "skincare_009",
+      "domain": "skincare",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": false,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 8,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "skincare_010",
+      "domain": "skincare",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "GROUND_TRUTH+RETRIEVAL"
+    },
+    {
+      "query_id": "cabello_002",
+      "domain": "cabello",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "GROUND_TRUTH+RETRIEVAL"
+    },
+    {
+      "query_id": "cabello_004",
+      "domain": "cabello",
+      "coverage": "NO",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "CORPUS"
+    },
+    {
+      "query_id": "cabello_006",
+      "domain": "cabello",
+      "coverage": "PART",
+      "gt_misaligned": false,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 1,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "OK"
+    },
+    {
+      "query_id": "cabello_008",
+      "domain": "cabello",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": false,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 19,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_001",
+      "domain": "cejas",
+      "coverage": "PART",
+      "gt_misaligned": true,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 3,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_002",
+      "domain": "cejas",
+      "coverage": "NO",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 6,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "CORPUS"
+    },
+    {
+      "query_id": "cejas_003",
+      "domain": "cejas",
+      "coverage": "NO",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "CORPUS"
+    },
+    {
+      "query_id": "cejas_004",
+      "domain": "cejas",
+      "coverage": "PART",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "RETRIEVAL/EMBEDDING"
+    },
+    {
+      "query_id": "cejas_005",
+      "domain": "cejas",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 2,
+      "paraphrase_effect": "EMPEORA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_007",
+      "domain": "cejas",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": false,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 18,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_008",
+      "domain": "cejas",
+      "coverage": "PART",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "RETRIEVAL/EMBEDDING"
+    }
+  ],
+  "groups": {
+    "G1_corpus_evidence_hnsw_top5": {
+      "n": 7,
+      "queries": [
+        "skincare_003",
+        "skincare_005",
+        "skincare_006",
+        "skincare_008",
+        "cabello_006",
+        "cejas_001",
+        "cejas_005"
+      ],
+      "interpretation": "retrieval satisfactorio"
+    },
+    "G2_hnsw_top20_no_top5": {
+      "n": 3,
+      "queries": [
+        "skincare_009",
+        "cabello_008",
+        "cejas_007"
+      ],
+      "interpretation": "ranking/profundidad contribuye"
+    },
+    "G3_exact_si_hnsw_no": {
+      "n": 0,
+      "queries": [],
+      "interpretation": "posible limitación HNSW"
+    },
+    "G4_expected_ni_exact_top20": {
+      "n": 5,
+      "queries": [
+        "skincare_007",
+        "skincare_010",
+        "cabello_002",
+        "cejas_004",
+        "cejas_008"
+      ],
+      "interpretation": "embedding/query o GT incorrecto"
+    },
+    "G5_sin_cobertura": {
+      "n": 3,
+      "queries": [
+        "cabello_004",
+        "cejas_002",
+        "cejas_003"
+      ],
+      "interpretation": "corpus sin evidencia"
+    }
+  },
+  "causal_counts": {
+    "GROUND_TRUTH": 9,
+    "CORPUS": 3,
+    "RANKING": 0,
+    "RETRIEVAL_EMBEDDING": 3,
+    "OK": 3
+  },
+  "cejas_analysis": [
+    {
+      "query_id": "cejas_001",
+      "domain": "cejas",
+      "coverage": "PART",
+      "gt_misaligned": true,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 3,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_002",
+      "domain": "cejas",
+      "coverage": "NO",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 6,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "CORPUS"
+    },
+    {
+      "query_id": "cejas_003",
+      "domain": "cejas",
+      "coverage": "NO",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "NEUTRA",
+      "primary_cause": "CORPUS"
+    },
+    {
+      "query_id": "cejas_004",
+      "domain": "cejas",
+      "coverage": "PART",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "RETRIEVAL/EMBEDDING"
+    },
+    {
+      "query_id": "cejas_005",
+      "domain": "cejas",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": true,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 2,
+      "paraphrase_effect": "EMPEORA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_007",
+      "domain": "cejas",
+      "coverage": "FULL",
+      "gt_misaligned": true,
+      "hnsw_top5": false,
+      "hnsw_top20": true,
+      "exact_top20": true,
+      "best_expected_rank": 18,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "GROUND_TRUTH"
+    },
+    {
+      "query_id": "cejas_008",
+      "domain": "cejas",
+      "coverage": "PART",
+      "gt_misaligned": false,
+      "hnsw_top5": false,
+      "hnsw_top20": false,
+      "exact_top20": false,
+      "best_expected_rank": null,
+      "paraphrase_effect": "MEJORA",
+      "primary_cause": "RETRIEVAL/EMBEDDING"
+    }
+  ],
+  "query_rewriting_decision": {
+    "global_q0_mrr": 0.2222,
+    "global_q2_mrr": 0.2176,
+    "improved_by_q2": [
+      "cejas_002",
+      "cejas_004",
+      "cejas_007",
+      "cejas_008"
+    ],
+    "worsened_by_q2": [
+      "skincare_003",
+      "skincare_005",
+      "skincare_006",
+      "skincare_008",
+      "cejas_005"
+    ],
+    "verdict": "QUERY REWRITING global NO justificado (efecto ~neutro: Q2 MRR 0.218 vs Q0 0.222); solo beneficia 4 queries de cejas"
+  },
+  "decision_r5c9": {
+    "option": "A — CORREGIR BENCHMARK OFICIAL (con G: combinar re-clasificación UNSUPPORTED)",
+    "rationale": "9/18 queries GT misaligned (50%) con evidencia E3 recuperada; candidate R5-C2 R@5=0.50 sin tocar motor; HNSW 0 misses; reranking descartado; query rewriting global no justificado",
+    "evidence": "R5-C2 candidate R@5 0.50 / MRR 0.37; R5-C6 8-9/18 GT misaligned; R5-C7 G4=5 (2 GT + 3 embedding/query)",
+    "impact_esperado": "R@5 0.17→0.50, MRR 0.22→0.37 [EXPERIMENTAL — NO OFICIAL]",
+    "riesgo": "bajo (solo benchmark; requiere validación de cada expected corregido)",
+    "coste": "bajo (revisión manual de 18 queries con evidencia acumulada)",
+    "confianza": "ALTA"
+  },
+  "rejected_options": {
+    "B_ampliar_corpus": {
+      "verdict": "DIFERIDO",
+      "reason": "3/18 NO_COVERAGE reales; ampliar corpus para 3 queries no justifica el coste antes de corregir benchmark"
+    },
+    "C_query_rewriting": {
+      "verdict": "NO GLOBAL",
+      "reason": "Q2 MRR 0.218 vs 0.222; solo cejas_002/004/007/008 mejoran; se puede probar acotado a cejas en R5-C9"
+    },
+    "D_retrieval": {
+      "verdict": "NO",
+      "reason": "HNSW 0 misses; retrieval recupera evidencia E3 en FULL_COVERAGE; el fallo es del benchmark"
+    },
+    "E_embeddings": {
+      "verdict": "NO AUTORIZAR",
+      "reason": "gap -0.0116 mezclado con GT desalineado; sin modelo candidato local; falta prueba controlada"
+    },
+    "F_hnsw": {
+      "verdict": "DESCARTADO",
+      "reason": "0 misses vs exact en top-20 (R5-C7)"
+    }
+  }
+}

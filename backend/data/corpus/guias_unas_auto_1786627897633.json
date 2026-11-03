@@ -1,0 +1,212 @@
+[
+  {
+    "chunk_id": "guias_unas-oniquia-atropica-001",
+    "title": "Oniquia atrófica post-infecciosa: la pérdida de la matriz",
+    "content": "La oniquia atrófica es una condición clínica caracterizada por la reducción severa o desaparición total de la lámina ungueal debido a un daño irreversible en la matriz. A diferencia de la onicodistrofia común, aquí el tejido matricial pierde su capacidad funcional de queratinización. Clínicamente, el paciente presenta un lecho ungueal expuesto, a menudo hiperqueratósico y susceptible a infecciones recurrentes. Según estudios publicados en la revista 'Journal of the American Academy of Dermatology' (JAAD), el daño a la matriz puede ser provocado por infecciones bacterianas severas (paroniquia aguda no tratada) o procesos inflamatorios como el liquen plano ungueal. En el entorno de cabina, es vital diferenciar esta condición de una simple fragilidad, ya que cualquier manipulación mecánica sobre un lecho atrófico puede desencadenar una inflamación crónica o una sobreinfección. La gestión debe ser estrictamente médica, evitando el uso de adhesivos o cosméticos que comprometan aún más la integridad del tejido. La clave es la protección del lecho expuesto y el monitoreo de la arquitectura ungueal para prevenir cicatrización fibrótica (pterigium).",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "aplicación de geles",
+        "limado mecánico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:31:19.843Z"
+  },
+  {
+    "chunk_id": "guias_unas-sindrome-uñas-fragiles-002",
+    "title": "Onicosquizia lamelar: el impacto de la hidratación cíclica",
+    "content": "La onicosquizia lamelar, o la división horizontal de la lámina ungueal, es frecuentemente malinterpretada como una deficiencia de calcio. Sin embargo, la literatura en PubMed indica que esta condición es predominantemente un problema de balance hídrico y cohesión lipídica. La lámina ungueal, al estar compuesta por corneocitos, es altamente hidrofílica; la exposición constante a ciclos de hidratación (agua) y deshidratación (aire/calefacción) genera una expansión y contracción mecánica que debilita los puentes intercelulares. Investigaciones clínicas sugieren que el uso de agentes endurecedores con formaldehído puede exacerbar el problema al volver la uña excesivamente rígida y quebradiza. En GlowApp, es imperativo educar a la clienta sobre el uso de lípidos (aceites de cutícula con ceramidas) para sellar la humedad en la matriz dorsal y prevenir la delaminación. El diagnóstico diferencial debe excluir la psoriasis ungueal, que suele presentar 'pitting' o manchas de aceite, signos ausentes en la onicosquizia simple. La intervención debe enfocarse en la oclusión lipídica y no en el refuerzo químico agresivo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30676451/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "aceites esenciales"
+      ],
+      "contraindications": [
+        "endurecedores con formaldehído"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion_cliente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:31:19.843Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-004",
+    "title": "Gestión del pico exotérmico: prevención de quemaduras térmicas",
+    "content": "La reacción exotérmica durante la fotopolimerización de geles es un proceso químico donde la energía se libera en forma de calor. En geles de alta densidad o con alta carga de fotoiniciadores, la velocidad de polimerización puede exceder la tolerancia térmica del lecho ungueal, superando los 40-45°C y provocando quemaduras térmicas de primer o segundo grado. La literatura dermatológica subraya que el lecho ungueal es extremadamente sensible a estas variaciones térmicas debido a su rica vascularización. Para gestionar este riesgo, el profesional debe aplicar capas delgadas, utilizar lámparas con modo 'low heat' que controlen la irradiancia inicial y, fundamentalmente, observar la reacción de la clienta. Si se siente calor intenso, el paciente debe retirar la mano inmediatamente. Ignorar esta señal puede derivar en onicólisis traumática o sensibilización a los monómeros debido a la degradación térmica de la resina. La clave es la paciencia técnica: una polimerización controlada es sinónimo de una adhesión más duradera y un lecho ungueal sano, sin inflamación iatrogénica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "capas gruesas de gel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:31:19.843Z"
+  },
+  {
+    "chunk_id": "guias_unas-microbioma-006",
+    "title": "El microbioma periungueal: el impacto de la desinfección química",
+    "content": "La piel periungueal alberga un microbioma residente que actúa como barrera de defensa contra microorganismos patógenos. El uso indiscriminado de antisépticos de amplio espectro o la remoción mecánica agresiva de la cutícula altera este ecosistema, favoreciendo la colonización por bacterias como Staphylococcus aureus o levaduras como Candida. La evidencia científica reciente, analizada en publicaciones de la OMS sobre seguridad en procedimientos estéticos, destaca que la integridad de la barrera cutánea es más efectiva para prevenir infecciones que la desinfección constante. En la práctica de cabina, la recomendación es limpiar la zona con productos que no alteren el pH natural de la piel. El exceso de alcohol o solventes desengrasantes no solo deshidrata la lámina, sino que elimina la flora protectora, dejando el tejido inflamado y vulnerable. Un enfoque de 'microbioma-friendly' implica proteger el eponiquio y permitir que las defensas naturales de la piel operen sin interferencias químicas constantes, reduciendo así la tasa de paroniquias crónicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/publications/i/item/9789241550222",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antisépticos suaves"
+      ],
+      "contraindications": [
+        "uso excesivo de alcohol"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_asepsia"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:31:19.843Z"
+  },
+  {
+    "chunk_id": "guias_unas-estres-oxidativo-008",
+    "title": "Estrés oxidativo y degradación proteica por fotopolimerización",
+    "content": "La fotopolimerización prolongada y el uso de lámparas de alta intensidad pueden generar estrés oxidativo en el lecho ungueal. La exposición a radiación UV, aunque necesaria para el curado, produce radicales libres que degradan la queratina y los lípidos intercelulares de la lámina dorsal. Este fenómeno, documentado en revistas de fotobiología, explica por qué las uñas tratadas frecuentemente con geles de larga duración pueden volverse más delgadas y quebradizas con el tiempo. El uso de antioxidantes tópicos en la zona periungueal antes de la exposición podría mitigar parte de este daño. Además, la inhibición por oxígeno, un proceso donde el oxígeno atmosférico impide que la superficie del gel se cure completamente, obliga a menudo a las técnicas a sobre-exponer la uña a la luz. La solución técnica es el uso de geles formulados para curar en condiciones de baja irradiancia y la protección de la piel circundante con cremas fotoprotectoras. Entender la fotobiología del lecho ungueal es esencial para ofrecer un servicio que equilibre la estética con la salud a largo plazo de la matriz.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "exposición solar excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_aplicacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:31:19.843Z"
+  }
+]

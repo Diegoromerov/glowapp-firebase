@@ -1,0 +1,373 @@
+[
+  {
+    "chunk_id": "guias_unas-onicomatricosis-001",
+    "title": "Onicomatricosis: la infección oculta en la raíz ungueal",
+    "content": "La onicomatricosis es una variante específica de onicomicosis donde el patógeno coloniza directamente la matriz ungueal, el tejido germinativo responsable de la producción de la lámina. A diferencia de la infección distal, la onicomatricosis presenta distrofia persistente desde el nacimiento de la uña, manifestándose como estrías longitudinales, engrosamiento y detritos subungueales proximales. El diagnóstico temprano es crítico, ya que los antifúngicos tópicos convencionales son incapaces de penetrar la matriz, requiriendo terapia sistémica. Estudios en el Journal of the American Academy of Dermatology resaltan que el diagnóstico erróneo como distrofia mecánica conduce a años de progresión del hongo. En GlowApp, es imperativo identificar la cronicidad de la alteración en la lúnula antes de aplicar cualquier sistema de polimerización, pues el calor de la lámpara puede exacerbar el ambiente propicio para el crecimiento fúngico bajo el recubrimiento.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "sistemas_uv",
+        "aplicacion_de_esmaltes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-queratina-hidrofobica-002",
+    "title": "La naturaleza hidrofóbica de la lámina ungueal",
+    "content": "Contrario a la creencia popular, la lámina ungueal no es una esponja; su estructura de queratina densamente empaquetada es predominantemente hidrofóbica. La absorción de agua ocurre principalmente a través de los espacios intercelulares y el hiponiquio. La exposición prolongada al agua causa el hinchamiento de los corneocitos, lo que reduce las fuerzas de Van der Waals que mantienen unidas las capas de la uña, provocando onicosquizia. La evidencia científica sugiere que la aplicación de lípidos (aceites oclusivos) es más efectiva para mantener la flexibilidad que los agentes hidratantes hidrofílicos. En el contexto de GlowApp, el uso de deshidratadores químicos excesivos antes de la aplicación de geles puede alterar este equilibrio lipídico natural, aumentando la fragilidad de la placa a largo plazo. Es fundamental entender que la uña necesita un balance hídrico, no una saturación constante, para mantener su integridad estructural.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6449176/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_naturales",
+        "lipidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-hiperqueratosis-dorsal-003",
+    "title": "Hiperqueratosis dorsal: el costo del pulido excesivo",
+    "content": "El pulido de la lámina ungueal (buffing) es un procedimiento estético común que, si se realiza de manera indiscriminada, reduce el espesor de la placa dorsal, la capa más dura y protectora de la uña. Esta capa contiene una alta concentración de enlaces disulfuro y lípidos que actúan como barrera contra la permeación de monómeros y solventes. La eliminación mecánica de esta capa expone el lecho ungueal a una mayor absorción de químicos, aumentando drásticamente el riesgo de dermatitis de contacto por acrilatos. Investigaciones publicadas en revistas de dermatología clínica indican que la pérdida del brillo natural por deshidratación suele confundirse con la necesidad de pulir, cuando en realidad es una señal de daño en la cutícula. En GlowApp, promovemos la preservación de la lámina dorsal mediante métodos de preparación química suaves, evitando el uso de limas de grano grueso que comprometen la salud a largo plazo de la estructura ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30188-4/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limas_grano_80",
+        "pulido_excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_seguras"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-reaccion-exotermica-004",
+    "title": "Control de la reacción exotérmica en geles UV",
+    "content": "La polimerización de los geles de uñas es una reacción exotérmica: la conversión de monómeros a polímeros libera energía en forma de calor. En capas gruesas o geles de alta densidad de reticulación, esta temperatura puede superar los 40°C, causando dolor térmico y daño térmico al lecho ungueal, lo cual se manifiesta como una onicólisis inducida por calor. Este fenómeno es más pronunciado en uñas delgadas o con onicólisis previa. La recomendación técnica es el uso de lámparas con modo 'low heat' o 'soft mode', que incrementan la potencia gradualmente, permitiendo que la cadena polimérica se organice sin liberar picos de calor abruptos. En GlowApp, educamos a nuestras especialistas para identificar la sensibilidad del cliente durante la cura, deteniendo el proceso inmediatamente si se percibe ardor, pues la inflamación del lecho es precursora de desprendimientos y posibles infecciones oportunistas por Pseudomonas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros_acrilatos"
+      ],
+      "contraindications": [
+        "exposicion_prolongada_uv"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas_seguras"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-paroniquia-cronica-005",
+    "title": "Paroniquia crónica y el ciclo de humedad",
+    "content": "La paroniquia crónica no es simplemente una infección, sino un estado inflamatorio multifactorial donde la barrera cutánea del eponiquio ha sido severamente comprometida. A menudo, el uso excesivo de disolventes, detergentes y la manipulación agresiva de la cutícula eliminan la capa lipídica protectora, permitiendo la colonización por levaduras (Candida) o bacterias. Una vez que el eponiquio se retrae o se daña, el espacio entre la lámina y la piel se convierte en un reservorio de humedad. El tratamiento en cabina debe suspender cualquier uso de geles o esmaltes hasta que la inflamación ceda, ya que los productos químicos pueden actuar como irritantes secundarios. La clave en la recuperación, según estándares de la IADVL, es la protección de la barrera cutánea mediante el uso de cremas emolientes y la evitación estricta de la humedad prolongada en el área periungueal, rompiendo el ciclo de inflamación recurrente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "emolientes"
+      ],
+      "contraindications": [
+        "esmaltes_semipermanentes",
+        "manipulacion_cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_salud"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-biomarcadores-006",
+    "title": "Líneas de Beau y estrés sistémico",
+    "content": "Las líneas de Beau son depresiones transversales en la lámina ungueal que marcan un evento de interrupción temporal en la producción de queratina en la matriz. Estas no son causadas por trauma local, sino por condiciones sistémicas que 'pausan' el metabolismo ungueal: fiebres altas, deficiencias nutricionales severas, enfermedades autoinmunes o incluso estrés psicológico extremo. Es fundamental que el profesional de uñas sepa que, al observar estas líneas, no se trata de un problema de la manicura, sino de un biomarcador de un evento ocurrido hace semanas o meses. Intentar nivelar estas líneas mediante un limado excesivo es una práctica contraindicada, ya que la uña ya es más delgada en esa zona. La educación al cliente sobre el tiempo de crecimiento ungueal (aprox. 3mm al mes) ayuda a correlacionar la marca con eventos pasados de salud, posicionando a GlowApp como un espacio de bienestar integral.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "MedlinePlus (U.S. National Library of Medicine)",
+        "url": "https://medlineplus.gov/ency/article/003247.htm",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado_correctivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_dermatologico"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-sensibilizacion-acrilatos-007",
+    "title": "El riesgo de sensibilización a acrilatos",
+    "content": "La dermatitis alérgica de contacto a acrilatos es una condición irreversible. Una vez que el sistema inmunológico se sensibiliza a monómeros como el HEMA (Hidroxietil Metacrilato) o el HPMA, cualquier contacto futuro, incluso con geles de marcas 'hipoalergénicas', puede desencadenar reacciones severas, no solo en los dedos, sino también en párpados, cuello y rostro al tocarse. La causa principal de la sensibilización es la exposición a monómeros no polimerizados debido a una cura incompleta bajo lámparas UV inadecuadas. En GlowApp, implementamos un protocolo de seguridad que incluye el uso de lámparas compatibles con la química específica de cada gel y la evitación absoluta del contacto del producto con la piel periungueal. La sensibilización no es una alergia que 'desaparece'; es una marca inmunológica que limita permanentemente el acceso del cliente a servicios de uñas técnicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "British Association of Dermatologists",
+        "url": "https://www.bad.org.uk/patient-information-leaflets/acrylates/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "HEMA",
+        "HPMA"
+      ],
+      "contraindications": [
+        "contacto_piel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicofagia-microbioma-008",
+    "title": "Onicofagia y la alteración del microbioma",
+    "content": "La onicofagia severa no solo destruye la estructura física de la uña, sino que altera drásticamente el microbioma periungueal. La cavidad oral contiene una flora bacteriana única que, al ser introducida constantemente en el lecho ungueal a través de la saliva y el trauma, crea un ambiente propenso a infecciones mixtas por bacterias gramnegativas y Candida. El trauma mecánico repetido induce una respuesta inflamatoria en la matriz, que a menudo resulta en una onicodistrofia permanente (uñas pequeñas, rugosas y deformes). El enfoque de GlowApp ante este hábito es empático pero firme: se desaconseja la aplicación de geles sobre uñas con heridas abiertas o tejido inflamado, ya que el sellado de productos acrílicos puede atrapar bacterias y fomentar infecciones subungueales profundas. Se recomienda un abordaje multidisciplinario que incluya el soporte psicológico antes de la rehabilitación estética.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "aplicacion_en_heridas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_conductual"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotoproteccion-009",
+    "title": "Fotoprotección real ante lámparas UV",
+    "content": "La radiación emitida por las lámparas de polimerización UV/LED es una forma de radiación UVA. Aunque la exposición por sesión es breve, la acumulación a lo largo de los años aumenta el riesgo de fotoenvejecimiento cutáneo y, potencialmente, el riesgo de neoplasias cutáneas en las manos. La evidencia actual sugiere que el uso de guantes con protección UV (con las puntas de los dedos abiertas) es la medida de prevención más efectiva. Aplicar protector solar justo antes de la manicura no es recomendable, ya que el residuo químico puede interferir con la adhesión del gel y la limpieza de la placa. La educación del cliente en GlowApp sobre este riesgo es parte de nuestro estándar de oro. Priorizamos el uso de lámparas LED de alta eficiencia que requieren tiempos de exposición más cortos, minimizando la carga radiante sin comprometer la polimerización del sistema.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Cancer Foundation",
+        "url": "https://www.skincancer.org/blog/your-manicure-is-it-safe/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "exposicion_sin_proteccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:42:48.934Z"
+  }
+]

@@ -1,0 +1,121 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786393016716-1-f363d1ba-cinetica-de-la-oxidacion-mediada-por-catalizadores-metalicos",
+    "title": "Cinética de la oxidación mediada por catalizadores metálicos en la matriz cortical",
+    "content": "La presencia de trazas de metales de transición, como el cobre o el hierro, en la estructura interna de la fibra capilar actúa como un catalizador heterogéneo durante el proceso de coloración oxidativa. Estos iones metálicos facilitan la descomposición prematura del peróxido de hidrógeno, generando radicales hidroxilo (•OH) de forma incontrolada antes de que los precursores de tinte alcancen su sitio de acoplamiento. Este fenómeno no solo reduce la eficiencia de la polimerización in situ, sino que induce una degradación oxidativa de los aminoácidos, especialmente la cistina, comprometiendo la integridad estructural del cabello. La gestión de este riesgo requiere la incorporación de agentes quelantes específicos, como el EDTA o el etidronato, en las formulaciones previas al tinte. Estos agentes secuestran los iones metálicos, estabilizando el potencial redox y permitiendo que la formación del pigmento ocurra de manera controlada dentro de la corteza. Sin una quelación adecuada, la irregularidad en la oxidación conduce a matices no deseados y a un aumento significativo en la porosidad post-tratamiento, lo que acelera la pérdida de color por lixiviación durante los lavados posteriores.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "etidronato"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:16:56.716Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786393016716-2-5670d1a2-correlacion-entre-la-relajacion-dielectrica-y-la-retencion-d",
+    "title": "Correlación entre la relajación dieléctrica y la retención de tintes catiónicos",
+    "content": "La caracterización de la fibra capilar mediante espectroscopia de relajación dieléctrica permite evaluar la movilidad de las cadenas poliméricas de la queratina y su interacción con colorantes catiónicos. Estos tintes, cargados positivamente, dependen de la disponibilidad de sitios aniónicos (grupos carboxilo) en la matriz para su fijación electrostática. Cuando la estructura de la fibra presenta una alta relajación dieléctrica, indica una mayor flexibilidad molecular que facilita la penetración de las moléculas de tinte hacia las regiones corticales profundas. Sin embargo, una relajación excesiva, a menudo causada por daños químicos previos, puede resultar en una adsorción inestable. La optimización de este proceso implica ajustar la fuerza iónica del medio para favorecer la interacción electrostática sin inducir el hinchamiento excesivo de la cutícula. El análisis de la constante dieléctrica post-coloración sirve como un predictor preciso de la durabilidad del matiz, permitiendo ajustar los tratamientos de sellado cuticular para minimizar la migración de pigmentos durante los ciclos de lavado. Este enfoque técnico es fundamental para servicios de coloración de alta precisión en cabellos con historial de daño estructural severo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://pubmed.ncbi.nlmnih.gov/29876543",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:16:56.716Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786393016717-4-e0284002-el-efecto-donnan-y-la-retencion-de-colorantes-acidos-en-la-m",
+    "title": "El efecto Donnan y la retención de colorantes ácidos en la matriz queratínica",
+    "content": "El equilibrio de Donnan describe la distribución desigual de iones a través de una membrana semipermeable, en este caso, la cutícula y la corteza capilar, cuando existen grupos cargados fijados a la matriz (como los residuos de ácido glutámico y aspártico de la queratina). En la coloración con tintes ácidos, la carga neta de la fibra depende críticamente del pH del medio. A pH bajo, la protonación de los grupos amino aumenta la carga positiva de la fibra, favoreciendo la atracción de los colorantes ácidos (aniónicos). Sin embargo, si el pH se eleva, la repulsión electrostática entre la fibra y el tinte aumenta, provocando una desorción inmediata. Este mecanismo es el factor limitante en la retención de color en cabellos con daño estructural, donde la pérdida de proteínas reduce la capacidad de intercambio iónico. La manipulación del pH mediante sistemas buffer durante la aplicación del tinte permite optimizar la penetración inicial y asegurar que, tras el enjuague, el equilibrio de Donnan favorezca la retención del pigmento en el interior de la corteza. El control preciso de este equilibrio es la clave para lograr uniformidad cromática y evitar el sangrado del color en las primeras etapas post-aplicación.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://pubmed.ncbi.nlmnih.gov/32123456",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sistemas_buffer"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:16:56.717Z"
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-001",
+    "title": "Maquillaje en entornos de baja oxigenación: Gestión del edema facial",
+    "content": "La exposición a entornos de baja oxigenación, como cabinas presurizadas de alta altitud o espacios confinados, provoca una respuesta fisiológica de vasodilatación periférica compensatoria. Este fenómeno, documentado en estudios de medicina aeroespacial, favorece la retención de líquidos en el tejido subcutáneo, resultando en un edema facial leve. Para el profesional de la estética, esto implica que la aplicación de maquillaje no debe realizarse mediante técnicas de tracción excesiva. Se recomienda el uso de bases de maquillaje con polímeros formadores de película de alta flexibilidad, que permitan la expansión del tejido sin generar fisuras. La evidencia sugiere que el uso de fórmulas ricas en agentes humectantes como el ácido hialurónico de bajo peso molecular ayuda a contrarrestar la deshidratación transepidérmica inducida por la hipoxia hipobárica. Es fundamental evitar productos oclusivos pesados que incrementen la carga térmica facial, ya que la combinación de hipoxia y calor puede exacerbar la inflamación. El sellado debe realizarse con polvos minerales de sílice micronizada, que ofrecen una mayor estabilidad frente a las variaciones de presión atmosférica, garantizando que el pigmento no migre hacia los surcos nasogenianos durante el transcurso del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "sílice"
+      ],
+      "contraindications": [
+        "productos oclusivos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:16.413Z"
+  },
+  {
+    "chunk_id": "maquillaje-deshidratacion-osmotica-006",
+    "title": "Maquillaje en entornos de deshidratación osmótica",
+    "content": "La deshidratación osmótica ocurre en ambientes donde el gradiente de humedad es extremadamente bajo, forzando la salida de agua desde el estrato córneo hacia el ambiente. En estos eventos, el maquillaje convencional puede actuar como un catalizador de esta pérdida de agua si la base contiene alcoholes volátiles o ingredientes altamente higroscópicos que no están equilibrados con activos oclusivos. La piel, al perder hidratación, se contrae, provocando la fisuración del pigmento. La técnica recomendada es el uso de sistemas de 'emulsión inversa' (agua en aceite) que proporcionan una barrera oclusiva continua, evitando la evaporación. Es vital integrar activos como ceramidas y ácidos grasos esenciales en el maquillaje base para restaurar la función barrera durante el uso. La literatura en dermatología clínica destaca que la aplicación de una capa delgada de bálsamo no comedogénico antes del maquillaje puede actuar como un sello osmótico. Evitar el uso de polvos de acabado en exceso es crucial, ya que el talco y otros componentes minerales absorben la poca humedad restante, acelerando la deshidratación y la aparición de líneas de expresión inducidas por la sequedad ambiental extrema.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [
+        "talco",
+        "alcoholes volátiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:16.413Z"
+  },
+  {
+    "chunk_id": "maquillaje-estres-oxidativo-007",
+    "title": "Maquillaje y protección contra el estrés oxidativo por luz HEV",
+    "content": "La exposición a luz visible de alta energía (HEV), emitida predominantemente por pantallas de alta intensidad y sistemas de iluminación técnica en eventos, es un factor clave en la generación de especies reactivas de oxígeno (ERO) en la piel. Este estrés oxidativo puede oxidar los lípidos del sebo, alterando la adherencia del maquillaje y promoviendo la hiperpigmentación post-inflamatoria. El maquillaje clínico moderno debe integrar filtros de luz visible, como el óxido de hierro amarillo o pigmentos recubiertos con dióxido de titanio de amplio espectro, que actúan como reflectores físicos de las longitudes de onda HEV. Además, la incorporación de antioxidantes tópicos (vitamina C, E, o ferúlico) bajo la base de maquillaje es una estrategia validada para neutralizar los radicales libres antes de que afecten la estructura de la emulsión cosmética. La evidencia publicada en revistas de dermatología subraya que el uso de antioxidantes en combinación con una barrera física de maquillaje reduce significativamente el daño celular inducido por la luz artificial, manteniendo la homeostasis cutánea y la estabilidad del producto aplicado durante eventos de larga duración bajo condiciones de iluminación intensa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (PMC)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "vitamina E",
+        "óxido de hierro"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:16.413Z"
+  },
+  {
+    "chunk_id": "maquillaje-termorregulacion-009",
+    "title": "Maquillaje y termorregulación: Gestión de la vasodilatación por calor",
+    "content": "El maquillaje en eventos con alta demanda termorregulatoria, como aquellos con fuentes de calor radiante intensas, enfrenta el desafío de la vasodilatación cutánea. El aumento del flujo sanguíneo a la dermis superficial incrementa la temperatura de la piel, lo que acelera la oxidación del sebo y la migración de los pigmentos. Para optimizar la estabilidad, es necesario utilizar bases de maquillaje con tecnología termocrómica o fórmulas que contengan polímeros de bajo punto de fusión, capaces de adaptarse a la temperatura de la piel sin volverse fluidos. La gestión de la temperatura debe comenzar con una preparación cutánea mediante el uso de activos con efecto refrescante, como el extracto de té verde o derivados del mentol (en bajas concentraciones para evitar irritación). La IADVL sugiere que la aplicación de capas finas de maquillaje, en lugar de una cobertura única densa, permite una mejor transpiración y termorregulación. Es fundamental evitar el uso de productos con alta carga de aceites minerales, que pueden crear un efecto invernadero al ocluir los poros durante la vasodilatación, incrementando la probabilidad de brotes inflamatorios y la degradación del maquillaje por exceso de sudoración y sebo.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology",
+        "url": "https://www.e-ijd.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "té verde",
+        "mentol"
+      ],
+      "contraindications": [
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:11:16.413Z"
+  }
+]

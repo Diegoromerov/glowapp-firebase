@@ -1,0 +1,212 @@
+[
+  {
+    "chunk_id": "textura-poros-glicol-triptofano-001",
+    "title": "El papel del metabolismo del triptófano en la homeostasis folicular",
+    "content": "El metabolismo del triptófano a través de la vía de la quinurenina juega un papel emergente en la regulación de la textura folicular. Estudios recientes sugieren que los metabolitos del triptófano, al interactuar con el receptor de hidrocarburos arilo (AhR) en los queratinocitos del canal folicular, modulan la diferenciación epidérmica y la respuesta inflamatoria. Una alteración en esta señalización puede derivar en una hiperqueratinización del ostium, lo que se traduce clínicamente en una textura rugosa y una apariencia de poro dilatado. La activación adecuada del AhR no solo protege contra el estrés oxidativo ambiental, sino que también regula la expresión de proteínas de la barrera como la filagrina, esencial para mantener la elasticidad del canal. En GlowApp, observamos que factores dietéticos y la exposición a contaminantes urbanos en Bogotá pueden interferir con esta vía, alterando la cohesión celular. Comprender este eje neuro-inmune-metabólico es fundamental para proponer estrategias de soporte cutáneo que vayan más allá de la simple exfoliación, enfocándose en la resiliencia celular a nivel folicular y la optimización del microambiente metabólico del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34215431/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "triptofano",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-metabolico-cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:52:58.323Z"
+  },
+  {
+    "chunk_id": "textura-poros-ion-potasio-002",
+    "title": "Gradientes de potasio y la dinámica contráctil del ostium folicular",
+    "content": "La regulación del diámetro del poro no depende únicamente de la estructura de colágeno periporo, sino también de la dinámica contráctil mediada por canales iónicos. El gradiente de potasio dentro de las células del epitelio folicular es crítico para la homeostasis y la respuesta ante estímulos externos. Se ha identificado que la modulación de los canales de potasio dependientes de ATP (KATP) influye directamente en el tono del músculo erector del pelo y en la contractilidad de los queratinocitos que rodean el ostium. Cuando este gradiente se altera, se pierde la capacidad de 'cierre' funcional ante cambios de temperatura o estrés, observándose una dilatación persistente que no responde a tratamientos convencionales. En entornos de gran altitud como Bogotá, la menor presión parcial de oxígeno puede inducir cambios sutiles en el metabolismo celular, afectando estos gradientes iónicos. La estabilización de este equilibrio a través de activos que promuevan una señalización iónica eficiente es una frontera terapéutica prometedora para mejorar la textura de la piel grasa, permitiendo que el poro mantenga una morfología más cerrada y menos visible ante los desafíos ambientales diarios.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)42967-8/fulltext",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minerales",
+        "electrolitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisiologia-del-poro"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:52:58.323Z"
+  },
+  {
+    "chunk_id": "textura-poros-proteolisis-003",
+    "title": "El rol de las calicreínas en la descamación del ostium folicular",
+    "content": "La arquitectura del poro se mantiene gracias a un proceso preciso de descamación regulado por serin-proteasas, específicamente las calicreínas (KLK). En la entrada del folículo, estas enzimas son responsables de romper los desmosomas que mantienen unidos a los corneocitos. Un desequilibrio en la actividad de las KLK, frecuentemente causado por un pH cutáneo alterado o una barrera cutánea comprometida, puede llevar a una acumulación de células muertas en el ostium folicular. Esta 'obstrucción funcional' no siempre es un punto negro visible, sino una micro-acumulación que expande el poro desde adentro hacia afuera, alterando la textura superficial. En GlowApp, enfatizamos que la exfoliación química debe ser precisa para no inhibir la actividad natural de estas enzimas, sino para apoyarlas. El uso de polihidroxiácidos (PHAs) es particularmente interesante en este contexto, ya que ofrecen una exfoliación suave que respeta el pH natural y permite que las calicreínas operen en condiciones óptimas, restaurando la apertura natural del canal folicular y reduciendo la apariencia de poros dilatados sin comprometer la integridad de la barrera cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/bjd.15654",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "gluconolactona",
+        "lactobionico"
+      ],
+      "contraindications": [
+        "rosacea-severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estrategias-exfoliacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:52:58.323Z"
+  },
+  {
+    "chunk_id": "textura-poros-neurotransmisores-004",
+    "title": "Sustancia P y la contracción folicular inducida por estrés",
+    "content": "La conexión entre el sistema nervioso y la piel es un componente crítico de la textura porosa. La sustancia P, un neuropéptido liberado por las terminaciones nerviosas sensoriales ante estímulos de estrés, tiene efectos directos sobre el folículo pilosebáceo. Investigaciones demuestran que la sustancia P puede estimular la hiperplasia de las glándulas sebáceas y, simultáneamente, inducir la contracción del músculo erector del pelo. Este proceso, bajo estrés crónico, genera una tensión mecánica constante sobre el ostium folicular, lo que altera su forma y tamaño a largo plazo. Además, la sustancia P promueve la liberación de mediadores proinflamatorios que perpetúan un estado de inflamación subclínica. En el contexto de GlowApp, esto explica por qué la gestión del estrés no es solo un consejo de bienestar, sino una intervención clínica necesaria para pacientes con textura rugosa persistente. El manejo de esta respuesta neurogénica puede incluir el uso de ingredientes con efectos calmantes que bloqueen o modulen la liberación de estos neuropéptidos, ayudando a relajar la estructura periporo y mejorando visiblemente la textura cutánea general ante periodos de alta demanda emocional o física.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(17)32402-4/fulltext",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "extractos-botanicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-integral-piel"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:52:58.323Z"
+  },
+  {
+    "chunk_id": "textura-poros-biofilms-007",
+    "title": "Arquitectura del biofilm folicular y rugosidad persistente",
+    "content": "La persistencia de una textura rugosa en la piel no siempre se debe a la cantidad de sebo, sino a la formación de biofilms bacterianos dentro del canal folicular. Estos biofilms son comunidades organizadas de microorganismos, como Cutibacterium acnes y Staphylococcus epidermidis, que se protegen mediante una matriz extracelular compuesta de polisacáridos. Esta estructura es extremadamente resistente a los agentes de limpieza convencionales y a los antibióticos tópicos, lo que explica por qué muchas personas siguen sintiendo una textura irregular a pesar de mantener rutinas de limpieza rigurosas. El biofilm altera la queratinización del canal y promueve una inflamación crónica de bajo grado que dilata el poro. En GlowApp, la estrategia para abordar esta rugosidad implica el uso de agentes 'rompedores de biofilm' (como ácidos salicílicos formulados adecuadamente o ciertos postbióticos) que desestabilicen esta matriz sin dañar el microbioma cutáneo beneficioso. Identificar la presencia de estos biofilms es un paso vital para transicionar de tratamientos puramente cosméticos a un enfoque de gestión de salud folicular basado en evidencia.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/nrmicro.2016.155",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "acneica"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-salicilico",
+        "postbioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-microbiota"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:52:58.323Z"
+  }
+]

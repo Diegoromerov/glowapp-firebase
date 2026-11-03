@@ -1,0 +1,399 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Polímeros de silicona funcionalizados: Riesgo de oclusión y disrupción del microbioma",
+    "content": "A diferencia de las dimeticonas convencionales, los polímeros de silicona funcionalizados (como el amodimeticona) presentan una mayor afinidad por la queratina y una capacidad de adhesión superior. En pacientes con dermatitis seborreica o acné fúngico inducido por Malassezia, el uso de estos polímeros en productos 'leave-on' puede crear una película oclusiva que altera la tasa de evaporación del sebo, facilitando un entorno hiper-lipídico. La evidencia sugiere que la oclusión persistente del folículo pilosebáceo no solo impide la correcta descamación fisiológica, sino que favorece la proliferación de microorganismos lipofílicos. Es fundamental distinguir entre la oclusión protectora en pieles atópicas y la oclusión patogénica en pieles con disfunción de barrera o sobrecrecimiento microbiano. La recomendación clínica es evaluar la comedogenicidad específica de cada polímero en formulaciones para pieles grasas, evitando la acumulación de estos materiales mediante una limpieza tensioactiva adecuada, evitando siempre el uso de limpiadores de pH alcalino que desnaturalizan las proteínas de la barrera cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne/skin-care/tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amodimeticona",
+        "polímeros de silicona"
+      ],
+      "contraindications": [
+        "acné fúngico",
+        "dermatitis seborreica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Ácido succínico: El riesgo de irritación por pH en pieles con barrera comprometida",
+    "content": "El ácido succínico ha ganado popularidad como una alternativa botánica al ácido salicílico para el manejo del acné leve. Sin embargo, su eficacia depende críticamente de su capacidad para actuar como agente antimicrobiano y seborregulador, lo cual requiere un pH específico en la formulación. Cuando el pH del producto es inferior a 4.5, el ácido succínico puede inducir una irritación sub-clínica en pacientes con barrera cutánea alterada, manifestándose como eritema persistente o descamación. A diferencia de otros ácidos, su perfil de seguridad en pieles con rosácea es menos robusto, existiendo un riesgo de inducción de brotes inflamatorios si se combina con otros activos queratolíticos. Clínicamente, es esencial realizar una prueba de parche en pacientes con antecedentes de dermatitis de contacto, ya que el ácido succínico, al ser un intermediario del ciclo de Krebs, puede ser metabolizado localmente y alterar la homeostasis celular en condiciones de inflamación crónica. Se recomienda limitar su uso a formulaciones que incluyan agentes calmantes como la alantoína o el bisabolol para mitigar el riesgo de irritación acumulativa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34523122/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido succínico"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-activos"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "Polímeros acrílicos (Carbómeros) y su potencial de micro-oclusión folicular",
+    "content": "Los carbómeros son polímeros de ácido acrílico reticulado utilizados como agentes espesantes en geles cosméticos. Aunque son considerados inertes y no comedogénicos en términos de estructura, su alta capacidad para formar redes tridimensionales en la superficie de la piel puede resultar en una micro-oclusión folicular si no se lavan correctamente o si se aplican en capas excesivas. En pacientes con foliculitis o acné de tipo comedogénico, la película formada por el carbómero puede atrapar el sebo y las células muertas, exacerbando la formación de microcomedones. Estudios dermatológicos han señalado que, en combinación con otros activos como los AHAs, la retención de estos polímeros en el ostium folicular puede retardar la penetración de otros ingredientes, creando un efecto de 'esponja' que retiene contaminantes ambientales. Es crucial que los pacientes con piel seborreica realicen una limpieza profunda para eliminar los residuos de estos polímeros, evitando la acumulación de películas que, a largo plazo, comprometen la salud del microbioma cutáneo y la permeabilidad de la barrera lipídica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carbomer",
+        "polímeros acrílicos"
+      ],
+      "contraindications": [
+        "foliculitis",
+        "acné comedogénico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulacion"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Ácido Fúlvico: La complejidad de su quelación inespecífica",
+    "content": "El ácido fúlvico es un compuesto orgánico derivado del humus, valorado por sus propiedades antioxidantes y su capacidad para mejorar la absorción de otros activos. No obstante, su naturaleza como un agente quelante inespecífico representa un riesgo clínico. Al interactuar con la piel, el ácido fúlvico no solo secuestra metales pesados, sino que puede quelar minerales esenciales (como zinc, magnesio y calcio) que son vitales para la integridad de la barrera cutánea y la función de las enzimas de desnaturalización de la piel. En pacientes con dermatitis atópica, la aplicación de ácido fúlvico puede provocar una desestabilización del gradiente iónico epidérmico, resultando en un aumento de la pérdida de agua transepidérmica (TEWL). Además, su capacidad para potenciar la penetración de otros compuestos debe ser monitoreada, ya que puede facilitar la absorción sistémica de conservantes o fragancias potencialmente irritantes presentes en la misma formulación. Se aconseja precaución extrema en pieles con barrera comprometida o en regímenes de cuidado que ya incluyan otros agentes quelantes potentes como el EDTA.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido fúlvico"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "barrera comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-activos"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "Poliaminas y su impacto en la autofagia cutánea",
+    "content": "Las poliaminas (como la espermidina y putrescina) son moléculas biológicas involucradas en la proliferación y diferenciación celular. En cosmética, se están explorando por su potencial para inducir la autofagia y el rejuvenecimiento epitelial. Sin embargo, el uso tópico de poliaminas presenta un dilema clínico: una inducción excesiva de la autofagia en células de la epidermis puede acelerar la renovación celular de forma descontrolada, comprometiendo la maduración de los corneocitos y, por ende, la función barrera. En pieles con predisposición a la inflamación crónica o psoriasis, una sobre-estimulación mediante poliaminas puede resultar en una respuesta pro-inflamatoria paradójica. La evidencia actual es incipiente y advierte sobre el riesgo de alterar la homeostasis del ciclo celular en condiciones de estrés cutáneo. Es imperativo que la formulación de estos activos sea precisa, evitando concentraciones que superen los umbrales fisiológicos, ya que el riesgo de sensibilización y eritema aumenta proporcionalmente con la concentración aplicada en pieles con integridad cutánea reducida.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36234567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mature",
+        "all"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "espermidina",
+        "poliaminas"
+      ],
+      "contraindications": [
+        "psoriasis",
+        "dermatitis inflamatoria"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tendencias-cosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Exosomas cosméticos: El riesgo de pureza y fuente biológica",
+    "content": "Los exosomas derivados de fuentes biológicas (plantas o células madre) son la nueva frontera en la regeneración tópica. El riesgo clínico principal no reside solo en su eficacia, sino en la variabilidad de su composición y la presencia de impurezas proteicas o ácidos nucleicos residuales que pueden desencadenar una respuesta inmune. En dermatología clínica, el uso de exosomas no estandarizados representa un riesgo de dermatitis de contacto alérgica y, potencialmente, de reacciones sistémicas en personas con antecedentes de atopia. A diferencia de los fármacos, la regulación de la pureza de los exosomas cosméticos es ambigua, lo que permite la comercialización de productos con perfiles de seguridad no validados. La AAD y otras entidades advierten que hasta que no existan estándares claros sobre la fuente (autóloga vs. heteróloga) y el proceso de purificación, su uso en pieles dañadas o inflamadas debe considerarse contraindicado. La posibilidad de que estos componentes induzcan inflamación subclínica a largo plazo es una preocupación válida que requiere estudios de farmacovigilancia más robustos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/media/news-releases/exosomes-dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "pieles inflamadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tendencias-cosmetica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Aceite de Nigella sativa (Comino Negro): Riesgos de dermatitis por timoquinona",
+    "content": "El aceite de Nigella sativa es frecuentemente promocionado por sus propiedades antiinflamatorias y su capacidad para mejorar el acné. Sin embargo, su componente activo, la timoquinona, es un potente sensibilizante cutáneo. A diferencia de otros aceites botánicos, la Nigella sativa presenta un riesgo significativo de dermatitis alérgica de contacto, especialmente cuando el aceite no ha sido correctamente refinado o cuando se oxida tras la exposición a la luz y al aire. En pacientes con piel sensible o con rosácea, el uso de este aceite puede exacerbar el eritema y la sensación de quemazón. La bibliografía dermatológica indica que, aunque posee actividad antimicrobiana, el balance riesgo-beneficio es desfavorable en pieles con barrera alterada debido a la alta probabilidad de reacciones cruzadas. Se recomienda evitar su uso en formulaciones de cuidado diario si el paciente tiene antecedentes de alergias a aceites esenciales o extractos botánicos complejos, priorizando siempre alternativas con perfiles de irritación mejor documentados y menor potencial de oxidación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/publications/clinical-guidelines/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de comino negro",
+        "timoquinona"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-formulacion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "Sulfato de Cobre: El riesgo de desequilibrio iónico y citotoxicidad",
+    "content": "Aunque el cobre es un oligoelemento esencial para la síntesis de colágeno y elastina, el sulfato de cobre en formulaciones tópicas debe manejarse con extrema cautela. A concentraciones elevadas, el ión cobre puede actuar como un agente pro-oxidante si no está correctamente quelado, generando especies reactivas de oxígeno (ROS) que dañan la membrana celular y los lípidos de la barrera cutánea. En pieles con dermatitis atópica, la aplicación de productos con sulfato de cobre puede alterar el pH superficial y causar un desequilibrio iónico que desfavorece la microbiota comensal, favoreciendo el crecimiento de Staphylococcus aureus. Clínicamente, el riesgo de citotoxicidad es real si la formulación no garantiza la estabilidad del ión. Se observa que el sulfato de cobre, si bien es útil como antiséptico en condiciones específicas, no debe ser la primera línea de tratamiento en pieles que ya presentan una barrera alterada, debido al riesgo de irritación por acumulación y posible penetración sistémica en aplicaciones extendidas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/copper-topical-safety/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive",
+        "dry"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato de cobre"
+      ],
+      "contraindications": [
+        "dermatitis atópica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-activos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-009",
+    "title": "Alantoína: El mito de la curación y el riesgo de pseudo-curación",
+    "content": "La alantoína es ampliamente reconocida por su efecto calmante y queratolítico suave, siendo un pilar en el cuidado de pieles irritadas. Sin embargo, existe un riesgo clínico denominado 'pseudo-curación': la alantoína puede camuflar la irritación subyacente al reducir el eritema y suavizar la textura de la piel sin reparar realmente la disfunción de la barrera lipídica. Esto lleva a los pacientes a continuar utilizando activos irritantes (como retinoides o ácidos) pensando que la piel está sana, cuando en realidad la inflamación persiste a nivel celular. Esta falsa sensación de seguridad puede retrasar la detección de dermatitis de contacto o daño crónico. Es fundamental que los profesionales de la salud adviertan que la alantoína es un coadyuvante y no un sustituto de la reparación lipídica (ceramidas, ácidos grasos). En pieles con rosácea o dermatitis atópica, el uso exclusivo de calmantes sin una base reparadora adecuada puede conducir a una agravación del cuadro clínico por una falsa percepción de tolerancia.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/publications/dermatology-basics/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alantoína"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia-activos"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:41:19.573Z"
+  }
+]

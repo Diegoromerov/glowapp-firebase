@@ -1,0 +1,204 @@
+[
+  {
+    "chunk_id": "guia-unas-efecto-piezoelectrico-001",
+    "title": "Efecto piezoeléctrico en la lámina ungueal: estrés mecánico y adhesión",
+    "content": "La lámina ungueal no es un tejido inerte; posee propiedades físicas complejas, incluyendo una respuesta piezoeléctrica ante la carga mecánica. Cuando la uña es sometida a fuerzas de presión, como el uso de calzado ajustado o la técnica de limado con fresas de carburo, se genera una polarización eléctrica interna que altera la homeostasis de los enlaces de hidrógeno en la queratina. Este fenómeno puede comprometer la adhesión de sistemas fotopolimerizables, ya que la carga estática inducida interfiere con la humectación de los primers. Estudios en biomecánica ungueal, como los publicados en revistas de física aplicada a tejidos biológicos, sugieren que la acumulación de cargas triboeléctricas durante el limado excesivo debilita la interfase uña-producto, facilitando el levantamiento prematuro. Es fundamental que los profesionales comprendan que un limado de alta frecuencia no solo genera calor, sino que altera la estructura electroquímica de la superficie, reduciendo la eficacia de los agentes adhesivos y aumentando el riesgo de onicólisis mecánica por fatiga del material.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "limado excesivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biologia-ungueal"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:44.739Z"
+  },
+  {
+    "chunk_id": "guia-unas-hialoniquia-002",
+    "title": "Hialoniquia y transparencia patológica: cuando la lámina pierde opacidad",
+    "content": "La hialoniquia se define como una transparencia anormal de la lámina ungueal, la cual pierde su opacidad característica tornándose vítrea. A diferencia de la leuconiquia, este fenómeno indica una alteración en la organización de los corneocitos ungueales y el contenido de agua entre las capas de queratina. Clínicamente, puede ser un signo precoz de condiciones sistémicas que afectan la síntesis de proteínas o la hidratación profunda, incluyendo deficiencias de zinc o estados de hipoalbuminemia. En el entorno de GlowApp, es vital diferenciar la hialoniquia fisiológica transitoria de aquella persistente que sugiere una patología subyacente. La pérdida de opacidad altera la dispersión de la luz a través de la uña, lo cual puede enmascarar hematomas subungueales o cambios en el lecho vascular. La literatura médica, respaldada por bases de datos como PubMed, enfatiza que la hialoniquia no debe tratarse con agentes queratinizantes tópicos, sino mediante una evaluación sistémica para descartar procesos metabólicos o nutricionales que comprometan la integridad de la matriz.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "tratamiento cosmetico invasivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:44.739Z"
+  },
+  {
+    "chunk_id": "guia-unas-inhibicion-oxigeno-005",
+    "title": "Inhibición por oxígeno: fallo invisible en la polimerización",
+    "content": "La capa de inhibición por oxígeno es un fenómeno químico donde el oxígeno atmosférico reacciona con los radicales libres durante la fotopolimerización, impidiendo que el gel cure correctamente en la superficie. Si bien es útil para la adhesión entre capas, una capa de inhibición excesiva o mal gestionada indica una polimerización incompleta del monómero subyacente. Este residuo de monómero sin curar es un potente sensibilizante cutáneo que puede migrar hacia el lecho ungueal, provocando dermatitis alérgica de contacto a largo plazo. Según estándares de la American Academy of Dermatology, la exposición prolongada a monómeros residuales es una causa creciente de sensibilización en técnicos de uñas. Para mitigar este riesgo, es fundamental asegurar que la longitud de onda de la lámpara coincida exactamente con el fotoiniciador del gel y que el tiempo de exposición sea el adecuado para superar la barrera de oxígeno. La falta de control en este proceso no solo compromete la durabilidad del servicio, sino que pone en riesgo la salud inmunológica del cliente y del profesional.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros"
+      ],
+      "contraindications": [
+        "curado insuficiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-productos"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:44.739Z"
+  },
+  {
+    "chunk_id": "guia-unas-cavitacion-007",
+    "title": "Cavitación acústica y estrés mecánico en fresas de diamante",
+    "content": "El uso de fresas de diamante de alta velocidad genera no solo calor friccional, sino también fenómenos de cavitación acústica en los fluidos presentes en la superficie ungueal (restos de queratina humectada o residuos de productos). Estas microburbujas de vapor colapsan violentamente sobre la lámina, liberando energía mecánica que puede desprender capas de queratina de forma no controlada. Este proceso, a menudo ignorado en la formación estética básica, es una causa subestimada de onicólisis mecánica y adelgazamiento de la lámina ungueal. La combinación de vibración armónica y cavitación crea un microambiente de estrés que debilita la unión entre los corneocitos. Para minimizar este impacto, es esencial ajustar las revoluciones por minuto (RPM) según el estado de la uña y evitar el uso de agua o líquidos que faciliten la cavitación durante el fresado. El conocimiento de la física aplicada al fresado es fundamental para que el profesional de GlowApp pueda realizar una remoción segura, preservando la integridad de la barrera ungueal y evitando la aparición de surcos inducidos por el torno.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso incorrecto de torno"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-instrumentales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:44.739Z"
+  },
+  {
+    "chunk_id": "guia-unas-onicoclasia-009",
+    "title": "Onicoclasia por estrés mecánico y punto de fractura",
+    "content": "La onicoclasia, o fractura de la lámina ungueal, es el resultado final de un estrés mecánico acumulado que supera el límite de elasticidad del tejido. En uñas esculpidas, el punto de fractura es frecuentemente inducido por una distribución inadecuada de la carga en el arco de tensión. Cuando la longitud de la uña excede la capacidad estructural de soporte, cualquier impacto lateral genera una fuerza de cizallamiento que se concentra en la zona de transición entre el producto y la uña natural. Este estrés no solo fractura la lámina, sino que puede causar microtraumas en la matriz, manifestándose posteriormente como líneas de Beau o distrofias permanentes. La prevención de la onicoclasia requiere una comprensión profunda de la biomecánica de la uña: el grosor del producto debe ser proporcional a la longitud de la extensión para redistribuir las fuerzas de impacto. Los profesionales deben educar a las clientas sobre los límites biomecánicos de sus uñas, evitando el uso de herramientas metálicas que apliquen presión sobre el borde libre y asegurando que la arquitectura del esculpido respete la curvatura natural de la uña para minimizar el riesgo de fracturas traumáticas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud excesiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomecanica-ungueal"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:46:44.739Z"
+  }
+]

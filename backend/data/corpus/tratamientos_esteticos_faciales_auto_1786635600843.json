@@ -1,0 +1,128 @@
+[
+  {
+    "chunk_id": "bio-ingenieria-tejido-adiposo-001",
+    "title": "Bioingeniería del Tejido Adiposo: Transferencia de Grasa Estructural",
+    "content": "La transferencia de tejido adiposo autólogo, más allá de la simple voluminización, se ha consolidado como una herramienta de bioingeniería en dermatología estética. Utilizando la fracción vascular estromal (SVF), rica en células madre mesenquimales, se busca no solo corregir la pérdida de soporte óseo y graso, sino regenerar la matriz extracelular a través de la liberación sostenida de factores de crecimiento. Estudios publicados en PubMed sugieren que la supervivencia del injerto depende críticamente de la técnica de recolección (baja presión de aspiración) y el procesamiento (centrifugación controlada). La integración tisular se ve favorecida por la angiogénesis inducida por los adipocitos viables, lo que mejora la calidad cutánea y el grosor dérmico. Es fundamental diferenciar entre la lipotransferencia macroscópica y la técnica de nanofat para aplicaciones superficiales, donde el objetivo es la modulación de la pigmentación y la mejora de la textura cicatricial.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tejido adiposo autólogo"
+      ],
+      "contraindications": [
+        "trastornos de coagulación",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "medicina-regenerativa"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:39:44.298Z"
+  },
+  {
+    "chunk_id": "fotobiomodulacion-longitud-onda-002",
+    "title": "Fotobiomodulación: Sinergia de Longitudes de Onda 660nm y 830nm",
+    "content": "La fotobiomodulación (PBM) basada en la emisión de luz LED de baja intensidad utiliza la absorción de fotones por la citocromo c oxidasa mitocondrial para optimizar la producción de ATP. La combinación sinérgica de longitudes de onda en el espectro rojo (660nm) y cercano al infrarrojo (830nm) permite una activación celular profunda, afectando tanto a los queratinocitos epidérmicos como a los fibroblastos dérmicos. La evidencia clínica indica que esta modulación mitocondrial acelera la resolución de la inflamación post-procedimientos invasivos como el láser CO2 o los peelings químicos profundos. Al reducir el estrés oxidativo y modular la señalización inflamatoria, la PBM disminuye el tiempo de eritema y edema. Es esencial una dosimetría precisa, medida en J/cm², para evitar efectos inhibitorios por sobredosis de luz, un fenómeno descrito en modelos de fotobiología como la curva bifásica de Arndt-Schulz.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "fotosensibilidad",
+        "antecedentes de cáncer cutáneo en el área"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "recuperacion-post-procedimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:39:44.298Z"
+  },
+  {
+    "chunk_id": "neurocosmetica-recuperacion-004",
+    "title": "Neurocosmética: Péptidos de Acción Sináptica en la Recuperación",
+    "content": "La neurocosmética explora el eje piel-cerebro, donde los péptidos biomiméticos actúan como moduladores de la comunicación entre las terminaciones nerviosas dérmicas y los queratinocitos. Tras procedimientos estéticos invasivos, la sensibilización de las fibras nerviosas puede exacerbar el malestar y la inflamación neurogénica. El uso de péptidos que imitan la acción de los neurotransmisores inhibitorios ayuda a calmar la reactividad cutánea y acelera el proceso de reparación tisular. Estos activos no solo mejoran el confort del paciente, sino que reducen la liberación de mediadores inflamatorios que podrían comprometer la integridad de la barrera cutánea. La investigación actual, respaldada por estudios en dermatología molecular, sugiere que la modulación de los receptores sensoriales (TRPV1) es clave para manejar el eritema persistente. Esta nueva generación de activos está redefiniendo los protocolos post-procedimiento, pasando de una hidratación básica a una comunicación celular dirigida que optimiza el entorno biológico para la curación acelerada.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos biomiméticos"
+      ],
+      "contraindications": [
+        "alergias cutáneas conocidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "post-tratamiento"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:39:44.298Z"
+  }
+]

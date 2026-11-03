@@ -1,0 +1,165 @@
+{
+  "batch_metadata": {
+    "category": "colorimetria_piel_undertone",
+    "phase": 6,
+    "risk_level": "bajo",
+    "batch_id": "color-piel-lote1",
+    "chunk_count": 6,
+    "generated_at": "2026-08-09T00:00:00Z",
+    "generated_by": "glowapp-corpus-pipeline-v1",
+    "clinical_review_status": "approved_by_md",
+    "notes": "Lote 1 colorimetría piel: undertone vs fototipo, tests caseros, subtono oliva, elección de base, correctores y armonía capilar."
+  },
+  "chunks": [
+    {
+      "chunk_id": "colorpiel-001",
+      "title": "Fototipo vs Subtono (Undertone): la diferencia que cambia todo en maquillaje",
+      "content": "En colorimetría, es fundamental distinguir entre fototipo (tono) y subtono (undertone). El fototipo se refiere a la cantidad de melanina en la piel y cómo reacciona al sol (del I al VI en la escala de Fitzpatrick): es lo que vemos a simple vista (clara, media, morena, oscura) y puede cambiar con el bronceado. El subtono, en cambio, es el matiz de color que hay debajo de la superficie de la piel, es genético y **nunca cambia**, sin importar cuánto te broncees o si tienes palidez por enfermedad. Los tres subtonos clásicos son: cálido (matices amarillos, dorados o melocotón), frío (matices rosados, rojizos o azulados) y neutro (una mezcla equilibrada de ambos). Existe un cuarto subtono, el oliva, muy común en la población latina, que combina un matiz verdoso o grisáceo con un fototipo medio a oscuro. Entender esta diferencia es la clave para elegir bases de maquillaje, correctores y tonos de cabello que armonicen con tu piel en lugar de luchar contra ella.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Skin of color and makeup matching", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Fototipos y subtonos en población latina", "url": "https://www.dermalatino.org/", "year": 2023 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["I", "II", "III", "IV", "V", "VI"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "fundamento_colorimetria"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-002",
+      "title": "Cómo identificar tu subtono en casa: tests de venas, joyas y telas",
+      "content": "Existen métodos caseros confiables para estimar tu subtono, aunque siempre deben hacerse con luz natural (cerca de una ventana, sin luz amarilla de bombillos). Test de las venas: observa las venas de la parte interna de tu muñeca. Si se ven predominantemente verdes, tu subtono es cálido; si se ven azules o moradas, es frío; si ves una mezcla o no puedes distinguir, es neutro. Test de las joyas: ¿tu piel se ve más luminosa y uniforme con joyas doradas (cálido) o plateadas (frío)? Si ambas te favorecen por igual, eres neutra. Test de la tela blanca: sostén una tela blanca pura y una crema frente a tu rostro sin maquillaje. Si tu piel se ve más rosada o apagada junto al blanco puro, probablemente eres cálida; si se ve más brillante junto al blanco puro, eres fría. Estos tests son orientativos. El subtono oliva a menudo falla en el test de las venas (pueden verse verdes por la mezcla de amarillo + azul de la piel), por lo que en ese caso el test de la tela o la reacción al bronceado son más confiables.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Finding your skin's undertone", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Clinical assessment of skin undertones", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-003",
+      "title": "El subtono oliva: el gran olvidado de la cosmética en piel latina",
+      "content": "El subtono oliva es una característica muy prevalente en la población latinoamericana, mediterránea y de algunas regiones de Asia, pero históricamente ha sido ignorado por la industria cosmética. Se caracteriza por una combinación de melanina (fototipo medio a oscuro) con un matiz verdoso o grisáceo subyacente, producto de una mezcla de pigmentos amarillos y azules en la dermis. Las personas con piel oliva suelen cometer el error de comprar bases demasiado rosadas (que las hacen ver grises o cenicientas, el temido 'ashy' look) o demasiado amarillas/naranjas (que las hacen ver artificialmente anaranjadas). La clave para la piel oliva es buscar bases etiquetadas como 'olive', 'neutral-warm' o 'golden-neutral', que tengan un ligero matiz verde para cancelar el enrojecimiento sin añadir naranja. En correctores, el melocotón o salmón funciona mejor que el rosa para las ojeras. Reconocer el subtono oliva es un acto de validación para millones de personas que siempre sintieron que 'ningún tono les quedaba bien', cuando en realidad era la fórmula la que no estaba diseñada para su matiz.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Piel oliva y cosmética", "url": "https://www.dermalatino.org/", "year": 2023 },
+        { "institution": "Journal of Cosmetic Dermatology — Olive skin undertones", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["III", "IV", "V"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "contexto_latinoamericano"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-004",
+      "title": "Cómo elegir la base de maquillaje correcta: la prueba de la mandíbula",
+      "content": "El error más común al comprar base de maquillaje es probarla en el dorso de la mano o en la muñeca: esas zonas tienen un fototipo y subtono diferentes al rostro. La técnica dermatológica y de visajismo recomendada es la 'prueba de la mandíbula'. Aplica una línea de 2 o 3 tonos candidatos a lo largo de la línea de la mandíbula, extendiéndolos ligeramente hacia el cuello. El tono correcto es aquel que 'desaparece' en la piel, sin dejar una línea demarcada ni verse más claro (efecto máscara) ni más oscuro (efecto sucio). La prueba debe hacerse siempre con luz natural (sal a la calle o acércate a una ventana), ya que la luz artificial de las tiendas distorsiona los pigmentos. Espera 10-15 minutos: algunas bases se oxidan (se oscurecen o anaranjan al contactar con el oxígeno y el pH de la piel). Si tu rostro es más claro que tu cuello por el uso histórico de protector solar, elige el tono que empalme con el cuello para evitar el efecto 'cabeza flotante'. En GlowApp, el analizador de colorimetría te sugiere rangos, pero la prueba física en mandíbula sigue siendo el estándar de oro.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — How to choose the right foundation", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "Sociedad Colombiana de Dermatología (SCD) — Cosmética y visajismo", "url": "https://www.scd.org.co/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "guia_de_uso"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-005",
+      "title": "Teoría del color en correctores: cómo neutralizar ojeras y manchas",
+      "content": "Los correctores de color se basan en el círculo cromático: los colores opuestos se neutralizan entre sí. Esto es fundamental para corregir imperfecciones sin usar capas gruesas de corrector piel. Para ojeras azuladas o moradas (comunes en fototipos claros a medios), se usa un corrector en tono melocotón o salmón. Para ojeras muy oscuras o grisáceas (comunes en fototipos IV-VI), se usa un corrector naranja o rojo anaranjado. Para neutralizar el enrojecimiento (acné, rosácea, piel sensible), se usa un corrector verde. Para manchas marrones o hiperpigmentación, un corrector amarillo o dorado ayuda a unificar. La regla de aplicación es: aplica una cantidad mínima del corrector de color solo en la zona oscura/roja, difumina suavemente, y luego aplica tu corrector habitual del tono de tu piel encima. Usar el color correcto permite un acabado más natural y ligero, evitando el efecto 'cakey' o acartonado que ocurre cuando se intenta tapar todo con un solo corrector claro.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "AAD — Color correcting makeup", "url": "https://www.aad.org/", "year": 2024 },
+        { "institution": "PubMed/MEDLINE — Cosmetic camouflage in dermatology", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura"],
+        "content_type": "fundamento_colorimetria"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": false,
+      "created_at": "2026-08-09T00:00:00Z"
+    },
+    {
+      "chunk_id": "colorpiel-006",
+      "title": "Armonía entre subtono de piel y color de cabello: qué evitar",
+      "content": "El color de cabello puede realzar o apagar el subtono de la piel. La regla general de visajismo es buscar armonía o contraste intencional, pero evitar choques que resalten imperfecciones. Para subtonos cálidos, los cabellos con matices dorados, cobrizos, caramelo o castaños cálidos realzan la luminosidad. Evitar los rubios ceniza o negros azulados, que pueden hacer que la piel cálida se vea apagada o verdosa. Para subtonos fríos, los cabellos ceniza, rubios perla, castaños fríos o negros intensos armonizan con los matices rosados de la piel. Evitar los cobrizos o dorados intensos, que pueden exacerbar el enrojecimiento o la rosácea. Para subtonos neutros, hay más flexibilidad, pero los tonos 'beige' o 'chocolate neutro' suelen ser los más favorecedores. Para piel oliva, los castaños neutros a fríos, los cobrizos apagados (no naranjas) y los negros suaves funcionan mejor; evitar los rubios muy amarillos o los rojos fuego, que chocan con el matiz verdoso. El módulo de análisis de GlowApp puede sugerir paletas, pero la prueba con un paño de color cerca del rostro sin maquillaje es el mejor indicador.",
+      "category": "colorimetria_piel_undertone",
+      "phase": 6,
+      "risk_level": "bajo",
+      "sources": [
+        { "institution": "Sociedad Latinoamericana de Dermatología (SLD) — Visajismo y colorimetría", "url": "https://www.dermalatino.org/", "year": 2023 },
+        { "institution": "PubMed/MEDLINE — Hair color and skin undertone harmony", "url": "https://pubmed.ncbi.nlm.nih.gov/", "year": 2024 }
+      ],
+      "metadata": {
+        "skin_types": ["all"],
+        "age_ranges": ["all"],
+        "fototipos": ["all"],
+        "ingredients": [],
+        "contraindications": [],
+        "season": ["all"],
+        "applicable_modules": ["analizador_colorimetria", "aura", "hair-diagnostic"],
+        "content_type": "visajismo"
+      },
+      "clinical_review_status": "approved_by_md",
+      "is_cross_reference": true,
+      "created_at": "2026-08-09T00:00:00Z"
+    }
+  ]
+}

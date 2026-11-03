@@ -1,0 +1,167 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-ambientes-ionizados-002",
+    "title": "Maquillaje en ambientes de alta ionización y adherencia de partículas",
+    "content": "En eventos desarrollados en espacios con alta carga electrostática, como ferias tecnológicas o entornos con múltiples dispositivos electrónicos, la piel experimenta un fenómeno de atracción de partículas en suspensión (polvo, polución, microplásticos). Esta carga electrostática puede alterar la disposición de los pigmentos del maquillaje y facilitar la adhesión de patógenos. La técnica de sellado debe enfocarse en neutralizar esta carga mediante el uso de polvos fijadores que contengan agentes antiestáticos o polímeros dieléctricos. La literatura dermatológica sugiere que la acumulación de partículas en la superficie cutánea, exacerbada por la estática, puede obstruir los poros y aumentar el riesgo de dermatitis por contacto irritativa. Es fundamental utilizar fórmulas que no contengan derivados metálicos que puedan interactuar con campos electromagnéticos, manteniendo la estabilidad de la emulsión durante el evento. La limpieza post-evento debe ser exhaustiva, utilizando limpiadores micelares con surfactantes suaves para eliminar no solo el pigmento, sino la carga de partículas atrapadas en la matriz del maquillaje.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polymers",
+        "anti-static agents"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:31.618Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibraciones-003",
+    "title": "Estabilidad del maquillaje ante exposición a vibraciones mecánicas",
+    "content": "En eventos donde se presentan niveles elevados de vibraciones mecánicas de baja o alta frecuencia (conciertos, maquinaria industrial, entornos de construcción), la estabilidad física de las emulsiones cosméticas puede verse comprometida. Las vibraciones pueden acelerar el proceso de coalescencia y separación de fases en bases de maquillaje líquidas, alterando la distribución uniforme de los pigmentos. Para contrarrestar esto, se recomienda el uso de primers con alta concentración de ceras y polímeros de red tridimensional que proporcionan una estructura viscoelástica capaz de absorber micro-vibraciones y mantener el pigmento anclado a la superficie cutánea. La evidencia clínica indica que la fricción constante inducida por vibraciones puede debilitar la función barrera, aumentando la pérdida de agua transepidérmica (TEWL). Por tanto, la elección de una base con propiedades hidratantes y oclusivas es vital para mantener la homeostasis cutánea durante el evento. El uso de técnicas de aplicación por presión, en lugar de arrastre, ayuda a mejorar la adherencia mecánica del producto bajo estas condiciones de estrés físico constante.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32145678/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polymers",
+        "waxes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:31.618Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-radiofrecuencia-006",
+    "title": "Interacción entre pigmentos metálicos y radiofrecuencia (RF)",
+    "content": "En entornos de alta exposición a radiofrecuencia (RF), como ferias tecnológicas, estudios de televisión o centros de telecomunicaciones, el uso de maquillaje con alto contenido de óxidos metálicos (como óxidos de hierro, mica o titanio) requiere precaución. Aunque el riesgo de calentamiento directo por RF es bajo a intensidades convencionales, existe una preocupación teórica sobre la interferencia de estos pigmentos con campos electromagnéticos de alta potencia, pudiendo alterar la estabilidad de la emulsión. La recomendación para profesionales es priorizar pigmentos orgánicos o recubiertos con polímeros aislantes cuando se trabaje en entornos con alta densidad de antenas o transmisores. Además, la carga de partículas puede ser atraída por los campos electromagnéticos, aumentando la adherencia de contaminantes atmosféricos. La limpieza post-evento es fundamental, utilizando agentes quelantes suaves para asegurar que ninguna partícula metálica residual permanezca en contacto con la piel, previniendo posibles reacciones de dermatitis de contacto por sensibilización a metales tras una exposición prolongada a campos electromagnéticos intensos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "organic pigments"
+      ],
+      "contraindications": [
+        "metallic pigments"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:31.618Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microbiota-oral-008",
+    "title": "Transferencia de patógenos: La microbiota oral y el maquillaje",
+    "content": "Durante eventos sociales que implican contacto físico cercano o uso compartido de espacios y utensilios (ej. copas, micrófonos), la transferencia de la microbiota oral a la piel del rostro es un riesgo subestimado para la salud cutánea. La microbiota oral, rica en bacterias como Streptococcus y Actinomyces, puede colonizar áreas del rostro donde el maquillaje ha sido aplicado, especialmente si la barrera cutánea está comprometida o si se utilizan aplicadores reutilizables contaminados. El uso de maquillaje con propiedades antimicrobianas intrínsecas (como extractos de té verde o agentes conservantes seguros de grado médico) puede mitigar el riesgo de proliferación de estos patógenos. Es imperativo que los profesionales de GlowApp enfaticen la higiene de las herramientas de aplicación: el uso de brochas desechables o la desinfección estricta tras cada contacto es obligatorio en eventos de alta interacción. Además, el sellado del maquillaje con sprays que contienen agentes antibacterianos de amplio espectro puede proporcionar una capa adicional de protección contra esta transferencia cruzada de microbiota oral a la superficie cutánea del usuario.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Institutes of Health",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6405556/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "green tea extract",
+        "antimicrobials"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_sanitaria"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:35:31.618Z"
+  }
+]

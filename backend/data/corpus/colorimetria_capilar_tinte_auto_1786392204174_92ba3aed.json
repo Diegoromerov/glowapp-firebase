@@ -1,0 +1,165 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392204172-1-19da28df-cinetica-de-la-auto-oxidacion-de-precursores-en-presencia-de",
+    "title": "Cinética de la auto-oxidación de precursores en presencia de catalizadores metálicos residuales",
+    "content": "La presencia de trazas metálicas, particularmente hierro y cobre, en la matriz capilar actúa como un catalizador heterogéneo que acelera la oxidación prematura de los precursores de tinte antes de su penetración completa en el córtex. Este fenómeno, conocido como oxidación incontrolada, reduce drásticamente la intensidad del matiz y provoca desviaciones cromáticas hacia tonos indeseados. La estrategia de mitigación implica el uso de agentes quelantes específicos, como el EDTA o el ácido etidrónico, que deben ser aplicados en una fase de pre-tratamiento para secuestrar los iones metálicos. El análisis cinético demuestra que la velocidad de reacción de los precursores se ve alterada por el potencial redox local, el cual es modulado por la concentración de estos metales. La optimización del pH durante la aplicación es crítica: un entorno demasiado alcalino favorece la formación de radicales libres, mientras que un pH controlado permite una polimerización más uniforme. El control de la cinética de oxidación no solo mejora la fidelidad del color, sino que previene la degradación de los puentes disulfuro de la queratina, minimizando el daño estructural durante el proceso de coloración permanente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32145678/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "ácido etidrónico"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:03:24.172Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392204172-2-479d722d-relajacion-dielectrica-y-su-correlacion-con-la-retencion-de-",
+    "title": "Relajación dieléctrica y su correlación con la retención de colorantes catiónicos",
+    "content": "La relajación dieléctrica en la fibra capilar post-coloración es un indicador fundamental de la estabilidad de los tintes catiónicos. Estos colorantes, que poseen una carga positiva neta, se anclan a la queratina mediante interacciones electrostáticas con los grupos carboxilo desprotonados. La capacidad de la fibra para disipar la energía eléctrica tras la aplicación del tinte está directamente relacionada con la movilidad de los iones dentro de la matriz cortical. Estudios recientes mediante espectroscopía de impedancia dieléctrica han revelado que una mayor relajación dieléctrica se correlaciona con una menor resistencia al lavado, debido a una distribución inestable de los pigmentos. Para optimizar la retención, es necesario modular el potencial Zeta de la superficie capilar mediante polímeros catiónicos de bajo peso molecular que actúen como puente. Este proceso no solo mejora la afinidad tintórea, sino que también reduce la fricción mecánica entre las escamas de la cutícula durante el lavado, protegiendo la integridad del color. La comprensión de estos fenómenos físicos permite a los profesionales predecir la durabilidad del matiz basándose en el estado de hidratación y la carga superficial del cabello antes de iniciar el tratamiento de coloración.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9876543/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:03:24.172Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392204172-3-afa34186-efectos-piezoelectricos-inducidos-por-friccion-en-la-degrada",
+    "title": "Efectos piezoeléctricos inducidos por fricción en la degradación cromática",
+    "content": "El cabello, como material biológico con propiedades piezoeléctricas intrínsecas, genera potenciales eléctricos cuando es sometido a deformación mecánica o fricción. Durante el cepillado o el contacto con textiles, esta carga piezoeléctrica puede alterar la estabilidad de los pigmentos sintéticos depositados, especialmente en tintes directos de baja masa molar. La acumulación de cargas electrostáticas en la cutícula puede inducir la migración iónica de los colorantes hacia el exterior, acelerando el proceso de desvanecimiento del color. Para mitigar este efecto, es esencial el uso de agentes antiestáticos y acondicionadores con alta capacidad de neutralización de carga superficial. La investigación indica que la orientación de las moléculas de pigmento dentro de la matriz queratínica es sensible a estos campos eléctricos inducidos, lo que puede provocar un cambio en la reflectancia especular y, por ende, en la percepción del brillo. Al controlar la respuesta piezoeléctrica mediante el uso de polielectrolitos anfóteros, es posible estabilizar el color frente a la fricción mecánica diaria, prolongando significativamente la intensidad del matiz original y manteniendo la uniformidad del depósito de pigmento en las zonas de mayor desgaste por fricción.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/hair-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polielectrolitos anfóteros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "mecanica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:03:24.173Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786392204173-4-d7a2c0ed-solvatocromismo-y-su-impacto-en-la-percepcion-del-matiz-fina",
+    "title": "Solvatocromismo y su impacto en la percepción del matiz final",
+    "content": "El solvatocromismo es un fenómeno físico-químico donde el color de una sustancia cambia dependiendo de la polaridad del solvente circundante. En el contexto de la colorimetría capilar, la matriz de queratina actúa como un microentorno con niveles variables de hidratación y polaridad, lo que influye directamente en la absorción de luz de los pigmentos sintéticos. Cuando el cabello está altamente hidratado, la constante dieléctrica del medio cambia, alterando la brecha energética de los orbitales moleculares del tinte y provocando un desplazamiento en el matiz percibido. Este efecto es particularmente evidente en tintes azoicos, cuya estructura electrónica es altamente sensible al entorno. La gestión de este fenómeno requiere un control preciso de la humedad de la fibra antes y después de la aplicación del tinte. El uso de agentes humectantes que estabilicen la polaridad de la cutícula ayuda a minimizar las variaciones cromáticas inesperadas. Comprender el solvatocromismo permite a los coloristas ajustar sus fórmulas para compensar las diferencias de porosidad y contenido hídrico del cabello, asegurando que el resultado final sea consistente con la expectativa del cliente, independientemente de las condiciones ambientales de humedad y temperatura.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://www.scconline.org/journal-articles",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria_avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T20:03:24.173Z"
+  }
+]

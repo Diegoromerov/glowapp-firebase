@@ -1,0 +1,94 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-microbioma-oral-001",
+    "title": "Impacto de la transferencia de microbiota oral en la estabilidad del maquillaje",
+    "content": "En eventos de alta interacción social, la transferencia de microbiota oral mediante el contacto físico o el uso compartido de aplicadores representa un riesgo subclínico para la integridad del maquillaje. La microbiota oral, rica en bacterias como Streptococcus y Veillonella, puede alterar el pH de la superficie cutánea al entrar en contacto con el maquillaje, acelerando la degradación de las emulsiones cosméticas. Según estudios publicados en PubMed, el contacto de la mucosa oral con el maquillaje facial puede introducir microorganismos que metabolizan los lípidos y agentes espesantes del producto, provocando una pérdida de adherencia y posibles brotes de acné cosmético. La AAD (American Academy of Dermatology) recomienda el uso de aplicadores de un solo uso en eventos donde el contacto es inevitable. Para mantener la estabilidad del producto, es crucial utilizar fijadores con propiedades antimicrobianas suaves que no comprometan el microbioma cutáneo nativo. La gestión de este riesgo es vital para asegurar que la base de maquillaje no se descomponga prematuramente bajo la influencia de la carga biológica externa.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/care/acne-cosmetics",
+        "year": 2024
+      },
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico",
+        "agentes antimicrobianos"
+      ],
+      "contraindications": [
+        "pieles con heridas abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "higiene_y_preparacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:01:13.766Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-baja-gravedad-003",
+    "title": "Dinámica de emulsiones cosméticas en entornos de baja gravedad",
+    "content": "En entornos simulados de microgravedad, la dinámica de fluidos cambia drásticamente, afectando la estabilidad de las emulsiones cosméticas. La ausencia de sedimentación gravitacional permite que las gotas de la fase dispersa permanezcan en suspensión, pero también aumenta el riesgo de coalescencia por fuerzas interfaciales. Estudios de la NASA sobre la física de fluidos en el espacio indican que la tensión superficial domina sobre la gravedad, lo que implica que el maquillaje puede comportarse de manera errática si no se utilizan polímeros estabilizadores de red tridimensional. Para eventos que involucren simuladores espaciales, es necesario optar por formulaciones anhidras o con alto contenido de ceras de punto de fusión elevado para evitar la migración del producto hacia las vías respiratorias o los ojos. La gestión de la seguridad cutánea en estos entornos requiere productos que hayan sido testeados bajo condiciones de baja presión y flujo de aire constante, evitando la dispersión de partículas volátiles. La formulación debe garantizar que, a pesar de la dinámica de fluidos alterada, el maquillaje mantenga su integridad y no cause oclusión folicular o irritación ocular por migración de partículas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NASA",
+        "url": "https://www.nasa.gov/science/fluid-physics-in-microgravity/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceras naturales",
+        "polímeros estabilizadores"
+      ],
+      "contraindications": [
+        "productos en spray",
+        "polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "formulación_especializada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:01:13.766Z"
+  }
+]

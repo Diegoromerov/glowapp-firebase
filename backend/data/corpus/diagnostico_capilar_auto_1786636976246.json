@@ -1,0 +1,80 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-iontophoresis-001",
+    "title": "Iontoforesis como herramienta de diagnóstico en la permeabilidad folicular",
+    "content": "La iontoforesis, tradicionalmente utilizada para la administración transdérmica de fármacos, se está posicionando como una técnica diagnóstica emergente para evaluar la integridad de la barrera del ostium folicular. Al aplicar una corriente galvánica de baja intensidad, es posible medir la resistencia eléctrica del cuero cabelludo, la cual varía significativamente en presencia de patologías como la dermatitis seborreica o la alopecia androgenética. Una disminución en la impedancia eléctrica sugiere una disrupción de la función barrera, lo que correlaciona con una mayor susceptibilidad a la penetración de alérgenos y contaminantes ambientales. Estudios publicados en el Journal of Investigative Dermatology indican que la conductancia iónica es un biomarcador preciso para evaluar el estado de hidratación y la salud del estrato córneo perinfundibular. Esta técnica permite al clínico de GlowApp cuantificar de manera objetiva la 'permeabilidad' del cuero cabelludo antes de prescribir tratamientos tópicos, optimizando la biodisponibilidad de los activos. La monitorización de estos valores permite ajustar las concentraciones de principios activos, evitando la irritación en pacientes con barreras comprometidas y mejorando la adherencia al tratamiento al reducir efectos secundarios adversos por absorción sistémica no deseada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02012-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "dispositivos cardiacos implantados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:02:35.811Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezoelectrico-002",
+    "title": "Respuesta piezoeléctrica de la vaina radicular como biomarcador biomecánico",
+    "content": "La vaina radicular externa (VRE) del folículo piloso exhibe propiedades piezoeléctricas debido a su alta concentración de queratinas organizadas. Estas propiedades permiten que el folículo responda a estímulos mecánicos mediante la generación de señales eléctricas que modulan el comportamiento de las células madre del 'bulge'. En el diagnóstico capilar, la pérdida de esta respuesta piezoeléctrica es un indicador temprano de miniaturización y fragilidad estructural. Investigaciones en PubMed sugieren que la capacidad del folículo para 'sentir' y responder a la tensión física está intrínsecamente ligada a la expresión de genes de diferenciación y al mantenimiento del ciclo anágeno. Evaluar la rigidez de la VRE mediante técnicas de elastografía de alta frecuencia permite detectar cambios sutiles antes de que la caída sea clínicamente evidente. Para el equipo de GlowApp, comprender esta mecanotransducción es crucial: el estrés mecánico crónico derivado de peinados tensos o tracción inadecuada no solo causa daño físico, sino que altera la señalización eléctrica necesaria para la regeneración folicular, promoviendo una senescencia prematura. Este enfoque permite identificar pacientes en riesgo de alopecia por tracción antes de que ocurra la fibrosis irreversible del nicho folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomarcadores-biomecanicos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:02:35.811Z"
+  }
+]

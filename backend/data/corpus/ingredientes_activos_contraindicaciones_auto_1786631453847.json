@@ -1,0 +1,394 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Uso de extractos de regaliz (Glicirricina) y el riesgo de pseudoaldosteronismo tópico",
+    "content": "El extracto de regaliz (Glycyrrhiza glabra) es ampliamente utilizado en cosmética por sus propiedades despigmentantes y antiinflamatorias, atribuidas principalmente a la glabridina y el ácido glicirrícico. Sin embargo, el ácido glicirrícico es un potente inhibidor de la enzima 11β-hidroxiesteroide deshidrogenasa tipo 2. En aplicaciones tópicas extensas o bajo oclusión, existe un riesgo documentado de absorción sistémica que puede derivar en un síndrome de pseudoaldosteronismo. Este cuadro clínico se caracteriza por una supresión del sistema renina-angiotensina-aldosterona, provocando hipertensión arterial, hipopotasemia y retención de líquidos. Aunque la concentración en productos cosméticos suele ser baja, la combinación con potenciadores de penetración (como el DMI) o su uso en pieles con barrera comprometida aumenta el riesgo. La evidencia sugiere precaución en pacientes con hipertensión preexistente o aquellos bajo tratamiento con diuréticos, recomendando limitar su uso a áreas localizadas y no exceder concentraciones superiores al 2% en formulaciones de uso diario. La monitorización de la presión arterial es crucial en pacientes que realizan tratamientos despigmentantes prolongados con este activo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22452504/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido glicirrícico",
+        "extracto de regaliz"
+      ],
+      "contraindications": [
+        "hipertensión arterial",
+        "insuficiencia renal"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Ácido kójico y la dermatitis de contacto por inestabilidad oxidativa",
+    "content": "El ácido kójico es un agente quelante derivado de hongos, muy apreciado por su capacidad para inhibir la tirosinasa. No obstante, su estabilidad química es un desafío constante en formulaciones cosméticas. Debido a su sensibilidad a la luz, al calor y al oxígeno, el ácido kójico tiende a oxidarse, formando subproductos que actúan como alérgenos de contacto. Estudios clínicos han demostrado que la dermatitis alérgica de contacto por ácido kójico es más frecuente de lo que se reporta, a menudo manifestándose como eritema, prurito y descamación en las zonas de aplicación (especialmente en rostro y manos). La oxidación no solo reduce su eficacia, sino que altera su perfil de seguridad, convirtiéndolo en un sensibilizante potente. Para minimizar este riesgo, es imperativo que los productos formulados con ácido kójico incluyan estabilizadores como el metabisulfito de sodio o el ácido ascórbico, y se envasen en recipientes opacos que minimicen la exposición al aire. Los pacientes con antecedentes de dermatitis atópica deben realizar una prueba de parche (patch test) antes de integrar este ingrediente en su rutina, especialmente si el producto presenta una coloración amarillenta o amarronada, signo inequívoco de degradación.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(10)00778-4/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido kójico"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "piel hipersensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-003",
+    "title": "El riesgo de la 'exfoliación en capas' (Layering) y la desnaturalización proteica",
+    "content": "La tendencia de combinar múltiples ácidos (AHAs, BHAs, PHAs) en una sola rutina, conocida popularmente como 'layering', representa un riesgo significativo para la integridad de la barrera cutánea. La aplicación secuencial de ácidos con diferentes mecanismos de acción puede inducir una desnaturalización proteica no controlada en los corneocitos, excediendo la capacidad de reparación epidérmica. Estudios dermatológicos indican que la sobre-exfoliación química altera el pH del manto ácido, facilitando la proliferación de microorganismos oportunistas y una pérdida transepidérmica de agua (TEWL) severa. El riesgo aumenta drásticamente cuando se combinan exfoliantes químicos con retinoides en la misma sesión, ya que los retinoides aumentan el recambio celular, dejando una piel 'joven' y vulnerable expuesta a la agresión de los ácidos. Las manifestaciones clínicas incluyen eritema persistente, sensación de ardor, tirantez y un aspecto de piel 'acartonada'. La recomendación clínica es evitar la combinación de activos exfoliantes potentes en la misma rutina, priorizando la alternancia de días (cycling) y asegurando siempre un intervalo de tiempo suficiente para la recuperación lipídica. Es fundamental educar al usuario sobre la diferencia entre una exfoliación efectiva y el daño mecánico-químico por exceso de uso.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/routine/how-to-safely-exfoliate",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido glicólico",
+        "ácido salicílico",
+        "retinoides"
+      ],
+      "contraindications": [
+        "piel con barrera comprometida",
+        "rosácea"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_rutina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Imidazolidinyl Urea y Diazolidinyl Urea: Liberadores de formaldehído ocultos",
+    "content": "La Imidazolidinyl Urea y la Diazolidinyl Urea son conservantes ampliamente utilizados en cosmética debido a su amplio espectro contra bacterias grampositivas y gramnegativas. Sin embargo, su mecanismo de acción se basa en la liberación lenta de formaldehído, un conocido sensibilizante y carcinógeno en concentraciones elevadas. Aunque están permitidos en concentraciones seguras, el riesgo radica en la dermatitis de contacto alérgica, que puede desarrollarse incluso con exposiciones intermitentes. Muchos usuarios con piel sensible o dermatitis atópica experimentan brotes recurrentes sin identificar el origen, al no reconocer estos compuestos como liberadores de formaldehído en la lista de ingredientes (INCI). La sensibilización al formaldehído es una condición permanente; una vez que el sistema inmunológico desarrolla una respuesta, cualquier exposición futura, incluso a niveles traza, puede desencadenar una reacción de dermatitis de contacto severa. Se recomienda a los usuarios con antecedentes de alergias cutáneas evitar productos que contengan estos ingredientes, buscando alternativas con sistemas de conservación más modernos y menos alergénicos, como el fenoxietanol o los ácidos orgánicos (benzoico, sórbico), siempre que el pH del producto lo permita. La transparencia en el etiquetado es vital para la seguridad del paciente dermatológico.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Contact Dermatitis Society",
+        "url": "https://www.contactderm.org/i4a/pages/index.cfm?pageid=3485",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Imidazolidinyl Urea",
+        "Diazolidinyl Urea"
+      ],
+      "contraindications": [
+        "alergia al formaldehído",
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_clinica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-005",
+    "title": "Polisorbato 80 y la disrupción de la barrera en pieles con rosácea",
+    "content": "El polisorbato 80 es un tensioactivo no iónico y emulsionante utilizado frecuentemente para mejorar la textura de sueros y cremas. Aunque se considera seguro en la mayoría de las pieles, en pacientes con rosácea o dermatitis seborreica, su presencia puede resultar problemática. El polisorbato 80 actúa alterando la permeabilidad de la membrana lipídica, facilitando la penetración de otros ingredientes en la fórmula. En una piel con una barrera cutánea sana, esto es beneficioso, pero en pieles con rosácea, esta 'permeabilidad aumentada' permite que activos potencialmente irritantes alcancen las terminaciones nerviosas y los vasos sanguíneos dilatados de la dermis papilar, exacerbando la inflamación y el eritema. Además, se ha observado que ciertos tensioactivos pueden favorecer la proliferación del ácaro Demodex folliculorum, cuya sobrepoblación está estrechamente vinculada a la patogénesis de la rosácea papulopustulosa. Por lo tanto, en pacientes con rosácea activa o piel altamente reactiva, es aconsejable evitar formulaciones complejas que contengan concentraciones altas de polisorbato 80, optando por vehículos más simples, minimalistas y libres de emulsionantes agresivos que puedan comprometer aún más la homeostasis cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/rosacea-management-update/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "rosacea",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polisorbato 80"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis seborreica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Ácido ascórbico y la inestabilidad por metales traza en el agua",
+    "content": "La Vitamina C (ácido L-ascórbico) es un antioxidante potente, pero su estabilidad es extremadamente precaria. Un factor a menudo ignorado es la presencia de metales traza (como hierro o cobre) en el agua utilizada en la formulación o incluso en los residuos de agua del grifo si el producto se aplica sobre la piel húmeda. Estos metales catalizan la oxidación del ácido ascórbico a ácido dehidroascórbico mediante una reacción de Fenton, lo que no solo degrada el activo, sino que genera radicales libres en la superficie de la piel. En lugar de ofrecer protección antioxidante, un producto de Vitamina C oxidado puede generar un estrés oxidativo adicional, provocando eritema y sensibilización. Para asegurar la eficacia, es fundamental que las formulaciones contengan agentes quelantes (como el EDTA disódico o el ácido fítico) que secuestren estos metales. Asimismo, se recomienda aplicar el suero de Vitamina C sobre la piel perfectamente seca para evitar la interacción con minerales presentes en el agua residual del lavado facial. Si el suero ha cambiado su color original (de transparente a naranja o marrón), debe descartarse inmediatamente, ya que la eficacia ha sido comprometida y el riesgo de irritación ha aumentado exponencialmente.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11207686/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido L-ascórbico",
+        "EDTA"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_practica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "El riesgo de los 'Bio-fermentos' y la proliferación microbiana",
+    "content": "Los ingredientes obtenidos mediante bio-fermentación (como el galactomyces, bifida ferment lysate o lactobacillus ferment) están en auge por sus supuestos beneficios sobre el microbioma cutáneo. Sin embargo, estos ingredientes son, por definición, sustratos orgánicos ricos en nutrientes. Si el sistema conservante del producto final no es robusto o si el envase permite la entrada de aire y humedad (como en tarros de boca ancha), existe un riesgo latente de contaminación microbiana secundaria. A diferencia de los ingredientes sintéticos, los bio-fermentos pueden alterar su composición si las bacterias o levaduras presentes en el ambiente colonizan el producto. Esto puede llevar a la aplicación de una carga bacteriana significativa sobre una piel que, a menudo, ya presenta una barrera comprometida o acné. Se han reportado casos de foliculitis bacteriana inducida por el uso de productos 'naturales' mal conservados. La recomendación es priorizar productos de bio-fermentos en envases airless o monodosis, y verificar que el producto incluya sistemas conservantes efectivos. Si el producto presenta un olor agrio, cambios en la viscosidad o una separación de fases inusual, debe desecharse, pues el riesgo de infección cutánea supera cualquier beneficio potencial de estos activos.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ics.12782",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "galactomyces",
+        "bifida ferment lysate"
+      ],
+      "contraindications": [
+        "acné activo",
+        "foliculitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_clinica"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "La paradoja de la glicerina en entornos de baja humedad",
+    "content": "La glicerina es un humectante clásico, valorado por su capacidad para atraer agua hacia el estrato córneo. No obstante, en condiciones de humedad relativa extremadamente baja (inferior al 30-40%, común en aviones o climas desérticos/montañosos), la glicerina puede presentar un efecto paradójico. Si el aire es más seco que la piel, la glicerina puede atraer el agua desde las capas profundas de la epidermis (o incluso de la dermis) hacia la superficie cutánea, donde se pierde por evaporación. Este fenómeno de deshidratación transepidérmica inducida puede dejar la piel con una sensación de tirantez y sequedad severa. Para mitigar este riesgo, la glicerina siempre debe ir acompañada de agentes oclusivos (como ceramidas, escualano o mantecas) que sellen la humedad y eviten que el humectante 'robe' agua de las capas internas. Es un error común pensar que una crema con alta carga de humectantes es suficiente en cualquier clima; el balance entre humectación y oclusión es la clave para la salud de la barrera cutánea. Usuarios que trabajan en ambientes climatizados artificialmente deben ajustar su rutina, optando por texturas más untuosas que contengan lípidos reparadores junto a la glicerina.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Drugs in Dermatology",
+        "url": "https://jddonline.com/articles/the-science-of-moisturizers/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_practica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-009",
+    "title": "El riesgo de la Niacinamida al 10%+ en pieles con rosácea",
+    "content": "La niacinamida (Vitamina B3) es un ingrediente versátil, pero la tendencia actual de formular sueros con concentraciones superiores al 10% es cuestionable desde una perspectiva clínica. Si bien la evidencia respalda la eficacia de la niacinamida entre el 2% y el 5% para mejorar la función barrera y reducir el sebo, las concentraciones de dos dígitos no han demostrado beneficios adicionales significativos en la mayoría de los estudios clínicos. Por el contrario, concentraciones elevadas aumentan el riesgo de irritación, eritema y picor, especialmente en pieles con rosácea o dermatitis atópica. La niacinamida de alta pureza es esencial; si contiene trazas de ácido nicotínico (un subproducto de degradación), este puede causar un rubor facial inmediato (flushing) por vasodilatación. En pieles con rosácea, este efecto de vasodilatación inducida por la niacinamida puede empeorar el cuadro inflamatorio crónico. Se recomienda a los usuarios con pieles reactivas optar por formulaciones que contengan niacinamida en el rango del 2-5%, asegurando que el pH esté equilibrado y que el producto provenga de laboratorios que garanticen la ausencia de ácido nicotínico libre. Más no siempre es mejor en dermatología cosmética.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/niacinamide-in-dermatology/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "rosácea",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_clinica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:30:34.486Z"
+  }
+]

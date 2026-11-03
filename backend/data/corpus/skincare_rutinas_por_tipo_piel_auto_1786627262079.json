@@ -1,0 +1,181 @@
+[
+  {
+    "chunk_id": "epigenetica-y-estres-oxidativo-001",
+    "title": "Modulación epigenética mediante la dieta y el exposoma: Implicaciones en la expresión de genes de barrera",
+    "content": "La epigenética cutánea estudia cómo factores ambientales, incluyendo la dieta, la radiación UV y la polución, modifican la expresión génica sin alterar la secuencia del ADN. En GlowApp, es vital entender que la metilación del ADN y las modificaciones de histonas regulan la producción de filagrina y ceramidas. Estudios publicados en el Journal of Investigative Dermatology sugieren que la suplementación con polifenoles y ácidos grasos omega-3 puede revertir parcial o totalmente la metilación aberrante inducida por el estrés oxidativo crónico. Esta intervención no solo mejora la integridad de la barrera cutánea, sino que también influye en la respuesta inflamatoria a largo plazo. La implementación de una rutina que incluya activos con capacidad moduladora epigenética, como ciertos fitonutrientes, permite una resiliencia superior ante el exposoma urbano, minimizando el daño estructural incluso antes de que sea visible clínicamente. Es fundamental asesorar al usuario sobre la importancia de la constancia, ya que los cambios epigenéticos requieren ciclos de renovación celular completos para consolidarse en el estrato córneo.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02456-7/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "omega-3",
+        "polifenoles",
+        "resveratrol"
+      ],
+      "contraindications": [
+        "alergias alimentarias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:20:43.402Z"
+  },
+  {
+    "chunk_id": "micro-arn-regulación-cutánea-002",
+    "title": "MicroARNs en la rutina tópica: regulación de la homeostasis epidérmica",
+    "content": "Los microARNs (miRNAs) son pequeñas moléculas de ARN no codificante que actúan como reguladores post-transcripcionales de la expresión génica. En dermatología, se ha identificado que ciertos miRNAs, como el miR-203, son fundamentales para la diferenciación de los queratinocitos. La investigación actual, accesible a través de PubMed, indica que la aplicación tópica de compuestos que modulan la vía de señalización de estos miRNAs puede mejorar la calidad de la barrera en pieles con disfunción crónica. Al integrar ingredientes que favorecen la expresión de estos reguladores, podemos optimizar la velocidad de recambio celular y la diferenciación epidérmica, reduciendo la incidencia de xerosis. Este enfoque trasciende la hidratación superficial, atacando la causa molecular de la desorganización de la barrera. La clave en GlowApp es identificar qué perfiles de usuario se benefician más de este abordaje: principalmente aquellos con condiciones inflamatorias crónicas donde la señalización celular está comprometida. La personalización mediante el análisis del historial de respuesta a activos es crucial para evitar efectos adversos por sobreestimulación.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "sensible",
+        "madura"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos-señal",
+        "extractos-botánicos-específicos"
+      ],
+      "contraindications": [
+        "dermatitis-aguda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "optimizacion-rutina"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:20:43.402Z"
+  },
+  {
+    "chunk_id": "canales-trp-reactividad-003",
+    "title": "Canales TRP: Termorreceptores y su rol en la reactividad cutánea",
+    "content": "Los canales TRP (Transient Receptor Potential) actúan como sensores críticos de temperatura, dolor y prurito en la epidermis. En pieles con rosácea o dermatitis atópica, la sobreexpresión o hiperactividad de los canales TRPV1 y TRPM8 es responsable de la sensación de ardor y enrojecimiento exacerbado por estímulos ambientales. La literatura clínica indica que la modulación de estos receptores mediante activos específicos, como extractos de regaliz o moléculas que reducen el potencial de membrana de las fibras nerviosas sensoriales, es una estrategia efectiva para controlar la reactividad. En el contexto de Bogotá, donde las fluctuaciones térmicas y la exposición a radiación UV son constantes, el manejo de estos receptores es vital. Una rutina clínica no solo debe buscar hidratar, sino calmar el sistema neuroinmunológico. El uso de limpiadores con pH neutro es fundamental, ya que la acidificación extrema puede activar ciertos canales TRP, desencadenando una respuesta inflamatoria inmediata. La educación al usuario sobre evitar cambios bruscos de temperatura y el uso de productos termorreguladores es la piedra angular de esta estrategia.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/rosacea",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "regaliz",
+        "bisabolol",
+        "niacinamida"
+      ],
+      "contraindications": [
+        "exfoliantes-físicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo-reactividad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:20:43.402Z"
+  },
+  {
+    "chunk_id": "biomecanica-facial-laxitud-007",
+    "title": "Biomecánica dérmica: Impacto del masaje facial en la arquitectura de la matriz",
+    "content": "El masaje facial no es solo un ritual de bienestar; tiene efectos biomecánicos medibles en la dermis y el tejido subcutáneo. Estudios recientes sugieren que la aplicación de fuerzas mecánicas controladas puede estimular la actividad de los fibroblastos y la síntesis de colágeno, fenómeno conocido como mecanotransducción. En pieles con laxitud incipiente, la integración de técnicas de drenaje linfático y masaje de tejido profundo ayuda a reducir el edema facial y mejorar la oxigenación dérmica. Sin embargo, este enfoque debe ser supervisado: un masaje incorrecto o excesivo puede causar dermatitis por fricción o agravar la rosácea al aumentar la microcirculación de forma descontrolada. En GlowApp, enfatizamos que el masaje debe realizarse siempre con una base lubricante (emolientes no comedogénicos) para minimizar el estrés tangencial. La combinación de esta estimulación mecánica con activos tópicos que fortalecen la matriz extracelular, como péptidos de cobre o retinoides, potencia los resultados clínicos. Es vital personalizar la técnica según el tipo de piel: movimientos suaves y breves para pieles sensibles, y técnicas más estructurales para pieles maduras sin reactividad vascular.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/Abstract/2024/05000/Facial_Massage_and_Dermal_Elasticity.12.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura",
+        "flacidez"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos-cobre",
+        "aceites-biomimeticos"
+      ],
+      "contraindications": [
+        "rosacea-activa",
+        "acne-inflamatorio"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnicas-complementarias"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:20:43.402Z"
+  }
+]

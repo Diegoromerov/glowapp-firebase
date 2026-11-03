@@ -1,0 +1,369 @@
+[
+  {
+    "chunk_id": "diag-capilar-glicacion-001",
+    "title": "Impacto de los Productos de Glicación Avanzada (AGEs) en la Matriz Folicular",
+    "content": "La glicación no enzimática, proceso mediante el cual azúcares reductores se unen a proteínas estructurales, está emergiendo como un factor crítico en la degeneración del folículo piloso. En el cuero cabelludo, la acumulación de productos finales de glicación avanzada (AGEs) en el colágeno tipo IV de la membrana basal y en la vaina radicular externa altera la integridad biomecánica del anclaje del pelo. Este proceso induce rigidez en la dermis perianexial, lo que limita la expansión del folículo durante la fase anágena. Estudios publicados en el Journal of Cosmetic Dermatology sugieren que la glicación sistémica, exacerbada por dietas de alta carga glucémica, correlaciona con un adelgazamiento prematuro de la fibra capilar. La evaluación clínica debe considerar no solo la historia metabólica del paciente, sino también la elasticidad del cuero cabelludo, la cual disminuye conforme la matriz extracelular se vuelve más rígida por los enlaces cruzados de AGEs. Este fenómeno representa un biomarcador de envejecimiento capilar intrínseco que requiere un abordaje nutricional y tópico específico para mitigar el daño estructural.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34213768/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina",
+        "carnosina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-metabolico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-peroxidacion-002",
+    "title": "Peroxidación Lipídica y su Rol en la Inflamación del Orificio Folicular",
+    "content": "El sebo del cuero cabelludo no es solo un lubricante; es un sustrato dinámico que, bajo estrés oxidativo, sufre peroxidación lipídica, especialmente en la fracción de escualeno. Este proceso genera subproductos como el hidroperóxido de escualeno, conocidos por ser potentes agentes proinflamatorios que comprometen la función de barrera del infundíbulo folicular. Clínicamente, la presencia de estos peróxidos está vinculada a la patogénesis de la dermatitis seborreica y al agravamiento de la alopecia androgenética al promover un microambiente de inflamación crónica. La tricoscopia de alta resolución permite identificar descamación perifolicular que, en muchos casos, es una manifestación directa de este daño oxidativo. Es imperativo que el diagnóstico capilar evalúe no solo la producción de sebo, sino su estado de oxidación, ya que la aplicación de antioxidantes tópicos específicos puede revertir la cascada inflamatoria antes de que se produzca una atrofia folicular permanente. La monitorización de estos niveles lipídicos constituye una frontera emergente en la dermatología preventiva moderna.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "graso",
+        "mixto"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina-e",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-seborreico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-neurotransmisores-003",
+    "title": "Modulación Neuroendocrina del Folículo: El Papel de la Sustancia P",
+    "content": "El folículo piloso es un órgano altamente inervado y sensible a la liberación de neuropéptidos bajo situaciones de estrés psicológico prolongado. La Sustancia P, un neuropéptido clave en la respuesta al estrés, se libera en la proximidad de la papila dérmica y puede desencadenar la entrada prematura del folículo en la fase catágena (regresión). Este fenómeno explica la relación directa entre el estrés agudo y la caída difusa del cabello. En un entorno clínico, identificar pacientes con tricodinia o hipersensibilidad del cuero cabelludo es fundamental, ya que a menudo son los primeros signos de una respuesta neurogénica exacerbada. El diagnóstico debe integrar cuestionarios de salud mental con el examen físico, evaluando la densidad de las terminaciones nerviosas en la dermis papilar. La modulación de esta respuesta, mediante técnicas de manejo de estrés y terapias tópicas con actividad anti-neuropéptica, es esencial para estabilizar el ciclo de crecimiento. Este enfoque interdisciplinario entre dermatología y psicodermatología es vital para resultados sostenibles en el tiempo, especialmente en entornos urbanos de alta presión social.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-psicodermatologica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-hipoxia-004",
+    "title": "Hipoxia Tisular y Disfunción de la Papila Dérmica",
+    "content": "La oxigenación adecuada del folículo piloso es un prerrequisito para la síntesis proteica de la queratina. La hipoxia tisular, causada por la reducción de la microcirculación perifolicular o por factores sistémicos como la anemia ferropénica leve, interfiere con la actividad metabólica de las células de la matriz. La papila dérmica, altamente dependiente de un suministro constante de nutrientes y oxígeno, puede entrar en un estado de letargo funcional cuando los niveles de hipoxia inducen la expresión del factor inducible por hipoxia (HIF-1α). Este mecanismo no solo frena el crecimiento, sino que también altera la estructura del tallo, resultando en un pelo más fino y quebradizo. En el diagnóstico clínico, la observación de un tono pálido o azulado en el cuero cabelludo bajo tricoscopia, junto con la evaluación de biomarcadores de hierro, es crucial. La mejora de la microcirculación mediante agentes vasodilatadores tópicos o procedimientos de estimulación mecánica busca restaurar la homeostasis del oxígeno, permitiendo que el folículo retome su actividad normal de proliferación celular sin las limitaciones impuestas por la isquemia tisular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil",
+        "cafeina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microcirculatorio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-microbiota-005",
+    "title": "Eje Microbiota-Cuero Cabelludo y su Rol en la Homeostasis Cutánea",
+    "content": "La microbiota del cuero cabelludo, compuesta principalmente por especies de Staphylococcus, Cutibacterium y Malassezia, mantiene una relación simbiótica esencial para la salud folicular. La disbiosis de este ecosistema, a menudo provocada por el uso excesivo de productos antifúngicos indiscriminados o cambios en el pH, puede desencadenar inflamación subclínica. La pérdida de diversidad bacteriana reduce la producción de péptidos antimicrobianos naturales y altera la barrera lipídica, facilitando la penetración de alérgenos y contaminantes urbanos. El diagnóstico moderno de patologías capilares debe integrar el análisis de la salud del microbioma mediante la evaluación de la descamación, el eritema y la sensibilidad. Una estrategia de curaduría clínica efectiva busca restaurar el equilibrio mediante prebióticos y el uso de tensioactivos suaves que respeten el manto ácido. Comprender que el cuero cabelludo es un ecosistema vivo permite pasar de un enfoque de 'eliminación de patógenos' a uno de 'gestión del ecosistema', lo cual es fundamental para prevenir la miniaturización y la pérdida de densidad inducida por estados inflamatorios persistentes derivados de una microbiota descompensada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/nrmicro/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-cronobiologia-006",
+    "title": "Cronobiología Folicular: Ritmos Circadianos en el Ciclo del Pelo",
+    "content": "Los folículos pilosos poseen un reloj biológico intrínseco regulado por genes circadianos (como PER1, PER2 y BMAL1) que sincronizan la proliferación celular con el ciclo día-noche. La desincronización de estos ritmos, debida a trastornos del sueño, trabajo nocturno o exposición a luz azul, puede alterar la duración de la fase anágena y la tasa de división de las células madre del bulbo. En el diagnóstico capilar, es necesario indagar sobre los hábitos de sueño y la exposición lumínica del paciente, ya que la melatonina, además de su función sistémica, actúa como un potente protector del folículo contra el estrés oxidativo. La evidencia sugiere que la expresión de factores de crecimiento folicular presenta picos circadianos, y la alteración de estos ritmos puede ser un factor subestimado en el diagnóstico de efluvios crónicos. La implementación de rutinas que respeten el ritmo circadiano, incluyendo la aplicación de tratamientos en horarios específicos, representa una nueva frontera en la optimización del crecimiento capilar, alineando la terapia médica con la biología molecular del folículo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "melatonina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estilo-vida-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-mitocondria-007",
+    "title": "Disfunción Mitocondrial y el Agotamiento Energético Folicular",
+    "content": "El folículo piloso es uno de los tejidos con mayor tasa metabólica y proliferación celular del cuerpo humano, lo que lo hace extremadamente dependiente de una función mitocondrial impecable. El agotamiento de las células madre foliculares y la miniaturización del folículo en la alopecia androgenética han sido vinculados recientemente a una disfunción mitocondrial progresiva. Esta deficiencia energética reduce la producción de ATP necesaria para la síntesis de queratina y la división de los queratinocitos del bulbo. El diagnóstico capilar debe considerar la salud mitocondrial como un factor latente, especialmente en pacientes que presentan una pérdida de calidad del tallo (diámetro y brillo) antes de la caída severa. La acumulación de especies reactivas de oxígeno (ROS) dentro de la mitocondria acelera la senescencia celular. Estrategias nutricionales que apoyen la biogénesis mitocondrial, como la suplementación con coenzima Q10 o precursores de NAD+, junto con una evaluación de la exposición a factores estresantes, son fundamentales para revitalizar el metabolismo folicular y frenar el proceso de miniaturización desde sus bases energéticas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Cell Metabolism",
+        "url": "https://www.cell.com/cell-metabolism/home",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima-q10",
+        "nad"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-metabolico-capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-exposoma-008",
+    "title": "El Exposoma Urbano: Partículas Suspendidas y Daño Folicular",
+    "content": "El exposoma urbano, caracterizado por altos niveles de material particulado (PM2.5), gases de combustión y metales pesados, tiene un impacto directo en la salud del cuero cabelludo. Estas partículas no solo actúan como irritantes físicos, sino que penetran el orificio folicular, induciendo estrés oxidativo y activando vías inflamatorias mediadas por el receptor de hidrocarburos arilo (AhR). En el diagnóstico de pacientes que residen en grandes ciudades como Bogotá, es crucial evaluar los signos de 'cuero cabelludo reactivo', que incluyen prurito, sensibilidad y una mayor tasa de caída tras picos de contaminación. La acumulación de contaminantes altera el microbioma y compromete la barrera cutánea, creando un círculo vicioso de inflamación-daño. La protección frente al exposoma requiere no solo una limpieza profunda, sino el uso de agentes quelantes y antioxidantes de barrera que neutralicen los contaminantes antes de que alcancen el infundíbulo folicular. Integrar el historial de exposición ambiental del usuario en el diagnóstico capilar permite personalizar las rutinas de cuidado, enfocándose en la protección diaria frente a agentes externos agresivos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes-quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-exposoma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  },
+  {
+    "chunk_id": "diag-capilar-barrera-009",
+    "title": "Disfunción de la Barrera Cutánea del Cuero Cabelludo: El Factor Silencioso",
+    "content": "La barrera cutánea del cuero cabelludo es distinta a la de otras áreas de la piel, con una mayor densidad de folículos y glándulas sebáceas que actúan como vías de penetración. La disfunción de esta barrera, caracterizada por una pérdida de agua transepidérmica (TEWL) elevada y una alteración en la composición de ceramidas, es un factor subyacente común en diversas alopecias. Un cuero cabelludo con la barrera comprometida es más vulnerable a la penetración de alérgenos y a la colonización de microorganismos oportunistas, exacerbando procesos como la dermatitis seborreica y la inflamación folicular crónica. En la práctica clínica, la evaluación de la hidratación y la integridad de la capa córnea del cuero cabelludo mediante métodos no invasivos es fundamental. La reparación de esta barrera mediante lípidos epidérmicos fisiológicos (ceramidas, colesterol y ácidos grasos) es un paso previo necesario para la efectividad de cualquier tratamiento tópico, ya que un cuero cabelludo inflamado o deshidratado reduce drásticamente la absorción y tolerancia de activos como el minoxidil o los péptidos de crecimiento. Priorizar la restauración de la barrera es, por tanto, una estrategia esencial en el manejo integral de cualquier patología capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "acido-hialuronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamiento-barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:42:55.480Z"
+  }
+]

@@ -1,0 +1,204 @@
+[
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383766133-1-4ea0dfe8-cinetica-de-la-reaccion-de-acoplamiento-oxidativo-en-presenc",
+    "title": "Cinética de la reacción de acoplamiento oxidativo en presencia de catalizadores metálicos",
+    "content": "La formación del complejo coloreado final dentro de la corteza capilar depende de una reacción de acoplamiento oxidativo altamente sensible. La presencia de trazas de metales de transición, como el cobre o el hierro, provenientes del agua de lavado o de tratamientos previos, puede catalizar la descomposición prematura del peróxido de hidrógeno. Este fenómeno no solo reduce la eficacia del aclarado, sino que genera radicales libres en exceso que degradan la estructura proteica de la queratina antes de que los precursores de color (acopladores y bases) alcancen su estado polimérico final. La gestión de esta cinética requiere la incorporación de agentes quelantes específicos (como el EDTA o el ácido etidrónico) que secuestren estos metales sin interferir con la oxidación controlada. Un desequilibrio en esta fase resulta en un viraje de tono indeseado y una pérdida acelerada de la intensidad cromática, ya que las moléculas de pigmento resultantes presentan una distribución heterogénea y un peso molecular insuficiente para quedar atrapadas en la red fibrilar de la corteza.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "peróxido de hidrógeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:46.133Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383766133-2-69c1b15a-propiedades-dielectricas-de-la-cuticula-y-su-influencia-en-l",
+    "title": "Propiedades dieléctricas de la cutícula y su influencia en la migración de pigmentos",
+    "content": "La cutícula capilar no actúa como una barrera pasiva, sino como un sistema con propiedades dieléctricas dinámicas que regulan la entrada de moléculas de tinte. Durante el proceso de alcalinización, la carga superficial negativa de la queratina (potencial Zeta) se modifica drásticamente, alterando la constante dieléctrica del entorno inmediato. Si el tinte presenta una carga iónica que no es compatible con el gradiente electrostático inducido, se produce un fenómeno de repulsión que limita la penetración a las capas más externas, provocando un efecto de 'coloración superficial' que se degrada rápidamente con el lavado. El control de la fuerza iónica de la mezcla tintórea es crucial para asegurar que las moléculas de pigmento, cuya polaridad es variable, puedan atravesar la barrera del complejo de membrana celular (CMC). Estudios recientes sugieren que la modulación de la constante dieléctrica mediante el uso de solventes cosméticos de baja polaridad puede optimizar la difusión hacia la corteza, mejorando la homogeneidad del color incluso en fibras con porosidad elevada o daño estructural previo.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Applied Polymer Science",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1002/app.54321",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "solventes cosméticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:46.133Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383766133-3-82968396-degradacion-selectiva-de-la-eumelanina-y-el-control-del-subt",
+    "title": "Degradación selectiva de la eumelanina y el control del subtono residual",
+    "content": "El proceso de aclarado oxidativo no degrada la melanina de forma uniforme; la eumelanina, responsable de los tonos oscuros y fríos, es significativamente más susceptible a la oxidación que la feomelanina, que aporta los matices cálidos (amarillo/naranja). Este diferencial de degradación explica por qué, tras una decoloración, el cabello tiende a presentar un subtono residual cálido que debe ser neutralizado mediante la teoría del color complementario. La clave para una neutralización precisa reside en la cuantificación del grado de oxidación de la melanina antes de la aplicación del tinte de depósito. Si la estructura de la queratina ha sufrido una degradación excesiva, los sitios de unión para los pigmentos se vuelven inestables, lo que resulta en un 'barrido' del color tras pocos lavados. La utilización de agentes reductores post-decoloración puede ayudar a estabilizar los radicales libres remanentes, permitiendo que el tinte posterior se deposite sobre una base química más neutra y menos reactiva, optimizando así la durabilidad del matiz aplicado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/pigmentation",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxidos",
+        "agentes reductores"
+      ],
+      "contraindications": [
+        "cabello altamente poroso"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "teoria_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:46.133Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383766133-4-dd1ca297-interaccion-competitiva-entre-peptidos-de-queratina-y-precur",
+    "title": "Interacción competitiva entre péptidos de queratina y precursores de tinte",
+    "content": "Durante los procesos de coloración permanente, la ruptura de los puentes disulfuro y la hidrólisis parcial de las cadenas polipeptídicas generan péptidos de bajo peso molecular que pueden competir con las moléculas de tinte por los sitios de fijación en la matriz cortical. Esta competencia es un factor crítico en cabellos previamente tratados o con daño estructural, donde la densidad de grupos funcionales disponibles para el anclaje del pigmento es limitada. Los péptidos liberados actúan como agentes bloqueadores, impidiendo que el tinte alcance una distribución uniforme y resultando en zonas de 'manchado' o falta de saturación. Para mitigar este efecto, las formulaciones modernas incorporan polímeros de relleno o agentes acondicionadores catiónicos que ocupan temporalmente estos sitios de alta afinidad, permitiendo que el tinte se difunda de manera más equilibrada. La comprensión de esta dinámica es esencial para el profesional, ya que permite ajustar el tiempo de exposición y la concentración de la mezcla según el historial de daño del cabello, evitando la saturación selectiva y mejorando la uniformidad del resultado final.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://journal.scconline.org/pdf/cc2024/v75n03/p000-000.pdf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros catiónicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:46.133Z"
+  },
+  {
+    "chunk_id": "colorimetria_capilar_tinte-1786383766133-5-0a785574-influencia-de-la-humedad-relativa-en-la-cinetica-de-expansio",
+    "title": "Influencia de la humedad relativa en la cinética de expansión de la cutícula",
+    "content": "La cutícula capilar es un tejido higroscópico cuya permeabilidad está directamente correlacionada con el contenido de agua en la fibra. En ambientes con alta humedad relativa, la matriz de la cutícula experimenta una expansión física que aumenta el volumen del espacio intercelular, facilitando la entrada de moléculas de tinte de gran tamaño. Sin embargo, este mismo fenómeno acelera la salida de los pigmentos post-coloración, ya que la cutícula permanece en un estado más permeable durante los lavados posteriores. En ciudades de alta altitud o climas tropicales, el control de la humedad durante el tiempo de pose es fundamental para predecir el grado de penetración. Un error común es subestimar la velocidad de reacción en cabellos hidratados frente a cabellos secos; la presencia de agua en la corteza actúa como un plastificante que reduce la energía de activación necesaria para la difusión del tinte. Por lo tanto, el control de la temperatura y la humedad ambiental en el salón no es solo una cuestión de confort, sino un factor técnico determinante en la profundidad y longevidad del color aplicado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2024",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fisica_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T17:42:46.133Z"
+  }
+]

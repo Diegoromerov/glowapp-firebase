@@ -1,0 +1,382 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-ph-001",
+    "title": "El papel del pH en la integridad de la cutícula durante el teñido",
+    "content": "La coloración capilar es un proceso de ingeniería química que depende críticamente del pH para modificar la estructura de la fibra capilar. Los tintes permanentes requieren un pH alcalino, generalmente entre 9 y 11, para lograr que la cutícula se abra y permita la penetración de precursores de color en la corteza. Este cambio de pH causa una hinchazón significativa en el tallo del cabello, lo que reduce la integridad de la cutícula y aumenta la porosidad. Estudios publicados en el Journal of Cosmetic Dermatology indican que el uso repetido de agentes alcalinos sin un proceso de neutralización posterior puede llevar a una pérdida permanente de lípidos estructurales y proteínas (como la queratina), debilitando la fibra. Es fundamental que los profesionales de GlowApp comprendan que la 're-acidificación' del cabello tras el proceso de coloración es un paso clínico vital para cerrar la cutícula, restaurar el pH fisiológico del cuero cabelludo (cercano a 5.5) y prevenir la rotura mecánica por fricción o falta de cohesión de las escamas cuticulares.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "amoniaco",
+        "etanolamina"
+      ],
+      "contraindications": [
+        "cabello_dañado"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-porosidad-002",
+    "title": "Diagnóstico de porosidad: El factor determinante en la absorción del tinte",
+    "content": "La porosidad capilar no es una característica estática, sino una variable dinámica que altera drásticamente la capacidad de absorción del pigmento. Un cabello con alta porosidad, a menudo causado por daños químicos previos o factores ambientales, presenta una cutícula levantada que permite una absorción rápida pero una retención deficiente del color. En cambio, el cabello de baja porosidad tiene una cutícula compacta que resiste la penetración de los tintes. La American Academy of Dermatology sugiere que realizar un test de porosidad antes de cualquier aplicación de color es esencial para ajustar el tiempo de exposición y la elección del desarrollador. Si el cabello está excesivamente poroso, el depósito de pigmento será irregular, resultando en tonos cenizos no deseados o una saturación excesiva en las puntas. En GlowApp, recomendamos el uso de productos de relleno de porosidad (proteínas hidrolizadas) antes de la coloración para estandarizar la superficie del cabello y asegurar una distribución uniforme del pigmento, evitando resultados clínicos indeseados.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/hair/healthy-hair-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "proteinas_hidrolizadas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-metales-003",
+    "title": "Interacción entre metales pesados en el cabello y reacciones químicas",
+    "content": "La presencia de metales como el cobre, hierro o calcio en la fibra capilar, provenientes de aguas duras o tratamientos previos, representa un riesgo significativo durante los procesos de decoloración o tintura permanente. Cuando los agentes oxidantes (peróxido de hidrógeno) entran en contacto con estos depósitos metálicos, se genera una reacción catalítica que acelera la descomposición del peróxido de forma incontrolada. Esto no solo genera una cantidad excesiva de calor que puede quemar la fibra capilar, sino que también produce radicales libres que degradan la queratina de forma irreversible. Estudios en PubMed demuestran que esta interacción es una causa común de 'rotura explosiva' durante el aclarado. En un entorno como Bogotá, donde la calidad del agua puede variar, es crítico evaluar el historial de tratamientos del usuario. La recomendación clínica es utilizar quelantes capilares (como EDTA) antes de cualquier proceso de coloración para neutralizar estos metales y garantizar un proceso químico seguro y predecible, evitando daños estructurales severos en la cutícula.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30676679/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA",
+        "peroxido_hidrogeno"
+      ],
+      "contraindications": [
+        "cabello_con_metales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-etanolamina-004",
+    "title": "Etanolamina vs. Amoniaco: Diferencias en el perfil de seguridad",
+    "content": "En la industria de la coloración moderna, la etanolamina (MEA) ha ganado popularidad como un sustituto del amoniaco en tintes denominados 'sin amoniaco'. Aunque la etanolamina carece del olor penetrante característico del amoniaco, su mecanismo de acción es fundamentalmente diferente. La etanolamina es una molécula más grande y menos volátil, lo que significa que no se evapora fácilmente y tiende a permanecer dentro de la estructura capilar mucho más tiempo que el amoniaco. Esta permanencia prolongada puede aumentar el riesgo de irritación residual en el cuero cabelludo y, si no se enjuaga de manera exhaustiva, puede continuar alterando el pH del cabello durante días después del servicio. La evidencia clínica indica que, aunque el amoniaco es más irritante para las vías respiratorias debido a su volatilidad, la etanolamina requiere un control de aclarado mucho más riguroso para evitar la sensibilización cutánea a largo plazo. Es vital que el profesional de GlowApp informe al cliente que 'sin amoniaco' no es sinónimo de 'sin potencial irritante', especialmente en pieles con tendencia a la dermatitis.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Scientific Committee on Consumer Safety (SCCS)",
+        "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety_en",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "etanolamina",
+        "amoniaco"
+      ],
+      "contraindications": [
+        "dermatitis_contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-oxidacion-005",
+    "title": "La cinética de oxidación: ¿Por qué el tiempo de pose es sagrado?",
+    "content": "La coloración permanente es una reacción química de oxidación-reducción que requiere un tiempo específico para completarse. Durante los primeros minutos, los precursores de color entran en la corteza; a medida que el tiempo avanza, estas moléculas se oxidan y se polimerizan, aumentando su tamaño hasta quedar 'atrapadas' dentro de la estructura de la fibra. Interrumpir este proceso antes de tiempo resulta en una polimerización incompleta, lo que no solo afecta la durabilidad del color, sino que puede dejar moléculas reactivas inestables en el cabello, aumentando el riesgo de sensibilización cutánea. Por el contrario, exceder el tiempo de pose no intensifica el color más allá de su límite químico, pero sí somete al cuero cabelludo a una exposición innecesaria a agentes oxidantes. La literatura dermatológica subraya que respetar estrictamente los tiempos de pose definidos por el fabricante es una medida de seguridad clínica. En GlowApp, enfatizamos que el tiempo de pose no es una sugerencia, sino una necesidad para garantizar que la reacción química finalice de forma estable, minimizando la carga de alérgenos residuales en contacto con la piel.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peroxido_hidrogeno"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_tecnica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-pigmentos-006",
+    "title": "Pigmentos directos vs. oxidativos: Diferencias en la seguridad cutánea",
+    "content": "Es fundamental distinguir entre los pigmentos directos (usados en tintes semipermanentes y fantasía) y los pigmentos oxidativos (usados en permanentes). Los pigmentos directos son moléculas de color grandes que se depositan sobre la cutícula sin necesidad de una reacción química de oxidación, lo que los hace generalmente más seguros desde el punto de vista de la toxicidad química. Sin embargo, su uso frecuente puede causar acumulación y, en algunos casos, dermatitis de contacto por sustancias auxiliares como conservantes o fragancias. En contraste, los pigmentos oxidativos requieren precursores como el PPD o PTD, que son potentes sensibilizadores cutáneos. La distinción es vital para el triaje en GlowApp: un usuario con antecedentes de alergia severa a tintes permanentes podría tolerar pigmentos directos, pero nunca debe exponerse a oxidativos sin una prueba de parche cutáneo. Comprender esta diferencia permite ofrecer opciones de coloración más seguras para pacientes con historial de dermatosis o sensibilidad cutánea, priorizando siempre la salud del cuero cabelludo frente a la estética.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis Journal",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "PTD",
+        "pigmentos_directos"
+      ],
+      "contraindications": [
+        "alergia_tintes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_quimica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-barrera-007",
+    "title": "Protección de la barrera cutánea durante el servicio de coloración",
+    "content": "El cuero cabelludo es una extensión de la piel con una densidad folicular elevada, lo que lo convierte en una zona de absorción altamente permeable. Durante el proceso de coloración, la barrera lipídica del cuero cabelludo puede verse comprometida por el pH alcalino de los tintes. La aplicación de agentes protectores (barreras oclusivas como aceites minerales o cremas protectoras) en la línea de nacimiento del cabello y en las zonas donde la piel es más delgada es una práctica clínica recomendada por la IADVL (Indian Association of Dermatologists, Venereologists and Leprologists). Estos protectores ayudan a minimizar la absorción sistémica de los componentes químicos y previenen la irritación mecánica o química inmediata. En GlowApp, aconsejamos a nuestros especialistas nunca omitir este paso, especialmente en clientes con pieles reactivas o con antecedentes de dermatitis seborreica, ya que un cuero cabelludo inflamado aumenta exponencialmente el riesgo de una reacción alérgica sistémica o una irritación por contacto severa durante el proceso de tinturado.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites_minerales",
+        "agentes_oclusivos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-agua-008",
+    "title": "El impacto del agua dura y el pH en la estabilidad del color",
+    "content": "El agua del grifo en ciudades como Bogotá puede contener niveles elevados de minerales (calcio y magnesio), lo que se clasifica como 'agua dura'. Estos minerales no solo afectan la salud capilar, sino que interactúan negativamente con los pigmentos del tinte durante el lavado post-servicio. El calcio, en particular, puede formar complejos insolubles con los pigmentos, lo que resulta en un color opaco y una pérdida prematura de brillo. Además, el pH del agua de lavado puede influir en la reapertura de la cutícula si no se utilizan productos post-coloración con un pH bajo (ácido). La recomendación técnica es integrar el uso de filtros de ducha o productos quelantes de mantenimiento en el régimen post-tinte para evitar la deposición de minerales. El uso de champús con pH ácido ayuda a cerrar la cutícula y a mantener el complejo de membrana celular (CMC) intacto, prolongando la vida útil del color y protegiendo la salud de la fibra capilar frente a factores ambientales locales.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quelantes",
+        "agentes_pH_acido"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados_post_tinte"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-reacciones-009",
+    "title": "Diferenciación clínica entre irritación y alergia al tinte",
+    "content": "Es imperativo que el equipo de GlowApp distinga entre una reacción de irritación (dermatitis de contacto irritativa) y una reacción alérgica (dermatitis de contacto alérgica). La irritación es una reacción no inmunológica causada por la naturaleza corrosiva de los químicos (pH alcalino, agentes oxidantes) y suele presentarse con ardor y eritema inmediato. La alergia, por otro lado, es una respuesta inmunológica (hipersensibilidad tipo IV) mediada por linfocitos T, que puede aparecer horas o incluso días después de la exposición, caracterizándose por prurito intenso, edema, vesículas y exudación. Mientras que la irritación puede resolverse con el lavado y calma de la zona, la alergia requiere intervención médica y, en casos severos, puede derivar en angioedema. La falta de diagnóstico diferencial puede llevar a una mala gestión del caso. Ante la duda, cualquier síntoma persistente tras la aplicación de un tinte debe ser derivado a un dermatólogo para realizar pruebas de parche (patch testing) que identifiquen específicamente el alérgeno causante (PPD, fragancias, conservantes).",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "PPD",
+        "fragancias"
+      ],
+      "contraindications": [
+        "alergia_tintes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_seguridad"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:06:10.247Z"
+  }
+]

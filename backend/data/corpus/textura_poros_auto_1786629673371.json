@@ -1,0 +1,340 @@
+[
+  {
+    "chunk_id": "textura_poros-mitocondria_sebocito-001",
+    "title": "Bioenergética mitocondrial y la calidad del sebo folicular",
+    "content": "La función mitocondrial en el sebocito es un determinante crítico de la composición lipídica del sebo. Cuando la eficiencia mitocondrial disminuye, se altera la proporción de escualeno frente a los ácidos grasos libres, lo que favorece un sebo con mayor punto de fusión y tendencia a la solidificación en el canal folicular. Esta disfunción, exacerbada por el estrés oxidativo, no solo influye en la viscosidad del sebo, sino que también promueve la liberación de mediadores proinflamatorios que dilatan el ostium folicular. La literatura dermatológica reciente enfatiza que mantener la homeostasis mitocondrial mediante la protección antioxidante tópica y sistémica puede prevenir la peroxidación lipídica que precede a la hiperqueratinización del poro. Al optimizar la cadena de transporte de electrones y reducir la fuga de especies reactivas de oxígeno (ROS), se puede favorecer una secreción más fluida que no obstruya el canal. Este enfoque trasciende la simple limpieza y se centra en la salud metabólica de la glándula sebácea como estrategia de prevención primaria contra la dilatación folicular persistente.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33451000/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima Q10",
+        "niacinamida",
+        "resveratrol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "metabolismo_sebaceo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-peptidos_senescencia-002",
+    "title": "SASP y la remodelación de la matriz periporo",
+    "content": "El fenotipo secretor asociado a la senescencia (SASP) en los fibroblastos peripoliculares representa un factor clave en la pérdida de soporte elástico del poro. A medida que los fibroblastos entran en un estado de senescencia, comienzan a secretar citoquinas proinflamatorias, quimiocinas y proteasas que degradan activamente la matriz extracelular circundante. Este proceso debilita la arquitectura que sostiene la apertura del ostium folicular, permitiendo que el poro aparezca visualmente más dilatado y distendido. La intervención dermatológica debe enfocarse no solo en la estimulación de nuevo colágeno, sino también en la modulación de este entorno inflamatorio mediante activos que reduzcan la carga del SASP. Estudios han demostrado que ciertos péptidos señalizadores y moduladores epigenéticos pueden revertir parcialmente este fenotipo, restaurando la integridad mecánica del soporte periporo. Comprender esta dinámica es vital para pacientes que notan una pérdida de textura que no responde únicamente a la limpieza o a la regulación sebácea, ya que el problema radica en la arquitectura estructural del tejido dérmico que rodea al folículo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(20)32034-7/fulltext",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptidos",
+        "retinoides",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "soporte_estrucural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-microbioma_metabolitos-003",
+    "title": "Metabolitos del microbioma y la inflamación del canal",
+    "content": "Más allá de la presencia de Cutibacterium acnes, la salud del poro depende del equilibrio de los metabolitos producidos por el microbioma cutáneo. Los ácidos grasos de cadena corta (SCFA) y los péptidos antimicrobianos endógenos actúan como moduladores de la respuesta inmune local dentro del canal folicular. Cuando este ecosistema entra en disbiosis, la producción de metabolitos proinflamatorios puede desencadenar una respuesta de hiperqueratinización reactiva, que se manifiesta como una rugosidad en la textura de la piel. La investigación actual sugiere que el uso de prebióticos y probióticos tópicos no busca eliminar bacterias, sino favorecer la producción de compuestos que mantengan el pH óptimo del poro y la integridad de la barrera folicular. Este equilibrio es fundamental para evitar la 'inflamación subclínica', un estado donde no hay lesiones visibles de acné, pero el poro está constantemente bajo un proceso de remodelación inflamatoria que altera su diámetro. La curaduría de productos debe priorizar aquellos que respeten esta ecología microbiana para evitar la irritación crónica que suele confundirse con una piel grasa persistente.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/nrmicro.2017.157",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "postbioticos",
+        "fermentos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-acuaporinas-005",
+    "title": "Dinámica de acuaporinas y turgencia folicular",
+    "content": "La hidratación del ostium folicular no depende solo de la barrera lipídica, sino también de la correcta funcionalidad de las acuaporinas (AQP3), canales proteicos que facilitan el flujo de agua a través de las membranas celulares. En un poro con textura irregular, a menudo existe un desequilibrio en la turgencia hídrica del epitelio folicular. Cuando las células queratinocíticas del canal carecen de una hidratación adecuada, su cohesión se altera, lo que provoca una descamación irregular y una percepción visual de 'poro abierto' o rugoso. La optimización del flujo hídrico mediante activos que estimulen la expresión de acuaporinas permite que el canal folicular mantenga una estructura turgente y flexible, evitando que se colapse o se estire ante la acumulación de sebo. Este proceso es vital en climas con altitud y baja humedad, como Bogotá, donde la pérdida de agua transepidérmica es acelerada. Al asegurar una hidratación profunda y constante del epitelio, se mejora significativamente la uniformidad de la textura cutánea y se reduce la visibilidad de los poros, logrando un aspecto más liso y saludable sin necesidad de oclusivos pesados.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/20/12/2961",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "urea",
+        "extractos de plantas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_profunda"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-exosomas-006",
+    "title": "Exosomas: comunicación intercelular en el poro",
+    "content": "La comunicación entre las células de la unidad pilosebácea es mediada en gran parte por exosomas, pequeñas vesículas extracelulares que transportan proteínas, lípidos y material genético (miRNA). Estas vesículas actúan como mensajeros que coordinan la respuesta del poro ante estímulos externos como la radiación UV o la inflamación. En una piel con textura irregular, el perfil de carga de estos exosomas puede estar alterado, enviando señales de 'estrés' que promueven una queratinización anómala o una hiperplasia sebácea. La tecnología cosmética actual está explorando cómo el uso de exosomas derivados de fuentes seguras (o la modulación de los propios) puede 'reprogramar' la comunicación celular para favorecer la regeneración del epitelio folicular. Al restaurar un diálogo intercelular saludable, es posible reducir la inflamación crónica y mejorar la calidad de la matriz periporo. Este es un campo emergente que cambia el paradigma de tratamiento: de la simple aplicación de químicos superficiales a la modulación de las vías de señalización celular. El objetivo es lograr que el poro recupere su función fisiológica sin ser invadido por procesos de regeneración traumáticos.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.14167",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas botánicos",
+        "factores de crecimiento"
+      ],
+      "contraindications": [
+        "piel con heridas abiertas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biotecnologia_cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-proteostasis-007",
+    "title": "Proteostasis: calidad proteica periporo",
+    "content": "La proteostasis es el mecanismo biológico que garantiza que las proteínas de la matriz extracelular (colágeno, elastina, fibrilina) se plieguen correctamente y sean degradadas cuando su integridad se ve comprometida. En el entorno folicular, una falla en la proteostasis conduce a la acumulación de proteínas mal plegadas y al daño oxidativo de las fibras de soporte, lo que resulta en una pérdida de elasticidad alrededor del poro. Esta degradación estructural es responsable de que, con el tiempo, los poros cambien de una forma circular a una forma elíptica o 'gota', un signo clínico claro de envejecimiento folicular. La protección de la proteostasis implica el uso de activos que mejoren la capacidad de las células para gestionar el estrés proteico, como los chaperones moleculares y ciertos antioxidantes específicos. Mantener la calidad de la matriz no solo mejora la textura visual, sino que proporciona el soporte mecánico necesario para que el poro no se dilate ante la acumulación de sebo. GlowApp enfoca el tratamiento de los poros no solo en la limpieza, sino en la preservación de la arquitectura proteica que sostiene la piel.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/article/S0923-1811(19)30171-8/fulltext",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "peptidos",
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "soporte_estrucural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-autofagia_lipidos-008",
+    "title": "Autofagia lisosomal y homeostasis lipídica",
+    "content": "La autofagia lisosomal es un proceso de limpieza celular vital para la homeostasis lipídica dentro de la unidad pilosebácea. El sebocito, al estar especializado en la producción de lípidos, depende de un sistema de degradación eficiente para eliminar los componentes lipídicos oxidados o defectuosos que podrían ser comedogénicos. Cuando la autofagia se ralentiza, el canal folicular se convierte en un depósito de detritos celulares y sebo rancio que, al compactarse, causan la dilatación y rugosidad visible del poro. Estimular la autofagia a través de cambios dietéticos (como el control de la carga glucémica) y el uso de activos tópicos específicos puede reactivar esta 'limpieza interna'. Este mecanismo no solo mejora la textura, sino que previene la formación de comedones y la persistencia de la inflamación. La evidencia muestra que el estrés del retículo endoplasmático, a menudo causado por dietas de alto índice glucémico, inhibe la autofagia, lo que subraya la importancia de un enfoque sistémico para el manejo de los poros. En GlowApp, integramos la regulación de la autofagia como un pilar fundamental para lograr una textura cutánea refinada y libre de obstrucciones crónicas.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Autophagy Journal",
+        "url": "https://www.tandfonline.com/doi/full/10.1080/15548627.2020.1797273",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "polifenoles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "metabolismo_sebaceo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  },
+  {
+    "chunk_id": "textura_poros-epigenetica-009",
+    "title": "Modificaciones epigenéticas y expresión del poro",
+    "content": "El tamaño del poro y la textura de la piel están influenciados por la expresión génica, la cual es modulada por factores epigenéticos como la metilación del ADN y las modificaciones de las histonas. Aunque la genética determina una predisposición base, el exposoma (contaminación, radiación UV, dieta) puede activar o silenciar genes relacionados con la producción de sebo y la queratinización folicular. Esto explica por qué personas con una genética similar pueden presentar texturas de poro drásticamente diferentes debido a sus hábitos y entorno. La intervención epigenética mediante cosmecéuticos busca 'reajustar' esta expresión, favoreciendo un perfil de queratinización más suave y una producción sebácea controlada. Este enfoque es la frontera de la dermatología personalizada, permitiendo tratamientos que no solo tratan el síntoma superficial, sino que actúan sobre la causa molecular de la disfunción folicular. En GlowApp, educamos sobre la importancia de la consistencia en la rutina, ya que las modificaciones epigenéticas requieren tiempo y exposición sostenida a señales positivas para manifestarse como una mejora duradera en la textura de la piel. Es una carrera de fondo, no de velocidad.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Clinical Epigenetics",
+        "url": "https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-020-00958-x",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "retinoides",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "epigenetica_cutanea"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:00:55.509Z"
+  }
+]

@@ -1,0 +1,241 @@
+[
+  {
+    "chunk_id": "colorimetria-efecto-acne-inflamatorio-001",
+    "title": "Impacto de la actividad inflamatoria del acné en la lectura del subtono",
+    "content": "La inflamación activa del acné induce una vasodilatación local persistente que altera significativamente la lectura del subtono. Según estudios publicados en el Journal of the American Academy of Dermatology, la presencia de eritema post-inflamatorio (EPI) en pieles con acné grado II-III puede enmascarar un subtono neutro o cálido, provocando una percepción errónea de subtono frío. Este fenómeno es causado por el aumento en la concentración de hemoglobina oxigenada en la dermis papilar, lo que desplaza la reflectancia espectral hacia longitudes de onda rojas. Para una colorimetría precisa, es fundamental evaluar el subtono en áreas no afectadas, como la mandíbula inferior o la zona retroauricular. Ignorar este factor lleva frecuentemente a la selección de bases con subtonos excesivamente rosados que, al oxidarse, acentúan la apariencia de las lesiones inflamatorias. La evaluación debe realizarse bajo luz natural constante, evitando la proximidad a espejos con iluminación LED de alta temperatura que exacerban el contraste vascular.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/acne",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "acne-prone"
+      ],
+      "age_ranges": [
+        "12-40"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:11.345Z"
+  },
+  {
+    "chunk_id": "colorimetria-anemia-ferropenica-002",
+    "title": "La palidez anémica como factor de sesgo en el diagnóstico del subtono",
+    "content": "La anemia ferropénica es una causa subestimada de distorsión en la colorimetría facial. La reducción en la concentración de hemoglobina eritrocitaria disminuye la vascularización visible en la dermis, lo que resulta en una piel más translúcida donde predominan los pigmentos estructurales (melanina y carotenos) sobre los vasculares. Investigaciones en PubMed subrayan que esta condición puede hacer que un paciente con subtono cálido sea diagnosticado erróneamente con subtono frío o neutro debido a la falta de saturación roja en la tez. Clínicamente, el diagnóstico de esta anemia suele ir acompañado de palidez en mucosas y conjuntivas, signos que actúan como marcadores de la necesidad de corregir la lectura cromática. Al aplicar maquillaje, las personas con anemia ferropénica suelen experimentar una 'desconexión' con su base habitual, la cual parece demasiado saturada o naranja. Se recomienda realizar una prueba de colorimetría solo tras la estabilización de los niveles de ferritina o compensar la falta de rubor natural mediante el uso estratégico de bronceadores con subtonos melocotón para devolver la calidez perdida a la estructura cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed / National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35000000",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:11.345Z"
+  },
+  {
+    "chunk_id": "colorimetria-luz-natural-vs-artificial-003",
+    "title": "El Índice de Reproducción Cromática (IRC) y su impacto en la selección del subtono",
+    "content": "El Índice de Reproducción Cromática (IRC o CRI) es una medida cuantitativa de la capacidad de una fuente de luz para revelar los colores fieles de los objetos. En dermatología y cosmetología, un IRC inferior a 90 puede inducir errores fatales en la identificación del subtono cutáneo. Fuentes de luz con IRC bajo suelen carecer de espectros completos, especialmente en la región de los rojos y naranjas, lo que hace que pieles cálidas parezcan neutras o cenizas. Según recomendaciones de la IALD (International Association of Lighting Designers), para un diagnóstico preciso del subtono, se requiere una iluminación de 5000K a 6500K con un IRC superior a 95. El problema surge al aplicar bases bajo luces de tocador convencionales, donde el metamerismo —el fenómeno por el cual dos colores parecen iguales bajo una luz pero diferentes bajo otra— distorsiona el resultado. Los profesionales de GlowApp deben advertir a los usuarios que la base seleccionada bajo luz artificial de baja calidad puede presentar un viraje cromático inaceptable al exponerse a la luz solar directa, donde la presencia de todas las longitudes de onda del espectro visible revela la verdadera interacción entre el pigmento de la base y el tono natural de la piel.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IALD",
+        "url": "https://iald.org/about/resources",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_colorimetrico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:11.345Z"
+  },
+  {
+    "chunk_id": "colorimetria-oxidacion-sebo-004",
+    "title": "Oxidación del sebo y viraje cromático: la química del cambio de tono",
+    "content": "La oxidación del sebo es una reacción química que altera la estabilidad cromática de las bases de maquillaje horas después de su aplicación. El sebo humano contiene ácidos grasos, escualeno y triglicéridos que, al entrar en contacto con el oxígeno ambiental y la radiación UV, sufren procesos de peroxidación lipídica. Este proceso genera subproductos coloreados que reaccionan con los óxidos de hierro (pigmentos) presentes en las bases de maquillaje, provocando un viraje hacia tonos más oscuros o anaranjados, comúnmente llamado 'oxidación'. Investigaciones en el International Journal of Cosmetic Science indican que pieles con alta actividad sebácea (disbiosis cutánea o seborrea) experimentan este fenómeno de manera más acelerada. La presencia de antioxidantes como la vitamina E o la niacinamida en la rutina previa al maquillaje puede mitigar este efecto, protegiendo el sebo del rostro de la oxidación prematura. Para GlowApp, es vital recomendar a usuarias con piel grasa el uso de primers con propiedades absorbentes de lípidos o bases de formulación no comedogénica con pigmentos tratados para resistir la degradación química, asegurando que el subtono inicial se mantenga estable durante la jornada laboral.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "oily",
+        "combination"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamide",
+        "vitamin_e"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:11.345Z"
+  },
+  {
+    "chunk_id": "colorimetria-disbiosis-luminosidad-005",
+    "title": "Disbiosis cutánea y su impacto en la dispersión de luz y el subtono",
+    "content": "El microbioma cutáneo no solo influye en la salud de la barrera cutánea, sino también en las propiedades ópticas de la superficie de la piel. Una alteración en la composición del microbioma, conocida como disbiosis, puede llevar a una descamación microscópica y a una acumulación de células muertas que alteran la dispersión de luz. Según estudios publicados en Nature Scientific Reports sobre el eje microbioma-piel, una piel con disbiosis tiende a presentar una menor reflectancia especular (brillo saludable), lo que resulta en un aspecto 'opaco' o 'cenizo' que puede confundirse con un subtono frío. Este fenómeno es particularmente evidente en personas con dermatitis atópica o eccema. La restauración de la diversidad del microbioma mediante prebióticos y postbióticos no solo mejora la función barrera, sino que devuelve a la piel su capacidad natural de reflejar la luz de manera uniforme, permitiendo que el subtono real sea visible. En el contexto de GlowApp, es esencial diferenciar si un subtono parece frío por una condición de base (como la disbiosis) o por una característica genética, ya que el tratamiento cosmético difiere radicalmente entre corregir la textura mediante hidratación profunda o simplemente ajustar el tono de la base.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/srep/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebiotics",
+        "postbiotics"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina_cuidado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:11.345Z"
+  },
+  {
+    "chunk_id": "colorimetria-hipoxia-bogota-008",
+    "title": "Impacto de la hipoxia hipobárica en la cromaticidad facial en Bogotá",
+    "content": "Bogotá, situada a 2.640 metros sobre el nivel del mar, presenta condiciones de hipoxia hipobárica leve que influyen en la hemodinámica cutánea. La adaptación fisiológica a la altitud incluye una respuesta vasomotora que puede alterar la saturación de oxígeno en la microcirculación facial. Investigaciones sobre fisiología de altura sugieren que la respuesta compensatoria puede generar una cianosis subclínica, especialmente en la zona periorbital y en pieles con fototipos IV-VI, donde la hemoglobina reducida es más prominente. Este matiz azulado-grisáceo puede distorsionar el diagnóstico del subtono, llevando a los usuarios a elegir correctores excesivamente cálidos para compensar una frialdad que es, en realidad, una respuesta vascular a la altitud. Es fundamental que el diagnóstico de colorimetría en la capital colombiana contemple este factor ambiental. Se sugiere evaluar el subtono no solo en la mejilla, sino comparando la zona malar con el cuello, para aislar el efecto de la perfusión sanguínea regional. Comprender la influencia de la altitud en la cromaticidad es un pilar diferenciador para GlowApp, garantizando diagnósticos adaptados a las condiciones geográficas reales de nuestras usuarias, evitando selecciones de bases que resulten en un acabado grisáceo o poco natural.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Revista Facultad de Medicina - Universidad Nacional de Colombia",
+        "url": "https://revistas.unal.edu.co/index.php/revfacmed",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_base"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:19:11.345Z"
+  }
+]

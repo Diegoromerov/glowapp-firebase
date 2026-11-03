@@ -1,0 +1,258 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-001",
+    "title": "Glucocorticoides tópicos de potencia ultra-alta: el riesgo de taquifilaxia",
+    "content": "La taquifilaxia es un fenómeno clínico de tolerancia aguda donde la respuesta terapéutica a los corticoides tópicos disminuye drásticamente tras el uso continuado, incluso en periodos breves. En dermatología, el uso de esteroides de potencia ultra-alta (clase I) sin periodos de descanso provoca una regulación a la baja de los receptores de glucocorticoides en los queratinocitos y fibroblastos. Este proceso no solo anula el efecto antiinflamatorio, sino que aumenta la susceptibilidad a infecciones oportunistas y atrofia cutánea irreversible. La AAD enfatiza que el uso de estos agentes debe limitarse estrictamente a patologías severas como psoriasis en placas o liquen plano, bajo supervisión constante. La interrupción abrupta tras el desarrollo de taquifilaxia puede desencadenar un efecto rebote severo, complicando el cuadro clínico inicial. Es imperativo establecer ciclos de 'descanso' terapéutico para prevenir la desensibilización de los receptores cutáneos y preservar la integridad del eje hipotálamo-hipofisario-adrenal, evitando la absorción sistémica excesiva en áreas de piel fina.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "corticoides_tópicos"
+      ],
+      "contraindications": [
+        "uso_prolongado",
+        "áreas_de_piel_fina"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatología_clínica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:41.737Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-002",
+    "title": "Ácido salicílico y el riesgo de salicilismo en aplicación corporal extensa",
+    "content": "El ácido salicílico (BHA) es un estándar en el tratamiento del acné y la queratosis pilar, pero su seguridad depende críticamente de la superficie de aplicación. Cuando se utiliza en concentraciones elevadas (superiores al 2-3%) en áreas corporales extensas, existe un riesgo real de absorción sistémica que puede alcanzar niveles tóxicos, un cuadro conocido como salicilismo. Los síntomas tempranos incluyen tinnitus, náuseas, confusión y taquipnea. Este riesgo se magnifica en pacientes con insuficiencia renal o hepática, donde la eliminación del salicilato está comprometida. Estudios en PubMed subrayan que la barrera cutánea en zonas como la espalda o los muslos puede permitir una penetración mayor de la esperada, especialmente si el producto se aplica tras una ducha caliente que aumenta la temperatura cutánea y la permeabilidad. Es fundamental educar al usuario sobre la limitación de la superficie de aplicación y evitar el uso concomitante de otros agentes queratolíticos que puedan comprometer aún más la integridad de la barrera, facilitando una absorción descontrolada de este principio activo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32453880/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido_salicílico"
+      ],
+      "contraindications": [
+        "insuficiencia_renal",
+        "aplicación_corporal_extensa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmética"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:41.737Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-004",
+    "title": "Ácido mandélico: la falsa seguridad de su peso molecular",
+    "content": "Existe la creencia popular de que el ácido mandélico, debido a su mayor tamaño molecular en comparación con el ácido glicólico, es intrínsecamente 'seguro' para todo tipo de piel, incluyendo las más reactivas. Si bien es cierto que su penetración es más lenta y uniforme, reduciendo el riesgo de eritema agudo, esta noción simplista ignora el riesgo de la acumulación de ácidos en la barrera lipídica. El uso diario de mandélico en concentraciones medias puede comprometer la función de los lípidos intercelulares (ceramidas, colesterol y ácidos grasos), llevando a una dermatitis por irritación crónica, especialmente en pieles con rosácea o eccema subyacente. La evidencia en revistas de dermatología sugiere que el tamaño molecular no exime al activo de su capacidad para alterar el pH de la superficie cutánea y desestabilizar el microbioma. La curaduría clínica recomienda tratar al ácido mandélico con la misma precaución que otros alfa-hidroxiácidos, priorizando la evaluación de la integridad de la barrera antes de instaurar una frecuencia de uso alta. El mito de la 'exfoliación segura' sin efectos secundarios es una de las causas más frecuentes de consultas por barrera comprometida en la práctica clínica actual.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido_mandélico"
+      ],
+      "contraindications": [
+        "barrera_cutánea_dañada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "exfoliación_química"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:41.737Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-006",
+    "title": "Ácido Fítico y EDTA: la ciencia de la quelación inespecífica",
+    "content": "Los agentes quelantes como el ácido fítico y el EDTA (ácido etilendiaminotetraacético) son componentes clave en muchas formulaciones para estabilizar la Vitamina C y otros antioxidantes. Su función es secuestrar metales traza (como cobre y hierro) que catalizan la oxidación de las fórmulas. No obstante, en la piel, esta capacidad de quelación puede ser inespecífica. El uso frecuente de productos con altas concentraciones de estos agentes puede, en teoría, interferir con la homeostasis de metales esenciales en la superficie cutánea y alterar la función de enzimas dependientes de metales, como la tirosinasa o diversas metaloproteinasas de matriz (MMPs). Aunque el riesgo de deficiencia sistémica es nulo, la alteración local del microbioma y la posible desestabilización de la barrera cutánea en personas con pieles extremadamente reactivas es un tema de debate en la cosmetología avanzada. Es fundamental que los usuarios de GlowApp comprendan que la 'estabilidad' de un producto no debe lograrse a costa de la integridad del ecosistema cutáneo. Se recomienda limitar el uso de fórmulas 'sobre-queladas' a casos donde la estabilidad química del activo principal realmente lo exija.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido_fítico",
+        "edta"
+      ],
+      "contraindications": [
+        "pieles_hipersensibles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "química_cosmética"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:41.737Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-007",
+    "title": "Bio-fermentos en cosmética: el riesgo de proliferación microbiana",
+    "content": "La tendencia de los 'ingredientes fermentados' (como lactobacillus ferment, bifida ferment lysate) ha inundado el mercado, prometiendo beneficios para el microbioma cutáneo. Sin embargo, desde una perspectiva de seguridad microbiológica, estos ingredientes presentan desafíos únicos. Los bio-fermentos son, por definición, mezclas complejas que requieren sistemas de conservación extremadamente robustos para evitar la proliferación de microorganismos contaminantes durante la vida útil del producto (especialmente en envases tipo 'tarro'). La literatura sobre seguridad cosmética advierte que cualquier falla en la estabilidad del conservante en fórmulas ricas en nutrientes (como los fermentos) puede convertir un producto de cuidado personal en un vector de contaminación bacteriana o fúngica. Además, las proteínas de los fermentos pueden actuar como alérgenos en personas con predisposición genética, desencadenando dermatitis de contacto. En GlowApp, enfatizamos que la calidad de estos activos no reside solo en su origen biotecnológico, sino en la integridad de la cadena de suministro y la validación de los tests de desafío conservante (preservative challenge tests) que cada marca debe garantizar.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO) - Cosmetics Safety",
+        "url": "https://www.who.int/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bio-fermentos"
+      ],
+      "contraindications": [
+        "envases_tipo_tarro"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tendencias_cosméticas"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:41.737Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-contraindicaciones-008",
+    "title": "La paradoja de la glicerina: riesgos en climas de baja humedad",
+    "content": "La glicerina es el humectante por excelencia, capaz de atraer agua desde la dermis hacia la epidermis. Sin embargo, existe una paradoja clínica en entornos de baja humedad relativa (inferior al 30-40%). En estas condiciones, la glicerina puede actuar a la inversa, extrayendo agua de las capas profundas de la piel hacia la superficie, donde se evapora rápidamente si no está sellada con una capa oclusiva (como ceramidas o aceites). Esto puede resultar en una deshidratación transepidérmica paradójica, dejando la piel tirante y seca, especialmente en pacientes con barrera cutánea comprometida. Es un error común pensar que la glicerina es 'auto-suficiente' en cualquier clima. Para los usuarios en Bogotá, donde los cambios de altitud y humedad pueden ser significativos, es esencial recomendar el uso de productos que combinen la glicerina con oclusivos adecuados (como mantecas o siliconas de grado médico) para evitar este efecto de 'succión' hídrica. La curaduría de productos debe considerar la sinergia entre el humectante y el vehículo para garantizar que la hidratación sea efectiva en lugar de contraproducente para la salud de la barrera cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina"
+      ],
+      "contraindications": [
+        "baja_humedad_sin_oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratación"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:42:41.737Z"
+  }
+]

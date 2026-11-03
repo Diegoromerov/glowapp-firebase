@@ -1,0 +1,342 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-anoxicos-001",
+    "title": "Maquillaje en entornos de hipoxia controlada: Dinámica de la barrera cutánea",
+    "content": "En eventos desarrollados en entornos de baja presión o hipoxia controlada, como ciertos simuladores de entrenamiento o cabinas experimentales, la piel experimenta una disminución en la presión parcial de oxígeno, lo que altera la tasa de renovación celular y la función barrera. El uso de maquillaje en estas condiciones debe evitar formulaciones oclusivas que compliquen la respiración cutánea, ya de por sí comprometida. Según estudios publicados en 'Journal of Investigative Dermatology', la hipoxia induce un estrés oxidativo que puede exacerbar la inflamación si se aplican cosméticos con ingredientes irritantes. Se recomienda optar por bases de maquillaje con tecnología de polímeros porosos que permitan la permeabilidad al vapor de agua y gases, evitando las siliconas pesadas que generan un efecto sello. La gestión de la hidratación es crítica: el uso de ácido hialurónico de bajo peso molecular antes del maquillaje ayuda a mantener la turgencia frente a la deshidratación inducida por la hipoxia. Es imperativo priorizar productos con agentes antioxidantes como la vitamina C estabilizada o niacinamida para contrarrestar la cascada de radicales libres que se activa bajo estas condiciones de baja oxigenación ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Niacinamida",
+        "Acido Hialuronico"
+      ],
+      "contraindications": [
+        "Siliconas pesadas",
+        "Oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-campos-estaticos-002",
+    "title": "Interacción de partículas cosméticas en campos magnéticos estáticos intensos",
+    "content": "La exposición a campos magnéticos estáticos, presentes en entornos médicos como salas de resonancia magnética (MRI) o laboratorios de investigación, plantea un riesgo específico para el maquillaje. Muchos pigmentos minerales, como los óxidos de hierro (CI 77491, CI 77492, CI 77499), poseen propiedades ferromagnéticas o paramagnéticas. Aunque la concentración en cosméticos es baja, en eventos de proximidad constante a imanes de alta potencia, existe una teórica posibilidad de calentamiento por inducción o artefactos en las imágenes diagnósticas. La American Academy of Dermatology sugiere cautela con cosméticos que contengan partículas metálicas visibles o escarchas en estas áreas. Además, la interacción de estos pigmentos con campos magnéticos puede alterar la distribución uniforme del producto sobre la superficie cutánea debido a fuerzas de atracción. Para profesionales que trabajan en estas áreas, se recomienda el uso de cosméticos libres de óxidos metálicos pesados, optando por pigmentos orgánicos certificados. La estabilidad de la película cosmética bajo estas condiciones es crucial para evitar la migración de partículas hacia los ojos o mucosas, lo que podría generar irritación mecánica o riesgo de dermatitis por contacto inducida por la movilización de estas sustancias bajo el efecto del campo magnético.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Pigmentos organicos"
+      ],
+      "contraindications": [
+        "Oxidos de hierro ferromagneticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-baja-gravedad-003",
+    "title": "Dinámica de emulsiones cosméticas en entornos de microgravedad",
+    "content": "En entornos de baja gravedad o microgravedad, la física de los fluidos cosméticos cambia drásticamente. Las emulsiones convencionales, que dependen de la gravedad para mantener una distribución estable, pueden sufrir una separación de fases más rápida, lo que altera la viscosidad y la capacidad de dispersión del maquillaje. Estudios sobre la salud en el espacio, documentados por la NASA, indican que la piel sufre un adelgazamiento del estrato córneo y una mayor propensión a la irritación. El maquillaje en estas condiciones debe ser formulado con agentes tensioactivos de alta estabilidad y polímeros que mantengan la estructura de la emulsión independientemente de la fuerza gravitacional. La aplicación de productos debe ser precisa, evitando polvos sueltos que, en microgravedad, se convierten en partículas suspendidas peligrosas para la inhalación. Se prefieren texturas en crema o gel de alta adherencia, diseñadas para evitar la migración a los ojos debido a la falta de sedimentación natural. El uso de selladores con propiedades adhesivas biocompatibles es fundamental para garantizar que el producto permanezca en el sitio de aplicación, minimizando el riesgo de contaminación del entorno y asegurando la integridad de la barrera cutánea frente a la sequedad ambiental extrema típica de estos sistemas cerrados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Polimeros de alta adherencia"
+      ],
+      "contraindications": [
+        "Polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-exposicion-luz-bioluminiscente-004",
+    "title": "Desafíos cromáticos y metamerismo bajo iluminación bioluminiscente",
+    "content": "La iluminación bioluminiscente, utilizada en ciertos eventos artísticos y entornos de inmersión, emite espectros de luz muy específicos, a menudo concentrados en longitudes de onda de azul verdoso, que alteran la percepción del color del maquillaje. El fenómeno del metamerismo ocurre cuando dos colores que parecen iguales bajo luz natural se ven drásticamente diferentes bajo esta luz artificial. Para evitar un acabado poco favorecedor o una distorsión de la tez, el maquillador debe realizar pruebas de color bajo el espectro de luz específico del evento. Los pigmentos fluorescentes o fosforescentes pueden reaccionar intensamente ante esta iluminación, creando efectos no deseados de saturación. La literatura dermatológica sobre fotobiología sugiere que la exposición prolongada a ciertos espectros de luz artificial puede inducir estrés oxidativo en los melanocitos. Por lo tanto, el uso de maquillaje con filtros de luz visible de alta energía (HEV) es una estrategia de prevención eficaz. Además, la selección de bases con subtonos neutros es preferible, ya que los subtonos cálidos o fríos pueden acentuarse de manera errática. La gestión del color debe enfocarse en la neutralidad cromática para garantizar que el maquillaje se mantenga coherente con la paleta de tonos de piel del usuario ante la variabilidad espectral de la luz bioluminiscente.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Photochemistry and Photobiology Journal",
+        "url": "https://onlinelibrary.wiley.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Filtros HEV"
+      ],
+      "contraindications": [
+        "Pigmentos fluorescentes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "colorimetria"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-nanoparticulas-grafeno-005",
+    "title": "Riesgos de adsorción de partículas en entornos con grafeno",
+    "content": "En entornos industriales o de investigación avanzada con alta concentración de nanopartículas de grafeno, el maquillaje puede actuar como una superficie de adsorción no deseada. El grafeno, debido a su gran área superficial y propiedades físico-químicas, tiene una alta afinidad por interactuar con compuestos orgánicos presentes en las formulaciones cosméticas. Esto puede llevar a la acumulación de contaminantes sobre la película de maquillaje, aumentando el riesgo de dermatitis por contacto o irritación folicular. La investigación publicada en 'PubMed' sobre toxicología cutánea destaca que las nanopartículas pueden penetrar en los folículos pilosos si la barrera cutánea está alterada. Para eventos en estos entornos, se recomienda utilizar técnicas de sellado de alta densidad, como polvos fijadores de sílice micronizada que creen una capa física inerte. Es crucial evitar cosméticos con texturas extremadamente oleosas que faciliten la adhesión de estas partículas. Tras la exposición, es obligatorio realizar una limpieza profunda mediante doble limpieza (aceite limpiador seguido de un limpiador acuoso) para asegurar la eliminación total de cualquier traza de material particulado. La monitorización de la integridad de la barrera cutánea es vital para prevenir la absorción sistémica de contaminantes ambientales en entornos de alta carga nanométrica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central / NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Silica"
+      ],
+      "contraindications": [
+        "Aceites pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibracion-acustica-006",
+    "title": "Prevención de dermatitis por fricción bajo vibraciones acústicas",
+    "content": "La exposición a campos de vibración acústica de alta intensidad, como en eventos musicales de gran escala o entornos industriales, puede generar una fricción mecánica constante entre el maquillaje y la piel. Esta micro-fricción, combinada con la sudoración, puede comprometer la estabilidad del producto y, en pieles sensibles, inducir una dermatitis por fricción. El movimiento constante de las partículas de maquillaje sobre los poros puede causar oclusión y micro-abrasiones. La IADVL (Indian Association of Dermatologists, Venereologists and Leprologists) enfatiza que la protección de la barrera cutánea es fundamental en entornos de alta estimulación mecánica. Se recomienda aplicar una base de maquillaje tipo 'primer' a base de siliconas volátiles que actúe como una película lubricante, reduciendo la fricción directa de los pigmentos sobre la epidermis. Además, es esencial evitar la sobre-aplicación de capas de maquillaje, ya que el exceso de producto aumenta el peso molecular y la inestabilidad bajo vibración. La fijación del maquillaje debe realizarse con sprays fijadores que contengan polímeros formadores de película flexibles, capaces de adaptarse a los micro-movimientos de la piel sin fisurarse. La hidratación previa con ceramidas fortalecerá la función barrera, mitigando el impacto de la vibración mecánica prolongada sobre la homeostasis cutánea.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Ceramidas",
+        "Siliconas volatiles"
+      ],
+      "contraindications": [
+        "Capas gruesas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-campos-electricos-alto-voltaje-007",
+    "title": "Gestión del maquillaje ante exposición a campos eléctricos de alto voltaje",
+    "content": "La presencia de campos eléctricos de alto voltaje puede inducir una carga electrostática superficial en la piel y en las partículas del maquillaje. Esta carga puede alterar la adherencia del producto, atrayendo partículas ambientales cargadas o provocando la dispersión no deseada de polvos cosméticos. Estudios de física aplicada al cuidado personal indican que las partículas con carga estática pueden adherirse más fuertemente a los folículos, aumentando el riesgo de comedogénesis. Para eventos en entornos de alta carga eléctrica, es recomendable el uso de formulaciones cosméticas con propiedades antiestáticas, a menudo logradas mediante el uso de polímeros conductores o agentes humectantes que reduzcan la resistencia eléctrica de la superficie cutánea. Evitar el uso de polvos sueltos es imperativo; los productos en formato crema o emulsión son mucho menos susceptibles a la dispersión por fuerzas electrostáticas. Además, el uso de una bruma facial con electrolitos antes del maquillaje puede ayudar a neutralizar la carga superficial. La limpieza post-evento debe ser exhaustiva para eliminar cualquier partícula cargada que haya quedado atrapada en la red del maquillaje, previniendo así cualquier respuesta inflamatoria subclínica provocada por la interacción de estas partículas con la barrera lipídica durante periodos prolongados.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Electrolitos"
+      ],
+      "contraindications": [
+        "Polvos sueltos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-criogenia-industrial-009",
+    "title": "Prevención de la fragilización de películas cosméticas en criogenia",
+    "content": "En entornos de criogenia industrial o exposición a frío extremo, las películas cosméticas sufren un fenómeno de fragilización. Los polímeros formadores de película, que normalmente son flexibles a temperatura ambiente, pueden volverse rígidos y quebradizos bajo temperaturas cercanas a cero, lo que lleva a la fisura del maquillaje con el movimiento facial. Además, la vasoconstricción periférica inducida por el frío altera la microcirculación cutánea, haciendo que la piel se vuelva más pálida y menos capaz de absorber activos. La recomendación experta es utilizar productos con altos contenidos de emolientes de cadena larga y ceras de bajo punto de fusión que mantengan la flexibilidad en condiciones de frío. Es esencial evitar cosméticos con base acuosa que puedan congelarse o cristalizarse sobre la piel. La aplicación de un aceite facial protector antes del maquillaje proporciona una barrera aislante adicional. La investigación dermatológica sugiere que el frío extremo puede inducir una dermatitis por frío; por tanto, cualquier maquillaje utilizado debe ser hipoalergénico y libre de fragancias irritantes para no añadir estrés a una piel ya sensibilizada. El sellado debe hacerse con técnicas que no requieran productos volátiles que puedan enfriar la piel durante su evaporación, optando por fijadores en formato bálsamo o aceite seco que mantengan la elasticidad de la película cosmética.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "Emolientes",
+        "Ceras"
+      ],
+      "contraindications": [
+        "Productos base agua"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:15:59.285Z"
+  }
+]

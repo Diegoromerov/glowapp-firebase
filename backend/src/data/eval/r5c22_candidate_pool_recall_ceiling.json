@@ -1,0 +1,61 @@
+{
+  "cycle": "R5-C22",
+  "model": "e5-v5 (1024d)",
+  "gold_version": "GOLD-V5",
+  "production_modified": false,
+  "railway_contacted": false,
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — ranks, recall, lexical y clasificación idénticos" },
+  "vector_recall_global": { "r5": 0.6156, "r10": 0.6545, "r20": 0.7156, "r50": 0.8011, "r100": 0.8011, "delta_r100_minus_r5": 0.1855 },
+  "vector_mrr_global": { "r5": 0.7222, "r10": 0.7222, "r20": 0.7222, "r50": 0.7222, "r100": 0.7222, "note": "MRR idéntico en todos los K → el primer gold siempre aparece en top-5; ampliar K no mejora el ranking del primer hit" },
+  "recall_ceiling_conclusion": "El techo del candidate pool vectorial está en ~0.80 (R@50 = R@100 = 0.8011). Ampliar K de 50 a 100 NO añade recall. Ampliar de 5 a 50 añade +0.19, pero el 20% restante (golds secundarios de los misses) NO entra ni en top-100.",
+  "lexical_recall": { "note": "TF simple en memoria (sin BM25 completo). El lexical NO recupera lo que el vector pierde: cejas_004 lexRank=128, cejas_008 lexRank=137, cabello_002 lexRank=3 (único caso donde lexical es útil pero el vector ya lo tiene en rank 1)." },
+  "union_recall": { "r5": 0.6156, "r10": 0.6545, "r20": 0.7156, "improves_over_vector": "0/15", "conclusion": "La unión vector+lexical NO recupera evidencia adicional en NINGUNA query — HYBRID RETRIEVAL NO está justificado por esta evidencia" },
+  "miss_analysis": [
+    {
+      "query_id": "cabello_002",
+      "gold_class": "TOP5", "best_gold_rank": 1,
+      "recall": { "r5": 0.4, "r10": 0.4, "r20": 0.4, "r50": 0.6, "r100": 0.6 },
+      "diagnosis": "El mejor gold está en rank 1 (RECOVERED_TOP5) pero 2 golds secundarios (ph-001, SERS) quedan fuera hasta rank 50-100. Los competidores son del mismo dominio (colorimetría capilar: microbiota, ph-balance).",
+      "classification": "B_VECTOR_LATE (para golds secundarios) / mejor gold A_VECTOR_SUCCESS"
+    },
+    {
+      "query_id": "cejas_004",
+      "gold_class": "TOP5", "best_gold_rank": 2,
+      "recall": { "r5": 0.3333, "r10": 0.3333, "r20": 0.3333, "r50": 0.3333, "r100": 0.3333 },
+      "diagnosis": "CASO EXTREMO: recall PLANO 0.3333 de R@5 a R@100 — 4 de 6 golds (incluidos los 3 de simetría muscular) NO entran ni en top-100. Colisión semántica absoluta: los competidores (fotobiología, metamerismo, interferencia EM) ocupan el espacio. Lexical tampoco (rank 128).",
+      "classification": "VECTOR-CANDIDATE-CEILING (para 4/6 golds)"
+    },
+    {
+      "query_id": "cejas_008",
+      "gold_class": "TOP5", "best_gold_rank": 1,
+      "recall": { "r5": 0.3333, "r10": 0.3333, "r20": 0.3333, "r50": 0.5, "r100": 0.5 },
+      "diagnosis": "El mejor gold (piel-grasa) está en rank 1 pero los 3 golds de remoción (interacción-láser, electrólisis, erbio) quedan fuera hasta rank 50-100. Competidores: psicodermatología, propiocepción (mismo dominio, vocabulario solapado). Lexical tampoco (rank 137).",
+      "classification": "B_VECTOR_LATE (para golds de remoción) / mejor gold A_VECTOR_SUCCESS"
+    }
+  ],
+  "hard_negatives": {
+    "note": "Los competidores de los 3 misses son del MISMO dominio (colorimetría capilar / visajismo cejas) con títulos semánticamente adyacentes (microbiota del tinte, metamerismo, psicodermatología, propiocepción). No son objetivamente irrelevantes — son evidencia relacionada que compite por proximidad conceptual.",
+    "conclusion": "La colisión es entre chunks del mismo documento/dominio con conceptos cercanos, no con ruido irrelevante."
+  },
+  "causal_classification": {
+    "summary": { "A_VECTOR_SUCCESS": 15, "B_VECTOR_LATE": 0, "C_VECTOR_MISS_LEXICAL_HIT": 0, "D_BOTH_MISS": 0, "E_LEXICAL_ONLY_ADVANTAGE": 0 },
+    "note": "15/15 queries tienen su MEJOR gold en top-5 vectorial. El problema NO es recuperar la evidencia principal — es que los golds SECUNDARIOS (evidencia de soporte multi-chunk) quedan fuera del pool o demasiado abajo.",
+    "refinement": "La clasificación A-E del protocolo se aplica al mejor gold (15/15 A_VECTOR_SUCCESS). Pero al nivel de TODOS los golds: cabello_002 y cejas_008 son B_VECTOR_LATE parcial (golds secundarios en 50-100), cejas_004 es VECTOR-CANDIDATE-CEILING (4/6 golds >100)."
+  },
+  "verdict": "VECTOR-CANDIDATE-CEILING",
+  "verdict_rationale": "El techo del candidate pool vectorial está en R@50=R@100=0.8011 — ampliar K no añade recall. Los 3 misses tienen su mejor gold en TOP5 (la evidencia principal SÍ se recupera) pero sus golds secundarios quedan fuera del pool (cejas_004: 4/6 golds ni en top-100). El lexical NO recupera lo que el vector pierde (unión mejora 0/15) → HYBRID-JUSTIFIED descartado. El déficit residual es la evidencia multi-chunk de soporte que no entra al pool por colisión semántica con chunks del mismo dominio, no un problema de ranking del primer gold ni de recall del pool.",
+  "decision_r5c23": {
+    "opcion_a_ampliar_pool": "NO recomendado — R@100 = R@50 = 0.80; ampliar K no añade nada",
+    "opcion_b_hybrid": "NO justificado — la unión lexical no recupera evidencia adicional (0/15); los misses ni siquiera aparecen por términos léxicos (lexRank 128/137)",
+    "opcion_c_arquitectura_semantica_distinta": "La evidencia apunta aquí: los golds de soporte multi-chunk de cejas_004/008 no son recuperables ni vectorial ni lexicalmente con la representación actual → se requiere representación documental con contexto estructural (re-abrir con enfoque distinto a R5-C18/C21) o aceptar el techo",
+    "opcion_d_aceptar_techo": "El baseline R5-C (R@5=0.7885) supera el techo del pool por query individual (0.80) — el déficit real es de 3 queries con golds de soporte fuera del pool"
+  },
+  "recommendation_r5c23": {
+    "1": "NO ampliar candidate pool (evidencia: R@100 = R@50)",
+    "2": "NO implementar hybrid retrieval (evidencia: unión mejora 0/15; los misses no son lexicalmente recuperables)",
+    "3": "El déficit real: golds de SOPORTE multi-chunk fuera del pool. Para recuperarlos se necesitaría representación que distinga conceptos dentro del MISMO dominio (p.ej. 'simetría muscular' vs 'fotobiología' en cejas) — la representación actual (content puro) no lo logra",
+    "4": "Recomendación: documentar el techo (R@5=0.7885, MRR=0.7179) como límite del motor actual y CERRAR la línea de retrieval-representación de R5-C, o (con autorización del Director) probar un último enfoque de representación estructural (metadata enriquecida con estructura del documento, no simple concatenación)",
+    "5": "GOLD-V5 y baseline R5-C permanecen intactos"
+  },
+  "not_to_touch": ["motor productivo", "embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

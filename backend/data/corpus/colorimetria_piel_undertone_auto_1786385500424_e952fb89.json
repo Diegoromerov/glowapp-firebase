@@ -1,0 +1,42 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786385500413-1-51eb885f-fluorescencia-inducida-por-ages-el-desafio-del-subtono-bajo-",
+    "title": "Fluorescencia inducida por AGEs: El desafío del subtono bajo luz UV",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) no solo altera la reflectancia espectral en el espectro visible, sino que introduce un componente de fluorescencia intrínseca bajo exposición a luz ultravioleta (UV). Este fenómeno provoca que la piel con alta carga de glicación emita una luminiscencia azulada-blanquecina que distorsiona la percepción del subtono, especialmente en entornos con iluminación artificial mixta. La fluorescencia de los AGEs, particularmente la pentosidina, puede enmascarar la calidez natural de la piel, induciendo a un diagnóstico erróneo de subtono frío. Es fundamental que los sistemas de análisis cromático integren algoritmos de supresión de fluorescencia para aislar la reflectancia difusa real del estrato córneo. La interacción entre la luz UV ambiental y la matriz extracelular glicada crea un 'ruido' cromático que altera la saturación del color percibido, complicando la selección de pigmentos correctores. El diagnóstico preciso requiere una calibración espectral que considere esta emisión secundaria, evitando que el subtono se interprete como más frío o cenizo debido a la respuesta fotoluminiscente de las proteínas dérmicas degradadas.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_espectral"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:11:40.414Z"
+  }
+]

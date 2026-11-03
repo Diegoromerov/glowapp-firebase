@@ -1,0 +1,133 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-hiperbaricos-001",
+    "title": "Maquillaje en ambientes de cámara hiperbárica: Estabilidad y seguridad",
+    "content": "La exposición a entornos hiperbáricos (OHB) implica presiones atmosféricas superiores a la normal, lo cual altera la física de los cosméticos en emulsión. En estas condiciones, el aire atrapado en la matriz del producto puede expandirse o contraerse, afectando la estabilidad de la formulación y la adherencia del pigmento. Es crítico evitar productos con alta carga de propelentes o solventes volátiles, ya que la presión puede favorecer una penetración oclusiva de ingredientes en los folículos pilosebáceos. La recomendación clínica es utilizar productos de base mineral inerte, libres de fragancias sintéticas, para minimizar el riesgo de dermatitis por contacto inducida por la presión. Los estudios en medicina hiperbárica indican que la piel bajo estas condiciones sufre una mayor pérdida de agua transepidérmica (TEWL), por lo que el maquillaje debe ser altamente oclusivo (pero no comedogénico) para mantener la homeostasis de la barrera cutánea durante la sesión.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/resources/hbo-safety.html",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "zinc oxide",
+        "titanium dioxide"
+      ],
+      "contraindications": [
+        "volatile organic compounds",
+        "fragrances"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:06:00.731Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-baja-gravedad-002",
+    "title": "Dinámica de fluidos cosméticos en entornos de baja gravedad",
+    "content": "En eventos que involucran simulaciones de baja gravedad o entornos de microgravedad, la reología de los cosméticos líquidos cambia drásticamente. La ausencia de sedimentación gravitacional permite que las partículas de pigmento suspendidas en emulsiones O/W (aceite en agua) se dispersen de manera diferente, afectando la cobertura y el acabado. El riesgo principal radica en la dispersión de micropartículas hacia las vías respiratorias o la conjuntiva ocular debido a la falta de sedimentación natural. Se recomienda el uso de cosméticos en formato sólido o barras de alta densidad para evitar la migración de gotas. La literatura sobre dermatología espacial destaca que la piel en microgravedad experimenta una atrofia reversible y una alteración en la renovación celular, requiriendo formulaciones con péptidos que favorezcan la cohesión de los corneocitos, evitando el uso de polvos sueltos que puedan contaminar el ambiente cerrado del evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "NASA Human Research Program",
+        "url": "https://www.nasa.gov/hrp/skinhhealth",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peptides",
+        "waxes"
+      ],
+      "contraindications": [
+        "loose powders",
+        "volatile aerosols"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:06:00.731Z"
+  },
+  {
+    "chunk_id": "maquillaje-estres-acustico-ultrasonidos-008",
+    "title": "Maquillaje ante exposición a vibraciones acústicas y ultrasónicas",
+    "content": "La exposición a niveles altos de presión sonora y vibraciones ultrasónicas en entornos de eventos puede afectar la estabilidad de las emulsiones cosméticas. Los ultrasonidos, al ser aplicados sobre una emulsión, pueden causar cavitación, lo que rompe las micelas de los tensioactivos y desestabiliza la fórmula del maquillaje. Esto puede resultar en una separación de fases visible (aceite-agua) durante el transcurso del evento. Para prevenir este fenómeno, se deben seleccionar productos formulados con sistemas emulsionantes de alta estabilidad, tales como copolímeros de silicona y ceras de alto punto de fusión. Además, la vibración acústica genera un aumento local de la temperatura cutánea por fricción, lo que incrementa la producción de sebo. El uso de primers que contengan polímeros absorbentes de lípidos es esencial para evitar la 'migración' del producto hacia los pliegues cutáneos. La evidencia en física cosmética sugiere que los productos en formato 'stick' son más resistentes a la cavitación ultrasónica que las bases líquidas fluidas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicone copolymers",
+        "candelilla wax"
+      ],
+      "contraindications": [
+        "low-viscosity emulsions"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T07:06:00.731Z"
+  }
+]

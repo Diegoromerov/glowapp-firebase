@@ -1,0 +1,167 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-electrodinamica-001",
+    "title": "Potencial Zeta y la estabilidad de las dispersiones de pigmentos",
+    "content": "En la formulación de tintes capilares, la estabilidad de las microemulsiones de pigmentos depende críticamente del potencial zeta de las partículas. Este parámetro electrocinético mide la magnitud de la repulsión electrostática entre partículas coloidales. Un potencial zeta adecuado evita la floculación prematura de los precursores de color antes de su penetración en la corteza. Si el pH del entorno altera la carga superficial de los pigmentos, se pierde la homogeneidad de la distribución cromática. En la práctica clínica y cosmética, entender este fenómeno explica por qué ciertos tintes requieren una preparación específica para mantener la carga eléctrica óptima. La literatura en química de polímeros aplicada a la cosmética sugiere que los surfactantes no iónicos pueden estabilizar estas suspensiones, mientras que la presencia de electrolitos en el agua de mezcla puede colapsar la doble capa eléctrica, provocando resultados no uniformes. La gestión técnica del potencial zeta asegura que los precursores de oxidación alcancen el córtex con la cinética de difusión adecuada, mejorando la saturación del color y la durabilidad, reduciendo la necesidad de aplicaciones repetitivas que dañan la fibra.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "surfactantes_no_ionicos",
+        "electrolitos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_quimico_tinte"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:32:27.462Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-transmision-002",
+    "title": "Efecto de la birrefringencia en la percepción del brillo cromático",
+    "content": "La birrefringencia capilar es la capacidad de la fibra de dividir un rayo de luz en dos componentes perpendiculares. Este fenómeno físico es fundamental en la percepción del brillo tras un proceso de coloración. Cuando la cutícula está dañada o excesivamente porosa, la dispersión de la luz aumenta y la birrefringencia disminuye, haciendo que el color parezca mate o 'apagado' a pesar de tener una saturación de pigmento correcta. La retención de la integridad de la capa F (ácido 18-metileicosanoico) es el factor clave para mantener esta propiedad óptica. Los tratamientos post-tinte que utilizan polímeros de silicona de bajo peso molecular buscan alinear la superficie cuticular para restaurar la capacidad de la fibra de reflejar la luz de manera coherente. El profesional debe distinguir entre una pérdida de pigmento (deslavado) y una pérdida de brillo por alteración de la birrefringencia, ya que el tratamiento clínico difiere: mientras que el primero requiere un depósito de color, el segundo demanda una reconstrucción de la barrera hidrofóbica superficial para devolver la reflexión especular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas_bajo_peso_molecular"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:32:27.462Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-quelacion-003",
+    "title": "Interferencia de iones calcio y magnesio en la polimerización del tinte",
+    "content": "El agua de lavado en muchas regiones de Bogotá presenta una dureza elevada, caracterizada por altas concentraciones de iones calcio y magnesio. Estos iones divalentes actúan como agentes interferentes en la reacción de acoplamiento oxidativo de los colorantes capilares. Al interactuar con los precursores de color, el calcio puede formar complejos insolubles que precipitan sobre la cutícula, impidiendo la penetración profunda y generando parches de color desigual. Además, estos metales actúan como catalizadores de la degradación incontrolada del peróxido de hidrógeno, reduciendo su eficacia para la aclaración de la melanina natural. La implementación de un protocolo de quelación (uso de EDTA disódico o ácido etidrónico) antes de la aplicación del tinte es vital para asegurar una polimerización pura. Clínicamente, esto no solo mejora la fidelidad del tono, sino que también minimiza la formación de radicales libres adicionales que podrían causar irritación del cuero cabelludo. Es una práctica recomendada en salones de alta gama para estandarizar los resultados independientemente de la calidad del agua local.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450000/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "EDTA_disodico",
+        "acido_etidronico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos_pre_tinte"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:32:27.462Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-histamina-005",
+    "title": "Respuesta histaminérgica inespecífica frente a tintes de alta alcalinidad",
+    "content": "Algunos pacientes experimentan prurito intenso y eritema durante la aplicación del tinte sin que exista una sensibilización alérgica mediada por IgE (alergia verdadera). Esto puede deberse a una respuesta histaminérgica inespecífica inducida por la alta alcalinidad y la liberación de compuestos volátiles irritantes. La amoníaco, al elevar rápidamente el pH, puede desencadenar la degranulación de mastocitos en el cuero cabelludo si la barrera cutánea está comprometida. Es fundamental diferenciar esta reacción de una dermatitis alérgica de contacto (DAC). En la reacción inespecífica, los síntomas suelen ceder al retirar el producto y enjuagar abundantemente, mientras que en la DAC, la reacción inflamatoria persiste y evoluciona. La aplicación de un suero calmante con bisabolol o pantenol antes del servicio puede ayudar a estabilizar la membrana del mastocito y reducir la reactividad. La evaluación clínica debe considerar el historial de sensibilidad previa, pero no descartar el uso de coloración si el test de parche (patch test) resulta negativo para los alérgenos comunes como el PPD.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadl.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "pantenol"
+      ],
+      "contraindications": [
+        "dermatitis_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:32:27.462Z"
+  }
+]

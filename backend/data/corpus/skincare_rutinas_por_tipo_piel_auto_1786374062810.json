@@ -1,0 +1,131 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-001",
+    "title": "Impacto de la resincronización de los relojes periféricos cutáneos mediante fotoprotección inteligente",
+    "content": "La cronobiología cutánea ha revelado que los queratinocitos poseen relojes moleculares periféricos que regulan la reparación del ADN y la proliferación celular. La exposición constante a luz artificial y radiación HEV en entornos urbanos desincroniza estos ritmos circadianos, acelerando el envejecimiento. Estudios en PubMed sugieren que el uso de filtros solares con capacidad de filtrar luz azul y mantener la estabilidad del gradiente iónico durante el día es crucial. La integración de antioxidantes que actúan como 'señalizadores' de luz diurna permite que la piel mantenga su capacidad de reparación nocturna. Es fundamental que la rutina incluya fotoprotección no solo por el espectro UV, sino por su capacidad de proteger el proteoma frente a la carbonilación inducida por la luz visible. La evidencia sugiere que la aplicación de fotoprotectores con pigmentos de óxido de hierro es superior para fototipos altos en la prevención de la desincronización de los ritmos circadianos locales, mejorando la eficacia de los activos aplicados en la fase nocturna.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine - PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34269931/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxidos de hierro",
+        "antioxidantes",
+        "filtros HEV"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:00:44.601Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-002",
+    "title": "Regulación de la permeabilidad cutánea mediante el manejo de los canales de acuaporinas (AQP3)",
+    "content": "Las acuaporinas, específicamente la AQP3, son canales proteicos esenciales para el transporte de agua y glicerol a través de la membrana plasmática de los queratinocitos. En pieles con xerosis o disfunción de barrera, la expresión de AQP3 se ve reducida, lo que compromete la hidratación desde las capas profundas. La literatura clínica indica que activos como el ácido hialurónico de bajo peso molecular y ciertos derivados de la urea pueden modular positivamente la expresión de estos canales. El enfoque práctico en la rutina debe priorizar la oclusión selectiva para evitar la pérdida de agua transepidérmica (TEWL) sin inhibir la síntesis natural de lípidos. La monitorización de la hidratación a través de la osmolaridad del estrato córneo es una métrica emergente que permite ajustar la rutina según la humedad ambiental de Bogotá. El uso de ingredientes que estimulen la síntesis de AQP3 no solo mejora la turgencia, sino que también facilita la difusión de nutrientes esenciales hacia las capas viables de la epidermis, fortaleciendo la resiliencia mecánica ante factores estresantes.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/dw/clinical-alerts/skin-barrier-function",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "urea",
+        "glicerol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:00:44.601Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-004",
+    "title": "Intervención en la glicación no enzimática mediante activos antiglicantes",
+    "content": "La glicación avanzada es un proceso metabólico donde los azúcares se unen a las proteínas de la dermis (colágeno y elastina), formando enlaces cruzados que resultan en la pérdida de elasticidad y turgencia, un fenómeno clínico conocido como 'piel acartonada'. A diferencia de la oxidación, la glicación es un proceso lento pero acumulativo. La intervención clínica se basa en el uso de moléculas antiglicantes, como la aminoguanidina o extractos botánicos específicos, que actúan como 'trampas de azúcares' antes de que estos reaccionen con las proteínas. Es vital integrar estos activos en la rutina de pieles maduras o en pacientes con dietas de alta carga glucémica. La evidencia sugiere que la combinación de antioxidantes potentes con agentes antiglicantes crea una sinergia protectora que ralentiza significativamente la formación de AGEs (Advanced Glycation End-products). El uso preventivo debe iniciarse desde la tercera década de vida, complementando la fotoprotección diaria, ya que la radiación UV exacerba la velocidad de glicación en la matriz extracelular.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina",
+        "carnosina",
+        "extractos botánicos"
+      ],
+      "contraindications": [
+        "hipersensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti_aging_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T15:00:44.601Z"
+  }
+]

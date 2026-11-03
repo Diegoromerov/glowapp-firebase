@@ -1,0 +1,257 @@
+[
+  {
+    "chunk_id": "onicodistrofia-por-vibracion-001",
+    "title": "Onicodistrofia por vibración: el impacto de los tornos de alta frecuencia",
+    "content": "El uso prolongado de limas eléctricas (tornos) con alta frecuencia de vibración puede inducir una onicodistrofia traumática sutil pero persistente. La vibración mecánica, cuando se transmite directamente a la matriz ungueal a través de la lámina, es capaz de alterar la alineación de los onicocitos en formación. A diferencia del trauma agudo, este daño es acumulativo y se manifiesta como estrías transversales o engrosamiento irregular de la lámina. Estudios en ergonomía y dermatología ocupacional sugieren que las vibraciones de alta frecuencia pueden interferir con la vascularización de la matriz, afectando la síntesis de queratina. Es imperativo que los profesionales de GlowApp utilicen piezas de mano con sistemas de amortiguación de vibraciones y mantengan los bits perfectamente centrados, ya que la excentricidad del giro aumenta exponencialmente el trauma mecánico. La prevención radica en limitar el tiempo de exposición del torno sobre la uña natural y priorizar técnicas de limado manual para el acabado final, reduciendo así la fatiga estructural del tejido ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31809055/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "uso prolongado de torno en matriz"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_manicura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:30:30.427Z"
+  },
+  {
+    "chunk_id": "corrosion-galvanica-002",
+    "title": "Corrosión galvánica: el riesgo invisible en herramientas de acero inoxidable",
+    "content": "La corrosión galvánica ocurre cuando dos metales con diferentes potenciales eléctricos entran en contacto en presencia de un electrolito, como soluciones desinfectantes o residuos biológicos. En el contexto de GlowApp, el uso de herramientas de acero inoxidable de baja calidad o la mezcla de distintos tipos de aleaciones en el mismo baño de esterilización puede liberar iones metálicos (como níquel o cromo) que se depositan en la superficie de la uña. Estos iones no solo comprometen la integridad de la herramienta, sino que pueden inducir dermatitis alérgica de contacto en el lecho ungueal, un fenómeno a menudo confundido con reacciones a geles. La presencia de manchas oscuras o verdosas en la piel periungueal tras el uso de herramientas metálicas debe alertar sobre la degradación del instrumental. Recomendamos el uso exclusivo de acero inoxidable de grado quirúrgico (316L) y el reemplazo inmediato de cualquier herramienta que muestre signos de picaduras o decoloración, asegurando que los protocolos de inmersión en desinfectantes químicos no excedan el tiempo necesario para evitar la corrosión acelerada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/contact-dermatitis-symptoms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niquel",
+        "cromo"
+      ],
+      "contraindications": [
+        "uso de herramientas oxidadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo_bioseguridad"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:30:30.427Z"
+  },
+  {
+    "chunk_id": "exotermia-polimerizacion-004",
+    "title": "Gestión de la reacción exotérmica en sistemas fotopolimerizables",
+    "content": "La fotopolimerización de geles es una reacción química exotérmica, lo que significa que libera calor durante la transición de monómero a polímero. Cuando se aplican capas demasiado gruesas o se utilizan lámparas con una intensidad de irradiancia muy alta, la temperatura en el lecho ungueal puede superar el umbral de dolor del paciente (típicamente por encima de los 45°C), provocando quemaduras térmicas o, en casos recurrentes, onicólisis traumática por desprendimiento del lecho. La clave para mitigar este riesgo en GlowApp es el uso de lámparas con modo 'low heat' o 'soft cure', que escalan la potencia gradualmente, permitiendo que la red polimérica se estabilice sin una acumulación térmica explosiva. Además, es vital educar a la clienta sobre la importancia de retirar la mano ante la primera sensación de calor punzante, evitando el reflejo de aguantar el dolor. La física de los geles modernos requiere un control preciso de la intensidad luminosa para garantizar una polimerización completa sin comprometer la salud del tejido subyacente ni la adhesión química a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(20)32975-4/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "monomeros",
+        "oligomeros"
+      ],
+      "contraindications": [
+        "capas gruesas de gel"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_manicura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:30:30.427Z"
+  },
+  {
+    "chunk_id": "hidrodinamica-lamina-005",
+    "title": "La paradoja de la hidratación: balance hídrico y flexibilidad ungueal",
+    "content": "La lámina ungueal es una estructura semipermeable que regula su contenido de agua para mantener la flexibilidad. Existe una paradoja clínica: aunque la uña necesita hidratación, la exposición prolongada al agua (como en el lavado excesivo o inmersión constante) debilita los enlaces de hidrógeno entre las fibras de queratina, provocando que la uña se vuelva blanda, quebradiza y propensa a la onicosquizia lamelar. Por el contrario, una uña excesivamente deshidratada pierde su resiliencia natural y se vuelve quebradiza ante el mínimo impacto mecánico. El objetivo en el cuidado clínico de la uña es mantener un equilibrio hídrico mediante el uso de oclusivos (aceites de cutícula ricos en ceramidas o escualano) que eviten la pérdida de agua transepidérmica sin sellar la lámina de forma que impida su respiración natural. En GlowApp, recomendamos evitar el uso de endurecedores con formaldehído, que deshidratan la lámina al reticular las proteínas, y optar por acondicionadores que restauren el balance lipídico natural de la placa ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://www.ijdvl.com/article.asp?issn=0378-6323;year=2023;volume=89;issue=1;spage=10;epage=20;aulast=Kumar",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "escualano"
+      ],
+      "contraindications": [
+        "formaldehido"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_domiciliario"
+      ],
+      "content_type": "mitos_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:30:30.427Z"
+  },
+  {
+    "chunk_id": "fototoxicidad-luz-visible-006",
+    "title": "Espectro de emisión y fototoxicidad en lámparas LED",
+    "content": "Recientes investigaciones sugieren que, aunque las lámparas LED para uñas tienen una emisión mayoritaria en el espectro UVA, algunas unidades de baja calidad o mal calibradas pueden emitir luz azul de alta energía que, en exposiciones prolongadas, podría inducir estrés oxidativo en la piel periungueal. Este estrés oxidativo contribuye al fotoenvejecimiento prematuro y, en individuos predispuestos, a la formación de lentigos solares periungueales. La fotoprotección en cabina no debe limitarse al uso de guantes sin dedos; es fundamental verificar que las lámparas cumplan con los estándares de irradiancia y longitud de onda (365-405 nm) que minimicen la absorción por parte de los cromóforos cutáneos. En GlowApp, promovemos el uso de protectores solares de amplio espectro aplicados 20 minutos antes del servicio y el uso de lámparas de baja potencia con tiempos de exposición optimizados. La seguridad clínica exige que el profesional comprenda que la polimerización es una reacción química que no requiere una intensidad lumínica excesiva, sino una longitud de onda precisa para activar los fotoiniciadores presentes en el gel.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "JAMA Dermatology",
+        "url": "https://jamanetwork.com/journals/jamadermatology/fullarticle/2801458",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtro solar"
+      ],
+      "contraindications": [
+        "lamparas de alta irradiancia sin proteccion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bioseguridad",
+        "tecnica_manicura"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:30:30.427Z"
+  },
+  {
+    "chunk_id": "microbioma-periungueal-007",
+    "title": "El microbioma periungueal: impacto de la desinfección química",
+    "content": "La piel que rodea la uña (pliegue proximal y lateral) alberga un microbioma complejo que actúa como barrera de defensa natural contra patógenos oportunistas. El uso excesivo de antisépticos de amplio espectro, como el alcohol de alta graduación o soluciones cloradas, no solo deshidrata la piel, sino que altera la microbiota comensal, creando un nicho ecológico donde pueden proliferar hongos (como Candida spp.) o bacterias resistentes. En el entorno de GlowApp, abogamos por una higiene selectiva: limpiar la zona periungueal con soluciones de pH equilibrado y mantener la integridad de la barrera cutánea mediante la aplicación de emolientes tras el servicio. La desinfección debe enfocarse únicamente en el instrumental y la superficie de la lámina, evitando el contacto innecesario con el tejido vivo circundante. Preservar este equilibrio microbiano es fundamental para prevenir la paroniquia crónica y otras infecciones que a menudo se originan por un exceso de celo en la asepsia, irónicamente facilitando la entrada de microorganismos a través de microfisuras en la piel irritada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-020-0382-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "emolientes"
+      ],
+      "contraindications": [
+        "uso excesivo de alcohol en cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidado_domiciliario",
+        "bioseguridad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:30:30.427Z"
+  }
+]

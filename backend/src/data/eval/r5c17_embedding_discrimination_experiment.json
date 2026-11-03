@@ -1,0 +1,54 @@
+{
+  "cycle": "29",
+  "experiment": "R5-C17",
+  "database": "LOCAL_ONLY",
+  "production_contacted": false,
+  "baseline_r5c_unchanged": true,
+  "baseline_r5c": { "r5": 0.7885, "mrr": 0.7179, "note": "NO MODIFICADO" },
+  "model": "nvidia/nv-embedqa-e5-v5 (1024d)",
+  "motor": "PRODUCTIVO SIN MODIFICAR",
+  "reproducibility": "A ≡ B — márgenes y hard negatives idénticos en ambas corridas",
+  "cases": {
+    "misses": ["cabello_002", "cejas_004", "cejas_008"],
+    "controls": ["skincare_003", "skincare_010", "cabello_008", "cejas_007"],
+    "rationale": "Misses = los 3 reales de GOLD-V5 (evidencia existe, retrieval no la coloca en top-5). Controles = queries con R@5=1.0 en baseline R5-C14."
+  },
+  "expD_discrimination_aggregates": {
+    "misses": { "mean_margin": 0.0065, "median_margin": 0.0076, "min_margin": -0.0026, "max_margin": 0.0145, "n": 3 },
+    "controls": { "mean_margin": 0.0282, "median_margin": 0.0418, "min_margin": -0.0027, "max_margin": 0.0476, "n": 4 },
+    "key_finding": "Los misses viven en competencia ~4.3× más estrecha que los controles (mean margin 0.0065 vs 0.0282). Los gold chunks de los misses NO están separados de sus competidores."
+  },
+  "expC_hard_negatives": {
+    "cabello_002": { "classification": "EMPATE_PRACTICO", "count": "3/5 empate, 2/5 competencia estrecha", "note": "Competidores del mismo dominio (colorimetría capilar: microbiota, ph-balance) a Δ +0.014..+0.031 del gold" },
+    "cejas_004": { "classification": "NEGATIVO_SUPERA_GOLD", "count": "1/5 supera al gold, 4/5 empate", "note": "visajismo_cejas_... (sim 0.5264) supera al mejor gold (0.5238); el resto a Δ +0.002..+0.009" },
+    "cejas_008": { "classification": "EMPATE_PRACTICO", "count": "5/5 empate", "note": "psicodermatología y propiocepción a Δ +0.008..+0.021 del gold" },
+    "conclusion": "Los 3 misses tienen competencia estrecha o negativos que superan al gold. SEMANTIC COLLISION confirmada en la banda 0.50-0.59."
+  },
+  "expF_document_representation_effect": {
+    "method": "En memoria: embedding(passage) de 'prefijo_dominio + título + contenido' vs el embedding productivo actual. SIN reingestar, SIN escribir BD.",
+    "cabello_002": { "mean_delta_sim": 0.1014, "n": 5, "note": "Todos los gold suben; el mejor gold pasa de 0.555 a 0.648 (+0.092)" },
+    "cejas_004": { "mean_delta_sim": 0.0703, "n": 6, "note": "El chunk de musculatura-orbicular salta de sim 0.343 a 0.585 (+0.242) — el chunk con la peor sim productiva es el que más gana con contexto de dominio" },
+    "cejas_008": { "mean_delta_sim": 0.0433, "n": 6, "note": "Remoción láser sube de 0.411 a 0.546 (+0.135); erbio-glass de 0.4105 a 0.5458" },
+    "skincare_003": { "mean_delta_sim": 0.1206, "n": 4, "note": "Control positivo — también gana con representación documental" },
+    "skincare_010": { "mean_delta_sim": 0.0507, "n": 3 },
+    "cabello_008": { "mean_delta_sim": 0.0102, "n": 4 },
+    "cejas_007": { "mean_delta_sim": -0.0203, "n": 3, "note": "Control — ligera caída (ya tenía margen suficiente)" },
+    "conclusion": "La representación documental es un FACTOR CAUSAL: añadir dominio+título al texto que entra al embedding de passage eleva la similitud query↔gold en +0.04..+0.24. Los chunks de los misses NO están mal en contenido — están MAL REPRESENTADOS en el embedding (el texto de passage no lleva contexto de título/dominio)."
+  },
+  "verdict": "EMBEDDING-DOCUMENT",
+  "verdict_rationale": "La evidencia demuestra que el cuello de botella está en la REPRESENTACIÓN DOCUMENTAL (el texto que entra al embedding de passage), no en la query (R5-C16 descartada), no en HNSW (R5-C15 descartado), no en el contenido del corpus. Los gold chunks de los 3 misses tienen sim 0.34-0.55 con la query por infra-representación: el embedding productivo del chunk no incluye el contexto de título/dominio. Al añadirlo en memoria, la similitud sube +0.04..+0.24 — suficiente para sacar el gold de la zona de colisión (0.50-0.59).",
+  "answers": {
+    "causa_confirmada": "EMBEDDING-DOCUMENT (representación documental deficiente)",
+    "causa_descartada": "QUERY (R5-C16), HNSW (R5-C15), reranking (R5-C3/C4), threshold, chunking, truncado NVIDIA",
+    "por_que_no_es_semantic_collision_pura": "La colisión existe (banda 0.50-0.59 comprimida) PERO es consecuencia de la representación: al enriquecer el passage embedding, la separación mejora sin cambiar modelo",
+    "es_corpus": "NO — el contenido correcto existe y es distinguible cuando se representa bien"
+  },
+  "recommendation_r5c18": {
+    "1": "Experimentar A/B controlado de representación documental EN PRODUCCIÓN: añadir título (+dominio) al texto que entra al embedding de passage durante la ingesta (requiere reingesta — decisión del Director)",
+    "2": "Alternativa sin reingesta: enriquecer el texto de passage en runtime (concatenar título almacenado + contenido antes de generar embedding en consultas de similitud) — NO requiere reingesta pero cambia el espacio de búsqueda",
+    "3": "Antes de A/B de modelos: evaluar si la representación documental resuelve ≥2/3 misses (el experimento en memoria sugiere que sí)",
+    "4": "Mantener los 3 misses como casos de evaluación; GOLD-V5 y baseline R5-C intactos",
+    "5": "Si la representación documental NO resuelve los misses tras A/B → entonces sí proceder a A/B de modelo de embeddings"
+  },
+  "not_to_touch": ["motor productivo", "modelo de embeddings", "HNSW", "threshold", "corpus", "GOLD-V5", "baseline R5-C", "Railway"]
+}

@@ -1,0 +1,395 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-bioluminiscencia-001",
+    "title": "Maquillaje en eventos con iluminación ultravioleta: El desafío de la fluorescencia",
+    "content": "La asistencia a eventos con iluminación tipo 'luz negra' (radiación UVA de onda larga) presenta un desafío clínico y estético único. Muchos pigmentos convencionales, particularmente aquellos con altas concentraciones de óxido de zinc o dióxido de titanio (filtros minerales), así como ciertos polímeros sintéticos, pueden exhibir fluorescencia bajo esta longitud de onda, alterando drásticamente la apariencia del maquillaje. Desde la perspectiva fisiológica, la exposición a luz UV, aunque sea de baja intensidad, puede inducir estrés oxidativo en los queratinocitos. Es fundamental que los productos utilizados en estas ocasiones carezcan de agentes blanqueadores ópticos. La recomendación clínica es optar por formulaciones con pigmentos minerales tratados que no reaccionen ante el espectro UVA. Además, se debe considerar que la piel expuesta a luz UV requiere una base de maquillaje con antioxidantes tópicos (vitamina C o E) para neutralizar los radicales libres generados durante la exposición. La estabilidad de la emulsión es crítica, ya que la calidez del entorno suele ser mayor en estos espacios cerrados, favoreciendo la migración de pigmentos hacia los surcos nasogenianos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina C",
+        "vitamina E"
+      ],
+      "contraindications": [
+        "agentes blanqueadores ópticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-fotoproteccion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-frecuencia-radio-002",
+    "title": "Maquillaje en entornos con alta exposición a radiofrecuencia (RF) de telecomunicaciones",
+    "content": "En eventos masivos con alta densidad de dispositivos móviles, la piel está expuesta a campos electromagnéticos de radiofrecuencia. Aunque la evidencia sobre daño térmico directo es limitada, existe una preocupación creciente sobre el 'efecto antena' de ciertos componentes metálicos presentes en pigmentos de maquillaje de alta cobertura (como óxidos de hierro o partículas de mica). La acumulación de estas partículas en la superficie cutánea podría, teóricamente, interferir con la homeostasis de la barrera cutánea si no se realiza una limpieza rigurosa post-evento. La estrategia de maquillaje recomendada incluye el uso de primers con propiedades quelantes y una barrera física no metálica. Clínicamente, es vital asegurar que el producto no sea oclusivo para permitir la termorregulación, ya que la interacción entre la radiación ambiental y la capa de maquillaje puede alterar la temperatura de la superficie cutánea (TS). Se sugiere el uso de vehículos ligeros tipo gel o emulsiones O/W (aceite en agua) que minimicen la retención de calor y prevengan la irritación por contacto en individuos con piel sensible.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institute of Environmental Health Sciences",
+        "url": "https://www.niehs.nih.gov/health/topics/agents/emf",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes quelantes"
+      ],
+      "contraindications": [
+        "pigmentos metálicos pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-vibraciones-003",
+    "title": "Maquillaje en eventos con alta exposición a vibraciones mecánicas de baja frecuencia",
+    "content": "La exposición prolongada a vibraciones mecánicas (frecuentes en eventos con sistemas de sonido de gran potencia o maquinaria industrial) puede alterar la integridad de la película hidrolipídica y la adherencia del maquillaje. Las vibraciones pueden inducir una micro-migración de las partículas de pigmento hacia los poros, facilitando la comedogenicidad mecánica. Para mitigar este riesgo, la técnica debe priorizar la fijación mediante polímeros de alta elasticidad que se adapten al movimiento constante de la dermis sin fracturarse. Clínicamente, el uso de selladores basados en siliconas volátiles es preferible, ya que proporcionan una red de soporte flexible. Es imperativo evitar productos con texturas excesivamente densas o ceras de alto punto de fusión que, bajo vibración constante, pueden generar micro-fricciones contra el ostium folicular, desencadenando una respuesta inflamatoria subclínica. La rutina de desmaquillado debe ser doble, utilizando primero un aceite limpiador para disolver las siliconas y luego un limpiador de base acuosa para eliminar residuos de partículas que hayan penetrado el estrato córneo debido a la energía mecánica ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450837/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas volátiles"
+      ],
+      "contraindications": [
+        "ceras pesadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-tecnicas-fijacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-campo-electrostático-004",
+    "title": "Maquillaje en entornos con alta carga electrostática: Prevención de adhesión de partículas",
+    "content": "En eventos realizados en ambientes con alfombras sintéticas, aire muy seco o sistemas de ventilación industrial, se generan campos electrostáticos que aumentan la adhesión de partículas contaminantes (PM2.5, polvo, alérgenos) a la piel. El maquillaje, si no está formulado correctamente, actúa como un imán para estos contaminantes. La estrategia clínica consiste en aplicar un spray fijador con propiedades antiestáticas que neutralice la carga superficial del rostro. Se deben evitar las bases con alto contenido de talco o sílice cargada, ya que pueden potenciar la atracción de partículas. La recomendación es utilizar productos 'anti-pollution' que incluyan biopolímeros filmógenos (como el biosacárido gum-4) que crean una barrera física que impide el contacto directo de los contaminantes con la piel. Tras el evento, es obligatorio realizar una limpieza profunda para eliminar cualquier residuo de partículas que, al estar adheridas electrostáticamente, no se eliminan con agua micelar convencional. La persistencia de estas partículas puede exacerbar condiciones como la dermatitis de contacto o la rosácea por liberación de mediadores inflamatorios.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the European Academy of Dermatology and Venereology",
+        "url": "https://onlinelibrary.wiley.com/journal/14683083",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "biosacárido gum-4"
+      ],
+      "contraindications": [
+        "talco",
+        "sílice cargada"
+      ],
+      "season": [
+        "winter",
+        "dry"
+      ],
+      "applicable_modules": [
+        "maquillaje-proteccion-ambiental"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-presión-atmosférica-005",
+    "title": "Maquillaje para eventos en localizaciones de gran altitud: Gestión de la deshidratación",
+    "content": "Bogotá, situada a 2.640 metros sobre el nivel del mar, presenta condiciones de baja presión atmosférica que aceleran la pérdida transepidérmica de agua (TEWL). El maquillaje aplicado en eventos a esta altitud debe ser altamente oclusivo en términos de humectación pero ligero en textura para no bloquear la transpiración. La piel a esta altitud sufre una hipoxia relativa que reduce la tasa de renovación celular. Es vital evitar el uso de polvos matificantes en exceso, ya que estos absorben la poca humedad ambiental, exacerbando la xerosis. La técnica recomendada es el 'layering' de sueros humectantes (ácido hialurónico de bajo peso molecular) seguido de una base de maquillaje con lípidos biomiméticos que refuercen la barrera lipídica dañada por la altitud. Los pigmentos deben ser de alta pureza para evitar la irritación, ya que la barrera cutánea es más permeable y vulnerable a los ingredientes irritantes a gran altitud. Se recomienda finalizar con un spray fijador que contenga pantenol para calmar la piel durante el evento, manteniendo la elasticidad del estrato córneo frente a la sequedad ambiental extrema.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization (WHO)",
+        "url": "https://www.who.int/news-room/fact-sheets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido hialurónico",
+        "pantenol"
+      ],
+      "contraindications": [
+        "polvos matificantes excesivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-fisiologia-altitud"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-microbioma-006",
+    "title": "Maquillaje y preservación del microbioma cutáneo en eventos de larga duración",
+    "content": "La aplicación de maquillaje durante eventos prolongados (superiores a 8 horas) altera el microambiente de la piel, creando un entorno propicio para la proliferación de microorganismos oportunistas. La oclusión persistente reduce la oxigenación y altera el pH, factores clave para la estabilidad del microbioma comensal (como *Staphylococcus epidermidis*). Clínicamente, es fundamental utilizar productos 'microbiome-friendly' que contengan prebióticos (como inulina o extractos de fermentos) para mantener el equilibrio de la microbiota durante el evento. Se debe evitar el uso de conservantes agresivos (como parabenos de cadena larga o liberadores de formaldehído) que pueden inducir disbiosis. La técnica de aplicación debe evitar el uso de aplicadores reutilizables (esponjas) que no hayan sido desinfectados, para prevenir la transferencia de patógenos exógenos. La recomendación es limpiar el rostro con soluciones de pH balanceado al finalizar el evento para restaurar el manto ácido. Un microbioma alterado no solo compromete la salud cutánea a largo plazo, sino que también reduce la eficacia de la barrera inmunológica natural de la piel contra alérgenos ambientales.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inulina",
+        "prebióticos"
+      ],
+      "contraindications": [
+        "parabenos",
+        "formaldehído"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-microbioma"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-inflamación-007",
+    "title": "Maquillaje para eventos en pieles con inflamación subclínica: Gestión de la termorregulación",
+    "content": "Pacientes con condiciones inflamatorias subclínicas (como rosácea fase eritematotelangiectásica o dermatitis seborreica controlada) presentan una mayor reactividad vascular ante el calor generado por la iluminación de eventos o el estrés ambiental. El maquillaje excesivo o muy oclusivo puede actuar como una 'manta' térmica, dificultando la disipación de calor y potenciando la vasodilatación cutánea. La técnica de maquillaje debe enfocarse en el uso de pigmentos correctores de color verde (para neutralizar el eritema) encapsulados en vehículos con efecto refrescante (como hidrogeles o emulsiones con alto contenido de agua). Se debe evitar el uso de ingredientes vasodilatadores (como fragancias sintéticas, aceites esenciales de menta o alcanfor) que, aunque dan sensación de frescor, pueden irritar la piel a largo plazo. Es preferible aplicar el producto mediante presiones suaves, evitando el arrastre, para no estimular la microcirculación de forma innecesaria. La base debe ser no comedogénica y con un filtro solar mineral (óxido de zinc) que proporcione una barrera reflectante contra la radiación infrarroja, la cual es un potente disparador de brotes en pieles inflamadas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/rosacea",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosácea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxido de zinc",
+        "pigmentos verdes"
+      ],
+      "contraindications": [
+        "fragancias",
+        "aceites esenciales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-pieles-inflamadas"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-luz-art-008",
+    "title": "Maquillaje bajo iluminación LED de espectro estrecho: Desafíos en la reproducción cromática",
+    "content": "La creciente adopción de iluminación LED en eventos, a menudo caracterizada por un espectro de emisión limitado (picos intensos en el azul y carencia de rojos), altera la percepción del color del maquillaje. Esto puede llevar a errores en la selección de tonos, resultando en un aspecto grisáceo o cenizo si no se compensa adecuadamente. Desde el punto de vista clínico, la piel bajo esta iluminación puede parecer más pálida o cetrina. La técnica experta sugiere el uso de bases con subtonos cálidos (dorados o melocotón) que compensen la deficiencia de espectro rojo de la luz LED. Es crucial realizar la prueba de color bajo condiciones de luz similares a las del evento, no bajo luz natural o blanca fría. Además, la exposición a la luz azul intensa de los LEDs de escenario puede penetrar más profundamente en la dermis que la luz visible convencional, contribuyendo a la hiperpigmentación post-inflamatoria. Se recomienda el uso de maquillaje enriquecido con antioxidantes específicos para luz azul (como luteína o extractos de cacao) para proteger la integridad de los melanocitos durante la jornada.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "luteína",
+        "extracto de cacao"
+      ],
+      "contraindications": [
+        "bases de subtono frío"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-fotometria"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-fatiga-009",
+    "title": "Maquillaje para eventos tras privación de sueño: Impacto en la permeabilidad cutánea",
+    "content": "La privación de sueño afecta directamente la función barrera de la piel, aumentando la pérdida transepidérmica de agua y elevando los niveles de cortisol, lo cual puede alterar la secreción sebácea y el pH cutáneo. En eventos tras una noche de descanso insuficiente, la piel suele presentar una mayor reactividad y una textura irregular. La técnica de maquillaje debe enfocarse en la reparación inmediata de la barrera lipídica mediante productos enriquecidos con ceramidas y ácidos grasos. Se debe evitar el maquillaje con altas concentraciones de alcoholes desnaturalizados o fragancias, ya que la piel fatigada tiene un umbral de irritación mucho más bajo. La aplicación debe ser minimalista: una base de cobertura media con acabado satinado (no mate) para reflejar la luz y disimular la opacidad característica de la fatiga. El uso de correctores de color salmón es efectivo para neutralizar las ojeras marcadas por la congestión vascular. Es imperativo que el maquillaje contenga ingredientes calmantes como el bisabolol o la alantoína para reducir la inflamación sistémica reflejada en el rostro durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Sleep Foundation",
+        "url": "https://www.sleepfoundation.org/physical-health/how-sleep-affects-your-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "bisabolol",
+        "alantoína"
+      ],
+      "contraindications": [
+        "alcoholes desnaturalizados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-piel-fatigada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:01:59.250Z"
+  }
+]

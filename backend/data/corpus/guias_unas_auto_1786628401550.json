@@ -1,0 +1,85 @@
+[
+  {
+    "chunk_id": "guias_unas-osteonicos-001",
+    "title": "Osteoma cutis subungueal: calcificaciones ectópicas",
+    "content": "El osteoma cutis subungueal es una condición rara caracterizada por la formación de depósitos óseos maduros dentro de la dermis del lecho ungueal. A menudo, esta condición es mal diagnosticada como una verruga periungueal o una exostosis subungueal. Clínicamente, se manifiesta como una lesión firme, a veces dolorosa, que puede causar deformidad en la lámina ungueal suprayacente. La literatura dermatológica, como la indexada en PubMed, sugiere que estas calcificaciones pueden ser secundarias a traumas crónicos o inflamación persistente en el lecho. Es fundamental realizar un diagnóstico diferencial mediante radiografía simple o ecografía de alta resolución para distinguir entre una calcificación dérmica y una exostosis ósea que emana de la falange distal. En cabina, la manipulación de una lesión persistente y dura bajo la uña sin un diagnóstico previo por imagen es contraindicada, ya que puede exacerbar el dolor y la inflamación del tejido circundante. El especialista debe derivar al paciente ante cualquier nódulo subungueal que presente cambios de color o crecimiento asimétrico, evitando el uso de herramientas de corte que podrían traumatizar aún más el área calcificada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32450550/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_mecanica_lesion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_diferencial"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:39:43.879Z"
+  },
+  {
+    "chunk_id": "guias_unas-queratinocitos-002",
+    "title": "Degradación de los corneocitos por solventes orgánicos",
+    "content": "La lámina ungueal, aunque densamente queratinizada, no es una estructura inerte. Su integridad depende de la cohesión entre los corneocitos, mantenida por lípidos intercelulares y proteínas de unión. El uso excesivo de solventes como la acetona o el acetato de etilo para la remoción de productos fotopolimerizables provoca una extracción selectiva de estos lípidos, resultando en una 'delaminación' o separación de las capas de queratina. Estudios publicados en el Journal of the American Academy of Dermatology (JAAD) destacan que esta deslipidización reduce la flexibilidad de la uña, haciéndola susceptible a fracturas longitudinales y onicosquizia. La permeabilidad de la lámina aumenta tras la exposición prolongada a estos solventes, lo que facilita la entrada de monómeros no polimerizados hacia el lecho ungueal, aumentando el riesgo de dermatitis por contacto sensibilizante. Se recomienda limitar el uso de solventes puros y optar por métodos mecánicos controlados (limado manual suave) o sistemas de remoción con agentes emolientes añadidos que preserven la barrera lipídica natural de la lámina.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/diseases/a-z/nails-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona",
+        "acetato_etilo"
+      ],
+      "contraindications": [
+        "exposicion_prolongada_solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_productos"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:39:43.879Z"
+  }
+]

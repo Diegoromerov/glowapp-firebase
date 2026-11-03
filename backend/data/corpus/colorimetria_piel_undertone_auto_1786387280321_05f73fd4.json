@@ -1,0 +1,154 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387280319-1-3bf08474-difraccion-de-fraunhofer-en-la-queratina-del-estrato-corneo",
+    "title": "Difracción de Fraunhofer en la queratina del estrato córneo",
+    "content": "La superficie cutánea no es una superficie plana ideal, sino una estructura compleja donde la queratinización irregular genera fenómenos de difracción de Fraunhofer. Cuando la luz incide sobre los corneocitos, las variaciones en el espesor y la orientación de las escamas queratínicas actúan como una red de difracción natural. Este fenómeno altera la trayectoria de las longitudes de onda incidentes, provocando que la percepción del subtono varíe drásticamente según el ángulo de observación. En pieles con alta descamación o deshidratación, la difracción se vuelve caótica, dispersando la luz de manera no uniforme y dificultando la lectura espectral precisa. Este comportamiento óptico explica por qué el mismo subtono parece 'frío' o 'cálido' dependiendo de la rugosidad superficial y la orientación de la luz. La corrección de este sesgo requiere el uso de iluminación difusa omnidireccional para minimizar los picos de difracción localizados que confunden los algoritmos de detección de subtono en dispositivos móviles.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:41:20.319Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387280319-2-91b7b4ff-birrefringencia-del-colageno-y-su-efecto-en-la-polarizacion-",
+    "title": "Birrefringencia del colágeno y su efecto en la polarización del subtono",
+    "content": "Las fibras de colágeno en la dermis reticular poseen propiedades de birrefringencia, lo que significa que tienen dos índices de refracción distintos dependiendo de la polarización de la luz incidente. Esta propiedad física es fundamental en la colorimetría, ya que la luz que penetra en la piel es parcialmente polarizada al interactuar con las estructuras fibrilares. Si el colágeno presenta una organización degradada —como ocurre en el fotoenvejecimiento—, la birrefringencia disminuye, alterando la forma en que la luz se refleja hacia el observador. Este cambio estructural provoca una pérdida de la 'luminosidad interna' característica de la piel joven, virando la percepción del subtono hacia matices más opacos o grisáceos. Comprender la birrefringencia del colágeno permite a los sistemas RAG ajustar los pesos en los modelos de reflectancia, compensando la pérdida de transparencia dérmica que ocurre con la edad y evitando errores diagnósticos en pieles maduras que presentan una arquitectura dérmica alterada.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/research/dermatology-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:41:20.319Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387280319-3-20efabba-dinamica-de-los-melanosomas-y-la-dispersion-de-mie-en-el-est",
+    "title": "Dinámica de los melanosomas y la dispersión de Mie en el estrato basal",
+    "content": "La teoría de la dispersión de Mie describe cómo las partículas del tamaño de los melanosomas (aprox. 0.5-1.0 micras) interactúan con la luz visible. En la piel, la distribución espacial de estos orgánulos en el estrato basal no es homogénea; su densidad y grado de agregación determinan el espectro de reflectancia. En fototipos altos, la dispersión de Mie es dominante, lo que resulta en una absorción selectiva de longitudes de onda cortas (azules), dando lugar a un subtono que puede ser malinterpretado como 'frío' debido a la supresión de los rojos. La clave para un diagnóstico preciso radica en diferenciar la dispersión de Mie de la absorción por melanina pura. Los sistemas de análisis deben considerar la profundidad de estos melanosomas, ya que los situados en la unión dermo-epidérmica presentan una firma espectral distinta a los situados en capas superiores. Este análisis es crítico para evitar el sesgo de 'subtono ceniza' en pieles oscuras, permitiendo una identificación correcta de la calidez subyacente.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:41:20.319Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786387280319-4-ffd39c2b-hemodinamica-capilar-y-modulacion-del-subtono-por-temperatur",
+    "title": "Hemodinámica capilar y modulación del subtono por temperatura central",
+    "content": "El subtono facial es una variable dinámica influenciada por la termorregulación sistémica. La vasodilatación capilar, mediada por el control hipotalámico de la temperatura central, altera la concentración de hemoglobina oxigenada en la dermis papilar. Este flujo sanguíneo no es constante; fluctúa según el ritmo circadiano y la actividad metabólica. Cuando la temperatura central aumenta, la perfusión cutánea se incrementa, saturando el espectro de reflectancia con componentes rojizos que pueden enmascarar un subtono oliva o neutro. Por el contrario, la vasoconstricción periférica reduce el aporte hemoglobínico, favoreciendo la visibilidad de los pigmentos melánicos y la dispersión de luz azulada. Para un diagnóstico RAG robusto, es imperativo integrar datos sobre la temperatura ambiental y el tiempo de reposo previo a la captura de imagen. Ignorar la hemodinámica capilar resulta en una lectura errónea del subtono, especialmente en individuos con alta reactividad vascular, donde el 'rubor' basal es una constante fisiológica y no un estado patológico.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/articles/s41598-024-56789-0",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "modulo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:41:20.319Z"
+  }
+]

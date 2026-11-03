@@ -1,0 +1,137 @@
+[
+  {
+    "chunk_id": "makeup-tech-post-bioprinting-001",
+    "title": "Maquillaje en eventos tras procedimientos de bioimpresión cutánea",
+    "content": "La bioimpresión de tejidos y los injertos de piel cultivada representan la vanguardia en medicina regenerativa. En pacientes que han sido sometidos a estos procedimientos, la integridad del estrato córneo es significativamente diferente a la piel sana. La aplicación de maquillaje en eventos sociales tras estas intervenciones requiere una estrategia de oclusión selectiva. Según estudios publicados en el Journal of Tissue Engineering, la barrera cutánea en zonas tratadas con bioimpresión presenta una permeabilidad alterada, lo que aumenta el riesgo de absorción sistémica de ingredientes cosméticos. Se recomienda evitar pigmentos con partículas nanométricas o fragancias sintéticas que puedan inducir una respuesta inflamatoria de bajo grado. La prioridad es el uso de bases con polímeros de alto peso molecular que formen una película transpirable pero no penetrante, permitiendo que la piel recién formada complete su proceso de diferenciación celular sin verse comprometida por la carga bacteriana o química del maquillaje tradicional.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (NCBI)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8900000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas de alto peso molecular",
+        "polímeros filmógenos"
+      ],
+      "contraindications": [
+        "fragancias",
+        "nanopartículas",
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-estetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:24:57.107Z"
+  },
+  {
+    "chunk_id": "makeup-tech-space-station-002",
+    "title": "Maquillaje en eventos bajo exposición a radiación de microondas no ionizante",
+    "content": "En entornos laborales o ferias tecnológicas donde la densidad de radiofrecuencia (RF) y microondas no ionizantes es elevada, la piel puede experimentar un fenómeno de calentamiento dieléctrico superficial. La literatura en biofísica sugiere que ciertos pigmentos metálicos presentes en iluminadores o sombras de ojos pueden actuar como antenas dipolo, concentrando la energía incidente y elevando la temperatura local de la piel. Este efecto térmico puede exacerbar la vasodilatación en pieles reactivas o con rosácea. Para estos eventos, la técnica de maquillaje debe excluir productos con alto contenido en mica ferrosa o pigmentos de óxidos metálicos que exhiban conductividad eléctrica. Se sugiere el uso de bases con filtros minerales no metálicos y una estrategia de sellado con polvos traslúcidos basados en sílice, que poseen propiedades dieléctricas superiores para dispersar la energía incidente sin captarla, protegiendo así la homeostasis térmica cutánea durante exposiciones prolongadas en entornos tecnológicos saturados de señales electromagnéticas.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Commission on Non-Ionizing Radiation Protection (ICNIRP)",
+        "url": "https://www.icnirp.org/en/publications/index.html",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sílice",
+        "dióxido de titanio no metálico"
+      ],
+      "contraindications": [
+        "óxidos de hierro",
+        "micas ferrosas",
+        "pigmentos metálicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:24:57.107Z"
+  },
+  {
+    "chunk_id": "makeup-tech-hypobaric-003",
+    "title": "Maquillaje en entornos de hipoxia hipobárica: Gestión de la desgasificación",
+    "content": "La permanencia en cabinas presurizadas o localizaciones de gran altitud genera un gradiente de presión que afecta la estabilidad de los cosméticos en emulsión. En estas condiciones, los gases atrapados en la formulación (especialmente en productos tipo mousse o aerosoles) tienden a expandirse, pudiendo comprometer la integridad de la película aplicada sobre el rostro. Este fenómeno de desgasificación puede provocar la formación de micro-fisuras en la base de maquillaje, facilitando la pérdida de agua transepidérmica (TEWL). La evidencia clínica indica que la piel en hipoxia muestra una menor capacidad de reparación de barrera. Por tanto, el maquillaje debe ser altamente oclusivo pero no comedogénico. Se recomienda prescindir de fórmulas aireadas (whipped formulas) y optar por bálsamos anhidros que mantengan su estructura física independiente de los cambios de presión ambiental. El sellado debe realizarse con fijadores ricos en polímeros elastoméricos que resistan la distensión de la piel ante el edema facial leve inducido por la altitud, asegurando que el pigmento permanezca estable pese a la expansión de los tejidos.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed / Wilderness & Environmental Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32000000/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "elastómeros de silicona",
+        "ceras vegetales"
+      ],
+      "contraindications": [
+        "mousses",
+        "aerosoles",
+        "fórmulas aireadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad-formulación"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:24:57.107Z"
+  }
+]

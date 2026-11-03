@@ -1,0 +1,387 @@
+[
+  {
+    "chunk_id": "ingredientes-activos-estrogenos-topicos-001",
+    "title": "Estrógenos tópicos en cosmética: el debate sobre el impacto endocrino",
+    "content": "El uso de fitoestrógenos y compuestos con actividad estrogénica en formulaciones antienvejecimiento ha ganado tracción, pero su aplicación tópica plantea interrogantes sobre la absorción sistémica y el efecto endocrino. Aunque se promocionan por su capacidad para estimular la síntesis de colágeno y mejorar la firmeza cutánea, la literatura dermatológica sugiere precaución. Estudios en el Journal of the American Academy of Dermatology han discutido la posibilidad de que ciertos extractos botánicos con actividad estrogénica puedan interactuar con los receptores hormonales, especialmente en pacientes con antecedentes de patologías dependientes de estrógenos. La barrera cutánea, aunque efectiva, no es impermeable a moléculas pequeñas o potenciadas por vehículos cosméticos. Existe una preocupación teórica sobre la acumulación y el impacto en el eje hipotálamo-hipofisario si se utilizan concentraciones elevadas de forma prolongada. Es fundamental que el profesional de GlowApp evalúe el historial clínico del paciente antes de recomendar productos que contengan isoflavonas de alta potencia o compuestos análogos, priorizando siempre la seguridad endocrina frente a las promesas de rejuvenecimiento celular inducido por hormonas.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/cosmetic/anti-aging/phytoestrogens",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fitoestrogenos",
+        "isoflavonas"
+      ],
+      "contraindications": [
+        "antecedentes_cancer_hormonodependiente"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_cutaneo_avanzado"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-dimetilsulfoxido-002",
+    "title": "Dimetilsulfóxido (DMSO) como vehículo: riesgos de penetración indeseada",
+    "content": "El dimetilsulfóxido (DMSO) es un solvente polar altamente efectivo para facilitar la penetración transdérmica de fármacos. Sin embargo, su inclusión en formulaciones cosméticas de venta libre es controvertida debido a su capacidad para transportar no solo los ingredientes activos, sino también contaminantes presentes en la superficie cutánea o en la propia fórmula hacia la circulación sistémica. La literatura técnica, incluyendo reportes en PubMed, destaca que el DMSO puede alterar la estructura lipídica del estrato córneo de forma temporal, permitiendo una permeabilidad inespecífica. Para un usuario de GlowApp, el riesgo radica en la aplicación de productos que contengan este vehículo sobre pieles con barrera comprometida o en presencia de residuos ambientales. La irritación por contacto es un efecto adverso inmediato, pero el riesgo a largo plazo es la exposición sistémica a sustancias que normalmente no cruzarían la barrera cutánea. Es imperativo desaconsejar el uso de productos que empleen DMSO como potenciador en rutinas que no hayan sido supervisadas por un dermatólogo, especialmente en zonas extensas del cuerpo donde la absorción puede ser clínicamente significativa.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34521098/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "comprometida"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimetilsulfoxido"
+      ],
+      "contraindications": [
+        "barrera_cutanea_alterada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_de_ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-metil-parabeno-003",
+    "title": "Metilparabeno y la exposición UV: consideraciones de fototoxicidad",
+    "content": "Aunque los parabenos son conservantes ampliamente estudiados y considerados seguros en las concentraciones permitidas, existe un área de investigación específica sobre su comportamiento bajo exposición a la radiación ultravioleta. Algunos estudios sugieren que el metilparabeno, al ser irradiado, podría generar especies reactivas de oxígeno (ROS) que contribuyen al estrés oxidativo celular y a la degradación prematura de la barrera epidérmica. Este fenómeno es particularmente relevante en productos de cuidado diario que no son protectores solares pero que se aplican antes de la exposición solar. La evidencia en revistas como el Journal of Dermatological Science indica que la interacción entre ciertos conservantes y la radiación UV puede inducir una respuesta inflamatoria subclínica, exacerbando el eritema en pieles reactivas. Para el usuario de GlowApp, esto significa que la selección de productos debe considerar la estabilidad fotoquímica de los conservantes incluidos. No se trata de eliminar los parabenos, sino de comprender que en rutinas de alta exposición solar, la elección de formulaciones con conservantes más estables o con mejores sistemas antioxidantes puede reducir el riesgo de sensibilización fotoinducida, manteniendo la integridad del microbioma y la salud cutánea a largo plazo.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-dermatological-science",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metilparabeno"
+      ],
+      "contraindications": [
+        "exposicion_solar_prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_de_rutina"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-hidroxi-acidos-004",
+    "title": "Hidroxiácidos y desequilibrio del pH en pieles con rosácea",
+    "content": "La aplicación de alfa-hidroxiácidos (AHAs) en pacientes con rosácea es un terreno complejo. Si bien el ácido láctico o el mandélico pueden tener beneficios, el riesgo principal es la desestabilización del manto ácido y la posterior exacerbación de la inflamación neurogénica. La rosácea se caracteriza por una barrera cutánea disfuncional y una mayor sensibilidad a los cambios de pH. Cuando se aplican AHAs, el descenso brusco del pH cutáneo puede activar los receptores TRPV1, responsables de la sensación de ardor y enrojecimiento característicos de esta condición. La literatura, respaldada por la IADVL, advierte que la sobre-exfoliación en pieles con rosácea no solo causa irritación, sino que puede inducir un brote de pápulas y pústulas por la alteración del microbioma local. En GlowApp, recomendamos que cualquier exfoliación química en pieles con diagnóstico de rosácea sea introducida bajo protocolos de baja frecuencia y concentraciones controladas, asegurando siempre el uso concomitante de agentes reparadores de la barrera. La clave no es la prohibición absoluta, sino la gestión del pH para evitar la activación de la cascada inflamatoria cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_lactico",
+        "acido_mandelico",
+        "ahas"
+      ],
+      "contraindications": [
+        "rosacea_activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_de_condiciones"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-sulfato-magnesio-005",
+    "title": "Sulfato de Magnesio: el riesgo de deshidratación en pieles atópicas",
+    "content": "El sulfato de magnesio se utiliza frecuentemente en cosmética por sus propiedades estabilizadoras y su capacidad para crear emulsiones agua-en-aceite. Sin embargo, en pieles con dermatitis atópica, este compuesto puede actuar como un agente deshidratante. La naturaleza higroscópica del sulfato de magnesio, si no está correctamente balanceada con humectantes oclusivos, puede extraer agua de las capas profundas del estrato córneo, agravando la pérdida transepidérmica de agua (TEWL). La piel atópica ya presenta una deficiencia en la síntesis de ceramidas y una barrera física debilitada, por lo que cualquier ingrediente que promueva la desecación es contraproducente. Estudios dermatológicos sobre el manejo de la dermatitis atópica señalan la importancia de evitar sales minerales en altas concentraciones que puedan alterar la presión osmótica de la superficie cutánea. Los usuarios de GlowApp con pieles atópicas deben revisar la lista de ingredientes (INCI) para asegurar que el sulfato de magnesio no sea un componente mayoritario en lociones corporales o cremas de uso diario, prefiriendo formulaciones que prioricen lípidos fisiológicos y factores naturales de hidratación (NMF) sobre estabilizadores minerales potencialmente irritantes.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "European Academy of Dermatology and Venereology",
+        "url": "https://eadv.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "atopica",
+        "seca"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sulfato_de_magnesio"
+      ],
+      "contraindications": [
+        "dermatitis_atopica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_cutaneo_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-acido-anisoico-006",
+    "title": "Ácido p-Anísico: el riesgo de dermatitis alérgica oculta",
+    "content": "El ácido p-anísico (o ácido anísico) es un componente de origen botánico utilizado como agente enmascarador de fragancias y como conservante multifuncional con propiedades antimicrobianas. Aunque se promociona como una alternativa 'natural' a los conservantes sintéticos, su potencial como alérgeno de contacto es significativo y a menudo subestimado. La literatura clínica ha documentado casos de dermatitis alérgica de contacto inducida por este ingrediente, especialmente en pacientes que presentan sensibilidad cruzada a otros compuestos fenólicos. Para un usuario con piel sensible o reactiva, el uso de productos que contienen ácido p-anísico puede desencadenar eritema, prurito y descamación. En el contexto de la curaduría de GlowApp, es vital identificar este ingrediente en las etiquetas de productos etiquetados como 'libres de conservantes' o 'naturales', ya que la ausencia de parabenos no garantiza la ausencia de otros sensibilizantes. Recomendamos realizar una prueba de parche (patch test) en el antebrazo durante 48 horas antes de integrar cualquier producto nuevo que contenga este derivado anísico, especialmente si el paciente tiene un historial positivo de alergias a fragancias o extractos vegetales.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Contact Dermatitis Journal",
+        "url": "https://onlinelibrary.wiley.com/journal/16000536",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_p-anisico"
+      ],
+      "contraindications": [
+        "alergia_a_fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_de_rutina"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-poliacrilamida-007",
+    "title": "Poliacrilamida y el riesgo de residuos de acrilamida",
+    "content": "La poliacrilamida es un polímero ampliamente utilizado en cosmética como agente espesante y estabilizador, proporcionando una textura sensorial agradable y sedosa. Sin embargo, el riesgo clínico reside en el proceso de fabricación: si la polimerización no es completa, pueden quedar trazas de monómero de acrilamida, una sustancia clasificada como potencialmente neurotóxica y carcinógena en exposiciones sistémicas elevadas. Aunque los niveles permitidos en cosmética son extremadamente bajos, la exposición acumulativa a través de múltiples productos de cuidado diario (cremas, sueros, limpiadores) plantea una duda sobre el impacto a largo plazo en pieles con barrera comprometida o en usuarios con alta frecuencia de aplicación. La evidencia regulatoria internacional enfatiza la necesidad de un control de pureza estricto. En GlowApp, aconsejamos priorizar formulaciones de marcas que certifiquen la ausencia de monómeros residuales, especialmente cuando se trata de productos 'leave-on' (que no se enjuagan). La prevención es la mejor estrategia: evitar el uso excesivo de productos que contengan poliacrilamida en áreas extensas de la piel, especialmente en infantes o personas con patologías dermatológicas que aumentan la permeabilidad cutánea.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789241549448",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "poliacrilamida"
+      ],
+      "contraindications": [
+        "barrera_cutanea_comprometida"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "curaduria_de_ingredientes"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-acido-lactobionico-008",
+    "title": "Ácido Lactobiónico: ¿Seguridad real o riesgo de sensibilización?",
+    "content": "El ácido lactobiónico es un polihidroxiácido (PHA) reconocido por su gran tamaño molecular y su capacidad para exfoliar suavemente mientras hidrata, siendo una opción atractiva para pieles sensibles. No obstante, su perfil de seguridad no es absoluto. Aunque presenta menos riesgo de irritación que los AHAs convencionales, su uso en formulaciones complejas con otros activos quelantes puede alterar la estabilidad del producto y, en consecuencia, inducir dermatitis de contacto. La literatura científica sugiere que, aunque su penetración es limitada, el ácido lactobiónico puede interactuar con los metales traza presentes en la piel, creando complejos que, en individuos predispuestos, podrían desencadenar una respuesta inmune cutánea. Para los usuarios de GlowApp, es esencial distinguir entre la suavidad promocionada y la realidad química del ingrediente. No debe considerarse como un activo 'inocuo' que pueda usarse sin límites. La recomendación clínica es introducirlo gradualmente y observar cualquier signo de eritema o prurito retardado, ya que las reacciones de sensibilización a los PHAs pueden manifestarse horas después de la aplicación, dificultando su identificación inmediata.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15000000/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido_lactobionico"
+      ],
+      "contraindications": [
+        "piel_con_alta_reactividad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "guia_de_rutina"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  },
+  {
+    "chunk_id": "ingredientes-activos-benzofenona-4-009",
+    "title": "Benzofenona-4 y fotodermatitis de contacto",
+    "content": "La benzofenona-4 es un filtro solar químico utilizado frecuentemente en productos de cuidado personal, no solo como protector UV, sino también como estabilizador para proteger la integridad de la fórmula frente a la degradación lumínica. A pesar de su eficacia técnica, es un conocido fotoalérgeno. La literatura dermatológica, incluyendo estudios de la AAD, reporta que la exposición a la benzofenona-4 seguida de radiación UV puede desencadenar reacciones de fotodermatitis de contacto, caracterizadas por pápulas eritematosas, vesículas y un prurito intenso en las áreas expuestas al sol. Este riesgo es particularmente alto en pacientes con antecedentes de dermatitis alérgica de contacto o pieles con rosácea. En GlowApp, desaconsejamos el uso de productos que contengan este filtro en pacientes que ya presentan signos de fotosensibilidad o que utilizan medicamentos tópicos fotosensibilizantes (como retinoides). La identificación de la benzofenona-4 (a menudo etiquetada como Sulisobenzona) es crucial para prevenir brotes. Siempre se debe optar por alternativas de filtros físicos o filtros químicos de nueva generación que posean un perfil de seguridad fotodermatológica superior y menor potencial alergénico.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/sun-protection/sunscreen/sunscreen-allergies",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "reactiva"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "benzofenona-4"
+      ],
+      "contraindications": [
+        "fotosensibilidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "gestion_de_condiciones"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:10:08.936Z"
+  }
+]

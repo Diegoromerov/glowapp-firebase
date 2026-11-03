@@ -1,0 +1,384 @@
+[
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-001",
+    "title": "Impacto de la actividad de los receptores de hidrocarburos arílicos (AhR) en la respuesta a contaminantes urbanos",
+    "content": "La activación del receptor de hidrocarburos arílicos (AhR) por partículas en suspensión (PM2.5) y contaminantes ambientales en Bogotá representa un desafío clínico subestimado. Al unirse a ligandos exógenos en la superficie cutánea, el AhR induce una cascada proinflamatoria que altera la diferenciación de los queratinocitos y degrada la barrera lipídica, facilitando la penetración de alérgenos. La literatura en PubMed subraya que la hiperactivación del AhR no solo exacerba la dermatitis atópica, sino que acelera la degradación del colágeno mediante la inducción de metaloproteinasas de matriz (MMPs). Una rutina orientada a la protección urbana debe integrar activos que actúen como antagonistas competitivos del AhR o que bloqueen la translocación nuclear del receptor. El uso de polifenoles específicos, como el resveratrol o extractos de té verde, ha demostrado en estudios clínicos capacidad para mitigar la señalización aberrante del AhR, preservando la integridad de las uniones estrechas (tight junctions) y reduciendo la respuesta inflamatoria subclínica característica de las metrópolis con alta carga de material particulado.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33458982/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "epigalocatequina-galato"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-urbana"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-002",
+    "title": "Regulación de las defensinas epidérmicas mediante la microbiota residente",
+    "content": "Las defensinas son péptidos antimicrobianos endógenos fundamentales para la inmunidad innata de la piel. Investigaciones actuales indican que la diversidad del microbioma cutáneo, específicamente la presencia de cepas de Staphylococcus epidermidis, es necesaria para la inducción y secreción de estas defensinas. En pieles con disbiosis (frecuente en rutinas sobre-higienizadas), la ausencia de señales microbianas resulta en una vulnerabilidad aumentada ante patógenos. La curaduría de una rutina clínica debe evitar el uso indiscriminado de antisépticos o limpiadores con pH alcalino que destruyan esta microbiota commensal. Es imperativo priorizar limpiadores con pH fisiológico (4.7-5.5) que mantengan el gradiente iónico necesario para la actividad enzimática. La suplementación con prebióticos tópicos, como fructooligosacáridos o inulina, fomenta un entorno donde las defensinas pueden actuar eficazmente, fortaleciendo la barrera física sin necesidad de antibióticos tópicos, reduciendo así el riesgo de resistencia bacteriana a largo plazo según los estándares de la American Academy of Dermatology.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/skin-microbiome",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fructooligosacáridos",
+        "inulina"
+      ],
+      "contraindications": [
+        "antisépticos tópicos frecuentes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma-cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-003",
+    "title": "Estrategias de restauración de la barrera cutánea mediante lípidos biomiméticos en proporciones fisiológicas",
+    "content": "La integridad de la barrera cutánea depende de la organización lamelar de los lípidos intercorneocitarios: ceramidas, colesterol y ácidos grasos libres en una proporción molar aproximada de 3:1:1. Cualquier desviación en esta relación, inducida por el uso inadecuado de surfactantes o condiciones climáticas, resulta en un aumento crítico de la pérdida de agua transepidérmica (TEWL). La aplicación de cremas reparadoras que no repliquen esta proporción exacta suele ser ineficaz. La evidencia clínica sugiere que el suministro exógeno de ceramidas de cadena larga (ceramide NP, AP, EOP) es más efectivo cuando se combina con precursores de síntesis endógena. Es fundamental instruir al paciente que la aplicación de estos lípidos debe realizarse sobre piel ligeramente humedecida para optimizar la penetración y asegurar que los lípidos se integren en el estrato córneo en lugar de simplemente depositarse en la superficie. Este enfoque es crucial en pacientes con xerosis crónica o dermatitis de contacto irritativa, donde la homeostasis lipídica está permanentemente comprometida por factores ambientales o iatrogénicos.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31868233/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "atopica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas NP",
+        "ceramidas AP",
+        "colesterol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-004",
+    "title": "Modulación de la vía MITF en la hiperpigmentación periorbitaria",
+    "content": "La hiperpigmentación periorbitaria es un fenómeno multifactorial donde la vía del Factor de Transcripción Asociado a la Microftalmia (MITF) juega un papel central en la regulación de la melanogénesis. A diferencia de las manchas solares comunes, esta área presenta una dermis más delgada y una mayor densidad de capilares. El uso de despigmentantes agresivos (como altas concentraciones de hidroquinona) está contraindicado debido al riesgo de inflamación secundaria y efecto rebote. La estrategia clínica debe centrarse en la inhibición de la tirosinasa mediante activos de baja irritabilidad, como el ácido kójico encapsulado, el ácido tranexámico o péptidos de señalización que modulen la transferencia de melanosomas a los queratinocitos. Además, es vital abordar el componente vascular; la presencia de hemoglobina degradada contribuye a la cromaticidad oscura. La inclusión de antioxidantes tópicos con capacidad de quelación de hierro es esencial para prevenir la pigmentación inducida por la oxidación de la hemoglobina en los tejidos periorbitarios, mejorando significativamente la apariencia clínica sin comprometer la delicada barrera de la zona.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "III-VI"
+      ],
+      "ingredients": [
+        "acido tranexámico",
+        "acido kójico"
+      ],
+      "contraindications": [
+        "hidroquinona"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hiperpigmentacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-005",
+    "title": "Dinámica de las acuaporinas en la resiliencia ante climas de baja humedad",
+    "content": "Las acuaporinas (AQP3) son canales proteicos situados en la membrana de los queratinocitos, responsables del transporte de agua y glicerol hacia las capas superiores de la epidermis. En climas de baja humedad relativa o ambientes con calefacción/aire acondicionado, la expresión de AQP3 disminuye, lo que conlleva a una deshidratación clínica profunda independientemente del contenido graso de la piel. La estrategia de cuidado para estos pacientes no debe limitarse a la aplicación de oclusivos, sino a la estimulación de la síntesis de AQP3 mediante ingredientes como el extracto de Gluco-Glicerol. Este activo ha demostrado en estudios in vivo aumentar significativamente la hidratación de los estratos profundos del estrato córneo. Es fundamental entender que una piel 'grasa' también puede sufrir de deshidratación por deficiencia de acuaporinas, por lo que el uso de humectantes ligeros ricos en glicerol es preferible a oclusivos pesados que puedan obstruir el folículo pilosebáceo y exacerbar procesos acneicos en pacientes con predisposición genética.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21219665/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa",
+        "deshidratada"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerol",
+        "gluco-glicerol"
+      ],
+      "contraindications": [],
+      "season": [
+        "invierno",
+        "altitud"
+      ],
+      "applicable_modules": [
+        "hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-006",
+    "title": "Mitos sobre la purga cutánea frente a la reacción alérgica en el uso de retinoides",
+    "content": "Es un error común confundir la 'purga cutánea' (acné exacerbado por el acelerado recambio celular) con la dermatitis de contacto irritativa inducida por retinoides. La purga ocurre exclusivamente en áreas con microcomedones preexistentes y se limita a lesiones inflamatorias que siguen el ciclo de vida del acné. En contraste, la reacción alérgica o irritativa se manifiesta con eritema difuso, prurito, ardor y descamación fuera de las zonas de brote. La literatura dermatológica sugiere que la purga suele durar entre 4 y 6 semanas; si los síntomas persisten o se intensifican más allá de este periodo, debe suspenderse el activo. La técnica de 'contacto corto' (aplicación por 15-30 minutos y posterior retiro) es la mejor estrategia clínica para inducir tolerancia en pacientes con piel sensible, permitiendo que la piel se adapte sin comprometer la barrera cutánea. Es imperativo educar al paciente sobre esta distinción para evitar el abandono del tratamiento antes de alcanzar los beneficios terapéuticos de los retinoides.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/news/retinoid-tips",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "acneica",
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinol",
+        "retinaldehido",
+        "adapaleno"
+      ],
+      "contraindications": [
+        "uso concomitante de exfoliantes fuertes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "retinoides"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-007",
+    "title": "El rol de la vitamina F en la integridad lipídica",
+    "content": "La Vitamina F, compuesta por ácidos grasos esenciales como el ácido linoleico y el ácido alfa-linolénico, es un componente crítico que el organismo no puede sintetizar por sí mismo. En dermatología, su aplicación tópica es fundamental para la recuperación de la función barrera en pieles con deficiencia de lípidos. El ácido linoleico, en particular, es un precursor necesario para la síntesis de ceramidas en la epidermis. Estudios clínicos han demostrado que las pieles con tendencia acneica a menudo presentan una deficiencia relativa de ácido linoleico en el sebo, lo que altera su viscosidad y favorece la formación de comedones. Incorporar Vitamina F en la rutina de pacientes con acné o xerosis ayuda a normalizar la composición del sebo y restaura la flexibilidad de la barrera cutánea. A diferencia de otros aceites, los ácidos grasos esenciales no suelen ser comedogénicos si se formulan correctamente, representando una herramienta terapéutica poderosa para la restauración del equilibrio cutáneo sin riesgo de oclusión folicular.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22432704/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "acneica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido linoleico",
+        "acido alfa-linolénico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "barrera-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-008",
+    "title": "Abordaje del 'inflammaging' mediante la modulación de citoquinas proinflamatorias",
+    "content": "El 'inflammaging' se define como una inflamación crónica, sistémica y de bajo grado que acelera el proceso de envejecimiento cutáneo. A nivel dérmico, esto se traduce en una sobreexpresión de citoquinas como IL-1, IL-6 y TNF-alfa, que estimulan la degradación del colágeno y la elastina. La estrategia clínica para mitigar este fenómeno implica una rutina basada en activos antiinflamatorios de amplio espectro. La niacinamida, en concentraciones del 2 al 5%, ha demostrado capacidad para modular estas citoquinas, además de fortalecer la barrera cutánea mediante el aumento de la síntesis de ceramidas. Adicionalmente, el uso de péptidos que imitan la señalización celular puede ayudar a 'reprogramar' la respuesta de los fibroblastos, reduciendo la producción de mediadores inflamatorios. Este enfoque es preventivo y terapéutico, siendo esencial en pacientes mayores de 35 años que viven en entornos urbanos donde el estrés oxidativo externo potencia esta respuesta inflamatoria interna. La constancia en la aplicación de estos activos es el factor determinante para la eficacia a largo plazo.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "madura"
+      ],
+      "age_ranges": [
+        "35+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-aging"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  },
+  {
+    "chunk_id": "skincare-rutinas-por-tipo-piel-009",
+    "title": "Impacto del pH de los limpiadores como determinante del microbioma",
+    "content": "El manto ácido de la piel, con un pH fisiológico cercano a 4.7, es la primera línea de defensa contra la colonización de patógenos. El uso de limpiadores con pH alcalino (como jabones en barra tradicionales, pH > 9) provoca una disrupción inmediata de este gradiente, lo que altera la composición de la microbiota residente y favorece el crecimiento de bacterias como Cutibacterium acnes o Staphylococcus aureus. La recuperación del pH cutáneo tras un lavado con jabón alcalino puede tomar varias horas, durante las cuales la piel queda desprotegida. La recomendación clínica para cualquier tipo de piel, especialmente pieles sensibles o con dermatitis, es el uso de limpiadores sindets o syndet (detergentes sintéticos) que mantengan un pH equilibrado. Estos productos no solo preservan la barrera lipídica, sino que aseguran que las enzimas encargadas de la diferenciación epidérmica y la síntesis de lípidos funcionen óptimamente, siendo la base fundamental de cualquier rutina dermatológica exitosa según los protocolos de la IADVL.",
+    "category": "skincare_rutinas_por_tipo_piel",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://www.ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "jabones en barra alcalinos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T13:13:21.512Z"
+  }
+]

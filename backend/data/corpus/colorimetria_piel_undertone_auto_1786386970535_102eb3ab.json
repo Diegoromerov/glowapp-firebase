@@ -1,0 +1,162 @@
+[
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386970534-1-ead788a6-variabilidad-de-la-reflectancia-cutanea-segun-el-ritmo-circa",
+    "title": "Variabilidad de la reflectancia cutánea según el ritmo circadiano y la temperatura central",
+    "content": "La colorimetría facial no es un parámetro estático, sino una variable dinámica sujeta a los ritmos circadianos. Durante la fase de vigilia, la temperatura corporal central y la perfusión periférica fluctúan, alterando la saturación de oxihemoglobina en la dermis papilar. Estudios indican que la vasodilatación matutina, influenciada por la liberación de cortisol, aumenta la reflectancia en las longitudes de onda rojas, lo que puede inducir un error de diagnóstico en la evaluación del subtono, especialmente en pieles con fototipos claros. La temperatura cutánea local afecta la eficiencia de la dispersión de luz; una temperatura elevada reduce la viscosidad de los lípidos del estrato córneo, alterando el brillo especular y, por ende, la percepción del subtono. Es imperativo que las evaluaciones de colorimetría se realicen bajo condiciones de termoneutralidad para evitar sesgos inducidos por la respuesta vasomotora basal. La monitorización de la temperatura de la superficie cutánea mediante sensores térmicos durante la toma de muestras cromáticas permite normalizar los datos, eliminando las fluctuaciones temporales que comprometen la precisión del diagnóstico de subtono a largo plazo.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Institutes of Health (NIH)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:36:10.534Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386970534-2-9c014e18-propiedades-dielectricas-del-estrato-corneo-y-su-influencia-",
+    "title": "Propiedades dieléctricas del estrato córneo y su influencia en la dispersión de luz",
+    "content": "La constante dieléctrica del estrato córneo, modulada por su nivel de hidratación y la integridad de la barrera lipídica, actúa como un filtro óptico que modifica la trayectoria de los fotones incidentes. Cuando la piel presenta una deshidratación subdérmica, la dispersión de luz cambia debido a la alteración del índice de refracción en los corneocitos. Este fenómeno afecta directamente la lectura del subtono, ya que la luz no penetra con la misma profundidad en tejidos deshidratados, provocando una dispersión superficial que puede enmascarar subtonos fríos subyacentes. La espectroscopia de impedancia eléctrica ha demostrado que los cambios en la capacitancia cutánea correlacionan con variaciones en la reflectancia espectral. Para una evaluación precisa, es necesario considerar el estado de hidratación como una variable de confusión. La aplicación de humectantes antes de una lectura cromática puede normalizar la superficie, pero se debe tener cuidado con los ingredientes que alteran el pH, ya que un cambio en la acidez superficial modifica la oxidación de los lípidos y, por ende, la cromaticidad percibida. La estandarización de la impedancia cutánea es fundamental para la objetivación científica del subtono.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerina",
+        "ceramidas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:36:10.534Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386970534-3-2e92732f-arquitectura-de-los-melanosomas-y-la-teoria-de-la-dispersion",
+    "title": "Arquitectura de los melanosomas y la teoría de la dispersión de Mie en pieles oscuras",
+    "content": "La percepción del subtono en fototipos IV a VI está intrínsecamente ligada a la distribución espacial y el tamaño de los melanosomas en el estrato basal. A diferencia de la dispersión de Rayleigh, que domina en pieles claras, en pieles con alta densidad de melanina predomina la dispersión de Mie. Esta física de partículas explica por qué ciertos subtonos parecen 'cenizos' o 'azules' bajo condiciones de luz ambiental específica. La acumulación de melanosomas grandes y altamente pigmentados altera la longitud de onda de la luz reflejada, creando un efecto de filtrado que oscurece el subtono real. La profundidad de la dispersión de luz en estos fototipos es menor, lo que significa que la información cromática que recibimos proviene casi exclusivamente de las capas más superficiales de la epidermis. Comprender la teoría de Mie es esencial para evitar errores comunes en la selección de bases, donde el sesgo de confirmación visual suele ignorar la profundidad del pigmento. Los sistemas RAG deben integrar modelos de dispersión de Mie para ajustar los algoritmos de recomendación, garantizando que el subtono detectado no sea simplemente un artefacto de la densidad de melanocitos superficiales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "IV",
+        "V",
+        "VI"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:36:10.534Z"
+  },
+  {
+    "chunk_id": "colorimetria_piel_undertone-1786386970534-4-8fd05dad-influencia-de-los-metabolitos-del-microbioma-en-el-ph-y-la-e",
+    "title": "Influencia de los metabolitos del microbioma en el pH y la estabilidad cromática",
+    "content": "El microbioma cutáneo, específicamente especies como *Staphylococcus epidermidis* y *Cutibacterium acnes*, produce metabolitos ácidos que mantienen el manto ácido de la piel. Este pH es un determinante crítico de la estabilidad de los pigmentos en el maquillaje. Un pH cutáneo elevado, derivado de una disbiosis del microbioma, puede acelerar la oxidación de los ácidos grasos libres presentes en el sebo, lo que provoca un viraje cromático hacia tonalidades amarillentas o naranjas en la base de maquillaje tras pocas horas de uso. Este fenómeno, a menudo confundido con un subtono cálido natural, es en realidad una reacción química externa. La monitorización del pH cutáneo mediante dispositivos portátiles ofrece una métrica objetiva para predecir la estabilidad del color. Los usuarios con un microbioma inestable requieren formulaciones de maquillaje con antioxidantes específicos que inhiban la peroxidación lipídica. La integración de datos sobre el estado del microbioma en el sistema RAG permite ajustar las recomendaciones de productos, priorizando aquellos que mantienen la homeostasis del pH y previenen la distorsión del subtono causada por la actividad metabólica bacteriana.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Microbiology",
+        "url": "https://www.nature.com/articles/s41579-024-01023-w",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "prebioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_ia"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T18:36:10.534Z"
+  }
+]

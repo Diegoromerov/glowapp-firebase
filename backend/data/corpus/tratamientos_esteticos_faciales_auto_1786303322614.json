@@ -1,0 +1,271 @@
+[
+  {
+    "chunk_id": "bioestimulacion-exosomas-001",
+    "title": "Uso de Exosomas en Bioestimulación Facial",
+    "content": "Los exosomas derivados de células madre mesenquimales representan la vanguardia en la medicina regenerativa estética. A diferencia de las células madre completas, los exosomas son vesículas extracelulares que actúan como mensajeros intercelulares, transportando proteínas, lípidos y microARN que modulan el microambiente cutáneo. En dermatología, su aplicación tras procedimientos de microneedling facilita la penetración transdérmica, promoviendo la síntesis de colágeno tipo I y elastina. Estudios publicados en PubMed sugieren que su capacidad para reducir la inflamación crónica y acelerar la epitelización los convierte en un tratamiento coadyuvante ideal para pacientes con fotoenvejecimiento severo o cicatrices post-acné. Es fundamental distinguir que, en el contexto de GlowApp, deben ser productos aprobados por entes regulatorios (como INVIMA o FDA) para garantizar la ausencia de material genético replicativo. Su mecanismo de acción no es el relleno volumétrico, sino la señalización celular para la reparación tisular endógena, mejorando la densidad y luminosidad de la piel de manera fisiológica.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Library of Medicine (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37452109/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas",
+        "factores de crecimiento"
+      ],
+      "contraindications": [
+        "historia de neoplasias activas",
+        "enfermedades autoinmunes descompensadas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "regeneracion-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:21:49.495Z"
+  },
+  {
+    "chunk_id": "peelings-quimicos-profundos-002",
+    "title": "Manejo de Peelings de Fenol y TCA en Pieles Latinas",
+    "content": "El uso de agentes exfoliantes químicos de profundidad media a alta, como el ácido tricloroacético (TCA) y el fenol, requiere una precaución extrema en fototipos IV a VI, predominantes en la población colombiana. El riesgo principal es la hiperpigmentación post-inflamatoria (HPI) debido a la estimulación melanocítica. La evidencia clínica indica que la preparación de la piel con retinoides y agentes despigmentantes durante 4 a 6 semanas previas es obligatoria para estabilizar la función de los melanocitos. El peeling de TCA, al ser un agente coagulante de proteínas, debe aplicarse con técnica de 'frosting' controlado para evitar cicatrices atróficas. En el caso del fenol, aunque ofrece una retracción dérmica superior para el tratamiento de arrugas periorales profundas, su toxicidad sistémica exige monitoreo cardíaco y protocolos de hidratación estrictos. La clave del éxito en GlowApp es el uso de neutralización adecuada y la estricta fotoprotección posterior, evitando la exposición solar directa durante los primeros 30 días post-procedimiento para asegurar la integridad de la barrera cutánea.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology (AAD)",
+        "url": "https://www.aad.org/public/cosmetic/chemical-peels",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "40-70"
+      ],
+      "fototipos": [
+        "I-VI"
+      ],
+      "ingredients": [
+        "TCA",
+        "fenol",
+        "acido kójico"
+      ],
+      "contraindications": [
+        "embarazo",
+        "uso de isotretinoína reciente",
+        "infección activa por herpes"
+      ],
+      "season": [
+        "invierno",
+        "dias nublados"
+      ],
+      "applicable_modules": [
+        "rejuvenecimiento-avanzado"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:21:49.495Z"
+  },
+  {
+    "chunk_id": "radiofrecuencia-microagujas-003",
+    "title": "Radiofrecuencia con Microagujas: Eficacia y Recuperación",
+    "content": "La radiofrecuencia fraccionada con microagujas (RFM) combina el daño mecánico controlado con la entrega de energía térmica en la dermis profunda. Este procedimiento es altamente valorado por su capacidad para remodelar el colágeno sin afectar significativamente la epidermis, lo que reduce el tiempo de inactividad. Clínicamente, el dispositivo induce una respuesta de curación de heridas que resulta en la neocolagénesis y elastogénesis. Es particularmente efectivo para el tensado cutáneo en la línea mandibular y el tratamiento de cicatrices atróficas. A diferencia de los láseres ablativos, la RFM es segura en fototipos oscuros, ya que la energía se entrega directamente en la dermis, minimizando el riesgo de daño térmico epidérmico. Sin embargo, el éxito del tratamiento depende de la profundidad de las agujas (ajustada según la zona: 0.5mm a 3.0mm) y la potencia de la radiofrecuencia. Se recomienda un protocolo de 3 sesiones espaciadas cada 4 semanas para obtener resultados acumulativos visibles. La hidratación post-procedimiento con ácido hialurónico de bajo peso molecular es esencial para optimizar la recuperación celular.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cutaneous and Aesthetic Surgery",
+        "url": "https://www.jcasonline.com/article.asp?issn=0974-2077;year=2023",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "35-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido hialuronico"
+      ],
+      "contraindications": [
+        "marcapasos",
+        "implantes metálicos en la zona",
+        "rosacea activa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tensado-facial"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:21:49.495Z"
+  },
+  {
+    "chunk_id": "mito-hidratacion-inyectable-004",
+    "title": "Mito vs Realidad: Skinboosters y Rellenos",
+    "content": "Existe una confusión común entre los pacientes sobre la diferencia entre Skinboosters y rellenos dérmicos de ácido hialurónico (AH). Los rellenos convencionales (de alta reticulación) están diseñados para proporcionar soporte estructural y volumétrico, corrigiendo pliegues o definiendo contornos óseos. Por el contrario, los Skinboosters utilizan AH de baja reticulación (o no reticulado) con el único objetivo de mejorar la hidratación profunda, la elasticidad y la textura cutánea. No aportan volumen significativo. La evidencia clínica demuestra que el AH inyectado de esta forma actúa como un reservorio de agua en la dermis, estimulando a los fibroblastos a producir colágeno nuevo. Es un error común pensar que los Skinboosters pueden corregir la flacidez severa; su función es la revitalización. Para un paciente que busca 'brillo' y suavidad, esta técnica es superior a cualquier crema tópica, ya que supera la barrera del estrato córneo. Es fundamental gestionar las expectativas: el resultado es una piel de aspecto 'jugoso' y saludable, no un cambio en la arquitectura facial.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seco",
+        "deshidratado"
+      ],
+      "age_ranges": [
+        "25-50"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido hialuronico"
+      ],
+      "contraindications": [
+        "alergia al AH",
+        "infecciones activas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion-profunda"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:21:49.495Z"
+  },
+  {
+    "chunk_id": "toxina-botulinica-prevencion-005",
+    "title": "Toxina Botulínica: ¿Prevención o Corrección?",
+    "content": "El uso de la toxina botulínica tipo A (BoNT-A) ha evolucionado de un tratamiento puramente correctivo a uno preventivo. La 'neuro-modulación preventiva' busca relajar selectivamente los músculos responsables de las arrugas dinámicas (como el corrugador y el orbicular) antes de que estas se conviertan en arrugas estáticas (profundas). Estudios longitudinales han demostrado que la inhibición prolongada de la contracción muscular excesiva previene la formación de pliegues dérmicos permanentes. En pacientes jóvenes (20-30 años), dosis bajas aplicadas estratégicamente no solo suavizan la expresión, sino que mantienen la piel lisa a largo plazo. Es vital recalcar que la técnica debe preservar la naturalidad y la movilidad expresiva. El riesgo de 'cara congelada' es un mito derivado de sobredosis o mala técnica de aplicación. La seguridad de la toxina botulínica está ampliamente respaldada por décadas de uso clínico, siendo uno de los procedimientos menos invasivos y con mayor tasa de satisfacción del paciente. La clave es la evaluación individualizada de la dinámica muscular de cada paciente para evitar compensaciones musculares no deseadas.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "25-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "toxina botulinica"
+      ],
+      "contraindications": [
+        "miastenia gravis",
+        "embarazo",
+        "lactancia"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "prevencion-envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:21:49.495Z"
+  },
+  {
+    "chunk_id": "hidrofaciales-tecnologia-006",
+    "title": "Hidrofaciales: Más allá de la Limpieza Convencional",
+    "content": "Los tratamientos de hidrofacial (o hidrodermoabrasión) han revolucionado la limpieza cosmética al combinar la exfoliación mecánica, la succión de poros y la infusión de sueros antioxidantes en un solo paso. A diferencia de la extracción manual tradicional, que puede ser traumática para la barrera cutánea, el sistema de vórtice utiliza una punta especializada que elimina impurezas mientras hidrata simultáneamente. Este enfoque es ideal para pieles con comedones, exceso de sebo y textura irregular. La evidencia clínica respalda que la aplicación de sueros que contienen ácido salicílico, ácido glicólico y péptidos durante el tratamiento mejora significativamente la luminosidad y el tono de la piel tras una sola sesión. Es una herramienta esencial para la preparación de la piel antes de procedimientos más invasivos, ya que optimiza el estado del estrato córneo. En GlowApp, recomendamos este procedimiento como mantenimiento mensual, dado que no requiere tiempo de recuperación y es seguro para todos los fototipos cutáneos, incluyendo las pieles más sensibles o reactivas.",
+    "category": "tratamientos_esteticos_faciales",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido salicilico",
+        "acido glicolico",
+        "antioxidantes"
+      ],
+      "contraindications": [
+        "rosacea severa",
+        "acne inflamatorio grado IV"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza-profunda"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:21:49.495Z"
+  }
+]

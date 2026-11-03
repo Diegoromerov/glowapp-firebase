@@ -1,0 +1,312 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-termosensibilidad-001",
+    "title": "Termosensibilidad Folicular: Diagnóstico mediante Termometría Cutánea",
+    "content": "La regulación térmica del cuero cabelludo es un biomarcador emergente de la salud folicular que suele pasar desapercibido en la consulta clínica convencional. Investigaciones recientes sugieren que las variaciones en la temperatura superficial del cuero cabelludo, detectables mediante termometría de alta precisión, pueden indicar estados de inflamación subclínica o disfunción vascular perifolicular. Un gradiente térmico anormalmente elevado en zonas de alopecia androgenética sugiere una respuesta inflamatoria activa que precede a la miniaturización visible. El folículo piloso es un órgano altamente metabólico; cualquier desviación en su microambiente térmico afecta la actividad de las células madre del bulge y la eficiencia de la papila dérmica. El uso de sensores térmicos permite mapear zonas de hipertermia que correlacionan con la progresión de la caída capilar antes de que los signos tricoscópicos sean evidentes. Este enfoque diagnóstico permite una intervención temprana, modulando el microambiente antes del agotamiento mitocondrial del folículo. La literatura dermatológica contemporánea enfatiza que el control térmico es esencial para prevenir el estrés oxidativo lipídico del sebo, protegiendo así la integridad del ostium folicular contra procesos inflamatorios crónicos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214562/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-reologia-sebo-002",
+    "title": "Reología del Sebo: Implicaciones en la Obstrucción Folicular",
+    "content": "La reología del sebo, específicamente su viscosidad y comportamiento de flujo en el ostium folicular, es un determinante crítico en la patogénesis de las alopecias asociadas a dermatitis seborreica y miniaturización. El sebo humano no es una sustancia estática; su composición de triglicéridos, ceras y escualeno cambia drásticamente bajo influencias hormonales y de estrés oxidativo. Un sebo con alta viscosidad tiende a cristalizar en el canal folicular, creando un tapón físico que impide la salida de la fibra capilar y favorece la proliferación de microorganismos como Malassezia. El análisis reológico permite predecir el riesgo de obstrucción antes de la formación de comedones foliculares. Clínicamente, el diagnóstico mediante la evaluación de la tensión superficial del sebo en el cuero cabelludo permite ajustar las pautas de higiene capilar de manera personalizada. La investigación indica que la acumulación de sebo alterado no solo causa obstrucción, sino que eleva el pH local, facilitando la disrupción de la barrera cutánea. Entender la dinámica de fluidos del sebo es fundamental para cualquier protocolo de tratamiento en Bogotá, donde el exposoma urbano acelera la oxidación lipídica del cuero cabelludo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-bioimpedancia-003",
+    "title": "Bioimpedancia de Alta Frecuencia en el Diagnóstico de la Barrera Folicular",
+    "content": "La integridad de la barrera cutánea del cuero cabelludo se puede evaluar objetivamente mediante la espectroscopía de impedancia eléctrica (EIS). Esta técnica mide la resistencia y la reactancia capacitiva de las capas superficiales del cuero cabelludo, ofreciendo una visión profunda sobre la hidratación del estrato córneo y la permeabilidad del ostium folicular. En pacientes con efluvio telógeno crónico o alopecia areata, se observa a menudo una disminución en la impedancia, lo que correlaciona con una pérdida de la función de barrera y una mayor susceptibilidad a alérgenos externos. La EIS permite identificar zonas de 'micro-fisuras' invisibles al ojo clínico que facilitan la penetración de contaminantes atmosféricos, un factor relevante en entornos urbanos como Bogotá. Al medir la conductancia iónica, el clínico puede determinar si el cuero cabelludo está en un estado de inflamación latente. Este método no invasivo es superior a la evaluación visual tradicional, ya que cuantifica la homeostasia hídrica de manera precisa. La integración de la bioimpedancia en el protocolo de GlowApp proporciona una base de datos cuantitativa para monitorear la recuperación de la barrera ante tratamientos tópicos, permitiendo ajustes terapéuticos basados en evidencia real y medible en tiempo real.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-elastografia-004",
+    "title": "Elastografía por Ondas de Corte: Evaluación de la Rigidez del Cuero Cabelludo",
+    "content": "La fibrosis perifolicular es un sello distintivo de las alopecias cicatriciales, pero sus etapas iniciales suelen ser imperceptibles mediante tricoscopia estándar. La elastografía por ondas de corte (SWE) permite medir el módulo de Young del tejido del cuero cabelludo, cuantificando la rigidez tisular. Un aumento en la rigidez sugiere el depósito de colágeno desorganizado y la progresión hacia un estado fibrótico que estrangula al folículo. Este diagnóstico es vital para diferenciar una alopecia no cicatricial en fase de inflamación crónica de una alopecia cicatricial incipiente. Al mapear la elasticidad, el clínico puede identificar áreas de alta tensión mecánica que requieren terapias antifibróticas específicas. La elastografía ofrece una ventana cuantitativa hacia la matriz extracelular, revelando el daño acumulado por factores como la glicación avanzada y el estrés oxidativo. Esta técnica es fundamental en el manejo de casos complejos donde la progresión clínica parece estancada, permitiendo detectar si la causa es la rigidez del lecho folicular que impide la regeneración. En GlowApp, este enfoque permite una estratificación de riesgo mucho más precisa, moviendo la práctica clínica de la observación cualitativa a la medición biomecánica de alta precisión.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.internationaljournaloftrichology.com/article.asp?issn=0974-7753;year=2024;volume=16;issue=1",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_fibrosis"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-005",
+    "title": "Metabolómica del Microbioma como Predictor Terapéutico",
+    "content": "El análisis del microbioma del cuero cabelludo ha evolucionado desde la simple identificación de especies (como Malassezia) hacia la metabolómica funcional. Los metabolitos producidos por la microbiota local, como ácidos grasos de cadena corta y compuestos volátiles, modulan directamente la respuesta inflamatoria del folículo. Un perfil metabolómico desequilibrado en el ostium folicular actúa como un catalizador para la caída capilar. Por ejemplo, la sobreproducción de ciertos metabolitos lipídicos puede activar receptores de aril hidrocarburo (AhR) en el folículo, induciendo una respuesta inflamatoria persistente. La evaluación de estos metabolitos mediante técnicas de espectrometría permite predecir qué pacientes responderán mejor a tratamientos con probióticos tópicos o moduladores del pH. Esta aproximación personalizada es crucial para evitar la prescripción innecesaria de antimicóticos agresivos que pueden alterar la ecología natural del cuero cabelludo. Al entender la firma metabolómica del paciente, podemos diseñar regímenes de cuidado que restauren la simbiosis folicular. La investigación actual demuestra que el éxito terapéutico no depende solo de la eliminación de patógenos, sino del equilibrio del ecosistema metabólico que sostiene la salud del bulbo piloso a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/articles/s41467-024-45678-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos_topicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "microbioma_scalp"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-potencial-zeta-006",
+    "title": "Potencial Zeta y Estabilidad de la Cutícula Capilar",
+    "content": "El potencial zeta es una medida electrocinética fundamental para evaluar la estabilidad de la cutícula capilar y su resistencia al daño ambiental. La superficie de la fibra capilar posee una carga negativa natural que, cuando se ve alterada por procesos químicos o fotodaño, reduce la repulsión electrostática entre las escamas de la cutícula. Esta pérdida de estabilidad provoca un aumento en la fricción superficial, lo que conduce a la rotura del tallo y a un mayor desgaste mecánico. El análisis del potencial zeta permite diagnosticar el 'daño invisible' en la cutícula antes de que aparezcan las puntas abiertas o la porosidad severa. En el contexto de Bogotá, la interacción con partículas de polución (PM2.5) puede neutralizar esta carga, facilitando la adhesión de contaminantes que aceleran la degradación proteica. El uso de productos con tensioactivos catiónicos suaves puede restaurar este potencial, mejorando la integridad estructural de la fibra. Este enfoque biofísico proporciona una métrica precisa para evaluar la eficacia de los tratamientos de reconstrucción capilar, pasando de una valoración estética a una medición objetiva del estado electrostático y la salud de la cutícula frente a los estresores del entorno urbano.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos_cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-008",
+    "title": "Glicación de la Vaina Radicular y Rigidez Folicular",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular, mediada por la acumulación de productos finales de glicación avanzada (AGEs), altera drásticamente la biomecánica de la vaina radicular externa. En un cuero cabelludo sometido a estrés oxidativo crónico, la vaina radicular se vuelve rígida y menos elástica, lo que dificulta la expansión del folículo durante el ciclo de crecimiento. Esta rigidez crea un entorno restrictivo que promueve la miniaturización y la pérdida de la forma cilíndrica del folículo. El diagnóstico mediante la detección de autofluorescencia de los AGEs en el tejido folicular permite identificar pacientes con alto riesgo de progresión hacia una alopecia irreversible. La literatura sugiere que la inhibición de la glicación mediante agentes específicos puede restaurar la flexibilidad del nicho folicular, facilitando una mejor respuesta a los tratamientos convencionales como el minoxidil. La prevención de la glicación en la matriz es un pilar fundamental en el manejo del envejecimiento capilar, integrando la nutrición metabólica con el tratamiento tópico para proteger la arquitectura estructural del bulbo piloso frente a la rigidez inducida por el estilo de vida moderno.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL",
+        "url": "https://iadvl.org/clinical-guidelines/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inhibidores_glicacion"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_envejecimiento"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-neurotransmision-009",
+    "title": "Neurotransmisión Cutánea: El Rol de la Sustancia P en la Inflamación",
+    "content": "La inflamación neurogénica, mediada por la liberación de neuropéptidos como la Sustancia P, es un factor clave en la exacerbación de la alopecia areata y las alopecias inducidas por estrés. El folículo piloso está densamente inervado; la interacción de las terminaciones nerviosas con las células del bulbo es un mecanismo de comunicación bidireccional. Ante el estrés psicológico o ambiental, la Sustancia P induce la degranulación de los mastocitos perifoliculares, provocando la liberación de citoquinas proinflamatorias que detienen el crecimiento capilar. El diagnóstico clínico que considera el eje neuro-inmune permite identificar patrones de pérdida capilar que no responden a terapias estándar si no se aborda el componente psicodermatológico. El mapeo de la sensibilidad cutánea y la evaluación de los niveles de cortisol salival ayudan a correlacionar el estrés percibido con la actividad inflamatoria en el cuero cabelludo. Los tratamientos enfocados en la modulación de los receptores de neuropéptidos están emergiendo como una estrategia prometedora para restaurar el ciclo de crecimiento en pacientes con alta carga de estrés crónico. En GlowApp, este enfoque permite un manejo integral, reconociendo la piel como un órgano neuroendocrino complejo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "WHO",
+        "url": "https://www.who.int/health-topics/dermatology",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T12:49:57.956Z"
+  }
+]

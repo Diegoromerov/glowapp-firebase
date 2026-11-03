@@ -1,0 +1,208 @@
+[
+  {
+    "chunk_id": "colorimetria-capilar-tinte-001",
+    "title": "Degradación del triptófano en la queratina capilar bajo procesos oxidativos",
+    "content": "La degradación foto-oxidativa y química del triptófano es un fenómeno crítico en la coloración permanente que a menudo pasa desapercibido. El triptófano, un aminoácido esencial en la estructura de la queratina, es altamente sensible a la oxidación inducida por el peróxido de hidrógeno y la radiación UV. Su fotólisis genera subproductos como la kynurenina, lo cual no solo compromete la integridad estructural de la fibra, provocando una pérdida de resistencia a la tracción, sino que altera las propiedades ópticas del cabello. Clínicamente, esto se manifiesta como un amarillamiento no deseado en tonos fríos, un fenómeno que los coloristas confunden frecuentemente con el 'lavado' del pigmento. La literatura en Journal of Photochemistry and Photobiology sugiere que la preservación de los residuos de triptófano es fundamental para mantener la reflectancia natural y evitar el viraje cromático hacia tonos cálidos indeseados tras el servicio de coloración. La integración de protectores capilares que actúen como 'scavengers' de radicales libres durante el proceso químico puede mitigar esta degradación específica y prolongar la fidelidad del tono elegido.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31518520/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "triptófano",
+        "queratina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:44.480Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-002",
+    "title": "Efecto de la temperatura folicular en la cinética de polimerización",
+    "content": "La temperatura del cuero cabelludo es una variable termodinámica determinante en la velocidad de la reacción de acoplamiento oxidativo de los precursores de tinte. A diferencia de las puntas, la zona cercana a la raíz presenta una temperatura constante de aproximadamente 36°C, lo cual acelera significativamente la formación de las macromoléculas de pigmento. Este fenómeno, conocido como 'efecto raíz', provoca que el color se deposite y oxide de manera más eficiente en los primeros centímetros de la fibra. Si no se ajusta la fórmula mediante la reducción del volumen de peróxido en la zona de crecimiento, el resultado será un efecto de 'banda caliente' o sobre-saturación en la raíz. Estudios sobre la termodinámica de las reacciones de teñido indican que un incremento de 10°C puede duplicar la tasa de reacción química. Por tanto, el control de la temperatura ambiente y la aplicación estratégica del calor son elementos de seguridad y precisión técnica que deben ser considerados por el profesional para garantizar una coloración uniforme y evitar el estrés innecesario sobre la cutícula folicular.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "peróxido de hidrógeno"
+      ],
+      "contraindications": [
+        "cuero cabelludo sensible"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnica_aplicacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:44.480Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-004",
+    "title": "Impacto de la radiación infrarroja en la estabilidad del color a gran altitud",
+    "content": "En ciudades como Bogotá, situadas a 2.600 metros sobre el nivel del mar, la exposición a niveles elevados de radiación ultravioleta e infrarroja (IR) es una variable crítica para la estabilidad cromática post-coloración. La radiación IR penetra profundamente en la fibra, generando un calor interno que acelera la degradación de los pigmentos sintéticos y promueve la peroxidación lipídica de la capa F. Estudios dermatológicos demuestran que el estrés térmico inducido por la radiación solar en grandes altitudes debilita la estructura cuticular, facilitando la lixiviación del color durante el lavado. Los pigmentos de tonos fríos (cenizos, perlados) son particularmente vulnerables, ya que el viraje hacia tonos cálidos es facilitado por la ruptura fotolítica de los enlaces químicos del tinte. Es imperativo recomendar el uso de productos capilares con filtros UV/IR y antioxidantes específicos que protejan la integridad del complejo de membrana celular (CMC) tras el proceso de coloración. La protección solar capilar no debe considerarse un lujo cosmético, sino una necesidad técnica para preservar el resultado cromático en ambientes de alta montaña.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "filtros UV"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cuidados_post_coloracion"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:44.480Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-005",
+    "title": "Mitos sobre la 'permeabilidad' del cabello canoso y su afinidad tintórea",
+    "content": "Existe la creencia popular de que el cabello canoso es simplemente 'más duro' o 'impermeable' al tinte. Sin embargo, la realidad clínica es que la pérdida de melanina y la alteración de la estructura del complejo de membrana celular (CMC) hacen que la cana sea, en realidad, un sustrato biológicamente distinto. La falta de melanina reduce la capacidad de la fibra para retener ciertos pigmentos, mientras que el aumento en la hidrofobicidad natural de la cutícula dificulta la humectación necesaria para la difusión del tinte. La literatura dermatológica recalca que el cabello canoso requiere una preparación específica: a menudo, un tratamiento de 'mordentado' o una pre-suavización (softening) para equilibrar la porosidad y permitir que los precursores de color penetren de forma efectiva. No se trata de una cuestión de rigidez, sino de una alteración en la afinidad química. El uso de pigmentos de bajo peso molecular es más eficaz en estas fibras, ya que la red de queratina se encuentra menos densa en la corteza, facilitando la formación de complejos de color estables si se controlan los tiempos de exposición adecuadamente.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6369638/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "precursores de color"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_capilar"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:44.480Z"
+  },
+  {
+    "chunk_id": "colorimetria-capilar-tinte-006",
+    "title": "Respuesta histaminérgica inespecífica y el uso de agentes buffer",
+    "content": "La aplicación de tintes con alta alcalinidad (pH > 9.5) puede desencadenar una respuesta histaminérgica inespecífica en el cuero cabelludo, incluso en individuos sin alergia diagnosticada al PPD. Este fenómeno es una respuesta de defensa ante el desequilibrio brusco del pH cutáneo, que altera la barrera lipídica y activa los receptores nerviosos superficiales. La sensación de picor o ardor no siempre es un indicativo de reacción alérgica grave, pero debe tratarse con precaución. El uso de agentes buffer (amortiguadores) en las fórmulas de coloración es una estrategia clínica fundamental para mantener el pH dentro de rangos fisiológicos más seguros durante el tiempo de pose. La incorporación de ingredientes calmantes como el bisabolol o extractos de avena coloidal puede mitigar esta respuesta, mejorando el confort del paciente sin interferir con la polimerización del tinte. Es vital que el profesional diferencie entre una irritación inespecífica, manejable con buffers, y una dermatitis de contacto, que requiere la interrupción inmediata del servicio y una evaluación médica dermatológica exhaustiva.",
+    "category": "colorimetria_capilar_tinte",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "World Health Organization",
+        "url": "https://www.who.int",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "bisabolol",
+        "avenantramidas"
+      ],
+      "contraindications": [
+        "dermatitis de contacto"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_protocolo"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:31:44.480Z"
+  }
+]

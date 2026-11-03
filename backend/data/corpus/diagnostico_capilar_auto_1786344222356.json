@@ -1,0 +1,241 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-electrofisiologia-001",
+    "title": "Bioimpedancia del Cuero Cabelludo: Evaluación de la Hidratación Estrato-Folicular",
+    "content": "La bioimpedancia eléctrica (BIE) se ha consolidado como una herramienta no invasiva para cuantificar el estado de hidratación del cuero cabelludo y su impacto en la función barrera. A diferencia de las mediciones cutáneas corporales, la BIE en tricología permite evaluar la conductividad del estrato córneo perifolicular. Una disminución en la capacitancia indica una disrupción de la barrera cutánea, lo que predispone al orificio folicular a la penetración de agentes irritantes y patógenos. Clínicamente, correlacionamos estos valores con la descamación persistente y el prurito asociado a la dermatitis de contacto. La evidencia sugiere que un cuero cabelludo con baja impedancia presenta una mayor permeabilidad, facilitando la absorción sistémica de activos tópicos, lo cual debe ser considerado al prescribir tratamientos con altas concentraciones de minoxidil o retinoides. El uso de esta métrica permite personalizar la frecuencia de lavado y la oclusividad de los productos prescritos, evitando el efecto de 'rebote' por deshidratación iatrogénica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.journals.elsevier.com/journal-of-dermatological-science",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:43:24.702Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-002",
+    "title": "Sarcopenia del Músculo Erector del Pelo: Implicaciones en la Estabilidad Folicular",
+    "content": "El músculo erector del pelo (MEP) desempeña una función crítica no solo en la termorregulación, sino en la estabilidad mecánica del folículo y la preservación del nicho de células madre (bulge). Investigaciones recientes sugieren que el envejecimiento del MEP, caracterizado por una pérdida de masa muscular y una fibrosis progresiva, contribuye a la 'sarcopenia capilar'. Este proceso altera el ángulo de salida del tallo piloso, favoreciendo la miniaturización y la fragilidad estructural. En el diagnóstico clínico, la debilidad del MEP se manifiesta como una pérdida de la turgencia del cuero cabelludo y una mayor susceptibilidad a la alopecia por tracción. La evaluación mediante ultrasonido de alta frecuencia permite visualizar la atrofia del músculo, proporcionando un marcador pronóstico para el éxito de terapias regenerativas. La estimulación de este componente muscular mediante tecnologías de fotobiomodulación es una línea de investigación emergente para frenar el declive de la densidad capilar asociado a la edad avanzada.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38123456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40-80"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pronostico-terapeutico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:43:24.702Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-proteostasis-003",
+    "title": "Proteostasis: Control de Calidad de Proteínas en la Matriz Piloso",
+    "content": "La proteostasis es el mecanismo homeostático que mantiene el proteoma funcional dentro de la matriz del folículo piloso. Durante la fase anágena, la síntesis de queratinas es extremadamente alta, lo que genera una carga de estrés para el retículo endoplásmico. Cuando la capacidad de plegamiento de proteínas se ve superada, se acumulan agregados proteicos que activan la respuesta de proteínas desplegadas (UPR), induciendo la apoptosis de los queratinocitos de la matriz. Este fenómeno es un factor clave en la miniaturización folicular no solo por causas androgénicas, sino también por factores estresores externos. La falla en la proteostasis se correlaciona con la aparición prematura de canas y una menor resiliencia del tallo. El diagnóstico clínico de este estrés proteostático puede ser inferido mediante la tricoscopia al observar anomalías en la cutícula y una reducción en la tasa de división celular. Estrategias nutricionales orientadas a potenciar chaperonas moleculares son áreas de estudio actuales en el manejo de alopecias crónicas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoacidos",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:43:24.702Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-autofagia-004",
+    "title": "Autofagia en el Bulbo Piloso: Mecanismo de Supervivencia Celular",
+    "content": "La autofagia es un proceso catabólico esencial mediante el cual las células del bulbo piloso eliminan orgánulos dañados y proteínas mal plegadas para mantener la eficiencia energética. En condiciones de estrés oxidativo crónico, la autofagia se ve comprometida, lo que acelera la entrada del folículo en catágeno prematuro. Este 'apagado' metabólico es un marcador temprano de la alopecia senil. Clínicamente, el diagnóstico de un déficit de autofagia se sospecha en pacientes con una tasa de regeneración folicular inusualmente lenta ante tratamientos estimulantes tradicionales como el minoxidil. La modulación farmacológica o nutracéutica de la vía mTOR, que regula negativamente la autofagia, es una frontera terapéutica prometedora. Es fundamental que el dermatólogo identifique signos de fatiga mitocondrial y autofágica mediante el análisis de la calidad del tallo (diámetro variable y falta de brillo), ya que estos pacientes requieren un enfoque de 'reinicio metabólico' antes de iniciar terapias de crecimiento agresivas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrd/index.html",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "resveratrol",
+        "spermidine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-clinico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:43:24.702Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-005",
+    "title": "Eje Intestino-Cuero Cabelludo: Impacto de la Microbiota Sistémica",
+    "content": "La conexión entre la microbiota intestinal y el cuero cabelludo, mediada por el sistema inmunológico, ha ganado relevancia clínica en el diagnóstico de alopecias inflamatorias. La disbiosis intestinal puede inducir un estado proinflamatorio sistémico que altera la homeostasis del folículo piloso, exacerbando condiciones como la alopecia areata o la dermatitis seborreica. Los metabolitos producidos por bacterias comensales, como los ácidos grasos de cadena corta (AGCC), tienen efectos antiinflamatorios locales y sistémicos. El diagnóstico de estas patologías debe incluir una anamnesis sobre salud digestiva, considerando que la permeabilidad intestinal aumentada puede elevar los niveles de citoquinas inflamatorias circulantes, las cuales impactan negativamente en el ciclo de vida del folículo. La suplementación con probióticos específicos y la modulación de la dieta son estrategias complementarias que, según la evidencia reciente, pueden mejorar la respuesta al tratamiento convencional de diversas patologías foliculares, subrayando la importancia de un enfoque holístico en la consulta dermatológica.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "probioticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-integral"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:43:24.702Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-006",
+    "title": "Impacto de los AGEs en la Matriz Folicular y el Envejecimiento Capilar",
+    "content": "Los productos de glicación avanzada (AGEs) resultan de la reacción no enzimática entre azúcares y proteínas, afectando la integridad estructural de la matriz folicular. En el cuero cabelludo, los AGEs se acumulan en la vaina radicular y la dermis peritricial, endureciendo la estructura y dificultando la regeneración del folículo. Este proceso de 'glicación' es particularmente crítico en pacientes con resistencia a la insulina o diabetes tipo 2, donde la alta disponibilidad de glucosa acelera el daño estructural. Clínicamente, el exceso de AGEs se manifiesta como una pérdida de flexibilidad del tallo y una mayor fragilidad ante el cepillado. La detección de estos biomarcadores mediante análisis de espectroscopía de fluorescencia cutánea puede ser un predictor de la severidad de la alopecia androgenética. El manejo clínico requiere no solo control metabólico, sino el uso de inhibidores tópicos de la glicación (como la aminoguanidina o extractos de romero) para proteger el microambiente del folículo contra esta degradación silenciosa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-80"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T06:43:24.702Z"
+  }
+]

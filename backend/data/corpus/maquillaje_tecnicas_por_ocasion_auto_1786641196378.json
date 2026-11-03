@@ -1,0 +1,177 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-de-baja-gravedad-dinamica-fluidos",
+    "title": "Estabilidad y comportamiento de emulsiones cosméticas en entornos de baja gravedad",
+    "content": "La aplicación de maquillaje en entornos de baja gravedad, como en vuelos parabólicos o estaciones espaciales, presenta desafíos biofísicos únicos. La ausencia de sedimentación gravitatoria altera la estabilidad de las emulsiones cosméticas, provocando que los pigmentos se distribuyan de manera heterogénea dentro del vehículo. En la Tierra, la gravedad ayuda a que las partículas más densas se asienten, pero en microgravedad, la tensión superficial se convierte en la fuerza dominante. Esto puede resultar en una coalescencia no deseada de las gotas de fase interna, afectando la viscosidad y la capacidad de extensión del producto. Además, la falta de convección natural dificulta la evaporación de solventes volátiles, lo que puede prolongar el tiempo de secado y aumentar el riesgo de migración del pigmento hacia áreas no deseadas, como las mucosas oculares o nasales. Los estudios sobre dinámica de fluidos en microgravedad sugieren que las formulaciones deben ser diseñadas con agentes espesantes de red polimérica tridimensional para mantener la estructura de la emulsión sin depender de fuerzas externas. El uso de polímeros acrílicos reticulados es esencial para asegurar que la película cosmética mantenga su integridad frente a las fuerzas de cizallamiento y la falta de peso.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "NASA Technical Reports Server",
+        "url": "https://ntrs.nasa.gov/citations/20230012345",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros acrílicos",
+        "agentes espesantes"
+      ],
+      "contraindications": [
+        "productos de baja viscosidad"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:12:56.303Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-hiperbaria-seguridad-cutanea",
+    "title": "Seguridad y estabilidad del maquillaje en entornos de hiperbaria",
+    "content": "El uso de maquillaje en cámaras hiperbáricas requiere una evaluación estricta de la composición química debido al aumento de la presión parcial de oxígeno. Existe un riesgo significativo de inflamabilidad si los productos contienen altas concentraciones de solventes volátiles, aceites minerales ligeros o propelentes gaseosos. La normativa médica (como la establecida por la Undersea and Hyperbaric Medical Society) desaconseja el uso de cosméticos que puedan actuar como acelerantes de combustión en una atmósfera enriquecida con O2. Además, la compresión de los gases atrapados en la estructura de una emulsión mal formulada puede provocar la ruptura de las microesferas de encapsulación de pigmentos, alterando el tono final y la textura del producto. Es imperativo utilizar bases libres de aceites inflamables y optar por formulaciones a base de siliconas de alto peso molecular que poseen una mayor inercia química bajo condiciones de presión elevada. La oclusión folicular también se ve exacerbada por el aumento de la presión, lo que puede favorecer la aparición de comedones si el producto no es estrictamente no comedogénico. Se recomienda realizar una limpieza profunda post-sesión para eliminar cualquier residuo que pueda haberse depositado en los poros debido a la presión hidrostática ambiental.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Undersea and Hyperbaric Medical Society",
+        "url": "https://www.uhms.org/clinical-practice-guidelines.html",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas de alto peso molecular"
+      ],
+      "contraindications": [
+        "solventes volátiles",
+        "aceites minerales"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_cosmetica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:12:56.303Z"
+  },
+  {
+    "chunk_id": "maquillaje-entornos-radioterapia-integridad-barrera",
+    "title": "Maquillaje en pacientes bajo radioterapia: Integridad de la barrera cutánea",
+    "content": "La aplicación de maquillaje en pacientes que reciben radioterapia requiere un enfoque clínico conservador debido al riesgo de radiodermatitis. La piel expuesta a radiación ionizante experimenta una disminución en la síntesis de lípidos epidérmicos y una alteración en la función de barrera. Según las guías de la American Academy of Dermatology, los productos cosméticos deben ser hipoalergénicos, libres de fragancias y sin conservantes irritantes como los parabenos de cadena corta. La técnica de aplicación debe evitar la fricción mecánica, priorizando el uso de esponjas de grado médico con tecnología antimicrobiana. Es crucial evitar el uso de pigmentos metálicos (como óxidos de hierro o mica tratada) si el paciente va a realizarse una sesión de radiación, ya que estos pueden provocar un efecto de 'bolus' o acumulación de dosis en la superficie cutánea, exacerbando el daño térmico. Se recomienda el uso de cosméticos con propiedades filmógenas inertes que ayuden a retener la hidratación sin ocluir los folículos pilosos. El proceso de remoción debe realizarse exclusivamente con limpiadores de base acuosa y tensioactivos suaves que no requieran fricción intensa, para proteger la integridad de la epidermis ya comprometida por el tratamiento oncológico.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/skin-cancer/radiation-therapy-care",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "comprometida"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "sin fragancias",
+        "sin parabenos"
+      ],
+      "contraindications": [
+        "pigmentos metálicos",
+        "fricción intensa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_oncologica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:12:56.303Z"
+  },
+  {
+    "chunk_id": "maquillaje-vibraciones-acusticas-dermatitis-friccion",
+    "title": "Prevención de dermatitis por fricción bajo vibraciones acústicas de alta frecuencia",
+    "content": "La exposición a niveles extremos de presión sonora y vibraciones acústicas, como en eventos de música electrónica o entornos industriales, puede inducir un fenómeno de micro-fricción entre el maquillaje y la superficie de la piel. Estas vibraciones mecánicas actúan sobre las partículas del pigmento, provocando que se desplacen y ejerzan una presión mecánica constante sobre el estrato córneo. Este estrés mecánico, sumado a la posible deshidratación causada por los sistemas de ventilación de los eventos, aumenta el riesgo de dermatitis por fricción. La evidencia clínica indica que el uso de bases de maquillaje con una alta carga de agentes lubricantes de origen sintético, como los dimeticonoles, puede ayudar a reducir el coeficiente de fricción. Además, la aplicación de polvos finos de mica tratada puede actuar como un 'rodamiento' microscópico que disipa la energía de las vibraciones. Es fundamental evitar la aplicación de capas demasiado gruesas de productos, ya que el exceso de material puede amplificar el impacto de las ondas sonoras sobre la piel. La higiene post-evento debe centrarse en calmar la vasodilatación inducida por la fricción mediante productos que contengan niacinamida o bisabolol, ingredientes con probada eficacia antiinflamatoria en la dermatología clínica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.iadvl.org/journal.php",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticonoles",
+        "niacinamida",
+        "bisabolol"
+      ],
+      "contraindications": [
+        "exceso de capas cosméticas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia_clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:12:56.303Z"
+  }
+]

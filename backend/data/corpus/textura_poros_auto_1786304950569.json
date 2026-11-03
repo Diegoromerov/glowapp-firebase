@@ -1,0 +1,388 @@
+[
+  {
+    "chunk_id": "poros-microbioma-001",
+    "title": "El papel del microbioma en la apariencia de los poros",
+    "content": "La apariencia de los poros no depende solo de la secreción sebácea, sino también del equilibrio del microbioma cutáneo. Investigaciones recientes publicadas en PubMed sugieren que la disbiosis de Cutibacterium acnes y Staphylococcus epidermidis puede influir en la inflamación perinfundibular. Cuando la microbiota cutánea está desequilibrada, la respuesta inflamatoria subclínica puede inducir una dilatación leve pero persistente del poro. Mantener un pH cutáneo fisiológico (cercano a 5.5) es fundamental para favorecer las bacterias comensales beneficiosas que protegen la barrera cutánea. El uso excesivo de antisépticos o limpiadores de pH alcalino rompe esta homeostasis, exacerbando la visibilidad de los poros al comprometer la integridad del estrato córneo. Un microbioma saludable no solo previene el acné, sino que ayuda a mantener la estructura del poro al reducir la inflamación crónica de bajo grado que, con el tiempo, puede degradar la elastina periporo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31339682/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "prebioticos",
+        "probioticos"
+      ],
+      "contraindications": [
+        "antibioticos-topicos-indiscriminados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-microbiota"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-dieta-glicemica-002",
+    "title": "Impacto de la carga glucémica en la secreción sebácea y poros",
+    "content": "La relación entre la dieta y la textura de la piel es un campo de estudio consolidado en la dermatología moderna. Dietas con alta carga glucémica provocan picos de insulina y factor de crecimiento similar a la insulina tipo 1 (IGF-1), los cuales estimulan directamente la lipogénesis en las glándulas sebáceas. Este incremento en la producción de sebo, sumado a una posible hiperqueratinización folicular, resulta en una mayor dilatación del poro. Estudios clínicos indican que la reducción de azúcares refinados y carbohidratos de alto índice glucémico puede normalizar la actividad sebácea, mejorando indirectamente la apariencia de los poros a medio plazo. En el contexto de GlowApp, es vital educar a los usuarios sobre cómo los factores metabólicos sistémicos se manifiestan en la superficie cutánea, evitando el enfoque exclusivo en productos tópicos y promoviendo un abordaje integral de la salud de la piel basado en la evidencia nutricional.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)32549-0/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-cutanea"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-estres-cortisol-003",
+    "title": "El estrés crónico y su efecto en la dilatación de poros",
+    "content": "El estrés psicológico crónico eleva los niveles de cortisol, una hormona que tiene receptores en las glándulas sebáceas. La activación de estos receptores incrementa la producción de sebo, lo que a menudo se traduce en una apariencia más notoria de los poros, especialmente en la zona T. Adicionalmente, el cortisol puede debilitar la función barrera de la piel, facilitando la pérdida de agua transepidérmica y promoviendo la inflamación. Este fenómeno es particularmente relevante en entornos urbanos de alto estrés como Bogotá. El manejo del estrés, junto con una rutina de cuidado que refuerce la barrera cutánea, es esencial para aquellos pacientes que notan una correlación directa entre periodos de alta carga laboral o académica y un empeoramiento en la textura de su piel. No se trata solo de limpiar, sino de gestionar la respuesta fisiológica sistémica que impacta la salud de los poros.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/ijd.14725",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "calmantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estilo-de-vida"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-doble-limpieza-004",
+    "title": "La doble limpieza como estrategia para la gestión de poros",
+    "content": "La doble limpieza no es solo una tendencia de belleza; es una técnica fundamentada en la química de los lípidos. El uso de un limpiador base aceite seguido de uno base agua es altamente eficaz para disolver el sebo oxidado y los residuos de protector solar que, de otro modo, podrían acumularse en el infundíbulo folicular. Esta acumulación es la que a menudo hace que los poros parezcan más oscuros y dilatados. Al remover efectivamente los lípidos no polares, se mejora la permeabilidad de los activos de tratamiento (como retinoides o ácidos) que se apliquen posteriormente. Es fundamental elegir limpiadores con surfactantes suaves que no alteren el manto hidrolipídico. Para pieles grasas, esta técnica permite mantener el poro limpio sin recurrir a la exfoliación mecánica agresiva, que suele ser contraproducente a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-basics/care/skin-care-for-acne-prone-skin",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceites-limpiadores",
+        "surfactantes-suaves"
+      ],
+      "contraindications": [
+        "aceites-comedogenicos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-diaria"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-humectacion-005",
+    "title": "Por qué la deshidratación hace que tus poros se vean más grandes",
+    "content": "Existe una relación directa entre el nivel de hidratación epidérmica y la visibilidad de los poros. Cuando la piel carece de una hidratación óptima, el estrato córneo pierde turgencia y se vuelve más rígido. Este colapso estructural hace que los bordes de los poros se vuelvan más definidos y evidentes visualmente. Muchos usuarios con piel grasa cometen el error de evitar humectantes por miedo a la oclusión, lo cual paradójicamente deshidrata más la piel y puede aumentar la producción de sebo compensatorio. La clave es utilizar texturas ligeras, no comedogénicas (como geles con ácido hialurónico, glicerina o ceramidas) que mantengan la piel 'rellena' y flexible. Una piel correctamente hidratada refleja mejor la luz, lo que suaviza ópticamente la textura y minimiza la apariencia de los poros dilatados, proporcionando un aspecto más uniforme y saludable sin necesidad de maquillaje pesado.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.13600",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-hialuronico",
+        "ceramidas",
+        "glicerina"
+      ],
+      "contraindications": [
+        "productos-altamente-oclusivos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion-inteligente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-maquillaje-006",
+    "title": "Maquillaje y poros: cómo evitar el efecto comedogénico",
+    "content": "El uso de maquillaje en pieles con poros dilatados requiere una selección cuidadosa de formulaciones. Muchos productos de larga duración contienen polímeros y ceras que, si no se eliminan correctamente, pueden ocluir el folículo pilosebáceo, exacerbando la formación de microcomedones. Es preferible optar por formulaciones 'non-comedogenic' etiquetadas explícitamente y preferir texturas fluidas sobre las cremosas o en barra. Además, el uso de primers a base de siliconas (dimeticona) puede suavizar temporalmente la textura al rellenar los huecos, pero es crucial recordar que es un efecto cosmético y no un tratamiento. La regla de oro es la higiene: nunca dormir con maquillaje y realizar una limpieza profunda por la noche. En piel latina, donde la hiperpigmentación postinflamatoria es común, el uso de maquillaje con protección solar mineral puede servir como un doble beneficio para proteger la piel mientras se disimula la textura.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Clinical and Aesthetic Dermatology",
+        "url": "https://jcadonline.com/acne-cosmetics/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "dimeticona",
+        "siliconas"
+      ],
+      "contraindications": [
+        "aceites-pesados"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "maquillaje-seguro"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-envejecimiento-007",
+    "title": "La pérdida de soporte periporo: envejecimiento y poros",
+    "content": "Con el avance de la edad, la estructura de la piel sufre cambios significativos. La pérdida de colágeno y elastina en la dermis, junto con la degradación de la matriz extracelular, reduce el soporte estructural que mantiene los poros 'tensos'. Este fenómeno, conocido como 'poros por envejecimiento' o poro en forma de gota, es distinto al poro dilatado por exceso de sebo en adolescentes. Aquí, el poro no es solo grande, sino que se ve alargado o flácido. La estrategia de tratamiento debe cambiar de la simple regulación de sebo hacia la estimulación de la síntesis de colágeno. Ingredientes como el retinol, el retinaldehído y péptidos específicos, junto con procedimientos profesionales de estimulación dérmica, son los únicos capaces de revertir esta pérdida de soporte y devolver la firmeza a la piel, reduciendo así la apariencia de poros distendidos por la edad.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatology Research and Practice",
+        "url": "https://www.hindawi.com/journals/drp/2021/6632971/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+",
+        "40+",
+        "50+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides",
+        "peptidos",
+        "vitamina-c"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-edad"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-humedad-bogota-008",
+    "title": "Efecto del clima de Bogotá en la textura de la piel",
+    "content": "El clima de Bogotá, caracterizado por una alta altitud, radiación UV intensa y variaciones de humedad, impacta directamente la fisiología cutánea. La altitud puede inducir una mayor respuesta oxidativa, mientras que la exposición constante a los cambios de temperatura afecta la microcirculación y la función barrera. Para los usuarios en Bogotá, la gestión de los poros requiere un enfoque adaptativo: protección solar de amplio espectro (FPS 50+) es innegociable debido a la cercanía con el ecuador y la altitud, que incrementan el daño solar acumulado, degradando el colágeno y dilatando los poros. Además, el uso de antioxidantes tópicos por la mañana ayuda a mitigar el daño por radicales libres generado por la contaminación atmosférica urbana, la cual puede adherirse a los poros y favorecer la inflamación. Una rutina adaptada al entorno es la mejor defensa contra el envejecimiento prematuro de la textura cutánea.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "World Health Organization (UV Index)",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-ultraviolet-(uv)",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina-c",
+        "ferulico",
+        "filtro-solar"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-local"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  },
+  {
+    "chunk_id": "poros-exfoliacion-quimica-009",
+    "title": "Frecuencia ideal de exfoliación para textura y poros",
+    "content": "La sobre-exfoliación es un error común que compromete la barrera cutánea, provocando deshidratación e inflamación, lo que a su vez hace que los poros luzcan más prominentes. La clave de la exfoliación química para poros no es la intensidad, sino la consistencia. Para pieles con poros visibles, el uso de BHA (ácido salicílico) es preferible debido a su naturaleza lipofílica, que le permite penetrar profundamente en el sebo del folículo. Sin embargo, no debe usarse diariamente en pieles sensibles. Una frecuencia de 2 a 3 veces por semana es generalmente suficiente para mantener el poro despejado sin causar irritación. Es vital monitorear la respuesta de la piel: si aparece enrojecimiento, tirantez o descamación, la frecuencia debe reducirse. La salud de la piel es una maratón, no una carrera de velocidad; la preservación de la barrera cutánea es el activo más valioso para una textura uniforme.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/chemical-peels-in-acne-scarring-and-acne/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acido-salicilico",
+        "bha"
+      ],
+      "contraindications": [
+        "exfoliacion-fisica-agresiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "rutina-avanzada"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T19:48:54.528Z"
+  }
+]

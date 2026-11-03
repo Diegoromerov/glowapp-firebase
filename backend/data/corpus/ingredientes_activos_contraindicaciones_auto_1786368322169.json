@@ -1,0 +1,259 @@
+[
+  {
+    "chunk_id": "quats-dermatitis-contacto-001",
+    "title": "Cloruro de Benzalconio y Cetrimonio: Riesgos de Dermatitis de Contacto",
+    "content": "Los compuestos de amonio cuaternario (quats), como el cloruro de benzalconio y el cloruro de cetrimonio, son tensioactivos catiónicos ampliamente utilizados como conservantes y agentes antiestáticos en productos capilares y de limpieza facial. A diferencia de los tensioactivos aniónicos, su carga positiva les permite adherirse fuertemente a las proteínas de la piel, lo que puede inducir una dermatitis de contacto irritativa o alérgica tras exposiciones repetidas. Estudios publicados en el Journal of the American Academy of Dermatology han destacado que estos compuestos, cuando no se enjuagan correctamente o se dejan en productos tipo leave-on, pueden alterar la permeabilidad de la barrera cutánea. La sensibilización a los quats es un fenómeno creciente que a menudo se subestima en el diagnóstico diferencial de eccemas faciales y del cuero cabelludo. Es crucial que los pacientes con piel sensible o dermatitis atópica verifiquen la presencia de estos agentes en sus acondicionadores y limpiadores, ya que su capacidad de disrupción del microbioma cutáneo es significativa. La recomendación clínica es optar por formulaciones libres de estos agentes si el paciente presenta eritema persistente o prurito tras el uso de productos de higiene capilar.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/eczema/types/contact-dermatitis",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "atopia"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cloruro de benzalconio",
+        "cloruro de cetrimonio"
+      ],
+      "contraindications": [
+        "dermatitis atópica",
+        "piel reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:25:02.399Z"
+  },
+  {
+    "chunk_id": "diisopropanolamina-nitrosaminas-002",
+    "title": "Diisopropanolamina (DIPA): Ajuste de pH y Riesgo de Nitrosaminas",
+    "content": "La diisopropanolamina (DIPA) es una alcanolamina utilizada frecuentemente como agente ajustador de pH en cosméticos para estabilizar emulsiones. Sin embargo, su uso conlleva un riesgo químico importante: la formación de nitrosaminas. Las nitrosaminas son compuestos orgánicos clasificados como potenciales carcinógenos que pueden formarse cuando las alcanolaminas reaccionan con agentes nitrosantes presentes en la misma formulación o derivados de contaminantes. Aunque la industria cosmética regula estrictamente las concentraciones para minimizar este riesgo, la estabilidad a largo plazo del producto es vital. La literatura científica sugiere que la exposición crónica a niveles traza de nitrosaminas a través de productos tópicos debe ser monitorizada, especialmente en formulaciones que contengan otros precursores. Para el consumidor, el riesgo es bajo si el producto está bien formulado, pero para pacientes con antecedentes de hipersensibilidad química, es recomendable evitar productos que contengan DIPA junto con agentes conservantes liberadores de nitritos. La vigilancia en la cadena de suministro es la principal barrera de defensa contra este riesgo químico invisible, asegurando que los estándares de pureza sean cumplidos rigurosamente por el fabricante.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456030/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "diisopropanolamina"
+      ],
+      "contraindications": [
+        "hipersensibilidad química"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:25:02.399Z"
+  },
+  {
+    "chunk_id": "acetil-hexapeptido-8-mecanismo-003",
+    "title": "Acetil Hexapéptido-8 (Argireline): Evidencia frente al mito",
+    "content": "El Acetil Hexapéptido-8, comercializado comúnmente como Argireline, es un péptido sintético que se promociona frecuentemente como una alternativa tópica a la toxina botulínica. Su mecanismo propuesto implica la modulación del complejo SNARE, una proteína necesaria para la liberación de neurotransmisores que causan la contracción muscular facial. Sin embargo, la evidencia clínica sobre su capacidad para penetrar la barrera cutánea y alcanzar niveles terapéuticos en la unión neuromuscular es limitada. Mientras que estudios in vitro sugieren una reducción en la liberación de catecolaminas, los estudios in vivo publicados en revistas de dermatología cosmética indican que su eficacia para suavizar arrugas dinámicas es significativamente menor a la de procedimientos médicos invasivos. Existe una confusión común entre los consumidores sobre si este ingrediente puede 'paralizar' el músculo; la realidad es que el efecto es meramente cosmético y superficial, mejorando la hidratación y la apariencia de las líneas finas mediante la mejora de la turgencia cutánea. No presenta riesgos de toxicidad sistémica, pero el riesgo principal es la expectativa irreal de resultados similares a la neurotoxina inyectable, lo que puede llevar a una frustración del usuario en tratamientos anti-aging.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetil hexapéptido-8"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "anti-aging"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:25:02.399Z"
+  },
+  {
+    "chunk_id": "bergamota-furocumarinas-fototoxicidad-004",
+    "title": "Aceite de Bergamota: El riesgo de fototoxicidad severa",
+    "content": "El aceite de bergamota es un ingrediente botánico valorado por su aroma y supuestas propiedades calmantes, pero es uno de los aceites esenciales con mayor potencial fototóxico debido a su alto contenido en furocumarinas, específicamente el bergapteno. Cuando se aplica sobre la piel y se expone a la radiación UV, las furocumarinas absorben energía y se activan, formando aductos con el ADN de las células epidérmicas. Esto resulta en una reacción fototóxica que se manifiesta como eritema intenso, ampollas y, posteriormente, hiperpigmentación post-inflamatoria de larga duración, conocida como dermatitis de Berloque. La International Fragrance Association (IFRA) tiene límites estrictos para el uso de aceite de bergamota en cosmética, recomendando el uso exclusivo de versiones 'furocoumarin-free'. Es vital que los usuarios en zonas tropicales o con alta exposición solar, como Bogotá en días de alta radiación, eviten productos cosméticos que contengan extractos naturales de cítricos sin una certificación clara de ausencia de furocumarinas. La fototoxicidad no es una reacción alérgica, sino una respuesta inflamatoria mediada por luz, por lo que puede ocurrir en cualquier persona, independientemente de su historial de alergias.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Fragrance Association",
+        "url": "https://ifrafragrance.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aceite de bergamota",
+        "furocumarinas"
+      ],
+      "contraindications": [
+        "exposición solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:25:02.399Z"
+  },
+  {
+    "chunk_id": "menthyl-lactate-irritacion-005",
+    "title": "Menthyl Lactate: La ilusión de frescura y su potencial irritativo",
+    "content": "El Menthyl Lactate es un derivado del mentol utilizado para proporcionar una sensación de frescor duradero en productos cosméticos sin el fuerte olor ni la alta volatilidad del mentol puro. Aunque se considera una alternativa más suave, es fundamental comprender que su mecanismo de acción sigue siendo la activación de los receptores TRPM8 (receptores de frío) en las terminaciones nerviosas sensoriales de la piel. En pieles inflamadas, con rosácea o dermatitis, esta estimulación sensorial puede exacerbar la percepción de picor y ardor, incluso si el producto no causa una reacción alérgica real. Además, el uso prolongado de agentes refrescantes puede enmascarar signos tempranos de irritación, ya que la sensación de frescor distrae al usuario de la inflamación subyacente. Los dermatólogos advierten que, en pacientes con barrera cutánea comprometida, el uso de Menthyl Lactate puede aumentar la permeabilidad de otros ingredientes irritantes presentes en la misma fórmula. Se recomienda precaución extrema en pieles con rosácea activa o eczema, donde la vasodilatación inducida por la respuesta sensorial puede empeorar el eritema basal. No es un ingrediente nocivo per se, pero su uso en productos para 'piel sensible' puede ser contraproducente debido a su naturaleza estimulante.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25686008/",
+        "year": 2021
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "rosacea"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "menthyl lactate"
+      ],
+      "contraindications": [
+        "rosácea",
+        "dermatitis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "dermatologia-clinica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:25:02.399Z"
+  },
+  {
+    "chunk_id": "cumarinas-fototoxicidad-009",
+    "title": "Cumarinas en extractos botánicos: El riesgo de fototoxicidad",
+    "content": "Las cumarinas son compuestos orgánicos presentes de forma natural en numerosas plantas, flores y aceites esenciales. Aunque algunas cumarinas tienen propiedades antioxidantes, otras, como los psoralenos y las furocumarinas, son potentes agentes fototóxicos. La fototoxicidad por cumarinas ocurre cuando la piel, tras haber estado en contacto con el compuesto, se expone a la luz UVA, provocando una reacción citotóxica que daña los queratinocitos. Este riesgo es particularmente alto en productos cosméticos que utilizan extractos botánicos no estandarizados o 'naturales' sin un control de calidad riguroso sobre su composición química. El daño puede ser severo, incluyendo quemaduras químicas que dejan manchas de hiperpigmentación difíciles de tratar. Es un error común pensar que 'natural' es sinónimo de 'seguro'; en dermatología clínica, los extractos botánicos son una de las causas más frecuentes de dermatitis fotoalérgica no diagnosticada. Se aconseja a los usuarios de GlowApp ser cautelosos con productos artesanales que contengan aceites de cítricos (limón, lima, bergamota) o plantas de la familia Apiaceae, y verificar siempre la lista INCI. Si un producto botánico causa enrojecimiento tras la exposición solar, se debe suspender su uso inmediatamente y consultar con un especialista para evaluar el daño en la barrera cutánea y prevenir una hiperpigmentación post-inflamatoria crónica.",
+    "category": "ingredientes_activos_contraindicaciones",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "IADVL - Indian Association of Dermatologists, Venereologists and Leprologists",
+        "url": "https://iadvl.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cumarinas",
+        "extractos botánicos"
+      ],
+      "contraindications": [
+        "exposición solar"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "fotoproteccion"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T13:25:02.399Z"
+  }
+]

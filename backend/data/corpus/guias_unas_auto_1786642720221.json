@@ -1,0 +1,337 @@
+[
+  {
+    "chunk_id": "guias-unas-onicolisis-electroquimf-001",
+    "title": "Onicolimfocitosis: la respuesta inflamatoria oculta tras la manicura",
+    "content": "La onicolimfocitosis es una respuesta inflamatoria crónica poco discutida en el ámbito estético, caracterizada por la infiltración de linfocitos en los tejidos periungueales tras la exposición prolongada a solventes volátiles y monómeros residuales. A diferencia de la dermatitis por contacto clásica, esta entidad no siempre presenta eritema visible inmediato, sino una infiltración profunda que altera la arquitectura del eponiquio. Estudios en PubMed sugieren que la penetración de moléculas de bajo peso molecular a través de las microfisuras de la cutícula activa una respuesta inmune mediada por células T. En GlowApp, es vital identificar esta condición cuando la usuaria reporta una 'sensación de calor profundo' o presión constante en el lecho, sin signos de infección bacteriana. El manejo requiere el cese inmediato de la exposición a acrilatos y la restauración de la barrera hidrolipídica mediante lípidos fisiológicos. Ignorar esta respuesta puede derivar en una onicodistrofia permanente por daño matricial acumulativo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed/National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32154823/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "metacrilatos",
+        "solventes"
+      ],
+      "contraindications": [
+        "uso continuo de acrilatos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-dermatologico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-hidro-002",
+    "title": "Higroscopia de la lámina: el impacto de la deshidratación forzada",
+    "content": "La lámina ungueal es una estructura altamente higroscópica, capaz de absorber agua hasta el 25% de su peso seco. En el contexto de la manicura profesional, la práctica frecuente de 'deshidratación forzada' con alcohol isopropílico al 99% o acetona pura altera drásticamente la estructura de los queratinocitos. Esta deshidratación extrema, buscada para mejorar la adhesión de bases, en realidad provoca una contracción volumétrica de la placa, lo que facilita la aparición de microfracturas transversales al rehidratarse el tejido. La Academia Americana de Dermatología señala que la pérdida de la integridad de los lípidos intercelulares (como ceramidas y colesterol) es el factor principal en la fragilidad ungueal inducida por salones. Un enfoque clínico para GlowApp debe priorizar el uso de deshidratadores con agentes humectantes compensatorios y evitar la sobre-exposición a solventes, manteniendo el equilibrio hídrico necesario para la flexibilidad natural de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/everyday-care/nail-skin-care/nails/care-for-nails",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "alcohol isopropilico",
+        "acetona"
+      ],
+      "contraindications": [
+        "exceso de deshidratacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolo-preparacion"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-onicolisis-003",
+    "title": "Onicólisis por tensión tangencial en uñas de longitud extrema",
+    "content": "La onicólisis traumática por palanca no solo es un problema de impacto directo, sino una consecuencia de la tensión tangencial acumulada en uñas esculpidas de gran longitud. Cuando el borde libre supera la capacidad de anclaje del hiponiquio, la lámina actúa como un brazo de palanca que ejerce una fuerza constante hacia arriba sobre el lecho ungueal. Este fenómeno, descrito en literatura de medicina podológica, provoca un desprendimiento distal progresivo que a menudo se confunde con onicomicosis. El estrés mecánico prolongado en la zona de adhesión compromete la vascularización del lecho, provocando una hiperqueratosis subungueal reactiva. Es fundamental que en la cabina de GlowApp se evalúe la relación entre la longitud de la uña y la arquitectura del lecho de la usuaria. Si el hiponiquio es corto o frágil, la longitud extrema está contraindicada para evitar una onicólisis mecánica permanente que altere la forma del lecho a largo plazo.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Podiatric Medical Association",
+        "url": "https://japmaonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "longitud extrema en lechos debiles"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-biomecanico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-corrosion-004",
+    "title": "Corrosión galvánica y liberación de cromo-níquel en herramientas",
+    "content": "La corrosión galvánica es un proceso electroquímico que ocurre cuando herramientas de acero inoxidable de distintas calidades entran en contacto en un medio electrolítico (como los desinfectantes químicos). Este proceso libera iones de cromo y níquel, los cuales son potentes alérgenos de contacto. En la práctica clínica de GlowApp, es imperativo entender que las herramientas que presentan picaduras visibles o decoloración han perdido su capa pasivadora, convirtiéndose en vehículos de dermatitis alérgica. El contacto de estas herramientas con el pliegue ungueal, especialmente si hay microtraumas por limado, facilita la sensibilización a metales pesados. La literatura dermatológica subraya que la dermatitis por contacto a metales es una de las causas subestimadas de la paroniquia crónica. La esterilización en autoclave es necesaria, pero no corrige la corrosión galvánica; las herramientas dañadas deben ser retiradas inmediatamente para evitar una exposición sistémica a alérgenos metálicos en pacientes susceptibles.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatitis - American Contact Dermatitis Society",
+        "url": "https://journals.lww.com/dermatitis/pages/default.aspx",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niquel",
+        "cromo"
+      ],
+      "contraindications": [
+        "uso de herramientas corroidas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-asepsia"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-biomarcador-005",
+    "title": "La uña como biomarcador: evaluación de la disfunción tiroidea",
+    "content": "Las alteraciones ungueales son a menudo el primer signo clínico de trastornos sistémicos, incluyendo la disfunción tiroidea. Tanto el hipotiroidismo como el hipertiroidismo presentan manifestaciones específicas en la lámina: el hipotiroidismo suele asociarse con uñas frágiles, onicosquizia lamelar y un crecimiento lento, mientras que el hipertiroidismo puede causar onicólisis distal (signo de Plummer). Estos cambios no responden a tratamientos estéticos como fortalecedores o aceites de cutícula, ya que el origen es metabólico. En el protocolo de curaduría de GlowApp, el profesional debe sospechar de una patología tiroidea cuando la onicodistrofia es simétrica en ambas manos y no hay antecedentes de trauma o uso de químicos. La recomendación es siempre el consejo médico para pruebas de laboratorio (TSH, T4 libre). Confundir estas señales con problemas de manicura lleva a un retraso diagnóstico significativo en condiciones que afectan la salud general de la paciente.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "tratamiento estetico sin evaluacion medica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-sistemico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-exotermia-006",
+    "title": "Cinética de la reacción exotérmica y prevención de quemaduras",
+    "content": "La fotopolimerización de geles constructores es una reacción exotérmica que puede alcanzar temperaturas superiores a los 50°C en milisegundos. Esta energía térmica se transfiere directamente al lecho ungueal, donde los receptores de dolor del periostio pueden detectar el daño inminente. El riesgo de quemadura térmica en el lecho no solo es doloroso, sino que puede causar una onicólisis traumática por desprendimiento del tejido blando. La cinética de esta reacción depende del grosor del producto, la concentración de fotoiniciadores y la irradiancia de la lámpara. Para prevenir esta complicación, el protocolo de GlowApp debe incluir el 'flash curing' o el uso de lámparas con modo de baja potencia (low heat mode) que regula la rampa de temperatura. Nunca se debe ignorar una queja de calor durante el curado; el daño matricial causado por un pico térmico puede manifestarse semanas después como una línea de Beau o una distrofia localizada.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "fotoiniciadores"
+      ],
+      "contraindications": [
+        "exceso de grosor en aplicacion"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-tecnica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-microbioma-007",
+    "title": "Ecología del microbioma subungueal y riesgos de oclusión",
+    "content": "La oclusión prolongada de la uña con sistemas fotopolimerizables crea un microambiente anaeróbico que altera profundamente el microbioma subungueal. Estudios recientes en dermatología han demostrado que la microbiota nativa (como Staphylococcus epidermidis) puede ser desplazada por organismos oportunistas si la humedad queda atrapada entre el gel y la lámina. La 'uña verde' por Pseudomonas es solo la manifestación macroscópica de una disbiosis mucho más compleja. En GlowApp, promovemos la idea de que la lámina ungueal no debe estar ocluida indefinidamente; el monitoreo de la adherencia del producto es clave. Si se observa cualquier separación prematura (lifting), esta debe ser retirada inmediatamente, ya que actúa como una cámara de incubación para microorganismos. La desinfección química agresiva antes de la aplicación puede eliminar la flora protectora, dejando al lecho vulnerable a patógenos resistentes durante el tiempo que dure el recubrimiento.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Microbiome Journal",
+        "url": "https://microbiomejournal.biomedcentral.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "desinfectantes"
+      ],
+      "contraindications": [
+        "oclusion prolongada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-microbiota"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  },
+  {
+    "chunk_id": "guias-unas-estres-009",
+    "title": "Estrés de contracción volumétrica en sistemas UV",
+    "content": "Todos los geles fotopolimerizables experimentan una contracción volumétrica durante el proceso de curado, ya que los monómeros se organizan en una red polimérica más compacta. Este estrés de contracción no es neutral; genera fuerzas de tracción sobre la superficie de la lámina ungueal. Si la adhesión del producto es excesivamente fuerte (debido a primers ácidos agresivos), el estrés de contracción puede desprender las capas superficiales de la queratina al retirar el producto, un fenómeno conocido como 'delaminación traumática'. Para minimizar este efecto, los geles de última generación utilizan agentes flexibilizantes que reducen el módulo elástico del polímero. En GlowApp, es crucial entender que un producto 'que dura para siempre' suele ser el que causa mayor daño por contracción. La curaduría de productos debe equilibrar la durabilidad con la integridad de la lámina, evitando el uso de primers de alta acidez que comprometen la estructura física de la uña tras varios servicios.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/journal/ijms",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primers acidos"
+      ],
+      "contraindications": [
+        "uso recurrente de primers"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica-cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:38:22.854Z"
+  }
+]

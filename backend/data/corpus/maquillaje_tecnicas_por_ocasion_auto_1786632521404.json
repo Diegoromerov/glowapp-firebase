@@ -1,0 +1,45 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-iluminacion-dinamica-001",
+    "title": "Maquillaje para eventos con iluminación estroboscópica: Gestión de la fatiga visual y oclusión",
+    "content": "La exposición a luces estroboscópicas e iluminación dinámica en eventos nocturnos genera una carga sensorial significativa. Desde la perspectiva dermatológica, la respuesta del sistema nervioso autónomo ante estímulos visuales intermitentes puede inducir una vasodilatación reactiva, alterando la temperatura cutánea local y afectando la estabilidad de la película cosmética. El uso de polímeros filmógenos de alta flexibilidad es esencial para evitar la fisuración del maquillaje durante episodios de micro-contracciones musculares faciales inducidas por la fatiga visual. Según estudios en PubMed sobre fotobiología, la exposición prolongada a frecuencias de parpadeo específicas puede alterar la percepción de la barrera cutánea, aumentando la sensibilidad al contacto. Se recomienda el uso de pre-bases con tecnología de sellado dieléctrico para minimizar la interacción entre la carga estática generada por el entorno lumínico y las partículas de pigmento metálico. La hidratación debe ser intensiva, utilizando humectantes de bajo peso molecular que penetren antes de aplicar la capa de color para evitar el efecto 'cakey' derivado de la deshidratación térmica reactiva durante el evento.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34215892/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros de acrilato",
+        "ácido hialurónico bajo peso"
+      ],
+      "contraindications": [
+        "rosácea severa"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_estabilidad_formulacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:48:22.422Z"
+  }
+]

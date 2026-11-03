@@ -1,0 +1,327 @@
+[
+  {
+    "chunk_id": "poros-glicosilacion-proteoglicanos-001",
+    "title": "Impacto de la glicosilación de proteoglicanos en la estructura periporo",
+    "content": "La integridad del ostium folicular no depende solo del colágeno, sino también de la matriz extracelular (MEC) rica en proteoglicanos. La glicosilación no enzimática de estas moléculas, un proceso acelerado por niveles altos de glucosa circulante y estrés oxidativo, altera la capacidad de retención hídrica y la elasticidad del canal folicular. Cuando los proteoglicanos como el decorican y el versican pierden su funcionalidad debido a la formación de productos finales de glicación avanzada (AGEs), la piel periporo pierde su capacidad de 'rebote' mecánico. Esto resulta en una dilatación pasiva del poro, donde el canal no logra cerrarse tras la expulsión de sebo. Estudios en Journal of Dermatological Science sugieren que la degradación de estos componentes es un marcador temprano de envejecimiento cutáneo que se manifiesta primero como una textura irregular y poros visibles en la zona T. La protección contra la glicación, mediante el control de la carga glucémica y el uso de antioxidantes tópicos específicos como la aminoguanidina, es una estrategia emergente para mantener la arquitectura folicular a largo plazo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.jdsjournal.com/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-60"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "aminoguanidina",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-quimiotaxis-neutrofilos-002",
+    "title": "Quimiotaxis de neutrófilos y remodelación del canal folicular",
+    "content": "La inflamación subclínica en el folículo pilosebáceo a menudo involucra una respuesta de quimiotaxis de neutrófilos, incluso en ausencia de acné clínico evidente. La presencia de detritos lipídicos oxidados actúa como un estímulo pro-inflamatorio que atrae neutrófilos hacia el lumen del poro. La liberación de proteasas neutrofílicas, como la elastasa, degrada las fibras de elastina que rodean el ostium, resultando en una pérdida de soporte estructural permanente. Este fenómeno explica por qué algunos pacientes presentan poros dilatados crónicos a pesar de no tener lesiones inflamatorias activas. La gestión de esta 'inflamación silenciosa' requiere el uso de agentes antiinflamatorios tópicos que modulen la respuesta inmune innata sin comprometer la barrera cutánea. La evidencia publicada en PubMed subraya que la inhibición de la migración de neutrófilos es clave para prevenir la remodelación del tejido periporo. En GlowApp, priorizamos activos que calmen esta respuesta, como el ácido azelaico en concentraciones adecuadas, para preservar la arquitectura del poro frente al daño enzimático constante.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed/NCBI",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido azelaico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_inflamacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-homeostasis-ion-calcio-003",
+    "title": "Homeostasis del ion calcio y la cohesión de los queratinocitos del poro",
+    "content": "La diferenciación de los queratinocitos en el epitelio del infundíbulo folicular está estrictamente regulada por un gradiente de calcio. Un desequilibrio en la homeostasis de este ion, a menudo provocado por productos de limpieza con pH alcalino o agua dura, interrumpe el proceso de descamación normal. Esto genera una hiperqueratosis folicular, donde las células muertas no se eliminan correctamente y se acumulan, expandiendo físicamente el diámetro del poro. Este proceso, documentado en estudios sobre la función de barrera, explica por qué la limpieza con productos de pH fisiológico (5.0-5.5) es crítica para mantener una textura suave. Cuando el gradiente de calcio se ve alterado, la cohesión celular disminuye y la apertura del poro se vuelve más susceptible a la obstrucción por detritos. Mantener la homeostasis iónica no solo mejora la apariencia de los poros, sino que refuerza la barrera cutánea contra patógenos oportunistas que suelen colonizar los folículos dilatados. La recomendación clínica es evitar el uso de jabones en barra tradicionales y optar por syndets que respeten la fisiología del estrato córneo.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndets"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_rutina"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-neurotransmisores-cutaneos-004",
+    "title": "El papel de los neurotransmisores cutáneos en la tensión del poro",
+    "content": "La piel es un órgano neuroendocrino complejo donde la liberación de neurotransmisores, como la sustancia P y el péptido relacionado con el gen de la calcitonina (CGRP), puede influir directamente en la morfología del poro. Estos mediadores, liberados en respuesta al estrés psicológico o ambiental, actúan sobre las terminaciones nerviosas perifoliculares y el músculo erector del pelo. La estimulación crónica de estos receptores puede inducir una contracción sostenida o una relajación inadecuada del tejido que rodea el canal folicular, exacerbando la apariencia de poros dilatados. Este eje neuro-inmune es una vía de investigación creciente en dermatología para entender por qué la textura de la piel empeora durante periodos de alta carga de estrés. La modulación de estos neurotransmisores mediante activos tópicos neuro-cosméticos representa una nueva frontera en el tratamiento de la textura. Mientras tanto, técnicas de manejo de estrés y productos con propiedades calmantes ayudan a mitigar la respuesta inflamatoria mediada por nervios, reduciendo la dilatación reactiva del poro y mejorando la uniformidad cutánea en pacientes con piel sensible y reactiva.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "agentes calmantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estilo_vida"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-osmolaridad-turgencia-005",
+    "title": "Osmolaridad y turgencia: el agua en el ostium folicular",
+    "content": "La apariencia de los poros está fuertemente ligada a la hidratación del tejido circundante. La osmolaridad del fluido intersticial en la dermis papilar afecta la turgencia del ostium folicular. Cuando la piel sufre de deshidratación crónica, la pérdida de turgencia de los corneocitos periporo provoca un colapso estructural que hace que el poro se visualice más grande y profundo. Este fenómeno es distinto a la dilatación por sebo; aquí, el problema es la falta de 'relleno' mecánico del tejido circundante. La aplicación de humectantes con alto peso molecular y agentes que regulan la presión osmótica, como ciertos osmólitos (ej. betaína), puede restaurar la turgencia y reducir la percepción visual de poros dilatados. La evidencia clínica sugiere que un estrato córneo bien hidratado no solo mejora la barrera, sino que mantiene la geometría del poro en un estado más contraído. En Bogotá, debido a la baja humedad relativa, este factor de osmolaridad es crítico para prevenir la apariencia de textura rugosa, siendo la hidratación una etapa fundamental que a menudo se descuida en pieles grasas por miedo a la oclusión.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "betaína",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-senescencia-fibroblastos-006",
+    "title": "Senescencia de fibroblastos periporo y pérdida de soporte",
+    "content": "El envejecimiento cutáneo no es uniforme; los fibroblastos localizados en la dermis perifolicular son particularmente susceptibles a la senescencia celular. Con el paso del tiempo, estos fibroblastos disminuyen la síntesis de colágeno tipo I y elastina específicamente en el área que rodea el poro, perdiendo la capacidad de sostener el ostium folicular abierto. Esta 'laxitud perifolicular' es la razón principal por la cual los poros se observan más alargados o con forma de gota en pacientes maduros. A diferencia de la dilatación juvenil por exceso de sebo, esta es una condición estructural de pérdida de soporte. El manejo clínico se centra en la estimulación de la renovación del colágeno mediante retinoides de uso prolongado y procedimientos que activen la síntesis de matriz extracelular, como el microneedling. Es vital ajustar las expectativas del paciente: mientras que el sebo se puede controlar fácilmente, la laxitud estructural requiere un enfoque a largo plazo (6-12 meses) para observar una mejora significativa en la textura y la firmeza del poro.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "retinoides"
+      ],
+      "contraindications": [
+        "embarazo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tratamientos_profesionales"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-microcirculacion-oxigenacion-007",
+    "title": "Microcirculación perifolicular: el papel del flujo sanguíneo",
+    "content": "La oxigenación y el suministro de nutrientes al folículo pilosebáceo dependen de una red microvascular densa que rodea el canal folicular. La disfunción de esta microcirculación, ya sea por daño actínico, tabaquismo o inflamación crónica, compromete el suministro de oxígeno necesario para la regeneración celular eficiente dentro del poro. La hipoxia folicular resultante altera los procesos de queratinización, provocando una descamación irregular que obstruye el ostium. Además, un flujo sanguíneo deficiente impide el drenaje adecuado de los subproductos metabólicos, lo que puede causar edema microscópico periporo, aumentando el volumen aparente del poro. Mejorar la microcirculación cutánea mediante activos como la niacinamida o masaje facial suave puede favorecer una mejor oxigenación y, por ende, una textura más refinada. La evidencia publicada en revistas especializadas de dermatología sugiere que la salud de los vasos sanguíneos perifoliculares es un marcador subestimado de la calidad de la textura cutánea y un factor determinante en la cronicidad de los poros dilatados en pieles con compromiso vascular.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/journal/15298019",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_textura"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  },
+  {
+    "chunk_id": "poros-proteinas-choque-termico-008",
+    "title": "Proteínas de choque térmico (HSP) y la integridad estructural",
+    "content": "Las proteínas de choque térmico (HSP) actúan como chaperonas moleculares críticas para mantener la integridad proteica dentro de las células del folículo pilosebáceo. Ante el estrés constante por radiación UV o cambios de temperatura (comunes en el clima de Bogotá), la expresión de estas proteínas puede verse alterada, lo que lleva a un plegamiento incorrecto de las proteínas estructurales de la membrana folicular. Este daño molecular impacta directamente en la estabilidad del ostium folicular. La modulación de la expresión de HSP mediante ingredientes cosméticos protectores puede fortalecer la resiliencia del poro frente al daño ambiental. Estudios en biología celular dermatológica han demostrado que proteger la maquinaria de plegamiento de proteínas puede retrasar la dilatación del poro asociada al fotoenvejecimiento. Incorporar antioxidantes que apoyen la homeostasis de las HSP es una estrategia avanzada para prevenir la degradación de la textura cutánea en pacientes expuestos a estresores ambientales, asegurando que el poro mantenga su capacidad de contracción natural a pesar de las agresiones externas.",
+    "category": "textura_poros",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Experimental Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/16000625",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion_ambiental"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T05:10:23.974Z"
+  }
+]

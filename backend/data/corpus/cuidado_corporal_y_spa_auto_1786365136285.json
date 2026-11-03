@@ -1,0 +1,259 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-001-paniculitis-inducida-por-frio",
+    "title": "Fisiopatología de la paniculitis por frío en dermatología estética",
+    "content": "La paniculitis por frío, frecuentemente observada tras procedimientos de criolipólisis no controlada o exposición térmica extrema, es una inflamación del tejido adiposo subcutáneo. Fisiológicamente, los adipocitos, ricos en ácidos grasos saturados, presentan una mayor susceptibilidad a la cristalización a temperaturas superiores al punto de congelación tisular. Este fenómeno desencadena una respuesta inflamatoria mediada por la liberación de citoquinas proinflamatorias y la infiltración de neutrófilos, seguida de macrófagos. A diferencia de la necrosis grasa traumática, esta entidad puede presentarse como nódulos indurados, eritematosos y dolorosos. La literatura en PubMed subraya que el diagnóstico diferencial debe excluir la paniculitis nodular idiopática. El manejo clínico se centra en la resolución espontánea, aunque en casos persistentes, el uso de antiinflamatorios no esteroideos es controvertido debido a la naturaleza de la respuesta inmune. Es imperativo que los profesionales de GlowApp identifiquen los signos precoces de esta condición para evitar complicaciones de fibrosis residual. La evaluación histopatológica revela un infiltrado lobulillar con microquistes y, en estadios crónicos, fibrosis septal, lo que enfatiza la necesidad de protocolos de temperatura estrictos en cabina.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31567234/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "exposicion_extrema_frio",
+        "criolipolisis_sin_protocolo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_complicaciones_esteticas"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:31:57.620Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-002-calcifilaxis-vigilancia",
+    "title": "Vigilancia de la calcifilaxis en pacientes de medicina estética",
+    "content": "La calcifilaxis, o arteriolopatía urémica calcificante, es una condición rara pero potencialmente letal caracterizada por la calcificación vascular y necrosis cutánea isquémica. Aunque es más prevalente en pacientes con enfermedad renal crónica, su relevancia en medicina estética radica en el riesgo de precipitación por traumas menores o procedimientos que alteren la perfusión local. La patogénesis involucra un desequilibrio en el metabolismo del calcio-fósforo, elevando el producto calcio-fósforo y favoreciendo la deposición de hidroxiapatita en la túnica media de las arteriolas pequeñas. Los signos clínicos iniciales incluyen placas violáceas, dolorosas y reticuladas que progresan a úlceras necróticas de difícil cicatrización. Es fundamental que el personal de GlowApp realice una anamnesis exhaustiva sobre comorbilidades metabólicas antes de cualquier procedimiento invasivo o de alta intensidad energética, como la radiofrecuencia profunda. La AAD (American Academy of Dermatology) recalca que ante la sospecha de lesiones isquémicas inexplicables, el paciente debe ser derivado a un entorno hospitalario para evaluar niveles séricos y considerar biopsia cutánea, evitando intervenciones cosméticas que agraven la hipoxia tisular.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/calciphylaxis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos_mayores",
+        "pacientes_cronicos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procedimientos_invasivos",
+        "radiofrecuencia_profunda"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad_paciente"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:31:57.620Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-003-solutos-osmolares",
+    "title": "Dinámica de la hidratación: Papel de los solutos osmolares",
+    "content": "La hidratación corporal efectiva no depende exclusivamente de la aplicación de oclusivos, sino de la manipulación de solutos osmolares dentro del estrato córneo. Los humectantes fisiológicos, como la urea, el lactato de sodio y los aminoácidos del Factor de Hidratación Natural (NMF), actúan como agentes higroscópicos que atraen agua hacia las capas profundas del estrato córneo. La evidencia científica sugiere que la aplicación de solutos osmolares en concentraciones fisiológicas favorece la homeostasis celular y mejora la función barrera ante condiciones de baja humedad ambiental, comunes en ciudades como Bogotá. A diferencia de los oclusivos (como la vaselina o lanolina), que crean una barrera física para prevenir la pérdida transepidérmica de agua (TEWL), los osmolares optimizan la capacidad de retención hídrica intrínseca de los queratinocitos. El uso inadecuado de agentes osmolares en pieles con barrera severamente comprometida puede causar irritación, por lo que se recomienda su formulación en vehículos con pH controlado (5.0-5.5). La integración de estos componentes en protocolos de spa debe basarse en la evaluación previa de la integridad del estrato córneo para maximizar la eficacia terapéutica sin inducir dermatitis de contacto.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Dermatological Science",
+        "url": "https://www.sciencedirect.com/journal/journal-of-dermatological-science",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "seca",
+        "xerotica"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "lactato_sodio",
+        "glicerina"
+      ],
+      "contraindications": [
+        "piel_lesionada_abierta"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "hidratacion_avanzada"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:31:57.620Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-006-hiperqueratosis-periungueal",
+    "title": "Fisiopatología y manejo de la hiperqueratosis periungueal",
+    "content": "La hiperqueratosis periungueal es una respuesta adaptativa del tejido ungueal y perungueal ante microtraumas, fricción crónica o condiciones inflamatorias como la psoriasis. Histológicamente, implica una hiperplasia del epitelio del hiponiquio y los pliegues laterales, a menudo exacerbada por el uso de esmaltes de baja calidad, solventes agresivos o técnicas de manicura que involucran el retiro excesivo de la cutícula. La cutícula actúa como una barrera esencial contra la entrada de microorganismos y sustancias químicas; su eliminación mecánica compromete la integridad del microbioma local y facilita la paroniquia. El manejo clínico debe priorizar la restauración de la barrera mediante aceites oclusivos (ricos en ceramidas y ácidos grasos) y la aplicación de queratolíticos suaves solo en caso de hiperqueratosis severa. La evidencia sugiere que la hidratación profunda de los pliegues ungueales reduce significativamente la incidencia de onicólisis y fragilidad de la lámina. En GlowApp, se recomienda desaconsejar el uso de herramientas metálicas para el desbridamiento en pacientes con trastornos de la queratinización, optando por protocolos de suavizado enzimático y nutrición tópica para mantener la homeostasis de la unidad ungueal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Indian Journal of Dermatology, Venereology and Leprology",
+        "url": "https://ijdvl.com/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "aceites_naturales"
+      ],
+      "contraindications": [
+        "desbridamiento_mecanico_agresivo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manicura_clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:31:57.620Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-007-microbioma-hidradenitis",
+    "title": "Intervención sobre el microbioma en la prevención de flares de HS",
+    "content": "La Hidradenitis Supurativa (HS) es una enfermedad inflamatoria crónica del folículo pilosebáceo donde el microbioma juega un papel crítico. Estudios recientes publicados en revistas dermatológicas indican que la disbiosis en los pliegues cutáneos (axilar, inguinal, inframamario) favorece la formación de biofilms, lo cual perpetúa la respuesta inflamatoria y la formación de nódulos y fístulas. La presencia de bacterias como Staphylococcus aureus y anaerobios estrictos es común en las lesiones activas. La estrategia de cuidado corporal en pacientes con HS no debe enfocarse en la erradicación bacteriana agresiva (que puede dañar la barrera cutánea y empeorar la inflamación), sino en el mantenimiento de un microbioma equilibrado mediante el uso de limpiadores syndet de pH fisiológico y agentes antimicrobianos tópicos suaves si es necesario. El control de la humedad y la fricción mecánica es fundamental, ya que el ambiente oclusivo de los pliegues es el principal factor de riesgo para el crecimiento bacteriano. En GlowApp, los protocolos deben evitar el uso de exfoliantes físicos y fragancias sintéticas, priorizando ingredientes calmantes como la niacinamida, que ayuda a fortalecer la barrera cutánea sin alterar la diversidad microbiana necesaria para la salud inmunológica de la piel.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "British Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13652133",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "syndet"
+      ],
+      "contraindications": [
+        "exfoliantes_fisicos",
+        "fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "manejo_hidradenitis"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:31:57.620Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-009-sindrome-limpiadores-syndet",
+    "title": "Impacto de los limpiadores syndet en el estrato córneo",
+    "content": "La elección del agente de limpieza es fundamental para mantener la integridad de la barrera cutánea. Los jabones tradicionales (sales de ácidos grasos) presentan un pH alcalino (entre 9 y 10), lo que provoca una elevación significativa del pH cutáneo, alterando la actividad de las enzimas epidérmicas responsables de la síntesis de lípidos (ceramidas, colesterol y ácidos grasos libres). Esta disrupción favorece la desnaturalización de proteínas y la pérdida de agua transepidérmica (TEWL). Por el contrario, los limpiadores syndet (detergentes sintéticos) están formulados para mantener un pH cercano al fisiológico (5.0-5.5), minimizando la irritación y respetando el microbioma residente. La evidencia clínica indica que el uso prolongado de limpiadores alcalinos en la piel corporal, especialmente en pacientes con xerosis o dermatitis atópica, es un factor clave en la exacerbación de los síntomas. Para los protocolos de GlowApp, es imperativo sustituir los jabones en barra tradicionales por formulaciones syndet de alta tolerancia. Esta transición no solo mejora la hidratación basal de la piel, sino que también refuerza la resiliencia cutánea frente a agresores ambientales, siendo una intervención de bajo costo con un impacto clínico significativo en la salud dermatológica a largo plazo.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "syndet",
+        "tensioactivos_anfoteros"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "limpieza_profesional"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T12:31:57.620Z"
+  }
+]

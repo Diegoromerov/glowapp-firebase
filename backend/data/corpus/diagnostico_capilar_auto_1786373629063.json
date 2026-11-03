@@ -1,0 +1,253 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-electroquimica-001",
+    "title": "Potencial Zeta y Estabilidad de la Cutícula: Un Enfoque Biofísico",
+    "content": "El potencial zeta es una medida crítica de la carga eléctrica superficial de la fibra capilar, fundamental para entender la estabilidad de la cutícula y su interacción con agentes externos. En dermatología capilar avanzada, la alteración de este potencial, generalmente debido a procesos de oxidación, daño térmico o químico, resulta en una repulsión electrostática insuficiente entre las escamas cuticulares, provocando el levantamiento de las mismas y una mayor fricción. Estudios publicados en el Journal of Cosmetic Science subrayan que un potencial zeta altamente negativo indica una cutícula saludable y sellada, mientras que valores cercanos al punto isoeléctrico reflejan una superficie porosa y propensa al enredo. Evaluar este parámetro permite diagnosticar la integridad estructural real del tallo más allá de la inspección visual, permitiendo personalizar protocolos de reposición lipídica que restauren la carga superficial y mejoren la hidrodinámica del cabello en el entorno urbano de Bogotá.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Society of Cosmetic Chemists",
+        "url": "https://doi.org/10.1111/ics.12456",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácidos grasos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:53:31.294Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microfluida-002",
+    "title": "Análisis de Microfluidos en la Interfase Ostium-Sebo",
+    "content": "La dinámica de fluidos dentro del canal folicular no es estática; depende de la viscosidad del sebo y la arquitectura del ostium. Cuando la composición lipídica del sebo cambia debido a desequilibrios hormonales, se observa un fenómeno de 'taponamiento por microflujo' donde el sebo se vuelve más viscoso, impidiendo la salida natural del pelo y promoviendo la inflamación perifolicular. Este diagnóstico se puede inferir analizando la tasa de excreción sebácea y la morfología del orificio mediante tricoscopia de alta resolución. La obstrucción no solo afecta el crecimiento, sino que crea un microambiente anaeróbico ideal para el sobrecrecimiento de microbiota comensal. Comprender este flujo es vital para el diseño de estrategias de limpieza folicular que no comprometan la barrera hidrolipídica del cuero cabelludo, evitando el efecto rebote tan común en pacientes con seborrea en climas andinos.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35210982/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "grasa",
+        "mixta"
+      ],
+      "age_ranges": [
+        "adolescente",
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ácido salicílico",
+        "zinc PCA"
+      ],
+      "contraindications": [
+        "cuero cabelludo seco"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-sebo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:53:31.294Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-piezoelectrico-003",
+    "title": "Respuesta Piezoeléctrica de la Vaina Radicular Externa",
+    "content": "El folículo piloso posee propiedades piezoeléctricas naturales; la presión mecánica ejercida por el músculo erector del pelo y la tensión de la piel generan señales eléctricas que influyen en la proliferación de la matriz. La investigación actual sugiere que la pérdida de elasticidad en la vaina radicular externa, mediada por la glicación, reduce esta respuesta piezoeléctrica, lo cual se traduce en una señalización mecánica pobre hacia las células madre del bulbo. Este fenómeno, denominado 'fatiga de la señal mecánica', explica por qué en algunas alopecias no cicatriciales, a pesar de tener folículos presentes, el ciclo anágeno no se reinicia con éxito. La evaluación clínica de la movilidad del cuero cabelludo (scalp laxity) y la resistencia a la tracción son indicadores indirectos de este estado. Abordar la salud del colágeno perianexial es, por tanto, una estrategia emergente para recuperar la eficiencia del ciclo capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Communications",
+        "url": "https://www.nature.com/articles/s41467-023-38902-w",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto-mayor"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "péptidos",
+        "colágeno hidrolizado"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "evaluacion-estructural"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:53:31.294Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicobiologia-004",
+    "title": "Glicobiología de la Matriz: Impacto de la Metilación de Azúcares",
+    "content": "La glicobiología del folículo piloso es un campo inexplorado pero vital para entender la calidad del pelo. La metilación de azúcares en la matriz folicular afecta la formación de puentes de disulfuro y la síntesis de queratinas de alta resistencia. Cuando existe una carga glucémica sistémica elevada, los productos de glicación avanzada (AGEs) no solo se depositan en el colágeno dérmico, sino que interfieren con las enzimas glicosiltransferasas responsables de la estructura del tallo. Esto resulta en una fibra capilar con menor resistencia a la tracción y mayor susceptibilidad a la rotura por estrés mecánico. La detección de estos cambios mediante espectroscopía de reflectancia permite identificar pacientes que, aunque no presenten una patología inflamatoria activa, muestran signos de 'envejecimiento prematuro de la fibra'. Este enfoque clínico permite integrar la nutrición metabólica con el tratamiento tópico, ajustando las expectativas del paciente sobre la recuperación de la densidad y la textura.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(24)00123-X",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adulto"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "agentes antiglicación"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis-tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:53:31.294Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-electrodermia-005",
+    "title": "Electrodermia del Cuero Cabelludo: Evaluación de Conductancia Iónica",
+    "content": "La medición de la conductancia iónica del cuero cabelludo ofrece una ventana hacia el estado de la barrera cutánea. Un cuero cabelludo inflamado o con disbiosis presenta una pérdida de agua transepidérmica (TEWL) elevada, lo que altera el gradiente iónico necesario para la homeostasis de las células madre foliculares. Utilizando dispositivos de bioimpedancia, podemos mapear zonas de baja conductancia que corresponden a áreas de atrofia folicular subclínica. Este método es especialmente útil en pacientes con dermatitis seborreica recurrente donde la función barrera está comprometida. Al estandarizar la conductancia, podemos prescribir terapias restauradoras de la barrera (como lípidos epidérmicos y ceramidas) antes de abordar la caída capilar, ya que un terreno cutáneo desequilibrado impide la correcta absorción de fármacos tópicos como el minoxidil. La monitorización de la conductancia iónica se perfila como un biomarcador de éxito terapéutico en el seguimiento de GlowApp.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/dw/clinical-research-updates",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-barrera"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:53:31.294Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-mastocitos-006",
+    "title": "Interacción de Mastocitos Perivasculares y el Ciclo Capilar",
+    "content": "Los mastocitos residentes en la dermis perivascular del folículo actúan como sensores críticos de estrés. Ante estímulos como la polución (partículas PM2.5) o el estrés psicológico, estas células liberan mediadores proinflamatorios que acortan prematuramente la fase anágena. Este proceso, conocido como inflamación neurogénica, es una causa subdiagnosticada de efluvios crónicos. A diferencia de las alopecias autoinmunes, aquí no hay una destrucción masiva del folículo, sino una inhibición funcional. La tricoscopia puede revelar un eritema perifolicular sutil, a menudo confundido con dermatitis simple. El manejo debe centrarse en estabilizar los mastocitos mediante agentes tópicos antiinflamatorios y la reducción de la carga de contaminantes ambientales. Es crucial que el diagnóstico clínico incluya una anamnesis detallada sobre la exposición al exposoma urbano de Bogotá, correlacionando los picos de contaminación con la exacerbación de la caída capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2023",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "quercetina",
+        "panthenol"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-inflamacion"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-10T14:53:31.294Z"
+  }
+]

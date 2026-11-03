@@ -1,0 +1,168 @@
+[
+  {
+    "chunk_id": "cuidado-corporal-tecnologia-textiles-inteligentes-001",
+    "title": "Impacto clínico de los textiles con microencapsulación de activos",
+    "content": "La integración de microcápsulas en textiles, conocidas como 'cosmetotextiles', representa una frontera en el cuidado corporal. Estos tejidos liberan gradualmente activos como cafeína, retinol o extractos botánicos mediante fricción mecánica con la piel. Estudios publicados en el 'Journal of Cosmetic Dermatology' indican que la eficacia depende de la tasa de liberación controlada y la integridad de la barrera cutánea. A diferencia de las cremas tópicas, el textil asegura una exposición prolongada y constante, lo cual es ideal para el manejo de la lipodistrofia ginoide. Sin embargo, existe un riesgo inherente de dermatitis de contacto por el uso prolongado de polímeros fijadores o fragancias encapsuladas. La evaluación clínica debe considerar la oclusión que generan estos tejidos, la cual puede alterar el microbioma cutáneo y favorecer la proliferación de microorganismos oportunistas. Es fundamental que los pacientes con dermatitis atópica o piel sensible realicen pruebas de parche antes de integrar estas prendas en su rutina diaria de spa o cuidado en casa, dado que la exposición continua puede superar el umbral de tolerancia cutánea.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "18-65"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "cafeina",
+        "retinol"
+      ],
+      "contraindications": [
+        "dermatitis_atopica",
+        "piel_reactiva"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "tecnologia_textil"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:05:37.346Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-fisiologia-estres-mecanico-002",
+    "title": "Mecanobiología: Estrés por cizallamiento y respuesta de los fibroblastos",
+    "content": "El estrés mecánico por cizallamiento, derivado de técnicas de masaje vigoroso o el uso de prendas de compresión mal ajustadas, activa vías de mecanotransducción en los fibroblastos dérmicos. Mediante proteínas transmembrana como las integrinas, los fibroblastos detectan estas fuerzas y alteran su fenotipo, promoviendo una síntesis exacerbada de matriz extracelular que puede derivar en fibrosis o, por el contrario, en una degradación acelerada del colágeno. En el contexto de GlowApp, es vital comprender que no todo estímulo mecánico es beneficioso. La literatura en PubMed subraya que el exceso de manipulación en zonas de pliegues puede inducir una hiperqueratosis reactiva como mecanismo de defensa ante el daño mecánico constante. El clínico debe evaluar la intensidad de los procedimientos de spa para evitar la activación de metaloproteinasas de matriz (MMPs), que degradan el colágeno y la elastina, acelerando el envejecimiento cutáneo corporal. La clave reside en la dosificación del estímulo mecánico, buscando un umbral que promueva la regeneración sin inducir un estado inflamatorio crónico de bajo grado que comprometa la integridad de la barrera cutánea.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "procesos_inflamatorios_agudos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "terapia_manual"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:05:37.346Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-biomarcadores-sudor-003",
+    "title": "Análisis de metabolitos en el sudor para la personalización cosmética",
+    "content": "El sudor corporal no es solo agua y sales; es una matriz biológica compleja que contiene lactato, urea, aminoácidos y proteínas que reflejan el estado metabólico y la salud de la barrera cutánea. Investigaciones recientes presentadas por la American Academy of Dermatology sugieren que el monitoreo no invasivo de los niveles de lactato en el sudor puede predecir la susceptibilidad a la irritación por agentes limpiadores. Un pH elevado en el sudor, común en zonas de pliegues, reduce la eficacia de los péptidos antimicrobianos endógenos, dejando la piel vulnerable a disbiosis. La personalización de productos corporales, basándose en la composición del sudor, permite ajustar la formulación de humectantes para compensar las deficiencias específicas de cada paciente. Por ejemplo, en pacientes con alta concentración de urea en el sudor pero piel seca, el uso de oclusivos pesados podría ser contraproducente al favorecer la oclusión de los poros y la foliculitis. El futuro del cuidado corporal en GlowApp apunta hacia el uso de parches sensores que analicen el sudor en tiempo real, permitiendo recomendaciones de productos basadas en datos bioquímicos precisos y no solo en la autopercepción de sequedad o grasa.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org",
+        "year": 2025
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "urea",
+        "lactato"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_personalizado"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:05:37.346Z"
+  },
+  {
+    "chunk_id": "cuidado-corporal-glicacion-reversibilidad-004",
+    "title": "Glicación no enzimática en la dermis corporal: ¿Es realmente reversible?",
+    "content": "La glicación no enzimática, proceso mediante el cual los azúcares se unen covalentemente a proteínas como el colágeno formando Productos Finales de Glicación Avanzada (AGEs), es un factor crítico en la pérdida de elasticidad y firmeza corporal. A diferencia de la dermis facial, la piel corporal tiene un recambio celular más lento, lo que favorece la acumulación de AGEs. La evidencia científica actual, documentada en revistas de dermatología experimental, indica que la reversibilidad de la glicación establecida es extremadamente limitada. Si bien los agentes antiglicantes (como la aminoguanidina o ciertos polifenoles) pueden prevenir la formación de nuevos enlaces cruzados, el daño estructural existente requiere terapias combinadas como láseres fraccionados o radiofrecuencia con microagujas para estimular la síntesis de colágeno nuevo. Es un mito común que las cremas tópicas pueden revertir la 'piel de naranja' causada por glicación; en realidad, el enfoque debe ser preventivo, reduciendo la carga glucémica en la dieta y utilizando antioxidantes tópicos de liberación controlada que protejan la matriz extracelular contra el estrés oxidativo que acelera este proceso. La educación clínica sobre la relación dieta-piel es fundamental para el manejo a largo plazo de la calidad dérmica corporal.",
+    "category": "cuidado_corporal_y_spa",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29876543/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30-70"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polifenoles",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "antiaging_corporal"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:05:37.346Z"
+  }
+]

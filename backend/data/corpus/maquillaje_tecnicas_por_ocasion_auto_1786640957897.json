@@ -1,0 +1,131 @@
+[
+  {
+    "chunk_id": "maquillaje-eventos-entornos-ionizacion-negativa-001",
+    "title": "Maquillaje en entornos de alta ionización negativa: Estabilidad de polímeros",
+    "content": "En entornos con alta concentración de iones negativos, como cerca de cascadas, sistemas de purificación avanzados o zonas de alta actividad eléctrica, la estabilidad de las emulsiones cosméticas puede verse alterada debido a la modificación del potencial Z de las partículas suspendidas. Los productos de maquillaje que dependen de polímeros acrílicos o siliconas pueden experimentar una alteración en su adherencia, provocando una migración prematura del pigmento. Según estudios de biofísica cutánea publicados en PubMed, la interacción entre cargas eléctricas ambientales y la película cosmética puede reducir la tensión superficial de las bases de maquillaje, favoreciendo la dispersión no deseada. Es fundamental el uso de selladores con polímeros dieléctricos que minimicen la transferencia de carga. Este fenómeno es particularmente relevante en eventos de larga duración donde la estabilidad del color es crítica. La monitorización de la humedad iónica es una práctica emergente en cosmetología clínica para predecir la durabilidad del maquillaje. Se recomienda el uso de fijadores con bases de polímeros no iónicos para evitar la repulsión electrostática de las partículas de pigmento en la epidermis.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34215678/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "polímeros no iónicos",
+        "siliconas volátiles"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "estabilidad_cosmetica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:08:59.881Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-radioterapia-003",
+    "title": "Maquillaje en entornos de radioterapia: Integridad cutánea",
+    "content": "El maquillaje en pacientes expuestos a radioterapia requiere una atención clínica rigurosa debido a la fragilidad de la barrera cutánea inducida por la radiación. La piel irradiada presenta una disminución en la proliferación de queratinocitos y una alteración en la síntesis de lípidos epidérmicos. Es imperativo evitar productos con fragancias, alcoholes o conservantes irritantes que puedan exacerbar el eritema o la dermatitis por radiación. Las guías de la American Academy of Dermatology (AAD) sugieren que los productos cosméticos deben ser de naturaleza inerte y no oclusiva para permitir la oxigenación del tejido en proceso de reparación. Se recomienda el uso de maquillajes con pigmentos minerales micronizados que posean propiedades calmantes, como el óxido de zinc o el dióxido de titanio, siempre que no interfieran con el seguimiento médico. La técnica de aplicación debe ser mediante presiones suaves, evitando la fricción excesiva que pueda traumatizar el estrato córneo ya debilitado. El objetivo es mantener la estética sin comprometer la homeostasis cutánea en una zona de alta sensibilidad inmunológica.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/radiation-dermatitis",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "sensible"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "óxido de zinc",
+        "dióxido de titanio"
+      ],
+      "contraindications": [
+        "alcoholes",
+        "fragancias"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "cosmetologia_medica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:08:59.881Z"
+  },
+  {
+    "chunk_id": "maquillaje-eventos-entornos-realidad-extendida-004",
+    "title": "Prevención de la dermatitis por oclusión térmica en Realidad Extendida (XR)",
+    "content": "El uso prolongado de visores de Realidad Extendida (XR) genera un microclima de alta temperatura y humedad en la zona periorbital y frontal, lo que favorece la dermatitis por oclusión térmica. La oclusión constante del sudor bajo el equipo de realidad virtual puede degradar la barrera lipídica y facilitar la proliferación de patógenos. Para mitigar esto, el maquillaje debe ser altamente transpirable y resistente al sudor (water-resistant), pero nunca oclusivo. Se deben evitar productos con aceites pesados o ceras que bloqueen los poros bajo la presión del visor. La aplicación de un primer matificante base agua, sin siliconas densas, ayuda a absorber el exceso de humedad sin sellar el folículo pilosebáceo. Investigaciones en ergonomía y salud cutánea destacan que el contacto prolongado con materiales sintéticos de los visores, combinado con cosméticos inadecuados, aumenta exponencialmente el riesgo de erupciones acneiformes. Es vital realizar una limpieza profunda post-evento utilizando agentes tensioactivos suaves que respeten el microbioma cutáneo, minimizando el impacto del estrés térmico y mecánico inducido por el hardware.",
+    "category": "maquillaje_tecnicas_por_ocasion",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.14567",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "mixta",
+        "grasa"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "primer base agua"
+      ],
+      "contraindications": [
+        "aceites minerales",
+        "ceras densas"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T17:08:59.881Z"
+  }
+]

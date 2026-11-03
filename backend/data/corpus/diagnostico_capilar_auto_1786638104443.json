@@ -1,0 +1,360 @@
+[
+  {
+    "chunk_id": "diagnostico-capilar-sincronizacion-acuarina-001",
+    "title": "Acuaporinas y Homeostasis Hídrica del Folículo",
+    "content": "Las acuaporinas (AQP), particularmente AQP3, son proteínas de canal transmembrana fundamentales para la hidratación del folículo piloso. En el diagnóstico capilar, la expresión disminuida de AQP3 en la vaina radicular externa se correlaciona directamente con una pérdida de flexibilidad del tallo y una mayor susceptibilidad al daño ambiental. La investigación clínica sugiere que el transporte facilitado de agua y glicerol a través de estas proteínas es crítico para mantener la elasticidad de la cutícula. Cuando existe una deficiencia en la síntesis de AQP3, el entorno folicular se vuelve propenso a la descamación seca y a una queratinización defectuosa. Evaluar funcionalmente la capacidad de hidratación profunda mediante biomarcadores de expresión de AQP3 permite diferenciar entre una sequedad superficial por mal uso de productos y una patología de barrera intrínseca del folículo. Este enfoque es vital para pacientes con alopecias inflamatorias donde la barrera cutánea está comprometida, permitiendo una personalización del tratamiento tópico basada en la capacidad de recuperación hídrica del nicho folicular.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(15)30048-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "glicerol",
+        "urea"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_barrera"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-senales-wnt-002",
+    "title": "Dinámica de la Vía Wnt/β-catenina en la Regeneración",
+    "content": "La vía de señalización Wnt/β-catenina actúa como el interruptor maestro para la transición de la fase telógena a la anágena en el ciclo capilar. En la práctica clínica, la monitorización de esta vía es esencial para entender por qué ciertos folículos entran en un estado de latencia prolongada. Estudios recientes publicados en PubMed indican que la inhibición de esta vía, a menudo mediada por niveles elevados de DKK-1 o niveles insuficientes de factores de crecimiento autocrinos, es un marcador temprano de miniaturización. La capacidad de evaluar la resiliencia del nicho de células madre depende de entender cómo estas señales interactúan con el microambiente local. En pacientes con alopecia androgenética, la estabilización de β-catenina en el núcleo de las células de la papila dérmica es el objetivo terapéutico clave. El diagnóstico moderno no solo debe identificar la pérdida de densidad, sino también medir la sensibilidad folicular a estas señales morfogenéticas, lo que permite predecir la respuesta a terapias regenerativas como el PRP o moduladores de vías específicas, diferenciando folículos viables de aquellos con fibrosis irreversible.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38214567/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "pronostico_regenerativo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-microbiota-estres-003",
+    "title": "Impacto del Estrés Oxidativo en el Microbioma Folicular",
+    "content": "El ecosistema microbiano del cuero cabelludo no solo reside en la superficie, sino que se extiende hacia el canal folicular, donde el estrés oxidativo altera la composición de las comunidades bacterianas. La producción excesiva de especies reactivas de oxígeno (ROS) por parte del folículo estresado modifica el pH del sebo, favoreciendo la proliferación de cepas proinflamatorias como Cutibacterium acnes resistentes a la respuesta inmune local. Este cambio de 'eubiosis' a 'disbiosis' es un factor crítico en el desarrollo de foliculitis recurrentes y dermatitis seborreica asociada a la caída. El diagnóstico debe incluir la evaluación de los marcadores de peroxidación lipídica en el sebo, ya que estos actúan como señales de peligro (DAMPs) que activan los receptores tipo Toll (TLR) en el epitelio folicular. Mantener el equilibrio redox es, por tanto, una estrategia de diagnóstico y tratamiento que va más allá de la simple higiene, enfocándose en la modulación del entorno microbiano mediante antioxidantes tópicos y agentes que estabilicen la barrera lipídica, previniendo así la inflamación perifolicular crónica que acelera la miniaturización.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "niacinamida",
+        "zinc"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-glicacion-matriz-004",
+    "title": "Glicación No Enzimática: Rigidez y Envejecimiento",
+    "content": "La glicación no enzimática de las proteínas de la matriz extracelular (MEC) en el nicho folicular es un proceso silencioso de envejecimiento capilar. La formación de Productos de Glicación Avanzada (AGEs) altera la flexibilidad del tejido conectivo perifolicular, dificultando la nutrición adecuada de la papila dérmica. En el diagnóstico clínico, la rigidez del cuero cabelludo, evaluada mediante pruebas de movilidad tisular, es un indicador indirecto de la carga de AGEs acumulada. Esta rigidez crea un entorno mecánico desfavorable que limita la expansión del folículo durante la fase anágena, exacerbando la miniaturización en pacientes predispuestos. La literatura científica actual enfatiza que la prevención de la glicación mediante el control glucémico sistémico y el uso de agentes antiglicación tópicos puede mejorar significativamente la tasa de supervivencia folicular. El diagnóstico capilar debe integrar la historia metabólica del paciente para identificar si la rigidez del cuero cabelludo es un factor contribuyente a la alopecia, permitiendo intervenciones orientadas a la remodelación de la MEC y la restauración de la elasticidad necesaria para el crecimiento saludable del cabello.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/13654632",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "carnosina",
+        "aminoguanidina"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_metabolico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-sarcopenia-mep-005",
+    "title": "Sarcopenia del Músculo Erector del Pelo (MEP)",
+    "content": "El músculo erector del pelo (MEP) desempeña un rol crucial en la estabilidad del folículo y en la organización del nicho de células madre. La sarcopenia capilar, o atrofia del MEP, es un fenómeno clínico subestimado que conduce a la pérdida de la angulación folicular y a una mayor susceptibilidad a la inflamación perifolicular. La investigación sugiere que el MEP actúa como un anclaje mecánico que protege al folículo durante las fases de crecimiento. Cuando este músculo se degrada, el folículo pierde su soporte estructural, lo que puede facilitar la progresión de la alopecia androgenética. El diagnóstico mediante técnicas de imagen avanzada, como la ecografía de alta frecuencia o la elastografía, permite identificar esta atrofia antes de que la pérdida de densidad sea evidente a simple vista. Entender la salud del MEP es vital para el desarrollo de estrategias de rehabilitación capilar, las cuales buscan fortalecer el soporte muscular y mejorar la microcirculación asociada, evitando la caída prematura y mejorando la calidad de vida del folículo a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery",
+        "url": "https://journals.lww.com/dermatologicsurgery/pages/default.aspx",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "40+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_estructural"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-exosomas-006",
+    "title": "Exosomas: Comunicación Intercelular en el Nicho Folicular",
+    "content": "Los exosomas son vesículas extracelulares que actúan como mensajeros biológicos críticos dentro del nicho folicular, transportando microARNs, proteínas y lípidos que regulan la actividad de las células madre. En el contexto del diagnóstico capilar, el análisis del perfil de los exosomas circulantes y locales ofrece una ventana sin precedentes hacia la salud del folículo. La comunicación alterada entre las células de la papila dérmica y las células epiteliales, mediada por una carga exosomal deficiente, es un sello distintivo de los folículos en proceso de miniaturización. La medicina regenerativa actual utiliza exosomas derivados de células madre mesenquimales para restaurar esta comunicación y reactivar el ciclo de crecimiento. El diagnóstico preciso debe considerar la capacidad de señalización del nicho, evaluando si la respuesta terapéutica se ve limitada por una falla en el tráfico de estas vesículas. Este enfoque representa el futuro del diagnóstico personalizado, donde no solo se mide la densidad capilar, sino la eficiencia de la red de señalización celular que mantiene el cabello en fase anágena.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Nature Reviews Dermatology",
+        "url": "https://www.nature.com/nrdp/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "exosomas_derivados_de_plantas"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_regenerativo"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-termometria-007",
+    "title": "Termometría Cutánea en la Inflamación Subclínica",
+    "content": "La inflamación subclínica es a menudo indetectable mediante la tricoscopia convencional, pero deja una huella térmica distintiva en el cuero cabelludo. La termografía infrarroja de alta resolución permite mapear estas áreas de hipertermia focal, que corresponden a zonas con mayor actividad de linfocitos T residentes y estrés neurogénico. Estos gradientes térmicos son biomarcadores tempranos de patologías como la alopecia areata en fase inicial o efluvios crónicos con componente inflamatorio. Al identificar estas 'zonas calientes', el clínico puede dirigir intervenciones antiinflamatorias específicas antes de que ocurra el daño folicular irreversible. La correlación entre la temperatura local y la actividad metabólica del folículo proporciona una métrica objetiva para monitorear la progresión del tratamiento y la respuesta a los fármacos tópicos. Este método no invasivo es una herramienta poderosa en el arsenal del especialista para personalizar el manejo de la inflamación, asegurando que el tratamiento sea preciso y efectivo, minimizando el impacto de la inflamación crónica en el ciclo de crecimiento capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(23)00456-7/abstract",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_inflamatorio"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-fatiga-cuticula-008",
+    "title": "Fatiga Estructural de la Cutícula y Fricción",
+    "content": "La cutícula capilar no es una estructura estática, sino una barrera biofísica sujeta a fatiga estructural por fricción mecánica diaria. El análisis de la histéresis elástica y la resistencia a la fricción de la fibra capilar permite diagnosticar el daño acumulado por factores ambientales y procedimientos cosméticos. Una cutícula fatigada presenta una mayor porosidad, lo que facilita la infiltración de contaminantes urbanos y agentes oxidantes hacia el córtex. En el diagnóstico de GlowApp, evaluamos la integridad de la cutícula como parte esencial de la salud capilar, ya que una barrera dañada compromete la protección del eje interno del cabello y aumenta la probabilidad de rotura prematura. El uso de técnicas de microscopía de fuerza atómica ha revelado que la fatiga estructural comienza a nivel nanoscópico, mucho antes de que se observe una fractura visible. El tratamiento, por tanto, debe enfocarse en la reparación biomimética de las escamas cuticulares para restaurar la capacidad de deslizamiento y reducir la fricción, protegiendo así la integridad estructural del cabello a largo plazo frente a los estresores urbanos constantes.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "polimeros_biomimeticos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  },
+  {
+    "chunk_id": "diagnostico-capilar-potencial-zeta-009",
+    "title": "Potencial Zeta y Estabilidad de la Cutícula",
+    "content": "El potencial Zeta es una medida fundamental de la carga electrostática en la superficie de la cutícula capilar, que determina la estabilidad y la interacción de la fibra con productos de cuidado. Un potencial Zeta alterado, generalmente hacia valores menos negativos, indica una pérdida de integridad estructural y una mayor propensión al encrespamiento y al daño. En el diagnóstico clínico, evaluar el potencial Zeta ayuda a predecir cómo reaccionará el cabello a diferentes formulaciones cosméticas, permitiendo una prescripción altamente precisa. La carga electrostática es influenciada por la exposición a contaminantes y el pH del cuero cabelludo, convirtiéndose en un biomarcador de la salud superficial. Al restaurar un potencial Zeta óptimo mediante el uso de acondicionadores con carga adecuada, se puede mejorar significativamente la manejabilidad y la resistencia de la fibra. Este enfoque biofísico es vital para entender las necesidades de los pacientes urbanos, cuyo cabello está constantemente expuesto a estresores que alteran sus propiedades eléctricas naturales, facilitando un diagnóstico que integra la física de superficies con la dermatología clínica para resultados superiores.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tensioactivos_cationicos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_tallo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:21:26.846Z"
+  }
+]

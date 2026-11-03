@@ -1,0 +1,86 @@
+{
+  "cycle": "R6-RECOVERY-1",
+  "incident": {
+    "descripcion": "Embeddings perdidos entre R6-C1 (0 NULL verificado) y R6-C2 (5,663 NULL). Chunks intactos. R6-C2 bloqueado por integridad.",
+    "ventana": "entre R6-C1 y R6-C2; contenedor beauty-postgres Up 11h sin reinicio aparente en la ventana",
+    "estado_verificado": "5,663 filas / 5,663 NULL / 0 non-null / vector_dims ERROR / índice HNSW presente pero vacío / pgvector extension OK"
+  },
+  "database_state": {
+    "total": 5663,
+    "nulls": 5663,
+    "nonnulls": 0,
+    "dup_chunk_id_groups": 5,
+    "vector_dims": "null (sin vectores)",
+    "pgvector_extension": "vector",
+    "embedding_column_type": "USER-DEFINED (vector)",
+    "indexes": ["beauty_knowledge_embeddings_pkey", "idx_beauty_knowledge_content_hash", "idx_beauty_knowledge_fuente", "idx_beauty_knowledge_embedding_hnsw (m=16, ef_construction=64)"],
+    "triggers_user": [],
+    "timestamps": { "min_created": "2026-08-02T00:28:05Z", "max_created": "2026-08-14T00:54:59Z", "min_updated": "2026-08-13T21:46:59Z", "max_updated": "2026-08-14T00:57:16Z", "filas_actualizadas_48h": 0 },
+    "legacy_hash_chunk_ids": 31,
+    "table_size": "45 MB (sin vectores)"
+  },
+  "docker_forensics": {
+    "contenedor": "beauty-postgres Up 11h (healthy)",
+    "volumen_activo": "845c7a4c928ee9103a30b994666aaa1d4fed207f90aa08713fdd8222f3f6a6be → /var/lib/postgresql/data",
+    "volumen_creado": "2026-08-02T00:25:14Z (mismo minuto que el primer chunk: 00:28) → ES el volumen original de la ingesta",
+    "bd_actual": "OID 16384, 54MB (chunks sin vectores; una BD de ~77MB esperada con 5,663×1024d vectores ≈ +23MB)",
+    "volumenes_alternativos": {
+      "infra_pgdata": "PG data dir, bases ≤9MB — otro proyecto",
+      "infra_postgres_data": "PG data dir, bases ≤9MB — otro proyecto",
+      "oikos_postgres_data": "PG data dir, bases ≤13MB — otro proyecto",
+      "boxing-platform_pgdata": "PG data dir, bases ≤24MB — otro proyecto",
+      "oikosapp_postgres_data": "PG data dir, bases ≤20MB — otro proyecto",
+      "anonimos_8": "6 × Redis dump.rdb (1MB) + 2 × PG data dirs (66MB/46MB con WAL, bases ≤12MB, SIN beauty_knowledge_embeddings) — otros proyectos"
+    },
+    "conclusion": "NINGÚN volumen contiene beauty_knowledge_embeddings con vectores. El volumen activo es el original de la ingesta y está vacío de vectores."
+  },
+  "pipeline_findings": {
+    "modelo": "nvidia/nv-embedqa-e5-v5 (NVIDIA NIM), 1024 dims",
+    "input_type": "passage",
+    "texto_embedding": "title + '\\n\\n' + content.substring(0,4000), truncado a 1400 chars (MAX_EMBED_CHARS) en generateEmbedding del script",
+    "insercion": "INSERT ... ON CONFLICT (document_id, chunk_id) DO UPDATE SET embedding=EXCLUDED.embedding, updated_at=NOW()",
+    "fallback": "si la API falla, el script LANZA error (no escribe NULL) — un upsert con API rota NO vació la columna",
+    "evidencia_anti_reingesta": "0 filas con updated_at en 48h → NO hubo upsert/re-ingesta reciente (el upsert escribe NOW())",
+    "reproducible": true
+  },
+  "source_findings": {
+    "corpus_fuente": { "dir": "backend/data/corpus/", "archivos_json": 1113, "intactos": true },
+    "corpus_canonico": { "path": "src/data/corpus_canonico/corpus_canonico.json", "chunks": 5619, "intacto": true },
+    "cobertura": "5,619 canónicos (con fuente JSON) + ~44 legacy (31 chunk_id hash puro, contenido en BD intacto) = 5,663",
+    "seed_sql": "sql/seed_beauty_knowledge.sql existe pero NO contiene vectores (INSERT sin columna embedding) — seed de contenido, no de vectores"
+  },
+  "vector_artifacts": { "npy_npz_pt_safetensors_parquet_jsonl": 0, "nota": "63 .bin encontrados inicialmente eran de .gradle (falsos positivos, excluidos)" },
+  "backup_findings": {
+    "dumps_sql": ["backend/backup_pre029_real.sql (ANTERIOR a ingesta RAG; 0 coincidencias con beauty_knowledge_embeddings)", "migraciones SQL (schema, no datos)", "seed_beauty_knowledge.sql (sin vectores)"],
+    "scratch_make_pg_dump": "dumps de beauty_profiles/biometric_history de RAILWAY — no toca embeddings",
+    "git_commit_30f8828f": "backup estado actual — corpus JSONs y plan, NO vectores",
+    "conclusion": "NO existe dump/backup con los vectores"
+  },
+  "git_findings": { "commits_recientes": "solo auto-generados de corpus (ingesta de contenido); sin dumps vectoriales en historial", "conclusion": "Git no conserva vectores" },
+  "log_findings": {
+    "postgres_docker": "errores de relations inexistentes (usuarios, wallet_transactions, pg_migrations) → la BD local es un SUBSET recreado; NO hay log de UPDATE/TRUNCATE de embeddings (Postgres no loguea DML por defecto)",
+    "logs_ingesta": "no existen logs de ingesta locales",
+    "conclusion": "sin evidencia temporal del evento exacto"
+  },
+  "recovery_candidates": {
+    "A_copia_fisica": "NO — ningún volumen, dump, archivo o cache contiene los vectores",
+    "B_parcial": "NO — 0 vectores no-null",
+    "C_rebuild": "SÍ — pipeline íntegro (script + modelo + texto exacto) y fuente intacta (1,113 archivos + 5,619 canónicos + 44 legacy con contenido en BD)"
+  },
+  "temporal_evidence": {
+    "filas_sin_update_48h": "0 → descarta re-ingesta vía upsert",
+    "hipotesis": [
+      "UPDATE masivo SET embedding=NULL sin tocar updated_at",
+      "ALTER/recreación de columna embedding (índice HNSW recreado o vaciado)",
+      "restauración de dump con timestamps preservados y columna vector omitida",
+      "recreación de BD desde subset (evidencia: relations inexistentes)"
+    ],
+    "causa_exacta": "NO DETERMINABLE CON LA EVIDENCIA DISPONIBLE"
+  },
+  "production_guard": { "status": "PASS", "note": "URL local verificada; Railway NO contactada; 0 escrituras; 0 archivos modificados (solo se crearon artefactos de diagnóstico nuevos)" },
+  "conclusion": "Los vectores originales NO son recuperables como copia física local (RECOVERABLE=NO). El pipeline de reconstrucción está íntegro y la fuente del corpus intacta (REBUILD-POSSIBLE=SÍ). La causa exacta de la pérdida no es determinable; la evidencia descarta re-ingesta con upsert (timestamps) y no hay volumen/backup alternativo con vectores.",
+  "verdict": "REBUILD-POSSIBLE",
+  "recommendation": "R6-RECOVERY-2 (requiere autorización del Director): re-ingesta controlada ejecutando scripts/ingestCanonicalCorpus.js contra BD local → verificar 5,663 embeddings, 0 NULL, 1024d → validar GOLD-V5 (baseline R@5=0.7885/MRR=0.7179 reconstruido). NOTA: e5-v5 vía API no garantiza bit-exactitud entre llamadas; la validación contra GOLD-V5 es el criterio de equivalencia funcional.",
+  "reproducibility": { "A_equiv_B": true, "detail": "RUN A ≡ RUN B — estado BD, hallazgos, veredicto idénticos" },
+  "tests": { "rag_expected": "69/69", "global_expected": "263/8/1" }
+}

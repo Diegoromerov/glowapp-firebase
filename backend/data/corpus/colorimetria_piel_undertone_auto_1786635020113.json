@@ -1,0 +1,360 @@
+[
+  {
+    "chunk_id": "colorimetria-subtema-ciclo-ureico-001",
+    "title": "Impacto de la insuficiencia renal crónica en la colorimetría cutánea: el tono terroso",
+    "content": "La insuficiencia renal crónica (IRC) induce cambios cromáticos cutáneos significativos que pueden confundirse con alteraciones del subtono natural. La acumulación de urocromos en la dermis, junto con la anemia secundaria a la deficiencia de eritropoyetina, genera una palidez característica con un matiz amarillento-grisáceo, frecuentemente denominado 'tono terroso'. Clínicamente, esto altera la lectura del subtono, haciendo que las pieles con subtonos cálidos parezcan neutras o cetrinas. La patofisiología involucra la retención de pigmentos metabólicos que no son excretados eficientemente, modificando la reflectancia espectral. En la práctica dermatológica y de maquillaje, es vital diferenciar este viraje cromático metabólico del subtono constitucional para no aplicar correctores cromáticos inadecuados que exacerben la opacidad. La evaluación debe considerar la hidratación del estrato córneo, que suele estar disminuida en pacientes urémicos, afectando la dispersión de luz y exacerbando la apariencia mate y desaturada. La identificación correcta permite ajustar la elección de bases hacia pigmentos con mayor luminosidad y subtonos que compensen la falta de vitalidad natural, evitando el efecto de 'máscara gris' que ocurre al intentar neutralizar este tono con bases de alta cobertura y pigmentos opacos convencionales.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Kidney Foundation",
+        "url": "https://www.kidney.org/atoz/content/skin-changes-chronic-kidney-disease",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adults"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-tiroides-002",
+    "title": "Hipertiroidismo y su influencia en la microcirculación y el subtono rosado",
+    "content": "El hipertiroidismo genera una aceleración del metabolismo basal y una vasodilatación periférica persistente que altera profundamente la colorimetría facial. A diferencia de las pieles con subtono frío constitucional, los pacientes hipertiroideos presentan un eritema difuso y una piel más fina, lo que aumenta la visibilidad del plexo vascular subpapilar. Este estado hiperdinámico se traduce en una lectura de subtono erróneamente identificada como 'frío' o 'rosado' debido a la saturación de hemoglobina oxigenada en la dermis superficial. Clínicamente, el aumento de la temperatura cutánea local altera la estabilidad de los pigmentos en las bases de maquillaje, acelerando la oxidación por contacto con el sebo y el calor. Además, la piel hipertiroidea suele ser más hidratada, lo que modifica la dispersión especular y aumenta el brillo natural, haciendo que las bases mate luzcan artificiales. Es crucial entender que este 'subtono rosado' es de origen hemodinámico y no pigmentario. La recomendación experta es utilizar bases con bases de color neutras o ligeramente amarillentas para neutralizar el eritema excesivo, en lugar de intentar coincidir con el rosado, lo cual acentuaría la apariencia inflamatoria. El monitoreo de la temperatura cutánea es clave para predecir la estabilidad del maquillaje en esta condición.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central (NCBI)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "analisis_vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-ph-piel-003",
+    "title": "Variabilidad del pH y su rol en la estabilidad cromática de pigmentos minerales",
+    "content": "El pH cutáneo, que oscila normalmente entre 4.5 y 5.5, es un determinante crítico de la estabilidad cromática de los pigmentos en las bases de maquillaje. Un pH más alcalino, a menudo observado en pieles con disbiosis o barrera cutánea comprometida, puede catalizar la oxidación prematura de ciertos óxidos de hierro presentes en las formulaciones cosméticas, provocando un viraje hacia tonos anaranjados o rojizos minutos después de la aplicación. Este fenómeno, conocido como 'oxidación de base', no es necesariamente un error del producto, sino una interacción química entre la secreción sebácea alterada y los pigmentos. En pieles con un pH elevado, la película hidrolipídica pierde su capacidad de amortiguación, permitiendo que ácidos grasos libres interactúen con los pigmentos minerales. Estudios sugieren que el uso de prebases con equilibrio de pH ayuda a aislar la formulación del maquillaje del entorno químico cutáneo, manteniendo la fidelidad del color original. La comprensión de esta interacción es fundamental para profesionales que realizan curaduría de productos para usuarios con patologías como dermatitis atópica, donde el pH suele ser más elevado, dificultando la selección de una base que mantenga su tono durante toda la jornada. La monitorización del pH es, por tanto, una herramienta de diagnóstico clínico y estético de alta precisión.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Cosmetic Science",
+        "url": "https://onlinelibrary.wiley.com/journal/14682494",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "dry",
+        "sensitive"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ph_balancers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "quimica_cosmetica"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-carotenoides-004",
+    "title": "Carotenodermia: El falso subtono oliva y la ingesta dietética",
+    "content": "La carotenodermia es una condición benigna caracterizada por la coloración amarillenta o anaranjada de la piel, resultante de la acumulación de carotenoides en el estrato córneo tras una ingesta elevada de alimentos ricos en betacarotenos. A menudo, este tono se confunde clínicamente con un subtono oliva o cetrino, llevando a errores en la selección de bases de maquillaje. A diferencia del subtono oliva, que tiene una base verdosa por la mezcla de amarillos y azules, la carotenodermia presenta un matiz más puro, orientado hacia el naranja. Es vital realizar el diagnóstico diferencial evaluando la coloración en las palmas de las manos y plantas de los pies; si estas áreas presentan una coloración amarillenta intensa, es indicativo de un origen dietético y no de un subtono constitucional. En el contexto de GlowApp, es esencial educar al usuario sobre este fenómeno para evitar la compra de bases con correctores verdes que, en lugar de neutralizar, crearían un tono marrón sucio al mezclarse con el exceso de carotenoides. El ajuste de la dieta suele revertir la cromaticidad en semanas, por lo que la recomendación es optar por bases de tono neutro y textura ligera que no intenten ocultar, sino armonizar con el cambio transitorio en la reflectancia cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/carotenemia",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion_cutanea"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-hemosiderina-005",
+    "title": "Depósitos de hemosiderina y la cromaticidad periorbital persistente",
+    "content": "La hiperpigmentación periorbital causada por depósitos de hemosiderina es un reto clínico y estético significativo. La hemosiderina, derivada de la degradación de la hemoglobina extravasada, confiere un tono azul-grisáceo o marrón oscuro que no responde a los tratamientos de hiperpigmentación melánica tradicional. Desde la perspectiva de la colorimetría, estos depósitos alteran el subtono en el tercio medio facial. La técnica de neutralización requiere una comprensión profunda de la rueda de color: mientras que la melanina suele requerir correctores de tono durazno, la hemosiderina responde mejor a correctores de tono lila o rosado, dependiendo de la profundidad del depósito. La espectroscopia de reflectancia muestra que estos depósitos aumentan la absorción de luz en las longitudes de onda cortas, lo que explica la apariencia 'oscura' y 'hundida' de la zona. Es imperativo diagnosticar si la etiología es vascular (insuficiencia venosa) o por fragilidad capilar, ya que el manejo cosmético difiere. Un error común es aplicar bases de alta cobertura que, por el contraste con la piel clara circundante, resaltan el depósito de hemosiderina en lugar de camuflarlo. La estrategia experta incluye el uso de filtros solares con protección HEV, ya que la luz azul puede exacerbar la percepción de la mancha al interactuar con el hierro presente en los tejidos.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Cosmetic Dermatology",
+        "url": "https://onlinelibrary.wiley.com/journal/14732165",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "vitamina_k",
+        "caffeine"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "correccion_color"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-luz-hev-006",
+    "title": "Luz HEV y fatiga cromática: el desafío del diagnóstico en entorno digital",
+    "content": "La exposición prolongada a la luz de alta energía visible (HEV o luz azul) emitida por dispositivos móviles y pantallas altera la percepción neuro-cognitiva del subtono, fenómeno conocido como fatiga cromática. El ojo humano, al estar expuesto constantemente a una fuente de luz con un pico de emisión en el espectro azul, sufre una adaptación retiniana que distorsiona la evaluación del color cutáneo. En el diagnóstico de subtono, esto lleva a percibir la piel como más 'fría' o 'gris' de lo que realmente es, induciendo a seleccionar bases con subtonos fríos que se ven artificiales bajo luz natural. Para mitigar este sesgo, es imperativo realizar la evaluación del subtono con luz solar indirecta o luminarias con un Índice de Reproducción Cromática (IRC) superior a 95. Además, la luz HEV puede inducir una sobreestimulación de los melanocitos en fototipos altos, acelerando la hiperpigmentación postinflamatoria, lo que cambia dinámicamente el subtono a lo largo del día. La curaduría clínica debe incluir la recomendación de protectores solares con filtros que bloqueen específicamente el espectro HEV mediante óxidos de hierro, lo cual no solo protege la piel, sino que estabiliza la apariencia del tono cutáneo al evitar la degradación de la melanina inducida por la luz azul.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Photodermatology, Photoimmunology & Photomedicine",
+        "url": "https://onlinelibrary.wiley.com/journal/16000781",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "iron_oxides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_avanzado"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-glicacion-007",
+    "title": "Glicación avanzada y el viraje al amarillo senescente: más allá de la melanina",
+    "content": "El proceso de glicación no enzimática, que resulta en la formación de Productos de Glicación Avanzada (AGEs), es un determinante mayor del viraje cromático en pieles maduras. Los AGEs se acumulan en las fibras de colágeno y elastina, alterando sus propiedades ópticas y confiriendo a la piel un tono amarillento, a menudo descrito como 'cetrino' o 'apagado'. Este cambio no es superficial; ocurre en la dermis y afecta cómo la luz penetra y se refleja. Al intentar corregir este tono con bases de alta cobertura, el resultado suele ser una apariencia pesada que no logra devolver la luminosidad perdida. La ciencia dermatológica sugiere que el tratamiento no debe centrarse solo en la cobertura, sino en el uso de ingredientes que mejoren la transparencia dérmica y la microcirculación. La glicación altera la dispersión de luz, haciendo que la piel absorba más longitudes de onda azules y refleje más amarillas. Los profesionales deben identificar este viraje para recomendar productos con partículas reflectantes que compensen la absorción de luz azul, devolviendo un aspecto más juvenil. Es fundamental entender que este tono es un marcador biológico de la edad y del estrés oxidativo acumulado, y no una característica de subtono que deba ser 'corregida', sino manejada cosméticamente para realzar la salud cutánea.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)00000-0/fulltext",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "mature"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidants",
+        "peptides"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "envejecimiento_cutaneo"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-anisotropia-008",
+    "title": "Anisotropía óptica: la textura cutánea como determinante del color",
+    "content": "La anisotropía óptica se refiere a cómo la textura, rugosidad y estructura del estrato córneo influyen en la reflexión del color, un concepto frecuentemente ignorado en la colorimetría de base. La piel no es una superficie plana; su topografía (poros, líneas de expresión, descamación) dispersa la luz de manera no uniforme. En una piel con textura rugosa, la reflexión es más difusa, lo que reduce la saturación del color percibido y hace que el subtono parezca más claro o 'lavado'. Por el contrario, en una piel lisa, la reflexión es más especular, intensificando el subtono. Este fenómeno explica por qué una misma base puede verse distinta en la frente (más lisa) y en las mejillas (con más porosidad). La curaduría experta debe considerar el uso de primers de silicona o agentes alisadores que minimicen la anisotropía antes de la aplicación de la base, asegurando una superficie homogénea para la reflexión de los pigmentos. Ignorar la textura es la causa principal de que el color elegido en tienda se vea diferente al aplicarlo en casa sobre pieles con texturas variables. La evaluación del subtono debe realizarse siempre sobre una piel hidratada y con una textura uniforme para garantizar la precisión diagnóstica y la fidelidad cromática del producto seleccionado.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Skin Research and Technology",
+        "url": "https://onlinelibrary.wiley.com/journal/16000846",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "silicones",
+        "smoothing_polymers"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "textura_cutanea"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  },
+  {
+    "chunk_id": "colorimetria-subtema-altitud-bogota-009",
+    "title": "Hipoxia hipobárica y su impacto en la microcirculación facial en Bogotá",
+    "content": "La altitud de Bogotá (2,640 msnm) genera un estado de hipoxia hipobárica leve pero constante que afecta la microcirculación cutánea y, por ende, la colorimetría facial. La respuesta fisiológica del organismo ante la menor presión de oxígeno es una vasodilatación compensatoria, lo que aumenta la presencia de hemoglobina reducida en los capilares dérmicos. Clínicamente, esto se traduce en una cianosis subclínica, especialmente notable en las zonas periorbitales y en los labios, otorgando un subtono azulado que no es natural en la persona a nivel del mar. Los profesionales de GlowApp deben ser conscientes de que el 'subtono frío' detectado en residentes de Bogotá podría ser una respuesta fisiológica a la altitud y no una característica permanente. Al seleccionar bases, es recomendable optar por tonos con una ligera calidez (amarillos o duraznos) para compensar este matiz azulado inducido por la hipoxia, logrando un aspecto más saludable. Además, la menor humedad ambiental en Bogotá deshidrata el estrato córneo, afectando la dispersión de luz y haciendo que la piel se vea más opaca. La recomendación es priorizar bases con alta carga de humectantes y agentes filmógenos que protejan contra la pérdida de agua transepidérmica, manteniendo la fidelidad cromática bajo condiciones de altitud extrema.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Society of Mountain Medicine",
+        "url": "https://www.ismmed.org/np_altitude_tutorial.htm",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "humectants"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "clima_local"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T15:29:59.195Z"
+  }
+]

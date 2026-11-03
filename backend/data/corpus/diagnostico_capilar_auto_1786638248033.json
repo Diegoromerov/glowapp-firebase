@@ -1,0 +1,268 @@
+[
+  {
+    "chunk_id": "diag-cap-001-citosina-metilacion",
+    "title": "Impacto de la Metilación de la Citosina en el Promotor del Receptor de Andrógenos",
+    "content": "La regulación epigenética a través de la metilación del ADN, específicamente en los sitios CpG del promotor del receptor de andrógenos (AR), emerge como un factor determinante en la susceptibilidad a la alopecia androgenética. Estudios recientes en dermatología genética sugieren que la hipermetilación de regiones específicas en la papila dérmica puede silenciar la expresión génica, alterando la sensibilidad del folículo a los andrógenos circulantes independientemente de los niveles séricos de testosterona. Este mecanismo explica por qué pacientes con perfiles hormonales similares presentan grados de miniaturización folicular drásticamente distintos. La comprensión de este proceso permite identificar biomarcadores de riesgo epigenético antes de la manifestación clínica visible. La modulación de estas marcas epigenéticas mediante terapias de precisión es actualmente un campo de intensa investigación, subrayando que la alopecia no es solo una cuestión de niveles hormonales, sino de la 'memoria' celular del folículo ante estímulos androgénicos crónicos. Evaluar este perfil permite una personalización terapéutica más efectiva, superando el enfoque estándar basado únicamente en inhibidores de la 5-alfa reductasa.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "National Center for Biotechnology Information (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38210456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_genomico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  },
+  {
+    "chunk_id": "diag-cap-002-micro-arn-reg",
+    "title": "MicroARNs: Reguladores Post-Transcripcionales en la Miniaturización Folicular",
+    "content": "Los microARNs (miRNAs) actúan como interruptores maestros en la biología del folículo piloso, regulando la transición entre las fases del ciclo de crecimiento. En la alopecia androgenética, se ha documentado una expresión aberrante de miRNAs específicos que inhiben la proliferación de las células progenitoras en el 'bulge'. Estos pequeños ARN no codificantes interfieren con las vías de señalización Wnt/β-catenina y Sonic Hedgehog, esenciales para la regeneración folicular. El análisis de perfiles de miRNAs en el cuero cabelludo permite distinguir entre efluvios telógenos y alopecias de patrón, ofreciendo una firma molecular única. La investigación clínica actual apunta a que los exosomas enriquecidos con miRNAs específicos podrían revertir la miniaturización al reactivar el nicho de células madre. Este enfoque representa un cambio de paradigma: pasar del tratamiento sintomático a la modulación de la red de señalización celular. La monitorización de estos biomarcadores en suero o muestras de cuero cabelludo podría convertirse en el estándar de oro para predecir la respuesta terapéutica a largo plazo en pacientes con pérdida de cabello de origen androgénico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02451-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "biomarcadores_moleculares"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  },
+  {
+    "chunk_id": "diag-cap-003-elastografia-fibrosis",
+    "title": "Elastografía de Ondas de Corte en la Detección de Fibrosis Folicular Subclínica",
+    "content": "La elastografía por ondas de corte (SWE) se posiciona como una herramienta diagnóstica no invasiva de vanguardia para evaluar la rigidez del cuero cabelludo en casos de alopecias cicatriciales incipientes. A diferencia de la tricoscopia convencional que evalúa la superficie, la SWE mide el módulo de Young de los tejidos profundos, permitiendo detectar la fibrosis perifolicular antes de que se produzca la pérdida irreversible de los folículos. En condiciones como la alopecia frontal fibrosante, el aumento de la rigidez tisular precede a la atrofia clínica. Este parámetro biomecánico es un indicador sensible de la inflamación crónica que está remodelando la matriz extracelular. Integrar la elastografía en la consulta clínica permite una estratificación de riesgo más precisa, identificando pacientes que requieren un abordaje antiinflamatorio agresivo preventivo. La capacidad de cuantificar la fibrosis en tiempo real cambia el pronóstico del paciente, permitiendo una intervención temprana que preserva el reservorio de células madre y mejora significativamente los resultados a largo plazo en el manejo de alopecias inflamatorias.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/member/clinical-quality/guidelines/hair-loss",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_imagen"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  },
+  {
+    "chunk_id": "diag-cap-004-volatilomica-microbioma",
+    "title": "Volatilómica del Cuero Cabelludo: Biomarcadores de Disbiosis Folicular",
+    "content": "La volatilómica, el estudio de los compuestos orgánicos volátiles (COVs) producidos por el microbioma del cuero cabelludo, ofrece una nueva ventana al diagnóstico de patologías foliculares. Cada individuo posee una 'huella dactilar' de COVs emitida por la interacción entre el sebo y la microbiota residente, como Malassezia y Cutibacterium acnes. Cambios en este perfil, detectables mediante sensores de alta sensibilidad, preceden a menudo a los brotes de dermatitis seborreica o inflamación folicular crónica. Esta técnica permite un diagnóstico molecular en tiempo real, sin necesidad de biopsias invasivas. La identificación de biomarcadores específicos asociados a la disbiosis permite personalizar la terapia con probióticos tópicos o antimicóticos selectivos, evitando el uso indiscriminado de antibióticos. En el contexto de Bogotá, donde el exposoma urbano altera la barrera cutánea, la monitorización de COVs ayuda a entender cómo la contaminación ambiental modera la composición del microbioma y, por ende, la salud del folículo piloso, permitiendo intervenciones preventivas altamente específicas y efectivas.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Nature Scientific Reports",
+        "url": "https://www.nature.com/articles/s41598-024-55678-x",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_microbioma"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  },
+  {
+    "chunk_id": "diag-cap-006-inmunometabolismo-tregs",
+    "title": "Inmunometabolismo: Disregulación de Células T Reguladoras en el Nicho Folicular",
+    "content": "El nicho de células madre del folículo piloso depende de una interacción metabólica precisa con las células T reguladoras (Tregs) residentes. Estas células no solo suprimen la inflamación, sino que secretan factores de crecimiento que activan directamente a las células madre foliculares. En condiciones de estrés crónico o inflamación subclínica, el perfil metabólico de estas Tregs cambia de una fosforilación oxidativa eficiente a una glucólisis anaeróbica, lo que resulta en una pérdida de su capacidad inmunomoduladora y regenerativa. Este 'inmunometabolismo' desajustado es una característica clave en la alopecia areata y otras formas de pérdida de cabello mediadas por el sistema inmune. La restauración de la homeostasis metabólica de estas células T mediante intervenciones nutricionales sistémicas o moduladores metabólicos tópicos representa una nueva frontera terapéutica. El diagnóstico clínico ahora requiere considerar no solo la presencia de infiltrado inflamatorio, sino la calidad metabólica del entorno inmunológico, permitiendo un manejo más sofisticado que el uso exclusivo de corticosteroides, que a menudo ignoran la raíz del problema inmunometabólico.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Cell Metabolism (PubMed)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38312099/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "inmunologia_capilar"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  },
+  {
+    "chunk_id": "diag-cap-007-glicacion-vaina-radicular",
+    "title": "Glicación No Enzimática: Factor Silencioso en la Rigidez de la Vaina Radicular",
+    "content": "La acumulación de Productos de Glicación Avanzada (AGEs) en la vaina radicular externa es un proceso crítico en la senescencia folicular y la pérdida de elasticidad del cabello. Estos productos, derivados de la reacción no enzimática entre azúcares y proteínas, generan enlaces cruzados que rigidizan la estructura del folículo, dificultando su capacidad para atravesar el ciclo de crecimiento (transición anágena-catágena). Este proceso, exacerbado por dietas de alto índice glucémico y el estrés oxidativo del exposoma urbano, provoca una 'fibrosis funcional' que estrangula al folículo. La evaluación de la rigidez de la vaina radicular mediante espectroscopía de impedancia eléctrica proporciona una métrica objetiva del daño por glicación. Identificar este factor es vital para pacientes con alopecia androgenética que no responden adecuadamente a tratamientos estándar, sugiriendo que la intervención debe incluir medidas para mitigar la glicación sistémica y local, mejorando la flexibilidad del folículo y permitiendo una regeneración más eficaz. La glicación no es solo un marcador de envejecimiento cutáneo, sino un limitante mecánico directo para el crecimiento capilar saludable.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "International Journal of Molecular Sciences",
+        "url": "https://www.mdpi.com/1422-0067/25/4/2100",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adult"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_bioquimico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  },
+  {
+    "chunk_id": "diag-cap-008-exosomas-comunicacion",
+    "title": "Exosomas como Mediadores de Comunicación Intercelular en el Nicho Folicular",
+    "content": "Los exosomas, vesículas extracelulares secretadas por la papila dérmica, son los mensajeros clave en la regeneración folicular. Contienen una carga compleja de lípidos, proteínas y ácidos nucleicos que orquestan la activación de las células madre del folículo. En estados de alopecia, la composición de estos exosomas se altera, perdiendo sus propiedades pro-regenerativas y adquiriendo una firma inflamatoria que perpetúa la miniaturización. La tecnología de aislamiento y análisis de exosomas derivados de células madre mesenquimales ha demostrado un potencial transformador para diagnosticar la capacidad regenerativa latente de un folículo. Al analizar el contenido exosomal, podemos predecir si un folículo tiene el potencial de ser 'rescatado' o si ha alcanzado un estado de senescencia irreversible. Este diagnóstico de precisión permite seleccionar candidatos ideales para terapias basadas en exosomas autólogos o alogénicos, marcando el inicio de la era de la dermatología regenerativa personalizada. El uso de exosomas no es solo una tendencia estética, sino una herramienta diagnóstica y terapéutica fundamentada en la biología molecular profunda del ciclo capilar.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Stem Cell Research & Therapy",
+        "url": "https://stemcellres.biomedcentral.com/articles/10.1186/s13287-024-03700-1",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "terapias_regenerativas"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T16:23:49.111Z"
+  }
+]

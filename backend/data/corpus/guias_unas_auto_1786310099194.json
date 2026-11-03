@@ -1,0 +1,365 @@
+[
+  {
+    "chunk_id": "guias_unas-onicotilomania-001",
+    "title": "Onicotilomanía: el trauma autoinfligido y su diagnóstico diferencial",
+    "content": "La onicotilomanía se define como el hábito de arrancar, desgarrar o destruir la lámina ungueal de forma compulsiva, diferenciándose de la onicofagia por la intensidad y el uso de instrumentos auxiliares. Clínicamente, el paciente presenta una lámina irregular, con surcos transversales profundos y hemorragias subungueales. A diferencia de la onicofagia, donde el daño es distal, en la onicotilomanía el daño suele ser proximal, afectando la matriz ungueal y pudiendo derivar en anoniquia permanente si la agresión es crónica. Es fundamental realizar un diagnóstico diferencial con patologías como la distrofia ungueal media canaliforme o el liquen plano ungueal, que también cursan con alteraciones morfológicas. La gestión en cabina debe ser estrictamente de contención y referencia, evitando cualquier intento de nivelación con geles o acrílicos, ya que el paciente encontrará formas de seguir manipulando la lámina por debajo del material sintético, aumentando el riesgo de infección secundaria por Staphylococcus aureus. La literatura sugiere un abordaje multidisciplinar que incluya dermatología y salud mental para romper el ciclo de automutilación.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(18)30677-2/fulltext",
+        "year": 2018
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "aplicacion_productos_sinteticos"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-seguridad-clinica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidroxipropil-metacrilato-002",
+    "title": "Sensibilización a Hidroxipropil Metacrilato (HPMA) en sistemas UV",
+    "content": "El Hidroxipropil Metacrilato (HPMA) ha ganado terreno en la industria de uñas como una alternativa de menor peso molecular, pero su perfil de seguridad es motivo de creciente preocupación dermatológica. A diferencia de los metacrilatos de mayor peso, el HPMA posee una mayor capacidad de penetración en la barrera cutánea, lo que facilita la sensibilización inmunológica tras exposiciones repetidas. Los síntomas de una reacción alérgica no se limitan al lecho ungueal; la dermatitis de contacto alérgica puede manifestarse como eritema, edema y vesiculación en párpados, cuello y zonas faciales debido a la transferencia accidental. Es imperativo que el profesional de GlowApp identifique que un producto sea 'HEMA-free' no garantiza la ausencia de otros monómeros sensibilizantes. La prevención radica en el uso de guantes de nitrilo de alta calidad, la polimerización completa bajo lámparas calibradas (evitando el subcurado que libera monómero residual) y la educación al cliente sobre no tocar piel periungueal durante la aplicación. La sensibilización a acrilatos es irreversible y puede excluir al cliente de procedimientos médicos futuros como implantes dentales o prótesis ortopédicas.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed Central / National Institutes of Health",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6676372/",
+        "year": 2020
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "hidroxipropil_metacrilato"
+      ],
+      "contraindications": [
+        "piel_sensibilizada"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-quimica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicopapiloma-003",
+    "title": "Onicopapiloma: identificación de la eritroniquia longitudinal focal",
+    "content": "El onicopapiloma es una neoplasia benigna del lecho ungueal que suele pasar desapercibida hasta que genera una banda longitudinal roja (eritroniquia) o una banda blanca (leuconiquia) que se extiende desde la lúnula hasta el borde libre. A menudo, el paciente consulta por una molestia localizada o por la presencia de una 'mancha' que no desaparece con el crecimiento natural de la uña. Clínicamente, el signo característico es la hiperqueratosis subungueal distal focal, que puede causar una separación de la lámina (onicólisis) y, en ocasiones, hemorragias en astilla. Es crucial no confundir esta condición con un trauma mecánico simple. La evaluación mediante dermatoscopia ungueal es obligatoria: el onicopapiloma muestra capilares dilatados y una zona focal de hiperqueratosis. En GlowApp, si se detecta una banda pigmentada o eritematosa solitaria que no presenta antecedente traumático claro, el protocolo es la derivación inmediata al dermatólogo para descartar onicopapiloma o, en casos más raros, carcinoma epidermoide in situ. La manipulación mecánica en cabina, como el limado o la limpieza profunda, puede exacerbar la inflamación y dificultar el diagnóstico histopatológico posterior.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Dermatologic Surgery Journal",
+        "url": "https://journals.lww.com/dermatologicsurgery/Abstract/2019/08000/Onychopapilloma__A_Review_of_the_Literature.15.aspx",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "adultos"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_mecanica"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "triaje-clinico"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-microtrauma-004",
+    "title": "Microtrauma acumulativo y la 'uña de corredor'",
+    "content": "El microtrauma repetitivo provocado por el calzado inadecuado es la causa principal de la onicodistrofia distal, comúnmente llamada 'uña de corredor'. Este fenómeno ocurre por la presión constante del calzado contra la lámina ungueal o el contacto del dedo contra la puntera del zapato, lo que genera una respuesta adaptativa del lecho ungueal: la hiperqueratosis subungueal. A diferencia de la onicomicosis, esta condición no responde a antifúngicos. El cuadro clínico incluye engrosamiento de la lámina, coloración amarillenta o marrón debido a hematomas crónicos y, en etapas avanzadas, onicólisis distal. En la cabina de estética, es común que se confunda con hongos y se apliquen tratamientos tópicos innecesarios. El rol del profesional es educar sobre el tipo de calzado (espacio adecuado en la puntera) y evitar el desbaste excesivo de la lámina, ya que esto debilita la estructura y facilita la entrada de patógenos. La resolución pasa por la eliminación del factor mecánico externo. Si la uña presenta dolor, se debe remitir a podología clínica para evaluar si existe una deformidad ósea subyacente (exostosis subungueal) que requiera corrección quirúrgica.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-problems-causes",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion-cliente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-hidroxiapatita-005",
+    "title": "Mitos sobre la fortificación ungueal: ¿Es posible nutrir la queratina?",
+    "content": "Existe una creencia extendida en la cosmetología de que el uso de endurecedores con calcio, queratina hidrolizada o formaldehído puede 'fortalecer' la lámina ungueal desde el exterior. Científicamente, la uña es tejido queratinizado muerto, sin metabolismo activo, lo que significa que no puede 'absorber' nutrientes ni repararse a sí misma mediante aplicaciones tópicas. Los endurecedores que contienen agentes endurecedores (como el formaldehído en concentraciones permitidas) funcionan mediante el entrecruzamiento de las proteínas de queratina, creando una lámina más rígida, pero no necesariamente más sana; de hecho, una uña excesivamente rígida es más propensa a fracturarse ante el impacto. La salud de la uña depende exclusivamente de la matriz ungueal, la cual se nutre a través de la circulación sanguínea sistémica. Factores como la deficiencia de hierro, zinc o vitamina D afectan la queratinización desde el origen. En GlowApp, debemos desmitificar el uso de endurecedores como solución mágica y enfocar el cuidado en la hidratación de la cutícula y la protección contra solventes y detergentes, que son los verdaderos agentes que degradan la barrera lipídica de la lámina ungueal.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "IADVL (Indian Association of Dermatologists, Venereologists and Leprologists)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3560161/",
+        "year": 2013
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "calcio",
+        "keratina"
+      ],
+      "contraindications": [
+        "uso_excesivo_endurecedores"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "educacion-cliente"
+      ],
+      "content_type": "mito_vs_realidad"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-fotoproteccion-006",
+    "title": "Fotoprotección en cabina: el riesgo de las lámparas UV",
+    "content": "La exposición a la radiación ultravioleta (UVA) emitida por las lámparas de curado en servicios de uñas es un tema de debate clínico recurrente. Aunque la dosis de radiación por sesión es baja, la acumulación a largo plazo en pacientes que realizan servicios de mantenimiento cada 2-3 semanas genera preocupación sobre el fotoenvejecimiento cutáneo y el riesgo de carcinoma epidermoide en manos. Estudios recientes sugieren que, si bien el riesgo individual por sesión es mínimo, la suma de horas de exposición a lo largo de los años es significativa. Como protocolo de seguridad en GlowApp, recomendamos el uso de guantes de protección UV (con las puntas de los dedos expuestas) o la aplicación de protector solar de amplio espectro 20 minutos antes de iniciar el procedimiento. Además, es vital verificar que las lámparas estén debidamente certificadas y que el tiempo de exposición no exceda lo estrictamente necesario para la polimerización del producto. La educación del cliente sobre estos riesgos demuestra un compromiso ético con su salud dermatológica a largo plazo, posicionando a la marca como un centro de belleza responsable.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "JAMA Dermatology",
+        "url": "https://jamanetwork.com/journals/jamadermatology/fullarticle/2798602",
+        "year": 2022
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "seguridad-cliente"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicodistrofia-solventes-007",
+    "title": "Onicodistrofia por solventes: el costo oculto de la remoción frecuente",
+    "content": "La remoción constante de sistemas de gel y acrílico mediante inmersión en acetona o el uso de fresas de carburo tiene un impacto directo en la integridad del complejo ungueal. La acetona, aunque es el estándar para el retiro, es un solvente lipídico extremadamente potente. Su uso prolongado deshidrata no solo la lámina ungueal, sino también el hiponiquio y los pliegues periungueales, eliminando los lípidos intercelulares que mantienen la cohesión de los queratinocitos. Esto resulta en una uña quebradiza, con descamación laminar (onicosquizia) y una mayor susceptibilidad a la penetración de microorganismos. El riesgo se magnifica cuando se combina con el limado mecánico agresivo, que adelgaza la placa ungueal por debajo de su grosor funcional. El protocolo de GlowApp debe priorizar técnicas de remoción 'húmedas' controladas, limitando el tiempo de exposición a solventes mediante el uso de láminas de aluminio y asegurando una hidratación profunda post-servicio con aceites ricos en ceramidas o escualano para restaurar la barrera cutánea. La educación sobre los tiempos de descanso entre aplicaciones de color es vital para permitir la recuperación de la hidratación natural de la uña.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.12781",
+        "year": 2019
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "acetona"
+      ],
+      "contraindications": [
+        "uso_abusivo_solventes"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-cuticula-008",
+    "title": "La cutícula como barrera inmunológica: por qué la remoción excesiva es contraproducente",
+    "content": "El eponiquio (cutícula) no es simplemente un resto de piel que debe ser eliminado por razones estéticas; es una estructura anatómica fundamental que actúa como un sello hermético protegiendo la matriz ungueal de agresiones externas, patógenos y químicos. La eliminación agresiva, ya sea mediante corte con tijeras o uso excesivo de 'removedores de cutícula' alcalinos, crea una puerta de entrada para infecciones como la paroniquia aguda o crónica. Además, el trauma constante en el pliegue proximal altera la correcta formación de la lámina, lo que puede derivar en crestas transversales o incluso en la pérdida de la adhesión de la uña (onicólisis). En GlowApp, nuestra filosofía es la 'preservación de la cutícula'. Los protocolos deben enfocarse en el cuidado, hidratación y empuje suave, evitando el corte quirúrgico salvo en presencia de padrastros dolorosos. Al educar al cliente sobre la función biológica de la cutícula, cambiamos la expectativa de un acabado 'limpio' por una uña saludable y funcional. Un pliegue proximal intacto es la mejor defensa contra la dermatitis de contacto alérgica frente a los productos químicos del salón.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "AAD (American Academy of Dermatology)",
+        "url": "https://www.aad.org/public/cosmetic/nails/nail-care-secrets",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "corte_agresivo_cuticula"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-servicio"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  },
+  {
+    "chunk_id": "guias_unas-onicocriptosis-009",
+    "title": "Onicocriptosis y el riesgo de la 'cirugía de cabina'",
+    "content": "La onicocriptosis (uña encarnada) es una condición inflamatoria dolorosa que, con frecuencia, es mal gestionada en salones de belleza mediante técnicas invasivas como el 'corte en V' de la lámina o la disección profunda de los bordes laterales. Estas prácticas son peligrosas: el corte incorrecto del borde distal suele causar que la uña crezca con una espícula más afilada hacia el tejido blando, agravando el granuloma piógeno. El profesional de GlowApp debe entender que la uña encarnada es un problema biomecánico que requiere, en muchos casos, intervención podológica o médica. El uso de instrumentos no estériles para 'extraer' un fragmento de uña encarnada es la vía directa para infecciones graves, incluyendo la celulitis del dedo. Nuestro protocolo estricto prohíbe cualquier manipulación invasiva en casos de onicocriptosis con signos de inflamación, supuración o hipergranulación. La acción correcta es la derivación inmediata a un podólogo profesional y la recomendación de calzado adecuado. La seguridad del cliente prima sobre la resolución estética inmediata; un mal procedimiento puede derivar en complicaciones sistémicas o deformidades ungueales permanentes.",
+    "category": "guias_unas",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "PubMed / Journal of the American Podiatric Medical Association",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28362546/",
+        "year": 2017
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [
+        "manipulacion_invasiva_onicocriptosis"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "protocolos-seguridad-clinica"
+      ],
+      "content_type": "contraindicacion"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T21:14:38.908Z"
+  }
+]

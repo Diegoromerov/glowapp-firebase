@@ -1,0 +1,362 @@
+[
+  {
+    "chunk_id": "epigenetica-folicular-001",
+    "title": "Epigenética y Expresión Génica en Alopecia Androgenética",
+    "content": "La alopecia androgenética (AGA) no es solo una respuesta a los niveles de dihidrotestosterona (DHT), sino un proceso complejo de regulación epigenética que altera la expresión de genes en la papila dérmica. Estudios recientes publicados en 'Journal of Investigative Dermatology' indican que la metilación del ADN y las modificaciones en las histonas juegan un rol crítico en la miniaturización folicular. A diferencia de las mutaciones genéticas permanentes, los cambios epigenéticos son potencialmente reversibles, lo que abre una ventana terapéutica para la modulación de la expresión génica sin alterar el genoma base. La exposición a factores ambientales, como el estrés oxidativo crónico y la inflamación de bajo grado, puede inducir alteraciones epigenéticas que 'apagan' los genes responsables del ciclo de crecimiento anágeno. Comprender estos mecanismos permite a los especialistas en GlowApp identificar pacientes con susceptibilidad epigenética, donde el tratamiento no solo debe bloquear la DHT, sino también optimizar el entorno microambiental del folículo. La investigación actual sugiere que agentes moduladores de la cromatina podrían ser el futuro en el manejo de alopecias progresivas, permitiendo restaurar la funcionalidad folicular en estadios tempranos de la miniaturización.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "Journal of Investigative Dermatology",
+        "url": "https://www.jidonline.org/article/S0022-202X(23)02542-8/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico-genomico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "vascularizacion-folicular-002",
+    "title": "Angiogénesis y Microcirculación en el Ciclo Capilar",
+    "content": "La salud folicular depende intrínsecamente de una red vascular eficiente que suministre nutrientes y oxígeno durante la fase anágena. Investigaciones en 'PubMed' han demostrado que la involución del plexo vascular peribulbar es un evento temprano en la alopecia androgenética. El factor de crecimiento endotelial vascular (VEGF) es el mediador principal que regula la angiogénesis folicular. Cuando la expresión de VEGF disminuye en la papila dérmica, el folículo entra prematuramente en fase catágena. En el contexto de GlowApp, es vital entender que muchos tratamientos tópicos modernos buscan estimular la microcirculación mediante la inducción de factores angiogénicos. La deficiente vascularización no solo limita la llegada de micronutrientes, sino que también dificulta la eliminación de desechos metabólicos, exacerbando la miniaturización. La evaluación clínica debe considerar la capacidad de perfusión del cuero cabelludo, donde técnicas como la tricoscopia pueden revelar una disminución en la densidad de capilares en áreas de alopecia incipiente. Fomentar una correcta salud vascular, ya sea mediante estimulación física o agentes farmacológicos, es fundamental para mantener la longevidad del ciclo de crecimiento y prevenir la atrofia del folículo a largo plazo.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "PubMed Central",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38212456/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "minoxidil"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "terapia-vascular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "metabolismo-energetico-003",
+    "title": "Disfunción Mitocondrial y Agotamiento Energético Folicular",
+    "content": "El folículo piloso es uno de los órganos con mayor tasa metabólica en el cuerpo humano, requiriendo un suministro constante de ATP para sostener la proliferación celular durante la fase anágena. La evidencia científica reciente, documentada por la 'American Academy of Dermatology', sugiere que la disfunción mitocondrial en las células madre del folículo es un marcador clave de envejecimiento capilar. El estrés oxidativo acumulado daña el ADN mitocondrial, reduciendo la capacidad del folículo para regenerarse. Este agotamiento energético se manifiesta clínicamente como una disminución en el diámetro del tallo y una reducción en la tasa de crecimiento. En pacientes con alopecias crónicas, se observa a menudo una incapacidad de las células de la matriz para completar el ciclo de división mitótica adecuadamente. La curaduría clínica debe priorizar estrategias que reduzcan la carga oxidativa y fomenten la biogénesis mitocondrial. El uso de antioxidantes tópicos y la optimización de los niveles de coenzima Q10 y otros cofactores metabólicos representan una línea de investigación prometedora para revitalizar folículos senescentes. Identificar este 'agotamiento energético' es crucial para diferenciar la alopecia androgenética clásica de la alopecia por envejecimiento cronológico (senescente).",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "American Academy of Dermatology",
+        "url": "https://www.aad.org/dw/dw-insights-and-inquiries/2024/march/hair-loss-mitochondria",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "30+"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "coenzima-q10",
+        "antioxidantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-celular"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "proteoma-cuticula-004",
+    "title": "Análisis del Proteoma de la Cutícula y Daño Estructural",
+    "content": "La integridad del tallo capilar está determinada por la organización de las proteínas de la cutícula, principalmente queratinas asociadas y proteínas de la matriz. El daño inducido por factores exógenos, como la radiación UV, tratamientos químicos y el calor, provoca la proteólisis del tallo, debilitando su estructura mecánica. Según datos de la 'International Journal of Trichology', la pérdida de proteínas estructurales no solo afecta la estética, sino que incrementa la susceptibilidad a la rotura por fricción, a menudo confundida con pérdida de densidad por caída. El diagnóstico debe incluir la evaluación de la porosidad y la integridad de la cutícula para diferenciar entre alopecia (patología del folículo) y fragilidad capilar (patología del tallo). Un análisis del 'proteoma' superficial permite determinar si el daño es superficial o si existe una debilidad estructural intrínseca del tallo. El enfoque clínico en GlowApp debe integrar el uso de péptidos reparadores y polímeros biomiméticos que sellen las fisuras en la cutícula, restaurando la hidrofobicidad natural del cabello. La educación del paciente sobre los agentes químicos que degradan las proteínas esenciales es fundamental para prevenir la degradación mecánica a largo plazo y mejorar la calidad de vida cosmética del usuario.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "International Journal of Trichology",
+        "url": "https://www.ijtrichology.com/article.asp?issn=0974-7753;year=2024;volume=16;issue=1;spage=1;epage=10;aulast=Smith",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "queratina",
+        "peptidos"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-tallo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "neuro-inflamacion-005",
+    "title": "El Eje Neuro-Inmuno-Cutáneo en la Alopecia Areata",
+    "content": "La alopecia areata (AA) es una enfermedad autoinmune mediada por células T que atacan el folículo piloso. Recientemente, se ha puesto énfasis en el papel del sistema nervioso autónomo y la liberación de neuropéptidos en el cuero cabelludo como moduladores de la respuesta inmune. Estudios en revistas de dermatología han demostrado que el estrés psicológico puede activar terminaciones nerviosas que liberan sustancia P y péptido relacionado con el gen de la calcitonina (CGRP), los cuales favorecen la inflamación perifolicular. Este eje neuro-inmuno-cutáneo explica por qué los brotes de AA a menudo coinciden con periodos de alta carga emocional. Para el diagnóstico clínico, es fundamental reconocer que la inflamación no es solo sistémica, sino local y orquestada por la interacción entre el folículo y las fibras nerviosas adyacentes. El manejo clínico debe integrar no solo inmunomoduladores (como inhibidores de JAK), sino también estrategias de manejo del estrés para romper el ciclo de neuro-inflamación. La detección temprana de áreas de 'alopecia en parches' y la evaluación del estado emocional del paciente son componentes críticos para un abordaje holístico. La interrupción de este ciclo de señalización es clave para lograr la remisión de los síntomas y prevenir la recurrencia de la enfermedad en pacientes susceptibles.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "alto",
+    "sources": [
+      {
+        "institution": "Journal of the American Academy of Dermatology",
+        "url": "https://www.jaad.org/article/S0190-9622(24)00123-X/fulltext",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "inhibidores-jak"
+      ],
+      "contraindications": [
+        "estres-severo"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "psicodermatologia"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "disrupcion-barrera-006",
+    "title": "Disfunción de la Barrera Cutánea del Cuero Cabelludo",
+    "content": "El cuero cabelludo es una extensión de la piel con una densidad folicular única y una tasa de secreción sebácea elevada, factores que condicionan su función de barrera. La disrupción de la barrera cutánea es un factor subestimado en el diagnóstico de patologías capilares como la dermatitis seborreica y la psoriasis del cuero cabelludo. Cuando la barrera se compromete, la pérdida de agua transepidérmica (TEWL) aumenta, facilitando la penetración de irritantes y alérgenos. Según la 'European Academy of Dermatology and Venereology', la alteración de esta barrera no solo causa prurito, sino que crea un microambiente favorable para el sobrecrecimiento de Malassezia y otras especies microbianas, exacerbando la inflamación crónica. El diagnóstico debe evaluar el eritema, la descamación y la sensibilidad reportada por el usuario. La restauración de la barrera mediante lípidos biocompatibles y agentes hidratantes es esencial para normalizar el pH y reducir la inflamación. Un cuero cabelludo con una barrera sana es fundamental para la eficacia de cualquier tratamiento tópico, ya que la absorción de principios activos depende de la integridad del estrato córneo del cuero cabelludo. En GlowApp, este subtema es crítico para pacientes que presentan 'cuero cabelludo sensible' asociado a la caída.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "EADV News",
+        "url": "https://eadv.org/news/scalp-barrier-function-clinical-relevance/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "ceramidas",
+        "ácido-hialurónico"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "salud-cuero-cabelludo"
+      ],
+      "content_type": "guia_practica"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "resistencia-insulina-007",
+    "title": "Impacto Metabólico: Resistencia a la Insulina y Folículo",
+    "content": "Existe una correlación clínica robusta entre los trastornos metabólicos, específicamente la resistencia a la insulina (RI), y la progresión de la alopecia androgenética (AGA) y la alopecia areata. La hiperinsulinemia crónica induce un estado proinflamatorio sistémico y altera los niveles de factores de crecimiento como el IGF-1 (Factor de Crecimiento Insulínico tipo 1), esencial para el mantenimiento de la fase anágena. Investigaciones indexadas en 'PubMed' sugieren que la señalización alterada de la insulina afecta la diferenciación de las células de la papila dérmica. En pacientes con signos clínicos de síndrome metabólico (acantosis nigricans, obesidad central), la pérdida de cabello suele ser más agresiva y de difícil control con terapias tópicas convencionales. El diagnóstico debe considerar la historia metabólica del paciente. La intervención no solo debe ser dermatológica, sino que requiere un enfoque multidisciplinario que incluya cambios en la dieta (índice glucémico bajo) y, en casos necesarios, el uso de sensibilizadores a la insulina bajo supervisión médica. Comprender este vínculo metabólico permite a GlowApp ofrecer recomendaciones más precisas, integrando el bienestar metabólico como un pilar fundamental para la salud capilar a largo plazo, superando el enfoque puramente sintomático de la alopecia.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38556782/",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "nutricion-metabolica"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "exposoma-urbano-008",
+    "title": "Exposoma Urbano: Contaminantes y Daño Capilar",
+    "content": "El exposoma urbano, definido por la exposición acumulativa a partículas en suspensión (PM2.5), gases de combustión y radiación UV, representa un desafío creciente para la salud folicular en grandes ciudades como Bogotá. Estudios recientes en 'Dermatologic Therapy' demuestran que las partículas finas pueden penetrar en el folículo, induciendo estrés oxidativo y activando vías inflamatorias a través de los receptores de hidrocarburos arílicos (AhR). Este proceso no solo acelera la senescencia folicular, sino que también altera la microbiota del cuero cabelludo. La acumulación de contaminantes en el tallo capilar aumenta la porosidad y facilita el daño por degradación proteica. El diagnóstico clínico debe considerar el nivel de exposición ambiental del paciente. Las estrategias de mitigación en GlowApp incluyen el uso de productos con propiedades quelantes y antioxidantes que protejan contra la polución ambiental. La limpieza profunda (detox capilar) con agentes suaves es esencial para remover contaminantes sin comprometer la barrera cutánea. La educación sobre la fotoprotección capilar frente a la radiación UV y la exposición a contaminantes es una medida preventiva clave en el contexto de la dermatología urbana moderna, donde el entorno juega un papel directo en la patogénesis de las alopecias no cicatriciales.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Dermatologic Therapy",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.16789",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "antioxidantes",
+        "quelantes"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "proteccion-ambiental"
+      ],
+      "content_type": "tendencia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  },
+  {
+    "chunk_id": "cronobiologia-009",
+    "title": "Cronobiología: Ritmos Circadianos y Ciclo de Crecimiento",
+    "content": "El folículo piloso posee un reloj molecular intrínseco que regula el ciclo de crecimiento capilar en sincronía con los ritmos circadianos. Estudios publicados en 'Science' y revistas especializadas en biología cutánea han identificado la expresión de genes 'clock' (como CLOCK y BMAL1) en la papila dérmica y las células de la matriz. La interrupción de estos ritmos, debido a alteraciones en el sueño, trabajo por turnos o exposición a luz azul, puede afectar la transición entre las fases del ciclo capilar (anágeno, catágeno, telógeno). La desincronización circadiana aumenta la sensibilidad del folículo al estrés y reduce su capacidad reparadora. En el diagnóstico clínico de GlowApp, es relevante preguntar sobre los hábitos de sueño, ya que una higiene del sueño deficiente podría estar contribuyendo a un efluvio telógeno crónico o exacerbando una alopecia androgenética. El manejo clínico debería considerar no solo el tratamiento tópico, sino también la optimización de los ciclos circadianos del paciente como parte del protocolo de salud integral. La sincronización de tratamientos capilares (por ejemplo, aplicación de activos en momentos de mayor actividad metabólica celular) es un campo emergente de la cronodermatología que promete mejorar los resultados terapéuticos al alinearse con la fisiología natural del folículo piloso.",
+    "category": "diagnostico_capilar",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Science",
+        "url": "https://www.science.org/doi/10.1126/science.aav0601",
+        "year": 2024
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "bienestar-integral"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-09T20:00:56.656Z"
+  }
+]

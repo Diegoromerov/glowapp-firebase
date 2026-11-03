@@ -1,0 +1,70 @@
+{
+  "dataset_version": "2.0",
+  "generated_at": "2026-08-13T22:34:45.461Z",
+  "method": "Léxico determinista: tokens de query + expected_answer_keywords contra título (x2) y contenido (x1) del corpus canónico. Umbral score >= 3. Top-5 chunks.",
+  "corpus": {
+    "path": "C:\\beauty-app\\backend\\src\\data\\corpus_canonico\\corpus_canonico.json",
+    "version": "1.0.0",
+    "chunks": 5619
+  },
+  "validation": {
+    "total_queries": 30,
+    "valid": 18,
+    "unsupported_by_corpus": 12,
+    "invalid_query": 0,
+    "expected_chunks_total": 65,
+    "expected_chunks_unique": 63,
+    "duplicate_expected_chunks": 2
+  },
+  "unsupported_queries": [
+    {
+      "id": "skincare_001",
+      "query": "¿Qué es el bakuchiol y para qué sirve?"
+    },
+    {
+      "id": "skincare_002",
+      "query": "¿Puedo usar retinol si estoy embarazada?"
+    },
+    {
+      "id": "skincare_004",
+      "query": "¿Qué me pongo en la cara si tengo acné y rosácea?"
+    },
+    {
+      "id": "cabello_001",
+      "query": "¿Qué es el low poo y no poo?"
+    },
+    {
+      "id": "cabello_003",
+      "query": "Rutina para cabello rizado tipo 3B en Bogotá"
+    },
+    {
+      "id": "cabello_005",
+      "query": "¿Cómo evitar el frizz en cabello rizado?"
+    },
+    {
+      "id": "cabello_007",
+      "query": "Protección térmica para plancha y secador uso diario"
+    },
+    {
+      "id": "cabello_009",
+      "query": "Cómo crecer el cabello más rápido y fuerte"
+    },
+    {
+      "id": "cabello_010",
+      "query": "Mejor aceite para puntas abiertas"
+    },
+    {
+      "id": "cejas_006",
+      "query": "Mejor lápiz de cejas para look natural"
+    },
+    {
+      "id": "cejas_009",
+      "query": "Henna brows vs tinte tradicional: diferencias y duración"
+    },
+    {
+      "id": "cejas_010",
+      "query": "Cómo cepillar y fijar cejas con gel transparente"
+    }
+  ],
+  "note": "No se fabricaron expected_chunks. Las queries UNSUPPORTED_BY_CORPUS requieren ampliar el corpus o decisión del Director."
+}

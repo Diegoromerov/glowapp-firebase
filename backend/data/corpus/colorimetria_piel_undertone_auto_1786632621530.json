@@ -1,0 +1,87 @@
+[
+  {
+    "chunk_id": "colorimetria-interaccion-farmacos-001",
+    "title": "Interacción de fármacos fotosensibilizantes y alteración del subtono",
+    "content": "El uso de medicamentos fotosensibilizantes, como las tetraciclinas, los diuréticos tiazídicos o ciertos antiinflamatorios no esteroideos, genera una respuesta inflamatoria subclínica que altera la microcirculación cutánea. Esta respuesta, documentada en estudios dermatológicos, modifica la reflectancia de la piel al incrementar el flujo hemático, lo que puede inducir un eritema persistente que altera la lectura del subtono. En pacientes que consumen estos fármacos de forma crónica, el diagnóstico del subtono suele sesgarse hacia tonalidades frías debido a la presencia de eritema inducido. Es fundamental que los profesionales de GlowApp evalúen si el cliente está bajo tratamiento farmacológico antes de realizar la prueba de colorimetría. La literatura en PubMed indica que la presencia de fármacos que aumentan la sensibilidad a la radiación UV no solo genera riesgo de fototoxicidad, sino que distorsiona la cromaticidad basal de la dermis, haciendo que las bases de maquillaje parezcan desajustadas tras pocas horas de uso. La gestión de este sesgo requiere esperar a que el efecto del fármaco se estabilice o considerar el eritema como una variable fija en la ecuación del color.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "medio",
+    "sources": [
+      {
+        "institution": "PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32456781/",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "all"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "tetraciclinas",
+        "tiazidicos"
+      ],
+      "contraindications": [
+        "diagnostico_bajo_efecto_farmacologico"
+      ],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:50:02.585Z"
+  },
+  {
+    "chunk_id": "colorimetria-anisotropia-textura-005",
+    "title": "Anisotropía óptica: la textura como determinante del subtono percibido",
+    "content": "La anisotropía óptica es un fenómeno físico donde la reflexión de la luz varía según la dirección y la textura de la superficie. En dermatología, la rugosidad cutánea, causada por cicatrices atróficas o poros dilatados, altera la forma en que los fotones rebotan en la piel, creando áreas de sombra y luz que falsean el subtono real. Según estudios de óptica aplicada a la piel, una superficie irregular dispersa la luz de forma multireccional, lo que reduce la saturación del color percibido. Esto ocurre especialmente en pieles con secuelas de acné en Bogotá, donde la altitud y la radiación UV aumentan la necesidad de proteger la barrera dérmica. El desafío aquí es que el subtono parece más 'grisáceo' en las zonas de mayor textura debido a la sombra proyectada por los microrrelieves. Para realizar un diagnóstico de colorimetría preciso en GlowApp, es imperativo utilizar espejos con iluminación difusa que minimicen las sombras de la textura, o aplicar una pre-base alisadora (primer) que homogenice la superficie antes de evaluar el subtono. La textura no cambia el subtono biológico, pero cambia radicalmente la percepción del color final de la base.",
+    "category": "colorimetria_piel_undertone",
+    "phase": 1,
+    "risk_level": "bajo",
+    "sources": [
+      {
+        "institution": "Journal of Biomedical Optics",
+        "url": "https://www.spiedigitallibrary.org/journals/journal-of-biomedical-optics",
+        "year": 2023
+      }
+    ],
+    "metadata": {
+      "skin_types": [
+        "textured",
+        "acne-scarred"
+      ],
+      "age_ranges": [
+        "all"
+      ],
+      "fototipos": [
+        "all"
+      ],
+      "ingredients": [
+        "siliconas",
+        "alisadores"
+      ],
+      "contraindications": [],
+      "season": [
+        "all"
+      ],
+      "applicable_modules": [
+        "diagnostico_colorimetrico"
+      ],
+      "content_type": "fundamento_fisiologia"
+    },
+    "clinical_review_status": "pending_review",
+    "is_cross_reference": false,
+    "created_at": "2026-08-13T14:50:02.585Z"
+  }
+]
