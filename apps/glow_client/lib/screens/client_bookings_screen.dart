@@ -1,6 +1,7 @@
 // frontend/lib/screens/client_bookings_screen.dart
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:url_launcher/url_launcher.dart';
 import 'otp_confirm_screen.dart';
 class ClientBookingsScreen extends StatefulWidget {
@@ -30,7 +31,13 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     final messenger = ScaffoldMessenger.of(context);
     setState(() => _pagando.add(id));
     try {
-      final link = await ApiService.createBookingPaymentLink(id);
+      // En web, Wompi devuelve al usuario a la propia app con `?id=<transacción>`;
+      // la pantalla de citas recarga al abrir y tiene pull-to-refresh. En móvil no
+      // hay enlace profundo configurado, así que se queda en la página de Wompi.
+      final link = await ApiService.createBookingPaymentLink(
+        id,
+        redirectUrl: kIsWeb ? '${Uri.base.origin}/#/my-bookings' : null,
+      );
       final url = link['url']?.toString();
       if (url == null || url.isEmpty) {
         throw Exception('La pasarela no devolvió un enlace de pago');

@@ -526,6 +526,32 @@ exports.createBookingPaymentLink = async (req, res) => {
       currency: 'COP'
     });
 
+    // Retorno a la app tras pagar. Wompi añade `?id=<transacción>` a esta URL;
+    // con el enrutado por hash de Flutter el destino queda en
+    // `/#/my-bookings?id=…`, que la app resuelve a su pantalla de citas (que ya
+    // recarga al abrir y tiene pull-to-refresh).
+    // Solo se aceptan orígenes propios: un redirect libre desde el cuerpo sería
+    // un open redirect firmado por nosotros.
+    const ORIGENES_PERMITIDOS = [
+      'https://glowapp-client.web.app',
+      'https://glowapp-provider.web.app'
+    ];
+    const redirectPermitido = (raw) => {
+      if (!raw) return null;
+      try {
+        const u = new URL(String(raw));
+        const origen = `${u.protocol}//${u.host}`;
+        if (ORIGENES_PERMITIDOS.includes(origen)) return u.toString();
+        if (u.hostname === 'localhost' || u.hostname === '127.0.0.1') return u.toString();
+        return null;
+      } catch {
+        return null;
+      }
+    };
+    const redirectUrl = redirectPermitido(req.body?.redirect_url)
+      || process.env.WOMPI_REDIRECT_URL
+      || null;
+
     const checkoutBase = process.env.WOMPI_CHECKOUT_URL || 'https://checkout.wompi.co/p/';
     const params = new URLSearchParams({
       'public-key': publicKey,
@@ -534,8 +560,8 @@ exports.createBookingPaymentLink = async (req, res) => {
       reference,
       'signature:integrity': signature
     });
-    if (process.env.WOMPI_REDIRECT_URL) {
-      params.append('redirect-url', process.env.WOMPI_REDIRECT_URL);
+    if (redirectUrl) {
+      params.append('redirect-url', redirectUrl);
     }
 
     return res.json({
@@ -543,7 +569,8 @@ exports.createBookingPaymentLink = async (req, res) => {
       url: `${checkoutBase}?${params.toString()}`,
       reference,
       amount,
-      currency: 'COP'
+      currency: 'COP',
+      redirect_url: redirectUrl
     });
   } catch (error) {
     console.error('❌ ERROR EN POST /api/bookings/:id/payment-link:', error.message);
