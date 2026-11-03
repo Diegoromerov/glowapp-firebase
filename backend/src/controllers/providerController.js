@@ -95,8 +95,8 @@ exports.getProviders = async (req, res) => {
             '' as avatar_url,
             s.nombre_salon as business_name,
             COALESCE(s.direccion || CASE WHEN s.ciudad IS NOT NULL THEN ', ' || s.ciudad ELSE '' END, 'Salón de belleza profesional') as description,
-            5.0 as rating_avg,
-            5 as rating_count,
+            CAST(NULL AS numeric) as rating_avg,
+            0 as rating_count,
             true as is_verified,
             true as is_salon,
             COALESCE(s.longitude, ST_X(s.ubicacion::geometry)) AS longitude,
@@ -156,8 +156,25 @@ exports.getProviders = async (req, res) => {
       avatar_url: row.avatar_url || '',
       business_name: row.business_name || '',
       description: row.description || '',
-      rating_avg: parseFloat(row.rating_avg) || 5.0,
-      rating_count: parseInt(row.rating_count) || 1,
+      // Sin resenas la nota es NULL y el conteo 0. Antes se respondia 5.0 con
+      // 1 opinion: un prestador nuevo aparecia perfecto y no habia forma de
+      // distinguirlo de uno con 40 resenas de 4.8, que es justo lo que una
+      // calificacion sirve para saber.
+      rating_avg: row.rating_avg === null || row.rating_avg === undefined
+        ? null
+        : parseFloat(row.rating_avg),
+      rating_count: parseInt(row.rating_count) || 0,
+      // Puntuacion ponderada para ordenar: arranca en la media del sitio y se
+      // acerca a la nota real a medida que llegan resenas.
+      rating_score: (() => {
+        const previa = 4.0;   // media de referencia del marketplace
+        const peso = 5;       // resenas necesarias para pesar tanto como la media
+        const n = parseInt(row.rating_count) || 0;
+        const nota = row.rating_avg === null || row.rating_avg === undefined
+          ? previa
+          : parseFloat(row.rating_avg);
+        return Number((((nota * n) + (previa * peso)) / (n + peso)).toFixed(2));
+      })(),
       is_verified: !!row.is_verified,
       is_salon: !!row.is_salon,
       loyalty_tier: row.loyalty_tier || 'Creative Edge',
@@ -220,7 +237,7 @@ exports.getProviderById = async (req, res) => {
     const portfolioRes = await pool.query(portfolioQ, [numericId]);
 
     const reviewsQ = `
-      SELECT r.rating, r.comment, r.created_at, u.nombre as client_name 
+      SELECT r.rating, r.comment, r.aspectos, r.created_at, u.nombre as client_name 
       FROM reviews r 
       JOIN usuarios u ON r.client_id = u.id 
       WHERE r.provider_id = $1 

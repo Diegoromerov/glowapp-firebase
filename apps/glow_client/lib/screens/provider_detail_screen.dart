@@ -867,8 +867,9 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                 const SizedBox(height: 6),
                                 // Rating y valoraciones con Semantics y Medalla Quiet Luxury
                                 Semantics(
-                                  label:
-                                      'Calificación ${_num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1)} de 5 estrellas, ${p['rating_count'] ?? p['reviews_count'] ?? 0} valoraciones',
+                                  label: (_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0)
+                                      ? 'Calificación ${_num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1)} de 5 estrellas, ${p['rating_count'] ?? p['reviews_count'] ?? 0} valoraciones'
+                                      : 'Sin calificaciones todavía',
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 3),
@@ -888,8 +889,14 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                             color: Color(0xFFFBBF24), size: 16),
                                         const SizedBox(width: 4),
                                         Text(
-                                          _num(p['rating_avg'] ?? p['rating'])
-                                              .toStringAsFixed(1),
+                                          (_num(p['rating_count'] ??
+                                                      p['reviews_count'] ??
+                                                      0) >
+                                                  0)
+                                              ? _num(p['rating_avg'] ??
+                                                      p['rating'])
+                                                  .toStringAsFixed(1)
+                                              : 'Nuevo',
                                           style: const TextStyle(
                                               fontFamily: 'Inter',
                                               color: Colors.white,
@@ -899,7 +906,9 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                         const SizedBox(width: 6),
                                         Flexible(
                                           child: Text(
-                                            '(${p['rating_count'] ?? p['reviews_count'] ?? 0} opiniones)',
+                                            (_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0)
+                                                ? '(${p['rating_count'] ?? p['reviews_count'] ?? 0} opiniones)'
+                                                : '(sin opiniones)',
                                             style: TextStyle(
                                                 fontFamily: 'Inter',
                                                 color: Colors.white
@@ -1693,6 +1702,13 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                 final reviewPhotos =
                                     (r['photos'] as List<dynamic>? ?? [])
                                         .cast<String>();
+                                // Aspectos: es lo unico de la resena que se puede
+                                // agregar y filtrar, asi que se muestra siempre.
+                                final reviewAspectos =
+                                    (r['aspectos'] as List<dynamic>? ?? [])
+                                        .map((e) => e.toString())
+                                        .where((e) => e.isNotEmpty)
+                                        .toList();
 
                                 return Container(
                                   margin: const EdgeInsets.only(bottom: 12),
@@ -1783,6 +1799,39 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                               fontSize: 13,
                                               height: 1.45,
                                               color: Color(0xFF4A4036)),
+                                        ),
+                                      ],
+                                      if (reviewAspectos.isNotEmpty) ...[
+                                        const SizedBox(height: 10),
+                                        Wrap(
+                                          spacing: 6,
+                                          runSpacing: 6,
+                                          children: reviewAspectos
+                                              .map((a) => Container(
+                                                    padding:
+                                                        const EdgeInsets
+                                                            .symmetric(
+                                                            horizontal: 10,
+                                                            vertical: 4),
+                                                    decoration: BoxDecoration(
+                                                      color: const Color(
+                                                          0xFFFAF6EE),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                      border: Border.all(
+                                                          color: const Color(
+                                                              0xFFEFE8DE)),
+                                                    ),
+                                                    child: Text(
+                                                      a,
+                                                      style: const TextStyle(
+                                                          fontSize: 11,
+                                                          color: Color(
+                                                              0xFF7A6A55)),
+                                                    ),
+                                                  ))
+                                              .toList(),
                                         ),
                                       ],
                                       if (reviewPhotos.isNotEmpty) ...[
