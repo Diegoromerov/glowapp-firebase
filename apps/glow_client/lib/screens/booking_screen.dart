@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:glow_core/glow_core.dart';
 
@@ -54,6 +57,9 @@ class _BookingScreenState extends State<BookingScreen> {
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _notesController = TextEditingController();
 
+  /// Direcciones guardadas en el perfil (`GET /api/users/delivery-addresses`).
+  List<dynamic> _direccionesGuardadas = const [];
+
   @override
   void initState() {
     super.initState();
@@ -62,6 +68,7 @@ class _BookingScreenState extends State<BookingScreen> {
     _addressController.text = serviceAddress;
 
     _notesController.text = notes;
+    _cargarDireccionesGuardadas();
     final now = DateTime.now();
     // Default to tomorrow
     selectedDate = DateTime(now.year, now.month, now.day + 1);
@@ -611,6 +618,89 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 
+  /// Carga las direcciones del perfil para el atajo de "dirección habitual".
+  Future<void> _cargarDireccionesGuardadas() async {
+    try {
+      final headers = await ApiService.getAuthHeaders();
+      final r = await http.get(
+        Uri.parse('${ApiService.baseUrl}/api/users/delivery-addresses'),
+        headers: headers,
+      );
+      if (!mounted || r.statusCode != 200) return;
+      final body = json.decode(r.body);
+      final lista =
+          body is Map ? (body['data'] ?? body['addresses'] ?? const []) : body;
+      if (lista is List) {
+        setState(() => _direccionesGuardadas = lista);
+      }
+    } catch (_) {
+      // Sin sesión o sin red: el campo sigue siendo editable a mano.
+    }
+  }
+
+  /// Compone el texto con la estructura colombiana:
+  /// "Calle 24 # 95-32, Torre 2 Apto 402, Fontibón, Bogotá D.C."
+  String _formatearDireccion(Map<String, dynamic> d) {
+    String txt(dynamic v) => (v ?? '').toString().trim();
+
+    final via = [
+      txt(d['tipo_via']),
+      '${txt(d['numero_principal'])}${txt(d['letra_principal'])}',
+    ].where((s) => s.isNotEmpty).join(' ');
+    final cruce = '${txt(d['numero_secundario'])}${txt(d['letra_secundaria'])}';
+
+    final partes = <String>[];
+    if (via.isNotEmpty) {
+      partes.add(cruce.isEmpty ? via : '$via # $cruce');
+    }
+    for (final clave in ['complemento', 'barrio', 'ciudad', 'departamento']) {
+      final v = txt(d[clave]);
+      if (v.isNotEmpty) partes.add(v);
+    }
+    return partes.join(', ');
+  }
+
+  /// Toma la dirección predeterminada del perfil (o la primera guardada).
+  void _usarDireccionHabitual() {
+    if (_direccionesGuardadas.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+              'No tienes una dirección guardada. Usa "Otra dirección" para crearla.'),
+        ),
+      );
+      return;
+    }
+    final elegida = _direccionesGuardadas.firstWhere(
+      (d) =>
+          d is Map &&
+          (d['es_default'] == true || d['es_predeterminada'] == true),
+      orElse: () => _direccionesGuardadas.first,
+    );
+    final texto =
+        _formatearDireccion(Map<String, dynamic>.from(elegida as Map));
+    if (texto.isEmpty) return;
+    setState(() {
+      serviceAddress = texto;
+      _addressController.text = texto;
+    });
+  }
+
+  /// Abre el constructor de direcciones de Colombia del perfil.
+  Future<void> _construirOtraDireccion() async {
+    await showColombianAddressBuilder(
+      context: context,
+      onSave: (data) async {
+        final texto = _formatearDireccion(data);
+        if (texto.isEmpty) return;
+        setState(() {
+          serviceAddress = texto;
+          _addressController.text = texto;
+        });
+      },
+    );
+  }
+
   Widget _buildStepAddressNotes() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
@@ -623,11 +713,7 @@ class _BookingScreenState extends State<BookingScreen> {
               child: GestureDetector(
                 onTap: () {
                   HapticFeedback.lightImpact();
-                  setState(() {
-                    _addressController.text =
-                        'Calle 127 # 19-45, Apt 502, Bogotá';
-                    serviceAddress = _addressController.text;
-                  });
+                  _usarDireccionHabitual();
                 },
                 child: Container(
                   padding:
@@ -646,7 +732,44 @@ class _BookingScreenState extends State<BookingScreen> {
                       SizedBox(width: 4),
                       Flexible(
                         child: Text(
-                          '📍 Usar dirección habitual (Casa)',
+                          '📍 Usar dirección habitual',
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF1F1A15)),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Flexible(
+              child: GestureDetector(
+                onTap: () {
+                  HapticFeedback.lightImpact();
+                  _construirOtraDireccion();
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                        color: const Color(0xFFC5A052).withOpacity(0.45)),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.edit_location_alt_outlined,
+                          size: 14, color: Color(0xFFC5A052)),
+                      SizedBox(width: 4),
+                      Flexible(
+                        child: Text(
+                          'Otra dirección',
                           style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.bold,
@@ -1674,8 +1797,11 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget _buildStickyBottomButtons() {
     bool canNext = false;
     if (_currentStep == 0) {
-      // Paso 1: Cuándo y Servicio (solo requiere servicio y fecha seleccionados)
-      canNext = selectedServiceId != null && selectedDate != null;
+      // Paso 1: Cuándo y Servicio. Se exige fecha Y hora: sin franja elegida
+      // el resumen no puede calcular la agenda y el paso siguiente llega vacío.
+      canNext = selectedServiceId != null &&
+          selectedDate != null &&
+          _selectedSlotTime != null;
     } else if (_currentStep == 1) {
       // Paso 2: Dirección y Notas (requiere dirección)
       canNext = serviceAddress.trim().isNotEmpty;
