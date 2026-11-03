@@ -51,13 +51,46 @@ BEGIN
 END $$;
 
 -- 3. Columnas tenant_id que espera el checkout
-ALTER TABLE pedidos_tienda                     ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
-ALTER TABLE detalles_pedido_tienda             ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
-ALTER TABLE booking_productos                  ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
-ALTER TABLE inventario_consignacion_prestador  ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
+-- Cada ALTER está guardado por to_regclass: si la tabla no existe en este
+-- entorno (p.ej. CI sin el esquema GlowShop), la migración avanza dejando
+-- NOTICE en vez de fallar. En producción todas existen y se aplican completo.
+DO $$
+BEGIN
+  IF to_regclass('public.pedidos_tienda') IS NOT NULL THEN
+    ALTER TABLE pedidos_tienda ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
+    CREATE INDEX IF NOT EXISTS idx_pedidos_tienda_tenant ON pedidos_tienda(tenant_id);
+  ELSE
+    RAISE NOTICE '123: pedidos_tienda no existe en este entorno: se omite el ADD COLUMN';
+  END IF;
+END $$;
 
-CREATE INDEX IF NOT EXISTS idx_pedidos_tienda_tenant ON pedidos_tienda(tenant_id);
-CREATE INDEX IF NOT EXISTS idx_detalles_pedido_tenant ON detalles_pedido_tienda(tenant_id);
+DO $$
+BEGIN
+  IF to_regclass('public.detalles_pedido_tienda') IS NOT NULL THEN
+    ALTER TABLE detalles_pedido_tienda ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
+    CREATE INDEX IF NOT EXISTS idx_detalles_pedido_tenant ON detalles_pedido_tienda(tenant_id);
+  ELSE
+    RAISE NOTICE '123: detalles_pedido_tienda no existe en este entorno: se omite el ADD COLUMN';
+  END IF;
+END $$;
+
+DO $$
+BEGIN
+  IF to_regclass('public.booking_productos') IS NOT NULL THEN
+    ALTER TABLE booking_productos ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
+  ELSE
+    RAISE NOTICE '123: booking_productos no existe en este entorno: se omite el ADD COLUMN';
+  END IF;
+END $$;
+
+DO $$
+BEGIN
+  IF to_regclass('public.inventario_consignacion_prestador') IS NOT NULL THEN
+    ALTER TABLE inventario_consignacion_prestador ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
+  ELSE
+    RAISE NOTICE '123: inventario_consignacion_prestador no existe en este entorno: se omite el ADD COLUMN';
+  END IF;
+END $$;
 
 -- 4. Autoverificación
 DO $$

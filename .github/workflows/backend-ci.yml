@@ -67,13 +67,19 @@ jobs:
 
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
-          DATABASE_URL_ADMIN: postgres://postgres:postgres@localhost:5432/glowtest
+          DATABASE_URL_ADMIN: postgres://postgres:***@localhost:5432/glowtest
           RLS_ROLE_PASSWORD: test_rls_password
+          # 123_checkout_tenant_wompi.sql toca tablas del esquema GlowShop
+          # (pedidos_tienda, etc.) que no existen en el conjunto nucleo de CI.
+          # La migracion ahora guarda cada ALTER con to_regclass y emite NOTICE
+          # si la tabla falta; aun asi la omitimos aqui para que el pipeline no
+          # dependa de NOTICE silenciosos.
+          MIGRAR_OMITIR: '123_checkout_tenant_wompi.sql'
         run: node scripts/prepareRlsDatabase.js
 
       - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
         env:
-          TEST_DATABASE_URL: postgres://app_owner:test_rls_password@localhost:5432/glowtest
+          TEST_DATABASE_URL: postgres://app_owner:***@localhost:5432/glowtest
         run: node scripts/verifyTenantIsolation.js
 
       - name: Contrato app <-> API
@@ -84,7 +90,7 @@ jobs:
 
       - name: Tests de contrato que requieren BD (audience-binding, routersMontados, critical-endpoints)
         env:
-          DATABASE_URL: postgres://app_rls_user:test_rls_password@localhost:5432/glowtest
+          DATABASE_URL: postgres://app_rls_user:***@localhost:5432/glowtest
           JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
         run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js --forceExit --verbose
 
