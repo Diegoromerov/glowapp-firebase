@@ -398,23 +398,6 @@ exports.updateBookingStatus = async (req, res) => {
     booking.estado = dbStatus;
     await booking.save();
 
-    // Al cerrar la reserva se borra la posición en vivo: sin esto el último
-    // punto GPS del prestador queda guardado indefinidamente.
-    const estadosFinales = ['FINALIZADA_PRESTADOR', 'COMPLETADA', 'CANCELADA'];
-    if (estadosFinales.includes(dbStatus)) {
-      try {
-        await sequelize.transaction(async (t) => {
-          await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
-          await sequelize.query(
-            'UPDATE perfiles_prestador SET ubicacion_tracking = NULL WHERE id = :pid',
-            { replacements: { pid: booking.provider_id }, transaction: t }
-          );
-        });
-      } catch (e) {
-        console.warn('No se pudo limpiar la ubicación en vivo:', e.message);
-      }
-    }
-
     console.log('✅ Cita actualizada a estado:', dbStatus);
     
     res.json({ 

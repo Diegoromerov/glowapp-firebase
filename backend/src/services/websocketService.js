@@ -117,18 +117,10 @@ const initWebSocketServer = (server) => {
           }
           console.log(`📍 Recibida coordenada GPS de prestador para booking_${data.bookingId}: ${data.latitude}, ${data.longitude}`);
           
-          // Actualizar base de datos de manera hiper-local.
-          // El id del prestador sale del TOKEN, nunca del payload: antes cualquiera podía
-          // mover la ubicación de cualquier prestador mandando su providerId (A360-2026-09-22/C-04).
-          // `perfiles_prestador.id` es el id del usuario (init.sql), así que authenticatedUserId es el id correcto.
-          pool.query(
-            // Escribe en la columna de seguimiento: `ubicacion` es la posición
-            // pública del negocio y no debe moverse con el GPS de una reserva.
-            `UPDATE perfiles_prestador 
-             SET ubicacion_tracking = ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography 
-             WHERE id = $3`,
-            [data.latitude, data.longitude, ws.authenticatedUserId]
-          ).catch(e => console.error('Error actualizando ubicación prestador:', e.message));
+          // La posición NO se escribe en la base: `perfiles_prestador.ubicacion`
+          // es la ubicación pública del negocio y no debe moverse con el GPS de
+          // una reserva. El cliente recibe la posición por la sala (broadcast
+          // de más abajo), que es lo único que el seguimiento necesita.
 
           // Retransmitir a todos los clientes que estén en el mismo bookingId
           const payload = JSON.stringify({
