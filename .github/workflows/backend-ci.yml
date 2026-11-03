@@ -65,6 +65,15 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
+      - name: Instalar pgvector en el contenedor PostGIS
+        # 029_refactor_biometric_architecture_premium.sql necesita CREATE EXTENSION vector
+        run: |
+          CONTAINER=$(docker ps --filter "label=ebc48f" --format "{{.Names}}" | head -1)
+          echo "Contenedor PostGIS: $CONTAINER"
+          docker exec -u root "$CONTAINER" apt-get update -qq && \
+            docker exec -u root "$CONTAINER" apt-get install -y -qq postgresql-16-pgvector >/dev/null && \
+            echo "pgvector instalado OK"
+
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           DATABASE_URL_ADMIN: postgres://postgres:postgres@localhost:5432/glowtest
