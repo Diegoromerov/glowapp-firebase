@@ -111,6 +111,21 @@ jobs:
           JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
         run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js --forceExit --verbose
 
+      - name: La API sirve catalogo con el rol restringido (E2E)
+        env:
+          DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
+          JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
+          NODE_ENV: test
+          PORT: 8081
+        run: |
+          node index.js & echo $! > /tmp/api.pid
+          for i in $(seq 1 30); do curl -sf http://localhost:8081/health && break; sleep 1; done
+          # catálogo público: debe devolver datos, no una lista vacía
+          curl -s -H 'X-App-Audience: client' http://localhost:8081/api/providers | tee /tmp/prov.json
+          python3 -c "import json,sys; d=json.load(open('/tmp/prov.json')); assert d.get('count',0) > 0, 'catalogo vacio: RLS sin contexto'"
+          kill $(cat /tmp/api.pid)
+
   verificacion-entorno:
     name: Verificacion X-App-Audience
     needs: backend
