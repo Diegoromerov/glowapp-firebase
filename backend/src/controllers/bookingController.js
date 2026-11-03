@@ -437,7 +437,18 @@ exports.getClientBookings = async (req, res) => {
       ORDER BY b.scheduled_at DESC;
     `;
     
-    const result = await pool.query(query, [clientId]);
+    // El cliente y el prestador están en inquilinos distintos: con el contexto
+    // del cliente, RLS oculta services/perfiles_prestador/usuarios del prestador
+    // y los INNER JOIN dejan la lista vacía aunque la reserva exista. Se lee con
+    // rol de sistema; el filtro por client_id sigue acotando a sus reservas.
+    const result = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      return sequelize.query(query, {
+        bind: [clientId],
+        type: sequelize.QueryTypes.SELECT,
+        transaction: t,
+      });
+    }).then((rows) => ({ rows }));
     
     const formattedBookings = result.rows.map(row => ({
       id: row.id,
