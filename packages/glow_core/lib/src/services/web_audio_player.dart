@@ -1,4 +1,6 @@
 // frontend/lib/services/web_audio_player.dart
+import 'package:flutter/foundation.dart';
+
 import 'dart:html' as html;
 
 void playGlowAppAlert() {
@@ -6,8 +8,8 @@ void playGlowAppAlert() {
     // En Flutter Web, los assets se exponen bajo la ruta /assets/
     final audio = html.AudioElement('glowapp.mp3');
     audio.play();
-    print("🔊 [Audio Alert] Reproduciendo GlowApp en la Web");
+    debugPrint("🔊 [Audio Alert] Reproduciendo GlowApp en la Web");
   } catch (e) {
-    print("❌ Error al reproducir audio en web: $e");
+    debugPrint("❌ Error al reproducir audio en web: $e");
   }
 }

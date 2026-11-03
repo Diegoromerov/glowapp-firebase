@@ -27,7 +27,7 @@ class AnalyticsService {
     sessionId = _generateUUIDv4();
     _startTimer();
     if (kDebugMode) {
-      print('📊 AnalyticsService: Inicializado con Session ID $sessionId');
+      debugPrint('📊 AnalyticsService: Inicializado con Session ID $sessionId');
     }
   }
 
@@ -60,7 +60,7 @@ class AnalyticsService {
         }
       } catch (e) {
         if (kDebugMode) {
-          print('⚠️ AnalyticsService: Error obteniendo preferencia telemetría, default true: $e');
+          debugPrint('⚠️ AnalyticsService: Error obteniendo preferencia telemetría, default true: $e');
         }
         _telemetryEnabledCache = true;
       }
@@ -83,7 +83,7 @@ class AnalyticsService {
     _getTelemetryEnabled().then((enabled) {
       if (!enabled) {
         if (kDebugMode) {
-          print('📊 AnalyticsService: Telemetría deshabilitada por preferencia de usuario, evento [$eventType] descartado');
+          debugPrint('📊 AnalyticsService: Telemetría deshabilitada por preferencia de usuario, evento [$eventType] descartado');
         }
         return;
       }
@@ -100,7 +100,7 @@ class AnalyticsService {
       synchronized(() {
         _queue.add(event);
         if (kDebugMode) {
-          print(
+          debugPrint(
               '📊 AnalyticsService: Evento encolado [$eventType] en screen [$screenName]. Cola: ${_queue.length}');
         }
       });
@@ -199,7 +199,7 @@ class AnalyticsService {
       final uri = Uri.parse('${ApiService.baseUrl}/api/analytics/events');
 
       if (kDebugMode) {
-        print(
+        debugPrint(
             '📊 AnalyticsService: Enviando ${eventsToSend.length} eventos al servidor...');
       }
 
@@ -213,19 +213,19 @@ class AnalyticsService {
 
       if (response.statusCode == 201 || response.statusCode == 200) {
         if (kDebugMode) {
-          print(
+          debugPrint(
               '📊 AnalyticsService: Lote de ${eventsToSend.length} eventos enviado con éxito');
         }
       } else {
         if (kDebugMode) {
-          print(
+          debugPrint(
               '❌ AnalyticsService: Fallo al enviar lote. Status: ${response.statusCode}. Reencolando...');
         }
         _requeueEvents(eventsToSend);
       }
     } catch (e) {
       if (kDebugMode) {
-        print(
+        debugPrint(
             '❌ AnalyticsService: Error de conexión enviando analíticas: $e. Reencolando...');
       }
       _requeueEvents(eventsToSend);

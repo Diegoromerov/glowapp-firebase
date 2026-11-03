@@ -36,7 +36,7 @@ class SuperAdminApiService {
       final response = await ApiService.get('$_basePath/dashboard');
       return SuperAdminDashboard.fromJson((response as Map<String, dynamic>?) ?? const {});
     } catch (e) {
-      if (kDebugMode) print('❌ SuperAdminApiService.getDashboard: $e');
+      if (kDebugMode) debugPrint('❌ SuperAdminApiService.getDashboard: $e');
       _mapForbidden(e);
     }
   }
@@ -61,7 +61,7 @@ class SuperAdminApiService {
       final response = await ApiService.get('$_basePath/tenants?$query');
       return TenantPage.fromJson((response as Map<String, dynamic>?) ?? const {});
     } catch (e) {
-      if (kDebugMode) print('❌ SuperAdminApiService.getTenants: $e');
+      if (kDebugMode) debugPrint('❌ SuperAdminApiService.getTenants: $e');
       _mapForbidden(e);
     }
   }
@@ -76,7 +76,7 @@ class SuperAdminApiService {
       final data = (response as Map<String, dynamic>?) ?? const {};
       return data['message']?.toString() ?? 'Plan actualizado';
     } catch (e) {
-      if (kDebugMode) print('❌ SuperAdminApiService.changePlan: $e');
+      if (kDebugMode) debugPrint('❌ SuperAdminApiService.changePlan: $e');
       _mapForbidden(e);
     }
   }
@@ -94,7 +94,7 @@ class SuperAdminApiService {
       final data = (response as Map<String, dynamic>?) ?? const {};
       return data['message']?.toString() ?? 'Tenant actualizado';
     } catch (e) {
-      if (kDebugMode) print('❌ SuperAdminApiService.suspendTenant: $e');
+      if (kDebugMode) debugPrint('❌ SuperAdminApiService.suspendTenant: $e');
       _mapForbidden(e);
     }
   }
@@ -105,7 +105,7 @@ class SuperAdminApiService {
       final response = await ApiService.get('$_basePath/revenue');
       return RevenueSnapshot.fromJson((response as Map<String, dynamic>?) ?? const {});
     } catch (e) {
-      if (kDebugMode) print('❌ SuperAdminApiService.getRevenue: $e');
+      if (kDebugMode) debugPrint('❌ SuperAdminApiService.getRevenue: $e');
       _mapForbidden(e);
     }
   }
@@ -116,7 +116,7 @@ class SuperAdminApiService {
       final response = await ApiService.get('$_basePath/usage');
       return UsageSnapshot.fromJson((response as Map<String, dynamic>?) ?? const {});
     } catch (e) {
-      if (kDebugMode) print('❌ SuperAdminApiService.getUsage: $e');
+      if (kDebugMode) debugPrint('❌ SuperAdminApiService.getUsage: $e');
       _mapForbidden(e);
     }
   }

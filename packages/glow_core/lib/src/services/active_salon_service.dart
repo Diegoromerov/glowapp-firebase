@@ -29,7 +29,7 @@ class ActiveSalonService extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       if (kDebugMode) {
-        print('⚠️ Error al inicializar ActiveSalonService: $e');
+        debugPrint('⚠️ Error al inicializar ActiveSalonService: $e');
       }
       _cachedSalonId = null;
       _initialized = true;
@@ -77,7 +77,7 @@ class ActiveSalonService extends ChangeNotifier {
       }
     } catch (e) {
       if (kDebugMode) {
-        print('⚠️ Error al guardar active_salon_id en prefs: $e');
+        debugPrint('⚠️ Error al guardar active_salon_id en prefs: $e');
       }
     }
   }
@@ -92,7 +92,7 @@ class ActiveSalonService extends ChangeNotifier {
       await prefs.remove(_prefKey);
     } catch (e) {
       if (kDebugMode) {
-        print('⚠️ Error al limpiar active_salon_id en prefs: $e');
+        debugPrint('⚠️ Error al limpiar active_salon_id en prefs: $e');
       }
     }
   }

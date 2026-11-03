@@ -264,7 +264,7 @@ class BusinessProfileNotifier extends StateNotifier<BusinessProfileState> {
       }
     } catch (e, st) {
       state = state.failed(e);
-      if (kDebugMode) print('BusinessProfileNotifier.load error: $e\n$st');
+      if (kDebugMode) debugPrint('BusinessProfileNotifier.load error: $e\n$st');
     }
   }
 
@@ -284,7 +284,7 @@ class BusinessProfileNotifier extends StateNotifier<BusinessProfileState> {
       return profile;
     } catch (e, st) {
       state = state.failed(e);
-      if (kDebugMode) print('BusinessProfileNotifier.create error: $e\n$st');
+      if (kDebugMode) debugPrint('BusinessProfileNotifier.create error: $e\n$st');
       rethrow;
     }
   }
@@ -322,7 +322,7 @@ class TeamNotifier extends StateNotifier<TeamState> {
       );
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('TeamNotifier.load error: $e\n$st');
+      if (kDebugMode) debugPrint('TeamNotifier.load error: $e\n$st');
     }
   }
 
@@ -333,7 +333,7 @@ class TeamNotifier extends StateNotifier<TeamState> {
       await load(businessProfileId);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('TeamNotifier.invite error: $e\n$st');
+      if (kDebugMode) debugPrint('TeamNotifier.invite error: $e\n$st');
       rethrow;
     }
   }
@@ -345,7 +345,7 @@ class TeamNotifier extends StateNotifier<TeamState> {
       await load(businessProfileId);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('TeamNotifier.updateRole error: $e\n$st');
+      if (kDebugMode) debugPrint('TeamNotifier.updateRole error: $e\n$st');
       rethrow;
     }
   }
@@ -360,7 +360,7 @@ class TeamNotifier extends StateNotifier<TeamState> {
       );
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('TeamNotifier.remove error: $e\n$st');
+      if (kDebugMode) debugPrint('TeamNotifier.remove error: $e\n$st');
       rethrow;
     }
   }
@@ -372,7 +372,7 @@ class TeamNotifier extends StateNotifier<TeamState> {
       await load(businessProfileId);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('TeamNotifier.resendInvitation error: $e\n$st');
+      if (kDebugMode) debugPrint('TeamNotifier.resendInvitation error: $e\n$st');
       rethrow;
     }
   }
@@ -400,14 +400,14 @@ class BillingNotifier extends StateNotifier<BillingState> {
       try {
         invoices = await SaasApiService.getInvoices(businessProfileId);
       } catch (e) {
-        if (kDebugMode) print('⚠️ BillingNotifier.getInvoices (usa recientes): $e');
+        if (kDebugMode) debugPrint('⚠️ BillingNotifier.getInvoices (usa recientes): $e');
       }
 
       List<Map<String, dynamic>> methods = const [];
       try {
         methods = await SaasApiService.getPaymentMethods(businessProfileId);
       } catch (e) {
-        if (kDebugMode) print('⚠️ BillingNotifier.getPaymentMethods: $e');
+        if (kDebugMode) debugPrint('⚠️ BillingNotifier.getPaymentMethods: $e');
       }
 
       final rawNext = summary['nextPayment'];
@@ -422,7 +422,7 @@ class BillingNotifier extends StateNotifier<BillingState> {
       );
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('BillingNotifier.load error: $e\n$st');
+      if (kDebugMode) debugPrint('BillingNotifier.load error: $e\n$st');
     }
   }
 
@@ -437,7 +437,7 @@ class BillingNotifier extends StateNotifier<BillingState> {
       return session;
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('BillingNotifier.createCheckout error: $e\n$st');
+      if (kDebugMode) debugPrint('BillingNotifier.createCheckout error: $e\n$st');
       rethrow;
     }
   }
@@ -450,7 +450,7 @@ class BillingNotifier extends StateNotifier<BillingState> {
       await load(businessProfileId);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('BillingNotifier.changePlan error: $e\n$st');
+      if (kDebugMode) debugPrint('BillingNotifier.changePlan error: $e\n$st');
       rethrow;
     }
   }
@@ -467,7 +467,7 @@ class BillingNotifier extends StateNotifier<BillingState> {
       return sub;
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('BillingNotifier.cancelSubscription error: $e\n$st');
+      if (kDebugMode) debugPrint('BillingNotifier.cancelSubscription error: $e\n$st');
       rethrow;
     }
   }
@@ -483,7 +483,7 @@ class UsageNotifier extends StateNotifier<UsageState> {
       state = state.copyWith(summary: summary, isLoading: false, error: null);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('UsageNotifier.load error: $e\n$st');
+      if (kDebugMode) debugPrint('UsageNotifier.load error: $e\n$st');
     }
   }
 
@@ -515,7 +515,7 @@ class ApiKeysNotifier extends StateNotifier<ApiKeysState> {
       state = state.copyWith(keys: keys, isLoading: false, error: null);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('ApiKeysNotifier.load error: $e\n$st');
+      if (kDebugMode) debugPrint('ApiKeysNotifier.load error: $e\n$st');
     }
   }
 
@@ -527,7 +527,7 @@ class ApiKeysNotifier extends StateNotifier<ApiKeysState> {
       return key;
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('ApiKeysNotifier.create error: $e\n$st');
+      if (kDebugMode) debugPrint('ApiKeysNotifier.create error: $e\n$st');
       rethrow;
     }
   }
@@ -540,7 +540,7 @@ class ApiKeysNotifier extends StateNotifier<ApiKeysState> {
       state = state.copyWith(keys: keys, isLoading: false);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('ApiKeysNotifier.revoke error: $e\n$st');
+      if (kDebugMode) debugPrint('ApiKeysNotifier.revoke error: $e\n$st');
       rethrow;
     }
   }
@@ -556,7 +556,7 @@ class PlansNotifier extends StateNotifier<PlansState> {
       state = state.copyWith(plans: plans, isLoading: false, error: null);
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
-      if (kDebugMode) print('PlansNotifier.load error: $e\n$st');
+      if (kDebugMode) debugPrint('PlansNotifier.load error: $e\n$st');
     }
   }
 }

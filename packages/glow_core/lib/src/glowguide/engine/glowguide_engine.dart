@@ -2,6 +2,8 @@
 // Motor de orquestación para GlowGuide
 // I1: Foundation Repair - usa contratos para navegación, audio, persistencia.
 
+import 'package:flutter/foundation.dart';
+
 import 'dart:async';
 import '../state/glowguide_state.dart';
 import '../model/glowguide_step.dart';
@@ -328,7 +330,7 @@ class GlowGuideEngine {
       }
     } catch (e) {
       // FailurePolicy maneja el error; continuar flujo
-      print('GlowGuide action execution failed: $e');
+      debugPrint('GlowGuide action execution failed: $e');
     }
 
     if (!_disposed && _state.status == GlowGuideStatus.executingAction) {

@@ -2,6 +2,8 @@
 // Implementación de PersistenceAdapter usando SharedPreferences
 // El Engine delega persistencia a esta implementación.
 
+import 'package:flutter/foundation.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import '../contracts/persistence_adapter.dart';
 
@@ -54,7 +56,7 @@ class PersistenceEngine implements PersistenceAdapter {
     } catch (e) {
       // Non-blocking: log y reintentar en próximo inicio/migración
       // No lanzar excepción para no bloquear el flujo
-      print('GlowGuide persistence write failed: $e');
+      debugPrint('GlowGuide persistence write failed: $e');
     }
   }
 

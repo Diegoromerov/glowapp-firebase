@@ -104,7 +104,7 @@ class ApiService {
                   data['message']?.toString().contains('funcionando') == true) {
                 _cachedBaseUrl = url;
                 if (kDebugMode) {
-                  print('🔌 ApiService: BaseUrl detectado y fijado en $_cachedBaseUrl');
+                  debugPrint('🔌 ApiService: BaseUrl detectado y fijado en $_cachedBaseUrl');
                 }
                 return;
               }
@@ -119,7 +119,7 @@ class ApiService {
     // Fallback a staging si los hosts locales no responden en dispositivo físico
     _cachedBaseUrl = stagingUrl;
     if (kDebugMode) {
-      print('🔌 ApiService: Fallback automático a staging en $_cachedBaseUrl');
+      debugPrint('🔌 ApiService: Fallback automático a staging en $_cachedBaseUrl');
     }
   }
 
@@ -190,11 +190,11 @@ class ApiService {
       headers['Authorization'] = 'Bearer $token';
       if (kDebugMode) {
         final preview = token.length > 30 ? token.substring(0, 30) : token;
-        print('🔐 Token enviado: $preview...');
+        debugPrint('🔐 Token enviado: $preview...');
       }
     } else {
       if (kDebugMode) {
-        print('⚠️  No hay token disponible para Authorization');
+        debugPrint('⚠️  No hay token disponible para Authorization');
       }
     }
 
@@ -205,7 +205,7 @@ class ApiService {
       }
     } catch (e) {
       if (kDebugMode) {
-        print('⚠️ Error al leer activeSalonId en _getAuthHeaders: $e');
+        debugPrint('⚠️ Error al leer activeSalonId en _getAuthHeaders: $e');
       }
     }
 
@@ -317,7 +317,7 @@ class ApiService {
       if (attempt >= retries) break;
       final wait = baseDelay * (1 << attempt); // 1x, 2x, 4x…
       if (kDebugMode) {
-        print('🔁 ApiService: reintento ${attempt + 1}/$retries en ${wait.inMilliseconds}ms');
+        debugPrint('🔁 ApiService: reintento ${attempt + 1}/$retries en ${wait.inMilliseconds}ms');
       }
       await sleep(wait);
       attempt++;
@@ -352,13 +352,13 @@ class ApiService {
       final headers = await _getAuthHeaders();
       final uri = Uri.parse('$_baseUrl$path');
       if (kDebugMode) {
-        print('🌐 ApiService.get: Requesting URI: $uri');
+        debugPrint('🌐 ApiService.get: Requesting URI: $uri');
       }
       final response =
           await http.get(uri, headers: headers).timeout(requestTimeout);
       if (kDebugMode) {
-        print('🌐 ApiService.get: Response Code: ${response.statusCode}');
-        print('🌐 ApiService.get: Response Body Preview: ${response.body.length > 200 ? response.body.substring(0, 200) : response.body}');
+        debugPrint('🌐 ApiService.get: Response Code: ${response.statusCode}');
+        debugPrint('🌐 ApiService.get: Response Body Preview: ${response.body.length > 200 ? response.body.substring(0, 200) : response.body}');
       }
       return _decodeResponse(response);
     });
@@ -411,7 +411,7 @@ class ApiService {
       final headers = await _getAuthHeaders();
       final uri = Uri.parse('$_baseUrl$path');
       if (kDebugMode) {
-        print('🌐 ApiService.delete: Requesting URI: $uri');
+        debugPrint('🌐 ApiService.delete: Requesting URI: $uri');
       }
       final response = await http
           .delete(uri, headers: headers)

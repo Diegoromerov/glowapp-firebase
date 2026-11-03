@@ -38,7 +38,7 @@ class SaasApiService {
       if (profile is! Map<String, dynamic>) return null;
       return SaasBusinessProfile.fromJson(profile);
     } catch (e) {
-      if (kDebugMode) print('⚠️ SaasApiService.getMyBusinessProfile: $e');
+      if (kDebugMode) debugPrint('⚠️ SaasApiService.getMyBusinessProfile: $e');
       return null;
     }
   }
@@ -57,7 +57,7 @@ class SaasApiService {
         ),
       );
     } catch (e) {
-      if (kDebugMode) print('⚠️ SaasApiService.getMyTenant: $e');
+      if (kDebugMode) debugPrint('⚠️ SaasApiService.getMyTenant: $e');
       return null;
     }
   }
@@ -222,7 +222,7 @@ class SaasApiService {
       if (sub is! Map<String, dynamic>) return null;
       return Subscription.fromJson(sub);
     } catch (e) {
-      if (kDebugMode) print('⚠️ SaasApiService.getSubscription: $e');
+      if (kDebugMode) debugPrint('⚠️ SaasApiService.getSubscription: $e');
       return null;
     }
   }
@@ -271,7 +271,7 @@ class SaasApiService {
       );
       return (response as Map<String, dynamic>)['portalUrl'] as String?;
     } catch (e) {
-      if (kDebugMode) print('⚠️ SaasApiService.createPortalSession: $e');
+      if (kDebugMode) debugPrint('⚠️ SaasApiService.createPortalSession: $e');
       return null;
     }
   }
