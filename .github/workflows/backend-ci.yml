@@ -65,6 +65,17 @@ jobs:
           done
           exit $fail
 
+      - name: El entrypoint reescribe DATABASE_URL en ambos esquemas
+        run: |
+          for prefijo in "postgres://" "postgresql://"; do
+            entrada="${prefijo}postgres:secreto@host:5432/db"
+            salida=$(printf '%s' "$entrada" | sed -E "s#^postgres(ql)?://[^@]+@#postgresql://app_rls_user:PASS@#")
+            case "$salida" in
+              *"app_rls_user:PASS@"*) echo "OK con ${prefijo}";;
+              *) echo "FALLA con ${prefijo}: $salida"; exit 1;;
+            esac
+          done
+
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
