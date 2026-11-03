@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:web_socket_channel/web_socket_channel.dart' as web_socket_channel;
 import 'package:glow_provider/screens/chat/chat_screen.dart';
@@ -40,7 +41,78 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
   web_socket_channel.WebSocketChannel? _wsChannel;
   bool _usingRealGPS = false;
 
+  // Emisión de ubicación del prestador hacia el cliente (rol provider).
+  StreamSubscription<Position>? _geoSub;
+  bool _compartiendo = false;
+
   late AnimationController _pulseController;
+
+  /// Arranca o detiene el envío de la posición real del prestador.
+  ///
+  /// El backend espera `location_update` desde una conexión ya registrada con
+  /// token y unida a la sala del booking; actualiza `perfiles_prestador.ubicacion`
+  /// y retransmite `location_received` al cliente que está en la misma sala.
+  Future<void> _alternarCompartir() async {
+    if (_compartiendo) {
+      await _geoSub?.cancel();
+      _geoSub = null;
+      if (mounted) setState(() => _compartiendo = false);
+      return;
+    }
+
+    final bookingId = widget.booking['id']?.toString();
+    if (bookingId == null || bookingId.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('La reserva no tiene identificador')),
+      );
+      return;
+    }
+
+    try {
+      final permiso = await Geolocator.checkPermission();
+      if (permiso == LocationPermission.denied) {
+        final pedido = await Geolocator.requestPermission();
+        if (pedido == LocationPermission.denied ||
+            pedido == LocationPermission.deniedForever) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Sin permiso de ubicación no se puede compartir'),
+              ),
+            );
+          }
+          return;
+        }
+      }
+
+      final settings = const LocationSettings(
+        accuracy: LocationAccuracy.high,
+        distanceFilter: 10, // metros entre envíos
+      );
+
+      _geoSub = Geolocator.getPositionStream(locationSettings: settings)
+          .listen((pos) {
+        _wsChannel?.sink.add(jsonEncode({
+          'type': 'location_update',
+          'bookingId': bookingId,
+          'latitude': pos.latitude,
+          'longitude': pos.longitude,
+        }));
+        if (mounted) {
+          setState(() {
+            _providerLoc = LatLng(pos.latitude, pos.longitude);
+            _usingRealGPS = true;
+          });
+        }
+      }, onError: (e) {
+        debugPrint('GPS provider: ${e.toString()}');
+      });
+
+      if (mounted) setState(() => _compartiendo = true);
+    } catch (e) {
+      debugPrint('No se pudo iniciar el GPS: $e');
+    }
+  }
 
   @override
   void initState() {
@@ -61,6 +133,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
   @override
   void dispose() {
     _pulseController.dispose();
+    _geoSub?.cancel();
     _moveTimer?.cancel();
     _wsChannel?.sink.close();
     super.dispose();
@@ -87,7 +160,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
         _wsChannel!.sink.add(jsonEncode({
           'type': 'join_booking_room',
           'bookingId': bookingId,
-          'role': 'client'
+          'role': 'provider'
         }));
       }
 
@@ -204,6 +277,14 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _alternarCompartir,
+        backgroundColor:
+            _compartiendo ? const Color(0xFF881337) : const Color(0xFFC5A052),
+        foregroundColor: Colors.white,
+        icon: Icon(_compartiendo ? Icons.stop_circle_outlined : Icons.share_location),
+        label: Text(_compartiendo ? 'Detener envío' : 'Compartir ubicación'),
       ),
       body: Stack(
         children: [

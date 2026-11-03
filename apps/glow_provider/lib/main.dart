@@ -266,7 +266,7 @@ class GlowProviderApp extends ConsumerWidget {
             final args = settings.arguments as Map<String, dynamic>?;
             return MaterialPageRoute(
               builder: (_) => BookingTrackingScreen(
-                bookingId: args?['bookingId'] ?? '',
+                booking: args ?? const {},
               ),
             );
           case '/provider/detail':
@@ -586,17 +586,6 @@ class ProviderDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _StubScreen(title: 'Detalle proveedor: $providerId');
-  }
-}
-
-// Stub for BookingTrackingScreen
-class BookingTrackingScreen extends StatelessWidget {
-  final String bookingId;
-  const BookingTrackingScreen({super.key, required this.bookingId});
-
-  @override
-  Widget build(BuildContext context) {
-    return _StubScreen(title: 'Tracking reserva: $bookingId');
   }
 }
 

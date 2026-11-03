@@ -1,10 +1,13 @@
 // frontend/lib/screens/provider_route_screen.dart
 import 'dart:async';
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:web_socket_channel/web_socket_channel.dart' as web_socket_channel;
 import 'package:glow_provider/screens/chat/chat_screen.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/shared/theme.dart' hide AppTheme;
@@ -44,6 +47,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
     // Inicia un poco al noreste del cliente
     _providerLoc = const LatLng(4.6795, -74.1310);
     _startRouteSimulation();
+    _conectarSala();
 
     _pulseController = AnimationController(
       vsync: this,
@@ -51,9 +55,102 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
     )..repeat();
   }
 
+
+  // ── Envío de ubicación real al cliente (esta pantalla es del prestador) ──
+  //
+  // El backend exige estar registrado con token y unido a la sala del booking;
+  // con eso, cada `location_update` actualiza perfiles_prestador.ubicacion y se
+  // retransmite como `location_received` al cliente en la misma sala.
+  web_socket_channel.WebSocketChannel? _wsChannel;
+  StreamSubscription<Position>? _geoSub;
+  bool _compartiendo = false;
+
+  Future<void> _conectarSala() async {
+    try {
+      final base = ApiService.baseUrl.replaceFirst('http', 'ws');
+      _wsChannel =
+          web_socket_channel.WebSocketChannel.connect(Uri.parse('$base/chat'));
+      final token = await AuthService.getToken();
+      if (token == null || token.isEmpty) return;
+      _wsChannel!.sink.add(jsonEncode({'type': 'register', 'token': token}));
+      final bookingId = widget.booking['id']?.toString();
+      if (bookingId != null && bookingId.isNotEmpty) {
+        _wsChannel!.sink.add(jsonEncode({
+          'type': 'join_booking_room',
+          'bookingId': bookingId,
+          'role': 'provider',
+        }));
+      }
+    } catch (e) {
+      debugPrint('WS provider: $e');
+    }
+  }
+
+  /// Arranca o detiene el envío de la posición real del prestador.
+  Future<void> _alternarCompartir() async {
+    if (_compartiendo) {
+      await _geoSub?.cancel();
+      _geoSub = null;
+      if (mounted) setState(() => _compartiendo = false);
+      return;
+    }
+
+    final bookingId = widget.booking['id']?.toString();
+    if (bookingId == null || bookingId.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('La reserva no tiene identificador')),
+      );
+      return;
+    }
+
+    try {
+      final permiso = await Geolocator.checkPermission();
+      if (permiso == LocationPermission.denied) {
+        final pedido = await Geolocator.requestPermission();
+        if (pedido == LocationPermission.denied ||
+            pedido == LocationPermission.deniedForever) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Sin permiso de ubicación no se puede compartir'),
+              ),
+            );
+          }
+          return;
+        }
+      }
+
+      const settings = LocationSettings(
+        accuracy: LocationAccuracy.high,
+        distanceFilter: 10,
+      );
+
+      _geoSub =
+          Geolocator.getPositionStream(locationSettings: settings).listen((pos) {
+        _wsChannel?.sink.add(jsonEncode({
+          'type': 'location_update',
+          'bookingId': bookingId,
+          'latitude': pos.latitude,
+          'longitude': pos.longitude,
+        }));
+        if (mounted) {
+          setState(() {
+            _providerLoc = LatLng(pos.latitude, pos.longitude);
+          });
+        }
+      }, onError: (e) => debugPrint('GPS provider: $e'));
+
+      if (mounted) setState(() => _compartiendo = true);
+    } catch (e) {
+      debugPrint('No se pudo iniciar el GPS: $e');
+    }
+  }
+
   @override
   void dispose() {
     _moveTimer?.cancel();
+    _geoSub?.cancel();
+    _wsChannel?.sink.close();
     _pulseController.dispose();
     super.dispose();
   }
@@ -175,6 +272,15 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _alternarCompartir,
+        backgroundColor:
+            _compartiendo ? const Color(0xFF881337) : const Color(0xFFC5A052),
+        foregroundColor: Colors.white,
+        icon:
+            Icon(_compartiendo ? Icons.stop_circle_outlined : Icons.share_location),
+        label: Text(_compartiendo ? 'Detener envío' : 'Compartir ubicación'),
       ),
       body: Stack(
         children: [
