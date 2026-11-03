@@ -54,13 +54,15 @@ const MIGRACIONES = [
   // el ciclo de pago de Wompi no puede empezar.
   '123_checkout_tenant_wompi.sql',
   // 120 DEBE IR AL FINAL: fuerza FORCE ROW LEVEL SECURITY en TODAS las tablas
-  // con tenant_id. Si corre antes de 121/122/123, las tablas que estas crean
-  // (listas_precios, precios_producto, precios_historial, pedidos_tienda, etc.)
-  // quedarían sin FORCE ni políticas. En producción el entrypoint corre en cada
-  // arranque, así que en el SIGUIENTE arranque 120 las cubriría; en CI solo hay
-  // una pasada, así que 120 va al final para cubrir todo en una sola ejecución.
-  '120_force_rls_all_tenant_tables.sql',
-];
+    // con tenant_id. Si corre antes de 121/122/123, las tablas que estas crean
+    // (listas_precios, precios_producto, precios_historial, pedidos_tienda, etc.)
+    // quedarían sin FORCE ni políticas. En producción el entrypoint corre en cada
+    // arranque, así que en el SIGUIENTE arranque 120 las cubriría; en CI solo hay
+    // una pasada, así que 120 va al final para cubrir todo en una sola ejecución.
+    '120_force_rls_all_tenant_tables.sql',
+    // Login: SECURITY DEFINER lookup que bypassa RLS para autenticar sin contexto
+    '124_auth_lookup_security_definer.sql',
+  ];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto
 // núcleo. En producción la variable no existe y se aplica TODO.

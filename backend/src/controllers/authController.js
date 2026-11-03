@@ -118,15 +118,15 @@ exports.login = async (req, res) => {
 
     const cleanEmail = email.trim().toLowerCase();
 
-    const result = await pool.query(
-      `SELECT id, nombre, email, password_hash, rol, onboarding_completo, is_active 
-       FROM usuarios 
-       WHERE LOWER(email) = $1`, 
-      [cleanEmail]
-    );
-    
-    let user;
-    if (result.rows.length === 0) {
+        // SECURITY DEFINER function bypasses RLS to find user by email before
+        // tenant context is established. Returns only columns needed for auth.
+        const result = await pool.query(
+          `SELECT * FROM app_usuario_para_login($1)`,
+          [cleanEmail]
+        );
+
+        let user;
+        if (result.rows.length === 0) {
       const isDemoDomain = cleanEmail.endsWith('@beautyapp.com') ||
                            cleanEmail.endsWith('@bellezaapp.com') ||
                            cleanEmail.endsWith('@correo.com') ||

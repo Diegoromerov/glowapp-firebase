@@ -258,6 +258,13 @@ app.get('/metrics', metricsHandler);
 // Debe ir ANTES de authMiddleware para que req.appAudience esté disponible
 app.use('/api', validateAppAudience({ required: true }));
 
+// 🔹 PUBLIC TENANT CONTEXT (Fase 6 fix)
+// Fija el tenant de plataforma (es_plataforma=true) en rutas públicas
+// que leen catálogo (providers, products, services) ANTES de autenticar.
+// Las rutas autenticadas fijan su propio contexto en tenantContext.js.
+const publicTenantContext = require('./src/middleware/publicTenantContext');
+app.use('/api', publicTenantContext);
+
 const { degradedLockMiddleware, clasificarSalud, asegurarEstadoComprobado } = require('./src/middleware/degradedLock');
 app.use('/api', degradedLockMiddleware);
 
