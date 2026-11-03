@@ -128,6 +128,9 @@ jobs:
           # devuelve vacio (fallaba con JSONDecodeError, enmascarando la causa).
           NODE_ENV: staging
           PORT: 8081
+          # En staging/produccion el arranque falla cerrado sin esta clave, a
+          # proposito: la biometria no se deriva del JWT_SECRET. Valor de test.
+          BIOMETRIC_ENCRYPTION_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
         run: |
           node index.js > /tmp/api.log 2>&1 &
           echo $! > /tmp/api.pid
