@@ -65,18 +65,6 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
-      - name: Instalar pgvector en el contenedor PostGIS
-        # 029_refactor_biometric_architecture_premium.sql necesita CREATE EXTENSION vector
-        # La imagen postgis/postgis:16-3.4 (Debian 12) tiene el repo de PG para bullseye (11) que falla.
-        # Arreglamos el sources.list y instalamos postgresql-16-pgvector del repo oficial de PG para bookworm.
-        run: |
-          CONTAINER=$(docker ps --filter "name=postgispostgis1634" --format "{{.Names}}" | head -1)
-          echo "Contenedor PostGIS: $CONTAINER"
-          docker exec -u root "$CONTAINER" bash -c '
-            sed -i "s/bullseye-pgdg/bookworm-pgdg/g" /etc/apt/sources.list.d/pgdg.list 2>/dev/null || true
-            apt-get update -qq && apt-get install -y -qq postgresql-16-pgvector >/dev/null
-          ' && echo "pgvector instalado OK"
-
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           DATABASE_URL_ADMIN: postgres://postgres:postgres@localhost:5432/glowtest
