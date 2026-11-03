@@ -244,6 +244,12 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
   try {
     await client.query('BEGIN');
 
+    // El prestador y el cliente viven en inquilinos distintos: con el contexto
+    // del prestador, RLS oculta la reserva y el JOIN con `usuarios` la descarta
+    // igual, asi que el servicio no se podia terminar NUNCA (404). La propiedad
+    // se comprueba en el WHERE, no en la politica.
+    await client.query('SET LOCAL ROLE app_system');
+
     const { rows } = await client.query(
       `SELECT b.*, u.email as cliente_email, u.nombre as cliente_nombre
        FROM bookings b
@@ -372,6 +378,12 @@ router.post('/bookings/:id/confirm-otp', authMiddleware, async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+
+    // El OTP lo inserta el prestador (su inquilino) y lo confirma el cliente
+    // (otro): con el contexto del cliente la fila es invisible y la confirmacion
+    // daba 404 teniendo el codigo correcto. Quien tiene derecho a confirmar se
+    // comprueba abajo comparando con el client_id de la reserva.
+    await client.query('SET LOCAL ROLE app_system');
 
     const otpResult = await client.query(
       `SELECT ov.*, b.valor_bruto, b.comision_plataforma, b.pago_neto_prestador,
