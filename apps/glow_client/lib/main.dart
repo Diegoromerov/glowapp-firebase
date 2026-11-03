@@ -18,6 +18,7 @@ import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/accept_invitation_screen.dart';
 import 'screens/auth/verification_pending_screen.dart';
 import 'screens/auth/role_selection_modal.dart';
+import 'screens/provider_detail_screen.dart';
 import 'screens/providers_screen.dart';
 import 'screens/client_bookings_screen.dart';
 import 'screens/chat_list_screen.dart';
@@ -261,10 +262,19 @@ class GlowClientApp extends ConsumerWidget {
                   return MaterialPageRoute(builder: (_) => const _StubScreen(title: 'Reservar cita'));
                 case '/booking-tracking':
                   final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(builder: (_) => _StubScreen(title: 'Tracking reserva: \${args?["bookingId"] ?? "N/A"}'));
+                  final bookingId = (args?['bookingId'] ?? 'N/A').toString();
+                  return MaterialPageRoute(
+                    builder: (_) => _StubScreen(title: 'Tracking reserva: $bookingId'),
+                  );
                 case '/provider-detail':
                   final args = settings.arguments as Map<String, dynamic>?;
-                  return MaterialPageRoute(builder: (_) => _StubScreen(title: 'Detalle proveedor: \${args?["providerId"] ?? "N/A"}'));
+                  return MaterialPageRoute(
+                    builder: (_) => ProviderDetailScreen(
+                      providerId: (args?['providerId'] ?? '').toString(),
+                      nombreInicial: args?['providerName']?.toString(),
+                      avatarInicial: args?['avatarUrl']?.toString(),
+                    ),
+                  );
                 default:
                   return null;
               }
