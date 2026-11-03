@@ -22,7 +22,8 @@ module.exports = function errorHandler(err, req, res, next) {
 
   console.error(
     `❌ [${requestId || '-'}] ${(req && req.method) || '-'} ${(req && req.originalUrl) || '-'}:`,
-    err && err.message
+    (err && err.message) || String(err),
+    err && err.constructor ? `(tipo: ${err.constructor.name})` : `(tipo: ${typeof err})`
   );
 
   // 5xx: nunca se filtra el mensaje interno (puede contener SQL o rutas).
