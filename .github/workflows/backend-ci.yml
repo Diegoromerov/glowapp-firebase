@@ -131,6 +131,9 @@ jobs:
           # En staging/produccion el arranque falla cerrado sin esta clave, a
           # proposito: la biometria no se deriva del JWT_SECRET. Valor de test.
           BIOMETRIC_ENCRYPTION_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+          # Sin esto, un job de pagos consulta una tabla ausente en la BD de CI y
+          # tumba el proceso antes de que la prueba mida el catalogo.
+          DISABLE_BACKGROUND_JOBS: 'true'
         run: |
           node index.js > /tmp/api.log 2>&1 &
           echo $! > /tmp/api.pid

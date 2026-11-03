@@ -397,6 +397,14 @@ async function conciliarPayouts() {
  * Para producción, usar node-cron o un worker separado.
  */
 function inicializarJobs() {
+  // Procesos de vida corta (CI, arneses E2E, migraciones) no deben programar
+  // timers: cualquier tabla ausente en un job tumba el proceso antes de que la
+  // prueba termine de medir lo que vino a medir.
+  if (process.env.DISABLE_BACKGROUND_JOBS === 'true') {
+    console.log('⚙️  Jobs de pagos desactivados (DISABLE_BACKGROUND_JOBS=true).');
+    return;
+  }
+
   console.log('⚙️  Iniciando jobs de pagos...');
 
   // Maduración de saldos: cada 15 minutos
