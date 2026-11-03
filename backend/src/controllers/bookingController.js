@@ -480,6 +480,77 @@ exports.getClientBookings = async (req, res) => {
   }
 };
 
+// 🔹 Enlace de pago (Web Checkout de Wompi) para una cita pendiente
+exports.createBookingPaymentLink = async (req, res) => {
+  try {
+    const bookingId = req.params.id;
+    const clientId = req.user.id;
+
+    const booking = await Booking.findOne({
+      where: { id: bookingId, client_id: clientId }
+    });
+
+    if (!booking) {
+      return res.status(404).json({ error: 'Cita no encontrada o no te pertenece' });
+    }
+    if (booking.estado === 'CONFIRMADA' || booking.payment_status === 'paid') {
+      return res.status(409).json({ error: 'Esta cita ya está pagada' });
+    }
+    if (booking.estado !== 'PENDIENTE_PAGO') {
+      return res.status(409).json({ error: `La cita está en estado ${booking.estado}` });
+    }
+
+    const amount = Math.round(Number(booking.valor_bruto));
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return res.status(400).json({ error: 'Esta cita no tiene un valor pendiente de cobro' });
+    }
+
+    const publicKey = process.env.WOMPI_PUBLIC_KEY;
+    if (!publicKey || (typeof wompiClient.isConfigured === 'function' && !wompiClient.isConfigured())) {
+      return res.status(503).json({
+        error: 'PAGO_NO_CONFIGURADO',
+        message: 'La pasarela de pagos no está configurada.'
+      });
+    }
+
+    // Wompi exige una referencia única por transacción. El webhook reconoce
+    // `<bookingId>` y `<bookingId>-r<dígitos>` (ver procesarWebhookWompi), así
+    // que el sufijo numérico mantiene ambos contratos.
+    const reference = `${bookingId}-r${Date.now().toString().slice(-9)}`;
+    const amountInCents = amount * 100;
+
+    // La firma se calcula aquí: WOMPI_INTEGRITY_SECRET no puede viajar al cliente.
+    const signature = wompiClient.createIntegritySignature({
+      reference,
+      amountInCents,
+      currency: 'COP'
+    });
+
+    const checkoutBase = process.env.WOMPI_CHECKOUT_URL || 'https://checkout.wompi.co/p/';
+    const params = new URLSearchParams({
+      'public-key': publicKey,
+      currency: 'COP',
+      'amount-in-cents': String(amountInCents),
+      reference,
+      'signature:integrity': signature
+    });
+    if (process.env.WOMPI_REDIRECT_URL) {
+      params.append('redirect-url', process.env.WOMPI_REDIRECT_URL);
+    }
+
+    return res.json({
+      success: true,
+      url: `${checkoutBase}?${params.toString()}`,
+      reference,
+      amount,
+      currency: 'COP'
+    });
+  } catch (error) {
+    console.error('❌ ERROR EN POST /api/bookings/:id/payment-link:', error.message);
+    res.status(500).json({ error: 'No se pudo generar el enlace de pago' });
+  }
+};
+
 // 🔹 Cancelar cita por cliente
 exports.cancelBooking = async (req, res) => {
   try {

@@ -23,6 +23,10 @@ router.patch('/bookings/:id/status', authMiddleware, pilaCheck, bookingControlle
 // 🔹 CANCELAR CITA
 router.patch('/bookings/:id/cancel', authMiddleware, bookingController.cancelBooking);
 
+// Enlace de pago (Web Checkout de Wompi) para una cita en PENDIENTE_PAGO.
+// El cliente lo abre desde "Mis citas"; la firma de integridad la calcula el backend.
+router.post('/bookings/:id/payment-link', authMiddleware, bookingController.createBookingPaymentLink);
+
 // D-GL-023 — reprogramación única (bloqueo en API) y cancelación del prestador
 router.patch('/bookings/:id/reschedule', authMiddleware, bookingController.rescheduleBooking);
 router.patch('/bookings/:id/cancel-provider', authMiddleware, pilaCheck, bookingController.cancelBookingByProvider);

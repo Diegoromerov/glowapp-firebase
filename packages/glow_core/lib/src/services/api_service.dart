@@ -596,6 +596,22 @@ class ApiService {
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
+  /// Enlace de pago (Web Checkout de Wompi) para una cita pendiente.
+  /// La firma de integridad la calcula el backend: el secreto no viaja al cliente.
+  static Future<Map<String, dynamic>> createBookingPaymentLink(
+      String bookingId) async {
+    final headers = await _getAuthHeaders();
+    final response = await http
+        .post(
+          Uri.parse('$_baseUrl$_apiPath/bookings/$bookingId/payment-link'),
+          headers: headers,
+        )
+        .timeout(requestTimeout);
+    if (response.statusCode == 200) return json.decode(response.body);
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'Error ${response.statusCode}'));
+  }
+
   static Future<Map<String, dynamic>> submitReview(
       String bookingId, int rating, String comment) async {
     final headers = await _getAuthHeaders();

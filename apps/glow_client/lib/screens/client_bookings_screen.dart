@@ -1,6 +1,7 @@
 // frontend/lib/screens/client_bookings_screen.dart
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'otp_confirm_screen.dart';
 class ClientBookingsScreen extends StatefulWidget {
   const ClientBookingsScreen({super.key});
@@ -16,6 +17,46 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   bool _isLoading = true;
   String? _error;
   bool _showSuccessOverlay = false;
+  // Citas cuyo enlace de pago se está pidiendo: evita dobles envíos.
+  final Set<String> _pagando = <String>{};
+
+  /// Abre el Web Checkout de Wompi con el valor de la cita. El backend firma
+  /// la URL: la firma de integridad no se puede calcular en el cliente porque
+  /// necesita WOMPI_INTEGRITY_SECRET.
+  Future<void> _irAPagar(Map<String, dynamic> booking) async {
+    final id = booking['id'].toString();
+    if (_pagando.contains(id)) return;
+
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _pagando.add(id));
+    try {
+      final link = await ApiService.createBookingPaymentLink(id);
+      final url = link['url']?.toString();
+      if (url == null || url.isEmpty) {
+        throw Exception('La pasarela no devolvió un enlace de pago');
+      }
+      final abierto = await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      );
+      if (!abierto) {
+        throw Exception('No se pudo abrir la pasarela de pagos');
+      }
+      if (!mounted) return;
+      messenger.showSnackBar(const SnackBar(
+        content: Text('Completa el pago en Wompi. La cita se confirma sola '
+            'cuando el banco aprueba.'),
+      ));
+    } catch (e) {
+      if (!mounted) return;
+      messenger.showSnackBar(SnackBar(
+        content: Text(e.toString().replaceFirst('Exception: ', '')),
+        backgroundColor: AppTheme.error,
+      ));
+    } finally {
+      if (mounted) setState(() => _pagando.remove(id));
+    }
+  }
 
   @override
   void initState() {
@@ -997,6 +1038,37 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       ),
                     ],
                   ],
+                ),
+              ),
+            ],
+            // Pendiente de pago: sin este botón la cita quedaba sin salida y la
+            // única forma de pagarla era volver a reservar.
+            if (status.toUpperCase() == 'PENDIENTE_PAGO' &&
+                toDoubleOr(booking['total_amount'], 0.0) > 0) ...[
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: _pagando.contains(booking['id'].toString())
+                      ? null
+                      : () => _irAPagar(booking),
+                  icon: _pagando.contains(booking['id'].toString())
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                              strokeWidth: 2, color: Colors.white),
+                        )
+                      : const Icon(Icons.credit_card, size: 18),
+                  label: const Text('Ir a pagar'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFC5A052),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    elevation: 0,
+                  ),
                 ),
               ),
             ],
