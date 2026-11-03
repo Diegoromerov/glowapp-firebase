@@ -33,6 +33,9 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: glowtest
           PGDATA: /var/lib/postgresql/data/pgdata
+          # La imagen postgis/postgis:16-3.4 inicializa con trust auth para
+          # conexiones locales. Usamos trust explícito y conectamos sin password.
+          POSTGRES_HOST_AUTH_METHOD: trust
         ports:
           - 5432:5432
         options: >-
@@ -67,7 +70,8 @@ jobs:
 
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
-          DATABASE_URL_ADMIN: postgres://postgres:***@localhost:5432/glowtest
+          # trust auth: sin password en la URL
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
           RLS_ROLE_PASSWORD: test_rls_password
           # 123_checkout_tenant_wompi.sql toca tablas del esquema GlowShop
           # (pedidos_tienda, etc.) que no existen en el conjunto nucleo de CI.
@@ -79,7 +83,8 @@ jobs:
 
       - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
         env:
-          TEST_DATABASE_URL: postgres://app_owner:***@localhost:5432/glowtest
+          # trust auth: sin password en la URL
+          TEST_DATABASE_URL: postgres://app_owner@localhost:5432/glowtest
         run: node scripts/verifyTenantIsolation.js
 
       - name: Contrato app <-> API
@@ -90,7 +95,8 @@ jobs:
 
       - name: Tests de contrato que requieren BD (audience-binding, routersMontados, critical-endpoints)
         env:
-          DATABASE_URL: postgres://app_rls_user:***@localhost:5432/glowtest
+          # trust auth: sin password en la URL
+          DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
           JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
         run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js --forceExit --verbose
 
