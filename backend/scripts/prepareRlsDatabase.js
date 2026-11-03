@@ -41,11 +41,9 @@ const MIGRACIONES = [
   '114_memberships_sub_rol.sql',
   '118_drop_salon_miembros.sql',
   '119_force_rls_retention_policies.sql',
-  '120_force_rls_all_tenant_tables.sql',
   // GlowShop: crea las tablas de precios que la 071 nunca pudo crear (depende de
   // scan_product_matches, inexistente) y siembra las listas base. Da el 200 a
-  // GET /api/products. Va al final a propósito: después de 120, para que el
-  // forzado de RLS de esa migración la cubra en el siguiente arranque.
+  // GET /api/products.
   '121_glowshop_precios_minimas.sql',
   // Catálogo: `createProduct`/`updateProduct` exigen costo y sku (L21), columnas
   // que introduce la 071 y que nunca se aplicaron. Sin ellas el panel de
@@ -55,6 +53,13 @@ const MIGRACIONES = [
   // columnas tenant_id, ambas de la 071. Sin ellas todo pedido muere con 500 y
   // el ciclo de pago de Wompi no puede empezar.
   '123_checkout_tenant_wompi.sql',
+  // 120 DEBE IR AL FINAL: fuerza FORCE ROW LEVEL SECURITY en TODAS las tablas
+  // con tenant_id. Si corre antes de 121/122/123, las tablas que estas crean
+  // (listas_precios, precios_producto, precios_historial, pedidos_tienda, etc.)
+  // quedarían sin FORCE ni políticas. En producción el entrypoint corre en cada
+  // arranque, así que en el SIGUIENTE arranque 120 las cubriría; en CI solo hay
+  // una pasada, así que 120 va al final para cubrir todo en una sola ejecución.
+  '120_force_rls_all_tenant_tables.sql',
 ];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto
