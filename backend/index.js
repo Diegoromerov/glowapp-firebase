@@ -1814,8 +1814,13 @@ next();
 // ==========================================
 // INICIO DEL SERVIDOR
 // ==========================================
+// Declarado aqui para que shutdown() pueda cerrarlo: dentro del bloque de
+// arranque quedaba fuera de alcance y el apagado gracioso reventaba con
+// "ReferenceError: server is not defined", dejando el pool sin cerrar.
+let server = null;
+
 if (process.env.NODE_ENV !== 'test') {
-  const server = app.listen(PORT, async () => {
+  server = app.listen(PORT, async () => {
     console.log(`🚀 Servidor en http://localhost:${PORT}`);
     // 🏭 Auto-ingesta de corpus en cada deploy
 try {

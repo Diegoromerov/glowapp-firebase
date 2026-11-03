@@ -170,7 +170,8 @@ jobs:
 
           if [ "$code" != "200" ]; then
             echo "FALLO: /api/providers devolvio $code con el rol restringido"
-            grep -iE "row-level security|permission denied|error" /tmp/api.log | tail -10 || true
+            echo "---------- ultimas 80 lineas del log de la API ----------"
+            tail -80 /tmp/api.log
             exit 1
           fi
 
