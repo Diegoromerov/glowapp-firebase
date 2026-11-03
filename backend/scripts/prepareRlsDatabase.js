@@ -62,10 +62,6 @@ const MIGRACIONES = [
     '120_force_rls_all_tenant_tables.sql',
     // Login: SECURITY DEFINER lookup que bypassa RLS para autenticar sin contexto
     '124_auth_lookup_security_definer.sql',
-    // Resolución de usuarios fuera del contexto de inquilino (alta y OAuth)
-    '125_usuario_lookup_sin_contexto.sql',
-    // Ubicación en vivo del prestador, separada de la ubicación del negocio
-    '126_ubicacion_tracking.sql',
   ];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto
