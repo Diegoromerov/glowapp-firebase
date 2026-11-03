@@ -1674,7 +1674,20 @@ const initDatabase = async () => {
       )
       ON CONFLICT (id) DO NOTHING;
     `;
-    await pool.query(aiUserQuery);
+    // Con RLS activa, el INSERT necesita app.tenant_id: el trigger
+    // trg_assign_tenant_id lo copia a la fila y usuarios_isolation rechaza
+    // tenant_id NULL. El arranque corre como app_rls_user, sin contexto.
+    const tenantRouting = require('./src/config/tenantRouting');
+    const { rows: tp } = await pool.query(
+      'SELECT id FROM tenants WHERE es_plataforma ORDER BY id LIMIT 1'
+    );
+    if (tp.length) {
+      await tenantRouting.runInTenantTransaction({ pool }, tp[0].id, (c) =>
+        c.query(aiUserQuery)
+      );
+    } else {
+      await pool.query(aiUserQuery);
+    }
     console.log('🤖 Usuario Asistente de IA verificado/creado con ID 0.');
   } catch (e) {
     console.warn('⚠️ Error al inicializar usuario Asistente Virtual:', e.message);
