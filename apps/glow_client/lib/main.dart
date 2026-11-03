@@ -35,6 +35,7 @@ import 'screens/rewards_xp_screen.dart';
 import 'screens/glowstore_orders_screen.dart';
 import 'screens/biometric_history_screen.dart';
 import 'screens/booking_screen.dart';
+import 'screens/booking_tracking_screen.dart';
 import 'screens/habeas_data_screen.dart';
 import 'screens/faq_screen.dart';
 import 'screens/settings_screen.dart';
@@ -278,10 +279,8 @@ class GlowClientApp extends ConsumerWidget {
             );
           case '/booking-tracking':
             final args = settings.arguments as Map<String, dynamic>?;
-            final bookingId = (args?['bookingId'] ?? 'N/A').toString();
             return MaterialPageRoute(
-              builder: (_) =>
-                  _StubScreen(title: 'Tracking reserva: $bookingId'),
+              builder: (_) => BookingTrackingScreen(booking: args ?? const {}),
             );
           case '/provider-detail':
             final args = settings.arguments as Map<String, dynamic>?;
