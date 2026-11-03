@@ -473,14 +473,43 @@ class ApiService {
   static Future<Map<String, dynamic>> fetchProviderDetails(
       String providerId) async {
     await ensureBaseUrl();
+    if (providerId.trim().isEmpty) {
+      throw Exception('Falta el identificador del prestador');
+    }
+    // Sin `X-App-Audience` el backend responde 400 antes del handler: esta
+    // llamada era la unica del servicio que iba sin cabeceras, y por eso el
+    // detalle del prestador solo decia «Error 400».
+    final headers = await _getAuthHeaders();
     final response = await http
-        .get(Uri.parse('$_baseUrl$_apiPath/providers/$providerId'))
+        .get(
+          Uri.parse('$_baseUrl$_apiPath/providers/$providerId'),
+          headers: headers,
+        )
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
       final data = _normalizeDynamicUrls(json.decode(response.body));
       return Map<String, dynamic>.from(data['data']);
     }
-    throw Exception('Error ${response.statusCode}');
+    throw Exception(_mensajeDeError(response));
+  }
+
+  /// Mensaje legible a partir de una respuesta fallida.
+  ///
+  /// El backend devuelve `{success:false, error:"..."}`; mostrar solo el codigo
+  /// convierte un «Falta X-App-Audience» en un inutil «Error 400».
+  static String _mensajeDeError(http.Response response) {
+    try {
+      final data = json.decode(response.body);
+      if (data is Map) {
+        final detalle = data['error'] ?? data['message'];
+        if (detalle != null && detalle.toString().trim().isNotEmpty) {
+          return detalle.toString();
+        }
+      }
+    } catch (_) {
+      // Cuerpo no JSON (por ejemplo un 502 de HTML): se usa el codigo.
+    }
+    return 'Error ${response.statusCode}';
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -1153,10 +1182,12 @@ class ApiService {
     required String serviceId,
   }) async {
     await ensureBaseUrl();
+    final headers = await _getAuthHeaders();
     final response = await http
         .get(
           Uri.parse(
               '$_baseUrl$_apiPath/providers/$providerId/slots?date=$date&service_id=$serviceId'),
+          headers: headers,
         )
         .timeout(requestTimeout);
     if (response.statusCode == 200) {
