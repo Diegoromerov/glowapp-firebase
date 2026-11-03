@@ -42,6 +42,21 @@ class FCMNotificationService {
     });
   }
 
+  /**
+   * Aviso de que el servicio terminó y el código está disponible.
+   * El código NO viaja en la notificación: una push se lee desde la pantalla
+   * bloqueada y cualquiera con el teléfono en la mano lo vería. Va por correo.
+   */
+  async sendOtpReadyNotice(deviceToken, { bookingId, serviceName }) {
+    const title = 'Confirma tu servicio';
+    const body = `El servicio de ${serviceName || 'tu cita'} terminó. Abre GlowApp e ingresa el código que enviamos a tu correo.`;
+
+    return await this._sendNotification(deviceToken, title, body, {
+      type: 'OTP_READY',
+      bookingId: String(bookingId),
+    });
+  }
+
   /** Enviar alerta de stock crítico de insumo en consignación */
   async sendConsignmentStockAlert(deviceToken, { productoId, productoNombre, cantidadDisponible }) {
     const title = '⚠️ Alerta de Stock Mínimo en Consignación';

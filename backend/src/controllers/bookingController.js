@@ -351,7 +351,6 @@ exports.getProviderBookings = async (req, res) => {
       client_name: row.client_name,
       client_phone: row.client_phone,
       service_address: row.service_address || '',
-      pin_verificacion: row.pin_verificacion || null,
       wompi_reference: row.wompi_reference || null,
       payout_status: row.payout_status || null
     }));
@@ -457,7 +456,6 @@ exports.getClientBookings = async (req, res) => {
       total_amount: parseFloat(row.total_amount) || 0,
       service_address: row.service_address || '',
       notes: row.notes || '',
-      pin_verificacion: row.pin_verificacion || null,
       service_name: row.service_name,
       service_duration: parseInt(row.service_duration) || 0,
       provider_name: row.provider_name,

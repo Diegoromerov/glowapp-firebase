@@ -5,6 +5,9 @@ const { wrapRouterAsync } = require('../utils/expressAsync');
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../config/db');
+const { runAsSystemContext } = require('../config/tenantRouting');
+const emailService = require('../services/emailService');
+const fcm = require('../services/fcmNotificationService');
 const { authMiddleware } = require('../middleware/auth');
 const { paymentLimiter, otpLimiter } = require('../middleware/rateLimiter');
 const crypto = require('crypto');
@@ -286,6 +289,56 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
     );
 
     await client.query('COMMIT');
+
+    // ── Entrega del código ───────────────────────────────────────────────────
+    // Sin esto el código se generaba, se hasheaba y se perdía: el cliente no
+    // podía confirmar y la reserva se quedaba en ESPERANDO_OTP para siempre
+    // (ni se liberaba el pago ni se podía calificar). Se envía fuera de la
+    // transacción y nunca puede tumbar la finalización del servicio.
+    try {
+      const contacto = await runAsSystemContext(async () => {
+        const r = await pool.query(
+          'SELECT email, nombre, fcm_token FROM usuarios WHERE id = $1',
+          [booking.client_id]
+        );
+        return r.rows[0] || null;
+      });
+
+      if (contacto?.email) {
+        await emailService.sendEmail({
+          to: contacto.email,
+          subject: 'Tu código para confirmar el servicio · GlowApp',
+          data: {
+            html: `
+              <div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#1F1A15">
+                <h2 style="margin:0 0 8px;font-size:20px">Confirma tu servicio</h2>
+                <p style="margin:0 0 20px;color:#6B6157;font-size:14px">
+                  Hola ${contacto.nombre || ''}, tu prestador marcó el servicio como terminado.
+                  Ingresa este código en GlowApp para confirmar y liberar el pago.
+                </p>
+                <div style="font-size:34px;letter-spacing:10px;font-weight:bold;color:#C5A052;text-align:center;padding:16px 0;border-top:1px solid #EFE8DE;border-bottom:1px solid #EFE8DE">
+                  ${codigo}
+                </div>
+                <p style="margin:20px 0 0;color:#8A7F72;font-size:12px">
+                  Vence en ${vigenciaMin} minutos. Si no reconoces este servicio, abre una disputa desde la app.
+                </p>
+              </div>`,
+          },
+        });
+        console.log(`[OTP] Código enviado por correo a ${contacto.email.replace(/(.).*(@.*)/, '$1***$2')}`);
+      } else {
+        console.warn('[OTP] El cliente no tiene correo registrado:', booking.client_id);
+      }
+
+      if (contacto?.fcm_token) {
+        await fcm.sendOtpReadyNotice(contacto.fcm_token, {
+          bookingId: id,
+          serviceName: booking.service_name || null,
+        });
+      }
+    } catch (envioErr) {
+      console.error('[OTP] No se pudo entregar el código:', envioErr.message);
+    }
 
     // El código OTP no se registra en logs (A360-2026-09-22/C-06) ni se devuelve al cliente
     // salvo opt-in explícito de desarrollo: antes bastaba con que NODE_ENV no fuera exactamente 'production'.

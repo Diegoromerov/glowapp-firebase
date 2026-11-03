@@ -162,7 +162,6 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
     final String providerBusiness =
         widget.booking['provider_business_name'] ?? 'Studio Profesional';
     final String providerAvatar = widget.booking['provider_avatar_url'] ?? '';
-    final String pin = widget.booking['pin_verificacion'] ?? '----';
     final String providerId = widget.booking['provider_id']?.toString() ?? '2';
 
     // Cálculo dinámico de distancia en kilómetros
@@ -544,7 +543,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                           size: 18),
                                       SizedBox(width: 8),
                                       Text(
-                                        'PIN Escrow Seguro:',
+                                        'Código de confirmación:',
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold,
@@ -552,13 +551,16 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                       ),
                                     ],
                                   ),
+                                  // El código se genera al terminar el servicio y
+                                  // se envía por correo: no existe antes, así que
+                                  // pintarlo aquí mostraba un valor que el backend
+                                  // no acepta.
                                   Text(
-                                    pin,
+                                    'Te lo enviamos por correo',
                                     style: const TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xFF881337),
-                                      letterSpacing: 2.0,
                                     ),
                                   ),
                                 ],
