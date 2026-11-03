@@ -139,10 +139,17 @@ jobs:
           echo $! > /tmp/api.pid
 
           # La unica ruta de salud es /api/health; /health no existe.
+          # Se acepta CUALQUIER codigo HTTP: aqui solo se comprueba que el
+          # puerto responde. Un 503 es legitimo mientras el arranque aplica
+          # migraciones (el rol restringido no puede aplicarlas), y con -f se
+          # interpretaba como "servidor caido".
           ready=0
-          for i in $(seq 1 30); do
-            if curl -sf --max-time 2 http://localhost:8081/api/health > /dev/null; then
+          for i in $(seq 1 45); do
+            codigo=$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 \
+                     http://localhost:8081/api/health || true)
+            if [ -n "$codigo" ] && [ "$codigo" != "000" ]; then
               ready=1
+              echo "API responde en /api/health (HTTP $codigo)"
               break
             fi
             sleep 1
