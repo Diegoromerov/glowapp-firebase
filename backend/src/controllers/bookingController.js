@@ -66,26 +66,37 @@ exports.createBooking = async (req, res) => {
       return res.status(400).json({ error: 'Faltan campos requeridos o formato inválido para service_ids' });
     }
 
-    // Obtener y validar todos los servicios solicitados
-    const services = await Service.findAll({
-      where: {
-        id: service_ids,
-        provider_id
-      }
+    // Obtener y validar todos los servicios solicitados.
+    //
+    // CROSS-TENANT: el cliente pertenece a un inquilino y los servicios son del
+    // inquilino del prestador. Con el contexto del cliente, RLS los hace
+    // invisibles y `findAll` devuelve 0 filas → 404 «Uno o más servicios no
+    // fueron encontrados» con un servicio válido. La lectura se hace con el rol
+    // de sistema (app_system, BYPASSRLS) en su propia transacción; el
+    // aislamiento del resto de la API no cambia.
+    const { services, prestadorFiscal } = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      const filas = await Service.findAll({
+        where: { id: service_ids, provider_id },
+        transaction: t,
+      });
+      // Condición tributaria del PRESTADOR, leída de SU cuenta — nunca del
+      // request: un cliente no puede decidir la carga tributaria de la
+      // operación (migración 086: art. 476 num. 1 lit. a y art. 437 par. 3 ET).
+      const fiscal = await sequelize.query(
+        'SELECT responsable_iva, tarifa_iva FROM usuarios WHERE id = :providerId;',
+        {
+          replacements: { providerId: provider_id },
+          type: sequelize.QueryTypes.SELECT,
+          transaction: t,
+        }
+      );
+      return { services: filas, prestadorFiscal: fiscal };
     });
 
     if (services.length !== service_ids.length) {
       return res.status(404).json({ error: 'Uno o más servicios no fueron encontrados' });
     }
-
-    // Condición tributaria del PRESTADOR, leída de SU cuenta — nunca del request:
-    // un cliente no puede decidir la carga tributaria de la operación. Ver la
-    // migración 086 para la base legal (art. 476 num. 1 lit. a y art. 437 par. 3
-    // del Estatuto Tributario).
-    const prestadorFiscal = await sequelize.query(
-      'SELECT responsable_iva, tarifa_iva FROM usuarios WHERE id = :providerId;',
-      { replacements: { providerId: provider_id }, type: sequelize.QueryTypes.SELECT }
-    );
     const responsableIva =
       prestadorFiscal.length > 0 && prestadorFiscal[0].responsable_iva === true;
     const tarifaIvaAplicada = responsableIva
