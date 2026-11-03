@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 // lib/src (implementation_imports) y no arrastra el tema, así la pantalla se
 // puede probar sin compilar el barrel completo.
 import 'package:glow_core/services.dart';
+import '../widgets/service_review_sheet.dart';
 
 class OtpConfirmScreen extends StatefulWidget {
   final String bookingId;
@@ -36,6 +37,10 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
   final _controllers = List.generate(6, (_) => TextEditingController());
   final _focusNodes = List.generate(6, (_) => FocusNode());
   bool _isLoading = false;
+  // Tras verificar el codigo no se cierra la pantalla: es el unico momento con
+  // el cliente presente y el servicio recien recibido, o sea el mejor sitio
+  // para pedir la calificacion. Aqui nace la mayor parte de las resenas.
+  bool _exitoso = false;
 
   @override
   void dispose() {
@@ -61,7 +66,7 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
       if (!mounted) return;
       setState(() => _isLoading = false);
       if (ok) {
-        Navigator.pop(context, true);
+        setState(() => _exitoso = true);
       } else {
         _aviso('Código incorrecto o vencido.');
       }
@@ -76,8 +81,78 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(mensaje)));
   }
 
+  Future<void> _calificar(int nota) async {
+    final publicada = await showServiceReviewSheet(
+      context,
+      bookingId: widget.bookingId,
+      providerName: widget.prestadorNombre,
+      initialRating: nota,
+    );
+    if (!mounted) return;
+    // Con resena o sin ella el flujo termina igual: la confirmacion del servicio
+    // ya se hizo y no puede quedar retenida por una calificacion opcional.
+    Navigator.pop(context, publicada == true || true);
+  }
+
+  Widget _buildExito() {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.check_circle_rounded,
+                  size: 64, color: Color(0xFF4A5D4E)),
+              const SizedBox(height: 16),
+              const Text('Servicio confirmado',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8),
+              Text(
+                'Pago liberado a ${widget.prestadorNombre}.',
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 13, color: Color(0xFF8A7F72)),
+              ),
+              const SizedBox(height: 32),
+              Text(
+                '¿Cómo te fue con ${widget.prestadorNombre}?',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  5,
+                  (i) => IconButton(
+                    iconSize: 38,
+                    tooltip: '${i + 1} de 5',
+                    onPressed: () => _calificar(i + 1),
+                    icon: const Icon(Icons.star_outline_rounded,
+                        color: Color(0xFFC5A052)),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text('Un toque y listo. Puedes ampliar después.',
+                  style: TextStyle(fontSize: 12, color: Color(0xFF8A7F72))),
+              const SizedBox(height: 24),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('Ahora no',
+                    style: TextStyle(color: Color(0xFF8A7F72))),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_exitoso) return _buildExito();
     return Scaffold(
       appBar: AppBar(title: const Text('Verificar código')),
       body: Padding(

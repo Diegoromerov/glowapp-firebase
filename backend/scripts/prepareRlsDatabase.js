@@ -62,6 +62,8 @@ const MIGRACIONES = [
     '120_force_rls_all_tenant_tables.sql',
     // Login: SECURITY DEFINER lookup que bypassa RLS para autenticar sin contexto
     '124_auth_lookup_security_definer.sql',
+    // Aspectos de la reseña (columna aditiva, nula por defecto)
+    '127_review_aspectos.sql',
   ];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto

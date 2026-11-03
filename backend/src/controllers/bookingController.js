@@ -1336,11 +1336,15 @@ exports.wompiWebhook = (req, res) => {
 exports.verifyWompiSignature = verifyWompiSignature;
 
 // 🔹 Crear reseña para cita completada
+// Aspectos que el cliente puede marcar junto a las estrellas. Es una lista
+// cerrada: el texto libre no se puede filtrar ni agregar, los aspectos sí.
+const ASPECTOS_RESENIA = ['Puntualidad', 'Resultado', 'Trato', 'Higiene', 'Precio-calidad'];
+
 exports.createReview = async (req, res) => {
   try {
     const bookingId = req.params.id;
     const clientId = req.user.id;
-    const { rating, comment } = req.body;
+    const { rating, comment, aspectos } = req.body;
 
     const parsedRating = parseInt(rating);
     if (isNaN(parsedRating) || parsedRating < 1 || parsedRating > 5) {
@@ -1355,8 +1359,20 @@ exports.createReview = async (req, res) => {
       return res.status(404).json({ error: 'Cita no encontrada o no tienes permisos para calificarla' });
     }
 
-    if (booking.estado !== 'COMPLETADA') {
-      return res.status(400).json({ error: 'Solo puedes calificar citas que hayan sido completadas' });
+    // Elegibilidad: basta con que el servicio haya ocurrido. Exigir COMPLETADA
+    // ataba la reseña a que el prestador cerrara la cita; cuando no lo hacía, el
+    // cliente no podía opinar nunca y el catálogo se quedaba sin prueba social.
+    const estadoActual = String(booking.estado || '').toUpperCase();
+    if (estadoActual === 'CANCELADA' || estadoActual === 'CANCELLED') {
+      return res.status(400).json({ error: 'Una cita cancelada no se puede calificar' });
+    }
+
+    const fechaCita = booking.scheduled_at ? new Date(booking.scheduled_at) : null;
+    const yaOcurrio = estadoActual === 'COMPLETADA'
+      || estadoActual === 'COMPLETED'
+      || (fechaCita !== null && fechaCita.getTime() < Date.now());
+    if (!yaOcurrio) {
+      return res.status(400).json({ error: 'Solo puedes calificar una cita que ya ocurrió' });
     }
 
     const reviewCheck = await pool.query('SELECT id FROM reviews WHERE booking_id = $1', [bookingId]);
@@ -1364,16 +1380,32 @@ exports.createReview = async (req, res) => {
       return res.status(400).json({ error: 'Esta cita ya ha sido calificada' });
     }
 
+    const aspectosLimpios = Array.isArray(aspectos)
+      ? [...new Set(aspectos.filter((a) => ASPECTOS_RESENIA.includes(a)))].slice(0, ASPECTOS_RESENIA.length)
+      : [];
+
     const clientDb = await pool.connect();
     try {
       await clientDb.query('BEGIN');
 
+      // El prestador suele estar en otro inquilino: con el contexto del cliente,
+      // la actualización de su reputación afectaba 0 filas y el promedio nunca
+      // se movía.
+      await clientDb.query('SET LOCAL ROLE app_system');
+
       const insertReviewQuery = `
-        INSERT INTO reviews (booking_id, client_id, provider_id, rating, comment)
-        VALUES ($1, $2, $3, $4, $5)
+        INSERT INTO reviews (booking_id, client_id, provider_id, rating, comment, aspectos)
+        VALUES ($1, $2, $3, $4, $5, $6::jsonb)
         RETURNING id;
       `;
-      await clientDb.query(insertReviewQuery, [bookingId, clientId, booking.provider_id, parsedRating, comment || null]);
+      await clientDb.query(insertReviewQuery, [
+        bookingId,
+        clientId,
+        booking.provider_id,
+        parsedRating,
+        comment || null,
+        JSON.stringify(aspectosLimpios)
+      ]);
 
       const statsQuery = 'SELECT AVG(rating) as avg_rating, COUNT(id) as count_rating FROM reviews WHERE provider_id = $1;';
       const statsRes = await clientDb.query(statsQuery, [booking.provider_id]);

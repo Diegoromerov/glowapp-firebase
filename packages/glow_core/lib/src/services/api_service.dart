@@ -617,7 +617,8 @@ class ApiService {
   }
 
   static Future<Map<String, dynamic>> submitReview(
-      String bookingId, int rating, String comment) async {
+      String bookingId, int rating, String comment,
+      {List<String> aspectos = const <String>[]}) async {
     final headers = await _getAuthHeaders();
     final response = await http
         .post(
@@ -625,7 +626,8 @@ class ApiService {
           headers: headers,
           body: json.encode({
             'rating': rating,
-            'comment': comment.isNotEmpty ? comment : null
+            'comment': comment.isNotEmpty ? comment : null,
+            'aspectos': aspectos,
           }),
         )
         .timeout(requestTimeout);

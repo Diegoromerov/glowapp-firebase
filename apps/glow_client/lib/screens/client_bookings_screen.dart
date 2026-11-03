@@ -3,6 +3,7 @@ import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:url_launcher/url_launcher.dart';
+import '../widgets/service_review_sheet.dart';
 import 'otp_confirm_screen.dart';
 class ClientBookingsScreen extends StatefulWidget {
   const ClientBookingsScreen({super.key});
@@ -212,29 +213,113 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     }
   }
 
-  Future<void> _submitReviewHelper(
-      String bookingId, int ratingSelected, String reviewComment) async {
-    setState(() => _isLoading = true);
-    try {
-      await ApiService.submitReview(bookingId, ratingSelected, reviewComment);
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-          _showSuccessOverlay = true;
-        });
-      }
+  /// Abre la hoja de resena (estrellas + aspectos + comentario). Si se publica,
+  /// la lista se recarga para que la tarjeta deje de ofrecer calificar.
+  Future<void> _abrirResena(Map<String, dynamic> booking, {int nota = 0}) async {
+    final nombre = (booking['provider_business_name'] != null &&
+            booking['provider_business_name'].toString().isNotEmpty)
+        ? booking['provider_business_name'].toString()
+        : (booking['provider_name']?.toString() ?? 'tu prestador');
+
+    final publicada = await showServiceReviewSheet(
+      context,
+      bookingId: booking['id'].toString(),
+      providerName: nombre,
+      initialRating: nota,
+    );
+    if (publicada == true && mounted) {
       _loadBookings();
-    } catch (e) {
-      if (mounted) {
-        setState(() => _isLoading = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('❌ Error al enviar reseña: $e'),
-            backgroundColor: AppTheme.error,
-          ),
-        );
-      }
     }
+  }
+
+  /// La propina vive fuera de la resena a proposito: pedir dinero en la misma
+  /// pantalla que pide una opinion sesga la nota (D-GL-023: es 100% del prestador).
+  Future<void> _showTipSheet(Map<String, dynamic> booking) async {
+    final total = toDoubleOr(booking['total_amount'], 0.0);
+    double monto = 0.0;
+    final customCtrl = TextEditingController();
+
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setModalState) {
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+                left: 24,
+                right: 24,
+                top: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text('Dar propina',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 4),
+                const Text('La propina va integra al prestador.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12, color: Color(0xFF8A7F72))),
+                const SizedBox(height: 18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [0.05, 0.10, 0.15].map((pct) {
+                    final valor = total * pct;
+                    final activo = (monto - valor).abs() < 1;
+                    return ChoiceChip(
+                      label: Text('${(pct * 100).round()}%'),
+                      selected: activo,
+                      onSelected: (_) => setModalState(() {
+                        monto = valor;
+                        customCtrl.clear();
+                      }),
+                      selectedColor: const Color(0xFFC5A052),
+                      labelStyle: TextStyle(
+                          color: activo ? Colors.white : const Color(0xFF1F1A15)),
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: customCtrl,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                      labelText: 'Otro monto', prefixText: r'$ '),
+                  onChanged: (v) => setModalState(
+                      () => monto = double.tryParse(v) ?? 0.0),
+                ),
+                const SizedBox(height: 18),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (monto <= 0) return;
+                    final id = booking['id'].toString();
+                    Navigator.pop(context);
+                    await _submitTip(id, monto);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFC5A052),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                      monto > 0
+                          ? 'Enviar ${monto.toStringAsFixed(0)}'
+                          : 'Elige un monto',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 
   // D-GL-023 — la propina es 100% del prestador y no paga comisión.
@@ -261,327 +346,6 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
         ),
       );
     }
-  }
-
-  void _showRatingSheet(Map<String, dynamic> booking) {
-    int ratingSelected = 5;
-    String reviewComment = '';
-    final commentController = TextEditingController();
-
-    // Módulo de Propinas
-    String selectedTipOption = 'Sin propina';
-    double tipAmount = 0.0;
-    bool showCustomTipField = false;
-    final customTipController = TextEditingController();
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (context) {
-        final totalAmount =
-            toDoubleOr(booking['total_amount'], 0.0);
-        final providerName = (booking['provider_business_name'] != null &&
-                booking['provider_business_name'].toString().isNotEmpty)
-            ? booking['provider_business_name'].toString()
-            : (booking['provider_name']?.toString() ?? 'Prestador');
-
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setModalState) {
-            Widget buildTipCard(String label, String value, String emoji) {
-              final isSelected = selectedTipOption == value;
-              return GestureDetector(
-                onTap: () {
-                  setModalState(() {
-                    selectedTipOption = value;
-                    if (value == 'Sin propina') {
-                      tipAmount = 0.0;
-                      showCustomTipField = false;
-                    } else if (value == '5%') {
-                      tipAmount = totalAmount * 0.05;
-                      showCustomTipField = false;
-                    } else if (value == '10%') {
-                      tipAmount = totalAmount * 0.10;
-                      showCustomTipField = false;
-                    } else if (value == '15%') {
-                      tipAmount = totalAmount * 0.15;
-                      showCustomTipField = false;
-                    } else if (value == 'Personalizada') {
-                      showCustomTipField = true;
-                      final customVal =
-                          double.tryParse(customTipController.text) ?? 0.0;
-                      tipAmount = customVal;
-                    }
-                  });
-                },
-                child: Container(
-                  width: 72,
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? AppTheme.primary
-                        : AppTheme.accent.withOpacity(0.15),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: isSelected ? AppTheme.primary : Colors.transparent,
-                      width: 1.5,
-                    ),
-                    boxShadow: isSelected ? AppTheme.softShadow : null,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(emoji, style: const TextStyle(fontSize: 18)),
-                      const SizedBox(height: 4),
-                      Text(
-                        label,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected ? Colors.white : Colors.black87,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }
-
-            return Padding(
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-                left: 20,
-                right: 20,
-                top: 24,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Center(
-                      child: Container(
-                        width: 40,
-                        height: 5,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Calificar tu servicio',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                        letterSpacing: -0.5,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'Cuéntanos tu experiencia con $providerName',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Selector de estrellas con micro-animaciones
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(5, (index) {
-                        final starValue = index + 1;
-                        return AnimatedStarButton(
-                          iconSize: 40,
-                          isSelected: starValue <= ratingSelected,
-                          onPressed: () {
-                            setModalState(() {
-                              ratingSelected = starValue;
-                            });
-                          },
-                        );
-                      }),
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Comentario escrito
-                    TextField(
-                      controller: commentController,
-                      maxLines: 3,
-                      style: const TextStyle(fontSize: 14),
-                      decoration: InputDecoration(
-                        hintText: 'Escribe tu comentario aquí (opcional)...',
-                        hintStyle:
-                            const TextStyle(color: Colors.grey, fontSize: 14),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(24),
-                            borderSide: BorderSide.none),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(24),
-                                                  borderSide: BorderSide(
-                                                      color: AppTheme.primary, width: 1.5),
-                                                ),
-                        filled: true,
-                        fillColor: AppTheme.accent.withOpacity(0.15),
-                        contentPadding: const EdgeInsets.all(16),
-                      ),
-                      onChanged: (v) => reviewComment = v,
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Módulo de Propinas como tarjetas con emojis
-                    const Text(
-                      '¿Deseas agregar una propina?',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87),
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        buildTipCard('0%', 'Sin propina', '😊'),
-                        buildTipCard('5%', '5%', '👍'),
-                        buildTipCard('10%', '10%', '⭐'),
-                        buildTipCard('15%', '15%', '🔥'),
-                        buildTipCard('Custom', 'Personalizada', '✏️'),
-                      ],
-                    ),
-                    // A360-2026-09-22/C-02: aviso explícito — no hay pasarela de
-                    // propinas integrada, así que no se puede cobrar ninguna.
-                    const SizedBox(height: 8),
-                    const Text(
-                      'El cobro de propina todavía no está disponible en la app.',
-                      style: TextStyle(
-                          fontSize: 11,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.grey),
-                    ),
-                    if (showCustomTipField) ...[
-                      const SizedBox(height: 12),
-                      TextField(
-                        controller: customTipController,
-                        keyboardType: TextInputType.number,
-                        style: const TextStyle(fontSize: 14),
-                        decoration: InputDecoration(
-                          labelText: 'Valor de propina personalizado (\$)',
-                          labelStyle: const TextStyle(fontSize: 12),
-                          prefixText: '\$ ',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16)),
-                          focusedBorder: OutlineInputBorder(
-                                                      borderRadius: BorderRadius.circular(16),
-                                                      borderSide: BorderSide(
-                                                          color: AppTheme.primary, width: 1.5),
-                                                    ),
-                        ),
-                        onChanged: (val) {
-                          final parsed = double.tryParse(val) ?? 0.0;
-                          setModalState(() {
-                            tipAmount = parsed;
-                          });
-                        },
-                      ),
-                    ],
-
-                    const SizedBox(height: 16),
-                    // Desglose de Pago
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: AppTheme.background,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: const Color(0xFFF3EAE8)),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text('Servicio:',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.black54)),
-                              Text('\$${totalAmount.toStringAsFixed(0)}',
-                                  style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                          const SizedBox(height: 6),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text('Propina:',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.black54)),
-                              Text('\$${tipAmount.toStringAsFixed(0)}',
-                                                                style: TextStyle(
-                                                                    fontSize: 12,
-                                                                    fontWeight: FontWeight.bold,
-                                                                    color: AppTheme.success)),
-                                                          ],
-                                                        ),
-                                                        const Divider(height: 16),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                          children: [
-                                                            const Text('Total a pagar:',
-                                                                style: TextStyle(
-                                                                    fontSize: 13,
-                                                                    fontWeight: FontWeight.bold)),
-                                                            Text(
-                                                                '\$${(totalAmount + tipAmount).toStringAsFixed(0)}',
-                                                                style: TextStyle(
-                                                                    fontSize: 15,
-                                                                    fontWeight: FontWeight.bold,
-                                                                    color: AppTheme.primary)),
-                                                          ],
-                                                        ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
-
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.primary,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        elevation: 0,
-                      ),
-                      onPressed: () async {
-                        Navigator.pop(context); // Cerrar rating sheet
-                        if (tipAmount > 0.0) {
-                          await _submitTip(
-                              booking['id'].toString(), tipAmount);
-                        }
-                        _submitReviewHelper(
-                            booking['id'], ratingSelected, reviewComment);
-                      },
-                      child: const Text('Enviar Calificación',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      },
-    );
   }
 
   String _formatDateTime(String? scheduledAtStr) {
@@ -738,6 +502,19 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     final totalAmount = toDoubleOr(booking['total_amount'], 0.0);
     final isReviewed = booking['is_reviewed'] == true;
     final reviewData = booking['review'] as Map<String, dynamic>?;
+    // Elegibilidad: el servicio tiene que haber ocurrido. Antes solo se podia
+    // calificar en COMPLETADA, asi que una cita que nadie cerro dejaba al cliente
+    // sin voz y al catalogo sin prueba social.
+    final estadoMin = status.toUpperCase();
+    final fechaCita = DateTime.tryParse(scheduledAt);
+    final yaOcurrio = estadoMin == 'COMPLETADA' ||
+        estadoMin == 'COMPLETED' ||
+        (fechaCita != null && fechaCita.isBefore(DateTime.now()));
+    final esCancelada = estadoMin == 'CANCELADA' || estadoMin == 'CANCELLED';
+    final canReview = !isReviewed && yaOcurrio && !esCancelada;
+    final miNota = int.tryParse(
+            (booking['review_rating'] ?? reviewData?['rating'] ?? '').toString()) ??
+        0;
 
     final isMen = AudienceService.isMenMode;
     final cardBg = isMen ? MensTheme.obsidianCard : Colors.white;
@@ -1157,22 +934,71 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 ],
               ),
             ],
-            if (!isUpcoming && status == 'completed' && !isReviewed) ...[
-              const SizedBox(height: 16),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () => _showRatingSheet(booking),
-                  icon: const Icon(Icons.star_outline_rounded, size: 18),
-                  label: const Text('Calificar Servicio'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primary,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    elevation: 0,
+            // Calificacion en un toque: la estrella pulsada abre la hoja con esa
+            // nota ya puesta. Sin boton intermedio ni formulario previo.
+            if (canReview) ...[
+              const SizedBox(height: 14),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFAF8F5),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: Text('Califica tu cita',
+                          style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF1F1A15))),
+                    ),
+                    ...List.generate(
+                      5,
+                      (i) => GestureDetector(
+                        onTap: () => _abrirResena(booking, nota: i + 1),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 2),
+                          child: Icon(Icons.star_outline_rounded,
+                              size: 26, color: Color(0xFFC5A052)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            if (isReviewed && miNota > 0) ...[
+              const SizedBox(height: 14),
+              Row(
+                children: [
+                  const Text('Tu calificacion',
+                      style: TextStyle(fontSize: 13, color: Color(0xFF8A7F72))),
+                  const Spacer(),
+                  ...List.generate(
+                    5,
+                    (i) => Icon(
+                      i < miNota
+                          ? Icons.star_rounded
+                          : Icons.star_outline_rounded,
+                      size: 20,
+                      color: const Color(0xFFC5A052),
+                    ),
                   ),
+                ],
+              ),
+            ],
+            if (yaOcurrio && !esCancelada) ...[
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: () => _showTipSheet(booking),
+                  icon: const Icon(Icons.volunteer_activism_outlined,
+                      size: 16, color: Color(0xFFC5A052)),
+                  label: const Text('Dar propina',
+                      style:
+                          TextStyle(fontSize: 12, color: Color(0xFFC5A052))),
                 ),
               ),
             ],
