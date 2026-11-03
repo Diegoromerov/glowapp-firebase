@@ -31,7 +31,12 @@ $$;
 
 -- Solo el rol de la aplicación puede invocarla; los demás roles no necesitan.
 REVOKE ALL ON FUNCTION app_usuario_para_login(text) FROM PUBLIC;
-GRANT EXECUTE ON FUNCTION app_usuario_para_login(text) TO app_rls_user;
+DO $$
+BEGIN
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_rls_user') THEN
+    GRANT EXECUTE ON FUNCTION app_usuario_para_login(text) TO app_rls_user;
+  END IF;
+END $$;
 
 -- Se aplica en cada arranque para que un `CREATE OR REPLACE` posterior no pierda
 -- los permisos.
