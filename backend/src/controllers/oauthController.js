@@ -84,9 +84,24 @@ exports.googleSignIn = async (req, res) => {
       const insertQuery = await pool.query(
         `INSERT INTO usuarios (nombre, email, auth_provider, provider_id, rol, onboarding_completo) 
          VALUES ($1, $2, 'GOOGLE', $3, $4, $5) 
-         RETURNING id, nombre, email, rol, onboarding_completo`,
+         RETURNING id, nombre, email, rol, auth_provider, provider_id, tenant_id, onboarding_completo`,
         [name || 'Usuario Google', cleanEmail, googleId, targetRole, onboardingCompleto]
-      );
+      ).catch(async (e) => {
+        // Bajo RLS un usuario de otro inquilino es invisible: el SELECT de arriba
+        // no lo ve y el INSERT choca con el índice único global (usuarios_email_key).
+        if (e.code !== '23505') throw e;
+        const found = await pool.query(
+          `SELECT id, nombre, email, rol, auth_provider, provider_id, tenant_id, onboarding_completo
+             FROM app_usuario_por_email($1)`,
+          [cleanEmail]
+        );
+        if (!found.rows.length) throw e;
+        const u = found.rows[0];
+        await pool.query('UPDATE usuarios SET auth_provider = $1, provider_id = $2 WHERE id = $3', [
+          'GOOGLE', googleId, u.id,
+        ]);
+        return { rows: [{ ...u, auth_provider: 'GOOGLE', provider_id: googleId }] };
+      });
       user = insertQuery.rows[0];
     } else {
       user = userQuery.rows[0];
@@ -221,9 +236,23 @@ exports.facebookSignIn = async (req, res) => {
       const insertQuery = await pool.query(
         `INSERT INTO usuarios (nombre, email, auth_provider, provider_id, rol, onboarding_completo)
          VALUES ($1, $2, 'FACEBOOK', $3, $4, $5)
-         RETURNING id, nombre, email, rol, onboarding_completo`,
+         RETURNING id, nombre, email, rol, auth_provider, provider_id, tenant_id, onboarding_completo`,
         [nombre, cleanEmail, providerId, targetRole, onboardingCompleto]
-      );
+      ).catch(async (e) => {
+        // Mismo caso que en Google: duplicado invisible bajo RLS.
+        if (e.code !== '23505') throw e;
+        const found = await pool.query(
+          `SELECT id, nombre, email, rol, auth_provider, provider_id, tenant_id, onboarding_completo
+             FROM app_usuario_por_email($1)`,
+          [cleanEmail]
+        );
+        if (!found.rows.length) throw e;
+        const u = found.rows[0];
+        await pool.query('UPDATE usuarios SET auth_provider = $1, provider_id = $2 WHERE id = $3', [
+          'FACEBOOK', providerId, u.id,
+        ]);
+        return { rows: [{ ...u, auth_provider: 'FACEBOOK', provider_id: providerId }] };
+      });
       user = insertQuery.rows[0];
     } else {
       user = userQuery.rows[0];
