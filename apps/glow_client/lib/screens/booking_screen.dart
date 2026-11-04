@@ -35,6 +35,10 @@ class _BookingScreenState extends State<BookingScreen> {
   DateTime? selectedDate;
   String? selectedServiceId;
   List<String> selectedServiceIds = [];
+
+  /// Catálogo local: arranca con el que trajo la navegación y se refresca si
+  /// el backend responde que la selección ya no existe (`SERVICES_NOT_FOUND`).
+  late List<Map<String, dynamic>> _servicios = List.of(widget.services);
   String serviceAddress = '';
   String notes = '';
 
@@ -80,8 +84,8 @@ class _BookingScreenState extends State<BookingScreen> {
     // Default to tomorrow
     selectedDate = DateTime(now.year, now.month, now.day + 1);
     _calendarMonth = selectedDate!;
-    if (widget.services.isNotEmpty) {
-      selectedServiceId = widget.services.first['id']?.toString();
+    if (_servicios.isNotEmpty) {
+      selectedServiceId = _servicios.first['id']?.toString();
       if (selectedServiceId != null) {
         selectedServiceIds = [selectedServiceId!];
       }
@@ -135,7 +139,7 @@ class _BookingScreenState extends State<BookingScreen> {
 
   Future<void> _loadRecommendedProducts() async {
     if (selectedServiceId == null) return;
-    final selectedService = widget.services.firstWhere(
+    final selectedService = _servicios.firstWhere(
       (s) => s['id']?.toString() == selectedServiceId,
       orElse: () => <String, dynamic>{},
     );
@@ -323,16 +327,34 @@ class _BookingScreenState extends State<BookingScreen> {
 
     setState(() => isLoading = true);
     try {
-      final res = await ApiService.createBooking(
-        providerId: widget.providerId,
-        serviceId: selectedServiceId!,
-        serviceIds: selectedServiceIds,
-        scheduledAt: scheduledDateTime.toIso8601String(),
-        serviceAddress: serviceAddress.trim(),
-        notes: notes.isNotEmpty ? notes : null,
-        productosAdicionales:
-            productosAdicionales.isNotEmpty ? productosAdicionales : null,
+      // Sanea la selección y, si el catálogo cambió, recarga y reintenta una
+      // vez: un 404 por servicio inexistente ya no deja el flujo sin salida.
+      final creada = await crearReservaConCatalogoFresco(
+        catalogo: _servicios,
+        seleccion: selectedServiceIds,
+        crear: (ids) => ApiService.createBooking(
+          providerId: widget.providerId,
+          serviceId: ids.first,
+          serviceIds: ids,
+          scheduledAt: scheduledDateTime.toIso8601String(),
+          serviceAddress: serviceAddress.trim(),
+          notes: notes.isNotEmpty ? notes : null,
+          productosAdicionales:
+              productosAdicionales.isNotEmpty ? productosAdicionales : null,
+        ),
+        recargarCatalogo: () async {
+          final fresco =
+              await ApiService.fetchProviderDetails(widget.providerId);
+          return (fresco['services'] as List? ?? const [])
+              .whereType<Map>()
+              .map((e) => Map<String, dynamic>.from(e))
+              .toList();
+        },
       );
+      _servicios = creada.catalogo;
+      selectedServiceIds = creada.serviciosUsados;
+      selectedServiceId = creada.serviciosUsados.first;
+      final res = creada.respuesta;
 
       final bookingId = res['booking_id']?.toString();
       if (bookingId == null) {
@@ -364,7 +386,7 @@ class _BookingScreenState extends State<BookingScreen> {
 
       final List<String> serviceNames = [];
       for (final id in selectedServiceIds) {
-        final s = widget.services.firstWhere(
+        final s = _servicios.firstWhere(
           (srv) => srv['id']?.toString() == id,
           orElse: () => <String, dynamic>{},
         );
@@ -394,12 +416,27 @@ class _BookingScreenState extends State<BookingScreen> {
           ivaValor: ivaValor,
         );
       }
+    } on SeleccionDeServiciosVaciaException {
+      // El catálogo cambió y ningún id elegido sigue existiendo: se le pide
+      // elegir de nuevo en vez de mostrarle una excepción.
+      if (mounted) {
+        setState(() => isLoading = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'El prestador actualizó su catálogo. Vuelve a elegir el servicio.',
+            ),
+            backgroundColor: Colors.orange,
+            duration: Duration(seconds: 5),
+          ),
+        );
+      }
     } catch (e) {
       if (mounted) {
         setState(() => isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ Error: $e'),
+            content: Text('❌ ${mensajeHumano(e)}'),
             backgroundColor: Colors.redAccent,
             duration: const Duration(seconds: 4),
           ),
@@ -1480,7 +1517,7 @@ class _BookingScreenState extends State<BookingScreen> {
     double servicesPrice = 0.0;
     List<String> serviceNames = [];
     for (final id in selectedServiceIds) {
-      final s = widget.services.firstWhere(
+      final s = _servicios.firstWhere(
         (srv) => srv['id']?.toString() == id,
         orElse: () => <String, dynamic>{},
       );
@@ -1701,12 +1738,12 @@ class _BookingScreenState extends State<BookingScreen> {
       );
 
   Widget _buildServiceSelectionList() {
-    if (widget.services.isEmpty) {
+    if (_servicios.isEmpty) {
       return const Text('⚠️ No hay servicios disponibles',
           style: TextStyle(color: Colors.orange));
     }
     return Column(
-      children: widget.services.map((service) {
+      children: _servicios.map((service) {
         final price = _parseDouble(service['precio'] ?? service['price']);
         final name = service['name']?.toString() ?? 'Sin nombre';
         final id = service['id']?.toString() ?? '';
@@ -1970,7 +2007,7 @@ class _BookingScreenState extends State<BookingScreen> {
     final double servicesTotal = selectedServiceIds.fold<double>(
       0.0,
       (sum, id) {
-        final s = widget.services.firstWhere(
+        final s = _servicios.firstWhere(
           (srv) => srv['id']?.toString() == id,
           orElse: () => <String, dynamic>{},
         );
