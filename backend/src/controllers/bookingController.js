@@ -53,6 +53,24 @@ const verifyWompiSignature = (req) => {
   return resultado.valid;
 };
 
+/**
+ * `services.business_profile_id` existe en producción pero no en las
+ * migraciones del repo (deriva de esquema). Se comprueba una vez por proceso
+ * para no pedir una columna inexistente en una base recién creada.
+ */
+let _servicesTieneBusinessProfileId = null;
+async function servicesTieneBusinessProfileId(transaction) {
+  if (_servicesTieneBusinessProfileId !== null) return _servicesTieneBusinessProfileId;
+  const filas = await sequelize.query(
+    `SELECT 1 FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = 'services'
+        AND column_name = 'business_profile_id'`,
+    { type: sequelize.QueryTypes.SELECT, transaction }
+  );
+  _servicesTieneBusinessProfileId = filas.length > 0;
+  return _servicesTieneBusinessProfileId;
+}
+
 // 🔹 CREAR RESERVA
 exports.createBooking = async (req, res) => {
   try {
@@ -95,8 +113,31 @@ exports.createBooking = async (req, res) => {
     // aislamiento del resto de la API no cambia.
     const { services, prestadorFiscal } = await sequelize.transaction(async (t) => {
       await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      // Un servicio puede pertenecer al prestador O a uno de sus perfiles de
+      // negocio (así los lista serviceController.getProviderServices). Filtrar
+      // sólo por provider_id hacía que un servicio elegible diera 404 SIEMPRE.
+      const tienePerfilNegocio = await servicesTieneBusinessProfileId(t);
+      const negocios = tienePerfilNegocio
+        ? await sequelize.query(
+            'SELECT id FROM business_profiles WHERE provider_id = :providerId',
+            {
+              replacements: { providerId: Number(provider_id) },
+              type: sequelize.QueryTypes.SELECT,
+              transaction: t,
+            }
+          )
+        : [];
+      const businessIds = negocios.map((n) => n.id);
       const filas = await Service.findAll({
-        where: { id: idsPedidos, provider_id },
+        where: {
+          id: idsPedidos,
+          [Op.or]: [
+            { provider_id: Number(provider_id) },
+            ...(businessIds.length
+              ? [{ business_profile_id: { [Op.in]: businessIds } }]
+              : []),
+          ],
+        },
         transaction: t,
       });
       // Condición tributaria del PRESTADOR, leída de SU cuenta — nunca del
