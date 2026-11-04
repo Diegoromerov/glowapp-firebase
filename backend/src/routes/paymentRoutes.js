@@ -304,7 +304,7 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
     try {
       const contacto = await runAsSystemContext(async () => {
         const r = await pool.query(
-          'SELECT email, nombre, fcm_token FROM usuarios WHERE id = $1',
+          'SELECT email, nombre FROM usuarios WHERE id = $1',
           [booking.client_id]
         );
         return r.rows[0] || null;
@@ -336,11 +336,24 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
         console.warn('[OTP] El cliente no tiene correo registrado:', booking.client_id);
       }
 
-      if (contacto?.fcm_token) {
-        await fcm.sendOtpReadyNotice(contacto.fcm_token, {
-          bookingId: id,
-          serviceName: booking.service_name || null,
+      // El push es opcional y va despues del correo: si el token no existe o el
+      // envio falla, el cliente ya tiene el codigo en su buzon.
+      try {
+        const tokenRes = await runAsSystemContext(async () => {
+          const r = await pool.query(
+            'SELECT fcm_token FROM usuarios WHERE id = $1',
+            [booking.client_id]
+          );
+          return r.rows[0] || null;
         });
+        if (tokenRes?.fcm_token) {
+          await fcm.sendOtpReadyNotice(tokenRes.fcm_token, {
+            bookingId: id,
+            serviceName: booking.service_name || null,
+          });
+        }
+      } catch (pushErr) {
+        console.warn('[OTP] Aviso push no enviado:', pushErr.message);
       }
     } catch (envioErr) {
       console.error('[OTP] No se pudo entregar el código:', envioErr.message);

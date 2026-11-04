@@ -64,6 +64,8 @@ const MIGRACIONES = [
     '124_auth_lookup_security_definer.sql',
     // Aspectos de la reseña (columna aditiva, nula por defecto)
     '127_review_aspectos.sql',
+    // Token push del usuario (authController ya lo escribia sin columna)
+    '128_usuario_fcm_token.sql',
   ];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto
