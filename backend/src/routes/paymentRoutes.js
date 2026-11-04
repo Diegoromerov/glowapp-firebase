@@ -246,7 +246,7 @@ router.get('/bookings/:id/otp', authMiddleware, otpLimiter, async (req, res) => 
 
     const datos = await runAsSystem({ pool }, async (c) => {
       const r = await c.query(
-        `SELECT ov.client_id, ov.codigo_cifrado, ov.estado, ov.expira_at, b.estado AS booking_estado
+        `SELECT b.client_id, ov.codigo_cifrado, ov.estado, ov.expira_at, b.estado AS booking_estado
            FROM otp_validaciones ov
            JOIN bookings b ON b.id = ov.booking_id
           WHERE ov.booking_id = $1`,
