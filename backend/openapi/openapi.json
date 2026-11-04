@@ -1943,6 +1943,22 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/auth/facebook": {
+      "post": {
+        "operationId": "postapi_auth_facebook",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "POST /api/auth/facebook (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "auth"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
     "/api/auth/fcm-token": {
       "post": {
         "operationId": "postapi_auth_fcm_token",
@@ -2361,20 +2377,54 @@
             "application/json": {
               "schema": {
                 "properties": {
-                  "fechaHora": {
+                  "notes": {
+                    "type": "string"
+                  },
+                  "productos_adicionales": {
+                    "items": {
+                      "properties": {
+                        "cantidad": {
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "cantidad"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "provider_id": {
+                    "example": "3",
+                    "type": "string"
+                  },
+                  "scheduled_at": {
                     "format": "date-time",
                     "type": "string"
                   },
-                  "notas": {
+                  "service_address": {
                     "type": "string"
                   },
-                  "serviceId": {
-                    "type": "integer"
+                  "service_id": {
+                    "description": "Compatibilidad: se usa sólo si no viene service_ids.",
+                    "type": "string"
+                  },
+                  "service_ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 },
                 "required": [
-                  "serviceId",
-                  "fechaHora"
+                  "provider_id",
+                  "service_ids",
+                  "scheduled_at"
                 ],
                 "type": "object"
               }
@@ -2383,6 +2433,9 @@
           "required": true
         },
         "responses": {
+          "200": {
+            "description": "Reserva (o reservas enlazadas) creada."
+          },
           "201": {
             "description": "Reserva creada."
           },
@@ -2396,7 +2449,39 @@
             "description": "El rol del usuario no puede reservar."
           },
           "404": {
-            "description": "Servicio inexistente."
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": "SERVICES_NOT_FOUND",
+                      "type": "string"
+                    },
+                    "error": {
+                      "example": "Uno o más servicios no fueron encontrados",
+                      "type": "string"
+                    },
+                    "missing_service_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "code",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Uno o más servicios no existen o no son del prestador."
           },
           "409": {
             "description": "Conflicto de disponibilidad."
@@ -2626,6 +2711,31 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/bookings/{id}/otp": {
+      "get": {
+        "operationId": "getapi_bookings_id_otp",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/bookings/{id}/otp (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "bookings"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
     "/api/bookings/{id}/pay": {
       "post": {
         "operationId": "post_api_bookings_id_pay",
@@ -2695,6 +2805,31 @@
         "x-glowapp-area": "booking",
         "x-glowapp-critical": true,
         "x-glowapp-documented": true
+      }
+    },
+    "/api/bookings/{id}/payment-link": {
+      "post": {
+        "operationId": "postapi_bookings_id_payment_link",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "POST /api/bookings/{id}/payment-link (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "bookings"
+        ],
+        "x-glowapp-documented": false
       }
     },
     "/api/bookings/{id}/reschedule": {
@@ -7773,8 +7908,8 @@
   ],
   "x-glowapp-contract": {
     "generator": "backend/src/openapi/buildOpenApi.js",
-    "operationsDiscovered": 348,
+    "operationsDiscovered": 351,
     "operationsDocumented": 18,
-    "routesMounted": 366
+    "routesMounted": 369
   }
 }

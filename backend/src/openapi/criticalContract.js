@@ -105,19 +105,60 @@ const CRITICAL_OPERATIONS = {
       security: BEARER,
       requestBody: jsonBody({
         type: 'object',
-        required: ['serviceId', 'fechaHora'],
+        required: ['provider_id', 'service_ids', 'scheduled_at'],
         properties: {
-          serviceId: { type: 'integer' },
-          fechaHora: { type: 'string', format: 'date-time' },
-          notas: { type: 'string' },
+          provider_id: { type: 'string', example: '3' },
+          service_id: {
+            type: 'string',
+            description: 'Compatibilidad: se usa sólo si no viene service_ids.',
+          },
+          service_ids: { type: 'array', items: { type: 'string' } },
+          scheduled_at: { type: 'string', format: 'date-time' },
+          service_address: { type: 'string' },
+          notes: { type: 'string' },
+          productos_adicionales: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['id', 'cantidad'],
+              properties: {
+                id: { type: 'string' },
+                cantidad: { type: 'integer', minimum: 1 },
+              },
+            },
+          },
         },
       }),
       responses: {
+        200: { description: 'Reserva (o reservas enlazadas) creada.' },
         201: { description: 'Reserva creada.' },
         400: { description: 'Cuerpo o parámetros inválidos.' },
         401: { description: 'No autenticado.' },
         403: { description: 'El rol del usuario no puede reservar.' },
-        404: { description: 'Servicio inexistente.' },
+        404: {
+          description:
+            'Uno o más servicios no existen o no son del prestador.',
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                required: ['success', 'code', 'error'],
+                properties: {
+                  success: { type: 'boolean', example: false },
+                  code: { type: 'string', example: 'SERVICES_NOT_FOUND' },
+                  error: {
+                    type: 'string',
+                    example: 'Uno o más servicios no fueron encontrados',
+                  },
+                  missing_service_ids: {
+                    type: 'array',
+                    items: { type: 'string' },
+                  },
+                },
+              },
+            },
+          },
+        },
         409: { description: 'Conflicto de disponibilidad.' },
         500: { description: 'Error interno al crear la reserva.' },
       },
