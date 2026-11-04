@@ -24,17 +24,25 @@ function check(nombre, ok, detalle) {
 }
 
 async function crearReserva(provider_id, service_id, dias) {
-  const r = await fetch(`${BASE}/api/bookings`, {
-    method: 'POST', headers: HC,
-    body: JSON.stringify({
-      provider_id,
-      service_ids: [service_id],
-      scheduled_at: new Date(Date.now() + dias * 86400e3).toISOString(),
-      service_address: 'Calle 1 # 2-3, Bogota',
-    }),
-  });
-  const b = await r.json();
-  return { status: r.status, id: b.booking_id || b.id, body: b };
+  // Si dos corridas caen en la misma franja, la segunda recibe 409 por solape.
+  // Se reintenta con otro desplazamiento en vez de leerlo como fallo del flujo.
+  for (let intento = 0; intento < 3; intento++) {
+    const desplazamiento = dias + intento * 7 + Math.floor(Math.random() * 5);
+    const r = await fetch(`${BASE}/api/bookings`, {
+      method: 'POST', headers: HC,
+      body: JSON.stringify({
+        provider_id,
+        service_ids: [service_id],
+        scheduled_at: new Date(Date.now() + desplazamiento * 86400e3).toISOString(),
+        service_address: 'Calle 1 # 2-3, Bogota',
+      }),
+    });
+    const b = await r.json();
+    const id = b.booking_id || b.id;
+    if (r.status === 200 && id) return { status: r.status, id, body: b };
+    if (r.status !== 409) return { status: r.status, id: null, body: b };
+  }
+  return { status: 409, id: null, body: { error: 'sin franja libre tras 3 intentos' } };
 }
 
 async function pagarYConfirmar(bookingId, valorBruto, providerId) {
