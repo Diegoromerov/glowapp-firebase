@@ -65,7 +65,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _errorMessage = 'Error de conexión: $e';
+          _errorMessage = mensajeHumano(e);
           _isLoadingPreferences = false;
         });
       }
@@ -143,7 +143,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error de conexión: $e'),
+            content: Text(mensajeHumano(e)),
             backgroundColor: const Color(0xFFB00020),
           ),
         );
@@ -295,7 +295,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     setDialogState(() => isLoading = false);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Error de conexión: $e'),
+                        content: Text(mensajeHumano(e)),
                         backgroundColor: const Color(0xFFB00020),
                       ),
                     );
@@ -414,7 +414,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error de conexión: $e'),
+            content: Text(mensajeHumano(e)),
             backgroundColor: const Color(0xFFB00020),
           ),
         );

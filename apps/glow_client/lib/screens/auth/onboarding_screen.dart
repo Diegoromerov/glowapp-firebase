@@ -274,7 +274,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Navigator.pushReplacementNamed(context, '/home');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = mensajeHumano(e));
     } finally {
       if (mounted) setState(() {
         _isLoading = false;
@@ -516,7 +516,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         if (type == 'cert') _certificacionUrl = dataUri;
       });
     } catch (e) {
-      setState(() => _error = 'Error al subir el archivo: $e');
+      setState(() => _error = 'No pudimos subir el archivo. Revisa tu conexión e inténtalo otra vez.');
     } finally {
       setState(() {
         if (type == 'doc') _uploadingDoc = false;
@@ -574,7 +574,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         }
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = mensajeHumano(e));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -612,7 +612,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         setState(() => _error = 'Error al guardar el borrador');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = mensajeHumano(e));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

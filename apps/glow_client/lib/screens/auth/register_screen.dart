@@ -104,7 +104,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = mensajeHumano(e));
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);

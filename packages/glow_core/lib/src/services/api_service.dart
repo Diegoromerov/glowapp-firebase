@@ -234,7 +234,9 @@ class ApiService {
   // de reintentos con backoff exponencial y cortocircuito si no hay red.
 
   /// Timeout único para todas las peticiones HTTP.
-  static Duration requestTimeout = const Duration(seconds: 30);
+  // 30 s de espera sin ninguna señal es abandono: a 15 s el usuario ya esta
+  // mirando otra cosa o ha cerrado la app.
+  static Duration requestTimeout = const Duration(seconds: 15);
 
   /// Reintentos tras el intento inicial (backoff 1x, 2x, 4x…).
   static const int maxRetries = 3;

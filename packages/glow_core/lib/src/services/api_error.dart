@@ -51,3 +51,36 @@ String _mensajePorEstado(int status) {
   }
   return status >= 500 ? 'Error del servidor' : 'Error';
 }
+
+/// Convierte un error de red o de excepción en algo que el usuario pueda leer.
+///
+/// La app mostraba `$e` completo ("Exception: SocketException: Failed host
+/// lookup"), que no le dice nada a una clienta. Aquí se traduce a una frase con
+/// una acción implícita.
+String mensajeHumano(Object error) {
+  final texto = error.toString();
+
+  if (texto.contains('SocketException') ||
+      texto.contains('ClientException') ||
+      texto.contains('Failed host lookup') ||
+      texto.contains('Network is unreachable') ||
+      texto.contains('Connection refused')) {
+    return 'No pudimos conectar. Revisa tu internet e inténtalo de nuevo.';
+  }
+  if (texto.contains('TimeoutException') || texto.contains('timed out')) {
+    return 'La conexión está muy lenta. Inténtalo otra vez.';
+  }
+  if (texto.contains('401') || texto.contains('sesión')) {
+    return 'Tu sesión venció. Vuelve a iniciar sesión.';
+  }
+  if (texto.contains('500') || texto.contains('502') || texto.contains('503')) {
+    return 'Algo falló de nuestro lado. Estamos en ello: prueba en un momento.';
+  }
+
+  // Los mensajes del backend ya están escritos para el usuario: se limpian del
+  // prefijo técnico y se muestran.
+  return texto
+      .replaceFirst('Exception: ', '')
+      .replaceFirst('Error: ', '')
+      .trim();
+}

@@ -64,7 +64,7 @@ class _AcceptInvitationScreenState extends State<AcceptInvitationScreen> {
         });
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = mensajeHumano(e));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

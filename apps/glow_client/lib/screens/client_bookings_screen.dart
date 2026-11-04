@@ -36,6 +36,12 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
       // En web, Wompi devuelve al usuario a la propia app con `?id=<transacción>`;
       // la pantalla de citas recarga al abrir y tiene pull-to-refresh. En móvil no
       // hay enlace profundo configurado, así que se queda en la página de Wompi.
+      AnalyticsService().logEvent(
+        eventType: 'PAYMENT_OPENED',
+        screenName: '/my-bookings',
+        elementId: 'ir_a_pagar',
+        metadata: {'booking_id': id},
+      );
       final link = await ApiService.createBookingPaymentLink(
         id,
         redirectUrl: kIsWeb ? '${Uri.base.origin}/#/my-bookings' : null,
@@ -224,6 +230,12 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
         : (booking['provider_name']?.toString() ?? 'tu prestador');
 
     try {
+      AnalyticsService().logEvent(
+        eventType: 'OTP_OPENED',
+        screenName: '/my-bookings',
+        elementId: 'ver_mi_codigo',
+        metadata: {'booking_id': booking['id'].toString()},
+      );
       final datos = await ApiService.fetchBookingOtp(booking['id'].toString());
       final codigo = datos['codigo']?.toString() ?? '';
       if (!mounted) return;
@@ -305,6 +317,12 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
       initialRating: nota,
     );
     if (publicada == true && mounted) {
+      AnalyticsService().logEvent(
+        eventType: 'REVIEW_PUBLISHED',
+        screenName: '/my-bookings',
+        elementId: 'resena',
+        metadata: {'booking_id': booking['id'].toString(), 'nota': nota},
+      );
       _loadBookings();
     }
   }

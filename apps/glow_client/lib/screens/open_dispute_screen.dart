@@ -106,7 +106,7 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
       }
     } catch (e) {
       setState(() {
-        _error = 'Error de conexión: $e';
+        _error = mensajeHumano(e);
       });
     } finally {
       if (mounted) {

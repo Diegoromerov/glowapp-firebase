@@ -56,7 +56,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'Error de conexión: $e';
+        _errorMessage = mensajeHumano(e);
         _isLoading = false;
       });
     }
@@ -96,7 +96,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'Error de conexión: $e';
+        _errorMessage = mensajeHumano(e);
         _isLoading = false;
       });
     }

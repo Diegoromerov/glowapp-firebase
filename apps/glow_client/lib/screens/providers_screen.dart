@@ -383,6 +383,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       setStateModal(() {
                         resolving = false;
                       });
+                      if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('No pudimos localizar esa dirección. Intenta otra.')),
                       );
@@ -443,7 +444,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           // Si ya cargó del caché no pisamos los datos con un error
           if (_allProviders.isEmpty) {
             setState(() {
-              _errorMessage = 'Fallo de conexión tras varios intentos: ${e.toString()}';
+              _errorMessage = mensajeHumano(e);
               _isLoading = false;
             });
           } else {
@@ -1145,10 +1146,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       // Chat Directo
                       IconButton(
                         onPressed: () async {
+                          // Se captura antes del await: si la peticion tarda y
+                          // la pantalla se desmonta, usar `context` lanza y el
+                          // boton queda muerto.
+                          final navigator = Navigator.of(context);
                           final token = await AuthService.getToken();
                           if (token == null) {
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, '/auth/login');
+                            navigator.pop();
+                            navigator.pushNamed('/auth/login');
                             return;
                           }
                           if (context.mounted) {

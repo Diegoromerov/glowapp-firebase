@@ -41,7 +41,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
       }
     } catch (e) {
       setState(() {
-        _error = 'Error de conexión: $e';
+        _error = mensajeHumano(e);
       });
     } finally {
       setState(() {

@@ -63,6 +63,13 @@ class _BookingScreenState extends State<BookingScreen> {
   @override
   void initState() {
     super.initState();
+
+    // Embudo: sin este evento no se sabe cuánta gente entra a reservar y no
+    // termina. La telemetría respeta el consentimiento del usuario.
+    AnalyticsService().logEvent(
+      eventType: 'BOOKING_STARTED',
+      screenName: '/booking',
+    );
     notes = widget.initialNotes ?? '';
     serviceAddress = widget.initialAddress ?? '';
     _addressController.text = serviceAddress;

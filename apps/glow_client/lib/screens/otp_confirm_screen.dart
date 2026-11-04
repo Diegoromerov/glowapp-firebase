@@ -85,6 +85,11 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
       if (!mounted) return;
       setState(() => _isLoading = false);
       if (ok) {
+        AnalyticsService().logEvent(
+          eventType: 'OTP_CONFIRMED',
+          screenName: '/otp',
+          metadata: {'booking_id': widget.bookingId},
+        );
         setState(() => _exitoso = true);
       } else {
         _aviso('Código incorrecto o vencido.');

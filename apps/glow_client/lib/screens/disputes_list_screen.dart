@@ -39,7 +39,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
       }
     } catch (e) {
       setState(() {
-        _error = 'Error de conexión: $e';
+        _error = mensajeHumano(e);
       });
     } finally {
       setState(() {

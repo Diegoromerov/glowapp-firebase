@@ -692,7 +692,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     processing = false;
                                   });
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Error creando pedido: $e')),
+                                    SnackBar(content: Text('No pudimos crear tu pedido. ${mensajeHumano(e)}')),
                                   );
                                   return;
                                 }
