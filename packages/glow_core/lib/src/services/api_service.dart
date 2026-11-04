@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'api_error.dart';
+import 'booking_selection.dart';
 import 'payload.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -544,6 +545,12 @@ class ApiService {
         .timeout(requestTimeout);
     if (response.statusCode == 200 || response.statusCode == 201) {
       return json.decode(response.body);
+    }
+    // El catálogo cambió (servicio borrado o reasignado): la pantalla sabe
+    // recargar el detalle y reintentar. Cualquier otro error sigue siendo
+    // un mensaje de texto.
+    if (esServiciosNoEncontrados(response.statusCode, response.body)) {
+      throw const ServiciosNoEncontradosException();
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
