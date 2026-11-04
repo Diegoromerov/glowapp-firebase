@@ -3,6 +3,10 @@ class ProviderModel {
   final double ratingAvg, latitude, longitude;
   final int ratingCount, distanceMeters;
   final bool isVerified, isSalon;
+  /// Primer hueco libre HOY ('HH:MM'), o null si no le queda agenda.
+  /// Lo calcula el backend con el horario del prestador y sus reservas.
+  final String? nextSlotToday;
+  final bool availableToday;
 
   double get rating => ratingAvg;
 
@@ -19,6 +23,8 @@ class ProviderModel {
     required this.latitude,
     required this.longitude,
     this.isSalon = false,
+    this.nextSlotToday,
+    this.availableToday = false,
   });
 
   factory ProviderModel.fromJson(Map<String, dynamic> json) => ProviderModel(
@@ -34,6 +40,8 @@ class ProviderModel {
         latitude: _toSafeDouble(json['latitude']),
         longitude: _toSafeDouble(json['longitude']),
         isSalon: json['is_salon'] as bool? ?? false,
+        nextSlotToday: json['next_slot_today'] as String?,
+        availableToday: json['available_today'] as bool? ?? false,
       );
 
   Map<String, dynamic> toJson() => {

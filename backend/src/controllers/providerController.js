@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const { calcularHuecoHoy } = require('../utils/disponibilidad');
 const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 
@@ -71,6 +72,8 @@ exports.getProviders = async (req, res) => {
             ST_X(p.ubicacion::geometry) AS longitude,
             ST_Y(p.ubicacion::geometry) AS latitude,
             COALESCE(pl.tier, 'Creative Edge') as loyalty_tier,
+            p.active_start_hour as start_hour,
+            p.active_end_hour as end_hour,
             ST_Distance(p.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM perfiles_prestador p
           INNER JOIN usuarios u ON p.id = u.id
@@ -102,6 +105,8 @@ exports.getProviders = async (req, res) => {
             COALESCE(s.longitude, ST_X(s.ubicacion::geometry)) AS longitude,
             COALESCE(s.latitude, ST_Y(s.ubicacion::geometry)) AS latitude,
             'Creative Edge' as loyalty_tier,
+            NULL::int as start_hour,
+            NULL::int as end_hour,
             ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM salones s
           WHERE s.ubicacion IS NOT NULL
@@ -141,6 +146,8 @@ exports.getProviders = async (req, res) => {
           4.6735 as latitude,
           -74.1422 as longitude,
           'Creative Edge' as loyalty_tier,
+          p.active_start_hour as start_hour,
+          p.active_end_hour as end_hour,
           0 as distance_meters
         FROM perfiles_prestador p
         INNER JOIN usuarios u ON p.id = u.id
@@ -182,6 +189,90 @@ exports.getProviders = async (req, res) => {
       latitude: parseFloat(row.latitude) || 4.6097,
       longitude: parseFloat(row.longitude) || -74.0817
     }));
+
+    // ── «Cerca y disponible hoy» ─────────────────────────────────────────────
+    // Una ficha a 300 m que solo tiene cita el jueves no resuelve "quiero algo
+    // hoy". Se calcula el primer hueco real de cada prestador y la
+    // disponibilidad pasa por delante de la distancia en el orden.
+    const ahora = new Date();
+    const idsIndividuales = result.rows
+      .filter((r) => !r.is_salon)
+      .map((r) => parseInt(r.id, 10))
+      .filter((n) => Number.isFinite(n));
+
+    const porId = new Map(result.rows.map((r) => [String(r.id), r]));
+
+    if (idsIndividuales.length) {
+      const inicioDia = new Date(ahora);
+      inicioDia.setHours(0, 0, 0, 0);
+      const finDia = new Date(ahora);
+      finDia.setHours(23, 59, 59, 999);
+
+      let reservasHoy = { rows: [] };
+      let duraciones = { rows: [] };
+      try {
+        [reservasHoy, duraciones] = await Promise.all([
+          pool.query(
+            `SELECT b.provider_id, b.scheduled_at, COALESCE(s.duration_minutes, 60) AS dur
+               FROM bookings b
+               LEFT JOIN services s ON s.id = b.service_id
+              WHERE b.provider_id = ANY($1::int[])
+                AND b.estado NOT IN ('CANCELADA', 'CANCELLED')
+                AND b.scheduled_at >= $2 AND b.scheduled_at <= $3`,
+            [idsIndividuales, inicioDia, finDia]
+          ),
+          pool.query(
+            `SELECT provider_id, MIN(duration_minutes) AS dur
+               FROM services
+              WHERE provider_id = ANY($1::int[]) AND is_active = true
+              GROUP BY provider_id`,
+            [idsIndividuales]
+          ),
+        ]);
+      } catch (agendaErr) {
+        // Sin agenda no se puede afirmar disponibilidad: mejor no prometerla.
+        console.warn('⚠️ No se pudo calcular la disponibilidad de hoy:', agendaErr.message);
+      }
+
+      const duracionPor = new Map(
+        duraciones.rows.map((r) => [String(r.provider_id), parseInt(r.dur, 10) || 60])
+      );
+      const ocupadosPor = new Map();
+      for (const fila of reservasHoy.rows) {
+        const clave = String(fila.provider_id);
+        const inicio = new Date(fila.scheduled_at);
+        const fin = new Date(inicio.getTime() + (parseInt(fila.dur, 10) || 60) * 60000);
+        if (!ocupadosPor.has(clave)) ocupadosPor.set(clave, []);
+        ocupadosPor.get(clave).push({ inicio, fin });
+      }
+
+      for (const prov of formattedProviders) {
+        const fila = porId.get(String(prov.id));
+        prov.next_slot_today = prov.is_salon
+          ? null
+          : calcularHuecoHoy({
+              ahora,
+              horaInicio: fila?.start_hour ?? null,
+              horaFin: fila?.end_hour ?? null,
+              duracionMinutos: duracionPor.get(String(prov.id)) || 60,
+              ocupados: ocupadosPor.get(String(prov.id)) || [],
+            });
+        prov.available_today = Boolean(prov.next_slot_today);
+      }
+
+      formattedProviders.sort((a, b) => {
+        if (a.available_today !== b.available_today) return a.available_today ? -1 : 1;
+        const franjaA = Math.floor(a.distance_meters / 1000);
+        const franjaB = Math.floor(b.distance_meters / 1000);
+        if (franjaA !== franjaB) return franjaA - franjaB;
+        return (b.rating_score || 0) - (a.rating_score || 0);
+      });
+    } else {
+      for (const prov of formattedProviders) {
+        prov.next_slot_today = null;
+        prov.available_today = false;
+      }
+    }
 
     const response = {
       success: true,
