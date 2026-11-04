@@ -2320,7 +2320,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         'providerName': p.businessName.isNotEmpty ? p.businessName : p.fullName,
                         'avatarUrl': p.avatarUrl,
                       },
-                    );
+                    ).then((_) {
+                      // Al volver, el atras devuelve al home (mapa), no a la
+                      // lista de prestadores desde la que se entro.
+                      if (!mounted) return;
+                      setState(() => _soloLista = false);
+                    });
                   },
                   onPosicion: (_) {},
                   construirTarjeta: _buildTarjetaResultado,
