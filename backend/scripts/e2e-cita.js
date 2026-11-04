@@ -149,6 +149,15 @@ async function pagarYConfirmar(bookingId, valorBruto, providerId) {
   // ── FLUJO 5: cancelación (otra cita) ───────────────────────────────────────
   const b = await crearReserva(provider_id, service_id, 17);
   creadas.push(b.id);
+  // Sin este control, un fallo al crear la reserva seguía con id undefined y el
+  // 400 real se disfrazaba de 500 dentro de Postgres.
+  check('reserva para cancelación creada', b.status === 200 && !!b.id, `HTTP ${b.status}`);
+  if (!b.id) {
+    check('cancelación aceptada', false, 'no se pudo crear la reserva');
+    check('la cita queda CANCELADA', false, 'no se pudo crear la reserva');
+    return terminar(creadas);
+  }
+
   const lista2 = await (await fetch(`${BASE}/api/bookings/client`, { headers: HC })).json();
   const valorB = Number((lista2.data || []).find((x) => x.id === b.id)?.total_amount || 0);
   await pagarYConfirmar(b.id, valorB, provider_id);
@@ -162,6 +171,10 @@ async function pagarYConfirmar(bookingId, valorBruto, providerId) {
   check('la cita queda CANCELADA', cb.rows[0]?.estado === 'CANCELADA', cb.rows[0]?.estado);
   await d4.end();
 
+  return terminar(creadas);
+})().catch((e) => { console.error('ERR', e.message); process.exit(2); });
+
+async function terminar(creadas) {
   // ── limpieza ───────────────────────────────────────────────────────────────
   const d5 = db(); await d5.connect();
   for (const id of creadas.filter(Boolean)) {
@@ -183,4 +196,4 @@ async function pagarYConfirmar(bookingId, valorBruto, providerId) {
     console.log('fallos:', fallos.map((f) => f.nombre).join(' | '));
     process.exit(1);
   }
-})().catch((e) => { console.error('ERR', e.message); process.exit(2); });
+}
