@@ -82,12 +82,67 @@ function renderTemplate(name, data) {
 /**
  * Envía email
  */
+
+/**
+ * Envío por la API HTTP de Brevo.
+ *
+ * Railway bloquea el SMTP saliente (25/465/587): el relay de Brevo daba
+ * "Connection timeout" aunque las credenciales fueran correctas. La API va por
+ * 443, así que es la vía que funciona en producción.
+ */
+function _partesRemitente() {
+  const crudo = process.env.SMTP_FROM || 'GlowApp <no-reply@glowapp.com>';
+  const m = crudo.match(/^\s*(.*?)\s*<([^>]+)>\s*$/);
+  if (m) return { name: m[1] || 'GlowApp', email: m[2] };
+  return { name: 'GlowApp', email: crudo.trim() };
+}
+
+async function enviarPorApiBrevo({ to, subject, html, text }) {
+  const apiKey = process.env.BREVO_API_KEY;
+  const remitente = _partesRemitente();
+  const cuerpo = {
+    sender: remitente,
+    to: [{ email: to }],
+    subject,
+    htmlContent: html,
+    textContent: text,
+  };
+
+  const respuesta = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'api-key': apiKey,
+      'content-type': 'application/json',
+      accept: 'application/json',
+    },
+    body: JSON.stringify(cuerpo),
+  });
+
+  const detalle = await respuesta.text();
+  if (!respuesta.ok) {
+    throw new Error(`Brevo API ${respuesta.status}: ${detalle.slice(0, 200)}`);
+  }
+  let id = null;
+  try {
+    id = JSON.parse(detalle).messageId || null;
+  } catch (_) {
+    id = null;
+  }
+  console.log(`[emailService] Email enviado por API Brevo a ${to}: ${id || 'sin id'}`);
+  return { messageId: id, via: 'brevo-api' };
+}
+
 async function sendEmail({ to, subject, template, data = {}, attachments = [] }) {
   const tx = initEmailService();
   const from = process.env.SMTP_FROM || 'GlowApp <no-reply@glowapp.com>';
 
   const html = template ? renderTemplate(template, data) : data.html || '';
   const text = data.text || html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+  // API HTTP primero: en Railway el SMTP saliente no sale del contenedor.
+  if (process.env.BREVO_API_KEY) {
+    return await enviarPorApiBrevo({ to, subject, html, text });
+  }
 
   const mailOptions = {
     from,
