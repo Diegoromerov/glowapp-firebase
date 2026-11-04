@@ -2315,16 +2315,22 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           // tarjeta del prestador seleccionado, que ocupa ese mismo espacio.
           // Se oculta con el menú de capas abierto: ese menú crece hacia arriba
           // y ocuparía el mismo sitio.
+          // Mismo boton que el de capas (tamano completo, dorado de marca, borde
+          // circular y misma elevacion) y en la misma columna: right 20, y justo
+          // encima suyo (56 de alto + 12 de aire).
           if (!_isMapMenuOpen)
             Positioned(
+              right: 20,
               bottom: MediaQuery.of(context).padding.bottom +
                   (_selectedProvider != null && !_soloLista ? 224 : 104) +
-                  56,
-              right: 16,
-              child: FloatingActionButton.small(
+                  68,
+              child: FloatingActionButton(
                 heroTag: 'toggle_lista',
-                backgroundColor: isMen ? const Color(0xFF1E1A16) : Colors.white,
-                foregroundColor: const Color(0xFFC5A052),
+                tooltip: _soloLista ? 'Ver mapa' : 'Ver lista',
+                backgroundColor: AppTheme.primary,
+                foregroundColor: Colors.white,
+                elevation: 4,
+                shape: const CircleBorder(),
                 onPressed: () {
                   setState(() => _soloLista = !_soloLista);
                   AnalyticsService().logEvent(
@@ -2332,7 +2338,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     screenName: '/home',
                   );
                 },
-                child: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+                child: Icon(
+                  _soloLista ? Icons.map_outlined : Icons.view_list_rounded,
+                  size: 24,
+                ),
               ),
             ),
 
