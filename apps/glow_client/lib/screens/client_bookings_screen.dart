@@ -3,6 +3,7 @@ import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:url_launcher/url_launcher.dart';
+import '../widgets/reschedule_sheet.dart';
 import '../widgets/service_review_sheet.dart';
 import 'otp_confirm_screen.dart';
 class ClientBookingsScreen extends StatefulWidget {
@@ -998,15 +999,17 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   const SizedBox(width: 8),
                   Expanded(
                     child: ElevatedButton.icon(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Selecciona nueva fecha en el perfil de la proveedora')),
-                        );
-                        Navigator.pushNamed(
+                      // Antes solo mostraba un aviso y abría el perfil: no
+                      // reprogramaba nada. Ahora pide los huecos reales del
+                      // prestador y aplica el cambio.
+                      onPressed: () async {
+                        final cambiada = await showRescheduleSheet(
                           context,
-                          '/provider-detail',
-                          arguments: booking['provider_id'],
+                          bookingId: booking['id'].toString(),
+                          providerId: booking['provider_id'].toString(),
+                          serviceId: (booking['service_id'] ?? '').toString(),
                         );
+                        if (cambiada == true && mounted) _loadBookings();
                       },
                       icon: const Icon(Icons.calendar_month_outlined, size: 16),
                       label: const Text('Reprogramar', style: TextStyle(fontSize: 12)),

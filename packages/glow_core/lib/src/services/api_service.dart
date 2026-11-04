@@ -596,6 +596,23 @@ class ApiService {
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
+  /// Cambia la fecha de una cita. El backend permite una sola reprogramación
+  /// por reserva (D-GL-023) y responde 409 si ya se usó.
+  static Future<Map<String, dynamic>> rescheduleBooking(
+      String bookingId, String scheduledAtIso) async {
+    final headers = await _getAuthHeaders();
+    final response = await http
+        .patch(
+          Uri.parse('$_baseUrl$_apiPath/bookings/$bookingId/reschedule'),
+          headers: headers,
+          body: json.encode({'scheduled_at': scheduledAtIso}),
+        )
+        .timeout(requestTimeout);
+    if (response.statusCode == 200) return json.decode(response.body);
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'Error ${response.statusCode}'));
+  }
+
   /// Enlace de pago (Web Checkout de Wompi) para una cita pendiente.
   /// La firma de integridad la calcula el backend: el secreto no viaja al cliente.
   static Future<Map<String, dynamic>> createBookingPaymentLink(

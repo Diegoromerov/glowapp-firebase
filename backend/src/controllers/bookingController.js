@@ -346,6 +346,7 @@ exports.getProviderBookings = async (req, res) => {
       platform_commission: parseFloat(row.platform_commission) || 0,
       state_tax: parseFloat(row.state_tax) || 0,
       provider_net_amount: parseFloat(row.provider_net_amount) || 0,
+      service_id: row.service_id,
       service_name: row.service_name,
       price: parseFloat(row.price) || 0,
       client_name: row.client_name,
@@ -421,7 +422,7 @@ exports.getClientBookings = async (req, res) => {
     const query = `
       SELECT 
         b.id, b.scheduled_at, b.estado AS status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
-        s.name as service_name, s.duration_minutes as service_duration,
+        b.service_id, s.name as service_name, s.duration_minutes as service_duration,
         u_prov.nombre as provider_name,
         p.business_name as provider_business_name,
         u_prov.foto_url as provider_avatar_url,
