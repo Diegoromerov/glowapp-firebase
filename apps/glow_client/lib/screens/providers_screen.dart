@@ -2301,7 +2301,27 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 child: HomeResultsSheet(
                   proveedores: _filteredProviders,
                   tamanoInicial: 0.9,
-                  onSelect: (p) => setState(() => _selectedProvider = p),
+                  // Tocar la tarjeta lleva al perfil del prestador. Se marca
+                  // como seleccionado para que el mapa lo destaque al volver.
+                  // La ruta espera un Map: pasar el id suelto revienta el cast.
+                  onSelect: (p) {
+                    setState(() => _selectedProvider = p);
+                    AnalyticsService().logEvent(
+                      eventType: 'PROVIDER_CARD_TAP',
+                      screenName: '/home',
+                      elementId: p.id,
+                      metadata: {'metros': p.distanceMeters},
+                    );
+                    Navigator.pushNamed(
+                      context,
+                      '/provider-detail',
+                      arguments: {
+                        'providerId': p.id,
+                        'providerName': p.businessName.isNotEmpty ? p.businessName : p.fullName,
+                        'avatarUrl': p.avatarUrl,
+                      },
+                    );
+                  },
                   onPosicion: (_) {},
                   construirTarjeta: _buildTarjetaResultado,
                   mensajeVacio: 'No hay prestadores en este radio.',
