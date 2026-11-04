@@ -1,21 +1,20 @@
 // El home ordena por «cerca y disponible hoy»: si el hueco se calcula mal, se
 // ofrece una cita que no existe y el usuario llega a un calendario vacío.
+//
+// Los instantes se construyen en UTC a propósito: el cálculo convierte a hora de
+// Bogotá con un desplazamiento fijo, y así la prueba no depende de la zona del
+// equipo que la ejecute.
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 
-const { calcularHuecoHoy } = require(
-  path.join(__dirname, '..', 'utils', 'disponibilidad')
-);
+const { calcularHuecoHoy } = require(path.join(__dirname, '..', 'utils', 'disponibilidad'));
 
-// 2026-11-04 10:07 hora local
-const ahora = new Date(2026, 10, 4, 10, 7, 0);
+// 10:07 en Bogotá = 15:07 UTC del mismo día.
+const ahora = new Date(Date.UTC(2026, 10, 4, 15, 7, 0));
+const enLocal = (hora, minuto) => new Date(Date.UTC(2026, 10, 4, hora + 5, minuto, 0));
 
-function enPunto(hora, minuto) {
-  return new Date(2026, 10, 4, hora, minuto, 0);
-}
-
-test('con la agenda libre devuelve el siguiente paso de 30 min', () => {
+test('con la agenda libre devuelve el siguiente paso de 30 min, en hora de Bogotá', () => {
   const hueco = calcularHuecoHoy({
     ahora,
     horaInicio: 9,
@@ -32,7 +31,7 @@ test('salta la cita que ya ocupa la franja', () => {
     horaInicio: 9,
     horaFin: 18,
     duracionMinutos: 60,
-    ocupados: [{ inicio: enPunto(10, 30), fin: enPunto(11, 30) }],
+    ocupados: [{ inicio: enLocal(10, 30), fin: enLocal(11, 30) }],
   });
   assert.equal(hueco, '11:30');
 });
@@ -44,17 +43,31 @@ test('sin hueco antes del cierre devuelve null', () => {
     horaFin: 12,
     duracionMinutos: 60,
     ocupados: [
-      { inicio: enPunto(10, 30), fin: enPunto(11, 30) },
-      { inicio: enPunto(11, 30), fin: enPunto(12, 0) },
+      { inicio: enLocal(10, 30), fin: enLocal(11, 30) },
+      { inicio: enLocal(11, 30), fin: enLocal(12, 0) },
     ],
   });
   assert.equal(hueco, null);
 });
 
-test('fuera de horario no inventa disponibilidad', () => {
-  const tarde = new Date(2026, 10, 4, 19, 0, 0);
+test('de madrugada en Colombia no ofrece la mañana como si ya hubiera pasado', () => {
+  // 00:30 en Bogotá = 05:30 UTC. El prestador abre a las 9: el hueco es 09:00.
+  const madrugada = new Date(Date.UTC(2026, 10, 4, 5, 30, 0));
   const hueco = calcularHuecoHoy({
-    ahora: tarde,
+    ahora: madrugada,
+    horaInicio: 9,
+    horaFin: 18,
+    duracionMinutos: 60,
+    ocupados: [],
+  });
+  assert.equal(hueco, '09:00');
+});
+
+test('fuera de horario no inventa disponibilidad', () => {
+  // 19:00 en Bogotá = 00:00 UTC del día siguiente.
+  const noche = new Date(Date.UTC(2026, 10, 5, 0, 0, 0));
+  const hueco = calcularHuecoHoy({
+    ahora: noche,
     horaInicio: 9,
     horaFin: 18,
     duracionMinutos: 60,
