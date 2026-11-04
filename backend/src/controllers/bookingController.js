@@ -497,7 +497,7 @@ exports.getClientBookings = async (req, res) => {
     const query = `
       SELECT 
         b.id, b.scheduled_at, b.estado AS status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
-        b.service_id, s.name as service_name, s.duration_minutes as service_duration,
+        b.service_id, b.provider_id, s.name as service_name, s.duration_minutes as service_duration,
         u_prov.nombre as provider_name,
         p.business_name as provider_business_name,
         u_prov.foto_url as provider_avatar_url,
@@ -532,6 +532,10 @@ exports.getClientBookings = async (req, res) => {
       total_amount: parseFloat(row.total_amount) || 0,
       service_address: row.service_address || '',
       notes: row.notes || '',
+      // La reprogramación pide /providers/:id/slots?date&service_id: sin estos
+      // dos campos el sheet abría la fecha pero no podía pedir horarios.
+      service_id: row.service_id,
+      provider_id: row.provider_id,
       service_name: row.service_name,
       service_duration: parseInt(row.service_duration) || 0,
       provider_name: row.provider_name,
