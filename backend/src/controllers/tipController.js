@@ -62,6 +62,10 @@ async function acreditarPropina(client, { propinaId, bookingId, providerId, mont
 exports.createTip = async (req, res) => {
   const bookingId = req.params.id;
   const clientId = req.user.id;
+
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(bookingId))) {
+    return res.status(400).json({ error: 'Identificador de cita inválido' });
+  }
   const monto = Math.round(Number(req.body?.monto));
 
   if (!Number.isFinite(monto) || monto < MIN_PROPINA) {
@@ -74,6 +78,11 @@ exports.createTip = async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+
+    // `pool` es el pool enrutado y aquí no hay contexto de inquilino: RLS
+    // devolvía 0 filas y toda propina respondía 404 "Reserva no encontrada"
+    // sobre una reserva que existe. La propiedad se valida abajo con client_id.
+    await client.query('SET LOCAL ROLE app_system');
 
     const { rows } = await client.query(
       `SELECT id, client_id, provider_id, estado, valor_bruto, completed_at, scheduled_at

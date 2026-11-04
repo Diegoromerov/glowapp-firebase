@@ -657,10 +657,18 @@ exports.createBookingPaymentLink = async (req, res) => {
 };
 
 // 🔹 Cancelar cita por cliente
+const UUID_CITA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 exports.cancelBooking = async (req, res) => {
   try {
     const bookingId = req.params.id;
     const clientId = req.user.id;
+
+    // Un id mal formado reventaba dentro de Postgres con un 500
+    // ('invalid input syntax for type uuid'). Es un 400 del cliente.
+    if (!UUID_CITA.test(String(bookingId))) {
+      return res.status(400).json({ error: 'Identificador de cita inválido' });
+    }
 
     const booking = await Booking.findOne({
       where: { id: bookingId, client_id: clientId }
