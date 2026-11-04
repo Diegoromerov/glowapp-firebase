@@ -100,6 +100,23 @@ void main() {
         reason: 'la calificación es opcional: no retiene la confirmación');
   });
 
+  testWidgets('con el código ya visto en la app no se teclea', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: OtpConfirmScreen(
+        bookingId: 'reserva-1',
+        servicioNombre: 'Manicure',
+        prestadorNombre: 'Aura',
+        valorBruto: 50000,
+        codigoInicial: '123456',
+        verificar: (codigo) async => codigo == '123456',
+      ),
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Servicio confirmado'), findsOneWidget,
+        reason: 'el código que el cliente acaba de ver se verifica solo');
+  });
+
   testWidgets('si la verificación falla por red, avisa y no cierra', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: OtpConfirmScreen(

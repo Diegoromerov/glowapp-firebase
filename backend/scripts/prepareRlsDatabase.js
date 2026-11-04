@@ -66,6 +66,8 @@ const MIGRACIONES = [
     '127_review_aspectos.sql',
     // Token push del usuario (authController ya lo escribia sin columna)
     '128_usuario_fcm_token.sql',
+    // Codigo OTP cifrado para entregarlo en la app (sin coste de correo)
+    '129_otp_codigo_cifrado.sql',
   ];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto

@@ -20,6 +20,10 @@ class OtpConfirmScreen extends StatefulWidget {
   /// Costura de prueba: por defecto consulta al backend.
   final Future<bool> Function(String codigo)? verificar;
 
+  /// Si el cliente ya vio su código en la app, se rellena y se verifica
+  /// solo: pedirle que lo teclee de memoria es fricción regalada.
+  final String? codigoInicial;
+
   const OtpConfirmScreen({
     super.key,
     required this.bookingId,
@@ -27,6 +31,7 @@ class OtpConfirmScreen extends StatefulWidget {
     required this.servicioNombre,
     required this.valorBruto,
     this.verificar,
+    this.codigoInicial,
   });
 
   @override
@@ -41,6 +46,20 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
   // el cliente presente y el servicio recien recibido, o sea el mejor sitio
   // para pedir la calificacion. Aqui nace la mayor parte de las resenas.
   bool _exitoso = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final inicial = widget.codigoInicial;
+    if (inicial != null && RegExp(r'^\d{6}$').hasMatch(inicial)) {
+      for (var i = 0; i < 6; i++) {
+        _controllers[i].text = inicial[i];
+      }
+      // Fuera del primer frame: _verifyOtp hace setState y no se puede durante
+      // la construcción del árbol.
+      WidgetsBinding.instance.addPostFrameCallback((_) => _verifyOtp());
+    }
+  }
 
   @override
   void dispose() {

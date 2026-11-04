@@ -213,6 +213,82 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     }
   }
 
+  /// Muestra el código de confirmación del servicio. Lo ve solo el cliente y
+  /// solo él puede usarlo: es el PIN que libera el pago.
+  Future<void> _verCodigo(Map<String, dynamic> booking) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final nombre = (booking['provider_business_name'] != null &&
+            booking['provider_business_name'].toString().isNotEmpty)
+        ? booking['provider_business_name'].toString()
+        : (booking['provider_name']?.toString() ?? 'tu prestador');
+
+    try {
+      final datos = await ApiService.fetchBookingOtp(booking['id'].toString());
+      final codigo = datos['codigo']?.toString() ?? '';
+      if (!mounted) return;
+
+      final confirmar = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: const Text('Tu código de confirmación'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Úsalo cuando el servicio haya terminado. El prestador no lo conoce.',
+                style: TextStyle(fontSize: 12, color: Color(0xFF8A7F72)),
+              ),
+              const SizedBox(height: 18),
+              Text(
+                codigo,
+                style: const TextStyle(
+                    fontSize: 32,
+                    letterSpacing: 8,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFC5A052)),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Cerrar'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, true),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFC5A052),
+                  foregroundColor: Colors.white),
+              child: const Text('Confirmar ahora'),
+            ),
+          ],
+        ),
+      );
+
+      if (confirmar != true || !mounted) return;
+
+      final hecho = await Navigator.push<bool>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => OtpConfirmScreen(
+            bookingId: booking['id'],
+            prestadorNombre: nombre,
+            servicioNombre: booking['service_name']?.toString() ?? 'Servicio',
+            valorBruto: toDoubleOr(booking['total_amount'], 0.0),
+            codigoInicial: codigo,
+          ),
+        ),
+      );
+      if (hecho == true && mounted) _loadBookings();
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(
+        content: Text(e.toString().replaceFirst('Exception: ', '')),
+        backgroundColor: AppTheme.error,
+      ));
+    }
+  }
+
   /// Abre la hoja de resena (estrellas + aspectos + comentario). Si se publica,
   /// la lista se recarga para que la tarjeta deje de ofrecer calificar.
   Future<void> _abrirResena(Map<String, dynamic> booking, {int nota = 0}) async {
@@ -713,6 +789,19 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       'El prestador completó el servicio. Ingresa tu código de 6 dígitos para confirmar y liberar el pago.',
                       style: TextStyle(color: Colors.white70, fontSize: 13),
                       textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 10),
+                    OutlinedButton.icon(
+                      onPressed: () => _verCodigo(booking),
+                      icon: const Icon(Icons.visibility_outlined,
+                          size: 16, color: Colors.white),
+                      label: const Text('Ver mi código',
+                          style: TextStyle(color: Colors.white, fontSize: 12)),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.white54),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
                     ),
                     const SizedBox(height: 14),
                     SizedBox(

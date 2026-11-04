@@ -616,6 +616,21 @@ class ApiService {
         fallback: 'Error ${response.statusCode}'));
   }
 
+  /// Código de confirmación del servicio. Solo lo puede leer el cliente de la
+  /// reserva: es el PIN que libera el pago y el prestador no debe conocerlo.
+  static Future<Map<String, dynamic>> fetchBookingOtp(String bookingId) async {
+    final headers = await _getAuthHeaders();
+    final response = await http
+        .get(
+          Uri.parse('$_baseUrl$_apiPath/bookings/$bookingId/otp'),
+          headers: headers,
+        )
+        .timeout(requestTimeout);
+    if (response.statusCode == 200) return json.decode(response.body);
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'Error ${response.statusCode}'));
+  }
+
   static Future<Map<String, dynamic>> submitReview(
       String bookingId, int rating, String comment,
       {List<String> aspectos = const <String>[]}) async {

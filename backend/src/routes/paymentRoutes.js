@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 const { pool } = require('../config/db');
 const { runAsSystemContext, runAsSystem } = require('../config/tenantRouting');
+const otpCrypto = require('../utils/otpCrypto');
 const emailService = require('../services/emailService');
 const fcm = require('../services/fcmNotificationService');
 const { authMiddleware } = require('../middleware/auth');
@@ -233,6 +234,52 @@ router.post('/bookings/:id/checkin', authMiddleware, async (req, res) => {
   }
 });
 
+// ─── VER EL CÓDIGO OTP (el propio cliente) ───────────────────────────────────
+//
+// Entrega en la app, coste cero. El código se genera cuando el prestador termina
+// el servicio y sin esto solo podía llegar por correo, que exige un proveedor de
+// pago. Es el modelo de un PIN de viaje: lo ve quien tiene que usarlo, en su
+// propia cuenta, y el prestador no.
+router.get('/bookings/:id/otp', authMiddleware, otpLimiter, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const datos = await runAsSystem({ pool }, async (c) => {
+      const r = await c.query(
+        `SELECT ov.client_id, ov.codigo_cifrado, ov.estado, ov.expira_at, b.estado AS booking_estado
+           FROM otp_validaciones ov
+           JOIN bookings b ON b.id = ov.booking_id
+          WHERE ov.booking_id = $1`,
+        [id]
+      );
+      return r.rows[0] || null;
+    });
+
+    if (!datos) {
+      return res.status(404).json({ error: 'Esta cita todavía no tiene un código de confirmación.' });
+    }
+    if (String(datos.client_id) !== String(req.user.id)) {
+      return res.status(403).json({ error: 'Solo el cliente de la reserva puede ver el código.' });
+    }
+    if (datos.estado !== 'ACTIVO' || new Date(datos.expira_at) < new Date()) {
+      return res.status(410).json({ error: 'El código venció. Pide al prestador que lo reenvíe.' });
+    }
+    if (!datos.codigo_cifrado) {
+      return res.status(409).json({ error: 'El código no está disponible en la app; revisa tu correo.' });
+    }
+
+    return res.json({
+      ok: true,
+      codigo: otpCrypto.descifrar(datos.codigo_cifrado),
+      expira_at: datos.expira_at,
+      booking_estado: datos.booking_estado,
+    });
+  } catch (err) {
+    console.error('❌ ERROR GET /api/bookings/:id/otp:', err.message);
+    res.status(500).json({ error: 'No se pudo obtener el código.' });
+  }
+});
+
 // ─── COMPLETAR SERVICIO → GENERAR OTP ────────────────────────────────────────
 
 router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
@@ -281,12 +328,12 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
     const expiraAt = new Date(Date.now() + vigenciaMin * 60 * 1000);
 
     await client.query(
-      `INSERT INTO otp_validaciones (booking_id, codigo_hash, expira_at, ip_generacion)
-       VALUES ($1, $2, $3, $4)
+      `INSERT INTO otp_validaciones (booking_id, codigo_hash, codigo_cifrado, expira_at, ip_generacion)
+       VALUES ($1, $2, $5, $3, $4)
        ON CONFLICT (booking_id) DO UPDATE
-         SET codigo_hash = $2, expira_at = $3, estado = 'ACTIVO',
+         SET codigo_hash = $2, codigo_cifrado = $5, expira_at = $3, estado = 'ACTIVO',
              intentos_fallidos = 0, usado_at = NULL`,
-      [id, hash, expiraAt, req.ip]
+      [id, hash, expiraAt, req.ip, otpCrypto.cifrar(codigo)]
     );
 
     await client.query(
