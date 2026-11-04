@@ -5,7 +5,7 @@ const { wrapRouterAsync } = require('../utils/expressAsync');
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../config/db');
-const { runAsSystemContext } = require('../config/tenantRouting');
+const { runAsSystemContext, runAsSystem } = require('../config/tenantRouting');
 const emailService = require('../services/emailService');
 const fcm = require('../services/fcmNotificationService');
 const { authMiddleware } = require('../middleware/auth');
@@ -302,8 +302,11 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
     // (ni se liberaba el pago ni se podía calificar). Se envía fuera de la
     // transacción y nunca puede tumbar la finalización del servicio.
     try {
-      const contacto = await runAsSystemContext(async () => {
-        const r = await pool.query(
+      // runAsSystem abre una transacción con SET LOCAL ROLE app_system: el flag
+      // de contexto no basta, la consulta seguía cayendo en el inquilino del
+      // prestador y el cliente era invisible (0 filas → sin correo).
+      const contacto = await runAsSystem({ pool }, async (c) => {
+        const r = await c.query(
           'SELECT email, nombre FROM usuarios WHERE id = $1',
           [booking.client_id]
         );
@@ -348,8 +351,8 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
       // El push es opcional y va despues del correo: si el token no existe o el
       // envio falla, el cliente ya tiene el codigo en su buzon.
       try {
-        const tokenRes = await runAsSystemContext(async () => {
-          const r = await pool.query(
+        const tokenRes = await runAsSystem({ pool }, async (c) => {
+          const r = await c.query(
             'SELECT fcm_token FROM usuarios WHERE id = $1',
             [booking.client_id]
           );
