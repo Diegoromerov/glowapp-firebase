@@ -15,7 +15,16 @@ class FCMNotificationService {
     try {
       if (process.env.FIREBASE_SERVICE_ACCOUNT) {
         const admin = require('firebase-admin');
-        const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+        // Railway guarda el JSON entre comillas, así que `JSON.parse` devuelve
+        // una CADENA con el JSON dentro y `cert()` recibe un string: el SDK
+        // fallaba al inicializar y ninguna push salía. Se parsea dos veces.
+        let serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+        if (typeof serviceAccount === 'string') {
+          serviceAccount = JSON.parse(serviceAccount);
+        }
+        if (!serviceAccount || !serviceAccount.private_key) {
+          throw new Error('FIREBASE_SERVICE_ACCOUNT no contiene una cuenta de servicio válida');
+        }
         admin.initializeApp({
           credential: admin.credential.cert(serviceAccount),
         });
@@ -26,7 +35,7 @@ class FCMNotificationService {
         logger.warn('⚠️ FIREBASE_SERVICE_ACCOUNT no configurado; FCM corriendo en modo Simulación/Logger.');
       }
     } catch (error) {
-      logger.error('❌ Error al inicializar Firebase Admin SDK:', error.message);
+      logger.error(`❌ Error al inicializar Firebase Admin SDK: ${error.message}`);
     }
   }
 

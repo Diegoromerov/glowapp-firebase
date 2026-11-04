@@ -616,6 +616,19 @@ class ApiService {
         fallback: 'Error ${response.statusCode}'));
   }
 
+  /// Registra el token de notificaciones del dispositivo (FCM).
+  /// Sin esto el backend no tiene a quién avisar cuando el servicio termina.
+  static Future<void> registerFcmToken(String token, String deviceOs) async {
+    final headers = await _getAuthHeaders();
+    await http
+        .post(
+          Uri.parse('$_baseUrl$_apiPath/auth/fcm-token'),
+          headers: headers,
+          body: json.encode({'fcm_token': token, 'device_os': deviceOs}),
+        )
+        .timeout(requestTimeout);
+  }
+
   /// Código de confirmación del servicio. Solo lo puede leer el cliente de la
   /// reserva: es el PIN que libera el pago y el prestador no debe conocerlo.
   static Future<Map<String, dynamic>> fetchBookingOtp(String bookingId) async {

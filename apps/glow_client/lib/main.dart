@@ -11,6 +11,7 @@ import 'package:glow_core/glow_core.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/crash_reporting_service.dart';
 import 'firebase_options.dart';
+import 'services/push_service.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
 import 'screens/auth/onboarding_screen.dart';
@@ -84,6 +85,12 @@ void main() async {
 
   // Inicializar servicios core
   await AudienceService.init();
+
+  // Push (FCM, gratuito): si ya hay sesión se registra el dispositivo. Es
+  // best-effort: sin permiso o sin red la app arranca igual.
+  if (await AuthService.getToken() != null) {
+    unawaited(PushService.iniciar());
+  }
 
   // Configurar audiencia de la app para backend (Fase 4).
   // Explicito: el backend exige X-App-Audience en todo /api y AuthService
