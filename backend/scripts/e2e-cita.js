@@ -187,6 +187,9 @@ async function terminar(creadas) {
   const d5 = db(); await d5.connect();
   for (const id of creadas.filter(Boolean)) {
     await d5.query('delete from propinas where booking_id=$1', [id]);
+    // La cancelación de una cita pagada deja asiento en reembolsos, que tiene FK
+    // RESTRICT: sin borrarlo la reserva no se puede eliminar.
+    await d5.query('delete from reembolsos where booking_id=$1', [id]);
     await d5.query('delete from reviews where booking_id=$1', [id]);
     await d5.query('delete from otp_validaciones where booking_id=$1', [id]);
     await d5.query('delete from wallet_transactions where booking_id=$1', [id]).catch(() => {});
