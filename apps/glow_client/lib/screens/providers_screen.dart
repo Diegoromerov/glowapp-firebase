@@ -2310,24 +2310,31 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               ),
             ),
 
-          // Boton para alternar mapa / lista
-          Positioned(
-            top: MediaQuery.of(context).padding.top + 96,
-            right: 16,
-            child: FloatingActionButton.small(
-              heroTag: 'toggle_lista',
-              backgroundColor: isMen ? const Color(0xFF1E1A16) : Colors.white,
-              foregroundColor: const Color(0xFFC5A052),
-              onPressed: () {
-                setState(() => _soloLista = !_soloLista);
-                AnalyticsService().logEvent(
-                  eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
-                  screenName: '/home',
-                );
-              },
-              child: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+          // Boton para alternar mapa / lista.
+          // Va sobre el dock (72 de alto + 16 de margen) y sube cuando aparece la
+          // tarjeta del prestador seleccionado, que ocupa ese mismo espacio.
+          // Se oculta con el menú de capas abierto: ese menú crece hacia arriba
+          // y ocuparía el mismo sitio.
+          if (!_isMapMenuOpen)
+            Positioned(
+              bottom: MediaQuery.of(context).padding.bottom +
+                  (_selectedProvider != null && !_soloLista ? 224 : 104) +
+                  56,
+              right: 16,
+              child: FloatingActionButton.small(
+                heroTag: 'toggle_lista',
+                backgroundColor: isMen ? const Color(0xFF1E1A16) : Colors.white,
+                foregroundColor: const Color(0xFFC5A052),
+                onPressed: () {
+                  setState(() => _soloLista = !_soloLista);
+                  AnalyticsService().logEvent(
+                    eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
+                    screenName: '/home',
+                  );
+                },
+                child: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+              ),
             ),
-          ),
 
           // Capa 2: Floating Sneak-Peek Card (Selected Stylist Preview)
           if (_selectedProvider != null && !_soloLista)
