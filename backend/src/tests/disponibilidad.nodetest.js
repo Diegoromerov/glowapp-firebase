@@ -76,6 +76,19 @@ test('fuera de horario no inventa disponibilidad', () => {
   assert.equal(hueco, null);
 });
 
+test('a media manana en Colombia no devuelve la hora del servidor', () => {
+  // 10:00 en Bogota = 15:00 UTC. Con el calculo en UTC devolvia '15:00'.
+  const manana = new Date(Date.UTC(2026, 10, 4, 15, 0, 0));
+  const hueco = calcularHuecoHoy({
+    ahora: manana,
+    horaInicio: 9,
+    horaFin: 18,
+    duracionMinutos: 60,
+    ocupados: [],
+  });
+  assert.equal(hueco, '10:00');
+});
+
 test('un prestador sin horario configurado no se marca como disponible', () => {
   const hueco = calcularHuecoHoy({
     ahora,
