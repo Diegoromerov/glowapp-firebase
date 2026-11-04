@@ -290,15 +290,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           },
                         ),
                         LuxeProfileTile(
-                          icon: Icons.group_add_outlined,
-                          title: 'Unirme a un salón',
-                          subtitle: 'Ingresar el código que te compartió el dueño',
-                          onTap: () {
-                            HapticFeedback.lightImpact();
-                            pedirCodigoInvitacion(context);
-                          },
-                        ),
-                        LuxeProfileTile(
                           icon: Icons.description_outlined,
                           title: 'Términos y condiciones',
                           subtitle: 'Contrato de uso, privacidad y tratamiento de datos',
