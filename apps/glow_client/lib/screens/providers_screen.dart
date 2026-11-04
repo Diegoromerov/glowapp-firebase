@@ -9,6 +9,9 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:glow_core/glow_core.dart';
+import '../utils/home_ranking.dart';
+import '../utils/map_clustering.dart';
+import '../widgets/home_results_sheet.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 
 class ProvidersScreen extends StatefulWidget {
@@ -58,6 +61,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   final TextEditingController _searchController = TextEditingController();
   final LatLng _bogotaCenter = const LatLng(4.6735, -74.1422);
   LatLng? _userLocation;
+  // Zoom con el que se agruparon los pines: si cambia la escala hay que
+  // reagrupar, o el número del círculo miente.
+  double _zoomRender = 13.5;
+  bool _soloLista = false;
+  int _radioMetros = 5000;
 
   @override
     void initState() {
@@ -484,6 +492,106 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     }
   }
 
+  // Cache del agrupado: se pide una vez por pin y por cluster en cada build, y
+  // recalcularlo en cada llamada sería O(n^3) con 50 prestadores.
+  List<GrupoPines>? _cacheGrupos;
+  String _cacheClave = '';
+
+  /// Pines agrupados con el zoom actual.
+  List<GrupoPines> _gruposPines() {
+    final clave =
+        '$_zoomRender|${_filteredProviders.map((p) => '${p.id}:${p.latitude},${p.longitude}').join(";")}';
+    if (_cacheClave == clave && _cacheGrupos != null) return _cacheGrupos!;
+
+    _cacheGrupos = agruparPines(
+      _filteredProviders
+          .map((p) => PinPunto(
+                id: p.id,
+                posicion: LatLng(p.latitude, p.longitude),
+              ))
+          .toList(),
+      zoom: _zoomRender,
+    );
+    _cacheClave = clave;
+    return _cacheGrupos!;
+  }
+
+  /// Ids que se pintan como pin suelto (el resto están en un cluster).
+  Set<String> _idsSueltos() => _gruposPines()
+      .where((g) => !g.esCluster)
+      .expand((g) => g.ids)
+      .toSet();
+
+  /// Sube el radio y vuelve a buscar: un mapa vacío no puede ser la respuesta.
+  void _ampliarRadio() {
+    if (_radioMetros >= 20000) return;
+    setState(() => _radioMetros = _radioMetros * 2);
+    _loadProviders();
+  }
+
+  /// Tarjeta compacta de la lista: lo justo para decidir en un vistazo.
+  Widget _buildTarjetaResultado(ProviderModel p) {
+    final nombre = p.businessName.isNotEmpty ? p.businessName : p.fullName;
+    final km = (p.distanceMeters / 1000).toStringAsFixed(1);
+
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: const Color(0xFFEFE8DE)),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 26,
+            backgroundColor: const Color(0xFFF5EBE6),
+            backgroundImage: p.avatarUrl.isNotEmpty ? NetworkImage(p.avatarUrl) : null,
+            child: p.avatarUrl.isEmpty
+                ? Text(
+                    nombre.isNotEmpty ? nombre[0].toUpperCase() : '?',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: Color(0xFFC5A052)),
+                  )
+                : null,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(nombre,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1F1A15))),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    const Icon(Icons.star_rounded, size: 13, color: Color(0xFFFBBF24)),
+                    const SizedBox(width: 3),
+                    Text(
+                      p.ratingCount == 0 ? 'Nuevo' : p.ratingAvg.toStringAsFixed(1),
+                      style: const TextStyle(fontSize: 12, color: Color(0xFF4A4036)),
+                    ),
+                    const SizedBox(width: 8),
+                    Text('$km km',
+                        style: const TextStyle(fontSize: 12, color: Color(0xFF8A7F72))),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                ChipDisponibilidad(proveedor: p),
+              ],
+            ),
+          ),
+          const Icon(Icons.chevron_right, color: Color(0xFFC5A052)),
+        ],
+      ),
+    );
+  }
+
   void _filterProviders() {
     final audience = AudienceService.currentAudience.value;
 
@@ -514,6 +622,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         return matchesCat && matchesAudience;
       }).toList();
     });
+
+    // Orden de producto: quien puede atender HOY primero, después franja de
+    // 1 km y nota. El backend ya lo manda así; se replica aquí porque los
+    // filtros de categoría y audiencia se aplican en el cliente.
+    _filteredProviders = ordenarParaHome(_filteredProviders);
   }
 
   bool _providerMatchesCategory(ProviderModel provider, String category) {
@@ -1888,6 +2001,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 options: MapOptions(
                   initialCenter: _bogotaCenter,
                   initialZoom: 13.5,
+                  onPositionChanged: (camera, tieneGesto) {
+                    // Solo cuando la escala cambia de verdad: un rebuild por
+                    // frame haría temblar el mapa durante el gesto.
+                    if ((camera.zoom - _zoomRender).abs() >= 0.5) {
+                      setState(() => _zoomRender = camera.zoom);
+                    }
+                  },
                 ),
                 children: [
                   TileLayer(
@@ -1937,7 +2057,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         ),
                       ),
                     ),
-                  ..._filteredProviders.map((p) {
+                  // Solo se pinta un pin por grupo; los que caen encima de
+                  // otro se sustituyen por un círculo con el número.
+                  ..._filteredProviders
+                      .where((p) => _idsSueltos().contains(p.id))
+                      .map((p) {
                     final isSelected = _selectedProvider?.id == p.id;
                     return Marker(
                       width: 70,
@@ -2033,6 +2157,39 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       ),
                     );
                   }),
+                  // Clusters: al tocarlos se acerca, que es lo que el usuario espera
+                  ..._gruposPines().where((g) => g.esCluster).map((g) => Marker(
+                        width: 58,
+                        height: 58,
+                        point: g.centro,
+                        child: GestureDetector(
+                          onTap: () => _mapController.move(g.centro, _zoomRender + 2),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: isMen ? const Color(0xFF1E1A16) : const Color(0xFFFAF8F5),
+                              border: Border.all(color: const Color(0xFFC5A052), width: 2),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Text(
+                                '${g.ids.length}',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: isMen ? const Color(0xFFD4AF37) : const Color(0xFF1F1A15),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )),
                 ],
               ),
             ],
@@ -2133,8 +2290,46 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             ),
           ),
 
+          // Modo lista: el mismo componente que la bandeja, a pantalla completa.
+          // Sirve para redes lentas (no descarga tiles) y para lectores de
+          // pantalla, que no pueden recorrer un mapa.
+          if (_soloLista)
+            Positioned.fill(
+              child: Container(
+                color: isMen ? MensTheme.obsidianBg : const Color(0xFFFAF8F5),
+                child: HomeResultsSheet(
+                  proveedores: _filteredProviders,
+                  tamanoInicial: 0.9,
+                  onSelect: (p) => setState(() => _selectedProvider = p),
+                  onPosicion: (_) {},
+                  construirTarjeta: _buildTarjetaResultado,
+                  mensajeVacio: 'No hay prestadores en este radio.',
+                  onAmpliarRadio: _ampliarRadio,
+                ),
+              ),
+            ),
+
+          // Boton para alternar mapa / lista
+          Positioned(
+            top: MediaQuery.of(context).padding.top + 96,
+            right: 16,
+            child: FloatingActionButton.small(
+              heroTag: 'toggle_lista',
+              backgroundColor: isMen ? const Color(0xFF1E1A16) : Colors.white,
+              foregroundColor: const Color(0xFFC5A052),
+              onPressed: () {
+                setState(() => _soloLista = !_soloLista);
+                AnalyticsService().logEvent(
+                  eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
+                  screenName: '/home',
+                );
+              },
+              child: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+            ),
+          ),
+
           // Capa 2: Floating Sneak-Peek Card (Selected Stylist Preview)
-          if (_selectedProvider != null)
+          if (_selectedProvider != null && !_soloLista)
             Positioned(
               bottom: MediaQuery.of(context).padding.bottom + 98,
               left: 16,
@@ -2143,6 +2338,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             ),
 
           // Capa 3: Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
+          if (!_soloLista)
           Positioned(
             bottom: MediaQuery.of(context).padding.bottom + 16,
             left: 16,
