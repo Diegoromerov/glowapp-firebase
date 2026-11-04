@@ -310,7 +310,16 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
         return r.rows[0] || null;
       });
 
-      if (contacto?.email) {
+      // Sin SMTP configurado, `sendEmail` cae en modo dev y vuelca el cuerpo en
+      // los logs: eso dejaría el código escrito en Railway, que es justo lo que
+      // la norma prohibe (A360-2026-09-22/C-06). Antes que eso, no se envía y se
+      // avisa sin el código.
+      const transporte = emailService.initEmailService();
+      if (contacto?.email && !transporte) {
+        console.warn('[OTP] SMTP no configurado: el código no se envió. Faltan SMTP_HOST/SMTP_USER/SMTP_PASS.');
+      }
+
+      if (contacto?.email && transporte) {
         await emailService.sendEmail({
           to: contacto.email,
           subject: 'Tu código para confirmar el servicio · GlowApp',
