@@ -6,6 +6,7 @@ export 'src/services/active_salon_service.dart';
 export 'src/services/analytics_service.dart';
 export 'src/services/api_service.dart';
 export 'src/services/api_error.dart';
+export 'src/services/booking_selection.dart';
 export 'src/services/app_update_service.dart';
 export 'src/services/audience_service.dart';
 export 'src/services/audio_player.dart';          // handles conditional export internally

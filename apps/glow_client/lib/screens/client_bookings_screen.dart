@@ -621,7 +621,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
       decoration: BoxDecoration(
         color: cardBg,
         borderRadius: BorderRadius.circular(24),
-        border: isMen ? Border.all(color: MensTheme.champagneGold.withOpacity(0.2)) : null,
+        border: isMen ? Border.all(color: MensTheme.champagneGold.withValues(alpha: 0.2)) : null,
         boxShadow: AppTheme.softShadow,
       ),
       child: Padding(
@@ -633,7 +633,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
               children: [
                 CircleAvatar(
                   radius: 24,
-                  backgroundColor: AppTheme.accent.withOpacity(0.2),
+                  backgroundColor: AppTheme.accent.withValues(alpha: 0.2),
                   backgroundImage:
                       avatarUrl.isNotEmpty ? NetworkImage(avatarUrl) : null,
                   child: avatarUrl.isEmpty
@@ -752,7 +752,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.accent.withOpacity(0.15),
+                  color: AppTheme.accent.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
@@ -780,7 +780,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF6B21A8).withOpacity(0.3),
+                      color: const Color(0xFF6B21A8).withValues(alpha: 0.3),
                       blurRadius: 16,
                       offset: const Offset(0, 6),
                     ),
@@ -892,7 +892,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 decoration: BoxDecoration(
                   color: AppTheme.warningBg,
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppTheme.warning.withOpacity(0.2)),
+                  border: Border.all(color: AppTheme.warning.withValues(alpha: 0.2)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1065,12 +1065,20 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                     ),
                     ...List.generate(
                       5,
-                      (i) => GestureDetector(
-                        onTap: () => _abrirResena(booking, nota: i + 1),
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 2),
-                          child: Icon(Icons.star_outline_rounded,
-                              size: 26, color: Color(0xFFC5A052)),
+                      (i) => Semantics(
+                        button: true,
+                        label: 'Calificar con ${i + 1} de 5 estrellas',
+                        child: InkWell(
+                          onTap: () => _abrirResena(booking, nota: i + 1),
+                          customBorder: const CircleBorder(),
+                          child: const SizedBox(
+                            // 48 px: el minimo recomendado para un dedo. Con 26
+                            // se fallaba el toque y parecía que no respondía.
+                            width: 40,
+                            height: 44,
+                            child: Icon(Icons.star_outline_rounded,
+                                size: 26, color: Color(0xFFC5A052)),
+                          ),
                         ),
                       ),
                     ),
@@ -1085,14 +1093,20 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                   const Text('Tu calificacion',
                       style: TextStyle(fontSize: 13, color: Color(0xFF8A7F72))),
                   const Spacer(),
-                  ...List.generate(
-                    5,
-                    (i) => Icon(
-                      i < miNota
-                          ? Icons.star_rounded
-                          : Icons.star_outline_rounded,
-                      size: 20,
-                      color: const Color(0xFFC5A052),
+                  Semantics(
+                    label: 'Tu calificación: $miNota de 5',
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(
+                        5,
+                        (i) => Icon(
+                          i < miNota
+                              ? Icons.star_rounded
+                              : Icons.star_outline_rounded,
+                          size: 20,
+                          color: const Color(0xFFC5A052),
+                        ),
+                      ),
                     ),
                   ),
                 ],

@@ -151,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 12, top: 8),
                 child: Material(
-                  color: t.surfaceLevel1.withOpacity(0.86),
+                  color: t.surfaceLevel1.withValues(alpha: 0.86),
                   shape: const CircleBorder(),
                   child: IconButton(
                     icon: Icon(
@@ -194,7 +194,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 24,
             offset: const Offset(0, -6),
           ),
@@ -335,7 +335,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFC5A052).withOpacity(0.35),
+                    color: const Color(0xFFC5A052).withValues(alpha: 0.35),
                     blurRadius: 14,
                     offset: const Offset(0, 4),
                   ),

@@ -51,3 +51,62 @@ class ServiciosNoEncontradosException implements Exception {
   @override
   String toString() => 'ServiciosNoEncontradosException';
 }
+
+/// La selección quedó vacía: o no había nada elegido o el catálogo cambió y
+/// ninguno de los ids elegidos sigue existiendo. No se llama a la API.
+class SeleccionDeServiciosVaciaException implements Exception {
+  const SeleccionDeServiciosVaciaException();
+
+  @override
+  String toString() => 'SeleccionDeServiciosVaciaException';
+}
+
+/// Resultado de crear una reserva, con lo que realmente se envió y el catálogo
+/// vigente (para que la pantalla pueda repintar nombres y precios).
+class ReservaCreada {
+  const ReservaCreada({
+    required this.respuesta,
+    required this.serviciosUsados,
+    required this.catalogo,
+  });
+
+  final Map<String, dynamic> respuesta;
+  final List<String> serviciosUsados;
+  final List<Map<String, dynamic>> catalogo;
+}
+
+/// Crea la reserva saneando la selección y, si el backend responde
+/// `SERVICES_NOT_FOUND`, recarga el catálogo y reintenta [reintentos] veces.
+///
+/// Convierte un 404 opaco en un camino con salida: el servicio que ya no
+/// existe desaparece de la selección y, si no queda ninguno, la pantalla puede
+/// pedirle a la clienta que elija de nuevo en vez de mostrar «Exception: …».
+Future<ReservaCreada> crearReservaConCatalogoFresco({
+  required List<Map<String, dynamic>> catalogo,
+  required Iterable<String> seleccion,
+  required Future<Map<String, dynamic>> Function(List<String> servicioIds) crear,
+  required Future<List<Map<String, dynamic>>> Function() recargarCatalogo,
+  int reintentos = 1,
+}) async {
+  var catalogoActual = catalogo;
+  var ids = sanearSeleccionDeServicios(catalogoActual, seleccion);
+  if (ids.isEmpty) throw const SeleccionDeServiciosVaciaException();
+
+  var restantes = reintentos;
+  while (true) {
+    try {
+      final respuesta = await crear(ids);
+      return ReservaCreada(
+        respuesta: respuesta,
+        serviciosUsados: ids,
+        catalogo: catalogoActual,
+      );
+    } on ServiciosNoEncontradosException {
+      if (restantes <= 0) rethrow;
+      restantes--;
+      catalogoActual = await recargarCatalogo();
+      ids = sanearSeleccionDeServicios(catalogoActual, ids);
+      if (ids.isEmpty) throw const SeleccionDeServiciosVaciaException();
+    }
+  }
+}

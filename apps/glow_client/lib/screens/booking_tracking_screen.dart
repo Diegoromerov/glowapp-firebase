@@ -199,7 +199,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                   border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.04),
+                      color: Colors.black.withValues(alpha: 0.04),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -276,7 +276,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color:
-                                      const Color(0xFFC5A052).withOpacity(0.4),
+                                      const Color(0xFFC5A052).withValues(alpha: 0.4),
                                 ),
                               ),
                             ),
@@ -295,7 +295,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color:
-                                      const Color(0xFFC5A052).withOpacity(0.25),
+                                      const Color(0xFFC5A052).withValues(alpha: 0.25),
                                 ),
                               ),
                             ),
@@ -317,7 +317,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                           child: CircleAvatar(
                             radius: 18,
                             backgroundColor:
-                                const Color(0xFFC5A052).withOpacity(0.2),
+                                const Color(0xFFC5A052).withValues(alpha: 0.2),
                             backgroundImage: providerAvatar.isNotEmpty
                                 ? NetworkImage(providerAvatar)
                                 : null,
@@ -394,10 +394,10 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                     filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.85),
+                        color: Colors.white.withValues(alpha: 0.85),
                         borderRadius: BorderRadius.circular(28),
                         border: Border.all(
-                            color: const Color(0xFFC5A052).withOpacity(0.2),
+                            color: const Color(0xFFC5A052).withValues(alpha: 0.2),
                             width: 1.5),
                         boxShadow: AppTheme.cardShadow,
                       ),
@@ -412,7 +412,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                 CircleAvatar(
                                   radius: 26,
                                   backgroundColor:
-                                      const Color(0xFFC5A052).withOpacity(0.2),
+                                      const Color(0xFFC5A052).withValues(alpha: 0.2),
                                   backgroundImage: providerAvatar.isNotEmpty
                                       ? NetworkImage(providerAvatar)
                                       : null,
@@ -526,11 +526,11 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                   horizontal: 14, vertical: 10),
                               decoration: BoxDecoration(
                                 color:
-                                    const Color(0xFFC5A052).withOpacity(0.15),
+                                    const Color(0xFFC5A052).withValues(alpha: 0.15),
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
                                     color: const Color(0xFFC5A052)
-                                        .withOpacity(0.15)),
+                                        .withValues(alpha: 0.15)),
                               ),
                               child: Row(
                                 mainAxisAlignment:

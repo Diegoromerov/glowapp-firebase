@@ -8,5 +8,6 @@ library;
 
 export 'src/services/api_service.dart';
 export 'src/services/api_error.dart';
+export 'src/services/booking_selection.dart';
 export 'src/services/analytics_service.dart';
 export 'src/services/payload.dart';
