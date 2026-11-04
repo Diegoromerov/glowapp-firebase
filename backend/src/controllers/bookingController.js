@@ -25,6 +25,7 @@ const dianInvoiceClient = require('../services/dianInvoiceClient');
 // wompiClient.verifyEventChecksum.
 const wompiClient = require('../services/wompiClient');
 const { discriminarIva } = require('../utils/iva');
+const { dedupeServiceIds, missingServiceIds } = require('../utils/serviceSelection');
 
 /** URL http(s) utilizable como redirect_url (no vacia, no de otro esquema). */
 function esUrlHttpValida(valor) {
@@ -58,12 +59,30 @@ exports.createBooking = async (req, res) => {
     const clientId = req.user.id;
     let { provider_id, service_id, service_ids, scheduled_at, service_address, notes, productos_adicionales } = req.body;
 
-    if (!service_ids && service_id) {
-      service_ids = [service_id];
+    // Un `provider_id` no numérico hacía que Postgres reventara con
+    // «invalid input syntax for type integer» y el cliente viera un 500.
+    if (!/^\d+$/.test(String(provider_id ?? ''))) {
+      return res.status(400).json({
+        success: false,
+        code: 'BOOKING_PROVIDER_INVALID',
+        error: 'provider_id inválido',
+      });
     }
 
-    if (!provider_id || !service_ids || !Array.isArray(service_ids) || service_ids.length === 0 || !scheduled_at) {
-      return res.status(400).json({ error: 'Faltan campos requeridos o formato inválido para service_ids' });
+    // Los ids se deduplican ANTES de comparar: un id repetido no es un
+    // servicio inexistente, y el conteo anterior lo trataba como tal.
+    const idsPedidos = dedupeServiceIds(
+      Array.isArray(service_ids)
+        ? service_ids
+        : String(service_ids ?? service_id ?? '').split(',')
+    );
+
+    if (idsPedidos.length === 0 || !scheduled_at) {
+      return res.status(400).json({
+        success: false,
+        code: 'BOOKING_FIELDS_MISSING',
+        error: 'Faltan campos requeridos o formato inválido para service_ids',
+      });
     }
 
     // Obtener y validar todos los servicios solicitados.
@@ -77,7 +96,7 @@ exports.createBooking = async (req, res) => {
     const { services, prestadorFiscal } = await sequelize.transaction(async (t) => {
       await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
       const filas = await Service.findAll({
-        where: { id: service_ids, provider_id },
+        where: { id: idsPedidos, provider_id },
         transaction: t,
       });
       // Condición tributaria del PRESTADOR, leída de SU cuenta — nunca del
@@ -94,8 +113,23 @@ exports.createBooking = async (req, res) => {
       return { services: filas, prestadorFiscal: fiscal };
     });
 
-    if (services.length !== service_ids.length) {
-      return res.status(404).json({ error: 'Uno o más servicios no fueron encontrados' });
+    // 404 estructurado: además del mensaje, se dice QUÉ ids no existen para
+    // que la app pueda limpiar la selección y reintentar en vez de mostrar
+    // «Exception: …» a la clienta.
+    const faltantes = missingServiceIds(idsPedidos, services);
+    if (faltantes.length > 0) {
+      console.warn('[BOOKING] servicios no encontrados', {
+        traceId: req.traceId,
+        provider_id,
+        solicitados: idsPedidos.length,
+        faltantes,
+      });
+      return res.status(404).json({
+        success: false,
+        code: 'SERVICES_NOT_FOUND',
+        error: 'Uno o más servicios no fueron encontrados',
+        missing_service_ids: faltantes,
+      });
     }
     const responsableIva =
       prestadorFiscal.length > 0 && prestadorFiscal[0].responsable_iva === true;
@@ -106,7 +140,7 @@ exports.createBooking = async (req, res) => {
     // Ordenar los servicios en base al orden recibido en service_ids
     const servicesMap = {};
     services.forEach(s => { servicesMap[s.id] = s; });
-    const orderedServices = service_ids.map(id => servicesMap[id]);
+    const orderedServices = idsPedidos.map((id) => servicesMap[id]);
 
     const totalServicesPrice = orderedServices.reduce((sum, s) => sum + parseFloat(s.price), 0);
     const totalDurationMinutes = orderedServices.reduce((sum, s) => sum + parseInt(s.duration_minutes), 0);
