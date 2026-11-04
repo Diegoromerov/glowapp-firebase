@@ -443,6 +443,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         providers = await ApiService.fetchProvidersSecured(
           latitude: _userLocation?.latitude,
           longitude: _userLocation?.longitude,
+          radiusMetros: _radioMetros,
         );
         break;
       } catch (e) {

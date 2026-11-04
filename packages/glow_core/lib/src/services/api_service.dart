@@ -437,11 +437,14 @@ class ApiService {
   }
 
   static Future<List<ProviderModel>> fetchProvidersSecured(
-      {double? latitude, double? longitude}) async {
+      {double? latitude, double? longitude, int? radiusMetros}) async {
     await ensureBaseUrl();
     String url = '$_baseUrl$_apiPath/providers';
     if (latitude != null && longitude != null) {
       url += '?lat=$latitude&lon=$longitude';
+      // Sin radio el backend usa 50 km: el boton «ampliar la busqueda» no
+      // cambiaria nada.
+      if (radiusMetros != null) url += '&radius=$radiusMetros';
     }
     final headers = await _getAuthHeaders();
     final response =
