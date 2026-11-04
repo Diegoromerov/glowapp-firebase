@@ -52,5 +52,7 @@ Future<void> pedirCodigoInvitacion(BuildContext context) async {
     return;
   }
 
-  navigator.pushNamed('/accept-invitation', arguments: match.group(0));
+  // La ruta real es /auth/accept-invitation: /accept-invitation se retiró de
+  // main.dart y el botón 'Unirme a un salón' moría en una ruta inexistente.
+  navigator.pushNamed('/auth/accept-invitation', arguments: match.group(0));
 }

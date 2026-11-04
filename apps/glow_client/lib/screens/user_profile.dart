@@ -2,6 +2,8 @@
 import 'package:glow_core/glow_core.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'settings_screen.dart';
@@ -17,8 +19,8 @@ class UserProfileScreen extends StatefulWidget {
 
   const UserProfileScreen({
     super.key,
-    this.userName = 'Valeria Gómez',
-    this.userEmail = 'valeria.gomez@glowapp.com',
+    this.userName = '',
+    this.userEmail = '',
     this.onLogout,
   });
 
@@ -42,15 +44,36 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final name = prefs.getString('userName');
-      final email = prefs.getString('userEmail');
+      var email = prefs.getString('userEmail');
       if (mounted) {
-        setState(() {
-          if (name != null && name.trim().isNotEmpty) _userName = name.trim();
-          if (email != null && email.trim().isNotEmpty) _userEmail = email.trim();
-        });
+        // Las sesiones abiertas antes de guardar el correo no lo tienen en
+        // preferencias: el token lo lleva dentro, así que se lee de ahí.
+        email ??= await _correoDelToken();
+        if (mounted) {
+          setState(() {
+            if (name != null && name.trim().isNotEmpty) _userName = name.trim();
+            if (email != null && email.trim().isNotEmpty) _userEmail = email.trim();
+          });
+        }
       }
     } catch (_) {}
   }
+  /// Correo del usuario a partir del JWT (el token ya está en el dispositivo).
+  Future<String?> _correoDelToken() async {
+    try {
+      final token = await AuthService.getToken();
+      if (token == null) return null;
+      final partes = token.split('.');
+      if (partes.length != 3) return null;
+      final payload = utf8.decode(base64Url.decode(base64Url.normalize(partes[1])));
+      final datos = json.decode(payload);
+      final email = datos is Map ? datos['email']?.toString() : null;
+      return (email != null && email.trim().isNotEmpty) ? email.trim() : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,30 +135,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           ],
         ),
         centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Center(
-              child: Container(
-                width: 38,
-                height: 38,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: const Color(0xFFE8DFD8), width: 1),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: const Icon(Icons.notifications_none_rounded, size: 18, color: Color(0xFF1F1A15)),
-              ),
-            ),
-          ),
-        ],
+        // La campana que había aquí no abría nada: se retira hasta que exista
+        // un centro de notificaciones.
       ),
       body: SafeArea(
         child: Center(
@@ -203,7 +204,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         LuxeProfileTile(
                           icon: Icons.card_membership_outlined,
                           title: 'Beneficios y Puntos de Experiencia (XP)',
-                          subtitle: '350 XP acumulados este mes',
+                          subtitle: 'Consulta tus puntos y canjéalos por beneficios',
                           showDivider: false,
                           onTap: () {
                             HapticFeedback.lightImpact();

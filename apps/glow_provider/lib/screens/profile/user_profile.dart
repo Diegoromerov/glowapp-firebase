@@ -1,4 +1,6 @@
 // lib/screens/profile/user_profile.dart
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,8 +25,8 @@ class UserProfileScreen extends StatefulWidget {
 
   const UserProfileScreen({
     super.key,
-    this.userName = 'Valeria Gómez',
-    this.userEmail = 'valeria.gomez@glowapp.com',
+    this.userName = '',
+    this.userEmail = '',
     this.onLogout,
   });
 
@@ -48,7 +50,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final name = prefs.getString('userName');
-      final email = prefs.getString('userEmail');
+      var email = prefs.getString('userEmail');
+      // Sesiones antiguas no guardaron el correo: el token lo lleva dentro.
+      email ??= await _correoDelToken();
       if (mounted) {
         setState(() {
           if (name != null && name.trim().isNotEmpty) _userName = name.trim();
@@ -57,6 +61,21 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       }
     } catch (_) {}
   }
+  Future<String?> _correoDelToken() async {
+    try {
+      final token = await AuthService.getToken();
+      if (token == null) return null;
+      final partes = token.split('.');
+      if (partes.length != 3) return null;
+      final payload = utf8.decode(base64Url.decode(base64Url.normalize(partes[1])));
+      final datos = json.decode(payload);
+      final email = datos is Map ? datos['email']?.toString() : null;
+      return (email != null && email.trim().isNotEmpty) ? email.trim() : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

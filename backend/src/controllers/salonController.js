@@ -201,7 +201,9 @@ exports.inviteMember = async (req, res) => {
     );
 
     const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-frontend-production.up.railway.app').replace(/\/$/, '');
-    const inviteLink = `${frontendBase}/#/accept-invitation?token=${rawToken}`;
+    // La ruta /accept-invitation se retiró; el enlace tiene que apuntar a la
+    // que existe o el invitado aterriza en una pantalla en blanco.
+    const inviteLink = `${frontendBase}/#/auth/accept-invitation?token=${rawToken}`;
 
     console.log(`✉️ Invitación creada para ${cleanEmail} como ${cleanSubRol} en Salón ID ${salon_id}`);
 

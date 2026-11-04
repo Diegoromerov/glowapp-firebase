@@ -137,7 +137,7 @@ class ProfileHeader extends StatelessWidget {
               const Icon(Icons.verified_rounded, size: 14, color: Color(0xFFC5A052)),
               const SizedBox(width: 5),
               Text(
-                userEmail,
+                userEmail.trim().isEmpty ? 'Sin correo registrado' : userEmail,
                 style: const TextStyle(
                   fontFamily: 'Inter',
                   fontSize: 13,
@@ -187,56 +187,8 @@ class ProfileHeader extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 22),
-          const Divider(color: Color(0xFFF0EBE4), height: 1),
-          const SizedBox(height: 18),
-
-          // Métricas Concierge / Stats Row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildStatItem('350 XP', 'Puntos Aura', Icons.diamond_outlined),
-              Container(width: 1, height: 32, color: const Color(0xFFF0EBE4)),
-              _buildStatItem('Club Gold', 'Nivel Estatus', Icons.workspace_premium_outlined),
-              Container(width: 1, height: 32, color: const Color(0xFFF0EBE4)),
-              _buildStatItem('100%', 'Verificado', Icons.shield_outlined),
-            ],
-          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildStatItem(String value, String label, IconData icon) {
-    return Column(
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 14, color: const Color(0xFFC5A052)),
-            const SizedBox(width: 4),
-            Text(
-              value,
-              style: const TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Color(0xFF1F1A15),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 3),
-        Text(
-          label,
-          style: const TextStyle(
-            fontFamily: 'Inter',
-            fontSize: 11,
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF8C7E74),
-          ),
-        ),
-      ],
     );
   }
 }

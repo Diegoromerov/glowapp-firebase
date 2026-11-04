@@ -58,6 +58,12 @@ class AuthService {
 
       await prefs.setString('userId', data['user']['id'].toString());
       await prefs.setString('userName', data['user']['full_name']);
+      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+      // mostraba un correo de ejemplo escrito en el código.
+      final correo = data['user']['email']?.toString();
+      if (correo != null && correo.trim().isNotEmpty) {
+        await prefs.setString('userEmail', correo.trim());
+      }
       if (data['user']['role'] != null) {
         await prefs.setString('userRole', data['user']['role']);
       }
@@ -98,6 +104,12 @@ class AuthService {
 
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
+      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+      // mostraba un correo de ejemplo escrito en el código.
+      final correo = data['user']['email']?.toString();
+      if (correo != null && correo.trim().isNotEmpty) {
+        await prefs.setString('userEmail', correo.trim());
+      }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }
@@ -234,6 +246,12 @@ class AuthService {
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
+      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+      // mostraba un correo de ejemplo escrito en el código.
+      final correo = data['user']['email']?.toString();
+      if (correo != null && correo.trim().isNotEmpty) {
+        await prefs.setString('userEmail', correo.trim());
+      }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }
@@ -278,6 +296,12 @@ class AuthService {
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
+      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+      // mostraba un correo de ejemplo escrito en el código.
+      final correo = data['user']['email']?.toString();
+      if (correo != null && correo.trim().isNotEmpty) {
+        await prefs.setString('userEmail', correo.trim());
+      }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }
@@ -309,6 +333,12 @@ class AuthService {
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
+      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+      // mostraba un correo de ejemplo escrito en el código.
+      final correo = data['user']['email']?.toString();
+      if (correo != null && correo.trim().isNotEmpty) {
+        await prefs.setString('userEmail', correo.trim());
+      }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }

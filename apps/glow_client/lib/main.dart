@@ -156,7 +156,14 @@ class GlowClientApp extends ConsumerWidget {
         '/auth/register': (_) => const RegisterScreen(),
         '/auth/onboarding': (_) => const OnboardingScreen(),
         '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
-        '/auth/accept-invitation': (_) => const AcceptInvitationScreen(),
+        '/auth/accept-invitation': (context) {
+          // El código llega como argumento al abrirlo desde la app y como
+          // ?token= cuando se sigue el enlace del correo.
+          final arg = ModalRoute.of(context)?.settings.arguments;
+          return AcceptInvitationScreen(
+            token: arg is String ? arg : Uri.base.queryParameters['token'],
+          );
+        },
         '/auth/verification-pending': (_) => const VerificationPendingScreen(),
 
         // Home / Navegación principal
