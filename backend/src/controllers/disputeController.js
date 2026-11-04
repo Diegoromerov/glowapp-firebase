@@ -101,9 +101,12 @@ exports.getMyDisputes = async (req, res) => {
 
     query += ` ORDER BY d.creado_at DESC;`;
 
-    const disputes = await sequelize.query(query, {
-      replacements,
-      type: QueryTypes.SELECT
+    // El prestador de la reserva está en otro inquilino: con el contexto del
+    // cliente, RLS oculta su fila de `bookings` y el de `services`, y el JOIN
+    // devuelve la lista vacía. El filtro por usuario sigue en el WHERE.
+    const disputes = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      return sequelize.query(query, { replacements, type: QueryTypes.SELECT, transaction: t });
     });
 
     res.json({
@@ -131,9 +134,13 @@ exports.getDisputeById = async (req, res) => {
       WHERE d.id = :disputeId;
     `;
 
-    const results = await sequelize.query(query, {
-      replacements: { disputeId },
-      type: QueryTypes.SELECT
+    const results = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      return sequelize.query(query, {
+        replacements: { disputeId },
+        type: QueryTypes.SELECT,
+        transaction: t,
+      });
     });
 
     if (results.length === 0) {

@@ -39,9 +39,17 @@ exports.getConversations = async (req, res) => {
       ORDER BY m.conversation_partner_id, m.created_at DESC;
     `;
 
-    const results = await sequelize.query(query, {
-      replacements: { userId },
-      type: QueryTypes.SELECT
+    // El interlocutor suele ser de otro inquilino: con el contexto del usuario,
+    // RLS oculta su fila en `usuarios` y el JOIN deja la lista de conversaciones
+    // VACÍA aunque los mensajes existan. El WHERE ya limita a los mensajes del
+    // propio usuario, así que leer con rol de sistema no amplía nada.
+    const results = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      return sequelize.query(query, {
+        replacements: { userId },
+        type: QueryTypes.SELECT,
+        transaction: t,
+      });
     });
     
     const conversations = results.map(row => ({
