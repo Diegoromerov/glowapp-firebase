@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:glow_core/glow_core.dart';
+import 'package:glow_core/glow_core.dart' hide AppUpdateGate;
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/crash_reporting_service.dart';
 import 'firebase_options.dart';
@@ -53,6 +53,7 @@ import 'screens/results_screen.dart';
 import 'screens/vto_live_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'widgets/audience_toggle.dart';
+import 'widgets/deep_link_host.dart';
 import 'glowguide/glow_guide_host.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 import 'widgets/app_update_gate.dart';
@@ -140,8 +141,9 @@ class GlowClientApp extends ConsumerWidget {
       navigatorKey: GlowGuideService.instance.navigatorKey,
       // El guide se monta encima del Navigator: es lo que le permite navegar la
       // app sin desaparecer. Dentro de una pantalla, la ruta nueva lo tapaba.
-      builder: (context, child) =>
-          GlowGuideHost(child: child ?? const SizedBox.shrink()),
+      builder: (context, child) => DeepLinkHost(
+        child: GlowGuideHost(child: child ?? const SizedBox.shrink()),
+      ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
