@@ -1,4 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permisos de release. Sin INTERNET el binario no alcanza la API ni el
+         WebSocket de seguimiento; sin ubicación el FAB de compartir posición
+         falla en silencio; sin POST_NOTIFICATIONS Android 13+ descarta los avisos. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
         android:allowBackup="false"
         android:fullBackupContent="false"
