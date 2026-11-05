@@ -2528,18 +2528,19 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     isMen: isMen,
                   ),
 
-                  // Botón 2: GlowShop
-                  _buildFlatNavItem(
-                    iconWidget: Image.asset(
-                      'assets/icons/glow/nav_glowshop_dock.webp',
-                      width: 28,
-                      height: 28,
-                      fit: BoxFit.contain,
+                  // Botón 2: GlowShop (gobernado por bandera glowstore)
+                  if (FeatureFlags.instance.activo('glowstore'))
+                    _buildFlatNavItem(
+                      iconWidget: Image.asset(
+                        'assets/icons/glow/nav_glowshop_dock.webp',
+                        width: 28,
+                        height: 28,
+                        fit: BoxFit.contain,
+                      ),
+                      label: 'GlowShop',
+                      onTap: () => _checkAuthAndNavigate('/store'),
+                      isMen: isMen,
                     ),
-                    label: 'GlowShop',
-                    onTap: () => _checkAuthAndNavigate('/store'),
-                    isMen: isMen,
-                  ),
 
                   // Botón 3: Glow IA+ (Medallón Central Elevado)
                   _buildLuxuryCenterMedallion(
