@@ -28,6 +28,7 @@ export 'src/services/social_share_service.dart';
 export 'src/services/superadmin_api_service.dart';
 export 'src/services/support_service.dart';
 export 'src/services/web_geolocation.dart';       // handles conditional export internally
+export 'src/services/ubicacion_dispositivo.dart'; // resultado tipado + permiso JIT (ítem 11)
 
 // Models
 export 'src/models/biometric_result.dart';
