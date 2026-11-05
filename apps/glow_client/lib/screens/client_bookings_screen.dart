@@ -329,6 +329,29 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
 
   /// La propina vive fuera de la resena a proposito: pedir dinero en la misma
   /// pantalla que pide una opinion sesga la nota (D-GL-023: es 100% del prestador).
+  /// Ítem 31 — recibo: el comprobante lo genera el servidor (con el IVA y la
+  /// propina congelados en la reserva) y lo manda al correo de la cuenta. Se
+  /// pide por correo y no se abre una URL con el token: un enlace con la sesión
+  /// dentro acaba en el historial del navegador y en los logs.
+  Future<void> _enviarRecibo(Map<String, dynamic> booking) async {
+    final id = booking['id']?.toString() ?? '';
+    if (id.isEmpty) return;
+    try {
+      await ApiService.post('/api/bookings/$id/receipt/email', const {});
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Te enviamos el recibo al correo de tu cuenta.'),
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('No pudimos enviar el recibo. ${mensajeHumano(e)}')),
+      );
+    }
+  }
+
   Future<void> _showTipSheet(Map<String, dynamic> booking) async {
     final total = toDoubleOr(booking['total_amount'], 0.0);
     double monto = 0.0;
@@ -616,6 +639,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
         : (refundMonto != null
             ? '$refundTexto · \$${(refundMonto as num).toStringAsFixed(0)}'
             : refundTexto);
+    // Ítem 31: el recibo solo existe para lo que se pagó.
+    final pagado =
+        booking['payment_status']?.toString().toLowerCase() == 'paid';
     final refundColor = refundEstado == 'PROCESADO'
         ? const Color(0xFF1E7B4F)
         : refundEstado == 'FALLIDO'
@@ -1150,7 +1176,23 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 ],
               ),
             ],
-            if (yaOcurrio && !esCancelada) ...[
+            if (pagado) ...[
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: () => _enviarRecibo(booking),
+                  icon: const Icon(Icons.receipt_long_outlined,
+                      size: 16, color: Color(0xFF8A6A2F)),
+                  label: const Text('Recibo por correo',
+                      style: TextStyle(fontSize: 12, color: Color(0xFF8A6A2F))),
+                ),
+              ),
+            ],
+            // Ítem 80: si la bandera está apagada, la propina no se ofrece.
+            if (yaOcurrio &&
+                !esCancelada &&
+                FeatureFlags.instance.activo('propinas')) ...[
               const SizedBox(height: 10),
               Align(
                 alignment: Alignment.centerRight,
