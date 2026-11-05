@@ -9,13 +9,15 @@
 
 | Estado | Baseline | Final | Δ |
 |---|---|---|---|
-| PASA | 20 | **27** | **+7** |
-| PARCIAL | 28 | 32 | +4 |
-| FALLA | 21 | **9** | **−12** |
+| PASA | 20 | **26** | **+6** |
+| PARCIAL | 28 | 34 | +6 |
+| FALLA | 21 | **8** | **−13** |
 | No verificable | 15 | 16 | +1 |
 | No aplica | 2 | 2 | 0 |
 
 De los 12 bloqueantes de lanzamiento: **baseline 5 PASA · final 9 PASA**.
+
+> Recuento corregido el 2026-11-05 tras recalcular sobre el JSON: 26 PASA · 34 PARCIAL · 8 FALLA · 16 N/V · 2 N/A = 86.
 
 ---
 
