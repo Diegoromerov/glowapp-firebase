@@ -1,0 +1,729 @@
+{
+  "fecha": "2026-11-05T15:10:00",
+  "app": "apps/glow_provider",
+  "rama": "fix/booking-services-404 (= origin/main = origin/staging) @ 0c20365",
+  "alcance": "86 ítems de la lista de prelanzamiento + 9 ítems propios del prestador",
+  "escala_evidencia": [
+    "E0",
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "items": {
+    "1": {
+      "bloque": "A",
+      "titulo": "Registro con email",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "auth_service.dart:29 POST /api/auth/register; onboarding_screen.dart:562 flujo completo"
+    },
+    "2": {
+      "bloque": "A",
+      "titulo": "Login social",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "loginWithGoogle/loginWithFacebook/loginOAuth en AuthService; google_sign_in_web 0.12 renderButton; no ejecutado en dispositivo"
+    },
+    "3": {
+      "bloque": "A",
+      "titulo": "Apple Sign-In",
+      "estado": "N/A",
+      "nivel": "E0",
+      "evidencia": "iOS no configurado (plataforma iOS omitida en el proyecto)"
+    },
+    "4": {
+      "bloque": "A",
+      "titulo": "Recuperación de contraseña",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "forgot_password_screen.dart:52-80 OTP + /api/auth/reset-password"
+    },
+    "5": {
+      "bloque": "A",
+      "titulo": "Verificación de email",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "verification_pending_screen.dart existe y se enruta; no se bloquea el acceso antes de verificar"
+    },
+    "6": {
+      "bloque": "A",
+      "titulo": "Sesión persistente",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "secure_storage_service.dart:9 FlutterSecureStorage; token restaurado en arranque"
+    },
+    "7": {
+      "bloque": "A",
+      "titulo": "Logout real",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "AuthService.logout en 5 sitios; login_screen.dart:79 limpia cache de base url"
+    },
+    "8": {
+      "bloque": "A",
+      "titulo": "Borrado de cuenta in-app",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "settings_screen.dart:323 crea ticket ARCO manual; 0 referencias a DELETE /api/auth/delete-account"
+    },
+    "9": {
+      "bloque": "A",
+      "titulo": "Cambio de contraseña",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "settings_screen.dart:267 /api/auth/change-password"
+    },
+    "10": {
+      "bloque": "A",
+      "titulo": "Bloqueo de fuerza bruta",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "backend/src/middleware/rateLimiter.js aplicado; sin lockout por cuenta probado"
+    },
+    "11": {
+      "bloque": "B",
+      "titulo": "Permisos just-in-time",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "AndroidManifest.xml sin uses-permission: requestPermission no puede conceder nada"
+    },
+    "12": {
+      "bloque": "B",
+      "titulo": "Denegación manejada",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "booking_tracking_screen.dart:70-82 maneja denegado; notificaciones nunca se solicitan"
+    },
+    "13": {
+      "bloque": "B",
+      "titulo": "Notificaciones opt-in",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "settings_screen.dart:688 toggle push_enabled; no registra token FCM"
+    },
+    "14": {
+      "bloque": "B",
+      "titulo": "Deep links",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "AndroidManifest.xml sin intent-filter de verificación; sin uni_links/app_links en lib/"
+    },
+    "15": {
+      "bloque": "B",
+      "titulo": "Estados vacíos",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "provider_dashboard_screen.dart:3197-3200, provider_services_screen.dart:774, salon_shell.dart:417"
+    },
+    "16": {
+      "bloque": "B",
+      "titulo": "Versionado mínimo",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "widgets/app_update_gate.dart existe pero 0 referencias en main.dart: minimum_app_version no se consume"
+    },
+    "17": {
+      "bloque": "C",
+      "titulo": "Camino feliz completo",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "flujo citas→inicio→PIN→complete implementado; sin ejecución E2 de punta a punta"
+    },
+    "18": {
+      "bloque": "C",
+      "titulo": "Doble toque / idempotencia",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "guardas _loadingBookings (25 usos); /complete devuelve 409 con mensaje crudo si hay OTP activo"
+    },
+    "19": {
+      "bloque": "C",
+      "titulo": "Timeouts y reintentos",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "api_service.dart:241 requestTimeout 15s + reintentos; 12 llamadas .timeout en core"
+    },
+    "20": {
+      "bloque": "C",
+      "titulo": "Errores traducidos",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "30 sitios con $e visible (20 archivos); mensajeHumano usado 1 sola vez en lib/"
+    },
+    "21": {
+      "bloque": "C",
+      "titulo": "Sin conexión",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "ConnectivityService y OfflineException en core; provider_detail_screen.dart:81 único aviso de modo offline"
+    },
+    "22": {
+      "bloque": "C",
+      "titulo": "Estados de carga",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "83 usos de CircularProgressIndicator/Shimmer en lib/"
+    },
+    "23": {
+      "bloque": "C",
+      "titulo": "Datos obsoletos",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "refetch tras acciones (_fetchBookings); sin política de caché ni marca de antigüedad"
+    },
+    "24": {
+      "bloque": "C",
+      "titulo": "Navegación coherente",
+      "estado": "PASA",
+      "nivel": "E2",
+      "evidencia": "flutter test: routes_contract_test 2/2 + widget_test 3/3 verdes"
+    },
+    "25": {
+      "bloque": "C",
+      "titulo": "Confirmar / deshacer",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "provider_dashboard_screen.dart:1383 diálogo de confirmación; sin deshacer"
+    },
+    "26": {
+      "bloque": "C",
+      "titulo": "Multi-dispositivo",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "requiere dos dispositivos con sesión; no ejecutado"
+    },
+    "27": {
+      "bloque": "D",
+      "titulo": "Pago real",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "booking_screen.dart:382 showWompiCheckoutSheet; sin transacción ejecutada"
+    },
+    "28": {
+      "bloque": "D",
+      "titulo": "Webhooks verificados",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "bookingController.js:45-50 verifyEventChecksum SHA256 de Wompi"
+    },
+    "29": {
+      "bloque": "D",
+      "titulo": "Conciliación",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "requiere datos de producción y acceso al panel Wompi"
+    },
+    "30": {
+      "bloque": "D",
+      "titulo": "Reembolsos",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "política descrita en faq_screen.dart:23 y provider_detail_screen.dart:277; sin acción in-app"
+    },
+    "31": {
+      "bloque": "D",
+      "titulo": "Recibos / facturas",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "wallet_screen.dart sin descarga ni PDF de comprobante (0 coincidencias recibo/factura)"
+    },
+    "32": {
+      "bloque": "D",
+      "titulo": "Fallo de pago",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "manejo de error en wompi_payment_sheet de glow_core; no ejercitado"
+    },
+    "33": {
+      "bloque": "D",
+      "titulo": "Precios y moneda",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "_formatCOP en wallet_screen.dart; importes en COP"
+    },
+    "34": {
+      "bloque": "D",
+      "titulo": "Compras in-app",
+      "estado": "N/A",
+      "nivel": "E0",
+      "evidencia": "no hay bienes digitales vendidos dentro de la app"
+    },
+    "35": {
+      "bloque": "E",
+      "titulo": "TLS en todo",
+      "estado": "PASA",
+      "nivel": "E3",
+      "evidencia": "API https 200; hosting con HSTS max-age=31536000"
+    },
+    "36": {
+      "bloque": "E",
+      "titulo": "Sin secretos en el cliente",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "firebase_options.dart:26 String.fromEnvironment; sin llaves privadas en lib/"
+    },
+    "37": {
+      "bloque": "E",
+      "titulo": "Autorización por objeto",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "paymentRoutes.js:300-307 WHERE b.provider_id = $2"
+    },
+    "38": {
+      "bloque": "E",
+      "titulo": "Aislamiento multi-tenant",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "paymentRoutes.js:298 SET LOCAL ROLE app_system + RLS de bookings"
+    },
+    "39": {
+      "bloque": "E",
+      "titulo": "OWASP MASVS básico",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "secure_storage y allowBackup=false; sin certificate pinning ni ofuscación"
+    },
+    "40": {
+      "bloque": "E",
+      "titulo": "Rate limiting",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "backend/src/middleware/rateLimiter.js (express-rate-limit)"
+    },
+    "41": {
+      "bloque": "E",
+      "titulo": "Inventario de datos",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "no existe inventario de datos del prestador en el repo"
+    },
+    "42": {
+      "bloque": "E",
+      "titulo": "Política de privacidad",
+      "estado": "FALLA",
+      "nivel": "E3",
+      "evidencia": "modal in-app real (settings_screen.dart:508); https://glowapp-provider.web.app/privacy.html devuelve catch-all de 1560 bytes, no la política"
+    },
+    "43": {
+      "bloque": "E",
+      "titulo": "Consentimientos",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "onboarding_screen.dart:540 aceptación obligatoria; glow_consent_widget.dart; consentimiento biométrico"
+    },
+    "44": {
+      "bloque": "E",
+      "titulo": "Logs sin PII",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "16 debugPrint con $e; no imprimen email/teléfono/token"
+    },
+    "45": {
+      "bloque": "E",
+      "titulo": "Términos y condiciones",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "settings_screen.dart:783 modal de Términos de Servicio"
+    },
+    "46": {
+      "bloque": "F",
+      "titulo": "Ficha de tienda",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "sin presencia en Play/App Store"
+    },
+    "47": {
+      "bloque": "F",
+      "titulo": "Privacidad nutricional",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "depende de ficha de tienda"
+    },
+    "48": {
+      "bloque": "F",
+      "titulo": "Data safety",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "depende de ficha de tienda"
+    },
+    "49": {
+      "bloque": "F",
+      "titulo": "Edad y contenido",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "depende de ficha de tienda"
+    },
+    "50": {
+      "bloque": "F",
+      "titulo": "URL de soporte",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "support_center_screen.dart con tickets; sin canal externo ni horario publicado"
+    },
+    "51": {
+      "bloque": "F",
+      "titulo": "Permisos declarados",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "AndroidManifest.xml: 0 uses-permission (INTERNET incluida)"
+    },
+    "52": {
+      "bloque": "F",
+      "titulo": "Borrado de cuenta publicado",
+      "estado": "FALLA",
+      "nivel": "E3",
+      "evidencia": "https://glowapp-provider.web.app/account-deletion.html sirve el index de Flutter (1560 bytes)"
+    },
+    "53": {
+      "bloque": "G",
+      "titulo": "Contraste",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "34 TextStyle con #C5A052 (2,42:1 sobre #FFFDF8 / 2,46:1 sobre blanco); 0 usos de #8A6A2F"
+    },
+    "54": {
+      "bloque": "G",
+      "titulo": "Área táctil",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "13 contenedores con altura fija <40 en provider_dashboard_screen.dart; resto usa Material ≥48"
+    },
+    "55": {
+      "bloque": "G",
+      "titulo": "Escalado de texto",
+      "estado": "N/V",
+      "nivel": "E1",
+      "evidencia": "0 usos de textScaler (respeta el ajuste del sistema) pero no se probó a 200 % en dispositivo"
+    },
+    "56": {
+      "bloque": "G",
+      "titulo": "Lector de pantalla",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "18 tooltips + 13 Semantics; faltan etiquetas en listas de citas y wallet"
+    },
+    "57": {
+      "bloque": "G",
+      "titulo": "No depender del color",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "chips de estado con texto además del color"
+    },
+    "58": {
+      "bloque": "G",
+      "titulo": "Foco y teclado (web)",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "no ejecutado con teclado en el bundle web"
+    },
+    "59": {
+      "bloque": "G",
+      "titulo": "Movimiento reducido",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "0 referencias a accessibleNavigation/disableAnimations"
+    },
+    "60": {
+      "bloque": "H",
+      "titulo": "Crash-free ≥ 99.5%",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "sin telemetría de producción acumulada"
+    },
+    "61": {
+      "bloque": "H",
+      "titulo": "Arranque en frío",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "requiere medición en dispositivo"
+    },
+    "62": {
+      "bloque": "H",
+      "titulo": "Fluidez",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "requiere perfilado en dispositivo"
+    },
+    "63": {
+      "bloque": "H",
+      "titulo": "Peso",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "build/web local = 49 MB; sin build de release medido"
+    },
+    "64": {
+      "bloque": "H",
+      "titulo": "Red lenta",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "no ejecutado con throttling"
+    },
+    "65": {
+      "bloque": "H",
+      "titulo": "Memoria",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "no perfilado"
+    },
+    "66": {
+      "bloque": "H",
+      "titulo": "Batería y GPS",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "distanceFilter 10 m configurado; sin medición de consumo"
+    },
+    "67": {
+      "bloque": "I",
+      "titulo": "Crash reporting",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "main.dart:102-139 CrashReportingService.init + FlutterError.onError + PlatformDispatcher.onError"
+    },
+    "68": {
+      "bloque": "I",
+      "titulo": "Analítica de embudo",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "AnalyticsService puntual (provider_dashboard_screen.dart:2004); sin embudo de citas"
+    },
+    "69": {
+      "bloque": "I",
+      "titulo": "Health checks",
+      "estado": "PASA",
+      "nivel": "E3",
+      "evidencia": "GET /api/health → 200 sin X-App-Audience"
+    },
+    "70": {
+      "bloque": "I",
+      "titulo": "Errores 5xx visibles",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "mensajes crudos con $e; sin código de error ni reintento guiado"
+    },
+    "71": {
+      "bloque": "I",
+      "titulo": "Soporte con SLA",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "solo tickets in-app; sin horario, canal ni tiempo de respuesta publicado"
+    },
+    "72": {
+      "bloque": "I",
+      "titulo": "FAQ y autoservicio",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "profile/faq_screen.dart con preguntas y respuestas"
+    },
+    "73": {
+      "bloque": "I",
+      "titulo": "Estado del servicio",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "no existe página de estado"
+    },
+    "74": {
+      "bloque": "J",
+      "titulo": "Entornos separados",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "api_service.dart:21/24 producción y staging distintos"
+    },
+    "75": {
+      "bloque": "J",
+      "titulo": "CI/CD",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": ".github/workflows/apps-ci.yml incluye glow_provider"
+    },
+    "76": {
+      "bloque": "J",
+      "titulo": "Rollback",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "scripts/desplegar-web.sh permite redesplegar; sin rollback probado"
+    },
+    "77": {
+      "bloque": "J",
+      "titulo": "Backups + restore probado",
+      "estado": "PARCIAL",
+      "nivel": "E2",
+      "evidencia": "drill previo sobre el mismo backend (4 tablas, conteos idénticos); no es pg_dump"
+    },
+    "78": {
+      "bloque": "J",
+      "titulo": "Migraciones seguras",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "138 migraciones, 31 con BEGIN; sin runner de reversión verificado"
+    },
+    "79": {
+      "bloque": "J",
+      "titulo": "Versionado",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "pubspec 1.0.0+1 vs UI 'v2.4.0 (Build 2026)' en settings_screen.dart:773"
+    },
+    "80": {
+      "bloque": "J",
+      "titulo": "Feature flags",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "0 referencias a FeatureFlag/RemoteConfig en provider y core"
+    },
+    "81": {
+      "bloque": "J",
+      "titulo": "Canales de prueba",
+      "estado": "N/V",
+      "nivel": "E0",
+      "evidencia": "sin tracks de Play/TestFlight"
+    },
+    "82": {
+      "bloque": "K",
+      "titulo": "Correos transaccionales",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "paymentRoutes.js:375 correo con el código OTP al cliente"
+    },
+    "83": {
+      "bloque": "K",
+      "titulo": "Entregabilidad",
+      "estado": "PARCIAL",
+      "nivel": "E0",
+      "evidencia": "sin registro de rebotes ni dominio verificado comprobado"
+    },
+    "84": {
+      "bloque": "K",
+      "titulo": "Push",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "firebase_messaging en pubspec pero 0 referencias en lib/; fcm_service del core nunca se inicializa"
+    },
+    "85": {
+      "bloque": "K",
+      "titulo": "Plantillas con marca",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "HTML del OTP con encabezado y estilo GlowApp (paymentRoutes.js:375-390)"
+    },
+    "86": {
+      "bloque": "K",
+      "titulo": "Baja de comunicaciones",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "toggle push_enabled persiste en /api/users/preferences; sin efecto real al no haber FCM"
+    }
+  },
+  "items_prestador": {
+    "87": {
+      "bloque": "L",
+      "titulo": "Recibir y aceptar/rechazar solicitud",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "no existe UI ni endpoint de aceptar/rechazar; las citas llegan ya CONFIRMADA (paymentRoutes.js:305)"
+    },
+    "88": {
+      "bloque": "L",
+      "titulo": "Iniciar servicio y compartir ubicación en vivo",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "ApiService.startBooking (provider_dashboard_screen.dart:294); WS location_update con GPS real (booking_tracking_screen.dart:91-100)"
+    },
+    "89": {
+      "bloque": "L",
+      "titulo": "Cerrar servicio con OTP",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "SegmentedPinDialog de 4 dígitos → ApiService.completeBooking(id,pin) (provider_dashboard_screen.dart:4544)"
+    },
+    "90": {
+      "bloque": "L",
+      "titulo": "Cobro y liquidación",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "wallet_screen.dart: saldo, movimientos y retiro; comisión 20 % solo en texto de onboarding; sin desglose por cita"
+    },
+    "91": {
+      "bloque": "L",
+      "titulo": "Agenda y disponibilidad",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "backend expone GET/PUT /api/provider/schedule (providerRoutes.js:97,122); la app tiene 0 llamadas"
+    },
+    "92": {
+      "bloque": "L",
+      "titulo": "Servicios y precios propios",
+      "estado": "PASA",
+      "nivel": "E1",
+      "evidencia": "provider_services_screen.dart:43-92 fetchProviderServices/createService/updateService/deleteService"
+    },
+    "93": {
+      "bloque": "L",
+      "titulo": "Salón: invitar, asignar, agenda del equipo",
+      "estado": "PARCIAL",
+      "nivel": "E1",
+      "evidencia": "salon_shell.dart lista miembros y caja; aceptar invitación existe; crear invitación y asignar citas no"
+    },
+    "94": {
+      "bloque": "L",
+      "titulo": "Verificación de documentos",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "business_document_generator_screen genera contratos laborales; no hay estado de verificación de cédula/RUT"
+    },
+    "95": {
+      "bloque": "L",
+      "titulo": "Notificaciones de cita nueva/cambio/cancelación",
+      "estado": "FALLA",
+      "nivel": "E1",
+      "evidencia": "FCM ausente en el prestador; sin canal de aviso de cita"
+    }
+  },
+  "hallazgos": [
+    "P-01 confirmado: AndroidManifest.xml con 0 uses-permission; el APK de release no puede usar la red ni la ubicación.",
+    "P-03: existe solicitud ARCO por ticket (settings_screen.dart:323), no borrado self-service con DELETE /api/auth/delete-account.",
+    "P-04/P-52: glowapp-provider.web.app/privacy.html y /account-deletion.html devuelven el catch-all de Flutter (1560 bytes); no hay política publicada en el dominio del prestador.",
+    "P-05: 34 TextStyle con #C5A052 (2,42-2,46:1), no 70; 0 usos de #8A6A2F.",
+    "P-02: 30 sitios visibles con $e (no 77); 16 de los 85 son debugPrint.",
+    "AppUpdateGate existe pero no está montado: minimum_app_version no se consume.",
+    "firebase_messaging en pubspec y 0 referencias en lib/: el prestador no recibe push.",
+    "No hay aceptar/rechazar citas: el backend exige estados CONFIRMADA/CHECKIN_REALIZADO/EN_PROGRESO para completar.",
+    "PUT /api/provider/schedule existe en backend y la app no lo llama: sin gestión de disponibilidad.",
+    "Versión visible 'v2.4.0 (Build 2026)' contra pubspec 1.0.0+1."
+  ],
+  "verificacion": {
+    "dart analyze lib": "0 errores, 0 warnings, 1232 infos",
+    "flutter test": "5/5 en verde",
+    "dart_files": 72,
+    "dart_lines": 38965,
+    "rutas": 39,
+    "tests_archivos": 2,
+    "uses_permission": 0,
+    "texto_e_visible": 30,
+    "textstyle_dorado": 34,
+    "tooltips": 18,
+    "semantics": 13,
+    "endpoints_api_distintos": 23
+  },
+  "resumen": {
+    "total": 95,
+    "base86": {
+      "PASA": 23,
+      "PARCIAL": 30,
+      "N/A": 2,
+      "FALLA": 16,
+      "N/V": 15
+    },
+    "propios": {
+      "FALLA": 4,
+      "PASA": 3,
+      "PARCIAL": 2
+    },
+    "global": {
+      "PASA": 26,
+      "PARCIAL": 32,
+      "N/A": 2,
+      "FALLA": 20,
+      "N/V": 15
+    }
+  }
+}
