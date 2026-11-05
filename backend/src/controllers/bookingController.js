@@ -6,6 +6,8 @@ const { sequelize } = require('../config/database');
 const { Op } = require('sequelize');
 const crypto = require('crypto');
 const dianInvoiceClient = require('../services/dianInvoiceClient');
+const { construirRecibo } = require('../services/receiptService');
+const emailService = require('../services/email.service');
 
 // ── Verificación de eventos de Wompi (integración real) ──────────────────────
 // CORRECCIÓN DE CAUSA RAÍZ: el esquema anterior firmaba con HMAC-SHA256 el cuerpo
@@ -633,6 +635,99 @@ exports.getClientBookings = async (req, res) => {
   } catch (error) {
     console.error('❌ ERROR EN /api/bookings/client:', { message: error.message, code: error.code });
     res.status(500).json({ error: 'Error interno al cargar el historial de citas' });
+  }
+};
+
+// 🔹 Recibo de la cita (ítem 31)
+// Una sola consulta con rol de sistema: el cliente y el prestador viven en
+// inquilinos distintos, así que con el contexto del cliente los JOIN dejarían
+// la fila invisible (mismo motivo que en getClientBookings).
+async function cargarReservaParaRecibo(bookingId, clientId) {
+  return sequelize.transaction(async (t) => {
+    await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+    const filas = await sequelize.query(
+      `SELECT b.id, b.scheduled_at, b.estado, b.payment_status, b.valor_bruto,
+              b.subtotal_base, b.iva_valor, b.tarifa_iva_aplicada, b.propina,
+              s.name AS servicio, u.nombre AS prestador,
+              p.business_name AS negocio,
+              c.nombre AS cliente, c.email AS email_cliente
+         FROM bookings b
+         JOIN services s ON s.id = b.service_id
+         JOIN perfiles_prestador p ON p.id = b.provider_id
+         JOIN usuarios u ON u.id = p.id
+         JOIN usuarios c ON c.id = b.client_id
+        WHERE b.id = :bookingId AND b.client_id = :clientId
+        LIMIT 1`,
+      {
+        replacements: { bookingId, clientId },
+        type: sequelize.QueryTypes.SELECT,
+        transaction: t,
+      }
+    );
+    return filas && filas[0] ? filas[0] : null;
+  });
+}
+
+function reciboDesdeFila(fila, metodoPago) {
+  return construirRecibo({
+    id: fila.id,
+    cliente: fila.cliente,
+    prestador: fila.negocio || fila.prestador,
+    servicio: fila.servicio,
+    fechaCita: fila.scheduled_at,
+    valorBruto: fila.valor_bruto,
+    subtotalBase: fila.subtotal_base,
+    ivaValor: fila.iva_valor,
+    tarifaIva: fila.tarifa_iva_aplicada,
+    propina: fila.propina,
+    metodoPago: metodoPago || 'Wompi',
+    paymentStatus: fila.payment_status,
+    estado: fila.estado,
+  });
+}
+
+/// GET /api/bookings/:id/receipt — comprobante imprimible/descargable.
+exports.getBookingReceipt = async (req, res) => {
+  try {
+    const fila = await cargarReservaParaRecibo(req.params.id, req.user.id);
+    if (!fila) {
+      return res.status(404).json({ error: 'Cita no encontrada o no te pertenece' });
+    }
+    const { html } = reciboDesdeFila(fila, req.query.metodo);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Content-Disposition',
+      `inline; filename="recibo-${String(fila.id).slice(0, 8)}.html"`);
+    return res.send(html);
+  } catch (error) {
+    console.error('❌ ERROR EN /api/bookings/:id/receipt:', {
+      message: error.message,
+      code: error.code,
+    });
+    return res.status(500).json({ error: 'No pudimos generar el recibo de esta cita' });
+  }
+};
+
+/// POST /api/bookings/:id/receipt/email — manda el recibo al correo de la cuenta.
+exports.emailBookingReceipt = async (req, res) => {
+  try {
+    const fila = await cargarReservaParaRecibo(req.params.id, req.user.id);
+    if (!fila) {
+      return res.status(404).json({ error: 'Cita no encontrada o no te pertenece' });
+    }
+    if (!fila.email_cliente) {
+      return res.status(409).json({ error: 'Tu cuenta no tiene un correo al que enviar el recibo' });
+    }
+    const { asunto, html, texto } = reciboDesdeFila(fila, req.body && req.body.metodo);
+    const envio = await emailService.sendEmail({
+      to: fila.email_cliente,
+      subject: asunto,
+      htmlText: html,
+      plainText: texto,
+    });
+    return res.json({ success: true, enviado_a: fila.email_cliente, id_mensaje: envio && envio.messageId ? envio.messageId : null });
+  } catch (error) {
+    console.error('❌ ERROR EN /api/bookings/:id/receipt/email:', { message: error.message });
+    return res.status(502).json({ error: 'No pudimos enviar el recibo por correo' });
   }
 };
 

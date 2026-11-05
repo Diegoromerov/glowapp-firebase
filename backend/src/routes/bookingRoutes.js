@@ -34,6 +34,9 @@ router.patch('/bookings/:id/cancel-provider', authMiddleware, pilaCheck, booking
 // D-GL-023 — propina (100% al prestador) y compensación por no-show en créditos
 router.post('/bookings/:id/tip', authMiddleware, tipController.createTip);
 router.get('/bookings/:id/tip', authMiddleware, tipController.getTip);
+// Ítem 31 — recibo: comprobante imprimible y envío al correo de la cuenta.
+router.get('/bookings/:id/receipt', authMiddleware, bookingController.getBookingReceipt);
+router.post('/bookings/:id/receipt/email', authMiddleware, bookingController.emailBookingReceipt);
 router.post('/bookings/:id/no-show', authMiddleware, creditController.reportProviderNoShow);
 
 // Créditos del usuario
