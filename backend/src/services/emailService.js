@@ -230,10 +230,10 @@ async function sendBookingConfirmationEmail({
   reference,
 }) {
   const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-client.web.app').replace(/\/$/, '');
-  const receiptUrl = `${frontendBase}/#/bookings/${bookingId}/receipt`;
+  const receiptUrl = `${frontendBase}/#/my-bookings`;
   const subject = `✅ Tu cita de ${serviceName} está confirmada y pagada · GlowApp`;
 
-  console.log(`📧 [EMAIL CONFIRMACIÓN] Preparando correo para ${toEmail} (${clientName}):`);
+  console.log(`📧 [EMAIL CONFIRMACIÓN] Preparando correo (booking_id=${bookingId}, ref=${reference}):`);
   console.log(`   Asunto: ${subject}`);
   console.log(`   Referencia: ${reference}`);
 
