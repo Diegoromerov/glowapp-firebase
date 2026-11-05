@@ -17,8 +17,11 @@ import 'connectivity_service.dart';
 class ApiService {
   // --- CONFIGURACIÓN DE ENTORNO DE DESARROLLO / PRODUCCIÓN ---
   static const bool useStaging = false;
-  static const String stagingUrl =
-      'https://belleza-app-production.up.railway.app';
+  static const String productionUrl =
+      'https://glowapp-api-production.up.railway.app';
+  // Apuntaba a belleza-app-production, el backend archivado: sus respuestas no
+  // son las de esta app (y su verificación de Google es otra).
+  static const String stagingUrl = 'https://glowapp-api-staging.up.railway.app';
 
   static String? _cachedBaseUrl;
   static final List<String> _ports = ['8080', '8082', '3000', '3001'];
@@ -36,12 +39,14 @@ class ApiService {
     if (_cachedBaseUrl != null) return _cachedBaseUrl!;
     if (kIsWeb) {
       final origin = Uri.base.origin;
-      if (origin.contains('glowapp-frontend') || origin.contains('frontend')) {
-        return stagingUrl;
+      if (origin.isEmpty || origin.contains('localhost') || origin.contains('127.0.0.1')) {
+        return 'http://$_host:8080';
       }
-      if (origin.isNotEmpty && !origin.contains('localhost') && !origin.contains('127.0.0.1')) {
-        return origin;
-      }
+      // El sitio se sirve como estático y NO reescribe /api: pedir
+      // https://glowapp-client.web.app/api/... devuelve el index.html con 200 y
+      // cualquier respuesta muere en el json.decode. Por eso el login social
+      // decía "el servidor rechazó el token" sin haber hablado con el servidor.
+      return productionUrl;
     }
     return 'http://$_host:8080';
   }
@@ -67,12 +72,8 @@ class ApiService {
     }
     if (kIsWeb) {
       final origin = Uri.base.origin;
-      if (origin.contains('glowapp-frontend') || origin.contains('frontend')) {
-        _cachedBaseUrl = stagingUrl;
-        return;
-      }
       if (origin.isNotEmpty && !origin.contains('localhost') && !origin.contains('127.0.0.1')) {
-        _cachedBaseUrl = origin;
+        _cachedBaseUrl = productionUrl;
         return;
       }
     }
