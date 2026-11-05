@@ -1,3 +1,4 @@
+import 'package:glow_core/glow_core.dart' show mensajeHumano;
 import 'package:flutter/material.dart';
 import 'package:glow_core/services/auth_service.dart';
 
@@ -36,7 +37,7 @@ class _RoleSelectionModalState extends State<RoleSelectionModal> {
         setState(() => _error = 'No se pudo guardar la selección de rol.');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

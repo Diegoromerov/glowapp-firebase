@@ -280,7 +280,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         Navigator.pushReplacementNamed(context, '/salon/hub');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() {
         _isLoading = false;
@@ -522,7 +522,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         if (type == 'cert') _certificacionUrl = dataUri;
       });
     } catch (e) {
-      setState(() => _error = 'Error al subir el archivo: $e');
+      setState(() => _error = 'Error al subir el archivo: ${mensajeHumano(e)}');
     } finally {
       setState(() {
         if (type == 'doc') _uploadingDoc = false;
@@ -580,7 +580,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         }
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -618,7 +618,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         setState(() => _error = 'Error al guardar el borrador');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

@@ -1,4 +1,5 @@
 // frontend/lib/screens/auth/forgot_password_screen.dart
+import 'package:glow_core/glow_core.dart' show mensajeHumano;
 import 'package:flutter/material.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/design/components/s4_text_field.dart';
@@ -59,7 +60,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'Error de conexión: $e';
+        _errorMessage = 'Error de conexión: ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }
@@ -99,7 +100,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'Error de conexión: $e';
+        _errorMessage = 'Error de conexión: ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }

@@ -212,7 +212,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ Error al iniciar servicio: $e'),
+            content: Text('❌ Error al iniciar servicio: ${mensajeHumano(e)}'),
             backgroundColor: AppTheme.error,
           ),
         );

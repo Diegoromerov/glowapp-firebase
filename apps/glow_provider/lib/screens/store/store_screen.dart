@@ -89,7 +89,7 @@ class _StoreScreenState extends State<StoreScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'No se pudieron cargar los productos: $e';
+        _errorMessage = 'No se pudieron cargar los productos: ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }
@@ -465,7 +465,7 @@ class _StoreScreenState extends State<StoreScreen> {
       } catch (e) {
         if (dialogContext.mounted) {
           ScaffoldMessenger.of(dialogContext).showSnackBar(
-            SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+            SnackBar(content: Text('Error: ${mensajeHumano(e)}'), backgroundColor: Colors.red),
           );
         }
         return null;
@@ -693,7 +693,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     processing = false;
                                   });
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Error creando pedido: $e')),
+                                    SnackBar(content: Text('Error creando pedido: ${mensajeHumano(e)}')),
                                   );
                                   return;
                                 }
@@ -741,7 +741,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     messenger.showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'No se pudo abrir la pasarela de pago: $e. '
+                                          'No se pudo abrir la pasarela de pago: ${mensajeHumano(e)}. '
                                           'El pedido quedó pendiente, no se te cobró nada.',
                                         ),
                                       ),

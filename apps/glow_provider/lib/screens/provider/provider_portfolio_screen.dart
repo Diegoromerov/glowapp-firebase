@@ -51,7 +51,7 @@ class _ProviderPortfolioScreenState extends State<ProviderPortfolioScreen> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }
@@ -255,7 +255,7 @@ class _ProviderPortfolioScreenState extends State<ProviderPortfolioScreen> {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-              content: Text('❌ Error al subir: $e'),
+              content: Text('❌ Error al subir: ${mensajeHumano(e)}'),
               backgroundColor: Colors.red),
         );
       }
@@ -444,7 +444,7 @@ class _ProviderPortfolioScreenState extends State<ProviderPortfolioScreen> {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-              content: Text('❌ Error al actualizar: $e'),
+              content: Text('❌ Error al actualizar: ${mensajeHumano(e)}'),
               backgroundColor: Colors.red),
         );
       }
@@ -512,7 +512,7 @@ class _ProviderPortfolioScreenState extends State<ProviderPortfolioScreen> {
           setState(() => _isLoading = false);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-                content: Text('❌ Error al eliminar: $e'),
+                content: Text('❌ Error al eliminar: ${mensajeHumano(e)}'),
                 backgroundColor: Colors.red),
           );
         }

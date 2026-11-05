@@ -294,7 +294,7 @@ class TeamManagementScreen extends ConsumerWidget {
                   await ref.read(teamProvider.notifier).invite(businessProfileId, InviteMemberRequest(email: email, role: selectedRole));
                   if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invitación enviada')));
                 } catch (e) {
-                  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+                  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${mensajeHumano(e)}')));
                 }
               }
             },

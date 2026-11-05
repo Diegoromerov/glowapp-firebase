@@ -101,7 +101,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
       });
     } catch (e) {
       setState(() {
-        _error = 'Error al cargar perfil: $e';
+        _error = 'Error al cargar perfil: ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }
@@ -192,7 +192,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     } catch (e) {
       setState(() {
         _isUploading = false;
-        _error = 'Error al subir foto: $e';
+        _error = 'Error al subir foto: ${mensajeHumano(e)}';
       });
     }
   }
@@ -230,7 +230,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     } catch (e) {
       setState(() {
         _isSaving = false;
-        _error = 'Error al guardar cambios: $e';
+        _error = 'Error al guardar cambios: ${mensajeHumano(e)}';
       });
     }
   }

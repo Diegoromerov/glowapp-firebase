@@ -66,7 +66,7 @@ class _GlowConsentWidgetState extends State<GlowConsentWidget> {
         _isSubmitting = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('❌ Error al actualizar consentimiento: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('❌ Error al actualizar consentimiento: ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
       );
     }
   }

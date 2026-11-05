@@ -234,7 +234,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       }
       if (mounted) {
         setState(() {
-          _error = errStr;
+          _error = mensajeHumano(e);
           _loading = false;
         });
       }
@@ -316,7 +316,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ Error al iniciar servicio: $e'),
+            content: Text('❌ Error al iniciar servicio: ${mensajeHumano(e)}'),
             backgroundColor: Colors.redAccent,
           ),
         );
@@ -1336,7 +1336,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   if (mounted) {
                     scaffoldMessenger.showSnackBar(
                       SnackBar(
-                          content: Text('Error: $e'),
+                          content: Text('Error: ${mensajeHumano(e)}'),
                           backgroundColor: Colors.redAccent),
                     );
                   }
@@ -1429,7 +1429,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content:
-                Text('Error: ${e.toString().replaceAll('Exception: ', '')}'),
+                Text('Error: ${mensajeHumano(e)}'),
             backgroundColor: Colors.redAccent,
           ),
         );
@@ -1765,7 +1765,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ Error al cambiar estado: $e'),
+            content: Text('❌ Error al cambiar estado: ${mensajeHumano(e)}'),
             backgroundColor: Colors.redAccent,
           ),
         );
@@ -2024,7 +2024,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('❌ Error al enviar alerta SOS: $e'),
+          content: Text('❌ Error al enviar alerta SOS: ${mensajeHumano(e)}'),
           backgroundColor: Colors.redAccent,
         ),
       );
@@ -4559,7 +4559,7 @@ class _SegmentedPinDialogState extends State<SegmentedPinDialog> {
       if (mounted) {
         setState(() {
           _isSubmitting = false;
-          _error = e.toString().replaceAll('Exception:', '').replaceAll('Exception: ', '');
+          _error = mensajeHumano(e);
           for (var c in _controllers) {
             c.clear();
           }

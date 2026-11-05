@@ -67,7 +67,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
       if (!mounted) return;
       setState(() => _isBusy = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: \$e'), backgroundColor: AppTheme.error),
+        SnackBar(content: Text('Error: ${mensajeHumano(e)}'), backgroundColor: AppTheme.error),
       );
     }
   }

@@ -141,7 +141,7 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.red.withOpacity(0.3)),
       ),
-      child: Text('No se pudieron cargar las API Keys: $error',
+      child: Text('No se pudieron cargar las API Keys: ${mensajeHumano(error)}',
           style: const TextStyle(fontSize: 12, color: Colors.red)),
     );
   }
@@ -396,7 +396,7 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                       } catch (e) {
                         setDialogState(() {
                           submitting = false;
-                          error = 'No se pudo crear: $e';
+                          error = 'No se pudo crear: ${mensajeHumano(e)}';
                         });
                       }
                     },
@@ -509,7 +509,7 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
       _toast('API Key revocada');
     } catch (e) {
       if (!mounted) return;
-      _toast('No se pudo revocar: $e', error: true);
+      _toast('No se pudo revocar: ${mensajeHumano(e)}', error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }

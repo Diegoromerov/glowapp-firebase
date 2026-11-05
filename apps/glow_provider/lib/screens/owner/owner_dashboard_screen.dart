@@ -1,3 +1,4 @@
+import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:glow_core/models/owner_dashboard_metrics.dart';
 import 'package:glow_core/services/active_salon_service.dart';
@@ -35,7 +36,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
         _metrics = OwnerDashboardMetrics.fromJson(widget.initialMetricsJson!);
         _isLoading = false;
       } catch (e) {
-        _errorMessage = e.toString();
+        _errorMessage = mensajeHumano(e);
         _isLoading = false;
       }
     } else {
@@ -70,7 +71,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _errorMessage = 'Error al cargar datos del propietario: ${e.toString()}';
+          _errorMessage = 'Error al cargar datos del propietario: ${mensajeHumano(e)}';
           _isLoading = false;
         });
       }
@@ -94,7 +95,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _errorMessage = 'Error al cargar métricas: ${e.toString()}';
+          _errorMessage = 'Error al cargar métricas: ${mensajeHumano(e)}';
           _isLoading = false;
         });
       }
@@ -121,7 +122,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error al cambiar de sede: $e'),
+            content: Text('Error al cambiar de sede: ${mensajeHumano(e)}'),
             backgroundColor: const Color(0xFFDC2626),
           ),
         );

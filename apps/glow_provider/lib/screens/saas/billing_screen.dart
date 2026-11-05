@@ -60,7 +60,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       if (!mounted) return;
       _toast('Cuenta SaaS activada');
     } catch (e) {
-      if (mounted) _toast('No se pudo activar la cuenta: $e', error: true);
+      if (mounted) _toast('No se pudo activar la cuenta: ${mensajeHumano(e)}', error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -397,7 +397,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
         _toast('Plan actualizado a ${plan.name}');
       } catch (e) {
         if (!mounted) return;
-        _toast('No se pudo cambiar el plan: $e', error: true);
+        _toast('No se pudo cambiar el plan: ${mensajeHumano(e)}', error: true);
       } finally {
         if (mounted) setState(() => _busy = false);
       }
@@ -416,7 +416,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       }
       await launchUrl(Uri.parse(session.url), mode: LaunchMode.externalApplication);
     } catch (e) {
-      _toast('No se pudo iniciar el pago: $e', error: true);
+      _toast('No se pudo iniciar el pago: ${mensajeHumano(e)}', error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -547,7 +547,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       }
       await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
     } catch (e) {
-      _toast('No se pudo abrir el portal: $e', error: true);
+      _toast('No se pudo abrir el portal: ${mensajeHumano(e)}', error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -598,7 +598,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       _toast('Renovación cancelada');
     } catch (e) {
       if (!mounted) return;
-      _toast('No se pudo cancelar: $e', error: true);
+      _toast('No se pudo cancelar: ${mensajeHumano(e)}', error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }

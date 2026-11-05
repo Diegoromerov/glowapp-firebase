@@ -59,7 +59,7 @@ class _QuizScreenState extends State<QuizScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = 'Error al cargar cuestionario: $e';
+        _error = 'Error al cargar cuestionario: ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }
@@ -104,7 +104,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _isSubmitting = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al enviar examen: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('Error al enviar examen: ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
       );
     }
   }

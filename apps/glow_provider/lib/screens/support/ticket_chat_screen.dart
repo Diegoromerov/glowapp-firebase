@@ -1,4 +1,5 @@
 ﻿// frontend/lib/screens/support/ticket_chat_screen.dart
+import 'package:glow_core/glow_core.dart' hide AppTheme;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -84,7 +85,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
     } catch (e) {
       if (!silent) {
         setState(() {
-          _error = 'Error de conexiÃ³n: $e';
+          _error = 'Error de conexiÃ³n: ${mensajeHumano(e)}';
         });
       }
     } finally {
@@ -129,7 +130,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de red: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('Error de red: ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
       );
     } finally {
       setState(() {

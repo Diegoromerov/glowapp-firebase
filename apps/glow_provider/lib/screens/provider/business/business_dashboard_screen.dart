@@ -76,12 +76,13 @@ class _BusinessDashboardScreenState extends State<BusinessDashboardScreen> {
       });
     } catch (e) {
       if (!mounted) return;
+      // El 404 no es un fallo del servidor: significa que este proveedor
+      // todavía no hizo el diagnóstico, y la salida es otra.
+      final bool sinExpediente = e.toString().contains('404');
       setState(() {
-        // El 404 no es un fallo del servidor: significa que este proveedor
-        // todavía no hizo el diagnóstico, y la salida es otra.
-        _error = e.toString().contains('404')
+        _error = sinExpediente
             ? 'Todavía no tienes un expediente de negocio. Empieza con el diagnóstico.'
-            : 'No se pudo cargar tu Business Center: $e';
+            : 'No se pudo cargar tu Business Center: ${mensajeHumano(e)}';
         _profile = null;
         _tasks = [];
         _findings = [];

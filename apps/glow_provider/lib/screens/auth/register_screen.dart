@@ -1,4 +1,5 @@
 // frontend/lib/screens/auth/register_screen.dart
+import 'package:glow_core/glow_core.dart' show mensajeHumano;
 import 'package:flutter/material.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/design/components/s4_text_field.dart';
@@ -119,7 +120,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);

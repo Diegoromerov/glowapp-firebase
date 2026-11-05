@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() => _error = 'Credenciales incorrectas');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (mounted) {
         setState(() {
           _isLoading = false;
-          _error = 'Error al conectar con Google: $e';
+          _error = 'Error al conectar con Google: ${mensajeHumano(e)}';
         });
       }
       return;
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } catch (e) {
       if (mounted) {
-        setState(() => _error = 'Error al conectar con Google: $e');
+        setState(() => _error = 'Error al conectar con Google: ${mensajeHumano(e)}');
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -287,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() => _error = 'Error al autenticar con $provider');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -336,7 +336,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushReplacementNamed(context, '/auth/onboarding');
       }
     } catch (e) {
-      if (mounted) setState(() => _error = 'Facebook: $e');
+      if (mounted) setState(() => _error = 'Facebook: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

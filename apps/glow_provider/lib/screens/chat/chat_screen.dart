@@ -425,7 +425,7 @@ class _ChatScreenState extends State<ChatScreen> {
     } catch (e) {
       if (showLoading && mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }
@@ -524,7 +524,7 @@ class _ChatScreenState extends State<ChatScreen> {
         _stopReconcilePolling();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ No se pudo enviar el mensaje: $e'),
+            content: Text('❌ No se pudo enviar el mensaje: ${mensajeHumano(e)}'),
             backgroundColor: Colors.deepOrange,
           ),
         );

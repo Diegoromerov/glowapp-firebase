@@ -1,4 +1,5 @@
 // frontend/lib/screens/support/create_ticket_screen.dart
+import 'package:glow_core/glow_core.dart' hide AppTheme;
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al adjuntar imagen: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('Error al adjuntar imagen: ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
       );
     }
   }
@@ -110,7 +111,7 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       }
     } catch (e) {
       setState(() {
-        _error = 'Error de red/conexión: $e';
+        _error = 'Error de red/conexión: ${mensajeHumano(e)}';
       });
     } finally {
       if (mounted) {

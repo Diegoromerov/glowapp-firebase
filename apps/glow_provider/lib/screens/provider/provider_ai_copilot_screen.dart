@@ -195,7 +195,7 @@ class _ProviderAiCopilotScreenState extends State<ProviderAiCopilotScreen> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('⚠️ No se pudo enviar el mensaje: ${e.toString()}'),
+            content: Text('⚠️ No se pudo enviar el mensaje: ${mensajeHumano(e)}'),
             backgroundColor: Colors.redAccent,
           ),
         );

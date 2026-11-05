@@ -1,3 +1,4 @@
+import 'package:glow_core/glow_core.dart' show mensajeHumano;
 import 'package:flutter/material.dart';
 import 'package:glow_core/services/auth_service.dart';
 
@@ -65,7 +66,7 @@ class _AcceptInvitationScreenState extends State<AcceptInvitationScreen> {
         });
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: $e');
+      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

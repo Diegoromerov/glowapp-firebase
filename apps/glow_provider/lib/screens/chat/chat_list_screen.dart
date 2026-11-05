@@ -127,7 +127,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
     } catch (e) {
       if (showLoading && mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }

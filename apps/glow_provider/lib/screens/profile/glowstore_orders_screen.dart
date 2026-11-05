@@ -37,7 +37,7 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = e.toString().replaceFirst('Exception: ', '');
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }

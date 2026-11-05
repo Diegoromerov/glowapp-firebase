@@ -50,7 +50,7 @@ class _ProviderServicesScreenState extends State<ProviderServicesScreen>
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }
@@ -115,7 +115,7 @@ class _ProviderServicesScreenState extends State<ProviderServicesScreen>
       if (mounted) {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('❌ Error: $e'), backgroundColor: Colors.red),
+          SnackBar(content: Text('❌ Error: ${mensajeHumano(e)}'), backgroundColor: Colors.red),
         );
       }
     }
@@ -675,7 +675,7 @@ class _ProviderServicesScreenState extends State<ProviderServicesScreen>
         if (mounted) {
           setState(() => _isLoading = false);
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('❌ Error: $e'), backgroundColor: Colors.red),
+            SnackBar(content: Text('❌ Error: ${mensajeHumano(e)}'), backgroundColor: Colors.red),
           );
         }
       }

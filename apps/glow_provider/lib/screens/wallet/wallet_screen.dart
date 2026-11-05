@@ -66,7 +66,7 @@ class _WalletScreenState extends State<WalletScreen>
       _cargarTransacciones(loadMore: false);
     } catch (e) {
       setState(() {
-        _error = e.toString();
+        _error = mensajeHumano(e);
         _loading = false;
       });
     }
@@ -246,7 +246,7 @@ class _WalletScreenState extends State<WalletScreen>
               SnackBar(
                 content: Text(sinDispersion
                     ? 'Los retiros se habilitan pronto. No se descontÃ³ nada de tu saldo.'
-                    : 'Error: ${texto.replaceAll('Exception: ', '')}'),
+                    : 'Error: ${mensajeHumano(e)}'),
                 backgroundColor: Colors.red,
               ),
             );
@@ -1507,7 +1507,7 @@ class _WalletScreenState extends State<WalletScreen>
                       if (mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                              content: Text('Error: $e'),
+                              content: Text('Error: ${mensajeHumano(e)}'),
                               backgroundColor: Colors.red),
                         );
                       }

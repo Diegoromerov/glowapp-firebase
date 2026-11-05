@@ -78,7 +78,7 @@ class _BusinessTaskDetailScreenState extends State<BusinessTaskDetailScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = 'No se pudo avanzar la tarea: $e';
+        _error = 'No se pudo avanzar la tarea: ${mensajeHumano(e)}';
         _avanzando = false;
       });
     }
@@ -112,7 +112,7 @@ class _BusinessTaskDetailScreenState extends State<BusinessTaskDetailScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = 'No se pudo subir la evidencia: $e';
+        _error = 'No se pudo subir la evidencia: ${mensajeHumano(e)}';
         _subiendoEvidencia = false;
       });
     }

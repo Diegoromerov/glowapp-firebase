@@ -132,7 +132,7 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.red.withOpacity(0.3)),
       ),
-      child: Text('No se pudo cargar el uso: $error',
+      child: Text('No se pudo cargar el uso: ${mensajeHumano(error)}',
           style: const TextStyle(fontSize: 12, color: Colors.red)),
     );
   }

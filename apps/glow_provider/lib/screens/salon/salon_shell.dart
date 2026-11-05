@@ -16,6 +16,7 @@
 // El dashboard previo (SalonDashboardScreen) se conserva accesible en
 // `/salon/resumen` desde la pestaña «Más», para no perder Resumen/Ajustes.
 
+import 'package:glow_core/glow_core.dart' show mensajeHumano;
 import 'package:flutter/material.dart';
 
 import 'package:glow_core/core/theme/tokens.dart';
@@ -253,7 +254,7 @@ class _AgendaTabState extends State<_AgendaTab> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = 'No se pudo cargar la agenda: $e';
+        _error = 'No se pudo cargar la agenda: ${mensajeHumano(e)}';
         _cargando = false;
       });
     }
@@ -394,7 +395,7 @@ class _EquipoTabState extends State<_EquipoTab> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = 'No se pudo cargar el equipo: $e';
+        _error = 'No se pudo cargar el equipo: ${mensajeHumano(e)}';
         _cargando = false;
       });
     }

@@ -52,7 +52,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
       });
     } catch (e) {
       setState(() {
-        _error = 'Error al cargar detalle del curso: $e';
+        _error = 'Error al cargar detalle del curso: ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }
@@ -111,7 +111,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al completar lecciÃ³n: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('Error al completar lecciÃ³n: ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
       );
     }
   }
