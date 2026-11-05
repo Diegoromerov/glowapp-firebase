@@ -222,6 +222,35 @@ exports.createBooking = async (req, res) => {
       }
     }
 
+    // 🔸 Duplicado por doble toque, ANTES del control de solape.
+    // Si se deja después, el propio duplicado choca contra la agenda y el
+    // segundo toque recibe un 409 «horario ya reservado» en lugar de la cita
+    // que el usuario acaba de crear.
+    const reciente = await sequelize.query(
+      `SELECT id FROM bookings
+        WHERE client_id = :clientId
+          AND provider_id = :providerId
+          AND scheduled_at = :scheduledAt
+          AND estado = 'PENDIENTE_PAGO'
+          AND created_at > now() - interval '2 minutes'
+        LIMIT 1`,
+      {
+        replacements: {
+          clientId,
+          providerId: Number(provider_id),
+          scheduledAt: new Date(scheduled_at),
+        },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+    if (reciente.length > 0) {
+      return res.status(200).json({
+        success: true,
+        booking_id: reciente[0].id,
+        idempotente: true,
+      });
+    }
+
     // 🔸 Validación de solapamiento de horarios (Collision Check de la duración acumulada)
     const newStart = new Date(scheduled_at);
     const newEnd = new Date(newStart.getTime() + totalDurationMinutes * 60 * 1000);
