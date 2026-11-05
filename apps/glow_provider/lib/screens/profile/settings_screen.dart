@@ -505,84 +505,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  // MODAL POLÍTICA DE PRIVACIDAD LEY 1581
-  void _showPrivacyPolicyModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: AppTheme.nude50,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.75,
-        maxChildSize: 0.9,
-        minChildSize: 0.5,
-        expand: false,
-        builder: (context, scrollController) => Container(
-          padding: EdgeInsets.all(LuxeSpacing.xl),
-          child: ListView(
-            controller: scrollController,
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: AppTheme.nude300,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'POLÍTICA DE PRIVACIDAD LEY 1581 DE 2012',
-                style: TextStyle(
-                  fontFamily: 'Didot',
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.nude900,
-                  letterSpacing: 1.2,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              Text(
-                'TRATAMIENTO DE DATOS PERSONALES Y SENSIBLES\n'
-                'GlowApp da estricto cumplimiento a la Ley Estatutaria 1581 de 2012 y al Decreto 1377 de 2013 sobre la protección de datos personales en Colombia.\n\n'
-                '1. DATOS RECOPILADOS\n'
-                'Recopilamos información de contacto y datos biométricos faciales necesarios para personalizar la experiencia de diagnóstico de belleza.\n\n'
-                '2. FINALIDAD DE LA INFORMACIÓN\n'
-                'Sus datos serán usados única y exclusivamente para la prestación de servicios estéticos, recomendaciones de productos en GlowStore y agendamiento de citas.\n\n'
-                '3. DERECHOS ARCO\n'
-                'Como titular, usted tiene derecho a Conocer, Actualizar, Rectificar y Solicitar la Supresión de sus datos personales en cualquier momento a través del panel de configuración de la app.',
-                style: TextStyle(
-                  fontFamily: 'CormorantGaramond',
-                  fontSize: 15,
-                  color: AppTheme.nude800,
-                  height: 1.5,
-                ),
-              ),
-              SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.nude900,
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 14),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Entendido'),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -750,6 +672,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                     // ACCIÓN DESTRUCTIVA: ELIMINAR CUENTA (CON TIPOGRAFÍA SERIF ROJA SUTIL)
                     ListTile(
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/delete-account'),
+                      leading: const Icon(Icons.delete_forever_outlined,
+                          color: Color(0xFFB00020)),
+                      title: const Text(
+                        'Eliminar mi cuenta',
+                        style: TextStyle(
+                          fontFamily: 'CormorantGaramond',
+                          fontSize: 16,
+                          color: Color(0xFFB00020),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      subtitle: const Text(
+                        'Cierra la cuenta y borra tus datos al instante',
+                        style: TextStyle(fontFamily: 'Manrope', fontSize: 12),
+                      ),
+                    ),
+                    // Vía alternativa: ticket formal ARCO revisado por el equipo
+                    ListTile(
                       onTap: () => _requestDataDeletion(context),
                       leading: const Icon(Icons.delete_outline, color: Color(0xFFB00020)),
                       title: const Text(
@@ -786,7 +728,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               ),
                               Text(' • ', style: TextStyle(color: AppTheme.nude500)),
                               GestureDetector(
-                                onTap: () => _showPrivacyPolicyModal(context),
+                                onTap: () => Navigator.pushNamed(context, '/privacy'),
                                 child: Text(
                                   'Política de Privacidad Ley 1581',
                                   style: TextStyle(fontSize: 11, color: AppTheme.nude500, decoration: TextDecoration.underline),

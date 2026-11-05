@@ -73,6 +73,8 @@ import 'screens/profile/rewards_xp_screen.dart';
 import 'screens/profile/glowstore_orders_screen.dart';
 import 'screens/profile/faq_screen.dart';
 import 'screens/profile/settings_screen.dart';
+import 'screens/profile/privacy_policy_screen.dart';
+import 'screens/profile/account_deletion_screen.dart';
 
 // Support
 import 'screens/support/support_center_screen.dart';
@@ -235,6 +237,8 @@ class GlowProviderApp extends ConsumerWidget {
                 '/glowstore-orders': (_) => const GlowStoreOrdersScreen(),
                 '/faq': (_) => const FaqScreen(),
                 '/settings': (_) => SettingsScreen(userEmail: '', onLogout: () {}),
+                '/privacy': (_) => const PrivacyPolicyScreen(),
+                '/delete-account': (_) => const AccountDeletionScreen(),
 
                 // Support
                 '/support': (_) => const SupportCenterScreen(),
