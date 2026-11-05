@@ -1056,7 +1056,6 @@ class _CaptureScreenState extends State<CaptureScreen>
                           ],
                         ),
                         child: IconButton(
-                tooltip: 'Acción camera alt rounded',
                           onPressed: isFaceStep ? _captureFace : _captureHands,
                           icon: const Icon(
                             Icons.camera_alt_rounded,

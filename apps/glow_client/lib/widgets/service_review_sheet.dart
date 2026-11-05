@@ -156,7 +156,6 @@ class _ServiceReviewSheetState extends State<_ServiceReviewSheet> {
                   final valor = i + 1;
                   final activa = valor <= _rating;
                   return IconButton(
-                tooltip: 'Acción',
                     onPressed: _enviando
                         ? null
                         : () => setState(() => _rating = valor),

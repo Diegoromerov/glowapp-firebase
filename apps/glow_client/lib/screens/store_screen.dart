@@ -343,7 +343,6 @@ class _StoreScreenState extends State<StoreScreen> {
                                           ),
                                           const Spacer(),
                                           IconButton(
-                tooltip: 'Acción',
                                             onPressed: () => Navigator.pop(ctx),
                                             icon: const Icon(Icons.close),
                                           ),
