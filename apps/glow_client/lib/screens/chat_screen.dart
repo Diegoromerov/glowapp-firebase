@@ -516,7 +516,7 @@ class _ChatScreenState extends State<ChatScreen> {
         _stopReconcilePolling();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ No se pudo enviar el mensaje: $e'),
+            content: Text('No se pudo enviar el mensaje. ${mensajeHumano(e)}'),
             backgroundColor: Colors.deepOrange,
           ),
         );
@@ -578,7 +578,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color:
-                              isProvider ? const Color(0xFFC5A052) : const Color(0xFF1F1A15),
+                              isProvider ? const Color(0xFF8A6A2F) : const Color(0xFF1F1A15),
                           fontSize: 14,
                         ),
                       )
@@ -604,7 +604,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     style: const TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 10,
-                      color: Color(0xFFC5A052),
+                      color: Color(0xFF8A6A2F),
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.5,
                     ),

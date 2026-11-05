@@ -94,7 +94,7 @@ class BiometricHistoryScreen extends StatelessWidget {
                             fontFamily: 'JetBrainsMono',
                             fontSize: 11,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFFC5A052),
+                            color: Color(0xFF8A6A2F),
                             letterSpacing: 1.5,
                           ),
                         ),
@@ -110,7 +110,7 @@ class BiometricHistoryScreen extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: 'JetBrainsMono',
                               fontSize: 9,
-                              color: Color(0xFFC5A052),
+                              color: Color(0xFF8A6A2F),
                             ),
                           ),
                         ),

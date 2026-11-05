@@ -67,7 +67,7 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al adjuntar imagen: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text('No se pudo adjuntar la imagen. ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
       );
     }
   }

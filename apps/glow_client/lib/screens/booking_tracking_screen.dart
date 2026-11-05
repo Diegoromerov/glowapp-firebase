@@ -423,7 +423,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                               : 'P',
                                           style: const TextStyle(
                                               fontSize: 18,
-                                              color: const Color(0xFFC5A052),
+                                              color: const Color(0xFF8A6A2F),
                                               fontWeight: FontWeight.bold),
                                         )
                                       : null,
@@ -502,7 +502,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                   style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
-                                      color: const Color(0xFFC5A052)),
+                                      color: const Color(0xFF8A6A2F)),
                                 ),
                               ],
                             ),
@@ -591,7 +591,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                 Text(
                                   'En camino',
                                   style: TextStyle(
-                                      color: const Color(0xFFC5A052),
+                                      color: const Color(0xFF8A6A2F),
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold),
                                 ),

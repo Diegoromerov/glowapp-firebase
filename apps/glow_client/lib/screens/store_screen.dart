@@ -343,6 +343,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                           ),
                                           const Spacer(),
                                           IconButton(
+                tooltip: 'Acción',
                                             onPressed: () => Navigator.pop(ctx),
                                             icon: const Icon(Icons.close),
                                           ),
@@ -467,7 +468,7 @@ class _StoreScreenState extends State<StoreScreen> {
       } catch (e) {
         if (dialogContext.mounted) {
           ScaffoldMessenger.of(dialogContext).showSnackBar(
-            SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+            SnackBar(content: Text(mensajeHumano(e)), backgroundColor: Colors.red),
           );
         }
         return null;

@@ -1,4 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- La build de release no declaraba ni INTERNET: el binario no
+         alcanzaba la red. Ubicación para el mapa y el seguimiento del
+         servicio; notificaciones para el aviso de la cita. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="false"
         android:fullBackupContent="false"

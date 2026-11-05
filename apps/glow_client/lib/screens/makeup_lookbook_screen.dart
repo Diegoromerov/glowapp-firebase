@@ -265,7 +265,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
             ),
             Text(
               'Media.io x GlowApp Engine',
-              style: TextStyle(fontSize: 11, color: Color(0xFFC5A052), fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 11, color: Color(0xFF8A6A2F), fontWeight: FontWeight.w600),
             ),
           ],
         ),

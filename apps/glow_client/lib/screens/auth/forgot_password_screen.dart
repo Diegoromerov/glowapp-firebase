@@ -353,7 +353,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                             _message = null;
                                           });
                                         },
-                                  child: const Text('¿Cambiar correo?', style: TextStyle(color: Color(0xFFC5A052), fontWeight: FontWeight.bold)),
+                                  child: const Text('¿Cambiar correo?', style: TextStyle(color: Color(0xFF8A6A2F), fontWeight: FontWeight.bold)),
                                 ),
                               ],
                             ],

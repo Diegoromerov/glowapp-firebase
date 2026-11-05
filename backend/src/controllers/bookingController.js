@@ -308,6 +308,38 @@ exports.createBooking = async (req, res) => {
     const createdBookings = [];
 
     await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+
+      // Idempotencia natural: dos toques seguidos en «Reservar» generaban dos
+      // citas idénticas que el cliente tenía que cancelar a mano. Si hay una
+      // reserva del mismo cliente, prestador y hora creada hace menos de dos
+      // minutos, se devuelve esa en vez de crear otra.
+      const duplicada = await sequelize.query(
+        `SELECT id FROM bookings
+          WHERE client_id = :clientId
+            AND provider_id = :providerId
+            AND scheduled_at = :scheduledAt
+            AND estado = 'PENDIENTE_PAGO'
+            AND created_at > now() - interval '2 minutes'
+          LIMIT 1`,
+        {
+          replacements: {
+            clientId,
+            providerId: Number(provider_id),
+            scheduledAt: new Date(scheduled_at),
+          },
+          type: sequelize.QueryTypes.SELECT,
+          transaction: t,
+        }
+      );
+
+      if (duplicada.length > 0) {
+        throw Object.assign(new Error('reserva duplicada'), {
+          code: 'RESERVA_DUPLICADA',
+          bookingId: duplicada[0].id,
+        });
+      }
+
       for (let i = 0; i < orderedServices.length; i++) {
         const currentService = orderedServices[i];
         const currentId = generatedIds[i];
@@ -379,6 +411,14 @@ exports.createBooking = async (req, res) => {
       bookings: createdBookings
     });
   } catch (error) {
+    if (error.code === 'RESERVA_DUPLICADA') {
+      // Segundo toque del usuario: misma cita, sin crear otra.
+      return res.status(200).json({
+        success: true,
+        booking_id: error.bookingId,
+        idempotente: true,
+      });
+    }
     console.error('❌ ERROR EN /api/bookings:', { message: error.message, code: error.code });
     res.status(500).json({ error: 'Error al crear la reserva' });
   }

@@ -335,7 +335,7 @@ class _NailVtoScreenState extends State<NailVtoScreen> {
                               'Reservar Cita GPS',
                               style: TextStyle(
                                 fontFamily: 'Inter',
-                                color: Color(0xFFC5A052),
+                                color: Color(0xFF8A6A2F),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13,
                               ),

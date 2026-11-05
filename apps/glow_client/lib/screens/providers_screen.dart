@@ -1,5 +1,6 @@
 // frontend/lib/screens/providers_screen.dart
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -552,7 +553,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 ? Text(
                     nombre.isNotEmpty ? nombre[0].toUpperCase() : '?',
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Color(0xFFC5A052)),
+                        fontWeight: FontWeight.bold, color: Color(0xFF8A6A2F)),
                   )
                 : null,
           ),
@@ -863,7 +864,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('�?Error al enviar alerta SOS: $e'),
+          content: Text('No se pudo enviar la alerta. ${mensajeHumano(e)}'),
           backgroundColor: Colors.redAccent,
         ),
       );
@@ -1066,7 +1067,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                       : '?',
                                   style: const TextStyle(
                                       fontSize: 20,
-                                      color: Color(0xFFC5A052),
+                                      color: Color(0xFF8A6A2F),
                                       fontWeight: FontWeight.bold),
                                 )
                               : null,
@@ -1133,7 +1134,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                               style: const TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFFC5A052)),
+                                  color: Color(0xFF8A6A2F)),
                             ),
                           ],
                         ),
@@ -1259,6 +1260,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     children: [
                       // Chat Directo
                       IconButton(
+                tooltip: 'Acción',
                         onPressed: () async {
                           // Se captura antes del await: si la peticion tarda y
                           // la pantalla se desmonta, usar `context` lanza y el
@@ -2566,14 +2568,24 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                   style: TextStyle(fontSize: 12, color: Color(0xFF6B5E55)),
                                 ),
                                 trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xFF25D366)),
-                                onTap: () {
+                                onTap: () async {
+                                  // Antes solo mostraba «Conectando…» y no abría
+                                  // nada: el usuario quedaba esperando un chat
+                                  // que nunca empezaba.
                                   Navigator.pop(ctx);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Conectando con Concierge GlowApp via WhatsApp (+573009128899)...'),
-                                      backgroundColor: Color(0xFF8C6F65),
-                                    ),
+                                  final ok = await launchUrl(
+                                    Uri.parse('https://wa.me/573009128899?text='
+                                        'Hola%2C%20necesito%20ayuda%20con%20GlowApp'),
+                                    mode: LaunchMode.externalApplication,
                                   );
+                                  if (!ok && context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('No se pudo abrir WhatsApp. Escríbenos a soporte@glowapp.co'),
+                                        backgroundColor: Color(0xFF8C6F65),
+                                      ),
+                                    );
+                                  }
                                 },
                               ),
                               const SizedBox(height: 8),

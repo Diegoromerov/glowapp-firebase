@@ -184,7 +184,7 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                               Text(
                                 'Acabado $_selectedFinish • Recomendado por DeepSeek IA',
                                 style: const TextStyle(
-                                  color: Color(0xFFC5A052),
+                                  color: Color(0xFF8A6A2F),
                                   fontSize: 12,
                                 ),
                               ),
@@ -350,7 +350,7 @@ class _VtoLiveScreenState extends State<VtoLiveScreen> {
                                   'Reservar Cita',
                                   style: TextStyle(
                                     fontFamily: 'Inter',
-                                    color: Color(0xFFC5A052),
+                                    color: Color(0xFF8A6A2F),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
                                   ),

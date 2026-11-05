@@ -178,7 +178,7 @@ class _CaptureScreenState extends State<CaptureScreen>
         _startDetection();
       }
     } catch (e) {
-      _showError('Error al iniciar la cámara: $e');
+      _showError('No se pudo abrir la cámara. ${mensajeHumano(e)}');
     }
   }
 
@@ -1056,6 +1056,7 @@ class _CaptureScreenState extends State<CaptureScreen>
                           ],
                         ),
                         child: IconButton(
+                tooltip: 'Acción camera alt rounded',
                           onPressed: isFaceStep ? _captureFace : _captureHands,
                           icon: const Icon(
                             Icons.camera_alt_rounded,

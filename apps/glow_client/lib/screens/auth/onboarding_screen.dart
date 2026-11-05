@@ -1103,7 +1103,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     TextButton.icon(
                       onPressed: _showInviteMemberDialog,
                       icon: const Icon(Icons.person_add_rounded, size: 16, color: Color(0xFFC5A052)),
-                      label: const Text('Agregar', style: TextStyle(fontSize: 12, color: Color(0xFFC5A052), fontWeight: FontWeight.bold)),
+                      label: const Text('Agregar', style: TextStyle(fontSize: 12, color: Color(0xFF8A6A2F), fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -1191,7 +1191,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       },
                       child: Text(
                         _useManualAddress ? 'Usar Asistente Guiado' : 'Escribir Manual',
-                        style: const TextStyle(fontSize: 11, color: Color(0xFFC5A052), fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 11, color: Color(0xFF8A6A2F), fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -1256,7 +1256,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // FILA 2: Generador (#) + Placa (-)
                   Row(
                     children: [
-                      const Text('#', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFFC5A052))),
+                      const Text('#', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF8A6A2F))),
                       const SizedBox(width: 8),
                       Expanded(
                         child: TextField(
@@ -1277,7 +1277,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      const Text('-', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFFC5A052))),
+                      const Text('-', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF8A6A2F))),
                       const SizedBox(width: 8),
                       Expanded(
                         child: TextField(
@@ -1506,7 +1506,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           : const Icon(Icons.my_location, size: 16, color: Color(0xFFC5A052)),
                       label: const Text(
                         'Usar mi GPS',
-                        style: TextStyle(fontSize: 12, color: Color(0xFFC5A052), fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 12, color: Color(0xFF8A6A2F), fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],

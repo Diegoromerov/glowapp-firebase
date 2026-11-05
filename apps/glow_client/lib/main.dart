@@ -2,6 +2,7 @@
 // Entry point para la aplicación del cliente final
 
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -29,6 +30,8 @@ import 'screens/support_center_screen.dart';
 import 'screens/create_ticket_screen.dart';
 import 'screens/ticket_chat_screen.dart';
 import 'screens/terms_conditions_screen.dart';
+import 'screens/privacy_policy_screen.dart';
+import 'screens/account_deletion_screen.dart';
 import 'screens/user_profile.dart';
 import 'screens/my_glow_dashboard_screen.dart';
 import 'screens/rewards_xp_screen.dart';
@@ -64,6 +67,14 @@ void main() async {
   FlutterError.onError = (details) {
     FlutterError.presentError(details); // sigue saliendo en la consola
     unawaited(CrashReportingService.instance.reportFlutterError(details));
+  };
+  // Errores asíncronos fuera del árbol de widgets (futuros sin catch, isolates):
+  // FlutterError no los ve y hasta ahora se perdían sin dejar rastro.
+  PlatformDispatcher.instance.onError = (error, stack) {
+    unawaited(CrashReportingService.instance.reportFlutterError(
+      FlutterErrorDetails(exception: error, stack: stack, library: 'platform'),
+    ));
+    return true;
   };
   ErrorWidget.builder = (details) => ErrorFallback(
         codigo: details.exception
@@ -177,6 +188,8 @@ class GlowClientApp extends ConsumerWidget {
         '/support': (_) => const SupportCenterScreen(),
         '/support/create': (_) => const CreateTicketScreen(),
         '/terms': (_) => const TermsConditionsScreen(),
+        '/privacy': (_) => const PrivacyPolicyScreen(),
+        '/delete-account': (_) => const AccountDeletionScreen(),
 
         // Perfil
         '/profile': (_) => const UserProfileScreen(),

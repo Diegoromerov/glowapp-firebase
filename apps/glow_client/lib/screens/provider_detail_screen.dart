@@ -791,7 +791,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                         style: const TextStyle(
                                             fontSize: 32,
                                             fontWeight: FontWeight.bold,
-                                            color: Color(0xFFC5A052)),
+                                            color: Color(0xFF8A6A2F)),
                                       )
                                     : null,
                               ),
@@ -1229,7 +1229,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                   fontFamily: 'Inter',
                                   fontSize: 12.5,
                                   color: isSelected
-                                      ? const Color(0xFFC5A052)
+                                      ? const Color(0xFF8A6A2F)
                                       : const Color(0xFF8C7E74),
                                   fontWeight: isSelected
                                       ? FontWeight.bold
@@ -1353,7 +1353,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                                   fontFamily: 'Inter',
                                                   fontSize: 16.5,
                                                   fontWeight: FontWeight.w800,
-                                                  color: Color(0xFFC5A052)),
+                                                  color: Color(0xFF8A6A2F)),
                                             ),
                                           ],
                                         ),
@@ -1457,7 +1457,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                                       fontSize: 11.5,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color: Color(0xFFC5A052),
+                                                      color: Color(0xFF8A6A2F),
                                                       letterSpacing: 0.3,
                                                     ),
                                                   ),
@@ -1749,7 +1749,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 16,
-                                                      color: Color(0xFFC5A052),
+                                                      color: Color(0xFF8A6A2F),
                                                     ),
                                                   )
                                                 : null,
@@ -2006,7 +2006,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                         fontFamily: 'CormorantGaramond',
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFC5A052),
+                        color: Color(0xFF8A6A2F),
                       ),
                     ),
                     style: OutlinedButton.styleFrom(
@@ -2598,7 +2598,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                     fontFamily: 'Inter',
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFC5A052)),
+                    color: Color(0xFF8A6A2F)),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF1F1A15),

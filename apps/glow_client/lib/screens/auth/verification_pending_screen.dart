@@ -86,7 +86,7 @@ class VerificationPendingScreen extends StatelessWidget {
                         'Cerrar Sesión',
                         style: TextStyle(
                           fontFamily: 'Inter',
-                          color: Color(0xFFC5A052),
+                          color: Color(0xFF8A6A2F),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -1226,7 +1226,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         fontFamily: 'Inter',
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFC5A052),
+                        color: Color(0xFF8A6A2F),
                         letterSpacing: 0.6,
                       ),
                     ),
@@ -1410,7 +1410,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             '\$${precio.toStringAsFixed(0)} COP',
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: const Color(0xFFC5A052),
+                                color: const Color(0xFF8A6A2F),
                                 fontSize: 12),
                           ),
                         ],
@@ -1629,7 +1629,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: const Color(0xFFC5A052)),
+                          color: const Color(0xFF8A6A2F)),
                     ),
                   ],
                 ),
@@ -1827,7 +1827,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   '\$${price.toStringAsFixed(0)} COP',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFFC5A052),
+                      color: const Color(0xFF8A6A2F),
                       fontSize: 13),
                 ),
               ],
@@ -1887,7 +1887,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 onPressed: _prevStep,
                 child: const Text('Atrás',
                     style: TextStyle(
-                        color: const Color(0xFFC5A052),
+                        color: const Color(0xFF8A6A2F),
                         fontWeight: FontWeight.bold)),
               ),
               const SizedBox(width: 12),
@@ -2069,7 +2069,7 @@ class _BookingScreenState extends State<BookingScreen> {
               style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFC5A052),
+                color: Color(0xFF8A6A2F),
               ),
             ),
           ],

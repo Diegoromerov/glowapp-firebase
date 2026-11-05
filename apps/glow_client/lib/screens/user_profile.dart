@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'settings_screen.dart';
 import 'biometric_history_screen.dart';
+import 'account_deletion_screen.dart';
 import 'glowstore_orders_screen.dart';
 import 'rewards_xp_screen.dart';
 import 'habeas_data_screen.dart';
@@ -290,12 +291,37 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           },
                         ),
                         LuxeProfileTile(
+                          icon: Icons.privacy_tip_outlined,
+                          title: 'Política de privacidad',
+                          subtitle: 'Qué datos tratamos, para qué y por cuánto tiempo',
+                          onTap: () {
+                            HapticFeedback.lightImpact();
+                            Navigator.pushNamed(context, '/privacy');
+                          },
+                        ),
+                        LuxeProfileTile(
                           icon: Icons.description_outlined,
                           title: 'Términos y condiciones',
                           subtitle: 'Contrato de uso, privacidad y tratamiento de datos',
                           onTap: () {
                             HapticFeedback.lightImpact();
                             Navigator.pushNamed(context, '/terms');
+                          },
+                        ),
+                        LuxeProfileTile(
+                          icon: Icons.person_remove_outlined,
+                          title: 'Eliminar mi cuenta',
+                          subtitle: 'Borra tu cuenta y tus datos personales',
+                          onTap: () {
+                            HapticFeedback.lightImpact();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => AccountDeletionScreen(
+                                  userEmail: _userEmail,
+                                ),
+                              ),
+                            );
                           },
                         ),
                         LuxeProfileTile(
@@ -401,7 +427,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 fontSize: 10,
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: 2.2,
-                                color: Color(0xFFC5A052),
+                                color: Color(0xFF8A6A2F),
                               ),
                             ),
                             const SizedBox(width: 8),

@@ -89,7 +89,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
     } catch (e) {
       if (!silent) {
         setState(() {
-          _error = 'Error de conexion: $e';
+          _error = mensajeHumano(e);
         });
       }
     } finally {
@@ -134,7 +134,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de red: $e'), backgroundColor: AppTheme.error),
+        SnackBar(content: Text(mensajeHumano(e)), backgroundColor: AppTheme.error),
       );
     } finally {
       setState(() {

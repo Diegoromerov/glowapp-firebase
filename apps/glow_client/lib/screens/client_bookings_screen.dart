@@ -211,7 +211,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
           setState(() => _isLoading = false);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('❌ Error al cancelar: $e'),
+              content: Text('No se pudo cancelar. ${mensajeHumano(e)}'),
               backgroundColor: AppTheme.error,
             ),
           );
@@ -259,7 +259,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                     fontSize: 32,
                     letterSpacing: 8,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFC5A052)),
+                    color: Color(0xFF8A6A2F)),
               ),
             ],
           ),
@@ -436,7 +436,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No se pudo registrar la propina: $e'),
+          content: Text('No se pudo registrar la propina. ${mensajeHumano(e)}'),
           backgroundColor: AppTheme.error,
         ),
       );
@@ -1122,7 +1122,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       size: 16, color: Color(0xFFC5A052)),
                   label: const Text('Dar propina',
                       style:
-                          TextStyle(fontSize: 12, color: Color(0xFFC5A052))),
+                          TextStyle(fontSize: 12, color: Color(0xFF8A6A2F))),
                 ),
               ),
             ],

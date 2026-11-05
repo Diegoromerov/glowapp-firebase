@@ -1,5 +1,40 @@
 // src/controllers/analyticsController.js
 const { AnalyticsEvent } = require('../models');
+const emailService = require('../services/emailService');
+
+// Un fallo de la app se quedaba en la tabla: nadie se enteraba hasta que un
+// usuario se quejaba. Aquí se avisa por correo, como mucho una vez por hora,
+// para que la alerta no se convierta en ruido.
+let ultimoAvisoCrash = 0;
+const UNA_HORA = 60 * 60 * 1000;
+
+async function avisarCrash(nuevos) {
+  if (Date.now() - ultimoAvisoCrash < UNA_HORA) return;
+  const crash = nuevos.find((r) => String(r.event_type).toUpperCase() === 'APP_CRASH');
+  if (!crash) return;
+  ultimoAvisoCrash = Date.now();
+  const meta = crash.metadata || {};
+  const destino = process.env.CRASH_ALERT_EMAIL || process.env.SMTP_FROM;
+  if (!destino || !process.env.BREVO_API_KEY) {
+    console.warn('[crash-alert] sin destinatario o sin BREVO_API_KEY; aviso omitido');
+    return;
+  }
+  try {
+    await emailService.sendEmail({
+      to: destino,
+      subject: `GlowApp · fallo en la app (${meta.origen || 'app'})`,
+      data: {
+        html: `<p><strong>${String(meta.mensaje || 'sin mensaje').slice(0, 300)}</strong></p>
+<p>Origen: ${meta.origen || '-'}<br>Fatal: ${meta.fatal ? 'sí' : 'no'}<br>
+Versión: ${meta.version || '-'}<br>Trace: ${crash.trace_id || '-'}</p>
+<pre style="font-size:12px;white-space:pre-wrap">${String(meta.stack || '').slice(0, 800)}</pre>`,
+      },
+    });
+    console.log('[crash-alert] aviso enviado');
+  } catch (e) {
+    console.warn('[crash-alert] no se pudo enviar:', e.message);
+  }
+}
 
 // Log an analytics event (telemetry)
 async function logEvent(req, res) {
@@ -35,6 +70,8 @@ async function logEvent(req, res) {
     }));
 
     await AnalyticsEvent.bulkCreate(records, { ignoreDuplicates: true });
+    // Fuera del camino de respuesta: si el correo falla, la telemetría ya quedó guardada.
+    avisarCrash(records).catch(() => {});
     return res.status(201).json({ message: 'Analytics events logged successfully', count: records.length });
   } catch (err) {
     console.error('Error logging analytics event:', err);

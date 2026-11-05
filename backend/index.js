@@ -256,7 +256,15 @@ app.get('/metrics', metricsHandler);
 // 🔹 GLOBAL APP AUDIENCE MIDDLEWARE (Fase 4)
 // Valida header X-App-Audience en TODAS las rutas /api/*
 // Debe ir ANTES de authMiddleware para que req.appAudience esté disponible
-app.use('/api', validateAppAudience({ required: true }));
+// /api/health queda exento: es la sonda que consultan los monitores externos y
+// el healthcheck del despliegue, y ninguno envía X-App-Audience. Con el
+// middleware delante devolvía 400 y el servicio parecía caído.
+const audienceGuard = validateAppAudience({ required: true });
+app.use('/api', (req, res, next) => {
+  const ruta = req.path.endsWith('/') ? req.path.slice(0, -1) : req.path;
+  if (ruta === '/health' || ruta === '/healthz' || ruta === '/ready') return next();
+  return audienceGuard(req, res, next);
+});
 
 // 🔹 PUBLIC TENANT CONTEXT (Fase 6 fix)
 // Fija el tenant de plataforma (es_plataforma=true) en las rutas públicas que
