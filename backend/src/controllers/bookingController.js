@@ -467,7 +467,7 @@ exports.getProviderBookings = async (req, res) => {
     // pero Sequelize es genial para obtener la estructura limpia.
     const query = `
       SELECT 
-        b.id, b.scheduled_at, b.estado AS status, b.valor_bruto AS total_amount, 
+        b.id, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount, 
         b.comision_plataforma AS platform_commission, b.impuestos_estado AS state_tax, b.pago_neto_prestador AS provider_net_amount,
         b.client_id, b.pin_verificacion, b.service_address,
         s.name as service_name, s.price,
@@ -488,6 +488,8 @@ exports.getProviderBookings = async (req, res) => {
       client_id: row.client_id ? row.client_id.toString() : '5',
       scheduled_at: row.scheduled_at ? new Date(row.scheduled_at).toISOString() : null,
       status: row.status,
+      // Ítem 31: solo las citas pagadas tienen recibo.
+      payment_status: row.payment_status || null,
       total_amount: parseFloat(row.total_amount) || 0,
       platform_commission: parseFloat(row.platform_commission) || 0,
       state_tax: parseFloat(row.state_tax) || 0,
@@ -567,7 +569,7 @@ exports.getClientBookings = async (req, res) => {
 
     const query = `
       SELECT 
-        b.id, b.scheduled_at, b.estado AS status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
+        b.id, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
         b.service_id, b.provider_id, s.name as service_name, s.duration_minutes as service_duration,
         u_prov.nombre as provider_name,
         p.business_name as provider_business_name,
@@ -603,6 +605,8 @@ exports.getClientBookings = async (req, res) => {
       id: row.id,
       scheduled_at: row.scheduled_at ? new Date(row.scheduled_at).toISOString() : null,
       status: row.status,
+      // Ítem 31: solo las citas pagadas tienen recibo.
+      payment_status: row.payment_status || null,
       total_amount: parseFloat(row.total_amount) || 0,
       service_address: row.service_address || '',
       notes: row.notes || '',
