@@ -74,7 +74,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       _mapController = MapController();
       _loadProviders();
       _loadUserRole();
-      _determineUserLocation();
+      // Arranque SIN diálogo de permisos: solo usa la ubicación si el usuario ya
+      // la concedió. El permiso se pide cuando toca «Mi ubicación» (ítem 11).
+      _centrarPorUbicacionConocida();
       _resolveGuideMutex();
       AudienceService.currentAudience.addListener(_onAudienceChanged);
 
@@ -240,7 +242,20 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     }
   }
 
+  /// Movimiento reducido (ítem 59): la preferencia del sistema se consulta en
+  /// cada uso, no se cachea, porque el usuario puede cambiarla en caliente.
+  bool get _movimientoReducido =>
+      MediaQuery.maybeOf(context)?.disableAnimations ?? false;
+
   void _animatedMapMove(LatLng destLocation, double destZoom) {
+    // Sin animación cuando el sistema pide movimiento reducido: se salta el
+    // AnimationController completo en vez de animar con duración cero, para no
+    // encadenar 60 fps de `move()` sobre el mapa.
+    if (_movimientoReducido) {
+      _mapController.move(destLocation, destZoom);
+      return;
+    }
+
     // Animate map movement smoothly over 1000 milliseconds
     final latTween = Tween<double>(begin: _mapController.camera.center.latitude, end: destLocation.latitude);
     final lngTween = Tween<double>(begin: _mapController.camera.center.longitude, end: destLocation.longitude);
@@ -282,25 +297,113 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     }
   }
 
-  Future<void> _determineUserLocation() async {
-    try {
-      final pos = await getWebGeolocation();
-      final lat = pos['lat']!;
-      final lon = pos['lon']!;
-      if (mounted) {
+  /// Usa la ubicación al arrancar SOLO si el permiso ya existe.
+  /// Nunca muestra el diálogo del sistema: si no hay permiso, la pantalla sigue
+  /// con el centro por defecto y la búsqueda manual. (ítem 11)
+  Future<void> _centrarPorUbicacionConocida() async {
+    final resultado = await ubicacionDisponible();
+    if (!mounted) return;
+
+    if (resultado.ok) {
+      setState(() {
+        _userLocation = LatLng(resultado.lat!, resultado.lon!);
+      });
+      _mapController.move(_userLocation!, 13.5);
+      // Solo recargamos si cambió el centro: el arranque ya pidió la lista.
+      _loadProviders();
+    }
+  }
+
+  /// Acción del botón «Mi ubicación»: aquí sí se pide el permiso, porque hay un
+  /// gesto del usuario. Cada negativa se explica y, si es definitiva, se ofrece
+  /// abrir los ajustes. (ítem 11)
+  Future<void> _irAMiUbicacion() async {
+    final resultado = await solicitarUbicacion();
+    if (!mounted) return;
+
+    switch (resultado.estado) {
+      case EstadoUbicacion.concedida:
         setState(() {
-          _userLocation = LatLng(lat, lon);
+          _userLocation = LatLng(resultado.lat!, resultado.lon!);
         });
-        _mapController.move(_userLocation!, 13.5);
+        _animatedMapMove(_userLocation!, 15.0);
         _loadProviders();
-      }
-    } catch (_) {
-      if (mounted) {
-        setState(() {
-          _userLocation = _bogotaCenter;
-        });
-        _loadProviders();
-      }
+        break;
+
+      case EstadoUbicacion.servicioApagado:
+        await _explicarUbicacion(
+          titulo: 'La ubicación del teléfono está apagada',
+          mensaje:
+              'Activa la ubicación para ver los prestadores que tienes cerca. '
+              'Mientras tanto puedes escribir tu dirección o barrio.',
+          textoAccion: 'Abrir ajustes',
+          alAccionar: Geolocator.openLocationSettings,
+        );
+        break;
+
+      case EstadoUbicacion.denegadaParaSiempre:
+        await _explicarUbicacion(
+          titulo: 'Permiso de ubicación bloqueado',
+          mensaje:
+              'GlowApp ya no puede pedirte la ubicación: la bloqueaste antes. '
+              'Puedes habilitarla en los ajustes de la app o seguir buscando '
+              'por dirección.',
+          textoAccion: 'Abrir ajustes',
+          alAccionar: Geolocator.openAppSettings,
+        );
+        break;
+
+      case EstadoUbicacion.denegada:
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Sin acceso a tu ubicación. Puedes escribir tu dirección para '
+              'buscar cerca de ti.',
+            ),
+          ),
+        );
+        break;
+
+      case EstadoUbicacion.noDisponible:
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'No pudimos obtener tu ubicación. Busca por dirección o barrio.',
+            ),
+          ),
+        );
+        break;
+    }
+  }
+
+  /// Diálogo reutilizable para explicar un permiso denegado y ofrecer ajustes.
+  Future<void> _explicarUbicacion({
+    required String titulo,
+    required String mensaje,
+    required String textoAccion,
+    required Future<bool> Function() alAccionar,
+  }) async {
+    final abrirAjustes = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(titulo),
+        content: Text(mensaje),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Ahora no'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primary),
+            child: Text(textoAccion),
+          ),
+        ],
+      ),
+    );
+
+    if (abrirAjustes == true) {
+      await alAccionar();
     }
   }
 
@@ -1398,7 +1501,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               );
             },
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
+              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 200),
               margin: const EdgeInsets.only(right: 20),
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Column(
@@ -1678,7 +1781,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             },
             child: AnimatedScale(
               scale: isPressed ? 0.93 : 1.0,
-              duration: const Duration(milliseconds: 120),
+              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 120),
               curve: Curves.easeOutCubic,
               child: Transform.translate(
                 offset: const Offset(0, -18),
@@ -2628,7 +2731,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   FloatingActionButton.small(
                     heroTag: 'my_location_fab',
                     tooltip: 'Centrar Mi Ubicación',
-                    onPressed: _determineUserLocation,
+                    onPressed: _irAMiUbicacion,
                     backgroundColor: AppTheme.surface,
                     foregroundColor: AppTheme.primary,
                     elevation: 3,
@@ -2897,7 +3000,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
         // Tarjeta interactiva de Aura (centrada en el paso 0, inferior en los demás)
         AnimatedPositioned(
-          duration: const Duration(milliseconds: 300),
+          duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           left: 20,
           right: 20,
@@ -2913,13 +3016,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               boxShadow: AppTheme.glassShadow,
             ),
             child: AnimatedSize(
-              duration: const Duration(milliseconds: 250),
+              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
               curve: Curves.easeInOut,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 250),
+                    duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
                     child: centerGraphic is! SizedBox 
                         ? Container(
                             key: ValueKey<int>(_tutorialStep),
@@ -2929,7 +3032,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         : const SizedBox.shrink(),
                   ),
                   AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 250),
+                    duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
                     child: Row(
                       key: ValueKey<int>(_tutorialStep),
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2985,7 +3088,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     children: List.generate(4, (index) {
                       final bool isActive = _tutorialStep == index;
                       return AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
+                        duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
                         margin: const EdgeInsets.symmetric(horizontal: 4),
                         width: isActive ? 12 : 8,
                         height: 8,
