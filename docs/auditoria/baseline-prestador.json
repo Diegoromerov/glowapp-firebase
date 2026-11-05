@@ -114,7 +114,8 @@
       "titulo": "Estados vacíos",
       "estado": "PASA",
       "nivel": "E1",
-      "evidencia": "provider_dashboard_screen.dart:3197-3200, provider_services_screen.dart:774, salon_shell.dart:417"
+      "evidencia": "agenda (sin horarios), citas (4 filtros con mensaje), salón (_Estado), wallet (sin movimientos/retiros), tienda (sin productos) y equipo: todos con estado vacío y carga",
+      "estado_previo": "PASA"
     },
     "16": {
       "bloque": "B",
@@ -142,14 +143,16 @@
       "titulo": "Timeouts y reintentos",
       "estado": "PASA",
       "nivel": "E1",
-      "evidencia": "api_service.dart:241 requestTimeout 15s + reintentos; 12 llamadas .timeout en core"
+      "evidencia": "requestTimeout 15 s en core + 7 llamadas http directas con .timeout explícito (4 s nominatim, 15 s tickets)",
+      "estado_previo": "PASA"
     },
     "20": {
       "bloque": "C",
       "titulo": "Errores traducidos",
-      "estado": "FALLA",
+      "estado": "PASA",
       "nivel": "E1",
-      "evidencia": "30 sitios con $e visible (20 archivos); mensajeHumano usado 1 sola vez en lib/"
+      "evidencia": "80 sitios corregidos: 29 Text/SnackBar + 37 `_error = '... $e'` + 14 `e.toString()` → mensajeHumano(e); test/tarea2_errores_test.dart lo impone",
+      "estado_previo": "FALLA"
     },
     "21": {
       "bloque": "C",
@@ -500,9 +503,10 @@
     "70": {
       "bloque": "I",
       "titulo": "Errores 5xx visibles",
-      "estado": "PARCIAL",
+      "estado": "PASA",
       "nivel": "E1",
-      "evidencia": "mensajes crudos con $e; sin código de error ni reintento guiado"
+      "evidencia": "un 5xx cae en mensajeHumano → «Algo falló de nuestro lado…»; ya no se muestra el código ni el stack",
+      "estado_previo": "PARCIAL"
     },
     "71": {
       "bloque": "I",
@@ -733,10 +737,10 @@
   },
   "resumen_actualizado": {
     "base86": {
-      "PASA": 26,
-      "PARCIAL": 30,
+      "PASA": 28,
+      "PARCIAL": 29,
       "N/A": 2,
-      "FALLA": 13,
+      "FALLA": 12,
       "N/V": 15
     },
     "propios": {
@@ -745,12 +749,12 @@
       "PARCIAL": 2
     },
     "global": {
-      "PASA": 29,
-      "PARCIAL": 32,
+      "PASA": 31,
+      "PARCIAL": 31,
       "N/A": 2,
-      "FALLA": 17,
+      "FALLA": 16,
       "N/V": 15
     },
-    "nota": "Tarea 1 corregida: 8, 42, 51, 52 a PASA. Corrección de medición: 75 pasa de PASA a FALLA (CI sin minutos/billing)."
+    "nota": "Tarea 2: 15, 19, 20 y 70 a PASA. Tarea 1: 8, 42, 51, 52 a PASA. Corrección 75: CI no ejecuta por billing."
   }
 }
