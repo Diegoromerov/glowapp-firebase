@@ -1,6 +1,7 @@
 // frontend/lib/screens/support/support_center_screen.dart
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'create_ticket_screen.dart';
 import 'ticket_chat_screen.dart';
 
@@ -101,6 +102,24 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
     }
   }
 
+  /// Abre la página pública de estado (ítem 73). Si el navegador no puede
+  /// abrirla, decimos qué pasó en vez de dejar el toque sin respuesta.
+  Future<void> _abrirEstadoDelServicio(BuildContext context) async {
+    final abierto = await launchUrl(
+      Uri.parse('https://glowapp-client.web.app/status.html'),
+      mode: LaunchMode.externalApplication,
+    );
+    if (!abierto && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'No se pudo abrir la página de estado. Escríbenos a soporte@glowapp.co',
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,6 +138,15 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         foregroundColor: const Color(0xFF1F1A15),
         elevation: 0,
         centerTitle: false,
+        actions: [
+          // Estado del servicio (ítem 73): página pública con la comprobación en
+          // vivo de la API y de la base de datos.
+          IconButton(
+            tooltip: 'Estado del servicio',
+            icon: const Icon(Icons.monitor_heart_outlined),
+            onPressed: () => _abrirEstadoDelServicio(context),
+          ),
+        ],
       ),
       body: Center(
         child: ConstrainedBox(

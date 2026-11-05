@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estado del servicio · GlowApp</title>
+  <meta name="description" content="Estado en vivo de la API y la web de GlowApp, más los canales de soporte.">
+  <style>
+    :root { --tinta:#1F1A15; --gris:#4A423B; --oro:#8A6A2F; --linea:#EFE8DE;
+            --ok:#1E7B4F; --ok-bg:#E8F5EE; --mal:#B3261E; --mal-bg:#FDECEA; --ojo:#8A5B00; --ojo-bg:#FFF4DE; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#FDFBF7; color:var(--tinta);
+           font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+           line-height:1.6; }
+    main { max-width:720px; margin:0 auto; padding:44px 22px 72px; }
+    header { border-bottom:1px solid var(--linea); padding-bottom:18px; margin-bottom:26px; }
+    .marca { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--oro); font-weight:700; }
+    h1 { font-family:Georgia,"Times New Roman",serif; font-size:30px; margin:10px 0 6px; }
+    .sub { color:var(--gris); font-size:14px; }
+    h2 { font-family:Georgia,"Times New Roman",serif; font-size:19px; margin:32px 0 8px; }
+    p { margin:0 0 12px; color:var(--gris); }
+    ul { margin:0 0 14px 20px; color:var(--gris); }
+    li { margin-bottom:6px; }
+    a { color:var(--oro); }
+    .fila { display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+            padding:14px 0; border-bottom:1px solid var(--linea); }
+    .fila:first-of-type { border-top:1px solid var(--linea); }
+    .nombre { font-weight:600; color:var(--tinta); }
+    .detalle { font-size:13px; color:#8C7E74; }
+    .pastilla { flex:0 0 auto; font-size:12px; font-weight:700; letter-spacing:.4px;
+               text-transform:uppercase; padding:5px 11px; border-radius:999px; white-space:nowrap; }
+    .ok { background:var(--ok-bg); color:var(--ok); }
+    .mal { background:var(--mal-bg); color:var(--mal); }
+    .ojo { background:var(--ojo-bg); color:var(--ojo); }
+    .neutro { background:#F3EEE7; color:var(--gris); }
+    .nota { background:#FAF6EF; border:1px solid var(--linea); border-radius:14px;
+            padding:14px 16px; font-size:14px; color:var(--gris); }
+    footer { margin-top:40px; border-top:1px solid var(--linea); padding-top:16px;
+             font-size:13px; color:#8C7E74; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="marca">GlowApp</div>
+    <h1>Estado del servicio</h1>
+    <div class="sub">Comprobación en vivo · se ejecuta cada vez que abres esta página</div>
+  </header>
+
+  <p>Esta página consulta ahora mismo el servicio real de GlowApp. No hay cifras de
+  disponibilidad histórica publicadas: si necesitas el histórico, escríbenos y te lo
+  enviamos (ver canales de soporte más abajo).</p>
+
+  <div class="fila">
+    <div>
+      <div class="nombre">Sitio web (glowapp-client.web.app)</div>
+      <div class="detalle" id="web-detalle">Comprobando…</div>
+    </div>
+    <span class="pastilla neutro" id="web-estado">…</span>
+  </div>
+
+  <div class="fila">
+    <div>
+      <div class="nombre">API de GlowApp</div>
+      <div class="detalle" id="api-detalle">Comprobando…</div>
+    </div>
+    <span class="pastilla neutro" id="api-estado">…</span>
+  </div>
+
+  <div class="fila">
+    <div>
+      <div class="nombre">Base de datos</div>
+      <div class="detalle" id="db-detalle">Comprobando…</div>
+    </div>
+    <span class="pastilla neutro" id="db-estado">…</span>
+  </div>
+
+  <div class="fila">
+    <div>
+      <div class="nombre">Pagos (Wompi)</div>
+      <div class="detalle" id="pagos-detalle">La API no publica el estado del proveedor de pagos.</div>
+    </div>
+    <span class="pastilla neutro" id="pagos-estado">Sin dato</span>
+  </div>
+
+  <p class="detalle" style="margin-top:14px">Última comprobación: <span id="hora">—</span></p>
+
+  <h2>Si algo no responde</h2>
+  <ol style="color:var(--gris)">
+    <li>Recarga esta página en unos segundos: la comprobación se repite sola.</li>
+    <li>Si la API sigue en rojo, escríbenos por WhatsApp e incluye la hora y qué estabas haciendo.</li>
+    <li>Los pagos ya aprobados no se pierden: la cita queda registrada y se concilia cuando el servicio vuelve.</li>
+  </ol>
+
+  <h2>Canales de soporte</h2>
+  <ul>
+    <li><strong>WhatsApp:</strong> <a href="https://wa.me/573009128899?text=Hola%20GlowApp%2C%20tengo%20un%20problema%20con%20el%20servicio">+57 300 912 8899</a></li>
+    <li><strong>Correo:</strong> <a href="mailto:soporte@glowapp.co">soporte@glowapp.co</a></li>
+    <li><strong>Privacidad y datos personales:</strong> <a href="mailto:privacidad@glowapp.co">privacidad@glowapp.co</a></li>
+    <li><strong>Dentro de la app:</strong> Perfil → Centro de Concierge y PQRSF (queda registro del caso)</li>
+  </ul>
+
+  <h2>Cómo se vigila el servicio</h2>
+  <p>El servicio expone <a href="https://glowapp-api-production.up.railway.app/api/health">/api/health</a>,
+  que devuelve el estado de la API y de la base de datos sin exigir autenticación. Un monitor
+  externo puede consultarlo cada minuto; esta página usa ese mismo endpoint, así que lo que ves
+  aquí es la misma señal que recibiría el monitor.</p>
+
+  <div class="nota">
+    Si la API aparece en rojo pero la app sigue funcionando, es probable que tu red esté
+    bloqueando la consulta: esta comprobación se hace desde tu navegador, no desde nuestros
+    servidores.
+  </div>
+
+  <footer>
+    GlowApp S.A.S. · Bogotá, Colombia ·
+    <a href="./privacy.html">Privacidad</a> ·
+    <a href="./account-deletion.html">Eliminar mi cuenta</a> ·
+    <a href="mailto:soporte@glowapp.co">soporte@glowapp.co</a>
+  </footer>
+</main>
+
+<script>
+  var API = 'https://glowapp-api-production.up.railway.app';
+
+  function pintar(id, clase, texto) {
+    var el = document.getElementById(id);
+    el.className = 'pastilla ' + clase;
+    el.textContent = texto;
+  }
+
+  function ahora() {
+    var d = new Date();
+    document.getElementById('hora').textContent =
+      d.toLocaleString('es-CO', { dateStyle: 'medium', timeStyle: 'medium' });
+  }
+
+  // La página se sirve desde el mismo hosting que la app: si llegaste aquí, la web está arriba.
+  pintar('web-estado', 'ok', 'Operativo');
+  document.getElementById('web-detalle').textContent =
+    'Este documento se ha cargado correctamente desde el hosting de la app.';
+
+  var inicio = Date.now();
+  fetch(API + '/api/health', { cache: 'no-store' })
+    .then(function (r) {
+      var ms = Date.now() - inicio;
+      if (!r.ok) {
+        pintar('api-estado', 'mal', 'Con problemas');
+        document.getElementById('api-detalle').textContent =
+          'La API respondió HTTP ' + r.status + ' en ' + ms + ' ms.';
+        pintar('db-estado', 'neutro', 'Sin dato');
+        document.getElementById('db-detalle').textContent =
+          'No pudimos leer el estado de la base de datos.';
+        return;
+      }
+      return r.json().then(function (datos) {
+        var db = datos && datos.database;
+        var pg = !!(db && db.pgAvailable === true);
+        var commit = datos && datos.commit ? String(datos.commit).slice(0, 7) : null;
+
+        pintar('api-estado', 'ok', 'Operativo');
+        document.getElementById('api-detalle').textContent =
+          'Respuesta en ' + ms + ' ms · entorno ' + ((datos && datos.env) || 'no informado') +
+          (commit ? ' · versión ' + commit : '') + '.';
+
+        if (pg) {
+          pintar('db-estado', 'ok', 'Operativo');
+          document.getElementById('db-detalle').textContent =
+            'La API alcanza PostgreSQL (' + (db.dbMode || 'postgres') + ').';
+        } else {
+          pintar('db-estado', 'ojo', 'Degradado');
+          document.getElementById('db-detalle').textContent =
+            'La API responde, pero no confirma la base de datos.';
+        }
+      });
+    })
+    .catch(function () {
+      pintar('api-estado', 'mal', 'No responde');
+      document.getElementById('api-detalle').textContent =
+        'No pudimos contactar la API desde tu navegador.';
+      pintar('db-estado', 'neutro', 'Sin dato');
+      document.getElementById('db-detalle').textContent = 'Depende de la API.';
+    })
+    .then(ahora);
+</script>
+</body>
+</html>
