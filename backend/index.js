@@ -23,6 +23,7 @@ const biometricRoutes = require('./src/routes/biometricRoutes');
 const vtoRoutes = require('./src/routes/vtoRoutes');
 const colorRoutes = require('./src/routes/colorRoutes');
 const paymentRoutes = require('./src/routes/paymentRoutes');
+const configRoutes = require('./src/routes/configRoutes');
 const bookingRoutes = require('./src/routes/bookingRoutes');
 const serviceRoutes = require('./src/routes/serviceRoutes');
 const chatRoutes = require('./src/routes/chatRoutes');
@@ -456,6 +457,7 @@ app.use('/api/payments/wompi-webhook', webhookLimiter);
 // ==========================================
 app.use('/api/auth', authRoutes);
 app.use('/api', paymentRoutes);
+app.use('/api', configRoutes);
 app.use('/api', bookingRoutes);
 app.use('/api', serviceRoutes);
 app.use('/api', chatRoutes);

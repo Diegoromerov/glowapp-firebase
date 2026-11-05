@@ -1,4 +1,6 @@
 // backend/src/controllers/tipController.js
+const { leerFlags } = require('../routes/configRoutes');
+
 //
 // D-GL-023 — Propina: 100% al prestador, 0% de comisión.
 //
@@ -60,6 +62,11 @@ async function acreditarPropina(client, { propinaId, bookingId, providerId, mont
 
 // POST /api/bookings/:id/tip   { monto }
 exports.createTip = async (req, res) => {
+  // Ítem 80: si la bandera `propinas` está apagada, la función desaparece sin
+  // necesidad de publicar versión nueva (el servidor es la autoridad).
+  if (leerFlags().propinas === false) {
+    return res.status(409).json({ error: 'Las propinas están desactivadas por ahora' });
+  }
   const bookingId = req.params.id;
   const clientId = req.user.id;
 
