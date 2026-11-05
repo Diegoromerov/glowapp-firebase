@@ -7,7 +7,9 @@ const { Op } = require('sequelize');
 const crypto = require('crypto');
 const dianInvoiceClient = require('../services/dianInvoiceClient');
 const { construirRecibo } = require('../services/receiptService');
-const emailService = require('../services/email.service');
+// OJO: email.service.js solo envía por Resend/SendGrid y, sin claves, SIMULA
+// (devuelve éxito y no manda nada). Producción usa Brevo por API HTTP.
+const emailService = require('../services/emailService');
 
 // ── Verificación de eventos de Wompi (integración real) ──────────────────────
 // CORRECCIÓN DE CAUSA RAÍZ: el esquema anterior firmaba con HMAC-SHA256 el cuerpo
@@ -725,10 +727,16 @@ exports.emailBookingReceipt = async (req, res) => {
     const envio = await emailService.sendEmail({
       to: fila.email_cliente,
       subject: asunto,
-      htmlText: html,
-      plainText: texto,
+      data: { html, text: texto },
     });
-    return res.json({ success: true, enviado_a: fila.email_cliente, id_mensaje: envio && envio.messageId ? envio.messageId : null });
+    const idMensaje = envio && envio.messageId ? envio.messageId : null;
+    console.log(`[recibo] enviado a ${fila.email_cliente} (cita ${fila.id}): ${idMensaje || 'sin id'}`);
+    return res.json({
+      success: true,
+      enviado_a: fila.email_cliente,
+      proveedor: envio && envio.via ? envio.via : null,
+      id_mensaje: idMensaje,
+    });
   } catch (error) {
     console.error('❌ ERROR EN /api/bookings/:id/receipt/email:', { message: error.message });
     return res.status(502).json({ error: 'No pudimos enviar el recibo por correo' });
