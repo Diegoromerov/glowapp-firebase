@@ -113,6 +113,12 @@ void main() async {
   // Los pasos ejecutan `navigate(route:)` y el presenter se pinta encima del
   // Navigator (ver GlowGuideHost), asi el video sigue visible mientras el guide
   // recorre las secciones.
+  // Banderas de función (ítem 80): se piden una vez al arrancar y no bloquean.
+  // Si falla, FeatureFlags queda fail-open: todo encendido.
+  unawaited(FeatureFlags.instance.cargar(
+    obtener: () => ApiService.get('/api/config/flags'),
+  ));
+
   GlowGuideService.instance.initialize();
   GlowGuideService.instance.createEngine(
     steps: ClientGuide.steps,
