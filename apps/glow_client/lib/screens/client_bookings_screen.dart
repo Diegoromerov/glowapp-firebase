@@ -601,6 +601,26 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     // calificar en COMPLETADA, asi que una cita que nadie cerro dejaba al cliente
     // sin voz y al catalogo sin prueba social.
     final estadoMin = status.toUpperCase();
+    // Ítem 30: sin esto, una cita cancelada con reembolso se veía igual que una
+    // cancelada sin devolución.
+    final refundEstado = booking['refund_status']?.toString().toUpperCase() ?? '';
+    final refundMonto = booking['refund_monto'];
+    final refundTexto = switch (refundEstado) {
+      'PROCESADO' => 'Reembolsado',
+      'FALLIDO' => 'Reembolso fallido',
+      'PENDIENTE' => 'Reembolso en proceso',
+      _ => '',
+    };
+    final refundDetalle = refundTexto.isEmpty
+        ? ''
+        : (refundMonto != null
+            ? '$refundTexto · \$${(refundMonto as num).toStringAsFixed(0)}'
+            : refundTexto);
+    final refundColor = refundEstado == 'PROCESADO'
+        ? const Color(0xFF1E7B4F)
+        : refundEstado == 'FALLIDO'
+            ? const Color(0xFFB3261E)
+            : const Color(0xFF8A5B00);
     final fechaCita = DateTime.tryParse(scheduledAt);
     final yaOcurrio = estadoMin == 'COMPLETADA' ||
         estadoMin == 'COMPLETED' ||
@@ -694,6 +714,24 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                     ),
                   ),
                 ),
+                if (refundDetalle.isNotEmpty)
+                  Container(
+                    margin: const EdgeInsets.only(left: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: refundColor.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      refundDetalle,
+                      style: TextStyle(
+                        color: refundColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ),
               ],
             ),
             Divider(height: 24, color: Color(0xFFF3F4F6)),
