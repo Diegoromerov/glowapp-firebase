@@ -62,9 +62,10 @@
     "8": {
       "bloque": "A",
       "titulo": "Borrado de cuenta in-app",
-      "estado": "FALLA",
+      "estado": "PASA",
       "nivel": "E1",
-      "evidencia": "settings_screen.dart:323 crea ticket ARCO manual; 0 referencias a DELETE /api/auth/delete-account"
+      "evidencia": "screens/profile/account_deletion_screen.dart → DELETE /api/auth/delete-account (confirmación escribiendo ELIMINAR); tarjeta en Ajustes y ruta /delete-account",
+      "estado_previo": "FALLA"
     },
     "9": {
       "bloque": "A",
@@ -300,9 +301,10 @@
     "42": {
       "bloque": "E",
       "titulo": "Política de privacidad",
-      "estado": "FALLA",
+      "estado": "PASA",
       "nivel": "E3",
-      "evidencia": "modal in-app real (settings_screen.dart:508); https://glowapp-provider.web.app/privacy.html devuelve catch-all de 1560 bytes, no la política"
+      "evidencia": "pantalla in-app (privacy_policy_screen.dart, 10 secciones) + https://glowapp-provider.web.app/privacy.html → 200 con 5.351 bytes de contenido real",
+      "estado_previo": "FALLA"
     },
     "43": {
       "bloque": "E",
@@ -363,16 +365,18 @@
     "51": {
       "bloque": "F",
       "titulo": "Permisos declarados",
-      "estado": "FALLA",
+      "estado": "PASA",
       "nivel": "E1",
-      "evidencia": "AndroidManifest.xml: 0 uses-permission (INTERNET incluida)"
+      "evidencia": "AndroidManifest.xml: INTERNET, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION, POST_NOTIFICATIONS",
+      "estado_previo": "FALLA"
     },
     "52": {
       "bloque": "F",
       "titulo": "Borrado de cuenta publicado",
-      "estado": "FALLA",
+      "estado": "PASA",
       "nivel": "E3",
-      "evidencia": "https://glowapp-provider.web.app/account-deletion.html sirve el index de Flutter (1560 bytes)"
+      "evidencia": "https://glowapp-provider.web.app/account-deletion.html → 200 con 3.327 bytes de contenido real",
+      "estado_previo": "FALLA"
     },
     "53": {
       "bloque": "G",
@@ -531,9 +535,10 @@
     "75": {
       "bloque": "J",
       "titulo": "CI/CD",
-      "estado": "PASA",
+      "estado": "FALLA",
       "nivel": "E1",
-      "evidencia": ".github/workflows/apps-ci.yml incluye glow_provider"
+      "evidencia": "workflow existe (.github/workflows/apps-ci.yml) pero los runs fallan al no iniciar: 'The job was not started because recent account payments have failed or your spending limit needs to be increased' (runs de d53675c, af73adc y 052e520)",
+      "estado_previo": "PASA"
     },
     "76": {
       "bloque": "J",
@@ -725,5 +730,27 @@
       "FALLA": 20,
       "N/V": 15
     }
+  },
+  "resumen_actualizado": {
+    "base86": {
+      "PASA": 26,
+      "PARCIAL": 30,
+      "N/A": 2,
+      "FALLA": 13,
+      "N/V": 15
+    },
+    "propios": {
+      "FALLA": 4,
+      "PASA": 3,
+      "PARCIAL": 2
+    },
+    "global": {
+      "PASA": 29,
+      "PARCIAL": 32,
+      "N/A": 2,
+      "FALLA": 17,
+      "N/V": 15
+    },
+    "nota": "Tarea 1 corregida: 8, 42, 51, 52 a PASA. Corrección de medición: 75 pasa de PASA a FALLA (CI sin minutos/billing)."
   }
 }
