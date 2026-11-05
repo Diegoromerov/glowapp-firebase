@@ -646,6 +646,47 @@ router.post('/bookings/:id/confirm-otp', authMiddleware, async (req, res) => {
 
     await client.query('COMMIT');
 
+    // 🔹 Enviar correo de confirmación de pago (fuera de la transacción, best-effort)
+    // Idempotencia: verificar que el pago no estaba ya en 'paid' antes de esta confirmación
+    try {
+      const emailService = require('../services/emailService');
+      const bookingCheck = await pool.query(
+        `SELECT b.*, u.email as cliente_email, u.nombre as cliente_nombre,
+                s.name as servicio_nombre, p.nombre as prestador_nombre
+         FROM bookings b
+         JOIN usuarios u ON b.client_id = u.id
+         LEFT JOIN services s ON b.service_id = s.id
+         LEFT JOIN usuarios p ON b.provider_id = p.id
+         WHERE b.id = $1`,
+        [id]
+      );
+      const booking = bookingCheck.rows[0];
+      if (booking?.cliente_email && booking.payment_status === 'paid') {
+        const fechaFormateada = booking.scheduled_at
+          ? new Date(booking.scheduled_at).toLocaleString('es-CO', {
+              dateStyle: 'long',
+              timeStyle: 'short',
+              timeZone: 'America/Bogota',
+            })
+          : '—';
+        const refCorta = String(id).slice(0, 8).toUpperCase();
+        await emailService.sendBookingConfirmationEmail({
+          toEmail: booking.cliente_email,
+          clientName: booking.cliente_nombre || 'Cliente',
+          bookingId: id,
+          serviceName: booking.servicio_nombre || booking.service_name || 'Servicio',
+          providerName: booking.prestador_nombre || 'Prestador',
+          appointmentDate: fechaFormateada,
+          paymentMethod: 'Wompi (OTP)',
+          amount: '$' + Number(booking.valor_bruto || 0).toLocaleString('es-CO', { maximumFractionDigits: 0 }),
+          reference: refCorta,
+        });
+        console.log(`📧 [OTP CONFIRMACIÓN] Correo de confirmación enviado a ${booking.cliente_email}`);
+      }
+    } catch (emailErr) {
+      console.error(`[OTP CONFIRMACIÓN] Error enviando correo de confirmación (no bloquea):`, emailErr.message);
+    }
+
     res.json({
       ok: true,
       mensaje: '¡Servicio confirmado! El pago estará disponible para el prestador en breve.',

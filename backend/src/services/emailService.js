@@ -215,6 +215,48 @@ async function sendAbandonedBookingEmail(toEmail, userName, bookingId, serviceNa
 }
 
 /**
+ * Helper: Email de confirmación de reserva pagada
+ * Se usa tras webhook de Wompi (APPROVED) y tras confirmación OTP en paymentRoutes.js
+ */
+async function sendBookingConfirmationEmail({
+  toEmail,
+  clientName,
+  bookingId,
+  serviceName,
+  providerName,
+  appointmentDate,
+  paymentMethod,
+  amount,
+  reference,
+}) {
+  const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-client.web.app').replace(/\/$/, '');
+  const receiptUrl = `${frontendBase}/#/bookings/${bookingId}/receipt`;
+  const subject = `✅ Tu cita de ${serviceName} está confirmada y pagada · GlowApp`;
+
+  console.log(`📧 [EMAIL CONFIRMACIÓN] Preparando correo para ${toEmail} (${clientName}):`);
+  console.log(`   Asunto: ${subject}`);
+  console.log(`   Referencia: ${reference}`);
+
+  return sendEmail({
+    to: toEmail,
+    subject,
+    template: 'bookingConfirmation',
+    data: {
+      subject,
+      clientName,
+      serviceName,
+      providerName,
+      appointmentDate,
+      paymentMethod,
+      amount,
+      reference,
+      receiptUrl,
+      frontendUrl: frontendBase,
+    },
+  });
+}
+
+/**
  * Templates específicos de SaaS
  */
 const saasTemplates = {
@@ -490,6 +532,7 @@ module.exports = {
   renderTemplate,
   loadTemplates,
   sendAbandonedBookingEmail,
+  sendBookingConfirmationEmail,
   // Helpers SaaS
   sendTrialEndingNotice,
   sendTrialExpiredNotice,

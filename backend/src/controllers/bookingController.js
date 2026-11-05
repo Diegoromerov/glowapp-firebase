@@ -1554,6 +1554,46 @@ const procesarWebhookWompi = async (req, res) => {
         });
 
         console.log(`✅ [WOMPI WEBHOOK SUCCESS] Cita ${bookingId} confirmada por webhook Sequelize.`);
+
+        // 🔹 Enviar correo de confirmación (fuera de la transacción, best-effort)
+        // Idempotencia: el webhook ya regresó temprano si existingTx.status === 'paid'
+        try {
+          const emailService = require('../services/emailService');
+          // Volver a leer la cita con relaciones para obtener email del cliente y nombre del prestador
+          const bookingCompleta = await Booking.findByPk(bookingId, {
+            include: [
+              { model: require('../models').Usuario, as: 'cliente', attributes: ['email', 'nombre'] },
+              { model: require('../models').Usuario, as: 'prestador', attributes: ['nombre'] },
+              { model: require('../models').Service, as: 'servicio', attributes: ['name'] },
+            ],
+          });
+          if (bookingCompleta?.cliente?.email) {
+            const fechaFormateada = bookingCompleta.scheduled_at
+              ? new Date(bookingCompleta.scheduled_at).toLocaleString('es-CO', {
+                  dateStyle: 'long',
+                  timeStyle: 'short',
+                  timeZone: 'America/Bogota',
+                })
+              : '—';
+            const refCorta = String(bookingId).slice(0, 8).toUpperCase();
+            await emailService.sendBookingConfirmationEmail({
+              toEmail: bookingCompleta.cliente.email,
+              clientName: bookingCompleta.cliente.nombre || 'Cliente',
+              bookingId,
+              serviceName: bookingCompleta.servicio?.name || bookingCompleta.service_name || 'Servicio',
+              providerName: bookingCompleta.prestador?.nombre || 'Prestador',
+              appointmentDate: fechaFormateada,
+              paymentMethod,
+              amount: '$' + Number(amount).toLocaleString('es-CO', { maximumFractionDigits: 0 }),
+              reference: refCorta,
+            });
+            console.log(`📧 [WOMPI WEBHOOK] Correo de confirmación enviado a ${bookingCompleta.cliente.email}`);
+          } else {
+            console.warn(`[WOMPI WEBHOOK] No se pudo enviar confirmación: cliente sin email en cita ${bookingId}`);
+          }
+        } catch (emailErr) {
+          console.error(`[WOMPI WEBHOOK] Error enviando correo de confirmación (no bloquea):`, emailErr.message);
+        }
       } else if (['DECLINED', 'VOIDED', 'ERROR'].includes(status)) {
         // Estados finales de rechazo: la transacción local no puede quedarse
         // pendiente para siempre ni, mucho menos, figurar como pagada.

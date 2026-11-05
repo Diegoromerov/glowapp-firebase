@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fdfbf7;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #fdfbf7; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" max-width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden;">
+          
+          <tr>
+            <td style="background: linear-gradient(135deg, #c5a052 0%, #d4b87a 100%); padding: 32px 24px; text-align: center;">
+              <h1 style="margin: 0; color: #1f1a15; font-size: 28px; font-weight: 700;">GlowApp</h1>
+              <p style="margin: 8px 0 0; color: #3d3626; font-size: 16px;">Tu cita está confirmada y pagada</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 40px 32px;">
+              <h2 style="margin: 0 0 16px; color: #1f1a15; font-size: 22px; font-weight: 600;">{{subject}}</h2>
+              
+              <p style="margin: 0 0 24px; color: #6b6158; font-size: 16px; line-height: 1.6;">
+                Hola <strong>{{clientName}}</strong>,
+              </p>
+
+              <p style="margin: 0 0 24px; color: #6b6158; font-size: 16px; line-height: 1.6;">
+                Tu reserva de <strong>{{serviceName}}</strong> ha sido confirmada y el pago se procesó correctamente.
+              </p>
+
+              <div style="background-color: #fdfbf7; border: 1px solid #efe8de; border-radius: 8px; padding: 20px; margin: 24px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size: 14px; color: #1f1a15;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b6158; width: 50%;">Servicio</td>
+                    <td style="padding: 8px 0; font-weight: 600;">{{serviceName}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b6158;">Prestador</td>
+                    <td style="padding: 8px 0; font-weight: 600;">{{providerName}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b6158;">Fecha y hora</td>
+                    <td style="padding: 8px 0; font-weight: 600;">{{appointmentDate}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b6158;">Método de pago</td>
+                    <td style="padding: 8px 0; font-weight: 600;">{{paymentMethod}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b6158;">Total pagado</td>
+                    <td style="padding: 8px 0; font-weight: 700; font-size: 16px; color: #c5a052;">{{amount}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b6158;">Referencia</td>
+                    <td style="padding: 8px 0; font-weight: 600; font-family: monospace;">{{reference}}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <p style="margin: 24px 0 0; color: #8a7f72; font-size: 13px; text-align: center;">
+                Puedes ver el recibo completo en la app: <a href="{{receiptUrl}}" style="color: #c5a052;">Mis citas → Recibo</a>
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background-color: #faf8f3; padding: 24px 32px; text-align: center; border-top: 1px solid #efe8de;">
+              <p style="margin: 0 0 8px; color: #8c7e74; font-size: 13px;">© 2025 GlowApp. Todos los derechos reservados.</p>
+              <p style="margin: 0; color: #8c7e74; font-size: 12px;">
+                <a href="{{frontendUrl}}" style="color: #c5a052;">glowapp-client.web.app</a> · Dudas: soporte@glowapp.co
+              </p>
+            </td          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
