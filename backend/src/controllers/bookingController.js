@@ -571,12 +571,15 @@ exports.getClientBookings = async (req, res) => {
         p.business_name as provider_business_name,
         u_prov.foto_url as provider_avatar_url,
         u_prov.phone as provider_phone,
-        r.id as review_id, r.rating as review_rating, r.comment as review_comment
+        r.id as review_id, r.rating as review_rating, r.comment as review_comment,
+        re.estado as refund_status, re.monto as refund_monto,
+        re.porcentaje_devolucion as refund_porcentaje
       FROM bookings b
       JOIN services s ON b.service_id = s.id
       JOIN perfiles_prestador p ON b.provider_id = p.id
       JOIN usuarios u_prov ON p.id = u_prov.id
       LEFT JOIN reviews r ON b.id = r.booking_id
+      LEFT JOIN reembolsos re ON re.booking_id = b.id
       WHERE b.client_id = $1
       ORDER BY b.scheduled_at DESC;
     `;
@@ -612,6 +615,12 @@ exports.getClientBookings = async (req, res) => {
       provider_avatar_url: row.provider_avatar_url || '',
       provider_phone: row.provider_phone || '',
       is_reviewed: row.review_id !== null,
+      // Ítem 30: el estado del reembolso no se mostraba en ninguna parte; el
+      // usuario leía «cancelada» y no sabía si el dinero volvía.
+      refund_status: row.refund_status || null,
+      refund_monto: row.refund_monto != null ? parseFloat(row.refund_monto) : null,
+      refund_porcentaje:
+          row.refund_porcentaje != null ? parseFloat(row.refund_porcentaje) : null,
       review: row.review_id ? {
         id: row.review_id,
         rating: parseInt(row.review_rating) || 0,
