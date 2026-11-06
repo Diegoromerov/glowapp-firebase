@@ -29,9 +29,6 @@
 --
 -- Idempotente: CREATE OR REPLACE + GRANTs condicionados a que el rol exista.
 -- ============================================================================
--- DROP IF EXISTS antes de cada CREATE para que el segundo arranque converja
--- a la misma firma (068/084: RETURNS SETOF usuarios; 125: RETURNS TABLE).
-DROP FUNCTION IF EXISTS app_usuario_por_email(text);
 
 BEGIN;
 
