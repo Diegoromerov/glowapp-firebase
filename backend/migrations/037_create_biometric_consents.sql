@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS biometric_access_log (
   -- 'ATENA', 'AURA', 'admin', 'user_self'
   access_type VARCHAR(50) NOT NULL,
   -- 'read_profile', 'analyze_photo', 'update_profile', 'delete_data', 'virtual_try_on'
-  consent_id INTEGER REFERENCES biometric_consents(id),
+  consent_id UUID REFERENCES biometric_consents(id),
   ip_address INET,
   accessed_at TIMESTAMP DEFAULT NOW(),
   details JSONB

@@ -24,57 +24,105 @@ if (!PASSWORD) {
 // comprobar que todas sus dependencias ya estén en la base: 071, por ejemplo,
 // hace ALTER TABLE sobre scan_product_matches (creada por 029) y tumba el
 // servicio si esa tabla no existe.
-const MIGRACIONES = [
-  'init.sql',
-  '054_create_core_tables.sql',
-  '055_create_tenants_table.sql',
-  '056_add_tenant_id_to_core_tables.sql',
-  '057_backfill_tenant_id.sql',
-  '058_enable_rls_policies.sql',
-  '065_multi_tenant_hardening.sql',
-  '067_create_multi_salon_ddl.sql',
-  '068_force_rls_strict_isolation.sql',
-  '107_rls_politicas_sin_contexto.sql',
-  '012_business_engine.sql',
-  '062_optimize_business_saas_postgres.sql',
-  '082_memberships.sql',
-  '114_memberships_sub_rol.sql',
-  '118_drop_salon_miembros.sql',
-  '119_force_rls_retention_policies.sql',
-  // GlowShop: crea las tablas de precios que la 071 nunca pudo crear (depende de
-  // scan_product_matches, inexistente) y siembra las listas base. Da el 200 a
-  // GET /api/products.
-  '121_glowshop_precios_minimas.sql',
-  // Catálogo: `createProduct`/`updateProduct` exigen costo y sku (L21), columnas
-  // que introduce la 071 y que nunca se aplicaron. Sin ellas el panel de
-  // productos responde 500 al crear o editar.
-  '122_catalogo_costo_sku.sql',
-  // Checkout de la tienda: `createOrder` necesita app_platform_tenant_id() y las
-  // columnas tenant_id, ambas de la 071. Sin ellas todo pedido muere con 500 y
-  // el ciclo de pago de Wompi no puede empezar.
-  '123_checkout_tenant_wompi.sql',
-  // 120 DEBE IR AL FINAL: fuerza FORCE ROW LEVEL SECURITY en TODAS las tablas
-    // con tenant_id. Si corre antes de 121/122/123, las tablas que estas crean
-    // (listas_precios, precios_producto, precios_historial, pedidos_tienda, etc.)
-    // quedarían sin FORCE ni políticas. En producción el entrypoint corre en cada
-    // arranque, así que en el SIGUIENTE arranque 120 las cubriría; en CI solo hay
-    // una pasada, así que 120 va al final para cubrir todo en una sola ejecución.
-    '120_force_rls_all_tenant_tables.sql',
-    // Login: SECURITY DEFINER lookup que bypassa RLS para autenticar sin contexto
-    '124_auth_lookup_security_definer.sql',
-    // Aspectos de la reseña (columna aditiva, nula por defecto)
-    '127_review_aspectos.sql',
-    // Token push del usuario (authController ya lo escribia sin columna)
-    '128_usuario_fcm_token.sql',
-    // Codigo OTP cifrado para entregarlo en la app (sin coste de correo)
-    '129_otp_codigo_cifrado.sql',
-  ];
+const MIGRACIONES_BASE_NUEVA = [
+'init.sql',
+'000_create_usuarios.sql',
+'001_payment_system.sql',
+'003_habeas_data_and_config.sql',
+'006_legal_architecture_pila_consignacion.sql',
+'009_create_productos_table.sql',
+'010_implement_glowstore_schema.sql',
+// Completar columnas que producción tiene y esta cadena no creaba (005/012/015/016/027/060/086/087).
+'005_add_terminos_acceptance.sql',
+'002_ai_history.sql',
+'012_skincare_planner_reengineering.sql',
+'015_colorimetria_quota_and_palette.sql',
+'016_glowstyle_wardrobe.sql',
+'027_align_beauty_profiles_and_biometric_history.sql',
+'059_create_tipo_trabajador_enum.sql',
+'060_add_worker_type_to_usuarios.sql',
+'086_add_iva_configuration.sql',
+'087_add_provider_rut_responsibility.sql',
+'020_biometric_consent_and_profiles.sql',
+'037_create_biometric_consents.sql',
+'079_definitive_fix_biometric_consents.sql',
+'054_create_core_tables.sql',
+'055_create_tenants_table.sql',
+'056_add_tenant_id_to_core_tables.sql',
+'057_backfill_tenant_id.sql',
+'058_enable_rls_policies.sql',
+'065_multi_tenant_hardening.sql',
+'067_create_multi_salon_ddl.sql',
+'068_force_rls_strict_isolation.sql',
+'107_rls_politicas_sin_contexto.sql',
+'012_business_engine.sql',
+'062_optimize_business_saas_postgres.sql',
+'082_memberships.sql',
+'114_memberships_sub_rol.sql',
+'118_drop_salon_miembros.sql',
+'119_force_rls_retention_policies.sql',
+'121_glowshop_precios_minimas.sql',
+'122_catalogo_costo_sku.sql',
+'123_checkout_tenant_wompi.sql',
+'120_force_rls_all_tenant_tables.sql',
+// (110/111 — SaaS billing — se sacaron: arrastraban subscriptions/usage_metrics. Lo que hacía falta vive en la 130.)
+'124_auth_lookup_security_definer.sql',
+'125_usuario_lookup_sin_contexto.sql',
+'127_review_aspectos.sql',
+'128_usuario_fcm_token.sql',
+'129_otp_codigo_cifrado.sql',
+'130_completar_esquema_base_cliente.sql',];
 
-// Permite a CI omitir migraciones que dependen de tablas fuera del conjunto
-// núcleo. En producción la variable no existe y se aplica TODO.
+// ── Lista de ARRANQUE ───────────────────────────────────────────────────────
+// Se aplica en CADA arranque, sobre una base que ya tiene datos. Solo puede
+// contener migraciones reejecutables: se probaron una a una contra una base
+// inicializada (33 candidatas, 31 aguantan; las 2 que no, quedan fuera).
+//
+// FUERA a propósito:
+//  · 006 — ALTER TABLE ... ADD COLUMN sin IF NOT EXISTS. Rompió producción el
+//    2026-11-05: el entrypoint abortó, el contenedor entró en bucle y la API
+//    devolvió 502 hasta revertir.
+//  · 020 — UPDATE ... SET active sobre una columna que ya no existe.
+// Ambas siguen en MIGRACIONES_BASE_NUEVA, que solo corre con la base vacía.
+//
+// 125 va aquí porque completa la convergencia de app_usuario_por_email: 068,
+// 084 y 125 empiezan con DROP FUNCTION, así que el arranque acaba siempre con
+// la misma firma, venga de donde venga la base.
+const MIGRACIONES_ARRANQUE = [
+  'init.sql',
+  '054_create_core_tables.sql',
+  '055_create_tenants_table.sql',
+  '056_add_tenant_id_to_core_tables.sql',
+  '057_backfill_tenant_id.sql',
+  '058_enable_rls_policies.sql',
+  '065_multi_tenant_hardening.sql',
+  '067_create_multi_salon_ddl.sql',
+  '068_force_rls_strict_isolation.sql',
+  '107_rls_politicas_sin_contexto.sql',
+  '012_business_engine.sql',
+  '062_optimize_business_saas_postgres.sql',
+  '082_memberships.sql',
+  '114_memberships_sub_rol.sql',
+  '118_drop_salon_miembros.sql',
+  '119_force_rls_retention_policies.sql',
+  '121_glowshop_precios_minimas.sql',
+  '122_catalogo_costo_sku.sql',
+  '123_checkout_tenant_wompi.sql',
+  '120_force_rls_all_tenant_tables.sql',
+  '124_auth_lookup_security_definer.sql',
+  '125_usuario_lookup_sin_contexto.sql',
+  '127_review_aspectos.sql',
+  '128_usuario_fcm_token.sql',
+  '129_otp_codigo_cifrado.sql',
+];
+/// Lista que corresponde según el estado de la base.
+function migracionesPara(baseVacia) {
+  const lista = baseVacia ? MIGRACIONES_BASE_NUEVA : MIGRACIONES_ARRANQUE;
+  return lista.filter((m) => !omitidas.includes(m));
+}
 const omitidas = (process.env.MIGRAR_OMITIR || '')
   .split(',').map((s) => s.trim()).filter(Boolean);
-const migraciones = MIGRACIONES.filter((m) => !omitidas.includes(m));
+// La lista se elige en main(), cuando se sabe si la base está vacía.
 
 const path = require('path');
 const fs = require('fs');
@@ -161,7 +209,7 @@ async function main() {
       process.exit(1);
     }
 
-    for (const nombre of migraciones) {
+    for (const nombre of migracionesPara(baseVacia)) {
       if (nombre === 'init.sql' && !baseVacia) {
         console.log('   ⏭️  init.sql omitido — no es idempotente y el esquema ya existe.');
         continue;

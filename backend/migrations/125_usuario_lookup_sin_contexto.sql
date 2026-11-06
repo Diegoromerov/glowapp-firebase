@@ -19,6 +19,12 @@
 -- devuelven nada que el llamador no necesite para autenticar.
 
 -- 1. Buscar por email (para detectar duplicados antes de insertar)
+-- La 125 redefine esta función con otra firma (RETURNS TABLE). Sin este DROP,
+-- reejecutar esta migración en un arranque posterior aborta con «cannot change
+-- return type of existing function». Convergencia: el arranque siempre acaba
+-- con la firma de la 125.
+DROP FUNCTION IF EXISTS app_usuario_por_email(text);
+
 CREATE OR REPLACE FUNCTION app_usuario_por_email(p_email text)
 RETURNS TABLE (
   id                   integer,
