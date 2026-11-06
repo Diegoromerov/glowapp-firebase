@@ -59,6 +59,9 @@ CREATE TABLE IF NOT EXISTS precios_producto (
   PRIMARY KEY (lista_id, producto_id)
 );
 
+-- D4: garantizar tenant_id aunque la tabla existiera sin ella (p.ej. 071 previa)
+ALTER TABLE precios_producto ADD COLUMN IF NOT EXISTS tenant_id INTEGER REFERENCES tenants(id);
+
 CREATE TABLE IF NOT EXISTS precios_historial (
   id              SERIAL PRIMARY KEY,
   lista_id        INTEGER       NOT NULL REFERENCES listas_precios(id) ON DELETE CASCADE,

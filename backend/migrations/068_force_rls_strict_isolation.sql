@@ -297,6 +297,9 @@ END $$;
 --     política de usuarios), de modo que atraviesan RLS de forma deliberada,
 --     localizada y auditable — en lugar de dejar la tabla sin proteger.
 --     Devuelven SETOF usuarios (o columnas mínimas) para no depender del DDL.
+--     DROP IF EXISTS antes de cada CREATE para que el segundo arranque converja
+--     a la misma firma (068/084: RETURNS SETOF usuarios; 125: RETURNS TABLE).
+DROP FUNCTION IF EXISTS app_usuario_por_email(text);
 CREATE OR REPLACE FUNCTION app_usuario_por_id(p_id integer)
 RETURNS SETOF public.usuarios
 LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS $$

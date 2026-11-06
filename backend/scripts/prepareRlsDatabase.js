@@ -26,6 +26,27 @@ if (!PASSWORD) {
 // servicio si esa tabla no existe.
 const MIGRACIONES = [
   'init.sql',
+  // Padres que crean tablas base antes de 054 (D1): 000, 001, 003, 006, 009, 010.
+    // Así ganan sus esquemas (platform_config con descripcion/updated_by, usuarios
+    // sin tipo_usuario/email_verificado/telefono, admin_mfa con secret_key/is_enabled,
+    // productos con nombre/precio/imagen_url, pedidos_tienda, detalles_pedido_tienda,
+    // booking_productos, inventario_consignacion_prestador).
+    '000_create_usuarios.sql',
+    '001_payment_system.sql',
+    '003_habeas_data_and_config.sql',
+    '006_legal_architecture_pila_consignacion.sql',
+    '009_create_productos_table.sql',
+    '010_implement_glowstore_schema.sql',
+    // Biométrico (D3): 020 crea tablas base, 037 añade columnas que usa el código,
+    // 079 reconcilia y garantiza la unión final de columnas (consent_type, granted,
+    // granted_at, purpose, ip_address, user_agent, version_terms, created_at,
+    // updated_at en biometric_consents; access_type, consent_id, details en
+    // biometric_access_log; entry_point en beauty_profiles). Se aplican en orden
+    // cronológico para que la base nueva acabe igual que producción.
+    '020_biometric_consent_and_profiles.sql',
+    '037_create_biometric_consents.sql',
+    '079_definitive_fix_biometric_consents.sql',
+    // Esquema core y RLS base
   '054_create_core_tables.sql',
   '055_create_tenants_table.sql',
   '056_add_tenant_id_to_core_tables.sql',
@@ -54,21 +75,25 @@ const MIGRACIONES = [
   // el ciclo de pago de Wompi no puede empezar.
   '123_checkout_tenant_wompi.sql',
   // 120 DEBE IR AL FINAL: fuerza FORCE ROW LEVEL SECURITY en TODAS las tablas
-    // con tenant_id. Si corre antes de 121/122/123, las tablas que estas crean
-    // (listas_precios, precios_producto, precios_historial, pedidos_tienda, etc.)
-    // quedarían sin FORCE ni políticas. En producción el entrypoint corre en cada
-    // arranque, así que en el SIGUIENTE arranque 120 las cubriría; en CI solo hay
-    // una pasada, así que 120 va al final para cubrir todo en una sola ejecución.
-    '120_force_rls_all_tenant_tables.sql',
-    // Login: SECURITY DEFINER lookup que bypassa RLS para autenticar sin contexto
-    '124_auth_lookup_security_definer.sql',
-    // Aspectos de la reseña (columna aditiva, nula por defecto)
-    '127_review_aspectos.sql',
-    // Token push del usuario (authController ya lo escribia sin columna)
-    '128_usuario_fcm_token.sql',
-    // Codigo OTP cifrado para entregarlo en la app (sin coste de correo)
-    '129_otp_codigo_cifrado.sql',
-  ];
+  // con tenant_id. Si corre antes de 121/122/123, las tablas que estas crean
+  // (listas_precios, precios_producto, precios_historial, pedidos_tienda, etc.)
+  // quedarían sin FORCE ni políticas. En producción el entrypoint corre en cada
+  // arranque, así que en el SIGUIENTE arranque 120 las cubriría; en CI solo hay
+  // una pasada, así que 120 va al final para cubrir todo en una sola ejecución.
+  '120_force_rls_all_tenant_tables.sql',
+  // Login: SECURITY DEFINER lookup que bypassa RLS para autenticar sin contexto
+  '124_auth_lookup_security_definer.sql',
+  // Lookup de usuario por email (SEGURITY DEFINER) para alta/vinculación OAuth
+  // fuera de contexto de inquilino. Va al final para que su firma (RETURNS TABLE)
+  // sea la definitiva; 068 y 084 llevan DROP IF EXISTS antes de su CREATE.
+  '125_usuario_lookup_sin_contexto.sql',
+  // Aspectos de la reseña (columna aditiva, nula por defecto)
+  '127_review_aspectos.sql',
+  // Token push del usuario (authController ya lo escribia sin columna)
+  '128_usuario_fcm_token.sql',
+  // Codigo OTP cifrado para entregarlo en la app (sin coste de correo)
+  '129_otp_codigo_cifrado.sql',
+];
 
 // Permite a CI omitir migraciones que dependen de tablas fuera del conjunto
 // núcleo. En producción la variable no existe y se aplica TODO.

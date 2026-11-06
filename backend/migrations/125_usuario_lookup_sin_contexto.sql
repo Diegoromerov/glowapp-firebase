@@ -19,6 +19,9 @@
 -- devuelven nada que el llamador no necesite para autenticar.
 
 -- 1. Buscar por email (para detectar duplicados antes de insertar)
+-- DROP IF EXISTS antes de cada CREATE para que el segundo arranque converja
+-- a la misma firma (068/084: RETURNS SETOF usuarios; 125: RETURNS TABLE).
+DROP FUNCTION IF EXISTS app_usuario_por_email(text);
 CREATE OR REPLACE FUNCTION app_usuario_por_email(p_email text)
 RETURNS TABLE (
   id                   integer,
