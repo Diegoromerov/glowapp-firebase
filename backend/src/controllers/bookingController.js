@@ -1562,8 +1562,8 @@ const procesarWebhookWompi = async (req, res) => {
                   // Volver a leer la cita con relaciones para obtener email del cliente y nombre del prestador
                   const bookingCompleta = await Booking.findByPk(bookingId, {
                     include: [
-                      { model: require('../models').Usuario, as: 'client', attributes: ['email', 'nombre'] },
-                      { model: require('../models').Usuario, as: 'provider', attributes: ['nombre'] },
+                      { model: require('../models').User, as: 'client', attributes: ['email', 'nombre'] },
+                      { model: require('../models').User, as: 'provider', attributes: ['nombre'] },
                       { model: require('../models').Service, as: 'service', attributes: ['name'] },
                     ],
                   });
