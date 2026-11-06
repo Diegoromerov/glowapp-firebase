@@ -47,6 +47,20 @@ function leerFlags() {
   return flags;
 }
 
+/// Middleware: corta una familia de endpoints cuando su bandera está apagada.
+/// Va ANTES de authMiddleware a propósito: si la función está apagada no hay
+/// nada que autenticar, y así el rechazo es 409 y no un engañoso 401.
+function requireFlag(nombre) {
+  return function (req, res, next) {
+    if (leerFlags()[nombre] === false) {
+      return res.status(409).json({
+        error: `La función '${nombre}' está desactivada por ahora`,
+        flag: nombre,
+      });
+    }
+    return next();
+  };
+}
 /// GET /api/config/flags — sin autenticación: no revela datos de nadie.
 router.get('/config/flags', (req, res) => {
   res.setHeader('Cache-Control', 'public, max-age=60');
@@ -55,3 +69,4 @@ router.get('/config/flags', (req, res) => {
 
 module.exports = router;
 module.exports.leerFlags = leerFlags;
+module.exports.requireFlag = requireFlag;
