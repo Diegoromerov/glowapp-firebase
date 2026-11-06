@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
@@ -8,7 +11,7 @@ plugins {
 android {
     namespace = "com.glowapp.glow_client"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -16,21 +19,55 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.glowapp.glow_client"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    // Configuración de firma de release (lee key.properties, fuera del repo)
+    val keyProps = Properties()
+    val keyPropsFile = file("key.properties")
+    if (keyPropsFile.exists()) {
+        keyProps.load(FileInputStream(keyPropsFile))
+    }
+
+    signingConfigs {
+        create("release") {
+            val storeFilePath = keyProps["storeFile"]?.toString()
+            val storePassword = keyProps["storePassword"]?.toString()
+            val keyAlias = keyProps["keyAlias"]?.toString()
+            val keyPassword = keyProps["keyPassword"]?.toString()
+            val storeType = keyProps["storeType"]?.toString() ?: "PKCS12"
+            if (storeFilePath != null && storePassword != null && keyAlias != null && keyPassword != null) {
+                storeFile = file(storeFilePath)
+                this.storePassword = storePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+                this.storeType = storeType
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+}
+
+// Habilitar core library desugaring vía reflexión (AGP 9+ legacy DSL)
+afterEvaluate {
+    val desugaringExt = extensions.findByName("coreLibraryDesugaring")
+    desugaringExt?.let {
+        try {
+            val clazz = it.javaClass
+            val field = clazz.getDeclaredField("isEnabled")
+            field.isAccessible = true
+            field.set(it, true)
+        } catch (e: Exception) {
+            // Ignorar si no se puede habilitar
         }
     }
 }
@@ -41,4 +78,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 }
