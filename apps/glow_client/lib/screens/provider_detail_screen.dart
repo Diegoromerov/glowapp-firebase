@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:glow_core/glow_core.dart';
+import 'package:share_plus/share_plus.dart';
 import 'chat_screen.dart';
+import '../services/deep_link_service.dart';
 
 class ProviderDetailScreen extends StatefulWidget {
   final String providerId;
@@ -146,34 +148,49 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
     _categorizedServices = map;
   }
 
-  void _shareProfile() {
+  Future<void> _shareProfile() async {
     HapticFeedback.mediumImpact();
     final p = details?['provider'];
-    final providerName =
-        p?['business_name'] ?? p?['full_name'] ?? 'Profesional de Belleza';
-    final shareUrl = 'https://glowapp.co/p/${widget.providerId}';
-    Clipboard.setData(ClipboardData(
-        text: '¡Mira el perfil de $providerName en GlowApp! $shareUrl'));
+    final providerName = (p?['business_name'] ??
+            p?['full_name'] ??
+            'Profesional de Belleza')
+        .toString();
+    final shareUrl = Uri.https(
+      DeepLinkService.host,
+      '/provider-detail/${widget.providerId}',
+    ).toString();
+    final shareText = '¡Mira el perfil de $providerName en GlowApp! $shareUrl';
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Row(
-          children: [
-            const Icon(Icons.check_circle_outline_rounded,
-                color: Color(0xFFC5A052), size: 20),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                '¡Enlace de $providerName copiado! Listo para compartir en WhatsApp o Instagram.',
-                style: const TextStyle(color: Colors.white, fontSize: 13),
-              ),
-            ),
-          ],
+    try {
+      final result = await SharePlus.instance.share(
+        ShareParams(
+          title: 'Compartir perfil',
+          subject: 'Conoce a $providerName en GlowApp',
+          text: shareText,
         ),
-        backgroundColor: const Color(0xFF1F1A15),
+      );
+      if (result.status == ShareResultStatus.unavailable) {
+        await _copiarEnlaceCompartido(shareText);
+      }
+    } catch (error) {
+      debugPrint('No se pudo abrir el menú para compartir el perfil: $error');
+      await _copiarEnlaceCompartido(shareText);
+    }
+  }
+
+  Future<void> _copiarEnlaceCompartido(String shareText) async {
+    try {
+      await Clipboard.setData(ClipboardData(text: shareText));
+    } catch (error) {
+      debugPrint('No se pudo copiar el enlace del perfil: $error');
+    }
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'No hay apps para compartir disponibles. Copiamos el enlace del perfil.',
+        ),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        duration: const Duration(seconds: 3),
       ),
     );
   }
