@@ -537,22 +537,26 @@ exports.saveFcmToken = async (req, res) => {
 
     const { fcm_token, device_os } = data;
 
-    // Obtener roles del usuario para propagar en notificaciones push
+    // La tabla usuarios no tiene una columna `roles`: el rol canónico vive en
+    // `rol` y `roles[]` se construye en el JWT desde memberships. Mantener este
+    // registro independiente de una columna inexistente evita un 500 en prod.
     const userRolesRes = await pool.query(
-      `SELECT rol, roles FROM usuarios WHERE id = $1`,
+      `SELECT rol FROM usuarios WHERE id = $1`,
       [userId]
     );
     const userRoles = userRolesRes.rows[0];
-    const rolesArray = userRoles.roles || (userRoles.rol ? [userRoles.rol] : []);
+    if (!userRoles) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
 
     await pool.query(
       `UPDATE usuarios 
-       SET fcm_token = $1, last_active_at = NOW(), roles = $2
-       WHERE id = $3`,
-      [fcm_token, rolesArray, userId]
+       SET fcm_token = $1, last_active_at = NOW()
+       WHERE id = $2`,
+      [fcm_token, userId]
     );
 
-    console.log(`🔔 Token FCM registrado para usuario ID ${userId} (${device_os || 'web/mobile'}) roles: ${JSON.stringify(rolesArray)}`);
+    console.log(`🔔 Token FCM registrado para usuario ID ${userId} (${device_os || 'web/mobile'}) rol: ${userRoles.rol || 'sin rol'}`);
 
     res.json({
       success: true,
