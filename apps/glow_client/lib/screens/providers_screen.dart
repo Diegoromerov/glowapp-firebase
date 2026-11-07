@@ -2603,38 +2603,31 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           // Acción para cambiar entre mapa y lista completa.
           if (!_isMapMenuOpen)
             Positioned(
-              left: !_soloLista && _selectedProvider == null ? 20 : null,
-              right: _soloLista || _selectedProvider != null ? 20 : null,
+              right: 20,
               bottom: MediaQuery.of(context).padding.bottom +
                   (_soloLista
                       ? 20
-                      : _selectedProvider != null
-                          ? 292
-                          : 96),
-              child: SizedBox(
-                width: _soloLista ? null : 188,
-                height: 56,
-                child: FloatingActionButton.extended(
-                  heroTag: 'toggle_lista',
-                  tooltip: _soloLista ? 'Ver mapa' : 'Ver los resultados en lista',
-                  backgroundColor: AppTheme.primary,
-                  foregroundColor: Colors.white,
-                  elevation: 4,
-                  onPressed: () {
-                    setState(() {
-                      _soloLista = !_soloLista;
-                      _isMapMenuOpen = false;
-                    });
-                    AnalyticsService().logEvent(
-                      eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
-                      screenName: '/home',
-                    );
-                  },
-                  icon: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
-                  label: Text(_soloLista
-                      ? 'Ver mapa'
-                      : 'Lista (${_filteredProviders.length})'),
-                ),
+                      : (_selectedProvider != null ? 280 : 160) + 12),
+              child: FloatingActionButton.extended(
+                heroTag: 'toggle_lista',
+                tooltip: _soloLista ? 'Ver mapa' : 'Ver los resultados en lista',
+                backgroundColor: AppTheme.primary,
+                foregroundColor: Colors.white,
+                elevation: 4,
+                onPressed: () {
+                  setState(() {
+                    _soloLista = !_soloLista;
+                    _isMapMenuOpen = false;
+                  });
+                  AnalyticsService().logEvent(
+                    eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
+                    screenName: '/home',
+                  );
+                },
+                icon: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+                label: Text(_soloLista
+                    ? 'Ver mapa'
+                    : 'Ver ${_filteredProviders.length} resultados'),
               ),
             ),
 
