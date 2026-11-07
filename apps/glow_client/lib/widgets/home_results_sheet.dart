@@ -21,10 +21,9 @@ class HomeResultsSheet extends StatefulWidget {
   final String? mensajeVacio;
   final VoidCallback? onAmpliarRadio;
 
-  /// Altura inicial. 0.32 en el mapa; 0.9 en el modo «solo lista».
+  /// Altura inicial. 0.52 en el mapa; 0.9 en el modo «solo lista».
   final double tamanoInicial;
   final double espacioInferior;
-  final bool expand;
 
   const HomeResultsSheet({
     super.key,
@@ -37,7 +36,6 @@ class HomeResultsSheet extends StatefulWidget {
     this.onAmpliarRadio,
     this.tamanoInicial = 0.52,
     this.espacioInferior = 24,
-    this.expand = true,
   });
 
   @override
@@ -74,26 +72,15 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
     }
   }
 
-  void _alternarMapaYResultados() {
-    if (!_controller.isAttached) return;
-    final destino = _controller.size > 0.45 ? 0.18 : 0.52;
-    _controller.animateTo(
-      destino,
-      duration: const Duration(milliseconds: 280),
-      curve: Curves.easeOutCubic,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
       controller: _controller,
       initialChildSize: widget.tamanoInicial,
-      minChildSize: 0.18,
+      minChildSize: 0.25,
       maxChildSize: 0.9,
-      expand: widget.expand,
       snap: true,
-      snapSizes: const [0.18, 0.32, 0.52, 0.9],
+      snapSizes: const [0.25, 0.52, 0.9],
       builder: (context, scrollController) {
         return Container(
           decoration: const BoxDecoration(
@@ -109,37 +96,16 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
           ),
           child: Column(
             children: [
-              // El asa expande la lista o la baja para liberar el mapa.
+              // 44 px: zona del pulgar y objetivo táctil correcto.
               SizedBox(
-                height: 48,
-                child: Semantics(
-                  button: true,
-                  label: 'Alternar entre resultados y mapa',
-                  child: Tooltip(
-                    message: 'Toca para alternar entre resultados y mapa',
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: _alternarMapaYResultados,
-                      child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              width: 44,
-                              height: 4,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFE0D8CE),
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                            ),
-                            Icon(
-                              Icons.unfold_more_rounded,
-                              size: 18,
-                              color: const Color(0xFF8C6F65),
-                            ),
-                          ],
-                        ),
-                      ),
+                height: 44,
+                child: Center(
+                  child: Container(
+                    width: 44,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE0D8CE),
+                      borderRadius: BorderRadius.circular(2),
                     ),
                   ),
                 ),

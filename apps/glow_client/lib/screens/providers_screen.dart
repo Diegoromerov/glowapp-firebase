@@ -2565,13 +2565,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             Positioned(
               left: 0,
               right: 0,
+              top: 0,
               bottom: MediaQuery.of(context).padding.bottom +
                   (_selectedProvider != null ? 280 : 160),
               child: HomeResultsSheet(
                 key: const ValueKey('home-map-mode'),
                 proveedores: _filteredProviders,
-                tamanoInicial: 0.32,
-                expand: false,
+                tamanoInicial: 0.52,
                 encabezado: _buildHomeResultsHeader(),
                 onSelect: (p) {
                   setState(() => _selectedProvider = p);
