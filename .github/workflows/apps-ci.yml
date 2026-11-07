@@ -316,7 +316,8 @@ jobs:
           name: glow-client-web
           path: apps/glow_client/build/web
 
-      - name: Deploy to Firebase Hosting (Client)
+      - name: Deploy Client preview channel
+        if: ${{ inputs.canal != 'live' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -325,3 +326,14 @@ jobs:
           entryPoint: apps/glow_client
           channelId: ${{ inputs.canal }}
           expires: 7d
+
+      - name: Authenticate for Client live deploy
+        if: ${{ inputs.canal == 'live' }}
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.CLIENT_FIREBASE_SERVICE_ACCOUNT }}
+
+      - name: Deploy Client to Firebase Hosting live channel
+        if: ${{ inputs.canal == 'live' }}
+        run: npx firebase-tools@latest deploy --only hosting --project glowapp-client --non-interactive
+        working-directory: apps/glow_client
