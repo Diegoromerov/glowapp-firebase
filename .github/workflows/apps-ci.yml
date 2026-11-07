@@ -75,7 +75,12 @@ jobs:
         run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Melos Bootstrap
-        run: melos bootstrap
+        run: |
+          case "${{ inputs.app }}" in
+            cliente) melos bootstrap --scope=glow_client --include-dependencies ;;
+            prestador) melos bootstrap --scope=glow_provider --include-dependencies ;;
+            ambas) melos bootstrap --scope='glow_*' --include-dependencies ;;
+          esac
         working-directory: ${{ github.workspace }}
 
       - name: Analyze glow_core
@@ -128,11 +133,7 @@ jobs:
         run: |
           dart pub global activate melos 6.2.0
           export PATH="$HOME/.pub-cache/bin:$PATH"
-          case "${{ inputs.app }}" in
-            cliente) melos bootstrap --scope=glow_client --include-dependencies ;;
-            prestador) melos bootstrap --scope=glow_provider --include-dependencies ;;
-            ambas) melos bootstrap --scope='glow_*' --include-dependencies ;;
-          esac
+          melos bootstrap --scope=glow_provider --include-dependencies
         working-directory: ${{ github.workspace }}
 
       - name: Build Glow Provider Web
@@ -181,7 +182,7 @@ jobs:
         run: |
           dart pub global activate melos 6.2.0
           export PATH="$HOME/.pub-cache/bin:$PATH"
-          melos bootstrap
+          melos bootstrap --scope=glow_client --include-dependencies
         working-directory: ${{ github.workspace }}
 
       - name: Build Glow Client Web
@@ -230,7 +231,7 @@ jobs:
         run: |
           dart pub global activate melos 6.2.0
           export PATH="$HOME/.pub-cache/bin:$PATH"
-          melos bootstrap
+          melos bootstrap --scope=glow_client --include-dependencies
         working-directory: ${{ github.workspace }}
 
       - name: Decode Keystore
