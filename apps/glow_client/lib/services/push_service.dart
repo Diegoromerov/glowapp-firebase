@@ -10,6 +10,7 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:glow_core/services.dart';
 
 import '../firebase_options.dart';
@@ -22,6 +23,8 @@ class PushService {
       'BPesRggflU9ZV1O0hRwynJoXNEvF3eXUVvhtWZDRoGUOob8dsD-4XS6oX2FIszHQOiRJN8IewGtO4syKTkd3m7s';
 
   static bool _listo = false;
+  static final FlutterLocalNotificationsPlugin _localNotifications =
+      FlutterLocalNotificationsPlugin();
 
   /// Pide permiso, obtiene el token y lo registra en el backend.
   /// Se llama después del login: sin usuario no hay a quién notificar.
@@ -42,6 +45,20 @@ class PushService {
         return;
       }
 
+      if (!kIsWeb) {
+        await messaging.setForegroundNotificationPresentationOptions(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+        await _localNotifications.initialize(
+          const InitializationSettings(
+            android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+            iOS: DarwinInitializationSettings(),
+          ),
+        );
+      }
+
       final token = await messaging.getToken(
         vapidKey: kIsWeb ? _vapidKey : null,
       );
@@ -52,7 +69,7 @@ class PushService {
 
       // El token rota: sin esto las notificaciones dejan de llegar en silencio.
       messaging.onTokenRefresh.listen(_registrar);
-      FirebaseMessaging.onMessage.listen(_enPrimerPlano);
+      FirebaseMessaging.onMessage.listen((message) => _enPrimerPlano(message, messaging));
     } catch (e) {
       debugPrint('PushService: $e');
     }
@@ -79,9 +96,27 @@ class PushService {
     await registrarServiceWorkerPush(params);
   }
 
-  /// Con la app en primer plano FCM no pinta la notificación: se ignora a
-  /// propósito porque el aviso relevante ya se ve en la pantalla de citas.
-  static void _enPrimerPlano(RemoteMessage message) {
+  /// En primer plano iOS presenta el aviso nativamente; Android requiere
+  /// mostrarlo con flutter_local_notifications. Nunca se incluye el código.
+  static Future<void> _enPrimerPlano(
+    RemoteMessage message,
+    FirebaseMessaging messaging,
+  ) async {
     debugPrint('PushService: ${message.notification?.title ?? message.data}');
+    if (kIsWeb || message.notification == null) return;
+    if (defaultTargetPlatform == TargetPlatform.iOS) return;
+    const androidDetails = AndroidNotificationDetails(
+      'glowapp_updates',
+      'Actualizaciones de GlowApp',
+      channelDescription: 'Avisos de citas y confirmaciones',
+      importance: Importance.high,
+      priority: Priority.high,
+    );
+    await _localNotifications.show(
+      message.hashCode,
+      message.notification!.title,
+      message.notification!.body,
+      const NotificationDetails(android: androidDetails),
+    );
   }
 }

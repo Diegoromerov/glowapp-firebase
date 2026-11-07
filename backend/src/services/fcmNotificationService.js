@@ -58,7 +58,7 @@ class FCMNotificationService {
    */
   async sendOtpReadyNotice(deviceToken, { bookingId, serviceName }) {
     const title = 'Confirma tu servicio';
-    const body = `El servicio de ${serviceName || 'tu cita'} terminó. Abre GlowApp e ingresa el código que enviamos a tu correo.`;
+    const body = `El servicio de ${serviceName || 'tu cita'} terminó. Abre GlowApp para consultar tu código de confirmación.`;
 
     return await this._sendNotification(deviceToken, title, body, {
       type: 'OTP_READY',

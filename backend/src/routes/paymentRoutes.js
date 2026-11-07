@@ -344,14 +344,11 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
     await client.query('COMMIT');
 
     // ── Entrega del código ───────────────────────────────────────────────────
-    // Sin esto el código se generaba, se hasheaba y se perdía: el cliente no
-    // podía confirmar y la reserva se quedaba en ESPERANDO_OTP para siempre
-    // (ni se liberaba el pago ni se podía calificar). Se envía fuera de la
-    // transacción y nunca puede tumbar la finalización del servicio.
+    let correoEnviado = false;
+    let pushEnviado = false;
     try {
-      // runAsSystem abre una transacción con SET LOCAL ROLE app_system: el flag
-      // de contexto no basta, la consulta seguía cayendo en el inquilino del
-      // prestador y el cliente era invisible (0 filas → sin correo).
+      // El mailer admite SMTP y API HTTP de Brevo. Sin ninguno no llamamos al
+      // fallback de desarrollo, porque registra el cuerpo completo del correo.
       const contacto = await runAsSystem({ pool }, async (c) => {
         const r = await c.query(
           'SELECT email, nombre FROM usuarios WHERE id = $1',
@@ -359,63 +356,71 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
         );
         return r.rows[0] || null;
       });
+      const destinatario = contacto || (booking.cliente_email
+        ? { email: booking.cliente_email, nombre: booking.cliente_nombre }
+        : null);
 
-      // Sin SMTP configurado, `sendEmail` cae en modo dev y vuelca el cuerpo en
-      // los logs: eso dejaría el código escrito en Railway, que es justo lo que
-      // la norma prohibe (A360-2026-09-22/C-06). Antes que eso, no se envía y se
-      // avisa sin el código.
-      const transporte = emailService.initEmailService();
-      if (contacto?.email && !transporte) {
-        console.warn('[OTP] SMTP no configurado: el código no se envió. Faltan SMTP_HOST/SMTP_USER/SMTP_PASS.');
-      }
-
-      if (contacto?.email && transporte) {
-        await emailService.sendEmail({
-          to: contacto.email,
-          subject: 'Tu código para confirmar el servicio · GlowApp',
-          data: {
-            html: `
-              <div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#1F1A15">
-                <h2 style="margin:0 0 8px;font-size:20px">Confirma tu servicio</h2>
-                <p style="margin:0 0 20px;color:#6B6157;font-size:14px">
-                  Hola ${contacto.nombre || ''}, tu prestador marcó el servicio como terminado.
-                  Ingresa este código en GlowApp para confirmar y liberar el pago.
-                </p>
-                <div style="font-size:34px;letter-spacing:10px;font-weight:bold;color:#C5A052;text-align:center;padding:16px 0;border-top:1px solid #EFE8DE;border-bottom:1px solid #EFE8DE">
-                  ${codigo}
-                </div>
-                <p style="margin:20px 0 0;color:#8A7F72;font-size:12px">
-                  Vence en ${vigenciaMin} minutos. Si no reconoces este servicio, abre una disputa desde la app.
-                </p>
-              </div>`,
-          },
-        });
-        console.log(`[OTP] Código enviado por correo a ${contacto.email.replace(/(.).*(@.*)/, '$1***$2')}`);
-      } else {
+      const tieneTransporte = Boolean(
+        process.env.BREVO_API_KEY || emailService.initEmailService()
+      );
+      if (destinatario?.email && tieneTransporte) {
+        try {
+          const resultadoEmail = await emailService.sendEmail({
+            to: destinatario.email,
+            subject: 'Tu código para confirmar el servicio · GlowApp',
+            data: {
+              html: `
+                <div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#1F1A15">
+                  <h2 style="margin:0 0 8px;font-size:20px">Confirma tu servicio</h2>
+                  <p style="margin:0 0 20px;color:#6B6157;font-size:14px">
+                    Hola ${destinatario.nombre || ''}, tu prestador marcó el servicio como terminado.
+                    Ingresa este código en GlowApp para confirmar y liberar el pago.
+                  </p>
+                  <div style="font-size:34px;letter-spacing:10px;font-weight:bold;color:#C5A052;text-align:center;padding:16px 0;border-top:1px solid #EFE8DE;border-bottom:1px solid #EFE8DE">
+                    ${codigo}
+                  </div>
+                  <p style="margin:20px 0 0;color:#8A7F72;font-size:12px">
+                    Vence en ${vigenciaMin} minutos. Si no reconoces este servicio, abre una disputa desde la app.
+                  </p>
+                </div>`,
+            },
+          });
+          correoEnviado = !resultadoEmail?.devMode && !resultadoEmail?.simulated;
+          if (correoEnviado) {
+            console.log(`[OTP] Código aceptado para envío por correo a ${destinatario.email.replace(/(.).*(@.*)/, '$1***$2')}`);
+          } else {
+            console.warn('[OTP] El proveedor de correo no confirmó un envío real.');
+          }
+        } catch (emailErr) {
+          console.error('[OTP] Falló el envío por correo:', emailErr.message);
+        }
+      } else if (!destinatario?.email) {
         console.warn('[OTP] El cliente no tiene correo registrado:', booking.client_id);
+      } else {
+        console.warn('[OTP] No hay transporte de correo configurado; no se envió el código.');
       }
 
-      // El push es opcional y va despues del correo: si el token no existe o el
-      // envio falla, el cliente ya tiene el codigo en su buzon.
+      // La push avisa que el código está disponible en la app, pero no lo incluye.
       try {
         const tokenRes = await runAsSystem({ pool }, async (c) => {
           const r = await c.query(
             'SELECT fcm_token FROM usuarios WHERE id = $1',
             [booking.client_id]
           );
-          return r.rows[0] || null;
+        return r.rows[0] || (booking.fcm_token ? { fcm_token: booking.fcm_token } : null);
         });
         if (tokenRes?.fcm_token) {
-          await fcm.sendOtpReadyNotice(tokenRes.fcm_token, {
+          const resultadoPush = await fcm.sendOtpReadyNotice(tokenRes.fcm_token, {
             bookingId: id,
             serviceName: booking.service_name || null,
           });
+          pushEnviado = resultadoPush?.success === true && !resultadoPush?.simulated;
         }
       } catch (pushErr) {
         console.warn('[OTP] Aviso push no enviado:', pushErr.message);
       }
     } catch (envioErr) {
-      console.error('[OTP] No se pudo entregar el código:', envioErr.message);
+      console.error('[OTP] No se pudo completar la entrega:', envioErr.message);
     }
 
     // El código OTP no se registra en logs (A360-2026-09-22/C-06) ni se devuelve al cliente
@@ -423,7 +428,11 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
 
     res.json({
       ok: true,
-      mensaje: 'Servicio marcado como completado. Se envió el código al cliente.',
+      mensaje: correoEnviado
+        ? 'Servicio completado. El código se envió por correo y está disponible en GlowApp.'
+        : 'Servicio completado. El envío por correo no está confirmado; el código está disponible en GlowApp.',
+      correo_enviado: correoEnviado,
+      push_enviado: pushEnviado,
       otp_expira_at: expiraAt,
       otp_vigencia_minutos: vigenciaMin,
       ...(process.env.NODE_ENV !== 'production' && process.env.EXPOSE_DEV_OTP === 'true' && { otp_dev: codigo })

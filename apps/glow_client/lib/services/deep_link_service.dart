@@ -42,12 +42,8 @@ class DeepLinkService {
     // El router web usa el fragmento (`/#/booking-tracking/...`); los enlaces de
     // correo usan la ruta limpia. Se aceptan las dos formas.
     final crudo = uri.fragment.isNotEmpty ? uri.fragment : uri.path;
-    var partes = crudo
-        .split('?')
-        .first
-        .split('/')
-        .where((p) => p.isNotEmpty)
-        .toList();
+    var partes =
+        crudo.split('?').first.split('/').where((p) => p.isNotEmpty).toList();
 
     // En un esquema propio el primer segmento cae en el host:
     // `glowapp://provider-detail/42` → host=provider-detail, path=/42.
@@ -57,16 +53,23 @@ class DeepLinkService {
     if (partes.isEmpty) return null;
 
     final query = uri.queryParameters;
-    final idEnQuery = query['id'] ?? query['booking_id'] ?? query['provider_id'];
+    final idEnQuery =
+        query['id'] ?? query['booking_id'] ?? query['provider_id'];
 
     switch (partes.first) {
       case 'booking-tracking':
-        // La pantalla de seguimiento pinta un mapa con datos de la reserva y hoy
-        // trabaja con un mapa completo, no con un id. En vez de inventar el
-        // recorrido, se lleva a «Mis citas», que es donde está la reserva real.
-        return const DestinoEnlace(
-          '/my-bookings',
-          aviso: 'Abrimos tus citas para que sigas tu reserva desde ahí.',
+        final id = partes.length > 1 ? partes[1] : idEnQuery;
+        if (id == null || id.isEmpty) {
+          return const DestinoEnlace(
+            '/my-bookings',
+            aviso: 'El enlace no indicaba qué reserva abrir. Revisa tus citas.',
+          );
+        }
+        return DestinoEnlace(
+          '/booking-tracking',
+          argumentos: {
+            'booking': {'id': id}
+          },
         );
 
       case 'provider-detail':
@@ -77,7 +80,8 @@ class DeepLinkService {
             aviso: 'El enlace no indicaba qué prestador abrir.',
           );
         }
-        return DestinoEnlace('/provider-detail', argumentos: {'providerId': id});
+        return DestinoEnlace('/provider-detail',
+            argumentos: {'providerId': id});
 
       case 'auth':
         // `/auth/accept-invitation` se retiró del cliente: las invitaciones de
@@ -86,7 +90,8 @@ class DeepLinkService {
         if (partes.length > 1 && partes[1] == 'accept-invitation') {
           return const DestinoEnlace(
             '/auth/login',
-            aviso: 'Las invitaciones de salón se aceptan desde la app de prestadores.',
+            aviso:
+                'Las invitaciones de salón se aceptan desde la app de prestadores.',
           );
         }
         return null;
@@ -104,9 +109,8 @@ class DeepLinkService {
     if (!kIsWeb) return null;
     final base = Uri.base;
     if (base.fragment.isNotEmpty) {
-      final frag = base.fragment.startsWith('/')
-          ? base.fragment
-          : '/${base.fragment}';
+      final frag =
+          base.fragment.startsWith('/') ? base.fragment : '/${base.fragment}';
       return Uri.parse(frag);
     }
     if (base.path.isNotEmpty && base.path != '/') return base;

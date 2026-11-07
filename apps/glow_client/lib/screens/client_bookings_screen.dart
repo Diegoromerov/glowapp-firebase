@@ -999,7 +999,8 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
             ],
             // Pendiente de pago: sin este botón la cita quedaba sin salida y la
             // única forma de pagarla era volver a reservar.
-            if (status.toUpperCase() == 'PENDIENTE_PAGO' &&
+            if ((status.toUpperCase() == 'PENDIENTE_PAGO' ||
+                    status.toUpperCase() == 'PENDING') &&
                 toDoubleOr(booking['total_amount'], 0.0) > 0) ...[
               const SizedBox(height: 12),
               SizedBox(
@@ -1266,12 +1267,12 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
 
     final upcoming = _bookings.where((b) {
       final status = (b['status']?.toString() ?? 'pending').toUpperCase();
-      return status == 'PENDING' ||
-          status == 'PENDIENTE_PAGO' ||
-          status == 'CONFIRMED' ||
-          status == 'CONFIRMADA' ||
-          status == 'EN_PROGRESO' ||
-          status == 'FINALIZADA_PRESTADOR';
+      // Mantener visibles los estados activos y cualquier estado nuevo del
+      // backend. Solo los estados terminales pasan al historial.
+      return status != 'COMPLETED' &&
+          status != 'COMPLETADA' &&
+          status != 'CANCELLED' &&
+          status != 'CANCELADA';
     }).toList();
 
     final history = _bookings.where((b) {

@@ -6,13 +6,28 @@ import 'package:glow_client/services/deep_link_service.dart';
 
 void main() {
   group('DeepLinkService.mapear', () {
-    test('seguimiento de cita aterriza en Mis citas, no en un mapa inventado', () {
+    test('seguimiento de cita abre la reserva indicada', () {
       final d = DeepLinkService.mapear(
         Uri.parse('https://glowapp-client.web.app/booking-tracking/abc-123'),
       );
       expect(d, isNotNull);
-      expect(d!.ruta, '/my-bookings');
-      expect(d.aviso, isNotNull);
+      expect(d!.ruta, '/booking-tracking');
+      expect(d.argumentos['booking'], {'id': 'abc-123'});
+      expect(d.aviso, isNull);
+    });
+
+    test('seguimiento acepta el id en query y rechaza links sin id', () {
+      final conId = DeepLinkService.mapear(
+        Uri.parse('https://glowapp-client.web.app/booking-tracking?id=abc-123'),
+      );
+      expect(conId!.ruta, '/booking-tracking');
+      expect(conId.argumentos['booking'], {'id': 'abc-123'});
+
+      final sinId = DeepLinkService.mapear(
+        Uri.parse('https://glowapp-client.web.app/booking-tracking'),
+      );
+      expect(sinId!.ruta, '/my-bookings');
+      expect(sinId.aviso, contains('no indicaba'));
     });
 
     test('ficha del prestador por ruta limpia', () {
@@ -55,7 +70,8 @@ void main() {
 
     test('otra app no se toca', () {
       expect(
-        DeepLinkService.mapear(Uri.parse('https://example.com/provider-detail/1')),
+        DeepLinkService.mapear(
+            Uri.parse('https://example.com/provider-detail/1')),
         isNull,
       );
     });

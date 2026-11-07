@@ -16,7 +16,13 @@ let templates = {};
  * Inicializa transporter y compila templates
  */
 function initEmailService() {
+  // Brevo API no depende de SMTP; no marcar el servicio como "sin transporte"
+  // cuando solo está configurada la llave HTTP.
   if (transporter) return transporter;
+  if (process.env.BREVO_API_KEY) {
+    loadTemplates();
+    return null;
+  }
 
   const host = process.env.SMTP_HOST;
   const port = parseInt(process.env.SMTP_PORT || '587');
