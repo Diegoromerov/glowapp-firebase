@@ -2378,16 +2378,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           },
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/my-glow');
-                        },
-                        borderRadius: BorderRadius.circular(20),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.auto_awesome, color: Color(0xFFD4AF37)),
-                        ),
-                      ),
                     ],
                   ),
                 ),
