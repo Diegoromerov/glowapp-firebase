@@ -15,7 +15,6 @@ import 'firebase_options.dart';
 import 'services/push_service.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
-import 'screens/auth/onboarding_screen.dart';
 import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/verification_pending_screen.dart';
 import 'screens/provider_detail_screen.dart';
@@ -172,7 +171,9 @@ class GlowClientApp extends ConsumerWidget {
         // Auth
         '/auth/login': (_) => const LoginScreen(),
         '/auth/register': (_) => const RegisterScreen(),
-        '/auth/onboarding': (_) => const OnboardingScreen(),
+        // Compatibilidad con enlaces antiguos: la app cliente ya no requiere
+        // el onboarding de negocio y aterriza directamente en el catálogo.
+        '/auth/onboarding': (_) => const ProvidersScreen(),
         '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
         '/auth/verification-pending': (_) => const VerificationPendingScreen(),
 

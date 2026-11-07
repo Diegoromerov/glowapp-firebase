@@ -203,21 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
     // La app puede arrancar sin sesión guardada; registrar FCM aquí cubre
     // también el login iniciado después de mostrar la pantalla de acceso.
     unawaited(PushService.iniciar());
-    // Unico punto de decision despues de cualquier login (email, Google,
-    // Facebook, Apple). El backend devuelve {token, user:{role,
-    // onboarding_completo}} pero el rol no desvia: en la app cliente la unica
-    // ruta valida es '/home' (o el onboarding si falta). Las pantallas de
-    // salon/proveedor viven en la app provider.
-    final dynamic user = result['user'];
-    final bool onboardingCompleto =
-        user is Map && (user['onboarding_completo'] ?? false) == true;
-
-    if (!onboardingCompleto) {
-      Navigator.pushReplacementNamed(context, '/auth/onboarding');
-      return;
-    }
-    // En la app cliente todas las cuentas aterrizan en /home; las pantallas de
-    // proveedor/salon viven en la app provider.
+    // Esta app es solo para clientes. El onboarding de negocio y las pantallas
+    // de proveedor/salón pertenecen a GlowApp Provider.
     Navigator.pushReplacementNamed(context, '/home');
   }
 

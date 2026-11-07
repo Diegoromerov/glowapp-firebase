@@ -65,9 +65,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         if (loginResult != null) {
           unawaited(PushService.iniciar());
-          final bool onboardingCompleto =
-              loginResult['user']['onboarding_completo'] ?? false;
-
           scaffoldMessenger.showSnackBar(
             SnackBar(
               content: Text(
@@ -81,18 +78,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           );
 
-          // En la app cliente el rol siempre es cliente: no hay desvio a
-          // pantallas de salon/proveedor, que no existen en este router.
-          if (onboardingCompleto) {
-            navigator.pushNamedAndRemoveUntil(
-              '/home',
-              (route) => false,
-            );
-          } else {
-            navigator.pushNamedAndRemoveUntil('/auth/onboarding',
-              (route) => false,
-            );
-          }
+          // La aplicación cliente no requiere el onboarding de negocio.
+          navigator.pushNamedAndRemoveUntil('/home', (route) => false);
         } else {
           scaffoldMessenger.showSnackBar(
             const SnackBar(
