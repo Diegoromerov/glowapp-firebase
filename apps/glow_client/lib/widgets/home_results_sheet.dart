@@ -15,15 +15,13 @@ class HomeResultsSheet extends StatefulWidget {
   final void Function(ProviderModel) onSelect;
   final void Function(PosicionBandeja) onPosicion;
   final Widget Function(ProviderModel) construirTarjeta;
-  final Widget? encabezado;
 
   /// Texto cuando no hay nadie en el radio actual.
   final String? mensajeVacio;
   final VoidCallback? onAmpliarRadio;
 
-  /// Altura inicial. 0.52 en el mapa; 0.9 en el modo «solo lista».
+  /// Altura inicial. 0.18 en el mapa; 0.9 en el modo «solo lista».
   final double tamanoInicial;
-  final double espacioInferior;
 
   const HomeResultsSheet({
     super.key,
@@ -31,11 +29,9 @@ class HomeResultsSheet extends StatefulWidget {
     required this.onSelect,
     required this.onPosicion,
     required this.construirTarjeta,
-    this.encabezado,
     this.mensajeVacio,
     this.onAmpliarRadio,
-    this.tamanoInicial = 0.52,
-    this.espacioInferior = 24,
+    this.tamanoInicial = 0.18,
   });
 
   @override
@@ -64,8 +60,8 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
     final actual = t < 0.25
         ? PosicionBandeja.asomo
         : t < 0.6
-        ? PosicionBandeja.media
-        : PosicionBandeja.completa;
+            ? PosicionBandeja.media
+            : PosicionBandeja.completa;
     if (actual != _ultima) {
       _ultima = actual;
       widget.onPosicion(actual);
@@ -77,21 +73,17 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
     return DraggableScrollableSheet(
       controller: _controller,
       initialChildSize: widget.tamanoInicial,
-      minChildSize: 0.25,
+      minChildSize: 0.18,
       maxChildSize: 0.9,
       snap: true,
-      snapSizes: const [0.25, 0.52, 0.9],
+      snapSizes: const [0.18, 0.45, 0.9],
       builder: (context, scrollController) {
         return Container(
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
             boxShadow: [
-              BoxShadow(
-                color: Color(0x14000000),
-                blurRadius: 12,
-                offset: Offset(0, -4),
-              ),
+              BoxShadow(color: Color(0x14000000), blurRadius: 12, offset: Offset(0, -4)),
             ],
           ),
           child: Column(
@@ -111,55 +103,22 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
                 ),
               ),
               Expanded(
-                child: ListView.separated(
-                  controller: scrollController,
-                  padding: EdgeInsets.fromLTRB(
-                    16,
-                    0,
-                    16,
-                    widget.espacioInferior,
-                  ),
-                  itemCount: widget.proveedores.length +
-                      (widget.encabezado != null ? 1 : 0) +
-                      (widget.proveedores.isEmpty ? 1 : 0),
-                  separatorBuilder: (_, index) =>
-                      widget.encabezado != null && index == 0
-                          ? const SizedBox(height: 0)
-                          : const SizedBox(height: 10),
-                  itemBuilder: (context, index) {
-                    if (widget.encabezado != null && index == 0) {
-                      return widget.encabezado!;
-                    }
-                    final providerIndex =
-                        index - (widget.encabezado != null ? 1 : 0);
-                    if (widget.proveedores.isEmpty) {
-                      return SizedBox(height: 220, child: _vacio());
-                    }
-                    final p = widget.proveedores[providerIndex];
-                    final nombre = p.businessName.isNotEmpty
-                        ? p.businessName
-                        : p.fullName;
-                    final calificacion = p.rating > 0
-                        ? 'Calificación ${p.rating.toStringAsFixed(1)}.'
-                        : 'Sin calificaciones.';
-                    final disponibilidad =
-                        p.availableToday && p.nextSlotToday != null
-                        ? 'Disponible hoy a las ${p.nextSlotToday}.'
-                        : 'Sin disponibilidad hoy.';
-                    return Semantics(
-                      button: true,
-                      label:
-                          '$nombre. $calificacion '
-                          '${(p.distanceMeters / 1000).toStringAsFixed(1)} kilómetros. '
-                          '$disponibilidad',
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () => widget.onSelect(p),
-                        child: widget.construirTarjeta(p),
+                child: widget.proveedores.isEmpty
+                    ? _vacio()
+                    : ListView.separated(
+                        controller: scrollController,
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                        itemCount: widget.proveedores.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 10),
+                        itemBuilder: (context, i) {
+                          final p = widget.proveedores[i];
+                          return GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () => widget.onSelect(p),
+                            child: widget.construirTarjeta(p),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
             ],
           ),
@@ -175,16 +134,12 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
-              Icons.explore_off_outlined,
-              size: 40,
-              color: Color(0xFFC5A052),
-            ),
+            const Icon(Icons.explore_off_outlined, size: 40, color: Color(0xFFC5A052)),
             const SizedBox(height: 12),
             Text(
               widget.mensajeVacio ?? 'No hay prestadores en esta zona.',
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 14, color: Color(0xFF6B6259)),
+              style: const TextStyle(fontSize: 13, color: Color(0xFF8A7F72)),
             ),
             if (widget.onAmpliarRadio != null) ...[
               const SizedBox(height: 16),
@@ -193,9 +148,7 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFC5A052),
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                 ),
                 child: const Text('Ampliar la búsqueda'),
               ),
@@ -231,19 +184,15 @@ class ChipDisponibilidad extends StatelessWidget {
           Icon(
             disponible ? Icons.schedule : Icons.event_busy,
             size: 12,
-            color: disponible
-                ? const Color(0xFF4A5D4E)
-                : const Color(0xFF8A7F72),
+            color: disponible ? const Color(0xFF4A5D4E) : const Color(0xFF8A7F72),
           ),
           const SizedBox(width: 4),
           Text(
             disponible ? 'Hoy $hueco' : 'Sin hueco hoy',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: disponible
-                  ? const Color(0xFF4A5D4E)
-                  : const Color(0xFF8A7F72),
+              color: disponible ? const Color(0xFF4A5D4E) : const Color(0xFF8A7F72),
             ),
           ),
         ],

@@ -1,10 +1,12 @@
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
-
 class AudienceToggleWidget extends StatelessWidget {
   final bool compact;
 
-  const AudienceToggleWidget({super.key, this.compact = false});
+  const AudienceToggleWidget({
+    super.key,
+    this.compact = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,89 +79,73 @@ class AudienceToggleWidget extends StatelessWidget {
     required bool isMenMode,
   }) {
     Color selectedText = isMenMode ? const Color(0xFF2C1E18) : Colors.white;
-    Color unselectedText = isMenMode
-        ? MensTheme.textPrimary
-        : const Color(0xFF4A4442);
+    Color unselectedText = isMenMode ? MensTheme.textPrimary : const Color(0xFF4A4442);
 
-    return Semantics(
-      button: true,
-      selected: isSelected,
-      label: 'Mostrar prestadores para $label',
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
+    return GestureDetector(
+      onTap: () {
+        AudienceService.setAudience(mode);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: EdgeInsets.symmetric(
+          horizontal: compact ? 10 : 14,
+          vertical: compact ? 6 : 8,
+        ),
+        decoration: BoxDecoration(
+          gradient: isSelected
+              ? LinearGradient(
+                  colors: isMenMode
+                      ? [
+                          const Color(0xFFF3D59B), // Champán oro suave luminoso
+                          const Color(0xFFD4AF37), // Oro 871 canon
+                        ]
+                      : [
+                          const Color(0xFFB07D62),
+                          const Color(0xFF8C6F65),
+                        ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : null,
+          color: isSelected ? null : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
-          onTap: () => AudienceService.setAudience(mode),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 44),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              padding: EdgeInsets.symmetric(
-                horizontal: compact ? 8 : 14,
-                vertical: compact ? 8 : 8,
-              ),
-              decoration: BoxDecoration(
-                gradient: isSelected
-                    ? LinearGradient(
-                        colors: isMenMode
-                            ? [
-                                const Color(
-                                  0xFFF3D59B,
-                                ), // Champán oro suave luminoso
-                                const Color(0xFFD4AF37), // Oro 871 canon
-                              ]
-                            : [
-                                const Color(0xFFB07D62),
-                                const Color(0xFF8C6F65),
-                              ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      )
-                    : null,
-                color: isSelected ? null : Colors.transparent,
-                borderRadius: BorderRadius.circular(20),
-                border: isSelected
-                    ? Border.all(
-                        color: isMenMode
-                            ? const Color(0xFFFFF9E6).withValues(alpha: 0.8)
-                            : const Color(0xFFD4AF37).withValues(alpha: 0.4),
-                        width: 1.0,
-                      )
-                    : null,
-                boxShadow: isSelected
-                    ? [
-                        BoxShadow(
-                          color: isMenMode
-                              ? const Color(0xFFD4AF37).withValues(alpha: 0.35)
-                              : AppTheme.primary.withValues(alpha: 0.3),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ]
-                    : [],
-              ),
-              child: Row(
-                children: [
-                  Icon(
-                    icon,
-                    size: compact ? 14 : 16,
-                    color: isSelected ? selectedText : unselectedText,
+          border: isSelected
+              ? Border.all(
+                  color: isMenMode
+                      ? const Color(0xFFFFF9E6).withValues(alpha: 0.8)
+                      : const Color(0xFFD4AF37).withValues(alpha: 0.4),
+                  width: 1.0,
+                )
+              : null,
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: isMenMode
+                        ? const Color(0xFFD4AF37).withValues(alpha: 0.35)
+                        : AppTheme.primary.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
                   ),
-                  const SizedBox(width: 4),
-                  Text(
-                    label,
-                    style: TextStyle(
-                      fontSize: compact ? 12 : 13,
-                      fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.w600,
-                      color: isSelected ? selectedText : unselectedText,
-                    ),
-                  ),
-                ],
+                ]
+              : [],
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              size: compact ? 14 : 16,
+              color: isSelected ? selectedText : unselectedText,
+            ),
+            const SizedBox(width: 4),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: compact ? 11 : 12,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
+                color: isSelected ? selectedText : unselectedText,
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
