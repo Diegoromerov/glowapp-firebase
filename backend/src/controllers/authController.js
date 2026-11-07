@@ -629,24 +629,33 @@ exports.deleteAccount = async (req, res) => {
       });
     }
 
-    // 2. Revocar consentimientos biométricos activos si la tabla existe
-    await pool.query(
-      `UPDATE biometric_consents SET granted = FALSE, revoked_at = NOW(), updated_at = NOW() WHERE user_id = $1`,
-      [userId]
-    ).catch(() => {});
+    // 2–3. FORCE RLS oculta la fila al rol de runtime normal. Revocar el
+    // consentimiento y anonimizar la cuenta dentro de una transacción de
+    // sistema; de otro modo el UPDATE podía afectar cero filas y aun así
+    // responder que la cuenta fue eliminada.
+    const deletion = await tenantRouting.runAsSystem({ pool }, async (client) => {
+      await client.query(
+        `UPDATE biometric_consents
+            SET granted = FALSE, revoked_at = NOW(), updated_at = NOW()
+          WHERE user_id = $1`,
+        [userId]
+      ).catch(() => {});
 
-    // 3. Anonimizar datos personales en la base de datos
-    await pool.query(
-      `UPDATE usuarios 
-       SET nombre = 'Usuario Eliminado', 
-           email = $1, 
-           password_hash = '', 
-           phone = NULL, 
-           is_active = false,
-           fcm_token = NULL
-       WHERE id = $2`,
-      [`deleted_${userId}_${Date.now()}@glowapp.deleted`, userId]
-    );
+      return client.query(
+        `UPDATE usuarios
+            SET nombre = 'Usuario Eliminado',
+                email = $1,
+                password_hash = '',
+                phone = NULL,
+                is_active = false,
+                fcm_token = NULL
+          WHERE id = $2`,
+        [`deleted_${userId}_${Date.now()}@glowapp.deleted`, userId]
+      );
+    });
+    if (deletion.rowCount !== 1) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
 
     console.log(`⚖️ [LEGAL COMPLIANCE] Cuenta de usuario ID ${userId} eliminada a solicitud del titular. Datos biométricos suprimidos: ${biometricos.recordsAffected}.`);
 
