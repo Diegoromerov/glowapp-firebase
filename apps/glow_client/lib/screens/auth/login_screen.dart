@@ -378,13 +378,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final t = Token.of(context);
+    final isMobileLayout = MediaQuery.sizeOf(context).shortestSide < 600;
+    final inputFontSize = isMobileLayout ? 16.0 : 14.0;
     final inputTextStyle = TypographyTokens.body(t).copyWith(
-      fontFamily: 'Inter',
-      fontSize: MediaQuery.sizeOf(context).shortestSide < 600 ? 16 : 14,
-      color: t.textPrimary,
+      fontFamily: 'CormorantGaramond',
+      fontSize: inputFontSize,
     );
-    final inputHintStyle =
-        inputTextStyle.copyWith(color: const Color(0xFF625B54));
+    final inputHintStyle = inputTextStyle.copyWith(
+      fontSize: isMobileLayout ? 16 : 13,
+      color: t.textSecondary,
+    );
     // Un solo iframe de GIS por build; se reutiliza en el Stack del botón.
     final googleOverlay = gis_button.googleSignInOverlay();
     return Scaffold(
