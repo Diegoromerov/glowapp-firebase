@@ -542,7 +542,7 @@ exports.saveFcmToken = async (req, res) => {
     // el id; el token FCM solo se actualiza para ese mismo usuario.
     await pool.query(
       `UPDATE usuarios 
-       SET fcm_token = $1, last_active_at = NOW()
+       SET fcm_token = $1
        WHERE id = $2`,
       [fcm_token, userId]
     );
