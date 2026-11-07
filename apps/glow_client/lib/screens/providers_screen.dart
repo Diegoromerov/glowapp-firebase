@@ -94,6 +94,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       _glowGuideEngine.addListener(_onGlowGuideStateChanged);
     }
 
+    @override
+    void dispose() {
+      _searchController.dispose();
+      AudienceService.currentAudience.removeListener(_onAudienceChanged);
+      _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
+      super.dispose();
+    }
+
     void _onGlowGuideStateChanged(GlowGuideState state) {
       if (!mounted) return;
       final isStep08 = state.currentStepId == 'step_08_despedida';
@@ -638,6 +646,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   Widget _buildTarjetaResultado(ProviderModel p) {
     final nombre = p.businessName.isNotEmpty ? p.businessName : p.fullName;
     final km = (p.distanceMeters / 1000).toStringAsFixed(1);
+    final calificacion = p.rating > 0 ? p.rating.toStringAsFixed(1) : 'Nuevo';
 
     return Container(
       padding: const EdgeInsets.all(12),
@@ -675,15 +684,17 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 const SizedBox(height: 3),
                 Row(
                   children: [
-                    const Icon(Icons.star_rounded, size: 13, color: Color(0xFFFBBF24)),
-                    const SizedBox(width: 3),
+                    if (p.rating > 0) ...[
+                      const Icon(Icons.star_rounded, size: 14, color: Color(0xFFFBBF24)),
+                      const SizedBox(width: 3),
+                    ],
                     Text(
-                      p.ratingCount == 0 ? 'Nuevo' : p.ratingAvg.toStringAsFixed(1),
-                      style: const TextStyle(fontSize: 12, color: Color(0xFF4A4036)),
+                      calificacion,
+                      style: const TextStyle(fontSize: 13, color: Color(0xFF4A4036)),
                     ),
                     const SizedBox(width: 8),
                     Text('$km km',
-                        style: const TextStyle(fontSize: 12, color: Color(0xFF8A7F72))),
+                        style: const TextStyle(fontSize: 13, color: Color(0xFF6B6259))),
                   ],
                 ),
                 const SizedBox(height: 6),
@@ -1470,16 +1481,16 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
   Widget _buildCategorySelector() {
     final categories = [
+      {'name': 'Todos', 'value': 'all', 'icon': Icons.auto_awesome_outlined},
       {'name': 'Cabello', 'value': 'hair', 'icon': Icons.content_cut_outlined},
       {'name': 'Uñas', 'value': 'nails', 'icon': Icons.brush_outlined},
       {'name': 'Maquillaje', 'value': 'makeup', 'icon': Icons.face_retouching_natural_outlined},
-      {'name': 'Todos', 'value': 'all', 'icon': Icons.auto_awesome_outlined},
     ];
     return SizedBox(
-      height: 75,
+      height: 68,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.zero,
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final cat = categories[index];
@@ -1487,65 +1498,136 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           final isSelected = _selectedCategory == val;
           final iconData = cat['icon'] as IconData;
 
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                _selectedCategory = val;
-                _filterProviders();
-              });
-              AnalyticsService().logEvent(
-                eventType: 'CATEGORY_FILTER_SELECTED',
-                screenName: '/home',
-                elementId: 'category_chip_$val',
-                metadata: {'category': val},
-              );
-            },
-            child: AnimatedContainer(
-              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 200),
-              margin: const EdgeInsets.only(right: 20),
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                                  Container(
-                                    width: 46,
-                                    height: 46,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: isSelected
-                                          ? AppTheme.primary.withValues(alpha: 0.15)
-                                          : Colors.grey.shade50,
-                                      border: Border.all(
-                                        color: isSelected
-                                            ? AppTheme.primary
-                                            : Colors.grey.shade200,
-                                        width: 1.2,
-                                      ),
-                                    ),
-                                    child: Icon(
-                                      iconData,
-                                      size: 20,
-                                      color: isSelected
-                                          ? AppTheme.primary
-                                          : Colors.grey.shade600,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Text(
-                                    cat['name'] as String,
-                                    style: TextStyle(
-                                      color: isSelected
-                                          ? AppTheme.primary
-                                          : Colors.grey.shade600,
-                                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                                      fontSize: 11,
-                                    ),
-                                  ),
-                                ],
+          return Semantics(
+            button: true,
+            selected: isSelected,
+            label: 'Filtrar por ${cat['name']}',
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _selectedCategory = val;
+                  _filterProviders();
+                });
+                AnalyticsService().logEvent(
+                  eventType: 'CATEGORY_FILTER_SELECTED',
+                  screenName: '/home',
+                  elementId: 'category_chip_$val',
+                  metadata: {'category': val},
+                );
+              },
+              child: AnimatedContainer(
+                duration: _movimientoReducido
+                    ? Duration.zero
+                    : const Duration(milliseconds: 200),
+                margin: const EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: isSelected
+                            ? AppTheme.primary.withValues(alpha: 0.15)
+                            : Colors.grey.shade50,
+                        border: Border.all(
+                          color: isSelected
+                              ? AppTheme.primary
+                              : Colors.grey.shade200,
+                          width: 1.2,
+                        ),
+                      ),
+                      child: Icon(
+                        iconData,
+                        size: 20,
+                        color: isSelected
+                            ? AppTheme.primary
+                            : Colors.grey.shade600,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      cat['name'] as String,
+                      style: TextStyle(
+                        color: isSelected
+                            ? AppTheme.primary
+                            : Colors.grey.shade600,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
+        },
+      ),
+    );
+  }
+
+  Widget _buildHomeResultsHeader() {
+    final count = _filteredProviders.length;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 4),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final titulo = Text(
+                '$count resultados',
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF1F1A15),
+                ),
+              );
+              if (constraints.maxWidth < 315) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    titulo,
+                    const Center(child: AudienceToggleWidget(compact: true)),
+                  ],
+                );
+              }
+              return Row(
+                children: [
+                  Expanded(child: titulo),
+                  const SizedBox(width: 8),
+                  const AudienceToggleWidget(compact: true),
+                ],
+              );
+            },
+          ),
+        ),
+        _buildCategorySelector(),
+      ],
+    );
+  }
+
+  Widget _buildSearchSuggestion(String query, bool isMen) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 6),
+      child: ActionChip(
+        visualDensity: VisualDensity.compact,
+        label: Text(
+          query,
+          style: TextStyle(
+            fontSize: 12,
+            color: isMen ? Colors.white : const Color(0xFF1F1A15),
+          ),
+        ),
+        backgroundColor: isMen ? const Color(0xFF1E1A16) : const Color(0xFFFAF8F5),
+        side: BorderSide(color: const Color(0xFFC5A052).withValues(alpha: 0.6)),
+        onPressed: () {
+          _searchController.text = query;
+          _navigateToAIChat(query);
         },
       ),
     );
@@ -1587,7 +1669,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 9.5,
+                  fontSize: 11,
                   fontWeight: FontWeight.bold,
                   color: resolvedColor,
                 ),
@@ -1664,7 +1746,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               Text(
                 label,
                 style: const TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.w800,
                   color: Color(0xFFB07D62),
                 ),
@@ -1975,10 +2057,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.star_rounded, size: 14, color: Color(0xFFD4AF37)),
-                              const SizedBox(width: 2),
+                              if (p.rating > 0) ...[
+                                const Icon(Icons.star_rounded, size: 14, color: Color(0xFFD4AF37)),
+                                const SizedBox(width: 2),
+                              ],
                               Text(
-                                p.rating > 0 ? p.rating.toStringAsFixed(1) : '4.9',
+                                p.rating > 0 ? p.rating.toStringAsFixed(1) : 'Nuevo',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
@@ -1993,7 +2077,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       Text(
                         p.businessName.isNotEmpty ? p.businessName : 'Estilista Profesional GlowApp',
                         style: TextStyle(
-                          fontSize: 11.5,
+                          fontSize: 12,
                           color: isMen ? Colors.white60 : const Color(0xFF6B5E55),
                         ),
                         maxLines: 1,
@@ -2149,7 +2233,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       width: 50,
                       height: 50,
                       point: _userLocation!,
-                      child: Container(
+                      child: Semantics(
+                        label: 'Tu ubicación actual',
+                        child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: const Color(0xFFD4AF37).withValues(alpha: 0.2),
@@ -2159,6 +2245,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         child: const Center(
                           child: Icon(Icons.my_location,
                               color: Color(0xFFD4AF37), size: 24),
+                        ),
                         ),
                       ),
                     ),
@@ -2172,7 +2259,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       width: 70,
                       height: 78,
                       point: LatLng(p.latitude, p.longitude),
-                      child: GestureDetector(
+                      child: Semantics(
+                        button: true,
+                        label: '${p.businessName.isNotEmpty ? p.businessName : p.fullName}. '
+                            '${p.rating > 0 ? 'Calificación ${p.rating.toStringAsFixed(1)}.' : 'Prestador nuevo, sin calificaciones.'} '
+                            '${(p.distanceMeters / 1000).toStringAsFixed(1)} kilómetros de distancia.',
+                        child: GestureDetector(
                         onTap: () {
                           setState(() {
                             _selectedProvider = p;
@@ -2244,12 +2336,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  const Icon(Icons.star_rounded, size: 10, color: Color(0xFFD4AF37)),
-                                  const SizedBox(width: 1.5),
+                                  if (p.rating > 0) ...[
+                                    const Icon(Icons.star_rounded, size: 12, color: Color(0xFFD4AF37)),
+                                    const SizedBox(width: 2),
+                                  ],
                                   Text(
-                                    p.rating > 0 ? p.rating.toStringAsFixed(1) : '4.9',
+                                    p.rating > 0 ? p.rating.toStringAsFixed(1) : 'Nuevo',
                                     style: TextStyle(
-                                      fontSize: 9.5,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                       color: isMen ? const Color(0xFFE5C158) : const Color(0xFF3D2E1E),
                                     ),
@@ -2260,6 +2354,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           ],
                         ),
                       ),
+                    ),
                     );
                   }),
                   // Clusters: al tocarlos se acerca, que es lo que el usuario espera
@@ -2267,9 +2362,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         width: 58,
                         height: 58,
                         point: g.centro,
-                        child: GestureDetector(
-                          onTap: () => _mapController.move(g.centro, _zoomRender + 2),
-                          child: Container(
+                        child: Semantics(
+                          button: true,
+                          label: '${g.ids.length} prestadores agrupados. Acercar el mapa.',
+                          child: GestureDetector(
+                            onTap: () => _mapController.move(g.centro, _zoomRender + 2),
+                            child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: isMen ? const Color(0xFF1E1A16) : const Color(0xFFFAF8F5),
@@ -2292,6 +2390,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                 ),
                               ),
                             ),
+                            ),
                           ),
                         ),
                       )),
@@ -2309,11 +2408,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Selector Global de Audiencia (Hombres / Mujeres / Todos)
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 8.0),
-                  child: AudienceToggleWidget(compact: false),
-                ),
                 Container(
                   height: 54,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -2336,17 +2430,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   ),
                   child: Row(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          if (_searchController.text.trim().isNotEmpty) {
-                            _navigateToAIChat(_searchController.text);
-                          }
-                        },
-                        borderRadius: BorderRadius.circular(20),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.search, color: Color(0xFFD4AF37)),
-                        ),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.search, color: Color(0xFFD4AF37)),
                       ),
                       const SizedBox(width: 2),
                       Expanded(
@@ -2358,11 +2444,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             fontSize: 13,
                           ),
                           decoration: InputDecoration(
-                            hintText: isMen
-                                ? 'Buscar estilista o servicio... ✨'
-                                : '¿Qué ritual deseas hoy? Pregunta a Aura ✨',
+                            hintText: 'Servicio, profesional o zona',
                             hintStyle: TextStyle(
-                              fontSize: 12.0,
+                              fontSize: 13.0,
                               color: isMen
                                   ? const Color(0xFFD4AF37).withValues(alpha: 0.75)
                                   : const Color(0xFF6B5E55).withValues(alpha: 0.8),
@@ -2378,8 +2462,54 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           },
                         ),
                       ),
+                      ValueListenableBuilder<TextEditingValue>(
+                        valueListenable: _searchController,
+                        builder: (context, value, child) => value.text.isEmpty
+                            ? const SizedBox.shrink()
+                            : IconButton(
+                                tooltip: 'Borrar búsqueda',
+                                onPressed: _searchController.clear,
+                                icon: const Icon(Icons.close_rounded, size: 20),
+                              ),
+                      ),
+                      ValueListenableBuilder<TextEditingValue>(
+                        valueListenable: _searchController,
+                        builder: (context, value, child) => IconButton(
+                          tooltip: 'Preguntar a Aura',
+                          onPressed: value.text.trim().isEmpty
+                              ? null
+                              : () => _navigateToAIChat(value.text),
+                          icon: const Icon(Icons.auto_awesome, color: Color(0xFFD4AF37)),
+                        ),
+                      ),
                     ],
                   ),
+                ),
+                const SizedBox(height: 4),
+                ValueListenableBuilder<TextEditingValue>(
+                  valueListenable: _searchController,
+                  builder: (context, value, child) => value.text.trim().isNotEmpty
+                      ? const SizedBox.shrink()
+                      : SizedBox(
+                          height: 48,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.fromLTRB(2, 0, 6, 0),
+                                child: Center(
+                                  child: Text(
+                                    'Prueba:',
+                                    style: TextStyle(fontSize: 12, color: Color(0xFF6B5E55)),
+                                  ),
+                                ),
+                              ),
+                              _buildSearchSuggestion('Corte de cabello', isMen),
+                              _buildSearchSuggestion('Manicure', isMen),
+                              _buildSearchSuggestion('Cejas', isMen),
+                            ],
+                          ),
+                        ),
                 ),
               ],
             ),
@@ -2395,6 +2525,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 child: HomeResultsSheet(
                   proveedores: _filteredProviders,
                   tamanoInicial: 0.9,
+                  espacioInferior: 96,
+                  encabezado: _buildHomeResultsHeader(),
                   // Tocar la tarjeta lleva al perfil del prestador. Se marca
                   // como seleccionado para que el mapa lo destaque al volver.
                   // La ruta espera un Map: pasar el id suelto revienta el cast.
@@ -2429,38 +2561,73 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               ),
             ),
 
-          // Boton para alternar mapa / lista.
-          // Va sobre el dock (72 de alto + 16 de margen) y sube cuando aparece la
-          // tarjeta del prestador seleccionado, que ocupa ese mismo espacio.
-          // Se oculta con el menú de capas abierto: ese menú crece hacia arriba
-          // y ocuparía el mismo sitio.
-          // Mismo boton que el de capas (tamano completo, dorado de marca, borde
-          // circular y misma elevacion) y en la misma columna: right 20, y justo
-          // encima suyo (56 de alto + 12 de aire).
+          if (!_soloLista)
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: MediaQuery.of(context).padding.bottom +
+                  (_selectedProvider != null ? 280 : 160),
+              child: HomeResultsSheet(
+                key: const ValueKey('home-map-mode'),
+                proveedores: _filteredProviders,
+                tamanoInicial: 0.52,
+                encabezado: _buildHomeResultsHeader(),
+                onSelect: (p) {
+                  setState(() => _selectedProvider = p);
+                  AnalyticsService().logEvent(
+                    eventType: 'PROVIDER_CARD_TAP',
+                    screenName: '/home',
+                    elementId: p.id,
+                    metadata: {'metros': p.distanceMeters},
+                  );
+                  Navigator.pushNamed(
+                    context,
+                    '/provider-detail',
+                    arguments: {
+                      'providerId': p.id,
+                      'providerName': p.businessName.isNotEmpty
+                          ? p.businessName
+                          : p.fullName,
+                      'avatarUrl': p.avatarUrl,
+                    },
+                  );
+                },
+                onPosicion: (_) {},
+                construirTarjeta: _buildTarjetaResultado,
+                mensajeVacio: 'No hay prestadores en este radio.',
+                onAmpliarRadio: _ampliarRadio,
+              ),
+            ),
+
+          // Acción para cambiar entre mapa y lista completa.
           if (!_isMapMenuOpen)
             Positioned(
               right: 20,
               bottom: MediaQuery.of(context).padding.bottom +
-                  (_selectedProvider != null && !_soloLista ? 224 : 104) +
-                  68,
-              child: FloatingActionButton(
+                  (_soloLista
+                      ? 20
+                      : (_selectedProvider != null ? 280 : 160) + 12),
+              child: FloatingActionButton.extended(
                 heroTag: 'toggle_lista',
-                tooltip: _soloLista ? 'Ver mapa' : 'Ver lista',
+                tooltip: _soloLista ? 'Ver mapa' : 'Ver los resultados en lista',
                 backgroundColor: AppTheme.primary,
                 foregroundColor: Colors.white,
                 elevation: 4,
-                shape: const CircleBorder(),
                 onPressed: () {
-                  setState(() => _soloLista = !_soloLista);
+                  setState(() {
+                    _soloLista = !_soloLista;
+                    _isMapMenuOpen = false;
+                  });
                   AnalyticsService().logEvent(
                     eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
                     screenName: '/home',
                   );
                 },
-                child: Icon(
-                  _soloLista ? Icons.map_outlined : Icons.view_list_rounded,
-                  size: 24,
-                ),
+                icon: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+                label: Text(_soloLista
+                    ? 'Ver mapa'
+                    : 'Ver ${_filteredProviders.length} resultados'),
               ),
             ),
 
@@ -2562,7 +2729,26 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             ),
           ),
 
-          // Capa: Ajustes de Mapa (Speed Dial Expandible con Capas y Chat)
+          // Ubicación directa para no esconder una acción frecuente en el menú.
+          if (!_soloLista && !_isMapMenuOpen)
+            Positioned(
+              right: 84,
+              bottom: MediaQuery.of(context).padding.bottom +
+                  (_selectedProvider != null ? 224 : 104),
+              child: FloatingActionButton.small(
+                heroTag: 'my_location_fab',
+                tooltip: 'Centrar mi ubicación',
+                onPressed: _irAMiUbicacion,
+                backgroundColor: AppTheme.surface,
+                foregroundColor: AppTheme.primary,
+                elevation: 3,
+                shape: const CircleBorder(),
+                child: const Icon(Icons.my_location, size: 20),
+              ),
+            ),
+
+          // Ayuda, tutorial y opciones del mapa para tareas menos frecuentes.
+          if (!_soloLista)
           Positioned(
             right: 20,
             bottom: MediaQuery.of(context).padding.bottom + (_selectedProvider != null ? 224 : 104),
@@ -2718,23 +2904,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     ),
                   ),
                   const SizedBox(height: 10),
-                  // Botón 3: Mi Ubicación
-                  FloatingActionButton.small(
-                    heroTag: 'my_location_fab',
-                    tooltip: 'Centrar Mi Ubicación',
-                    onPressed: _irAMiUbicacion,
-                    backgroundColor: AppTheme.surface,
-                    foregroundColor: AppTheme.primary,
-                    elevation: 3,
-                    shape: const CircleBorder(),
-                    child: const Icon(Icons.my_location, size: 20),
-                  ),
-                  const SizedBox(height: 10),
                 ],
-                // Botón principal de menú expandible (Capas)
+                // Botón principal de ayuda y opciones.
                 FloatingActionButton(
                   heroTag: 'map_settings_toggle_fab',
-                  tooltip: 'Capas y Opciones',
+                  tooltip: 'Ayuda y opciones del mapa',
                   onPressed: () {
                     setState(() {
                       _isMapMenuOpen = !_isMapMenuOpen;
@@ -2745,7 +2919,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   elevation: 4,
                   shape: const CircleBorder(),
                   child: Icon(
-                    _isMapMenuOpen ? Icons.close : Icons.layers_outlined,
+                    _isMapMenuOpen ? Icons.close : Icons.more_horiz_rounded,
                     size: 24,
                   ),
                 ),
