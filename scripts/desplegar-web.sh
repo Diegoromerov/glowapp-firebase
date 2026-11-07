@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
-# Despliegue de una app Flutter web a Firebase Hosting (API de staging).
+# Despliegue de una app Flutter web a Firebase Hosting.
 #
 # Las tuberias (`flutter build | tail`) devuelven el codigo de salida de `tail`,
 # asi que un fallo de compilacion se veia como exito y `firebase deploy`
 # publicaba el bundle anterior. Aqui se corta en el primer error.
 #
-#   ./scripts/desplegar-web.sh glow_client glowapp-client
+#   ./scripts/desplegar-web.sh glow_client glowapp-client staging
+#   ./scripts/desplegar-web.sh glow_client glowapp-client production
 set -euo pipefail
 
 APP="${1:?uso: desplegar-web.sh <glow_client|glow_provider> <proyecto-firebase>}"
 PROYECTO="${2:?falta el proyecto de Firebase}"
+ENTORNO="${3:-staging}"
 
 case "$APP" in
   glow_client) AUDIENCE=client ;;
@@ -17,11 +19,17 @@ case "$APP" in
   *) echo "X app desconocida: $APP (usa glow_client o glow_provider)" >&2; exit 2 ;;
 esac
 
+case "$ENTORNO" in
+  staging) API_URL=https://glowapp-api-staging-staging.up.railway.app ;;
+  production) API_URL=https://glowapp-api-production.up.railway.app ;;
+  *) echo "X entorno desconocido: $ENTORNO (usa staging o production)" >&2; exit 2 ;;
+esac
+
 cd "$(dirname "$0")/../apps/$APP"
 
 echo "-> compilando $APP"
 flutter build web --release \
-  --dart-define=API_URL=https://glowapp-api-staging.up.railway.app \
+  --dart-define=API_URL="$API_URL" \
   --dart-define=APP_AUDIENCE="$AUDIENCE"
 
 if [ ! -f build/web/main.dart.js ]; then
