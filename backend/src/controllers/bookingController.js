@@ -1760,11 +1760,14 @@ exports.startService = async (req, res) => {
       return res.status(404).json({ error: 'Cita no encontrada o no tienes permisos para iniciarla' });
     }
 
-    if (booking.estado !== 'CONFIRMADA') {
-      return res.status(400).json({ error: `No se puede iniciar el servicio. El estado actual es ${booking.estado} (debe ser CONFIRMADA).` });
+    if (!['CONFIRMADA', 'CHECKIN_REALIZADO'].includes(booking.estado)) {
+      return res.status(400).json({ error: `No se puede iniciar el servicio. El estado actual es ${booking.estado} (debe ser CONFIRMADA o CHECKIN_REALIZADO).` });
     }
 
     booking.estado = 'EN_PROGRESO';
+    // Fallback para flujos que no pasan por el check-in GPS: registra el
+    // evento real de inicio. Si hubo check-in antes, conserva su hora.
+    booking.checkin_at = booking.checkin_at || new Date();
     await booking.save();
 
     console.log(`🚀 Servicio iniciado para cita ${bookingId} por prestador ${providerId}`);

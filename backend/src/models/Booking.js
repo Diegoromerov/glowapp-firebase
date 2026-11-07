@@ -32,6 +32,13 @@ const Booking = sequelize.define('Booking', {
     allowNull: false,
     field: 'scheduled_at'
   },
+  // La hora de inicio la registra el prestador al comenzar el servicio.
+  // Se compara con scheduled_at para calcular puntualidad con datos observados.
+  checkin_at: {
+    type: DataTypes.DATE,
+    allowNull: true,
+    field: 'checkin_at'
+  },
   valor_bruto: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,

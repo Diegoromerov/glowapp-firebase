@@ -253,6 +253,7 @@ const SCHEMA_SQL = `
     cancelado_por VARCHAR(20),
     cancelado_at TIMESTAMP,
     completed_at TIMESTAMP,
+    checkin_at TIMESTAMP,
     reschedule_count INTEGER DEFAULT 0,
     propina NUMERIC(10,2) DEFAULT 0,
     credito_aplicado NUMERIC(10,2) DEFAULT 0,

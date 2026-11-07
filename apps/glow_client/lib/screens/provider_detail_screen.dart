@@ -1029,15 +1029,25 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            _buildTrustStatItem(
-                                Icons.verified_sharp, '98%', 'Puntualidad'),
+                            Tooltip(
+                              message:
+                                  'Porcentaje de citas completadas cuyo inicio se registró hasta 15 minutos después de la hora reservada. '
+                                  'Muestra: ${_num(p['punctuality_sample_count']).toInt()} citas.',
+                              child: _buildTrustStatItem(
+                                Icons.verified_sharp,
+                                _num(p['punctuality_sample_count']) > 0
+                                    ? '${_num(p['punctuality_percentage']).round()}%'
+                                    : 'Sin datos',
+                                'Puntualidad · ${_num(p['punctuality_sample_count']).toInt()}',
+                              ),
+                            ),
                             Container(
                                 width: 1,
                                 height: 28,
                                 color: const Color(0xFFEFE8DE)),
                             _buildTrustStatItem(
                                 Icons.event_available,
-                                '${p['completed_bookings_count'] ?? p['reviews_count'] ?? 150}+',
+                                '${_num(p['completed_bookings_count']).toInt()}',
                                 'Citas Realizadas'),
                             Container(
                                 width: 1,

@@ -2,6 +2,7 @@ const db = require('../config/db');
 const { calcularHuecoHoy } = require('../utils/disponibilidad');
 const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
+const { runAsSystem } = require('../config/tenantRouting');
 
 // GET /api/providers → LISTA DE PRESTADORES Y SALONES (Geolocalización con PostGIS y Entitlements)
 exports.getProviders = async (req, res) => {
@@ -311,6 +312,35 @@ exports.getProviderById = async (req, res) => {
     const providerRes = await pool.query(providerQ, [numericId]);
     if (providerRes.rows.length === 0) return res.status(404).json({ error: 'No encontrado' });
 
+    // Métricas públicas basadas en eventos registrados en bookings.
+    // Para puntualidad solo contamos citas completadas cuyo inicio quedó
+    // registrado; las citas antiguas sin check-in no se asumen puntuales.
+    const statsRes = await runAsSystem({ pool }, (client) => client.query(
+      `SELECT
+         COUNT(*) FILTER (
+           WHERE estado IN ('COMPLETADA', 'FINALIZADA_PRESTADOR')
+         )::int AS completed_bookings_count,
+         COUNT(*) FILTER (
+           WHERE estado IN ('COMPLETADA', 'FINALIZADA_PRESTADOR')
+             AND checkin_at IS NOT NULL
+         )::int AS punctuality_sample_count,
+         COUNT(*) FILTER (
+           WHERE estado IN ('COMPLETADA', 'FINALIZADA_PRESTADOR')
+             AND checkin_at IS NOT NULL
+             AND checkin_at <= scheduled_at + INTERVAL '15 minutes'
+         )::int AS punctual_bookings_count
+       FROM bookings
+       WHERE provider_id = $1`,
+      [numericId]
+    ));
+    const stats = statsRes.rows[0] || {};
+    const completedBookingsCount = Number(stats.completed_bookings_count) || 0;
+    const punctualitySampleCount = Number(stats.punctuality_sample_count) || 0;
+    const punctualBookingsCount = Number(stats.punctual_bookings_count) || 0;
+    const punctualityPercentage = punctualitySampleCount > 0
+      ? Math.round((punctualBookingsCount / punctualitySampleCount) * 100)
+      : null;
+
     const servicesQ = `
       SELECT id, name, description, price, duration_minutes, category 
       FROM services 
@@ -341,7 +371,11 @@ exports.getProviderById = async (req, res) => {
       data: {
         provider: {
           ...providerRes.rows[0],
-          id: providerRes.rows[0].id.toString()
+          id: providerRes.rows[0].id.toString(),
+          completed_bookings_count: completedBookingsCount,
+          punctuality_sample_count: punctualitySampleCount,
+          punctual_bookings_count: punctualBookingsCount,
+          punctuality_percentage: punctualityPercentage
         },
         services: servicesRes.rows,
         portfolio: portfolioRes.rows,
