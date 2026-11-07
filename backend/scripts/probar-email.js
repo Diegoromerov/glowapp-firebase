@@ -14,9 +14,10 @@ const emailService = require('../src/services/emailService');
     process.exit(1);
   }
 
-  const transporte = emailService.initEmailService();
-  if (!transporte) {
-    console.log('SIN SMTP: faltan SMTP_HOST / SMTP_USER / SMTP_PASS en el entorno.');
+const transporte = emailService.initEmailService();
+const tieneBrevo = Boolean(process.env.BREVO_API_KEY);
+if (!transporte && !tieneBrevo) {
+  console.log('SIN TRANSPORTE: configura BREVO_API_KEY o SMTP_HOST / SMTP_USER / SMTP_PASS.');
     process.exit(2);
   }
 
@@ -32,6 +33,10 @@ const emailService = require('../src/services/emailService');
                </div>`,
       },
     });
+    if (r?.devMode || r?.simulated) {
+      console.log('FALLO: el mailer confirmó solo una simulación; no se puede validar entrega real.');
+      process.exit(4);
+    }
     console.log('enviado a', destino, '· id', r.messageId || '(sin id)');
   } catch (e) {
     console.log('FALLO AL ENVIAR:', e.message);
