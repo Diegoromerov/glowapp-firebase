@@ -90,6 +90,17 @@ class FCMNotificationService {
     });
   }
 
+  /** Envío genérico usado por recordatorios y otras notificaciones de la app. */
+  async sendPushNotification(deviceToken, { title, body, data = {} }) {
+    const payload = Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key,
+        typeof value === 'string' ? value : JSON.stringify(value),
+      ])
+    );
+    return this._sendNotification(deviceToken, title, body, payload);
+  }
+
   async _sendNotification(deviceToken, title, body, data = {}) {
     if (this.initialized && this.admin && deviceToken) {
       try {

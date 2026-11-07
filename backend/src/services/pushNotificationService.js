@@ -1,5 +1,6 @@
 // backend/src/services/pushNotificationService.js
 const { pool } = require('../config/db');
+const fcm = require('./fcmNotificationService');
 
 /**
  * Enviar notificación Push a un usuario específico mediante su fcm_token almacenado
@@ -28,11 +29,12 @@ async function sendPushToUser(userId, title, body, dataPayload = {}) {
       return false;
     }
 
-    const fcmToken = user.fcm_token;
-    console.log(`🚀 [Push Notification Payload] Enviando a User ${userId} (Token: ${fcmToken.substring(0, 15)}...):`);
-    console.log(`   Título: "${title}" | Cuerpo: "${body}"`);
-
-    return true;
+    const result = await fcm.sendPushNotification(user.fcm_token, {
+      title,
+      body,
+      data: dataPayload,
+    });
+    return result?.success === true && !result?.simulated;
   } catch (err) {
     console.error(`❌ Error enviando Push Notification a usuario ID ${userId}:`, err.message);
     return false;
@@ -55,8 +57,8 @@ async function sendPushToRole(role, title, body, dataPayload = {}) {
     let sentCount = 0;
     for (let u of res.rows) {
       if (u.push_enabled) {
-        await sendPushToUser(u.id, title, body, dataPayload);
-        sentCount++;
+        const sent = await sendPushToUser(u.id, title, body, dataPayload);
+        if (sent) sentCount++;
       } else {
         console.log(`🔕 Push omitido para User ${u.id}: notificaciones push deshabilitadas`);
       }
