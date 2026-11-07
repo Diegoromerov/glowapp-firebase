@@ -192,7 +192,9 @@ const defaultOrigins = [
 // El cliente de staging usa un canal fijo de Firebase Hosting. Mantenerlo
 // limitado al backend de staging evita que la API de producción acepte ese
 // origen cuando la misma rama se promueva a main.
-const stagingOrigins = currentEnv === 'staging'
+const isStagingEnvironment = currentEnv === 'staging'
+  || process.env.RAILWAY_ENVIRONMENT_NAME === 'staging';
+const stagingOrigins = isStagingEnvironment
   ? ['https://glowapp-client--staging-dxkv99y1.web.app']
   : [];
 
