@@ -189,11 +189,18 @@ const defaultOrigins = [
   'https://glowapp-provider.firebaseapp.com'
 ];
 
+// El cliente de staging usa un canal fijo de Firebase Hosting. Mantenerlo
+// limitado al backend de staging evita que la API de producción acepte ese
+// origen cuando la misma rama se promueva a main.
+const stagingOrigins = currentEnv === 'staging'
+  ? ['https://glowapp-client--staging-dxkv99y1.web.app']
+  : [];
+
 const envOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()).filter(Boolean)
   : [];
 
-const allowedOriginsSet = new Set([...defaultOrigins, ...envOrigins]);
+const allowedOriginsSet = new Set([...defaultOrigins, ...stagingOrigins, ...envOrigins]);
 
 // Regex para detectar cualquier puerto en localhost o 127.0.0.1 en entorno de desarrollo
 const devOriginRegex = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
