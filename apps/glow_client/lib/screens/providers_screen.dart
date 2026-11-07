@@ -2663,11 +2663,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                   child: const Icon(Icons.support_agent_rounded, color: Color(0xFF25D366)),
                                 ),
                                 title: const Text(
-                                  'Concierge WhatsApp VIP',
+                                  'ATENCIÓN VÍA WHATSAPP',
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                                 ),
                                 subtitle: const Text(
-                                  'Atención personalizada (+57 300 912 8899)',
+                                  'Atención personalizada (+57 350 208 5733)',
                                   style: TextStyle(fontSize: 12, color: Color(0xFF6B5E55)),
                                 ),
                                 trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xFF25D366)),
@@ -2677,7 +2677,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                   // que nunca empezaba.
                                   Navigator.pop(ctx);
                                   final ok = await launchUrl(
-                                    Uri.parse('https://wa.me/573009128899?text='
+                                    Uri.parse('https://wa.me/573502085733?text='
                                         'Hola%2C%20necesito%20ayuda%20con%20GlowApp'),
                                     mode: LaunchMode.externalApplication,
                                   );

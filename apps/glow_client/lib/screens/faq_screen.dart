@@ -42,7 +42,7 @@ class FaqScreen extends StatelessWidget {
     },
     {
       'question': '10. ¿GlowApp es una empresa registrada en Colombia que me respalda?',
-      'answer': 'GlowApp es una plataforma colombiana formalmente constituida que opera bajo la Ley 1581 de Protección de Datos (Habeas Data) y las normas de la Superintendencia de Industria y Comercio (SIC), brindándote respaldo y soporte continuo vía WhatsApp Concierge (+573009128899).'
+      'answer': 'GlowApp es una plataforma colombiana formalmente constituida que opera bajo la Ley 1581 de Protección de Datos (Habeas Data) y las normas de la Superintendencia de Industria y Comercio (SIC), brindándote respaldo y soporte continuo vía WhatsApp (+57 350 208 5733).'
     },
   ];
 
