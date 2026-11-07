@@ -13,6 +13,7 @@ BACKEND = RAIZ / 'backend/src/routes'
 # Map of route file -> mount prefix from index.js
 ROUTE_MOUNTS = {
     'authRoutes.js': '/api/auth',
+    'configRoutes.js': '/api',
     'paymentRoutes.js': '/api',
     'bookingRoutes.js': '/api',
     'serviceRoutes.js': '/api',
