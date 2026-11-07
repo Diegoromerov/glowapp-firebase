@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
+import '../../services/push_service.dart';
 import 'google_signin_button.dart'
     if (dart.library.js) 'google_signin_button_web.dart' as gis_button;
 
@@ -199,6 +200,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _navigateAfterLogin(Map<String, dynamic> result) {
     if (!mounted) return;
+    // La app puede arrancar sin sesión guardada; registrar FCM aquí cubre
+    // también el login iniciado después de mostrar la pantalla de acceso.
+    unawaited(PushService.iniciar());
     // Unico punto de decision despues de cualquier login (email, Google,
     // Facebook, Apple). El backend devuelve {token, user:{role,
     // onboarding_completo}} pero el rol no desvia: en la app cliente la unica

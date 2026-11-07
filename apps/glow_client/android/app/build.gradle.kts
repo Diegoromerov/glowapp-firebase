@@ -11,9 +11,10 @@ plugins {
 android {
     namespace = "com.glowapp.glow_client"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -53,21 +54,6 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-        }
-    }
-}
-
-// Habilitar core library desugaring vía reflexión (AGP 9+ legacy DSL)
-afterEvaluate {
-    val desugaringExt = extensions.findByName("coreLibraryDesugaring")
-    desugaringExt?.let {
-        try {
-            val clazz = it.javaClass
-            val field = clazz.getDeclaredField("isEnabled")
-            field.isAccessible = true
-            field.set(it, true)
-        } catch (e: Exception) {
-            // Ignorar si no se puede habilitar
         }
     }
 }

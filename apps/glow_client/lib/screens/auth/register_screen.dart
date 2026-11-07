@@ -1,7 +1,11 @@
 // frontend/lib/screens/auth/register_screen.dart
+import 'dart:async';
+
 import 'package:glow_core/glow_core.dart' hide AppLocalizations;
 import 'package:glow_core/src/l10n/app_localizations.dart' as glow_l10n;
 import 'package:flutter/material.dart';
+
+import '../../services/push_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -60,6 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         if (!mounted) return;
 
         if (loginResult != null) {
+          unawaited(PushService.iniciar());
           final bool onboardingCompleto =
               loginResult['user']['onboarding_completo'] ?? false;
 
