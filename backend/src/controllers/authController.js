@@ -537,18 +537,9 @@ exports.saveFcmToken = async (req, res) => {
 
     const { fcm_token, device_os } = data;
 
-    // La tabla usuarios no tiene una columna `roles`: el rol canónico vive en
-    // `rol` y `roles[]` se construye en el JWT desde memberships. Mantener este
-    // registro independiente de una columna inexistente evita un 500 en prod.
-    const userRolesRes = await pool.query(
-      `SELECT rol FROM usuarios WHERE id = $1`,
-      [userId]
-    );
-    const userRoles = userRolesRes.rows[0];
-    if (!userRoles) {
-      return res.status(404).json({ error: 'Usuario no encontrado' });
-    }
-
+    // No consultar roles: usuarios no tiene la columna `roles`, y bajo RLS un
+    // SELECT directo también puede ocultar la propia fila. El JWT ya autenticó
+    // el id; el token FCM solo se actualiza para ese mismo usuario.
     await pool.query(
       `UPDATE usuarios 
        SET fcm_token = $1, last_active_at = NOW()
@@ -556,7 +547,7 @@ exports.saveFcmToken = async (req, res) => {
       [fcm_token, userId]
     );
 
-    console.log(`🔔 Token FCM registrado para usuario ID ${userId} (${device_os || 'web/mobile'}) rol: ${userRoles.rol || 'sin rol'}`);
+    console.log(`🔔 Token FCM registrado para usuario ID ${userId} (${device_os || 'web/mobile'})`);
 
     res.json({
       success: true,
