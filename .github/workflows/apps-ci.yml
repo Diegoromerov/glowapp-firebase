@@ -128,7 +128,11 @@ jobs:
         run: |
           dart pub global activate melos 6.2.0
           export PATH="$HOME/.pub-cache/bin:$PATH"
-          melos bootstrap
+          case "${{ inputs.app }}" in
+            cliente) melos bootstrap --scope=glow_client --include-dependencies ;;
+            prestador) melos bootstrap --scope=glow_provider --include-dependencies ;;
+            ambas) melos bootstrap --scope='glow_*' --include-dependencies ;;
+          esac
         working-directory: ${{ github.workspace }}
 
       - name: Build Glow Provider Web
