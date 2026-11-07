@@ -21,6 +21,7 @@ class S4TextField extends StatelessWidget {
   final InputDecoration? decoration; // Optional custom decoration
   final TextCapitalization textCapitalization;
   final TextStyle? style; // Optional text style to merge with default
+  final TextStyle? hintStyle;
 
   const S4TextField({
     super.key,
@@ -40,15 +41,17 @@ class S4TextField extends StatelessWidget {
     this.decoration,
     this.textCapitalization = TextCapitalization.none,
     this.style,
+    this.hintStyle,
   });
 
   InputDecoration _buildDefaultDecoration(Token token) {
     return InputDecoration(
       hintText: hint,
-      hintStyle: TextStyle(
-        fontSize: 13,
-        color: token.textSecondary,
-      ),
+      hintStyle: hintStyle ??
+          TextStyle(
+            fontSize: 13,
+            color: token.textSecondary,
+          ),
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
       filled: true,

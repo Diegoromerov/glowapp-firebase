@@ -378,6 +378,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final t = Token.of(context);
+    final inputTextStyle = TypographyTokens.body(t).copyWith(
+      fontFamily: 'Inter',
+      fontSize: MediaQuery.sizeOf(context).shortestSide < 600 ? 16 : 14,
+      color: t.textPrimary,
+    );
+    final inputHintStyle =
+        inputTextStyle.copyWith(color: const Color(0xFF625B54));
     // Un solo iframe de GIS por build; se reutiliza en el Stack del botón.
     final googleOverlay = gis_button.googleSignInOverlay();
     return Scaffold(
@@ -447,7 +454,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               hint: 'Correo electrónico',
                               prefixIcon: Icon(Icons.email_outlined, color: t.brandPrimary, size: 20),
                               validator: (v) => v!.isEmpty ? 'Ingresa tu correo' : null,
-                              style: AppTypography.bodyMedium(t).copyWith(fontFamily: 'CormorantGaramond'),
+                              style: inputTextStyle,
+                              hintStyle: inputHintStyle,
                             ),
                             const SizedBox(height: 16),
 
@@ -469,7 +477,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                               ),
                               validator: (v) => v!.length < 6 ? 'Mínimo 6 caracteres' : null,
-                              style: AppTypography.bodyMedium(t).copyWith(fontFamily: 'CormorantGaramond'),
+                              style: inputTextStyle,
+                              hintStyle: inputHintStyle,
                             ),
                             Align(
                               alignment: Alignment.centerRight,
@@ -649,7 +658,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               text: 'Regístrate aquí',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: t.brandPrimary),
+                                  color: Colors.black),
                             ),
                           ],
                         ),
