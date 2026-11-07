@@ -537,15 +537,20 @@ exports.saveFcmToken = async (req, res) => {
 
     const { fcm_token, device_os } = data;
 
-    // No consultar roles: usuarios no tiene la columna `roles`, y bajo RLS un
-    // SELECT directo también puede ocultar la propia fila. El JWT ya autenticó
-    // el id; el token FCM solo se actualiza para ese mismo usuario.
-    await pool.query(
-      `UPDATE usuarios 
-       SET fcm_token = $1
-       WHERE id = $2`,
-      [fcm_token, userId]
+    // Usuarios tiene FORCE RLS y el runtime app_rls_user no puede actualizar
+    // directamente esta fila sin contexto propio. Usar la conexión de sistema
+    // transaccional (SET LOCAL ROLE) y escribir solo el id ya autenticado.
+    const updateResult = await tenantRouting.runAsSystem({ pool }, (client) =>
+      client.query(
+        `UPDATE usuarios
+         SET fcm_token = $1
+         WHERE id = $2`,
+        [fcm_token, userId]
+      )
     );
+    if (updateResult.rowCount !== 1) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
 
     console.log(`🔔 Token FCM registrado para usuario ID ${userId} (${device_os || 'web/mobile'})`);
 
