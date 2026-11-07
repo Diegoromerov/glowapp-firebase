@@ -34,6 +34,9 @@ describe('entrega OTP para confirmación de servicio', () => {
 
   beforeEach(() => {
     process.env.BREVO_API_KEY = 'brevo-test-key';
+    emailService.initEmailService.mockReturnValue(null);
+    emailService.sendEmail.mockResolvedValue({ messageId: 'brevo-test-message', via: 'brevo-api' });
+    fcm.sendOtpReadyNotice.mockResolvedValue({ success: true, messageId: 'fcm-test-message' });
     runAsSystem.mockImplementation(async (_deps, fn) => fn({
       query: jest.fn(async (sql) => ({ rows: /fcm_token/.test(sql)
         ? [{ fcm_token: 'fcm-test-token' }]
@@ -77,7 +80,7 @@ describe('entrega OTP para confirmación de servicio', () => {
     expect(fcm.sendOtpReadyNotice).toHaveBeenCalledWith('fcm-test-token', expect.objectContaining({ bookingId: expect.any(String) }));
     expect(JSON.stringify(fcm.sendOtpReadyNotice.mock.calls[0])).not.toContain(codigo);
     expect(res.body.correo_enviado).toBe(true);
-    expect(res.body.push_enviado).toBe(false); // El servicio mock está en modo simulado.
+    expect(res.body.push_enviado).toBe(true);
     expect(res.body).not.toHaveProperty('otp_dev');
   });
 });
