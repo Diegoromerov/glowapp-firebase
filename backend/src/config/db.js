@@ -286,7 +286,14 @@ function handleMemoryQuery(text, params = []) {
         const rolParam = params.find(p => ['CLIENTE', 'PRESTADOR', 'SALON'].includes(String(p).toUpperCase()));
         if (rolParam) userToUpdate.rol = rolParam.toUpperCase();
       }
-      return { rows: [userToUpdate] };
+      if (queryStr.includes('PASSWORD_HASH =')) {
+        const hashParam = params.find((p) => typeof p === 'string' && p.startsWith('$2'));
+        if (hashParam) userToUpdate.password_hash = hashParam;
+        if (queryStr.includes('RETURNING ID')) {
+          return { rows: [{ id: userToUpdate.id }], rowCount: 1 };
+        }
+      }
+      return { rows: [userToUpdate], rowCount: 1 };
     }
     return { rows: [{ id: params[0], onboarding_completo: true }] };
   }

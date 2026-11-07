@@ -4,6 +4,7 @@ const logger = require('../config/logger');
 
 class EmailService {
   constructor() {
+    this.brevoApiKey = process.env.BREVO_API_KEY;
     this.resendApiKey = process.env.RESEND_API_KEY;
     this.sendgridApiKey = process.env.SENDGRID_API_KEY;
     this.fromEmail = process.env.EMAIL_FROM || 'soporte@glowapp.com';
@@ -15,6 +16,35 @@ class EmailService {
    */
   async sendEmail({ to, subject, htmlText, plainText }) {
     if (!to) throw new Error('Destinatario de correo requerido');
+
+    // Brevo is the configured transactional provider for GlowApp on Railway.
+    if (this.brevoApiKey && !this.brevoApiKey.includes('tu_key')) {
+      try {
+        const response = await axios.post(
+          'https://api.brevo.com/v3/smtp/email',
+          {
+            sender: { email: this.fromEmail, name: this.fromName },
+            to: [{ email: to }],
+            subject,
+            htmlContent: htmlText,
+            textContent: plainText || subject,
+          },
+          {
+            headers: {
+              'api-key': this.brevoApiKey,
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            timeout: 10000,
+          }
+        );
+        logger.info('📧 Correo enviado exitosamente vía Brevo API', { to, messageId: response.data?.messageId });
+        return { success: true, provider: 'brevo', id: response.data?.messageId };
+      } catch (err) {
+        logger.error('❌ Error enviando correo con Brevo API:', err.response?.data || err.message);
+        throw new Error('No se pudo enviar el correo transaccional vía Brevo');
+      }
+    }
 
     // 1. Intentar enviar con Resend API
     if (this.resendApiKey && !this.resendApiKey.includes('tu_key')) {
@@ -40,6 +70,9 @@ class EmailService {
         return { success: true, provider: 'resend', id: response.data?.id };
       } catch (err) {
         logger.error('❌ Error enviando correo con Resend API:', err.response?.data || err.message);
+        // If a provider is explicitly configured but fails, do not pretend the
+        // email was delivered by falling back to console simulation.
+        throw new Error('No se pudo enviar el correo transaccional vía Resend');
       }
     }
 
@@ -69,6 +102,7 @@ class EmailService {
         return { success: true, provider: 'sendgrid' };
       } catch (err) {
         logger.error('❌ Error enviando correo con SendGrid API:', err.response?.data || err.message);
+        throw new Error('No se pudo enviar el correo transaccional vía SendGrid');
       }
     }
 
@@ -107,7 +141,23 @@ class EmailService {
       </div>
     `;
 
-    return this.sendEmail({ to, subject, htmlText, plainText });
+    const hasBrevo = this.brevoApiKey && !this.brevoApiKey.includes('tu_key');
+    const hasResend = this.resendApiKey && !this.resendApiKey.includes('tu_key');
+    const hasSendGrid = this.sendgridApiKey && !this.sendgridApiKey.includes('tu_key');
+    const requireDelivery = process.env.NODE_ENV === 'production' ||
+      process.env.NODE_ENV === 'staging' ||
+      Boolean(process.env.RAILWAY_ENVIRONMENT) ||
+      Boolean(process.env.RAILWAY_SERVICE_NAME) ||
+      Boolean(process.env.RAILWAY_PROJECT_ID);
+    if (requireDelivery && !hasBrevo && !hasResend && !hasSendGrid) {
+      throw new Error('No hay proveedor de correo transaccional configurado');
+    }
+
+    const result = await this.sendEmail({ to, subject, htmlText, plainText });
+    if (!result?.success || (result.provider === 'simulation' && requireDelivery)) {
+      throw new Error('El correo OTP no fue entregado por un proveedor transaccional');
+    }
+    return result;
   }
 
   /**

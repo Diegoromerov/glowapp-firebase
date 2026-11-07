@@ -45,16 +45,24 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           _isLoading = false;
         });
       } else {
+        String? localOtp;
+        if (res['otp'] != null) {
+          // Older local builds can return the OTP for development only.
+          final baseUrl = await AuthService.getBaseUrl();
+          if (baseUrl.contains('localhost') || baseUrl.contains('127.0.0.1')) {
+            localOtp = res['otp'].toString();
+          }
+        }
+        if (!mounted) return;
         setState(() {
           _otpSent = true;
           _isLoading = false;
           _message = res['message'] ?? 'Código OTP de recuperación enviado.';
-          if (res['otp'] != null) {
-            _otpController.text = res['otp'].toString();
-          }
+          if (localOtp != null) _otpController.text = localOtp;
         });
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
         _errorMessage = mensajeHumano(e);
         _isLoading = false;
@@ -95,6 +103,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         }
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
         _errorMessage = mensajeHumano(e);
         _isLoading = false;

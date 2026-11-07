@@ -773,9 +773,11 @@ exports.forgotPassword = async (req, res) => {
     const cleanEmail = email.trim().toLowerCase();
 
     // Verificar si el usuario existe
-    const userRes = await pool.query(
-      `SELECT id, nombre FROM usuarios WHERE LOWER(email) = $1 AND auth_provider = 'LOCAL'`,
-      [cleanEmail]
+    const userRes = await tenantRouting.runAsSystem({ pool }, (client) =>
+      client.query(
+        `SELECT id, nombre FROM usuarios WHERE LOWER(email) = $1 AND auth_provider = 'LOCAL'`,
+        [cleanEmail]
+      )
     );
 
     if (userRes.rows.length === 0) {
@@ -790,11 +792,18 @@ exports.forgotPassword = async (req, res) => {
     const crypto = require('crypto');
     const otp = crypto.randomInt(100000, 1000000).toString();
 
-    // Guardar OTP en Redis con TTL de 10 minutos (600s)
+    // Guardar OTP en Redis con TTL de 10 minutos (600s). Acknowledge only
+    // after storage succeeds: otherwise the client could receive an unusable
+    // code and be unable to complete the reset.
+    const otpKey = `beauty:otp:${cleanEmail}`;
     try {
-      await redisClient.setEx(`beauty:otp:${cleanEmail}`, 600, otp);
+      const stored = await redisClient.setEx(otpKey, 600, otp);
+      if ((stored !== 'OK' && stored !== true) || (redisClient.isReady === false && redisClient.isOpen === false)) {
+        throw new Error('Redis no confirmó el almacenamiento del OTP');
+      }
     } catch (redisErr) {
-      console.warn('⚠️ Error guardando OTP en Redis:', redisErr.message);
+      console.error('❌ No se pudo guardar OTP de recuperación:', redisErr.message);
+      return res.status(503).json({ error: 'El servicio de recuperación no está disponible temporalmente. Inténtalo más tarde.' });
     }
 
     console.log(`🔑 [PASSWORD RESET] Solicitud OTP procesada exitosamente para ${cleanEmail}`);
@@ -807,13 +816,15 @@ exports.forgotPassword = async (req, res) => {
         userName: userRes.rows[0].nombre,
       });
     } catch (emailErr) {
-      console.warn('⚠️ Error al enviar correo OTP:', emailErr.message);
+      console.error('❌ Error al enviar correo OTP:', emailErr.message);
+      try { await redisClient.del(`beauty:otp:${cleanEmail}`); } catch (_) {}
+      return res.status(503).json({ error: 'No pudimos enviar el código. Revisa tu correo e inténtalo nuevamente.' });
     }
 
     res.json({
       success: true,
       message: 'Código de recuperación enviado a tu correo electrónico.',
-      otp: process.env.NODE_ENV !== 'production' ? otp : undefined
+      otp: process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' ? otp : undefined
     });
   } catch (error) {
     console.error('❌ ERROR FORGOT PASSWORD:', error.message);
@@ -834,11 +845,15 @@ exports.resetPassword = async (req, res) => {
     const cleanEmail = email.trim().toLowerCase();
 
     // Validar OTP desde Redis
+    if (!redisClient.isReady) {
+      return res.status(503).json({ error: 'El servicio de recuperación no está disponible temporalmente. Inténtalo más tarde.' });
+    }
     let storedOtp = null;
     try {
       storedOtp = await redisClient.get(`beauty:otp:${cleanEmail}`);
     } catch (redisErr) {
-      console.warn('⚠️ Error leyendo OTP de Redis:', redisErr.message);
+      console.error('❌ Error leyendo OTP de Redis:', redisErr.message);
+      return res.status(503).json({ error: 'El servicio de recuperación no está disponible temporalmente. Inténtalo más tarde.' });
     }
 
     if (!storedOtp || storedOtp !== otp.toString().trim()) {
@@ -847,10 +862,15 @@ exports.resetPassword = async (req, res) => {
 
     // Hash de la nueva contraseña y actualización en BD
     const hashedPassword = await bcrypt.hash(new_password, 10);
-    await pool.query(
-      `UPDATE usuarios SET password_hash = $1 WHERE LOWER(email) = $2 AND auth_provider = 'LOCAL'`,
-      [hashedPassword, cleanEmail]
+    const updateResult = await tenantRouting.runAsSystem({ pool }, (client) =>
+      client.query(
+        `UPDATE usuarios SET password_hash = $1 WHERE LOWER(email) = $2 AND auth_provider = 'LOCAL' RETURNING id`,
+        [hashedPassword, cleanEmail]
+      )
     );
+    if (!updateResult?.rows?.length) {
+      return res.status(400).json({ error: 'No se pudo restablecer la contraseña para esta cuenta.' });
+    }
 
     // Eliminar el OTP usado de Redis
     try {

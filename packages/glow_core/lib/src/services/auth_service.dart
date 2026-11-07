@@ -205,7 +205,14 @@ class AuthService {
       headers: _jsonHeaders,
       body: json.encode({'email': email}),
     );
-    return json.decode(response.body);
+    final decoded = json.decode(response.body);
+    if (decoded is Map<String, dynamic>) {
+      if (response.statusCode >= 400) {
+        return {'error': decoded['message'] ?? decoded['error'] ?? 'No se pudo solicitar el código.'};
+      }
+      return decoded;
+    }
+    return {'error': 'Respuesta inesperada del servidor.'};
   }
 
   static Future<Map<String, dynamic>> resetPassword({
@@ -223,7 +230,14 @@ class AuthService {
         'new_password': newPassword,
       }),
     );
-    return json.decode(response.body);
+    final decoded = json.decode(response.body);
+    if (decoded is Map<String, dynamic>) {
+      if (response.statusCode >= 400) {
+        return {'error': decoded['message'] ?? decoded['error'] ?? 'No se pudo restablecer la contraseña.'};
+      }
+      return decoded;
+    }
+    return {'error': 'Respuesta inesperada del servidor.'};
   }
 
   static Future<Map<String, dynamic>?> loginWithGoogle(String idToken, {String? roleIntent}) async {
