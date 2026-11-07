@@ -155,115 +155,115 @@ jobs:
           retention-days: 1
 
   # ───────────────────────────────────────────────────────────────────────────
-    # 3. Build del cliente (solo si se pidió)
-    # ───────────────────────────────────────────────────────────────────────────
-    compilar-cliente:
-      name: Build glow_client
-      needs: verificar
-      if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-          with: { fetch-depth: 1 }
+  # 3. Build del cliente (solo si se pidió)
+  # ───────────────────────────────────────────────────────────────────────────
+  compilar-cliente:
+    name: Build glow_client
+    needs: verificar
+    if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
 
-        - name: Setup Dart/Flutter
-          uses: subosito/flutter-action@v2
-          with:
-            channel: ${{ env.FLUTTER_CHANNEL }}
-            flutter-version: ${{ env.FLUTTER_VERSION }}
-            cache: true
+      - name: Setup Dart/Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
 
-        - name: Melos Bootstrap
-          run: |
-            dart pub global activate melos 6.2.0
-            export PATH="$HOME/.pub-cache/bin:$PATH"
-            melos bootstrap
-          working-directory: ${{ github.workspace }}
+      - name: Melos Bootstrap
+        run: |
+          dart pub global activate melos 6.2.0
+          export PATH="$HOME/.pub-cache/bin:$PATH"
+          melos bootstrap
+        working-directory: ${{ github.workspace }}
 
-        - name: Build Glow Client Web
-          run: |
-            cd apps/glow_client
-            flutter build web --release \
-              --dart-define=FIREBASE_API_KEY=${{ secrets.CLIENT_FIREBASE_API_KEY }} \
-              --dart-define=FIREBASE_PROJECT_ID=${{ secrets.CLIENT_FIREBASE_PROJECT_ID }} \
-              --dart-define=FIREBASE_MESSAGING_SENDER_ID=${{ secrets.CLIENT_FIREBASE_MESSAGING_SENDER_ID }} \
-              --dart-define=FIREBASE_STORAGE_BUCKET=${{ secrets.CLIENT_FIREBASE_STORAGE_BUCKET }} \
-              --dart-define=FIREBASE_WEB_APP_ID=${{ secrets.CLIENT_FIREBASE_WEB_APP_ID }} \
-              --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.CLIENT_FIREBASE_ANDROID_APP_ID }} \
-              --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.CLIENT_FIREBASE_IOS_APP_ID }} \
-              --dart-define=GOOGLE_WEB_CLIENT_ID=${{ secrets.GOOGLE_WEB_CLIENT_ID }} \
-              --dart-define=API_URL=${{ secrets.API_BASE_URL }} \
-              --dart-define=APP_AUDIENCE=client
-          working-directory: ${{ github.workspace }}
+      - name: Build Glow Client Web
+        run: |
+          cd apps/glow_client
+          flutter build web --release \
+            --dart-define=FIREBASE_API_KEY=${{ secrets.CLIENT_FIREBASE_API_KEY }} \
+            --dart-define=FIREBASE_PROJECT_ID=${{ secrets.CLIENT_FIREBASE_PROJECT_ID }} \
+            --dart-define=FIREBASE_MESSAGING_SENDER_ID=${{ secrets.CLIENT_FIREBASE_MESSAGING_SENDER_ID }} \
+            --dart-define=FIREBASE_STORAGE_BUCKET=${{ secrets.CLIENT_FIREBASE_STORAGE_BUCKET }} \
+            --dart-define=FIREBASE_WEB_APP_ID=${{ secrets.CLIENT_FIREBASE_WEB_APP_ID }} \
+            --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.CLIENT_FIREBASE_ANDROID_APP_ID }} \
+            --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.CLIENT_FIREBASE_IOS_APP_ID }} \
+            --dart-define=GOOGLE_WEB_CLIENT_ID=${{ secrets.GOOGLE_WEB_CLIENT_ID }} \
+            --dart-define=API_URL=${{ secrets.API_BASE_URL }} \
+            --dart-define=APP_AUDIENCE=client
+        working-directory: ${{ github.workspace }}
 
-        - name: Upload Client Web Artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: glow-client-web
-            path: apps/glow_client/build/web/
-            retention-days: 1
+      - name: Upload Client Web Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: glow-client-web
+          path: apps/glow_client/build/web/
+          retention-days: 1
 
-    # ───────────────────────────────────────────────────────────────────────────
-    # 3b. Build Android APK del cliente (solo si se pidió)
-    # ───────────────────────────────────────────────────────────────────────────
-    compilar-cliente-android:
-      name: Build glow_client Android APK
-      needs: verificar
-      if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-          with: { fetch-depth: 1 }
+  # ───────────────────────────────────────────────────────────────────────────
+  # 3b. Build Android APK del cliente (solo si se pidió)
+  # ───────────────────────────────────────────────────────────────────────────
+  compilar-cliente-android:
+    name: Build glow_client Android APK
+    needs: verificar
+    if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
 
-        - name: Setup Dart/Flutter
-          uses: subosito/flutter-action@v2
-          with:
-            channel: ${{ env.FLUTTER_CHANNEL }}
-            flutter-version: ${{ env.FLUTTER_VERSION }}
-            cache: true
+      - name: Setup Dart/Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
 
-        - name: Melos Bootstrap
-          run: |
-            dart pub global activate melos 6.2.0
-            export PATH="$HOME/.pub-cache/bin:$PATH"
-            melos bootstrap
-          working-directory: ${{ github.workspace }}
+      - name: Melos Bootstrap
+        run: |
+          dart pub global activate melos 6.2.0
+          export PATH="$HOME/.pub-cache/bin:$PATH"
+          melos bootstrap
+        working-directory: ${{ github.workspace }}
 
-        - name: Decode Keystore
-          id: keystore
-          run: |
-            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/keystore.p12
-            echo "storeFile=keystore.p12" > android/key.properties
-            echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/key.properties
-            echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-            echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-            echo "storeType=PKCS12" >> android/key.properties
-          working-directory: ${{ github.workspace }}/apps/glow_client
+      - name: Decode Keystore
+        id: keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/keystore.p12
+          echo "storeFile=keystore.p12" > android/key.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "storeType=PKCS12" >> android/key.properties
+        working-directory: ${{ github.workspace }}/apps/glow_client
 
-        - name: Write google-services.json
-          run: |
-            echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
-          working-directory: ${{ github.workspace }}/apps/glow_client
+      - name: Write google-services.json
+        run: |
+          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+        working-directory: ${{ github.workspace }}/apps/glow_client
 
-        - name: Build Android APK (Release)
-          run: |
-            cd apps/glow_client
-            flutter build apk --release \
-              --dart-define=FIREBASE_API_KEY=${{ secrets.CLIENT_FIREBASE_API_KEY }} \
-              --dart-define=FIREBASE_PROJECT_ID=${{ secrets.CLIENT_FIREBASE_PROJECT_ID }} \
-              --dart-define=FIREBASE_MESSAGING_SENDER_ID=${{ secrets.CLIENT_FIREBASE_MESSAGING_SENDER_ID }} \
-              --dart-define=FIREBASE_STORAGE_BUCKET=${{ secrets.CLIENT_FIREBASE_STORAGE_BUCKET }} \
-              --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.CLIENT_FIREBASE_ANDROID_APP_ID }} \
-              --dart-define=API_URL=${{ secrets.API_BASE_URL }} \
-              --dart-define=APP_AUDIENCE=client
-          working-directory: ${{ github.workspace }}
+      - name: Build Android APK (Release)
+        run: |
+          cd apps/glow_client
+          flutter build apk --release \
+            --dart-define=FIREBASE_API_KEY=${{ secrets.CLIENT_FIREBASE_API_KEY }} \
+            --dart-define=FIREBASE_PROJECT_ID=${{ secrets.CLIENT_FIREBASE_PROJECT_ID }} \
+            --dart-define=FIREBASE_MESSAGING_SENDER_ID=${{ secrets.CLIENT_FIREBASE_MESSAGING_SENDER_ID }} \
+            --dart-define=FIREBASE_STORAGE_BUCKET=${{ secrets.CLIENT_FIREBASE_STORAGE_BUCKET }} \
+            --dart-define=FIREBASE_ANDROID_APP_ID=${{ secrets.CLIENT_FIREBASE_ANDROID_APP_ID }} \
+            --dart-define=API_URL=${{ secrets.API_BASE_URL }} \
+            --dart-define=APP_AUDIENCE=client
+        working-directory: ${{ github.workspace }}
 
-        - name: Upload Android APK Artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: glow-client-apk
-            path: apps/glow_client/build/app/outputs/flutter-apk/app-release.apk
-            retention-days: 7
+      - name: Upload Android APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: glow-client-apk
+          path: apps/glow_client/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 7
 
   # ───────────────────────────────────────────────────────────────────────────
   # 4. Publicación. Existe como job aparte para conservar el environment de
