@@ -60,7 +60,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   bool _glowGuideStartScheduled = false;
 
   final TextEditingController _searchController = TextEditingController();
-  final ValueNotifier<double> _homeSheetExtent = ValueNotifier<double>(0.32);
   final LatLng _bogotaCenter = const LatLng(4.6735, -74.1422);
   LatLng? _userLocation;
   // Zoom con el que se agruparon los pines: si cambia la escala hay que
@@ -98,7 +97,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     @override
     void dispose() {
       _searchController.dispose();
-      _homeSheetExtent.dispose();
       AudienceService.currentAudience.removeListener(_onAudienceChanged);
       _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
       super.dispose();
@@ -2574,7 +2572,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 proveedores: _filteredProviders,
                 tamanoInicial: 0.32,
                 expand: false,
-                onExtentChanged: (extent) => _homeSheetExtent.value = extent,
                 encabezado: _buildHomeResultsHeader(),
                 onSelect: (p) {
                   setState(() => _selectedProvider = p);
@@ -2605,60 +2602,40 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
           // Acción para cambiar entre mapa y lista completa.
           if (!_isMapMenuOpen)
-            ValueListenableBuilder<double>(
-              valueListenable: _homeSheetExtent,
-              builder: (context, sheetExtent, _) {
-                if (!_soloLista && sheetExtent >= 0.66) {
-                  return const SizedBox.shrink();
-                }
-                final safeBottom = MediaQuery.of(context).padding.bottom;
-                final sheetBottom = safeBottom +
-                    (_selectedProvider != null ? 280 : 160);
-                final sheetHeight =
-                    MediaQuery.of(context).size.height - sheetBottom;
-                final buttonBottom = _soloLista
-                    ? safeBottom + 20
-                    : sheetBottom + sheetHeight * sheetExtent + 12;
-                return Positioned(
-                  left: !_soloLista && _selectedProvider == null ? 20 : null,
-                  right: _soloLista || _selectedProvider != null ? 20 : null,
-                  bottom: buttonBottom,
-                  child: SizedBox(
-                    width: _soloLista ? null : 188,
-                    height: 56,
-                    child: FloatingActionButton.extended(
-                      heroTag: 'toggle_lista',
-                      tooltip: _soloLista
-                          ? 'Ver mapa'
-                          : 'Ver los resultados en lista',
-                      backgroundColor: AppTheme.primary,
-                      foregroundColor: Colors.white,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      onPressed: () {
-                        final mostrarLista = !_soloLista;
-                        if (!mostrarLista) _homeSheetExtent.value = 0.32;
-                        setState(() {
-                          _soloLista = mostrarLista;
-                          _isMapMenuOpen = false;
-                        });
-                        AnalyticsService().logEvent(
-                          eventType: mostrarLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
-                          screenName: '/home',
-                        );
-                      },
-                      icon: Icon(_soloLista
-                          ? Icons.map_outlined
-                          : Icons.view_list_rounded),
-                      label: Text(_soloLista
-                          ? 'Ver mapa'
-                          : 'Lista (${_filteredProviders.length})'),
-                    ),
-                  ),
-                );
-              },
+            Positioned(
+              left: !_soloLista && _selectedProvider == null ? 20 : null,
+              right: _soloLista || _selectedProvider != null ? 20 : null,
+              bottom: MediaQuery.of(context).padding.bottom +
+                  (_soloLista
+                      ? 20
+                      : _selectedProvider != null
+                          ? 292
+                          : 96),
+              child: SizedBox(
+                width: _soloLista ? null : 188,
+                height: 56,
+                child: FloatingActionButton.extended(
+                  heroTag: 'toggle_lista',
+                  tooltip: _soloLista ? 'Ver mapa' : 'Ver los resultados en lista',
+                  backgroundColor: AppTheme.primary,
+                  foregroundColor: Colors.white,
+                  elevation: 4,
+                  onPressed: () {
+                    setState(() {
+                      _soloLista = !_soloLista;
+                      _isMapMenuOpen = false;
+                    });
+                    AnalyticsService().logEvent(
+                      eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
+                      screenName: '/home',
+                    );
+                  },
+                  icon: Icon(_soloLista ? Icons.map_outlined : Icons.view_list_rounded),
+                  label: Text(_soloLista
+                      ? 'Ver mapa'
+                      : 'Lista (${_filteredProviders.length})'),
+                ),
+              ),
             ),
 
           // Capa 2: Floating Sneak-Peek Card (Selected Stylist Preview)

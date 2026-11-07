@@ -25,7 +25,6 @@ class HomeResultsSheet extends StatefulWidget {
   final double tamanoInicial;
   final double espacioInferior;
   final bool expand;
-  final ValueChanged<double>? onExtentChanged;
 
   const HomeResultsSheet({
     super.key,
@@ -39,7 +38,6 @@ class HomeResultsSheet extends StatefulWidget {
     this.tamanoInicial = 0.52,
     this.espacioInferior = 24,
     this.expand = true,
-    this.onExtentChanged,
   });
 
   @override
@@ -65,7 +63,6 @@ class _HomeResultsSheetState extends State<HomeResultsSheet> {
 
   void _avisarPosicion() {
     final t = _controller.size;
-    widget.onExtentChanged?.call(t);
     final actual = t < 0.25
         ? PosicionBandeja.asomo
         : t < 0.6
