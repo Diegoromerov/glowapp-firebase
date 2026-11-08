@@ -12,13 +12,13 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { ragPool } = require('../src/config/db');
+const { generateEmbedding: generateServiceEmbedding } = require('../src/services/embeddingService');
 
 const CORPUS_PATH = path.join(__dirname, '..', 'src', 'data', 'corpus_canonico', 'corpus_canonico.json');
 const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY;
-const NVIDIA_API_URL = process.env.NVIDIA_API_URL || 'https://integrate.api.nvidia.com/v1/embeddings';
-const NVIDIA_EMBEDDING_MODEL = process.env.NVIDIA_EMBEDDING_MODEL || 'nvidia/nemotron-3-embed-1b';
 const EXPECTED_DIMS = 2048;
 const DELAY_MS = 120; // rate limiting
+const BATCH_SIZE = 4; // concurrencia limitada para no serializar miles de llamadas
 
 async function generateEmbedding(text) {
   // R5-B / CICLO 09 — LÍMITE NVIDIA 512 TOKENS (investigación documentada):
@@ -30,25 +30,7 @@ async function generateEmbedding(text) {
   // Alternativa descartada: auto-split (como ingest_json_chunks.js) rompería UNIQUE(document_id, chunk_id).
   const MAX_EMBED_CHARS = 1400;
   const embeddingText = text.length > MAX_EMBED_CHARS ? text.substring(0, MAX_EMBED_CHARS) : text;
-  const response = await fetch(NVIDIA_API_URL, {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + NVIDIA_API_KEY,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: NVIDIA_EMBEDDING_MODEL,
-      input: [embeddingText],
-      input_type: 'passage',
-      encoding_format: 'float',
-    }),
-  });
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error('NVIDIA API ' + response.status + ': ' + errText.substring(0, 200));
-  }
-  const data = await response.json();
-  const emb = data.data && data.data[0] && data.data[0].embedding;
+  const emb = await generateServiceEmbedding(embeddingText, 'passage');
   if (!emb || emb.length !== EXPECTED_DIMS) {
     throw new Error('Embedding con dimensiones incorrectas: ' + (emb ? emb.length : 0));
   }
@@ -131,25 +113,29 @@ async function main() {
   let inserted = 0, updated = 0, errors = 0;
   const startTime = Date.now();
 
-  for (let i = 0; i < chunks.length; i++) {
-    const c = chunks[i];
-    try {
-      if (dryRun) {
-        console.log(`[DRY] ${c.chunk_id}`);
-        continue;
+  for (let offset = 0; offset < chunks.length; offset += BATCH_SIZE) {
+    const batch = chunks.slice(offset, offset + BATCH_SIZE);
+    await Promise.all(batch.map(async (c) => {
+      try {
+        if (dryRun) {
+          console.log(`[DRY] ${c.chunk_id}`);
+          return;
+        }
+        const embedding = await generateEmbedding((c.title || '') + '\n\n' + (c.content || '').substring(0, 4000));
+        const result = await upsertChunk({ ...c, embedding }, dryRun);
+        if (result === 'inserted') inserted++; else updated++;
+      } catch (err) {
+        errors++;
+        console.error(`   ❌ ${c.chunk_id}: ${err.message}`);
       }
-      const embedding = await generateEmbedding((c.title || '') + '\n\n' + (c.content || '').substring(0, 4000));
-      const result = await upsertChunk({ ...c, embedding }, dryRun);
-      if (result === 'inserted') inserted++; else updated++;
-      if ((i + 1) % 50 === 0) {
-        const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
-        console.log(`   [${i + 1}/${chunks.length}] +${inserted} ~${updated} err=${errors} (${elapsed}s)`);
-      }
-      await new Promise(r => setTimeout(r, DELAY_MS));
-    } catch (err) {
-      errors++;
-      console.error(`   ❌ ${c.chunk_id}: ${err.message}`);
+    }));
+
+    const processed = Math.min(offset + batch.length, chunks.length);
+    if (processed % 50 < BATCH_SIZE || processed === chunks.length) {
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
+      console.log(`   [${processed}/${chunks.length}] +${inserted} ~${updated} err=${errors} (${elapsed}s)`);
     }
+    if (processed < chunks.length) await new Promise(r => setTimeout(r, DELAY_MS));
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
