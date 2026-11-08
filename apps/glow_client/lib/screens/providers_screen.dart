@@ -2450,63 +2450,44 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           onSubmitted: (_) => _submitProviderSearch(),
                         ),
                       ),
+                      IconButton(
+                        tooltip: 'Preguntar a Aura',
+                        icon: const Icon(Icons.auto_awesome, color: Color(0xFFD4AF37)),
+                        onPressed: () => _navigateToAIChat(_searchController.text),
+                      ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 6, left: 8),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: isMen
-                                ? const Color(0xFF141210).withValues(alpha: 0.88)
-                                : const Color(0xFFFAF8F5).withValues(alpha: 0.92),
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Icon(Icons.location_on_outlined, size: 15, color: Color(0xFFC5A052)),
-                                const SizedBox(width: 4),
-                                Flexible(
-                                  child: Text(
-                                    _userLocation == null ? 'Explorando Bogotá' : 'Prestadores cerca de ti',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      color: isMen ? Colors.white : const Color(0xFF3D2E1E),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: isMen
+                            ? const Color(0xFF141210).withValues(alpha: 0.88)
+                            : const Color(0xFFFAF8F5).withValues(alpha: 0.92),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.location_on_outlined, size: 15, color: Color(0xFFC5A052)),
+                            const SizedBox(width: 4),
+                            Text(
+                              _userLocation == null ? 'Explorando Bogotá' : 'Prestadores cerca de ti',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: isMen ? Colors.white : const Color(0xFF3D2E1E),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      OutlinedButton.icon(
-                        onPressed: () => _navigateToAIChat(_searchController.text),
-                        icon: const Icon(Icons.auto_awesome_rounded, size: 16),
-                        label: const Text('Chat con Aura'),
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: isMen ? const Color(0xFFE5C158) : const Color(0xFF6B4F18),
-                          backgroundColor: isMen
-                              ? const Color(0xFF141210).withValues(alpha: 0.94)
-                              : const Color(0xFFFAF8F5).withValues(alpha: 0.96),
-                          side: const BorderSide(color: Color(0xFFC5A052), width: 1.2),
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          minimumSize: const Size(0, 40),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
-                          textStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
