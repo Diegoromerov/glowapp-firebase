@@ -218,7 +218,7 @@ exports.getProviders = async (req, res) => {
                FROM bookings b
                LEFT JOIN services s ON s.id = b.service_id
               WHERE b.provider_id = ANY($1::int[])
-                AND b.estado NOT IN ('CANCELADA', 'CANCELLED')
+                AND b.estado::text NOT IN ('CANCELADA', 'CANCELLED')
                 AND b.scheduled_at >= $2 AND b.scheduled_at <= $3`,
             [idsIndividuales, inicioDia, finDia]
           ),
