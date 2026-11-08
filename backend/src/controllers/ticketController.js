@@ -56,7 +56,8 @@ exports.createTicket = async (req, res) => {
 
     const query = `
       INSERT INTO tickets (usuario_id, booking_id, tipo, categoria, asunto, descripcion, evidencia_urls)
-      VALUES (:usuario_id, :booking_id, :tipo, :categoria, :asunto, :descripcion, :evidencia_urls)
+      VALUES (:usuario_id, :booking_id, :tipo, :categoria, :asunto, :descripcion,
+        ARRAY(SELECT jsonb_array_elements_text(CAST(:evidencia_json AS jsonb))))
       RETURNING id, usuario_id, booking_id, tipo, categoria, asunto, descripcion, estado, prioridad, evidencia_urls, fecha_creacion;
     `;
 
@@ -68,7 +69,10 @@ exports.createTicket = async (req, res) => {
         categoria,
         asunto,
         descripcion,
-        evidencia_urls: evidence,
+        // Sequelize expands JS arrays as multiple SQL replacements. Serialize to
+        // JSON and let PostgreSQL convert it to TEXT[] so [] remains a valid
+        // empty evidence array instead of producing a dangling comma.
+        evidencia_json: JSON.stringify(evidence),
       },
       type: QueryTypes.INSERT
     });

@@ -30,3 +30,7 @@ Las siete tareas quedaron implementadas en la rama local `staging`. La revisión
 - Tarea 5: lista — ticket ARCO, verificación documentada, ejecución, redacción/anónimo y rastro append-only.
 - Tarea 6: lista — autorización biométrica explícita/versionada, revocación y API de auditoría.
 - Tarea 7: lista — formulario validado, cabecera de audiencia, adjuntos limitados, bandeja API y notificación honesta.
+
+## Corrección posterior en staging
+
+- Al probar «Solicitar Supresión de Datos (ARCO)», el API devolvió 500 porque Sequelize expandía el arreglo vacío de `evidencia_urls` dentro del SQL y dejaba un valor faltante. `ticketController` convierte ahora el JSON de evidencias a `TEXT[]` en PostgreSQL, incluido el caso sin adjuntos. El fallo SQL ocurre antes del INSERT, por lo que ese intento no creó un ticket parcial.
