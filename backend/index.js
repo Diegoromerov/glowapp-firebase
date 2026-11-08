@@ -1405,6 +1405,7 @@ app.use('/api/*', (req, res) => {
 
 const initDatabase = async () => {
   const dbErrors = [];
+  const schemaPool = migrationPool || pool;
   
   const status = getDbStatus();
   if (status && status.pgAvailable === false) {
@@ -1422,7 +1423,7 @@ const initDatabase = async () => {
       const schemaPath = path.join(__dirname, 'init.sql');
       if (fs.existsSync(schemaPath)) {
         const schemaSql = fs.readFileSync(schemaPath, 'utf8');
-        await pool.query(schemaSql);
+        await schemaPool.query(schemaSql);
         console.log('✅ Base de datos: Esquema inicializado/verificado desde init.sql (fuente canónica)');
       } else {
         console.warn('⚠️ No se encontró init.sql. Se omitió la creación automática de tablas.');
@@ -1435,7 +1436,7 @@ const initDatabase = async () => {
 
   // Agregar 'APPLE' al tipo_auth_provider ENUM si no existe
   try {
-    await pool.query("ALTER TYPE tipo_auth_provider ADD VALUE 'APPLE';");
+    await schemaPool.query("ALTER TYPE tipo_auth_provider ADD VALUE 'APPLE';");
     console.log('✅ Base de datos: Añadido valor "APPLE" al tipo_auth_provider');
   } catch (e) {
     if (e.code !== '42710') { // 42710 = duplicate_object, ignorar si ya existe
@@ -1446,7 +1447,7 @@ const initDatabase = async () => {
 
   // 1. Aislamiento de alteración de la tabla 'usuarios'
   try {
-    await pool.query(`
+    await schemaPool.query(`
       ALTER TABLE usuarios
       ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE;
     `);
@@ -1458,7 +1459,7 @@ const initDatabase = async () => {
 
   // 2. Aislamiento de alteración de la tabla 'perfiles_prestador'
   try {
-    await pool.query(`
+    await schemaPool.query(`
       ALTER TABLE perfiles_prestador
       ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE;
     `);
@@ -1470,7 +1471,7 @@ const initDatabase = async () => {
 
   // 3. Aislamiento de alteración de la tabla 'bookings'
   try {
-    await pool.query(`
+    await schemaPool.query(`
       ALTER TABLE bookings
       ADD COLUMN IF NOT EXISTS service_address TEXT;
     `);
@@ -1482,7 +1483,7 @@ const initDatabase = async () => {
 
   // 4. Aislamiento de creación de tabla 'sos_alerts' e índices
   try {
-    await pool.query(`
+    await schemaPool.query(`
       CREATE TABLE IF NOT EXISTS sos_alerts (
         id SERIAL PRIMARY KEY,
         user_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
@@ -1493,7 +1494,7 @@ const initDatabase = async () => {
         creado_en TIMESTAMPTZ DEFAULT NOW()
       );
     `);
-    await pool.query(`
+    await schemaPool.query(`
       CREATE INDEX IF NOT EXISTS idx_sos_alerts_user ON sos_alerts(user_id);
       CREATE INDEX IF NOT EXISTS idx_sos_alerts_booking ON sos_alerts(booking_id);
     `);
@@ -1507,7 +1508,7 @@ const initDatabase = async () => {
   // sos_alerts.estado solo admite 'ACTIVO' y 'RESUELTO'. La resolución se guarda
   // aparte para no reutilizar creado_en y no perder la fecha de emisión.
   try {
-    await pool.query(`
+    await schemaPool.query(`
       ALTER TABLE sos_alerts
         ADD COLUMN IF NOT EXISTS resolucion TEXT,
         ADD COLUMN IF NOT EXISTS resuelto_en TIMESTAMPTZ,
@@ -1521,7 +1522,7 @@ const initDatabase = async () => {
 
   // 5. Aislamiento de creación de tabla 'user_activity_logs' (Analíticas) e índices
   try {
-    await pool.query(`
+    await schemaPool.query(`
       CREATE TABLE IF NOT EXISTS user_activity_logs (
         id BIGSERIAL PRIMARY KEY,
         user_id INTEGER REFERENCES usuarios(id) ON DELETE SET NULL,
@@ -1533,7 +1534,7 @@ const initDatabase = async () => {
         creado_en TIMESTAMPTZ DEFAULT NOW()
       );
     `);
-    await pool.query(`
+    await schemaPool.query(`
       CREATE INDEX IF NOT EXISTS idx_activity_logs_session ON user_activity_logs(session_id);
       CREATE INDEX IF NOT EXISTS idx_activity_logs_event ON user_activity_logs(event_type);
     `);
@@ -1545,7 +1546,7 @@ const initDatabase = async () => {
 
   // 6. Aislamiento de creación de tabla 'admin_actions'
   try {
-    await pool.query(`
+    await schemaPool.query(`
       CREATE TABLE IF NOT EXISTS admin_actions (
         id SERIAL PRIMARY KEY,
         admin_id INTEGER REFERENCES usuarios(id) ON DELETE SET NULL,
@@ -1562,7 +1563,7 @@ const initDatabase = async () => {
 
   // 7. Aislamiento de creación de índices de rendimiento generales
   try {
-    await pool.query(`
+    await schemaPool.query(`
       CREATE INDEX IF NOT EXISTS idx_bookings_client ON bookings(client_id);
       CREATE INDEX IF NOT EXISTS idx_bookings_provider ON bookings(provider_id);
       CREATE INDEX IF NOT EXISTS idx_bookings_scheduled ON bookings(scheduled_at DESC);
@@ -1581,7 +1582,7 @@ const initDatabase = async () => {
     const loyaltyMigrationPath = path.join(__dirname, 'src/config/loyalty_migration.sql');
     if (fs.existsSync(loyaltyMigrationPath)) {
       const loyaltySql = fs.readFileSync(loyaltyMigrationPath, 'utf8');
-      await pool.query(loyaltySql);
+      await schemaPool.query(loyaltySql);
       console.log('✅ Base de datos: Migración de lealtad y fraude ejecutada desde loyalty_migration.sql');
     } else {
       console.warn('⚠️ No se encontró loyalty_migration.sql. Se omitió la migración de lealtad.');
@@ -1604,7 +1605,7 @@ const initDatabase = async () => {
     });
 
     // 1. Crear tabla disputas
-    await pool.query(`
+    await schemaPool.query(`
       CREATE TABLE IF NOT EXISTS disputas (
         id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         booking_id      UUID NOT NULL REFERENCES bookings(id) ON DELETE RESTRICT,
@@ -1627,12 +1628,12 @@ const initDatabase = async () => {
     `);
 
     // 2. Crear índices
-    await pool.query(`CREATE INDEX IF NOT EXISTS idx_disputas_booking ON disputas(booking_id);`);
-    await pool.query(`CREATE INDEX IF NOT EXISTS idx_disputas_estado ON disputas(estado, creado_at DESC);`);
-    await pool.query(`CREATE INDEX IF NOT EXISTS idx_disputas_sla ON disputas(sla_limite_at) WHERE estado IN ('ABIERTA','EN_REVISION');`);
+    await schemaPool.query(`CREATE INDEX IF NOT EXISTS idx_disputas_booking ON disputas(booking_id);`);
+    await schemaPool.query(`CREATE INDEX IF NOT EXISTS idx_disputas_estado ON disputas(estado, creado_at DESC);`);
+    await schemaPool.query(`CREATE INDEX IF NOT EXISTS idx_disputas_sla ON disputas(sla_limite_at) WHERE estado IN ('ABIERTA','EN_REVISION');`);
 
     // 3. Crear función de trigger SLA
-    await pool.query(`
+    await schemaPool.query(`
       CREATE OR REPLACE FUNCTION set_disputa_sla()
       RETURNS TRIGGER AS $$
       BEGIN
@@ -1645,22 +1646,22 @@ const initDatabase = async () => {
     `);
 
     // 4. Vincular triggers
-    await pool.query(`DROP TRIGGER IF EXISTS trg_disputa_sla ON disputas;`);
-    await pool.query(`
+    await schemaPool.query(`DROP TRIGGER IF EXISTS trg_disputa_sla ON disputas;`);
+    await schemaPool.query(`
       CREATE TRIGGER trg_disputa_sla
       BEFORE INSERT ON disputas
       FOR EACH ROW EXECUTE FUNCTION set_disputa_sla();
     `);
 
-    await pool.query(`DROP TRIGGER IF EXISTS trg_disputa_updated_at ON disputas;`);
-    await pool.query(`
+    await schemaPool.query(`DROP TRIGGER IF EXISTS trg_disputa_updated_at ON disputas;`);
+    await schemaPool.query(`
       CREATE TRIGGER trg_disputa_updated_at
       BEFORE UPDATE ON disputas
       FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
     `);
 
     // 5. Agregar weekly_schedule y active_start_hour / active_end_hour a perfiles_prestador
-    await pool.query(`
+    await schemaPool.query(`
       ALTER TABLE perfiles_prestador 
       ADD COLUMN IF NOT EXISTS weekly_schedule JSONB DEFAULT '${defaultSchedule}'::jsonb,
       ADD COLUMN IF NOT EXISTS active_start_hour INTEGER DEFAULT 6,
