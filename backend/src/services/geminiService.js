@@ -25,6 +25,7 @@ function toGeminiSchema(schema, depth = 0) {
 }
 const { RAG_SIMILARITY_THRESHOLD } = require('../config/ragConfig');
 const { searchBeautyKnowledge, formatKnowledgeContext, generateEmbedding } = require('./ragService');
+const { emitConsolidatedEvent, emitError } = require('./ragObservability');
 const { breakers } = require('./circuitBreakerService');
 const { sanitizeForLog, hashIdForLog } = require('../utils/piiSanitizer');
 const { logRagQuery, generateTraceId } = require('./ragLogger');
@@ -348,6 +349,8 @@ async function processAssistantMessage(userId, userMessageText, imageRelativePat
     let llmUsed = 'unknown';
     let toolCalls = [];
     let retrievalChunks = [];
+    let observabilityChunks = [];
+    let observabilityKnowledge = '';
     let retrievalFilters = {};
     let retrievalTrace = {};
     let errorMessage = null;
@@ -403,6 +406,7 @@ async function processAssistantMessage(userId, userMessageText, imageRelativePat
       beautyChunks = chunks;
       retrievalLatencyMs = Date.now() - retrievalStart;
       retrievalChunks = chunks;
+      observabilityChunks = chunks;
       retrievalFilters = {
         topK: ragRetrievalOptions.topK,
         threshold: retrievalTrace.threshold_used,
@@ -423,6 +427,7 @@ async function processAssistantMessage(userId, userMessageText, imageRelativePat
 
     // Formatear chunks para inyección en prompt
     const beautyKnowledge = formatKnowledgeContext(beautyChunks);
+    observabilityKnowledge = beautyKnowledge;
 
     // ── 2. Construir systemInstruction con ambos contextos ─────────────────
     const isProviderOrSalon = userRole === 'PRESTADOR' || userRole === 'SALON' || userRole === 'ADMIN_SALON' || userRole === 'provider';
@@ -756,6 +761,9 @@ Responde con tono profesional, empático y orientado a facilitarle la gestión d
                         const fallbackRetrievalStart = Date.now();
                         beautyChunksFallback = await searchBeautyKnowledge(userMessageText, { topK: 5, threshold: RAG_SIMILARITY_THRESHOLD, trace: retrievalTrace });
                         const fallbackRetrievalLatency = Date.now() - fallbackRetrievalStart;
+                        retrievalLatencyMs += fallbackRetrievalLatency;
+                        observabilityChunks = beautyChunksFallback;
+                        observabilityKnowledge = formatKnowledgeContext(beautyChunksFallback);
                         console.log(`✅ RAG Fallback: ${beautyChunksFallback.length} chunks encontrados (latencia: ${fallbackRetrievalLatency}ms)`);
                         console.log(`📚 Chunks RAG fallback: ${beautyChunksFallback.map(c => c.title).join(' | ')}`);
                       } catch (ragError) {
@@ -965,9 +973,60 @@ const geminiTools = [{
 
         // ── 9. Registrar trazabilidad RAG ────────────────────────────────────
     const totalLatencyMs = Date.now() - totalStartTime;
+
+    // Shadow observability: one correlated, PII-minimal event per sampled chat.
+    // It records evidence and outcome metadata only; it never changes generation.
+    emitConsolidatedEvent(traceId, parsedUserId, userMessageText, {
+      query_received: {
+        trigger_decision: { enabled: knowledgeSearchEnabled },
+      },
+      embedding: knowledgeSearchEnabled ? {
+        latency_ms: retrievalTrace.query_embedding_latency_ms || queryEmbeddingLatencyMs,
+        success: Number.isFinite(retrievalTrace.query_embedding_latency_ms),
+        dimension: 2048,
+        input_type: 'query',
+      } : null,
+      retrieval: knowledgeSearchEnabled ? {
+        mode: retrievalTrace.mode || 'unknown',
+        latency_ms: retrievalLatencyMs,
+        candidate_count: retrievalTrace.candidates
+          ? (retrievalTrace.candidates.vector || 0) + (retrievalTrace.candidates.lexical || 0)
+          : retrievalChunks.length,
+        top_k: retrievalFilters.topK || 5,
+        threshold: retrievalTrace.threshold_used || RAG_SIMILARITY_THRESHOLD,
+        filters_applied: retrievalTrace.filters_applied || {},
+        scores: retrievalTrace.all_scores || retrievalChunks.map((chunk) => chunk.similarity).filter(Number.isFinite),
+        fallback_triggered: retrievalTrace.fallback_triggered === true,
+        fallback_reason: retrievalTrace.fallback_triggered ? 'vector_search_failed' : null,
+        fallback_layer: retrievalTrace.fallback_triggered ? 'full_text' : null,
+      } : null,
+      context: {
+        chunk_count: observabilityChunks.length,
+        char_count: observabilityKnowledge.length,
+        token_count_est: Math.ceil(observabilityKnowledge.length / 4),
+        categories: [...new Set(observabilityChunks.map((chunk) => chunk.category).filter(Boolean))],
+        provenance: observabilityChunks.map((chunk) => ({
+          chunk_id: chunk.chunk_id || null,
+          document_id: chunk.document_id || null,
+          similarity: typeof chunk.similarity === 'number' ? chunk.similarity : null,
+        })),
+      },
+      generation: {
+        model: llmUsed,
+        latency_ms: llmLatencyMs,
+        tool_calls: toolCalls.length,
+        cache_hit: Boolean(cachedResponse),
+        error: errorMessage ? 'generation_error' : null,
+      },
+      response: {
+        char_count: aiResponseText.length,
+        has_citations: /\[\d+\]/.test(aiResponseText),
+        fallback_activated: llmUsed !== 'deepseek' || retrievalTrace.fallback_triggered === true,
+      },
+    });
     
     await logRagQuery({
-      trace_id: generateTraceId(),
+      trace_id: traceId,
       user_id: parsedUserId,
       query: userMessageText,
       query_embedding_latency_ms: retrievalTrace.query_embedding_latency_ms || queryEmbeddingLatencyMs,
@@ -993,10 +1052,15 @@ const geminiTools = [{
 
   } catch (error) {
     console.error('❌ Error crítico en processAssistantMessage (AURA):', error);
+
+    emitError(traceId, parsedUserId, userMessageText, {
+      message: error.code || error.name || 'PROCESSING_ERROR',
+      stage: 'assistant_message',
+    });
     
     // Registrar error en trazabilidad
     await logRagQuery({
-      trace_id: generateTraceId(),
+      trace_id: traceId,
       user_id: parsedUserId,
       query: userMessageText,
       llm_used: 'error',

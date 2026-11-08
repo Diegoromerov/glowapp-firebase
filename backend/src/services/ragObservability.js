@@ -6,8 +6,6 @@
  */
 
 const crypto = require('crypto');
-const fs = require('fs');
-const path = require('path');
 const { RAG_SIMILARITY_THRESHOLD } = require('../config/ragConfig');
 const { sanitizeForLog, hashIdForLog } = require('../utils/piiSanitizer');
 const { breakers } = require('./circuitBreakerService');
@@ -31,20 +29,6 @@ const SAMPLING_RATE_CRITICAL = 1.0;
  * Observability event schema version
  */
 const EVENT_VERSION = '1.0';
-
-/**
- * Directory for raw observability events (JSONL, daily rotation)
- */
-const OBSERVABILITY_LOGS_DIR = path.join(__dirname, '../../logs/observability');
-
-/**
- * Ensure observability logs directory exists
- */
-function ensureObservabilityLogsDir() {
-  if (!fs.existsSync(OBSERVABILITY_LOGS_DIR)) {
-    fs.mkdirSync(OBSERVABILITY_LOGS_DIR, { recursive: true });
-  }
-}
 
 /**
  * Generate trace_id (UUID v4) - reuses existing mechanism
@@ -86,6 +70,8 @@ function shouldSample(event) {
   if (event.event_type === 'error') return true;
   if (event.event_type === 'fallback_triggered') return true;
   if (event.retrieval?.fallback_triggered) return true;
+  if (event.response?.fallback_activated) return true;
+  if (event.generation?.model && !['deepseek', 'unknown'].includes(event.generation.model)) return true;
   if (event.retrieval?.scores?.[0] !== undefined && event.retrieval.scores[0] < 0.5) return true;
   
   // Sample normal traffic at 10%
@@ -93,7 +79,7 @@ function shouldSample(event) {
 }
 
 /**
- * Write observability event to JSONL file (append-only, daily rotation)
+ * Write an observability event to stdout for the Railway log collector.
  * Fail-safe: never throws, swallows errors
  */
 function writeObservabilityEvent(event) {
@@ -103,18 +89,13 @@ function writeObservabilityEvent(event) {
     // Apply sampling
     if (!shouldSample(event)) return;
     
-    ensureObservabilityLogsDir();
-    
-    const today = new Date().toISOString().split('T')[0];
-    const logFile = path.join(OBSERVABILITY_LOGS_DIR, `rag_observability_${today}.jsonl`);
-    
     const eventWithVersion = {
       event_version: EVENT_VERSION,
       ...event,
     };
     
     const line = JSON.stringify(eventWithVersion);
-    fs.appendFileSync(logFile, line + '\n');
+    console.log('[RAG_OBSERVABILITY]', line);
   } catch (error) {
     // Fail-safe: never propagate observability errors
     console.warn('⚠️ [OBSERVABILITY] Write failed (swallowed):', error.message);
@@ -301,7 +282,7 @@ function getObservabilityStatus() {
   return {
     enabled: OBSERVABILITY_ENABLED,
     event_version: EVENT_VERSION,
-    logs_directory: OBSERVABILITY_LOGS_DIR,
+    sink: 'stdout',
     sampling: {
       normal_rate: SAMPLING_RATE_NORMAL,
       critical_rate: SAMPLING_RATE_CRITICAL,
