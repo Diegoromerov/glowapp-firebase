@@ -13,13 +13,13 @@
 const { describeRetention } = require('./biometricRetention');
 
 /** Versión del texto de consentimiento que se muestra hoy al usuario. */
-const BIOMETRIC_CONSENT_VERSION = '2.2';
+const BIOMETRIC_CONSENT_VERSION = '2.3';
 
 /**
  * Versiones que el backend acepta registrar. Una versión desconocida se rechaza con
  * 400: guardar un número inventado deja el registro auditable sin valor probatorio.
  */
-const SUPPORTED_CONSENT_VERSIONS = Object.freeze(['1.0', '2.0', '2.1', '2.2']);
+const SUPPORTED_CONSENT_VERSIONS = Object.freeze(['1.0', '2.0', '2.1', '2.2', '2.3']);
 
 /**
  * Y-F1d (texto 2.1) — huella de la fotografía.
@@ -129,7 +129,61 @@ const CONSENT_VERSION_NOTES = Object.freeze({
     + 'también de las cuentas inactivas, borrado inmediato al cerrar la cuenta y '
     + 'constancia del borrado sin datos dentro. Sin plazo, «conservamos tus datos» no '
     + 'tenía fecha y la Ley 1581 exige temporalidad.',
+  '2.3': 'Identifica al responsable y el canal de derechos, advierte el carácter '
+    + 'facultativo de los datos sensibles, concreta datos, finalidades, encargados y '
+    + 'transferencias internacionales, y requiere aceptación expresa de la versión '
+    + 'vigente con evidencia consultable.',
 });
+
+/**
+ * Snapshot canónico mostrado antes de autorizar el tratamiento biométrico.
+ * Mantenerlo en el servidor permite guardar una huella verificable del texto
+ * exacto que aceptó el titular y evita que cada pantalla publique finalidades
+ * o encargados distintos.
+ */
+function buildBiometricConsentTerms() {
+  const retention = getRetentionNotice();
+  const processors = getActiveProcessors();
+  const terms = {
+    version: BIOMETRIC_CONSENT_VERSION,
+    last_updated: '2026-11-07',
+    title: 'Autorización expresa para tratar datos biométricos sensibles',
+    controller: {
+      name: 'GlowApp S.A.S.',
+      contact: 'privacidad@glowapp.co',
+    },
+    sensitive_data: 'Fotografías de rostro y manos, métricas de piel, cabello y uñas, y derivados biométricos del análisis. La imagen original se envía al proveedor que realiza el análisis; GlowApp conserva las métricas cifradas y la huella técnica descrita abajo.',
+    purpose: 'Analizar rasgos de piel, cabello y uñas y generar recomendaciones de cuidado y productos solicitadas por ti. No se usa para identificarte ni para decisiones automatizadas que produzcan efectos jurídicos.',
+    optional: 'Autorizar el tratamiento de estos datos sensibles es facultativo. Puedes usar las demás funciones de GlowApp que no requieran este análisis y negar o retirar esta autorización.',
+    rights: [
+      'Conocer, actualizar y rectificar tus datos.',
+      'Solicitar prueba de esta autorización y conocer el uso dado a tus datos.',
+      'Presentar consultas y reclamos, solicitar supresión y revocar la autorización cuando proceda.',
+      'Acudir a la Superintendencia de Industria y Comercio después de agotar el trámite ante GlowApp.',
+    ],
+    channel: 'Puedes ejercer tus derechos desde Perfil > Habeas Data y Privacidad o escribiendo a privacidad@glowapp.co.',
+    retention: `Las métricas del análisis se conservan ${retention.retentionMonths} meses desde el último escaneo. ${retention.whatIsDeleted}. Al revocar se bloquea inmediatamente el procesamiento y se solicita el borrado de los datos biométricos; si el borrado técnico falla, el sistema lo informa y permite reintentarlo. Al cerrar la cuenta, ${retention.onAccountDeletion}`,
+    processors: processors.map((processor) => ({
+      name: processor.name,
+      country: processor.country,
+      purpose: processor.purpose,
+      data_shared: processor.dataShared,
+      international_transfer: processor.internationalTransfer,
+    })),
+    photo_fingerprint: `GlowApp conserva ${BIOMETRIC_FINGERPRINT.what}. Se usa exclusivamente para ${BIOMETRIC_FINGERPRINT.purpose}; ${BIOMETRIC_FINGERPRINT.notStored}. La huella no se usa para identificarte y se conserva ${BIOMETRIC_FINGERPRINT.retentionHours} horas.`,
+    international_transfer_notice: `Algunos datos se procesan fuera de Colombia por los proveedores y en los países indicados arriba. Cuando corresponda, la transferencia se ampara en tu autorización expresa e inequívoca conforme al artículo 26 de la Ley 1581 de 2012 (Ley 1581/2012, art. 26) y en las garantías contractuales aplicables.`,
+    authorization: 'Al marcar voluntariamente «Autorizo expresamente», confirmas que leíste este aviso y autorizas el tratamiento de los datos sensibles aquí descritos para las finalidades indicadas. Si el análisis requiere transferencia internacional, autorizas de forma expresa e inequívoca el envío a los países y proveedores identificados arriba. No marcarlo no afecta las funciones que no requieren biometría.',
+  };
+  terms.sections = [
+    { title: '1. Responsable, datos y carácter facultativo', content: `${terms.controller.name} · ${terms.controller.contact}. ${terms.sensitive_data} ${terms.optional}` },
+    { title: '2. Finalidad del tratamiento', content: terms.purpose },
+    { title: '3. Encargados y transferencias internacionales', content: `${processors.map((p) => `${p.name} — ${p.country}: ${p.purpose} (datos: ${p.dataShared})`).join('; ')}. ${terms.international_transfer_notice}` },
+    { title: '4. Derechos y canal de atención', content: `${terms.rights.join(' ')} ${terms.channel}` },
+    { title: '5. Retención: plazo, purga y supresión', content: terms.retention },
+    { title: '6. Huella de la fotografía', content: terms.photo_fingerprint },
+  ];
+  return terms;
+}
 
 /**
  * T-111 — plazo de conservación, tal como lo verá el titular en el aviso.
@@ -156,6 +210,7 @@ module.exports = {
   CONSENT_VERSION_NOTES,
   getRetentionNotice,
   getActiveProcessors,
+  buildBiometricConsentTerms,
   isSupportedConsentVersion,
   isOutdatedConsent,
 };

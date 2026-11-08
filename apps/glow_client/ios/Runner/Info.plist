@@ -16,6 +16,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>glow_client</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>GlowApp usa Face ID para confirmar tu identidad al iniciar sesión en este dispositivo.</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

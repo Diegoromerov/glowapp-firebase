@@ -12,6 +12,7 @@ export 'src/services/audience_service.dart';
 export 'src/services/audio_player.dart';          // handles conditional export internally
 export 'src/services/auth_service.dart';
 export 'src/services/biometric_service.dart';
+export 'src/services/biometric_login_service.dart';
 export 'src/services/booking_recovery_service.dart';
 export 'src/services/business_api_service.dart';
 export 'src/services/connectivity_service.dart';  // handles conditional import internally

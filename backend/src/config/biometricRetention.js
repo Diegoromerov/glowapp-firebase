@@ -9,7 +9,8 @@
 //
 // Decisión del Director (2026-10-20): **24 meses desde el último escaneo**, mismo
 // plazo para la serie de evolución, purga también de usuarios inactivos, borrado
-// inmediato al cerrar la cuenta y constancia del borrado sin datos dentro.
+// inmediato al cerrar la cuenta y evidencia mínima de autorización/supresión,
+// sin fotografías ni resultados biométricos y con acceso restringido.
 //
 // El plazo se lee del entorno en cada llamada —no se congela al importar— para que
 // cambiarlo en Railway cambie a la vez el job y el texto del aviso.
@@ -56,7 +57,7 @@ function describeRetention() {
     from: 'el último escaneo',
     whatIsKept: 'las métricas del análisis y el resultado del escaneo (no la fotografía original)',
     whatIsDeleted: 'el escaneo y su serie se eliminan al cumplir el plazo, también si la cuenta sigue abierta pero dejó de usarse',
-    onAccountDeletion: 'se borran de inmediato todos los datos biométricos y se conserva únicamente constancia de que el borrado ocurrió, sin ningún dato dentro',
+    onAccountDeletion: 'se borran de inmediato las imágenes y resultados biométricos y queda constancia de que el borrado ocurrió. Se conserva evidencia mínima y de acceso restringido de la autorización y la supresión, sin fotografías ni métricas biométricas, durante el plazo definido en la política de conservación de evidencias',
   });
 }
 

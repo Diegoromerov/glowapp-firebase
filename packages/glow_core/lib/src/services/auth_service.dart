@@ -76,6 +76,35 @@ class AuthService {
     return null;
   }
 
+  /// Restores the current server session after the local biometric prompt.
+  /// It never stores a password; the encrypted JWT remains subject to server
+  /// expiry/revocation checks through /api/auth/session.
+  static Future<Map<String, dynamic>?> restoreBiometricSession() async {
+    final token = await getToken();
+    if (token == null || token.isEmpty) return null;
+    final baseUrl = await getBaseUrl();
+    final response = await http.get(
+      Uri.parse('$baseUrl/api/auth/session'),
+      headers: {
+        ..._jsonHeaders,
+        'Authorization': 'Bearer $token',
+      },
+    ).timeout(const Duration(seconds: 10));
+    if (response.statusCode != 200) return null;
+
+    final decoded = json.decode(response.body) as Map<String, dynamic>;
+    final serverUser = Map<String, dynamic>.from(decoded['user'] as Map);
+    final prefs = await SharedPreferences.getInstance();
+    return {
+      'token': token,
+      'user': {
+        ...serverUser,
+        'full_name': prefs.getString('userName') ?? '',
+        'email': serverUser['email'] ?? prefs.getString('userEmail') ?? '',
+      },
+    };
+  }
+
   static Future<Map<String, dynamic>?> loginOAuth({
     required String email,
     required String nombre,
@@ -96,29 +125,29 @@ class AuthService {
       }),
     );
     if (response.statusCode == 200) {
-          final data = json.decode(response.body);
-          final prefs = await SharedPreferences.getInstance();
+      final data = json.decode(response.body);
+      final prefs = await SharedPreferences.getInstance();
 
-          // 🛡️ PARCHE DE SEGURIDAD (GLOW-SEC-02): Guardar el token en almacenamiento cifrado
-          await SecureStorageService().write('token', data['token']);
+      // 🛡️ PARCHE DE SEGURIDAD (GLOW-SEC-02): Guardar el token en almacenamiento cifrado
+      await SecureStorageService().write('token', data['token']);
 
-          await prefs.setString('userId', data['user']['id'].toString());
-          await prefs.setString('userName', data['user']['full_name']);
+      await prefs.setString('userId', data['user']['id'].toString());
+      await prefs.setString('userName', data['user']['full_name']);
       // El perfil lo lee de aquí: antes no se guardaba y la pantalla
       // mostraba un correo de ejemplo escrito en el código.
       final correo = data['user']['email']?.toString();
       if (correo != null && correo.trim().isNotEmpty) {
         await prefs.setString('userEmail', correo.trim());
       }
-          if (data['user']['role'] != null) {
-            await prefs.setString('userRole', data['user']['role']);
-          }
+      if (data['user']['role'] != null) {
+        await prefs.setString('userRole', data['user']['role']);
+      }
 
-          // 🔔 Registrar token FCM tras login OAuth exitoso
-          await FcmService.instance.registerToken();
+      // 🔔 Registrar token FCM tras login OAuth exitoso
+      await FcmService.instance.registerToken();
 
-          return data;
-        }
+      return data;
+    }
     return null;
   }
 
@@ -208,7 +237,11 @@ class AuthService {
     final decoded = json.decode(response.body);
     if (decoded is Map<String, dynamic>) {
       if (response.statusCode >= 400) {
-        return {'error': decoded['message'] ?? decoded['error'] ?? 'No se pudo solicitar el código.'};
+        return {
+          'error': decoded['message'] ??
+              decoded['error'] ??
+              'No se pudo solicitar el código.'
+        };
       }
       return decoded;
     }
@@ -233,14 +266,19 @@ class AuthService {
     final decoded = json.decode(response.body);
     if (decoded is Map<String, dynamic>) {
       if (response.statusCode >= 400) {
-        return {'error': decoded['message'] ?? decoded['error'] ?? 'No se pudo restablecer la contraseña.'};
+        return {
+          'error': decoded['message'] ??
+              decoded['error'] ??
+              'No se pudo restablecer la contraseña.'
+        };
       }
       return decoded;
     }
     return {'error': 'Respuesta inesperada del servidor.'};
   }
 
-  static Future<Map<String, dynamic>?> loginWithGoogle(String idToken, {String? roleIntent}) async {
+  static Future<Map<String, dynamic>?> loginWithGoogle(String idToken,
+      {String? roleIntent}) async {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/google'),
@@ -260,12 +298,12 @@ class AuthService {
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
-      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
-      // mostraba un correo de ejemplo escrito en el código.
-      final correo = data['user']['email']?.toString();
-      if (correo != null && correo.trim().isNotEmpty) {
-        await prefs.setString('userEmail', correo.trim());
-      }
+          // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+          // mostraba un correo de ejemplo escrito en el código.
+          final correo = data['user']['email']?.toString();
+          if (correo != null && correo.trim().isNotEmpty) {
+            await prefs.setString('userEmail', correo.trim());
+          }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }
@@ -290,7 +328,8 @@ class AuthService {
   ///
   /// Requiere: app de Facebook creada (App ID) y el endpoint
   /// `POST /api/auth/facebook` en el backend.
-  static Future<Map<String, dynamic>?> loginWithFacebook(String accessToken, {String? roleIntent}) async {
+  static Future<Map<String, dynamic>?> loginWithFacebook(String accessToken,
+      {String? roleIntent}) async {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/facebook'),
@@ -310,12 +349,12 @@ class AuthService {
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
-      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
-      // mostraba un correo de ejemplo escrito en el código.
-      final correo = data['user']['email']?.toString();
-      if (correo != null && correo.trim().isNotEmpty) {
-        await prefs.setString('userEmail', correo.trim());
-      }
+          // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+          // mostraba un correo de ejemplo escrito en el código.
+          final correo = data['user']['email']?.toString();
+          if (correo != null && correo.trim().isNotEmpty) {
+            await prefs.setString('userEmail', correo.trim());
+          }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }
@@ -330,7 +369,8 @@ class AuthService {
 
   /// Fallback para cuando google_sign_in_web devuelve accessToken pero no idToken
   /// (comportamiento de GIS en google_sign_in 6.x con popup flow)
-  static Future<Map<String, dynamic>?> loginWithGoogleAccessToken(String accessToken) async {
+  static Future<Map<String, dynamic>?> loginWithGoogleAccessToken(
+      String accessToken) async {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/google'),
@@ -347,12 +387,12 @@ class AuthService {
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
           await prefs.setString('userName', data['user']['full_name']);
-      // El perfil lo lee de aquí: antes no se guardaba y la pantalla
-      // mostraba un correo de ejemplo escrito en el código.
-      final correo = data['user']['email']?.toString();
-      if (correo != null && correo.trim().isNotEmpty) {
-        await prefs.setString('userEmail', correo.trim());
-      }
+          // El perfil lo lee de aquí: antes no se guardaba y la pantalla
+          // mostraba un correo de ejemplo escrito en el código.
+          final correo = data['user']['email']?.toString();
+          if (correo != null && correo.trim().isNotEmpty) {
+            await prefs.setString('userEmail', correo.trim());
+          }
           if (data['user']['role'] != null) {
             await prefs.setString('userRole', data['user']['role']);
           }
@@ -453,7 +493,8 @@ class AuthService {
     return null;
   }
 
-  static Future<Map<String, dynamic>?> acceptSalonInvitation(String tokenParam) async {
+  static Future<Map<String, dynamic>?> acceptSalonInvitation(
+      String tokenParam) async {
     final baseUrl = await getBaseUrl();
     final token = await getToken();
     if (token == null) return null;
@@ -506,7 +547,8 @@ class AuthService {
     return null;
   }
 
-  static Future<Map<String, dynamic>?> switchContext(String businessProfileId) async {
+  static Future<Map<String, dynamic>?> switchContext(
+      String businessProfileId) async {
     try {
       final baseUrl = await getBaseUrl();
       // 🛡️ FIX-FLUTTER-03: token solo desde almacenamiento cifrado.

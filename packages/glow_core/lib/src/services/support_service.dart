@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'auth_service.dart';
+import 'api_service.dart';
 
 class SupportService {
   static Future<Map<String, dynamic>?> createTicket({
@@ -21,6 +22,7 @@ class SupportService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
       body: json.encode({
         'booking_id': bookingId,
@@ -35,7 +37,10 @@ class SupportService {
     if (response.statusCode == 201) {
       return json.decode(response.body);
     }
-    return null;
+    final body = _decodeError(response.body);
+    throw Exception(body['message'] ??
+        body['error'] ??
+        'No se pudo radicar el ticket (${response.statusCode}).');
   }
 
   static Future<List<Map<String, dynamic>>?> getMyTickets() async {
@@ -48,6 +53,7 @@ class SupportService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
     );
 
@@ -60,7 +66,8 @@ class SupportService {
     return null;
   }
 
-  static Future<List<Map<String, dynamic>>?> getTicketMessages(String ticketId) async {
+  static Future<List<Map<String, dynamic>>?> getTicketMessages(
+      String ticketId) async {
     final baseUrl = await AuthService.getBaseUrl();
     final token = await AuthService.getToken();
     if (token == null) return null;
@@ -70,6 +77,7 @@ class SupportService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
     );
 
@@ -82,7 +90,8 @@ class SupportService {
     return null;
   }
 
-  static Future<Map<String, dynamic>?> createTicketMessage(String ticketId, String message) async {
+  static Future<Map<String, dynamic>?> createTicketMessage(
+      String ticketId, String message) async {
     final baseUrl = await AuthService.getBaseUrl();
     final token = await AuthService.getToken();
     if (token == null) return null;
@@ -92,6 +101,7 @@ class SupportService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
       body: json.encode({
         'mensaje': message,
@@ -102,5 +112,14 @@ class SupportService {
       return json.decode(response.body);
     }
     return null;
+  }
+
+  static Map<String, dynamic> _decodeError(String body) {
+    try {
+      final value = json.decode(body);
+      return value is Map<String, dynamic> ? value : <String, dynamic>{};
+    } catch (_) {
+      return <String, dynamic>{};
+    }
   }
 }

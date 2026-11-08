@@ -20,12 +20,13 @@ const {
 const consentRoutes = require('../routes/biometricConsentRoutes');
 
 describe('Y-F1b — consentimiento versionado y divulgación del proveedor', () => {
-  test('la versión vigente es 2.2 y las anteriores quedan desactualizadas', () => {
-    expect(BIOMETRIC_CONSENT_VERSION).toBe('2.2');
+  test('la versión vigente es 2.3 y las anteriores quedan desactualizadas', () => {
+    expect(BIOMETRIC_CONSENT_VERSION).toBe('2.3');
     expect(isOutdatedConsent('1.0')).toBe(true);
     expect(isOutdatedConsent('2.0')).toBe(true);
     expect(isOutdatedConsent('2.1')).toBe(true);
-    expect(isOutdatedConsent('2.2')).toBe(false);
+    expect(isOutdatedConsent('2.2')).toBe(true);
+    expect(isOutdatedConsent('2.3')).toBe(false);
     expect(isOutdatedConsent(null)).toBe(true);
     expect(isSupportedConsentVersion('2.0')).toBe(true); // se puede seguir registrando
     expect(isSupportedConsentVersion('3.0')).toBe(false);
@@ -51,8 +52,8 @@ describe('Y-F1b — consentimiento versionado y divulgación del proveedor', () 
       const { version, last_updated: lastUpdated, sections } = res.body.data;
       const texto = sections.map((s) => `${s.title}: ${s.content}`).join('\n');
 
-      expect(version).toBe('2.2');
-      expect(lastUpdated).toBe('2026-10-20');
+      expect(version).toBe('2.3');
+      expect(lastUpdated).toBe('2026-11-07');
 
       expect(texto).toMatch(/Perfect Corp\./);
       expect(texto).toMatch(/YouCam/);
@@ -171,9 +172,9 @@ describe('Y-F1d (texto 2.1) — la huella de la foto se declara', () => {
     expect(BIOMETRIC_FINGERPRINT.retentionHours).toBe(scanSessionService.getCacheTtlHours());
   });
 
-  test('la 2.0 sigue siendo una versión registrable: nadie queda sin poder consentir', () => {
+  test('la 2.0 se reconoce como histórica y exige renovar la autorización', () => {
     expect(isSupportedConsentVersion('2.0')).toBe(true);
-    expect(isOutdatedConsent('2.0')).toBe(true); // pero se marca para re-consentir
+    expect(isOutdatedConsent('2.0')).toBe(true);
   });
 
   test('la sección de retención declara el plazo real y no un «mientras sea necesario»', async () => {

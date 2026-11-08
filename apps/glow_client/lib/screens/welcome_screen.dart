@@ -39,14 +39,25 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
       });
     }
   }
+
   bool _consentAccepted = false;
   bool _isRegisteringConsent = false;
+  Map<String, dynamic>? _termsForAcceptance;
 
   /// Autorizó con un texto anterior al vigente: hay que volver a aceptarlo.
   bool _needsReconsent = false;
 
-  void _showPrivacyPolicyModal(BuildContext context, bool isMen) {
-    showModalBottomSheet(
+  Future<Map<String, dynamic>?> _showPrivacyPolicyModal(
+      BuildContext context, bool isMen) async {
+    final terms = await BiometricService.getConsentTerms();
+    if (!mounted) return null;
+    final processors = (terms['processors'] as List? ?? const [])
+        .whereType<Map>()
+        .map((p) =>
+            '${p['name']} — ${p['country']}: ${p['purpose']} (datos: ${p['data_shared']})')
+        .join('\n');
+    final rights = (terms['rights'] as List? ?? const []).join('\n• ');
+    return showModalBottomSheet<Map<String, dynamic>>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -56,7 +67,9 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
           color: isMen ? MensTheme.obsidianCard : GlowTokens.creamSilk,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           border: Border.all(
-            color: isMen ? MensTheme.champagneGold.withValues(alpha: 0.3) : GlowTokens.terracota.withValues(alpha: 0.3),
+            color: isMen
+                ? MensTheme.champagneGold.withValues(alpha: 0.3)
+                : GlowTokens.terracota.withValues(alpha: 0.3),
           ),
         ),
         padding: const EdgeInsets.all(24.0),
@@ -87,7 +100,9 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: isMen ? MensTheme.textPrimary : GlowTokens.nightAndean,
+                      color: isMen
+                          ? MensTheme.textPrimary
+                          : GlowTokens.nightAndean,
                     ),
                   ),
                 ),
@@ -98,21 +113,23 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Text(
-                  'De conformidad con la Ley Estatutaria 1581 de 2012 de Habeas Data de Colombia y el Decreto 1377 de 2013, te informamos que la captura de tu imagen facial y/o manos se considera un DATO SENSIBLE BIOMÉTRICO.\n\n'
-                  '1. FINALIDAD DEL PROCESAMIENTO:\n'
-                  'Tus fotos serán procesadas mediante algoritmos de Visión Computacional (MLKit/YouCam/ai_worker) y LLMs (DeepSeek/Gemini) con la única finalidad de determinar tu subtono de piel, estación cromática, métricas cutáneas y sugerirte productos de cuidado personal.\n\n'
-                  '2. ALMACENAMIENTO:\n'
-                  'GlowApp no conserva la imagen original: se envía al encargado del tratamiento para el análisis y solo se guardan las métricas resultantes, cifradas con AES-256-GCM.\n\n'
-                  '3. ENCARGADOS DEL TRATAMIENTO Y TRANSFERENCIA INTERNACIONAL (Ley 1581, art. 26):\n'
-                  'Tu fotografía facial se procesa con Perfect Corp. (YouCam AI Skin Analysis), con sede en Taiwán. La fotografía de manos se procesa con Google (Gemini, Estados Unidos). El texto de tu consulta se vectoriza con NVIDIA (Nemotron vía NIM, Estados Unidos) y las métricas numéricas, sin imagen, se envían a DeepSeek (China) para redactar la recomendación. Esto implica transferencia internacional de tus datos, amparada en esta autorización expresa.\n\n'
-                  '4. REGISTRO AUDITABLE:\n'
-                  'Al marcar la casilla de autorización, aceptaste registrar un token auditable con tu ID de usuario, IP de conexión, User-Agent y timestamp en nuestro panel de control B2B / Dashboard Administrativo.\n\n'
-                  '5. CANALES DE ATENCIÓN Y REVOCATORIA (DERECHOS ARCO):\n'
-                  'Puedes solicitar el acceso, actualización, rectificación o supresión de tus datos en cualquier momento escribiendo al correo oficial: habeasdata@glowapp.com o desde la sección de Ajustes de tu perfil.',
+                  '${terms['controller']['name']} es responsable del tratamiento. Contacto: ${terms['controller']['contact']}.\n\n'
+                  'VERSIÓN ${terms['version']} · DATOS SENSIBLES\n${terms['sensitive_data']}\n\n'
+                  'FINALIDAD\n${terms['purpose']}\n\n'
+                  'CARÁCTER FACULTATIVO\n${terms['optional']}\n\n'
+                  'ENCARGADOS Y TRANSFERENCIAS\n$processors\n\n'
+                  '${terms['international_transfer_notice']}\n\n'
+                  'CONSERVACIÓN\n${terms['retention']}\n\n'
+                  'HUELLA TÉCNICA\n${terms['photo_fingerprint']}\n\n'
+                  'TUS DERECHOS\n• $rights\n\n'
+                  '${terms['channel']}\n\n'
+                  '${terms['authorization']}',
                   style: TextStyle(
                     fontSize: 13,
                     height: 1.6,
-                    color: isMen ? MensTheme.textSecondary : GlowTokens.nightAndean.withValues(alpha: 0.85),
+                    color: isMen
+                        ? MensTheme.textSecondary
+                        : GlowTokens.nightAndean.withValues(alpha: 0.85),
                   ),
                 ),
               ),
@@ -121,13 +138,15 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.pop(context, terms),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: isMen ? MensTheme.champagneGold : GlowTokens.terracota,
+                  backgroundColor:
+                      isMen ? MensTheme.champagneGold : GlowTokens.terracota,
                   foregroundColor: isMen ? Colors.black : Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                 ),
-                child: const Text('Entendido y Cerrar'),
+                child: const Text('Volver a la autorización'),
               ),
             ),
           ],
@@ -140,7 +159,8 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
     if (!_consentAccepted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('⚠️ Debes autorizar el tratamiento de datos biométricos para continuar.'),
+          content: Text(
+              '⚠️ Debes autorizar el tratamiento de datos biométricos para continuar.'),
           backgroundColor: Colors.amber,
           duration: Duration(seconds: 3),
         ),
@@ -159,11 +179,21 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
 
     try {
       // Registrar consentimiento auditable en el Backend de PostgreSQL/Dashboard B2B
-      await BiometricService.saveConsent();
+      final terms = _termsForAcceptance;
+      if (terms == null) {
+        messenger.showSnackBar(const SnackBar(
+            content: Text(
+                'Lee el aviso vigente y autoriza expresamente para continuar.')));
+        if (mounted) setState(() => _isRegisteringConsent = false);
+        return;
+      }
+      await BiometricService.saveConsent(terms: terms);
     } catch (e) {
       debugPrint('⚠️ No se pudo registrar el consentimiento: $e');
       messenger.showSnackBar(
-        const SnackBar(content: Text('No se pudo guardar tu consentimiento. Revisa tu conexión e inténtalo de nuevo.')),
+        const SnackBar(
+            content: Text(
+                'No se pudo guardar tu consentimiento. Revisa tu conexión e inténtalo de nuevo.')),
       );
       if (mounted) setState(() => _isRegisteringConsent = false);
       return;
@@ -185,7 +215,8 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
         final isMen = currentMode == AudienceMode.men;
 
         return Scaffold(
-          backgroundColor: isMen ? MensTheme.obsidianBg : const Color(0xFFB17A48),
+          backgroundColor:
+              isMen ? MensTheme.obsidianBg : const Color(0xFFB17A48),
           body: Stack(
             children: [
               // 1. Imagen de Fondo de Alta Definición Haute Joaillerie
@@ -217,7 +248,8 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 560),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 16.0),
                       child: Column(
                         children: [
                           // Botón sutil de retroceso si existe historial de navegación
@@ -226,12 +258,15 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                             child: Navigator.canPop(context)
                                 ? Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withValues(alpha: 0.35),
+                                      color:
+                                          Colors.black.withValues(alpha: 0.35),
                                       shape: BoxShape.circle,
                                     ),
                                     child: IconButton(
-                                      icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 18),
-                                      onPressed: () => Navigator.maybePop(context),
+                                      icon: const Icon(Icons.arrow_back_ios_new,
+                                          color: Colors.white, size: 18),
+                                      onPressed: () =>
+                                          Navigator.maybePop(context),
                                     ),
                                   )
                                 : const SizedBox(height: 24),
@@ -245,22 +280,29 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                           if (_needsReconsent) ...[
                             Container(
                               width: double.infinity,
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 10),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFD4AF37).withValues(alpha: 0.14),
+                                color: const Color(0xFFD4AF37)
+                                    .withValues(alpha: 0.14),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFFD4AF37).withValues(alpha: 0.55),
+                                  color: const Color(0xFFD4AF37)
+                                      .withValues(alpha: 0.55),
                                 ),
                               ),
                               child: const Row(
                                 children: [
-                                  Icon(Icons.privacy_tip_outlined, size: 18, color: Color(0xFFE5C158)),
+                                  Icon(Icons.privacy_tip_outlined,
+                                      size: 18, color: Color(0xFFE5C158)),
                                   SizedBox(width: 8),
                                   Expanded(
                                     child: Text(
                                       'Actualizamos el aviso de datos biométricos: ahora dice cuánto tiempo conservamos tus datos y qué se borra, y cuándo. Necesitamos que lo aceptes de nuevo para seguir midiendo.',
-                                      style: TextStyle(fontSize: 11.5, color: Colors.white, height: 1.35),
+                                      style: TextStyle(
+                                          fontSize: 11.5,
+                                          color: Colors.white,
+                                          height: 1.35),
                                     ),
                                   ),
                                 ],
@@ -269,12 +311,15 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                             const SizedBox(height: 10),
                           ],
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1F1A15).withValues(alpha: 0.76),
+                              color: const Color(0xFF1F1A15)
+                                  .withValues(alpha: 0.76),
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: const Color(0xFFD4AF37).withValues(alpha: 0.5),
+                                color: const Color(0xFFD4AF37)
+                                    .withValues(alpha: 0.5),
                                 width: 1.0,
                               ),
                               boxShadow: [
@@ -291,19 +336,56 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                                   value: _consentAccepted,
                                   activeColor: const Color(0xFFD4AF37),
                                   checkColor: Colors.black,
-                                  side: const BorderSide(color: Color(0xFFD4AF37), width: 1.5),
-                                  onChanged: (val) {
-                                    setState(() {
-                                      _consentAccepted = val ?? false;
-                                    });
+                                  side: const BorderSide(
+                                      color: Color(0xFFD4AF37), width: 1.5),
+                                  onChanged: (val) async {
+                                    if (val != true) {
+                                      setState(() {
+                                        _consentAccepted = false;
+                                        _termsForAcceptance = null;
+                                      });
+                                      return;
+                                    }
+                                    try {
+                                      final terms =
+                                          await _showPrivacyPolicyModal(
+                                              context, isMen);
+                                      if (!mounted) return;
+                                      setState(() {
+                                        _termsForAcceptance = terms;
+                                        _consentAccepted = terms != null;
+                                      });
+                                    } catch (error) {
+                                      if (!mounted) return;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  'No se pudo cargar el aviso: $error')));
+                                    }
                                   },
                                 ),
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () => _showPrivacyPolicyModal(context, isMen),
+                                    onTap: () async {
+                                      try {
+                                        final terms =
+                                            await _showPrivacyPolicyModal(
+                                                context, isMen);
+                                        if (terms != null && mounted)
+                                          setState(() =>
+                                              _termsForAcceptance = terms);
+                                      } catch (error) {
+                                        if (mounted)
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(
+                                                      'No se pudo cargar el aviso: $error')));
+                                      }
+                                    },
                                     child: RichText(
                                       text: const TextSpan(
-                                        text: 'Autorizo el uso de mi imagen biométrica según la ',
+                                        text:
+                                            'Autorizo expresamente el tratamiento biométrico y, si aplica, su transferencia internacional según la ',
                                         style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.white,
@@ -311,11 +393,13 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                                         ),
                                         children: [
                                           TextSpan(
-                                            text: 'Política de Tratamiento de Datos (Ley 1581)',
+                                            text:
+                                                'Política de Tratamiento de Datos (Ley 1581)',
                                             style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               color: Color(0xFFE5C158),
                                             ),
                                           ),
@@ -334,11 +418,14 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                             width: double.infinity,
                             height: 56,
                             child: ElevatedButton(
-                              onPressed: _isRegisteringConsent ? null : () => _handleStartScan(context),
+                              onPressed: _isRegisteringConsent
+                                  ? null
+                                  : () => _handleStartScan(context),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: _consentAccepted
                                     ? const Color(0xFFC5A052)
-                                    : const Color(0xFF7A6B5A).withValues(alpha: 0.55),
+                                    : const Color(0xFF7A6B5A)
+                                        .withValues(alpha: 0.55),
                                 foregroundColor: _consentAccepted
                                     ? const Color(0xFF14100C)
                                     : Colors.white70,
@@ -351,10 +438,14 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                                   ? const SizedBox(
                                       height: 22,
                                       width: 22,
-                                      child: CircularProgressIndicator(color: Colors.black, strokeWidth: 2.5),
+                                      child: CircularProgressIndicator(
+                                          color: Colors.black,
+                                          strokeWidth: 2.5),
                                     )
                                   : Text(
-                                      isMen ? 'Iniciar Escaneo de Visagismo' : 'Iniciar Ritual de Belleza Aura',
+                                      isMen
+                                          ? 'Iniciar Escaneo de Visagismo'
+                                          : 'Iniciar Ritual de Belleza Aura',
                                       style: const TextStyle(
                                         fontFamily: 'CormorantGaramond',
                                         fontSize: 20,
@@ -376,12 +467,14 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (_) => ResultsScreen(
-                                      result: BiometricService.getDemoBiometricResult(),
+                                      result: BiometricService
+                                          .getDemoBiometricResult(),
                                     ),
                                   ),
                                 );
                               },
-                              icon: const Icon(Icons.auto_fix_high, color: Color(0xFFE5C158), size: 18),
+                              icon: const Icon(Icons.auto_fix_high,
+                                  color: Color(0xFFE5C158), size: 18),
                               label: const Text(
                                 '🎭 Modo Demostración (Ver Flujo Sin Saldo)',
                                 style: TextStyle(
@@ -391,9 +484,12 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
-                                side: const BorderSide(color: Color(0xFFD4AF37), width: 1.2),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                                backgroundColor: const Color(0xFF1F1A15).withValues(alpha: 0.65),
+                                side: const BorderSide(
+                                    color: Color(0xFFD4AF37), width: 1.2),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(24)),
+                                backgroundColor: const Color(0xFF1F1A15)
+                                    .withValues(alpha: 0.65),
                               ),
                             ),
                           ),
@@ -411,4 +507,3 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
     );
   }
 }
-

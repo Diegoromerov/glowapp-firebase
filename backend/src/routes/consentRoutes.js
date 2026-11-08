@@ -6,33 +6,37 @@ const { wrapRouterAsync } = require('../utils/expressAsync');
  */
 
 const express = require('express');
+const crypto = require('crypto');
 const router = express.Router();
 const { authMiddleware } = require('../middleware/auth');
 const { pool } = require('../config/db');
 const { 
   checkConsent,
-  grantConsent,
   revokeConsent,
   getConsentHistory,
   deleteBiometricData,
   validateConsentBeforeProcessing,
   VALID_CONSENT_TYPES
 } = require('../services/consentService');
+const { grantConsent: grantAuditableBiometricConsent, VALID_CONSENT_TYPES: BIOMETRIC_CONSENT_TYPES } = require('../middleware/biometricConsent');
+const { BIOMETRIC_CONSENT_VERSION, buildBiometricConsentTerms } = require('../config/consentConfig');
 
 /**
  * @route POST /api/consent/grant
  * @description Otorga consentimiento biométrico
  * @access Private (JWT required)
- * @body { consent_type, purpose }
+ * @body { consent_type, purpose, version_terms, document_sha256, explicit_authorization }
  * @returns { granted: true, consent_id, granted_at }
  */
 router.post('/grant', authMiddleware, async (req, res) => {
   try {
     const userId = req.user.id;
-    const { consent_type, purpose } = req.body;
+    const { consent_type, purpose, version_terms, document_sha256, explicit_authorization } = req.body;
+    const terms = buildBiometricConsentTerms();
+    const termsHash = crypto.createHash('sha256').update(JSON.stringify(terms)).digest('hex');
     
     // Validaciones
-    if (!consent_type || !['facial_analysis', 'skin_scan', 'hair_analysis', 'body_measurement', 'virtual_try_on', 'all_biometric'].includes(consent_type)) {
+    if (!consent_type || !BIOMETRIC_CONSENT_TYPES.includes(consent_type)) {
       return res.status(400).json({
         error: 'invalid_consent_type',
         message: 'Tipo de consentimiento requerido y debe ser uno de: facial_analysis, skin_scan, hair_analysis, body_measurement, virtual_try_on, all_biometric'
@@ -45,13 +49,28 @@ router.post('/grant', authMiddleware, async (req, res) => {
         message: 'La finalidad (purpose) es requerida y debe tener al menos 10 caracteres'
       });
     }
+    if (version_terms !== BIOMETRIC_CONSENT_VERSION
+        || explicit_authorization !== true
+        || document_sha256 !== termsHash
+        || purpose.trim() !== terms.purpose) {
+      return res.status(409).json({
+        error: 'explicit_current_consent_required',
+        code: 'CONSENT_TERMS_CHANGED',
+        current_version: BIOMETRIC_CONSENT_VERSION,
+        message: 'Lee el aviso vigente y marca la autorización expresa antes de continuar.',
+      });
+    }
     
-    const consent = await grantConsent({
+    const consent = await grantAuditableBiometricConsent({
       userId,
       consentType: consent_type,
       purpose: purpose.trim(),
-      ipAddress: req.ip,
-      userAgent: req.get('user-agent')
+      ip: req.ip,
+      userAgent: req.get('user-agent'),
+      versionTerms: version_terms,
+      explicitAuthorization: true,
+      documentSha256: termsHash,
+      termsSnapshot: terms,
     });
     
     res.status(201).json({
@@ -170,13 +189,17 @@ router.get('/history', authMiddleware, async (req, res) => {
 router.get('/export', authMiddleware, async (req, res) => {
   try {
     const userId = req.user.id;
-    const [consents, profiles, diagnostics, userBiometrics, history, skinProfiles] = await Promise.all([
-      pool.query('SELECT consent_type, granted, granted_at, revoked_at, purpose, version_terms, created_at FROM biometric_consents WHERE user_id = $1 ORDER BY created_at', [userId]),
+    const [consents, profiles, diagnostics, userBiometrics, history, skinProfiles, consentAudit] = await Promise.all([
+      pool.query('SELECT consent_type, granted, granted_at, revoked_at, purpose, version_terms, explicit_authorization, document_sha256, terms_snapshot, created_at FROM biometric_consents WHERE user_id = $1 ORDER BY created_at', [userId]),
       pool.query('SELECT id, face_scores, hands_diagnosis, recommendation, recommended_products, entry_point, created_at, updated_at FROM beauty_profiles WHERE user_id = $1', [userId]),
       pool.query('SELECT id, tool_type, result_data, score_hidratacion, score_impurezas, score_luminosidad, track, created_at FROM ai_diagnostics WHERE user_id = $1 ORDER BY created_at', [userId]),
       pool.query('SELECT id, subtono, estacion, paleta, hidratacion, sebo, mensaje_aura, created_at FROM user_biometrics WHERE user_id = $1 ORDER BY created_at', [String(userId)]),
       pool.query('SELECT id, profile_id, face_scores, hands_diagnosis, recommendation, created_at FROM biometric_history WHERE user_id = $1 ORDER BY created_at', [userId]),
       pool.query('SELECT id, tipo_piel, hidratacion_promedio, tendencia_acne, sensibilidad_score, diagnosticos_count, ultimo_diagnostico_at, created_at, updated_at FROM skin_profiles WHERE user_id = $1', [userId]),
+      pool.query(`SELECT id, consent_id, event_type, consent_type, granted, granted_at,
+        revoked_at, purpose, version_terms, explicit_authorization, document_sha256,
+        terms_snapshot, happened_at, state_before, state_after
+        FROM biometric_consent_audit WHERE user_id = $1 ORDER BY happened_at, id`, [userId]),
     ]);
 
     res.json({
@@ -188,6 +211,7 @@ router.get('/export', authMiddleware, async (req, res) => {
       user_biometrics: userBiometrics.rows,
       biometric_history: history.rows,
       skin_profiles: skinProfiles.rows,
+      biometric_consent_audit: consentAudit.rows,
     });
   } catch (error) {
     console.error('❌ Error exportando datos biométricos:', error.message);
@@ -202,8 +226,13 @@ router.get('/export', authMiddleware, async (req, res) => {
  * @returns { deleted: true, records_affected: N }
  */
 router.delete('/data', authMiddleware, async (req, res) => {
+  const requestId = crypto.randomUUID();
+  const userId = req.user.id;
   try {
-    const userId = req.user.id;
+    await pool.query(`INSERT INTO biometric_consent_audit
+      (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+      VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_REQUESTED', 'all_biometric', FALSE, $3::jsonb)`,
+    [userId, requestId, JSON.stringify({ endpoint: '/api/consent/data' })]);
     const result = await deleteBiometricData(userId);
     
     // N-11 (SECAPP-05): confirmación explícita de borrado. `!result.deleted`
@@ -212,18 +241,32 @@ router.delete('/data', authMiddleware, async (req, res) => {
     // servicio devuelve {deleted:false, recordsAffected:0} y el cliente debe
     // recibir 500, no una supresión ficticia (Ley 1581 Art. 8/15).
     if (!result || result.deleted !== true) {
+      await pool.query(`INSERT INTO biometric_consent_audit
+        (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+        VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_FAILED', 'all_biometric', FALSE, $3::jsonb)`,
+      [userId, requestId, JSON.stringify({ reason: 'deletion_not_confirmed' })]);
       return res.status(500).json({
         error: 'deletion_failed',
         message: (result && result.error) || 'Error eliminando datos biométricos'
       });
     }
+
+    await pool.query(`INSERT INTO biometric_consent_audit
+      (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+      VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_COMPLETED', 'all_biometric', FALSE, $3::jsonb)`,
+    [userId, requestId, JSON.stringify({ records_affected: result.recordsAffected })]);
     
     res.json({
       deleted: true,
-      records_affected: result.recordsAffected
+      records_affected: result.recordsAffected,
+      request_id: requestId,
     });
   } catch (error) {
     console.error('❌ Error DELETE /api/consent/data:', error.message);
+    await pool.query(`INSERT INTO biometric_consent_audit
+      (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+      VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_FAILED', 'all_biometric', FALSE, $3::jsonb)`,
+    [userId, requestId, JSON.stringify({ reason: 'exception', message: error.message })]).catch(() => {});
     res.status(500).json({ 
       error: 'internal_error', 
       message: 'Error eliminando datos biométricos' 

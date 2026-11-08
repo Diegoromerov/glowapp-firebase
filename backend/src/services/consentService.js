@@ -29,7 +29,7 @@ const CACHE_TTL_MS = 5 * 60 * 1000;
  * Genera clave de cache para consentimiento
  */
 function getCacheKey(userId, consentType) {
-  return `consent:${userId}:${consentType}`;
+  return `consent:${userId}:${consentType}:${BIOMETRIC_CONSENT_VERSION}`;
 }
 
 /**
@@ -49,7 +49,7 @@ async function checkConsent(userId, consentType) {
 
     // Intentar Redis primero
     const redis = await getRedisClient();
-    const cacheKey = `consent:${userId}:${consentType}`;
+    const cacheKey = getCacheKey(userId, consentType);
     
     if (redis) {
       try {
@@ -64,10 +64,10 @@ async function checkConsent(userId, consentType) {
 
     // Consultar PostgreSQL
     const query = `
-      SELECT granted, granted_at, version_terms, revoked_at
+      SELECT granted, granted_at, version_terms, revoked_at, explicit_authorization, document_sha256
       FROM biometric_consents
       WHERE user_id = $1 AND consent_type = $2
-      ORDER BY version_terms DESC
+      ORDER BY granted_at DESC NULLS LAST, id DESC
       LIMIT 1
     `;
     
@@ -82,11 +82,22 @@ async function checkConsent(userId, consentType) {
       
       if (!consent.granted || consent.revoked_at) {
         result = { granted: false, grantedAt: null, version: consent.version_terms };
+      } else if (consent.version_terms !== BIOMETRIC_CONSENT_VERSION
+          || consent.explicit_authorization !== true || !consent.document_sha256) {
+        result = {
+          granted: false,
+          grantedAt: consent.granted_at,
+          version: consent.version_terms,
+          outdated: consent.version_terms !== BIOMETRIC_CONSENT_VERSION,
+          evidenceMissing: consent.explicit_authorization !== true || !consent.document_sha256,
+        };
       } else {
         result = { 
           granted: true, 
-          grantedAt: consent.granted_at, 
-          version: consent.version_terms 
+          grantedAt: consent.granted_at,
+          version: consent.version_terms,
+          explicitAuthorization: true,
+          documentSha256: consent.document_sha256,
         };
       }
     }
@@ -115,7 +126,7 @@ async function checkConsent(userId, consentType) {
  * @param {Object} params - { userId, consentType, purpose, ipAddress, userAgent, versionTerms }
  * @returns {Promise<Object>} Registro de consentimiento creado/actualizado
  */
-async function grantConsent({ userId, consentType, purpose, ipAddress, userAgent, versionTerms = BIOMETRIC_CONSENT_VERSION }) {
+async function grantConsent({ userId, consentType, purpose, ipAddress, userAgent, versionTerms = BIOMETRIC_CONSENT_VERSION, explicitAuthorization = false, documentSha256, termsSnapshot }) {
   try {
     // Validar tipo
     if (!VALID_CONSENT_TYPES.includes(consentType)) {
@@ -126,16 +137,20 @@ async function grantConsent({ userId, consentType, purpose, ipAddress, userAgent
     if (!isSupportedConsentVersion(versionTerms)) {
       throw new Error(`Versión de consentimiento no soportada: ${versionTerms}`);
     }
-    
     // Validar purpose (requerido por Ley 1581 Art. 12)
     if (!purpose || purpose.trim().length < 10) {
       throw new Error('La finalidad (purpose) es requerida y debe tener al menos 10 caracteres');
     }
+    if (versionTerms !== BIOMETRIC_CONSENT_VERSION || explicitAuthorization !== true
+        || !/^[a-f0-9]{64}$/i.test(documentSha256 || '') || !termsSnapshot) {
+      throw new Error('Se requiere aceptación expresa del aviso biométrico vigente y su evidencia verificable.');
+    }
     
     const query = `
       INSERT INTO biometric_consents 
-      (user_id, consent_type, granted, granted_at, purpose, ip_address, user_agent, version_terms)
-      VALUES ($1, $2, TRUE, NOW(), $3, $4, $5, $6)
+      (user_id, consent_type, granted, granted_at, purpose, ip_address, user_agent, version_terms,
+       explicit_authorization, document_sha256, terms_snapshot)
+      VALUES ($1, $2, TRUE, NOW(), $3, $4, $5, $6, TRUE, $7, $8::jsonb)
       ON CONFLICT (user_id, consent_type, version_terms) 
       DO UPDATE SET 
         granted = TRUE,
@@ -144,6 +159,9 @@ async function grantConsent({ userId, consentType, purpose, ipAddress, userAgent
         purpose = EXCLUDED.purpose,
         ip_address = EXCLUDED.ip_address,
         user_agent = EXCLUDED.user_agent,
+        explicit_authorization = EXCLUDED.explicit_authorization,
+        document_sha256 = EXCLUDED.document_sha256,
+        terms_snapshot = EXCLUDED.terms_snapshot,
         updated_at = NOW()
       RETURNING *
     `;
@@ -154,7 +172,9 @@ async function grantConsent({ userId, consentType, purpose, ipAddress, userAgent
       purpose.trim(), 
       ipAddress || null, 
       userAgent || null, 
-      versionTerms
+      versionTerms,
+      documentSha256,
+      JSON.stringify(termsSnapshot)
     ]);
     
     const consent = res.rows[0];
@@ -163,7 +183,7 @@ async function grantConsent({ userId, consentType, purpose, ipAddress, userAgent
     const redis = await getRedisClient();
     if (redis) {
       try {
-        const cacheKey = `consent:${userId}:${consentType}`;
+        const cacheKey = getCacheKey(userId, consentType);
         await redis.del(cacheKey);
       } catch (error) {
         console.warn('⚠️ Error invalidando cache:', error.message);
@@ -240,7 +260,7 @@ async function revokeConsent(userId, consentType) {
             await redis.del(...keys);
           }
         } else {
-          const cacheKey = `consent:${userId}:${consentType}`;
+          const cacheKey = getCacheKey(userId, consentType);
           await redis.del(cacheKey);
         }
       } catch (error) {
@@ -319,7 +339,7 @@ async function getConsentHistory(userId) {
  * @param {string} userId - UUID del usuario
  * @returns {Promise<Object>} { deleted: boolean, recordsAffected: number }
  */
-async function deleteBiometricData(userId) {
+async function deleteBiometricData(userId, { client: providedClient } = {}) {
   try {
     let recordsAffected = 0;
     const tables = [
@@ -331,20 +351,21 @@ async function deleteBiometricData(userId) {
       'user_photos', 'biometric_history', 'beauty_profiles',
       'user_biometrics', 'ai_diagnostics', 'skin_profiles',
     ];
-    const client = typeof pool.connect === 'function' ? await pool.connect() : null;
+    const client = providedClient || (typeof pool.connect === 'function' ? await pool.connect() : null);
+    const ownsClient = Boolean(client && !providedClient);
     const queryable = client || pool;
-    if (client) await client.query('BEGIN');
+    if (ownsClient) await client.query('BEGIN');
     try {
     for (const table of tables) {
       const result = await queryable.query(`DELETE FROM ${table} WHERE user_id = $1`, [table === 'user_biometrics' ? String(userId) : userId]);
       recordsAffected += result.rowCount;
     }
-      if (client) await client.query('COMMIT');
+      if (ownsClient) await client.query('COMMIT');
     } catch (error) {
-      if (client) await client.query('ROLLBACK');
+      if (ownsClient) await client.query('ROLLBACK');
       throw error;
     } finally {
-      if (client) client.release();
+      if (ownsClient) client.release();
     }
 
     const redis = await getRedisClient();

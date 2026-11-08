@@ -21,6 +21,7 @@ router.use(requireRol('admin'));
 // se interpretan como un id y la petición muere en el guardia de formato.
 router.get('/tickets/metricas', adminTicketController.metricasTickets);
 router.get('/tickets/esquema', adminTicketController.esquemaTickets);
+router.get('/tickets/:id/audit', adminTicketController.auditoriaTicket);
 router.get('/tickets', adminTicketController.listarTickets);
 router.get('/tickets/:id', adminTicketController.detalleTicket);
 
@@ -30,6 +31,14 @@ router.patch(
   '/tickets/:id',
   adminAuditLog({ action: 'tickets.actualizar', resource: 'ticket' }),
   adminTicketController.actualizarTicket
+);
+router.post('/tickets/:id/arco/verify',
+  adminAuditLog({ action: 'tickets.arco.verify_identity', resource: 'ticket' }),
+  adminTicketController.verifyArcoIdentity
+);
+router.post('/tickets/:id/arco/execute',
+  adminAuditLog({ action: 'tickets.arco.execute_suppression', resource: 'ticket' }),
+  adminTicketController.executeArcoSuppression
 );
 router.post(
   '/tickets/:id/respuesta',

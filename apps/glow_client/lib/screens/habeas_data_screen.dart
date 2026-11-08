@@ -12,6 +12,9 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
   bool _biometricConsent = false;
   bool _isLoading = true;
   bool _isBusy = false;
+  bool _consentStateKnown = true;
+  bool _needsReconsent = false;
+  bool _deletionPending = false;
 
   @override
   void initState() {
@@ -21,28 +24,117 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
 
   Future<void> _loadConsent() async {
     try {
-      final allowed = await BiometricService.hasConsent();
+      final state = await BiometricService.getConsentState();
       if (!mounted) return;
-      if (mounted) setState(() { _biometricConsent = allowed; _isLoading = false; });
+      setState(() {
+        _biometricConsent = state.granted;
+        _needsReconsent = state.needsReconsent;
+        _consentStateKnown = state.known;
+        _isLoading = false;
+      });
     } catch (_) {
-      if (mounted) setState(() { _biometricConsent = false; _isLoading = false; });
+      if (mounted)
+        setState(() {
+          _consentStateKnown = false;
+          _isLoading = false;
+        });
     }
+  }
+
+  Future<Map<String, dynamic>?> _confirmCurrentTerms() async {
+    final terms = await BiometricService.getConsentTerms();
+    if (!mounted) return null;
+    final controller = Map<String, dynamic>.from(terms['controller'] as Map);
+    final processors = (terms['processors'] as List? ?? const [])
+        .whereType<Map>()
+        .map((p) =>
+            '${p['name']} — ${p['country']}: ${p['purpose']} (datos: ${p['data_shared']})')
+        .join('\n');
+    var explicitlyAccepted = false;
+    final accepted = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setDialogState) => AlertDialog(
+          title: Text(terms['title'] as String),
+          content: SizedBox(
+            width: 560,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('${controller['name']} · ${controller['contact']}'),
+                  const SizedBox(height: 12),
+                  Text(
+                      'Versión ${terms['version']} · Datos sensibles\n${terms['sensitive_data']}'),
+                  const SizedBox(height: 12),
+                  Text('Finalidad\n${terms['purpose']}'),
+                  const SizedBox(height: 12),
+                  Text('Carácter facultativo\n${terms['optional']}'),
+                  const SizedBox(height: 12),
+                  Text('Encargados y transferencias\n$processors'),
+                  const SizedBox(height: 12),
+                  Text(terms['international_transfer_notice'] as String),
+                  const SizedBox(height: 12),
+                  Text('Conservación\n${terms['retention']}'),
+                  const SizedBox(height: 12),
+                  Text('Huella técnica\n${terms['photo_fingerprint']}'),
+                  const SizedBox(height: 12),
+                  Text(
+                      'Tus derechos\n• ${(terms['rights'] as List? ?? const []).join('\n• ')}'),
+                  const SizedBox(height: 12),
+                  Text(terms['channel'] as String),
+                  const SizedBox(height: 12),
+                  Text(terms['authorization'] as String),
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    value: explicitlyAccepted,
+                    onChanged: (value) => setDialogState(
+                        () => explicitlyAccepted = value == true),
+                    title: const Text(
+                        'Autorizo expresamente y de forma voluntaria el tratamiento de mis datos sensibles y, si aplica, su transferencia internacional a los proveedores y países indicados.'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop(dialogContext, false),
+                child: const Text('No autorizo')),
+            FilledButton(
+              onPressed: explicitlyAccepted
+                  ? () => Navigator.pop(dialogContext, true)
+                  : null,
+              child: const Text('Aceptar y continuar'),
+            ),
+          ],
+        ),
+      ),
+    );
+    return accepted == true ? terms : null;
   }
 
   Future<void> _setConsent(bool value) async {
     setState(() => _isBusy = true);
     try {
       if (value) {
-        await BiometricService.saveConsent();
+        final terms = await _confirmCurrentTerms();
+        if (terms == null) return;
+        await BiometricService.saveConsent(terms: terms);
       } else {
         final confirmed = await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Revocar y eliminar datos'),
-            content: const Text('Se revocará el consentimiento y se solicitará borrar los datos biométricos guardados. Esta acción no se puede deshacer.'),
+            content: const Text(
+                'Se revocará el consentimiento y se solicitará borrar los datos biométricos guardados. Esta acción no se puede deshacer.'),
             actions: [
-              TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancelar')),
-              FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Revocar y eliminar')),
+              TextButton(
+                  onPressed: () => Navigator.pop(context, false),
+                  child: const Text('Cancelar')),
+              FilledButton(
+                  onPressed: () => Navigator.pop(context, true),
+                  child: const Text('Revocar y eliminar')),
             ],
           ),
         );
@@ -53,11 +145,28 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
         await BiometricService.revokeConsent();
       }
       if (mounted) {
-        setState(() => _biometricConsent = value);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value ? 'Consentimiento biométrico otorgado.' : 'Consentimiento biométrico revocado.')));
+        setState(() {
+          _biometricConsent = value;
+          _needsReconsent = false;
+          _deletionPending = false;
+          _consentStateKnown = true;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(value
+                ? 'Consentimiento biométrico otorgado.'
+                : 'Consentimiento biométrico revocado.')));
       }
     } catch (error) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString().replaceFirst('Exception: ', ''))));
+      if (error is BiometricDeletionPendingException && mounted) {
+        setState(() {
+          _biometricConsent = false;
+          _needsReconsent = false;
+          _deletionPending = true;
+        });
+      }
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(error.toString().replaceFirst('Exception: ', ''))));
     } finally {
       if (mounted) setState(() => _isBusy = false);
     }
@@ -67,9 +176,14 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
     setState(() => _isBusy = true);
     try {
       await BiometricService.exportBiometricData();
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Expediente generado. Consulta el archivo JSON en las descargas.')));
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+                'Expediente generado. Consulta el archivo JSON en las descargas.')));
     } catch (error) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString().replaceFirst('Exception: ', ''))));
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(error.toString().replaceFirst('Exception: ', ''))));
     } finally {
       if (mounted) setState(() => _isBusy = false);
     }
@@ -127,7 +241,8 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.gavel_outlined, color: textColor, size: 22),
+                            Icon(Icons.gavel_outlined,
+                                color: textColor, size: 22),
                             const SizedBox(width: 10),
                             Text(
                               'PROTECCION DE DATOS SENSIBLES',
@@ -143,7 +258,7 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          'Tus analisis y perfiles biométricos se guardan en GlowApp mientras mantengas el consentimiento. Puedes revocarlo y solicitar la eliminacion de estos datos desde esta pantalla.',
+                          'La autorización para tratar datos biométricos sensibles es facultativa. Puedes revisar el aviso vigente, revocar la autorización y solicitar la supresión desde esta pantalla. Las métricas tienen un plazo de conservación informado antes de aceptar.',
                           style: TextStyle(
                             fontFamily: 'CormorantGaramond',
                             fontSize: 14,
@@ -154,6 +269,59 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                       ],
                     ),
                   ),
+
+                  if (!_consentStateKnown) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                        'No pudimos consultar tu estado de autorización. Vuelve a cargar antes de cambiarlo.',
+                        style: TextStyle(color: AppTheme.error, fontSize: 12)),
+                    TextButton(
+                        onPressed: _isBusy ? null : _loadConsent,
+                        child: const Text('Volver a consultar')),
+                  ],
+                  if (_needsReconsent) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                        'El aviso cambió. La autorización anterior no permite nuevos análisis hasta que revises y aceptes la versión vigente.',
+                        style: TextStyle(color: mutedText, fontSize: 13)),
+                    TextButton.icon(
+                      onPressed: _isBusy ? null : () => _setConsent(true),
+                      icon: const Icon(Icons.refresh),
+                      label: const Text('Revisar y actualizar autorización'),
+                    ),
+                  ],
+                  if (_deletionPending) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                        'La autorización ya está revocada y no se ejecutan nuevos análisis. La supresión quedó pendiente de confirmación.',
+                        style: TextStyle(color: AppTheme.error, fontSize: 13)),
+                    TextButton.icon(
+                      onPressed: _isBusy
+                          ? null
+                          : () async {
+                              setState(() => _isBusy = true);
+                              try {
+                                await BiometricService.deleteBiometricData();
+                                if (mounted)
+                                  setState(() => _deletionPending = false);
+                                if (mounted)
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content:
+                                              Text('Supresión confirmada.')));
+                              } catch (error) {
+                                if (mounted)
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(error.toString())));
+                              } finally {
+                                if (mounted) setState(() => _isBusy = false);
+                              }
+                            },
+                      icon: const Icon(Icons.delete_outline),
+                      label: const Text('Reintentar eliminación'),
+                    ),
+                  ],
 
                   const SizedBox(height: 32),
 
@@ -205,12 +373,19 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                           ),
                         ),
                         _isLoading
-                            ? const SizedBox(width: 48, height: 32, child: Center(child: CircularProgressIndicator(strokeWidth: 2)))
+                            ? const SizedBox(
+                                width: 48,
+                                height: 32,
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                        strokeWidth: 2)))
                             : Switch.adaptive(
-                          value: _biometricConsent,
-                          activeColor: primaryColor,
-                          onChanged: _isBusy ? null : _setConsent,
-                        ),
+                                value: _biometricConsent,
+                                activeColor: primaryColor,
+                                onChanged: _isBusy || !_consentStateKnown
+                                    ? null
+                                    : _setConsent,
+                              ),
                       ],
                     ),
                   ),
@@ -222,7 +397,8 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                     width: double.infinity,
                     child: OutlinedButton.icon(
                       onPressed: _isBusy ? null : _exportData,
-                      icon: Icon(Icons.download_outlined, color: textColor, size: 18),
+                      icon: Icon(Icons.download_outlined,
+                          color: textColor, size: 18),
                       label: Text(
                         'Descargar Mi Expediente Biometrico (JSON)',
                         style: TextStyle(
@@ -235,7 +411,8 @@ class _HabeasDataScreenState extends State<HabeasDataScreen> {
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         side: BorderSide(color: borderColor),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                   ),

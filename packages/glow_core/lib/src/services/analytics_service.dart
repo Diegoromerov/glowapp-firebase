@@ -1,10 +1,8 @@
 // lib/services/analytics_service.dart
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'api_service.dart';
 import 'auth_service.dart';
 
@@ -13,65 +11,15 @@ class AnalyticsService {
   factory AnalyticsService() => _instance;
   AnalyticsService._internal();
 
-  String? _sessionId;
-  String get sessionId => _sessionId ??= _generateUUIDv4();
-  set sessionId(String value) => _sessionId = value;
   final List<Map<String, dynamic>> _queue = [];
   Timer? _flushTimer;
   bool _isSending = false;
-  bool? _telemetryEnabledCache;
-  DateTime? _cacheTimestamp;
-  static const Duration _cacheValidity = Duration(minutes: 5);
 
   void init() {
-    sessionId = _generateUUIDv4();
     _startTimer();
     if (kDebugMode) {
-      debugPrint('📊 AnalyticsService: Inicializado con Session ID $sessionId');
+      debugPrint('📊 AnalyticsService: medición interna agregada inicializada');
     }
-  }
-
-  Future<bool> _getTelemetryEnabled() async {
-      // Verificar cache primero
-      if (_telemetryEnabledCache != null &&
-          _cacheTimestamp != null &&
-          DateTime.now().difference(_cacheTimestamp!) < _cacheValidity) {
-        return _telemetryEnabledCache!;
-      }
-
-      try {
-        // Si no hay usuario logueado, por defecto permitir telemetría (comportamiento anterior)
-        final token = await AuthService.getToken();
-        if (token == null || token.isEmpty) {
-          _telemetryEnabledCache = true;
-          _cacheTimestamp = DateTime.now();
-          return true;
-        }
-
-        final headers = await ApiService.getAuthHeaders();
-        final uri = Uri.parse('${ApiService.baseUrl}/api/users/preferences');
-        final response = await http.get(uri, headers: headers).timeout(const Duration(seconds: 10));
-      
-        if (response.statusCode == 200) {
-          final data = json.decode(response.body);
-          _telemetryEnabledCache = data['data']?['telemetry_enabled'] ?? true;
-        } else {
-          _telemetryEnabledCache = true; // Default a true si falla
-        }
-      } catch (e) {
-        if (kDebugMode) {
-          debugPrint('⚠️ AnalyticsService: Error obteniendo preferencia telemetría, default true: $e');
-        }
-        _telemetryEnabledCache = true;
-      }
-    
-      _cacheTimestamp = DateTime.now();
-      return _telemetryEnabledCache!;
-    }
-
-  void invalidateTelemetryCache() {
-    _telemetryEnabledCache = null;
-    _cacheTimestamp = null;
   }
 
   void logEvent({
@@ -80,36 +28,18 @@ class AnalyticsService {
     String? elementId,
     Map<String, dynamic>? metadata,
   }) {
-    _getTelemetryEnabled().then((enabled) {
-      if (!enabled) {
-        if (kDebugMode) {
-          debugPrint('📊 AnalyticsService: Telemetría deshabilitada por preferencia de usuario, evento [$eventType] descartado');
-        }
-        return;
-      }
-
-      final event = {
-        'session_id': sessionId,
-        'event_type': eventType,
-        'screen_name': screenName,
-        'element_id': elementId,
-        'metadata': metadata,
-        'creado_en': DateTime.now().toUtc().toIso8601String(),
-      };
-
-      synchronized(() {
-        _queue.add(event);
-        if (kDebugMode) {
-          debugPrint(
-              '📊 AnalyticsService: Evento encolado [$eventType] en screen [$screenName]. Cola: ${_queue.length}');
-        }
-      });
-
-      // Enviar inmediatamente si superamos el umbral
-      if (_queue.length >= 10) {
-        flushEvents();
-      }
+    // Keep only fixed event/screen labels. IDs, amounts, product names,
+    // session identifiers and caller-supplied metadata never leave the device.
+    if (!RegExp(r'^[A-Z][A-Z0-9_]{0,59}$').hasMatch(eventType)) return;
+    final safeScreen = RegExp(r'^/[A-Za-z0-9_./-]{1,100}$').hasMatch(screenName)
+        ? screenName
+        : '/other';
+    final event = {'event_type': eventType, 'screen_name': safeScreen};
+    synchronized(() {
+      _queue.add(event);
+      if (_queue.length > 200) _queue.removeRange(0, _queue.length - 200);
     });
+    if (_queue.length >= 10) flushEvents();
   }
 
   void logScreenView(String screenName, {Map<String, dynamic>? metadata}) {
@@ -120,7 +50,11 @@ class AnalyticsService {
     );
   }
 
-  void logAddToCart({required String productId, required String productName, required double price, Map<String, dynamic>? metadata}) {
+  void logAddToCart(
+      {required String productId,
+      required String productName,
+      required double price,
+      Map<String, dynamic>? metadata}) {
     logEvent(
       eventType: 'ADD_TO_CART',
       screenName: '/store',
@@ -133,7 +67,11 @@ class AnalyticsService {
     );
   }
 
-  void logInitiateCheckout({required String itemType, required String itemId, required double totalAmount, Map<String, dynamic>? metadata}) {
+  void logInitiateCheckout(
+      {required String itemType,
+      required String itemId,
+      required double totalAmount,
+      Map<String, dynamic>? metadata}) {
     logEvent(
       eventType: 'INITIATE_CHECKOUT',
       screenName: '/checkout',
@@ -146,7 +84,11 @@ class AnalyticsService {
     );
   }
 
-  void logPurchaseSuccess({required String transactionId, required double totalAmount, required String paymentMethod, Map<String, dynamic>? metadata}) {
+  void logPurchaseSuccess(
+      {required String transactionId,
+      required double totalAmount,
+      required String paymentMethod,
+      Map<String, dynamic>? metadata}) {
     logEvent(
       eventType: 'PURCHASE_SUCCESS',
       screenName: '/payment-success',
@@ -160,7 +102,8 @@ class AnalyticsService {
     );
   }
 
-  void logViewProviderProfile({required String providerId, required String businessName}) {
+  void logViewProviderProfile(
+      {required String providerId, required String businessName}) {
     logEvent(
       eventType: 'VIEW_PROVIDER_PROFILE',
       screenName: '/provider-detail',
@@ -171,7 +114,10 @@ class AnalyticsService {
     );
   }
 
-  void logCourseLessonView({required String courseId, required String lessonId, required String lessonTitle}) {
+  void logCourseLessonView(
+      {required String courseId,
+      required String lessonId,
+      required String lessonTitle}) {
     logEvent(
       eventType: 'COURSE_LESSON_VIEW',
       screenName: '/course-detail',
@@ -194,6 +140,7 @@ class AnalyticsService {
     });
 
     try {
+      if (await AuthService.getToken() == null) return;
       await ApiService.ensureBaseUrl();
       final headers = await ApiService.getAuthHeaders();
       final uri = Uri.parse('${ApiService.baseUrl}/api/analytics/events');
@@ -258,25 +205,6 @@ class AnalyticsService {
   }
 
   // Generador de UUID v4 nativo y seguro
-  String _generateUUIDv4() {
-    final random = Random.secure();
-    final values = List<int>.generate(16, (i) => random.nextInt(256));
-
-    // Set version to 4 (0100)
-    values[6] = (values[6] & 0x0f) | 0x40;
-    // Set variant to RFC 4122 (10xx)
-    values[8] = (values[8] & 0x3f) | 0x80;
-
-    final buffer = StringBuffer();
-    for (var i = 0; i < 16; i++) {
-      if (i == 4 || i == 6 || i == 8 || i == 10) {
-        buffer.write('-');
-      }
-      buffer.write(values[i].toRadixString(16).padLeft(2, '0'));
-    }
-    return buffer.toString();
-  }
-
   // Sincronización simple para hilos/async
   void synchronized(VoidCallback action) {
     lockAction() {

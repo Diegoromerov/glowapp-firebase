@@ -8,6 +8,10 @@ const { authLimiter, otpLimiter } = require('../middleware/rateLimiter');
 
 router.post('/register', authLimiter, register);
 router.post('/login', authLimiter, login);
+router.get('/session', authMiddleware, (req, res) => res.json({
+  success: true,
+  user: { id: req.user.id, email: req.user.email, role: req.user.role },
+}));
 router.post('/logout', authMiddleware, logout);
 router.post('/forgot-password', otpLimiter, forgotPassword);
 router.post('/reset-password', otpLimiter, resetPassword);

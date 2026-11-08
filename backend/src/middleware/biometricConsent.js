@@ -7,6 +7,7 @@
 const { pool } = require('../config/db');
 const { getRedisClient } = require('./rateLimiter');
 const consentService = require('../services/consentService');
+const { BIOMETRIC_CONSENT_VERSION, isOutdatedConsent } = require('../config/consentConfig');
 
 /**
  * Cache en memoria para consentimientos (TTL 5 min)
@@ -18,7 +19,7 @@ const CACHE_TTL = 5 * 60 * 1000; // 5 minutos
 function clearUserConsentCache(userId, consentType) {
   const prefix = `${userId}:`;
   for (const key of consentCache.keys()) {
-    if (key.startsWith(prefix) && (!consentType || key === `${userId}:${consentType}`)) {
+    if (key.startsWith(prefix) && (!consentType || key.startsWith(`${userId}:${consentType}:`))) {
       consentCache.delete(key);
     }
   }
@@ -62,9 +63,9 @@ const VALID_ACCESS_TYPES = [
 const VALID_CONSENT_SQL_PREDICATE = 'granted = TRUE AND revoked_at IS NULL';
 
 /**
- * ¿Tiene el usuario ALGÚN consentimiento biométrico válido (otorgado y no revocado)?
- * Fuente única de verdad para los guards que no exigen un consent_type concreto
- * (p. ej. biometricConsentGuard aplicado a POST /api/biometric/analyze).
+ * ¿Tiene el usuario autorización facial vigente, expresa y no revocada?
+ * El análisis facial y el flujo YouCam dependen de este consentimiento específico;
+ * no se permite sustituirlo por una autorización de otra finalidad.
  * @param {string} userId - Identificador del usuario (el mismo que llega en el JWT)
  * @returns {Promise<Object|null>} Fila de consentimiento válido, o null si no hay
  */
@@ -74,11 +75,15 @@ async function hasAnyValidConsent(userId) {
       SELECT id, consent_type, granted, granted_at, revoked_at, purpose, version_terms
       FROM biometric_consents
       WHERE user_id = $1
+        AND consent_type = 'facial_analysis'
         AND ${VALID_CONSENT_SQL_PREDICATE}
+        AND version_terms = $2
+        AND explicit_authorization = TRUE
+        AND document_sha256 IS NOT NULL
       ORDER BY granted_at DESC NULLS LAST
       LIMIT 1
     `;
-    const res = await pool.query(query, [userId]);
+    const res = await pool.query(query, [userId, BIOMETRIC_CONSENT_VERSION]);
     return res.rows[0] || null;
   } catch (error) {
     console.error('❌ Error verificando consentimiento global:', error.message);
@@ -105,7 +110,7 @@ async function verifyConsent(userId, consentType) {
     }
     
     // Intentar cache primero
-    const cacheKey = `${userId}:${consentType}`;
+    const cacheKey = `${userId}:${consentType}:${BIOMETRIC_CONSENT_VERSION}`;
     const cached = consentCache.get(cacheKey);
     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
       return cached.result;
@@ -115,7 +120,7 @@ async function verifyConsent(userId, consentType) {
     const redis = await getRedisClient();
     if (redis) {
       try {
-        const redisKey = `consent:${userId}:${consentType}`;
+        const redisKey = `consent:${userId}:${consentType}:${BIOMETRIC_CONSENT_VERSION}`;
         const cachedRedis = await redis.get(redisKey);
         if (cachedRedis) {
           const result = JSON.parse(cachedRedis);
@@ -128,10 +133,11 @@ async function verifyConsent(userId, consentType) {
     }
     // Consultar base de datos
     const query = `
-      SELECT id, granted, granted_at, revoked_at, purpose, version_terms
+      SELECT id, granted, granted_at, revoked_at, purpose, version_terms,
+        explicit_authorization, document_sha256
       FROM biometric_consents
       WHERE user_id = $1 AND consent_type = $2
-      ORDER BY version_terms DESC
+      ORDER BY granted_at DESC NULLS LAST, id DESC
       LIMIT 1
     `;
     
@@ -163,6 +169,20 @@ async function verifyConsent(userId, consentType) {
           consent: { ...consent, granted: false },
           code: 'CONSENT_REVOKED'
         };
+      } else if (isOutdatedConsent(consent.version_terms)) {
+        result = {
+          allowed: false,
+          reason: 'CONSENT_OUTDATED: Debes revisar y aceptar la versión vigente del aviso antes de un nuevo análisis',
+          consent,
+          code: 'CONSENT_OUTDATED'
+        };
+      } else if (consent.explicit_authorization !== true || !consent.document_sha256) {
+        result = {
+          allowed: false,
+          reason: 'CONSENT_EVIDENCE_MISSING: Debes aceptar el aviso vigente para continuar',
+          consent,
+          code: 'CONSENT_EVIDENCE_MISSING'
+        };
       } else {
         result = {
           allowed: true,
@@ -178,7 +198,7 @@ async function verifyConsent(userId, consentType) {
     // Guardar en Redis si disponible
     if (redis) {
       try {
-        const redisKey = `consent:${userId}:${consentType}`;
+        const redisKey = `consent:${userId}:${consentType}:${BIOMETRIC_CONSENT_VERSION}`;
         await redis.setEx(redisKey, 300, JSON.stringify(result)); // 5 min TTL
       } catch (e) {
         // Ignorar errores de Redis
@@ -292,7 +312,8 @@ async function logBiometricAccess({ userId, accessedBy, accessType, consentId, i
 async function getUserConsents(userId) {
   try {
     const query = `
-      SELECT id, consent_type, granted, granted_at, revoked_at, purpose, version_terms, created_at
+      SELECT id, consent_type, granted, granted_at, revoked_at, purpose, version_terms,
+        explicit_authorization, document_sha256, created_at
       FROM biometric_consents
       WHERE user_id = $1
       ORDER BY consent_type
@@ -311,7 +332,7 @@ async function getUserConsents(userId) {
  * @param {Object} params - { userId, consentType, purpose, ip, userAgent, versionTerms }
  * @returns {Promise<Object>} Consentimiento creado
  */
-async function grantConsent({ userId, consentType, purpose, ip, userAgent, versionTerms = '1.0' }) {
+async function grantConsent({ userId, consentType, purpose, ip, userAgent, versionTerms = BIOMETRIC_CONSENT_VERSION, documentSha256, termsSnapshot, explicitAuthorization = false }) {
   try {
     if (!VALID_CONSENT_TYPES.includes(consentType)) {
       throw new Error(`Tipo de consentimiento inválido: ${consentType}`);
@@ -320,11 +341,15 @@ async function grantConsent({ userId, consentType, purpose, ip, userAgent, versi
     if (!purpose || purpose.length < 10) {
       throw new Error('Finalidad (purpose) requerida y debe tener al menos 10 caracteres');
     }
+    if (versionTerms !== BIOMETRIC_CONSENT_VERSION || explicitAuthorization !== true || !/^[a-f0-9]{64}$/i.test(documentSha256 || '') || !termsSnapshot) {
+      throw new Error('Se requiere aceptación expresa del texto biométrico vigente. Actualiza el aviso e inténtalo de nuevo.');
+    }
     
     const query = `
       INSERT INTO biometric_consents 
-      (user_id, consent_type, granted, granted_at, purpose, ip_address, user_agent, version_terms)
-      VALUES ($1, $2, TRUE, NOW(), $3, $4, $5, $6)
+      (user_id, consent_type, granted, granted_at, purpose, ip_address, user_agent, version_terms,
+       explicit_authorization, document_sha256, terms_snapshot)
+      VALUES ($1, $2, TRUE, NOW(), $3, $4, $5, $6, TRUE, $7, $8::jsonb)
       ON CONFLICT (user_id, consent_type, version_terms) 
       DO UPDATE SET 
         granted = TRUE,
@@ -333,6 +358,9 @@ async function grantConsent({ userId, consentType, purpose, ip, userAgent, versi
         purpose = EXCLUDED.purpose,
         ip_address = EXCLUDED.ip_address,
         user_agent = EXCLUDED.user_agent,
+        explicit_authorization = EXCLUDED.explicit_authorization,
+        document_sha256 = EXCLUDED.document_sha256,
+        terms_snapshot = EXCLUDED.terms_snapshot,
         updated_at = NOW()
       RETURNING *
     `;
@@ -343,11 +371,19 @@ async function grantConsent({ userId, consentType, purpose, ip, userAgent, versi
       purpose, 
       ip || null, 
       userAgent || null, 
-      versionTerms
+      versionTerms,
+      documentSha256,
+      JSON.stringify(termsSnapshot)
     ]);
     
     // Invalidar cache
     clearUserConsentCache(userId, consentType);
+    const redis = await getRedisClient();
+    if (redis) {
+      try {
+        await redis.del(`consent:${userId}:${consentType}`, `consent:${userId}:${consentType}:${BIOMETRIC_CONSENT_VERSION}`);
+      } catch (_) {}
+    }
     
     // Log de auditoría
     await logBiometricAccess({
@@ -393,6 +429,12 @@ async function revokeConsent(userId, consentType) {
     
     // Invalidar cache
     clearUserConsentCache(userId, consentType);
+    const consentRedis = await getRedisClient();
+    if (consentRedis) {
+      try {
+        await consentRedis.del(`consent:${userId}:${consentType}`, `consent:${userId}:${consentType}:${BIOMETRIC_CONSENT_VERSION}`);
+      } catch (_) {}
+    }
     
     // Log de auditoría
     await logBiometricAccess({

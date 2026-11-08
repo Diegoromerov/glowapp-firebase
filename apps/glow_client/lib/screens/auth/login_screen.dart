@@ -20,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   bool _isLoading = false;
+  bool _biometricLoginAvailable = false;
   bool _obscurePassword = true;
   String? _error;
 
@@ -27,34 +28,64 @@ class _LoginScreenState extends State<LoginScreen> {
     'GOOGLE_WEB_CLIENT_ID',
     defaultValue: String.fromEnvironment(
       'GOOGLE_CLIENT_ID',
-      defaultValue: '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+      defaultValue:
+          '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
     ),
   );
 
   // En web: clientId Y serverClientId son requeridos para obtener el idToken.
   // google_sign_in_web solo rellena googleAuth.idToken cuando serverClientId está presente.
   final GoogleSignIn _googleSignIn = kIsWeb
-        ? GoogleSignIn(
-            scopes: ['email', 'openid', 'profile'],
-            clientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-            serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-          )
-        : GoogleSignIn(
-            scopes: ['email', 'openid', 'profile'],
-            serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-          );
+      ? GoogleSignIn(
+          scopes: ['email', 'openid', 'profile'],
+          clientId: _googleClientId.isNotEmpty ? _googleClientId : null,
+          serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
+        )
+      : GoogleSignIn(
+          scopes: ['email', 'openid', 'profile'],
+          serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
+        );
 
   StreamSubscription<GoogleSignInAccount?>? _googleUserSub;
 
   @override
   void initState() {
     super.initState();
+    _loadBiometricLogin();
     // En web el unico flujo soportado es el boton de GIS: la cuenta llega por
     // onCurrentUserChanged. `signIn()` ya no entrega credenciales (0.12+).
     if (kIsWeb) {
       _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
         if (user != null && mounted) _finishGoogleLogin(user);
       });
+    }
+  }
+
+  Future<void> _loadBiometricLogin() async {
+    if (kIsWeb || !await BiometricLoginService.isEnabled) return;
+    final hasSession = await AuthService.getToken() != null;
+    if (mounted && hasSession) setState(() => _biometricLoginAvailable = true);
+  }
+
+  Future<void> _handleBiometricLogin() async {
+    setState(() {
+      _isLoading = true;
+      _error = null;
+    });
+    try {
+      final authenticated = await BiometricLoginService.authenticate();
+      if (!authenticated) return;
+      final result = await AuthService.restoreBiometricSession();
+      if (result != null && mounted) {
+        _navigateAfterLogin(result);
+      } else if (mounted) {
+        setState(() => _error =
+            'La sesión venció. Ingresa con tu contraseña para continuar.');
+      }
+    } catch (error) {
+      if (mounted) setState(() => _error = mensajeHumano(error));
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
@@ -107,9 +138,9 @@ class _LoginScreenState extends State<LoginScreen> {
     GoogleSignInAccount? googleUser;
     try {
       googleUser = await _googleSignIn.signIn().timeout(
-        const Duration(seconds: 60),
-        onTimeout: () => null,
-      );
+            const Duration(seconds: 60),
+            onTimeout: () => null,
+          );
     } catch (e) {
       if (mounted) {
         setState(() {
@@ -125,7 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
       if (mounted) {
         setState(() {
           _isLoading = false;
-          _error = 'Inicio de sesión cancelado o no completado. Intenta de nuevo.';
+          _error =
+              'Inicio de sesión cancelado o no completado. Intenta de nuevo.';
         });
       }
       return;
@@ -148,7 +180,8 @@ class _LoginScreenState extends State<LoginScreen> {
       String? idToken;
       String? accessToken;
       try {
-        final GoogleSignInAuthentication googleAuth = await googleUser.authentication.timeout(
+        final GoogleSignInAuthentication googleAuth =
+            await googleUser.authentication.timeout(
           const Duration(seconds: 15),
         );
         idToken = googleAuth.idToken;
@@ -165,7 +198,9 @@ class _LoginScreenState extends State<LoginScreen> {
           return _navigateAfterLogin(result);
         }
         if (mounted) {
-          final errMessage = result?['details'] ?? result?['error'] ?? 'El servidor rechazó el token de Google. Intenta de nuevo.';
+          final errMessage = result?['details'] ??
+              result?['error'] ??
+              'El servidor rechazó el token de Google. Intenta de nuevo.';
           setState(() => _error = errMessage);
         }
         return;
@@ -174,12 +209,15 @@ class _LoginScreenState extends State<LoginScreen> {
       // PATH 2: GIS popup devuelve solo accessToken (comportamiento normal en 6.x web)
       // El backend verifica el accessToken contra https://www.googleapis.com/oauth2/v3/userinfo
       if (accessToken != null && accessToken.isNotEmpty) {
-        final result = await AuthService.loginWithGoogleAccessToken(accessToken);
+        final result =
+            await AuthService.loginWithGoogleAccessToken(accessToken);
         if (result != null && result['token'] != null && mounted) {
           return _navigateAfterLogin(result);
         }
         if (mounted) {
-          final errMessage = result?['details'] ?? result?['error'] ?? 'No se pudo autenticar con Google. Intenta de nuevo.';
+          final errMessage = result?['details'] ??
+              result?['error'] ??
+              'No se pudo autenticar con Google. Intenta de nuevo.';
           setState(() => _error = errMessage);
         }
         return;
@@ -187,11 +225,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
       // Ningún token disponible
       if (mounted) {
-        setState(() => _error = 'Google no devolvió credenciales. Verifica la configuración del cliente OAuth.');
+        setState(() => _error =
+            'Google no devolvió credenciales. Verifica la configuración del cliente OAuth.');
       }
     } catch (e) {
       if (mounted) {
-        setState(() => _error = 'No pudimos conectar con Google. Inténtalo de nuevo.');
+        setState(() =>
+            _error = 'No pudimos conectar con Google. Inténtalo de nuevo.');
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -207,7 +247,6 @@ class _LoginScreenState extends State<LoginScreen> {
     // de proveedor/salón pertenecen a GlowApp Provider.
     Navigator.pushReplacementNamed(context, '/home');
   }
-
 
   Future<void> _handleOAuth(String provider) async {
     if (provider == 'GOOGLE') {
@@ -383,18 +422,19 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           // Background Image
           Positioned.fill(
-                      child: Image.asset(
-                        'assets/images/auth/auth_login_hero_v2.webp',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+            child: Image.asset(
+              'assets/images/auth/auth_login_hero_v2.webp',
+              fit: BoxFit.cover,
+            ),
+          ),
           // Foreground content
           SafeArea(
             child: Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 460),
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 24.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -418,268 +458,302 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ],
                         ),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            const Text(
-                              'INICIAR SESIÓN',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Didot',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF1F1A15), // LuxeColors.nude900
-                                letterSpacing: 1.2,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-
-                            // Email Input
-                            S4TextField(
-                              controller: _emailCtrl,
-                              keyboardType: TextInputType.emailAddress,
-                              label: 'Correo electrónico',
-                              hint: 'Correo electrónico',
-                              prefixIcon: Icon(Icons.email_outlined, color: t.brandPrimary, size: 20),
-                              validator: (v) => v!.isEmpty ? 'Ingresa tu correo' : null,
-                              style: inputTextStyle,
-                              hintStyle: inputHintStyle,
-                            ),
-                            const SizedBox(height: 16),
-
-                            // Password Input
-                            S4TextField(
-                              controller: _passCtrl,
-                              obscureText: _obscurePassword,
-                              label: 'Contraseña',
-                              hint: 'Contraseña',
-                              prefixIcon: Icon(Icons.lock_outlined, color: t.brandPrimary, size: 20),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _obscurePassword
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined,
-                                  color: t.brandPrimary,
-                                  size: 20,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              const Text(
+                                'INICIAR SESIÓN',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Didot',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Color(0xFF1F1A15), // LuxeColors.nude900
+                                  letterSpacing: 1.2,
                                 ),
-                                onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                               ),
-                              validator: (v) => v!.length < 6 ? 'Mínimo 6 caracteres' : null,
-                              style: inputTextStyle,
-                              hintStyle: inputHintStyle,
-                            ),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: TextButton(
-                                onPressed: () => Navigator.pushNamed(context, '/auth/forgot-password'),
-                                style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                  minimumSize: const Size(50, 30),
-                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                ),
-                                child: Text(
-                                  '¿Olvidaste tu contraseña?',
-                                  style: TextStyle(
+                              const SizedBox(height: 20),
+
+                              // Email Input
+                              S4TextField(
+                                controller: _emailCtrl,
+                                keyboardType: TextInputType.emailAddress,
+                                label: 'Correo electrónico',
+                                hint: 'Correo electrónico',
+                                prefixIcon: Icon(Icons.email_outlined,
+                                    color: t.brandPrimary, size: 20),
+                                validator: (v) =>
+                                    v!.isEmpty ? 'Ingresa tu correo' : null,
+                                style: inputTextStyle,
+                                hintStyle: inputHintStyle,
+                              ),
+                              const SizedBox(height: 16),
+
+                              // Password Input
+                              S4TextField(
+                                controller: _passCtrl,
+                                obscureText: _obscurePassword,
+                                label: 'Contraseña',
+                                hint: 'Contraseña',
+                                prefixIcon: Icon(Icons.lock_outlined,
+                                    color: t.brandPrimary, size: 20),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscurePassword
+                                        ? Icons.visibility_outlined
+                                        : Icons.visibility_off_outlined,
                                     color: t.brandPrimary,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'CormorantGaramond',
+                                    size: 20,
+                                  ),
+                                  onPressed: () => setState(() =>
+                                      _obscurePassword = !_obscurePassword),
+                                ),
+                                validator: (v) => v!.length < 6
+                                    ? 'Mínimo 6 caracteres'
+                                    : null,
+                                style: inputTextStyle,
+                                hintStyle: inputHintStyle,
+                              ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: TextButton(
+                                  onPressed: () => Navigator.pushNamed(
+                                      context, '/auth/forgot-password'),
+                                  style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    minimumSize: const Size(50, 30),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                  ),
+                                  child: Text(
+                                    '¿Olvidaste tu contraseña?',
+                                    style: TextStyle(
+                                      color: t.brandPrimary,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'CormorantGaramond',
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
 
-                            const SizedBox(height: 16),
+                              const SizedBox(height: 16),
 
-                            if (_error != null)
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: Text(
-                                  _error!,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: t.error,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13),
+                              if (_error != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: Text(
+                                    _error!,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: t.error,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13),
+                                  ),
+                                ),
+
+                              // Submit Button (Haute Joaillerie Gold Gradient)
+                              Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      Color(0xFFF3D59B),
+                                      Color(0xFFC5A052)
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color(0xFFC5A052)
+                                          .withValues(alpha: 0.35),
+                                      blurRadius: 14,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: ElevatedButton(
+                                  onPressed: _isLoading ? null : _handleLogin,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.transparent,
+                                    shadowColor: Colors.transparent,
+                                    foregroundColor: const Color(0xFF1F1A15),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 16),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    elevation: 0,
+                                  ),
+                                  child: _isLoading
+                                      ? const SizedBox(
+                                          width: 22,
+                                          height: 22,
+                                          child: CircularProgressIndicator(
+                                              color: Color(0xFF1F1A15),
+                                              strokeWidth: 2.5),
+                                        )
+                                      : const Text(
+                                          'ENTRAR AL RITUAL',
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xFF1F1A15),
+                                              letterSpacing: 0.8),
+                                        ),
                                 ),
                               ),
 
-                            // Submit Button (Haute Joaillerie Gold Gradient)
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                gradient: const LinearGradient(
-                                  colors: [Color(0xFFF3D59B), Color(0xFFC5A052)],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
+                              if (_biometricLoginAvailable) ...[
+                                const SizedBox(height: 12),
+                                OutlinedButton.icon(
+                                  onPressed:
+                                      _isLoading ? null : _handleBiometricLogin,
+                                  icon: const Icon(Icons.fingerprint),
+                                  label: const Text('Ingresar con biometría'),
                                 ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: const Color(0xFFC5A052).withValues(alpha: 0.35),
-                                    blurRadius: 14,
-                                    offset: const Offset(0, 4),
+                              ],
+
+                              const SizedBox(height: 24),
+
+                              // Separador para Social Logins
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Divider(color: t.borderDefault)),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: Text(
+                                      'o accede con',
+                                      style: TextStyle(
+                                          color: t.n400,
+                                          fontSize: 12,
+                                          fontFamily: 'CormorantGaramond'),
+                                    ),
+                                  ),
+                                  Expanded(
+                                      child: Divider(color: t.borderDefault)),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+
+                              // Social Buttons (Google, Facebook, Apple)
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  // Google: el diseño propio (círculo dorado) con el
+                                  // flujo real de GIS superpuesto e invisible.
+                                  // En web el clic lo recibe el iframe de Google; fuera
+                                  // de web el botón propio llama a signIn().
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      _buildSocialButton(
+                                        icon: const Icon(Icons.g_mobiledata,
+                                            color: Color(0xFFC5A052), size: 32),
+                                        onTap: googleOverlay != null
+                                            ? null
+                                            : (_isLoading
+                                                ? null
+                                                : () => _handleOAuth('GOOGLE')),
+                                        label: 'Google',
+                                        t: t,
+                                      ),
+                                      if (googleOverlay != null)
+                                        Positioned.fill(
+                                          child: ClipOval(
+                                            child: Opacity(
+                                              opacity: 0.01,
+                                              child: googleOverlay,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                  _buildSocialButton(
+                                    icon: const Icon(Icons.facebook,
+                                        color: Color(0xFF1877F2), size: 26),
+                                    onTap: () =>
+                                        _avisarProximamente('Facebook'),
+                                    label: 'Facebook',
+                                    t: t,
+                                    proximamente: true,
+                                  ),
+                                  _buildSocialButton(
+                                    icon: const Icon(Icons.apple,
+                                        color: Color(0xFF1F1A15), size: 24),
+                                    onTap: () => _avisarProximamente('Apple'),
+                                    label: 'Apple',
+                                    t: t,
+                                    proximamente: true,
                                   ),
                                 ],
                               ),
-                              child: ElevatedButton(
-                                onPressed: _isLoading ? null : _handleLogin,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  shadowColor: Colors.transparent,
-                                  foregroundColor: const Color(0xFF1F1A15),
-                                  padding: const EdgeInsets.symmetric(vertical: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)),
-                                  elevation: 0,
-                                ),
-                                child: _isLoading
-                                    ? const SizedBox(
-                                        width: 22,
-                                        height: 22,
-                                        child: CircularProgressIndicator(
-                                            color: Color(0xFF1F1A15),
-                                            strokeWidth: 2.5),
-                                      )
-                                    : const Text(
-                                        'ENTRAR AL RITUAL',
-                                        style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF1F1A15),
-                                            letterSpacing: 0.8),
-                                      ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+
+                      // Link de Registro
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/auth/register'),
+                        style: TextButton.styleFrom(
+                          foregroundColor: t.brandPrimary,
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            text: '¿No tienes cuenta? ',
+                            style: TextStyle(
+                                color: t.n500,
+                                fontSize: 14,
+                                fontFamily: 'CormorantGaramond'),
+                            children: [
+                              TextSpan(
+                                text: 'Regístrate aquí',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                               ),
-                            ),
-
-                            const SizedBox(height: 24),
-
-                            // Separador para Social Logins
-                            Row(
-                              children: [
-                                Expanded(child: Divider(color: t.borderDefault)),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                                  child: Text(
-                                    'o accede con',
-                                    style: TextStyle(
-                                        color: t.n400,
-                                        fontSize: 12,
-                                        fontFamily: 'CormorantGaramond'),
-                                  ),
-                                ),
-                                Expanded(child: Divider(color: t.borderDefault)),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-
-                            // Social Buttons (Google, Facebook, Apple)
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                // Google: el diseño propio (círculo dorado) con el
-                                // flujo real de GIS superpuesto e invisible.
-                                // En web el clic lo recibe el iframe de Google; fuera
-                                // de web el botón propio llama a signIn().
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    _buildSocialButton(
-                                      icon: const Icon(Icons.g_mobiledata,
-                                          color: Color(0xFFC5A052), size: 32),
-                                      onTap: googleOverlay != null
-                                          ? null
-                                          : (_isLoading
-                                              ? null
-                                              : () => _handleOAuth('GOOGLE')),
-                                      label: 'Google',
-                                      t: t,
-                                    ),
-                                    if (googleOverlay != null)
-                                      Positioned.fill(
-                                        child: ClipOval(
-                                          child: Opacity(
-                                            opacity: 0.01,
-                                            child: googleOverlay,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                                _buildSocialButton(
-                                  icon: const Icon(Icons.facebook,
-                                      color: Color(0xFF1877F2), size: 26),
-                                  onTap: () => _avisarProximamente('Facebook'),
-                                  label: 'Facebook',
-                                  t: t,
-                                  proximamente: true,
-                                ),
-                                _buildSocialButton(
-                                  icon: const Icon(Icons.apple,
-                                      color: Color(0xFF1F1A15), size: 24),
-                                  onTap: () => _avisarProximamente('Apple'),
-                                  label: 'Apple',
-                                  t: t,
-                                  proximamente: true,
-                                ),
-                              ],
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 28),
 
-                    // Link de Registro
-                    TextButton(
-                      onPressed: () => Navigator.pushNamed(context, '/auth/register'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: t.brandPrimary,
-                      ),
-                      child: RichText(
-                        text: TextSpan(
-                          text: '¿No tienes cuenta? ',
-                          style: TextStyle(color: t.n500, fontSize: 14, fontFamily: 'CormorantGaramond'),
-                          children: [
-                            TextSpan(
-                              text: 'Regístrate aquí',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
-                          ],
+                      // Términos y condiciones — la ruta '/terms' existía declarada
+                      // en main.dart pero NINGUNA pantalla navegaba a ella (Gate 4).
+                      TextButton(
+                        onPressed: () => Navigator.pushNamed(context, '/terms'),
+                        style: TextButton.styleFrom(
+                          foregroundColor: t.brandPrimary,
+                        ),
+                        child: Text(
+                          'Términos y condiciones',
+                          style: TextStyle(
+                              color: t.n500,
+                              fontSize: 13,
+                              decoration: TextDecoration.underline,
+                              decorationColor: t.n500,
+                              fontFamily: 'CormorantGaramond'),
                         ),
                       ),
-                    ),
-
-                    // Términos y condiciones — la ruta '/terms' existía declarada
-                    // en main.dart pero NINGUNA pantalla navegaba a ella (Gate 4).
-                    TextButton(
-                      onPressed: () => Navigator.pushNamed(context, '/terms'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: t.brandPrimary,
-                      ),
-                      child: Text(
-                        'Términos y condiciones',
-                        style: TextStyle(
-                            color: t.n500,
-                            fontSize: 13,
-                            decoration: TextDecoration.underline,
-                            decorationColor: t.n500,
-                            fontFamily: 'CormorantGaramond'),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+        ],
+      ),
+    );
+  }
 }

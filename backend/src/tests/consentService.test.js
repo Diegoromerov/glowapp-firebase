@@ -42,6 +42,7 @@ const {
   isValidConsentType,
   VALID_CONSENT_TYPES
 } = require('../services/consentService');
+const { BIOMETRIC_CONSENT_VERSION } = require('../config/consentConfig');
 
 describe('consentService', () => {
   beforeEach(() => {
@@ -123,7 +124,9 @@ describe('consentService', () => {
           granted: true,
           granted_at: new Date(),
           purpose: 'Análisis facial para recomendaciones',
-          version_terms: '1.0'
+          version_terms: BIOMETRIC_CONSENT_VERSION,
+          explicit_authorization: true,
+          document_sha256: 'a'.repeat(64),
         };
       
         mockPool.query.mockResolvedValue({ rows: [mockConsent] });
@@ -133,7 +136,11 @@ describe('consentService', () => {
           consentType: 'facial_analysis',
           purpose: 'Análisis facial para recomendaciones',
           ipAddress: '192.168.1.1',
-          userAgent: 'Mozilla/5.0'
+          userAgent: 'Mozilla/5.0',
+          versionTerms: BIOMETRIC_CONSENT_VERSION,
+          explicitAuthorization: true,
+          documentSha256: 'a'.repeat(64),
+          termsSnapshot: { version: BIOMETRIC_CONSENT_VERSION }
         });
       
         expect(consent.id).toBe(1);

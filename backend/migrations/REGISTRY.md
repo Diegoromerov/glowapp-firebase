@@ -398,3 +398,28 @@ fila a fila: **1.431 ms**. Con `search_vector` como columna generada y GIN propi
 a `Bitmap Index Scan` y la consulta cuesta **12,4 ms**. Requiere
 `SET max_parallel_maintenance_workers = 0` para el build (mismo fallo de memoria compartida que
 en 076).
+
+## 131: evidencia de consentimiento biométrico (Ley 1581)
+
+- Añade a `biometric_consents` la marca de autorización expresa, el SHA-256 del aviso y el snapshot del texto presentado.
+- Crea `biometric_consent_audit`, bitácora append-only con trigger para concesiones, cambios, revocaciones y eliminación del registro de autorización.
+- Las rutas de supresión agregan eventos correlacionados de solicitud, éxito o fallo, con conteo afectado y sin incluir fotografías ni métricas.
+- Las nuevas autorizaciones requieren la versión y hash vigentes. Los consentimientos históricos sin evidencia de aceptación expresa quedan con `explicit_authorization = false` y requieren nueva autorización.
+- No tiene FK a `usuarios`: el log de evidencia no desaparece por cascada al cerrar la cuenta. Su acceso queda restringido por la API admin y debe sujetarse al plazo aprobado para evidencias de privacidad.
+
+## 132: consentimiento de boletines y campañas
+
+- Registra concesiones y retiros de `marketing_enabled` en una bitácora sin FK al usuario.
+- Añade campañas y entregas por lotes, sin guardar copia de los correos de destinatarios; cada envío vuelve a comprobar la autorización.
+- La API administrativa requiere un proveedor de correo configurado y reporta los estados reales de entrega.
+
+## 133: métricas internas agregadas
+
+- Elimina `user_id` de los eventos históricos y reduce metadatos a `screen_name` allowlisted.
+- La captura nueva guarda solo tipo y pantalla, exige sesión y deja `user_id` nulo. El endpoint admin devuelve agregados por período.
+
+## 134: auditoría de PQRSF y supresión ARCO
+
+- Añade bitácora append-only de radicación, transición, verificación de identidad, mensajes (sin contenido) y ejecución de supresión.
+- El flujo administrativo exige verificación explícita y confirmación separada antes de anonimizar la cuenta y borrar datos biométricos; bloquea cerrar una solicitud ARCO antes de ejecutarla.
+- El manifiesto deja evidencia mínima de las categorías eliminadas y conservadas. Los registros financieros/contractuales que deban conservarse no se declaran borrados.

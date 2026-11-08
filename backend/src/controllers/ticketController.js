@@ -13,24 +13,50 @@ exports.createTicket = async (req, res) => {
       return res.status(400).json({ error: 'tipo, categoria, asunto y descripcion son campos obligatorios.' });
     }
 
+    if (typeof asunto !== 'string' || asunto.trim().length > 255
+        || typeof descripcion !== 'string' || descripcion.trim().length < 10 || descripcion.trim().length > 10000) {
+      return res.status(400).json({ error: 'FORMATO_INVALIDO', message: 'El asunto admite hasta 255 caracteres y la descripción debe tener entre 10 y 10.000.' });
+    }
+    if (prioridad !== undefined) {
+      return res.status(400).json({ error: 'PRIORIDAD_NO_EDITABLE', message: 'La prioridad la asigna el equipo de soporte.' });
+    }
+    if (booking_id) {
+      const bookingRef = /^(?:[0-9]{1,20}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
+      if (typeof booking_id !== 'string' || !bookingRef.test(booking_id)) return res.status(400).json({ error: 'CITA_INVALIDA', message: 'El identificador de cita no tiene un formato admitido.' });
+      const belongs = await sequelize.query(
+        `SELECT id FROM bookings WHERE id::text = :booking_id AND (client_id = :usuario_id OR provider_id = :usuario_id) LIMIT 1`,
+        { replacements: { booking_id, usuario_id }, type: QueryTypes.SELECT }
+      );
+      if (!belongs.length) return res.status(400).json({ error: 'CITA_NO_ASOCIADA', message: 'La cita no existe o no pertenece a tu cuenta.' });
+    }
+    if (evidencia_urls !== undefined && (!Array.isArray(evidencia_urls) || evidencia_urls.length > 3)) {
+      return res.status(400).json({ error: 'EVIDENCIA_INVALIDA', message: 'Adjunta como máximo 3 imágenes.' });
+    }
+    const evidence = evidencia_urls || [];
+    let evidenceBytes = 0;
+    for (const item of evidence) {
+      const match = typeof item === 'string' && item.match(/^data:image\/(jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/);
+      if (!match) return res.status(400).json({ error: 'EVIDENCIA_INVALIDA', message: 'Las evidencias deben ser imágenes JPEG, PNG o WebP.' });
+      const bytes = Math.floor(match[2].length * 3 / 4);
+      evidenceBytes += bytes;
+      if (bytes > 1500000 || evidenceBytes > 4500000) {
+        return res.status(413).json({ error: 'EVIDENCIA_DEMASIADO_GRANDE', message: 'Máximo 1,5 MB por imagen y 4,5 MB en total.' });
+      }
+    }
+
     // Los valores admisibles se leen del CHECK real de la tabla. Antes no se validaba
     // nada aquí: un `tipo` que el esquema no admitía (o el 'ARCO_SUPRESION' que añadió la
     // migración 045) moría en un 500 genérico y parecía un fallo del servidor en vez de un
     // dato mal enviado.
-    for (const [columna, valor] of [['tipo', tipo], ['categoria', categoria], ['prioridad', prioridad]]) {
+    for (const [columna, valor] of [['tipo', tipo], ['categoria', categoria]]) {
       if (valor === undefined || valor === null) continue;
       const motivo = await motivoInvalido('tickets', columna, valor);
       if (motivo) return res.status(400).json({ error: 'VALOR_NO_ADMITIDO', message: motivo });
     }
 
-    // La prioridad es opcional: sin ella vale el DEFAULT de la tabla ('MEDIA'). Antes no
-    // había forma de nacer un ticket como EMERGENCIA, así que la prioridad más urgente
-    // solo se podía alcanzar después (y antes de la fase 2, de ninguna manera).
-    const conPrioridad = prioridad !== undefined && prioridad !== null;
-
     const query = `
-      INSERT INTO tickets (usuario_id, booking_id, tipo, categoria, asunto, descripcion, evidencia_urls${conPrioridad ? ', prioridad' : ''})
-      VALUES (:usuario_id, :booking_id, :tipo, :categoria, :asunto, :descripcion, :evidencia_urls${conPrioridad ? ', :prioridad' : ''})
+      INSERT INTO tickets (usuario_id, booking_id, tipo, categoria, asunto, descripcion, evidencia_urls)
+      VALUES (:usuario_id, :booking_id, :tipo, :categoria, :asunto, :descripcion, :evidencia_urls)
       RETURNING id, usuario_id, booking_id, tipo, categoria, asunto, descripcion, estado, prioridad, evidencia_urls, fecha_creacion;
     `;
 
@@ -42,17 +68,37 @@ exports.createTicket = async (req, res) => {
         categoria,
         asunto,
         descripcion,
-        evidencia_urls: evidencia_urls || [],
-        ...(conPrioridad ? { prioridad } : {})
+        evidencia_urls: evidence,
       },
       type: QueryTypes.INSERT
     });
 
     const ticket = results[0][0];
 
+    let notification = { status: 'admin_api_queue' };
+    const configuredMailer = process.env.SUPPORT_INBOX_EMAIL
+      && (process.env.BREVO_API_KEY || (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS));
+    if (configuredMailer) {
+      try {
+        const mailer = require('../services/emailService');
+        const sent = await mailer.sendEmail({
+          to: process.env.SUPPORT_INBOX_EMAIL,
+          subject: `Nueva solicitud ${ticket.id}: ${ticket.tipo}`,
+          data: { text: `${ticket.asunto}\n\nTipo: ${ticket.tipo}\nCategoría: ${ticket.categoria}\nTicket: ${ticket.id}\n\nIngresa al panel de administración para gestionar el caso.` },
+        });
+        notification = sent?.devMode ? { status: 'admin_api_queue' } : { status: 'support_email_sent' };
+      } catch (mailError) {
+        console.error('[tickets] ticket guardado; aviso a soporte falló:', mailError.message);
+        notification = { status: 'admin_api_queue', email_error: 'delivery_failed' };
+      }
+    }
+
     res.status(201).json({
       success: true,
-      data: ticket
+      message: 'Solicitud radicada en el sistema de soporte. Consulta su estado en Centro de Soporte > Mis solicitudes.',
+      management_channel: '/api/admin/tickets',
+      notification,
+      data: ticket,
     });
   } catch (error) {
     if (error && error.code === '23514') {
@@ -204,11 +250,11 @@ exports.createTicketMessage = async (req, res) => {
       : '';
     const updateTicketQuery = `
       UPDATE tickets 
-      SET estado = :nuevoEstado, fecha_actualizacion = NOW()${setPrimeraRespuesta} 
+      SET estado = :nuevoEstado, workflow_actor_id = :sender_id, fecha_actualizacion = NOW()${setPrimeraRespuesta}
       WHERE id = :ticketId;
     `;
     await sequelize.query(updateTicketQuery, {
-      replacements: { nuevoEstado, ticketId },
+      replacements: { nuevoEstado, ticketId, sender_id },
       type: QueryTypes.UPDATE
     });
 

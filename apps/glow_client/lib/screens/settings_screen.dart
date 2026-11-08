@@ -2,7 +2,9 @@
 import 'package:glow_core/glow_core.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 class SettingsScreen extends StatefulWidget {
   final String userEmail;
   final VoidCallback? onLogout;
@@ -18,10 +20,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool _biometricAuthEnabled = true;
-  bool _pushNotifications = true;
+  bool _biometricAuthEnabled = false;
   bool _marketingEmails = false;
-  bool _anonymizedAnalytics = true;
   bool _isLoadingPreferences = true;
   String? _errorMessage;
 
@@ -37,27 +37,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _errorMessage = null;
     });
     try {
+      final biometricEnabled = await BiometricLoginService.isEnabled;
       final headers = await ApiService.getAuthHeaders();
       final uri = Uri.parse('${ApiService.baseUrl}/api/users/preferences');
-      final response = await http.get(uri, headers: headers).timeout(const Duration(seconds: 10));
-      
+      final response = await http
+          .get(uri, headers: headers)
+          .timeout(const Duration(seconds: 10));
+
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final prefs = data['data'];
-        if (prefs != null && mounted) {
+        if (mounted) {
           setState(() {
-            _pushNotifications = prefs['push_enabled'] ?? true;
-            _marketingEmails = prefs['marketing_enabled'] ?? false;
-            _anonymizedAnalytics = prefs['telemetry_enabled'] ?? true;
+            _biometricAuthEnabled = biometricEnabled;
+            _marketingEmails =
+                prefs is Map ? (prefs['marketing_enabled'] ?? false) : false;
             _isLoadingPreferences = false;
           });
-          // Actualizar cache de AnalyticsService
-          AnalyticsService().invalidateTelemetryCache();
         }
       } else {
         if (mounted) {
           setState(() {
-            _errorMessage = 'Error al cargar preferencias: ${response.statusCode}';
+            _errorMessage =
+                'Error al cargar preferencias: ${response.statusCode}';
             _isLoadingPreferences = false;
           });
         }
@@ -72,18 +74,74 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  Future<void> _setBiometricAuth(bool enabled) async {
+    if (kIsWeb) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text(
+                'El inicio biométrico está disponible en la app móvil, no en el navegador.')),
+      );
+      return;
+    }
+    try {
+      if (enabled) {
+        final ok = await BiometricLoginService.enable();
+        if (!ok) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                  content: Text(
+                      'No se habilitó: configura biometría en tu dispositivo e inténtalo de nuevo.')),
+            );
+          }
+          return;
+        }
+      } else {
+        await BiometricLoginService.disable();
+      }
+      if (mounted) setState(() => _biometricAuthEnabled = enabled);
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text(
+                  'No se pudo actualizar el inicio biométrico: ${mensajeHumano(error)}')),
+        );
+      }
+    }
+  }
+
+  Future<void> _setMarketingEmails(bool enabled) async {
+    if (enabled) {
+      final accepted = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Recibir novedades de GlowApp'),
+          content: const Text(
+            'Autorizas el envío de novedades, lanzamientos y comunicaciones promocionales al correo asociado a tu cuenta. '
+            'Es opcional y puedes retirar esta autorización apagando el interruptor cuando quieras.',
+          ),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Ahora no')),
+            FilledButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('Autorizo')),
+          ],
+        ),
+      );
+      if (accepted != true || !mounted) return;
+    }
+    await _updatePreference('marketing_enabled', enabled);
+  }
+
   Future<void> _updatePreference(String key, bool value) async {
     // Optimistic update
     setState(() {
       switch (key) {
-        case 'push_enabled':
-          _pushNotifications = value;
-          break;
         case 'marketing_enabled':
           _marketingEmails = value;
-          break;
-        case 'telemetry_enabled':
-          _anonymizedAnalytics = value;
           break;
       }
     });
@@ -91,38 +149,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
     try {
       final headers = await ApiService.getAuthHeaders();
       final uri = Uri.parse('${ApiService.baseUrl}/api/users/preferences');
-      final response = await http.patch(
-        uri,
-        headers: headers,
-        body: json.encode({key: value}),
-      ).timeout(const Duration(seconds: 10));
+      final response = await http
+          .patch(
+            uri,
+            headers: headers,
+            body: json.encode({key: value}),
+          )
+          .timeout(const Duration(seconds: 10));
 
       if (response.statusCode != 200) {
         // Revert on error
         if (mounted) {
           setState(() {
             switch (key) {
-              case 'push_enabled':
-                _pushNotifications = !value;
-                break;
               case 'marketing_enabled':
                 _marketingEmails = !value;
-                break;
-              case 'telemetry_enabled':
-                _anonymizedAnalytics = !value;
                 break;
             }
           });
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Error al guardar preferencia: ${response.statusCode}'),
+              content:
+                  Text('Error al guardar preferencia: ${response.statusCode}'),
               backgroundColor: const Color(0xFFB00020),
             ),
           );
-        }
-      } else {
-        if (key == 'telemetry_enabled') {
-          AnalyticsService().invalidateTelemetryCache();
         }
       }
     } catch (e) {
@@ -130,14 +181,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       if (mounted) {
         setState(() {
           switch (key) {
-            case 'push_enabled':
-              _pushNotifications = !value;
-              break;
             case 'marketing_enabled':
               _marketingEmails = !value;
-              break;
-            case 'telemetry_enabled':
-              _anonymizedAnalytics = !value;
               break;
           }
         });
@@ -189,10 +234,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   obscureText: obscureCurrent,
                   decoration: InputDecoration(
                     labelText: 'Contraseña Actual',
-                    labelStyle: const TextStyle(fontSize: 13, color: LuxeColors.nude600),
+                    labelStyle: const TextStyle(
+                        fontSize: 13, color: LuxeColors.nude600),
                     suffixIcon: IconButton(
-                      icon: Icon(obscureCurrent ? Icons.visibility_off : Icons.visibility, size: 18),
-                      onPressed: () => setDialogState(() => obscureCurrent = !obscureCurrent),
+                      icon: Icon(
+                          obscureCurrent
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          size: 18),
+                      onPressed: () => setDialogState(
+                          () => obscureCurrent = !obscureCurrent),
                     ),
                   ),
                 ),
@@ -202,10 +253,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   obscureText: obscureNew,
                   decoration: InputDecoration(
                     labelText: 'Nueva Contraseña',
-                    labelStyle: const TextStyle(fontSize: 13, color: LuxeColors.nude600),
+                    labelStyle: const TextStyle(
+                        fontSize: 13, color: LuxeColors.nude600),
                     suffixIcon: IconButton(
-                      icon: Icon(obscureNew ? Icons.visibility_off : Icons.visibility, size: 18),
-                      onPressed: () => setDialogState(() => obscureNew = !obscureNew),
+                      icon: Icon(
+                          obscureNew ? Icons.visibility_off : Icons.visibility,
+                          size: 18),
+                      onPressed: () =>
+                          setDialogState(() => obscureNew = !obscureNew),
                     ),
                   ),
                 ),
@@ -215,10 +270,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   obscureText: obscureConfirm,
                   decoration: InputDecoration(
                     labelText: 'Confirmar Nueva Contraseña',
-                    labelStyle: const TextStyle(fontSize: 13, color: LuxeColors.nude600),
+                    labelStyle: const TextStyle(
+                        fontSize: 13, color: LuxeColors.nude600),
                     suffixIcon: IconButton(
-                      icon: Icon(obscureConfirm ? Icons.visibility_off : Icons.visibility, size: 18),
-                      onPressed: () => setDialogState(() => obscureConfirm = !obscureConfirm),
+                      icon: Icon(
+                          obscureConfirm
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          size: 18),
+                      onPressed: () => setDialogState(
+                          () => obscureConfirm = !obscureConfirm),
                     ),
                   ),
                 ),
@@ -228,85 +289,98 @@ class _SettingsScreenState extends State<SettingsScreen> {
           actions: [
             TextButton(
               onPressed: isLoading ? null : () => Navigator.pop(context),
-              child: const Text('Cancelar', style: TextStyle(color: LuxeColors.nude700)),
+              child: const Text('Cancelar',
+                  style: TextStyle(color: LuxeColors.nude700)),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: LuxeColors.nude900,
                 foregroundColor: Colors.white,
               ),
-              onPressed: isLoading ? null : () async {
-                if (newPasswordController.text.isEmpty ||
-                    newPasswordController.text != confirmPasswordController.text) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Las contraseñas no coinciden o están vacías.'),
-                      backgroundColor: Color(0xFFB00020),
-                    ),
-                  );
-                  return;
-                }
-                if (currentPasswordController.text.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Debes ingresar tu contraseña actual.'),
-                      backgroundColor: Color(0xFFB00020),
-                    ),
-                  );
-                  return;
-                }
-                setDialogState(() => isLoading = true);
-                
-                try {
-                  final headers = await ApiService.getAuthHeaders();
-                  final uri = Uri.parse('${ApiService.baseUrl}/api/auth/change-password');
-                  final response = await http.patch(
-                    uri,
-                    headers: headers,
-                    body: json.encode({
-                      'current_password': currentPasswordController.text,
-                      'new_password': newPasswordController.text,
-                    }),
-                  ).timeout(const Duration(seconds: 15));
+              onPressed: isLoading
+                  ? null
+                  : () async {
+                      if (newPasswordController.text.isEmpty ||
+                          newPasswordController.text !=
+                              confirmPasswordController.text) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                                'Las contraseñas no coinciden o están vacías.'),
+                            backgroundColor: Color(0xFFB00020),
+                          ),
+                        );
+                        return;
+                      }
+                      if (currentPasswordController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content:
+                                Text('Debes ingresar tu contraseña actual.'),
+                            backgroundColor: Color(0xFFB00020),
+                          ),
+                        );
+                        return;
+                      }
+                      setDialogState(() => isLoading = true);
 
-                  if (mounted) {
-                    setDialogState(() => isLoading = false);
-                    
-                    if (response.statusCode == 200) {
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Contraseña actualizada con éxito.'),
-                          backgroundColor: LuxeColors.nude900,
-                        ),
-                      );
-                    } else {
-                      final data = json.decode(response.body);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(data['error'] ?? 'Error al cambiar contraseña'),
-                          backgroundColor: const Color(0xFFB00020),
-                        ),
-                      );
-                    }
-                  }
-                } catch (e) {
-                  if (mounted) {
-                    setDialogState(() => isLoading = false);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(mensajeHumano(e)),
-                        backgroundColor: const Color(0xFFB00020),
-                      ),
-                    );
-                  }
-                }
-              },
+                      try {
+                        final headers = await ApiService.getAuthHeaders();
+                        final uri = Uri.parse(
+                            '${ApiService.baseUrl}/api/auth/change-password');
+                        final response = await http
+                            .patch(
+                              uri,
+                              headers: headers,
+                              body: json.encode({
+                                'current_password':
+                                    currentPasswordController.text,
+                                'new_password': newPasswordController.text,
+                              }),
+                            )
+                            .timeout(const Duration(seconds: 15));
+
+                        if (mounted) {
+                          setDialogState(() => isLoading = false);
+
+                          if (response.statusCode == 200) {
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content:
+                                    Text('Contraseña actualizada con éxito.'),
+                                backgroundColor: LuxeColors.nude900,
+                              ),
+                            );
+                          } else {
+                            final data = json.decode(response.body);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(data['error'] ??
+                                    'Error al cambiar contraseña'),
+                                backgroundColor: const Color(0xFFB00020),
+                              ),
+                            );
+                          }
+                        }
+                      } catch (e) {
+                        if (mounted) {
+                          setDialogState(() => isLoading = false);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(mensajeHumano(e)),
+                              backgroundColor: const Color(0xFFB00020),
+                            ),
+                          );
+                        }
+                      }
+                    },
               child: isLoading
                   ? const SizedBox(
                       width: 16,
                       height: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                      child: CircularProgressIndicator(
+                          strokeWidth: 2, color: Colors.white),
                     )
                   : const Text('Actualizar'),
             ),
@@ -344,7 +418,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancelar', style: TextStyle(color: LuxeColors.nude900)),
+            child: const Text('Cancelar',
+                style: TextStyle(color: LuxeColors.nude900)),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
@@ -376,18 +451,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
     try {
       final headers = await ApiService.getAuthHeaders();
       final uri = Uri.parse('${ApiService.baseUrl}/api/tickets');
-      final response = await http.post(
-        uri,
-        headers: headers,
-        body: json.encode({
-          'tipo': 'ARCO_SUPRESION',
-          'categoria': 'seguridad',
-          'asunto': 'Solicitud de Supresión de Datos (ARCO) - Ley 1581/2012',
-          'descripcion': 'El usuario solicita la supresión total de sus datos personales y biométricos '
-              'conforme al Artículo 15 de la Ley Estatutaria 1581 de 2012. '
-              'Se requiere revisión y ejecución manual por parte del equipo de privacidad.',
-        }),
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .post(
+            uri,
+            headers: headers,
+            body: json.encode({
+              'tipo': 'ARCO_SUPRESION',
+              'categoria': 'seguridad',
+              'asunto':
+                  'Solicitud de Supresión de Datos (ARCO) - Ley 1581/2012',
+              'descripcion':
+                  'El usuario solicita la supresión total de sus datos personales y biométricos '
+                      'conforme al Artículo 15 de la Ley Estatutaria 1581 de 2012. '
+                      'Se requiere revisión y ejecución manual por parte del equipo de privacidad.',
+            }),
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (mounted) {
         if (response.statusCode == 201 || response.statusCode == 200) {
@@ -395,7 +474,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           final ticketId = data['data']?['id'] ?? 'N/A';
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Solicitud ARCO registrada. Ticket: $ticketId. Recibirás confirmación por email.'),
+              content: Text(
+                  'Solicitud ARCO radicada. Ticket: $ticketId. Consulta su estado en Centro de Soporte > Mis solicitudes.'),
               backgroundColor: LuxeColors.nude900,
               duration: const Duration(seconds: 8),
             ),
@@ -404,7 +484,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           final data = json.decode(response.body);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Error al crear solicitud: ${data['error'] ?? response.statusCode}'),
+              content: Text(
+                  'Error al crear solicitud: ${data['error'] ?? response.statusCode}'),
               backgroundColor: const Color(0xFFB00020),
             ),
           );
@@ -586,7 +667,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: LuxeColors.nude50,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: LuxeColors.nude900, size: 20),
+          icon: const Icon(Icons.arrow_back_ios_new,
+              color: LuxeColors.nude900, size: 20),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
@@ -610,194 +692,186 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(LuxeSpacing.xl),
                     child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (_errorMessage != null) ...[
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFB00020).withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: const Color(0xFFB00020)),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.warning_amber_rounded, color: Color(0xFFB00020)),
-                            const SizedBox(width: 8),
-                            Expanded(child: Text(_errorMessage!, style: const TextStyle(color: Color(0xFFB00020)))),
-                            IconButton(
-                              icon: const Icon(Icons.refresh, color: Color(0xFFB00020), size: 20),
-                              onPressed: _loadPreferences,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (_errorMessage != null) ...[
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFB00020)
+                                  .withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(8),
+                              border:
+                                  Border.all(color: const Color(0xFFB00020)),
                             ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: LuxeSpacing.xl),
-                    ],
-                    // SECCIÓN 1: SEGURIDAD DE SESIÓN
-                    const Text(
-                      'SEGURIDAD & AUTENTICACIÓN',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMono',
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: LuxeColors.nude500,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-
-                    LuxeProfileTile(
-                      icon: Icons.fingerprint,
-                      title: 'Autenticación Biométrica',
-                      subtitle: 'Ingreso rápido con FaceID / Huella',
-                      trailing: LuxeToggle(
-                        value: _biometricAuthEnabled,
-                        onChanged: (val) => setState(() => _biometricAuthEnabled = val),
-                      ),
-                    ),
-                    LuxeProfileTile(
-                      icon: Icons.lock_outline,
-                      title: 'Cambiar Contraseña',
-                      showDivider: false,
-                      onTap: () => _showChangePasswordDialog(context),
-                    ),
-
-                    const SizedBox(height: LuxeSpacing.xxl),
-
-                    // SECCIÓN 2: NOTIFICACIONES
-                    const Text(
-                      'COMUNICACIÓN CONCIERGE',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMono',
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: LuxeColors.nude500,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-
-                    LuxeProfileTile(
-                      icon: Icons.notifications_none,
-                      title: 'Notificaciones Push',
-                      subtitle: 'Recordatorios de rutina de piel',
-                      trailing: LuxeToggle(
-                        value: _pushNotifications,
-                        onChanged: (val) => _updatePreference('push_enabled', val),
-                      ),
-                    ),
-                    LuxeProfileTile(
-                      icon: Icons.mail_outline,
-                      title: 'Novedades y Novedades Luxe',
-                      subtitle: 'Boletín de lanzamientos de productos',
-                      trailing: LuxeToggle(
-                        value: _marketingEmails,
-                        onChanged: (val) => _updatePreference('marketing_enabled', val),
-                      ),
-                      showDivider: false,
-                    ),
-
-                    const SizedBox(height: LuxeSpacing.xxl),
-
-                    // SECCIÓN 3: PRIVACIDAD Y DATOS SENSIBLES
-                    const Text(
-                      'DATOS Y TELEMETRÍA',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMono',
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: LuxeColors.nude500,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-
-                    LuxeProfileTile(
-                      icon: Icons.analytics_outlined,
-                      title: 'Telemetría Anónima de Uso',
-                      subtitle: 'Ayuda a mejorar los modelos de escaneo de Aura',
-                      trailing: LuxeToggle(
-                        value: _anonymizedAnalytics,
-                        onChanged: (val) => _updatePreference('telemetry_enabled', val),
-                      ),
-                      showDivider: false,
-                    ),
-
-                    const SizedBox(height: LuxeSpacing.xxl),
-
-                    // SECCIÓN 4: DIRECCIONES DE ENTREGA
-                    const Text(
-                      'DIRECCIONES DE ENTREGA',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMono',
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: LuxeColors.nude500,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-
-                    const DeliveryAddressesSection(),
-
-                    const SizedBox(height: LuxeSpacing.xxl),
-
-                    // ACCIÓN DESTRUCTIVA: ELIMINAR CUENTA (CON TIPOGRAFÍA SERIF ROJA SUTIL)
-                    ListTile(
-                      onTap: () => _requestDataDeletion(context),
-                      leading: const Icon(Icons.delete_outline, color: Color(0xFFB00020)),
-                      title: const Text(
-                        'Solicitar Supresión de Datos (ARCO)',
-                        style: TextStyle(
-                          fontFamily: 'CormorantGaramond',
-                          fontSize: 16,
-                          color: Color(0xFFB00020),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    // INFORMACIÓN LEGAL Y VERSIÓN CON TEXTO NUDE400 Y ENLACES SUBRAYADOS
-                    Center(
-                      child: Column(
-                        children: [
-                          const Text(
-                            'GlowApp Belleza Luxe • v2.4.0 (Build 2026)',
-                            style: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 11, color: LuxeColors.nude500),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.warning_amber_rounded,
+                                    color: Color(0xFFB00020)),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                    child: Text(_errorMessage!,
+                                        style: const TextStyle(
+                                            color: Color(0xFFB00020)))),
+                                IconButton(
+                                  icon: const Icon(Icons.refresh,
+                                      color: Color(0xFFB00020), size: 20),
+                                  onPressed: _loadPreferences,
+                                ),
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 6),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                          const SizedBox(height: LuxeSpacing.xl),
+                        ],
+                        // SECCIÓN 1: SEGURIDAD DE SESIÓN
+                        const Text(
+                          'SEGURIDAD & AUTENTICACIÓN',
+                          style: TextStyle(
+                            fontFamily: 'JetBrainsMono',
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: LuxeColors.nude500,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+
+                        LuxeProfileTile(
+                          icon: Icons.fingerprint,
+                          title: 'Autenticación Biométrica',
+                          subtitle: kIsWeb
+                              ? 'Disponible en la app móvil con Face ID o huella'
+                              : 'Usa Face ID o huella al volver a iniciar sesión en este dispositivo',
+                          trailing: kIsWeb
+                              ? const Icon(Icons.phone_android,
+                                  color: LuxeColors.nude500)
+                              : LuxeToggle(
+                                  value: _biometricAuthEnabled,
+                                  onChanged: _setBiometricAuth,
+                                ),
+                        ),
+                        LuxeProfileTile(
+                          icon: Icons.lock_outline,
+                          title: 'Cambiar Contraseña',
+                          showDivider: false,
+                          onTap: () => _showChangePasswordDialog(context),
+                        ),
+
+                        const SizedBox(height: LuxeSpacing.xxl),
+
+                        // SECCIÓN 2: NOTIFICACIONES
+                        const Text(
+                          'COMUNICACIÓN CONCIERGE',
+                          style: TextStyle(
+                            fontFamily: 'JetBrainsMono',
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: LuxeColors.nude500,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+
+                        LuxeProfileTile(
+                          icon: Icons.mail_outline,
+                          title: 'Novedades y Novedades Luxe',
+                          subtitle:
+                              'Correos opcionales de lanzamientos y novedades; puedes cancelar cuando quieras',
+                          trailing: LuxeToggle(
+                            value: _marketingEmails,
+                            onChanged: _setMarketingEmails,
+                          ),
+                          showDivider: false,
+                        ),
+
+                        const SizedBox(height: LuxeSpacing.xxl),
+
+                        // SECCIÓN 4: DIRECCIONES DE ENTREGA
+                        const Text(
+                          'DIRECCIONES DE ENTREGA',
+                          style: TextStyle(
+                            fontFamily: 'JetBrainsMono',
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: LuxeColors.nude500,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+
+                        const DeliveryAddressesSection(),
+
+                        const SizedBox(height: LuxeSpacing.xxl),
+
+                        // ACCIÓN DESTRUCTIVA: ELIMINAR CUENTA (CON TIPOGRAFÍA SERIF ROJA SUTIL)
+                        ListTile(
+                          onTap: () => _requestDataDeletion(context),
+                          leading: const Icon(Icons.delete_outline,
+                              color: Color(0xFFB00020)),
+                          title: const Text(
+                            'Solicitar Supresión de Datos (ARCO)',
+                            style: TextStyle(
+                              fontFamily: 'CormorantGaramond',
+                              fontSize: 16,
+                              color: Color(0xFFB00020),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 32),
+
+                        // INFORMACIÓN LEGAL Y VERSIÓN CON TEXTO NUDE400 Y ENLACES SUBRAYADOS
+                        Center(
+                          child: Column(
                             children: [
-                              GestureDetector(
-                                onTap: () => _showTermsOfServiceModal(context),
-                                child: const Text(
-                                  'Términos de Servicio',
-                                  style: TextStyle(fontSize: 11, color: LuxeColors.nude500, decoration: TextDecoration.underline),
-                                ),
+                              const Text(
+                                'GlowApp Belleza Luxe • v2.4.0 (Build 2026)',
+                                style: TextStyle(
+                                    fontFamily: 'JetBrainsMono',
+                                    fontSize: 11,
+                                    color: LuxeColors.nude500),
                               ),
-                              const Text(' • ', style: TextStyle(color: LuxeColors.nude500)),
-                              GestureDetector(
-                                onTap: () => _showPrivacyPolicyModal(context),
-                                child: const Text(
-                                  'Política de Privacidad Ley 1581',
-                                  style: TextStyle(fontSize: 11, color: LuxeColors.nude500, decoration: TextDecoration.underline),
-                                ),
+                              const SizedBox(height: 6),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () =>
+                                        _showTermsOfServiceModal(context),
+                                    child: const Text(
+                                      'Términos de Servicio',
+                                      style: TextStyle(
+                                          fontSize: 11,
+                                          color: LuxeColors.nude500,
+                                          decoration: TextDecoration.underline),
+                                    ),
+                                  ),
+                                  const Text(' • ',
+                                      style:
+                                          TextStyle(color: LuxeColors.nude500)),
+                                  GestureDetector(
+                                    onTap: () =>
+                                        _showPrivacyPolicyModal(context),
+                                    child: const Text(
+                                      'Política de Privacidad Ley 1581',
+                                      style: TextStyle(
+                                          fontSize: 11,
+                                          color: LuxeColors.nude500,
+                                          decoration: TextDecoration.underline),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 32),
+                      ],
                     ),
-                    const SizedBox(height: 32),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
       ),
     );
   }

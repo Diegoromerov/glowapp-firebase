@@ -6,13 +6,13 @@ const { wrapRouterAsync } = require('../utils/expressAsync');
  */
 
 const express = require('express');
+const crypto = require('crypto');
 const router = express.Router();
-const { authMiddleware } = require('../middleware/auth');
+const { authMiddleware, adminMiddleware } = require('../middleware/auth');
+const { getJwtSecret } = require('../config/jwt');
 const {
   BIOMETRIC_CONSENT_VERSION,
-  BIOMETRIC_FINGERPRINT,
-  getActiveProcessors,
-  getRetentionNotice,
+  buildBiometricConsentTerms,
   isSupportedConsentVersion,
   isOutdatedConsent,
 } = require('../config/consentConfig');
@@ -22,9 +22,38 @@ const {
   revokeConsent, 
   deleteBiometricData,
   getAccessLogs,
+  logBiometricAccess,
   verifyConsent,
   VALID_CONSENT_TYPES
 } = require('../middleware/biometricConsent');
+const { pool } = require('../config/db');
+
+function currentTermsDocument() {
+  const data = buildBiometricConsentTerms();
+  const document_sha256 = crypto.createHash('sha256').update(JSON.stringify(data)).digest('hex');
+  return { data, document_sha256 };
+}
+
+function auditSubjectRef(userId) {
+  const secret = process.env.AUDIT_PSEUDONYM_SECRET || getJwtSecret();
+  return crypto.createHmac('sha256', secret).update(`glowapp-biometric-audit:${userId}`).digest('hex');
+}
+
+function parseAuditDate(value) {
+  if (value === undefined) return null;
+  const date = new Date(String(value));
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+function applyAuditFilters(query, params, filters, { allowSubject = false } = {}) {
+  let index = params.length + 1;
+  if (filters.from) { query += ` AND happened_at >= $${index++}::timestamptz`; params.push(filters.from); }
+  if (filters.to) { query += ` AND happened_at <= $${index++}::timestamptz`; params.push(filters.to); }
+  if (filters.eventType) { query += ` AND event_type = $${index++}`; params.push(filters.eventType); }
+  if (filters.consentType) { query += ` AND consent_type = $${index++}`; params.push(filters.consentType); }
+  if (allowSubject && filters.userId) { query += ` AND user_id = $${index++}`; params.push(filters.userId); }
+  return query;
+}
 
 /**
  * @route GET /api/consent/biometric
@@ -58,7 +87,12 @@ router.get('/status/:userId', authMiddleware, async (req, res) => {
   }
   try {
     const consents = await getUserConsents(req.user.id);
-    const hasActiveConsent = consents.some((item) => item.granted === true && !item.revoked_at);
+    const hasActiveConsent = consents.some((item) => item.consent_type === 'facial_analysis'
+      && item.granted === true
+      && !item.revoked_at
+      && item.version_terms === BIOMETRIC_CONSENT_VERSION
+      && item.explicit_authorization === true
+      && Boolean(item.document_sha256));
     return res.json({ success: true, hasActiveConsent, consents });
   } catch (error) {
     return res.status(500).json({ error: 'internal_error', message: 'Error verificando consentimiento.' });
@@ -95,14 +129,17 @@ router.get('/biometric/:consentType', authMiddleware, async (req, res) => {
         // Y-F1b: la versión vigente viaja con la respuesta para que el cliente pueda
         // pedir re-consentimiento sin adivinar el número.
         current_version: BIOMETRIC_CONSENT_VERSION,
-        outdated: consent ? isOutdatedConsent(consent.version_terms) : false,
+        outdated: consent ? (isOutdatedConsent(consent.version_terms)
+          || (consent.granted === true && (consent.explicit_authorization !== true || !consent.document_sha256))) : false,
         consent: consent ? {
           id: consent.id,
           granted: consent.granted,
           granted_at: consent.granted_at,
           revoked_at: consent.revoked_at,
           purpose: consent.purpose,
-          version_terms: consent.version_terms
+          version_terms: consent.version_terms,
+          explicit_authorization: consent.explicit_authorization,
+          document_sha256: consent.document_sha256
         } : null
       }
     });
@@ -125,7 +162,14 @@ router.get('/biometric/:consentType', authMiddleware, async (req, res) => {
 router.post('/biometric', authMiddleware, async (req, res) => {
   try {
     const userId = req.user.id;
-    const { consent_type, purpose, version_terms = BIOMETRIC_CONSENT_VERSION } = req.body;
+    const {
+      consent_type,
+      purpose,
+      version_terms = BIOMETRIC_CONSENT_VERSION,
+      explicit_authorization,
+      document_sha256,
+    } = req.body;
+    const termsDocument = currentTermsDocument();
 
     // Y-F1b: la versión que se registra debe ser una que el backend conozca. Antes el
     // campo se aceptaba sin validar (o se ignoraba y quedaba '1.0'): el registro
@@ -134,6 +178,17 @@ router.post('/biometric', authMiddleware, async (req, res) => {
       return res.status(400).json({
         error: 'invalid_version_terms',
         message: `version_terms debe ser una de: ${BIOMETRIC_CONSENT_VERSION} (vigente). Recibido: ${version_terms}`
+      });
+    }
+    if (version_terms !== BIOMETRIC_CONSENT_VERSION
+        || explicit_authorization !== true
+        || typeof document_sha256 !== 'string'
+        || document_sha256 !== termsDocument.document_sha256) {
+      return res.status(409).json({
+        error: 'explicit_current_consent_required',
+        code: 'CONSENT_TERMS_CHANGED',
+        current_version: BIOMETRIC_CONSENT_VERSION,
+        message: 'Lee el aviso vigente y marca la autorización expresa antes de continuar.',
       });
     }
     // Validaciones
@@ -150,6 +205,12 @@ router.post('/biometric', authMiddleware, async (req, res) => {
         message: 'La finalidad (purpose) es requerida y debe tener al menos 10 caracteres'
       });
     }
+    if (purpose.trim() !== termsDocument.data.purpose) {
+      return res.status(400).json({
+        error: 'purpose_mismatch',
+        message: 'La finalidad autorizada debe corresponder al aviso vigente mostrado al titular.',
+      });
+    }
     
     const consent = await grantConsent({
       userId,
@@ -157,7 +218,10 @@ router.post('/biometric', authMiddleware, async (req, res) => {
       purpose: purpose.trim(),
       ip: req.ip,
       userAgent: req.get('user-agent'),
-      versionTerms: version_terms
+      versionTerms: version_terms,
+      explicitAuthorization: true,
+      documentSha256: termsDocument.document_sha256,
+      termsSnapshot: termsDocument.data,
     });
     
     res.status(201).json({
@@ -168,7 +232,9 @@ router.post('/biometric', authMiddleware, async (req, res) => {
         granted: consent.granted,
         granted_at: consent.granted_at,
         purpose: consent.purpose,
-        version_terms: consent.version_terms
+        version_terms: consent.version_terms,
+        explicit_authorization: consent.explicit_authorization,
+        document_sha256: consent.document_sha256
       },
       message: 'Consentimiento biometrico otorgado correctamente'
     });
@@ -238,6 +304,12 @@ router.delete('/biometric/:consentType/data', authMiddleware, async (req, res) =
       });
     }
     
+    const requestId = crypto.randomUUID();
+    await pool.query(`INSERT INTO biometric_consent_audit
+      (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+      VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_REQUESTED', 'all_biometric', FALSE, $3::jsonb)`,
+    [userId, requestId, JSON.stringify({ requested_consent_type: consentType })]);
+
     const result = await deleteBiometricData(userId, consentType);
 
     // N-11 (SECAPP-05): la supresión es fail-closed. Si la implementación no
@@ -247,15 +319,25 @@ router.delete('/biometric/:consentType/data', authMiddleware, async (req, res) =
     // Sin este guard la ruta respondía 200 {success:true} con "eliminados
     // permanentemente" aunque el borrado hubiera fallado.
     if (!result || result.deleted !== true) {
+      await pool.query(`INSERT INTO biometric_consent_audit
+        (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+        VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_FAILED', 'all_biometric', FALSE, $3::jsonb)`,
+      [userId, requestId, JSON.stringify({ reason: 'deletion_not_confirmed' })]);
       return res.status(500).json({
         error: 'deletion_failed',
         message: (result && result.error) || 'No se pudo confirmar la supresion de los datos biometricos'
       });
     }
 
+    await pool.query(`INSERT INTO biometric_consent_audit
+      (user_id, consent_id, request_id, event_type, consent_type, granted, state_after)
+      VALUES ($1, 'DATA_PURGE', $2, 'SUPPRESSION_COMPLETED', 'all_biometric', FALSE, $3::jsonb)`,
+    [userId, requestId, JSON.stringify({ records_affected: result.recordsAffected })]);
+
     res.json({
       success: true,
       data: result,
+      request_id: requestId,
       message: 'Datos biometricos eliminados permanentemente (derecho de supresion Art. 15 Ley 1581)'
     });
   } catch (error) {
@@ -304,6 +386,125 @@ router.get('/access-logs', authMiddleware, async (req, res) => {
   }
 });
 
+/** Dashboard API: resumen sin datos identificables directos. Solo ADMIN. */
+router.get('/audit/summary', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const from = parseAuditDate(req.query.from) || new Date(Date.now() - 30 * 86400000).toISOString();
+    const to = parseAuditDate(req.query.to) || new Date().toISOString();
+    if (req.query.from && !parseAuditDate(req.query.from) || req.query.to && !parseAuditDate(req.query.to)) {
+      return res.status(400).json({ error: 'invalid_date', message: 'Usa fechas ISO-8601 válidas en from y to.' });
+    }
+    if (new Date(from) > new Date(to)) return res.status(400).json({ error: 'invalid_range', message: 'from debe ser anterior o igual a to.' });
+
+    const [events, active, outdated, missingEvidence, integrity] = await Promise.all([
+      pool.query(`SELECT event_type, COUNT(*)::int AS count
+        FROM biometric_consent_audit WHERE happened_at >= $1 AND happened_at <= $2
+        GROUP BY event_type ORDER BY event_type`, [from, to]),
+      pool.query(`SELECT COUNT(*)::int AS count FROM biometric_consents
+        WHERE consent_type = 'facial_analysis' AND granted = TRUE AND revoked_at IS NULL
+          AND version_terms = $1 AND explicit_authorization = TRUE AND document_sha256 IS NOT NULL`, [BIOMETRIC_CONSENT_VERSION]),
+      pool.query(`SELECT COUNT(*)::int AS count FROM biometric_consents
+        WHERE consent_type = 'facial_analysis' AND granted = TRUE AND revoked_at IS NULL
+          AND version_terms <> $1`, [BIOMETRIC_CONSENT_VERSION]),
+      pool.query(`SELECT COUNT(*)::int AS count FROM biometric_consents
+        WHERE consent_type = 'facial_analysis' AND granted = TRUE AND revoked_at IS NULL
+          AND (explicit_authorization IS DISTINCT FROM TRUE OR document_sha256 IS NULL)`, []),
+      pool.query(`SELECT COUNT(*)::int AS count, MIN(happened_at) AS first_event,
+          MAX(happened_at) AS last_event
+        FROM biometric_consent_audit`),
+    ]);
+    await logBiometricAccess({
+      userId: req.user.id,
+      accessedBy: 'admin',
+      accessType: 'read_consent_audit_summary',
+      ip: req.ip,
+      details: { from, to },
+    });
+    res.json({
+      success: true,
+      data: {
+        generated_at: new Date().toISOString(),
+        period: { from, to },
+        current_terms_version: BIOMETRIC_CONSENT_VERSION,
+        active_current_consents: active.rows[0].count,
+        active_outdated_consents_requiring_renewal: outdated.rows[0].count,
+        active_consents_missing_explicit_evidence: missingEvidence.rows[0].count,
+        events_by_type: events.rows,
+        audit_source: {
+          table: 'biometric_consent_audit',
+          append_only_trigger: 'trg_biometric_consent_audit_immutable',
+          total_events: integrity.rows[0].count,
+          first_event_at: integrity.rows[0].first_event,
+          last_event_at: integrity.rows[0].last_event,
+        },
+      },
+    });
+  } catch (error) {
+    console.error('Error GET /consent/audit/summary:', error.message);
+    res.status(500).json({ error: 'audit_unavailable', message: 'No se pudo consultar el resumen de auditoría.' });
+  }
+});
+
+/**
+ * Dashboard API: eventos paginados y evidencia del texto consentido.
+ * No devuelve IP, correo ni user-agent; el identificador del titular es un HMAC
+ * estable con la clave del servidor. El parámetro user_id solo filtra y nunca se
+ * devuelve en la respuesta.
+ */
+router.get('/audit/events', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const from = parseAuditDate(req.query.from);
+    const to = parseAuditDate(req.query.to);
+    if (req.query.from && !from || req.query.to && !to) {
+      return res.status(400).json({ error: 'invalid_date', message: 'Usa fechas ISO-8601 válidas en from y to.' });
+    }
+    if (from && to && new Date(from) > new Date(to)) return res.status(400).json({ error: 'invalid_range', message: 'from debe ser anterior o igual a to.' });
+
+    const eventType = req.query.event_type ? String(req.query.event_type) : null;
+    const consentType = req.query.consent_type ? String(req.query.consent_type) : null;
+    if (eventType && !['GRANTED', 'REVOKED', 'AMENDED', 'CONSENT_RECORD_DELETED', 'SUPPRESSION_REQUESTED', 'SUPPRESSION_COMPLETED', 'SUPPRESSION_FAILED'].includes(eventType)) {
+      return res.status(400).json({ error: 'invalid_event_type' });
+    }
+    if (consentType && !VALID_CONSENT_TYPES.includes(consentType)) return res.status(400).json({ error: 'invalid_consent_type' });
+    const userId = req.query.user_id === undefined ? null : Number(req.query.user_id);
+    if (userId !== null && (!Number.isSafeInteger(userId) || userId <= 0)) return res.status(400).json({ error: 'invalid_user_id' });
+    const limit = Math.min(Math.max(Number.parseInt(req.query.limit, 10) || 50, 1), 100);
+    const offset = Math.min(Math.max(Number.parseInt(req.query.offset, 10) || 0, 0), 100000);
+    const filters = { from, to, eventType, consentType, userId };
+
+    let where = ' WHERE 1=1';
+    const countParams = [];
+    where = applyAuditFilters(where, countParams, filters, { allowSubject: true });
+    const count = await pool.query(`SELECT COUNT(*)::int AS count FROM biometric_consent_audit${where}`, countParams);
+    const params = [...countParams, limit, offset];
+    const rows = await pool.query(`SELECT id, consent_id, event_type, consent_type,
+        granted, granted_at, revoked_at, purpose, version_terms,
+        explicit_authorization, document_sha256, terms_snapshot,
+        happened_at, state_before, state_after, user_id
+      FROM biometric_consent_audit${where}
+      ORDER BY happened_at DESC, id DESC
+      LIMIT $${params.length - 1} OFFSET $${params.length}`, params);
+
+    await logBiometricAccess({
+      userId: req.user.id,
+      accessedBy: 'admin',
+      accessType: 'read_consent_audit_events',
+      ip: req.ip,
+      details: { from, to, eventType, consentType, filtered_by_user_id: userId !== null, limit, offset },
+    });
+
+    res.json({
+      success: true,
+      data: rows.rows.map(({ user_id, ...event }) => ({ ...event, subject_ref: auditSubjectRef(user_id) })),
+      pagination: { total: count.rows[0].count, limit, offset, next_offset: offset + rows.rows.length < count.rows[0].count ? offset + rows.rows.length : null },
+      filters: { from, to, event_type: eventType, consent_type: consentType },
+    });
+  } catch (error) {
+    console.error('Error GET /consent/audit/events:', error.message);
+    res.status(500).json({ error: 'audit_unavailable', message: 'No se pudieron consultar los eventos de auditoría.' });
+  }
+});
+
 /**
  * @route GET /api/consent/terms
  * @description Obtiene los terminos y condiciones actuales para consentimiento biometrico
@@ -312,45 +513,10 @@ router.get('/access-logs', authMiddleware, async (req, res) => {
  */
 router.get('/terms', async (req, res) => {
   try {
-    // En produccion, estos terminos vendrian de una tabla o archivo de configuracion
-    const terms = {
-      version: BIOMETRIC_CONSENT_VERSION,
-      last_updated: '2026-10-20',
-      title: 'Consentimiento para Tratamiento de Datos Biometricos - GlowApp',
-      sections: [
-        {
-          title: '1. Finalidad del Tratamiento',
-          content: 'Los datos biometricos (rostro, piel, cabello, medidas corporales) se utilizan exclusivamente para: analisis de tipo de piel, recomendacion de rutinas cosmeticas, prueba virtual de productos, y mejora de recomendaciones personalizadas.'
-        },
-        {
-          title: '2. Datos Recopilados',
-          content: 'Fotografia facial (enviada al encargado del tratamiento para su analisis; GlowApp no conserva la imagen original), metricas cutaneas por subregion (hidratacion, poros, arrugas, textura, acne, rojez, firmeza, ojeras, manchas, surco lagrimal), tipo de piel, edad cutanea y mascaras de analisis. GlowApp guarda las metricas cifradas con AES-256-GCM.'
-        },
-        {
-          title: '3. Derechos del Titular (Ley 1581/2012)',
-          content: 'Acceso: Consultar que datos se tienen sobre usted\nRectificacion: Corregir datos inexactos\nSupresion: Eliminar sus datos biometricos en cualquier momento (Art. 15)\nRevocatoria: Retirar consentimiento sin efecto retroactivo\nQueja: Ante la SIC si considera vulnerados sus derechos'
-        },
-        {
-          // T-111 (texto 2.2): la sección decía «mientras el consentimiento esté vigente»,
-          // que no es un plazo. La Ley 1581 exige temporalidad y ahora tiene fecha.
-          title: '4. Retencion: Plazo, Purga y Borrado',
-          content: `Los datos biometricos se conservan ${getRetentionNotice().retentionMonths} meses contados desde ${getRetentionNotice().from}. Se mantienen ${getRetentionNotice().whatIsKept}; ${getRetentionNotice().whatIsDeleted}. La misma regla se aplica a las cuentas inactivas: la inactividad no prolonga la conservacion. Al revocar el consentimiento los datos se eliminan en 24 horas. Al cerrar la cuenta, ${getRetentionNotice().onAccountDeletion}. Cifrado AES-256-GCM en reposo y TLS en transito; acceso solo por personal autorizado (ATENA, AURA).`
-        },
-        {
-          title: '5. Encargados del Tratamiento y Transferencia Internacional',
-          content: `La fotografia facial y sus derivados se procesan con: ${getActiveProcessors().map((p) => `${p.name} — ${p.country}: ${p.purpose}`).join('; ')}. Todos implican transferencia internacional de datos, amparada en la autorizacion expresa del titular (Ley 1581/2012, art. 26) y en clausulas contractuales. Perfect Corp. procesa la fotografia en su infraestructura y la elimina segun su contrato de servicio; GlowApp conserva solo las metricas cifradas.`
-        },
-        {
-          // Y-F1d (texto 2.1): la huella existía desde Y-F5 y el aviso no la nombraba.
-          title: '6. Huella de la Fotografia',
-          content: `Para no cobrar dos veces la misma medicion, GlowApp conserva ${BIOMETRIC_FINGERPRINT.what}. Se usa exclusivamente para ${BIOMETRIC_FINGERPRINT.purpose}. ${BIOMETRIC_FINGERPRINT.notStored} y la huella ${BIOMETRIC_FINGERPRINT.notUsedFor}. Se conserva mientras la medicion sea reutilizable: ${BIOMETRIC_FINGERPRINT.retentionHours} horas desde la captura, y se elimina con el resto de sus datos biometricos al revocar el consentimiento.`
-        }
-      ]
-    };
-    
+    const terms = currentTermsDocument();
     res.json({
       success: true,
-      data: terms
+      data: { ...terms.data, document_sha256: terms.document_sha256 }
     });
   } catch (error) {
     console.error('Error GET /consent/terms:', error.message);

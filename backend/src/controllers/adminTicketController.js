@@ -22,6 +22,9 @@ const {
   fechaLimiteArco,
 } = require('../utils/ticketSla');
 const { motivoInvalido, valoresValidos } = require('../utils/ticketEsquema');
+const { pool } = require('../config/db');
+const tenantRouting = require('../config/tenantRouting');
+const consentService = require('../services/consentService');
 
 const TIPO_ARCO = 'ARCO_SUPRESION';
 const PAGINA_POR_DEFECTO = 1;
@@ -291,7 +294,13 @@ exports.detalleTicket = async (req, res) => {
       { replacements: { id }, type: QueryTypes.SELECT }
     );
 
-    return res.json({ success: true, data: { ...conTiempos(tickets[0], new Date()), mensajes } });
+    const auditoria = await sequelize.query(
+      `SELECT id, actor_id, event_type, state_before, state_after, details, happened_at
+         FROM ticket_workflow_audit WHERE ticket_id = :id ORDER BY happened_at, id`,
+      { replacements: { id }, type: QueryTypes.SELECT }
+    );
+
+    return res.json({ success: true, data: { ...conTiempos(tickets[0], new Date()), mensajes, auditoria } });
   } catch (error) {
     return responderErrorDeBase(error, res, 'GET /api/admin/tickets/:id');
   }
@@ -326,16 +335,23 @@ exports.actualizarTicket = async (req, res) => {
     }
 
     const actuales = await sequelize.query(
-      `SELECT id, estado FROM tickets WHERE id = :id`,
+      `SELECT id, estado, tipo, suppression_executed_at FROM tickets WHERE id = :id`,
       { replacements: { id }, type: QueryTypes.SELECT }
     );
     if (!actuales.length) {
       return res.status(404).json({ error: 'NO_ENCONTRADO', message: 'Ticket no encontrado.' });
     }
     const cambiaEstado = estado !== undefined && estado !== actuales[0].estado;
+    if (actuales[0].tipo === TIPO_ARCO && ['RESUELTO', 'CERRADO'].includes(estado)
+        && !actuales[0].suppression_executed_at) {
+      return res.status(409).json({
+        error: 'SUPRESION_NO_EJECUTADA',
+        message: 'Verifica la identidad y ejecuta la supresión ARCO antes de cerrar el caso.',
+      });
+    }
 
-    const asignaciones = ['fecha_actualizacion = NOW()'];
-    const reemplazos = { id };
+    const asignaciones = ['fecha_actualizacion = NOW()', 'workflow_actor_id = :actor'];
+    const reemplazos = { id, actor: req.user.id };
 
     if (estado !== undefined) {
       reemplazos.estado = estado;
@@ -377,6 +393,104 @@ exports.actualizarTicket = async (req, res) => {
   }
 };
 
+// Verificación explícita antes de tocar datos personales. La comprobación documental
+// ocurre fuera de esta API; el operador registra el resultado y queda auditado.
+exports.verifyArcoIdentity = async (req, res) => {
+  const { id } = req.params;
+  if (!UUID.test(id)) return res.status(400).json({ error: 'FORMATO_INVALIDO' });
+  const method = req.body?.verification_method;
+  const reference = req.body?.verification_reference;
+  if (req.body?.identity_verified !== true
+      || !['DOCUMENTO', 'OTP', 'VIDEO', 'PRESENCIAL', 'OTRO'].includes(method)
+      || typeof reference !== 'string' || !/^[A-Za-z0-9_-]{4,64}$/.test(reference)) {
+    return res.status(400).json({ error: 'VERIFICACION_REQUERIDA', message: 'Registra la verificación, su método y la referencia interna del comprobante (sin adjuntar documentos de identidad).' });
+  }
+  try {
+    const updated = await sequelize.query(`
+      UPDATE tickets SET identity_verified_at = NOW(), identity_verified_by = :admin,
+        identity_verification_method = :method, identity_verification_reference = :reference,
+        workflow_actor_id = :admin,
+        estado = 'EN_PROCESO', fecha_actualizacion = NOW()
+      WHERE id = :id AND tipo = :tipo AND suppression_executed_at IS NULL
+      RETURNING id, estado, identity_verified_at, identity_verified_by`,
+    { replacements: { id, admin: req.user.id, method, reference, tipo: TIPO_ARCO }, type: QueryTypes.SELECT });
+    if (!updated.length) return res.status(404).json({ error: 'SOLICITUD_ARCO_NO_ENCONTRADA' });
+    return res.json({ success: true, data: updated[0] });
+  } catch (error) { return responderErrorDeBase(error, res, 'POST /api/admin/tickets/:id/arco/verify'); }
+};
+
+// Conserva solo una cuenta anónima y los registros mínimos de auditoría; no elimina
+// soportes financieros sujetos a conservación. Cada categoría y cantidad queda en el
+// manifiesto inmutable asociado al caso.
+exports.executeArcoSuppression = async (req, res) => {
+  const { id } = req.params;
+  if (!UUID.test(id)) return res.status(400).json({ error: 'FORMATO_INVALIDO' });
+  if (req.body?.confirm !== 'SUPRIMIR_DATOS_VERIFICADOS') {
+    return res.status(400).json({ error: 'CONFIRMACION_REQUERIDA', message: 'Envía confirm: SUPRIMIR_DATOS_VERIFICADOS.' });
+  }
+  try {
+    const result = await tenantRouting.runAsSystem({ pool }, async (client) => {
+        const found = await client.query(`SELECT id, usuario_id FROM tickets
+          WHERE id = $1 AND tipo = $2 AND identity_verified_at IS NOT NULL
+            AND suppression_executed_at IS NULL FOR UPDATE`, [id, TIPO_ARCO]);
+        if (!found.rows.length) {
+          const error = new Error('ARCO_NOT_VERIFIED_OR_ALREADY_EXECUTED'); error.code = 'ARCO_NOT_READY'; throw error;
+        }
+        const userId = found.rows[0].usuario_id;
+        const bio = await consentService.deleteBiometricData(userId, { client });
+        if (!bio.deleted) { const error = new Error('BIOMETRIC_SUPPRESSION_FAILED'); error.code = 'ARCO_BIOMETRIC_FAILED'; throw error; }
+        await client.query(`INSERT INTO marketing_consent_audit (user_id, granted, source)
+          SELECT $1, FALSE, 'arco_suppression' WHERE EXISTS
+            (SELECT 1 FROM user_preferences WHERE user_id = $1 AND marketing_enabled = TRUE)`, [userId]);
+        const preferenceDelete = await client.query('DELETE FROM user_preferences WHERE user_id = $1', [userId]);
+        const pushToken = await client.query('UPDATE usuarios SET fcm_token = NULL WHERE id = $1 AND fcm_token IS NOT NULL RETURNING id', [userId]);
+        const anonymized = await client.query(`UPDATE usuarios SET
+          nombre = 'Titular anonimizado', email = $1, password_hash = '', phone = NULL,
+          foto_url = NULL, is_active = FALSE
+          WHERE id = $2 RETURNING id`, [`arco_${userId}_${Date.now()}@deleted.glowapp.invalid`, userId]);
+        if (!anonymized.rowCount) { const error = new Error('USER_NOT_FOUND'); error.code = 'ARCO_USER_NOT_FOUND'; throw error; }
+        const messagesDeleted = await client.query(`DELETE FROM ticket_mensajes WHERE ticket_id IN
+          (SELECT id FROM tickets WHERE usuario_id = $1)`, [userId]);
+        const ticketsRedacted = await client.query(`UPDATE tickets SET asunto = 'Registro de solicitud de privacidad',
+          descripcion = 'Contenido redactado tras ejecutar supresión ARCO.', evidencia_urls = '{}'
+          WHERE usuario_id = $1 AND id <> $2`, [userId, id]);
+        const manifest = {
+          account_anonymized: true, biometric_records_deleted: bio.recordsAffected,
+          preferences_deleted: preferenceDelete.rowCount, push_tokens_deleted: pushToken.rowCount,
+          support_threads_redacted: ticketsRedacted.rowCount, support_messages_deleted: messagesDeleted.rowCount,
+          financial_and_transactional_records: 'retained_where_legally_required',
+          executed_by: req.user.id,
+        };
+        manifest.request_content_redacted = true;
+        const completed = await client.query(`UPDATE tickets SET suppression_executed_at = NOW(),
+          suppression_manifest = $2::jsonb, identity_verified_by = $3,
+          workflow_actor_id = $3,
+          asunto = 'Solicitud ARCO ejecutada', descripcion = 'Contenido de la solicitud redactado tras la supresión.', evidencia_urls = '{}',
+          estado = 'RESUELTO', resuelto_en = NOW(), fecha_actualizacion = NOW()
+          WHERE id = $1 RETURNING id, estado, suppression_executed_at, suppression_manifest`,
+        [id, JSON.stringify(manifest), req.user.id]);
+        return completed.rows[0];
+    });
+    return res.json({ success: true, message: 'Supresión ejecutada; el manifiesto registra categorías conservadas por obligaciones legales.', data: result });
+  } catch (error) {
+    if (error.code === 'ARCO_NOT_READY') return res.status(409).json({ error: error.code, message: 'La solicitud debe existir, estar verificada y no haberse ejecutado.' });
+    if (error.code === 'ARCO_BIOMETRIC_FAILED') return res.status(503).json({ error: error.code, message: 'Falló la supresión biométrica; no se anonimizó la cuenta.' });
+    if (error.code === 'ARCO_USER_NOT_FOUND') return res.status(404).json({ error: error.code });
+    return responderErrorDeBase(error, res, 'POST /api/admin/tickets/:id/arco/execute');
+  }
+};
+
+exports.auditoriaTicket = async (req, res) => {
+  if (!UUID.test(req.params.id)) return res.status(400).json({ error: 'FORMATO_INVALIDO' });
+  try {
+    const rows = await sequelize.query(`SELECT id, requester_id, actor_id, event_type,
+      state_before, state_after, details, happened_at FROM ticket_workflow_audit
+      WHERE ticket_id = :id ORDER BY happened_at, id`,
+    { replacements: { id: req.params.id }, type: QueryTypes.SELECT });
+    return res.json({ success: true, data: rows });
+  } catch (error) { return responderErrorDeBase(error, res, 'GET /api/admin/tickets/:id/audit'); }
+};
+
 // ── POST /api/admin/tickets/:id/respuesta ──────────────────────────────────────
 // Responde como operador: guarda el mensaje en el hilo, mueve el estado y fija
 // `primera_respuesta_en` si es la primera. El correo al implicado es la fase siguiente.
@@ -404,16 +518,21 @@ exports.responderTicket = async (req, res) => {
     }
 
     const tickets = await sequelize.query(
-      `SELECT id, estado FROM tickets WHERE id = :id`,
+      `SELECT id, estado, tipo, suppression_executed_at FROM tickets WHERE id = :id`,
       { replacements: { id }, type: QueryTypes.SELECT }
     );
     if (!tickets.length) {
       return res.status(404).json({ error: 'NO_ENCONTRADO', message: 'Ticket no encontrado.' });
     }
+    if (tickets[0].tipo === TIPO_ARCO && ['RESUELTO', 'CERRADO'].includes(nuevoEstado)
+        && !tickets[0].suppression_executed_at) {
+      return res.status(409).json({ error: 'SUPRESION_NO_EJECUTADA', message: 'Ejecuta la supresión ARCO antes de cerrar el caso.' });
+    }
     const cambiaEstado = nuevoEstado !== tickets[0].estado;
 
     const asignaciones = [
       'estado = :nuevoEstado',
+      'workflow_actor_id = :actor',
       'fecha_actualizacion = NOW()',
       // La PRIMERA respuesta del operador es la que fija el tiempo de respuesta; COALESCE
       // hace que una segunda no la sobrescriba.
@@ -440,11 +559,11 @@ exports.responderTicket = async (req, res) => {
       );
 
       const ticket = await sequelize.query(
-        `UPDATE tickets SET ${asignaciones.join(', ')} WHERE id = :id
+          `UPDATE tickets SET ${asignaciones.join(', ')} WHERE id = :id
           RETURNING id, tipo, categoria, asunto, estado, prioridad, fecha_creacion,
                     fecha_actualizacion, primera_respuesta_en, resuelto_en, cerrado_en`,
         {
-          replacements: { id, nuevoEstado },
+          replacements: { id, nuevoEstado, actor: req.user.id },
           type: QueryTypes.SELECT,
           transaction: transaccion,
         }
@@ -453,16 +572,27 @@ exports.responderTicket = async (req, res) => {
       return { mensaje: insertado[0], ticket: ticket[0] };
     });
 
+    let notification = { status: 'not_configured' };
+    try {
+      const recipient = await sequelize.query(
+        `SELECT u.email FROM tickets t JOIN usuarios u ON u.id = t.usuario_id WHERE t.id = :id`,
+        { replacements: { id }, type: QueryTypes.SELECT }
+      );
+      const mailer = require('../services/emailService');
+      if (recipient[0]?.email && (process.env.BREVO_API_KEY || (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS))) {
+        const sent = await mailer.sendEmail({ to: recipient[0].email, subject: 'Actualización de tu solicitud GlowApp',
+          data: { text: `Hay una actualización en tu ticket ${id}. Ingresa a GlowApp > Centro de Soporte > Mis solicitudes para consultarla.` } });
+        notification = sent?.devMode ? { status: 'not_configured' } : { status: 'sent' };
+      }
+    } catch (mailError) { console.error('[tickets] respuesta guardada; notificación no enviada:', mailError.message); notification = { status: 'failed' }; }
+
     return res.status(201).json({
       success: true,
       message: 'Respuesta registrada.',
       data: {
         ticket: conTiempos(resultado.ticket, new Date()),
         mensaje: resultado.mensaje,
-        // Se declara para que el panel no dé por hecho una notificación que la fase
-        // siguiente todavía no hace.
-        correo_enviado: false,
-        correo_pendiente: true,
+        notification,
       },
     });
   } catch (error) {

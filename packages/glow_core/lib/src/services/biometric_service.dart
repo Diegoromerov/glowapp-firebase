@@ -1,11 +1,14 @@
 // frontend/lib/services/biometric_service.dart
 import 'dart:convert';
+
 import 'biometric_export_stub.dart'
     if (dart.library.html) 'biometric_export_web.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image/image.dart' as img;
+
 import 'api_service.dart';
 import 'auth_service.dart';
 import 'location_service.dart';
@@ -39,6 +42,7 @@ class BiometricConsentState {
   final bool outdated;
   final String? version;
   final String currentVersion;
+  final bool permitted;
 
   /// `false` cuando no se pudo leer el estado (sin sesión, red, respuesta rara).
   /// Un estado desconocido no autoriza a inventar: se dice que no se sabe.
@@ -47,6 +51,7 @@ class BiometricConsentState {
   const BiometricConsentState({
     required this.granted,
     required this.outdated,
+    required this.permitted,
     required this.currentVersion,
     this.version,
     this.known = true,
@@ -56,6 +61,7 @@ class BiometricConsentState {
   static const BiometricConsentState unknown = BiometricConsentState(
     granted: false,
     outdated: false,
+    permitted: false,
     currentVersion: BiometricService.consentVersion,
     known: false,
   );
@@ -63,7 +69,7 @@ class BiometricConsentState {
   bool get needsReconsent => granted && outdated;
 
   /// Puede medir: autorizó con el texto que rige hoy.
-  bool get canScan => granted && !outdated;
+  bool get canScan => granted && !outdated && permitted;
 
   /// `data` de `GET /api/consent/biometric/:tipo`.
   ///
@@ -71,12 +77,17 @@ class BiometricConsentState {
   /// constante del cliente (que una prueba mantiene en paridad con el servidor).
   factory BiometricConsentState.fromJson(Map<String, dynamic> data) {
     final consent = data['consent'];
-    final versionRaw = consent is Map ? consent['version_terms'] : null;
+    final consentMap = consent is Map ? consent : null;
+    final versionRaw = consentMap?['version_terms'];
     final currentRaw = data['current_version'];
 
     return BiometricConsentState(
-      granted: data['allowed'] == true,
+      // `allowed` representa si puede escanear ahora. `granted` representa la
+      // autorización histórica; deben distinguirse para pedir reconsentimiento.
+      granted:
+          consentMap?['granted'] == true && consentMap?['revoked_at'] == null,
       outdated: data['outdated'] == true,
+      permitted: data['allowed'] == true,
       version: versionRaw is String ? versionRaw : null,
       currentVersion: currentRaw is String && currentRaw.isNotEmpty
           ? currentRaw
@@ -91,7 +102,7 @@ class BiometricService {
   /// Debe coincidir con `BIOMETRIC_CONSENT_VERSION` del backend
   /// (`backend/src/config/consentConfig.js`); si no coincide, el análisis queda
   /// marcado como autorizado con una versión desactualizada.
-  static const String consentVersion = '2.2';
+  static const String consentVersion = '2.3';
 
   /// Y-F6: serie de escaneos del usuario, tal como quedó guardada.
   ///
@@ -114,7 +125,9 @@ class BiometricService {
       throw Exception('Tu sesión expiró. Vuelve a entrar.');
     }
     if (response.statusCode != 200) {
-      throw Exception('No se pudo cargar tu evolución (${response.statusCode}).');
+      throw Exception(
+        'No se pudo cargar tu evolución (${response.statusCode}).',
+      );
     }
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
@@ -127,28 +140,59 @@ class BiometricService {
     return ApiService.baseUrl;
   }
 
-  static Future<void> saveConsent() async {
+  static Future<Map<String, dynamic>> getConsentTerms() async {
+    final baseUrl = await getBaseUrl();
+    final response = await http
+        .get(Uri.parse('$baseUrl/api/consent/terms'))
+        .timeout(const Duration(seconds: 15));
+    if (response.statusCode != 200) {
+      throw Exception(
+        'No se pudo cargar el aviso vigente de datos biométricos.',
+      );
+    }
+    final body = jsonDecode(response.body);
+    final data = body is Map ? body['data'] : null;
+    if (data is! Map ||
+        data['version'] is! String ||
+        data['document_sha256'] is! String) {
+      throw Exception('El aviso de consentimiento recibido no es válido.');
+    }
+    return Map<String, dynamic>.from(data);
+  }
+
+  static Future<void> saveConsent({required Map<String, dynamic> terms}) async {
     final baseUrl = await getBaseUrl();
     final token = await AuthService.getToken();
     if (token == null || token.isEmpty) {
-      throw Exception('Inicia sesión para registrar el consentimiento biométrico.');
+      throw Exception(
+        'Inicia sesión para registrar el consentimiento biométrico.',
+      );
     }
 
-    final response = await http.post(
-      Uri.parse('$baseUrl/api/consent/biometric'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: jsonEncode({
-        'consent_type': 'facial_analysis',
-        'purpose': 'Análisis facial y recomendaciones personalizadas de cuidado de piel.',
-        'version_terms': consentVersion,
-      }),
-    );
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl/api/consent/biometric'),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
+          body: jsonEncode({
+            'consent_type': 'facial_analysis',
+            'purpose': terms['purpose'],
+            'version_terms': terms['version'],
+            'document_sha256': terms['document_sha256'],
+            'explicit_authorization': true,
+          }),
+        )
+        .timeout(const Duration(seconds: 20));
 
     if (response.statusCode != 201 && response.statusCode != 200) {
-      throw Exception('Error al guardar consentimiento biométrico');
+      if (response.statusCode == 409) {
+        throw Exception('El aviso cambió. Vuelve a leerlo antes de autorizar.');
+      }
+      throw Exception(
+        'No se pudo guardar la autorización expresa (${response.statusCode}).',
+      );
     }
   }
 
@@ -181,14 +225,16 @@ class BiometricService {
 
   static Future<bool> hasConsent() async {
     final state = await getConsentState();
-    return state.granted;
+    return state.canScan;
   }
 
   static Future<void> revokeConsent() async {
     final baseUrl = await getBaseUrl();
     final token = await AuthService.getToken();
     if (token == null || token.isEmpty) {
-      throw Exception('Inicia sesión para administrar el consentimiento biométrico.');
+      throw Exception(
+        'Inicia sesión para administrar el consentimiento biométrico.',
+      );
     }
 
     final response = await http.delete(
@@ -199,13 +245,30 @@ class BiometricService {
       throw Exception('No se pudo revocar el consentimiento biométrico.');
     }
 
-    final deletion = await http.delete(
+    await deleteBiometricData();
+  }
+
+  static Future<Map<String, dynamic>> deleteBiometricData() async {
+    final baseUrl = await getBaseUrl();
+    final token = await AuthService.getToken();
+    if (token == null || token.isEmpty) {
+      throw Exception(
+        'Inicia sesión para reintentar la eliminación de datos biométricos.',
+      );
+    }
+    final response = await http.delete(
       Uri.parse('$baseUrl/api/consent/biometric/facial_analysis/data'),
       headers: {'Authorization': 'Bearer $token'},
-    );
-    if (deletion.statusCode != 200) {
-      throw Exception('Consentimiento revocado, pero no se pudo confirmar la eliminación de los datos biométricos.');
+    ).timeout(const Duration(seconds: 30));
+    if (response.statusCode != 200) {
+      throw BiometricDeletionPendingException(
+        'La autorización está revocada, pero no se pudo confirmar el borrado. Reintenta la eliminación.',
+      );
     }
+    final decoded = jsonDecode(response.body);
+    return decoded is Map
+        ? Map<String, dynamic>.from(decoded)
+        : <String, dynamic>{};
   }
 
   static Future<Map<String, dynamic>> exportBiometricData() async {
@@ -240,7 +303,8 @@ class BiometricService {
     final token = await AuthService.getToken();
     final prefs = await SharedPreferences.getInstance();
     final userId = prefs.getString('userId') ?? 'user';
-    final idempotencyKey = 'biometric_${userId}_${DateTime.now().microsecondsSinceEpoch}';
+    final idempotencyKey =
+        'biometric_${userId}_${DateTime.now().microsecondsSinceEpoch}';
     final compressionResults = await Future.wait([
       compute(_compressImageIsolate, Uint8List.fromList(faceImageBytes)),
       compute(_compressImageIsolate, Uint8List.fromList(handsImageBytes)),
@@ -348,29 +412,34 @@ class BiometricService {
         'sebumPores': {
           'score': 26,
           'level': 'Equilibrado',
-          'suggestedTreatment': 'Limpieza facial profunda ultrasónica y exfoliación enzimática',
+          'suggestedTreatment':
+              'Limpieza facial profunda ultrasónica y exfoliación enzimática',
           'suggestedActive': 'Niacinamida 5% + Ácido Salicílico',
         },
         'pigmentationClarity': {
           'score': 20,
           'level': 'Tono Uniforme Radiante',
-          'suggestedTreatment': 'Velo iluminador antioxidante con Vitamina C pura',
+          'suggestedTreatment':
+              'Velo iluminador antioxidante con Vitamina C pura',
           'suggestedActive': 'Vitamina C pura 15% + Ácido Ferúlico',
         },
         'firmnessLines': {
           'score': 22,
           'level': 'Firmeza y Elasticidad Óptima',
-          'suggestedTreatment': 'Radiofrecuencia facial reactivadora y masaje Kobido',
+          'suggestedTreatment':
+              'Radiofrecuencia facial reactivadora y masaje Kobido',
           'suggestedActive': 'Péptidos de Cobre + Ácido Hialurónico',
         },
         'barrierHydration': {
           'score': 84,
           'level': 'Barrera Cutánea Fortalecida',
-          'suggestedTreatment': 'Velo de colágeno marino con hidratación profunda',
+          'suggestedTreatment':
+              'Velo de colágeno marino con hidratación profunda',
           'suggestedActive': 'Ácido Hialurónico Multimolecular + Ceramidas NP',
         },
       },
-      'recommendation': 'Tu piel presenta una armonía luminosa con balance hídrico superior y subtono cálido dorado. Para potenciar tu GlowScore al 95+, combina activos antioxidantes por la mañana con masajes faciales semanales. En maquillaje, la paleta terracota, champagne y melocotón elevará exponencialmente tu visagismo.',
+      'recommendation':
+          'Tu piel presenta una armonía luminosa con balance hídrico superior y subtono cálido dorado. Para potenciar tu GlowScore al 95+, combina activos antioxidantes por la mañana con masajes faciales semanales. En maquillaje, la paleta terracota, champagne y melocotón elevará exponencialmente tu visagismo.',
       'vtoTones': {
         'lipsticks': [
           {'name': 'Terracota Sunset', 'hex': '#B84A39', 'finish': 'Mate'},
@@ -411,17 +480,19 @@ class BiometricService {
     };
   }
 
-  static Future<List<ColorPaletteItem>> getColorPalette(String hex,
-      {int count = 5, String mode = 'analogic'}) async {
+  static Future<List<ColorPaletteItem>> getColorPalette(
+    String hex, {
+    int count = 5,
+    String mode = 'analogic',
+  }) async {
     final baseUrl = await getBaseUrl();
     final token = await AuthService.getToken();
     try {
       final response = await http.get(
         Uri.parse(
-            '$baseUrl/api/color/palette?hex=$hex&count=$count&mode=$mode'),
-        headers: {
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+          '$baseUrl/api/color/palette?hex=$hex&count=$count&mode=$mode',
+        ),
+        headers: {if (token != null) 'Authorization': 'Bearer $token'},
       );
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -447,10 +518,9 @@ class BiometricService {
     try {
       final response = await http.get(
         Uri.parse(
-            '$baseUrl/api/biometric/check-uv?lat=${position.latitude}&lng=${position.longitude}'),
-        headers: {
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+          '$baseUrl/api/biometric/check-uv?lat=${position.latitude}&lng=${position.longitude}',
+        ),
+        headers: {if (token != null) 'Authorization': 'Bearer $token'},
       );
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
@@ -470,9 +540,7 @@ class BiometricService {
 
       final response = await http.get(
         Uri.parse('$baseUrl/api/biometric/recommended/$userId'),
-        headers: {
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+        headers: {if (token != null) 'Authorization': 'Bearer $token'},
       ).timeout(const Duration(seconds: 8));
 
       if (response.statusCode == 200) {
@@ -484,7 +552,9 @@ class BiometricService {
         }
       }
     } catch (e) {
-      debugPrint('❌ [BiometricService] Error cargando productos recomendados: $e');
+      debugPrint(
+        '❌ [BiometricService] Error cargando productos recomendados: $e',
+      );
     }
 
     // A360-2026-09-22/C-04: antes se devolvía aquí una lista de productos
@@ -505,10 +575,7 @@ class BiometricService {
         'Content-Type': 'application/json',
         if (token != null) 'Authorization': 'Bearer $token',
       },
-      body: jsonEncode({
-        'userId': userId,
-        'barcode': barcode,
-      }),
+      body: jsonEncode({'userId': userId, 'barcode': barcode}),
     );
 
     if (response.statusCode == 200) {
@@ -545,17 +612,26 @@ class BiometricService {
   }
 }
 
+class BiometricDeletionPendingException implements Exception {
+  final String message;
+  const BiometricDeletionPendingException(this.message);
+
+  @override
+  String toString() => message;
+}
+
 class ColorPaletteItem {
   final String hex;
   final String name;
   final String hsl;
   final String rgb;
 
-  ColorPaletteItem(
-      {required this.hex,
-      required this.name,
-      required this.hsl,
-      required this.rgb});
+  ColorPaletteItem({
+    required this.hex,
+    required this.name,
+    required this.hsl,
+    required this.rgb,
+  });
 
   factory ColorPaletteItem.fromJson(Map<String, dynamic> json) {
     return ColorPaletteItem(

@@ -505,6 +505,8 @@ app.use('/api/admin', adminPreciosRoutes);
 // Gestión de PQRSF desde el panel (`/api/admin/tickets...`). Router con authMiddleware y
 // requireRol('admin') propios.
 app.use('/api/admin', require('./src/routes/adminTicketRoutes'));
+app.use('/api/admin', require('./src/routes/adminNewsletterRoutes'));
+app.use('/api/admin', require('./src/routes/adminTelemetryRoutes'));
 app.use('/api/admin', require('./src/routes/adminUploadRoutes'));
 app.use('/api/glow-pro', glowProRoutes);
 // Módulo admin-glow: SOS, verificación de prestadores, payouts y resumen financiero.

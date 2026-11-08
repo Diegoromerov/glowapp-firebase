@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
 class CreateTicketScreen extends StatefulWidget {
   final String? preselectedBookingId;
   const CreateTicketScreen({super.key, this.preselectedBookingId});
@@ -51,12 +52,25 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       if (file == null) return;
 
       final Uint8List bytes = await file.readAsBytes();
+      if (_evidenciaBase64List.length >= 3) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Puedes adjuntar hasta 3 imágenes.')));
+        return;
+      }
+      if (bytes.length > 1500000 ||
+          _evidenciaBase64List.fold<int>(0, (sum, item) => sum + item.length) +
+                  bytes.length >
+              4500000) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+                'Cada imagen debe pesar hasta 1,5 MB (4,5 MB en total).')));
+        return;
+      }
       final ext = file.name.toLowerCase().split('.').last;
       final mimeTypes = {
         'jpg': 'image/jpeg',
         'jpeg': 'image/jpeg',
         'png': 'image/png',
-        'gif': 'image/gif',
         'webp': 'image/webp',
       };
       final mimeType = mimeTypes[ext] ?? 'image/jpeg';
@@ -68,7 +82,9 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('No se pudo adjuntar la imagen. ${mensajeHumano(e)}'), backgroundColor: Colors.redAccent),
+        SnackBar(
+            content: Text('No se pudo adjuntar la imagen. ${mensajeHumano(e)}'),
+            backgroundColor: Colors.redAccent),
       );
     }
   }
@@ -93,12 +109,13 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
 
       if (res != null && res['success'] == true) {
         if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('✓ Tu ticket / PQRSF ha sido radicado exitosamente.'),
-                      backgroundColor: AppTheme.success,
-                    ),
-                  );
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  '✓ Ticket ${res['data']?['id'] ?? ''} radicado. Puedes seguirlo desde Centro de Soporte > Mis solicitudes.'),
+              backgroundColor: AppTheme.success,
+            ),
+          );
           Navigator.pop(context, true);
         }
       } else {
@@ -138,257 +155,306 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
         elevation: 0,
       ),
       body: _isSaving
-          ? const Center(child: CircularProgressIndicator(color: Color(0xFFC5A052)))
+          ? const Center(
+              child: CircularProgressIndicator(color: Color(0xFFC5A052)))
           : Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 680),
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Text(
-                      'Radicación de PQRSF',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black87),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'Describe detalladamente tu caso. Nuestro equipo responderá en la brevedad posible.',
-                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // Tipo de PQRSF
-                    DropdownButtonFormField<String>(
-                      value: _selectedTipo,
-                      decoration: AppTheme.inputDecoration(
-                        hintText: 'Tipo',
-                        labelText: 'Tipo de PQRSF',
-                        prefixIcon: Icons.help_outline,
-                      ),
-                      items: const [
-                        DropdownMenuItem(value: 'PETICION', child: Text('Petición')),
-                        DropdownMenuItem(value: 'QUEJA', child: Text('Queja')),
-                        DropdownMenuItem(value: 'RECLAMO', child: Text('Reclamo')),
-                        DropdownMenuItem(value: 'SUGERENCIA', child: Text('Sugerencia')),
-                        DropdownMenuItem(value: 'FELICITACION', child: Text('Felicitación')),
-                      ],
-                      onChanged: (val) {
-                        if (val != null) setState(() => _selectedTipo = val);
-                      },
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Categoría
-                    DropdownButtonFormField<String>(
-                      value: _selectedCategoria,
-                      decoration: AppTheme.inputDecoration(
-                        hintText: 'Categoría',
-                        labelText: 'Categoría',
-                        prefixIcon: Icons.category_outlined,
-                      ),
-                      items: const [
-                        DropdownMenuItem(value: 'servicio', child: Text('Calidad de Servicio')),
-                        DropdownMenuItem(value: 'pago', child: Text('Pagos / Facturación')),
-                        DropdownMenuItem(value: 'app', child: Text('Problemas de la App')),
-                        DropdownMenuItem(value: 'seguridad', child: Text('Seguridad y Privacidad')),
-                        DropdownMenuItem(value: 'otros', child: Text('Otros')),
-                      ],
-                      onChanged: (val) {
-                        if (val != null) setState(() => _selectedCategoria = val);
-                      },
-                    ),
-                    const SizedBox(height: 16),
-
-                    // ID de Reserva (Opcional)
-                    TextFormField(
-                      initialValue: _bookingId,
-                      decoration: AppTheme.inputDecoration(
-                        hintText: 'Ej: UUID de la reserva (opcional)',
-                        labelText: 'ID de Cita Relacionada',
-                        prefixIcon: Icons.calendar_today_outlined,
-                      ),
-                      onChanged: (val) => _bookingId = val.trim().isEmpty ? null : val.trim(),
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Asunto
-                    TextFormField(
-                      controller: _asuntoCtrl,
-                      decoration: AppTheme.inputDecoration(
-                        hintText: 'Resume tu solicitud en una frase',
-                        labelText: 'Asunto de la solicitud',
-                        prefixIcon: Icons.title_outlined,
-                      ),
-                      validator: (val) {
-                        if (val == null || val.trim().isEmpty) {
-                          return 'Por favor ingresa un asunto.';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Descripción
-                    TextFormField(
-                      controller: _descCtrl,
-                      maxLines: 5,
-                      decoration: const InputDecoration(
-                        hintText: 'Describe claramente lo sucedido o tu sugerencia...',
-                        labelText: 'Descripción detallada',
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                      ),
-                      validator: (val) {
-                        if (val == null || val.trim().isEmpty) {
-                          return 'Por favor detalla la descripción del caso.';
-                        }
-                        if (val.trim().length < 10) {
-                          return 'La descripción debe tener al menos 10 caracteres.';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 24),
-
-                    // Adjuntar evidencias
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const Text(
-                          'Adjuntar fotos / evidencias',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.black87),
+                          'Radicación de PQRSF',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
                         ),
-                        TextButton.icon(
-                          onPressed: _attachImage,
-                          icon: const Icon(Icons.add_a_photo_outlined, size: 18),
-                          label: const Text('Agregar'),
-                          style: TextButton.styleFrom(foregroundColor: AppTheme.primary),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 8),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Describe detalladamente tu caso. Nuestro equipo responderá en la brevedad posible.',
+                          style:
+                              TextStyle(fontSize: 12, color: Colors.grey[600]),
+                        ),
+                        const SizedBox(height: 24),
 
-                    // Grid de fotos adjuntadas
-                    if (_evidenciaBase64List.isNotEmpty)
-                      GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
+                        // Tipo de PQRSF
+                        DropdownButtonFormField<String>(
+                          value: _selectedTipo,
+                          decoration: AppTheme.inputDecoration(
+                            hintText: 'Tipo',
+                            labelText: 'Tipo de PQRSF',
+                            prefixIcon: Icons.help_outline,
+                          ),
+                          items: const [
+                            DropdownMenuItem(
+                                value: 'PETICION', child: Text('Petición')),
+                            DropdownMenuItem(
+                                value: 'QUEJA', child: Text('Queja')),
+                            DropdownMenuItem(
+                                value: 'RECLAMO', child: Text('Reclamo')),
+                            DropdownMenuItem(
+                                value: 'SUGERENCIA', child: Text('Sugerencia')),
+                            DropdownMenuItem(
+                                value: 'FELICITACION',
+                                child: Text('Felicitación')),
+                          ],
+                          onChanged: (val) {
+                            if (val != null)
+                              setState(() => _selectedTipo = val);
+                          },
                         ),
-                        itemCount: _evidenciaBase64List.length,
-                        itemBuilder: (context, index) {
-                          final dataUri = _evidenciaBase64List[index];
-                          final base64Data = dataUri.split(',').last;
-                          final bytes = base64Decode(base64Data);
+                        const SizedBox(height: 16),
 
-                          return Stack(
-                            children: [
-                              Positioned.fill(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.memory(bytes, fit: BoxFit.cover),
-                                ),
-                              ),
-                              Positioned(
-                                top: 2,
-                                right: 2,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _evidenciaBase64List.removeAt(index);
-                                    });
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(2),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black54,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(Icons.close, size: 14, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    if (_evidenciaBase64List.isEmpty)
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[50],
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: Colors.grey[200]!, style: BorderStyle.solid),
+                        // Categoría
+                        DropdownButtonFormField<String>(
+                          value: _selectedCategoria,
+                          decoration: AppTheme.inputDecoration(
+                            hintText: 'Categoría',
+                            labelText: 'Categoría',
+                            prefixIcon: Icons.category_outlined,
+                          ),
+                          items: const [
+                            DropdownMenuItem(
+                                value: 'servicio',
+                                child: Text('Calidad de Servicio')),
+                            DropdownMenuItem(
+                                value: 'pago',
+                                child: Text('Pagos / Facturación')),
+                            DropdownMenuItem(
+                                value: 'app',
+                                child: Text('Problemas de la App')),
+                            DropdownMenuItem(
+                                value: 'seguridad',
+                                child: Text('Seguridad y Privacidad')),
+                            DropdownMenuItem(
+                                value: 'otros', child: Text('Otros')),
+                          ],
+                          onChanged: (val) {
+                            if (val != null)
+                              setState(() => _selectedCategoria = val);
+                          },
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        const SizedBox(height: 16),
+
+                        // ID de Reserva (Opcional)
+                        TextFormField(
+                          initialValue: _bookingId,
+                          decoration: AppTheme.inputDecoration(
+                            hintText: 'Ej: UUID de la reserva (opcional)',
+                            labelText: 'ID de Cita Relacionada',
+                            prefixIcon: Icons.calendar_today_outlined,
+                          ),
+                          onChanged: (val) => _bookingId =
+                              val.trim().isEmpty ? null : val.trim(),
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Asunto
+                        TextFormField(
+                          controller: _asuntoCtrl,
+                          decoration: AppTheme.inputDecoration(
+                            hintText: 'Resume tu solicitud en una frase',
+                            labelText: 'Asunto de la solicitud',
+                            prefixIcon: Icons.title_outlined,
+                          ),
+                          validator: (val) {
+                            if (val == null || val.trim().isEmpty) {
+                              return 'Por favor ingresa un asunto.';
+                            }
+                            if (val.trim().length > 255)
+                              return 'Máximo 255 caracteres.';
+                            return null;
+                          },
+                          maxLength: 255,
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Descripción
+                        TextFormField(
+                          controller: _descCtrl,
+                          maxLines: 5,
+                          decoration: const InputDecoration(
+                            hintText:
+                                'Describe claramente lo sucedido o tu sugerencia...',
+                            labelText: 'Descripción detallada',
+                            alignLabelWithHint: true,
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (val) {
+                            if (val == null || val.trim().isEmpty) {
+                              return 'Por favor detalla la descripción del caso.';
+                            }
+                            if (val.trim().length < 10) {
+                              return 'La descripción debe tener al menos 10 caracteres.';
+                            }
+                            if (val.trim().length > 10000)
+                              return 'Máximo 10.000 caracteres.';
+                            return null;
+                          },
+                          maxLength: 10000,
+                        ),
+                        const SizedBox(height: 24),
+
+                        // Adjuntar evidencias
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.image_outlined, color: Colors.grey[400], size: 18),
-                            const SizedBox(width: 8),
-                            Text('Sin imágenes adjuntas', style: TextStyle(color: Colors.grey[400], fontSize: 11)),
+                            const Text(
+                              'Adjuntar fotos / evidencias',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  color: Colors.black87),
+                            ),
+                            TextButton.icon(
+                              onPressed: _attachImage,
+                              icon: const Icon(Icons.add_a_photo_outlined,
+                                  size: 18),
+                              label: const Text('Agregar'),
+                              style: TextButton.styleFrom(
+                                  foregroundColor: AppTheme.primary),
+                            )
                           ],
                         ),
-                      ),
+                        const SizedBox(height: 8),
 
-                    if (_error != null) ...[
-                      const SizedBox(height: 16),
-                      Text(
-                        _error!,
-                        style: const TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w500, fontSize: 12),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                        // Grid de fotos adjuntadas
+                        if (_evidenciaBase64List.isNotEmpty)
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                            ),
+                            itemCount: _evidenciaBase64List.length,
+                            itemBuilder: (context, index) {
+                              final dataUri = _evidenciaBase64List[index];
+                              final base64Data = dataUri.split(',').last;
+                              final bytes = base64Decode(base64Data);
 
-                    const SizedBox(height: 32),
-                    Container(
-                      height: 52,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFFF3D59B), Color(0xFFC5A052)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFFC5A052).withValues(alpha: 0.35),
-                            blurRadius: 12,
-                            offset: const Offset(0, 4),
+                              return Stack(
+                                children: [
+                                  Positioned.fill(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.memory(bytes,
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: 2,
+                                    right: 2,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          _evidenciaBase64List.removeAt(index);
+                                        });
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(2),
+                                        decoration: const BoxDecoration(
+                                          color: Colors.black54,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Icon(Icons.close,
+                                            size: 14, color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        if (_evidenciaBase64List.isEmpty)
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[50],
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(
+                                  color: Colors.grey[200]!,
+                                  style: BorderStyle.solid),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.image_outlined,
+                                    color: Colors.grey[400], size: 18),
+                                const SizedBox(width: 8),
+                                Text('Sin imágenes adjuntas',
+                                    style: TextStyle(
+                                        color: Colors.grey[400], fontSize: 11)),
+                              ],
+                            ),
+                          ),
+
+                        if (_error != null) ...[
+                          const SizedBox(height: 16),
+                          Text(
+                            _error!,
+                            style: const TextStyle(
+                                color: Colors.redAccent,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12),
+                            textAlign: TextAlign.center,
                           ),
                         ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: _submitTicket,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          foregroundColor: const Color(0xFF1F1A15),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                          elevation: 0,
-                        ),
-                        child: const Text(
-                          'Radicar Solicitud',
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Color(0xFF1F1A15),
+
+                        const SizedBox(height: 32),
+                        Container(
+                          height: 52,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFF3D59B), Color(0xFFC5A052)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFFC5A052)
+                                    .withValues(alpha: 0.35),
+                                blurRadius: 12,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            onPressed: _submitTicket,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              foregroundColor: const Color(0xFF1F1A15),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16)),
+                              elevation: 0,
+                            ),
+                            child: const Text(
+                              'Radicar Solicitud',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Color(0xFF1F1A15),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
     );
   }
 }
