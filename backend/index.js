@@ -1876,17 +1876,24 @@ let server = null;
 if (process.env.NODE_ENV !== 'test') {
   server = app.listen(PORT, async () => {
     console.log(`🚀 Servidor en http://localhost:${PORT}`);
-    // 🏭 Auto-ingesta de corpus en cada deploy
-try {
-  let mod = null;
-  for (const rel of ['./src/services/corpusAutoIngest', './services/corpusAutoIngest', '../services/corpusAutoIngest', '../../src/services/corpusAutoIngest']) {
-    try { mod = require(rel); break; } catch (e) {}
-  }
-  if (mod) { mod.startCorpusAutoIngest(); }
-  else { console.warn('⚠️ Auto-ingest: no se encontró el módulo.'); }
-} catch (e) {
-  console.warn('⚠️ Auto-ingest no disponible:', e.message);
-}
+    // La ingesta automática de snapshots históricos no debe ejecutarse en cada
+    // deploy. El corpus de producción se carga explícitamente desde el corpus
+    // canónico con ingestCanonicalCorpus.js. Opt-in para entornos que aún
+    // necesiten ingerir snapshots: ENABLE_CORPUS_AUTO_INGEST=true.
+    if (process.env.ENABLE_CORPUS_AUTO_INGEST === 'true') {
+      try {
+        let mod = null;
+        for (const rel of ['./src/services/corpusAutoIngest', './services/corpusAutoIngest', '../services/corpusAutoIngest', '../../src/services/corpusAutoIngest']) {
+          try { mod = require(rel); break; } catch (e) {}
+        }
+        if (mod) { mod.startCorpusAutoIngest(); }
+        else { console.warn('⚠️ Auto-ingest: no se encontró el módulo.'); }
+      } catch (e) {
+        console.warn('⚠️ Auto-ingest no disponible:', e.message);
+      }
+    } else {
+      console.log('ℹ️ Auto-ingesta de snapshots desactivada; usa el corpus canónico.');
+    }
     console.log(`📦 Entorno: ${process.env.NODE_ENV || 'development'}`);
     await testConnection();
     await initDatabase();
