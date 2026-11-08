@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const compression = require('compression'); // ← GZIP para reducir main.dart.js de 4MB a ~1MB
-const { pool, testConnection, getDbStatus } = require('./src/config/db');
+const { pool, migrationPool, testConnection, getDbStatus } = require('./src/config/db');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
@@ -1710,12 +1710,23 @@ const initDatabase = async () => {
 
   // 11. Ejecución de migraciones automáticas (.sql en la carpeta migrations)
   try {
+    // Migrations change schema ownership and must not run through the restricted
+    // app_rls_user pool. DATABASE_URL_ADMIN is reserved for this startup task.
+    const migrationRunnerPool = migrationPool || pool;
     const migrationsDir = path.join(__dirname, 'migrations');
     if (fs.existsSync(migrationsDir)) {
-      const files = fs.readdirSync(migrationsDir)
+      let files = fs.readdirSync(migrationsDir)
         // Los rollbacks (.down.sql) NUNCA se aplican en el arranque: solo un humano, a propósito.
         .filter(file => file.endsWith('.sql') && !file.endsWith('.down.sql'))
         .sort(); // Orden alfabético: 001, 002, 003, etc.
+
+      if (migrationPool) {
+        // The admin URL is being introduced to safely apply the new numbered
+        // migrations. Do not replay the legacy 000–130 bootstrap against an
+        // existing production-like database just because older restricted-role
+        // startups could not create schema_migrations.
+        files = files.filter(file => Number.parseInt(file, 10) >= 131);
+      }
 
       console.log(`🔍 Encontradas ${files.length} migraciones aplicables en la carpeta migrations.`);
 
@@ -1723,15 +1734,15 @@ const initDatabase = async () => {
       // Fail-safe: si el registro no está disponible, se mantiene el comportamiento idempotente anterior.
       let appliedMigrations = null;
       try {
-        await pool.query(`
+        await migrationRunnerPool.query(`
           CREATE TABLE IF NOT EXISTS schema_migrations (
             filename TEXT PRIMARY KEY,
             checksum TEXT,
             applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
           );
         `);
-        await pool.query('ALTER TABLE schema_migrations ADD COLUMN IF NOT EXISTS checksum TEXT;');
-        const appliedRows = await pool.query('SELECT filename, checksum FROM schema_migrations;');
+        await migrationRunnerPool.query('ALTER TABLE schema_migrations ADD COLUMN IF NOT EXISTS checksum TEXT;');
+        const appliedRows = await migrationRunnerPool.query('SELECT filename, checksum FROM schema_migrations;');
         appliedMigrations = new Map(appliedRows.rows.map(r => [r.filename, r.checksum]));
       } catch (trackErr) {
         console.warn('⚠️ Registro schema_migrations no disponible; se aplicarán todas las migraciones (modo idempotente):', trackErr.message);
@@ -1753,11 +1764,11 @@ const initDatabase = async () => {
 
         try {
           const sql = fs.readFileSync(filePath, 'utf8');
-          await pool.query(sql);
+          await migrationRunnerPool.query(sql);
           console.log(`✅ Base de datos: Migración ${file} aplicada exitosamente.`);
           if (appliedMigrations) {
             try {
-              await pool.query(
+              await migrationRunnerPool.query(
                 'INSERT INTO schema_migrations (filename, checksum) VALUES ($1, $2) ON CONFLICT (filename) DO UPDATE SET checksum = EXCLUDED.checksum, applied_at = NOW();',
                 [file, checksum]
               );
@@ -1774,7 +1785,7 @@ const initDatabase = async () => {
             console.log(`ℹ️ Migración ${file} ya aplicada anteriormente o con elementos existentes.`);
             if (appliedMigrations) {
               try {
-                await pool.query('INSERT INTO schema_migrations (filename, checksum) VALUES ($1, $2) ON CONFLICT (filename) DO NOTHING;', [file, checksum]);
+                await migrationRunnerPool.query('INSERT INTO schema_migrations (filename, checksum) VALUES ($1, $2) ON CONFLICT (filename) DO NOTHING;', [file, checksum]);
               } catch (recordErr) { /* registro no bloqueante */ }
             }
           }

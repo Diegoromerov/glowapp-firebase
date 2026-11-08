@@ -86,6 +86,22 @@ const rawPool = new Pool({
   idle_in_transaction_session_timeout: IDLE_IN_TRANSACTION_TIMEOUT_MS,
 });
 
+// DDL and ordered SQL migrations must use the owner/admin connection. The
+// application pool intentionally runs with a restricted RLS role and cannot
+// own/alter existing tables. Keep this pool private to startup migration code.
+const migrationPool = process.env.DATABASE_URL_ADMIN
+  ? new Pool({
+      connectionString: process.env.DATABASE_URL_ADMIN,
+      ssl: getSslConfig(process.env.DATABASE_URL_ADMIN),
+      max: 2,
+      connectionTimeoutMillis: CONNECTION_TIMEOUT_MS,
+      idleTimeoutMillis: IDLE_TIMEOUT_MS,
+      statement_timeout: STATEMENT_TIMEOUT_MS,
+      query_timeout: QUERY_TIMEOUT_MS,
+      idle_in_transaction_session_timeout: IDLE_IN_TRANSACTION_TIMEOUT_MS,
+    })
+  : null;
+
 rawPool.on('error', (err) => {
   console.error('❌ Error inesperado en el pool de PostgreSQL:', err.message);
 });
@@ -874,5 +890,5 @@ const getDbStatus = () => ({
  *  cualquier error de SQL en datos inventados y la API parecía funcionar. */
 const dbEnMemoria = () => dbMode === 'memoria';
 
-module.exports = { pool, testConnection, getDbStatus, ragPool, testRagConnection, systemPool, testSystemConnection, dbEnMemoria, memoryFallbackAllowed };
+module.exports = { pool, migrationPool, testConnection, getDbStatus, ragPool, testRagConnection, systemPool, testSystemConnection, dbEnMemoria, memoryFallbackAllowed };
 
