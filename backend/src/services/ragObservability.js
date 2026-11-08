@@ -22,8 +22,14 @@ const OBSERVABILITY_ENABLED = process.env.OBSERVABILITY_ENABLED === 'true';
  * 100% for: fallback_triggered OR error OR top1_score < 0.5
  * 10% for: normal traffic
  */
-const SAMPLING_RATE_NORMAL = 0.1;
+const DEFAULT_SAMPLING_RATE_NORMAL = 0.1;
 const SAMPLING_RATE_CRITICAL = 1.0;
+const configuredSamplingRate = Number(process.env.OBSERVABILITY_SAMPLE_RATE);
+const SAMPLING_RATE_NORMAL = process.env.OBSERVABILITY_SAMPLE_RATE === undefined
+  ? DEFAULT_SAMPLING_RATE_NORMAL
+  : (Number.isFinite(configuredSamplingRate) && configuredSamplingRate >= 0 && configuredSamplingRate <= 1
+    ? configuredSamplingRate
+    : DEFAULT_SAMPLING_RATE_NORMAL);
 
 /**
  * Observability event schema version
