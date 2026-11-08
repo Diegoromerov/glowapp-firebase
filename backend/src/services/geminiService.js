@@ -2,6 +2,7 @@
 const axios = require('axios');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { pool } = require('../config/db');
+const tenantRouting = require('../config/tenantRouting');
 const { notifyUserChatMessage, notifyUserAuraStatus } = require('./websocketService');
 const { AURA_TOOLS_DEFINITIONS, executeAuraTool } = require('./auraToolExecutor');
 
@@ -48,6 +49,16 @@ if (geminiApiKey) {
 }
 
 const AI_USER_ID = 0;
+
+async function persistAuraMessage(receiverId, message) {
+  return tenantRouting.runAsSystem({ pool }, (client) => client.query(`
+    INSERT INTO messages (sender_id, receiver_id, message, tenant_id)
+    SELECT $1, $2, $3, u.tenant_id
+    FROM usuarios u
+    WHERE u.id = $2
+    RETURNING id, sender_id, receiver_id, message, is_read, created_at;
+  `, [AI_USER_ID, receiverId, message]));
+}
 
 /**
  * Limpia cualquier marcado DSML o tags internos de modelos LLM (DeepSeek / Qwen)
@@ -451,12 +462,7 @@ Responde con tono profesional, empático y orientado a facilitarle la gestión d
               cachedResponse = cached.response;
               console.log('🎯 Cache semántico HIT - Retornando respuesta cacheada');
               // Guardar en BD y retornar respuesta cacheada
-              const insertQuery = `
-                INSERT INTO messages (sender_id, receiver_id, message)
-                VALUES ($1, $2, $3)
-                RETURNING id, sender_id, receiver_id, message, is_read, created_at;
-              `;
-              const insertRes = await pool.query(insertQuery, [AI_USER_ID, parsedUserId, cachedResponse]);
+              const insertRes = await persistAuraMessage(parsedUserId, cachedResponse);
               const row = insertRes.rows[0];
               const formatted = {
                 ...row,
@@ -499,7 +505,10 @@ Responde con tono profesional, empático y orientado a facilitarle la gestión d
       ORDER BY created_at DESC
       LIMIT 20;
     `;
-    const historyRes = await pool.query(historyQuery, [parsedUserId, AI_USER_ID]);
+    const historyRes = await tenantRouting.runAsSystem(
+      { pool },
+      (client) => client.query(historyQuery, [parsedUserId, AI_USER_ID])
+    );
     let rawMessages = historyRes.rows.reverse();
 
     // Evitar duplicar el mensaje actual si ya está en el historial
@@ -925,12 +934,7 @@ const geminiTools = [{
     }
 
     // ── 8. Guardar la respuesta de AURA en la base de datos ───────────────
-    const insertQuery = `
-      INSERT INTO messages (sender_id, receiver_id, message)
-      VALUES ($1, $2, $3)
-      RETURNING id, sender_id, receiver_id, message, is_read, created_at;
-    `;
-    const insertRes = await pool.query(insertQuery, [AI_USER_ID, parsedUserId, aiResponseText]);
+    const insertRes = await persistAuraMessage(parsedUserId, aiResponseText);
     const row = insertRes.rows[0];
 
     const formatted = {
