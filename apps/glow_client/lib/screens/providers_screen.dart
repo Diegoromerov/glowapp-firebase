@@ -60,6 +60,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   bool _glowGuideStartScheduled = false;
 
   final TextEditingController _searchController = TextEditingController();
+  bool _searchIsExpanded = false;
   final LatLng _bogotaCenter = const LatLng(4.6735, -74.1422);
   LatLng? _userLocation;
   // Zoom con el que se agruparon los pines: si cambia la escala hay que
@@ -724,7 +725,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           matchesAudience = !desc.contains('exclusivo hombres') && !biz.contains('barberia masculina');
         }
 
-        return matchesCat && matchesAudience;
+        final query = _searchController.text.trim().toLowerCase();
+        final matchesQuery = query.isEmpty ||
+            p.fullName.toLowerCase().contains(query) ||
+            p.businessName.toLowerCase().contains(query) ||
+            p.description.toLowerCase().contains(query);
+
+        return matchesCat && matchesAudience && matchesQuery;
       }).toList();
     });
 
@@ -833,6 +840,18 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         'initialMessage': message.trim().isNotEmpty ? message.trim() : null,
       },
     );
+  }
+
+  void _submitProviderSearch() {
+    final query = _searchController.text.trim();
+    if (query.isEmpty) return;
+    setState(() => _searchIsExpanded = false);
+    _filterProviders();
+    FocusScope.of(context).unfocus();
+    if (_filteredProviders.isNotEmpty) {
+      final first = _filteredProviders.first;
+      _mapController.move(LatLng(first.latitude, first.longitude), 14.5);
+    }
   }
 
   /*
@@ -1747,7 +1766,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 Text(
                   label,
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: 13,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.4,
                     color: isMen ? const Color(0xFFE5C158) : const Color(0xFF8C6F65),
@@ -1978,7 +1997,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                               const Icon(Icons.star_rounded, size: 14, color: Color(0xFFD4AF37)),
                               const SizedBox(width: 2),
                               Text(
-                                p.rating > 0 ? p.rating.toStringAsFixed(1) : '4.9',
+                                p.rating > 0 ? p.rating.toStringAsFixed(1) : 'Nuevo',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
@@ -2141,6 +2160,18 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       );
                     },
                   ),
+                  RichAttributionWidget(
+                    alignment: AttributionAlignment.bottomLeft,
+                    attributions: [
+                      TextSourceAttribution(
+                        '© OpenStreetMap contributors',
+                        onTap: () => launchUrl(
+                          Uri.parse('https://www.openstreetmap.org/copyright'),
+                          mode: LaunchMode.externalApplication,
+                        ),
+                      ),
+                    ],
+                  ),
               // Marcadores Joya de prestadores en el mapa + marcador de ubicación del usuario
               MarkerLayer(
                 markers: [
@@ -2247,7 +2278,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                   const Icon(Icons.star_rounded, size: 10, color: Color(0xFFD4AF37)),
                                   const SizedBox(width: 1.5),
                                   Text(
-                                    p.rating > 0 ? p.rating.toStringAsFixed(1) : '4.9',
+                                    p.rating > 0 ? p.rating.toStringAsFixed(1) : 'Nuevo',
                                     style: TextStyle(
                                       fontSize: 9.5,
                                       fontWeight: FontWeight.bold,
@@ -2300,6 +2331,53 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             ],
           ),
 
+          if (!_isLoading && _filteredProviders.isEmpty && !_soloLista)
+            Positioned(
+              left: 24,
+              right: 24,
+              top: MediaQuery.of(context).size.height * 0.42,
+              child: Center(
+                child: Material(
+                  color: isMen ? const Color(0xFF141210) : const Color(0xFFFAF8F5),
+                  elevation: 6,
+                  borderRadius: BorderRadius.circular(20),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.search_off_rounded, size: 30, color: Color(0xFFC5A052)),
+                        const SizedBox(height: 8),
+                        Text(
+                          'No encontramos prestadores en esta zona',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: isMen ? Colors.white : const Color(0xFF1E1A16),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Amplía el radio o cambia los filtros para ver más opciones.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isMen ? Colors.white70 : const Color(0xFF6B5E55),
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: _ampliarRadio,
+                          icon: const Icon(Icons.radar_rounded),
+                          label: const Text('Ampliar búsqueda'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
 
           // Capa 1: Floating Transaccional Search Bar with Audience Toggle
           Positioned(
@@ -2315,7 +2393,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   child: AudienceToggleWidget(compact: false),
                 ),
                 Container(
-                  height: 54,
+                  height: 58,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
                     color: isMen
@@ -2337,11 +2415,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   child: Row(
                     children: [
                       InkWell(
-                        onTap: () {
-                          if (_searchController.text.trim().isNotEmpty) {
-                            _navigateToAIChat(_searchController.text);
-                          }
-                        },
+                        onTap: _submitProviderSearch,
                         borderRadius: BorderRadius.circular(20),
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
@@ -2355,14 +2429,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           textCapitalization: TextCapitalization.sentences,
                           style: TextStyle(
                             color: isMen ? Colors.white : const Color(0xFF1E1A16),
-                            fontSize: 13,
+                            fontSize: 16,
                           ),
                           decoration: InputDecoration(
-                            hintText: isMen
-                                ? 'Buscar estilista o servicio... ✨'
-                                : '¿Qué ritual deseas hoy? Pregunta a Aura ✨',
+                            hintText: _searchIsExpanded
+                                ? 'Buscar estilista, servicio o salón'
+                                : 'Buscar estilista o servicio...',
                             hintStyle: TextStyle(
-                              fontSize: 12.0,
+                              fontSize: 14.0,
                               color: isMen
                                   ? const Color(0xFFD4AF37).withValues(alpha: 0.75)
                                   : const Color(0xFF6B5E55).withValues(alpha: 0.8),
@@ -2371,14 +2445,49 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             contentPadding: const EdgeInsets.symmetric(vertical: 10),
                             border: InputBorder.none,
                           ),
-                          onSubmitted: (val) {
-                            if (val.trim().isNotEmpty) {
-                              _navigateToAIChat(val);
-                            }
-                          },
+                          onTap: () => setState(() => _searchIsExpanded = true),
+                          onChanged: (_) => _filterProviders(),
+                          onSubmitted: (_) => _submitProviderSearch(),
                         ),
                       ),
+                      IconButton(
+                        tooltip: 'Preguntar a Aura',
+                        icon: const Icon(Icons.auto_awesome, color: Color(0xFFD4AF37)),
+                        onPressed: () => _navigateToAIChat(_searchController.text),
+                      ),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, left: 8),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: isMen
+                            ? const Color(0xFF141210).withValues(alpha: 0.88)
+                            : const Color(0xFFFAF8F5).withValues(alpha: 0.92),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.location_on_outlined, size: 15, color: Color(0xFFC5A052)),
+                            const SizedBox(width: 4),
+                            Text(
+                              _userLocation == null ? 'Explorando Bogotá' : 'Prestadores cerca de ti',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: isMen ? Colors.white : const Color(0xFF3D2E1E),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -2423,7 +2532,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   },
                   onPosicion: (_) {},
                   construirTarjeta: _buildTarjetaResultado,
-                  mensajeVacio: 'No hay prestadores en este radio.',
+                  mensajeVacio: 'No hay prestadores en este radio. Prueba ampliar la búsqueda o cambiar los filtros.',
                   onAmpliarRadio: _ampliarRadio,
                 ),
               ),
