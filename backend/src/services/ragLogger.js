@@ -5,25 +5,8 @@
  */
 
 const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
-const path = require('path');
 const { sanitizeForLog, hashIdForLog } = require('../utils/piiSanitizer');
 const { breakers } = require('./circuitBreakerService');
-
-/**
- * Directorio de logs
- */
-const LOGS_DIR = path.join(__dirname, '../../logs');
-const RAG_LOG_FILE = path.join(LOGS_DIR, 'rag_traces.log');
-
-/**
- * Asegurar directorio de logs existe
- */
-function ensureLogsDir() {
-  if (!fs.existsSync(LOGS_DIR)) {
-    fs.mkdirSync(LOGS_DIR, { recursive: true });
-  }
-}
 
 /**
  * Genera trace_id único
@@ -102,14 +85,9 @@ function writeLog(traceData) {
   const logLine = JSON.stringify(traceData);
   
   if (isProduction) {
-    try {
-      ensureLogsDir();
-      fs.appendFileSync(RAG_LOG_FILE, logLine + '\n');
-    } catch (error) {
-      console.error('❌ Error escribiendo rag log:', error.message);
-      // Fallback a console
-      console.log(logLine);
-    }
+    // Railway containers are ephemeral and /app is not writable at runtime.
+    // Emit structured traces to stdout so the platform log collector persists them.
+    console.log('[RAG_TRACE]', logLine);
   } else {
     // En desarrollo: pretty print a console
     console.log('📊 [RAG_TRACE]', logLine);
