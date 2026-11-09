@@ -93,9 +93,15 @@ module.exports = async function publicTenantContext(req, res, next) {
                  count(*) FILTER (WHERE id = 900001)::int AS proveedor_fixture_visible
             FROM perfiles_prestador
         `);
+        const { rows: configGps } = await cliente.query(`
+          SELECT key, value FROM platform_config
+           WHERE key IN ('gps_centro_latitud', 'gps_centro_longitud', 'gps_default_radio_metros')
+           ORDER BY key
+        `);
         console.info(
           `[publicTenantContext] contexto=${rows[0].tenant_context ?? 'vacío'}; ` +
-          `proveedor_fixture_visible=${rows[0].proveedor_fixture_visible}`
+          `proveedor_fixture_visible=${rows[0].proveedor_fixture_visible}; ` +
+          `gps=${JSON.stringify(Object.fromEntries(configGps.map(({ key, value }) => [key, value])))}`
         );
       }
       return new Promise((resolve, reject) => {
