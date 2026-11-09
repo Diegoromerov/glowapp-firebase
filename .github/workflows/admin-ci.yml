@@ -20,8 +20,35 @@ jobs:
           cache-dependency-path: admin/package-lock.json
       - run: npm ci
         working-directory: admin
-      # Expand the test glob in Bash; Node 20 does not expand quoted globs itself.
-      - run: node --test tests/*.test.mjs
+      # Node 20 cannot import .ts files directly. Transpile those test imports
+      # with the already installed TypeScript compiler; no dependency is added.
+      - name: Run tests
+        run: |
+          cat > "$RUNNER_TEMP/admin-ts-loader.mjs" <<'EOF'
+          import { createRequire } from 'node:module';
+          import { readFile } from 'node:fs/promises';
+          import { fileURLToPath } from 'node:url';
+
+          const require = createRequire(`${process.cwd()}/package.json`);
+          const ts = require('typescript');
+
+          export async function load(url, context, nextLoad) {
+            if (!url.endsWith('.ts')) return nextLoad(url, context);
+
+            const source = await readFile(fileURLToPath(url), 'utf8');
+            const output = ts.transpileModule(source, {
+              compilerOptions: {
+                module: ts.ModuleKind.ESNext,
+                target: ts.ScriptTarget.ES2022,
+                esModuleInterop: true,
+              },
+              fileName: fileURLToPath(url),
+            });
+
+            return { format: 'module', source: output.outputText, shortCircuit: true };
+          }
+          EOF
+          node --experimental-loader "$RUNNER_TEMP/admin-ts-loader.mjs" --test tests/*.test.mjs
         working-directory: admin
       - run: npm run build
         working-directory: admin
