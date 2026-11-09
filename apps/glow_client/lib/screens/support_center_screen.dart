@@ -139,6 +139,30 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         elevation: 0,
         centerTitle: false,
         actions: [
+          // Horario y SLA (ítem 71): el compromiso de respuesta tiene que estar
+          // publicado, no solo prometido en el chat.
+          IconButton(
+            tooltip: 'Horario y tiempos de respuesta',
+            icon: const Icon(Icons.schedule_outlined),
+            onPressed: () => showDialog<void>(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                title: const Text('Atención y tiempos de respuesta'),
+                content: const Text(
+                  'Horario de atención: lunes a viernes, 8:00 a 18:00 (hora Colombia).\n\n'
+                  'Consultas: respuesta en un máximo de 10 días hábiles.\n'
+                  'Reclamos y PQRSF: respuesta en un máximo de 15 días hábiles.\n\n'
+                  'Los fines de semana y festivos no cuentan como hábiles.',
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(ctx),
+                    child: const Text('Entendido'),
+                  ),
+                ],
+              ),
+            ),
+          ),
           // Estado del servicio (ítem 73): página pública con la comprobación en
           // vivo de la API y de la base de datos.
           IconButton(

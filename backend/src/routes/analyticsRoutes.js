@@ -3,6 +3,8 @@ const { wrapRouterAsync } = require('../utils/expressAsync');
 const express = require('express');
 const router = express.Router();
 const analyticsController = require('../controllers/analyticsController');
+const { authMiddleware } = require('../middleware/auth');
+const { requireRol } = require('../middleware/roles');
 
 // Telemetría: ruta PÚBLICA a propósito.
 //
@@ -19,6 +21,10 @@ const analyticsLimiter = rateLimitByIP({ windowMs: 60 * 1000, limit: 120 });
 
 // Log analytics event (telemetry)
 router.post('/events', analyticsLimiter, analyticsController.logEvent);
+
+// El consumidor del embudo: solo administración. Devuelve conteos, no datos
+// personales (el controller nunca guarda user_id ni metadata libre).
+router.get('/summary', authMiddleware, requireRol('admin'), analyticsController.summary);
 
 wrapRouterAsync(router);
 module.exports = router;

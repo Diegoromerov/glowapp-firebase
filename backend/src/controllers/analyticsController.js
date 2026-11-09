@@ -41,3 +41,52 @@ async function logEvent(req, res) {
 }
 
 module.exports = { logEvent };
+
+
+// GET /api/analytics/summary?days=7 — embudo observable.
+//
+// Devuelve dos cortes del mismo dato: por tipo de evento y por pantalla. Sin
+// esto la telemetría se escribe y nadie la lee: el ítem 68 de la auditoría
+// pedía justamente el consumidor, no el productor.
+module.exports.summary = async (req, res) => {
+  try {
+    // `parseInt(...) || 7` convertía days=0 en 7: la ventana pedida se
+    // ignoraba en silencio. Se distingue "no vino" de "vino un 0".
+    const pedido = Number.parseInt(req.query.days, 10);
+    const dias = Math.min(Math.max(Number.isFinite(pedido) ? pedido : 7, 1), 90);
+    const desde = new Date(Date.now() - dias * 24 * 60 * 60 * 1000);
+    const { Op } = require('sequelize');
+    const sequelize = AnalyticsEvent.sequelize;
+
+    const porTipo = await AnalyticsEvent.findAll({
+      attributes: ['event_type', [sequelize.fn('COUNT', sequelize.col('id')), 'total']],
+      where: { occurred_at: { [Op.gte]: desde } },
+      group: ['event_type'],
+      order: [[sequelize.literal('total'), 'DESC']],
+      raw: true,
+    });
+
+    const porPantalla = await AnalyticsEvent.findAll({
+      attributes: [
+        [sequelize.literal("metadata->>'screen_name'"), 'screen_name'],
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total'],
+      ],
+      where: { occurred_at: { [Op.gte]: desde } },
+      group: [sequelize.literal("metadata->>'screen_name'")],
+      order: [[sequelize.literal('total'), 'DESC']],
+      limit: 30,
+      raw: true,
+    });
+
+    return res.json({
+      success: true,
+      days: dias,
+      desde: desde.toISOString(),
+      por_tipo: porTipo,
+      por_pantalla: porPantalla,
+    });
+  } catch (err) {
+    console.error('Error en resumen de analitica:', err);
+    return res.status(500).json({ error: 'analytics_summary_failed' });
+  }
+};
