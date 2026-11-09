@@ -128,6 +128,30 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     }
   }
 
+  /// Ítem 31 — recibo descargable. El backend firma un enlace de 10 minutos
+  /// para esta cita: el token de sesión no viaja en la URL.
+  Future<void> _abrirRecibo(Map<String, dynamic> booking) async {
+    final id = booking['id']?.toString() ?? '';
+    if (id.isEmpty) return;
+    try {
+      final res = await ApiService.post('/api/bookings/$id/receipt/link');
+      final url = (res['url'] ?? '').toString();
+      if (url.isEmpty) throw Exception('No se pudo preparar el recibo');
+      final abierto =
+          await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+      if (!abierto && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No pudimos abrir el recibo')),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(mensajeHumano(e)), backgroundColor: AppTheme.error),
+      );
+    }
+  }
+
   Future<void> _confirmCancelBooking(
       String bookingId, String providerName) async {
     // Regla: toda interaccion que modifica datos en la base exige cuenta.
@@ -1224,6 +1248,18 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       size: 16, color: Color(0xFF8A6A2F)),
                   label: const Text('Recibo por correo',
                       style: TextStyle(fontSize: 12, color: Color(0xFF8A6A2F))),
+                ),
+              ),
+            ],
+            // Ítem 31 — recibo descargable de la cita.
+            if (yaOcurrio) ...[
+              const SizedBox(height: 6),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: () => _abrirRecibo(booking),
+                  icon: const Icon(Icons.receipt_long_outlined, size: 16),
+                  label: const Text('Ver recibo'),
                 ),
               ),
             ],

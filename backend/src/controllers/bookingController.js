@@ -7,6 +7,8 @@ const { Op } = require('sequelize');
 const crypto = require('crypto');
 const dianInvoiceClient = require('../services/dianInvoiceClient');
 const { construirRecibo } = require('../services/receiptService');
+const jwt = require('jsonwebtoken');
+const { getJwtSecret } = require('../config/jwt');
 // OJO: email.service.js solo envía por Resend/SendGrid y, sin claves, SIMULA
 // (devuelve éxito y no manda nada). Producción usa Brevo por API HTTP.
 const emailService = require('../services/emailService');
@@ -1934,3 +1936,62 @@ async function generarFacturaDian(bookingId, transaction) {
 }
 
 module.exports = { ...exports, generarFacturaDian };
+
+// ── Enlace de descarga del recibo (ítem 31) ─────────────────────────────────
+//
+// El recibo se sirve con un enlace firmado de 10 minutos. La alternativa —pasar
+// el JWT de sesión por query string— deja el token del usuario en el historial
+// del navegador y en los logs del proxy, que es peor que no tener descarga.
+function firmarEnlaceRecibo(bookingId, userId) {
+  return jwt.sign(
+    { bid: String(bookingId), uid: userId, scope: 'receipt' },
+    getJwtSecret(),
+    { expiresIn: '10m' },
+  );
+}
+
+module.exports.createReceiptLink = async (req, res) => {
+  try {
+    const fila = await cargarReservaParaRecibo(req.params.id, req.user.id);
+    if (!fila) {
+      return res.status(404).json({ error: 'Cita no encontrada o no te pertenece' });
+    }
+    const t = firmarEnlaceRecibo(fila.id, req.user.id);
+    const base = `${req.protocol}://${req.get('host')}`;
+    return res.json({
+      success: true,
+      url: `${base}/api/bookings/${fila.id}/receipt/download?t=${encodeURIComponent(t)}`,
+      expira_en_segundos: 600,
+    });
+  } catch (error) {
+    console.error('❌ ERROR EN /api/bookings/:id/receipt/link:', error.message);
+    return res.status(500).json({ error: 'No pudimos preparar la descarga del recibo' });
+  }
+};
+
+module.exports.downloadReceipt = async (req, res) => {
+  try {
+    const { t } = req.query;
+    if (!t) return res.status(401).json({ error: 'Falta el enlace del recibo' });
+    let payload;
+    try {
+      payload = jwt.verify(String(t), getJwtSecret());
+    } catch (e) {
+      return res.status(401).json({ error: 'El enlace del recibo venció. Vuelve a generarlo.' });
+    }
+    if (payload.scope !== 'receipt' || String(payload.bid) !== String(req.params.id)) {
+      return res.status(403).json({ error: 'Este enlace no corresponde a esa cita' });
+    }
+    const fila = await cargarReservaParaRecibo(req.params.id, payload.uid);
+    if (!fila) return res.status(404).json({ error: 'Cita no encontrada' });
+
+    const { html } = reciboDesdeFila(fila, req.query.metodo);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Content-Disposition',
+      `attachment; filename="recibo-${String(fila.id).slice(0, 8)}.html"`);
+    return res.send(html);
+  } catch (error) {
+    console.error('❌ ERROR EN /bookings/:id/receipt/download:', error.message);
+    return res.status(500).json({ error: 'No pudimos generar el recibo' });
+  }
+};

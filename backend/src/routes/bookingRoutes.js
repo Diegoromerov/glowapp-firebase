@@ -37,6 +37,10 @@ router.get('/bookings/:id/tip', authMiddleware, tipController.getTip);
 // Ítem 31 — recibo: comprobante imprimible y envío al correo de la cuenta.
 router.get('/bookings/:id/receipt', authMiddleware, bookingController.getBookingReceipt);
 router.post('/bookings/:id/receipt/email', authMiddleware, bookingController.emailBookingReceipt);
+// Descarga sin sesión mediante enlace firmado de 10 minutos (el token nunca va
+// en la URL del navegador).
+router.post('/bookings/:id/receipt/link', authMiddleware, bookingController.createReceiptLink);
+router.get('/bookings/:id/receipt/download', bookingController.downloadReceipt);
 router.post('/bookings/:id/no-show', authMiddleware, creditController.reportProviderNoShow);
 
 // Créditos del usuario
