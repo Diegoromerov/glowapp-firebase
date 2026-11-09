@@ -19,11 +19,19 @@ class AuthGate {
   /// colgado y el usuario tocaría "Reservar" sin que pase nada. Ante duda se
   /// trata como visitante y se le ofrece la hoja, que es recuperable.
   static Future<bool> tieneSesion() async {
+    // 1) Cache en memoria: si el login o el arranque ya confirmaron sesión, no
+    //    se vuelve a leer el almacén cifrado en cada toque.
+    if (AuthService.sesionActivaEnMemoria) return true;
+
     try {
       final token = await AuthService.getToken()
-          .timeout(const Duration(milliseconds: 1500));
-      return token != null && token.isNotEmpty;
+          .timeout(const Duration(seconds: 4));
+      final activa = token != null && token.isNotEmpty;
+      AuthService.marcarSesion(activa);
+      return activa;
     } catch (_) {
+      // Almacén lento o bloqueado: NO se cachea el negativo, para no dejar al
+      // usuario fuera de su propia sesión por una lectura lenta.
       return false;
     }
   }

@@ -7,6 +7,7 @@ import 'package:camera/camera.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
 import 'processing_screen.dart';
+import '../widgets/auth_gate.dart';
 import '../widgets/face_overlay_painter.dart';
 import '../widgets/hand_overlay_painter.dart';
 import '../widgets/quality_indicator.dart';
@@ -315,6 +316,10 @@ class _CaptureScreenState extends State<CaptureScreen>
   }
 
   Future<void> _pickFromGallery() async {
+    // Analizar la foto escribe resultados ligados a la persona y consume el
+    // servicio: acá se pide cuenta, no al entrar a la pantalla.
+    if (!await AuthGate.requerir(context, accion: 'analizar con Glow IA+')) return;
+    if (!mounted) return;
     try {
       final picker = ImagePicker();
       final picked = await picker.pickImage(source: ImageSource.gallery, imageQuality: 85);
@@ -565,6 +570,10 @@ class _CaptureScreenState extends State<CaptureScreen>
   }
 
   Future<void> _captureFace() async {
+    // Analizar la foto escribe resultados ligados a la persona y consume el
+    // servicio: acá se pide cuenta, no al entrar a la pantalla.
+    if (!await AuthGate.requerir(context, accion: 'analizar con Glow IA+')) return;
+    if (!mounted) return;
     if (_cameraController == null || !_cameraController!.value.isInitialized || _isCapturing) {
       _showError('La cámara no está lista');
       return;
@@ -663,6 +672,10 @@ class _CaptureScreenState extends State<CaptureScreen>
   }
 
   Future<void> _captureHands() async {
+    // Analizar la foto escribe resultados ligados a la persona y consume el
+    // servicio: acá se pide cuenta, no al entrar a la pantalla.
+    if (!await AuthGate.requerir(context, accion: 'analizar con Glow IA+')) return;
+    if (!mounted) return;
     if (_cameraController == null || !_cameraController!.value.isInitialized || _isCapturing) {
       _showError('La cámara no está lista');
       return;

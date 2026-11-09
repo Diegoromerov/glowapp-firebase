@@ -26,12 +26,10 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
     if (!mounted) return;
 
     if (estado.canScan) {
-      // La autorización de datos ya está vigente: recién ahora se pide cuenta.
-      // Glow IA+ analiza la foto y guarda resultados ligados a la persona.
-      final navigator = Navigator.of(context);
-      final conSesion = await AuthGate.requerir(context, accion: 'usar Glow IA+');
-      if (!conSesion || !mounted) return;
-      navigator.pushReplacement(
+      // Con la autorización vigente se entra a la cámara sin pedir nada: la
+      // cuenta se pide al ANALIZAR (capture_screen), no al abrir la pantalla.
+      Navigator.pushReplacement(
+        context,
         MaterialPageRoute(builder: (_) => const CaptureScreen()),
       );
       return;
