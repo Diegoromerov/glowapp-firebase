@@ -59,14 +59,14 @@
 
   <div class="head">
     <h1>Plan de corrección — app cliente</h1>
-    <div class="sub">6 fases · 10 tareas activas · ≈22 h · corte 2026-11-09 15:48</div>
+    <div class="sub">6 fases · 6 tareas activas · ≈20 h · corte 2026-11-09 16:45</div>
   </div>
 
   <div class="kpis">
     <div class="kpi">
-      <div class="n">50,0 %</div>
+      <div class="n">51,2 %</div>
       <div class="l">ejecución de la app (86 ítems, sin N/A)</div>
-      <div class="bar"><i style="width:50.0%"></i></div>
+      <div class="bar"><i style="width:51.2%"></i></div>
     </div>
     <div class="kpi">
       <div class="n">3 / 6</div>
@@ -74,15 +74,15 @@
       <div class="bar"><i style="width:50%"></i></div>
     </div>
     <div class="kpi">
-      <div class="n">≈22 h</div>
-      <div class="l">trabajo restante · 2 críticos en rojo</div>
+      <div class="n">≈20 h</div>
+      <div class="l">trabajo restante · 1 crítico en rojo</div>
       <div class="bar"><i style="width:0%"></i></div>
     </div>
   </div>
 
   <div class="legend">
     <span><i class="dot" style="background:var(--ok)"></i>hecho</span>
-    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.3)</span>
+    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.3B)</span>
     <span><i class="dot" style="background:color-mix(in srgb, var(--accent, #2f6f8f) 55%, transparent)"></i>pendiente</span>
     <span><i class="dot" style="background:var(--warn)"></i>bloqueado por tercero</span>
     <span><i class="dot" style="background:transparent;border:1px dashed var(--muted-foreground, #6b6b6b)"></i>diferido con disparador</span>
@@ -135,22 +135,22 @@
     <div class="track"><div class="seg done" style="left:23.4%;width:3.6%"></div></div>
   </div>
 
-  <div class="phase">F3 · Accesibilidad y marca <span class="tag">siguiente · F9.3 · 8 h</span></div>
+  <div class="phase">F3 · Accesibilidad y marca <span class="tag">parcial · C-11/C-12/C-13 hechas · falta C-10</span></div>
   <div class="row">
-    <div class="name">C-10 Semantics + tooltips <small>· 4 h</small></div>
-    <div class="track"><div class="seg pend" style="left:27%;width:14.4%">10</div></div>
+    <div class="name">C-10 Semantics + tooltips <small>· 1,5 h · falta validar en árbol AX</small></div>
+    <div class="track"><div class="seg blk" style="left:27%;width:14.4%">10 · intento revertido</div></div>
   </div>
   <div class="row">
     <div class="name">C-11 contraste del dorado <small>· 2 h</small></div>
-    <div class="track"><div class="seg pend" style="left:41.4%;width:7.2%">11</div></div>
+    <div class="track"><div class="seg done" style="left:41.4%;width:7.2%"></div></div>
   </div>
   <div class="row">
     <div class="name">C-12 tema del sistema + reduce-motion <small>· 1 h</small></div>
-    <div class="track"><div class="seg pend" style="left:48.6%;width:3.6%">12</div></div>
+    <div class="track"><div class="seg done" style="left:48.6%;width:3.6%"></div></div>
   </div>
   <div class="row">
     <div class="name">C-13 marca y /terms <small>· 1 h</small></div>
-    <div class="track"><div class="seg pend" style="left:52.2%;width:3.6%">13</div></div>
+    <div class="track"><div class="seg done" style="left:52.2%;width:3.6%"></div></div>
   </div>
 
   <div class="phase">F4 · Cerrar los PARCIAL de lanzamiento <span class="tag">F9.4 · 13 h</span></div>
@@ -189,7 +189,7 @@
     <h2>Puertas de fase (qué debe estar verde para cerrar)</h2>
     <div class="gate"><b>F1</b><div><code>auditoria_cliente.py</code> sin críticos B1 · C3 · E4 y carga anónima sin ningún 401</div></div>
     <div class="gate"><b>F2</b><div>bundle publicado con <code>AIzaSy</code> &gt; 0 y <code>apps-ci</code> en verde sobre <code>main</code></div></div>
-    <div class="gate"><b>F3</b><div>B2, B3 y B4 en PASA; recorrido con lector de pantalla en dispositivo</div></div>
+    <div class="gate"><b>F3</b><div>B2 en PASA (hoy falta C-10); B3 y B4 ya en PASA</div></div>
     <div class="gate"><b>F4</b><div>ítems 31, 71, 68/70, 77/76 y 11/13/14/16 sin FALLA ni PARCIAL</div></div>
     <div class="gate"><b>F5</b><div>cada N/V tiene instrumento y una primera medición registrada</div></div>
   </div>
@@ -201,7 +201,7 @@
       · <code>FCM_VAPID_KEY</code>: sin ella el push web no obtiene token<br>
       · <code>GOOGLE_SERVICES_JSON</code>: sin él no hay APK Android
     </div>
-    Autorización vigente: <b>F9.2</b> (mergeada y desplegada). Siguiente puerta: <b>GLOWAPP-F9.3</b> — accesibilidad, contraste, tema y marca.
+    Autorización vigente: <b>F9.3</b> (C-11, C-12 y C-13 desplegadas). Siguiente puerta: <b>GLOWAPP-F9.3B</b> — solo C-10.
   </div>
 </div>
 </body>

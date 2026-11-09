@@ -335,8 +335,8 @@
    "bloque": "G",
    "titulo": "Contraste",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "12 usos de #D4AF37 (2,10:1) y #C5A052 (2,46:1)"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "F9.3: textSecondary #6F5F4E (5,79:1) y 78 textos que estaban en Colors.grey (2,53:1). Los hex dorados son esmaltes y trazos SVG, no texto"
   },
   "54": {
    "bloque": "G",
@@ -373,8 +373,8 @@
    "bloque": "G",
    "titulo": "Movimiento reducido",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA",
-   "evidencia": "themeMode fijo en light: darkTheme es codigo muerto; sin reduce-motion"
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "F9.3: themeMode sigue al sistema (darkTheme ya se usa). Falta respetar MediaQuery.disableAnimations en transiciones y pulsos"
   },
   "60": {
    "bloque": "H",
