@@ -1,6 +1,5 @@
 // frontend/lib/screens/auth/login_screen.dart
 import 'package:glow_core/glow_core.dart';
-import '../../services/aura_guest_quota.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -241,8 +240,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _navigateAfterLogin(Map<String, dynamic> result) {
     if (!mounted) return;
-    // Con cuenta, el contador de preguntas anónimas a Aura deja de aplicar.
-    unawaited(AuraGuestQuota.reiniciar());
     // La app puede arrancar sin sesión guardada; registrar FCM aquí cubre
     // también el login iniciado después de mostrar la pantalla de acceso.
     unawaited(PushService.iniciar());
