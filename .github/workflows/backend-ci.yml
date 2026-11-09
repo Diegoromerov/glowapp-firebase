@@ -135,6 +135,7 @@ jobs:
           # Sin esto, un job de pagos consulta una tabla ausente en la BD de CI y
           # tumba el proceso antes de que la prueba mida el catalogo.
           DISABLE_BACKGROUND_JOBS: 'true'
+          DEBUG_PUBLIC_TENANT_CONTEXT: 'true'
         run: |
           node index.js > /tmp/api.log 2>&1 &
           echo $! > /tmp/api.pid
