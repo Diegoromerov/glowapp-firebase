@@ -166,6 +166,11 @@ jobs:
                  -H 'X-App-Audience: client' http://localhost:8081/api/providers)
           echo "HTTP $code"
           head -c 300 /tmp/prov.json; echo
+          # Siempre conservar el diagnóstico del middleware de contexto tenant:
+          # el endpoint puede responder 200 con catálogo vacío si no resolvió
+          # el tenant de plataforma.
+          echo "---------- log de API tras consultar catálogo ----------"
+          tail -80 /tmp/api.log
           kill "$(cat /tmp/api.pid)" 2>/dev/null || true
 
           if [ "$code" != "200" ]; then
