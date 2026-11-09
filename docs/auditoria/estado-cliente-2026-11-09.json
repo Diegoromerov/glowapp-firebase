@@ -1,0 +1,560 @@
+{
+ "app": "apps/glow_client",
+ "fecha": "2026-11-09",
+ "alcance": "86 items de la lista de prelanzamiento",
+ "escala": [
+  "E0",
+  "E1",
+  "E2"
+ ],
+ "nota": "Estado re-medido 2026-11-09 sobre el bundle desplegado + el arbol en origin/main 78fb1070. Los N/V son gaps de instrumento, no fallas. Correccion 2026-11-09: el catalogo GlowShop es dato mock de demostracion (declaracion del Director); su vacio no bloquea y el pago corre en sandbox de Wompi.",
+ "items": {
+  "1": {
+   "bloque": "A",
+   "titulo": "Registro con email",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "2": {
+   "bloque": "A",
+   "titulo": "Login social",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "3": {
+   "bloque": "A",
+   "titulo": "Apple Sign-In",
+   "estado": "N/A",
+   "estado_2026_11_09": "N/A"
+  },
+  "4": {
+   "bloque": "A",
+   "titulo": "Recuperación de contraseña",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "5": {
+   "bloque": "A",
+   "titulo": "Verificación de email",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "6": {
+   "bloque": "A",
+   "titulo": "Sesión persistente",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "7": {
+   "bloque": "A",
+   "titulo": "Logout real",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "8": {
+   "bloque": "A",
+   "titulo": "Borrado de cuenta in-app",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PASA"
+  },
+  "9": {
+   "bloque": "A",
+   "titulo": "Cambio de contraseña",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "10": {
+   "bloque": "A",
+   "titulo": "Bloqueo de fuerza bruta",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "11": {
+   "bloque": "B",
+   "titulo": "Permisos just-in-time",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA"
+  },
+  "12": {
+   "bloque": "B",
+   "titulo": "Denegación manejada",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "13": {
+   "bloque": "B",
+   "titulo": "Notificaciones opt-in",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "14": {
+   "bloque": "B",
+   "titulo": "Deep links",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA"
+  },
+  "15": {
+   "bloque": "B",
+   "titulo": "Estados vacíos",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "16": {
+   "bloque": "B",
+   "titulo": "Versionado mínimo",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "17": {
+   "bloque": "C",
+   "titulo": "Camino feliz completo",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "probado en vivo: home -> tarjeta de prestador -> ver perfil"
+  },
+  "18": {
+   "bloque": "C",
+   "titulo": "Doble toque / idempotencia",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "POST identico devuelve mismo booking_id y 1 fila (baseline 11-05, sin regresion)"
+  },
+  "19": {
+   "bloque": "C",
+   "titulo": "Timeouts y reintentos",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "20": {
+   "bloque": "C",
+   "titulo": "Errores traducidos",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA",
+   "evidencia": "3 `$e` visibles (otp_confirm:100, store:92, store:757) + 'Exception: UNAUTHORIZED' en el chat"
+  },
+  "21": {
+   "bloque": "C",
+   "titulo": "Sin conexión",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "22": {
+   "bloque": "C",
+   "titulo": "Estados de carga",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "23": {
+   "bloque": "C",
+   "titulo": "Datos obsoletos",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "24": {
+   "bloque": "C",
+   "titulo": "Navegación coherente",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "25": {
+   "bloque": "C",
+   "titulo": "Confirmar / deshacer",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "26": {
+   "bloque": "C",
+   "titulo": "Multi-dispositivo",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "27": {
+   "bloque": "D",
+   "titulo": "Pago real",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "N/V",
+   "evidencia": "Entorno de simulacion: Wompi en sandbox.wompi.co con llaves pub_test_, NODE_ENV=production (medido 2026-11-09). Sin transaccion real no se puede conciliar; se reabre al pasar a llaves de produccion"
+  },
+  "28": {
+   "bloque": "D",
+   "titulo": "Webhooks verificados",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "29": {
+   "bloque": "D",
+   "titulo": "Conciliación",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "30": {
+   "bloque": "D",
+   "titulo": "Reembolsos",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "31": {
+   "bloque": "D",
+   "titulo": "Recibos / facturas",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA"
+  },
+  "32": {
+   "bloque": "D",
+   "titulo": "Fallo de pago",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "33": {
+   "bloque": "D",
+   "titulo": "Precios y moneda",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "34": {
+   "bloque": "D",
+   "titulo": "Compras in-app",
+   "estado": "N/A",
+   "estado_2026_11_09": "N/A"
+  },
+  "35": {
+   "bloque": "E",
+   "titulo": "TLS en todo",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "36": {
+   "bloque": "E",
+   "titulo": "Sin secretos en el cliente",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "bundle desplegado: 0 claves AIzaSy, 0 claves Wompi"
+  },
+  "37": {
+   "bloque": "E",
+   "titulo": "Autorización por objeto",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "backend exige X-App-Audience + auth por objeto; /api/providers solo devuelve aprobados"
+  },
+  "38": {
+   "bloque": "E",
+   "titulo": "Aislamiento multi-tenant",
+   "estado": "PASA",
+   "estado_2026_11_09": "N/V"
+  },
+  "39": {
+   "bloque": "E",
+   "titulo": "OWASP MASVS básico",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "40": {
+   "bloque": "E",
+   "titulo": "Rate limiting",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "authLimiter en login/register/oauth; otpLimiter en forgot/reset"
+  },
+  "41": {
+   "bloque": "E",
+   "titulo": "Inventario de datos",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA"
+  },
+  "42": {
+   "bloque": "E",
+   "titulo": "Política de privacidad",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "/privacy 200 5.052 B con contenido real"
+  },
+  "43": {
+   "bloque": "E",
+   "titulo": "Consentimientos",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "44": {
+   "bloque": "E",
+   "titulo": "Logs sin PII",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "45": {
+   "bloque": "F",
+   "titulo": "Términos y condiciones",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "46": {
+   "bloque": "F",
+   "titulo": "Ficha de tienda",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "47": {
+   "bloque": "F",
+   "titulo": "Privacidad nutricional",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "48": {
+   "bloque": "F",
+   "titulo": "Data safety",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "49": {
+   "bloque": "F",
+   "titulo": "Edad y contenido",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "50": {
+   "bloque": "F",
+   "titulo": "URL de soporte",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "51": {
+   "bloque": "F",
+   "titulo": "Permisos declarados",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "src/main/AndroidManifest.xml: INTERNET, CAMERA, ubicacion, POST_NOTIFICATIONS, USE_BIOMETRIC"
+  },
+  "52": {
+   "bloque": "F",
+   "titulo": "Borrado de cuenta publicado",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "/account-deletion 200 3.021 B con contenido real"
+  },
+  "53": {
+   "bloque": "G",
+   "titulo": "Contraste",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "12 usos de #D4AF37 (2,10:1) y #C5A052 (2,46:1)"
+  },
+  "54": {
+   "bloque": "G",
+   "titulo": "Área táctil",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "55": {
+   "bloque": "G",
+   "titulo": "Escalado de texto",
+   "estado": "FALLA",
+   "estado_2026_11_09": "N/V"
+  },
+  "56": {
+   "bloque": "G",
+   "titulo": "Lector de pantalla",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA",
+   "evidencia": "8 Semantics() en 29.107 lineas; 19 tooltips vs 46 IconButton"
+  },
+  "57": {
+   "bloque": "G",
+   "titulo": "No depender del color",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "58": {
+   "bloque": "G",
+   "titulo": "Foco y teclado (web)",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "59": {
+   "bloque": "G",
+   "titulo": "Movimiento reducido",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA",
+   "evidencia": "themeMode fijo en light: darkTheme es codigo muerto; sin reduce-motion"
+  },
+  "60": {
+   "bloque": "H",
+   "titulo": "Crash-free ≥ 99.5%",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "61": {
+   "bloque": "H",
+   "titulo": "Arranque en frío",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "62": {
+   "bloque": "H",
+   "titulo": "Fluidez",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "63": {
+   "bloque": "H",
+   "titulo": "Peso",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "main.dart.js 5.181.865 B + canvaskit desde gstatic"
+  },
+  "64": {
+   "bloque": "H",
+   "titulo": "Red lenta",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "65": {
+   "bloque": "H",
+   "titulo": "Memoria",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "66": {
+   "bloque": "H",
+   "titulo": "Batería y GPS",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "67": {
+   "bloque": "I",
+   "titulo": "Crash reporting",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "CrashReportingService postea a /api/analytics/events detras de authMiddleware -> 401 medido"
+  },
+  "68": {
+   "bloque": "I",
+   "titulo": "Analítica de embudo",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "/api/analytics/events -> 401 en carga anonima: embudo anonimo vacio"
+  },
+  "69": {
+   "bloque": "I",
+   "titulo": "Health checks",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "/api/health sin X-App-Audience -> 200 (commit 78fb1070)"
+  },
+  "70": {
+   "bloque": "I",
+   "titulo": "Errores 5xx visibles",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "71": {
+   "bloque": "I",
+   "titulo": "Soporte con SLA",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "72": {
+   "bloque": "I",
+   "titulo": "FAQ y autoservicio",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "73": {
+   "bloque": "I",
+   "titulo": "Estado del servicio",
+   "estado": "FALLA",
+   "estado_2026_11_09": "FALLA"
+  },
+  "74": {
+   "bloque": "J",
+   "titulo": "Entornos separados",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA",
+   "evidencia": "HSTS preload, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, COOP"
+  },
+  "75": {
+   "bloque": "J",
+   "titulo": "CI/CD",
+   "estado": "PASA",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "apps-ci es workflow_dispatch; ultima corrida en rojo (google-services.json malformado); deploy local"
+  },
+  "76": {
+   "bloque": "J",
+   "titulo": "Rollback",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "77": {
+   "bloque": "J",
+   "titulo": "Backups + restore probado",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "78": {
+   "bloque": "J",
+   "titulo": "Migraciones seguras",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "cadena 121/122/123 restaurada; 123 sin ejercitar en CI (P-111 abierto)"
+  },
+  "79": {
+   "bloque": "J",
+   "titulo": "Versionado",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "80": {
+   "bloque": "J",
+   "titulo": "Feature flags",
+   "estado": "FALLA",
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "/api/config/flags publico; FeatureFlags fail-open al arrancar"
+  },
+  "81": {
+   "bloque": "J",
+   "titulo": "Canales de prueba",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  },
+  "82": {
+   "bloque": "K",
+   "titulo": "Correos transaccionales",
+   "estado": "PASA",
+   "estado_2026_11_09": "PASA"
+  },
+  "83": {
+   "bloque": "K",
+   "titulo": "Entregabilidad",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "84": {
+   "bloque": "K",
+   "titulo": "Push",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "FALLA",
+   "evidencia": "build web desplegado sin FIREBASE_*: Firebase no inicializa, FCM muerto"
+  },
+  "85": {
+   "bloque": "K",
+   "titulo": "Plantillas con marca",
+   "estado": "PARCIAL",
+   "estado_2026_11_09": "PARCIAL"
+  },
+  "86": {
+   "bloque": "K",
+   "titulo": "Baja de comunicaciones",
+   "estado": "N/V",
+   "estado_2026_11_09": "N/V"
+  }
+ },
+ "hallazgos_nuevos": {
+  "P0-401": "4 llamadas autenticadas sin sesion en la carga anonima: bookings/client, analytics/events, users/delivery-addresses, chat/conversations -> 401",
+  "P0-fake": "booking_screen:267-277 inventa horarios 09:00/10:30/14:00 disponibles y productos ids 101/102 si falla la red",
+  "P0-firebase": "scripts/desplegar-web.sh no pasa --dart-define FIREBASE_*; el bundle publicado no puede inicializar Firebase",
+  "P1-apk": "apps-ci: processReleaseGoogleServices / Malformed root json de google-services.json",
+  "P1-meta": "index.html: title 'glow_client', description 'A new Flutter project.'",
+  "P1-terms": "/terms.html devuelve el shell del SPA (1.556 B)",
+  "P1-guide": "GlowGuide tapa el home en la primera visita con video pausado; el tour abre /chat sin sesion (UNAUTHORIZED)"
+ }
+}
