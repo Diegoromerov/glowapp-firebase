@@ -56,8 +56,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _anonymizedAnalytics = prefs['telemetry_enabled'] ?? true;
             _isLoadingPreferences = false;
           });
-          // Actualizar cache de AnalyticsService
-          AnalyticsService().invalidateTelemetryCache();
+          // La preferencia ya cargada manda: la telemetría deja de encolarse si
+          // el usuario la apagó.
+          AnalyticsService().setTelemetriaHabilitada(_anonymizedAnalytics);
         }
       } else {
         if (mounted) {
@@ -127,7 +128,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }
       } else {
         if (key == 'telemetry_enabled') {
-          AnalyticsService().invalidateTelemetryCache();
+          AnalyticsService().setTelemetriaHabilitada(value);
         }
       }
     } catch (e) {

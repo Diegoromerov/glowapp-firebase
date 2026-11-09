@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'api_service.dart';
-import 'auth_service.dart';
 
 class AnalyticsService {
   static final AnalyticsService _instance = AnalyticsService._internal();
@@ -15,6 +14,20 @@ class AnalyticsService {
   final List<Map<String, dynamic>> _queue = [];
   Timer? _flushTimer;
   bool _isSending = false;
+
+  // Consentimiento de telemetría (Ajustes → «analítica anónima»). Sin dato se
+  // asume habilitada: perder el embudo por un fallo de red no protege a nadie.
+  // El valor lo fija la pantalla que conoce la preferencia del usuario.
+  bool _telemetriaHabilitada = true;
+
+  /// Refleja la preferencia `telemetry_enabled`. Al apagarla se descarta lo que
+  /// estuviera en cola: lo pendiente tampoco debe salir.
+  void setTelemetriaHabilitada(bool valor) {
+    _telemetriaHabilitada = valor;
+    if (!valor) {
+      synchronized(() => _queue.clear());
+    }
+  }
 
   void init() {
     _startTimer();
@@ -29,6 +42,8 @@ class AnalyticsService {
     String? elementId,
     Map<String, dynamic>? metadata,
   }) {
+    // Sin consentimiento no se encola nada.
+    if (!_telemetriaHabilitada) return;
     // Keep only fixed event/screen labels. IDs, amounts, product names,
     // session identifiers and caller-supplied metadata never leave the device.
     if (!RegExp(r'^[A-Z][A-Z0-9_]{0,59}$').hasMatch(eventType)) return;
@@ -141,7 +156,9 @@ class AnalyticsService {
     });
 
     try {
-      if (await AuthService.getToken() == null) return;
+      // El endpoint de telemetría es público a propósito: el embudo anónimo y
+      // los crash de un arranque sin sesión son justo los que importan. Antes
+      // se salía aquí y, peor, la cola ya estaba vaciada: los eventos se perdían.
       await ApiService.ensureBaseUrl();
       final headers = await ApiService.getAuthHeaders();
       final uri = Uri.parse('${ApiService.baseUrl}/api/analytics/events');
