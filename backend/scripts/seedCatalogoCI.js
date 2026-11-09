@@ -42,7 +42,7 @@ BEGIN
   INSERT INTO perfiles_prestador (id, business_name, is_active, estatus_verificacion,
                                   ubicacion, tenant_id)
   VALUES (900001, 'CI Salon', true, 'APROBADO',
-          ST_SetSRID(ST_MakePoint(-74.0721, 4.7110), 4326)::geography, t)
+          ST_SetSRID(ST_MakePoint(-74.1422, 4.6735), 4326)::geography, t)
   ON CONFLICT (id) DO UPDATE
     SET is_active = true,
         tenant_id = t,
