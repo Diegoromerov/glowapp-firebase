@@ -1,0 +1,9 @@
+# Railway ignore - exclude build artifacts and dependencies from upload
+node_modules/
+.next/
+.turbo/
+coverage/
+dist/
+build/
+*.log
+.DS_Store
