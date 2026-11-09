@@ -39,7 +39,7 @@ describe('T-A1 E1: Autenticación Admin (Login, Refresh, Logout, Session, Blackl
       const originalQuery = pool.query;
 
       pool.query = jest.fn().mockImplementation((queryText) => {
-        if (queryText.includes('FROM usuarios WHERE LOWER(email)')) {
+        if (queryText.includes('FROM app_usuario_para_login')) {
           return Promise.resolve({
             rows: [
               {
@@ -94,7 +94,7 @@ describe('T-A1 E1: Autenticación Admin (Login, Refresh, Logout, Session, Blackl
       const originalQuery = pool.query;
 
       pool.query = jest.fn().mockImplementation((queryText) => {
-        if (queryText.includes('FROM usuarios WHERE LOWER(email)')) {
+        if (queryText.includes('FROM app_usuario_para_login')) {
           return Promise.resolve({
             rows: [{ id: 10, email: 'admin@glowapp.com', password_hash: hashedPassword, rol: 'ADMIN' }]
           });
@@ -119,7 +119,7 @@ describe('T-A1 E1: Autenticación Admin (Login, Refresh, Logout, Session, Blackl
       const originalQuery = pool.query;
 
       pool.query = jest.fn().mockImplementation((queryText) => {
-        if (queryText.includes('FROM usuarios WHERE LOWER(email)')) {
+        if (queryText.includes('FROM app_usuario_para_login')) {
           return Promise.resolve({
             rows: [{ id: 50, email: 'cliente@glowapp.com', password_hash: hashedPassword, rol: 'CLIENTE' }]
           });
