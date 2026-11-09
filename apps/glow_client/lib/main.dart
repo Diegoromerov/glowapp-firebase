@@ -96,6 +96,10 @@ void main() async {
   // Inicializar servicios core
   await AudienceService.init();
 
+  // Una sola lectura del almacén cifrado para saber si hay sesión. Con el cache
+  // en memoria, las puertas de acción no dependen de una lectura lenta en web.
+  await AuthService.hidratarSesion();
+
   // Push (FCM, gratuito): si ya hay sesión se registra el dispositivo. Es
   // best-effort: sin permiso o sin red la app arranca igual.
   if (await AuthService.getToken() != null) {

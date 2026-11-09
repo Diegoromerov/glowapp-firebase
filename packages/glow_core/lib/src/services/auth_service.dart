@@ -6,6 +6,33 @@ import 'secure_storage_service.dart';
 import 'fcm_service.dart';
 
 class AuthService {
+  /// Estado de sesión cacheado en memoria.
+  ///
+  /// En web, leer el almacén cifrado (IndexedDB + WebCrypto) puede tardar más de
+  /// un segundo en el primer acceso. Consultarlo en cada toque hacía que una
+  /// lectura lenta se interpretara como «sin sesión» y mandara a login a un
+  /// usuario autenticado. Se hidrata una vez y se mantiene al día en login/logout.
+  static bool? _sesionActiva;
+
+  /// true solo si ya se confirmó una sesión desde el arranque o el login.
+  static bool get sesionActivaEnMemoria => _sesionActiva == true;
+
+  /// Marca el estado en memoria (login, logout, o comprobación definitiva).
+  static void marcarSesion(bool activa) => _sesionActiva = activa;
+
+  /// Hidrata el cache leyendo el token UNA vez. Si el almacén no responde a
+  /// tiempo, no se cachea nada: la próxima comprobación vuelve a intentar.
+  static Future<bool> hidratarSesion({Duration timeout = const Duration(seconds: 4)}) async {
+    if (_sesionActiva != null) return _sesionActiva!;
+    try {
+      final token = await getToken().timeout(timeout);
+      _sesionActiva = token != null && token.isNotEmpty;
+      return _sesionActiva!;
+    } catch (_) {
+      return false;
+    }
+  }
+
   /// Cabeceras JSON del backend.
   ///
   /// Incluye `X-App-Audience` porque el backend la exige globalmente en /api
@@ -55,6 +82,7 @@ class AuthService {
       // Antes se duplicaba en SharedPreferences (localStorage en web, texto
       // plano) y cualquier XSS podía exfiltrarlo. Se eliminó esa copia.
       await SecureStorageService().write('token', data['token']);
+      marcarSesion(true);
 
       await prefs.setString('userId', data['user']['id'].toString());
       await prefs.setString('userName', data['user']['full_name']);
@@ -130,6 +158,7 @@ class AuthService {
 
       // 🛡️ PARCHE DE SEGURIDAD (GLOW-SEC-02): Guardar el token en almacenamiento cifrado
       await SecureStorageService().write('token', data['token']);
+      marcarSesion(true);
 
       await prefs.setString('userId', data['user']['id'].toString());
       await prefs.setString('userName', data['user']['full_name']);
@@ -203,6 +232,8 @@ class AuthService {
   }
 
   static Future<void> logout() async {
+    // La sesión deja de existir en la app aunque el aviso al backend falle.
+    marcarSesion(false);
     try {
       final baseUrl = await getBaseUrl();
       final token = await getToken();
@@ -294,6 +325,7 @@ class AuthService {
         final prefs = await SharedPreferences.getInstance();
         if (data['token'] != null) {
           await SecureStorageService().write('token', data['token']);
+      marcarSesion(true);
         }
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
@@ -345,6 +377,7 @@ class AuthService {
         final prefs = await SharedPreferences.getInstance();
         if (data['token'] != null) {
           await SecureStorageService().write('token', data['token']);
+      marcarSesion(true);
         }
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
@@ -383,6 +416,7 @@ class AuthService {
         final prefs = await SharedPreferences.getInstance();
         if (data['token'] != null) {
           await SecureStorageService().write('token', data['token']);
+      marcarSesion(true);
         }
         if (data['user'] != null) {
           await prefs.setString('userId', data['user']['id'].toString());
@@ -571,6 +605,7 @@ class AuthService {
         if (newToken != null) {
           // 🛡️ FIX-FLUTTER-03: rotación de token solo en almacenamiento cifrado.
           await SecureStorageService().write('token', newToken);
+        marcarSesion(true);
         }
 
         if (data['active_context'] != null) {

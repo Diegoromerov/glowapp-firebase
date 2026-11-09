@@ -984,7 +984,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No se pudo enviar la alerta. ${mensajeHumano(e)}'),
+          content: Text(
+            e.toString().contains('401')
+                ? 'La alerta no se envió: el SOS necesita una sesión iniciada. '
+                    'Iniciá sesión e intentá de nuevo.'
+                : 'No se pudo enviar la alerta. ${mensajeHumano(e)}',
+          ),
           backgroundColor: Colors.redAccent,
         ),
       );
@@ -1384,11 +1389,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           // Se captura antes del await: si la peticion tarda y
                           // la pantalla se desmonta, usar `context` lanza y el
                           // boton queda muerto.
-                          final navigator = Navigator.of(context);
-                          final token = await AuthService.getToken();
-                          if (token == null) {
-                            navigator.pop();
-                            navigator.pushNamed('/auth/login');
+                          // Hoja en vez de redirect duro: el usuario ve por qué
+                          // se le pide cuenta y, al autenticarse, sigue al chat
+                          // (antes caía en /auth/login y perdía la acción).
+                          if (!await AuthGate.requerir(context,
+                              accion: 'escribirle a tu estilista')) {
                             return;
                           }
                           if (context.mounted) {

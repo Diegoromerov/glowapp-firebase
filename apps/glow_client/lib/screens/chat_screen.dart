@@ -113,9 +113,16 @@ class _ChatScreenState extends State<ChatScreen> {
   Timer? _wsAckWatchdog; // vigila el acuse {status:'registered'} del servidor
   final ReplyReconciler _replyReconciler = ReplyReconciler();
 
-  bool get _isAiPartner =>
-      widget.partnerId == '0' ||
-      widget.partnerId == '00000000-0000-0000-0000-000000000000';
+  /// Aura llega por varios caminos: id '0' desde la bandeja, el UUID fijo desde
+  /// el buscador de la home, y también por enlace profundo. Si solo miramos el
+  /// id, una conversación con Aura abierta por deep link se trata como si fuera
+  /// un prestador (sin burbuja de "pensando" ni reconciliación de respuestas).
+  bool get _isAiPartner {
+    final id = widget.partnerId;
+    if (id == '0' || id == '00000000-0000-0000-0000-000000000000') return true;
+    final nombre = widget.partnerName.toLowerCase();
+    return nombre.contains('aura') || nombre.contains('asistente de belleza');
+  }
 
   @override
   void initState() {
@@ -516,7 +523,11 @@ class _ChatScreenState extends State<ChatScreen> {
         _stopReconcilePolling();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('No se pudo enviar el mensaje. ${mensajeHumano(e)}'),
+            content: Text(
+              esFaltaDeSesion(e)
+                  ? 'Para conversar necesitás una cuenta. Iniciá sesión y volvé a intentar.'
+                  : 'No se pudo enviar el mensaje. ${mensajeHumano(e)}',
+            ),
             backgroundColor: Colors.deepOrange,
           ),
         );
@@ -526,6 +537,16 @@ class _ChatScreenState extends State<ChatScreen> {
         setState(() => _isSending = false);
       }
     }
+  }
+
+  /// El backend responde 401 cuando no hay token: decirlo con claridad en vez de
+  /// "No se pudo enviar el mensaje", que parece un fallo de red.
+  bool esFaltaDeSesion(Object error) {
+    final texto = error.toString();
+    return texto.contains('401') ||
+        texto.toLowerCase().contains('unauthorized') ||
+        texto.toLowerCase().contains('sesión') ||
+        texto.toLowerCase().contains('sesion');
   }
 
   String _formatTime(String? dateStr) {
