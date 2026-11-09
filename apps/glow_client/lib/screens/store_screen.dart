@@ -350,6 +350,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                           const Spacer(),
                                           IconButton(
                                             onPressed: () => Navigator.pop(ctx),
+                                            tooltip: 'Cerrar',
                                             icon: const Icon(Icons.close),
                                           ),
                                         ],
@@ -581,6 +582,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     ),
                                   )
                                 : IconButton(
+                                    tooltip: 'Editar dirección',
                                     icon: const Icon(Icons.edit_outlined, size: 20, color: Colors.grey),
                                     onPressed: () async {
                                       // Abrir selector/editor de direcciones
@@ -592,7 +594,6 @@ class _StoreScreenState extends State<StoreScreen> {
                                         });
                                       }
                                     },
-                                    tooltip: 'Cambiar dirección',
                                   ),
                           ),
                           validator: (v) => (v == null || v.isEmpty) ? 'Campo obligatorio' : null,
@@ -1082,6 +1083,7 @@ class _StoreScreenState extends State<StoreScreen> {
                 alignment: Alignment.center,
                 children: [
                   IconButton(
+                tooltip: 'Mi bolsa',
                 icon: Icon(Icons.shopping_bag_outlined, color: textColor),
                 onPressed: () {
                   setState(() {
@@ -1361,6 +1363,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   ],
                 ),
                 IconButton(
+                  tooltip: 'Cerrar',
                   icon: Icon(Icons.close, color: AppTheme.text),
                   onPressed: () {
                     setState(() {
@@ -1502,6 +1505,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                 ),
                               ),
                               IconButton(
+                                tooltip: 'Quitar producto',
                                 icon: const Icon(Icons.delete_outline, size: 18, color: Colors.grey),
                                 onPressed: () => _updateCartQuantity(id, 0),
                               ),

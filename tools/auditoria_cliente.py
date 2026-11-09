@@ -169,10 +169,15 @@ def check_estaticos():
         (f" | {len(variables)} por variable: " + ", ".join(variables) if variables else ""),
         critico=True)
 
+    # Un IconButton sin `tooltip` ni un `Semantics` que lo envuelva es un botón
+    # mudo para el lector de pantalla. Se mide cobertura, no cantidad: contar
+    # etiquetas sueltas decía "hay 8" sin decir cuántos botones quedaban sin voz.
     sem, tips, ib = texto.count("Semantics("), texto.count("tooltip:"), texto.count("IconButton(")
-    add("B2", "accesibilidad: etiquetas",
-        VERDE if sem >= 30 else AMBAR if sem >= 10 else ROJO,
-        f"{sem} Semantics, {tips} tooltips, {ib} IconButton en {lineas} lineas", critico=True)
+    cobertura = min(1.0, (tips + sem) / ib) if ib else 0.0
+    add("B2", "accesibilidad: botones con nombre",
+        VERDE if cobertura >= 0.9 else AMBAR if cobertura >= 0.5 else ROJO,
+        f"{tips} tooltips + {sem} Semantics para {ib} IconButton = {cobertura*100:.0f}% con nombre"
+        f" en {lineas} lineas", critico=True)
 
     # Contraste REAL de texto: los hex de la app son en su mayoría colores de
     # esmalte y trazos SVG (donde la razón de contraste no significa nada). Lo

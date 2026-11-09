@@ -843,6 +843,7 @@ class _BookingScreenState extends State<BookingScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
+                  tooltip: 'Mes anterior',
                   icon: const Icon(Icons.chevron_left),
                   onPressed: () {
                     setState(() {
@@ -861,6 +862,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   ),
                 ),
                 IconButton(
+                  tooltip: 'Mes siguiente',
                   icon: const Icon(Icons.chevron_right),
                   onPressed: () {
                     setState(() {
