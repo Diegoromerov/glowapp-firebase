@@ -337,7 +337,7 @@ def check_ci():
     ult = runs[0] if runs else {}
     add("F1", "CI de apps", VERDE if ult.get("conclusion") == "success" else ROJO,
         f"ultima: {ult.get('conclusion')} en {ult.get('headBranch')} @ {ult.get('createdAt')}"
-        " (workflow manual: no corre en push)")
+        " (corre en push a main: analyze + tests; build y deploy siguen manuales)")
 
 
 # ------------------------------------------------------------------- resumen

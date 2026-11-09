@@ -89,14 +89,14 @@
    "id": "C2",
    "nombre": "secretos en el bundle",
    "estado": "PASA",
-   "evidencia": "5.18 MB, 0 claves Google",
+   "evidencia": "5.18 MB · 3 apiKeys web de Firebase (públicas por diseño) · 0 claves privadas",
    "critico": true
   },
   {
    "id": "C3",
    "nombre": "Firebase inicializable en el build",
-   "estado": "FALLA",
-   "evidencia": "sin apiKey el try/catch de main.dart:89 apaga Firebase: push y Firestore muertos",
+   "estado": "PASA",
+   "evidencia": "config de Firebase presente en el bundle",
    "critico": true
   },
   {
@@ -145,7 +145,7 @@
    "id": "E1",
    "nombre": "/api/health sin X-App-Audience",
    "estado": "PASA",
-   "evidencia": "HTTP 200 commit 9f294ae4",
+   "evidencia": "HTTP 200 commit 5ae035a1",
    "critico": true
   },
   {
@@ -166,7 +166,7 @@
    "id": "E4",
    "nombre": "analitica/crash anonimos",
    "estado": "PASA",
-   "evidencia": "POST sin token -> HTTP 201: el embudo anonimo y los crashes sin sesion se pierden",
+   "evidencia": "POST sin token -> HTTP 201: embudo anonimo y crashes sin sesion aceptados",
    "critico": true
   },
   {
@@ -179,21 +179,21 @@
   {
    "id": "F1",
    "nombre": "CI de apps",
-   "estado": "FALLA",
-   "evidencia": "ultima: failure en codex/remove-home-aura-button @ 2026-11-08T13:14:46Z (workflow manual: no corre en push)",
+   "estado": "PASA",
+   "evidencia": "ultima: success en main @ 2026-11-09T20:38:28Z (workflow manual: no corre en push)",
    "critico": false
   }
  ],
  "resumen": {
   "conteo": {
-   "PASA": 24,
+   "PASA": 25,
    "PARCIAL": 33,
    "N/A": 2,
-   "FALLA": 9,
+   "FALLA": 8,
    "N/V": 18
   },
   "total": 86,
-  "pct_sin_na": 48.2,
-  "pct_medible": 61.4
+  "pct_sin_na": 49.4,
+  "pct_medible": 62.9
  }
 }

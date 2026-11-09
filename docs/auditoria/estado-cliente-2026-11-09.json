@@ -475,8 +475,8 @@
    "bloque": "J",
    "titulo": "CI/CD",
    "estado": "PASA",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "apps-ci es workflow_dispatch; ultima corrida en rojo (google-services.json malformado); deploy local"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "F9.2: apps-ci corre en push a main (analyze+tests de core, cliente y proveedor) y esta verde; build y deploy siguen manuales"
   },
   "76": {
    "bloque": "J",
@@ -533,7 +533,7 @@
    "titulo": "Push",
    "estado": "PARCIAL",
    "estado_2026_11_09": "FALLA",
-   "evidencia": "build web desplegado sin FIREBASE_*: Firebase no inicializa, FCM muerto"
+   "evidencia": "F9.2: el bundle ya lleva la config de Firebase; falta FCM_VAPID_KEY para que el push web obtenga token"
   },
   "85": {
    "bloque": "K",

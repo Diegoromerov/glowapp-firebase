@@ -100,9 +100,9 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | C-04 | F1 | Quitar horarios y productos inventados | 2 | **hecho** | invariante de fuente 4/4 |
 | C-05 | — | Catálogo mock (tenant) | 0 | **diferido** | D-GL-029, disparador |
 | C-06 | — | Rol `app_rls_user` | 0 | **hecho** | `pg_stat_activity` |
-| C-07 | F2 | `desplegar-web.sh` pasa `FIREBASE_*` | 0,5 | pendiente | C3 PASA |
-| C-08 | F2 | Cargar API key y VAPID | — | **bloqueado** (Director) | idem |
-| C-09 | F2 | CI de apps verde en push | 1 | pendiente | `gh run list` success |
+| C-07 | F2 | `desplegar-web.sh` pasa `FIREBASE_*` | 0,5 | **hecho** | C3 PASA en el bundle publicado |
+| C-08 | F2 | Cargar API key y VAPID | — | **parcial**: API key cargada; VAPID pendiente del Director | push sin token hasta VAPID |
+| C-09 | F2 | CI de apps verde en push | 1 | **hecho** | run 20:38 success; APK omitido sin secret |
 | C-10 | F3 | Semantics + tooltips | 4 | pendiente | B2 PASA |
 | C-11 | F3 | Contraste | 2 | pendiente | B3 PASA |
 | C-12 | F3 | Tema del sistema + reduce-motion | 1 | pendiente | B4 PASA |
@@ -115,7 +115,7 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | C-19 | F4 | Permisos, push, deep links | 4 | pendiente | ítems 11/13/14/16 |
 | F5 | F5 | Instrumentar 17 N/V | — | pendiente | primera medición por ítem |
 
-**Total activo:** 12 tareas · **≈22,5 h** · críticos en rojo hoy: B2, B3, C3 (3). F1 cerrada 2026-11-09.
+**Total activo:** 10 tareas · **≈22 h** · críticos en rojo hoy: B2, B3 (2). F1 y F2 cerradas 2026-11-09.
 
 ## Cómo se re-verifica (lo que queda guardado)
 

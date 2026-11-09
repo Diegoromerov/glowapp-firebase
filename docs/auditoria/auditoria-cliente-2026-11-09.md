@@ -14,17 +14,17 @@
 | B7 | deep links | **PARCIAL** | servicio + host montados; falta prueba cold/warm en dispositivo |
 | B8 | i18n | **N/V** | sin l10n.yaml: es-CO hardcodeado, 'en' declarado e inalcanzable |
 | C1 | metadatos de marca | **PARCIAL** | title='glow_client' desc='A new Flutter project.' |
-| C2 | secretos en el bundle | **PASA** | 5.18 MB, 0 claves Google |
-| C3 | Firebase inicializable en el build | **FALLA** | sin apiKey el try/catch de main.dart:89 apaga Firebase: push y Firestore muertos |
+| C2 | secretos en el bundle | **PASA** | 5.18 MB · 3 apiKeys web de Firebase (públicas por diseño) · 0 claves privadas |
+| C3 | Firebase inicializable en el build | **PASA** | config de Firebase presente en el bundle |
 | C4 | bundle desplegado == build local | **PASA** | identicos |
 | C5 | peso del bundle | **PARCIAL** | main.dart.js 5.18 MB (+ canvaskit desde gstatic) |
 | C6 | cabeceras del sitio | **PASA** | HSTS si, COOP si, CSP no (P-091) |
 | D1 | politica de privacidad | **PASA** | HTTP 200, 5052 B |
 | D2 | pagina de borrado de cuenta | **PASA** | HTTP 200, 3021 B |
 | D3 | terminos publicados | **FALLA** | HTTP 200, 1556 B (shell del SPA, no la pagina) |
-| E1 | /api/health sin X-App-Audience | **PASA** | HTTP 200 commit 9f294ae4 |
+| E1 | /api/health sin X-App-Audience | **PASA** | HTTP 200 commit 5ae035a1 |
 | E2 | catalogo /api/providers | **PASA** | HTTP 200, count=3 |
 | E3 | catalogo /api/products (datos mock) | **PARCIAL** | HTTP 200, count=0: la tienda de demostracion se ve vacia (dato mock, no bloquea) |
-| E4 | analitica/crash anonimos | **PASA** | POST sin token -> HTTP 201: el embudo anonimo y los crashes sin sesion se pierden |
+| E4 | analitica/crash anonimos | **PASA** | POST sin token -> HTTP 201: embudo anonimo y crashes sin sesion aceptados |
 | E5 | feature flags | **PASA** | GET /api/config/flags -> 200 |
-| F1 | CI de apps | **FALLA** | ultima: failure en codex/remove-home-aura-button @ 2026-11-08T13:14:46Z (workflow manual: no corre en push) |
+| F1 | CI de apps | **PASA** | ultima: success en main @ 2026-11-09T20:38:28Z (workflow manual: no corre en push) |
