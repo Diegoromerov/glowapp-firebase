@@ -795,7 +795,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   /// cuenta: solo se pide identificación cuando el destino la necesita, y se
   /// retoma la navegación después de autenticarse (antes el usuario caía en
   /// /auth/login y perdía lo que había tocado).
-  Future<void> _checkAuthAndNavigate(String routeName) async {
+  Future<void> _checkAuthAndNavigate(
+    String routeName, {
+    bool requiereSesion = true,
+  }) async {
     final accion = switch (routeName) {
       '/store' => 'comprar en GlowShop',
       '/ideas/welcome' => 'usar Glow IA+',
@@ -805,7 +808,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       _ => 'continuar',
     };
 
-    if (!await AuthGate.requerir(context, accion: accion)) return;
+    // Navegar es libre en GlowShop y Glow IA+: la cuenta se pide en la accion
+    // que escribe en la base (pagar, analizar la foto), no al abrir la pantalla.
+    if (requiereSesion && !await AuthGate.requerir(context, accion: accion)) return;
     if (!mounted) return;
 
     final result = await Navigator.pushNamed(context, routeName);
@@ -2536,7 +2541,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         fit: BoxFit.contain,
                       ),
                       label: 'GlowShop',
-                      onTap: () => _checkAuthAndNavigate('/store'),
+                      onTap: () => _checkAuthAndNavigate('/store', requiereSesion: false),
                       isMen: isMen,
                     ),
 
@@ -2549,7 +2554,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       fit: BoxFit.contain,
                     ),
                     label: 'Glow IA+',
-                    onTap: () => _checkAuthAndNavigate('/ideas/welcome'),
+                    onTap: () => _checkAuthAndNavigate('/ideas/welcome', requiereSesion: false),
                     isMen: isMen,
                   ),
 

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/reschedule_sheet.dart';
 import '../widgets/service_review_sheet.dart';
+import '../widgets/auth_gate.dart';
 import 'otp_confirm_screen.dart';
 class ClientBookingsScreen extends StatefulWidget {
   const ClientBookingsScreen({super.key});
@@ -27,6 +28,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   /// la URL: la firma de integridad no se puede calcular en el cliente porque
   /// necesita WOMPI_INTEGRITY_SECRET.
   Future<void> _irAPagar(Map<String, dynamic> booking) async {
+    // Regla: toda interaccion que modifica datos en la base exige cuenta.
+    if (!await AuthGate.requerir(context, accion: 'pagar una cita')) return;
+    if (!mounted) return;
     final id = booking['id'].toString();
     if (_pagando.contains(id)) return;
 
@@ -111,6 +115,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
 
   Future<void> _confirmCancelBooking(
       String bookingId, String providerName) async {
+    // Regla: toda interaccion que modifica datos en la base exige cuenta.
+    if (!await AuthGate.requerir(context, accion: 'cancelar una cita')) return;
+    if (!mounted) return;
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -305,6 +312,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   /// Abre la hoja de resena (estrellas + aspectos + comentario). Si se publica,
   /// la lista se recarga para que la tarjeta deje de ofrecer calificar.
   Future<void> _abrirResena(Map<String, dynamic> booking, {int nota = 0}) async {
+    // Regla: toda interaccion que modifica datos en la base exige cuenta.
+    if (!await AuthGate.requerir(context, accion: 'dejar una resena')) return;
+    if (!mounted) return;
     final nombre = (booking['provider_business_name'] != null &&
             booking['provider_business_name'].toString().isNotEmpty)
         ? booking['provider_business_name'].toString()
@@ -334,6 +344,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   /// pide por correo y no se abre una URL con el token: un enlace con la sesión
   /// dentro acaba en el historial del navegador y en los logs.
   Future<void> _enviarRecibo(Map<String, dynamic> booking) async {
+    // Regla: toda interaccion que modifica datos en la base exige cuenta.
+    if (!await AuthGate.requerir(context, accion: 'enviar el recibo a tu correo')) return;
+    if (!mounted) return;
     final id = booking['id']?.toString() ?? '';
     if (id.isEmpty) return;
     try {
@@ -353,6 +366,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   }
 
   Future<void> _showTipSheet(Map<String, dynamic> booking) async {
+    // Regla: toda interaccion que modifica datos en la base exige cuenta.
+    if (!await AuthGate.requerir(context, accion: 'dar propina')) return;
+    if (!mounted) return;
     final total = toDoubleOr(booking['total_amount'], 0.0);
     double monto = 0.0;
     final customCtrl = TextEditingController();
@@ -1086,6 +1102,12 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       // reprogramaba nada. Ahora pide los huecos reales del
                       // prestador y aplica el cambio.
                       onPressed: () async {
+                        // Regla: reprogramar cambia la reserva en la base.
+                        if (!await AuthGate.requerir(context,
+                            accion: 'reprogramar una cita')) {
+                          return;
+                        }
+                        if (!mounted) return;
                         final cambiada = await showRescheduleSheet(
                           context,
                           bookingId: booking['id'].toString(),
