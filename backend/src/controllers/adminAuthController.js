@@ -18,7 +18,7 @@ exports.login = async (req, res) => {
 
     // 1. Buscar usuario por email
     const userRes = await pool.query(
-      'SELECT id, email, password_hash, rol, nombre FROM usuarios WHERE LOWER(email) = LOWER($1)',
+      'SELECT id, email, password_hash, rol, nombre FROM app_usuario_para_login($1)',
       [email.trim()]
     );
 
