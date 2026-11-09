@@ -354,8 +354,8 @@
    "bloque": "G",
    "titulo": "Lector de pantalla",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA",
-   "evidencia": "8 Semantics() en 29.107 lineas; 19 tooltips vs 46 IconButton"
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia": "F9.3B: 45 de 46 IconButton con nombre (tooltips + Semantics). Falta recorrido con lector de pantalla en dispositivo"
   },
   "57": {
    "bloque": "G",
