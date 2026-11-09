@@ -71,7 +71,10 @@ const MIGRACIONES_BASE_NUEVA = [
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
 '129_otp_codigo_cifrado.sql',
-'130_completar_esquema_base_cliente.sql',];
+'130_completar_esquema_base_cliente.sql',
+// 135: horario de atención del prestador. Sin ella /api/providers fallaba con
+// «column p.active_start_hour does not exist» en toda base creada desde la cadena.
+'135_horario_atencion_prestador.sql',];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
 // Se aplica en CADA arranque, sobre una base que ya tiene datos. Solo puede
@@ -114,6 +117,9 @@ const MIGRACIONES_ARRANQUE = [
   '127_review_aspectos.sql',
   '128_usuario_fcm_token.sql',
   '129_otp_codigo_cifrado.sql',
+  // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
+  // producción las tenía por script manual, la cadena no las creaba.
+  '135_horario_atencion_prestador.sql',
 ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {
