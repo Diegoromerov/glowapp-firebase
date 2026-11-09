@@ -223,11 +223,24 @@ def check_artefacto():
 
     _, _, js = http(f"{SITIO}/main.dart.js", timeout=120)
     texto = js.decode("utf-8", "replace")
-    keys = texto.count("AIzaSy")
-    add("C2", "secretos en el bundle", VERDE if keys == 0 else ROJO,
-        f"{len(js)/1e6:.2f} MB, {keys} claves Google", critico=True)
-    add("C3", "Firebase inicializable en el build", VERDE if keys else ROJO,
-        "sin apiKey el try/catch de main.dart:89 apaga Firebase: push y Firestore muertos", critico=True)
+    # La apiKey web de Firebase es pública por diseño: viaja en el bundle de
+    # cualquier app de Firebase y sirve solo para identificar el proyecto, no
+    # para autorizar escrituras (eso lo hacen las reglas y el backend). Se cuenta
+    # como contexto, no como fuga. Una fuga real es una clave privada.
+    publicas = texto.count("AIzaSy")
+    privadas = [p for p in ("sk_live", "prv_prod", "prv_test", "BEGIN PRIVATE KEY",
+                            "service_account", "JWT_SECRET")
+                if p in texto]
+    add("C2", "secretos en el bundle",
+        VERDE if not privadas else ROJO,
+        f"{len(js)/1e6:.2f} MB · {publicas} apiKeys web de Firebase (públicas por diseño)"
+        + (f" · PRIVADAS: {', '.join(privadas)}" if privadas else " · 0 claves privadas"),
+        critico=True)
+    add("C3", "Firebase inicializable en el build",
+        VERDE if publicas else ROJO,
+        "config de Firebase presente en el bundle" if publicas
+        else "sin apiKey el try/catch de main.dart:89 apaga Firebase: push y Firestore muertos",
+        critico=True)
 
     local = APP / "build/web/main.dart.js"
     if local.exists():

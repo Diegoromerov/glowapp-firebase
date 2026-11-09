@@ -37,6 +37,17 @@ on:
         options: [staging, live]
         default: staging
 
+  # En push corre SOLO la puerta de calidad (analyze + tests): los builds y el
+  # deploy siguen siendo manuales para no quemar minutos de Actions.
+  push:
+    branches: [main]
+    paths:
+      - 'apps/**'
+      - 'packages/**'
+      - 'pubspec.yaml'
+      - 'melos.yaml'
+      - '.github/workflows/apps-ci.yml'
+
 permissions:
   contents: read
 
@@ -47,6 +58,8 @@ concurrency:
 env:
   FLUTTER_CHANNEL: stable
   FLUTTER_VERSION: '3.47.9'
+  # workflow_dispatch deja elegir; en push se analizan las dos apps.
+  APP_SELECCIONADA: ${{ inputs.app || 'ambas' }}
 
 jobs:
 
@@ -76,7 +89,7 @@ jobs:
 
       - name: Melos Bootstrap
         run: |
-          case "${{ inputs.app }}" in
+          case "${{ env.APP_SELECCIONADA }}" in
             cliente) melos bootstrap --scope=glow_client --include-dependencies ;;
             prestador) melos bootstrap --scope=glow_provider --include-dependencies ;;
             ambas) melos bootstrap --scope='glow_*' --include-dependencies ;;
@@ -95,7 +108,7 @@ jobs:
         working-directory: ${{ github.workspace }}/packages/glow_core
 
       - name: Analyze & Test glow_provider
-        if: ${{ inputs.app == 'prestador' || inputs.app == 'ambas' }}
+        if: env.APP_SELECCIONADA == 'prestador' || env.APP_SELECCIONADA == 'ambas'
         run: |
           cd apps/glow_provider
           flutter analyze --no-fatal-infos --no-fatal-warnings
@@ -103,7 +116,7 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: Analyze & Test glow_client
-        if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
+        if: env.APP_SELECCIONADA == 'cliente' || env.APP_SELECCIONADA == 'ambas'
         run: |
           cd apps/glow_client
           flutter analyze --no-fatal-infos --no-fatal-warnings
@@ -116,7 +129,7 @@ jobs:
   compilar-prestador:
     name: Build glow_provider
     needs: verificar
-    if: ${{ inputs.app == 'prestador' || inputs.app == 'ambas' }}
+    if: github.event_name == 'workflow_dispatch' && (inputs.app == 'prestador' || inputs.app == 'ambas')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -165,7 +178,7 @@ jobs:
   compilar-cliente:
     name: Build glow_client
     needs: verificar
-    if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
+    if: github.event_name == 'workflow_dispatch' && (inputs.app == 'cliente' || inputs.app == 'ambas')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -214,7 +227,7 @@ jobs:
   compilar-cliente-android:
     name: Build glow_client Android APK
     needs: verificar
-    if: ${{ inputs.app == 'cliente' || inputs.app == 'ambas' }}
+    if: github.event_name == 'workflow_dispatch' && (inputs.app == 'cliente' || inputs.app == 'ambas')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -246,11 +259,20 @@ jobs:
         working-directory: ${{ github.workspace }}/apps/glow_client
 
       - name: Write google-services.json
+        id: gs
         run: |
+          if [ -z "${{ secrets.GOOGLE_SERVICES_JSON }}" ]; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::GOOGLE_SERVICES_JSON no existe; se omite el APK. Cargalo con: gh secret set GOOGLE_SERVICES_JSON < apps/glow_client/android/app/google-services.json"
+            exit 0
+          fi
           echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+          python3 -c "import json;json.load(open('android/app/google-services.json'))"             || { echo "::error::GOOGLE_SERVICES_JSON no es JSON valido"; exit 1; }
+          echo "ok=true" >> "$GITHUB_OUTPUT"
         working-directory: ${{ github.workspace }}/apps/glow_client
 
       - name: Build Android APK (Release)
+        if: steps.gs.outputs.ok == 'true'
         run: |
           cd apps/glow_client
           flutter build apk --release \
