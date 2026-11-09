@@ -50,6 +50,10 @@ class _BookingScreenState extends State<BookingScreen> {
   // products variables
   List<Map<String, dynamic>> _recommendedProducts = [];
   bool _isLoadingProducts = false;
+  bool _falloProductos = false;
+  // Error de carga de horarios: se muestra con reintento en vez de inventar
+  // disponibilidad (ver _loadSlots).
+  String? _errorSlots;
   Map<String, int> _selectedProductsQty = {};
 
   // step navigation variables
@@ -160,84 +164,29 @@ class _BookingScreenState extends State<BookingScreen> {
       setState(() {
         _recommendedProducts = products;
         _isLoadingProducts = false;
+        _falloProductos = false;
         if (widget.preselectedProductId != null) {
           final targetId = widget.preselectedProductId!;
+          // Solo se preselecciona lo que el servidor devolvió. Antes, si el id
+          // no estaba en la lista, se fabricaba la ficha completa (nombre,
+          // precio, stock) y la reserva mostraba un producto con un precio que
+          // el backend no conoce.
           final hasProduct =
               products.any((p) => p['id']?.toString() == targetId);
           if (hasProduct) {
             _selectedProductsQty[targetId] = 1;
-          } else {
-            // Inject extra product info if not matching tag but explicitly requested
-            Map<String, dynamic>? extraProduct;
-            if (targetId == '1') {
-              extraProduct = {
-                'id': 1,
-                'nombre': 'Kit Balayage Pro',
-                'precio': 45000.00,
-                'stock': 20,
-                'imagen_url': '',
-                'tag_especialidad': 'Cabello'
-              };
-            } else if (targetId == '2') {
-              extraProduct = {
-                'id': 2,
-                'nombre': 'Aceite de Cutículas Frutales',
-                'precio': 15000.00,
-                'stock': 50,
-                'imagen_url': '',
-                'tag_especialidad': 'Uñas'
-              };
-            } else if (targetId == '4') {
-              extraProduct = {
-                'id': 4,
-                'nombre': 'Sérum Facial Ácido Hialurónico',
-                'precio': 55000.00,
-                'stock': 30,
-                'imagen_url': '',
-                'tag_especialidad': 'Estética'
-              };
-            } else if (targetId == '6') {
-              extraProduct = {
-                'id': 6,
-                'nombre': 'Gel Moldeador de Cejas Orgánico',
-                'precio': 18000.00,
-                'stock': 40,
-                'imagen_url': '',
-                'tag_especialidad': 'Maquillaje'
-              };
-            }
-            if (extraProduct != null) {
-              _recommendedProducts.insert(0, extraProduct);
-              _selectedProductsQty[targetId] = 1;
-            }
           }
         }
       });
     } catch (e) {
-      // Fallback para pruebas offline o desconexión
-      final fallbackProducts = [
-        {
-          'id': 101,
-          'nombre': 'Tratamiento Reparador Intenso',
-          'precio': 35000.0,
-          'stock': 10,
-          'imagen_url': '',
-          'tag_especialidad': tag,
-        },
-        {
-          'id': 102,
-          'nombre': 'Óleo Nutritivo Glow',
-          'precio': 22000.0,
-          'stock': 15,
-          'imagen_url': '',
-          'tag_especialidad': tag,
-        },
-      ];
+      // Sin datos inventados: el paso muestra un aviso y la reserva sigue
+      // funcionando sin productos sugeridos.
       setState(() {
-        _recommendedProducts = fallbackProducts;
+        _recommendedProducts = [];
         _isLoadingProducts = false;
+        _falloProductos = true;
       });
-      debugPrint('Error loading products (usando fallback): $e');
+      debugPrint('No se pudieron cargar los productos sugeridos: $e');
     }
   }
 
@@ -249,6 +198,7 @@ class _BookingScreenState extends State<BookingScreen> {
       _isLoadingSlots = true;
       _slots = [];
       _selectedSlotTime = null;
+      _errorSlots = null;
     });
 
     try {
@@ -264,17 +214,16 @@ class _BookingScreenState extends State<BookingScreen> {
         _isLoadingSlots = false;
       });
     } catch (e) {
-      final fallbackSlots = [
-        {'time': '09:00', 'is_available': true},
-        {'time': '10:30', 'is_available': true},
-        {'time': '14:00', 'is_available': true},
-        {'time': '16:30', 'is_available': false},
-      ];
+      // Antes se rellenaba la cuadrícula con 09:00, 10:30 y 14:00 marcados como
+      // disponibles cuando la petición fallaba. Eso convertía un error de red en
+      // una reserva con una hora que el prestador no tiene: se elige, se paga y
+      // el backend la rechaza. Ahora se dice la verdad y se ofrece reintentar.
       setState(() {
-        _slots = fallbackSlots;
+        _slots = [];
         _isLoadingSlots = false;
+        _errorSlots = mensajeHumano(e);
       });
-      debugPrint('Error loading slots (usando fallback): $e');
+      debugPrint('No se pudieron cargar los horarios: $e');
     }
   }
 
@@ -1029,6 +978,35 @@ class _BookingScreenState extends State<BookingScreen> {
         ),
       );
     }
+    if (_errorSlots != null) {
+      return Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFEF3F2),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          children: [
+            const Icon(Icons.event_busy_rounded,
+                color: Color(0xFFB42318), size: 24),
+            const SizedBox(height: 8),
+            Text(
+              _errorSlots!,
+              style: const TextStyle(color: Color(0xFFB42318), fontSize: 12.5),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 6),
+            TextButton.icon(
+              onPressed: _loadSlots,
+              icon: const Icon(Icons.refresh, size: 16),
+              label: const Text('Reintentar horarios'),
+              style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xFF8A6A2F)),
+            ),
+          ],
+        ),
+      );
+    }
     if (_slots.isEmpty) {
       return Container(
         padding: const EdgeInsets.all(20.0),
@@ -1327,12 +1305,15 @@ class _BookingScreenState extends State<BookingScreen> {
         ),
         const SizedBox(height: 20),
         if (_recommendedProducts.isEmpty)
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 24.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24.0),
             child: Center(
               child: Text(
-                'No hay productos sugeridos para este servicio.',
-                style: TextStyle(color: Colors.grey, fontSize: 13),
+                _falloProductos
+                    ? 'No pudimos cargar los productos sugeridos. Puedes reservar sin ellos.'
+                    : 'No hay productos sugeridos para este servicio.',
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.grey, fontSize: 13),
               ),
             ),
           )
