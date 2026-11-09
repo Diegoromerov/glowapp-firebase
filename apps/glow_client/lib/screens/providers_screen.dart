@@ -1389,7 +1389,6 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     children: [
                       // Chat Directo
                       IconButton(
-                        tooltip: 'Escribir al prestador',
                         onPressed: () async {
                           // Se captura antes del await: si la peticion tarda y
                           // la pantalla se desmonta, usar `context` lanza y el
