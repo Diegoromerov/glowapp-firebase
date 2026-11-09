@@ -99,6 +99,18 @@ class _ChatListScreenState extends State<ChatListScreen> {
   }
 
   Future<void> _fetchConversations({required bool showLoading}) async {
+    // Sin sesión no hay conversaciones que pedir: el sondeo cada 5 s generaba
+    // un 401 en consola (y gastaba cuota) por una pantalla que un visitante ni
+    // debería ver.
+    if (!AuthService.sesionActivaEnMemoria) {
+      if (mounted && showLoading) {
+        setState(() {
+          _isLoading = false;
+          _error = null;
+        });
+      }
+      return;
+    }
     if (showLoading && mounted) {
       setState(() {
         _isLoading = true;
@@ -124,7 +136,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
     } catch (e) {
       if (showLoading && mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }
@@ -185,7 +197,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                       const Icon(Icons.error_outline,
                           color: Colors.redAccent, size: 48),
                       const SizedBox(height: 16),
-                      Text('Error al cargar chats: $_error',
+                      Text(_error ?? 'No pudimos cargar tus conversaciones.',
                           textAlign: TextAlign.center),
                       const SizedBox(height: 16),
                       ElevatedButton(

@@ -70,7 +70,10 @@ String mensajeHumano(Object error) {
   if (texto.contains('TimeoutException') || texto.contains('timed out')) {
     return 'La conexión está muy lenta. Inténtalo otra vez.';
   }
-  if (texto.contains('401') || texto.contains('sesión')) {
+  if (texto.contains('401') ||
+      texto.contains('UNAUTHORIZED') ||
+      texto.contains('Unauthorized') ||
+      texto.contains('sesión')) {
     return 'Tu sesión venció. Vuelve a iniciar sesión.';
   }
   if (texto.contains('500') || texto.contains('502') || texto.contains('503')) {

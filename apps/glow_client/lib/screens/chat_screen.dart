@@ -424,7 +424,7 @@ class _ChatScreenState extends State<ChatScreen> {
     } catch (e) {
       if (showLoading && mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }
@@ -733,7 +733,8 @@ class _ChatScreenState extends State<ChatScreen> {
                             const Icon(Icons.error_outline,
                                 color: Colors.red, size: 48),
                             const SizedBox(height: 16),
-                            Text('Error: $_error', textAlign: TextAlign.center),
+                            Text(_error ?? 'No pudimos cargar la conversación.',
+                                textAlign: TextAlign.center),
                             const SizedBox(height: 16),
                             ElevatedButton(
                               onPressed: () => _loadMessages(showLoading: true),

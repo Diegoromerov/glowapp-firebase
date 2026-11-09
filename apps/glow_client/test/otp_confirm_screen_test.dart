@@ -124,7 +124,8 @@ void main() {
         servicioNombre: 'Manicure',
         prestadorNombre: 'Aura',
         valorBruto: 50000,
-        verificar: (_) async => throw Exception('sin red'),
+        verificar: (_) async =>
+            throw Exception('SocketException: Failed host lookup'),
       ),
     ));
 
@@ -132,6 +133,8 @@ void main() {
     await tester.pump(const Duration(seconds: 2));
 
     expect(find.byType(OtpConfirmScreen), findsOneWidget);
-    expect(find.textContaining('No se pudo verificar'), findsOneWidget);
+    // El usuario ve una frase con acción, no el volcado técnico.
+    expect(find.textContaining('No pudimos conectar'), findsOneWidget);
+    expect(find.textContaining('SocketException'), findsNothing);
   });
 }
