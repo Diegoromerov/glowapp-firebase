@@ -430,3 +430,9 @@ en 076).
 - Corrige un drift de esquema: `/api/providers` y las rutas de horario leían esas columnas, pero ninguna migración de la cadena 000–134 las creaba; solo existían en `railway_seed.sql`, `seed/prestadores-demo-11.sql` y `scripts/e2e/schema-base.sql`. Toda base creada desde la cadena (CI, staging nuevo, restore limpio) fallaba con `column p.active_start_hour does not exist`.
 - El backfill desde `weekly_schedule` solo toca filas con el rango horario nulo, y descarta valores de agenda que no sean numéricos para no abortar el arranque.
 - Reejecutable: entra tanto en la lista de base vacía como en la de arranque. El `CHECK` de rango se agrega `NOT VALID` para no bloquear filas heredadas.
+
+## 136: contrato de tipo de `services.id`
+
+- Fija y hace visible el contrato real: `services.id` es `UUID` con `gen_random_uuid()` (init.sql:84) y `bookings.service_id` es `UUID` (init.sql:101), que es lo que devuelve producción.
+- No convierte nada: cambiar una PK referenciada por `bookings` y `booking_productos` exige rewrite con ventana de mantenimiento. Solo emite el tipo detectado al arranque, en CI y en cada despliegue.
+- Corrige la causa de la confusión: `054_create_core_tables.sql` declaraba `SERIAL` e `INTEGER` en un `CREATE TABLE IF NOT EXISTS` que nunca se aplicó porque `init.sql` corre antes.
