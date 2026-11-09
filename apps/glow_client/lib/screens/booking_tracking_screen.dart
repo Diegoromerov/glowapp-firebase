@@ -435,31 +435,44 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Row(
-                                    children: [
-                                      Icon(Icons.vpn_key_rounded,
-                                          color: const Color(0xFFC5A052),
-                                          size: 18),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        'Código de confirmación:',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black87),
-                                      ),
-                                    ],
+                                  // Flexible + ellipsis: la fila desbordaba 92 px
+                                  // en anchos medios (el test de ruta lo destapo)
+                                  // y el aviso quedaba cortado.
+                                  const Flexible(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(Icons.vpn_key_rounded,
+                                            color: Color(0xFFC5A052),
+                                            size: 18),
+                                        SizedBox(width: 8),
+                                        Flexible(
+                                          child: Text(
+                                            'Código de confirmación:',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black87),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   // El código se genera al terminar el servicio y
                                   // se envía por correo: no existe antes, así que
                                   // pintarlo aquí mostraba un valor que el backend
                                   // no acepta.
-                                  Text(
-                                    'Te lo enviamos por correo',
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color(0xFF881337),
+                                  const Flexible(
+                                    child: Text(
+                                      'Te lo enviamos por correo',
+                                      textAlign: TextAlign.end,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF881337),
+                                      ),
                                     ),
                                   ),
                                 ],

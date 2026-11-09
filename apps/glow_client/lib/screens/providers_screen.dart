@@ -13,6 +13,7 @@ import 'package:glow_core/glow_core.dart';
 import '../utils/home_ranking.dart';
 import '../utils/map_clustering.dart';
 import '../widgets/home_results_sheet.dart';
+import '../widgets/auth_gate.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 
 class ProvidersScreen extends StatefulWidget {
@@ -790,30 +791,37 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     }
   }
 
+  /// Navegación con puerta de sesión por acción. La home es explorable sin
+  /// cuenta: solo se pide identificación cuando el destino la necesita, y se
+  /// retoma la navegación después de autenticarse (antes el usuario caía en
+  /// /auth/login y perdía lo que había tocado).
   Future<void> _checkAuthAndNavigate(String routeName) async {
-    final token = await AuthService.getToken();
-    if (token == null) {
-      if (mounted) {
-        Navigator.pushNamed(context, '/auth/login');
-      }
-    } else {
-      if (mounted) {
-        final result = await Navigator.pushNamed(context, routeName);
-        if (result != null && result is Map<String, dynamic>) {
-          if (result['action'] == 'filter_map') {
-            final category = result['category'] ?? 'all';
-            setState(() {
-              _selectedCategory = category;
-              _filterProviders();
-            });
-            // Auto scroll or zoom to filtered providers if needed
-            if (_filteredProviders.isNotEmpty) {
-              _mapController.move(
-                LatLng(_filteredProviders.first.latitude, _filteredProviders.first.longitude),
-                14.5
-              );
-            }
-          }
+    final accion = switch (routeName) {
+      '/store' => 'comprar en GlowShop',
+      '/ideas/welcome' => 'usar Glow IA+',
+      '/my-bookings' => 'ver tus reservas',
+      '/profile' => 'entrar a tu perfil',
+      '/chat' => 'abrir tus conversaciones',
+      _ => 'continuar',
+    };
+
+    if (!await AuthGate.requerir(context, accion: accion)) return;
+    if (!mounted) return;
+
+    final result = await Navigator.pushNamed(context, routeName);
+    if (result != null && result is Map<String, dynamic>) {
+      if (result['action'] == 'filter_map') {
+        final category = result['category'] ?? 'all';
+        setState(() {
+          _selectedCategory = category;
+          _filterProviders();
+        });
+        // Auto scroll or zoom to filtered providers if needed
+        if (_filteredProviders.isNotEmpty) {
+          _mapController.move(
+            LatLng(_filteredProviders.first.latitude, _filteredProviders.first.longitude),
+            14.5,
+          );
         }
       }
     }

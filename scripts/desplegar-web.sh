@@ -14,10 +14,19 @@ PROYECTO="${2:?falta el proyecto de Firebase}"
 ENTORNO="${3:-staging}"
 
 case "$APP" in
-  glow_client) AUDIENCE=client ;;
-  glow_provider) AUDIENCE=provider ;;
+  glow_client) AUDIENCE=client; PROYECTO_ESPERADO=glowapp-client ;;
+  glow_provider) AUDIENCE=provider; PROYECTO_ESPERADO=glowapp-provider ;;
   *) echo "X app desconocida: $APP (usa glow_client o glow_provider)" >&2; exit 2 ;;
 esac
+
+# Guarda contra el error real ya cometido: llamarlo con 2 argumentos
+# (`desplegar-web.sh glow_client production`) deja ENTORNO=staging y compila el
+# bundle contra la API de staging para publicarlo en un proyecto de produccion.
+if [ "$PROYECTO" != "$PROYECTO_ESPERADO" ]; then
+  echo "X el proyecto Firebase de $APP es '$PROYECTO_ESPERADO', se recibio '$PROYECTO'" >&2
+  echo "  uso: desplegar-web.sh $APP $PROYECTO_ESPERADO <staging|production>" >&2
+  exit 2
+fi
 
 case "$ENTORNO" in
   staging) API_URL=https://glowapp-api-staging-staging.up.railway.app ;;
