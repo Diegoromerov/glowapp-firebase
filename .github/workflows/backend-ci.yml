@@ -115,6 +115,7 @@ jobs:
       - name: Sembrar catalogo de prueba (rol admin)
         working-directory: backend
         env:
+          DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
           DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
         run: node scripts/seedCatalogoCI.js
 

@@ -84,6 +84,33 @@ async function main() {
       `verificación=${diagnostico[0]?.estatus_verificacion ?? '—'}, ` +
       `ubicación=${diagnostico[0]?.tiene_ubicacion ?? '—'}`
     );
+
+    const appConnectionString = process.env.DATABASE_URL;
+    if (appConnectionString && diagnostico[0]?.tenant_plataforma_id != null) {
+      const appClient = new Client({ connectionString: appConnectionString });
+      await appClient.connect();
+      try {
+        await appClient.query('BEGIN');
+        await appClient.query("SELECT set_config('app.tenant_id', $1, true)", [
+          String(diagnostico[0].tenant_plataforma_id),
+        ]);
+        const { rows: visibles } = await appClient.query(`
+          SELECT count(*)::int AS n
+            FROM perfiles_prestador
+           WHERE id = 900001
+             AND is_active = true
+             AND estatus_verificacion = 'APROBADO'
+             AND ubicacion IS NOT NULL
+        `);
+        await appClient.query('COMMIT');
+        console.log(`visibilidad RLS del proveedor sembrado con tenant explícito: ${visibles[0].n}`);
+      } catch (error) {
+        await appClient.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await appClient.end();
+      }
+    }
   } finally {
     await client.end();
   }
