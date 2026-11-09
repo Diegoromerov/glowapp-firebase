@@ -17,7 +17,7 @@ class HermesAgent {
     const radiusKm = parseFloat(maxDistanceKm) || 5;
 
     let query = `
-      SELECT s.id as service_id, s.name, s.price, s.duration_minutes, s.tag_especialidad as category, 
+      SELECT s.id as service_id, s.name, s.price, s.duration_minutes, s.category as category, 
              p.id as provider_id, p.business_name, p.rating_avg,
              ROUND((ST_Distance(p.ubicacion, ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography) / 1000.0)::numeric, 2) as distance_km
       FROM services s
@@ -28,7 +28,10 @@ class HermesAgent {
     const params = [lat, lon, radiusKm];
 
     if (category) {
-      query += ` AND (LOWER(s.tag_especialidad) LIKE $4 OR LOWER(s.name) LIKE $4)`;
+      // services.category es la columna real. Antes se leia s.tag_especialidad,
+      // que pertenece a productos: la consulta fallaba siempre con
+      // «column s.tag_especialidad does not exist» y la tool devolvia error.
+      query += ` AND (LOWER(s.category) LIKE $4 OR LOWER(s.name) LIKE $4)`;
       params.push(`%${category.toLowerCase()}%`);
     }
 
