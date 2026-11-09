@@ -94,10 +94,10 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | ID | Fase | Tarea | h | Estado | Verificación |
 |---|---|---|---|---|---|
 | — | F0 | Diagnóstico + D-GL-029 + brief G-1 | 0 | **hecho** | linter PASS, 97 archivos |
-| C-01 | F1 | Analítica pública con rate limit | 0,5 | **siguiente** | E4 PASA |
-| C-02 | F1 | No llamar endpoints privados sin sesión | 1 | siguiente | 0 respuestas 401 anónimas |
-| C-03 | F1 | Errores humanos en citas y chat | 1,5 | siguiente | B1 PASA |
-| C-04 | F1 | Quitar horarios y productos inventados | 2 | siguiente | test de fallo de red |
+| C-01 | F1 | Analítica pública con rate limit | 0,5 | **hecho** (`9f294ae4`) | E4 PASA: POST sin token → 201 |
+| C-02 | F1 | No llamar endpoints privados sin sesión | 1 | **hecho** | sonda: 0 respuestas 401 |
+| C-03 | F1 | Errores humanos en citas y chat | 1,5 | **hecho** | B1 PASA (0 sitios) |
+| C-04 | F1 | Quitar horarios y productos inventados | 2 | **hecho** | invariante de fuente 4/4 |
 | C-05 | — | Catálogo mock (tenant) | 0 | **diferido** | D-GL-029, disparador |
 | C-06 | — | Rol `app_rls_user` | 0 | **hecho** | `pg_stat_activity` |
 | C-07 | F2 | `desplegar-web.sh` pasa `FIREBASE_*` | 0,5 | pendiente | C3 PASA |
@@ -115,7 +115,7 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | C-19 | F4 | Permisos, push, deep links | 4 | pendiente | ítems 11/13/14/16 |
 | F5 | F5 | Instrumentar 17 N/V | — | pendiente | primera medición por ítem |
 
-**Total activo:** 16 tareas · **≈27,5 h** · críticos en rojo hoy: B1, B2, B3, C3, E4 (5).
+**Total activo:** 12 tareas · **≈22,5 h** · críticos en rojo hoy: B2, B3, C3 (3). F1 cerrada 2026-11-09.
 
 ## Cómo se re-verifica (lo que queda guardado)
 

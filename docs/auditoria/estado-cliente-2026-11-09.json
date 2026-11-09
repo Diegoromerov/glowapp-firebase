@@ -129,8 +129,8 @@
    "bloque": "C",
    "titulo": "Errores traducidos",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA",
-   "evidencia": "3 `$e` visibles (otp_confirm:100, store:92, store:757) + 'Exception: UNAUTHORIZED' en el chat"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "F9.1: 0 sitios con $e, 0 por variable; mensajeHumano en citas, chat, OTP y tienda (medido 2026-11-09)"
   },
   "21": {
    "bloque": "C",

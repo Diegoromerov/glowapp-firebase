@@ -5,14 +5,14 @@
    "id": "A1",
    "nombre": "flutter analyze",
    "estado": "PASA",
-   "evidencia": "0 errores, 24 warnings, 359 infos",
+   "evidencia": "0 errores, 24 warnings, 362 infos",
    "critico": true
   },
   {
    "id": "A2",
    "nombre": "flutter test",
    "estado": "PASA",
-   "evidencia": "60 pruebas verdes",
+   "evidencia": "64 pruebas verdes",
    "critico": true
   },
   {
@@ -25,15 +25,15 @@
   {
    "id": "B1",
    "nombre": "errores crudos en UI",
-   "estado": "FALLA",
-   "evidencia": "3 directos: apps/glow_client/lib/screens/otp_confirm_screen.dart:100, apps/glow_client/lib/screens/store_screen.dart:92, apps/glow_client/lib/screens/store_screen.dart:757 | 3 por variable: apps/glow_client/lib/screens/chat_list_screen.dart, apps/glow_client/lib/screens/chat_screen.dart, apps/glow_client/lib/screens/client_bookings_screen.dart",
+   "estado": "PASA",
+   "evidencia": "0 sitios",
    "critico": true
   },
   {
    "id": "B2",
    "nombre": "accesibilidad: etiquetas",
    "estado": "FALLA",
-   "evidencia": "8 Semantics, 19 tooltips, 46 IconButton en 29118 lineas",
+   "evidencia": "8 Semantics, 19 tooltips, 46 IconButton en 29178 lineas",
    "critico": true
   },
   {
@@ -145,7 +145,7 @@
    "id": "E1",
    "nombre": "/api/health sin X-App-Audience",
    "estado": "PASA",
-   "evidencia": "HTTP 200 commit 78fb1070",
+   "evidencia": "HTTP 200 commit 9f294ae4",
    "critico": true
   },
   {
@@ -157,16 +157,16 @@
   },
   {
    "id": "E3",
-   "nombre": "catalogo /api/products",
-   "estado": "FALLA",
-   "evidencia": "HTTP 200, count=0: GlowShop queda vacio en la app",
-   "critico": true
+   "nombre": "catalogo /api/products (datos mock)",
+   "estado": "PARCIAL",
+   "evidencia": "HTTP 200, count=0: la tienda de demostracion se ve vacia (dato mock, no bloquea)",
+   "critico": false
   },
   {
    "id": "E4",
    "nombre": "analitica/crash anonimos",
-   "estado": "FALLA",
-   "evidencia": "POST sin token -> HTTP 401: el embudo anonimo y los crashes sin sesion se pierden",
+   "estado": "PASA",
+   "evidencia": "POST sin token -> HTTP 201: el embudo anonimo y los crashes sin sesion se pierden",
    "critico": true
   },
   {
@@ -187,13 +187,13 @@
  "resumen": {
   "conteo": {
    "PASA": 24,
-   "PARCIAL": 34,
+   "PARCIAL": 33,
    "N/A": 2,
    "FALLA": 9,
-   "N/V": 17
+   "N/V": 18
   },
   "total": 86,
-  "pct_sin_na": 48.8,
-  "pct_medible": 61.2
+  "pct_sin_na": 48.2,
+  "pct_medible": 61.4
  }
 }

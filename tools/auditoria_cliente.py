@@ -296,8 +296,11 @@ def check_api():
     payload = json.dumps({"events": [{"event_type": "APP_AUDIT", "screen_name": "/audit"}]}).encode()
     st, _, _ = http(f"{API}/api/analytics/events",
                     {"Content-Type": "application/json"}, data=payload)
-    add("E4", "analitica/crash anonimos", VERDE if st and st < 400 else ROJO,
-        f"POST sin token -> HTTP {st}: el embudo anonimo y los crashes sin sesion se pierden",
+    ok = bool(st) and st < 400
+    add("E4", "analitica/crash anonimos", VERDE if ok else ROJO,
+        f"POST sin token -> HTTP {st}"
+        + (": embudo anonimo y crashes sin sesion aceptados" if ok
+           else ": el embudo anonimo y los crashes sin sesion se pierden"),
         critico=True)
 
     st, _, _ = http(f"{API}/api/config/flags")

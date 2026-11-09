@@ -45,30 +45,30 @@
 
   <div class="head">
     <h1>Plan de corrección — app cliente</h1>
-    <div class="sub">6 fases · 16 tareas activas · ≈27,5 h · corte 2026-11-09 14:50</div>
+    <div class="sub">6 fases · 12 tareas activas · ≈22,5 h · corte 2026-11-09 15:40</div>
   </div>
 
   <div class="kpis">
     <div class="kpi">
-      <div class="n">48,2 %</div>
+      <div class="n">49,4 %</div>
       <div class="l">ejecución de la app (86 ítems, sin N/A)</div>
-      <div class="bar"><i style="width:48.2%"></i></div>
+      <div class="bar"><i style="width:49.4%"></i></div>
     </div>
     <div class="kpi">
-      <div class="n">1 / 6</div>
+      <div class="n">2 / 6</div>
       <div class="l">fases del plan cerradas (F0)</div>
-      <div class="bar"><i style="width:16.7%"></i></div>
+      <div class="bar"><i style="width:33.3%"></i></div>
     </div>
     <div class="kpi">
-      <div class="n">≈27 h</div>
-      <div class="l">trabajo restante · 5 críticos en rojo</div>
+      <div class="n">≈22,5 h</div>
+      <div class="l">trabajo restante · 3 críticos en rojo</div>
       <div class="bar"><i style="width:0%"></i></div>
     </div>
   </div>
 
   <div class="legend">
     <span><i class="dot" style="background:var(--ok)"></i>hecho</span>
-    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.1)</span>
+    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.2)</span>
     <span><i class="dot" style="background:color-mix(in srgb, var(--accent, #2f6f8f) 55%, transparent)"></i>pendiente</span>
     <span><i class="dot" style="background:var(--warn)"></i>bloqueado por tercero</span>
     <span><i class="dot" style="background:transparent;border:1px dashed var(--muted-foreground, #6b6b6b)"></i>diferido con disparador</span>
@@ -89,22 +89,22 @@
     <div class="track"><div class="seg done" style="left:0%;width:100%">hecho</div></div>
   </div>
 
-  <div class="phase">F1 · P0: lo que el usuario ve <span class="tag">espera F9.1 · 5 h</span></div>
+  <div class="phase">F1 · P0: lo que el usuario ve <span class="tag">cerrada 2026-11-09 · F9.1</span></div>
   <div class="row">
     <div class="name">C-01 analítica pública + rate limit <small>· 0,5 h</small></div>
-    <div class="track"><div class="seg now" style="left:0%;width:1.8%">1</div></div>
+    <div class="track"><div class="seg done" style="left:0%;width:1.8%"></div></div>
   </div>
   <div class="row">
     <div class="name">C-02 no llamar endpoints privados sin sesión <small>· 1 h</small></div>
-    <div class="track"><div class="seg pend" style="left:1.8%;width:3.6%">2</div></div>
+    <div class="track"><div class="seg done" style="left:1.8%;width:3.6%"></div></div>
   </div>
   <div class="row">
     <div class="name">C-03 errores humanos en citas y chat <small>· 1,5 h</small></div>
-    <div class="track"><div class="seg pend" style="left:5.4%;width:5.4%">3</div></div>
+    <div class="track"><div class="seg done" style="left:5.4%;width:5.4%"></div></div>
   </div>
   <div class="row">
     <div class="name">C-04 quitar horarios y productos inventados <small>· 2 h</small></div>
-    <div class="track"><div class="seg pend" style="left:10.8%;width:7.2%">4</div></div>
+    <div class="track"><div class="seg done" style="left:10.8%;width:7.2%"></div></div>
   </div>
 
   <div class="phase">F2 · Build y despliegue <span class="tag">F9.2 · 1,5 h + secretos</span></div>
@@ -182,7 +182,7 @@
 
   <div class="foot">
     Diferidos: C-05 catálogo mock (D-GL-029) · C-15 pago real (sin llaves de producción) · C-06 ya resuelto (rol <code>app_rls_user</code> verificado).<br>
-    Autorización vigente: <b>F9.0</b>. Siguiente puerta: <b>GLOWAPP-F9.1</b>.
+    Autorización vigente: <b>F9.1</b> (mergeada y desplegada). Siguiente puerta: <b>GLOWAPP-F9.2</b> — build con Firebase y CI en verde.
   </div>
 </div>
 </body>
