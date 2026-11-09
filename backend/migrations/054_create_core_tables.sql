@@ -25,8 +25,12 @@ CREATE TABLE IF NOT EXISTS perfiles_prestador (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+-- id UUID: es lo que crea init.sql (la base real de produccion) y lo que ya
+-- devuelve /api/providers/:id. Este CREATE TABLE IF NOT EXISTS nunca se aplico
+-- en produccion porque init.sql corre antes, pero declaraba SERIAL y describia
+-- un esquema que no existe en ningun entorno. Ver 136 para el contrato.
 CREATE TABLE IF NOT EXISTS services (
-  id SERIAL PRIMARY KEY,
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   provider_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
   name VARCHAR(200) NOT NULL,
   description TEXT,
@@ -41,7 +45,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   id SERIAL PRIMARY KEY,
   client_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
   provider_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
-  service_id INTEGER NOT NULL REFERENCES services(id) ON DELETE CASCADE,
+  service_id UUID NOT NULL REFERENCES services(id) ON DELETE CASCADE,
   starts_at TIMESTAMP WITH TIME ZONE NOT NULL,
   ends_at TIMESTAMP WITH TIME ZONE NOT NULL,
   status VARCHAR(30) NOT NULL DEFAULT 'PENDING' CHECK (status IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED', 'NO_SHOW')),
