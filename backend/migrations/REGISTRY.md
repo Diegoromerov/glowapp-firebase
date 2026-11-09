@@ -423,3 +423,10 @@ en 076).
 - Añade bitácora append-only de radicación, transición, verificación de identidad, mensajes (sin contenido) y ejecución de supresión.
 - El flujo administrativo exige verificación explícita y confirmación separada antes de anonimizar la cuenta y borrar datos biométricos; bloquea cerrar una solicitud ARCO antes de ejecutarla.
 - El manifiesto deja evidencia mínima de las categorías eliminadas y conservadas. Los registros financieros/contractuales que deban conservarse no se declaran borrados.
+
+## 135: horario de atención del prestador
+
+- Crea en `perfiles_prestador` las columnas `weekly_schedule`, `active_start_hour` y `active_end_hour` con sus valores por defecto (9 y 19).
+- Corrige un drift de esquema: `/api/providers` y las rutas de horario leían esas columnas, pero ninguna migración de la cadena 000–134 las creaba; solo existían en `railway_seed.sql`, `seed/prestadores-demo-11.sql` y `scripts/e2e/schema-base.sql`. Toda base creada desde la cadena (CI, staging nuevo, restore limpio) fallaba con `column p.active_start_hour does not exist`.
+- El backfill desde `weekly_schedule` solo toca filas con el rango horario nulo, y descarta valores de agenda que no sean numéricos para no abortar el arranque.
+- Reejecutable: entra tanto en la lista de base vacía como en la de arranque. El `CHECK` de rango se agrega `NOT VALID` para no bloquear filas heredadas.
