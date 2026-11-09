@@ -1585,7 +1585,6 @@ class _AnimatedStarButtonState extends State<AnimatedStarButton>
     return ScaleTransition(
       scale: _scaleAnimation,
       child: IconButton(
-        tooltip: 'Calificar',
         iconSize: widget.iconSize,
         icon: Icon(
           widget.isSelected ? Icons.star_rounded : Icons.star_border_rounded,

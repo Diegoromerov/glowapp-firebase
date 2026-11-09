@@ -146,7 +146,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   color: t.surfaceLevel1.withValues(alpha: 0.86),
                   shape: const CircleBorder(),
                   child: IconButton(
-                    tooltip: 'Regresar',
                     icon: Icon(
                       Icons.arrow_back_ios_new,
                       color: t.n800,
@@ -271,7 +270,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 size: 20,
               ),
               suffixIcon: IconButton(
-                tooltip: 'Mostrar contraseña',
                 icon: Icon(
                   _obscurePassword
                       ? Icons.visibility_outlined

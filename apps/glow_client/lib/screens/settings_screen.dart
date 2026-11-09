@@ -237,7 +237,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     labelStyle: const TextStyle(
                         fontSize: 13, color: LuxeColors.nude600),
                     suffixIcon: IconButton(
-                      tooltip: 'Mostrar contraseña actual',
                       icon: Icon(
                           obscureCurrent
                               ? Icons.visibility_off
@@ -257,7 +256,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     labelStyle: const TextStyle(
                         fontSize: 13, color: LuxeColors.nude600),
                     suffixIcon: IconButton(
-                      tooltip: 'Mostrar contraseña nueva',
                       icon: Icon(
                           obscureNew ? Icons.visibility_off : Icons.visibility,
                           size: 18),
@@ -275,7 +273,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     labelStyle: const TextStyle(
                         fontSize: 13, color: LuxeColors.nude600),
                     suffixIcon: IconButton(
-                      tooltip: 'Mostrar confirmación',
                       icon: Icon(
                           obscureConfirm
                               ? Icons.visibility_off
@@ -670,7 +667,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: LuxeColors.nude50,
         elevation: 0,
         leading: IconButton(
-          tooltip: 'Regresar',
           icon: const Icon(Icons.arrow_back_ios_new,
               color: LuxeColors.nude900, size: 20),
           onPressed: () => Navigator.pop(context),
@@ -718,7 +714,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                         style: const TextStyle(
                                             color: Color(0xFFB00020)))),
                                 IconButton(
-                                  tooltip: 'Actualizar',
                                   icon: const Icon(Icons.refresh,
                                       color: Color(0xFFB00020), size: 20),
                                   onPressed: _loadPreferences,

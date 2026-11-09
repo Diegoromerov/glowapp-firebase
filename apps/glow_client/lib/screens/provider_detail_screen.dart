@@ -1620,7 +1620,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                                       backgroundColor:
                                                           Colors.white24,
                                                       child: IconButton(
-                                                        tooltip: 'Cerrar',
                                                         icon: const Icon(
                                                             Icons.close,
                                                             color:
@@ -1954,7 +1953,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                                                             .black38,
                                                                     child:
                                                                         IconButton(
-                                                                          tooltip: 'Cerrar',
                                                                       icon: const Icon(
                                                                           Icons
                                                                               .close,

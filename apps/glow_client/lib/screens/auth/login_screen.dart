@@ -491,7 +491,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 prefixIcon: Icon(Icons.lock_outlined,
                                     color: t.brandPrimary, size: 20),
                                 suffixIcon: IconButton(
-                                  tooltip: 'Mostrar contraseña',
                                   icon: Icon(
                                     _obscurePassword
                                         ? Icons.visibility_outlined

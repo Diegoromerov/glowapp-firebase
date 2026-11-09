@@ -253,7 +253,6 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          tooltip: 'Regresar',
           icon: const Icon(Icons.arrow_back, color: Color(0xFF1F1A15)),
           onPressed: () => Navigator.pop(context),
         ),
@@ -272,7 +271,6 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
         ),
         actions: [
           IconButton(
-            tooltip: 'Compartir',
             icon: const Icon(Icons.share_outlined, color: Color(0xFF1F1A15)),
             onPressed: () async {
               await SocialShareService.showConsentModal(

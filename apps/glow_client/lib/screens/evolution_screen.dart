@@ -132,7 +132,6 @@ class _Guia extends StatelessWidget {
                 ),
               ),
               IconButton(
-                tooltip: 'Cerrar',
                 visualDensity: VisualDensity.compact,
                 icon: const Icon(Icons.close, size: 18),
                 onPressed: onCerrar,
