@@ -64,6 +64,8 @@ class AuthGate {
     if (eleccion == null) return false; // "Seguir explorando"
     if (!context.mounted) return false;
 
+    // 'continuar' (y cualquier valor inesperado) va a /auth/login: es la única
+    // pantalla con Google, y el registro por correo queda como camino explícito.
     await Navigator.pushNamed(
       context,
       eleccion == 'registro' ? '/auth/register' : '/auth/login',
@@ -130,7 +132,9 @@ class _HojaAccionProtegida extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Creá tu cuenta para $accion',
+              // «Necesitás una cuenta» sirve a quien entra por primera vez y a
+              // quien ya tiene cuenta: el CTA primario abre la pantalla con Google.
+              'Necesitás una cuenta para $accion',
               textAlign: TextAlign.center,
               style: texto.titleMedium?.copyWith(fontWeight: FontWeight.w700),
             ),
@@ -147,21 +151,23 @@ class _HojaAccionProtegida extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             FilledButton(
-              onPressed: () => Navigator.pop(context, 'registro'),
+              // Google vive en /auth/login y el backend da de alta al usuario en
+              // ese primer ingreso: este botón sirve para crear y para entrar.
+              onPressed: () => Navigator.pop(context, 'continuar'),
               style: FilledButton.styleFrom(
                 minimumSize: const Size.fromHeight(50),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: const Text('Crear cuenta'),
+              child: const Text('Continuar'),
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () => Navigator.pop(context, 'login'),
+              onPressed: () => Navigator.pop(context, 'registro'),
               style: OutlinedButton.styleFrom(
                 minimumSize: const Size.fromHeight(50),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: const Text('Ya tengo cuenta'),
+              child: const Text('Crear cuenta con correo'),
             ),
             const SizedBox(height: 4),
             TextButton(
