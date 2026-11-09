@@ -64,7 +64,26 @@ async function main() {
     const { rows } = await client.query(
       "SELECT count(*)::int AS n FROM perfiles_prestador WHERE is_active = true"
     );
-    console.log(`catálogo de prueba sembrado: ${rows[0].n} proveedor(es) activo(s)`);
+    const { rows: diagnostico } = await client.query(`
+      SELECT t.id AS tenant_plataforma_id,
+             p.tenant_id AS tenant_proveedor_id,
+             p.is_active,
+             p.estatus_verificacion,
+             p.ubicacion IS NOT NULL AS tiene_ubicacion
+        FROM tenants t
+        LEFT JOIN perfiles_prestador p ON p.id = 900001
+       WHERE t.es_plataforma IS TRUE
+       ORDER BY t.id
+       LIMIT 1
+    `);
+    console.log(
+      `catálogo de prueba sembrado: ${rows[0].n} proveedor(es) activo(s); ` +
+      `tenant plataforma/proveedor=${diagnostico[0]?.tenant_plataforma_id ?? '—'}/` +
+      `${diagnostico[0]?.tenant_proveedor_id ?? '—'}, ` +
+      `activo=${diagnostico[0]?.is_active ?? '—'}, ` +
+      `verificación=${diagnostico[0]?.estatus_verificacion ?? '—'}, ` +
+      `ubicación=${diagnostico[0]?.tiene_ubicacion ?? '—'}`
+    );
   } finally {
     await client.end();
   }
