@@ -1,6 +1,7 @@
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'capture_screen.dart';
+import '../widgets/auth_gate.dart';
 import 'results_screen.dart';
 
 class BiometricWelcomeScreen extends StatefulWidget {
@@ -25,8 +26,12 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
     if (!mounted) return;
 
     if (estado.canScan) {
-      Navigator.pushReplacement(
-        context,
+      // La autorización de datos ya está vigente: recién ahora se pide cuenta.
+      // Glow IA+ analiza la foto y guarda resultados ligados a la persona.
+      final navigator = Navigator.of(context);
+      final conSesion = await AuthGate.requerir(context, accion: 'usar Glow IA+');
+      if (!conSesion || !mounted) return;
+      navigator.pushReplacement(
         MaterialPageRoute(builder: (_) => const CaptureScreen()),
       );
       return;
@@ -167,6 +172,12 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
       );
       return;
     }
+
+    // La autorización de manejo de datos se valida primero; la cuenta se pide
+    // después, y hace falta para registrar el consentimiento (POST autenticado)
+    // y para asociar el análisis biométrico a la persona.
+    if (!await AuthGate.requerir(context, accion: 'usar Glow IA+')) return;
+    if (!mounted) return;
 
     setState(() {
       _isRegisteringConsent = true;
