@@ -3,8 +3,6 @@ import 'package:glow_core/glow_core.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../widgets/auth_gate.dart';
-import '../services/aura_guest_quota.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 class ChatScreen extends StatefulWidget {
   final String partnerId;
@@ -286,14 +284,6 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _sendInitialMessage() async {
-    // El saludo automatico de Aura (p. ej. «analicemos esta foto») no es una
-    // pregunta del usuario: no exige cuenta ni consume cuota. Con un prestador
-    // si se pide sesion, y la pantalla es alcanzable por enlace profundo.
-    if (!_isAiPartner) {
-      if (!await AuthGate.requerir(context, accion: 'enviar mensajes')) return;
-      if (!mounted) return;
-    }
-
     final text = widget.initialMessage ?? 'Hola, analicemos esta foto';
     setState(() {
       _isSending = true;
@@ -484,24 +474,6 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _sendMessage([String? customText]) async {
-    // Aura se puede probar sin cuenta: dos preguntas libres y a la tercera se
-    // pide. Con un prestador, escribir exige sesión desde el primer mensaje.
-    final conSesion = await AuthGate.tieneSesion();
-    if (_isAiPartner) {
-      if (!conSesion && await AuraGuestQuota.requiereCuenta()) {
-        final conCuenta = await AuthGate.requerir(
-          context,
-          accion: 'seguir conversando con Aura',
-          detalle: 'Ya usaste tus ${AuraGuestQuota.preguntasLibres} preguntas de '
-              'prueba. Creá tu cuenta para seguir donde quedaste.',
-        );
-        if (!conCuenta) return;
-      }
-    } else if (!conSesion) {
-      if (!await AuthGate.requerir(context, accion: 'enviar mensajes')) return;
-    }
-    if (!mounted) return;
-
     final text = (customText ?? _messageController.text).trim();
     if (text.isEmpty || _isSending) return;
 
@@ -533,7 +505,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
     try {
       await ApiService.sendChatMessage(widget.partnerId, text);
-      if (_isAiPartner && !conSesion) await AuraGuestQuota.registrar();
       // Garantiza que la respuesta de AURA se vea aunque el push WS no llegue
       // (conexión abierta pero sin registro, p. ej. tras caducar el token).
       if (_isAiPartner) _startReconcilePolling();

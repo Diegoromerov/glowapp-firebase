@@ -70,18 +70,11 @@ void main() {
         reason: 'la cuenta debe pedirse dentro del flujo, no antes');
   });
 
-  test('Aura se prueba sin cuenta dos preguntas y a la tercera pide login', () {
-    final chat = File('lib/screens/chat_screen.dart').readAsStringSync();
-    expect(chat.contains('AuraGuestQuota.requiereCuenta'), isTrue,
-        reason: 'el chat de Aura perdió el corte de dos preguntas');
-    expect(chat.contains('AuraGuestQuota.registrar'), isTrue,
-        reason: 'no se cuenta la pregunta enviada');
-    expect(chat.contains("accion: 'seguir conversando con Aura'"), isTrue,
-        reason: 'falta el mensaje de la puerta de Aura');
-    // Con un prestador, escribir exige sesión desde el primer mensaje.
-    expect(chat.contains("accion: 'enviar mensajes'"), isTrue,
-        reason: 'el chat con prestadores no puede quedar abierto');
-  });
+  // El chat NO lleva puerta en el cliente a proposito: POST /api/chat/messages y
+  // GET /api/chat/messages/:partnerId responden 401 sin token (verificado en
+  // produccion), asi que la API ya lo exige. Una cuota anonima en el cliente no
+  // habilita nada mientras el backend no acepte invitados, y ademas se evade
+  // borrando localStorage. Queda pendiente del lado del servidor.
 
   test('el SOS nunca pide cuenta (excepción explícita de producto)', () {
     final home = File('lib/screens/providers_screen.dart').readAsStringSync();
