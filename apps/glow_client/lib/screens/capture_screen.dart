@@ -833,6 +833,7 @@ class _CaptureScreenState extends State<CaptureScreen>
             shape: BoxShape.circle,
           ),
           child: IconButton(
+            tooltip: 'Cerrar',
             icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () => Navigator.pop(context),
           ),
@@ -1069,6 +1070,7 @@ class _CaptureScreenState extends State<CaptureScreen>
                           ],
                         ),
                         child: IconButton(
+                          tooltip: 'Cámara',
                           onPressed: isFaceStep ? _captureFace : _captureHands,
                           icon: const Icon(
                             Icons.camera_alt_rounded,

@@ -272,6 +272,7 @@ class _BiometricWelcomeScreenState extends State<BiometricWelcomeScreen> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: IconButton(
+                                      tooltip: 'Regresar',
                                       icon: const Icon(Icons.arrow_back_ios_new,
                                           color: Colors.white, size: 18),
                                       onPressed: () =>

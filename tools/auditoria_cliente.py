@@ -172,12 +172,36 @@ def check_estaticos():
     # Un IconButton sin `tooltip` ni un `Semantics` que lo envuelva es un botón
     # mudo para el lector de pantalla. Se mide cobertura, no cantidad: contar
     # etiquetas sueltas decía "hay 8" sin decir cuántos botones quedaban sin voz.
-    sem, tips, ib = texto.count("Semantics("), texto.count("tooltip:"), texto.count("IconButton(")
-    cobertura = min(1.0, (tips + sem) / ib) if ib else 0.0
+    # Cobertura real: se recorre cada IconButton y se mira si SU llamada tiene
+    # tooltip o si lo envuelve un Semantics con label. Contar etiquetas sueltas
+    # decía "hay 8" sin decir cuántos botones seguían mudos.
+    def _bloque(src, i):
+        d = 0
+        for j in range(i, min(len(src), i + 1200)):
+            if src[j] == "(":
+                d += 1
+            elif src[j] == ")":
+                d -= 1
+                if d == 0:
+                    return j + 1
+        return i
+
+    ib = mudos = 0
+    for _, src in arboles:
+        for mm in re.finditer(r"IconButton\(", src):
+            ib += 1
+            frag = src[mm.start():_bloque(src, mm.start())]
+            if "tooltip:" in frag:
+                continue
+            prev = src[max(0, mm.start() - 260):mm.start()]
+            if re.search(r"Semantics\([\s\S]*label:\s*['\"]", prev):
+                continue
+            mudos += 1
+    cobertura = 1 - (mudos / ib) if ib else 0.0
     add("B2", "accesibilidad: botones con nombre",
         VERDE if cobertura >= 0.9 else AMBAR if cobertura >= 0.5 else ROJO,
-        f"{tips} tooltips + {sem} Semantics para {ib} IconButton = {cobertura*100:.0f}% con nombre"
-        f" en {lineas} lineas", critico=True)
+        f"{ib - mudos} de {ib} IconButton con nombre ({cobertura*100:.0f}%), {mudos} mudos",
+        critico=True)
 
     # Contraste REAL de texto: los hex de la app son en su mayoría colores de
     # esmalte y trazos SVG (donde la razón de contraste no significa nada). Lo

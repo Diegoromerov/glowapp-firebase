@@ -11,6 +11,7 @@ class MyGlowDashboardScreen extends StatelessWidget {
         backgroundColor: const Color(0xFFFAF8F5),
         elevation: 0,
         leading: IconButton(
+          tooltip: 'Regresar',
           icon: const Icon(Icons.arrow_back_ios_new, color: Color(0xFF1F1A15), size: 20),
           onPressed: () => Navigator.pop(context),
         ),
