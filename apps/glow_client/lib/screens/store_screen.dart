@@ -1212,7 +1212,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                                 style: TextStyle(color: textColor),
                                                 decoration: InputDecoration(
                                                   hintText: 'Buscar productos...',
-                                                  hintStyle: TextStyle(fontSize: 14, color: isMen ? Colors.grey.shade400 : Color(0xFF6F5F4E)),
+                                                  hintStyle: TextStyle(fontSize: 14, color: isMen ? Color(0xFF6F5F4E) : Color(0xFF6F5F4E)),
                                                   border: InputBorder.none,
                                                   isDense: true,
                                                   contentPadding: const EdgeInsets.symmetric(vertical: 10),
