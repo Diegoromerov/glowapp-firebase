@@ -54,6 +54,7 @@ class FaqScreen extends StatelessWidget {
         backgroundColor: LuxeColors.nude50,
         elevation: 0,
         leading: IconButton(
+          tooltip: 'Regresar',
           icon: const Icon(Icons.arrow_back, color: LuxeColors.nude900),
           onPressed: () => Navigator.pop(context),
         ),

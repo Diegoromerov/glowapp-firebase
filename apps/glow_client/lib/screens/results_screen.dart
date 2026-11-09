@@ -375,6 +375,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
       child: Row(
         children: [
           IconButton(
+            tooltip: 'Regresar',
             icon: const Icon(Icons.arrow_back, color: _PassportColors.textAccent),
             onPressed: _goBackToIdeas,
           ),
@@ -388,6 +389,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
           ),
           const Spacer(),
           IconButton(
+            tooltip: 'Compartir',
             icon: const Icon(Icons.ios_share, size: 18, color: _PassportColors.textAccent),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(

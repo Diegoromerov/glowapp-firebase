@@ -321,6 +321,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                   icon: Icons.lock_outline,
                                   obscureText: _obscurePassword,
                                   suffixIcon: IconButton(
+                                    tooltip: 'Mostrar contraseña',
                                     icon: Icon(
                                       _obscurePassword
                                           ? Icons.visibility_outlined

@@ -52,6 +52,7 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
           backgroundColor: LuxeColors.nude50,
           elevation: 0,
           leading: IconButton(
+            tooltip: 'Regresar',
             icon: const Icon(Icons.arrow_back_ios_new, color: LuxeColors.nude900, size: 20),
             onPressed: () => Navigator.pop(context),
           ),
