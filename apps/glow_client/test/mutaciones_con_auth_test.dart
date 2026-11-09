@@ -15,7 +15,6 @@ const _puertas = <List<String>>[
   ['lib/screens/client_bookings_screen.dart', 'dejar una resena', 'showServiceReviewSheet('],
   ['lib/screens/client_bookings_screen.dart', 'pagar una cita', 'createBookingPaymentLink('],
   ['lib/screens/client_bookings_screen.dart', 'dar propina', 'ApiService.submitTip('],
-  ['lib/screens/chat_screen.dart', 'enviar mensajes', 'ApiService.sendChatMessage('],
   ['lib/screens/store_screen.dart', 'comprar en GlowShop', "ApiService.post('/api/store/checkout'"],
 ];
 
@@ -69,5 +68,32 @@ void main() {
     final indiceGateEnMetodo = welcome.indexOf("accion: 'usar Glow IA+'", indiceMetodo);
     expect(indiceGateEnMetodo, greaterThan(-1),
         reason: 'la cuenta debe pedirse dentro del flujo, no antes');
+  });
+
+  test('Aura se prueba sin cuenta dos preguntas y a la tercera pide login', () {
+    final chat = File('lib/screens/chat_screen.dart').readAsStringSync();
+    expect(chat.contains('AuraGuestQuota.requiereCuenta'), isTrue,
+        reason: 'el chat de Aura perdió el corte de dos preguntas');
+    expect(chat.contains('AuraGuestQuota.registrar'), isTrue,
+        reason: 'no se cuenta la pregunta enviada');
+    expect(chat.contains("accion: 'seguir conversando con Aura'"), isTrue,
+        reason: 'falta el mensaje de la puerta de Aura');
+    // Con un prestador, escribir exige sesión desde el primer mensaje.
+    expect(chat.contains("accion: 'enviar mensajes'"), isTrue,
+        reason: 'el chat con prestadores no puede quedar abierto');
+  });
+
+  test('el SOS nunca pide cuenta (excepción explícita de producto)', () {
+    final home = File('lib/screens/providers_screen.dart').readAsStringSync();
+    final inicio = home.indexOf('Future<void> _triggerSOSAlert() async {');
+    expect(inicio, greaterThan(-1));
+
+    // El bloque de la alerta termina antes de la hoja de confirmación posterior.
+    final fin = home.indexOf('_showSOSTriggeredSheet(', inicio);
+    expect(fin, greaterThan(inicio));
+
+    final bloque = home.substring(inicio, fin);
+    expect(bloque.contains('AuthGate.requerir'), isFalse,
+        reason: 'el SOS no debe pedir sesión: es una vía de emergencia');
   });
 }

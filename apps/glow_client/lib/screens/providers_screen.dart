@@ -930,6 +930,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   }
 
   Future<void> _triggerSOSAlert() async {
+    // Decision de producto: el SOS NO pide cuenta ni sesion, nunca. Crear la
+    // alerta escribe en la base, pero la regla general admite esta excepcion
+    // explicita: en una emergencia cada paso extra cuesta tiempo. No agregar
+    // AuthGate aqui.
     setState(() {
       _isLoading = true;
     });
