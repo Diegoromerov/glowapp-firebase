@@ -1,0 +1,199 @@
+{
+ "fecha": "2026-11-09",
+ "resultados": [
+  {
+   "id": "A1",
+   "nombre": "flutter analyze",
+   "estado": "PASA",
+   "evidencia": "0 errores, 24 warnings, 359 infos",
+   "critico": true
+  },
+  {
+   "id": "A2",
+   "nombre": "flutter test",
+   "estado": "PASA",
+   "evidencia": "60 pruebas verdes",
+   "critico": true
+  },
+  {
+   "id": "A3",
+   "nombre": "contrato app<->API",
+   "estado": "PASA",
+   "evidencia": "OK: todas las rutas usadas por las apps existen (330 publicadas)",
+   "critico": true
+  },
+  {
+   "id": "B1",
+   "nombre": "errores crudos en UI",
+   "estado": "FALLA",
+   "evidencia": "3 directos: apps/glow_client/lib/screens/otp_confirm_screen.dart:100, apps/glow_client/lib/screens/store_screen.dart:92, apps/glow_client/lib/screens/store_screen.dart:757 | 3 por variable: apps/glow_client/lib/screens/chat_list_screen.dart, apps/glow_client/lib/screens/chat_screen.dart, apps/glow_client/lib/screens/client_bookings_screen.dart",
+   "critico": true
+  },
+  {
+   "id": "B2",
+   "nombre": "accesibilidad: etiquetas",
+   "estado": "FALLA",
+   "evidencia": "8 Semantics, 19 tooltips, 46 IconButton en 29118 lineas",
+   "critico": true
+  },
+  {
+   "id": "B3",
+   "nombre": "contraste de texto",
+   "estado": "FALLA",
+   "evidencia": "#D4AF37 2.10:1 x12, #E05A47 3.67:1 x3, #C88A68 2.88:1 x2, #F3E5AB 1.26:1 x1, #E58C73 2.52:1 x1",
+   "critico": true
+  },
+  {
+   "id": "B4",
+   "nombre": "tema del sistema / reduce-motion",
+   "estado": "PARCIAL",
+   "evidencia": "themeMode fijo en light: darkTheme es codigo muerto",
+   "critico": false
+  },
+  {
+   "id": "B5",
+   "nombre": "debugPrint (no visible en release)",
+   "estado": "PARCIAL",
+   "evidencia": "34 llamadas",
+   "critico": false
+  },
+  {
+   "id": "B6",
+   "nombre": "permisos declarados (release)",
+   "estado": "PASA",
+   "evidencia": "INTERNET, CAMERA, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION, POST_NOTIFICATIONS, USE_BIOMETRIC",
+   "critico": false
+  },
+  {
+   "id": "B7",
+   "nombre": "deep links",
+   "estado": "PARCIAL",
+   "evidencia": "servicio + host montados; falta prueba cold/warm en dispositivo",
+   "critico": false
+  },
+  {
+   "id": "B8",
+   "nombre": "i18n",
+   "estado": "N/V",
+   "evidencia": "sin l10n.yaml: es-CO hardcodeado, 'en' declarado e inalcanzable",
+   "critico": false
+  },
+  {
+   "id": "C1",
+   "nombre": "metadatos de marca",
+   "estado": "PARCIAL",
+   "evidencia": "title='glow_client' desc='A new Flutter project.'",
+   "critico": false
+  },
+  {
+   "id": "C2",
+   "nombre": "secretos en el bundle",
+   "estado": "PASA",
+   "evidencia": "5.18 MB, 0 claves Google",
+   "critico": true
+  },
+  {
+   "id": "C3",
+   "nombre": "Firebase inicializable en el build",
+   "estado": "FALLA",
+   "evidencia": "sin apiKey el try/catch de main.dart:89 apaga Firebase: push y Firestore muertos",
+   "critico": true
+  },
+  {
+   "id": "C4",
+   "nombre": "bundle desplegado == build local",
+   "estado": "PASA",
+   "evidencia": "identicos",
+   "critico": false
+  },
+  {
+   "id": "C5",
+   "nombre": "peso del bundle",
+   "estado": "PARCIAL",
+   "evidencia": "main.dart.js 5.18 MB (+ canvaskit desde gstatic)",
+   "critico": false
+  },
+  {
+   "id": "C6",
+   "nombre": "cabeceras del sitio",
+   "estado": "PASA",
+   "evidencia": "HSTS si, COOP si, CSP no (P-091)",
+   "critico": false
+  },
+  {
+   "id": "D1",
+   "nombre": "politica de privacidad",
+   "estado": "PASA",
+   "evidencia": "HTTP 200, 5052 B",
+   "critico": false
+  },
+  {
+   "id": "D2",
+   "nombre": "pagina de borrado de cuenta",
+   "estado": "PASA",
+   "evidencia": "HTTP 200, 3021 B",
+   "critico": false
+  },
+  {
+   "id": "D3",
+   "nombre": "terminos publicados",
+   "estado": "FALLA",
+   "evidencia": "HTTP 200, 1556 B (shell del SPA, no la pagina)",
+   "critico": false
+  },
+  {
+   "id": "E1",
+   "nombre": "/api/health sin X-App-Audience",
+   "estado": "PASA",
+   "evidencia": "HTTP 200 commit 78fb1070",
+   "critico": true
+  },
+  {
+   "id": "E2",
+   "nombre": "catalogo /api/providers",
+   "estado": "PASA",
+   "evidencia": "HTTP 200, count=3",
+   "critico": false
+  },
+  {
+   "id": "E3",
+   "nombre": "catalogo /api/products",
+   "estado": "FALLA",
+   "evidencia": "HTTP 200, count=0: GlowShop queda vacio en la app",
+   "critico": true
+  },
+  {
+   "id": "E4",
+   "nombre": "analitica/crash anonimos",
+   "estado": "FALLA",
+   "evidencia": "POST sin token -> HTTP 401: el embudo anonimo y los crashes sin sesion se pierden",
+   "critico": true
+  },
+  {
+   "id": "E5",
+   "nombre": "feature flags",
+   "estado": "PASA",
+   "evidencia": "GET /api/config/flags -> 200",
+   "critico": false
+  },
+  {
+   "id": "F1",
+   "nombre": "CI de apps",
+   "estado": "FALLA",
+   "evidencia": "ultima: failure en codex/remove-home-aura-button @ 2026-11-08T13:14:46Z (workflow manual: no corre en push)",
+   "critico": false
+  }
+ ],
+ "resumen": {
+  "conteo": {
+   "PASA": 24,
+   "PARCIAL": 34,
+   "N/A": 2,
+   "FALLA": 9,
+   "N/V": 17
+  },
+  "total": 86,
+  "pct_sin_na": 48.8,
+  "pct_medible": 61.2
+ }
+}
