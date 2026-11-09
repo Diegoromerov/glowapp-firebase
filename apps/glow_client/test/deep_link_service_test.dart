@@ -60,12 +60,14 @@ void main() {
       expect(d.aviso, contains('prestadores'));
     });
 
-    test('enlace desconocido vuelve al inicio con aviso', () {
-      final d = DeepLinkService.mapear(
-        Uri.parse('https://glowapp-client.web.app/algo-raro'),
+    test('enlace desconocido se ignora (antes sacaba al usuario de la app)', () {
+      // Cambió a propósito: devolver `/home` con aviso hacía que, sin sesión,
+      // el host terminara en pushNamedAndRemoveUntil('/auth/login'). Un enlace
+      // roto no debe expulsar a nadie.
+      expect(
+        DeepLinkService.mapear(Uri.parse('https://glowapp-client.web.app/algo-raro')),
+        isNull,
       );
-      expect(d!.ruta, '/home');
-      expect(d.aviso, isNotNull);
     });
 
     test('otra app no se toca', () {
@@ -74,6 +76,42 @@ void main() {
             Uri.parse('https://example.com/provider-detail/1')),
         isNull,
       );
+    });
+  });
+
+  group('la URL de la propia app no es un enlace entrante', () {
+    // Bug real: al abrir la web sin sesión, Flutter ponía #/home, el host lo
+    // leía como enlace, no había sesión y hacía pushNamedAndRemoveUntil al
+    // login. La home nunca se veía.
+    for (final ruta in <String>[
+      '/#/home',
+      '/#/auth/login',
+      '/#/auth/register',
+      '/#/chat',
+      '/#/store',
+      '/#/my-bookings',
+      '/#/profile',
+      '/#/ideas/welcome',
+    ]) {
+      test('ignora $ruta', () {
+        expect(DeepLinkService.mapear(Uri.parse('https://glowapp-client.web.app$ruta')),
+            isNull);
+      });
+    }
+
+    test('un enlace desconocido se ignora en vez de sacar al usuario de la app', () {
+      expect(
+        DeepLinkService.mapear(
+            Uri.parse('https://glowapp-client.web.app/#/no-existe')),
+        isNull,
+      );
+    });
+
+    test('los enlaces de correo siguen funcionando', () {
+      final d = DeepLinkService.mapear(
+        Uri.parse('https://glowapp-client.web.app/#/booking-tracking/abc-123'),
+      );
+      expect(d!.ruta, '/booking-tracking');
     });
   });
 }

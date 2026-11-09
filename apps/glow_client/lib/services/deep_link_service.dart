@@ -31,6 +31,17 @@ class DeepLinkService {
   /// Esquema propio: `glowapp://booking-tracking/<id>`.
   static const esquema = 'glowapp';
 
+  /// Rutas internas del router. La URL de la propia app (`/#/home`, `/#/chat`,
+  /// `/#/auth/login`...) NO es un enlace entrante. Antes se procesaba como uno:
+  /// al abrir la app, el host veía `#/home` recién puesto por Flutter, no había
+  /// sesión y hacía `pushNamedAndRemoveUntil('/auth/login')` — por eso la home
+  /// nunca se veía: la app se auto-expulsaba al login en cada carga.
+  static const Set<String> _rutasInternas = {
+    'home', 'chat', 'store', 'my-bookings', 'profile', 'support', 'settings',
+    'disputes', 'terms', 'privacy', 'rewards', 'my-glow', 'glowstore-orders',
+    'biometric-history', 'habeas-data', 'faq', 'delete-account', 'ideas',
+  };
+
   /// Devuelve el destino, o `null` si el enlace no es de esta app (se ignora).
   static DestinoEnlace? mapear(Uri uri) {
     final propio = uri.scheme == esquema ||
@@ -51,6 +62,9 @@ class DeepLinkService {
       partes = [uri.host, ...partes];
     }
     if (partes.isEmpty) return null;
+
+    // La ruta propia de la app no es un enlace entrante.
+    if (_rutasInternas.contains(partes.first)) return null;
 
     final query = uri.queryParameters;
     final idEnQuery =
@@ -97,10 +111,10 @@ class DeepLinkService {
         return null;
 
       default:
-        return const DestinoEnlace(
-          '/home',
-          aviso: 'No reconocimos ese enlace. Te llevamos al inicio.',
-        );
+        // Un enlace que no reconocemos se ignora. Antes devolvía `/home` con
+        // aviso, y sin sesión eso terminaba en `pushNamedAndRemoveUntil` al
+        // login: un enlace roto sacaba al usuario de la app.
+        return null;
     }
   }
 
