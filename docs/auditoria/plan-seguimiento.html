@@ -45,7 +45,7 @@
 
   <div class="head">
     <h1>Plan de corrección — app cliente</h1>
-    <div class="sub">6 fases · 10 tareas activas · ≈22 h · corte 2026-11-09 15:50</div>
+    <div class="sub">6 fases · 10 tareas activas · ≈22 h · corte 2026-11-09 15:48</div>
   </div>
 
   <div class="kpis">
@@ -68,7 +68,7 @@
 
   <div class="legend">
     <span><i class="dot" style="background:var(--ok)"></i>hecho</span>
-    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.2)</span>
+    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.3)</span>
     <span><i class="dot" style="background:color-mix(in srgb, var(--accent, #2f6f8f) 55%, transparent)"></i>pendiente</span>
     <span><i class="dot" style="background:var(--warn)"></i>bloqueado por tercero</span>
     <span><i class="dot" style="background:transparent;border:1px dashed var(--muted-foreground, #6b6b6b)"></i>diferido con disparador</span>
@@ -113,7 +113,7 @@
     <div class="track"><div class="seg done" style="left:18%;width:1.8%"></div></div>
   </div>
   <div class="row">
-    <div class="name">C-08 cargar API key y VAPID <small>bloqueado: Director</small></div>
+    <div class="name">C-08 VAPID (push web) <small>· falta la clave: Director</small></div>
     <div class="track"><div class="seg blk" style="left:19.8%;width:3.6%"></div></div>
   </div>
   <div class="row">
@@ -121,7 +121,7 @@
     <div class="track"><div class="seg done" style="left:23.4%;width:3.6%"></div></div>
   </div>
 
-  <div class="phase">F3 · Accesibilidad y marca <span class="tag">F9.3 · 8 h</span></div>
+  <div class="phase">F3 · Accesibilidad y marca <span class="tag">siguiente · F9.3 · 8 h</span></div>
   <div class="row">
     <div class="name">C-10 Semantics + tooltips <small>· 4 h</small></div>
     <div class="track"><div class="seg pend" style="left:27%;width:14.4%">10</div></div>
@@ -182,6 +182,11 @@
 
   <div class="foot">
     Diferidos: C-05 catálogo mock (D-GL-029) · C-15 pago real (sin llaves de producción) · C-06 ya resuelto (rol <code>app_rls_user</code> verificado).<br>
+      <div style="margin-top:14px;border-top:1px solid var(--border, #dcdcdc);padding-top:10px">
+      <b>Bloqueado por el Director</b> — no se arregla con código:<br>
+      · <code>FCM_VAPID_KEY</code>: sin ella el push web no obtiene token<br>
+      · <code>GOOGLE_SERVICES_JSON</code>: sin él no hay APK Android
+    </div>
     Autorización vigente: <b>F9.2</b> (mergeada y desplegada). Siguiente puerta: <b>GLOWAPP-F9.3</b> — accesibilidad, contraste, tema y marca.
   </div>
 </div>
