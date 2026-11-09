@@ -32,7 +32,7 @@ class ChronosAgent {
     }
 
     const query = `
-      SELECT b.id as booking_id, b.scheduled_at as booking_date, b.estado as status, s.name as service_name, s.tag_especialidad as category
+      SELECT b.id as booking_id, b.scheduled_at as booking_date, b.estado as status, s.name as service_name, s.category as category
       FROM bookings b
       JOIN services s ON b.service_id = s.id
       WHERE b.client_id = $1 AND b.estado = $2
