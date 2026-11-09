@@ -7,6 +7,8 @@
 //
 // La comprobación de sesión se inyecta para no depender del almacén cifrado,
 // que en el entorno de test no responde (el plugin no está registrado).
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:glow_client/widgets/auth_gate.dart';
@@ -51,9 +53,9 @@ void main() {
     await tester.tap(find.text('Acción'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Creá tu cuenta para reservar una cita'), findsOneWidget);
-    expect(find.text('Crear cuenta'), findsOneWidget);
-    expect(find.text('Ya tengo cuenta'), findsOneWidget);
+    expect(find.text('Necesitás una cuenta para reservar una cita'), findsOneWidget);
+    expect(find.text('Continuar'), findsOneWidget);
+    expect(find.text('Crear cuenta con correo'), findsOneWidget);
     expect(find.text('Seguir explorando'), findsOneWidget);
     expect(resultados, isEmpty,
         reason: 'la acción no debe resolverse mientras la hoja está abierta');
@@ -69,7 +71,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(resultados, [false]);
-    expect(find.text('Creá tu cuenta para reservar una cita'), findsNothing);
+    expect(find.text('Necesitás una cuenta para reservar una cita'), findsNothing);
   });
 
   testWidgets('con sesión la acción continúa sin mostrar la hoja', (tester) async {
@@ -80,7 +82,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(resultados, [true]);
-    expect(find.text('Crear cuenta'), findsNothing);
+    expect(find.text('Continuar'), findsNothing);
   });
 
   testWidgets('el detalle opcional reemplaza el texto por defecto', (tester) async {
@@ -97,5 +99,55 @@ void main() {
 
     expect(find.text('Tu carrito queda guardado mientras te identificás.'),
         findsOneWidget);
+  });
+
+  /// Regresión: un usuario nuevo que quiere entrar con Google no debe tener que
+  /// elegir "Ya tengo cuenta". El primario abre la pantalla donde vive GIS.
+  testWidgets('«Continuar» abre /auth/login y «Crear cuenta con correo» abre /auth/register',
+      (tester) async {
+    Future<void> abrir(bool primario) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          initialRoute: '/',
+          routes: {
+            '/': (_) => Scaffold(
+                  body: Builder(
+                    builder: (context) => ElevatedButton(
+                      onPressed: () => AuthGate.requerir(
+                        context,
+                        accion: 'reservar una cita',
+                        comprobarSesion: () async => false,
+                      ),
+                      child: const Text('Abrir'),
+                    ),
+                  ),
+                ),
+            '/auth/login': (_) => const Scaffold(body: Text('PANTALLA_LOGIN')),
+            '/auth/register': (_) => const Scaffold(body: Text('PANTALLA_REGISTRO')),
+          },
+        ),
+      );
+      await tester.tap(find.text('Abrir'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(primario ? 'Continuar' : 'Crear cuenta con correo'));
+      await tester.pumpAndSettle();
+    }
+
+    await abrir(true);
+    expect(find.text('PANTALLA_LOGIN'), findsOneWidget,
+        reason: 'el CTA primario debe llevar a la pantalla con Google');
+
+    await tester.pumpWidget(const SizedBox());
+    await abrir(false);
+    expect(find.text('PANTALLA_REGISTRO'), findsOneWidget,
+        reason: 'el camino de correo debe llevar al formulario de registro');
+  });
+
+  /// Facebook y Apple solo mostraban "disponible próximamente"; Apple ni tiene
+  /// endpoint. El botón muerto en la pantalla de acceso cuesta más que su falta.
+  test('el acceso no ofrece proveedores que no funcionan', () {
+    final src = File('lib/screens/auth/login_screen.dart').readAsStringSync();
+    expect(src.contains("_avisarProximamente('Facebook')"), isFalse);
+    expect(src.contains("_avisarProximamente('Apple')"), isFalse);
   });
 }

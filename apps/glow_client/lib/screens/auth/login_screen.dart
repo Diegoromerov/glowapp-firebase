@@ -391,16 +391,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _avisarProximamente(String proveedor) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$proveedor: disponible próximamente'),
-        backgroundColor: const Color(0xFF1F1A15),
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final t = Token.of(context);
@@ -464,7 +454,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               const Text(
-                                'INICIAR SESIÓN',
+                                'ENTRÁ O CREÁ TU CUENTA',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: 'Didot',
@@ -644,10 +634,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               const SizedBox(height: 20),
 
-                              // Social Buttons (Google, Facebook, Apple)
+                              // Acceso social: solo Google.
+                              // Facebook y Apple se retiraron: mostraban "disponible
+                              // próximamente" (botón muerto) y Apple no tiene endpoint
+                              // en el backend. Vuelven cuando funcionen de verdad.
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   // Google: el diseño propio (círculo dorado) con el
                                   // flujo real de GIS superpuesto e invisible.
@@ -678,23 +670,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                     ],
                                   ),
-                                  _buildSocialButton(
-                                    icon: const Icon(Icons.facebook,
-                                        color: Color(0xFF1877F2), size: 26),
-                                    onTap: () =>
-                                        _avisarProximamente('Facebook'),
-                                    label: 'Facebook',
-                                    t: t,
-                                    proximamente: true,
-                                  ),
-                                  _buildSocialButton(
-                                    icon: const Icon(Icons.apple,
-                                        color: Color(0xFF1F1A15), size: 24),
-                                    onTap: () => _avisarProximamente('Apple'),
-                                    label: 'Apple',
-                                    t: t,
-                                    proximamente: true,
-                                  ),
                                 ],
                               ),
                             ],
@@ -712,14 +687,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: RichText(
                           text: TextSpan(
-                            text: '¿No tienes cuenta? ',
+                            text: '¿Preferís tu correo? ',
                             style: TextStyle(
                                 color: t.n500,
                                 fontSize: 14,
                                 fontFamily: 'CormorantGaramond'),
                             children: [
                               TextSpan(
-                                text: 'Regístrate aquí',
+                                text: 'Crear cuenta',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
