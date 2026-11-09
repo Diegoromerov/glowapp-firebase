@@ -38,6 +38,20 @@
   .gate:last-child { border-bottom:0; }
   .gate b { font-weight:600; }
   .foot { margin-top:12px; font-size:11px; color:var(--muted-foreground, #6b6b6b); }
+
+  /* Impresión / PDF: mismo dibujo que en pantalla, en A4 vertical. */
+  @media print {
+    @page { size: A4 portrait; margin: 10mm; }
+    .wrap { width: 190mm; }
+    .head { margin-bottom: 8mm; }
+    .kpis { gap: 4mm; }
+    .row { grid-template-columns: 55mm 1fr; height: 6.5mm; }
+    .axis { margin-left: 55mm; }
+    .seg, .kpi .bar > i, .dot { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .kpi, .phase, .gate, .row { break-inside: avoid; }
+    .gates { break-inside: avoid; }
+    .foot { break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
