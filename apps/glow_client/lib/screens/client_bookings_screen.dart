@@ -748,7 +748,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                           Text(
                             _formatDateTime(scheduledAt),
                             style: TextStyle(
-                                color: Colors.grey[600], fontSize: 13),
+                                color: Color(0xFF6F5F4E), fontSize: 13),
                           ),
                         ],
                       ),
@@ -809,7 +809,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       const SizedBox(height: 4),
                       Text(
                         'Duración: ${booking['service_duration']} min',
-                        style: TextStyle(color: Colors.grey[500], fontSize: 13),
+                        style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 13),
                       ),
                     ],
                   ),
@@ -836,7 +836,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 ),
                 child: Text(
                   'Dirección del servicio: ${booking['service_address']}',
-                  style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                  style: TextStyle(fontSize: 13, color: Color(0xFF6F5F4E)),
                 ),
               ),
             ],
@@ -1021,7 +1021,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                       Text(
                         '"${reviewData['comment']}"',
                         style: TextStyle(
-                            fontSize: 13, color: Colors.grey[800], height: 1.3),
+                            fontSize: 13, color: Color(0xFF6F5F4E), height: 1.3),
                       ),
                     ],
                   ],

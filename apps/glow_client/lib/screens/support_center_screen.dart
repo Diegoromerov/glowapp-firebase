@@ -256,7 +256,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
                                     desc,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                                    style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 12),
                                   ),
                                   const SizedBox(height: 12),
                                   const Divider(height: 1, color: Color(0xFFF3EAE8)),

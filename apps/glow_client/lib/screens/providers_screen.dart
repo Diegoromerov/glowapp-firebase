@@ -1041,7 +1041,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   message,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.grey[600], fontSize: 14, height: 1.4),
+                      color: Color(0xFF6F5F4E), fontSize: 14, height: 1.4),
                 ),
                 SizedBox(height: 16),
                 ElevatedButton.icon(
@@ -1274,7 +1274,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                   Text(
                     provider.description,
                     style: TextStyle(
-                        color: Colors.grey[800], fontSize: 14, height: 1.4),
+                        color: Color(0xFF6F5F4E), fontSize: 14, height: 1.4),
                   ),
                   const SizedBox(height: 16),
                   Row(

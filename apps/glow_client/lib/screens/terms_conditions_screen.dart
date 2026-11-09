@@ -41,7 +41,7 @@ class TermsConditionsScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Última actualización: Julio 2026',
-              style: TextStyle(color: Colors.grey[600], fontSize: 12),
+              style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 12),
             ),
             const SizedBox(height: 16),
             const Divider(),

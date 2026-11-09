@@ -43,7 +43,7 @@ class DermoFamiliesWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(family['name'] as String? ?? 'Familia', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-                        Text(family['description'] as String? ?? '', style: TextStyle(fontSize: 13, color: Colors.grey[600])),
+                        Text(family['description'] as String? ?? '', style: TextStyle(fontSize: 13, color: Color(0xFF6F5F4E))),
                       ],
                     ),
                   ),

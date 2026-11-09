@@ -1545,7 +1545,7 @@ class _BookingScreenState extends State<BookingScreen> {
         const SizedBox(height: 4),
         Text(
           'Revisa los detalles logísticos y de pago para continuar',
-          style: TextStyle(color: Colors.grey[600], fontSize: 12),
+          style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 12),
         ),
         const SizedBox(height: 16),
         Card(
@@ -1797,7 +1797,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         Text(
                           description,
                           style:
-                              TextStyle(color: Colors.grey[600], fontSize: 11),
+                              TextStyle(color: Color(0xFF6F5F4E), fontSize: 11),
                         ),
                       ],
                     ],

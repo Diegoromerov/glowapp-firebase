@@ -44,7 +44,7 @@ class GlowScoreGaugeWidget extends StatelessWidget {
                   child: Text('Comparar', style: TextStyle(fontSize: 12, color: AppTheme.primary)),
                 )
               else
-                Text('Glow Score', style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+                Text('Glow Score', style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E))),
             ],
           ),
         ],

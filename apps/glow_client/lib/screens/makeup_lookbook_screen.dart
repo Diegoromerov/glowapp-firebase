@@ -174,7 +174,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                       ),
                       Text(
                         'Estilo ${look.category} • GlowApp Match',
-                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                        style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
                       ),
                     ],
                   ),
@@ -212,7 +212,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
             Center(
               child: Text(
                 '🔒 Pago protegido con depósito en garantía Wompi',
-                style: TextStyle(fontSize: 11, color: Colors.grey[500]),
+                style: TextStyle(fontSize: 11, color: Color(0xFF6F5F4E)),
               ),
             ),
             const SizedBox(height: 8),
@@ -493,7 +493,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                       const SizedBox(height: 4),
                       Text(
                         look.subtitle,
-                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                        style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
                       ),
                     ],
                   ),
@@ -555,7 +555,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
                             ),
                             Text(
                               swatch.hex,
-                              style: TextStyle(fontSize: 8, color: Colors.grey[600]),
+                              style: TextStyle(fontSize: 8, color: Color(0xFF6F5F4E)),
                             ),
                           ],
                         ),

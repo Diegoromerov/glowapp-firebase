@@ -154,7 +154,7 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
                     const SizedBox(height: 6),
                     Text(
                       'Al abrir una disputa, el desembolso financiero al prestador se congela temporalmente. Un administrador mediará el caso.',
-                      style: TextStyle(fontSize: 12, color: Colors.grey[600], height: 1.3),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E), height: 1.3),
                     ),
                     const SizedBox(height: 24),
 
@@ -299,7 +299,7 @@ class _OpenDisputeScreenState extends State<OpenDisputeScreen> {
                           children: [
                             Icon(Icons.image_outlined, color: Colors.grey[400], size: 18),
                             const SizedBox(width: 8),
-                            Text('Sin imágenes adjuntas', style: TextStyle(color: Colors.grey[400], fontSize: 11)),
+                            Text('Sin imágenes adjuntas', style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 11)),
                           ],
                         ),
                       ),

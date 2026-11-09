@@ -142,7 +142,7 @@ class _ProductScannerScreenState extends State<ProductScannerScreen> {
                             ),
                             Text(
                               product.brand,
-                              style: TextStyle(color: Colors.grey[600]),
+                              style: TextStyle(color: Color(0xFF6F5F4E)),
                             ),
                           ],
                         ),

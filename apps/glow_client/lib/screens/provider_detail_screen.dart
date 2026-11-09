@@ -2385,7 +2385,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                         hintText:
                             'Ej: ¿Tienen parqueadero cerca? ¿Usan tinte sin amoníaco?',
                         hintStyle:
-                            TextStyle(fontSize: 12, color: Colors.grey[500]),
+                            TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding: const EdgeInsets.all(12),

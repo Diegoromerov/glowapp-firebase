@@ -179,7 +179,7 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         Text(
                           'Describe detalladamente tu caso. Nuestro equipo responderá en la brevedad posible.',
                           style:
-                              TextStyle(fontSize: 12, color: Colors.grey[600]),
+                              TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
                         ),
                         const SizedBox(height: 24),
 
@@ -392,7 +392,7 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                                 const SizedBox(width: 8),
                                 Text('Sin imágenes adjuntas',
                                     style: TextStyle(
-                                        color: Colors.grey[400], fontSize: 11)),
+                                        color: Color(0xFF6F5F4E), fontSize: 11)),
                               ],
                             ),
                           ),

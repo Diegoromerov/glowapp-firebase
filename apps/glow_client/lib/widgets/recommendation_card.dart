@@ -19,7 +19,7 @@ class RecommendationCard extends StatelessWidget {
           children: [
             Text('Recomendación', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            Text(recommendation, style: TextStyle(fontSize: 14, color: Colors.grey[600])),
+            Text(recommendation, style: TextStyle(fontSize: 14, color: Color(0xFF6F5F4E))),
           ],
         ),
       ),

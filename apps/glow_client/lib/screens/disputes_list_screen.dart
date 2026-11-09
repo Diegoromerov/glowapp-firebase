@@ -202,7 +202,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                 const SizedBox(height: 8),
                                 Text(
                                   desc,
-                                  style: TextStyle(color: Colors.grey[700], fontSize: 12.5),
+                                  style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 12.5),
                                 ),
                                 const SizedBox(height: 12),
                                 const Divider(height: 1, color: Color(0xFFF3EAE8)),

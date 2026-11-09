@@ -39,13 +39,13 @@ class ColorPaletteWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Color Base', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                    Text(hexColor.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.grey[600], fontFamily: 'monospace')),
+                    Text(hexColor.toUpperCase(), style: TextStyle(fontSize: 14, color: Color(0xFF6F5F4E), fontFamily: 'monospace')),
                   ],
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            Text('Tonos complementarios sugeridos:', style: TextStyle(fontSize: 13, color: Colors.grey[600])),
+            Text('Tonos complementarios sugeridos:', style: TextStyle(fontSize: 13, color: Color(0xFF6F5F4E))),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
@@ -77,7 +77,7 @@ class ColorPaletteWidget extends StatelessWidget {
         ),
         const SizedBox(height: 2),
         Text('#${color.value.toRadixString(16).substring(2).toUpperCase()}', 
-             style: TextStyle(fontSize: 10, color: Colors.grey[600])),
+             style: TextStyle(fontSize: 10, color: Color(0xFF6F5F4E))),
       ],
     );
   }
