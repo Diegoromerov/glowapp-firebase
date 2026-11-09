@@ -54,7 +54,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Necesitás una cuenta para reservar una cita'), findsOneWidget);
-    expect(find.text('Continuar'), findsOneWidget);
+    expect(find.text('Continuar con Google'), findsOneWidget);
     expect(find.text('Crear cuenta con correo'), findsOneWidget);
     expect(find.text('Seguir explorando'), findsOneWidget);
     expect(resultados, isEmpty,
@@ -82,7 +82,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(resultados, [true]);
-    expect(find.text('Continuar'), findsNothing);
+    expect(find.text('Continuar con Google'), findsNothing);
   });
 
   testWidgets('el detalle opcional reemplaza el texto por defecto', (tester) async {
@@ -129,7 +129,7 @@ void main() {
       );
       await tester.tap(find.text('Abrir'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text(primario ? 'Continuar' : 'Crear cuenta con correo'));
+      await tester.tap(find.text(primario ? 'Continuar con Google' : 'Crear cuenta con correo'));
       await tester.pumpAndSettle();
     }
 

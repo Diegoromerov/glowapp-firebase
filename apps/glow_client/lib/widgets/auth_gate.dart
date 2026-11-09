@@ -158,7 +158,7 @@ class _HojaAccionProtegida extends StatelessWidget {
                 minimumSize: const Size.fromHeight(50),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: const Text('Continuar'),
+              child: const Text('Continuar con Google'),
             ),
             const SizedBox(height: 10),
             OutlinedButton(
