@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../widgets/auth_gate.dart';
 
 class StoreScreen extends StatefulWidget {
   final String? bookingId;
@@ -226,8 +227,13 @@ class _StoreScreenState extends State<StoreScreen> {
     );
   }
 
-  void _showCheckoutDialog() {
+  Future<void> _showCheckoutDialog() async {
     if (_cart.isEmpty) return;
+
+    // Llenar el carrito es libre; pagar exige cuenta. La puerta va acá y no al
+    // entrar a la tienda para no cortar la exploración del catálogo.
+    if (!await AuthGate.requerir(context, accion: 'comprar en GlowShop')) return;
+    if (!mounted) return;
 
     final double subtotal = _getCartSubtotal();
     final double iva = subtotal * 0.19;

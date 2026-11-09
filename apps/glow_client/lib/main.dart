@@ -166,7 +166,10 @@ class GlowClientApp extends ConsumerWidget {
       theme: isMen ? _buildMensTheme() : AppTheme.light(),
       darkTheme: isMen ? _buildMensDarkTheme() : AppTheme.dark(),
       themeMode: ThemeMode.light,
-      initialRoute: '/auth/login',
+      // La app abre en modo exploración: el catálogo, el mapa y el detalle de
+      // cada prestador se ven sin cuenta. La identificación se pide en la
+      // acción concreta (reservar, comprar, Glow IA+) vía AuthGate, no al entrar.
+      initialRoute: '/home',
       routes: <String, WidgetBuilder>{
         // Auth
         '/auth/login': (_) => const LoginScreen(),

@@ -7,7 +7,11 @@ void main() {
   testWidgets('/booking-tracking pinta la pantalla real, no el stub',
       (tester) async {
     await tester.pumpWidget(const ProviderScope(child: GlowClientApp()));
-    await tester.pumpAndSettle();
+    // La home tiene animaciones continuas (pulso del mapa) y la pantalla de
+    // seguimiento usa AnimationController.repeat(): pumpAndSettle nunca puede
+    // asentarse. Se avanza el reloj en pasos fijos, que es lo que este test
+    // necesita para comprobar el router.
+    await tester.pump(const Duration(milliseconds: 800));
 
     final nav = tester.state<NavigatorState>(find.byType(Navigator).first);
     nav.pushNamed('/booking-tracking', arguments: {
@@ -16,6 +20,7 @@ void main() {
       'service_address': 'Calle 100 #15-20, Bogota',
     });
     await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
 
     // Hoy el router devuelve _StubScreen('Tracking reserva: b-1').
     expect(find.textContaining('Tracking reserva'), findsNothing);

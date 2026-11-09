@@ -6,6 +6,7 @@ import 'package:glow_core/glow_core.dart';
 import 'package:share_plus/share_plus.dart';
 import 'chat_screen.dart';
 import '../services/deep_link_service.dart';
+import '../widgets/auth_gate.dart';
 
 class ProviderDetailScreen extends StatefulWidget {
   final String providerId;
@@ -29,6 +30,18 @@ class ProviderDetailScreen extends StatefulWidget {
 
 class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
   static final Map<String, Map<String, dynamic>> _providerDetailsCache = {};
+
+  /// Reservar es una de las acciones que exigen cuenta (junto con comprar en
+  /// GlowShop y Glow IA+). La identificación se pide en este punto exacto, no al
+  /// abrir la app: ver el detalle y los servicios sigue siendo libre.
+  Future<void> _irAReservar(
+    BuildContext context,
+    Map<String, dynamic> argumentos,
+  ) async {
+    if (!await AuthGate.requerir(context, accion: 'reservar una cita')) return;
+    if (!context.mounted) return;
+    Navigator.pushNamed(context, '/booking', arguments: argumentos);
+  }
 
   Map<String, dynamic>? details;
   bool isLoading = true;
@@ -1337,18 +1350,14 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                   borderRadius: BorderRadius.circular(20),
                                   onTap: () {
                                     HapticFeedback.lightImpact();
-                                    Navigator.pushNamed(
-                                      context,
-                                      '/booking',
-                                      arguments: {
-                                        'providerId': widget.providerId,
-                                        'providerName': p['business_name'] ??
-                                            p['full_name'] ??
-                                            'Prestador',
-                                        'services': services,
-                                        'initialServiceId': s['id']?.toString(),
-                                      },
-                                    );
+                                    _irAReservar(context, {
+                                      'providerId': widget.providerId,
+                                      'providerName': p['business_name'] ??
+                                          p['full_name'] ??
+                                          'Prestador',
+                                      'services': services,
+                                      'initialServiceId': s['id']?.toString(),
+                                    });
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
@@ -2069,29 +2078,13 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                     ],
                   ),
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final token = await AuthService.getToken();
-                      if (token == null) {
-                        if (context.mounted) {
-                          // Las pantallas de auth viven bajo /auth/ en este router.
-                          Navigator.pushNamed(context, '/auth/login');
-                        }
-                        return;
-                      }
-                      if (context.mounted) {
-                        Navigator.pushNamed(
-                          context,
-                          '/booking',
-                          arguments: {
-                            'providerId': widget.providerId,
-                            'providerName': p['business_name'] ??
-                                p['full_name'] ??
-                                'Prestador',
-                            'services': services,
-                          },
-                        );
-                      }
-                    },
+                    onPressed: () => _irAReservar(context, {
+                      'providerId': widget.providerId,
+                      'providerName': p['business_name'] ??
+                          p['full_name'] ??
+                          'Prestador',
+                      'services': services,
+                    }),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent,
@@ -2504,27 +2497,13 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                       width: double.infinity,
                       height: 48,
                       child: ElevatedButton.icon(
-                        onPressed: () async {
+                        onPressed: () {
                           Navigator.pop(sheetCtx);
-                          final token = await AuthService.getToken();
-                          if (token == null) {
-                            if (context.mounted) {
-                              // Las pantallas de auth viven bajo /auth/ en este router.
-                              Navigator.pushNamed(context, '/auth/login');
-                            }
-                            return;
-                          }
-                          if (context.mounted) {
-                            Navigator.pushNamed(
-                              context,
-                              '/booking',
-                              arguments: {
-                                'providerId': widget.providerId,
-                                'providerName': providerName,
-                                'services': services,
-                              },
-                            );
-                          }
+                          _irAReservar(context, {
+                            'providerId': widget.providerId,
+                            'providerName': providerName,
+                            'services': services,
+                          });
                         },
                         icon: const Icon(Icons.calendar_today_outlined,
                             size: 16, color: Color(0xFF1F1A15)),
