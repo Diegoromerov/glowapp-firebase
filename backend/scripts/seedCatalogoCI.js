@@ -90,6 +90,13 @@ async function main() {
       const appClient = new Client({ connectionString: appConnectionString });
       await appClient.connect();
       try {
+        const { rows: plataformaSinContexto } = await appClient.query(
+          'SELECT id FROM tenants WHERE es_plataforma IS TRUE ORDER BY id LIMIT 1'
+        );
+        console.log(
+          `tenant plataforma visible para app_rls_user sin contexto: ` +
+          `${plataformaSinContexto[0]?.id ?? 'ninguno'}`
+        );
         await appClient.query('BEGIN');
         await appClient.query("SELECT set_config('app.tenant_id', $1, true)", [
           String(diagnostico[0].tenant_plataforma_id),
