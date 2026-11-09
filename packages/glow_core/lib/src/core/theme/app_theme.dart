@@ -968,7 +968,7 @@ class AppTheme {
       surfaceInput: const Color(0xFFFAF8F5),
       surfaceSelected: const Color(0x1FC5A052),
       textPrimary: const Color(0xFF2B2420),
-      textSecondary: const Color(0xFF857360),
+      textSecondary: const Color(0xFF6F5F4E),
       textMuted: const Color(0xFF9E8C78),
       textDisabled: const Color(0xFFA89F91),
       textInverse: const Color(0xFFFAF8F5),

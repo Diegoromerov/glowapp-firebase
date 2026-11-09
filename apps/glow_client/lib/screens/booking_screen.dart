@@ -967,7 +967,7 @@ class _BookingScreenState extends State<BookingScreen> {
       return const Padding(
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Text('Selecciona un servicio y fecha primero.',
-            style: TextStyle(color: Colors.grey, fontSize: 13)),
+            style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 13)),
       );
     }
     if (_isLoadingSlots) {
@@ -1313,7 +1313,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     ? 'No pudimos cargar los productos sugeridos. Puedes reservar sin ellos.'
                     : 'No hay productos sugeridos para este servicio.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.grey, fontSize: 13),
+                style: const TextStyle(color: Color(0xFF6F5F4E), fontSize: 13),
               ),
             ),
           )

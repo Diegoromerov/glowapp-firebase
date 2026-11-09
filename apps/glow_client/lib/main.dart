@@ -169,7 +169,10 @@ class GlowClientApp extends ConsumerWidget {
       locale: const Locale('es'),
       theme: isMen ? _buildMensTheme() : AppTheme.light(),
       darkTheme: isMen ? _buildMensDarkTheme() : AppTheme.dark(),
-      themeMode: ThemeMode.light,
+      // El tema sigue al sistema: `darkTheme` existía y nunca se usaba porque
+      // aquí estaba fijado en claro. El usuario que tiene el móvil en oscuro
+      // veía la app encendida.
+      themeMode: ThemeMode.system,
       // La app abre en modo exploración: el catálogo, el mapa y el detalle de
       // cada prestador se ven sin cuenta. La identificación se pide en la
       // acción concreta (reservar, comprar, Glow IA+) vía AuthGate, no al entrar.
@@ -426,7 +429,7 @@ class _StubScreen extends StatelessWidget {
             Text(title, style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 8),
             const Text('Pantalla en desarrollo',
-                style: TextStyle(color: Colors.grey)),
+                style: TextStyle(color: Color(0xFF6F5F4E))),
           ],
         ),
       ),

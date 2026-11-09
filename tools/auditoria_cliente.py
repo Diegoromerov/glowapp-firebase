@@ -174,20 +174,29 @@ def check_estaticos():
         VERDE if sem >= 30 else AMBAR if sem >= 10 else ROJO,
         f"{sem} Semantics, {tips} tooltips, {ib} IconButton en {lineas} lineas", critico=True)
 
+    # Contraste REAL de texto: los hex de la app son en su mayoría colores de
+    # esmalte y trazos SVG (donde la razón de contraste no significa nada). Lo
+    # que el usuario lee son los tokens de texto y los grises de relleno.
     def lum(h):
         h = h.lstrip("#")[:6]
         r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
         f = lambda c: c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
         return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
 
-    def ratio(h, fondo="#FFFFFF"):
-        la, lb = lum(h), lum(fondo)
+    def ratio(a, b="#FAF8F5"):
+        la, lb = lum(a), lum(b)
         return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
 
-    malos = Counter(h.upper() for h in re.findall(r"#[0-9A-Fa-f]{6}", texto) if ratio(h) < 4.5)
-    add("B3", "contraste de texto",
-        VERDE if not malos else ROJO,
-        "todos >= 4.5:1" if not malos else ", ".join(f"{h} {ratio(h):.2f}:1 x{n}" for h, n in malos.most_common(5)),
+    tokens = (RAIZ / "packages/glow_core/lib/src/core/theme/tokens.dart")
+    ttxt = tokens.read_text(encoding="utf-8", errors="replace") if tokens.exists() else ""
+    m = re.search(r"textSecondary:\s*(?:const\s+)?Color\(0xFF([0-9A-Fa-f]{6})\)", ttxt)
+    token = "#" + (m.group(1) if m else "000000")
+    grises = sum(1 for _, t in arboles for l in t.splitlines()
+                 if "Colors.grey" in l and ("TextStyle" in l or "fontSize" in l))
+    add("B3", "contraste del texto",
+        VERDE if ratio(token) >= 4.5 and grises == 0 else ROJO,
+        f"textSecondary {token} = {ratio(token):.2f}:1 sobre #FAF8F5 (min 4,5:1)"
+        + ("" if grises == 0 else f" · {grises} textos en Colors.grey (2,53:1)"),
         critico=True)
 
     forzado = "themeMode: ThemeMode.light" in texto

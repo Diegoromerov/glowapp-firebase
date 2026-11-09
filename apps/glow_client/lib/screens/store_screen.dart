@@ -1212,7 +1212,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                                 style: TextStyle(color: textColor),
                                                 decoration: InputDecoration(
                                                   hintText: 'Buscar productos...',
-                                                  hintStyle: TextStyle(fontSize: 14, color: isMen ? Colors.grey.shade400 : Colors.grey),
+                                                  hintStyle: TextStyle(fontSize: 14, color: isMen ? Colors.grey.shade400 : Color(0xFF6F5F4E)),
                                                   border: InputBorder.none,
                                                   isDense: true,
                                                   contentPadding: const EdgeInsets.symmetric(vertical: 10),
@@ -1272,7 +1272,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                       ? const Center(
                                           child: Text(
                                             'No se encontraron productos disponibles.',
-                                            style: TextStyle(color: Colors.grey),
+                                            style: TextStyle(color: Color(0xFF6F5F4E)),
                                           ),
                                         )
                                       : GridView.builder(
@@ -1378,7 +1378,7 @@ class _StoreScreenState extends State<StoreScreen> {
                 ? const Center(
                     child: Text(
                       'Tu carrito está vacío.',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Color(0xFF6F5F4E)),
                     ),
                   )
                 : ListView.separated(

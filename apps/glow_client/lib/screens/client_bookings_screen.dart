@@ -187,7 +187,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
             onPressed: () => Navigator.pop(context, false),
             child: const Text('Volver',
                 style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                    TextStyle(color: Color(0xFF6F5F4E), fontWeight: FontWeight.bold)),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
@@ -1293,7 +1293,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 const Text(
                     'Tus reservas, su estado y el pago quedan ligados a tu cuenta.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey, fontSize: 13)),
+                    style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 13)),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
@@ -1333,7 +1333,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
               const SizedBox(height: 16),
               Text(_error ?? 'Algo falló. Inténtalo de nuevo.',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.grey)),
+                  style: const TextStyle(color: Color(0xFF6F5F4E))),
               const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: _loadBookings,

@@ -238,7 +238,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
                                       ),
                                       Text(
                                         formattedDate,
-                                        style: const TextStyle(color: Colors.grey, fontSize: 11),
+                                        style: const TextStyle(color: Color(0xFF6F5F4E), fontSize: 11),
                                       ),
                                     ],
                                   ),
@@ -345,7 +345,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
             const SizedBox(height: 8),
             const Text(
               'Registra una solicitud y un agente de soporte de Belleza App te ayudará en pocas horas.',
-              style: TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),

@@ -465,7 +465,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     });
                     _loadProviders();
                   },
-                  child: const Text('Usar Bogotá (Defecto)', style: TextStyle(color: Colors.grey)),
+                  child: const Text('Usar Bogotá (Defecto)', style: TextStyle(color: Color(0xFF6F5F4E))),
                 ),
                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
@@ -896,7 +896,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               child: Text(
                 'Cancelar',
                 style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                    TextStyle(color: Color(0xFF6F5F4E), fontWeight: FontWeight.bold),
               ),
             ),
             ElevatedButton(
@@ -1348,7 +1348,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           child: const Center(
                             child: Text(
                               'No hay fotos cargadas en el portafolio',
-                              style: TextStyle(color: Colors.grey, fontSize: 13),
+                              style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 13),
                             ),
                           ),
                         );
@@ -2933,7 +2933,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Ana Silva', style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.text)),
-                        Text('Estilista Capilar Profesional', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        Text('Estilista Capilar Profesional', style: TextStyle(fontSize: 11, color: Color(0xFF6F5F4E))),
                       ],
                     ),
                   ],

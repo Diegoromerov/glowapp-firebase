@@ -237,7 +237,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
             Text(
               'Escribe tu inquietud abajo. Un agente de soporte revisara el caso y respondera en este hilo.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
             ),
           ],
         ),
@@ -268,7 +268,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
             padding: const EdgeInsets.only(left: 8.0, bottom: 2.0),
             child: Text(
               isAdmin ? 'Soporte Belleza App' : name,
-              style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.bold, color: isAdmin ? _primaryColor : Colors.grey),
+              style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.bold, color: isAdmin ? _primaryColor : Color(0xFF6F5F4E)),
             ),
           ),
         Container(
@@ -309,7 +309,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
                 style: TextStyle(fontSize: 14),
                 decoration: InputDecoration(
                   hintText: 'Escribe un mensaje...',
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: TextStyle(color: Color(0xFF6F5F4E)),
                   filled: true,
                   fillColor: Colors.grey[50],
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

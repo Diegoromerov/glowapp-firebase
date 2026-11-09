@@ -756,7 +756,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 Text(
                                   '¡Envía un mensaje a ${widget.partnerName}!',
                                   style: const TextStyle(
-                                      color: Colors.grey, fontSize: 16),
+                                      color: Color(0xFF6F5F4E), fontSize: 16),
                                 ),
                               ],
                             ),

@@ -375,7 +375,7 @@ class Token {
 
     // Women text system
     textPrimary: Color(0xFF2B2420),    // Warm black
-    textSecondary: Color(0xFF857360),  // Warm muted
+    textSecondary: Color(0xFF6F5F4E),  // Warm muted
     textMuted: Color(0xFF9E8C78),      // Metadata
     textDisabled: Color(0xFFA89F91),   // Disabled
     textInverse: Color(0xFFFAF8F5),    // Cream silk
@@ -612,7 +612,7 @@ class Token {
     surfaceInput: Color(0xFFFAF8F5),
     surfaceSelected: Color(0x1FD4AF37),     // Champagne selected
     textPrimary: Color(0xFF2B2420),
-    textSecondary: Color(0xFF857360),
+    textSecondary: Color(0xFF6F5F4E),
     textMuted: Color(0xFF9E8C78),
     textDisabled: Color(0xFFA89F91),
     textInverse: Color(0xFFFAF8F5),
@@ -724,7 +724,7 @@ class Token {
     surfaceInput: Color(0xFFFAF8F5),
     surfaceSelected: Color(0x15164C46),
     textPrimary: Color(0xFF2B2420),
-    textSecondary: Color(0xFF857360),
+    textSecondary: Color(0xFF6F5F4E),
     textMuted: Color(0xFF9E8C78),
     textDisabled: Color(0xFFA89F91),
     textInverse: Colors.white,

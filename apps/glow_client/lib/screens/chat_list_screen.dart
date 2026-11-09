@@ -323,7 +323,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                           : 'Explora prestadores y escribe para comenzar un chat.',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
-                                          color: Colors.grey, fontSize: 13),
+                                          color: Color(0xFF6F5F4E), fontSize: 13),
                                     ),
                                   ),
                                 ],

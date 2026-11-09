@@ -181,7 +181,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                     ),
                                     Text(
                                       formattedDate,
-                                      style: const TextStyle(color: Colors.grey, fontSize: 11),
+                                      style: const TextStyle(color: Color(0xFF6F5F4E), fontSize: 11),
                                     ),
                                   ],
                                 ),
@@ -212,7 +212,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                   children: [
                                     const Text(
                                       'Monto en Disputa:',
-                                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                                      style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
                                     ),
                                     Text(
                                       '\$${monto.toStringAsFixed(0)} COP',
@@ -320,7 +320,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
             const SizedBox(height: 8),
             const Text(
               'Si tuviste un problema grave con una cita (inasistencia, cobro incorrecto, mala calidad), puedes disputarla aquí para retener los fondos.',
-              style: TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
