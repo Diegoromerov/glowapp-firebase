@@ -42,7 +42,7 @@ BEGIN
   INSERT INTO perfiles_prestador (id, business_name, is_active, estatus_verificacion,
                                   ubicacion, tenant_id)
   VALUES (900001, 'CI Salon', true, 'APROBADO',
-          ST_SetSRID(ST_MakePoint(-74.0721, 4.7110), 4326)::geography, t)
+          ST_SetSRID(ST_MakePoint(-74.1422, 4.6735), 4326)::geography, t)
   ON CONFLICT (id) DO UPDATE
     SET is_active = true,
         tenant_id = t,
@@ -64,60 +64,7 @@ async function main() {
     const { rows } = await client.query(
       "SELECT count(*)::int AS n FROM perfiles_prestador WHERE is_active = true"
     );
-    const { rows: diagnostico } = await client.query(`
-      SELECT t.id AS tenant_plataforma_id,
-             p.tenant_id AS tenant_proveedor_id,
-             p.is_active,
-             p.estatus_verificacion,
-             p.ubicacion IS NOT NULL AS tiene_ubicacion
-        FROM tenants t
-        LEFT JOIN perfiles_prestador p ON p.id = 900001
-       WHERE t.es_plataforma IS TRUE
-       ORDER BY t.id
-       LIMIT 1
-    `);
-    console.log(
-      `catálogo de prueba sembrado: ${rows[0].n} proveedor(es) activo(s); ` +
-      `tenant plataforma/proveedor=${diagnostico[0]?.tenant_plataforma_id ?? '—'}/` +
-      `${diagnostico[0]?.tenant_proveedor_id ?? '—'}, ` +
-      `activo=${diagnostico[0]?.is_active ?? '—'}, ` +
-      `verificación=${diagnostico[0]?.estatus_verificacion ?? '—'}, ` +
-      `ubicación=${diagnostico[0]?.tiene_ubicacion ?? '—'}`
-    );
-
-    const appConnectionString = process.env.DATABASE_URL;
-    if (appConnectionString && diagnostico[0]?.tenant_plataforma_id != null) {
-      const appClient = new Client({ connectionString: appConnectionString });
-      await appClient.connect();
-      try {
-        const { rows: plataformaSinContexto } = await appClient.query(
-          'SELECT id FROM tenants WHERE es_plataforma IS TRUE ORDER BY id LIMIT 1'
-        );
-        console.log(
-          `tenant plataforma visible para app_rls_user sin contexto: ` +
-          `${plataformaSinContexto[0]?.id ?? 'ninguno'}`
-        );
-        await appClient.query('BEGIN');
-        await appClient.query("SELECT set_config('app.tenant_id', $1, true)", [
-          String(diagnostico[0].tenant_plataforma_id),
-        ]);
-        const { rows: visibles } = await appClient.query(`
-          SELECT count(*)::int AS n
-            FROM perfiles_prestador
-           WHERE id = 900001
-             AND is_active = true
-             AND estatus_verificacion = 'APROBADO'
-             AND ubicacion IS NOT NULL
-        `);
-        await appClient.query('COMMIT');
-        console.log(`visibilidad RLS del proveedor sembrado con tenant explícito: ${visibles[0].n}`);
-      } catch (error) {
-        await appClient.query('ROLLBACK').catch(() => {});
-        throw error;
-      } finally {
-        await appClient.end();
-      }
-    }
+    console.log(`catálogo de prueba sembrado: ${rows[0].n} proveedor(es) activo(s)`);
   } finally {
     await client.end();
   }

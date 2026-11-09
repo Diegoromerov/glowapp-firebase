@@ -69,14 +69,6 @@ module.exports = async function publicTenantContext(req, res, next) {
     return next();
   }
 
-  const debugContexto = process.env.DEBUG_PUBLIC_TENANT_CONTEXT === 'true';
-  if (debugContexto) {
-    console.info(
-      `[publicTenantContext] tenant plataforma=${tenantId ?? 'ninguno'}; ` +
-      `req.user=${req.user ? 'presente' : 'ausente'}`
-    );
-  }
-
   if (tenantId === null || tenantId === undefined) return next();
 
   // Distingue un fallo AL MONTAR la transacción (500: no se puede servir con
@@ -84,26 +76,8 @@ module.exports = async function publicTenantContext(req, res, next) {
   let cadenaIniciada = false;
 
   try {
-    await tenantRouting.runInTenantTransaction({ pool }, tenantId, async () => {
+    await tenantRouting.runInTenantTransaction({ pool }, tenantId, () => {
       cadenaIniciada = true;
-      if (debugContexto) {
-        const cliente = tenantRouting.getActiveClient();
-        const { rows } = await cliente.query(`
-          SELECT current_setting('app.tenant_id', true) AS tenant_context,
-                 count(*) FILTER (WHERE id = 900001)::int AS proveedor_fixture_visible
-            FROM perfiles_prestador
-        `);
-        const { rows: configGps } = await cliente.query(`
-          SELECT key, value FROM platform_config
-           WHERE key IN ('gps_centro_latitud', 'gps_centro_longitud', 'gps_default_radio_metros')
-           ORDER BY key
-        `);
-        console.info(
-          `[publicTenantContext] contexto=${rows[0].tenant_context ?? 'vacío'}; ` +
-          `proveedor_fixture_visible=${rows[0].proveedor_fixture_visible}; ` +
-          `gps=${JSON.stringify(Object.fromEntries(configGps.map(({ key, value }) => [key, value])))}`
-        );
-      }
       return new Promise((resolve, reject) => {
         // La transacción se cierra cuando la respuesta termina. Las rutas de
         // catálogo son de solo lectura, así que no hay riesgo de que el cliente

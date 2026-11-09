@@ -115,7 +115,6 @@ jobs:
       - name: Sembrar catalogo de prueba (rol admin)
         working-directory: backend
         env:
-          DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
           DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
         run: node scripts/seedCatalogoCI.js
 
@@ -135,7 +134,6 @@ jobs:
           # Sin esto, un job de pagos consulta una tabla ausente en la BD de CI y
           # tumba el proceso antes de que la prueba mida el catalogo.
           DISABLE_BACKGROUND_JOBS: 'true'
-          DEBUG_PUBLIC_TENANT_CONTEXT: 'true'
         run: |
           node index.js > /tmp/api.log 2>&1 &
           echo $! > /tmp/api.pid
@@ -168,11 +166,6 @@ jobs:
                  -H 'X-App-Audience: client' http://localhost:8081/api/providers)
           echo "HTTP $code"
           head -c 300 /tmp/prov.json; echo
-          # Siempre conservar el diagnóstico del middleware de contexto tenant:
-          # el endpoint puede responder 200 con catálogo vacío si no resolvió
-          # el tenant de plataforma.
-          echo "---------- log de API tras consultar catálogo ----------"
-          tail -80 /tmp/api.log
           kill "$(cat /tmp/api.pid)" 2>/dev/null || true
 
           if [ "$code" != "200" ]; then
