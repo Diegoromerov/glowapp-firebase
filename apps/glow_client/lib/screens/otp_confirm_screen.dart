@@ -97,7 +97,7 @@ class _OtpConfirmScreenState extends State<OtpConfirmScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() => _isLoading = false);
-      _aviso('No se pudo verificar el código: $e');
+      _aviso(mensajeHumano(e));
     }
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../core/theme/belleza_luxe_theme.dart';
 import '../../services/api_service.dart';
+import '../../services/auth_service.dart';
 import 'colombian_address_builder.dart';
 
 /// Sección reutilizable de direcciones de entrega (estructura colombiana).
@@ -20,6 +21,10 @@ class DeliveryAddressesSection extends StatefulWidget {
 
 class _DeliveryAddressesSectionState extends State<DeliveryAddressesSection> {
   Future<List<dynamic>> _fetchDeliveryAddresses() async {
+    // El perfil es alcanzable por URL directa sin sesión (P-121): sin token no
+    // se pide nada. Antes esa carga anónima dejaba un 401 en consola y pintaba
+    // «Error de conexión» a quien solo estaba mirando la pantalla.
+    if (!AuthService.sesionActivaEnMemoria) return <dynamic>[];
     try {
       final headers = await ApiService.getAuthHeaders();
       final uri = Uri.parse('${ApiService.baseUrl}/api/users/delivery-addresses');

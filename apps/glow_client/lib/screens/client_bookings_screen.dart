@@ -20,6 +20,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   List<Map<String, dynamic>> _bookings = [];
   bool _isLoading = true;
   String? _error;
+  bool _sinSesion = false;
   bool _showSuccessOverlay = false;
   // Citas cuyo enlace de pago se está pidiendo: evita dobles envíos.
   final Set<String> _pagando = <String>{};
@@ -91,9 +92,23 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
   }
 
   Future<void> _loadBookings() async {
+    // `#/my-bookings` es alcanzable sin sesión (deep link, guía, URL directa).
+    // Sin token no se pide la lista: antes la pantalla mostraba
+    // «Exception: UNAUTHORIZED» a un visitante que solo estaba mirando.
+    if (!AuthService.sesionActivaEnMemoria) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _error = null;
+          _sinSesion = true;
+        });
+      }
+      return;
+    }
     setState(() {
       _isLoading = true;
       _error = null;
+      _sinSesion = false;
     });
     try {
       final data = await ApiService.fetchClientBookings();
@@ -106,7 +121,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = e.toString();
+          _error = mensajeHumano(e);
           _isLoading = false;
         });
       }
@@ -1252,6 +1267,53 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                 );
               }
 
+    if (_sinSesion && _bookings.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Mis Citas',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, letterSpacing: -0.5)),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
+        ),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(28),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.lock_outline_rounded,
+                    color: Color(0xFF8A6A2F), size: 44),
+                const SizedBox(height: 16),
+                const Text('Inicia sesión para ver tus citas',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                const SizedBox(height: 8),
+                const Text(
+                    'Tus reservas, su estado y el pago quedan ligados a tu cuenta.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey, fontSize: 13)),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () async {
+                    await Navigator.pushNamed(context, '/auth/login');
+                    if (mounted) _loadBookings();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppTheme.primary,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 22, vertical: 12)),
+                  child: const Text('Iniciar sesión'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     if (_error != null && _bookings.isEmpty) {
       return Scaffold(
         appBar: AppBar(
@@ -1269,7 +1331,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
               Icon(Icons.wifi_off_rounded,
                   color: AppTheme.error, size: 48),
               const SizedBox(height: 16),
-              Text('Error de conexión:\n$_error',
+              Text(_error ?? 'Algo falló. Inténtalo de nuevo.',
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.grey)),
               const SizedBox(height: 16),

@@ -940,14 +940,18 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
     try {
       String? activeBookingId;
-      try {
-        final clientBookings = await ApiService.fetchClientBookings();
-        final inProgressBooking = clientBookings.firstWhere(
-          (b) => (b['status'] as String? ?? '').toUpperCase() == 'EN_PROGRESO',
-        );
-        activeBookingId = inProgressBooking['id']?.toString();
-      } catch (_) {
-        // Ignorar si no hay citas en progreso o si falla la búsqueda
+      // El SOS no pide cuenta, pero tampoco tiene por qué consultar un endpoint
+      // privado cuando no hay sesión: sin token el 401 solo ensuciaba la consola.
+      if (AuthService.sesionActivaEnMemoria) {
+        try {
+          final clientBookings = await ApiService.fetchClientBookings();
+          final inProgressBooking = clientBookings.firstWhere(
+            (b) => (b['status'] as String? ?? '').toUpperCase() == 'EN_PROGRESO',
+          );
+          activeBookingId = inProgressBooking['id']?.toString();
+        } catch (_) {
+          // Ignorar si no hay citas en progreso o si falla la búsqueda
+        }
       }
 
       // Registrar evento de telemetría de botón SOS presionado

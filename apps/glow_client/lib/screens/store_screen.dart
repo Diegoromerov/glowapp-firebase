@@ -89,7 +89,7 @@ class _StoreScreenState extends State<StoreScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _errorMessage = 'No se pudieron cargar los productos: $e';
+        _errorMessage = 'No se pudieron cargar los productos. ${mensajeHumano(e)}';
         _isLoading = false;
       });
     }
@@ -754,7 +754,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     messenger.showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'No se pudo abrir la pasarela de pago: $e. '
+                                          'No se pudo abrir la pasarela de pago. '
                                           'El pedido quedó pendiente, no se te cobró nada.',
                                         ),
                                       ),
