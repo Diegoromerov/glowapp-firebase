@@ -20,7 +20,8 @@ jobs:
           cache-dependency-path: admin/package-lock.json
       - run: npm ci
         working-directory: admin
-      - run: npm test
+      # Expand the test glob in Bash; Node 20 does not expand quoted globs itself.
+      - run: node --test tests/*.test.mjs
         working-directory: admin
       - run: npm run build
         working-directory: admin
