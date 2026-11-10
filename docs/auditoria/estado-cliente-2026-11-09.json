@@ -554,7 +554,7 @@
    "estado": "PARCIAL",
    "estado_2026_11_09": "PASA",
    "evidencia": "F9.2: el bundle ya lleva la config de Firebase; falta FCM_VAPID_KEY para que el push web obtenga token",
-   "evidencia_2026_11_10": "Clave VAPID generada en Firebase Console y embebida en el bundle publicado (main.dart.js la contiene); service worker servido en /firebase-messaging-sw.js (200, 1612 B); POST /api/auth/fcm-token con auth. Secreto FCM_VAPID_KEY en GitHub. Entrega real de una notificacion no verificada (necesita navegador con permiso)."
+   "evidencia_2026_11_10": "Cadena completa verificada en produccion: (1) casilla de permiso en Ajustes porque Chrome ignora peticiones sin gesto; (2) token obtenido y guardado (usuarios.fcm_token, 142 chars, log \"Token FCM registrado para usuario ID 1 (web)\"); (3) envio real aceptado por FCM: messageId projects/glowapp-client/messages/1026d694-780b-4c66-904f-716bc364fc92. Falta solo la confirmacion visual del usuario."
   },
   "85": {
    "bloque": "K",
