@@ -5,7 +5,6 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -61,11 +60,14 @@ import 'widgets/app_update_gate.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Ítem 56: en web el árbol de semántica arranca apagado y el lector de
-  // pantalla solo lo enciende si el usuario encuentra el botón «activar
-  // accesibilidad». Se deja activo desde el inicio para que la app se pueda
-  // recorrer con lector sin ese paso previo.
-  SemanticsBinding.instance.ensureSemantics();
+  // Ítem 56 — NO forzar el árbol de semántica.
+  //
+  // Se probó y hubo que revertirlo: con `ensureSemantics()` en web, Flutter
+  // crea capas `flt-semantics` por encima de todo y se comen los clics sobre
+  // los platform views. El botón de Google (iframe de GIS) quedó inservible:
+  // el cursor ni siquiera lo detectaba. Se deja el comportamiento por defecto
+  // (el usuario activa accesibilidad con el enlace de Flutter), que es el
+  // patrón soportado.
 
   // Red de errores: sin esto, un build que revienta deja una caja gris y nadie
   // se entera. El codigo que se muestra es el correlation id que viaja al
