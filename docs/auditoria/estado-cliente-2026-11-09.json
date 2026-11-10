@@ -96,7 +96,8 @@
    "bloque": "B",
    "titulo": "Deep links",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA"
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia_2026_11_10": "Web: /.well-known/assetlinks.json servido (200, application/json) con la huella SHA-256 real del keystore de carga (com.glowapp.glow_client), y enlace profundo en frio verificado: /#/my-bookings abre Mis Citas con su estado sin sesion. Falta la huella de Play App Signing (requiere APK) y la prueba warm."
   },
   "15": {
    "bloque": "B",

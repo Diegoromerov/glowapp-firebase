@@ -1,7 +1,7 @@
 # Plan de corrección — app CLIENTE (`apps/glow_client`)
 
 **Base:** auditoría del 2026-11-09 · **actualizado 2026-11-10 (cierre de F9.9)** · `main` @ `2d89f2fe`
-**Estado medido hoy:** 56 PASA · 9 PARCIAL · 1 FALLA · 18 N/V · 2 N/A = **72,0 %** (92 % sobre lo medible) · **0 críticos en rojo**
+**Estado medido hoy:** 56 PASA · 10 PARCIAL · 0 FALLA · 18 N/V · 2 N/A = **72,6 %** (93 % sobre lo medible) · **0 críticos en rojo**
 **Punto de partida (2026-11-09):** 24 PASA · 34 PARCIAL · 9 FALLA = 48,8 % · 2 críticos
 **Objetivo:** llegar a **0 FALLA**, **0 bloqueantes en PARCIAL** y **0 críticos en rojo** en `tools/auditoria_cliente.py`.
 **Regla de oro:** nada de esto se ejecuta sin `AUTORIZACIÓN EXPLÍCITA DEL DIRECTOR — GLOWAPP-F<NN>`. Rama de trabajo propia, commits atómicos, `main` intacta hasta la fase autorizada.
@@ -94,7 +94,7 @@ Crash-free %, arranque en frío, fluidez, red lenta, memoria, batería/GPS, fich
 |---|---|---|---|---|
 | **C-22** | 15, 21, 22, 23, 25 | Resiliencia de UI | ✅ **cerrada** (F9.7 + F9.10) | — |
 | **C-23** | 39, 43, 44 | Seguridad y PII | ✅ **cerrada** (F9.8) | — |
-| **C-24** | 11 ✅, 14 ❌, 16 | Permisos JIT, deep links, versión mínima | **parcial** | 14 necesita APK y `assetlinks.json`; 16 depende de tienda |
+| **C-24** | 11 ✅, 14 parcial, 16 | Permisos JIT, deep links, versión mínima | **parcial** | `assetlinks.json` servido con huella real y enlace en frío verificado; falta APK y huella de Play |
 | **C-10 resto** | 56 | Tooltips y semántica pantalla por pantalla | 1,5 h | — |
 | **C-08 resto** | 84 | Push web | ⚠️ **hecho con reserva** | VAPID ya está; falta demostrar la entrega en el navegador del Director |
 | **F5** | 18 N/V | Instrumentación | — | dispositivo/monitor |
