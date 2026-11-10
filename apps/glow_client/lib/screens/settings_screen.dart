@@ -4,6 +4,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+import '../services/push_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   final String userEmail;
@@ -23,12 +26,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _biometricAuthEnabled = false;
   bool _marketingEmails = false;
   bool _isLoadingPreferences = true;
+  AuthorizationStatus? _pushEstado;
+  bool _pidiendoPermiso = false;
   String? _errorMessage;
 
   @override
   void initState() {
     super.initState();
     _loadPreferences();
+    _cargarEstadoPush();
+  }
+
+  /// El permiso de notificaciones se pide desde un gesto del usuario: Chrome
+  /// ignora las peticiones automáticas y no muestra ningún diálogo.
+  Future<void> _cargarEstadoPush() async {
+    final e = await PushService.estadoPermiso();
+    if (mounted) setState(() => _pushEstado = e);
+  }
+
+  Future<void> _activarPush() async {
+    setState(() => _pidiendoPermiso = true);
+    final ok = await PushService.activarDesdeBoton();
+    await _cargarEstadoPush();
+    if (!mounted) return;
+    setState(() => _pidiendoPermiso = false);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(ok
+          ? 'Notificaciones activadas.'
+          : 'El navegador no concedió el permiso. Revísalo en el candado de la barra de direcciones.'),
+    ));
   }
 
   Future<void> _loadPreferences() async {
@@ -807,6 +833,47 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         const DeliveryAddressesSection(),
 
                         const SizedBox(height: LuxeSpacing.xxl),
+
+                        // NOTIFICACIONES: el permiso se pide desde aquí, con gesto
+                        // del usuario. Pedirlo solo tras el login no mostraba nada en
+                        // Chrome y el usuario se quedaba sin avisos de sus citas.
+                        ListTile(
+                          leading: const Icon(Icons.notifications_none,
+                              color: LuxeColors.nude500),
+                          title: const Text(
+                            'Notificaciones',
+                            style: TextStyle(
+                              fontFamily: 'CormorantGaramond',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          subtitle: Text(
+                            switch (_pushEstado) {
+                              AuthorizationStatus.authorized =>
+                                'Activadas: te avisamos de tus citas y mensajes.',
+                              AuthorizationStatus.denied =>
+                                'Bloqueadas por el navegador. Actívalas en el candado de la barra de direcciones.',
+                              AuthorizationStatus.provisional =>
+                                'Activadas en modo silencioso.',
+                              _ => 'Sin activar. Necesitamos tu permiso para avisarte.',
+                            },
+                            style: const TextStyle(fontSize: 12.5),
+                          ),
+                          trailing: _pidiendoPermiso
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(strokeWidth: 2),
+                                )
+                              : TextButton(
+                                  onPressed: _activarPush,
+                                  child: Text(_pushEstado ==
+                                          AuthorizationStatus.authorized
+                                      ? 'Reintentar'
+                                      : 'Activar'),
+                                ),
+                        ),
 
                         // ACCIÓN DESTRUCTIVA: ELIMINAR CUENTA (CON TIPOGRAFÍA SERIF ROJA SUTIL)
                         ListTile(

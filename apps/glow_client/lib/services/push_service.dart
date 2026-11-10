@@ -28,8 +28,12 @@ class PushService {
 
   /// Pide permiso, obtiene el token y lo registra en el backend.
   /// Se llama después del login: sin usuario no hay a quién notificar.
-  static Future<void> iniciar() async {
-    if (_listo) return;
+  ///
+  /// [forzar] reintenta aunque ya se haya intentado antes: lo usa el botón
+  /// manual de Ajustes, porque Chrome ignora una petición de permiso que no
+  /// viene de un gesto del usuario y no muestra ningún diálogo.
+  static Future<void> iniciar({bool forzar = false}) async {
+    if (_listo && !forzar) return;
     if (!DefaultFirebaseOptions.estaConfigurado) {
       debugPrint('PushService: Firebase sin configurar en este build');
       return;
@@ -84,6 +88,24 @@ class PushService {
   }
 
   /// En web el token exige un service worker registrado en el alcance raíz.
+  /// Estado actual del permiso de notificaciones.
+  static Future<AuthorizationStatus> estadoPermiso() async {
+    try {
+      final s = await FirebaseMessaging.instance.getNotificationSettings();
+      return s.authorizationStatus;
+    } catch (_) {
+      return AuthorizationStatus.notDetermined;
+    }
+  }
+
+  /// Activa las notificaciones desde un gesto del usuario (Ajustes).
+  static Future<bool> activarDesdeBoton() async {
+    await iniciar(forzar: true);
+    final estado = await estadoPermiso();
+    return estado == AuthorizationStatus.authorized ||
+        estado == AuthorizationStatus.provisional;
+  }
+
   static Future<void> _registrarServiceWorker() async {
     final params = Uri(queryParameters: {
       'apiKey': FirebaseConfig.apiKey,
