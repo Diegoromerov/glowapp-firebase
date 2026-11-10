@@ -19,7 +19,8 @@
    "bloque": "A",
    "titulo": "Login social",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Login con Google verificado de punta a punta por el Director (boton oficial de GIS abre accounts.google.com y entra). Apple y Facebook se retiraron a proposito: mostraban \"proximamente\" y Apple no tiene endpoint en el backend."
   },
   "3": {
    "bloque": "A",
@@ -61,7 +62,8 @@
    "bloque": "A",
    "titulo": "Cambio de contraseña",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Recorrido real contra produccion: login 200, PATCH /api/auth/change-password con clave actual incorrecta -> 401 (se exige la actual), con la correcta -> 200, login con la nueva -> 200, y restaurada la original -> 200. El cliente manda current_password en settings_screen.dart:365."
   },
   "10": {
    "bloque": "A",
@@ -86,7 +88,8 @@
    "bloque": "B",
    "titulo": "Notificaciones opt-in",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Opt-in real: tarjeta en Ajustes que pide permiso con gesto del usuario (Chrome ignora las peticiones sin gesto), estado mostrado en pantalla y token FCM registrado en usuarios.fcm_token (142 chars) tras aceptar."
   },
   "14": {
    "bloque": "B",
