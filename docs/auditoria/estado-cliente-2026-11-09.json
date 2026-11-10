@@ -261,7 +261,8 @@
    "bloque": "E",
    "titulo": "Inventario de datos",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "glowapp-company/07-produto/inventario-tratamiento-datos-2026-11-10.md: 129 tablas medidas en produccion, 5 categorias, terceros, RLS y conservacion. Declara dos pendientes: job de retencion y exportacion del paquete de datos."
   },
   "42": {
    "bloque": "E",
@@ -465,7 +466,8 @@
    "bloque": "I",
    "titulo": "Estado del servicio",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "/status sirve 200 con comprobacion en vivo de /api/health; el boton \"Estado del servicio\" del Centro de Soporte abre esa pagina."
   },
   "74": {
    "bloque": "J",
