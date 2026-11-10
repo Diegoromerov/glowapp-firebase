@@ -197,7 +197,8 @@
    "bloque": "D",
    "titulo": "Recibos / facturas",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "F9.4B: POST /bookings/:id/receipt/link firma un enlace de 10 min; GET /receipt/download sirve el HTML como adjunto. Verificado 401 sin sesion y \"Ver recibo\" en Mis Citas."
   },
   "32": {
    "bloque": "D",
@@ -430,8 +431,9 @@
    "bloque": "I",
    "titulo": "Analítica de embudo",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "/api/analytics/events -> 401 en carga anonima: embudo anonimo vacio"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "/api/analytics/events -> 401 en carga anonima: embudo anonimo vacio",
+   "evidencia_2026_11_10": "F9.4: GET /api/analytics/summary?days=1..90 (admin) con conteo por tipo y por pantalla; 5 tests; 401 verificado en produccion."
   },
   "69": {
    "bloque": "I",
@@ -450,7 +452,8 @@
    "bloque": "I",
    "titulo": "Soporte con SLA",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "F9.4: horario L-V 8:00-18:00 y plazos 10/15 dias habiles en el Centro de Soporte y en /terms publicado."
   },
   "72": {
    "bloque": "I",
@@ -482,13 +485,15 @@
    "bloque": "J",
    "titulo": "Rollback",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Rollback ejecutado (deploymentRollback) sobre el despliegue anterior: el servicio volvio a 200 y se forzo redeploy desde main (commit 77888c8a). Tiempo exacto N/V: la medicion se perdio al cortarse el proceso a los 7 min."
   },
   "77": {
    "bloque": "J",
    "titulo": "Backups + restore probado",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "F9.4B: dump 2.156 B de usuarios/bookings/productos y restauracion en esquema restore_check con conteos identicos (2/2, 0/0, 0/0); esquema eliminado. Rollback ejecutado una vez: el servicio volvio a 200 sobre el despliegue anterior; tiempo exacto no medido (N/V)."
   },
   "78": {
    "bloque": "J",
@@ -556,5 +561,6 @@
   "P1-meta": "index.html: title 'glow_client', description 'A new Flutter project.'",
   "P1-terms": "/terms.html devuelve el shell del SPA (1.556 B)",
   "P1-guide": "GlowGuide tapa el home en la primera visita con video pausado; el tour abre /chat sin sesion (UNAUTHORIZED)"
- }
+ },
+ "fecha_actualizacion": "2026-11-10"
 }
