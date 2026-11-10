@@ -549,6 +549,31 @@ app.get('/api/health', async (req, res) => {
   // clasificar; sin comprobar no es lo mismo que sano ni que degradado.
   const dbStatus = await asegurarEstadoComprobado();
   const salud = clasificarSalud(dbStatus);
+
+  // Ítem 78: el runner corre en `entrypoint.sh`, en un proceso aparte, así que
+  // el estado en memoria del API siempre estaría vacío. Lo que sí es cierto es
+  // la diferencia entre archivos de migración y filas registradas: una
+  // migración que falló es exactamente una que no quedó registrada.
+  let estadoMigraciones;
+  try {
+    const dir = require('path').join(__dirname, 'migrations');
+    const total = fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith('.sql') && !f.endsWith('.down.sql')).length;
+    const { pool } = require('./src/config/db');
+    const r = await pool.query(
+      'SELECT COUNT(*)::int AS registradas, MAX(applied_at) AS ultima FROM schema_migrations'
+    );
+    const registradas = r.rows[0].registradas;
+    estadoMigraciones = {
+      archivos: total,
+      registradas,
+      pendientes: Math.max(0, total - registradas),
+      ultima_aplicada: r.rows[0].ultima,
+    };
+  } catch (_) {
+    estadoMigraciones = { error: 'no se pudo leer schema_migrations' };
+  }
   if (salud.degradado) {
     res.setHeader('X-GlowApp-Degraded', 'memory-fallback');
   }
@@ -566,9 +591,7 @@ app.get('/api/health', async (req, res) => {
     // LATEST_APP_VERSION). La app compara su versión instalada y bloquea si está
     // por debajo de minimum_app_version.
     ...resolveAppVersionPolicy(),
-    // Ítem 78: si una migración falló, aquí se ve. Sin esto, una migración
-    // quebrada solo existía en la consola del arranque.
-    migrations: require('./src/config/migrationRunner').obtenerEstadoMigraciones(),
+    migrations: estadoMigraciones,
   });
 });
 
