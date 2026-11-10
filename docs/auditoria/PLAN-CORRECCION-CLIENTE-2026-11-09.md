@@ -103,19 +103,23 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | C-07 | F2 | `desplegar-web.sh` pasa `FIREBASE_*` | 0,5 | **hecho** | C3 PASA en el bundle publicado |
 | C-08 | F2 | Cargar API key y VAPID | — | **parcial**: API key cargada; VAPID pendiente del Director | push sin token hasta VAPID |
 | C-09 | F2 | CI de apps verde en push | 1 | **hecho** | run 20:38 success; APK omitido sin secret |
-| C-10 | F3 | Semantics + tooltips | 4 | pendiente | B2 PASA |
-| C-11 | F3 | Contraste | 2 | pendiente | B3 PASA |
-| C-12 | F3 | Tema del sistema + reduce-motion | 1 | pendiente | B4 PASA |
-| C-13 | F3 | Marca y `/terms` | 1 | pendiente | C1 y D3 PASA |
-| C-14 | F4 | Recibos | 2 | pendiente | ítem 31 PASA |
+| C-10 | F3 | Semantics + tooltips | 4 | **parcial** (F9.6) | área táctil, reduce-motion y semántica al arranque; tooltips pantalla por pantalla sin hacer |
+| C-11 | F3 | Contraste | 2 | **hecho** 2026-11-09 | `#6F5F4E` 5,79:1; 78 textos grises migrados · B3 PASA |
+| C-12 | F3 | Tema del sistema + reduce-motion | 1 | **hecho** 2026-11-09 | `ThemeMode.system`; 3 bucles respetan `disableAnimations` · B4 PASA |
+| C-13 | F3 | Marca y `/terms` | 1 | **hecho** 2026-11-09 | `index.html` + `/terms` 5.481 B · C1 y D3 PASA |
+| C-14 | F4 | Recibos | 2 | **hecho** 2026-11-10 | enlace firmado 10 min; 401 sin sesión verificado · ítem 31 PASA |
 | C-15 | F4 | Pago real conciliado | — | **diferido** | llaves `pub_prod_` |
-| C-16 | F4 | Soporte con SLA | 1 | pendiente | ítem 71 |
-| C-17 | F4 | Embudo y 5xx | 3 | pendiente | ítems 68/70 |
-| C-18 | F4 | Backup + rollback | 3 | pendiente | ítems 77/76 |
-| C-19 | F4 | Permisos, push, deep links | 4 | pendiente | ítems 11/13/14/16 |
-| F5 | F5 | Instrumentar 17 N/V | — | pendiente | primera medición por ítem |
+| C-16 | F4 | Soporte con SLA | 1 | **hecho** 2026-11-10 | diálogo en app + `/terms` publicado · ítem 71 PASA |
+| C-17 | F4 | Embudo y 5xx | 3 | **hecho** 2026-11-10 | `/api/analytics/summary` 5 tests, 401 verificado · 68 PASA, 70 PARCIAL |
+| C-18 | F4 | Backup + rollback | 3 | **hecho** 2026-11-10 | restore con conteos idénticos; rollback ejecutado sin cronometrar (N/V) · ítems 77/76 |
+| C-19 | F4 | Permisos, push, deep links | 4 | **parcial** | 13 hecho (F9.2); 11 orden de permisos, 14 deep links y 16 versión mínima abiertos |
+| C-20 | — | Inventario de datos personales | 2 | **hecho** 2026-11-10 | navegó fuera del plan · 129 tablas · ítem 41 PASA |
+| C-21 | — | Página de estado del servicio | 1 | **hecho** 2026-11-10 | navegó fuera del plan · `/status` 200 · ítem 73 PASA |
+| F5 | F5 | Instrumentar 18 N/V | — | pendiente | primera medición por ítem |
 
-**Total activo:** 10 tareas · **≈22 h** · críticos en rojo hoy: B2, B3 (2). F1 y F2 cerradas 2026-11-09.
+**Total activo:** 3 tareas (C-10 tooltips, C-19 parcial, F5) · **≈7 h** · **0 críticos en rojo** · 60,1 % de ejecución al 2026-11-10 02:20.
+
+Desviaciones respecto al plan original: C-10 se intentó dos veces con reemplazo masivo y se revirtió (rompía el build); lo entregado en F9.6 ataca el problema por el tema y el arranque, no widget por widget. C-20 y C-21 no estaban en el plan y se hicieron porque eran baratos y cerraban dos FALLA.
 
 ## Cómo se re-verifica (lo que queda guardado)
 
