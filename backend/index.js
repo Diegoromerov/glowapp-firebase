@@ -556,19 +556,15 @@ app.get('/api/health', async (req, res) => {
   // migración que falló es exactamente una que no quedó registrada.
   let estadoMigraciones;
   try {
-    const dir = require('path').join(__dirname, 'migrations');
-    const total = fs
-      .readdirSync(dir)
-      .filter((f) => f.endsWith('.sql') && !f.endsWith('.down.sql')).length;
+    // NO se publica un "pendientes = archivos - registradas": el esquema también
+    // se aplica por prepareRlsDatabase.js, así que esa resta marcaba 128
+    // pendientes con la base completa. Se informa solo lo comprobable.
     const { pool } = require('./src/config/db');
     const r = await pool.query(
       'SELECT COUNT(*)::int AS registradas, MAX(applied_at) AS ultima FROM schema_migrations'
     );
-    const registradas = r.rows[0].registradas;
     estadoMigraciones = {
-      archivos: total,
-      registradas,
-      pendientes: Math.max(0, total - registradas),
+      registradas: r.rows[0].registradas,
       ultima_aplicada: r.rows[0].ultima,
     };
   } catch (_) {
