@@ -366,9 +366,9 @@
    "bloque": "G",
    "titulo": "Lector de pantalla",
    "estado": "FALLA",
-   "estado_2026_11_09": "PASA",
+   "estado_2026_11_09": "PARCIAL",
    "evidencia": "F9.3B: 45 de 46 IconButton con nombre (tooltips + Semantics). Falta recorrido con lector de pantalla en dispositivo",
-   "evidencia_2026_11_10": "main(): SemanticsBinding.ensureSemantics() al arranque; test semantica_activa_test.dart en verde. El estado inicial de web no es comprobable desde test: confirmacion en dispositivo queda N/V."
+   "evidencia_2026_11_10": "REVERTIDO. ensureSemantics() al arranque creaba capas flt-semantics por encima de los platform views y dejaba el boton de Google sin recibir ni el hover. Se vuelve al comportamiento por defecto de Flutter web. Queda pendiente la revision de semantica pantalla por pantalla, sin forzar el arbol global."
   },
   "57": {
    "bloque": "G",
