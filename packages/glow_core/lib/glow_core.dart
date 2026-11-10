@@ -78,6 +78,8 @@ export 'src/widgets/audience_toggle.dart';
 export 'src/widgets/aura_3d_emblem.dart';
 export 'src/widgets/error_fallback.dart';
 export 'src/widgets/forced_update_dialog.dart';
+export 'src/widgets/franja_conexion.dart';
+export 'src/widgets/estado_resiliente.dart';
 export 'src/widgets/glass_card.dart';
 export 'src/widgets/glow_glass_card.dart';
 export 'src/widgets/invitation_code_entry.dart';

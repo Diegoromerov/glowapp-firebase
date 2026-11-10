@@ -157,8 +157,16 @@ class GlowClientApp extends ConsumerWidget {
       navigatorKey: GlowGuideService.instance.navigatorKey,
       // El guide se monta encima del Navigator: es lo que le permite navegar la
       // app sin desaparecer. Dentro de una pantalla, la ruta nueva lo tapaba.
-      builder: (context, child) => DeepLinkHost(
-        child: GlowGuideHost(child: child ?? const SizedBox.shrink()),
+      builder: (context, child) => Column(
+        children: [
+          // Ítem 21: la franja solo ocupa alto cuando de verdad no hay red.
+          const FranjaConexion(),
+          Expanded(
+            child: DeepLinkHost(
+              child: GlowGuideHost(child: child ?? const SizedBox.shrink()),
+            ),
+          ),
+        ],
       ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

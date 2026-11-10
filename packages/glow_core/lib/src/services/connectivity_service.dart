@@ -60,6 +60,14 @@ class ConnectivityService {
   /// bloquear la primera petición de la app.
   static bool get isConnected => _isConnected;
 
+  /// Estado observable (ítem 21).
+  ///
+  /// Existe para que la UI reaccione sin sondear: cualquier capa que llame a
+  /// [check] —la API al fallar, una pantalla al reintentar— actualiza este
+  /// notifier y la franja de conexión se entera. Un `Timer.periodic` habría
+  /// gastado batería en segundo plano y dejado timers colgando en las pruebas.
+  static final ValueNotifier<bool> conectado = ValueNotifier<bool>(true);
+
   static Future<bool> _platformProbe() =>
       probe_impl.probeReachability(probeHost, probeTimeout);
 
@@ -83,6 +91,7 @@ class ConnectivityService {
     }
 
     _isConnected = reachable;
+    conectado.value = reachable;
     _lastCheck = now;
     if (kDebugMode && !reachable) {
       debugPrint('📴 ConnectivityService: sin conexión detectada');
@@ -94,6 +103,7 @@ class ConnectivityService {
   @visibleForTesting
   static void resetForTesting() {
     _isConnected = true;
+    conectado.value = true;
     _lastCheck = null;
     probeHost = 'one.one.one.one';
     probeTimeout = const Duration(seconds: 3);

@@ -176,9 +176,25 @@ class _StoreScreenState extends State<StoreScreen> {
 
   void _updateCartQuantity(int id, int newQty) {
     if (newQty <= 0) {
+      // Ítem 25: quitar del carrito es reversible, así que se puede deshacer.
+      // Antes el producto desaparecía sin rastro y había que buscarlo otra vez.
+      final quitado = _cart[id];
       setState(() {
         _cart.remove(id);
       });
+      if (quitado != null && mounted) {
+        final nombre = (quitado['product'] as Map)['nombre'] ?? 'Producto';
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(
+            content: Text('$nombre fuera del carrito'),
+            duration: const Duration(seconds: 6),
+            action: SnackBarAction(
+              label: 'Deshacer',
+              onPressed: () => setState(() => _cart[id] = quitado),
+            ),
+          ));
+      }
       return;
     }
     final product = _cart[id]!['product'] as Map<String, dynamic>;
@@ -1271,11 +1287,17 @@ class _StoreScreenState extends State<StoreScreen> {
                                 // Cuadrícula de Productos
                                 Expanded(
                                   child: _filteredProducts.isEmpty
-                                      ? const Center(
-                                          child: Text(
-                                            'No se encontraron productos disponibles.',
-                                            style: TextStyle(color: Color(0xFF6F5F4E)),
-                                          ),
+                                      ? EstadoVacio(
+                                          icono: Icons.shopping_bag_outlined,
+                                          titulo: 'No hay productos con este filtro',
+                                          detalle:
+                                              'Prueba con otra categoría o limpia la búsqueda.',
+                                          accionEtiqueta: 'Ver todo',
+                                          onAccion: () => setState(() {
+                                            _searchController.clear();
+                                            _selectedCategory = 'Todos';
+                                            _filterProducts();
+                                          }),
                                         )
                                       : GridView.builder(
                                           padding: const EdgeInsets.all(24),

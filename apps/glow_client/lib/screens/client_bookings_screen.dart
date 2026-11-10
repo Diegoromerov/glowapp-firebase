@@ -15,7 +15,7 @@ class ClientBookingsScreen extends StatefulWidget {
 }
 
 class _ClientBookingsScreenState extends State<ClientBookingsScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, RefreshOnResumeMixin<ClientBookingsScreen> {
   late TabController _tabController;
   List<Map<String, dynamic>> _bookings = [];
   bool _isLoading = true;
@@ -90,6 +90,9 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     _tabController.dispose();
     super.dispose();
   }
+
+  @override
+  Future<void> alVolverAlPrimerPlano() => _loadBookings();
 
   Future<void> _loadBookings() async {
     // `#/my-bookings` es alcanzable sin sesión (deep link, guía, URL directa).

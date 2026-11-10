@@ -12,7 +12,12 @@ class ChatListScreen extends StatefulWidget {
   State<ChatListScreen> createState() => _ChatListScreenState();
 }
 
-class _ChatListScreenState extends State<ChatListScreen> {
+class _ChatListScreenState extends State<ChatListScreen>
+    with RefreshOnResumeMixin<ChatListScreen> {
+  @override
+  Future<void> alVolverAlPrimerPlano() =>
+      _fetchConversations(showLoading: false);
+
   List<Map<String, dynamic>> _conversations = [];
   bool _isLoading = true;
   String? _error;
