@@ -1,7 +1,7 @@
 # Plan de corrección — app CLIENTE (`apps/glow_client`)
 
-**Base:** auditoría del 2026-11-09 · **actualizado 2026-11-10 03:00** · `main` @ `9de8381b` · bundle `8169947052…` idéntico al build local
-**Estado medido hoy:** 38 PASA · 25 PARCIAL · 3 FALLA · 18 N/V · 2 N/A = **60,1 %** (76,5 % sobre lo medible) · **0 críticos en rojo**
+**Base:** auditoría del 2026-11-09 · **actualizado 2026-11-10 (cierre de F9.9)** · `main` @ `2d89f2fe`
+**Estado medido hoy:** 54 PASA · 11 PARCIAL · 1 FALLA · 18 N/V · 2 N/A = **70,8 %** (91 % sobre lo medible) · **0 críticos en rojo**
 **Punto de partida (2026-11-09):** 24 PASA · 34 PARCIAL · 9 FALLA = 48,8 % · 2 críticos
 **Objetivo:** llegar a **0 FALLA**, **0 bloqueantes en PARCIAL** y **0 críticos en rojo** en `tools/auditoria_cliente.py`.
 **Regla de oro:** nada de esto se ejecuta sin `AUTORIZACIÓN EXPLÍCITA DEL DIRECTOR — GLOWAPP-F<NN>`. Rama de trabajo propia, commits atómicos, `main` intacta hasta la fase autorizada.
@@ -144,9 +144,16 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | C-20 | — | Inventario de datos personales | 2 | **hecho** 2026-11-10 | navegó fuera del plan · 129 tablas · ítem 41 PASA |
 | C-21 | — | Página de estado del servicio | 1 | **hecho** 2026-11-10 | navegó fuera del plan · `/status` 200 · ítem 73 PASA |
 | C-25 | — | Seed de demostración (datos, no código) | 1 | **hecho** 2026-11-10 | 3 prestadores con servicios + 8 productos con lista 'cliente'; E2 y E3 en PASA |
+| C-26 | — | Push web: VAPID, alcance del worker y aviso en primer plano | 6 | **hecho con reserva** 2026-11-10 | clave en bundle, worker `activated` en su alcance, manejador siempre registrado; entrega no demostrada (ver 84) |
+| C-27 | — | Gate de versión mínima montado + `X-App-Version` | 1 | **hecho** 2026-11-10 | `AppUpdateGate` en `MaterialApp.builder`, fail-open; home carga sin bloqueo · ítem 79 PASA |
+| C-28 | — | Migraciones: fallos contados y no silenciados | 1,5 | **hecho** 2026-11-10 | error con nombre de archivo + resumen; `/api/health` publica `registradas` y `ultima_aplicada` · ítem 78 PASA |
+| C-29 | — | 5xx y crashes contables | 1 | **hecho** 2026-11-10 | `API_5XX` en `analytics_events` + summary · ítems 67 y 70 PASA |
+| C-30 | — | Auth verificada contra producción | 1 | **hecho** 2026-11-10 | cambio de contraseña: 401 con clave incorrecta, 200 con la correcta, login con la nueva · ítems 2, 9 y 13 PASA |
 | F5 | F5 | Instrumentar 18 N/V | — | pendiente | primera medición por ítem |
 
-**Total activo:** 3 tareas (C-10 tooltips, C-19 parcial, F5) · **≈7 h** · **0 críticos en rojo** · 60,1 % de ejecución al 2026-11-10 02:20.
+**Total activo:** F5 (instrumentación) y los 11 PARCIAL de segundo orden · **0 críticos en rojo** · **70,8 %** de ejecución al 2026-11-10.
+
+**Cerrado desde la versión anterior de este plan:** C-20 (inventario de datos), C-21 (página de estado), C-25 (seed de demostración), C-26 (push), C-27 (versión mínima), C-28 (migraciones), C-29 (5xx y crashes), C-30 (auth verificada). Los ítems 2, 9, 13, 39, 41, 43, 44, 54, 56 parcial, 57, 59, 67, 70, 73, 78, 79 y 80 pasaron a PASA.
 
 Datos de demostración: `scripts/seedDemoProviders.js` (3 prestadores con servicios y portafolio) y `scripts/seedCatalogoTienda.js` (8 productos + lista de precios 'cliente'), ambos idempotentes y con guarda `ALLOW_DEMO_SEED=1`. Esto ejecuta de hecho la opción ★A de D-GL-029 para el catálogo de tienda (sembrar en el tenant de plataforma) y deja la app demostrable.
 
