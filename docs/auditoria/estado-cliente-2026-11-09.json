@@ -517,13 +517,15 @@
    "titulo": "Migraciones seguras",
    "estado": "FALLA",
    "estado_2026_11_09": "PARCIAL",
-   "evidencia": "cadena 121/122/123 restaurada; 123 sin ejercitar en CI (P-111 abierto)"
+   "evidencia": "cadena 121/122/123 restaurada; 123 sin ejercitar en CI (P-111 abierto)",
+   "evidencia_2026_11_10": "Runner por migracion con cliente propio, checksum y aviso de DRIFT, INSERT ON CONFLICT. Sigue PARCIAL: un fallo real se registra como \"ya existia o error idempotente\" y no se cuenta, asi que una migracion quebrada se reintenta en cada arranque sin alarma."
   },
   "79": {
    "bloque": "J",
    "titulo": "Versionado",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "AppUpdateGate montado en MaterialApp.builder y fail-open; la politica la publica /api/health (minimo 1.0.0 = version actual, no bloquea) y cada peticion envia X-App-Version. Verificado en produccion: la home carga sin dialogo de bloqueo."
   },
   "80": {
    "bloque": "J",
