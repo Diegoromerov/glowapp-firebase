@@ -253,7 +253,8 @@
    "bloque": "E",
    "titulo": "OWASP MASVS básico",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Checklist MASVS en glowapp-company/07-produto/verificacion-masvs-cliente-2026-11-10.md: 15 controles medidos PASA, 1 PARCIAL (deep links) y 3 N/V declarados (pinning, ofuscacion, anti-root)."
   },
   "40": {
    "bloque": "E",
@@ -280,13 +281,15 @@
    "bloque": "E",
    "titulo": "Consentimientos",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Casilla obligatoria de terminos y politica en el registro con enlaces publicados, y fila en user_consents (consent_type=terms). user_consents sin CHECK, verificado en produccion."
   },
   "44": {
    "bloque": "E",
    "titulo": "Logs sin PII",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "maskEmail() en piiSanitizer y aplicado en authController, bookingController, retentionNotification y trialDunningCron. Test de invariante de fuente: falla si un log vuelve a interpolar un correo."
   },
   "45": {
    "bloque": "F",
