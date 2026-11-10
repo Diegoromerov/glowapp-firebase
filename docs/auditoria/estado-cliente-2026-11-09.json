@@ -73,7 +73,8 @@
    "bloque": "B",
    "titulo": "Permisos just-in-time",
    "estado": "FALLA",
-   "estado_2026_11_09": "FALLA"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "_verificarConsentimiento devuelve bool y _arrancarCaptura solo abre la camara si hay autorizacion vigente; unico call site de _initializeCamera verificado. 65/65 tests, analyze 0 errores."
   },
   "12": {
    "bloque": "B",

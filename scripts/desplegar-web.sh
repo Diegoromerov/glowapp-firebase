@@ -69,6 +69,13 @@ if [ -n "$FALTAN" ]; then
   exit 1
 fi
 
+# El push web necesita la clave VAPID (Firebase Console → Cloud Messaging →
+# Web Push certificates). Sin ella el build funciona pero FCM no da token, y el
+# sintoma es un push que nunca llega: se avisa aqui y no mas tarde.
+if [ -z "${FCM_VAPID_KEY:-}" ]; then
+  echo "AVISO: sin FCM_VAPID_KEY el push web no obtiene token (Pub/Sub no llegara)."
+fi
+
 echo "-> compilando $APP (Firebase: proyecto $FIREBASE_PROJECT_ID)"
 flutter build web --release \
   --dart-define=API_URL="$API_URL" \
@@ -78,7 +85,7 @@ flutter build web --release \
   --dart-define=FIREBASE_MESSAGING_SENDER_ID="$FIREBASE_MESSAGING_SENDER_ID" \
   --dart-define=FIREBASE_STORAGE_BUCKET="${FIREBASE_STORAGE_BUCKET:-}" \
   --dart-define=FIREBASE_WEB_APP_ID="$FIREBASE_WEB_APP_ID" \
-  --dart-define=GOOGLE_WEB_CLIENT_ID="${GOOGLE_WEB_CLIENT_ID:-}"
+  --dart-define=GOOGLE_WEB_CLIENT_ID="${GOOGLE_WEB_CLIENT_ID:-}" \n  --dart-define=FCM_VAPID_KEY="${FCM_VAPID_KEY:-}"
 
 if [ ! -f build/web/main.dart.js ]; then
   echo "X no se genero build/web/main.dart.js; se aborta el despliegue" >&2
