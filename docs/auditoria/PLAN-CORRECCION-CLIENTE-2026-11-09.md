@@ -88,20 +88,22 @@ Crash-free %, arranque en frío, fluidez, red lenta, memoria, batería/GPS, fich
 
 ---
 
-## Fase 6 — Lo que queda (abierta 2026-11-10 · ≈7 h)
+## Fase 6 — Lo que queda (abierta 2026-11-10 · 11 PARCIAL · 1 FALLA)
 
 | ID | Ítems | Qué | Esf. | Depende de |
 |---|---|---|---|---|
-| **C-22** | 15, 21, 22, 23, 25 | Resiliencia de UI: estados vacíos, sin conexión, carga, datos obsoletos, confirmar/deshacer | 3 h | — |
-| **C-23** | 39, 43, 44 | Seguridad: verificación MASVS básica, consentimientos, logs sin PII | 2 h | — |
-| **C-24** | 11, 14, 16 | Permisos JIT (orden invertido en `capture_screen`), deep links, versión mínima | 3 h | APK + `assetlinks.json` |
-| **C-10 resto** | 56 | Tooltips pantalla por pantalla (detalle de prestador, reserva, pago, chat, perfil) | 1,5 h | — |
-| **C-08 resto** | 84 | Push web: clave VAPID | — | **Director** |
+| **C-22** | 15, 21, 23, 25 | Resiliencia de UI | ✅ **cerrada** (F9.7) | queda el ítem 22 (timeouts de carga) |
+| **C-23** | 39, 43, 44 | Seguridad y PII | ✅ **cerrada** (F9.8) | — |
+| **C-24** | 11 ✅, 14 ❌, 16 | Permisos JIT, deep links, versión mínima | **parcial** | 14 necesita APK y `assetlinks.json`; 16 depende de tienda |
+| **C-10 resto** | 56 | Tooltips y semántica pantalla por pantalla | 1,5 h | — |
+| **C-08 resto** | 84 | Push web | ⚠️ **hecho con reserva** | VAPID ya está; falta demostrar la entrega en el navegador del Director |
 | **F5** | 18 N/V | Instrumentación | — | dispositivo/monitor |
 
-Los ítems 2, 5, 9 (auth), 12, 13, 30, 32, 50, 63, 67 y 70 quedan como PARCIAL de
-segundo orden: ninguno bloquea el lanzamiento y varios dependen de Wompi (C-15,
-diferido por `D-GL-029`).
+De los 11 PARCIAL que quedan: **12** y **22** son código sin dependencias; **30** y
+**32** dependen de Wompi (C-15, diferido por `D-GL-029`); **83** y **85** de
+infraestructura de correo; **5, 16, 50, 63** de tienda, dispositivo o decisión de
+producto; **56** es trabajo lento y de riesgo (ya se intentó dos veces con
+reemplazo masivo y se revirtió).
 
 ## Orden y dependencias (estado actual)
 
