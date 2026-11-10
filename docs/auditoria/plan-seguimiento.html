@@ -82,7 +82,7 @@
 
   <div class="legend">
     <span><i class="dot" style="background:var(--ok)"></i>hecho</span>
-    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>siguiente (F9.5)</span>
+    <span><i class="dot" style="background:var(--accent, #2f6f8f)"></i>en curso (F6)</span>
     <span><i class="dot" style="background:color-mix(in srgb, var(--accent, #2f6f8f) 55%, transparent)"></i>pendiente</span>
     <span><i class="dot" style="background:var(--warn)"></i>bloqueado por tercero</span>
     <span><i class="dot" style="background:transparent;border:1px dashed var(--muted-foreground, #6b6b6b)"></i>diferido con disparador</span>
@@ -127,8 +127,8 @@
     <div class="track"><div class="seg done" style="left:18%;width:1.8%"></div></div>
   </div>
   <div class="row">
-    <div class="name">C-08 VAPID (push web) <small>· falta la clave: Director</small></div>
-    <div class="track"><div class="seg blk" style="left:19.8%;width:3.6%"></div></div>
+    <div class="name">C-08 VAPID (push web) <small>clave instalada y en el bundle</small></div>
+    <div class="track"><div class="seg done" style="left:19.8%;width:3.6%">hecho</div></div>
   </div>
   <div class="row">
     <div class="name">C-09 CI de apps verde en push <small>· 1 h</small></div>
@@ -223,8 +223,8 @@
     <h2>Puertas de fase (qué debe estar verde para cerrar)</h2>
     <div class="gate"><b>F1</b><div><code>auditoria_cliente.py</code> sin críticos B1 · C3 · E4 y carga anónima sin ningún 401</div></div>
     <div class="gate"><b>F2</b><div>bundle publicado con <code>AIzaSy</code> &gt; 0 y <code>apps-ci</code> en verde sobre <code>main</code></div></div>
-    <div class="gate"><b>F3</b><div>B2, B3 y B4 en PASA: 45 de 46 botones con nombre</div></div>
-    <div class="gate"><b>F4</b><div>ítems 31, 71, 68/70, 77/76 y 11/13/14/16 sin FALLA ni PARCIAL</div></div>
+    <div class="gate"><b>F3</b><div>B3 y B4 en PASA · área táctil de 48 dp · tres bucles respetan reduce-motion</div></div>
+    <div class="gate"><b>F4</b><div>31, 71, 68/70 y 77/76 en PASA · 14 sigue en FALLA por falta de <code>assetlinks.json</code></div></div>
     <div class="gate"><b>F5</b><div>cada N/V tiene instrumento y una primera medición registrada</div></div>
   </div>
 
