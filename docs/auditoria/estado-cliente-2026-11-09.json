@@ -516,9 +516,9 @@
    "bloque": "J",
    "titulo": "Migraciones seguras",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
+   "estado_2026_11_09": "PASA",
    "evidencia": "cadena 121/122/123 restaurada; 123 sin ejercitar en CI (P-111 abierto)",
-   "evidencia_2026_11_10": "Runner por migracion con cliente propio, checksum y aviso de DRIFT, INSERT ON CONFLICT. Sigue PARCIAL: un fallo real se registra como \"ya existia o error idempotente\" y no se cuenta, asi que una migracion quebrada se reintenta en cada arranque sin alarma."
+   "evidencia_2026_11_10": "Runner por migracion con cliente propio, checksum y DRIFT, .down.sql excluidos, INSERT ON CONFLICT. Un fallo ya no se disfraza: se cuenta, se registra en error con el nombre del archivo y hay resumen al final. /api/health publica registradas y ultima_aplicada (no un \"pendientes\" derivado: el esquema tambien se aplica por prepareRlsDatabase y esa resta mentia). 3 tests."
   },
   "79": {
    "bloque": "J",
