@@ -85,7 +85,8 @@ flutter build web --release \
   --dart-define=FIREBASE_MESSAGING_SENDER_ID="$FIREBASE_MESSAGING_SENDER_ID" \
   --dart-define=FIREBASE_STORAGE_BUCKET="${FIREBASE_STORAGE_BUCKET:-}" \
   --dart-define=FIREBASE_WEB_APP_ID="$FIREBASE_WEB_APP_ID" \
-  --dart-define=GOOGLE_WEB_CLIENT_ID="${GOOGLE_WEB_CLIENT_ID:-}" \n  --dart-define=FCM_VAPID_KEY="${FCM_VAPID_KEY:-}"
+  --dart-define=GOOGLE_WEB_CLIENT_ID="${GOOGLE_WEB_CLIENT_ID:-}" \
+  --dart-define=FCM_VAPID_KEY="${FCM_VAPID_KEY:-}"
 
 if [ ! -f build/web/main.dart.js ]; then
   echo "X no se genero build/web/main.dart.js; se aborta el despliegue" >&2
