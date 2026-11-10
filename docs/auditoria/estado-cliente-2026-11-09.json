@@ -529,8 +529,9 @@
    "bloque": "J",
    "titulo": "Feature flags",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "/api/config/flags publico; FeatureFlags fail-open al arrancar"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "/api/config/flags publico; FeatureFlags fail-open al arrancar",
+   "evidencia_2026_11_10": "Flags por FEATURE_FLAGS (JSON en entorno, cache 60 s), endpoint publico GET /api/config/flags y consumo real en cliente (propinas, glowstore) con fail-open. 5 tests nuevos fijan el contrato."
   },
   "81": {
    "bloque": "J",
