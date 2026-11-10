@@ -55,6 +55,7 @@ import 'widgets/audience_toggle.dart';
 import 'widgets/deep_link_host.dart';
 import 'glowguide/glow_guide_host.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
+import 'app_keys.dart';
 import 'widgets/app_update_gate.dart';
 
 void main() async {
@@ -157,6 +158,7 @@ class GlowClientApp extends ConsumerWidget {
       title: 'GlowApp',
       debugShowCheckedModeBanner: false,
       navigatorKey: GlowGuideService.instance.navigatorKey,
+      scaffoldMessengerKey: rootMessengerKey,
       // El guide se monta encima del Navigator: es lo que le permite navegar la
       // app sin desaparecer. Dentro de una pantalla, la ruta nueva lo tapaba.
       builder: (context, child) => Column(

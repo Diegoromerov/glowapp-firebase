@@ -10,9 +10,11 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import '../app_keys.dart';
 import 'notificacion_web.dart'
     if (dart.library.js_interop) 'notificacion_web_web.dart' as notif_web;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:glow_core/services.dart';
 
@@ -132,7 +134,16 @@ class PushService {
     // se hace nada, el usuario no ve la notificación aunque FCM la entregó.
     if (kIsWeb) {
       final n = message.notification;
-      if (n != null) notif_web.mostrarNotificacionWeb(n.title ?? 'GlowApp', n.body ?? '');
+      final titulo = n?.title ?? 'GlowApp';
+      final cuerpo = n?.body ?? '';
+      // Doble red: notificación del sistema Y aviso dentro de la app. Si el
+      // navegador o el sistema operativo silencian la primera, el usuario igual
+      // se entera. Sirve además para distinguir «no llegó» de «no se mostró».
+      notif_web.mostrarNotificacionWeb(titulo, cuerpo);
+      rootMessengerKey.currentState?.showSnackBar(SnackBar(
+        content: Text('$titulo: $cuerpo'),
+        duration: const Duration(seconds: 8),
+      ));
       return;
     }
     if (message.notification == null) return;
