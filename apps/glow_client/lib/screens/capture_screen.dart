@@ -71,7 +71,13 @@ class _CaptureScreenState extends State<CaptureScreen>
     _laserController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2200),
-    )..repeat(reverse: true);
+    );
+    // Ítem 59: el barrido del láser es bucle infinito; se detiene si el sistema
+    // pide reducir movimiento (el óvalo y la guía siguen visibles, estáticos).
+    if (!WidgetsBinding
+        .instance.platformDispatcher.accessibilityFeatures.disableAnimations) {
+      _laserController.repeat(reverse: true);
+    }
 
     _laserAnimation = Tween<double>(begin: 0.05, end: 0.95).animate(
       CurvedAnimation(parent: _laserController, curve: Curves.easeInOut),

@@ -623,6 +623,35 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     }
   }
 
+  /// Ítem 57: cada estado lleva icono además de color y texto, para que se
+  /// distinga en escala de grises o con daltonismo.
+  IconData _getStatusIcon(String status) {
+    switch (status.toUpperCase()) {
+      case 'PENDING':
+      case 'PENDIENTE_PAGO':
+        return Icons.schedule;
+      case 'CONFIRMED':
+      case 'CONFIRMADA':
+      case 'CHECKIN_REALIZADO':
+        return Icons.event_available;
+      case 'EN_PROGRESO':
+        return Icons.play_circle_outline;
+      case 'FINALIZADA_PRESTADOR':
+      case 'ESPERANDO_OTP':
+        return Icons.verified_outlined;
+      case 'COMPLETED':
+      case 'COMPLETADA':
+        return Icons.check_circle_outline;
+      case 'EN_DISPUTA':
+        return Icons.gavel;
+      case 'CANCELLED':
+      case 'CANCELADA':
+        return Icons.cancel_outlined;
+      default:
+        return Icons.info_outline;
+    }
+  }
+
   Widget _buildEmptyState(String message) {
     return Center(
       child: Padding(
@@ -786,13 +815,21 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                     color: _getStatusBgColor(status),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Text(
-                    _getStatusText(status),
-                    style: TextStyle(
-                      color: _getStatusColor(status),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(_getStatusIcon(status),
+                          size: 12, color: _getStatusColor(status)),
+                      const SizedBox(width: 4),
+                      Text(
+                        _getStatusText(status),
+                        style: TextStyle(
+                          color: _getStatusColor(status),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 if (refundDetalle.isNotEmpty)

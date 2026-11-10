@@ -42,7 +42,13 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
     _pulseController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
-    )..repeat();
+    );
+    // Ítem 59: con «reducir movimiento» activo el pulso no late; el marcador
+    // sigue visible, solo deja de animarse.
+    if (!WidgetsBinding
+        .instance.platformDispatcher.accessibilityFeatures.disableAnimations) {
+      _pulseController.repeat();
+    }
 
     _vigilarUbicacionTimer = Timer.periodic(
       const Duration(seconds: 10),

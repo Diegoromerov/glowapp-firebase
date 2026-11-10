@@ -532,7 +532,7 @@ class AppTheme {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Radii.sm),
               ),
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              materialTapTargetSize: MaterialTapTargetSize.padded,
               visualDensity: VisualDensity.compact,
             ),
 
@@ -871,7 +871,7 @@ class AppTheme {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Radii.sm),
               ),
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              materialTapTargetSize: MaterialTapTargetSize.padded,
               visualDensity: VisualDensity.compact,
             ),
 
@@ -1365,7 +1365,7 @@ class AppTheme {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Radii.sm),
               ),
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              materialTapTargetSize: MaterialTapTargetSize.padded,
               visualDensity: VisualDensity.compact,
             ),
 
