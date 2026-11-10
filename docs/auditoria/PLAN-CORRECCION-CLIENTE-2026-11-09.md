@@ -1,13 +1,26 @@
 # Plan de corrección — app CLIENTE (`apps/glow_client`)
 
-**Base:** auditoría del 2026-11-09 · rama `main` @ `78fb1070` · bundle desplegado idéntico al build local
-**Estado medido:** 24 PASA · 34 PARCIAL · 9 FALLA · 17 N/V · 2 N/A = **48,8 % de ejecución** (61,2 % sobre lo medible)
+**Base:** auditoría del 2026-11-09 · **actualizado 2026-11-10 03:00** · `main` @ `9de8381b` · bundle `8169947052…` idéntico al build local
+**Estado medido hoy:** 38 PASA · 25 PARCIAL · 3 FALLA · 18 N/V · 2 N/A = **60,1 %** (76,5 % sobre lo medible) · **0 críticos en rojo**
+**Punto de partida (2026-11-09):** 24 PASA · 34 PARCIAL · 9 FALLA = 48,8 % · 2 críticos
 **Objetivo:** llegar a **0 FALLA**, **0 bloqueantes en PARCIAL** y **0 críticos en rojo** en `tools/auditoria_cliente.py`.
 **Regla de oro:** nada de esto se ejecuta sin `AUTORIZACIÓN EXPLÍCITA DEL DIRECTOR — GLOWAPP-F<NN>`. Rama de trabajo propia, commits atómicos, `main` intacta hasta la fase autorizada.
 
+## Estado por fase
+
+| Fase | Alcance | Estado |
+|---|---|---|
+| F0 | Diagnóstico y decisiones (D-GL-029, rol de runtime) | **cerrada** 2026-11-09 |
+| F1 | P0 visible: analítica, sesión, errores, datos inventados | **cerrada** 2026-11-09 · C-01..C-04 |
+| F2 | Build y despliegue | **cerrada** salvo C-08 (VAPID del Director) |
+| F3 | Accesibilidad y marca | **cerrada** salvo los tooltips de C-10 |
+| F4 | PARCIAL que bloqueaban lanzamiento | **cerrada** salvo C-19 |
+| F5 | Instrumentación de los N/V | **bloqueada**: necesita dispositivo o monitor |
+| F6 | Lo que queda | **activa** desde 2026-11-10 |
+
 ---
 
-## Fase 0 — Dos hallazgos que cambian la conversación (antes de tocar código)
+## Fase 0 — Dos hallazgos que cambian la conversación ✅ cerrada 2026-11-09
 
 | | Hallazgo | Evidencia | Decide |
 |---|---|---|---|
@@ -18,7 +31,7 @@ Sin decisión en 0.1, C-05 y C-06 se hacen sobre un catálogo que no se ve.
 
 ---
 
-## Fase 1 — P0: lo que el usuario ve hoy (1 sesión)
+## Fase 1 — P0: lo que el usuario ve hoy ✅ cerrada 2026-11-09 (F9.1)
 
 | ID | Cambio | Archivo | Criterio de aceptación | Esf. |
 |---|---|---|---|---|
@@ -33,7 +46,7 @@ Sin decisión en 0.1, C-05 y C-06 se hacen sobre un catálogo que no se ve.
 
 ---
 
-## Fase 2 — Build y despliegue (media sesión)
+## Fase 2 — Build y despliegue ✅ cerrada 2026-11-09 (F9.2), salvo VAPID
 
 | ID | Cambio | Archivo | Criterio | Esf. |
 |---|---|---|---|---|
@@ -45,7 +58,7 @@ Sin decisión en 0.1, C-05 y C-06 se hacen sobre un catálogo que no se ve.
 
 ---
 
-## Fase 3 — Accesibilidad y marca (1 sesión)
+## Fase 3 — Accesibilidad y marca ✅ cerrada 2026-11-10 (F9.3 + F9.6), salvo tooltips
 
 | ID | Cambio | Criterio | Esf. |
 |---|---|---|---|
@@ -56,7 +69,7 @@ Sin decisión en 0.1, C-05 y C-06 se hacen sobre un catálogo que no se ve.
 
 ---
 
-## Fase 4 — Cerrar los PARCIAL que bloquean lanzamiento (1-2 sesiones)
+## Fase 4 — Cerrar los PARCIAL que bloquean lanzamiento ✅ cerrada 2026-11-10 (F9.4 + F9.4B), salvo C-19
 
 | ID | Ítem | Qué falta | Criterio |
 |---|---|---|---|
@@ -69,21 +82,36 @@ Sin decisión en 0.1, C-05 y C-06 se hacen sobre un catálogo que no se ve.
 
 ---
 
-## Fase 5 — Instrumentar los 17 N/V (necesita dispositivo o monitor)
+## Fase 5 — Instrumentar los 18 N/V ⛔ bloqueada (necesita dispositivo o monitor)
 
 Crash-free %, arranque en frío, fluidez, red lenta, memoria, batería/GPS, ficha de tienda, data safety, edad, baja de comunicaciones, multi-dispositivo, foco/teclado web, escalado a 200 %, reconciliación diaria. **Son gaps de instrumento, no deuda**: sin medidor no se pueden aprobar ni rechazar.
 
 ---
 
-## Orden y dependencias
+## Fase 6 — Lo que queda (abierta 2026-11-10 · ≈7 h)
+
+| ID | Ítems | Qué | Esf. | Depende de |
+|---|---|---|---|---|
+| **C-22** | 15, 21, 22, 23, 25 | Resiliencia de UI: estados vacíos, sin conexión, carga, datos obsoletos, confirmar/deshacer | 3 h | — |
+| **C-23** | 39, 43, 44 | Seguridad: verificación MASVS básica, consentimientos, logs sin PII | 2 h | — |
+| **C-24** | 11, 14, 16 | Permisos JIT (orden invertido en `capture_screen`), deep links, versión mínima | 3 h | APK + `assetlinks.json` |
+| **C-10 resto** | 56 | Tooltips pantalla por pantalla (detalle de prestador, reserva, pago, chat, perfil) | 1,5 h | — |
+| **C-08 resto** | 84 | Push web: clave VAPID | — | **Director** |
+| **F5** | 18 N/V | Instrumentación | — | dispositivo/monitor |
+
+Los ítems 2, 5, 9 (auth), 12, 13, 30, 32, 50, 63, 67 y 70 quedan como PARCIAL de
+segundo orden: ninguno bloquea el lanzamiento y varios dependen de Wompi (C-15,
+diferido por `D-GL-029`).
+
+## Orden y dependencias (estado actual)
 
 ```
-0.1 decisión de datos ──► C-05 ──► E3 verde
-C-01 ──► E4 verde ──► C-17 (embudo)
-C-02 + C-03 ──► consola limpia
-C-04 ──► reserva honesta ──► C-15
-C-07 + C-08 + C-09 ──► C-19 (dispositivo) ──► Fase 5
-C-06 ──► aislamiento real (antes de cualquier dato multi-tenant)
+C-22 ──► estados de UI coherentes            (independiente)
+C-23 ──► verificación de seguridad           (independiente)
+C-10 resto ──► tooltips                      (independiente)
+C-24 ──► requiere APK y assetlinks.json ──► F5 (instrumentación)
+C-08 resto ──► VAPID del Director ──► ítem 84
+C-15 ──► llaves pub_prod_ de Wompi           (diferido)
 ```
 
 ## Seguimiento (tabla viva — actualizar al cerrar cada tarea)
