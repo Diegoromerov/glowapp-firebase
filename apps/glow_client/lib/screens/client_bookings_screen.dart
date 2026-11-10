@@ -134,7 +134,7 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
     final id = booking['id']?.toString() ?? '';
     if (id.isEmpty) return;
     try {
-      final res = await ApiService.post('/api/bookings/$id/receipt/link');
+      final res = await ApiService.post('/api/bookings/$id/receipt/link', const {});
       final url = (res['url'] ?? '').toString();
       if (url.isEmpty) throw Exception('No se pudo preparar el recibo');
       final abierto =
