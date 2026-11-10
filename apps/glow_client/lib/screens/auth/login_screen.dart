@@ -404,8 +404,9 @@ class _LoginScreenState extends State<LoginScreen> {
       fontSize: isMobileLayout ? 16 : 13,
       color: t.textSecondary,
     );
-    // Un solo iframe de GIS por build; se reutiliza en el Stack del botón.
-    final googleOverlay = gis_button.googleSignInOverlay();
+    // Botón oficial de GIS ("continuar con Google"). Se pinta tal cual: en web
+    // GIS solo entrega credenciales por su propio botón.
+    final googleOverlay = gis_button.googleSignInButton();
     return Scaffold(
       backgroundColor: const Color(0xFFFAF8F5),
       body: Stack(
@@ -646,31 +647,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                   // flujo real de GIS superpuesto e invisible.
                                   // En web el clic lo recibe el iframe de Google; fuera
                                   // de web el botón propio llama a signIn().
-                                  Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      _buildSocialButton(
-                                        icon: const Icon(Icons.g_mobiledata,
-                                            color: Color(0xFFC5A052), size: 32),
-                                        onTap: googleOverlay != null
-                                            ? null
-                                            : (_isLoading
-                                                ? null
-                                                : () => _handleOAuth('GOOGLE')),
-                                        label: 'Google',
-                                        t: t,
-                                      ),
-                                      if (googleOverlay != null)
-                                        Positioned.fill(
-                                          child: ClipOval(
-                                            child: Opacity(
-                                              opacity: 0.01,
-                                              child: googleOverlay,
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
+                                  // En web, el botón OFICIAL de GIS, visible. Antes se
+                                  // dibujaba un círculo propio y encima se apilaba el
+                                  // iframe de Google con opacidad 0.01: el botón se veía
+                                  // deshabilitado y el clic no llegaba a Google. Un botón
+                                  // visible que funciona vale más que uno bonito y muerto.
+                                  if (googleOverlay != null)
+                                    SizedBox(height: 44, width: 240, child: googleOverlay)
+                                  else
+                                    _buildSocialButton(
+                                      icon: const Icon(Icons.g_mobiledata,
+                                          color: Color(0xFFC5A052), size: 32),
+                                      onTap: _isLoading
+                                          ? null
+                                          : () => _handleOAuth('GOOGLE'),
+                                      label: 'Google',
+                                      t: t,
+                                    ),
                                 ],
                               ),
                             ],
