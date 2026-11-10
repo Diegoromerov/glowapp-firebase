@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'api_error.dart';
+import 'app_update_service.dart';
 import 'booking_selection.dart';
 import 'payload.dart';
 import 'package:flutter/foundation.dart';
