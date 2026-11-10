@@ -18,8 +18,25 @@ const config = {
   appId: params.get('appId') || '',
 };
 
-if (config.apiKey && config.projectId && config.messagingSenderId && config.appId) {
+// La configuración preferida viene de Hosting, que sirve las claves públicas
+// del proyecto en /__/firebase/init.js. Antes solo se usaban los parámetros de
+// la URL: si faltaba uno, el worker se registraba, recibía los push y se
+// quedaba mudo sin avisar.
+try {
+  importScripts('/__/firebase/init.js');
+} catch (e) {
+  console.warn('[sw] sin /__/firebase/init.js:', e && e.message);
+}
+
+if (!firebase.apps.length &&
+    config.apiKey && config.projectId && config.messagingSenderId && config.appId) {
   firebase.initializeApp(config);
+}
+
+// Con la app inicializada por cualquiera de las dos vías, el manejador se
+// registra siempre. Antes vivía dentro del `if` de los parámetros, así que si
+// la configuración llegaba por Hosting el worker no escuchaba nada.
+if (firebase.apps.length) {
   const messaging = firebase.messaging();
 
   messaging.onBackgroundMessage((payload) => {
