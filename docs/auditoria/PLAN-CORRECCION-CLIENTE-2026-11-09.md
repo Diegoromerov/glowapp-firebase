@@ -1,7 +1,7 @@
 # Plan de corrección — app CLIENTE (`apps/glow_client`)
 
 **Base:** auditoría del 2026-11-09 · **actualizado 2026-11-10 (cierre de F9.9)** · `main` @ `2d89f2fe`
-**Estado medido hoy:** 54 PASA · 11 PARCIAL · 1 FALLA · 18 N/V · 2 N/A = **70,8 %** (91 % sobre lo medible) · **0 críticos en rojo**
+**Estado medido hoy:** 56 PASA · 9 PARCIAL · 1 FALLA · 18 N/V · 2 N/A = **72,0 %** (92 % sobre lo medible) · **0 críticos en rojo**
 **Punto de partida (2026-11-09):** 24 PASA · 34 PARCIAL · 9 FALLA = 48,8 % · 2 críticos
 **Objetivo:** llegar a **0 FALLA**, **0 bloqueantes en PARCIAL** y **0 críticos en rojo** en `tools/auditoria_cliente.py`.
 **Regla de oro:** nada de esto se ejecuta sin `AUTORIZACIÓN EXPLÍCITA DEL DIRECTOR — GLOWAPP-F<NN>`. Rama de trabajo propia, commits atómicos, `main` intacta hasta la fase autorizada.
@@ -92,14 +92,14 @@ Crash-free %, arranque en frío, fluidez, red lenta, memoria, batería/GPS, fich
 
 | ID | Ítems | Qué | Esf. | Depende de |
 |---|---|---|---|---|
-| **C-22** | 15, 21, 23, 25 | Resiliencia de UI | ✅ **cerrada** (F9.7) | queda el ítem 22 (timeouts de carga) |
+| **C-22** | 15, 21, 22, 23, 25 | Resiliencia de UI | ✅ **cerrada** (F9.7 + F9.10) | — |
 | **C-23** | 39, 43, 44 | Seguridad y PII | ✅ **cerrada** (F9.8) | — |
 | **C-24** | 11 ✅, 14 ❌, 16 | Permisos JIT, deep links, versión mínima | **parcial** | 14 necesita APK y `assetlinks.json`; 16 depende de tienda |
 | **C-10 resto** | 56 | Tooltips y semántica pantalla por pantalla | 1,5 h | — |
 | **C-08 resto** | 84 | Push web | ⚠️ **hecho con reserva** | VAPID ya está; falta demostrar la entrega en el navegador del Director |
 | **F5** | 18 N/V | Instrumentación | — | dispositivo/monitor |
 
-De los 11 PARCIAL que quedan: **12** y **22** son código sin dependencias; **30** y
+De los 9 PARCIAL que quedan: **12** y **22** son código sin dependencias; **30** y
 **32** dependen de Wompi (C-15, diferido por `D-GL-029`); **83** y **85** de
 infraestructura de correo; **5, 16, 50, 63** de tienda, dispositivo o decisión de
 producto; **56** es trabajo lento y de riesgo (ya se intentó dos veces con
@@ -155,7 +155,7 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 
 **Total activo:** F5 (instrumentación) y los 11 PARCIAL de segundo orden · **0 críticos en rojo** · **70,8 %** de ejecución al 2026-11-10.
 
-**Cerrado desde la versión anterior de este plan:** C-20 (inventario de datos), C-21 (página de estado), C-25 (seed de demostración), C-26 (push), C-27 (versión mínima), C-28 (migraciones), C-29 (5xx y crashes), C-30 (auth verificada). Los ítems 2, 9, 13, 39, 41, 43, 44, 54, 56 parcial, 57, 59, 67, 70, 73, 78, 79 y 80 pasaron a PASA.
+**Cerrado desde la versión anterior de este plan:** C-20 (inventario de datos), C-21 (página de estado), C-25 (seed de demostración), C-26 (push), C-27 (versión mínima), C-28 (migraciones), C-29 (5xx y crashes), C-30 (auth verificada). Los ítems 2, 9, 12, 13, 22, 39, 41, 43, 44, 54, 57, 59, 67, 70, 73, 78, 79 y 80 pasaron a PASA.
 
 Datos de demostración: `scripts/seedDemoProviders.js` (3 prestadores con servicios y portafolio) y `scripts/seedCatalogoTienda.js` (8 productos + lista de precios 'cliente'), ambos idempotentes y con guarda `ALLOW_DEMO_SEED=1`. Esto ejecuta de hecho la opción ★A de D-GL-029 para el catálogo de tienda (sembrar en el tenant de plataforma) y deja la app demostrable.
 
