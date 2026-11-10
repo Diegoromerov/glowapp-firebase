@@ -76,6 +76,10 @@ if [ -z "${FCM_VAPID_KEY:-}" ]; then
   echo "AVISO: sin FCM_VAPID_KEY el push web no obtiene token (Pub/Sub no llegara)."
 fi
 
+# Un `--dart-define=X=""` NO equivale a no pasarlo: pisa el defaultValue del
+# codigo. Asi se quedo sin clientId el login y el boton de Google dejo de servir.
+: "${GOOGLE_WEB_CLIENT_ID:=374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com}"
+
 echo "-> compilando $APP (Firebase: proyecto $FIREBASE_PROJECT_ID)"
 flutter build web --release \
   --dart-define=API_URL="$API_URL" \
