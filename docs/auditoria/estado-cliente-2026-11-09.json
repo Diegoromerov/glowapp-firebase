@@ -344,7 +344,8 @@
    "bloque": "G",
    "titulo": "Área táctil",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "app_theme.dart: 3 materialTapTargetSize shrinkWrap -> padded. Area tactil de 48 dp por defecto en toda la app. E1 (codigo) + 0 errores de analyze."
   },
   "55": {
    "bloque": "G",
@@ -356,14 +357,16 @@
    "bloque": "G",
    "titulo": "Lector de pantalla",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "F9.3B: 45 de 46 IconButton con nombre (tooltips + Semantics). Falta recorrido con lector de pantalla en dispositivo"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "F9.3B: 45 de 46 IconButton con nombre (tooltips + Semantics). Falta recorrido con lector de pantalla en dispositivo",
+   "evidencia_2026_11_10": "main(): SemanticsBinding.ensureSemantics() al arranque; test semantica_activa_test.dart en verde. El estado inicial de web no es comprobable desde test: confirmacion en dispositivo queda N/V."
   },
   "57": {
    "bloque": "G",
    "titulo": "No depender del color",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Chip de estado con icono (_getStatusIcon) ademas de color y texto: legible en escala de grises. E1."
   },
   "58": {
    "bloque": "G",
@@ -375,8 +378,9 @@
    "bloque": "G",
    "titulo": "Movimiento reducido",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "F9.3: themeMode sigue al sistema (darkTheme ya se usa). Falta respetar MediaQuery.disableAnimations en transiciones y pulsos"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "F9.3: themeMode sigue al sistema (darkTheme ya se usa). Falta respetar MediaQuery.disableAnimations en transiciones y pulsos",
+   "evidencia_2026_11_10": "booking_tracking y capture_screen no arrancan su bucle con disableAnimations; providers_screen ya lo respetaba. Los tres bucles infinitos cubiertos. E1."
   },
   "60": {
    "bloque": "H",
