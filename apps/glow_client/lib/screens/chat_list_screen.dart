@@ -142,9 +142,12 @@ class _ChatListScreenState extends State<ChatListScreen>
       if (showLoading && mounted) {
         setState(() {
           _error = mensajeHumano(e);
-          _isLoading = false;
         });
       }
+    } finally {
+      // Ítem 22: el spinner se apaga siempre. Antes dependía de que cada rama
+      // se acordara, y una salida temprana dejaba la pantalla girando.
+      if (mounted && _isLoading) setState(() => _isLoading = false);
     }
   }
 
