@@ -68,6 +68,24 @@ class PushService {
         );
       }
 
+      // Ítem: token huérfano. Si la registración actual no tiene suscripción
+      // push (pasa al cambiar el service worker de alcance), el SDK reutiliza un
+      // token en caché que ya no recibe nada: FCM responde success y el
+      // dispositivo nunca se entera. Se invalida para forzar suscripción nueva.
+      if (kIsWeb && !await haySuscripcionPush()) {
+        // Solo si el usuario ya autorizó: sin permiso no hay nada que renovar y
+        // borrar el token en cada arranque sería ruido.
+        final permiso = await messaging.getNotificationSettings();
+        if (permiso.authorizationStatus == AuthorizationStatus.authorized) {
+          debugPrint('PushService: token sin suscripción viva, se renueva');
+          try {
+            await messaging.deleteToken();
+          } catch (e) {
+            debugPrint('PushService: no se pudo borrar el token: $e');
+          }
+        }
+      }
+
       final token = await messaging.getToken(
         vapidKey: kIsWeb ? _vapidKey : null,
       );
