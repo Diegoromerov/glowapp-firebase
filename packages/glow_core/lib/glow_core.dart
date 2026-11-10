@@ -98,6 +98,7 @@ export 'src/widgets/wompi_payment_sheet.dart';
 
 // Utils
 export 'src/utils/json_num.dart';
+export 'src/utils/mensajes_permiso.dart';
 
 // Data
 export 'src/data/colombia_municipalities.dart';

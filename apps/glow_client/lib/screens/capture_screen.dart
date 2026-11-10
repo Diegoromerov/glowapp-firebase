@@ -178,12 +178,13 @@ class _CaptureScreenState extends State<CaptureScreen>
       try {
         await controller.initialize();
       } on CameraException catch (e) {
-        if (e.code == 'cameraPermission' || e.code == 'CameraAccessDenied') {
-          _showError('Permiso de cámara denegado. Por favor, otorga el permiso en ajustes.');
+        // Ítem 12: cualquier código de denegación (incluidos los "sin prompt"
+        // y "restringido") lleva al mensaje que dice CÓMO revertirlo.
+        if (esDenegacionDeCamara(e.code)) {
+          _showError(mensajePermisoDenegado('la cámara', esWeb: kIsWeb));
           return;
-        } else {
-          rethrow;
         }
+        rethrow;
       }
 
       if (mounted) {
