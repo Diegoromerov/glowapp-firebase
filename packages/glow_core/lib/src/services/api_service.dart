@@ -186,6 +186,10 @@ class ApiService {
     // Header X-App-Audience para audience scoping en backend (Fase 4)
     // Valor: 'client' (glow_client) o 'provider' (glow_provider)
     headers['X-App-Audience'] = appAudience;
+    // Ítem 79: versión de la app en cada petición. Permite que el backend
+    // aplique la política de versión mínima sobre la petición real y no solo
+    // sobre lo que el cliente dice al arrancar.
+    headers['X-App-Version'] = AppUpdateService.currentVersion;
     
     final token = await _getToken();
     if (token != null && token.isNotEmpty) {

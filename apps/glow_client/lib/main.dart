@@ -166,8 +166,15 @@ class GlowClientApp extends ConsumerWidget {
           // Ítem 21: la franja solo ocupa alto cuando de verdad no hay red.
           const FranjaConexion(),
           Expanded(
-            child: DeepLinkHost(
-              child: GlowGuideHost(child: child ?? const SizedBox.shrink()),
+            // Ítem 79: la política de versión mínima la publica /api/health y
+            // existía AppUpdateGate, pero no estaba montado en ninguna parte:
+            // el backend podía exigir una versión y la app nunca se enteraba.
+            // Es fail-open: si el chequeo falla, no bloquea el arranque.
+            child: AppUpdateGate(
+              navigatorKey: GlowGuideService.instance.navigatorKey,
+              child: DeepLinkHost(
+                child: GlowGuideHost(child: child ?? const SizedBox.shrink()),
+              ),
             ),
           ),
         ],
