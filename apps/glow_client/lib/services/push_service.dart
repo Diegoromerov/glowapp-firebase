@@ -9,6 +9,9 @@
 import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+
+import 'notificacion_web.dart'
+    if (dart.library.js_interop) 'notificacion_web_web.dart' as notif_web;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:glow_core/services.dart';
@@ -125,7 +128,14 @@ class PushService {
     FirebaseMessaging messaging,
   ) async {
     debugPrint('PushService: ${message.notification?.title ?? message.data}');
-    if (kIsWeb || message.notification == null) return;
+    // En web el push en primer plano NO lo pinta el service worker: si aquí no
+    // se hace nada, el usuario no ve la notificación aunque FCM la entregó.
+    if (kIsWeb) {
+      final n = message.notification;
+      if (n != null) notif_web.mostrarNotificacionWeb(n.title ?? 'GlowApp', n.body ?? '');
+      return;
+    }
+    if (message.notification == null) return;
     if (defaultTargetPlatform == TargetPlatform.iOS) return;
     const androidDetails = AndroidNotificationDetails(
       'glowapp_updates',
