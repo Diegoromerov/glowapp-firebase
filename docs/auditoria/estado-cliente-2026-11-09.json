@@ -82,7 +82,8 @@
    "bloque": "B",
    "titulo": "Denegación manejada",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Todos los codigos de denegacion de camara (incluidos CameraAccessDeniedWithoutPrompt y CameraAccessRestricted) llevan a un mensaje que dice donde revertirlo (web: candado; movil: Ajustes > Permisos). Notificaciones muestran su estado en Ajustes. 5 tests."
   },
   "13": {
    "bloque": "B",
@@ -148,8 +149,8 @@
    "bloque": "C",
    "titulo": "Estados de carga",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia_2026_11_10": "Indicador de carga en las 4 pantallas principales (grep: providers 2, store 2, chat 1, citas 3) y el flujo de error ya corta el spinner. Sigue PARCIAL: no verificado en dispositivo que ninguno quede infinito con red lenta."
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Peticiones con timeout de 15 s y maximo 3 reintentos; el estado de carga se apaga en finally (chat) y en las ramas de exito/error revisadas en citas, tienda y prestadores. Falta confirmacion en dispositivo con red lenta (N/V)."
   },
   "23": {
    "bloque": "C",
