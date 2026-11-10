@@ -59,7 +59,7 @@
 
   <div class="head">
     <h1>Plan de corrección — app cliente</h1>
-    <div class="sub">6 fases · 1 ítem en rojo · ≈4 h · corte 2026-11-10 05:20</div>
+    <div class="sub">7 fases · 1 ítem en rojo · ≈4 h · corte 2026-11-10 · F9.9</div>
   </div>
 
   <div class="kpis">
@@ -69,13 +69,13 @@
       <div class="bar"><i style="width:70.8%"></i></div>
     </div>
     <div class="kpi">
-      <div class="n">5 / 6</div>
-      <div class="l">fases cerradas (F0-F4, falta F5)</div>
+      <div class="n">5 / 7</div>
+      <div class="l">fases cerradas (F0-F4 · F5 bloqueada · F6 abierta)</div>
       <div class="bar"><i style="width:50%"></i></div>
     </div>
     <div class="kpi">
-      <div class="n">≈15 h</div>
-      <div class="l">trabajo restante · 0 críticos en rojo</div>
+      <div class="n">≈4 h</div>
+      <div class="l">trabajo restante · 0 críticos · 11 PARCIAL</div>
       <div class="bar"><i style="width:0%"></i></div>
     </div>
   </div>
@@ -153,36 +153,70 @@
     <div class="track"><div class="seg done" style="left:52.2%;width:3.6%"></div></div>
   </div>
 
-  <div class="phase">F4 · Cerrar los PARCIAL de lanzamiento <span class="tag">cerrada 2026-11-10 · F9.4</span></div>
+  <div class="phase">F4 · Cerrar los PARCIAL de lanzamiento <span class="tag">cerrada 2026-11-10 · F9.4 + F9.4B</span></div>
   <div class="row">
-    <div class="name">C-14 recibos descargables <small>· 2 h</small></div>
-    <div class="track"><div class="seg pend" style="left:55.8%;width:7.2%">14</div></div>
+    <div class="name">C-14 recibos descargables <small>· enlace firmado 10 min</small></div>
+    <div class="track"><div class="seg done" style="left:55.8%;width:7.2%">31</div></div>
   </div>
   <div class="row">
     <div class="name">C-15 pago real conciliado <small>sin llaves de producción</small></div>
     <div class="track"><div class="seg diff" style="left:63%;width:9%">diferido · trigger pub_prod_</div></div>
   </div>
   <div class="row">
-    <div class="name">C-16 soporte con SLA <small>· 1 h</small></div>
-    <div class="track"><div class="seg pend" style="left:63%;width:3.6%">16</div></div>
+    <div class="name">C-16 soporte con SLA <small>· app y /terms</small></div>
+    <div class="track"><div class="seg done" style="left:63%;width:3.6%">71</div></div>
   </div>
   <div class="row">
-    <div class="name">C-17 embudo y 5xx visibles <small>· 3 h</small></div>
-    <div class="track"><div class="seg pend" style="left:66.6%;width:10.8%">17</div></div>
+    <div class="name">C-17 embudo y 5xx visibles <small>· API_5XX contado</small></div>
+    <div class="track"><div class="seg done" style="left:66.6%;width:10.8%">68·70</div></div>
   </div>
   <div class="row">
-    <div class="name">C-18 backup + rollback probados <small>· 3 h</small></div>
-    <div class="track"><div class="seg pend" style="left:77.4%;width:10.8%">18</div></div>
+    <div class="name">C-18 backup + rollback <small>restore idéntico; tiempo de rollback N/V</small></div>
+    <div class="track"><div class="seg done" style="left:77.4%;width:10.8%">77·76</div></div>
   </div>
   <div class="row">
-    <div class="name">C-19 permisos, push y deep links <small>· 4 h, tras C-09</small></div>
-    <div class="track"><div class="seg pend" style="left:88.2%;width:11.8%">19</div></div>
+    <div class="name">C-19 permisos, push y deep links <small>11 y 13 hechos; falta 14</small></div>
+    <div class="track"><div class="seg pend" style="left:88.2%;width:11.8%">14</div></div>
   </div>
 
-  <div class="phase">F5 · Instrumentar los 17 N/V <span class="tag">dispositivo o monitor</span></div>
+  <div class="phase">F5 · Instrumentar los 18 N/V <span class="tag">bloqueada · dispositivo o monitor</span></div>
   <div class="row">
     <div class="name">crash-free, arranque, fps, memoria, batería <small>requiere instrumento</small></div>
     <div class="track"><div class="seg diff" style="left:0%;width:100%">medición fuera del repositorio</div></div>
+  </div>
+
+  <div class="phase">F6 · Cierre de segundo orden <span class="tag">abierta 2026-11-10 · F9.5 / F9.6 / F9.7 / F9.8 / F9.9</span></div>
+  <div class="row">
+    <div class="name">C-20 inventario de datos personales <small>129 tablas medidas</small></div>
+    <div class="track"><div class="seg done" style="left:0%;width:100%">hecho</div></div>
+  </div>
+  <div class="row">
+    <div class="name">C-21 estado del servicio publicado <small>/status 200</small></div>
+    <div class="track"><div class="seg done" style="left:0%;width:100%">hecho</div></div>
+  </div>
+  <div class="row">
+    <div class="name">C-22 resiliencia de UI <small>sin conexión, vacíos, refresco, deshacer</small></div>
+    <div class="track"><div class="seg done" style="left:0%;width:85%">15·21·23·25 · falta 22</div></div>
+  </div>
+  <div class="row">
+    <div class="name">C-23 seguridad y PII <small>MASVS, consentimiento, logs</small></div>
+    <div class="track"><div class="seg done" style="left:0%;width:100%">39·43·44</div></div>
+  </div>
+  <div class="row">
+    <div class="name">C-25 seed de demostración <small>3 prestadores + 8 productos</small></div>
+    <div class="track"><div class="seg done" style="left:0%;width:100%">hecho</div></div>
+  </div>
+  <div class="row">
+    <div class="name">C-26 push web <small>VAPID, alcance del worker, primer plano</small></div>
+    <div class="track"><div class="seg pend" style="left:20%;width:60%">entrega sin demostrar</div></div>
+  </div>
+  <div class="row">
+    <div class="name">C-27 version mínima + C-28 migraciones + C-29 5xx + C-30 auth</div>
+    <div class="track"><div class="seg done" style="left:35%;width:65%">79·78·70·67·2·9·13</div></div>
+  </div>
+  <div class="row">
+    <div class="name">resto: 12, 22, 30, 32, 50, 56, 63, 83, 85, 5, 16 <small>código, Wompi, correo, tienda</small></div>
+    <div class="track"><div class="seg pend" style="left:0%;width:100%">11 PARCIAL</div></div>
   </div>
 
   <div class="gates">
@@ -198,10 +232,10 @@
     Diferidos: C-05 catálogo mock (D-GL-029) · C-15 pago real (sin llaves de producción) · C-06 ya resuelto (rol <code>app_rls_user</code> verificado).<br>
       <div style="margin-top:14px;border-top:1px solid var(--border, #dcdcdc);padding-top:10px">
       <b>Bloqueado por el Director</b> — no se arregla con código:<br>
-      · <code>FCM_VAPID_KEY</code>: sin ella el push web no obtiene token<br>
-      · <code>GOOGLE_SERVICES_JSON</code>: sin él no hay APK Android
+      · <code>GOOGLE_SERVICES_JSON</code>: sin él no hay APK Android (bloquea el ítem 14 y 16)<br>
+      · <b>push</b>: VAPID ya está instalada y el worker activo; falta demostrar la entrega en el navegador del Director
     </div>
-    Autorización vigente: <b>F9.4B</b> ejecutada (recibos, SLA, embudo, backup/restore y rollback ensayado). Siguiente puerta: <b>GLOWAPP-F9.5</b> — accesibilidad pantalla por pantalla e instrumentación en dispositivo.
+    Ejecutado hasta <b>F9.9</b>: accesibilidad, resiliencia de UI, seguridad y PII, inventario de datos, seed de demostración, version mínima, migraciones y observabilidad. Siguiente puerta: <b>GLOWAPP-F9.10</b> — ítem 12 (denegación de permisos) e ítem 22 (timeouts de carga), el resto espera a Wompi, correo o tienda.
   </div>
 </div>
 </body>
