@@ -7,6 +7,21 @@
 const crypto = require('crypto');
 
 /**
+ * Enmascara un correo para logs donde hace falta distinguir usuarios sin
+ * exponer el dato completo: `diana@glowapp.co` → `d***@glowapp.co`.
+ *
+ * Existe porque el sanitizador ya redactaba correos dentro de textos libres,
+ * pero los logs de auth y de trabajos programados los imprimían crudos
+ * (ítem 44): la herramienta estaba, no se usaba.
+ */
+function maskEmail(email) {
+  if (!email || typeof email !== 'string') return '[SIN_EMAIL]';
+  const at = email.indexOf('@');
+  if (at <= 0) return '[EMAIL_INVALIDO]';
+  return email[0] + '***' + email.slice(at);
+}
+
+/**
  * Sanitiza texto para logging - elimina PII y datos biométricos sensibles
  * @param {string|undefined|null} text - Texto a sanitizar
  * @returns {string} Texto sanitizado y truncado a 500 chars máximo
@@ -70,4 +85,5 @@ function hashIdForLog(id) {
 module.exports = {
   sanitizeForLog,
   hashIdForLog,
+  maskEmail,
 };

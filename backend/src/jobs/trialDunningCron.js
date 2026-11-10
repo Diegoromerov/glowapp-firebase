@@ -1,5 +1,6 @@
 // backend/src/jobs/trialDunningCron.js
 const { pool } = require('../config/db');
+const { maskEmail } = require('../utils/piiSanitizer');
 const subscriptionService = require('../services/subscriptionService');
 const invoiceService = require('../services/invoiceService');
 
@@ -79,7 +80,7 @@ async function notifyTrialsEndingSoon() {
   for (const sub of rows) {
     try {
       // TODO: Enviar email real via email.service.js
-      console.log(`[trialDunningCron] Trial ending notice para ${sub.tenant_name} (${sub.owner_email}) - termina ${sub.trial_end}`);
+      console.log(`[trialDunningCron] Trial ending notice para ${sub.tenant_name} (${maskEmail(sub.owner_email)}) - termina ${sub.trial_end}`);
       
       // Log para no duplicar
       await pool.query(`
@@ -182,7 +183,7 @@ async function processDunning() {
       const oldestDue = invoices.reduce((min, i) => new Date(i.due_date) < new Date(min.due_date) ? i : min).due_date;
 
       // TODO: Enviar email real con detalle de facturas
-      console.log(`[trialDunningCron] Dunning notice para ${tenant.tenant_name} (${tenant.owner_email}): ${invoices.length} facturas, $${totalDue.toLocaleString()} COP, más antigua ${oldestDue}`);
+      console.log(`[trialDunningCron] Dunning notice para ${tenant.tenant_name} (${maskEmail(tenant.owner_email)}): ${invoices.length} facturas, $${totalDue.toLocaleString()} COP, más antigua ${oldestDue}`);
 
       // Log para no duplicar (usar la factura más antigua como referencia)
       await pool.query(`

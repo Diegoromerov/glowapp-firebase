@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { maskEmail } = require('../utils/piiSanitizer');
 const { pool } = require('../config/db');
 const tenantRouting = require('../config/tenantRouting');
 const { getJwtSecret, toApiRole } = require('../config/jwt');
@@ -68,6 +69,20 @@ exports.register = async (req, res) => {
     );
 
     const user = result.rows[0];
+
+    // Ítem 43: dejar constancia de la aceptación de términos en el registro.
+    // `user_consents` no tiene CHECK sobre el tipo (verificado en producción),
+    // así que 'terms' entra sin migración. Si falla no se bloquea el registro:
+    // el usuario ya existe y perderlo por una fila de auditoría sería peor.
+    try {
+      await pool.query(
+        `INSERT INTO user_consents (user_id, consent_type, granted, granted_at)
+         VALUES ($1, 'terms', $2, NOW())`,
+        [user.id, true],
+      );
+    } catch (e) {
+      console.warn('⚠️ No se pudo registrar la aceptación de términos:', e.message);
+    }
 
     // 🏢 Si el rol es SALON, crear BusinessProfile y Membership OWNER de forma atómica
     if (userRole === 'SALON') {
@@ -298,7 +313,7 @@ exports.login = async (req, res) => {
     // Generación del Token JWT
         const token = jwt.sign(jwtPayload, getJwtSecret(), { expiresIn: '7d', audience });
     
-    console.log('✅ LOGIN LOCAL EXITOSO para:', user.email, 'Rol:', user.rol, 'OnboardingCompleto:', user.onboarding_completo);
+    console.log('✅ LOGIN LOCAL EXITOSO para:', maskEmail(user.email), 'Rol:', user.rol, 'OnboardingCompleto:', user.onboarding_completo);
 
     res.json({ 
       success: true, 
@@ -806,7 +821,7 @@ exports.forgotPassword = async (req, res) => {
       return res.status(503).json({ error: 'El servicio de recuperación no está disponible temporalmente. Inténtalo más tarde.' });
     }
 
-    console.log(`🔑 [PASSWORD RESET] Solicitud OTP procesada exitosamente para ${cleanEmail}`);
+    console.log(`🔑 [PASSWORD RESET] Solicitud OTP procesada exitosamente para ${maskEmail(cleanEmail)}`);
 
     // Enviar correo transaccional con el código OTP
     try {

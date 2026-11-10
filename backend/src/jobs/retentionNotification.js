@@ -1,5 +1,6 @@
 // backend/src/jobs/retentionNotification.js
 const { pool } = require('../config/db');
+const { maskEmail } = require('../utils/piiSanitizer');
 
 /**
  * Job diario que revisa qué clientes tienen más de 30 días de inactividad desde su última cita
@@ -26,7 +27,7 @@ async function enviarNotificacionesRetencion() {
     console.log(`📊 Se encontraron ${clientesInactivos.length} clientes inactivos para retención.`);
 
     for (const cliente of clientesInactivos) {
-      console.log(`✉️  Enviando recordatorio automático de retención a: ${cliente.nombre_cliente} (${cliente.email_cliente})`);
+      console.log(`✉️  Enviando recordatorio automático de retención a cliente ${cliente.id} (${maskEmail(cliente.email_cliente)})`);
       // Aquí se integraría el envío real de correo o SMS a través de SendGrid/Twilio/FCM
     }
 

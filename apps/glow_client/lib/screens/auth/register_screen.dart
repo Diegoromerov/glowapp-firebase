@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:glow_core/glow_core.dart' hide AppLocalizations;
 import 'package:glow_core/src/l10n/app_localizations.dart' as glow_l10n;
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../services/push_service.dart';
 
@@ -22,6 +23,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _phoneCtrl = TextEditingController();
 
   bool _isLoading = false;
+
+  /// Ítem 43: sin esta casilla no se crea la cuenta. Antes el registro
+  /// implicaba aceptar términos y política sin que el usuario los viera.
+  bool _aceptaTerminos = false;
   bool _obscurePassword = true;
   String? _error;
 
@@ -36,6 +41,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future<void> _handleRegister() async {
     if (!_formKey.currentState!.validate()) return;
+    if (!_aceptaTerminos) {
+      setState(() => _error =
+          'Para crear la cuenta debes aceptar los términos y la política de privacidad.');
+      return;
+    }
 
     setState(() {
       _isLoading = true;
@@ -316,7 +326,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ],
 
-            const SizedBox(height: 18),
+            const SizedBox(height: 8),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 32,
+                  height: 32,
+                  child: Checkbox(
+                    value: _aceptaTerminos,
+                    onChanged: (v) =>
+                        setState(() => _aceptaTerminos = v ?? false),
+                    activeColor: t.brandPrimary,
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 6),
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Text('Acepto los ',
+                            style: context.bodyContext
+                                .copyWith(fontSize: 12.5)),
+                        GestureDetector(
+                          onTap: () => launchUrl(
+                              Uri.parse('https://glowapp-client.web.app/terms'),
+                              mode: LaunchMode.externalApplication),
+                          child: Text('términos',
+                              style: context.bodyContext.copyWith(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w700,
+                                  color: t.brandPrimary,
+                                  decoration: TextDecoration.underline)),
+                        ),
+                        Text(' y la ',
+                            style: context.bodyContext
+                                .copyWith(fontSize: 12.5)),
+                        GestureDetector(
+                          onTap: () => launchUrl(
+                              Uri.parse('https://glowapp-client.web.app/privacy'),
+                              mode: LaunchMode.externalApplication),
+                          child: Text('política de privacidad',
+                              style: context.bodyContext.copyWith(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w700,
+                                  color: t.brandPrimary,
+                                  decoration: TextDecoration.underline)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
             Container(
               width: double.infinity,
               height: 52,

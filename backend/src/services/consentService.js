@@ -12,6 +12,7 @@ const { BIOMETRIC_CONSENT_VERSION, isSupportedConsentVersion } = require('../con
  * Tipos de consentimiento válidos
  */
 const VALID_CONSENT_TYPES = [
+  'terms',        // aceptación de términos y política en el registro (ítem 43)
   'facial_analysis',
   'skin_scan', 
   'hair_analysis',

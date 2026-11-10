@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const dianInvoiceClient = require('../services/dianInvoiceClient');
 const { construirRecibo } = require('../services/receiptService');
 const jwt = require('jsonwebtoken');
+const { maskEmail } = require('../utils/piiSanitizer');
 const { getJwtSecret } = require('../config/jwt');
 // OJO: email.service.js solo envía por Resend/SendGrid y, sin claves, SIMULA
 // (devuelve éxito y no manda nada). Producción usa Brevo por API HTTP.
@@ -732,7 +733,7 @@ exports.emailBookingReceipt = async (req, res) => {
       data: { html, text: texto },
     });
     const idMensaje = envio && envio.messageId ? envio.messageId : null;
-    console.log(`[recibo] enviado a ${fila.email_cliente} (cita ${fila.id}): ${idMensaje || 'sin id'}`);
+    console.log(`[recibo] enviado a ${maskEmail(fila.email_cliente)} (cita ${fila.id}): ${idMensaje || 'sin id'}`);
     return res.json({
       success: true,
       enviado_a: fila.email_cliente,
