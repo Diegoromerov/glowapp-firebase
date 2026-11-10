@@ -143,9 +143,12 @@ Leyenda: **hecho** · **siguiente** (F9.1) · **pendiente** · **bloqueado** (te
 | C-19 | F4 | Permisos, push, deep links | 4 | **parcial** | 13 hecho (F9.2); 11 orden de permisos, 14 deep links y 16 versión mínima abiertos |
 | C-20 | — | Inventario de datos personales | 2 | **hecho** 2026-11-10 | navegó fuera del plan · 129 tablas · ítem 41 PASA |
 | C-21 | — | Página de estado del servicio | 1 | **hecho** 2026-11-10 | navegó fuera del plan · `/status` 200 · ítem 73 PASA |
+| C-25 | — | Seed de demostración (datos, no código) | 1 | **hecho** 2026-11-10 | 3 prestadores con servicios + 8 productos con lista 'cliente'; E2 y E3 en PASA |
 | F5 | F5 | Instrumentar 18 N/V | — | pendiente | primera medición por ítem |
 
 **Total activo:** 3 tareas (C-10 tooltips, C-19 parcial, F5) · **≈7 h** · **0 críticos en rojo** · 60,1 % de ejecución al 2026-11-10 02:20.
+
+Datos de demostración: `scripts/seedDemoProviders.js` (3 prestadores con servicios y portafolio) y `scripts/seedCatalogoTienda.js` (8 productos + lista de precios 'cliente'), ambos idempotentes y con guarda `ALLOW_DEMO_SEED=1`. Esto ejecuta de hecho la opción ★A de D-GL-029 para el catálogo de tienda (sembrar en el tenant de plataforma) y deja la app demostrable.
 
 Desviaciones respecto al plan original: C-10 se intentó dos veces con reemplazo masivo y se revirtió (rompía el build); lo entregado en F9.6 ataca el problema por el tema y el arranque, no widget por widget. C-20 y C-21 no estaban en el plan y se hicieron porque eran baratos y cerraban dos FALLA.
 
