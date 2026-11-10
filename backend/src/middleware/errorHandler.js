@@ -26,6 +26,33 @@ module.exports = function errorHandler(err, req, res, next) {
     err && err.constructor ? `(tipo: ${err.constructor.name})` : `(tipo: ${typeof err})`
   );
 
+  // Ítem 70: un 5xx que solo vive en el log de la consola no se puede contar.
+  // Se guarda como evento para que `/api/analytics/summary` lo agrupe por tipo y
+  // la ruta quede en metadata. Es best-effort: si la base tampoco responde, el
+  // error original no debe convertirse en una excepción del handler de errores.
+  if (status >= 500) {
+    try {
+      const { pool } = require('../config/db');
+      pool
+        .query(
+          `INSERT INTO analytics_events (user_id, event_type, metadata, occurred_at)
+           VALUES (NULL, 'API_5XX', $1, NOW())`,
+          [
+            JSON.stringify({
+              ruta: (req && req.originalUrl) || null,
+              metodo: (req && req.method) || null,
+              status,
+              request_id: requestId,
+              tipo: (err && err.constructor && err.constructor.name) || null,
+            }),
+          ],
+        )
+        .catch(() => {});
+    } catch (_) {
+      // Nunca romper la respuesta por el registro.
+    }
+  }
+
   // 5xx: nunca se filtra el mensaje interno (puede contener SQL o rutas).
   const mensaje =
     status >= 500 ? 'Error interno del servidor' : (err && err.message) || 'Error';
