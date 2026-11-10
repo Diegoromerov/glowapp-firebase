@@ -552,8 +552,9 @@
    "bloque": "K",
    "titulo": "Push",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "FALLA",
-   "evidencia": "F9.2: el bundle ya lleva la config de Firebase; falta FCM_VAPID_KEY para que el push web obtenga token"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "F9.2: el bundle ya lleva la config de Firebase; falta FCM_VAPID_KEY para que el push web obtenga token",
+   "evidencia_2026_11_10": "Clave VAPID generada en Firebase Console y embebida en el bundle publicado (main.dart.js la contiene); service worker servido en /firebase-messaging-sw.js (200, 1612 B); POST /api/auth/fcm-token con auth. Secreto FCM_VAPID_KEY en GitHub. Entrega real de una notificacion no verificada (necesita navegador con permiso)."
   },
   "85": {
    "bloque": "K",
