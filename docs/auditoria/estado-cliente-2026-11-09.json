@@ -438,8 +438,9 @@
    "bloque": "I",
    "titulo": "Crash reporting",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
-   "evidencia": "CrashReportingService postea a /api/analytics/events detras de authMiddleware -> 401 medido"
+   "estado_2026_11_09": "PASA",
+   "evidencia": "CrashReportingService postea a /api/analytics/events detras de authMiddleware -> 401 medido",
+   "evidencia_2026_11_10": "Captura en FlutterError.onError, PlatformDispatcher.onError y ErrorWidget.builder; los fallos viajan como APP_CRASH_<tipo> a /api/analytics/events y se cuentan en el summary. La tasa crash-free sigue N/V: exige contar sesiones, que es instrumentacion de dispositivo."
   },
   "68": {
    "bloque": "I",
@@ -460,7 +461,8 @@
    "bloque": "I",
    "titulo": "Errores 5xx visibles",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "errorHandler registra cada 5xx como API_5XX (ruta, metodo, status, request_id) en analytics_events y /api/analytics/summary lo agrupa. 3 tests: 500 registra, 401 no, y si la base falla la respuesta sale igual."
   },
   "71": {
    "bloque": "I",
