@@ -14,6 +14,24 @@ const { pool } = require('./db');
  */
 const esMigracionAplicable = (f) => f.endsWith('.sql') && !f.endsWith('.down.sql');
 
+/**
+ * Estado de la última ejecución del runner, para que `/api/health` pueda
+ * contarlo (ítem 78).
+ *
+ * Antes, una migración que fallaba se registraba con un `warn` que decía «ya
+ * existía o error idempotente»: una migración rota se reintentaba en cada
+ * arranque sin que nadie se enterara. Ahora se cuenta aparte y se expone.
+ */
+const estado = {
+  ejecutada_en: null,
+  aplicadas: 0,
+  omitidas: 0,
+  fallidas: 0,
+  archivos_fallidos: [],
+};
+
+const obtenerEstadoMigraciones = () => ({ ...estado, archivos_fallidos: [...estado.archivos_fallidos] });
+
 async function runMigrations() {
   console.log('🔄 [MIGRATION RUNNER] Iniciando verificación de migraciones...');
   const migrationsDir = path.join(__dirname, '../../migrations');
@@ -46,6 +64,7 @@ async function runMigrations() {
 
   let appliedCount = 0;
   let skippedCount = 0;
+  const fallidas = [];
 
   for (const file of files) {
     const filePath = path.join(migrationsDir, file);
@@ -77,7 +96,11 @@ async function runMigrations() {
       console.log(`✅ [MIGRACIÓN APLICADA] ${file}`);
       appliedCount++;
     } catch (err) {
-      console.warn(`ℹ️ Migración ${file} no aplicada (ya existía o error idempotente): ${err.message}`);
+      // Un fallo ya no se disfraza de «ya existía»: se cuenta, se nombra y se
+      // deja constancia en /api/health. Sigue sin abortar el arranque, porque
+      // una migración quebrada no debe tumbar un servicio que ya funciona.
+      fallidas.push({ archivo: file, error: err.message });
+      console.error(`❌ [MIGRACIÓN FALLIDA] ${file}: ${err.message}`);
     } finally {
       client.release();
     }
@@ -98,3 +121,4 @@ if (require.main === module) {
 
 module.exports = runMigrations;
 module.exports.esMigracionAplicable = esMigracionAplicable;
+module.exports.obtenerEstadoMigraciones = obtenerEstadoMigraciones;

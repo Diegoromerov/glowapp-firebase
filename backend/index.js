@@ -566,6 +566,9 @@ app.get('/api/health', async (req, res) => {
     // LATEST_APP_VERSION). La app compara su versión instalada y bloquea si está
     // por debajo de minimum_app_version.
     ...resolveAppVersionPolicy(),
+    // Ítem 78: si una migración falló, aquí se ve. Sin esto, una migración
+    // quebrada solo existía en la consola del arranque.
+    migrations: require('./src/config/migrationRunner').obtenerEstadoMigraciones(),
   });
 });
 
