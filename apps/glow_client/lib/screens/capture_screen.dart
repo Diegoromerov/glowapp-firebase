@@ -83,16 +83,24 @@ class _CaptureScreenState extends State<CaptureScreen>
       CurvedAnimation(parent: _laserController, curve: Curves.easeInOut),
     );
 
-    _initializeCamera();
-    // Y-F1f: si el permiso es de un texto anterior (o no hay permiso), no se abre la
-    // cámara a medir. El backend también lo rechaza, pero negarse a capturar es más
-    // honesto que pedir una foto para luego devolver un 403.
-    _verificarConsentimiento();
+    // Ítem 11: el consentimiento va ANTES del permiso de cámara. Antes se abría la
+    // cámara primero y el sistema pedía el permiso antes de que el usuario supiera
+    // para qué; si luego no autorizaba el tratamiento biométrico, ya había concedido
+    // el acceso a la cámara para nada.
+    _arrancarCaptura();
   }
 
-  Future<void> _verificarConsentimiento() async {
+  Future<void> _arrancarCaptura() async {
+    final autorizado = await _verificarConsentimiento();
+    if (!mounted || !autorizado) return;
+    await _initializeCamera();
+  }
+
+  /// Devuelve `true` solo si se puede capturar. Si no hay consentimiento
+  /// vigente avisa y sale de la pantalla, sin tocar la cámara.
+  Future<bool> _verificarConsentimiento() async {
     final estado = await BiometricService.getConsentState();
-    if (!mounted || !estado.known || estado.canScan) return;
+    if (!mounted || !estado.known || estado.canScan) return true;
 
     await showDialog<void>(
       context: context,
@@ -118,6 +126,7 @@ class _CaptureScreenState extends State<CaptureScreen>
 
     // Sin autorización vigente no se captura: se sale de la pantalla.
     if (mounted) Navigator.of(context).pop();
+    return false;
   }
 
   @override
