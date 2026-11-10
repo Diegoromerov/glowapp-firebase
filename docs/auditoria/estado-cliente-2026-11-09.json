@@ -97,7 +97,8 @@
    "bloque": "B",
    "titulo": "Estados vacíos",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "EstadoVacio comun en glow_core; la tienda y Mis Citas lo usan, chat y disputas conservan el suyo. Tests del widget en verde."
   },
   "16": {
    "bloque": "B",
@@ -136,19 +137,22 @@
    "bloque": "C",
    "titulo": "Sin conexión",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "FranjaConexion en MaterialApp.builder alimentada por ConnectivityService.conectado (ValueNotifier). Sin Timer.periodic: se comprueba al reintentar y en cada peticion. 3 tests."
   },
   "22": {
    "bloque": "C",
    "titulo": "Estados de carga",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PARCIAL",
+   "evidencia_2026_11_10": "Indicador de carga en las 4 pantallas principales (grep: providers 2, store 2, chat 1, citas 3) y el flujo de error ya corta el spinner. Sigue PARCIAL: no verificado en dispositivo que ninguno quede infinito con red lenta."
   },
   "23": {
    "bloque": "C",
    "titulo": "Datos obsoletos",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "RefreshOnResumeMixin recarga Mis Citas y Chat al volver del fondo; no en un rebuild normal. Test verifica que solo dispara tras paused->resumed."
   },
   "24": {
    "bloque": "C",
@@ -160,7 +164,8 @@
    "bloque": "C",
    "titulo": "Confirmar / deshacer",
    "estado": "PARCIAL",
-   "estado_2026_11_09": "PARCIAL"
+   "estado_2026_11_09": "PASA",
+   "evidencia_2026_11_10": "Quitar producto del carrito ofrece Deshacer 6 s; cancelar cita ya pedia confirmacion con AuthGate."
   },
   "26": {
    "bloque": "C",
