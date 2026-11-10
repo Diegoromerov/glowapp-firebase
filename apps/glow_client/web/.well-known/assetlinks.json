@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.glowapp.glow_client",
+      "sha256_cert_fingerprints": [
+        "89:3D:C1:98:B2:5F:CA:50:01:BA:16:FA:6B:D5:6E:81:64:67:60:C4:2B:25:E1:B9:1E:E8:E7:BA:89:20:8C:BB"
+      ]
+    }
+  }
+]
