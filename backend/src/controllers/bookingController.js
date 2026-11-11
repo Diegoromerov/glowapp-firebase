@@ -1,4 +1,5 @@
 // backend/src/controllers/bookingController.js
+const { registrarConversion } = require('../services/referralService');
 const { pool } = require('../config/db');
 const { runAsSystemContext } = require('../config/tenantRouting');
 const { Booking, Service, User, Transaction } = require('../models');
@@ -419,6 +420,20 @@ exports.createBooking = async (req, res) => {
     });
 
     const primaryBooking = createdBookings[0];
+
+    // Si el cliente llegó por invitación, su primera reserva ES la conversión.
+    // Idempotente (UNIQUE invitee_user_id) y best-effort: no puede tumbar una
+    // reserva ya creada.
+    if (primaryBooking) {
+      try {
+        await registrarConversion({
+          inviteeId: clientId,
+          bookingId: primaryBooking.id,
+        });
+      } catch (e) {
+        console.warn('⚠️ No se pudo registrar la conversión del referido:', e.message);
+      }
+    }
     console.log(`📅 Nuevas citas enlazadas creadas: [${generatedIds.join(', ')}] para usuario ${clientId} con PIN ${pin}.`);
 
     // Enviar SMS simulado y notificar vía WebSocket con alerta auditiva "GlowApp"

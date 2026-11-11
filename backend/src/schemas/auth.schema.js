@@ -17,6 +17,9 @@ const registerSchema = z.object({
   password: z.string({ required_error: 'password es obligatorio', invalid_type_error: 'password debe ser texto' }).min(1, 'password es obligatorio'),
   phone: z.string().trim().optional().nullable(),
   role: z.string().optional().nullable(),
+  // Código de invitación (`?ref=GLOWAB12`). Opcional: un código inválido no puede
+  // impedir que alguien se registre.
+  ref: z.string().trim().max(20).optional().nullable(),
 });
 
 // 🔐 Login local

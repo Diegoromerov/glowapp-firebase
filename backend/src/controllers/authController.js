@@ -7,6 +7,7 @@ const { getJwtSecret, toApiRole } = require('../config/jwt');
 const redisClient = require('../config/redis');
 const emailService = require('../services/email.service');
 const consentService = require('../services/consentService');
+const { atribuirInvitacion } = require('../services/referralService');
 const { Membership, BusinessProfile } = require('../models');
 const {
   registerSchema,
@@ -69,6 +70,16 @@ exports.register = async (req, res) => {
     );
 
     const user = result.rows[0];
+
+    // Programa de referidos: si el registro llegó con `?ref=`, se guarda quién
+    // invitó. Best-effort: un código inválido no puede tumbar el registro.
+    if (data.ref) {
+      try {
+        await atribuirInvitacion({ nuevoUsuarioId: user.id, codigo: data.ref });
+      } catch (e) {
+        console.warn('⚠️ No se pudo atribuir el referido:', e.message);
+      }
+    }
 
     // Ítem 43: dejar constancia de la aceptación de términos en el registro.
     // `user_consents` no tiene CHECK sobre el tipo (verificado en producción),

@@ -71,6 +71,7 @@ const MIGRACIONES_BASE_NUEVA = [
 // 138: el CHECK de platform de social_shares_log no admitía SISTEMA (hoja del
 // sistema) y no había idempotencia por día; sin 008 la tabla no existía.
 '138_social_shares.sql',
+'139_referidos_atribucion.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -142,6 +143,7 @@ const MIGRACIONES_ARRANQUE = [
   '124_auth_lookup_security_definer.sql',
   '008_social_integrations.sql',
   '138_social_shares.sql',
+  '139_referidos_atribucion.sql',
 
   '125_usuario_lookup_sin_contexto.sql',
 
