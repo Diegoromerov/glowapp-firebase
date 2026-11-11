@@ -1,7 +1,11 @@
 // frontend/lib/screens/ideas/makeup_lookbook_screen.dart
 import 'package:glow_core/glow_core.dart';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'vto_live_screen.dart';
+import '../services/deep_link_service.dart';
 
 class MakeupLook {
   final String id;
@@ -245,6 +249,108 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
     super.dispose();
   }
 
+
+  /// El botón sólo mostraba el modal de consentimiento: no compartía nada.
+  /// Ahora genera la tarjeta 9:16, abre la hoja del sistema y registra el
+  /// compartir (VTO_LOOK) para que el XP exista de verdad.
+  Future<void> _compartirLookbook() async {
+    final consentimiento = await SocialShareService.showConsentModal(
+      context,
+      platformName: 'Instagram Stories',
+      contentTypeLabel: 'Lookbook de Maquillaje IA',
+    );
+    if (!consentimiento || !mounted) return;
+
+    final llave = GlobalKey();
+    final bytes = await showDialog<Uint8List>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: const Color(0xFFFAF8F5),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title: const Text(
+          'Tu look para compartir',
+          style: TextStyle(
+            fontFamily: 'CormorantGaramond',
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+        content: SizedBox(
+          width: 240,
+          child: RepaintBoundary(
+            key: llave,
+            child: const ShareCard(
+              titulo: 'Lookbook IA',
+              subtitulo: 'Look generado con Glow IA+',
+              lineas: [
+                'Prueba virtual sobre tu rostro',
+                'Media.io x GlowApp Engine',
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancelar'),
+          ),
+          FilledButton.icon(
+            style: FilledButton.styleFrom(
+              backgroundColor: const Color(0xFFC5A052),
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () async {
+              final png = await exportarTarjetaPng(llave, pixelRatio: 3);
+              if (ctx.mounted) Navigator.pop(ctx, png);
+            },
+            icon: const Icon(Icons.ios_share, size: 18),
+            label: const Text('Compartir'),
+          ),
+        ],
+      ),
+    );
+
+    if (!mounted) return;
+    if (bytes == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('No se pudo generar la tarjeta. Intenta de nuevo.'),
+        behavior: SnackBarBehavior.floating,
+      ));
+      return;
+    }
+
+    ShareResultStatus estado;
+    try {
+      final resultado = await SharePlus.instance.share(ShareParams(
+        title: 'Mi look de GlowApp',
+        text: 'Mi look de Glow IA+ · https://${DeepLinkService.host}',
+        files: [
+          XFile.fromData(bytes, mimeType: 'image/png', name: 'glowapp-look.png'),
+        ],
+      ));
+      estado = resultado.status;
+    } catch (error) {
+      debugPrint('No se pudo abrir la hoja de compartir: $error');
+      estado = ShareResultStatus.unavailable;
+    }
+
+    if (estado != ShareResultStatus.success) return;
+
+    final res = await SocialShareService.logShare(
+      platform: 'INSTAGRAM',
+      contentType: 'VTO_LOOK',
+    );
+    if (!mounted) return;
+    final xp = (res['xp_awarded'] as num?)?.toInt() ?? 0;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(xp > 0
+          ? '¡Look compartido! +$xp XP'
+          : '¡Look compartido! (el XP de hoy ya se otorgó)'),
+      backgroundColor: const Color(0xFFC5A052),
+      behavior: SnackBarBehavior.floating,
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -274,13 +380,7 @@ class _MakeupLookbookScreenState extends State<MakeupLookbookScreen> {
           IconButton(
             tooltip: 'Compartir',
             icon: const Icon(Icons.share_outlined, color: Color(0xFF1F1A15)),
-            onPressed: () async {
-              await SocialShareService.showConsentModal(
-                context,
-                platformName: 'Instagram Stories',
-                contentTypeLabel: 'Lookbook de Maquillaje IA',
-              );
-            },
+            onPressed: _compartirLookbook,
           ),
         ],
       ),

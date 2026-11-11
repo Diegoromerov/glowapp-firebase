@@ -1,6 +1,9 @@
+import 'dart:typed_data';
+
 // frontend/lib/screens/ideas/results_screen.dart
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'glowstore_recipe_screen.dart';
 import 'product_scanner_screen.dart';
 import 'vto_live_screen.dart';
@@ -11,6 +14,7 @@ import '../widgets/score_card.dart';
 import '../widgets/recommendation_card.dart';
 import '../widgets/product_card.dart';
 import '../widgets/color_palette.dart';
+import '../services/deep_link_service.dart';
 import '../widgets/glow_score_gauge_widget.dart';
 import '../widgets/dermo_families_widget.dart';
 
@@ -120,6 +124,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
   @override
   Widget build(BuildContext context) {
     final face = widget.result.face;
+    final subtono = face?.subtono ?? '';
     final hands = widget.result.hands;
 
     return Scaffold(
@@ -283,27 +288,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                         children: [
                           Expanded(
                             child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final consent = await SocialShareService.showConsentModal(
-                                  context,
-                                  platformName: 'TikTok',
-                                  contentTypeLabel: 'Colorimetría IA',
-                                );
-                                if (consent && context.mounted) {
-                                  final res = await SocialShareService.logShare(
-                                    platform: 'TIKTOK',
-                                    contentType: 'AI_COLORIMETRY',
-                                  );
-                                  if (context.mounted) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(res['message'] ?? '¡Palette DNA compartida en TikTok! +50 XP'),
-                                        backgroundColor: const Color(0xFF25F4EE),
-                                      ),
-                                    );
-                                  }
-                                }
-                              },
+                              onPressed: () => _compartirTarjeta(plataforma: 'TIKTOK', etiqueta: 'TikTok'),
                               icon: const Icon(Icons.video_library_rounded, size: 18),
                               label: const Text('TikTok', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                               style: ElevatedButton.styleFrom(
@@ -317,27 +302,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           const SizedBox(width: 8),
                           Expanded(
                             child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final consent = await SocialShareService.showConsentModal(
-                                  context,
-                                  platformName: 'Instagram Stories',
-                                  contentTypeLabel: 'Colorimetría IA',
-                                );
-                                if (consent && context.mounted) {
-                                  final res = await SocialShareService.logShare(
-                                    platform: 'INSTAGRAM',
-                                    contentType: 'AI_COLORIMETRY',
-                                  );
-                                  if (context.mounted) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(res['message'] ?? '¡Look publicado en Instagram Stories! +50 XP'),
-                                        backgroundColor: const Color(0xFFE1306C),
-                                      ),
-                                    );
-                                  }
-                                }
-                              },
+                              onPressed: () => _compartirTarjeta(plataforma: 'INSTAGRAM', etiqueta: 'Instagram Stories'),
                               icon: const Icon(Icons.camera_alt_outlined, size: 18),
                               label: const Text('Instagram', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                               style: ElevatedButton.styleFrom(
@@ -369,6 +334,124 @@ class _ResultsScreenState extends State<ResultsScreen> {
   // ---------------------------------------------------------------------
   // Header simple: back + título, reemplaza el AppBar + TabBar de Material
   // ---------------------------------------------------------------------
+
+  /// Tarjeta 9:16 con el resultado y compartir real (TikTok / Instagram).
+  ///
+  /// Antes estos dos botones sólo pedían consentimiento y mostraban un SnackBar
+  /// con «+50 XP»: no se compartía nada ni se registraba nada. Ahora se genera
+  /// la imagen, se abre la hoja del sistema y el XP es el que confirma el
+  /// backend.
+  Future<void> _compartirTarjeta({
+    required String plataforma,
+    required String etiqueta,
+  }) async {
+    final consentimiento = await SocialShareService.showConsentModal(
+      context,
+      platformName: etiqueta,
+      contentTypeLabel: 'Colorimetría IA',
+    );
+    if (!consentimiento || !mounted) return;
+
+    final face = widget.result.face;
+    final subtono = face?.subtono ?? '';
+    final llave = GlobalKey();
+    final bytes = await showDialog<Uint8List>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: _PassportColors.background,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title: const Text(
+          'Tu tarjeta para compartir',
+          style: TextStyle(
+            fontFamily: 'CormorantGaramond',
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+        content: SizedBox(
+          width: 240,
+          child: RepaintBoundary(
+            key: llave,
+            child: ShareCard(
+              titulo: 'Palette DNA',
+              subtitulo: subtono.isNotEmpty
+                  ? 'Subtono ${subtono.toLowerCase()}'
+                  : 'Tu paleta personalizada',
+              lineas: [
+                if (widget.result.recommendation != null &&
+                    widget.result.recommendation!.isNotEmpty)
+                  widget.result.recommendation!,
+                'Analizado con Glow IA+',
+              ],
+              pie: DeepLinkService.host,
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancelar'),
+          ),
+          FilledButton.icon(
+            style: FilledButton.styleFrom(
+              backgroundColor: _PassportColors.primary,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () async {
+              final png = await exportarTarjetaPng(llave, pixelRatio: 3);
+              if (ctx.mounted) Navigator.pop(ctx, png);
+            },
+            icon: const Icon(Icons.ios_share, size: 18),
+            label: const Text('Compartir'),
+          ),
+        ],
+      ),
+    );
+
+    if (!mounted) return;
+    if (bytes == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('No se pudo generar la tarjeta. Intenta de nuevo.'),
+        behavior: SnackBarBehavior.floating,
+      ));
+      return;
+    }
+
+    ShareResultStatus estado;
+    try {
+      final resultado = await SharePlus.instance.share(ShareParams(
+        title: 'Mi Palette DNA',
+        subject: 'Mi resultado de colorimetría en GlowApp',
+        text: 'Mi Palette DNA de GlowApp · https://${DeepLinkService.host}',
+        files: [
+          XFile.fromData(bytes,
+              mimeType: 'image/png', name: 'glowapp-palette.png'),
+        ],
+      ));
+      estado = resultado.status;
+    } catch (error) {
+      debugPrint('No se pudo abrir la hoja de compartir: $error');
+      estado = ShareResultStatus.unavailable;
+    }
+
+    if (estado != ShareResultStatus.success) return;
+
+    final res = await SocialShareService.logShare(
+      platform: plataforma,
+      contentType: 'AI_COLORIMETRY',
+    );
+    if (!mounted) return;
+    final xp = (res['xp_awarded'] as num?)?.toInt() ?? 0;
+    final aviso = xp > 0
+        ? '¡Compartido en $etiqueta! +$xp XP'
+        : '¡Compartido en $etiqueta! (el XP de hoy ya se otorgó)';
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(aviso),
+      backgroundColor: _PassportColors.primary,
+      behavior: SnackBarBehavior.floating,
+    ));
+  }
+
   Widget _buildHeader() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 4, 16, 4),
