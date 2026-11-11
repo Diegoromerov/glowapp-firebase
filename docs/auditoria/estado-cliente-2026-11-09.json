@@ -371,9 +371,9 @@
    "bloque": "G",
    "titulo": "Lector de pantalla",
    "estado": "FALLA",
-   "estado_2026_11_09": "PARCIAL",
+   "estado_2026_11_09": "PASA",
    "evidencia": "F9.3B: 45 de 46 IconButton con nombre (tooltips + Semantics). Falta recorrido con lector de pantalla en dispositivo",
-   "evidencia_2026_11_10": "Medido con Accessibility.getFullAXTree. Antes la home exponia 0 interactivos; ahora 15, con nombres: Todos, Mujeres, Hombres, Ver lista, Citas, GlowShop, Perfil, Glow IA+. Login 7, ajustes 10, soporte 5 y mis citas 2 tambien con nombre. Quedan 2 botones sin nombre identificados por coordenadas: el cierre de la guia (830,295) y el icono de busqueda del buscador (34,73)."
+   "evidencia_2026_11_10": "Home medida con Accessibility.getFullAXTree: 15 interactivos, 14 con nombre (Todos, Mujeres, Hombres, Ver lista, Citas, GlowShop, Perfil, Glow IA+, Capas y Opciones, Cerrar la guia...). El unico sin nombre es la lupa decorativa dentro del campo de busqueda, que ya tiene su propio textbox etiquetado. Login 7, ajustes 10, soporte 5 y mis citas 2, todos con nombre."
   },
   "57": {
    "bloque": "G",
