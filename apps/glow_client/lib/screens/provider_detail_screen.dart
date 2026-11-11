@@ -3,9 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:glow_core/glow_core.dart';
-import 'package:share_plus/share_plus.dart';
 import 'chat_screen.dart';
-import '../services/deep_link_service.dart';
 import '../widgets/auth_gate.dart';
 
 class ProviderDetailScreen extends StatefulWidget {
@@ -169,48 +167,27 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
             p?['full_name'] ??
             'Profesional de Belleza')
         .toString();
-    // Página de compartir del backend: lleva la tarjeta con foto (og:image) y
-    // redirige a la app. El path crudo de la web no tiene Open Graph y se veía
-    // como un enlace pelado en WhatsApp e Instagram.
-    final shareUrl = SocialShareService.enlacePrestador(
-      baseUrl: ApiService.baseUrl,
+
+    // Un solo camino para compartir y registrar: el enlace apunta a la página
+    // con tarjeta (`/s/provider/:id`) y el XP que se anuncia es el que el
+    // backend confirmó, no un texto fijo.
+    final resultado = await compartirPrestador(
       providerId: widget.providerId,
+      baseUrl: ApiService.baseUrl,
+      nombre: providerName,
     );
-    final shareText = '¡Mira el perfil de $providerName en GlowApp! $shareUrl';
 
-    try {
-      final result = await SharePlus.instance.share(
-        ShareParams(
-          title: 'Compartir perfil',
-          subject: 'Conoce a $providerName en GlowApp',
-          text: shareText,
-        ),
-      );
-      if (result.status == ShareResultStatus.unavailable) {
-        await _copiarEnlaceCompartido(shareText);
-      }
-    } catch (error) {
-      debugPrint('No se pudo abrir el menú para compartir el perfil: $error');
-      await _copiarEnlaceCompartido(shareText);
-    }
-  }
-
-  Future<void> _copiarEnlaceCompartido(String shareText) async {
-    try {
-      await Clipboard.setData(ClipboardData(text: shareText));
-    } catch (error) {
-      debugPrint('No se pudo copiar el enlace del perfil: $error');
-    }
     if (!mounted) return;
+    final aviso = !resultado.compartido
+        ? 'No se abrió la hoja de compartir.'
+        : resultado.xpGanado > 0
+            ? '¡Compartido! +${resultado.xpGanado} XP'
+            : '¡Compartido! (el XP de hoy ya se otorgó)';
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'No hay apps para compartir disponibles. Copiamos el enlace del perfil.',
-        ),
-        behavior: SnackBarBehavior.floating,
-      ),
+      SnackBar(content: Text(aviso), behavior: SnackBarBehavior.floating),
     );
   }
+
 
   String _getSmartNextSlot(Map<String, dynamic> p) {
     if (p['next_available_slot'] != null &&

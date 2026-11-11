@@ -1443,6 +1443,42 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                   const SizedBox(height: 24),
                   Row(
                     children: [
+                      // Compartir desde el catálogo: el visitante recomienda sin
+                      // tener que abrir la ficha. Mismo enlace con tarjeta y
+                      // mismo registro que el botón de la ficha.
+                      IconButton(
+                        onPressed: () async {
+                          final resultado = await compartirPrestador(
+                            providerId: provider.id.toString(),
+                            baseUrl: ApiService.baseUrl,
+                            nombre: provider.businessName.isNotEmpty
+                                ? provider.businessName
+                                : provider.fullName,
+                          );
+                          if (!context.mounted) return;
+                          final aviso = !resultado.compartido
+                              ? 'No se abrió la hoja de compartir.'
+                              : resultado.xpGanado > 0
+                                  ? '¡Compartido! +${resultado.xpGanado} XP'
+                                  : '¡Compartido! (el XP de hoy ya se otorgó)';
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(aviso),
+                            behavior: SnackBarBehavior.floating,
+                          ));
+                        },
+                        style: IconButton.styleFrom(
+                          backgroundColor: const Color(0xFFF4EFEA),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            side: const BorderSide(color: Color(0xFFE8E0D5)),
+                          ),
+                          padding: const EdgeInsets.all(12),
+                        ),
+                        icon: const Icon(Icons.ios_share,
+                            color: Color(0xFFC5A052), size: 20),
+                        tooltip: 'Compartir perfil',
+                      ),
+                      const SizedBox(width: 8),
                       // Chat Directo
                       IconButton(
                         onPressed: () async {

@@ -32,7 +32,12 @@ if (!URL_OBJETIVO) {
   process.exit(2);
 }
 
-const chrome = CHROME_CANDIDATOS.find((p) => fs.existsSync(p));
+// SONDA_NAVEGADOR permite forzar otro binario (p. ej. Edge) cuando Chrome
+// headless se cae en esta máquina tras muchas ejecuciones.
+const forzado = process.env.SONDA_NAVEGADOR;
+const chrome = forzado && fs.existsSync(forzado)
+  ? forzado
+  : CHROME_CANDIDATOS.find((p) => fs.existsSync(p));
 if (!chrome) {
   console.error('no se encontró Chrome/Edge en las rutas conocidas');
   process.exit(2);
@@ -89,7 +94,9 @@ async function main() {
       consola.push(`${msg.params.type}: ${texto}`);
     }
     if (msg.method === 'Runtime.exceptionThrown') {
-      consola.push('exception: ' + (msg.params.exceptionDetails?.text || '').slice(0, 200));
+      const d = msg.params.exceptionDetails || {};
+      const detalle = (d.exception && (d.exception.description || d.exception.value)) || d.text || '';
+      consola.push('exception: ' + String(detalle).slice(0, 400));
     }
   };
   const enviar = (method, params = {}) => new Promise((ok) => {

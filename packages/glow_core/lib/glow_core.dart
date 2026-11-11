@@ -26,6 +26,7 @@ export 'src/services/reply_reconcile.dart';
 export 'src/services/saas_api_service.dart';
 export 'src/services/secure_storage_service.dart';
 export 'src/services/social_share_service.dart';
+export 'src/services/share_prestador_service.dart';
 export 'src/services/superadmin_api_service.dart';
 export 'src/services/support_service.dart';
 export 'src/services/web_geolocation.dart';       // handles conditional export internally
