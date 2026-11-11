@@ -1,6 +1,8 @@
 // frontend/lib/widgets/product_quick_view_dialog.dart
 import 'package:flutter/material.dart';
 import '../shared/theme.dart';
+import '../services/api_service.dart';
+import '../services/share_prestador_service.dart';
 
 class ProductQuickViewDialog extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -67,6 +69,27 @@ class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
     );
   }
 
+
+  /// Comparte el producto con la página que lleva tarjeta OG y registra el
+  /// share (content_type PRODUCT, migración 140).
+  Future<void> _compartir(BuildContext context) async {
+    final id = widget.product['id']?.toString() ?? '';
+    final resultado = await compartirProducto(
+      productId: id,
+      baseUrl: ApiService.baseUrl,
+      nombre: widget.product['nombre']?.toString(),
+    );
+    if (!context.mounted) return;
+    final aviso = !resultado.compartido
+        ? 'No se abrió la hoja de compartir.'
+        : resultado.xpGanado > 0
+            ? '¡Producto compartido! +${resultado.xpGanado} XP'
+            : '¡Producto compartido! (el XP de hoy ya se otorgó)';
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(aviso), behavior: SnackBarBehavior.floating),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final price = double.tryParse(widget.product['precio']?.toString() ?? '0') ?? 0.0;
@@ -101,12 +124,27 @@ class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
                   Positioned(
                     top: 12,
                     right: 12,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                      child: IconButton(
-                        icon: const Icon(Icons.close, color: AppTheme.text),
-                        onPressed: () => Navigator.pop(context),
-                      ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.9),
+                          child: IconButton(
+                            tooltip: 'Compartir producto',
+                            icon: const Icon(Icons.ios_share,
+                                color: AppTheme.text, size: 20),
+                            onPressed: () => _compartir(context),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.9),
+                          child: IconButton(
+                            icon: const Icon(Icons.close, color: AppTheme.text),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   // Badge de Visibilidad del Producto

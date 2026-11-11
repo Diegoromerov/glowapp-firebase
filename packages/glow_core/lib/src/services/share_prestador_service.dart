@@ -109,3 +109,50 @@ String? idPublicoDelToken(String? token) {
     return null;
   }
 }
+
+/// Enlace público de un producto de GlowShop (página con tarjeta OG).
+String enlaceProducto({required String baseUrl, required String productId}) {
+  final limpio = baseUrl.replaceAll(RegExp(r'/+$'), '');
+  return '$limpio/s/product/$productId';
+}
+
+/// Comparte un producto y registra el share (content_type PRODUCT).
+///
+/// Mismo contrato que [compartirPrestador]: si la hoja no se completa no se
+/// registra nada, y el XP es el que confirma el backend.
+Future<ResultadoCompartir> compartirProducto({
+  required String productId,
+  required String baseUrl,
+  String? nombre,
+  CompartirFn? compartir,
+  RegistrarFn? registrar,
+}) async {
+  if (productId.trim().isEmpty) return ResultadoCompartir.noCompartido;
+
+  final enlace = enlaceProducto(baseUrl: baseUrl, productId: productId);
+  final texto =
+      'Mira ${nombre ?? 'este producto'} en GlowShop · $enlace';
+
+  ShareResultStatus estado;
+  try {
+    estado = await (compartir ?? _compartirReal)(texto);
+  } catch (error) {
+    debugPrint('No se pudo abrir la hoja de compartir: $error');
+    return ResultadoCompartir.noCompartido;
+  }
+  if (estado != ShareResultStatus.success) return ResultadoCompartir.noCompartido;
+
+  try {
+    final respuesta = await (registrar ??
+        (id) => SocialShareService.logShare(
+              platform: 'SISTEMA',
+              contentType: 'PRODUCT',
+              shareReferenceId: id,
+            ))(productId);
+    final xp = (respuesta['xp_awarded'] as num?)?.toInt() ?? 0;
+    return ResultadoCompartir(compartido: true, xpGanado: xp);
+  } catch (error) {
+    debugPrint('El share se hizo pero no se pudo registrar: $error');
+    return const ResultadoCompartir(compartido: true, xpGanado: 0);
+  }
+}

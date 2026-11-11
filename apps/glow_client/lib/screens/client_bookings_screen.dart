@@ -1212,6 +1212,27 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
             ],
             // Calificacion en un toque: la estrella pulsada abre la hoja con esa
             // nota ya puesta. Sin boton intermedio ni formulario previo.
+            // Post-servicio: compartir la ficha del prestador, que es lo que la
+            // clienta recomienda de verdad cuando la cita salió bien.
+            if (yaOcurrio && !esCancelada) ...[
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: () => _compartirCita(booking),
+                  icon: const Icon(Icons.ios_share,
+                      size: 16, color: Color(0xFF8A6A2F)),
+                  label: const Text(
+                    'Compartir mi look',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF8A6A2F),
+                    ),
+                  ),
+                ),
+              ),
+            ],
             if (canReview) ...[
               const SizedBox(height: 14),
               Container(
@@ -1323,6 +1344,28 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
           ],
         ),
       ),
+    );
+  }
+
+
+  /// Comparte la ficha del prestador al terminar el servicio: es el momento en
+  /// que la clienta está contenta y tiene algo concreto que recomendar.
+  Future<void> _compartirCita(Map<String, dynamic> booking) async {
+    final providerId = booking['provider_id']?.toString() ?? '';
+    final nombre = booking['provider_name']?.toString();
+    final resultado = await compartirPrestador(
+      providerId: providerId,
+      baseUrl: ApiService.baseUrl,
+      nombre: nombre,
+    );
+    if (!mounted) return;
+    final aviso = !resultado.compartido
+        ? 'No se abrió la hoja de compartir.'
+        : resultado.xpGanado > 0
+            ? '¡Compartido! +${resultado.xpGanado} XP'
+            : '¡Compartido! (el XP de hoy ya se otorgó)';
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(aviso), behavior: SnackBarBehavior.floating),
     );
   }
 
