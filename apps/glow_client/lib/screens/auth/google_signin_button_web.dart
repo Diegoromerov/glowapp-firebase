@@ -10,25 +10,29 @@ import 'package:google_sign_in_web/web_only.dart' as web_only;
 /// de GIS y escuchar `GoogleSignIn.onCurrentUserChanged`.
 ///
 /// Este archivo sólo se compila en web (import condicional desde login_screen).
+///
+/// Forma redonda: `icon` (sin texto) + `pill` con ancho 40 = alto 40 del tamaño
+/// grande, así el radio de la pastilla es 20 y el resultado es un círculo. El
+/// único trabajo del login es centrarlo a 52 px de alto con padding; no se
+/// recorta con ClipOval ni se tapa con nada, porque un iframe de GIS tapado u
+/// oculto deja de entregar clics (fue el defecto del overlay con opacidad 0.01).
 Widget? googleSignInButton() => web_only.renderButton(
       configuration: web_only.GSIButtonConfiguration(
-        type: web_only.GSIButtonType.standard,
+        type: web_only.GSIButtonType.icon,
         theme: web_only.GSIButtonTheme.outline,
         size: web_only.GSIButtonSize.large,
-        text: web_only.GSIButtonText.continueWith,
-        shape: web_only.GSIButtonShape.rectangular,
-        minimumWidth: 120,
+        shape: web_only.GSIButtonShape.pill,
+        minimumWidth: 40,
         locale: 'es',
       ),
     );
 
-/// Variante "invisible" del botón de GIS, para conservar el diseño propio.
+/// Variante "invisible" del botón de GIS, heredada del diseño anterior.
 ///
-/// En web GIS solo entrega credenciales a través de SU botón (ver arriba). Para
-/// no perder el círculo dorado de la app, este botón se apila encima del control
-/// propio con opacidad 0.01 y `ClipOval`: el usuario ve el diseño de GlowApp y
-/// el clic cae en el iframe real de Google. Un botón pintado a mano no puede
-/// disparar el flujo: `signIn()` ya no devuelve credenciales en 0.12.
+/// NO USAR: un iframe de GIS tapado con opacidad 0.01 no entrega clics. Es el
+/// defecto que dejó el login de Google muerto en web hasta 3d9cd99e; el botón
+/// visible de arriba (`googleSignInButton`, círculo oficial) es el que funciona.
+/// Se conserva sólo porque el login del proveedor todavía la referencia.
 Widget? googleSignInOverlay() => web_only.renderButton(
       configuration: web_only.GSIButtonConfiguration(
         type: web_only.GSIButtonType.icon,

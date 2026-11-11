@@ -404,8 +404,9 @@ class _LoginScreenState extends State<LoginScreen> {
       fontSize: isMobileLayout ? 16 : 13,
       color: t.textSecondary,
     );
-    // Botón oficial de GIS ("continuar con Google"). Se pinta tal cual: en web
-    // GIS solo entrega credenciales por su propio botón.
+    // Botón oficial de GIS, en su forma redonda (icono de Google en círculo).
+    // En web GIS solo entrega credenciales por su propio botón, así que se pinta
+    // tal cual: sin recortes ni capas encima, que es lo que deja el clic muerto.
     final googleOverlay = gis_button.googleSignInButton();
     return Scaffold(
       backgroundColor: const Color(0xFFFAF8F5),
@@ -643,17 +644,18 @@ class _LoginScreenState extends State<LoginScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  // Google: el diseño propio (círculo dorado) con el
-                                  // flujo real de GIS superpuesto e invisible.
-                                  // En web el clic lo recibe el iframe de Google; fuera
-                                  // de web el botón propio llama a signIn().
-                                  // En web, el botón OFICIAL de GIS, visible. Antes se
-                                  // dibujaba un círculo propio y encima se apilaba el
-                                  // iframe de Google con opacidad 0.01: el botón se veía
-                                  // deshabilitado y el clic no llegaba a Google. Un botón
-                                  // visible que funciona vale más que uno bonito y muerto.
+                                  // Google: botón OFICIAL de GIS en forma redonda
+                                  // (icono, 40x40, pastilla = círculo), a la
+                                  // altura de los círculos de 52 del diseño.
+                                  // Nada se apila encima: un iframe tapado u
+                                  // oculto no entrega clics, y el login queda
+                                  // muerto. Fuera de web, el botón propio llama
+                                  // a signIn().
                                   if (googleOverlay != null)
-                                    SizedBox(height: 44, width: 240, child: googleOverlay)
+                                    Padding(
+                                      padding: const EdgeInsets.all(6),
+                                      child: googleOverlay,
+                                    )
                                   else
                                     _buildSocialButton(
                                       icon: const Icon(Icons.g_mobiledata,
