@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:glow_core/widgets/profile/profile_header.dart';
 import 'package:glow_core/widgets/profile/luxe_list_tile.dart';
 import 'package:glow_core/widgets/profile/delivery_addresses_section.dart';
+import 'package:glow_core/glow_core.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/glowguide/config/provider_guide.dart';
 import 'package:glow_core/glowguide/persistence/persistence_engine.dart';
@@ -44,6 +45,50 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     _userName = widget.userName;
     _userEmail = widget.userEmail;
     _loadPersistedUserData();
+  }
+
+
+  /// Id público del prestador para compartir su ficha.
+  ///
+  /// `perfiles_prestador.id` **es** `usuarios.id` (la API las une por esa
+  /// igualdad), y en la app el id del usuario está en las preferencias. Ojo: no
+  /// sirve `currentBusinessProfileIdProvider`, que es el perfil de negocio del
+  /// SaaS y no el id que espera `/s/provider/:id`.
+  Future<String?> _idPublicoParaCompartir() async {
+    final prefs = await SharedPreferences.getInstance();
+    final guardado = prefs.getString('userId');
+    if (guardado != null && guardado.trim().isNotEmpty) return guardado.trim();
+
+    // Sesiones antiguas sin `userId` guardado: el id viaja en el token.
+    return idPublicoDelToken(await AuthService.getToken());
+  }
+
+  Future<void> _compartirMiPerfil() async {
+    HapticFeedback.lightImpact();
+    final id = await _idPublicoParaCompartir();
+    if (!mounted) return;
+    if (id == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('No pudimos identificar tu perfil para compartirlo.'),
+        behavior: SnackBarBehavior.floating,
+      ));
+      return;
+    }
+
+    final resultado = await compartirPrestador(
+      providerId: id,
+      baseUrl: ApiService.baseUrl,
+      nombre: _userName,
+    );
+    if (!mounted) return;
+    final aviso = !resultado.compartido
+        ? 'No se abrió la hoja de compartir.'
+        : resultado.xpGanado > 0
+            ? '¡Compartido! +${resultado.xpGanado} XP'
+            : '¡Compartido! (el XP de hoy ya se otorgó)';
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(aviso), behavior: SnackBarBehavior.floating),
+    );
   }
 
   Future<void> _loadPersistedUserData() async {
@@ -132,6 +177,14 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         ),
         centerTitle: true,
         actions: [
+          // Compartir mi perfil: cada prestador publica su ficha en su propia
+          // audiencia (Instagram, WhatsApp). Es el canal de adquisición más
+          // barato que tiene la app.
+          IconButton(
+            tooltip: 'Compartir mi perfil',
+            onPressed: _compartirMiPerfil,
+            icon: const Icon(Icons.ios_share, size: 20, color: Color(0xFF1F1A15)),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Center(
