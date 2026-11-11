@@ -373,7 +373,7 @@
    "estado": "FALLA",
    "estado_2026_11_09": "PARCIAL",
    "evidencia": "F9.3B: 45 de 46 IconButton con nombre (tooltips + Semantics). Falta recorrido con lector de pantalla en dispositivo",
-   "evidencia_2026_11_10": "Medido con Accessibility.getFullAXTree: login 7 interactivos, ajustes 10, soporte 5, mis citas 2 — todos con nombre accesible (0 sin nombre). El hueco real esta en la home y la tienda: exponen texto pero 0 nodos interactivos, asi que un lector los lee sin poder activarlos. Falta envolver la navegacion propia y las tarjetas en Semantics(button:true)."
+   "evidencia_2026_11_10": "Medido con Accessibility.getFullAXTree. Antes la home exponia 0 interactivos; ahora 15, con nombres: Todos, Mujeres, Hombres, Ver lista, Citas, GlowShop, Perfil, Glow IA+. Login 7, ajustes 10, soporte 5 y mis citas 2 tambien con nombre. Quedan 2 botones sin nombre identificados por coordenadas: el cierre de la guia (830,295) y el icono de busqueda del buscador (34,73)."
   },
   "57": {
    "bloque": "G",
