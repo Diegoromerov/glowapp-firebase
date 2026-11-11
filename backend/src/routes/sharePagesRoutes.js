@@ -69,7 +69,7 @@ function pagina({ titulo, descripcion, imagen, url, destino }) {
 // GET /s/provider/:id — ficha de un prestador
 router.get('/provider/:id', async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const url = `${APP_HOST.replace(/\/$/, '')}/provider-detail/${req.params.id}`;
+  const url = `${APP_HOST.replace(/\/+$/, '')}/provider-detail/${req.params.id}`;
 
   if (Number.isNaN(id)) {
     return res.status(400).type('html').send(
@@ -123,6 +123,63 @@ router.get('/provider/:id', async (req, res) => {
         descripcion: 'Intenta de nuevo en unos segundos.',
         url,
         destino: APP_HOST,
+      })
+    );
+  }
+});
+
+// GET /s/product/:id — ficha de un producto de GlowShop
+router.get('/product/:id', async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const destino = `${APP_HOST.replace(/\/+$/, '')}/#/store`;
+  const url = `${APP_HOST.replace(/\/+$/, '')}/s/product/${req.params.id}`;
+
+  if (Number.isNaN(id)) {
+    return res.status(400).type('html').send(
+      pagina({
+        titulo: 'Enlace inválido · GlowApp',
+        descripcion: 'Este enlace no corresponde a ningún producto.',
+        url,
+        destino,
+      })
+    );
+  }
+
+  try {
+    const { rows } = await runAsSystem({ pool }, (client) => client.query(
+      `SELECT id, nombre, descripcion, imagen_url FROM productos WHERE id = $1`,
+      [id]
+    ));
+
+    if (rows.length === 0) {
+      return res.status(404).type('html').send(
+        pagina({
+          titulo: 'Producto no encontrado · GlowApp',
+          descripcion: 'Este producto ya no está disponible en GlowShop.',
+          url,
+          destino,
+        })
+      );
+    }
+
+    const prod = rows[0];
+    const titulo = `${prod.nombre} · GlowShop`;
+    const descripcion = prod.descripcion
+      ? String(prod.descripcion).slice(0, 180)
+      : 'Compra este producto de belleza en GlowApp.';
+
+    res.set('Cache-Control', 'public, max-age=300');
+    return res.type('html').send(
+      pagina({ titulo, descripcion, imagen: prod.imagen_url, url, destino })
+    );
+  } catch (error) {
+    console.error('❌ [SHARE] Error en /s/product:', error.message);
+    return res.status(500).type('html').send(
+      pagina({
+        titulo: 'No pudimos abrir el enlace · GlowApp',
+        descripcion: 'Intenta de nuevo en unos segundos.',
+        url,
+        destino,
       })
     );
   }

@@ -18,7 +18,7 @@ const PLATAFORMAS = ['TIKTOK', 'INSTAGRAM', 'FACEBOOK', 'WHATSAPP', 'SISTEMA'];
 
 // Deben coincidir con el CHECK de `social_shares_log.content_type`: si se manda
 // otro valor, el INSERT falla y el usuario ve un 500 sin explicación.
-const TIPOS = ['AI_COLORIMETRY', 'VTO_LOOK', 'ACADEMY_CERT', 'PROVIDER_PROFILE'];
+const TIPOS = ['AI_COLORIMETRY', 'VTO_LOOK', 'ACADEMY_CERT', 'PROVIDER_PROFILE', 'PRODUCT'];
 
 async function logShare(req, res) {
   const userId = req.user && req.user.id;

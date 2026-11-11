@@ -108,4 +108,18 @@ describe('POST /api/social/log-share', () => {
     expect(res.body.success).toBe(false);
     expect(res.body).not.toHaveProperty('xp_awarded');
   });
+
+  test('el share de un producto de GlowShop se acepta', async () => {
+    pool.query
+      .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'sh-2' }] })
+      .mockResolvedValueOnce({ rowCount: 1, rows: [] })
+      .mockResolvedValueOnce({ rowCount: 1, rows: [] });
+
+    const res = await request(app)
+      .post('/api/social/log-share')
+      .send({ platform: 'WHATSAPP', content_type: 'PRODUCT', share_reference_id: '7' });
+
+    expect(res.status).toBe(201);
+    expect(res.body.xp_awarded).toBe(50);
+  });
 });

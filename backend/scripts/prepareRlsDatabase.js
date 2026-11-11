@@ -72,6 +72,7 @@ const MIGRACIONES_BASE_NUEVA = [
 // sistema) y no había idempotencia por día; sin 008 la tabla no existía.
 '138_social_shares.sql',
 '139_referidos_atribucion.sql',
+  '140_producto_compartido.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -144,6 +145,7 @@ const MIGRACIONES_ARRANQUE = [
   '008_social_integrations.sql',
   '138_social_shares.sql',
   '139_referidos_atribucion.sql',
+  '140_producto_compartido.sql',
 
   '125_usuario_lookup_sin_contexto.sql',
 

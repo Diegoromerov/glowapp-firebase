@@ -87,3 +87,33 @@ describe('GET /s/provider/:id', () => {
     expect(res.text).toContain('&lt;script&gt;');
   });
 });
+
+describe('GET /s/product/:id', () => {
+  const producto = {
+    id: 7,
+    nombre: 'Sérum Vitamina C',
+    descripcion: 'Ilumina y unifica el tono. 30 ml.',
+    imagen_url: 'https://storage.googleapis.com/glowapp-client.firebasestorage.app/serum.jpg',
+  };
+
+  beforeEach(() => jest.clearAllMocks());
+
+  test('devuelve la tarjeta del producto con imagen', async () => {
+    pool.query.mockResolvedValueOnce({ rows: [producto] });
+
+    const res = await request(app).get('/s/product/7');
+
+    expect(res.status).toBe(200);
+    expect(res.text).toContain('Sérum Vitamina C');
+    expect(res.text).toMatch(/og:image" content="https:\/\/storage\.googleapis\.com/);
+    expect(res.text).toContain('og:url" content="https://glowapp-client.web.app/s/product/7"');
+    expect(res.text).toContain('http-equiv="refresh"');
+  });
+
+  test('producto inexistente responde 404 en HTML', async () => {
+    pool.query.mockResolvedValueOnce({ rows: [] });
+    const res = await request(app).get('/s/product/999');
+    expect(res.status).toBe(404);
+    expect(res.headers['content-type']).toMatch(/text\/html/);
+  });
+});
