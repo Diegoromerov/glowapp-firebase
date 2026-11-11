@@ -67,6 +67,15 @@ class ApiService {
   ];
 
   static Future<void> ensureBaseUrl() async {
+    // Un `--dart-define=API_URL` explícito manda sobre todo lo demás. Antes se
+    // ignoraba aquí: la guarda de release saltaba igual y una build de release
+    // servida en localhost (como se valida un bundle antes de publicarlo) moría
+    // con «Falta --dart-define=API_URL» aunque el define estuviera puesto.
+    const envUrl = String.fromEnvironment('API_URL');
+    if (envUrl.isNotEmpty) {
+      _cachedBaseUrl = envUrl;
+      return;
+    }
     if (useStaging) {
       _cachedBaseUrl = stagingUrl;
       return;
