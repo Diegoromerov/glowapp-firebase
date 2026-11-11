@@ -10,6 +10,10 @@
 // abierta por un tercero no puede exigir sesión ni la cabecera X-App-Audience.
 const express = require('express');
 const { pool } = require('../config/db');
+// La API trabaja con RLS: sin contexto, un SELECT sobre perfiles_prestador
+// devuelve 0 filas y la página diría «no encontrado» de un prestador que sí
+// existe. Los endpoints públicos del catálogo resuelven igual.
+const { runAsSystem } = require('../config/tenantRouting');
 
 const router = express.Router();
 
@@ -79,14 +83,14 @@ router.get('/provider/:id', async (req, res) => {
   }
 
   try {
-    const { rows } = await pool.query(
+    const { rows } = await runAsSystem({ pool }, (client) => client.query(
       `SELECT p.id, COALESCE(p.business_name, u.nombre) AS nombre,
               p.description, p.rating_avg, p.rating_count, u.foto_url
          FROM perfiles_prestador p
          JOIN usuarios u ON p.id = u.id
         WHERE p.id = $1`,
       [id]
-    );
+    ));
 
     if (rows.length === 0) {
       return res.status(404).type('html').send(

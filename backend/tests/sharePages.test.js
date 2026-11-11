@@ -2,6 +2,11 @@
 // GET /s/provider/:id — la página que convierte un enlace en una tarjeta con
 // imagen en WhatsApp/Instagram, y que además redirige a la app.
 jest.mock('../src/config/db', () => ({ pool: { query: jest.fn() } }));
+// La ruta consulta con contexto de sistema (RLS); en la prueba se delega al pool
+// mockeado para no montar una conexión.
+jest.mock('../src/config/tenantRouting', () => ({
+  runAsSystem: (_pool, fn) => fn({ query: (...args) => require('../src/config/db').pool.query(...args) }),
+}));
 
 const express = require('express');
 const request = require('supertest');
