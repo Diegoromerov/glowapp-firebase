@@ -23,7 +23,9 @@ class ProvidersScreen extends StatefulWidget {
   State<ProvidersScreen> createState() => _ProvidersScreenState();
 }
 
-class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderStateMixin implements NavigationDelegate {
+class _ProvidersScreenState extends State<ProvidersScreen>
+    with TickerProviderStateMixin
+    implements NavigationDelegate {
   late final MapController _mapController;
   List<ProviderModel> _allProviders = [];
   List<ProviderModel> _filteredProviders = [];
@@ -45,10 +47,10 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   bool _isMapMenuOpen = false;
 
   // GlowGuide Integration (I1)
-    // El engine y sus dependencias son unicos: viven en GlowGuideService
-    // (inicializado en main.dart) para sobrevivir a la navegacion que el propio
-    // guide dispara al ejecutar `navigate(route:)`.
-    late final GlowGuideEngine _glowGuideEngine;
+  // El engine y sus dependencias son unicos: viven en GlowGuideService
+  // (inicializado en main.dart) para sobrevivir a la navegacion que el propio
+  // guide dispara al ejecutar `navigate(route:)`.
+  late final GlowGuideEngine _glowGuideEngine;
 
   // Legacy Mutex state
   // ignore: unused_field
@@ -70,44 +72,44 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   int _radioMetros = 5000;
 
   @override
-    void initState() {
-      super.initState();
-      _mapController = MapController();
-      _loadProviders();
-      _loadUserRole();
-      // Arranque SIN diálogo de permisos: solo usa la ubicación si el usuario ya
-      // la concedió. El permiso se pide cuando toca «Mi ubicación» (ítem 11).
-      _centrarPorUbicacionConocida();
-      _resolveGuideMutex();
-      AudienceService.currentAudience.addListener(_onAudienceChanged);
+  void initState() {
+    super.initState();
+    _mapController = MapController();
+    _loadProviders();
+    _loadUserRole();
+    // Arranque SIN diálogo de permisos: solo usa la ubicación si el usuario ya
+    // la concedió. El permiso se pide cuando toca «Mi ubicación» (ítem 11).
+    _centrarPorUbicacionConocida();
+    _resolveGuideMutex();
+    AudienceService.currentAudience.addListener(_onAudienceChanged);
 
-      // Motor compartido de la app (creado en main.dart). Si esta pantalla se
-      // monta sin pasar por main() —por ejemplo en un test de widget— se crea
-      // aqui; createEngine es idempotente por el guard de abajo.
-      if (GlowGuideService.instance.engine == null) {
-        GlowGuideService.instance.initialize();
-        GlowGuideService.instance.createEngine(
-          steps: ClientGuide.steps,
-          guideId: ClientGuide.guideId,
-        );
-      }
-      _glowGuideEngine = GlowGuideService.instance.engine!;
-      _glowGuideEngine.addListener(_onGlowGuideStateChanged);
+    // Motor compartido de la app (creado en main.dart). Si esta pantalla se
+    // monta sin pasar por main() —por ejemplo en un test de widget— se crea
+    // aqui; createEngine es idempotente por el guard de abajo.
+    if (GlowGuideService.instance.engine == null) {
+      GlowGuideService.instance.initialize();
+      GlowGuideService.instance.createEngine(
+        steps: ClientGuide.steps,
+        guideId: ClientGuide.guideId,
+      );
     }
+    _glowGuideEngine = GlowGuideService.instance.engine!;
+    _glowGuideEngine.addListener(_onGlowGuideStateChanged);
+  }
 
-    void _onGlowGuideStateChanged(GlowGuideState state) {
-      if (!mounted) return;
-      final isStep08 = state.currentStepId == 'step_08_despedida';
-      if (_isMapMenuOpen != isStep08) {
-        setState(() {
-          _isMapMenuOpen = isStep08;
-        });
-      }
+  void _onGlowGuideStateChanged(GlowGuideState state) {
+    if (!mounted) return;
+    final isStep08 = state.currentStepId == 'step_08_despedida';
+    if (_isMapMenuOpen != isStep08) {
+      setState(() {
+        _isMapMenuOpen = isStep08;
+      });
     }
+  }
 
-    // ===== NavigationDelegate implementation (I1) =====
+  // ===== NavigationDelegate implementation (I1) =====
 
-    @override
+  @override
   Future<NavigationResult> navigate({
     required String routeName,
     Map<String, dynamic>? arguments,
@@ -157,8 +159,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
     // 1. New completion key = true → no guide
     final glowguideCompleted = prefs.getBool(
-      PersistenceEngine.completionKeyFor(ClientGuide.guideId),
-    ) ??
+          PersistenceEngine.completionKeyFor(ClientGuide.guideId),
+        ) ??
         false;
     if (glowguideCompleted) {
       if (mounted) {
@@ -213,7 +215,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       // Revalidar guards en el momento real del frame
       if (!mounted) return;
       if (!_enableGlowGuide) return;
-      if (_glowGuideEngine.isActive || _glowGuideEngine.isCompleted || _glowGuideEngine.isDismissed) {
+      if (_glowGuideEngine.isActive ||
+          _glowGuideEngine.isCompleted ||
+          _glowGuideEngine.isDismissed) {
         return;
       }
       _glowGuideEngine.start();
@@ -258,12 +262,19 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     }
 
     // Animate map movement smoothly over 1000 milliseconds
-    final latTween = Tween<double>(begin: _mapController.camera.center.latitude, end: destLocation.latitude);
-    final lngTween = Tween<double>(begin: _mapController.camera.center.longitude, end: destLocation.longitude);
-    final zoomTween = Tween<double>(begin: _mapController.camera.zoom, end: destZoom);
+    final latTween = Tween<double>(
+        begin: _mapController.camera.center.latitude,
+        end: destLocation.latitude);
+    final lngTween = Tween<double>(
+        begin: _mapController.camera.center.longitude,
+        end: destLocation.longitude);
+    final zoomTween =
+        Tween<double>(begin: _mapController.camera.zoom, end: destZoom);
 
-    final controller = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
-    final animation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    final controller = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    final animation =
+        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
       if (mounted) {
@@ -275,15 +286,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     });
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
         controller.dispose();
       }
     });
 
     controller.forward();
   }
-
-
 
   void _handleTutorialStepChange(int newStep) {
     setState(() {
@@ -416,98 +426,108 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setStateModal) {
-            return AlertDialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
-              title: Row(
-                children: [
-                  Icon(Icons.location_off, color: AppTheme.primary, size: 28),
-                  SizedBox(width: 8),
-                  Text(
-                    'Ingresa tu Ubicación',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'No pudimos acceder a tu GPS. Por favor escribe tu dirección, barrio o ciudad:',
-                    style: TextStyle(fontSize: 14, color: Colors.black54),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: addressController,
-                    decoration: const InputDecoration(
-                      labelText: 'Dirección o Barrio',
-                      hintText: 'Ej. Bogota, Colombia',
-                      border: OutlineInputBorder(),
-                    ),
-                    enabled: !resolving,
-                  ),
-                  if (resolving) ...[
-                    const SizedBox(height: 16),
-                    Center(
-                      child: CircularProgressIndicator(color: AppTheme.primary),
-                    )
-                  ]
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: resolving ? null : () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _userLocation = _bogotaCenter;
-                    });
-                    _loadProviders();
-                  },
-                  child: const Text('Usar Bogotá (Defecto)', style: TextStyle(color: Color(0xFF6F5F4E))),
-                ),
-                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppTheme.primary,
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                  ),
-                  onPressed: resolving ? null : () async {
-                    final address = addressController.text.trim();
-                    if (address.isEmpty) return;
-
-                    setStateModal(() {
-                      resolving = true;
-                    });
-
-                    try {
-                      // Obtener coordenadas a partir de texto - usando getCurrentPosition como fallback
-                      final position = await Geolocator.getCurrentPosition();
-                      if (context.mounted) {
-                        Navigator.pop(context);
-                        setState(() {
-                          _userLocation = LatLng(position.latitude, position.longitude);
-                        });
-                        _mapController.move(_userLocation!, 13.5);
-                        _loadProviders();
-                      }
-                    } catch (e) {
-                      setStateModal(() {
-                        resolving = false;
-                      });
-                      if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('No pudimos localizar esa dirección. Intenta otra.')),
-                      );
-                    }
-                  },
-                  child: const Text('Buscar', style: TextStyle(fontWeight: FontWeight.bold)),
+        return StatefulBuilder(builder: (context, setStateModal) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+            title: Row(
+              children: [
+                Icon(Icons.location_off, color: AppTheme.primary, size: 28),
+                SizedBox(width: 8),
+                Text(
+                  'Ingresa tu Ubicación',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
-            );
-          }
-        );
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'No pudimos acceder a tu GPS. Por favor escribe tu dirección, barrio o ciudad:',
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: addressController,
+                  decoration: const InputDecoration(
+                    labelText: 'Dirección o Barrio',
+                    hintText: 'Ej. Bogota, Colombia',
+                    border: OutlineInputBorder(),
+                  ),
+                  enabled: !resolving,
+                ),
+                if (resolving) ...[
+                  const SizedBox(height: 16),
+                  Center(
+                    child: CircularProgressIndicator(color: AppTheme.primary),
+                  )
+                ]
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: resolving
+                    ? null
+                    : () {
+                        Navigator.pop(context);
+                        setState(() {
+                          _userLocation = _bogotaCenter;
+                        });
+                        _loadProviders();
+                      },
+                child: const Text('Usar Bogotá (Defecto)',
+                    style: TextStyle(color: Color(0xFF6F5F4E))),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppTheme.primary,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+                onPressed: resolving
+                    ? null
+                    : () async {
+                        final address = addressController.text.trim();
+                        if (address.isEmpty) return;
+
+                        setStateModal(() {
+                          resolving = true;
+                        });
+
+                        try {
+                          // Obtener coordenadas a partir de texto - usando getCurrentPosition como fallback
+                          final position =
+                              await Geolocator.getCurrentPosition();
+                          if (context.mounted) {
+                            Navigator.pop(context);
+                            setState(() {
+                              _userLocation =
+                                  LatLng(position.latitude, position.longitude);
+                            });
+                            _mapController.move(_userLocation!, 13.5);
+                            _loadProviders();
+                          }
+                        } catch (e) {
+                          setStateModal(() {
+                            resolving = false;
+                          });
+                          if (!context.mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    'No pudimos localizar esa dirección. Intenta otra.')),
+                          );
+                        }
+                      },
+                child: const Text('Buscar',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+            ],
+          );
+        });
       },
     );
   }
@@ -521,10 +541,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
     // 1. Cargar datos cacheados localmente de SecureStorage para visualización inmediata
     try {
-      final String? cachedJson = await SecureStorageService().read('cached_providers');
+      final String? cachedJson =
+          await SecureStorageService().read('cached_providers');
       if (cachedJson != null) {
         final List<dynamic> decoded = json.decode(cachedJson);
-        final cachedProviders = decoded.map((jsonObj) => ProviderModel.fromJson(jsonObj)).toList();
+        final cachedProviders =
+            decoded.map((jsonObj) => ProviderModel.fromJson(jsonObj)).toList();
         if (mounted) {
           setState(() {
             _allProviders = cachedProviders;
@@ -542,7 +564,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     const int maxRetries = 3;
     int delayMs = 1000;
     List<ProviderModel>? providers;
-    
+
     while (retries < maxRetries) {
       try {
         providers = await ApiService.fetchProvidersSecured(
@@ -574,7 +596,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           }
           return;
         }
-        debugPrint('Fallo al cargar prestadores. Reintentando en ${delayMs}ms (Intento $retries de $maxRetries)...');
+        debugPrint(
+            'Fallo al cargar prestadores. Reintentando en ${delayMs}ms (Intento $retries de $maxRetries)...');
         await Future.delayed(Duration(milliseconds: delayMs));
         delayMs *= 2; // Retroceso exponencial
       }
@@ -591,7 +614,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       // 3. Guardar en caché el nuevo listado usando SecureStorage
       try {
         final rawList = providers.map((p) => p.toJson()).toList();
-        await SecureStorageService().write('cached_providers', json.encode(rawList));
+        await SecureStorageService()
+            .write('cached_providers', json.encode(rawList));
       } catch (cacheErr) {
         debugPrint('Error guardando en caché segura: $cacheErr');
       }
@@ -623,10 +647,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   }
 
   /// Ids que se pintan como pin suelto (el resto están en un cluster).
-  Set<String> _idsSueltos() => _gruposPines()
-      .where((g) => !g.esCluster)
-      .expand((g) => g.ids)
-      .toSet();
+  Set<String> _idsSueltos() =>
+      _gruposPines().where((g) => !g.esCluster).expand((g) => g.ids).toSet();
 
   /// Sube el radio y vuelve a buscar: un mapa vacío no puede ser la respuesta.
   void _ampliarRadio() {
@@ -652,7 +674,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           CircleAvatar(
             radius: 26,
             backgroundColor: const Color(0xFFF5EBE6),
-            backgroundImage: p.avatarUrl.isNotEmpty ? NetworkImage(p.avatarUrl) : null,
+            backgroundImage:
+                p.avatarUrl.isNotEmpty ? NetworkImage(p.avatarUrl) : null,
             child: p.avatarUrl.isEmpty
                 ? Text(
                     nombre.isNotEmpty ? nombre[0].toUpperCase() : '?',
@@ -676,15 +699,20 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 const SizedBox(height: 3),
                 Row(
                   children: [
-                    const Icon(Icons.star_rounded, size: 13, color: Color(0xFFFBBF24)),
+                    const Icon(Icons.star_rounded,
+                        size: 13, color: Color(0xFFFBBF24)),
                     const SizedBox(width: 3),
                     Text(
-                      p.ratingCount == 0 ? 'Nuevo' : p.ratingAvg.toStringAsFixed(1),
-                      style: const TextStyle(fontSize: 12, color: Color(0xFF4A4036)),
+                      p.ratingCount == 0
+                          ? 'Nuevo'
+                          : p.ratingAvg.toStringAsFixed(1),
+                      style: const TextStyle(
+                          fontSize: 12, color: Color(0xFF4A4036)),
                     ),
                     const SizedBox(width: 8),
                     Text('$km km',
-                        style: const TextStyle(fontSize: 12, color: Color(0xFF8A7F72))),
+                        style: const TextStyle(
+                            fontSize: 12, color: Color(0xFF8A7F72))),
                   ],
                 ),
                 const SizedBox(height: 6),
@@ -704,14 +732,17 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     setState(() {
       _filteredProviders = _allProviders.where((p) {
         final matchesCat = _providerMatchesCategory(p, _selectedCategory);
-        
+
         bool matchesAudience = true;
         final desc = p.description.toLowerCase();
         final biz = p.businessName.toLowerCase();
         final name = p.fullName.toLowerCase();
 
         if (audience == AudienceMode.men) {
-          final isMakeupOrNails = desc.contains('maquillaje') || desc.contains('manicura') || desc.contains('pedicura') || desc.contains('uñas');
+          final isMakeupOrNails = desc.contains('maquillaje') ||
+              desc.contains('manicura') ||
+              desc.contains('pedicura') ||
+              desc.contains('uñas');
           final isBarberOrMen = desc.contains('barber') ||
               desc.contains('hombres') ||
               desc.contains('corte masculino') ||
@@ -719,10 +750,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               biz.contains('barber') ||
               biz.contains('hombres') ||
               biz.contains('barba');
-          
+
           matchesAudience = isBarberOrMen && !isMakeupOrNails;
         } else if (audience == AudienceMode.women) {
-          matchesAudience = !desc.contains('exclusivo hombres') && !biz.contains('barberia masculina');
+          matchesAudience = !desc.contains('exclusivo hombres') &&
+              !biz.contains('barberia masculina');
         }
 
         return matchesCat && matchesAudience;
@@ -810,7 +842,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
     // Navegar es libre en GlowShop y Glow IA+: la cuenta se pide en la accion
     // que escribe en la base (pagar, analizar la foto), no al abrir la pantalla.
-    if (requiereSesion && !await AuthGate.requerir(context, accion: accion)) return;
+    if (requiereSesion && !await AuthGate.requerir(context, accion: accion))
+      return;
     if (!mounted) return;
 
     final result = await Navigator.pushNamed(context, routeName);
@@ -824,15 +857,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         // Auto scroll or zoom to filtered providers if needed
         if (_filteredProviders.isNotEmpty) {
           _mapController.move(
-            LatLng(_filteredProviders.first.latitude, _filteredProviders.first.longitude),
+            LatLng(_filteredProviders.first.latitude,
+                _filteredProviders.first.longitude),
             14.5,
           );
         }
       }
     }
   }
-
-
 
   void _navigateToAIChat(String message) {
     Navigator.pushNamed(
@@ -1092,17 +1124,22 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
   }
   */
 
-  Future<void> _openBookingDirectly(BuildContext context, ProviderModel provider, [String? initialServiceId]) async {
+  Future<void> _openBookingDirectly(
+      BuildContext context, ProviderModel provider,
+      [String? initialServiceId]) async {
     try {
       final details = await ApiService.fetchProviderDetails(provider.id);
-      final services = (details['services'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+      final services =
+          (details['services'] as List?)?.cast<Map<String, dynamic>>() ?? [];
       if (context.mounted) {
         Navigator.pushNamed(
           context,
           '/booking',
           arguments: {
             'providerId': provider.id,
-            'providerName': provider.businessName.isNotEmpty ? provider.businessName : provider.fullName,
+            'providerName': provider.businessName.isNotEmpty
+                ? provider.businessName
+                : provider.fullName,
             'services': services,
             'initialServiceId': initialServiceId,
           },
@@ -1115,7 +1152,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
           '/booking',
           arguments: {
             'providerId': provider.id,
-            'providerName': provider.businessName.isNotEmpty ? provider.businessName : provider.fullName,
+            'providerName': provider.businessName.isNotEmpty
+                ? provider.businessName
+                : provider.fullName,
             'services': const [],
             'initialServiceId': initialServiceId,
           },
@@ -1139,13 +1178,15 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
             child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF8F5).withValues(alpha: 0.92), // Nude Seda Satinado
+                color: const Color(0xFFFAF8F5)
+                    .withValues(alpha: 0.92), // Nude Seda Satinado
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(32),
                   topRight: Radius.circular(32),
                 ),
                 border: Border.all(
-                  color: const Color(0xFFC5A052).withValues(alpha: 0.35), // Oro Champán 871
+                  color: const Color(0xFFC5A052)
+                      .withValues(alpha: 0.35), // Oro Champán 871
                   width: 1.2,
                 ),
                 boxShadow: [
@@ -1243,13 +1284,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         ),
                       ),
                       Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
                           color: const Color(0xFFF4EFEA),
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: const Color(0xFFC5A052).withValues(alpha: 0.3),
+                            color:
+                                const Color(0xFFC5A052).withValues(alpha: 0.3),
                             width: 1,
                           ),
                         ),
@@ -1315,7 +1357,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                         margin: const EdgeInsets.only(right: 8),
                                         decoration: BoxDecoration(
                                           color: const Color(0xFFF4EFEA),
-                                          borderRadius: BorderRadius.circular(16),
+                                          borderRadius:
+                                              BorderRadius.circular(16),
                                         ),
                                         child: const Center(
                                           child: SizedBox(
@@ -1348,7 +1391,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           child: const Center(
                             child: Text(
                               'No hay fotos cargadas en el portafolio',
-                              style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 13),
+                              style: TextStyle(
+                                  color: Color(0xFF6F5F4E), fontSize: 13),
                             ),
                           ),
                         );
@@ -1357,16 +1401,19 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         height: 110,
                         child: Row(
                           children: List.generate(
-                              portfolio.length > 2 ? 2 : portfolio.length, (idx) {
+                              portfolio.length > 2 ? 2 : portfolio.length,
+                              (idx) {
                             final item = portfolio[idx];
                             final imgUrl = item['image_url'] as String? ?? '';
                             return Expanded(
                               child: Container(
-                                margin: EdgeInsets.only(right: idx == 0 ? 8 : 0),
+                                margin:
+                                    EdgeInsets.only(right: idx == 0 ? 8 : 0),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
                                   border: Border.all(
-                                    color: const Color(0xFFC5A052).withValues(alpha: 0.3),
+                                    color: const Color(0xFFC5A052)
+                                        .withValues(alpha: 0.3),
                                     width: 1,
                                   ),
                                   image: imgUrl.isNotEmpty
@@ -1424,7 +1471,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           ),
                           padding: const EdgeInsets.all(12),
                         ),
-                        icon: const Icon(Icons.chat_bubble_outline_rounded, color: Color(0xFFC5A052), size: 20),
+                        icon: const Icon(Icons.chat_bubble_outline_rounded,
+                            color: Color(0xFFC5A052), size: 20),
                         tooltip: 'Chat Directo',
                       ),
                       const SizedBox(width: 8),
@@ -1432,10 +1480,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       Expanded(
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: Color(0xFFC5A052), width: 1.2),
+                            side: const BorderSide(
+                                color: Color(0xFFC5A052), width: 1.2),
                             foregroundColor: const Color(0xFF8C6F65),
                             padding: const EdgeInsets.symmetric(vertical: 14),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18)),
                           ),
                           onPressed: () {
                             Navigator.pop(context);
@@ -1464,14 +1514,16 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             backgroundColor: const Color(0xFFC5A052),
                             foregroundColor: const Color(0xFF14100C),
                             padding: const EdgeInsets.symmetric(vertical: 14),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18)),
                             elevation: 2,
                           ),
                           onPressed: () {
                             Navigator.pop(context);
                             _openBookingDirectly(context, provider);
                           },
-                          icon: const Icon(Icons.calendar_today_outlined, size: 15, color: Color(0xFF14100C)),
+                          icon: const Icon(Icons.calendar_today_outlined,
+                              size: 15, color: Color(0xFF14100C)),
                           label: const Text(
                             'Reservar Cita',
                             style: TextStyle(
@@ -1498,7 +1550,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     final categories = [
       {'name': 'Cabello', 'value': 'hair', 'icon': Icons.content_cut_outlined},
       {'name': 'Uñas', 'value': 'nails', 'icon': Icons.brush_outlined},
-      {'name': 'Maquillaje', 'value': 'makeup', 'icon': Icons.face_retouching_natural_outlined},
+      {
+        'name': 'Maquillaje',
+        'value': 'makeup',
+        'icon': Icons.face_retouching_natural_outlined
+      },
       {'name': 'Todos', 'value': 'all', 'icon': Icons.auto_awesome_outlined},
     ];
     return SizedBox(
@@ -1527,48 +1583,49 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
               );
             },
             child: AnimatedContainer(
-              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 200),
+              duration: _movimientoReducido
+                  ? Duration.zero
+                  : const Duration(milliseconds: 200),
               margin: const EdgeInsets.only(right: 20),
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                                  Container(
-                                    width: 46,
-                                    height: 46,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: isSelected
-                                          ? AppTheme.primary.withValues(alpha: 0.15)
-                                          : Colors.grey.shade50,
-                                      border: Border.all(
-                                        color: isSelected
-                                            ? AppTheme.primary
-                                            : Colors.grey.shade200,
-                                        width: 1.2,
-                                      ),
-                                    ),
-                                    child: Icon(
-                                      iconData,
-                                      size: 20,
-                                      color: isSelected
-                                          ? AppTheme.primary
-                                          : Colors.grey.shade600,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Text(
-                                    cat['name'] as String,
-                                    style: TextStyle(
-                                      color: isSelected
-                                          ? AppTheme.primary
-                                          : Colors.grey.shade600,
-                                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                                      fontSize: 11,
-                                    ),
-                                  ),
-                                ],
+                  Container(
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isSelected
+                          ? AppTheme.primary.withValues(alpha: 0.15)
+                          : Colors.grey.shade50,
+                      border: Border.all(
+                        color: isSelected
+                            ? AppTheme.primary
+                            : Colors.grey.shade200,
+                        width: 1.2,
+                      ),
+                    ),
+                    child: Icon(
+                      iconData,
+                      size: 20,
+                      color:
+                          isSelected ? AppTheme.primary : Colors.grey.shade600,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    cat['name'] as String,
+                    style: TextStyle(
+                      color:
+                          isSelected ? AppTheme.primary : Colors.grey.shade600,
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
               ),
             ),
           );
@@ -1591,34 +1648,44 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       key: key,
       child: Material(
         color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              assetPath != null
-                  ? Image.asset(
-                      assetPath,
-                      width: assetSize ?? 28,
-                      height: assetSize ?? 28,
-                      fit: BoxFit.contain,
-                    )
-                  : Icon(icon ?? Icons.circle, color: resolvedColor, size: 20),
-              const SizedBox(height: 3),
-              Text(
-                label,
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.bold,
-                  color: resolvedColor,
+        // Ítem 56: la navegación propia no era un BottomNavigationBar, así que
+        // el árbol de accesibilidad la veía como texto y no como botón: el
+        // lector la leía y no podía activarla. Con Semantics cada ítem es un
+        // botón con nombre.
+        child: Semantics(
+          button: true,
+          label: label,
+          excludeSemantics: true,
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                assetPath != null
+                    ? Image.asset(
+                        assetPath,
+                        width: assetSize ?? 28,
+                        height: assetSize ?? 28,
+                        fit: BoxFit.contain,
+                      )
+                    : Icon(icon ?? Icons.circle,
+                        color: resolvedColor, size: 20),
+                const SizedBox(height: 3),
+                Text(
+                  label,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 9.5,
+                    fontWeight: FontWeight.bold,
+                    color: resolvedColor,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -1635,67 +1702,74 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
     required VoidCallback onTap,
     Widget? iconWidget,
   }) {
-    final colors = gradientColors ?? const [
-      Color(0xFFF4EFEA), // LuxeColors.nude100 por defecto
-      Color(0xFFC5A052), // LuxeColors.gold871 por defecto
-    ];
+    final colors = gradientColors ??
+        const [
+          Color(0xFFF4EFEA), // LuxeColors.nude100 por defecto
+          Color(0xFFC5A052), // LuxeColors.gold871 por defecto
+        ];
     final shadow = shadowColor ?? const Color(0xFFC5A052);
     final borderC = borderColor ?? Colors.white;
 
     return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Transform.translate(
-          offset: const Offset(0, -14),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: colors,
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: shadow.withValues(alpha: 0.4),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                      offset: const Offset(0, 4),
+      child: Semantics(
+        button: true,
+        label: label,
+        excludeSemantics: true,
+        child: GestureDetector(
+          onTap: onTap,
+          child: Transform.translate(
+            offset: const Offset(0, -14),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: colors,
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                  ],
-                  border: Border.all(
-                    color: borderC,
-                    width: 2.5,
+                    boxShadow: [
+                      BoxShadow(
+                        color: shadow.withValues(alpha: 0.4),
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                    border: Border.all(
+                      color: borderC,
+                      width: 2.5,
+                    ),
+                  ),
+                  child: ClipOval(
+                    child: iconWidget ??
+                        (assetPath != null
+                            ? Image.asset(
+                                assetPath,
+                                fit: BoxFit.cover,
+                              )
+                            : Icon(
+                                icon ?? Icons.auto_awesome,
+                                color: Colors.white,
+                                size: 26,
+                              )),
                   ),
                 ),
-                child: ClipOval(
-                  child: iconWidget ?? (assetPath != null
-                      ? Image.asset(
-                          assetPath,
-                          fit: BoxFit.cover,
-                      )
-                      : Icon(
-                          icon ?? Icons.auto_awesome,
-                          color: Colors.white,
-                          size: 26,
-                      )),
+                const SizedBox(height: 2),
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    color: Color(0xFFB07D62),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xFFB07D62),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -1776,7 +1850,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.4,
-                    color: isMen ? const Color(0xFFE5C158) : const Color(0xFF8C6F65),
+                    color: isMen
+                        ? const Color(0xFFE5C158)
+                        : const Color(0xFF8C6F65),
                   ),
                 ),
               ],
@@ -1807,86 +1883,91 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             },
             child: AnimatedScale(
               scale: isPressed ? 0.93 : 1.0,
-              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 120),
+              duration: _movimientoReducido
+                  ? Duration.zero
+                  : const Duration(milliseconds: 120),
               curve: Curves.easeOutCubic,
               child: Transform.translate(
-                offset: const Offset(0, -18),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: 62,
-                        height: 62,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: RadialGradient(
-                            center: const Alignment(0.0, -0.25),
-                            radius: 0.85,
-                            colors: isMen
-                                ? const [
-                                    Color(0xFF3D3228),
-                                    Color(0xFF2A211A),
-                                    Color(0xFF1E1712),
-                                    Color(0xFF14100C),
-                                  ]
-                                : const [
-                                    Color(0xFFFFFFFF),
-                                    Color(0xFFFDFBF7),
-                                    Color(0xFFF5EBE1),
-                                    Color(0xFFEADCCF),
-                                  ],
-                            stops: const [0.0, 0.35, 0.75, 1.0],
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.45 : 0.35),
-                              blurRadius: 16,
-                              spreadRadius: 2,
-                              offset: const Offset(0, 6),
+                  offset: const Offset(0, -18),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          width: 62,
+                          height: 62,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(
+                              center: const Alignment(0.0, -0.25),
+                              radius: 0.85,
+                              colors: isMen
+                                  ? const [
+                                      Color(0xFF3D3228),
+                                      Color(0xFF2A211A),
+                                      Color(0xFF1E1712),
+                                      Color(0xFF14100C),
+                                    ]
+                                  : const [
+                                      Color(0xFFFFFFFF),
+                                      Color(0xFFFDFBF7),
+                                      Color(0xFFF5EBE1),
+                                      Color(0xFFEADCCF),
+                                    ],
+                              stops: const [0.0, 0.35, 0.75, 1.0],
                             ),
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.08),
-                              blurRadius: 8,
-                              offset: const Offset(0, 3),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFFD4AF37)
+                                    .withValues(alpha: isMen ? 0.45 : 0.35),
+                                blurRadius: 16,
+                                spreadRadius: 2,
+                                offset: const Offset(0, 6),
+                              ),
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.08),
+                                blurRadius: 8,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                            border: Border.all(
+                              color: const Color(0xFFD4AF37),
+                              width: 2.2,
                             ),
-                          ],
-                          border: Border.all(
-                            color: const Color(0xFFD4AF37),
-                            width: 2.2,
                           ),
-                        ),
-                        child: Center(
-                          child: Container(
-                            width: 52,
-                            height: 52,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: const Color(0xFFD4AF37).withValues(alpha: 0.35),
-                                width: 1.0,
+                          child: Center(
+                            child: Container(
+                              width: 52,
+                              height: 52,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: const Color(0xFFD4AF37)
+                                      .withValues(alpha: 0.35),
+                                  width: 1.0,
+                                ),
+                              ),
+                              child: Center(
+                                child: iconWidget,
                               ),
                             ),
-                            child: Center(
-                              child: iconWidget,
-                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        label,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.6,
-                          color: isMen ? const Color(0xFFE5C158) : const Color(0xFFB8860B),
+                        const SizedBox(height: 4),
+                        Text(
+                          label,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.6,
+                            color: isMen
+                                ? const Color(0xFFE5C158)
+                                : const Color(0xFFB8860B),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ),
+                      ],
+                    ),
+                  )),
             ),
           );
         },
@@ -1943,21 +2024,35 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         p.avatarUrl,
                         fit: BoxFit.cover,
                         errorBuilder: (_, __, ___) => Container(
-                          color: isMen ? const Color(0xFF2A231C) : const Color(0xFFE8DED1),
+                          color: isMen
+                              ? const Color(0xFF2A231C)
+                              : const Color(0xFFE8DED1),
                           child: Center(
                             child: Text(
-                              p.fullName.isNotEmpty ? p.fullName[0].toUpperCase() : '?',
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xFFD4AF37)),
+                              p.fullName.isNotEmpty
+                                  ? p.fullName[0].toUpperCase()
+                                  : '?',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Color(0xFFD4AF37)),
                             ),
                           ),
                         ),
                       )
                     : Container(
-                        color: isMen ? const Color(0xFF2A231C) : const Color(0xFFE8DED1),
+                        color: isMen
+                            ? const Color(0xFF2A231C)
+                            : const Color(0xFFE8DED1),
                         child: Center(
                           child: Text(
-                            p.fullName.isNotEmpty ? p.fullName[0].toUpperCase() : '?',
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xFFD4AF37)),
+                            p.fullName.isNotEmpty
+                                ? p.fullName[0].toUpperCase()
+                                : '?',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Color(0xFFD4AF37)),
                           ),
                         ),
                       ),
@@ -1987,12 +2082,16 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         children: [
                           Expanded(
                             child: Text(
-                              p.fullName.isNotEmpty ? p.fullName : p.businessName,
+                              p.fullName.isNotEmpty
+                                  ? p.fullName
+                                  : p.businessName,
                               style: TextStyle(
                                 fontFamily: 'CormorantGaramond',
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: isMen ? const Color(0xFFFAF8F5) : const Color(0xFF1E1A16),
+                                color: isMen
+                                    ? const Color(0xFFFAF8F5)
+                                    : const Color(0xFF1E1A16),
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -2001,14 +2100,19 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.star_rounded, size: 14, color: Color(0xFFD4AF37)),
+                              const Icon(Icons.star_rounded,
+                                  size: 14, color: Color(0xFFD4AF37)),
                               const SizedBox(width: 2),
                               Text(
-                                p.rating > 0 ? p.rating.toStringAsFixed(1) : '4.9',
+                                p.rating > 0
+                                    ? p.rating.toStringAsFixed(1)
+                                    : '4.9',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
-                                  color: isMen ? const Color(0xFFE5C158) : const Color(0xFF3D2E1E),
+                                  color: isMen
+                                      ? const Color(0xFFE5C158)
+                                      : const Color(0xFF3D2E1E),
                                 ),
                               ),
                             ],
@@ -2017,10 +2121,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        p.businessName.isNotEmpty ? p.businessName : 'Estilista Profesional GlowApp',
+                        p.businessName.isNotEmpty
+                            ? p.businessName
+                            : 'Estilista Profesional GlowApp',
                         style: TextStyle(
                           fontSize: 11.5,
-                          color: isMen ? Colors.white60 : const Color(0xFF6B5E55),
+                          color:
+                              isMen ? Colors.white60 : const Color(0xFF6B5E55),
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -2045,10 +2152,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             );
                           },
                           style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: Color(0xFFC5A052), width: 1.2),
-                            foregroundColor: isMen ? const Color(0xFFE5C158) : const Color(0xFF8C6F65),
+                            side: const BorderSide(
+                                color: Color(0xFFC5A052), width: 1.2),
+                            foregroundColor: isMen
+                                ? const Color(0xFFE5C158)
+                                : const Color(0xFF8C6F65),
                             padding: const EdgeInsets.symmetric(horizontal: 4),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18)),
                           ),
                           child: const Text(
                             'Ver Perfil',
@@ -2070,7 +2181,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         height: 34,
                         child: ElevatedButton.icon(
                           onPressed: () => _openBookingDirectly(context, p),
-                          icon: const Icon(Icons.bolt_rounded, size: 15, color: Color(0xFF14100C)),
+                          icon: const Icon(Icons.bolt_rounded,
+                              size: 15, color: Color(0xFF14100C)),
                           label: const Text(
                             'Reservar Ya',
                             style: TextStyle(
@@ -2085,7 +2197,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             backgroundColor: const Color(0xFFC5A052),
                             foregroundColor: const Color(0xFF14100C),
                             padding: const EdgeInsets.symmetric(horizontal: 4),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18)),
                             elevation: 2,
                           ),
                         ),
@@ -2101,7 +2214,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       borderRadius: BorderRadius.circular(18),
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Icon(Icons.close_rounded, size: 18, color: isMen ? Colors.white54 : Colors.black45),
+                        child: Icon(Icons.close_rounded,
+                            size: 18,
+                            color: isMen ? Colors.white54 : Colors.black45),
                       ),
                     ),
                   ],
@@ -2123,7 +2238,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         final useDarkMap = isMen || MapSettings.isDark;
 
         return Scaffold(
-          backgroundColor: isMen ? MensTheme.obsidianBg : const Color(0xFFFAF8F5),
+          backgroundColor:
+              isMen ? MensTheme.obsidianBg : const Color(0xFFFAF8F5),
           body: Stack(
             children: [
               // Capa 0: Mapa a pantalla completa centrado en Bogotá (CartoDB Voyager / Dark Matter)
@@ -2142,707 +2258,820 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 ),
                 children: [
                   TileLayer(
-                    urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'com.beautyapp.map',
                     tileBuilder: (context, tileWidget, tile) {
                       if (useDarkMap) {
                         return ColorFiltered(
                           colorFilter: const ColorFilter.matrix(<double>[
-                            0.574, -1.43, -0.144, 0, 255,
-                            -0.426, -0.43, -0.144, 0, 255,
-                            -0.426, -1.43, 0.856, 0, 255,
-                            0, 0, 0, 1, 0,
+                            0.574,
+                            -1.43,
+                            -0.144,
+                            0,
+                            255,
+                            -0.426,
+                            -0.43,
+                            -0.144,
+                            0,
+                            255,
+                            -0.426,
+                            -1.43,
+                            0.856,
+                            0,
+                            255,
+                            0,
+                            0,
+                            0,
+                            1,
+                            0,
                           ]),
                           child: tileWidget,
                         );
                       }
                       return ColorFiltered(
                         colorFilter: const ColorFilter.matrix(<double>[
-                          0.65, 0.25, 0.10, 0, 15,
-                          0.20, 0.65, 0.15, 0, 10,
-                          0.15, 0.20, 0.50, 0, 0,
-                          0,    0,    0,    1, 0,
+                          0.65,
+                          0.25,
+                          0.10,
+                          0,
+                          15,
+                          0.20,
+                          0.65,
+                          0.15,
+                          0,
+                          10,
+                          0.15,
+                          0.20,
+                          0.50,
+                          0,
+                          0,
+                          0,
+                          0,
+                          0,
+                          1,
+                          0,
                         ]),
                         child: tileWidget,
                       );
                     },
                   ),
-              // Marcadores Joya de prestadores en el mapa + marcador de ubicación del usuario
-              MarkerLayer(
-                markers: [
-                  if (_userLocation != null)
-                    Marker(
-                      width: 50,
-                      height: 50,
-                      point: _userLocation!,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: const Color(0xFFD4AF37).withValues(alpha: 0.2),
-                          border: Border.all(
-                              color: const Color(0xFFD4AF37), width: 2),
-                        ),
-                        child: const Center(
-                          child: Icon(Icons.my_location,
-                              color: Color(0xFFD4AF37), size: 24),
-                        ),
-                      ),
-                    ),
-                  // Solo se pinta un pin por grupo; los que caen encima de
-                  // otro se sustituyen por un círculo con el número.
-                  ..._filteredProviders
-                      .where((p) => _idsSueltos().contains(p.id))
-                      .map((p) {
-                    final isSelected = _selectedProvider?.id == p.id;
-                    return Marker(
-                      width: 70,
-                      height: 78,
-                      point: LatLng(p.latitude, p.longitude),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedProvider = p;
-                          });
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(2.5),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: isMen ? const Color(0xFF1E1A16) : const Color(0xFFFAF8F5),
-                                border: Border.all(
-                                  color: isSelected
-                                      ? (isMen ? const Color(0xFFE5C158) : const Color(0xFFD4AF37))
-                                      : const Color(0xFFC5A052),
-                                  width: isSelected ? 3.0 : 2.0,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: const Color(0xFFD4AF37).withValues(alpha: isSelected ? 0.6 : 0.35),
-                                    blurRadius: isSelected ? 14 : 8,
-                                    spreadRadius: isSelected ? 2 : 0,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: CircleAvatar(
-                                radius: 19,
-                                backgroundColor: isMen ? const Color(0xFF2A231C) : const Color(0xFFF5EBE6),
-                                backgroundImage: p.avatarUrl.isNotEmpty ? NetworkImage(p.avatarUrl) : null,
-                                child: p.avatarUrl.isEmpty
-                                    ? (p.isSalon
-                                        ? const Icon(
-                                            Icons.storefront_rounded,
-                                            size: 20,
-                                            color: Color(0xFFD4AF37),
-                                          )
-                                        : Text(
-                                            p.fullName.isNotEmpty ? p.fullName[0].toUpperCase() : '?',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              color: isMen ? const Color(0xFFD4AF37) : AppTheme.primary,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ))
-                                    : null,
-                              ),
-                            ),
-                            const SizedBox(height: 2),
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1.5),
-                              decoration: BoxDecoration(
-                                color: isMen ? const Color(0xFF141210) : const Color(0xFFFDFBF7),
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  color: const Color(0xFFD4AF37).withValues(alpha: 0.6),
-                                  width: 0.8,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.2),
-                                    blurRadius: 4,
-                                    offset: const Offset(0, 1),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.star_rounded, size: 10, color: Color(0xFFD4AF37)),
-                                  const SizedBox(width: 1.5),
-                                  Text(
-                                    p.rating > 0 ? p.rating.toStringAsFixed(1) : '4.9',
-                                    style: TextStyle(
-                                      fontSize: 9.5,
-                                      fontWeight: FontWeight.bold,
-                                      color: isMen ? const Color(0xFFE5C158) : const Color(0xFF3D2E1E),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-                  // Clusters: al tocarlos se acerca, que es lo que el usuario espera
-                  ..._gruposPines().where((g) => g.esCluster).map((g) => Marker(
-                        width: 58,
-                        height: 58,
-                        point: g.centro,
-                        child: GestureDetector(
-                          onTap: () => _mapController.move(g.centro, _zoomRender + 2),
+                  // Marcadores Joya de prestadores en el mapa + marcador de ubicación del usuario
+                  MarkerLayer(
+                    markers: [
+                      if (_userLocation != null)
+                        Marker(
+                          width: 50,
+                          height: 50,
+                          point: _userLocation!,
                           child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: isMen ? const Color(0xFF1E1A16) : const Color(0xFFFAF8F5),
-                              border: Border.all(color: const Color(0xFFC5A052), width: 2),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(0xFFC5A052).withValues(alpha: 0.35),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 3),
+                              color: const Color(0xFFD4AF37)
+                                  .withValues(alpha: 0.2),
+                              border: Border.all(
+                                  color: const Color(0xFFD4AF37), width: 2),
+                            ),
+                            child: const Center(
+                              child: Icon(Icons.my_location,
+                                  color: Color(0xFFD4AF37), size: 24),
+                            ),
+                          ),
+                        ),
+                      // Solo se pinta un pin por grupo; los que caen encima de
+                      // otro se sustituyen por un círculo con el número.
+                      ..._filteredProviders
+                          .where((p) => _idsSueltos().contains(p.id))
+                          .map((p) {
+                        final isSelected = _selectedProvider?.id == p.id;
+                        return Marker(
+                          width: 70,
+                          height: 78,
+                          point: LatLng(p.latitude, p.longitude),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _selectedProvider = p;
+                              });
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(2.5),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: isMen
+                                        ? const Color(0xFF1E1A16)
+                                        : const Color(0xFFFAF8F5),
+                                    border: Border.all(
+                                      color: isSelected
+                                          ? (isMen
+                                              ? const Color(0xFFE5C158)
+                                              : const Color(0xFFD4AF37))
+                                          : const Color(0xFFC5A052),
+                                      width: isSelected ? 3.0 : 2.0,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0xFFD4AF37)
+                                            .withValues(
+                                                alpha: isSelected ? 0.6 : 0.35),
+                                        blurRadius: isSelected ? 14 : 8,
+                                        spreadRadius: isSelected ? 2 : 0,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: 19,
+                                    backgroundColor: isMen
+                                        ? const Color(0xFF2A231C)
+                                        : const Color(0xFFF5EBE6),
+                                    backgroundImage: p.avatarUrl.isNotEmpty
+                                        ? NetworkImage(p.avatarUrl)
+                                        : null,
+                                    child: p.avatarUrl.isEmpty
+                                        ? (p.isSalon
+                                            ? const Icon(
+                                                Icons.storefront_rounded,
+                                                size: 20,
+                                                color: Color(0xFFD4AF37),
+                                              )
+                                            : Text(
+                                                p.fullName.isNotEmpty
+                                                    ? p.fullName[0]
+                                                        .toUpperCase()
+                                                    : '?',
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: isMen
+                                                      ? const Color(0xFFD4AF37)
+                                                      : AppTheme.primary,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ))
+                                        : null,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 1.5),
+                                  decoration: BoxDecoration(
+                                    color: isMen
+                                        ? const Color(0xFF141210)
+                                        : const Color(0xFFFDFBF7),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: const Color(0xFFD4AF37)
+                                          .withValues(alpha: 0.6),
+                                      width: 0.8,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color:
+                                            Colors.black.withValues(alpha: 0.2),
+                                        blurRadius: 4,
+                                        offset: const Offset(0, 1),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.star_rounded,
+                                          size: 10, color: Color(0xFFD4AF37)),
+                                      const SizedBox(width: 1.5),
+                                      Text(
+                                        p.rating > 0
+                                            ? p.rating.toStringAsFixed(1)
+                                            : '4.9',
+                                        style: TextStyle(
+                                          fontSize: 9.5,
+                                          fontWeight: FontWeight.bold,
+                                          color: isMen
+                                              ? const Color(0xFFE5C158)
+                                              : const Color(0xFF3D2E1E),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                            child: Center(
-                              child: Text(
-                                '${g.ids.length}',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: isMen ? const Color(0xFFD4AF37) : const Color(0xFF1F1A15),
-                                ),
-                              ),
-                            ),
                           ),
-                        ),
-                      )),
-                ],
-              ),
-            ],
-          ),
-
-
-          // Capa 1: Floating Transaccional Search Bar with Audience Toggle
-          Positioned(
-            top: MediaQuery.of(context).padding.top + 12,
-            left: 16,
-            right: 16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Selector Global de Audiencia (Hombres / Mujeres / Todos)
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 8.0),
-                  child: AudienceToggleWidget(compact: false),
-                ),
-                Container(
-                  height: 54,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  decoration: BoxDecoration(
-                    color: isMen
-                        ? const Color(0xFF141210).withValues(alpha: 0.94)
-                        : const Color(0xFFFAF8F5).withValues(alpha: 0.95),
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(
-                      color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.45),
-                      width: 1.5,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: isMen ? 0.4 : 0.08),
-                        blurRadius: 16,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          if (_searchController.text.trim().isNotEmpty) {
-                            _navigateToAIChat(_searchController.text);
-                          }
-                        },
-                        borderRadius: BorderRadius.circular(20),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.search, color: Color(0xFFD4AF37)),
-                        ),
-                      ),
-                      const SizedBox(width: 2),
-                      Expanded(
-                        child: TextField(
-                          controller: _searchController,
-                          textCapitalization: TextCapitalization.sentences,
-                          style: TextStyle(
-                            color: isMen ? Colors.white : const Color(0xFF1E1A16),
-                            fontSize: 13,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: isMen
-                                ? 'Buscar estilista o servicio... ✨'
-                                : '¿Qué ritual deseas hoy? Pregunta a Aura ✨',
-                            hintStyle: TextStyle(
-                              fontSize: 12.0,
-                              color: isMen
-                                  ? const Color(0xFFD4AF37).withValues(alpha: 0.75)
-                                  : const Color(0xFF6B5E55).withValues(alpha: 0.8),
-                              letterSpacing: 0.1,
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                            border: InputBorder.none,
-                          ),
-                          onSubmitted: (val) {
-                            if (val.trim().isNotEmpty) {
-                              _navigateToAIChat(val);
-                            }
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // Modo lista: el mismo componente que la bandeja, a pantalla completa.
-          // Sirve para redes lentas (no descarga tiles) y para lectores de
-          // pantalla, que no pueden recorrer un mapa.
-          if (_soloLista)
-            Positioned.fill(
-              child: Container(
-                color: isMen ? MensTheme.obsidianBg : const Color(0xFFFAF8F5),
-                child: HomeResultsSheet(
-                  proveedores: _filteredProviders,
-                  tamanoInicial: 0.9,
-                  // Tocar la tarjeta lleva al perfil del prestador. Se marca
-                  // como seleccionado para que el mapa lo destaque al volver.
-                  // La ruta espera un Map: pasar el id suelto revienta el cast.
-                  onSelect: (p) {
-                    setState(() => _selectedProvider = p);
-                    AnalyticsService().logEvent(
-                      eventType: 'PROVIDER_CARD_TAP',
-                      screenName: '/home',
-                      elementId: p.id,
-                      metadata: {'metros': p.distanceMeters},
-                    );
-                    Navigator.pushNamed(
-                      context,
-                      '/provider-detail',
-                      arguments: {
-                        'providerId': p.id,
-                        'providerName': p.businessName.isNotEmpty ? p.businessName : p.fullName,
-                        'avatarUrl': p.avatarUrl,
-                      },
-                    ).then((_) {
-                      // Al volver, el atras devuelve al home (mapa), no a la
-                      // lista de prestadores desde la que se entro.
-                      if (!mounted) return;
-                      setState(() => _soloLista = false);
-                    });
-                  },
-                  onPosicion: (_) {},
-                  construirTarjeta: _buildTarjetaResultado,
-                  mensajeVacio: 'No hay prestadores en este radio.',
-                  onAmpliarRadio: _ampliarRadio,
-                ),
-              ),
-            ),
-
-          // Boton para alternar mapa / lista.
-          // Va sobre el dock (72 de alto + 16 de margen) y sube cuando aparece la
-          // tarjeta del prestador seleccionado, que ocupa ese mismo espacio.
-          // Se oculta con el menú de capas abierto: ese menú crece hacia arriba
-          // y ocuparía el mismo sitio.
-          // Mismo boton que el de capas (tamano completo, dorado de marca, borde
-          // circular y misma elevacion) y en la misma columna: right 20, y justo
-          // encima suyo (56 de alto + 12 de aire).
-          if (!_isMapMenuOpen)
-            Positioned(
-              right: 20,
-              bottom: MediaQuery.of(context).padding.bottom +
-                  (_selectedProvider != null && !_soloLista ? 224 : 104) +
-                  68,
-              child: FloatingActionButton(
-                heroTag: 'toggle_lista',
-                tooltip: _soloLista ? 'Ver mapa' : 'Ver lista',
-                backgroundColor: AppTheme.primary,
-                foregroundColor: Colors.white,
-                elevation: 4,
-                shape: const CircleBorder(),
-                onPressed: () {
-                  setState(() => _soloLista = !_soloLista);
-                  AnalyticsService().logEvent(
-                    eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
-                    screenName: '/home',
-                  );
-                },
-                child: Icon(
-                  _soloLista ? Icons.map_outlined : Icons.view_list_rounded,
-                  size: 24,
-                ),
-              ),
-            ),
-
-          // Capa 2: Floating Sneak-Peek Card (Selected Stylist Preview)
-          if (_selectedProvider != null && !_soloLista)
-            Positioned(
-              bottom: MediaQuery.of(context).padding.bottom + 98,
-              left: 16,
-              right: 16,
-              child: _buildSneakPeekCard(_selectedProvider!, isMen),
-            ),
-
-          // Capa 3: Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
-          if (!_soloLista)
-          Positioned(
-            bottom: MediaQuery.of(context).padding.bottom + 16,
-            left: 16,
-            right: 16,
-            child: Container(
-              height: 72,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              decoration: BoxDecoration(
-                color: isMen
-                    ? const Color(0xFF141210).withValues(alpha: 0.95)
-                    : const Color(0xFFFDFBF7),
-                borderRadius: BorderRadius.circular(36),
-                border: Border.all(
-                    color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.5),
-                    width: 1.5),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: isMen ? 0.45 : 0.08),
-                    blurRadius: 20,
-                    offset: const Offset(0, 8),
-                  ),
-                  BoxShadow(
-                    color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.25 : 0.15),
-                    blurRadius: 10,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  // Botón 1: Citas
-                  _buildFlatNavItem(
-                    iconWidget: Image.asset(
-                      'assets/icons/glow/nav_citas_dock.webp',
-                      width: 28,
-                      height: 28,
-                      fit: BoxFit.contain,
-                    ),
-                    label: 'Citas',
-                    onTap: () => _checkAuthAndNavigate('/my-bookings'),
-                    isMen: isMen,
-                  ),
-
-                  // Botón 2: GlowShop (gobernado por bandera glowstore)
-                  if (FeatureFlags.instance.activo('glowstore'))
-                    _buildFlatNavItem(
-                      iconWidget: Image.asset(
-                        'assets/icons/glow/nav_glowshop_dock.webp',
-                        width: 28,
-                        height: 28,
-                        fit: BoxFit.contain,
-                      ),
-                      label: 'GlowShop',
-                      onTap: () => _checkAuthAndNavigate('/store', requiereSesion: false),
-                      isMen: isMen,
-                    ),
-
-                  // Botón 3: Glow IA+ (Medallón Central Elevado)
-                  _buildLuxuryCenterMedallion(
-                    iconWidget: Image.asset(
-                      'assets/icons/glow/nav_glow_ia_dock.webp',
-                      width: 32,
-                      height: 32,
-                      fit: BoxFit.contain,
-                    ),
-                    label: 'Glow IA+',
-                    onTap: () => _checkAuthAndNavigate('/ideas/welcome', requiereSesion: false),
-                    isMen: isMen,
-                  ),
-
-                  // Botón 4: Perfil
-                  _buildFlatNavItem(
-                    iconWidget: Image.asset(
-                      'assets/icons/glow/nav_perfil_dock.webp',
-                      width: 28,
-                      height: 28,
-                      fit: BoxFit.contain,
-                    ),
-                    label: 'Perfil',
-                    onTap: () => _checkAuthAndNavigate('/profile'),
-                    isMen: isMen,
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Capa: Ajustes de Mapa (Speed Dial Expandible con Capas y Chat)
-          Positioned(
-            right: 20,
-            bottom: MediaQuery.of(context).padding.bottom + (_selectedProvider != null ? 224 : 104),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                if (_isMapMenuOpen) ...[
-                  // Botón 1: Chat y Asistencia
-                  FloatingActionButton.small(
-                    heroTag: 'home_chat_integrated_fab',
-                    tooltip: 'Mensajes y Asistencia',
-                    onPressed: () {
-                      HapticFeedback.selectionClick();
-                      showModalBottomSheet(
-                        context: context,
-                        backgroundColor: Colors.transparent,
-                        builder: (ctx) => Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFFAF8F5),
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x1A000000),
-                                blurRadius: 16,
-                                offset: Offset(0, -4),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                width: 40,
-                                height: 4,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(2),
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              const Text(
-                                'Canales de Chat y Asistencia',
-                                style: TextStyle(
-                                  fontFamily: 'CormorantGaramond',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF1F1A15),
-                                ),
-                              ),
-                              const SizedBox(height: 14),
-                              ListTile(
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                                tileColor: Colors.white,
-                                leading: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFF3D59B).withValues(alpha: 0.3),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: const Icon(Icons.chat_bubble_outline_rounded, color: Color(0xFFC5A052)),
-                                ),
-                                title: const Text(
-                                  'Bandeja de Mensajes GlowApp',
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                                ),
-                                subtitle: const Text(
-                                  'Chats activos con tus estilistas y reservas',
-                                  style: TextStyle(fontSize: 12, color: Color(0xFF6B5E55)),
-                                ),
-                                trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xFFC5A052)),
-                                onTap: () {
-                                  Navigator.pop(ctx);
-                                  _checkAuthAndNavigate('/chat');
-                                },
-                              ),
-                              const SizedBox(height: 10),
-                              ListTile(
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                                tileColor: Colors.white,
-                                leading: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFF25D366).withValues(alpha: 0.15),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: const Icon(Icons.support_agent_rounded, color: Color(0xFF25D366)),
-                                ),
-                                title: const Text(
-                                  'ATENCIÓN VÍA WHATSAPP',
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                                ),
-                                subtitle: const Text(
-                                  'Atención personalizada (+57 350 208 5733)',
-                                  style: TextStyle(fontSize: 12, color: Color(0xFF6B5E55)),
-                                ),
-                                trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xFF25D366)),
-                                onTap: () async {
-                                  // Antes solo mostraba «Conectando…» y no abría
-                                  // nada: el usuario quedaba esperando un chat
-                                  // que nunca empezaba.
-                                  Navigator.pop(ctx);
-                                  final ok = await launchUrl(
-                                    Uri.parse('https://wa.me/573502085733?text='
-                                        'Hola%2C%20necesito%20ayuda%20con%20GlowApp'),
-                                    mode: LaunchMode.externalApplication,
-                                  );
-                                  if (!ok && context.mounted) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text('No se pudo abrir WhatsApp. Escríbenos a soporte@glowapp.co'),
-                                        backgroundColor: Color(0xFF8C6F65),
+                        );
+                      }),
+                      // Clusters: al tocarlos se acerca, que es lo que el usuario espera
+                      ..._gruposPines()
+                          .where((g) => g.esCluster)
+                          .map((g) => Marker(
+                                width: 58,
+                                height: 58,
+                                point: g.centro,
+                                child: GestureDetector(
+                                  onTap: () => _mapController.move(
+                                      g.centro, _zoomRender + 2),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: isMen
+                                          ? const Color(0xFF1E1A16)
+                                          : const Color(0xFFFAF8F5),
+                                      border: Border.all(
+                                          color: const Color(0xFFC5A052),
+                                          width: 2),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: const Color(0xFFC5A052)
+                                              .withValues(alpha: 0.35),
+                                          blurRadius: 10,
+                                          offset: const Offset(0, 3),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '${g.ids.length}',
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                          color: isMen
+                                              ? const Color(0xFFD4AF37)
+                                              : const Color(0xFF1F1A15),
+                                        ),
                                       ),
-                                    );
-                                  }
-                                },
-                              ),
-                              const SizedBox(height: 8),
-                            ],
-                          ),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                    ],
+                  ),
+                ],
+              ),
+
+              // Capa 1: Floating Transaccional Search Bar with Audience Toggle
+              Positioned(
+                top: MediaQuery.of(context).padding.top + 12,
+                left: 16,
+                right: 16,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Selector Global de Audiencia (Hombres / Mujeres / Todos)
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: AudienceToggleWidget(compact: false),
+                    ),
+                    Container(
+                      height: 54,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        color: isMen
+                            ? const Color(0xFF141210).withValues(alpha: 0.94)
+                            : const Color(0xFFFAF8F5).withValues(alpha: 0.95),
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: const Color(0xFFD4AF37)
+                              .withValues(alpha: isMen ? 0.6 : 0.45),
+                          width: 1.5,
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black
+                                .withValues(alpha: isMen ? 0.4 : 0.08),
+                            blurRadius: 16,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              if (_searchController.text.trim().isNotEmpty) {
+                                _navigateToAIChat(_searchController.text);
+                              }
+                            },
+                            borderRadius: BorderRadius.circular(20),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child:
+                                  Icon(Icons.search, color: Color(0xFFD4AF37)),
+                            ),
+                          ),
+                          const SizedBox(width: 2),
+                          Expanded(
+                            child: TextField(
+                              controller: _searchController,
+                              textCapitalization: TextCapitalization.sentences,
+                              style: TextStyle(
+                                color: isMen
+                                    ? Colors.white
+                                    : const Color(0xFF1E1A16),
+                                fontSize: 13,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: isMen
+                                    ? 'Buscar estilista o servicio... ✨'
+                                    : '¿Qué ritual deseas hoy? Pregunta a Aura ✨',
+                                hintStyle: TextStyle(
+                                  fontSize: 12.0,
+                                  color: isMen
+                                      ? const Color(0xFFD4AF37)
+                                          .withValues(alpha: 0.75)
+                                      : const Color(0xFF6B5E55)
+                                          .withValues(alpha: 0.8),
+                                  letterSpacing: 0.1,
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                border: InputBorder.none,
+                              ),
+                              onSubmitted: (val) {
+                                if (val.trim().isNotEmpty) {
+                                  _navigateToAIChat(val);
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Modo lista: el mismo componente que la bandeja, a pantalla completa.
+              // Sirve para redes lentas (no descarga tiles) y para lectores de
+              // pantalla, que no pueden recorrer un mapa.
+              if (_soloLista)
+                Positioned.fill(
+                  child: Container(
+                    color:
+                        isMen ? MensTheme.obsidianBg : const Color(0xFFFAF8F5),
+                    child: HomeResultsSheet(
+                      proveedores: _filteredProviders,
+                      tamanoInicial: 0.9,
+                      // Tocar la tarjeta lleva al perfil del prestador. Se marca
+                      // como seleccionado para que el mapa lo destaque al volver.
+                      // La ruta espera un Map: pasar el id suelto revienta el cast.
+                      onSelect: (p) {
+                        setState(() => _selectedProvider = p);
+                        AnalyticsService().logEvent(
+                          eventType: 'PROVIDER_CARD_TAP',
+                          screenName: '/home',
+                          elementId: p.id,
+                          metadata: {'metros': p.distanceMeters},
+                        );
+                        Navigator.pushNamed(
+                          context,
+                          '/provider-detail',
+                          arguments: {
+                            'providerId': p.id,
+                            'providerName': p.businessName.isNotEmpty
+                                ? p.businessName
+                                : p.fullName,
+                            'avatarUrl': p.avatarUrl,
+                          },
+                        ).then((_) {
+                          // Al volver, el atras devuelve al home (mapa), no a la
+                          // lista de prestadores desde la que se entro.
+                          if (!mounted) return;
+                          setState(() => _soloLista = false);
+                        });
+                      },
+                      onPosicion: (_) {},
+                      construirTarjeta: _buildTarjetaResultado,
+                      mensajeVacio: 'No hay prestadores en este radio.',
+                      onAmpliarRadio: _ampliarRadio,
+                    ),
+                  ),
+                ),
+
+              // Boton para alternar mapa / lista.
+              // Va sobre el dock (72 de alto + 16 de margen) y sube cuando aparece la
+              // tarjeta del prestador seleccionado, que ocupa ese mismo espacio.
+              // Se oculta con el menú de capas abierto: ese menú crece hacia arriba
+              // y ocuparía el mismo sitio.
+              // Mismo boton que el de capas (tamano completo, dorado de marca, borde
+              // circular y misma elevacion) y en la misma columna: right 20, y justo
+              // encima suyo (56 de alto + 12 de aire).
+              if (!_isMapMenuOpen)
+                Positioned(
+                  right: 20,
+                  bottom: MediaQuery.of(context).padding.bottom +
+                      (_selectedProvider != null && !_soloLista ? 224 : 104) +
+                      68,
+                  child: FloatingActionButton(
+                    heroTag: 'toggle_lista',
+                    tooltip: _soloLista ? 'Ver mapa' : 'Ver lista',
+                    backgroundColor: AppTheme.primary,
+                    foregroundColor: Colors.white,
+                    elevation: 4,
+                    shape: const CircleBorder(),
+                    onPressed: () {
+                      setState(() => _soloLista = !_soloLista);
+                      AnalyticsService().logEvent(
+                        eventType: _soloLista ? 'MAP_MODE_OFF' : 'MAP_MODE_ON',
+                        screenName: '/home',
                       );
                     },
-                    backgroundColor: AppTheme.surface,
-                    foregroundColor: const Color(0xFF25D366),
-                    elevation: 3,
-                    shape: const CircleBorder(),
-                    child: const Icon(
-                      Icons.chat_bubble_outline_rounded,
-                      size: 20,
+                    child: Icon(
+                      _soloLista ? Icons.map_outlined : Icons.view_list_rounded,
+                      size: 24,
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  // Botón 2: Reiniciar Tutorial GlowGuide
-                  FloatingActionButton.small(
-                    heroTag: 'glowguide_tutorial_restart_fab',
-                    tooltip: 'Ver Tutorial GlowGuide',
-                    onPressed: () {
-                      HapticFeedback.selectionClick();
-                      setState(() {
-                        _isMapMenuOpen = false;
-                      });
-                      GlowGuideService.instance.engine?.forceRestart();
-                    },
-                    backgroundColor: AppTheme.surface,
-                    foregroundColor: const Color(0xFFC5A052),
-                    elevation: 3,
-                    shape: const CircleBorder(),
-                    child: const Icon(
-                      Icons.play_circle_fill_rounded,
-                      size: 20,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  // Botón 3: Mi Ubicación
-                  FloatingActionButton.small(
-                    heroTag: 'my_location_fab',
-                    tooltip: 'Centrar Mi Ubicación',
-                    onPressed: _irAMiUbicacion,
-                    backgroundColor: AppTheme.surface,
-                    foregroundColor: AppTheme.primary,
-                    elevation: 3,
-                    shape: const CircleBorder(),
-                    child: const Icon(Icons.my_location, size: 20),
-                  ),
-                  const SizedBox(height: 10),
-                ],
-                // Botón principal de menú expandible (Capas)
-                FloatingActionButton(
-                  heroTag: 'map_settings_toggle_fab',
-                  tooltip: 'Capas y Opciones',
-                  onPressed: () {
-                    setState(() {
-                      _isMapMenuOpen = !_isMapMenuOpen;
-                    });
-                  },
-                  backgroundColor: AppTheme.primary,
-                  foregroundColor: Colors.white,
-                  elevation: 4,
-                  shape: const CircleBorder(),
-                  child: Icon(
-                    _isMapMenuOpen ? Icons.close : Icons.layers_outlined,
-                    size: 24,
                   ),
                 ),
-              ],
-            ),
-          ),
 
-          // Indicador de carga discreto no bloqueante
-          if (_isLoading)
-            Positioned(
-              top: MediaQuery.of(context).padding.top,
-              left: 0,
-              right: 0,
-              child: const LinearProgressIndicator(
-                backgroundColor: Colors.transparent,
-                color: Color(0xFFD4AF37),
-                minHeight: 3,
-              ),
-            ),
+              // Capa 2: Floating Sneak-Peek Card (Selected Stylist Preview)
+              if (_selectedProvider != null && !_soloLista)
+                Positioned(
+                  bottom: MediaQuery.of(context).padding.bottom + 98,
+                  left: 16,
+                  right: 16,
+                  child: _buildSneakPeekCard(_selectedProvider!, isMen),
+                ),
 
-          // Alerta de Error
-          if (_errorMessage != null)
-            Positioned(
-              bottom: 100,
-              left: 20,
-              right: 20,
-              child: Card(
-                color: Colors.red[50],
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.error_outline, color: Colors.red),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          'No se pudo conectar: $_errorMessage',
-                          style:
-                              TextStyle(color: Colors.red[800], fontSize: 13),
+              // Capa 3: Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
+              if (!_soloLista)
+                Positioned(
+                  bottom: MediaQuery.of(context).padding.bottom + 16,
+                  left: 16,
+                  right: 16,
+                  child: Container(
+                    height: 72,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    decoration: BoxDecoration(
+                      color: isMen
+                          ? const Color(0xFF141210).withValues(alpha: 0.95)
+                          : const Color(0xFFFDFBF7),
+                      borderRadius: BorderRadius.circular(36),
+                      border: Border.all(
+                          color: const Color(0xFFD4AF37)
+                              .withValues(alpha: isMen ? 0.6 : 0.5),
+                          width: 1.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black
+                              .withValues(alpha: isMen ? 0.45 : 0.08),
+                          blurRadius: 20,
+                          offset: const Offset(0, 8),
+                        ),
+                        BoxShadow(
+                          color: const Color(0xFFD4AF37)
+                              .withValues(alpha: isMen ? 0.25 : 0.15),
+                          blurRadius: 10,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        // Botón 1: Citas
+                        _buildFlatNavItem(
+                          iconWidget: Image.asset(
+                            'assets/icons/glow/nav_citas_dock.webp',
+                            width: 28,
+                            height: 28,
+                            fit: BoxFit.contain,
+                          ),
+                          label: 'Citas',
+                          onTap: () => _checkAuthAndNavigate('/my-bookings'),
+                          isMen: isMen,
+                        ),
+
+                        // Botón 2: GlowShop (gobernado por bandera glowstore)
+                        if (FeatureFlags.instance.activo('glowstore'))
+                          _buildFlatNavItem(
+                            iconWidget: Image.asset(
+                              'assets/icons/glow/nav_glowshop_dock.webp',
+                              width: 28,
+                              height: 28,
+                              fit: BoxFit.contain,
+                            ),
+                            label: 'GlowShop',
+                            onTap: () => _checkAuthAndNavigate('/store',
+                                requiereSesion: false),
+                            isMen: isMen,
+                          ),
+
+                        // Botón 3: Glow IA+ (Medallón Central Elevado)
+                        _buildLuxuryCenterMedallion(
+                          iconWidget: Image.asset(
+                            'assets/icons/glow/nav_glow_ia_dock.webp',
+                            width: 32,
+                            height: 32,
+                            fit: BoxFit.contain,
+                          ),
+                          label: 'Glow IA+',
+                          onTap: () => _checkAuthAndNavigate('/ideas/welcome',
+                              requiereSesion: false),
+                          isMen: isMen,
+                        ),
+
+                        // Botón 4: Perfil
+                        _buildFlatNavItem(
+                          iconWidget: Image.asset(
+                            'assets/icons/glow/nav_perfil_dock.webp',
+                            width: 28,
+                            height: 28,
+                            fit: BoxFit.contain,
+                          ),
+                          label: 'Perfil',
+                          onTap: () => _checkAuthAndNavigate('/profile'),
+                          isMen: isMen,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              // Capa: Ajustes de Mapa (Speed Dial Expandible con Capas y Chat)
+              Positioned(
+                right: 20,
+                bottom: MediaQuery.of(context).padding.bottom +
+                    (_selectedProvider != null ? 224 : 104),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    if (_isMapMenuOpen) ...[
+                      // Botón 1: Chat y Asistencia
+                      FloatingActionButton.small(
+                        heroTag: 'home_chat_integrated_fab',
+                        tooltip: 'Mensajes y Asistencia',
+                        onPressed: () {
+                          HapticFeedback.selectionClick();
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: Colors.transparent,
+                            builder: (ctx) => Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 16),
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFFAF8F5),
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(24)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x1A000000),
+                                    blurRadius: 16,
+                                    offset: Offset(0, -4),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 4,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(2),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  const Text(
+                                    'Canales de Chat y Asistencia',
+                                    style: TextStyle(
+                                      fontFamily: 'CormorantGaramond',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF1F1A15),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 14),
+                                  ListTile(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    tileColor: Colors.white,
+                                    leading: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFFF3D59B)
+                                            .withValues(alpha: 0.3),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: const Icon(
+                                          Icons.chat_bubble_outline_rounded,
+                                          color: Color(0xFFC5A052)),
+                                    ),
+                                    title: const Text(
+                                      'Bandeja de Mensajes GlowApp',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    ),
+                                    subtitle: const Text(
+                                      'Chats activos con tus estilistas y reservas',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF6B5E55)),
+                                    ),
+                                    trailing: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        size: 14,
+                                        color: Color(0xFFC5A052)),
+                                    onTap: () {
+                                      Navigator.pop(ctx);
+                                      _checkAuthAndNavigate('/chat');
+                                    },
+                                  ),
+                                  const SizedBox(height: 10),
+                                  ListTile(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    tileColor: Colors.white,
+                                    leading: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFF25D366)
+                                            .withValues(alpha: 0.15),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: const Icon(
+                                          Icons.support_agent_rounded,
+                                          color: Color(0xFF25D366)),
+                                    ),
+                                    title: const Text(
+                                      'ATENCIÓN VÍA WHATSAPP',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    ),
+                                    subtitle: const Text(
+                                      'Atención personalizada (+57 350 208 5733)',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF6B5E55)),
+                                    ),
+                                    trailing: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        size: 14,
+                                        color: Color(0xFF25D366)),
+                                    onTap: () async {
+                                      // Antes solo mostraba «Conectando…» y no abría
+                                      // nada: el usuario quedaba esperando un chat
+                                      // que nunca empezaba.
+                                      Navigator.pop(ctx);
+                                      final ok = await launchUrl(
+                                        Uri.parse(
+                                            'https://wa.me/573502085733?text='
+                                            'Hola%2C%20necesito%20ayuda%20con%20GlowApp'),
+                                        mode: LaunchMode.externalApplication,
+                                      );
+                                      if (!ok && context.mounted) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                                'No se pudo abrir WhatsApp. Escríbenos a soporte@glowapp.co'),
+                                            backgroundColor: Color(0xFF8C6F65),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  ),
+                                  const SizedBox(height: 8),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        backgroundColor: AppTheme.surface,
+                        foregroundColor: const Color(0xFF25D366),
+                        elevation: 3,
+                        shape: const CircleBorder(),
+                        child: const Icon(
+                          Icons.chat_bubble_outline_rounded,
+                          size: 20,
                         ),
                       ),
-                      IconButton(
-                        tooltip: 'Actualizar',
-                        icon: const Icon(Icons.refresh, color: Colors.red),
-                        onPressed: _loadProviders,
+                      const SizedBox(height: 10),
+                      // Botón 2: Reiniciar Tutorial GlowGuide
+                      FloatingActionButton.small(
+                        heroTag: 'glowguide_tutorial_restart_fab',
+                        tooltip: 'Ver Tutorial GlowGuide',
+                        onPressed: () {
+                          HapticFeedback.selectionClick();
+                          setState(() {
+                            _isMapMenuOpen = false;
+                          });
+                          GlowGuideService.instance.engine?.forceRestart();
+                        },
+                        backgroundColor: AppTheme.surface,
+                        foregroundColor: const Color(0xFFC5A052),
+                        elevation: 3,
+                        shape: const CircleBorder(),
+                        child: const Icon(
+                          Icons.play_circle_fill_rounded,
+                          size: 20,
+                        ),
                       ),
+                      const SizedBox(height: 10),
+                      // Botón 3: Mi Ubicación
+                      FloatingActionButton.small(
+                        heroTag: 'my_location_fab',
+                        tooltip: 'Centrar Mi Ubicación',
+                        onPressed: _irAMiUbicacion,
+                        backgroundColor: AppTheme.surface,
+                        foregroundColor: AppTheme.primary,
+                        elevation: 3,
+                        shape: const CircleBorder(),
+                        child: const Icon(Icons.my_location, size: 20),
+                      ),
+                      const SizedBox(height: 10),
                     ],
-                  ),
+                    // Botón principal de menú expandible (Capas)
+                    FloatingActionButton(
+                      heroTag: 'map_settings_toggle_fab',
+                      tooltip: 'Capas y Opciones',
+                      onPressed: () {
+                        setState(() {
+                          _isMapMenuOpen = !_isMapMenuOpen;
+                        });
+                      },
+                      backgroundColor: AppTheme.primary,
+                      foregroundColor: Colors.white,
+                      elevation: 4,
+                      shape: const CircleBorder(),
+                      child: Icon(
+                        _isMapMenuOpen ? Icons.close : Icons.layers_outlined,
+                        size: 24,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          // Capa: Tutorial interactivo guiado por Aura (LEGACY)
-          // Legacy Mutex: solo se renderiza cuando _enableLegacy es true.
-          if (_enableLegacy && _showTutorial)
-            _buildTutorialOverlay(),
 
-          // El presenter de GlowGuide NO se monta aqui: vive en GlowGuideHost
-          // (MaterialApp.builder), encima del Navigator, para que el video siga
-          // visible mientras el guide navega a Citas, GlowShop, GlowIA, etc.
-        ],
-      ),
-    );
+              // Indicador de carga discreto no bloqueante
+              if (_isLoading)
+                Positioned(
+                  top: MediaQuery.of(context).padding.top,
+                  left: 0,
+                  right: 0,
+                  child: const LinearProgressIndicator(
+                    backgroundColor: Colors.transparent,
+                    color: Color(0xFFD4AF37),
+                    minHeight: 3,
+                  ),
+                ),
+
+              // Alerta de Error
+              if (_errorMessage != null)
+                Positioned(
+                  bottom: 100,
+                  left: 20,
+                  right: 20,
+                  child: Card(
+                    color: Colors.red[50],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.error_outline, color: Colors.red),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              'No se pudo conectar: $_errorMessage',
+                              style: TextStyle(
+                                  color: Colors.red[800], fontSize: 13),
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: 'Actualizar',
+                            icon: const Icon(Icons.refresh, color: Colors.red),
+                            onPressed: _loadProviders,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              // Capa: Tutorial interactivo guiado por Aura (LEGACY)
+              // Legacy Mutex: solo se renderiza cuando _enableLegacy es true.
+              if (_enableLegacy && _showTutorial) _buildTutorialOverlay(),
+
+              // El presenter de GlowGuide NO se monta aqui: vive en GlowGuideHost
+              // (MaterialApp.builder), encima del Navigator, para que el video siga
+              // visible mientras el guide navega a Citas, GlowShop, GlowIA, etc.
+            ],
+          ),
+        );
       },
     );
   }
 
   Widget _buildTutorialOverlay() {
     final double topPadding = MediaQuery.of(context).padding.top;
-    
+
     // Contenido dinámico según el paso (0 al 3)
     String stepTitle = '';
     String stepDescription = '';
@@ -2851,7 +3080,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
     if (_tutorialStep == 0) {
       stepTitle = '¡Te doy la bienvenida! 🌸';
-      stepDescription = 'Hola, soy Aura, tu asistente personal de belleza. Permíteme guiarte en este recorrido interactivo por GlowApp.';
+      stepDescription =
+          'Hola, soy Aura, tu asistente personal de belleza. Permíteme guiarte en este recorrido interactivo por GlowApp.';
       centerGraphic = Container(
         width: 140,
         height: 140,
@@ -2867,7 +3097,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       );
     } else if (_tutorialStep == 1) {
       stepTitle = '1. Estilistas en el Mapa';
-      stepDescription = 'Los estilistas disponibles cerca de tu zona se muestran como círculos con sus fotos. ¡Toca el marcador de Ana Silva para ver su perfil!';
+      stepDescription =
+          'Los estilistas disponibles cerca de tu zona se muestran como círculos con sus fotos. ¡Toca el marcador de Ana Silva para ver su perfil!';
       // Destacamos un marcador del mapa (simulando un toque)
       highlightWidget = Center(
         child: IgnorePointer(
@@ -2885,13 +3116,15 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 ),
               ],
             ),
-            child: const Icon(Icons.touch_app, color: Color(0xFFD4AF37), size: 36),
+            child:
+                const Icon(Icons.touch_app, color: Color(0xFFD4AF37), size: 36),
           ),
         ),
       );
     } else if (_tutorialStep == 2) {
       stepTitle = '2. Perfil Profesional y Portafolio';
-      stepDescription = 'Explora la galería de fotos certificadas de trabajos anteriores, opiniones reales y su catálogo de servicios de belleza disponibles.';
+      stepDescription =
+          'Explora la galería de fotos certificadas de trabajos anteriores, opiniones reales y su catálogo de servicios de belleza disponibles.';
       // Renderizamos el perfil detallado del proveedor simulado
       highlightWidget = Positioned(
         top: topPadding + 20,
@@ -2900,7 +3133,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         bottom: MediaQuery.of(context).size.height * 0.45,
         child: Card(
           elevation: 8,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           clipBehavior: Clip.antiAlias,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2924,7 +3158,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage('assets/images/logo_maestro_v3.webp'),
+                          image:
+                              AssetImage('assets/images/logo_maestro_v3.webp'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -2933,8 +3168,13 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Ana Silva', style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.text)),
-                        Text('Estilista Capilar Profesional', style: TextStyle(fontSize: 11, color: Color(0xFF6F5F4E))),
+                        Text('Ana Silva',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppTheme.text)),
+                        Text('Estilista Capilar Profesional',
+                            style: TextStyle(
+                                fontSize: 11, color: Color(0xFF6F5F4E))),
                       ],
                     ),
                   ],
@@ -2945,15 +3185,20 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Text(
                   'Servicios Disponibles:',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: AppTheme.text),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      color: AppTheme.text),
                 ),
               ),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   children: [
-                    _buildMockServiceTile('Corte de Cabello Dama', '\$45.000 COP'),
-                    _buildMockServiceTile('Peinado Especial Fiesta', '\$60.000 COP'),
+                    _buildMockServiceTile(
+                        'Corte de Cabello Dama', '\$45.000 COP'),
+                    _buildMockServiceTile(
+                        'Peinado Especial Fiesta', '\$60.000 COP'),
                   ],
                 ),
               ),
@@ -2963,7 +3208,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       );
     } else if (_tutorialStep == 3) {
       stepTitle = '3. Reserva y Pago Seguro';
-      stepDescription = 'Selecciona el día y la hora de tu conveniencia. El pago se procesa por Wompi Bancolombia en modo garantía: el dinero solo se libera cuando ingreses el PIN OTP al finalizar el servicio.';
+      stepDescription =
+          'Selecciona el día y la hora de tu conveniencia. El pago se procesa por Wompi Bancolombia en modo garantía: el dinero solo se libera cuando ingreses el PIN OTP al finalizar el servicio.';
       centerGraphic = Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -2977,7 +3223,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
             SizedBox(height: 8),
             Text(
               'Transacción Segura de Pago',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF4A5D4E)),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Color(0xFF4A5D4E)),
             ),
             SizedBox(height: 4),
             Text(
@@ -2994,12 +3241,12 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
       children: [
         // Fondo translúcido que bloquea clics traseros
         GestureDetector(
-          onTap: () {}, 
+          onTap: () {},
           child: Container(
             color: Colors.black.withValues(alpha: 0.7),
           ),
         ),
-        
+
         // Elemento destacado si aplica en el paso
         if (highlightWidget != null) highlightWidget,
 
@@ -3018,30 +3265,37 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
 
         // Tarjeta interactiva de Aura (centrada en el paso 0, inferior en los demás)
         AnimatedPositioned(
-          duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 300),
+          duration: _movimientoReducido
+              ? Duration.zero
+              : const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           left: 20,
           right: 20,
-          bottom: _tutorialStep == 0 
-              ? MediaQuery.of(context).size.height * 0.25 
+          bottom: _tutorialStep == 0
+              ? MediaQuery.of(context).size.height * 0.25
               : 20,
           child: Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(28),
-              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.4), width: 1.5),
+              border: Border.all(
+                  color: AppTheme.accent.withValues(alpha: 0.4), width: 1.5),
               boxShadow: AppTheme.glassShadow,
             ),
             child: AnimatedSize(
-              duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
+              duration: _movimientoReducido
+                  ? Duration.zero
+                  : const Duration(milliseconds: 250),
               curve: Curves.easeInOut,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AnimatedSwitcher(
-                    duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
-                    child: centerGraphic is! SizedBox 
+                    duration: _movimientoReducido
+                        ? Duration.zero
+                        : const Duration(milliseconds: 250),
+                    child: centerGraphic is! SizedBox
                         ? Container(
                             key: ValueKey<int>(_tutorialStep),
                             margin: const EdgeInsets.only(bottom: 20),
@@ -3050,7 +3304,9 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                         : const SizedBox.shrink(),
                   ),
                   AnimatedSwitcher(
-                    duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
+                    duration: _movimientoReducido
+                        ? Duration.zero
+                        : const Duration(milliseconds: 250),
                     child: Row(
                       key: ValueKey<int>(_tutorialStep),
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -3061,9 +3317,11 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             height: 58,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: const Color(0xFFD4AF37), width: 2.0),
+                              border: Border.all(
+                                  color: const Color(0xFFD4AF37), width: 2.0),
                               image: const DecorationImage(
-                                image: AssetImage('assets/images/avatar_aura.webp'),
+                                image: AssetImage(
+                                    'assets/images/avatar_aura.webp'),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -3099,19 +3357,23 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                     ),
                   ),
                   const SizedBox(height: 20),
-                  
+
                   // Indicador de progreso con 4 puntos interactivos
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(4, (index) {
                       final bool isActive = _tutorialStep == index;
                       return AnimatedContainer(
-                        duration: _movimientoReducido ? Duration.zero : const Duration(milliseconds: 250),
+                        duration: _movimientoReducido
+                            ? Duration.zero
+                            : const Duration(milliseconds: 250),
                         margin: const EdgeInsets.symmetric(horizontal: 4),
                         width: isActive ? 12 : 8,
                         height: 8,
                         decoration: BoxDecoration(
-                          color: isActive ? AppTheme.primary :  const Color(0xFFE5CECA),
+                          color: isActive
+                              ? AppTheme.primary
+                              : const Color(0xFFE5CECA),
                           borderRadius: BorderRadius.circular(4),
                         ),
                       );
@@ -3144,7 +3406,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
-                                onPressed: () => _handleTutorialStepChange(_tutorialStep - 1),
+                                onPressed: () => _handleTutorialStepChange(
+                                    _tutorialStep - 1),
                                 child: Text(
                                   'Atrás',
                                   style: TextStyle(color: AppTheme.text),
@@ -3169,7 +3432,8 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
                             },
                             child: Text(
                               _tutorialStep == 3 ? 'Finalizar' : 'Siguiente',
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -3199,8 +3463,14 @@ class _ProvidersScreenState extends State<ProvidersScreen> with TickerProviderSt
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-            Text(price, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primary)),
+            Text(title,
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+            Text(price,
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.primary)),
           ],
         ),
       ),

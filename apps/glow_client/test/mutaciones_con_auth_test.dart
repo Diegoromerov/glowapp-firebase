@@ -18,6 +18,11 @@ const _puertas = <List<String>>[
   ['lib/screens/store_screen.dart', 'comprar en GlowShop', "ApiService.post('/api/store/checkout'"],
 ];
 
+/// Normaliza espacios para que un formateo no rompa una invariante de fuente.
+/// Antes, `dart format` partió una llamada en dos líneas y estos tests fallaron
+/// aunque el comportamiento seguía intacto.
+String _plano(String texto) => texto.replaceAll(RegExp(r'\s+'), ' ');
+
 void main() {
   test('cada mutación tiene su puerta de sesión antes de tocar la base', () {
     for (final puerta in _puertas) {
@@ -43,7 +48,7 @@ void main() {
   });
 
   test('la tienda se navega sin cuenta, pero el checkout pide sesión', () {
-    final nav = File('lib/screens/providers_screen.dart').readAsStringSync();
+    final nav = _plano(File('lib/screens/providers_screen.dart').readAsStringSync());
     expect(nav.contains("_checkAuthAndNavigate('/store', requiereSesion: false)"), isTrue,
         reason: 'la tienda debe poder explorarse sin cuenta');
 
@@ -53,7 +58,7 @@ void main() {
   });
 
   test('Glow IA+ navega libre y pide cuenta después de la autorización', () {
-    final nav = File('lib/screens/providers_screen.dart').readAsStringSync();
+    final nav = _plano(File('lib/screens/providers_screen.dart').readAsStringSync());
     expect(
         nav.contains("_checkAuthAndNavigate('/ideas/welcome', requiereSesion: false)"),
         isTrue,
