@@ -52,6 +52,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
 
   @override
   void initState() {
+
     super.initState();
     _loadDetails();
   }
@@ -168,10 +169,13 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
             p?['full_name'] ??
             'Profesional de Belleza')
         .toString();
-    final shareUrl = Uri.https(
-      DeepLinkService.host,
-      '/provider-detail/${widget.providerId}',
-    ).toString();
+    // Página de compartir del backend: lleva la tarjeta con foto (og:image) y
+    // redirige a la app. El path crudo de la web no tiene Open Graph y se veía
+    // como un enlace pelado en WhatsApp e Instagram.
+    final shareUrl = SocialShareService.enlacePrestador(
+      baseUrl: ApiService.baseUrl,
+      providerId: widget.providerId,
+    );
     final shareText = '¡Mira el perfil de $providerName en GlowApp! $shareUrl';
 
     try {

@@ -92,4 +92,18 @@ class SocialShareService {
 
     return result ?? false;
   }
+
+  /// Enlace público de un prestador para compartir.
+  ///
+  /// Apunta a la página de compartir del backend (`/s/provider/:id`), no al path
+  /// crudo de la app: esa página lleva `og:image` y `og:url`, así que en
+  /// WhatsApp/Instagram se ve una tarjeta con foto en lugar de un enlace pelado.
+  /// El `baseUrl` es el de la API (`ApiService.baseUrl`), no el de la web.
+  static String enlacePrestador({
+    required String baseUrl,
+    required String providerId,
+  }) {
+    final limpio = baseUrl.replaceAll(RegExp(r'/+$'), '');
+    return '$limpio/s/provider/$providerId';
+  }
 }
