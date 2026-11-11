@@ -7,15 +7,16 @@ import 'package:flutter/foundation.dart'
     show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'user_agent_stub.dart'
-    if (dart.library.js) 'user_agent_web.dart' as ua_probe;
+import 'user_agent_stub.dart' if (dart.library.js) 'user_agent_web.dart'
+    as ua_probe;
 import '../engine/glowguide_engine.dart';
 import '../state/glowguide_state.dart';
 import '../model/glowguide_step.dart';
 import '../config/video_mapping.dart';
 
 /// Callback para cuando el usuario interactúa con el presenter
-typedef GlowGuidePresenterCallback = void Function(GlowGuidePresenterAction action);
+typedef GlowGuidePresenterCallback = void Function(
+    GlowGuidePresenterAction action);
 
 /// Acciones que el presenter puede solicitar al Engine
 enum GlowGuidePresenterAction {
@@ -48,7 +49,8 @@ class GlowGuidePresenter extends StatefulWidget {
   State<GlowGuidePresenter> createState() => _GlowGuidePresenterState();
 }
 
-class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBindingObserver {
+class _GlowGuidePresenterState extends State<GlowGuidePresenter>
+    with WidgetsBindingObserver {
   GlowGuideState _currentState = GlowGuideState.initial;
   GlowGuideStep? _currentStep;
 
@@ -104,7 +106,8 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
         : (screenSize.width * 0.72).clamp(260.0, 340.0);
 
     return AnimatedSwitcher(
-      duration: disableAnimations ? Duration.zero : const Duration(milliseconds: 350),
+      duration:
+          disableAnimations ? Duration.zero : const Duration(milliseconds: 350),
       transitionBuilder: (Widget child, Animation<double> animation) {
         if (disableAnimations) return child;
         return FadeTransition(
@@ -148,8 +151,8 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
                     totalSteps: widget.engine.totalSteps,
                     canGoPrevious: widget.engine.hasPrevious,
                     canGoNext: widget.engine.hasNext,
-                    onPrevious: () =>
-                        widget.onAction?.call(GlowGuidePresenterAction.previous),
+                    onPrevious: () => widget.onAction
+                        ?.call(GlowGuidePresenterAction.previous),
                     onNext: () =>
                         widget.onAction?.call(GlowGuidePresenterAction.next),
                     onFinish: () =>
@@ -164,20 +167,29 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
                 right: -8,
                 child: Material(
                   color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () => widget.onAction?.call(GlowGuidePresenterAction.dismiss),
-                    borderRadius: BorderRadius.circular(16),
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF141210).withOpacity(0.85),
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: const Color(0xFFC5A052).withOpacity(0.8),
-                          width: 1.2,
+                  // Ítem 56: el cierre de la guía era un ink sin etiqueta; el
+                  // árbol lo anunciaba como «botón» y nada más.
+                  child: Semantics(
+                    button: true,
+                    label: 'Cerrar la guía',
+                    excludeSemantics: true,
+                    child: InkWell(
+                      onTap: () => widget.onAction
+                          ?.call(GlowGuidePresenterAction.dismiss),
+                      borderRadius: BorderRadius.circular(16),
+                      child: Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF141210).withOpacity(0.85),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: const Color(0xFFC5A052).withOpacity(0.8),
+                            width: 1.2,
+                          ),
                         ),
+                        child: const Icon(Icons.close_rounded,
+                            color: Colors.white70, size: 14),
                       ),
-                      child: const Icon(Icons.close_rounded, color: Colors.white70, size: 14),
                     ),
                   ),
                 ),
@@ -199,8 +211,8 @@ class _GlowGuidePresenterState extends State<GlowGuidePresenter> with WidgetsBin
 
   bool _isVisibleState(GlowGuideStatus status) {
     return status == GlowGuideStatus.playing ||
-           status == GlowGuideStatus.executingAction ||
-           status == GlowGuideStatus.paused;
+        status == GlowGuideStatus.executingAction ||
+        status == GlowGuideStatus.paused;
   }
 }
 
@@ -350,6 +362,7 @@ class GlowStepVideoPlayer extends StatefulWidget {
 
 class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   late VideoPlayerController _controller;
+
   /// False cuando el paso no tiene URL y nunca se creo el controller: evita
   /// `LateInitializationError` en `dispose`/`didUpdateWidget`.
   bool _controllerReady = false;
@@ -370,7 +383,8 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   @override
   void didUpdateWidget(GlowStepVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.stepId != widget.stepId || oldWidget.isProvider != widget.isProvider) {
+    if (oldWidget.stepId != widget.stepId ||
+        oldWidget.isProvider != widget.isProvider) {
       if (_controllerReady) {
         _controller.removeListener(_onVideoStateChanged);
         _controller.dispose();
@@ -384,16 +398,16 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
   }
 
   /// Detecta si debe usar MP4 (iOS/Safari) o WebM (resto)
-    bool _shouldUseMp4() {
-      if (kIsWeb) {
-        // En web, detectar Safari por user-agent (implementacion condicional)
-        final ua = ua_probe.userAgent().toLowerCase();
-        return ua.contains('safari') && !ua.contains('chrome');
-      }
-      // En mobile/desktop nativo
-      return defaultTargetPlatform == TargetPlatform.iOS ||
-          defaultTargetPlatform == TargetPlatform.macOS;
+  bool _shouldUseMp4() {
+    if (kIsWeb) {
+      // En web, detectar Safari por user-agent (implementacion condicional)
+      final ua = ua_probe.userAgent().toLowerCase();
+      return ua.contains('safari') && !ua.contains('chrome');
     }
+    // En mobile/desktop nativo
+    return defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.macOS;
+  }
 
   void _initVideo() {
     _isInitialized = false;
@@ -454,7 +468,8 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
 
         if (!widget.isFirstStep || _hasUserStarted) {
           _controller.play().catchError((err) {
-            debugPrint('⚠️ Web autoplay con sonido restringido por navegador: $err');
+            debugPrint(
+                '⚠️ Web autoplay con sonido restringido por navegador: $err');
             if (mounted) {
               setState(() => _isMuted = true);
               _controller.setVolume(0.0);
@@ -498,7 +513,8 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
         !_hasEnded &&
         (!widget.isFirstStep || _hasUserStarted)) {
       _hasEnded = true;
-      debugPrint('🎬 Video completado: ${widget.stepId} ($_currentFormat). Avanzando automáticamente...');
+      debugPrint(
+          '🎬 Video completado: ${widget.stepId} ($_currentFormat). Avanzando automáticamente...');
 
       if (widget.stepId.contains('step_08_despedida') && mounted) {
         setState(() => _opacity = 0.0);
@@ -561,15 +577,20 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                if (_isInitialized && !_hasError && _controller.value.isInitialized)
+                if (_isInitialized &&
+                    !_hasError &&
+                    _controller.value.isInitialized)
                   AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio > 0 ? _controller.value.aspectRatio : 1.0,
+                    aspectRatio: _controller.value.aspectRatio > 0
+                        ? _controller.value.aspectRatio
+                        : 1.0,
                     child: VideoPlayer(_controller),
                   )
                 else
                   AspectRatio(
                     aspectRatio: 1.0,
-                    child: Container(color: const Color(0xFF141210).withOpacity(0.2)),
+                    child: Container(
+                        color: const Color(0xFF141210).withOpacity(0.2)),
                   ),
 
                 // Botón "PRESIONE PARA INICIAR" en el primer paso
@@ -580,15 +601,19 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
                     padding: const EdgeInsets.all(12),
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFC5A052).withOpacity(0.92),
+                        backgroundColor:
+                            const Color(0xFFC5A052).withOpacity(0.92),
                         foregroundColor: const Color(0xFF141210),
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24)),
                         elevation: 8,
                         shadowColor: const Color(0xFFC5A052).withOpacity(0.5),
                       ),
                       onPressed: _startPlayback,
-                      icon: const Icon(Icons.play_arrow_rounded, size: 22, color: Color(0xFF141210)),
+                      icon: const Icon(Icons.play_arrow_rounded,
+                          size: 22, color: Color(0xFF141210)),
                       label: const Text(
                         'PRESIONE PARA INICIAR',
                         style: TextStyle(
@@ -606,20 +631,26 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
                   Positioned(
                     bottom: 12,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.7),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xFFC5A052), width: 1),
+                        border: Border.all(
+                            color: const Color(0xFFC5A052), width: 1),
                       ),
                       child: const Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.volume_off_rounded, color: Color(0xFFC5A052), size: 12),
+                          Icon(Icons.volume_off_rounded,
+                              color: Color(0xFFC5A052), size: 12),
                           SizedBox(width: 4),
                           Text(
                             'Toca para sonido',
-                            style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -633,6 +664,3 @@ class _GlowStepVideoPlayerState extends State<GlowStepVideoPlayer> {
     );
   }
 }
-
-
-
