@@ -79,6 +79,35 @@ void main() {
     });
   });
 
+  group('el enlace compartido sobrevive al router', () {
+    // Medido con CDP sobre producción: el link del perfil terminaba en el home
+    // porque Flutter reescribe la URL como `/provider-detail/3#/home` y el
+    // fragmento (ruta interna) tapaba el path del enlace.
+    test('el path manda cuando el fragmento es una ruta interna', () {
+      final d = DeepLinkService.mapear(
+        Uri.parse(
+            'https://glowapp-client.web.app/provider-detail/3#/home'),
+      );
+      expect(d, isNotNull, reason: 'el enlace no puede perderse');
+      expect(d!.ruta, '/provider-detail');
+      expect(d.argumentos['providerId'], '3');
+    });
+
+    test('una ruta interna con path vacío no es un enlace', () {
+      expect(
+        DeepLinkService.mapear(Uri.parse('https://glowapp-client.web.app/#/home')),
+        isNull,
+      );
+    });
+
+    test('la ficha del prestador es pública; lo personal pide sesión', () {
+      expect(DeepLinkService.requiereSesion('/provider-detail'), isFalse,
+          reason: 'el catálogo es público: el receptor del share no tiene cuenta');
+      expect(DeepLinkService.requiereSesion('/booking-tracking'), isTrue);
+      expect(DeepLinkService.requiereSesion('/my-bookings'), isTrue);
+    });
+  });
+
   group('la URL de la propia app no es un enlace entrante', () {
     // Bug real: al abrir la web sin sesión, Flutter ponía #/home, el host lo
     // leía como enlace, no había sesión y hacía pushNamedAndRemoveUntil al
@@ -112,6 +141,28 @@ void main() {
         Uri.parse('https://glowapp-client.web.app/#/booking-tracking/abc-123'),
       );
       expect(d!.ruta, '/booking-tracking');
+    });
+  });
+
+  group('arranque en web', () {
+    test('la URL de la pestaña se traduce al destino del prestador', () {
+      DeepLinkService.fijarUrlDeArranqueParaPruebas(
+          Uri.parse('http://localhost:8099/provider-detail/3'));
+      final inicial = DeepLinkService.inicialWeb();
+      expect(inicial, isNotNull, reason: 'el path del enlace debe conservarse');
+      final destino = DeepLinkService.mapear(inicial!);
+      expect(destino?.ruta, '/provider-detail');
+      expect(destino?.argumentos['providerId'], '3');
+      expect(DeepLinkService.requiereSesion(destino!.ruta), isFalse);
+      DeepLinkService.fijarUrlDeArranqueParaPruebas(null);
+    });
+
+    test('la home no es un enlace aunque la URL traiga el fragmento', () {
+      DeepLinkService.fijarUrlDeArranqueParaPruebas(
+          Uri.parse('http://localhost:8099/#/home'));
+      final inicial = DeepLinkService.inicialWeb();
+      expect(inicial == null || DeepLinkService.mapear(inicial) == null, isTrue);
+      DeepLinkService.fijarUrlDeArranqueParaPruebas(null);
     });
   });
 }

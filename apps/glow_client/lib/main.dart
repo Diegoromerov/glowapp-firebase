@@ -12,6 +12,7 @@ import 'package:glow_core/glow_core.dart' hide AppUpdateGate;
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/crash_reporting_service.dart';
 import 'firebase_options.dart';
+import 'services/deep_link_service.dart';
 import 'services/push_service.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
@@ -59,6 +60,11 @@ import 'app_keys.dart';
 import 'widgets/app_update_gate.dart';
 
 void main() async {
+  // El enlace compartido llega en la URL de la pestaña. Hay que guardarlo antes
+  // de `ensureInitialized()`: el router escribe `/#/home` enseguida y el path
+  // del enlace se pierde.
+  DeepLinkService.capturarUrlDeArranque();
+
   WidgetsFlutterBinding.ensureInitialized();
 
   // Ítem 56 — NO forzar el árbol de semántica.
@@ -358,11 +364,18 @@ class GlowClientApp extends ConsumerWidget {
             return MaterialPageRoute(
               builder: (_) => BookingTrackingScreen(booking: args ?? const {}),
             );
-          case '/provider-detail':
+          // Un enlace compartido puede llegar como `/provider-detail/3`: el id
+          // viene en el nombre de la ruta, no en `arguments`. Antes caía en
+          // `default` (null) y la pantalla abría con id vacío → petición a
+          // `/api/providers/` y pantalla en blanco.
+          case final String ruta when ruta.startsWith('/provider-detail'):
             final args = settings.arguments as Map<String, dynamic>?;
+            final partes =
+                ruta.split('/').where((p) => p.isNotEmpty).toList();
+            final idDeLaRuta = partes.length > 1 ? partes.last : '';
             return MaterialPageRoute(
               builder: (_) => ProviderDetailScreen(
-                providerId: (args?['providerId'] ?? '').toString(),
+                providerId: (args?['providerId'] ?? idDeLaRuta).toString(),
                 nombreInicial: args?['providerName']?.toString(),
                 avatarInicial: args?['avatarUrl']?.toString(),
               ),

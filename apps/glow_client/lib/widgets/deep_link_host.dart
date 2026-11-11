@@ -60,6 +60,7 @@ class _DeepLinkHostState extends State<DeepLinkHost> {
     if (uri == null) return;
     final destino = DeepLinkService.mapear(uri);
     if (destino == null) return;
+    DeepLinkService.marcarEnlaceConsumido();
 
     // Un enlace en caliente puede llegar repetido (initial + stream).
     final clave = '${destino.ruta}|${destino.argumentos}|${uri.path}';
@@ -69,16 +70,22 @@ class _DeepLinkHostState extends State<DeepLinkHost> {
     final navegador = GlowGuideService.instance.navigatorKey.currentState;
     if (navegador == null) return;
 
-    final haySesion = await AuthService.getToken() != null;
-    if (!mounted) return;
+    // La ficha del prestador es pública: es el enlace que se comparte y el
+    // receptor no tiene por qué tener cuenta. Exigir sesión aquí mataba el
+    // beneficio del share (caía en el login). Las rutas personales siguen
+    // pidiendo sesión.
+    if (DeepLinkService.requiereSesion(destino.ruta)) {
+      final haySesion = await AuthService.getToken() != null;
+      if (!mounted) return;
 
-    if (!haySesion) {
-      // El login no puede recibir argumentos arbitrarios: se avisa y se deja
-      // que el usuario vuelva a tocar el enlace desde el correo si quiere.
-      navegador.pushNamedAndRemoveUntil('/auth/login', (r) => false);
-      _avisar(destino.aviso ??
-          'Inicia sesión y vuelve a abrir el enlace del correo.');
-      return;
+      if (!haySesion) {
+        // El login no puede recibir argumentos arbitrarios: se avisa y se deja
+        // que el usuario vuelva a tocar el enlace desde el correo si quiere.
+        navegador.pushNamedAndRemoveUntil('/auth/login', (r) => false);
+        _avisar(destino.aviso ??
+            'Inicia sesión y vuelve a abrir el enlace del correo.');
+        return;
+      }
     }
 
     navegador.pushNamed(destino.ruta, arguments: destino.argumentos);

@@ -28,8 +28,41 @@ class DeepLinkService {
   /// Host público de la web del cliente.
   static const host = 'glowapp-client.web.app';
 
+  /// Espejo del mismo sitio en el dominio de Firebase.
+  static const _hostEspejo = 'glowapp-client.firebaseapp.com';
+
   /// Esquema propio: `glowapp://booking-tracking/<id>`.
   static const esquema = 'glowapp';
+
+  /// URL de la pestaña tal como llegó, guardada antes de que el router la
+  /// reescriba. Se llena con [capturarUrlDeArranque] al inicio de `main()`.
+  static Uri? _urlDeArranque;
+
+  /// Verdadero cuando la app se abrió con un enlace que sí era nuestro.
+  ///
+  /// Lo consulta el tour de bienvenida: si alguien llega desde un enlace
+  /// compartido (la ficha de un prestador), el motor del tour pide volver a
+  /// `/home` antes de su primera acción y se lleva por delante la pantalla que
+  /// el enlace acababa de abrir. Con esta marca, el tour no arranca en esa
+  /// entrada y el enlace manda.
+  static bool _huboEnlaceProfundo = false;
+
+  static bool get huboEnlaceProfundo => _huboEnlaceProfundo;
+
+  /// La llama el host cuando un enlace se traduce a un destino real.
+  static void marcarEnlaceConsumido() => _huboEnlaceProfundo = true;
+
+  /// Debe llamarse en `main()` antes de `runApp`.
+  static void capturarUrlDeArranque() {
+    if (!kIsWeb) return;
+    _urlDeArranque = Uri.base;
+    // Se resuelve aquí, antes de `runApp`: el tour de bienvenida decide en el
+    // primer frame y necesita saber ya si la entrada fue un enlace.
+    _huboEnlaceProfundo = mapear(inicialWeb() ?? Uri()) != null;
+  }
+
+  /// Sólo para pruebas: fija la URL de arranque sin depender del navegador.
+  static void fijarUrlDeArranqueParaPruebas(Uri? url) => _urlDeArranque = url;
 
   /// Rutas internas del router. La URL de la propia app (`/#/home`, `/#/chat`,
   /// `/#/auth/login`...) NO es un enlace entrante. Antes se procesaba como uno:
@@ -44,15 +77,34 @@ class DeepLinkService {
 
   /// Devuelve el destino, o `null` si el enlace no es de esta app (se ignora).
   static DestinoEnlace? mapear(Uri uri) {
+    // El mismo bundle se sirve en el hosting de producción, en su espejo de
+    // firebaseapp.com y en local (para validar un build antes de publicarlo).
+    // Antes solo se aceptaba el host exacto de producción, así que el enlace
+    // compartido no abría nada al probarlo en local. Un dominio de terceros
+    // sigue ignorándose.
+    final hostPropio = uri.host == host ||
+        uri.host == _hostEspejo ||
+        uri.host == 'localhost' ||
+        uri.host == '127.0.0.1';
     final propio = uri.scheme == esquema ||
-        uri.host == host ||
+        hostPropio ||
         // Enlaces relativos (`/#/booking-tracking/...`) no traen host.
         (!uri.hasScheme && uri.path.isNotEmpty);
     if (!propio) return null;
 
     // El router web usa el fragmento (`/#/booking-tracking/...`); los enlaces de
-    // correo usan la ruta limpia. Se aceptan las dos formas.
-    final crudo = uri.fragment.isNotEmpty ? uri.fragment : uri.path;
+    // correo y las páginas de compartir usan la ruta limpia. Se aceptan las dos
+    // formas, pero el fragmento NO siempre manda: al arrancar, Flutter ya
+    // reescribió la URL como `/provider-detail/3#/home`, y ese `#/home` es la
+    // ruta interna de la app, no el enlace. Antes ganaba el fragmento, el enlace
+    // se descartaba por «ruta interna» y el receptor aterrizaba en el mapa.
+    final fragmento = uri.fragment;
+    final fragmentoPrimero = _primero(fragmento);
+    final fragmentoEsRutaInterna =
+        fragmentoPrimero.isNotEmpty && _rutasInternas.contains(fragmentoPrimero);
+    final crudo = (fragmento.isNotEmpty && !fragmentoEsRutaInterna)
+        ? fragmento
+        : uri.path;
     var partes =
         crudo.split('?').first.split('/').where((p) => p.isNotEmpty).toList();
 
@@ -119,15 +171,46 @@ class DeepLinkService {
   }
 
   /// Enlace inicial en web: el fragmento del router o la ruta limpia.
+  ///
+  /// El fragmento no siempre es el enlace: al arrancar, Flutter reescribe la URL
+  /// como `/provider-detail/3#/home`. Si el fragmento es una ruta interna de la
+  /// app y el path trae algo, el enlace real es el path.
   static Uri? inicialWeb() {
-    if (!kIsWeb) return null;
-    final base = Uri.base;
-    if (base.fragment.isNotEmpty) {
-      final frag =
-          base.fragment.startsWith('/') ? base.fragment : '/${base.fragment}';
-      return Uri.parse(frag);
+    // Sin guarda de plataforma a propósito: `Uri.base` existe en todas, y el
+    // host sólo llama aquí en web (en móvil el enlace llega por app_links).
+    // Se prefiere la URL capturada en `main()`: para cuando este método corre,
+    // el router ya reescribió el historial como `/#/home` y el path del enlace
+    // (`/provider-detail/3`) desapareció. Ese era el motivo de que el enlace
+    // compartido aterrizara en el mapa.
+    final base = _urlDeArranque ?? Uri.base;
+    final frag = base.fragment.isEmpty
+        ? ''
+        : (base.fragment.startsWith('/') ? base.fragment : '/${base.fragment}');
+    final fragInterno = frag.isNotEmpty && _rutasInternas.contains(_primero(frag));
+
+    if (base.path.isNotEmpty &&
+        base.path != '/' &&
+        (frag.isEmpty || fragInterno)) {
+      return base;
     }
-    if (base.path.isNotEmpty && base.path != '/') return base;
+    if (frag.isNotEmpty) return Uri.parse(frag);
     return null;
   }
+
+  /// Primer segmento no vacío de una ruta (`/a/b` → `a`).
+  static String _primero(String ruta) => ruta
+      .split('?')
+      .first
+      .split('/')
+      .firstWhere((p) => p.isNotEmpty, orElse: () => '');
+
+  /// Rutas que un enlace puede abrir sin sesión.
+  ///
+  /// El catálogo es público a propósito (la app abre en modo exploración), así
+  /// que exigir login para ver la ficha de un prestador rompía justo el enlace
+  /// que se comparte: el receptor caía en el login. Las rutas personales siguen
+  /// pidiendo sesión.
+  static const Set<String> rutasPublicas = {'/provider-detail'};
+
+  static bool requiereSesion(String ruta) => !rutasPublicas.contains(ruta);
 }

@@ -14,6 +14,7 @@ import '../utils/home_ranking.dart';
 import '../utils/map_clustering.dart';
 import '../widgets/home_results_sheet.dart';
 import '../widgets/auth_gate.dart';
+import '../services/deep_link_service.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 
 class ProvidersScreen extends StatefulWidget {
@@ -155,6 +156,14 @@ class _ProvidersScreenState extends State<ProvidersScreen>
 
   /// Legacy Mutex: resuelve qué guía mostrar (GlowGuide o Legacy), nunca ambos.
   Future<void> _resolveGuideMutex() async {
+    // Si la app se abrió desde un enlace compartido, el tour no arranca: su
+    // primera acción hace `returnToHome()` (popUntil '/home') y echaba al
+    // visitante de la ficha que el enlace acababa de abrir.
+    if (DeepLinkService.huboEnlaceProfundo) {
+      debugPrint('[GUIDE] tour omitido: la entrada fue un enlace compartido');
+      return;
+    }
+
     final prefs = await SharedPreferences.getInstance();
 
     // 1. New completion key = true → no guide
