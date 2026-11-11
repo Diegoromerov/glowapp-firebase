@@ -193,12 +193,20 @@ class GlowClientApp extends ConsumerWidget {
         Locale('en'),
       ],
       locale: const Locale('es'),
-      theme: isMen ? _buildMensTheme() : AppTheme.light(),
-      darkTheme: isMen ? _buildMensDarkTheme() : AppTheme.dark(),
-      // El tema sigue al sistema: `darkTheme` existía y nunca se usaba porque
-      // aquí estaba fijado en claro. El usuario que tiene el móvil en oscuro
-      // veía la app encendida.
-      themeMode: ThemeMode.system,
+      // Regla del Director: las pantallas se ven CLARAS en todo momento; la
+      // única excepción es el selector Hombres, cuya interfaz entera es oscura.
+      // Antes estaba en `ThemeMode.system`, así que un móvil con el sistema en
+      // oscuro teñía la app: los campos de formulario tomaban `surfaceLevel0`
+      // (#0A0C10) dentro de tarjetas fijas en blanco — campos negros sobre
+      // tarjeta clara. Fijar `ThemeMode.light` cierra esa vía.
+      //
+      // El modo Hombres no usa `darkTheme`: con `ThemeMode.light` nunca se
+      // aplicaría. Se le pasa su tema oscuro como tema BASE, con
+      // `Brightness.dark`, porque `Token.of` resuelve la paleta por brillo; con
+      // brillo claro los componentes de Hombres tomarían la gama clara y
+      // quedarían mezclados sobre el fondo obsidiana.
+      theme: isMen ? _buildMensDarkTheme() : AppTheme.light(),
+      themeMode: ThemeMode.light,
       // La app abre en modo exploración: el catálogo, el mapa y el detalle de
       // cada prestador se ven sin cuenta. La identificación se pide en la
       // acción concreta (reservar, comprar, Glow IA+) vía AuthGate, no al entrar.
@@ -362,44 +370,9 @@ class GlowClientApp extends ConsumerWidget {
   }
 }
 
-// Mens ThemeData construido desde MensTheme constants
-ThemeData _buildMensTheme() {
-  return ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.light,
-    colorScheme: const ColorScheme.light(
-      primary: MensTheme.champagneGold,
-      onPrimary: MensTheme.obsidianBg,
-      secondary: MensTheme.champagneGoldLight,
-      onSecondary: MensTheme.obsidianBg,
-      surface: MensTheme.obsidianCard,
-      onSurface: MensTheme.textPrimary,
-      surfaceContainerHighest: MensTheme.obsidianCardHover,
-      outline: MensTheme.textMuted,
-      outlineVariant: MensTheme.textMuted,
-      error: Colors.redAccent,
-      onError: Colors.white,
-    ),
-    scaffoldBackgroundColor: MensTheme.obsidianBg,
-    cardColor: MensTheme.obsidianCard,
-    dividerColor: MensTheme.textMuted,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: MensTheme.obsidianCard,
-      foregroundColor: MensTheme.textPrimary,
-      elevation: 0,
-      centerTitle: false,
-      surfaceTintColor: Colors.transparent,
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: MensTheme.obsidianCard,
-      selectedItemColor: MensTheme.champagneGold,
-      unselectedItemColor: MensTheme.textMuted,
-      type: BottomNavigationBarType.fixed,
-      elevation: 0,
-    ),
-  );
-}
-
+// El tema "Hombres claro" se retiró junto con `ThemeMode.system`: declaraba
+// Brightness.light sobre fondo obsidiana, así que `Token.of` devolvía la gama
+// clara y los componentes quedaban mezclados. Hombres usa `_buildMensDarkTheme`.
 ThemeData _buildMensDarkTheme() {
   return ThemeData(
     useMaterial3: true,
