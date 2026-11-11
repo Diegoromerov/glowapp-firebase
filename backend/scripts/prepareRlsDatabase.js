@@ -67,6 +67,10 @@ const MIGRACIONES_BASE_NUEVA = [
 '120_force_rls_all_tenant_tables.sql',
 // (110/111 — SaaS billing — se sacaron: arrastraban subscriptions/usage_metrics. Lo que hacía falta vive en la 130.)
 '124_auth_lookup_security_definer.sql',
+'008_social_integrations.sql',
+// 138: el CHECK de platform de social_shares_log no admitía SISTEMA (hoja del
+// sistema) y no había idempotencia por día; sin 008 la tabla no existía.
+'138_social_shares.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -93,37 +97,70 @@ const MIGRACIONES_BASE_NUEVA = [
 // 125 va aquí porque completa la convergencia de app_usuario_por_email: 068,
 // 084 y 125 empiezan con DROP FUNCTION, así que el arranque acaba siempre con
 // la misma firma, venga de donde venga la base.
-const MIGRACIONES_ARRANQUE = [
-  'init.sql',
-  '054_create_core_tables.sql',
-  '055_create_tenants_table.sql',
-  '056_add_tenant_id_to_core_tables.sql',
-  '057_backfill_tenant_id.sql',
-  '058_enable_rls_policies.sql',
-  '065_multi_tenant_hardening.sql',
-  '067_create_multi_salon_ddl.sql',
-  '068_force_rls_strict_isolation.sql',
-  '107_rls_politicas_sin_contexto.sql',
-  '012_business_engine.sql',
-  '062_optimize_business_saas_postgres.sql',
-  '082_memberships.sql',
-  '114_memberships_sub_rol.sql',
-  '118_drop_salon_miembros.sql',
-  '119_force_rls_retention_policies.sql',
-  '121_glowshop_precios_minimas.sql',
-  '122_catalogo_costo_sku.sql',
-  '123_checkout_tenant_wompi.sql',
-  '120_force_rls_all_tenant_tables.sql',
-  '124_auth_lookup_security_definer.sql',
-  '125_usuario_lookup_sin_contexto.sql',
-  '127_review_aspectos.sql',
-  '128_usuario_fcm_token.sql',
-  '129_otp_codigo_cifrado.sql',
-  // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
-  // producción las tenía por script manual, la cadena no las creaba.
-  '135_horario_atencion_prestador.sql',
-  // 136 solo verifica que services.id sea uuid (no convierte ni escribe).
-  '136_services_uuid_contract.sql',
+const MIGRACIONES_ARRANQUE = [
+
+  'init.sql',
+
+  '054_create_core_tables.sql',
+
+  '055_create_tenants_table.sql',
+
+  '056_add_tenant_id_to_core_tables.sql',
+
+  '057_backfill_tenant_id.sql',
+
+  '058_enable_rls_policies.sql',
+
+  '065_multi_tenant_hardening.sql',
+
+  '067_create_multi_salon_ddl.sql',
+
+  '068_force_rls_strict_isolation.sql',
+
+  '107_rls_politicas_sin_contexto.sql',
+
+  '012_business_engine.sql',
+
+  '062_optimize_business_saas_postgres.sql',
+
+  '082_memberships.sql',
+
+  '114_memberships_sub_rol.sql',
+
+  '118_drop_salon_miembros.sql',
+
+  '119_force_rls_retention_policies.sql',
+
+  '121_glowshop_precios_minimas.sql',
+
+  '122_catalogo_costo_sku.sql',
+
+  '123_checkout_tenant_wompi.sql',
+
+  '120_force_rls_all_tenant_tables.sql',
+
+  '124_auth_lookup_security_definer.sql',
+  '008_social_integrations.sql',
+  '138_social_shares.sql',
+
+  '125_usuario_lookup_sin_contexto.sql',
+
+  '127_review_aspectos.sql',
+
+  '128_usuario_fcm_token.sql',
+
+  '129_otp_codigo_cifrado.sql',
+
+  // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
+
+  // producción las tenía por script manual, la cadena no las creaba.
+
+  '135_horario_atencion_prestador.sql',
+
+  // 136 solo verifica que services.id sea uuid (no convierte ni escribe).
+
+  '136_services_uuid_contract.sql',
+
 ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {

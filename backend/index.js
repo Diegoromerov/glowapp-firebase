@@ -427,6 +427,10 @@ app.get('/api/tiles/:z/:x/:y.png', async (req, res) => {
 app.use('/api/biometric/analyze', analyzeLimiter);
 app.use('/api', globalGeneralLimiter);
 
+// Páginas de compartir (/s/provider/:id): llevan las etiquetas Open Graph y
+// redirigen a la app. Van ANTES del catch-all del SPA, que si no las tapa.
+app.use('/s', require('./src/routes/sharePagesRoutes'));
+
 app.use('/uploads', express.static(uploadsDir));
 app.use('/admin', express.static(path.join(__dirname, 'public/admin')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -520,6 +524,8 @@ app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api/mentorship', mentorshipRoutes);
 app.use('/api/xp-logs', xpLogRoutes);
+// Registro de compartires (TikTok/Instagram/hoja del sistema) y XP idempotente.
+app.use('/api/social', require('./src/routes/socialRoutes'));
 app.use('/api/v1/business', businessRoutes);
 app.use('/api/v1/memberships', membershipRoutes);
 
@@ -1178,36 +1184,10 @@ app.patch('/api/admin/users/:id/verify', authMiddleware, adminMiddleware, async 
 const adminRoutes = require('./src/routes/adminRoutes');
 app.use('/api/admin', adminRoutes);
 
-// 🔹 NUEVO: Endpoints de Integración Social (TikTok, Instagram, Facebook) & Recompensas XP
-app.post('/api/social/log-share', authMiddleware, async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const { platform, content_type, share_reference_id } = req.body;
-
-    if (!platform || !content_type) {
-      return res.status(400).json({ error: 'Plataforma y tipo de contenido son requeridos.' });
-    }
-
-    const pointsToAward = 50; // 50 XP por compartir resultado estético
-
-    const logRes = await pool.query(`
-      INSERT INTO social_shares_log (user_id, platform, content_type, share_reference_id, reward_granted, points_awarded)
-      VALUES ($1, $2, $3, $4, TRUE, $5)
-      RETURNING *;
-    `, [userId, platform, content_type, share_reference_id || null, pointsToAward]);
-
-    // Opcional: Acreditar XP al usuario en su perfil
-    res.json({
-      success: true,
-      message: `¡Contenido compartido con éxito en ${platform}! Se han acreditado ${pointsToAward} XP.`,
-      share: logRes.rows[0],
-      points_awarded: pointsToAward
-    });
-  } catch (error) {
-    console.error('❌ ERROR EN POST /api/social/log-share:', error);
-    res.status(500).json({ error: 'Error al registrar contenido compartido.' });
-  }
-});
+// El registro de compartires vive en src/routes/socialRoutes.js (montado arriba
+// como /api/social) y acredita XP de verdad en xp_logs. Aquí había una segunda
+// copia del handler que solo insertaba la fila y respondía «+50 XP» sin escribir
+// el XP ni impedir el duplicado.
 
 app.get('/api/social/accounts', authMiddleware, async (req, res) => {
   try {
