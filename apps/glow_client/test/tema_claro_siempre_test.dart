@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:glow_core/glow_core.dart';
 import 'package:glow_client/main.dart';
+import 'package:glow_client/screens/auth/login_screen.dart';
 
 const _crema = Color(0xFFFCF8F6); // Token.light.surfaceLevel0
 const _obsidiana = Color(0xFF0A0C10); // Token.dark.surfaceLevel0
@@ -91,5 +92,30 @@ void main() {
     final campo = tester.widget<TextField>(find.byType(TextField));
     expect(campo.decoration?.fillColor, _obsidiana,
         reason: 'en Hombres el relleno del campo también es oscuro');
+  });
+
+  testWidgets('en Hombres el login sigue claro: sin campos oscuros',
+      (tester) async {
+    tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+    addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+    AudienceService.currentAudience.value = AudienceMode.men;
+
+    await tester.pumpWidget(const ProviderScope(child: GlowClientApp()));
+    await tester.pump(const Duration(milliseconds: 300));
+
+    tester.state<NavigatorState>(find.byType(Navigator).first)
+        .pushNamed('/auth/login');
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 600));
+
+    final login = find.byType(LoginScreen);
+    expect(login, findsOneWidget, reason: 'la ruta /auth/login debe abrirse');
+    expect(Theme.of(tester.element(login)).brightness, Brightness.light,
+        reason: 'las pantallas de acceso van siempre claras, también en Hombres');
+
+    final campo = tester.widget<TextField>(
+        find.descendant(of: login, matching: find.byType(TextField)).first);
+    expect(campo.decoration?.fillColor, _crema,
+        reason: 'en Hombres el login no debe pintar los campos obsidiana');
   });
 }

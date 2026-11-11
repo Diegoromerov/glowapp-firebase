@@ -213,13 +213,18 @@ class GlowClientApp extends ConsumerWidget {
       initialRoute: '/home',
       routes: <String, WidgetBuilder>{
         // Auth
-        '/auth/login': (_) => const LoginScreen(),
-        '/auth/register': (_) => const RegisterScreen(),
+        // Las cuatro pantallas de acceso van SIEMPRE claras: su hero y sus
+        // tarjetas son de marca clara, y con el tema oscuro de Hombres los campos
+        // (que sí resuelven por token) quedaban negros sobre tarjeta blanca.
+        '/auth/login': (_) => _authSiempreClaro(const LoginScreen()),
+        '/auth/register': (_) => _authSiempreClaro(const RegisterScreen()),
         // Compatibilidad con enlaces antiguos: la app cliente ya no requiere
         // el onboarding de negocio y aterriza directamente en el catálogo.
         '/auth/onboarding': (_) => const ProvidersScreen(),
-        '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
-        '/auth/verification-pending': (_) => const VerificationPendingScreen(),
+        '/auth/forgot-password':
+            (_) => _authSiempreClaro(const ForgotPasswordScreen()),
+        '/auth/verification-pending':
+            (_) => _authSiempreClaro(const VerificationPendingScreen()),
 
         // Home / Navegación principal
         '/home': (_) => const ProvidersScreen() as Widget,
@@ -369,6 +374,16 @@ class GlowClientApp extends ConsumerWidget {
     );
   }
 }
+
+// Las pantallas de acceso se ven SIEMPRE claras, también con el selector
+// Hombres activo. Sus tarjetas y su hero son de marca clara, mientras los campos
+// resuelven `Token.of` por brillo: sin este envoltorio, en Hombres la tarjeta
+// seguía blanca y los campos se pintaban obsidiana (relleno #0A0C10).
+// Se aplica en la ruta, que es el único punto por el que se abren las cuatro.
+Widget _authSiempreClaro(Widget child) => Theme(
+      data: AppTheme.light(),
+      child: child,
+    );
 
 // El tema "Hombres claro" se retiró junto con `ThemeMode.system`: declaraba
 // Brightness.light sobre fondo obsidiana, así que `Token.of` devolvía la gama
