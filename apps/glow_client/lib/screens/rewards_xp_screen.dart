@@ -37,6 +37,32 @@ class RewardsXpScreen extends StatelessWidget {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Programa de referidos: hasta ahora existía en el backend y no
+              // tenía entrada en la app.
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () => Navigator.pushNamed(context, '/invite'),
+                  icon: const Icon(Icons.card_giftcard, size: 18, color: Color(0xFF8A6A2F)),
+                  label: const Text(
+                    'Invitar amigas · \$10.000 COP de regalo',
+                    style: TextStyle(
+                      fontFamily: 'CormorantGaramond',
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF8A6A2F),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    side: const BorderSide(color: Color(0xFFD4AF37)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14)),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+
               // TARJETA DORADA DE MEMBRESÍA VIP
               Container(
                 width: double.infinity,

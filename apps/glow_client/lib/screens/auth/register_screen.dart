@@ -3,9 +3,11 @@ import 'dart:async';
 
 import 'package:glow_core/glow_core.dart' hide AppLocalizations;
 import 'package:glow_core/src/l10n/app_localizations.dart' as glow_l10n;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../services/deep_link_service.dart';
 import '../../services/push_service.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -64,6 +66,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         password,
         phone.isNotEmpty ? phone : null,
         'CLIENTE',
+        // Quien llega desde un enlace de invitación (`?ref=`) queda atribuido.
+        ref: kIsWeb
+            ? codigoInvitacionDeLaUrl(
+                DeepLinkService.urlDeArranque ?? Uri.base)
+            : codigoInvitacionDeLaUrl(Uri.base),
       );
 
       if (success && mounted) {

@@ -50,7 +50,7 @@ class AuthService {
   }
 
   static Future<bool> register(String fullName, String email, String password,
-      String? phone, String role) async {
+      String? phone, String role, {String? ref}) async {
     final baseUrl = await getBaseUrl();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/register'),
@@ -61,6 +61,8 @@ class AuthService {
         'password': password,
         'phone': phone,
         'role': role,
+        // Código de invitación (`?ref=`). El backend lo ignora si es inválido.
+        if (ref != null && ref.trim().isNotEmpty) 'ref': ref.trim(),
       }),
     );
     return response.statusCode == 201;
@@ -623,4 +625,17 @@ class AuthService {
       return null;
     }
   }
+}
+
+/// Código de invitación que trae la URL de arranque (`#/auth/register?ref=...`),
+/// o `null`. En web se lee del fragmento; en móvil llega por el registro normal
+/// y la app lo pasa explícito.
+String? codigoInvitacionDeLaUrl(Uri url) {
+  final delFragmento = Uri.splitQueryString(
+    url.fragment.contains('?') ? url.fragment.split('?').last : '',
+  );
+  final deLaQuery = url.queryParameters;
+  final codigo = delFragmento['ref'] ?? deLaQuery['ref'];
+  final limpio = codigo?.trim();
+  return (limpio == null || limpio.isEmpty) ? null : limpio;
 }

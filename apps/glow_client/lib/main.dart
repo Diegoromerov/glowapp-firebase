@@ -34,6 +34,7 @@ import 'screens/privacy_policy_screen.dart';
 import 'screens/account_deletion_screen.dart';
 import 'screens/user_profile.dart';
 import 'screens/my_glow_dashboard_screen.dart';
+import 'screens/invite_friends_screen.dart';
 import 'screens/rewards_xp_screen.dart';
 import 'screens/glowstore_orders_screen.dart';
 import 'screens/biometric_history_screen.dart';
@@ -259,6 +260,7 @@ class GlowClientApp extends ConsumerWidget {
         '/profile': (_) => const UserProfileScreen(),
         '/my-glow': (_) => const MyGlowDashboardScreen(),
         '/rewards': (_) => const RewardsXpScreen(),
+        '/invite': (_) => const InviteFriendsScreen(),
         '/glowstore-orders': (_) => const GlowStoreOrdersScreen(),
         '/biometric-history': (_) => const BiometricHistoryScreen(),
         '/habeas-data': (_) => const HabeasDataScreen(),

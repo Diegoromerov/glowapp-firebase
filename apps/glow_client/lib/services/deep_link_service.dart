@@ -49,6 +49,9 @@ class DeepLinkService {
 
   static bool get huboEnlaceProfundo => _huboEnlaceProfundo;
 
+  /// URL con la que arrancó la pestaña (sin la reescritura del router).
+  static Uri? get urlDeArranque => _urlDeArranque;
+
   /// La llama el host cuando un enlace se traduce a un destino real.
   static void marcarEnlaceConsumido() => _huboEnlaceProfundo = true;
 
