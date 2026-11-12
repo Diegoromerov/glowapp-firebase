@@ -1,14 +1,19 @@
 // src/routes/rewardsRoutes.js
 const express = require('express');
 const { wrapRouterAsync } = require('../utils/expressAsync');
-const { authMiddleware } = require('../middleware/auth');
+const { authMiddleware, adminMiddleware } = require('../middleware/auth');
 const rewardsController = require('../controllers/rewardsController');
+const rewardsAdminController = require('../controllers/rewardsAdminController');
 
 const router = express.Router();
 
 // Saldo del fondo de puntos canjeable de la usuaria autenticada.
 // El canje no vive aquí: se aplica al crear el pedido, dentro de su transacción.
 router.get('/points', authMiddleware, rewardsController.obtenerPuntos);
+
+// Reporte de gestión: pasivo, emisión, canje y vencimiento. Sólo administración:
+// son cifras del negocio, no del usuario.
+router.get('/reporte', authMiddleware, adminMiddleware, rewardsAdminController.reporte);
 
 wrapRouterAsync(router);
 module.exports = router;

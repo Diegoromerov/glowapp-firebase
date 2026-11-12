@@ -10,6 +10,7 @@ const { enviarNotificacionesRetencion } = require('./retentionNotification');
 const { runAsSystem } = require('../config/tenantRouting');
 const { systemPool } = require('../config/db');
 const pointsService = require('../services/pointsService');
+const { avisarVencimientoPuntos } = require('./puntosVencimiento');
 
 /**
  * Ejecuta un job con el ROL DE SISTEMA activo (SET LOCAL ROLE app_system, que
@@ -498,6 +499,10 @@ function inicializarJobs() {
 
   // Pedidos con puntos que no se pagaron: cada hora. Devuelve stock y puntos.
   setInterval(comoSistema(expirarCanjesSinPago), 60 * 60 * 1000);
+
+  // Aviso de puntos por vencer: cada 6 horas. El WHERE del job y la marca por
+  // lote evitan el aviso repetido, así que correr seguido no molesta a nadie.
+  setInterval(comoSistema(avisarVencimientoPuntos), 6 * 60 * 60 * 1000);
 
   // Pricing dinámico: cada día a las 3 AM
   setInterval(async () => {
