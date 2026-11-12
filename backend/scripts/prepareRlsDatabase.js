@@ -79,6 +79,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '144_referral_clicks_y_control.sql',
   '145_puntos_aviso_vencimiento.sql',
   '146_usuarios_huellas_antifraude.sql',
+  '147_usuarios_sin_tenant.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -158,6 +159,7 @@ const MIGRACIONES_ARRANQUE = [
   '144_referral_clicks_y_control.sql',
   '145_puntos_aviso_vencimiento.sql',
   '146_usuarios_huellas_antifraude.sql',
+  '147_usuarios_sin_tenant.sql',
 
   '125_usuario_lookup_sin_contexto.sql',
 

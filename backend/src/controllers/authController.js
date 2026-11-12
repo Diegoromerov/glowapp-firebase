@@ -63,8 +63,15 @@ exports.register = async (req, res) => {
 
     const result = await tenantRouting.runAsSystem({ pool }, (c) =>
       c.query(
-        `INSERT INTO usuarios (nombre, email, password_hash, phone, auth_provider, provider_id, rol, onboarding_completo, ip_hash, device_hash) 
-         VALUES ($1, $2, $3, $4, 'LOCAL', $5, $6, $7, $8, $9) 
+        // tenant_id NO puede quedar NULL: `authMiddleware` sólo fija el contexto de
+        // inquilino cuando el usuario tiene uno, y sin contexto las políticas RLS
+        // de la 068 devuelven 0 filas en toda tabla con tenant_id. Un recién
+        // registrado no podía ni ver un producto en el checkout («Producto no
+        // encontrado»). Se le asigna el inquilino de plataforma, que es la misma
+        // regla que ya usa el INSERT del pedido en createOrder.
+        `INSERT INTO usuarios (nombre, email, password_hash, phone, auth_provider, provider_id, rol, onboarding_completo, ip_hash, device_hash, tenant_id) 
+         VALUES ($1, $2, $3, $4, 'LOCAL', $5, $6, $7, $8, $9,
+                 COALESCE(app_platform_tenant_id(), (SELECT id FROM tenants ORDER BY id LIMIT 1))) 
          RETURNING id, nombre, email, rol, onboarding_completo`,
         [
           full_name,
