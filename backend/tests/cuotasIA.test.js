@@ -77,11 +77,22 @@ describe('lecturasOtorgadas — la cuota cuelga del uso', () => {
     expect(r.otorgadas).toBe(BONO_POR_NIVEL.petalo);
   });
 
-  test('el techo del mes queda acotado: 30 hechos no dan 30 lecturas sin nivel', () => {
+  test('el tope mensual acota los hechos: 30 reservas dan 3 lecturas, no 30', () => {
     const r = lecturasOtorgadas({ reservas: 30, compras: 0, xp: 0, yaUsoBase: true });
-    expect(r.otorgadas).toBe(30);
-    // 30 lecturas HD son $57.600 COP: por eso el tope de hechos se limita arriba,
-    // en el controlador que cuenta reservas y compras del mes.
-    expect(r.otorgadas * COSTO_LECTURA_COP.HD).toBe(57600);
+    expect(r.otorgadas).toBe(3);
+    expect(r.desglose.reservas).toBe(3);
+    expect(r.otorgadas * COSTO_LECTURA_COP.HD).toBe(5760);
+  });
+
+  test('reservas y compras se topan cada una por su lado', () => {
+    const r = lecturasOtorgadas({ reservas: 10, compras: 10, xp: 0, yaUsoBase: true });
+    expect(r.desglose).toEqual({ base: 0, reservas: 3, compras: 3, nivel: 0 });
+    expect(r.otorgadas).toBe(6);
+  });
+
+  test('una usuaria muy activa y Diamante tope a 12 lecturas (\$23.040 COP)', () => {
+    const r = lecturasOtorgadas({ reservas: 9, compras: 9, xp: 5000, yaUsoBase: true });
+    expect(r.otorgadas).toBe(12);
+    expect(r.otorgadas * COSTO_LECTURA_COP.HD).toBe(23040);
   });
 });

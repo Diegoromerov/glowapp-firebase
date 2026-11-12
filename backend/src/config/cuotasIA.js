@@ -27,6 +27,10 @@ const BASE_AL_REGISTRARSE = 1;      // una sola, para que pruebe el producto
 const POR_RESERVA_COMPLETADA = 1;   // la cita se completó, no se canceló
 const POR_COMPRA_PAGADA = 1;        // mismo umbral que el premio de referido
 
+// Tope por concepto y mes. Sin él, 30 reservas darían 30 lecturas = $57.600 COP
+// para una sola usuaria: el uso manda, pero no sin techo.
+const TOPE_POR_CONCEPTO_MES = 3;
+
 // Lo que suma el nivel, una vez al mes (no por hecho).
 const BONO_POR_NIVEL = { glow: 0, petalo: 1, oro: 3, diamante: 6 };
 const NIVELES = [
@@ -57,8 +61,12 @@ function lecturasOtorgadas({ reservas = 0, compras = 0, xp = 0, yaUsoBase = fals
   const nivel = nivelDeXp(xp);
   const desglose = {
     base: yaUsoBase ? 0 : BASE_AL_REGISTRARSE,
-    reservas: Math.max(0, Math.trunc(Number(reservas) || 0)) * POR_RESERVA_COMPLETADA,
-    compras: Math.max(0, Math.trunc(Number(compras) || 0)) * POR_COMPRA_PAGADA,
+    reservas:
+      Math.min(Math.max(0, Math.trunc(Number(reservas) || 0)), TOPE_POR_CONCEPTO_MES) *
+      POR_RESERVA_COMPLETADA,
+    compras:
+      Math.min(Math.max(0, Math.trunc(Number(compras) || 0)), TOPE_POR_CONCEPTO_MES) *
+      POR_COMPRA_PAGADA,
     nivel: BONO_POR_NIVEL[nivel.clave] || 0,
   };
   const otorgadas = Object.values(desglose).reduce((a, b) => a + b, 0);
@@ -77,6 +85,7 @@ module.exports = {
   BASE_AL_REGISTRARSE,
   POR_RESERVA_COMPLETADA,
   POR_COMPRA_PAGADA,
+  TOPE_POR_CONCEPTO_MES,
   BONO_POR_NIVEL,
   NIVELES,
   nivelDeXp,
