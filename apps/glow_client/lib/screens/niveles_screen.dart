@@ -167,7 +167,25 @@ class _NivelesScreenState extends State<NivelesScreen> {
                 _TarjetaIA(nivel: nivel),
                 const SizedBox(height: 13),
                 _TarjetaPuntos(saldo: saldo),
-                const SizedBox(height: 13),
+                const SizedBox(height: 8),
+                Center(
+                  child: TextButton(
+                    onPressed: () =>
+                        Navigator.pushNamed(context, '/programa-puntos'),
+                    child: const Text(
+                      'Cómo funcionan los puntos',
+                      style: TextStyle(
+                        fontFamily: 'Manrope',
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: LuxeColors.gold700,
+                        decoration: TextDecoration.underline,
+                        decorationColor: LuxeColors.gold700,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 5),
                 _Invitar(onTap: () => Navigator.pushNamed(context, '/invite')),
                 const SizedBox(height: 26),
                 const _Encabezado('LO QUE ABRE TU NIVEL'),

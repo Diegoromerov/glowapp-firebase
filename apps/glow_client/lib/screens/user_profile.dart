@@ -11,6 +11,7 @@ import 'biometric_history_screen.dart';
 import 'account_deletion_screen.dart';
 import 'glowstore_orders_screen.dart';
 import 'rewards_xp_screen.dart';
+import 'niveles_screen.dart';
 import 'habeas_data_screen.dart';
 import 'faq_screen.dart';
 class UserProfileScreen extends StatefulWidget {
@@ -204,14 +205,14 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         ),
                         LuxeProfileTile(
                           icon: Icons.card_membership_outlined,
-                          title: 'Beneficios y Puntos de Experiencia (XP)',
-                          subtitle: 'Consulta tus puntos y canjéalos por beneficios',
+                          title: 'Club Glow Luxe · tu nivel y tus puntos',
+                          subtitle: 'Nivel, análisis con IA del mes y saldo para descuentos',
                           showDivider: false,
                           onTap: () {
                             HapticFeedback.lightImpact();
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (_) => const RewardsXpScreen()),
+                              MaterialPageRoute(builder: (_) => const NivelesScreen()),
                             );
                           },
                         ),
