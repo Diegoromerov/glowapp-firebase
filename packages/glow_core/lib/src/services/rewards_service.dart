@@ -104,6 +104,9 @@ class NivelPuntos {
   final int disponibles;
   final int costoLecuraHdCop;
 
+  /// De dónde salió cada lectura: base, reservas, compras, nivel.
+  final Map<String, int> desglose;
+
   const NivelPuntos({
     required this.nivel,
     required this.xp,
@@ -113,6 +116,7 @@ class NivelPuntos {
     this.xpSiguienteNivel,
     this.nivelSiguiente,
     this.costoLecuraHdCop = 1920,
+    this.desglose = const {},
   });
 
   int get restantesParaSiguiente {
@@ -146,6 +150,13 @@ class NivelPuntos {
       costoLecuraHdCop: c['lectura_hd_cop'] is num
           ? (c['lectura_hd_cop'] as num).toInt()
           : 1920,
+      desglose: (l['desglose'] is Map)
+          ? Map<String, int>.from(
+              (l['desglose'] as Map).map(
+                (k, v) => MapEntry('$k', v is num ? v.toInt() : 0),
+              ),
+            )
+          : const {},
     );
   }
 }
