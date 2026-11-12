@@ -88,6 +88,68 @@ class SaldoPuntos {
   }
 }
 
+
+/// Nivel y cuota de análisis con IA (E5).
+///
+/// La cuota cuelga del uso: se gana con reservas completadas y compras pagadas.
+/// El nivel sólo suma su bono. Se muestra tal cual lo devuelve el backend, sin
+/// recalcular reglas en el cliente: si cambian los montos, cambian en un sitio.
+class NivelPuntos {
+  final String nivel;
+  final int xp;
+  final int? xpSiguienteNivel;
+  final String? nivelSiguiente;
+  final int otorgadas;
+  final int usadas;
+  final int disponibles;
+  final int costoLecuraHdCop;
+
+  const NivelPuntos({
+    required this.nivel,
+    required this.xp,
+    required this.otorgadas,
+    required this.usadas,
+    required this.disponibles,
+    this.xpSiguienteNivel,
+    this.nivelSiguiente,
+    this.costoLecuraHdCop = 1920,
+  });
+
+  int get restantesParaSiguiente {
+    final meta = xpSiguienteNivel;
+    if (meta == null) return 0;
+    final falta = meta - xp;
+    return falta > 0 ? falta : 0;
+  }
+
+  bool get esNivelMaximo => xpSiguienteNivel == null;
+
+  factory NivelPuntos.desdeJson(Map<String, dynamic> j) {
+    final l = j['lecturas'] is Map
+        ? Map<String, dynamic>.from(j['lecturas'] as Map)
+        : <String, dynamic>{};
+    final c = j['costos'] is Map
+        ? Map<String, dynamic>.from(j['costos'] as Map)
+        : <String, dynamic>{};
+    int ent(dynamic v) => v is num ? v.toInt() : 0;
+    return NivelPuntos(
+      nivel: (j['nivel'] ?? 'Glow').toString(),
+      xp: ent(j['xp']),
+      xpSiguienteNivel: j['xp_siguiente_nivel'] is num
+          ? (j['xp_siguiente_nivel'] as num).toInt()
+          : null,
+      nivelSiguiente:
+          j['nivel_siguiente'] == null ? null : j['nivel_siguiente'].toString(),
+      otorgadas: ent(l['otorgadas']),
+      usadas: ent(l['usadas']),
+      disponibles: ent(l['disponibles']),
+      costoLecuraHdCop: c['lectura_hd_cop'] is num
+          ? (c['lectura_hd_cop'] as num).toInt()
+          : 1920,
+    );
+  }
+}
+
 class RewardsService {
   RewardsService._();
 
@@ -101,6 +163,20 @@ class RewardsService {
       return null;
     } catch (e) {
       debugPrint('⚠️ No se pudo leer el saldo de puntos: $e');
+      return null;
+    }
+  }
+
+  /// Nivel y lecturas disponibles. Igual que el saldo: si el backend no
+  /// responde, la pantalla sigue sin el bloque de nivel.
+  static Future<NivelPuntos?> obtenerNivel() async {
+    try {
+      final res = await ApiService.get('/api/rewards/nivel');
+      if (res is Map<String, dynamic>) return NivelPuntos.desdeJson(res);
+      if (res is Map) return NivelPuntos.desdeJson(Map<String, dynamic>.from(res));
+      return null;
+    } catch (e) {
+      debugPrint('⚠️ No se pudo leer el nivel: $e');
       return null;
     }
   }
