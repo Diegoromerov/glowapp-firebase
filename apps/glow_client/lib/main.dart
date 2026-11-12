@@ -277,7 +277,19 @@ class GlowClientApp extends ConsumerWidget {
         '/ideas/capture': (_) => const CaptureScreen(),
       },
       onGenerateRoute: (settings) {
-        switch (settings.name) {
+        // La query no forma parte de la ruta. El enlace de invitación llega
+        // como `#/register?ref=GLOW927E`, y ese `?ref=` hacía que ningún `case`
+        // coincidiera: caía en `default`, que devolvía null, y el Navigator
+        // lanzaba «Null check operator used on a null value» dejando la
+        // pantalla en blanco. De ahí venía también que el enlace nunca abriera
+        // el formulario de registro.
+        final nombre = (settings.name ?? '').split('?').first;
+        switch (nombre) {
+          case '/register':
+            return MaterialPageRoute(
+              builder: (_) => const RegisterScreen(),
+              settings: settings,
+            );
           case '/chat/detail':
             final args = settings.arguments as Map<String, dynamic>?;
             return MaterialPageRoute(
@@ -387,7 +399,14 @@ class GlowClientApp extends ConsumerWidget {
               ),
             );
           default:
-            return null;
+            // Antes: `return null`, que hace que el Navigator lance y la app
+            // quede en blanco con cualquier ruta no listada. Una ruta
+            // desconocida ahora cae en el inicio, que es preferible a no ver
+            // nada.
+            return MaterialPageRoute(
+              builder: (_) => const ProvidersScreen(),
+              settings: settings,
+            );
         }
       },
     );
