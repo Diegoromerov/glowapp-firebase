@@ -155,6 +155,20 @@ void main() async {
   );
 }
 
+/// Ruta con la que debe abrir la app.
+///
+/// Prioriza lo que venga en la URL —el `#/register?ref=...` de una invitación o
+/// el `/provider-detail/3` de una ficha compartida— y cae en `/home` cuando no
+/// hay ninguna, que es el modo exploración normal.
+String rutaDeArranque([Uri? url]) {
+  final base = url ?? Uri.base;
+  final fragmento = base.fragment.trim();
+  if (fragmento.startsWith('/')) return fragmento;
+  final ruta = base.path.trim();
+  if (ruta.startsWith('/') && ruta.length > 1) return ruta;
+  return '/home';
+}
+
 class GlowClientApp extends ConsumerWidget {
   const GlowClientApp({super.key});
 
@@ -219,7 +233,10 @@ class GlowClientApp extends ConsumerWidget {
       // La app abre en modo exploración: el catálogo, el mapa y el detalle de
       // cada prestador se ven sin cuenta. La identificación se pide en la
       // acción concreta (reservar, comprar, Glow IA+) vía AuthGate, no al entrar.
-      initialRoute: '/home',
+      // El enlace de invitación llega como `#/register?ref=CODIGO`. Con
+      // `/home` fijo, el arranque reescribía la URL y la invitada aterrizaba en
+      // el mapa: se perdía el registro aunque el código siguiera en memoria.
+      initialRoute: rutaDeArranque(),
       routes: <String, WidgetBuilder>{
         // Auth
         // Las cuatro pantallas de acceso van SIEMPRE claras: su hero y sus
