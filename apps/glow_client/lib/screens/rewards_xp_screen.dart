@@ -416,7 +416,9 @@ class _TarjetaNivelRealState extends State<_TarjetaNivelReal> {
                       Text(
                         cargando
                             ? 'Cargando tu nivel…'
-                            : 'Nivel: ${n?.nivel ?? '—'}',
+                            : (n == null
+                                ? 'Toca para ver tu nivel'
+                                : 'Nivel: ${n.nivel}'),
                         style: const TextStyle(
                           fontFamily: 'CormorantGaramond',
                           fontSize: 13,

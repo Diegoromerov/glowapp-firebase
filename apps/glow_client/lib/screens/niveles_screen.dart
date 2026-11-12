@@ -95,9 +95,13 @@ class _NivelesScreenState extends State<NivelesScreen> {
   }
 
   void _cargar() {
+    // Plazo máximo por petición. Sin él, una llamada que no resuelve —por
+    // ejemplo sin sesión, donde el cliente HTTP se queda esperando— deja la
+    // pantalla girando para siempre en vez de mostrar el reintento.
+    const plazo = Duration(seconds: 8);
     _datos = Future.wait<Object?>([
-      RewardsService.obtenerNivel(),
-      RewardsService.obtenerSaldo(),
+      RewardsService.obtenerNivel().timeout(plazo, onTimeout: () => null),
+      RewardsService.obtenerSaldo().timeout(plazo, onTimeout: () => null),
     ]).then((r) => (
           r[0] as NivelPuntos?,
           r[1] as SaldoPuntos?,
