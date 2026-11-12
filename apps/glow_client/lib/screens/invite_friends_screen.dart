@@ -1,6 +1,6 @@
 // Invitar amigas: el programa de referidos que ya existía en el backend
 // (`GET /api/auth/referral-info` devuelve código, enlace y mensaje con el crédito
-// de $10.000 COP) y que no tenía ninguna entrada en la app.
+// de $5.000 COP en puntos) y que no tenía ninguna entrada en la app.
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -136,7 +136,7 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         const Icon(Icons.card_giftcard, size: 44, color: Color(0xFFC5A052)),
         const SizedBox(height: 16),
         Text(
-          'Regala \$10.000 COP en el primer servicio',
+          '\$5.000 COP en puntos para tus productos',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'CormorantGaramond',
@@ -147,8 +147,8 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         ),
         const SizedBox(height: 8),
         Text(
-          'Comparte tu código. Cuando tu invitada completa su primera reserva, '
-          'la invitación queda registrada a tu nombre.',
+          'Comparte tu código. Los puntos se acreditan cuando tu invitada hace '
+          'su primera compra de productos, y se canjean como descuento.',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 13, height: 1.4, color: t.textSecondary),
         ),

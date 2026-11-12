@@ -55,4 +55,19 @@ void main() {
     expect(recompensas.readAsStringSync(), contains("'/invite'"),
         reason: 'un programa sin entrada no existe para el usuario');
   });
+
+  test('el premio son \$5.000 en puntos, no \$10.000 ni Wompi', () {
+    for (final archivo in [
+      File('lib/screens/invite_friends_screen.dart'),
+      File('lib/screens/rewards_xp_screen.dart'),
+    ]) {
+      final src = archivo.readAsStringSync();
+      expect(src, isNot(contains('10.000')),
+          reason: 'el monto cambió a \$5.000 por decisión del Director');
+      expect(src, contains('5.000'), reason: 'el monto vigente es \$5.000');
+    }
+    final invita = File('lib/screens/invite_friends_screen.dart').readAsStringSync();
+    expect(invita, contains('puntos'),
+        reason: 'el premio es un fondo de puntos, no saldo en la pasarela');
+  });
 }

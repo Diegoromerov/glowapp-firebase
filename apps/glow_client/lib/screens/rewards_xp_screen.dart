@@ -45,7 +45,7 @@ class RewardsXpScreen extends StatelessWidget {
                   onPressed: () => Navigator.pushNamed(context, '/invite'),
                   icon: const Icon(Icons.card_giftcard, size: 18, color: Color(0xFF8A6A2F)),
                   label: const Text(
-                    'Invitar amigas · \$10.000 COP de regalo',
+                    'Invitar amigas · \$5.000 COP en puntos',
                     style: TextStyle(
                       fontFamily: 'CormorantGaramond',
                       fontSize: 14,
