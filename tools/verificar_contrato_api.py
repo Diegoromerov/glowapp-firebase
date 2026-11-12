@@ -37,6 +37,10 @@ ROUTE_MOUNTS = {
     'vtoRoutes.js': '/api/vto',
     'colorRoutes.js': '/api/color',
     'academyRoutes.js': '/api/academy',
+    # Alta en E5: el mapa no las tenía y el verificador reportaba como «faltantes»
+    # rutas que sí existen. `/r/:codigo` se monta fuera de /api a propósito.
+    'rewardsRoutes.js': '/api/rewards',
+    'referralLinkRoutes.js': '/r',
     'adminAuthRoutes.js': '/api/admin/auth',
     'academyAdminRoutes.js': '/api/admin/academy',
     'adminPreciosRoutes.js': '/api/admin',

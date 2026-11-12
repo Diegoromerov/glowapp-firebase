@@ -120,4 +120,37 @@ async function registrarConsumo({
   return { registrado: Boolean(r && r.rowCount > 0), costoCop: costo };
 }
 
-module.exports = { hechosDelMes, estadoDelMes, registrarConsumo, TIPO_ANALISIS };
+/**
+ * Lanza si la usuaria no tiene lecturas disponibles.
+ *
+ * Va en el orquestador, NO antes: un análisis servido desde caché no gasta
+ * lectura y debe seguir funcionando aunque la cuota esté en cero. Bloquear en el
+ * middleware habría castigado justo a quien repite la misma foto.
+ *
+ * 402 y no 429: no es abuso, es un recurso que se agota y se renueva solo.
+ */
+function exigirDisponibles(estado) {
+  const disponibles = estado && estado.lecturas ? estado.lecturas.disponibles : 0;
+  if (disponibles > 0) return;
+
+  const error = new Error(
+    'Ya usaste tus análisis con IA de este mes. Se renuevan el primer día del mes siguiente.'
+  );
+  error.code = 'CUOTA_AGOTADA';
+  error.statusCode = 402;
+  error.details = {
+    nivel: estado ? estado.nivel : null,
+    otorgadas: estado && estado.lecturas ? estado.lecturas.otorgadas : 0,
+    usadas: estado && estado.lecturas ? estado.lecturas.usadas : 0,
+    desglose: estado && estado.lecturas ? estado.lecturas.desglose : null,
+  };
+  throw error;
+}
+
+module.exports = {
+  hechosDelMes,
+  estadoDelMes,
+  registrarConsumo,
+  exigirDisponibles,
+  TIPO_ANALISIS,
+};

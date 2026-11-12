@@ -60,6 +60,14 @@ class BiometricOrchestrator {
     const fingerprint = await imageHashService.fingerprint(normalizedFace);
     const reusable = await scanSessionService.findReusableScan({ userId: parsedUserId, fingerprint });
 
+    // E5: la cuota se cobra por análisis NUEVO. Si la foto es reutilizable no
+    // se gasta lectura, así que no se bloquea: se responde desde caché.
+    if (!reusable) {
+      cuotasService.exigirDisponibles(
+        await cuotasService.estadoDelMes({ userId: parsedUserId })
+      );
+    }
+
     if (reusable) {
       logger.info('Análisis facial reutilizado: misma foto dentro de la ventana', {
         userId: parsedUserId,
