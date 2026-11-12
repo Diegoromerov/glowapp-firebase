@@ -18,6 +18,7 @@ class InviteFriendsScreen extends StatefulWidget {
 class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
   bool _cargando = true;
   String? _error;
+  bool _errorEsSesion = false;
   String? _codigo;
   String? _mensaje;
   String? _enlace;
@@ -51,6 +52,9 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
       if (!mounted) return;
       setState(() {
         _error = mensajeHumano(e);
+        // Con la sesión caída, «Reintentar» no puede funcionar: la pantalla
+        // ofrece iniciar sesión en vez de un botón que falla en bucle.
+        _errorEsSesion = esErrorDeSesion(e);
         _cargando = false;
       });
     }
@@ -124,11 +128,21 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.cloud_off, color: t.textSecondary, size: 36),
+          Icon(
+            _errorEsSesion ? Icons.lock_outline : Icons.cloud_off,
+            color: t.textSecondary,
+            size: 36,
+          ),
           const SizedBox(height: 12),
           Text(_error!, textAlign: TextAlign.center, style: TextStyle(color: t.textSecondary)),
           const SizedBox(height: 16),
-          OutlinedButton(onPressed: _cargar, child: const Text('Reintentar')),
+          if (_errorEsSesion)
+            FilledButton(
+              onPressed: () => Navigator.of(context).pushNamed('/auth/login'),
+              child: const Text('Iniciar sesión'),
+            )
+          else
+            OutlinedButton(onPressed: _cargar, child: const Text('Reintentar')),
         ],
       );
     }
@@ -140,7 +154,7 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         const Icon(Icons.card_giftcard, size: 44, color: Color(0xFFC5A052)),
         const SizedBox(height: 16),
         Text(
-          'Gana \$5.000 COP por cada amiga que compre',
+          'Gana 500 puntos (hasta \$5.000) por cada amiga que compre',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'CormorantGaramond',
@@ -152,8 +166,9 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         const SizedBox(height: 8),
         Text(
           'Comparte tu código. Cuando tu invitada hace su primera compra de '
-          'productos sumas 500 puntos para descuentos. Ella también puede invitar '
-          'a las suyas: tu red crece contigo.',
+          'productos sumas 500 puntos, que valen hasta \$5.000 en descuentos y '
+          'se van usando en varias compras. Ella también puede invitar a las '
+          'suyas: tu red crece contigo.',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 13, height: 1.4, color: t.textSecondary),
         ),

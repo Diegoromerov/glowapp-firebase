@@ -52,6 +52,20 @@ String _mensajePorEstado(int status) {
   return status >= 500 ? 'Error del servidor' : 'Error';
 }
 
+/// ¿El error es de sesión (token vencido, sin token, 401)?
+///
+/// Se usa para no ofrecer «Reintentar» cuando reintentar no puede funcionar: con
+/// la sesión caída el reintento falla igual y la pantalla se queda en un bucle
+/// que parece un fallo de la app. En ese caso lo correcto es mandar a iniciar
+/// sesión.
+bool esErrorDeSesion(Object error) {
+  final texto = error.toString();
+  return texto.contains('401') ||
+      texto.contains('UNAUTHORIZED') ||
+      texto.contains('Unauthorized') ||
+      texto.contains('sesión');
+}
+
 /// Convierte un error de red o de excepción en algo que el usuario pueda leer.
 ///
 /// La app mostraba `$e` completo ("Exception: SocketException: Failed host
@@ -59,6 +73,10 @@ String _mensajePorEstado(int status) {
 /// una acción implícita.
 String mensajeHumano(Object error) {
   final texto = error.toString();
+
+  if (esErrorDeSesion(error)) {
+    return 'Tu sesión venció. Vuelve a iniciar sesión.';
+  }
 
   if (texto.contains('SocketException') ||
       texto.contains('ClientException') ||
@@ -69,12 +87,6 @@ String mensajeHumano(Object error) {
   }
   if (texto.contains('TimeoutException') || texto.contains('timed out')) {
     return 'La conexión está muy lenta. Inténtalo otra vez.';
-  }
-  if (texto.contains('401') ||
-      texto.contains('UNAUTHORIZED') ||
-      texto.contains('Unauthorized') ||
-      texto.contains('sesión')) {
-    return 'Tu sesión venció. Vuelve a iniciar sesión.';
   }
   if (texto.contains('500') || texto.contains('502') || texto.contains('503')) {
     return 'Algo falló de nuestro lado. Estamos en ello: prueba en un momento.';

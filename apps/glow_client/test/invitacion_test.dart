@@ -86,4 +86,39 @@ void main() {
           reason: 'ese texto prometía el premio a quien recibe la invitación');
     }
   });
+
+  group('R-21: el premio se promete en puntos, nunca como una compra', () {
+    test('la pantalla promete 500 puntos y dice que son hasta \$5.000', () {
+      final src = File('lib/screens/invite_friends_screen.dart').readAsStringSync();
+      expect(src, contains('500 puntos'),
+          reason: 'el crédito se promete como valor en puntos');
+      expect(src, contains(r'hasta \$5.000'),
+          reason: 'el tope del 15% por pedido hace que \$5.000 no quepan de una vez');
+      expect(src, isNot(contains(r"'Gana \$5.000 COP")),
+          reason: 'prometer \$5.000 pelados es una promesa que la mecánica no cumple');
+    });
+
+    test('la entrada de Recompensas habla en puntos, no en pesos', () {
+      final src = File('lib/screens/rewards_xp_screen.dart').readAsStringSync();
+      expect(src, contains('500 puntos (hasta'));
+      expect(src, isNot(contains("Invitar amigas · \$5.000 COP en puntos")));
+    });
+  });
+
+  group('sesión caída en Invitar amigas', () {
+    test('esErrorDeSesion reconoce un 401 y no confunde una caída de red', () {
+      expect(esErrorDeSesion(Exception('Error 401')), isTrue);
+      expect(esErrorDeSesion(Exception('UNAUTHORIZED')), isTrue);
+      expect(esErrorDeSesion(Exception('SocketException: Failed host lookup')), isFalse);
+      expect(esErrorDeSesion(Exception('Error 500')), isFalse);
+    });
+
+    test('con la sesión caída la pantalla manda a iniciar sesión, no a reintentar', () {
+      final src = File('lib/screens/invite_friends_screen.dart').readAsStringSync();
+      expect(src, contains('_errorEsSesion = esErrorDeSesion(e)'),
+          reason: 'hay que distinguir sesión de red para no ofrecer el botón que falla');
+      expect(src, contains("pushNamed('/auth/login')"),
+          reason: 'el visitante sin sesión necesita una salida, no un bucle');
+    });
+  });
 }
