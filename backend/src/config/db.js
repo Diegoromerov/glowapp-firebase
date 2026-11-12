@@ -684,6 +684,16 @@ function pasarAMemoria(err) {
   console.warn(`⚠️ [DB] Sin enlace con PostgreSQL (${err?.code || 'sin código'}: ${err?.message}) — se sirve memoria local.`);
 }
 
+// Un cliente OCIOSO dentro de una transacción puede ser terminado por Postgres
+// (`idle_in_transaction_session_timeout`, SQLSTATE 25P03). El cliente emite
+// 'error' y, sin listener, Node mata el proceso: el backend se cayó y reinició
+// el 2026-11-12 a las 17:28:03 por esto. Se registra y se sigue sirviendo; el
+// pool descarta esa conexión sola.
+rawPool.on('error', (err) => {
+  const code = err && err.code ? err.code : 'sin-código';
+  console.error(`⚠️ [DB] Conexión del pool descartada (${code}): ${err && err.message}`);
+});
+
 const pool = {
   query: async (text, params) => {
     // Si la petición tiene una conexión dedicada (y por tanto su app.tenant_id
