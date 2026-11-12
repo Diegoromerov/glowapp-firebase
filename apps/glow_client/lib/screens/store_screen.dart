@@ -30,6 +30,99 @@ class _StoreScreenState extends State<StoreScreen> {
   final Map<int, Map<String, dynamic>> _cart = {};
   bool _isCartOpen = false;
 
+  // Fondo de puntos canjeable (migración 142). `null` mientras carga o si el
+  // backend no responde: en ese caso el checkout funciona igual, sin el bloque.
+  SaldoPuntos? _saldoPuntos;
+  bool _usarPuntos = false;
+
+  Future<void> _cargarSaldoPuntos() async {
+    final saldo = await RewardsService.obtenerSaldo();
+    if (!mounted) return;
+    setState(() => _saldoPuntos = saldo);
+  }
+
+  /// Productos del carrito con IVA incluido: es la base contra la que se mide el
+  /// tope del canje, igual que en el backend.
+  double get _productosConIva => _getCartSubtotal() * 1.19;
+
+  /// Puntos que caben en este carrito. Es una previsualización: el número que se
+  /// cobra lo calcula y lo devuelve el servidor al crear el pedido.
+  int get _puntosParaElCarrito {
+    final saldo = _saldoPuntos;
+    if (!_usarPuntos || saldo == null || _cart.isEmpty) return 0;
+    return saldo.puntosAplicablesEn(_productosConIva.round());
+  }
+
+  int get _descuentoPuntos {
+    final saldo = _saldoPuntos;
+    if (saldo == null) return 0;
+    return saldo.pesosDe(_puntosParaElCarrito);
+  }
+
+  /// Selector de canje del carrito. Sólo aparece cuando hay saldo y el pedido
+  /// califica; el switch decide si se envía `puntos_a_canjear` al crear el pedido.
+  Widget _buildBloquePuntos() {
+    final saldo = _saldoPuntos!;
+    final productos = _productosConIva.round();
+    final aplicables = saldo.puntosAplicablesEn(productos);
+    final alcanzaElMinimo = productos >= saldo.minimoPedido;
+
+    final String detalle;
+    if (!alcanzaElMinimo) {
+      detalle = 'Con ${_formatCOP(saldo.minimoPedido.toDouble())} o más en productos '
+          'puedes usar hasta el ${saldo.topePorcentaje}%.';
+    } else if (aplicables == 0) {
+      detalle = 'Este pedido no admite puntos: el tope del ${saldo.topePorcentaje}% '
+          'no deja aplicar ni ${saldo.bloqueCanje}.';
+    } else if (_usarPuntos) {
+      detalle = 'Se aplican $aplicables puntos '
+          '(−${_formatCOP(saldo.pesosDe(aplicables).toDouble())}) en este pedido.';
+    } else {
+      detalle = 'Puedes aplicar hasta $aplicables puntos en este pedido.';
+    }
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFBF7EF),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: const Color(0xFFE8D9BC)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.card_giftcard, size: 18, color: Color(0xFFAA7C11)),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Tienes ${saldo.saldo} puntos = ${_formatCOP(saldo.enPesos.toDouble())}',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: AppTheme.text,
+                  ),
+                ),
+              ),
+              Switch(
+                value: _usarPuntos,
+                onChanged: aplicables == 0
+                    ? null
+                    : (valor) => setState(() => _usarPuntos = valor),
+              ),
+            ],
+          ),
+          Text(
+            detalle,
+            style: const TextStyle(fontSize: 12, height: 1.3, color: Color(0xFF6B5A48)),
+          ),
+        ],
+      ),
+    );
+  }
+
   List<String> get _categories {
     if (AudienceService.isMenMode) {
       return ['Todos', 'Barba & Bigote', 'Corte & Capilar', 'Grooming', 'Skincare Masculino', 'Tratamientos'];
@@ -48,6 +141,7 @@ class _StoreScreenState extends State<StoreScreen> {
   void initState() {
     super.initState();
     _fetchProducts();
+    _cargarSaldoPuntos();
     _searchController.addListener(_filterProducts);
     AudienceService.currentAudience.addListener(_filterProducts);
   }
@@ -699,6 +793,14 @@ class _StoreScreenState extends State<StoreScreen> {
                                   };
                                 }
 
+                                // Canje de puntos: la previsualización es local, pero
+                                // el descuento real lo calcula el servidor dentro de
+                                // la transacción del pedido y es el que se cobra.
+                                final puntosAplicar = _puntosParaElCarrito;
+                                if (puntosAplicar > 0) {
+                                  checkoutData['puntos_a_canjear'] = puntosAplicar;
+                                }
+
                                 // 1. Crear el pedido primero (POST /api/store/checkout)
                                 // El messenger se captura ANTES del primer await: usarlo
                                 // despues es "BuildContext across async gaps", y si la
@@ -910,11 +1012,22 @@ class _StoreScreenState extends State<StoreScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                  if (_saldoPuntos != null && _saldoPuntos!.tieneSaldo && _cart.isNotEmpty) ...[
+                    _buildBloquePuntos(),
+                    const SizedBox(height: 16),
+                  ],
                   const Divider(),
                   const SizedBox(height: 10),
                   _buildSummaryRow('Subtotal', _formatCOP(subtotal)),
                   const SizedBox(height: 6),
                   _buildSummaryRow('IVA (19%)', _formatCOP(iva)),
+                  if (_descuentoPuntos > 0) ...[
+                    const SizedBox(height: 6),
+                    _buildSummaryRow(
+                      'Puntos aplicados',
+                      '−${_formatCOP(_descuentoPuntos.toDouble())}',
+                    ),
+                  ],
                   const SizedBox(height: 10),
                   const Divider(),
                   const SizedBox(height: 10),
@@ -930,7 +1043,7 @@ class _StoreScreenState extends State<StoreScreen> {
                         ),
                       ),
                       Text(
-                        _formatCOP(total),
+                        _formatCOP(total - _descuentoPuntos),
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,

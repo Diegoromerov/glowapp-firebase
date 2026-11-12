@@ -63,6 +63,13 @@ class RewardsXpScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
+              // Saldo real del fondo de puntos (migración 142). La tarjeta VIP de
+              // abajo sigue siendo decorativa: los puntos de dinero se muestran
+              // aquí, separados y con su equivalencia en pesos, para que nadie
+              // intente gastar el XP de nivel.
+              const _TarjetaPuntosCanjeables(),
+              const SizedBox(height: 16),
+
               // TARJETA DORADA DE MEMBRESÍA VIP
               Container(
                 width: double.infinity,
@@ -245,5 +252,123 @@ class RewardsXpScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+/// Saldo del fondo de puntos canjeable, separado del XP de nivel.
+///
+/// El XP no vale pesos y los puntos sí: mezclarlos en una sola cifra hace que la
+/// usuaria intente gastar nivel y se decepcione. El número viene del backend
+/// (`GET /api/rewards/points`), que ya excluye lo vencido y lo comprometido.
+class _TarjetaPuntosCanjeables extends StatelessWidget {
+  const _TarjetaPuntosCanjeables();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<SaldoPuntos?>(
+      future: RewardsService.obtenerSaldo(),
+      builder: (context, snapshot) {
+        final cargando = snapshot.connectionState == ConnectionState.waiting;
+        final saldo = snapshot.data;
+
+        return Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: const Color(0xFFE8E0D5)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'PUNTOS PARA DESCUENTOS',
+                style: TextStyle(
+                  fontFamily: 'JetBrainsMono',
+                  fontSize: 9,
+                  letterSpacing: 1.2,
+                  color: LuxeColors.nude600,
+                ),
+              ),
+              const SizedBox(height: 8),
+              if (cargando)
+                const SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              if (!cargando && saldo == null)
+                const Text(
+                  'No pudimos leer tu saldo ahora mismo.',
+                  style: TextStyle(
+                    fontFamily: 'CormorantGaramond',
+                    fontSize: 13,
+                    color: LuxeColors.nude600,
+                  ),
+                ),
+              if (saldo != null) ...[
+                Text(
+                  '${saldo.saldo} puntos = \$${_miles(saldo.enPesos)}',
+                  style: const TextStyle(
+                    fontFamily: 'Didot',
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: LuxeColors.nude900,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  saldo.tieneSaldo
+                      ? 'Se aplican como descuento en GlowShop, hasta el '
+                          '${saldo.topePorcentaje}% del valor de los productos '
+                          'en un pedido de \$${_miles(saldo.minimoPedido)} o más.'
+                      : 'Junta al menos ${saldo.bloqueCanje} puntos para empezar a usarlos.',
+                  style: const TextStyle(
+                    fontFamily: 'CormorantGaramond',
+                    fontSize: 13,
+                    height: 1.3,
+                    color: LuxeColors.nude600,
+                  ),
+                ),
+                if (saldo.enEspera > 0) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    '${saldo.enEspera} puntos están en espera de un pedido sin pagar. '
+                    'Si no se paga, vuelven solos.',
+                    style: const TextStyle(
+                      fontFamily: 'CormorantGaramond',
+                      fontSize: 12,
+                      color: LuxeColors.nude600,
+                    ),
+                  ),
+                ],
+                if (saldo.porVencer.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    'Tienes ${saldo.porVencer.first.puntos} puntos que vencen pronto.',
+                    style: const TextStyle(
+                      fontFamily: 'CormorantGaramond',
+                      fontSize: 12,
+                      color: Color(0xFFAA7C11),
+                    ),
+                  ),
+                ],
+              ],
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  static String _miles(int valor) {
+    final texto = valor.toString();
+    final buffer = StringBuffer();
+    for (var i = 0; i < texto.length; i++) {
+      if (i > 0 && (texto.length - i) % 3 == 0) buffer.write('.');
+      buffer.write(texto[i]);
+    }
+    return buffer.toString();
   }
 }
