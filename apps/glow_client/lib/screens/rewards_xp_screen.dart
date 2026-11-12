@@ -70,97 +70,13 @@ class RewardsXpScreen extends StatelessWidget {
               const _TarjetaPuntosCanjeables(),
               const SizedBox(height: 16),
 
-              // TARJETA DORADA DE MEMBRESÍA VIP
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(LuxeSpacing.xl),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFFD4AF37), Color(0xFFAA7C11)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(18),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFFAA7C11).withValues(alpha: 0.3),
-                      blurRadius: 16,
-                      offset: const Offset(0, 6),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'SOCIO CLUB GLOW LUXE',
-                          style: TextStyle(
-                            fontFamily: 'Didot',
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            letterSpacing: 1.5,
-                          ),
-                        ),
-                        Icon(Icons.workspace_premium, color: Colors.white, size: 24),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    const Text(
-                      '350 XP',
-                      style: TextStyle(
-                        fontFamily: 'Didot',
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    const Text(
-                      'PUNTOS DE EXPERIENCIA ACUMULADOS',
-                      style: TextStyle(
-                        fontFamily: 'JetBrainsMono',
-                        fontSize: 9,
-                        color: Colors.white70,
-                        letterSpacing: 1.0,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    // BARRA DE PROGRESO AL SIGUIENTE NIVEL
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Nivel Actual: Gold',
-                              style: TextStyle(fontFamily: 'CormorantGaramond', fontSize: 13, color: Colors.white),
-                            ),
-                            Text(
-                              'Siguiente: Élite Diamond (500 XP)',
-                              style: TextStyle(fontFamily: 'CormorantGaramond', fontSize: 13, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 6),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: const LinearProgressIndicator(
-                            value: 350 / 500,
-                            minHeight: 6,
-                            backgroundColor: Colors.white24,
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              // Tarjeta del club con datos REALES (E5).
+              //
+              // La versión anterior mostraba «350 XP · Nivel Gold · Siguiente:
+              // Élite Diamond (500 XP)» como tres `const`: todo el mundo veía lo
+              // mismo, tuviera 0 o 3.000 XP. Ahora lee GET /api/rewards/nivel y
+              // abre la pantalla completa del club.
+              const _TarjetaNivelReal(),
 
               const SizedBox(height: LuxeSpacing.xxl),
 
@@ -176,20 +92,24 @@ class RewardsXpScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
+              // Los tres beneficios que había eran inventados y dos contradecían
+              // el programa: «15 % OFF canjeando XP» (el XP no se canjea, no es
+              // dinero) y «diagnóstico ilimitado» (hay una cuota mensual por
+              // diseño). Estos son los aprobados, y sí existen.
               _buildBenefitTile(
-                icon: Icons.card_giftcard,
-                title: '15% OFF en GlowStore',
-                subtitle: 'Canjea 200 XP en tu próxima compra de skincare',
-              ),
-              _buildBenefitTile(
-                icon: Icons.star_outline,
-                title: 'Atención Prioritaria Concierge',
-                subtitle: 'Acceso directo con agentes de belleza VIP',
+                icon: Icons.bolt_outlined,
+                title: 'XP ×2 un día al mes',
+                subtitle: 'Desde el nivel Pétalo: eliges el día',
               ),
               _buildBenefitTile(
                 icon: Icons.auto_awesome_outlined,
-                title: 'Diagnóstico Facial Aura Ilimitado',
-                subtitle: 'Escaneos biométricos 3D sin costo adicional',
+                title: 'Análisis con IA extra cada mes',
+                subtitle: 'Una lectura adicional por nivel, sin costo',
+              ),
+              _buildBenefitTile(
+                icon: Icons.event_available_outlined,
+                title: 'Reservas con 24 h de prioridad',
+                subtitle: 'Desde Gold: tu agenda antes que el resto',
               ),
             ],
           ),
@@ -388,5 +308,139 @@ class _TarjetaPuntosCanjeables extends StatelessWidget {
       buffer.write(texto[i]);
     }
     return buffer.toString();
+  }
+}
+
+
+/// Tarjeta del club en Recompensas, con datos reales y acceso a /niveles.
+///
+/// Si el backend no responde muestra la tarjeta sin cifras y el acceso igual:
+/// esconder la entrada por un fallo de red sería peor que no mostrar el XP.
+class _TarjetaNivelReal extends StatefulWidget {
+  const _TarjetaNivelReal();
+
+  @override
+  State<_TarjetaNivelReal> createState() => _TarjetaNivelRealState();
+}
+
+class _TarjetaNivelRealState extends State<_TarjetaNivelReal> {
+  late final Future<NivelPuntos?> _futuro = RewardsService.obtenerNivel();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<NivelPuntos?>(
+      future: _futuro,
+      builder: (context, snap) {
+        final n = snap.data;
+        final cargando = snap.connectionState != ConnectionState.done;
+        final avance = n == null
+            ? 0.0
+            : (n.esNivelMaximo ? 1.0 : (n.xp / (n.xpSiguienteNivel ?? 1)).clamp(0.0, 1.0));
+
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () => Navigator.pushNamed(context, '/niveles'),
+            borderRadius: BorderRadius.circular(18),
+            child: Ink(
+              width: double.infinity,
+              padding: const EdgeInsets.all(LuxeSpacing.xl),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFD4AF37), Color(0xFFAA7C11)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(18),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFFAA7C11).withValues(alpha: 0.3),
+                    blurRadius: 16,
+                    offset: const Offset(0, 6),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'SOCIO CLUB GLOW LUXE',
+                        style: TextStyle(
+                          fontFamily: 'JetBrainsMono',
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: 1.6,
+                        ),
+                      ),
+                      const Icon(Icons.workspace_premium, color: Colors.white, size: 22),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    cargando ? '—' : '${n?.xp ?? 0} XP',
+                    style: const TextStyle(
+                      fontFamily: 'Didot',
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'PUNTOS DE EXPERIENCIA ACUMULADOS',
+                    style: TextStyle(
+                      fontFamily: 'JetBrainsMono',
+                      fontSize: 9,
+                      color: Colors.white70,
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: LinearProgressIndicator(
+                      value: avance,
+                      minHeight: 6,
+                      backgroundColor: Colors.white24,
+                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        cargando
+                            ? 'Cargando tu nivel…'
+                            : 'Nivel: ${n?.nivel ?? '—'}',
+                        style: const TextStyle(
+                          fontFamily: 'CormorantGaramond',
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        (n == null || n.esNivelMaximo)
+                            ? 'Ver mi nivel ›'
+                            : 'Siguiente: ${n.nivelSiguiente} (${n.xpSiguienteNivel} XP) ›',
+                        style: const TextStyle(
+                          fontFamily: 'CormorantGaramond',
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
