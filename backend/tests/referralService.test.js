@@ -62,7 +62,7 @@ describe('acreditarCompraReferida', () => {
     expect(pool.query).toHaveBeenCalledTimes(1);
   });
 
-  test('la compra del invitado acredita 500 puntos a su fondo', async () => {
+  test('la compra del invitado acredita 500 puntos al referente', async () => {
     const pool = {
       query: jest
         .fn()
@@ -81,11 +81,11 @@ describe('acreditarCompraReferida', () => {
     expect(convSql).toMatch(/ON CONFLICT \(invitee_user_id\) DO NOTHING/);
     expect(convParams).toEqual([7, 9, 'o-1', 500]);
 
-    // Los puntos van al invitado (a quien el mensaje le promete el beneficio),
-    // y NO a Wompi.
+    // Los puntos van al REFERENTE (quien invita), no al invitado y no a Wompi:
+    // es el estímulo para que siga invitando a su grupo.
     const [xpSql, xpParams] = pool.query.mock.calls[2];
     expect(xpSql).toMatch(/INSERT INTO xp_logs/);
-    expect(xpParams).toEqual([9, 500, 'referido:compra']);
+    expect(xpParams).toEqual([7, 500, 'referido:compra']);
   });
 
   test('una segunda compra del mismo invitado no vuelve a acreditar', async () => {

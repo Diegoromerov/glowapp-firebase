@@ -41,11 +41,9 @@ const PUNTOS_POR_COMPRA_REFERIDA = 500;
 /// sólo por una compra efectiva de cualquier producto, y el premio entra al fondo
 /// de puntos (canjeable como descuento en productos), nunca a Wompi.
 ///
-/// El premio se acredita al INVITADO, que es a quien el mensaje de invitación le
-/// promete el beneficio («... cuando hagas tu primera compra»). El referidor queda
-/// registrado en `referral_conversions` para medir; si el Director prefiere que
-/// cobre el referidor, es cambiar `[referidorId, ...]` por `[inviteeId, ...]` en el
-/// INSERT de xp_logs.
+/// El premio se acredita al REFERENTE (quien invita), que es el estímulo para que
+/// siga invitando a su grupo. El referido no cobra por comprar: al registrarse
+/// queda con su propio código y pasa a ser referente de otros — efecto red.
 ///
 /// Idempotente: UNIQUE(invitee_user_id) y UNIQUE(order_id) hacen que un pedido
 /// acredite una sola vez.
@@ -78,7 +76,7 @@ async function acreditarCompraReferida({ inviteeId, orderId, pool = poolPorDefec
     // como descuento en productos. No se toca Wompi.
     await pool.query(
       `INSERT INTO xp_logs (user_id, xp_amount, reason) VALUES ($1, $2, $3)`,
-      [inviteeId, PUNTOS_POR_COMPRA_REFERIDA, 'referido:compra']
+      [referidorId, PUNTOS_POR_COMPRA_REFERIDA, 'referido:compra']
     );
 
     await pool.query(

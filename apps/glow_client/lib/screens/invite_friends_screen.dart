@@ -21,6 +21,8 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
   String? _codigo;
   String? _mensaje;
   String? _enlace;
+  int _convertidos = 0;
+  int _puntosGanados = 0;
 
   @override
   void initState() {
@@ -41,6 +43,8 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         _codigo = datos['referral_code']?.toString();
         _mensaje = datos['share_message']?.toString();
         _enlace = datos['share_url']?.toString();
+        _convertidos = (datos['referidos_convertidos'] as num?)?.toInt() ?? 0;
+        _puntosGanados = (datos['puntos_ganados'] as num?)?.toInt() ?? 0;
         _cargando = false;
       });
     } catch (e) {
@@ -136,7 +140,7 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         const Icon(Icons.card_giftcard, size: 44, color: Color(0xFFC5A052)),
         const SizedBox(height: 16),
         Text(
-          '\$5.000 COP en puntos para tus productos',
+          'Gana \$5.000 COP por cada amiga que compre',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'CormorantGaramond',
@@ -147,11 +151,37 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         ),
         const SizedBox(height: 8),
         Text(
-          'Comparte tu código. Los puntos se acreditan cuando tu invitada hace '
-          'su primera compra de productos, y se canjean como descuento.',
+          'Comparte tu código. Cuando tu invitada hace su primera compra de '
+          'productos sumas 500 puntos para descuentos. Ella también puede invitar '
+          'a las suyas: tu red crece contigo.',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 13, height: 1.4, color: t.textSecondary),
         ),
+        if (_convertidos > 0) ...[
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            decoration: BoxDecoration(
+              color: t.surfaceLevel1,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: t.borderDefault),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.groups_outlined, size: 18, color: Color(0xFFC5A052)),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    '$_convertidos ${_convertidos == 1 ? 'amiga ya compró' : 'amigas ya compraron'}'
+                    ' · $_puntosGanados puntos ganados',
+                    style: TextStyle(fontSize: 12, color: t.textPrimary),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 24),
         if (_codigo != null)
           InkWell(

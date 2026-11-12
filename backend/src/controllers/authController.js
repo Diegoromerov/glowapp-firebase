@@ -624,14 +624,41 @@ exports.getReferralInfo = async (req, res) => {
     const shareUrl = `${frontendBase}/#/register?ref=${referralCode}`;
     // Regla del Director: $5.000 COP en PUNTOS (no Wompi) y sólo cuando el
     // invitado hace una compra efectiva de productos.
-    const shareMessage = `¡Únete a GlowApp con mi código ${referralCode}! Cuando hagas tu primera compra de productos te acreditamos $5.000 COP en puntos para descuentos. Regístrate aquí: ${shareUrl}`;
+    // El premio es del REFERENTE (quien invita), no del invitado: el mensaje no
+    // puede prometerle dinero a quien lo recibe.
+    const shareMessage = `Te comparto GlowApp, belleza a domicilio y productos. Regístrate con mi código ${referralCode}: ${shareUrl}`;
+
+    // Estímulo para el referente: cuántos de sus invitados ya compraron y cuántos
+    // puntos lleva. Sin esto el programa no se puede ver desde la app.
+    let convertidos = 0;
+    let puntosGanados = 0;
+    try {
+      const stats = await pool.query(
+        `SELECT COUNT(*)::int AS convertidos,
+                COALESCE(SUM(points_awarded), 0)::int AS puntos
+           FROM referral_conversions
+          WHERE referrer_user_id = $1`,
+        [userId]
+      );
+      if (stats.rows[0]) {
+        convertidos = stats.rows[0].convertidos || 0;
+        puntosGanados = stats.rows[0].puntos || 0;
+      }
+    } catch (e) {
+      console.warn('⚠️ Sin estadísticas de referidos:', e.message);
+    }
 
     res.json({
       success: true,
       referral_code: referralCode,
       share_url: shareUrl,
       share_message: shareMessage,
-      reward_per_referral: 10000,
+      // $5.000 COP en puntos, al referente, cuando su invitado compra.
+      reward_per_referral: 5000,
+      reward_unit: 'PUNTOS',
+      reward_points: 500,
+      referidos_convertidos: convertidos,
+      puntos_ganados: puntosGanados,
     });
   } catch (error) {
     console.error('❌ ERROR GET REFERRAL INFO:', error.message);

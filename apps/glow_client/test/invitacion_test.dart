@@ -70,4 +70,20 @@ void main() {
     expect(invita, contains('puntos'),
         reason: 'el premio es un fondo de puntos, no saldo en la pasarela');
   });
+
+  test('el estímulo es del referente y la pantalla lo explica', () {
+    final src = File('lib/screens/invite_friends_screen.dart').readAsStringSync();
+    expect(src, contains('Gana'), reason: 'habla en segunda persona al referente');
+    expect(src, contains('referidos_convertidos'),
+        reason: 'muestra cuántos invitados ya compraron');
+    expect(src, contains('tu red crece'),
+        reason: 'el efecto red es parte de la mecánica: el referido pasa a referente');
+    // El premio NO se le promete al invitado en el mensaje que se comparte.
+    final backend = File('../backend/src/controllers/authController.js');
+    if (backend.existsSync()) {
+      final msg = backend.readAsStringSync();
+      expect(msg, isNot(contains('te acreditamos')),
+          reason: 'ese texto prometía el premio a quien recibe la invitación');
+    }
+  });
 }
