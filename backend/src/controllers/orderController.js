@@ -122,6 +122,26 @@ exports.createOrder = async (req, res) => {
   try {
     await client.query('BEGIN');
 
+    // ── Contexto RLS de ESTA conexión ───────────────────────────────────────
+    // `pool.connect()` entrega una conexión cruda: NO hereda el `app.tenant_id`
+    // que el authMiddleware fija sobre el cliente de la petición. Sin contexto,
+    // las políticas de 068 evalúan `tenant_id = NULL` y `productos` devuelve 0
+    // filas: el checkout respondía «Producto con ID X no encontrado» a cualquier
+    // comprador. Se resuelve y se fija en una sola consulta, con el mismo fallback
+    // al inquilino de plataforma que usa el INSERT del pedido.
+    // El inquilino sale del TOKEN, no de una consulta a `usuarios`: esa tabla
+    // también tiene RLS y, sin contexto, la subconsulta devuelve 0 filas — el
+    // ajuste quedaba en cadena vacía y los productos seguían invisibles. Era el
+    // error de la primera versión de este arreglo.
+    await client.query(
+      `SELECT set_config(
+         'app.tenant_id',
+         COALESCE($1, app_platform_tenant_id()::text, ''),
+         true
+       )`,
+      [req.user && req.user.tenant_id ? String(req.user.tenant_id) : null]
+    );
+
     let prestadorComisionadoId = null;
     let tieneDescuentoReserva = false;
 
@@ -190,6 +210,9 @@ exports.createOrder = async (req, res) => {
           rol: userRole,
           productoId: product.id,
           cantidad: cantidad
+          // Sin `dbPool`: `pool.query` se enruta al cliente de la petición, que ya
+          // lleva el `app.tenant_id` del token. El problema era la conexión propia
+          // del pedido, y esa se arregla arriba con set_config.
         });
       } catch (precioErr) {
         if (precioErr.code === 'MINIMO_NO_CUMPLIDO') {
@@ -561,6 +584,9 @@ exports.cotizarEnvio = async (req, res) => {
     });
   } catch (error) {
     console.error('❌ ERROR EN COTIZACIÓN DE ENVÍO:', error);
+    if (error.statusCode) {
+      return res.status(error.statusCode).json({ error: error.message, code: error.code });
+    }
     res.status(500).json({ error: 'Error al cotizar el envío' });
   }
 };
