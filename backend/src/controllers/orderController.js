@@ -1,4 +1,12 @@
 const { acreditarCompraReferida } = require('../services/referralService');
+const pointsService = require('../services/pointsService');
+const { PointsError } = pointsService;
+const {
+  VALOR_PUNTO_COP,
+  BLOQUE_CANJE,
+  TOPE_PORCENTAJE,
+  MINIMO_PEDIDO,
+} = require('../config/programaPuntos');
 const { pool } = require('../config/db');
 const { resolverPrecio } = require('../services/precioService');
 const { calcularEnvio } = require('../services/envioService');
@@ -39,6 +47,43 @@ const verifyWompiSignature = (req) => {
 };
 
 // POST /api/store/checkout → Crear un nuevo pedido
+/// Matemática del canje de puntos dentro de un pedido. No toca la base: se puede
+/// probar y razonar sin transacción.
+///
+/// Reglas aprobadas (D-04, D-06):
+///   - el descuento se mide sobre el valor de los PRODUCTOS con IVA incluido,
+///     nunca sobre el envío ni sobre la base neta;
+///   - tope del 15% del valor de los productos;
+///   - canje en bloques de 100 puntos ($1.000); si lo pedido excede el tope se
+///     aplica el máximo permitido, no se rechaza el pedido;
+///   - pedido mínimo de $25.000 de productos para usar puntos.
+function calcularCanjePuntos({ puntosSolicitados, totalProductos }) {
+  const pedidos =
+    puntosSolicitados === undefined || puntosSolicitados === null
+      ? 0
+      : Number(puntosSolicitados);
+
+  if (!Number.isInteger(pedidos) || pedidos < 0) {
+    throw new PointsError('PUNTOS_INVALIDOS', 'Los puntos a canjear deben ser un entero no negativo');
+  }
+  if (pedidos === 0) return { puntosAplicados: 0, descuento: 0 };
+
+  if (totalProductos < MINIMO_PEDIDO) {
+    throw new PointsError(
+      'PEDIDO_MINIMO',
+      `El pedido mínimo para usar puntos es $${MINIMO_PEDIDO.toLocaleString('es-CO')} en productos`
+    );
+  }
+
+  const descuentoMaximo = Math.floor((totalProductos * TOPE_PORCENTAJE) / 100);
+  const puntosMaximos =
+    Math.floor(descuentoMaximo / VALOR_PUNTO_COP / BLOQUE_CANJE) * BLOQUE_CANJE;
+  const alineados = Math.floor(pedidos / BLOQUE_CANJE) * BLOQUE_CANJE;
+  const puntosAplicados = Math.min(alineados, puntosMaximos);
+
+  return { puntosAplicados, descuento: puntosAplicados * VALOR_PUNTO_COP };
+}
+
 exports.createOrder = async (req, res) => {
   const compradorId = req.user.id;
   const userRole = req.user.role; // 'client', 'provider', 'salon', 'admin'
@@ -203,9 +248,8 @@ exports.createOrder = async (req, res) => {
     // Base neta e IVA del carrito. Se calculan ANTES de cotizar el envio porque el
     // umbral de envio gratis se mide contra lo que el cliente paga por los
     // productos (base + IVA), no contra la base neta.
-    const subtotal = subtotalBaseCent / 100;
-    const iva = ivaCent / 100;
-    const totalProductos = subtotal + iva;
+    const totalProductosCent = subtotalBaseCent + ivaCent;
+    const totalProductos = totalProductosCent / 100;
 
     // D-GL-011 v2 / D-GL-015: el envío sale de `zonas_envio` con la retención de
     // gestión de 1.000 y gratis solo por encima del umbral de la zona. Si falta
@@ -224,7 +268,38 @@ exports.createOrder = async (req, res) => {
     const transportadoraSugerida = envioDetalle.transportadora;
     const diasEstimados = null;
 
-    const total = totalProductos + costoEnvio;
+    // ── Canje de puntos ────────────────────────────────────────────────────
+    // Se mide sobre el valor de los productos con IVA incluido y NUNCA sobre el
+    // envío. El umbral de envío gratis ya se cotizó arriba con el valor sin
+    // descontar a propósito: usar puntos no debe encarecer el envío.
+    const canje = calcularCanjePuntos({
+      puntosSolicitados: req.body.puntos_a_canjear,
+      totalProductos,
+    });
+    const descuento = canje.descuento;
+
+    // El descuento reduce un precio que ya incluye IVA, así que la base y el
+    // impuesto bajan con él. Recalcular aquí es lo que mantiene el invariante de
+    // la factura: base + IVA + envío - descuento = total.
+    const subtotalBruto = subtotalBaseCent / 100;
+    const ivaBruto = ivaCent / 100;
+    const totalConIvaBruto = subtotalBruto + ivaBruto;
+
+    let subtotal = subtotalBruto;
+    let iva = ivaBruto;
+    let total = totalConIvaBruto + costoEnvio;
+
+    if (descuento > 0) {
+      // El descuento baja un precio que ya incluye IVA. La base y el impuesto se
+      // reparten proporcionalmente y se redondean a peso, igual que
+      // `discriminarIva` en el resto del checkout; el IVA absorbe la diferencia
+      // para que base + IVA + envío - descuento = total, sin centavos sueltos.
+      // Con descuento 0 no se toca nada: el pedido sale idéntico al de siempre.
+      const factor = (totalConIvaBruto - descuento) / totalConIvaBruto;
+      subtotal = Math.round(subtotalBruto * factor);
+      iva = totalConIvaBruto - descuento - subtotal;
+      total = totalConIvaBruto - descuento + costoEnvio;
+    }
 
     // ---------------------------------------------------------------------
     // tenant_id del pedido (migracion 071)
@@ -267,9 +342,11 @@ exports.createOrder = async (req, res) => {
     const orderInsertRes = await client.query(
       `INSERT INTO pedidos_tienda 
         (comprador_id, rol_comprador, booking_id, prestador_comisionado_id, comision_total_prestador, subtotal, envio, iva, total, nombre_entrega, direccion_entrega,
-         tipo_via, numero_principal, letra_principal, numero_secundario, letra_secundaria, complemento, barrio, ciudad, departamento, codigo_postal, referencia, direccion_entrega_id, tenant_id)
+         tipo_via, numero_principal, letra_principal, numero_secundario, letra_secundaria, complemento, barrio, ciudad, departamento, codigo_postal, referencia, direccion_entrega_id,
+         descuento, puntos_canjeados, tenant_id)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,
-               $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24)
+               $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23,
+               $24, $25, $26)
        RETURNING *;`,
       [
         compradorId,
@@ -295,11 +372,25 @@ exports.createOrder = async (req, res) => {
         codigo_postal || null,
         referencia || null,
         direccion_entrega_id || null,
+        descuento,
+        canje.puntosAplicados,
         tenantId
       ]
     );
 
     const order = orderInsertRes.rows[0];
+
+    // Los puntos se comprometen dentro de esta misma transacción: si el pedido no
+    // llega a existir, no salen del saldo. El consumo ocurre cuando el webhook
+    // confirma el pago, y la liberación si el pedido se cae.
+    if (canje.puntosAplicados > 0) {
+      await pointsService.comprometer({
+        userId: compradorId,
+        pedidoId: order.id,
+        puntos: canje.puntosAplicados,
+        cliente: client,
+      });
+    }
 
     // Crear los detalles del pedido
     for (const pItem of processedItems) {
@@ -325,7 +416,8 @@ exports.createOrder = async (req, res) => {
       data: {
         order,
         items: processedItems,
-        envio: envioDetalle
+        envio: envioDetalle,
+        puntos: { aplicados: canje.puntosAplicados, descuento }
       }
     });
 
@@ -435,6 +527,26 @@ exports.cotizarEnvio = async (req, res) => {
     const baseNeta = subtotal - iva;
     const total = subtotal + envioDetalle.envio;
 
+    // Vista previa del canje: la pantalla muestra el número del servidor, no uno
+    // calculado en el cliente. Se mide sobre `subtotal` (valor de vitrina, con
+    // IVA) igual que en createOrder, y nunca sobre el envío.
+    let puntos = null;
+    if (req.body && req.body.puntos_a_canjear !== undefined) {
+      const canje = calcularCanjePuntos({
+        puntosSolicitados: req.body.puntos_a_canjear,
+        totalProductos: subtotal,
+      });
+      puntos = {
+        aplicados: canje.puntosAplicados,
+        descuento: canje.descuento,
+        total_con_descuento: total - canje.descuento,
+        tope_porcentaje: TOPE_PORCENTAJE,
+        minimo_pedido: MINIMO_PEDIDO,
+        bloque_canje: BLOQUE_CANJE,
+        valor_punto_cop: VALOR_PUNTO_COP,
+      };
+    }
+
     res.json({
       success: true,
       data: {
@@ -443,7 +555,8 @@ exports.cotizarEnvio = async (req, res) => {
         iva,
         envio: envioDetalle.envio,
         total,
-        envio_detalle: envioDetalle
+        envio_detalle: envioDetalle,
+        ...(puntos ? { puntos } : {})
       }
     });
   } catch (error) {
@@ -981,6 +1094,19 @@ exports.storeWebhook = async (req, res) => {
           } catch (e) {
             console.error('⚠️ [REFERIDOS] Fallo acreditando compra referida:', e.message);
           }
+
+          // Canje de puntos: la espera se convierte en gasto. No mueve saldo (ya
+          // se descontó al comprometer); deja el rastro que distingue "en espera"
+          // de "gastado". Idempotente por clave, así que un webhook repetido no
+          // duplica nada.
+          try {
+            const canjePagado = await pointsService.consumir({ pedidoId: pedidoPagadoId });
+            if (canjePagado.consumidos > 0) {
+              console.log(`🎯 [PUNTOS] Canje confirmado en el pedido ${pedidoPagadoId}`);
+            }
+          } catch (e) {
+            console.error('⚠️ [PUNTOS] No se pudo confirmar el canje:', e.message);
+          }
         }
       } else if (['DECLINED', 'VOIDED', 'ERROR'].includes(status)) {
         // Un evento fuera de orden no puede degradar un pago ya confirmado.
@@ -1339,6 +1465,16 @@ async function cancelOrder(req, res) {
         [orderId, motivo || 'Cancelado por admin']
       );
 
+      // Si el pedido tenía puntos comprometidos, vuelven al saldo: el canje no se
+      // cobró, así que no se puede quedar con el premio. `liberar` es idempotente
+      // y sólo toca compromisos sin consumo.
+      const liberado = await pointsService.liberar({ pedidoId: orderId, cliente: client });
+      if (liberado.liberados > 0) {
+        console.log(
+          `↩️ [PUNTOS] ${liberado.liberados} puntos devueltos por la cancelación del pedido ${orderId}`
+        );
+      }
+
       await client.query('COMMIT');
 
       console.log(`✅ [ADMIN CANCEL] Pedido ${orderId} cancelado`);
@@ -1531,6 +1667,7 @@ async function cotizarEnvioPublic(req, res) {
 
 module.exports = {
   ...exports,
+  calcularCanjePuntos,
   generarFacturaDianPedido,
   dispatchOrder,
   deliverOrder,

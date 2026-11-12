@@ -114,6 +114,14 @@ describe('OrderController - createOrder (t_fix_pagos_01)', () => {
     // The INSERT should NOT contain 'PAGADO' - it should rely on DEFAULT
     const insertSql = insertCall[0];
     expect(insertSql).not.toMatch(/PAGADO/i);
+
+    // El canje quedó cableado al checkout: sin puntos pedidos, el pedido se crea
+    // exactamente como antes (descuento y puntos en cero, 26 parámetros).
+    expect(insertSql).toMatch(/descuento, puntos_canjeados, tenant_id/);
+    const insertParams = insertCall[1];
+    expect(insertParams).toHaveLength(26);
+    expect(insertParams[23]).toBe(0); // descuento
+    expect(insertParams[24]).toBe(0); // puntos_canjeados
     // estado column should not be explicitly set in the INSERT (uses DEFAULT PENDIENTE_PAGO)
     // Note: some field names contain 'estado' as substring (e.g., prestador_comisionado), 
     // so we only verify PAGADO is not hardcoded

@@ -9,6 +9,7 @@ const { aplicarPricingDinamico } = require('./dynamicPricing');
 const { enviarNotificacionesRetencion } = require('./retentionNotification');
 const { runAsSystem } = require('../config/tenantRouting');
 const { systemPool } = require('../config/db');
+const pointsService = require('../services/pointsService');
 
 /**
  * Ejecuta un job con el ROL DE SISTEMA activo (SET LOCAL ROLE app_system, que
@@ -393,6 +394,76 @@ async function conciliarPayouts() {
   }
 }
 /**
+ * Expira los pedidos con puntos comprometidos que nunca se pagaron.
+ *
+ * Comprometer no es gastar, pero tampoco puede quedarse para siempre: un pedido
+ * abandonado con puntos aplicados deja a la usuaria sin saldo y con la sensación
+ * de que se los robaron. A las 24 horas (lo que vive un checkout de Wompi) el
+ * pedido se cancela, el stock vuelve y los puntos regresan al lote.
+ *
+ * El descuento y los puntos quedan escritos en la fila como rastro de auditoría;
+ * un pedido CANCELADO no puede pagarse (`payOrder` exige PENDIENTE_PAGO), así que
+ * el descuento no se puede cobrar después de liberar.
+ */
+async function expirarCanjesSinPago() {
+  const vencidos = await pool.query(
+    `SELECT id FROM pedidos_tienda
+      WHERE estado = 'PENDIENTE_PAGO'
+        AND puntos_canjeados > 0
+        AND creado_en < NOW() - INTERVAL '24 hours'
+      LIMIT 200`
+  );
+
+  for (const fila of vencidos.rows) {
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+
+      // Re-verificar con la fila bloqueada: entre el SELECT de arriba y este
+      // momento, el pago pudo entrar.
+      const orden = await client.query(
+        `SELECT id FROM pedidos_tienda
+          WHERE id = $1 AND estado = 'PENDIENTE_PAGO'
+          FOR UPDATE`,
+        [fila.id]
+      );
+      if (orden.rowCount === 0) {
+        await client.query('ROLLBACK');
+        continue;
+      }
+
+      const items = await client.query(
+        `SELECT producto_id, cantidad FROM detalles_pedido_tienda WHERE pedido_id = $1`,
+        [fila.id]
+      );
+      for (const item of items.rows) {
+        await client.query('UPDATE productos SET stock = stock + $1 WHERE id = $2', [
+          item.cantidad,
+          item.producto_id,
+        ]);
+      }
+
+      await client.query(
+        `UPDATE pedidos_tienda SET estado = 'CANCELADO', cancelado_en = NOW() WHERE id = $1`,
+        [fila.id]
+      );
+
+      const liberado = await pointsService.liberar({ pedidoId: fila.id, cliente: client });
+
+      await client.query('COMMIT');
+      console.log(
+        `⏱️ [PUNTOS] Pedido ${fila.id} cancelado por no pagarse en 24 h; ${liberado.liberados} puntos devueltos`
+      );
+    } catch (err) {
+      await client.query('ROLLBACK');
+      console.error(`⏱️ [PUNTOS] No se pudo expirar el pedido ${fila.id}:`, err.message);
+    } finally {
+      client.release();
+    }
+  }
+}
+
+/**
  * Configura los jobs periódicos usando setInterval (simple y sin dependencias).
  * Para producción, usar node-cron o un worker separado.
  */
@@ -424,6 +495,9 @@ function inicializarJobs() {
 
   // Conciliación de payouts (W2): cada 10 minutos
   setInterval(comoSistema(conciliarPayouts), 10 * 60 * 1000);
+
+  // Pedidos con puntos que no se pagaron: cada hora. Devuelve stock y puntos.
+  setInterval(comoSistema(expirarCanjesSinPago), 60 * 60 * 1000);
 
   // Pricing dinámico: cada día a las 3 AM
   setInterval(async () => {
