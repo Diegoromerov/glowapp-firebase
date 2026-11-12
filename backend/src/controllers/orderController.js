@@ -1169,6 +1169,66 @@ exports.storeWebhook = async (req, res) => {
       }
     }
 
+    // Confirmación al comprador. Va FUERA de la transacción y después del cobro:
+    // un fallo de Brevo no puede deshacer un pago confirmado, y reintentar el
+    // correo no debe duplicar el cierre del pedido. Se lee con el rol de sistema
+    // porque el webhook llega sin contexto de inquilino: con RLS las consultas
+    // devolverían 0 filas y el correo saldría vacío sin error. El log lleva el id
+    // del pedido y el messageId de Brevo, nunca el correo del comprador.
+    if (pedidoPagadoId) {
+      try {
+        const tenantRouting = require('../config/tenantRouting');
+        const emailService = require('../services/emailService');
+        const datosCorreo = await tenantRouting.runAsSystem({ pool }, async (cx) => {
+          const pedidoRes = await cx.query(
+            `SELECT p.id, p.subtotal, p.iva, p.envio, p.descuento, p.total, p.pagado_en,
+                    p.nombre_entrega, p.direccion_entrega, p.ciudad, u.email AS comprador_email
+               FROM pedidos_tienda p
+               JOIN usuarios u ON u.id = p.comprador_id
+              WHERE p.id = $1`,
+            [pedidoPagadoId]
+          );
+          const itemsRes = await cx.query(
+            `SELECT d.cantidad, d.precio_unitario_pagado, pr.nombre
+               FROM detalles_pedido_tienda d
+               LEFT JOIN productos pr ON pr.id = d.producto_id
+              WHERE d.pedido_id = $1
+              ORDER BY pr.nombre`,
+            [pedidoPagadoId]
+          );
+          return { pedido: pedidoRes.rows[0], items: itemsRes.rows };
+        });
+
+        const pedidoCorreo = datosCorreo.pedido;
+        if (pedidoCorreo && pedidoCorreo.comprador_email) {
+          const envioCorreo = await emailService.sendOrderConfirmationEmail({
+            toEmail: pedidoCorreo.comprador_email,
+            clientName: pedidoCorreo.nombre_entrega,
+            orderId: pedidoCorreo.id,
+            items: datosCorreo.items,
+            subtotal: pedidoCorreo.subtotal,
+            iva: pedidoCorreo.iva,
+            envio: pedidoCorreo.envio,
+            descuento: pedidoCorreo.descuento,
+            total: pedidoCorreo.total,
+            paidAt: pedidoCorreo.pagado_en,
+            address: pedidoCorreo.direccion_entrega,
+            city: pedidoCorreo.ciudad,
+            paymentMethod: data.payment_method_type || null,
+            reference: reference || null,
+          });
+          console.log(
+            `📧 [STORE] Confirmación enviada del pedido ${pedidoPagadoId} (messageId=${envioCorreo?.messageId || 'sin id'})`
+          );
+        }
+      } catch (emailError) {
+        console.error(
+          `⚠️ [STORE] No se pudo enviar la confirmación del pedido ${pedidoPagadoId}:`,
+          emailError.message
+        );
+      }
+    }
+
     await registrarEvento({
       estado: pedidoPagadoId ? 'pedido_pagado' : 'procesado',
       pedido: pedidoPagadoId,

@@ -134,7 +134,7 @@ async function enviarPorApiBrevo({ to, subject, html, text }) {
   } catch (_) {
     id = null;
   }
-  console.log(`[emailService] Email enviado por API Brevo a ${to}: ${id || 'sin id'}`);
+  console.log(`[emailService] Email enviado por API Brevo (${id || 'sin id'})`);
   return { messageId: id, via: 'brevo-api' };
 }
 
@@ -260,6 +260,115 @@ async function sendBookingConfirmationEmail({
       frontendUrl: frontendBase,
     },
   });
+}
+
+/**
+ * Email de confirmación de un pedido de GlowShop ya pagado.
+ *
+ * Se llama desde el webhook de la tienda DESPUÉS del COMMIT: el cobro ya existe
+ * y la confirmación no puede revertirlo, así que es best-effort. Si Brevo falla,
+ * el pedido sigue PAGADO y el fallo queda en el log con el id del pedido —nunca
+ * con la dirección del comprador (ítem 44 de la auditoría).
+ *
+ * El cuerpo se construye aquí, en línea, y no con una plantilla de disco: así el
+ * correo no depende de un archivo que nadie versiona y el contenido va completo
+ * en el diff.
+ */
+async function sendOrderConfirmationEmail({
+  toEmail,
+  clientName,
+  orderId,
+  items = [],
+  subtotal,
+  iva,
+  envio,
+  descuento,
+  total,
+  paidAt,
+  address,
+  city,
+  paymentMethod,
+  reference,
+}) {
+  const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-client.web.app').replace(/\/$/, '');
+  // `/#/store` es una ruta real de la app cliente (main.dart → '/store'); el
+  // botón del correo no puede apuntar a una pantalla que no exista.
+  const receiptUrl = `${frontendBase}/#/store`;
+  const corto = String(orderId || '').slice(0, 8).toUpperCase();
+  const subject = `✅ Tu pedido #${corto} está pagado · GlowApp`;
+
+  const esc = (valor) =>
+    String(valor ?? '').replace(/[&<>"']/g, (c) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    );
+  const money = (valor) => `$${Number(valor || 0).toLocaleString('es-CO')}`;
+  const fecha = paidAt
+    ? new Date(paidAt).toLocaleString('es-CO', { timeZone: 'America/Bogota', dateStyle: 'long', timeStyle: 'short' })
+    : null;
+
+  const filas = items
+    .map(
+      (i) => `<tr>
+        <td style="padding:8px 0;border-bottom:1px solid #eee">${esc(i.nombre || 'Producto')}</td>
+        <td style="padding:8px 0;border-bottom:1px solid #eee" align="center">${Number(i.cantidad) || 1}</td>
+        <td style="padding:8px 0;border-bottom:1px solid #eee" align="right">${money(i.precio_unitario_pagado)}</td>
+      </tr>`
+    )
+    .join('');
+
+  const lineaDescuento =
+    Number(descuento) > 0
+      ? `<tr><td colspan="2" style="padding:4px 0;color:#0a7">Descuento por puntos</td><td align="right" style="color:#0a7">- ${money(descuento)}</td></tr>`
+      : '';
+
+  const html = `<!doctype html>
+<html lang="es"><body style="margin:0;background:#faf7f5;font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#2b2b2b">
+  <div style="max-width:560px;margin:0 auto;padding:24px">
+    <h1 style="font-size:20px;margin:0 0 4px">¡Gracias por tu compra${clientName ? ', ' + esc(clientName) : ''}!</h1>
+    <p style="margin:0 0 16px;color:#666">Recibimos tu pago. Tu pedido <strong>#${corto}</strong> ya está confirmado.</p>
+    <div style="background:#fff;border-radius:12px;padding:16px 20px;border:1px solid #eee">
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <thead><tr style="color:#888;font-size:12px;text-transform:uppercase">
+          <th align="left">Producto</th><th align="center">Cant.</th><th align="right">Precio</th>
+        </tr></thead>
+        <tbody>${filas}</tbody>
+        <tfoot>
+          <tr><td colspan="2" style="padding:8px 0 4px;color:#666">Subtotal</td><td align="right">${money(subtotal)}</td></tr>
+          <tr><td colspan="2" style="padding:2px 0;color:#666">IVA</td><td align="right">${money(iva)}</td></tr>
+          <tr><td colspan="2" style="padding:2px 0;color:#666">Envío</td><td align="right">${money(envio)}</td></tr>
+          ${lineaDescuento}
+          <tr><td colspan="2" style="padding:8px 0;font-weight:700;border-top:1px solid #eee">Total pagado</td><td align="right" style="font-weight:700;border-top:1px solid #eee">${money(total)}</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <div style="background:#fff;border-radius:12px;padding:16px 20px;border:1px solid #eee;margin-top:12px;font-size:14px">
+      <p style="margin:0 0 6px"><strong>Entrega</strong></p>
+      <p style="margin:0;color:#666">${esc(address || '')}${city ? ', ' + esc(city) : ''}</p>
+      ${fecha ? `<p style="margin:8px 0 0;color:#666">Pagado el ${esc(fecha)}</p>` : ''}
+      ${paymentMethod ? `<p style="margin:2px 0 0;color:#666">Método de pago: ${esc(paymentMethod)}</p>` : ''}
+      ${reference ? `<p style="margin:2px 0 0;color:#666;font-size:12px">Referencia: ${esc(reference)}</p>` : ''}
+    </div>
+    <p style="text-align:center;margin:24px 0">
+      <a href="${receiptUrl}" style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:600">Ver mi pedido</a>
+    </p>
+    <p style="color:#999;font-size:12px;text-align:center">Te avisaremos por este medio cuando tu pedido salga a despacho.</p>
+  </div>
+</body></html>`;
+
+  const text = [
+    `¡Gracias por tu compra${clientName ? ', ' + clientName : ''}!`,
+    `Pedido #${corto} confirmado y pagado${fecha ? ' el ' + fecha.replace(/\.$/, '') : ''}.`,
+    ...items.map((i) => `- ${i.nombre || 'Producto'} x${Number(i.cantidad) || 1}: ${money(i.precio_unitario_pagado)}`),
+    `Subtotal ${money(subtotal)} · IVA ${money(iva)} · Envío ${money(envio)}${Number(descuento) > 0 ? ' · Descuento ' + money(descuento) : ''}`,
+    `Total pagado: ${money(total)}`,
+    `Entrega: ${address || ''}${city ? ', ' + city : ''}`,
+    paymentMethod ? `Método de pago: ${paymentMethod}` : '',
+    `Ver mi pedido: ${receiptUrl}`,
+  ].filter(Boolean).join('\n');
+
+  console.log(`📧 [EMAIL PEDIDO] Preparando confirmación (pedido=${orderId}, items=${items.length})`);
+
+  return sendEmail({ to: toEmail, subject, data: { html, text } });
 }
 
 /**
@@ -539,6 +648,7 @@ module.exports = {
   loadTemplates,
   sendAbandonedBookingEmail,
   sendBookingConfirmationEmail,
+  sendOrderConfirmationEmail,
   // Helpers SaaS
   sendTrialEndingNotice,
   sendTrialExpiredNotice,
