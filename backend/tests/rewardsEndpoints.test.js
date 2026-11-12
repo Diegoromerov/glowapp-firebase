@@ -12,6 +12,14 @@ jest.mock('../src/middleware/auth', () => ({
     req.user = { id: Number(id), role: 'client' };
     next();
   },
+  // Las rutas de administración del programa (reporte y revisión antifraude) usan
+  // este middleware del mismo módulo. Sin él aquí, montar la ruta revienta con
+  // «Route.get() requires a callback function» y la suite entera no carga.
+  adminMiddleware: (req, res, next) => {
+    if (!req.user) return res.status(401).json({ error: 'no autenticado' });
+    if (req.user.role !== 'admin') return res.status(403).json({ error: 'solo admin' });
+    next();
+  },
 }));
 
 const express = require('express');
