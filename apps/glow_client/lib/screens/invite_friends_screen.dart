@@ -243,7 +243,8 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
           const SizedBox(height: 12),
           Text(
             'El enlace lleva tu código: quien se registre desde ahí queda '
-            'atribuido automáticamente.',
+            'atribuido automáticamente. Si ya tiene la app instalada, puede '
+            'escribir tu código en el registro.',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 11, color: t.textSecondary),
           ),
