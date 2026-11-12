@@ -1085,6 +1085,9 @@ exports.storeWebhook = async (req, res) => {
             const credito = await acreditarCompraReferida({
               inviteeId: order.comprador_id,
               orderId: order.id,
+              // Valor de los productos, sin envío: es lo que mide el mínimo.
+              totalProductos:
+                Number(order.subtotal || 0) + Number(order.iva || 0),
             });
             if (credito.acreditado) {
               console.log(

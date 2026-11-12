@@ -19,10 +19,16 @@ const TOPE_PORCENTAJE = 15;
 const MINIMO_PEDIDO = 25000;
 const MESES_VIGENCIA = 12;
 
+/// Compra mínima de productos para que la conversión premie (R-06 del documento
+/// de arquitectura). Sin esto, fabricar conversiones con el producto más barato
+/// del catálogo sale gratis.
+const MINIMO_COMPRA_PREMIO = 20000;
+
 module.exports = {
   VALOR_PUNTO_COP,
   BLOQUE_CANJE,
   TOPE_PORCENTAJE,
   MINIMO_PEDIDO,
   MESES_VIGENCIA,
+  MINIMO_COMPRA_PREMIO,
 };

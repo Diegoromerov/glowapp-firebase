@@ -113,6 +113,27 @@ describe('acreditarCompraReferida', () => {
     expect(pool.query).toHaveBeenCalledTimes(2);
   });
 
+  test('una compra por debajo del mínimo no convierte ni gasta la conversión', async () => {
+    const pool = {
+      query: jest.fn().mockResolvedValueOnce({
+        rowCount: 1,
+        rows: [{ referred_by_user_id: 7 }],
+      }),
+    };
+
+    const r = await acreditarCompraReferida({
+      inviteeId: 9,
+      orderId: 'o-barato',
+      totalProductos: 18000,
+      pool,
+    });
+
+    expect(r).toMatchObject({ acreditado: false, motivo: 'COMPRA_BAJO_MINIMO' });
+    // Solo se consultó al referidor: no hay conversión registrada, así que la
+    // invitada puede convertir más adelante con una compra que sí califique.
+    expect(pool.query).toHaveBeenCalledTimes(1);
+  });
+
   test('la conversión que supera el tope mensual se registra sin puntos', async () => {
     const pool = {
       query: jest

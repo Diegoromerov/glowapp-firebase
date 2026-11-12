@@ -11,6 +11,7 @@
 // puntos canjeables (`pointsService`), con lote y vencimiento. `xp_logs` queda
 // para el XP de estado y no se le añaden asientos de dinero.
 const { pool: poolPorDefecto } = require('../config/db');
+const { MINIMO_COMPRA_PREMIO } = require('../config/programaPuntos');
 const pointsService = require('./pointsService');
 
 /// Marca al usuario nuevo como invitado por el dueño de [codigo].
@@ -71,7 +72,12 @@ const TOPE_CONVERSIONES_MES = 10;
 ///
 /// Devuelve `{ acreditado, puntos, referidorId }`. Nunca lanza: un fallo aquí no
 /// puede tumbar un cobro ya confirmado.
-async function acreditarCompraReferida({ inviteeId, orderId, pool = poolPorDefecto }) {
+async function acreditarCompraReferida({
+  inviteeId,
+  orderId,
+  totalProductos = null,
+  pool = poolPorDefecto,
+}) {
   const sinCredito = { acreditado: false, puntos: 0, referidorId: null };
   if (!inviteeId) return sinCredito;
 
@@ -84,6 +90,13 @@ async function acreditarCompraReferida({ inviteeId, orderId, pool = poolPorDefec
     );
     const referidorId = invitado.rows[0] && invitado.rows[0].referred_by_user_id;
     if (!referidorId) return sinCredito;
+
+    // Compra mínima (R-06): un pedido por debajo del umbral no convierte, pero
+    // tampoco se registra. Así la invitada conserva su única conversión para una
+    // compra que sí valga la pena, en vez de perderla con el producto más barato.
+    if (totalProductos !== null && Number(totalProductos) < MINIMO_COMPRA_PREMIO) {
+      return { ...sinCredito, referidorId, motivo: 'COMPRA_BAJO_MINIMO' };
+    }
 
     // El tope mensual (R-05) se resuelve dentro del propio INSERT: contar antes y
     // decidir después deja una ventana donde dos conversiones simultáneas pasan
