@@ -10,7 +10,7 @@
 CREATE TABLE IF NOT EXISTS ai_usage_events (
   id                 BIGSERIAL PRIMARY KEY,
   user_id            INTEGER,
-  tenant_id          INTEGER,
+  tenant_id          INTEGER DEFAULT app_current_tenant_id(),
   proveedor          TEXT NOT NULL,          -- deepseek | gemini | youcam | nvidia
   modelo             TEXT,
   tipo_uso           TEXT NOT NULL DEFAULT 'analisis', -- analisis | recomendacion | vto | diagnostico

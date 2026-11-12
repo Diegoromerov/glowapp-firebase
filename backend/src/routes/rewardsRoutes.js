@@ -10,6 +10,8 @@ const router = express.Router();
 // Saldo del fondo de puntos canjeable de la usuaria autenticada.
 // El canje no vive aquí: se aplica al crear el pedido, dentro de su transacción.
 router.get('/points', authMiddleware, rewardsController.obtenerPuntos);
+// Nivel y cuota de análisis con IA (E5): la cuota cuelga del uso.
+router.get('/nivel', authMiddleware, require('../controllers/rewardsNivelController').nivel);
 
 // Reporte de gestión: pasivo, emisión, canje y vencimiento. Sólo administración:
 // son cifras del negocio, no del usuario.
