@@ -524,6 +524,9 @@ app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api/mentorship', mentorshipRoutes);
 app.use('/api/xp-logs', xpLogRoutes);
+// Saldo del fondo de puntos canjeable (migración 142). El canje se aplica al
+// crear el pedido, no por un endpoint aparte.
+app.use('/api/rewards', require('./src/routes/rewardsRoutes'));
 // Registro de compartires (TikTok/Instagram/hoja del sistema) y XP idempotente.
 app.use('/api/social', require('./src/routes/socialRoutes'));
 app.use('/api/v1/business', businessRoutes);
