@@ -44,6 +44,11 @@ const PUNTOS_POR_COMPRA_REFERIDA = 500;
 /// Decisión D-02 (aprobada 2026-11-12): el programa deja de ser de un solo lado.
 const PUNTOS_BIENVENIDA_REFERIDA = 100;
 
+/// Tope de conversiones premiadas por referente en un mes calendario (R-05).
+/// La conversión que pasa el tope se registra igual, con 0 puntos y estado
+/// `TOPE_MENSUAL`: perder la traza sería peor que no pagar.
+const TOPE_CONVERSIONES_MES = 10;
+
 /// Acredita el premio cuando el invitado PAGA un pedido de producto.
 ///
 /// Regla del Director (2026-11-11): ni por la mera recomendación ni por reservar;
@@ -80,16 +85,43 @@ async function acreditarCompraReferida({ inviteeId, orderId, pool = poolPorDefec
     const referidorId = invitado.rows[0] && invitado.rows[0].referred_by_user_id;
     if (!referidorId) return sinCredito;
 
+    // El tope mensual (R-05) se resuelve dentro del propio INSERT: contar antes y
+    // decidir después deja una ventana donde dos conversiones simultáneas pasan
+    // las dos. La conversión que supera el tope se registra con 0 puntos y su
+    // motivo, para no perder la traza.
     const ins = await pool.query(
       `INSERT INTO referral_conversions
-         (referrer_user_id, invitee_user_id, order_id, points_awarded)
-       VALUES ($1, $2, $3, $4)
+         (referrer_user_id, invitee_user_id, order_id, points_awarded, estado, motivo_revision)
+       SELECT $1, $2, $3,
+              CASE WHEN c.n >= $5 THEN 0 ELSE $4 END,
+              CASE WHEN c.n >= $5 THEN 'TOPE_MENSUAL' ELSE 'ACREDITADA' END,
+              CASE WHEN c.n >= $5 THEN 'Superó el tope mensual de premios' ELSE NULL END
+         FROM (
+           SELECT COUNT(*)::int AS n
+             FROM referral_conversions
+            WHERE referrer_user_id = $1
+              AND estado = 'ACREDITADA'
+              AND created_at >= (date_trunc('month', NOW() AT TIME ZONE 'America/Bogota')
+                                 AT TIME ZONE 'America/Bogota')
+         ) AS c
        ON CONFLICT (invitee_user_id) DO NOTHING
-       RETURNING id`,
-      [referidorId, inviteeId, orderId || null, PUNTOS_POR_COMPRA_REFERIDA]
+       RETURNING id, estado, points_awarded`,
+      [referidorId, inviteeId, orderId || null, PUNTOS_POR_COMPRA_REFERIDA, TOPE_CONVERSIONES_MES]
     );
     if ((ins.rowCount || 0) === 0) return { ...sinCredito, referidorId };
-    conversionId = ins.rows[0].id;
+    const conversion = ins.rows[0];
+    conversionId = conversion.id;
+
+    if (conversion.estado === 'TOPE_MENSUAL') {
+      // La invitada queda marcada igual: ya convirtió, y eso no se repite. Lo que
+      // no hay es premio.
+      await pool.query(
+        `UPDATE usuarios SET referral_converted_at = NOW()
+          WHERE id = $1 AND referral_converted_at IS NULL`,
+        [inviteeId]
+      );
+      return { acreditado: false, puntos: 0, referidorId, motivo: 'TOPE_MENSUAL' };
+    }
 
     // Premio del referente: 500 puntos al fondo canjeable.
     const premio = await pointsService.acreditar({
@@ -145,4 +177,5 @@ module.exports = {
   acreditarCompraReferida,
   PUNTOS_POR_COMPRA_REFERIDA,
   PUNTOS_BIENVENIDA_REFERIDA,
+  TOPE_CONVERSIONES_MES,
 };

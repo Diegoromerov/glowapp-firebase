@@ -80,7 +80,9 @@ describe('acreditarCompraReferida', () => {
     const [convSql, convParams] = pool.query.mock.calls[1];
     expect(convSql).toMatch(/INSERT INTO referral_conversions/);
     expect(convSql).toMatch(/ON CONFLICT \(invitee_user_id\) DO NOTHING/);
-    expect(convParams).toEqual([7, 9, 'o-1', 500]);
+    // El tope mensual va dentro del INSERT: el 5.º parámetro son los 10 premios.
+    expect(convParams).toEqual([7, 9, 'o-1', 500, 10]);
+    expect(convSql).toMatch(/TOPE_MENSUAL/);
 
     // Los puntos van al libro de puntos canjeables, NO a xp_logs: el XP de nivel
     // quedó separado del dinero (migración 142).
@@ -109,6 +111,28 @@ describe('acreditarCompraReferida', () => {
 
     expect(r.acreditado).toBe(false);
     expect(pool.query).toHaveBeenCalledTimes(2);
+  });
+
+  test('la conversión que supera el tope mensual se registra sin puntos', async () => {
+    const pool = {
+      query: jest
+        .fn()
+        .mockResolvedValueOnce({ rowCount: 1, rows: [{ referred_by_user_id: 7 }] })
+        .mockResolvedValueOnce({
+          rowCount: 1,
+          rows: [{ id: 'conv-11', estado: 'TOPE_MENSUAL', points_awarded: 0 }],
+        })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [] }),
+    };
+
+    const r = await acreditarCompraReferida({ inviteeId: 9, orderId: 'o-11', pool });
+
+    expect(r).toMatchObject({ acreditado: false, puntos: 0, motivo: 'TOPE_MENSUAL' });
+    // No se crea lote: sin premio no hay nada que acreditar.
+    const creoLote = pool.query.mock.calls.some(([sql]) =>
+      /INSERT INTO points_lots/.test(String(sql))
+    );
+    expect(creoLote).toBe(false);
   });
 
   test('si la acreditación falla, se deshace la conversión para poder reintentar', async () => {
