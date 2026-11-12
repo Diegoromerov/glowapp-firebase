@@ -67,7 +67,7 @@ describe('acreditarCompraReferida', () => {
       query: jest
         .fn()
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ referred_by_user_id: 7 }] })
-        .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'conv-1' }] })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'conv-1', estado: 'ACREDITADA' }] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'lot-ref' }] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'lot-inv' }] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [] }),
@@ -80,8 +80,9 @@ describe('acreditarCompraReferida', () => {
     const [convSql, convParams] = pool.query.mock.calls[1];
     expect(convSql).toMatch(/INSERT INTO referral_conversions/);
     expect(convSql).toMatch(/ON CONFLICT \(invitee_user_id\) DO NOTHING/);
-    // El tope mensual va dentro del INSERT: el 5.º parámetro son los 10 premios.
-    expect(convParams).toEqual([7, 9, 'o-1', 500, 10]);
+    // El tope mensual va dentro del INSERT: el 5.º parámetro son los 10 premios y
+    // el 6.º la marca antifraude (aquí `false`: la invitada no comparte huella).
+    expect(convParams).toEqual([7, 9, 'o-1', 500, 10, false]);
     expect(convSql).toMatch(/TOPE_MENSUAL/);
 
     // Los puntos van al libro de puntos canjeables, NO a xp_logs: el XP de nivel
@@ -111,6 +112,37 @@ describe('acreditarCompraReferida', () => {
 
     expect(r.acreditado).toBe(false);
     expect(pool.query).toHaveBeenCalledTimes(2);
+  });
+
+  test('si la invitada comparte IP con quien la invita, queda en revisión y no cobra', async () => {
+    const pool = {
+      query: jest
+        .fn()
+        .mockResolvedValueOnce({
+          rowCount: 1,
+          rows: [
+            {
+              referred_by_user_id: 7,
+              invitee_ip: 'hash-igual',
+              invitee_device: null,
+              referrer_ip: 'hash-igual',
+              referrer_device: null,
+            },
+          ],
+        })
+        .mockResolvedValueOnce({
+          rowCount: 1,
+          rows: [{ id: 'conv-x', estado: 'EN_REVISION', points_awarded: 0 }],
+        })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [] }),
+    };
+
+    const r = await acreditarCompraReferida({ inviteeId: 9, orderId: 'o-x', pool });
+
+    expect(r).toMatchObject({ acreditado: false, puntos: 0, motivo: 'EN_REVISION' });
+    expect(pool.query.mock.calls.some(([sql]) => /INSERT INTO points_lots/.test(String(sql)))).toBe(
+      false
+    );
   });
 
   test('una compra por debajo del mínimo no convierte ni gasta la conversión', async () => {

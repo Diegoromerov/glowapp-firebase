@@ -8,6 +8,7 @@ const redisClient = require('../config/redis');
 const emailService = require('../services/email.service');
 const consentService = require('../services/consentService');
 const { atribuirInvitacion } = require('../services/referralService');
+const { huellasDePeticion } = require('../utils/hashSenal');
 const { Membership, BusinessProfile } = require('../models');
 const {
   registerSchema,
@@ -62,10 +63,22 @@ exports.register = async (req, res) => {
 
     const result = await tenantRouting.runAsSystem({ pool }, (c) =>
       c.query(
-        `INSERT INTO usuarios (nombre, email, password_hash, phone, auth_provider, provider_id, rol, onboarding_completo) 
-         VALUES ($1, $2, $3, $4, 'LOCAL', $5, $6, $7) 
+        `INSERT INTO usuarios (nombre, email, password_hash, phone, auth_provider, provider_id, rol, onboarding_completo, ip_hash, device_hash) 
+         VALUES ($1, $2, $3, $4, 'LOCAL', $5, $6, $7, $8, $9) 
          RETURNING id, nombre, email, rol, onboarding_completo`,
-        [full_name, cleanEmail, hashedPassword, phone || null, providerId, userRole, onboarding]
+        [
+          full_name,
+          cleanEmail,
+          hashedPassword,
+          phone || null,
+          providerId,
+          userRole,
+          onboarding,
+          // Huellas para el antifraude del programa de referidos (F3). Nulas si
+          // la petición no las trae: nunca deben coincidir por accidente.
+          huellasDePeticion(req).ipHash,
+          huellasDePeticion(req).deviceHash,
+        ]
       )
     );
 

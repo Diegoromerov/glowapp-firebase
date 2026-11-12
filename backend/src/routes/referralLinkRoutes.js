@@ -10,18 +10,12 @@
 // del enlace. Y si el registro del clic falla, igual redirige: perder una
 // invitación por un contador caído sería peor que perder la métrica.
 const express = require('express');
-const crypto = require('crypto');
 const { pool } = require('../config/db');
+// La misma función que usa el registro: si el enlace y el alta calculan la huella
+// distinto, la comparación antifraude nunca coincide y la regla no existe.
+const { hashSenal } = require('../utils/hashSenal');
 
 const router = express.Router();
-
-/// Hash de una señal del visitante. Se guarda el hash, nunca el dato en claro:
-/// alcanza para detectar granjas de cuentas sin acumular datos personales.
-function hashSenal(valor) {
-  const limpio = String(valor || '').trim();
-  if (!limpio) return null;
-  return crypto.createHash('sha256').update(limpio).digest('hex').slice(0, 64);
-}
 
 router.get('/:codigo', async (req, res) => {
   const codigo = String(req.params.codigo || '')

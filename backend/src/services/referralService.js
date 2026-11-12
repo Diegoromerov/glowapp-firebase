@@ -84,12 +84,30 @@ async function acreditarCompraReferida({
   let conversionId = null;
 
   try {
+    // La huella de la invitada y la de quien la invita vienen en la misma
+    // consulta: comparar en dos viajes abre una ventana y cuesta lo mismo.
     const invitado = await pool.query(
-      `SELECT referred_by_user_id FROM usuarios WHERE id = $1 AND referred_by_user_id IS NOT NULL`,
+      `SELECT u.referred_by_user_id,
+              u.ip_hash AS invitee_ip, u.device_hash AS invitee_device,
+              r.ip_hash AS referrer_ip, r.device_hash AS referrer_device
+         FROM usuarios u
+         JOIN usuarios r ON r.id = u.referred_by_user_id
+        WHERE u.id = $1 AND u.referred_by_user_id IS NOT NULL`,
       [inviteeId]
     );
-    const referidorId = invitado.rows[0] && invitado.rows[0].referred_by_user_id;
+    const fila = invitado.rows[0];
+    const referidorId = fila && fila.referred_by_user_id;
     if (!referidorId) return sinCredito;
+
+    // Antifraude (F3): si la invitada comparte IP o dispositivo con quien la
+    // invita, la conversión se registra pero NO se paga hasta revisión manual.
+    // Marcar y no acreditar es lo que evita que una granja de cuentas cobre sola.
+    const mismaSenal = Boolean(
+      (fila.invitee_ip && fila.referrer_ip && fila.invitee_ip === fila.referrer_ip) ||
+        (fila.invitee_device &&
+          fila.referrer_device &&
+          fila.invitee_device === fila.referrer_device)
+    );
 
     // Compra mínima (R-06): un pedido por debajo del umbral no convierte, pero
     // tampoco se registra. Así la invitada conserva su única conversión para una
@@ -106,9 +124,13 @@ async function acreditarCompraReferida({
       `INSERT INTO referral_conversions
          (referrer_user_id, invitee_user_id, order_id, points_awarded, estado, motivo_revision)
        SELECT $1, $2, $3,
-              CASE WHEN c.n >= $5 THEN 0 ELSE $4 END,
-              CASE WHEN c.n >= $5 THEN 'TOPE_MENSUAL' ELSE 'ACREDITADA' END,
-              CASE WHEN c.n >= $5 THEN 'Superó el tope mensual de premios' ELSE NULL END
+              CASE WHEN c.n >= $5 OR $6::boolean THEN 0 ELSE $4 END,
+              CASE WHEN c.n >= $5 THEN 'TOPE_MENSUAL'
+                   WHEN $6::boolean THEN 'EN_REVISION'
+                   ELSE 'ACREDITADA' END,
+              CASE WHEN c.n >= $5 THEN 'Superó el tope mensual de premios'
+                   WHEN $6::boolean THEN 'Misma IP o dispositivo que quien la invitó'
+                   ELSE NULL END
          FROM (
            SELECT COUNT(*)::int AS n
              FROM referral_conversions
@@ -119,21 +141,28 @@ async function acreditarCompraReferida({
          ) AS c
        ON CONFLICT (invitee_user_id) DO NOTHING
        RETURNING id, estado, points_awarded`,
-      [referidorId, inviteeId, orderId || null, PUNTOS_POR_COMPRA_REFERIDA, TOPE_CONVERSIONES_MES]
+      [
+        referidorId,
+        inviteeId,
+        orderId || null,
+        PUNTOS_POR_COMPRA_REFERIDA,
+        TOPE_CONVERSIONES_MES,
+        mismaSenal,
+      ]
     );
     if ((ins.rowCount || 0) === 0) return { ...sinCredito, referidorId };
     const conversion = ins.rows[0];
     conversionId = conversion.id;
 
-    if (conversion.estado === 'TOPE_MENSUAL') {
+    if (conversion.estado !== 'ACREDITADA') {
       // La invitada queda marcada igual: ya convirtió, y eso no se repite. Lo que
-      // no hay es premio.
+      // no hay es premio, y el motivo queda escrito para la revisión.
       await pool.query(
         `UPDATE usuarios SET referral_converted_at = NOW()
           WHERE id = $1 AND referral_converted_at IS NULL`,
         [inviteeId]
       );
-      return { acreditado: false, puntos: 0, referidorId, motivo: 'TOPE_MENSUAL' };
+      return { acreditado: false, puntos: 0, referidorId, motivo: conversion.estado };
     }
 
     // Premio del referente: 500 puntos al fondo canjeable.

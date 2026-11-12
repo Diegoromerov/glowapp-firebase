@@ -15,5 +15,21 @@ router.get('/points', authMiddleware, rewardsController.obtenerPuntos);
 // son cifras del negocio, no del usuario.
 router.get('/reporte', authMiddleware, adminMiddleware, rewardsAdminController.reporte);
 
+// Revisión antifraude: conversiones marcadas por compartir IP o dispositivo con
+// quien las invitó. Aprobar acredita; rechazar cierra sin pagar.
+router.get('/revisiones', authMiddleware, adminMiddleware, rewardsAdminController.revisiones);
+router.post(
+  '/revisiones/:id/aprobar',
+  authMiddleware,
+  adminMiddleware,
+  rewardsAdminController.aprobarRevision
+);
+router.post(
+  '/revisiones/:id/rechazar',
+  authMiddleware,
+  adminMiddleware,
+  rewardsAdminController.rechazarRevision
+);
+
 wrapRouterAsync(router);
 module.exports = router;
