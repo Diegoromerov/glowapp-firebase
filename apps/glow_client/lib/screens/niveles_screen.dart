@@ -57,6 +57,16 @@ String _plano(String s) => s
 /// se midiera contra 2.000, una usuaria con 350 XP vería 17 % y parecería que no
 /// avanza. En el tramo Pétalo→Gold, 350 XP es 8 %… que es la verdad, pero el
 /// riel de abajo da el contexto de la escalera completa.
+/// Avance sobre la escalera completa (0.0 a 1.0), en la MISMA escala en que
+/// están dibujados los hitos de la barra. Usar aquí el avance del tramo dejaba
+/// la barra y los hitos contradiciéndose: el relleno marcaba 8 % mientras el
+/// hito de 900 XP se veía al 45 % del ancho.
+double avanceAbsoluto(int xp) {
+  final techo = kEscalera.last.xp;
+  if (techo <= 0) return 0;
+  return (xp / techo).clamp(0.0, 1.0);
+}
+
 double avanceEnTramo(int xp, int indice) {
   if (indice < 0 || indice >= kEscalera.length) return 0;
   final desde = kEscalera[indice].xp;
@@ -138,7 +148,13 @@ class _NivelesScreenState extends State<NivelesScreen> {
           if (nivel == null) {
             return _ErrorReintento(onReintentar: () => setState(_cargar));
           }
-          return SingleChildScrollView(
+          return Center(
+            child: ConstrainedBox(
+              // En web el viewport es de 1200 px y el diseño está pensado para
+              // móvil: sin tope, el nivel se separa del riel y la tarjeta de IA
+              // se estira hasta parecer un panel de escritorio.
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.only(bottom: 32),
             child: Column(
@@ -159,6 +175,8 @@ class _NivelesScreenState extends State<NivelesScreen> {
                 const _Beneficios(),
               ],
             ),
+              ),
+            ),
           );
         },
       ),
@@ -174,7 +192,7 @@ class _Hero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final i = indiceDeNivel(nivel.nivel);
-    final avance = avanceEnTramo(nivel.xp, i);
+    final avance = avanceAbsoluto(nivel.xp);
     final falta = nivel.restantesParaSiguiente;
 
     return Padding(
