@@ -41,8 +41,10 @@ router.get('/', authMiddleware, xpLogController.getLogs);
 // Create a new XP log entry
 router.post('/', authMiddleware, normalizeXpPayload, validate(xpLogSchema), xpLogController.createLog);
 
-// Convert XP to Wallet Cashback balance
-router.post('/convert-cashback', authMiddleware, xpLogController.convertXpToCashback);
+// Convert XP to Wallet Cashback balance — DESHABILITADO por D-03 (2026-11-12).
+// Responde 410: el canje de dinero retirable contradice la regla del Director.
+// El canje válido es el descuento en producto sobre el libro de puntos.
+router.post('/convert-cashback', authMiddleware, xpLogController.canjeDeshabilitado);
 
 wrapRouterAsync(router);
 module.exports = router;

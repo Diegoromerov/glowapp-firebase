@@ -41,64 +41,23 @@ async function createLog(req, res) {
   }
 }
 
-// Convert XP points to Wallet Cashback balance (500 XP = $5.000 COP)
-async function convertXpToCashback(req, res) {
-  const { pool } = require('../config/db');
-  const userId = req.user.id;
-
-  const client = await pool.connect();
-  try {
-    await client.query('BEGIN');
-
-    // Saldo de XP del usuario
-    const xpRes = await client.query(
-      'SELECT COALESCE(SUM(xp_amount), 0) as total_xp FROM xp_logs WHERE user_id = $1',
-      [userId]
-    );
-    const totalXp = parseInt(xpRes.rows[0].total_xp || '0', 10);
-
-    if (totalXp < 500) {
-      await client.query('ROLLBACK');
-      return res.status(400).json({
-        error: `Requieres al menos 500 XP para canjear Cashback. Tu saldo actual es de ${totalXp} XP.`,
-      });
-    }
-
-    const blocksToConvert = Math.floor(totalXp / 500);
-    const xpToDeduct = blocksToConvert * 500;
-    const cashbackAmount = blocksToConvert * 5000;
-
-    // Descontar XP del historial (asiento negativo)
-    await client.query(
-      `INSERT INTO xp_logs (user_id, xp_amount, reason, created_at)
-       VALUES ($1, $2, $3, NOW())`,
-      [userId, -xpToDeduct, `Canje de ${xpToDeduct} XP por $${cashbackAmount} COP en Cashback`]
-    );
-
-    // Abonar saldo en wallet del prestador/cliente
-    await client.query(
-      `UPDATE perfiles_prestador SET saldo_disponible = COALESCE(saldo_disponible, 0) + $1 WHERE id = $2`,
-      [cashbackAmount, userId]
-    );
-
-    await client.query('COMMIT');
-
-    console.log(`🎉 [CASHBACK GAMIFICADO] Usuario ID ${userId} canjeó ${xpToDeduct} XP por $${cashbackAmount} COP en Billetera.`);
-
-    return res.json({
-      success: true,
-      message: `¡Canje exitoso! Se han acreditado $${cashbackAmount} COP a tu Billetera GlowApp.`,
-      xp_deducted: xpToDeduct,
-      cashback_credited: cashbackAmount,
-      remaining_xp: totalXp - xpToDeduct,
-    });
-  } catch (err) {
-    await client.query('ROLLBACK');
-    console.error('Error converting XP to cashback:', err);
-    return res.status(500).json({ error: 'Error al procesar el canje de XP por Cashback.' });
-  } finally {
-    client.release();
-  }
+// POST /api/xp-logs/convert-cashback — DESHABILITADO (D-03, aprobada 2026-11-12)
+//
+// Convertía XP en `perfiles_prestador.saldo_disponible`: saldo retirable, es
+// decir dinero real por una puerta lateral, contra la regla del Director de no
+// acreditar en Wompi. El canje válido es el descuento en GlowShop sobre el libro
+// de puntos (`points_lots`, migración 142).
+//
+// Se responde 410 Gone, no 404: la ruta existió, se usó y ya no está. Devolver
+// 404 haría creer que la URL está mal escrita. El historial de `xp_logs` no se
+// toca: los asientos viejos siguen ahí y siguen sumando XP de estado.
+function canjeDeshabilitado(_req, res) {
+  return res.status(410).json({
+    error: 'CANJE_CASHBACK_DESHABILITADO',
+    message:
+      'El canje de XP por cashback ya no está disponible. Tus puntos se canjean como descuento en GlowShop.',
+    saldo_puntos: '/api/rewards/points',
+  });
 }
 
-module.exports = { getLogs, createLog, convertXpToCashback };
+module.exports = { getLogs, createLog, canjeDeshabilitado };
