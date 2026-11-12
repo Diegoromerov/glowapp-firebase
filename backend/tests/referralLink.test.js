@@ -49,3 +49,21 @@ describe('GET /r/:codigo', () => {
     expect(res.headers.location).toContain('ref=GLOWAB12');
   });
 });
+
+describe('orden de montaje en index.js', () => {
+  // Este test existe por un bug real: la ruta se montó DESPUÉS del catch-all de la
+  // SPA y en producción `/r/CODIGO` devolvía el index de Flutter con 200. El
+  // contador nunca corría y no había ningún error que lo delatara.
+  test('`/r` se monta antes del catch-all que sirve el index de la SPA', () => {
+    const fs = require('fs');
+    const path = require('path');
+    const src = fs.readFileSync(path.join(__dirname, '..', 'index.js'), 'utf8');
+
+    const posRuta = src.indexOf("app.use('/r'");
+    const posSpa = src.indexOf('public/index.html');
+
+    expect(posRuta).toBeGreaterThan(-1);
+    expect(posSpa).toBeGreaterThan(-1);
+    expect(posRuta).toBeLessThan(posSpa);
+  });
+});

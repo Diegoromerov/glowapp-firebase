@@ -430,6 +430,10 @@ app.use('/api', globalGeneralLimiter);
 // Páginas de compartir (/s/provider/:id): llevan las etiquetas Open Graph y
 // redirigen a la app. Van ANTES del catch-all del SPA, que si no las tapa.
 app.use('/s', require('./src/routes/sharePagesRoutes'));
+// Enlace corto de invitación: cuenta el clic y redirige al registro.
+// Va ANTES del catch-all de la SPA (línea ~440): si se monta después, cualquier
+// `/r/CODIGO` devuelve el index de Flutter con 200 y el contador nunca corre.
+app.use('/r', require('./src/routes/referralLinkRoutes'));
 
 app.use('/uploads', express.static(uploadsDir));
 app.use('/admin', express.static(path.join(__dirname, 'public/admin')));
@@ -527,9 +531,8 @@ app.use('/api/xp-logs', xpLogRoutes);
 // Saldo del fondo de puntos canjeable (migración 142). El canje se aplica al
 // crear el pedido, no por un endpoint aparte.
 app.use('/api/rewards', require('./src/routes/rewardsRoutes'));
-// Enlace corto de invitación: cuenta el clic y lleva al registro. Público a
-// propósito, vive fuera de /api porque lo abre alguien que aún no tiene cuenta.
-app.use('/r', require('./src/routes/referralLinkRoutes'));
+// `/r` (enlace corto de invitación) se monta arriba, junto a `/s`, antes del
+// catch-all de la SPA. Aquí sólo queda el registro de compartires.
 // Registro de compartires (TikTok/Instagram/hoja del sistema) y XP idempotente.
 app.use('/api/social', require('./src/routes/socialRoutes'));
 app.use('/api/v1/business', businessRoutes);
