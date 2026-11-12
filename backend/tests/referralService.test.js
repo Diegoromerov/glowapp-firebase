@@ -62,13 +62,14 @@ describe('acreditarCompraReferida', () => {
     expect(pool.query).toHaveBeenCalledTimes(1);
   });
 
-  test('la compra del invitado acredita 500 puntos al referente', async () => {
+  test('la compra del invitado acredita un lote de 500 al referente y 100 de bienvenida al invitado', async () => {
     const pool = {
       query: jest
         .fn()
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ referred_by_user_id: 7 }] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'conv-1' }] })
-        .mockResolvedValueOnce({ rowCount: 1, rows: [] })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'lot-ref' }] })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'lot-inv' }] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [] }),
     };
 
@@ -81,11 +82,19 @@ describe('acreditarCompraReferida', () => {
     expect(convSql).toMatch(/ON CONFLICT \(invitee_user_id\) DO NOTHING/);
     expect(convParams).toEqual([7, 9, 'o-1', 500]);
 
-    // Los puntos van al REFERENTE (quien invita), no al invitado y no a Wompi:
-    // es el estímulo para que siga invitando a su grupo.
-    const [xpSql, xpParams] = pool.query.mock.calls[2];
-    expect(xpSql).toMatch(/INSERT INTO xp_logs/);
-    expect(xpParams).toEqual([7, 500, 'referido:compra']);
+    // Los puntos van al libro de puntos canjeables, NO a xp_logs: el XP de nivel
+    // quedó separado del dinero (migración 142).
+    const [lotSql, lotParams] = pool.query.mock.calls[2];
+    expect(lotSql).toMatch(/INSERT INTO points_lots/);
+    expect(lotSql).not.toMatch(/xp_logs/);
+    expect(lotParams).toEqual([7, 500, 'referido:compra', 'o-1', 'Premio por la compra de tu invitada', null]);
+
+    // Doble lado (D-02): el invitado recibe 100 puntos una sola vez.
+    const [bienSql, bienParams] = pool.query.mock.calls[3];
+    expect(bienSql).toMatch(/INSERT INTO points_lots/);
+    expect(bienParams[0]).toBe(9);
+    expect(bienParams[1]).toBe(100);
+    expect(bienParams[2]).toBe('referido:bienvenida');
   });
 
   test('una segunda compra del mismo invitado no vuelve a acreditar', async () => {
@@ -100,5 +109,24 @@ describe('acreditarCompraReferida', () => {
 
     expect(r.acreditado).toBe(false);
     expect(pool.query).toHaveBeenCalledTimes(2);
+  });
+
+  test('si la acreditación falla, se deshace la conversión para poder reintentar', async () => {
+    const pool = {
+      query: jest
+        .fn()
+        .mockResolvedValueOnce({ rowCount: 1, rows: [{ referred_by_user_id: 7 }] })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'conv-1' }] })
+        // El lote del referente falla: la base rechaza la inserción.
+        .mockRejectedValueOnce(new Error('insert or update on table "points_lots" violates check'))
+        .mockResolvedValueOnce({ rowCount: 1, rows: [] }),
+    };
+
+    const r = await acreditarCompraReferida({ inviteeId: 9, orderId: 'o-1', pool });
+
+    expect(r.acreditado).toBe(false);
+    const [limpiezaSql, limpiezaParams] = pool.query.mock.calls[3];
+    expect(limpiezaSql).toMatch(/DELETE FROM referral_conversions/);
+    expect(limpiezaParams).toEqual(['conv-1']);
   });
 });
