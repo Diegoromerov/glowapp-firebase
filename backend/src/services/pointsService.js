@@ -345,6 +345,36 @@ async function revertir({ origen, referenciaId, puntos = null, cliente = poolPor
   return { revertido, noCubierto: Math.max(pedido - revertido, 0) };
 }
 
+/**
+ * Revierte el premio de referidos que generó un pedido concreto.
+ *
+ * El premio vive en un lote con `origen = 'referido:compra'` y
+ * `referencia_id = <id del pedido de la invitada>`. Si ese pedido se reembolsa,
+ * el premio deja de estar justificado: se devuelve hasta lo que no se haya
+ * gastado y el resto se informa como `noCubierto` (los puntos ya usados no se
+ * persiguen, la pantalla de condiciones lo dice así).
+ *
+ * No falla cuando el pedido nunca generó premio: la mayoría no lo hace.
+ */
+async function revertirPremioDePedido({ pedidoId, puntos = null, cliente = poolPorDefecto } = {}) {
+  try {
+    const r = await revertir({
+      origen: ORIGEN_PREMIO_REFERIDO,
+      referenciaId: pedidoId,
+      puntos,
+      cliente,
+    });
+    return { ...r, sinPremio: false };
+  } catch (e) {
+    if (e && e.code === 'LOTE_NO_ENCONTRADO') {
+      return { revertido: 0, noCubierto: 0, sinPremio: true };
+    }
+    throw e;
+  }
+}
+
+const ORIGEN_PREMIO_REFERIDO = 'referido:compra';
+
 module.exports = {
   PointsError,
   acreditar,
@@ -354,6 +384,7 @@ module.exports = {
   consumir,
   liberar,
   revertir,
+  revertirPremioDePedido,
   VALOR_PUNTO_COP,
   BLOQUE_CANJE,
   MESES_VIGENCIA,

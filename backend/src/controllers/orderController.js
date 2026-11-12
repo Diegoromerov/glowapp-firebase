@@ -1544,6 +1544,25 @@ async function cancelOrder(req, res) {
       // Si estaba pagado, crear transacción de reembolso (stub)
       if (order.estado === 'PAGADO' || order.estado === 'DESPACHADO') {
         console.warn(`⚠️ [ADMIN CANCEL] Pedido ${orderId} cancelado tras pago/despacho — requiere reembolso manual`);
+
+        // El premio de referidos que generó este pedido deja de estar
+        // justificado: se revierte hasta lo no gastado, como publican las
+        // condiciones. Si falla, la cancelación sigue: el reembolso es manual
+        // y no puede quedar bloqueado por el libro de puntos.
+        try {
+          const rev = await pointsService.revertirPremioDePedido({
+            pedidoId: orderId,
+            cliente: client,
+          });
+          if (!rev.sinPremio) {
+            console.warn(
+              `↩️ [ADMIN CANCEL] Premio revertido: ${rev.revertido} puntos ` +
+              `(ya gastado/no cubierto: ${rev.noCubierto})`
+            );
+          }
+        } catch (e) {
+          console.error('❌ [ADMIN CANCEL] No se pudo revertir el premio de referidos:', e.message);
+        }
       }
 
       // Actualizar pedido a CANCELADO
