@@ -65,6 +65,7 @@ describe('OrderController - createOrder (t_fix_pagos_01)', () => {
     // Mock booking validation
     mockClient.query
       .mockResolvedValueOnce({ rows: [] }) // BEGIN
+      .mockResolvedValueOnce({ rows: [{ set_config: '7' }] }) // contexto RLS de la conexión del pedido
       .mockResolvedValueOnce({ // booking validation
         rows: [{ id: validBookingId, provider_id: 2, client_id: 1 }]
       })
@@ -169,6 +170,7 @@ describe('OrderController - createOrder (t_fix_pagos_01)', () => {
   test('debe fallar si booking no pertenece al usuario', async () => {
     mockClient.query
       .mockResolvedValueOnce({ rows: [] }) // BEGIN
+      .mockResolvedValueOnce({ rows: [{ set_config: '7' }] }) // contexto RLS de la conexión del pedido
       .mockResolvedValueOnce({ // booking validation - different client
         rows: [{ id: validBookingId, provider_id: 2, client_id: 999 }]
       });
@@ -213,6 +215,7 @@ describe('OrderController - createOrder (t_fix_pagos_01)', () => {
   function encadenarHastaElInsert(tenantDelComprador) {
     return mockClient.query
       .mockResolvedValueOnce({ rows: [] })                                                    // BEGIN
+      .mockResolvedValueOnce({ rows: [{ set_config: '7' }] })                                                    // contexto RLS de la conexión del pedido
       .mockResolvedValueOnce({ rows: [{ id: validBookingId, provider_id: 2, client_id: 1 }] }) // reserva
       .mockResolvedValueOnce({ rows: [{ id: 1, nombre: 'P', stock: 10, precio: 50000 }] })     // producto
       .mockResolvedValueOnce({ rows: [] })                                                    // UPDATE stock
@@ -262,6 +265,7 @@ describe('OrderController - createOrder (t_fix_pagos_01)', () => {
   test('sin tenant resoluble falla 409 con mensaje propio, no un 500 opaco', async () => {
     mockClient.query
       .mockResolvedValueOnce({ rows: [] })
+      .mockResolvedValueOnce({ rows: [{ set_config: '7' }] }) // contexto RLS de la conexión del pedido
       .mockResolvedValueOnce({ rows: [{ id: validBookingId, provider_id: 2, client_id: 1 }] })
       .mockResolvedValueOnce({ rows: [{ id: 1, nombre: 'P', stock: 10, precio: 50000 }] })
       .mockResolvedValueOnce({ rows: [] })

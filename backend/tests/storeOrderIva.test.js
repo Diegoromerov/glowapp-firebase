@@ -38,6 +38,7 @@ function montarEscenario({ precio, incluyeIva, cantidad = 1 }) {
 
   client.query
     .mockResolvedValueOnce({ rows: [] })                                   // BEGIN
+    .mockResolvedValueOnce({ rows: [{ set_config: '7' }] })                                   // contexto RLS de la conexión del pedido
     .mockResolvedValueOnce({ rows: [{ id: BOOKING_ID, provider_id: 2, client_id: 1 }] }) // booking
     .mockResolvedValueOnce({ rows: [{ id: 1, nombre: 'Producto', stock: 50, precio }] }) // FOR UPDATE
     .mockResolvedValueOnce({ rows: [] })                                   // UPDATE stock
