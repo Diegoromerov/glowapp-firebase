@@ -176,29 +176,42 @@ describir('libro de puntos sobre Postgres real', () => {
   });
 
   test('dos canjes simultáneos no gastan dos veces el mismo punto', async () => {
-    await pointsService.acreditar({
+    const lote = await pointsService.acreditar({
       userId,
       puntos: 500,
       origen: 'referido:compra',
       referenciaId: pedidos[0],
       cliente: pool,
     });
+    // Si esto falla, el problema es del setup (lote ya existente), no del bloqueo.
+    expect(lote.acreditado).toBe(true);
 
     const a = await pool.connect();
     const b = await pool.connect();
     try {
       await a.query('BEGIN');
-      const pa = pointsService.comprometer({ userId, pedidoId: pedidos[1], puntos: 400, cliente: a });
-      await esperar(150); // deja que A tome el bloqueo antes de que B lo intente
+      // Se resuelve el resultado, no el turno: el invariante es que UNO gane y el
+      // otro reciba SALDO_INSUFICIENTE, sin importar cuál llegue primero al
+      // bloqueo. Atarlo al orden hacía el test frágil por tiempos.
+      const pa = pointsService
+        .comprometer({ userId, pedidoId: pedidos[1], puntos: 400, cliente: a })
+        .then((r) => ({ ok: true, r }), (e) => ({ ok: false, e }));
+      await esperar(150); // deja que A intente tomar el bloqueo antes que B
 
       await b.query('BEGIN');
-      const pb = pointsService.comprometer({ userId, pedidoId: pedidos[2], puntos: 400, cliente: b });
+      const pb = pointsService
+        .comprometer({ userId, pedidoId: pedidos[2], puntos: 400, cliente: b })
+        .then((r) => ({ ok: true, r }), (e) => ({ ok: false, e }));
 
-      await pa;
-      await a.query('COMMIT');
+      const ra = await pa;
+      await a.query(ra.ok ? 'COMMIT' : 'ROLLBACK');
 
-      await expect(pb).rejects.toMatchObject({ code: 'SALDO_INSUFICIENTE' });
-      await b.query('ROLLBACK');
+      const rb = await pb;
+      await b.query(rb.ok ? 'COMMIT' : 'ROLLBACK');
+
+      expect([ra.ok, rb.ok].filter(Boolean)).toHaveLength(1);
+      const perdedor = ra.ok ? rb : ra;
+      expect(perdedor.e).toMatchObject({ code: 'SALDO_INSUFICIENTE' });
     } finally {
       a.release();
       b.release();
