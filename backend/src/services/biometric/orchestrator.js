@@ -1,4 +1,6 @@
 const youcamClient = require('./youcam.client');
+const cuotasService = require('../cuotasService');
+const { PUNTOS_LECTURA } = require('../../config/cuotasIA');
 const geminiClient = require('./gemini.client');
 const deepseekClient = require('./deepseek.client');
 const profileService = require('./profile.service');
@@ -157,6 +159,32 @@ class BiometricOrchestrator {
     });
 
     logger.info('Perfil biométrico guardado exitosamente con resiliencia', { userId: parsedUserId, profileId: profile.id });
+
+    // E5.0: consumo real de IA. Cada análisis nuevo paga una lectura HD de YouCam
+    // (12 puntos del paquete, $1.920 COP) y hasta hoy no quedaba registrada en
+    // ningún sitio: las cuotas de nivel se repartían a ciegas. Un acierto de caché
+    // no es una lectura nueva y no se cobra, así que no se registra.
+    // No puede romper el análisis: el perfil ya está guardado y la respuesta ya
+    // está calculada; si el registro falla, se anota y se sigue.
+    if (!reusable) {
+      try {
+        await cuotasService.registrarConsumo({
+          userId: parsedUserId,
+          proveedor: 'youcam',
+          modelo: 'skin-analysis-hd',
+          tipoUso: 'analisis',
+          lecturaTipo: 'HD',
+          puntosConsumidos: PUNTOS_LECTURA.HD,
+          traceId,
+          clave: `analisis:${traceId || `user:${parsedUserId}:${profile.id}`}`,
+        });
+      } catch (e) {
+        logger.warn('No se pudo registrar el consumo de IA (no bloquea el análisis)', {
+          userId: parsedUserId,
+          error: e.message,
+        });
+      }
+    }
 
     // Y-F1: persistir la llamada completa (16 acciones HD, raw_score, máscaras) en su
     // propia serie temporal. Si la escritura falla no se rompe la respuesta: el análisis
