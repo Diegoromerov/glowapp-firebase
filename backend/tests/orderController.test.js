@@ -256,7 +256,18 @@ describe('OrderController - createOrder (t_fix_pagos_01)', () => {
 
     await createOrder(createMockReq(validUser, validBody), createMockRes());
 
-    const consulta = mockClient.query.mock.calls.find(c => c[0].includes('app_platform_tenant_id'));
+    // 1) El contexto RLS de la conexión del pedido se fija desde el token; si el
+    //    token no trae inquilino, cae a la función de plataforma.
+    const contexto = mockClient.query.mock.calls.find((c) => /set_config/i.test(c[0]));
+    expect(contexto).toBeDefined();
+    expect(contexto[0]).toMatch(/COALESCE/i);
+    expect(contexto[0]).toMatch(/app_platform_tenant_id/);
+    expect(contexto[1]).toEqual([null]); // validUser no trae tenant_id en el token
+
+    // 2) La resolución del inquilino para el INSERT sigue leyendo al comprador.
+    const consulta = mockClient.query.mock.calls.find(
+      (c) => c[0].includes('app_platform_tenant_id') && c[0].includes('FROM usuarios')
+    );
     expect(consulta).toBeDefined();
     expect(consulta[0]).toMatch(/COALESCE/i);
     expect(consulta[1]).toEqual([validUser.id]);
