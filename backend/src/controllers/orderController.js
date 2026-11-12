@@ -1088,7 +1088,11 @@ exports.storeWebhook = async (req, res) => {
         // mientras el pago viajaba, el cobro existe: se alerta para reembolso en
         // vez de revivir un pedido cancelado.
         const actualizado = await client.query(
-          `UPDATE pedidos_tienda SET estado = 'PAGADO' WHERE id = $1 AND estado = 'PENDIENTE_PAGO';`,
+          // `pagado_en` es el sello de tiempo del cobro: lo leen el recibo, el
+          // reporte de pedidos y el KPI. Sin él, un pedido PAGADO aparecía con
+          // fecha de pago vacía y no había forma de ordenar la cola por antigüedad
+          // del cobro. COALESCE lo deja idempotente ante un reintento del webhook.
+          `UPDATE pedidos_tienda SET estado = 'PAGADO', pagado_en = COALESCE(pagado_en, NOW()) WHERE id = $1 AND estado = 'PENDIENTE_PAGO';`,
           [order.id]
         );
 
