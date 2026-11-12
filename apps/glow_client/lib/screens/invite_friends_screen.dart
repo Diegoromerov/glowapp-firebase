@@ -248,6 +248,14 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
             style: TextStyle(fontSize: 11, color: t.textSecondary),
           ),
         ],
+        const SizedBox(height: 8),
+        TextButton(
+          onPressed: () => Navigator.pushNamed(context, '/programa-puntos'),
+          child: const Text(
+            'Ver condiciones del programa',
+            style: TextStyle(fontSize: 12, decoration: TextDecoration.underline),
+          ),
+        ),
       ],
     );
   }

@@ -343,6 +343,24 @@ class _TarjetaPuntosCanjeables extends StatelessWidget {
                     ),
                   ),
                 ],
+                const SizedBox(height: 6),
+                TextButton(
+                  onPressed: () => Navigator.pushNamed(context, '/programa-puntos'),
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: const Size(0, 28),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  child: const Text(
+                    'Cómo funcionan los puntos',
+                    style: TextStyle(
+                      fontFamily: 'CormorantGaramond',
+                      fontSize: 12,
+                      decoration: TextDecoration.underline,
+                      color: Color(0xFF8A6A2F),
+                    ),
+                  ),
+                ),
                 if (saldo.porVencer.isNotEmpty) ...[
                   const SizedBox(height: 8),
                   Text(

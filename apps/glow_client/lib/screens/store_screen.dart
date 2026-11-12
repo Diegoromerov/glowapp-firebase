@@ -118,6 +118,21 @@ class _StoreScreenState extends State<StoreScreen> {
             detalle,
             style: const TextStyle(fontSize: 12, height: 1.3, color: Color(0xFF6B5A48)),
           ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: () => Navigator.pushNamed(context, '/programa-puntos'),
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(0, 26),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              child: const Text(
+                'Ver condiciones',
+                style: TextStyle(fontSize: 11, decoration: TextDecoration.underline),
+              ),
+            ),
+          ),
         ],
       ),
     );
