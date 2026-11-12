@@ -82,6 +82,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '147_usuarios_sin_tenant.sql',
   '148_productos_sin_tenant.sql',
   '149_ai_usage_events.sql',
+  '150_usuarios_referral_code.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -164,6 +165,7 @@ const MIGRACIONES_ARRANQUE = [
   '147_usuarios_sin_tenant.sql',
   '148_productos_sin_tenant.sql',
   '149_ai_usage_events.sql',
+  '150_usuarios_referral_code.sql',
 
   '125_usuario_lookup_sin_contexto.sql',
 
