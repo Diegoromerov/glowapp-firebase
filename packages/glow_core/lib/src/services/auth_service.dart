@@ -630,6 +630,28 @@ class AuthService {
 /// Código de invitación que trae la URL de arranque (`#/auth/register?ref=...`),
 /// o `null`. En web se lee del fragmento; en móvil llega por el registro normal
 /// y la app lo pasa explícito.
+/// Normaliza un código de invitación escrito a mano.
+///
+/// La gente lo copia con espacios, en minúsculas o con el enlace completo
+/// pegado por error. Se limpia todo eso aquí y no en el backend: el formato del
+/// código es un asunto de la app.
+String normalizarCodigoInvitacion(String? crudo) {
+  if (crudo == null) return '';
+  var limpio = crudo.trim();
+  // Si pegó el enlace entero, delegar en quien ya sabe leerlo: el `ref` puede
+  // venir en la query o —como en la web— dentro del fragmento (`#/register?ref=`),
+  // y ahí `queryParameters` no lo ve.
+  if (limpio.contains('://') || limpio.contains('ref=')) {
+    final enlace = Uri.tryParse(limpio);
+    final delEnlace = enlace == null ? null : codigoInvitacionDeLaUrl(enlace);
+    if (delEnlace != null && delEnlace.trim().isNotEmpty) limpio = delEnlace;
+  }
+  limpio = limpio.toUpperCase();
+  // Sólo letras y números: fuera comillas, guiones de más y saltos de línea.
+  limpio = limpio.replaceAll(RegExp(r'[^A-Z0-9]'), '');
+  return limpio;
+}
+
 String? codigoInvitacionDeLaUrl(Uri url) {
   final delFragmento = Uri.splitQueryString(
     url.fragment.contains('?') ? url.fragment.split('?').last : '',

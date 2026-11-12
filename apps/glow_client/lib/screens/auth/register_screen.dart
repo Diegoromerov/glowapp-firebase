@@ -17,12 +17,25 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
+/// Código que llegó por el enlace, ya normalizado. Vacío si no hay.
+String _codigoDelEnlace() => normalizarCodigoInvitacion(
+      codigoInvitacionDeLaUrl(
+        kIsWeb ? (DeepLinkService.urlDeArranque ?? Uri.base) : Uri.base,
+      ),
+    );
+
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   final _phoneCtrl = TextEditingController();
+
+  /// Código de invitación. Antes de este campo, la única forma de atribuir era
+  /// abrir el enlace `?ref=`: quien ya tenía la app instalada, o recibía el
+  /// código de viva voz, no podía usarlo en ningún sitio y esa invitación se
+  /// perdía para siempre.
+  final _refCtrl = TextEditingController(text: _codigoDelEnlace());
 
   bool _isLoading = false;
 
@@ -38,6 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _emailCtrl.dispose();
     _passCtrl.dispose();
     _phoneCtrl.dispose();
+    _refCtrl.dispose();
     super.dispose();
   }
 
@@ -66,11 +80,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         password,
         phone.isNotEmpty ? phone : null,
         'CLIENTE',
-        // Quien llega desde un enlace de invitación (`?ref=`) queda atribuido.
-        ref: kIsWeb
-            ? codigoInvitacionDeLaUrl(
-                DeepLinkService.urlDeArranque ?? Uri.base)
-            : codigoInvitacionDeLaUrl(Uri.base),
+        // El código sale del campo: llega precargado si vino por el enlace, y
+        // si no, se puede escribir a mano. Antes sólo se leía de la URL y quien
+        // ya tenía la app instalada no tenía dónde ponerlo.
+        ref: normalizarCodigoInvitacion(_refCtrl.text).isEmpty
+            ? _codigoDelEnlace()
+            : normalizarCodigoInvitacion(_refCtrl.text),
       );
 
       if (success && mounted) {
@@ -315,6 +330,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
               hint: l10n.registerPhoneHint,
               prefixIcon: Icon(
                 Icons.phone_outlined,
+                color: t.brandPrimary,
+                size: 20,
+              ),
+              style: context.bodyContext,
+            ),
+
+            const SizedBox(height: 12),
+
+            S4TextField(
+              controller: _refCtrl,
+              textCapitalization: TextCapitalization.characters,
+              label: 'Código de invitación (opcional)',
+              hint: 'GLOW1234',
+              prefixIcon: Icon(
+                Icons.card_giftcard_outlined,
                 color: t.brandPrimary,
                 size: 20,
               ),
