@@ -1,8 +1,15 @@
-// backend/tests/referralService.test.js
-// Atribución y conversión del programa de referidos.
+// Atribución y premio del programa de referidos.
+//
+// Regla del Director (2026-11-11): $5.000 COP en puntos —no Wompi— y sólo
+// cuando el invitado hace una compra efectiva de productos; no por recomendar ni
+// por reservar.
 jest.mock('../src/config/db', () => ({ pool: { query: jest.fn() } }));
 
-const { atribuirInvitacion, registrarConversion } = require('../src/services/referralService');
+const {
+  atribuirInvitacion,
+  acreditarCompraReferida,
+  PUNTOS_POR_COMPRA_REFERIDA,
+} = require('../src/services/referralService');
 
 describe('atribuirInvitacion', () => {
   beforeEach(() => jest.clearAllMocks());
@@ -20,7 +27,6 @@ describe('atribuirInvitacion', () => {
     const [sql, params] = pool.query.mock.calls[0];
     expect(sql).toMatch(/UPDATE usuarios u/);
     expect(sql).toMatch(/r\.id <> u\.id/);
-    expect(sql).toMatch(/referred_by_user_id IS NULL/);
     expect(params).toEqual([42, 'GLOWAB12']);
   });
 
@@ -38,38 +44,51 @@ describe('atribuirInvitacion', () => {
   });
 });
 
-describe('registrarConversion', () => {
+describe('acreditarCompraReferida', () => {
   beforeEach(() => jest.clearAllMocks());
 
-  test('un invitado sin referidor no genera conversión', async () => {
+  test('el premio son 500 puntos ($5.000 COP con la regla del canje)', () => {
+    expect(PUNTOS_POR_COMPRA_REFERIDA).toBe(500);
+  });
+
+  test('un invitado sin referidor no recibe nada', async () => {
     const pool = {
       query: jest.fn().mockResolvedValueOnce({ rowCount: 1, rows: [{ referred_by_user_id: null }] }),
     };
 
-    expect(await registrarConversion({ inviteeId: 9, pool })).toBe(false);
+    const r = await acreditarCompraReferida({ inviteeId: 9, orderId: 'o-1', pool });
+
+    expect(r.acreditado).toBe(false);
     expect(pool.query).toHaveBeenCalledTimes(1);
   });
 
-  test('el primer servicio del invitado registra la conversión una sola vez', async () => {
+  test('la compra del invitado acredita 500 puntos a su fondo', async () => {
     const pool = {
       query: jest
         .fn()
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ referred_by_user_id: 7 }] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 'conv-1' }] })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [] })
         .mockResolvedValueOnce({ rowCount: 1, rows: [] }),
     };
 
-    const ok = await registrarConversion({ inviteeId: 9, bookingId: 'b-1', pool });
+    const r = await acreditarCompraReferida({ inviteeId: 9, orderId: 'o-1', pool });
 
-    expect(ok).toBe(true);
-    const [insertSql, insertParams] = pool.query.mock.calls[1];
-    expect(insertSql).toMatch(/INSERT INTO referral_conversions/);
-    expect(insertSql).toMatch(/ON CONFLICT \(invitee_user_id\) DO NOTHING/);
-    expect(insertParams).toEqual([7, 9, 'b-1']);
-    expect(pool.query.mock.calls[2][0]).toMatch(/referral_converted_at = NOW\(\)/);
+    expect(r).toEqual({ acreditado: true, puntos: 500, referidorId: 7 });
+
+    const [convSql, convParams] = pool.query.mock.calls[1];
+    expect(convSql).toMatch(/INSERT INTO referral_conversions/);
+    expect(convSql).toMatch(/ON CONFLICT \(invitee_user_id\) DO NOTHING/);
+    expect(convParams).toEqual([7, 9, 'o-1', 500]);
+
+    // Los puntos van al invitado (a quien el mensaje le promete el beneficio),
+    // y NO a Wompi.
+    const [xpSql, xpParams] = pool.query.mock.calls[2];
+    expect(xpSql).toMatch(/INSERT INTO xp_logs/);
+    expect(xpParams).toEqual([9, 500, 'referido:compra']);
   });
 
-  test('la segunda reserva no vuelve a contar', async () => {
+  test('una segunda compra del mismo invitado no vuelve a acreditar', async () => {
     const pool = {
       query: jest
         .fn()
@@ -77,7 +96,9 @@ describe('registrarConversion', () => {
         .mockResolvedValueOnce({ rowCount: 0, rows: [] }),
     };
 
-    expect(await registrarConversion({ inviteeId: 9, pool })).toBe(false);
+    const r = await acreditarCompraReferida({ inviteeId: 9, orderId: 'o-2', pool });
+
+    expect(r.acreditado).toBe(false);
     expect(pool.query).toHaveBeenCalledTimes(2);
   });
 });

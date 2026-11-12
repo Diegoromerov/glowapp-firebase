@@ -1,3 +1,4 @@
+const { acreditarCompraReferida } = require('../services/referralService');
 const { pool } = require('../config/db');
 const { resolverPrecio } = require('../services/precioService');
 const { calcularEnvio } = require('../services/envioService');
@@ -963,6 +964,23 @@ exports.storeWebhook = async (req, res) => {
         await client.query('COMMIT');
         if (pedidoPagadoId) {
           console.log(`✅ [STORE WEBHOOK] Pedido ${pedidoPagadoId} marcado PAGADO`);
+
+          // Compra efectiva: si el comprador llegó por invitación, el referidor
+          // cobra su fondo de puntos (500 = $5.000 COP). Fuera de la transacción
+          // y best-effort: el cobro ya está confirmado y no se revierte por esto.
+          try {
+            const credito = await acreditarCompraReferida({
+              inviteeId: order.comprador_id,
+              orderId: order.id,
+            });
+            if (credito.acreditado) {
+              console.log(
+                `🎁 [REFERIDOS] ${credito.puntos} puntos al referidor ${credito.referidorId} por el pedido ${order.id}`
+              );
+            }
+          } catch (e) {
+            console.error('⚠️ [REFERIDOS] Fallo acreditando compra referida:', e.message);
+          }
         }
       } else if (['DECLINED', 'VOIDED', 'ERROR'].includes(status)) {
         // Un evento fuera de orden no puede degradar un pago ya confirmado.

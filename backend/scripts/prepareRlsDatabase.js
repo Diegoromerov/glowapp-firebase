@@ -73,6 +73,7 @@ const MIGRACIONES_BASE_NUEVA = [
 '138_social_shares.sql',
 '139_referidos_atribucion.sql',
   '140_producto_compartido.sql',
+  '141_referido_compra_puntos.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -146,6 +147,7 @@ const MIGRACIONES_ARRANQUE = [
   '138_social_shares.sql',
   '139_referidos_atribucion.sql',
   '140_producto_compartido.sql',
+  '141_referido_compra_puntos.sql',
 
   '125_usuario_lookup_sin_contexto.sql',
 

@@ -28,39 +28,70 @@ async function atribuirInvitacion({ nuevoUsuarioId, codigo, pool = poolPorDefect
   return (res.rowCount || 0) > 0;
 }
 
-/// Registra la conversión del invitado en su primera reserva.
+/// Puntos que recibe el referidor por una compra efectiva del invitado.
 ///
-/// UNIQUE(invitee_user_id) en la tabla hace que la segunda reserva no cuente dos
-/// veces; aquí se usa ON CONFLICT DO NOTHING para que sea idempotente sin
-/// depender de leer antes.
-async function registrarConversion({ inviteeId, bookingId = null, pool = poolPorDefecto }) {
-  if (!inviteeId) return false;
+/// 500 puntos = $5.000 COP, con la regla que ya usa el canje (500 XP = $5.000).
+/// NO se acredita a Wompi: entra al fondo de puntos, canjeable como descuento en
+/// productos.
+const PUNTOS_POR_COMPRA_REFERIDA = 500;
 
-  const invitado = await pool.query(
-    `SELECT referred_by_user_id FROM usuarios WHERE id = $1 AND referred_by_user_id IS NOT NULL`,
-    [inviteeId]
-  );
-  const referidor = invitado.rows[0] && invitado.rows[0].referred_by_user_id;
-  if (!referidor) return false;
+/// Acredita el premio cuando el invitado PAGA un pedido de producto.
+///
+/// Regla del Director (2026-11-11): ni por la mera recomendación ni por reservar;
+/// sólo por una compra efectiva de cualquier producto, y el premio entra al fondo
+/// de puntos (canjeable como descuento en productos), nunca a Wompi.
+///
+/// El premio se acredita al INVITADO, que es a quien el mensaje de invitación le
+/// promete el beneficio («... cuando hagas tu primera compra»). El referidor queda
+/// registrado en `referral_conversions` para medir; si el Director prefiere que
+/// cobre el referidor, es cambiar `[referidorId, ...]` por `[inviteeId, ...]` en el
+/// INSERT de xp_logs.
+///
+/// Idempotente: UNIQUE(invitee_user_id) y UNIQUE(order_id) hacen que un pedido
+/// acredite una sola vez.
+///
+/// Devuelve `{ acreditado, puntos, referidorId }`. Nunca lanza: un fallo aquí no
+/// puede tumbar un cobro ya confirmado.
+async function acreditarCompraReferida({ inviteeId, orderId, pool = poolPorDefecto }) {
+  const sinCredito = { acreditado: false, puntos: 0, referidorId: null };
+  if (!inviteeId) return sinCredito;
 
-  const ins = await pool.query(
-    `INSERT INTO referral_conversions (referrer_user_id, invitee_user_id, booking_id)
-     VALUES ($1, $2, $3)
-     ON CONFLICT (invitee_user_id) DO NOTHING
-     RETURNING id`,
-    [referidor, inviteeId, bookingId]
-  );
+  try {
+    const invitado = await pool.query(
+      `SELECT referred_by_user_id FROM usuarios WHERE id = $1 AND referred_by_user_id IS NOT NULL`,
+      [inviteeId]
+    );
+    const referidorId = invitado.rows[0] && invitado.rows[0].referred_by_user_id;
+    if (!referidorId) return sinCredito;
 
-  if ((ins.rowCount || 0) > 0) {
-    // Marca de tiempo para poder medir «invitado que nunca reservó».
+    const ins = await pool.query(
+      `INSERT INTO referral_conversions
+         (referrer_user_id, invitee_user_id, order_id, points_awarded)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (invitee_user_id) DO NOTHING
+       RETURNING id`,
+      [referidorId, inviteeId, orderId || null, PUNTOS_POR_COMPRA_REFERIDA]
+    );
+    if ((ins.rowCount || 0) === 0) return { ...sinCredito, referidorId };
+
+    // El premio va al fondo de puntos del referidor (xp_logs), de donde se canjea
+    // como descuento en productos. No se toca Wompi.
+    await pool.query(
+      `INSERT INTO xp_logs (user_id, xp_amount, reason) VALUES ($1, $2, $3)`,
+      [inviteeId, PUNTOS_POR_COMPRA_REFERIDA, 'referido:compra']
+    );
+
     await pool.query(
       `UPDATE usuarios SET referral_converted_at = NOW()
         WHERE id = $1 AND referral_converted_at IS NULL`,
       [inviteeId]
     );
-    return true;
+
+    return { acreditado: true, puntos: PUNTOS_POR_COMPRA_REFERIDA, referidorId };
+  } catch (error) {
+    console.error('⚠️ [REFERIDOS] No se pudo acreditar la compra referida:', error.message);
+    return sinCredito;
   }
-  return false;
 }
 
-module.exports = { atribuirInvitacion, registrarConversion };
+module.exports = { atribuirInvitacion, acreditarCompraReferida, PUNTOS_POR_COMPRA_REFERIDA };

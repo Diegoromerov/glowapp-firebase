@@ -617,9 +617,14 @@ exports.getReferralInfo = async (req, res) => {
       await pool.query(`UPDATE usuarios SET referral_code = $1 WHERE id = $2`, [referralCode, userId]);
     }
 
-    const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-frontend-production.up.railway.app').replace(/\/$/, '');
+    // El enlace de invitación tiene que abrir LA APP del cliente. El host por
+    // defecto era el frontend viejo de Railway, así que el `?ref=` caía en una
+    // aplicación que ya no existe.
+    const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-client.web.app').replace(/\/$/, '');
     const shareUrl = `${frontendBase}/#/register?ref=${referralCode}`;
-    const shareMessage = `¡Te regalo $10.000 COP para tu primer servicio de belleza en GlowApp! Usá mi código ${referralCode} o registrate aquí: ${shareUrl}`;
+    // Regla del Director: $5.000 COP en PUNTOS (no Wompi) y sólo cuando el
+    // invitado hace una compra efectiva de productos.
+    const shareMessage = `¡Únete a GlowApp con mi código ${referralCode}! Cuando hagas tu primera compra de productos te acreditamos $5.000 COP en puntos para descuentos. Regístrate aquí: ${shareUrl}`;
 
     res.json({
       success: true,
