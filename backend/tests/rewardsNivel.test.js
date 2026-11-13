@@ -33,7 +33,7 @@ test('el uso manda: 2 reservas y 1 compra suman 3 lecturas sobre la base gastada
 test('Diamante sin hechos recibe 6, no 25', async () => {
   pool.query.mockResolvedValueOnce(fila({ xp: 2500, usados: 1 }));
   const r = await cuotasService.estadoDelMes({ userId: 1 });
-  expect(r.nivel).toBe('Diamante');
+  expect(r.nivel).toBe('Élite');
   expect(r.lecturas.otorgadas).toBe(6);
   expect(r.xp_siguiente_nivel).toBeNull();
 });

@@ -36,8 +36,8 @@ const BONO_POR_NIVEL = { glow: 0, petalo: 1, oro: 3, diamante: 6 };
 const NIVELES = [
   { clave: 'glow', nombre: 'Glow', xp: 0 },
   { clave: 'petalo', nombre: 'Pétalo', xp: 300 },
-  { clave: 'oro', nombre: 'Oro', xp: 900 },
-  { clave: 'diamante', nombre: 'Diamante', xp: 2000 },
+  { clave: 'oro', nombre: 'Gold', xp: 900 },
+  { clave: 'diamante', nombre: 'Élite', xp: 2000 },
 ];
 
 /** Nivel a partir del XP acumulado. Se calcula, no se guarda. */
