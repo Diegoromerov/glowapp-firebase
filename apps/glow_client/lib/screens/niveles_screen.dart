@@ -538,10 +538,10 @@ class _TarjetaIA extends StatelessWidget {
                         Text(
                           '${nivel.disponibles}',
                           style: const TextStyle(
-                            fontFamily: 'CormorantGaramond',
-                            fontSize: 38,
+                            fontFamily: 'Manrope',
+                            fontSize: 34,
                             height: 1,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w800,
                             color: LuxeColors.nude50,
                           ),
                         ),
@@ -722,10 +722,10 @@ class _TarjetaPuntos extends StatelessWidget {
                     Text(
                       '$puntos',
                       style: const TextStyle(
-                        fontFamily: 'CormorantGaramond',
-                        fontSize: 26,
+                        fontFamily: 'Manrope',
+                        fontSize: 24,
                         height: 1,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w800,
                         color: LuxeColors.nude900,
                       ),
                     ),
@@ -951,10 +951,10 @@ class _Beneficios extends StatelessWidget {
                       TextSpan(
                         text: b.titulo,
                         style: const TextStyle(
-                          fontFamily: 'CormorantGaramond',
-                          fontSize: 30,
+                          fontFamily: 'Manrope',
+                          fontSize: 26,
                           height: 1,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w800,
                           color: LuxeColors.nude900,
                         ),
                       ),
