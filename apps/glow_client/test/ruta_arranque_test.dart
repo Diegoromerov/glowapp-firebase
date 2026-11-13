@@ -18,6 +18,21 @@ void main() {
       );
     });
 
+    test('ruta limpia: /register?ref= abre el registro', () {
+      expect(
+        rutaDeArranque(Uri.parse('https://x.app/register?ref=GLOW6DF8')),
+        '/register',
+      );
+    });
+
+    test('la ruta limpia manda sobre el #/home que añade Flutter', () {
+      expect(
+        rutaDeArranque(
+            Uri.parse('https://x.app/register?ref=GLOW6DF8#/home')),
+        '/register',
+      );
+    });
+
     test('sin ruta en la URL, abre el inicio', () {
       expect(rutaDeArranque(Uri.parse('https://x.app/')), '/home');
       expect(rutaDeArranque(Uri.parse('https://x.app')), '/home');
