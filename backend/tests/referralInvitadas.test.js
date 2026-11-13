@@ -43,8 +43,8 @@ test('devuelve las invitadas con nombre de pila y estado', async () => {
     [/FROM referral_conversions/, { rows: [{ convertidos: 1, puntos: 500 }] }],
     [/FROM usuarios\s+WHERE referred_by_user_id/, {
       rows: [
-        { nombre: 'Carla Marcela Ruiz', created_at: '2026-11-01T10:00:00Z', referral_converted_at: '2026-11-02T10:00:00Z' },
-        { nombre: 'Diana', created_at: '2026-11-03T10:00:00Z', referral_converted_at: null },
+        { nombre: 'Carla Marcela Ruiz', fecha_alta: '2026-11-01T10:00:00Z', referral_converted_at: '2026-11-02T10:00:00Z' },
+        { nombre: 'Diana', fecha_alta: '2026-11-03T10:00:00Z', referral_converted_at: null },
       ],
     }],
   ]);

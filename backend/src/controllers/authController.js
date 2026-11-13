@@ -706,28 +706,24 @@ exports.getReferralInfo = async (req, res) => {
       // mortal que tuvo el borrado de cuenta.
       const lista = await tenantRouting.runAsSystem({ pool }, (c) =>
         c.query(
-          `SELECT nombre, created_at, referral_converted_at
+          `SELECT nombre, fecha_alta, referral_converted_at
              FROM usuarios
             WHERE referred_by_user_id = $1
-            ORDER BY created_at DESC
+            ORDER BY fecha_alta DESC NULLS LAST
             LIMIT 50`,
           [userId]
         )
       );
-      const tot = await tenantRouting.runAsSystem({ pool }, (c) =>
-        c.query('SELECT COUNT(*)::int AS n FROM usuarios WHERE referred_by_user_id IS NOT NULL')
-      );
-      console.log(
-        `🔎 [INVITADAS] usuario=${userId} filas=${lista.rows.length} ` +
-          `atribuidas_en_total=${tot.rows[0] && tot.rows[0].n}`
-      );
       invitadas = lista.rows.map((f) => ({
         nombre: String(f.nombre || '').trim().split(/\s+/)[0] || 'Invitada',
-        fecha: f.created_at,
+        fecha: f.fecha_alta,
         estado: f.referral_converted_at ? 'premiada' : 'pendiente',
       }));
     } catch (e) {
-      console.warn('⚠️ Sin lista de invitadas:', e.message);
+      // Antes esto era un `warn` y una lista vacía: una columna inexistente se
+      // veía igual que «no invitaste a nadie». Ahora queda con el código de
+      // error delante para que se distinga en los logs.
+      console.error('❌ Sin lista de invitadas:', e.code || '', e.message);
     }
 
     res.json({
