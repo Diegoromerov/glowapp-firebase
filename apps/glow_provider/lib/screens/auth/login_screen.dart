@@ -240,114 +240,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
   Future<void> _handleOAuth(String provider) async {
-    if (provider == 'GOOGLE') {
-      await _handleGoogleSignIn();
-      return;
-    }
-    if (provider == 'FACEBOOK') {
-      await _handleFacebookSignIn();
-      return;
-    }
-    // Residuo: flujo de demostración de Apple. La UI ya no lo invoca (el botón
-    // está en «Próximamente»); se conserva como referencia. Outlook se retiró.
-    setState(() {
-      _isLoading = true;
-      _error = null;
-    });
-    try {
-      final email = 'appleuser@icloud.com';
-      final name = 'Usuario de Apple';
-      final fotoUrl =
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop';
-      final providerId = 'apple_555666777';
-
-      final result = await AuthService.loginOAuth(
-        email: email,
-        nombre: name,
-        fotoUrl: fotoUrl,
-        authProvider: provider,
-        providerId: providerId,
-      );
-
-      if (result != null && mounted) {
-        final bool onboardingCompleto = result['user']['onboarding_completo'] ?? false;
-        final String rLower = (result['user']['role'] ?? '').toString().toLowerCase();
-        if (onboardingCompleto) {
-          if (rLower == 'salon') {
-            Navigator.pushReplacementNamed(context, '/salon');
-          } else if (rLower == 'provider') {
-            Navigator.pushReplacementNamed(context, '/provider/dashboard');
-          } else {
-            Navigator.pushReplacementNamed(context, '/home');
-          }
-        } else {
-          Navigator.pushReplacementNamed(context, '/auth/onboarding');
-        }
-      } else {
-        setState(() => _error = 'Error al autenticar con $provider');
-      }
-    } catch (e) {
-      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
-    }
-  }
-
-  /// Con `proximamente: true` el botón se ve atenuado, con la leyenda
-  /// «Próximamente» y sin ejecutar el flujo (estado de Apple mientras no exista
-  /// Sign in with Apple configurado, P-053).
-  /// Facebook: cadena lista salvo el origen del token.
-  ///
-  /// botón -> [_obtainFacebookAccessToken] -> [AuthService.loginWithFacebook]
-  /// -> `POST /api/auth/facebook`. Falta la App ID de Facebook y, en web,
-  /// habilitar el proveedor en Firebase Console (P-052).
-  Future<void> _handleFacebookSignIn() async {
-    setState(() {
-      _isLoading = true;
-      _error = null;
-    });
-    try {
-      final accessToken = await _obtainFacebookAccessToken();
-      if (accessToken == null || accessToken.isEmpty) {
-        if (mounted) {
-          setState(() => _error =
-              'Facebook: falta la App ID de Facebook. El resto del flujo ya está conectado.');
-        }
+      if (provider == 'GOOGLE') {
+        await _handleGoogleSignIn();
         return;
       }
-      final result = await AuthService.loginWithFacebook(accessToken);
-      if (result == null || !mounted) {
-        if (mounted) {
-          setState(() => _error = 'Facebook: el servidor rechazó el token.');
-        }
-        return;
-      }
-      final bool onboardingCompleto = result['user']['onboarding_completo'] ?? false;
-      final String rLower = (result['user']['role'] ?? '').toString().toLowerCase();
-      if (onboardingCompleto) {
-        if (rLower == 'salon') {
-          Navigator.pushReplacementNamed(context, '/salon');
-        } else if (rLower == 'provider') {
-          Navigator.pushReplacementNamed(context, '/provider/dashboard');
-        } else {
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-      } else {
-        Navigator.pushReplacementNamed(context, '/auth/onboarding');
-      }
-    } catch (e) {
-      if (mounted) setState(() => _error = 'Facebook: ${mensajeHumano(e)}');
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
     }
-  }
 
-  /// Único punto pendiente: el accessToken lo entrega el SDK de Facebook.
-  /// Devuelve `null` a propósito mientras no haya App ID; devolver un token
-  /// inventado crearía sesiones falsas.
-  Future<String?> _obtainFacebookAccessToken() async => null;
-
-  Widget _buildSocialButton({
+    Widget _buildSocialButton({
     required Token t,
     required Widget icon,
     required VoidCallback? onTap,
@@ -392,18 +291,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _avisarProximamente(String proveedor) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$proveedor: disponible próximamente'),
-        backgroundColor: const Color(0xFF1F1A15),
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     final t = Token.of(context);
     // Un solo iframe de GIS por build; se reutiliza en el Stack del botón.
     final googleOverlay = gis_button.googleSignInOverlay();
@@ -631,55 +520,39 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             const SizedBox(height: 20),
 
-                            // Social Buttons (Google, Outlook, Apple)
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                // En web: boton oficial de GIS (unico flujo soportado).
-                                // Fuera de web: boton propio que dispara signIn().
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    _buildSocialButton(
-                                      icon: const Icon(Icons.g_mobiledata,
-                                          color: Color(0xFFC5A052), size: 32),
-                                      onTap: googleOverlay != null
-                                          ? null
-                                          : (_isLoading
-                                              ? null
-                                              : () => _handleOAuth('GOOGLE')),
-                                      label: 'Google',
-                                      t: t,
-                                    ),
-                                    if (googleOverlay != null)
-                                      Positioned.fill(
-                                        child: ClipOval(
-                                          child: Opacity(
-                                            opacity: 0.01,
-                                            child: googleOverlay,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                                _buildSocialButton(
-                                  icon: const Icon(Icons.facebook,
-                                      color: Color(0xFF1877F2), size: 26),
-                                  onTap: () => _avisarProximamente('Facebook'),
-                                  label: 'Facebook',
-                                  t: t,
-                                  proximamente: true,
-                                ),
-                                _buildSocialButton(
-                                  icon: const Icon(Icons.apple,
-                                      color: Color(0xFF1F1A15), size: 24),
-                                  onTap: () => _avisarProximamente('Apple'),
-                                  label: 'Apple',
-                                  t: t,
-                                  proximamente: true,
-                                ),
-                              ],
-                            ),
+                            // Social Buttons (Google only)
+                                                        Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                          children: [
+                                                            // En web: boton oficial de GIS (unico flujo soportado).
+                                                            // Fuera de web: boton propio que dispara signIn().
+                                                            Stack(
+                                                              alignment: Alignment.center,
+                                                              children: [
+                                                                _buildSocialButton(
+                                                                  icon: const Icon(Icons.g_mobiledata,
+                                                                      color: Color(0xFFC5A052), size: 32),
+                                                                  onTap: googleOverlay != null
+                                                                      ? null
+                                                                      : (_isLoading
+                                                                          ? null
+                                                                          : () => _handleOAuth('GOOGLE')),
+                                                                  label: 'Google',
+                                                                  t: t,
+                                                                ),
+                                                                if (googleOverlay != null)
+                                                                  Positioned.fill(
+                                                                    child: ClipOval(
+                                                                      child: Opacity(
+                                                                        opacity: 0.01,
+                                                                        child: googleOverlay,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
                           ],
                         ),
                       ),
