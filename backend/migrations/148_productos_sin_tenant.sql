@@ -13,6 +13,16 @@
 --
 -- Idempotente: sólo toca las filas que siguen sin inquilino.
 
+-- La función vive en la 071 y en la 123. En una base nueva la crea la 123, pero
+-- que este archivo dependa del orden de la lista es frágil: si corre antes (o en
+-- un esquema donde la función no quedó), el arranque muere con «function
+-- app_platform_tenant_id() does not exist» — es lo que tenía el CI en rojo.
+-- Se define aquí también, idempotente, para que el archivo se baste solo.
+CREATE OR REPLACE FUNCTION app_platform_tenant_id() RETURNS integer
+LANGUAGE sql STABLE AS $$
+  SELECT id FROM tenants WHERE es_plataforma ORDER BY id LIMIT 1
+$$;
+
 UPDATE productos
    SET tenant_id = COALESCE(app_platform_tenant_id(), (SELECT id FROM tenants ORDER BY id LIMIT 1))
  WHERE tenant_id IS NULL;
