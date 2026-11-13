@@ -17,6 +17,7 @@ import '../widgets/home_results_sheet.dart';
 import '../widgets/auth_gate.dart';
 import '../services/deep_link_service.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
+import '../widgets/chip_club.dart';
 
 class ProvidersScreen extends StatefulWidget {
   const ProvidersScreen({super.key});
@@ -2557,6 +2558,14 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                     ],
                   ),
                 ],
+              ),
+
+              // Capa 0.5: el Club a la vista. Va después del mapa para pintarse
+              // encima y antes del buscador para no taparlo.
+              Positioned(
+                top: MediaQuery.of(context).padding.top + 118,
+                right: 16,
+                child: const ChipClub(),
               ),
 
               // Capa 1: Floating Transaccional Search Bar with Audience Toggle

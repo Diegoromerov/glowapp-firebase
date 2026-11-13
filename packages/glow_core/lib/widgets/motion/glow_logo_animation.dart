@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' hide ImageAsset;
-import '../tokens/motion_tokens.dart';
+import '../../tokens/motion_tokens.dart';
 
 /// Variantes de animación del logo disponibles.
 enum GlowLogoVariant {
@@ -103,15 +103,25 @@ class _GlowLogoAnimationState extends State<GlowLogoAnimation>
     // Configurar controller según variante
     switch (widget.variant) {
       case GlowLogoVariant.entrada:
-        _riveController = OneShotAnimation('entrada', autoplay: true)
-          ..addListener(_onAnimationEnd);
+        _riveController = OneShotAnimation(
+          'entrada',
+          autoplay: true,
+          // rive 0.13 no expone addListener en OneShotAnimation: el callback
+          // se pasa en el constructor.
+          onStop: _onAnimationEnd,
+        );
         break;
       case GlowLogoVariant.idle:
         _riveController = SimpleAnimation('idle', autoplay: true);
         break;
       case GlowLogoVariant.transicion:
-        _riveController = OneShotAnimation('transicion', autoplay: true)
-          ..addListener(_onAnimationEnd);
+        _riveController = OneShotAnimation(
+          'transicion',
+          autoplay: true,
+          // rive 0.13 no expone addListener en OneShotAnimation: el callback
+          // se pasa en el constructor.
+          onStop: _onAnimationEnd,
+        );
         break;
     }
     artboard.addController(_riveController!);
@@ -152,7 +162,7 @@ class _GlowLogoAnimationState extends State<GlowLogoAnimation>
         riveAsset,
         fit: BoxFit.contain,
         onInit: _onRiveInit,
-        placeholder: _buildPlaceholder(color),
+        placeHolder: _buildPlaceholder(color),
       ),
     );
   }
