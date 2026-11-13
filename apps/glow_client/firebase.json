@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "glowapp-client",
     "public": "build/web",
     "ignore": [
       "firebase.json",
