@@ -10,6 +10,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   http: ^1.1.0
+  rive: ^0.13.0
   shared_preferences: ^2.2.2
   google_sign_in: ^6.2.1
   flutter_secure_storage: ^9.0.0
@@ -48,3 +49,5 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+  assets:
+    - assets/motion/

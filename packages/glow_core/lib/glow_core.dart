@@ -79,6 +79,9 @@ export 'src/shared/widgets/background_video_player.dart';
 export 'src/widgets/app_update_gate.dart';
 export 'src/widgets/audience_toggle.dart';
 export 'src/widgets/aura_3d_emblem.dart';
+
+// Motion widgets
+export 'widgets/motion/glow_logo_animation.dart';
 export 'src/widgets/error_fallback.dart';
 export 'src/widgets/forced_update_dialog.dart';
 export 'src/widgets/franja_conexion.dart';
