@@ -52,6 +52,9 @@ export 'src/design/components/academy_luxe_components.dart';
 export 'src/design/components/luxe_components.dart';
 export 'src/design/components/s4_loading.dart';
 export 'src/design/components/s4_text_field.dart';
+
+// Motion Tokens
+export 'tokens/motion_tokens.dart';
 export 'src/design/icons/glow_icon.dart';
 export 'src/design/icons/glow_icon_adapter.dart';
 export 'src/design/icons/glow_icon_demo.dart';
