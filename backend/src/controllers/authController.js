@@ -750,12 +750,21 @@ exports.deleteAccount = async (req, res) => {
     // responder que la cuenta fue eliminada.
     marca('antes de la transacción de sistema');
     const deletion = await tenantRouting.runAsSystem({ pool }, async (client) => {
+      // Diagnóstico: si algo tiene el bloqueo, que falle en 5 s y lo diga en vez
+      // de dejar la petición colgada hasta el timeout de la plataforma.
+      await client.query("SET LOCAL lock_timeout = '5s'");
+      await client.query("SET LOCAL statement_timeout = '10s'");
+      marca('timeouts fijados');
+
       await client.query(
         `UPDATE biometric_consents
             SET granted = FALSE, revoked_at = NOW(), updated_at = NOW()
           WHERE user_id = $1`,
         [userId]
-      ).catch(() => {});
+      ).catch((e) => {
+        marca(`biometric_consents FALLÓ: ${e.message}`);
+      });
+      marca('biometric_consents hecho');
 
       return client.query(
         `UPDATE usuarios
@@ -769,7 +778,7 @@ exports.deleteAccount = async (req, res) => {
         [`deleted_${userId}_${Date.now()}@glowapp.deleted`, userId]
       );
     });
-    marca(`transacción cerrada (filas=${deletion.rowCount})`);
+    marca(`UPDATE usuarios hecho (filas=${deletion.rowCount})`);
     if (deletion.rowCount !== 1) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
