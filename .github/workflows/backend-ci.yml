@@ -84,12 +84,13 @@ jobs:
           # trust auth: sin password en la URL
           DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
           RLS_ROLE_PASSWORD: test_rls_password
-          # 123_checkout_tenant_wompi.sql toca tablas del esquema GlowShop
-          # (pedidos_tienda, etc.) que no existen en el conjunto nucleo de CI.
-          # La migracion ahora guarda cada ALTER con to_regclass y emite NOTICE
-          # si la tabla falta; aun asi la omitimos aqui para que el pipeline no
-          # dependa de NOTICE silenciosos.
-          MIGRAR_OMITIR: '123_checkout_tenant_wompi.sql'
+          # 123_checkout_tenant_wompi.sql ya NO se omite.
+          #
+          # Se omitia porque «toca tablas GlowShop que no existen en CI», pero la
+          # 010 crea pedidos_tienda y detalles_pedido_tienda en la base nueva, y
+          # 010 si corre. El resultado era el peor de los dos mundos: CI tenia las
+          # tablas SIN tenant_id, un esquema que no existe en ningun otro sitio.
+          # Los tests de integracion lo destaparon al insertar con tenant_id.
         run: node scripts/prepareRlsDatabase.js
 
       - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
