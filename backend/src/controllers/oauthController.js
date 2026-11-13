@@ -5,6 +5,7 @@ const axios = require('axios');
 const { pool } = require('../config/db');
 const tenantRouting = require('../config/tenantRouting');
 const { atribuirInvitacion } = require('../services/referralService');
+const xpBienvenidaService = require('../services/xpBienvenidaService');
 const { getJwtSecret, toApiRole } = require('../config/jwt');
 
 const DEFAULT_CLIENT_ID = '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com';
