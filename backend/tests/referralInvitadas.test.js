@@ -6,6 +6,12 @@
  * premio. Este test fija ese contrato y el recorte del nombre.
  */
 jest.mock('../src/config/db', () => ({ pool: { query: jest.fn() } }));
+// La lista de invitadas se lee en contexto de sistema: RLS oculta las filas de
+// otras personas al rol de la petición (devolvía [] con invitadas reales).
+jest.mock('../src/config/tenantRouting', () => ({
+  runAsSystem: (deps, fn) => fn(deps.pool),
+  getActiveClient: () => null,
+}));
 
 const { pool } = require('../src/config/db');
 const authController = require('../src/controllers/authController');

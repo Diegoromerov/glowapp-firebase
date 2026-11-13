@@ -700,13 +700,19 @@ exports.getReferralInfo = async (req, res) => {
     // suficiente para reconocer a quién invitó y no expone más de lo necesario.
     let invitadas = [];
     try {
-      const lista = await pool.query(
-        `SELECT nombre, created_at, referral_converted_at
-           FROM usuarios
-          WHERE referred_by_user_id = $1
-          ORDER BY created_at DESC
-          LIMIT 50`,
-        [userId]
+      // En contexto de sistema: son filas de OTRAS personas y el rol de la
+      // petición las oculta por RLS (la consulta devolvía [] con invitadas
+      // reales). Es una lectura: no toma bloqueos y no puede repetir el abrazo
+      // mortal que tuvo el borrado de cuenta.
+      const lista = await tenantRouting.runAsSystem({ pool }, (c) =>
+        c.query(
+          `SELECT nombre, created_at, referral_converted_at
+             FROM usuarios
+            WHERE referred_by_user_id = $1
+            ORDER BY created_at DESC
+            LIMIT 50`,
+          [userId]
+        )
       );
       invitadas = lista.rows.map((f) => ({
         nombre: String(f.nombre || '').trim().split(/\s+/)[0] || 'Invitada',
