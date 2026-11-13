@@ -574,7 +574,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               text: 'Regístrate aquí',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: t.brandPrimary),
+                                  color: const Color(0xFF1F1A15),
                             ),
                           ],
                         ),
