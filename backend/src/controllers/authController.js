@@ -714,6 +714,13 @@ exports.getReferralInfo = async (req, res) => {
           [userId]
         )
       );
+      const tot = await tenantRouting.runAsSystem({ pool }, (c) =>
+        c.query('SELECT COUNT(*)::int AS n FROM usuarios WHERE referred_by_user_id IS NOT NULL')
+      );
+      console.log(
+        `🔎 [INVITADAS] usuario=${userId} filas=${lista.rows.length} ` +
+          `atribuidas_en_total=${tot.rows[0] && tot.rows[0].n}`
+      );
       invitadas = lista.rows.map((f) => ({
         nombre: String(f.nombre || '').trim().split(/\s+/)[0] || 'Invitada',
         fecha: f.created_at,
