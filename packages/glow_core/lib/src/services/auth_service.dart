@@ -313,12 +313,20 @@ class AuthService {
   static Future<Map<String, dynamic>?> loginWithGoogle(String idToken,
       {String? roleIntent}) async {
     final baseUrl = await getBaseUrl();
+    // Se lee aquí y no se pasa por parámetro: todos los botones de Google de la
+    // app entran por este método y ninguno tendría que acordarse de enviarlo.
+    final prefs = await SharedPreferences.getInstance();
+    final _codigoInvitacionGuardado =
+        (prefs.getString('codigoInvitacionPendiente') ?? '').trim();
     final response = await http.post(
       Uri.parse('$baseUrl/api/auth/google'),
       headers: _jsonHeaders,
       body: json.encode({
         'idToken': idToken,
         if (roleIntent != null) 'role_intent': roleIntent,
+        // Invitación pendiente: quien entra con Google también puede venir de un
+        // enlace. Sin esto, la cuenta nacía sin referente y el premio se perdía.
+        if (_codigoInvitacionGuardado.isNotEmpty) 'ref': _codigoInvitacionGuardado,
       }),
     );
     try {

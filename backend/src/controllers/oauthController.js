@@ -4,13 +4,18 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const { pool } = require('../config/db');
 const tenantRouting = require('../config/tenantRouting');
+const { atribuirInvitacion } = require('../services/referralService');
 const { getJwtSecret, toApiRole } = require('../config/jwt');
 
 const DEFAULT_CLIENT_ID = '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com';
 
 exports.googleSignIn = async (req, res) => {
   try {
-    const { idToken, accessToken, role_intent } = req.body;
+    // `ref`: código de invitación. Quien se registra con Google también puede
+    // venir de un enlace, y hasta hoy el código solo viajaba en el registro por
+    // correo: la invitación se perdía sin dejar rastro.
+    const { idToken, accessToken, role_intent, ref } = req.body;
+    const codigoInvitacion = typeof ref === 'string' ? ref.trim() : '';
     if (!idToken && !accessToken) {
       return res.status(400).json({ error: 'Falta el idToken o accessToken de Google' });
     }
@@ -115,6 +120,20 @@ exports.googleSignIn = async (req, res) => {
           return { rows: [{ ...u, auth_provider: 'GOOGLE', provider_id: googleId }] };
         });
       user = insertQuery.rows[0];
+
+      // Atribución de la invitación al crear la cuenta con Google: este es el
+      // otro punto donde nace un usuario, y hasta hoy el código solo viajaba en
+      // el registro por correo. Es idempotente: si ya tenía referente, no hace nada.
+      if (codigoInvitacion) {
+        try {
+          await atribuirInvitacion({
+            nuevoUsuarioId: user.id,
+            codigo: codigoInvitacion,
+          });
+        } catch (e) {
+          console.warn('⚠️ No se pudo atribuir la invitación de Google:', e.message);
+        }
+      }
     } else {
       user = userQuery.rows[0];
       // Vincular/actualizar proveedor
