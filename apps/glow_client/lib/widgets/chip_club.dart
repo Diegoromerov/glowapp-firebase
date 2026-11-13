@@ -80,42 +80,42 @@ class _ChipClubState extends State<ChipClub> {
         borderRadius: BorderRadius.circular(99),
         onTap: () => Navigator.of(context).pushNamed('/niveles'),
         child: Ink(
-          height: 32,
-          padding: const EdgeInsets.symmetric(horizontal: 13),
+          height: 42,
+          padding: const EdgeInsets.symmetric(horizontal: 18),
           decoration: BoxDecoration(
             gradient: paleta.fondo,
             borderRadius: BorderRadius.circular(99),
             boxShadow: [
               BoxShadow(
                 color: paleta.sombra.withValues(alpha: 0.55),
-                blurRadius: 16,
-                offset: const Offset(0, 6),
+                blurRadius: 18,
+                offset: const Offset(0, 7),
               ),
             ],
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('❋', style: TextStyle(fontSize: 12, color: paleta.texto)),
-              const SizedBox(width: 6),
+              Text('❋', style: TextStyle(fontSize: 16, color: paleta.texto)),
+              const SizedBox(width: 8),
               Text(
                 nivel.nivel,
                 style: TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w800,
                   letterSpacing: 0.2,
                   color: paleta.texto,
                 ),
               ),
-              const SizedBox(width: 5),
+              const SizedBox(width: 7),
               Text(
                 '${nivel.xp} XP',
                 style: TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 10,
-                  fontWeight: FontWeight.w500,
-                  color: paleta.texto.withValues(alpha: 0.72),
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w600,
+                  color: paleta.texto.withValues(alpha: 0.88),
                 ),
               ),
             ],

@@ -126,7 +126,7 @@ class _NivelesScreenState extends State<NivelesScreen> {
           'CLUB GLOW LUXE',
           style: TextStyle(
             fontFamily: 'Manrope',
-            fontSize: 11,
+            fontSize: 13,
             fontWeight: FontWeight.w600,
             letterSpacing: 3.2,
             color: LuxeColors.nude800,
@@ -180,7 +180,7 @@ class _NivelesScreenState extends State<NivelesScreen> {
                       'Cómo funcionan los puntos',
                       style: TextStyle(
                         fontFamily: 'Manrope',
-                        fontSize: 11,
+                        fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: LuxeColors.gold700,
                         decoration: TextDecoration.underline,
@@ -233,7 +233,7 @@ class _Hero extends StatelessWidget {
               'TU NIVEL ACTUAL',
               style: TextStyle(
                 fontFamily: 'Manrope',
-                fontSize: 8.5,
+                fontSize: 11,
                 letterSpacing: 3,
                 fontWeight: FontWeight.w600,
                 color: LuxeColors.gold700,
@@ -275,7 +275,7 @@ class _Hero extends StatelessWidget {
                 '${nivel.xp} XP',
                 style: const TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 11,
+                  fontSize: 13,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.1,
                   color: LuxeColors.nude800,
@@ -288,8 +288,8 @@ class _Hero extends StatelessWidget {
                     : 'de ${nivel.xpSiguienteNivel} para ${nivel.nivelSiguiente}',
                 style: const TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 11.5,
-                  color: LuxeColors.nude600,
+                  fontSize: 13.5,
+                  color: LuxeColors.nude700,
                 ),
               ),
             ],
@@ -304,16 +304,16 @@ class _Hero extends StatelessWidget {
                 '${nivel.nivel.toUpperCase()} · DESDE ${kEscalera[i].xp} XP',
                 style: const TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 8.5,
+                  fontSize: 11,
                   letterSpacing: 1.1,
-                  color: LuxeColors.nude500,
+                  color: LuxeColors.nude700,
                 ),
               ),
               Text(
                 nivel.esNivelMaximo ? 'techo del club' : 'faltan $falta XP',
                 style: const TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 8.5,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.1,
                   color: LuxeColors.nude800,
@@ -454,12 +454,12 @@ class _Riel extends StatelessWidget {
                     kEscalera[i].nombre.toUpperCase(),
                     style: TextStyle(
                       fontFamily: 'Manrope',
-                      fontSize: 7.5,
+                      fontSize: 10,
                       letterSpacing: 1.4,
                       fontWeight: i == actual ? FontWeight.w700 : FontWeight.w500,
                       color: i == actual
                           ? LuxeColors.nude800
-                          : LuxeColors.nude500,
+                          : LuxeColors.nude700,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -467,8 +467,8 @@ class _Riel extends StatelessWidget {
                     '${kEscalera[i].xp}',
                     style: const TextStyle(
                       fontFamily: 'Manrope',
-                      fontSize: 8.5,
-                      color: LuxeColors.nude400,
+                      fontSize: 11,
+                      color: LuxeColors.nude600,
                     ),
                   ),
                 ],
@@ -524,7 +524,7 @@ class _TarjetaIA extends StatelessWidget {
                       'ANÁLISIS CON IA · ESTE MES',
                       style: TextStyle(
                         fontFamily: 'Manrope',
-                        fontSize: 8,
+                        fontSize: 10.5,
                         letterSpacing: 2.4,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFFA59477),
@@ -550,7 +550,7 @@ class _TarjetaIA extends StatelessWidget {
                           'de $total disponibles',
                           style: const TextStyle(
                             fontFamily: 'Manrope',
-                            fontSize: 11.5,
+                            fontSize: 13.5,
                             color: Color(0xFF9C9083),
                           ),
                         ),
@@ -570,7 +570,7 @@ class _TarjetaIA extends StatelessWidget {
                   nivel.disponibles > 0 ? 'ACTIVO' : 'AGOTADO',
                   style: const TextStyle(
                     fontFamily: 'Manrope',
-                    fontSize: 7.5,
+                    fontSize: 10,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.4,
                     color: LuxeColors.nude900,
@@ -632,7 +632,7 @@ class _TarjetaIA extends StatelessWidget {
             'SE RENUEVAN EL PRIMER DÍA DEL MES',
             style: TextStyle(
               fontFamily: 'Manrope',
-              fontSize: 8,
+              fontSize: 10.5,
               letterSpacing: 1.4,
               color: Color(0xFF7A6F63),
             ),
@@ -667,7 +667,7 @@ class _DatoIA extends StatelessWidget {
                 label,
                 style: const TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 10.5,
+                  fontSize: 12.5,
                   color: Color(0xFF9C9083),
                 ),
               ),
@@ -676,7 +676,7 @@ class _DatoIA extends StatelessWidget {
               valor > 0 ? '+$valor' : '0',
               style: const TextStyle(
                 fontFamily: 'Manrope',
-                fontSize: 10.5,
+                fontSize: 12.5,
                 fontWeight: FontWeight.w700,
                 color: Color(0xFFEAE1D1),
               ),
@@ -734,8 +734,8 @@ class _TarjetaPuntos extends StatelessWidget {
                       'puntos = \$$pesos',
                       style: const TextStyle(
                         fontFamily: 'Manrope',
-                        fontSize: 10.5,
-                        color: LuxeColors.nude600,
+                        fontSize: 12.5,
+                        color: LuxeColors.nude700,
                       ),
                     ),
                   ],
@@ -747,8 +747,8 @@ class _TarjetaPuntos extends StatelessWidget {
                       : 'Junta $faltan puntos para tu primer descuento',
                   style: const TextStyle(
                     fontFamily: 'Manrope',
-                    fontSize: 10,
-                    color: LuxeColors.nude600,
+                    fontSize: 12,
+                    color: LuxeColors.nude700,
                   ),
                 ),
               ],
@@ -768,7 +768,7 @@ class _TarjetaPuntos extends StatelessWidget {
                 'Usar puntos',
                 style: TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 10.5,
+                  fontSize: 12.5,
                   fontWeight: FontWeight.w700,
                   color: LuxeColors.nude50,
                 ),
@@ -835,7 +835,7 @@ class _Invitar extends StatelessWidget {
                         'Invita amigas, gana 500 puntos',
                         style: TextStyle(
                           fontFamily: 'Manrope',
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: Color(0xFF1F190F),
                         ),
@@ -845,7 +845,7 @@ class _Invitar extends StatelessWidget {
                         'Hasta \$5.000 en tu próxima compra',
                         style: TextStyle(
                           fontFamily: 'Manrope',
-                          fontSize: 10,
+                          fontSize: 12,
                           color: Color(0xBB1F190F),
                         ),
                       ),
@@ -876,10 +876,10 @@ class _Encabezado extends StatelessWidget {
         texto,
         style: const TextStyle(
           fontFamily: 'Manrope',
-          fontSize: 8,
+          fontSize: 10.5,
           letterSpacing: 2.2,
           fontWeight: FontWeight.w600,
-          color: LuxeColors.nude500,
+          color: LuxeColors.nude700,
         ),
       ),
     );
@@ -922,9 +922,9 @@ class _Beneficios extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Manrope',
-                  fontSize: 10,
+                  fontSize: 12,
                   height: 1.5,
-                  color: LuxeColors.nude500,
+                  color: LuxeColors.nude700,
                 ),
               ),
             );
@@ -962,8 +962,8 @@ class _Beneficios extends StatelessWidget {
                         text: ' ${b.sufijo}',
                         style: const TextStyle(
                           fontFamily: 'Manrope',
-                          fontSize: 10,
-                          color: LuxeColors.nude600,
+                          fontSize: 12,
+                          color: LuxeColors.nude700,
                         ),
                       ),
                     ],
@@ -974,7 +974,7 @@ class _Beneficios extends StatelessWidget {
                   b.texto,
                   style: const TextStyle(
                     fontFamily: 'Manrope',
-                    fontSize: 10.5,
+                    fontSize: 12.5,
                     height: 1.4,
                     color: LuxeColors.nude700,
                   ),
@@ -991,7 +991,7 @@ class _Beneficios extends StatelessWidget {
                     b.tag,
                     style: const TextStyle(
                       fontFamily: 'Manrope',
-                      fontSize: 7,
+                      fontSize: 9.5,
                       letterSpacing: 1.4,
                       fontWeight: FontWeight.w700,
                       color: LuxeColors.gold700,
@@ -1034,8 +1034,8 @@ class _ErrorReintento extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Manrope',
-                fontSize: 12,
-                color: LuxeColors.nude600,
+                fontSize: 14,
+                color: LuxeColors.nude700,
               ),
             ),
             const SizedBox(height: 18),
@@ -1044,7 +1044,7 @@ class _ErrorReintento extends StatelessWidget {
               child: const Text('Reintentar',
                   style: TextStyle(
                     fontFamily: 'Manrope',
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: FontWeight.w700,
                     color: LuxeColors.gold700,
                   )),
