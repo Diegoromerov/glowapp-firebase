@@ -18,9 +18,11 @@ void main() {
     final mainDart = File('lib/main.dart').readAsStringSync();
 
     final registradas = <String>{
-      ...RegExp(r"'(/[A-Za-z0-9_/\-]+)'\s*:").allMatches(mainDart).map((m) => m.group(1)!),
-      ...RegExp(r"case\s+'(/[A-Za-z0-9_/\-]+)'").allMatches(mainDart).map((m) => m.group(1)!),
-    };
+          ...RegExp(r"'(/[A-Za-z0-9_/\-]+)'\s*:").allMatches(mainDart).map((m) => m.group(1)!),
+          ...RegExp(r"case\s+'(/[A-Za-z0-9_/\-]+)'").allMatches(mainDart).map((m) => m.group(1)!),
+          // Pattern-matching cases: case final String ruta when ruta.startsWith('/prefix'):
+          ...RegExp(r"ruta\.startsWith\('(/[A-Za-z0-9_/\-]+)'\)").allMatches(mainDart).map((m) => m.group(1)!),
+        };
 
     final referidas = <String, List<String>>{};
     final patron = RegExp(
