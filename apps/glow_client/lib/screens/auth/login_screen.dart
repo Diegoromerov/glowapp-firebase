@@ -100,6 +100,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _handleLogin() async {
     if (!_formKey.currentState!.validate()) return;
+    // S4TextField no es un FormField: `validate()` no ve esos dos campos, así
+    // que sin esta guarda un formulario vacío viajaba al backend y el error que
+    // se veía era el del servidor, no el de los datos que faltaban.
+    if (_emailCtrl.text.trim().isEmpty || _passCtrl.text.isEmpty) {
+      setState(() => _error = 'Escribe tu correo y tu contraseña para entrar.');
+      return;
+    }
     setState(() {
       _isLoading = true;
       _error = null;

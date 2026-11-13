@@ -112,8 +112,14 @@ class S4TextField extends StatelessWidget {
     } else {
       // Default enabled state
       // If we have a validator and there's an error, show error state
-      if (validator != null) {
-        final String? error = validator!(controller?.text ?? '');
+      // El validador solo se evalúa cuando ya hay algo escrito.
+      //
+      // Antes corría en cada build con el campo vacío, así que la pantalla de
+      // acceso recibía al usuario con dos mensajes en rojo («Ingresa tu correo»,
+      // «Mínimo 6 caracteres») antes de tocar nada. Un formulario que regaña
+      // antes de empezar. La falta de datos se avisa al intentar entrar.
+      if (validator != null && (controller?.text ?? '').isNotEmpty) {
+        final String? error = validator!(controller!.text);
         if (error != null && error.isNotEmpty) {
           showError = true;
           errorText = error;

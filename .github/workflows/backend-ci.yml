@@ -112,6 +112,21 @@ jobs:
           USE_PG_MEM: 'false'
         run: npx jest src/tests/contract/audience-binding.contract.test.js src/tests/contract/routersMontados.contract.test.js src/tests/contract/critical-endpoints.contract.test.js src/tests/hermesAgentSchema.contract.test.js --forceExit --verbose
 
+      # Los tests de integración del libro de puntos se saltaban en CI porque
+      # nadie los llamaba: el servicio Postgres ya estaba levantado y las
+      # migraciones aplicadas. Son los únicos que tocan una base real, y por eso
+      # son los que habrían visto una columna inexistente (pasó con fecha_alta)
+      # o un RLS que devuelve cero filas en silencio.
+      - name: Tests de integración contra Postgres real
+        working-directory: backend
+        env:
+          DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
+          JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
+          USE_PG_MEM: 'false'
+        run: |
+          npx jest tests/pointsLedger.integration.test.js tests/auth.integration.test.js --runInBand --forceExit --verbose
+
       - name: Sembrar catalogo de prueba (rol admin)
         working-directory: backend
         env:
