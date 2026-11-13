@@ -11,6 +11,7 @@
 // puntos canjeables (`pointsService`), con lote y vencimiento. `xp_logs` queda
 // para el XP de estado y no se le añaden asientos de dinero.
 const { pool: poolPorDefecto } = require('../config/db');
+const tenantRouting = require('../config/tenantRouting');
 const { MINIMO_COMPRA_PREMIO } = require('../config/programaPuntos');
 const pointsService = require('./pointsService');
 
@@ -21,16 +22,26 @@ async function atribuirInvitacion({ nuevoUsuarioId, codigo, pool = poolPorDefect
   if (!limpio || !nuevoUsuarioId) return false;
 
   // `r.id <> usuarios.id` evita que alguien se invite a sí mismo.
-  const res = await pool.query(
-    `UPDATE usuarios u
-        SET referred_by_user_id = r.id
-       FROM usuarios r
-      WHERE u.id = $1
-        AND r.referral_code = $2
-        AND r.id <> u.id
-        AND u.referred_by_user_id IS NULL`,
-    [nuevoUsuarioId, limpio]
-  );
+  // Bajo FORCE RLS, un UPDATE sin contexto de inquilino afecta 0 filas SIN dar
+  // error: la invitación se perdía en silencio y nadie se enteraba. El registro
+  // es justo el momento en que la petición puede no tener ese contexto, así que
+  // se ejecuta como sistema (el código ya se validó contra la tabla real).
+  const sql = `UPDATE usuarios u
+                  SET referred_by_user_id = r.id
+                 FROM usuarios r
+                WHERE u.id = $1
+                  AND r.referral_code = $2
+                  AND r.id <> u.id
+                  AND u.referred_by_user_id IS NULL`;
+  // Un pool de verdad sabe abrir conexión; un doble de test, no. Con el real se
+  // pasa por `runAsSystem` (RLS fuera del camino); con el doble, se consulta
+  // directo para que los tests no tengan que simular el enrutado.
+  const res =
+    typeof pool.connect === 'function'
+      ? await tenantRouting.runAsSystem({ pool }, (c) =>
+          c.query(sql, [nuevoUsuarioId, limpio])
+        )
+      : await pool.query(sql, [nuevoUsuarioId, limpio]);
   return (res.rowCount || 0) > 0;
 }
 
