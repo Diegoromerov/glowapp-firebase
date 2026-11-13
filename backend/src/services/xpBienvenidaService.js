@@ -10,6 +10,7 @@
  * tiene ya su asiento de bienvenida.
  */
 const { pool: poolPorDefecto } = require('../config/db');
+const xpService = require('./xpService');
 
 const XP_BIENVENIDA = 100;
 const MOTIVO = 'registro:bienvenida';
@@ -18,22 +19,22 @@ async function acreditarXpBienvenida({ userId, cliente = poolPorDefecto } = {}) 
   if (!userId) return { acreditado: false, motivo: 'SIN_USUARIO' };
 
   try {
-    const r = await cliente.query(
-      // El motivo va como literal, no como parámetro: reutilizar `$3` en el
-      // INSERT y en el NOT EXISTS hacía que Postgres no dedujera un tipo único
-      // («inconsistent types deduced for parameter $3») y el asiento no se
-      // escribía. Fallaba en silencio porque el error se captura.
-      `INSERT INTO xp_logs (user_id, xp_amount, reason, metadata)
-       SELECT $1, $2, '${MOTIVO}', '{"fuente":"registro"}'::jsonb
-        WHERE NOT EXISTS (
-          SELECT 1 FROM xp_logs WHERE user_id = $1 AND reason = '${MOTIVO}'
-        )
-       RETURNING id`,
-      [userId, XP_BIENVENIDA]
+    // Idempotencia: una sola bienvenida por cuenta.
+    const ya = await cliente.query(
+      `SELECT 1 FROM xp_logs WHERE user_id = $1 AND reason = $2 LIMIT 1`,
+      [userId, MOTIVO]
     );
-    return { acreditado: Boolean(r && r.rowCount > 0), puntos: XP_BIENVENIDA };
+    if (ya.rowCount > 0) return { acreditado: false, motivo: 'YA_ACREDITADO' };
+
+    // Pasa por el punto único: si con estos 100 XP cambia de nivel, se avisa.
+    await xpService.acreditarXp({
+      userId,
+      xp: XP_BIENVENIDA,
+      motivo: MOTIVO,
+      cliente,
+    });
+    return { acreditado: true, puntos: XP_BIENVENIDA };
   } catch (e) {
-    // Nunca rompe el registro: entrar importa más que los 100 XP.
     console.warn('⚠️ No se pudo acreditar el XP de bienvenida:', e.message);
     return { acreditado: false, motivo: 'ERROR' };
   }

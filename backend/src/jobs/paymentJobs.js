@@ -11,6 +11,7 @@ const { runAsSystem } = require('../config/tenantRouting');
 const { systemPool } = require('../config/db');
 const pointsService = require('../services/pointsService');
 const { avisarVencimientoPuntos } = require('./puntosVencimiento');
+const { avisarNivelesPendientes } = require('./nivelJob');
 
 /**
  * Ejecuta un job con el ROL DE SISTEMA activo (SET LOCAL ROLE app_system, que
@@ -503,6 +504,10 @@ function inicializarJobs() {
   // Aviso de puntos por vencer: cada 6 horas. El WHERE del job y la marca por
   // lote evitan el aviso repetido, así que correr seguido no molesta a nadie.
   setInterval(comoSistema(avisarVencimientoPuntos), 6 * 60 * 60 * 1000);
+
+  // Red de seguridad del aviso de nivel: cada 6 horas. El punto único de XP ya
+  // avisa en el momento; esto cubre lo que se escriba por fuera.
+  setInterval(comoSistema(avisarNivelesPendientes), 6 * 60 * 60 * 1000);
 
   // Pricing dinámico: cada día a las 3 AM
   setInterval(async () => {

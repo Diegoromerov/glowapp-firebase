@@ -1,31 +1,38 @@
 /**
- * 100 XP al crear la cuenta: una sola vez por persona.
+ * 100 XP al crear la cuenta: una sola vez por persona, y por el punto único.
  *
- * El XP no cuesta dinero, pero duplicarlo sí miente en la barra del club. La
- * idempotencia va en la consulta (xp_logs no tiene clave única).
+ * El XP no cuesta dinero, pero duplicarlo miente en la barra del club. La
+ * idempotencia vive en la consulta previa; la escritura, en `xpService`, que es
+ * quien sabe si con esos XP cambia de nivel y hay que avisar.
  */
 jest.mock('../src/config/db', () => ({ pool: { query: jest.fn() } }));
+jest.mock('../src/services/xpService', () => ({ acreditarXp: jest.fn().mockResolvedValue({}) }));
 
 const { pool } = require('../src/config/db');
+const xpService = require('../src/services/xpService');
 const { acreditarXpBienvenida, XP_BIENVENIDA } = require('../src/services/xpBienvenidaService');
 
 beforeEach(() => jest.clearAllMocks());
 
-test('acredita 100 XP con motivo propio', async () => {
-  pool.query.mockResolvedValueOnce({ rowCount: 1, rows: [{ id: 9 }] });
+test('acredita 100 XP por el punto único, con su motivo', async () => {
+  pool.query.mockResolvedValueOnce({ rowCount: 0, rows: [] }); // no hay bienvenida previa
   const r = await acreditarXpBienvenida({ userId: 7 });
+
   expect(r).toEqual({ acreditado: true, puntos: 100 });
-  const [sql, params] = pool.query.mock.calls[0];
-  expect(sql).toContain('INSERT INTO xp_logs');
-  expect(sql).toContain('NOT EXISTS');
-  expect(params).toEqual([7, XP_BIENVENIDA]);
-  expect(sql).toContain("'registro:bienvenida'");
+  expect(xpService.acreditarXp).toHaveBeenCalledWith({
+    userId: 7,
+    xp: XP_BIENVENIDA,
+    motivo: 'registro:bienvenida',
+    cliente: pool,
+  });
 });
 
-test('si ya existía el asiento, no duplica', async () => {
-  pool.query.mockResolvedValueOnce({ rowCount: 0, rows: [] });
+test('si ya tenía su bienvenida, no escribe ni avisa', async () => {
+  pool.query.mockResolvedValueOnce({ rowCount: 1, rows: [{ '?column?': 1 }] });
   const r = await acreditarXpBienvenida({ userId: 7 });
+
   expect(r.acreditado).toBe(false);
+  expect(xpService.acreditarXp).not.toHaveBeenCalled();
 });
 
 test('sin usuario no consulta nada', async () => {
