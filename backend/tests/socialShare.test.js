@@ -2,6 +2,9 @@
 // POST /api/social/log-share: la ruta que el cliente llamaba y no existía.
 // Se verifica el registro, el XP REAL en xp_logs y que reintentar el mismo día
 // no lo duplique. La tabla es social_shares_log (migración 008), no una nueva.
+jest.mock('../src/services/xpService', () => ({
+  acreditarXp: jest.fn().mockResolvedValue({ xp: 350, nivel: { clave: 'petalo' }, avisado: true }),
+}));
 jest.mock('../src/config/db', () => ({ pool: { query: jest.fn() } }));
 jest.mock('../src/middleware/auth', () => ({
   authMiddleware: (req, _res, next) => {
@@ -76,11 +79,16 @@ describe('POST /api/social/log-share', () => {
     expect(insertSql).toMatch(/ON CONFLICT/);
     expect(insertParams).toEqual([7, 'TIKTOK', 'AI_COLORIMETRY', 'res-42']);
 
-    const [xpSql, xpParams] = pool.query.mock.calls[1];
-    expect(xpSql).toMatch(/INSERT INTO xp_logs/);
-    expect(xpParams).toEqual([7, 50, 'share:AI_COLORIMETRY']);
+    // El XP va por `xpService.acreditarXp`: es lo que permite avisar de una
+    // subida de nivel en el momento, no seis horas después.
+    const xpService = require('../src/services/xpService');
+    expect(xpService.acreditarXp).toHaveBeenCalledWith({
+      userId: 7,
+      xp: 50,
+      motivo: 'share:AI_COLORIMETRY',
+    });
 
-    const [updateSql, updateParams] = pool.query.mock.calls[2];
+    const [updateSql, updateParams] = pool.query.mock.calls[1];
     expect(updateSql).toMatch(/UPDATE social_shares_log SET points_awarded/);
     expect(updateParams).toEqual([50, 'sh-1']);
   });

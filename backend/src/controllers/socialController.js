@@ -8,6 +8,7 @@
 // idempotente y su CHECK de `platform` no admitía la hoja del sistema, que es el
 // caso más común (compartir por WhatsApp o correo).
 const { pool } = require('../config/db');
+const xpService = require('../services/xpService');
 
 const XP_POR_COMPARTIR = 50;
 
@@ -68,10 +69,13 @@ async function logShare(req, res) {
       });
     }
 
-    await pool.query(
-      `INSERT INTO xp_logs (user_id, xp_amount, reason) VALUES ($1, $2, $3)`,
-      [userId, XP_POR_COMPARTIR, `share:${contentType}`]
-    );
+    // Por el punto único: es lo que permite avisar de una subida de nivel en el
+    // momento. Antes se escribía en `xp_logs` a mano y la subida no se notaba.
+    await xpService.acreditarXp({
+      userId,
+      xp: XP_POR_COMPARTIR,
+      motivo: `share:${contentType}`,
+    });
 
     await pool.query(
       `UPDATE social_shares_log SET points_awarded = $1 WHERE id = $2`,
