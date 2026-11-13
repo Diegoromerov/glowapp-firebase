@@ -204,15 +204,23 @@ async function runAsSystem(deps, fn) {
   let client;
   let began = false;
 
+  // Diagnóstico temporal: la ruta de borrado de cuenta se quedaba 30 s sin
+  // responder. Cada paso con su tiempo dice cuál bloquea.
+  const t0 = Date.now();
+  const m = (paso) => console.log(`⏱️ [RAS] ${paso}: +${Date.now() - t0} ms`);
+  m('pidiendo conexión');
   try {
     client = await poolToUse.connect();
+    m(`conexión obtenida (pool=${useSystemPool ? 'system' : 'main'})`);
     await client.query('BEGIN');
+    m('BEGIN');
     began = true;
 
     if (!useSystemPool) {
       // Solo escalar rol si usamos el pool principal (app_rls_user)
       try {
         await client.query('SET LOCAL ROLE app_system');
+        m('SET LOCAL ROLE app_system');
       } catch (roleError) {
         if (roleError.code === '22023' || /role "app_system" does not exist/i.test(roleError.message)) {
           console.warn('[tenantRouting] Rol "app_system" no disponible en la BD; ejecutando con privilegios de conexión por defecto.');
