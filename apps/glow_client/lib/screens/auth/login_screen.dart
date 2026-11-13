@@ -1,5 +1,6 @@
 // frontend/lib/screens/auth/login_screen.dart
 import 'package:glow_core/glow_core.dart';
+import '../invite_welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -195,6 +196,8 @@ class _LoginScreenState extends State<LoginScreen> {
       if (idToken != null && idToken.isNotEmpty) {
         final result = await AuthService.loginWithGoogle(idToken);
         if (result != null && result['token'] != null && mounted) {
+          // Si venía de una invitación, que sepa si el código se aplicó.
+          unawaited(confirmarInvitacionAplicada(context));
           return _navigateAfterLogin(result);
         }
         if (mounted) {
@@ -212,6 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final result =
             await AuthService.loginWithGoogleAccessToken(accessToken);
         if (result != null && result['token'] != null && mounted) {
+          unawaited(confirmarInvitacionAplicada(context));
           return _navigateAfterLogin(result);
         }
         if (mounted) {

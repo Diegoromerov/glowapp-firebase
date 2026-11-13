@@ -570,3 +570,48 @@ class _TarjetaInvitacionPendienteState
     );
   }
 }
+
+
+/// Después de crear la cuenta: ¿quedó aplicada la invitación?
+///
+/// Sin esto la usuaria guarda un código, entra con Google y no tiene forma de
+/// saber si valió. Se consulta el backend y se le dice, con nombre y apellido:
+/// o queda aplicada, o el código no sirvió.
+Future<void> confirmarInvitacionAplicada(BuildContext context) async {
+  final pendiente = await leerCodigoInvitacionPendiente();
+  if (pendiente.isEmpty) return;
+
+  final messenger = ScaffoldMessenger.of(context);
+  try {
+    final res = await ApiService.get('/api/auth/referral-info');
+    final data = res is Map ? Map<String, dynamic>.from(res) : null;
+    final por = data?['invitada_por'];
+
+    if (por is Map && (por['nombre'] ?? '').toString().isNotEmpty) {
+      messenger.showSnackBar(
+        SnackBar(
+          backgroundColor: LuxeColors.nude900,
+          content: Text(
+            'Invitación de ${por['nombre']} aplicada. Tus puntos de bienvenida '
+            'llegan con tu primera compra.',
+            style: const TextStyle(fontFamily: 'Manrope', fontSize: 12),
+          ),
+        ),
+      );
+      await guardarCodigoInvitacionPendiente('');
+    } else {
+      messenger.showSnackBar(
+        const SnackBar(
+          backgroundColor: Color(0xFF8A3B2E),
+          content: Text(
+            'No pudimos aplicar tu código de invitación. Revísalo o pídele a '
+            'quien te invitó que te comparta el enlace.',
+            style: TextStyle(fontFamily: 'Manrope', fontSize: 12),
+          ),
+        ),
+      );
+    }
+  } catch (_) {
+    // Si falla la consulta, no se molesta a la usuaria con un error técnico.
+  }
+}

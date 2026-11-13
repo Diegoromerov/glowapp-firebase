@@ -630,6 +630,22 @@ exports.getReferralInfo = async (req, res) => {
     let user = userRes.rows[0];
     let referralCode = user.referral_code;
 
+    // ¿Esta cuenta fue invitada por alguien? La invitada necesita verlo: sin
+    // esto guarda un código, crea la cuenta con Google y no tiene forma de saber
+    // si el premio quedó enganchado o si el código venía mal.
+    let invitadaPor = null;
+    try {
+      const inv = await pool.query(
+        `SELECT r.nombre, r.referral_code
+           FROM usuarios u JOIN usuarios r ON r.id = u.referred_by_user_id
+          WHERE u.id = $1`,
+        [userId]
+      );
+      if (inv.rows.length > 0) invitadaPor = inv.rows[0];
+    } catch (e) {
+      console.warn('⚠️ Sin dato de quién la invitó:', e.message);
+    }
+
     if (!referralCode) {
       // Generar código único ej: GLOW + 4 caracteres aleatorios
       const crypto = require('crypto');
@@ -681,6 +697,10 @@ exports.getReferralInfo = async (req, res) => {
       reward_per_referral: 5000,
       reward_unit: 'PUNTOS',
       reward_points: 500,
+      // Para la INVITADA: null si no la invitó nadie.
+      invitada_por: invitadaPor
+        ? { nombre: invitadaPor.nombre, codigo: invitadaPor.referral_code }
+        : null,
       referidos_convertidos: convertidos,
       puntos_ganados: puntosGanados,
     });

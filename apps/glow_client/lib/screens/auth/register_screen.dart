@@ -122,6 +122,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         if (loginResult != null) {
           unawaited(PushService.iniciar());
+          // Confirmación visible de que el código se aplicó (o de que no).
+          unawaited(confirmarInvitacionAplicada(context));
           scaffoldMessenger.showSnackBar(
             SnackBar(
               content: Text(
