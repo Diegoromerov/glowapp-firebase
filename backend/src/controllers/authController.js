@@ -719,6 +719,14 @@ exports.getReferralInfo = async (req, res) => {
 // ==========================================
 exports.deleteAccount = async (req, res) => {
   const userId = req.user.id;
+  // Instrumentación temporal: la petición se cuelga 30 s y Railway responde
+  // 502 sin que el handler registre nada. Estos tiempos dicen en qué paso.
+  const t0 = Date.now();
+  const marca = (paso) =>
+    console.log(`⏱️ [DELETE-ACCOUNT ${userId}] ${paso}: +${Date.now() - t0} ms`);
+  marca('entrada');
+  res.on('finish', () => marca('respuesta enviada'));
+  res.on('close', () => marca('conexión cerrada'));
   try {
     // 1. T-111: borrar los datos biométricos ANTES de tocar la cuenta.
     //
@@ -728,6 +736,7 @@ exports.deleteAccount = async (req, res) => {
     // primero para que un fallo no deje la cuenta inutilizable a medio borrar y el
     // reintento sea posible.
     const biometricos = await consentService.deleteBiometricData(userId);
+    marca(`biométricos borrados (deleted=${biometricos.deleted})`);
     if (!biometricos.deleted) {
       console.error(`❌ [LEGAL] No se pudieron borrar los datos biométricos del usuario ${userId}: ${biometricos.error || 'sin detalle'}`);
       return res.status(500).json({
@@ -739,6 +748,7 @@ exports.deleteAccount = async (req, res) => {
     // consentimiento y anonimizar la cuenta dentro de una transacción de
     // sistema; de otro modo el UPDATE podía afectar cero filas y aun así
     // responder que la cuenta fue eliminada.
+    marca('antes de la transacción de sistema');
     const deletion = await tenantRouting.runAsSystem({ pool }, async (client) => {
       await client.query(
         `UPDATE biometric_consents
@@ -759,12 +769,14 @@ exports.deleteAccount = async (req, res) => {
         [`deleted_${userId}_${Date.now()}@glowapp.deleted`, userId]
       );
     });
+    marca(`transacción cerrada (filas=${deletion.rowCount})`);
     if (deletion.rowCount !== 1) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
 
     console.log(`⚖️ [LEGAL COMPLIANCE] Cuenta de usuario ID ${userId} eliminada a solicitud del titular. Datos biométricos suprimidos: ${biometricos.recordsAffected}.`);
 
+    marca('antes de responder');
     res.json({
       success: true,
       message: 'Tu cuenta y tus datos personales y biométricos han sido eliminados de GlowApp.',
