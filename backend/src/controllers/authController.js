@@ -641,7 +641,11 @@ exports.getReferralInfo = async (req, res) => {
     // defecto era el frontend viejo de Railway, así que el `?ref=` caía en una
     // aplicación que ya no existe.
     const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-client.web.app').replace(/\/$/, '');
-    const shareUrl = `${frontendBase}/#/register?ref=${referralCode}`;
+    // Ruta limpia, sin `#`: Firebase Hosting tiene `cleanUrls: true` y normaliza
+    // la URL a la raíz antes de que el arranque de Flutter lea el fragmento, así
+    // que el enlace con `#/register?ref=` aterrizaba en el inicio y perdía la
+    // invitación.
+    const shareUrl = `${frontendBase}/register?ref=${referralCode}`;
     // Regla del Director: $5.000 COP en PUNTOS (no Wompi) y sólo cuando el
     // invitado hace una compra efectiva de productos.
     // El premio es del REFERENTE (quien invita), no del invitado: el mensaje no

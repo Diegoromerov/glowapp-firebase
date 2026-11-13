@@ -26,7 +26,9 @@ router.get('/:codigo', async (req, res) => {
   const base = (process.env.FRONTEND_URL || 'https://glowapp-client.web.app').replace(/\/$/, '');
   const codigoValido = /^[A-Z0-9]{4,20}$/.test(codigo);
   const destino = codigoValido
-    ? `${base}/#/register?ref=${encodeURIComponent(codigo)}`
+    // Ruta limpia, sin `#`: con `cleanUrls: true` en Hosting el fragmento se
+    // normaliza a la raíz y la invitación se perdía.
+    ? `${base}/register?ref=${encodeURIComponent(codigo)}`
     : base;
 
   if (codigoValido) {

@@ -23,7 +23,8 @@ describe('GET /r/:codigo', () => {
     const res = await request(app).get('/r/  glowab12 ').set('User-Agent', 'jest');
 
     expect(res.status).toBe(302);
-    expect(res.headers.location).toContain('/#/register?ref=GLOWAB12');
+    expect(res.headers.location).toContain('/register?ref=GLOWAB12');
+    expect(res.headers.location).not.toContain('#/');
 
     const [sql, params] = pool.query.mock.calls[0];
     expect(sql).toMatch(/INSERT INTO referral_clicks/);
