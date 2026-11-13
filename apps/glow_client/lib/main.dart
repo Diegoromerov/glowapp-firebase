@@ -62,6 +62,7 @@ import 'glowguide/glow_guide_host.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 import 'app_keys.dart';
 import 'widgets/app_update_gate.dart';
+import 'arranque_ruta.dart';
 
 void main() async {
   // El enlace compartido llega en la URL de la pestaña. Hay que guardarlo antes
@@ -174,33 +175,38 @@ void main() async {
 /// la tarjeta de invitación. Efecto real: `/auth/login` abría el mapa, y
 /// cualquier enlace limpio a una pantalla concreta aterrizaba en el inicio.
 bool _rutaDeLaUrlEmpujada = false;
-int _intentosRuta = 0;
 
 void _empujarRutaDeLaUrl() {
   if (_rutaDeLaUrlEmpujada) return;
   final ruta = rutaDeArranque();
-
+  rutaInicialDeLaUrl = ruta;
   if (ruta == '/home') {
     _rutaDeLaUrlEmpujada = true;
     return;
   }
 
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    if (_rutaDeLaUrlEmpujada) return;
-    final navegador = GlowGuideService.instance.navigatorKey.currentState;
-    if (navegador == null) {
-      // El Navigator puede no estar montado en el primer frame: se reintenta
-      // unas pocas veces y, si no aparece, se deja el inicio.
-      if (_intentosRuta++ < 10) {
-        Future<void>.delayed(const Duration(milliseconds: 60), _empujarRutaDeLaUrl);
-      } else {
-        _rutaDeLaUrlEmpujada = true;
-      }
-      return;
-    }
-    navegador.pushNamed(ruta);
-    _rutaDeLaUrlEmpujada = true;
+  // El empuje se hace cuando el arranque se asienta, no en el primer frame.
+  //
+  // En el primer frame se empujaba y el Navigator se recreaba acto seguido: los
+  // logs decían «push OK -> /auth/login» y la pantalla seguía siendo el mapa,
+  // porque el Navigator donde se empujó ya no era el visible. Esperar deja que
+  // el árbol se estabilice y se toma el `currentState` de ese momento.
+  _rutaDeLaUrlEmpujada = true;
+  Future<void>.delayed(const Duration(milliseconds: 1200), () {
+    _empujarConReintentos(ruta, 0);
   });
+}
+
+void _empujarConReintentos(String ruta, int intento) {
+  final navegador = GlowGuideService.instance.navigatorKey.currentState;
+  if (navegador == null) {
+    if (intento < 12) {
+      Future<void>.delayed(const Duration(milliseconds: 250),
+          () => _empujarConReintentos(ruta, intento + 1));
+    }
+    return;
+  }
+  navegador.pushNamed(ruta);
 }
 
 /// Ruta con la que debe abrir la app.

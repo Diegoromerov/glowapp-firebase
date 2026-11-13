@@ -18,6 +18,7 @@ import '../widgets/auth_gate.dart';
 import '../services/deep_link_service.dart';
 import 'package:glow_core/glowguide/config/client_guide.dart';
 import '../widgets/chip_club.dart';
+import '../arranque_ruta.dart';
 
 class ProvidersScreen extends StatefulWidget {
   const ProvidersScreen({super.key});
@@ -228,6 +229,11 @@ class _ProvidersScreenState extends State<ProvidersScreen>
       // Revalidar guards en el momento real del frame
       if (!mounted) return;
       if (!_enableGlowGuide) return;
+      // El tour cuenta el mapa. Si la app abrió en otra pantalla por un enlace
+      // (/auth/login, una ficha compartida), se pinta encima y tapa el
+      // contenido: se vio con el formulario de acceso detrás de la tarjeta.
+      final rutaUrl = rutaInicialDeLaUrl;
+      if (rutaUrl != null && rutaUrl != '/home') return;
       if (_glowGuideEngine.isActive ||
           _glowGuideEngine.isCompleted ||
           _glowGuideEngine.isDismissed) {
