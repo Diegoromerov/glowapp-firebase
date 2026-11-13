@@ -719,14 +719,6 @@ exports.getReferralInfo = async (req, res) => {
 // ==========================================
 exports.deleteAccount = async (req, res) => {
   const userId = req.user.id;
-  // Instrumentación temporal: la petición se cuelga 30 s y Railway responde
-  // 502 sin que el handler registre nada. Estos tiempos dicen en qué paso.
-  const t0 = Date.now();
-  const marca = (paso) =>
-    console.log(`⏱️ [DELETE-ACCOUNT ${userId}] ${paso}: +${Date.now() - t0} ms`);
-  marca('entrada');
-  res.on('finish', () => marca('respuesta enviada'));
-  res.on('close', () => marca('conexión cerrada'));
   try {
     // 1. T-111: borrar los datos biométricos ANTES de tocar la cuenta.
     //
@@ -736,7 +728,6 @@ exports.deleteAccount = async (req, res) => {
     // primero para que un fallo no deje la cuenta inutilizable a medio borrar y el
     // reintento sea posible.
     const biometricos = await consentService.deleteBiometricData(userId);
-    marca(`biométricos borrados (deleted=${biometricos.deleted})`);
     if (!biometricos.deleted) {
       console.error(`❌ [LEGAL] No se pudieron borrar los datos biométricos del usuario ${userId}: ${biometricos.error || 'sin detalle'}`);
       return res.status(500).json({
@@ -748,23 +739,35 @@ exports.deleteAccount = async (req, res) => {
     // consentimiento y anonimizar la cuenta dentro de una transacción de
     // sistema; de otro modo el UPDATE podía afectar cero filas y aun así
     // responder que la cuenta fue eliminada.
-    marca('antes de la transacción de sistema');
-    const deletion = await tenantRouting.runAsSystem({ pool }, async (client) => {
-      // Diagnóstico: si algo tiene el bloqueo, que falle en 5 s y lo diga en vez
-      // de dejar la petición colgada hasta el timeout de la plataforma.
+    // La anonimización corre en la MISMA transacción de la petición, no en otra
+    // conexión.
+    //
+    // Antes iba por `runAsSystem`, que abre una conexión nueva — y ahí estaba el
+    // 502: la transacción del request ya tenía un bloqueo sobre la fila de
+    // `usuarios` (la auditoría de `deleteBiometricData` inserta con clave ajena a
+    // esa fila), así que el UPDATE de la segunda conexión esperaba a que la
+    // primera terminara; y la primera solo termina cuando la respuesta sale, que
+    // espera al UPDATE. Un abrazo mortal que Railway cortaba a los 30 s.
+    //
+    // Escalar el rol aquí es seguro: `SET LOCAL ROLE` dura lo que la transacción.
+    const clienteDeLaPeticion = tenantRouting.getActiveClient();
+    const conPrivilegios = clienteDeLaPeticion
+      ? async (fn) => {
+          await clienteDeLaPeticion.query('SET LOCAL ROLE app_system');
+          return fn(clienteDeLaPeticion);
+        }
+      : (fn) => tenantRouting.runAsSystem({ pool }, fn);
+
+    const deletion = await conPrivilegios(async (client) => {
+      // Si algo vuelve a bloquear, que falle en 5 s en vez de colgar la petición.
       await client.query("SET LOCAL lock_timeout = '5s'");
-      await client.query("SET LOCAL statement_timeout = '10s'");
-      marca('timeouts fijados');
 
       await client.query(
         `UPDATE biometric_consents
             SET granted = FALSE, revoked_at = NOW(), updated_at = NOW()
           WHERE user_id = $1`,
         [userId]
-      ).catch((e) => {
-        marca(`biometric_consents FALLÓ: ${e.message}`);
-      });
-      marca('biometric_consents hecho');
+      ).catch(() => {});
 
       return client.query(
         `UPDATE usuarios
@@ -778,14 +781,12 @@ exports.deleteAccount = async (req, res) => {
         [`deleted_${userId}_${Date.now()}@glowapp.deleted`, userId]
       );
     });
-    marca(`UPDATE usuarios hecho (filas=${deletion.rowCount})`);
+
     if (deletion.rowCount !== 1) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
 
     console.log(`⚖️ [LEGAL COMPLIANCE] Cuenta de usuario ID ${userId} eliminada a solicitud del titular. Datos biométricos suprimidos: ${biometricos.recordsAffected}.`);
-
-    marca('antes de responder');
     res.json({
       success: true,
       message: 'Tu cuenta y tus datos personales y biométricos han sido eliminados de GlowApp.',
