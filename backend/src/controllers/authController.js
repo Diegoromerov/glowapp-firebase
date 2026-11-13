@@ -692,6 +692,31 @@ exports.getReferralInfo = async (req, res) => {
       console.warn('⚠️ Sin estadísticas de referidos:', e.message);
     }
 
+    // Quiénes se unieron con el código.
+    //
+    // Hasta ahora la pantalla solo daba contadores («0 convertidos»): la
+    // invitante no podía saber si su invitada había entrado ni si estaba
+    // pendiente de compra. Se muestra el nombre de pila, no el completo: es
+    // suficiente para reconocer a quién invitó y no expone más de lo necesario.
+    let invitadas = [];
+    try {
+      const lista = await pool.query(
+        `SELECT nombre, created_at, referral_converted_at
+           FROM usuarios
+          WHERE referred_by_user_id = $1
+          ORDER BY created_at DESC
+          LIMIT 50`,
+        [userId]
+      );
+      invitadas = lista.rows.map((f) => ({
+        nombre: String(f.nombre || '').trim().split(/\s+/)[0] || 'Invitada',
+        fecha: f.created_at,
+        estado: f.referral_converted_at ? 'premiada' : 'pendiente',
+      }));
+    } catch (e) {
+      console.warn('⚠️ Sin lista de invitadas:', e.message);
+    }
+
     res.json({
       success: true,
       referral_code: referralCode,
@@ -707,6 +732,7 @@ exports.getReferralInfo = async (req, res) => {
         : null,
       referidos_convertidos: convertidos,
       puntos_ganados: puntosGanados,
+      invitadas,
     });
   } catch (error) {
     console.error('❌ ERROR GET REFERRAL INFO:', error.message);

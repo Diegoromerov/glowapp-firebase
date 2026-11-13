@@ -25,6 +25,9 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
   int _convertidos = 0;
   int _puntosGanados = 0;
 
+  /// Quiénes se unieron con el código: nombre de pila y si ya compró.
+  List<Map<String, dynamic>> _invitadas = const [];
+
   @override
   void initState() {
     super.initState();
@@ -46,6 +49,10 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
         _enlace = datos['share_url']?.toString();
         _convertidos = (datos['referidos_convertidos'] as num?)?.toInt() ?? 0;
         _puntosGanados = (datos['puntos_ganados'] as num?)?.toInt() ?? 0;
+        final lista = datos['invitadas'];
+        _invitadas = lista is List
+            ? lista.whereType<Map>().map((e) => Map<String, dynamic>.from(e)).toList()
+            : const [];
         _cargando = false;
       });
     } catch (e) {
@@ -193,6 +200,60 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
                     style: TextStyle(fontSize: 12, color: t.textPrimary),
                   ),
                 ),
+              ],
+            ),
+          ),
+        ],
+        if (_invitadas.isNotEmpty) ...[
+          const SizedBox(height: 16),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            decoration: BoxDecoration(
+              color: t.surfaceLevel1,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: t.borderDefault),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _invitadas.length == 1
+                      ? 'Tu invitada'
+                      : 'Tus invitadas (${_invitadas.length})',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: t.textPrimary,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                for (final inv in _invitadas)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.person_outline, size: 15, color: Color(0xFFC5A052)),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            inv['nombre']?.toString() ?? 'Invitada',
+                            style: TextStyle(fontSize: 12, color: t.textPrimary),
+                          ),
+                        ),
+                        Text(
+                          inv['estado'] == 'premiada' ? 'ya compró' : 'pendiente de compra',
+                          style: TextStyle(
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.w600,
+                            color: inv['estado'] == 'premiada'
+                                ? const Color(0xFF3E7D4F)
+                                : t.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
               ],
             ),
           ),
