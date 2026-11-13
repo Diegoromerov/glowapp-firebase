@@ -16,6 +16,7 @@ import 'services/deep_link_service.dart';
 import 'services/push_service.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
+import 'screens/invite_welcome_screen.dart';
 import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/verification_pending_screen.dart';
 import 'screens/provider_detail_screen.dart';
@@ -142,10 +143,15 @@ void main() async {
   ));
 
   GlowGuideService.instance.initialize();
-  GlowGuideService.instance.createEngine(
-    steps: ClientGuide.steps,
-    guideId: ClientGuide.guideId,
-  );
+  // Con una invitación en la URL el tour no arranca: se pinta encima y tapa
+  // justo la pantalla de bienvenida que la persona vino a ver.
+  final codigoInvitacion = codigoInvitacionDeLaUrl(Uri.base);
+  if (codigoInvitacion == null || codigoInvitacion.isEmpty) {
+    GlowGuideService.instance.createEngine(
+      steps: ClientGuide.steps,
+      guideId: ClientGuide.guideId,
+    );
+  }
 
   runZonedGuarded(
     () => runApp(const ProviderScope(child: GlowClientApp())),
@@ -153,6 +159,23 @@ void main() async {
       unawaited(CrashReportingService.instance.reportAsyncError(error, stack));
     },
   );
+
+  // El enlace de invitación llega como `/register?ref=CODIGO` (o el formato
+  // viejo con `#`). La app abre en el inicio y aquí se empuja la ruta que pedía
+  // la URL: en `initialRoute` no funcionaba, porque la pila inicial se resuelve
+  // antes de que el Navigator exista y la invitada quedaba en el mapa.
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    final nav = GlowGuideService.instance.navigatorKey.currentState;
+    if (nav == null) return;
+    final codigo = codigoInvitacionDeLaUrl(Uri.base);
+    if (codigo != null && codigo.isNotEmpty) {
+      nav.pushNamed('/bienvenida-invitacion');
+      return;
+    }
+    final ruta = rutaDeArranque();
+    if (ruta == '/home') return;
+    nav.pushNamed(ruta);
+  });
 }
 
 /// Ruta con la que debe abrir la app.
@@ -162,10 +185,19 @@ void main() async {
 /// hay ninguna, que es el modo exploración normal.
 String rutaDeArranque([Uri? url]) {
   final base = url ?? Uri.base;
+
+  // La ruta limpia manda: es el formato del enlace nuevo (`/register?ref=...`).
+  // Importa el orden porque Flutter, al arrancar, añade su propio `#/home` al
+  // final de la URL: leer el fragmento primero devolvía `/home` y la invitada
+  // se quedaba en el mapa aunque la ruta estuviera ahí al principio.
+  final ruta = base.path.trim();
+  final esRaiz = ruta.isEmpty || ruta == '/' || ruta == '/index.html';
+  if (!esRaiz) return ruta;
+
+  // Formato viejo, con almohadilla: `/#/register?ref=...`.
   final fragmento = base.fragment.trim();
   if (fragmento.startsWith('/')) return fragmento;
-  final ruta = base.path.trim();
-  if (ruta.startsWith('/') && ruta.length > 1) return ruta;
+
   return '/home';
 }
 
@@ -233,10 +265,11 @@ class GlowClientApp extends ConsumerWidget {
       // La app abre en modo exploración: el catálogo, el mapa y el detalle de
       // cada prestador se ven sin cuenta. La identificación se pide en la
       // acción concreta (reservar, comprar, Glow IA+) vía AuthGate, no al entrar.
-      // El enlace de invitación llega como `#/register?ref=CODIGO`. Con
-      // `/home` fijo, el arranque reescribía la URL y la invitada aterrizaba en
-      // el mapa: se perdía el registro aunque el código siguiera en memoria.
-      initialRoute: rutaDeArranque(),
+      // La app abre siempre en el modo exploración y, si la URL pedía otra
+      // ruta, se empuja después del primer frame (ver `_abrirRutaDeLaUrl`).
+      // Pasar la ruta a `initialRoute` no servía: Flutter resuelve la pila
+      // inicial antes de que el Navigator exista y se quedaba en el inicio.
+      initialRoute: '/home',
       routes: <String, WidgetBuilder>{
         // Auth
         // Las cuatro pantallas de acceso van SIEMPRE claras: su hero y sus
@@ -254,6 +287,10 @@ class GlowClientApp extends ConsumerWidget {
 
         // Home / Navegación principal
         '/home': (_) => const ProvidersScreen() as Widget,
+
+        // Bienvenida de una invitación: se ve ANTES del inicio, con el código
+        // ya puesto. Al continuar guarda el código y sigue al inicio normal.
+        '/bienvenida-invitacion': (_) => const InviteWelcomeScreen(),
 
         // Mis Reservas
         '/my-bookings': (_) => const ClientBookingsScreen(),

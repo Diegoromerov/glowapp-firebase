@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../services/deep_link_service.dart';
+import '../invite_welcome_screen.dart';
 import '../../services/push_service.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -37,6 +38,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   /// perdía para siempre.
   final _refCtrl = TextEditingController(text: _codigoDelEnlace());
 
+  /// Código guardado en la bienvenida de la invitación. Se carga al abrir.
+  bool _codigoDeLaBienvenidaCargado = false;
+
   bool _isLoading = false;
 
   /// Ítem 43: sin esta casilla no se crea la cuenta. Antes el registro
@@ -44,6 +48,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _aceptaTerminos = false;
   bool _obscurePassword = true;
   String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    // Si la persona pasó por la pantalla de bienvenida de la invitación, el
+    // código quedó guardado. Se rellena solo cuando el campo está vacío, para
+    // no pisar lo que venga en la URL o lo que ella haya escrito.
+    leerCodigoInvitacionPendiente().then((guardado) {
+      if (!mounted || _codigoDeLaBienvenidaCargado) return;
+      _codigoDeLaBienvenidaCargado = true;
+      if (guardado.isNotEmpty && _refCtrl.text.trim().isEmpty) {
+        setState(() => _refCtrl.text = guardado);
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -87,6 +106,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ? _codigoDelEnlace()
             : normalizarCodigoInvitacion(_refCtrl.text),
       );
+
+      if (success) {
+        // Ya se usó: no debe reaparecer en la próxima cuenta que se cree en
+        // este dispositivo.
+        unawaited(guardarCodigoInvitacionPendiente(''));
+      }
 
       if (success && mounted) {
         final scaffoldMessenger = ScaffoldMessenger.of(context);
