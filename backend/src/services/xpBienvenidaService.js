@@ -19,13 +19,17 @@ async function acreditarXpBienvenida({ userId, cliente = poolPorDefecto } = {}) 
 
   try {
     const r = await cliente.query(
+      // El motivo va como literal, no como parámetro: reutilizar `$3` en el
+      // INSERT y en el NOT EXISTS hacía que Postgres no dedujera un tipo único
+      // («inconsistent types deduced for parameter $3») y el asiento no se
+      // escribía. Fallaba en silencio porque el error se captura.
       `INSERT INTO xp_logs (user_id, xp_amount, reason, metadata)
-       SELECT $1, $2, $3, '{"fuente":"registro"}'::jsonb
+       SELECT $1, $2, '${MOTIVO}', '{"fuente":"registro"}'::jsonb
         WHERE NOT EXISTS (
-          SELECT 1 FROM xp_logs WHERE user_id = $1 AND reason = $3
+          SELECT 1 FROM xp_logs WHERE user_id = $1 AND reason = '${MOTIVO}'
         )
        RETURNING id`,
-      [userId, XP_BIENVENIDA, MOTIVO]
+      [userId, XP_BIENVENIDA]
     );
     return { acreditado: Boolean(r && r.rowCount > 0), puntos: XP_BIENVENIDA };
   } catch (e) {

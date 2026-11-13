@@ -18,7 +18,8 @@ test('acredita 100 XP con motivo propio', async () => {
   const [sql, params] = pool.query.mock.calls[0];
   expect(sql).toContain('INSERT INTO xp_logs');
   expect(sql).toContain('NOT EXISTS');
-  expect(params).toEqual([7, XP_BIENVENIDA, 'registro:bienvenida']);
+  expect(params).toEqual([7, XP_BIENVENIDA]);
+  expect(sql).toContain("'registro:bienvenida'");
 });
 
 test('si ya existía el asiento, no duplica', async () => {
