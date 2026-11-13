@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/auth_gate.dart';
+import '../widgets/bloque_canje_puntos.dart';
 
 class StoreScreen extends StatefulWidget {
   final String? bookingId;
@@ -57,85 +58,6 @@ class _StoreScreenState extends State<StoreScreen> {
     final saldo = _saldoPuntos;
     if (saldo == null) return 0;
     return saldo.pesosDe(_puntosParaElCarrito);
-  }
-
-  /// Selector de canje del carrito. Sólo aparece cuando hay saldo y el pedido
-  /// califica; el switch decide si se envía `puntos_a_canjear` al crear el pedido.
-  Widget _buildBloquePuntos() {
-    final saldo = _saldoPuntos!;
-    final productos = _productosConIva.round();
-    final aplicables = saldo.puntosAplicablesEn(productos);
-    final alcanzaElMinimo = productos >= saldo.minimoPedido;
-
-    final String detalle;
-    if (!alcanzaElMinimo) {
-      detalle = 'Con ${_formatCOP(saldo.minimoPedido.toDouble())} o más en productos '
-          'puedes usar hasta el ${saldo.topePorcentaje}%.';
-    } else if (aplicables == 0) {
-      detalle = 'Este pedido no admite puntos: el tope del ${saldo.topePorcentaje}% '
-          'no deja aplicar ni ${saldo.bloqueCanje}.';
-    } else if (_usarPuntos) {
-      detalle = 'Se aplican $aplicables puntos '
-          '(−${_formatCOP(saldo.pesosDe(aplicables).toDouble())}) en este pedido.';
-    } else {
-      detalle = 'Puedes aplicar hasta $aplicables puntos en este pedido.';
-    }
-
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFBF7EF),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFE8D9BC)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.card_giftcard, size: 18, color: Color(0xFFAA7C11)),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  'Tienes ${saldo.saldo} puntos = ${_formatCOP(saldo.enPesos.toDouble())}',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: AppTheme.text,
-                  ),
-                ),
-              ),
-              Switch(
-                value: _usarPuntos,
-                onChanged: aplicables == 0
-                    ? null
-                    : (valor) => setState(() => _usarPuntos = valor),
-              ),
-            ],
-          ),
-          Text(
-            detalle,
-            style: const TextStyle(fontSize: 12, height: 1.3, color: Color(0xFF6B5A48)),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton(
-              onPressed: () => Navigator.pushNamed(context, '/programa-puntos'),
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
-                minimumSize: const Size(0, 26),
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              child: const Text(
-                'Ver condiciones',
-                style: TextStyle(fontSize: 11, decoration: TextDecoration.underline),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   List<String> get _categories {
@@ -1028,7 +950,12 @@ class _StoreScreenState extends State<StoreScreen> {
                 ),
                 const SizedBox(height: 20),
                   if (_saldoPuntos != null && _saldoPuntos!.tieneSaldo && _cart.isNotEmpty) ...[
-                    _buildBloquePuntos(),
+                    BloqueCanjePuntos(
+                      saldo: _saldoPuntos!,
+                      valorProductos: _productosConIva.round(),
+                      activo: _usarPuntos,
+                      onCambio: (valor) => setState(() => _usarPuntos = valor),
+                    ),
                     const SizedBox(height: 16),
                   ],
                   const Divider(),
