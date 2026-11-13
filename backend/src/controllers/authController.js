@@ -8,6 +8,7 @@ const redisClient = require('../config/redis');
 const emailService = require('../services/email.service');
 const consentService = require('../services/consentService');
 const { atribuirInvitacion } = require('../services/referralService');
+const xpBienvenidaService = require('../services/xpBienvenidaService');
 const { huellasDePeticion } = require('../utils/hashSenal');
 const { Membership, BusinessProfile } = require('../models');
 const {
@@ -93,6 +94,9 @@ exports.register = async (req, res) => {
 
     // Programa de referidos: si el registro llegó con `?ref=`, se guarda quién
     // invitó. Best-effort: un código inválido no puede tumbar el registro.
+    // 100 XP de bienvenida: mueve la barra del club desde el primer minuto.
+    await xpBienvenidaService.acreditarXpBienvenida({ userId: user.id });
+
     if (data.ref) {
       try {
         await atribuirInvitacion({ nuevoUsuarioId: user.id, codigo: data.ref });

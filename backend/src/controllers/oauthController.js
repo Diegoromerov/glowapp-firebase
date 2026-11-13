@@ -10,6 +10,7 @@ const { getJwtSecret, toApiRole } = require('../config/jwt');
 const DEFAULT_CLIENT_ID = '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com';
 
 exports.googleSignIn = async (req, res) => {
+  let esNuevo = false;
   try {
     // `ref`: código de invitación. Quien se registra con Google también puede
     // venir de un enlace, y hasta hoy el código solo viajaba en el registro por
@@ -124,6 +125,10 @@ exports.googleSignIn = async (req, res) => {
       // Atribución de la invitación al crear la cuenta con Google: este es el
       // otro punto donde nace un usuario, y hasta hoy el código solo viajaba en
       // el registro por correo. Es idempotente: si ya tenía referente, no hace nada.
+      // 100 XP de bienvenida, igual que en el registro por correo.
+      await xpBienvenidaService.acreditarXpBienvenida({ userId: user.id });
+      esNuevo = true;
+
       if (codigoInvitacion) {
         try {
           await atribuirInvitacion({
@@ -157,6 +162,9 @@ exports.googleSignIn = async (req, res) => {
     res.status(200).json({
       success: true,
       token: appToken,
+      // El cliente felicita solo cuando la cuenta acaba de nacer: mostrar el
+      // aviso a quien ya tenía cuenta sería raro y falso.
+      es_nuevo: esNuevo,
       user: {
         id: user.id.toString(),
         full_name: user.nombre,

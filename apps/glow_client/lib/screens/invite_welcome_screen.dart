@@ -615,3 +615,22 @@ Future<void> confirmarInvitacionAplicada(BuildContext context) async {
     // Si falla la consulta, no se molesta a la usuaria con un error técnico.
   }
 }
+
+
+/// Aviso de los 100 XP de bienvenida.
+///
+/// No cambian el nivel —Pétalo empieza en 300—, así que el mensaje no promete
+/// un ascenso: dice cuánto falta. Un regalo que no se entiende no se recuerda.
+void mostrarBienvenidaXp(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      backgroundColor: LuxeColors.nude900,
+      duration: Duration(seconds: 5),
+      content: Text(
+        'Empezaste con 100 XP. Te faltan 200 para Pétalo, donde recibes un '
+        'análisis con IA gratis cada mes.',
+        style: TextStyle(fontFamily: 'Manrope', fontSize: 12),
+      ),
+    ),
+  );
+}

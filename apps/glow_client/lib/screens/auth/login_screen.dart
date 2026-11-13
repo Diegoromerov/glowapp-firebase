@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (idToken != null && idToken.isNotEmpty) {
         final result = await AuthService.loginWithGoogle(idToken);
         if (result != null && result['token'] != null && mounted) {
-          // Si venía de una invitación, que sepa si el código se aplicó.
+          if (result['es_nuevo'] == true) mostrarBienvenidaXp(context);
           unawaited(confirmarInvitacionAplicada(context));
           return _navigateAfterLogin(result);
         }
@@ -215,6 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final result =
             await AuthService.loginWithGoogleAccessToken(accessToken);
         if (result != null && result['token'] != null && mounted) {
+          if (result['es_nuevo'] == true) mostrarBienvenidaXp(context);
           unawaited(confirmarInvitacionAplicada(context));
           return _navigateAfterLogin(result);
         }
