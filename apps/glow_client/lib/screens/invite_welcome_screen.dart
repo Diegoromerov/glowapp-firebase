@@ -230,3 +230,343 @@ class _InviteWelcomeScreenState extends State<InviteWelcomeScreen> {
     );
   }
 }
+
+
+/// Muestra la bienvenida de la invitación como hoja inferior.
+///
+/// Se usa hoja y no ruta a propósito: la persona YA llegó al inicio, el tour
+/// corre encima y esto no lo interrumpe. Al continuar guarda el código y cierra.
+Future<void> mostrarBienvenidaInvitacion(
+  BuildContext context,
+  String codigo,
+) async {
+  final inicial = normalizarCodigoInvitacion(codigo);
+  final ctrl = TextEditingController(text: inicial);
+  var guardado = false;
+
+  await showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: LuxeColors.nude50,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+    ),
+    builder: (ctx) => Padding(
+      padding: EdgeInsets.only(
+        left: 24,
+        right: 24,
+        top: 22,
+        bottom: 22 + MediaQuery.of(ctx).viewInsets.bottom,
+      ),
+      child: StatefulBuilder(
+        builder: (ctx, setEstado) => Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 38,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: LuxeColors.nude300,
+                  borderRadius: BorderRadius.circular(9),
+                ),
+              ),
+            ),
+            const SizedBox(height: 18),
+            const Text(
+              'TE INVITARON A GLOWAPP',
+              style: TextStyle(
+                fontFamily: 'Manrope',
+                fontSize: 8.5,
+                letterSpacing: 2.6,
+                fontWeight: FontWeight.w600,
+                color: LuxeColors.gold700,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Bienvenida a\nGlow Luxe',
+              style: TextStyle(
+                fontFamily: 'CormorantGaramond',
+                fontSize: 34,
+                height: 1.02,
+                fontWeight: FontWeight.w500,
+                color: LuxeColors.nude900,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Una amiga te invitó. Guardamos su código para cuando crees tu '
+              'cuenta y recibas los puntos de bienvenida.',
+              style: TextStyle(
+                fontFamily: 'Manrope',
+                fontSize: 12,
+                height: 1.5,
+                color: LuxeColors.nude600,
+              ),
+            ),
+            const SizedBox(height: 18),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(13),
+                border: Border.all(
+                  color: LuxeColors.nude900.withValues(alpha: .12),
+                ),
+              ),
+              child: TextField(
+                controller: ctrl,
+                textCapitalization: TextCapitalization.characters,
+                onChanged: (_) => setEstado(() {}),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'GLOW1234',
+                  hintStyle: const TextStyle(
+                    fontFamily: 'Manrope',
+                    fontSize: 15,
+                    color: LuxeColors.nude400,
+                    letterSpacing: 2.5,
+                  ),
+                  suffixIcon: normalizarCodigoInvitacion(ctrl.text).isEmpty
+                      ? null
+                      : const Icon(Icons.check_circle,
+                          color: LuxeColors.gold871, size: 18),
+                ),
+                style: const TextStyle(
+                  fontFamily: 'Manrope',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 2.5,
+                  color: LuxeColors.nude900,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: FilledButton(
+                onPressed: guardado
+                    ? null
+                    : () async {
+                        guardado = true;
+                        await guardarCodigoInvitacionPendiente(ctrl.text);
+                        if (ctx.mounted) Navigator.of(ctx).pop();
+                      },
+                style: FilledButton.styleFrom(
+                  backgroundColor: LuxeColors.nude900,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                ),
+                child: const Text(
+                  'Continuar',
+                  style: TextStyle(
+                    fontFamily: 'Manrope',
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: LuxeColors.nude50,
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () => Navigator.of(ctx).pop(),
+                child: const Text(
+                  'Ahora no',
+                  style: TextStyle(
+                    fontFamily: 'Manrope',
+                    fontSize: 11.5,
+                    color: LuxeColors.nude500,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+  ctrl.dispose();
+}
+
+
+/// Tarjeta de invitación pendiente, para pintar SOBRE el inicio.
+///
+/// Es contenido, no overlay: no necesita Navigator ni hoja modal. Dos capas de
+/// overlay fallaron antes (navigatorKey y bottom sheet) y esto no depende de
+/// ninguna de las dos.
+class TarjetaInvitacionPendiente extends StatefulWidget {
+  const TarjetaInvitacionPendiente({super.key});
+
+  @override
+  State<TarjetaInvitacionPendiente> createState() =>
+      _TarjetaInvitacionPendienteState();
+}
+
+class _TarjetaInvitacionPendienteState
+    extends State<TarjetaInvitacionPendiente> {
+  final _ctrl = TextEditingController();
+  bool _visible = false;
+  bool _guardado = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final delEnlace = normalizarCodigoInvitacion(
+      codigoInvitacionDeLaUrl(Uri.base) ?? '',
+    );
+    if (delEnlace.isEmpty) return;
+    _ctrl.text = delEnlace;
+    _visible = true;
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_visible) return const SizedBox.shrink();
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+      decoration: BoxDecoration(
+        color: LuxeColors.nude50,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: LuxeColors.gold871.withValues(alpha: .45)),
+        boxShadow: [
+          BoxShadow(
+            color: LuxeColors.nude900.withValues(alpha: .16),
+            blurRadius: 22,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Expanded(
+                child: Text(
+                  'TE INVITARON A GLOWAPP',
+                  style: TextStyle(
+                    fontFamily: 'Manrope',
+                    fontSize: 8.5,
+                    letterSpacing: 2.4,
+                    fontWeight: FontWeight.w600,
+                    color: LuxeColors.gold700,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () => setState(() => _visible = false),
+                child: const Padding(
+                  padding: EdgeInsets.all(4),
+                  child: Icon(Icons.close,
+                      size: 16, color: LuxeColors.nude500),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          const Text(
+            'Tu amiga te dejó un código',
+            style: TextStyle(
+              fontFamily: 'CormorantGaramond',
+              fontSize: 21,
+              fontWeight: FontWeight.w500,
+              color: LuxeColors.nude900,
+            ),
+          ),
+          const SizedBox(height: 4),
+          const Text(
+            'Guárdalo y lo aplicamos cuando crees tu cuenta.',
+            style: TextStyle(
+              fontFamily: 'Manrope',
+              fontSize: 11,
+              color: LuxeColors.nude600,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(11),
+                    border: Border.all(
+                      color: LuxeColors.nude900.withValues(alpha: .12),
+                    ),
+                  ),
+                  child: TextField(
+                    controller: _ctrl,
+                    textCapitalization: TextCapitalization.characters,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'GLOW1234',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Manrope',
+                        fontSize: 13,
+                        color: LuxeColors.nude400,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: 'Manrope',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 2,
+                      color: LuxeColors.nude900,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              SizedBox(
+                height: 42,
+                child: FilledButton(
+                  onPressed: _guardado
+                      ? null
+                      : () async {
+                          await guardarCodigoInvitacionPendiente(_ctrl.text);
+                          if (!mounted) return;
+                          setState(() {
+                            _guardado = true;
+                            _visible = false;
+                          });
+                        },
+                  style: FilledButton.styleFrom(
+                    backgroundColor: LuxeColors.nude900,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                  ),
+                  child: Text(
+                    _guardado ? 'Guardado' : 'Guardar',
+                    style: const TextStyle(
+                      fontFamily: 'Manrope',
+                      fontSize: 11.5,
+                      fontWeight: FontWeight.w700,
+                      color: LuxeColors.nude50,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -143,15 +143,13 @@ void main() async {
   ));
 
   GlowGuideService.instance.initialize();
-  // Con una invitación en la URL el tour no arranca: se pinta encima y tapa
-  // justo la pantalla de bienvenida que la persona vino a ver.
-  final codigoInvitacion = codigoInvitacionDeLaUrl(Uri.base);
-  if (codigoInvitacion == null || codigoInvitacion.isEmpty) {
-    GlowGuideService.instance.createEngine(
-      steps: ClientGuide.steps,
-      guideId: ClientGuide.guideId,
-    );
-  }
+  // El tour SÍ arranca aunque venga una invitación: quien entra quiere ver la
+  // app, y el recorrido es parte de eso. La bienvenida de la invitación espera
+  // a que el tour termine (ver `_quizasMostrarInvitacion` en el inicio).
+  GlowGuideService.instance.createEngine(
+    steps: ClientGuide.steps,
+    guideId: ClientGuide.guideId,
+  );
 
   runZonedGuarded(
     () => runApp(const ProviderScope(child: GlowClientApp())),
@@ -164,18 +162,9 @@ void main() async {
   // viejo con `#`). La app abre en el inicio y aquí se empuja la ruta que pedía
   // la URL: en `initialRoute` no funcionaba, porque la pila inicial se resuelve
   // antes de que el Navigator exista y la invitada quedaba en el mapa.
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    final nav = GlowGuideService.instance.navigatorKey.currentState;
-    if (nav == null) return;
-    final codigo = codigoInvitacionDeLaUrl(Uri.base);
-    if (codigo != null && codigo.isNotEmpty) {
-      nav.pushNamed('/bienvenida-invitacion');
-      return;
-    }
-    final ruta = rutaDeArranque();
-    if (ruta == '/home') return;
-    nav.pushNamed(ruta);
-  });
+  // La ruta de la URL se empuja desde el `builder` de MaterialApp (ver
+  // `_empujarRutaDeLaUrl`), que sí tiene un Navigator vivo en el contexto.
+
 }
 
 /// Ruta con la que debe abrir la app.
@@ -216,8 +205,14 @@ class GlowClientApp extends ConsumerWidget {
       scaffoldMessengerKey: rootMessengerKey,
       // El guide se monta encima del Navigator: es lo que le permite navegar la
       // app sin desaparecer. Dentro de una pantalla, la ruta nueva lo tapaba.
-      builder: (context, child) => Column(
-        children: [
+      builder: (context, child) {
+        // La ruta de la URL se empuja aquí: es el primer punto con un Navigator
+        // vivo. Con `navigatorKey` el estado llegaba nulo y la invitada caía en
+        // el mapa sin ver la bienvenida.
+        return Stack(
+          children: [
+            Column(
+              children: [
           // Ítem 21: la franja solo ocupa alto cuando de verdad no hay red.
           const FranjaConexion(),
           Expanded(
@@ -233,7 +228,21 @@ class GlowClientApp extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+            ),
+            // Tarjeta de invitación: contenido, no overlay. Se pinta encima del
+            // inicio sin Navigator ni hoja modal, que fueron las dos vías que
+            // fallaron. El tour queda por encima de ella, así que no lo tapa.
+            const Positioned(
+              // Debajo de la barra de búsqueda: a 92 la tapaba y el campo de
+              // texto quedaba cortado.
+              top: 108,
+              left: 0,
+              right: 0,
+              child: TarjetaInvitacionPendiente(),
+            ),
+          ],
+        );
+      },
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -564,3 +573,4 @@ class AudienceModeNotifier extends StateNotifier<AudienceMode> {
     super.dispose();
   }
 }
+
