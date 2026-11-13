@@ -167,6 +167,42 @@ void main() async {
 
 }
 
+/// Empuja la ruta que traiga la URL, una sola vez.
+///
+/// El comentario del `builder` decía «la ruta de la URL se empuja aquí» desde
+/// hace semanas, pero el código no existía: se perdió en el refactor que montó
+/// la tarjeta de invitación. Efecto real: `/auth/login` abría el mapa, y
+/// cualquier enlace limpio a una pantalla concreta aterrizaba en el inicio.
+bool _rutaDeLaUrlEmpujada = false;
+int _intentosRuta = 0;
+
+void _empujarRutaDeLaUrl() {
+  if (_rutaDeLaUrlEmpujada) return;
+  final ruta = rutaDeArranque();
+
+  if (ruta == '/home') {
+    _rutaDeLaUrlEmpujada = true;
+    return;
+  }
+
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (_rutaDeLaUrlEmpujada) return;
+    final navegador = GlowGuideService.instance.navigatorKey.currentState;
+    if (navegador == null) {
+      // El Navigator puede no estar montado en el primer frame: se reintenta
+      // unas pocas veces y, si no aparece, se deja el inicio.
+      if (_intentosRuta++ < 10) {
+        Future<void>.delayed(const Duration(milliseconds: 60), _empujarRutaDeLaUrl);
+      } else {
+        _rutaDeLaUrlEmpujada = true;
+      }
+      return;
+    }
+    navegador.pushNamed(ruta);
+    _rutaDeLaUrlEmpujada = true;
+  });
+}
+
 /// Ruta con la que debe abrir la app.
 ///
 /// Prioriza lo que venga en la URL —el `#/register?ref=...` de una invitación o
@@ -197,6 +233,10 @@ class GlowClientApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final audienceMode = ref.watch(audienceModeProvider);
     final isMen = audienceMode == AudienceMode.men;
+
+    // La ruta de la URL se empuja después del primer frame, con el Navigator ya
+    // vivo (ver `_empujarRutaDeLaUrl`).
+    _empujarRutaDeLaUrl();
 
     return MaterialApp(
       title: 'GlowApp',
