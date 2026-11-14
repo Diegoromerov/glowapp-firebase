@@ -8,9 +8,16 @@
  * intento queda registrado. Cuando todos hayan subido su RUT, se pone
  * `RUT_GATE_MODE=block` y el bloqueo pasa a ser efectivo.
  *
- * Se consulta la base en cada petición y no se cachea: el estado cambia cuando
- * el equipo aprueba, y un catálogo bloqueado por una caché vieja es peor que una
- * consulta por escritura (son pocas y ya vienen con auth y membership).
+ * IMPORTANTE — por qué mira el cuerpo de la petición: el controlador aplica
+ * `is_active !== false`, así que **crear un servicio es publicarlo** salvo que
+ * venga explícitamente en borrador. Bloquear la creación entera dejaba al
+ * proveedor en Modo Exploración (D-GL-031) sin poder armar su catálogo, que es
+ * justo lo que ese modo permite. La puerta se abre para `is_active: false` y se
+ * cierra para todo lo que queda visible en la app cliente.
+ *
+ * Se consulta la base en cada publicación y no se cachea: el estado cambia
+ * cuando el equipo aprueba, y un catálogo bloqueado por una caché vieja es peor
+ * que una consulta por escritura (son pocas y ya vienen con auth y membership).
  */
 
 const { pool } = require('../config/db');
@@ -23,8 +30,19 @@ function modoActual() {
   return MODOS.includes(modo) ? modo : 'warn';
 }
 
+/**
+ * ¿La petición deja el servicio publicado?
+ * Sin `is_active` en el cuerpo, el controlador aplica `true`: se publica.
+ */
+function publicaServicio(body) {
+  if (!body || !Object.prototype.hasOwnProperty.call(body, 'is_active')) return true;
+  return body.is_active !== false;
+}
+
 async function exigirRutAprobado(req, res, next) {
   try {
+    if (!publicaServicio(req.body)) return next();
+
     const { rows } = await pool.query(
       'SELECT revision_estado, rut_numero FROM usuarios WHERE id = $1',
       [req.user.id]
@@ -49,11 +67,13 @@ async function exigirRutAprobado(req, res, next) {
       error: 'RUT_NO_APROBADO',
       estado_revision: estado,
       detalle:
-        'Para publicar o editar servicios necesitas el RUT aprobado. Súbelo desde tu perfil y el equipo lo revisa.',
+        'Para publicar servicios necesitas el RUT aprobado. Puedes seguir creando borradores mientras el equipo lo revisa.',
+      // La app puede reintentar la misma llamada guardando el servicio en borrador.
+      alternativa: { is_active: false },
     });
   } catch (err) {
     return next(err);
   }
 }
 
-module.exports = { exigirRutAprobado, modoActual };
+module.exports = { exigirRutAprobado, modoActual, publicaServicio };

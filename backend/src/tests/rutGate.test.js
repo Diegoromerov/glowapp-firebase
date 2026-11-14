@@ -13,7 +13,7 @@ jest.mock('../config/db', () => ({
 }));
 
 const { pool } = require('../config/db');
-const { exigirRutAprobado, modoActual } = require('../middleware/rutAprobado');
+const { exigirRutAprobado, modoActual, publicaServicio } = require('../middleware/rutAprobado');
 
 const ORIGINAL = process.env.RUT_GATE_MODE;
 
@@ -88,4 +88,36 @@ test('un modo desconocido cae en warn en lugar de bloquear', () => {
 test('sin variable de entorno el modo por defecto es warn', () => {
   delete process.env.RUT_GATE_MODE;
   expect(modoActual()).toBe('warn');
+});
+
+test('un borrador no publica: no consulta la base ni bloquea', async () => {
+  process.env.RUT_GATE_MODE = 'block';
+  const next = jest.fn();
+  const res = respuestaFalsa();
+
+  await exigirRutAprobado({ user: { id: 7 }, body: { is_active: false } }, res, next);
+
+  expect(pool.query).not.toHaveBeenCalled();
+  expect(next).toHaveBeenCalledTimes(1);
+  expect(res.status).not.toHaveBeenCalled();
+});
+
+test('crear sin is_active cuenta como publicar (el controlador aplica true)', async () => {
+  process.env.RUT_GATE_MODE = 'block';
+  pool.query.mockResolvedValue({ rows: [{ revision_estado: 'SIN_ENVIAR', rut_numero: null }] });
+  const next = jest.fn();
+  const res = respuestaFalsa();
+
+  await exigirRutAprobado({ user: { id: 7 }, body: { name: 'Corte' } }, res, next);
+
+  expect(res.status).toHaveBeenCalledWith(409);
+  // La app sabe cómo reintentar: guardando el servicio en borrador.
+  expect(res.json.mock.calls[0][0].alternativa).toEqual({ is_active: false });
+});
+
+test('publicaServicio distingue borrador de publicación', () => {
+  expect(publicaServicio({ is_active: false })).toBe(false);
+  expect(publicaServicio({ is_active: true })).toBe(true);
+  expect(publicaServicio({ name: 'Corte' })).toBe(true);
+  expect(publicaServicio(undefined)).toBe(true);
 });
