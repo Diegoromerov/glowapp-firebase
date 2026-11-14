@@ -68,8 +68,17 @@ const SCHEMA_SQL = `
     rut_responsabilidad_codigo SMALLINT,
     responsable_iva_override BOOLEAN,
     responsabilidad_iva_fuente VARCHAR(10),
-    responsabilidad_iva_actualizada_at TIMESTAMP,
-    responsabilidad_iva_cambiada_por INTEGER
+    responsabilidad_iva_actualizada_at TIMESTAMPTZ,
+    responsabilidad_iva_cambiada_por INTEGER,
+    rut_soporte_url TEXT,
+    rut_soporte_hash VARCHAR(64),
+    rut_soporte_mime VARCHAR(100),
+    rut_soporte_bytes INTEGER,
+    rut_cargado_at TIMESTAMPTZ,
+    revision_estado VARCHAR(12) NOT NULL DEFAULT 'SIN_ENVIAR',
+    revision_nota TEXT,
+    revisado_por INTEGER,
+    revisado_at TIMESTAMPTZ
   );
 
   CREATE TABLE IF NOT EXISTS business_verticals (

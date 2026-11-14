@@ -10,6 +10,13 @@ const {
   resolverResponsabilidadIva,
   reconciliarConDian
 } = require('../services/ivaPrestador');
+const {
+  ACCIONES,
+  ESTADOS,
+  validarSoporte,
+  evaluarPublicacion,
+  transicionar,
+} = require('../services/fiscalRevision');
 
 // ─── CONTRATO DE COMISIÓN E INDEPENDENCIA (D-GL-023 · F8) ────────────────────
 // El prestador es independiente, no empleado. Se registra versión, fecha e IP:
@@ -174,7 +181,9 @@ router.get('/provider/fiscal', authMiddleware, async (req, res) => {
     const { rows } = await pool.query(
       `SELECT rut_numero, rut_responsabilidad_codigo, responsable_iva,
               responsable_iva_override, responsabilidad_iva_fuente,
-              responsabilidad_iva_actualizada_at
+              responsabilidad_iva_actualizada_at,
+              rut_soporte_url, rut_soporte_hash, rut_cargado_at,
+              revision_estado, revision_nota, revisado_at
          FROM usuarios
         WHERE id = $1`,
       [req.user.id]
@@ -185,6 +194,11 @@ router.get('/provider/fiscal', authMiddleware, async (req, res) => {
     }
 
     const fila = rows[0];
+    const publicacion = evaluarPublicacion({
+      rutNumero: fila.rut_numero,
+      revisionEstado: fila.revision_estado,
+    });
+
     res.json({
       rut_numero: fila.rut_numero,
       rut_responsabilidad_codigo: fila.rut_responsabilidad_codigo,
@@ -192,6 +206,16 @@ router.get('/provider/fiscal', authMiddleware, async (req, res) => {
       override: fila.responsable_iva_override,
       fuente: fila.responsabilidad_iva_fuente,
       actualizada_at: fila.responsabilidad_iva_actualizada_at,
+      // Ciclo del documento (D-GL-030): el prestador no publica hasta APROBADA.
+      revision: {
+        estado: fila.revision_estado || ESTADOS.SIN_ENVIAR,
+        nota: fila.revision_nota || null,
+        soporte_cargado_at: fila.rut_cargado_at || null,
+        revisado_at: fila.revisado_at || null,
+      },
+      puede_publicar_servicios: publicacion.puedePublicar,
+      motivo_publicacion: publicacion.motivo,
+      detalle_publicacion: publicacion.detalle,
       // Explícito, para que la app no tenga que deducir el estado.
       estado: fila.responsabilidad_iva_fuente ? 'DECLARADA' : 'SIN_DECLARAR'
     });
@@ -291,6 +315,104 @@ router.patch('/provider/fiscal', authMiddleware, async (req, res) => {
   } catch (err) {
     console.error('Error al actualizar datos fiscales:', err);
     res.status(500).json({ error: 'Error al actualizar los datos fiscales.' });
+  }
+});
+
+// POST /api/provider/fiscal/rut — enviar el RUT para revisión del equipo.
+//
+// D-GL-030: publicar servicios exige RUT cargado Y aprobado. Este endpoint es el
+// camino nuevo: guarda el documento (URL + hash), registra el código declarado y
+// deja el ciclo en PENDIENTE. NO aplica `responsable_iva` todavía — el valor se
+// aplica cuando el equipo aprueba, para que nadie publique con un IVA que nadie
+// contrastó.
+router.post('/provider/fiscal/rut', authMiddleware, async (req, res) => {
+  const { rut_numero, rut_responsabilidad_codigo, soporte_url, soporte_hash, mime, bytes } =
+    req.body || {};
+
+  const rut = validarRut(rut_numero);
+  if (!rut.valido) {
+    return res.status(400).json({ error: 'RUT_INVALIDO', detalle: rut.motivo });
+  }
+
+  const codigo = validarCodigoResponsabilidad(rut_responsabilidad_codigo);
+  if (!codigo.valido) {
+    return res.status(400).json({
+      error: 'CODIGO_RESPONSABILIDAD_INVALIDO',
+      detalle: codigo.motivo,
+    });
+  }
+
+  const soporte = validarSoporte({
+    url: soporte_url,
+    hash: soporte_hash,
+    mime,
+    bytes,
+  });
+  if (!soporte.valido) {
+    return res.status(400).json({ error: 'SOPORTE_INVALIDO', detalle: soporte.motivo });
+  }
+
+  try {
+    const actual = await pool.query(
+      'SELECT revision_estado FROM usuarios WHERE id = $1',
+      [req.user.id]
+    );
+    if (!actual.rows.length) {
+      return res.status(404).json({ error: 'Usuario no encontrado.' });
+    }
+
+    const transicion = transicionar({
+      actual: actual.rows[0].revision_estado,
+      accion: ACCIONES.ENVIAR,
+    });
+    if (!transicion.valido) {
+      return res.status(409).json({
+        error: 'TRANSICION_INVALIDA',
+        detalle: transicion.motivo,
+      });
+    }
+
+    const { rows } = await pool.query(
+      `UPDATE usuarios
+          SET rut_numero = $2,
+              rut_responsabilidad_codigo = $3,
+              rut_soporte_url = $4,
+              rut_soporte_hash = $5,
+              rut_soporte_mime = $6,
+              rut_soporte_bytes = $7,
+              rut_cargado_at = NOW(),
+              revision_estado = $8,
+              revision_nota = NULL,
+              revisado_por = NULL,
+              revisado_at = NULL
+        WHERE id = $1
+        RETURNING rut_numero, rut_responsabilidad_codigo, revision_estado,
+                  rut_cargado_at, rut_soporte_url`,
+      [
+        req.user.id,
+        rut.rut,
+        codigo.codigo,
+        String(soporte_url).trim(),
+        String(soporte_hash).trim().toLowerCase(),
+        String(mime).toLowerCase(),
+        Number(bytes),
+        transicion.estado,
+      ]
+    );
+
+    res.status(202).json({
+      ok: true,
+      mensaje: 'Recibimos tu RUT. El equipo lo revisa y te avisamos cuando quede aprobado.',
+      revision: {
+        estado: rows[0].revision_estado,
+        cargado_at: rows[0].rut_cargado_at,
+      },
+      // Mientras la revisión no cierre, no hay servicios publicados.
+      puede_publicar_servicios: false,
+    });
+  } catch (err) {
+    console.error('Error al cargar el RUT del prestador:', err);
+    res.status(500).json({ error: 'Error al guardar el RUT.' });
   }
 });
 

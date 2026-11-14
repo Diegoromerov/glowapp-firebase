@@ -436,3 +436,11 @@ en 076).
 - Fija y hace visible el contrato real: `services.id` es `UUID` con `gen_random_uuid()` (init.sql:84) y `bookings.service_id` es `UUID` (init.sql:101), que es lo que devuelve producción.
 - No convierte nada: cambiar una PK referenciada por `bookings` y `booking_productos` exige rewrite con ventana de mantenimiento. Solo emite el tipo detectado al arranque, en CI y en cada despliegue.
 - Corrige la causa de la confusión: `054_create_core_tables.sql` declaraba `SERIAL` e `INTEGER` en un `CREATE TABLE IF NOT EXISTS` que nunca se aplicó porque `init.sql` corre antes.
+
+## 153: revisión del RUT del prestador
+
+- Agrega a `usuarios` el soporte documental del RUT (`rut_soporte_url`, `rut_soporte_hash`, `rut_soporte_mime`, `rut_soporte_bytes`, `rut_cargado_at`) y el ciclo de revisión (`revision_estado`, `revision_nota`, `revisado_por`, `revisado_at`).
+- Cierra un hueco de 086/087: se podía declarar el código 48/49 sin adjuntar nada y nadie lo contrastaba. Ahora el documento es obligatorio para publicar y el equipo lo aprueba (D-GL-030).
+- `revision_estado` arranca en `SIN_ENVIAR` para todas las filas: nadie queda aprobado por herencia. El valor de `responsable_iva` NO se toca aquí; se aplica al aprobar (ver `src/services/fiscalRevision.js`).
+- Índice parcial `idx_usuarios_revision_pendiente` para la cola del panel.
+- Reejecutable: `ADD COLUMN IF NOT EXISTS` y constraints guardados por nombre.
