@@ -1,6 +1,6 @@
 import 'dart:js_interop';
+import 'dart:js_util' as js_util;
 import 'package:flutter/widgets.dart';
-import 'package:web/web.dart' as web;
 
 /// One Tap (Google Identity Services) - Autenticación automática sin popup.
 ///
@@ -32,21 +32,33 @@ Widget? googleSignInOverlay() {
 
 /// Inicializa One Tap con el clientId y callback de credenciales
 void _initializeOneTap(String clientId, void Function(String) onCredential) {
-  final jsContext = web.window;
-  final google = jsContext['google'];
+  final jsContext = globalThis;
+  final google = js_util.getProperty(jsContext, 'google');
 
-  if (google == null || google['accounts'] == null || google['accounts']['id'] == null) {
+  if (google == null ||
+      js_util.getProperty(google, 'accounts') == null ||
+      js_util.getProperty(js_util.getProperty(google, 'accounts'), 'id') == null) {
     // GIS library no cargada aún - se reintentará en el botón
     return;
   }
 
   try {
-    google['accounts']['id'].initialize({
-      'client_id': clientId,
-      'callback': (credentialResponse) => _handleCredential(credentialResponse, onCredential).toJS,
-      'auto_select': false,
-      'cancel_on_tap_outside': true,
-    }.jsify());
+    final accounts = js_util.getProperty(google, 'accounts');
+    final id = js_util.getProperty(accounts, 'id');
+
+    // Create callback that bridges to Dart
+    final callback = (credentialResponse) {
+      _handleCredential(credentialResponse, onCredential);
+    }.toJS;
+
+    js_util.callMethod(id, 'initialize', [
+      js_util.jsify({
+        'client_id': clientId,
+        'callback': callback,
+        'auto_select': false,
+        'cancel_on_tap_outside': true,
+      }),
+    ]);
   } catch (e) {
     // Silenciar errores de inicialización duplicada
   }
@@ -54,22 +66,28 @@ void _initializeOneTap(String clientId, void Function(String) onCredential) {
 
 /// Dispara el flujo One Tap (muestra el diálogo de Google)
 void _promptOneTap() {
-  final jsContext = web.window;
-  final google = jsContext['google'];
+  final jsContext = globalThis;
+  final google = js_util.getProperty(jsContext, 'google');
 
-  if (google != null && google['accounts'] != null && google['accounts']['id'] != null) {
-    try {
-      google['accounts']['id'].prompt(() => null);
-    } catch (e) {
-      // Silenciar
+  if (google != null) {
+    final accounts = js_util.getProperty(google, 'accounts');
+    if (accounts != null) {
+      final id = js_util.getProperty(accounts, 'id');
+      if (id != null) {
+        try {
+          js_util.callMethod(id, 'prompt', [() => null]);
+        } catch (e) {
+          // Silenciar
+        }
+      }
     }
   }
 }
 
 /// Procesa la respuesta de credencial de One Tap
-Future<void> _handleCredential(JSAny credentialResponse, void Function(String) onCredential) async {
+Future<void> _handleCredential(credentialResponse, void Function(String) onCredential) async {
   try {
-    final idToken = credentialResponse['credential'];
+    final idToken = js_util.getProperty(credentialResponse, 'credential');
     if (idToken != null && idToken is String && idToken.isNotEmpty) {
       onCredential(idToken);
     }
@@ -96,7 +114,7 @@ class _CustomGoogleButton extends StatelessWidget {
           color: const Color(0xFFF3D59B), // Dorado GlowApp
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.15),
+              color: const Color(0xFF000000).withOpacity(0.15),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
