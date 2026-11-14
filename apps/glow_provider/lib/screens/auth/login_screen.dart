@@ -316,14 +316,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 100),
+                                        children: [
+                                          const SizedBox(height: 140),
 
                       // Tarjeta Luxe
                       Container(
                         padding: const EdgeInsets.all(28.0),
                         decoration: BoxDecoration(
-                                                  color: Colors.white.withOpacity(0.6),
+                                                  color: Colors.white.withOpacity(0.5),
                                                   borderRadius: BorderRadius.circular(24),
                           border: Border.all(
                             color: const Color(0xFFEFE8DE),
@@ -397,14 +397,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 ),
                                 child: Text(
-                                  '¿Olvidaste tu contraseña?',
-                                  style: TextStyle(
-                                    color: t.brandPrimary,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'CormorantGaramond',
-                                  ),
-                                ),
+                                                                  '¿Olvidaste tu contraseña?',
+                                                                  style: TextStyle(
+                                                                    color: const Color(0xFF1F1A15),
+                                                                    fontSize: 13,
+                                                                    fontWeight: FontWeight.w600,
+                                                                    fontFamily: 'CormorantGaramond',
+                                                                  ),
+                                                                ),
                               ),
                             ),
 
@@ -425,14 +425,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 ),
                                 child: Text(
-                                  '¿Tienes un código de invitación?',
-                                  style: TextStyle(
-                                    color: t.brandPrimary,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'CormorantGaramond',
-                                  ),
-                                ),
+                                                                  '¿Tienes un código de invitación?',
+                                                                  style: TextStyle(
+                                                                    color: const Color(0xFF1F1A15),
+                                                                    fontSize: 13,
+                                                                    fontWeight: FontWeight.w600,
+                                                                    fontFamily: 'CormorantGaramond',
+                                                                  ),
+                                                                ),
                               ),
                             ),
                             const SizedBox(height: 16),
@@ -508,12 +508,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16),
                                   child: Text(
-                                    'o accede con',
-                                    style: TextStyle(
-                                        color: t.n400,
-                                        fontSize: 12,
-                                        fontFamily: 'CormorantGaramond'),
-                                  ),
+                                                                      'o accede con',
+                                                                      style: TextStyle(
+                                                                          color: const Color(0xFF1F1A15),
+                                                                          fontSize: 12,
+                                                                          fontFamily: 'CormorantGaramond'),
+                                                                    ),
                                 ),
                                 Expanded(child: Divider(color: t.borderDefault)),
                               ],
@@ -590,14 +590,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         foregroundColor: t.brandPrimary,
                       ),
                       child: Text(
-                        'Términos y condiciones',
-                        style: TextStyle(
-                            color: t.n500,
-                            fontSize: 13,
-                            decoration: TextDecoration.underline,
-                            decorationColor: t.n500,
-                            fontFamily: 'CormorantGaramond'),
-                      ),
+                                              'Términos y condiciones',
+                                              style: TextStyle(
+                                                  color: const Color(0xFF1F1A15),
+                                                  fontSize: 13,
+                                                  decoration: TextDecoration.underline,
+                                                  decorationColor: const Color(0xFF1F1A15),
+                                                  fontFamily: 'CormorantGaramond'),
+                                            ),
                     ),
                   ],
                 ),
