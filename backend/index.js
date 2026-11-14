@@ -195,8 +195,20 @@ const defaultOrigins = [
 const isStagingEnvironment = currentEnv === 'staging'
   || process.env.RAILWAY_ENVIRONMENT_NAME === 'staging';
 const stagingOrigins = isStagingEnvironment
-  ? ['https://glowapp-client--staging-dxkv99y1.web.app']
+  ? [
+      'https://glowapp-client--staging-dxkv99y1.web.app',
+      // App Proveedor: sin este origen el navegador bloquea /api/auth/google y
+      // el login social de staging muere con "No pudimos conectar".
+      'https://glowapp-provider--staging-pmhxjuzj.web.app',
+    ]
   : [];
+
+// Canales de Firebase Hosting de staging (…--staging-<idCanal>.web.app). El
+// sufijo cambia al recrear el canal, así que se acepta el patrón; la regex sólo
+// cubre los proyectos propios y sólo se activa en el backend de staging.
+const stagingChannelRegex = isStagingEnvironment
+  ? /^https:\/\/glowapp-(?:client|provider)--staging-[a-z0-9]+\.(?:web\.app|firebaseapp\.com)$/
+  : null;
 
 const envOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()).filter(Boolean)
@@ -217,6 +229,13 @@ app.use(cors({
 
     // 2. DESARROLLO: Permite localhost / 127.0.0.1 en CUALQUIER puerto dinámico
     if (currentEnv === 'development' && devOriginRegex.test(origin)) {
+      return callback(null, true);
+    }
+
+    // 2b. STAGING: canales de Firebase Hosting de las apps propias
+    // (glowapp-client/provider--staging-<id>.web.app). Sin esto el login web de
+    // la app Proveedor no puede llamar a /api.
+    if (stagingChannelRegex && stagingChannelRegex.test(origin)) {
       return callback(null, true);
     }
 
