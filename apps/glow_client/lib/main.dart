@@ -283,7 +283,9 @@ class GlowClientApp extends ConsumerWidget {
               // texto quedaba cortado.
               top: 108,
               left: 0,
-              right: 0,
+              // Deja hueco al chip del Club, que vive a la derecha de esta
+              // franja. Sin esto se apilaban y el chip quedaba tapado.
+              right: 150,
               child: TarjetaInvitacionPendiente(),
             ),
           ],

@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:glow_core/glow_core.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../screens/invite_welcome_screen.dart';
 
 /// El nivel, a la vista, en el inicio.
 ///
@@ -16,13 +14,16 @@ import '../screens/invite_welcome_screen.dart';
 /// Se esconde cuando no hay sesión —un botón que lleva a un login es peor que no
 /// tenerlo— y mientras hay una invitación pendiente, que ocupa el mismo sitio.
 class ChipClub extends StatefulWidget {
-  const ChipClub({super.key, this.recargarCada, this.cargarNivel});
+  const ChipClub({super.key, this.recargarCada, this.cargarNivel, this.consultarSesion});
 
   /// Para pruebas: permite refrescar sin remontar el widget.
   final Duration? recargarCada;
 
   /// Para pruebas: sustituye la llamada real al backend.
   final Future<NivelPuntos?> Function()? cargarNivel;
+
+  /// Para pruebas: sustituye la comprobación de sesión.
+  final Future<bool> Function()? consultarSesion;
 
   @override
   State<ChipClub> createState() => _ChipClubState();
@@ -31,6 +32,7 @@ class ChipClub extends StatefulWidget {
 class _ChipClubState extends State<ChipClub> {
   NivelPuntos? _nivel;
   bool _listo = false;
+  bool _haySesion = false;
   Timer? _temporizador;
 
   @override
@@ -49,18 +51,19 @@ class _ChipClubState extends State<ChipClub> {
   }
 
   Future<void> _cargar() async {
-    // La tarjeta de invitación ocupa esta franja: mientras esté pendiente, el
-    // chip no aparece para no apilar dos bloques en el mismo sitio.
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.getString(kClaveCodigoInvitacion) != null) {
-      if (mounted) setState(() => _listo = true);
-      return;
-    }
-
+    // El chip NO se esconde por un código de invitación guardado.
+    //
+    // Lo hacía, para no chocar con la tarjeta de invitación, y el resultado fue
+    // el peor: a quien le quedaba un código viejo en las preferencias —de una
+    // prueba, de un enlace abierto una vez— el Club le desaparecía para siempre
+    // y nada lo reparaba. Ahora la tarjeta se encoge para dejarle sitio.
     final nivel = await (widget.cargarNivel ?? RewardsService.obtenerNivel)();
+    final sesion = await (widget.consultarSesion ??
+        () async => await AuthService.getToken() != null)();
     if (!mounted) return;
     setState(() {
       _nivel = nivel;
+      _haySesion = sesion;
       _listo = true;
     });
   }
@@ -69,7 +72,11 @@ class _ChipClubState extends State<ChipClub> {
   Widget build(BuildContext context) {
     // Antes de saber si hay sesión no se pinta nada: un salto de tamaño al
     // cargar se nota más que aparecer medio segundo después.
-    if (!_listo || _nivel == null) return const SizedBox.shrink();
+    if (!_listo || !_haySesion) return const SizedBox.shrink();
+
+    // Si el backend no responde, el acceso al Club no puede desaparecer: se
+    // muestra sin cifras. Un error de red no debe cerrar una puerta.
+    if (_nivel == null) return _chipSinDatos();
 
     final nivel = _nivel!;
     final paleta = _paletaDe(nivel.nivel);
@@ -116,6 +123,49 @@ class _ChipClubState extends State<ChipClub> {
                   fontSize: 12.5,
                   fontWeight: FontWeight.w600,
                   color: paleta.texto.withValues(alpha: 0.88),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// El acceso al Club cuando el backend no responde: sin cifras, pero abierto.
+  Widget _chipSinDatos() {
+    final paleta = _paletaDe('');
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(99),
+        onTap: () => Navigator.of(context).pushNamed('/niveles'),
+        child: Ink(
+          height: 42,
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          decoration: BoxDecoration(
+            gradient: paleta.fondo,
+            borderRadius: BorderRadius.circular(99),
+            boxShadow: [
+              BoxShadow(
+                color: paleta.sombra.withValues(alpha: 0.55),
+                blurRadius: 18,
+                offset: const Offset(0, 7),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('❋', style: TextStyle(fontSize: 16, color: paleta.texto)),
+              const SizedBox(width: 8),
+              Text(
+                'Mi Club',
+                style: TextStyle(
+                  fontFamily: 'Manrope',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w800,
+                  color: paleta.texto,
                 ),
               ),
             ],

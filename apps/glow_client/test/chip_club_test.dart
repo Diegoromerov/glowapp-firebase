@@ -26,7 +26,9 @@ void main() {
 
   testWidgets('sin sesión no pinta nada: un botón que lleva a un login es peor',
       (tester) async {
-    await tester.pumpWidget(_envolver(ChipClub(cargarNivel: () async => null)));
+    await tester.pumpWidget(_envolver(
+      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350), consultarSesion: () async => false),
+    ));
     await tester.pumpAndSettle();
 
     expect(find.text('Pétalo'), findsNothing);
@@ -35,7 +37,7 @@ void main() {
 
   testWidgets('muestra el nivel y el XP', (tester) async {
     await tester.pumpWidget(_envolver(
-      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350)),
+      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350), consultarSesion: () async => true),
     ));
     await tester.pumpAndSettle();
 
@@ -46,7 +48,7 @@ void main() {
 
   testWidgets('un toque abre el Club', (tester) async {
     await tester.pumpWidget(_envolver(
-      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350)),
+      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350), consultarSesion: () async => true),
     ));
     await tester.pumpAndSettle();
 
@@ -56,18 +58,28 @@ void main() {
     expect(find.text('PANTALLA DEL CLUB'), findsOneWidget);
   });
 
-  testWidgets('con una invitación pendiente se esconde: ese sitio es suyo',
-      (tester) async {
+  testWidgets('un código de invitación viejo ya no lo esconde', (tester) async {
+    // Se escondía con un código pendiente, y a quien le quedaba uno de una
+    // prueba el Club le desaparecía para siempre, sin nada que lo reparara.
     SharedPreferences.setMockInitialValues(
       {'codigoInvitacionPendiente': 'GLOW6DF8'},
     );
 
     await tester.pumpWidget(_envolver(
-      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350)),
+      ChipClub(cargarNivel: () async => _nivel('Pétalo', 350), consultarSesion: () async => true),
     ));
     await tester.pumpAndSettle();
 
-    expect(find.text('Pétalo'), findsNothing);
+    expect(find.text('Pétalo'), findsOneWidget);
+  });
+
+  testWidgets('si el backend no responde, el acceso sigue abierto', (tester) async {
+    await tester.pumpWidget(_envolver(
+      ChipClub(cargarNivel: () async => null, consultarSesion: () async => true),
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Mi Club'), findsOneWidget);
   });
 
   testWidgets('el nivel se nota desde fuera: Oro no se pinta como Pétalo',
@@ -81,14 +93,14 @@ void main() {
     }
 
     await tester.pumpWidget(_envolver(
-      ChipClub(key: const ValueKey('a'), cargarNivel: () async => _nivel('Pétalo', 350)),
+      ChipClub(key: const ValueKey('a'), cargarNivel: () async => _nivel('Pétalo', 350), consultarSesion: () async => true),
     ));
     await tester.pumpAndSettle();
     final petalo = colorDeFondo();
 
     // Key distinta: sin ella el State se reutiliza y no recarga el nivel.
     await tester.pumpWidget(_envolver(
-      ChipClub(key: const ValueKey('b'), cargarNivel: () async => _nivel('Oro', 950)),
+      ChipClub(key: const ValueKey('b'), cargarNivel: () async => _nivel('Oro', 950), consultarSesion: () async => true),
     ));
     await tester.pumpAndSettle();
     final oro = colorDeFondo();
