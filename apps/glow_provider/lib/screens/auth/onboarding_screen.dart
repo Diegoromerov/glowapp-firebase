@@ -173,6 +173,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void dispose() {
+    _rutNumeroCtrl.dispose();
     _salonNameCtrl.dispose();
     _salonNitCtrl.dispose();
     _salonAddressCtrl.dispose();
@@ -473,6 +474,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // URLs de documentos subidos
   String? _documentoUrl;
   String? _rutUrl;
+  // D-GL-030: el IVA del servicio se deriva del RUT, no de un interruptor. Se
+  // piden el número y la casilla de responsabilidades para que el equipo pueda
+  // revisarlos junto con el documento.
+  final _rutNumeroCtrl = TextEditingController();
+  int? _rutCodigoResponsabilidad;
   String? _certificacionUrl;
 
   // Estados de carga por documento
@@ -547,6 +553,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     try {
       if (_selectedRole == 'PRESTADOR') {
+        // D-GL-030: sin RUT (documento + número + casilla 53) no se publica.
+        if (_rutUrl == null) {
+          setState(() => _error = 'Sube tu RUT: es obligatorio para publicar servicios.');
+          return;
+        }
+        final rutNumero = _rutNumeroCtrl.text.trim();
+        if (rutNumero.isEmpty || _rutCodigoResponsabilidad == null) {
+          setState(() => _error =
+              'Completa el número de RUT y marca si figuras como responsable de IVA.');
+          return;
+        }
+
+        final envioRut = await AuthService.enviarRutParaRevision(
+          rutNumero: rutNumero,
+          rutResponsabilidadCodigo: _rutCodigoResponsabilidad!,
+          soporteDataUri: _rutUrl!,
+        );
+        if (envioRut == null) {
+          setState(() => _error =
+              'No pudimos registrar tu RUT. Revisa tu conexión e inténtalo de nuevo.');
+          return;
+        }
+
         final result = await AuthService.completeOnboarding(
           role: 'PRESTADOR',
           documentoIdUrl: _documentoUrl,
@@ -1674,14 +1703,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           const SizedBox(height: 12),
 
-          // Carga de RUT
+          // Carga de RUT (obligatoria para poder publicar servicios)
           _buildDocumentUploadTile(
             title: 'Registro Único Tributario (RUT)',
-            subtitle: 'Opcional · Requerido para liquidaciones financieras',
+            subtitle: 'Obligatorio · De aquí se determina tu IVA',
             isUploaded: _rutUrl != null,
             isUploading: _uploadingRut,
             onTap: () => _pickAndUploadDocument('rut'),
           ),
+          _buildRutFiscalFields(),
           const SizedBox(height: 12),
 
           // Carga de Certificado de Bioseguridad
@@ -2054,6 +2084,58 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ],
         ),
       ],
+    );
+  }
+
+  /// Datos fiscales que acompañan al documento (D-GL-030): número de RUT y la
+  /// casilla 53 (48 responsable de IVA / 49 no responsable). No es un interruptor
+  /// para elegir IVA: el equipo lo contrasta con el documento antes de publicar.
+  Widget _buildRutFiscalFields() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, left: 4, right: 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            controller: _rutNumeroCtrl,
+            keyboardType: TextInputType.number,
+            decoration: AppTheme.inputDecoration(
+              hintText: 'Ej: 1020304050',
+              labelText: 'Número de RUT o cédula',
+              prefixIcon: Icons.badge_outlined,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Casilla 53 de tu RUT: ¿figuras como responsable de IVA?',
+            style: TextStyle(fontSize: 12, color: Color(0xFF6B5E59)),
+          ),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              ChoiceChip(
+                label: const Text('Sí, responsable (48)'),
+                selected: _rutCodigoResponsabilidad == 48,
+                onSelected: (_) => setState(() => _rutCodigoResponsabilidad = 48),
+                selectedColor: const Color(0xFFC5A052),
+              ),
+              ChoiceChip(
+                label: const Text('No responsable (49)'),
+                selected: _rutCodigoResponsabilidad == 49,
+                onSelected: (_) => setState(() => _rutCodigoResponsabilidad = 49),
+                selectedColor: const Color(0xFFC5A052),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          const Text(
+            'Lo revisamos con el documento antes de publicar tus servicios.',
+            style: TextStyle(fontSize: 11, color: Color(0xFF8C7E74)),
+          ),
+        ],
+      ),
     );
   }
 

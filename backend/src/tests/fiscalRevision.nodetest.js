@@ -16,6 +16,7 @@ const {
   ESTADOS,
   ACCIONES,
   validarSoporte,
+  normalizarSoporte,
   evaluarPublicacion,
   transicionar,
   responsabilidadDesdeCodigo,
@@ -29,7 +30,38 @@ const SOPORTE_VALIDO = {
 };
 
 test('un soporte PDF con hash válido se acepta', () => {
-  assert.deepEqual(validarSoporte(SOPORTE_VALIDO), { valido: true });
+  const r = validarSoporte(SOPORTE_VALIDO);
+  assert.equal(r.valido, true);
+  assert.equal(r.tipo, 'HTTPS');
+});
+
+test('un RUT embebido como data URI se acepta sin hash del cliente', () => {
+  // 3 bytes en base64: "AAAA" → el servidor calcula el hash él mismo.
+  const r = validarSoporte({
+    url: 'data:image/jpeg;base64,AAAA',
+  });
+  assert.equal(r.valido, true);
+  assert.equal(r.tipo, 'DATA_URI');
+});
+
+test('un data URI con formato no aceptado se rechaza', () => {
+  assert.equal(validarSoporte({ url: 'data:application/pdf;base64,AAAA' }).valido, true);
+  assert.equal(validarSoporte({ url: 'data:image/gif;base64,AAAA' }).valido, false);
+  assert.equal(validarSoporte({ url: 'data:text/plain;base64,AAAA' }).valido, false);
+});
+
+test('el hash del data URI lo calcula el servidor', () => {
+  const normalizado = normalizarSoporte({ url: 'data:image/png;base64,AAAA', hash: 'f'.repeat(64) });
+  assert.match(normalizado.hash, /^[a-f0-9]{64}$/);
+  assert.notEqual(normalizado.hash, 'f'.repeat(64)); // no se confía en el cliente
+  assert.equal(normalizado.mime, 'image/png');
+  assert.equal(normalizado.bytes, 3);
+});
+
+test('el mismo archivo produce siempre el mismo hash', () => {
+  const a = normalizarSoporte({ url: 'data:image/png;base64,AAAA' });
+  const b = normalizarSoporte({ url: 'data:image/png;base64,AAAA' });
+  assert.equal(a.hash, b.hash);
 });
 
 test('una imagen del RUT también se acepta', () => {

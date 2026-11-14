@@ -14,6 +14,7 @@ const {
   ACCIONES,
   ESTADOS,
   validarSoporte,
+  normalizarSoporte,
   evaluarPublicacion,
   transicionar,
 } = require('../services/fiscalRevision');
@@ -353,6 +354,15 @@ router.post('/provider/fiscal/rut', authMiddleware, async (req, res) => {
   }
 
   try {
+    // Con data URI el hash lo calcula el servidor: lo que declare el cliente no
+    // prueba qué archivo quedó guardado.
+    const soporte = normalizarSoporte({
+      url: soporte_url,
+      hash: soporte_hash,
+      mime,
+      bytes,
+    });
+
     const actual = await pool.query(
       'SELECT revision_estado FROM usuarios WHERE id = $1',
       [req.user.id]
@@ -392,10 +402,10 @@ router.post('/provider/fiscal/rut', authMiddleware, async (req, res) => {
         req.user.id,
         rut.rut,
         codigo.codigo,
-        String(soporte_url).trim(),
-        String(soporte_hash).trim().toLowerCase(),
-        String(mime).toLowerCase(),
-        Number(bytes),
+        soporte.url,
+        soporte.hash,
+        soporte.mime,
+        soporte.bytes,
         transicion.estado,
       ]
     );

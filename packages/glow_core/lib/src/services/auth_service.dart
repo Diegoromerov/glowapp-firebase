@@ -452,6 +452,38 @@ class AuthService {
     return null;
   }
 
+  /// Envía el RUT a revisión del equipo (D-GL-030).
+  ///
+  /// El soporte viaja como data URI porque la app no tiene bucket propio para
+  /// documentos de perfil; el backend calcula el hash y NO aplica la
+  /// responsabilidad de IVA hasta que la revisión quede aprobada.
+  static Future<Map<String, dynamic>?> enviarRutParaRevision({
+    required String rutNumero,
+    required int rutResponsabilidadCodigo,
+    required String soporteDataUri,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    if (token == null) return null;
+    final response = await http.post(
+      Uri.parse('$baseUrl/api/provider/fiscal/rut'),
+      headers: {
+        ..._jsonHeaders,
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode({
+        'rut_numero': rutNumero,
+        'rut_responsabilidad_codigo': rutResponsabilidadCodigo,
+        'soporte_url': soporteDataUri,
+      }),
+    );
+    try {
+      final data = json.decode(response.body);
+      if (data is Map<String, dynamic>) return data;
+    } catch (_) {}
+    return null;
+  }
+
   static Future<bool> selectRole(String role) async {
     final baseUrl = await getBaseUrl();
     final token = await getToken();
