@@ -570,9 +570,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           rutResponsabilidadCodigo: _rutCodigoResponsabilidad!,
           soporteDataUri: _rutUrl!,
         );
-        if (envioRut == null) {
-          setState(() => _error =
-              'No pudimos registrar tu RUT. Revisa tu conexión e inténtalo de nuevo.');
+        if (envioRut == null || envioRut['ok'] != true) {
+          // El backend explica el motivo real (409 de revisión, 400 de formato,
+          // sesión ausente). Culpar siempre a la conexión ocultaba la causa.
+          final codigo = (envioRut?['error'] ?? '').toString();
+          final detalle =
+              (envioRut?['detalle'] ?? envioRut?['mensaje'] ?? '').toString();
+          setState(() => _error = codigo == 'SIN_SESION'
+              ? 'Tu sesión expiró. Vuelve a iniciar sesión para enviar tu RUT.'
+              : detalle.isNotEmpty
+                  ? detalle
+                  : 'No pudimos registrar tu RUT. Inténtalo de nuevo.');
           return;
         }
 

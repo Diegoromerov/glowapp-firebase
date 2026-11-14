@@ -464,7 +464,9 @@ class AuthService {
   }) async {
     final baseUrl = await getBaseUrl();
     final token = await getToken();
-    if (token == null) return null;
+    // Sin sesión no hay nada que enviar. Devolver `null` aquí se confundía con un
+    // fallo de red y la pantalla culpaba a la conexión del usuario.
+    if (token == null) return {'error': 'SIN_SESION'};
     final response = await http.post(
       Uri.parse('$baseUrl/api/provider/fiscal/rut'),
       headers: {
@@ -479,9 +481,13 @@ class AuthService {
     );
     try {
       final data = json.decode(response.body);
-      if (data is Map<String, dynamic>) return data;
+      if (data is Map<String, dynamic>) {
+        // Se devuelve también el estado HTTP: un 400/409 trae el motivo real y la
+        // pantalla debe mostrarlo en vez de culpar a la conexión.
+        return {...data, 'status': response.statusCode, 'ok': response.statusCode < 400};
+      }
     } catch (_) {}
-    return null;
+    return {'error': 'RESPUESTA_INVALIDA', 'status': response.statusCode};
   }
 
   /// Capacidades de la cuenta (D-GL-031). La app no deduce el estado: lo lee.
