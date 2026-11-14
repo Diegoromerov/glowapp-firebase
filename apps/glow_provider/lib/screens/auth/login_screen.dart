@@ -4,6 +4,7 @@ import 'package:glow_core/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
 import 'dart:async';
 import 'google_signin_button.dart'
     if (dart.library.js) 'google_signin_button_web.dart' as gis_button;
@@ -56,8 +57,15 @@ class _LoginScreenState extends State<LoginScreen> {
     // En web el unico flujo soportado es el boton de GIS: la cuenta llega por
     // onCurrentUserChanged. `signIn()` ya no entrega credenciales (0.12+).
     if (kIsWeb) {
-      // Trigger init with clientId via signInSilently (no UI, just init plugin).
-      _googleSignIn.signInSilently().catchError((e) {
+      // Inicializar explícitamente el plugin web con clientId ANTES de renderizar botón.
+      // El constructor de GoogleSignIn NO llama init() automáticamente en web.
+      GoogleSignInPlatform.instance.initWithParams(
+        SignInInitParameters(
+          scopes: ['email', 'openid', 'profile'],
+          clientId: _googleClientId.isNotEmpty ? _googleClientId : null,
+          serverClientId: null, // no soportado en web
+        ),
+      ).catchError((e) {
         if (mounted) setState(() => _error = 'Error init Google: ${mensajeHumano(e)}');
       });
       _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
