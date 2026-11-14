@@ -106,6 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         setState(() => _error = 'Credenciales incorrectas');
       }
+    } on TimeoutException {
+      // El servidor no contestó: se dice eso, no "credenciales incorrectas".
+      setState(() => _error = 'El servidor no respondió. Inténtalo de nuevo.');
     } catch (e) {
       setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {

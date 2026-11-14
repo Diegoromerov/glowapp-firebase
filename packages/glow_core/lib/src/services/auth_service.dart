@@ -71,11 +71,15 @@ class AuthService {
   static Future<Map<String, dynamic>?> login(
       String email, String password) async {
     final baseUrl = await getBaseUrl();
-    final response = await http.post(
-      Uri.parse('$baseUrl/api/auth/login'),
-      headers: _jsonHeaders,
-      body: json.encode({'email': email, 'password': password}),
-    );
+    // Sin timeout, una API que no responde deja `_isLoading` en true para
+    // siempre y el botón queda deshabilitado sin explicación.
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl/api/auth/login'),
+          headers: _jsonHeaders,
+          body: json.encode({'email': email, 'password': password}),
+        )
+        .timeout(const Duration(seconds: 25));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final prefs = await SharedPreferences.getInstance();
