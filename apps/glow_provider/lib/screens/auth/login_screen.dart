@@ -58,7 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
     // onCurrentUserChanged. `signIn()` ya no entrega credenciales (0.12+).
     if (kIsWeb) {
       // Inicializar explícitamente el plugin web con clientId ANTES de renderizar botón.
-      // El constructor de GoogleSignIn NO llama init() automáticamente en web.
+      // El constructor de GoogleSignIn guarda clientId pero NO llama init() automáticamente en web.
+      // Si ya está inicializado (ej. hot reload), ignoramos el error "future already complete".
       GoogleSignInPlatform.instance.initWithParams(
         SignInInitParameters(
           scopes: ['email', 'openid', 'profile'],
@@ -66,7 +67,10 @@ class _LoginScreenState extends State<LoginScreen> {
           serverClientId: null, // no soportado en web
         ),
       ).catchError((e) {
-        if (mounted) setState(() => _error = 'Error init Google: ${mensajeHumano(e)}');
+        // "bad state future already complete" = ya inicializado, no es error real.
+        if (!e.toString().contains('future already complete') && mounted) {
+          setState(() => _error = 'Error init Google: ${mensajeHumano(e)}');
+        }
       });
       _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
         if (user != null && mounted) _finishGoogleLogin(user);
