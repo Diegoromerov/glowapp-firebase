@@ -7,6 +7,8 @@ const { requireRol } = require('../middleware/roles');
 const productController = require('../controllers/productController');
 const orderController = require('../controllers/orderController');
 const { requireFlag } = require('./configRoutes');
+const { exigirCapacidad } = require('../middleware/exigirCapacidad');
+const { CAPACIDADES } = require('../services/capacidadesProveedor');
 const openBeautyFacts = require('../services/openBeautyFacts');
 const profileService = require('../services/biometric/profile.service');
 
@@ -43,10 +45,22 @@ router.delete('/admin/products/:id', authMiddleware, requireRol('admin'), produc
 
 // --- Rutas de Pedidos de GlowStore ---
 router.post('/store/envio/cotizacion', authMiddleware, orderController.cotizarEnvio);
-router.post('/store/checkout', requireFlag('glowstore'), authMiddleware, orderController.createOrder);
+router.post(
+  '/store/checkout',
+  requireFlag('glowstore'),
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.COMPRAR),
+  orderController.createOrder
+);
 router.get('/store/orders', authMiddleware, orderController.getOrders);
 router.get('/store/orders/:id', authMiddleware, orderController.getOrderById);
-router.post('/store/orders/:id/pay', requireFlag('glowstore'), authMiddleware, orderController.payOrder);
+router.post(
+  '/store/orders/:id/pay',
+  requireFlag('glowstore'),
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.COMPRAR),
+  orderController.payOrder
+);
 router.post('/payments/store-webhook', orderController.storeWebhook);
 
 // --- Rutas públicas de cotización de envío (L5) ---

@@ -11,6 +11,8 @@ const emailService = require('../services/emailService');
 const fcm = require('../services/fcmNotificationService');
 const { authMiddleware } = require('../middleware/auth');
 const { paymentLimiter, otpLimiter } = require('../middleware/rateLimiter');
+const { exigirCapacidad } = require('../middleware/exigirCapacidad');
+const { CAPACIDADES } = require('../services/capacidadesProveedor');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const wompiService = require('../services/wompiService');
@@ -166,7 +168,11 @@ router.get(
 );
 
 
-router.post('/bookings/:id/checkin', authMiddleware, async (req, res) => {
+router.post(
+  '/bookings/:id/checkin',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
   const { id } = req.params;
@@ -282,7 +288,11 @@ router.get('/bookings/:id/otp', authMiddleware, otpLimiter, async (req, res) => 
 
 // ─── COMPLETAR SERVICIO → GENERAR OTP ────────────────────────────────────────
 
-router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
+router.post(
+  '/bookings/:id/complete',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
   const { id } = req.params;
@@ -448,7 +458,11 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
 
 // ─── CONFIRMAR OTP → DISPERSIÓN ──────────────────────────────────────────────
 
-router.post('/bookings/:id/confirm-otp', authMiddleware, async (req, res) => {
+router.post(
+  '/bookings/:id/confirm-otp',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  async (req, res) => {
   const { id } = req.params;
   const { codigo } = req.body;
 
@@ -1132,7 +1146,11 @@ router.put('/wallet/bank-account', authMiddleware, handleSaveBankAccount);
 
 // ─── RETIRO — SOLICITAR ───────────────────────────────────────────────────────
 
-router.post('/wallet/withdraw', authMiddleware, async (req, res) => {
+router.post(
+  '/wallet/withdraw',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RETIRAR),
+  async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
   // Fallar ANTES de debitar: si la pasarela de dispersión no está configurada, el

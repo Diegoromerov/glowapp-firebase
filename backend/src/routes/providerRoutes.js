@@ -10,6 +10,7 @@ const {
   resolverResponsabilidadIva,
   reconciliarConDian
 } = require('../services/ivaPrestador');
+const { calcularCapacidades, motivoBloqueo } = require('../services/capacidadesProveedor');
 const {
   ACCIONES,
   ESTADOS,
@@ -316,6 +317,37 @@ router.patch('/provider/fiscal', authMiddleware, async (req, res) => {
   } catch (err) {
     console.error('Error al actualizar datos fiscales:', err);
     res.status(500).json({ error: 'Error al actualizar los datos fiscales.' });
+  }
+});
+
+// GET /api/provider/capacidades — qué puede hacer esta cuenta (D-GL-031).
+//
+// La app esconde o atenúa lo bloqueado con esta respuesta, en vez de deducir el
+// estado desde tres campos distintos y equivocarse.
+router.get('/provider/capacidades', authMiddleware, async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT estado_operativo, rol FROM usuarios WHERE id = $1',
+      [req.user.id]
+    );
+    if (!rows.length) {
+      return res.status(404).json({ error: 'Usuario no encontrado.' });
+    }
+
+    const capacidades = calcularCapacidades({
+      estadoOperativo: rows[0].estado_operativo,
+      rol: rows[0].rol || req.user.role,
+    });
+
+    res.json({
+      estado_operativo: capacidades.estado,
+      permitidas: capacidades.permitidas,
+      capacidades: capacidades.mapa,
+      bloqueo: motivoBloqueo(capacidades.estado),
+    });
+  } catch (err) {
+    console.error('Error al calcular las capacidades del proveedor:', err);
+    res.status(500).json({ error: 'Error al consultar las capacidades de la cuenta.' });
   }
 });
 

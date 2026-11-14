@@ -444,3 +444,10 @@ en 076).
 - `revision_estado` arranca en `SIN_ENVIAR` para todas las filas: nadie queda aprobado por herencia. El valor de `responsable_iva` NO se toca aquí; se aplica al aprobar (ver `src/services/fiscalRevision.js`).
 - Índice parcial `idx_usuarios_revision_pendiente` para la cola del panel.
 - Reejecutable: `ADD COLUMN IF NOT EXISTS` y constraints guardados por nombre.
+
+## 154: estado operativo del proveedor (Modo Exploración)
+
+- Crea `usuarios.estado_operativo` (`EXPLORACION`, `EN_VERIFICACION`, `HABILITADO`, `SUSPENDIDO`), su fecha de cambio y el motivo, más la bitácora append-only `estado_operativo_historial`.
+- Separa "qué documentos tiene" de "qué puede hacer": hasta ahora `onboarding_completo` respondía las dos cosas y obligaba a subir cédula, RUT y certificado antes de ver la app.
+- **Backfill con abuelo**: quien ya operaba queda `HABILITADO`; exploración es default sólo para cuentas nuevas. Sin esto, el despliegue le cortaría la venta a los prestadores activos.
+- Índice parcial para listar los que no están habilitados (el panel de conversión).

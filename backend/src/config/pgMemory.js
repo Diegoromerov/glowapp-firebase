@@ -78,7 +78,10 @@ const SCHEMA_SQL = `
     revision_estado VARCHAR(12) NOT NULL DEFAULT 'SIN_ENVIAR',
     revision_nota TEXT,
     revisado_por INTEGER,
-    revisado_at TIMESTAMPTZ
+    revisado_at TIMESTAMPTZ,
+    estado_operativo VARCHAR(16) NOT NULL DEFAULT 'EXPLORACION',
+    estado_operativo_desde TIMESTAMPTZ,
+    estado_operativo_motivo TEXT
   );
 
   CREATE TABLE IF NOT EXISTS business_verticals (
