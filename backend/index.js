@@ -26,6 +26,7 @@ const paymentRoutes = require('./src/routes/paymentRoutes');
 const configRoutes = require('./src/routes/configRoutes');
 const bookingRoutes = require('./src/routes/bookingRoutes');
 const serviceRoutes = require('./src/routes/serviceRoutes');
+const publicProviderRoutes = require('./src/routes/publicProviderRoutes');
 const chatRoutes = require('./src/routes/chatRoutes');
 const designsRoutes = require('./src/routes/designsRoutes');
 const productRoutes = require('./src/routes/productRoutes');
@@ -496,6 +497,8 @@ app.use('/api', paymentRoutes);
 app.use('/api', configRoutes);
 app.use('/api', bookingRoutes);
 app.use('/api', serviceRoutes);
+// Vitrina pública (D-GL-031): sin autenticación y sin escritura.
+app.use('/api', publicProviderRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', productRoutes);
 app.use('/api', providerRoutes);

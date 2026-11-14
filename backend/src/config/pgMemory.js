@@ -81,7 +81,10 @@ const SCHEMA_SQL = `
     revisado_at TIMESTAMPTZ,
     estado_operativo VARCHAR(16) NOT NULL DEFAULT 'EXPLORACION',
     estado_operativo_desde TIMESTAMPTZ,
-    estado_operativo_motivo TEXT
+    estado_operativo_motivo TEXT,
+    slug VARCHAR(60),
+    ciudad VARCHAR(120),
+    bio TEXT
   );
 
   CREATE TABLE IF NOT EXISTS business_verticals (

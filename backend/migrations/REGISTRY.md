@@ -451,3 +451,10 @@ en 076).
 - Separa "qué documentos tiene" de "qué puede hacer": hasta ahora `onboarding_completo` respondía las dos cosas y obligaba a subir cédula, RUT y certificado antes de ver la app.
 - **Backfill con abuelo**: quien ya operaba queda `HABILITADO`; exploración es default sólo para cuentas nuevas. Sin esto, el despliegue le cortaría la venta a los prestadores activos.
 - Índice parcial para listar los que no están habilitados (el panel de conversión).
+
+## 155: slug de la vitrina pública del proveedor
+
+- Agrega `usuarios.slug` con índice único por `LOWER(slug)` (sólo filas con slug).
+- Es el identificador del perfil público `/p/<slug>` de D-GL-031: un proveedor en exploración comparte el enlace y muestra su perfil con el sello "aún no recibe reservas", sin botón de reserva.
+- Se guarda y no se recalcula: forma parte del enlace que el proveedor comparte.
+- No siembra slugs: se generan al publicar la vitrina, para no inventar identificadores de quienes nunca la usen.
