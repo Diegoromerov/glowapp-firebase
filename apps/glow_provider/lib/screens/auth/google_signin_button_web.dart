@@ -50,7 +50,8 @@ void _initializeOneTap(String clientId, void Function(String) onCredential) {
             'callback': callback,
             'auto_select': false,
             'cancel_on_tap_outside': true,
-            'use_fedcm_for_button': true,
+            // One Tap usa use_fedcm_for_prompt; use_fedcm_for_button es del flujo Botón.
+            'use_fedcm_for_prompt': true,
           })
         ]);
       } catch (e) {
@@ -63,7 +64,11 @@ void _promptOneTap() {
   final google = js.context['google'];
   if (google != null && google['accounts'] != null && google['accounts']['id'] != null) {
     try {
-      google['accounts']['id'].callMethod('prompt', [(_) {}]);
+      // Sin callback: GIS emite el aviso "uses one of the Google One Tap prompt
+      // UI status methods..." en cuanto prompt() recibe un handler (guarda
+      // `b && !a.Ec` de su cliente). Con FedCM el handler ya no aporta nada y la
+      // credencial llega por el callback de initialize().
+      google['accounts']['id'].callMethod('prompt', []);
     } catch (e) {
       // Silenciar
     }

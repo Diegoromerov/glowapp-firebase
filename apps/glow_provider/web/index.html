@@ -31,6 +31,11 @@
 
   <title>glow_provider</title>
   <link rel="manifest" href="manifest.json">
+  <!-- Google Identity Services: lo carga la pagina, no el plugin.
+       Login web usa One Tap (google.accounts.id) y el plugin google_sign_in
+       ya no se inicializa en web (su constructor inyectaba GIS y registraba
+       un id.initialize propio que competia con el de One Tap). -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
   <!--

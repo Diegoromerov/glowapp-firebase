@@ -4,7 +4,6 @@ import 'package:glow_core/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
 import 'dart:async';
 import 'google_signin_button.dart'
     if (dart.library.js) 'google_signin_button_web.dart' as gis_button;
@@ -36,18 +35,17 @@ class _LoginScreenState extends State<LoginScreen> {
     ),
   );
 
-  // En web One Tap: no usamos GoogleSignIn ni onCurrentUserChanged.
-  // El flujo es: botón -> google.accounts.id.prompt() -> callback con idToken -> AuthService.loginWithGoogle(idToken)
-  final GoogleSignIn _googleSignIn = kIsWeb
-        ? GoogleSignIn(
-            scopes: ['email', 'openid', 'profile'],
-            clientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-            serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-          )
-        : GoogleSignIn(
-            scopes: ['email', 'openid', 'profile'],
-            serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-          );
+  // Solo nativo. En web NO se instancia GoogleSignIn: su constructor llama
+  // _ensureInitialized() (google_sign_in 6.x) y el plugin web inyecta GIS y
+  // ejecuta id.initialize() con su propio IdConfiguration
+  // (auto_select: true, use_fedcm_for_prompt: null), compitiendo con el One Tap
+  // de esta pantalla.
+  final GoogleSignIn? _googleSignIn = kIsWeb
+      ? null
+      : GoogleSignIn(
+          scopes: ['email', 'openid', 'profile'],
+          serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
+        );
 
   StreamSubscription<GoogleSignInAccount?>? _googleUserSub;
 
@@ -59,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // No necesitamos listener de onCurrentUserChanged
     } else {
       // Nativo: listener para signInSilently / signIn
-      _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
+      _googleUserSub = _googleSignIn!.onCurrentUserChanged.listen((user) {
         if (user != null && mounted) _finishGoogleLogin(user);
       });
     }
@@ -128,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     GoogleSignInAccount? googleUser;
     try {
-      googleUser = await _googleSignIn.signIn().timeout(
+      googleUser = await _googleSignIn!.signIn().timeout(
         const Duration(seconds: 60),
         onTimeout: () => null,
       );
