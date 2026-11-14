@@ -27,7 +27,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  String? _selectedRole; // 'CLIENTE', 'PRESTADOR', or 'SALON'
+  String? _selectedRole; // 'PRESTADOR' o 'SALON' — la app del proveedor no crea clientes
   bool _habeasDataAccepted = false;
   bool _terminosAccepted = false;
   bool _isLoading = false;
@@ -166,8 +166,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           _selectedRole = 'SALON';
         } else if (role == 'PROVIDER' || role == 'PRESTADOR') {
           _selectedRole = 'PRESTADOR';
-        } else if (role == 'CLIENT' || role == 'CLIENTE') {
-          _selectedRole = 'CLIENTE';
         }
       });
     }
@@ -566,18 +564,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       } else if (_selectedRole == 'SALON') {
         await _submitSalonOnboarding();
         return;
-      } else {
-        // CLIENTE
-        final result = await AuthService.completeOnboarding(
-          role: 'CLIENTE',
-          aceptarHabeasData: _habeasDataAccepted,
-          aceptarTerminos: _terminosAccepted,
-        );
-        if (result != null && mounted) {
-          Navigator.pushReplacementNamed(context, '/home');
-        } else {
-          setState(() => _error = 'Error al guardar el perfil');
-        }
       }
     } catch (e) {
       setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
@@ -661,7 +647,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       const SizedBox(height: 380),
 
                       _buildRoleSelectionCards(),
-                      if (_selectedRole == 'CLIENTE') _buildClientView(),
                       if (_selectedRole == 'PRESTADOR') _buildProviderForm(),
                       if (_selectedRole == 'SALON') _buildSalonView(),
                       if (_error != null)
@@ -698,17 +683,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Column(
       children: [
         _RoleCard(
-          title: 'Cliente',
-          subtitle: 'Agendar citas de belleza',
-          icon: Icons.person_outline,
-          isSelected: _selectedRole == 'CLIENTE',
-          onTap: () => setState(() {
-            _selectedRole = 'CLIENTE';
-            _error = null;
-          }),
-        ),
-        const SizedBox(height: 8),
-        _RoleCard(
           title: 'Prestador',
           subtitle: 'Ofrecer servicios independientes',
           icon: Icons.storefront_outlined,
@@ -730,143 +704,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           }),
         ),
       ],
-    );
-  }
-
-  Widget _buildClientView() {
-    return Container(
-      margin: const EdgeInsets.only(top: 16),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Color(0xFFFAF8F5).withOpacity(0.96),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: const Color(0xFFC5A052), width: 1.2),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.25),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF5EBE6),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: const Color(0xFFEFE8DE)),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xFFC5A052), width: 2.5),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/avatar_aura.webp'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 14),
-                const Text(
-                  '¡Hola! Soy Aura, tu guía personal',
-                  style: TextStyle(
-                    fontFamily: 'CormorantGaramond',
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1F1A15),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Te guiaré para encontrar a tu estilista ideal a domicilio, agendar de manera segura y proteger tus pagos con depósito en garantía en segundos.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 13,
-                    color: Color(0xFF4A3E39),
-                    height: 1.4,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 18),
-          CheckboxListTile(
-            value: _habeasDataAccepted,
-            onChanged: (val) => setState(() => _habeasDataAccepted = val ?? false),
-            title: const Text(
-              'Acepto la Política de Tratamiento de Datos Personales (Habeas Data - Ley 1581 de 2012).',
-              style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
-            ),
-            activeColor: const Color(0xFFC5A052),
-            contentPadding: EdgeInsets.zero,
-            controlAffinity: ListTileControlAffinity.leading,
-          ),
-          CheckboxListTile(
-            value: _terminosAccepted,
-            onChanged: (val) => setState(() => _terminosAccepted = val ?? false),
-            title: const Text(
-              'Acepto los Términos y Condiciones de Uso de la plataforma GlowApp.',
-              style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
-            ),
-            activeColor: const Color(0xFFC5A052),
-            contentPadding: EdgeInsets.zero,
-            controlAffinity: ListTileControlAffinity.leading,
-          ),
-          const SizedBox(height: 16),
-          Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              gradient: const LinearGradient(
-                colors: [Color(0xFFF3D59B), Color(0xFFC5A052)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xFFC5A052).withOpacity(0.35),
-                  blurRadius: 12,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: ElevatedButton(
-              onPressed: (_isLoading || !_habeasDataAccepted || !_terminosAccepted) ? null : _submitOnboarding,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                foregroundColor: const Color(0xFF1F1A15),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                elevation: 0,
-              ),
-              child: _isLoading
-                  ? const SizedBox(
-                      width: 22,
-                      height: 22,
-                      child: CircularProgressIndicator(color: Color(0xFF1F1A15), strokeWidth: 2.5),
-                    )
-                  : const Text(
-                      'COMENZAR EXPLORACIÓN',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF1F1A15),
-                        letterSpacing: 0.8,
-                      ),
-                    ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 

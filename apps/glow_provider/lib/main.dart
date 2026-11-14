@@ -20,7 +20,6 @@ import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/accept_invitation_screen.dart';
 import 'screens/auth/verification_pending_screen.dart';
 import 'screens/auth/context_selection_screen.dart';
-import 'screens/auth/role_selection_modal.dart';
 
 // Provider Dashboard & Core
 import 'screens/provider/provider_dashboard_screen.dart';
@@ -190,7 +189,6 @@ class GlowProviderApp extends ConsumerWidget {
           );
         },
         '/auth/verification-pending': (_) => const VerificationPendingScreen(),
-        '/auth/role-selection': (_) => const RoleSelectionModal(),
 
         // Provider Dashboard (Home)
         '/home': (_) => const ProviderDashboardScreen(),
