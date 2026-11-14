@@ -1738,7 +1738,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             value: _habeasDataAccepted,
             onChanged: (val) => setState(() => _habeasDataAccepted = val ?? false),
             title: const Text(
-              'Acepto la política de protección de datos (Habeas Data - Ley 1581 de 2012) de la aplicación Belleza App.',
+              'Acepto la política de protección de datos (Habeas Data - Ley 1581 de 2012) de la aplicación GlowApp.',
               style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
             ),
             activeColor: const Color(0xFFC5A052),

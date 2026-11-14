@@ -318,7 +318,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Registra una solicitud y un agente de soporte de Belleza App te ayudará en pocas horas.',
+              'Registra una solicitud y un agente de soporte de GlowApp te ayudará en pocas horas.',
               style: TextStyle(fontSize: 12, color: Colors.grey),
               textAlign: TextAlign.center,
             ),

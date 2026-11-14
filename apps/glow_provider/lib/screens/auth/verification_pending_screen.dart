@@ -47,7 +47,7 @@ class VerificationPendingScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   const Text(
-                    'El equipo de Belleza App está validando físicamente tus documentos de identidad, RUT y acreditación profesional para garantizar la seguridad del servicio en Fontibón.',
+                    'El equipo de GlowApp está validando físicamente tus documentos de identidad, RUT y acreditación profesional para garantizar la seguridad del servicio.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Inter',

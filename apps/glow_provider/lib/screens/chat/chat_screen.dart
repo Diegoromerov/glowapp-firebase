@@ -1015,7 +1015,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                                           FontWeight
                                                                               .bold)),
                                                               content: const Text(
-                                                                  'Te redirigiremos con los prestadores de Fontibón para agendar este estilo de inmediato, vecino.'),
+                                                                  'Te redirigiremos con los prestadores de tu zona para agendar este estilo de inmediato, vecino.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () {

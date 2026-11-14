@@ -263,7 +263,7 @@ class _TicketChatScreenState extends State<TicketChatScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 8.0, bottom: 2.0),
             child: Text(
-              isAdmin ? 'Soporte Belleza App' : name,
+              isAdmin ? 'Soporte GlowApp' : name,
               style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.bold, color: isAdmin ? AppTheme.primary : Colors.grey),
             ),
           ),

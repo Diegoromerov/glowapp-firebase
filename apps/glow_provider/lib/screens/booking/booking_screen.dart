@@ -665,7 +665,7 @@ class _BookingScreenState extends State<BookingScreen> {
             maxLines: 2,
             style: const TextStyle(fontSize: 14),
             decoration: AppTheme.inputDecoration(
-              hintText: 'Ej: Calle 24 # 95-32, Torre 2, Apto 402, Fontibón',
+              hintText: 'Ej: Calle 24 # 95-32, Torre 2, Apto 402',
               labelText: 'Dirección del servicio',
               prefixIcon: Icons.location_on_outlined,
             ),
