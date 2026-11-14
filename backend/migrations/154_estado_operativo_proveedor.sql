@@ -42,7 +42,10 @@ UPDATE usuarios
        estado_operativo_desde = NOW(),
        estado_operativo_motivo = 'Backfill de la migración 154: cuenta que ya operaba antes de Modo Exploración.'
  WHERE estado_operativo_desde IS NULL
-   AND (onboarding_completo = true OR rol IN ('ADMIN', 'SUPERADMIN', 'admin', 'superadmin'));
+   -- `rol` es el enum `tipo_rol`, al que la migración 070 añade ADMIN dentro de la
+   -- misma transacción que ejecuta esta cadena: comparar contra la etiqueta nueva
+   -- falla con "invalid input value for enum". Se compara como texto.
+   AND (onboarding_completo = true OR rol::text IN ('ADMIN', 'SUPERADMIN', 'admin', 'superadmin'));
 
 UPDATE usuarios
    SET estado_operativo_desde = NOW()

@@ -14,7 +14,11 @@
 -- Idempotente.
 
 ALTER TABLE usuarios
-  ADD COLUMN IF NOT EXISTS slug VARCHAR(60);
+  ADD COLUMN IF NOT EXISTS slug VARCHAR(60),
+  -- Datos que la vitrina muestra. No existían en `usuarios`: el perfil público
+  -- necesita ciudad y una línea de presentación, y sin ellas la ruta devolvía 500.
+  ADD COLUMN IF NOT EXISTS ciudad VARCHAR(120),
+  ADD COLUMN IF NOT EXISTS bio TEXT;
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_usuarios_slug_unique
   ON usuarios (LOWER(slug))

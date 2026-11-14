@@ -85,6 +85,12 @@ const MIGRACIONES_BASE_NUEVA = [
   '150_usuarios_referral_code.sql',
   '151_usuarios_nivel_notificado.sql',
   '152_usuarios_fecha_alta.sql',
+  // D-GL-030 / D-GL-031: RUT obligatorio con revisión, estado operativo
+  // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
+  // así que se aplican igual sobre una base vacía y sobre una ya poblada.
+  '153_prestador_rut_revision.sql',
+  '154_estado_operativo_proveedor.sql',
+  '155_vitrina_publica_proveedor.sql',
 '125_usuario_lookup_sin_contexto.sql',
 '127_review_aspectos.sql',
 '128_usuario_fcm_token.sql',
@@ -170,6 +176,12 @@ const MIGRACIONES_ARRANQUE = [
   '150_usuarios_referral_code.sql',
   '151_usuarios_nivel_notificado.sql',
   '152_usuarios_fecha_alta.sql',
+  // D-GL-030 / D-GL-031: RUT obligatorio con revisión, estado operativo
+  // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
+  // así que se aplican igual sobre una base vacía y sobre una ya poblada.
+  '153_prestador_rut_revision.sql',
+  '154_estado_operativo_proveedor.sql',
+  '155_vitrina_publica_proveedor.sql',
 
   '125_usuario_lookup_sin_contexto.sql',
 
