@@ -484,6 +484,30 @@ class AuthService {
     return null;
   }
 
+  /// Capacidades de la cuenta (D-GL-031). La app no deduce el estado: lo lee.
+  ///
+  /// Devuelve `null` si no hay sesión o la petición falla; la UI debe tratar el
+  /// null como "no mostrar aviso", nunca como "todo permitido".
+  static Future<Map<String, dynamic>?> obtenerCapacidadesProveedor() async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    if (token == null) return null;
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/provider/capacidades'),
+        headers: {
+          ..._jsonHeaders,
+          'Authorization': 'Bearer $token',
+        },
+      );
+      if (response.statusCode != 200) return null;
+      final data = json.decode(response.body);
+      return data is Map<String, dynamic> ? data : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   static Future<bool> selectRole(String role) async {
     final baseUrl = await getBaseUrl();
     final token = await getToken();

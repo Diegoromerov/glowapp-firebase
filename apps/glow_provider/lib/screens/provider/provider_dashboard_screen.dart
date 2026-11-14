@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 import 'package:glow_provider/screens/chat/chat_screen.dart';
 import 'provider_route_screen.dart';
+import '../../widgets/modo_exploracion_banner.dart';
 import '../wallet/wallet_screen.dart';
 import 'provider_ai_copilot_screen.dart';
 import '../chat/chat_list_screen.dart';
@@ -3918,7 +3919,12 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 padding: EdgeInsets.only(
                   bottom: _currentIndex == 3 ? 0 : 88.0, // GlowShop manages its own margins
                 ),
-                child: bodyWidget,
+                child: Column(
+                  children: [
+                    const ModoExploracionBanner(),
+                    Expanded(child: bodyWidget),
+                  ],
+                ),
               ),
             ),
           ),
