@@ -56,6 +56,10 @@ class _LoginScreenState extends State<LoginScreen> {
     // En web el unico flujo soportado es el boton de GIS: la cuenta llega por
     // onCurrentUserChanged. `signIn()` ya no entrega credenciales (0.12+).
     if (kIsWeb) {
+      // Trigger init with clientId via signInSilently (no UI, just init plugin).
+      _googleSignIn.signInSilently().catchError((e) {
+        if (mounted) setState(() => _error = 'Error init Google: ${mensajeHumano(e)}');
+      });
       _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
         if (user != null && mounted) _finishGoogleLogin(user);
       });
