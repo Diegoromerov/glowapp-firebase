@@ -195,135 +195,136 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _buildRoleSelector(BuildContext context) {
-    final t = context.glowTokens;
+      final t = context.glowTokens;
 
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: t.surfaceLevel2,
-        borderRadius: BorderRadius.circular(Radii.round),
-      ),
-      child: Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () => setState(() => _selectedRole = 'PRESTADOR'),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      decoration: BoxDecoration(
-                        color: _selectedRole == 'PRESTADOR'
-                            ? t.surfaceLevel1
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(Radii.sm),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Prestador',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: _selectedRole == 'PRESTADOR'
-                                ? t.n800
-                                : t.n400,
-                            fontSize: 12,
-                            fontFamily: 'CormorantGaramond',
+      return Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(Radii.round),
+        ),
+        child: Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => setState(() => _selectedRole = 'PRESTADOR'),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        decoration: BoxDecoration(
+                          color: _selectedRole == 'PRESTADOR'
+                              ? Colors.white.withOpacity(0.8)
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(Radii.sm),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Prestador',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF1F1A15),
+                              fontSize: 12,
+                              fontFamily: 'CormorantGaramond',
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () => setState(() => _selectedRole = 'SALON'),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      decoration: BoxDecoration(
-                        color: _selectedRole == 'SALON'
-                            ? t.surfaceLevel1
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(Radii.sm),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Salón / SaaS',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: _selectedRole == 'SALON'
-                                ? t.n800
-                                : t.n400,
-                            fontSize: 11,
-                            fontFamily: 'CormorantGaramond',
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => setState(() => _selectedRole = 'SALON'),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        decoration: BoxDecoration(
+                          color: _selectedRole == 'SALON'
+                              ? Colors.white.withOpacity(0.8)
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(Radii.sm),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Salón / SaaS',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF1F1A15),
+                              fontSize: 11,
+                              fontFamily: 'CormorantGaramond',
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-    );
-  }
+                ],
+              ),
+      );
+    }
 
   Widget _buildFormCard(BuildContext context) {
     final t = context.glowTokens;
     final l10n = AppLocalizations.of(context)!;
 
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(24, 24, 24, 22),
-      decoration: BoxDecoration(
-        color: t.surfaceLevel1,
-        borderRadius: BorderRadius.circular(Radii.lg),
-        border: Border.all(
-          color: t.borderDefault,
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 24,
-            offset: const Offset(0, -6),
+          width: double.infinity,
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 22),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(Radii.lg),
+            border: Border.all(
+              color: t.borderDefault,
+              width: 1,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.06),
+                blurRadius: 24,
+                offset: const Offset(0, -6),
+              ),
+            ],
           ),
-        ],
-      ),
       child: Form(
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              l10n.registerUserType,
-              style: context.labelLargeContext,
-            ),
+                          l10n.registerUserType,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF1F1A15),
+                            fontFamily: 'CormorantGaramond',
+                          ),
+                        ),
             const SizedBox(height: 10),
 
             _buildRoleSelector(context),
             const SizedBox(height: 10),
 
             Container(
-              padding: const EdgeInsets.all(11),
-              decoration: BoxDecoration(
-                color: t.surfaceLevel2,
-                borderRadius: BorderRadius.circular(Radii.round),
-                border: Border.all(
-                  color: t.borderDefault,
-                  width: 0.5,
-                ),
-              ),
-              child: Text(
-                              _selectedRole == 'PRESTADOR'
-                                  ? '💼 Ofrece tus servicios independientes, gestiona tu agenda y recibe pagos directos.'
-                                  : '🏢 Administra tu salón de belleza, tu equipo de trabajo y licencias SaaS integradas.',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: t.n700,
-                  fontFamily: 'CormorantGaramond',
-                  height: 1.3,
-                ),
-              ),
-            ),
+                          padding: const EdgeInsets.all(11),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(Radii.round),
+                            border: Border.all(
+                              color: t.borderDefault,
+                              width: 0.5,
+                            ),
+                          ),
+                          child: Text(
+                                          _selectedRole == 'PRESTADOR'
+                                              ? '💼 Ofrece tus servicios independientes, gestiona tu agenda y recibe pagos directos.'
+                                              : '🏢 Administra tu salón de belleza, tu equipo de trabajo y licencias SaaS integradas.',
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF1F1A15),
+                              fontFamily: 'CormorantGaramond',
+                              height: 1.3,
+                            ),
+                          ),
+                        ),
 
             const SizedBox(height: 18),
 
@@ -471,25 +472,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
             const SizedBox(height: 18),
 
             Center(
-              child: TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: RichText(
-                  text: TextSpan(
-                    text: '¿Ya tienes cuenta? ',
-                    style: context.bodySmallContext,
-                    children: [
-                      TextSpan(
-                        text: 'Inicia sesión',
-                        style: context.bodySmallContext.copyWith(
-                          color: const Color(0xFFC5A052),
-                          fontWeight: FontWeight.w700,
+                          child: TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: RichText(
+                              text: TextSpan(
+                                text: '¿Ya tienes cuenta? ',
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  color: Color(0xFF1F1A15),
+                                  fontFamily: 'CormorantGaramond',
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'Inicia sesión',
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      color: Color(0xFF1F1A15),
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: 'CormorantGaramond',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
