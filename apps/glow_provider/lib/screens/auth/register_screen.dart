@@ -195,8 +195,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _buildRoleSelector(BuildContext context) {
-      final t = context.glowTokens;
-
       return Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
