@@ -39,20 +39,21 @@ void _initializeOneTap(String clientId, void Function(String) onCredential) {
   }
 
   try {
-      // Create callback that bridges to Dart
-      final callback = (credentialResponse) {
-        _handleCredential(credentialResponse, onCredential);
-      };
+        // Create callback that bridges to Dart
+        final callback = (credentialResponse) {
+          _handleCredential(credentialResponse, onCredential);
+        };
 
-      google['accounts']['id'].callMethod('initialize', [
-        js.JsObject.jsify({
-          'client_id': clientId,
-          'callback': callback,
-          'auto_select': false,
-          'cancel_on_tap_outside': true,
-        })
-      ]);
-    } catch (e) {
+        google['accounts']['id'].callMethod('initialize', [
+          js.JsObject.jsify({
+            'client_id': clientId,
+            'callback': callback,
+            'auto_select': false,
+            'cancel_on_tap_outside': true,
+            'use_fedcm_for_button': true,
+          })
+        ]);
+      } catch (e) {
     // Silenciar errores de inicialización duplicada
   }
 }
