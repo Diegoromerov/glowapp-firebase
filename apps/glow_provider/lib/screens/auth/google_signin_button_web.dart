@@ -39,20 +39,20 @@ void _initializeOneTap(String clientId, void Function(String) onCredential) {
   }
 
   try {
-    // Create callback that bridges to Dart
-    final callback = js.allowInterop((credentialResponse) {
-      _handleCredential(credentialResponse, onCredential);
-    });
+      // Create callback that bridges to Dart
+      final callback = (credentialResponse) {
+        _handleCredential(credentialResponse, onCredential);
+      };
 
-    google['accounts']['id'].callMethod('initialize', [
-      js.JsObject.jsify({
-        'client_id': clientId,
-        'callback': callback,
-        'auto_select': false,
-        'cancel_on_tap_outside': true,
-      })
-    ]);
-  } catch (e) {
+      google['accounts']['id'].callMethod('initialize', [
+        js.JsObject.jsify({
+          'client_id': clientId,
+          'callback': callback,
+          'auto_select': false,
+          'cancel_on_tap_outside': true,
+        })
+      ]);
+    } catch (e) {
     // Silenciar errores de inicialización duplicada
   }
 }
@@ -62,7 +62,7 @@ void _promptOneTap() {
   final google = js.context['google'];
   if (google != null && google['accounts'] != null && google['accounts']['id'] != null) {
     try {
-      google['accounts']['id'].callMethod('prompt', [js.allowInterop((_) {})]);
+      google['accounts']['id'].callMethod('prompt', [(_) {}]);
     } catch (e) {
       // Silenciar
     }
