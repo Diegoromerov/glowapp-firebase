@@ -196,17 +196,17 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               const SizedBox(height: 12),
                               // Subtitle
                               Text(
-                                _otpSent
-                                    ? 'Ingresa el código y tu nueva contraseña'
-                                    : 'Ingresa tu correo electrónico registrado para recibir un código OTP de recuperación.',
-                                style: const TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.5,
-                                  color: Color(0xFF8C7E74),
-                                  height: 1.4,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
+                                                              _otpSent
+                                                                  ? 'Ingresa el código y tu nueva contraseña'
+                                                                  : 'Ingresa tu correo electrónico registrado para recibir un código OTP de recuperación.',
+                                                              style: TextStyle(
+                                                                fontFamily: 'Inter',
+                                                                fontSize: 13.5,
+                                                                color: _otpSent ? const Color(0xFF8C7E74) : const Color(0xFF1F1A15),
+                                                                height: 1.4,
+                                                              ),
+                                                              textAlign: TextAlign.center,
+                                                            ),
                               const SizedBox(height: 28),
                               // Error message
                               if (_errorMessage != null) ...[
