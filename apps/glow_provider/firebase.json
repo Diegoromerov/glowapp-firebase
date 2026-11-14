@@ -41,10 +41,6 @@
             "value": "same-origin-allow-popups"
           },
           {
-            "key": "Cross-Origin-Embedder-Policy",
-            "value": "require-corp"
-          },
-          {
             "key": "Cache-Control",
             "value": "no-cache"
           }
