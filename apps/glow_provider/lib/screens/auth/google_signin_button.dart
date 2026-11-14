@@ -6,7 +6,10 @@ import 'package:flutter/widgets.dart';
 /// La variante web está en `google_signin_button_web.dart` y se elige por
 /// import condicional (`if (dart.library.js)`), igual que hace glow_core con
 /// connectivity_probe.
-Widget? googleSignInButton() => null;
+Widget? googleSignInButton({
+  required String clientId,
+  required void Function(String idToken) onCredential,
+}) => null;
 
 /// En movil/desktop no hay iframe de GIS: el control propio llama a
 /// `GoogleSignIn.signIn()` directamente.

@@ -36,8 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
     ),
   );
 
-  // En web: clientId Y serverClientId son requeridos para obtener el idToken.
-  // google_sign_in_web solo rellena googleAuth.idToken cuando serverClientId está presente.
+  // En web One Tap: no usamos GoogleSignIn ni onCurrentUserChanged.
+  // El flujo es: botón -> google.accounts.id.prompt() -> callback con idToken -> AuthService.loginWithGoogle(idToken)
   final GoogleSignIn _googleSignIn = kIsWeb
         ? GoogleSignIn(
             scopes: ['email', 'openid', 'profile'],
@@ -54,24 +54,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    // En web el unico flujo soportado es el boton de GIS: la cuenta llega por
-    // onCurrentUserChanged. `signIn()` ya no entrega credenciales (0.12+).
     if (kIsWeb) {
-      // Inicializar explícitamente el plugin web con clientId ANTES de renderizar botón.
-      // El constructor de GoogleSignIn guarda clientId pero NO llama init() automáticamente en web.
-      // Si ya está inicializado (ej. hot reload), ignoramos el error "future already complete".
-      GoogleSignInPlatform.instance.initWithParams(
-        SignInInitParameters(
-          scopes: ['email', 'openid', 'profile'],
-          clientId: _googleClientId.isNotEmpty ? _googleClientId : null,
-          serverClientId: null, // no soportado en web
-        ),
-      ).catchError((e) {
-        // "bad state future already complete" = ya inicializado, no es error real.
-        if (!e.toString().contains('future already complete') && mounted) {
-          setState(() => _error = 'Error init Google: ${mensajeHumano(e)}');
-        }
-      });
+      // One Tap se inicializa lazily al renderizar el botón (ver google_signin_button_web.dart)
+      // No necesitamos listener de onCurrentUserChanged
+    } else {
+      // Nativo: listener para signInSilently / signIn
       _googleUserSub = _googleSignIn.onCurrentUserChanged.listen((user) {
         if (user != null && mounted) _finishGoogleLogin(user);
       });
@@ -129,9 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleGoogleSignIn() async {
-    // En web el unico flujo soportado por GIS es el boton: `signIn()` ya no
-    // entrega credenciales (google_sign_in_web 0.12), solo abre un popup que el
-    // COOP bloquea. La cuenta llega por onCurrentUserChanged -> _finishGoogleLogin.
+    // En web One Tap el flujo es: botón -> prompt() -> callback -> loginWithGoogle(idToken)
+    // Este método solo se usa en nativo (iOS/Android).
     if (kIsWeb) {
       setState(() => _error = 'Usa el botón de Google para continuar.');
       return;
@@ -234,6 +220,33 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  /// Completa el login con idToken de One Tap (flujo web).
+  /// Llamado desde google_signin_button_web.dart -> _handleCredential.
+  Future<void> finishGoogleLoginWithIdToken(String idToken) async {
+    if (!mounted) return;
+    setState(() {
+      _isLoading = true;
+      _error = null;
+    });
+    try {
+      final result = await AuthService.loginWithGoogle(idToken);
+      if (result != null && result['token'] != null && mounted) {
+        return _navigateAfterLogin(result);
+      }
+      if (mounted) {
+        final errMessage =
+            result?['details'] ?? result?['error'] ?? 'El servidor rechazó el token de Google. Intenta de nuevo.';
+        setState(() => _error = errMessage);
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _error = 'Error al conectar con Google: ${mensajeHumano(e)}');
+      }
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
+  }
+
   void _navigateAfterLogin(Map<String, dynamic> result) {
     if (!mounted) return;
     // El backend devuelve {token, user:{role, onboarding_completo}}.
@@ -310,8 +323,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
     Widget build(BuildContext context) {
     final t = Token.of(context);
-    // Un solo iframe de GIS por build; se reutiliza en el Stack del botón.
-    final googleOverlay = gis_button.googleSignInOverlay();
     return Scaffold(
       backgroundColor: const Color(0xFFFAF8F5),
       body: Stack(
@@ -537,38 +548,31 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 20),
 
                             // Social Buttons (Google only)
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                          children: [
-                                                            // En web: boton oficial de GIS (unico flujo soportado).
-                                                            // Fuera de web: boton propio que dispara signIn().
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                _buildSocialButton(
-                                                                  icon: const Icon(Icons.g_mobiledata,
-                                                                      color: Color(0xFFC5A052), size: 32),
-                                                                  onTap: googleOverlay != null
-                                                                      ? null
-                                                                      : (_isLoading
-                                                                          ? null
-                                                                          : () => _handleOAuth('GOOGLE')),
-                                                                  label: 'Google',
-                                                                  t: t,
-                                                                ),
-                                                                if (googleOverlay != null)
-                                                                  Positioned.fill(
-                                                                    child: ClipOval(
-                                                                      child: Opacity(
-                                                                        opacity: 0.01,
-                                                                        child: googleOverlay,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                // En web: botón One Tap (evita COOP). Fuera de web: botón propio que dispara signIn().
+                                if (kIsWeb)
+                                  gis_button.googleSignInButton(
+                                    clientId: _googleClientId,
+                                    onCredential: finishGoogleLoginWithIdToken,
+                                  ) ??
+                                  const SizedBox.shrink()
+                                else
+                                  _buildSocialButton(
+                                    icon: const Icon(
+                                      Icons.g_mobiledata,
+                                      color: Color(0xFFC5A052),
+                                      size: 32,
+                                    ),
+                                    onTap: _isLoading
+                                        ? null
+                                        : () => _handleOAuth('GOOGLE'),
+                                    label: 'Google',
+                                    t: t,
+                                  ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
