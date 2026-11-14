@@ -27,7 +27,7 @@ function exigirCapacidad(capacidad) {
       }
 
       const { rows } = await pool.query(
-        'SELECT estado_operativo, rol FROM usuarios WHERE id = $1',
+        'SELECT estado_operativo, estado_operativo_desde, rol FROM usuarios WHERE id = $1',
         [req.user.id]
       );
 
@@ -37,12 +37,13 @@ function exigirCapacidad(capacidad) {
 
       const capacidades = calcularCapacidades({
         estadoOperativo: rows[0].estado_operativo,
+        estadoDesde: rows[0].estado_operativo_desde,
         rol: rows[0].rol || req.user.role,
       });
 
       if (capacidades.puede(capacidad)) return next();
 
-      const motivo = motivoBloqueo(capacidades.estado) || {
+      const motivo = motivoBloqueo(capacidades.estado, { vencida: capacidades.vencida }) || {
         mensaje: 'Tu cuenta no tiene esta capacidad habilitada.',
         siguiente_paso: 'CONTACTAR_SOPORTE',
       };
@@ -65,12 +66,13 @@ async function cargarCapacidades(req, res, next) {
   try {
     if (!req.user || !req.user.id) return next();
     const { rows } = await pool.query(
-      'SELECT estado_operativo, rol FROM usuarios WHERE id = $1',
+      'SELECT estado_operativo, estado_operativo_desde, rol FROM usuarios WHERE id = $1',
       [req.user.id]
     );
     if (rows.length) {
       req.capacidades = calcularCapacidades({
         estadoOperativo: rows[0].estado_operativo,
+        estadoDesde: rows[0].estado_operativo_desde,
         rol: rows[0].rol || req.user.role,
       });
     }

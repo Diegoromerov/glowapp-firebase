@@ -44,6 +44,26 @@ const PERMITIDAS_EN_EXPLORACION = Object.freeze([
 
 const ROLES_PROVEEDOR = Object.freeze(['PRESTADOR', 'SALON', 'PROVIDER']);
 
+/**
+ * Días de exploración activa (D-GL-031). Suficiente para enamorarse de la
+ * herramienta, insuficiente para usarla como CRM gratis indefinidamente.
+ */
+const DIAS_EXPLORACION = 30;
+
+/**
+ * Días transcurridos desde `estado_operativo_desde`.
+ * Sin fecha devuelve `null`: una cuenta sin marca de tiempo no se caduca, porque
+ * castigar un dato faltante (backfills, filas viejas) sería un bug silencioso.
+ */
+function diasEnEstado(desde, ahora = new Date()) {
+  if (!desde) return null;
+  const inicio = desde instanceof Date ? desde : new Date(desde);
+  if (Number.isNaN(inicio.getTime())) return null;
+  const ms = ahora.getTime() - inicio.getTime();
+  if (ms < 0) return 0;
+  return Math.floor(ms / (24 * 60 * 60 * 1000));
+}
+
 function normalizarEstado(valor) {
   const estado = String(valor || '').toUpperCase();
   return ESTADOS[estado] ? estado : ESTADOS.EXPLORACION;
@@ -57,26 +77,33 @@ function normalizarEstado(valor) {
  * @param {string} [datos.rol]
  * @returns {{estado: string, permitidas: string[], mapa: Record<string, boolean>, puede: (c: string) => boolean}}
  */
-function calcularCapacidades({ estadoOperativo, rol } = {}) {
+function calcularCapacidades({ estadoOperativo, rol, estadoDesde, ahora, diasExploracion } = {}) {
   const estado = normalizarEstado(estadoOperativo);
   const esProveedor = ROLES_PROVEEDOR.includes(String(rol || '').toUpperCase());
+  const limite = Number.isFinite(Number(diasExploracion)) ? Number(diasExploracion) : DIAS_EXPLORACION;
+  const dias = estado === ESTADOS.EXPLORACION ? diasEnEstado(estadoDesde, ahora) : null;
+  const vencida = dias !== null && dias >= limite;
 
   // Sin rol de proveedor no hay nada que habilitar aquí: la autorización por rol
   // (RBAC) se resuelve en otro middleware.
   if (!esProveedor) {
     return {
       estado,
+      vencida: false,
+      dias_en_estado: dias,
+      dias_restantes: null,
       permitidas: [],
       mapa: {},
       puede: () => false,
     };
   }
 
-  // SUSPENDIDO no conserva ni la lectura de escritura: sólo puede ver su cuenta.
+  // SUSPENDIDO no conserva escritura: sólo puede ver su cuenta. Exploración
+  // vencida queda igual: lectura, hasta que verifique.
   const permitidas =
     estado === ESTADOS.HABILITADO
       ? Object.values(CAPACIDADES)
-      : estado === ESTADOS.SUSPENDIDO
+      : estado === ESTADOS.SUSPENDIDO || vencida
         ? [CAPACIDADES.VER_DASHBOARD]
         : PERMITIDAS_EN_EXPLORACION;
 
@@ -87,6 +114,9 @@ function calcularCapacidades({ estadoOperativo, rol } = {}) {
 
   return {
     estado,
+    vencida,
+    dias_en_estado: dias,
+    dias_restantes: dias === null ? null : Math.max(0, limite - dias),
     permitidas: [...permitidas],
     mapa,
     puede: (capacidad) => permitidas.includes(capacidad),
@@ -109,8 +139,20 @@ const MOTIVOS = Object.freeze({
   },
 });
 
-function motivoBloqueo(estadoOperativo) {
+/**
+ * Motivo del bloqueo, con el siguiente paso siempre explícito.
+ * La exploración vencida tiene su propio mensaje: "verifica" no es lo mismo que
+ * "se te acabó el tiempo de prueba".
+ */
+function motivoBloqueo(estadoOperativo, { vencida = false } = {}) {
   const estado = normalizarEstado(estadoOperativo);
+  if (vencida && estado === ESTADOS.EXPLORACION) {
+    return {
+      mensaje:
+        'Tu periodo de exploración terminó. Verifica tus documentos para volver a editar tu negocio.',
+      siguiente_paso: 'VERIFICAR_DOCUMENTOS',
+    };
+  }
   return MOTIVOS[estado] || null;
 }
 
@@ -118,6 +160,8 @@ module.exports = {
   ESTADOS,
   CAPACIDADES,
   PERMITIDAS_EN_EXPLORACION,
+  DIAS_EXPLORACION,
+  diasEnEstado,
   calcularCapacidades,
   motivoBloqueo,
   normalizarEstado,

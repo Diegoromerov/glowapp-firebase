@@ -14,9 +14,13 @@ const path = require('node:path');
 const {
   ESTADOS,
   CAPACIDADES,
+  DIAS_EXPLORACION,
+  diasEnEstado,
   calcularCapacidades,
   motivoBloqueo,
 } = require(path.join(__dirname, '..', 'services', 'capacidadesProveedor'));
+
+const haceDias = (n) => new Date(Date.now() - n * 24 * 60 * 60 * 1000);
 
 const explorador = () =>
   calcularCapacidades({ estadoOperativo: 'EXPLORACION', rol: 'PRESTADOR' });
@@ -98,4 +102,71 @@ test('el bloqueo de un explorador dice el siguiente paso', () => {
 
 test('habilitado no tiene motivo de bloqueo', () => {
   assert.equal(motivoBloqueo('HABILITADO'), null);
+});
+
+// ─── Caducidad de la exploración (30 días) ──────────────────────────────────
+
+test('a los 29 días el explorador sigue armando su negocio', () => {
+  const c = calcularCapacidades({
+    estadoOperativo: 'EXPLORACION',
+    rol: 'PRESTADOR',
+    estadoDesde: haceDias(29),
+  });
+  assert.equal(c.vencida, false);
+  assert.equal(c.puede(CAPACIDADES.CREAR_SERVICIOS), true);
+  assert.equal(c.dias_restantes, 1);
+});
+
+test('a los 30 días queda en lectura', () => {
+  const c = calcularCapacidades({
+    estadoOperativo: 'EXPLORACION',
+    rol: 'PRESTADOR',
+    estadoDesde: haceDias(31),
+  });
+  assert.equal(c.vencida, true);
+  assert.equal(c.puede(CAPACIDADES.VER_DASHBOARD), true);
+  assert.equal(c.puede(CAPACIDADES.CREAR_SERVICIOS), false);
+  assert.equal(c.puede(CAPACIDADES.COBRAR), false);
+  assert.equal(c.dias_restantes, 0);
+});
+
+test('una cuenta sin fecha no se caduca (backfills y filas viejas)', () => {
+  const c = calcularCapacidades({ estadoOperativo: 'EXPLORACION', rol: 'PRESTADOR' });
+  assert.equal(c.vencida, false);
+  assert.equal(c.puede(CAPACIDADES.CREAR_SERVICIOS), true);
+});
+
+test('habilitado no caduca por antigüedad', () => {
+  const c = calcularCapacidades({
+    estadoOperativo: 'HABILITADO',
+    rol: 'PRESTADOR',
+    estadoDesde: haceDias(400),
+  });
+  assert.equal(c.vencida, false);
+  assert.equal(c.puede(CAPACIDADES.COBRAR), true);
+});
+
+test('un vencimiento explícito de 0 días no rompe la regla', () => {
+  const c = calcularCapacidades({
+    estadoOperativo: 'EXPLORACION',
+    rol: 'PRESTADOR',
+    estadoDesde: haceDias(1),
+    diasExploracion: 0,
+  });
+  assert.equal(c.vencida, true);
+});
+
+test('el motivo de la exploración vencida es distinto al de la activa', () => {
+  const activa = motivoBloqueo('EXPLORACION');
+  const vencida = motivoBloqueo('EXPLORACION', { vencida: true });
+  assert.notEqual(activa.mensaje, vencida.mensaje);
+  assert.match(vencida.mensaje, /periodo de exploración terminó/);
+  assert.equal(vencida.siguiente_paso, 'VERIFICAR_DOCUMENTOS');
+});
+
+test('diasEnEstado tolera fechas inválidas y futuras', () => {
+  assert.equal(diasEnEstado(null), null);
+  assert.equal(diasEnEstado('no-es-fecha'), null);
+  assert.equal(diasEnEstado(new Date(Date.now() + 86400000)), 0);
+  assert.equal(DIAS_EXPLORACION, 30);
 });

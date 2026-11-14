@@ -327,7 +327,7 @@ router.patch('/provider/fiscal', authMiddleware, async (req, res) => {
 router.get('/provider/capacidades', authMiddleware, async (req, res) => {
   try {
     const { rows } = await pool.query(
-      'SELECT estado_operativo, rol FROM usuarios WHERE id = $1',
+      'SELECT estado_operativo, estado_operativo_desde, rol FROM usuarios WHERE id = $1',
       [req.user.id]
     );
     if (!rows.length) {
@@ -336,14 +336,18 @@ router.get('/provider/capacidades', authMiddleware, async (req, res) => {
 
     const capacidades = calcularCapacidades({
       estadoOperativo: rows[0].estado_operativo,
+      estadoDesde: rows[0].estado_operativo_desde,
       rol: rows[0].rol || req.user.role,
     });
 
     res.json({
       estado_operativo: capacidades.estado,
+      vencida: capacidades.vencida,
+      dias_en_estado: capacidades.dias_en_estado,
+      dias_restantes: capacidades.dias_restantes,
       permitidas: capacidades.permitidas,
       capacidades: capacidades.mapa,
-      bloqueo: motivoBloqueo(capacidades.estado),
+      bloqueo: motivoBloqueo(capacidades.estado, { vencida: capacidades.vencida }),
     });
   } catch (err) {
     console.error('Error al calcular las capacidades del proveedor:', err);
