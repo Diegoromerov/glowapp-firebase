@@ -158,9 +158,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     const SizedBox(width: 6),
                     _buildPresetChip('Daviplata', 'DAVIPLATA'),
                     const SizedBox(width: 6),
-                    _buildPresetChip('Bancolombia', 'AHORROS'),
-                    const SizedBox(width: 6),
-                    _buildPresetChip('Lulo Bank', 'AHORROS'),
+                    _buildPresetChip('Bancolombia', 'AHORROS', label: 'Bancos'),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -356,7 +354,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     );
   }
 
-  Widget _buildPresetChip(String bancoNombre, String tipoCuenta) {
+  Widget _buildPresetChip(String bancoNombre, String tipoCuenta, {String? label}) {
     final isSelected = _banco == bancoNombre;
     return Expanded(
       child: GestureDetector(
@@ -373,7 +371,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
             ),
           ),
           child: Text(
-            bancoNombre,
+            label ?? bancoNombre,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 10,
