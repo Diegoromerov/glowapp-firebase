@@ -39,14 +39,25 @@ class _GoogleOneTapButton extends StatefulWidget {
 class _GoogleOneTapButtonState extends State<_GoogleOneTapButton> {
   bool _initialized = false;
   bool _promptPending = false;
+  String? _initializationError;
+  Timer? _gisPollTimer;
+
+  static const _gold = Color(0xFFC5A052);
+  static const _dark = Color(0xFF1F1A15);
 
   @override
   void initState() {
     super.initState();
-    // Una sola vez por ciclo de vida: llamar initialize() en cada build dispara
-    // "google.accounts.id.initialize() is called multiple times" y GIS sólo
-    // conserva la última configuración.
+    // GIS se carga async desde index.html; esperar a que esté disponible antes
+    // de inicializar, para que el primer toque no se pierda.
     _initialize();
+    _gisPollTimer = Timer.periodic(const Duration(milliseconds: 250), (timer) {
+      if (_initialized || !mounted) {
+        timer.cancel();
+        return;
+      }
+      _initialize();
+    });
   }
 
   @override
@@ -54,6 +65,7 @@ class _GoogleOneTapButtonState extends State<_GoogleOneTapButton> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.clientId != widget.clientId) {
       _initialized = false;
+      _initializationError = null;
       _initialize();
     }
   }
@@ -66,12 +78,18 @@ class _GoogleOneTapButtonState extends State<_GoogleOneTapButton> {
   }
 
   void _initialize() {
-    if (_initialized || widget.clientId.isEmpty || !_gisReady) return;
+    if (_initialized) return;
+    if (widget.clientId.isEmpty) {
+      _showInitializationError('Falta configurar el cliente OAuth de Google.');
+      return;
+    }
+    if (!_gisReady) return;
     try {
       final callback = (credentialResponse) {
         _promptPending = false;
-        final credential =
-            credentialResponse == null ? null : credentialResponse['credential'];
+        final credential = credentialResponse == null
+            ? null
+            : credentialResponse['credential'];
         if (credential is String && credential.isNotEmpty) {
           widget.onCredential(credential);
         }
@@ -87,16 +105,25 @@ class _GoogleOneTapButtonState extends State<_GoogleOneTapButton> {
         }),
       ]);
       _initialized = true;
-    } catch (_) {
-      // GIS aún no listo: se reintenta en el siguiente toque.
+      _initializationError = null;
+      _gisPollTimer?.cancel();
+      if (mounted) setState(() {});
+    } catch (error) {
+      _showInitializationError('No se pudo iniciar Google: $error');
     }
   }
 
   void _prompt() {
     if (_promptPending) return;
     _initialize();
-    if (!_initialized) return;
-    _promptPending = true;
+    if (!_initialized) {
+      _showInitializationError(
+        _initializationError ??
+            'Google todavía está cargando. Intenta de nuevo.',
+      );
+      return;
+    }
+    setState(() => _promptPending = true);
     try {
       // Sin callback: GIS emite el aviso "uses one of the Google One Tap prompt
       // UI status methods..." en cuanto prompt() recibe un handler (guarda
@@ -104,36 +131,82 @@ class _GoogleOneTapButtonState extends State<_GoogleOneTapButton> {
       // credencial llega por el callback de initialize().
       js.context['google']['accounts']['id'].callMethod('prompt', []);
       // Evita bloquear reintentos si el navegador no muestra el prompt.
-      Timer(const Duration(seconds: 10), () => _promptPending = false);
-    } catch (_) {
-      _promptPending = false;
+      Timer(const Duration(seconds: 10), () {
+        if (mounted) setState(() => _promptPending = false);
+      });
+    } catch (error) {
+      _showInitializationError(
+          'Google no pudo abrir el inicio de sesión: $error');
+      if (mounted) setState(() => _promptPending = false);
     }
   }
 
+  void _showInitializationError(String message) {
+    if (!mounted) return;
+    setState(() => _initializationError = message);
+  }
+
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: _prompt,
-        child: Container(
-          width: 52,
-          height: 52,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: const Color(0xFFF3D59B), // Dorado GlowApp
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF000000).withOpacity(0.15),
-                blurRadius: 8,
-                offset: const Offset(0, 3),
+  void dispose() {
+    _gisPollTimer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: _prompt,
+              customBorder: const CircleBorder(),
+              mouseCursor: SystemMouseCursors.click,
+              child: Ink(
+                width: 52,
+                height: 52,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: const Color(0xFFF3D59B), // Dorado GlowApp
+                  border: Border.all(color: _gold),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF000000).withOpacity(0.15),
+                      blurRadius: 8,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: _promptPending
+                      ? const SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: _dark,
+                          ),
+                        )
+                      : const Icon(
+                          Icons.g_mobiledata,
+                          color: _dark,
+                          size: 28,
+                        ),
+                ),
               ),
-            ],
-          ),
-          child: const Center(
-            child: Icon(
-              Icons.g_mobiledata,
-              color: Color(0xFF1F1A15),
-              size: 28,
             ),
           ),
-        ),
+          if (_initializationError != null) ...[
+            const SizedBox(height: 8),
+            SizedBox(
+              width: 220,
+              child: Text(
+                _initializationError!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: _dark, fontSize: 12),
+              ),
+            ),
+          ],
+        ],
       );
 }
