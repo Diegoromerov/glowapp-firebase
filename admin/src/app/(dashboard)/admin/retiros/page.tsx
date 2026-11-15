@@ -1,0 +1,208 @@
+'use client';
+
+import React, { useCallback, useEffect, useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
+import { AlertTriangle, ArrowLeft, Building2, CheckCircle2, Clock3, Eye, RefreshCw, ShieldCheck, XCircle } from 'lucide-react';
+
+interface ReviewRow {
+  provider_id: number;
+  provider_name: string;
+  email: string;
+  banco: string;
+  tipo_cuenta: string | null;
+  numero_cuenta_enmascarado: string | null;
+  titular_nombre: string | null;
+  titular_documento_tipo: string | null;
+  titular_documento_enmascarado: string | null;
+  estado: string;
+  solicitado_at: string | null;
+  retiros_habilitables_despues_de: string | null;
+  revision_token: string;
+}
+
+interface ReviewDetail extends ReviewRow {
+  tipo_cuenta_bancaria: string | null;
+  numero_cuenta: string;
+  titular_documento_num: string | null;
+}
+
+const headers = { 'X-Requested-With': 'XMLHttpRequest' };
+
+function fecha(value: string | null) {
+  if (!value) return '—';
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? '—' : date.toLocaleString('es-CO');
+}
+
+export default function AdminCuentasRetiroPage() {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
+  const [items, setItems] = useState<ReviewRow[]>([]);
+  const [cursor, setCursor] = useState<number | null>(null);
+  const [detail, setDetail] = useState<ReviewDetail | null>(null);
+  const [reason, setReason] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [loadingDetail, setLoadingDetail] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!authLoading && (!user || user.rol !== 'ADMIN')) router.replace('/login');
+  }, [authLoading, user, router]);
+
+  const loadQueue = useCallback(async (after: number | null = null, append = false) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`/api/glow-admin/payout-account-reviews?limit=50&after_provider_id=${after || 0}`, { headers });
+      const body = await response.json();
+      if (!response.ok || !body.ok) throw new Error(body.error || `El backend respondió ${response.status}.`);
+      setItems((current) => append ? [...current, ...(body.items || [])] : (body.items || []));
+      setCursor(body.next_after_provider_id ?? null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo cargar la cola de revisión.');
+      if (!append) setItems([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { void loadQueue(); }, [loadQueue]);
+
+  const openDetail = async (providerId: number) => {
+    setLoadingDetail(true);
+    setError(null);
+    setNotice(null);
+    try {
+      const response = await fetch(`/api/glow-admin/payout-account-reviews/${providerId}`, { headers });
+      const body = await response.json();
+      if (!response.ok || !body.ok) throw new Error(body.error || `El backend respondió ${response.status}.`);
+      setDetail(body.item);
+      setReason('');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo cargar el detalle.');
+    } finally {
+      setLoadingDetail(false);
+    }
+  };
+
+  const decide = async (decision: 'APROBAR' | 'RECHAZAR') => {
+    if (!detail) return;
+    if (decision === 'RECHAZAR' && reason.trim().length < 10) {
+      setError('Escribe un motivo de rechazo de al menos 10 caracteres.');
+      return;
+    }
+    const prompt = decision === 'APROBAR'
+      ? `¿Confirmas aprobar la cuenta terminada en ${detail.numero_cuenta.slice(-4)}? El prestador podrá retirar cuando cumpla el periodo de protección y los demás requisitos.`
+      : `¿Confirmas rechazar la cuenta de ${detail.provider_name}? Se notificará el motivo al prestador.`;
+    if (!window.confirm(prompt)) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const response = await fetch(`/api/glow-admin/payout-account-reviews/${detail.provider_id}/decision`, {
+        method: 'POST',
+        headers: { ...headers, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ decision, motivo: reason.trim(), revision_token: detail.revision_token }),
+      });
+      const body = await response.json();
+      if (!response.ok || !body.ok) {
+        if (response.status === 409) {
+          setDetail(null);
+          await loadQueue();
+          throw new Error('La solicitud cambió durante la revisión. Actualicé la cola; abre de nuevo la solicitud.');
+        }
+        throw new Error(body.error || `El backend respondió ${response.status}.`);
+      }
+      setNotice(`Cuenta ${decision === 'APROBAR' ? 'aprobada' : 'rechazada'} para ${detail.provider_name}. Se notificó al prestador si el canal estaba disponible.`);
+      setDetail(null);
+      await loadQueue();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo guardar la decisión.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (authLoading || !user || user.rol !== 'ADMIN') return null;
+
+  return (
+    <main className="min-h-screen space-y-6 bg-slate-950 p-4 text-slate-100 md:p-8">
+      <header className="flex flex-col justify-between gap-4 border-b border-slate-800 pb-6 md:flex-row md:items-center">
+        <div className="flex items-start gap-3">
+          <div className="rounded-xl border border-amber-400/20 bg-amber-400/10 p-3"><Building2 className="h-6 w-6 text-amber-300" /></div>
+          <div>
+            <h1 className="text-2xl font-bold text-white md:text-3xl">Cuentas de retiro</h1>
+            <p className="mt-1 max-w-3xl text-sm text-slate-400">Revisa las cuentas bancarias que los prestadores agregaron o modificaron antes de habilitar retiros.</p>
+          </div>
+        </div>
+        <button onClick={() => void loadQueue()} disabled={loading} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium hover:bg-slate-800 disabled:opacity-50">
+          <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} /> Actualizar cola
+        </button>
+      </header>
+
+      <div className="flex gap-3 rounded-xl border border-sky-400/20 bg-sky-400/5 p-4 text-sm text-sky-100">
+        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-sky-300" />
+        <p>La revisión es administrativa. GlowApp no consulta al banco para confirmar titularidad automáticamente. Consulta los datos completos solo al abrir una solicitud; ese acceso queda auditado. Cada decisión debe corresponder a la documentación y procedimientos internos vigentes.</p>
+      </div>
+
+      {error && <div role="alert" className="flex items-start gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{error}</div>}
+      {notice && <div role="status" className="flex items-start gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-200"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />{notice}</div>}
+
+      {detail && (
+        <section aria-labelledby="detail-title" className="space-y-5 rounded-2xl border border-amber-400/30 bg-slate-900 p-5 md:p-7">
+          <div className="flex flex-col justify-between gap-3 md:flex-row md:items-start">
+            <div>
+              <button onClick={() => setDetail(null)} className="mb-3 inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white"><ArrowLeft className="h-4 w-4" /> Volver a la cola</button>
+              <h2 id="detail-title" className="text-xl font-bold text-white">Revisión de {detail.provider_name}</h2>
+              <p className="text-sm text-slate-400">{detail.email} · Solicitud: {fecha(detail.solicitado_at)}</p>
+            </div>
+            <span className="inline-flex items-center gap-2 self-start rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-200"><Clock3 className="h-3.5 w-3.5" /> Pendiente</span>
+          </div>
+
+          <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ['Entidad', detail.banco], ['Tipo de cuenta', detail.tipo_cuenta_bancaria || detail.tipo_cuenta],
+              ['Número de cuenta', detail.numero_cuenta], ['Titular', detail.titular_nombre],
+              ['Tipo de documento', detail.titular_documento_tipo], ['Documento', detail.titular_documento_num],
+              ['Protección de retiros hasta', fecha(detail.retiros_habilitables_despues_de)],
+            ].map(([label, value]) => <div key={label} className="rounded-xl border border-slate-800 bg-slate-950/70 p-4"><dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</dt><dd className="mt-2 break-all text-sm text-slate-100">{value || '—'}</dd></div>)}
+          </dl>
+
+          <label className="block text-sm font-medium text-slate-300" htmlFor="review-reason">Nota de revisión <span className="font-normal text-slate-500">(opcional al aprobar, obligatoria al rechazar)</span></label>
+          <textarea id="review-reason" value={reason} onChange={(event) => setReason(event.target.value)} rows={3} maxLength={1000} className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-sm text-white outline-none focus:border-amber-400" placeholder="Describe el criterio aplicado y, si corresponde, qué debe corregir el prestador." />
+          <div className="flex flex-col-reverse justify-end gap-3 sm:flex-row">
+            <button onClick={() => void decide('RECHAZAR')} disabled={saving || reason.trim().length < 10} className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-500/40 px-4 py-2.5 text-sm font-semibold text-rose-200 hover:bg-rose-500/10 disabled:cursor-not-allowed disabled:opacity-40"><XCircle className="h-4 w-4" />Rechazar y notificar</button>
+            <button onClick={() => void decide('APROBAR')} disabled={saving} className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500 disabled:opacity-40"><CheckCircle2 className="h-4 w-4" />Aprobar cuenta</button>
+          </div>
+        </section>
+      )}
+
+      <section aria-label="Solicitudes pendientes" className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+        <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+          <div><h2 className="font-semibold text-white">Solicitudes pendientes</h2><p className="mt-1 text-xs text-slate-500">{items.length} solicitud{items.length === 1 ? '' : 'es'} cargada{items.length === 1 ? '' : 's'}</p></div>
+          <span className="rounded-lg bg-amber-400/10 px-3 py-1 text-sm font-semibold text-amber-200">{loading ? '…' : items.length}</span>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[760px] text-left text-sm">
+            <thead className="bg-slate-950/70 text-xs uppercase tracking-wide text-slate-500"><tr><th className="px-5 py-3">Prestador</th><th className="px-5 py-3">Entidad</th><th className="px-5 py-3">Cuenta</th><th className="px-5 py-3">Titular</th><th className="px-5 py-3">Solicitada</th><th className="px-5 py-3">Acción</th></tr></thead>
+            <tbody className="divide-y divide-slate-800">
+              {loading && items.length === 0 && <tr><td colSpan={6} className="px-5 py-12 text-center text-slate-500">Cargando solicitudes…</td></tr>}
+              {!loading && items.length === 0 && <tr><td colSpan={6} className="px-5 py-12 text-center text-slate-500">No hay cuentas pendientes de revisión.</td></tr>}
+              {items.map((item) => <tr key={item.provider_id} className="hover:bg-slate-800/40">
+                <td className="px-5 py-4"><div className="font-medium text-white">{item.provider_name || `Prestador ${item.provider_id}`}</div><div className="mt-1 text-xs text-slate-500">{item.email}</div></td>
+                <td className="px-5 py-4 text-slate-300">{item.banco || '—'}</td>
+                <td className="px-5 py-4 font-mono text-slate-300">{item.numero_cuenta_enmascarado || '—'}</td>
+                <td className="px-5 py-4"><div className="text-slate-300">{item.titular_nombre || '—'}</div><div className="mt-1 text-xs text-slate-500">{item.titular_documento_tipo || ''} {item.titular_documento_enmascarado || ''}</div></td>
+                <td className="px-5 py-4 whitespace-nowrap text-slate-400">{fecha(item.solicitado_at)}</td>
+                <td className="px-5 py-4"><button onClick={() => void openDetail(item.provider_id)} disabled={loadingDetail} className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-3 py-2 text-xs font-semibold text-slate-200 hover:border-amber-400/50 hover:text-amber-200 disabled:opacity-50"><Eye className="h-4 w-4" />Revisar</button></td>
+              </tr>)}
+            </tbody>
+          </table>
+        </div>
+        {cursor !== null && <div className="border-t border-slate-800 p-4 text-center"><button onClick={() => void loadQueue(cursor, true)} disabled={loading} className="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 disabled:opacity-40">Cargar más</button></div>}
+      </section>
+    </main>
+  );
+}

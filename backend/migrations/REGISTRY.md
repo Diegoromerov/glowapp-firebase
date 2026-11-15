@@ -458,3 +458,10 @@ en 076).
 - Es el identificador del perfil público `/p/<slug>` de D-GL-031: un proveedor en exploración comparte el enlace y muestra su perfil con el sello "aún no recibe reservas", sin botón de reserva.
 - Se guarda y no se recalcula: forma parte del enlace que el proveedor comparte.
 - No siembra slugs: se generan al publicar la vitrina, para no inventar identificadores de quienes nunca la usen.
+
+## 156–159: protección de cuentas de retiro y autorizaciones
+
+- 156 agrega estado de verificación, campos del titular y respaldo del último destino aprobado para `provider_wallet`.
+- 157 registra desafíos de correo de un solo uso para cambios de cuenta; 158 conserva la cuenta aprobada previa y aplica el periodo de protección tras una modificación.
+- 159 registra desafíos de correo para retiros, con expiración, límite de intentos, uso único y vínculo al hash de monto/ciclo/destino.
+- Las tablas de desafíos aplican RLS y privilegios explícitos para los roles de aplicación.

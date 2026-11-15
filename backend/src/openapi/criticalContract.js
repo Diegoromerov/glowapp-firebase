@@ -245,6 +245,58 @@ const CRITICAL_OPERATIONS = {
     },
   },
 
+  'GET /api/glow-admin/payout-account-reviews': {
+    area: 'admin',
+    operation: {
+      summary: 'Lista cuentas de retiro pendientes de revisión administrativa',
+      operationId: 'get_glow_admin_payout_account_reviews',
+      tags: ['glow-admin'],
+      security: BEARER,
+      parameters: [
+        { name: 'limit', in: 'query', schema: { type: 'integer', minimum: 1, maximum: 100, default: 50 } },
+        { name: 'after_provider_id', in: 'query', schema: { type: 'integer', minimum: 0, default: 0 } },
+      ],
+      responses: { 200: { description: 'Cola con número/documento enmascarados y revision_token.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' } },
+    },
+  },
+
+  'GET /api/glow-admin/payout-account-reviews/{providerId}': {
+    area: 'admin',
+    operation: {
+      summary: 'Consulta datos de una cuenta pendiente y audita el acceso',
+      operationId: 'get_glow_admin_payout_account_review',
+      tags: ['glow-admin'],
+      security: BEARER,
+      parameters: [{ name: 'providerId', in: 'path', required: true, schema: { type: 'integer' } }],
+      responses: { 200: { description: 'Detalle de titular y cuenta con revision_token.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' }, 404: { description: 'Cuenta no encontrada.' } },
+    },
+  },
+
+  'POST /api/glow-admin/payout-account-reviews/{providerId}/decision': {
+    area: 'admin',
+    operation: {
+      summary: 'Aprueba o rechaza una cuenta de retiro pendiente',
+      operationId: 'post_glow_admin_payout_account_review_decision',
+      tags: ['glow-admin'],
+      security: BEARER,
+      parameters: [{ name: 'providerId', in: 'path', required: true, schema: { type: 'integer' } }],
+      requestBody: jsonBody({ type: 'object', required: ['decision', 'revision_token'], properties: { decision: { type: 'string', enum: ['APROBAR', 'RECHAZAR'] }, motivo: { type: 'string', minLength: 10 }, revision_token: { type: 'string', minLength: 64, maxLength: 64 } } }),
+      responses: { 200: { description: 'Decisión aplicada, auditada y notificada.' }, 400: { description: 'Solicitud inválida.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' }, 409: { description: 'La solicitud cambió o dejó de estar pendiente.' } },
+    },
+  },
+
+  'POST /api/wallet/withdraw/authorization': {
+    area: 'payment',
+    operation: {
+      summary: 'Solicita segundo factor para un retiro puntual',
+      operationId: 'post_wallet_withdraw_authorization',
+      tags: ['payment'],
+      security: BEARER,
+      requestBody: jsonBody({ type: 'object', required: ['current_password', 'monto', 'tipo_origen'], properties: { current_password: { type: 'string' }, monto: { type: 'number', exclusiveMinimum: 0 }, tipo_origen: { type: 'string', enum: ['DEMANDA', 'SEMANAL', 'QUINCENA', 'MENSUAL'] } } }),
+      responses: { 200: { description: 'authorization_id; código enviado solo al correo verificado.' }, 403: { description: 'Identidad o cuenta no autorizada.' }, 429: { description: 'Límite de solicitudes excedido.' }, 503: { description: 'Correo de segundo factor no disponible.' } },
+    },
+  },
+
   'GET /api/admin/dashboard': {
     area: 'admin',
     operation: {
