@@ -46,6 +46,26 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
+  <!--
+    El service worker de Flutter seguía sirviendo el bundle anterior después de
+    cada despliegue: el usuario veía una app de dos builds atrás (pantallas en
+    blanco, botones deshabilitados que ya estaban corregidos). Aquí se fuerza la
+    actualización y se recarga una sola vez cuando el nuevo worker toma control.
+  -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.getRegistrations().then(function (regs) {
+          regs.forEach(function (r) { r.update(); });
+        }).catch(function () {});
+        navigator.serviceWorker.addEventListener('controllerchange', function () {
+          if (sessionStorage.getItem('sw-reloaded') === '1') return;
+          sessionStorage.setItem('sw-reloaded', '1');
+          window.location.reload();
+        });
+      });
+    }
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
