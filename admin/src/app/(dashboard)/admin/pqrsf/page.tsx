@@ -234,6 +234,7 @@ export default function AdminPqrsfPage() {
   const [pagina, setPagina] = useState(1);
   const [total, setTotal] = useState(0);
   const [cargando, setCargando] = useState(true);
+  const [bandejaDisponible, setBandejaDisponible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [aviso, setAviso] = useState<string | null>(null);
 
@@ -277,11 +278,15 @@ export default function AdminPqrsfPage() {
 
       if (!resBandeja.ok) throw new Error(mensajeDeFallo(resBandeja, 'No se pudo cargar la bandeja'));
       const jsonBandeja = await resBandeja.json();
-      setFilas(asArray<Fila>(jsonBandeja?.data));
+      if (!Array.isArray(jsonBandeja?.data) || !Number.isFinite(Number(jsonBandeja?.total))) {
+        throw new Error('La respuesta de la bandeja PQRSF no tiene el formato esperado.');
+      }
+      setFilas(jsonBandeja.data as Fila[]);
       setTotal(Number(jsonBandeja?.total) || 0);
+      setBandejaDisponible(true);
 
-      if (resMetricas.ok) setMetricas((await resMetricas.json())?.data ?? null);
-      if (resEsquema.ok) setEsquema((await resEsquema.json())?.data ?? null);
+      setMetricas(resMetricas.ok ? (await resMetricas.json())?.data ?? null : null);
+      setEsquema(resEsquema.ok ? (await resEsquema.json())?.data ?? null : null);
 
       setError(null);
     } catch (err) {
@@ -289,6 +294,9 @@ export default function AdminPqrsfPage() {
       // devolvió esos tickets.
       setFilas([]);
       setTotal(0);
+      setMetricas(null);
+      setEsquema(null);
+      setBandejaDisponible(false);
       setError(err instanceof Error ? err.message : 'Error desconocido');
     } finally {
       if (!silencioso) setCargando(false);
@@ -442,15 +450,15 @@ export default function AdminPqrsfPage() {
             <span className="kpi-title">Abiertos</span>
             <Inbox size={18} aria-hidden="true" />
           </div>
-          <div className="kpi-value">{metricas ? metricas.abiertos : '—'}</div>
-          <span className="micro text-subtle">de {metricas ? metricas.total : '—'} en total</span>
+          <div className="kpi-value">{bandejaDisponible && metricas ? metricas.abiertos : '—'}</div>
+          <span className="micro text-subtle">de {bandejaDisponible && metricas ? metricas.total : '—'} en total</span>
         </div>
         <div className="kpi-card">
           <div className="kpi-header">
             <span className="kpi-title">Vencidos (SLA)</span>
             <Timer size={18} aria-hidden="true" />
           </div>
-          <div className="kpi-value">{metricas ? metricas.vencidos : '—'}</div>
+          <div className="kpi-value">{bandejaDisponible && metricas ? metricas.vencidos : '—'}</div>
           <span className="micro text-subtle">
             sin primera respuesta dentro del plazo{plazoPorDefecto ? ` (media: ${plazoLegible(plazoPorDefecto)})` : ''}
           </span>
@@ -460,7 +468,7 @@ export default function AdminPqrsfPage() {
             <span className="kpi-title">Sin respuesta</span>
             <MessageSquare size={18} aria-hidden="true" />
           </div>
-          <div className="kpi-value">{metricas ? metricas.sin_respuesta : '—'}</div>
+          <div className="kpi-value">{bandejaDisponible && metricas ? metricas.sin_respuesta : '—'}</div>
           <span className="micro text-subtle">nadie del equipo ha contestado todavía</span>
         </div>
         <div className="kpi-card">
@@ -468,9 +476,9 @@ export default function AdminPqrsfPage() {
             <span className="kpi-title">ARCO abiertas</span>
             <ShieldAlert size={18} aria-hidden="true" />
           </div>
-          <div className="kpi-value">{metricas ? metricas.arco.abiertas : '—'}</div>
+          <div className="kpi-value">{bandejaDisponible && metricas ? metricas.arco.abiertas : '—'}</div>
           <span className="micro text-subtle">
-            plazo legal de {metricas ? metricas.arco.plazo_dias_habiles : '—'} días hábiles
+            plazo legal de {bandejaDisponible && metricas ? metricas.arco.plazo_dias_habiles : '—'} días hábiles
           </span>
         </div>
       </div>
@@ -620,7 +628,7 @@ export default function AdminPqrsfPage() {
         <div className="card-header">
           <h2 className="card-title">Bandeja</h2>
           <span className="chip-sm">
-            {total} solicitud(es) · los abiertos primero, los más antiguos arriba
+            {bandejaDisponible ? `${total} solicitud(es) · los abiertos primero, los más antiguos arriba` : '— solicitudes · fuente no disponible'}
           </span>
         </div>
 
@@ -647,9 +655,11 @@ export default function AdminPqrsfPage() {
               ) : filas.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center">
-                    {hayFiltro
-                      ? 'Ninguna solicitud cumple estos filtros.'
-                      : 'Todavía no hay PQRSF registradas.'}
+                    {!bandejaDisponible
+                      ? 'La fuente PQRSF no está disponible; no se puede confirmar que la bandeja esté vacía.'
+                      : hayFiltro
+                        ? 'Ninguna solicitud cumple estos filtros.'
+                        : 'Todavía no hay PQRSF registradas.'}
                   </td>
                 </tr>
               ) : (

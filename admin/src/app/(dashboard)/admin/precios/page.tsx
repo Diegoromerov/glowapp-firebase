@@ -17,7 +17,6 @@ import {
   X, 
   Info, 
   History, 
-  Layers 
 } from 'lucide-react';
 
 interface PrecioItem {
@@ -162,6 +161,7 @@ export default function AdminPreciosPage() {
   // parecia que Gestion de Precios no tuviera productos que si estaban en el catalogo.
   const [pagina, setPagina] = useState(1);
   const [totalProductos, setTotalProductos] = useState(0);
+  const [catalogoDisponible, setCatalogoDisponible] = useState(false);
   const POR_PAGINA = 50;
 
   // Helper para headers con CSRF token via BFF proxy
@@ -172,6 +172,7 @@ export default function AdminPreciosPage() {
   const fetchPreciosData = useCallback(async () => {
     setLoading(true);
     setError(null);
+    setCatalogoDisponible(false);
     try {
       const headers = getBffHeaders();
 
@@ -185,8 +186,13 @@ export default function AdminPreciosPage() {
       }
 
       const dataPrecios = await resPrecios.json();
-      setProductos(dataPrecios.filas || dataPrecios.data || []);
+      const filas = dataPrecios.filas ?? dataPrecios.data;
+      if (!Array.isArray(filas) || !Number.isFinite(Number(dataPrecios.total))) {
+        throw new Error('Respuesta inválida al consultar precios');
+      }
+      setProductos(filas);
       setTotalProductos(Number(dataPrecios.total) || 0);
+      setCatalogoDisponible(true);
 
       if (resCoherencia.ok) {
         const dataCoherencia = await resCoherencia.json();
@@ -195,6 +201,9 @@ export default function AdminPreciosPage() {
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error desconocido de red';
       setError(message);
+      setProductos([]);
+      setTotalProductos(0);
+      setCatalogoDisponible(false);
     } finally {
       setLoading(false);
     }
@@ -609,6 +618,12 @@ export default function AdminPreciosPage() {
                     Cargando catálogo de precios por nivel...
                   </td>
                 </tr>
+              ) : !catalogoDisponible ? (
+                <tr>
+                  <td colSpan={6} className="py-12 text-center text-slate-400">
+                    No se pudo consultar el catálogo de precios; no es posible confirmar que esté vacío.
+                  </td>
+                </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="py-12 text-center text-slate-400">
@@ -700,7 +715,7 @@ export default function AdminPreciosPage() {
             era inalcanzable, aunque el backend ya devolvia el total. */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 border-t border-slate-800">
           <p className="text-sm text-slate-400">
-            Mostrando {productos.length === 0 ? 0 : ((pagina - 1) * POR_PAGINA) + 1} - {Math.min(pagina * POR_PAGINA, totalProductos)} de {totalProductos} productos
+            {catalogoDisponible ? `Mostrando ${productos.length === 0 ? 0 : ((pagina - 1) * POR_PAGINA) + 1} - ${Math.min(pagina * POR_PAGINA, totalProductos)} de ${totalProductos} productos` : 'Catálogo no disponible'}
           </p>
           <div className="flex items-center gap-3">
             <button
@@ -712,7 +727,7 @@ export default function AdminPreciosPage() {
               Anterior
             </button>
             <span className="text-sm text-slate-400">
-              Página {pagina} de {Math.max(1, Math.ceil(totalProductos / POR_PAGINA))}
+              {catalogoDisponible ? `Página ${pagina} de ${Math.max(1, Math.ceil(totalProductos / POR_PAGINA))}` : '—'}
             </span>
             <button
               type="button"

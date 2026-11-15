@@ -76,6 +76,7 @@ export default function AdminSosPage() {
   const { user } = useAuth();
   const [alerts, setAlerts] = useState<SosAlert[]>([]);
   const [loading, setLoading] = useState(true);
+  const [fuenteDisponible, setFuenteDisponible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [aviso, setAviso] = useState<string | null>(null);
 
@@ -106,10 +107,13 @@ export default function AdminSosPage() {
       }
 
       const json = await res.json();
-      // `data` es la coleccion. Degradar a lista vacia en vez de romper el render.
-      setAlerts(Array.isArray(json?.data) ? json.data : []);
+      if (!Array.isArray(json?.data)) throw new Error('La fuente SOS devolvió una respuesta inválida.');
+      setAlerts(json.data);
+      setFuenteDisponible(true);
       setError(null);
     } catch (err) {
+      setFuenteDisponible(false);
+      setAlerts([]);
       setError(err instanceof Error ? err.message : 'Error desconocido');
     } finally {
       if (!silencioso) setLoading(false);
@@ -210,7 +214,7 @@ export default function AdminSosPage() {
             <span className="kpi-title">Alertas activas</span>
             <ShieldAlert size={18} aria-hidden="true" />
           </div>
-          <div className="kpi-value">{error ? '—' : activas.length}</div>
+          <div className="kpi-value">{fuenteDisponible ? activas.length : '—'}</div>
         </div>
         <div className="kpi-card">
           <div className="kpi-header">
@@ -218,7 +222,7 @@ export default function AdminSosPage() {
             <Clock size={18} aria-hidden="true" />
           </div>
           <div className="kpi-value body-sm">
-            {masAntigua ? antiguedad(masAntigua.fecha_creacion) || 'Sin fecha' : 'Ninguna'}
+            {!fuenteDisponible ? '—' : masAntigua ? antiguedad(masAntigua.fecha_creacion) || 'Sin fecha' : 'Ninguna'}
           </div>
         </div>
       </div>
@@ -246,7 +250,7 @@ export default function AdminSosPage() {
         <div className="card-header">
           <h2 className="card-title">Alertas</h2>
           <span className="chip-sm">
-            {activas.length} activa(s) · se actualiza cada 30 s
+            {fuenteDisponible ? activas.length : '—'} activa(s) · se actualiza cada 30 s
           </span>
         </div>
 
@@ -273,9 +277,11 @@ export default function AdminSosPage() {
               ) : visibles.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center">
-                    {soloActivas
-                      ? 'No hay alertas SOS activas.'
-                      : 'Todavía no hay alertas registradas.'}
+                    {!fuenteDisponible
+                      ? 'Fuente SOS no disponible; no se puede confirmar que la bandeja esté vacía.'
+                      : soloActivas
+                        ? 'No hay alertas SOS activas.'
+                        : 'Todavía no hay alertas registradas.'}
                   </td>
                 </tr>
               ) : (

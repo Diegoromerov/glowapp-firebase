@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { 
   BookOpen, 
@@ -9,14 +9,11 @@ import {
   Trash2, 
   Loader2, 
   AlertCircle,
-  CheckCircle,
   Users,
   Layers,
   FileText,
   Award,
-  ArrowUpDown,
-  Search,
-  Filter
+  Search
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -49,31 +46,32 @@ export default function AcademiaAdminPage() {
     ...(contentType ? { 'Content-Type': contentType } : {}),
   });
 
-  const fetchCourses = async () => {
+  const fetchCourses = useCallback(async () => {
     try {
       setLoading(true);
       const headers = getBffHeaders();
       const response = await fetch('/api/admin/academy/courses', { headers });
       
       if (!response.ok) {
-        throw new Error('Error al cargar cursos');
+        throw new Error(`No se pudieron consultar los cursos (HTTP ${response.status}).`);
       }
       
       const data = await response.json();
-      // El backend devuelve un array plano; si alguna vez devuelve otra cosa
-      // (p. ej. {error}), degradamos a lista vacia en vez de romper el render.
-      setCourses(Array.isArray(data) ? data : []);
+      if (!Array.isArray(data)) {
+        throw new Error('La respuesta de cursos no tiene el formato esperado.');
+      }
+      setCourses(data);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido');
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchCourses();
-  }, []);
+  }, [fetchCourses]);
 
   const handleDelete = async (courseId: string) => {
     if (!window.confirm('¿Estás seguro de eliminar este curso? Esta acción no se puede deshacer.')) return;
@@ -88,7 +86,7 @@ export default function AcademiaAdminPage() {
       if (!response.ok) throw new Error('Error al eliminar');
       
       fetchCourses();
-    } catch (err) {
+    } catch {
       alert('Error al eliminar el curso');
     }
   };
@@ -102,6 +100,7 @@ export default function AcademiaAdminPage() {
   });
 
   const categories = [...new Set(courses.map(c => c.category))];
+  const metricsAvailable = !loading && !error;
 
   if (user?.rol !== 'ADMIN') {
     return (
@@ -136,28 +135,28 @@ export default function AcademiaAdminPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard 
           title="Total Cursos" 
-          value={courses.length} 
+          value={metricsAvailable ? courses.length : null}
           icon={BookOpen} 
           color="bg-rose-500" 
           bgColor="bg-rose-50" 
         />
         <StatCard 
           title="Prestadores Inscritos" 
-          value={courses.reduce((sum, c) => sum + (c.enrolled_providers || 0), 0)} 
+          value={metricsAvailable ? courses.reduce((sum, c) => sum + (c.enrolled_providers || 0), 0) : null}
           icon={Users} 
           color="bg-blue-500" 
           bgColor="bg-blue-50" 
         />
         <StatCard 
           title="Certificados Emitidos" 
-          value={courses.reduce((sum, c) => sum + (c.certificates_issued || 0), 0)} 
+          value={metricsAvailable ? courses.reduce((sum, c) => sum + (c.certificates_issued || 0), 0) : null}
           icon={Award} 
           color="bg-amber-500" 
           bgColor="bg-amber-50" 
         />
         <StatCard 
           title="Total Lecciones" 
-          value={courses.reduce((sum, c) => sum + (c.lessons_count || 0), 0)} 
+          value={metricsAvailable ? courses.reduce((sum, c) => sum + (c.lessons_count || 0), 0) : null}
           icon={FileText} 
           color="bg-emerald-500" 
           bgColor="bg-emerald-50" 
@@ -335,7 +334,7 @@ export default function AcademiaAdminPage() {
 
 interface StatCardProps {
   title: string;
-  value: number;
+  value: number | null;
   icon: React.ComponentType<{ size?: number; className?: string }>;
   color: string;
   bgColor: string;
@@ -349,7 +348,7 @@ function StatCard({ title, value, icon: Icon, color, bgColor }: StatCardProps) {
       </div>
       <div>
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{title}</p>
-        <p className="text-2xl font-bold text-gray-900 mt-1">{value.toLocaleString('es-CO')}</p>
+        <p className="text-2xl font-bold text-gray-900 mt-1">{value === null ? '—' : value.toLocaleString('es-CO')}</p>
       </div>
     </div>
   );
