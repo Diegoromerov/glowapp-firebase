@@ -1970,10 +1970,11 @@ async function updateEnvioStatus(req, res) {
       });
 
       // Llamar Envíame para generar etiqueta
-      const { enviameClient } = require('../services/enviameClient');
-    
-      // Primero obtener rates
-      const rates = await enviameClient.getRates({
+            const { EnviameClient } = require('../services/enviameClient');
+            const providerEnviameClient = new EnviameClient({ pool: client });
+
+            // Primero obtener rates
+            const rates = await providerEnviameClient.getRates({
         origin: { 
           city: origen.dane_code, 
           state: _departamentoToDaneState(origen.departamento), 
@@ -2006,7 +2007,7 @@ async function updateEnvioStatus(req, res) {
       }
 
       // Generar etiqueta
-      const labelResult = await enviameClient.generateLabel({
+            const labelResult = await providerEnviameClient.generateLabel({
         rate_id: bestRate.rate_id,
         reference: `order_${orderId}`,
         metadata: { provider_id: providerId, order_id: orderId }
@@ -2110,8 +2111,9 @@ async function updateEnvioStatus(req, res) {
       }
 
       // Solicitar recolección a Envíame
-      const { enviameClient } = require('../services/enviameClient');
-      const pickupResult = await enviameClient.schedulePickup({
+            const { EnviameClient } = require('../services/enviameClient');
+            const providerEnviameClient = new EnviameClient({ pool: client });
+            const pickupResult = await providerEnviameClient.schedulePickup({
         tracking_number: envio.guia,
         pickup_address: {
           city: envio.origen_dane_code,

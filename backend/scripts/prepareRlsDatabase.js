@@ -91,7 +91,9 @@ const MIGRACIONES_BASE_NUEVA = [
   '153_prestador_rut_revision.sql',
     '154_estado_operativo_proveedor.sql',
     '155_vitrina_publica_proveedor.sql',
-    '166_seed_insumos_b2b.sql',
+      '166_seed_insumos_b2b.sql',
+            '167_municipios_dane.sql',
+            '168_seed_carrier_routing.sql',
     '125_usuario_lookup_sin_contexto.sql',
     '127_review_aspectos.sql',
     '128_usuario_fcm_token.sql',
@@ -183,7 +185,9 @@ const MIGRACIONES_ARRANQUE = [
   '153_prestador_rut_revision.sql',
     '154_estado_operativo_proveedor.sql',
     '155_vitrina_publica_proveedor.sql',
-    '166_seed_insumos_b2b.sql',
+      '166_seed_insumos_b2b.sql',
+            '167_municipios_dane.sql',
+            '168_seed_carrier_routing.sql',
 
     '125_usuario_lookup_sin_contexto.sql',
 

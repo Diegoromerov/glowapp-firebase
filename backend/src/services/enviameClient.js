@@ -10,6 +10,7 @@ class EnviameClient {
     this.apiKey = options.apiKey || process.env.ENVIAME_API_KEY;
     this.webhookSecret = options.webhookSecret || process.env.ENVIAME_WEBHOOK_SECRET;
     this.timeout = options.timeout || 30000;
+    this.pool = options.pool || null; // Pool de BD para routing rules y municipios_dane
     
     this._mockMode = !this.apiKey || this.apiKey.includes('placeholder') || this.apiKey === 'mock';
     
@@ -19,9 +20,9 @@ class EnviameClient {
   }
 
   // ────────────────────────────────────────────────────────────────────────
-  // 1. VALIDACIÓN DE DIRECCIONES (DANE codes)
+  // 1. VALIDACIÓN DE DIRECCIONES (DANE codes) — usa municipios_dane table
   // ────────────────────────────────────────────────────────────────────────
-  
+
   /**
    * Valida y normaliza una dirección colombiana, retorna código DANE
    * @param {Object} params
@@ -30,11 +31,38 @@ class EnviameClient {
    * @param {string} params.country - Siempre 'CO'
    * @param {string} params.postal_code - Código postal 6 dígitos
    * @param {string} params.street - Dirección completa
-   * @returns {Promise<Object>} { valid, dane_code, normalized_address, city, state }
+   * @returns {Promise<Object>} { valid, dane_code, normalized_address, city, state, zona_envio_id }
    */
   async validateAddress({ city, state, country = 'CO', postal_code, street }) {
+    // Try DB lookup first (municipios_dane table)
+    if (this.pool) {
+      try {
+        const normalizedCity = this._normalizeText(city);
+        const res = await this.pool.query(
+          `SELECT dane_code, nombre, departamento_codigo, zona_envio_id 
+           FROM municipios_dane 
+           WHERE lower(nombre) = $1 AND activo = true
+           LIMIT 1`,
+          [normalizedCity]
+        );
+        if (res.rows.length > 0) {
+          return {
+            valid: true,
+            dane_code: res.rows[0].dane_code,
+            normalized_address: street,
+            city: res.rows[0].nombre,
+            state: res.rows[0].departamento_codigo,
+            country: 'CO',
+            zona_envio_id: res.rows[0].zona_envio_id
+          };
+        }
+      } catch (err) {
+        console.warn('[ENVIAMAE] DB lookup failed, falling back to mock:', err.message);
+      }
+    }
+
     if (this._mockMode) {
-      // Mock: retorna DANE codes conocidos para ciudades principales
+      // Mock fallback: DANE codes conocidos para ciudades principales
       const daneMap = {
         'bogota': '11001',
         'medellin': '05001',
@@ -54,7 +82,8 @@ class EnviameClient {
         normalized_address: street,
         city: city,
         state: state,
-        country: 'CO'
+        country: 'CO',
+        zona_envio_id: null
       };
     }
 
@@ -71,6 +100,23 @@ class EnviameClient {
    * @returns {Promise<Object>} { city, dane_code, state }
    */
   async locateColombiaCity(city, state) {
+    if (this.pool) {
+      try {
+        const res = await this.pool.query(
+          `SELECT dane_code, nombre, departamento_codigo 
+           FROM municipios_dane 
+           WHERE lower(nombre) = $1 AND activo = true
+           LIMIT 1`,
+          [this._normalizeText(city)]
+        );
+        if (res.rows.length > 0) {
+          return { city: res.rows[0].nombre, dane_code: res.rows[0].dane_code, state: res.rows[0].departamento_codigo };
+        }
+      } catch (err) {
+        console.warn('[ENVIAMAE] DB locate failed:', err.message);
+      }
+    }
+
     if (this._mockMode) {
       return { city, dane_code: '11001', state };
     }
@@ -79,9 +125,9 @@ class EnviameClient {
   }
 
   // ────────────────────────────────────────────────────────────────────────
-  // 2. COTIZACIÓN MULTI-CARRIER (Rate Shopping)
+  // 2. COTIZACIÓN MULTI-CARRIER (Rate Shopping) — usa shipping_routing_rules
   // ────────────────────────────────────────────────────────────────────────
-  
+
   /**
    * Obtiene cotizaciones de múltiples carriers para una ruta
    * @param {Object} params
@@ -93,53 +139,155 @@ class EnviameClient {
    * @returns {Promise<Array>} [{ carrier, service_code, rate_cop, days_min, days_max, pickup_available, dropoff_available }]
    */
   async getRates({ origin, destination, parcels, value_cop, currency = 'COP' }) {
-    if (this._mockMode) {
-      // Mock: retorna 3 carriers simulados con tarifas basadas en zonas_envio
+    const destDane = destination.city; // DANE code del destino
+    const totalWeight = parcels.reduce((sum, p) => sum + (p.weight_kg || 0.5), 0);
+    const totalValue = value_cop || 0;
+
+    // Try DB routing rules first
+    let routingRules = [];
+    if (this.pool) {
+      try {
+        // Get zona_envio_id from destination municipio
+        const zonaRes = await this.pool.query(
+          `SELECT zona_envio_id FROM municipios_dane WHERE dane_code = $1 AND activo = true`,
+          [destDane]
+        );
+        const zonaId = zonaRes.rows[0]?.zona_envio_id;
+
+        if (zonaId) {
+          const rulesRes = await this.pool.query(
+            `SELECT carrier, carrier_service_code, carrier_account_id, prioridad,
+                    peso_min_kg, peso_max_kg, valor_min_cop, dias_maximos_entrega
+             FROM shipping_routing_rules
+             WHERE zona_id = $1 AND activo = true
+             ORDER BY prioridad`,
+            [zonaId]
+          );
+          routingRules = rulesRes.rows;
+        }
+      } catch (err) {
+        console.warn('[ENVIAMAE] DB routing rules failed:', err.message);
+      }
+    }
+
+    if (this._mockMode || routingRules.length === 0) {
+      // Mock fallback: reglas hardcoded por zona destino
+      const mockRules = {
+        '11001': { carrier: 'inter', service: 'inter_express', base: 12000, days: [1,2] }, // Bogotá
+        '05001': { carrier: 'inter', service: 'inter_express', base: 13000, days: [2,3] }, // Medellín
+        '76001': { carrier: 'coordinadora', service: 'coord_paq', base: 14000, days: [2,3] }, // Cali
+        '08001': { carrier: 'servientrega', service: 'servi_estandar', base: 15000, days: [3,4] }, // Barranquilla
+        '13001': { carrier: 'tcc', service: 'tcc_express', base: 16000, days: [3,4] }, // Cartagena
+        '68001': { carrier: 'inter', service: 'inter_express', base: 14000, days: [3,4] }, // Bucaramanga
+        '66001': { carrier: 'coordinadora', service: 'coord_paq', base: 15000, days: [3,4] }, // Pereira
+        '17001': { carrier: 'servientrega', service: 'servi_estandar', base: 16000, days: [3,5] }, // Manizales
+        '73001': { carrier: 'inter', service: 'inter_express', base: 15000, days: [3,4] }, // Ibagué
+        '50001': { carrier: 'tcc', service: 'tcc_express', base: 18000, days: [3,5] }, // Villavicencio
+      };
+
+      const rule = mockRules[destDane] || { carrier: 'coordinadora', service: 'coord_paq', base: 15000, days: [3,6] };
+      const weightSurcharge = Math.max(0, totalWeight - 1) * 800; // 800 COP/kg extra
+      const valueSurcharge = totalValue > 1000000 ? totalValue * 0.001 : 0; // 0.1% seguro > 1M
+
       return [
         {
-          carrier: 'inter',
-          service_code: 'inter_express',
-          rate_cop: 12000,
-          days_min: 1,
-          days_max: 2,
+          carrier: rule.carrier,
+          service_code: rule.service,
+          rate_cop: Math.round(rule.base + weightSurcharge + valueSurcharge),
+          days_min: rule.days[0],
+          days_max: rule.days[1],
           pickup_available: true,
           dropoff_available: true
         },
         {
-          carrier: 'coordinadora',
-          service_code: 'coord_paq',
-          rate_cop: 10500,
-          days_min: 2,
-          days_max: 3,
+          carrier: 'envia',
+          service_code: 'envia_estandar',
+          rate_cop: Math.round(rule.base + 2000 + weightSurcharge + valueSurcharge),
+          days_min: rule.days[0] + 1,
+          days_max: rule.days[1] + 2,
           pickup_available: true,
           dropoff_available: true
         },
         {
-          carrier: 'servientrega',
-          service_code: 'servi_estandar',
-          rate_cop: 11500,
-          days_min: 2,
-          days_max: 4,
+          carrier: 'envia',
+          service_code: 'envia_economico',
+          rate_cop: Math.round(rule.base - 1000 + weightSurcharge + valueSurcharge),
+          days_min: rule.days[0] + 2,
+          days_max: rule.days[1] + 3,
           pickup_available: true,
           dropoff_available: true
         }
       ];
     }
 
-    const res = await this._fetch('/ship/rate', 'POST', {
-      origin: { ...origin, country: 'CO' },
-      destination: { ...destination, country: 'CO' },
-      parcels,
-      value: value_cop,
-      currency
-    });
-    return res;
+    // Real routing rules from DB
+    const rates = [];
+    for (const rule of routingRules) {
+      // Validate weight range
+      if (rule.peso_min_kg && totalWeight < rule.peso_min_kg) continue;
+      if (rule.peso_max_kg && totalWeight > rule.peso_max_kg) continue;
+      // Validate value range
+      if (rule.valor_min_cop && totalValue < rule.valor_min_cop) continue;
+
+      // Mock rate calculation based on rule (real would call carrier API)
+      const baseRate = this._estimateBaseRate(rule.carrier, rule.carrier_service_code, destDane);
+      const weightSurcharge = Math.max(0, totalWeight - 1) * 800;
+      const valueSurcharge = totalValue > 1000000 ? totalValue * 0.001 : 0;
+
+      rates.push({
+        carrier: rule.carrier,
+        service_code: rule.carrier_service_code,
+        carrier_account_id: rule.carrier_account_id,
+        rate_cop: Math.round(baseRate + weightSurcharge + valueSurcharge),
+        days_min: Math.max(1, rule.dias_maximos_entrega - 1),
+        days_max: rule.dias_maximos_entrega,
+        pickup_available: true,
+        dropoff_available: true
+      });
+    }
+
+    // Always add Envíame fallback options
+    const fallbackBase = rates[0]?.rate_cop || 15000;
+    rates.push(
+      {
+        carrier: 'envia',
+        service_code: 'envia_estandar',
+        rate_cop: Math.round(fallbackBase + 2000),
+        days_min: (rates[0]?.days_max || 3) + 1,
+        days_max: (rates[0]?.days_max || 3) + 2,
+        pickup_available: true,
+        dropoff_available: true
+      },
+      {
+        carrier: 'envia',
+        service_code: 'envia_economico',
+        rate_cop: Math.round(fallbackBase - 1000),
+        days_min: (rates[0]?.days_max || 3) + 2,
+        days_max: (rates[0]?.days_max || 3) + 3,
+        pickup_available: true,
+        dropoff_available: true
+      }
+    );
+
+    return rates;
+  }
+
+  _estimateBaseRate(carrier, serviceCode, destDane) {
+    // Estimaciones base por carrier/servicio (mock para cuando no hay API real)
+    const bases = {
+      'inter': { 'inter_express': 12000, 'inter_estandar': 9000 },
+      'coordinadora': { 'coord_paq': 13000, 'coord_estandar': 10000 },
+      'servientrega': { 'servi_estandar': 11000, 'servi_economico': 8000 },
+      'tcc': { 'tcc_express': 14000, 'tcc_estandar': 11000 },
+      'envia': { 'envia_express': 13000, 'envia_estandar': 10000, 'envia_economico': 7000 }
+    };
+    return bases[carrier]?.[serviceCode] || 12000;
   }
 
   // ────────────────────────────────────────────────────────────────────────
-  // 3. GENERACIÓN DE ETIQUETAS
+  // 3. GENERACIÓN DE ETIQUETAS — usa routing rules para carrier/service
   // ────────────────────────────────────────────────────────────────────────
-  
+
   /**
    * Genera etiqueta de envío (label PDF + ZPL)
    * @param {Object} params
@@ -172,7 +320,7 @@ class EnviameClient {
   // ────────────────────────────────────────────────────────────────────────
   // 4. PROGRAMACIÓN DE RECOLECCIÓN (PICKUP)
   // ────────────────────────────────────────────────────────────────────────
-  
+
   /**
    * Solicita recolección al carrier
    * @param {Object} params
@@ -209,7 +357,7 @@ class EnviameClient {
   // ────────────────────────────────────────────────────────────────────────
   // 5. WEBHOOKS
   // ────────────────────────────────────────────────────────────────────────
-  
+
   /**
    * Verifica firma de webhook Envíame (HMAC SHA256)
    * @param {string|Buffer} payload - Body raw del request
@@ -250,7 +398,7 @@ class EnviameClient {
   // ────────────────────────────────────────────────────────────────────────
   // HELPERS
   // ────────────────────────────────────────────────────────────────────────
-  
+
   async _fetch(path, method = 'GET', body = null) {
     const url = `${this.baseUrl}${path}`;
     const headers = {
