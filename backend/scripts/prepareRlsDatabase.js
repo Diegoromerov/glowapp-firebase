@@ -89,13 +89,14 @@ const MIGRACIONES_BASE_NUEVA = [
   // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
   // así que se aplican igual sobre una base vacía y sobre una ya poblada.
   '153_prestador_rut_revision.sql',
-  '154_estado_operativo_proveedor.sql',
-  '155_vitrina_publica_proveedor.sql',
-'125_usuario_lookup_sin_contexto.sql',
-'127_review_aspectos.sql',
-'128_usuario_fcm_token.sql',
-'129_otp_codigo_cifrado.sql',
-'130_completar_esquema_base_cliente.sql',
+    '154_estado_operativo_proveedor.sql',
+    '155_vitrina_publica_proveedor.sql',
+    '166_seed_insumos_b2b.sql',
+    '125_usuario_lookup_sin_contexto.sql',
+    '127_review_aspectos.sql',
+    '128_usuario_fcm_token.sql',
+    '129_otp_codigo_cifrado.sql',
+    '130_completar_esquema_base_cliente.sql',
 // 135: horario de atención del prestador. Sin ella /api/providers fallaba con
 // «column p.active_start_hour does not exist» en toda base creada desde la cadena.
 '135_horario_atencion_prestador.sql',
@@ -180,18 +181,19 @@ const MIGRACIONES_ARRANQUE = [
   // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
   // así que se aplican igual sobre una base vacía y sobre una ya poblada.
   '153_prestador_rut_revision.sql',
-  '154_estado_operativo_proveedor.sql',
-  '155_vitrina_publica_proveedor.sql',
+    '154_estado_operativo_proveedor.sql',
+    '155_vitrina_publica_proveedor.sql',
+    '166_seed_insumos_b2b.sql',
 
-  '125_usuario_lookup_sin_contexto.sql',
+    '125_usuario_lookup_sin_contexto.sql',
 
-  '127_review_aspectos.sql',
+    '127_review_aspectos.sql',
 
-  '128_usuario_fcm_token.sql',
+    '128_usuario_fcm_token.sql',
 
-  '129_otp_codigo_cifrado.sql',
+    '129_otp_codigo_cifrado.sql',
 
-  // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
+    // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
 
   // producción las tenía por script manual, la cadena no las creaba.
 
