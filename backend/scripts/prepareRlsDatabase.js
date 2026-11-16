@@ -329,6 +329,28 @@ async function main() {
       process.exit(1);
     }
 
+    // ── 1a. Roles RLS (ANTES de migrar) ────────────────────────────────────
+    // Varias migraciones hacen CREATE POLICY ... TO app_rls_user, y PostgreSQL
+    // exige que ese rol exista en el momento de la sentencia. El entrypoint los
+    // crea con setupRlsRole.sql, pero el job de CI corre solo este script y una
+    // base vacía no tiene roles: aquí se garantizan. Solo el rol: los GRANT
+    // sobre tablas van en el paso 2, cuando las tablas ya existen.
+    console.log('👤 Asegurando los roles RLS antes de migrar...');
+    await cliente.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_rls_user') THEN
+          CREATE ROLE app_rls_user LOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE NOINHERIT;
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_system') THEN
+          CREATE ROLE app_system NOLOGIN NOSUPERUSER BYPASSRLS NOCREATEDB NOCREATEROLE NOINHERIT;
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_owner') THEN
+          CREATE ROLE app_owner LOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE NOINHERIT;
+        END IF;
+      END $$;
+    `);
+
     for (const nombre of migracionesPara(baseVacia)) {
       if (nombre === 'init.sql' && !baseVacia) {
         console.log('   ⏭️  init.sql omitido — no es idempotente y el esquema ya existe.');
