@@ -15,9 +15,9 @@ CREATE TABLE IF NOT EXISTS municipios_dane (
   creado_en TIMESTAMPTZ DEFAULT NOW()
 );
 
-CREATE INDEX idx_municipios_dane_code ON municipios_dane(dane_code);
-CREATE INDEX idx_municipios_dane_depto ON municipios_dane(departamento_codigo);
-CREATE INDEX idx_municipios_dane_zona ON municipios_dane(zona_envio_id) WHERE zona_envio_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_municipios_dane_code ON municipios_dane(dane_code);
+CREATE INDEX IF NOT EXISTS idx_municipios_dane_depto ON municipios_dane(departamento_codigo);
+CREATE INDEX IF NOT EXISTS idx_municipios_dane_zona ON municipios_dane(zona_envio_id) WHERE zona_envio_id IS NOT NULL;
 
 -- RLS
 ALTER TABLE municipios_dane ENABLE ROW LEVEL SECURITY;
