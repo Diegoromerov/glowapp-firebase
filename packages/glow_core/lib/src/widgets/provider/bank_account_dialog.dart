@@ -290,7 +290,6 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   TextFormField(
                     controller: _authorizationCodeController,
                     keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     maxLength: 6,
                     decoration: const InputDecoration(
                       labelText: 'Código enviado al correo verificado',
