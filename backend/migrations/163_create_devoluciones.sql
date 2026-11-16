@@ -84,11 +84,13 @@ ALTER TABLE devoluciones ENABLE ROW LEVEL SECURITY;
 ALTER TABLE devoluciones FORCE ROW LEVEL SECURITY;
 
 -- Cliente ve sus devoluciones
+DROP POLICY IF EXISTS devoluciones_cliente_own ON devoluciones;
 CREATE POLICY devoluciones_cliente_own ON devoluciones
   FOR SELECT TO app_rls_user
   USING (solicitante_id = current_setting('app.current_user_id', true)::int);
 
 -- Proveedor/salón ve devoluciones de sus pedidos
+DROP POLICY IF EXISTS devoluciones_proveedor_own ON devoluciones;
 CREATE POLICY devoluciones_proveedor_own ON devoluciones
   FOR SELECT TO app_rls_user
   USING (
@@ -97,12 +99,14 @@ CREATE POLICY devoluciones_proveedor_own ON devoluciones
   );
 
 -- Admin ve todo
+DROP POLICY IF EXISTS devoluciones_admin_all ON devoluciones;
 CREATE POLICY devoluciones_admin_all ON devoluciones
   FOR ALL TO app_rls_user
   USING (current_setting('app.current_role', true) = 'admin')
   WITH CHECK (current_setting('app.current_role', true) = 'admin');
 
 -- Sistema (jobs, webhooks) tenant de plataforma
+DROP POLICY IF EXISTS devoluciones_system_all ON devoluciones;
 CREATE POLICY devoluciones_system_all ON devoluciones
   FOR ALL TO app_rls_user
   USING (tenant_id = current_setting('app.platform_tenant_id', true)::int)

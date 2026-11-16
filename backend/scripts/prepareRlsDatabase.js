@@ -91,16 +91,6 @@ const MIGRACIONES_BASE_NUEVA = [
   '153_prestador_rut_revision.sql',
       '154_estado_operativo_proveedor.sql',
       '155_vitrina_publica_proveedor.sql',
-    // Logística Fase 1-4 (D-GL-029/030/033/035): zonas, envíos, carrier accounts, routing, devoluciones, webhooks
-    '094_create_zonas_envio.sql',
-    '160_extend_envios_multi_carrier.sql',
-    '161_create_carrier_accounts.sql',
-    '162_create_shipping_routing_rules.sql',
-    '163_create_devoluciones.sql',
-    '164_extend_webhook_events_envia.sql',
-        '166_seed_insumos_b2b.sql',
-              '167_municipios_dane.sql',
-              '168_seed_carrier_routing.sql',
       '125_usuario_lookup_sin_contexto.sql',
     '127_review_aspectos.sql',
     '128_usuario_fcm_token.sql',
@@ -110,7 +100,23 @@ const MIGRACIONES_BASE_NUEVA = [
 // «column p.active_start_hour does not exist» en toda base creada desde la cadena.
 '135_horario_atencion_prestador.sql',
 // 136: contrato de tipo de services.id (uuid como produccion). Solo verifica.
-'136_services_uuid_contract.sql',];
+'136_services_uuid_contract.sql',
+  // ── Logística Fase 1-4 (D-GL-029/030/033/035) ──────────────────────────
+  // Orden obligatorio: 092 crea envios, 094 crea zonas_envio, 161 crea
+  // carrier_accounts (160 le agrega la FK), 162 routing rules, 163 devoluciones
+  // (FK a envios), 164 extiende webhook_events (tabla de 130), 167 DANE, 168 seeds.
+  // Todas idempotentes: van también en MIGRACIONES_ARRANQUE para bases ya pobladas.
+  '092_add_envios_and_estado_timestamps.sql',
+  '094_create_zonas_envio.sql',
+  '161_create_carrier_accounts.sql',
+  '160_extend_envios_multi_carrier.sql',
+  '162_create_shipping_routing_rules.sql',
+  '163_create_devoluciones.sql',
+  '164_extend_webhook_events_envia.sql',
+  '166_seed_insumos_b2b.sql',
+  '167_municipios_dane.sql',
+  '168_seed_carrier_routing.sql',
+];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
 // Se aplica en CADA arranque, sobre una base que ya tiene datos. Solo puede
@@ -192,16 +198,6 @@ const MIGRACIONES_ARRANQUE = [
     '153_prestador_rut_revision.sql',
       '154_estado_operativo_proveedor.sql',
       '155_vitrina_publica_proveedor.sql',
-    // Logística Fase 1-4 (D-GL-029/030/033/035): zonas, envíos, carrier accounts, routing, devoluciones, webhooks
-    '094_create_zonas_envio.sql',
-    '160_extend_envios_multi_carrier.sql',
-    '161_create_carrier_accounts.sql',
-    '162_create_shipping_routing_rules.sql',
-    '163_create_devoluciones.sql',
-    '164_extend_webhook_events_envia.sql',
-        '166_seed_insumos_b2b.sql',
-              '167_municipios_dane.sql',
-              '168_seed_carrier_routing.sql',
 
       '125_usuario_lookup_sin_contexto.sql',
 
@@ -220,6 +216,23 @@ const MIGRACIONES_ARRANQUE = [
   // 136 solo verifica que services.id sea uuid (no convierte ni escribe).
 
   '136_services_uuid_contract.sql',
+  // ── Logística Fase 1-4 (D-GL-029/030/033/035) ──────────────────────────
+  // Orden obligatorio: 092 crea envios, 094 crea zonas_envio, 161 crea
+  // carrier_accounts (160 le agrega la FK), 162 routing rules, 163 devoluciones
+  // (FK a envios), 164 extiende webhook_events (tabla de 130), 167 DANE, 168 seeds.
+  // Todas idempotentes: van también en MIGRACIONES_ARRANQUE para bases ya pobladas.
+  '130_completar_esquema_base_cliente.sql',
+  '092_add_envios_and_estado_timestamps.sql',
+  '094_create_zonas_envio.sql',
+  '161_create_carrier_accounts.sql',
+  '160_extend_envios_multi_carrier.sql',
+  '162_create_shipping_routing_rules.sql',
+  '163_create_devoluciones.sql',
+  '164_extend_webhook_events_envia.sql',
+  '166_seed_insumos_b2b.sql',
+  '167_municipios_dane.sql',
+  '168_seed_carrier_routing.sql',
+
 
 ];
 /// Lista que corresponde según el estado de la base.

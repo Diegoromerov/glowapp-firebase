@@ -4,6 +4,27 @@
 -- La tabla webhook_events ya existe (creada en migración anterior para Wompi)
 -- Añadimos campos específicos para Envíame y mejoramos idempotencia
 
+-- 0. El CHECK original solo admitía los webhooks de pago ('stripe','wompi');
+--    sin ensancharlo, cualquier evento de carrier falla al registrarse.
+--    Se localiza el constraint por definición (no por nombre) para no depender
+--    de cómo lo nombró la base, y se vuelve a crear con la lista completa.
+DO $$
+DECLARE c record;
+BEGIN
+  FOR c IN
+    SELECT conname
+      FROM pg_constraint
+     WHERE conrelid = 'webhook_events'::regclass
+       AND contype = 'c'
+       AND pg_get_constraintdef(oid) ILIKE '%provider%'
+  LOOP
+    EXECUTE format('ALTER TABLE webhook_events DROP CONSTRAINT %I', c.conname);
+  END LOOP;
+
+  ALTER TABLE webhook_events ADD CONSTRAINT webhook_events_provider_check
+    CHECK (provider IN ('stripe','wompi','envia','inter','coordinadora','servientrega','tcc','envia_472'));
+END $$;
+
 ALTER TABLE webhook_events
   ADD COLUMN IF NOT EXISTS provider VARCHAR(50) NOT NULL DEFAULT 'wompi',  -- 'wompi', 'envia', 'inter', 'coordinadora', etc.
   ADD COLUMN IF NOT EXISTS evento_tipo VARCHAR(100),                        -- 'shipment.status_update', 'pickup.scheduled', etc.

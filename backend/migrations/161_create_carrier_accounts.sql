@@ -55,12 +55,14 @@ ALTER TABLE carrier_accounts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE carrier_accounts FORCE ROW LEVEL SECURITY;
 
 -- Políticas: solo admin y sistema pueden leer/escribir
+DROP POLICY IF EXISTS carrier_accounts_admin_all ON carrier_accounts;
 CREATE POLICY carrier_accounts_admin_all ON carrier_accounts
   FOR ALL TO app_rls_user
   USING (current_setting('app.current_role', true) = 'admin')
   WITH CHECK (current_setting('app.current_role', true) = 'admin');
 
 -- Sistema (jobs, webhooks) usa tenant de plataforma
+DROP POLICY IF EXISTS carrier_accounts_system_all ON carrier_accounts;
 CREATE POLICY carrier_accounts_system_all ON carrier_accounts
   FOR ALL TO app_rls_user
   USING (current_setting('app.tenant_id', true) = current_setting('app.platform_tenant_id', true))

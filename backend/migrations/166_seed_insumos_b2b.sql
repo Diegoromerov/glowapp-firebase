@@ -31,8 +31,11 @@ BEGIN
 
   -- 3. Insertar insumos B2B (tipo_visibilidad = INSUMO_PRESTADOR)
   -- Estos productos NO aparecen en retail (lista cliente)
+  -- Idempotente: productos no tiene UNIQUE(nombre), así que ON CONFLICT DO NOTHING
+  -- nunca disparaba y cada arranque duplicaba los 21 insumos. Se guarda con NOT EXISTS.
   INSERT INTO productos (nombre, descripcion, precio, precio_al_publico, precio_con_reserva, precio_prestador, comision_prestador, stock, imagen_url, tag_especialidad, tipo_visibilidad, tenant_id)
-  VALUES 
+  SELECT v.nombre, v.descripcion, v.precio, v.precio_al_publico, v.precio_con_reserva, v.precio_prestador, v.comision_prestador, v.stock, v.imagen_url, v.tag_especialidad, v.tipo_visibilidad, v.tenant_id
+  FROM (VALUES 
     -- Estética / Depilación
     ('Cera Elástica de Miel (1kg)', 'Cera elástica profesional con extracto de miel orgánica. Ideal para depilación de zonas sensibles, alta elasticidad y bajo punto de fusión.', 45000.00, 0.00, 0.00, 45000.00, 0.00, 100, 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=300&auto=format&fit=crop', 'Estética', 'INSUMO_PRESTADOR', v_platform_tenant_id),
     ('Cera Roll-On Miel (100ml x 6)', 'Cartucho roll-on de cera tibia de miel. Formato higiénico, listo para calentar y aplicar. Pack 6 unidades.', 32000.00, 0.00, 0.00, 32000.00, 0.00, 80, 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=300&auto=format&fit=crop', 'Estética', 'INSUMO_PRESTADOR', v_platform_tenant_id),
@@ -66,7 +69,13 @@ BEGIN
     ('Guantes Nitrilo Negro Sin Polvo (Caja 100)', 'Gramaje 4.5g, textura micro-rugosa, ambidiestros, talla M/L/XL mixtos. Caja dispensadora.', 35000.00, 0.00, 0.00, 35000.00, 0.00, 200, 'https://images.unsplash.com/photo-1584030373211-0b4b6b0e4a2e?q=80&w=300&auto=format&fit=crop', 'Estética', 'INSUMO_PRESTADOR', v_platform_tenant_id),
     ('Batas Desechables TNT (Pack 50)', 'Manga larga, puños elásticos, cierre velcro cuello, gramaje 35g/m2. Talla única universal.', 42000.00, 0.00, 0.00, 42000.00, 0.00, 150, 'https://images.unsplash.com/photo-1584030373211-0b4b6b0e4a2e?q=80&w=300&auto=format&fit=crop', 'Estética', 'INSUMO_PRESTADOR', v_platform_tenant_id),
     ('Camasillas Camilla Desechables (Roll x 50)', 'Papel 2 capas + PE impermeable 50x80cm. Perforadas, hipoalergénicas. Roll 50 unidades.', 28000.00, 0.00, 0.00, 28000.00, 0.00, 180, 'https://images.unsplash.com/photo-1584030373211-0b4b6b0e4a2e?q=80&w=300&auto=format&fit=crop', 'Estética', 'INSUMO_PRESTADOR', v_platform_tenant_id)
-  ON CONFLICT DO NOTHING;
+  ) AS v(nombre, descripcion, precio, precio_al_publico, precio_con_reserva, precio_prestador, comision_prestador, stock, imagen_url, tag_especialidad, tipo_visibilidad, tenant_id)
+  WHERE NOT EXISTS (
+    SELECT 1 FROM productos p
+    WHERE p.nombre = v.nombre
+      AND p.tipo_visibilidad = v.tipo_visibilidad
+      AND p.tenant_id = v.tenant_id
+  );
 
   -- 4. Poblar precios_producto para lista PROFESIONAL (precio_prestador = costo base)
   -- y lista NEGOCIO (mismo precio, unidad_minima = 6)

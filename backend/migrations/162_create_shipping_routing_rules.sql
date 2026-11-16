@@ -54,11 +54,13 @@ CREATE TRIGGER trigger_shipping_routing_rules_updated_at
 ALTER TABLE shipping_routing_rules ENABLE ROW LEVEL SECURITY;
 ALTER TABLE shipping_routing_rules FORCE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS shipping_rules_admin_all ON shipping_routing_rules;
 CREATE POLICY shipping_rules_admin_all ON shipping_routing_rules
   FOR ALL TO app_rls_user
   USING (current_setting('app.current_role', true) = 'admin')
   WITH CHECK (current_setting('app.current_role', true) = 'admin');
 
+DROP POLICY IF EXISTS shipping_rules_system_all ON shipping_routing_rules;
 CREATE POLICY shipping_rules_system_all ON shipping_routing_rules
   FOR ALL TO app_rls_user
   USING (current_setting('app.tenant_id', true) = current_setting('app.platform_tenant_id', true))
