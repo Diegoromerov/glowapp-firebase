@@ -123,13 +123,17 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
           throw Exception('No se pudo iniciar la autorización de seguridad.');
         }
         if (!mounted) return;
+        final otpPrueba = response['modo_prueba'] == true
+            ? response['otp_dev']?.toString()
+            : null;
         setState(() {
           _authorizationId = response['challenge_id'].toString();
           _maskedEmail = response['correo_enmascarado']?.toString();
           _passwordController.clear();
           _googleIdToken = null;
-          _errorMessage =
-              'Enviamos un código a ${_maskedEmail ?? 'tu correo verificado'}. Ingrésalo para confirmar esta cuenta.';
+          _errorMessage = otpPrueba != null
+              ? 'Código de prueba de staging: $otpPrueba. No se envió correo.'
+              : 'Enviamos un código a ${_maskedEmail ?? 'tu correo verificado'}. Ingrésalo para confirmar esta cuenta.';
           _isLoading = false;
         });
         return;
@@ -322,7 +326,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: _errorMessage!.startsWith('Enviamos')
+                      color: (_errorMessage!.startsWith('Enviamos') ||
+                              _errorMessage!.startsWith('Código de prueba'))
                           ? const Color(0xFFE8F5EE)
                           : const Color(0xFFFEE2E2),
                       borderRadius: BorderRadius.circular(8),
@@ -331,7 +336,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       _errorMessage!,
                       style: TextStyle(
                         fontSize: 12,
-                        color: _errorMessage!.startsWith('Enviamos')
+                        color: (_errorMessage!.startsWith('Enviamos') ||
+                                _errorMessage!.startsWith('Código de prueba'))
                             ? const Color(0xFF047857)
                             : const Color(0xFFDC2626),
                       ),

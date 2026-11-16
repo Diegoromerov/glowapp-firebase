@@ -1189,8 +1189,8 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       );
       return result.rows[0] || null;
     });
-    if (!contacto?.email || contacto.email_verificado !== true) {
-      return res.status(403).json({ error: 'Verifica el correo de tu cuenta antes de cambiar la cuenta de retiro.' });
+    if (!contacto?.email) {
+      return res.status(403).json({ error: 'La cuenta no tiene un correo asociado.' });
     }
 
     // El primer destino se autoriza con el correo verificado: los usuarios
@@ -1207,6 +1207,15 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       return result.rows[0] || null;
     });
     const primeraCuenta = !wallet?.numero_cuenta;
+    const emailPruebaPermitido = String(process.env.PAYOUT_OTP_TEST_EMAIL || '').trim().toLowerCase();
+    const modoOtpPrueba = process.env.RAILWAY_ENVIRONMENT_NAME === 'staging' &&
+      process.env.PAYOUT_OTP_TEST_MODE === 'true' &&
+      primeraCuenta &&
+      emailPruebaPermitido.length > 0 &&
+      String(contacto.email).trim().toLowerCase() === emailPruebaPermitido;
+    if (contacto.email_verificado !== true && !modoOtpPrueba) {
+      return res.status(403).json({ error: 'Verifica el correo de tu cuenta antes de cambiar la cuenta de retiro.' });
+    }
 
     if (!primeraCuenta && contacto.password_hash) {
       if (!currentPassword || !await bcrypt.compare(currentPassword, contacto.password_hash)) {
@@ -1244,9 +1253,11 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       return res.status(403).json({ error: 'La cuenta no tiene un método de verificación disponible. Contacta a soporte.' });
     }
 
-    const transporteReal = Boolean(process.env.BREVO_API_KEY || emailService.initEmailService());
-    if (!transporteReal) {
-      return res.status(503).json({ error: 'La verificación reforzada no está disponible. No se modificó la cuenta.' });
+    if (!modoOtpPrueba) {
+      const transporteReal = Boolean(process.env.BREVO_API_KEY || emailService.initEmailService());
+      if (!transporteReal) {
+        return res.status(503).json({ error: 'La verificación reforzada no está disponible. No se modificó la cuenta.' });
+      }
     }
 
     const codigo = String(crypto.randomInt(0, 1000000)).padStart(6, '0');
@@ -1268,24 +1279,28 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       return result.rows[0];
     });
 
-    try {
-      const enviado = await emailService.sendEmail({
-        to: contacto.email,
-        subject: 'Autoriza el cambio de cuenta de retiro · GlowApp',
-        data: {
-          html: `<p>Hola ${String(contacto.nombre || '').replace(/[&<>"']/g, '')},</p>
-            <p>Solicitaste cambiar la cuenta de retiro por una terminada en <strong>${destino.numero_cuenta.slice(-4)}</strong>.</p>
-            <p>Tu código de autorización es <strong style="font-size:24px;letter-spacing:5px">${codigo}</strong>.</p>
-            <p>Vence en 10 minutos. Si no reconoces la solicitud, ignora este correo y contacta a soporte.</p>`
-        }
-      });
-      if (enviado?.devMode || enviado?.simulated) throw new Error('El proveedor no confirmó el envío del código.');
-    } catch (sendError) {
-      await runAsSystem({ pool }, async (c) => c.query(
-        'UPDATE payout_account_change_challenges SET usado_at = NOW() WHERE id = $1', [challenge.id]
-      ));
-      console.error('[PAYOUT ACCOUNT] No se pudo enviar OTP:', sendError.message);
-      return res.status(503).json({ error: 'No se pudo enviar el código. No se modificó la cuenta.' });
+    if (modoOtpPrueba) {
+      console.info(`[PAYOUT ACCOUNT TEST] Challenge de cuenta creado para allowlist; challenge=${challenge.id}`);
+    } else {
+      try {
+        const enviado = await emailService.sendEmail({
+          to: contacto.email,
+          subject: 'Autoriza el cambio de cuenta de retiro · GlowApp',
+          data: {
+            html: `<p>Hola ${String(contacto.nombre || '').replace(/[&<>"']/g, '')},</p>
+              <p>Solicitaste cambiar la cuenta de retiro por una terminada en <strong>${destino.numero_cuenta.slice(-4)}</strong>.</p>
+              <p>Tu código de autorización es <strong style="font-size:24px;letter-spacing:5px">${codigo}</strong>.</p>
+              <p>Vence en 10 minutos. Si no reconoces la solicitud, ignora este correo y contacta a soporte.</p>`
+          }
+        });
+        if (enviado?.devMode || enviado?.simulated) throw new Error('El proveedor no confirmó el envío del código.');
+      } catch (sendError) {
+        await runAsSystem({ pool }, async (c) => c.query(
+          'UPDATE payout_account_change_challenges SET usado_at = NOW() WHERE id = $1', [challenge.id]
+        ));
+        console.error('[PAYOUT ACCOUNT] No se pudo enviar OTP:', sendError.message);
+        return res.status(503).json({ error: 'No se pudo enviar el código. No se modificó la cuenta.' });
+      }
     }
 
     const [local, dominio] = String(contacto.email).split('@');
@@ -1296,7 +1311,10 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       expira_at: expiraAt,
       correo_enmascarado: correoEnmascarado,
       modalidad: primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO',
-      mensaje: 'Enviamos un código al correo verificado de tu cuenta.'
+      mensaje: modoOtpPrueba
+        ? 'Código de prueba generado para esta cuenta de staging.'
+        : 'Enviamos un código al correo verificado de tu cuenta.',
+      ...(modoOtpPrueba && { otp_dev: codigo, modo_prueba: true })
     });
   } catch (err) {
     console.error('[PAYOUT ACCOUNT] Error creando autorización:', err.message);
