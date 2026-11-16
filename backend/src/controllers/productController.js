@@ -1,12 +1,17 @@
 const { pool } = require('../config/db');
 const { resolverPrecio, rolACodigoLista, conContextoDePlataforma } = require('../services/precioService');
 
-// GET /api/products → Obtener catálogo de productos (filtrado por rol y nivel de precios)
+// GET /api/products → Obtener catálogo de productos (filtrado por audiencia y nivel de precios)
 exports.getProducts = async (req, res) => {
   try {
     const { tag } = req.query;
     const userRole = req.user ? req.user.role : 'client'; // 'client', 'provider', 'salon', 'admin'
     const codigoLista = rolACodigoLista(userRole);
+
+    // Scope deriva de X-App-Audience (no del rol):
+    // client → retail (PUBLICO), provider/salon → B2B (INSUMO_PRESTADOR)
+    const appAudience = req.appAudience || 'client';
+    const tipoVisibilidad = appAudience === 'client' ? 'PUBLICO' : 'INSUMO_PRESTADOR';
 
     const executeGetProducts = async (dbClient) => {
       let query = `
@@ -18,11 +23,12 @@ exports.getProducts = async (req, res) => {
         WHERE lp.codigo = $1
           AND lp.estado = 'ACTIVA'
           AND pp.precio IS NOT NULL
+          AND p.tipo_visibilidad = $2
       `;
-      const params = [codigoLista];
+      const params = [codigoLista, tipoVisibilidad];
 
       if (tag) {
-        query += ' AND p.tag_especialidad = $2';
+        query += ' AND p.tag_especialidad = $3';
         params.push(tag);
       }
 
@@ -66,6 +72,8 @@ exports.getProductById = async (req, res) => {
   try {
     const productId = req.params.id;
     const userRole = req.user ? req.user.role : 'client';
+    const appAudience = req.appAudience || 'client';
+    const tipoVisibilidadEsperado = appAudience === 'client' ? 'PUBLICO' : 'INSUMO_PRESTADOR';
 
     const executeGetProductById = async (dbClient) => {
       const { rows } = await dbClient.query(
@@ -79,7 +87,12 @@ exports.getProductById = async (req, res) => {
 
       const product = rows[0];
 
-      // Resolver precio por nivel de comprador
+      // Validar que el producto pertenece al scope de la audiencia
+      if (product.tipo_visibilidad !== tipoVisibilidadEsperado) {
+        return res.status(404).json({ error: 'Producto no disponible para tu nivel de acceso' });
+      }
+
+      // Resolver precio por nivel de comprador (lista según rol)
       const resPrecio = await resolverPrecio({
         rol: userRole,
         productoId: product.id,
@@ -87,7 +100,11 @@ exports.getProductById = async (req, res) => {
       });
 
       if (resPrecio.estado === 'sin_precio' || resPrecio.precio === null || resPrecio.precio === undefined) {
-        return res.status(403).json({ error: 'No tienes acceso a este producto' });
+        return res.status(409).json({ 
+          error: 'Sin tarifa para tu nivel', 
+          nivel: resPrecio.lista || rolACodigoLista(userRole),
+          tipo_visibilidad: product.tipo_visibilidad
+        });
       }
 
       const responseData = {

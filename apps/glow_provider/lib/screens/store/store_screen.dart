@@ -1048,19 +1048,19 @@ class _StoreScreenState extends State<StoreScreen> {
         return Scaffold(
           backgroundColor: bgColor,
           appBar: AppBar(
-            backgroundColor: cardBgColor,
-            elevation: 0.5,
-            iconTheme: IconThemeData(color: textColor),
-            title: Text(
-              'GlowStore Concierge',
-              style: TextStyle(
-                fontFamily: 'CormorantGaramond',
-                fontSize: 22,
-                color: textColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            centerTitle: false,
+                      backgroundColor: cardBgColor,
+                      elevation: 0.5,
+                      iconTheme: IconThemeData(color: textColor),
+                      title: Text(
+                        'Insumos Profesional',
+                        style: TextStyle(
+                          fontFamily: 'CormorantGaramond',
+                          fontSize: 22,
+                          color: textColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      centerTitle: false,
             actions: [
               // Icono Carrito con Badge
               Stack(
@@ -1252,15 +1252,39 @@ class _StoreScreenState extends State<StoreScreen> {
                                   ),
                                 ),
                                 // Cuadrícula de Productos
-                                Expanded(
-                                  child: _filteredProducts.isEmpty
-                                      ? const Center(
-                                          child: Text(
-                                            'No se encontraron productos disponibles.',
-                                            style: TextStyle(color: Colors.grey),
-                                          ),
-                                        )
-                                      : GridView.builder(
+                                                                Expanded(
+                                                                  child: _filteredProducts.isEmpty
+                                                                      ? Center(
+                                                                          child: Column(
+                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                            children: [
+                                                                              Icon(
+                                                                                Icons.inventory_2_outlined,
+                                                                                size: 64,
+                                                                                color: Colors.grey.shade400,
+                                                                              ),
+                                                                              const SizedBox(height: 16),
+                                                                              Text(
+                                                                                'No hay insumos disponibles',
+                                                                                style: TextStyle(
+                                                                                  fontSize: 18,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  color: Colors.grey.shade600,
+                                                                                ),
+                                                                              ),
+                                                                              const SizedBox(height: 8),
+                                                                              Text(
+                                                                                'Esta vitrina muestra insumos para profesionales (tipo INSUMO_PRESTADOR).\nCuando el catálogo B2B esté poblado, aparecerán aquí.',
+                                                                                textAlign: TextAlign.center,
+                                                                                style: TextStyle(
+                                                                                  fontSize: 13,
+                                                                                  color: Colors.grey.shade500,
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        )
+                                                                      : GridView.builder(
                                           padding: const EdgeInsets.all(24),
                                           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                                             maxCrossAxisExtent: 260,

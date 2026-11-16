@@ -87,6 +87,15 @@ function calcularCanjePuntos({ puntosSolicitados, totalProductos }) {
 exports.createOrder = async (req, res) => {
   const compradorId = req.user.id;
   const userRole = req.user.role; // 'client', 'provider', 'salon', 'admin'
+  const appAudience = req.appAudience || 'client';
+  
+  // Scope deriva de X-App-Audience (no del rol):
+  // client → retail (lista 'cliente', tipo_visibilidad PUBLICO)
+  // provider/salon → B2B (lista 'profesional'/'negocio', tipo_visibilidad INSUMO_PRESTADOR)
+  const scope = appAudience === 'client' ? 'retail' : 'b2b';
+  const tipoVisibilidadEsperado = scope === 'retail' ? 'PUBLICO' : 'INSUMO_PRESTADOR';
+  const listaParaScope = scope === 'retail' ? 'cliente' : rolACodigoLista(userRole);
+
   const { 
     booking_id, 
     nombre_entrega, 
@@ -123,16 +132,6 @@ exports.createOrder = async (req, res) => {
     await client.query('BEGIN');
 
     // ── Contexto RLS de ESTA conexión ───────────────────────────────────────
-    // `pool.connect()` entrega una conexión cruda: NO hereda el `app.tenant_id`
-    // que el authMiddleware fija sobre el cliente de la petición. Sin contexto,
-    // las políticas de 068 evalúan `tenant_id = NULL` y `productos` devuelve 0
-    // filas: el checkout respondía «Producto con ID X no encontrado» a cualquier
-    // comprador. Se resuelve y se fija en una sola consulta, con el mismo fallback
-    // al inquilino de plataforma que usa el INSERT del pedido.
-    // El inquilino sale del TOKEN, no de una consulta a `usuarios`: esa tabla
-    // también tiene RLS y, sin contexto, la subconsulta devuelve 0 filas — el
-    // ajuste quedaba en cadena vacía y los productos seguían invisibles. Era el
-    // error de la primera versión de este arreglo.
     await client.query(
       `SELECT set_config(
          'app.tenant_id',
@@ -172,11 +171,7 @@ exports.createOrder = async (req, res) => {
       tieneDescuentoReserva = true;
     }
 
-    // Base neta e IVA en CENTAVOS. El precio de lista puede venir CON IVA
-    // (listas_precios.incluye_iva; la lista `cliente` lo incluye). Sumarle 19 % a un
-    // precio que ya lo trae cobraba de mas sobre el precio exhibido (33.880 ->
-    // 40.317) y descuadraba la factura, que siempre asumio base + impuesto + envio
-    // = total (generarFacturaDianPedido).
+    // Base neta e IVA en CENTAVOS.
     let subtotalBaseCent = 0;
     let ivaCent = 0;
     let comisionTotal = 0;
@@ -203,16 +198,25 @@ exports.createOrder = async (req, res) => {
 
       const product = prodRes.rows[0];
 
+      // Validar que el producto pertenece al scope de la audiencia
+      if (product.tipo_visibilidad !== tipoVisibilidadEsperado) {
+        await client.query('ROLLBACK');
+        return res.status(409).json({ 
+          error: 'Producto no disponible para tu nivel de acceso',
+          producto: product.nombre,
+          scope_requerido: scope,
+          tipo_visibilidad: product.tipo_visibilidad
+        });
+      }
+
       // Resolver precio por nivel y validar unidad_minima ANTES de tocar stock
+      // Usamos la lista correspondiente al scope, no al rol del usuario
       let resPrecio;
       try {
         resPrecio = await resolverPrecio({
-          rol: userRole,
+          rol: scope === 'retail' ? 'client' : userRole, // fuerza lista correcta
           productoId: product.id,
           cantidad: cantidad
-          // Sin `dbPool`: `pool.query` se enruta al cliente de la petición, que ya
-          // lleva el `app.tenant_id` del token. El problema era la conexión propia
-          // del pedido, y esa se arregla arriba con set_config.
         });
       } catch (precioErr) {
         if (precioErr.code === 'MINIMO_NO_CUMPLIDO') {
@@ -228,7 +232,12 @@ exports.createOrder = async (req, res) => {
 
       if (!resPrecio || resPrecio.estado === 'sin_precio' || resPrecio.precio === null || resPrecio.precio === undefined) {
         await client.query('ROLLBACK');
-        return res.status(403).json({ error: `No tienes acceso al producto ${product.nombre}` });
+        return res.status(409).json({ 
+          error: 'Sin tarifa para tu nivel',
+          producto: product.nombre,
+          nivel: resPrecio?.lista || listaParaScope,
+          tipo_visibilidad: product.tipo_visibilidad
+        });
       }
 
       // Validar stock
