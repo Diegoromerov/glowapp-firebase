@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/shared/theme.dart' hide AppTheme;
+import 'package:glow_core/widgets/profile/delivery_addresses_section.dart';
 import 'package:glow_core/widgets/provider/fiscal_iva_section.dart';
 import 'package:glow_core/widgets/provider/provider_schedule_dialog.dart';
 import 'package:glow_core/glow_core.dart';
@@ -919,6 +920,15 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
               // Datos fiscales: consulta y cambio de la responsabilidad de IVA
               // declarada a partir del RUT (estado, RUT y origen vienen del servidor).
               const FiscalIvaSection(),
+              const SizedBox(height: 24),
+
+              // GRUPO: DIRECCIONES DE ENTREGA (estructura colombiana)
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: DeliveryAddressesSection(),
+              ),
+              const SizedBox(height: 24),
+
               TextFormField(
                 initialValue: _email,
                 enabled: false,
