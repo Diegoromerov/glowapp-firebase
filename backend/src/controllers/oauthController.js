@@ -70,11 +70,13 @@ exports.googleSignIn = async (req, res) => {
       payload = {
         email: userData.email,
         name: userData.name || userData.email,
-        sub: userData.sub || userData.user_id
+        sub: userData.sub || userData.user_id,
+        email_verified: userData.email_verified
       };
     }
 
     const { email, name, sub: googleId } = payload;
+    const emailVerificadoGoogle = payload.email_verified === true || payload.email_verified === 'true';
     const cleanEmail = email.toLowerCase().trim();
 
     // Buscar si el usuario ya existe
@@ -92,10 +94,10 @@ exports.googleSignIn = async (req, res) => {
       const insertQuery = await tenantRouting
         .runAsSystem({ pool }, (c) =>
           c.query(
-            `INSERT INTO usuarios (nombre, email, auth_provider, provider_id, rol, onboarding_completo) 
-             VALUES ($1, $2, 'GOOGLE', $3, $4, $5) 
+            `INSERT INTO usuarios (nombre, email, auth_provider, provider_id, email_verificado, rol, onboarding_completo)
+             VALUES ($1, $2, 'GOOGLE', $3, $6, $4, $5)
              RETURNING id, nombre, email, rol, auth_provider, provider_id, tenant_id, onboarding_completo`,
-            [name || 'Usuario Google', cleanEmail, googleId, targetRole, onboardingCompleto]
+            [name || 'Usuario Google', cleanEmail, googleId, targetRole, onboardingCompleto, emailVerificadoGoogle]
           )
         )
         .catch(async (e) => {
@@ -113,10 +115,11 @@ exports.googleSignIn = async (req, res) => {
           if (!found.rows.length) throw e;
           const u = found.rows[0];
           await tenantRouting.runAsSystem({ pool }, (c) =>
-            c.query('UPDATE usuarios SET auth_provider = $1, provider_id = $2 WHERE id = $3', [
+            c.query('UPDATE usuarios SET auth_provider = $1, provider_id = $2, email_verificado = email_verificado OR $4 WHERE id = $3', [
               'GOOGLE',
               googleId,
               u.id,
+              emailVerificadoGoogle,
             ])
           );
           return { rows: [{ ...u, auth_provider: 'GOOGLE', provider_id: googleId }] };
@@ -145,11 +148,13 @@ exports.googleSignIn = async (req, res) => {
       // Vincular/actualizar proveedor
       if (user.auth_provider !== 'GOOGLE') {
         await pool.query(
-          'UPDATE usuarios SET auth_provider = $1, provider_id = $2 WHERE id = $3',
-          ['GOOGLE', googleId, user.id]
+          'UPDATE usuarios SET auth_provider = $1, provider_id = $2, email_verificado = email_verificado OR $4 WHERE id = $3',
+          ['GOOGLE', googleId, user.id, emailVerificadoGoogle]
         );
         user.auth_provider = 'GOOGLE';
         user.provider_id = googleId;
+      } else if (emailVerificadoGoogle && user.email_verificado !== true) {
+        await pool.query('UPDATE usuarios SET email_verificado = TRUE WHERE id = $1', [user.id]);
       }
     }
 

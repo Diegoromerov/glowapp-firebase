@@ -4,10 +4,15 @@ import 'package:glow_core/glow_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
-import 'package:glow_core/services/api_service.dart';
-import 'package:glow_core/shared/theme.dart' hide AppTheme;
-import 'package:glow_core/widgets/provider/bank_account_dialog.dart';
+import '../auth/google_signin_button.dart'
+    if (dart.library.js) '../auth/google_signin_button_web.dart' as gis_button;
+
+const _googleReauthClientId = String.fromEnvironment(
+  'GOOGLE_WEB_CLIENT_ID',
+  defaultValue: '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+);
 
 class WalletScreen extends StatefulWidget {
   final bool isEmbedded;
@@ -49,6 +54,49 @@ class _WalletScreenState extends State<WalletScreen>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  bool _isFirstPayoutAccount(Map<String, dynamic> wallet) =>
+      (wallet['numero_cuenta']?.toString().trim().isEmpty ?? true);
+
+  bool _isGoogleOnlyAccount(Map<String, dynamic> wallet) =>
+      wallet['auth_provider']?.toString().toUpperCase() == 'GOOGLE' &&
+      wallet['tiene_password'] != true;
+
+  Widget? _buildGoogleReauthButton(ValueChanged<String> onToken) {
+    final webButton = gis_button.googleSignInButton(
+      clientId: _googleReauthClientId,
+      onCredential: onToken,
+    );
+    if (webButton != null) return webButton;
+
+    return OutlinedButton.icon(
+      icon: const Icon(Icons.login),
+      label: const Text('Volver a confirmar con Google'),
+      onPressed: () async {
+        try {
+          final google = GoogleSignIn(
+            scopes: const ['email', 'openid', 'profile'],
+            serverClientId: _googleReauthClientId,
+          );
+          await google.signOut();
+          final account = await google.signIn();
+          if (account == null) return;
+          final authentication = await account.authentication;
+          final token = authentication.idToken;
+          if (token == null || token.isEmpty) {
+            throw Exception('Google no entregó una credencial válida.');
+          }
+          onToken(token);
+        } catch (error) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('No se pudo confirmar con Google: $error')),
+            );
+          }
+        }
+      },
+    );
   }
 
   Future<void> _cargarWallet() async {
@@ -644,7 +692,12 @@ class _WalletScreenState extends State<WalletScreen>
                                           : (wallet['cuenta_verificada'] != true && !cuentaPendiente)
                                               ? () => showDialog(
                                                     context: context,
-                                                    builder: (_) => BankAccountFormDialog(onSuccess: _cargarWallet),
+                                                    builder: (_) => BankAccountFormDialog(
+                                                      onSuccess: _cargarWallet,
+                                                      isFirstAccount: _isFirstPayoutAccount(wallet),
+                                                      isGoogleOnly: _isGoogleOnlyAccount(wallet),
+                                                      googleReauthBuilder: _buildGoogleReauthButton,
+                                                    ),
                                                   )
                                               : null,
                                       icon: Icon(
@@ -1480,7 +1533,12 @@ class _WalletScreenState extends State<WalletScreen>
                   onPressed: () {
                     showDialog(
                       context: context,
-                      builder: (_) => BankAccountFormDialog(onSuccess: _cargarWallet),
+                      builder: (_) => BankAccountFormDialog(
+                        onSuccess: _cargarWallet,
+                        isFirstAccount: _isFirstPayoutAccount(wallet),
+                        isGoogleOnly: _isGoogleOnlyAccount(wallet),
+                        googleReauthBuilder: _buildGoogleReauthButton,
+                      ),
                     );
                   },
                   icon: const Icon(Icons.edit_outlined, size: 16, color: Color(0xFF10B981)),
@@ -1574,7 +1632,12 @@ class _WalletScreenState extends State<WalletScreen>
                   onPressed: () {
                     showDialog(
                       context: context,
-                      builder: (_) => BankAccountFormDialog(onSuccess: _cargarWallet),
+                      builder: (_) => BankAccountFormDialog(
+                        onSuccess: _cargarWallet,
+                        isFirstAccount: _isFirstPayoutAccount(wallet),
+                        isGoogleOnly: _isGoogleOnlyAccount(wallet),
+                        googleReauthBuilder: _buildGoogleReauthButton,
+                      ),
                     );
                   },
                   style: ElevatedButton.styleFrom(

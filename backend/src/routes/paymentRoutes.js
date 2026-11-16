@@ -19,6 +19,7 @@ const wompiService = require('../services/wompiService');
 const wompiClient = require('../services/wompiClient');
 const wompiPayoutsClient = require('../services/wompiPayoutsClient');
 const { aCentavos, aDecimal, sumarMontos } = require('../utils/money');
+const { OAuth2Client } = require('google-auth-library');
 
 // ─── UTILIDADES ──────────────────────────────────────────────────────────────
 
@@ -803,10 +804,13 @@ router.get('/wallet', authMiddleware, async (req, res) => {
 
     const { rows } = await pool.query(
       `SELECT pw.*,
+              u.auth_provider,
+              (u.password_hash IS NOT NULL) AS tiene_password,
               (SELECT COUNT(*) FROM disputas d
                JOIN bookings b ON d.booking_id = b.id
                WHERE b.provider_id = $1 AND d.estado IN ('ABIERTA','EN_REVISION')) as disputas_activas
        FROM provider_wallet pw
+       JOIN usuarios u ON u.id = pw.provider_id
        WHERE pw.provider_id = $1`,
       [req.user.id]
     );
@@ -1090,8 +1094,8 @@ function normalizarDestinoCuenta(body = {}) {
   };
 }
 
-function hashDestinoCuenta(destino) {
-  return crypto.createHash('sha256').update(JSON.stringify(destino)).digest('hex');
+function hashDestinoCuenta(destino, modalidad = 'CAMBIO') {
+  return crypto.createHash('sha256').update(JSON.stringify({ ...destino, modalidad })).digest('hex');
 }
 
 function hashAutorizacionRetiro(monto, tipoOrigen, wallet) {
@@ -1167,7 +1171,7 @@ router.post('/wallet/withdraw/authorization', authMiddleware, exigirCapacidad(CA
 router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, async (req, res) => {
   if (!await requirePrestador(req, res)) return;
   const currentPassword = String(req.body.current_password || '');
-  if (!currentPassword) return res.status(400).json({ error: 'Confirma tu contraseña actual para iniciar el cambio.' });
+  const googleIdToken = String(req.body.google_id_token || '');
 
   const destino = normalizarDestinoCuenta(req.body);
   if (!destino.numero_cuenta || destino.numero_cuenta.length < 6) {
@@ -1180,7 +1184,7 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
   try {
     const contacto = await runAsSystem({ pool }, async (c) => {
       const result = await c.query(
-        'SELECT email, email_verificado, nombre, password_hash FROM usuarios WHERE id = $1',
+        'SELECT email, email_verificado, nombre, password_hash, auth_provider, provider_id FROM usuarios WHERE id = $1',
         [req.user.id]
       );
       return result.rows[0] || null;
@@ -1188,8 +1192,56 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
     if (!contacto?.email || contacto.email_verificado !== true) {
       return res.status(403).json({ error: 'Verifica el correo de tu cuenta antes de cambiar la cuenta de retiro.' });
     }
-    if (!contacto.password_hash || !await bcrypt.compare(currentPassword, contacto.password_hash)) {
-      return res.status(403).json({ error: 'La contraseña actual no es válida. No se inició el cambio de cuenta.' });
+
+    // El primer destino se autoriza con el correo verificado: los usuarios
+    // federados no tienen necesariamente una contraseña local de GlowApp.
+    const wallet = await runAsSystem({ pool }, async (c) => {
+      await c.query(
+        'INSERT INTO provider_wallet (provider_id) VALUES ($1) ON CONFLICT (provider_id) DO NOTHING',
+        [req.user.id]
+      );
+      const result = await c.query(
+        'SELECT numero_cuenta FROM provider_wallet WHERE provider_id = $1',
+        [req.user.id]
+      );
+      return result.rows[0] || null;
+    });
+    const primeraCuenta = !wallet?.numero_cuenta;
+
+    if (!primeraCuenta && contacto.password_hash) {
+      if (!currentPassword || !await bcrypt.compare(currentPassword, contacto.password_hash)) {
+        return res.status(403).json({ error: 'La contraseña actual no es válida. No se inició el cambio de cuenta.' });
+      }
+    } else if (!primeraCuenta && String(contacto.auth_provider || '').toUpperCase() === 'GOOGLE') {
+      if (!googleIdToken) {
+        return res.status(403).json({ error: 'Confirma tu identidad con Google para cambiar el destino de retiro.', requiere_google: true });
+      }
+      const activeClientId = (process.env.GOOGLE_CLIENT_ID || '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com').trim();
+      const oauthClient = new OAuth2Client(activeClientId);
+      let googlePayload;
+      try {
+        const ticket = await oauthClient.verifyIdToken({
+          idToken: googleIdToken,
+          audience: [
+            activeClientId,
+            '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+            '374223351186-hi0m9k8778gfkg69spbkimgk73t51g5q.apps.googleusercontent.com',
+            '466897054371-qaec2ipcc0pea91obs0ejcb9tene7kma.apps.googleusercontent.com'
+          ].filter(Boolean)
+        });
+        googlePayload = ticket.getPayload();
+      } catch (_) {
+        return res.status(403).json({ error: 'No se pudo confirmar tu sesión de Google. Inténtalo de nuevo.' });
+      }
+      const emitidoAt = Number(googlePayload?.iat || 0) * 1000;
+      const identidadCoincide = String(googlePayload?.email || '').toLowerCase() === String(contacto.email).toLowerCase() &&
+        googlePayload?.email_verified === true &&
+        (!contacto.provider_id || String(googlePayload?.sub || '') === String(contacto.provider_id));
+      if (!identidadCoincide || !emitidoAt || Date.now() - emitidoAt > 5 * 60 * 1000) {
+        return res.status(403).json({ error: 'La confirmación de Google venció o no corresponde a esta cuenta.' });
+      }
+    } else if (!primeraCuenta) {
+      return res.status(403).json({ error: 'La cuenta no tiene un método de verificación disponible. Contacta a soporte.' });
     }
 
     const transporteReal = Boolean(process.env.BREVO_API_KEY || emailService.initEmailService());
@@ -1200,7 +1252,7 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
     const codigo = String(crypto.randomInt(0, 1000000)).padStart(6, '0');
     const codigoHash = await bcrypt.hash(codigo, 10);
     const expiraAt = new Date(Date.now() + 10 * 60 * 1000);
-    const destinoHash = hashDestinoCuenta(destino);
+    const destinoHash = hashDestinoCuenta(destino, primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO');
     const challenge = await runAsSystem({ pool }, async (c) => {
       await c.query(
         `UPDATE payout_account_change_challenges SET usado_at = NOW()
@@ -1236,7 +1288,16 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       return res.status(503).json({ error: 'No se pudo enviar el código. No se modificó la cuenta.' });
     }
 
-    return res.json({ ok: true, challenge_id: challenge.id, expira_at: expiraAt, mensaje: 'Enviamos un código al correo verificado de tu cuenta.' });
+    const [local, dominio] = String(contacto.email).split('@');
+    const correoEnmascarado = `${local.slice(0, 1)}${'•'.repeat(Math.max(3, Math.min(local.length - 1, 6)))}${local.length > 1 ? local.slice(-1) : ''}@${dominio}`;
+    return res.json({
+      ok: true,
+      challenge_id: challenge.id,
+      expira_at: expiraAt,
+      correo_enmascarado: correoEnmascarado,
+      modalidad: primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO',
+      mensaje: 'Enviamos un código al correo verificado de tu cuenta.'
+    });
   } catch (err) {
     console.error('[PAYOUT ACCOUNT] Error creando autorización:', err.message);
     return res.status(500).json({ error: 'No se pudo iniciar la autorización del cambio.' });
@@ -1277,6 +1338,18 @@ const handleSaveBankAccount = async (req, res) => {
     await client.query('BEGIN');
     await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
 
+    // Bloquea el estado del destino mientras se consume el reto. Así un reto
+    // creado para la primera inscripción no puede reutilizarse como cambio.
+    await client.query(
+      'INSERT INTO provider_wallet (provider_id) VALUES ($1) ON CONFLICT (provider_id) DO NOTHING',
+      [req.user.id]
+    );
+    const estadoCuentaRes = await client.query(
+      'SELECT numero_cuenta FROM provider_wallet WHERE provider_id = $1 FOR UPDATE',
+      [req.user.id]
+    );
+    const primeraCuenta = !estadoCuentaRes.rows[0]?.numero_cuenta;
+
     const retoRes = await client.query(
       `SELECT id, codigo_hash, destino_hash, expira_at, intentos_fallidos, usado_at
          FROM payout_account_change_challenges
@@ -1292,7 +1365,7 @@ const handleSaveBankAccount = async (req, res) => {
     const codigoValido = await bcrypt.compare(String(authorization_code), reto.codigo_hash);
     const destinoValido = crypto.timingSafeEqual(
       Buffer.from(reto.destino_hash, 'hex'),
-      Buffer.from(hashDestinoCuenta(destinoNormalizado), 'hex')
+      Buffer.from(hashDestinoCuenta(destinoNormalizado, primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO'), 'hex')
     );
     if (!codigoValido || !destinoValido) {
       await client.query(

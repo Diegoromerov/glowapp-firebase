@@ -6,8 +6,17 @@ import '../../services/api_service.dart';
 
 class BankAccountFormDialog extends StatefulWidget {
   final VoidCallback? onSuccess;
+  final bool isFirstAccount;
+  final bool isGoogleOnly;
+  final Widget? Function(ValueChanged<String> onToken)? googleReauthBuilder;
 
-  const BankAccountFormDialog({super.key, this.onSuccess});
+  const BankAccountFormDialog({
+    super.key,
+    this.onSuccess,
+    this.isFirstAccount = false,
+    this.isGoogleOnly = false,
+    this.googleReauthBuilder,
+  });
 
   @override
   State<BankAccountFormDialog> createState() => _BankAccountFormDialogState();
@@ -25,6 +34,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   final _passwordController = TextEditingController();
   final _authorizationCodeController = TextEditingController();
   String? _authorizationId;
+  String? _googleIdToken;
+  String? _maskedEmail;
 
   bool _isLoading = false;
   String? _errorMessage;
@@ -70,7 +81,15 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   }
 
   Future<void> _handleSubmit() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (_authorizationId == null && !_formKey.currentState!.validate()) return;
+    if (_authorizationId == null &&
+        widget.isGoogleOnly &&
+        _googleIdToken == null) {
+      setState(() =>
+          _errorMessage = 'Confirma tu identidad con Google para continuar.');
+      return;
+    }
+    if (_authorizationId != null && !_formKey.currentState!.validate()) return;
 
     setState(() {
       _isLoading = true;
@@ -93,7 +112,12 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
         final response =
             await ApiService.post('/api/wallet/bank-account/authorization', {
           ...datosCuenta,
-          'current_password': _passwordController.text,
+          if (!widget.isFirstAccount && !widget.isGoogleOnly)
+            'current_password': _passwordController.text,
+          if (!widget.isFirstAccount &&
+              widget.isGoogleOnly &&
+              _googleIdToken != null)
+            'google_id_token': _googleIdToken,
         });
         if (response is! Map || response['challenge_id'] == null) {
           throw Exception('No se pudo iniciar la autorización de seguridad.');
@@ -101,9 +125,11 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
         if (!mounted) return;
         setState(() {
           _authorizationId = response['challenge_id'].toString();
+          _maskedEmail = response['correo_enmascarado']?.toString();
           _passwordController.clear();
+          _googleIdToken = null;
           _errorMessage =
-              'Enviamos un código al correo verificado. Ingrésalo para confirmar esta cuenta.';
+              'Enviamos un código a ${_maskedEmail ?? 'tu correo verificado'}. Ingrésalo para confirmar esta cuenta.';
           _isLoading = false;
         });
         return;
@@ -179,6 +205,21 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                 ),
                 const SizedBox(height: 14),
 
+                if (widget.isFirstAccount && _authorizationId == null) ...[
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE8F5EE),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Text(
+                      'Primera cuenta: no necesitas una contraseña de GlowApp. Confirmaremos el registro con un código enviado a tu correo verificado.',
+                      style: TextStyle(fontSize: 12, color: Color(0xFF047857)),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                ],
+
                 // ─── Preset Quick Bank Selector ──────────────────────────────
                 const Text(
                   'Entidad',
@@ -202,7 +243,9 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                 ),
                 const SizedBox(height: 16),
 
-                if (_authorizationId == null) ...[
+                if (_authorizationId == null &&
+                    !widget.isFirstAccount &&
+                    !widget.isGoogleOnly) ...[
                   TextFormField(
                     controller: _passwordController,
                     obscureText: true,
@@ -215,6 +258,34 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                         ? 'Confirma tu contraseña para continuar'
                         : null,
                   ),
+                ] else if (_authorizationId == null && widget.isGoogleOnly) ...[
+                  const Text(
+                    'Como ingresaste con Google, confirma tu identidad con esa misma cuenta. Después enviaremos un código a tu correo.',
+                    style: TextStyle(fontSize: 12, color: LuxeColors.nude600),
+                  ),
+                  const SizedBox(height: 10),
+                  if (_googleIdToken == null)
+                    widget.googleReauthBuilder?.call((token) {
+                          if (!mounted) return;
+                          setState(() {
+                            _googleIdToken = token;
+                            _errorMessage = null;
+                          });
+                        }) ??
+                        const Text(
+                            'No está disponible la confirmación con Google en este dispositivo.'),
+                  if (_googleIdToken != null)
+                    const Row(
+                      children: [
+                        Icon(Icons.verified_user_outlined,
+                            color: Color(0xFF047857), size: 18),
+                        SizedBox(width: 6),
+                        Text('Identidad de Google confirmada',
+                            style: TextStyle(
+                                color: Color(0xFF047857), fontSize: 12)),
+                      ],
+                    ),
+                  const SizedBox(height: 12),
                 ] else ...[
                   TextFormField(
                     controller: _authorizationCodeController,
@@ -239,6 +310,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                                 _authorizationId = null;
                                 _authorizationCodeController.clear();
                                 _errorMessage = null;
+                                _googleIdToken = null;
                               }),
                       child:
                           const Text('Cambiar datos o solicitar otro código'),
@@ -450,9 +522,13 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                                 color: Colors.white, strokeWidth: 2),
                           )
                         : Text(
-                            _authorizationId == null
-                                ? 'VERIFICAR Y CONTINUAR'
-                                : 'CONFIRMAR CAMBIO DE CUENTA',
+                            _authorizationId != null
+                                ? 'CONFIRMAR Y REGISTRAR CUENTA'
+                                : widget.isFirstAccount
+                                    ? 'ENVIAR CÓDIGO Y CONTINUAR'
+                                    : widget.isGoogleOnly
+                                        ? 'CONFIRMAR CON GOOGLE'
+                                        : 'VERIFICAR IDENTIDAD Y CONTINUAR',
                             style: TextStyle(
                               fontFamily: 'JetBrainsMono',
                               fontSize: 12,
