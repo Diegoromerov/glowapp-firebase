@@ -63,7 +63,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = 'Error de conexión: $e';
+          _error = 'Error de conexión: ${mensajeHumano(e)}';
           _isLoading = false;
         });
       }
@@ -112,7 +112,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
       }
     } catch (e) {
       if (mounted) Navigator.pop(context);
-      _showSnack('Error: $e');
+      _showSnack('Error: ${mensajeHumano(e)}');
     }
   }
 
@@ -152,7 +152,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
       }
     } catch (e) {
       if (mounted) Navigator.pop(context);
-      _showSnack('Error: $e');
+      _showSnack('Error: ${mensajeHumano(e)}');
     }
   }
 
@@ -179,7 +179,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
       }
     } catch (e) {
       if (mounted) Navigator.pop(context);
-      _showSnack('Error: $e');
+      _showSnack('Error: ${mensajeHumano(e)}');
     }
   }
 
@@ -203,7 +203,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
       }
     } catch (e) {
       if (mounted) Navigator.pop(context);
-      _showSnack('Error: $e');
+      _showSnack('Error: ${mensajeHumano(e)}');
     }
   }
 
