@@ -116,6 +116,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '166_seed_insumos_b2b.sql',
   '167_municipios_dane.sql',
   '168_seed_carrier_routing.sql',
+  '169_saneamiento_seeds_logistica.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -232,6 +233,7 @@ const MIGRACIONES_ARRANQUE = [
   '166_seed_insumos_b2b.sql',
   '167_municipios_dane.sql',
   '168_seed_carrier_routing.sql',
+  '169_saneamiento_seeds_logistica.sql',
 
 
 ];
