@@ -74,6 +74,20 @@ router.post('/admin/store/orders/:id/cancel', authMiddleware, requireRol('admin'
 router.get('/admin/envios/:guia', authMiddleware, requireRol('admin'), orderController.getEnvioByGuia);
 router.patch('/admin/envios/:guia/status', authMiddleware, requireRol('admin'), orderController.updateEnvioStatus);
 
+// --- Rutas Provider/Salón: Fulfillment (F1-Logística) ---
+// Proveedor ve sus pedidos por despachar
+router.get('/provider/fulfillment/orders', authMiddleware, orderController.getProviderFulfillmentOrders);
+// Proveedor prepara items (marca listos para etiquetar)
+router.post('/provider/fulfillment/orders/:id/prepare', authMiddleware, orderController.prepareOrderItems);
+// Proveedor genera etiqueta via Envíame
+router.post('/provider/fulfillment/orders/:id/label', authMiddleware, orderController.generateEnvioLabel);
+// Proveedor solicita recolección al carrier
+router.post('/provider/fulfillment/orders/:id/pickup', authMiddleware, orderController.scheduleEnvioPickup);
+// Proveedor marca como despachado (carrier recogió)
+router.post('/provider/fulfillment/orders/:id/dispatch', authMiddleware, orderController.providerDispatchOrder);
+// Proveedor ve detalle de envío con label PDF
+router.get('/provider/fulfillment/envios/:id', authMiddleware, orderController.getProviderEnvioDetail);
+
 // POST /api/biometric/check
 router.post('/biometric/check', authMiddleware, async (req, res) => {
   const { userId, barcode } = req.body;

@@ -489,6 +489,9 @@ const webhookLimiter = rateLimitByIP({
 // Nota: authLimiter ya se aplica dentro de authRoutes.js
 app.use('/api/payments/wompi-webhook', webhookLimiter);
 
+// Webhook Envíame (tracking multi-carrier) — sin rate limiter estricto, validación por HMAC
+app.use('/api/webhooks/envia', require('./src/routes/enviaWebhook'));
+
 // ==========================================
 // SISTEMA DE RUTAS DE LA API (Montajes únicos)
 // ==========================================
@@ -1932,10 +1935,14 @@ if (process.env.NODE_ENV !== 'test') {
     await testConnection();
     await initDatabase();
     // Iniciar jobs de pagos (maduración, retiros automáticos, conciliación)
-    inicializarJobs();
-    // T-111: purga diaria de escaneos que cumplieron el plazo del aviso
-    iniciarRetencionBiometrica();
-    // (WORKERS DESHABILITADOS)
+        inicializarJobs();
+        // T-111: purga diaria de escaneos que cumplieron el plazo del aviso
+        iniciarRetencionBiometrica();
+        // F1-Logística: recovery de pedidos PAGADO sin fulfillment (cada 10 min)
+        const { runFulfillmentRecovery } = require('./src/crons/fulfillmentRecoveryCron');
+        setInterval(runFulfillmentRecovery, 10 * 60 * 1000); // 10 minutos
+        console.log('🔄 Cron fulfillment recovery iniciado (cada 10 min)');
+        // (WORKERS DESHABILITADOS)
     // Inicializar servidor WebSocket compartiendo puerto HTTP
     initWebSocketServer(server);
   });
