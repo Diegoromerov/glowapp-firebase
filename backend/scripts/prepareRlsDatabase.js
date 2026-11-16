@@ -89,12 +89,19 @@ const MIGRACIONES_BASE_NUEVA = [
   // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
   // así que se aplican igual sobre una base vacía y sobre una ya poblada.
   '153_prestador_rut_revision.sql',
-    '154_estado_operativo_proveedor.sql',
-    '155_vitrina_publica_proveedor.sql',
-      '166_seed_insumos_b2b.sql',
-            '167_municipios_dane.sql',
-            '168_seed_carrier_routing.sql',
-    '125_usuario_lookup_sin_contexto.sql',
+      '154_estado_operativo_proveedor.sql',
+      '155_vitrina_publica_proveedor.sql',
+    // Logística Fase 1-4 (D-GL-029/030/033/035): zonas, envíos, carrier accounts, routing, devoluciones, webhooks
+    '094_create_zonas_envio.sql',
+    '160_extend_envios_multi_carrier.sql',
+    '161_create_carrier_accounts.sql',
+    '162_create_shipping_routing_rules.sql',
+    '163_create_devoluciones.sql',
+    '164_extend_webhook_events_envia.sql',
+        '166_seed_insumos_b2b.sql',
+              '167_municipios_dane.sql',
+              '168_seed_carrier_routing.sql',
+      '125_usuario_lookup_sin_contexto.sql',
     '127_review_aspectos.sql',
     '128_usuario_fcm_token.sql',
     '129_otp_codigo_cifrado.sql',
@@ -180,16 +187,23 @@ const MIGRACIONES_ARRANQUE = [
   '151_usuarios_nivel_notificado.sql',
   '152_usuarios_fecha_alta.sql',
   // D-GL-030 / D-GL-031: RUT obligatorio con revisión, estado operativo
-  // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
-  // así que se aplican igual sobre una base vacía y sobre una ya poblada.
-  '153_prestador_rut_revision.sql',
-    '154_estado_operativo_proveedor.sql',
-    '155_vitrina_publica_proveedor.sql',
-      '166_seed_insumos_b2b.sql',
-            '167_municipios_dane.sql',
-            '168_seed_carrier_routing.sql',
+    // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
+    // así que se aplican igual sobre una base vacía y sobre una ya poblada.
+    '153_prestador_rut_revision.sql',
+      '154_estado_operativo_proveedor.sql',
+      '155_vitrina_publica_proveedor.sql',
+    // Logística Fase 1-4 (D-GL-029/030/033/035): zonas, envíos, carrier accounts, routing, devoluciones, webhooks
+    '094_create_zonas_envio.sql',
+    '160_extend_envios_multi_carrier.sql',
+    '161_create_carrier_accounts.sql',
+    '162_create_shipping_routing_rules.sql',
+    '163_create_devoluciones.sql',
+    '164_extend_webhook_events_envia.sql',
+        '166_seed_insumos_b2b.sql',
+              '167_municipios_dane.sql',
+              '168_seed_carrier_routing.sql',
 
-    '125_usuario_lookup_sin_contexto.sql',
+      '125_usuario_lookup_sin_contexto.sql',
 
     '127_review_aspectos.sql',
 
