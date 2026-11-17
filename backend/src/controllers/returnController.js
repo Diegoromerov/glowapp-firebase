@@ -162,6 +162,69 @@ async function getProviderDevoluciones(req, res) {
 }
 
 /**
+ * GET /api/admin/returns
+ * Bandeja global de seguimiento de logística inversa para administradores.
+ * Las decisiones de aprobar, rechazar e inspeccionar siguen en manos del proveedor.
+ */
+async function getAdminDevoluciones(req, res) {
+  const estado = typeof req.query.estado === 'string' ? req.query.estado.trim() : '';
+  const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+  const limit = Math.min(100, Math.max(1, Number.parseInt(req.query.limit, 10) || 30));
+  const offset = (page - 1) * limit;
+
+  try {
+    const result = await runAsSystem({ pool, systemPool }, async (client) => {
+      const params = [];
+      let where = '';
+      if (estado) {
+        params.push(estado);
+        where = `WHERE d.estado = $${params.length}`;
+      }
+
+      const countResult = await client.query(
+        `SELECT COUNT(*)::int AS total FROM devoluciones d ${where}`,
+        params
+      );
+      const dataParams = [...params, limit, offset];
+      const { rows } = await client.query(
+        `SELECT d.id, d.pedido_id, d.envio_original_id, d.estado, d.motivo,
+                d.descripcion, d.items, d.fotos_urls, d.carrier_retorno,
+                d.guia_retorno, d.guia_retorno_tracking_url, d.etiqueta_retorno_pdf_url,
+                d.reembolso_estado, d.reembolso_monto_cop, d.monto_reembolso,
+                d.inspeccion_estado, d.inspeccion_notas, d.inspeccionada_en,
+                d.solicitada_en, d.actualizado_en,
+                pt.nombre_entrega, pt.total AS pedido_total,
+                cliente.nombre AS cliente_nombre, cliente.email AS cliente_email,
+                proveedor.nombre AS proveedor_nombre, proveedor.email AS proveedor_email
+           FROM devoluciones d
+           JOIN pedidos_tienda pt ON pt.id = d.pedido_id
+           LEFT JOIN usuarios cliente ON cliente.id = d.solicitante_id
+           LEFT JOIN usuarios proveedor ON proveedor.id = d.receptor_id
+           ${where}
+          ORDER BY d.solicitada_en DESC
+          LIMIT $${dataParams.length - 1} OFFSET $${dataParams.length}`,
+        dataParams
+      );
+      return { rows, total: countResult.rows[0]?.total || 0 };
+    });
+
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: {
+        page,
+        limit,
+        total: result.total,
+        pages: Math.ceil(result.total / limit),
+      },
+    });
+  } catch (error) {
+    console.error('❌ ERROR EN GET /api/admin/returns:', error);
+    res.status(500).json({ error: 'Error al obtener devoluciones' });
+  }
+}
+
+/**
  * POST /api/provider/returns/:id/approve
  * Proveedor aprueba devolución y genera etiqueta de retorno via Envíame
  * Body: { carrier_retorno?, service_code_retorno? }
@@ -534,6 +597,7 @@ module.exports = {
   solicitarDevolucion,
   getMisDevoluciones,
   getProviderDevoluciones,
+  getAdminDevoluciones,
   aprobarDevolucion,
   rechazarDevolucion,
   recibirDevolucion,

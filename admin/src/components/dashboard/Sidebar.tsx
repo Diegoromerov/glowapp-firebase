@@ -25,6 +25,7 @@ import {
   ShoppingCart,
   WalletCards,
   Truck,
+  RotateCcw,
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -63,6 +64,7 @@ export default function Sidebar() {
         { href: '/admin/productos', label: 'Catálogo Productos', icon: Package },
         { href: '/admin/store/orders', label: 'Pedidos GlowStore', icon: ShoppingCart },
         { href: '/admin/logistics', label: 'Logística GlowStore', icon: Truck },
+        { href: '/admin/logistics/returns', label: 'Devoluciones GlowStore', icon: RotateCcw },
         { href: '/admin/academia', label: 'Academia Glow', icon: GraduationCap },
         { href: '/chat', label: 'Mensajes', icon: MessageSquare },
         { href: '/perfil', label: 'Mi Perfil', icon: UserIcon },

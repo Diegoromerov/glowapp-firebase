@@ -211,6 +211,9 @@ router.get('/biometric/recommended/:userId', authMiddleware, async (req, res) =>
   router.post('/admin/logistics/shipments/:id/reprocess-webhook', authMiddleware, requireRol('admin'), trackingController.reprocessWebhook);
 
   // --- Devoluciones (Reverse Logistics - Fase 5) ---
+  // Admin: bandeja global de seguimiento; decisiones y recepción siguen con el proveedor.
+  router.get('/admin/returns', authMiddleware, requireRol('admin'), returnController.getAdminDevoluciones);
+
   // Cliente: solicitar devolución + listar mis devoluciones
   router.post('/client/orders/:id/return', authMiddleware, returnController.solicitarDevolucion);
   router.get('/client/returns', authMiddleware, returnController.getMisDevoluciones);
