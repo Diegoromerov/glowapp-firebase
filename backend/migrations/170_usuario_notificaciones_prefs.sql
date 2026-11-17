@@ -24,11 +24,11 @@ CREATE POLICY usuario_notif_prefs_isolation ON usuario_notificaciones_prefs
     TO app_rls_user
     USING (
         usuario_id = current_setting('app.current_user_id', true)::bigint
-        OR current_setting('app.tenant_id', true) = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
+        OR current_setting('app.tenant_id', true)::bigint = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
     )
     WITH CHECK (
         usuario_id = current_setting('app.current_user_id', true)::bigint
-        OR current_setting('app.tenant_id', true) = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
+        OR current_setting('app.tenant_id', true)::bigint = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
     );
 
 DROP POLICY IF EXISTS usuario_notif_prefs_system ON usuario_notificaciones_prefs;
