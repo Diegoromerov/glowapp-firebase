@@ -16,12 +16,14 @@ class ProviderDetailScreen extends StatefulWidget {
   /// como texto provisional mientras llega la respuesta.
   final String? nombreInicial;
   final String? avatarInicial;
+  final bool? esSalonInicial;
 
   const ProviderDetailScreen({
     super.key,
     required this.providerId,
     this.nombreInicial,
     this.avatarInicial,
+    this.esSalonInicial,
   });
   @override
   State<ProviderDetailScreen> createState() => _ProviderDetailScreenState();
@@ -34,6 +36,50 @@ class _PortfolioHeaderCarousel extends StatefulWidget {
 
   @override
   State<_PortfolioHeaderCarousel> createState() => _PortfolioHeaderCarouselState();
+}
+
+class _ProviderInfoPill extends StatelessWidget {
+  const _ProviderInfoPill({
+    required this.icon,
+    required this.label,
+    required this.foreground,
+    required this.background,
+  });
+
+  final IconData icon;
+  final String label;
+  final Color foreground;
+  final Color background;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        decoration: BoxDecoration(
+          color: background,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: foreground.withValues(alpha: 0.16)),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: foreground, size: 13),
+            const SizedBox(width: 4),
+            Flexible(
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  color: foreground,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
 }
 
 class _PortfolioHeaderCarouselState extends State<_PortfolioHeaderCarousel> {
@@ -514,6 +560,51 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
     );
   }
 
+  Widget _buildRatingBadge(Map<String, dynamic> provider) {
+    final count = _num(provider['rating_count'] ?? provider['reviews_count']);
+    final rating = _num(provider['rating_avg'] ?? provider['rating']);
+    return Semantics(
+      label: count > 0
+          ? 'Calificación ${rating.toStringAsFixed(1)} de 5, ${count.toInt()} opiniones'
+          : 'Sin calificaciones todavía',
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFAF6EE),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.35)),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.star_rounded, color: Color(0xFFFBBF24), size: 14),
+            const SizedBox(width: 3),
+            Text(
+              count > 0 ? rating.toStringAsFixed(1) : 'Nuevo',
+              style: const TextStyle(
+                fontFamily: 'Inter',
+                color: Color(0xFF1F1A15),
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
+            ),
+            if (count > 0) ...[
+              const SizedBox(width: 3),
+              Text(
+                '(${count.toInt()})',
+                style: const TextStyle(
+                  fontFamily: 'Inter',
+                  color: Color(0xFF6B5E55),
+                  fontSize: 10,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
   String _getSpecialty(
       Map<String, dynamic> p, List<Map<String, dynamic>> services) {
     if (p['specialty'] != null && p['specialty'].toString().isNotEmpty) {
@@ -735,6 +826,12 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
         .where((url) => url.isNotEmpty)
         .toSet()
         .toList();
+    final isSalon = p['is_salon'] == true ||
+        p['is_salon']?.toString().toLowerCase() == 'true' ||
+        widget.esSalonInicial == true;
+    final serviceSettingLabel = isSalon
+        ? 'Atención en salón de belleza'
+        : 'Atención a domicilio';
     final smartSlot = _getSmartNextSlot(p);
 
     final filteredServices = _categorizedServices[selectedCategory] ??
@@ -839,225 +936,114 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 88,
-                        height: 88,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFFF3D59B), Color(0xFFC5A052), Color(0xFF96732B)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFF3D59B), Color(0xFFC5A052), Color(0xFF96732B)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            boxShadow: [
+                              BoxShadow(color: Colors.black.withValues(alpha: 0.18), blurRadius: 12, offset: const Offset(0, 4)),
+                            ],
                           ),
-                          boxShadow: [
-                            BoxShadow(color: Colors.black.withValues(alpha: 0.18), blurRadius: 12, offset: const Offset(0, 4)),
-                          ],
+                          padding: const EdgeInsets.all(3),
+                          child: CircleAvatar(
+                            backgroundColor: const Color(0xFFFAF6EE),
+                            backgroundImage: hasAvatar ? NetworkImage(p['avatar_url']) : null,
+                            child: !hasAvatar ? Text(initialLetter, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF8A6A2F))) : null,
+                          ),
                         ),
-                        padding: const EdgeInsets.all(3),
-                        child: CircleAvatar(
-                          backgroundColor: const Color(0xFFFAF6EE),
-                          backgroundImage: hasAvatar ? NetworkImage(p['avatar_url']) : null,
-                          child: !hasAvatar ? Text(initialLetter, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFF8A6A2F))) : null,
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      p['business_name'] ?? p['full_name'] ?? '',
+                                      style: const TextStyle(color: Color(0xFF1F1A15), fontSize: 20, fontWeight: FontWeight.bold),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  _buildRatingBadge(p),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  if (p['is_verified'] == true || p['is_verified'] == 'true') ...[
+                                    const _ProviderInfoPill(
+                                      icon: Icons.verified_rounded,
+                                      label: 'GlowApp Verificado',
+                                      foreground: Color(0xFF15803D),
+                                      background: Color(0xFFF0FDF4),
+                                    ),
+                                    const SizedBox(width: 6),
+                                  ],
+                                  Expanded(
+                                    child: _ProviderInfoPill(
+                                      icon: Icons.location_on_rounded,
+                                      label: (p['ciudad'] ?? p['direccion'] ?? 'Bogotá, Colombia').toString(),
+                                      foreground: Color(0xFF8A6A2F),
+                                      background: Color(0xFFFAF6EE),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFAF6EE),
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.2), width: 1),
+                        boxShadow: [
+                          BoxShadow(color: const Color(0xFFC5A052).withValues(alpha: 0.05), blurRadius: 10, offset: const Offset(0, 3)),
+                        ],
                       ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                                // Especialidad con tag Quiet Luxury de Alta Definición
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: specColor.withValues(alpha: 0.95),
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                      color: Colors.white.withValues(alpha: 0.3),
-                                      width: 0.8,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.2),
-                                        blurRadius: 6,
-                                        offset: const Offset(0, 2),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(specIcon, size: 13, color: Colors.white),
-                                      const SizedBox(width: 5),
-                                      Text(specialty.toUpperCase(), style: const TextStyle(fontFamily: 'Inter', color: Colors.white, fontSize: 10.5, fontWeight: FontWeight.w800, letterSpacing: 0.6)),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 6),
-                                Text(
-                                  p['business_name'] ?? p['full_name'] ?? '',
-                                  style: const TextStyle(color: Color(0xFF1F1A15), fontSize: 22, fontWeight: FontWeight.bold),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(height: 6),
-                                Semantics(
-                                  label: (_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0)
-                                      ? 'Calificación ${_num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1)} de 5 estrellas, ${p['rating_count'] ?? p['reviews_count'] ?? 0} valoraciones'
-                                      : 'Sin calificaciones todavía',
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFFFAF6EE),
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.4), width: 0.8),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(Icons.star_rounded, color: Color(0xFFFBBF24), size: 16),
-                                        const SizedBox(width: 4),
-                                        Text((_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0) ? _num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1) : 'Nuevo', style: const TextStyle(fontFamily: 'Inter', color: Color(0xFF1F1A15), fontWeight: FontWeight.bold, fontSize: 13)),
-                                        const SizedBox(width: 6),
-                                        Flexible(
-                                          child: Text((_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0) ? '(${p['rating_count'] ?? p['reviews_count'] ?? 0} opiniones)' : '(sin opiniones)', style: const TextStyle(fontFamily: 'Inter', color: Color(0xFF6B5E55), fontSize: 11.5), overflow: TextOverflow.ellipsis),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                          ],
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Tooltip(
+                            message: 'Porcentaje de citas completadas cuyo inicio se registró hasta 15 minutos después de la hora reservada. Muestra: ${_num(p['punctuality_sample_count']).toInt()} citas.',
+                            child: _buildTrustStatItem(
+                              Icons.verified_sharp,
+                              _num(p['punctuality_sample_count']) > 0 ? '${_num(p['punctuality_percentage']).round()}%' : 'Sin datos',
+                              'Puntualidad · ${_num(p['punctuality_sample_count']).toInt()}',
+                            ),
+                          ),
+                          Container(width: 1, height: 28, color: const Color(0xFFEFE8DE)),
+                          _buildTrustStatItem(Icons.event_available, '${_num(p['completed_bookings_count']).toInt()}', 'Citas Realizadas'),
+                          Container(width: 1, height: 28, color: const Color(0xFFEFE8DE)),
+                          _buildTrustStatItem(Icons.security, '100%', 'Garantía Glow'),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-                                // Especialidad con tag Quiet Luxury de Alta Definición
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: specColor.withValues(alpha: 0.95),
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                      color: Colors.white.withValues(alpha: 0.3),
-                                      width: 0.8,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.2),
-                                        blurRadius: 6,
-                                        offset: const Offset(0, 2),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(
-                                        specIcon,
-                                        size: 13,
-                                        color: Colors.white,
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text(
-                                        specialty.toUpperCase(),
-                                        style: const TextStyle(
-                                          fontFamily: 'Inter',
-                                          color: Colors.white,
-                                          fontSize: 10.5,
-                                          fontWeight: FontWeight.w800,
-                                          letterSpacing: 0.6,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 6),
-                                // Nombre de negocio / prestador
-                                Text(
-                                  p['business_name'] ?? p['full_name'] ?? '',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                    shadows: [
-                                      Shadow(
-                                        offset: Offset(0, 1),
-                                        blurRadius: 4,
-                                        color: Colors.black45,
-                                      ),
-                                    ],
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(height: 6),
-                                // Rating y valoraciones con Semantics y Medalla Quiet Luxury
-                                Semantics(
-                                  label: (_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0)
-                                      ? 'Calificación ${_num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1)} de 5 estrellas, ${p['rating_count'] ?? p['reviews_count'] ?? 0} valoraciones'
-                                      : 'Sin calificaciones todavía',
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 3),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black.withValues(alpha: 0.45),
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(
-                                        color: const Color(0xFFC5A052)
-                                            .withValues(alpha: 0.4),
-                                        width: 0.8,
-                                      ),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(Icons.star_rounded,
-                                            color: Color(0xFFFBBF24), size: 16),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          (_num(p['rating_count'] ??
-                                                      p['reviews_count'] ??
-                                                      0) >
-                                                  0)
-                                              ? _num(p['rating_avg'] ??
-                                                      p['rating'])
-                                                  .toStringAsFixed(1)
-                                              : 'Nuevo',
-                                          style: const TextStyle(
-                                              fontFamily: 'Inter',
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13),
-                                        ),
-                                        const SizedBox(width: 6),
-                                        Flexible(
-                                          child: Text(
-                                            (_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0)
-                                                ? '(${p['rating_count'] ?? p['reviews_count'] ?? 0} opiniones)'
-                                                : '(sin opiniones)',
-                                            style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                color: Colors.white
-                                                    .withValues(alpha: 0.9),
-                                                fontSize: 11.5),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+
             // Contenido
             SliverList(
               delegate: SliverChildListDelegate([
@@ -1068,123 +1054,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Ubicación y Verificación Quiet Luxury (Kaizen 3)
-                      Row(
-                        children: [
-                          if (p['is_verified'] == true ||
-                              p['is_verified'] == 'true') ...[
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF0FDF4),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                    color: const Color(0xFFBBF7D0), width: 0.8),
-                              ),
-                              child: const Row(
-                                children: [
-                                  Icon(Icons.verified_rounded,
-                                      color: Color(0xFF15803D), size: 14),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    'GlowPro Verificado',
-                                    style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      color: Color(0xFF15803D),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 11.5,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                          ],
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFAF6EE),
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(
-                                  color: const Color(0xFFEFE8DE), width: 0.8),
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.location_on_rounded,
-                                    color: Color(0xFFC5A052), size: 14),
-                                const SizedBox(width: 4),
-                                Text(
-                                  (p['ciudad'] ??
-                                          p['direccion'] ??
-                                          'Bogotá, Colombia')
-                                      .toString(),
-                                  style: const TextStyle(
-                                      fontFamily: 'Inter',
-                                      color: Color(0xFF1F1A15),
-                                      fontSize: 11.5,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-
-                      // Evidence-Backed Trust Stats Bar Quiet Luxury (Kaizen 3)
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 16),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 12),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFAF6EE),
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                              color: const Color(0xFFC5A052).withValues(alpha: 0.2),
-                              width: 1),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFFC5A052).withValues(alpha: 0.05),
-                              blurRadius: 10,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Tooltip(
-                              message:
-                                  'Porcentaje de citas completadas cuyo inicio se registró hasta 15 minutos después de la hora reservada. '
-                                  'Muestra: ${_num(p['punctuality_sample_count']).toInt()} citas.',
-                              child: _buildTrustStatItem(
-                                Icons.verified_sharp,
-                                _num(p['punctuality_sample_count']) > 0
-                                    ? '${_num(p['punctuality_percentage']).round()}%'
-                                    : 'Sin datos',
-                                'Puntualidad · ${_num(p['punctuality_sample_count']).toInt()}',
-                              ),
-                            ),
-                            Container(
-                                width: 1,
-                                height: 28,
-                                color: const Color(0xFFEFE8DE)),
-                            _buildTrustStatItem(
-                                Icons.event_available,
-                                '${_num(p['completed_bookings_count']).toInt()}',
-                                'Citas Realizadas'),
-                            Container(
-                                width: 1,
-                                height: 28,
-                                color: const Color(0xFFEFE8DE)),
-                            _buildTrustStatItem(
-                                Icons.security, '100%', 'Garantía Glow'),
-                          ],
-                        ),
-                      ),
-
                       // Tarjeta de Horarios y Cobertura Profesional
                       Container(
                         padding: const EdgeInsets.all(16),
@@ -1213,7 +1082,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                     color: const Color(0xFFFAF6F0),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  child: const Icon(Icons.schedule_outlined,
+                                  child: const Icon(Icons.home_work_outlined,
                                       size: 18, color: Color(0xFFC5A052)),
                                 ),
                                 const SizedBox(width: 12),
@@ -1223,7 +1092,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Horario de Atención',
+                                        'Tipo de atención',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 13,
@@ -1232,9 +1101,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                       ),
                                       const SizedBox(height: 2),
                                       Text(
-                                        (p['horario'] ??
-                                                'Lunes a Sábado: 8:00 AM – 7:00 PM')
-                                            .toString(),
+                                        serviceSettingLabel,
                                         style: const TextStyle(
                                           fontSize: 12,
                                           color: Color(0xFF6B5E55),

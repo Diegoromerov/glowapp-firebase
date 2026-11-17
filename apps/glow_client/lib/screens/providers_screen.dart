@@ -1548,7 +1548,10 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                             Navigator.pushNamed(
                               context,
                               '/provider-detail',
-                              arguments: {'providerId': provider.id},
+                              arguments: {
+                                'providerId': provider.id,
+                                'isSalon': provider.isSalon,
+                              },
                             );
                           },
                           child: const Text(
@@ -2063,7 +2066,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
               Navigator.pushNamed(
                 context,
                 '/provider-detail',
-                arguments: {'providerId': p.id},
+                arguments: {'providerId': p.id, 'isSalon': p.isSalon},
               );
             },
             child: Container(
@@ -2126,7 +2129,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                     Navigator.pushNamed(
                       context,
                       '/provider-detail',
-                      arguments: {'providerId': p.id},
+                      arguments: {'providerId': p.id, 'isSalon': p.isSalon},
                     );
                   },
                   behavior: HitTestBehavior.opaque,
@@ -2204,7 +2207,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                             Navigator.pushNamed(
                               context,
                               '/provider-detail',
-                              arguments: {'providerId': p.id},
+                              arguments: {'providerId': p.id, 'isSalon': p.isSalon},
                             );
                           },
                           style: OutlinedButton.styleFrom(
@@ -2695,6 +2698,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                           '/provider-detail',
                           arguments: {
                             'providerId': p.id,
+                            'isSalon': p.isSalon,
                             'providerName': p.businessName.isNotEmpty
                                 ? p.businessName
                                 : p.fullName,

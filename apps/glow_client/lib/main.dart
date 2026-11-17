@@ -503,6 +503,8 @@ class GlowClientApp extends ConsumerWidget {
                 providerId: (args?['providerId'] ?? idDeLaRuta).toString(),
                 nombreInicial: args?['providerName']?.toString(),
                 avatarInicial: args?['avatarUrl']?.toString(),
+                esSalonInicial: args?['isSalon'] == true ||
+                    args?['isSalon']?.toString().toLowerCase() == 'true',
               ),
             );
           default:
