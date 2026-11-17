@@ -290,7 +290,7 @@ async function getAdminLogisticsShipments(req, res) {
       paramIdx++;
     }
     if (proveedor_id) {
-      where.push(`pt.prestador_comisionado_id = $${paramIdx++}`);
+      where.push(`e.prestador_id = $${paramIdx++}`);
       params.push(proveedor_id);
     }
     if (solo_problematicos === 'true') {
@@ -307,12 +307,12 @@ async function getAdminLogisticsShipments(req, res) {
          e.origen_ciudad, e.origen_departamento,
          e.destino_ciudad, e.destino_departamento,
          pt.id as pedido_id, pt.total, pt.nombre_entrega,
-         pt.prestador_comisionado_id,
+         e.prestador_id AS prestador_comisionado_id,
          u.nombre as proveedor_nombre,
          u.email as proveedor_email
        FROM envios e
        JOIN pedidos_tienda pt ON pt.id = e.pedido_id
-       LEFT JOIN usuarios u ON u.id = pt.prestador_comisionado_id
+       LEFT JOIN usuarios u ON u.id = e.prestador_id
        WHERE ${where.join(' AND ')}
        ORDER BY e.creado_en DESC
        LIMIT $${paramIdx++} OFFSET $${paramIdx}`,
@@ -364,6 +364,7 @@ async function manualStatusShipment(req, res) {
       `UPDATE envios SET 
          estado = $1, 
          observaciones = COALESCE(observaciones, '') || '\n[MANUAL ' || NOW() || '] ' || $2,
+         entregado_en = CASE WHEN $1 = 'ENTREGADO' THEN COALESCE(entregado_en, NOW()) ELSE entregado_en END,
          actualizado_en = NOW()
        WHERE id = $3
        RETURNING *`,
