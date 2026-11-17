@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS logistica_metricas_diarias (
     id BIGSERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
     carrier VARCHAR(50) NOT NULL,
-    zona_id BIGINT REFERENCES zonas_envio(id),
+    zona_id UUID REFERENCES zonas_envio(id),
     envios_creados BIGINT NOT NULL DEFAULT 0,
     envios_recogidos BIGINT NOT NULL DEFAULT 0,
     envios_entregados BIGINT NOT NULL DEFAULT 0,
@@ -40,11 +40,11 @@ CREATE POLICY log_metricas_isolation ON logistica_metricas_diarias
     TO app_rls_user
     USING (
         zona_id IS NULL
-        OR zona_id = current_setting('app.tenant_id', true)::bigint
+        OR zona_id = current_setting('app.tenant_id', true)::uuid
     )
     WITH CHECK (
         zona_id IS NULL
-        OR zona_id = current_setting('app.tenant_id', true)::bigint
+        OR zona_id = current_setting('app.tenant_id', true)::uuid
     );
 
 DROP POLICY IF EXISTS log_metricas_system ON logistica_metricas_diarias;
