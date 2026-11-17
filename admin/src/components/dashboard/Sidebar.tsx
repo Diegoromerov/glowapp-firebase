@@ -8,7 +8,6 @@ import { ThemeSelector } from '@/components/ui/theme-selector';
 import { 
   Home, 
   Calendar, 
-  Settings, 
   MessageSquare, 
   LogOut, 
   User as UserIcon,
@@ -16,8 +15,6 @@ import {
   GraduationCap,
   LayoutDashboard,
   Tag,
-  Menu,
-  X,
   Building2,
   Package,
   ShieldAlert,
@@ -25,7 +22,8 @@ import {
   ChevronRight,
   Inbox,
   Receipt,
-  ShoppingCart
+  ShoppingCart,
+  WalletCards,
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -59,6 +57,7 @@ export default function Sidebar() {
         { href: '/admin/pqrsf', label: 'PQRSF / Soporte', icon: Inbox },
         { href: '/admin/business', label: 'Cumplimiento Business', icon: Building2 },
         { href: '/admin/prestadores', label: 'Prestadores · IVA', icon: Receipt },
+        { href: '/admin/retiros', label: 'Cuentas de retiro', icon: WalletCards },
         { href: '/admin/precios', label: 'Gestión de Precios', icon: Tag },
         { href: '/admin/productos', label: 'Catálogo Productos', icon: Package },
         { href: '/admin/store/orders', label: 'Pedidos GlowStore', icon: ShoppingCart },

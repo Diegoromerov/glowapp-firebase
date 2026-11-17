@@ -26,6 +26,7 @@ const paymentRoutes = require('./src/routes/paymentRoutes');
 const configRoutes = require('./src/routes/configRoutes');
 const bookingRoutes = require('./src/routes/bookingRoutes');
 const serviceRoutes = require('./src/routes/serviceRoutes');
+const publicProviderRoutes = require('./src/routes/publicProviderRoutes');
 const chatRoutes = require('./src/routes/chatRoutes');
 const designsRoutes = require('./src/routes/designsRoutes');
 const productRoutes = require('./src/routes/productRoutes');
@@ -488,6 +489,9 @@ const webhookLimiter = rateLimitByIP({
 // Nota: authLimiter ya se aplica dentro de authRoutes.js
 app.use('/api/payments/wompi-webhook', webhookLimiter);
 
+// Webhook Envíame (tracking multi-carrier) — sin rate limiter estricto, validación por HMAC
+app.use('/api/webhooks/envia', require('./src/routes/enviaWebhook'));
+
 // ==========================================
 // SISTEMA DE RUTAS DE LA API (Montajes únicos)
 // ==========================================
@@ -496,6 +500,8 @@ app.use('/api', paymentRoutes);
 app.use('/api', configRoutes);
 app.use('/api', bookingRoutes);
 app.use('/api', serviceRoutes);
+// Vitrina pública (D-GL-031): sin autenticación y sin escritura.
+app.use('/api', publicProviderRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', productRoutes);
 app.use('/api', providerRoutes);
@@ -1929,10 +1935,14 @@ if (process.env.NODE_ENV !== 'test') {
     await testConnection();
     await initDatabase();
     // Iniciar jobs de pagos (maduración, retiros automáticos, conciliación)
-    inicializarJobs();
-    // T-111: purga diaria de escaneos que cumplieron el plazo del aviso
-    iniciarRetencionBiometrica();
-    // (WORKERS DESHABILITADOS)
+        inicializarJobs();
+        // T-111: purga diaria de escaneos que cumplieron el plazo del aviso
+        iniciarRetencionBiometrica();
+        // F1-Logística: recovery de pedidos PAGADO sin fulfillment (cada 10 min)
+        const { runFulfillmentRecovery } = require('./src/crons/fulfillmentRecoveryCron');
+        setInterval(runFulfillmentRecovery, 10 * 60 * 1000); // 10 minutos
+        console.log('🔄 Cron fulfillment recovery iniciado (cada 10 min)');
+        // (WORKERS DESHABILITADOS)
     // Inicializar servidor WebSocket compartiendo puerto HTTP
     initWebSocketServer(server);
   });

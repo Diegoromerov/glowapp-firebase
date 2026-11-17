@@ -11,12 +11,15 @@ const emailService = require('../services/emailService');
 const fcm = require('../services/fcmNotificationService');
 const { authMiddleware } = require('../middleware/auth');
 const { paymentLimiter, otpLimiter } = require('../middleware/rateLimiter');
+const { exigirCapacidad } = require('../middleware/exigirCapacidad');
+const { CAPACIDADES } = require('../services/capacidadesProveedor');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const wompiService = require('../services/wompiService');
 const wompiClient = require('../services/wompiClient');
 const wompiPayoutsClient = require('../services/wompiPayoutsClient');
 const { aCentavos, aDecimal, sumarMontos } = require('../utils/money');
+const { OAuth2Client } = require('google-auth-library');
 
 // ─── UTILIDADES ──────────────────────────────────────────────────────────────
 
@@ -50,6 +53,33 @@ async function requirePrestador(req, res) {
     return false;
   }
   return true;
+}
+
+async function notificarEventoSeguridadRetiros(providerId, { subject, title, body, tipo }) {
+  try {
+    const contacto = await runAsSystem({ pool }, async (c) => {
+      const result = await c.query(
+        'SELECT email, email_verificado, fcm_token FROM usuarios WHERE id = $1',
+        [providerId]
+      );
+      return result.rows[0] || null;
+    });
+    if (contacto?.email && contacto.email_verificado === true &&
+        (process.env.BREVO_API_KEY || emailService.initEmailService())) {
+      await emailService.sendEmail({
+        to: contacto.email,
+        subject,
+        data: { html: `<p>${body}</p><p>Si no reconoces esta acción, congela los retiros y contacta a soporte.</p>` }
+      });
+    }
+    if (contacto?.fcm_token && fcm.initialized) {
+      await fcm.sendPushNotification(contacto.fcm_token, {
+        title, body, data: { type: tipo }
+      });
+    }
+  } catch (err) {
+    console.error('[PAYOUT SECURITY] No se pudo enviar la notificación:', err.message);
+  }
 }
 
 // CI-48: la compuerta depende del ROL de la base, nunca del email.
@@ -166,7 +196,11 @@ router.get(
 );
 
 
-router.post('/bookings/:id/checkin', authMiddleware, async (req, res) => {
+router.post(
+  '/bookings/:id/checkin',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
   const { id } = req.params;
@@ -282,7 +316,11 @@ router.get('/bookings/:id/otp', authMiddleware, otpLimiter, async (req, res) => 
 
 // ─── COMPLETAR SERVICIO → GENERAR OTP ────────────────────────────────────────
 
-router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
+router.post(
+  '/bookings/:id/complete',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
   const { id } = req.params;
@@ -448,7 +486,11 @@ router.post('/bookings/:id/complete', authMiddleware, async (req, res) => {
 
 // ─── CONFIRMAR OTP → DISPERSIÓN ──────────────────────────────────────────────
 
-router.post('/bookings/:id/confirm-otp', authMiddleware, async (req, res) => {
+router.post(
+  '/bookings/:id/confirm-otp',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  async (req, res) => {
   const { id } = req.params;
   const { codigo } = req.body;
 
@@ -762,10 +804,13 @@ router.get('/wallet', authMiddleware, async (req, res) => {
 
     const { rows } = await pool.query(
       `SELECT pw.*,
+              u.auth_provider,
+              (u.password_hash IS NOT NULL) AS tiene_password,
               (SELECT COUNT(*) FROM disputas d
                JOIN bookings b ON d.booking_id = b.id
                WHERE b.provider_id = $1 AND d.estado IN ('ABIERTA','EN_REVISION')) as disputas_activas
        FROM provider_wallet pw
+       JOIN usuarios u ON u.id = pw.provider_id
        WHERE pw.provider_id = $1`,
       [req.user.id]
     );
@@ -778,7 +823,9 @@ router.get('/wallet', authMiddleware, async (req, res) => {
       return res.json({
         saldo_disponible: 0, saldo_pendiente: 0, saldo_en_disputa: 0,
         total_ganado: 0, total_retirado: 0, modelo_retiro: 'DEMANDA',
-        ultimo_retiro_at: null, cuenta_verificada: false, retiros_pausados: false
+        ultimo_retiro_at: null, cuenta_verificada: false, retiros_pausados: false,
+        cuenta_estado_verificacion: 'PENDIENTE', cuenta_cambio_cancelable: false,
+        cuenta_retiros_bloqueados_hasta: null
       });
     }
 
@@ -799,8 +846,17 @@ router.get('/wallet', authMiddleware, async (req, res) => {
     // El anticipado depende solo del monto maduro disponible.
     const puede_retirar_anticipado = saldoDisponible >= minCop;
 
+    const cooldownHasta = wallet.cuenta_retiros_bloqueados_hasta
+      ? new Date(wallet.cuenta_retiros_bloqueados_hasta)
+      : null;
     if (wallet.retiros_pausados) {
       razon_bloqueo = 'Tu cuenta tiene retiros pausados. Contacta soporte.';
+    } else if (cooldownHasta && cooldownHasta.getTime() > Date.now()) {
+      razon_bloqueo = `Cambio de cuenta en protección. Retiros habilitados después del ${cooldownHasta.toLocaleString('es-CO')}.`;
+    } else if (wallet.cuenta_verificada !== true || wallet.cuenta_estado_verificacion === 'PENDIENTE') {
+      razon_bloqueo = wallet.banco
+        ? 'Tu cuenta de retiro está pendiente de validación.'
+        : 'Vincula una cuenta de retiro validada para retirar saldo.';
     } else if (saldoDisponible <= 0) {
       razon_bloqueo = saldoPendiente > 0
         ? 'Tu saldo está en custodia. Se habilita 48 h después de cada servicio.'
@@ -819,8 +875,13 @@ router.get('/wallet', authMiddleware, async (req, res) => {
       puede_retirar = true;
     }
 
+    const walletPublico = { ...wallet };
+    for (const key of Object.keys(walletPublico)) {
+      if (key.startsWith('cuenta_anterior_')) delete walletPublico[key];
+    }
     res.json({
-      ...wallet,
+      ...walletPublico,
+      cuenta_cambio_cancelable: wallet.cuenta_estado_verificacion === 'PENDIENTE' && Boolean(wallet.banco),
       puede_retirar,
       puede_retirar_anticipado,
       razon_bloqueo,
@@ -974,7 +1035,10 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
 
   try {
     const { rows } = await pool.query(
-      `SELECT tipo_cuenta, banco, numero_cuenta, tipo_cuenta_bancaria, cuenta_verificada
+      `SELECT tipo_cuenta, banco, numero_cuenta, tipo_cuenta_bancaria,
+              cuenta_verificada, cuenta_estado_verificacion,
+              cuenta_cambio_solicitado_at, cuenta_retiros_bloqueados_hasta,
+              (cuenta_estado_verificacion = 'PENDIENTE' AND banco IS NOT NULL) AS cuenta_cambio_cancelable
        FROM provider_wallet
        WHERE provider_id = $1`,
       [req.user.id]
@@ -984,6 +1048,7 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       return res.json({
         configurada: false,
         cuenta_verificada: false,
+        estado_verificacion: 'PENDIENTE',
         mensaje: 'No hay cuenta bancaria configurada.'
       });
     }
@@ -999,11 +1064,261 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       banco: w.banco,
       numero_cuenta_enmascarado: enmascarada,
       tipo_cuenta_bancaria: w.tipo_cuenta_bancaria,
-      cuenta_verificada: w.cuenta_verificada
+      cuenta_verificada: w.cuenta_verificada,
+      estado_verificacion: w.cuenta_estado_verificacion || (w.cuenta_verificada ? 'APROBADA' : 'PENDIENTE'),
+      cambio_solicitado_at: w.cuenta_cambio_solicitado_at,
+      retiros_bloqueados_hasta: w.cuenta_retiros_bloqueados_hasta,
+      cambio_cancelable: w.cuenta_cambio_cancelable === true
     });
   } catch (err) {
     console.error('Error al consultar cuenta bancaria:', err);
     res.status(500).json({ error: 'Error al consultar información bancaria.' });
+  }
+});
+
+function normalizarDestinoCuenta(body = {}) {
+  const tipo_cuenta = String(body.tipo_cuenta || 'NEQUI').trim().toUpperCase();
+  const banco = tipo_cuenta === 'NEQUI' ? 'Nequi'
+    : tipo_cuenta === 'DAVIPLATA' ? 'Daviplata'
+      : String(body.banco || 'Bancolombia').trim();
+  return {
+    tipo_cuenta,
+    banco,
+    numero_cuenta: String(body.numero_cuenta || '').trim(),
+    tipo_cuenta_bancaria: tipo_cuenta === 'NEQUI' || tipo_cuenta === 'DAVIPLATA'
+      ? tipo_cuenta
+      : (tipo_cuenta === 'CORRIENTE' ? 'CORRIENTE' : 'AHORROS'),
+    titular_nombre: String(body.titular_nombre || '').trim(),
+    titular_documento_tipo: String(body.titular_documento_tipo || '').trim().toUpperCase(),
+    titular_documento_num: String(body.titular_documento_num || '').trim()
+  };
+}
+
+function hashDestinoCuenta(destino, modalidad = 'CAMBIO') {
+  return crypto.createHash('sha256').update(JSON.stringify({ ...destino, modalidad })).digest('hex');
+}
+
+function hashAutorizacionRetiro(monto, tipoOrigen, wallet) {
+  return crypto.createHash('sha256').update(JSON.stringify({
+    monto_centavos: aCentavos(monto), tipo_origen: tipoOrigen,
+    banco: wallet.banco, numero_cuenta: wallet.numero_cuenta,
+  })).digest('hex');
+}
+
+// Autoriza un retiro puntual con contraseña + código enviado al correo verificado.
+router.post('/wallet/withdraw/authorization', authMiddleware, exigirCapacidad(CAPACIDADES.RETIRAR), otpLimiter, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  const password = String(req.body.current_password || '');
+  const monto = Number(req.body.monto);
+  const tipoOrigen = ['DEMANDA', 'SEMANAL', 'QUINCENA', 'MENSUAL']
+    .includes(String(req.body.tipo_origen || '').toUpperCase())
+    ? String(req.body.tipo_origen).toUpperCase() : 'DEMANDA';
+  if (!password || !Number.isFinite(monto) || monto <= 0) {
+    return res.status(400).json({ error: 'Contraseña actual y monto válido son obligatorios.' });
+  }
+  try {
+    const contacto = await runAsSystem({ pool }, async (c) => {
+      const result = await c.query('SELECT email, email_verificado, nombre, password_hash FROM usuarios WHERE id = $1', [req.user.id]);
+      return result.rows[0] || null;
+    });
+    if (!contacto?.email || contacto.email_verificado !== true || !contacto.password_hash ||
+        !await bcrypt.compare(password, contacto.password_hash)) {
+      return res.status(403).json({ error: 'No se pudo verificar la identidad. Confirma contraseña y correo verificado.' });
+    }
+    if (!(process.env.BREVO_API_KEY || emailService.initEmailService())) {
+      return res.status(503).json({ error: 'La autorización por correo no está disponible.' });
+    }
+    const wallet = await runAsSystem({ pool }, async (c) => {
+      const result = await c.query('SELECT * FROM provider_wallet WHERE provider_id = $1', [req.user.id]);
+      return result.rows[0] || null;
+    });
+    if (!wallet?.numero_cuenta || !wallet.cuenta_verificada || wallet.cuenta_estado_verificacion !== 'APROBADA') {
+      return res.status(403).json({ error: 'No existe una cuenta de retiro aprobada.' });
+    }
+    const code = String(crypto.randomInt(0, 1000000)).padStart(6, '0');
+    const codigoHash = await bcrypt.hash(code, 10);
+    const payloadHash = hashAutorizacionRetiro(monto, tipoOrigen, wallet);
+    const expira = new Date(Date.now() + 10 * 60 * 1000);
+    const challenge = await runAsSystem({ pool }, async (c) => {
+      await c.query('UPDATE payout_withdrawal_challenges SET usado_at = NOW() WHERE provider_id = $1 AND usado_at IS NULL', [req.user.id]);
+      const inserted = await c.query(
+        `INSERT INTO payout_withdrawal_challenges (provider_id, tenant_id, codigo_hash, payload_hash, expira_at, ip_generacion)
+         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+        [req.user.id, req.user.tenant_id || null, codigoHash, payloadHash, expira, req.ip || null]
+      );
+      return inserted.rows[0];
+    });
+    try {
+      const sent = await emailService.sendEmail({
+        to: contacto.email, subject: 'Autoriza tu retiro · GlowApp',
+        data: { html: `<p>Hola ${String(contacto.nombre || '').replace(/[&<>"']/g, '')},</p><p>Solicitaste un retiro por <strong>$${Math.round(monto).toLocaleString('es-CO')} COP</strong> a ${String(wallet.banco || '').replace(/[&<>"']/g, '')} terminada en <strong>${String(wallet.numero_cuenta).slice(-4)}</strong>.</p><p>Código: <strong>${code}</strong> (vence en 10 minutos).</p><p>Si no reconoces esta solicitud, congela los retiros desde GlowApp.</p>` }
+      });
+      if (sent?.devMode || sent?.simulated) throw new Error('Email simulado.');
+    } catch (sendError) {
+      await runAsSystem({ pool }, async (c) => c.query('UPDATE payout_withdrawal_challenges SET usado_at = NOW() WHERE id = $1', [challenge.id]));
+      console.error('[PAYOUT] No se pudo enviar autorización:', sendError.message);
+      return res.status(503).json({ error: 'No se pudo enviar el código; no se creó el retiro.' });
+    }
+    return res.json({ ok: true, authorization_id: challenge.id, expira_at: expira, cuenta_enmascarada: `****${String(wallet.numero_cuenta).slice(-4)}` });
+  } catch (error) {
+    console.error('[PAYOUT] Error creando autorización de retiro:', error.message);
+    return res.status(500).json({ error: 'No se pudo iniciar la autorización del retiro.' });
+  }
+});
+
+// Segundo factor por correo previamente verificado. El código nunca se devuelve
+// al dispositivo y el reto solo autoriza el destino exacto que fue solicitado.
+router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  const currentPassword = String(req.body.current_password || '');
+  const googleIdToken = String(req.body.google_id_token || '');
+
+  const destino = normalizarDestinoCuenta(req.body);
+  if (!destino.numero_cuenta || destino.numero_cuenta.length < 6) {
+    return res.status(400).json({ error: 'Número de cuenta inválido.' });
+  }
+  if (!destino.titular_nombre || !destino.titular_documento_tipo || !destino.titular_documento_num) {
+    return res.status(400).json({ error: 'Completa los datos de identidad del titular para autorizar el cambio.' });
+  }
+
+  try {
+    const contacto = await runAsSystem({ pool }, async (c) => {
+      const result = await c.query(
+        'SELECT email, email_verificado, nombre, password_hash, auth_provider, provider_id FROM usuarios WHERE id = $1',
+        [req.user.id]
+      );
+      return result.rows[0] || null;
+    });
+    if (!contacto?.email) {
+      return res.status(403).json({ error: 'La cuenta no tiene un correo asociado.' });
+    }
+
+    // El primer destino se autoriza con el correo verificado: los usuarios
+    // federados no tienen necesariamente una contraseña local de GlowApp.
+    const wallet = await runAsSystem({ pool }, async (c) => {
+      await c.query(
+        'INSERT INTO provider_wallet (provider_id) VALUES ($1) ON CONFLICT (provider_id) DO NOTHING',
+        [req.user.id]
+      );
+      const result = await c.query(
+        'SELECT numero_cuenta FROM provider_wallet WHERE provider_id = $1',
+        [req.user.id]
+      );
+      return result.rows[0] || null;
+    });
+    const primeraCuenta = !wallet?.numero_cuenta;
+    const emailPruebaPermitido = String(process.env.PAYOUT_OTP_TEST_EMAIL || '').trim().toLowerCase();
+    const modoOtpPrueba = process.env.RAILWAY_ENVIRONMENT_NAME === 'staging' &&
+      process.env.PAYOUT_OTP_TEST_MODE === 'true' &&
+      primeraCuenta &&
+      emailPruebaPermitido.length > 0 &&
+      String(contacto.email).trim().toLowerCase() === emailPruebaPermitido;
+    if (contacto.email_verificado !== true && !modoOtpPrueba) {
+      return res.status(403).json({ error: 'Verifica el correo de tu cuenta antes de cambiar la cuenta de retiro.' });
+    }
+
+    if (!primeraCuenta && contacto.password_hash) {
+      if (!currentPassword || !await bcrypt.compare(currentPassword, contacto.password_hash)) {
+        return res.status(403).json({ error: 'La contraseña actual no es válida. No se inició el cambio de cuenta.' });
+      }
+    } else if (!primeraCuenta && String(contacto.auth_provider || '').toUpperCase() === 'GOOGLE') {
+      if (!googleIdToken) {
+        return res.status(403).json({ error: 'Confirma tu identidad con Google para cambiar el destino de retiro.', requiere_google: true });
+      }
+      const activeClientId = (process.env.GOOGLE_CLIENT_ID || '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com').trim();
+      const oauthClient = new OAuth2Client(activeClientId);
+      let googlePayload;
+      try {
+        const ticket = await oauthClient.verifyIdToken({
+          idToken: googleIdToken,
+          audience: [
+            activeClientId,
+            '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+            '374223351186-hi0m9k8778gfkg69spbkimgk73t51g5q.apps.googleusercontent.com',
+            '466897054371-qaec2ipcc0pea91obs0ejcb9tene7kma.apps.googleusercontent.com'
+          ].filter(Boolean)
+        });
+        googlePayload = ticket.getPayload();
+      } catch (_) {
+        return res.status(403).json({ error: 'No se pudo confirmar tu sesión de Google. Inténtalo de nuevo.' });
+      }
+      const emitidoAt = Number(googlePayload?.iat || 0) * 1000;
+      const identidadCoincide = String(googlePayload?.email || '').toLowerCase() === String(contacto.email).toLowerCase() &&
+        googlePayload?.email_verified === true &&
+        (!contacto.provider_id || String(googlePayload?.sub || '') === String(contacto.provider_id));
+      if (!identidadCoincide || !emitidoAt || Date.now() - emitidoAt > 5 * 60 * 1000) {
+        return res.status(403).json({ error: 'La confirmación de Google venció o no corresponde a esta cuenta.' });
+      }
+    } else if (!primeraCuenta) {
+      return res.status(403).json({ error: 'La cuenta no tiene un método de verificación disponible. Contacta a soporte.' });
+    }
+
+    if (!modoOtpPrueba) {
+      const transporteReal = Boolean(process.env.BREVO_API_KEY || emailService.initEmailService());
+      if (!transporteReal) {
+        return res.status(503).json({ error: 'La verificación reforzada no está disponible. No se modificó la cuenta.' });
+      }
+    }
+
+    const codigo = String(crypto.randomInt(0, 1000000)).padStart(6, '0');
+    const codigoHash = await bcrypt.hash(codigo, 10);
+    const expiraAt = new Date(Date.now() + 10 * 60 * 1000);
+    const destinoHash = hashDestinoCuenta(destino, primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO');
+    const challenge = await runAsSystem({ pool }, async (c) => {
+      await c.query(
+        `UPDATE payout_account_change_challenges SET usado_at = NOW()
+         WHERE provider_id = $1 AND usado_at IS NULL`,
+        [req.user.id]
+      );
+      const result = await c.query(
+        `INSERT INTO payout_account_change_challenges
+           (provider_id, tenant_id, codigo_hash, destino_hash, expira_at, ip_generacion)
+         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+        [req.user.id, req.user.tenant_id || null, codigoHash, destinoHash, expiraAt, req.ip || null]
+      );
+      return result.rows[0];
+    });
+
+    if (modoOtpPrueba) {
+      console.info(`[PAYOUT ACCOUNT TEST] Challenge de cuenta creado para allowlist; challenge=${challenge.id}`);
+    } else {
+      try {
+        const enviado = await emailService.sendEmail({
+          to: contacto.email,
+          subject: 'Autoriza el cambio de cuenta de retiro · GlowApp',
+          data: {
+            html: `<p>Hola ${String(contacto.nombre || '').replace(/[&<>"']/g, '')},</p>
+              <p>Solicitaste cambiar la cuenta de retiro por una terminada en <strong>${destino.numero_cuenta.slice(-4)}</strong>.</p>
+              <p>Tu código de autorización es <strong style="font-size:24px;letter-spacing:5px">${codigo}</strong>.</p>
+              <p>Vence en 10 minutos. Si no reconoces la solicitud, ignora este correo y contacta a soporte.</p>`
+          }
+        });
+        if (enviado?.devMode || enviado?.simulated) throw new Error('El proveedor no confirmó el envío del código.');
+      } catch (sendError) {
+        await runAsSystem({ pool }, async (c) => c.query(
+          'UPDATE payout_account_change_challenges SET usado_at = NOW() WHERE id = $1', [challenge.id]
+        ));
+        console.error('[PAYOUT ACCOUNT] No se pudo enviar OTP:', sendError.message);
+        return res.status(503).json({ error: 'No se pudo enviar el código. No se modificó la cuenta.' });
+      }
+    }
+
+    const [local, dominio] = String(contacto.email).split('@');
+    const correoEnmascarado = `${local.slice(0, 1)}${'•'.repeat(Math.max(3, Math.min(local.length - 1, 6)))}${local.length > 1 ? local.slice(-1) : ''}@${dominio}`;
+    return res.json({
+      ok: true,
+      challenge_id: challenge.id,
+      expira_at: expiraAt,
+      correo_enmascarado: correoEnmascarado,
+      modalidad: primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO',
+      mensaje: modoOtpPrueba
+        ? 'Código de prueba generado para esta cuenta de staging.'
+        : 'Enviamos un código al correo verificado de tu cuenta.',
+      ...(modoOtpPrueba && { otp_dev: codigo, modo_prueba: true })
+    });
+  } catch (err) {
+    console.error('[PAYOUT ACCOUNT] Error creando autorización:', err.message);
+    return res.status(500).json({ error: 'No se pudo iniciar la autorización del cambio.' });
   }
 });
 
@@ -1021,6 +1336,7 @@ const handleSaveBankAccount = async (req, res) => {
     titular_documento_tipo,
     titular_documento_num
   } = req.body;
+  const { authorization_id, authorization_code } = req.body;
 
   if (!numero_cuenta || typeof numero_cuenta !== 'string' || numero_cuenta.trim().length < 6) {
     return res.status(400).json({ error: 'Número de cuenta inválido (mínimo 6 caracteres).' });
@@ -1030,10 +1346,56 @@ const handleSaveBankAccount = async (req, res) => {
   const bancoNormalizado = (tipoNormalizado === 'NEQUI') ? 'Nequi' : (tipoNormalizado === 'DAVIPLATA') ? 'Daviplata' : (banco || 'Bancolombia');
   const tipoCuentaFinal = (tipoNormalizado === 'NEQUI' || tipoNormalizado === 'DAVIPLATA') ? tipoNormalizado : 'BANCARIA';
   const tipoBancariaFinal = (tipoNormalizado === 'CORRIENTE') ? 'CORRIENTE' : 'AHORROS';
+  const destinoNormalizado = normalizarDestinoCuenta(req.body);
+  if (!authorization_id || !/^\d{6}$/.test(String(authorization_code || ''))) {
+    return res.status(403).json({ error: 'Necesitas un código de seguridad vigente para cambiar la cuenta.' });
+  }
 
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
+
+    // Bloquea el estado del destino mientras se consume el reto. Así un reto
+    // creado para la primera inscripción no puede reutilizarse como cambio.
+    await client.query(
+      'INSERT INTO provider_wallet (provider_id) VALUES ($1) ON CONFLICT (provider_id) DO NOTHING',
+      [req.user.id]
+    );
+    const estadoCuentaRes = await client.query(
+      'SELECT numero_cuenta FROM provider_wallet WHERE provider_id = $1 FOR UPDATE',
+      [req.user.id]
+    );
+    const primeraCuenta = !estadoCuentaRes.rows[0]?.numero_cuenta;
+
+    const retoRes = await client.query(
+      `SELECT id, codigo_hash, destino_hash, expira_at, intentos_fallidos, usado_at
+         FROM payout_account_change_challenges
+        WHERE id = $1 AND provider_id = $2 AND tenant_id IS NOT DISTINCT FROM $3
+        FOR UPDATE`,
+      [authorization_id, req.user.id, req.user.tenant_id || null]
+    );
+    const reto = retoRes.rows[0];
+    if (!reto || reto.usado_at || new Date(reto.expira_at) <= new Date() || reto.intentos_fallidos >= 5) {
+      await client.query('ROLLBACK');
+      return res.status(403).json({ error: 'El código venció o ya fue utilizado. Solicita uno nuevo.' });
+    }
+    const codigoValido = await bcrypt.compare(String(authorization_code), reto.codigo_hash);
+    const destinoValido = crypto.timingSafeEqual(
+      Buffer.from(reto.destino_hash, 'hex'),
+      Buffer.from(hashDestinoCuenta(destinoNormalizado, primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO'), 'hex')
+    );
+    if (!codigoValido || !destinoValido) {
+      await client.query(
+        `UPDATE payout_account_change_challenges
+            SET intentos_fallidos = intentos_fallidos + 1,
+                usado_at = CASE WHEN intentos_fallidos + 1 >= 5 THEN NOW() ELSE usado_at END
+          WHERE id = $1`, [authorization_id]
+      );
+      await client.query('COMMIT');
+      return res.status(403).json({ error: destinoValido ? 'Código incorrecto.' : 'El código no corresponde a estos datos de cuenta.' });
+    }
+    await client.query('UPDATE payout_account_change_challenges SET usado_at = NOW() WHERE id = $1', [authorization_id]);
 
     // Asegurar existencia del registro de wallet
     await client.query(
@@ -1049,8 +1411,10 @@ const handleSaveBankAccount = async (req, res) => {
       [req.user.id]
     );
     const datosAntes = datosAntesRes.rows[0];
+    const enfriamientoHoras = Math.max(24, parseInt(await getConfig('retiro_cambio_cuenta_horas', '24'), 10) || 24);
 
-    // Actualizar datos bancarios y marcar verificada.
+    // Una modificación del destino invalida la aprobación anterior. La cuenta
+    // solo podrá aprobarse mediante el flujo administrativo/verificador.
     // Los campos del titular se PERSISTEN: la API de Pagos a Terceros de Wompi los
     // exige (name / legalIdType / legalId) y antes solo iban al audit_log, así que
     // la dispersión real era imposible.
@@ -1063,7 +1427,22 @@ const handleSaveBankAccount = async (req, res) => {
            titular_nombre = COALESCE($6, titular_nombre),
            titular_documento_tipo = COALESCE($7, titular_documento_tipo),
            titular_documento_num = COALESCE($8, titular_documento_num),
-           cuenta_verificada = TRUE,
+           cuenta_anterior_tipo_cuenta = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.tipo_cuenta ELSE provider_wallet.cuenta_anterior_tipo_cuenta END,
+           cuenta_anterior_banco = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.banco ELSE provider_wallet.cuenta_anterior_banco END,
+           cuenta_anterior_numero = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.numero_cuenta ELSE provider_wallet.cuenta_anterior_numero END,
+           cuenta_anterior_tipo_bancaria = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.tipo_cuenta_bancaria ELSE provider_wallet.cuenta_anterior_tipo_bancaria END,
+           cuenta_anterior_titular_nombre = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.titular_nombre ELSE provider_wallet.cuenta_anterior_titular_nombre END,
+           cuenta_anterior_documento_tipo = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.titular_documento_tipo ELSE provider_wallet.cuenta_anterior_documento_tipo END,
+           cuenta_anterior_documento_num = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.titular_documento_num ELSE provider_wallet.cuenta_anterior_documento_num END,
+           cuenta_anterior_verificada = CASE WHEN provider_wallet.cuenta_verificada THEN TRUE ELSE provider_wallet.cuenta_anterior_verificada END,
+           cuenta_anterior_verificada_at = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.cuenta_verificada_at ELSE provider_wallet.cuenta_anterior_verificada_at END,
+           cuenta_anterior_verificada_por = CASE WHEN provider_wallet.cuenta_verificada THEN provider_wallet.cuenta_verificada_por ELSE provider_wallet.cuenta_anterior_verificada_por END,
+           cuenta_cambio_solicitado_at = NOW(),
+           cuenta_retiros_bloqueados_hasta = NOW() + ($9::int * INTERVAL '1 hour'),
+           cuenta_verificada = FALSE,
+           cuenta_estado_verificacion = 'PENDIENTE',
+           cuenta_verificada_at = NULL,
+           cuenta_verificada_por = NULL,
            updated_at = NOW()
        WHERE provider_id = $1
        RETURNING tipo_cuenta, banco, numero_cuenta, tipo_cuenta_bancaria,
@@ -1077,7 +1456,8 @@ const handleSaveBankAccount = async (req, res) => {
         tipoBancariaFinal,
         titular_nombre ? String(titular_nombre).trim() : null,
         titular_documento_tipo ? String(titular_documento_tipo).trim().toUpperCase() : null,
-        titular_documento_num ? String(titular_documento_num).trim() : null
+        titular_documento_num ? String(titular_documento_num).trim() : null,
+        enfriamientoHoras
       ]
     );
 
@@ -1103,19 +1483,27 @@ const handleSaveBankAccount = async (req, res) => {
 
     await client.query('COMMIT');
 
+    await notificarEventoSeguridadRetiros(req.user.id, {
+      subject: 'Cambio solicitado en tu cuenta de retiros · GlowApp',
+      title: 'Cambio de cuenta de retiro',
+      body: `Se solicitó cambiar tu cuenta de retiros. El nuevo destino está pendiente de validación y los retiros permanecen bloqueados por al menos ${enfriamientoHoras} horas.`,
+      tipo: 'PAYOUT_ACCOUNT_CHANGED'
+    });
+
     const enmascarada = cuentaActualizada.numero_cuenta.length > 4
       ? `****${cuentaActualizada.numero_cuenta.slice(-4)}`
       : '****';
 
     res.json({
       ok: true,
-      mensaje: 'Cuenta bancaria registrada y verificada exitosamente.',
+      mensaje: 'Cuenta bancaria registrada. Está pendiente de validación antes de habilitar retiros.',
       cuenta: {
         tipo_cuenta: cuentaActualizada.tipo_cuenta,
         banco: cuentaActualizada.banco,
         numero_cuenta_enmascarado: enmascarada,
         tipo_cuenta_bancaria: cuentaActualizada.tipo_cuenta_bancaria,
-        cuenta_verificada: true
+        cuenta_verificada: false,
+        estado_verificacion: 'PENDIENTE'
       }
     });
   } catch (err) {
@@ -1130,10 +1518,109 @@ const handleSaveBankAccount = async (req, res) => {
 router.post('/wallet/bank-account', authMiddleware, handleSaveBankAccount);
 router.put('/wallet/bank-account', authMiddleware, handleSaveBankAccount);
 
+router.post('/wallet/bank-account/cancel-change', authMiddleware, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const current = await client.query(
+      `SELECT banco, numero_cuenta, cuenta_estado_verificacion, cuenta_anterior_verificada
+         FROM provider_wallet WHERE provider_id = $1 FOR UPDATE`, [req.user.id]
+    );
+    if (!current.rows.length || current.rows[0].cuenta_estado_verificacion !== 'PENDIENTE') {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ error: 'No hay un cambio de cuenta pendiente para cancelar.' });
+    }
+    const antes = current.rows[0];
+    await client.query(
+      `UPDATE provider_wallet SET
+         tipo_cuenta = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_tipo_cuenta ELSE NULL END,
+         banco = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_banco ELSE NULL END,
+         numero_cuenta = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_numero ELSE NULL END,
+         tipo_cuenta_bancaria = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_tipo_bancaria ELSE NULL END,
+         titular_nombre = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_titular_nombre ELSE NULL END,
+         titular_documento_tipo = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_documento_tipo ELSE NULL END,
+         titular_documento_num = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_documento_num ELSE NULL END,
+         cuenta_verificada = cuenta_anterior_verificada,
+         cuenta_estado_verificacion = CASE WHEN cuenta_anterior_verificada THEN 'APROBADA' ELSE 'PENDIENTE' END,
+         cuenta_verificada_at = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_verificada_at ELSE NULL END,
+         cuenta_verificada_por = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_verificada_por ELSE NULL END,
+         cuenta_cambio_solicitado_at = NULL, cuenta_retiros_bloqueados_hasta = NULL,
+         cuenta_anterior_tipo_cuenta = NULL, cuenta_anterior_banco = NULL,
+         cuenta_anterior_numero = NULL, cuenta_anterior_tipo_bancaria = NULL,
+         cuenta_anterior_titular_nombre = NULL, cuenta_anterior_documento_tipo = NULL,
+         cuenta_anterior_documento_num = NULL, cuenta_anterior_verificada = FALSE,
+         cuenta_anterior_verificada_at = NULL, cuenta_anterior_verificada_por = NULL,
+         updated_at = NOW()
+       WHERE provider_id = $1
+       RETURNING cuenta_anterior_verificada`, [req.user.id]
+    );
+    const restoredPrevious = antes.cuenta_anterior_verificada === true;
+    await auditLog(client, {
+      actorId: req.user.id, accion: 'CAMBIO_CUENTA_RETIRO_CANCELADO', tabla: 'provider_wallet',
+      registroId: req.user.id,
+      datosAntes: { banco: antes.banco, cuenta: antes.numero_cuenta ? `****${antes.numero_cuenta.slice(-4)}` : null },
+      datosDespues: { destino_anterior_restaurado: restoredPrevious }, ip: req.ip
+    });
+    await client.query('COMMIT');
+    await notificarEventoSeguridadRetiros(req.user.id, {
+      subject: 'Cambio de cuenta de retiro cancelado · GlowApp',
+      title: 'Cambio de cuenta cancelado',
+      body: restoredPrevious ? 'Se canceló el cambio solicitado y se restauró la cuenta aprobada anterior.' : 'Se canceló el cambio solicitado y se eliminó el destino pendiente.',
+      tipo: 'PAYOUT_ACCOUNT_CHANGE_CANCELLED'
+    });
+    return res.json({ ok: true, cuenta_anterior_restaurada: restoredPrevious, mensaje: 'Cambio cancelado.' });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error('[PAYOUT ACCOUNT] Error cancelando cambio:', err.message);
+    return res.status(500).json({ error: 'No se pudo cancelar el cambio de cuenta.' });
+  } finally {
+    client.release();
+  }
+});
+
+router.post('/wallet/freeze-withdrawals', authMiddleware, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    await client.query('INSERT INTO provider_wallet (provider_id) VALUES ($1) ON CONFLICT (provider_id) DO NOTHING', [req.user.id]);
+    const result = await client.query(
+      `UPDATE provider_wallet SET retiros_pausados = TRUE, updated_at = NOW()
+       WHERE provider_id = $1 RETURNING retiros_pausados`, [req.user.id]
+    );
+    await auditLog(client, {
+      actorId: req.user.id, accion: 'RETIROS_CONGELADOS_POR_PRESTADOR', tabla: 'provider_wallet',
+      registroId: req.user.id, datosDespues: { retiros_pausados: true }, ip: req.ip
+    });
+    await client.query('COMMIT');
+    await notificarEventoSeguridadRetiros(req.user.id, {
+      subject: 'Retiros congelados · GlowApp', title: 'Retiros congelados',
+      body: 'Los retiros de tu cuenta quedaron congelados. Contacta a soporte para reactivarlos después de verificar tu identidad.',
+      tipo: 'PAYOUTS_FROZEN'
+    });
+    return res.json({ ok: true, retiros_pausados: result.rows[0].retiros_pausados });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error('[PAYOUT SECURITY] Error congelando retiros:', err.message);
+    return res.status(500).json({ error: 'No se pudieron congelar los retiros.' });
+  } finally {
+    client.release();
+  }
+});
+
 // ─── RETIRO — SOLICITAR ───────────────────────────────────────────────────────
 
-router.post('/wallet/withdraw', authMiddleware, async (req, res) => {
+router.post(
+  '/wallet/withdraw',
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.RETIRAR),
+  async (req, res) => {
   if (!await requirePrestador(req, res)) return;
+  const { authorization_id, authorization_code } = req.body;
+  if (!authorization_id || !/^\d{6}$/.test(String(authorization_code || ''))) {
+    return res.status(403).json({ error: 'El retiro requiere una autorización vigente enviada al correo.' });
+  }
 
   // Fallar ANTES de debitar: si la pasarela de dispersión no está configurada, el
   // retiro no tendría forma de salir y el saldo ya habría bajado. Antes se
@@ -1162,6 +1649,7 @@ router.post('/wallet/withdraw', authMiddleware, async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
 
     const { rows } = await client.query(
       'SELECT * FROM provider_wallet WHERE provider_id = $1 FOR UPDATE',
@@ -1190,7 +1678,16 @@ router.post('/wallet/withdraw', authMiddleware, async (req, res) => {
       return res.status(403).json({ error: 'Tus retiros están temporalmente pausados. Contacta soporte.' });
     }
 
-    if (!wallet.cuenta_verificada) {
+    if (wallet.cuenta_retiros_bloqueados_hasta &&
+        new Date(wallet.cuenta_retiros_bloqueados_hasta).getTime() > Date.now()) {
+      await client.query('ROLLBACK');
+      return res.status(423).json({
+        error: 'Cambio de cuenta en periodo de protección. No se realizó ningún débito.',
+        retiros_bloqueados_hasta: wallet.cuenta_retiros_bloqueados_hasta
+      });
+    }
+
+    if (!wallet.cuenta_verificada || wallet.cuenta_estado_verificacion !== 'APROBADA') {
       await client.query('ROLLBACK');
       return res.status(403).json({
         error: 'Debes verificar tu cuenta bancaria antes de retirar.',
@@ -1234,6 +1731,34 @@ router.post('/wallet/withdraw', authMiddleware, async (req, res) => {
         disponible: wallet.saldo_disponible
       });
     }
+
+    const authResult = await client.query(
+      `SELECT id, codigo_hash, payload_hash, expira_at, intentos_fallidos, usado_at
+         FROM payout_withdrawal_challenges
+        WHERE id = $1 AND provider_id = $2 AND tenant_id IS NOT DISTINCT FROM $3
+        FOR UPDATE`,
+      [authorization_id, req.user.id, req.user.tenant_id || null]
+    );
+    const authorization = authResult.rows[0];
+    if (!authorization || authorization.usado_at || new Date(authorization.expira_at) <= new Date() || authorization.intentos_fallidos >= 5) {
+      await client.query('ROLLBACK');
+      return res.status(403).json({ error: 'La autorización venció o ya fue utilizada. Solicita otra.' });
+    }
+    const codeMatches = await bcrypt.compare(String(authorization_code), authorization.codigo_hash);
+    const payloadMatches = crypto.timingSafeEqual(
+      Buffer.from(authorization.payload_hash, 'hex'),
+      Buffer.from(hashAutorizacionRetiro(montoSolicitado, tipoOrigen, wallet), 'hex')
+    );
+    if (!codeMatches || !payloadMatches) {
+      await client.query(
+        `UPDATE payout_withdrawal_challenges SET intentos_fallidos = intentos_fallidos + 1,
+          usado_at = CASE WHEN intentos_fallidos + 1 >= 5 THEN NOW() ELSE usado_at END WHERE id = $1`,
+        [authorization_id]
+      );
+      await client.query('COMMIT');
+      return res.status(403).json({ error: payloadMatches ? 'Código de seguridad incorrecto.' : 'La autorización no corresponde al monto, ciclo o destino actual.' });
+    }
+    await client.query('UPDATE payout_withdrawal_challenges SET usado_at = NOW() WHERE id = $1', [authorization_id]);
 
     // El espaciado es del ciclo, no del anticipado: adelantar es potestativo y
     // se paga con la tarifa de dispersión.

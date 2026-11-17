@@ -58,6 +58,7 @@ export default function AdminPrestadoresIvaPage() {
   const [filtro, setFiltro] = useState<Filtro>('todos');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [fuenteDisponible, setFuenteDisponible] = useState(false);
 
   // RBAC: la misma guardia que el resto de páginas de admin.
   useEffect(() => {
@@ -77,13 +78,17 @@ export default function AdminPrestadoresIvaPage() {
       if (!res.ok || !data.success) {
         setError(data?.error || `El backend respondió ${res.status}.`);
         setPrestadores([]);
+        setFuenteDisponible(false);
       } else {
-        setPrestadores(data.prestadores || []);
+        if (!Array.isArray(data.prestadores)) throw new Error('Respuesta inválida del listado de prestadores.');
+        setPrestadores(data.prestadores);
         setResumen(data.resumen || null);
+        setFuenteDisponible(true);
       }
     } catch {
       setError('No se pudo conectar con el backend.');
       setPrestadores([]);
+      setFuenteDisponible(false);
     } finally {
       setLoading(false);
     }
@@ -231,7 +236,13 @@ export default function AdminPrestadoresIvaPage() {
                 </tr>
               )}
 
-              {!loading && prestadores.length === 0 && (
+              {!loading && !fuenteDisponible && (
+                <tr>
+                  <td colSpan={7} className="px-6 py-10 text-center text-slate-500">No se pudo consultar la fuente de prestadores; no es posible confirmar que esté vacía.</td>
+                </tr>
+              )}
+
+              {!loading && fuenteDisponible && prestadores.length === 0 && (
                 <tr>
                   <td colSpan={7} className="px-6 py-10 text-center text-slate-500">
                     {filtro === 'sin_declarar'

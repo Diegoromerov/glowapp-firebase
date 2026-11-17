@@ -28,7 +28,11 @@ COMMENT ON COLUMN zonas_envio.gratis_desde_monto IS 'Monto mínimo del pedido pa
 COMMENT ON COLUMN zonas_envio.transportadora_default IS 'Transportadora sugerida para despacho automático';
 
 -- Seed inicial: ciudades principales + fallback "OTRO"
-INSERT INTO zonas_envio (ciudad, departamento, codigo_postal_prefijo, tarifa_base, tarifa_por_kg, gratis_desde_monto, transportadora_default, dias_estimados_min, dias_estimados_max) VALUES
+-- Idempotente: corre en cada arranque, así que se guarda con NOT EXISTS
+-- (el UNIQUE no protege cuando codigo_postal_prefijo es NULL, caso de "OTRO").
+INSERT INTO zonas_envio (ciudad, departamento, codigo_postal_prefijo, tarifa_base, tarifa_por_kg, gratis_desde_monto, transportadora_default, dias_estimados_min, dias_estimados_max)
+SELECT v.ciudad, v.departamento, v.codigo_postal_prefijo, v.tarifa_base, v.tarifa_por_kg, v.gratis_desde_monto, v.transportadora_default, v.dias_estimados_min, v.dias_estimados_max
+FROM (VALUES
   ('Medellín', 'Antioquia', '05', 10000.00, 500.00, 480000.00, 'Inter Rapidísimo', 1, 3),
   ('Bogotá', 'Bogotá D.C.', '11', 9000.00, 400.00, 300000.00, 'Servientrega', 1, 3),
   ('Cali', 'Valle del Cauca', '76', 11000.00, 600.00, 480000.00, 'Coordinadora', 2, 4),
@@ -51,4 +55,10 @@ INSERT INTO zonas_envio (ciudad, departamento, codigo_postal_prefijo, tarifa_bas
   ('Leticia', 'Amazonas', '91', 35000.00, 2000.00, 480000.00, 'Servientrega', 5, 10),
   -- Fallback para ciudades no listadas
   ('OTRO', 'OTRO', NULL, 15000.00, 800.00, 480000.00, 'Coordinadora', 3, 6)
-ON CONFLICT (ciudad, departamento, codigo_postal_prefijo) DO NOTHING;
+) AS v(ciudad, departamento, codigo_postal_prefijo, tarifa_base, tarifa_por_kg, gratis_desde_monto, transportadora_default, dias_estimados_min, dias_estimados_max)
+WHERE NOT EXISTS (
+  SELECT 1 FROM zonas_envio z
+  WHERE z.ciudad = v.ciudad
+    AND z.departamento = v.departamento
+    AND z.codigo_postal_prefijo IS NOT DISTINCT FROM v.codigo_postal_prefijo
+);

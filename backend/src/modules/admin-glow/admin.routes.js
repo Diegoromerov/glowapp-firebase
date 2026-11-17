@@ -2,10 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const adminController = require('./admin.controller');
+const payoutAccountReviewController = require('./payoutAccountReview.controller');
 const authAdmin = require('./authAdmin.middleware');
 
 // Todas las rutas de administración requieren validación previa del token y rol ADMIN
 router.use(authAdmin);
+
+// API de integración del dashboard administrativo: cola y validación manual
+// de cuentas de retiro. Las lecturas de detalle y decisiones quedan auditadas.
+router.get('/payout-account-reviews', payoutAccountReviewController.listPending);
+router.get('/payout-account-reviews/:providerId', payoutAccountReviewController.getPendingDetails);
+router.post('/payout-account-reviews/:providerId/decision', payoutAccountReviewController.decidePending);
 
 /**
  * @route GET /api/glow-admin/sos/active

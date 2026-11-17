@@ -6,8 +6,17 @@ import '../../services/api_service.dart';
 
 class BankAccountFormDialog extends StatefulWidget {
   final VoidCallback? onSuccess;
+  final bool isFirstAccount;
+  final bool isGoogleOnly;
+  final Widget? Function(ValueChanged<String> onToken)? googleReauthBuilder;
 
-  const BankAccountFormDialog({super.key, this.onSuccess});
+  const BankAccountFormDialog({
+    super.key,
+    this.onSuccess,
+    this.isFirstAccount = false,
+    this.isGoogleOnly = false,
+    this.googleReauthBuilder,
+  });
 
   @override
   State<BankAccountFormDialog> createState() => _BankAccountFormDialogState();
@@ -22,11 +31,21 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   final _titularNombreController = TextEditingController();
   String _titularDocumentoTipo = 'CC';
   final _titularDocumentoNumController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _authorizationCodeController = TextEditingController();
+  String? _authorizationId;
+  String? _googleIdToken;
+  String? _maskedEmail;
 
   bool _isLoading = false;
   String? _errorMessage;
 
-  final List<String> _tiposCuenta = ['NEQUI', 'DAVIPLATA', 'AHORROS', 'CORRIENTE'];
+  final List<String> _tiposCuenta = [
+    'NEQUI',
+    'DAVIPLATA',
+    'AHORROS',
+    'CORRIENTE'
+  ];
   final List<String> _bancos = [
     'Nequi',
     'Daviplata',
@@ -48,6 +67,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     _numeroCuentaController.dispose();
     _titularNombreController.dispose();
     _titularDocumentoNumController.dispose();
+    _passwordController.dispose();
+    _authorizationCodeController.dispose();
     super.dispose();
   }
 
@@ -60,29 +81,76 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   }
 
   Future<void> _handleSubmit() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (_authorizationId == null && !_formKey.currentState!.validate()) return;
+    if (_authorizationId == null &&
+        widget.isGoogleOnly &&
+        _googleIdToken == null) {
+      setState(() =>
+          _errorMessage = 'Confirma tu identidad con Google para continuar.');
+      return;
+    }
+    if (_authorizationId != null && !_formKey.currentState!.validate()) return;
 
     setState(() {
       _isLoading = true;
       _errorMessage = null;
     });
 
+    final datosCuenta = {
+      'tipo_cuenta': _tipoCuenta,
+      'banco': _banco,
+      'numero_cuenta': _numeroCuentaController.text.trim(),
+      'tipo_cuenta_bancaria':
+          (_tipoCuenta == 'CORRIENTE') ? 'CORRIENTE' : 'AHORROS',
+      'titular_nombre': _titularNombreController.text.trim(),
+      'titular_documento_tipo': _titularDocumentoTipo,
+      'titular_documento_num': _titularDocumentoNumController.text.trim(),
+    };
+
     try {
+      if (_authorizationId == null) {
+        final response =
+            await ApiService.post('/api/wallet/bank-account/authorization', {
+          ...datosCuenta,
+          if (!widget.isFirstAccount && !widget.isGoogleOnly)
+            'current_password': _passwordController.text,
+          if (!widget.isFirstAccount &&
+              widget.isGoogleOnly &&
+              _googleIdToken != null)
+            'google_id_token': _googleIdToken,
+        });
+        if (response is! Map || response['challenge_id'] == null) {
+          throw Exception('No se pudo iniciar la autorización de seguridad.');
+        }
+        if (!mounted) return;
+        final otpPrueba = response['modo_prueba'] == true
+            ? response['otp_dev']?.toString()
+            : null;
+        setState(() {
+          _authorizationId = response['challenge_id'].toString();
+          _maskedEmail = response['correo_enmascarado']?.toString();
+          _passwordController.clear();
+          _googleIdToken = null;
+          _errorMessage = otpPrueba != null
+              ? 'Código de prueba de staging: $otpPrueba. No se envió correo.'
+              : 'Enviamos un código a ${_maskedEmail ?? 'tu correo verificado'}. Ingrésalo para confirmar esta cuenta.';
+          _isLoading = false;
+        });
+        return;
+      }
+
       await ApiService.post('/api/wallet/bank-account', {
-        'tipo_cuenta': _tipoCuenta,
-        'banco': _banco,
-        'numero_cuenta': _numeroCuentaController.text.trim(),
-        'tipo_cuenta_bancaria': (_tipoCuenta == 'CORRIENTE') ? 'CORRIENTE' : 'AHORROS',
-        'titular_nombre': _titularNombreController.text.trim(),
-        'titular_documento_tipo': _titularDocumentoTipo,
-        'titular_documento_num': _titularDocumentoNumController.text.trim(),
+        ...datosCuenta,
+        'authorization_id': _authorizationId,
+        'authorization_code': _authorizationCodeController.text.trim(),
       });
 
       if (mounted) {
         Navigator.pop(context, true);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('✅ Cuenta bancaria vinculada y verificada correctamente para retiros'),
+            content: Text(
+                'Cuenta bancaria registrada. Los retiros se habilitarán cuando termine la validación.'),
             backgroundColor: Color(0xFF059669),
           ),
         );
@@ -124,7 +192,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.close, color: LuxeColors.nude900, size: 20),
+                      icon: const Icon(Icons.close,
+                          color: LuxeColors.nude900, size: 20),
                       onPressed: () => Navigator.pop(context),
                     ),
                   ],
@@ -139,6 +208,21 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   ),
                 ),
                 const SizedBox(height: 14),
+
+                if (widget.isFirstAccount && _authorizationId == null) ...[
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE8F5EE),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Text(
+                      'Primera cuenta: no necesitas una contraseña de GlowApp. Confirmaremos el registro con un código enviado a tu correo verificado.',
+                      style: TextStyle(fontSize: 12, color: Color(0xFF047857)),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                ],
 
                 // ─── Preset Quick Bank Selector ──────────────────────────────
                 const Text(
@@ -158,23 +242,105 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     const SizedBox(width: 6),
                     _buildPresetChip('Daviplata', 'DAVIPLATA'),
                     const SizedBox(width: 6),
-                    _buildPresetChip('Bancolombia', 'AHORROS'),
-                    const SizedBox(width: 6),
-                    _buildPresetChip('Lulo Bank', 'AHORROS'),
+                    _buildPresetChip('Bancolombia', 'AHORROS', label: 'Bancos'),
                   ],
                 ),
+                const SizedBox(height: 16),
+
+                if (_authorizationId == null &&
+                    !widget.isFirstAccount &&
+                    !widget.isGoogleOnly) ...[
+                  TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    autofillHints: const [AutofillHints.password],
+                    decoration: const InputDecoration(
+                      labelText: 'Confirma tu contraseña actual',
+                      prefixIcon: Icon(Icons.lock_outline),
+                    ),
+                    validator: (value) => (value == null || value.isEmpty)
+                        ? 'Confirma tu contraseña para continuar'
+                        : null,
+                  ),
+                ] else if (_authorizationId == null && widget.isGoogleOnly) ...[
+                  const Text(
+                    'Como ingresaste con Google, confirma tu identidad con esa misma cuenta. Después enviaremos un código a tu correo.',
+                    style: TextStyle(fontSize: 12, color: LuxeColors.nude600),
+                  ),
+                  const SizedBox(height: 10),
+                  if (_googleIdToken == null)
+                    widget.googleReauthBuilder?.call((token) {
+                          if (!mounted) return;
+                          setState(() {
+                            _googleIdToken = token;
+                            _errorMessage = null;
+                          });
+                        }) ??
+                        const Text(
+                            'No está disponible la confirmación con Google en este dispositivo.'),
+                  if (_googleIdToken != null)
+                    const Row(
+                      children: [
+                        Icon(Icons.verified_user_outlined,
+                            color: Color(0xFF047857), size: 18),
+                        SizedBox(width: 6),
+                        Text('Identidad de Google confirmada',
+                            style: TextStyle(
+                                color: Color(0xFF047857), fontSize: 12)),
+                      ],
+                    ),
+                  const SizedBox(height: 12),
+                ] else ...[
+                  TextFormField(
+                    controller: _authorizationCodeController,
+                    keyboardType: TextInputType.number,
+                    maxLength: 6,
+                    decoration: const InputDecoration(
+                      labelText: 'Código enviado al correo verificado',
+                      prefixIcon: Icon(Icons.mark_email_read_outlined),
+                    ),
+                    validator: (value) =>
+                        (value == null || !RegExp(r'^\d{6}$').hasMatch(value))
+                            ? 'Ingresa el código de 6 dígitos'
+                            : null,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: _isLoading
+                          ? null
+                          : () => setState(() {
+                                _authorizationId = null;
+                                _authorizationCodeController.clear();
+                                _errorMessage = null;
+                                _googleIdToken = null;
+                              }),
+                      child:
+                          const Text('Cambiar datos o solicitar otro código'),
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 16),
 
                 if (_errorMessage != null) ...[
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFEE2E2),
+                      color: (_errorMessage!.startsWith('Enviamos') ||
+                              _errorMessage!.startsWith('Código de prueba'))
+                          ? const Color(0xFFE8F5EE)
+                          : const Color(0xFFFEE2E2),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       _errorMessage!,
-                      style: const TextStyle(fontSize: 12, color: Color(0xFFDC2626)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: (_errorMessage!.startsWith('Enviamos') ||
+                                _errorMessage!.startsWith('Código de prueba'))
+                            ? const Color(0xFF047857)
+                            : const Color(0xFFDC2626),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -191,7 +357,10 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                           labelStyle: TextStyle(fontSize: 12),
                         ),
                         items: _tiposCuenta
-                            .map((t) => DropdownMenuItem(value: t, child: Text(t, style: const TextStyle(fontSize: 12))))
+                            .map((t) => DropdownMenuItem(
+                                value: t,
+                                child: Text(t,
+                                    style: const TextStyle(fontSize: 12))))
                             .toList(),
                         onChanged: (val) {
                           if (val != null) {
@@ -207,13 +376,17 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: _bancos.contains(_banco) ? _banco : _bancos.first,
+                        value:
+                            _bancos.contains(_banco) ? _banco : _bancos.first,
                         decoration: const InputDecoration(
                           labelText: 'Entidad Financiera',
                           labelStyle: TextStyle(fontSize: 12),
                         ),
                         items: _bancos
-                            .map((b) => DropdownMenuItem(value: b, child: Text(b, style: const TextStyle(fontSize: 12))))
+                            .map((b) => DropdownMenuItem(
+                                value: b,
+                                child: Text(b,
+                                    style: const TextStyle(fontSize: 12))))
                             .toList(),
                         onChanged: (val) {
                           if (val != null) setState(() => _banco = val);
@@ -230,13 +403,18 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: InputDecoration(
-                    labelText: (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA')
-                        ? 'Número de Celular (10 dígitos)'
-                        : 'Número de Cuenta Bancaria',
-                    hintText: (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA') ? '3001234567' : '1234567890',
+                    labelText:
+                        (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA')
+                            ? 'Número de Celular (10 dígitos)'
+                            : 'Número de Cuenta Bancaria',
+                    hintText:
+                        (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA')
+                            ? '3001234567'
+                            : '1234567890',
                   ),
                   validator: (val) {
-                    if (val == null || val.trim().isEmpty) return 'Ingresa el número de cuenta o celular';
+                    if (val == null || val.trim().isEmpty)
+                      return 'Ingresa el número de cuenta o celular';
                     if (val.trim().length < 6) return 'Número demasiado corto';
                     return null;
                   },
@@ -251,7 +429,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     hintText: 'Ej. Ana Silva',
                   ),
                   validator: (val) {
-                    if (val == null || val.trim().isEmpty) return 'Ingresa el nombre del titular';
+                    if (val == null || val.trim().isEmpty)
+                      return 'Ingresa el nombre del titular';
                     return null;
                   },
                 ),
@@ -266,10 +445,14 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                         value: _titularDocumentoTipo,
                         decoration: const InputDecoration(labelText: 'Doc'),
                         items: _tiposDoc
-                            .map((d) => DropdownMenuItem(value: d, child: Text(d, style: const TextStyle(fontSize: 12))))
+                            .map((d) => DropdownMenuItem(
+                                value: d,
+                                child: Text(d,
+                                    style: const TextStyle(fontSize: 12))))
                             .toList(),
                         onChanged: (val) {
-                          if (val != null) setState(() => _titularDocumentoTipo = val);
+                          if (val != null)
+                            setState(() => _titularDocumentoTipo = val);
                         },
                       ),
                     ),
@@ -278,13 +461,16 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       child: TextFormField(
                         controller: _titularDocumentoNumController,
                         keyboardType: TextInputType.number,
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                         decoration: const InputDecoration(
                           labelText: 'Número de Identificación',
                           hintText: '1018234567',
                         ),
                         validator: (val) {
-                          if (val == null || val.trim().isEmpty) return 'Ingresa el documento';
+                          if (val == null || val.trim().isEmpty)
+                            return 'Ingresa el documento';
                           return null;
                         },
                       ),
@@ -299,11 +485,13 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   decoration: BoxDecoration(
                     color: const Color(0xFF10B981).withOpacity(0.08),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: const Color(0xFF10B981).withOpacity(0.2)),
+                    border: Border.all(
+                        color: const Color(0xFF10B981).withOpacity(0.2)),
                   ),
                   child: const Row(
                     children: [
-                      Icon(Icons.shield_outlined, color: Color(0xFF10B981), size: 16),
+                      Icon(Icons.shield_outlined,
+                          color: Color(0xFF10B981), size: 16),
                       SizedBox(width: 8),
                       Expanded(
                         child: Text(
@@ -327,17 +515,25 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: LuxeColors.nude900,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: _isLoading ? null : _handleSubmit,
                     child: _isLoading
                         ? const SizedBox(
                             width: 20,
                             height: 20,
-                            child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                            child: CircularProgressIndicator(
+                                color: Colors.white, strokeWidth: 2),
                           )
-                        : const Text(
-                            'VINCULAR CUENTA DE RETIRO',
+                        : Text(
+                            _authorizationId != null
+                                ? 'CONFIRMAR Y REGISTRAR CUENTA'
+                                : widget.isFirstAccount
+                                    ? 'ENVIAR CÓDIGO Y CONTINUAR'
+                                    : widget.isGoogleOnly
+                                        ? 'CONFIRMAR CON GOOGLE'
+                                        : 'VERIFICAR IDENTIDAD Y CONTINUAR',
                             style: TextStyle(
                               fontFamily: 'JetBrainsMono',
                               fontSize: 12,
@@ -356,7 +552,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     );
   }
 
-  Widget _buildPresetChip(String bancoNombre, String tipoCuenta) {
+  Widget _buildPresetChip(String bancoNombre, String tipoCuenta,
+      {String? label}) {
     final isSelected = _banco == bancoNombre;
     return Expanded(
       child: GestureDetector(
@@ -368,12 +565,14 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
             color: isSelected ? const Color(0xFFC5A052) : Colors.white,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: isSelected ? const Color(0xFFC5A052) : const Color(0xFFE8DFD8),
+              color: isSelected
+                  ? const Color(0xFFC5A052)
+                  : const Color(0xFFE8DFD8),
               width: 1.2,
             ),
           ),
           child: Text(
-            bancoNombre,
+            label ?? bancoNombre,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 10,

@@ -6,7 +6,13 @@ const { authMiddleware } = require('../middleware/auth');
 const { requireRol } = require('../middleware/roles');
 const productController = require('../controllers/productController');
 const orderController = require('../controllers/orderController');
+const trackingController = require('../controllers/trackingController');
+const returnController = require('../controllers/returnController');
+const notificationPrefsController = require('../controllers/notificationPrefsController');
+const deliveryScheduleController = require('../controllers/deliveryScheduleController');
 const { requireFlag } = require('./configRoutes');
+const { exigirCapacidad } = require('../middleware/exigirCapacidad');
+const { CAPACIDADES } = require('../services/capacidadesProveedor');
 const openBeautyFacts = require('../services/openBeautyFacts');
 const profileService = require('../services/biometric/profile.service');
 
@@ -43,10 +49,22 @@ router.delete('/admin/products/:id', authMiddleware, requireRol('admin'), produc
 
 // --- Rutas de Pedidos de GlowStore ---
 router.post('/store/envio/cotizacion', authMiddleware, orderController.cotizarEnvio);
-router.post('/store/checkout', requireFlag('glowstore'), authMiddleware, orderController.createOrder);
+router.post(
+  '/store/checkout',
+  requireFlag('glowstore'),
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.COMPRAR),
+  orderController.createOrder
+);
 router.get('/store/orders', authMiddleware, orderController.getOrders);
 router.get('/store/orders/:id', authMiddleware, orderController.getOrderById);
-router.post('/store/orders/:id/pay', requireFlag('glowstore'), authMiddleware, orderController.payOrder);
+router.post(
+  '/store/orders/:id/pay',
+  requireFlag('glowstore'),
+  authMiddleware,
+  exigirCapacidad(CAPACIDADES.COMPRAR),
+  orderController.payOrder
+);
 router.post('/payments/store-webhook', orderController.storeWebhook);
 
 // --- Rutas públicas de cotización de envío (L5) ---
@@ -59,6 +77,20 @@ router.post('/admin/store/orders/:id/deliver', authMiddleware, requireRol('admin
 router.post('/admin/store/orders/:id/cancel', authMiddleware, requireRol('admin'), orderController.cancelOrder);
 router.get('/admin/envios/:guia', authMiddleware, requireRol('admin'), orderController.getEnvioByGuia);
 router.patch('/admin/envios/:guia/status', authMiddleware, requireRol('admin'), orderController.updateEnvioStatus);
+
+// --- Rutas Provider/Salón: Fulfillment (F1-Logística) ---
+// Proveedor ve sus pedidos por despachar
+router.get('/provider/fulfillment/orders', authMiddleware, orderController.getProviderFulfillmentOrders);
+// Proveedor prepara items (marca listos para etiquetar)
+router.post('/provider/fulfillment/orders/:id/prepare', authMiddleware, orderController.prepareOrderItems);
+// Proveedor genera etiqueta via Envíame
+router.post('/provider/fulfillment/orders/:id/label', authMiddleware, orderController.generateEnvioLabel);
+// Proveedor solicita recolección al carrier
+router.post('/provider/fulfillment/orders/:id/pickup', authMiddleware, orderController.scheduleEnvioPickup);
+// Proveedor marca como despachado (carrier recogió)
+router.post('/provider/fulfillment/orders/:id/dispatch', authMiddleware, orderController.providerDispatchOrder);
+// Proveedor ve detalle de envío con label PDF
+router.get('/provider/fulfillment/envios/:id', authMiddleware, orderController.getProviderEnvioDetail);
 
 // POST /api/biometric/check
 router.post('/biometric/check', authMiddleware, async (req, res) => {
@@ -163,10 +195,44 @@ router.get('/biometric/recommended/:userId', authMiddleware, async (req, res) =>
     const products = await openBeautyFacts.getRecommendedProducts(keyIngredients, 5);
     res.json({ products });
   } catch (error) {
-    console.error('Error en /biometric/recommended:', error);
-    res.status(500).json({ error: 'Error al obtener productos recomendados' });
-  }
-});
+      console.error('Error en /biometric/recommended:', error);
+      res.status(500).json({ error: 'Error al obtener productos recomendados' });
+    }
+  });
 
-wrapRouterAsync(router);
-module.exports = router;
+  // --- Tracking Unificado (Fase 5) ---
+  // Público: tracking para cliente final (con rate-limit en middleware)
+  router.get('/tracking/:guia', trackingController.getPublicTracking);
+
+  // Proveedor: tracking + acciones
+  router.get('/provider/tracking/:guia', authMiddleware, trackingController.getProviderTracking);
+
+  // Admin: dashboard logística CS
+  router.get('/admin/logistics/shipments', authMiddleware, requireRol('admin'), trackingController.getAdminLogisticsShipments);
+  router.post('/admin/logistics/shipments/:id/manual-status', authMiddleware, requireRol('admin'), trackingController.manualStatusShipment);
+  router.post('/admin/logistics/shipments/:id/reprocess-webhook', authMiddleware, requireRol('admin'), trackingController.reprocessWebhook);
+
+  // --- Devoluciones (Reverse Logistics - Fase 5) ---
+  // Cliente: solicitar devolución + listar mis devoluciones
+  router.post('/client/orders/:id/return', authMiddleware, returnController.solicitarDevolucion);
+  router.get('/client/returns', authMiddleware, returnController.getMisDevoluciones);
+
+  // Proveedor: listar + aprobar/rechazar/recibir devoluciones
+  router.get('/provider/returns', authMiddleware, returnController.getProviderDevoluciones);
+  router.post('/provider/returns/:id/approve', authMiddleware, returnController.aprobarDevolucion);
+  router.post('/provider/returns/:id/reject', authMiddleware, returnController.rechazarDevolucion);
+  router.post('/provider/returns/:id/receive', authMiddleware, returnController.recibirDevolucion);
+
+  // --- Preferencias de Notificaciones (Fase 5) ---
+    router.get('/notifications/prefs', authMiddleware, notificationPrefsController.getNotificationPrefs);
+    router.post('/notifications/prefs', authMiddleware, notificationPrefsController.updateNotificationPrefs);
+    router.post('/notifications/prefs/reset', authMiddleware, notificationPrefsController.resetNotificationPrefs);
+
+    // --- Agenda de Entrega / Citas (Fase 5) ---
+    router.get('/delivery-slots', authMiddleware, deliveryScheduleController.getDeliverySlots);
+    router.post('/orders/:id/schedule-delivery', authMiddleware, deliveryScheduleController.scheduleDelivery);
+    router.get('/orders/:id/delivery-schedule', authMiddleware, deliveryScheduleController.getDeliverySchedule);
+    router.delete('/orders/:id/delivery-schedule', authMiddleware, deliveryScheduleController.cancelDeliverySchedule);
+
+    wrapRouterAsync(router);
+    module.exports = router;

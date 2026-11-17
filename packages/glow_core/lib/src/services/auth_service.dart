@@ -71,11 +71,15 @@ class AuthService {
   static Future<Map<String, dynamic>?> login(
       String email, String password) async {
     final baseUrl = await getBaseUrl();
-    final response = await http.post(
-      Uri.parse('$baseUrl/api/auth/login'),
-      headers: _jsonHeaders,
-      body: json.encode({'email': email, 'password': password}),
-    );
+    // Sin timeout, una API que no responde deja `_isLoading` en true para
+    // siempre y el botón queda deshabilitado sin explicación.
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl/api/auth/login'),
+          headers: _jsonHeaders,
+          body: json.encode({'email': email, 'password': password}),
+        )
+        .timeout(const Duration(seconds: 25));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final prefs = await SharedPreferences.getInstance();
@@ -450,6 +454,68 @@ class AuthService {
       if (data is Map<String, dynamic>) return data;
     } catch (_) {}
     return null;
+  }
+
+  /// Envía el RUT a revisión del equipo (D-GL-030).
+  ///
+  /// El soporte viaja como data URI porque la app no tiene bucket propio para
+  /// documentos de perfil; el backend calcula el hash y NO aplica la
+  /// responsabilidad de IVA hasta que la revisión quede aprobada.
+  static Future<Map<String, dynamic>?> enviarRutParaRevision({
+    required String rutNumero,
+    required int rutResponsabilidadCodigo,
+    required String soporteDataUri,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    // Sin sesión no hay nada que enviar. Devolver `null` aquí se confundía con un
+    // fallo de red y la pantalla culpaba a la conexión del usuario.
+    if (token == null) return {'error': 'SIN_SESION'};
+    final response = await http.post(
+      Uri.parse('$baseUrl/api/provider/fiscal/rut'),
+      headers: {
+        ..._jsonHeaders,
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode({
+        'rut_numero': rutNumero,
+        'rut_responsabilidad_codigo': rutResponsabilidadCodigo,
+        'soporte_url': soporteDataUri,
+      }),
+    );
+    try {
+      final data = json.decode(response.body);
+      if (data is Map<String, dynamic>) {
+        // Se devuelve también el estado HTTP: un 400/409 trae el motivo real y la
+        // pantalla debe mostrarlo en vez de culpar a la conexión.
+        return {...data, 'status': response.statusCode, 'ok': response.statusCode < 400};
+      }
+    } catch (_) {}
+    return {'error': 'RESPUESTA_INVALIDA', 'status': response.statusCode};
+  }
+
+  /// Capacidades de la cuenta (D-GL-031). La app no deduce el estado: lo lee.
+  ///
+  /// Devuelve `null` si no hay sesión o la petición falla; la UI debe tratar el
+  /// null como "no mostrar aviso", nunca como "todo permitido".
+  static Future<Map<String, dynamic>?> obtenerCapacidadesProveedor() async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    if (token == null) return null;
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/provider/capacidades'),
+        headers: {
+          ..._jsonHeaders,
+          'Authorization': 'Bearer $token',
+        },
+      );
+      if (response.statusCode != 200) return null;
+      final data = json.decode(response.body);
+      return data is Map<String, dynamic> ? data : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   static Future<bool> selectRole(String role) async {

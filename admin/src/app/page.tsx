@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Link from 'next/link';
 import { 
   TrendingUp, 
   Users, 
@@ -12,9 +13,12 @@ import {
   FileText,
   ExternalLink,
   Clock,
-  MapPin,
-  CheckCircle,
-  XCircle,
+  Calendar,
+  RefreshCw,
+  ShoppingBag,
+  GraduationCap,
+  Receipt,
+  Wallet,
 } from 'lucide-react';
 import {
   AreaChart,
@@ -87,18 +91,107 @@ function formatCOPSafe(val: number | null | undefined) {
   }).format(Number(val));
 }
 
+type AdminJsonResult = { ok: true; body: unknown } | { ok: false };
+
+async function fetchAdminJson(path: string, signal: AbortSignal): Promise<AdminJsonResult> {
+  try {
+    const response = await fetch(path, {
+      signal,
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    });
+    if (!response.ok) return { ok: false };
+    return { ok: true, body: await response.json() as unknown };
+  } catch {
+    return { ok: false };
+  }
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : null;
+}
+
+function asFiniteNumber(value: unknown): number | null {
+  if (typeof value !== 'number' && typeof value !== 'string') return null;
+  if (typeof value === 'string' && value.trim() === '') return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function parseFinancialMetrics(value: unknown): FinancialMetrics | null {
+  const record = asRecord(value);
+  if (!record) return null;
+  const fields = [
+    'gmv',
+    'total_commission',
+    'total_taxes',
+    'platform_gross_income',
+    'total_provider_payouts',
+    'total_bookings',
+  ] as const;
+  const values = fields.map((field) => asFiniteNumber(record[field]));
+  if (values.some((metric) => metric === null)) return null;
+  return Object.fromEntries(fields.map((field, index) => [field, values[index]])) as unknown as FinancialMetrics;
+}
+
+function parseDailyHistory(value: unknown): DailyHistoryPoint[] | null {
+  if (!Array.isArray(value)) return null;
+  const points: DailyHistoryPoint[] = [];
+  for (const item of value) {
+    const row = asRecord(item);
+    const gmv = asFiniteNumber(row?.gmv);
+    const income = asFiniteNumber(row?.income);
+    if (!row || typeof row.date !== 'string' || gmv === null || income === null) return null;
+    points.push({ date: row.date, gmv, income });
+  }
+  return points;
+}
+
+function parseCategoryData(value: unknown): Array<Omit<CategoryPoint, 'color'>> | null {
+  if (!Array.isArray(value)) return null;
+  const points: Array<Omit<CategoryPoint, 'color'>> = [];
+  for (const item of value) {
+    const row = asRecord(item);
+    const count = asFiniteNumber(row?.booking_count);
+    const revenue = asFiniteNumber(row?.total_revenue);
+    if (!row || typeof row.category !== 'string' || count === null || revenue === null) return null;
+    points.push({ category: row.category, booking_count: count, total_revenue: revenue });
+  }
+  return points;
+}
+
+function isPqrsfMetricas(value: unknown): value is PqrsfMetricas {
+  const record = asRecord(value);
+  const arco = asRecord(record?.arco);
+  return Boolean(
+    record &&
+    asFiniteNumber(record.total) !== null &&
+    asFiniteNumber(record.abiertos) !== null &&
+    asFiniteNumber(record.vencidos) !== null &&
+    asFiniteNumber(record.sin_respuesta) !== null &&
+    Array.isArray(record.por_estado) &&
+    Array.isArray(record.por_prioridad) &&
+    arco &&
+    asFiniteNumber(arco.plazo_dias_habiles) !== null &&
+    typeof arco.festivos_incluidos === 'boolean' &&
+    Array.isArray(arco.abiertas)
+  );
+}
+
 export default function DashboardPage() {
-  const { user, loading: sessionLoading, error: sessionError, refetch: refetchSession } = useAdminSession();
+  const { user, loading: sessionLoading, refetch: refetchSession } = useAdminSession();
   const [loading, setLoading] = useState(true);
   const [backendStatus, setBackendStatus] = useState('Comprobando conexión...');
   const [metrics, setMetrics] = useState<FinancialMetrics | null>(null);
   const [dailyHistory, setDailyHistory] = useState<DailyHistoryPoint[]>([]);
   const [categoryData, setCategoryData] = useState<CategoryPoint[]>([]);
-  const [sosAlerts, setSosAlerts] = useState<SosAlert[]>([]);
-  const [pendingProviders, setPendingProviders] = useState<PendingProvider[]>([]);
+  const [sosAlerts, setSosAlerts] = useState<SosAlert[] | null>(null);
+  const [pendingProviders, setPendingProviders] = useState<PendingProvider[] | null>(null);
   const [pqrsfMetricas, setPqrsfMetricas] = useState<PqrsfMetricas | null>(null);
   const [dataError, setDataError] = useState<string | null>(null);
   const [failedSections, setFailedSections] = useState<string[]>([]);
+  const [lastCheckedAt, setLastCheckedAt] = useState<Date | null>(null);
   
   const abortControllerRef = useRef<AbortController | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -117,8 +210,8 @@ export default function DashboardPage() {
       setMetrics(null);
       setDailyHistory([]);
       setCategoryData([]);
-      setSosAlerts([]);
-      setPendingProviders([]);
+      setSosAlerts(null);
+      setPendingProviders(null);
       setPqrsfMetricas(null);
       setFailedSections(['financial', 'sos', 'kyc', 'pqrsf']);
       setLoading(false);
@@ -128,13 +221,12 @@ export default function DashboardPage() {
     setLoading(true);
     setDataError(null);
     try {
-      // Usar el proxy BFF en lugar de API_BASE_URL directo
-      const [summaryRes, sosRes, providersRes, pqrsfRes] = await Promise.all([
-        fetch('/api/glow-admin/dashboard/financial-summary', { signal, headers: { 'X-Requested-With': 'XMLHttpRequest' } }),
-        fetch('/api/glow-admin/sos/active', { signal, headers: { 'X-Requested-With': 'XMLHttpRequest' } }),
-        fetch('/api/glow-admin/provider/pending', { signal, headers: { 'X-Requested-With': 'XMLHttpRequest' } }),
-        // PQRSF (F5): las métricas las calcula el backend; el BFF ya permite el prefijo admin/.
-        fetch('/api/admin/tickets/metricas', { signal, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+      // Cada fuente queda aislada: una falla no borra los resultados de las demás.
+      const [summary, sos, providers, pqrsf] = await Promise.all([
+        fetchAdminJson('/api/glow-admin/dashboard/financial-summary', signal),
+        fetchAdminJson('/api/glow-admin/sos/active', signal),
+        fetchAdminJson('/api/glow-admin/provider/pending', signal),
+        fetchAdminJson('/api/admin/tickets/metricas', signal),
       ]);
 
       // Check if aborted
@@ -142,48 +234,62 @@ export default function DashboardPage() {
 
       const failures: string[] = [];
 
-      if (summaryRes.ok) {
-        const resJson = await summaryRes.json();
-        const data = resJson?.data;
-        setMetrics(data?.consolidated ?? null);
-        setDailyHistory(Array.isArray(data?.dailyHistory) ? data.dailyHistory : []);
-        setCategoryData(
-          Array.isArray(data?.categoryPopularity)
-            ? data.categoryPopularity.map((c: any, i: number) => ({
-                ...c,
-                color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
-              }))
-            : []
-        );
+      if (summary.ok) {
+        const payload = asRecord(summary.body);
+        const data = asRecord(payload?.data);
+        const consolidated = parseFinancialMetrics(data?.consolidated);
+        const history = parseDailyHistory(data?.dailyHistory);
+        const categories = parseCategoryData(data?.categoryPopularity);
+        if (consolidated && history && categories) {
+          setMetrics(consolidated);
+          setDailyHistory(history);
+          setCategoryData(categories.map((category, i) => ({
+            ...category,
+            color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
+          })));
+        } else {
+          setMetrics(null);
+          setDailyHistory([]);
+          setCategoryData([]);
+          failures.push('financial');
+        }
       } else {
+        setMetrics(null);
+        setDailyHistory([]);
+        setCategoryData([]);
         failures.push('financial');
       }
 
       if (signal.aborted) return;
 
-      if (sosRes.ok) {
-        const resJson = await sosRes.json();
-        const alerts = resJson?.data;
-        setSosAlerts(Array.isArray(alerts) ? alerts : []);
+      if (sos.ok) {
+        const alerts = asRecord(sos.body)?.data;
+        setSosAlerts(Array.isArray(alerts) ? alerts : null);
+        if (!Array.isArray(alerts)) failures.push('sos');
       } else {
+        setSosAlerts(null);
         failures.push('sos');
       }
 
       if (signal.aborted) return;
 
-      if (providersRes.ok) {
-        const resJson = await providersRes.json();
-        setPendingProviders(Array.isArray(resJson?.data) ? resJson.data : []);
+      if (providers.ok) {
+        const pending = asRecord(providers.body)?.data;
+        setPendingProviders(Array.isArray(pending) ? pending : null);
+        if (!Array.isArray(pending)) failures.push('kyc');
       } else {
+        setPendingProviders(null);
         failures.push('kyc');
       }
 
       if (signal.aborted) return;
 
-      if (pqrsfRes.ok) {
-        const resJson = await pqrsfRes.json();
-        setPqrsfMetricas(resJson?.data ?? null);
+      if (pqrsf.ok) {
+        const metricas = asRecord(pqrsf.body)?.data;
+        setPqrsfMetricas(isPqrsfMetricas(metricas) ? metricas : null);
+        if (!isPqrsfMetricas(metricas)) failures.push('pqrsf');
       } else {
+        setPqrsfMetricas(null);
         failures.push('pqrsf');
       }
 
@@ -193,12 +299,12 @@ export default function DashboardPage() {
       setBackendStatus(failures.length ? `Parcial: ${failures.join(', ')} fallaron` : 'Conectado');
     } catch (err) {
       if (signal.aborted) return;
-      console.error('[Dashboard] error:', err);
-      setDataError('Error de red al contactar el backend.');
-      setBackendStatus('Error de conexión');
-      setFailedSections(['financial', 'sos', 'kyc', 'pqrsf']);
+      console.error('[Dashboard] error inesperado:', err);
+      setDataError('No fue posible completar la consulta de algunas fuentes.');
+      setBackendStatus('Consulta parcial');
     } finally {
       if (!signal.aborted) {
+        setLastCheckedAt(new Date());
         setLoading(false);
       }
     }
@@ -240,22 +346,167 @@ export default function DashboardPage() {
 
   // KPI cards
   const kpis = [
-    { title: 'GMV Facturado', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.gmv), sub: 'Total de reservas completadas', icon: DollarSign, color: 'gold' },
-    { title: 'Comisión Plataforma (12%)', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.total_commission), sub: 'Neto de GlowApp', icon: Percent, color: 'rose' },
-    { title: 'Impuesto Recaudado (8%)', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.total_taxes), sub: 'Retenciones tributarias', icon: Activity, color: 'warning' },
-    { title: 'Dispersión Prestadores', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.total_provider_payouts), sub: 'Transferido a profesionales', icon: Users, color: 'info' },
+    { title: 'Valor bruto reportado', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.gmv), sub: 'Reservas completadas en el modelo histórico', icon: DollarSign, color: 'gold' },
+    { title: 'Comisión histórica', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.total_commission), sub: 'Cálculo legacy; no es ingreso conciliado', icon: Percent, color: 'rose' },
+    { title: 'Impuestos reportados', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.total_taxes), sub: 'Clasificación y valor pendientes de validación', icon: Activity, color: 'warning' },
+    { title: 'Dispersión reportada', value: loading ? 'Cargando...' : formatCOPSafe(metrics?.total_provider_payouts), sub: 'El agregado no confirma transferencias realizadas', icon: Users, color: 'info' },
   ];
 
   // PQRSF (F5): las cifras del módulo de atención al usuario.
   const pqrsfKpis = [
-    { title: 'PQRSF Totales', value: loading ? 'Cargando...' : String(pqrsfMetricas?.total ?? 0), sub: 'Solicitudes históricas', icon: FileText, color: 'gold' },
-    { title: 'PQRSF Abiertos', value: loading ? 'Cargando...' : String(pqrsfMetricas?.abiertos ?? 0), sub: 'Sin resolver ni cerrar', icon: Activity, color: 'info' },
-    { title: 'Fuera de plazo', value: loading ? 'Cargando...' : String(pqrsfMetricas?.vencidos ?? 0), sub: 'Sin primera respuesta a tiempo', icon: Clock, color: 'warning' },
-    { title: 'Sin primera respuesta', value: loading ? 'Cargando...' : String(pqrsfMetricas?.sin_respuesta ?? 0), sub: 'Nadie los ha contestado', icon: Bell, color: 'rose' },
+    { title: 'PQRSF Totales', value: loading ? 'Cargando...' : String(pqrsfMetricas?.total ?? 'No disponible'), sub: 'Solicitudes históricas', icon: FileText, color: 'gold' },
+    { title: 'PQRSF Abiertos', value: loading ? 'Cargando...' : String(pqrsfMetricas?.abiertos ?? 'No disponible'), sub: 'Sin resolver ni cerrar', icon: Activity, color: 'info' },
+    { title: 'Fuera de plazo', value: loading ? 'Cargando...' : String(pqrsfMetricas?.vencidos ?? 'No disponible'), sub: 'Sin primera respuesta a tiempo', icon: Clock, color: 'warning' },
+    { title: 'Sin primera respuesta', value: loading ? 'Cargando...' : String(pqrsfMetricas?.sin_respuesta ?? 'No disponible'), sub: 'Nadie los ha contestado', icon: Bell, color: 'rose' },
   ];
+  const pqrsfSinLectura = failedSections.includes('pqrsf') || pqrsfMetricas === null;
+  const mensajeSinPQRSF = pqrsfSinLectura
+    ? 'Métricas de PQRSF no disponibles.'
+    : 'La fuente no reportó registros para esta vista.';
+
+  const estadoFuente = (section: string, hasPayload = true) => {
+    if (loading) return 'Consultando';
+    if (!user || failedSections.includes(section) || !hasPayload) return 'No disponible';
+    return 'Fuente consultada';
+  };
+
+  const cobertura360 = [
+    {
+      title: 'Servicios y reservas',
+      icon: Calendar,
+      status: estadoFuente('financial', metrics !== null),
+      detail: metrics
+        ? `${metrics.total_bookings} reservas en el agregado histórico; no muestra el ciclo operativo completo ni una conciliación de pagos.`
+        : 'No hay una respuesta utilizable del resumen histórico de reservas.',
+      source: 'Resumen financiero legacy',
+      href: null,
+    },
+    {
+      title: 'Alertas SOS',
+      icon: ShieldAlert,
+      status: estadoFuente('sos', sosAlerts !== null),
+      detail: sosAlerts === null ? 'No hay una lectura válida de la fuente SOS.' : sosAlerts.length === 0 ? '0 alertas activas en la consulta recibida.' : `${sosAlerts.length} alertas activas requieren seguimiento.`,
+      source: 'Bandeja SOS',
+      href: '/admin/sos',
+    },
+    {
+      title: 'PQRSF',
+      icon: FileText,
+      status: estadoFuente('pqrsf', pqrsfMetricas !== null),
+      detail: pqrsfMetricas === null ? 'No hay una lectura válida de métricas de soporte.' : `${pqrsfMetricas.abiertos} solicitudes abiertas; ${pqrsfMetricas.vencidos} fuera de plazo.`,
+      source: 'Métricas y bandeja PQRSF',
+      href: '/admin/pqrsf',
+    },
+    {
+      title: 'Revisión de prestadores',
+      icon: Users,
+      status: estadoFuente('kyc', pendingProviders !== null),
+      detail: pendingProviders === null ? 'No hay una lectura válida de la cola de revisión.' : pendingProviders.length === 0 ? '0 prestadores pendientes en la consulta recibida.' : `${pendingProviders.length} prestadores pendientes de revisión.`,
+      source: 'Cola de verificación',
+      href: '/admin/prestadores',
+    },
+    {
+      title: 'Pagos, comisión y retiros',
+      icon: Wallet,
+      status: 'Pendiente de conciliación',
+      detail: 'El panel aún no separa cobro confirmado, comisión, costos de pasarela, saldo y dispersión conciliada.',
+      source: 'Wompi + ledger por integrar',
+      href: null,
+    },
+    {
+      title: 'Tienda e inventario',
+      icon: ShoppingBag,
+      status: 'Módulo existente; resumen pendiente',
+      detail: 'Pedidos y catálogo tienen pantallas propias; su estado y stock aún no se consolidan en esta portada.',
+      source: 'Pedidos y productos',
+      href: '/admin/store/orders',
+    },
+    {
+      title: 'Suscripciones y SaaS',
+      icon: Activity,
+      status: 'Sin resumen 360°',
+      detail: 'Glow IA+ y SaaS de salones deben aparecer como productos y ciclos de cobro separados.',
+      source: 'Facturación y entitlements por integrar',
+      href: null,
+    },
+    {
+      title: 'Academia y convenios',
+      icon: GraduationCap,
+      status: 'Módulo existente; resumen pendiente',
+      detail: 'La portada no consolida cupos, cierres de inscripción ni giros según convenio.',
+      source: 'Academia Glow',
+      href: '/admin/academia',
+    },
+    {
+      title: 'Clasificación tributaria',
+      icon: Receipt,
+      status: 'Pendiente de consolidación',
+      detail: 'La aprobación tributaria por categoría y el estado pendiente del perfil aún no se muestran aquí.',
+      source: 'Prestadores · IVA',
+      href: '/admin/prestadores',
+    },
+  ];
+
+  const esFuenteDisponible = (status: string) => status === 'Fuente consultada' || status === 'Fuentes parciales';
 
   return (
     <div className="space-y-8">
+      <section className="card" aria-labelledby="dashboard-overview-title">
+        <div className="card-content flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="caption uppercase tracking-wider">Control administrativo · GlowApp</p>
+            <h1 id="dashboard-overview-title" className="text-2xl font-semibold text-primary">Vista general 360°</h1>
+            <p className="body-sm text-muted mt-1">Cobertura actual de las líneas de negocio y disponibilidad de las fuentes conectadas.</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="caption text-muted" aria-live="polite">
+              {lastCheckedAt
+                ? `Última consulta: ${lastCheckedAt.toLocaleTimeString('es-CO', { timeZone: 'America/Bogota', hour: '2-digit', minute: '2-digit' })} · Colombia`
+                : 'Consulta aún no realizada'}
+            </span>
+            <button type="button" onClick={fetchDashboardData} disabled={loading || sessionLoading || !user} className="btn btn-secondary btn-sm" aria-label="Actualizar vista general">
+              <RefreshCw size={16} className={loading ? 'animate-spin' : ''} aria-hidden="true" />
+              Actualizar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="coverage-title" className="space-y-3">
+        <div>
+          <h2 id="coverage-title" className="text-lg font-semibold text-primary">Cobertura de operación</h2>
+          <p className="body-sm text-muted">“No disponible” significa que la consulta no tiene una fuente o respuesta válida; no equivale a cero actividad.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {cobertura360.map((item) => {
+            const Icon = item.icon;
+            const content = (
+              <div className="card h-full transition-fast hover:border-brand-gold-border">
+                <div className="card-content space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="kpi-icon gold"><Icon size={20} aria-hidden="true" /></span>
+                      <h3 className="body-sm font-semibold text-primary">{item.title}</h3>
+                    </div>
+                    {item.href && <ExternalLink size={16} className="text-muted shrink-0" aria-hidden="true" />}
+                  </div>
+                  <p className={`caption font-semibold ${esFuenteDisponible(item.status) ? 'text-success' : item.status === 'No disponible' ? 'text-danger' : 'text-warning'}`}>
+                    {item.status}
+                  </p>
+                  <p className="body-sm text-muted">{item.detail}</p>
+                  <p className="micro text-muted">Fuente: {item.source}</p>
+                </div>
+              </div>
+            );
+            return item.href ? (
+              <Link key={item.title} href={item.href} className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-gold-border" aria-label={`Abrir módulo: ${item.title}`}>
+                {content}
+              </Link>
+            ) : <div key={item.title}>{content}</div>;
+          })}
+        </div>
+      </section>
+
       {/* Status Bar */}
       {(dataError || backendStatus === 'Sin sesión de administrador') && (
         <div className="card border-danger bg-danger-bg/50">
@@ -273,6 +524,19 @@ export default function DashboardPage() {
           </div>
         </div>
       )}
+
+      {/* Estas cifras heredadas no son KPI financieros autorizados para cierre. */}
+      <div className="card border-warning bg-warning-bg/40" role="note" aria-label="Advertencia sobre cifras financieras">
+        <div className="card-content flex items-start gap-3">
+          <ShieldAlert className="icon text-warning shrink-0" size={20} />
+          <div>
+            <p className="body-sm font-semibold text-warning">Indicadores financieros heredados — no conciliados</p>
+            <p className="body-sm text-muted">
+              Estas cifras provienen del cálculo actual por reservas y no tienen todavía periodo ni conciliación financiera aprobados. Son referencias operativas; no representan ingreso contable, impuestos definitivos ni pagos confirmados.
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* Financial KPI Cards */}
       <section className="kpi-grid">
@@ -299,14 +563,14 @@ export default function DashboardPage() {
         <div className="card">
           <div className="card-header">
             <div>
-              <h3 className="card-title">Evolución Semanal de Facturación</h3>
-              <p className="card-subtitle">Comparativa diaria de volumen de ventas e ingresos</p>
+              <h3 className="card-title">Actividad histórica de reservas</h3>
+              <p className="card-subtitle">Serie heredada sin periodo contable ni conciliación; no equivale a facturación o ingreso reconocido</p>
             </div>
           </div>
           <div className="card-content" style={{ height: '320px' }}>
             {dailyHistory.length === 0 ? (
               <div className="flex items-center justify-center h-full text-muted">
-                Sin datos de facturación registrados en el backend.
+                {failedSections.includes('financial') ? 'Fuente histórica no disponible.' : 'La fuente no reportó registros para esta serie.'}
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
@@ -325,8 +589,8 @@ export default function DashboardPage() {
                   <XAxis dataKey="date" stroke="var(--text-muted)" fontSize={11} />
                   <YAxis stroke="var(--text-muted)" fontSize={11} />
                   <Tooltip contentStyle={{ backgroundColor: 'var(--bg-modal)', borderColor: 'var(--border-standard)', borderRadius: '12px' }} />
-                  <Area type="monotone" dataKey="gmv" stroke="#ec4899" strokeWidth={2.5} fillOpacity={1} fill="url(#colorGmv)" name="GMV Reserva" />
-                  <Area type="monotone" dataKey="income" stroke="#f43f5e" strokeWidth={2.5} fillOpacity={1} fill="url(#colorIncome)" name="Ingreso Plataforma" />
+                  <Area type="monotone" dataKey="gmv" stroke="#ec4899" strokeWidth={2.5} fillOpacity={1} fill="url(#colorGmv)" name="Valor bruto legacy" />
+                  <Area type="monotone" dataKey="income" stroke="#f43f5e" strokeWidth={2.5} fillOpacity={1} fill="url(#colorIncome)" name="Comisión + impuestos legacy" />
                 </AreaChart>
               </ResponsiveContainer>
             )}
@@ -337,14 +601,14 @@ export default function DashboardPage() {
         <div className="card">
           <div className="card-header">
             <div>
-              <h3 className="card-title">Participación por Categoría</h3>
-              <p className="card-subtitle">Desglose analítico de los servicios estéticos más solicitados</p>
+              <h3 className="card-title">Reservas completadas por categoría</h3>
+              <p className="card-subtitle">Conteo y valor bruto histórico; cifras no conciliadas</p>
             </div>
           </div>
           <div className="card-content" style={{ height: '320px' }}>
             {categoryData.length === 0 ? (
               <div className="flex items-center justify-center h-full text-muted">
-                Sin datos de categorías registrados en el backend.
+                {failedSections.includes('financial') ? 'Fuente de categorías no disponible.' : 'La fuente no reportó registros de categorías.'}
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
@@ -353,7 +617,7 @@ export default function DashboardPage() {
                   <XAxis type="number" stroke="var(--text-muted)" fontSize={11} />
                   <YAxis dataKey="category" type="category" stroke="var(--text-muted)" fontSize={11} width={80} />
                   <Tooltip contentStyle={{ backgroundColor: 'var(--bg-modal)', borderColor: 'var(--border-standard)', borderRadius: '12px' }} />
-                  <Bar dataKey="total_revenue" radius={[0, 8, 8, 0]} barSize={20} name="Ingresos Totales">
+                  <Bar dataKey="total_revenue" radius={[0, 8, 8, 0]} barSize={20} name="Valor bruto legacy">
                     {categoryData.map((entry, idx) => (
                       <Cell key={`cell-${idx}`} fill={entry.color} />
                     ))}
@@ -394,7 +658,7 @@ export default function DashboardPage() {
           </div>
           <div className="card-content">
             {!pqrsfMetricas || pqrsfMetricas.por_prioridad.length === 0 ? (
-              <div className="flex items-center justify-center h-24 text-muted">Sin PQRSF registrados.</div>
+              <div className="flex items-center justify-center h-24 text-muted">{mensajeSinPQRSF}</div>
             ) : (
               <table className="w-full body-sm">
                 <thead>
@@ -436,7 +700,7 @@ export default function DashboardPage() {
           </div>
           <div className="card-content space-y-3">
             {!pqrsfMetricas || pqrsfMetricas.arco.abiertas.length === 0 ? (
-              <div className="flex items-center justify-center h-24 text-muted">Sin solicitudes ARCO abiertas.</div>
+              <div className="flex items-center justify-center h-24 text-muted">{pqrsfSinLectura ? mensajeSinPQRSF : 'No hay solicitudes ARCO abiertas.'}</div>
             ) : (
               pqrsfMetricas.arco.abiertas.map((solicitud) => (
                 <div key={solicitud.id} className="flex items-center justify-between gap-3">
@@ -463,7 +727,7 @@ export default function DashboardPage() {
           </div>
           <div className="card-content space-y-3">
             {!pqrsfMetricas || pqrsfMetricas.por_estado.length === 0 ? (
-              <div className="flex items-center justify-center h-24 text-muted">Sin PQRSF registrados.</div>
+              <div className="flex items-center justify-center h-24 text-muted">{mensajeSinPQRSF}</div>
             ) : (
               pqrsfMetricas.por_estado.map((fila) => (
                 <div key={fila.estado} className="flex items-center justify-between">
@@ -486,31 +750,33 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between">
               <span className="body-sm text-secondary">Backend API</span>
               <span className={`chip chip-sm ${failedSections.includes('financial') ? 'danger' : 'success'}`}>
-                {failedSections.includes('financial') ? 'Error' : 'Conectado'}
+                {failedSections.includes('financial') || !metrics ? 'No disponible' : backendStatus}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="body-sm text-secondary">Alertas SOS</span>
-              <span className={`chip chip-sm ${failedSections.includes('sos') ? 'danger' : 'success'}`}>
-                {failedSections.includes('sos') ? 'Error' : `${sosAlerts.length} activas`}
+              <span className={`chip chip-sm ${failedSections.includes('sos') || sosAlerts === null ? 'danger' : 'success'}`}>
+                {failedSections.includes('sos') || sosAlerts === null ? 'No disponible' : `${sosAlerts.length} activas`}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="body-sm text-secondary">KYC Pendientes</span>
-              <span className={`chip chip-sm ${failedSections.includes('kyc') ? 'danger' : 'success'}`}>
-                {failedSections.includes('kyc') ? 'Error' : `${pendingProviders.length} pendientes`}
+              <span className={`chip chip-sm ${failedSections.includes('kyc') || pendingProviders === null ? 'danger' : 'success'}`}>
+                {failedSections.includes('kyc') || pendingProviders === null ? 'No disponible' : `${pendingProviders.length} pendientes`}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="body-sm text-secondary">PQRSF</span>
-              <span className={`chip chip-sm ${failedSections.includes('pqrsf') ? 'danger' : 'success'}`}>
-                {failedSections.includes('pqrsf') ? 'Error' : `${pqrsfMetricas?.abiertos ?? 0} abiertos`}
+              <span className={`chip chip-sm ${failedSections.includes('pqrsf') || !pqrsfMetricas ? 'danger' : 'success'}`}>
+                {failedSections.includes('pqrsf') || !pqrsfMetricas ? 'No disponible' : `${pqrsfMetricas.abiertos} abiertos`}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="body-sm text-secondary">Última actualización</span>
               <span className="chip chip-sm info">
-                {new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })}
+                {lastCheckedAt
+                  ? lastCheckedAt.toLocaleTimeString('es-CO', { timeZone: 'America/Bogota', hour: '2-digit', minute: '2-digit' })
+                  : 'Sin consulta'}
               </span>
             </div>
           </div>
@@ -542,13 +808,13 @@ export default function DashboardPage() {
                 <p className="micro text-muted">Gestionar inventario</p>
               </div>
             </a>
-            <a href="/admin/academia" className="flex items-center gap-3 p-3 rounded-lg border border-border-subtle hover:border-brand-gold-border hover:bg-bg-surface transition-fast">
+            <Link href="/admin/academia" className="flex items-center gap-3 p-3 rounded-lg border border-border-subtle hover:border-brand-gold-border hover:bg-bg-surface transition-fast">
               <ShieldAlert className="icon text-gold" size={20} />
               <div>
                 <p className="body-sm font-medium text-primary">Academia Glow</p>
                 <p className="micro text-muted">Contenido educativo</p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

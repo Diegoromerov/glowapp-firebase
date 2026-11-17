@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { sanitizePath, sanitizeText } from '@/lib/security';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
@@ -8,9 +8,7 @@ import {
   ShieldCheck, 
   FileText, 
   CheckCircle, 
-  XCircle, 
   Clock, 
-  AlertTriangle, 
   Award, 
   FileDown, 
   PenTool, 
@@ -39,6 +37,15 @@ interface TemplateItem {
   disclaimer: string;
 }
 
+interface GeneratedDocument {
+  watermark: string;
+  title: string;
+  renderedBody: string;
+  disclaimer: string;
+}
+
+type SourceStatus = 'loading' | 'available' | 'unavailable';
+
 export default function AdminBusinessPage() {
   const { user } = useAuth();
   const router = useRouter();
@@ -46,10 +53,12 @@ export default function AdminBusinessPage() {
   const [activeTab, setActiveTab] = useState<'queue' | 'templates' | 'kpis'>('queue');
   const [queue, setQueue] = useState<EvidenceItem[]>([]);
   const [templates, setTemplates] = useState<TemplateItem[]>([]);
+  const [queueStatus, setQueueStatus] = useState<SourceStatus>('loading');
+  const [templatesStatus, setTemplatesStatus] = useState<SourceStatus>('loading');
   const [loading, setLoading] = useState<boolean>(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('TPL_LABOR_CONTRACT_BEAUTY');
-  const [generatedDoc, setGeneratedDoc] = useState<any>(null);
+  const [generatedDoc, setGeneratedDoc] = useState<GeneratedDocument | null>(null);
   const [notes, setNotes] = useState<string>('');
   const [feedbackMsg, setFeedbackMsg] = useState<string | null>(null);
 
@@ -67,34 +76,59 @@ export default function AdminBusinessPage() {
   }, [user, loading, router]);
 
   // Fetch real data from backend APIs via BFF proxy
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
-    try {
-      const headers = getBffHeaders();
+    setQueueStatus('loading');
+    setTemplatesStatus('loading');
+    const headers = getBffHeaders();
 
-      // 1. Fetch Queue
-      const queueRes = await fetch('/api/v1/business/admin/queue', { headers });
-      if (queueRes.ok) {
-        const qData = await queueRes.json();
-        if (qData.success) setQueue(qData.data || []);
-      }
+    const [queueResult, templatesResult] = await Promise.allSettled([
+      fetch('/api/v1/business/admin/queue', { headers }),
+      fetch('/api/v1/business/templates', { headers }),
+    ]);
 
-      // 2. Fetch Templates
-      const tplRes = await fetch('/api/v1/business/templates', { headers });
-      if (tplRes.ok) {
-        const tData = await tplRes.json();
-        if (tData.success) setTemplates(tData.data || []);
+    if (queueResult.status === 'fulfilled') {
+      try {
+        const response = queueResult.value;
+        const payload = await response.json();
+        if (!response.ok || payload?.success !== true || !Array.isArray(payload.data)) {
+          throw new Error('Respuesta no disponible o inválida para la cola de evidencias.');
+        }
+        setQueue(payload.data);
+        setQueueStatus('available');
+      } catch (err) {
+        console.warn('No se pudo cargar la cola de evidencias:', err);
+        setQueueStatus('unavailable');
       }
-    } catch (err) {
-      console.warn('⚠️ Error conectando al servidor backend:', err);
-    } finally {
-      setLoading(false);
+    } else {
+      console.warn('No se pudo conectar con la cola de evidencias:', queueResult.reason);
+      setQueueStatus('unavailable');
     }
-  };
+
+    if (templatesResult.status === 'fulfilled') {
+      try {
+        const response = templatesResult.value;
+        const payload = await response.json();
+        if (!response.ok || payload?.success !== true || !Array.isArray(payload.data)) {
+          throw new Error('Respuesta no disponible o inválida para las plantillas.');
+        }
+        setTemplates(payload.data);
+        setTemplatesStatus('available');
+      } catch (err) {
+        console.warn('No se pudieron cargar las plantillas:', err);
+        setTemplatesStatus('unavailable');
+      }
+    } else {
+      console.warn('No se pudo conectar con las plantillas:', templatesResult.reason);
+      setTemplatesStatus('unavailable');
+    }
+
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   // Approve / Reject Evidence
   const handleReview = async (evidenceId: string, action: 'APPROVED' | 'REJECTED') => {
@@ -111,14 +145,13 @@ export default function AdminBusinessPage() {
       });
 
       if (res.ok) {
-        const result = await res.json();
         setFeedbackMsg(`Evidencia ${action === 'APPROVED' ? 'aprobada' : 'rechazada'} exitosamente.`);
         setNotes('');
         await fetchData();
       } else {
         setFeedbackMsg('Error procesando revisión de evidencia.');
       }
-    } catch (err) {
+    } catch {
       setFeedbackMsg('Fallo de conexión al enviar revisión.');
     } finally {
       setActionLoading(null);
@@ -196,8 +229,8 @@ export default function AdminBusinessPage() {
             <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Pendientes de Revisión</span>
             <Clock className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-3xl font-extrabold text-white mt-4">{queue.length}</p>
-          <p className="text-xs text-slate-500 mt-1">Evidencias en cola</p>
+          <p className="text-3xl font-extrabold text-white mt-4">{queueStatus === 'available' ? queue.length : '—'}</p>
+          <p className="text-xs text-slate-500 mt-1">{queueStatus === 'available' ? 'Evidencias en cola' : 'Fuente no disponible'}</p>
         </div>
 
         <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
@@ -205,8 +238,8 @@ export default function AdminBusinessPage() {
             <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Cumplimiento Medio</span>
             <Award className="w-5 h-5 text-emerald-400" />
           </div>
-          <p className="text-3xl font-extrabold text-white mt-4">78.5%</p>
-          <p className="text-xs text-emerald-400/80 mt-1">+4.2% este mes</p>
+          <p className="text-3xl font-extrabold text-white mt-4">—</p>
+          <p className="text-xs text-slate-500 mt-1">Métrica sin fuente conectada</p>
         </div>
 
         <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
@@ -214,8 +247,8 @@ export default function AdminBusinessPage() {
             <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Plantillas Activas</span>
             <FileText className="w-5 h-5 text-sky-400" />
           </div>
-          <p className="text-3xl font-extrabold text-white mt-4">{templates.length || 2}</p>
-          <p className="text-xs text-slate-500 mt-1">Formatos de ley</p>
+          <p className="text-3xl font-extrabold text-white mt-4">{templatesStatus === 'available' ? templates.length : '—'}</p>
+          <p className="text-xs text-slate-500 mt-1">{templatesStatus === 'available' ? 'Plantillas informadas por el backend' : 'Fuente no disponible'}</p>
         </div>
 
         <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
@@ -223,8 +256,8 @@ export default function AdminBusinessPage() {
             <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Estado del Servidor</span>
             <ShieldCheck className="w-5 h-5 text-rose-500" />
           </div>
-          <p className="text-lg font-bold text-emerald-400 mt-4">P0 Inmunizado</p>
-          <p className="text-xs text-slate-500 mt-1">JWT + RBAC Activo</p>
+          <p className="text-lg font-bold text-slate-300 mt-4">No consultado</p>
+          <p className="text-xs text-slate-500 mt-1">Salud del servidor sin fuente conectada</p>
         </div>
       </div>
 
@@ -238,7 +271,7 @@ export default function AdminBusinessPage() {
               : 'border-transparent text-slate-400 hover:text-slate-200'
           }`}
         >
-          Cola de Verificación ({queue.length})
+          Cola de Verificación ({queueStatus === 'available' ? queue.length : '—'})
         </button>
 
         <button
@@ -259,7 +292,11 @@ export default function AdminBusinessPage() {
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
             <h2 className="text-lg font-bold text-white mb-4">Evidencias Subidas Pendientes de Validación</h2>
 
-            {queue.length === 0 ? (
+            {queueStatus === 'loading' ? (
+              <div className="text-center py-12 text-slate-500">Consultando la fuente de evidencias…</div>
+            ) : queueStatus === 'unavailable' ? (
+              <div className="text-center py-12 text-amber-300">La fuente de evidencias no está disponible; el panel no puede confirmar que la cola esté vacía.</div>
+            ) : queue.length === 0 ? (
               <div className="text-center py-12 text-slate-500">
                 <CheckCircle className="w-12 h-12 mx-auto text-slate-600 mb-3" />
                 <p>No hay evidencias pendientes en la cola de revisión.</p>
@@ -379,7 +416,7 @@ export default function AdminBusinessPage() {
             ) : (
               <div className="text-center py-12 text-slate-500 border border-dashed border-slate-800 rounded-xl">
                 <FileText className="w-10 h-10 mx-auto text-slate-600 mb-2" />
-                <p>Selecciona una plantilla y presiona "Generar Documento" para visualizar la vista previa.</p>
+              <p>Selecciona una plantilla y presiona Generar documento para visualizar la vista previa.</p>
               </div>
             )}
           </div>

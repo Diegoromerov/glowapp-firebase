@@ -17,8 +17,6 @@ import {
   CheckCircle,
   Loader2,
   Upload,
-  Download,
-  Eye,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -51,6 +49,7 @@ interface Categoria {
 export default function AdminProductosPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [catalogoDisponible, setCatalogoDisponible] = useState(false);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [productos, setProductos] = useState<Producto[]>([]);
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -93,6 +92,7 @@ export default function AdminProductosPage() {
   const fetchProductos = useCallback(async () => {
     setLoading(true);
     setError(null);
+    setCatalogoDisponible(false);
     try {
       const headers = getBffHeaders();
       const res = await fetch(`/api/admin/products?page=${currentPage}&limit=${pageSize}`, { headers });
@@ -103,12 +103,19 @@ export default function AdminProductosPage() {
       }
 
       const data = await res.json();
-      setProductos(data.data || data.filas || []);
-      setTotalCount(data.total || data.count || 0);
-      setTotalPages(Math.ceil((data.total || data.count || 0) / pageSize));
+      const filas = data.data ?? data.filas;
+      const total = data.total ?? data.count;
+      if (!Array.isArray(filas) || !Number.isFinite(Number(total))) throw new Error('Respuesta inválida del catálogo de productos');
+      setProductos(filas);
+      setTotalCount(Number(total));
+      setTotalPages(Math.ceil(Number(total) / pageSize));
+      setCatalogoDisponible(true);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error desconocido';
       setError(message);
+      setProductos([]);
+      setTotalCount(0);
+      setCatalogoDisponible(false);
     } finally {
       setLoading(false);
     }
@@ -242,7 +249,7 @@ export default function AdminProductosPage() {
       }
 
       const presignedData = await presignedRes.json();
-      const { uploadUrl, key, fileUrl, cdnUrl } = presignedData.data;
+      const { uploadUrl, key } = presignedData.data;
 
       // 2. Upload directly to R2 (not via proxy)
       const uploadRes = await fetch(uploadUrl, {
@@ -445,7 +452,7 @@ export default function AdminProductosPage() {
           />
         </div>
         <div className="flex items-center gap-2 text-sm text-slate-400">
-          <span>Página {currentPage} de {totalPages || 1} • {totalCount} productos</span>
+          <span>{catalogoDisponible ? `Página ${currentPage} de ${totalPages || 1} • ${totalCount} productos` : 'Catálogo no disponible'}</span>
         </div>
       </div>
 
@@ -470,6 +477,12 @@ export default function AdminProductosPage() {
                   <td colSpan={7} className="py-12 text-center text-slate-400">
                     <Loader2 size={24} className="animate-spin mx-auto mb-2 text-rose-500" />
                     Cargando catálogo...
+                  </td>
+                </tr>
+              ) : !catalogoDisponible ? (
+                <tr>
+                  <td colSpan={7} className="py-12 text-center text-slate-400">
+                    No se pudo consultar el catálogo; no es posible confirmar que esté vacío.
                   </td>
                 </tr>
               ) : filteredProducts.length === 0 ? (
@@ -552,7 +565,7 @@ export default function AdminProductosPage() {
         {totalPages > 1 && (
           <div className="p-4 border-t border-slate-800 flex items-center justify-between">
             <div className="text-sm text-slate-400">
-              Mostrando {((currentPage - 1) * pageSize) + 1} - {Math.min(currentPage * pageSize, totalCount)} de {totalCount}
+              {catalogoDisponible ? `Mostrando ${((currentPage - 1) * pageSize) + 1} - ${Math.min(currentPage * pageSize, totalCount)} de ${totalCount}` : 'Catálogo no disponible'}
             </div>
             <div className="flex items-center gap-2">
               <button

@@ -155,6 +155,9 @@ describe('GET /api/admin/providers/fiscal — el censo no depende del filtro', (
       declarados: 1,
       sin_declarar: 1,
       override: 1,
+      // Cola de revisión del RUT (D-GL-030): ninguno de los sembrados ha subido
+      // documento, así que todos están SIN_ENVIAR.
+      revision: { sin_enviar: 3, pendiente: 0, aprobada: 0, rechazada: 0 },
     });
   });
 

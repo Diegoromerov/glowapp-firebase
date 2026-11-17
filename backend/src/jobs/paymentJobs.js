@@ -133,6 +133,8 @@ async function ejecutarRetirosAutomaticos() {
         AND pw.saldo_disponible >= $1
         AND pw.retiros_pausados = FALSE
         AND pw.cuenta_verificada = TRUE
+        AND pw.cuenta_estado_verificacion = 'APROBADA'
+        AND (pw.cuenta_retiros_bloqueados_hasta IS NULL OR pw.cuenta_retiros_bloqueados_hasta <= NOW())
     `, [minCop]);
 
     console.log(`🔄 Retiros automáticos: ${wallets.length} prestador(es) en cola.`);
@@ -141,7 +143,30 @@ async function ejecutarRetirosAutomaticos() {
       try {
         await client.query('BEGIN');
 
-        const monto = parseFloat(wallet.saldo_disponible);
+        // Releer y bloquear la wallet para no dispersar usando el snapshot de la
+        // consulta inicial si el proveedor congeló retiros mientras esperaba.
+        const { rows: walletLockedRows } = await client.query(
+          `SELECT saldo_disponible, retiros_pausados, cuenta_verificada,
+                  cuenta_estado_verificacion,
+                  numero_cuenta, banco,
+                  cuenta_retiros_bloqueados_hasta, modelo_retiro
+             FROM provider_wallet WHERE provider_id = $1 FOR UPDATE`,
+          [wallet.provider_id]
+        );
+        const walletLocked = walletLockedRows[0];
+        if (!walletLocked || walletLocked.retiros_pausados || !walletLocked.cuenta_verificada ||
+            walletLocked.cuenta_estado_verificacion !== 'APROBADA' ||
+            (walletLocked.cuenta_retiros_bloqueados_hasta &&
+             new Date(walletLocked.cuenta_retiros_bloqueados_hasta).getTime() > Date.now())) {
+          await client.query('ROLLBACK');
+          continue;
+        }
+
+        const monto = parseFloat(walletLocked.saldo_disponible);
+        if (!Number.isFinite(monto) || monto < minCop) {
+          await client.query('ROLLBACK');
+          continue;
+        }
 
         // Verificar disputas activas
         const { rows: disputas } = await client.query(`
@@ -159,7 +184,7 @@ async function ejecutarRetirosAutomaticos() {
         // Calcular próximo retiro según el modelo
         const ahora = new Date();
         let proximoRetiro;
-        if (wallet.modelo_retiro === 'QUINCENA') {
+        if (walletLocked.modelo_retiro === 'QUINCENA') {
           const dia = ahora.getDate();
           if (dia < 15) {
             proximoRetiro = new Date(ahora.getFullYear(), ahora.getMonth(), 15);
@@ -175,8 +200,8 @@ async function ejecutarRetirosAutomaticos() {
           `INSERT INTO retiros (provider_id, wallet_id, monto, tipo_origen, numero_cuenta, banco, estado)
            VALUES ($1, $2, $3, $4, $5, $6, 'PROCESANDO')
            RETURNING *`,
-          [wallet.provider_id, wallet.id, monto, wallet.modelo_retiro,
-           wallet.numero_cuenta, wallet.banco]
+          [wallet.provider_id, wallet.id, monto, walletLocked.modelo_retiro,
+           walletLocked.numero_cuenta, walletLocked.banco]
         );
 
         // Debitar wallet
@@ -198,7 +223,7 @@ async function ejecutarRetirosAutomaticos() {
            VALUES ($1, 'DEBITO_RETIRO', $2, 0, 'PENDIENTE', $3, $4)`,
           [
             wallet.provider_id, monto,
-            `Retiro automático ${wallet.modelo_retiro}`,
+            `Retiro automático ${walletLocked.modelo_retiro}`,
             JSON.stringify({ retiro_id: retiroRows[0].id, automatico: true })
           ]
         );
@@ -208,8 +233,8 @@ async function ejecutarRetirosAutomaticos() {
           retiroId: retiroRows[0].id,
           providerId: wallet.provider_id,
           amount: monto,
-          numeroCuenta: wallet.numero_cuenta,
-          banco: wallet.banco,
+          numeroCuenta: walletLocked.numero_cuenta,
+          banco: walletLocked.banco,
           automatico: true
         }).catch(err => console.error('Error asíncrono al iniciar dispersión de retiro automático:', err));
 

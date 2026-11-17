@@ -33,11 +33,17 @@ const MACHINE_CALLBACK_PATHS = new Set([
   '/payments/wompi-webhook',
 ]);
 
+// La vitrina pública se abre desde un navegador cualquiera (enlace compartido),
+// así que no puede exigir la cabecera de la app. Es de sólo lectura y no expone
+// nada que no esté ya en el perfil público, por eso se admite todo el prefijo.
+const PUBLIC_PREFIX = '/public/';
+
 function isMachineCallback(req) {
   const original = (req && (req.originalUrl || req.url)) || '';
   const sinQuery = original.split('?')[0];
   // El middleware se monta en /api; se acepta también la ruta sin ese prefijo.
   const relativa = sinQuery.replace(/^\/api(?=\/)/, '');
+  if (relativa.startsWith(PUBLIC_PREFIX) || sinQuery.startsWith(PUBLIC_PREFIX)) return true;
   return MACHINE_CALLBACK_PATHS.has(sinQuery) || MACHINE_CALLBACK_PATHS.has(relativa);
 }
 

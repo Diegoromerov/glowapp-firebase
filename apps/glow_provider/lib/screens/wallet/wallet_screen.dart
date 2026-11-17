@@ -4,10 +4,15 @@ import 'package:glow_core/glow_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
-import 'package:glow_core/services/api_service.dart';
-import 'package:glow_core/shared/theme.dart' hide AppTheme;
-import 'package:glow_core/widgets/provider/bank_account_dialog.dart';
+import '../auth/google_signin_button.dart'
+    if (dart.library.js) '../auth/google_signin_button_web.dart' as gis_button;
+
+const _googleReauthClientId = String.fromEnvironment(
+  'GOOGLE_WEB_CLIENT_ID',
+  defaultValue: '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+);
 
 class WalletScreen extends StatefulWidget {
   final bool isEmbedded;
@@ -49,6 +54,49 @@ class _WalletScreenState extends State<WalletScreen>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  bool _isFirstPayoutAccount(Map<String, dynamic> wallet) =>
+      (wallet['numero_cuenta']?.toString().trim().isEmpty ?? true);
+
+  bool _isGoogleOnlyAccount(Map<String, dynamic> wallet) =>
+      wallet['auth_provider']?.toString().toUpperCase() == 'GOOGLE' &&
+      wallet['tiene_password'] != true;
+
+  Widget? _buildGoogleReauthButton(ValueChanged<String> onToken) {
+    final webButton = gis_button.googleSignInButton(
+      clientId: _googleReauthClientId,
+      onCredential: onToken,
+    );
+    if (webButton != null) return webButton;
+
+    return OutlinedButton.icon(
+      icon: const Icon(Icons.login),
+      label: const Text('Volver a confirmar con Google'),
+      onPressed: () async {
+        try {
+          final google = GoogleSignIn(
+            scopes: const ['email', 'openid', 'profile'],
+            serverClientId: _googleReauthClientId,
+          );
+          await google.signOut();
+          final account = await google.signIn();
+          if (account == null) return;
+          final authentication = await account.authentication;
+          final token = authentication.idToken;
+          if (token == null || token.isEmpty) {
+            throw Exception('Google no entregó una credencial válida.');
+          }
+          onToken(token);
+        } catch (error) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('No se pudo confirmar con Google: $error')),
+            );
+          }
+        }
+      },
+    );
   }
 
   Future<void> _cargarWallet() async {
@@ -110,6 +158,72 @@ class _WalletScreenState extends State<WalletScreen>
         _loadingTx = false;
         _loadingMore = false;
       });
+    }
+  }
+
+  Future<void> _cancelarCambioCuenta() async {
+    final confirmar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Cancelar cambio de cuenta'),
+        content: const Text(
+          'Se eliminará la cuenta pendiente y, si existía, se restaurará la cuenta aprobada anterior.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Volver')),
+          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Cancelar cambio')),
+        ],
+      ),
+    );
+    if (confirmar != true) return;
+    try {
+      await ApiService.post('/api/wallet/bank-account/cancel-change', {});
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Cambio cancelado. Se notificó a tu cuenta.'), backgroundColor: Color(0xFF059669)),
+      );
+      await _cargarWallet();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('No se pudo cancelar el cambio: ${mensajeHumano(e)}'), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
+
+  Future<void> _congelarRetiros() async {
+    final confirmar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Congelar retiros'),
+        content: const Text(
+          'Se bloquearán los retiros manuales y automáticos. Para reactivarlos tendrás que contactar a soporte y verificar tu identidad.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Volver')),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text('Congelar retiros'),
+          ),
+        ],
+      ),
+    );
+    if (confirmar != true) return;
+    try {
+      await ApiService.post('/api/wallet/freeze-withdrawals', {});
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Retiros congelados. Contacta a soporte para reactivarlos.'), backgroundColor: Colors.red),
+      );
+      await _cargarWallet();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('No se pudieron congelar los retiros: ${mensajeHumano(e)}'), backgroundColor: Colors.red),
+        );
+      }
     }
   }
 
@@ -219,10 +333,70 @@ class _WalletScreenState extends State<WalletScreen>
       if (verificado == true) {
         if (!mounted) return;
         try {
+          final currentPassword = TextEditingController();
+          final passwordConfirmed = await showDialog<bool>(
+            context: context,
+            builder: (ctx) => AlertDialog(
+              title: const Text('Confirma tu identidad'),
+              content: TextField(
+                controller: currentPassword,
+                obscureText: true,
+                autofillHints: const [AutofillHints.password],
+                decoration: const InputDecoration(labelText: 'Contraseña actual'),
+              ),
+              actions: [
+                TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancelar')),
+                ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Enviar código')),
+              ],
+            ),
+          );
+          if (passwordConfirmed != true || currentPassword.text.isEmpty) {
+            currentPassword.dispose();
+            return;
+          }
+          final authorization = await ApiService.post(
+            '/api/wallet/withdraw/authorization',
+            {
+              'current_password': currentPassword.text,
+              'monto': montoFinal,
+              'tipo_origen': 'SEMANAL',
+            },
+          ) as Map<String, dynamic>;
+          currentPassword.dispose();
+          if (!mounted) return;
+
+          final code = TextEditingController();
+          final codeConfirmed = await showDialog<bool>(
+            context: context,
+            builder: (ctx) => AlertDialog(
+              title: const Text('Autoriza el retiro'),
+              content: TextField(
+                controller: code,
+                keyboardType: TextInputType.number,
+                maxLength: 6,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  labelText: 'Código enviado a tu correo',
+                  helperText: 'Destino: ${authorization['cuenta_enmascarada'] ?? targetCuenta}',
+                ),
+              ),
+              actions: [
+                TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancelar')),
+                ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Confirmar retiro')),
+              ],
+            ),
+          );
+          if (codeConfirmed != true || code.text.length != 6) {
+            code.dispose();
+            return;
+          }
           await ApiService.post('/api/wallet/withdraw', {
             'monto': montoFinal,
             'tipo_origen': 'SEMANAL',
+            'authorization_id': authorization['authorization_id'],
+            'authorization_code': code.text,
           });
+          code.dispose();
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -329,6 +503,9 @@ class _WalletScreenState extends State<WalletScreen>
     final enDisputa =
         double.tryParse(wallet['saldo_en_disputa'].toString()) ?? 0;
     final puedeRetirar = wallet['puede_retirar'] == true;
+    final cuentaPendiente = wallet['cuenta_verificada'] != true &&
+        wallet['cuenta_estado_verificacion'] == 'PENDIENTE' &&
+        wallet['banco'] != null;
     final razonBloqueo = wallet['razon_bloqueo'] as String?;
 
     return RefreshIndicator(
@@ -512,10 +689,15 @@ class _WalletScreenState extends State<WalletScreen>
                                     child: ElevatedButton.icon(
                                       onPressed: puedeRetirar
                                           ? _solicitarRetiro
-                                          : (wallet['cuenta_verificada'] != true)
+                                          : (wallet['cuenta_verificada'] != true && !cuentaPendiente)
                                               ? () => showDialog(
                                                     context: context,
-                                                    builder: (_) => BankAccountFormDialog(onSuccess: _cargarWallet),
+                                                    builder: (_) => BankAccountFormDialog(
+                                                      onSuccess: _cargarWallet,
+                                                      isFirstAccount: _isFirstPayoutAccount(wallet),
+                                                      isGoogleOnly: _isGoogleOnlyAccount(wallet),
+                                                      googleReauthBuilder: _buildGoogleReauthButton,
+                                                    ),
                                                   )
                                               : null,
                                       icon: Icon(
@@ -530,7 +712,9 @@ class _WalletScreenState extends State<WalletScreen>
                                             ? (disponible < (double.tryParse(wallet['minimo_retiro_cop']?.toString() ?? '100000') ?? 100000))
                                                 ? 'ADELANTO DISPONIBLE DESDE \$${_formatCOP.format(double.tryParse(wallet['minimo_retiro_cop']?.toString() ?? '100000') ?? 100000)}'
                                                 : 'TRANSFERIR A ${wallet['banco']?.toString().toUpperCase() ?? 'MI CUENTA'}'
-                                            : (wallet['cuenta_verificada'] != true)
+                                            : cuentaPendiente
+                                                ? 'CUENTA EN VALIDACIÓN'
+                                                : (wallet['cuenta_verificada'] != true)
                                                 ? 'VINCULAR CUENTA DE RETIRO'
                                                 : razonBloqueo ?? 'RETIRO NO DISPONIBLE',
                                         style: const TextStyle(
@@ -1349,11 +1533,67 @@ class _WalletScreenState extends State<WalletScreen>
                   onPressed: () {
                     showDialog(
                       context: context,
-                      builder: (_) => BankAccountFormDialog(onSuccess: _cargarWallet),
+                      builder: (_) => BankAccountFormDialog(
+                        onSuccess: _cargarWallet,
+                        isFirstAccount: _isFirstPayoutAccount(wallet),
+                        isGoogleOnly: _isGoogleOnlyAccount(wallet),
+                        googleReauthBuilder: _buildGoogleReauthButton,
+                      ),
                     );
                   },
                   icon: const Icon(Icons.edit_outlined, size: 16, color: Color(0xFF10B981)),
                   label: const Text('Cambiar', style: TextStyle(color: Color(0xFF10B981), fontSize: 12)),
+                ),
+              ],
+            ),
+          )
+        else if (wallet['banco'] != null && wallet['cuenta_estado_verificacion'] == 'PENDIENTE')
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: const Color(0xFFFFF7E6),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFFE8C77B)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  children: [
+                    Icon(Icons.hourglass_top, color: Color(0xFFB7791F)),
+                    SizedBox(width: 10),
+                    Expanded(child: Text('Cuenta en validación', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF4A3E3D)))),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  'Destino ${wallet['banco']} ****${wallet['numero_cuenta'].toString().length > 4 ? wallet['numero_cuenta'].toString().substring(wallet['numero_cuenta'].toString().length - 4) : ''}. Los retiros están bloqueados mientras se valida y durante el periodo de protección.',
+                  style: const TextStyle(color: Color(0xFF8E7D7A), fontSize: 12),
+                ),
+                if (wallet['cuenta_retiros_bloqueados_hasta'] != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    'Protección hasta ${DateFormat.yMMMd().add_Hm().format(DateTime.parse(wallet['cuenta_retiros_bloqueados_hasta'].toString()).toLocal())}',
+                    style: const TextStyle(color: Color(0xFF8E7D7A), fontSize: 12),
+                  ),
+                ],
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  children: [
+                    if (wallet['cuenta_cambio_cancelable'] == true)
+                      TextButton.icon(
+                        onPressed: _cancelarCambioCuenta,
+                        icon: const Icon(Icons.undo, size: 16),
+                        label: const Text('Cancelar cambio'),
+                      ),
+                    if (wallet['retiros_pausados'] != true)
+                      TextButton.icon(
+                        onPressed: _congelarRetiros,
+                        icon: const Icon(Icons.pause_circle_outline, size: 16, color: Colors.red),
+                        label: const Text('Congelar retiros', style: TextStyle(color: Colors.red)),
+                      ),
+                  ],
                 ),
               ],
             ),
@@ -1392,7 +1632,12 @@ class _WalletScreenState extends State<WalletScreen>
                   onPressed: () {
                     showDialog(
                       context: context,
-                      builder: (_) => BankAccountFormDialog(onSuccess: _cargarWallet),
+                      builder: (_) => BankAccountFormDialog(
+                        onSuccess: _cargarWallet,
+                        isFirstAccount: _isFirstPayoutAccount(wallet),
+                        isGoogleOnly: _isGoogleOnlyAccount(wallet),
+                        googleReauthBuilder: _buildGoogleReauthButton,
+                      ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -1404,6 +1649,26 @@ class _WalletScreenState extends State<WalletScreen>
                   child: const Text('Vincular'),
                 ),
               ],
+            ),
+          ),
+        if (wallet['retiros_pausados'] == true)
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(color: const Color(0xFFFEE2E2), borderRadius: BorderRadius.circular(10)),
+            child: const Row(children: [
+              Icon(Icons.lock_outline, color: Color(0xFFB91C1C)),
+              SizedBox(width: 8),
+              Expanded(child: Text('Retiros congelados. Contacta a soporte para reactivarlos.', style: TextStyle(color: Color(0xFF991B1B), fontSize: 12))),
+            ]),
+          )
+        else
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton.icon(
+              onPressed: _congelarRetiros,
+              icon: const Icon(Icons.pause_circle_outline, size: 16, color: Colors.red),
+              label: const Text('Congelar retiros por seguridad', style: TextStyle(color: Colors.red, fontSize: 12)),
             ),
           ),
       ],

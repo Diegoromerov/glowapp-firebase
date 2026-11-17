@@ -85,16 +85,46 @@ const MIGRACIONES_BASE_NUEVA = [
   '150_usuarios_referral_code.sql',
   '151_usuarios_nivel_notificado.sql',
   '152_usuarios_fecha_alta.sql',
-'125_usuario_lookup_sin_contexto.sql',
-'127_review_aspectos.sql',
-'128_usuario_fcm_token.sql',
-'129_otp_codigo_cifrado.sql',
-'130_completar_esquema_base_cliente.sql',
+  // D-GL-030 / D-GL-031: RUT obligatorio con revisión, estado operativo
+  // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
+  // así que se aplican igual sobre una base vacía y sobre una ya poblada.
+  '153_prestador_rut_revision.sql',
+      '154_estado_operativo_proveedor.sql',
+      '155_vitrina_publica_proveedor.sql',
+      '125_usuario_lookup_sin_contexto.sql',
+    '127_review_aspectos.sql',
+    '128_usuario_fcm_token.sql',
+    '129_otp_codigo_cifrado.sql',
+    '130_completar_esquema_base_cliente.sql',
 // 135: horario de atención del prestador. Sin ella /api/providers fallaba con
 // «column p.active_start_hour does not exist» en toda base creada desde la cadena.
 '135_horario_atencion_prestador.sql',
 // 136: contrato de tipo de services.id (uuid como produccion). Solo verifica.
-'136_services_uuid_contract.sql',];
+'136_services_uuid_contract.sql',
+  // ── Logística Fase 1-4 (D-GL-029/030/033/035) ──────────────────────────
+  // Orden obligatorio: 092 crea envios, 094 crea zonas_envio, 161 crea
+  // carrier_accounts (160 le agrega la FK), 162 routing rules, 163 devoluciones
+  // (FK a envios), 164 extiende webhook_events (tabla de 130), 167 DANE, 168 seeds.
+  // Todas idempotentes: van también en MIGRACIONES_ARRANQUE para bases ya pobladas.
+  '092_add_envios_and_estado_timestamps.sql',
+  '094_create_zonas_envio.sql',
+  '161_create_carrier_accounts.sql',
+  '160_extend_envios_multi_carrier.sql',
+  '162_create_shipping_routing_rules.sql',
+  '163_create_devoluciones.sql',
+  '164_extend_webhook_events_envia.sql',
+  '166_seed_insumos_b2b.sql',
+  '167_municipios_dane.sql',
+  '168_seed_carrier_routing.sql',
+  '169_saneamiento_seeds_logistica.sql',
+  // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
+  // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
+  // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
+  '170_usuario_notificaciones_prefs.sql',
+  '171_notificaciones_log.sql',
+  '172_extend_devoluciones_retorno.sql',
+  '173_logistica_metricas_diarias.sql',
+];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
 // Se aplica en CADA arranque, sobre una base que ya tiene datos. Solo puede
@@ -170,16 +200,22 @@ const MIGRACIONES_ARRANQUE = [
   '150_usuarios_referral_code.sql',
   '151_usuarios_nivel_notificado.sql',
   '152_usuarios_fecha_alta.sql',
+  // D-GL-030 / D-GL-031: RUT obligatorio con revisión, estado operativo
+    // (Modo Exploración) y slug de la vitrina. Todas son ADD COLUMN IF NOT EXISTS,
+    // así que se aplican igual sobre una base vacía y sobre una ya poblada.
+    '153_prestador_rut_revision.sql',
+      '154_estado_operativo_proveedor.sql',
+      '155_vitrina_publica_proveedor.sql',
 
-  '125_usuario_lookup_sin_contexto.sql',
+      '125_usuario_lookup_sin_contexto.sql',
 
-  '127_review_aspectos.sql',
+    '127_review_aspectos.sql',
 
-  '128_usuario_fcm_token.sql',
+    '128_usuario_fcm_token.sql',
 
-  '129_otp_codigo_cifrado.sql',
+    '129_otp_codigo_cifrado.sql',
 
-  // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
+    // 135 cierra el drift de active_start_hour/active_end_hour/weekly_schedule:
 
   // producción las tenía por script manual, la cadena no las creaba.
 
@@ -188,6 +224,32 @@ const MIGRACIONES_ARRANQUE = [
   // 136 solo verifica que services.id sea uuid (no convierte ni escribe).
 
   '136_services_uuid_contract.sql',
+  // ── Logística Fase 1-4 (D-GL-029/030/033/035) ──────────────────────────
+  // Orden obligatorio: 092 crea envios, 094 crea zonas_envio, 161 crea
+  // carrier_accounts (160 le agrega la FK), 162 routing rules, 163 devoluciones
+  // (FK a envios), 164 extiende webhook_events (tabla de 130), 167 DANE, 168 seeds.
+  // Todas idempotentes: van también en MIGRACIONES_ARRANQUE para bases ya pobladas.
+  '130_completar_esquema_base_cliente.sql',
+  '092_add_envios_and_estado_timestamps.sql',
+  '094_create_zonas_envio.sql',
+  '161_create_carrier_accounts.sql',
+  '160_extend_envios_multi_carrier.sql',
+  '162_create_shipping_routing_rules.sql',
+  '163_create_devoluciones.sql',
+  '164_extend_webhook_events_envia.sql',
+  '166_seed_insumos_b2b.sql',
+  '167_municipios_dane.sql',
+  '168_seed_carrier_routing.sql',
+  '169_saneamiento_seeds_logistica.sql',
+
+  // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
+  // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
+  // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
+  '170_create_usuario_notificaciones_prefs.sql',
+  '171_create_notificaciones_log.sql',
+  '172_extend_devoluciones_retorno.sql',
+  '173_create_logistica_metricas_diarias.sql',
+
 
 ];
 /// Lista que corresponde según el estado de la base.
@@ -283,6 +345,28 @@ async function main() {
       );
       process.exit(1);
     }
+
+    // ── 1a. Roles RLS (ANTES de migrar) ────────────────────────────────────
+    // Varias migraciones hacen CREATE POLICY ... TO app_rls_user, y PostgreSQL
+    // exige que ese rol exista en el momento de la sentencia. El entrypoint los
+    // crea con setupRlsRole.sql, pero el job de CI corre solo este script y una
+    // base vacía no tiene roles: aquí se garantizan. Solo el rol: los GRANT
+    // sobre tablas van en el paso 2, cuando las tablas ya existen.
+    console.log('👤 Asegurando los roles RLS antes de migrar...');
+    await cliente.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_rls_user') THEN
+          CREATE ROLE app_rls_user LOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE NOINHERIT;
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_system') THEN
+          CREATE ROLE app_system NOLOGIN NOSUPERUSER BYPASSRLS NOCREATEDB NOCREATEROLE NOINHERIT;
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_owner') THEN
+          CREATE ROLE app_owner LOGIN NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE NOINHERIT;
+        END IF;
+      END $$;
+    `);
 
     for (const nombre of migracionesPara(baseVacia)) {
       if (nombre === 'init.sql' && !baseVacia) {

@@ -28,6 +28,7 @@ import 'screens/provider/provider_portfolio_screen.dart';
 import 'screens/provider/provider_profile_screen.dart';
 import 'screens/provider/provider_route_screen.dart';
 import 'screens/provider/provider_ai_copilot_screen.dart';
+import 'screens/provider/provider_fulfillment_screen.dart';
 
 // Provider Business
 import 'screens/provider/business/business_dashboard_screen.dart';
@@ -195,12 +196,13 @@ class GlowProviderApp extends ConsumerWidget {
         '/provider/dashboard': (_) => const ProviderDashboardScreen(),
 
         // Provider Core
-                '/provider/services': (_) => const ProviderServicesScreen(),
-                '/provider/portfolio': (_) => const ProviderPortfolioScreen(),
-                '/provider/profile': (_) => const ProviderProfileScreen(),
-                '/provider/ai-copilot': (_) => const ProviderAiCopilotScreen(),
+                        '/provider/services': (_) => const ProviderServicesScreen(),
+                        '/provider/portfolio': (_) => const ProviderPortfolioScreen(),
+                        '/provider/profile': (_) => const ProviderProfileScreen(),
+                        '/provider/ai-copilot': (_) => const ProviderAiCopilotScreen(),
+                        '/provider/fulfillment': (_) => const ProviderFulfillmentScreen(),
 
-                // Provider Business
+                        // Provider Business
                 '/provider/business': (_) => const BusinessDashboardScreen(),
                 '/provider/business/onboarding': (_) => const BusinessOnboardingScreen(),
                 '/provider/business/documents': (_) => const BusinessDocumentGeneratorScreen(),

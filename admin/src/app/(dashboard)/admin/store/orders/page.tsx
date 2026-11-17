@@ -113,6 +113,7 @@ const ENVIO_STATUS_CONFIG = {
 export default function AdminStoreOrdersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [ordersAvailable, setOrdersAvailable] = useState(false);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [pedidos, setPedidos] = useState<Pedido[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -169,16 +170,24 @@ export default function AdminStoreOrdersPage() {
   const fetchPedidos = useCallback(async () => {
     setLoading(true);
     setError(null);
+    setOrdersAvailable(false);
     try {
       const headers = getBffHeaders();
       const res = await fetch(`/api/admin/store/orders?${buildQueryParams()}`, { headers });
       if (!res.ok) throw new Error('Error al obtener pedidos');
       const data = await res.json();
-      setPedidos(data.data || []);
+      if (!Array.isArray(data.data) || !Number.isFinite(Number(data.total))) {
+        throw new Error('Respuesta inválida al consultar pedidos');
+      }
+      setPedidos(data.data);
       setTotalCount(data.total || 0);
       setTotalPages(Math.ceil((data.total || 0) / pageSize));
+      setOrdersAvailable(true);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Error desconocido');
+      setPedidos([]);
+      setTotalCount(0);
+      setOrdersAvailable(false);
     } finally {
       setLoading(false);
     }
@@ -426,10 +435,15 @@ export default function AdminStoreOrdersPage() {
             <Loader2 className="h-8 w-8 animate-spin text-gray-400 mx-auto mb-4" />
             <p className="text-gray-500">Cargando pedidos...</p>
           </div>
+        ) : !ordersAvailable ? (
+          <div className="p-12 text-center">
+            <Package className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+            <p className="text-gray-500">No se pudo consultar el origen de pedidos; no es posible confirmar que esté vacío.</p>
+          </div>
         ) : pedidos.length === 0 ? (
           <div className="p-12 text-center">
             <Package className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">No hay pedidos con los filtros actuales</p>
+                  <p className="text-gray-500">No hay pedidos con los filtros actuales</p>
           </div>
         ) : (
           <>
