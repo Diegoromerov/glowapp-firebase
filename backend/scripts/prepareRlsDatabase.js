@@ -238,20 +238,20 @@ const MIGRACIONES_ARRANQUE = [
   '163_create_devoluciones.sql',
   '164_extend_webhook_events_envia.sql',
   '166_seed_insumos_b2b.sql',
-  '167_municipios_dane.sql',
-  '168_seed_carrier_routing.sql',
-  '169_saneamiento_seeds_logistica.sql',
+    '167_municipios_dane.sql',
+    '168_seed_carrier_routing.sql',
+    '169_saneamiento_seeds_logistica.sql',
 
-  // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
-  // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
-  // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
-  '170_create_usuario_notificaciones_prefs.sql',
-  '171_create_notificaciones_log.sql',
-  '172_extend_devoluciones_retorno.sql',
-  '173_create_logistica_metricas_diarias.sql',
+    // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
+    // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
+      // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
+      '170_usuario_notificaciones_prefs.sql',
+      '171_notificaciones_log.sql',
+      '172_extend_devoluciones_retorno.sql',
+      '173_logistica_metricas_diarias.sql',
 
 
-];
+  ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {
   const lista = baseVacia ? MIGRACIONES_BASE_NUEVA : MIGRACIONES_ARRANQUE;
