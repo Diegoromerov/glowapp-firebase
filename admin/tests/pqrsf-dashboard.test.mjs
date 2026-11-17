@@ -31,13 +31,11 @@ const controlador = readFileSync(CTRL, 'utf8');
 
 test('la pantalla pide las métricas al backend, con el encabezado CSRF', () => {
   assert.ok(
-    pagina.includes("fetch('/api/admin/tickets/metricas'"),
+    pagina.includes("fetchAdminJson('/api/admin/tickets/metricas', signal)"),
     'el dashboard debe pedir /api/admin/tickets/metricas'
   );
-  const idx = pagina.indexOf("fetch('/api/admin/tickets/metricas'");
-  const linea = pagina.slice(idx, pagina.indexOf('\n', idx));
   assert.ok(
-    linea.includes("'X-Requested-With': 'XMLHttpRequest'"),
+    pagina.includes("headers: { 'X-Requested-With': 'XMLHttpRequest' }"),
     'la petición debe llevar X-Requested-With: el BFF responde 403 sin él'
   );
 });
