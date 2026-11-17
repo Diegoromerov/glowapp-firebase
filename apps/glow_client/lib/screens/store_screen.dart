@@ -1,13 +1,14 @@
 // frontend/lib/screens/store_screen.dart
-import 'package:glow_core/glow_core.dart';
+import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:glow_core/glow_core.dart';
+import 'package:http/http.dart' as http;
 import 'package:shimmer/shimmer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/auth_gate.dart';
-import '../widgets/bloque_canje_puntos.dart';
 
 class StoreScreen extends StatefulWidget {
   final String? bookingId;
@@ -31,35 +32,6 @@ class _StoreScreenState extends State<StoreScreen> {
   final Map<int, Map<String, dynamic>> _cart = {};
   bool _isCartOpen = false;
 
-  // Fondo de puntos canjeable (migración 142). `null` mientras carga o si el
-  // backend no responde: en ese caso el checkout funciona igual, sin el bloque.
-  SaldoPuntos? _saldoPuntos;
-  bool _usarPuntos = false;
-
-  Future<void> _cargarSaldoPuntos() async {
-    final saldo = await RewardsService.obtenerSaldo();
-    if (!mounted) return;
-    setState(() => _saldoPuntos = saldo);
-  }
-
-  /// Productos del carrito con IVA incluido: es la base contra la que se mide el
-  /// tope del canje, igual que en el backend.
-  double get _productosConIva => _getCartSubtotal() * 1.19;
-
-  /// Puntos que caben en este carrito. Es una previsualización: el número que se
-  /// cobra lo calcula y lo devuelve el servidor al crear el pedido.
-  int get _puntosParaElCarrito {
-    final saldo = _saldoPuntos;
-    if (!_usarPuntos || saldo == null || _cart.isEmpty) return 0;
-    return saldo.puntosAplicablesEn(_productosConIva.round());
-  }
-
-  int get _descuentoPuntos {
-    final saldo = _saldoPuntos;
-    if (saldo == null) return 0;
-    return saldo.pesosDe(_puntosParaElCarrito);
-  }
-
   List<String> get _categories {
     if (AudienceService.isMenMode) {
       return ['Todos', 'Barba & Bigote', 'Corte & Capilar', 'Grooming', 'Skincare Masculino', 'Tratamientos'];
@@ -78,7 +50,6 @@ class _StoreScreenState extends State<StoreScreen> {
   void initState() {
     super.initState();
     _fetchProducts();
-    _cargarSaldoPuntos();
     _searchController.addListener(_filterProducts);
     AudienceService.currentAudience.addListener(_filterProducts);
   }
@@ -120,7 +91,7 @@ class _StoreScreenState extends State<StoreScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _errorMessage = 'No se pudieron cargar los productos. ${mensajeHumano(e)}';
+        _errorMessage = 'No se pudieron cargar los productos: $e';
         _isLoading = false;
       });
     }
@@ -207,25 +178,9 @@ class _StoreScreenState extends State<StoreScreen> {
 
   void _updateCartQuantity(int id, int newQty) {
     if (newQty <= 0) {
-      // Ítem 25: quitar del carrito es reversible, así que se puede deshacer.
-      // Antes el producto desaparecía sin rastro y había que buscarlo otra vez.
-      final quitado = _cart[id];
       setState(() {
         _cart.remove(id);
       });
-      if (quitado != null && mounted) {
-        final nombre = (quitado['product'] as Map)['nombre'] ?? 'Producto';
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(SnackBar(
-            content: Text('$nombre fuera del carrito'),
-            duration: const Duration(seconds: 6),
-            action: SnackBarAction(
-              label: 'Deshacer',
-              onPressed: () => setState(() => _cart[id] = quitado),
-            ),
-          ));
-      }
       return;
     }
     final product = _cart[id]!['product'] as Map<String, dynamic>;
@@ -277,14 +232,13 @@ class _StoreScreenState extends State<StoreScreen> {
   Future<void> _showCheckoutDialog() async {
     if (_cart.isEmpty) return;
 
-    // Llenar el carrito es libre; pagar exige cuenta. La puerta va acá y no al
-    // entrar a la tienda para no cortar la exploración del catálogo.
     if (!await AuthGate.requerir(context, accion: 'comprar en GlowShop')) return;
     if (!mounted) return;
 
     final double subtotal = _getCartSubtotal();
-    final double iva = subtotal * 0.19;
-    final double total = subtotal + iva;
+    // Los precios al cliente ya incluyen IVA. El cotizador devuelve su desglose
+    // y el importe final con el costo de envío calculado por el servidor.
+    final double total = subtotal;
 
     final TextEditingController nameCtrl = TextEditingController();
     final TextEditingController addressCtrl = TextEditingController();
@@ -292,6 +246,15 @@ class _StoreScreenState extends State<StoreScreen> {
     bool processing = false;
     bool loadingAddress = true;
     Map<String, dynamic>? defaultAddress;
+    Map<String, dynamic>? shippingQuote;
+    String? shippingQuoteKey;
+    String? requestedQuoteKey;
+    String? shippingQuoteError;
+    bool quotingShipping = false;
+    bool autoQuotePending = true;
+    int puntosSeleccionados = 0;
+    Timer? quoteDebounce;
+    StateSetter? checkoutStateUpdater;
 
     // Precarga de los datos del comprador al abrir el dialog
     Future<void> prefillCheckoutData() async {
@@ -318,7 +281,14 @@ class _StoreScreenState extends State<StoreScreen> {
         }
       } catch (_) {}
       finally {
-        if (mounted) setState(() => loadingAddress = false);
+        if (mounted) {
+          final updateCheckout = checkoutStateUpdater;
+          if (updateCheckout != null) {
+            updateCheckout(() => loadingAddress = false);
+          } else {
+            setState(() => loadingAddress = false);
+          }
+        }
       }
     }
 
@@ -397,7 +367,6 @@ class _StoreScreenState extends State<StoreScreen> {
                                           const Spacer(),
                                           IconButton(
                                             onPressed: () => Navigator.pop(ctx),
-                                            tooltip: 'Cerrar',
                                             icon: const Icon(Icons.close),
                                           ),
                                         ],
@@ -534,6 +503,7 @@ class _StoreScreenState extends State<StoreScreen> {
       builder: (ctx) {
         return StatefulBuilder(
           builder: (context, setCheckoutState) {
+            checkoutStateUpdater = setCheckoutState;
             if (processing) {
               return Dialog(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -566,8 +536,98 @@ class _StoreScreenState extends State<StoreScreen> {
               );
             }
 
+            final quoteItems = _cart.values.map((item) {
+              final product = item['product'] as Map<String, dynamic>;
+              return {
+                'producto_id': product['id'],
+                'cantidad': item['quantity'] as int,
+              };
+            }).toList();
+            final destinationCity = defaultAddress?['ciudad']?.toString();
+            final currentQuoteKey = jsonEncode({
+              'direccion': addressCtrl.text.trim(),
+              'ciudad': destinationCity,
+              'items': quoteItems,
+              'booking_id': widget.bookingId,
+              'puntos_a_canjear': puntosSeleccionados,
+            });
+
+            Future<void> refreshShippingQuote() async {
+              if (addressCtrl.text.trim().isEmpty) return;
+              final cityForRequest = defaultAddress?['ciudad']?.toString();
+              final itemsForRequest = _cart.values.map((item) {
+                final product = item['product'] as Map<String, dynamic>;
+                return {
+                  'producto_id': product['id'],
+                  'cantidad': item['quantity'] as int,
+                };
+              }).toList();
+              final requestKey = jsonEncode({
+                'direccion': addressCtrl.text.trim(),
+                'ciudad': cityForRequest,
+                'items': itemsForRequest,
+                'booking_id': widget.bookingId,
+                'puntos_a_canjear': puntosSeleccionados,
+              });
+              requestedQuoteKey = requestKey;
+              setCheckoutState(() {
+                quotingShipping = true;
+                shippingQuoteError = null;
+              });
+              try {
+                final response = await ApiService.post(
+                  '/api/store/envio/cotizacion',
+                  {
+                    'items': itemsForRequest,
+                    'direccion_entrega': addressCtrl.text.trim(),
+                    if (cityForRequest != null && cityForRequest.isNotEmpty)
+                      'ciudad_entrega': cityForRequest,
+                    if (widget.bookingId != null) 'booking_id': widget.bookingId,
+                    if (puntosSeleccionados > 0) 'puntos_a_canjear': puntosSeleccionados,
+                  },
+                );
+                if (!context.mounted || requestedQuoteKey != requestKey) return;
+                if (response == null || response['success'] != true || response['data'] is! Map) {
+                  throw Exception(response?['error'] ?? 'No se pudo calcular el envío.');
+                }
+                setCheckoutState(() {
+                  shippingQuote = Map<String, dynamic>.from(response['data'] as Map);
+                  shippingQuoteKey = requestKey;
+                  quotingShipping = false;
+                });
+              } catch (e) {
+                if (!context.mounted || requestedQuoteKey != requestKey) return;
+                setCheckoutState(() {
+                  shippingQuote = null;
+                  shippingQuoteKey = null;
+                  shippingQuoteError = mensajeHumano(e);
+                  quotingShipping = false;
+                });
+              }
+            }
+
+            if (autoQuotePending && !loadingAddress && addressCtrl.text.trim().isNotEmpty &&
+                requestedQuoteKey != currentQuoteKey && !quotingShipping) {
+              autoQuotePending = false;
+              requestedQuoteKey = currentQuoteKey;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (context.mounted) refreshShippingQuote();
+              });
+            }
+
             final double screenWidth = MediaQuery.of(context).size.width;
             final bool isMobile = screenWidth < 680;
+            final bool quoteIsCurrent = shippingQuote != null &&
+                shippingQuoteKey == currentQuoteKey && !quotingShipping;
+            final double? quoteProducts = toDoubleOrNull(shippingQuote?['subtotal_con_iva']);
+            final double? quoteIva = toDoubleOrNull(shippingQuote?['iva']);
+            final double? quoteShipping = toDoubleOrNull(shippingQuote?['envio']);
+            final double? quoteTotal = toDoubleOrNull(shippingQuote?['total']);
+            final Map<String, dynamic>? shippingDetails = shippingQuote?['envio_detalle'] is Map
+                ? Map<String, dynamic>.from(shippingQuote!['envio_detalle'] as Map)
+                : null;
+            final double? freeShippingFrom =
+                toDoubleOrNull(shippingDetails?['gratis_desde_monto']);
 
             final Widget formColumn = Padding(
               padding: const EdgeInsets.all(24.0),
@@ -629,20 +689,45 @@ class _StoreScreenState extends State<StoreScreen> {
                                     ),
                                   )
                                 : IconButton(
-                                    tooltip: 'Editar dirección',
                                     icon: const Icon(Icons.edit_outlined, size: 20, color: Colors.grey),
                                     onPressed: () async {
                                       // Abrir selector/editor de direcciones
                                       final result = await showAddressSelector(context);
                                       if (result != null && mounted) {
-                                        setState(() {
+                                        quoteDebounce?.cancel();
+                                        requestedQuoteKey = null;
+                                        autoQuotePending = false;
+                                        setCheckoutState(() {
                                           defaultAddress = result;
                                           addressCtrl.text = result['direccion_formateada'] ?? '';
+                                          shippingQuote = null;
+                                          shippingQuoteKey = null;
+                                          shippingQuoteError = null;
+                                          quotingShipping = false;
+                                        });
+                                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                                          if (context.mounted) refreshShippingQuote();
                                         });
                                       }
                                     },
+                                    tooltip: 'Cambiar dirección',
                                   ),
                           ),
+                          onChanged: (_) {
+                            autoQuotePending = false;
+                            requestedQuoteKey = null;
+                            setCheckoutState(() {
+                              shippingQuoteKey = null;
+                              shippingQuoteError = null;
+                              quotingShipping = false;
+                            });
+                            quoteDebounce?.cancel();
+                            quoteDebounce = Timer(const Duration(milliseconds: 600), () {
+                              if (context.mounted && addressCtrl.text.trim().isNotEmpty) {
+                                refreshShippingQuote();
+                              }
+                            });
+                          },
                           validator: (v) => (v == null || v.isEmpty) ? 'Campo obligatorio' : null,
                         ),
                       ],
@@ -690,6 +775,15 @@ class _StoreScreenState extends State<StoreScreen> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () async {
+                              if (!quoteIsCurrent) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(shippingQuoteError ??
+                                        'Espera a que calculemos el envío antes de pagar.'),
+                                  ),
+                                );
+                                return;
+                              }
                               if (formKey.currentState!.validate()) {
                                 final itemsList = _cart.values.map((item) {
                                   final prod = item['product'] as Map<String, dynamic>;
@@ -719,6 +813,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     'referencia': defaultAddress!['referencia'],
                                     'direccion_entrega_id': defaultAddress!['id'],
                                     'items': itemsList,
+                                    if (puntosSeleccionados > 0) 'puntos_a_canjear': puntosSeleccionados,
                                     if (widget.bookingId != null) 'booking_id': widget.bookingId,
                                   };
                                 } else {
@@ -726,16 +821,9 @@ class _StoreScreenState extends State<StoreScreen> {
                                     'nombre_entrega': nameCtrl.text,
                                     'direccion_entrega': addressCtrl.text,
                                     'items': itemsList,
+                                    if (puntosSeleccionados > 0) 'puntos_a_canjear': puntosSeleccionados,
                                     if (widget.bookingId != null) 'booking_id': widget.bookingId,
                                   };
-                                }
-
-                                // Canje de puntos: la previsualización es local, pero
-                                // el descuento real lo calcula el servidor dentro de
-                                // la transacción del pedido y es el que se cobra.
-                                final puntosAplicar = _puntosParaElCarrito;
-                                if (puntosAplicar > 0) {
-                                  checkoutData['puntos_a_canjear'] = puntosAplicar;
                                 }
 
                                 // 1. Crear el pedido primero (POST /api/store/checkout)
@@ -783,7 +871,49 @@ class _StoreScreenState extends State<StoreScreen> {
                                 final totalServidor =
                                     toDoubleOrNull(orderResponse['data']?['order']?['total']) ??
                                         toDoubleOrNull(orderResponse['order']?['total']) ??
+                                        quoteTotal ??
                                         total;
+
+                                // El pedido y la cotización deben coincidir antes de cobrar.
+                                // Si el servidor recalculó tarifas mientras se creaba, informar
+                                // el nuevo importe y pedir aceptación explícita del comprador.
+                                if (quoteTotal != null &&
+                                    (totalServidor - quoteTotal).abs() >= 1) {
+                                  final aceptarNuevoTotal = await showDialog<bool>(
+                                    context: context,
+                                    builder: (dialogContext) => AlertDialog(
+                                      title: const Text('El total fue actualizado'),
+                                      content: Text(
+                                        'El total confirmado para tu pedido es '
+                                        '${_formatCOP(totalServidor)}, en lugar de '
+                                        '${_formatCOP(quoteTotal)}. ¿Deseas continuar al pago?',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(dialogContext, false),
+                                          child: const Text('Revisar pedido'),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () => Navigator.pop(dialogContext, true),
+                                          child: const Text('Aceptar y pagar'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                  if (aceptarNuevoTotal != true) {
+                                    setCheckoutState(() { processing = false; });
+                                    if (mounted) {
+                                      messenger.showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'El pedido quedó pendiente. No se inició el pago.',
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    return;
+                                  }
+                                }
 
                                 // 2. Cobrar el pedido usando el orderId real
                                 // Si abrir la pasarela falla, se cierra el dialogo y se
@@ -810,7 +940,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                     messenger.showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'No se pudo abrir la pasarela de pago. '
+                                          'No se pudo abrir la pasarela de pago: $e. '
                                           'El pedido quedó pendiente, no se te cobró nada.',
                                         ),
                                       ),
@@ -949,25 +1079,64 @@ class _StoreScreenState extends State<StoreScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                  if (_saldoPuntos != null && _saldoPuntos!.tieneSaldo && _cart.isNotEmpty) ...[
-                    BloqueCanjePuntos(
-                      saldo: _saldoPuntos!,
-                      valorProductos: _productosConIva.round(),
-                      activo: _usarPuntos,
-                      onCambio: (valor) => setState(() => _usarPuntos = valor),
-                    ),
-                    const SizedBox(height: 16),
-                  ],
                   const Divider(),
                   const SizedBox(height: 10),
-                  _buildSummaryRow('Subtotal', _formatCOP(subtotal)),
+                  _buildSummaryRow(
+                    'Productos (IVA incluido)',
+                    _formatCOP(quoteProducts ?? subtotal),
+                  ),
                   const SizedBox(height: 6),
-                  _buildSummaryRow('IVA (19%)', _formatCOP(iva)),
-                  if (_descuentoPuntos > 0) ...[
-                    const SizedBox(height: 6),
-                    _buildSummaryRow(
-                      'Puntos aplicados',
-                      '−${_formatCOP(_descuentoPuntos.toDouble())}',
+                  _buildSummaryRow(
+                    'IVA incluido',
+                    quoteIva == null ? 'Incluido' : _formatCOP(quoteIva),
+                  ),
+                  const SizedBox(height: 6),
+                  _buildSummaryRow(
+                    'Envío (transporte y gestión)',
+                    quotingShipping
+                        ? 'Calculando…'
+                        : quoteIsCurrent
+                            ? ((quoteShipping ?? 0) == 0 ? 'Gratis' : _formatCOP(quoteShipping!))
+                            : 'Pendiente de cotización',
+                  ),
+                  if (quoteIsCurrent && shippingDetails != null) ...[
+                    const SizedBox(height: 4),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Destino: ${shippingDetails['zona'] ?? 'por confirmar'}'
+                        '${shippingDetails['peso_kg'] != null ? ' · Peso estimado: ${shippingDetails['peso_kg']} kg' : ''}',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 10, color: AppTheme.text.withValues(alpha: 0.6)),
+                      ),
+                    ),
+                  ],
+                  if (quoteIsCurrent && freeShippingFrom != null) ...[
+                    const SizedBox(height: 4),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Envío gratis desde ${_formatCOP(freeShippingFrom)} en esta zona.',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 10, color: AppTheme.text.withValues(alpha: 0.6)),
+                      ),
+                    ),
+                  ],
+                  if (shippingQuoteError != null) ...[
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'No pudimos cotizar el envío. ${shippingQuoteError!}',
+                            style: const TextStyle(color: Colors.red, fontSize: 11),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: quotingShipping ? null : refreshShippingQuote,
+                          child: const Text('Reintentar'),
+                        ),
+                      ],
                     ),
                   ],
                   const SizedBox(height: 10),
@@ -985,7 +1154,11 @@ class _StoreScreenState extends State<StoreScreen> {
                         ),
                       ),
                       Text(
-                        _formatCOP(total - _descuentoPuntos),
+                        quoteIsCurrent && quoteTotal != null
+                            ? _formatCOP(quoteTotal)
+                            : quotingShipping
+                                ? 'Calculando…'
+                                : 'Pendiente',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
@@ -1031,7 +1204,12 @@ class _StoreScreenState extends State<StoreScreen> {
           },
         );
       },
-    );
+    ).whenComplete(() {
+      quoteDebounce?.cancel();
+      checkoutStateUpdater = null;
+      nameCtrl.dispose();
+      addressCtrl.dispose();
+    });
   }
 
   void _showOrderSuccessDialog() {
@@ -1154,7 +1332,6 @@ class _StoreScreenState extends State<StoreScreen> {
                 alignment: Alignment.center,
                 children: [
                   IconButton(
-                tooltip: 'Mi bolsa',
                 icon: Icon(Icons.shopping_bag_outlined, color: textColor),
                 onPressed: () {
                   setState(() {
@@ -1285,7 +1462,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                                 style: TextStyle(color: textColor),
                                                 decoration: InputDecoration(
                                                   hintText: 'Buscar productos...',
-                                                  hintStyle: TextStyle(fontSize: 14, color: isMen ? Color(0xFF6F5F4E) : Color(0xFF6F5F4E)),
+                                                  hintStyle: TextStyle(fontSize: 14, color: isMen ? Colors.grey.shade400 : Colors.grey),
                                                   border: InputBorder.none,
                                                   isDense: true,
                                                   contentPadding: const EdgeInsets.symmetric(vertical: 10),
@@ -1342,17 +1519,11 @@ class _StoreScreenState extends State<StoreScreen> {
                                 // Cuadrícula de Productos
                                 Expanded(
                                   child: _filteredProducts.isEmpty
-                                      ? EstadoVacio(
-                                          icono: Icons.shopping_bag_outlined,
-                                          titulo: 'No hay productos con este filtro',
-                                          detalle:
-                                              'Prueba con otra categoría o limpia la búsqueda.',
-                                          accionEtiqueta: 'Ver todo',
-                                          onAccion: () => setState(() {
-                                            _searchController.clear();
-                                            _selectedCategory = 'Todos';
-                                            _filterProducts();
-                                          }),
+                                      ? const Center(
+                                          child: Text(
+                                            'No se encontraron productos disponibles.',
+                                            style: TextStyle(color: Colors.grey),
+                                          ),
                                         )
                                       : GridView.builder(
                                           padding: const EdgeInsets.all(24),
@@ -1440,7 +1611,6 @@ class _StoreScreenState extends State<StoreScreen> {
                   ],
                 ),
                 IconButton(
-                  tooltip: 'Cerrar',
                   icon: Icon(Icons.close, color: AppTheme.text),
                   onPressed: () {
                     setState(() {
@@ -1458,7 +1628,7 @@ class _StoreScreenState extends State<StoreScreen> {
                 ? const Center(
                     child: Text(
                       'Tu carrito está vacío.',
-                      style: TextStyle(color: Color(0xFF6F5F4E)),
+                      style: TextStyle(color: Colors.grey),
                     ),
                   )
                 : ListView.separated(
@@ -1582,7 +1752,6 @@ class _StoreScreenState extends State<StoreScreen> {
                                 ),
                               ),
                               IconButton(
-                                tooltip: 'Quitar producto',
                                 icon: const Icon(Icons.delete_outline, size: 18, color: Colors.grey),
                                 onPressed: () => _updateCartQuantity(id, 0),
                               ),
@@ -1657,7 +1826,7 @@ class _StoreScreenState extends State<StoreScreen> {
                         elevation: 0,
                       ),
                       child: const Text(
-                        'Proceder al Pago',
+                        'Ver envío y total',
                         style: TextStyle(
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.bold,
@@ -1665,6 +1834,15 @@ class _StoreScreenState extends State<StoreScreen> {
                           color: Color(0xFF1F1A15),
                         ),
                       ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Calcularemos el envío con tu dirección y verás el total antes de pagar.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: AppTheme.text.withValues(alpha: 0.65),
                     ),
                   ),
                 ],

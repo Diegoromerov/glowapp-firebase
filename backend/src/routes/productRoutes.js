@@ -11,8 +11,6 @@ const returnController = require('../controllers/returnController');
 const notificationPrefsController = require('../controllers/notificationPrefsController');
 const deliveryScheduleController = require('../controllers/deliveryScheduleController');
 const { requireFlag } = require('./configRoutes');
-const { exigirCapacidad } = require('../middleware/exigirCapacidad');
-const { CAPACIDADES } = require('../services/capacidadesProveedor');
 const openBeautyFacts = require('../services/openBeautyFacts');
 const profileService = require('../services/biometric/profile.service');
 
@@ -53,7 +51,6 @@ router.post(
   '/store/checkout',
   requireFlag('glowstore'),
   authMiddleware,
-  exigirCapacidad(CAPACIDADES.COMPRAR),
   orderController.createOrder
 );
 router.get('/store/orders', authMiddleware, orderController.getOrders);
