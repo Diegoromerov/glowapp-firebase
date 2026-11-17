@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glow_core/glow_core.dart';
 import 'package:glow_client/main.dart';
 import 'package:glow_client/screens/auth/login_screen.dart';
+import 'package:glow_client/services/map_tile_config.dart';
 
 const _crema = Color(0xFFFCF8F6); // Token.light.surfaceLevel0
 const _obsidiana = Color(0xFF0A0C10); // Token.dark.surfaceLevel0
@@ -19,6 +20,15 @@ MaterialApp _app(WidgetTester tester) =>
     tester.widget<MaterialApp>(find.byType(MaterialApp));
 
 void main() {
+  setUpAll(() {
+    MapTileConfig.enabled = false;
+    ConnectivityService.probe = () async => true;
+  });
+  tearDownAll(() {
+    MapTileConfig.enabled = true;
+    ConnectivityService.resetForTesting();
+  });
+
   tearDown(() {
     // El modo de audiencia es estado global: no debe filtrarse entre tests.
     AudienceService.currentAudience.value = AudienceMode.all;

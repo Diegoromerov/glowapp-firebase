@@ -9,6 +9,7 @@ import 'package:web_socket_channel/web_socket_channel.dart'
     as web_socket_channel;
 import 'chat_screen.dart';
 import 'package:glow_core/glow_core.dart';
+import '../services/map_tile_config.dart';
 
 class BookingTrackingScreen extends StatefulWidget {
   final Map<String, dynamic> booking;
@@ -77,9 +78,6 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
       final wsBase = ApiService.baseUrl.replaceFirst('http', 'ws');
       final wsUrl =
           '$wsBase/chat'; // Reutilizamos el endpoint configurado en index.js
-      _wsChannel =
-          web_socket_channel.WebSocketChannel.connect(Uri.parse(wsUrl));
-
       // A360-2026-09-22/C-04: primero se registra la conexión con el token JWT; el
       // servidor sólo deja unirse a la sala de una reserva en la que participes.
       final token = await AuthService.getToken();
@@ -88,6 +86,8 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
             'WS tracking: sin token, no se registra ni se une a la sala');
         return;
       }
+      _wsChannel =
+          web_socket_channel.WebSocketChannel.connect(Uri.parse(wsUrl));
       _wsChannel!.sink.add(jsonEncode({'type': 'register', 'token': token}));
 
       // Unirse a la sala de la reserva
@@ -228,7 +228,8 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen>
                 initialZoom: 15,
               ),
               children: [
-                TileLayer(
+                if (MapTileConfig.enabled)
+                  TileLayer(
                   urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'com.beautyapp.map',
                 ),

@@ -185,14 +185,10 @@ void _empujarRutaDeLaUrl() {
     return;
   }
 
-  // El empuje se hace cuando el arranque se asienta, no en el primer frame.
-  //
-  // En el primer frame se empujaba y el Navigator se recreaba acto seguido: los
-  // logs decían «push OK -> /auth/login» y la pantalla seguía siendo el mapa,
-  // porque el Navigator donde se empujó ya no era el visible. Esperar deja que
-  // el árbol se estabilice y se toma el `currentState` de ese momento.
+  // Espera al final del primer frame para usar el Navigator visible. Un retraso
+  // arbitrario dejaba un Timer pendiente en pruebas y retrasaba los deep links.
   _rutaDeLaUrlEmpujada = true;
-  Future<void>.delayed(const Duration(milliseconds: 1200), () {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
     _empujarConReintentos(ruta, 0);
   });
 }

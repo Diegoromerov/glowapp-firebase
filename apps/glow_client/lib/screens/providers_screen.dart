@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'invite_welcome_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map/flutter_map.dart';
+import '../services/map_tile_config.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -2312,7 +2313,8 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                   },
                 ),
                 children: [
-                  TileLayer(
+                  if (MapTileConfig.enabled)
+                    TileLayer(
                     urlTemplate:
                         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'com.beautyapp.map',
