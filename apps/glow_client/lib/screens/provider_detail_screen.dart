@@ -82,6 +82,361 @@ class _ProviderInfoPill extends StatelessWidget {
       );
 }
 
+class _PortfolioAccessCard extends StatelessWidget {
+  const _PortfolioAccessCard({
+    required this.itemCount,
+    required this.previewUrls,
+    required this.onTap,
+  });
+
+  final int itemCount;
+  final List<String> previewUrls;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: const Color(0xFFE8DFD8)),
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 92,
+                  height: 64,
+                  child: previewUrls.isEmpty
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFAF6EE),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Icon(Icons.photo_library_outlined,
+                              color: Color(0xFFC5A052)),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Row(
+                            children: previewUrls.take(3).map((url) {
+                              return Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 2),
+                                  child: Image.network(
+                                    url,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) => Container(
+                                      color: const Color(0xFFFAF6EE),
+                                      child: const Icon(Icons.image_outlined,
+                                          color: Color(0xFFC5A052), size: 18),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Portafolio',
+                        style: TextStyle(
+                          fontFamily: 'CormorantGaramond',
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF1F1A15),
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        itemCount == 0
+                            ? 'Aún no hay trabajos publicados'
+                            : '$itemCount ${itemCount == 1 ? 'trabajo' : 'trabajos'} · Ver galería',
+                        style: const TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 12,
+                          color: Color(0xFF8C7E74),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right_rounded,
+                    color: Color(0xFFC5A052), size: 24),
+              ],
+            ),
+          ),
+        ),
+      );
+}
+
+class _PortfolioGallerySheet extends StatefulWidget {
+  const _PortfolioGallerySheet({
+    required this.portfolio,
+    required this.categories,
+    required this.onImageTap,
+  });
+
+  final List<Map<String, dynamic>> portfolio;
+  final List<String> categories;
+  final void Function(List<Map<String, dynamic>>, int) onImageTap;
+
+  @override
+  State<_PortfolioGallerySheet> createState() => _PortfolioGallerySheetState();
+}
+
+class _PortfolioGallerySheetState extends State<_PortfolioGallerySheet> {
+  String _selectedCategory = 'Todos';
+
+  @override
+  Widget build(BuildContext context) {
+    final items = _selectedCategory == 'Todos'
+        ? widget.portfolio
+        : widget.portfolio
+            .where((item) =>
+                (item['category'] ?? '').toString().trim() == _selectedCategory)
+            .toList();
+    return FractionallySizedBox(
+      heightFactor: 0.92,
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Color(0xFFFAF8F5),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: const Color(0xFFD8CEC5),
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 18, 20, 12),
+              child: Row(
+                children: [
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Portafolio',
+                            style: TextStyle(
+                              fontFamily: 'CormorantGaramond',
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF1F1A15),
+                            )),
+                        Text('Resultados reales de su trabajo',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 12,
+                              color: Color(0xFF8C7E74),
+                            )),
+                      ],
+                    ),
+                  ),
+                  Text('${items.length} ${items.length == 1 ? 'foto' : 'fotos'}',
+                      style: const TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF8A6A2F),
+                      )),
+                ],
+              ),
+            ),
+            if (widget.categories.length > 1)
+              SizedBox(
+                height: 46,
+                child: ListView.separated(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: widget.categories.length,
+                  separatorBuilder: (_, __) => const SizedBox(width: 8),
+                  itemBuilder: (context, index) {
+                    final category = widget.categories[index];
+                    final selected = _selectedCategory == category;
+                    return ChoiceChip(
+                      label: Text(category),
+                      selected: selected,
+                      selectedColor: const Color(0xFF5A263B),
+                      backgroundColor: Colors.white,
+                      labelStyle: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 12,
+                        color: selected ? Colors.white : const Color(0xFF6B5E55),
+                      ),
+                      onSelected: (_) => setState(() => _selectedCategory = category),
+                    );
+                  },
+                ),
+              ),
+            const SizedBox(height: 8),
+            Expanded(
+              child: items.isEmpty
+                  ? const Center(
+                      child: Text('Sin imágenes en esta categoría todavía.',
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              color: Color(0xFF8C7E74),
+                              fontSize: 13)),
+                    )
+                  : GridView.builder(
+                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 20),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 0.82,
+                      ),
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return GestureDetector(
+                          onTap: () => widget.onImageTap(items, index),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Image.network(
+                                  (item['image_url'] ?? '').toString(),
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (_, __, ___) => Container(
+                                    color: const Color(0xFFF4EFEA),
+                                    child: const Icon(Icons.image_not_supported_outlined,
+                                        color: Color(0xFFC5A052)),
+                                  ),
+                                ),
+                                if ((item['category'] ?? '').toString().trim().isNotEmpty)
+                                  Positioned(
+                                    left: 10,
+                                    right: 10,
+                                    bottom: 10,
+                                    child: Text(
+                                      item['category'].toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontFamily: 'Inter',
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        shadows: [Shadow(color: Colors.black54, blurRadius: 4)],
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PortfolioImageViewer extends StatefulWidget {
+  const _PortfolioImageViewer({required this.items, required this.initialIndex});
+
+  final List<Map<String, dynamic>> items;
+  final int initialIndex;
+
+  @override
+  State<_PortfolioImageViewer> createState() => _PortfolioImageViewerState();
+}
+
+class _PortfolioImageViewerState extends State<_PortfolioImageViewer> {
+  late final PageController _controller;
+  late int _index;
+
+  @override
+  void initState() {
+    super.initState();
+    _index = widget.initialIndex;
+    _controller = PageController(initialPage: _index);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              PageView.builder(
+                controller: _controller,
+                itemCount: widget.items.length,
+                onPageChanged: (index) => setState(() => _index = index),
+                itemBuilder: (context, index) => Center(
+                  child: Image.network(
+                      (widget.items[index]['image_url'] ?? '').toString(),
+                      fit: BoxFit.contain,
+                      errorBuilder: (_, __, ___) => const Icon(
+                        Icons.image_not_supported_outlined,
+                        color: Colors.white70,
+                        size: 52,
+                      ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 8,
+                right: 12,
+                child: CircleAvatar(
+                  backgroundColor: Colors.black54,
+                  child: IconButton(
+                    tooltip: 'Cerrar visor',
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.close_rounded, color: Colors.white),
+                  ),
+                ),
+              ),
+              if (widget.items.length > 1)
+                Positioned(
+                  bottom: 18,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text('${_index + 1} / ${widget.items.length}',
+                          style: const TextStyle(color: Colors.white, fontSize: 12)),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      );
+}
+
 class _PortfolioHeaderCarouselState extends State<_PortfolioHeaderCarousel> {
   late final PageController _controller;
   Timer? _timer;
@@ -172,7 +527,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
   bool hasError = false;
 
   String selectedCategory = 'Todos';
-  String selectedPortfolioCategory = 'Todos';
   Map<String, List<Map<String, dynamic>>> _categorizedServices = {};
 
   @override
@@ -530,6 +884,32 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
     );
   }
 
+  void _showPortfolioGallery(
+    BuildContext context,
+    List<Map<String, dynamic>> portfolio,
+    List<String> categories,
+  ) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (sheetContext) => _PortfolioGallerySheet(
+        portfolio: portfolio,
+        categories: categories,
+        onImageTap: (items, index) {
+          Navigator.of(sheetContext).push(
+            MaterialPageRoute<void>(
+              builder: (_) => _PortfolioImageViewer(
+                items: items,
+                initialIndex: index,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
   Widget _buildTrustStatItem(IconData icon, String val, String label) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -805,12 +1185,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
           .where((category) => category.isNotEmpty)
           .toSet()
     ];
-    final filteredPortfolio = selectedPortfolioCategory == 'Todos'
-        ? portfolio
-        : portfolio
-            .where((item) => (item['category'] ?? '').toString().trim() ==
-                selectedPortfolioCategory)
-            .toList();
     final reviews = (details!['reviews'] as List<dynamic>? ?? [])
         .cast<Map<String, dynamic>>();
 
@@ -1172,303 +1546,15 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                       ),
                       const SizedBox(height: 24),
 
-                      // El portafolio aparece primero: permite evaluar el
-                      // estilo y los resultados antes de leer detalles largos.
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Portafolio',
-                                style: TextStyle(
-                                  fontFamily: 'CormorantGaramond',
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF1F1A15),
-                                  letterSpacing: -0.3,
-                                ),
-                              ),
-                              SizedBox(height: 2),
-                              Text(
-                                'Resultados reales de su trabajo',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12,
-                                  color: Color(0xFF8C7E74),
-                                ),
-                              ),
-                            ],
-                          ),
-                          if (portfolio.isNotEmpty)
-                            Text(
-                              '${filteredPortfolio.length} trabajos',
-                              style: const TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF8A6A2F),
-                              ),
-                            ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      if (portfolio.isNotEmpty &&
-                          portfolioCategories.length > 1) ...[
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          physics: const BouncingScrollPhysics(),
-                          child: Row(
-                            children: portfolioCategories.map((category) {
-                              final selected =
-                                  selectedPortfolioCategory == category;
-                              return Padding(
-                                padding: const EdgeInsets.only(right: 8),
-                                child: ChoiceChip(
-                                  label: Text(category),
-                                  selected: selected,
-                                  selectedColor: const Color(0xFF5A263B),
-                                  backgroundColor: Colors.white,
-                                  labelStyle: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12,
-                                    color: selected
-                                        ? Colors.white
-                                        : const Color(0xFF6B5E55),
-                                    fontWeight: selected
-                                        ? FontWeight.w700
-                                        : FontWeight.w500,
-                                  ),
-                                  side: BorderSide(
-                                    color: selected
-                                        ? const Color(0xFF5A263B)
-                                        : const Color(0xFFEFE8DE),
-                                  ),
-                                  onSelected: (_) => setState(() {
-                                    HapticFeedback.selectionClick();
-                                    selectedPortfolioCategory = category;
-                                  }),
-                                ),
-                              );
-                            }).toList(),
-                          ),
+                      _PortfolioAccessCard(
+                        itemCount: portfolio.length,
+                        previewUrls: portfolioImages,
+                        onTap: () => _showPortfolioGallery(
+                          context,
+                          portfolio,
+                          portfolioCategories,
                         ),
-                        const SizedBox(height: 4),
-                      ],
-                      portfolio.isEmpty
-                          ? Container(
-                              height: 120,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFAF6EE),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: const Color(0xFFEFE8DE),
-                                  width: 1,
-                                ),
-                              ),
-                              child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.photo_outlined,
-                                    color: Color(0xFFC5A052),
-                                    size: 30,
-                                  ),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    'Sin imágenes en el portafolio por ahora.',
-                                    style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      color: Color(0xFF8C7E74),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 10,
-                                    mainAxisSpacing: 10,
-                                    childAspectRatio: 0.82,
-                                  ),
-                              itemCount: filteredPortfolio.length,
-                              itemBuilder: (context, index) {
-                                final item = filteredPortfolio[index];
-                                return GestureDetector(
-                                  onTap: () {
-                                    HapticFeedback.lightImpact();
-                                    showDialog(
-                                      context: context,
-                                      builder: (_) => Dialog(
-                                        backgroundColor: Colors.transparent,
-                                        insetPadding: EdgeInsets.zero,
-                                        child: BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                            sigmaX: 8,
-                                            sigmaY: 8,
-                                          ),
-                                          child: Stack(
-                                            alignment: Alignment.center,
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () =>
-                                                    Navigator.pop(context),
-                                                child: Container(
-                                                  color: Colors.black
-                                                      .withValues(alpha: 0.5),
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                ),
-                                              ),
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(16),
-                                                child: InteractiveViewer(
-                                                  panEnabled: true,
-                                                  minScale: 0.5,
-                                                  maxScale: 4.0,
-                                                  child: Image.network(
-                                                    item['image_url'],
-                                                    fit: BoxFit.contain,
-                                                  ),
-                                                ),
-                                              ),
-                                              Positioned(
-                                                top: 40,
-                                                right: 20,
-                                                child: ClipOval(
-                                                  child: BackdropFilter(
-                                                    filter: ImageFilter.blur(
-                                                      sigmaX: 5,
-                                                      sigmaY: 5,
-                                                    ),
-                                                    child: CircleAvatar(
-                                                      backgroundColor:
-                                                          Colors.white24,
-                                                      child: IconButton(
-                                                        tooltip: 'Cerrar',
-                                                        icon: const Icon(
-                                                          Icons.close,
-                                                          color: Colors.white,
-                                                        ),
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                              context,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18),
-                                      border: Border.all(
-                                        color: const Color(0xFFEFE8DE),
-                                      ),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(17),
-                                      child: Stack(
-                                        fit: StackFit.expand,
-                                        children: [
-                                          Image.network(
-                                            item['image_url'],
-                                            fit: BoxFit.cover,
-                                            cacheWidth: 600,
-                                            loadingBuilder:
-                                                (
-                                                  context,
-                                                  child,
-                                                  loadingProgress,
-                                                ) {
-                                                  if (loadingProgress == null) {
-                                                    return child;
-                                                  }
-                                                  return Container(
-                                                    color: const Color(
-                                                      0xFFFAF6EE,
-                                                    ),
-                                                    child: const Center(
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                            strokeWidth: 2,
-                                                            color: Color(
-                                                              0xFFC5A052,
-                                                            ),
-                                                          ),
-                                                    ),
-                                                  );
-                                                },
-                                            errorBuilder: (_, __, ___) => Container(
-                                              color: const Color(0xFFFAF6EE),
-                                              child: const Icon(
-                                                Icons
-                                                    .image_not_supported_outlined,
-                                                color: Color(0xFFC5A052),
-                                              ),
-                                            ),
-                                          ),
-                                          const DecoratedBox(
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                begin: Alignment.center,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Colors.transparent,
-                                                  Color(0x99000000),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          if ((item['category'] ?? '')
-                                              .toString()
-                                              .trim()
-                                              .isNotEmpty)
-                                            Positioned(
-                                              left: 10,
-                                              right: 10,
-                                              bottom: 10,
-                                              child: Text(
-                                                item['category'].toString(),
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: const TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white,
-                                                  shadows: [
-                                                    Shadow(
-                                                      color: Colors.black54,
-                                                      blurRadius: 4,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
+                      ),
                       const SizedBox(height: 28),
 
                       if (p['description'] != null &&
