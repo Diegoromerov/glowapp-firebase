@@ -1867,12 +1867,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                             )),
                       const SizedBox(height: 28),
 
-                      // Banner Contextual de IA Ubicuo
-                      _buildAIBanner(context,
-                          p['business_name'] ?? p['full_name'] ?? 'María'),
-
-                      const SizedBox(height: 28),
-
                       // Reseñas
                       const Text(
                         'Opiniones Recientes',
@@ -2729,88 +2723,4 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
     );
   }
 
-  Widget _buildAIBanner(BuildContext context, String providerName) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFFAF6EE), Color(0xFFF3EBE0)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-            color: const Color(0xFFC5A052).withValues(alpha: 0.35), width: 1.2),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x06000000),
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.auto_awesome,
-                  color: Color(0xFFC5A052), size: 20),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  '¿Te interesa el trabajo de $providerName?',
-                  style: const TextStyle(
-                      fontFamily: 'CormorantGaramond',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.5,
-                      color: Color(0xFF1F1A15)),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          const Text(
-            'Pregúntale a nuestra IA si sus estilos van con tu rostro y facciones.',
-            style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 12.5,
-                color: Color(0xFF6B5E55),
-                height: 1.35),
-          ),
-          const SizedBox(height: 14),
-          SizedBox(
-            width: double.infinity,
-            height: 44,
-            child: ElevatedButton.icon(
-              onPressed: () {
-                HapticFeedback.lightImpact();
-                // En el monolito esta ruta era `/ideas` (BiometricWelcomeScreen).
-                // En el split esa pantalla es AuraWelcomeScreen y se registra
-                // como `/ideas/aura-welcome`.
-                Navigator.of(context).pushNamed('/ideas/aura-welcome');
-              },
-              icon: const Icon(Icons.lightbulb_outline,
-                  size: 16, color: Color(0xFFC5A052)),
-              label: const Text(
-                'Ver Ideas y Visajismo IA',
-                style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF8A6A2F)),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1F1A15),
-                foregroundColor: const Color(0xFFC5A052),
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
