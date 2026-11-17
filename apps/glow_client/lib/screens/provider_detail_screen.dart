@@ -1,5 +1,6 @@
 // frontend/lib/screens/provider_detail_screen.dart
 import 'dart:ui';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:glow_core/glow_core.dart';
@@ -24,6 +25,85 @@ class ProviderDetailScreen extends StatefulWidget {
   });
   @override
   State<ProviderDetailScreen> createState() => _ProviderDetailScreenState();
+}
+
+class _PortfolioHeaderCarousel extends StatefulWidget {
+  const _PortfolioHeaderCarousel({required this.imageUrls, required this.fallback});
+  final List<String> imageUrls;
+  final Widget Function() fallback;
+
+  @override
+  State<_PortfolioHeaderCarousel> createState() => _PortfolioHeaderCarouselState();
+}
+
+class _PortfolioHeaderCarouselState extends State<_PortfolioHeaderCarousel> {
+  late final PageController _controller;
+  Timer? _timer;
+  int _currentPage = 0;
+  final Set<String> _failedImages = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController();
+    if (widget.imageUrls.length > 1) {
+      _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+        if (!_controller.hasClients) return;
+        _controller.animateToPage((_currentPage + 1) % widget.imageUrls.length,
+            duration: const Duration(milliseconds: 450), curve: Curves.easeInOut);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.imageUrls.every(_failedImages.contains)) return widget.fallback();
+    return Stack(fit: StackFit.expand, children: [
+      PageView.builder(
+        controller: _controller,
+        itemCount: widget.imageUrls.length,
+        onPageChanged: (index) => setState(() => _currentPage = index),
+        itemBuilder: (context, index) {
+          final url = widget.imageUrls[index];
+          if (_failedImages.contains(url)) return widget.fallback();
+          return Image.network(url, key: ValueKey(url), fit: BoxFit.cover,
+              cacheWidth: 1200,
+              errorBuilder: (context, error, stackTrace) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (mounted && _failedImages.add(url)) setState(() {});
+            });
+            return widget.fallback();
+          });
+        },
+      ),
+      if (widget.imageUrls.length > 1)
+        Positioned(
+          bottom: 50,
+          left: 0,
+          right: 0,
+          child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(widget.imageUrls.length, (index) =>
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              width: _currentPage == index ? 18 : 6,
+              height: 6,
+              margin: const EdgeInsets.symmetric(horizontal: 3),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: _currentPage == index ? 1 : 0.55),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          )),
+        ),
+    ]);
+  }
 }
 
 class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
@@ -650,8 +730,11 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
     final specialty = _getSpecialty(p, services);
     final specColor = _getSpecialtyColor(specialty);
     final specIcon = _getSpecialtyIcon(specialty);
-    final hasCover =
-        p['cover_url'] != null && p['cover_url'].toString().isNotEmpty;
+    final portfolioImages = portfolio
+        .map((item) => (item['image_url'] ?? '').toString())
+        .where((url) => url.isNotEmpty)
+        .toSet()
+        .toList();
     final smartSlot = _getSmartNextSlot(p);
 
     final filteredServices = _categorizedServices[selectedCategory] ??
@@ -672,7 +755,7 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
           slivers: [
             // Cabecera de Alto Impacto con Parallax y Desvanecimiento al Desplazar
             SliverAppBar(
-              expandedHeight: 280,
+              expandedHeight: 300,
               pinned: true,
               elevation: 0,
               backgroundColor: const Color(0xFF1F1A15),
@@ -730,105 +813,134 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
-                    hasCover
-                        ? Image.network(
-                            p['cover_url'],
-                            fit: BoxFit.cover,
-                            cacheWidth: 800,
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Container(
-                                // Valores literales del monolito (shared/theme.dart:
-                                // surface = nude100, primary = gold871). Los tokens
-                                // del split usan otro blanco y otro dorado.
-                                color: const Color(0xFFF4EFEA),
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: const Color(0xFFC5A052)),
-                                ),
-                              );
-                            },
-                            errorBuilder: (context, error, stackTrace) {
-                              return _buildFallbackCover(specColor, specIcon);
-                            },
-                          )
-                        : _buildFallbackCover(specColor, specIcon),
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.black.withValues(alpha: 0.6),
-                            Colors.black.withValues(alpha: 0.8),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                    if (portfolioImages.isNotEmpty)
+                      _PortfolioHeaderCarousel(
+                        imageUrls: portfolioImages,
+                        fallback: () => _buildFallbackCover(specColor, specIcon),
+                      )
+                    else
+                      _buildFallbackCover(specColor, specIcon),
+                    if (portfolioImages.isNotEmpty)
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.black.withValues(alpha: 0.18),
+                              Colors.black.withValues(alpha: 0.12),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
                         ),
                       ),
-                    ),
-                    // Información clave superpuesta en la cabecera
-                    Positioned(
-                      left: 20,
-                      right: 20,
-                      bottom: 16,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          // Avatar en Medallón de Alta Joyería (Kaizen 1)
-                          Container(
-                            width: 94,
-                            height: 94,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xFFF3D59B),
-                                  Color(0xFFC5A052),
-                                  Color(0xFF96732B)
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.4),
-                                  blurRadius: 12,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFFFDFBF7),
-                              ),
-                              padding: const EdgeInsets.all(2),
-                              child: CircleAvatar(
-                                radius: 42,
-                                backgroundColor: const Color(0xFFFAF6EE),
-                                backgroundImage: hasAvatar
-                                    ? NetworkImage(p['avatar_url'])
-                                    : null,
-                                child: !hasAvatar
-                                    ? Text(
-                                        initialLetter,
-                                        style: const TextStyle(
-                                            fontSize: 32,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF8A6A2F)),
-                                      )
-                                    : null,
-                              ),
-                            ),
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 88,
+                        height: 88,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFFF3D59B), Color(0xFFC5A052), Color(0xFF96732B)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
-                          const SizedBox(width: 16),
-                          // Detalles de texto
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withValues(alpha: 0.18), blurRadius: 12, offset: const Offset(0, 4)),
+                          ],
+                        ),
+                        padding: const EdgeInsets.all(3),
+                        child: CircleAvatar(
+                          backgroundColor: const Color(0xFFFAF6EE),
+                          backgroundImage: hasAvatar ? NetworkImage(p['avatar_url']) : null,
+                          child: !hasAvatar ? Text(initialLetter, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFF8A6A2F))) : null,
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                                // Especialidad con tag Quiet Luxury de Alta Definición
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: specColor.withValues(alpha: 0.95),
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                      color: Colors.white.withValues(alpha: 0.3),
+                                      width: 0.8,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withValues(alpha: 0.2),
+                                        blurRadius: 6,
+                                        offset: const Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(specIcon, size: 13, color: Colors.white),
+                                      const SizedBox(width: 5),
+                                      Text(specialty.toUpperCase(), style: const TextStyle(fontFamily: 'Inter', color: Colors.white, fontSize: 10.5, fontWeight: FontWeight.w800, letterSpacing: 0.6)),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  p['business_name'] ?? p['full_name'] ?? '',
+                                  style: const TextStyle(color: Color(0xFF1F1A15), fontSize: 22, fontWeight: FontWeight.bold),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(height: 6),
+                                Semantics(
+                                  label: (_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0)
+                                      ? 'Calificación ${_num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1)} de 5 estrellas, ${p['rating_count'] ?? p['reviews_count'] ?? 0} valoraciones'
+                                      : 'Sin calificaciones todavía',
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFAF6EE),
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(color: const Color(0xFFC5A052).withValues(alpha: 0.4), width: 0.8),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Icon(Icons.star_rounded, color: Color(0xFFFBBF24), size: 16),
+                                        const SizedBox(width: 4),
+                                        Text((_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0) ? _num(p['rating_avg'] ?? p['rating']).toStringAsFixed(1) : 'Nuevo', style: const TextStyle(fontFamily: 'Inter', color: Color(0xFF1F1A15), fontWeight: FontWeight.bold, fontSize: 13)),
+                                        const SizedBox(width: 6),
+                                        Flexible(
+                                          child: Text((_num(p['rating_count'] ?? p['reviews_count'] ?? 0) > 0) ? '(${p['rating_count'] ?? p['reviews_count'] ?? 0} opiniones)' : '(sin opiniones)', style: const TextStyle(fontFamily: 'Inter', color: Color(0xFF6B5E55), fontSize: 11.5), overflow: TextOverflow.ellipsis),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
                                 // Especialidad con tag Quiet Luxury de Alta Definición
                                 Container(
                                   padding: const EdgeInsets.symmetric(
@@ -946,17 +1058,6 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
             // Contenido
             SliverList(
               delegate: SliverChildListDelegate([
