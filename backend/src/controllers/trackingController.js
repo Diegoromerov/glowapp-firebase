@@ -348,49 +348,82 @@ async function getAdminLogisticsShipments(req, res) {
  * Admin: marcar estado manual + nota obligatoria
  */
 async function manualStatusShipment(req, res) {
+  let client;
   try {
     const { id } = req.params;
-    const { estado, nota, admin_id } = req.body;
+    const { estado, nota } = req.body;
+    const actorId = req.user?.id;
 
     const estadosValidos = ['CREADO', 'RECOGIDO', 'EN_TRANSITO', 'EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'];
     if (!estadosValidos.includes(estado)) {
       return res.status(400).json({ error: 'Estado inválido' });
     }
-    if (!nota || nota.trim().length < 5) {
+    if (typeof nota !== 'string' || nota.trim().length < 5 || nota.trim().length > 1000) {
       return res.status(400).json({ error: 'Nota obligatoria (mín 5 caracteres)' });
     }
+    if (!actorId) return res.status(401).json({ error: 'No se pudo identificar al administrador autenticado' });
 
-    const { rows } = await pool.query(
-      `UPDATE envios SET 
-         estado = $1, 
-         observaciones = COALESCE(observaciones, '') || '\n[MANUAL ' || NOW() || '] ' || $2,
+    const allowedTransitions = {
+      CREADO: ['RECOGIDO', 'EN_TRANSITO', 'FALLIDO', 'DEVUELTO'],
+      RECOGIDO: ['EN_TRANSITO', 'EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+      EN_TRANSITO: ['EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+      EN_CENTRO_DESTINO: ['EN_TRANSITO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+      SALIDA_ENTREGA: ['EN_TRANSITO', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+      FALLIDO: ['EN_TRANSITO', 'ENTREGADO', 'DEVUELTO'],
+      ENTREGADO: [],
+      DEVUELTO: [],
+    };
+
+    client = await pool.connect();
+    await client.query('BEGIN');
+    const currentResult = await client.query(
+      'SELECT id, pedido_id, estado FROM envios WHERE id = $1 FOR UPDATE', [id]
+    );
+    if (currentResult.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'Envío no encontrado' });
+    }
+    const current = currentResult.rows[0];
+    if (!(allowedTransitions[current.estado] || []).includes(estado)) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ error: `Transición no permitida: ${current.estado} → ${estado}` });
+    }
+
+    const auditNote = `[MANUAL actor=${actorId} ${current.estado}->${estado} ${new Date().toISOString()}] ${nota.trim()}`;
+    const { rows } = await client.query(
+      `UPDATE envios SET
+         estado = $1,
+         observaciones = COALESCE(observaciones, '') || E'\\n' || $2,
          entregado_en = CASE WHEN $1 = 'ENTREGADO' THEN COALESCE(entregado_en, NOW()) ELSE entregado_en END,
          actualizado_en = NOW()
        WHERE id = $3
        RETURNING *`,
-      [estado, nota, id]
+      [estado, auditNote, id]
     );
 
-    if (rows.length === 0) {
-      return res.status(404).json({ error: 'Envío no encontrado' });
-    }
-
-    // Si ENTREGADO, actualizar pedido
     if (estado === 'ENTREGADO') {
-      await pool.query(
+      await client.query(
         `UPDATE pedidos_tienda pt SET estado = 'ENTREGADO', entregado_en = COALESCE(pt.entregado_en, NOW())
           WHERE pt.id = $1 AND EXISTS (SELECT 1 FROM envios e WHERE e.pedido_id = pt.id)
             AND NOT EXISTS (
             SELECT 1 FROM envios e WHERE e.pedido_id = pt.id AND e.estado <> 'ENTREGADO'
           )`,
-        [rows[0].pedido_id]
+        [current.pedido_id]
       );
     }
 
+    await client.query('COMMIT');
     res.json({ success: true, data: rows[0] });
   } catch (error) {
+    if (client) {
+      try { await client.query('ROLLBACK'); } catch (rollbackError) {
+        console.error('❌ ERROR AL REVERTIR CAMBIO MANUAL DE ENVÍO:', rollbackError);
+      }
+    }
     console.error('❌ ERROR EN POST /api/admin/logistics/shipments/:id/manual-status:', error);
     res.status(500).json({ error: 'Error al actualizar estado' });
+  } finally {
+    client?.release();
   }
 }
 

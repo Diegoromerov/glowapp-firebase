@@ -9,6 +9,16 @@ const STATUS_LABEL: Record<string, string> = {
   EN_CENTRO_DESTINO: 'En centro destino', SALIDA_ENTREGA: 'En reparto',
   ENTREGADO: 'Entregado', FALLIDO: 'Fallido', DEVUELTO: 'Devuelto',
 };
+const ALLOWED_TRANSITIONS: Record<string, string[]> = {
+  CREADO: ['RECOGIDO', 'EN_TRANSITO', 'FALLIDO', 'DEVUELTO'],
+  RECOGIDO: ['EN_TRANSITO', 'EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+  EN_TRANSITO: ['EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+  EN_CENTRO_DESTINO: ['EN_TRANSITO', 'SALIDA_ENTREGA', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+  SALIDA_ENTREGA: ['EN_TRANSITO', 'ENTREGADO', 'FALLIDO', 'DEVUELTO'],
+  FALLIDO: ['EN_TRANSITO', 'ENTREGADO', 'DEVUELTO'],
+  ENTREGADO: [],
+  DEVUELTO: [],
+};
 
 interface Shipment {
   id: string;
@@ -34,6 +44,7 @@ interface Shipment {
 export default function AdminLogisticsPage() {
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [sourceAvailable, setSourceAvailable] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
@@ -48,6 +59,7 @@ export default function AdminLogisticsPage() {
   const load = useCallback(async () => {
     setLoading(true);
     setError('');
+    setSourceAvailable(false);
     try {
       const query = new URLSearchParams({ page: String(page), limit: '30' });
       if (statusFilter) query.set('estado', statusFilter);
@@ -57,8 +69,10 @@ export default function AdminLogisticsPage() {
       });
       const body = await response.json();
       if (!response.ok) throw new Error(body.error || 'No se pudieron cargar los envíos.');
-      setShipments(Array.isArray(body.data) ? body.data : []);
+      if (body.success !== true || !Array.isArray(body.data)) throw new Error('La respuesta de logística no tiene el formato esperado.');
+      setShipments(body.data);
       setPages(Math.max(1, Number(body.pagination?.pages) || 1));
+      setSourceAvailable(true);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Error al consultar logística.');
       setShipments([]);
@@ -126,7 +140,9 @@ export default function AdminLogisticsPage() {
       </section>
 
       <section className="overflow-hidden rounded-lg border border-gray-200 bg-white">
-        {loading ? <div className="p-10 text-center text-gray-500">Cargando envíos…</div> : shipments.length === 0 ? (
+        {loading ? <div className="p-10 text-center text-gray-500">Cargando envíos…</div> : !sourceAvailable ? (
+          <div className="p-10 text-center text-red-700"><AlertTriangle className="mx-auto mb-3 h-9 w-9" />No fue posible consultar los envíos. No podemos confirmar que la bandeja esté vacía.</div>
+        ) : shipments.length === 0 ? (
           <div className="p-10 text-center text-gray-500"><Truck className="mx-auto mb-3 h-9 w-9 text-gray-300" />No hay envíos para los filtros seleccionados.</div>
         ) : (
           <div className="overflow-x-auto">
@@ -136,7 +152,7 @@ export default function AdminLogisticsPage() {
               </tr></thead>
               <tbody className="divide-y divide-gray-100">{shipments.map((shipment) => (
                 <tr key={shipment.id} className="align-top hover:bg-gray-50">
-                  <td className="px-4 py-3"><div className="font-mono">#{shipment.pedido_id.slice(0, 8).toUpperCase()}</div><div className="text-xs text-gray-500">Guía: {shipment.guia || 'pendiente'}</div><div className="text-xs text-gray-500">{money(shipment.total)}</div></td>
+                  <td className="px-4 py-3"><div className="font-mono">#{shipment.pedido_id.slice(0, 8).toUpperCase()}</div><div className="text-xs text-gray-500">Guía: {shipment.guia || 'pendiente'}</div><div className="text-xs text-gray-500">Total del pedido: {money(shipment.total)}</div></td>
                   <td className="px-4 py-3">{shipment.proveedor_nombre || 'Sin proveedor'}<div className="text-xs text-gray-500">{shipment.proveedor_email || ''}</div></td>
                   <td className="px-4 py-3">{shipment.nombre_entrega}<div className="text-xs text-gray-500">{shipment.origen_ciudad || 'Origen pendiente'} → {shipment.destino_ciudad || 'Destino pendiente'}</div></td>
                   <td className="px-4 py-3">{shipment.transportadora || 'Por asignar'}{shipment.url_rastreo && <a className="ml-2 inline-flex text-blue-700" href={shipment.url_rastreo} target="_blank" rel="noreferrer" aria-label="Abrir rastreo"><ExternalLink className="h-4 w-4" /></a>}</td>
@@ -159,10 +175,10 @@ export default function AdminLogisticsPage() {
       {selected && <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" role="presentation">
         <form onSubmit={updateStatus} className="w-full max-w-lg space-y-4 rounded-xl bg-white p-6 shadow-xl" role="dialog" aria-modal="true" aria-labelledby="shipment-title">
           <div className="flex items-start justify-between"><div><h2 id="shipment-title" className="text-lg font-bold">Actualizar envío</h2><p className="text-sm text-gray-500">Guía {selected.guia} · pedido #{selected.pedido_id.slice(0, 8).toUpperCase()}</p></div><AlertTriangle className="h-5 w-5 text-amber-600" /></div>
-          <label className="block text-sm font-medium">Nuevo estado<select className="input mt-1 w-full" value={newStatus} onChange={(event) => setNewStatus(event.target.value)}>{STATUS.map((value) => <option key={value} value={value}>{STATUS_LABEL[value]}</option>)}</select></label>
+          <label className="block text-sm font-medium">Nuevo estado<select className="input mt-1 w-full" value={newStatus} onChange={(event) => setNewStatus(event.target.value)}>{(ALLOWED_TRANSITIONS[selected.estado] || []).map((value) => <option key={value} value={value}>{STATUS_LABEL[value]}</option>)}</select></label>
           <label className="block text-sm font-medium">Nota de auditoría<textarea className="input mt-1 w-full" rows={3} minLength={5} required value={note} onChange={(event) => setNote(event.target.value)} placeholder="Describa la novedad (mínimo 5 caracteres)" /></label>
           <p className="text-xs text-gray-500">El cambio queda registrado en el envío. Al completar todos los paquetes, el pedido pasa a entregado.</p>
-          <div className="flex justify-end gap-2"><button type="button" className="btn btn-tertiary" onClick={() => setSelected(null)}>Cancelar</button><button className="btn btn-primary flex items-center gap-2" disabled={saving || note.trim().length < 5}><CheckCircle2 className="h-4 w-4" />{saving ? 'Guardando…' : 'Guardar estado'}</button></div>
+          <div className="flex justify-end gap-2"><button type="button" className="btn btn-tertiary" onClick={() => setSelected(null)}>Cancelar</button><button className="btn btn-primary flex items-center gap-2" disabled={saving || note.trim().length < 5 || !(ALLOWED_TRANSITIONS[selected.estado] || []).includes(newStatus)}><CheckCircle2 className="h-4 w-4" />{saving ? 'Guardando…' : 'Guardar estado'}</button></div>
         </form>
       </div>}
     </main>
