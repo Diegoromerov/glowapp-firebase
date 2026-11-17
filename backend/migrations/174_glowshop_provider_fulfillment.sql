@@ -1,5 +1,11 @@
 -- 174_glowshop_provider_fulfillment.sql
 -- Bind each parcel to its dispatching provider and persist preparation state.
+ALTER TABLE productos
+  ADD COLUMN IF NOT EXISTS proveedor_id INTEGER REFERENCES usuarios(id) ON DELETE SET NULL;
+
+CREATE INDEX IF NOT EXISTS idx_productos_proveedor_id
+  ON productos(proveedor_id) WHERE proveedor_id IS NOT NULL;
+
 ALTER TABLE business_profiles
   ADD COLUMN IF NOT EXISTS activo BOOLEAN NOT NULL DEFAULT true,
   ADD COLUMN IF NOT EXISTS direccion_tipo_via VARCHAR(30),

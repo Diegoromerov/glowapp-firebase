@@ -318,6 +318,7 @@ const SCHEMA_SQL = `
     costo NUMERIC(10,2),
     stock INTEGER DEFAULT 0,
     tenant_id INTEGER,
+    proveedor_id INTEGER,
     descripcion TEXT,
     imagen_url TEXT,
     tag_especialidad VARCHAR(50),

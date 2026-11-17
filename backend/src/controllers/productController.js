@@ -147,7 +147,8 @@ exports.createProduct = async (req, res) => {
       imagen_url, 
       tag_especialidad,
       sku,
-      tipo_visibilidad
+      tipo_visibilidad,
+      proveedor_id
     } = req.body || {};
 
     if (!nombre || !tag_especialidad || costo === undefined || costo === null) {
@@ -157,6 +158,11 @@ exports.createProduct = async (req, res) => {
     const numCosto = parseFloat(costo);
     if (isNaN(numCosto) || numCosto < 0) {
       return res.status(400).json({ error: 'costo debe ser un número mayor o igual a 0' });
+    }
+
+    const proveedorId = proveedor_id == null || proveedor_id === '' ? null : Number(proveedor_id);
+    if (proveedorId !== null && (!Number.isSafeInteger(proveedorId) || proveedorId <= 0)) {
+      return res.status(400).json({ error: 'proveedor_id debe ser un identificador entero positivo' });
     }
 
     let tenantId = req.user?.tenant_id;
@@ -170,9 +176,9 @@ exports.createProduct = async (req, res) => {
     }
 
     const query = `
-      INSERT INTO productos (nombre, descripcion, costo, stock, imagen_url, tag_especialidad, tipo_visibilidad, sku, tenant_id)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-      RETURNING id, nombre, descripcion, costo, stock, imagen_url, tag_especialidad, tipo_visibilidad, sku, tenant_id;
+      INSERT INTO productos (nombre, descripcion, costo, stock, imagen_url, tag_especialidad, tipo_visibilidad, sku, tenant_id, proveedor_id)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      RETURNING id, nombre, descripcion, costo, stock, imagen_url, tag_especialidad, tipo_visibilidad, sku, tenant_id, proveedor_id;
     `;
 
     const { rows } = await pool.query(query, [
@@ -184,7 +190,8 @@ exports.createProduct = async (req, res) => {
       tag_especialidad,
       tipo_visibilidad || 'PUBLICO',
       sku || null,
-      tenantId
+      tenantId,
+      proveedorId
     ]);
 
     return res.status(201).json({
@@ -209,7 +216,8 @@ exports.updateProduct = async (req, res) => {
       imagen_url, 
       tag_especialidad,
       sku,
-      tipo_visibilidad
+      tipo_visibilidad,
+      proveedor_id
     } = req.body || {};
 
     if (!nombre || !tag_especialidad || costo === undefined || costo === null) {
@@ -221,12 +229,19 @@ exports.updateProduct = async (req, res) => {
       return res.status(400).json({ error: 'costo debe ser un número mayor o igual a 0' });
     }
 
+    const proveedorId = proveedor_id == null || proveedor_id === '' ? null : Number(proveedor_id);
+    if (proveedorId !== null && (!Number.isSafeInteger(proveedorId) || proveedorId <= 0)) {
+      return res.status(400).json({ error: 'proveedor_id debe ser un identificador entero positivo' });
+    }
+    const proveedorEnviado = Object.prototype.hasOwnProperty.call(req.body || {}, 'proveedor_id');
+
     const query = `
       UPDATE productos 
       SET nombre = $1, descripcion = $2, costo = $3, stock = $4, imagen_url = $5, 
-          tag_especialidad = $6, tipo_visibilidad = $7, sku = $8
-      WHERE id = $9
-      RETURNING id, nombre, descripcion, costo, stock, imagen_url, tag_especialidad, tipo_visibilidad, sku;
+          tag_especialidad = $6, tipo_visibilidad = $7, sku = $8,
+          proveedor_id = CASE WHEN $10 THEN $9::INTEGER ELSE proveedor_id END
+      WHERE id = $11
+      RETURNING id, nombre, descripcion, costo, stock, imagen_url, tag_especialidad, tipo_visibilidad, sku, proveedor_id;
     `;
 
     const { rows } = await pool.query(query, [
@@ -238,6 +253,8 @@ exports.updateProduct = async (req, res) => {
       tag_especialidad,
       tipo_visibilidad || 'PUBLICO',
       sku || null,
+      proveedorId,
+      proveedorEnviado,
       productId
     ]);
 
@@ -310,7 +327,7 @@ exports.getAdminProducts = async (req, res) => {
 
     const { rows } = await pool.query(
       `SELECT p.id, p.nombre, p.descripcion, p.costo, p.stock, p.imagen_url,
-              p.tag_especialidad, p.tipo_visibilidad, p.sku, p.tenant_id
+              p.tag_especialidad, p.tipo_visibilidad, p.sku, p.tenant_id, p.proveedor_id
          FROM productos p
          ${filtro}
         ORDER BY p.id ASC
