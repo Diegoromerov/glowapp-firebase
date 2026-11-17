@@ -2,18 +2,13 @@
 -- Preferencias de notificación por usuario y tipo de evento
 
 -- Función trigger para actualizado_en (idempotente)
-DO $$
+CREATE OR REPLACE FUNCTION fn_actualizado_en()
+RETURNS TRIGGER AS $$
 BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_proc WHERE proname = 'fn_actualizado_en') THEN
-        CREATE OR REPLACE FUNCTION fn_actualizado_en()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.actualizado_en = NOW();
-            RETURN NEW;
-        END;
-        $$ LANGUAGE plpgsql;
-    END IF;
-END $$;
+    NEW.actualizado_en = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 CREATE TABLE IF NOT EXISTS usuario_notificaciones_prefs (
     id BIGSERIAL PRIMARY KEY,
